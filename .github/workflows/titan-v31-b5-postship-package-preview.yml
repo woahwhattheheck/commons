@@ -148,12 +148,22 @@ jobs:
           control_config = dict(base_config)
           control_config['r04_sale_window'] = True
           control_config['r04_sale_horizon'] = 8
+          control_config['r04_sale_fertilizer'] = True
+          control_config['r04_cattle_early'] = False
           control_config['b5_carrot_fertilizer'] = False
+          assert control_config['r04_strawberry_topup'] is True
+          assert control_config['r04_no_late_sale_advance'] is True
+          assert control_config['r04_sale_fertilizer'] is True
+          assert control_config['r04_cattle_early'] is False
           control['TITAN-CONFIG.json'] = (json.dumps(control_config, indent=2) + '\n').encode()
 
           candidate = dict(control)
           candidate_config = dict(control_config)
           candidate_config['b5_carrot_fertilizer'] = True
+          assert candidate_config['r04_strawberry_topup'] is True
+          assert candidate_config['r04_no_late_sale_advance'] is True
+          assert candidate_config['r04_sale_fertilizer'] is True
+          assert candidate_config['r04_cattle_early'] is False
           candidate['TITAN-CONFIG.json'] = (json.dumps(candidate_config, indent=2) + '\n').encode()
 
           differing = sorted(name for name in control if control[name] != candidate[name])
@@ -168,8 +178,8 @@ jobs:
 
           control_blob = build_v3.build_bytes(control)
           candidate_blob = build_v3.build_bytes(candidate)
-          control_path = receipt_dir / 'control-a612.tar.gz'
-          candidate_path = receipt_dir / 'candidate-b5-on-a612.tar.gz'
+          control_path = receipt_dir / 'control-a612-cattle-off.tar.gz'
+          candidate_path = receipt_dir / 'candidate-b5-on-a612-cattle-off.tar.gz'
           control_path.write_bytes(control_blob)
           candidate_path.write_bytes(candidate_blob)
 
@@ -192,7 +202,7 @@ jobs:
               'archive_files': len(control),
               'only_control_candidate_file_delta': differing,
               'only_control_candidate_config_delta': {'b5_carrot_fertilizer': [False, True]},
-              'inherited_score_tuple': {
+              'score_tuple': {
                   'r04_sale_window': True,
                   'r04_sale_horizon': control_config['r04_sale_horizon'],
                   'r04_sale_fertilizer': control_config['r04_sale_fertilizer'],
@@ -201,6 +211,7 @@ jobs:
                   'r04_strawberry_topup': control_config['r04_strawberry_topup'],
               },
           }
+          assert receipt['score_tuple']['r04_cattle_early'] is False
           (receipt_dir / 'B5-POSTSHIP-RECEIPT.json').write_text(
               json.dumps(receipt, indent=2, sort_keys=True) + '\n'
           )
@@ -210,8 +221,8 @@ jobs:
           print('B5_POSTSHIP_RECEIPT', json.dumps(receipt, sort_keys=True))
           PY
           test -s "$RECEIPT/B5-POSTSHIP-RECEIPT.json"
-          test -s "$RECEIPT/control-a612.tar.gz"
-          test -s "$RECEIPT/candidate-b5-on-a612.tar.gz"
+          test -s "$RECEIPT/control-a612-cattle-off.tar.gz"
+          test -s "$RECEIPT/candidate-b5-on-a612-cattle-off.tar.gz"
 
       - name: Prove repository checkout stayed clean
         shell: bash
