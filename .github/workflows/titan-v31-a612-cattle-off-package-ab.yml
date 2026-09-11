@@ -55,6 +55,80 @@ jobs:
           print('CATTLE_AB_SCOPE_OK', len(actual))
           PY
 
+      - name: Freeze reducer membership and type poisons
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import copy
+          import importlib.util
+          import math
+          from pathlib import Path
+
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/report_ab.py')
+          spec = importlib.util.spec_from_file_location('cattle_report_ab', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+
+          trace = 'a' * 64
+          games = []
+          for seed in module.EXPECTED_SEEDS:
+              for seat in (0, 1):
+                  games.append({
+                      'opponent': 'cattle_on',
+                      'seed': seed,
+                      'candidate_seat': seat,
+                      'status': 'complete',
+                      'failure': None,
+                      'scores': [100.0 + seat, 90.0 - seat],
+                      'trace_sha256': trace,
+                  })
+          valid = {
+              'engine_ref': module.ENGINE_REF,
+              'seeds': list(module.EXPECTED_SEEDS),
+              'opponents': ['cattle_on'],
+              'reproducibility': {'same_trace_and_scores': True},
+              'games': games,
+          }
+          normalized = module.normalized_games(copy.deepcopy(valid), 'valid')
+          assert frozenset(normalized) == module.EXPECTED_KEYS
+          assert len(normalized) == 16
+
+          def rejects(name, mutate):
+              poisoned = copy.deepcopy(valid)
+              mutate(poisoned)
+              try:
+                  module.normalized_games(poisoned, name)
+              except SystemExit:
+                  return
+              raise AssertionError(f'{name}: poison was accepted')
+
+          rejects('substituted-seed-metadata', lambda r: r['seeds'].__setitem__(0, 999999))
+          rejects('duplicate-seed-metadata', lambda r: r['seeds'].__setitem__(1, r['seeds'][0]))
+          rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
+          rejects('substituted-opponent-metadata', lambda r: r.__setitem__('opponents', ['other']))
+          rejects('duplicate-opponent-metadata', lambda r: r.__setitem__('opponents', ['cattle_on', 'cattle_on']))
+          rejects('missing-cell', lambda r: r['games'].pop())
+          rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
+          rejects('substituted-game-seed', lambda r: r['games'][0].__setitem__('seed', 999999))
+          rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
+          rejects('bool-seat', lambda r: r['games'][0].__setitem__('candidate_seat', False))
+          rejects('seat-two', lambda r: r['games'][0].__setitem__('candidate_seat', 2))
+          rejects('wrong-game-opponent', lambda r: r['games'][0].__setitem__('opponent', 'other'))
+          rejects('missing-score', lambda r: r['games'][0].__setitem__('scores', [1.0]))
+          rejects('bool-score', lambda r: r['games'][0].__setitem__('scores', [True, 1.0]))
+          rejects('nan-score', lambda r: r['games'][0].__setitem__('scores', [math.nan, 1.0]))
+          rejects('inf-score', lambda r: r['games'][0].__setitem__('scores', [math.inf, 1.0]))
+          rejects('failure', lambda r: r['games'][0].__setitem__('failure', 'boom'))
+          rejects('incomplete', lambda r: r['games'][0].__setitem__('status', 'error'))
+          rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
+          rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'not-a-sha'))
+
+          compile(path.read_text(), str(path), 'exec')
+          print('CATTLE_AB_REDUCER_POISONS_OK', len(module.EXPECTED_KEYS))
+          PY
+          test -z "$(git status --porcelain)"
+
       - name: Prove canonical deterministic package still exact
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
