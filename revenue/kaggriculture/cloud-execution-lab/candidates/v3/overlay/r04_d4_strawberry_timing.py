@@ -172,7 +172,11 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
         future = tape[due_step]
         if not isinstance(future, dict):
             return action, 0, ()
-        work = [future.get("farmer") or ["PASS"], *(future.get("hands") or [])]
+        future_farmer = future.get("farmer") or ["PASS"]
+        future_hands = future.get("hands") or []
+        if not isinstance(future_farmer, list) or not isinstance(future_hands, list):
+            return action, 0, ()
+        work = [future_farmer, *future_hands]
         if any(not isinstance(command, list) or not command for command in work):
             return action, 0, ()
         if any(len(command) > 1 and command[:2] == ["PICKUP", ITEM] for command in work):
