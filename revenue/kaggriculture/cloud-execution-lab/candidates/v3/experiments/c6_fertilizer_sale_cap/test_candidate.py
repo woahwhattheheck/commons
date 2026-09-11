@@ -167,6 +167,22 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
         self.assertEqual(state.sale_window_debts, {578: {"FERTILIZER": 5}, 590: {"MILK": 2}})
         self.assertEqual(m.REPORT["fert_advance_units_withheld"], 3)
 
+    def test_partial_cap_accepts_and_preserves_existing_empty_slots(self):
+        obs = observation(shed=10)
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [[], ["SELL", "FERTILIZER", 8], [], ["HIRE"]],
+        }
+        before_action = copy.deepcopy(action)
+        state = debt_state({578: {"FERTILIZER": 8}})
+        result = m.cap_owned_fertilizer_advance(obs, action, state, {578: 8}, reserve=5)
+        self.assertEqual(action, before_action)
+        self.assertEqual(result["market"], [[], ["SELL", "FERTILIZER", 5], [], ["HIRE"]])
+        self.assertEqual(result["market"][0], before_action["market"][0])
+        self.assertEqual(result["market"][2:], before_action["market"][2:])
+        self.assertEqual(state.sale_window_debts, {578: {"FERTILIZER": 5}})
+
     def test_partial_refund_restores_latest_due_first_and_keeps_nearer_suppression(self):
         obs = observation(shed=10)
         action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "FERTILIZER", 8]]}
@@ -207,6 +223,46 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
         self.assertEqual(result["market"][1:], before_action["market"][1:])
         self.assertEqual(state.sale_window_debts, {590: {"WOOL": 3}})
         self.assertEqual(m.REPORT["fert_advance_units_withheld"], 5)
+
+    def test_full_cap_accepts_and_preserves_existing_empty_slots(self):
+        obs = observation(shed=5)
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [
+                ["SELL", "MILK", 1],
+                [],
+                ["SELL", "FERTILIZER", 5],
+                [],
+                ["HIRE"],
+            ],
+        }
+        before_action = copy.deepcopy(action)
+        state = debt_state({578: {"FERTILIZER": 5}})
+        result = m.cap_owned_fertilizer_advance(obs, action, state, {578: 5}, reserve=5)
+        self.assertEqual(action, before_action)
+        self.assertEqual(result["market"], [
+            ["SELL", "MILK", 1],
+            [],
+            [],
+            [],
+            ["HIRE"],
+        ])
+        self.assertEqual(result["market"][:2], before_action["market"][:2])
+        self.assertEqual(result["market"][3:], before_action["market"][3:])
+        self.assertEqual(state.sale_window_debts, {})
+
+    def test_non_list_market_row_remains_fail_closed(self):
+        obs = observation(shed=5)
+        action = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "FERTILIZER", 5], "malformed"],
+        }
+        before_debt = {578: {"FERTILIZER": 5}}
+        state = debt_state(before_debt)
+        self.assertIs(m.cap_owned_fertilizer_advance(obs, action, state, {578: 5}, reserve=5), action)
+        self.assertEqual(state.sale_window_debts, before_debt)
 
     def test_existing_fert_debt_is_not_refunded_beyond_same_callback_increment(self):
         obs = observation(shed=3)
