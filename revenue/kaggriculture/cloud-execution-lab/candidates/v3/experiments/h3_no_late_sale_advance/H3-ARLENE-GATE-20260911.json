@@ -1,0 +1,35 @@
+{
+  "base_package": {
+    "path": "titan-v3.1.tar.gz",
+    "sha256": "e4e5a3acfe4984c89c22c7aa841b4ddd6efe4f4cd71e507d1dabecbb6e865849"
+  },
+  "both_seats": true,
+  "candidate_wrapper_sha256": "0802b0d4f827c9b427a3a8431264035d9ff2b0eb47b3c4b7372b9ac1f3ef2867",
+  "cells": [
+    {"seed":2611151001,"candidate_seat":0,"control_own":54649.0,"control_rival":52176.0,"candidate_own":54764.0,"candidate_rival":52181.0,"delta_own":115.0,"delta_rival":5.0,"delta_margin":110.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151001,"candidate_seat":1,"control_own":54649.0,"control_rival":52176.0,"candidate_own":54764.0,"candidate_rival":52181.0,"delta_own":115.0,"delta_rival":5.0,"delta_margin":110.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151002,"candidate_seat":0,"control_own":95443.0,"control_rival":92590.0,"candidate_own":95641.0,"candidate_rival":92580.0,"delta_own":198.0,"delta_rival":-10.0,"delta_margin":208.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151002,"candidate_seat":1,"control_own":95443.0,"control_rival":92590.0,"candidate_own":95641.0,"candidate_rival":92580.0,"delta_own":198.0,"delta_rival":-10.0,"delta_margin":208.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151003,"candidate_seat":0,"control_own":112866.0,"control_rival":100898.0,"candidate_own":113159.0,"candidate_rival":100902.0,"delta_own":293.0,"delta_rival":4.0,"delta_margin":289.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151003,"candidate_seat":1,"control_own":112866.0,"control_rival":100898.0,"candidate_own":113159.0,"candidate_rival":100902.0,"delta_own":293.0,"delta_rival":4.0,"delta_margin":289.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151004,"candidate_seat":0,"control_own":127663.0,"control_rival":118421.0,"candidate_own":127837.0,"candidate_rival":118421.0,"delta_own":174.0,"delta_rival":0.0,"delta_margin":174.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151004,"candidate_seat":1,"control_own":127663.0,"control_rival":118421.0,"candidate_own":127837.0,"candidate_rival":118421.0,"delta_own":174.0,"delta_rival":0.0,"delta_margin":174.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151005,"candidate_seat":0,"control_own":134686.0,"control_rival":108417.0,"candidate_own":134874.0,"candidate_rival":108417.0,"delta_own":188.0,"delta_rival":0.0,"delta_margin":188.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151005,"candidate_seat":1,"control_own":134686.0,"control_rival":108417.0,"candidate_own":134874.0,"candidate_rival":108417.0,"delta_own":188.0,"delta_rival":0.0,"delta_margin":188.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151006,"candidate_seat":0,"control_own":76065.0,"control_rival":69250.0,"candidate_own":76246.0,"candidate_rival":69253.0,"delta_own":181.0,"delta_rival":3.0,"delta_margin":178.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151006,"candidate_seat":1,"control_own":76065.0,"control_rival":69250.0,"candidate_own":76246.0,"candidate_rival":69253.0,"delta_own":181.0,"delta_rival":3.0,"delta_margin":178.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151007,"candidate_seat":0,"control_own":84207.0,"control_rival":82330.0,"candidate_own":84546.0,"candidate_rival":82330.0,"delta_own":339.0,"delta_rival":0.0,"delta_margin":339.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151007,"candidate_seat":1,"control_own":84207.0,"control_rival":82330.0,"candidate_own":84546.0,"candidate_rival":82330.0,"delta_own":339.0,"delta_rival":0.0,"delta_margin":339.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151008,"candidate_seat":0,"control_own":64339.0,"control_rival":58869.0,"candidate_own":64491.0,"candidate_rival":58869.0,"delta_own":152.0,"delta_rival":0.0,"delta_margin":152.0,"control_win":true,"candidate_win":true},
+    {"seed":2611151008,"candidate_seat":1,"control_own":64260.0,"control_rival":59017.0,"candidate_own":64412.0,"candidate_rival":59017.0,"delta_own":152.0,"delta_rival":0.0,"delta_margin":152.0,"control_win":true,"candidate_win":true}
+  ],
+  "control_wrapper_sha256": "2f3ed65894e2c41398dccaf42738c6604e7e0c5ebf0d705bc4db1a16e258137e",
+  "engine_sha256": {"kaggriculture.json":"a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867","kaggriculture.py":"bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e","utils.py":"537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"},
+  "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+  "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+  "opponent": {"label":"arlene","path":"reference/next-panel/vendor/arlene.py","sha256":"1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"},
+  "schema": "titan.v31.h3-l3.arlene-callsite-gate.v1",
+  "seeds": [2611151001,2611151002,2611151003,2611151004,2611151005,2611151006,2611151007,2611151008],
+  "summary": {"candidate_wins":16,"completed":16,"control_wins":16,"delta_margin_max":339.0,"delta_margin_mean":204.75,"delta_margin_median":183.0,"delta_margin_min":110.0,"delta_margin_negative":0,"delta_margin_positive":16,"delta_margin_zero":0,"delta_own_mean":205.0,"delta_rival_mean":0.25,"failures":0,"lost_wins":0,"new_losses":0},
+  "truth_boundary": "Equivalent call-site factor gate on exact V3.1 ready-to-submit R04 bytes; not an exact branch-package build. Candidate monkeypatches only r04_full_router.reserve_sales to no-op at step>=648, matching riot/v3.1-lanes L3 source semantics."
+}
