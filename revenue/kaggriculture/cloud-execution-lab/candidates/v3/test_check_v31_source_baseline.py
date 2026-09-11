@@ -20,6 +20,18 @@ def _sha(blob: bytes) -> str:
     return hashlib.sha256(blob).hexdigest()
 
 
+BAD_SALE_WINDOW_VALUES = (
+    1,
+    0,
+    "true",
+    "",
+    [1],
+    [],
+    {"truthy": True},
+    {},
+)
+
+
 class PackageTreeCustodyTests(unittest.TestCase):
     def _fixture(self, root: Path, submission: bool = True) -> tuple[Path, Path]:
         package = root / "package"
@@ -54,6 +66,29 @@ class PackageTreeCustodyTests(unittest.TestCase):
             package, manifest = self._fixture(Path(temp), submission=False)
             with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
                 baseline._verify_package_tree(package)
+
+    def test_non_boolean_submission_modes_fail_verification(self):
+        for value in BAD_SALE_WINDOW_VALUES:
+            with self.subTest(value=repr(value)), tempfile.TemporaryDirectory() as temp:
+                package, manifest = self._fixture(Path(temp), submission=False)
+                config_path = package / "TITAN-CONFIG.json"
+                data = json.loads(config_path.read_text(encoding="utf-8"))
+                data["r04_sale_window"] = value
+                config_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+                with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                    with self.assertRaisesRegex(SystemExit, "r04_sale_window must be a JSON boolean"):
+                        baseline._verify_package_tree(package)
+
+    def test_non_boolean_submission_modes_fail_source_normalization(self):
+        for value in BAD_SALE_WINDOW_VALUES:
+            with self.subTest(value=repr(value)), tempfile.TemporaryDirectory() as temp:
+                package, _ = self._fixture(Path(temp), submission=False)
+                config_path = package / "TITAN-CONFIG.json"
+                data = json.loads(config_path.read_text(encoding="utf-8"))
+                data["r04_sale_window"] = value
+                config_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+                with self.assertRaisesRegex(SystemExit, "r04_sale_window must be a JSON boolean"):
+                    baseline._force_source_mode(package)
 
     def test_extra_file_fails_closed(self):
         with tempfile.TemporaryDirectory() as temp:
