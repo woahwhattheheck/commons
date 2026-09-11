@@ -21,6 +21,7 @@ _CROP_PRODUCTS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
 _ANIMAL_PRODUCTS = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
 _ANIMAL_STRUCTURES = {"GOOSE": "COOP", "COW": "PASTURE", "SHEEP": "PASTURE"}
 _PRODUCTS = _CROP_PRODUCTS | set(_ANIMAL_PRODUCTS.values()) | {"FERTILIZER"}
+_BOARD_SIZE = 10
 
 REPORT = {
     "calls": 0,
@@ -41,10 +42,13 @@ def _strict_nonnegative_int(value: Any) -> int | None:
 def public_rival_supply(observation: Any) -> dict[str, int]:
     """Return visible standing rival yield, or ``{}`` if evidence is invalid/absent.
 
-    A structurally malformed rival board is never partially trusted. Normal locked/empty
-    cells and non-producing well-formed tiles contribute no signal. A PLANT or occupied
-    animal structure must carry an exact known crop/animal, legal structure kind, and
-    nonnegative integer ``yield_units``; otherwise the entire public signal fails closed.
+    A structurally malformed rival board is never partially trusted. The frozen V3.1
+    theorem uses the standard 10x10 board, so truncated/ragged/nonstandard board shapes
+    are ambiguous and fail closed before any producing tile can authorize a reorder.
+    Normal locked/empty cells and non-producing well-formed tiles contribute no signal.
+    A PLANT or occupied animal structure must carry an exact known crop/animal, legal
+    structure kind, and nonnegative integer ``yield_units``; otherwise the entire public
+    signal fails closed.
     """
     if type(observation) is not dict:
         return {}
@@ -56,12 +60,12 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
     if type(rival) is not dict:
         return {}
     tiles = rival.get("tiles")
-    if type(tiles) is not list:
+    if type(tiles) is not list or len(tiles) != _BOARD_SIZE:
         return {}
 
     result: dict[str, int] = {}
     for row in tiles:
-        if type(row) is not list:
+        if type(row) is not list or len(row) != _BOARD_SIZE:
             return {}
         for tile in row:
             # Locked/empty cells are non-signals, not malformed producing evidence.
@@ -127,17 +131,21 @@ def apply_public_supply_order(
 ) -> Any:
     """Stable-partition the leading SELL block by visible rival standing supply.
 
-    Disabled or unsupported inputs return the exact same parent object. Custom market
-    parameters also fail closed so this experiment stays on the exact live V3.1 market
-    contract. Every row object, quantity, tail position and non-market action is retained.
+    Disabled or unsupported inputs return the exact same parent object. Only absent,
+    ``None``, or an exact empty ``marketParams`` mapping counts as the frozen default
+    market contract; custom parameters and falsey type-confused aliases fail closed.
+    Every row object, quantity, tail position and non-market action is retained.
     """
     REPORT["calls"] += 1
     if not enabled or type(action) is not dict:
         return action
     if configuration is not None and type(configuration) is not dict:
         return action
-    if type(configuration) is dict and configuration.get("marketParams"):
-        return action
+    if type(configuration) is dict:
+        market_params = configuration.get("marketParams")
+        if market_params is not None:
+            if type(market_params) is not dict or market_params:
+                return action
     market = action.get("market")
     if type(market) is not list:
         return action
