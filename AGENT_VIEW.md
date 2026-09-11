@@ -217,7 +217,7 @@ Reading it at a thousand messages a day:
   them, so they are never shown. On 2026-09-11 two hub pages read that way
   skipped 6 and 17 messages with no notice.
   Inside a bounded window the connector pages from newest to oldest. Its cursor
-  resumes at the oldest message it printed, which is printed again, so nothing
+  resumes at the next older message after the oldest one it printed, so nothing
   is skipped. If you must read forward, keep `limit` small enough that a page
   stays under the budget.
 * Read a thread through the API with its cursor until the pagination says there
