@@ -145,12 +145,121 @@ class TestTimeIsNotBakedIn(unittest.TestCase):
     def test_a_malformed_creation_is_listed_but_never_ordered(self):
         rows = pulls(2) + [{"number": 999, "title": "broken clock",
                             "user": {"login": "a"}, "created_at": "whenever"}]
-        payload = github_state.build(rows, COUNTS, "2026-09-10T21:00:00Z")
+        payload = github_state.build(rows, COUNTS, "2026-09-10T21:00:00Z",
+                                     complete=True)
         self.assertEqual(payload["pulls_listed"], 3)
         self.assertEqual(payload["undatable_pulls"], [999])
         self.assertNotIn(999, [p["number"] for p in payload["newest_pulls"]])
         self.assertNotIn(999, [p["number"] for p in payload["longest_open"]])
         self.assertEqual(payload["newest_pulls"][0]["number"], 101)
+
+
+class TestListingCoverage(TempRepo):
+    """The oldest row of a newest-first page is not the longest-open PR."""
+
+    def test_a_listing_shorter_than_the_open_count_is_partial(self):
+        # 100 newest rows against 114 counted open, exactly the reviewed case.
+        rows = pulls(100, hour=0)
+        payload = github_state.build(rows, dict(COUNTS, open_prs=114),
+                                     "2026-09-10T21:00:00Z")
+        self.assertEqual(payload["pulls_listing"], "PARTIAL")
+        self.assertNotIn("longest_open", payload)
+        self.assertIn("pulls-partial", payload["degraded"])
+        self.assertEqual(len(payload["newest_pulls"]), github_state.NEWEST_N)
+
+    def test_a_paginated_listing_is_complete_and_names_the_oldest(self):
+        rows = pulls(114, hour=0)
+        payload = github_state.build(rows, dict(COUNTS, open_prs=114),
+                                     "2026-09-10T21:00:00Z", complete=True)
+        self.assertEqual(payload["pulls_listing"], "COMPLETE")
+        self.assertEqual(payload["longest_open"][0]["number"], 100)
+        self.assertNotIn("pulls-partial", payload["degraded"])
+
+    def test_a_listing_at_least_the_counted_total_is_complete_without_the_flag(self):
+        # The search count lags; a listing longer than it is still whole.
+        payload = github_state.build(pulls(5), dict(COUNTS, open_prs=4),
+                                     "2026-09-10T21:00:00Z")
+        self.assertEqual(payload["pulls_listing"], "COMPLETE")
+        self.assertIn("longest_open", payload)
+
+    def test_no_count_and_no_flag_is_unknown_coverage(self):
+        payload = github_state.build(pulls(3), {"repository": "o/r"},
+                                     "2026-09-10T21:00:00Z")
+        self.assertEqual(payload["pulls_listing"], UNKNOWN)
+        self.assertNotIn("longest_open", payload)
+        self.assertIn("pulls-coverage-unknown", payload["degraded"])
+
+    def test_a_row_repeated_across_pages_is_counted_once(self):
+        rows = pulls(3) + pulls(3)[1:]
+        payload = github_state.build(rows, dict(COUNTS, open_prs=3),
+                                     "2026-09-10T21:00:00Z", complete=True)
+        self.assertEqual(payload["pulls_listed"], 3)
+        self.assertEqual([p["number"] for p in payload["newest_pulls"]],
+                         [102, 101, 100])
+
+    def test_the_cli_reads_json_lines_from_a_paginated_call(self):
+        path = os.path.join(self.root, "pulls.jsonl")
+        with open(path, "w", encoding="utf-8") as fh:
+            for row in pulls(3):
+                fh.write(json.dumps(row) + "\n")
+        code = github_state.main([
+            "--root", self.root, "--write", "--pulls", path, "--pulls-complete",
+            "--repository", "o/r", "--open-prs", "3",
+            "--observed-at", "2026-09-10T21:00:00Z"])
+        self.assertEqual(code, 0)
+        out = self.out()
+        self.assertEqual(out["pulls_listed"], 3)
+        self.assertEqual(out["pulls_listing"], "COMPLETE")
+        self.assertEqual(out["longest_open"][0]["number"], 100)
+
+    def test_the_cli_names_an_unparsable_listing(self):
+        path = os.path.join(self.root, "pulls.jsonl")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write('{"number": 1}\nnot json\n')
+        github_state.main(["--root", self.root, "--write", "--pulls", path,
+                           "--observed-at", "2026-09-10T21:00:00Z"])
+        out = self.out()
+        self.assertEqual(out["degraded"], ["pulls"])
+        self.assertEqual(out["pulls_listed"], UNKNOWN)
+
+
+class TestAtomicWrite(TempRepo):
+    def test_a_failed_write_leaves_the_previous_bytes_exactly(self):
+        github_state.write(
+            self.root, github_state.build(pulls(), COUNTS, "2026-09-10T21:00:00Z"),
+            "2026-09-10T21:00:00Z")
+        path = os.path.join(self.root, "feed", "github.json")
+        with open(path, "rb") as fh:
+            before = fh.read()
+
+        real_replace = os.replace
+
+        def refuse(src, dst):
+            raise OSError("disk went away mid-publish")
+
+        os.replace = refuse
+        try:
+            with self.assertRaises(OSError):
+                github_state.write(
+                    self.root,
+                    github_state.build(pulls(), dict(COUNTS, runs_queued=9),
+                                       "2026-09-10T22:00:00Z"),
+                    "2026-09-10T22:00:00Z")
+        finally:
+            os.replace = real_replace
+
+        with open(path, "rb") as fh:
+            self.assertEqual(fh.read(), before)
+        leftovers = [n for n in os.listdir(os.path.dirname(path))
+                     if n.endswith(".tmp")]
+        self.assertEqual(leftovers, [], "the temporary file is cleaned up")
+
+    def test_a_successful_write_leaves_no_temporary_file(self):
+        github_state.write(
+            self.root, github_state.build(pulls(), COUNTS, "2026-09-10T21:00:00Z"),
+            "2026-09-10T21:00:00Z")
+        folder = os.path.join(self.root, "feed")
+        self.assertEqual(sorted(os.listdir(folder)), ["github.json"])
 
 
 if __name__ == "__main__":
