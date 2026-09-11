@@ -11,7 +11,8 @@ their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
 including multi-product cargo, stays untouched.  On overflow, scarce capacity
 goes to the highest public-price cargo first and excess cargo stays on workers.
-Malformed terminal step/shed/inventory state fails closed to the parent action.
+Malformed terminal step/shed/inventory/price/position state fails closed to the
+parent action.
 """
 from __future__ import annotations
 
@@ -43,6 +44,18 @@ def apply_place_delivery(observation, action, enabled=False):
 
     workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
 
+    # Validate the public geometry/inventory surfaces used by beside_shed() and
+    # inventory() before the legacy transform touches them.  This keeps malformed
+    # observations on the exact-parent path without wrapping or rewriting the
+    # existing action-selection block below.
+    if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
+            or not isinstance(view.inventories, list)):
+        return action
+    for position in view.positions[:len(workers)]:
+        if (not isinstance(position, (list, tuple)) or len(position) != 2
+                or type(position[0]) is not int or type(position[1]) is not int):
+            return action
+
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
     # The public price map is also the engine's public product namespace, so this
     # proof does not add a second product/action enumeration to the V4 wrapper.
@@ -63,6 +76,8 @@ def apply_place_delivery(observation, action, enabled=False):
             if type(held) is not int or held < 0:
                 return action
             if item in view.prices:
+                if type(view.prices.get(item)) is not int:
+                    return action
                 payload += held
         has_drop = True
     if has_drop:
