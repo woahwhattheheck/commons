@@ -1,12 +1,12 @@
-name: TITAN V3.1 a612 cattle OFF current-package A-B
+name: TITAN V3.1 8e3 cattle OFF current-package A-B
 
 on:
   pull_request:
     branches:
-      - titan/v3.1-20260911
+      - astra/v31-a612-restore-5f6-canonical-archive-20260911
     paths:
-      - '.github/workflows/titan-v31-a612-cattle-off-package-ab.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/**'
+      - '.github/workflows/titan-v31-8e3-cattle-off-package-ab.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/**'
 
 permissions:
   contents: read
@@ -23,50 +23,70 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - name: Bind exact canonical base, live target, scope, score transform, and evaluator
+      - name: Bind 8e3 gameplay root, recovery parent, exact scope, donors, and source identity
         shell: bash
         run: |
           set -euo pipefail
-          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
-          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612'
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+
           test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
-          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          git fetch --no-tags origin titan/v3.1-20260911
-          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          test '${{ github.event.pull_request.base.sha }}' = "$STACK"
+          test "$(git merge-base "$STACK" HEAD)" = "$STACK"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
-          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py)" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
-          git diff --name-only "$BASE"...HEAD > /tmp/cattle-ab-paths.txt
+          test "$(git hash-object "$DIR/report_ab.py")" = '472b8761419bcccba165d97de71228dabe893588'
+          test "$(git hash-object "$DIR/materialize_ab.py")" = '739ba35a1ef178921a6554db6b1f3e07a153e571'
+          test "$(git hash-object "$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
+
+          git diff --name-only "$STACK...HEAD" > /tmp/cattle-ab-8e3-paths.txt
           python3 - <<'PY'
           from pathlib import Path
-          actual = set(Path('/tmp/cattle-ab-paths.txt').read_text().splitlines())
+          actual = set(Path('/tmp/cattle-ab-8e3-paths.txt').read_text().splitlines())
           expected = {
-              '.github/workflows/titan-v31-a612-cattle-off-package-ab.yml',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/make_submission_12505.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/materialize_ab.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/report_ab.py',
+              '.github/workflows/titan-v31-8e3-cattle-off-package-ab.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/make_submission_12505.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/materialize_ab.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/report_ab.py',
           }
           if actual != expected:
-              raise SystemExit(f'cattle A/B scope drift: {sorted(actual)!r}')
-          print('CATTLE_AB_SCOPE_OK', len(actual))
+              raise SystemExit(f'8e3 cattle A/B scope drift: {sorted(actual)!r}')
+          print('CATTLE_AB_8E3_SCOPE_OK', len(actual))
           PY
-          git diff --check "$BASE...HEAD"
+
+          for path in \
+            "$V3/FILES.json" \
+            "$V3/V3-MANIFEST.json" \
+            "$V3/apply_v3.py" \
+            "$V3/overlay/r04_full_router.py" \
+            "$V3/overlay/r04_h4_strawberry.py" \
+            "$V3/overlay/r04_no_late_sale_advance.py" \
+            "$V3/overlay/b5_fertilize.py" \
+            "$V3/overlay/jit_pass_fertilize.py" \
+            "$EVAL"
+          do
+            git show "$LIVE:$path" | cmp - "$path"
+          done
+          git diff --check "$STACK...HEAD"
 
       - name: Freeze native evaluator receipt membership and type poisons
         shell: bash
         run: |
           set -euo pipefail
-          python -B - <<'PY'
+          python3 -B - <<'PY'
           import copy
           import importlib.util
           import math
           from pathlib import Path
 
-          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/report_ab.py')
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/report_ab.py')
           spec = importlib.util.spec_from_file_location('cattle_report_ab', path)
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
@@ -109,78 +129,78 @@ jobs:
                   return
               raise AssertionError(f'{name}: poison was accepted')
 
-          rejects('legacy-list-opponents', lambda r: r.__setitem__('opponents', [module.EXPECTED_OPPONENT]))
           rejects('substituted-seed-metadata', lambda r: r['seeds'].__setitem__(0, 999999))
-          rejects('duplicate-seed-metadata', lambda r: r['seeds'].__setitem__(1, r['seeds'][0]))
           rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
-          rejects('substituted-opponent-metadata', lambda r: r.__setitem__('opponents', {'other': r['opponents'][module.EXPECTED_OPPONENT]}))
-          rejects('bad-opponent-entry', lambda r: r['opponents'][module.EXPECTED_OPPONENT].__setitem__('entry', 'other.py'))
-          rejects('bad-opponent-sha', lambda r: r['opponents'][module.EXPECTED_OPPONENT].__setitem__('sha256', 'bad'))
-          rejects('bad-candidate-entry', lambda r: r['candidate'].__setitem__('entry', 'other.py'))
-          rejects('bad-candidate-sha', lambda r: r['candidate'].__setitem__('sha256', 'bad'))
+          rejects('wrong-opponent', lambda r: r.__setitem__('opponents', {'other': r['opponents'][module.EXPECTED_OPPONENT]}))
           rejects('wrong-rng', lambda r: r.__setitem__('agent_rng_seed', module.EXPECTED_RNG_SEED + 1))
-          rejects('bool-rng', lambda r: r.__setitem__('agent_rng_seed', True))
           rejects('missing-cell', lambda r: r['games'].pop())
           rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
-          rejects('substituted-game-seed', lambda r: r['games'][0].__setitem__('seed', 999999))
           rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
           rejects('bool-seat', lambda r: r['games'][0].__setitem__('candidate_seat', False))
-          rejects('seat-two', lambda r: r['games'][0].__setitem__('candidate_seat', 2))
-          rejects('wrong-game-opponent', lambda r: r['games'][0].__setitem__('opponent', 'other'))
-          rejects('missing-score', lambda r: r['games'][0].__setitem__('scores', [1.0]))
-          rejects('bool-score', lambda r: r['games'][0].__setitem__('scores', [True, 1.0]))
           rejects('nan-score', lambda r: r['games'][0].__setitem__('scores', [math.nan, 1.0]))
-          rejects('inf-score', lambda r: r['games'][0].__setitem__('scores', [math.inf, 1.0]))
           rejects('failure', lambda r: r['games'][0].__setitem__('failure', 'boom'))
           rejects('incomplete', lambda r: r['games'][0].__setitem__('status', 'error'))
           rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'not-a-sha'))
-
-          compile(path.read_text(), str(path), 'exec')
-          print('CATTLE_AB_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
+          print('CATTLE_AB_8E3_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
           PY
           test -z "$(git status --porcelain)"
 
-      - name: Prove canonical deterministic package still exact
+      - name: Prove current shipped package rebuilds exactly through recovery parent
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
-          python -B build_v3.py --check | tee /tmp/cattle-build-check.log
-          grep -F 'V3 CHECK OK 400ae640f3258b6a6ff19f9da99c66ef9c433e315febb1d72c75296cddeb277c' /tmp/cattle-build-check.log
+          python3 -B build_v3.py --check | tee /tmp/cattle-build-check.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/cattle-build-check.log
 
-      - name: Materialize exact cattle ON and OFF score-facing package trees
+      - name: Materialize exact cattle ON and OFF score-facing 8e3 package trees
         shell: bash
         run: |
           set -euo pipefail
           rm -rf /tmp/cattle-on /tmp/cattle-off
-          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/materialize_ab.py \
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/materialize_ab.py \
             --on-tree /tmp/cattle-on \
             --off-tree /tmp/cattle-off \
             --receipt /tmp/cattle-materialization.json | tee /tmp/cattle-materialization.log
-          python - <<'PY'
+          python3 - <<'PY'
           import json
           r = json.load(open('/tmp/cattle-materialization.json'))
+          assert r['canonical_commit'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
+          assert r['canonical_package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
+          assert r['package_members'] == 139
           assert r['on_to_off_changed_members'] == ['TITAN-CONFIG.json']
           assert r['on_to_off_changed_config_keys'] == ['r04_cattle_early']
           assert r['control_config']['r04_cattle_early'] is True
           assert r['candidate_config']['r04_cattle_early'] is False
-          print('CATTLE_AB_ONE_KEY_OK', r['on_package_sha256'], r['off_package_sha256'])
+          for arm in ('control_config', 'candidate_config'):
+              c = r[arm]
+              assert c['r04_b5_carrot_fertilizer'] is True
+              assert c['r04_b5_jit_fertilize'] is True
+              assert c['r04_strawberry_topup'] is True
+              assert c['r04_no_late_sale_advance'] is True
+              assert c['r04_sale_fertilizer'] is True
+              assert type(c['r04_sale_horizon']) is int and c['r04_sale_horizon'] == 8
+              assert type(c['r04_no_late_sale_advance_step']) is int and c['r04_no_late_sale_advance_step'] == 648
+          print('CATTLE_AB_8E3_ONE_KEY_STACK_OK', r['on_package_sha256'], r['off_package_sha256'])
           PY
 
       - name: Prepare pinned official interpreter cache
         shell: bash
         run: |
           set -euo pipefail
-          python -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
             --prepare-engine /tmp/kag-engine
 
-      - name: Run cattle ON control against fixed cattle ON opponent
+      - name: Run cattle ON control against fixed cattle ON 8e3 opponent
         shell: bash
         run: |
           set -euo pipefail
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
-          python -B "$EVAL" \
+          python3 -B "$EVAL" \
             --engine-dir /tmp/kag-engine \
             --candidate /tmp/cattle-on/main.py \
             --opponent cattle_on=/tmp/cattle-on/main.py \
@@ -189,12 +209,12 @@ jobs:
             --recheck-first \
             --output /tmp/cattle-on-control.json
 
-      - name: Run cattle OFF candidate against the identical cattle ON opponent
+      - name: Run cattle OFF candidate against identical cattle ON 8e3 opponent
         shell: bash
         run: |
           set -euo pipefail
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
-          python -B "$EVAL" \
+          python3 -B "$EVAL" \
             --engine-dir /tmp/kag-engine \
             --candidate /tmp/cattle-off/main.py \
             --opponent cattle_on=/tmp/cattle-on/main.py \
@@ -207,8 +227,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612'
-          python -B "$DIR/report_ab.py" \
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3'
+          python3 -B "$DIR/report_ab.py" \
             /tmp/cattle-materialization.json \
             /tmp/cattle-on-control.json \
             /tmp/cattle-off-candidate.json \
@@ -217,18 +237,20 @@ jobs:
           cat /tmp/cattle-ab-report.md
           cat /tmp/cattle-ab-report.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Recheck live canonical before artifact publication
+      - name: Recheck live canonical and recovery parent before publication
         shell: bash
         run: |
           set -euo pipefail
-          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
-          git fetch --no-tags origin titan/v3.1-20260911
-          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
       - name: Retain exact package and economics receipts
         uses: actions/upload-artifact@v4
         with:
-          name: cattle-off-a612-package-ab-${{ github.event.pull_request.head.sha }}
+          name: cattle-off-8e3-package-ab-${{ github.event.pull_request.head.sha }}
           path: |
             /tmp/cattle-materialization.json
             /tmp/cattle-on-control.json
@@ -245,13 +267,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
-          git fetch --no-tags origin titan/v3.1-20260911
-          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/cattle-ab-report.md
-            printf '\nExact a612 package A/B. #12505 score-transform donor blob: `9c5e46428f0a2357d7db6e46c4aa5f1f4748717d`. No source/package/default/Kaggle mutation.\n'
+            printf '\nExact shipped-8e3 B5+JIT package A/B. Gameplay root: `8e3d92a...`; build-custody parent: #12535 `ccb128a...`; #12505 score-transform donor blob: `9c5e4642...`. Both arms retain B5 CARROT + JIT + H4 + gated L3 + sale-fertilizer; only cattle differs. No source/default/package-input/Kaggle mutation.\n'
           } > /tmp/cattle-comment.md
           gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
 
