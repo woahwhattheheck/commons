@@ -48,7 +48,9 @@ Any seat that can read a source may drop reconcile/observations/<name>.json:
      "observed_at": "2026-09-10T22:00:00Z", "observer": "ANYONE"}
 
 No credential is embedded and nothing is required; the observation only turns
-an UNMEASURED row into a measured one while it is fresh.
+an UNMEASURED row into a measured one while it is fresh. An observation clock
+may be slightly ahead of the reader, but one more than
+OBSERVATION_FUTURE_SKEW_S in the future is not evidence and stays UNMEASURED.
 
 Stdlib only. No network. Reads files on main, writes one file.
 """
@@ -59,6 +61,7 @@ import argparse
 import datetime as _dt
 import glob
 import json
+import math
 import os
 import sys
 
@@ -75,6 +78,9 @@ COMMONS_CHANNEL = "C0BRGMDQB6G"
 # Slack message newer than the newest landed one by more than this is STALE.
 SLACK_STALE_S = 2 * 60 * 60
 OBSERVATION_MAX_AGE_S = 2 * 60 * 60
+# A small clock lead is ordinary skew. A source observation further ahead than
+# this is a future declaration, not evidence about the current source state.
+OBSERVATION_FUTURE_SKEW_S = 5 * 60
 
 
 def _parse_ts(text):
@@ -86,13 +92,18 @@ def _parse_ts(text):
     except ValueError:
         number = None
     if number is not None:
+        if not math.isfinite(number):
+            return None
         if number > 10_000_000_000:
             number /= 1000.0
-        return _dt.datetime.fromtimestamp(number, tz=_dt.timezone.utc)
+        try:
+            return _dt.datetime.fromtimestamp(number, tz=_dt.timezone.utc)
+        except (OverflowError, OSError, ValueError):
+            return None
     raw = text[:-1] + "+00:00" if text.endswith("Z") else text
     try:
         parsed = _dt.datetime.fromisoformat(raw)
-    except ValueError:
+    except (OverflowError, ValueError):
         return None
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=_dt.timezone.utc)
@@ -220,7 +231,15 @@ def slack_row(posts, posts_why, observation, now, channel=COMMONS_CHANNEL):
         return row(name, "UNMEASURED", None, _iso(landed), None, None,
                    base + "; no source observation, and a bake cannot read Slack")
     seen = _parse_ts(observation.get("observed_at"))
-    if not seen or not now or (now - seen).total_seconds() > OBSERVATION_MAX_AGE_S:
+    if not seen or not now:
+        return row(name, "UNMEASURED", None, _iso(landed), None, None,
+                   base + "; source observation missing observed_at or current clock")
+    age = (now - seen).total_seconds()
+    if age < -OBSERVATION_FUTURE_SKEW_S:
+        return row(name, "UNMEASURED", None, _iso(landed), None, None,
+                   base + "; source observation observed_at is more than %d s "
+                   "in the future" % OBSERVATION_FUTURE_SKEW_S)
+    if age > OBSERVATION_MAX_AGE_S:
         return row(name, "UNMEASURED", None, _iso(landed), None, None,
                    base + "; source observation missing observed_at or older "
                    "than %d s" % OBSERVATION_MAX_AGE_S)
