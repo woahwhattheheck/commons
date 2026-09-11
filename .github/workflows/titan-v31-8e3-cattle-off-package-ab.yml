@@ -41,7 +41,7 @@ jobs:
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object "$DIR/report_ab.py")" = '503b1aff0ff73544bf9eb662db417e51b1f45de5'
+          test "$(git hash-object "$DIR/report_ab.py")" = '0cd5a74e02cd9555b8c7c3275f9e27c696512531'
           test "$(git hash-object "$DIR/materialize_ab.py")" = '739ba35a1ef178921a6554db6b1f3e07a153e571'
           test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
@@ -90,6 +90,14 @@ jobs:
           spec = importlib.util.spec_from_file_location('cattle_report_ab', path)
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
+
+          expected_schema = 'titan-v31-8e3-current-package-cattle-off-ab/v2'
+          expected_title = '## Cattle OFF vs ON — exact 8e3 current-package score-facing A/B'
+          if module.OUTPUT_SCHEMA != expected_schema or 'a612' in module.OUTPUT_SCHEMA.lower():
+              raise AssertionError(f'stale cattle receipt schema: {module.OUTPUT_SCHEMA!r}')
+          if module.OUTPUT_TITLE != expected_title or 'a612' in module.OUTPUT_TITLE.lower():
+              raise AssertionError(f'stale cattle receipt title: {module.OUTPUT_TITLE!r}')
+          print('CATTLE_AB_8E3_DURABLE_RECEIPT_IDENTITY_OK', module.OUTPUT_SCHEMA)
 
           trace = 'a' * 64
           games = []
