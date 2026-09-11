@@ -40,8 +40,24 @@ jobs:
         run: |
           set -euo pipefail
           ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b8_budget_guard
-          python -m py_compile "$ROOT/b8_budget_guard.py" "$ROOT/candidate.py" "$ROOT/test_b8_budget_guard.py"
+          python -m py_compile "$ROOT/b8_budget_guard.py" "$ROOT/candidate.py" "$ROOT/census.py" "$ROOT/test_b8_budget_guard.py"
           python "$ROOT/test_b8_budget_guard.py"
+
+      - name: Prove frozen-tape structural reachability
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b8_budget_guard
+          python "$ROOT/census.py" | tee /tmp/b8-census.json
+          python - <<'PY'
+          import json
+          with open('/tmp/b8-census.json', encoding='utf-8') as handle:
+              data = json.load(handle)
+          assert data['frozen_tapes'] == 13, data
+          assert set(data['turns_per_tape']) == {719}, data
+          assert data['reachable_windows'] > 0, data
+          print('B8_REACHABILITY', data['reachable_windows'], data['reachable_by_layer'], data['reserve_min'], data['reserve_max'])
+          PY
 
       - name: Require clean checkout
         shell: bash
