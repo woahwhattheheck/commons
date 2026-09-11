@@ -209,6 +209,51 @@
         "observed_at": "2026-09-10T23:05:24.713000+00:00",
         "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
       }
+    },
+    {
+      "sku": "invoice-exception-pack",
+      "product": "prod_VEjwhnEI16Uvh8",
+      "price": "price_1UEGSvATH4EDE7XDeMuvXKcT",
+      "plink": "plink_1UEGT5ATH4EDE7XDA7WFJthA",
+      "url": "https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "open-model-release-receipt",
+      "product": "prod_VEjypDHK6VviOz",
+      "price": "price_1UEGUXATH4EDE7XDYx2ZF3x8",
+      "plink": "plink_1UEGUgATH4EDE7XD1fhfWxzw",
+      "url": "https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "fleet-work-order-exactly-once",
+      "product": "prod_VEjyMqs2iykv7r",
+      "price": "price_1UEGUpATH4EDE7XDl2JOk8q1",
+      "plink": "plink_1UEGV0ATH4EDE7XD8vmj5Afc",
+      "url": "https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
     }
   ],
   "inert_duplicate_urls": [
