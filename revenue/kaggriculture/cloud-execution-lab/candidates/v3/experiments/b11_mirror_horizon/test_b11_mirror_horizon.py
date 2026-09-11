@@ -97,6 +97,47 @@ class B11MirrorTests(unittest.TestCase):
         self.assertEqual(streak, 0)
         self.assertEqual(reason, "malformed-farm")
 
+    def test_identical_malformed_structures_never_certify(self):
+        mutations = (
+            ("hires_today", True),
+            ("hands", "same-string"),
+            ("farmer", {"x": 4, "y": 4}),
+            ("tiles", "same-string"),
+            ("unlocked_quadrants", [1]),
+            ("tiles", [[None], []]),
+        )
+        for field, value in mutations:
+            with self.subTest(field=field, value=value):
+                b11.reset_state()
+                left = farm()
+                right = farm()
+                left[field] = copy.deepcopy(value)
+                right[field] = copy.deepcopy(value)
+                for step in range(b11.MIRROR_STREAK_REQUIRED):
+                    certified, streak, reason = b11.mirror_certificate(obs(step, left, right))
+                    self.assertFalse(certified)
+                    self.assertEqual(streak, 0)
+                    self.assertEqual(reason, "malformed-farm")
+                self.assertNotIn(0, b11._TRACKERS)
+
+    def test_malformed_recoverable_player_clears_prior_streak_immediately(self):
+        for step in range(7):
+            certified, streak, _ = b11.mirror_certificate(obs(step))
+            self.assertFalse(certified)
+            self.assertEqual(streak, step + 1)
+        bad_left = farm()
+        bad_right = farm()
+        bad_left["hires_today"] = True
+        bad_right["hires_today"] = True
+        certified, streak, reason = b11.mirror_certificate(obs(7, bad_left, bad_right, player=0))
+        self.assertFalse(certified)
+        self.assertEqual(streak, 0)
+        self.assertEqual(reason, "malformed-farm")
+        self.assertNotIn(0, b11._TRACKERS)
+        certified, streak, _ = b11.mirror_certificate(obs(8, player=0))
+        self.assertFalse(certified)
+        self.assertEqual(streak, 1)
+
     def test_json_comparator_is_type_strict(self):
         self.assertFalse(b11._json_equal({"hires_today": True}, {"hires_today": 1}))
         self.assertFalse(b11._json_equal([0], [False]))
@@ -117,6 +158,38 @@ class B11MirrorTests(unittest.TestCase):
         self.assertEqual(seen[7:], [10] * 3)
         self.assertEqual(b11.REPORT["h8_callbacks"], 7)
         self.assertEqual(b11.REPORT["h10_callbacks"], 3)
+
+    def test_selected_horizon_is_scoped_to_parent_callback(self):
+        seen = []
+
+        def parent(observation, configuration=None):
+            seen.append(b11.r04.SALE_HORIZON)
+            return None
+
+        with mock.patch.object(b11.r04, "install", return_value=parent):
+            agent = b11.install(enabled=True)
+        b11.r04.SALE_HORIZON = 37
+        for step in range(8):
+            agent(obs(step))
+            self.assertEqual(b11.r04.SALE_HORIZON, 37)
+        self.assertEqual(seen, [8] * 7 + [10])
+        sibling_seen = b11.r04.SALE_HORIZON
+        self.assertEqual(sibling_seen, 37)
+
+    def test_parent_exception_restores_shared_horizon(self):
+        for step in range(7):
+            b11.mirror_certificate(obs(step))
+
+        def parent(observation, configuration=None):
+            self.assertEqual(b11.r04.SALE_HORIZON, 10)
+            raise RuntimeError("boom")
+
+        with mock.patch.object(b11.r04, "install", return_value=parent):
+            agent = b11.install(enabled=True)
+        b11.r04.SALE_HORIZON = 23
+        with self.assertRaisesRegex(RuntimeError, "boom"):
+            agent(obs(7))
+        self.assertEqual(b11.r04.SALE_HORIZON, 23)
 
     def test_mismatch_immediately_returns_to_h8(self):
         seen = []
