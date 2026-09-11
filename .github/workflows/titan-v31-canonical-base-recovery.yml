@@ -102,8 +102,16 @@ jobs:
           grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-optimized.log
           cmp /tmp/v31-base-recovery-default.log /tmp/v31-base-recovery-optimized.log
 
-      - name: Prove checkout stayed clean
+      - name: Rebind live refs and prove checkout stayed clean
         shell: bash
         run: |
           set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          HEAD_REF='${{ github.event.pull_request.head.ref || github.ref_name }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test "$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')" = "$EXPECTED"
           test -z "$(git status --porcelain)"
