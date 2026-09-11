@@ -1,0 +1,62 @@
+name: titan-v31-h10-absorption-carrier
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h10_e11_r04_candidate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/materialize_h10_e11_r04_candidate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h10_e11_r04_candidate_materializer.py'
+      - '.github/workflows/titan-v31-h10-absorption-carrier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  carrier-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git diff --name-only e915a5f326eeeb44fb612673947fa1405d4245ae..HEAD | tee /tmp/h10-carrier-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          allowed = {
+              '.github/workflows/titan-v31-h10-absorption-carrier.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h10_e11_r04_candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/materialize_h10_e11_r04_candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h10_e11_r04_candidate_materializer.py',
+          }
+          paths = {p for p in Path('/tmp/h10-carrier-paths.txt').read_text().splitlines() if p}
+          assert paths == allowed, (paths, allowed)
+          PY
+
+      - name: Prove reviewed H10 adapter is unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse e915a5f326eeeb44fb612673947fa1405d4245ae:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h10_e11_r04_reachability.py)" = \
+               "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h10_e11_r04_reachability.py)"
+
+      - name: Run carrier custody predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_h10_e11_r04_candidate_materializer.py
+          python -B -m py_compile h10_e11_r04_candidate.py materialize_h10_e11_r04_candidate.py
+
+      - name: Prove no package input was added
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git diff --name-only e915a5f326eeeb44fb612673947fa1405d4245ae..HEAD -- revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json)"
