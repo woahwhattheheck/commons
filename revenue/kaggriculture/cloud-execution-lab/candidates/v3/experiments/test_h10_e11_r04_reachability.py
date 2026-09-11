@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Focused checks for H10 E11 reachability + R04 sale-debt atomicity."""
+"""Focused checks for H10 E11 reachability + R04 sale-accounting atomicity."""
 from __future__ import annotations
 
 from copy import deepcopy
@@ -34,6 +34,16 @@ def action(quantity=5):
     }
 
 
+def state(**kwargs):
+    values = {
+        "sale_window_debts": {},
+        "advanced_sales": {},
+        "sale_due_step": -1,
+    }
+    values.update(kwargs)
+    return SimpleNamespace(**values)
+
+
 def absorb_one(_item, _step, _shops, _config):
     return 1
 
@@ -62,16 +72,15 @@ class H10E11R04Tests(unittest.TestCase):
         self.assertEqual(wrapped.telemetry["calls"], 0)
 
     def test_live_e11_becomes_reachable_after_price_drop(self):
-        state = SimpleNamespace(sale_window_debts={})
+        st = state()
         parent_actions = []
         def parent(_observation, _configuration=None):
             item = action(4)
             parent_actions.append(item)
             return item
         wrapped = h10.wrap_r04_agent(
-            parent, absorb_one, enabled=True, state_getter=lambda _obs: state,
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
         )
-
         first = wrapped(obs(5, 40), CFG)
         second = wrapped(obs(6, 10), CFG)
         self.assertIs(first, parent_actions[0])
@@ -83,62 +92,99 @@ class H10E11R04Tests(unittest.TestCase):
         )
 
     def test_new_e184_debt_is_refunded_but_preexisting_debt_survives(self):
-        state = SimpleNamespace(sale_window_debts={8: {"MILK": 2}, 9: {"WOOL": 1}})
+        st = state(sale_window_debts={8: {"MILK": 2}, 9: {"WOOL": 1}})
         def parent(observation, _configuration=None):
             if observation["step"] == 6:
-                state.sale_window_debts = {
+                st.sale_window_debts = {
                     8: {"MILK": 5},
                     9: {"WOOL": 1, "MILK": 2},
                 }
             return action(5)
 
         wrapped = h10.wrap_r04_agent(
-            parent, absorb_one, enabled=True, state_getter=lambda _obs: state,
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
         )
-        wrapped(obs(5, 40), CFG)  # establish E11 price history
+        wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
         self.assertEqual(out["market"], [[]])
-        self.assertEqual(state.sale_window_debts, {8: {"MILK": 2}, 9: {"WOOL": 1}})
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 2}, 9: {"WOOL": 1}})
         report = wrapped.telemetry["last_by_player"][0]
         self.assertEqual(report["new_debt_qty"]["MILK"], 5)
         self.assertEqual(report["refunded_new_debt"]["MILK"], 5)
 
+    def test_native_advance_is_refunded_and_next_turn_sale_is_not_phantom_subtracted(self):
+        st = state()
+        produced = []
+        def parent(observation, _configuration=None):
+            step = int(observation["step"])
+            if step == 6:
+                st.advanced_sales = {"MILK": 4}
+                st.sale_due_step = 7
+                item = action(4)
+            elif step == 7:
+                quantity = 4
+                if st.sale_due_step == 7:
+                    quantity -= min(quantity, int(st.advanced_sales.get("MILK", 0)))
+                st.advanced_sales = {}
+                st.sale_due_step = -1
+                item = action(quantity)
+            else:
+                item = action(4)
+            produced.append(item)
+            return item
+
+        wrapped = h10.wrap_r04_agent(
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
+        )
+        wrapped(obs(5, 40), CFG)
+        deferred = wrapped(obs(6, 10), CFG)
+        self.assertEqual(deferred["market"], [[]])
+        self.assertEqual(st.advanced_sales, {})
+        self.assertEqual(st.sale_due_step, -1)
+        report = wrapped.telemetry["last_by_player"][0]
+        self.assertEqual(report["new_native_advance_qty"], {"MILK": 4})
+        self.assertEqual(report["refunded_new_native_advance"], {"MILK": 4})
+
+        next_turn = wrapped(obs(7, 40), CFG)
+        self.assertEqual(next_turn["market"], [["SELL", "MILK", 4]])
+        self.assertEqual(produced[-1]["market"], [["SELL", "MILK", 4]])
+
     def test_debt_consumed_at_current_step_is_not_recreated(self):
-        state = SimpleNamespace(sale_window_debts={6: {"MILK": 2}})
+        st = state(sale_window_debts={6: {"MILK": 2}})
         def parent(observation, _configuration=None):
             if observation["step"] == 6:
-                state.sale_window_debts = {}  # parent consumed the due debt this step
+                st.sale_window_debts = {}
             return action(3)
 
         wrapped = h10.wrap_r04_agent(
-            parent, absorb_one, enabled=True, state_getter=lambda _obs: state,
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
         self.assertEqual(out["market"], [[]])
-        self.assertEqual(state.sale_window_debts, {})
+        self.assertEqual(st.sale_window_debts, {})
         self.assertEqual(wrapped.telemetry["last_by_player"][0]["refunded_new_debt"], {})
 
     def test_existing_future_debt_is_untouched_when_parent_books_nothing(self):
-        state = SimpleNamespace(sale_window_debts={8: {"MILK": 2}})
+        st = state(sale_window_debts={8: {"MILK": 2}})
         wrapped = h10.wrap_r04_agent(
             lambda _obs, _cfg=None: action(3), absorb_one,
-            enabled=True, state_getter=lambda _obs: state,
+            enabled=True, state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
         self.assertEqual(out["market"], [[]])
-        self.assertEqual(state.sale_window_debts, {8: {"MILK": 2}})
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 2}})
 
-    def test_unknown_predecessor_debt_fails_closed_without_refund(self):
-        state = SimpleNamespace(sale_window_debts={8: {"MILK": 2}})
+    def test_unknown_predecessor_accounting_fails_closed_without_refund(self):
+        st = state(sale_window_debts={8: {"MILK": 2}})
         calls = {"n": 0}
         produced = []
         def getter(_observation):
             calls["n"] += 1
-            if calls["n"] == 3:  # pre-parent getter on second turn only
+            if calls["n"] == 3:
                 raise RuntimeError("pre-state unavailable")
-            return state
+            return st
         def parent(_observation, _configuration=None):
             item = action(4)
             produced.append(item)
@@ -150,37 +196,37 @@ class H10E11R04Tests(unittest.TestCase):
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
         self.assertIs(out, produced[1])
-        self.assertEqual(state.sale_window_debts, {8: {"MILK": 2}})
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 2}})
         self.assertEqual(
             wrapped.telemetry["last_by_player"][0]["reason"],
-            "FAIL_CLOSED_UNKNOWN_PREDECESSOR_DEBT",
+            "FAIL_CLOSED_UNKNOWN_PREDECESSOR_SALE_ACCOUNTING",
         )
 
-    def test_parent_debt_larger_than_removed_sell_fails_closed(self):
-        state = SimpleNamespace(sale_window_debts={})
+    def test_booked_quantity_larger_than_removed_sell_fails_closed(self):
+        st = state()
         produced = []
         def parent(observation, _configuration=None):
             item = action(5)
             produced.append(item)
             if observation["step"] == 6:
-                state.sale_window_debts = {8: {"MILK": 6}}
+                st.sale_window_debts = {8: {"MILK": 6}}
             return item
 
         wrapped = h10.wrap_r04_agent(
-            parent, absorb_one, enabled=True, state_getter=lambda _obs: state,
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
         self.assertIs(out, produced[1])
         self.assertEqual(out["market"], [["SELL", "MILK", 5]])
-        self.assertEqual(state.sale_window_debts, {8: {"MILK": 6}})
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 6}})
         self.assertEqual(
             wrapped.telemetry["last_by_player"][0]["reason"],
-            "FAIL_CLOSED_DEBT_EXCEEDS_DEFERRED_SELL",
+            "FAIL_CLOSED_BOOKED_QTY_EXCEEDS_DEFERRED_SELL",
         )
 
-    def test_non_row_stable_e11_result_fails_closed_without_debt_mutation(self):
-        state = SimpleNamespace(sale_window_debts={8: {"MILK": 1}})
+    def test_non_row_stable_e11_result_fails_closed_without_accounting_mutation(self):
+        st = state(sale_window_debts={8: {"MILK": 1}})
         produced = []
         def parent(_observation, _configuration=None):
             item = action(5)
@@ -189,23 +235,23 @@ class H10E11R04Tests(unittest.TestCase):
         def bad_apply(_obs, parent_action, _history, _cfg, _absorb, *, enabled):
             self.assertTrue(enabled)
             out = deepcopy(parent_action)
-            out["market"] = []  # illegal shape change for canonical E11
+            out["market"] = []
             return out, {"enabled": True, "changed": True, "deferred": ["MILK"]}
 
         wrapped = h10.wrap_r04_agent(
-            parent, absorb_one, enabled=True, state_getter=lambda _obs: state,
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
             e11_apply=bad_apply,
         )
         out = wrapped(obs(5, 10), CFG)
         self.assertIs(out, produced[0])
-        self.assertEqual(state.sale_window_debts, {8: {"MILK": 1}})
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 1}})
         self.assertEqual(
             wrapped.telemetry["last_by_player"][0]["reason"],
             "FAIL_CLOSED_NON_ROW_STABLE_E11",
         )
 
     def test_fractional_absorption_keeps_exact_parent_action(self):
-        state = SimpleNamespace(sale_window_debts={})
+        st = state()
         produced = []
         def parent(_observation, _configuration=None):
             item = action(4)
@@ -213,7 +259,7 @@ class H10E11R04Tests(unittest.TestCase):
             return item
         wrapped = h10.wrap_r04_agent(
             parent, lambda *_args: 1.5, enabled=True,
-            state_getter=lambda _obs: state,
+            state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
@@ -224,10 +270,7 @@ class H10E11R04Tests(unittest.TestCase):
         )
 
     def test_price_history_is_isolated_per_player(self):
-        states = {
-            0: SimpleNamespace(sale_window_debts={}),
-            1: SimpleNamespace(sale_window_debts={}),
-        }
+        states = {0: state(), 1: state()}
         wrapped = h10.wrap_r04_agent(
             lambda _obs, _cfg=None: action(4), absorb_one, enabled=True,
             state_getter=lambda observation: states[int(observation["player"])],
@@ -239,21 +282,21 @@ class H10E11R04Tests(unittest.TestCase):
         self.assertEqual(p0["market"], [[]])
 
     def test_step_rewind_resets_player_price_history(self):
-        state = SimpleNamespace(sale_window_debts={})
+        st = state()
         wrapped = h10.wrap_r04_agent(
             lambda _obs, _cfg=None: action(4), absorb_one, enabled=True,
-            state_getter=lambda _obs: state,
+            state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
-        out = wrapped(obs(4, 10), CFG)  # new/reset episode for same player
+        out = wrapped(obs(4, 10), CFG)
         self.assertEqual(out["market"], [["SELL", "MILK", 4]])
         self.assertEqual(wrapped.telemetry["last_by_player"][0]["reason"], "NO_OP_FLAT_MARKET")
 
     def test_worker_actions_survive_real_e11_deferral(self):
-        state = SimpleNamespace(sale_window_debts={})
+        st = state()
         wrapped = h10.wrap_r04_agent(
             lambda _obs, _cfg=None: action(4), absorb_one, enabled=True,
-            state_getter=lambda _obs: state,
+            state_getter=lambda _obs: st,
         )
         wrapped(obs(5, 40), CFG)
         out = wrapped(obs(6, 10), CFG)
