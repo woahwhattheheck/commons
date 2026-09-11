@@ -40,6 +40,8 @@ jobs:
           if [ -n "$EVENT_BASE" ]; then test "$EVENT_BASE" = "$PARENT"; fi
           git cat-file -e "$PARENT^{commit}"
           git cat-file -e "$FROZEN^{commit}"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
           git merge-base --is-ancestor "$FROZEN" HEAD
 
           test "$(git rev-parse "HEAD:$VALIDATOR")" = "64cc9aa7777d8f4d3b3b91837d6b23bea50066e9"
