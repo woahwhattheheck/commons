@@ -112,41 +112,45 @@ class PlaceDelivery(unittest.TestCase):
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
     def test_overflow_becomes_bounded_place_and_preserves_excess_cargo(self):
-        parent = action(["DROP"], [["PASS"]])
+        parent_market = [["SELL", "WHEAT", 98], ["SELL", "CARROT", 2]]
+        parent = action(["DROP"], [["PASS"]], parent_market)
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
                           prices={"CARROT": 30})
         out = lane.apply_place_delivery(obs, parent, enabled=True)
         self.assertEqual(out["farmer"], ["PLACE", "CARROT", 2])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertIn(["SELL", "CARROT", 2], out["market"])
-        self.assertIn(["SELL", "WHEAT", 98], out["market"])
-        self.assertEqual(sum(row[2] for row in out["market"]), 100)
+        self.assertIs(out["market"], parent["market"])
+        self.assertEqual(out["market"], parent_market)
 
-    def test_animal_cargo_counts_toward_overflow_without_product_price(self):
+    def test_unmodeled_positive_cargo_fails_closed_to_parent(self):
+        # Official DROP accepts generic positive inventory rows, while the local
+        # projected_shed model intentionally tracks PRODUCTS only. Do not claim
+        # an exact-vector theorem for animal/unknown cargo that model omits.
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"GOOSE": 3}, {}])
-        out = lane.apply_place_delivery(obs, parent, enabled=True)
-        self.assertEqual(out["farmer"], ["PASS"])
-        self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertEqual(out["market"], [["SELL", "WHEAT", 98]])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
-    def test_full_shed_never_drops_worker_cargo(self):
-        parent = action(["DROP"], [["PASS"]])
+    def test_full_shed_preserves_parent_market_and_worker_cargo(self):
+        parent_market = [["SELL", "WHEAT", 100]]
+        parent = action(["DROP"], [["PASS"]], parent_market)
         obs = observation(shed={"WHEAT": 100}, inventories=[{"CARROT": 5}, {}])
         out = lane.apply_place_delivery(obs, parent, enabled=True)
         self.assertEqual(out["farmer"], ["PASS"])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertEqual(out["market"], [["SELL", "WHEAT", 100]])
+        self.assertIs(out["market"], parent["market"])
+        self.assertEqual(out["market"], parent_market)
 
     def test_same_product_overflow_can_choose_worker_without_curve_comparison(self):
-        parent = action(["DROP"], [["DROP"]])
+        parent_market = [["SELL", "WHEAT", 98], ["SELL", "WOOL", 2]]
+        parent = action(["DROP"], [["DROP"]], parent_market)
         obs = observation(shed={"WHEAT": 98},
                           inventories=[{"WOOL": 5}, {"WOOL": 5}],
                           prices={"WOOL": 100})
         out = lane.apply_place_delivery(obs, parent, enabled=True)
         self.assertEqual(out["farmer"], ["PLACE", "WOOL", 2])
         self.assertEqual(out["hands"], [["PASS"]])
-        self.assertIn(["SELL", "WOOL", 2], out["market"])
+        self.assertIs(out["market"], parent["market"])
+        self.assertEqual(out["market"], parent_market)
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
 
     def test_string_step_fails_closed_to_exact_parent(self):
