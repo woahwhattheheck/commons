@@ -5,6 +5,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import types
 import unittest
 from unittest import mock
@@ -96,8 +97,36 @@ class SubmissionConfigTests(unittest.TestCase):
         for raw in ("0", "-1"):
             with self.subTest(raw=raw):
                 with mock.patch.dict(sys.modules, {"build_v3": fake}):
-                    with self.assertRaisesRegex(AssertionError, "submission horizon must be a positive integer"):
+                    with self.assertRaisesRegex(SystemExit, "sale horizon"):
                         submission.main(["unused-v3", "canonical.tar.gz", "out.tar.gz", raw])
+
+    def test_bad_cli_horizon_fails_before_build_import_or_package_access(self):
+        # Freeze the reviewed #12380 boundary: malformed CLI input must die before
+        # sys.path mutation or a builder module can import/execute.
+        for raw in ("0", "-1", "not-an-int"):
+            with self.subTest(raw=raw), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                (root / "build_v3.py").write_text(
+                    "raise RuntimeError('BUILD_PATH_TOUCHED')\n", encoding="utf-8"
+                )
+                original_path = list(sys.path)
+                previous_build = sys.modules.pop("build_v3", None)
+                try:
+                    with self.assertRaisesRegex(SystemExit, "sale horizon"):
+                        submission.main([
+                            str(root),
+                            str(root / "canonical-does-not-exist.tar.gz"),
+                            str(root / "submission.tar.gz"),
+                            raw,
+                        ])
+                    self.assertEqual(sys.path, original_path)
+                    self.assertNotIn("build_v3", sys.modules)
+                    self.assertFalse((root / "submission.tar.gz").exists())
+                finally:
+                    sys.path[:] = original_path
+                    sys.modules.pop("build_v3", None)
+                    if previous_build is not None:
+                        sys.modules["build_v3"] = previous_build
 
     def test_base_horizon_contract_fails_closed_before_transform(self):
         for bad in (None, 0, -1, True, 8.0, "8"):
