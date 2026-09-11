@@ -2,7 +2,7 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, or Kaggle state.
 
-Snapshot refreshed: **2026-09-11 after #12537 B5+JIT shipment, #12535 recovery publication, #12540 cattle publication, #12541 L3 publication, S33 field gate, and latest terminal harm screens**.
+Snapshot refreshed: **2026-09-11 after #12537 B5+JIT shipment, #12535 recovery publication, #12540 cattle publication/review, #12541 L3 publication, S33 field gate, durable row-shed/E20 donor publication, and latest terminal harm screens**.
 
 ## Canonical authority
 
@@ -74,7 +74,9 @@ Current carrier: draft #12540 exact head `3185592b115cedc5dc0abd066bb2f3b11a4116
 
 Exactly four additive evidence/CI paths. It reuses exact #12505 score-transform donor and hardened #12529 native-schema reducer, rebuilds exact package `4d920b2d...` / 139 files, and refuses evaluator spend unless both arms retain **B5 CARROT + JIT + H4 + gated-L3 + sale-fertilizer + horizon8**. The only ON↔OFF config difference may be `r04_cattle_early`.
 
-Exact 8-seed × both-seat current-root self-play screen. Any negative ΔM cell, zero policy delta, or zero money realization HOLDS. Positive/no-negative self-play only supports opponent-diverse widening / final #12505 transform.
+**Current blocker: REDUCER FALSE-RED HOLD.** Exact-head review found that the official evaluator fingerprints the candidate entry file, while the valid cattle ON↔OFF materialization intentionally changes only `TITAN-CONFIG.json:r04_cattle_early`; the two `main.py` fingerprints should therefore be equal. The current reducer incorrectly requires candidate fingerprint inequality and can reject every valid A/B after evaluator spend. Repair in place before execution: bind arm distinction to distinct materialized package digests + the exact one-member/one-key config theorem, require the shared entry fingerprint, and add equal-package/extra-key poison coverage. Do not treat queued run `34589501611` as economics authority from the blocked head.
+
+After that repair, the intended gate remains exact 8-seed × both-seat current-root self-play. Any negative ΔM cell, zero policy delta, or zero money realization HOLDS. Positive/no-negative self-play only supports opponent-diverse widening / final #12505 transform.
 
 Old #12529 is closed superseded by #12540; #12531 remains closed duplicate. All new cattle authority converges through #12540 → #12505.
 
@@ -82,27 +84,31 @@ Old #12529 is closed superseded by #12540; #12531 remains closed duplicate. All 
 
 S33 reports a large new row-shed result: pricing each leading SELL row by `min(order quantity, projected shed)` instead of raw order quantity was better than the prior score-facing config in **1,912/1,920 games** (6 worse, 2 same), added no loss against any opponent, and was reported +421.1/game vs V3.0.
 
-A fleet owner is surfacing `r04_row_shed`. **Routing constraint:** a612 may be donor/source provenance only. Any production consumer must recompose on literal 8e3 or successor and explicitly retain B5 CARROT + JIT + H4 + gated-L3 + sale-fertilizer. Keep row-shed orthogonal to #12540’s one-key cattle theorem; compose only after each factor’s own custody/economics are durable.
+A durable current-root source donor now exists: `astra/v31-s33-row-shed-8e3-20260911@3f36b6fb61c61db1b6f1b6f8319c79d2a4193b9b`, direct child of shipped `8e3d92a...`, ahead1/behind0, with exactly one additive source path: `experiments/s33_row_shed_current_root/candidate.py` (Git blob `b260d2c83e6e686028a95ccc5195c02ec5bbb616`). It changes ROW_ORDER valuation only: the leading SELL block is still stable-sorted and returned unchanged, and malformed/missing projected-shed data falls back to inherited requested-quantity valuation.
+
+**Routing constraint:** this donor is source custody, not direct merge/default authority. Earliest current-root row-shed owner retains production ownership; consume the exact donor blob rather than recreating semantics. The production consumer must recompose on the then-current canonical after #12535/#12541, explicitly retain B5 CARROT + JIT + H4 + fail-closed L3 + sale-fertilizer, and keep row-shed orthogonal to #12540’s cattle theorem until each factor has terminal current-root evidence.
 
 ## Optional factors requiring 8e3 recompose before promotion
 
 The following old carriers are stale as current-stack authority after #12537. Preserve their donor/evidence value, but do not merge their old ancestry:
 
-| Lane | Pre-8e3 carrier / evidence | 8e3 routing |
+| Lane | Pre-8e3 / durable donor evidence | 8e3 routing |
 | --- | --- | --- |
-| B11 adaptive mirror horizon | frozen evidence: Arlene exact H8 identity; mirror 16+/0-/0=, mean ΔM +1503.5; old #12534 a612 carrier | recompose on 8e3/successor only after P0 chain; preserve exact-Arlene identity + current-self positive/no-negative theorem |
+| B11 adaptive mirror horizon | frozen evidence: Arlene exact H8 identity; mirror 16+/0-/0=, mean ΔM +1503.5; old #12534 a612 carrier | recompose on 8e3/successor only after P0 chain; preserve exact-Arlene identity + current-self positive/no-negative theorem; do not copy stale opponent-list reducer schema literally |
 | A6 V226 WHEAT top-up ablation | old #12532 a612 evidence | rerun only if still strategically useful on current root; do not conflate with the separately rejected Muse G-A6 “grow feed instead of buying” lane without exact lineage |
 | H3c GOOSE realization | old #12521 a612 evidence | current-root materialized package + realization + D3 required |
 | H13 conditional horizon10 | old #12523 a612 evidence | recompose on current root; unconditional H10 remains rejected |
-| E20 executable-prefix parity | old #12516 reviewed donor | consume exact donor only if still needed after current P0 correctness root is known; regenerate package custody |
+| E20 executable-prefix parity | durable direct-8e3 source donor #12542 head `590ee82969afaee74487dc2ecf624f58580b4b84`; exact reviewed source/test postimages only | after P0/L3/cattle ordering, consume #12542's exact two postimages onto then-current canonical and regenerate package metadata once; #12542 itself is donor-only, not package/default authority |
+| B9 terminal fertilizer tail | repaired donor #12538 head `17f8e66ebfcb91a9ae07c5d81fe9aa96adfeb93d`; review blockers mechanically closed, still frozen/pre-8e3 evidence | only if rereview/CI survives and economics warrant more spend, transplant reviewed semantics into one then-current-root consumer; never merge frozen ancestry as live authority |
 | C4 public-demand boundary | repaired source theorem | requires one current-root consumer before package/default authority |
-| E1 fragile-sale caps | weak clean-cell signal (~+15/game in 9 good-vs-good cells) amid loaded-box nondeterminism | low priority; require trajectory-matched/repeated current-root evidence before any consumer |
+| G-E1 `r04_dribble_dump` | weak trajectory-matched gate: 9+/0-/0=, mean +15.1, ~8.2% rewritten steps, zero measured rival benefit; no durable source donor found | LOW PRIORITY / DONOR-PROVENANCE REQUIRED. Do not recreate from prose. If exact source+receipt surfaces, repeat under trajectory-matched current-root custody before any consumer |
 
 ## Durable rejects / no-spend
 
 Do not reopen these exact mechanisms without a materially different design/context:
 
 - **A1 V219 ablation — REJECT:** field gate 1,536 games/arm; V219 ON 1525W/11L vs ablation 1393W/143L, ~−1797 margin/game overall; #12530 closed. Keep V219 shipped.
+- **G-A4 second-wave melons — HARD REJECT:** 16/16 cells, mean ΔM −2,542, 0+/16-/0=. The lane fires as designed (day-12 seed buys + added crew) but seed cost, recurring hires, and tile/water opportunity destroy value; worst reported seed lost ~9k. Do not spend an 8e3 recompose on this exact mechanism.
 - **B1 alternate-day feed — HARD REJECT:** 16/16, mean ΔM −65,329; herd escapes in 6/16 cells.
 - **D2 early fragile-stock drain — REJECT:** 16/16, mean ΔM −500, 0+/16-/0= despite real engagement.
 - **B3 bonus-window watering / WATER→PASS outside window — REJECT:** 16/16, mean ΔM −71,514, +2/−14/=0.
@@ -127,9 +133,9 @@ Do not reopen these exact mechanisms without a materially different design/conte
 
 1. **Land one immutable-base recovery:** #12535 or an exact stronger equivalent; do not duplicate the 5f6 fix.
 2. **Land one current-root L3 fail-closed correctness consumer:** #12541 only, after its generated final head + permanent package/replay gate become terminal.
-3. **Resolve cattle on the resulting literal root through #12540 / successor**, retaining B5+JIT, then keep #12505 as the final score transform.
-4. **Promote row-shed onto the resulting root if its durable source + field receipt survive current-root composition.** Do not import a612 ancestry wholesale.
-5. **Recompose optional survivors only on then-current canonical:** B11 / #12532-if-distinct / H3c / H13 / E20 / C4 as evidence warrants.
+3. **Repair then resolve cattle on the resulting literal root through #12540 / successor**, retaining B5+JIT; the current reducer false-red must be closed before evaluator spend. Keep #12505 as the final score transform.
+4. **Promote row-shed onto the resulting root if its exact durable donor + field receipt survive current-root composition.** Consume `b260d2c8...`; do not recreate the mechanism or import stale ancestry wholesale.
+5. **Recompose optional survivors only on then-current canonical:** B11 / #12532-if-distinct / H3c / H13 / #12542 E20 / B9 / C4 as evidence warrants. G-E1 stays parked until exact donor provenance surfaces.
 6. For every economic survivor create **one** narrow production consumer, deterministic package receipt, opponent-diverse D3, then a deliberate default decision.
 7. Apply the final #12505 submission transform **last**, above every selected production/package change.
 8. Produce the next leaderboard artifact only from that assembled tree, with a receipt naming exact canonical ancestry + every consumed production carrier + exact score transform.
