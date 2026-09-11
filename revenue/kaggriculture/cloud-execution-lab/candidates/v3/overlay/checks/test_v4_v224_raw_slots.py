@@ -88,6 +88,13 @@ class V224RawSlots(unittest.TestCase):
             with self.subTest(barrier=barrier):
                 self.assertIs(lane.sales_first_raw_slots(parent), parent)
 
+    def test_unknown_positive_verb_is_malformed_barrier(self):
+        parent = action([["HIRE"], ["BOGUS", "WOOL", 1], ["SELL", "WOOL", 2]])
+        out = lane.sales_first_raw_slots(parent)
+        self.assertIs(out, parent)
+        self.assertEqual(out["market"],
+                         [["HIRE"], ["BOGUS", "WOOL", 1], ["SELL", "WOOL", 2]])
+
     def test_changed_prefix_retains_raw_cardinality(self):
         parent = action([["HIRE"], ["SELL", "WOOL", 2], [],
                          ["BUY_SEED", "WHEAT", 1], ["SELL", "MILK", 3]])
