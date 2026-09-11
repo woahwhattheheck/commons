@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "9297a39d18cc49b4642203a223abecfeb0250cbb9f9dccaa1ee68b2c3d363c93",
-    "bytes": 562829,
-    "files": 142
+    "sha256": "42016857799afda334295b72714da119631bda761dae349a215a019358f13bcd",
+    "bytes": 577856,
+    "files": 148
   },
   "releases": [
     {
@@ -370,8 +370,12 @@
     "results": []
   },
   "overlay": {
+    "b11_mirror_horizon.py": "d84894f2433edd7c71adb55ba2c1537016a42ace8c5a47a1fa93cc8dfcad044e",
     "b5_fertilize.py": "f2d03ab19e1a233566cfc9076bd8b9843c7f8d611703578218bd73c1af0f626f",
+    "b9_terminal_fertilizer.py": "13566a3317a6ed54817879ba4750b57bb3146521485192130264450043d04566",
+    "checks/test_v31_astra_lanes.py": "90928a6a47fbc80a8c0b75e09c5031e81e37c329387e76788467b143d0dbb3fa",
     "checks/test_v31_b5_fertilize.py": "545870cf5585ac9247a3a851dd51d1d40a7cbb232bc5e187acd8c2b98d8194fd",
+    "checks/test_v31_dribble_dump.py": "925f32fd8e0e15a7ea51c95c0c9130c320ca9ed6ce23aca7b214ec3a66bf68d5",
     "checks/test_v31_fert_hand.py": "50847482ba36981c315f08763beb4aaec5d7f832749e4069e308f4451ecd4386",
     "checks/test_v31_h4_strawberry.py": "7676948bc372fc27f2beb9cacfee1f329beecbf2a6c99ff9934227bdb4555a98",
     "checks/test_v31_row_shed.py": "b8f81248e37078d15e767f2883c59589a670353c248c5d5eab126b58f41cabee",
@@ -388,20 +392,22 @@
     "checks/test_v3_r04_strawberry.py": "281aa36ff0d9f3dba33e3d41a7af7aeb74f70032ac215f67a3606a7c0f983e1c",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
+    "h3c_goose_eod_cap_rescue.py": "582949e1ba4b2f65aa898a362929013fd9b96f8865582884c181972ffcba5fab",
     "jit_pass_fertilize.py": "5ad6340bf31dab13aaba82bfe0b51e6cde18222155013be1e0e080f0a26242b2",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
     "r01_shop_router.py": "7729665719f8eb1faa1317f76da05ab1fe9090b675c66d4e112ab9c77900133c",
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
+    "r04_dribble_dump.py": "e65e0ad94de8cfc71393082dc12aa7c3ed0372599374a82c67a99e6251b95df4",
     "r04_fert_hand.py": "c34b1c3c58f58506ed66a6d551c6df8ac03d659b4373932cf58a464b631cead0",
-    "r04_full_router.py": "00ad9324d475bc2ff5cae9c1e52a8a870c981c9e052a18c0a9041975185f7d21",
+    "r04_full_router.py": "6a8050e6d350e8372c7dc6640c8c8e748d36353c9b23a8e38369e0f47745915d",
     "r04_h4_strawberry.py": "e7069b9a1c3909fa011d806708fc91cebc7ed36da29d78f77c9ae3789a882785",
     "r04_kill_late_water.py": "601170700110118b2d5692fb298ccc8fb3d3d3e3bab190c7113be3636f09b97d",
     "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
     "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "793f8e6e7cab79bc10d9385abeff605813e78ce479e7e2c9745986259e0b278e"
+    "apply_v3.py": "08c0decdd3b50935b3661d1e8b61c5216d90bf06d1c759db11142e38c106d392"
   }
 }

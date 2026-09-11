@@ -45,6 +45,10 @@ PARAMS = {
     "r04_b5_jit_fertilize": True,
     "r04_row_shed": True,
     "r04_fert_hand": True,
+    "r04_dribble_dump": False,
+    "r04_mirror_horizon": False,
+    "r04_terminal_fertilizer": False,
+    "r04_goose_rescue": False,
 }
 
 FIELDS = (
@@ -89,6 +93,10 @@ FIELDS = (
     "    r04_b5_jit_fertilize: bool = True\n"
     "    r04_row_shed: bool = True\n"
     "    r04_fert_hand: bool = True\n"
+    "    r04_dribble_dump: bool = False\n"
+    "    r04_mirror_horizon: bool = False\n"
+    "    r04_terminal_fertilizer: bool = False\n"
+    "    r04_goose_rescue: bool = False\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -219,7 +227,11 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
     "                                 bool(self.features.r04_b5_jit_fertilize),\n"
     "                                 bool(self.features.r04_row_shed),\n"
-    "                                 fert_hand=bool(self.features.r04_fert_hand))(observation, configuration)\n"
+    "                                 fert_hand=bool(self.features.r04_fert_hand),\n"
+    "                                 dribble_dump=bool(self.features.r04_dribble_dump),\n"
+    "                                 mirror_horizon=bool(self.features.r04_mirror_horizon),\n"
+    "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
+    "                                 goose_rescue=bool(self.features.r04_goose_rescue))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -236,6 +248,10 @@ RUNTIME_METHODS = (
     "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
     "                self.diagnostics['row_shed'] = bool(self.features.r04_row_shed)\n"
     "                self.diagnostics['fert_hand'] = bool(self.features.r04_fert_hand)\n"
+    "                self.diagnostics['dribble_dump'] = bool(self.features.r04_dribble_dump)\n"
+    "                self.diagnostics['mirror_horizon'] = bool(self.features.r04_mirror_horizon)\n"
+    "                self.diagnostics['terminal_fertilizer'] = bool(self.features.r04_terminal_fertilizer)\n"
+    "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -476,6 +492,16 @@ RELEASE_NOTE = (
 "seeds x both seats per shard, 3,008 games against 16 published agents over two seed blocks,\n"
 "base = 8e3d R04 modules with row-shed and cattle off): +320.3 margin per game, better in 2,109,\n"
 "worse in 2, no result changed. Checks: `checks/test_v31_fert_hand.py`.\n"
+"\n"
+"Key `r04_dribble_dump` (V3.1 lane E1, Muse / Riot, shipped off): per-step caps on the SELL rows of\n"
+"the fragile goods, STRAWBERRY 15, MILK 15, WOOL 12 and MELON 30 units, cumulative across rows,\n"
+"and no fragile sale on days 0-2 (overlay/r04_dribble_dump.py). A good printing $1 passes through,\n"
+"and WHEAT, EGG, CARROT, TOMATO and FERTILIZER rows are never touched; the evening flush and the\n"
+"step-718 liquidation still sweep the shed. It runs after H4 and right before ROW_ORDER. Engine\n"
+"measurement: 50 WOOL dumped at once $7,655, dribbled $8,978; 60 MILK $5,886 against $6,640.\n"
+"Gate: clean trajectory-matched cells 9+ / 0- / 0=, mean +15.1, 8.2% of steps rewritten. The V3.1\n"
+"stack with E1 measured +1,477 per game against V3.0, 16 of 16 cells positive.\n"
+"Checks: `checks/test_v31_dribble_dump.py`.\n"
 )
 
 

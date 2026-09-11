@@ -1718,6 +1718,12 @@ def _b5_fertilize(observation, action):
     return action
 
 
+# V3.1 E1 (r04_dribble_dump, Muse / Riot): per-step caps on the SELL rows of the fragile goods
+# (STRAWBERRY 15, MILK 15, WOOL 12, MELON 30; a good printing $1 passes through) and no fragile
+# sale on days 0-2 (overlay/r04_dribble_dump.py). Runs after H4 and right before ROW_ORDER.
+DRIBBLE_DUMP = False
+
+
 def _row_order_shed(observation, configuration, action):
     """ROW_ORDER with r04_row_shed. Any malformed input leaves the parent action unchanged."""
     if configuration is not None and not isinstance(configuration, dict):
@@ -1752,6 +1758,9 @@ def _v3_stack(observation, configuration=None):
         action = apply_kill_late_water(observation, action)
     if STRAWBERRY_ENDGAME:
         action = apply_strawberry_endgame(observation, action, STRAWBERRY_MAX_PLANTS)
+    if DRIBBLE_DUMP:
+        import r04_dribble_dump
+        action = r04_dribble_dump.apply_dribble_dump(observation, action)
     if ROW_ORDER and ROW_SHED:
         action = _row_order_shed(observation, configuration, action)
     elif ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
@@ -1785,7 +1794,7 @@ def _policy_tape(observation):
     return _POLICY.tapes[state.plan]
 
 
-def v3_agent(observation, configuration=None):
+def _v3_core(observation, configuration=None):
     global _FERT_HAND_AGENT
     if FERT_HAND:
         if _FERT_HAND_AGENT is None:
@@ -1796,11 +1805,55 @@ def v3_agent(observation, configuration=None):
     return _v3_stack(observation, configuration)
 
 
+# V3.1 lanes by ASTRA · GPT-5.6 SOL, each gated as a wrapper around the whole agent and applied
+# here the same way:
+#   B11 (r04_mirror_horizon, b11_mirror_horizon.py): after eight consecutive exact public farm
+#       mirrors the E184 sale horizon is 10 for that callback, else the installed horizon;
+#   B9 (r04_terminal_fertilizer, b9_terminal_fertilizer.py): at steps 716-717 a PASS beside the
+#       shed on an animal with fertilizer available collects it; at 718 SELL FERTILIZER trails the
+#       executable prefix;
+#   H3c (r04_goose_rescue, h3c_goose_eod_cap_rescue.py): at hour 23 a COLLECT_FERTILIZER on a fed,
+#       cared goose whose held eggs would clip tonight becomes HARVEST.
+# Every lane fails closed to the parent action; with all three off v3_agent() is _v3_core().
+MIRROR_HORIZON = False
+TERMINAL_FERTILIZER = False
+GOOSE_RESCUE = False
+_TERMINAL_FERTILIZER_AGENT = None
+
+
+def v3_agent(observation, configuration=None):
+    global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT
+    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE):
+        return _v3_core(observation, configuration)
+    prior = SALE_HORIZON
+    if MIRROR_HORIZON:
+        import b11_mirror_horizon
+        certified, _, _ = b11_mirror_horizon.mirror_certificate(observation)
+        if certified:
+            SALE_HORIZON = b11_mirror_horizon.MIRROR_HORIZON
+    try:
+        if TERMINAL_FERTILIZER:
+            if _TERMINAL_FERTILIZER_AGENT is None:
+                import b9_terminal_fertilizer
+                _TERMINAL_FERTILIZER_AGENT = b9_terminal_fertilizer.make_agent(_v3_core)
+            action = _TERMINAL_FERTILIZER_AGENT(observation, configuration)
+        else:
+            action = _v3_core(observation, configuration)
+    finally:
+        SALE_HORIZON = prior
+    if GOOSE_RESCUE:
+        import h3c_goose_eod_cap_rescue
+        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,
+                                                                     enabled=True)
+    return action
+
+
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
-            b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None, fert_hand=None):
+            b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None, fert_hand=None,
+            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1817,11 +1870,15 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     sale is pulled forward at steps >= no_late_sale_advance_step (default 648).
     row_shed makes ROW_ORDER price each SELL row at min(order quantity, projected shed).
     fert_hand runs the stack inside r04_fert_hand.wrap() (the endgame fertilizer hand).
+    dribble_dump caps the fragile goods' SELL rows per step (lane E1, r04_dribble_dump.py).
+    mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,
+    applied around the whole agent in v3_agent().
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
     global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP, ROW_SHED
-    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, FERT_HAND
+    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, FERT_HAND, DRIBBLE_DUMP
+    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1866,4 +1923,12 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         ROW_SHED = bool(row_shed)
     if fert_hand is not None:
         FERT_HAND = bool(fert_hand)
+    if dribble_dump is not None:
+        DRIBBLE_DUMP = bool(dribble_dump)
+    if mirror_horizon is not None:
+        MIRROR_HORIZON = bool(mirror_horizon)
+    if terminal_fertilizer is not None:
+        TERMINAL_FERTILIZER = bool(terminal_fertilizer)
+    if goose_rescue is not None:
+        GOOSE_RESCUE = bool(goose_rescue)
     return v3_agent
