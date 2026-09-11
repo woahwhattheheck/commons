@@ -3,15 +3,12 @@
 
 The current PR's ``apply_v4.KEYS`` is compared with the target branch copy supplied
 by CI. Every key already present on the target must survive. The candidate is then
-materialised through the real V3/V4 build recipe. This guard intentionally treats
-all current V4 keys as source-landed safety switches: every key must remain OFF in
-TITAN-CONFIG, Features, and (for r04 keys) the router until a future promotion
-changes this contract explicitly.
+materialised through the real V3/V4 build recipe. Every head key must retain complete
+runtime plumbing and source-land default-OFF. R04 keys must retain their router flag,
+install parameter/setter, a reachable production read (or a proven install-time
+callable selector), and TitanAgent install wiring reachable from ``TitanAgent.act``.
 
-Runtime wiring checks are production-rooted. TitanAgent references are accepted only
-from methods reachable from ``TitanAgent.act`` through ``self.<method>(...)`` calls;
-a dead helper cannot satisfy the contract. Router flag reads are likewise rooted at
-``v3_agent``. Failures use explicit exceptions so ``python -O`` cannot strip them.
+Failures use explicit exceptions so ``python -O`` cannot strip the contract.
 """
 from __future__ import annotations
 
@@ -91,10 +88,27 @@ def _contains_feature_ref(node: ast.AST, key: str) -> bool:
         if not isinstance(child, ast.Attribute) or child.attr != key:
             continue
         owner = child.value
-        if (isinstance(owner, ast.Attribute) and owner.attr == "features"
-                and isinstance(owner.value, ast.Name) and owner.value.id == "self"):
+        if (
+            isinstance(owner, ast.Attribute)
+            and owner.attr == "features"
+            and isinstance(owner.value, ast.Name)
+            and owner.value.id == "self"
+        ):
             return True
     return False
+
+
+def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
+    """Nodes in *function* excluding nested function/class/lambda bodies."""
+    skip: set[int] = set()
+    for child in ast.walk(function):
+        if child is function:
+            continue
+        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef)):
+            for nested in ast.walk(child):
+                if nested is not child:
+                    skip.add(id(nested))
+    return [child for child in ast.walk(function) if id(child) not in skip]
 
 
 def _agent_methods(agent: ast.ClassDef) -> dict[str, ast.FunctionDef | ast.AsyncFunctionDef]:
@@ -105,44 +119,64 @@ def _agent_methods(agent: ast.ClassDef) -> dict[str, ast.FunctionDef | ast.Async
     }
 
 
-def _reachable_agent_methods(agent: ast.ClassDef) -> set[ast.AST]:
-    """Methods reachable from production ``act`` via direct ``self.method()`` calls."""
+def _reachable_agent_methods(agent: ast.ClassDef) -> tuple[ast.FunctionDef | ast.AsyncFunctionDef, ...]:
+    """Return TitanAgent methods reachable from act via direct ``self.method(...)`` calls."""
     methods = _agent_methods(agent)
     root = methods.get("act")
-    _require(root is not None, "materialized TitanAgent has no act() production root")
-    reachable: set[ast.AST] = set()
-    stack: list[ast.AST] = [root]
+    _require(root is not None, "materialized TitanAgent has no act() method")
+    reachable: set[ast.FunctionDef | ast.AsyncFunctionDef] = set()
+    stack = [root]
     while stack:
-        method = stack.pop()
-        if method in reachable:
+        function = stack.pop()
+        if function in reachable:
             continue
-        reachable.add(method)
-        for node in ast.walk(method):
+        reachable.add(function)
+        for node in _direct_body_nodes(function):
             if not isinstance(node, ast.Call):
                 continue
             func = node.func
-            if not (isinstance(func, ast.Attribute)
-                    and isinstance(func.value, ast.Name)
-                    and func.value.id == "self"):
+            if not (
+                isinstance(func, ast.Attribute)
+                and isinstance(func.value, ast.Name)
+                and func.value.id == "self"
+            ):
                 continue
             target = methods.get(func.attr)
             if target is not None and target not in reachable:
                 stack.append(target)
-    return reachable
+    return tuple(reachable)
 
 
-def _reachable_feature_ref(methods: set[ast.AST], key: str) -> bool:
-    return any(_contains_feature_ref(method, key) for method in methods)
+def _reachable_agent_feature_ref(
+    reachable: Iterable[ast.FunctionDef | ast.AsyncFunctionDef], key: str
+) -> bool:
+    for function in reachable:
+        for child in _direct_body_nodes(function):
+            if not isinstance(child, ast.Attribute) or child.attr != key:
+                continue
+            owner = child.value
+            if (
+                isinstance(owner, ast.Attribute)
+                and owner.attr == "features"
+                and isinstance(owner.value, ast.Name)
+                and owner.value.id == "self"
+            ):
+                return True
+    return False
 
 
-def _runtime_install_wired(methods: set[ast.AST], key: str, suffix: str) -> bool:
-    for method in methods:
-        for node in ast.walk(method):
+def _runtime_install_wired(
+    reachable: Iterable[ast.FunctionDef | ast.AsyncFunctionDef], key: str, suffix: str
+) -> bool:
+    for function in reachable:
+        for node in _direct_body_nodes(function):
             if not isinstance(node, ast.Call):
                 continue
             func = node.func
-            if not ((isinstance(func, ast.Attribute) and func.attr == "install")
-                    or (isinstance(func, ast.Name) and func.id == "install")):
+            if not (
+                (isinstance(func, ast.Attribute) and func.attr == "install")
+                or (isinstance(func, ast.Name) and func.id == "install")
+            ):
                 continue
             for keyword in node.keywords:
                 if keyword.arg == suffix and _contains_feature_ref(keyword.value, key):
@@ -196,19 +230,6 @@ def _loads_name(node: ast.AST, name: str) -> bool:
     )
 
 
-def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
-    """Nodes in *function* excluding nested function/class/lambda bodies."""
-    skip: set[int] = set()
-    for child in ast.walk(function):
-        if child is function:
-            continue
-        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef)):
-            for nested in ast.walk(child):
-                if nested is not child:
-                    skip.add(id(nested))
-    return [child for child in ast.walk(function) if id(child) not in skip]
-
-
 def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
     bindings: dict[str, ast.AST] = {}
     for node in getattr(router_tree, "body", []):
@@ -222,7 +243,11 @@ def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
                     if isinstance(target, ast.Name):
                         bindings[target.id] = source
             continue
-        if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name) and isinstance(node.value, ast.Name):
+        if (
+            isinstance(node, ast.AnnAssign)
+            and isinstance(node.target, ast.Name)
+            and isinstance(node.value, ast.Name)
+        ):
             source = bindings.get(node.value.id)
             if source is not None:
                 bindings[node.target.id] = source
@@ -278,7 +303,7 @@ def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bo
 
 def _assert_r04_router_contract(
     router_tree: ast.AST,
-    reachable_agent: set[ast.AST],
+    reachable_agent: Iterable[ast.FunctionDef | ast.AsyncFunctionDef],
     key: str,
 ) -> None:
     suffix = key.removeprefix("r04_")
@@ -286,15 +311,22 @@ def _assert_r04_router_contract(
 
     router_defaults = _top_level_bool_names(router_tree)
     _require(flag in router_defaults, f"{key}: router {flag} must be a literal boolean")
-    _require(router_defaults[flag] is False, f"{key}: V4 router {flag} must remain source-default False")
+    _require(router_defaults[flag] is False, f"{key}: router {flag} must source-land False")
 
     install = _find_function(router_tree, "install")
-    install_args = {arg.arg for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)}
+    install_args = {
+        arg.arg
+        for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)
+    }
     _require(suffix in install_args, f"{key}: router install() missing {suffix} parameter")
     _require(flag in _global_names(install), f"{key}: router install() does not declare {flag} global")
     _require(
-        any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Store)
-            for node in ast.walk(install)),
+        any(
+            isinstance(node, ast.Name)
+            and node.id == flag
+            and isinstance(node.ctx, ast.Store)
+            for node in ast.walk(install)
+        ),
         f"{key}: router install() never sets {flag}",
     )
 
@@ -307,15 +339,65 @@ def _assert_r04_router_contract(
     )
     _require(
         _runtime_install_wired(reachable_agent, key, suffix),
-        f"{key}: production-reachable TitanAgent does not pass self.features.{key} "
+        f"{key}: TitanAgent.act chain does not pass self.features.{key} "
         f"to router install({suffix}=...)",
     )
 
 
+def _self_test_agent_reachability() -> None:
+    live_tree = ast.parse(
+        """
+class TitanAgent:
+    def act(self):
+        return self._v3_r03_act()
+    def _v3_r03_act(self):
+        return install(place_delivery=self.features.r04_place_delivery)
+    def _dead_poison(self):
+        return install(place_delivery=self.features.r04_place_delivery)
+"""
+    )
+    live_agent = _titan_agent_class(live_tree)
+    live_reachable = _reachable_agent_methods(live_agent)
+    _require(
+        _reachable_agent_feature_ref(live_reachable, "r04_place_delivery"),
+        "internal reachability regression: live feature reference was not found",
+    )
+    _require(
+        _runtime_install_wired(live_reachable, "r04_place_delivery", "place_delivery"),
+        "internal reachability regression: live install wiring was not found",
+    )
+
+    poison_tree = ast.parse(
+        """
+class TitanAgent:
+    def act(self):
+        return self._v3_r03_act()
+    def _v3_r03_act(self):
+        return None
+    def _dead_poison(self):
+        marker = self.features.r04_place_delivery
+        return install(place_delivery=self.features.r04_place_delivery)
+"""
+    )
+    poison_agent = _titan_agent_class(poison_tree)
+    poison_reachable = _reachable_agent_methods(poison_agent)
+    _require(
+        not _reachable_agent_feature_ref(poison_reachable, "r04_place_delivery"),
+        "internal reachability regression: dead feature reference false-passed",
+    )
+    _require(
+        not _runtime_install_wired(poison_reachable, "r04_place_delivery", "place_delivery"),
+        "internal reachability regression: dead install wiring false-passed",
+    )
+
+
 def check(base_apply_v4: Path) -> None:
+    _self_test_agent_reachability()
+
     base_keys = _literal_keys(base_apply_v4)
     head_keys = _literal_keys(APPLY_V4)
-    removed = sorted(set(base_keys) - set(head_keys))
+    base_key_set = set(base_keys)
+    removed = sorted(base_key_set - set(head_keys))
     _require(not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed))
 
     files = build_v3.package_files()
@@ -323,8 +405,12 @@ def check(base_apply_v4: Path) -> None:
         _require(required in files, f"materialized package missing {required}")
 
     config = json.loads(files["TITAN-CONFIG.json"].decode("utf-8"))
-    runtime_tree = ast.parse(files["titan_runtime.py"].decode("utf-8"), filename="titan_runtime.py")
-    router_tree = ast.parse(files["r04_full_router.py"].decode("utf-8"), filename="r04_full_router.py")
+    runtime_tree = ast.parse(
+        files["titan_runtime.py"].decode("utf-8"), filename="titan_runtime.py"
+    )
+    router_tree = ast.parse(
+        files["r04_full_router.py"].decode("utf-8"), filename="r04_full_router.py"
+    )
     feature_defaults = _feature_defaults(runtime_tree)
     agent = _titan_agent_class(runtime_tree)
     reachable_agent = _reachable_agent_methods(agent)
@@ -332,13 +418,13 @@ def check(base_apply_v4: Path) -> None:
     for key in head_keys:
         _require(key in config, f"{key}: missing from materialized TITAN-CONFIG.json")
         _require(type(config[key]) is bool, f"{key}: materialized config value must be boolean")
-        _require(config[key] is False, f"{key}: V4 config default must remain False")
+        _require(config[key] is False, f"{key}: materialized config must source-land False")
         _require(key in feature_defaults, f"{key}: missing from materialized Features")
         _require(type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean")
-        _require(feature_defaults[key] is False, f"{key}: V4 Features default must remain False")
+        _require(feature_defaults[key] is False, f"{key}: Features default must remain False")
         _require(
-            _reachable_feature_ref(reachable_agent, key),
-            f"{key}: production-reachable TitanAgent never references self.features.{key}",
+            _reachable_agent_feature_ref(reachable_agent, key),
+            f"{key}: TitanAgent.act chain never references self.features.{key}",
         )
         if key.startswith("r04_"):
             _assert_r04_router_contract(router_tree, reachable_agent, key)
@@ -347,7 +433,8 @@ def check(base_apply_v4: Path) -> None:
         "V4 PLUMBING OK",
         "base", list(base_keys),
         "head", list(head_keys),
-        "reachable_agent_methods", sorted(getattr(node, "name", "<anonymous>") for node in reachable_agent),
+        "reachable_agent_methods",
+        sorted(getattr(node, "name", "<anonymous>") for node in reachable_agent),
     )
 
 
