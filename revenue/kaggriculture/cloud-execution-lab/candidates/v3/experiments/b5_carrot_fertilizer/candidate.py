@@ -34,42 +34,95 @@ _BASE_AGENT = base.install(**LIVE_BASELINE)
 REPORT = {"carrot_fertilize_requests": 0}
 
 
-def _eligible(tile, inventory, day):
-    """True only for a carried-fertilizer CARROT top-up with three-day coverage."""
+def _strict_position(value):
     return (
-        isinstance(tile, dict)
-        and tile.get("kind") == "PLANT"
-        and tile.get("crop") == "CARROT"
-        and int(inventory.get("FERTILIZER", 0)) > 0
-        and int(tile.get("fertilized_until_day", -1)) < day + 2
+        isinstance(value, (list, tuple))
+        and len(value) == 2
+        and type(value[0]) is int
+        and type(value[1]) is int
     )
 
 
+def _eligible(tile, inventory, day):
+    """True only for a carried-fertilizer CARROT top-up with three-day coverage."""
+    if not isinstance(tile, dict) or tile.get("kind") != "PLANT" or tile.get("crop") != "CARROT":
+        return False
+    if not isinstance(inventory, dict):
+        return False
+    fertilizer = inventory.get("FERTILIZER", 0)
+    if type(fertilizer) is not int or fertilizer <= 0:
+        return False
+    if "fertilized_until_day" not in tile:
+        return False
+    covered_through = tile["fertilized_until_day"]
+    return type(covered_through) is int and covered_through < day + 2
+
+
 def apply_carrot_fertilizer(observation, action):
-    """Replace eligible PASS rows without touching the caller's action object."""
-    player = int(observation["player"])
-    day = int(observation["step"]) // 24
-    farm = observation["farms"][player]
-    private = observation["private"]
-    inventories = private.get("inventories") or []
-    positions = [farm["farmer"], *(farm.get("hands") or [])]
-    commands = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
+    """Replace eligible literal PASS rows; malformed state preserves parent identity."""
+    if not isinstance(observation, dict) or not isinstance(action, dict):
+        return action
+    step = observation.get("step")
+    player = observation.get("player")
+    if type(step) is not int or step < 0 or type(player) is not int or player < 0:
+        return action
+
+    farms = observation.get("farms")
+    private = observation.get("private")
+    if not isinstance(farms, list) or player >= len(farms) or not isinstance(private, dict):
+        return action
+    farm = farms[player]
+    if not isinstance(farm, dict):
+        return action
+    tiles = farm.get("tiles")
+    farmer_position = farm.get("farmer")
+    hand_positions = farm.get("hands")
+    inventories = private.get("inventories")
+    if (
+        not isinstance(tiles, list)
+        or not _strict_position(farmer_position)
+        or not isinstance(hand_positions, list)
+        or not all(_strict_position(position) for position in hand_positions)
+        or not isinstance(inventories, list)
+    ):
+        return action
+
+    if "farmer" not in action or "hands" not in action:
+        return action
+    farmer_command = action["farmer"]
+    hand_commands = action["hands"]
+    if (
+        not isinstance(farmer_command, list)
+        or not farmer_command
+        or not isinstance(hand_commands, list)
+        or len(hand_commands) != len(hand_positions)
+        or not all(isinstance(command, list) and command for command in hand_commands)
+    ):
+        return action
+
+    positions = [farmer_position, *hand_positions]
+    commands = [farmer_command, *hand_commands]
+    if len(inventories) < len(positions) or any(
+        not isinstance(inventories[actor], dict) for actor in range(len(positions))
+    ):
+        return action
+
+    day = step // 24
     claimed = set()
     changed = False
-
     for actor, (command, position) in enumerate(zip(commands, positions)):
-        if command != ["PASS"] or actor >= len(inventories):
+        if command != ["PASS"]:
             continue
-        try:
-            x, y = int(position[0]), int(position[1])
-            if not (0 <= y < len(farm["tiles"]) and 0 <= x < len(farm["tiles"][y])):
-                continue
-            if (x, y) in claimed:
-                continue
-            tile = farm["tiles"][y][x]
-        except (KeyError, TypeError, ValueError, IndexError):
+        x, y = position
+        if not (0 <= y < len(tiles)):
             continue
-        if not _eligible(tile, inventories[actor] or {}, day):
+        row = tiles[y]
+        if not isinstance(row, list) or not (0 <= x < len(row)):
+            continue
+        if (x, y) in claimed:
+            continue
+        tile = row[x]
+        if not _eligible(tile, inventories[actor], day):
             continue
         commands[actor] = ["FERTILIZE"]
         claimed.add((x, y))
