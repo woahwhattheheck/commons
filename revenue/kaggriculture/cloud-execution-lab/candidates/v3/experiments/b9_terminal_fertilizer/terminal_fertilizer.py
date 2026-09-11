@@ -147,6 +147,7 @@ class TerminalFertilizerAgent:
     def __call__(self, observation, configuration=None):
         action = self.parent(observation, configuration)
         if not _standard_terminal_timing(configuration):
+            self._state.clear()
             return action
         try:
             step = observation["step"]
