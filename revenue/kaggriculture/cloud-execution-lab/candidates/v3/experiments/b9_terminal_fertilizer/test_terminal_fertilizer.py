@@ -171,6 +171,26 @@ class T(unittest.TestCase):
         missing_farms.pop("farms")
         bad_farms = obs(step=717)
         bad_farms["farms"] = None
+        none_selected_farm = obs(step=717)
+        none_selected_farm["farms"][0] = None
+        missing_tiles = obs(step=717)
+        missing_tiles["farms"][0].pop("tiles")
+        bad_tiles = obs(step=717)
+        bad_tiles["farms"][0]["tiles"] = None
+        ragged_tiles = obs(step=717)
+        ragged_tiles["farms"][0]["tiles"][0].pop()
+        missing_farmer = obs(step=717)
+        missing_farmer["farms"][0].pop("farmer")
+        bad_farmer = obs(step=717)
+        bad_farmer["farms"][0]["farmer"] = None
+        bool_farmer_position = obs(step=717)
+        bool_farmer_position["farms"][0]["farmer"] = [True, 4]
+        out_of_bounds_farmer = obs(step=717)
+        out_of_bounds_farmer["farms"][0]["farmer"] = [10, 4]
+        bad_hands = obs(step=717)
+        bad_hands["farms"][0]["hands"] = None
+        bad_hand_position = obs(step=717, hands=[(5, 5)])
+        bad_hand_position["farms"][0]["hands"] = [[5, False]]
         poisons = (
             ("missing-step", missing_step),
             ("bool-step", obs(step=True)),
@@ -182,6 +202,16 @@ class T(unittest.TestCase):
             ("out-of-range-player", obs(step=717, player=1)),
             ("missing-farms", missing_farms),
             ("bad-farms", bad_farms),
+            ("none-selected-farm", none_selected_farm),
+            ("missing-tiles", missing_tiles),
+            ("bad-tiles", bad_tiles),
+            ("ragged-tiles", ragged_tiles),
+            ("missing-farmer", missing_farmer),
+            ("bad-farmer", bad_farmer),
+            ("bool-farmer-position", bool_farmer_position),
+            ("out-of-bounds-farmer", out_of_bounds_farmer),
+            ("bad-hands", bad_hands),
+            ("bad-hand-position", bad_hand_position),
         )
         for label, poison in poisons:
             with self.subTest(label=label):
@@ -189,6 +219,33 @@ class T(unittest.TestCase):
                 self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
                 self.assertEqual(a(poison, STANDARD), neutral)
                 self.assertEqual(a(obs(step=718), STANDARD)["market"], terminal["market"])
+
+    def test_valid_nonqualifying_farm_preserves_existing_collection_provenance(self):
+        neutral = {"farmer": ["PASS"], "hands": [], "market": []}
+        terminal = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+        }
+
+        def parent(o, _cfg=None):
+            return copy.deepcopy(terminal if o["step"] == 718 else neutral)
+
+        nonqualifying = (
+            ("fert-false", obs(step=717, fert=False)),
+            ("fert-nonbool", obs(step=717, fert=1)),
+            ("animal-none", obs(step=717, animal=None)),
+            ("away-from-shed", obs(step=717, pos=(1, 1))),
+        )
+        for label, observation in nonqualifying:
+            with self.subTest(label=label):
+                a = make_agent(parent)
+                self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
+                self.assertEqual(a(observation, STANDARD), neutral)
+                self.assertEqual(
+                    a(obs(step=718), STANDARD)["market"],
+                    [["SELL", "WHEAT", 1], ["SELL", "FERTILIZER", 1]],
+                )
 
     def test_trails_only_after_collection(self):
         terminal = {
