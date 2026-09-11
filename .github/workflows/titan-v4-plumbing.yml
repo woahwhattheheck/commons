@@ -6,13 +6,21 @@ on:
       - titan/v4-20260911
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
   push:
     branches:
       - titan/v4-20260911
     paths:
       - '.github/workflows/titan-v4-plumbing.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
   workflow_dispatch:
 
 permissions:
@@ -20,7 +28,7 @@ permissions:
 
 concurrency:
   group: titan-v4-plumbing-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   contract:
@@ -29,24 +37,44 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Pull requests must validate the literal candidate head, not GitHub's
-          # synthetic merge ref (which could mask stale-head key loss).
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 1
           persist-credentials: false
+          filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/titan-v4-plumbing.yml
             /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
             /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
 
+      - name: Materialize exact-head canonical archive blob
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          ARCHIVE=revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          # Partial clone + sparse checkout can leave a pointer-sized or stale
+          # object at this path. Force the literal blob from the exact head tree.
+          git fetch --no-tags --filter=blob:none origin "$HEAD_SHA"
+          git rev-parse "$HEAD_SHA:$ARCHIVE" >/dev/null
+          git cat-file blob "$HEAD_SHA:$ARCHIVE" > "$ARCHIVE"
+          python3 - <<'PY'
+          import hashlib, json, pathlib, sys
+          lab = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/candidates/v3")
+          archive = pathlib.Path("revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz")
+          pinned = json.loads(lab.joinpath("V3-MANIFEST.json").read_text(encoding="utf-8"))["base"]["sha256"]
+          digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if digest != pinned:
+              sys.stderr.write(f"canonical archive {archive} is {digest}, manifest pins {pinned}\n")
+              sys.exit(1)
+          print("CANONICAL ARCHIVE OK", digest, archive.stat().st_size)
+          PY
+
       - name: Capture exact target V4 apply layer
         shell: bash
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-          # PR: target branch snapshot carried by the event.
-          # Push: prior canonical commit, so a direct key deletion cannot compare
-          # the new apply_v4.py to itself and silently pass.
           BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event_name == 'push' && github.event.before || '' }}
         run: |
           set -euo pipefail
@@ -58,12 +86,10 @@ jobs:
               exit 1
             fi
             if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
-              git fetch --no-tags --depth=1 origin "$BASE_SHA"
+              git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_SHA"
             fi
-            git show "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
+            git cat-file blob "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
           else
-            # workflow_dispatch has no predecessor event; it still checks the
-            # complete current materialized plumbing, but cannot prove monotonicity.
             cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
           fi
 
@@ -73,5 +99,5 @@ jobs:
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
           python3 -m py_compile "$LAB/check_v4_plumbing.py"
-          python3 "$LAB/check_v4_plumbing.py" \
+          python3 -O "$LAB/check_v4_plumbing.py" \
             --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"

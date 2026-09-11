@@ -9,13 +9,7 @@ source-land default-OFF. R04 keys must retain their router flag, install
 parameter/setter, a reachable production read (or a proven install-time callable
 selector), and TitanAgent install wiring.
 
-The checker deliberately does *not* prescribe where an R04 key must act. V4 contains
-legitimate inner, outer/final-action, inline repairs, and install-selected wrappers;
-monotonic plumbing should protect those seams without forcing every key through one
-helper-import pattern.
-
-This checker intentionally derives the contract from the moving target branch rather
-than maintaining a second key ledger.
+Failures use explicit exceptions so ``python -O`` cannot strip the contract.
 """
 from __future__ import annotations
 
@@ -23,12 +17,21 @@ import argparse
 import ast
 import json
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, NoReturn
 
 import build_v3
 
 HERE = Path(__file__).resolve().parent
 APPLY_V4 = HERE / "apply_v4.py"
+
+
+def _fail(message: str) -> NoReturn:
+    raise SystemExit(message)
+
+
+def _require(cond: object, message: str) -> None:
+    if not cond:
+        _fail(message)
 
 
 def _literal_keys(path: Path) -> tuple[str, ...]:
@@ -40,11 +43,11 @@ def _literal_keys(path: Path) -> tuple[str, ...]:
         if any(isinstance(target, ast.Name) and target.id == "KEYS" for target in node.targets):
             value = ast.literal_eval(node.value)
             break
-    assert isinstance(value, (tuple, list)), f"{path}: KEYS must be a literal tuple/list"
+    _require(isinstance(value, (tuple, list)), f"{path}: KEYS must be a literal tuple/list")
     keys = tuple(value)
-    assert keys, f"{path}: KEYS must not be empty"
-    assert all(type(key) is str and key for key in keys), f"{path}: KEYS must contain nonempty strings"
-    assert len(keys) == len(set(keys)), f"{path}: KEYS contains duplicates"
+    _require(keys, f"{path}: KEYS must not be empty")
+    _require(all(type(key) is str and key for key in keys), f"{path}: KEYS must contain nonempty strings")
+    _require(len(keys) == len(set(keys)), f"{path}: KEYS contains duplicates")
     return keys
 
 
@@ -68,7 +71,14 @@ def _feature_defaults(tree: ast.AST) -> dict[str, object]:
                     if isinstance(target, ast.Name):
                         defaults[target.id] = literal
         return defaults
-    raise AssertionError("materialized titan_runtime.py has no Features class")
+    _fail("materialized titan_runtime.py has no Features class")
+
+
+def _titan_agent_class(tree: ast.AST) -> ast.ClassDef:
+    for node in getattr(tree, "body", []):
+        if isinstance(node, ast.ClassDef) and node.name == "TitanAgent":
+            return node
+    _fail("materialized titan_runtime.py has no TitanAgent class")
 
 
 def _contains_feature_ref(node: ast.AST, key: str) -> bool:
@@ -82,8 +92,8 @@ def _contains_feature_ref(node: ast.AST, key: str) -> bool:
     return False
 
 
-def _runtime_install_wired(tree: ast.AST, key: str, suffix: str) -> bool:
-    for node in ast.walk(tree):
+def _runtime_install_wired(agent: ast.ClassDef, key: str, suffix: str) -> bool:
+    for node in ast.walk(agent):
         if not isinstance(node, ast.Call):
             continue
         func = node.func
@@ -121,7 +131,7 @@ def _find_function(tree: ast.AST, name: str) -> ast.FunctionDef:
     for node in getattr(tree, "body", []):
         if isinstance(node, ast.FunctionDef) and node.name == name:
             return node
-    raise AssertionError(f"materialized r04_full_router.py has no {name}()")
+    _fail(f"materialized r04_full_router.py has no {name}()")
 
 
 def _global_names(function: ast.FunctionDef) -> set[str]:
@@ -142,15 +152,20 @@ def _loads_name(node: ast.AST, name: str) -> bool:
     )
 
 
-def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
-    """Approximate final module bindings for top-level functions and aliases.
+def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
+    """Statements in *function* excluding nested function/class/lambda bodies."""
+    skip: set[int] = set()
+    for child in ast.walk(function):
+        if child is function:
+            continue
+        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef)):
+            for nested in ast.walk(child):
+                if nested is not child:
+                    skip.add(id(nested))
+    return [child for child in ast.walk(function) if id(child) not in skip]
 
-    R04 builds its policy as a chain of repeated ``agent`` definitions captured into
-    stable ``*_PARENT`` aliases before the name is rebound. Walking the top-level
-    statements in execution order preserves those captures well enough to distinguish
-    a function that participates in the final production chain from an unreferenced
-    helper that merely happens to mention a feature flag.
-    """
+
+def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
     bindings: dict[str, ast.AST] = {}
     for node in getattr(router_tree, "body", []):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
@@ -176,14 +191,6 @@ def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
 
 
 def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
-    """Return top-level function objects reachable from the installed ``v3_agent``.
-
-    Name loads in a function are resolved through final module bindings. Captured
-    wrapper aliases (``_FOO_PARENT = agent``) retain the specific earlier function
-    object because the sequential binding pass records the alias before ``agent`` is
-    rebound. This is a structural reachability proof, not semantic execution, but it
-    rejects a dead helper that has no path from the runtime entry point.
-    """
     bindings = _top_level_function_bindings(router_tree)
     root = bindings.get("v3_agent")
     if root is None:
@@ -205,7 +212,6 @@ def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
 
 
 def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
-    """Return one production-reachable function that reads ``flag``."""
     for function in _production_function_nodes(router_tree):
         if _loads_name(function, flag):
             return getattr(function, "name", "<anonymous>")
@@ -213,18 +219,11 @@ def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
 
 
 def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bool:
-    """Accept a flag consumed by install only when it selects a non-baseline callable.
-
-    Setter-only reads/stores do not count. A legitimate outer wrapper may instead be
-    constructed/cached in ``install()`` and returned as the runtime agent (for example
-    a hidden-hand observation wrapper). In that case the flag itself appears in an
-    ``if`` test and the guarded branch returns a callable other than bare ``v3_agent``.
-    """
-    for node in ast.walk(install):
+    for node in _direct_body_nodes(install):
         if not isinstance(node, ast.If) or not _loads_name(node.test, flag):
             continue
         for statement in node.body:
-            for child in ast.walk(statement):
+            for child in _direct_body_nodes(statement):
                 if not isinstance(child, ast.Return) or child.value is None:
                     continue
                 if isinstance(child.value, ast.Name) and child.value.id == "v3_agent":
@@ -235,7 +234,7 @@ def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bo
 
 def _assert_r04_router_contract(
     router_tree: ast.AST,
-    runtime_tree: ast.AST,
+    agent: ast.ClassDef,
     key: str,
     *,
     require_default_off: bool,
@@ -244,26 +243,30 @@ def _assert_r04_router_contract(
     flag = suffix.upper()
 
     router_defaults = _top_level_bool_names(router_tree)
-    assert flag in router_defaults, f"{key}: router {flag} must be a literal boolean"
+    _require(flag in router_defaults, f"{key}: router {flag} must be a literal boolean")
     if require_default_off:
-        assert router_defaults[flag] is False, f"{key}: newly landed router {flag} must source-land False"
+        _require(router_defaults[flag] is False, f"{key}: newly landed router {flag} must source-land False")
 
     install = _find_function(router_tree, "install")
     install_args = {arg.arg for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)}
-    assert suffix in install_args, f"{key}: router install() missing {suffix} parameter"
-    assert flag in _global_names(install), f"{key}: router install() does not declare {flag} global"
-    assert any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Store)
-               for node in ast.walk(install)), f"{key}: router install() never sets {flag}"
+    _require(suffix in install_args, f"{key}: router install() missing {suffix} parameter")
+    _require(flag in _global_names(install), f"{key}: router install() does not declare {flag} global")
+    _require(
+        any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Store)
+            for node in ast.walk(install)),
+        f"{key}: router install() never sets {flag}",
+    )
 
     reader = _router_flag_reader(router_tree, flag)
     install_selector = _install_selects_callable_on_flag(install, flag)
-    assert reader is not None or install_selector, (
+    _require(
+        reader is not None or install_selector,
         f"{key}: router flag {flag} is neither read on the production v3_agent chain "
-        "nor used by install() to select a non-baseline runtime callable"
+        "nor used by install() to select a non-baseline runtime callable",
     )
-
-    assert _runtime_install_wired(runtime_tree, key, suffix), (
-        f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)"
+    _require(
+        _runtime_install_wired(agent, key, suffix),
+        f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)",
     )
 
 
@@ -272,31 +275,32 @@ def check(base_apply_v4: Path) -> None:
     head_keys = _literal_keys(APPLY_V4)
     base_key_set = set(base_keys)
     removed = sorted(base_key_set - set(head_keys))
-    assert not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed)
+    _require(not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed))
     new_keys = set(head_keys) - base_key_set
 
     files = build_v3.package_files()
     for required in ("TITAN-CONFIG.json", "titan_runtime.py", "r04_full_router.py"):
-        assert required in files, f"materialized package missing {required}"
+        _require(required in files, f"materialized package missing {required}")
 
     config = json.loads(files["TITAN-CONFIG.json"].decode("utf-8"))
     runtime_tree = ast.parse(files["titan_runtime.py"].decode("utf-8"), filename="titan_runtime.py")
     router_tree = ast.parse(files["r04_full_router.py"].decode("utf-8"), filename="r04_full_router.py")
     feature_defaults = _feature_defaults(runtime_tree)
+    agent = _titan_agent_class(runtime_tree)
 
     for key in head_keys:
-        assert key in config, f"{key}: missing from materialized TITAN-CONFIG.json"
-        assert type(config[key]) is bool, f"{key}: materialized config value must be boolean"
-        assert key in feature_defaults, f"{key}: missing from materialized Features"
-        assert type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean"
+        _require(key in config, f"{key}: missing from materialized TITAN-CONFIG.json")
+        _require(type(config[key]) is bool, f"{key}: materialized config value must be boolean")
+        _require(key in feature_defaults, f"{key}: missing from materialized Features")
+        _require(type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean")
         if key in new_keys:
-            assert config[key] is False, f"{key}: new source landing must remain default-OFF"
-            assert feature_defaults[key] is False, f"{key}: new Features default must remain False"
-        assert _contains_feature_ref(runtime_tree, key), f"{key}: TitanAgent never references self.features.{key}"
+            _require(config[key] is False, f"{key}: new source landing must remain default-OFF")
+            _require(feature_defaults[key] is False, f"{key}: new Features default must remain False")
+        _require(_contains_feature_ref(agent, key), f"{key}: TitanAgent never references self.features.{key}")
         if key.startswith("r04_"):
             _assert_r04_router_contract(
                 router_tree,
-                runtime_tree,
+                agent,
                 key,
                 require_default_off=key in new_keys,
             )
