@@ -297,11 +297,12 @@ def _validate_panel_and_results(
     return {"cells": len(rows), "mean_delta_m": mean}
 
 
-def validate_receipt(
+def _validate_receipt_consistency(
     receipt: Mapping[str, Any],
     manifest: Mapping[str, Any],
     panel: Mapping[str, Any],
 ) -> dict[str, Any]:
+    """Validate internal receipt semantics without granting authoritative eligibility."""
     if receipt.get("schema") != RECEIPT_SCHEMA:
         raise ReceiptError(f"schema must be {RECEIPT_SCHEMA}")
 
@@ -327,7 +328,8 @@ def validate_receipt(
     return {
         "valid": True,
         "mode": "official",
-        "official_gate_eligible": True,
+        "official_gate_eligible": False,
+        "input_authority": "consistency-only",
         **result,
     }
 
@@ -340,19 +342,66 @@ def _read_json(path: Path, label: str) -> Mapping[str, Any]:
     return _mapping(value, label)
 
 
+def validate_receipt(
+    receipt: Mapping[str, Any],
+    manifest: Mapping[str, Any] | None = None,
+    panel: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Validate a receipt and grant official eligibility only from committed inputs.
+
+    Supplying ``manifest``/``panel`` is supported for deterministic consistency tests
+    and practice tooling, but caller-supplied mappings can never mint an official gate.
+    The authoritative path loads the sibling committed manifest and frozen panel itself.
+    """
+    if (manifest is None) != (panel is None):
+        raise ReceiptError("manifest and panel must be supplied together or both omitted")
+
+    authoritative = manifest is None
+    if authoritative:
+        here = Path(__file__).resolve().parent
+        manifest = _read_json(here / "V3-MANIFEST.json", "manifest")
+        panel = _read_json(here / "OFFICIAL-GATE-PANEL.json", "panel")
+
+    assert manifest is not None and panel is not None
+    result = _validate_receipt_consistency(receipt, manifest, panel)
+    if result.get("mode") == "official":
+        if authoritative:
+            result["official_gate_eligible"] = True
+            result["input_authority"] = "committed-sibling-files"
+            result["manifest_source"] = "V3-MANIFEST.json"
+            result["panel_source"] = "OFFICIAL-GATE-PANEL.json"
+        else:
+            result["official_gate_eligible"] = False
+            result["input_authority"] = "caller-supplied-consistency-only"
+            result["reason"] = (
+                "caller-supplied manifest/panel inputs are not authoritative and cannot qualify an official gate"
+            )
+    return result
+
+
 def main(argv: list[str] | None = None) -> int:
     here = Path(__file__).resolve().parent
+    default_manifest = here / "V3-MANIFEST.json"
+    default_panel = here / "OFFICIAL-GATE-PANEL.json"
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("receipt", type=Path)
-    parser.add_argument("--manifest", type=Path, default=here / "V3-MANIFEST.json")
-    parser.add_argument("--panel", type=Path, default=here / "OFFICIAL-GATE-PANEL.json")
+    parser.add_argument("--manifest", type=Path, default=default_manifest)
+    parser.add_argument("--panel", type=Path, default=default_panel)
     args = parser.parse_args(argv)
     try:
-        result = validate_receipt(
-            _read_json(args.receipt, "receipt"),
-            _read_json(args.manifest, "manifest"),
-            _read_json(args.panel, "panel"),
+        receipt = _read_json(args.receipt, "receipt")
+        uses_committed_inputs = (
+            args.manifest.resolve() == default_manifest.resolve()
+            and args.panel.resolve() == default_panel.resolve()
         )
+        if uses_committed_inputs:
+            result = validate_receipt(receipt)
+        else:
+            result = validate_receipt(
+                receipt,
+                _read_json(args.manifest, "manifest"),
+                _read_json(args.panel, "panel"),
+            )
     except ReceiptError as exc:
         print(f"FIDELITY ERROR: {exc}", file=sys.stderr)
         return 2
