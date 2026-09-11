@@ -58,10 +58,12 @@ class ExperimentLedgerTests(unittest.TestCase):
         run = el.record_bench(declared(), "H3c", "frozen_panel", {
             "state": "RUNNING", "sample_size": 20, "metrics": {}, "evidence": ["run:2"]
         })
-        with self.assertRaisesRegex(ValueError, "cannot decrease"):
-            el.record_bench(run, "H3c", "frozen_panel", {
-                "state": "RUNNING", "sample_size": 19, "metrics": {}, "evidence": ["run:2"]
-            })
+        for state in ("RUNNING", "COMPLETE", "INVALID"):
+            with self.subTest(state=state):
+                with self.assertRaisesRegex(ValueError, "cannot decrease"):
+                    el.record_bench(run, "H3c", "frozen_panel", {
+                        "state": state, "sample_size": 19, "metrics": {}, "evidence": ["run:2"]
+                    })
 
     def test_not_executed_has_unknown_sample_not_fake_zero(self):
         with self.assertRaisesRegex(ValueError, "must be null"):
