@@ -17,8 +17,8 @@ the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
 before max_yield_day. Ongoing crops use max_lifespan_step == -1 as a sentinel
 until their terminal production, so that value must never be treated as expired.
 The timing proof is valid only under the standard 720-step, 24-turn/day, 10x10
-engine configuration and a public day consistent with step. Unexpected state
-fails closed.
+engine configuration and a public day consistent with step. A WATER candidate
+must also be the only actor on its public tile. Unexpected state fails closed.
 """
 from __future__ import annotations
 
@@ -76,27 +76,44 @@ def _plain_int(value):
     return isinstance(value, int) and not isinstance(value, bool)
 
 
+def _cfg(configuration, key):
+    try:
+        if isinstance(configuration, dict):
+            return configuration.get(key, _UNKNOWN)
+        return getattr(configuration, key, _UNKNOWN)
+    except Exception:
+        return _UNKNOWN
+
+
 def _standard_configuration(configuration):
     """Require the exact public timing/board constants used by this proof."""
-    if not isinstance(configuration, dict):
+    if configuration is None:
         return False
     for key, expected in _STANDARD_CONFIGURATION.items():
-        value = configuration.get(key, _UNKNOWN)
+        value = _cfg(configuration, key)
         if not _plain_int(value) or value != expected:
             return False
     return True
 
 
-def _worker_tile(farm, position):
+def _position_key(position):
     try:
-        # Public worker positions are coordinate vectors. Do not let an
-        # arbitrary two-item iterable (for example mapping keys) become proof
-        # that the worker is standing on a plant.
         if not isinstance(position, (list, tuple)) or len(position) != 2:
             return _UNKNOWN
         x, y = position
         if not _plain_int(x) or not _plain_int(y):
             return _UNKNOWN
+        return (x, y)
+    except Exception:
+        return _UNKNOWN
+
+
+def _worker_tile(farm, position):
+    try:
+        key = _position_key(position)
+        if key is _UNKNOWN:
+            return _UNKNOWN
+        x, y = key
         tiles = farm["tiles"]
         if y < 0 or y >= len(tiles):
             return _UNKNOWN
@@ -212,15 +229,34 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
             return action
         positions = [farm["farmer"]] + list(farm_hands)
         commands = [action.get("farmer")] + list(action_hands)
+
+        # Prove all actor geometry before any telemetry or partial mutation.
+        position_keys = []
+        actor_tiles = []
+        for position in positions:
+            key = _position_key(position)
+            if key is _UNKNOWN:
+                return action
+            tile = _worker_tile(farm, position)
+            if tile is _UNKNOWN:
+                return action
+            position_keys.append(key)
+            actor_tiles.append(tile)
+
+        # A same-tile substitution ceases to be actor-local when another actor
+        # shares the tile: row ordering can change who receives the first effect
+        # or cargo. Fail closed for that WATER candidate regardless of sibling
+        # command so W1 never changes multi-actor interaction semantics.
+        for index, command in enumerate(commands):
+            if command == _WATER and position_keys.count(position_keys[index]) > 1:
+                return action
+
         report["steps_active"] += 1
 
         changed = False
         new_commands = list(commands)
-        for index, (command, position) in enumerate(zip(commands, positions)):
+        for index, (command, tile) in enumerate(zip(commands, actor_tiles)):
             if command != _WATER:
-                continue
-            tile = _worker_tile(farm, position)
-            if tile is _UNKNOWN:
                 continue
             reason = _wasted_water_reason(step, tile)
             if reason is None:
