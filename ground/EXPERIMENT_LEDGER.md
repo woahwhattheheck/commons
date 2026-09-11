@@ -28,3 +28,15 @@ python host/experiment_ledger.py record experiments.json H3c small_gate \
 python host/experiment_ledger.py validate experiments.json
 python host/experiment_ledger.py get experiments.json H3c
 ```
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Experiment ledger card used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite spy-ground-livecash-match-empty-20260909-01 — do not remint.

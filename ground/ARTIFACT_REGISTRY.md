@@ -38,3 +38,15 @@ python host/artifact_registry.py get artifacts.json "$SHA256"
 ```
 
 A workflow artifact receipt should use `kind=workflow_artifact` and record the producing job conclusion rather than inferring success from artifact existence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Artifact registry card used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite spy-ground-livecash-match-empty-20260909-01 — do not remint.
