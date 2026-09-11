@@ -22,11 +22,36 @@ jobs:
       - name: Focused H9 contract checks
         run: |
           python -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h9_r04_e20_hire_guard.py
+      - name: Smoke exact evaluator entrypoint
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          p = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_e20/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('h9_evaluator_candidate', p)
+          mod = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          assert callable(mod.agent)
+          assert mod.agent.h9_enabled is True
+          assert mod.H9_EVALUATOR_CONFIG == {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'h9_e20_enabled': True,
+              'e20_max_hires_per_day': 3,
+              'e20_min_unwatered_crops': 3,
+          }
+          print('H9 evaluator entrypoint OK:', p)
+          PY
       - name: Syntax compile
         run: |
           python -m py_compile \
             revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_r04_e20_hire_guard.py \
             revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h9_r04_e20_hire_guard.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_e20/candidate.py \
             revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py
       - name: Prove experiment stays outside package source set
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
@@ -36,5 +61,6 @@ jobs:
           shas = build_v3.source_shas()
           assert not any(name.startswith('experiments/') for name in shas), sorted(shas)
           assert 'h9_r04_e20_hire_guard.py' not in shas
+          assert 'h9_e20/candidate.py' not in shas
           print('H9 packaging-neutral source-set check OK:', len(shas), 'tracked V3 source inputs')
           PY
