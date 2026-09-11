@@ -1,0 +1,91 @@
+name: titan-v31-b4-sheep-early-audit
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/**'
+      - '.github/workflows/titan-v31-b4-sheep-early-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind frozen source and audit-only scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_BASE: 508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git cat-file -e "$EXPECTED_BASE^{commit}"
+          test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py)" = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          git diff --name-only "$EXPECTED_BASE"...HEAD | tee /tmp/b4-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          paths = {p for p in Path('/tmp/b4-paths.txt').read_text().splitlines() if p}
+          allowed = {
+              '.github/workflows/titan-v31-b4-sheep-early-audit.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/audit_native_tapes.py',
+          }
+          assert paths == allowed, (sorted(paths), sorted(allowed))
+          print('B4_AUDIT_SCOPE_OK', len(paths))
+          PY
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile audit without mutating checkout
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/audit_native_tapes.py')
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('B4_AUDIT_COMPILE_OK')
+          PY
+
+      - name: Decode frozen tapes and audit one-day sheep shift
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/audit_native_tapes.py | tee /tmp/b4-native-sheep-audit.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/b4-native-sheep-audit.json'))
+          print('B4_TOTALS', json.dumps(report['totals'], sort_keys=True))
+          for tape in report['tapes']:
+              buys = [b for b in tape['sheep_buys'] if b['day'] == 9]
+              if not buys:
+                  continue
+              events = [e for e in tape['sheep_worker_events'] if 9 <= e['day'] <= 11]
+              boundary = tape['first_place_production_boundary']
+              print('B4_TAPE', tape['tape'], 'DAY9_BUYS', json.dumps(buys, sort_keys=True), 'EVENTS', json.dumps(events, sort_keys=True), 'BOUNDARY', json.dumps(boundary, sort_keys=True))
+          PY
+
+      - name: Upload exact source-audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: b4-native-sheep-audit
+          path: /tmp/b4-native-sheep-audit.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Prove checkout stayed clean
+        run: test -z "$(git status --porcelain)"
