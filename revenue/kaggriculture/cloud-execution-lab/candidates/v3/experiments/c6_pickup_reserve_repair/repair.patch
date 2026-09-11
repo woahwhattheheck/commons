@@ -1,0 +1,31 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
+@@ -137,14 +137,17 @@ def v219_fertilizer_reserve(observation):
+             return None
+         needs = role.get("needs_fertilizer", False)
+         loaded = role.get("loaded", False)
+-        if type(needs) is not bool or type(loaded) is not bool:
++        pickup_requested = role.get("pickup_requested", False)
++        if (type(needs) is not bool or type(loaded) is not bool
++                or type(pickup_requested) is not bool):
+             return None
+-        if not needs or loaded:
+-            continue
+         kind = role.get("kind")
+         if kind not in ("crop", "fertilizer"):
+             return None
+         inventory = inventories[actor]
+         if not isinstance(inventory, dict):
+             return None
+         carried = _quantity(inventory.get("FERTILIZER", 0))
+         if carried is None:
+             return None
++        # Frozen V219 sets pickup_requested on the same callback that emits
++        # PICKUP FERTILIZER. projected_shed() already subtracts that pickup,
++        # so counting the role again as a future loader would double-reserve.
++        if not needs or loaded or pickup_requested:
++            continue
+         target = 10 if kind == "fertilizer" else 5
+         reserve += max(0, target - carried)
+     return reserve
