@@ -233,6 +233,17 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["recovered"], 0)
 
+    def test_malformed_sibling_command_blocks_partial_mutation(self):
+        # A malformed sibling action row must not coexist with a valid-prefix
+        # WATER rewrite on another actor.
+        observation = _obs(_tile())
+        observation["farms"][0]["tiles"] = [[_tile(), {"kind": "SOIL"}]]
+        observation["farms"][0]["hands"] = [[1, 0]]
+        action = _action()
+        action["hands"] = ["PASS"]
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
