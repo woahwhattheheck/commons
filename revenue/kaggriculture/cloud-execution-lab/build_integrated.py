@@ -75,11 +75,12 @@ def source_files():
                  'reference/engine/utils.py','reference/evaluator/official_agent.py','reference/evaluator/evaluate.py',
                  'reference/evaluator/loader.py','reference/evaluator/opponents.py'):
         mapping['checks/'+name]=name
-    # The vendored evaluator keeps its original adjacent offline-agent layout in
-    # its default loader and compact-ablation paths. Preserve those references
-    # inside the standalone archive by aliasing already-vendored exact sources.
+    # Preserve the evaluator's historical adjacent layout. The historical
+    # evaluate.py is byte-identical to the vendored loader; compact_no_expansion
+    # requires the actual offline candidate module because it consumes POLICY
+    # and agent, which reference/evaluator/official_agent.py does not expose.
     mapping['checks/reference/20260907-offline-agent/evaluate.py']='reference/evaluator/loader.py'
-    mapping['checks/reference/20260907-offline-agent/main.py']='reference/evaluator/official_agent.py'
+    mapping['checks/reference/20260907-offline-agent/main.py']='../20260907-offline-agent/main.py'
     return mapping
 
 
