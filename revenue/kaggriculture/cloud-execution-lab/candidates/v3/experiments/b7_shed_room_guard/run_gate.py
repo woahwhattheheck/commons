@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import statistics
 import subprocess
@@ -29,6 +30,7 @@ GATE_REL = V3_REL / "experiments" / "b7_shed_room_guard"
 CANDIDATE_REL = GATE_REL / "candidate.py"
 BASELINE_REL = GATE_REL / "baseline.py"
 TRANSFORM_REL = V3_REL / "experiments" / "b7_shed_room_guard.py"
+_HEX = frozenset("0123456789abcdef")
 
 
 def sha256_file(path: Path) -> str:
@@ -61,6 +63,8 @@ def run_evaluator(repo: Path, candidate: Path, opponent: Path, label: str, outpu
         raise AssertionError("official evaluator schema/engine drift")
     if report.get("evaluator_sha256") != sha256_file(repo / EVALUATOR_REL):
         raise AssertionError("evaluator fingerprint mismatch")
+    if report.get("seeds") != list(SEEDS):
+        raise AssertionError(("seed metadata mismatch", report.get("seeds"), list(SEEDS)))
     if report.get("candidate") != fingerprint(candidate):
         raise AssertionError(("candidate fingerprint mismatch", report.get("candidate"), fingerprint(candidate)))
     opponents = report.get("opponents")
@@ -81,16 +85,31 @@ def exact_cells(report: dict, label: str) -> dict[tuple[int, int], dict]:
     for game in games:
         if not isinstance(game, dict) or game.get("opponent") != label:
             raise AssertionError(("unexpected game/opponent", game))
-        key = (game.get("seed"), game.get("candidate_seat"))
-        if key not in expected or key in rows:
-            raise AssertionError(("unexpected/duplicate cell", key))
+        seed = game.get("seed")
+        seat = game.get("candidate_seat")
+        if type(seed) is not int or seed not in SEEDS:
+            raise AssertionError(("invalid seed", seed))
+        if type(seat) is not int or seat not in (0, 1):
+            raise AssertionError(("invalid candidate_seat", seat))
+        key = (seed, seat)
+        if key in rows:
+            raise AssertionError(("duplicate cell", key))
         if game.get("status") != "complete" or game.get("failure") is not None:
             raise AssertionError(("incomplete cell", key, game.get("failure")))
         scores = game.get("scores")
-        if not (isinstance(scores, list) and len(scores) == 2 and all(type(v) in (int, float) for v in scores)):
+        if not (
+            isinstance(scores, list)
+            and len(scores) == 2
+            and all(type(value) in (int, float) and math.isfinite(float(value)) for value in scores)
+        ):
             raise AssertionError(("invalid scores", key, scores))
         trace = game.get("trace_sha256")
-        if not isinstance(trace, str) or len(trace) != 64:
+        if not (
+            type(trace) is str
+            and len(trace) == 64
+            and trace == trace.lower()
+            and all(character in _HEX for character in trace)
+        ):
             raise AssertionError(("invalid trace", key, trace))
         rows[key] = game
     if set(rows) != expected:
