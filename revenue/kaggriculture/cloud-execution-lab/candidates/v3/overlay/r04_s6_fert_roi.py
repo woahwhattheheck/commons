@@ -1,26 +1,18 @@
 # SPDX-License-Identifier: Apache-2.0
-"""V4 S6: idle-capacity ROI targets for the already-shipped fertilizer hand.
+"""V4 S6: bounded idle-capacity fertilizer work for the shipped fertilizer hand.
 
-S6 does *not* create a hand, buy fertilizer, change the fert-hand hire test, or
-change how much fertilizer that hand picks up. Once the existing r04_fert_hand
-has already been hired and is carrying fertilizer, S6 may spend otherwise-idle
-capacity on additional productive crops.
+S6 never creates a hand.  The incumbent CARROT-only fert-hand must first pass
+its unchanged hire gate.  S6 may then reserve at most one additional fertilizer
+unit when that unit has a current, non-overlapping, positive-ROI WHEAT/TOMATO
+use whose full pickup -> incumbent CARROT service -> S6 service route fits
+before EOD from every possible shed spawn.  Future authored CARROT planting
+reserves the entire hand for baseline and disables the extra reserve.
 
-The incumbent hand owns CARROT. S6 therefore falls back to incumbent routing
-whenever a current or authored-later CARROT obligation exists. Only when that
-queue is empty does S6 consider:
-- WHEAT annual-crop opportunities under the same marginal-yield calculation;
-- TOMATO when tonight's production bonus is already guaranteed by a completed
-  WATER, fertilizer coverage is absent, held yield has >=2 units of headroom,
-  and the existing hand can reach and FERTILIZE the tile before EOD.
-
-All candidate work must be reachable before this day-scoped hand resets at EOD,
-and new WHEAT marginal yield is clipped to the official episode's last
-actionable day so post-episode WATER is never priced as productive work.
-Incumbent CARROT reservation deliberately mirrors the baseline's un-clipped,
-price-independent target rule so S6 never steals an obligation the shipped
-router would service. Malformed public state returns ``None`` so the caller
-preserves incumbent CARROT-only behavior.
+At execution time CARROT remains absolute priority.  Only after current and
+same/later-callback CARROT obligations clear may the already-funded spare unit
+be spent on reachable WHEAT or guaranteed-watered TOMATO work.  Frozen V219's
+scheduled TOMATO fertilizer gate is excluded so S6 never races that parent
+worker for the same pre-action TOMATO state.
 """
 from __future__ import annotations
 
@@ -29,9 +21,9 @@ from typing import Any
 TURNS_PER_DAY = 24
 EPISODE_STEPS = 720
 BOARD_SIZE = 10
-# The pinned interpreter marks DONE after processing step episodeSteps-2, so the
-# last executable action belongs to day 29 under the standard 24-turn day.
 FINAL_ACTION_DAY = (EPISODE_STEPS - 2) // TURNS_PER_DAY
+FERT_HAND_DAYS = (24, 25, 26, 27, 28)
+S6_EXTRA_FERT_CAP = 1
 ANNUAL = {
     "WHEAT": (2, 4, 6),
     "CARROT": (2, 3, 4),
@@ -39,10 +31,13 @@ ANNUAL = {
 TOMATO_FIRST_YIELD_DAY = 8
 TOMATO_INTERVAL = 1
 TOMATO_MAX_YIELD = 4
+V219_FERTILIZER_DAYS = (24, 27)
+V219_FERTILIZER_MAX_PRICE = 30
 
 REPORT = {
     "choices": 0,
     "fertilize_requests": 0,
+    "reserve_requests": 0,
     "choice_by_crop": {"WHEAT": 0, "CARROT": 0, "TOMATO": 0},
 }
 
@@ -52,7 +47,6 @@ def _plain_int(value: Any, *, minimum: int | None = None) -> bool:
 
 
 def standard_configuration(configuration: Any) -> bool:
-    """S6's calendar/geometry theorem is valid only on the pinned field config."""
     if configuration is None:
         return False
     expected = {
@@ -71,13 +65,8 @@ def standard_configuration(configuration: Any) -> bool:
 
 
 def _annual_gain(
-    tile: dict[str, Any],
-    day: int,
-    crop: str,
-    *,
-    clip_to_episode: bool,
+    tile: dict[str, Any], day: int, crop: str, *, clip_to_episode: bool,
 ) -> int | None:
-    """Annual marginal units, with optional horizon clipping for new S6 work."""
     first, last, cap = ANNUAL[crop]
     planted = tile.get("planted_day")
     covered = tile.get("fertilized_until_day")
@@ -107,7 +96,6 @@ def _annual_gain(
 
 
 def _tomato_gain(tile: dict[str, Any], day: int) -> int | None:
-    """Guaranteed marginal units at tonight's ongoing TOMATO refresh only."""
     planted = tile.get("planted_day")
     covered = tile.get("fertilized_until_day")
     have = tile.get("yield_units")
@@ -120,9 +108,6 @@ def _tomato_gain(tile: dict[str, Any], day: int) -> int | None:
         or type(watered) is not bool
     ):
         return None
-    # Ongoing-crop fertilizer is evaluated at EOD, so fertilizer applied after
-    # today's WATER still boosts tonight. Requiring watered=True makes the +1
-    # independent of any prediction about later parent commands.
     if not watered or covered >= day or have > TOMATO_MAX_YIELD - 2:
         return 0
     next_day = day + 1
@@ -161,8 +146,8 @@ def _state(observation: Any):
         or any(not isinstance(row, list) or len(row) != BOARD_SIZE for row in tiles)
     ):
         return None
-    for crop in ("WHEAT", "CARROT", "TOMATO"):
-        if not _plain_int(prices.get(crop), minimum=0):
+    for product in ("WHEAT", "CARROT", "TOMATO", "FERTILIZER"):
+        if not _plain_int(prices.get(product), minimum=0):
             return None
     return step // TURNS_PER_DAY, tiles, prices
 
@@ -172,6 +157,10 @@ def _current_targets(observation: Any):
     if parsed is None:
         return None
     day, tiles, prices = parsed
+    v219_tomato_service = (
+        day in V219_FERTILIZER_DAYS
+        and prices["FERTILIZER"] <= V219_FERTILIZER_MAX_PRICE
+    )
     targets = []
     for y, row in enumerate(tiles):
         for x, tile in enumerate(row):
@@ -179,8 +168,6 @@ def _current_targets(observation: Any):
                 continue
             crop = tile.get("crop")
             if crop == "CARROT":
-                # Reservation must mirror the incumbent hand, including its
-                # un-clipped calendar and price-independent target decision.
                 gain = _annual_gain(tile, day, crop, clip_to_episode=False)
                 if gain is None:
                     return None
@@ -190,6 +177,8 @@ def _current_targets(observation: Any):
             if crop == "WHEAT":
                 gain = _annual_gain(tile, day, crop, clip_to_episode=True)
             elif crop == "TOMATO":
+                if v219_tomato_service:
+                    continue
                 gain = _tomato_gain(tile, day)
             else:
                 continue
@@ -203,8 +192,152 @@ def _current_targets(observation: Any):
     return targets
 
 
+def _shed_tiles():
+    half = BOARD_SIZE // 2
+    return {(half - 1, half - 1), (half, half - 1), (half - 1, half), (half, half)}
+
+
+def _leave_shed_position(pos, sheds):
+    x, y = pos
+    for dx, dy in ((0, -1), (-1, 0), (0, 1), (1, 0)):
+        nxt = (x + dx, y + dy)
+        if 0 <= nxt[0] < BOARD_SIZE and 0 <= nxt[1] < BOARD_SIZE and nxt not in sheds:
+            return nxt
+    return None
+
+
+def _step_position(pos, target, sheds):
+    x, y = pos
+    tx, ty = target
+    options = []
+    if tx > x:
+        options.append((x + 1, y))
+    if tx < x:
+        options.append((x - 1, y))
+    if ty > y:
+        options.append((x, y + 1))
+    if ty < y:
+        options.append((x, y - 1))
+    if not options:
+        return pos
+    options.sort(key=lambda nxt: nxt in sheds)
+    return options[0]
+
+
+def _route_callbacks(start, baseline_targets, extension):
+    """Exact static callback model of pickup + incumbent routing + one extension."""
+    sheds = _shed_tiles()
+    pos = start
+    remaining = [tuple(target) for target in baseline_targets]
+    callbacks = 1  # initial PICKUP callback
+    for _ in range(128):
+        if remaining:
+            if pos in sheds:
+                pos = _leave_shed_position(pos, sheds)
+                if pos is None:
+                    return None
+                callbacks += 1
+                continue
+            at_pos = next((i for i, t in enumerate(remaining) if (t[0], t[1]) == pos), None)
+            if at_pos is not None:
+                remaining.pop(at_pos)
+                callbacks += 1  # incumbent FERTILIZE
+                continue
+            goal = min(
+                remaining,
+                key=lambda t: (
+                    abs(t[0] - pos[0]) + abs(t[1] - pos[1]),
+                    -t[2], t[1], t[0],
+                ),
+            )
+            nxt = _step_position(pos, (goal[0], goal[1]), sheds)
+            if nxt == pos:
+                return None
+            pos = nxt
+            callbacks += 1
+            continue
+
+        target_pos = (extension[0], extension[1])
+        if pos in sheds:
+            pos = _leave_shed_position(pos, sheds)
+            if pos is None:
+                return None
+            callbacks += 1
+            continue
+        if pos == target_pos:
+            return callbacks + 1  # S6 FERTILIZE
+        nxt = _step_position(pos, target_pos, sheds)
+        if nxt == pos:
+            return None
+        pos = nxt
+        callbacks += 1
+    return None
+
+
+def reserve_extra_fertilizer(
+    observation: Any,
+    baseline_targets: Any,
+    baseline_units: Any,
+    future_carrots: Any,
+    reach_limit: Any,
+) -> int:
+    """Return 0/1 extra units; called only after the baseline hire gate passed."""
+    parsed = _state(observation)
+    if parsed is None:
+        return 0
+    day, _, prices = parsed
+    if day not in FERT_HAND_DAYS:
+        return 0
+    if (
+        not _plain_int(baseline_units, minimum=1)
+        or not _plain_int(future_carrots, minimum=0)
+        or future_carrots != 0
+        or not _plain_int(reach_limit, minimum=1)
+        or baseline_units >= reach_limit
+        or not isinstance(baseline_targets, list)
+        or len(baseline_targets) != baseline_units
+    ):
+        return 0
+    carrots = []
+    for target in baseline_targets:
+        if (
+            not isinstance(target, (tuple, list))
+            or len(target) != 3
+            or not _plain_int(target[0], minimum=0)
+            or not _plain_int(target[1], minimum=0)
+            or target[0] >= BOARD_SIZE
+            or target[1] >= BOARD_SIZE
+            or not _plain_int(target[2], minimum=1)
+        ):
+            return 0
+        carrots.append((target[0], target[1], target[2]))
+
+    targets = _current_targets(observation)
+    if targets is None:
+        return 0
+    sheds = _shed_tiles()
+    candidates = [
+        target for target in targets
+        if target[2] != "CARROT"
+        and (target[0], target[1]) not in sheds
+        and target[4] > prices["FERTILIZER"]
+    ]
+    if not candidates:
+        return 0
+
+    step = observation["step"]
+    callbacks_after_hire = TURNS_PER_DAY - ((step % TURNS_PER_DAY) + 1)
+    if callbacks_after_hire <= 0:
+        return 0
+    for candidate in candidates:
+        route_lengths = [_route_callbacks(spawn, carrots, candidate) for spawn in sorted(sheds)]
+        if all(length is not None and length <= callbacks_after_hire for length in route_lengths):
+            REPORT["reserve_requests"] += 1
+            return S6_EXTRA_FERT_CAP
+    return 0
+
+
 def choose_fert_hand_target(observation: Any, pos: Any, upcoming=()):
-    """Return an idle-capacity target, or None to preserve incumbent routing."""
     parsed = _state(observation)
     if parsed is None or not isinstance(pos, tuple) or len(pos) != 2:
         return None
@@ -219,17 +352,8 @@ def choose_fert_hand_target(observation: Any, pos: Any, upcoming=()):
     targets = _current_targets(observation)
     if targets is None:
         return None
-
-    # CARROT is incumbent r04_fert_hand work. S6 is deliberately subordinate:
-    # any current positive-gain CARROT returns control to the exact baseline
-    # target/fertilize path instead of reprioritizing already-proven work.
     if any(target[2] == "CARROT" for target in targets):
         return None
-
-    # r04_fert_hand._upcoming emits authored CARROT plantings that become
-    # incumbent targets on the next callback. A positive upcoming obligation
-    # also reserves the hand/fertilizer for baseline; malformed look-ahead
-    # fails closed rather than widening S6.
     try:
         for item in upcoming or ():
             if not isinstance(item, (tuple, list)) or len(item) < 2:
@@ -241,9 +365,8 @@ def choose_fert_hand_target(observation: Any, pos: Any, upcoming=()):
                 or not _plain_int(y, minimum=0)
                 or x >= BOARD_SIZE
                 or y >= BOARD_SIZE
+                or not _plain_int(gain, minimum=0)
             ):
-                return None
-            if not _plain_int(gain, minimum=0):
                 return None
             if gain > 0:
                 return None
@@ -251,11 +374,7 @@ def choose_fert_hand_target(observation: Any, pos: Any, upcoming=()):
         return None
 
     px, py = pos
-    # A day-scoped hand must be able to spend movement callbacks plus the final
-    # FERTILIZE callback before EOD. This is mandatory for every S6 target: an
-    # unreachable annual target is not productive idle-capacity work either.
-    step = observation["step"]
-    turns_left = TURNS_PER_DAY - (step % TURNS_PER_DAY)
+    turns_left = TURNS_PER_DAY - (observation["step"] % TURNS_PER_DAY)
     targets = [
         target for target in targets
         if target[2] != "CARROT"
@@ -267,8 +386,6 @@ def choose_fert_hand_target(observation: Any, pos: Any, upcoming=()):
     def key(target):
         x, y, crop, gain, value = target
         distance = abs(px - x) + abs(py - y)
-        # This branch is reachable only after r04_fert_hand has an existing hand
-        # with held fertilizer. No hire/buy/pickup decision is made here.
         return (value / float(distance + 1), value, -distance, gain, -y, -x, crop)
 
     x, y, crop, gain, value = max(targets, key=key)
