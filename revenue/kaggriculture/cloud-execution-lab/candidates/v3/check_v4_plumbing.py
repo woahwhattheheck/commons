@@ -437,6 +437,7 @@ def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
 
 
 def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
+    """Return top-level router functions actually invoked from live ``v3_agent`` code."""
     bindings = _top_level_function_bindings(router_tree)
     root = bindings.get("v3_agent")
     if root is None:
@@ -449,9 +450,9 @@ def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
             continue
         reachable.add(function)
         for child in _direct_body_nodes(function):
-            if not isinstance(child, ast.Name) or not isinstance(child.ctx, ast.Load):
+            if not isinstance(child, ast.Call) or not isinstance(child.func, ast.Name):
                 continue
-            target = bindings.get(child.id)
+            target = bindings.get(child.func.id)
             if target is not None and target not in reachable:
                 stack.append(target)
     return reachable
@@ -605,6 +606,37 @@ def install(*, place_delivery=None):
     _require(
         _router_flag_reader(live, "PLACE_DELIVERY") == "v3_agent",
         "internal router regression: live production flag read missing",
+    )
+
+    called_helper = ast.parse(
+        """
+PLACE_DELIVERY = False
+def live_helper(observation, configuration=None):
+    if PLACE_DELIVERY:
+        return observation
+    return observation
+def v3_agent(observation, configuration=None):
+    return live_helper(observation, configuration)
+"""
+    )
+    _require(
+        _router_flag_reader(called_helper, "PLACE_DELIVERY") == "live_helper",
+        "internal router regression: directly called helper was not reachable",
+    )
+
+    uncalled_helper = ast.parse(
+        """
+PLACE_DELIVERY = False
+def dead_helper(observation, configuration=None):
+    return PLACE_DELIVERY
+def v3_agent(observation, configuration=None):
+    dead_helper
+    return observation
+"""
+    )
+    _require(
+        _router_flag_reader(uncalled_helper, "PLACE_DELIVERY") is None,
+        "internal router regression: uncalled helper flag read false-passed",
     )
 
     nested_setter = ast.parse(
