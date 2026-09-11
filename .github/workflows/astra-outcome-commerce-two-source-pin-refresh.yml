@@ -1,0 +1,126 @@
+name: astra outcome-commerce two-source-pin refresh
+
+on:
+  push:
+    branches:
+      - sol-astra/outcome-commerce-two-source-pin-refresh-20260910-2326
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Patch exactly two canonical source pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import copy
+          import json
+          import subprocess
+          from pathlib import Path
+
+          catalog_path = Path("revenue/outcome_commerce/catalog.json")
+          raw = catalog_path.read_text(encoding="utf-8")
+          before = json.loads(raw)
+
+          updates = {
+              "production-survival-sprint": {
+                  "path": "revenue/production_survival/offer.json",
+                  "old": "84b664c07d0677a92c8e79797f80ebde823da447",
+                  "new": "830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+              },
+              "white-box-gguf-pilot-30d": {
+                  "path": "commercial.json",
+                  "old": "30ecdec61d19f005330f75ae239ca469482ff06a",
+                  "new": "6ddccf56cbcf0768f57b902cadb8aeef96cdd43c",
+              },
+          }
+
+          listings = before.get("listings")
+          if not isinstance(listings, list):
+              raise SystemExit("catalog listings missing")
+          by_id = {row.get("id"): row for row in listings if isinstance(row, dict)}
+          if len(by_id) != len(listings):
+              raise SystemExit("catalog listing ids are missing or duplicated")
+
+          expected = copy.deepcopy(before)
+          expected_by_id = {row["id"]: row for row in expected["listings"]}
+          patched = raw
+
+          for listing_id, spec in updates.items():
+              row = by_id.get(listing_id)
+              if not isinstance(row, dict):
+                  raise SystemExit(f"missing listing {listing_id}")
+              source = row.get("source")
+              if not isinstance(source, dict):
+                  raise SystemExit(f"{listing_id} must use source authority")
+              if source.get("path") != spec["path"]:
+                  raise SystemExit(f"{listing_id} source path drifted: {source.get('path')!r}")
+              if source.get("terms_authority") != "source":
+                  raise SystemExit(f"{listing_id} terms authority drifted")
+              if source.get("blob_sha") != spec["old"]:
+                  raise SystemExit(
+                      f"{listing_id} preimage drifted: {source.get('blob_sha')!r} != {spec['old']}"
+                  )
+              actual = subprocess.check_output(
+                  ["git", "hash-object", spec["path"]], text=True
+              ).strip()
+              if actual != spec["new"]:
+                  raise SystemExit(
+                      f"{listing_id} current source blob drifted: {actual} != {spec['new']}"
+                  )
+              count = patched.count(spec["old"])
+              if count != 1:
+                  raise SystemExit(
+                      f"{listing_id} old blob literal count must be 1, got {count}"
+                  )
+              patched = patched.replace(spec["old"], spec["new"], 1)
+              expected_by_id[listing_id]["source"]["blob_sha"] = spec["new"]
+
+          after = json.loads(patched)
+          if after != expected:
+              raise SystemExit("postimage changed catalog semantics beyond the two source blob pins")
+          catalog_path.write_text(patched, encoding="utf-8")
+
+          reread = json.loads(catalog_path.read_text(encoding="utf-8"))
+          reread_by_id = {row["id"]: row for row in reread["listings"]}
+          for listing_id, spec in updates.items():
+              source = reread_by_id[listing_id]["source"]
+              if source["blob_sha"] != spec["new"] or source["path"] != spec["path"]:
+                  raise SystemExit(f"{listing_id} postimage readback mismatch")
+
+          print("PATCH_OK", ",".join(sorted(updates)))
+          PY
+
+          python3 -m json.tool revenue/outcome_commerce/catalog.json >/dev/null
+          git diff --check
+          test "$(git diff --name-only | wc -l)" -eq 1
+          test "$(git diff --name-only)" = "revenue/outcome_commerce/catalog.json"
+
+      - name: Commit clean one-file postimage and remove transient workflow
+        shell: bash
+        env:
+          BASE_SHA: 8c2988b2b832c4b3961ed9c8e2044ca456d5d3d1
+        run: |
+          set -euo pipefail
+          git config user.name "commons-board"
+          git config user.email "commons-board@users.noreply.github.com"
+          git add revenue/outcome_commerce/catalog.json
+          git rm .github/workflows/astra-outcome-commerce-two-source-pin-refresh.yml
+          git commit -m "fix(commerce): refresh two canonical source pins"
+
+          test "$(git diff --name-only "$BASE_SHA"..HEAD | wc -l)" -eq 1
+          test "$(git diff --name-only "$BASE_SHA"..HEAD)" = "revenue/outcome_commerce/catalog.json"
+          git diff --check "$BASE_SHA"..HEAD
+          git diff --unified=0 "$BASE_SHA"..HEAD -- revenue/outcome_commerce/catalog.json
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "FINAL_HEAD=$(git rev-parse HEAD)"
