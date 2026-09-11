@@ -20,8 +20,14 @@ def install_joint(host=None, horizon=None, opening=None, row_order=None,
     L1/L2 remain at their parent defaults.  H4's own reconcile function detects the
     L3 globals and becomes exact identity/no-debt at and after the configured cutoff.
     """
-    agent = h4.install(host, horizon, opening, row_order, evening_flush,
-                       sale_fertilizer, cattle_early, strawberry_topup=True)
+    candidate = h4.install(host, horizon, opening, row_order, evening_flush,
+                           sale_fertilizer, cattle_early, strawberry_topup=True)
     base.install(no_late_sale_advance=True,
                  no_late_sale_advance_step=no_late_sale_advance_step)
-    return agent
+    return candidate
+
+
+# Standard evaluator entrypoint. Importing this module arms exactly H4 + L3 and
+# exposes the same module-level callable contract as a normal Kaggriculture agent.
+# This avoids an untracked ad-hoc wrapper in the benchmark harness.
+agent = install_joint()
