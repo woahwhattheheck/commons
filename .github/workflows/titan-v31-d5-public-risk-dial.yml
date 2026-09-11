@@ -1,0 +1,55 @@
+name: titan-v31-d5-public-risk-dial
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-d5-public-risk-dial/**'
+      - '.github/workflows/titan-v31-d5-public-risk-dial.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  d5-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind frozen base and exact analysis-only scope
+        shell: bash
+        env:
+          BASE: 508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+        run: |
+          set -euo pipefail
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git diff --name-only "$BASE"...HEAD | sort > /tmp/actual-paths
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/titan-v31-d5-public-risk-dial.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/v31-d5-public-risk-dial/score_public_cash_gap.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/v31-d5-public-risk-dial/test_score_public_cash_gap.py
+          EOF
+          sort -o /tmp/expected-paths /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          test -z "$(git status --porcelain)"
+
+      - name: Run D5 public-only diagnostic contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v31-d5-public-risk-dial
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile score_public_cash_gap.py test_score_public_cash_gap.py
+          python -B -m unittest -v test_score_public_cash_gap.py |& tee /tmp/d5-tests.log
+          grep -F 'Ran 11 tests' /tmp/d5-tests.log
+          grep -F 'OK' /tmp/d5-tests.log
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
