@@ -80,8 +80,10 @@ def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
         if isinstance(seed, bool) or not isinstance(seed, int):
             raise ReceiptError(f"panel.seeds[{idx}] must be an integer")
         normalized_seeds.append(seed)
+    if len(set(normalized_seeds)) != len(normalized_seeds):
+        raise ReceiptError("panel.seeds must not contain duplicates")
     normalized_seats = [_seat(seat, f"panel.seats[{idx}]") for idx, seat in enumerate(seats)]
-    if sorted(set(normalized_seats)) != [0, 1] or len(normalized_seats) != 2:
+    if sorted(normalized_seats) != [0, 1]:
         raise ReceiptError("panel.seats must contain both seats exactly once")
     return {(seed, seat) for seed in normalized_seeds for seat in normalized_seats}
 
@@ -145,6 +147,8 @@ def _validate_panel_and_results(
     receipt: Mapping[str, Any], panel: Mapping[str, Any]
 ) -> dict[str, float | int]:
     expected = _expected_cells(panel)
+    if panel.get("games_per_opponent") != len(expected):
+        raise ReceiptError("panel.games_per_opponent must equal the frozen seed x seat cell count")
     gate = _mapping(receipt.get("panel"), "receipt.panel")
     if gate.get("seeds") != panel.get("seeds"):
         raise ReceiptError("receipt.panel.seeds must exactly match OFFICIAL-GATE-PANEL.json")
