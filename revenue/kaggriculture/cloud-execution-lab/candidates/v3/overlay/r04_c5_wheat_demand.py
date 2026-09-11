@@ -150,7 +150,8 @@ def _market_rows(action: Mapping[str, Any], executable_cap: int) -> list[Any]:
 def _own_wheat_buy_upper(action: Mapping[str, Any], executable_cap: int) -> int:
     total = 0
     for order in _market_rows(action, executable_cap):
-        if not isinstance(order, (list, tuple)) or not order:
+        # The official interpreter executes market rows only when they are lists.
+        if not isinstance(order, list) or not order:
             continue
         if order[0] != "BUY_PRODUCT" or len(order) < 2 or order[1] != WHEAT:
             continue
@@ -175,7 +176,8 @@ def _rival_wheat_buy_lower_bound(
 
 
 def _cash_spending(order: Any) -> bool:
-    return isinstance(order, (list, tuple)) and bool(order) and order[0] in BUY_OPS
+    # Match the official market parser: tuple-shaped rows are inert.
+    return isinstance(order, list) and bool(order) and order[0] in BUY_OPS
 
 
 def _relocate_wheat_sell(
@@ -188,7 +190,13 @@ def _relocate_wheat_sell(
 
     wheat_rows: list[tuple[int, Sequence[Any]]] = []
     for index, order in enumerate(market):
-        if not isinstance(order, (list, tuple)) or not order or len(order) < 2:
+        # A tuple that names WHEAT is engine-inert, but treating it as an
+        # executable candidate would move a row the engine would never parse.
+        if not isinstance(order, list):
+            if isinstance(order, tuple) and len(order) >= 2 and order[1] == WHEAT:
+                return action, None
+            continue
+        if not order or len(order) < 2:
             continue
         if order[1] != WHEAT:
             continue
@@ -276,11 +284,16 @@ class WheatDemandRider:
         return player, record, price, executable_cap
 
     def _forget_player(self, observation: Any) -> None:
+        """Invalidate stale evidence even when the callback clock is malformed."""
         try:
-            _, player = _step_player(observation)
-            self.players.pop(player, None)
+            player = _strict_int(_get(observation, "player", None), "player")
         except (AttributeError, KeyError, TypeError, ValueError):
-            pass
+            self.players.clear()
+            return
+        if player in (0, 1):
+            self.players.pop(player, None)
+        else:
+            self.players.clear()
 
     def apply(
         self,
