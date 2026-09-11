@@ -1,4 +1,4 @@
-name: titan-v3 receipt-prefix exact-head repair
+name: titan-v3 receipt-prefix exact-head custody closure
 
 on:
   pull_request:
@@ -15,30 +15,50 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     env:
-      PARENT_SHA: '4ce3056ba1ecff6135d1ef98c50394bf93559af7'
+      REVIEWED_PARENT_SHA: '5c346c4dc4f94f5304307d661bdf33f7dd6eff52'
+      SOURCE_PARENT_SHA: '4ce3056ba1ecff6135d1ef98c50394bf93559af7'
       DIR: 'revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist'
     steps:
       - name: Checkout literal event head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
 
-      - name: Assert exact successor custody
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Assert exact successor and stack custody
         shell: bash
         run: |
           set -euo pipefail
           expected='${{ github.event.pull_request.head.sha || github.sha }}'
           test "$(git rev-parse HEAD)" = "$expected"
-          test "$(git rev-parse HEAD^)" = "$PARENT_SHA"
-          cat > "$RUNNER_TEMP/expected-paths" <<'EOF'
+          test "$(git rev-parse HEAD^)" = "$REVIEWED_PARENT_SHA"
+          test "$(git rev-parse HEAD^^)" = "$SOURCE_PARENT_SHA"
+
+          cat > "$RUNNER_TEMP/expected-child-paths" <<'EOF'
+          .github/workflows/titan-v3-receipt-profile-prefix-sol-mechanist.yml
+          EOF
+          git diff --name-only "$REVIEWED_PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-child-paths"
+          diff -u "$RUNNER_TEMP/expected-child-paths" "$RUNNER_TEMP/actual-child-paths"
+
+          cat > "$RUNNER_TEMP/expected-stack-paths" <<'EOF'
           .github/workflows/titan-v3-receipt-profile-prefix-sol-mechanist.yml
           revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist/run_exact_tests.py
           EOF
-          git diff --name-only "$PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
-          LC_ALL=C sort -o "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/expected-paths"
-          diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
+          git diff --name-only "$SOURCE_PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-stack-paths"
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-stack-paths" "$RUNNER_TEMP/expected-stack-paths"
+          diff -u "$RUNNER_TEMP/expected-stack-paths" "$RUNNER_TEMP/actual-stack-paths"
+
+          python - <<'PY'
+          import sys
+          assert sys.version_info[:2] == (3, 11), sys.version
+          print(sys.version)
+          PY
 
       - name: Compile without writing repository bytecode
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v3-receipt-profile-prefix-sol-mechanist
@@ -91,6 +111,16 @@ jobs:
           }
           assert receipt['claim'] == 'SOURCE_REAL_ACTION_UNMEASURED'
           PY
+          sha256sum "$out/receipt.json" "$out/scheduler.py" > "$out/SHA256SUMS"
+          cat "$out/SHA256SUMS"
+
+      - name: Retain verified receipt and candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-receipt-prefix-${{ github.event.pull_request.head.sha || github.sha }}-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-v3-receipt-prefix/
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Require clean checkout
         shell: bash
