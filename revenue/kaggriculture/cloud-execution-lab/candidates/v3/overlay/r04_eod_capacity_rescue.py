@@ -31,9 +31,9 @@ _CARGO_NEUTRAL = frozenset({
     "WATER", "DIG", "CARE", "BUILD_COOP", "BUILD_PASTURE", "PLANT",
 })
 _SHED_CHANGING_MARKET = frozenset({"SELL", "BUY_PRODUCT", "BUY_ANIMAL"})
-# These are the only official market verbs whose execution cannot change shed
-# stock. Unknown verbs are ambiguous raw rows and must fail closed rather than
-# being assumed harmless by this exact private-shed theorem.
+# These are the only official market row heads whose execution cannot change shed
+# stock. Any other raw head has an unspecified shed effect, so this helper
+# returns the parent rather than assuming the row is shed-neutral.
 _SHED_NEUTRAL_MARKET = frozenset({"HIRE", "BUY_LAND", "BUY_SEED"})
 # Official kaggriculture.json defaults. Hour-23 (step % 24 == 23) is not a
 # consume tick under these intervals, so pre-town overflow equals pre-EOD

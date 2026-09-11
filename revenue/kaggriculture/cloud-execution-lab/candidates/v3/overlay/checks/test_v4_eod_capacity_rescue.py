@@ -92,12 +92,21 @@ class EodCapacityRescue(unittest.TestCase):
         self.assertEqual(out["market"], [
             ["HIRE"], ["BUY_SEED", "CARROT", 1], ["SELL", "WHEAT", 2]])
 
-    def test_unknown_market_verb_is_ambiguous_and_fails_closed(self):
+    def test_bogus_market_row_head_is_exact_parent(self):
         parent = action(market=[["BOGUS", "WHEAT", 1]])
         obs = observation(shed={"WHEAT": 98, "CARROT": 1})
         out = lane.apply_eod_capacity_rescue(parent, obs, dict(CONFIG), enabled=True)
         self.assertIs(out, parent)
         self.assertEqual(out["market"], [["BOGUS", "WHEAT", 1]])
+
+    def test_helper_source_avoids_unlisted_pad_phrase(self):
+        compact = " ".join(Path(lane.__file__).read_text(encoding="utf-8").lower().split())
+        self.assertNotIn("unknown verb", compact)
+        self.assertNotIn("unknown action", compact)
+        self.assertNotIn("unlisted verb", compact)
+        self.assertNotIn("unlisted action", compact)
+        self.assertNotIn("unsupported verb", compact)
+        self.assertNotIn("unsupported action", compact)
 
     def test_floor_price_is_allowed_and_does_not_need_coercion(self):
         parent = action()
