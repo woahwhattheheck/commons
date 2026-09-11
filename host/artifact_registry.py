@@ -285,9 +285,11 @@ def sha256_file(path: str, chunk_size: int = 1024 * 1024) -> tuple[str, int]:
     return digest.hexdigest(), total
 
 
-def load_registry(path: str) -> Dict[str, Any]:
+def load_registry(path: str, *, create_if_missing: bool = False) -> Dict[str, Any]:
     if not os.path.exists(path):
-        return empty_registry()
+        if create_if_missing:
+            return empty_registry()
+        raise FileNotFoundError(path)
     with open(path, "r", encoding="utf-8") as fh:
         return validate_registry(loads_strict(fh.read()))
 
@@ -343,7 +345,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             digest, size = sha256_file(args.path)
             print(json.dumps({"sha256": digest, "size_bytes": size}, sort_keys=True))
             return 0
-        registry = load_registry(args.registry)
+        registry = load_registry(args.registry, create_if_missing=(args.command == "add"))
         if args.command == "validate":
             print(dump_registry(registry), end="")
             return 0
