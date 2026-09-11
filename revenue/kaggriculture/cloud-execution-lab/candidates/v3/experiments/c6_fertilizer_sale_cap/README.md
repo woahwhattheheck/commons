@@ -21,8 +21,20 @@ live role obligations are not represented as future tape rows.
 C6 therefore does **not** disable fertilizer sale advancement globally. It snapshots
 E184 fertilizer debt before the parent call, measures only positive debt booked by that
 same callback, and may cancel only those exact units when already-confirmed V219 roles
-still need fertilizer. Cancellation refunds exactly the matching debt so the original
-future tape sale remains eligible at its authored due step.
+still need fertilizer. Cancellation refunds exactly matching newly-booked debt so the
+original future tape units become eligible again at authored due steps.
+
+A partial cancellation restores the **latest** newly-booked due units first. Nearer E184
+debt remains intact, preventing a nearer native sale from being re-enabled while the
+confirmed V219 worker is still approaching/loading at the shed.
+
+## Market-row custody
+
+The official market is positional: both players' raw market arrays execute slot by slot.
+Therefore a full C6 cancellation never deletes or compacts the E184-owned row. It replaces
+that exact raw slot with the engine's inert empty-row placeholder `[]`. Every later parent
+BUY/HIRE/SELL row retains its exact index, executable-prefix membership, content, and rival
+pairing. A partial cancellation changes only the owned FERTILIZER quantity in place.
 
 ## Ownership and fail-closed rules
 
@@ -41,7 +53,7 @@ The transform requires all of the following:
 If any ownership, schema, quantity, worker, or ledger condition is ambiguous, the exact
 parent action and debt ledger are returned unchanged. Native/tape fertilizer sales,
 V233 credit sales, inherited E184 debt, BUY/PICKUP/HIRE rows, worker routes, other
-products, and unrelated debt entries are not rewritten.
+products, and unrelated debt entries are not rewritten or reindexed.
 
 ## First gate: structural reachability
 
@@ -51,6 +63,10 @@ sales after E184's advance start. It then checks whether any such sale lies with
 day-27 window. The dedicated workflow **fails** if this overlap count is zero. A source
 mechanism with no frozen activation opportunity is a C6 NO-LANE and should be closed,
 not sent to an economics panel.
+
+The workflow independently binds the exact frozen-base ancestry plus the R04 and tape
+Git blobs at both base and HEAD before running the census, normal/`-O` predecessors, and
+syntax checks.
 
 ## Evidence boundary
 
