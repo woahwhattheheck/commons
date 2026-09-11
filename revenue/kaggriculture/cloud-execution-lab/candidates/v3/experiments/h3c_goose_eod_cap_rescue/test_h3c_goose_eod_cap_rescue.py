@@ -171,6 +171,15 @@ class H3cContracts(unittest.TestCase):
         action["farmer"] = ["HARVEST"]
         self.assertIs(self.apply(observation, action), action)
 
+    def test_reverse_actor_order_collect_then_existing_harvest_blocks(self):
+        observation, action = fixture()
+        observation["farms"][0]["farmer"] = [2, 2]
+        observation["farms"][0]["hands"] = [[2, 2]]
+        observation["private"]["inventories"] = [{}, {}]
+        action["farmer"] = ["COLLECT_FERTILIZER"]
+        action["hands"] = [["HARVEST"]]
+        self.assertIs(self.apply(observation, action), action)
+
     def test_same_tile_other_active_service_blocks_action_order_ambiguity(self):
         observation, action = fixture()
         observation["farms"][0]["farmer"] = [2, 2]
