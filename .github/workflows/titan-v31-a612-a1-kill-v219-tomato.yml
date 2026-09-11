@@ -26,7 +26,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind exact a612 parent, evidence scope, and producer bytes
+      - name: Bind exact live a612 parent, evidence scope, and producer bytes
         shell: bash
         run: |
           set -euo pipefail
@@ -38,6 +38,8 @@ jobs:
           APPLY='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$PARENT"
           test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
           test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
           test "$(git hash-object "$ARLENE")" = 'bdb9cf58148a3c7961c085f4902759537decabf6'
@@ -116,6 +118,83 @@ jobs:
           print('A1 SHIPPED TUPLE + SCOPED QUALIFIER SHIM OK')
           PY
           test -z "$(git status --porcelain)"
+
+      - name: Run literal-panel reducer poison predecessors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import copy
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a1_kill_v219_tomato/report.py')
+          spec = importlib.util.spec_from_file_location('a1_report', path)
+          report = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(report)
+
+          def good_receipt(opponent='a612'):
+              games = []
+              for seed in report.EXPECTED_SEEDS:
+                  for seat in (0, 1):
+                      games.append({
+                          'opponent': opponent,
+                          'seed': seed,
+                          'candidate_seat': seat,
+                          'status': 'complete',
+                          'scores': [100 + seat, 90 + seat],
+                          'trace_sha256': f'{opponent}-{seed}-{seat}',
+                      })
+              return {
+                  'engine_ref': report.ENGINE_REF,
+                  'seeds': list(report.EXPECTED_SEEDS),
+                  'opponents': [opponent],
+                  'reproducibility': {'same_trace_and_scores': True},
+                  'games': games,
+              }
+
+          def expect_fail(name, receipt, opponent='a612'):
+              try:
+                  report.normalized_games(receipt, name, opponent)
+              except SystemExit:
+                  print('A1_POISON_REJECTED', name)
+                  return
+              raise AssertionError(f'{name}: poison receipt unexpectedly accepted')
+
+          good = good_receipt()
+          assert len(report.normalized_games(copy.deepcopy(good), 'good', 'a612')) == 8
+
+          dup = copy.deepcopy(good); dup['games'].append(copy.deepcopy(dup['games'][0]))
+          expect_fail('duplicate', dup)
+          missing = copy.deepcopy(good); missing['games'].pop()
+          expect_fail('missing', missing)
+          sub_seed = copy.deepcopy(good); old = sub_seed['seeds'][0]; sub_seed['seeds'][0] = 999
+          for game in sub_seed['games']:
+              if game['seed'] == old: game['seed'] = 999
+          expect_fail('substituted-seed', sub_seed)
+          sub_opp = copy.deepcopy(good); sub_opp['opponents'] = ['substitute']
+          for game in sub_opp['games']: game['opponent'] = 'substitute'
+          expect_fail('substituted-opponent', sub_opp)
+          bool_seed = copy.deepcopy(good); bool_seed['games'][0]['seed'] = True
+          expect_fail('bool-seed', bool_seed)
+          string_seat = copy.deepcopy(good); string_seat['games'][0]['candidate_seat'] = '0'
+          expect_fail('string-seat', string_seat)
+          nonfinite = copy.deepcopy(good); nonfinite['games'][0]['scores'][0] = float('nan')
+          expect_fail('nonfinite-score', nonfinite)
+          arlene = good_receipt('arlene')
+          assert len(report.normalized_games(arlene, 'arlene-good', 'arlene')) == 8
+          print('A1_LITERAL_PANEL_POISON_PREDECESSORS_OK')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Recheck canonical freshness before evaluator spend
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$PARENT"
+          echo A1_LIVE_CANONICAL_STILL_A612
 
       - name: Prepare pinned official interpreter
         shell: bash
