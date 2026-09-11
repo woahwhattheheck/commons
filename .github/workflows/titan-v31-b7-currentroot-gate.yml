@@ -27,6 +27,13 @@ jobs:
       PARENT_SHA: 6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a
       R04_BLOB: 7edacbfb4916b8f241b689ded6643240ca02a9ec
       APPLY_BLOB: a43d6c470ab05d87803fb016966d1cc54fab9d17
+      R01_TAPES_BLOB: a43289b9cc5e34a2481fddf652762a7d92f427ef
+      KILL_WATER_BLOB: 9600f5a8543af257b23c9a380342d4654ac20f43
+      STRAWBERRY_ENDGAME_BLOB: 9974ae6d276bc4ecea6cccf183a98e10a5a8d279
+      L3_HELPER_BLOB: fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0
+      H4_HELPER_BLOB: d6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8
+      B5_HELPER_BLOB: 2a9d606835b0d04d832a4737dcb381ad3fbef1ae
+      JIT_HELPER_BLOB: 6ef7ddcd9590e3cb3f55ceb708b8026235d59410
       B7_DONOR_BLOB: a27da659884c0f9a9594cbd9332b5edb4d7f3307
       PACKAGE_SHA256: 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13
 
@@ -70,6 +77,13 @@ jobs:
           test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
           test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
           test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r01_tapes.py")" = "$R01_TAPES_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_kill_late_water.py")" = "$KILL_WATER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_strawberry_endgame.py")" = "$STRAWBERRY_ENDGAME_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_no_late_sale_advance.py")" = "$L3_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_h4_strawberry.py")" = "$H4_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/b5_fertilize.py")" = "$B5_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/jit_pass_fertilize.py")" = "$JIT_HELPER_BLOB"
           echo "B7_CURRENTROOT_LIVE_OK $LIVE"
 
       - name: Prove immutable-base rebuild and compile carrier
@@ -87,6 +101,55 @@ jobs:
               print('B7_COMPILE_OK', rel)
           PY
           test -z "$(git status --porcelain)"
+
+      - name: Prove strict receipt normalizer rejects type and digest poison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import copy
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py')
+          spec = importlib.util.spec_from_file_location('b7_gate', path)
+          gate = importlib.util.module_from_spec(spec)
+          assert spec.loader is not None
+          spec.loader.exec_module(gate)
+          label = 'poison'
+          valid = [
+              {
+                  'opponent': label,
+                  'seed': seed,
+                  'candidate_seat': seat,
+                  'status': 'complete',
+                  'failure': None,
+                  'scores': [1, 1],
+                  'trace_sha256': '0' * 64,
+              }
+              for seed in gate.SEEDS for seat in (0, 1)
+          ]
+          assert len(gate.exact_cells({'games': copy.deepcopy(valid)}, label)) == 16
+
+          def rejected(name, mutate):
+              games = copy.deepcopy(valid)
+              mutate(games)
+              try:
+                  gate.exact_cells({'games': games}, label)
+              except AssertionError:
+                  print('B7_POISON_REJECTED', name)
+                  return
+              raise SystemExit(f'normalizer accepted poison: {name}')
+
+          rejected('bool-seat', lambda g: g[0].__setitem__('candidate_seat', False))
+          rejected('float-seat', lambda g: g[0].__setitem__('candidate_seat', 0.0))
+          rejected('bool-seed', lambda g: g[0].__setitem__('seed', True))
+          rejected('float-seed', lambda g: g[0].__setitem__('seed', float(g[0]['seed'])))
+          rejected('nonhex-trace', lambda g: g[0].__setitem__('trace_sha256', 'g' * 64))
+          rejected('nan-score', lambda g: g[0].__setitem__('scores', [float('nan'), 1]))
+          rejected('duplicate-cell', lambda g: g.append(copy.deepcopy(g[0])))
+          rejected('missing-cell', lambda g: g.pop())
+          PY
 
       - name: Run official-interpreter paired screen
         shell: bash
@@ -120,6 +183,13 @@ jobs:
           test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
           test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
           test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r01_tapes.py")" = "$R01_TAPES_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_kill_late_water.py")" = "$KILL_WATER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_strawberry_endgame.py")" = "$STRAWBERRY_ENDGAME_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_no_late_sale_advance.py")" = "$L3_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/r04_h4_strawberry.py")" = "$H4_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/b5_fertilize.py")" = "$B5_HELPER_BLOB"
+          test "$(git rev-parse "$LIVE:$ROOT/overlay/jit_pass_fertilize.py")" = "$JIT_HELPER_BLOB"
           echo "B7_CURRENTROOT_POSTSPEND_FRESH $LIVE"
 
       - uses: actions/upload-artifact@v4
