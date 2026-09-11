@@ -1,27 +1,29 @@
 # SPDX-License-Identifier: Apache-2.0
-"""H10: make shipped E11 measurable on the live R04 route without orphaning sale debt.
+"""H10: make shipped E11 measurable on live R04 without phantom sale accounting.
 
-This is an experiment, not release wiring.
+Experiment only; no release wiring.
 
-Exact V3.1 topology returns from ``TitanAgent._v3_r03_act`` whenever R04 is enabled,
-so the canonical seller-owned ``_v3_e11_before_pending`` seam is never reached. A
-naive outer wrapper is unsafe: R04's E184 layer may append a current SELL and book
-matching ``sale_window_debts``; if E11 then blanks that SELL, the due-step subtraction
-would later erase a sale that never happened.
+R04 whole-route delegation bypasses the canonical seller-owned E11 seam. A naive final
+wrapper is unsafe because the R04 parent can book a sale before E11 sees the final action:
 
-This adapter reuses ``e11_rival_sell.apply_e11`` unchanged and snapshots R04 debt state
-around the parent call. When E11 defers an item, it rolls back *only positive debt
-deltas booked by that same parent call* for that item. Existing debt and debt consumed
-at the current step are never recreated. If predecessor debt cannot be observed, or the
-removed SELL quantity cannot cover the newly-booked debt, the adapter fails closed to
-the exact parent action and leaves parent state untouched.
+* before step 288, native ``advance_sales`` records ``advanced_sales`` plus
+  ``sale_due_step = step + 1``;
+* from step 288 onward, E184 records future ``sale_window_debts``.
+
+If E11 blanks that just-advanced SELL but the matching accounting survives, a later turn
+subtracts a sale that never executed. This adapter reuses ``e11_rival_sell.apply_e11``
+unchanged, proves its edit is row-stable SELL->[] blanking, identifies only accounting
+created by the same parent call, verifies booked quantity is covered by the removed SELL,
+and atomically rolls back both bookkeeping paths for deferred items. Existing debt and
+current-step debt consumption are never recreated. Any ambiguity fails closed to the exact
+parent action and parent state.
 """
 from __future__ import annotations
 
 from typing import Any, Callable, Mapping
 
-
 DebtMap = dict[int, dict[str, int]]
+NativeSnapshot = tuple[int, dict[str, int]]
 
 
 def _snapshot_debts(state: Any) -> DebtMap:
@@ -49,8 +51,25 @@ def _snapshot_debts(state: Any) -> DebtMap:
     return out
 
 
+def _snapshot_native(state: Any) -> NativeSnapshot:
+    try:
+        due = int(getattr(state, "sale_due_step", -1))
+    except (TypeError, ValueError):
+        due = -1
+    raw = getattr(state, "advanced_sales", {}) or {}
+    clean: dict[str, int] = {}
+    if isinstance(raw, Mapping):
+        for item, quantity in raw.items():
+            try:
+                q = max(0, int(quantity))
+            except (TypeError, ValueError):
+                continue
+            if q:
+                clean[str(item)] = q
+    return due, clean
+
+
 def _new_future_debt(before: DebtMap, after: DebtMap, step: int) -> DebtMap:
-    """Return only positive per-item debt increments due after the current step."""
     created: DebtMap = {}
     for due, items in after.items():
         if due <= step:
@@ -62,8 +81,30 @@ def _new_future_debt(before: DebtMap, after: DebtMap, step: int) -> DebtMap:
     return created
 
 
+def _new_native_advance(
+    before: NativeSnapshot,
+    after: NativeSnapshot,
+    step: int,
+    *,
+    state_replaced: bool,
+) -> dict[str, int]:
+    """Return only native advances demonstrably booked by this parent call."""
+    before_due, before_items = before
+    after_due, after_items = after
+    if after_due != step + 1 or not after_items:
+        return {}
+    if state_replaced or before_due != after_due:
+        return dict(after_items)
+    created: dict[str, int] = {}
+    for item, quantity in after_items.items():
+        delta = max(0, int(quantity) - int(before_items.get(item, 0)))
+        if delta:
+            created[item] = delta
+    return created
+
+
 def _removed_sell_quantities(before_action: Mapping[str, Any], after_action: Mapping[str, Any]):
-    """Prove the E11 result is row-stable blanking and return removed qty by item."""
+    """Prove the E11 result is row-stable SELL->[] blanking and return removed qty."""
     before_market = before_action.get("market") or []
     after_market = after_action.get("market") or []
     if not isinstance(before_market, list) or not isinstance(after_market, list):
@@ -81,17 +122,13 @@ def _removed_sell_quantities(before_action: Mapping[str, Any], after_action: Map
         except (TypeError, ValueError):
             return None
         removed[str(old[1])] = removed.get(str(old[1]), 0) + q
-    # E11 must not touch farmer/hands or any other top-level field.
     for key in set(before_action) | set(after_action):
-        if key == "market":
-            continue
-        if before_action.get(key) != after_action.get(key):
+        if key != "market" and before_action.get(key) != after_action.get(key):
             return None
     return removed
 
 
 def _refund_new_debt(state: Any, created: DebtMap, deferred_items: set[str]) -> dict[str, int]:
-    """Subtract this call's newly-created debt for E11-deferred items only."""
     current = _snapshot_debts(state)
     refunded: dict[str, int] = {}
     for due, items in created.items():
@@ -112,6 +149,35 @@ def _refund_new_debt(state: Any, created: DebtMap, deferred_items: set[str]) -> 
     return refunded
 
 
+def _refund_new_native(
+    state: Any,
+    created: Mapping[str, int],
+    deferred_items: set[str],
+    step: int,
+) -> dict[str, int]:
+    """Remove same-call native advances for deferred items and repair the due marker."""
+    due, current = _snapshot_native(state)
+    refunded: dict[str, int] = {}
+    if due != step + 1:
+        return refunded
+    for item, quantity in created.items():
+        if item not in deferred_items or quantity <= 0:
+            continue
+        have = int(current.get(item, 0))
+        take = min(have, int(quantity))
+        if not take:
+            continue
+        remain = have - take
+        if remain:
+            current[item] = remain
+        else:
+            current.pop(item, None)
+        refunded[item] = refunded.get(item, 0) + take
+    state.advanced_sales = current
+    state.sale_due_step = due if current else -1
+    return refunded
+
+
 def _default_state_getter(observation: Mapping[str, Any]):
     import r04_full_router as r04
     return r04._POLICY.players[int(observation["player"])]
@@ -126,12 +192,7 @@ def wrap_r04_agent(
     state_getter: Callable[[Mapping[str, Any]], Any] | None = None,
     e11_apply: Callable | None = None,
 ):
-    """Return an R04-compatible callable with E11 outermost and debt-atomic.
-
-    ``absorption_fn`` must be the same exact integer per-step absorption callable used by
-    the canonical E11 seller seam. It is injected deliberately so this experiment cannot
-    silently substitute a heuristic for an engine transition.
-    """
+    """Return an R04-compatible callable with E11 outermost and sale-accounting atomic."""
     histories: dict[int, list[tuple[int, dict[str, Any]]]] = {}
     last_steps: dict[int, int] = {}
     telemetry: dict[str, Any] = {
@@ -145,6 +206,7 @@ def wrap_r04_agent(
     def adapter(observation, configuration=None):
         action_state_before = None
         debts_before: DebtMap = {}
+        native_before: NativeSnapshot = (-1, {})
         predecessor_known = False
         try:
             player = int(observation.get("player", 0))
@@ -161,10 +223,10 @@ def wrap_r04_agent(
             try:
                 action_state_before = getter(observation)
                 debts_before = _snapshot_debts(action_state_before)
+                native_before = _snapshot_native(action_state_before)
                 predecessor_known = True
             except Exception:
                 action_state_before = None
-                debts_before = {}
 
         parent_action = parent(observation, configuration)
         if not enabled:
@@ -182,13 +244,12 @@ def wrap_r04_agent(
             }
             return parent_action
 
-        # A step reset can replace the player state object. In that case no debt from the
-        # previous episode is a valid predecessor for positive-delta accounting, and the
-        # fresh state itself is a complete post-parent snapshot for the current call.
         state_replaced = predecessor_known and action_state_before is not action_state_after
         if state_replaced:
             debts_before = {}
+            native_before = (-1, {})
         debts_after = _snapshot_debts(action_state_after)
+        native_after = _snapshot_native(action_state_after)
 
         cfg = dict(configuration or {})
         cfg.update(dict(params or {}))
@@ -230,47 +291,58 @@ def wrap_r04_agent(
             telemetry["last_by_player"][player] = failed
             return parent_action
 
-        # If the pre-parent state could not be observed and the parent leaves any future
-        # debt behind, there is no safe way to distinguish preexisting debt from a debt
-        # increment booked by this call. Never guess: keep exact parent action + state.
-        if not predecessor_known and debts_after:
+        # Without a pre-parent snapshot, any surviving future bookkeeping could predate
+        # this call. Never infer that it belongs to the E11-removed SELL.
+        if not predecessor_known and (debts_after or native_after[1]):
             telemetry["fail_closed"] += 1
             failed = dict(report)
             failed.update(
                 changed=False,
-                reason="FAIL_CLOSED_UNKNOWN_PREDECESSOR_DEBT",
+                reason="FAIL_CLOSED_UNKNOWN_PREDECESSOR_SALE_ACCOUNTING",
                 removed_sell_qty=removed,
             )
             telemetry["last_by_player"][player] = failed
             return parent_action
 
         deferred_items = {str(item) for item in report.get("deferred") or []}
-        created = _new_future_debt(debts_before, debts_after, step)
-        created_by_item: dict[str, int] = {}
-        for items in created.values():
+        created_debt = _new_future_debt(debts_before, debts_after, step)
+        created_native = _new_native_advance(
+            native_before, native_after, step, state_replaced=state_replaced,
+        )
+        booked_by_item: dict[str, int] = {}
+        for items in created_debt.values():
             for item, quantity in items.items():
-                created_by_item[item] = created_by_item.get(item, 0) + int(quantity)
+                booked_by_item[item] = booked_by_item.get(item, 0) + int(quantity)
+        for item, quantity in created_native.items():
+            booked_by_item[item] = booked_by_item.get(item, 0) + int(quantity)
 
-        # If parent accounting claims more newly-advanced quantity than E11 actually removed,
-        # we cannot prove atomic rollback. Preserve the exact parent action + parent debt.
-        if any(created_by_item.get(item, 0) > removed.get(item, 0) for item in deferred_items):
+        if any(booked_by_item.get(item, 0) > removed.get(item, 0) for item in deferred_items):
             telemetry["fail_closed"] += 1
             failed = dict(report)
             failed.update(
                 changed=False,
-                reason="FAIL_CLOSED_DEBT_EXCEEDS_DEFERRED_SELL",
+                reason="FAIL_CLOSED_BOOKED_QTY_EXCEEDS_DEFERRED_SELL",
                 removed_sell_qty=removed,
-                new_debt_qty=created_by_item,
+                booked_sale_qty=booked_by_item,
             )
             telemetry["last_by_player"][player] = failed
             return parent_action
 
-        refunded = _refund_new_debt(action_state_after, created, deferred_items)
+        refunded_debt = _refund_new_debt(action_state_after, created_debt, deferred_items)
+        refunded_native = _refund_new_native(
+            action_state_after, created_native, deferred_items, step,
+        )
         final_report = dict(report)
         final_report.update(
             removed_sell_qty=removed,
-            new_debt_qty=created_by_item,
-            refunded_new_debt=refunded,
+            booked_sale_qty=booked_by_item,
+            new_debt_qty={
+                item: sum(items.get(item, 0) for items in created_debt.values())
+                for item in {k for items in created_debt.values() for k in items}
+            },
+            new_native_advance_qty=dict(created_native),
+            refunded_new_debt=refunded_debt,
+            refunded_new_native_advance=refunded_native,
             state_replaced=state_replaced,
         )
         telemetry["changed"] += 1
