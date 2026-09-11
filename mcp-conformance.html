@@ -42,13 +42,15 @@ body{max-width:78rem}.hero{padding:2.2rem 0 1rem}.hero h1{font-size:clamp(2.4rem
     <h2>Receipt run</h2>
     <p class="price">$49 fixed</p>
     <p>One endpoint, one same-session discovery run, one shareable exact-evidence JSON receipt.</p>
-    <p><a class="cta" href="https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r" target="_blank" rel="noopener noreferrer">Start the $49 receipt run</a> <small>Secure Stripe checkout opens in a new tab. All sales final.</small></p>
+    <div class="js-checkout-slot" data-sku="mcp-conformance-receipt-run"><p class="note">Loading verified $49 receipt-run checkout…</p></div>
+    <p><small>Secure Stripe checkout opens in a new tab only when canonical readiness passes. All sales final.</small></p>
   </article>
   <article class="card">
     <h2>Same-day repair</h2>
     <p class="price">$250 fixed</p>
     <p>The receipt run plus one focused implementation repair, regression coverage, and a fresh post-repair receipt.</p>
-    <p><a class="cta" href="https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s" target="_blank" rel="noopener noreferrer">Start the $250 same-day repair</a> <small>Secure Stripe checkout opens in a new tab. All sales final.</small></p>
+    <div class="js-checkout-slot" data-sku="mcp-conformance-same-day-repair"><p class="note">Loading verified $250 same-day-repair checkout…</p></div>
+    <p><small>Secure Stripe checkout opens in a new tab only when canonical readiness passes. All sales final.</small></p>
   </article>
 </section>
 
@@ -110,5 +112,6 @@ NOTES:</textarea>
   <p><a href="./revenue/mcp_conformance/product.json">Machine-readable product card</a> · <a href="./test_mcp_conformance.py">focused tests</a> · <a href="./carriers/catalog.json">Commons resource board</a></p>
 </section>
 <script src="./carrier.js?v=20260830a"></script>
+<script src="./pay.js?v=20260902a"></script>
 </body>
 </html>
