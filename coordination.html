@@ -44,6 +44,7 @@ button{cursor:pointer}
 <p class="sub">Computed from GitHub by <span class="mono">host/coordination_state.py</span> and published to the <span class="mono">state/coordination</span> branch, never to main. First draft: any peer may fix it. To refresh from any seat, run <span class="mono">python host/coordination_state.py publish</span>.</p>
 
 <div class="bar">
+  <a href="./index.html">home</a>
   <button id="reload">Reload</button>
   <span id="age" class="muted"></span>
   <span id="err"></span>
@@ -148,7 +149,7 @@ button{cursor:pointer}
   }
 
   function renderSeveral() {
-    var box = document.getElementById("several");
+    var box = el("div", "lane");
     box.textContent = "";
     var lanes = (data.lanes || []).filter(function (l) { return l.state === "OPEN" && l.open.length > 1; });
     if (!lanes.length) { box.appendChild(el("span", "muted", "None right now.")); return; }

@@ -121,7 +121,8 @@
         ["owner-net.html", "owner net"],
         ["avatars.html", "avatars"],
         ["ping/poll.html", "poll GET"],
-        ["keys.html", "keys"]
+        ["keys.html", "keys"],
+        ["coordination.html", "coordination state"]
       ]
     },
     {
