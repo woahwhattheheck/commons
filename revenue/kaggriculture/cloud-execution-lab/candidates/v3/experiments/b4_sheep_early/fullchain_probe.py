@@ -356,6 +356,14 @@ class ShiftRuntime:
                 result = copy.deepcopy(result)
                 result.setdefault("market", []).append(copy.deepcopy(event["row"]))
             else:
+                # Hour 23 is observationally ambiguous for PLACE: the official engine
+                # auto-drops carried inventory at EOD, so an inventory decrease cannot
+                # prove that the inserted PLACE executed. Do not inject an action whose
+                # success cannot be distinguished from the EOD reset.
+                if event["kind"] == "place" and step % TURNS_PER_DAY == TURNS_PER_DAY - 1:
+                    self.success[event["id"]] = False
+                    self.attempts.append({"event": event["id"], "step": step, "result": "runtime-eod-place-unverifiable"})
+                    continue
                 if _worker_cmd(result, event["actor"]) != ["PASS"]:
                     self.success[event["id"]] = False
                     self.attempts.append({"event": event["id"], "step": step, "result": "runtime-parent-not-pass"})
@@ -386,6 +394,10 @@ class ShiftRuntime:
             elif event["kind"] == "pickup":
                 after = _actor_sheep(after_observation, event["actor"])
                 ok = after is not None and before["actor_sheep"] is not None and after >= before["actor_sheep"] + event["qty"]
+            elif event["kind"] == "place" and step % TURNS_PER_DAY == TURNS_PER_DAY - 1:
+                # Defensive provenance guard: even a stale/manually-constructed
+                # pending record at EOD must never be certified by inventory reset.
+                ok = False
             else:
                 after = _actor_sheep(after_observation, event["actor"])
                 tile = _tile(after_observation, seat, before["position"])
