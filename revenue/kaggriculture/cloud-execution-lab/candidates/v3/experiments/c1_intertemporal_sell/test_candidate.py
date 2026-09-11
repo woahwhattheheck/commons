@@ -17,15 +17,18 @@ class SaleState:
         self.sale_window_debts = {} if debts is None else debts
 
 
-def obs(*, shops=None, shed=None, inventories=None, step=308, player=0):
+_DEFAULT = object()
+
+
+def obs(*, shops=_DEFAULT, shed=_DEFAULT, inventories=_DEFAULT, step=308, player=0):
     return {
         "step": step,  # day12 hour20
         "player": player,
-        "town": {"unlocked_shops": ["YARN_STORE"] if shops is None else shops},
+        "town": {"unlocked_shops": ["YARN_STORE"] if shops is _DEFAULT else shops},
         "farms": [{"money": 0}, {"money": 0}],
         "private": {
-            "shed": {"WOOL": 9, "MILK": 3} if shed is None else shed,
-            "inventories": [{}] if inventories is None else inventories,
+            "shed": {"WOOL": 9, "MILK": 3} if shed is _DEFAULT else shed,
+            "inventories": [{}] if inventories is _DEFAULT else inventories,
         },
     }
 
@@ -171,16 +174,15 @@ class C1IntertemporalSellTests(unittest.TestCase):
         for bad_shed in ({"WOOL": True}, {"WOOL": 9.0}, {"WOOL": -1}, None):
             with self.subTest(shed=bad_shed):
                 self.assertIs(self.apply(obs(shed=bad_shed), parent), parent)
-        malformed_inv = obs(inventories=[{"WHEAT": "1"}])
-        self.assertIs(self.apply(malformed_inv, parent), parent)
+        for bad_inventories in (None, [], [{"WHEAT": "1"}], [None]):
+            with self.subTest(inventories=bad_inventories):
+                self.assertIs(self.apply(obs(inventories=bad_inventories), parent), parent)
 
     def test_unknown_or_malformed_shop_state_fails_closed(self):
         parent = action()
         for shops in (["NOT_A_SHOP"], [None], "YARN_STORE", None):
             with self.subTest(shops=shops):
-                observation = obs()
-                observation["town"]["unlocked_shops"] = shops
-                self.assertIs(self.apply(observation, parent), parent)
+                self.assertIs(self.apply(obs(shops=shops), parent), parent)
 
     def test_nonstandard_configuration_fails_closed(self):
         parent = action()
@@ -190,6 +192,7 @@ class C1IntertemporalSellTests(unittest.TestCase):
             {"townShopSellInterval": 5},
             {"shedCapacity": 100.0},
             {"episodeSteps": 719},
+            {"marketParams": []},
             {"marketParams": {"WOOL": {"base": 999}}},
         )
         for configuration in bad_configs:
