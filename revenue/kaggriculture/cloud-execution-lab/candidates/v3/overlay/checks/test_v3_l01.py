@@ -48,6 +48,13 @@ class RouteTapeTests(unittest.TestCase):
     def fresh(self):
         return copy.deepcopy(self.routes)
 
+    @staticmethod
+    def wheat_route(count):
+        return [
+            {'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []}
+            for _ in range(count)
+        ]
+
     def test_flag_off_identity(self):
         R = self.fresh()
         before = copy.deepcopy(R[l01.MAIN])
@@ -104,6 +111,46 @@ class RouteTapeTests(unittest.TestCase):
         self.assertEqual(after['CARROT'], before['CARROT'])
         self.assertEqual(sum(after.values()), 148)
         self.assertGreaterEqual(act['LEANPLANT'], 92)
+
+    def test_leanplant_exact_target_is_identity(self):
+        route = self.wheat_route(l01.KEEP_WHEAT_PLANTS)
+        R = {'synthetic': route}
+        before = copy.deepcopy(R)
+        act = Counter()
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(R, before)
+        self.assertEqual(act, Counter())
+
+    def test_leanplant_below_target_is_identity(self):
+        route = self.wheat_route(17)
+        R = {'synthetic': route}
+        before = copy.deepcopy(R)
+        act = Counter()
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(R, before)
+        self.assertEqual(act, Counter())
+
+    def test_leanplant_above_target_truncates_only_surplus(self):
+        route = self.wheat_route(l01.KEEP_WHEAT_PLANTS + 3)
+        R = {'synthetic': route}
+        act = Counter()
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(l01.plant_counts(route)['WHEAT'], l01.KEEP_WHEAT_PLANTS)
+        self.assertTrue(all(row['farmer'] == ['PLANT', 'WHEAT'] for row in route[:l01.KEEP_WHEAT_PLANTS]))
+        self.assertTrue(all(row['farmer'] == ['PASS'] for row in route[l01.KEEP_WHEAT_PLANTS:]))
+        self.assertEqual(act['LEANPLANT'], 3)
+
+    def test_leanplant_repeated_and_aliased_route_is_idempotent(self):
+        route = self.wheat_route(164)
+        R = {'first': route, 'alias': route}
+        act = Counter()
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(l01.plant_counts(route)['WHEAT'], l01.KEEP_WHEAT_PLANTS)
+        self.assertEqual(act['LEANPLANT'], 164 - l01.KEEP_WHEAT_PLANTS)
+        after_first = copy.deepcopy(route)
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(route, after_first)
+        self.assertEqual(act['LEANPLANT'], 164 - l01.KEEP_WHEAT_PLANTS)
 
 
 class TrancheTests(unittest.TestCase):
