@@ -78,8 +78,8 @@ def _market_cap(configuration: Any = None) -> int:
 def _step_player(observation: Any) -> tuple[int, int]:
     step = _strict_int(_get(observation, "step", None), "step")
     player = _strict_int(_get(observation, "player", None), "player")
-    if step < 0 or player < 0:
-        raise ValueError("negative step/player")
+    if step < 0 or player not in (0, 1):
+        raise ValueError("invalid step/player")
     return step, player
 
 
