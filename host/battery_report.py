@@ -114,6 +114,10 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
         row["source_blob_sha"] = blobs.get(row["path"])
         row["source_in_checkout_commit"] = row["source_blob_sha"] is not None
     failed = sum(row["exit_code"] != 0 for row in records)
+    unresolved = sum(not row["source_in_checkout_commit"] for row in records)
+    if complete and unresolved and not failed:
+        problems.append("%d passing executed file(s) are not present in the recorded checkout" % unresolved)
+        complete = False
     if outcome in ("cancelled", "skipped"):
         problems.append("battery step was " + outcome)
         complete = False
@@ -149,7 +153,7 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
             "completed_files": len(records),
             "passed_files": len(records) - failed,
             "failed_files": failed,
-            "unresolved_source_files": sum(not row["source_in_checkout_commit"] for row in records),
+            "unresolved_source_files": unresolved,
         },
         "results": records,
         "problems": problems,
