@@ -44,6 +44,7 @@ _STANDARD_CONFIG = {
     "townShopSellInterval": 4,
     "townCenterSellInterval": 24,
 }
+_MISSING = object()
 
 REPORT = {
     "calls": 0,
@@ -58,19 +59,24 @@ def reset_report():
         REPORT[key] = 0
 
 
-def _config_value(configuration, key, default):
+def _config_value(configuration, key):
     if configuration is None:
-        return default
+        return _MISSING
+    if isinstance(configuration, dict):
+        return configuration.get(key, _MISSING)
     getter = getattr(configuration, "get", None)
     if callable(getter):
-        return getter(key, default)
-    return getattr(configuration, key, default)
+        try:
+            return getter(key, _MISSING)
+        except (AttributeError, KeyError, TypeError, ValueError):
+            return _MISSING
+    return getattr(configuration, key, _MISSING)
 
 
 def _standard_configuration(configuration):
-    """Require exact standard integer timing/capacity values; malformed values fail closed."""
+    """Require every standard integer timing/capacity value; absence fails closed."""
     for key, expected in _STANDARD_CONFIG.items():
-        actual = _config_value(configuration, key, expected)
+        actual = _config_value(configuration, key)
         if type(actual) is not int or actual != expected:
             return False
     return True
