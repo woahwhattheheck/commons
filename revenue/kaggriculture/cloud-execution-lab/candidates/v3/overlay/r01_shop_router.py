@@ -169,7 +169,9 @@ def advance_sales(action, view, state, tape, step, max_orders=MAX_ORDERS):
     if next_step > LAST_STEP or next_step % 72 == 0 or (step % 4 == 0 and step < 144):
         return
     planned = {}
-    for order in tape[next_step].get("market") or []:
+    raw_planned = tape[next_step].get("market") or []
+    planned_orders = raw_planned[:max_orders] if isinstance(raw_planned, list) else []
+    for order in planned_orders:
         if order and order[0] == "SELL" and len(order) >= 3 and order[1] in PRODUCTS:
             item = order[1]
             planned[item] = planned.get(item, 0) + max(0, int(order[2]))
