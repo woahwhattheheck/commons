@@ -130,19 +130,32 @@ jobs:
           set -euo pipefail
           cd "$RUNNER_TEMP/e20-current-root-tree"
           python -B -m unittest -v checks/test_v3_features.py
-          python - <<'PY'
+          cat > "$RUNNER_TEMP/e20-preservation.py" <<'PY'
           import json
           from pathlib import Path
+
           cfg = json.loads(Path('TITAN-CONFIG.json').read_text())
-          assert cfg['e20_hire_guard'] is False
-          assert cfg['r04_sale_fertilizer'] is True
-          assert cfg['r04_cattle_early'] is True
-          assert cfg['r04_strawberry_topup'] is True
-          assert cfg['r04_no_late_sale_advance'] is True
-          assert cfg['r04_b5_carrot_fertilizer'] is True
-          assert cfg['r04_b5_jit_fertilize'] is True
-          print('E20_CURRENT_ROOT_PRESERVATION_OK')
+          expected = {
+              'e20_hire_guard': False,
+              'r04_sale_horizon': 8,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_strawberry_topup': True,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_b5_carrot_fertilizer': True,
+              'r04_b5_jit_fertilize': True,
+          }
+          for key, want in expected.items():
+              if key not in cfg:
+                  raise SystemExit(f'materialized config missing {key}')
+              got = cfg[key]
+              if type(got) is not type(want) or got != want:
+                  raise SystemExit(f'materialized config drift {key}: {got!r} != {want!r}')
+          print('E20_CURRENT_ROOT_PRESERVATION_OK', len(expected))
           PY
+          python "$RUNNER_TEMP/e20-preservation.py"
+          PYTHONOPTIMIZE=1 python -O "$RUNNER_TEMP/e20-preservation.py"
 
       - name: Verify staging dirt or final clean checkout
         shell: bash
@@ -150,16 +163,20 @@ jobs:
           set -euo pipefail
           MODE="$(cat /tmp/e20-mode)"
           if [ "$MODE" = staging ]; then
-            python - <<'PY'
+            cat > "$RUNNER_TEMP/e20-staging-dirt.py" <<'PY'
           import subprocess
+
           changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
           expected = {
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
           }
-          assert changed == expected, sorted(changed)
+          if changed != expected:
+              raise SystemExit(f'unexpected generated metadata dirt: {sorted(changed)!r}')
           print('E20_CURRENT_ROOT_GENERATED_METADATA_ONLY', len(changed))
           PY
+            python "$RUNNER_TEMP/e20-staging-dirt.py"
+            PYTHONOPTIMIZE=1 python -O "$RUNNER_TEMP/e20-staging-dirt.py"
           else
             test -z "$(git status --porcelain)"
             echo E20_CURRENT_ROOT_FINAL_CLEAN
