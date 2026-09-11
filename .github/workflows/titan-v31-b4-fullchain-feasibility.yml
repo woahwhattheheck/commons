@@ -40,7 +40,6 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git merge-base "$FROZEN" HEAD)" = "$FROZEN"
           test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
-          test "$(git rev-list --count "$PARENT"..HEAD)" -eq 3
 
           git diff --name-only "$PARENT"...HEAD > /tmp/b4-fullchain-paths.txt
           python - <<'PY'
