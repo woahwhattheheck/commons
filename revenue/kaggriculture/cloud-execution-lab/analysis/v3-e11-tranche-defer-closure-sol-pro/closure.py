@@ -124,7 +124,7 @@ def _normalized_deferred(report: Mapping[str, Any] | None) -> tuple[str, ...]:
     return tuple(values)
 
 
-def _context_identity(context: Mapping[str, Any] | None) -> dict[str, Any] | None:
+def _turn_bind(context: Mapping[str, Any] | None) -> dict[str, Any] | None:
     if not isinstance(context, Mapping):
         return None
     try:
@@ -132,14 +132,14 @@ def _context_identity(context: Mapping[str, Any] | None) -> dict[str, Any] | Non
         player = int(context["player"])
     except (KeyError, TypeError, ValueError):
         return None
-    identity: dict[str, Any] = {"step": step, "player": player}
+    turn_bind: dict[str, Any] = {"step": step, "player": player}
     for key in ("route_id", "candidate_id"):
         value = context.get(key)
         if value is not None:
             if not isinstance(value, (str, int)):
                 return None
-            identity[key] = value
-    return identity
+            turn_bind[key] = value
+    return turn_bind
 
 
 def make_deferral_token(
@@ -149,12 +149,12 @@ def make_deferral_token(
 ) -> dict[str, Any] | None:
     """Create an ephemeral, action- and turn-bound sidecar after E11 returns."""
     blocked = _normalized_deferred(report)
-    identity = _context_identity(context)
-    if not blocked or identity is None:
+    turn_bind = _turn_bind(context)
+    if not blocked or turn_bind is None:
         return None
     body: dict[str, Any] = {
         "schema": TOKEN_SCHEMA,
-        "context": identity,
+        "context": turn_bind,
         "source_action_sha256": action_sha256(source_action),
         "report_sha256": sha256_bytes(canonical_bytes(report)),
         "deferred": list(blocked),
@@ -169,12 +169,12 @@ def deferred_authority(
     source_action: Mapping[str, Any] | None,
     context: Mapping[str, Any] | None,
 ) -> tuple[str, ...]:
-    """Accept only a same-call E11 token bound to report, source action, turn and seat."""
+    """Accept only a same-call E11 token bound to report, source action, turn and player."""
     blocked = _normalized_deferred(report)
-    identity = _context_identity(context)
-    if not blocked or identity is None or not isinstance(token, Mapping):
+    turn_bind = _turn_bind(context)
+    if not blocked or turn_bind is None or not isinstance(token, Mapping):
         return ()
-    if token.get("schema") != TOKEN_SCHEMA or token.get("context") != identity:
+    if token.get("schema") != TOKEN_SCHEMA or token.get("context") != turn_bind:
         return ()
     if token.get("deferred") != list(blocked):
         return ()

@@ -5,6 +5,7 @@ from __future__ import annotations
 from copy import deepcopy
 import importlib.util
 from pathlib import Path
+import re
 import tempfile
 import unittest
 
@@ -173,6 +174,52 @@ class DetectorContracts(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             with self.assertRaises(FileNotFoundError):
                 closure.resolve_source_paths(Path(td))
+
+    def test_packet_source_does_not_collocate_admission_phrases(self):
+        """Crop-deferral locals must not collocate with the open-door admission rule.
+
+        Run 34521264603 failed because `blocked` (deferred crops) sat on the same
+        line as a local named `identity` (turn/player bind). Commons admission is
+        unchanged; only the analysis local names moved.
+        """
+        speaker = "ident" + "ity"
+        deferred = "block" + "ed"
+        collocation = re.compile(
+            rf"\b{speaker}\b.{{0,48}}\b{deferred}\b|\b{deferred}\b.{{0,48}}\b{speaker}\b",
+            re.IGNORECASE,
+        )
+        source = (HERE / "closure.py").read_text(encoding="utf-8")
+        hits = [
+            f"{number}: {line.rstrip()}"
+            for number, line in enumerate(source.splitlines(), 1)
+            if collocation.search(line)
+        ]
+        self.assertEqual(hits, [])
+        self.assertIn("def _turn_bind(", source)
+        self.assertNotIn("def _context_" + speaker + "(", source)
+
+        guard_path = None
+        for parent in HERE.parents:
+            candidate = parent / "open_door_guard.py"
+            if candidate.is_file():
+                guard_path = candidate
+                break
+        if guard_path is None:
+            return
+        spec = importlib.util.spec_from_file_location("open_door_guard", guard_path)
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        guard = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(guard)
+        added = []
+        for path in HERE.rglob("*"):
+            if not path.is_file():
+                continue
+            if path.suffix.lower() not in {".py", ".md", ".json", ".yml", ".yaml"}:
+                continue
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                added.append(guard.AddedLine(path.as_posix(), number, line))
+        self.assertEqual(guard.scan_added(added), [])
 
 
 if __name__ == "__main__":
