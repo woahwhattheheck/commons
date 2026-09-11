@@ -20,6 +20,10 @@ _MAX_PREBUY = 2
 _CASH_RESERVE = 1000
 _PRICE_PAD = 10
 _MISSING = object()
+_CASH_SPEND_OPS = frozenset({
+    "HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL",
+})
+_MARKET_NONSPEND_OPS = frozenset({"SELL"})
 
 REPORT = {"probes": 0, "armed": 0, "units_requested": 0,
           "baseline_rescue": 0, "no_proxy_rescue": 0}
@@ -169,11 +173,72 @@ def _next_v217_task(observation, action, quantity, r04):
     return r04._v217_plan(view, st, next_step, next_action, pending)
 
 
+def _remaining_day_cash_spend_free(observation, r04):
+    """Prove F2 cannot steal cash from a later authored same-day purchase.
+
+    F2's flat reserve is intentionally not a budget model for future tape work.
+    Rather than estimate future costs, inspect the selected literal tape and
+    refuse the pre-buy whenever any executable market row later this day can
+    spend cash. Unknown/malformed future market rows also fail closed.
+    """
+    step = observation.get("step")
+    player = observation.get("player")
+    if type(step) is not int or type(player) is not int or step % 24 != 15:
+        return False
+
+    policy = getattr(r04, "_POLICY", None)
+    players = getattr(policy, "players", None)
+    tapes = getattr(policy, "tapes", None)
+    if not isinstance(players, dict) or not isinstance(tapes, list):
+        return False
+    state = players.get(player)
+    if state is None or getattr(state, "last_step", None) != step:
+        return False
+    plan = vars(state).get("plan")
+    if type(plan) is not int or not 0 <= plan < len(tapes):
+        return False
+    tape = tapes[plan]
+    if not isinstance(tape, list):
+        return False
+
+    max_orders = getattr(r04, "MAX_ORDERS", None)
+    if type(max_orders) is not int or max_orders != 10:
+        return False
+
+    next_day = ((step // 24) + 1) * 24
+    stop = min(next_day, len(tape), int(getattr(r04, "LAST_STEP", -1)) + 1)
+    if stop <= step + 1:
+        return False
+
+    for future_step in range(step + 1, stop):
+        planned = tape[future_step]
+        if not isinstance(planned, dict):
+            return False
+        market = planned.get("market", [])
+        if market is None:
+            market = []
+        if not isinstance(market, list):
+            return False
+        for row in market[:max_orders]:
+            if not row:
+                continue
+            if not isinstance(row, list) or not row or not isinstance(row[0], str):
+                return False
+            op = row[0]
+            if op in _CASH_SPEND_OPS:
+                return False
+            if op not in _MARKET_NONSPEND_OPS:
+                return False
+    return True
+
+
 def _purchase_quantity(observation, action, configuration, r04):
     if not _config_ok(configuration, r04) or not _all_pass(observation, action):
         return None
     market = action.get("market")
     if not isinstance(market, list) or market:
+        return None
+    if not _remaining_day_cash_spend_free(observation, r04):
         return None
 
     private = observation.get("private")
