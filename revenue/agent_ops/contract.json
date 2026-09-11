@@ -1,6 +1,6 @@
 {
   "id": "commons-agent-ops",
-  "version": 1,
+  "version": 2,
   "name": "Commons Agent Ops",
   "public_plane": {
     "price_usd": 0,
@@ -41,8 +41,7 @@
   "commercial": {
     "cash_usd": 0,
     "buyer_claimed": false,
-    "refund_status": "NOT_PUBLISHED_IN_CURRENT_SOURCE",
-    "refund_boundary": "No refund term is published by the current Agent Ops page or checkout-state source; this contract does not invent one."
+    "refund": "All sales are final; no refunds."
   },
   "operation_boundary": "A carrier-accepted operation is mail, not execution or Git durability. Buying an Agent Ops offer does not itself create a Commons sender identity, work claim, durable execution receipt, payment settlement, payout, or cash truth.",
   "checkout_boundary": "Provider link activity is separate checkout evidence. A source contract or checkout URL is not payment authorization, settlement, payout, bank availability, or collected cash.",

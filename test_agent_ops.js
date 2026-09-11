@@ -134,7 +134,7 @@ for (const [offerName, receiptName, cents] of [
   assert.strictEqual(state.chargeable, true);
   assert.strictEqual(state.url, recorded.url);
 }
-assert.strictEqual(contract.commercial.refund_status, "NOT_PUBLISHED_IN_CURRENT_SOURCE");
+assert.strictEqual(contract.commercial.refund, "All sales are final; no refunds.");
 assert.strictEqual(checkout.economic_truth.buyer_claimed, false);
 assert.strictEqual(checkout.economic_truth.processor_payment_claimed, false);
 assert.strictEqual(checkout.economic_truth.collected_cash_usd, "0.00");
