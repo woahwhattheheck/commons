@@ -129,25 +129,93 @@ class CustomMarketParams(unittest.TestCase):
                 self.assertIsNone(detail)
                 self.assertEqual(result["market"], market)
 
-    def test_negative_public_inventory_remains_valid_evidence_state(self):
+    def test_negative_buyable_public_inventory_remains_valid_evidence_state(self):
         tracker = b10.RivalSupplyOrder(enabled=True)
         empty = {"farmer": ["PASS"], "hands": [], "market": []}
 
-        # Official town consumption can push public market inventory below zero;
-        # exact negative integers are therefore valid observations, not malformed
-        # state. A later +3 transition still proves net rival supply.
-        first = tracker.apply(obs(1, wool_inventory=-2), empty)
+        # BUY_PRODUCT can drive FERTILIZER below zero; signed exact integers for
+        # buyable products therefore remain valid even though non-buyables have
+        # an absolute deterministic town-drain floor under the 720-step model.
+        first_obs = obs(1)
+        first_obs["market"]["inventory"]["FERTILIZER"] = -2
+        first = tracker.apply(first_obs, empty)
         self.assertIs(first, empty)
-        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], -2)
+        self.assertEqual(tracker.players[0]["inventory"]["FERTILIZER"], -2)
 
-        parent = parent_action()
-        result = tracker.apply(obs(2, wool_inventory=1), parent)
+        second_obs = obs(2)
+        second_obs["market"]["inventory"]["FERTILIZER"] = 1
+        parent = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "MILK", 1], ["SELL", "FERTILIZER", 1]],
+        }
+        result = tracker.apply(second_obs, parent)
         self.assertIsNot(result, parent)
         self.assertEqual(
             result["market"][:2],
-            [["SELL", "WOOL", 1], ["SELL", "MILK", 1]],
+            [["SELL", "FERTILIZER", 1], ["SELL", "MILK", 1]],
         )
         self.assertEqual(tracker.telemetry["reorders"], 1)
+
+    def test_step_zero_requires_exact_standard_market_i0(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        parent = parent_action()
+        tracker.apply(obs(1), empty, dict(STANDARD_CONFIG))
+        self.assertIn(0, tracker.players)
+
+        malformed = obs(0, wool_inventory=9_999)
+        result = tracker.apply(malformed, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+
+        valid = tracker.apply(obs(0), empty, dict(STANDARD_CONFIG))
+        self.assertIs(valid, empty)
+        self.assertEqual(tracker.players[0]["step"], 0)
+        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], 10_000)
+
+    def test_gap_snapshot_below_absolute_town_drain_floor_cannot_seed(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        parent = parent_action()
+        tracker.apply(obs(0), empty, dict(STANDARD_CONFIG))
+        self.assertIn(0, tracker.players)
+
+        # Before callback step 10, only processed step 0 can drain WOOL under
+        # the default cadence, so 9999 is the absolute reachable minimum.
+        poison = obs(10, wool_inventory=9_900)
+        result = tracker.apply(poison, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+
+        corrected = tracker.apply(
+            obs(10, wool_inventory=9_999), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(corrected, parent)
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+        self.assertEqual(tracker.players[0]["step"], 10)
+
+    def test_consecutive_nonbuyable_overdrop_breaks_continuity(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        parent = parent_action()
+        tracker.apply(obs(1, wool_inventory=10_000), empty, dict(STANDARD_CONFIG))
+        self.assertIn(0, tracker.players)
+
+        # Step 1 itself has no town drain, so WOOL cannot fall before step 2.
+        # 9999 is above the global step-2 floor but is impossible relative to
+        # this observed predecessor; it must not become tomorrow's baseline.
+        poison = obs(2, wool_inventory=9_999)
+        result = tracker.apply(poison, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+
+        corrected = tracker.apply(
+            obs(2, wool_inventory=10_000), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(corrected, parent)
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+        self.assertEqual(tracker.players[0]["step"], 2)
 
     def test_terminal_step_718_records_evidence_but_never_reorders(self):
         tracker = b10.RivalSupplyOrder(enabled=True)

@@ -24,9 +24,9 @@ for HIRE/BUY_* obligations. The terminal callback at step 718 is observation-
 only for B10 under the standard 720-step episode: upstream B9/PLACE own the final
 liquidation row semantics, so B10 records public evidence but never reorders that
 callback. Nonstandard episode lengths, missing installed runtime configuration,
-and engine-unreachable callback/town history fail closed and break evidence
-continuity. All current public evidence is validated before mutation; malformed
-or ambiguous state fails closed to the exact parent action.
+and engine-unreachable callback/town/market history fail closed and break
+evidence continuity. All current public evidence is validated before mutation;
+malformed or ambiguous state fails closed to the exact parent action.
 """
 from __future__ import annotations
 
@@ -39,6 +39,10 @@ PRODUCTS = (
     "EGG", "MILK", "WOOL", "FERTILIZER",
 )
 WHEAT = "WHEAT"
+STANDARD_MARKET_I0 = 10_000
+NON_BUYABLE_PRODUCTS = tuple(
+    item for item in PRODUCTS if item not in ("WHEAT", "FERTILIZER")
+)
 STANDARD_MAX_ORDERS = 10
 STANDARD_EPISODE_STEPS = 720
 LAST_AGENT_STEP = STANDARD_EPISODE_STEPS - 2
@@ -151,6 +155,65 @@ def _validate_shop_transition(previous_step: int, current_step: int,
     current = tuple(current_shops)
     if current[:len(previous)] != previous:
         raise ValueError("town shop history must preserve the exact prior prefix")
+
+
+def _count_multiples(start: int, stop: int, interval: int) -> int:
+    """Count multiples of interval in the half-open integer range [start, stop)."""
+    if start >= stop:
+        return 0
+    first = ((start + interval - 1) // interval) * interval
+    if first >= stop:
+        return 0
+    return 1 + (stop - 1 - first) // interval
+
+
+def _cumulative_town_drain(step: int, shops: Sequence[str],
+                           configuration: Any = None) -> dict[str, int]:
+    """Exact deterministic drain over already-processed steps [0, step)."""
+    turns_per_day = _interval(configuration, "turnsPerDay", 24)
+    unlock_interval = _interval(configuration, "townShopUnlockInterval", 3)
+    shop_interval = _interval(configuration, "townShopSellInterval", 4)
+    center_interval = _interval(configuration, "townCenterSellInterval", 24)
+
+    drain = {item: 0 for item in PRODUCTS}
+    center_hits = _count_multiples(0, step, center_interval)
+    for item in CENTER_PRODUCTS:
+        drain[item] += center_hits
+
+    unlock_stride = turns_per_day * unlock_interval
+    for index, shop in enumerate(shops, start=1):
+        unlock_step = index * unlock_stride
+        hits = _count_multiples(unlock_step, step, shop_interval)
+        if not hits:
+            continue
+        products = SHOPS[shop]
+        multiplier = 2 if len(products) == 1 else 1
+        for item in products:
+            drain[item] += hits * multiplier
+    return drain
+
+
+def _validate_market_snapshot(step: int, inventory: Mapping[str, int],
+                              shops: Sequence[str], configuration: Any = None) -> None:
+    """Reject market states unreachable under the accepted standard-market model."""
+    if step == 0 and any(inventory[item] != STANDARD_MARKET_I0 for item in PRODUCTS):
+        raise ValueError("step-0 market inventory must equal standard I0")
+
+    cumulative_drain = _cumulative_town_drain(step, shops, configuration)
+    for item in NON_BUYABLE_PRODUCTS:
+        minimum = STANDARD_MARKET_I0 - cumulative_drain[item]
+        if inventory[item] < minimum:
+            raise ValueError("non-buyable market inventory is below reachable town-drain floor")
+
+
+def _validate_nonbuyable_transition(previous_inventory: Mapping[str, int],
+                                    current_inventory: Mapping[str, int],
+                                    previous_town_consume: Mapping[str, int]) -> None:
+    """No official operation besides deterministic town drain can lower these rows."""
+    for item in NON_BUYABLE_PRODUCTS:
+        minimum = previous_inventory[item] - previous_town_consume[item]
+        if current_inventory[item] < minimum:
+            raise ValueError("non-buyable market inventory dropped beyond town demand")
 
 
 def _town_consumption(observation: Mapping[str, Any], configuration: Any = None) -> dict[str, int]:
@@ -300,10 +363,13 @@ class RivalSupplyOrder:
         current = _inventory(observation)
         current_shops = _shop_vector(observation)
         _validate_shop_snapshot(step, current_shops, configuration)
+        _validate_market_snapshot(step, current, current_shops, configuration)
         previous = self.players.get(player)
         if previous is None or step != previous["step"] + 1:
             return step, player, {}
         _validate_shop_transition(previous["step"], step, previous["shops"], current_shops)
+        _validate_nonbuyable_transition(previous["inventory"], current,
+                                        previous["town_consume"])
         lower = _rival_supply_lower_bound(previous["inventory"], current,
                                           previous["town_consume"], previous["own_sell_upper"])
         return step, player, lower
@@ -314,9 +380,11 @@ class RivalSupplyOrder:
         step, player = _step_player(observation)
         shops = _shop_vector(observation)
         _validate_shop_snapshot(step, shops, configuration)
+        inventory = _inventory(observation)
+        _validate_market_snapshot(step, inventory, shops, configuration)
         return player, {
             "step": step,
-            "inventory": _inventory(observation),
+            "inventory": inventory,
             "shops": shops,
             "town_consume": _town_consumption(observation, configuration),
             "own_sell_upper": _own_sell_upper(action),
