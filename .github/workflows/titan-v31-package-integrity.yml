@@ -1,0 +1,54 @@
+name: titan-v31-package-integrity
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - '.github/workflows/titan-v31-package-integrity.yml'
+  push:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - '.github/workflows/titan-v31-package-integrity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-package-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deterministic-package-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git status --short
+
+      - name: Verify deterministic V3 package metadata
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check | tee /tmp/titan-v31-package-check.log
+          grep -F 'V3 CHECK OK' /tmp/titan-v31-package-check.log
+
+      - name: Prove package check did not mutate checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
