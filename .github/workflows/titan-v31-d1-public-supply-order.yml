@@ -27,6 +27,34 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
+      - name: Bind exact head, frozen base, and five-path scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          python - <<'PY'
+          import subprocess
+          base = '508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          expected = {
+              '.github/workflows/titan-v31-d1-public-supply-order.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/d1_public_supply_order.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/run_d1_screen.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/test_d1_public_supply_order.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', base, 'HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'unexpected D1 scope: {sorted(actual)}')
+          print('D1_SCOPE_OK', len(actual))
+          PY
+          test -z "$(git status --porcelain)"
+
       - name: Fetch immutable canonical carrier
         shell: bash
         run: |
@@ -35,7 +63,7 @@ jobs:
           test "$(git rev-parse refs/remotes/origin/titan-d1-canonical-carrier)" = 'c580f7805cc7468094c0e880f4923133d45d70d0'
           git cat-file -e '508b342fc46fa91e3d7cdc3f0b7e44934a187c14^{commit}'
           git cat-file -e 'c580f7805cc7468094c0e880f4923133d45d70d0^{commit}'
-          echo "event_head=$(git rev-parse HEAD)"
+          test -z "$(git status --porcelain)"
 
       - name: Focused D1 source contracts
         shell: bash
