@@ -29,9 +29,14 @@ def _load_module(name: str, path: Path):
     return module
 
 
+# Official interpreter is terminal_mechanics (build_mechanics.py --terminal-market).
+# mechanics.py is extracted primitives and does not expose _process_market.
+_LAB = ROOT / "revenue/kaggriculture/cloud-execution-lab"
+if str(_LAB) not in sys.path:
+    sys.path.insert(0, str(_LAB))
 mechanics = _load_module(
     "_titan_pressure_delay_mechanics",
-    ROOT / "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
+    _LAB / "reference/titan-history/terminal_mechanics.py",
 )
 
 
@@ -117,6 +122,10 @@ def _run_exact_market(
 
 
 class DelayCertificateTests(unittest.TestCase):
+    def test_official_terminal_engine_exposes_process_market(self) -> None:
+        self.assertTrue(callable(getattr(mechanics, "_process_market", None)))
+        self.assertEqual(tuple(mechanics.PRODUCTS), tuple(candidate.PRODUCTS))
+
     def test_exact_plateau_predecessor_is_blocked(self) -> None:
         tomato = _sell("TOMATO", 1, "tomato-parent")
         milk = _sell("MILK", 1, "milk-parent")
