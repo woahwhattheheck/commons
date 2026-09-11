@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-import copy
 import sys
 import unittest
 from unittest import mock
@@ -41,6 +40,7 @@ class B11MirrorTests(unittest.TestCase):
     def setUp(self):
         b11.reset_state()
         self.old_horizon = b11.r04.SALE_HORIZON
+        b11.r04.SALE_HORIZON = 8
 
     def tearDown(self):
         b11.r04.SALE_HORIZON = self.old_horizon
@@ -68,13 +68,16 @@ class B11MirrorTests(unittest.TestCase):
         self.assertEqual(reason, "mismatch")
         self.assertEqual(b11.REPORT["mismatch_observations"], 1)
 
-    def test_gap_breaks_continuity_even_when_structure_matches(self):
+    def test_gap_or_rewind_breaks_continuity_even_when_structure_matches(self):
         for step in range(6):
             b11.mirror_certificate(obs(step))
         certified, streak, _ = b11.mirror_certificate(obs(8))
         self.assertFalse(certified)
         self.assertEqual(streak, 1)
-        self.assertEqual(b11.REPORT["gap_resets"], 1)
+        certified, streak, _ = b11.mirror_certificate(obs(3))
+        self.assertFalse(certified)
+        self.assertEqual(streak, 1)
+        self.assertEqual(b11.REPORT["gap_resets"], 2)
 
     def test_bool_or_string_player_and_step_fail_closed(self):
         bad = [
@@ -102,7 +105,7 @@ class B11MirrorTests(unittest.TestCase):
         self.assertFalse(b11._json_equal([0], [False]))
         self.assertTrue(b11._json_equal({"x": [1, "1", None]}, {"x": [1, "1", None]}))
 
-    def test_adaptive_agent_uses_h10_only_after_eight_consecutive_mirrors(self):
+    def test_adaptive_agent_uses_h10_only_inside_certified_callbacks(self):
         seen = []
 
         def parent(observation, configuration=None):
@@ -113,10 +116,45 @@ class B11MirrorTests(unittest.TestCase):
             agent = b11.install(enabled=True)
         for step in range(10):
             agent(obs(step))
+            self.assertEqual(b11.r04.SALE_HORIZON, 8)
         self.assertEqual(seen[:7], [8] * 7)
         self.assertEqual(seen[7:], [10] * 3)
         self.assertEqual(b11.REPORT["h8_callbacks"], 7)
         self.assertEqual(b11.REPORT["h10_callbacks"], 3)
+
+    def test_h10_callback_does_not_contaminate_shared_module_control(self):
+        seen = []
+
+        def parent(observation, configuration=None):
+            seen.append(b11.r04.SALE_HORIZON)
+            return None
+
+        with mock.patch.object(b11.r04, "install", return_value=parent):
+            agent = b11.install(enabled=True)
+        for step in range(8):
+            agent(obs(step))
+        self.assertEqual(seen[-1], 10)
+        control_observed_horizon = b11.r04.SALE_HORIZON
+        self.assertEqual(control_observed_horizon, 8)
+
+    def test_parent_exception_restores_prior_shared_horizon(self):
+        calls = {"n": 0}
+
+        def parent(observation, configuration=None):
+            calls["n"] += 1
+            if calls["n"] == 8:
+                self.assertEqual(b11.r04.SALE_HORIZON, 10)
+                raise RuntimeError("parent boom")
+            return None
+
+        with mock.patch.object(b11.r04, "install", return_value=parent):
+            agent = b11.install(enabled=True)
+        for step in range(7):
+            agent(obs(step))
+        self.assertEqual(b11.r04.SALE_HORIZON, 8)
+        with self.assertRaisesRegex(RuntimeError, "parent boom"):
+            agent(obs(7))
+        self.assertEqual(b11.r04.SALE_HORIZON, 8)
 
     def test_mismatch_immediately_returns_to_h8(self):
         seen = []
@@ -131,6 +169,7 @@ class B11MirrorTests(unittest.TestCase):
             agent(obs(step))
         agent(obs(8, right=farm(hand_count=2)))
         self.assertEqual(seen[-2:], [10, 8])
+        self.assertEqual(b11.r04.SALE_HORIZON, 8)
 
     def test_disabled_mode_is_exact_parent_and_never_classifies(self):
         sentinel = object()
