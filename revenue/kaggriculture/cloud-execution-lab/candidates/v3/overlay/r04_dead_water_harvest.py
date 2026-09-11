@@ -6,12 +6,15 @@ moves, buys, plants, services animals, or touches market rows. During the
 existing late-water window it only rewrites an authored ["WATER"] when:
 
 * the WATER is provably wasted (the plant is already watered today, or its
-  public max_lifespan_step is at/before the current step), and
-* the same standing plant is provably harvestable from public state.
+  public max_lifespan_step is at/before the current step),
+* the same standing plant is provably harvestable from public state, and
+* for a non-ongoing crop, an already-watered harvest cannot destroy a remaining
+  future yield opportunity.
 
 Annual crops start with yield_units == 1 before maturity in the official engine,
-so yield_units alone is not sufficient. We also require planted_day plus the
-official first_yield_day for the crop. Unexpected state fails closed.
+so yield_units alone is not sufficient. Also, HARVEST removes annual crops from
+the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
+before max_yield_day. Unexpected state fails closed.
 """
 from __future__ import annotations
 
@@ -26,6 +29,16 @@ FIRST_YIELD_DAY = {
     "MELON": 10,
 }
 
+# Official engine crop semantics. Ongoing-crop HARVEST preserves the plant;
+# annual-crop HARVEST removes it. For the latter, an already-watered action is
+# replaceable only once the crop has reached its final water/yield age.
+ONGOING_CROPS = {"TOMATO", "STRAWBERRY"}
+ANNUAL_MAX_YIELD_DAY = {
+    "WHEAT": 4,
+    "CARROT": 3,
+    "MELON": 12,
+}
+
 _WATER = ["WATER"]
 _HARVEST = ["HARVEST"]
 _UNKNOWN = object()
@@ -35,6 +48,7 @@ report = {
     "already_watered": 0,
     "expiring": 0,
     "not_harvestable": 0,
+    "future_yield_block": 0,
     "recovered": 0,
 }
 
@@ -103,6 +117,30 @@ def _harvestable(tile, day):
         return False
 
 
+def _harvest_preserves_future_yield(tile, day, reason):
+    """Prove this recovery cannot destroy a remaining annual yield opportunity.
+
+    Expiring plants are already past the engine's productive window. Ongoing
+    crops survive HARVEST, so collecting held yield does not destroy future
+    production. An annual crop is different: HARVEST removes the plant, so an
+    already-watered mature crop must have reached max_yield_day before we can
+    safely consume it here.
+    """
+    if reason == "expiring":
+        return True
+    try:
+        crop = tile.get("crop")
+        if crop in ONGOING_CROPS:
+            return True
+        max_yield_day = ANNUAL_MAX_YIELD_DAY.get(crop)
+        planted_day = tile.get("planted_day")
+        if max_yield_day is None or not _plain_int(planted_day):
+            return False
+        return day - planted_day >= max_yield_day
+    except Exception:
+        return False
+
+
 def apply_dead_water_harvest(observation, action, enabled=True):
     """Recover same-tile HARVESTs; return the original object when unchanged."""
     if not enabled:
@@ -110,14 +148,20 @@ def apply_dead_water_harvest(observation, action, enabled=True):
     try:
         step = observation["step"]
         day = observation["day"]
+        player = observation["player"]
         if not _plain_int(step) or not _plain_int(day):
+            return action
+        if not _plain_int(player) or player not in (0, 1):
             return action
         if step < LATE_START or step > LATE_END:
             return action
         if not isinstance(action, dict):
             return action
 
-        farm = observation["farms"][observation["player"]]
+        farms = observation["farms"]
+        if not isinstance(farms, list) or player >= len(farms):
+            return action
+        farm = farms[player]
         positions = [farm["farmer"]] + list(farm.get("hands") or [])
         commands = [action.get("farmer")] + list(action.get("hands") or [])
         report["steps_active"] += 1
@@ -136,6 +180,9 @@ def apply_dead_water_harvest(observation, action, enabled=True):
             report[reason] += 1
             if not _harvestable(tile, day):
                 report["not_harvestable"] += 1
+                continue
+            if not _harvest_preserves_future_yield(tile, day, reason):
+                report["future_yield_block"] += 1
                 continue
             new_commands[index] = list(_HARVEST)
             report["recovered"] += 1
