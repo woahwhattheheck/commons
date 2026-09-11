@@ -1,0 +1,46 @@
+name: titan-v31-l3-public-supply-gate
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py'
+      - '.github/workflows/titan-v31-l3-public-supply-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
+        run: python -B -m unittest -v test_candidate.py
+      - name: Optimized-interpreter predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
+        run: python -O -B -m unittest -v test_candidate.py
+      - name: Parse experiment
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
+        run: python -B -m py_compile candidate.py test_candidate.py
+      - name: Verify live-R04 baseline pin
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
+        run: |
+          python -B - <<'PY'
+          import candidate as c
+          b = c.base
+          assert b.SALE_HORIZON == 8
+          assert b.OPEN_ROUNDTRIP == 0
+          assert b.ROW_ORDER is True
+          assert b.EVENING_FLUSH is True
+          assert b.SALE_EXCLUDED == ('WHEAT',)
+          assert b._V231_EARLY is True
+          assert b.NO_LATE_SALE_ADVANCE is True
+          assert b.NO_LATE_SALE_ADVANCE_STEP == 648
+          assert c.l3.suppressed is c._ORIGINAL_SUPPRESSED
+          print('L3 PUBLIC SUPPLY GATE SOURCE OK')
+          PY
