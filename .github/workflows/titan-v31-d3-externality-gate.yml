@@ -1,0 +1,58 @@
+name: titan-v31-d3-externality-gate
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py'
+      - '.github/workflows/titan-v31-d3-externality-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  externality-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind stacked scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git diff --name-only bc3de14fff86079e70659fd3c2ea42ffd2101b97..HEAD | tee /tmp/d3-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          paths = [p for p in Path('/tmp/d3-paths.txt').read_text().splitlines() if p]
+          allowed = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py',
+              '.github/workflows/titan-v31-d3-externality-gate.yml',
+          }
+          assert paths, 'empty D3 diff'
+          assert set(paths) == allowed, paths
+          print('D3_SCOPE_OK', len(paths))
+          PY
+
+      - name: Compile evidence tools
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python -m py_compile v31_delta_distribution_report.py v31_externality_gate.py test_v31_externality_gate.py
+
+      - name: Preserve parent score-normalization suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: python -B test_v31_delta_distribution_report.py
+
+      - name: Run D3 focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: python -B -m unittest -v test_v31_externality_gate.py
+
+      - name: Prove checkout stayed clean
+        run: test -z "$(git status --porcelain)"
