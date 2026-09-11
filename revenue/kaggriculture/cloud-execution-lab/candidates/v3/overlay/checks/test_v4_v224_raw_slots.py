@@ -164,6 +164,13 @@ class V224RawSlots(unittest.TestCase):
         malformed_sell = action([["HIRE"], ["SELL", "BOGUS", 1]])
         self.assertIs(lane.sales_first_raw_slots(malformed_sell), malformed_sell)
 
+    def test_engine_rejected_buy_product_item_is_malformed_barrier(self):
+        # `_process_market` only accepts BUY_PRODUCT for WHEAT/FERTILIZER even
+        # though MILK is a valid SELL product. The no-op row must remain a raw
+        # timing barrier rather than being crossed by a later SELL.
+        parent = action([["HIRE"], ["BUY_PRODUCT", "MILK", 1], ["SELL", "WOOL", 2]])
+        self.assertIs(lane.sales_first_raw_slots(parent), parent)
+
     def test_changed_prefix_retains_raw_cardinality(self):
         parent = action([["HIRE"], ["SELL", "WOOL", 2], [],
                          ["BUY_SEED", "WHEAT", 1], ["SELL", "MILK", 3]])
