@@ -1,0 +1,112 @@
+name: TITAN V3.1 B4 full-chain feasibility
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-b4-fullchain-feasibility.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/fullchain_probe.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/test_fullchain_probe.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b4-fullchain-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fullchain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      FROZEN: 508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+      PARENT: a809ef64af660e268d9b5e3bf2be680fb28cbab6
+      ROOT: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+      AUDIT: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early
+    steps:
+      - name: Checkout literal child head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind frozen donor and exact three-path child scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$FROZEN" HEAD)" = "$FROZEN"
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          test "$(git rev-list --count "$PARENT"..HEAD)" -eq 3
+
+          git diff --name-only "$PARENT"...HEAD > /tmp/b4-fullchain-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/b4-fullchain-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-b4-fullchain-feasibility.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/fullchain_probe.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b4_sheep_early/test_fullchain_probe.py',
+          }
+          assert actual == expected, (sorted(actual), sorted(expected))
+          print('B4_FULLCHAIN_SCOPE_OK', len(actual))
+          PY
+
+          test "$(git rev-parse HEAD:$ROOT/overlay/r01_tapes.py)" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+          test "$(git rev-parse HEAD:$ROOT/overlay/r04_full_router.py)" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py)" = 1fb6b655bb4ca1e1684be165a8ef513e2e6c2325
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = 3c202c7ee921da239356789e266b694635103fc4
+          git diff --check
+          test -z "$(git status --porcelain)"
+
+      - name: Freeze chain linker and fail-closed transform contracts
+        working-directory: ${{ env.AUDIT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_fullchain_probe.py 2>&1 | tee "$RUNNER_TEMP/b4-fullchain-tests.log"
+          grep -E '^Ran 10 tests in [0-9.]+s$' "$RUNNER_TEMP/b4-fullchain-tests.log"
+          grep -Fx 'OK' "$RUNNER_TEMP/b4-fullchain-tests.log"
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('fullchain_probe.py', 'test_fullchain_probe.py'):
+              compile(Path(name).read_text(), name, 'exec')
+          print('B4_FULLCHAIN_IN_MEMORY_COMPILE_OK')
+          PY
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
+
+      - name: Execute official-interpreter paired feasibility screen
+        working-directory: ${{ env.AUDIT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B fullchain_probe.py \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --output "$RUNNER_TEMP/B4-FULLCHAIN-RECEIPT.json" \
+            | tee "$RUNNER_TEMP/b4-fullchain-run.log"
+          test -s "$RUNNER_TEMP/B4-FULLCHAIN-RECEIPT.json"
+          python - "$RUNNER_TEMP/B4-FULLCHAIN-RECEIPT.json" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report['schema'] == 'titan-v31-b4-fullchain-feasibility/v1'
+          assert report['frozen_source'] == '508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          assert report['engine_ref'] == '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c'
+          assert report['summary']['cells'] == 8
+          assert len(report['static_specs']) == 13
+          print('B4_FULLCHAIN_RECEIPT_OK', json.dumps(report['summary'], sort_keys=True))
+          PY
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
+
+      - name: Upload exact feasibility receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-b4-fullchain-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/B4-FULLCHAIN-RECEIPT.json
+            ${{ runner.temp }}/b4-fullchain-run.log
+            ${{ runner.temp }}/b4-fullchain-tests.log
+          if-no-files-found: error
+          retention-days: 14
