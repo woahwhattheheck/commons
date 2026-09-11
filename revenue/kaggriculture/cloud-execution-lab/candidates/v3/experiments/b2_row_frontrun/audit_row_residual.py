@@ -14,11 +14,14 @@ barrier therefore makes a simple promotion shape unsafe rather than disappearing
 the audit.
 
 A later candidate may only use shapes classified ``fixed_prefix_only`` and must still
-prove at runtime that the crossed fixed-cost operations were already affordable without
-cash from the promoted sale. That keeps their success/failure semantics unchanged while
-moving the SELL to an earlier lockstep market index. BUY_PRODUCT is never classified
-safe here because its quote depends on market inventory; crossing another SELL is also
-excluded because it changes our own market-price sequence.
+prove at runtime that every crossed cash-only operation was already affordable without
+cash from the promoted sale. That keeps HIRE / BUY_LAND / BUY_SEED success semantics
+unchanged while moving the SELL to an earlier lockstep market index. BUY_ANIMAL is not
+candidate-safe here: selling first can free shed capacity and turn a parent-failing or
+partially executing animal purchase into a larger success even when cash was already
+sufficient. BUY_PRODUCT is also excluded because its quote and shed capacity depend on
+market/runtime state; crossing another SELL is excluded because it changes our own
+market-price sequence.
 """
 from __future__ import annotations
 
@@ -34,7 +37,10 @@ if str(OVERLAY) not in sys.path:
 
 from r01_tapes import load_tapes  # noqa: E402
 
-FIXED_PREFIX_OPS = {"HIRE", "BUY_LAND", "BUY_SEED", "BUY_ANIMAL"}
+# These operations are cash-only at market execution time in the pinned engine.
+# BUY_ANIMAL is deliberately excluded: each unit also consumes shed capacity, and
+# promoting a SELL ahead of it can manufacture room that the parent queue did not have.
+CASH_ONLY_PREFIX_OPS = {"HIRE", "BUY_LAND", "BUY_SEED"}
 EXCLUDED_SELL_ITEMS = {"WHEAT", "FERTILIZER"}
 
 
@@ -98,7 +104,7 @@ def audit():
                 crossed = rows[lead:index]
                 crossed_ops = [_op(r) for r in crossed]
                 fixed_prefix_only = bool(crossed) and all(
-                    op in FIXED_PREFIX_OPS for op in crossed_ops
+                    op in CASH_ONLY_PREFIX_OPS for op in crossed_ops
                 )
                 # WHEAT/FERTILIZER are kept out of any future generic promotion.
                 candidate_shape = fixed_prefix_only and item not in EXCLUDED_SELL_ITEMS
@@ -131,13 +137,14 @@ def audit():
                     fixed_steps_by_plan[plan].append(step)
 
     return {
-        "schema": "titan-v31-b2-row-frontrun-audit-v2",
+        "schema": "titan-v31-b2-row-frontrun-audit-v3",
         "frozen_tape_count": len(tapes),
         "engine_contract": {
             "same_row_quote": "both players use same pre-commit market inventory",
             "residual": "SELL rows after first non-SELL/raw-slot barrier; ROW_ORDER already owns leading SELL block",
             "promotion_target": "same raw slot immediately before first barrier",
             "slot_custody": "falsey placeholders are preserved exactly and are never candidate-safe",
+            "candidate_crossing": "HIRE/BUY_LAND/BUY_SEED only; BUY_ANIMAL excluded because SELL can change shed-capacity executability",
         },
         "totals": {
             "late_sell_occurrences": len(occurrences),
