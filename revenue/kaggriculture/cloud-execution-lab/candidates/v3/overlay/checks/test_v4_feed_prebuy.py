@@ -26,7 +26,7 @@ def _tile_grid():
     return tiles
 
 
-def _observation(wheat=0, money=5000, wheat_price=30, egg_price=100):
+def _observation(wheat=0, money=5000.0, wheat_price=30, egg_price=100):
     return {
         "step": 39,
         "player": 0,
@@ -102,6 +102,18 @@ class FeedPrebuyTests(unittest.TestCase):
         out = lane.apply_feed_prebuy(
             _observation(wheat=0), _action(), configuration=_standard_config(), enabled=True)
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
+    def test_engine_float_money_activates_and_type_poison_fails_closed(self):
+        out = lane.apply_feed_prebuy(_observation(money=5000.0), _action(), enabled=True)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
+        for bad_money in (True, float("nan"), float("inf"), float("-inf"), -1.0, "5000"):
+            parent = _action()
+            with self.subTest(money=bad_money):
+                self.assertIs(
+                    lane.apply_feed_prebuy(_observation(money=bad_money), parent, enabled=True),
+                    parent,
+                )
 
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
         out = lane.apply_feed_prebuy(_observation(wheat=1), _action(), enabled=True)
@@ -195,7 +207,7 @@ class FeedPrebuyTests(unittest.TestCase):
 
     def test_cash_reserve_rejects_purchase(self):
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(_observation(money=1050), parent, enabled=True), parent)
+        self.assertIs(lane.apply_feed_prebuy(_observation(money=1050.0), parent, enabled=True), parent)
 
     def test_capacity_rejects_purchase(self):
         obs = _observation()
