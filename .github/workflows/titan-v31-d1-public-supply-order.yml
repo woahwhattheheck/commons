@@ -84,6 +84,119 @@ jobs:
           PY
           test -z "$(git status --porcelain)"
 
+      - name: Receipt normalization poison contracts survive optimized Python
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/d1-receipt-contract.py" <<'PY'
+          from __future__ import annotations
+
+          import copy
+          import importlib.util
+          import math
+          from pathlib import Path
+
+          here = Path.cwd().resolve()
+          repo = here
+          while repo != repo.parent and not (repo / '.git').exists():
+              repo = repo.parent
+          if not (repo / '.git').exists():
+              raise SystemExit('repo root not found')
+
+          runner_path = here / 'run_d1_screen.py'
+          spec = importlib.util.spec_from_file_location('d1_runner_contract', runner_path)
+          if spec is None or spec.loader is None:
+              raise SystemExit('cannot import D1 runner')
+          runner = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(runner)
+
+          label = 'synthetic'
+          candidate_main = runner_path
+          fingerprint = {
+              'entry': candidate_main.name,
+              'callable': 'agent',
+              'sha256': runner.sha256_file(candidate_main),
+          }
+          games = []
+          for seed in runner.SEEDS:
+              for seat in (0, 1):
+                  games.append({
+                      'opponent': label,
+                      'seed': seed,
+                      'candidate_seat': seat,
+                      'status': 'complete',
+                      'failure': None,
+                      'scores': [100.0 + seat, 90.0 - seat],
+                      'trace_sha256': 'a' * 64,
+                  })
+          valid = {
+              'schema_version': 1,
+              'engine_ref': runner.ENGINE_REF,
+              'evaluator_sha256': runner.sha256_file(repo / runner.EVALUATOR_REL),
+              'candidate': dict(fingerprint),
+              'opponents': {label: dict(fingerprint)},
+              'seeds': list(runner.SEEDS),
+              'agent_rng_seed': runner.AGENT_RNG_SEED,
+              'reproducibility': {
+                  'checked': True,
+                  'same_trace_and_scores': True,
+                  'original_trace': 'b' * 64,
+                  'replay_trace': 'b' * 64,
+              },
+              'games': games,
+          }
+
+          def validate(report):
+              runner.validate_evaluator_report(report, label, candidate_main, candidate_main, repo)
+              cells = runner.exact_cells(report, label)
+              if len(cells) != len(runner.SEEDS) * 2:
+                  raise AssertionError(f'wrong validated cell count: {len(cells)}')
+              first = cells[(runner.SEEDS[0], 0)]
+              own, rival = runner.side_scores(first)
+              if not (own == 100.0 and rival == 90.0):
+                  raise AssertionError(f'validated side-score projection drift: {(own, rival)!r}')
+
+          def rejects(name, mutate):
+              poisoned = copy.deepcopy(valid)
+              mutate(poisoned)
+              try:
+                  validate(poisoned)
+              except (AssertionError, SystemExit):
+                  print('reject_ok', name)
+                  return
+              raise SystemExit(f'{name}: poison was accepted')
+
+          validate(copy.deepcopy(valid))
+
+          rejects('bool-schema', lambda r: r.__setitem__('schema_version', True))
+          rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
+          rejects('rng-drift', lambda r: r.__setitem__('agent_rng_seed', runner.AGENT_RNG_SEED + 1))
+          rejects('candidate-fingerprint-drift', lambda r: r['candidate'].__setitem__('sha256', 'c' * 64))
+          rejects('opponent-fingerprint-drift', lambda r: r['opponents'][label].__setitem__('sha256', 'd' * 64))
+          rejects('extra-opponent', lambda r: r['opponents'].__setitem__('extra', dict(fingerprint)))
+          rejects('recheck-not-run', lambda r: r['reproducibility'].__setitem__('checked', False))
+          rejects('recheck-failed', lambda r: r['reproducibility'].__setitem__('same_trace_and_scores', False))
+          rejects('replay-trace-poison', lambda r: r['reproducibility'].__setitem__('replay_trace', 'not-a-sha'))
+          rejects('replay-trace-drift', lambda r: r['reproducibility'].__setitem__('replay_trace', 'c' * 64))
+          rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
+          rejects('bool-seat', lambda r: r['games'][0].__setitem__('candidate_seat', False))
+          rejects('float-seat', lambda r: r['games'][0].__setitem__('candidate_seat', 0.0))
+          rejects('bool-score', lambda r: r['games'][0].__setitem__('scores', [True, 90.0]))
+          rejects('nan-score', lambda r: r['games'][0].__setitem__('scores', [math.nan, 90.0]))
+          rejects('positive-infinity', lambda r: r['games'][0].__setitem__('scores', [math.inf, 90.0]))
+          rejects('negative-infinity', lambda r: r['games'][0].__setitem__('scores', [-math.inf, 90.0]))
+          rejects('trace-poison', lambda r: r['games'][0].__setitem__('trace_sha256', 'not-a-sha'))
+          rejects('uppercase-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'A' * 64))
+          rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
+          rejects('missing-cell', lambda r: r['games'].pop())
+
+          print('D1_RECEIPT_NORMALIZATION_CONTRACT_OK', len(runner.SEEDS) * 2)
+          PY
+          env -u PYTHONOPTIMIZE python -B "$RUNNER_TEMP/d1-receipt-contract.py"
+          PYTHONOPTIMIZE=1 python -B "$RUNNER_TEMP/d1-receipt-contract.py"
+          test -z "$(git status --porcelain)"
+
       - name: Exact V3.1 paired externality screen
         shell: bash
         run: |
