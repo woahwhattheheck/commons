@@ -1,0 +1,70 @@
+name: sol-astra-slack-custom-tools-review-runner-20260911-01
+
+on:
+  push:
+    branches:
+      - sol-astra/slack-custom-tools-review-runner-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Bind carrier topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "ae53dafa3457bfb524e5e44aff69a8099a610897"
+          mapfile -t changed < <(git diff --name-only HEAD^ HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = ".github/workflows/sol-astra-slack-custom-tools-review-runner-20260911-01.yml"
+      - name: Compile focused control plane
+        run: python3 -m py_compile host/slack_custom_tools_install.py host/needs_bryce_login_queue.py host/slack_custom_tools_app.py test_slack_custom_tools_install.py test_slack_service_tags.py test_slack_service_tag_provider_signin_docs.py
+      - name: Run focused current-main contracts
+        run: python3 -m unittest -v test_slack_custom_tools_install.py test_slack_service_tags.py test_slack_service_tag_provider_signin_docs.py
+      - name: Prove owner-only Slack CLI boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'host')
+          import needs_bryce_login_queue as nbq
+          import slack_custom_tools_install as inst
+          item = nbq.slack_cli_ticket_item('/slackauthticket example.ticket')
+          text = nbq.format_item(item)
+          assert item['channel_id'] == 'C0BRX6EV739', item
+          assert item['copy_secrets'] is False, item
+          assert '/slackauthticket example.ticket' in text
+          assert 'Do not paste a password' in text
+          with __import__('tempfile').TemporaryDirectory() as tmp:
+              status = inst.status(home=tmp, path_env='')
+          assert status['commons_admission'] is False, status
+          assert status['needs_owner_signin'] is True, status
+          print('SLACK_CLI_OWNER_BOUNDARY_OK')
+          PY
+      - name: Hash exact historical eight-path surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            host/slack_custom_tools_install.py
+            host/needs_bryce_login_queue.py
+            host/slack_custom_tools_app.py
+            host/slack_custom_tools_manifest.json
+            ground/NEEDS_BRYCE_QUEUE.json
+            ground/SLACK_CUSTOM_TOOLS_INSTALL.md
+            test_slack_custom_tools_install.py
+            p/cursor-slack-custom-tools-install-20260902-01.md
+          )
+          for p in "${paths[@]}"; do
+            test -f "$p"
+            printf '%s  %s\n' "$(git hash-object "$p")" "$p"
+          done
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain)"
