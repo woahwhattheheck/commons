@@ -132,7 +132,7 @@ RUNTIME_METHODS = (
     "                            'entrypoint_prelude_seconds': invoked-started, 'route': 'r01_shop_router'}\n"
     "        try:\n"
     "            from r01_shop_router import install\n"
-    "            output = install(self).act(obs)\n"
+    "            output = install(self).act(obs, cfg)\n"
     "            self.diagnostics['r01_plan'] = self._v3_r01.policy.players[int(obs['player'])].plan\n"
     "            self.diagnostics['status'] = 'completed'\n"
     "        except Exception as error:\n"
