@@ -1649,8 +1649,29 @@ def evening_flush(observation, action):
     return action
 
 
+# V3.1 H4 (r04_strawberry_topup, ASTRA · GPT-5.6 SOL): reuse a current STRAWBERRY SELL row as
+# the E184 reservation sink for already-planned future strawberry sales (r04_h4_strawberry.py).
+# Runs first after the policy, the order it was gated in.
+STRAWBERRY_TOPUP = False
+
+
+def _strawberry_topup(observation, action):
+    import r04_h4_strawberry  # imports this module; loaded after it is complete
+    if _POLICY is None:
+        return action
+    state = _POLICY.players.get(int(observation['player']))
+    if state is None:
+        return action
+    action, _ = r04_h4_strawberry.reconcile_strawberry(
+        action, FarmView(observation), state, _POLICY.tapes[state.plan], int(observation['step']),
+        enabled=True)
+    return action
+
+
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
+    if STRAWBERRY_TOPUP:
+        action = _strawberry_topup(observation, action)
     if KILL_LATE_WATER:
         action = apply_kill_late_water(observation, action)
     if STRAWBERRY_ENDGAME:
@@ -1675,7 +1696,7 @@ def v3_agent(observation, configuration=None):
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
-            no_late_sale_advance=None, no_late_sale_advance_step=None):
+            no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1693,7 +1714,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
-    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP
+    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1728,4 +1749,6 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         if no_late_sale_advance_step < 0:
             raise ValueError("no-late-sale-advance step must be non-negative")
         NO_LATE_SALE_ADVANCE_STEP = no_late_sale_advance_step
+    if strawberry_topup is not None:
+        STRAWBERRY_TOPUP = bool(strawberry_topup)
     return v3_agent

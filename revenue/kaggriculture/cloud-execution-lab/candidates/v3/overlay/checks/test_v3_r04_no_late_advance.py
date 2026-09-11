@@ -51,6 +51,10 @@ def blank_tape():
 
 
 class Base(unittest.TestCase):
+    def setUp(self):
+        # Other checks drive TitanAgent, which installs the shipped-on V3.1 lanes: start clean.
+        Base.tearDown(self)
+
     def tearDown(self):
         r04.SALE_HORIZON = DEFAULT_HORIZON
         r04.SALE_EXCLUDED = PUBLISHED_EXCLUDED

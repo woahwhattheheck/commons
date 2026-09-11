@@ -38,8 +38,9 @@ PARAMS = {
     "r04_kill_late_water": False,
     "r04_strawberry_endgame": False,
     "r04_strawberry_max_plants": 8,
-    "r04_no_late_sale_advance": False,
+    "r04_no_late_sale_advance": True,
     "r04_no_late_sale_advance_step": 648,
+    "r04_strawberry_topup": True,
 }
 
 FIELDS = (
@@ -77,8 +78,9 @@ FIELDS = (
     "    r04_kill_late_water: bool = False\n"
     "    r04_strawberry_endgame: bool = False\n"
     "    r04_strawberry_max_plants: int = 8\n"
-    "    r04_no_late_sale_advance: bool = False\n"
+    "    r04_no_late_sale_advance: bool = True\n"
     "    r04_no_late_sale_advance_step: int = 648\n"
+    "    r04_strawberry_topup: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -91,7 +93,7 @@ RUNTIME_METHODS = (
     "                    or f.l01_land or f.l01_sheep or f.l01_day0buy or f.l01_tranche or f.l01_leanplant\n"
     "                    or f.r01_shop_router or f.r02_route_bank or f.r03_full_router\n"
     "                    or f.r04_sale_window or f.r04_kill_late_water\n"
-    "                    or f.r04_strawberry_endgame or f.r04_no_late_sale_advance)\n\n"
+    "                    or f.r04_strawberry_endgame)\n\n"
     "    def _v3_config(self):\n"
     "        \"\"\"Deterministic package keys for the V3 lanes, carried inside the game config.\"\"\"\n"
     "        f = self.features\n"
@@ -204,7 +206,8 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_strawberry_endgame),\n"
     "                                 int(self.features.r04_strawberry_max_plants),\n"
     "                                 bool(self.features.r04_no_late_sale_advance),\n"
-    "                                 int(self.features.r04_no_late_sale_advance_step))(observation, configuration)\n"
+    "                                 int(self.features.r04_no_late_sale_advance_step),\n"
+    "                                 bool(self.features.r04_strawberry_topup))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -216,6 +219,7 @@ RUNTIME_METHODS = (
     "                self.diagnostics['strawberry_max_plants'] = int(self.features.r04_strawberry_max_plants)\n"
     "                self.diagnostics['no_late_sale_advance'] = bool(self.features.r04_no_late_sale_advance)\n"
     "                self.diagnostics['no_late_sale_advance_step'] = int(self.features.r04_no_late_sale_advance_step)\n"
+    "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -395,7 +399,7 @@ RELEASE_NOTE = (
     "titan/v3.1-20260911); this lane is strictly production/staging timing and composes\n"
     "with it. Checks: `checks/test_v3_r04_strawberry.py`.\n"
 "\n"
-"Lane L3 (V3.1): `r04_no_late_sale_advance` (default False) gates the E184 reservation\n"
+"Lane L3 (V3.1): `r04_no_late_sale_advance` (shipped on, against off-tape rivals) gates the E184 reservation\n"
 "call site in the R04 `agent()` wrapper: at steps >= `r04_no_late_sale_advance_step`\n"
 "(default 648) no future tape-planned sale is pulled forward into today's SELL rows;\n"
 "the tape's own late SELL rows are published tape behavior, not advancement, and are\n"
@@ -406,6 +410,21 @@ RELEASE_NOTE = (
 "(48/48 positive); the +289.90 margin is the prior for this lane and must be re-gated\n"
 "on the R04 route. With the flag off the reservation path is byte-identical. Checks:\n"
 "`checks/test_v3_r04_no_late_advance.py`.\n"
+"The lane applies only against a rival that does not follow the public Shop Router tape:\n"
+"`rival_on_tape()` counts, over the shared opening (steps 1-143), how often the rival's\n"
+"farmer stands where ours does; at >= 80% the reservation is kept. Checks:\n"
+"`checks/test_v3_r04_l3_rival_gate.py`.\n"
+"\n"
+"Lane H4 (V3.1, ASTRA · GPT-5.6 SOL): `r04_strawberry_topup` (shipped on) reuses a current\n"
+"STRAWBERRY SELL row as the E184 reservation sink for already-planned future strawberry\n"
+"sales, bounded by projected shed stock, and books the same per-due-step debt E184\n"
+"subtracts later (overlay/r04_h4_strawberry.py). It runs first after the policy in\n"
+"v3_agent(). Checks: `checks/test_v31_h4_strawberry.py`.\n"
+"\n"
+"Shipping evidence: the 41 live games of submission 56159263, each replayed on its own\n"
+"seed with the opponent's recorded play pinned (V3.0 reproduces every recorded reward).\n"
+"Against V3.1: H4 +32.6, rival-gated L3 +36.3, both together +68.9 margin per game\n"
+"(34 better, 4 worse).\n"
 )
 
 

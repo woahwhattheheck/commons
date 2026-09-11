@@ -67,6 +67,13 @@ class Horizon(unittest.TestCase):
         r04.EVENING_FLUSH = False
         r04.SALE_EXCLUDED = PUBLISHED_EXCLUDED
         r04._V231_EARLY = False
+        # TitanAgent installs the shipped-on R04 lanes; leave the module as other checks expect it.
+        r04.NO_LATE_SALE_ADVANCE = False
+        r04.NO_LATE_SALE_ADVANCE_STEP = 648
+        r04.STRAWBERRY_TOPUP = False
+        r04.KILL_LATE_WATER = False
+        r04.STRAWBERRY_ENDGAME = False
+        r04._RIVAL_TAPE.update(same=0, seen=0, last=-1)
 
 
 class ModuleTests(Horizon):
