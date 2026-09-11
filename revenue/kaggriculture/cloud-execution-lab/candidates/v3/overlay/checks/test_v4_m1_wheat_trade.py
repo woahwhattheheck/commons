@@ -112,6 +112,27 @@ class M1WheatTrade(unittest.TestCase):
         self.assertEqual(lane.REPORT["future_pickups"], 0)
         self.assertEqual(lane.REPORT["buy_orders"], 0)
 
+    def test_future_shed_inflow_before_pickup_vetoes_capacity_hazard(self):
+        # With 98 units already in the shed, a two-unit M1 buy would fill it.
+        # An authored DROP/PLACE before the certified pickup can then lose cargo
+        # that baseline would have admitted into those two free slots. M1 does
+        # not own that future disposition, so the prebuy must fail closed.
+        for command in (["DROP"], ["PLACE", "CARROT", 2]):
+            with self.subTest(command=command):
+                lane.reset_for_tests()
+                self.prime(step=100, inventory=100)
+                tape = tape_with_pickup(104, 2)
+                tape[102]["farmer"] = list(command)
+                parent = empty_action()
+                out = self.run_lane(
+                    observation(101, market_inventory=98, shed={"CARROT": 98}),
+                    parent,
+                    tape,
+                )
+                self.assertIs(out, parent)
+                self.assertEqual(lane.REPORT["future_pickups"], 0)
+                self.assertEqual(lane.REPORT["buy_orders"], 0)
+
     def test_engine_float_money_activates(self):
         self.prime(step=100, inventory=100)
         parent = empty_action()
