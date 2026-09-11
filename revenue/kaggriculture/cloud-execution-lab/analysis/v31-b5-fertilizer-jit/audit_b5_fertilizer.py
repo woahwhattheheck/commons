@@ -3,7 +3,7 @@
 """Static authored-action census for the V3.1 R04 fertilizer/JIT lane.
 
 This deliberately answers only what is encoded in the thirteen published R04
-action tapes.  It does not claim that an authored action will execute, that a
+action tapes. It does not claim that an authored action will execute, that a
 FERTILIZE targets a particular crop, or that an idle slot is economically free.
 Those questions require official-engine replay from an exact materialized V3.1
 candidate.
@@ -52,16 +52,20 @@ def load_current_tapes(path: Path = TAPES_PATH) -> list[list[dict[str, Any]]]:
 
 def _op(action: Any) -> str:
     if not isinstance(action, list) or not action:
-        return "PASS"
+        raise TypeError("worker action must be a non-empty list")
     value = action[0]
-    return value if isinstance(value, str) and value else "MALFORMED"
+    if not isinstance(value, str) or not value:
+        raise TypeError("worker action opcode must be a non-empty string")
+    return value
 
 
 def _units(row: dict[str, Any]) -> list[Any]:
-    farmer = row.get("farmer", ["PASS"])
+    if "farmer" not in row:
+        raise TypeError("row missing farmer action")
+    farmer = row["farmer"]
     hands = row.get("hands", [])
     if not isinstance(hands, list):
-        hands = []
+        raise TypeError("row hands must be a list")
     return [farmer, *hands]
 
 
@@ -85,9 +89,12 @@ def _close_streak(
 def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
     """Return a deterministic census of authored service/input/idle actions.
 
-    PASS streaks count only workers whose action slot exists in the tape row;
-    absent future hand slots are never credited as idle capacity.  Market counts
-    use the first ten rows, matching the canonical maxMarketOrdersPerTurn gate.
+    PASS streaks count only literal PASS actions for workers whose slot exists in
+    the tape row, never cross a 24-step day boundary, and therefore describe only
+    bounded same-day authored idle windows. Absent future hand slots are never
+    credited as capacity. Malformed worker actions/hands fail closed rather than
+    being normalized into PASS or an empty worker set. Market counts use the first
+    ten rows, matching the canonical maxMarketOrdersPerTurn gate.
     """
     routes = list(tapes)
     report_routes: list[dict[str, Any]] = []
@@ -110,6 +117,12 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
             if not isinstance(row, dict):
                 raise TypeError(f"route {route_index} step {step} is not an object")
             total_steps += 1
+
+            if step and step % 24 == 0:
+                for worker, start in sorted(open_idle.items()):
+                    _close_streak(idle_streaks, worker, start, step)
+                open_idle.clear()
+
             units = _units(row)
             present = set(range(len(units)))
             max_workers = max(max_workers, len(units))
@@ -125,9 +138,8 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
                     daily[step // 24][op] += 1
                 if op == "PASS":
                     open_idle.setdefault(worker, step)
-                else:
-                    if worker in open_idle:
-                        _close_streak(idle_streaks, worker, open_idle.pop(worker), step)
+                elif worker in open_idle:
+                    _close_streak(idle_streaks, worker, open_idle.pop(worker), step)
                 if op in ("FERTILIZE", "COLLECT_FERTILIZER"):
                     fertilizer_events.append(
                         {
@@ -136,7 +148,7 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
                             "hour": step % 24,
                             "worker": worker,
                             "op": op,
-                            "action": list(action) if isinstance(action, list) else action,
+                            "action": list(action),
                         }
                     )
 
@@ -186,7 +198,7 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
         )
 
     return {
-        "schema": 1,
+        "schema": 2,
         "scope": "static authored R04 tape census; not execution, legality, tile-target, or value evidence",
         "route_count": len(routes),
         "total_steps": total_steps,
