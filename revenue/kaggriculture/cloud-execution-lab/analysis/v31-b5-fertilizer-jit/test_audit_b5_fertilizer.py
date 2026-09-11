@@ -26,7 +26,7 @@ class B5FertilizerTapeAuditTests(unittest.TestCase):
         self.assertEqual(report["global_unit_counts"]["FERTILIZE"], 1)
         self.assertEqual(report["global_unit_counts"]["WATER"], 1)
         self.assertEqual(report["global_unit_counts"]["COLLECT_FERTILIZER"], 1)
-        # Main farmer PASS at step 0 + hand PASS at step 1.  The absent hand at
+        # Main farmer PASS at step 0 + hand PASS at step 1. The absent hand at
         # step 0 is not an actor and must not be counted as idle capacity.
         self.assertEqual(report["global_unit_counts"]["PASS"], 2)
         self.assertEqual(report["global_fertilizer_market_counts"]["BUY_PRODUCT:FERTILIZER"], 1)
@@ -46,6 +46,42 @@ class B5FertilizerTapeAuditTests(unittest.TestCase):
             "start_day": 0,
             "end_day": 0,
         }])
+
+    def test_idle_streak_never_crosses_day_boundary(self):
+        for before, after in ((5, 1), (2, 4), (3, 3)):
+            with self.subTest(before=before, after=after):
+                tape = [{"farmer": ["WATER"], "market": []} for _ in range(30)]
+                for step in range(24 - before, 24):
+                    tape[step]["farmer"] = ["PASS"]
+                for step in range(24, 24 + after):
+                    tape[step]["farmer"] = ["PASS"]
+                streaks = audit.audit_tapes([tape])["routes"][0]["idle_streaks_ge_6"]
+                self.assertEqual(streaks, [])
+
+    def test_malformed_worker_actions_fail_closed(self):
+        malformed = (
+            {"farmer": [], "market": []},
+            {"farmer": None, "market": []},
+            {"farmer": [None], "market": []},
+            {"farmer": [""], "market": []},
+            {"farmer": ["PASS"], "hands": [[]], "market": []},
+            {"farmer": ["PASS"], "hands": [None], "market": []},
+        )
+        for row in malformed:
+            with self.subTest(row=row):
+                with self.assertRaises(TypeError):
+                    audit.audit_tapes([[row]])
+
+    def test_malformed_or_missing_worker_structure_fails_closed(self):
+        malformed = (
+            {"market": []},
+            {"farmer": ["PASS"], "hands": {}, "market": []},
+            {"farmer": ["PASS"], "hands": "not-a-list", "market": []},
+        )
+        for row in malformed:
+            with self.subTest(row=row):
+                with self.assertRaises(TypeError):
+                    audit.audit_tapes([[row]])
 
     def test_non_object_route_row_fails_closed(self):
         with self.assertRaises(TypeError):
