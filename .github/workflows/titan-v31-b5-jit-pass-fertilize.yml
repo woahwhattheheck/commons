@@ -1,0 +1,76 @@
+name: titan-v31-b5-jit-pass-fertilize
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py'
+      - '.github/workflows/titan-v31-b5-jit-pass-fertilize.yml'
+  push:
+    branches:
+      - 'astra/v31-b5-jit-pass-fertilize-ci-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py'
+      - '.github/workflows/titan-v31-b5-jit-pass-fertilize.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact head, source parent, scope, and blobs
+        env:
+          EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          SOURCE='59ecaf8a187fa8c090918e5d6bb20266852e24d6'
+          B5_PARENT='d80bf736467bc0950e3b0b350d6d8a32a1f02c1d'
+          HEAD="$(git rev-parse HEAD)"
+          WORKFLOW='.github/workflows/titan-v31-b5-jit-pass-fertilize.yml'
+          CAND='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py'
+
+          test "$HEAD" = "$EXPECTED_HEAD"
+          git cat-file -e "$SOURCE^{commit}"
+          git cat-file -e "$B5_PARENT^{commit}"
+          test "$(git merge-base "$SOURCE" "$HEAD")" = "$SOURCE"
+          test "$(git merge-base "$B5_PARENT" "$SOURCE")" = "$B5_PARENT"
+
+          child_actual="$(git diff --name-only "$SOURCE" "$HEAD" | LC_ALL=C sort)"
+          test "$child_actual" = "$WORKFLOW"
+
+          source_actual="$(git diff --name-only "$B5_PARENT" "$SOURCE" | LC_ALL=C sort)"
+          source_expected="$(printf '%s\n' "$CAND" "$TEST" | LC_ALL=C sort)"
+          if [ "$source_actual" != "$source_expected" ]; then
+            printf 'unexpected #12428 source scope\nEXPECTED:\n%s\nACTUAL:\n%s\n' "$source_expected" "$source_actual" >&2
+            exit 1
+          fi
+
+          test "$(git rev-parse "$SOURCE:$CAND")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+          test "$(git rev-parse "$SOURCE:$TEST")" = '20603d7ab4cd79d0e7984d15452d0ee105a4f249'
+          test -z "$(git status --porcelain)"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused B5 JIT predecessor suite
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit
+          -p 'test_jit_pass_fertilize.py'
+      - name: Optimization-safe focused suite
+        env:
+          PYTHONOPTIMIZE: '1'
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit
+          -p 'test_jit_pass_fertilize.py'
+      - name: Prove tests leave checkout clean
+        run: test -z "$(git status --porcelain)"
