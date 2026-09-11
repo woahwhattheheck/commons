@@ -2,7 +2,7 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, or Kaggle state.
 
-Snapshot refreshed: **2026-09-11 after #12537 B5+JIT shipment, #12535 recovery publication, #12540 cattle publication/review, #12541 L3 publication, S33 field gate, durable row-shed/E20 donor publication, and latest terminal harm screens**.
+Snapshot refreshed: **2026-09-11 after #12537 B5+JIT shipment, #12535 recovery publication, #12540 cattle publication/review, #12541 L3 publication, S33 strict row-shed donor #12547, durable E20 donor #12542, and latest terminal harm screens**.
 
 ## Canonical authority
 
@@ -84,9 +84,13 @@ Old #12529 is closed superseded by #12540; #12531 remains closed duplicate. All 
 
 S33 reports a large new row-shed result: pricing each leading SELL row by `min(order quantity, projected shed)` instead of raw order quantity was better than the prior score-facing config in **1,912/1,920 games** (6 worse, 2 same), added no loss against any opponent, and was reported +421.1/game vs V3.0.
 
-A durable current-root source donor now exists: `astra/v31-s33-row-shed-8e3-20260911@3f36b6fb61c61db1b6f1b6f8319c79d2a4193b9b`, direct child of shipped `8e3d92a...`, ahead1/behind0, with exactly one additive source path: `experiments/s33_row_shed_current_root/candidate.py` (Git blob `b260d2c83e6e686028a95ccc5195c02ec5bbb616`). It changes ROW_ORDER valuation only: the leading SELL block is still stable-sorted and returned unchanged, and malformed/missing projected-shed data falls back to inherited requested-quantity valuation.
+The strongest durable current-root semantic donor is now draft **#12547**, branch `astra/v31-s33-row-shed-8e3-20260911`, exact head `c6a60466ec2c6acaa0344943482994e4535f1411`, direct child of shipped `8e3d92a...`. It has exactly four additive source-contract/CI paths and 11 focused contracts. Current candidate blob: `d6fe214646225e95ae40c3ea0fa33c43d274e608`.
 
-**Routing constraint:** this donor is source custody, not direct merge/default authority. Earliest current-root row-shed owner retains production ownership; consume the exact donor blob rather than recreating semantics. The production consumer must recompose on the then-current canonical after #12535/#12541, explicitly retain B5 CARROT + JIT + H4 + fail-closed L3 + sale-fertilizer, and keep row-shed orthogonal to #12540’s cattle theorem until each factor has terminal current-root evidence.
+The mechanism still changes ROW_ORDER valuation only: each leading SELL score uses `q_eff=min(requested_qty, projected_shed[item])`; SELL rows/quantities and everything after the first non-SELL barrier remain unchanged. The repaired donor now requires one coherent strict non-negative integer projected-shed map for the whole known leading SELL block. Missing, partial, negative, bool/string/float-poisoned, or otherwise malformed projection causes the **entire leading block** to fall back to inherited requested-quantity scoring, avoiding a hybrid S33/legacy sort.
+
+Earlier one-path donor `3f36b6fb...` / blob `b260d2c8...` remains implementation provenance only. Later duplicate #12548 must not be consumed: its coercing projection semantics do not match #12547's fail-closed contract. Other donor siblings are not production authority.
+
+**Routing constraint:** #12547 is source/contract custody, not direct merge/default authority. Earliest current-root row-shed owner retains production ownership; consume #12547's strict semantics rather than recreating them. The one production consumer must recompose on the then-current canonical after #12535/#12541, explicitly retain B5 CARROT + JIT + H4 + fail-closed L3 + sale-fertilizer, and keep row-shed orthogonal to #12540’s cattle theorem until each factor has terminal current-root evidence.
 
 ## Optional factors requiring 8e3 recompose before promotion
 
@@ -109,6 +113,7 @@ Do not reopen these exact mechanisms without a materially different design/conte
 
 - **A1 V219 ablation — REJECT:** field gate 1,536 games/arm; V219 ON 1525W/11L vs ablation 1393W/143L, ~−1797 margin/game overall; #12530 closed. Keep V219 shipped.
 - **G-A4 second-wave melons — HARD REJECT:** 16/16 cells, mean ΔM −2,542, 0+/16-/0=. The lane fires as designed (day-12 seed buys + added crew) but seed cost, recurring hires, and tile/water opportunity destroy value; worst reported seed lost ~9k. Do not spend an 8e3 recompose on this exact mechanism.
+- **G-B6 dead-stock / terminal sweep — REJECT:** 11/16 paired cells completed (5 infrastructure flakes), mean ΔM **−34,660**, signs +2/−9. Under `r04_sale_fertilizer`, the presumed “dead” inventory is still strategic stock; the sweep dumps it near the $2 floor and disrupts incumbent sale planning. Reported own-score loss is roughly 30–60k while the opponent is largely unaffected. Do not spend a current-root recompose on this exact mechanism without a materially different stock-liveness theorem.
 - **B1 alternate-day feed — HARD REJECT:** 16/16, mean ΔM −65,329; herd escapes in 6/16 cells.
 - **D2 early fragile-stock drain — REJECT:** 16/16, mean ΔM −500, 0+/16-/0= despite real engagement.
 - **B3 bonus-window watering / WATER→PASS outside window — REJECT:** 16/16, mean ΔM −71,514, +2/−14/=0.
@@ -134,7 +139,7 @@ Do not reopen these exact mechanisms without a materially different design/conte
 1. **Land one immutable-base recovery:** #12535 or an exact stronger equivalent; do not duplicate the 5f6 fix.
 2. **Land one current-root L3 fail-closed correctness consumer:** #12541 only, after its generated final head + permanent package/replay gate become terminal.
 3. **Repair then resolve cattle on the resulting literal root through #12540 / successor**, retaining B5+JIT; the current reducer false-red must be closed before evaluator spend. Keep #12505 as the final score transform.
-4. **Promote row-shed onto the resulting root if its exact durable donor + field receipt survive current-root composition.** Consume `b260d2c8...`; do not recreate the mechanism or import stale ancestry wholesale.
+4. **Promote row-shed onto the resulting root if its exact durable donor + field receipt survive current-root composition.** Consume #12547 head `c6a60466...` / candidate blob `d6fe2146...`; do not recreate the mechanism or import stale ancestry wholesale.
 5. **Recompose optional survivors only on then-current canonical:** B11 / #12532-if-distinct / H3c / H13 / #12542 E20 / B9 / C4 as evidence warrants. G-E1 stays parked until exact donor provenance surfaces.
 6. For every economic survivor create **one** narrow production consumer, deterministic package receipt, opponent-diverse D3, then a deliberate default decision.
 7. Apply the final #12505 submission transform **last**, above every selected production/package change.
