@@ -19,78 +19,33 @@ SHA = "a" * 64
 OTHER_SHA = "b" * 64
 
 BASE_CONFIG = {
-    "consumer": "frozen",
-    "frozen": True,
-    "seed": True,
-    "funding": True,
-    "terminal_route": False,
-    "committed": True,
-    "budget_seconds": 1.0,
-    "reserve_seconds": 0.01,
-    "terminal_history": False,
-    "redundant_hire": True,
-    "fourth_quadrant": False,
-    "market_pressure": True,
-    "committed_seed_retry": False,
-    "operating_stock": True,
-    "idle_fertilizer": True,
-    "crop_release": True,
-    "early_capital": True,
-    "e11_rival_sell": False,
-    "rival_model": False,
-    "e20_hire_guard": False,
-    "l01_land": False,
-    "l01_sheep": False,
-    "l01_day0buy": False,
-    "l01_tranche": False,
-    "l01_leanplant": False,
-    "r01_shop_router": False,
-    "r02_route_bank": False,
-    "r03_full_router": False,
-    "r04_sale_window": True,
-    "rival_dump_price_drop": 15.0,
-    "rival_dump_lookback_steps": 8,
-    "e11_min_future_absorption": 2,
-    "e20_max_hires_per_day": 3,
-    "e20_min_unwatered_crops": 3,
-    "g01_early_expander_step": 144,
-    "g01_land_cash_floor": 0,
-    "r04_sale_horizon": 8,
-    "r04_open_roundtrip": 0,
-    "r04_row_order": True,
-    "r04_evening_flush": True,
-    "r04_sale_fertilizer": True,
-    "r04_cattle_early": True,
+    "consumer": "frozen", "frozen": True, "seed": True, "funding": True,
+    "terminal_route": False, "committed": True, "budget_seconds": 1.0,
+    "reserve_seconds": 0.01, "terminal_history": False, "redundant_hire": True,
+    "fourth_quadrant": False, "market_pressure": True, "committed_seed_retry": False,
+    "operating_stock": True, "idle_fertilizer": True, "crop_release": True,
+    "early_capital": True, "e11_rival_sell": False, "rival_model": False,
+    "e20_hire_guard": False, "l01_land": False, "l01_sheep": False,
+    "l01_day0buy": False, "l01_tranche": False, "l01_leanplant": False,
+    "r01_shop_router": False, "r02_route_bank": False, "r03_full_router": False,
+    "r04_sale_window": True, "rival_dump_price_drop": 15.0,
+    "rival_dump_lookback_steps": 8, "e11_min_future_absorption": 2,
+    "e20_max_hires_per_day": 3, "e20_min_unwatered_crops": 3,
+    "g01_early_expander_step": 144, "g01_land_cash_floor": 0,
+    "r04_sale_horizon": 8, "r04_open_roundtrip": 0, "r04_row_order": True,
+    "r04_evening_flush": True, "r04_sale_fertilizer": True, "r04_cattle_early": True,
 }
 
 V3_BOOL_KEYS = [
-    "e11_rival_sell",
-    "rival_model",
-    "e20_hire_guard",
-    "l01_land",
-    "l01_sheep",
-    "l01_day0buy",
-    "l01_tranche",
-    "l01_leanplant",
-    "r01_shop_router",
-    "r02_route_bank",
-    "r03_full_router",
-    "r04_sale_window",
+    "e11_rival_sell", "rival_model", "e20_hire_guard", "l01_land", "l01_sheep",
+    "l01_day0buy", "l01_tranche", "l01_leanplant", "r01_shop_router",
+    "r02_route_bank", "r03_full_router", "r04_sale_window",
 ]
 V3_PARAM_KEYS = [
-    "rival_dump_price_drop",
-    "rival_dump_lookback_steps",
-    "e11_min_future_absorption",
-    "e20_max_hires_per_day",
-    "e20_min_unwatered_crops",
-    "g01_early_expander_step",
-    "g01_land_cash_floor",
-    "r04_sale_horizon",
-    "r04_open_roundtrip",
-    "r04_row_order",
-    "r04_evening_flush",
-    "r04_sale_fertilizer",
-    "r04_cattle_early",
+    "rival_dump_price_drop", "rival_dump_lookback_steps", "e11_min_future_absorption",
+    "e20_max_hires_per_day", "e20_min_unwatered_crops", "g01_early_expander_step",
+    "g01_land_cash_floor", "r04_sale_horizon", "r04_open_roundtrip", "r04_row_order",
+    "r04_evening_flush", "r04_sale_fertilizer", "r04_cattle_early",
 ]
 
 
@@ -100,13 +55,11 @@ def manifest():
     return {
         "base": {"sha256": SHA},
         "keys": keys,
-        "releases": [
-            {
-                "version": guard.LIVE_RELEASE_VERSION,
-                "submission_archive": {"sha256": OTHER_SHA},
-                "config": dict(BASE_CONFIG),
-            }
-        ],
+        "releases": [{
+            "version": guard.LIVE_RELEASE_VERSION,
+            "submission_archive": {"sha256": OTHER_SHA},
+            "config": dict(BASE_CONFIG),
+        }],
     }
 
 
@@ -136,15 +89,13 @@ def valid_receipt():
     for (seed, seat), (baseline, candidate) in scores.items():
         b_own, b_rival = (baseline[0], baseline[1]) if seat == 0 else (baseline[1], baseline[0])
         c_own, c_rival = (candidate[0], candidate[1]) if seat == 0 else (candidate[1], candidate[0])
-        rows.append(
-            {
-                "seed": seed,
-                "candidate_seat": seat,
-                "baseline_scores": baseline,
-                "candidate_scores": candidate,
-                "delta_m": (c_own - c_rival) - (b_own - b_rival),
-            }
-        )
+        rows.append({
+            "seed": seed,
+            "candidate_seat": seat,
+            "baseline_scores": baseline,
+            "candidate_scores": candidate,
+            "delta_m": (c_own - c_rival) - (b_own - b_rival),
+        })
     frozen = panel()
     return {
         "schema": guard.RECEIPT_SCHEMA,
@@ -154,10 +105,7 @@ def valid_receipt():
             "blob_sha256": "d" * 64,
             "verified_clean": True,
         },
-        "baseline": {
-            "submission_archive_sha256": OTHER_SHA,
-            "config": base_config,
-        },
+        "baseline": {"submission_archive_sha256": OTHER_SHA, "config": base_config},
         "candidate": {
             "builder": "build_v3.py",
             "built_from_pinned_archive": True,
@@ -172,15 +120,9 @@ def valid_receipt():
             "games_per_opponent": frozen["games_per_opponent"],
             "seed_list_sha256": frozen["seed_list_sha256"],
         },
-        "opponent": {
-            "name": "exact-opponent",
-            "sha256": "f" * 64,
-            "same_bytes_between_arms": True,
-        },
+        "opponent": {"name": "exact-opponent", "sha256": "f" * 64, "same_bytes_between_arms": True},
         "per_cell_results": rows,
-        "aggregate": {
-            "mean_delta_m": sum(row["delta_m"] for row in rows) / len(rows),
-        },
+        "aggregate": {"mean_delta_m": sum(row["delta_m"] for row in rows) / len(rows)},
     }
 
 
@@ -220,15 +162,9 @@ class SimFidelityGuardTests(unittest.TestCase):
             receipt_path.write_text(json.dumps(valid_receipt()), encoding="utf-8")
             manifest_path.write_text(json.dumps(manifest()), encoding="utf-8")
             panel_path.write_text(json.dumps(panel()), encoding="utf-8")
-            rc = guard.main(
-                [
-                    str(receipt_path),
-                    "--manifest",
-                    str(manifest_path),
-                    "--panel",
-                    str(panel_path),
-                ]
-            )
+            rc = guard.main([
+                str(receipt_path), "--manifest", str(manifest_path), "--panel", str(panel_path)
+            ])
         self.assertEqual(rc, 2)
 
     def test_incomplete_v31_release_config_fails_even_if_version_matches(self):
@@ -293,10 +229,22 @@ class SimFidelityGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(guard.ReceiptError, "changes JSON type"):
             validate_synthetic(receipt)
 
-    def test_seed_or_seat_substitution_fails(self):
+    def test_seed_or_seat_substitution_and_type_confusion_fail(self):
         receipt = valid_receipt()
         receipt["panel"]["seeds"] = [101, 999]
         with self.assertRaisesRegex(guard.ReceiptError, "seeds"):
+            validate_synthetic(receipt)
+        receipt = valid_receipt()
+        receipt["panel"]["seeds"] = [101.0, 102]
+        with self.assertRaisesRegex(guard.ReceiptError, "seeds"):
+            validate_synthetic(receipt)
+        receipt = valid_receipt()
+        receipt["panel"]["seats"] = [False, True]
+        with self.assertRaisesRegex(guard.ReceiptError, "seats"):
+            validate_synthetic(receipt)
+        receipt = valid_receipt()
+        receipt["panel"]["games_per_opponent"] = 4.0
+        with self.assertRaisesRegex(guard.ReceiptError, "games_per_opponent"):
             validate_synthetic(receipt)
 
     def test_frozen_panel_metadata_must_be_self_consistent(self):
@@ -306,7 +254,11 @@ class SimFidelityGuardTests(unittest.TestCase):
             validate_synthetic(panel_value=broken)
         broken = panel()
         broken["games_per_opponent"] = 99
-        with self.assertRaisesRegex(guard.ReceiptError, "seed x seat"):
+        with self.assertRaisesRegex(guard.ReceiptError, "exact integer"):
+            validate_synthetic(panel_value=broken)
+        broken = panel()
+        broken["games_per_opponent"] = 4.0
+        with self.assertRaisesRegex(guard.ReceiptError, "exact integer"):
             validate_synthetic(panel_value=broken)
         broken = panel()
         broken["seed_list_sha256"] = "c" * 64
