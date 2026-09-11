@@ -3,8 +3,11 @@
 """Cheap current-root B7 activation/economics screen.
 
 Runs exact shipped-8e3 R04 baseline-vs-baseline, then B7-wrapped current R04
-against the same baseline on the same 8 seeds x both seats.  This is offline
-official-interpreter evidence only and cannot promote a default or package.
+against the same baseline on the same 8 seeds x both seats. The identity arm is a
+paired control, not an assumed zero-margin theorem: evaluator role RNG and engine
+seat/row effects can give byte-identical policies a nonzero raw competitive margin.
+This is offline official-interpreter evidence only and cannot promote a default or
+package.
 """
 from __future__ import annotations
 
@@ -120,6 +123,15 @@ def main() -> int:
     candidate_path = output_dir / "b7-candidate.json"
     control_report = run_evaluator(repo, baseline, baseline, "b7_currentroot_identity", control_path)
     candidate_report = run_evaluator(repo, candidate, baseline, "b7_currentroot_parent", candidate_path)
+
+    baseline_fp = fingerprint(baseline)
+    if control_report["candidate"] != control_report["opponents"]["b7_currentroot_identity"]:
+        raise AssertionError("identity arm did not use the same baseline entry fingerprint in both roles")
+    if control_report["candidate"] != baseline_fp:
+        raise AssertionError("identity arm baseline fingerprint drift")
+    if candidate_report["opponents"]["b7_currentroot_parent"] != baseline_fp:
+        raise AssertionError("candidate arm opponent baseline fingerprint drift")
+
     controls = exact_cells(control_report, "b7_currentroot_identity")
     candidates = exact_cells(candidate_report, "b7_currentroot_parent")
 
@@ -129,17 +141,20 @@ def main() -> int:
         changed = candidates[key]
         if control["candidate_seat"] != changed["candidate_seat"]:
             raise AssertionError(("seat mismatch", key))
-        if margin(control) != 0.0:
-            raise AssertionError(("identity control not tied", key, margin(control)))
         seat = changed["candidate_seat"]
+        control_margin = margin(control)
+        candidate_margin = margin(changed)
         own = float(changed["scores"][seat]) - float(control["scores"][seat])
         rival = float(changed["scores"][1 - seat]) - float(control["scores"][1 - seat])
-        delta = margin(changed)
+        delta = candidate_margin - control_margin
+        if delta != own - rival:
+            raise AssertionError(("paired margin arithmetic mismatch", key, delta, own, rival))
         trace_changed = changed["trace_sha256"] != control["trace_sha256"]
         if not trace_changed and (own != 0.0 or rival != 0.0 or delta != 0.0):
             raise AssertionError(("score changed without trace change", key))
         cells.append({
             "seed": key[0], "candidate_seat": seat, "trace_changed": trace_changed,
+            "control_margin": control_margin, "candidate_margin": candidate_margin,
             "delta_own": own, "delta_rival": rival, "delta_margin": delta,
             "control_trace_sha256": control["trace_sha256"],
             "candidate_trace_sha256": changed["trace_sha256"],
@@ -149,6 +164,7 @@ def main() -> int:
     deltas = [row["delta_margin"] for row in cells]
     own = [row["delta_own"] for row in cells]
     rival = [row["delta_rival"] for row in cells]
+    control_margins = [row["control_margin"] for row in cells]
     summary = {
         "scheduled": len(cells),
         "trace_changed_cells": sum(row["trace_changed"] for row in cells),
@@ -156,6 +172,8 @@ def main() -> int:
         "wins": sum(value > 0 for value in deltas),
         "ties": sum(value == 0 for value in deltas),
         "losses": sum(value < 0 for value in deltas),
+        "mean_identity_control_margin": statistics.mean(control_margins),
+        "median_identity_control_margin": statistics.median(control_margins),
         "mean_delta_own": statistics.mean(own),
         "mean_delta_rival": statistics.mean(rival),
         "mean_delta_margin": statistics.mean(deltas),
@@ -174,8 +192,8 @@ def main() -> int:
 
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
     receipt = {
-        "schema": "titan-v31-b7-currentroot-gate/v1",
-        "truth_boundary": "Offline official-interpreter cheap screen only; no default/package/Kaggle authority. PASS only earns current-successor/opponent-diverse widening.",
+        "schema": "titan-v31-b7-currentroot-gate/v2",
+        "truth_boundary": "Offline official-interpreter cheap screen only; paired against observed identity-control margins. No default/package/Kaggle authority. PASS only earns current-successor/opponent-diverse widening.",
         "head": head,
         "engine_ref": ENGINE_REF,
         "seeds": list(SEEDS),
