@@ -165,7 +165,7 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(_apply(observation, action), action)
 
     def test_nonvector_worker_position_fails_closed(self):
-        # A mapping is a two-item iterable too.  Before the strict shape guard,
+        # A mapping is a two-item iterable too. Before the strict shape guard,
         # keys 0,1 could be unpacked as x=0,y=1 and authorize a rewrite.
         observation = _obs(_tile())
         observation["farms"][0]["tiles"] = [[{"kind": "SOIL"}], [_tile()]]
@@ -201,6 +201,37 @@ class DeadWaterHarvestTest(unittest.TestCase):
                 _apply(observation, action, configuration=configuration),
                 action,
             )
+
+    def test_attribute_configuration_matches_runtime_surface(self):
+        class Configuration:
+            episodeSteps = 720
+            turnsPerDay = 24
+            boardSize = 10
+
+        out = lane.apply_dead_water_harvest(
+            _obs(_tile()), _action(), Configuration(), enabled=True)
+        self.assertEqual(out["farmer"], ["HARVEST"])
+        self.assertEqual(lane.get_report()["recovered"], 1)
+
+    def test_stacked_actor_candidate_fails_closed(self):
+        # Changing one row on a shared tile can change action ordering or who
+        # receives cargo, so W1 must not treat this as an actor-local rewrite.
+        observation = _obs(_tile())
+        observation["farms"][0]["hands"] = [[0, 0]]
+        action = _action()
+        action["hands"] = [["HARVEST"]]
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
+    def test_malformed_inactive_actor_blocks_partial_mutation(self):
+        # Even when only the farmer authored WATER, malformed sibling geometry
+        # must prevent a prefix rewrite rather than being skipped with continue.
+        observation = _obs(_tile())
+        observation["farms"][0]["hands"] = [[99, 99]]
+        action = _action()
+        action["hands"] = [["PASS"]]
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
 
 
 if __name__ == "__main__":
