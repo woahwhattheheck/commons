@@ -55,6 +55,32 @@ def _eligible(tile, inventory, day):
     )
 
 
+def _actor_rows_valid(commands, positions, inventories, tiles):
+    """Validate every actor before any replacement is collected.
+
+    The transform is whole-action fail-closed: a malformed later hand may not
+    leave an earlier farmer/hand rewrite behind.  Parent R04 emits list-valued
+    worker commands with a string opcode, public positions are two exact ints
+    inside the visible board, and each actor has a dict inventory.
+    """
+    for command, position, inventory in zip(commands, positions, inventories):
+        if not isinstance(command, list) or not command or type(command[0]) is not str:
+            return False
+        if (
+            not isinstance(position, (list, tuple))
+            or len(position) != 2
+            or not _int(position[0])
+            or not _int(position[1])
+        ):
+            return False
+        if not isinstance(inventory, dict):
+            return False
+        x, y = position
+        if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
+            return False
+    return True
+
+
 def apply_carrot_fertilizer(observation, action):
     """Replace eligible literal PASS rows; malformed inputs preserve parent identity."""
     if not isinstance(observation, dict) or not isinstance(action, dict):
@@ -94,6 +120,8 @@ def apply_carrot_fertilizer(observation, action):
     tiles = farm.get("tiles")
     if not isinstance(tiles, list):
         return action
+    if not _actor_rows_valid(commands, positions, inventories, tiles):
+        return action
 
     day = step // 24
     claimed = set()
@@ -101,16 +129,7 @@ def apply_carrot_fertilizer(observation, action):
     for actor, (command, position, inventory) in enumerate(zip(commands, positions, inventories)):
         if command != ["PASS"]:
             continue
-        if (
-            not isinstance(position, (list, tuple))
-            or len(position) != 2
-            or not _int(position[0])
-            or not _int(position[1])
-        ):
-            return action
         x, y = position
-        if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
-            continue
         if (x, y) in claimed:
             continue
         tile = tiles[y][x]
