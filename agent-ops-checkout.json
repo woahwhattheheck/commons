@@ -1,12 +1,17 @@
 {
   "schema_version": "agent-ops-checkout/v1",
-  "measured_at": "2026-09-10T23:05:24.713000+00:00",
+  "account_measured_at": "2026-08-28T16:10:00Z",
+  "links_measured_at": "2026-09-10T23:05:24.713000+00:00",
   "provider": {
     "name": "stripe",
     "livemode": true,
     "account_charges_enabled": true,
     "account_payouts_enabled": true,
-    "connection_state": "LIVEMODE_CONNECTED"
+    "currently_due": [],
+    "card_payments": "active",
+    "transfers": "active",
+    "connection_state": "LIVEMODE_CONNECTED",
+    "capability_source": "revenue/checkout_capability/snapshot.json"
   },
   "offers": {
     "operator": {
@@ -49,6 +54,7 @@
     "ground/STRIPE.md",
     "ground/CHECKOUT_CAPABILITY.md",
     "land/stripe-payment-links-20260826.md",
+    "revenue/checkout_capability/snapshot.json",
     "revenue/checkout_capability/offer-shelf-links-20260910.json",
     "revenue/agent_ops/contract.json"
   ]
