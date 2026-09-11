@@ -1,0 +1,31 @@
+name: titan-v31-b1-alternate-feed
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b1_alternate_feed.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b1_alternate_feed.py'
+      - '.github/workflows/titan-v31-b1-alternate-feed.yml'
+  push:
+    branches:
+      - 'titan/v31-b1-alternate-feed-*'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b1_alternate_feed.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b1_alternate_feed.py'
+      - '.github/workflows/titan-v31-b1-alternate-feed.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile experiment
+        run: python -B -m py_compile revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b1_alternate_feed.py revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b1_alternate_feed.py
+      - name: Focused regression suite
+        run: python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b1_alternate_feed.py -v
