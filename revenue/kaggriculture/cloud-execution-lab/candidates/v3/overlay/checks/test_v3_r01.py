@@ -93,6 +93,32 @@ class PolicyTests(unittest.TestCase):
         r01.subtract_advanced_sales(next_action, state, 6)
         self.assertEqual(next_action["market"], [["SELL", "CARROT", 3]])
 
+    def test_future_inert_tail_sale_is_not_advanced(self):
+        obs = synthetic_observation(5)
+        obs["private"]["shed"]["CARROT"] = 3
+        view = r01.FarmView(obs)
+        state = r01.DayState()
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        tape = [{"market": []} for _ in range(7)]
+        tape[6] = {"market": [["BUY_SEED", "WHEAT", 1], ["SELL", "CARROT", 3]]}
+        r01.advance_sales(action, view, state, tape, 5, max_orders=1)
+        self.assertEqual(action["market"], [])
+        self.assertEqual(state.advanced_sales, {})
+        self.assertEqual(state.sale_due_step, -1)
+
+    def test_future_same_item_tail_does_not_inflate_advanced_quantity(self):
+        obs = synthetic_observation(5)
+        obs["private"]["shed"]["CARROT"] = 3
+        view = r01.FarmView(obs)
+        state = r01.DayState()
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        tape = [{"market": []} for _ in range(7)]
+        tape[6] = {"market": [["SELL", "CARROT", 1], ["SELL", "CARROT", 2]]}
+        r01.advance_sales(action, view, state, tape, 5, max_orders=1)
+        self.assertEqual(action["market"], [["SELL", "CARROT", 1]])
+        self.assertEqual(state.advanced_sales, {"CARROT": 1})
+        self.assertEqual(state.sale_due_step, 6)
+
     def test_market_cap_matches_engine_minimum_one_and_fallback(self):
         self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": 0}), 1)
         self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": -3}), 1)
