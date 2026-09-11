@@ -1,0 +1,150 @@
+name: titan-v31-e20-postship-rebind
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - '.github/workflows/titan-v31-e20-postship-rebind.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-e20-postship-rebind-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rebind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind shipped a612 parent and reviewed E20 blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py")" = '341eed454cae08cfeba31b5205a10263e50999d8'
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py")" = '20b18deda0fa1a58f5200f8934255019561bdef7'
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py)" = 'cd497140d188794d610d3ae387de8758ecbd0765'
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py)" = '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f'
+          git diff --name-only "$PARENT"..HEAD > /tmp/e20-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/e20-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-e20-postship-rebind.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+          }
+          assert actual == expected, sorted(actual)
+          print('E20_POSTSHIP_SCOPE_OK', len(actual))
+          PY
+          git diff --check "$PARENT"..HEAD
+          test -z "$(git status --porcelain)"
+
+      - name: Run reviewed E20 source predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest -v checks/test_v3_features.py
+
+      - name: Generate deterministic postship package rebind
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/e20-postship"
+          TREE="$RUNNER_TEMP/e20-tree"
+          mkdir -p "$OUT" "$TREE"
+          python -B build_v3.py |& tee "$OUT/build.log"
+          grep -F 'V3 BUILD ' "$OUT/build.log"
+          python -B build_v3.py --check |& tee "$OUT/check.log"
+          grep -F 'V3 CHECK OK ' "$OUT/check.log"
+          python -B build_v3.py --tree "$TREE" |& tee "$OUT/tree.log"
+          grep -F 'V3 TREE ' "$OUT/tree.log"
+          cmp overlay/e20_hire_guard.py "$TREE/e20_hire_guard.py"
+          cmp overlay/checks/test_v3_features.py "$TREE/checks/test_v3_features.py"
+          cp FILES.json "$OUT/FILES.json"
+          cp V3-MANIFEST.json "$OUT/V3-MANIFEST.json"
+          cp dist/titan-v3.tar.gz "$OUT/titan-v3.tar.gz"
+          cp dist/titan-v3.sha256 "$OUT/titan-v3.sha256"
+          git diff -- FILES.json V3-MANIFEST.json > "$OUT/rebind.patch"
+          test -s "$OUT/rebind.patch"
+
+      - name: Run E20 predecessors from materialized package
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/e20-tree"
+          python -B -m unittest -v checks/test_v3_features.py
+
+      - name: Emit exact rebind receipt
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/e20-postship"
+          python - "$OUT" <<'PY'
+          import hashlib, json, pathlib, subprocess, sys
+          out = pathlib.Path(sys.argv[1])
+          manifest = json.loads((out / 'V3-MANIFEST.json').read_text())
+          package = out / 'titan-v3.tar.gz'
+          receipt = {
+              'schema': 'titan-v31-e20-postship-rebind/v1',
+              'parent': 'a6120d0ea1bdb75eb0da2239220efce551f624a6',
+              'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'donor_pr': 12497,
+              'donor_source_pr': 12405,
+              'e20_blob': 'cd497140d188794d610d3ae387de8758ecbd0765',
+              'tests_blob': '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f',
+              'archive': manifest['archive'],
+              'archive_sha256_recomputed': hashlib.sha256(package.read_bytes()).hexdigest(),
+          }
+          if receipt['archive_sha256_recomputed'] != manifest['archive']['sha256']:
+              raise SystemExit('archive digest mismatch')
+          (out / 'E20-POSTSHIP-REBIND-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          )
+          print('E20_POSTSHIP_RECEIPT', receipt['archive_sha256_recomputed'])
+          PY
+
+      - name: Prove builder touched only generated metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import subprocess
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+          }
+          assert changed == expected, sorted(changed)
+          print('E20_POSTSHIP_GENERATED_METADATA_ONLY', len(changed))
+          PY
+
+      - name: Upload postship rebind handoff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-e20-postship-${{ github.run_id }}
+          path: ${{ runner.temp }}/e20-postship/
+          if-no-files-found: error
+          retention-days: 14
