@@ -10,7 +10,7 @@ extra hand with the same observation/action re-indexing pattern as r04_fert_hand
 
 The lane is deliberately narrow:
 - days 4..23 only (no overlap with the shipped endgame fert hand or V218);
-- standard 720/24/10/100/10 field only;
+- standard 720/24/10/100/10 field with farm-hand cost multiplier 1 only;
 - no current HIRE, purchase, or COLLECT_FERTILIZER row;
 - no authored future HIRE or COLLECT_FERTILIZER for the rest of the day;
 - SE targets are excluded so V233's dedicated sheep workers keep ownership;
@@ -90,6 +90,7 @@ def standard_configuration(configuration: Any) -> bool:
         "boardSize": BOARD_SIZE,
         "shedCapacity": SHED_CAPACITY,
         "maxMarketOrdersPerTurn": MAX_ORDERS,
+        "farmHandCostMult": 1,
     }
     try:
         for name, wanted in expected.items():
