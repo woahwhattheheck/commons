@@ -119,6 +119,15 @@ class RowShedContracts(unittest.TestCase):
                                           {"WOOL": 5, "MILK": 5}, self.price,
                                           {"WOOL": 1, "MILK": 1}), market)
 
+    def test_malformed_configuration_fails_closed_before_touching_router(self):
+        action = {"market": [["SELL", "STRAWBERRY", 1000], ["SELL", "WOOL", 8]]}
+        for configuration in ("bad-config", 7, True, ("marketParams",)):
+            with self.subTest(configuration=configuration):
+                self.assertIs(apply_row_shed({}, action, None, configuration), action)
+        for market_params in ("bad-market-params", 7, True, ["custom"]):
+            with self.subTest(market_params=market_params):
+                self.assertIs(apply_row_shed({}, action, None, {"marketParams": market_params}), action)
+
     def test_current_root_tuple_preserves_shipped_b5_h4_l3_and_sale_fert(self):
         self.assertTrue(CURRENT_8E3["row_order"])
         self.assertTrue(CURRENT_8E3["evening_flush"])
