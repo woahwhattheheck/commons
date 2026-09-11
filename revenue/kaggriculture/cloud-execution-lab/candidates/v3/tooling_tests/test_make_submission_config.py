@@ -5,6 +5,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import types
 import unittest
 from unittest import mock
@@ -107,6 +108,35 @@ class SubmissionConfigTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 submission.main(["poison-v3-path", "canonical.tar.gz", "out.tar.gz", "not-an-int"])
         self.assertEqual(sys.path, original_path)
+
+    def test_invalid_cli_horizon_never_imports_poison_builder_or_creates_output(self):
+        original_path = list(sys.path)
+        original_builder = sys.modules.pop("build_v3", None)
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                (root / "build_v3.py").write_text(
+                    "raise RuntimeError('BUILD_PATH_TOUCHED')\n", encoding="utf-8"
+                )
+                for raw, expected in (
+                    ("0", AssertionError),
+                    ("-1", AssertionError),
+                    ("not-an-int", ValueError),
+                ):
+                    with self.subTest(raw=raw):
+                        output = root / ("out-%s.tar.gz" % raw.replace("-", "neg"))
+                        with self.assertRaises(expected) as caught:
+                            submission.main([str(root), "canonical.tar.gz", str(output), raw])
+                        self.assertNotIn("BUILD_PATH_TOUCHED", str(caught.exception))
+                        self.assertFalse(output.exists())
+                        self.assertEqual(sys.path, original_path)
+                        self.assertNotIn("build_v3", sys.modules)
+        finally:
+            if original_builder is not None:
+                sys.modules["build_v3"] = original_builder
+            else:
+                sys.modules.pop("build_v3", None)
+            sys.path[:] = original_path
 
     def test_base_horizon_contract_fails_closed_before_transform(self):
         for bad in (None, 0, -1, True, 8.0, "8"):
