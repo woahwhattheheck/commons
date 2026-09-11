@@ -2,12 +2,28 @@
   "counts": {
     "open_issues": 4,
     "open_pull_requests": 4,
-    "runs_in_progress": 20,
-    "runs_queued": 869
+    "runs_in_progress": 18,
+    "runs_queued": 849
   },
   "degraded": [],
-  "drafts": 88,
+  "drafts": 87,
   "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-composer/titan-v3-seed-cluster-tail-closure-20260910-01",
+      "created_at": "2026-09-10T20:41:40Z",
+      "draft": false,
+      "number": 12077,
+      "title": "TITAN V3: close hidden independent-seed composition tails"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-pressure-stock-baseline-closure-20260910-01",
+      "created_at": "2026-09-10T20:43:14Z",
+      "draft": true,
+      "number": 12078,
+      "title": "fix(titan): invalidate pressure baselines after stock-changing barriers"
+    },
     {
       "author": "woahwhattheheck",
       "branch": "sol-pro/titan-v3-own-value-promotion-closure-custody-02118bc",
@@ -31,56 +47,40 @@
       "draft": false,
       "number": 12081,
       "title": "TITAN V3: fail-closed paired-cell own-cash tail gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "agent/titan-v3-returned-action-diff-sol-prism",
-      "created_at": "2026-09-10T20:44:29Z",
-      "draft": false,
-      "number": 12082,
-      "title": "analysis: add same-state returned-action differential harness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v2-disabled-spatial-identity-20260910",
-      "created_at": "2026-09-10T20:47:03Z",
-      "draft": false,
-      "number": 12083,
-      "title": "TITAN: make disabled SpatialTempo installation a strict identity"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "ibis/bd10-main81d6-refresh-20260911-01",
-      "created_at": "2026-09-11T04:19:11Z",
+      "branch": "astra/d38-deliverable-manifest-main1517-refresh-20260911-01",
+      "created_at": "2026-09-11T04:34:29Z",
       "draft": true,
-      "number": 12249,
-      "title": "test(ward): refresh-compose oracle on main81d6"
+      "number": 12254,
+      "title": "tools: refresh-compose reviewed deliverable manifest on main1517"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd10-ward-main81d6-refresh-20260911-01",
-      "created_at": "2026-09-11T04:18:45Z",
+      "branch": "astra/bd01-csu-golden-main1517-refresh-20260911-01",
+      "created_at": "2026-09-11T04:32:27Z",
       "draft": true,
-      "number": 12248,
-      "title": "test(ward): refresh-compose independent frozen oracle on main81d6"
+      "number": 12253,
+      "title": "test(csu): refresh-compose independent golden on main1517"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "ibis/bd09-main81d6-refresh-20260911-01",
-      "created_at": "2026-09-11T04:17:35Z",
+      "branch": "astra/bd08-aquatrace-main4691-refresh-20260911-01",
+      "created_at": "2026-09-11T04:27:06Z",
       "draft": true,
-      "number": 12247,
-      "title": "test(infinitecal): refresh-compose custody on main81d6"
+      "number": 12252,
+      "title": "test(aquatrace): refresh-compose public-source custody on main4691"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd09-infinitecal-main81d6-refresh-20260911-01",
-      "created_at": "2026-09-11T04:17:05Z",
+      "branch": "ibis/bd11-csu-projection-main81d6-20260911-01",
+      "created_at": "2026-09-11T04:24:33Z",
       "draft": true,
-      "number": 12246,
-      "title": "test(infinitecal): refresh-compose expanded fixture custody on main81d6"
+      "number": 12251,
+      "title": "test(csu): compose expanded job projection custody on main81d6"
     },
     {
       "author": "woahwhattheheck",
@@ -108,14 +108,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/bd09-infinitecal-expanded-row-binding-20260910-01",
-      "created_at": "2026-09-11T03:42:09Z",
-      "draft": true,
-      "number": 12238,
-      "title": "test(infinitecal): bind expanded fixture rows"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "sol-astra/bd08-aquatrace-public-source-boundary-20260910-01",
       "created_at": "2026-09-11T03:38:02Z",
       "draft": true,
@@ -129,12 +121,20 @@
       "draft": true,
       "number": 12236,
       "title": "test: bind CSU malt jobs to independent golden"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "gpt56-sol/bd10-ward-independent-oracle-20260910-01",
+      "created_at": "2026-09-11T03:33:04Z",
+      "draft": true,
+      "number": 12235,
+      "title": "test: freeze independent Ward evidence oracle"
     }
   ],
   "pulls_listed": 100,
-  "queue_depth_per_runner": 43.5,
+  "queue_depth_per_runner": 47.2,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T04:21:26Z",
+  "unchanged_since": "2026-09-11T04:42:23Z",
   "undatable_pulls": []
 }
