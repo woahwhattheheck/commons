@@ -22,7 +22,9 @@ _PRODUCTS = frozenset({
     "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
     "EGG", "MILK", "WOOL", "FERTILIZER",
 })
+_CROPS = frozenset({"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"})
 _ANIMAL_PRODUCTS = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
+_EMPTY_KINDS = frozenset({"WEED", "COOP", "PASTURE"})
 _MISSING = object()
 
 REPORT = {
@@ -35,7 +37,7 @@ REPORT = {
 
 
 def _strict_nonnegative_int(value: Any) -> int | None:
-    """Accept only real integer public counters; bool/string/float are unknown."""
+    """Accept only real integer public counters; bool/string/float are invalid."""
     if type(value) is not int or value < 0:
         return None
     return value
@@ -77,43 +79,60 @@ def _default_market_contract(configuration: Any) -> bool:
     )
 
 
-def public_rival_supply(observation: Any) -> dict[str, int]:
-    """Return visible standing yield by product for the one rival, or {} fail-closed.
+def public_rival_supply(observation: Any) -> dict[str, int] | None:
+    """Return visible standing yield, {} for valid no-signal, or None for invalid evidence.
 
-    `farms[*].tiles[*][*]` is public in the pinned official interpreter.  Private shed,
-    per-worker inventory, seeds and market orders are deliberately outside this helper.
-    A malformed tile/counter contributes nothing rather than being coerced.
+    The distinction is intentional.  D1 must never combine one valid rival tile with an
+    unreadable/malformed sibling and then treat the partial board as authoritative.  Only
+    official public tile shapes are accepted: None/LOCKED, WEED, empty COOP/PASTURE,
+    PLANT with a known crop and strict yield counter, or occupied COOP/PASTURE with a
+    known animal and strict yield counter.  Private shed, inventories, seeds and market
+    orders remain outside this helper entirely.
     """
     if type(observation) is not dict:
-        return {}
+        return None
     farms = observation.get("farms")
     player = observation.get("player")
     if type(farms) is not list or len(farms) != 2 or type(player) is not int or player not in (0, 1):
-        return {}
+        return None
     rival = farms[1 - player]
     if type(rival) is not dict:
-        return {}
+        return None
     tiles = rival.get("tiles")
     if type(tiles) is not list:
-        return {}
+        return None
 
     result: dict[str, int] = {}
     for row in tiles:
         if type(row) is not list:
-            continue
+            return None
         for tile in row:
+            if tile is None or tile == "LOCKED":
+                continue
             if type(tile) is not dict:
+                return None
+            kind = tile.get("kind")
+            if kind == "PLANT":
+                crop = tile.get("crop")
+                units = _strict_nonnegative_int(tile.get("yield_units"))
+                if type(crop) is not str or crop not in _CROPS or units is None:
+                    return None
+                if units:
+                    result[crop] = result.get(crop, 0) + units
                 continue
-            units = _strict_nonnegative_int(tile.get("yield_units"))
-            if not units:
+            if kind in ("COOP", "PASTURE") and "animal" in tile:
+                animal = tile.get("animal")
+                product = _ANIMAL_PRODUCTS.get(animal) if type(animal) is str else None
+                units = _strict_nonnegative_int(tile.get("yield_units"))
+                expected_kind = "COOP" if animal == "GOOSE" else "PASTURE"
+                if product is None or kind != expected_kind or units is None:
+                    return None
+                if units:
+                    result[product] = result.get(product, 0) + units
                 continue
-            product = None
-            if tile.get("kind") == "PLANT" and type(tile.get("crop")) is str:
-                product = tile["crop"]
-            elif type(tile.get("animal")) is str:
-                product = _ANIMAL_PRODUCTS.get(tile["animal"])
-            if product in _PRODUCTS:
-                result[product] = result.get(product, 0) + units
+            if kind in _EMPTY_KINDS and "animal" not in tile:
+                continue
+            return None
     return result
 
 
@@ -134,9 +153,10 @@ def apply_public_supply_order(
 ) -> Any:
     """Stable-partition the leading SELL block by visible rival standing supply.
 
-    Disabled or unsupported inputs return the exact same parent object.  Custom market
-    parameters also fail closed so this experiment stays on the exact live V3.1 market
-    contract.  Every row object, quantity, tail position and non-market action is retained.
+    Disabled, malformed or unsupported inputs return the exact same parent object.  The
+    rival public evidence is atomic: a malformed sibling tile invalidates the signal rather
+    than being silently skipped.  Every row object, quantity, tail position and non-market
+    action is retained.
     """
     REPORT["calls"] += 1
     if not enabled or type(action) is not dict or not _default_market_contract(configuration):
@@ -160,7 +180,7 @@ def apply_public_supply_order(
         return action
 
     signal = public_rival_supply(observation)
-    if not signal:
+    if signal is None or not signal:
         return action
     leading = market[:lead]
     pressured = [row for row in leading if signal.get(row[1], 0) > 0]
