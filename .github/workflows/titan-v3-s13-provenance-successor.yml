@@ -1,0 +1,124 @@
+name: titan-v3-s13-provenance-successor
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-provenance-successor.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      EXACT_PARENT: 'b3be1c24d93365fb2775385d7ff4b212ba1703ca'
+      DIR: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor'
+      V2: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v2.py'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact successor topology and three-path scope
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-s13-provenance-successor.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor/certified_report_v3.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor/test_certified_report_v3.py
+          EOF
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --check "$EXACT_PARENT"..HEAD
+
+      - name: Compile without repository bytecode
+        shell: python
+        run: |
+          from pathlib import Path
+          for name in ('certified_report_v3.py', 'test_certified_report_v3.py'):
+              path = Path('${{ env.DIR }}') / name
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+
+      - name: Run provenance predecessor killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+            python -B -m unittest -v test_certified_report_v3.py \
+            2>&1 | tee "$RUNNER_TEMP/s13-provenance-tests.log"
+
+      - name: Emit exact-head source receipt
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          paths = [
+              Path('.github/workflows/titan-v3-s13-provenance-successor.yml'),
+              Path(os.environ['DIR']) / 'certified_report_v3.py',
+              Path(os.environ['DIR']) / 'test_certified_report_v3.py',
+              Path(os.environ['V2']),
+          ]
+          files = {}
+          for path in paths:
+              data = path.read_bytes()
+              files[str(path)] = {
+                  'bytes': len(data),
+                  'git_blob': hashlib.sha1(
+                      b'blob ' + str(len(data)).encode() + b'\0' + data
+                  ).hexdigest(),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+          assert files[os.environ['V2']]['git_blob'] == \
+              'df35cf41cfa664c2832f54082ce80eb1c2b2bee6'
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD']
+          log = Path(os.environ['RUNNER_TEMP']) / 's13-provenance-tests.log'
+          receipt = {
+              'schema': 'titan-v3-s13-provenance-successor-source-receipt/v1',
+              'head': head,
+              'exact_parent': os.environ['EXACT_PARENT'],
+              'files': files,
+              'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
+              'scope': (
+                  'evidence-only provenance successor; exact v2 builder pinned; '
+                  'no gameplay, evaluator, candidate, config, archive, pointer, '
+                  'provider, Kaggle, promotion, merge, or submission mutation'
+              ),
+          }
+          out = Path(os.environ['RUNNER_TEMP']) / 's13-provenance-source-receipt.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text(), end='')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-s13-provenance-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/s13-provenance-tests.log
+            ${{ runner.temp }}/s13-provenance-source-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require clean checkout
+        run: test -z "$(git status --porcelain)"
