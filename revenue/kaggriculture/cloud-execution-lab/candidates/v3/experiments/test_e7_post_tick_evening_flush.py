@@ -76,11 +76,11 @@ class E7PostTickTests(unittest.TestCase):
     def test_hour23_flush_extra_moves_to_next_day_hour1(self):
         parent = Parent()
         agent = install(parent, enabled=True)
-        a23 = agent(obs(23, milk_price=10), config())
+        a23 = agent(obs(47, milk_price=10), config())
         self.assertEqual([], a23["market"])
-        a24 = agent(obs(24, milk_price=11), config())
+        a24 = agent(obs(48, milk_price=11), config())
         self.assertEqual([], a24["market"])
-        a25 = agent(obs(25, milk_price=12), config())
+        a25 = agent(obs(49, milk_price=12), config())
         self.assertEqual([["SELL", "MILK", 5]], a25["market"])
         self.assertEqual(5, agent.telemetry["withheld_units"])
         self.assertEqual(5, agent.telemetry["released_units"])
@@ -91,24 +91,24 @@ class E7PostTickTests(unittest.TestCase):
     def test_nonempty_worker_inventory_preserves_incumbent_hour23_flush(self):
         parent = Parent()
         agent = install(parent, enabled=True)
-        observation = obs(23, inventories=[{"MILK": 1}])
+        observation = obs(47, inventories=[{"MILK": 1}])
         expected = r04.evening_flush(observation, parent(observation, config()))
         self.assertEqual(expected, agent(observation, config()))
         self.assertEqual(1, agent.telemetry["capacity_reject"])
 
     def test_inventory_producing_worker_action_preserves_incumbent_flush(self):
-        parent = Parent({23: {"farmer": ["HARVEST"], "hands": [], "market": []}})
+        parent = Parent({47: {"farmer": ["HARVEST"], "hands": [], "market": []}})
         agent = install(parent, enabled=True)
-        observation = obs(23)
+        observation = obs(47)
         expected = r04.evening_flush(observation, parent(observation, config()))
         self.assertEqual(expected, agent(observation, config()))
         self.assertEqual(1, agent.telemetry["capacity_reject"])
 
     def test_shed_adding_market_buy_preserves_incumbent_flush(self):
         action = {"farmer": ["PASS"], "hands": [], "market": [["BUY_PRODUCT", "WHEAT", 1]]}
-        parent = Parent({23: action})
+        parent = Parent({47: action})
         agent = install(parent, enabled=True)
-        observation = obs(23)
+        observation = obs(47)
         expected = r04.evening_flush(observation, parent(observation, config()))
         self.assertEqual(expected, agent(observation, config()))
         self.assertEqual(1, agent.telemetry["capacity_reject"])
@@ -116,33 +116,93 @@ class E7PostTickTests(unittest.TestCase):
     def test_nonstandard_clock_type_fails_closed_to_incumbent_flush(self):
         parent = Parent()
         agent = install(parent, enabled=True)
-        observation = obs(23)
+        observation = obs(47)
         expected = r04.evening_flush(observation, parent(observation, config()))
         self.assertEqual(expected, agent(observation, config(turnsPerDay="24")))
         self.assertEqual(1, agent.telemetry["config_reject"])
 
-    def test_release_tops_up_existing_same_item_sell_without_new_row(self):
-        parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2]]}})
+    def test_falsey_market_params_types_fail_closed(self):
+        for market_params in ([], "", 0, False):
+            with self.subTest(market_params=market_params):
+                parent = Parent()
+                agent = install(parent, enabled=True)
+                observation = obs(47)
+                expected = r04.evening_flush(observation, parent(observation, config()))
+                self.assertEqual(
+                    expected,
+                    agent(observation, config(marketParams=market_params)),
+                )
+                self.assertEqual(1, agent.telemetry["config_reject"])
+
+    def test_falsey_market_placeholder_preserves_incumbent_hour23_flush(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": [[], ["HIRE"]]}
+        parent = Parent({47: action})
         agent = install(parent, enabled=True)
-        self.assertEqual([], agent(obs(23), config())["market"])
-        agent(obs(24), config())
-        released = agent(obs(25, milk_price=12), config())
+        observation = obs(47)
+        expected = r04.evening_flush(observation, parent(observation, config()))
+        actual = agent(observation, config())
+        self.assertEqual(expected, actual)
+        self.assertEqual(1, agent.telemetry["flush_shape_reject"])
+        self.assertEqual(0, agent.telemetry["withheld_units"])
+
+    def test_release_tops_up_existing_same_item_sell_without_new_row(self):
+        parent = Parent({49: {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2]]}})
+        agent = install(parent, enabled=True)
+        self.assertEqual([], agent(obs(47), config())["market"])
+        agent(obs(48), config())
+        released = agent(obs(49, milk_price=12), config())
         self.assertEqual([["SELL", "MILK", 5]], released["market"])
+
+    def test_release_appends_new_row_without_reindexing_parent_rows(self):
+        raw = [["HIRE"], ["BUY_LAND"]]
+        parent = Parent({49: {"farmer": ["PASS"], "hands": [], "market": raw}})
+        agent = install(parent, enabled=True)
+        agent(obs(47), config())
+        agent(obs(48), config())
+        released = agent(obs(49, milk_price=12), config())
+        self.assertEqual(
+            [["HIRE"], ["BUY_LAND"], ["SELL", "MILK", 5]],
+            released["market"],
+        )
+        self.assertEqual(raw, released["market"][:2])
+
+    def test_release_falsey_placeholder_fails_closed_without_compaction(self):
+        raw = [[], ["SELL", "MILK", 2], ["HIRE"]]
+        parent = Parent({49: {"farmer": ["PASS"], "hands": [], "market": raw}})
+        agent = install(parent, enabled=True)
+        agent(obs(47), config())
+        agent(obs(48), config())
+        released = agent(obs(49, milk_price=12), config())
+        self.assertEqual(raw, released["market"])
+        self.assertEqual(1, agent.telemetry["release_malformed_market"])
+        self.assertEqual(0, agent.telemetry["released_units"])
+
+    def test_release_over_cap_raw_market_fails_closed_without_tail_pull_in(self):
+        raw = [["HIRE"] for _ in range(10)] + [["BUY_LAND"]]
+        parent = Parent({49: {"farmer": ["PASS"], "hands": [], "market": raw}})
+        agent = install(parent, enabled=True)
+        agent(obs(47), config())
+        agent(obs(48), config())
+        released = agent(obs(49, milk_price=12), config())
+        self.assertEqual(raw, released["market"])
+        self.assertEqual(11, len(released["market"]))
+        self.assertEqual(1, agent.telemetry["release_malformed_market"])
+        self.assertEqual(0, agent.telemetry["released_units"])
 
     def test_release_market_full_records_shortfall_and_does_not_displace_parent(self):
         full = [["HIRE"] for _ in range(10)]
-        parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": full}})
+        parent = Parent({49: {"farmer": ["PASS"], "hands": [], "market": full}})
         agent = install(parent, enabled=True)
-        agent(obs(23), config())
-        agent(obs(24), config())
-        released = agent(obs(25, milk_price=12), config())
+        agent(obs(47), config())
+        agent(obs(48), config())
+        released = agent(obs(49, milk_price=12), config())
         self.assertEqual(full, released["market"])
         self.assertEqual(5, agent.telemetry["release_shortfall_units"])
 
     def test_bool_shed_quantity_is_not_coerced_into_capacity_proof(self):
         parent = Parent()
         agent = install(parent, enabled=True)
-        observation = obs(23, shed={"MILK": True})
+        observation = obs(47, shed={"MILK": True})
         expected = r04.evening_flush(observation, parent(observation, config()))
         self.assertEqual(expected, agent(observation, config()))
         self.assertEqual(1, agent.telemetry["capacity_reject"])
