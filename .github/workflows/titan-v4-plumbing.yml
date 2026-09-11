@@ -140,6 +140,24 @@ jobs:
             if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
               git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_SHA"
             fi
+
+            # The promotion-state wrapper reconstructs the base package by
+            # swapping only base apply_v4.py into the HEAD build recipe. That
+            # comparison is exact only while the frozen V3/build inputs are
+            # byte-identical to the target. Fail closed on any drift instead of
+            # letting HEAD rewrite both sides of the monotonicity proof.
+            for frozen in \
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py \
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py \
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json
+            do
+              if ! git diff --quiet "$BASE_SHA" "$HEAD_SHA" -- "$frozen"; then
+                echo "::error file=$frozen::V4 plumbing guard requires this frozen V3/build input to match the exact target base"
+                git diff -- "$BASE_SHA" "$HEAD_SHA" -- "$frozen"
+                exit 1
+              fi
+            done
+
             git cat-file blob "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
           else
             cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
