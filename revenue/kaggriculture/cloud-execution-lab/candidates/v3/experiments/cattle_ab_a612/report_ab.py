@@ -1,84 +1,226 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Paired current-package cattle OFF vs ON economics receipt."""
+"""Paired current-package cattle OFF vs ON economics receipt.
+
+The reducer is intentionally strict: only the workflow-requested 8-seed x 2-seat
+cartesian panel against the literal cattle_on opponent is admissible.  Receipt
+normalization rejects coercible aliases, duplicate/substituted cells, non-finite
+scores, and incomplete/failed games before any economics are computed.
+"""
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import statistics
 from pathlib import Path
 
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_SEEDS = (
+    2611152001,
+    2611152002,
+    2611152003,
+    2611152004,
+    2611152005,
+    2611152006,
+    2611152007,
+    2611152008,
+)
+EXPECTED_OPPONENTS = ("cattle_on",)
+EXPECTED_KEYS = frozenset(
+    (opponent, seed, seat)
+    for opponent in EXPECTED_OPPONENTS
+    for seed in EXPECTED_SEEDS
+    for seat in (0, 1)
+)
 
 
 def load(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    value = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise SystemExit(f"{path}: receipt must be an object")
+    return value
 
 
-def cell_key(game):
-    return (game["opponent"], int(game["seed"]), int(game["candidate_seat"]))
+def strict_int(value, label):
+    if type(value) is not int:
+        raise SystemExit(f"{label}: expected exact integer")
+    return value
 
 
-def scores(game):
-    seat = int(game["candidate_seat"])
+def finite_number(value, label):
+    if type(value) not in (int, float) or isinstance(value, bool) or not math.isfinite(float(value)):
+        raise SystemExit(f"{label}: expected finite number")
+    return float(value)
+
+
+def strict_trace(value, label):
+    if not isinstance(value, str) or len(value) != 64:
+        raise SystemExit(f"{label}: expected sha256 trace")
+    try:
+        int(value, 16)
+    except ValueError as exc:
+        raise SystemExit(f"{label}: expected sha256 trace") from exc
+    return value
+
+
+def normalized_games(report, label):
+    if not isinstance(report, dict):
+        raise SystemExit(f"{label}: receipt must be an object")
+    if report.get("engine_ref") != ENGINE_REF:
+        raise SystemExit(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
+
+    seeds = report.get("seeds")
+    opponents = report.get("opponents")
+    games = report.get("games")
+    if not isinstance(seeds, list) or not isinstance(opponents, list):
+        raise SystemExit(f"{label}: missing seeds/opponents metadata")
+    if not isinstance(games, list) or not games:
+        raise SystemExit(f"{label}: missing games")
+
+    if len(seeds) != len(EXPECTED_SEEDS):
+        raise SystemExit(f"{label}: requested seed panel length mismatch")
+    seen_seed_metadata = set()
+    for index, (seed, expected) in enumerate(zip(seeds, EXPECTED_SEEDS)):
+        strict_int(seed, f"{label}.seeds[{index}]")
+        if seed in seen_seed_metadata:
+            raise SystemExit(f"{label}: duplicate seed metadata {seed!r}")
+        seen_seed_metadata.add(seed)
+        if seed != expected:
+            raise SystemExit(
+                f"{label}.seeds[{index}]: unexpected seed {seed!r}; requested {expected!r}"
+            )
+
+    if len(opponents) != len(EXPECTED_OPPONENTS):
+        raise SystemExit(f"{label}: requested opponent panel length mismatch")
+    seen_opponents = set()
+    for index, (opponent, expected) in enumerate(zip(opponents, EXPECTED_OPPONENTS)):
+        if not isinstance(opponent, str):
+            raise SystemExit(f"{label}.opponents[{index}]: expected string")
+        if opponent in seen_opponents:
+            raise SystemExit(f"{label}: duplicate opponent metadata {opponent!r}")
+        seen_opponents.add(opponent)
+        if opponent != expected:
+            raise SystemExit(
+                f"{label}.opponents[{index}]: unexpected opponent {opponent!r}; requested {expected!r}"
+            )
+
+    reproducibility = report.get("reproducibility")
+    if not isinstance(reproducibility, dict) or reproducibility.get("same_trace_and_scores") is not True:
+        raise SystemExit(f"{label}: reproducibility recheck failed")
+
+    result = {}
+    for index, game in enumerate(games):
+        if not isinstance(game, dict):
+            raise SystemExit(f"{label}.games[{index}]: expected object")
+        if game.get("status") != "complete":
+            raise SystemExit(f"{label}.games[{index}]: incomplete status {game.get('status')!r}")
+        if game.get("failure") is not None:
+            raise SystemExit(f"{label}.games[{index}]: non-null failure {game.get('failure')!r}")
+
+        opponent = game.get("opponent")
+        if not isinstance(opponent, str) or opponent not in EXPECTED_OPPONENTS:
+            raise SystemExit(f"{label}.games[{index}]: undeclared opponent {opponent!r}")
+        seed = strict_int(game.get("seed"), f"{label}.games[{index}].seed")
+        if seed not in EXPECTED_SEEDS:
+            raise SystemExit(f"{label}.games[{index}]: undeclared seed {seed!r}")
+        seat = strict_int(game.get("candidate_seat"), f"{label}.games[{index}].candidate_seat")
+        if seat not in (0, 1):
+            raise SystemExit(f"{label}.games[{index}]: seat must be 0/1")
+
+        values = game.get("scores")
+        if not isinstance(values, list) or len(values) != 2:
+            raise SystemExit(f"{label}.games[{index}]: scores must be [seat0, seat1]")
+        normalized_scores = [
+            finite_number(values[0], f"{label}.games[{index}].scores[0]"),
+            finite_number(values[1], f"{label}.games[{index}].scores[1]"),
+        ]
+        trace = strict_trace(game.get("trace_sha256"), f"{label}.games[{index}].trace_sha256")
+
+        key = (opponent, seed, seat)
+        if key in result:
+            raise SystemExit(f"{label}: duplicate paired cell {key!r}")
+        normalized = dict(game)
+        normalized["scores"] = normalized_scores
+        normalized["trace_sha256"] = trace
+        result[key] = normalized
+
+    actual_keys = frozenset(result)
+    if actual_keys != EXPECTED_KEYS:
+        missing = sorted(EXPECTED_KEYS - actual_keys)
+        extra = sorted(actual_keys - EXPECTED_KEYS)
+        raise SystemExit(
+            f"{label}: exact requested coverage mismatch: missing={missing!r} extra={extra!r}"
+        )
+    return result
+
+
+def scores(game, key):
+    seat = key[2]
     values = game["scores"]
-    return float(values[seat]), float(values[1 - seat])
+    return values[seat], values[1 - seat]
 
 
 def outcome(margin):
     return "W" if margin > 0 else "L" if margin < 0 else "T"
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("materialization")
-    p.add_argument("control")
-    p.add_argument("candidate")
-    p.add_argument("--json-out", required=True)
-    p.add_argument("--markdown-out", required=True)
-    args = p.parse_args()
-
-    materialization = load(args.materialization)
-    control, candidate = load(args.control), load(args.candidate)
+def validate_materialization(materialization):
+    if not isinstance(materialization, dict):
+        raise SystemExit("materialization receipt must be an object")
     if materialization.get("on_to_off_changed_members") != ["TITAN-CONFIG.json"]:
         raise SystemExit("materialization is not one-member cattle A/B")
     if materialization.get("on_to_off_changed_config_keys") != ["r04_cattle_early"]:
         raise SystemExit("materialization is not cattle-only config A/B")
-    if materialization["control_config"]["r04_cattle_early"] is not True:
+    control_config = materialization.get("control_config")
+    candidate_config = materialization.get("candidate_config")
+    if not isinstance(control_config, dict) or not isinstance(candidate_config, dict):
+        raise SystemExit("materialization configs must be objects")
+    if control_config.get("r04_cattle_early") is not True:
         raise SystemExit("control is not cattle ON")
-    if materialization["candidate_config"]["r04_cattle_early"] is not False:
+    if candidate_config.get("r04_cattle_early") is not False:
         raise SystemExit("candidate is not cattle OFF")
-    for key in ("r04_sale_window", "r04_sale_fertilizer", "r04_strawberry_topup", "r04_no_late_sale_advance"):
-        if materialization["control_config"][key] is not True or materialization["candidate_config"][key] is not True:
+    for key in (
+        "r04_sale_window",
+        "r04_sale_fertilizer",
+        "r04_strawberry_topup",
+        "r04_no_late_sale_advance",
+    ):
+        if control_config.get(key) is not True or candidate_config.get(key) is not True:
             raise SystemExit(f"required held-constant factor not ON: {key}")
-    if materialization["control_config"]["r04_sale_horizon"] != 8 or materialization["candidate_config"]["r04_sale_horizon"] != 8:
-        raise SystemExit("horizon is not fixed at 8")
-    if materialization["control_config"]["r04_no_late_sale_advance_step"] != 648 or materialization["candidate_config"]["r04_no_late_sale_advance_step"] != 648:
-        raise SystemExit("L3 threshold is not fixed at 648")
+    if type(control_config.get("r04_sale_horizon")) is not int or control_config["r04_sale_horizon"] != 8:
+        raise SystemExit("control horizon is not literal int 8")
+    if type(candidate_config.get("r04_sale_horizon")) is not int or candidate_config["r04_sale_horizon"] != 8:
+        raise SystemExit("candidate horizon is not literal int 8")
+    if type(control_config.get("r04_no_late_sale_advance_step")) is not int or control_config["r04_no_late_sale_advance_step"] != 648:
+        raise SystemExit("control L3 threshold is not literal int 648")
+    if type(candidate_config.get("r04_no_late_sale_advance_step")) is not int or candidate_config["r04_no_late_sale_advance_step"] != 648:
+        raise SystemExit("candidate L3 threshold is not literal int 648")
 
-    for label, report in (("control", control), ("candidate", candidate)):
-        if report.get("engine_ref") != ENGINE_REF:
-            raise SystemExit(f"{label}: wrong engine ref")
-        if report.get("seeds") != control.get("seeds"):
-            raise SystemExit(f"{label}: seed mismatch")
-        if report.get("opponents") != control.get("opponents"):
-            raise SystemExit(f"{label}: opponent fingerprint mismatch")
-        if not report.get("reproducibility", {}).get("same_trace_and_scores"):
-            raise SystemExit(f"{label}: reproducibility recheck failed")
 
-    cg = {cell_key(game): game for game in control.get("games", [])}
-    og = {cell_key(game): game for game in candidate.get("games", [])}
-    if not cg or cg.keys() != og.keys():
-        raise SystemExit("paired cell set mismatch or empty")
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("materialization")
+    parser.add_argument("control")
+    parser.add_argument("candidate")
+    parser.add_argument("--json-out", required=True)
+    parser.add_argument("--markdown-out", required=True)
+    args = parser.parse_args()
+
+    materialization = load(args.materialization)
+    control_raw, candidate_raw = load(args.control), load(args.candidate)
+    validate_materialization(materialization)
+    control = normalized_games(control_raw, "control")
+    candidate = normalized_games(candidate_raw, "candidate")
+    if control.keys() != candidate.keys():
+        raise SystemExit("paired cell key mismatch")
 
     rows = []
     transitions = {}
-    for key in sorted(cg):
-        c, o = cg[key], og[key]
-        if c.get("status") != "complete" or o.get("status") != "complete":
-            raise SystemExit(f"incomplete cell {key}")
-        c_own, c_rival = scores(c)
-        o_own, o_rival = scores(o)
+    for key in sorted(EXPECTED_KEYS):
+        c, o = control[key], candidate[key]
+        c_own, c_rival = scores(c, key)
+        o_own, o_rival = scores(o, key)
         c_margin = c_own - c_rival
         o_margin = o_own - o_rival
         transition = f"{outcome(c_margin)}->{outcome(o_margin)}"
@@ -95,27 +237,27 @@ def main():
             "delta_rival": o_rival - c_rival,
             "delta_margin": o_margin - c_margin,
             "outcome_transition": transition,
-            "trace_changed": c.get("trace_sha256") != o.get("trace_sha256"),
+            "trace_changed": c["trace_sha256"] != o["trace_sha256"],
         })
 
-    pos = sum(r["delta_margin"] > 0 for r in rows)
-    neg = sum(r["delta_margin"] < 0 for r in rows)
+    pos = sum(row["delta_margin"] > 0 for row in rows)
+    neg = sum(row["delta_margin"] < 0 for row in rows)
     zero = len(rows) - pos - neg
-    trace = sum(r["trace_changed"] for r in rows)
-    money = sum(bool(r["delta_own"] or r["delta_rival"]) for r in rows)
-    mean_own = statistics.mean(r["delta_own"] for r in rows)
-    mean_rival = statistics.mean(r["delta_rival"] for r in rows)
-    mean_margin = statistics.mean(r["delta_margin"] for r in rows)
-    median_margin = statistics.median(r["delta_margin"] for r in rows)
+    trace = sum(row["trace_changed"] for row in rows)
+    money = sum(bool(row["delta_own"] or row["delta_rival"]) for row in rows)
+    mean_own = statistics.mean(row["delta_own"] for row in rows)
+    mean_rival = statistics.mean(row["delta_rival"] for row in rows)
+    mean_margin = statistics.mean(row["delta_margin"] for row in rows)
+    median_margin = statistics.median(row["delta_margin"] for row in rows)
     control_wtl = {
-        "wins": sum(r["control_margin"] > 0 for r in rows),
-        "ties": sum(r["control_margin"] == 0 for r in rows),
-        "losses": sum(r["control_margin"] < 0 for r in rows),
+        "wins": sum(row["control_margin"] > 0 for row in rows),
+        "ties": sum(row["control_margin"] == 0 for row in rows),
+        "losses": sum(row["control_margin"] < 0 for row in rows),
     }
     candidate_wtl = {
-        "wins": sum(r["candidate_margin"] > 0 for r in rows),
-        "ties": sum(r["candidate_margin"] == 0 for r in rows),
-        "losses": sum(r["candidate_margin"] < 0 for r in rows),
+        "wins": sum(row["candidate_margin"] > 0 for row in rows),
+        "ties": sum(row["candidate_margin"] == 0 for row in rows),
+        "losses": sum(row["candidate_margin"] < 0 for row in rows),
     }
 
     if trace == 0:
@@ -133,7 +275,8 @@ def main():
         "schema": "titan-v31-a612-cattle-off-ab/v1",
         "engine_ref": ENGINE_REF,
         "materialization": materialization,
-        "seeds": control["seeds"],
+        "seeds": list(EXPECTED_SEEDS),
+        "opponents": list(EXPECTED_OPPONENTS),
         "cells": rows,
         "summary": {
             "paired_cells": len(rows),
@@ -151,7 +294,7 @@ def main():
         },
         "truth_boundary": "Current-package self-play interaction gate only; opponent-diverse widening is still required before submission authority.",
     }
-    Path(args.json_out).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    Path(args.json_out).write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
     lines = [
         "## Cattle OFF vs ON — exact a612 score-facing package A/B",
@@ -176,9 +319,12 @@ def main():
             f"| {row['seed']} | {row['candidate_seat']} | {row['control_margin']:+.0f} | {row['candidate_margin']:+.0f} | "
             f"{row['delta_own']:+.0f} | {row['delta_rival']:+.0f} | {row['delta_margin']:+.0f} | {row['outcome_transition']} | {'yes' if row['trace_changed'] else 'no'} |"
         )
-    lines += ["", "Self-play is an interaction-safety screen, not final leaderboard authority. Any widening must hold the same package pair fixed against representative published opponents."]
+    lines += [
+        "",
+        "Self-play is an interaction-safety screen, not final leaderboard authority. Any widening must hold the same package pair fixed against representative published opponents.",
+    ]
     Path(args.markdown_out).write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(json.dumps(result["summary"], sort_keys=True))
+    print(json.dumps(result["summary"], sort_keys=True, allow_nan=False))
 
 
 if __name__ == "__main__":
