@@ -8,6 +8,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
       - '.github/workflows/titan-v31-artifact-reachability.yml'
+      - '.github/workflows/tests.yml'
   workflow_dispatch:
 
 permissions:
@@ -40,6 +41,7 @@ jobs:
           ).splitlines())
           expected = {
               '.github/workflows/titan-v31-artifact-reachability.yml',
+              '.github/workflows/tests.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py',
           }
