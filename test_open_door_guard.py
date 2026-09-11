@@ -452,6 +452,32 @@ def main():
         place_delivery_allowed
     )
 
+    # Run 34652759900 / SHA 0f6aca3c: EOD capacity-rescue helper added
+    # "Unknown verbs" on one comment line. That trips unlisted-action even
+    # though the line is game-engine shed-stock classification, not Action Pad
+    # admission. Market-row-head wording keeps the same theorem without the
+    # lock collocation. The forbidden line must still fail.
+    eod_rescue_path = (
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/"
+        "r04_eod_capacity_rescue.py"
+    )
+    eod_rescue_blocked = diff(
+        eod_rescue_path,
+        [
+            "# stock. Unknown verbs are ambiguous raw rows and must fail closed rather than",
+        ],
+    )
+    assert rules(eod_rescue_blocked) == {"unlisted-action"}, rules(eod_rescue_blocked)
+    eod_rescue_allowed = diff(
+        eod_rescue_path,
+        [
+            "# These are the only official market row heads whose execution cannot change shed",
+            "# stock. Any other raw head has an unspecified shed effect, so this helper",
+            "# returns the parent rather than assuming the row is shed-neutral.",
+        ],
+    )
+    assert guard.scan_diff(eod_rescue_allowed) == [], guard.scan_diff(eod_rescue_allowed)
+
     # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
     # retained cell's recorded player-view field and then call a unittest
     # helper. Collocating `seat` with `reject` on one line is still an
