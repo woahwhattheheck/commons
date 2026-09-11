@@ -82,6 +82,18 @@ class H3bSheepClip(unittest.TestCase):
         self.assertIs(result, action)
         self.assertEqual(state["work"][1]["command"], ["HARVEST"])
 
+    def test_malformed_farmer_action_vector_is_exact_parent_identity(self):
+        for mode in ("missing", "empty"):
+            with self.subTest(mode=mode):
+                action, observation, state = fixture()
+                if mode == "missing":
+                    del action["farmer"]
+                else:
+                    action["farmer"] = []
+                result = self.run_case(action, observation, state)
+                self.assertIs(result, action)
+                self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_overflowing_sheep_preempts_nearer_nonurgent_harvest(self):
         action, observation, state = fixture()
         result = self.run_case(action, observation, state)
