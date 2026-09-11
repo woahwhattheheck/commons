@@ -90,8 +90,8 @@ def apply(src):
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
-        "    s6_fert_roi changes only idle target selection inside an already-hired r04_fert_hand,\n"
-        "    after reserving all incumbent CARROT work already present or authored later today.\n",
+        "    s6_fert_roi keeps the incumbent CARROT hire gate unchanged; after that gate passes it may\n"
+        "    reserve at most one extra reachable fertilizer unit for idle WHEAT/TOMATO service.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
@@ -124,6 +124,65 @@ def apply(src):
         "FERT_HAND = False\nDAYS = (24, 25, 26, 27, 28)\n",
         "FERT_HAND = False\nS6_FERT_ROI = False\nDAYS = (24, 25, 26, 27, 28)\n",
         "fert-hand S6 flag",
+    )
+    fert_hand = _replace_once(
+        fert_hand,
+        "    targets = len(_targets(farm[\"tiles\"], day)) + _future_plantings(tape, step)\n"
+        "    units = min(targets, REACH)\n",
+        "    target_list = _targets(farm[\"tiles\"], day)\n"
+        "    future_carrots = _future_plantings(tape, step)\n"
+        "    targets = len(target_list) + future_carrots\n"
+        "    units = min(targets, REACH)\n",
+        "fert-hand S6 baseline target capture",
+    )
+    fert_hand = _replace_once(
+        fert_hand,
+        "    if not ok:\n"
+        "        REPORT[\"declined\"] += 1\n"
+        "        return action\n"
+        "    shed = int(observation[\"private\"][\"shed\"].get(\"FERTILIZER\", 0))\n"
+        "    short = units - (shed - _future_fert_pickups(tape, step))\n"
+        "    action = dict(action)\n"
+        "    extra = [[\"HIRE\"]]\n"
+        "    if short > 0 and len(market) + 2 <= MAX_ORDERS:\n"
+        "        extra.append([\"BUY_PRODUCT\", \"FERTILIZER\", short])\n"
+        "        REPORT[\"bought\"] += short\n"
+        "    action[\"market\"] = market + extra\n"
+        "    st.pending = len(hands)\n"
+        "    st.want = units\n"
+        "    return action\n",
+        "    if not ok:\n"
+        "        REPORT[\"declined\"] += 1\n"
+        "        return action\n"
+        "    shed = int(observation[\"private\"][\"shed\"].get(\"FERTILIZER\", 0))\n"
+        "    available = shed - _future_fert_pickups(tape, step)\n"
+        "    s6_extra = 0\n"
+        "    if S6_FERT_ROI and future_carrots == 0 and units < REACH:\n"
+        "        try:\n"
+        "            import r04_s6_fert_roi\n"
+        "            s6_extra = r04_s6_fert_roi.reserve_extra_fertilizer(\n"
+        "                observation, target_list, units, future_carrots, REACH)\n"
+        "        except Exception:\n"
+        "            s6_extra = 0\n"
+        "        if s6_extra:\n"
+        "            total = units + s6_extra\n"
+        "            can_afford = float(farm.get(\"money\", 0)) >= cost + total * fert_price + 100\n"
+        "            needs_buy = total > available\n"
+        "            can_order = (not needs_buy) or len(market) + 2 <= MAX_ORDERS\n"
+        "            if not can_afford or not can_order:\n"
+        "                s6_extra = 0\n"
+        "    total_units = units + s6_extra\n"
+        "    short = total_units - available\n"
+        "    action = dict(action)\n"
+        "    extra = [[\"HIRE\"]]\n"
+        "    if short > 0 and len(market) + 2 <= MAX_ORDERS:\n"
+        "        extra.append([\"BUY_PRODUCT\", \"FERTILIZER\", short])\n"
+        "        REPORT[\"bought\"] += short\n"
+        "    action[\"market\"] = market + extra\n"
+        "    st.pending = len(hands)\n"
+        "    st.want = total_units\n"
+        "    return action\n",
+        "fert-hand S6 bounded reserve",
     )
     fert_hand = _replace_once(
         fert_hand,
