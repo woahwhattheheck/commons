@@ -46,17 +46,17 @@ class FertDailySafety(unittest.TestCase):
         board[2][2] = {"animal": "COW", "fertilizer_available": True}
         obs = observation(position=(2, 2), inventories=[{}], shed={"WHEAT": "poison"}, board=board)
         action = parent()
-        result = donor.apply_fert_daily_sweep(obs, action, TAPE)
+        result = donor.apply_fert_daily_sweep(obs, action, TAPE, None)
         self.assertEqual(result["farmer"], ["COLLECT_FERTILIZER"])
         self.assertEqual(result["hands"], [])
 
-    def test_drop_allowed_when_all_parent_and_new_cargo_exactly_fits(self):
+    def test_drop_allowed_when_all_parent_and_new_cargo_exactly_fits_default(self):
         obs = observation(inventories=[{"FERTILIZER": 2}], shed={"WHEAT": 98})
         result = donor.apply_fert_daily_sweep(obs, parent(), TAPE)
         self.assertEqual(result["farmer"], ["DROP"])
         self.assertEqual(donor.get_report()["dropped"], 1)
 
-    def test_drop_vetoed_when_new_cargo_would_overflow(self):
+    def test_drop_vetoed_when_new_cargo_would_overflow_default(self):
         action = parent()
         obs = observation(inventories=[{"FERTILIZER": 2}], shed={"WHEAT": 99})
         result = donor.apply_fert_daily_sweep(obs, action, TAPE)
@@ -64,6 +64,27 @@ class FertDailySafety(unittest.TestCase):
         self.assertEqual(result["farmer"], ["PASS"])
         self.assertEqual(donor.get_report()["dropped"], 0)
         self.assertEqual(donor.get_report()["drop_skipped_guard"], 1)
+
+    def test_configured_capacity_is_honored(self):
+        obs = observation(inventories=[{"FERTILIZER": 2}], shed={"WHEAT": 8})
+        allowed = donor.apply_fert_daily_sweep(obs, parent(), TAPE, 10)
+        self.assertEqual(allowed["farmer"], ["DROP"])
+
+        donor.reset()
+        action = parent()
+        blocked = donor.apply_fert_daily_sweep(obs, action, TAPE, 9)
+        self.assertIs(blocked, action)
+        self.assertEqual(blocked["farmer"], ["PASS"])
+
+    def test_malformed_capacity_vetoes_new_drop(self):
+        for bad in (None, True, 10.0, "10", -1):
+            with self.subTest(bad=bad):
+                donor.reset()
+                action = parent()
+                obs = observation(inventories=[{"FERTILIZER": 1}], shed={})
+                result = donor.apply_fert_daily_sweep(obs, action, TAPE, bad)
+                self.assertIs(result, action)
+                self.assertEqual(result["farmer"], ["PASS"])
 
     def test_new_drop_cannot_steal_capacity_from_parent_drop(self):
         action = parent(hands=[["DROP"]])
