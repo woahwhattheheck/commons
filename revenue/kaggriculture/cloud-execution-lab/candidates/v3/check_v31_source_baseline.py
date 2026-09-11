@@ -1,10 +1,16 @@
-"""Run the six V3 source-level integration suites against an isolated materialized tree.
+"""Run the V3.1 source baseline and deterministic package-integrity gates.
 
-By default this builds the current candidates/v3 source with build_v3.package_files().
-``--package-tree`` can instead point at an already materialized or submission-mode tree.
-The selected tree is always copied to a temporary directory; if its only submission-mode
-difference is ``r04_sale_window=true``, that toggle is changed to false in the temporary
-copy before tests run.  The caller's source/package is never edited.
+Before materializing or testing anything, this runner executes ``build_v3.py --check``
+against the checked-out candidates/v3 source.  A stale FILES.json, V3-MANIFEST.json,
+overlay hash, archive digest, or package file set therefore fails closed and cannot be
+reported as a green source baseline.
+
+By default the runner then builds the current candidates/v3 source with
+build_v3.package_files().  ``--package-tree`` can instead point at an already materialized
+or submission-mode tree.  The selected tree is always copied to a temporary directory;
+if its only submission-mode difference is ``r04_sale_window=true``, that toggle is changed
+to false in the temporary copy before tests run.  The caller's source/package is never
+edited.
 """
 from __future__ import annotations
 
@@ -29,6 +35,27 @@ SUITES = (
     "checks/test_v3_r03.py",
     "checks/test_v3_r04.py",
 )
+
+
+def _subprocess_env() -> dict[str, str]:
+    env = dict(os.environ)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    return env
+
+
+def _check_package_integrity() -> int:
+    """Fail closed unless deterministic source manifests match a fresh V3 rebuild."""
+    completed = subprocess.run(
+        [sys.executable, "build_v3.py", "--check"],
+        cwd=HERE,
+        env=_subprocess_env(),
+        check=False,
+    )
+    if completed.returncode:
+        print("V3 PACKAGE INTEGRITY FAIL", completed.returncode)
+        return completed.returncode
+    print("V3 PACKAGE INTEGRITY PASS")
+    return 0
 
 
 def _materialize_source(target: Path) -> None:
@@ -69,6 +96,10 @@ def _assert_suites(target: Path) -> None:
 
 
 def run(package_tree: Path | None = None) -> int:
+    integrity = _check_package_integrity()
+    if integrity:
+        return integrity
+
     with tempfile.TemporaryDirectory(prefix="titan-v31-source-baseline-") as temp:
         target = Path(temp)
         if package_tree is None:
@@ -82,6 +113,7 @@ def run(package_tree: Path | None = None) -> int:
         _assert_suites(target)
         print("V3.1 SOURCE BASELINE")
         print("source:", source_label)
+        print("package integrity source:", HERE)
         print("temporary tree:", target)
         print("submission r04_sale_window was:", str(submission_mode).lower())
         print("test r04_sale_window is: false")
@@ -89,12 +121,10 @@ def run(package_tree: Path | None = None) -> int:
         print("r04_cattle_early:", str(bool(data["r04_cattle_early"])).lower())
         print("suites:", len(SUITES))
 
-        env = dict(os.environ)
-        env["PYTHONDONTWRITEBYTECODE"] = "1"
         completed = subprocess.run(
             [sys.executable, "-m", "unittest", "-v", *SUITES],
             cwd=target,
-            env=env,
+            env=_subprocess_env(),
             check=False,
         )
         if completed.returncode:
