@@ -8,6 +8,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
       - '.github/workflows/titan-v31-artifact-reachability.yml'
+      - '.github/workflows/titan-v31-h4-strawberry.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +25,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind exact package-custody parent and additive scope
+      - name: Bind exact custody, reachability, and H4 composition
         shell: bash
         run: |
           set -euo pipefail
@@ -34,18 +35,44 @@ jobs:
           git merge-base --is-ancestor "$PARENT" HEAD
           python - <<'PY'
           import subprocess
+
           parent = 'c580f7805cc7468094c0e880f4923133d45d70d0'
           actual = set(subprocess.check_output(
               ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
           ).splitlines())
           expected = {
               '.github/workflows/titan-v31-artifact-reachability.yml',
+              '.github/workflows/titan-v31-h4-strawberry.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/H4-STRAWBERRY-TOPUP.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/h4_tape_screen.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/test_v31_h4_strawberry.py',
           }
           if actual != expected:
-              raise SystemExit(f'unexpected reachability composition scope: {sorted(actual)}')
-          print('V31_REACHABILITY_SCOPE_OK', len(actual))
+              raise SystemExit(f'unexpected composed scope: {sorted(actual)}')
+
+          exact_blobs = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py': '8316523c060389237bf5faef5990a6c86ab732d9',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py': 'd470296569e8b05f2f8f7479f7ad3c5af280df38',
+              '.github/workflows/titan-v31-h4-strawberry.yml': '44a3f8ace007e53ebc824ff2cb30f4aaa7953122',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/H4-STRAWBERRY-TOPUP.md': '0798fc828cab046c1ace592cbca2e6af84f82e8b',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/candidate.py': '38c09c9cb413f417dc3957f4390ce8bcf9b0e360',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/h4_tape_screen.py': '446d3dd1b6016434134f6aa99f08ac20d15d8cb1',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py': 'ecad11eb195a82273f73b78ac7b319552a27cbcd',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/test_v31_h4_strawberry.py': '8ea684db83c4a2a2e67cb38a30f8c67b0f1ed742',
+          }
+          for path, want in exact_blobs.items():
+              got = subprocess.check_output(
+                  ['git', 'rev-parse', f'HEAD:{path}'], text=True
+              ).strip()
+              if got != want:
+                  raise SystemExit(f'blob drift for {path}: {got} != {want}')
+
+          print('V31_COMPOSED_SCOPE_OK', len(actual))
+          print('V31_REVIEWED_BLOBS_OK', len(exact_blobs))
           PY
 
       - name: Run focused reachability predecessors

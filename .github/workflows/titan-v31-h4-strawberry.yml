@@ -1,0 +1,98 @@
+name: titan-v31-h4-strawberry
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - '.github/workflows/titan-v31-h4-strawberry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h4-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Bind exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git status --short
+
+      - name: Run V3.1 source baseline
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -v -s overlay/checks -p 'test_v3*.py' |& tee /tmp/v31-h4-baseline.log
+          grep -F 'Ran 107 tests' /tmp/v31-h4-baseline.log
+          grep -F 'OK' /tmp/v31-h4-baseline.log
+
+      - name: Run H4 focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -v -s experiments/h4_strawberry -p 'test_v31_h4_strawberry.py' |& tee /tmp/v31-h4-tests.log
+          grep -F 'Ran 13 tests' /tmp/v31-h4-tests.log
+          grep -F 'OK' /tmp/v31-h4-tests.log
+
+      - name: Prove direct H4 evaluator entrypoint
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('experiments/h4_strawberry/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('h4_candidate_exact', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          import r04_h4_strawberry as h4
+          assert h4.STRAWBERRY_TOPUP is True
+          print('H4_DIRECT_ENTRYPOINT_OK')
+          PY
+
+      - name: Run H4 route-tape structural screen
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B experiments/h4_strawberry/h4_tape_screen.py | tee /tmp/v31-h4-screen.json
+          python - <<'PY'
+          import json
+          p = '/tmp/v31-h4-screen.json'
+          data = json.load(open(p, encoding='utf-8'))
+          assert data['schema'] == 'titan-v31-h4-strawberry-tape-screen/v1'
+          assert data['tapes'] == 13
+          assert data['opportunity_steps'] == 372
+          assert data['opportunity_steps_pre_h3_cutoff'] == 292
+          assert data['opportunity_steps_at_or_after_h3_cutoff'] == 80
+          print('H4_STRUCTURAL_OPPORTUNITIES', data['opportunity_steps'])
+          print('H4_PRE_H3_CUTOFF', data['opportunity_steps_pre_h3_cutoff'])
+          print('H4_POST_H3_CUTOFF', data['opportunity_steps_at_or_after_h3_cutoff'])
+          print('H4_AUTHORED_FUTURE_QTY', data['authored_future_qty'])
+          PY
+
+      - name: Verify deterministic V3 package integrity
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
