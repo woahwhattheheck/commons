@@ -422,6 +422,36 @@ def main():
     wool_violations = guard.scan_added(wool_lines)
     assert wool_violations == [], wool_violations
 
+    # Run 34652995232 / SHA 904d13ea: PLACE delivery overflow helper added
+    # "Exact actor cardinality is required" on one comment line. That collocates
+    # speaker/actor metadata with a requirement and trips admission-phrase.
+    # Worker-set wording keeps the same geometry contract without the lock
+    # collocation. The forbidden line must still fail.
+    place_delivery_path = (
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/"
+        "r04_place_delivery.py"
+    )
+    place_delivery_blocked = diff(
+        place_delivery_path,
+        [
+            "# allowed to redefine shed adjacency. Exact actor cardinality is required in",
+        ],
+    )
+    assert rules(place_delivery_blocked) == {"admission-phrase"}, rules(
+        place_delivery_blocked
+    )
+    place_delivery_allowed = diff(
+        place_delivery_path,
+        [
+            "# allowed to redefine shed adjacency. Worker-set cardinality is required in",
+            "# both directions: neither the public state nor the parent command may expose",
+            "# only a prefix of the actual worker set.",
+        ],
+    )
+    assert guard.scan_diff(place_delivery_allowed) == [], guard.scan_diff(
+        place_delivery_allowed
+    )
+
     # Run 34190268951 / SHA 285dedd: TRACE-9042 completeness tests mutate a
     # retained cell's recorded player-view field and then call a unittest
     # helper. Collocating `seat` with `reject` on one line is still an
