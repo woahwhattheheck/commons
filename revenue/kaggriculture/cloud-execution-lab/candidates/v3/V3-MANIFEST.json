@@ -12,8 +12,8 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "70c53945abed6185420d240340a7924b2560cbc3966e60c1171bb8df758bade7",
-    "bytes": 584449,
+    "sha256": "6a3fa164240b7bb2f9ffe6e07737ad2ec9217a667674305fc2897e56fefb5dba",
+    "bytes": 585151,
     "files": 150
   },
   "releases": [
@@ -390,7 +390,7 @@
     "checks/test_v3_r04_late_water.py": "c97206b9d5c4583dbfdc8476c77b204692f7049daa79705914f58ae0de3f7a91",
     "checks/test_v3_r04_no_late_advance.py": "dce65a47f2ba99fb0d22c43f5230998bb04664b2c6fe1943ba9ab0a0c00d72df",
     "checks/test_v3_r04_strawberry.py": "281aa36ff0d9f3dba33e3d41a7af7aeb74f70032ac215f67a3606a7c0f983e1c",
-    "checks/test_v4_s3_land.py": "c1cdcddd588e39e1c5b8304ed3ef270ff67f777f052e910d4a17af1765fa6010",
+    "checks/test_v4_s3_land.py": "ca8dec9321565fdba3a8f53c3d50d93784c202154491a64ca13d4107e93561f0",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "h3c_goose_eod_cap_rescue.py": "582949e1ba4b2f65aa898a362929013fd9b96f8865582884c181972ffcba5fab",
@@ -406,10 +406,10 @@
     "r04_h4_strawberry.py": "e7069b9a1c3909fa011d806708fc91cebc7ed36da29d78f77c9ae3789a882785",
     "r04_kill_late_water.py": "601170700110118b2d5692fb298ccc8fb3d3d3e3bab190c7113be3636f09b97d",
     "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
-    "r04_s3_land.py": "1b6164be21be4852c78f344864dbff7ff6bf135f639bfc1dff4e47888b6b0c37",
+    "r04_s3_land.py": "ff737b8a9fa698675d70836c477ff24b0b272a415c9e4aab68d9893430b8674b",
     "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "4c135c63046d14b54a2177aaf4a3a32700fbe0e119c3607b9b22c47ee3d3cda6"
+    "apply_v3.py": "63aea5e0436a3fec2509a5ae324d3f96dd3176c222be836967a1fe0f66fa2307"
   }
 }

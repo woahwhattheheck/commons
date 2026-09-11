@@ -37,14 +37,19 @@ def grid(owned=("NW", "NE", "SW")):
              for x in range(10)] for y in range(10)]
 
 
-def observation(step=DAY12, owned=("NW", "NE", "SW"), money=7000.0, shops=3, tiles=None, town=None):
+def observation(step=DAY12, owned=("NW", "NE", "SW"), money=7000.0, shops=3, tiles=None, town=None,
+                wool=200):
     farm = {"tiles": tiles if tiles is not None else grid(owned), "farmer": [4, 4], "hands": [],
             "money": money, "unlocked_quadrants": list(owned), "hires_today": 0}
+    prices = {product: 40 for product in r04.PRODUCTS}
+    prices["WOOL"] = wool
+    if town is None:
+        town = (["YARN_STORE"] + ["PET_CAFE"] * (shops - 1)) if shops else []
     return {"step": step, "day": step // 24, "hour": step % 24, "player": 0,
             "farms": [farm, copy.deepcopy(farm)],
             "private": {"inventories": [{}], "shed": {"WHEAT": 5}, "seeds": {}},
-            "market": {"prices": {product: 40 for product in r04.PRODUCTS}, "inventory": {}},
-            "town": {"unlocked_shops": list(town) if town is not None else ["PET_CAFE"] * shops}}
+            "market": {"prices": prices, "inventory": {}},
+            "town": {"unlocked_shops": list(town)}}
 
 
 def action(market=None):
@@ -55,10 +60,14 @@ def action(market=None):
 def reset():
     r04.S3_LAND = False
     s3.S3_LAND = False
-    for key in ("calls", "buy_requests", "skip_cash", "skip_full", "skip_v219"):
+    for key in ("calls", "buy_requests", "skip_cash", "skip_full", "skip_v219", "skip_demand"):
         s3.REPORT[key] = 0
     s3.REPORT["buy_step"] = None
     s3.DEFER_TO_V219 = True
+    s3.REQUIRE_WOOL_DEMAND = True
+    s3.MIN_YARN_STORES = 1
+    s3.MIN_WOOL_PRICE = 150
+    s3.LAST_STEP = 15 * 24 + 5
     r04.MIRROR_HORIZON = False
     r04.TERMINAL_FERTILIZER = False
     r04.GOOSE_RESCUE = False
@@ -133,12 +142,13 @@ class Purchase(unittest.TestCase):
         for step in (DAY12 + s3.BUY_HOURS, 13 * 24, 14 * 24, 11 * 24 + 2):
             a = action()
             self.assertIs(s3.apply_s3_land(observation(step=step), a), a, step)
-        for step in (DAY12, DAY12 + s3.BUY_HOURS - 1, 15 * 24, 18 * 24 + s3.V219_REQUEST_HOURS):
+        for step in (DAY12, DAY12 + s3.BUY_HOURS - 1, 15 * 24, 15 * 24 + s3.BUY_HOURS - 1):
             self.assertEqual(s3.apply_s3_land(observation(step=step), action())["market"][-1], ["BUY_LAND"], step)
 
     def test_not_after_the_last_step(self):
-        a = action()
-        self.assertIs(s3.apply_s3_land(observation(step=21 * 24), a), a)
+        for step in (18 * 24 + s3.V219_REQUEST_HOURS, 21 * 24):
+            a = action()
+            self.assertIs(s3.apply_s3_land(observation(step=step), a), a, step)
 
     def test_cash_must_cover_se_and_the_reserve(self):
         a = action()
@@ -179,6 +189,39 @@ class Purchase(unittest.TestCase):
         self.assertIs(s3.apply_s3_land(observation(), a), a)
 
 
+class WoolDemand(unittest.TestCase):
+    """SE is bought only where a herd can sell WOOL: a YARN_STORE and a dear price at the buy step."""
+
+    def setUp(self):
+        s3.S3_LAND = True
+
+    def tearDown(self):
+        reset()
+
+    def test_no_yarn_store_no_buy(self):
+        a = action()
+        self.assertIs(s3.apply_s3_land(observation(town=["PET_CAFE", "BAKERY", "SMOOTHIE_SHOP"]), a), a)
+        self.assertEqual(s3.REPORT["skip_demand"], 1)
+
+    def test_cheap_wool_no_buy(self):
+        a = action()
+        self.assertIs(s3.apply_s3_land(observation(wool=s3.MIN_WOOL_PRICE - 1), a), a)
+        self.assertEqual(s3.apply_s3_land(observation(wool=s3.MIN_WOOL_PRICE), action())["market"][-1],
+                         ["BUY_LAND"])
+
+    def test_more_stores_required(self):
+        s3.MIN_YARN_STORES = 2
+        a = action()
+        self.assertIs(s3.apply_s3_land(observation(), a), a)
+        two = ["YARN_STORE", "YARN_STORE", "PET_CAFE"]
+        self.assertEqual(s3.apply_s3_land(observation(town=two), action())["market"][-1], ["BUY_LAND"])
+
+    def test_demand_off(self):
+        s3.REQUIRE_WOOL_DEMAND = False
+        out = s3.apply_s3_land(observation(town=["PET_CAFE"] * 3, wool=1), action())
+        self.assertEqual(out["market"][-1], ["BUY_LAND"])
+
+
 class DeferToV219(unittest.TestCase):
     """V219's day-18 tomato program buys SE itself; S3 waits while it can still qualify."""
 
@@ -207,11 +250,13 @@ class DeferToV219(unittest.TestCase):
         self.assertIs(s3.apply_s3_land(observation(step=15 * 24, town=two), a), a)
 
     def test_day18_stays_out_of_v219_request_hours(self):
+        s3.LAST_STEP = 480
         for hour in range(s3.V219_REQUEST_HOURS):
             a = action()
             self.assertIs(s3.apply_s3_land(observation(step=18 * 24 + hour), a), a, hour)
 
     def test_day18_buys_after_v219_left_se_locked(self):
+        s3.LAST_STEP = 480
         town = ["PIZZA_SHOP", "FARMERS_MARKET", "PIZZA_SHOP", "BAKERY", "YARN_STORE", "PET_CAFE"]
         obs = observation(step=18 * 24 + s3.V219_REQUEST_HOURS, town=town)
         self.assertEqual(s3.apply_s3_land(obs, action())["market"][-1], ["BUY_LAND"])

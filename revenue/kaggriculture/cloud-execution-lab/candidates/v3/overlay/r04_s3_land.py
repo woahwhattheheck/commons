@@ -24,13 +24,21 @@ three PIZZA_SHOP / FARMERS_MARKET among the unlocked shops, then buys SE in hour
 DEFER_TO_V219 on, S3 waits while those shops could still reach three by day 18 (the shops already
 unlocked plus the shop nights left before it), stays out of hours 0-3 of day 18, and on day 18 buys
 only in hours 4-5 when V219 has not taken SE.
+
+Demand. Land that is only filled costs about $4,400 a game (the buy plus the hands that fill it,
+claude-b2 on the 88 live games, town preserved), so SE is bought only where the S2 herd can earn
+more: at least MIN_YARN_STORES YARN_STORE unlocked and a WOOL price of MIN_WOOL_PRICE at the buy step,
+and no later than day 15 (a sheep bought on day 15 still gets three wool cycles).
 """
 
 S3_LAND = False
 SE_PRICE = 4000
 RESERVE = 3000
 FIRST_STEP = 0
-LAST_STEP = 480          # day 20: later purchases leave too few days to work the land
+LAST_STEP = 15 * 24 + 5  # day 15, hour 5: later sheep get too few wool cycles to repay land and feed
+REQUIRE_WOOL_DEMAND = True
+MIN_YARN_STORES = 1
+MIN_WOOL_PRICE = 150
 BUY_HOURS = 6            # buy in hours 0-5 of an allowed day
 TURNS_PER_DAY = 24
 SHOP_UNLOCK_INTERVAL = 3
@@ -44,7 +52,7 @@ V219_SHOP_COUNT = 3
 _OWNED_BEFORE_SE = {"NW", "NE", "SW"}
 
 REPORT = {"calls": 0, "buy_requests": 0, "buy_step": None, "skip_cash": 0, "skip_full": 0,
-          "skip_v219": 0}
+          "skip_v219": 0, "skip_demand": 0}
 
 
 def _farm(observation):
@@ -73,6 +81,16 @@ def shop_draw_tonight(observation):
     except (KeyError, TypeError, ValueError):
         return True
     return (day + 1) % SHOP_UNLOCK_INTERVAL == 0 and len(shops) < MAX_SHOP_INSTANCES
+
+
+def wool_demand(observation):
+    """True when the town can absorb herd WOOL: enough YARN_STOREs and a dear enough WOOL price."""
+    try:
+        shops = list((observation.get("town") or {}).get("unlocked_shops") or [])
+        price = float(((observation.get("market") or {}).get("prices") or {})["WOOL"])
+    except (KeyError, TypeError, ValueError):
+        return False
+    return shops.count("YARN_STORE") >= MIN_YARN_STORES and price >= MIN_WOOL_PRICE
 
 
 def v219_possible(observation):
@@ -124,6 +142,9 @@ def apply_s3_land(observation, action):
         if day < V219_DAY and v219_possible(observation):
             REPORT["skip_v219"] += 1
             return action
+    if REQUIRE_WOOL_DEMAND and not wool_demand(observation):
+        REPORT["skip_demand"] += 1
+        return action
     if not isinstance(action, dict):
         return action
     market = action.get("market")
