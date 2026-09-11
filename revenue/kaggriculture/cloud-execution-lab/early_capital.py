@@ -17,6 +17,7 @@ settlement, S02 receding-horizon MPC, and fourth-quadrant land admission.
 from __future__ import annotations
 
 from copy import deepcopy
+import math
 
 PAYBACK_DAYS = {'GOOSE': 4, 'COW': 8, 'SHEEP': 6, 'LAND': 4}
 EARLY_DAY_LIMIT = 20
@@ -265,7 +266,181 @@ def _certified_land_targets(active, observation, mechanics):
         return None
 
 
-def _capital_admitted(order, index, mechanics, remaining, day, land_targets):
+def _operating_admitted(order, mechanics, plant_demand, seeds_held):
+    if not isinstance(order, list) or not order:
+        return False
+    op = order[0]
+    if op == 'HIRE':
+        return True
+    if op == 'BUY_SEED' and len(order) > 2 and order[1] in mechanics.CROPS:
+        crop = order[1]
+        need = max(
+            0,
+            int(plant_demand.get(crop, 0))
+            - int(seeds_held.get(crop, 0)),
+        )
+        return need > 0
+    return False
+
+
+def _public_row0_sell_quote(mechanics, observation, item):
+    """Return the exact public row-0 SELL quote, or None on any drift.
+
+    Once certified SELL rows are stably promoted, the first certified unit is
+    quoted before either player commits row 0. Later units can only rely on the
+    official price floor because rival rows may have changed public inventory.
+    """
+    try:
+        market = observation.get('market')
+        if not isinstance(market, dict):
+            return None
+        inventory = market.get('inventory')
+        if not isinstance(inventory, dict) or item not in inventory:
+            return None
+        amount = inventory[item]
+        if isinstance(amount, bool) or not isinstance(amount, int):
+            return None
+        quote_fn = getattr(mechanics, 'market_price', None)
+        if not callable(quote_fn):
+            return None
+        quote = quote_fn(item, amount, market.get('params'))
+        if isinstance(quote, bool) or not isinstance(quote, (int, float)):
+            return None
+        if not math.isfinite(float(quote)):
+            return None
+        floor = getattr(mechanics, 'PRICE_FLOOR', None)
+        if isinstance(floor, bool) or not isinstance(floor, (int, float)):
+            return None
+        if quote < floor:
+            return None
+        prices = market.get('prices')
+        if isinstance(prices, dict) and item in prices:
+            published = prices[item]
+            if (isinstance(published, bool)
+                    or not isinstance(published, (int, float))
+                    or not math.isfinite(float(published))
+                    or published != quote):
+                return None
+        return float(quote)
+    except (AttributeError, KeyError, OverflowError, TypeError, ValueError):
+        return None
+
+
+def _guaranteed_funding_proceeds(
+        active, funding, funding_units, mechanics, observation):
+    """Lower-bound proceeds after the stable FUNDING partition.
+
+    The first promoted SELL unit has an exact public row-0 quote. Every
+    additional certified unit is bounded only by the official positive price
+    floor, which remains valid under all rival market interleavings.
+    """
+    try:
+        floor = getattr(mechanics, 'PRICE_FLOOR', None)
+        if (isinstance(floor, bool)
+                or not isinstance(floor, (int, float))
+                or not math.isfinite(float(floor))
+                or floor <= 0):
+            return None
+        total = 0.0
+        detail = []
+        first_unit = True
+        for index in sorted(funding):
+            units = funding_units.get(index)
+            order = active[index]
+            if (isinstance(units, bool)
+                    or not isinstance(units, int)
+                    or units <= 0
+                    or not isinstance(order, list)
+                    or len(order) < 3
+                    or order[0] != 'SELL'):
+                return None
+            item = order[1]
+            exact_units = 0
+            proceeds = float(floor) * units
+            if first_unit:
+                quote = _public_row0_sell_quote(mechanics, observation, item)
+                if quote is None:
+                    return None
+                proceeds += quote - float(floor)
+                exact_units = 1
+                first_unit = False
+            total += proceeds
+            detail.append({
+                'index': index,
+                'item': item,
+                'units': units,
+                'exact_row0_units': exact_units,
+                'proceeds_lower_bound': proceeds,
+            })
+        return total, detail
+    except (IndexError, KeyError, OverflowError, TypeError, ValueError):
+        return None
+
+
+def _operating_cost_upper_bound(
+        active, operating_rows, mechanics, observation, configuration):
+    """Return the full exact cost of every row promoted ahead of capital."""
+    try:
+        player = observation.get('player', 0)
+        if isinstance(player, bool) or not isinstance(player, int):
+            return None
+        farms = observation.get('farms')
+        if (not isinstance(farms, (list, tuple))
+                or not (0 <= player < len(farms))):
+            return None
+        farm = farms[player]
+        if not isinstance(farm, dict):
+            return None
+        hires_today = farm.get('hires_today', 0)
+        if (isinstance(hires_today, bool)
+                or not isinstance(hires_today, int)
+                or hires_today < 0):
+            return None
+        hire_mult = configuration.get(
+            'farmHandCostMult',
+            getattr(mechanics, 'FARM_HAND_COST_MULT', 1),
+        )
+        if (isinstance(hire_mult, bool)
+                or not isinstance(hire_mult, int)
+                or hire_mult < 0):
+            return None
+        hire_cost = getattr(mechanics, '_hire_cost', None)
+        if not callable(hire_cost):
+            return None
+
+        total = 0.0
+        detail = []
+        for index in sorted(operating_rows):
+            order = active[index]
+            op = order[0]
+            if op == 'HIRE':
+                cost = hire_cost(hires_today, hire_mult)
+                hires_today += 1
+            elif op == 'BUY_SEED':
+                quantity = _qty(order)
+                if quantity <= 0:
+                    return None
+                seed_cost = mechanics.CROPS[order[1]]['seed']
+                cost = seed_cost * quantity
+            else:
+                return None
+            if (isinstance(cost, bool)
+                    or not isinstance(cost, (int, float))
+                    or not math.isfinite(float(cost))
+                    or cost < 0):
+                return None
+            total += float(cost)
+            detail.append({
+                'index': index,
+                'op': op,
+                'cost_upper_bound': float(cost),
+            })
+        return total, detail
+    except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
+        return None
+
+
+def _capital_window_admitted(order, index, mechanics, remaining, day, land_targets):
     if not isinstance(order, list) or not order:
         return False
     if day > EARLY_DAY_LIMIT:
@@ -283,21 +458,218 @@ def _capital_admitted(order, index, mechanics, remaining, day, land_targets):
     return False
 
 
+def _certified_capital_rows(
+        active, mechanics, observation, configuration, post_private,
+        funding, funding_units, operating_rows, land_targets, remaining, day):
+    """Prove the promoted CAPITAL partition can commit in full.
+
+    This is intentionally stronger than "the target exists". It carries a
+    conservative cash lower bound through guaranteed SELL proceeds, every
+    promoted OPERATING cost, and each capital row in stable source order. LAND
+    uses the exact next LAND_PRICES slot. BUY_ANIMAL requires the entire parser-
+    coerced quantity to fit both the cash and post-funding shed-capacity lower
+    bounds. If any live capital-like row cannot be proved, the whole capital
+    transform is disabled rather than allowing a later row to leapfrog an
+    unresolved resource consumer.
+    """
+    try:
+        player = observation.get('player', 0)
+        if isinstance(player, bool) or not isinstance(player, int):
+            return None
+        farms = observation.get('farms')
+        if (not isinstance(farms, (list, tuple))
+                or not (0 <= player < len(farms))):
+            return None
+        farm = farms[player]
+        if not isinstance(farm, dict):
+            return None
+        money = farm.get('money')
+        if (isinstance(money, bool)
+                or not isinstance(money, (int, float))
+                or not math.isfinite(float(money))
+                or money < 0):
+            return None
+
+        proceeds_info = _guaranteed_funding_proceeds(
+            active, funding, funding_units, mechanics, observation)
+        if proceeds_info is None:
+            return None
+        funding_proceeds, funding_detail = proceeds_info
+
+        operating_info = _operating_cost_upper_bound(
+            active, operating_rows, mechanics, observation, configuration)
+        if operating_info is None:
+            return None
+        operating_cost, operating_detail = operating_info
+
+        cash = float(money) + funding_proceeds - operating_cost
+        if not math.isfinite(cash):
+            return None
+
+        shed = post_private.get('shed')
+        if not isinstance(shed, dict):
+            return None
+        occupancy = 0
+        for quantity in shed.values():
+            if (isinstance(quantity, bool)
+                    or not isinstance(quantity, int)
+                    or quantity < 0):
+                return None
+            occupancy += quantity
+        sold_units = sum(funding_units.values())
+        occupancy -= sold_units
+        if occupancy < 0:
+            return None
+        capacity = configuration.get('shedCapacity', 100)
+        if (isinstance(capacity, bool)
+                or not isinstance(capacity, int)
+                or capacity < 0
+                or occupancy > capacity):
+            return None
+
+        unlocked = farm.get('unlocked_quadrants')
+        land_prices = getattr(mechanics, 'LAND_PRICES', None)
+        if not isinstance(unlocked, list) or not isinstance(land_prices, (list, tuple)):
+            return None
+        land_slot = len(unlocked) - 1
+        if land_slot < 0:
+            return None
+
+        rows = set()
+        allocations = []
+        for index, order in enumerate(active):
+            if not isinstance(order, list) or not order:
+                continue
+            op = order[0]
+            if op not in ('BUY_LAND', 'BUY_ANIMAL'):
+                continue
+
+            if op == 'BUY_LAND' and (land_targets is not None
+                                     and index not in land_targets):
+                # A structurally exhausted duplicate is proven to be a no-op
+                # once all earlier certified targets execute.
+                continue
+            if op == 'BUY_ANIMAL' and _qty(order) <= 0:
+                # The pinned parser rejects non-positive/coercion-failed rows.
+                continue
+
+            if not _capital_window_admitted(
+                    order, index, mechanics, remaining, day, land_targets):
+                return {
+                    'rows': set(),
+                    'allocations': [],
+                    'funding_proceeds_lower_bound': funding_proceeds,
+                    'funding_proceeds': funding_detail,
+                    'operating_cost_upper_bound': operating_cost,
+                    'operating_costs': operating_detail,
+                    'cash_after_operating_lower_bound':
+                        float(money) + funding_proceeds - operating_cost,
+                    'reason': 'unproved_capital_sequence',
+                }
+
+            if op == 'BUY_LAND':
+                if land_slot >= len(land_prices):
+                    return None
+                cost = land_prices[land_slot]
+                if (isinstance(cost, bool)
+                        or not isinstance(cost, (int, float))
+                        or not math.isfinite(float(cost))
+                        or cost < 0):
+                    return None
+                if cash < cost:
+                    return {
+                        'rows': set(),
+                        'allocations': [],
+                        'funding_proceeds_lower_bound': funding_proceeds,
+                        'funding_proceeds': funding_detail,
+                        'operating_cost_upper_bound': operating_cost,
+                        'operating_costs': operating_detail,
+                        'cash_after_operating_lower_bound':
+                            float(money) + funding_proceeds - operating_cost,
+                        'reason': 'unproved_capital_sequence',
+                    }
+                cash -= float(cost)
+                land_slot += 1
+                rows.add(index)
+                allocations.append({
+                    'index': index,
+                    'op': op,
+                    'units': 1,
+                    'cost_lower_bound': float(cost),
+                    'cash_after_lower_bound': cash,
+                })
+                continue
+
+            item = order[1]
+            quantity = _qty(order)
+            animal = mechanics.ANIMALS[item]
+            unit_cost = animal['cost']
+            if (isinstance(unit_cost, bool)
+                    or not isinstance(unit_cost, (int, float))
+                    or not math.isfinite(float(unit_cost))
+                    or unit_cost < 0):
+                return None
+            full_cost = float(unit_cost) * quantity
+            room = capacity - occupancy
+            if room < quantity or cash < full_cost:
+                return {
+                    'rows': set(),
+                    'allocations': [],
+                    'funding_proceeds_lower_bound': funding_proceeds,
+                    'funding_proceeds': funding_detail,
+                    'operating_cost_upper_bound': operating_cost,
+                    'operating_costs': operating_detail,
+                    'cash_after_operating_lower_bound':
+                        float(money) + funding_proceeds - operating_cost,
+                    'reason': 'unproved_capital_sequence',
+                }
+            cash -= full_cost
+            occupancy += quantity
+            rows.add(index)
+            allocations.append({
+                'index': index,
+                'op': op,
+                'item': item,
+                'units': quantity,
+                'cost_lower_bound': full_cost,
+                'cash_after_lower_bound': cash,
+                'shed_occupancy_after_lower_bound': occupancy,
+            })
+
+        return {
+            'rows': rows,
+            'allocations': allocations,
+            'funding_proceeds_lower_bound': funding_proceeds,
+            'funding_proceeds': funding_detail,
+            'operating_cost_upper_bound': operating_cost,
+            'operating_costs': operating_detail,
+            'cash_after_operating_lower_bound':
+                float(money) + funding_proceeds - operating_cost,
+            'reason': 'certified',
+        }
+    except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
+        return None
+
+
+def _capital_admitted(
+        order, index, mechanics, remaining, day, land_targets, capital_rows):
+    if capital_rows is None or index not in capital_rows:
+        return False
+    return _capital_window_admitted(
+        order, index, mechanics, remaining, day, land_targets)
+
+
 def _rank(order, index, funding, mechanics, remaining, day, plant_demand,
-          seeds_held, land_targets):
+          seeds_held, land_targets, capital_rows):
     if not order:
         return REST
     op = order[0]
     if op == 'SELL':
         return FUNDING if index in funding else REST
-    if op == 'HIRE':
+    if _operating_admitted(order, mechanics, plant_demand, seeds_held):
         return OPERATING
-    if op == 'BUY_SEED' and len(order) > 2 and order[1] in mechanics.CROPS:
-        crop = order[1]
-        need = max(0, int(plant_demand.get(crop, 0)) - int(seeds_held.get(crop, 0)))
-        return OPERATING if need > 0 else REST
     if _capital_admitted(
-            order, index, mechanics, remaining, day, land_targets):
+            order, index, mechanics, remaining, day, land_targets, capital_rows):
         return CAPITAL
     return REST
 
@@ -309,7 +681,7 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     multiset of active orders, and every capped suffix row remain unchanged.
     """
     report = {'changed': False, 'reason': 'init', 'moved': 0, 'reserved': 0,
-              'reduced': [], 'revision': 'v5-atomic-land-targets'}
+              'reduced': [], 'revision': 'v6-commit-real-capital'}
     if not isinstance(selected, dict):
         report['reason'] = 'no_action'
         return selected, report
@@ -378,9 +750,35 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
         # The current unit stage already ran in post_private; only future route
         # PLANT actions may still consume the post-unit seed balance.
         plants = _plant_demand(None, route, now, horizon)
+        operating_rows = {
+            index
+            for index, order in enumerate(active)
+            if _operating_admitted(order, mechanics, plants, seeds_held)
+        }
+        certificate = _certified_capital_rows(
+            active, mechanics, observation, configuration, post_private,
+            funding, funding_units, operating_rows, land_targets, remaining, day)
+        if certificate is None:
+            report['reason'] = 'capital_certificate_failed'
+            return selected, report
+        capital_rows = certificate['rows']
+        report.update(
+            certified_operating_rows=sorted(operating_rows),
+            certified_capital_rows=sorted(capital_rows),
+            capital_allocations=certificate['allocations'],
+            guaranteed_funding_proceeds=
+                certificate['funding_proceeds_lower_bound'],
+            guaranteed_funding_detail=certificate['funding_proceeds'],
+            operating_cost_upper_bound=
+                certificate['operating_cost_upper_bound'],
+            operating_cost_detail=certificate['operating_costs'],
+            cash_after_operating_lower_bound=
+                certificate['cash_after_operating_lower_bound'],
+            capital_certificate_reason=certificate['reason'],
+        )
         ranks = [
             _rank(order, index, funding, mechanics, remaining, day, plants,
-                  seeds_held, land_targets)
+                  seeds_held, land_targets, capital_rows)
             for index, order in enumerate(active)
         ]
     except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):

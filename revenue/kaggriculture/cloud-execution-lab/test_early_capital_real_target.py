@@ -23,7 +23,7 @@ from test_early_capital_executable_prefix import (
 
 
 EARLY_CAPITAL_PATH = Path('early_capital.py')
-EARLY_CAPITAL_BLOB = '21c4ac15583e45f6f55ef615d95fc3db93637194'
+EARLY_CAPITAL_BLOB = 'c87f1d1c9d7b416c5316837634f7e721c85811fa'
 
 
 def git_blob(data):
@@ -173,7 +173,9 @@ class EarlyCapitalRealTargetContracts(unittest.TestCase):
 
     def test_one_remaining_unlock_preserves_existing_ordering(self):
         source = action(self.market)
-        observation = land_obs(['NW', 'NE', 'SW'])
+        # Final SE unlock costs $4,000; one exact row-0 MELON sale supplies
+        # the remaining $250 from a $3,750 starting balance.
+        observation = land_obs(['NW', 'NE', 'SW'], money=3750)
 
         out, report = order_early_capital(
             m, observation, CFG, source, None)
@@ -181,6 +183,7 @@ class EarlyCapitalRealTargetContracts(unittest.TestCase):
         self.assertIsNot(out, source)
         self.assertTrue(report['changed'])
         self.assertEqual(report['certified_land_rows'], [1])
+        self.assertEqual(report['certified_capital_rows'], [1])
         self.assertEqual(out['market'], [
             ['SELL', 'MELON', 1],
             ['BUY_LAND'],
@@ -195,13 +198,14 @@ class EarlyCapitalRealTargetContracts(unittest.TestCase):
             ['BUY_LAND'],
             ['SELL', 'MELON', 1],
         ])
-        observation = land_obs(['NW', 'NE', 'SW'])
+        observation = land_obs(['NW', 'NE', 'SW'], money=3750)
 
         out, report = order_early_capital(
             m, observation, configuration, source, None)
 
         self.assertTrue(report['changed'])
         self.assertEqual(report['certified_land_rows'], [1])
+        self.assertEqual(report['certified_capital_rows'], [1])
         self.assertEqual(out['market'], [
             ['SELL', 'MELON', 1],
             ['BUY_LAND'],
