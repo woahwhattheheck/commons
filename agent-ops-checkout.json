@@ -1,6 +1,6 @@
 {
   "schema_version": "agent-ops-checkout/v1",
-  "measured_at": "2026-08-28T16:10:00Z",
+  "measured_at": "2026-09-10T23:05:24.713000+00:00",
   "provider": {
     "name": "stripe",
     "livemode": true,
@@ -14,9 +14,12 @@
       "price_usd": "49.00",
       "interval": "month",
       "link": {
-        "status": "NOT_MINTED",
-        "active": false,
-        "url": null
+        "status": "ACTIVE",
+        "active": true,
+        "url": "https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u",
+        "payment_link_id": "plink_1UEGXbATH4EDE7XDMPcqDIPA",
+        "price_id": "price_1UEGXNATH4EDE7XDaZemGITA",
+        "product_id": "prod_VEk17FIS6R4M0B"
       },
       "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Operator",
       "fallback_label": "Join operator pilot"
@@ -26,9 +29,12 @@
       "price_usd": "2500.00",
       "interval": "one_time",
       "link": {
-        "status": "NOT_MINTED",
-        "active": false,
-        "url": null
+        "status": "ACTIVE",
+        "active": true,
+        "url": "https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v",
+        "payment_link_id": "plink_1UEGXwATH4EDE7XDnnuCSG66",
+        "price_id": "price_1UEGXjATH4EDE7XDkreX4XmO",
+        "product_id": "prod_VEk1jKnLGzav3T"
       },
       "fallback_url": "mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Foundry",
       "fallback_label": "Book integration"
@@ -42,6 +48,8 @@
   "source_refs": [
     "ground/STRIPE.md",
     "ground/CHECKOUT_CAPABILITY.md",
-    "land/stripe-payment-links-20260826.md"
+    "land/stripe-payment-links-20260826.md",
+    "revenue/checkout_capability/offer-shelf-links-20260910.json",
+    "revenue/agent_ops/contract.json"
   ]
 }
