@@ -1,4 +1,4 @@
-name: TITAN V3.1 current-recovery L3 fail-closed staging r3
+name: TITAN V3.1 current-recovery L3 fail-closed staging r4
 
 on:
   pull_request:
@@ -42,6 +42,7 @@ jobs:
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
+          test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
           test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
           test "$(git rev-parse "$BASE:$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -56,18 +57,18 @@ jobs:
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz")" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
           test "$(git hash-object "$PATCH")" = 'bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c'
           test "$(git hash-object "$DONOR_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
-          git diff --name-only "$BASE"..HEAD > /tmp/l3-r3-staging-paths.txt
+          git diff --name-only "$BASE"..HEAD > /tmp/l3-r4-staging-paths.txt
           python3 - <<'PY'
           from pathlib import Path
-          actual = set(Path('/tmp/l3-r3-staging-paths.txt').read_text().splitlines())
+          actual = set(Path('/tmp/l3-r4-staging-paths.txt').read_text().splitlines())
           expected = {
               '.github/workflows/titan-v31-8e3-l3-failclosed-bootstrap-r2.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/test_failclosed.py',
           }
           if actual != expected:
-              raise SystemExit(f'L3 r3 staging scope drift: {sorted(actual)!r}')
-          print('L3_R3_STAGING_SCOPE_OK', len(actual))
+              raise SystemExit(f'L3 r4 staging scope drift: {sorted(actual)!r}')
+          print('L3_R4_STAGING_SCOPE_OK', len(actual))
           PY
           git diff --check "$BASE"..HEAD
 
@@ -98,32 +99,32 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r3-source-tests.log
-          grep -F 'Ran 17 tests' /tmp/l3-r3-source-tests.log
-          grep -F 'OK' /tmp/l3-r3-source-tests.log
+          python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r4-source-tests.log
+          grep -F 'Ran 17 tests' /tmp/l3-r4-source-tests.log
+          grep -F 'OK' /tmp/l3-r4-source-tests.log
 
       - name: Rebuild through immutable optimizer-safe builder and preserve shipped stack
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          python -B build_v3.py | tee /tmp/l3-r3-build.log
-          python -B build_v3.py --check | tee /tmp/l3-r3-check.log
-          PYTHONOPTIMIZE=1 python -B build_v3.py --check | tee /tmp/l3-r3-opt-check.log
-          grep -F 'V3 CHECK OK' /tmp/l3-r3-check.log
-          grep -F 'V3 CHECK OK' /tmp/l3-r3-opt-check.log
-          rm -rf /tmp/l3-r3-tree
-          python -B build_v3.py --tree /tmp/l3-r3-tree
+          python -B build_v3.py | tee /tmp/l3-r4-build.log
+          python -B build_v3.py --check | tee /tmp/l3-r4-check.log
+          PYTHONOPTIMIZE=1 python -B build_v3.py --check | tee /tmp/l3-r4-opt-check.log
+          grep -F 'V3 CHECK OK' /tmp/l3-r4-check.log
+          grep -F 'V3 CHECK OK' /tmp/l3-r4-opt-check.log
+          rm -rf /tmp/l3-r4-tree
+          python -B build_v3.py --tree /tmp/l3-r4-tree
           (
-            cd /tmp/l3-r3-tree
-            python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r3-tree-tests.log
+            cd /tmp/l3-r4-tree
+            python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r4-tree-tests.log
           )
-          grep -F 'Ran 17 tests' /tmp/l3-r3-tree-tests.log
-          grep -F 'OK' /tmp/l3-r3-tree-tests.log
+          grep -F 'Ran 17 tests' /tmp/l3-r4-tree-tests.log
+          grep -F 'OK' /tmp/l3-r4-tree-tests.log
           python - <<'PY'
           import json
           from pathlib import Path
-          cfg = json.loads(Path('/tmp/l3-r3-tree/TITAN-CONFIG.json').read_text())
+          cfg = json.loads(Path('/tmp/l3-r4-tree/TITAN-CONFIG.json').read_text())
           expected = {
               'r04_strawberry_topup': True,
               'r04_no_late_sale_advance': True,
@@ -138,23 +139,193 @@ jobs:
               actual = cfg[key]
               if type(actual) is not type(value) or actual != value:
                   raise SystemExit((key, actual, value))
-          print('L3_R3_CONFIG_PRESERVED_B5_JIT_OK')
+          print('L3_R4_CONFIG_PRESERVED_B5_JIT_OK')
           PY
           rm -rf dist
 
-      - name: Bind exact generated four-path production postimage
+      - name: Generate permanent read-only exact-head gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          GATE='.github/workflows/titan-v31-current-l3-failclosed-package.yml'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          cat > "$GATE" <<'YAML'
+          name: TITAN V3.1 current L3 fail-closed package gate
+
+          on:
+            pull_request:
+              branches:
+                - astra/v31-a612-restore-5f6-canonical-archive-20260911
+                - titan/v3.1-20260911
+              paths:
+                - '.github/workflows/titan-v31-current-l3-failclosed-package.yml'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            exact-source-package-custody:
+              runs-on: ubuntu-latest
+              timeout-minutes: 20
+              steps:
+                - name: Checkout exact event head read-only
+                  uses: actions/checkout@v4
+                  with:
+                    ref: __EVENT_HEAD_EXPR__
+                    fetch-depth: 0
+                    persist-credentials: false
+
+                - name: Bind exact event base, live canonical, final scope, and shipped bytes
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    EXPECTED_HEAD='__EVENT_HEAD_EXPR__'
+                    EXPECTED_BASE='__EVENT_BASE_EXPR__'
+                    BASE_REF='__EVENT_BASE_REF_EXPR__'
+                    CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
+                    V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+                    test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+                    test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+                    git fetch --no-tags origin "$BASE_REF"
+                    test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_BASE"
+                    test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
+                    test "$(git merge-base "$CANONICAL" "$EXPECTED_BASE")" = "$CANONICAL"
+                    test "$(git hash-object "$V3/FILES.json")" = '__FILES_BLOB__'
+                    test "$(git hash-object "$V3/V3-MANIFEST.json")" = '__MANIFEST_BLOB__'
+                    test "$(git hash-object "$V3/overlay/r04_full_router.py")" = '__ROUTER_BLOB__'
+                    test "$(git hash-object "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+                    test "$(git hash-object "$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
+                    test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+                    test "$(git hash-object "$V3/tooling_tests/test_build_v3_fail_closed.py")" = '3db16ff0eaace1c6b718e303607a6323a46666ea'
+                    test "$(git hash-object "$V3/overlay/r04_h4_strawberry.py")" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+                    test "$(git hash-object "$V3/overlay/r04_no_late_sale_advance.py")" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+                    test "$(git hash-object "$V3/overlay/b5_fertilize.py")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+                    test "$(git hash-object "$V3/overlay/jit_pass_fertilize.py")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
+                    git diff --name-only "$EXPECTED_BASE"..HEAD > /tmp/l3-r4-final-paths.txt
+                    python3 - <<'PY'
+                    from pathlib import Path
+                    actual = set(Path('/tmp/l3-r4-final-paths.txt').read_text().splitlines())
+                    expected = {
+                        '.github/workflows/titan-v31-current-l3-failclosed-package.yml',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+                    }
+                    if actual != expected:
+                        raise SystemExit(f'L3 r4 final scope drift: {sorted(actual)!r}')
+                    print('L3_R4_FINAL_SCOPE_OK', len(actual))
+                    PY
+                    git diff --check "$EXPECTED_BASE"..HEAD
+
+                - name: Run exact contracts and deterministic package checks
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r4-final-tests.log
+                    grep -F 'Ran 17 tests' /tmp/l3-r4-final-tests.log
+                    grep -F 'OK' /tmp/l3-r4-final-tests.log
+                    python -B build_v3.py --check | tee /tmp/l3-r4-final-check.log
+                    PYTHONOPTIMIZE=1 python -B build_v3.py --check | tee /tmp/l3-r4-final-opt-check.log
+                    grep -F 'V3 CHECK OK' /tmp/l3-r4-final-check.log
+                    grep -F 'V3 CHECK OK' /tmp/l3-r4-final-opt-check.log
+                    rm -rf /tmp/l3-r4-final-tree
+                    python -B build_v3.py --tree /tmp/l3-r4-final-tree
+                    (
+                      cd /tmp/l3-r4-final-tree
+                      python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r4-final-tree-tests.log
+                    )
+                    grep -F 'Ran 17 tests' /tmp/l3-r4-final-tree-tests.log
+                    grep -F 'OK' /tmp/l3-r4-final-tree-tests.log
+                    python3 - <<'PY'
+                    import json
+                    from pathlib import Path
+                    cfg = json.loads(Path('/tmp/l3-r4-final-tree/TITAN-CONFIG.json').read_text())
+                    expected = {
+                        'r04_strawberry_topup': True,
+                        'r04_no_late_sale_advance': True,
+                        'r04_no_late_sale_advance_step': 648,
+                        'r04_sale_fertilizer': True,
+                        'r04_cattle_early': True,
+                        'r04_sale_horizon': 8,
+                        'r04_b5_carrot_fertilizer': True,
+                        'r04_b5_jit_fertilize': True,
+                    }
+                    for key, value in expected.items():
+                        actual = cfg[key]
+                        if type(actual) is not type(value) or actual != value:
+                            raise SystemExit((key, actual, value))
+                    print('L3_R4_FINAL_CONFIG_PRESERVED_B5_JIT_OK')
+                    PY
+
+                - name: Prove checkout stayed clean
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    test -z "$(git status --porcelain)"
+          YAML
+          ROUTER_BLOB="$(git hash-object "$V3/overlay/r04_full_router.py")"
+          FILES_BLOB="$(git hash-object "$V3/FILES.json")"
+          MANIFEST_BLOB="$(git hash-object "$V3/V3-MANIFEST.json")"
+          ROUTER_BLOB="$ROUTER_BLOB" FILES_BLOB="$FILES_BLOB" MANIFEST_BLOB="$MANIFEST_BLOB" python3 - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path('.github/workflows/titan-v31-current-l3-failclosed-package.yml')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              '__EVENT_HEAD_EXPR__': '$' + '{{ github.event.pull_request.head.sha || github.sha }}',
+              '__EVENT_BASE_EXPR__': '$' + '{{ github.event.pull_request.base.sha }}',
+              '__EVENT_BASE_REF_EXPR__': '$' + '{{ github.event.pull_request.base.ref }}',
+              '__FILES_BLOB__': os.environ['FILES_BLOB'],
+              '__MANIFEST_BLOB__': os.environ['MANIFEST_BLOB'],
+              '__ROUTER_BLOB__': os.environ['ROUTER_BLOB'],
+          }
+          for key in ('FILES_BLOB', 'MANIFEST_BLOB', 'ROUTER_BLOB'):
+              value = os.environ[key]
+              if len(value) != 40 or any(c not in '0123456789abcdef' for c in value):
+                  raise SystemExit(f'invalid blob {key}={value!r}')
+          expected_counts = {
+              '__EVENT_HEAD_EXPR__': 2,
+              '__EVENT_BASE_EXPR__': 1,
+              '__EVENT_BASE_REF_EXPR__': 1,
+              '__FILES_BLOB__': 1,
+              '__MANIFEST_BLOB__': 1,
+              '__ROUTER_BLOB__': 1,
+          }
+          for token, count in expected_counts.items():
+              if text.count(token) != count:
+                  raise SystemExit(f'unexpected template token count {token}: {text.count(token)} != {count}')
+          for token, value in replacements.items():
+              text = text.replace(token, value)
+          if any(token in text for token in replacements):
+              raise SystemExit('unresolved permanent-gate template token')
+          path.write_text(text, encoding='utf-8')
+          print('L3_R4_PERMANENT_GATE_TEMPLATE_OK', os.environ['ROUTER_BLOB'], os.environ['FILES_BLOB'], os.environ['MANIFEST_BLOB'])
+          PY
+          git add -N "$GATE"
+
+      - name: Bind exact generated five-path production postimage
         shell: bash
         run: |
           set -euo pipefail
           BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
+          GATE='.github/workflows/titan-v31-current-l3-failclosed-package.yml'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
-          git diff --name-only "$BASE" > /tmp/l3-r3-working-paths.txt
+          git diff --name-only "$BASE" > /tmp/l3-r4-working-paths.txt
           python3 - <<'PY'
           from pathlib import Path
-          actual = set(Path('/tmp/l3-r3-working-paths.txt').read_text().splitlines())
+          actual = set(Path('/tmp/l3-r4-working-paths.txt').read_text().splitlines())
           expected = {
               '.github/workflows/titan-v31-8e3-l3-failclosed-bootstrap-r2.yml',
+              '.github/workflows/titan-v31-current-l3-failclosed-package.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/test_failclosed.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
@@ -163,32 +334,50 @@ jobs:
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
           }
           if actual != expected:
-              raise SystemExit(f'L3 r3 generated scope drift: {sorted(actual)!r}')
-          print('L3_R3_GENERATED_SCOPE_OK', len(actual))
+              raise SystemExit(f'L3 r4 generated scope drift: {sorted(actual)!r}')
+          print('L3_R4_GENERATED_SCOPE_OK', len(actual))
           PY
           git diff --check "$BASE"
-          rm -rf /tmp/l3-r3-postimage
-          mkdir -p /tmp/l3-r3-postimage/overlay/checks
-          cp "$V3/FILES.json" /tmp/l3-r3-postimage/FILES.json
-          cp "$V3/V3-MANIFEST.json" /tmp/l3-r3-postimage/V3-MANIFEST.json
-          cp "$V3/overlay/r04_full_router.py" /tmp/l3-r3-postimage/overlay/r04_full_router.py
-          cp "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py" /tmp/l3-r3-postimage/overlay/checks/test_v3_r04_l3_rival_gate.py
+          POST='/tmp/l3-r4-postimage'
+          rm -rf "$POST"
+          mkdir -p "$POST/.github/workflows" "$POST/$V3/overlay/checks"
+          cp "$GATE" "$POST/$GATE"
+          cp "$V3/FILES.json" "$POST/$V3/FILES.json"
+          cp "$V3/V3-MANIFEST.json" "$POST/$V3/V3-MANIFEST.json"
+          cp "$V3/overlay/r04_full_router.py" "$POST/$V3/overlay/r04_full_router.py"
+          cp "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py" "$POST/$V3/overlay/checks/test_v3_r04_l3_rival_gate.py"
+          cat > "$POST/TARGET_PATHS.txt" <<'EOF'
+          .github/workflows/titan-v31-current-l3-failclosed-package.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py
+          EOF
           {
             echo "base=$BASE"
             echo "canonical=$CANONICAL"
             echo "staging_head=${{ github.event.pull_request.head.sha }}"
-            echo "router_blob=$(git hash-object "$V3/overlay/r04_full_router.py")"
-            echo "test_blob=$(git hash-object "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py")"
+            echo "gate_blob=$(git hash-object "$GATE")"
             echo "files_blob=$(git hash-object "$V3/FILES.json")"
             echo "manifest_blob=$(git hash-object "$V3/V3-MANIFEST.json")"
+            echo "router_blob=$(git hash-object "$V3/overlay/r04_full_router.py")"
+            echo "test_blob=$(git hash-object "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py")"
             echo "repair_blob=$(git hash-object "$V3/experiments/l3_failclosed_consume_8e3/repair.patch")"
-          } > /tmp/l3-r3-postimage/POSTIMAGE.txt
+          } > "$POST/POSTIMAGE.txt"
           git diff --binary "$BASE" -- \
+            "$GATE" \
             "$V3/FILES.json" \
             "$V3/V3-MANIFEST.json" \
             "$V3/overlay/r04_full_router.py" \
             "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py" \
-            > /tmp/l3-r3-postimage/production.patch
+            > "$POST/production.patch"
+          test -s "$POST/production.patch"
+          test "$(wc -l < "$POST/TARGET_PATHS.txt" | tr -d ' ')" = '5'
+          grep -F 'gate_blob=' "$POST/POSTIMAGE.txt"
+          grep -F 'files_blob=' "$POST/POSTIMAGE.txt"
+          grep -F 'manifest_blob=' "$POST/POSTIMAGE.txt"
+          grep -F 'router_blob=' "$POST/POSTIMAGE.txt"
+          grep -F 'test_blob=b572bb0adad3b8ca53100d4d44b35c5a374e8302' "$POST/POSTIMAGE.txt"
 
       - name: Recheck live roots before publishing handoff
         shell: bash
@@ -200,11 +389,13 @@ jobs:
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
+          test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
 
-      - name: Upload exact L3 production postimage handoff
+      - name: Upload exact five-path L3 production postimage handoff
         uses: actions/upload-artifact@v4
         with:
-          name: l3-r3-postimage-${{ github.event.pull_request.head.sha }}
-          path: /tmp/l3-r3-postimage
+          name: l3-r4-postimage-${{ github.event.pull_request.head.sha }}
+          path: /tmp/l3-r4-postimage
           if-no-files-found: error
+          include-hidden-files: true
           retention-days: 7
