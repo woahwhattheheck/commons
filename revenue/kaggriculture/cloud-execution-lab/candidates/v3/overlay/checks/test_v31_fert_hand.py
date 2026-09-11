@@ -73,6 +73,8 @@ def reset():
     r04.SALE_HORIZON = 8
     r04.OPEN_ROUNDTRIP = 0
     r04.ROW_ORDER = False
+    if hasattr(r04, "ROW_SHED"):
+        r04.ROW_SHED = False
     r04.EVENING_FLUSH = False
     r04.SALE_EXCLUDED = ("WHEAT", "FERTILIZER")
     r04._V231_EARLY = False

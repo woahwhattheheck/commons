@@ -30,6 +30,7 @@ CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10, "shedCapacity
 DEFAULT_HORIZON = r04.SALE_HORIZON
 DEFAULT_OPENING = Features().r04_open_roundtrip
 DEFAULT_ROW_ORDER = Features().r04_row_order
+DEFAULT_ROW_SHED = Features().r04_row_shed
 DEFAULT_FLUSH = Features().r04_evening_flush
 DEFAULT_FERT = Features().r04_sale_fertilizer
 DEFAULT_CATTLE = Features().r04_cattle_early
@@ -71,6 +72,7 @@ class Horizon(unittest.TestCase):
         r04.NO_LATE_SALE_ADVANCE = False
         r04.NO_LATE_SALE_ADVANCE_STEP = 648
         r04.STRAWBERRY_TOPUP = False
+        r04.ROW_SHED = False
         r04.KILL_LATE_WATER = False
         r04.STRAWBERRY_ENDGAME = False
         r04._RIVAL_TAPE.update(same=0, seen=0, last=-1)
@@ -409,7 +411,7 @@ class WiringTests(Horizon):
     def test_delegate_output_equals_the_published_agent(self):
         steps = list(range(0, 40)) + [143, 144, 145, 287, 288, 289, 300, 301, 647, 648, 700, 712, 717, r04.LAST_STEP]
         direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER, DEFAULT_FLUSH,
-                                       DEFAULT_FERT, DEFAULT_CATTLE), steps)
+                                       DEFAULT_FERT, DEFAULT_CATTLE, row_shed=DEFAULT_ROW_SHED), steps)
         agent = TitanAgent(Features(r04_sale_window=True))
         delegated = self.play(lambda obs, cfg: agent.act(obs, cfg), steps)
         self.assertEqual(delegated, direct)

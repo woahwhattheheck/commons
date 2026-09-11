@@ -1554,6 +1554,12 @@ _RO_PARAMS = {
     "FERTILIZER": (100, 200, "linear", 0.40, "linear", 0.40)}
 _RO_I0 = 10000
 
+# ROW_SHED (V3.1 key r04_row_shed) prices each leading SELL row at the units it can actually sell,
+# min(order quantity, projected shed stock), instead of the order quantity alone. Tape rows ask for
+# more than the shed holds (1000 means "sell all"), so without it a row that cannot fill is ranked
+# by units it does not have and can jump ahead of rows that clear real units.
+ROW_SHED = False
+
 
 def _ro_shape(func, x, span):
     x = max(0.0, x)
@@ -1583,13 +1589,28 @@ def _ro_price(item, inventory):
     return max(1, int(round(price)))
 
 
-def order_sells(market, inventory):
-    """Leading SELL rows sorted by the price drop each causes, steepest first."""
+def order_sells(market, inventory, shed=None):
+    """Leading SELL rows sorted by the price drop each causes, steepest first.
+
+    With shed (projected shed stock by item, key r04_row_shed) each row is priced at
+    min(requested quantity, shed[item]). The leading block ends at the first row that is not a
+    SELL, an empty slot included, and no row changes. A requested quantity that is not a plain
+    non-negative int keeps the parent order; a projection missing a block item, or holding a count
+    that is not a plain non-negative int, prices the whole block at the requested quantities,
+    exactly as without shed.
+    """
     lead = 0
     while lead < len(market) and market[lead] and market[lead][0] == "SELL":
         lead += 1
     if lead < 2:
         return market
+    if shed is not None:
+        block = market[:lead]
+        if any(len(order) < 3 or type(order[2]) is not int or order[2] < 0 for order in block):
+            return market
+        if not isinstance(shed, dict) or any(type(shed.get(order[1])) is not int or shed[order[1]] < 0
+                                             for order in block):
+            shed = None
 
     def drop(order):
         item = order[1]
@@ -1597,6 +1618,8 @@ def order_sells(market, inventory):
             return 0
         level = int(inventory.get(item, _RO_I0))
         quantity = max(0, int(order[2]))
+        if shed is not None:
+            quantity = min(quantity, max(0, shed[item]))
         return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity
 
     return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
@@ -1695,6 +1718,32 @@ def _b5_fertilize(observation, action):
     return action
 
 
+def _row_order_shed(observation, configuration, action):
+    """ROW_ORDER with r04_row_shed. Any malformed input leaves the parent action unchanged."""
+    if configuration is not None and not isinstance(configuration, dict):
+        return action
+    params = (configuration or {}).get("marketParams")
+    if params is not None and not isinstance(params, dict):
+        return action
+    if params:
+        return action
+    rows = action.get("market") or []
+    if not isinstance(rows, list) or any(o and not isinstance(o, list) for o in rows):
+        return action
+    try:
+        shed = projected_shed(action, FarmView(observation))
+    except Exception:
+        return action
+    inventory = (observation.get("market") or {}).get("inventory") or {}
+    # Raw slots keep their indices: an empty row is a barrier and is never compacted.
+    market = [list(o) if o else o for o in rows]
+    ordered = order_sells(market, inventory, shed)
+    if ordered != market:
+        action = dict(action)
+        action["market"] = ordered
+    return action
+
+
 def _v3_stack(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
     if STRAWBERRY_TOPUP:
@@ -1703,11 +1752,13 @@ def _v3_stack(observation, configuration=None):
         action = apply_kill_late_water(observation, action)
     if STRAWBERRY_ENDGAME:
         action = apply_strawberry_endgame(observation, action, STRAWBERRY_MAX_PLANTS)
-    if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
+    if ROW_ORDER and ROW_SHED:
+        action = _row_order_shed(observation, configuration, action)
+    elif ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
         inventory = (observation.get("market") or {}).get("inventory") or {}
-        market = [list(o) for o in action.get("market") or [] if o]
-        ordered = order_sells(market, inventory)
-        if ordered != market:
+        raw = [list(o) if o else o for o in action.get("market") or []]
+        ordered = order_sells([o for o in raw if o], inventory)
+        if ordered != raw:
             action = dict(action)
             action["market"] = ordered
     if EVENING_FLUSH:
@@ -1749,7 +1800,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
-            b5_carrot_fertilizer=None, b5_jit_fertilize=None, fert_hand=None):
+            b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None, fert_hand=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1764,11 +1815,12 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     else rides the existing machinery. no_late_sale_advance (lane L3, the ASTRA /
     GPT-5.6 SOL B10 port) gates the E184 reservation call site: with it on, no future
     sale is pulled forward at steps >= no_late_sale_advance_step (default 648).
+    row_shed makes ROW_ORDER price each SELL row at min(order quantity, projected shed).
     fert_hand runs the stack inside r04_fert_hand.wrap() (the endgame fertilizer hand).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
-    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP
+    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP, ROW_SHED
     global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, FERT_HAND
     if horizon is not None:
         horizon = int(horizon)
@@ -1810,6 +1862,8 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         B5_CARROT_FERTILIZER = bool(b5_carrot_fertilizer)
     if b5_jit_fertilize is not None:
         B5_JIT_FERTILIZE = bool(b5_jit_fertilize)
+    if row_shed is not None:
+        ROW_SHED = bool(row_shed)
     if fert_hand is not None:
         FERT_HAND = bool(fert_hand)
     return v3_agent
