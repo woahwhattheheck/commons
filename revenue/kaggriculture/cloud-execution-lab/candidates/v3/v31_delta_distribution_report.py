@@ -142,10 +142,12 @@ def _pair_from_mapping(mapping: Mapping[str, Any], label: str, *, seat: int) -> 
     return explicit_pair if explicit_pair is not _MISSING else vector_pair
 
 
-def _normalized_pair_array(value: Any, label: str) -> tuple[float, float]:
+def _player_ordered_pair_array(value: Any, label: str, *, seat: int) -> tuple[float, float]:
     if not isinstance(value, Sequence) or isinstance(value, (str, bytes)) or len(value) != 2:
-        raise DataError(f"{label} must contain normalized [own, rival]")
-    return _number(value[0], f"{label}[0]"), _number(value[1], f"{label}[1]")
+        raise DataError(f"{label} must contain player-ordered [seat0, seat1]")
+    seat0 = _number(value[0], f"{label}[0]")
+    seat1 = _number(value[1], f"{label}[1]")
+    return (seat0, seat1) if seat == 0 else (seat1, seat0)
 
 
 def _arm_scores(record: Mapping[str, Any], arm: str, *, seat: int) -> tuple[float, float]:
@@ -160,7 +162,10 @@ def _arm_scores(record: Mapping[str, Any], arm: str, *, seat: int) -> tuple[floa
     flat_scores_key = f"{arm}_scores"
     if flat_scores_key in record:
         forms.append(
-            (flat_scores_key, _normalized_pair_array(record[flat_scores_key], flat_scores_key))
+            (
+                flat_scores_key,
+                _player_ordered_pair_array(record[flat_scores_key], flat_scores_key, seat=seat),
+            )
         )
 
     own = _optional_number_alias(
@@ -225,6 +230,21 @@ def _activation_state(value: Any, label: str) -> bool:
     return number > 0
 
 
+def _json_type_equal(left: Any, right: Any) -> bool:
+    """Compare parsed JSON values without Python's bool/int equality aliasing."""
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, list):
+        return len(left) == len(right) and all(
+            _json_type_equal(a, b) for a, b in zip(left, right)
+        )
+    if isinstance(left, dict):
+        return left.keys() == right.keys() and all(
+            _json_type_equal(left[key], right[key]) for key in left
+        )
+    return left == right
+
+
 def _records_container(document: Any) -> list[Mapping[str, Any]]:
     if isinstance(document, list):
         rows = document
@@ -236,7 +256,7 @@ def _records_container(document: Any) -> list[Mapping[str, Any]]:
             )
         rows = document[present[0]]
         for key in present[1:]:
-            if document[key] != rows:
+            if not _json_type_equal(document[key], rows):
                 raise DataError("conflicting evidence-container aliases: " + ", ".join(present))
     else:
         raise DataError("input must be a JSON list or object")
@@ -264,10 +284,13 @@ def _supplied_delta(record: Mapping[str, Any]) -> tuple[str | None, Any]:
 
 
 def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | None:
-    if "baseline" not in document or "candidate" not in document:
+    present_arms = [arm for arm in ("baseline", "candidate") if arm in document]
+    if not present_arms:
         return None
+    if len(present_arms) != 2:
+        raise DataError("baseline and candidate arms must be supplied together")
     if not isinstance(document["baseline"], list) or not isinstance(document["candidate"], list):
-        return None
+        raise DataError("baseline and candidate arms must both be lists")
     indexed: dict[str, dict[tuple[str, str, int], Mapping[str, Any]]] = {}
     for arm in ("baseline", "candidate"):
         table: dict[tuple[str, str, int], Mapping[str, Any]] = {}
@@ -314,6 +337,15 @@ def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | N
 
 def load_records(document: Any) -> list[Mapping[str, Any]]:
     if isinstance(document, Mapping):
+        arm_keys = [key for key in ("baseline", "candidate") if key in document]
+        record_keys = [key for key in ("cells", "results", "games", "matches") if key in document]
+        if arm_keys and record_keys:
+            raise DataError(
+                "mixed evidence schema families: arms="
+                + ",".join(arm_keys)
+                + " records="
+                + ",".join(record_keys)
+            )
         paired = _pair_separate_arms(document)
         if paired is not None:
             return paired
