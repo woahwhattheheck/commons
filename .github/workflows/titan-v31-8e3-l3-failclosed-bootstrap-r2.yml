@@ -56,7 +56,7 @@ jobs:
             test "$CONTROL_DELTA" = '.github/workflows/pr-collision-notice.yml'
           fi
           test "$(git rev-parse "$CANONICAL_TIP:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
-          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
           echo "L3_R6_GAMEPLAY_CANONICAL=$GAMEPLAY_CANONICAL"
           echo "L3_R6_LIVE_CANONICAL_TIP=$CANONICAL_TIP"
           echo "L3_R6_CONTROL_DELTA=${CONTROL_DELTA:-<none>}"
@@ -171,5 +171,5 @@ jobs:
             test "$CONTROL_DELTA" = '.github/workflows/pr-collision-notice.yml'
           fi
           test "$(git rev-parse "$CANONICAL_TIP:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
-          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
           echo "L3_R6_STRUCT_SAFE_TERMINAL_FRESHNESS_OK gameplay=$GAMEPLAY_CANONICAL canonical_tip=$CANONICAL_TIP"
