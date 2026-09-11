@@ -30,15 +30,38 @@ def apply(src):
         router,
         "def _v224_sales_first(action):\n"
         "    original=action.get('market',[])[:MAX_ORDERS]\n",
-        "def _v224_sales_first(action):\n"
+        "def _v224_sales_first(action, configuration=None):\n"
         "    if V224_RAW_SLOTS:\n"
-        "        import r04_v224_raw_slots\n"
-        "        changed = r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
-        "        if changed is not action:\n"
-        "            _V224_REPORT['reordered_market_turns'] += 1\n"
-        "        return changed\n"
+        "        try:\n"
+        "            _v224_cap = (configuration.get('maxMarketOrdersPerTurn')\n"
+        "                         if isinstance(configuration, dict)\n"
+        "                         else getattr(configuration, 'maxMarketOrdersPerTurn'))\n"
+        "        except (AttributeError, KeyError, TypeError, ValueError):\n"
+        "            _v224_cap = None\n"
+        "        if type(_v224_cap) is int and _v224_cap == MAX_ORDERS:\n"
+        "            import r04_v224_raw_slots\n"
+        "            changed = r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
+        "            if changed is not action:\n"
+        "                _V224_REPORT['reordered_market_turns'] += 1\n"
+        "            return changed\n"
         "    original=action.get('market',[])[:MAX_ORDERS]\n",
         "R04 V4 V224 raw-slot seam",
+    )
+    router = _replace_once(
+        router,
+        "    if int(observation['step'])>=144:action=_v224_sales_first(action)\n",
+        "    if int(observation['step'])>=144:action=_v224_sales_first(action, configuration)\n",
+        "R04 V4 V224 direct caller configuration",
+    )
+    router = _replace_once(
+        router,
+        "    if step >= 144:\n"
+        "        action = _v224_sales_first(action)\n"
+        "    return action\n",
+        "    if step >= 144:\n"
+        "        action = _v224_sales_first(action, configuration)\n"
+        "    return action\n",
+        "R04 V4 V224 sale-window caller configuration",
     )
     router = _replace_once(
         router,
@@ -81,7 +104,7 @@ def apply(src):
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
         "    v224_raw_slots preserves lockstep-significant raw market slots while retaining V224 SELL\n"
-        "    bubbling across contiguous effectful rows.\n",
+        "    bubbling across contiguous effectful rows under the standard 10-order market cap.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
