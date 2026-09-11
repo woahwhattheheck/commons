@@ -49,11 +49,13 @@ def _strict_nonnegative_int(value):
 
 def _strict_nonnegative_money(value):
     """Accept official-engine numeric money, reject bool/non-finite/type poison."""
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+    if isinstance(value, bool):
         return None
-    if not math.isfinite(value) or value < 0:
-        return None
-    return value
+    if isinstance(value, int):
+        return value if value >= 0 else None
+    if isinstance(value, float):
+        return value if math.isfinite(value) and value >= 0 else None
+    return None
 
 
 def _fixed_cost_of_future_actions(actions):
