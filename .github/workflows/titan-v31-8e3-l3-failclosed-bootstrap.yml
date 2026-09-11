@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
           PATCH='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch'
@@ -41,7 +41,7 @@ jobs:
           test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
-          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json")" = 'f79539bde12aa679ad506996454627b6f2ad8cbb'
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json")" = '5501fc5dbbe2bf361d1d7fd110bcb520da7cf005'
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py")" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
@@ -178,7 +178,7 @@ jobs:
                     test "$(git hash-object "$ROUTER")" = '__POST_BOOTSTRAP_ROUTER_BLOB__'
                     test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
                     test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
-                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = '528cfabbe377f829cb584726c41bd2f64061373b'
                     test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
                     test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
                     test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_fertilize.py)" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
@@ -274,7 +274,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           git rm .github/workflows/titan-v31-8e3-l3-failclosed-bootstrap.yml
           git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch
           git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/test_failclosed.py
