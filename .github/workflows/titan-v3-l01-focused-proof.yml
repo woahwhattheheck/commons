@@ -1,0 +1,72 @@
+name: titan-v3-l01-focused-proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-l01-focused-proof.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01_leanplant_zero_slice.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-l01-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact successor topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          expected_parent='35c036dd33545a98237c3e56a9f8744a20660e5f'
+          workflow='.github/workflows/titan-v3-l01-focused-proof.yml'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = "$workflow"
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind reviewed L01 source and declared suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          source='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/l01_mechanics.py'
+          suite='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01.py'
+          zero_slice='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_l01_leanplant_zero_slice.py'
+          test "$(git hash-object "$source")" = '26be9af162618d07dfa588f8565e8606ecc46843'
+          test "$(git hash-object "$suite")" = '8c4a2955b39cb854822ab1f7e73f8e055bf4a274'
+          test "$(git hash-object "$zero_slice")" = '316e5aa9a36e304f1ac76438783b4f0c6d623798'
+
+      - name: Compile L01 source and declared suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: python -m py_compile l01_mechanics.py checks/test_v3_l01.py checks/test_v3_l01_leanplant_zero_slice.py
+
+      - name: Run declared L01 suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: python -m unittest -v checks/test_v3_l01.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain)"
