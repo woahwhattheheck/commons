@@ -159,6 +159,10 @@ def apply_dead_water_harvest(observation, action, enabled=True):
         player = observation["player"]
         if not _plain_int(step) or not _plain_int(day):
             return action
+        # Maturity consumes day while the late-window/expiry proof consumes
+        # step.  They must describe one engine clock or the state is ambiguous.
+        if day != step // 24:
+            return action
         if not _plain_int(player) or player not in (0, 1):
             return action
         if step < LATE_START or step > LATE_END:
