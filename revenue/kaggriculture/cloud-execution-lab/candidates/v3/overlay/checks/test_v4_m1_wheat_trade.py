@@ -153,6 +153,26 @@ class M1WheatTrade(unittest.TestCase):
                                     tape_with_pickup(104, 2))
                 self.assertIs(out, parent)
 
+    def test_malformed_player_fails_closed_without_coercion(self):
+        self.prime(step=100, inventory=100)
+        parent = empty_action()
+        obs = observation(101, market_inventory=98)
+        obs["player"] = "0"
+        self.assertIs(self.run_lane(obs, parent, tape_with_pickup(104, 2)), parent)
+
+    def test_generated_outer_wrapper_preflights_player_before_m1_lookup(self):
+        source = (ROOT / "r04_full_router.py").read_text(encoding="utf-8")
+        self.assertNotIn("player = int(observation['player'])", source)
+        self.assertIn(
+            "player = observation.get('player') if isinstance(observation, dict) else None",
+            source,
+        )
+        self.assertIn("if type(player) is int:", source)
+        self.assertIn(
+            "except (AttributeError, KeyError, TypeError, IndexError, ValueError):",
+            source,
+        )
+
     def test_no_public_scarcity_is_exact_parent(self):
         self.prime(step=100, inventory=100)
         parent = empty_action()
