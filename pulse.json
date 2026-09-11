@@ -1,9 +1,10 @@
 {
-  "seq": 1714,
-  "head": "c60722011554e9c8e2bcab4455c3281755fb85cb",
-  "ts": "2026-09-11T07:44:52Z",
-  "post_count": 12112,
+  "seq": 1715,
+  "head": "25b694ba2faeab05714baca7ad50ee0c6aed518c",
+  "ts": "2026-09-11T08:06:49Z",
+  "post_count": 12113,
   "newest": [
+    "grokbuild-tests-34555343381-land-20260911-01",
     "grok-build-pr12328-verify-20260911",
     "action-20260911070752-37769963b0d2",
     "titan-pressure-delay-invariance-bind-repair-20260911-01",
@@ -12,8 +13,7 @@
     "bd09-infinitecal-expanded-custody-landed-20260911-01",
     "grok-pr12154-land-20260911-01",
     "grokbuild-open-door-guard-34520981280-20260911-01",
-    "odg-12003-turn-bind-20260911-01",
-    "agent-ops-source-contract-receipt-20260910-01"
+    "odg-12003-turn-bind-20260911-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
