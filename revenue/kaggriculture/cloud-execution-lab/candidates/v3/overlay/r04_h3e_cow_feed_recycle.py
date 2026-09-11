@@ -2,7 +2,7 @@
 """V4 H3e: recycle provably dead COW service at the last EOD action into FEED.
 
 V217 owns PASS-only farmer starvation rescue and V233 owns the dedicated sheep
-service hand.  H3e is deliberately narrower and orthogonal: at hour 23, it may
+service hand. H3e is deliberately narrower and orthogonal: at hour 23, it may
 replace only an action that is provably a no-op for an actor already standing on
 an escape-imminent COW, and only when that same actor already carries WHEAT.
 
@@ -21,7 +21,14 @@ _MISSING = object()
 telemetry = Counter()
 
 
-def _strict_cow(tile: Any):
+def _strict_cow(tile: Any, day: int):
+    """Return the service fields only for a cow safe to carry through EOD.
+
+    Baseline escape at consecutive_unfed==2 replaces the tile before the engine
+    reads production metadata. H3e prevents that escape, so it must validate the
+    fields EOD will newly dereference rather than preserving a poison tile that
+    baseline would have deleted first.
+    """
     if not isinstance(tile, dict) or tile.get("kind") != "PASTURE" or tile.get("animal") != "COW":
         return None
     units = tile.get("yield_units", _MISSING)
@@ -29,11 +36,17 @@ def _strict_cow(tile: Any):
     fed = tile.get("fed_today", _MISSING)
     cared = tile.get("cared_today", _MISSING)
     fertilizer = tile.get("fertilizer_available", _MISSING)
+    placed_day = tile.get("placed_day", _MISSING)
+    pending_care_bonus = tile.get("pending_care_bonus", _MISSING)
     if type(units) is not int or units < 0:
         return None
     if type(consecutive_unfed) is not int or consecutive_unfed < 0:
         return None
     if type(fed) is not bool or type(cared) is not bool or type(fertilizer) is not bool:
+        return None
+    if type(placed_day) is not int or placed_day < 0 or placed_day > day:
+        return None
+    if type(pending_care_bonus) is not int or pending_care_bonus < 0:
         return None
     return units, consecutive_unfed, fed, cared, fertilizer
 
@@ -77,6 +90,7 @@ def apply_cow_feed_recycle(action: Any, observation: Any, configuration: Any, *,
         return action
     if not isinstance(farms, list) or len(farms) != 2 or not isinstance(private, dict):
         return action
+    day = step // 24
 
     farm = farms[player]
     if not isinstance(farm, dict):
@@ -110,7 +124,7 @@ def apply_cow_feed_recycle(action: Any, observation: Any, configuration: Any, *,
 
         site = (x, y)
         actor_sites.append(site)
-        cow = _strict_cow(tiles[y][x])
+        cow = _strict_cow(tiles[y][x], day)
         if cow is None:
             continue
         _units, consecutive_unfed, fed, _cared, _fertilizer = cow
@@ -139,7 +153,7 @@ def apply_cow_feed_recycle(action: Any, observation: Any, configuration: Any, *,
         return action
 
     # A second active actor on the same COW can change the tile before this
-    # actor executes.  Only stacked PASS is order-independent.
+    # actor executes. Only stacked PASS is order-independent.
     for actor, site, _op in candidates:
         for other, (other_site, other_command) in enumerate(zip(actor_sites, rows)):
             if other == actor or other_site != site:
