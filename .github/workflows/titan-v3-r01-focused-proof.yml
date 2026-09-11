@@ -1,0 +1,69 @@
+name: titan-v3-r01-focused-proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-r01-focused-proof.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_shop_router.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r01.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-r01-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact successor topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          expected_parent='026ccf3282dcc037403f9e486e3f5cdf77ded0d1'
+          workflow='.github/workflows/titan-v3-r01-focused-proof.yml'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = "$workflow"
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind reviewed R01 source and declared suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          source='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_shop_router.py'
+          suite='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r01.py'
+          test "$(git hash-object "$source")" = 'b099a13a3dcaa40fcdd2bac97ff30495adfbf131'
+          test "$(git hash-object "$suite")" = '8b2af47cf1fc0d700ffd39be1e88a8abf2101c8b'
+
+      - name: Compile R01 source and declared suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: python -m py_compile r01_shop_router.py checks/test_v3_r01.py
+
+      - name: Run declared R01 suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: python -m unittest -v checks/test_v3_r01.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain)"
