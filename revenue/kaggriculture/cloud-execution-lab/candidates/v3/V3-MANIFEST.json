@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13",
-    "bytes": 553427,
-    "files": 139
+    "sha256": "acd21e9fcfb1654f56e2897740d256fb035e8dfda13cd96b39b5a6ef5a4b6fee",
+    "bytes": 559558,
+    "files": 141
   },
   "releases": [
     {
@@ -372,6 +372,7 @@
   "overlay": {
     "b5_fertilize.py": "f2d03ab19e1a233566cfc9076bd8b9843c7f8d611703578218bd73c1af0f626f",
     "checks/test_v31_b5_fertilize.py": "69bb57dd44a480a0d26c27c115004c787a75479df0f50aee650784074df44c98",
+    "checks/test_v31_fert_hand.py": "1e8918e54f906b7c18a4513481d0731177761fe1d6a73d5dbc72ffefde6a472a",
     "checks/test_v31_h4_strawberry.py": "7676948bc372fc27f2beb9cacfee1f329beecbf2a6c99ff9934227bdb4555a98",
     "checks/test_v31_shipped_keys.py": "835e25a1a46acb8a509705c764751678cc0f4b5d6217aa3fabe929eaca125646",
     "checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d",
@@ -392,13 +393,14 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "18bd8c5032e1bde5fb44e202856b0eec17104c812852e3ab0db0b35dddc7a1dc",
+    "r04_fert_hand.py": "c34b1c3c58f58506ed66a6d551c6df8ac03d659b4373932cf58a464b631cead0",
+    "r04_full_router.py": "09ead1d123a666e358579e51f6b4dfb34ce3fd09716adae8301a0eb393c4195b",
     "r04_h4_strawberry.py": "e7069b9a1c3909fa011d806708fc91cebc7ed36da29d78f77c9ae3789a882785",
     "r04_kill_late_water.py": "601170700110118b2d5692fb298ccc8fb3d3d3e3bab190c7113be3636f09b97d",
     "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
     "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "bddd0c6c4bdea2b2cdf12283e8bf65c566e2f885f9e73baa37afe837d11cefed"
+    "apply_v3.py": "c4c60608fbc75b81a099a9099a86d7a5f46ad62b16fc67c410de4d761f756a4a"
   }
 }
