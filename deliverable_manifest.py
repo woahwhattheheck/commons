@@ -129,18 +129,30 @@ def _normalize_acceptance(raw: bytes, file_paths: set[str]) -> list[dict[str, An
     return normalized
 
 
-def _scan(root: Path) -> list[tuple[str, Path, tuple[int, int, int, int]]]:
+def _root_identity(root: Path) -> tuple[int, int]:
     try:
         root_stat = root.lstat()
     except FileNotFoundError as exc:
         raise ManifestError(f"deliverable root does not exist: {root}") from exc
+    except OSError as exc:
+        raise ManifestError(f"cannot inspect deliverable root {root}: {exc}") from exc
     if stat.S_ISLNK(root_stat.st_mode):
         raise ManifestError("deliverable root must not be a symlink")
     if not stat.S_ISDIR(root_stat.st_mode):
         raise ManifestError("deliverable root must be a directory")
+    return (root_stat.st_dev, root_stat.st_ino)
 
+
+def _walk_error(exc: OSError) -> None:
+    raise ManifestError(f"cannot enumerate deliverable subtree: {exc}") from exc
+
+
+def _scan(root: Path) -> list[tuple[str, Path, tuple[int, int, int, int]]]:
+    _root_identity(root)
     found: list[tuple[str, Path, tuple[int, int, int, int]]] = []
-    for current, dirnames, filenames in os.walk(root, topdown=True, followlinks=False):
+    for current, dirnames, filenames in os.walk(
+        root, topdown=True, followlinks=False, onerror=_walk_error
+    ):
         current_path = Path(current)
         for name in list(dirnames):
             child = current_path / name
@@ -203,8 +215,9 @@ def _read_stable_file(
 
 
 def build_manifest(root: Path, acceptance_raw: bytes) -> dict[str, Any]:
-    # absolute() keeps the final component unresolved so _scan can reject a symlink root.
+    # Keep the final path component unresolved so every scan can reject a symlink root.
     root = root.absolute()
+    root_before = _root_identity(root)
     first = _scan(root)
     file_entries: list[dict[str, Any]] = []
     for rel, path, identity in first:
@@ -212,6 +225,9 @@ def build_manifest(root: Path, acceptance_raw: bytes) -> dict[str, Any]:
         file_entries.append({"path": rel, "bytes": len(data), "sha256": _sha256(data)})
 
     second = _scan(root)
+    root_after = _root_identity(root)
+    if root_after != root_before:
+        raise ManifestError("deliverable root identity changed while hashing")
     first_snapshot = [(rel, identity) for rel, _, identity in first]
     second_snapshot = [(rel, identity) for rel, _, identity in second]
     if first_snapshot != second_snapshot:
@@ -235,7 +251,7 @@ def _is_within(child: Path, parent: Path) -> bool:
         return False
 
 
-def _write_atomic(path: Path, data: bytes) -> None:
+def _write_new_atomic(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=str(path.parent))
     tmp = Path(tmp_name)
@@ -244,7 +260,12 @@ def _write_atomic(path: Path, data: bytes) -> None:
             fh.write(data)
             fh.flush()
             os.fsync(fh.fileno())
-        os.replace(tmp, path)
+        try:
+            os.link(tmp, path)
+        except FileExistsError as exc:
+            raise ManifestError(f"manifest output already exists: {path}") from exc
+        except OSError as exc:
+            raise ManifestError(f"cannot publish manifest output {path}: {exc}") from exc
     finally:
         try:
             tmp.unlink()
@@ -262,16 +283,28 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
-    root_input = args.root.absolute()
-    # Reject a symlink root before resolve() is allowed to dereference it.
-    _scan(root_input)
-    root = root_input.resolve()
-    output = args.output.resolve()
-    if _is_within(output, root):
+    root = args.root.absolute()
+    acceptance = args.acceptance.absolute()
+    output = args.output.absolute()
+
+    # Bind the unresolved root pathname before any resolve() can dereference it.
+    root_identity = _root_identity(root)
+    root_resolved = root.resolve(strict=True)
+    if _root_identity(root) != root_identity or _root_identity(root_resolved) != root_identity:
+        raise ManifestError("deliverable root identity changed during path resolution")
+
+    acceptance_resolved = acceptance.resolve()
+    output_resolved = output.resolve()
+    if output_resolved == acceptance_resolved:
+        raise ManifestError("manifest output must not alias the acceptance input")
+    if _is_within(output_resolved, root_resolved):
         raise ManifestError("manifest output must live outside the deliverable root")
-    manifest = build_manifest(root, args.acceptance.read_bytes())
+
+    manifest = build_manifest(root, acceptance.read_bytes())
+    if _root_identity(root) != root_identity:
+        raise ManifestError("deliverable root identity changed before receipt publication")
     encoded = json.dumps(manifest, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
-    _write_atomic(output, (encoded + "\n").encode("utf-8"))
+    _write_new_atomic(output, (encoded + "\n").encode("utf-8"))
     print(manifest["manifest_sha256"])
     return 0
 

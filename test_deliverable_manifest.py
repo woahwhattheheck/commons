@@ -4,7 +4,9 @@ import tempfile
 import time
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
+import deliverable_manifest as dm
 from deliverable_manifest import ManifestError, build_manifest, main
 
 
@@ -177,6 +179,72 @@ class DeliverableManifestTests(unittest.TestCase):
             receipt = json.loads(out.read_text())
             self.assertEqual("commons-deliverable-manifest/v1", receipt["schema"])
             self.assertEqual(64, len(receipt["manifest_sha256"]))
+
+
+    def test_recursive_enumeration_error_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.make_bundle(root)
+
+            def failing_walk(*args, **kwargs):
+                kwargs["onerror"](PermissionError("synthetic descendant scandir failure"))
+                if False:
+                    yield None
+
+            with patch("deliverable_manifest.os.walk", failing_walk):
+                with self.assertRaisesRegex(ManifestError, "cannot enumerate deliverable subtree"):
+                    build_manifest(root, self.mapping())
+
+    def test_root_symlink_swap_between_scans_fails_closed(self):
+        if not hasattr(os, "symlink"):
+            self.skipTest("symlink unavailable")
+        with tempfile.TemporaryDirectory() as td:
+            parent = Path(td)
+            root = parent / "bundle"
+            root.mkdir()
+            self.make_bundle(root)
+            moved = parent / "bundle-real"
+            real_scan = dm._scan
+            calls = {"n": 0}
+
+            def racing_scan(path):
+                rows = real_scan(path)
+                calls["n"] += 1
+                if calls["n"] == 1:
+                    root.rename(moved)
+                    os.symlink(moved, root)
+                return rows
+
+            with patch("deliverable_manifest._scan", racing_scan):
+                with self.assertRaisesRegex(ManifestError, "root must not be a symlink"):
+                    build_manifest(root, self.mapping())
+
+    def test_cli_refuses_acceptance_alias_without_mutation(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "bundle"
+            root.mkdir()
+            self.make_bundle(root)
+            amap = base / "acceptance.json"
+            original = self.mapping()
+            amap.write_bytes(original)
+            with self.assertRaisesRegex(ManifestError, "must not alias the acceptance input"):
+                main([str(root), "--acceptance", str(amap), "--output", str(amap)])
+            self.assertEqual(original, amap.read_bytes())
+
+    def test_cli_refuses_clobbering_existing_output(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "bundle"
+            root.mkdir()
+            self.make_bundle(root)
+            amap = base / "acceptance.json"
+            out = base / "receipt.json"
+            amap.write_bytes(self.mapping())
+            out.write_bytes(b"sentinel\n")
+            with self.assertRaisesRegex(ManifestError, "output already exists"):
+                main([str(root), "--acceptance", str(amap), "--output", str(out)])
+            self.assertEqual(b"sentinel\n", out.read_bytes())
 
     def test_cli_refuses_self_referential_output(self):
         with tempfile.TemporaryDirectory() as td:
