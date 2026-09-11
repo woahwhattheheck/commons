@@ -50,6 +50,17 @@ def _positive_int(value, label):
     return value
 
 
+def _parse_cli_horizon(raw):
+    """Parse the optional CLI horizon before build/package code can run."""
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        raise SystemExit("sale horizon must be an integer of at least 1") from None
+    if value < 1:
+        raise SystemExit("sale horizon must be at least 1")
+    return value
+
+
 def apply_submission_config(files, horizon=None):
     """Return detached package files with only the score-facing config edited."""
     out = dict(files)
@@ -94,10 +105,8 @@ def main(argv=None):
         )
     v3, canon, output = argv[:3]
     # Fail closed on caller-controlled score-facing input before changing sys.path,
-    # importing the package builder, or touching canonical/package bytes.
-    horizon = None
-    if len(argv) == 4:
-        horizon = _positive_int(int(argv[3]), "submission horizon")
+    # importing the package builder, or touching canonical/package/output bytes.
+    horizon = _parse_cli_horizon(argv[3]) if len(argv) == 4 else None
 
     sys.path.insert(0, v3)
     import build_v3  # noqa: E402
