@@ -447,7 +447,7 @@
         "status": "NOT_ISSUED",
         "next_step": "Confirm the public page and issue a buyer-specific invoice.",
         "state_after": "FUNDED",
-        "evidence_required": "Written scope plus cleared provider authorization."
+        "evidence_required": "Written scope and cleared provider authorization."
       },
       "fulfillment": {
         "deliverables": [
