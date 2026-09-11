@@ -23,6 +23,12 @@ ITEM = "STRAWBERRY"
 START_DAY = 12
 END_DAY = 18
 DEFAULT_MIN_PRICE = 180
+STANDARD_CONFIG = {
+    "boardSize": 10,
+    "turnsPerDay": 24,
+    "shedCapacity": 100,
+    "maxMarketOrdersPerTurn": 10,
+}
 _MISSING = object()
 telemetry = Counter()
 
@@ -31,19 +37,24 @@ def _strict_nonnegative_int(value):
     return value if type(value) is int and value >= 0 else None
 
 
-def _standard_configuration(configuration):
+def _cfg(configuration, name):
     if configuration is None:
-        return True
-    if not isinstance(configuration, dict):
-        return False
-    for key, expected in (("turnsPerDay", 24), ("shedCapacity", 100),
-                          ("maxMarketOrdersPerTurn", 10)):
-        if key in configuration:
-            value = configuration[key]
-            if type(value) is not int or value != expected:
-                return False
-    params = configuration.get("marketParams")
-    return params is None or params == {}
+        return _MISSING
+    try:
+        if isinstance(configuration, dict):
+            return configuration.get(name, _MISSING)
+        return getattr(configuration, name, _MISSING)
+    except Exception:
+        return _MISSING
+
+
+def _standard_configuration(configuration):
+    for name, expected in STANDARD_CONFIG.items():
+        actual = _cfg(configuration, name)
+        if actual is _MISSING or type(actual) is not int or actual != expected:
+            return False
+    params = _cfg(configuration, "marketParams")
+    return params is _MISSING or params is None or params == {}
 
 
 def _valid_debt_map(debts):
