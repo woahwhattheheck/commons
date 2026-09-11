@@ -195,6 +195,9 @@ def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, e
         if (not isinstance(pos, (list, tuple)) or len(pos) != 2
                 or type(pos[0]) is not int or type(pos[1]) is not int):
             return action
+        board_size = STANDARD_CONFIG["boardSize"]
+        if not (0 <= pos[0] < board_size and 0 <= pos[1] < board_size):
+            return action
 
         # Repair from #12457: movement plus the HARVEST callback must both fit.
         remaining_callbacks = 24 - hour
