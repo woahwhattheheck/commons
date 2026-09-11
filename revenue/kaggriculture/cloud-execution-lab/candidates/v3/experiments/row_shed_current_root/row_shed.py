@@ -105,10 +105,20 @@ def apply_row_shed(observation, action, r04, configuration=None):
 
     This function is the exact handoff seam for a later production port. It does not call
     or reinstall the router, does not change feature globals, and does not touch workers or
-    market quantities. As in incumbent ROW_ORDER, any explicit custom marketParams override
-    disables the transform.
+    market quantities. As in incumbent ROW_ORDER, a non-empty explicit custom marketParams
+    override disables the transform. Malformed configuration fails closed to the exact
+    parent action instead of being coerced into a new configuration policy.
     """
-    if (configuration or {}).get("marketParams") or {}:
+    if configuration is None:
+        config = {}
+    elif not isinstance(configuration, dict):
+        return action
+    else:
+        config = configuration
+    market_params = config.get("marketParams")
+    if market_params is not None and not isinstance(market_params, dict):
+        return action
+    if market_params:
         return action
     try:
         view = r04.FarmView(observation)
