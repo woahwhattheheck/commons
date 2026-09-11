@@ -73,22 +73,21 @@ def order_sells(market, inventory, projected_shed, price_fn, known_items, invent
             score = (price_fn(item, level) - price_fn(item, level + quantity)) * quantity
         ranked.append((score, index, order))
 
-    # Python's sort is stable; the explicit original index documents that equal-score rows
-    # retain incumbent relative order.
+    # Python's sort is stable: equal-score rows retain incumbent relative order.
     ranked.sort(key=lambda row: row[0], reverse=True)
     ordered = [row[2] for row in ranked] + market[lead:]
     return ordered
 
 
-def apply_row_shed(observation, action, r04):
+def apply_row_shed(observation, action, r04, configuration=None):
     """Apply only the row-shed ranking transform to an already-produced R04 action.
 
     This function is the exact handoff seam for a later production port.  It does not call
     or reinstall the router, does not change feature globals, and does not touch workers or
-    market quantities.
+    market quantities.  As in incumbent ROW_ORDER, any explicit custom marketParams override
+    disables the transform.
     """
-    configuration = observation.get("__configuration__") if isinstance(observation, dict) else None
-    if configuration and (configuration.get("marketParams") or {}):
+    if (configuration or {}).get("marketParams") or {}:
         return action
     try:
         view = r04.FarmView(observation)
