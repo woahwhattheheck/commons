@@ -103,7 +103,7 @@ class WiringTests(unittest.TestCase):
         data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
         self.assertIs(data["r03_full_router"], False)
         self.assertIs(Features(**data).r03_full_router, False)
-        self.assertFalse(TitanAgent(Features())._v3_active())
+        self.assertFalse(TitanAgent(Features(r04_no_late_sale_advance=False))._v3_active())
         self.assertTrue(TitanAgent(Features(r03_full_router=True))._v3_active())
 
     def test_delegate_runs_before_any_canonical_state(self):

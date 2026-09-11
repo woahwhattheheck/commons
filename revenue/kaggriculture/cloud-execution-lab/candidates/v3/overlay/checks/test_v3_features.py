@@ -238,7 +238,7 @@ class PackageWiringTests(unittest.TestCase):
         self.assertNotIn("shop_arb", data)
 
     def test_runtime_config_is_injected_only_when_a_key_is_on(self):
-        self.assertFalse(TitanAgent(Features())._v3_active())
+        self.assertFalse(TitanAgent(Features(r04_no_late_sale_advance=False))._v3_active())
         agent = TitanAgent(Features(e20_hire_guard=True))
         self.assertTrue(agent._v3_active())
         cfg = agent._v3_config()

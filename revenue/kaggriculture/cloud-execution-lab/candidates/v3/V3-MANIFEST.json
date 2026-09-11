@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "088ce50169a0087ebb0f2f1c09358d2aebd8ac93a2b27e42b613098cd126fd90",
-    "bytes": 528738,
-    "files": 126
+    "sha256": "025ab81235565dcebfd61bf6b3d03a1f1b7a9f6d47c8caaf553bea1aef5d248b",
+    "bytes": 533075,
+    "files": 128
   },
   "releases": [
     {
@@ -135,6 +135,18 @@
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
       "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); FERTILIZER in the sale window r04_sale_fertilizer (default true, V3.1); V231 day-8 cattle window r04_cattle_early (default true, V3.1); takes precedence over R03 and R01"
+    },
+    "r04_no_late_sale_advance": {
+      "default": true,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "no future tape-planned sale is pulled forward into today's SELL rows at steps >= r04_no_late_sale_advance_step (default 648); the tape's own late SELL rows are kept; pre-threshold debts still settle (V3.1, ASTRA / GPT-5.6 SOL B10 port)"
+    },
+    "r04_no_late_sale_advance_step": {
+      "default": 648,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "absolute step at or above which the E184 reservation is suppressed when r04_no_late_sale_advance is on"
     }
   },
   "lanes": [
@@ -296,7 +308,9 @@
         "r04_row_order",
         "r04_evening_flush",
         "r04_sale_fertilizer",
-        "r04_cattle_early"
+        "r04_cattle_early",
+        "r04_no_late_sale_advance",
+        "r04_no_late_sale_advance_step"
       ],
       "status": "integrated",
       "lineage": [
@@ -335,12 +349,13 @@
     "results": []
   },
   "overlay": {
-    "checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d",
-    "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
-    "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
-    "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
-    "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
-    "checks/test_v3_r04.py": "116faac16e8438154bc5d3a03f77f729e82c73284f46afac10cf0a35f8f98e37",
+    "checks/test_v3_features.py": "bb023a7928eb77935a0fbb2e74f6cb8a4d9742ff1abcda7f76a45b30231f6cf2",
+    "checks/test_v3_l01.py": "f9dd2d74593987b5ca42b28c947194f3def07650319084a5e7a9afded986f3ea",
+    "checks/test_v3_r01.py": "b35afca5dee6171f675b0cf5c3b2090265a678879f55a66eebf5181572daa815",
+    "checks/test_v3_r02.py": "2ee9cf824eea97bdaf4e4e9425ba4296d186f3b324cb35fdb0b7a78f69c212af",
+    "checks/test_v3_r03.py": "219626985b616ab3ec04cb5bd96932f6baccbcf354d56553b4c7de741ca7a97c",
+    "checks/test_v3_r04.py": "f37419824a99a1214da44152ae058697410129dc132a56a9961cb5738e50873b",
+    "checks/test_v3_r04_no_late_advance.py": "e61339a1d736a7d6789fb0547081fec0b5d8df2e863d59bfe764c774e281f662",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
@@ -348,9 +363,10 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "281117d7460d57c71a8caa9f30ed81cd918b714ad88638d47cb06d071bc12239",
+    "r04_full_router.py": "d253334fb7a8ab5e34812263ce7b1a63e531bc5cec3b0e55931489a7c415146d",
+    "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "84560b01567833ec1eecb31c127e325e286d77bb7cc40bb88089734a125ed34f"
+    "apply_v3.py": "de626688267a6a6ec0cb2af59639c1e57ecd7b2f6abd5de96bc091971a811894"
   }
 }

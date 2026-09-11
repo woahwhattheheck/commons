@@ -152,7 +152,7 @@ class WiringTests(unittest.TestCase):
         self.assertEqual(l01.flags_from_features(Features(l01_land=True, l01_tranche=True)),
                          flags(LAND=True, TRANCHE=True))
         self.assertTrue(TitanAgent(Features(l01_land=True))._v3_active())
-        self.assertFalse(TitanAgent(Features())._v3_active())
+        self.assertFalse(TitanAgent(Features(r04_no_late_sale_advance=False))._v3_active())
 
     def test_initialize_off_leaves_the_tape_pristine(self):
         pristine = copy.deepcopy(load_arlene().routes())

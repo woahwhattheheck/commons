@@ -22,6 +22,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import r04_full_router as r04  # noqa: E402
+import r04_no_late_sale_advance as nla  # noqa: E402
 from r01_tapes import load_tapes  # noqa: E402
 from titan_runtime import Features, TitanAgent  # noqa: E402
 
@@ -67,6 +68,9 @@ class Horizon(unittest.TestCase):
         r04.EVENING_FLUSH = False
         r04.SALE_EXCLUDED = PUBLISHED_EXCLUDED
         r04._V231_EARLY = False
+        r04.NO_LATE_SALE_ADVANCE = False
+        r04.NO_LATE_SALE_ADVANCE_STEP = 648
+        nla.reset()
 
 
 class ModuleTests(Horizon):
@@ -378,10 +382,12 @@ class WiringTests(Horizon):
         self.assertIs(data["r04_evening_flush"], DEFAULT_FLUSH)
         self.assertIs(data["r04_sale_fertilizer"], DEFAULT_FERT)
         self.assertIs(data["r04_cattle_early"], DEFAULT_CATTLE)
+        self.assertIs(data["r04_no_late_sale_advance"], True)
+        self.assertEqual(data["r04_no_late_sale_advance_step"], 648)
         features = Features(**data)
         self.assertIs(features.r04_sale_window, False)
         self.assertEqual(features.r04_sale_horizon, DEFAULT_HORIZON)
-        self.assertFalse(TitanAgent(Features())._v3_active())
+        self.assertFalse(TitanAgent(Features(r04_no_late_sale_advance=False))._v3_active())
         self.assertTrue(TitanAgent(Features(r04_sale_window=True))._v3_active())
 
     def test_delegate_runs_before_any_canonical_state(self):
