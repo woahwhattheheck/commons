@@ -43,7 +43,18 @@ jobs:
         run: |
           set -euo pipefail
           env -u PYTHONOPTIMIZE python -B -m unittest -v test_d1_public_supply_order.py
-          python -m py_compile d1_public_supply_order.py run_d1_screen.py test_d1_public_supply_order.py
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in (
+              'd1_public_supply_order.py',
+              'run_d1_screen.py',
+              'test_d1_public_supply_order.py',
+          ):
+              source = Path(name).read_text(encoding='utf-8')
+              compile(source, name, 'exec')
+              print('syntax_ok', name)
+          PY
+          test -z "$(git status --porcelain)"
 
       - name: Exact V3.1 paired externality screen
         shell: bash
