@@ -4,21 +4,20 @@
 This is an experiment, not release wiring.
 
 Exact V3.1 topology returns from ``TitanAgent._v3_r03_act`` whenever R04 is enabled,
-so the canonical seller-owned ``_v3_e11_before_pending`` seam is never reached.  A
+so the canonical seller-owned ``_v3_e11_before_pending`` seam is never reached. A
 naive outer wrapper is unsafe: R04's E184 layer may append a current SELL and book
 matching ``sale_window_debts``; if E11 then blanks that SELL, the due-step subtraction
 would later erase a sale that never happened.
 
 This adapter reuses ``e11_rival_sell.apply_e11`` unchanged and snapshots R04 debt state
-around the parent call.  When E11 defers an item, it rolls back *only positive debt
-deltas booked by that same parent call* for that item.  Existing debt and debt consumed
-at the current step are never recreated.  If the removed SELL quantity cannot cover the
-newly-booked debt, the adapter fails closed to the exact parent action and leaves parent
-state untouched.
+around the parent call. When E11 defers an item, it rolls back *only positive debt
+deltas booked by that same parent call* for that item. Existing debt and debt consumed
+at the current step are never recreated. If predecessor debt cannot be observed, or the
+removed SELL quantity cannot cover the newly-booked debt, the adapter fails closed to
+the exact parent action and leaves parent state untouched.
 """
 from __future__ import annotations
 
-from copy import deepcopy
 from typing import Any, Callable, Mapping
 
 
@@ -75,7 +74,7 @@ def _removed_sell_quantities(before_action: Mapping[str, Any], after_action: Map
     for old, new in zip(before_market, after_market):
         if old == new:
             continue
-        if (not isinstance(old, list) or len(old) < 3 or old[0] != "SELL" or new != []):
+        if not isinstance(old, list) or len(old) < 3 or old[0] != "SELL" or new != []:
             return None
         try:
             q = max(0, int(old[2]))
@@ -109,9 +108,7 @@ def _refund_new_debt(state: Any, created: DebtMap, deferred_items: set[str]) -> 
             else:
                 current.get(due, {}).pop(item, None)
             refunded[item] = refunded.get(item, 0) + take
-    state.sale_window_debts = {
-        due: items for due, items in current.items() if items
-    }
+    state.sale_window_debts = {due: items for due, items in current.items() if items}
     return refunded
 
 
@@ -132,7 +129,7 @@ def wrap_r04_agent(
     """Return an R04-compatible callable with E11 outermost and debt-atomic.
 
     ``absorption_fn`` must be the same exact integer per-step absorption callable used by
-    the canonical E11 seller seam.  It is injected deliberately so this experiment cannot
+    the canonical E11 seller seam. It is injected deliberately so this experiment cannot
     silently substitute a heuristic for an engine transition.
     """
     histories: dict[int, list[tuple[int, dict[str, Any]]]] = {}
@@ -148,6 +145,7 @@ def wrap_r04_agent(
     def adapter(observation, configuration=None):
         action_state_before = None
         debts_before: DebtMap = {}
+        predecessor_known = False
         try:
             player = int(observation.get("player", 0))
             step = int(observation.get("step", 0))
@@ -163,6 +161,7 @@ def wrap_r04_agent(
             try:
                 action_state_before = getter(observation)
                 debts_before = _snapshot_debts(action_state_before)
+                predecessor_known = True
             except Exception:
                 action_state_before = None
                 debts_before = {}
@@ -177,14 +176,17 @@ def wrap_r04_agent(
         except Exception as error:
             telemetry["fail_closed"] += 1
             telemetry["last_by_player"][player] = {
-                "enabled": True, "changed": False,
+                "enabled": True,
+                "changed": False,
                 "reason": "NO_R04_STATE_" + type(error).__name__,
             }
             return parent_action
 
-        # A step reset can replace the player state object.  In that case no debt from the
-        # previous episode is a valid predecessor for positive-delta accounting.
-        if action_state_before is not action_state_after:
+        # A step reset can replace the player state object. In that case no debt from the
+        # previous episode is a valid predecessor for positive-delta accounting, and the
+        # fresh state itself is a complete post-parent snapshot for the current call.
+        state_replaced = predecessor_known and action_state_before is not action_state_after
+        if state_replaced:
             debts_before = {}
         debts_after = _snapshot_debts(action_state_after)
 
@@ -202,7 +204,8 @@ def wrap_r04_agent(
         except Exception as error:
             telemetry["fail_closed"] += 1
             telemetry["last_by_player"][player] = {
-                "enabled": True, "changed": False,
+                "enabled": True,
+                "changed": False,
                 "reason": "E11_ERROR_" + type(error).__name__,
             }
             return parent_action
@@ -213,9 +216,7 @@ def wrap_r04_agent(
             lookback = max(0, int(cfg.get("rival_dump_lookback_steps", 8)))
         except (TypeError, ValueError):
             lookback = 8
-        histories[player] = [
-            entry for entry in history if 0 <= step - int(entry[0]) <= lookback
-        ]
+        histories[player] = [entry for entry in history if 0 <= step - int(entry[0]) <= lookback]
 
         if not report.get("changed"):
             telemetry["last_by_player"][player] = dict(report)
@@ -229,6 +230,20 @@ def wrap_r04_agent(
             telemetry["last_by_player"][player] = failed
             return parent_action
 
+        # If the pre-parent state could not be observed and the parent leaves any future
+        # debt behind, there is no safe way to distinguish preexisting debt from a debt
+        # increment booked by this call. Never guess: keep exact parent action + state.
+        if not predecessor_known and debts_after:
+            telemetry["fail_closed"] += 1
+            failed = dict(report)
+            failed.update(
+                changed=False,
+                reason="FAIL_CLOSED_UNKNOWN_PREDECESSOR_DEBT",
+                removed_sell_qty=removed,
+            )
+            telemetry["last_by_player"][player] = failed
+            return parent_action
+
         deferred_items = {str(item) for item in report.get("deferred") or []}
         created = _new_future_debt(debts_before, debts_after, step)
         created_by_item: dict[str, int] = {}
@@ -237,9 +252,8 @@ def wrap_r04_agent(
                 created_by_item[item] = created_by_item.get(item, 0) + int(quantity)
 
         # If parent accounting claims more newly-advanced quantity than E11 actually removed,
-        # we cannot prove atomic rollback.  Preserve the exact parent action + parent debt.
-        if any(created_by_item.get(item, 0) > removed.get(item, 0)
-               for item in deferred_items):
+        # we cannot prove atomic rollback. Preserve the exact parent action + parent debt.
+        if any(created_by_item.get(item, 0) > removed.get(item, 0) for item in deferred_items):
             telemetry["fail_closed"] += 1
             failed = dict(report)
             failed.update(
@@ -257,6 +271,7 @@ def wrap_r04_agent(
             removed_sell_qty=removed,
             new_debt_qty=created_by_item,
             refunded_new_debt=refunded,
+            state_replaced=state_replaced,
         )
         telemetry["changed"] += 1
         telemetry["last_by_player"][player] = final_report
