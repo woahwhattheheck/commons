@@ -3,9 +3,11 @@
 """Evidence-only current-root B11 mirror-adaptive horizon screen.
 
 This consumes the exact reviewed B11 public mirror classifier on the shipped 8e3
-B5+JIT gameplay lineage plus #12535 immutable build custody. It changes only
-SALE_HORIZON per callback: H8 normally, H10 after eight validated exact public
-farm mirrors, restoring the prior horizon in finally.
+B5+JIT gameplay lineage plus #12535 immutable build custody. Both evaluator arms
+are first materialized as the exact score-facing cattle-ON H8 tuple via the
+reviewed #12505 submission transform. Candidate then changes only SALE_HORIZON
+per callback: H8 normally, H10 after eight validated exact public farm mirrors,
+restoring the prior horizon in finally.
 """
 from __future__ import annotations
 
@@ -28,6 +30,9 @@ RNG_SEED = 20260911
 DONOR_COMMIT = "d8fb85e7dd510cb816e616864760446332e5be7b"
 DONOR_PATH = "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py"
 DONOR_BLOB = "94b270f36c4a27b3d958ac3420bbe5764ac327a1"
+SCORE_DONOR_COMMIT = "dd41984ec477d6a1b07bbab2779a2e9f54f879c4"
+SCORE_DONOR_PATH = "revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py"
+SCORE_DONOR_BLOB = "9c5e46428f0a2357d7db6e46c4aa5f1f4748717d"
 ARLENE_SHA256 = "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
 SEEDS = tuple(range(2611151001, 2611151009))
 OPPONENTS = ("current_self", "arlene")
@@ -47,6 +52,11 @@ def sha256(path: Path) -> str:
 
 def git(repo: Path, *args: str) -> bytes:
     return subprocess.check_output(["git", *args], cwd=repo)
+
+
+def git_blob_sha(source: bytes) -> str:
+    header = f"blob {len(source)}\0".encode()
+    return hashlib.sha1(header + source).hexdigest()
 
 
 def run(repo: Path, *args: object) -> None:
@@ -89,6 +99,50 @@ def strict_fingerprint(value, label: str) -> dict:
     return value
 
 
+def read_tree(root: Path) -> dict[str, bytes]:
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
+def write_tree(files: dict[str, bytes], root: Path) -> None:
+    root.mkdir(parents=True, exist_ok=True)
+    for name, blob in files.items():
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(blob)
+
+
+def parse_config(files: dict[str, bytes], label: str) -> dict:
+    config = json.loads(files["TITAN-CONFIG.json"].decode("utf-8"))
+    if not isinstance(config, dict):
+        raise AssertionError(f"{label}: TITAN-CONFIG.json must decode to object")
+    return config
+
+
+def set_config(files: dict[str, bytes], config: dict) -> dict[str, bytes]:
+    out = dict(files)
+    out["TITAN-CONFIG.json"] = (json.dumps(config, indent=2) + "\n").encode("utf-8")
+    return out
+
+
+def load_score_transform(repo: Path):
+    source = git(repo, "show", f"{SCORE_DONOR_COMMIT}:{SCORE_DONOR_PATH}")
+    if git_blob_sha(source) != SCORE_DONOR_BLOB:
+        raise AssertionError("reviewed #12505 score-transform donor blob drift")
+    namespace = {
+        "__name__": "titan_b11_score_transform_12505",
+        "__file__": SCORE_DONOR_PATH,
+    }
+    exec(compile(source, SCORE_DONOR_PATH, "exec"), namespace)
+    transform = namespace.get("apply_submission_config")
+    if not callable(transform):
+        raise AssertionError("#12505 donor missing apply_submission_config")
+    return transform
+
+
 def assert_current_config(root: Path) -> None:
     config = json.loads((root / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
     expected = {
@@ -111,10 +165,51 @@ def assert_current_config(root: Path) -> None:
             raise AssertionError(f"current config drift {key}: {got!r} != {want!r}")
 
 
-def materialize(repo: Path, root: Path) -> tuple[Path, Path]:
+def materialize(repo: Path, root: Path) -> tuple[Path, Path, dict]:
+    raw = root / "raw"
     control = root / "control"
     candidate = root / "candidate"
-    run(repo, sys.executable, "-B", repo / BUILD_REL, "--tree", control)
+    run(repo, sys.executable, "-B", repo / BUILD_REL, "--tree", raw)
+
+    raw_files = read_tree(raw)
+    raw_cfg = parse_config(raw_files, "raw 8e3 package")
+    if raw_cfg.get("r04_sale_window") is not False:
+        raise AssertionError("raw 8e3 package must keep r04_sale_window=false before score transform")
+    if raw_cfg.get("r04_cattle_early") is not True:
+        raise AssertionError("raw 8e3 package must keep cattle ON before score transform")
+
+    transform = load_score_transform(repo)
+    score_off, off_cfg = transform(raw_files, 8)
+    if off_cfg.get("r04_sale_window") is not True:
+        raise AssertionError("score-facing transform must enable sale window")
+    if off_cfg.get("r04_sale_horizon") != 8 or type(off_cfg.get("r04_sale_horizon")) is not int:
+        raise AssertionError("score-facing transform must use literal H8")
+    if off_cfg.get("r04_cattle_early") is not False:
+        raise AssertionError("#12505 score-facing transform must produce cattle OFF before control derivation")
+
+    control_cfg = dict(off_cfg)
+    control_cfg["r04_cattle_early"] = True
+    control_files = set_config(score_off, control_cfg)
+
+    if set(raw_files) != set(score_off) or set(raw_files) != set(control_files):
+        raise AssertionError("score-facing materialization changed package membership")
+    raw_to_control = sorted(name for name in raw_files if raw_files[name] != control_files[name])
+    if raw_to_control != ["TITAN-CONFIG.json"]:
+        raise AssertionError(f"score-facing ON control changed unexpected members: {raw_to_control}")
+    raw_to_control_keys = sorted(
+        key for key in set(raw_cfg) | set(control_cfg)
+        if raw_cfg.get(key) != control_cfg.get(key)
+    )
+    if raw_to_control_keys != ["r04_sale_window"]:
+        raise AssertionError(f"score-facing ON control changed unexpected config keys: {raw_to_control_keys}")
+    off_to_control_keys = sorted(
+        key for key in set(off_cfg) | set(control_cfg)
+        if off_cfg.get(key) != control_cfg.get(key)
+    )
+    if off_to_control_keys != ["r04_cattle_early"]:
+        raise AssertionError(f"cattle ON control derivation drift: {off_to_control_keys}")
+
+    write_tree(control_files, control)
     shutil.copytree(control, candidate)
 
     for package in (control, candidate):
@@ -132,8 +227,7 @@ def materialize(repo: Path, root: Path) -> tuple[Path, Path]:
                 raise AssertionError(f"materialized package missing {name}")
 
     donor = git(repo, "show", f"{DONOR_COMMIT}:{DONOR_PATH}")
-    header = f"blob {len(donor)}\0".encode()
-    if hashlib.sha1(header + donor).hexdigest() != DONOR_BLOB:
+    if git_blob_sha(donor) != DONOR_BLOB:
         raise AssertionError("reviewed B11 donor blob drift")
     (candidate / "b11_mirror_horizon.py").write_bytes(donor)
 
@@ -187,7 +281,29 @@ def agent(observation, configuration=None):
         base.SALE_HORIZON = prior
 '''
     (candidate / "b11_candidate.py").write_text(adapter, encoding="utf-8")
-    return control, candidate
+
+    held_keys = (
+        "r04_sale_window",
+        "r04_sale_horizon",
+        "r04_sale_fertilizer",
+        "r04_cattle_early",
+        "r04_strawberry_topup",
+        "r04_no_late_sale_advance",
+        "r04_no_late_sale_advance_step",
+        "r04_b5_carrot_fertilizer",
+        "r04_b5_jit_fertilize",
+    )
+    materialization = {
+        "score_transform_donor": {
+            "commit": SCORE_DONOR_COMMIT,
+            "blob": SCORE_DONOR_BLOB,
+        },
+        "raw_to_control_changed_members": raw_to_control,
+        "raw_to_control_changed_config_keys": raw_to_control_keys,
+        "off_to_control_changed_config_keys": off_to_control_keys,
+        "control_config": {key: control_cfg[key] for key in held_keys},
+    }
+    return control, candidate, materialization
 
 
 def evaluate(repo: Path, candidate: Path, control: Path, arlene: Path, output: Path) -> dict:
@@ -331,7 +447,7 @@ def main() -> int:
         raise AssertionError("Arlene source SHA drift")
 
     with tempfile.TemporaryDirectory(prefix="titan-8e3-b11-") as temp:
-        control_dir, candidate_dir = materialize(repo, Path(temp))
+        control_dir, candidate_dir, materialization = materialize(repo, Path(temp))
         control_raw = output / "control-raw.json"
         candidate_raw = output / "candidate-raw.json"
         control_report = evaluate(repo, control_dir / "main.py", control_dir / "main.py", arlene, control_raw)
@@ -372,6 +488,7 @@ def main() -> int:
             "package_sha256": PACKAGE_SHA256,
             "engine_ref": ENGINE_REF,
             "reviewed_b11_donor": {"commit": DONOR_COMMIT, "blob": DONOR_BLOB},
+            "materialization": materialization,
             "seeds": list(SEEDS),
             "opponents": list(OPPONENTS),
             "arlene_exact_h8_identity": arlene_identity,
@@ -379,7 +496,7 @@ def main() -> int:
             "arlene": {"summary": arlene_summary, "cells": arlene_cells},
             "disposition": disposition,
             "truth_boundary": (
-                "Official-interpreter current-8e3 B5+JIT composition evidence only. "
+                "Official-interpreter score-facing current-8e3 B5+JIT cattle-ON H8 composition evidence only. "
                 "Trace delta is an action-realization proxy. Any surviving selector still "
                 "requires interaction evidence on the then-current L3/cattle/row-shed stack "
                 "and opponent-diverse D3 before score-facing integration."
@@ -389,8 +506,9 @@ def main() -> int:
             json.dumps(receipt, indent=2, allow_nan=False) + "\n", encoding="utf-8"
         )
         lines = [
-            "## B11 mirror-adaptive horizon — current 8e3 B5+JIT composition",
+            "## B11 mirror-adaptive horizon — score-facing current 8e3 B5+JIT composition",
             "",
+            "Control/candidate share the exact #12505-derived cattle-ON H8 score-facing package.",
             f"Arlene H8 identity: **{'PASS' if arlene_identity else 'FAIL'}**.",
             f"current self: **{self_summary['positive']}+ / {self_summary['negative']}- / {self_summary['zero']}=**, "
             f"trace deltas **{self_summary['trace_changed_cells']}/{self_summary['cells']}**, "
