@@ -1,0 +1,150 @@
+name: TITAN V3.1 fert-daily current-root gate
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-a612-restore-5f6-canonical-archive-20260911
+    paths:
+      - '.github/workflows/titan-v31-fert-daily-currentroot-gate.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paired-current-root:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact evidence head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact ancestry scope and donor custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
+          DONOR='8638d0db7068f38966424c59181875d8b128a72a'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          ROOT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
+          git cat-file -e "$DONOR^{commit}"
+          test "$(git rev-parse "$DONOR:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_fert_daily_sweep.py")" = 'cd6c1dd50a439f58bce9434db8d628ca8d6f978f'
+          test "$(git rev-parse "HEAD:$ROOT/donor.py")" = 'cd6c1dd50a439f58bce9434db8d628ca8d6f978f'
+
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-fert-daily-currentroot-gate.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/baseline.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/donor.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/run_gate.py
+          EOF
+          sort -o /tmp/expected /tmp/expected
+          git diff --name-only "$BASE"...HEAD | sort > /tmp/actual
+          diff -u /tmp/expected /tmp/actual
+          git diff --check "$BASE"...HEAD
+
+          test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py')" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py')" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
+          test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_fertilize.py')" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+          test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/jit_pass_fertilize.py')" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+          test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py')" = 'bdb9cf58148a3c7961c085f4902759537decabf6'
+
+      - name: Prove live roots before evaluator spend
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan-v3.1-live'
+          git fetch --no-tags origin '+refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911:refs/remotes/origin/v31-p0-live'
+          test "$(git rev-parse refs/remotes/origin/titan-v3.1-live)" = '8e3d92a286806f9f9525973ee7d359b629a11487'
+          test "$(git rev-parse refs/remotes/origin/v31-p0-live)" = '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+
+      - name: Compile and prove donor contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root'
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root')
+          for name in ('baseline.py', 'candidate.py', 'donor.py', 'run_gate.py'):
+              path = root / name
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py --check
+          PYTHONOPTIMIZE=1 python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py --check
+          PYTHONPATH="$ROOT" python - <<'PY'
+          import donor
+          tiles = [[None for _ in range(10)] for _ in range(10)]
+          tiles[2][2] = {'animal': 'COW', 'fertilizer_available': True}
+          obs = {'step': 100, 'player': 0,
+                 'farms': [{'tiles': tiles, 'farmer': [2,2], 'hands': []}],
+                 'private': {'inventories': [{}]}}
+          parent = {'farmer': ['PASS'], 'hands': [], 'market': []}
+          assert donor.apply_fert_daily_sweep(obs, parent, [])['farmer'] == ['COLLECT_FERTILIZER']
+          busy = {'farmer': ['FERTILIZE'], 'hands': [], 'market': []}
+          assert donor.apply_fert_daily_sweep(obs, busy, []) is busy
+          tiles2 = [[None for _ in range(10)] for _ in range(10)]
+          obs2 = {'step': 100, 'player': 0,
+                  'farms': [{'tiles': tiles2, 'farmer': [4,4], 'hands': []}],
+                  'private': {'inventories': [{'FERTILIZER': 2}]}}
+          assert donor.apply_fert_daily_sweep(obs2, parent, [{}]*719)['farmer'] == ['DROP']
+          obs2['private']['inventories'][0]['COW'] = 1
+          assert donor.apply_fert_daily_sweep(obs2, parent, [{}]*719) is parent
+          print('FERT_DAILY_DONOR_CONTRACT_OK')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run paired current-root gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/fert-daily-currentroot"
+          mkdir -p "$OUT"
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/fert_daily_sweep_current_root/run_gate.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" |& tee "$RUNNER_TEMP/fert-daily-currentroot.log"
+          cat "$OUT/receipt.md" >> "$GITHUB_STEP_SUMMARY"
+          python - "$OUT/receipt.json" <<'PY'
+          import json, pathlib, sys
+          data = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert data['schema'] == 'titan-v31-fert-daily-currentroot-gate/v1'
+          assert data['parent_head'] == '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          assert data['canonical_head'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
+          assert data['donor']['blob'] == 'cd6c1dd50a439f58bce9434db8d628ca8d6f978f'
+          assert data['current_tuple']['b5_carrot_fertilizer'] is True
+          assert data['current_tuple']['b5_jit_fertilize'] is True
+          assert data['current_tuple']['no_late_sale_advance'] is True
+          print('FERT_DAILY_CURRENTROOT_DISPOSITION', data['disposition'])
+          print('FERT_DAILY_CURRENTROOT_SUMMARIES', data['summaries'])
+          PY
+
+      - name: Recheck live roots before retaining evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan-v3.1-live'
+          git fetch --no-tags origin '+refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911:refs/remotes/origin/v31-p0-live'
+          test "$(git rev-parse refs/remotes/origin/titan-v3.1-live)" = '8e3d92a286806f9f9525973ee7d359b629a11487'
+          test "$(git rev-parse refs/remotes/origin/v31-p0-live)" = '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact paired evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-fert-daily-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/fert-daily-currentroot
+            ${{ runner.temp }}/fert-daily-currentroot.log
+          if-no-files-found: warn
+          retention-days: 14
