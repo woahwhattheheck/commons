@@ -1,0 +1,210 @@
+name: TITAN V3.1 a612 A6 V226 wheat topup
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-a612-a6-v226-wheat-topup.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: titan-v31-a612-a6-v226-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-current-stack-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact a612 parent, evidence scope, and producer bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          ARLENE='revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+          APPLY='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          test "$(git hash-object "$ARLENE")" = 'bdb9cf58148a3c7961c085f4902759537decabf6'
+          test "$(git hash-object "$APPLY")" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
+          python3 -B - <<'PY'
+          import hashlib
+          import subprocess
+          from pathlib import Path
+          parent = 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          expected = {
+              '.github/workflows/titan-v31-a612-a6-v226-wheat-topup.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/report.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{parent}...HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'wrong A6 evidence scope: {sorted(actual)!r}')
+          engine = Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py')
+          digest = hashlib.sha256(engine.read_bytes()).hexdigest()
+          expected_digest = 'bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e'
+          if digest != expected_digest:
+              raise SystemExit(f'wrong engine sha256: {digest}')
+          PY
+          git diff --check "$PARENT...HEAD"
+
+      - name: Bind shipped tuple and scoped V226 shim
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import importlib.util
+          import sys
+          from pathlib import Path
+
+          v3 = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3').resolve()
+          exp = v3 / 'experiments' / 'a6_v226_wheat_topup_ablation'
+          sys.path.insert(0, str(v3))
+          import apply_v3
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_kill_late_water': False,
+              'r04_strawberry_endgame': False,
+              'r04_strawberry_max_plants': 8,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_strawberry_topup': True,
+          }
+          for key, value in expected.items():
+              actual = apply_v3.PARAMS[key]
+              assert type(actual) is type(value) and actual == value, (key, actual, value)
+          for path in (exp/'baseline.py', exp/'candidate.py', exp/'report.py'):
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+
+          spec = importlib.util.spec_from_file_location('a6_candidate', exp/'candidate.py')
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          original = module.base._v226_topup
+          seen = []
+          module.BASE_AGENT = lambda observation, configuration=None: seen.append(module.base._v226_topup is module._no_v226_topup) or {'farmer':['PASS'],'hands':[],'market':[]}
+          module.agent({'step': 100}, {})
+          assert seen == [True]
+          assert module.base._v226_topup is original
+          def boom(observation, configuration=None):
+              assert module.base._v226_topup is module._no_v226_topup
+              raise RuntimeError('probe')
+          module.BASE_AGENT = boom
+          try:
+              module.agent({'step': 100}, {})
+          except RuntimeError as error:
+              assert str(error) == 'probe'
+          else:
+              raise AssertionError('expected probe failure')
+          assert module.base._v226_topup is original
+          print('A6 SHIPPED TUPLE + SCOPED V226 SHIM OK')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Prepare pinned official interpreter
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run exact a612 self-play control and V226 ablation
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/baseline.py'
+          A6='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/candidate.py'
+          SEEDS='2611151001,2611151002,2611151003,2611151004'
+          python3 -B "$EVAL" --engine-dir /tmp/kag-engine --candidate "$BASE" \
+            --opponent "a612=$BASE" --seeds "$SEEDS" --rng-seed 20260911 --recheck-first \
+            --output /tmp/a6-self-control.json
+          python3 -B "$EVAL" --engine-dir /tmp/kag-engine --candidate "$A6" \
+            --opponent "a612=$BASE" --seeds "$SEEDS" --rng-seed 20260911 --recheck-first \
+            --output /tmp/a6-self-ablation.json
+
+      - name: Run exact vendored-Arlene control and V226 ablation
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/baseline.py'
+          A6='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/candidate.py'
+          ARLENE='revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+          SEEDS='2611151001,2611151002,2611151003,2611151004'
+          python3 -B "$EVAL" --engine-dir /tmp/kag-engine --candidate "$BASE" \
+            --opponent "arlene=$ARLENE" --seeds "$SEEDS" --rng-seed 20260911 --recheck-first \
+            --output /tmp/a6-arlene-control.json
+          python3 -B "$EVAL" --engine-dir /tmp/kag-engine --candidate "$A6" \
+            --opponent "arlene=$ARLENE" --seeds "$SEEDS" --rng-seed 20260911 --recheck-first \
+            --output /tmp/a6-arlene-ablation.json
+
+      - name: Reduce paired current-stack receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/report.py \
+            --control-selfplay /tmp/a6-self-control.json \
+            --candidate-selfplay /tmp/a6-self-ablation.json \
+            --control-arlene /tmp/a6-arlene-control.json \
+            --candidate-arlene /tmp/a6-arlene-ablation.json \
+            --json-out /tmp/a6-v226-report.json \
+            --markdown-out /tmp/a6-v226-report.md
+          cat /tmp/a6-v226-report.md
+          cat /tmp/a6-v226-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: a6-v226-ablation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/a6-self-control.json
+            /tmp/a6-self-ablation.json
+            /tmp/a6-arlene-control.json
+            /tmp/a6-arlene-ablation.json
+            /tmp/a6-v226-report.json
+            /tmp/a6-v226-report.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/a6-v226-report.md
+          } > /tmp/comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
