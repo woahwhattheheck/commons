@@ -254,6 +254,21 @@
         "observed_at": "2026-09-10T23:05:24.713000+00:00",
         "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
       }
+    },
+    {
+      "sku": "pixel-agent-pack",
+      "product": "prod_VEk1mYKCspCFet",
+      "price": "price_1UEGX1ATH4EDE7XDB6wUzDMc",
+      "plink": "plink_1UEGXBATH4EDE7XD8LNwSoh2",
+      "url": "https://buy.stripe.com/fZufZgfxb9fj8qBbp843S0t",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
     }
   ],
   "inert_duplicate_urls": [
