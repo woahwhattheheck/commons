@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/titan-v31-a612-jit-live-interaction.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/**'
   workflow_dispatch:
 
@@ -35,18 +37,22 @@ jobs:
           R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
           TAPE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py'
           JIT='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+          JIT_TEST='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py'
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
           test "$(git hash-object "$TAPE")" = 'a43289b9cc5e34a2481fddf652762a7d92f427ef'
           test "$(git hash-object "$JIT")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+          test "$(git hash-object "$JIT_TEST")" = '20603d7ab4cd79d0e7984d15452d0ee105a4f249'
           test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
           python3 -B - <<'PY'
           import subprocess
           base = 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
           expected = {
               '.github/workflows/titan-v31-a612-jit-live-interaction.yml',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py',
+              'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/test_jit_pass_fertilize.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/README.md',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/baseline.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/candidate.py',
