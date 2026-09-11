@@ -1,0 +1,165 @@
+name: TITAN V3.1 a612 cattle OFF current-package A-B
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-a612-cattle-off-package-ab.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-current-package-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact canonical base, scope, score transform, and evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py)" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          git diff --name-only "$BASE"..HEAD > /tmp/cattle-ab-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/cattle-ab-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-a612-cattle-off-package-ab.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/make_submission_12505.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/materialize_ab.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/report_ab.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'cattle A/B scope drift: {sorted(actual)!r}')
+          print('CATTLE_AB_SCOPE_OK', len(actual))
+          PY
+
+      - name: Prove canonical deterministic package still exact
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check | tee /tmp/cattle-build-check.log
+          grep -F 'V3 CHECK OK 400ae640f3258b6a6ff19f9da99c66ef9c433e315febb1d72c75296cddeb277c' /tmp/cattle-build-check.log
+
+      - name: Materialize exact cattle ON and OFF score-facing package trees
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/cattle-on /tmp/cattle-off
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612/materialize_ab.py \
+            --on-tree /tmp/cattle-on \
+            --off-tree /tmp/cattle-off \
+            --receipt /tmp/cattle-materialization.json | tee /tmp/cattle-materialization.log
+          python - <<'PY'
+          import json
+          r = json.load(open('/tmp/cattle-materialization.json'))
+          assert r['on_to_off_changed_members'] == ['TITAN-CONFIG.json']
+          assert r['on_to_off_changed_config_keys'] == ['r04_cattle_early']
+          assert r['control_config']['r04_cattle_early'] is True
+          assert r['candidate_config']['r04_cattle_early'] is False
+          print('CATTLE_AB_ONE_KEY_OK', r['on_package_sha256'], r['off_package_sha256'])
+          PY
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run cattle ON control against fixed cattle ON opponent
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          python -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/cattle-on/main.py \
+            --opponent cattle_on=/tmp/cattle-on/main.py \
+            --seeds 2611152001,2611152002,2611152003,2611152004,2611152005,2611152006,2611152007,2611152008 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/cattle-on-control.json
+
+      - name: Run cattle OFF candidate against the identical cattle ON opponent
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          python -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/cattle-off/main.py \
+            --opponent cattle_on=/tmp/cattle-on/main.py \
+            --seeds 2611152001,2611152002,2611152003,2611152004,2611152005,2611152006,2611152007,2611152008 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/cattle-off-candidate.json
+
+      - name: Derive paired own-rival-margin and W-T-L verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_a612'
+          python -B "$DIR/report_ab.py" \
+            /tmp/cattle-materialization.json \
+            /tmp/cattle-on-control.json \
+            /tmp/cattle-off-candidate.json \
+            --json-out /tmp/cattle-ab-report.json \
+            --markdown-out /tmp/cattle-ab-report.md
+          cat /tmp/cattle-ab-report.md
+          cat /tmp/cattle-ab-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact package and economics receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cattle-off-a612-package-ab-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/cattle-materialization.json
+            /tmp/cattle-on-control.json
+            /tmp/cattle-off-candidate.json
+            /tmp/cattle-ab-report.json
+            /tmp/cattle-ab-report.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/cattle-ab-report.md
+            printf '\nExact a612 package A/B. #12505 score-transform donor blob: `9c5e46428f0a2357d7db6e46c4aa5f1f4748717d`. No source/package/default/Kaggle mutation.\n'
+          } > /tmp/cattle-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
