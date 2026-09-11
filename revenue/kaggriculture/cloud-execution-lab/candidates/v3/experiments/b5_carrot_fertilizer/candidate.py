@@ -2,10 +2,15 @@
 """B5 evaluation arm: opportunistic no-detour CARROT fertilization.
 
 This experiment is outside ``overlay/**`` and therefore cannot alter the deterministic
-V3 package or submission defaults.  It pins the live V3.1 R04 baseline, then replaces
-only an already-idle PASS with FERTILIZE when that worker is already standing on a
+V3 package or submission defaults. It pins the live V3.1 R04 baseline, then replaces
+only an existing literal PASS with FERTILIZE when that worker is already standing on a
 CARROT plant, already carrying fertilizer, and the tile is not fertilized through the
-next two days.  No pathing, buying, hiring, market, or non-idle worker command changes.
+next two days. No pathing, buying, hiring, market, or non-idle worker command changes.
+
+The predicate is deliberately fail-closed: malformed/ambiguous action or observation
+state never gets normalized into eligibility. In particular, Python bool/float/string
+values are not accepted as engine integer evidence, and a falsey/missing command is not
+invented as PASS.
 """
 from __future__ import annotations
 
@@ -34,53 +39,116 @@ _BASE_AGENT = base.install(**LIVE_BASELINE)
 REPORT = {"carrot_fertilize_requests": 0}
 
 
+def _strict_position(position):
+    """Return an exact integer coordinate pair, rejecting bool/float/string aliases."""
+    if not isinstance(position, (list, tuple)) or len(position) != 2:
+        return None
+    x, y = position
+    if type(x) is not int or type(y) is not int:
+        return None
+    return x, y
+
+
 def _eligible(tile, inventory, day):
-    """True only for a carried-fertilizer CARROT top-up with three-day coverage."""
-    return (
-        isinstance(tile, dict)
-        and tile.get("kind") == "PLANT"
-        and tile.get("crop") == "CARROT"
-        and int(inventory.get("FERTILIZER", 0)) > 0
-        and int(tile.get("fertilized_until_day", -1)) < day + 2
-    )
+    """True only for a carried-fertilizer CARROT top-up with proven coverage state."""
+    if not isinstance(tile, dict) or tile.get("kind") != "PLANT" or tile.get("crop") != "CARROT":
+        return False
+    if not isinstance(inventory, dict):
+        return False
+
+    fertilizer = inventory.get("FERTILIZER", 0)
+    if type(fertilizer) is not int or fertilizer <= 0:
+        return False
+
+    if "fertilized_until_day" not in tile:
+        return False
+    fertilized_until = tile["fertilized_until_day"]
+    if type(fertilized_until) is not int:
+        return False
+    return fertilized_until < day + 2
 
 
 def apply_carrot_fertilizer(observation, action):
-    """Replace eligible PASS rows without touching the caller's action object."""
-    player = int(observation["player"])
-    day = int(observation["step"]) // 24
-    farm = observation["farms"][player]
-    private = observation["private"]
-    inventories = private.get("inventories") or []
-    positions = [farm["farmer"], *(farm.get("hands") or [])]
-    commands = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
-    claimed = set()
-    changed = False
-
-    for actor, (command, position) in enumerate(zip(commands, positions)):
-        if command != ["PASS"] or actor >= len(inventories):
-            continue
-        try:
-            x, y = int(position[0]), int(position[1])
-            if not (0 <= y < len(farm["tiles"]) and 0 <= x < len(farm["tiles"][y])):
-                continue
-            if (x, y) in claimed:
-                continue
-            tile = farm["tiles"][y][x]
-        except (KeyError, TypeError, ValueError, IndexError):
-            continue
-        if not _eligible(tile, inventories[actor] or {}, day):
-            continue
-        commands[actor] = ["FERTILIZE"]
-        claimed.add((x, y))
-        REPORT["carrot_fertilize_requests"] += 1
-        changed = True
-
-    if not changed:
+    """Replace eligible literal PASS rows; malformed proof preserves exact parent identity."""
+    if not isinstance(observation, dict) or not isinstance(action, dict):
         return action
+
+    player = observation.get("player")
+    step = observation.get("step")
+    if type(player) is not int or player < 0 or type(step) is not int or step < 0:
+        return action
+    day = step // 24
+
+    farms = observation.get("farms")
+    private = observation.get("private")
+    if not isinstance(farms, list) or player >= len(farms) or not isinstance(private, dict):
+        return action
+    farm = farms[player]
+    if not isinstance(farm, dict):
+        return action
+
+    tiles = farm.get("tiles")
+    farm_hands = farm.get("hands")
+    farmer_position = farm.get("farmer")
+    inventories = private.get("inventories")
+    if not isinstance(tiles, list) or not isinstance(farm_hands, list) or not isinstance(inventories, list):
+        return action
+
+    # Require explicit command structure. Never reinterpret missing/falsey rows as PASS.
+    if "farmer" not in action or "hands" not in action:
+        return action
+    farmer_command = action["farmer"]
+    hand_commands = action["hands"]
+    if not isinstance(farmer_command, list) or not isinstance(hand_commands, list):
+        return action
+    if any(not isinstance(command, list) for command in hand_commands):
+        return action
+
+    positions = [farmer_position, *farm_hands]
+    commands = [farmer_command, *hand_commands]
+    if len(positions) != len(commands) or len(inventories) != len(commands):
+        return action
+
+    # Validate the complete worker-state carrier before mutating any one actor. This keeps
+    # a malformed sibling worker from turning a partially interpreted observation into an
+    # apparently valid mutation.
+    normalized_positions = []
+    for position, inventory in zip(positions, inventories):
+        coordinate = _strict_position(position)
+        if coordinate is None or not isinstance(inventory, dict):
+            return action
+        normalized_positions.append(coordinate)
+
+    claimed = set()
+    replacements = {}
+    for actor, (command, (x, y), inventory) in enumerate(
+        zip(commands, normalized_positions, inventories)
+    ):
+        if command != ["PASS"]:
+            continue
+        if y < 0 or y >= len(tiles):
+            continue
+        row = tiles[y]
+        if not isinstance(row, list) or x < 0 or x >= len(row):
+            continue
+        if (x, y) in claimed:
+            continue
+        tile = row[x]
+        if not _eligible(tile, inventory, day):
+            continue
+        replacements[actor] = ["FERTILIZE"]
+        claimed.add((x, y))
+
+    if not replacements:
+        return action
+
     result = copy.deepcopy(action)
-    result["farmer"] = commands[0]
-    result["hands"] = commands[1:]
+    if 0 in replacements:
+        result["farmer"] = replacements[0]
+    for actor, replacement in replacements.items():
+        if actor > 0:
+            result["hands"][actor - 1] = replacement
+    REPORT["carrot_fertilize_requests"] += len(replacements)
     return result
 
 
