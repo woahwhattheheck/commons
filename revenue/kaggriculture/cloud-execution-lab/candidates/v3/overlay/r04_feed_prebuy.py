@@ -13,6 +13,7 @@ off as ``r04_feed_prebuy``.
 from __future__ import annotations
 
 import copy
+import math
 
 _PRODUCT_BY_ANIMAL = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
 _MAX_PREBUY = 2
@@ -25,6 +26,16 @@ REPORT = {"probes": 0, "armed": 0, "units_requested": 0,
 
 def _plain_nonnegative_int(value):
     return type(value) is int and value >= 0
+
+
+def _finite_nonnegative_number(value):
+    """Accept the engine's float money surface without accepting type poison."""
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(value)
+        and value >= 0
+    )
 
 
 def _config_ok(configuration, r04):
@@ -221,7 +232,7 @@ def _purchase_quantity(observation, action, configuration, r04):
         return None
 
     money = farm.get("money") if isinstance(farm, dict) else None
-    if type(money) is not int or money < 0:
+    if not _finite_nonnegative_number(money):
         return None
     conservative_cost = quantity * (wheat_price + _PRICE_PAD)
     if money < conservative_cost + _CASH_RESERVE:
