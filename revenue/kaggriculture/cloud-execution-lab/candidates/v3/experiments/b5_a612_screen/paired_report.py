@@ -3,8 +3,9 @@
 """Reduce matched current-canonical B5 control/candidate evaluator receipts.
 
 This is an interaction screen, not a promotion gate. It requires complete, unique,
-finite, seat-aware paired cells and treats any negative own-score or competitive-margin
-cell as a HOLD before a wider opponent-diverse D3 receipt is attempted.
+finite, seat-aware paired cells drawn from the exact declared seed/opponent cartesian
+product, and treats any negative own-score or competitive-margin cell as a HOLD before
+a wider opponent-diverse D3 receipt is attempted.
 """
 from __future__ import annotations
 
@@ -46,8 +47,22 @@ def normalized_games(report, label):
         raise SystemExit(f"{label}: missing seeds/opponents metadata")
     if not isinstance(games, list) or not games:
         raise SystemExit(f"{label}: missing games")
+
+    seed_set = set()
     for i, seed in enumerate(seeds):
         strict_int(seed, f"{label}.seeds[{i}]")
+        if seed in seed_set:
+            raise SystemExit(f"{label}: duplicate declared seed {seed!r}")
+        seed_set.add(seed)
+
+    opponent_set = set()
+    for i, opponent in enumerate(opponents):
+        if not isinstance(opponent, str) or not opponent:
+            raise SystemExit(f"{label}.opponents[{i}]: expected non-empty string")
+        if opponent in opponent_set:
+            raise SystemExit(f"{label}: duplicate declared opponent {opponent!r}")
+        opponent_set.add(opponent)
+
     result = {}
     for index, game in enumerate(games):
         if not isinstance(game, dict):
@@ -57,7 +72,11 @@ def normalized_games(report, label):
         opponent = game.get("opponent")
         if not isinstance(opponent, str) or not opponent:
             raise SystemExit(f"{label}.games[{index}]: bad opponent")
+        if opponent not in opponent_set:
+            raise SystemExit(f"{label}.games[{index}]: undeclared opponent {opponent!r}")
         seed = strict_int(game.get("seed"), f"{label}.games[{index}].seed")
+        if seed not in seed_set:
+            raise SystemExit(f"{label}.games[{index}]: undeclared seed {seed!r}")
         seat = strict_int(game.get("candidate_seat"), f"{label}.games[{index}].candidate_seat")
         if seat not in (0, 1):
             raise SystemExit(f"{label}.games[{index}]: seat must be 0/1")
@@ -74,9 +93,20 @@ def normalized_games(report, label):
         row = dict(game)
         row["scores"] = scores
         result[key] = row
-    expected = len(seeds) * len(opponents) * 2
-    if len(result) != expected:
-        raise SystemExit(f"{label}: expected {expected} cartesian cells, found {len(result)}")
+
+    expected_keys = {
+        (opponent, seed, seat)
+        for opponent in opponent_set
+        for seed in seed_set
+        for seat in (0, 1)
+    }
+    actual_keys = set(result)
+    if actual_keys != expected_keys:
+        missing = sorted(expected_keys - actual_keys)
+        extra = sorted(actual_keys - expected_keys)
+        raise SystemExit(
+            f"{label}: declared cartesian coverage mismatch: missing={missing!r} extra={extra!r}"
+        )
     return result
 
 
