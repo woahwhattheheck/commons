@@ -35,6 +35,7 @@ _HOSTED_STATES = {
     "MIXED",
 }
 _RELEASE_STATES = {"ACTIVE", "HOLD", "PUBLISHED", "RELEASED", "MERGED", "SUPERSEDED"}
+_CHECKOUT_MODES = {"PR_MERGE_REF", "PR_HEAD_EXPLICIT", "PUSH_DISPATCH_SHA"}
 
 
 class ReceiptError(ValueError):
@@ -104,23 +105,80 @@ def _tests(value: Any) -> list[dict[str, str]]:
 def _hosted(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ReceiptError("hosted must be an object")
-    unknown = set(value) - {"state", "run_ids"}
+    unknown = set(value) - {"state", "runs"}
     if unknown:
         raise ReceiptError(f"hosted unknown keys: {sorted(unknown)}")
     state = _text(value.get("state"), "hosted.state").upper()
     if state not in _HOSTED_STATES:
         raise ReceiptError(f"hosted.state invalid: {state}")
-    run_ids = value.get("run_ids", [])
-    if not isinstance(run_ids, list) or any(
-        isinstance(run_id, bool) or not isinstance(run_id, int) or run_id <= 0
-        for run_id in run_ids
-    ):
-        raise ReceiptError("hosted.run_ids must be a list of positive integers")
-    if len(run_ids) != len(set(run_ids)):
-        raise ReceiptError("hosted.run_ids contains duplicates")
-    if state == "NOT_RUN" and run_ids:
-        raise ReceiptError("NOT_RUN hosted state cannot carry run_ids")
-    return {"state": state, "run_ids": sorted(run_ids)}
+
+    runs = value.get("runs", [])
+    if not isinstance(runs, list):
+        raise ReceiptError("hosted.runs must be a list")
+    if state == "NOT_RUN" and runs:
+        raise ReceiptError("NOT_RUN hosted state cannot carry runs")
+    if state != "NOT_RUN" and not runs:
+        raise ReceiptError(f"{state} hosted state requires at least one run")
+
+    normalized: list[dict[str, Any]] = []
+    seen_ids: set[int] = set()
+    allowed = {
+        "run_id",
+        "event",
+        "run_head_sha",
+        "executed_checkout_sha",
+        "checkout_mode",
+    }
+    for idx, item in enumerate(runs):
+        if not isinstance(item, dict):
+            raise ReceiptError(f"hosted.runs[{idx}] must be an object")
+        unknown_run = set(item) - allowed
+        missing_run = allowed - set(item)
+        if missing_run:
+            raise ReceiptError(
+                f"hosted.runs[{idx}] missing keys: {sorted(missing_run)}"
+            )
+        if unknown_run:
+            raise ReceiptError(
+                f"hosted.runs[{idx}] unknown keys: {sorted(unknown_run)}"
+            )
+
+        run_id = item["run_id"]
+        if isinstance(run_id, bool) or not isinstance(run_id, int) or run_id <= 0:
+            raise ReceiptError(
+                f"hosted.runs[{idx}].run_id must be a positive integer"
+            )
+        if run_id in seen_ids:
+            raise ReceiptError(f"duplicate hosted run_id: {run_id}")
+        seen_ids.add(run_id)
+
+        event = _text(item["event"], f"hosted.runs[{idx}].event")
+        run_head_sha = _sha(
+            item["run_head_sha"], f"hosted.runs[{idx}].run_head_sha"
+        )
+        executed = item["executed_checkout_sha"]
+        if executed is not None:
+            executed = _sha(
+                executed, f"hosted.runs[{idx}].executed_checkout_sha"
+            )
+        mode = _text(
+            item["checkout_mode"], f"hosted.runs[{idx}].checkout_mode"
+        ).upper()
+        if mode not in _CHECKOUT_MODES:
+            raise ReceiptError(
+                f"hosted.runs[{idx}].checkout_mode invalid: {mode}"
+            )
+
+        normalized.append(
+            {
+                "run_id": run_id,
+                "event": event,
+                "run_head_sha": run_head_sha,
+                "executed_checkout_sha": executed,
+                "checkout_mode": mode,
+            }
+        )
+    return {"state": state, "runs": sorted(normalized, key=lambda row: row["run_id"])}
 
 
 def normalize_receipt(payload: Any) -> dict[str, Any]:
