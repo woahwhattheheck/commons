@@ -1,0 +1,71 @@
+name: titan-v31-e5-floor-liquidation
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/e5_floor_liquidation/**'
+      - '.github/workflows/titan-v31-e5-floor-liquidation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  e5-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git status --short
+
+      - name: Run focused E5 contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -v -s experiments/e5_floor_liquidation -p 'test_e5_floor_liquidation.py' |& tee /tmp/e5-tests.log
+          grep -F 'Ran 10 tests' /tmp/e5-tests.log
+          grep -F 'OK' /tmp/e5-tests.log
+
+      - name: Compile exact experiment entrypoints
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            experiments/e5_floor_liquidation/r04_e5_floor_liquidation.py \
+            experiments/e5_floor_liquidation/candidate.py \
+            experiments/e5_floor_liquidation/test_e5_floor_liquidation.py
+
+      - name: Prove package-neutral PR scope
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only '${{ github.event.pull_request.base.sha }}' HEAD | tee /tmp/e5-files.txt
+          python - <<'PY'
+          from pathlib import Path
+          allowed_prefix = 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/e5_floor_liquidation/'
+          allowed_workflow = '.github/workflows/titan-v31-e5-floor-liquidation.yml'
+          paths = [line.strip() for line in Path('/tmp/e5-files.txt').read_text().splitlines() if line.strip()]
+          bad = [p for p in paths if p != allowed_workflow and not p.startswith(allowed_prefix)]
+          if bad:
+              raise SystemExit('E5 package-neutral scope violated: ' + ', '.join(bad))
+          print('E5_SCOPE_OK', len(paths), 'files')
+          PY
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
