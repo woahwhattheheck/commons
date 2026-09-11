@@ -34,13 +34,14 @@ def apply_place_delivery(observation, action, enabled=False):
     if observation.get("step") != 718 or not isinstance(action, dict):
         return action
 
-    # FarmView indexes farms by observation["player"] directly. Python bool is
-    # an int subclass, so True would otherwise alias farm 1 and permit malformed
-    # public state to enter a destructive terminal action rewrite.
+    # Official Kaggriculture has exactly two player seats, IDs 0 and 1.
+    # FarmView indexes farms by observation["player"] directly; Python bool is
+    # an int subclass, and a malformed third farm could otherwise make player=2
+    # look structurally valid even though the engine can never emit that seat.
     player = observation.get("player")
     farms = observation.get("farms")
-    if (type(player) is not int or not isinstance(farms, list)
-            or player < 0 or player >= len(farms)):
+    if (type(player) is not int or player not in (0, 1)
+            or not isinstance(farms, list) or player >= len(farms)):
         return action
 
     import r04_full_router as r04
