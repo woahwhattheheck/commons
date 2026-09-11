@@ -9,6 +9,7 @@ Anything ambiguous returns the exact parent action object unchanged.
 """
 from __future__ import annotations
 
+from collections import Counter
 from typing import Any
 
 _TURNS_PER_DAY = 24
@@ -80,7 +81,11 @@ def _qualifies(tile: Any, inventory: dict[str, Any], day: int) -> tuple[bool, st
             or type(fertilized_until) is not int
             or type(watered_today) is not bool):
         return False, crop
-    if watered_today or fertilized_until >= day or yield_units >= crop_data["max_yield"]:
+    # Fertilized annual WATER adds 2 units while ordinary WATER adds 1. Spending
+    # one fertilizer has positive marginal yield only when at least 2 units of
+    # headroom remain; at max-1 both paths truncate to the same cap.
+    if (watered_today or fertilized_until >= day
+            or yield_units > crop_data["max_yield"] - 2):
         return False, crop
     age = day - planted_day
     window_start = (crop_data["max_yield_day"] + 1) // 2
@@ -120,6 +125,18 @@ def apply_jit_pass_fertilize(
         ok, crop = _qualifies(tile, inventory, day)
         if ok and crop is not None:
             matches.append((worker, crop, pos, int(inventory["FERTILIZER"])))
+    if not matches:
+        return action, ()
+
+    # FERTILIZE updates tile coverage, not worker state. Multiple qualifying
+    # workers on one tile would spend duplicate units for one coverage update.
+    # Ambiguous shared-tile matches therefore fail closed while independent tiles
+    # may still proceed.
+    position_counts = Counter((pos[0], pos[1]) for _, _, pos, _ in matches)
+    matches = [
+        match for match in matches
+        if position_counts[(match[2][0], match[2][1])] == 1
+    ]
     if not matches:
         return action, ()
 
