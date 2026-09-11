@@ -91,6 +91,20 @@ class A5MelonJitTests(unittest.TestCase):
         tile["yield_units"] = a5.MELON_MAX_YIELD
         self.assertIs(a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)[0], action)
 
+    def test_requires_positive_marginal_yield_headroom(self):
+        # At yield 5, ordinary WATER and fertilized WATER both cap at 6: exact no-op.
+        obs, action, nxt = fixture(yield_units=a5.MELON_MAX_YIELD - 1)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(rows, ())
+
+        # At yield 4, baseline WATER reaches 5 while fertilized WATER reaches 6: eligible.
+        obs, action, nxt = fixture(yield_units=a5.MELON_MAX_YIELD - 2)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIsNot(out, action)
+        self.assertEqual(out["hands"], [["FERTILIZE"]])
+        self.assertEqual(len(rows), 1)
+
     def test_bool_and_string_quantities_do_not_coerce(self):
         for bad in (True, "2", 2.0):
             with self.subTest(bad=bad):
