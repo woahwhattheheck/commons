@@ -1,0 +1,225 @@
+{
+  "schema": "titan.v3-integration.v1",
+  "operation": "titan-v3-integration-20260909-01",
+  "owner_rule": "2026-09-09: all fleet work lands in candidates/v3 as deterministic TITAN-CONFIG.json keys, not as split candidate directories. exports/titan-current.tar.gz and the Kaggle submission stay with Bryce.",
+  "base": {
+    "archive": "exports/titan-current.tar.gz",
+    "sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+    "bytes": 429604,
+    "files": 122,
+    "main_sha_seen": "14dbbc4940262790f7e21c0bdc7a941842f238ba (PR #12119, 2026-09-10 evening), read from main 2026-09-10",
+    "note": "supersedes 5f6a4153 (main 741e7262), 17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86 (main 47d3b556), and a055fd56 (main 0d82aa7c, the base of the 2026-09-09 V3 panels); all 10 apply_v3.py anchors match; 54/54 checks pass; test_v3_r02 tearDownModule added to fix cross-module step-sharing after R02 global route bank modification"
+  },
+  "archive": {
+    "path": "dist/titan-v3.tar.gz (build product, not committed)",
+    "sha256": "6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f",
+    "bytes": 482234,
+    "files": 122
+  },
+  "keys": {
+    "e11_rival_sell": {
+      "default": false,
+      "seam": "SellScheduler._v3_e11_before_pending / FrozenSelected via inherited method, before pending accounting",
+      "module": "e11_rival_sell.py"
+    },
+    "rival_model": {
+      "default": false,
+      "seam": "TitanAgent._v3_post before _finish_production",
+      "module": "rival_model.py"
+    },
+    "e20_hire_guard": {
+      "default": false,
+      "seam": "TitanAgent._v3_post before _finish_production",
+      "module": "e20_hire_guard.py"
+    },
+    "params": {
+      "rival_dump_price_drop": 15.0,
+      "rival_dump_lookback_steps": 8,
+      "e11_min_future_absorption": 2,
+      "e20_max_hires_per_day": 3,
+      "e20_min_unwatered_crops": 3,
+      "g01_early_expander_step": 144,
+      "g01_land_cash_floor": 0
+    },
+    "l01_land": {
+      "default": false,
+      "seam": "TitanAgent._v3_l01_install at the end of _initialize (patches controller.R once)",
+      "module": "l01_mechanics.py",
+      "effect": "BUY_LAND appended at tape steps 74 and 98 (150/265 kept)"
+    },
+    "l01_sheep": {
+      "default": false,
+      "seam": "TitanAgent._v3_l01_install at the end of _initialize (patches controller.R once)",
+      "module": "l01_mechanics.py",
+      "effect": "BUY_ANIMAL COW after step 1 becomes SHEEP"
+    },
+    "l01_day0buy": {
+      "default": false,
+      "seam": "TitanAgent._v3_l01_install at the end of _initialize (patches controller.R once)",
+      "module": "l01_mechanics.py",
+      "effect": "step-0 market becomes the SpaTaro basket"
+    },
+    "l01_leanplant": {
+      "default": false,
+      "seam": "TitanAgent._v3_l01_install at the end of _initialize (patches controller.R once)",
+      "module": "l01_mechanics.py",
+      "effect": "last 92 PLANT WHEAT units become PASS"
+    },
+    "l01_tranche": {
+      "default": false,
+      "seam": "TitanAgent._v3_post_final after _finish_production",
+      "module": "l01_mechanics.py",
+      "effect": "day>=28 SELL WHEAT<=57 CARROT<=32 and pack other shed products"
+    }
+  },
+  "lanes": [
+    {
+      "id": "E11",
+      "key": "e11_rival_sell",
+      "status": "integrated",
+      "lineage": [
+        "TESSERA design (Slack C0BUH19DW80)",
+        "G01 Grok Build #2 PR #11371 candidates/v3-g01-gemini-patches",
+        "ARGUS repair candidates/v3-g01-argus-safe (A2 exact future ticks, A3 pre-pending seam, A9 no rival-causation claim)"
+      ]
+    },
+    {
+      "id": "O01",
+      "key": "rival_model",
+      "status": "integrated",
+      "lineage": [
+        "TESSERA rival model",
+        "G01",
+        "ARGUS repair (A1 append-only BUY_LAND, A4 E11 owns SELLs, A8 composed before early_capital ordering)"
+      ]
+    },
+    {
+      "id": "E20",
+      "key": "e20_hire_guard",
+      "status": "integrated",
+      "lineage": [
+        "TESSERA E20",
+        "G01",
+        "ARGUS repair (A5 every excess HIRE, A6 dead branch removed)"
+      ]
+    },
+    {
+      "id": "O02",
+      "key": null,
+      "status": "callable_only",
+      "lineage": [
+        "TESSERA O02",
+        "G01",
+        "ARGUS A7: no fractional absorption; scoring-only seam pending"
+      ]
+    },
+    {
+      "id": "early_capital",
+      "key": "early_capital",
+      "status": "canonical",
+      "lineage": [
+        "canonical archive a055fd56"
+      ]
+    },
+    {
+      "id": "P07",
+      "key": "joint_actor_assignment",
+      "status": "pending",
+      "owner": "Grok Build #6"
+    },
+    {
+      "id": "T01",
+      "key": "terminal_liquidation",
+      "status": "pending",
+      "owner": "TESSERA design; any Grok"
+    },
+    {
+      "id": "T02",
+      "key": "land_unlock_timing",
+      "status": "pending",
+      "owner": "TESSERA design; any Grok"
+    },
+    {
+      "id": "T03",
+      "key": "opening_script",
+      "status": "pending",
+      "owner": "TESSERA design; any Grok"
+    },
+    {
+      "id": "T04",
+      "key": "tight_guard",
+      "status": "pending",
+      "owner": "TESSERA design; any Grok"
+    },
+    {
+      "id": "S02",
+      "key": null,
+      "status": "excluded",
+      "reason": "H=6 receding-horizon MPC lost all 4 smoke games by 88,615 mean margin (candidates/v3-s02-mpc/RESULTS.md)"
+    },
+    {
+      "id": "S11",
+      "key": null,
+      "status": "infrastructure",
+      "path": "bank/v3-adversarial"
+    },
+    {
+      "id": "S11b",
+      "key": null,
+      "status": "infrastructure",
+      "path": "bank/v3-adversarial/leader-clones (PR #11425)"
+    },
+    {
+      "id": "S12",
+      "key": null,
+      "status": "infrastructure",
+      "path": "docs/s12-leader-replays, candidates/v3-s12-replay-diag"
+    },
+    {
+      "id": "L01",
+      "key": [
+        "l01_land",
+        "l01_sheep",
+        "l01_day0buy",
+        "l01_tranche",
+        "l01_leanplant"
+      ],
+      "status": "integrated",
+      "lineage": [
+        "Grok Build #5 PR #11459 candidates/v3-l01-leader-mechanics (canonical 3b4b, same MAIN tape 7015cc00acfa4922)",
+        "V3 port 2026-09-09: flags from Features, tape patch at _initialize, tranche after _finish_production, checks/test_v3_l01.py (13 cases)"
+      ],
+      "panels": {
+        "a055 control seeds 2611061001-016 (shard V 23:20Z)": "arlene 32-0 +1630.3, apex 32-0 +8942.7, kaito_v43 30-2 +14596.8, cok_v10 32-0 +26303.1, public_bt12 32-0 +22454.7, v1_submitted 32-0 +873.9"
+      }
+    }
+  ],
+  "panels": {
+    "protocol": "tools/v25_sims/gauntlet.py @ claude/funny-newton-33p0t1 e12becfb; opponents arlene,apex,kaito_v43,cok_v10,public_bt12,v1_submitted; both seats; engine kaggle-environments 1.32.7 28b6d8af",
+    "arms": [
+      "canonical a055 (control)",
+      "v3 all keys off (must equal control cell-for-cell)",
+      "v3 e11_rival_sell",
+      "v3 rival_model",
+      "v3 e20_hire_guard",
+      "v3 all three"
+    ],
+    "seeds": "2611091001-2611091016 first, then dev 2611001001-016, hold 2611002001-016, conf 2611003001-032 for any arm that is non-negative",
+    "results": []
+  },
+  "overlay": {
+    "checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d",
+    "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
+    "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
+    "checks/test_v3_r02.py": "89df2cc1666c230e8a1529b73fc015091b509fc5ea2b82cbd099975b8b50df17",
+    "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
+    "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
+    "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
+    "r01_shop_router.py": "7729665719f8eb1faa1317f76da05ab1fe9090b675c66d4e112ab9c77900133c",
+    "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
+    "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
+    "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
+    "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
+    "apply_v3.py": "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de"
+  }
+}
