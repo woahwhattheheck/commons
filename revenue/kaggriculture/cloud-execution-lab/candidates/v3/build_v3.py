@@ -7,13 +7,14 @@
                                   runs --candidate D/main.py directly)
     --canonical PATH              use another canonical archive (must match base.sha256)
 
-Recipe: extract ../../exports/titan-current.tar.gz (SHA-256 pinned in V3-MANIFEST.json
-under base.sha256), copy overlay/ over it (the lane modules and the check), then run
-apply_v3.apply() which edits titan_runtime.py, scheduler.py, frozen_selected.py,
-TITAN-CONFIG.json and TITAN-RELEASE.md with exact-anchor replacements.  Fixed tar
-metadata makes the archive a pure function of (canonical, overlay, apply_v3).  dist/
-is a build product and is not committed; a shard verifies each materialised file
-against FILES.json.
+Recipe: resolve the canonical archive pinned by V3-MANIFEST.json base.sha256. Prefer the
+live ../../exports/titan-current.tar.gz only when its digest matches that pin; otherwise
+require the digest-addressed ../../exports/historical/titan-<sha256>.tar.gz predecessor.
+An explicit --canonical PATH never falls back. Copy overlay/ over the extracted tree, then
+run apply_v3.apply() which edits titan_runtime.py, scheduler.py, frozen_selected.py,
+TITAN-CONFIG.json and TITAN-RELEASE.md with exact-anchor replacements. Fixed tar metadata
+makes the archive a pure function of (canonical, overlay, apply_v3). dist/ is a build
+product and is not committed; a shard verifies each materialised file against FILES.json.
 """
 import gzip
 import hashlib
@@ -33,7 +34,9 @@ import apply_v3  # noqa: E402
 OVERLAY = HERE / "overlay"
 DIST = HERE / "dist"
 MANIFEST = HERE / "V3-MANIFEST.json"
-CANON = HERE.parent.parent / "exports" / "titan-current.tar.gz"
+EXPORTS = HERE.parent.parent / "exports"
+CANON = EXPORTS / "titan-current.tar.gz"
+HISTORICAL = EXPORTS / "historical"
 
 
 def manifest():
@@ -46,12 +49,42 @@ def overlay_files():
             if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"}
 
 
-def package_files(canon_path=None):
-    m = manifest()
-    archive = Path(canon_path or CANON)
-    data = archive.read_bytes()
+def _verified_archive(path, expected, label):
+    data = Path(path).read_bytes()
     digest = hashlib.sha256(data).hexdigest()
-    assert digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"])
+    assert digest == expected, "%s %s is %s, manifest pins %s" % (label, path, digest, expected)
+    return Path(path), data
+
+
+def resolve_canonical_archive(canon_path=None):
+    """Return the exact manifest-pinned canonical archive path and bytes.
+
+    An explicit path is authoritative input and therefore never falls back.  The default
+    path may drift as exports/titan-current.tar.gz advances independently of a frozen V3
+    manifest; in that case the digest-addressed historical predecessor is required.
+    """
+    expected = manifest()["base"]["sha256"]
+    if canon_path is not None:
+        return _verified_archive(Path(canon_path), expected, "explicit canonical archive")
+
+    live_digest = None
+    if CANON.is_file():
+        live_data = CANON.read_bytes()
+        live_digest = hashlib.sha256(live_data).hexdigest()
+        if live_digest == expected:
+            return CANON, live_data
+
+    historical = HISTORICAL / ("titan-%s.tar.gz" % expected)
+    if not historical.is_file():
+        raise FileNotFoundError(
+            "manifest-pinned canonical archive %s is unavailable: live %s digest is %s and historical %s is missing"
+            % (expected, CANON, live_digest or "missing", historical)
+        )
+    return _verified_archive(historical, expected, "historical canonical archive")
+
+
+def package_files(canon_path=None):
+    _, data = resolve_canonical_archive(canon_path)
     work = Path(tempfile.mkdtemp(prefix="titan-v3-"))
     try:
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
