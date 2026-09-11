@@ -32,7 +32,7 @@
     "receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
     "endpoint label omits URL userinfo, query, and fragment",
     "transport and discovery outcomes are explicit",
-    "successful transport rows record exact response byte length and SHA-256",
+    "successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
     "the final receipt SHA-256 recomputes from canonical unsigned JSON"
   ],
   "open_door": true,
@@ -45,6 +45,6 @@
   },
   "intake_boundary": "public MCP endpoint and required tool names only; a public repository URL may be supplied for repair",
   "data_boundary": "keep credentials, tokens, private repository URLs, buyer records, and provider data outside public Commons receipts",
-  "execution_boundary": "server tools are not invoked by default; optional tool execution occurs only when the caller explicitly supplies the tool name; JSON arguments default to {} when omitted and otherwise use the caller-supplied object; response content is hashed and omitted unless inclusion is explicitly requested",
+  "execution_boundary": "server tools are not invoked by default; optional tool execution occurs only when the caller explicitly supplies the tool name; omitted JSON arguments default to an empty object; response content is hashed and omitted unless inclusion is explicitly requested",
   "payment_boundary": "a posted intent, quote, recorded provider URL, or conformance receipt is not payment, authorization, settlement, payout, bank availability, or cash"
 }
