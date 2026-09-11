@@ -118,6 +118,36 @@ process.stdout.write(JSON.stringify({
             )
         self.assertFalse(self._browser_rail_eligible(wrong_evidence, listing))
 
+    def test_browser_checkout_requires_canonical_public_exposure(self) -> None:
+        snapshot, catalog, listing, sku = self._current_fixture()
+
+        checkout_first = copy.deepcopy(snapshot)
+        rail = next(
+            row for row in checkout_first["canonical_rails"] if row.get("sku") == sku
+        )
+        rail["exposure"] = "CHECKOUT_FIRST"
+        projected = capability.project(checkout_first, catalog)
+        self.assertIn(sku, {row["sku"] for row in projected["public_rails"]})
+        self.assertTrue(self._browser_rail_eligible(checkout_first, listing))
+
+        for value in (None, "", "BOGUS", 7, {"mode": "INTAKE_FIRST"}):
+            with self.subTest(exposure=value):
+                invalid = copy.deepcopy(snapshot)
+                rail = next(
+                    row for row in invalid["canonical_rails"] if row.get("sku") == sku
+                )
+                rail["exposure"] = value
+                projected = capability.project(invalid, catalog)
+                self.assertNotIn(sku, {row["sku"] for row in projected["public_rails"]})
+                self.assertFalse(self._browser_rail_eligible(invalid, listing))
+
+        missing = copy.deepcopy(snapshot)
+        rail = next(row for row in missing["canonical_rails"] if row.get("sku") == sku)
+        rail.pop("exposure", None)
+        projected = capability.project(missing, catalog)
+        self.assertNotIn(sku, {row["sku"] for row in projected["public_rails"]})
+        self.assertFalse(self._browser_rail_eligible(missing, listing))
+
 
 if __name__ == "__main__":
     unittest.main()
