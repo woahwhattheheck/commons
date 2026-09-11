@@ -1,0 +1,94 @@
+name: titan-v4-h1-terminal-harvest
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v4-h1-terminal-harvest.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h1_terminal_harvest.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_h1_terminal_harvest.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact head
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+
+      - name: Re-prove official first-decay ordering theorem
+        shell: python
+        run: |
+          import ast
+          import copy
+          from pathlib import Path
+
+          engine = Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py')
+          tree = ast.parse(engine.read_text(encoding='utf-8'), filename=str(engine))
+          decay_node = next(
+              node for node in tree.body
+              if isinstance(node, ast.FunctionDef) and node.name == '_decay_plants'
+          )
+          module = ast.Module(body=[decay_node], type_ignores=[])
+          ast.fix_missing_locations(module)
+          namespace = {}
+          exec(compile(module, str(engine), 'exec'), namespace)
+          decay = namespace['_decay_plants']
+
+          tile = {
+              'kind': 'PLANT',
+              'crop': 'WHEAT',
+              'planted_day': 20,
+              'yield_units': 3,
+              'max_lifespan_step': 672,
+          }
+          farm = {'tiles': [[copy.deepcopy(tile)]]}
+          decay(farm, 672)
+          assert farm['tiles'][0][0]['yield_units'] == 2
+          assert farm['tiles'][0][0]['kind'] == 'PLANT'
+          decay(farm, 674)
+          assert farm['tiles'][0][0]['yield_units'] == 1
+          decay(farm, 676)
+          assert farm['tiles'][0][0] == {'kind': 'WEED'}
+
+          source = engine.read_text(encoding='utf-8')
+          assert 'max_lifespan_step": (-1 if cd["ongoing"] else (day + cd["max_yield_day"] + 1) * turns_per_day)' in source
+          unit = source.index('_apply_unit_action(obs0.farms[i]')
+          market = source.index('_process_market(state, env)', unit)
+          decay_call = source.index('_decay_plants(farm, step)', market)
+          assert unit < market < decay_call
+
+      - name: Materialize exact V4 package
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/titan-v4-h1"
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py \
+            --tree "$RUNNER_TEMP/titan-v4-h1"
+
+      - name: Run focused H1 materialized-package checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/titan-v4-h1"
+          python3 -B -m unittest -v checks/test_v4_h1_terminal_harvest.py
