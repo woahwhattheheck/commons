@@ -27,7 +27,7 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
-      EXACT_PARENT: '05b64a03855be9856a03801ed608407707eb0404'
+      EXACT_PARENT: '7ac82fdc07788f58c504282b54460fa29152ab06'
       CERT_HEAD: 'cbfff2bec813e2c2609ce9c5819b74669e98c566'
       CERT_BLOB: '89a3325eb541ae0e8a81e1e0a426292820f10d98'
       SOURCE_EPISODE: '107223760'
@@ -55,14 +55,6 @@ jobs:
           test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
           cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
           .github/workflows/titan-v3-s13-certified-prefix695-sol-pro.yml
-          p/titan-v3-s13-certified-prefix695-runtime-composition-20260910-01.md
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/README.md
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_prefix.py
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_report.py
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_route_runtime.py
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/test_certified_prefix.py
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/test_certified_report.py
-          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/test_certified_route_runtime.py
           EOF
           git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
           diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
@@ -84,11 +76,19 @@ jobs:
           git show "$CERT_HEAD:$CERT_PATH" > "$RUNNER_TEMP/action_applicability.py"
           test "$(git hash-object "$RUNNER_TEMP/action_applicability.py")" = "$CERT_BLOB"
           CHILD="$CHILD" DONOR="$RUNNER_TEMP/action_applicability.py" python - <<'PY'
-          import importlib.util, os
+          import importlib.util, os, sys
           from pathlib import Path
           def load(name, path):
               spec=importlib.util.spec_from_file_location(name, path)
-              module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+              module=importlib.util.module_from_spec(spec)
+              previous=sys.modules.get(name)
+              sys.modules[name]=module
+              try:
+                  spec.loader.exec_module(module)
+              except BaseException:
+                  if previous is None: sys.modules.pop(name, None)
+                  else: sys.modules[name]=previous
+                  raise
               return module
           child=load('certified_runtime', Path(os.environ['CHILD'])/'certified_route_runtime.py')
           donor=load('donor_certificate', Path(os.environ['DONOR']))
@@ -216,7 +216,15 @@ jobs:
           import certified_prefix as compiler
           def load(name,path):
               spec=importlib.util.spec_from_file_location(name,path)
-              module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+              module=importlib.util.module_from_spec(spec)
+              previous=sys.modules.get(name)
+              sys.modules[name]=module
+              try:
+                  spec.loader.exec_module(module)
+              except BaseException:
+                  if previous is None: sys.modules.pop(name, None)
+                  else: sys.modules[name]=previous
+                  raise
               return module
           donor=load('real_replay_donor',Path(os.environ['DONOR']))
           root=Path(os.environ['OUT'])
