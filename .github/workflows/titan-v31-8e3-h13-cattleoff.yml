@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
@@ -43,7 +43,7 @@ jobs:
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
           test "$(git hash-object "$DIR/run_current_stack.py")" = '9114903887c290cf542c7fd156082495992913e5'
-          test "$(git hash-object "$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
 
           git diff --name-only "$STACK...HEAD" > /tmp/h13-paths.txt
@@ -151,12 +151,13 @@ jobs:
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         env:
-          PYTHONOPTIMIZE: '0'
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
-          python3 -B build_v3.py --check | tee /tmp/h13-build.log
+          PYTHONOPTIMIZE=0 python3 -B build_v3.py --check | tee /tmp/h13-build.log
           grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/h13-build.log
+          PYTHONOPTIMIZE=1 python3 -B build_v3.py --check | tee /tmp/h13-build-o.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/h13-build-o.log
 
       - name: Execute exact cattle-OFF horizon8 vs horizon10 two-regime gate
         shell: bash
@@ -175,7 +176,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
@@ -201,7 +202,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
