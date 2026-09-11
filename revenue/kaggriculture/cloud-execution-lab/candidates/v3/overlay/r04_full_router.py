@@ -1668,6 +1668,33 @@ def _strawberry_topup(observation, action):
     return action
 
 
+# V3.1 B5 (ASTRA · GPT-5.6 SOL, #12499 / #12428): spend authored PASS turns on fertilizer that
+# pays. b5_fertilize tops up a CARROT the worker already stands on; jit_pass_fertilize fertilizes
+# just before a yield-bearing WATER on the worker's own tile (it reads the tape's next authored
+# step). Applied last in v3_agent(), the order they were gated in; both only replace a PASS.
+B5_CARROT_FERTILIZER = False
+B5_JIT_FERTILIZE = False
+
+
+def _b5_fertilize(observation, action):
+    import b5_fertilize
+    import jit_pass_fertilize
+    if B5_CARROT_FERTILIZER:
+        action = b5_fertilize.apply_carrot_fertilizer(observation, action)
+    if B5_JIT_FERTILIZE and _POLICY is not None:
+        try:
+            state = _POLICY.players.get(int(observation['player']))
+            tape = _POLICY.tapes[state.plan]
+            step = int(observation['step'])
+            following = tape[step + 1] if step + 1 < len(tape) else None
+        except Exception:
+            following = None
+        if following is not None:
+            action, _ = jit_pass_fertilize.apply_jit_pass_fertilize(action, observation, following,
+                                                                   enabled=True)
+    return action
+
+
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
     if STRAWBERRY_TOPUP:
@@ -1690,13 +1717,16 @@ def v3_agent(observation, configuration=None):
         action = dict(action)
         action["market"] = [["BUY_PRODUCT", "WHEAT", 13], ["BUY_PRODUCT", "WHEAT", OPEN_ROUNDTRIP],
                             ["SELL", "WHEAT", OPEN_ROUNDTRIP]]
+    if B5_CARROT_FERTILIZER or B5_JIT_FERTILIZE:
+        action = _b5_fertilize(observation, action)
     return action
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
-            no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None):
+            no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
+            b5_carrot_fertilizer=None, b5_jit_fertilize=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1715,6 +1745,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
     global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP
+    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1751,4 +1782,8 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         NO_LATE_SALE_ADVANCE_STEP = no_late_sale_advance_step
     if strawberry_topup is not None:
         STRAWBERRY_TOPUP = bool(strawberry_topup)
+    if b5_carrot_fertilizer is not None:
+        B5_CARROT_FERTILIZER = bool(b5_carrot_fertilizer)
+    if b5_jit_fertilize is not None:
+        B5_JIT_FERTILIZE = bool(b5_jit_fertilize)
     return v3_agent
