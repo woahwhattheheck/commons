@@ -1,0 +1,45 @@
+{
+  "schema": "titan-v31-current-root-donor/v1",
+  "factor": "r04_fert_daily_sweep",
+  "display_name": "Riot fert-daily-sweep",
+  "authority": "DONOR_ONLY",
+  "current_root_parent": "6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a",
+  "shipped_gameplay_ancestor": "8e3d92a286806f9f9525973ee7d359b629a11487",
+  "original": {
+    "branch": "riot/v3.1-lane-b5",
+    "parent": "508b342fc46fa91e3d7cdc3f0b7e44934a187c14",
+    "head": "8638d0db7068f38966424c59181875d8b128a72a",
+    "source_blob": "cd6c1dd50a439f58bce9434db8d628ca8d6f978f",
+    "test_blob": "fb51b305289a311e9e8e4a3a63c38c18c5a1fd30",
+    "changed_paths": [
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_fert_daily_sweep.py",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_fert_daily_sweep.py",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py"
+    ]
+  },
+  "donor_copy": {
+    "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/riot_fert_daily_sweep_6e5/r04_fert_daily_sweep.py",
+    "source_blob": "cd6c1dd50a439f58bce9434db8d628ca8d6f978f",
+    "compatibility_test": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/riot_fert_daily_sweep_6e5/test_factor.py"
+  },
+  "production_contract": {
+    "default": false,
+    "router_seam": "after POLICY_AGENT and before ROW_ORDER",
+    "mutates_market_rows": false,
+    "moves_workers": false,
+    "eligible_commands": ["PASS"],
+    "rewrites": ["COLLECT_FERTILIZER", "DROP"]
+  },
+  "must_preserve_on_consume": [
+    "r04_b5_carrot_fertilizer",
+    "r04_b5_jit_fertilize",
+    "r04_strawberry_topup",
+    "r04_no_late_sale_advance",
+    "r04_sale_fertilizer",
+    "r04_cattle_early"
+  ],
+  "next_authority": "Recompose once onto the literal final #12565 L3 package, keep default OFF, then run paired current-package economics before any promotion.",
+  "notes": "Riot called this lane B5, but it is NOT the shipped B5 CARROT/JIT architecture. Do not alias their evidence or defaults."
+}
