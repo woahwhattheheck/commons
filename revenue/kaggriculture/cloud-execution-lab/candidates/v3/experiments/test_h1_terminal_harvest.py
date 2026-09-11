@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import ast
+import copy
+from pathlib import Path
 import unittest
 
 import h1_terminal_harvest as h1
@@ -22,6 +25,18 @@ def obs(current_tile=None, *, step=672, hands=None):
     return {"step": step, "player": 0, "farms": [farm]}
 
 
+def official_decay_plants():
+    """Load only `_decay_plants` from the committed official-engine source via AST."""
+    engine = Path(__file__).resolve().parents[3] / "reference" / "engine" / "kaggriculture.py"
+    tree = ast.parse(engine.read_text(encoding="utf-8"), filename=str(engine))
+    fn = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "_decay_plants")
+    module = ast.Module(body=[fn], type_ignores=[])
+    ast.fix_missing_locations(module)
+    namespace = {}
+    exec(compile(module, str(engine), "exec"), namespace)
+    return namespace["_decay_plants"]
+
+
 class H1Test(unittest.TestCase):
     def setUp(self):
         h1.telemetry.clear()
@@ -33,12 +48,23 @@ class H1Test(unittest.TestCase):
         action = self.action()
         self.assertIs(h1.transform(obs(), action, {"turnsPerDay": 24}, False), action)
 
-    def test_exact_expiry_mature_annual_harvests(self):
+    def test_exact_first_decay_mature_annual_harvests(self):
         action = self.action()
         result = h1.transform(obs(), action, {"turnsPerDay": 24}, True)
         self.assertEqual(result["farmer"], ["HARVEST"])
         self.assertEqual(result["market"], action["market"])
         self.assertEqual(action["farmer"], ["WATER"])
+
+    def test_official_equality_is_first_decay_not_final_life(self):
+        decay = official_decay_plants()
+        farm = {"tiles": [[copy.deepcopy(tile())]]}
+        decay(farm, 672)
+        self.assertEqual(farm["tiles"][0][0]["yield_units"], 2)
+        self.assertEqual(farm["tiles"][0][0]["kind"], "PLANT")
+        decay(farm, 674)
+        self.assertEqual(farm["tiles"][0][0]["yield_units"], 1)
+        decay(farm, 676)
+        self.assertEqual(farm["tiles"][0][0], {"kind": "WEED"})
 
     def test_future_lifespan_kept(self):
         action = self.action()
@@ -47,10 +73,10 @@ class H1Test(unittest.TestCase):
             action,
         )
 
-    def test_stale_past_lifespan_fail_closed(self):
+    def test_later_decay_state_conservatively_kept(self):
         action = self.action()
         self.assertIs(
-            h1.transform(obs(tile(max_lifespan_step=671)), action, {"turnsPerDay": 24}, True),
+            h1.transform(obs(tile(max_lifespan_step=670)), action, {"turnsPerDay": 24}, True),
             action,
         )
 
