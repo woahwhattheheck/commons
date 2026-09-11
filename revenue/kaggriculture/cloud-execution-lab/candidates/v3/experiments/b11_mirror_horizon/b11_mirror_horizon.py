@@ -163,7 +163,6 @@ def install(
     def adaptive_agent(observation, configuration=None):
         certified, streak, reason = mirror_certificate(observation)
         selected = MIRROR_HORIZON if certified else BASE_HORIZON
-        r04.SALE_HORIZON = selected
         if selected == MIRROR_HORIZON:
             REPORT["h10_callbacks"] += 1
         else:
@@ -173,7 +172,17 @@ def install(
             REPORT["trace"].append(
                 {"step": step, "horizon": selected, "streak": streak, "reason": reason}
             )
-        return parent(observation, configuration)
+
+        # R04/E184 reads SALE_HORIZON at call time, but it is a module global.
+        # Scope the experimental value to this one parent callback so another
+        # arm/control sharing the imported module cannot inherit H10.  Finally
+        # also protects the shared module if the parent raises.
+        prior_horizon = r04.SALE_HORIZON
+        r04.SALE_HORIZON = selected
+        try:
+            return parent(observation, configuration)
+        finally:
+            r04.SALE_HORIZON = prior_horizon
 
     adaptive_agent.__name__ = "b11_mirror_adaptive_agent"
     return adaptive_agent
