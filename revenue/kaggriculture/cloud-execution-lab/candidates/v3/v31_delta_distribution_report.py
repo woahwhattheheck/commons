@@ -9,6 +9,10 @@ Input may be either:
 Each logical cell is keyed by opponent, seed, and seat. Competitive margin is
 always recomputed as (candidate_own - candidate_rival) -
 (baseline_own - baseline_rival). A supplied delta_m is diagnostic only.
+
+Any generic ``scores`` / ``<arm>_scores`` vector is evaluator/seat ordered as
+``[seat0, seat1]``; own/rival is derived from the canonical candidate seat.
+Multiple aliases or score representations must agree after normalization.
 """
 from __future__ import annotations
 
@@ -56,39 +60,141 @@ def _seat(value: Any) -> int:
     return value
 
 
-def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
-    opponent = _first(record, ("opponent", "opponent_name", "rival_name"))
-    if not isinstance(opponent, str) or not opponent.strip():
+def _consistent_alias(mapping: Mapping[str, Any], keys: Iterable[str], normalize,
+                      label: str, default: Any = _MISSING) -> Any:
+    present = [(key, normalize(mapping[key])) for key in keys if key in mapping]
+    if not present:
+        if default is _MISSING:
+            raise DataError("missing required field; expected one of: " + ", ".join(keys))
+        return default
+    first_key, first_value = present[0]
+    for key, value in present[1:]:
+        if value != first_value:
+            raise DataError(
+                f"conflicting {label} aliases: {first_key}={first_value!r}, {key}={value!r}"
+            )
+    return first_value
+
+
+def _normalize_opponent(value: Any) -> str:
+    if not isinstance(value, str) or not value.strip():
         raise DataError("opponent must be a non-empty string")
-    seed = _first(record, ("seed", "game_seed"))
-    if isinstance(seed, bool) or not isinstance(seed, (int, str)):
-        raise DataError("seed must be an integer or string")
-    return opponent.strip(), str(seed), _seat(_first(record, ("seat", "our_seat")))
+    return value.strip()
 
 
-def _pair_from_mapping(mapping: Mapping[str, Any], label: str) -> tuple[float, float]:
-    scores = mapping.get("scores", _MISSING)
-    if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{label}.scores must contain [own, rival]")
-        return _number(scores[0], f"{label}.scores[0]"), _number(scores[1], f"{label}.scores[1]")
-    own = _first(mapping, ("own", "ours", "own_score", "our_score", "score"))
-    rival = _first(mapping, ("rival", "rival_score", "opponent_score", "their_score"))
-    return _number(own, f"{label}.own"), _number(rival, f"{label}.rival")
+def _normalize_seed(value: Any) -> str:
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise DataError("seed must be an integer or non-empty string")
+    if isinstance(value, str) and not value.strip():
+        raise DataError("seed must be an integer or non-empty string")
+    return str(value)
 
 
-def _arm_scores(record: Mapping[str, Any], arm: str) -> tuple[float, float]:
-    nested = record.get(arm, _MISSING)
-    if isinstance(nested, Mapping):
-        return _pair_from_mapping(nested, arm)
-    scores = record.get(f"{arm}_scores", _MISSING)
-    if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{arm}_scores must contain [own, rival]")
-        return _number(scores[0], f"{arm}_scores[0]"), _number(scores[1], f"{arm}_scores[1]")
-    own = _first(record, (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"))
-    rival = _first(record, (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"))
-    return _number(own, f"{arm}_own"), _number(rival, f"{arm}_rival")
+def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
+    opponent = _consistent_alias(
+        record, ("opponent", "opponent_name", "rival_name"), _normalize_opponent, "opponent"
+    )
+    seed = _consistent_alias(record, ("seed", "game_seed"), _normalize_seed, "seed")
+    seat = _consistent_alias(
+        record, ("seat", "our_seat", "candidate_seat"), _seat, "seat"
+    )
+    return opponent, seed, seat
+
+
+def _seat_ordered_pair(value: Any, label: str, seat: int) -> tuple[float, float]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes)) or len(value) != 2:
+        raise DataError(f"{label} must contain [seat0, seat1]")
+    seat0 = _number(value[0], f"{label}[0]")
+    seat1 = _number(value[1], f"{label}[1]")
+    return (seat0, seat1) if seat == 0 else (seat1, seat0)
+
+
+def _optional_number_alias(mapping: Mapping[str, Any], keys: Iterable[str], label: str) -> Any:
+    present = [(key, _number(mapping[key], f"{label}.{key}")) for key in keys if key in mapping]
+    if not present:
+        return _MISSING
+    first_key, first_value = present[0]
+    for key, value in present[1:]:
+        if not math.isclose(value, first_value, rel_tol=0.0, abs_tol=_EPS):
+            raise DataError(
+                f"conflicting {label} aliases: {first_key}={first_value}, {key}={value}"
+            )
+    return first_value
+
+
+def _same_pair(left: tuple[float, float], right: tuple[float, float]) -> bool:
+    return all(
+        math.isclose(a, b, rel_tol=0.0, abs_tol=_EPS)
+        for a, b in zip(left, right)
+    )
+
+
+def _agreeing_pair(representations: list[tuple[str, tuple[float, float]]], label: str) -> tuple[float, float]:
+    if not representations:
+        raise DataError(f"{label} must provide scores or explicit own/rival values")
+    first_name, first_pair = representations[0]
+    for name, pair in representations[1:]:
+        if not _same_pair(first_pair, pair):
+            raise DataError(
+                f"conflicting {label} score representations: {first_name}={first_pair}, {name}={pair}"
+            )
+    return first_pair
+
+
+def _pair_from_mapping(mapping: Mapping[str, Any], label: str, seat: int) -> tuple[float, float]:
+    representations: list[tuple[str, tuple[float, float]]] = []
+    if "scores" in mapping:
+        representations.append(("scores", _seat_ordered_pair(mapping["scores"], f"{label}.scores", seat)))
+    own = _optional_number_alias(mapping, ("own", "ours", "own_score", "our_score", "score"), label)
+    rival = _optional_number_alias(mapping, ("rival", "rival_score", "opponent_score", "their_score"), label)
+    if (own is _MISSING) != (rival is _MISSING):
+        raise DataError(f"{label} explicit own/rival score fields must be provided together")
+    if own is not _MISSING:
+        representations.append(("own/rival", (own, rival)))
+    return _agreeing_pair(representations, label)
+
+
+def _arm_scores(record: Mapping[str, Any], arm: str, seat: int) -> tuple[float, float]:
+    representations: list[tuple[str, tuple[float, float]]] = []
+    if arm in record:
+        nested = record[arm]
+        if not isinstance(nested, Mapping):
+            raise DataError(f"{arm} must be an object when present")
+        representations.append((arm, _pair_from_mapping(nested, arm, seat)))
+    score_key = f"{arm}_scores"
+    if score_key in record:
+        representations.append((score_key, _seat_ordered_pair(record[score_key], score_key, seat)))
+    own = _optional_number_alias(
+        record,
+        (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"),
+        arm,
+    )
+    rival = _optional_number_alias(
+        record,
+        (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"),
+        arm,
+    )
+    if (own is _MISSING) != (rival is _MISSING):
+        raise DataError(f"{arm} explicit own/rival score fields must be provided together")
+    if own is not _MISSING:
+        representations.append((f"{arm}_own/rival", (own, rival)))
+    return _agreeing_pair(representations, arm)
+
+
+def _supplied_delta(record: Mapping[str, Any]) -> tuple[str | None, Any]:
+    present: list[tuple[str, float]] = []
+    for name in ("delta_m", "deltaM", "delta_margin"):
+        if name in record:
+            present.append((name, _number(record[name], name)))
+    if not present:
+        return None, _MISSING
+    first_name, first_value = present[0]
+    for name, value in present[1:]:
+        if not math.isclose(value, first_value, rel_tol=0.0, abs_tol=_EPS):
+            raise DataError(
+                f"conflicting supplied delta aliases: {first_name}={first_value}, {name}={value}"
+            )
+    return first_name, first_value
 
 
 def _activation_mapping(record: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -167,8 +273,8 @@ def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | N
     for key in sorted(baseline_keys):
         base = indexed["baseline"][key]
         cand = indexed["candidate"][key]
-        bo, br = _pair_from_mapping(base, "baseline")
-        co, cr = _pair_from_mapping(cand, "candidate")
+        bo, br = _pair_from_mapping(base, "baseline", key[2])
+        co, cr = _pair_from_mapping(cand, "candidate", key[2])
         synthesized: dict[str, Any] = {
             "opponent": key[0], "seed": key[1], "seat": key[2],
             "baseline": {"own": bo, "rival": br},
@@ -177,10 +283,9 @@ def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | N
         activations = _activation_mapping(cand)
         if activations:
             synthesized["activations"] = dict(activations)
-        for delta_key in ("delta_m", "deltaM", "delta_margin"):
-            if delta_key in cand:
-                synthesized[delta_key] = cand[delta_key]
-                break
+        delta_key, supplied_delta = _supplied_delta(cand)
+        if supplied_delta is not _MISSING:
+            synthesized[delta_key or "delta_m"] = supplied_delta
         paired.append(synthesized)
     return paired
 
@@ -236,8 +341,8 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         if key in seen:
             raise DataError(f"duplicate logical cell: {key}")
         seen.add(key)
-        baseline_own, baseline_rival = _arm_scores(record, "baseline")
-        candidate_own, candidate_rival = _arm_scores(record, "candidate")
+        baseline_own, baseline_rival = _arm_scores(record, "baseline", key[2])
+        candidate_own, candidate_rival = _arm_scores(record, "candidate", key[2])
         baseline_margin = baseline_own - baseline_rival
         candidate_margin = candidate_own - candidate_rival
         delta_m = candidate_margin - baseline_margin
@@ -256,13 +361,7 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             "activations": activations,
         }
         cells.append(cell)
-        supplied = _MISSING
-        supplied_key = None
-        for name in ("delta_m", "deltaM", "delta_margin"):
-            if name in record:
-                supplied_key = name
-                supplied = _number(record[name], name)
-                break
+        supplied_key, supplied = _supplied_delta(record)
         if supplied is not _MISSING and not math.isclose(supplied, delta_m, rel_tol=0.0, abs_tol=_EPS):
             supplied_mismatches.append({
                 "opponent": key[0], "seed": key[1], "seat": key[2], "field": supplied_key,
