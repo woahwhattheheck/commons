@@ -1,7 +1,8 @@
-diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/README.md /mnt/data/benchv2_inspect/titan-bench-tools-v2/README.md
---- /mnt/data/benchv2_original/titan-bench-tools-v2/README.md	2026-09-11 04:00:00.000000000 +0000
-+++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/README.md	2026-09-11 08:36:14.060838115 +0000
-@@ -5,5 +5,5 @@
+diff --git a/README.md b/README.md
+index 8ea4e8f..899f746 100644
+--- a/README.md
++++ b/README.md
+@@ -5,5 +5,5 @@ Fixes the tape-path issue ASTRA's handoff audit found: the tools no longer assum
  - Set `TITAN_TAPES` to a directory (every `*.json` in it) or to a manifest file (one tape path per line, relative paths resolve against the manifest's folder). Unset keeps each tool's old default.
  - Every tool prints `tapes: N from <source>` before it runs.
  - `tapes_bench49.txt` freezes the historical 49-tape set (48 top-band episodes plus 107720626). The V3.0 68–30 / 98-seat result and the V3.1 per-game figures were measured on it. To use it from the unpacked handoff bundle, put this manifest next to `tapes/`.
@@ -9,9 +10,10 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/README.md /mnt/data/be
 -- `leader_pin.py --episodes EP:SEAT,...` restricts a run to chosen seats.
 +- `windriver.py` prints a `PRESSURE` line for any game in which an actor's slowest step reached 0.9 s. Agents with a step deadline (TITAN's 1.0 s entrypoint) fall back to PASS under machine load, so rerun those games at lower `--workers`. PRESSURE records now carry both `candidate_seat` and the opposite `leader_seat` explicitly. `leader_pin.py` rows carry each actor's `max_call_seconds`.
 +- `leader_pin.py --episodes EP:LEADER_SEAT,...` preserves the original selector meaning. When the source record is expressed in candidate-seat coordinates (including PRESSURE/candidate records), use `--candidate-episodes EP:CANDIDATE_SEAT,...`; it converts to the opposite pinned leader seat before filtering. Never paste a candidate seat into `--episodes`.
-diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/leader_pin.py
---- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py	2026-09-11 04:00:00.000000000 +0000
-+++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/leader_pin.py	2026-09-11 08:36:14.060383131 +0000
+diff --git a/tools/leader_pin.py b/tools/leader_pin.py
+index 122e6e9..51b4298 100644
+--- a/tools/leader_pin.py
++++ b/tools/leader_pin.py
 @@ -1,6 +1,6 @@
  """Play candidates against recorded leaders whose farms are pinned to the recording.
  
@@ -20,7 +22,7 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py /m
  
  Same games as leader_run.py (every compact tape in replays/tapes/, each recorded seat S played
  open-loop, the candidate in seat 1-S, same agent-process protocol), with one change: seat S's
-@@ -32,6 +32,17 @@
+@@ -32,6 +32,17 @@ PIN = threading.local()
  BIG = 1.0e12
  
  
@@ -38,7 +40,7 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py /m
  def install(engine):
      orig_init = engine._initialize
      orig_interp = engine.interpreter
-@@ -137,9 +148,9 @@
+@@ -137,9 +148,9 @@ def main():
          args.pop(0)
          only = set(args.pop(0).split(","))
      episodes = None
@@ -51,9 +53,11 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py /m
      candidates = [c.split("=", 1) for c in args]
      os.makedirs(outdir, exist_ok=True)
      engine = windriver.get_engine(ENGINE_DIR, LOADER)
-diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/test_seat_selector.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/test_seat_selector.py
---- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/test_seat_selector.py	1970-01-01 00:00:00.000000000 +0000
-+++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/test_seat_selector.py	2026-09-11 08:36:14.060913134 +0000
+diff --git a/tools/test_seat_selector.py b/tools/test_seat_selector.py
+new file mode 100644
+index 0000000..b73bf78
+--- /dev/null
++++ b/tools/test_seat_selector.py
 @@ -0,0 +1,27 @@
 +import unittest
 +
@@ -82,10 +86,11 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/test_seat_select
 +
 +if __name__ == "__main__":
 +    unittest.main()
-diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/windriver.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/windriver.py
---- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/windriver.py	2026-09-11 04:00:00.000000000 +0000
-+++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/windriver.py	2026-09-11 08:36:14.060712937 +0000
-@@ -320,7 +320,9 @@
+diff --git a/tools/windriver.py b/tools/windriver.py
+index 0b68b50..bf90319 100644
+--- a/tools/windriver.py
++++ b/tools/windriver.py
+@@ -320,7 +320,9 @@ def main():
          slow = [round(act.get("max_call_seconds") or 0.0, 3) for act in g.get("actors") or []]
          if any(s >= PRESSURE_SECONDS for s in slow):
              pressured.append({"opponent": g.get("opponent"), "seed": g["seed"],
@@ -96,7 +101,7 @@ diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/windriver.py /mn
              if g["status"] == "complete" and g.get("opponent") in agg:
                  agg[g["opponent"]]["pressured"] = agg[g["opponent"]].get("pressured", 0) + 1
  
-@@ -332,7 +334,9 @@
+@@ -332,7 +334,9 @@ def main():
          print("PRESSURE %d game(s) had a step >= %.1f s; agents with step timers may have fallen back. "
                "Rerun them at lower --workers: %s" % (
                    len(pressured), PRESSURE_SECONDS,
