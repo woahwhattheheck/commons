@@ -2,7 +2,7 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, leaderboard, or Kaggle state.
 
-Snapshot refreshed: **2026-09-11 after P0 `6e5e3c7c…`, sole L3 r4 read-only five-path handoff #12565, current cattle #12540, strict row-shed donor #12551 plus production scaffold #12566, and current-root E20/B11/B7/H3c/H13/C4/D3 carriers.**
+Snapshot refreshed: **2026-09-11 after P0 `6e5e3c7c…`, sole L3 r4 read-only five-path handoff #12565, S34 cattle-OFF routing, current cattle #12540, strict row-shed donor #12551 plus production scaffold #12566, and current-root E20/B11/B7/H3c/H13/C4/D3 carriers.**
 
 ## Canonical authority
 
@@ -71,7 +71,11 @@ ON/OFF materializations must differ only in `TITAN-CONFIG.json:r04_cattle_early`
 
 Dedicated run `34591562846` is queued/pending. A same-line owner is hardening remaining authority-bearing workflow asserts for `PYTHONOPTIMIZE=1`; do not duplicate that repair.
 
-S32/S33/S34 field evidence strongly favors cattle OFF, but final authority still requires transfer/rerun above final #12565 and interaction with the one strict row-shed production consumer.
+### S34 field routing — CATTLE OFF
+
+The completed S34 field tally reported in `#titan-kaggriculture` (message `1789124295.486709`) covers **20 shards / 1,280 games per arm**, official reference evaluator, published agents, both seats. It reported cattle ON at **95.8% wins** versus cattle OFF at **99.2%**, with cattle ON adding **44 losses**. S34 therefore sets the spend/assembly direction to **cattle OFF** and reported cattle-OFF + row-shed as the strongest composition.
+
+S32/S33 are consistent with that direction. Field evidence is not final package authority: transfer/rerun above literal final #12565 and interaction with the one strict row-shed production consumer remain required. Do not spend more on cattle-ON exploration absent a materially new regime predicate.
 
 ### #12505 final score transform — APPLY LAST
 
@@ -81,7 +85,7 @@ S32/S33/S34 field evidence strongly favors cattle OFF, but final authority still
 
 ### #12551 sole semantic donor — DONOR ONLY
 
-Exact head: `70db270415ae33ee9d57b47e28f05d64d25d10e6`, direct child of 8e3. Strong field receipt: 1,912/1,920 cells better, 6 worse, 2 same, no opponent-level loss, about +421.1/game vs V3.0. That field receipt is evidence linkage, not merge authority.
+Live donor ref: `astra/v31-8e3-row-shed-current-root-recompose-20260911@9f531ff08bfa1da0fddb982227933d0430abf42a`, direct child of 8e3. This PR intentionally follows the owner branch; do not pin older `70db...` custody hops as the live donor head. Strong field receipt: 1,912/1,920 cells better, 6 worse, 2 same, no opponent-level loss, about +421.1/game vs V3.0. That field receipt is evidence linkage, not merge authority.
 
 Strict reviewed semantics:
 
@@ -142,16 +146,18 @@ Do not reopen these exact mechanisms without a materially different design/conte
 
 - Own-score gain, self-play gain, action-trace change, or a local suite alone is not promotion authority.
 - Every economics receipt must bind exact candidate/control package identity, actual candidate/opponent bytes/fingerprints, exact seed/seat Cartesian set, interpreter/evaluator identity, finite typed scores, duplicate/completeness/failure checks, and activation/realization where required.
+- **Authority predicates must survive optimized Python.** Plain `assert` is not an authority boundary; use explicit fail-closed checks for custody/identity/promotion predicates and exercise cheap custody oracles under normal Python + `PYTHONOPTIMIZE=1`.
 - D3 #12556 is the externality-policy carrier once terminal.
 - A queued/pending/null/cancelled workflow is never green.
 - A canonical/P0/package advance invalidates child current-stack authority until explicit rebind/compatibility proof.
 - Small panels are especially suspect under loaded-run contention; use paired controls and replication before promotion.
+- While landing-critical Actions are saturated, prefer source review, same-line repairs and routing custody over opening new workflow-producing branches.
 
 ## Current assembly order
 
 1. **Terminal-green #12535** immutable base + optimizer-safe custody; one P0 line only.
 2. **Close #12565 R4 on the same lineage**: final freshness + deterministic staging3→final5 collapse, terminal staging run, authorized exact-byte consumption, then literal five-path final-head review/permanent-gate terminal green + current-stack L3 classifier/economics.
-3. **Transfer/rerun #12540 cattle** above final L3; current field evidence points to cattle OFF.
+3. **Transfer/rerun #12540 cattle-OFF** above final L3 with optimizer-safe custody. Do not reopen cattle-ON spend absent a new regime.
 4. **Consume #12551 strict semantics once in #12566** above that parent, regenerate deterministic metadata/package, and run current-package cattle-OFF × row-shed-ON interaction + D3.
 5. Consume optional survivors only once onto the then-current assembled root: E20 #12552, B11 #12559, B7 #12562, H3c #12555, H13 #12553, C4 #12564, B9 only if warranted. Generate FILES/MANIFEST/package metadata after selected source composition, not independently on stale side branches.
 6. For each economic survivor: one narrow production consumer + deterministic package receipt + opponent-diverse D3 + explicit default decision.
@@ -168,3 +174,4 @@ Do not reopen these exact mechanisms without a materially different design/conte
 6. An unpushed branch is not integrated. Publish exact parent/head/path/blob coordinates, then route it here.
 7. A winner handoff is incomplete until it names literal current parent, exact durable carrier, terminal state, next gate, intended production consumer and assembly position.
 8. When a same-scope owner exists, yield and review/reroute elsewhere rather than creating a sibling branch.
+9. A red-first test head is not a repaired production head; distinguish test-contract progress from source/postimage progress explicitly.
