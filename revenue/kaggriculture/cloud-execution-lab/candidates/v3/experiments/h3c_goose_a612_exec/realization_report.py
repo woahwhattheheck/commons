@@ -27,6 +27,10 @@ def _strict_score(value, label):
     return value
 
 
+def _valid_sha256(value):
+    return isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
+
+
 def validate_game(game, label):
     """Validate one evaluator game without bool/int/string/float coercion."""
     if not isinstance(game, dict):
@@ -48,7 +52,7 @@ def validate_game(game, label):
     _strict_score(scores[0], f"{label}:scores[0]")
     _strict_score(scores[1], f"{label}:scores[1]")
     trace = game.get("trace_sha256")
-    if not isinstance(trace, str) or len(trace) != 64 or any(c not in "0123456789abcdef" for c in trace):
+    if not _valid_sha256(trace):
         raise ValueError(f"{label}: invalid trace_sha256 {trace!r}")
     daily_bank = game.get("daily_bank", [])
     if not isinstance(daily_bank, list):
@@ -56,11 +60,25 @@ def validate_game(game, label):
     return (opponent, seed, seat)
 
 
+def validate_opponent_metadata(report, label):
+    opponents = report.get("opponents")
+    if not isinstance(opponents, dict) or set(opponents) != {EXPECTED_OPPONENT}:
+        raise ValueError(f"{label}: opponent metadata must contain exactly {EXPECTED_OPPONENT!r}")
+    fingerprint = opponents[EXPECTED_OPPONENT]
+    if not isinstance(fingerprint, dict):
+        raise ValueError(f"{label}: opponent fingerprint must be an object")
+    if fingerprint.get("entry") != "baseline.py" or fingerprint.get("callable") != "agent":
+        raise ValueError(f"{label}: wrong opponent fingerprint entry/callable {fingerprint!r}")
+    if not _valid_sha256(fingerprint.get("sha256")):
+        raise ValueError(f"{label}: invalid opponent fingerprint sha256")
+
+
 def validate_report(report, label):
     if not isinstance(report, dict):
         raise ValueError(f"{label}: report must be an object")
     if report.get("engine_ref") != EXPECTED_ENGINE_REF:
         raise ValueError(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
+    validate_opponent_metadata(report, label)
     seeds = report.get("seeds")
     if not isinstance(seeds, list) or len(seeds) != len(EXPECTED_SEEDS):
         raise ValueError(f"{label}: seed panel shape mismatch")
@@ -115,9 +133,6 @@ def main():
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
 
-    if control.get("opponents") != candidate.get("opponents"):
-        raise SystemExit("opponent fingerprint mismatch")
-
     cells = []
     for cell_key in sorted(EXPECTED_CELLS):
         c, h = cg[cell_key], hg[cell_key]
@@ -163,6 +178,7 @@ def main():
         "schema": "titan-v31-h3c-a612-realization/v2",
         "engine_ref": EXPECTED_ENGINE_REF,
         "seeds": list(EXPECTED_SEEDS),
+        "opponent": EXPECTED_OPPONENT,
         "cells": cells,
         "summary": {
             "paired_cells": len(cells),
