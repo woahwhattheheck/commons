@@ -27,10 +27,9 @@ def apply(src):
 
     router = read("r04_full_router.py")
 
-    # S2 is intentionally a parameterization of the shipped V233 livestock
-    # controller, not a second competing controller.  OFF reproduces V233's
-    # 6-sheep / 2-worker / rows-5,6 profile exactly; ON widens the same proof
-    # surface to 9 sheep / 3 workers / rows 5,6,7.
+    # S2 parameterizes the shipped V233 livestock controller. OFF reproduces
+    # its 6-sheep / 2-worker footprint exactly; ON buys/services two extra
+    # sheep without changing the two-worker / two-HIRE native-hand footprint.
     router = _replace_once(
         router,
         "def _v233_eligible(obs,native):\n"
@@ -42,8 +41,8 @@ def apply(src):
         "    farm=obs['farms'][obs['player']];prices=obs['market']['prices'];profile=_v4_s2_profile()\n"
         "    if len(farm['tiles'])!=10 or set(farm['unlocked_quadrants'])!={'NW','NE','SW'}:return False\n"
         "    if obs['town']['unlocked_shops'].count('YARN_STORE')<2 or prices['WOOL']<220 or prices['WHEAT']>45:return False\n"
-        "    if any(farm['tiles'][y][x]!='LOCKED' for y in profile['rows'] for x in range(5,8)):return False\n",
-        "S2 V233 eligibility rows",
+        "    if any(farm['tiles'][y][x]!='LOCKED' for targets in profile['targets'] for x,y in targets):return False\n",
+        "S2 V233 eligibility targets",
     )
     router = _replace_once(
         router,
@@ -71,7 +70,7 @@ def apply(src):
         "    _V233_REPORT['sheep_hire_requests']+=2;_V233_REPORT['sheep_feed_buy_requests']+=6\n",
         "    state['requested_day']=day\n"
         "    state['pending']={'first':expected+1,'initial':initial,'sheep':sheep,\n"
-        "                      'workers':workers,'rows':tuple(profile['rows'])}\n"
+        "                      'workers':workers,'targets':tuple(tuple(site for site in group) for group in profile['targets'])}\n"
         "    _V233_REPORT['sheep_hire_requests']+=workers;_V233_REPORT['sheep_feed_buy_requests']+=sheep\n",
         "S2 V233 pending profile",
     )
@@ -96,13 +95,15 @@ def apply(src):
         "            _V233_REPORT['sheep_workers_confirmed']+=2\n",
         "    pending=state.pop('pending',None)\n"
         "    if pending:\n"
-        "        sheep=pending.get('sheep',6);workers=pending.get('workers',2);rows=tuple(pending.get('rows',(5,6)))\n"
-        "        funded=('SE' in farm['unlocked_quadrants'] and len(rows)==workers\n"
+        "        sheep=pending.get('sheep',6);workers=pending.get('workers',2)\n"
+        "        targets=tuple(tuple(site for site in group) for group in pending.get('targets',(((5,5),(6,5),(7,5)),((5,6),(6,6),(7,6)))))\n"
+        "        funded=('SE' in farm['unlocked_quadrants'] and len(targets)==workers\n"
+        "                and sum(len(group) for group in targets)==sheep\n"
         "                and (not pending['initial'] or private['shed'].get('SHEEP',0)>=sheep))\n"
         "        if not funded:_V233_REPORT['sheep_purchase_shortfalls']+=1\n"
         "        elif len(farm['hands'])<pending['first']+workers-1:_V233_REPORT['sheep_hire_shortfalls']+=1\n"
         "        else:\n"
-        "            for i,row in enumerate(rows):state['workers'][pending['first']+i]=[(x,row) for x in range(5,8)]\n"
+        "            for i,group in enumerate(targets):state['workers'][pending['first']+i]=list(group)\n"
         "            _V233_REPORT['sheep_workers_confirmed']+=workers\n",
         "S2 V233 confirmation profile",
     )
@@ -157,8 +158,8 @@ def apply(src):
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
-        "    s2_herd_scale widens the existing financed V233 sheep controller from 6 sheep / 2 workers\n"
-        "    to 9 sheep / 3 workers while preserving its eligibility, capacity, funding and service rules.\n",
+        "    s2_herd_scale widens the existing financed V233 sheep controller from six to eight sheep\n"
+        "    while preserving its two-worker/two-HIRE native hand-count footprint.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
