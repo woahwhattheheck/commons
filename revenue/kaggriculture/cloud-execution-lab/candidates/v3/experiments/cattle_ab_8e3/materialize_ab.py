@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Materialize exact a612 cattle ON/OFF score-facing package pair.
+"""Materialize exact 8e3 cattle ON/OFF score-facing package pair.
 
 The OFF arm is produced by the exact reviewed #12505 submission transform donor.
 The ON control is derived from that OFF file mapping by changing exactly one config
 boolean back to the canonical score-facing value: r04_cattle_early=True.
+Both arms must retain the shipped #12537 B5 CARROT + JIT factors.
 """
 from __future__ import annotations
 
@@ -24,7 +25,8 @@ import build_v3  # noqa: E402
 
 DONOR = HERE / "make_submission_12505.py"
 DONOR_BLOB = "9c5e46428f0a2357d7db6e46c4aa5f1f4748717d"
-EXPECTED_A612_PACKAGE = "400ae640f3258b6a6ff19f9da99c66ef9c433e315febb1d72c75296cddeb277c"
+EXPECTED_8E3_PACKAGE = "4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13"
+CANONICAL_COMMIT = "8e3d92a286806f9f9525973ee7d359b629a11487"
 
 
 def _load_donor():
@@ -60,6 +62,21 @@ def _package_digest(files):
     return hashlib.sha256(build_v3.build_bytes(files)).hexdigest()
 
 
+def _require_shipped_stack(config, label):
+    required_true = (
+        "r04_sale_fertilizer",
+        "r04_strawberry_topup",
+        "r04_no_late_sale_advance",
+        "r04_b5_carrot_fertilizer",
+        "r04_b5_jit_fertilize",
+    )
+    for key in required_true:
+        if config.get(key) is not True:
+            raise AssertionError(f"{label} must retain shipped factor {key}=true")
+    if config.get("r04_no_late_sale_advance_step") != 648 or type(config.get("r04_no_late_sale_advance_step")) is not int:
+        raise AssertionError(f"{label} must retain literal gated-L3 threshold 648")
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--on-tree", type=Path, required=True)
@@ -69,28 +86,27 @@ def main():
 
     base = build_v3.package_files()
     base_digest = _package_digest(base)
-    if base_digest != EXPECTED_A612_PACKAGE:
+    if base_digest != EXPECTED_8E3_PACKAGE:
         raise SystemExit(f"wrong canonical package: {base_digest}")
+
+    base_cfg = _config(base)
+    _require_shipped_stack(base_cfg, "base")
+    if base_cfg.get("r04_cattle_early") is not True:
+        raise AssertionError("8e3 base must still ship cattle-early ON before A/B")
 
     donor = _load_donor()
     off, off_cfg = donor.apply_submission_config(base, 8)
     if off_cfg["r04_sale_window"] is not True:
         raise AssertionError("OFF arm must be score-facing sale-window ON")
-    if off_cfg["r04_sale_horizon"] != 8:
-        raise AssertionError("OFF arm horizon must be 8")
-    if off_cfg["r04_sale_fertilizer"] is not True:
-        raise AssertionError("OFF arm sale-fertilizer must be ON")
+    if off_cfg["r04_sale_horizon"] != 8 or type(off_cfg["r04_sale_horizon"]) is not int:
+        raise AssertionError("OFF arm horizon must be literal int 8")
     if off_cfg["r04_cattle_early"] is not False:
         raise AssertionError("OFF arm cattle must be OFF")
-    if off_cfg["r04_strawberry_topup"] is not True:
-        raise AssertionError("OFF arm must retain shipped H4")
-    if off_cfg["r04_no_late_sale_advance"] is not True:
-        raise AssertionError("OFF arm must retain shipped rival-gated L3")
-    if off_cfg["r04_no_late_sale_advance_step"] != 648:
-        raise AssertionError("OFF arm must retain L3 threshold 648")
+    _require_shipped_stack(off_cfg, "OFF arm")
 
     on_cfg = dict(off_cfg)
     on_cfg["r04_cattle_early"] = True
+    _require_shipped_stack(on_cfg, "ON arm")
     on = _set_config(off, on_cfg)
 
     if set(on) != set(off) or set(off) != set(base):
@@ -111,9 +127,20 @@ def main():
     _write_tree(on, args.on_tree)
     _write_tree(off, args.off_tree)
 
+    held_keys = (
+        "r04_sale_window",
+        "r04_sale_horizon",
+        "r04_sale_fertilizer",
+        "r04_cattle_early",
+        "r04_strawberry_topup",
+        "r04_no_late_sale_advance",
+        "r04_no_late_sale_advance_step",
+        "r04_b5_carrot_fertilizer",
+        "r04_b5_jit_fertilize",
+    )
     receipt = {
-        "schema": "titan-v31-a612-cattle-ab-materialization/v1",
-        "canonical_commit": "a6120d0ea1bdb75eb0da2239220efce551f624a6",
+        "schema": "titan-v31-8e3-cattle-ab-materialization/v1",
+        "canonical_commit": CANONICAL_COMMIT,
         "canonical_package_sha256": base_digest,
         "submission_transform_donor_blob": DONOR_BLOB,
         "on_package_sha256": _package_digest(on),
@@ -122,14 +149,8 @@ def main():
         "base_to_off_changed_members": off_vs_base,
         "on_to_off_changed_members": on_vs_off,
         "on_to_off_changed_config_keys": differing_keys,
-        "control_config": {key: on_cfg[key] for key in (
-            "r04_sale_window", "r04_sale_horizon", "r04_sale_fertilizer", "r04_cattle_early",
-            "r04_strawberry_topup", "r04_no_late_sale_advance", "r04_no_late_sale_advance_step",
-        )},
-        "candidate_config": {key: off_cfg[key] for key in (
-            "r04_sale_window", "r04_sale_horizon", "r04_sale_fertilizer", "r04_cattle_early",
-            "r04_strawberry_topup", "r04_no_late_sale_advance", "r04_no_late_sale_advance_step",
-        )},
+        "control_config": {key: on_cfg[key] for key in held_keys},
+        "candidate_config": {key: off_cfg[key] for key in held_keys},
     }
     args.receipt.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt, sort_keys=True))
