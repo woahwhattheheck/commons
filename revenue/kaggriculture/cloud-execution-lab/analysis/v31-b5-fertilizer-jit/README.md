@@ -30,14 +30,21 @@ not blanket deletion or blanket daily insertion.
 ## What this carrier measures
 
 `audit_b5_fertilizer.py` decodes the exact committed V3/R04 `r01_tapes.py` and
-emits a deterministic JSON receipt containing, per route/day/worker:
+emits schema-v2 deterministic JSON containing, per route/day/worker:
 
 - authored `FERTILIZE`, `WATER`, `COLLECT_FERTILIZER`, and literal `PASS` counts;
 - fertilizer BUY/SELL market rows in the executable first-ten prefix;
 - exact fertilizer-service event steps;
-- literal idle streaks of at least six authored PASS rows, matching the bounded
-  round-trip size used by the older idle-fertilizer salvage mechanism;
+- **same-day** literal idle streaks of at least six authored PASS rows, matching
+  the bounded round-trip size used by the older idle-fertilizer salvage mechanism;
 - source SHA-256 plus a deterministic route-census digest.
+
+Same-day is intentional: all open PASS streaks close at every 24-step day
+boundary before the next day is processed, because worker reset means 5+1,
+2+4, or 3+3 PASS rows across midnight are not one insertion window. Only
+present worker slots with literal nonempty string opcodes are counted; absent
+future hands are not idle capacity, and malformed/empty worker actions or a
+present non-list `hands` container fail closed instead of manufacturing PASS.
 
 Run from this directory:
 
@@ -49,9 +56,10 @@ python -B audit_b5_fertilizer.py --output /tmp/b5-r04-census.json
 
 ## Truth boundary / next gate
 
-This is a **static authored-tape census**. It does not prove that a worker exists,
-an authored action is legal/effective, the action targets a given plant, a PASS
-is economically free, or a proposed refresh increases game score.
+This is a **static authored-tape census**. It does not prove that a worker exists
+at execution time beyond the authored slot, an authored action is legal/effective,
+the action targets a given plant, a PASS is economically free, or a proposed
+refresh increases game score.
 
 A gameplay successor should not be written until the census is paired with exact
 official-engine replay from a manifest-pinned `build_v3.py` materialization and
@@ -59,3 +67,6 @@ can identify a public-state crop whose next valuable WATER/production event lies
 outside current fertilizer coverage. Any candidate should remain default OFF and
 must preserve R04 market/L3, cattle-early, H4/H5 and terminal behavior until a
 paired competitive panel is complete.
+
+Schema-v1 census values and digest from PR head `5d4ffc61...` are superseded and
+must not be used after the same-day/fail-closed repair.

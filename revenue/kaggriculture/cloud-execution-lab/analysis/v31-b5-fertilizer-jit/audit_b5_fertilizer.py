@@ -51,17 +51,22 @@ def load_current_tapes(path: Path = TAPES_PATH) -> list[list[dict[str, Any]]]:
 
 
 def _op(action: Any) -> str:
+    """Return a literal authored opcode; malformed worker actions fail closed."""
     if not isinstance(action, list) or not action:
-        return "PASS"
+        raise TypeError(f"worker action must be a nonempty list, got {action!r}")
     value = action[0]
-    return value if isinstance(value, str) and value else "MALFORMED"
+    if not isinstance(value, str) or not value:
+        raise TypeError(f"worker opcode must be a nonempty string, got {value!r}")
+    return value
 
 
 def _units(row: dict[str, Any]) -> list[Any]:
-    farmer = row.get("farmer", ["PASS"])
+    if "farmer" not in row:
+        raise TypeError("route row is missing farmer action")
+    farmer = row["farmer"]
     hands = row.get("hands", [])
-    if not isinstance(hands, list):
-        hands = []
+    if "hands" in row and not isinstance(hands, list):
+        raise TypeError("route row hands must be a list when present")
     return [farmer, *hands]
 
 
@@ -86,7 +91,9 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
     """Return a deterministic census of authored service/input/idle actions.
 
     PASS streaks count only workers whose action slot exists in the tape row;
-    absent future hand slots are never credited as idle capacity.  Market counts
+    absent future hand slots are never credited as idle capacity.  Idle streaks
+    are also closed at every midnight boundary because a bounded same-day route
+    insertion may not borrow PASS slots across the worker reset.  Market counts
     use the first ten rows, matching the canonical maxMarketOrdersPerTurn gate.
     """
     routes = list(tapes)
@@ -107,6 +114,12 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
         max_workers = 0
 
         for step, row in enumerate(tape):
+            # Same-day insertion capacity cannot cross the EOD worker reset.
+            if step and step % 24 == 0:
+                for worker, start in sorted(open_idle.items()):
+                    _close_streak(idle_streaks, worker, start, step)
+                open_idle.clear()
+
             if not isinstance(row, dict):
                 raise TypeError(f"route {route_index} step {step} is not an object")
             total_steps += 1
@@ -125,9 +138,8 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
                     daily[step // 24][op] += 1
                 if op == "PASS":
                     open_idle.setdefault(worker, step)
-                else:
-                    if worker in open_idle:
-                        _close_streak(idle_streaks, worker, open_idle.pop(worker), step)
+                elif worker in open_idle:
+                    _close_streak(idle_streaks, worker, open_idle.pop(worker), step)
                 if op in ("FERTILIZE", "COLLECT_FERTILIZER"):
                     fertilizer_events.append(
                         {
@@ -136,7 +148,7 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
                             "hour": step % 24,
                             "worker": worker,
                             "op": op,
-                            "action": list(action) if isinstance(action, list) else action,
+                            "action": list(action),
                         }
                     )
 
@@ -181,12 +193,12 @@ def audit_tapes(tapes: Iterable[list[dict[str, Any]]]) -> dict[str, Any]:
                 "fertilizer_market_counts": dict(sorted(market_counts.items())),
                 "tracked_by_day": tracked_daily,
                 "fertilizer_events": fertilizer_events,
-                "idle_streaks_ge_6": idle_streaks,
+                "same_day_idle_streaks_ge_6": idle_streaks,
             }
         )
 
     return {
-        "schema": 1,
+        "schema": 2,
         "scope": "static authored R04 tape census; not execution, legality, tile-target, or value evidence",
         "route_count": len(routes),
         "total_steps": total_steps,
@@ -217,7 +229,7 @@ def audit_current(path: Path = TAPES_PATH) -> dict[str, Any]:
 
 def _summary(report: dict[str, Any]) -> dict[str, Any]:
     counts = report["global_unit_counts"]
-    idle_windows = sum(len(route["idle_streaks_ge_6"]) for route in report["routes"])
+    idle_windows = sum(len(route["same_day_idle_streaks_ge_6"]) for route in report["routes"])
     return {
         "routes": report["route_count"],
         "steps": report["total_steps"],
@@ -227,7 +239,7 @@ def _summary(report: dict[str, Any]) -> dict[str, Any]:
         "pass": counts.get("PASS", 0),
         "fertilizer_buys": report["global_fertilizer_market_counts"].get("BUY_PRODUCT:FERTILIZER", 0),
         "fertilizer_sells": report["global_fertilizer_market_counts"].get("SELL:FERTILIZER", 0),
-        "idle_streaks_ge_6": idle_windows,
+        "same_day_idle_streaks_ge_6": idle_windows,
         "route_census_sha256": report.get("route_census_sha256"),
     }
 
