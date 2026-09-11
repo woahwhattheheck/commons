@@ -130,6 +130,15 @@ class PolicyTests(unittest.TestCase):
         action = policy.act(synthetic_observation(r01.LAST_STEP))
         self.assertEqual(action["market"], [["SELL", "WHEAT", 5]])
 
+    def test_last_step_liquidation_respects_configured_market_cap(self):
+        obs = synthetic_observation(r01.LAST_STEP)
+        obs["private"]["shed"] = {"WHEAT": 5, "CARROT": 4}
+        obs["market"]["prices"]["WHEAT"] = 10
+        obs["market"]["prices"]["CARROT"] = 20
+        policy = r01.RouterPolicy()
+        action = policy.act(obs, {"maxMarketOrdersPerTurn": 1})
+        self.assertEqual(action["market"], [["SELL", "CARROT", 4]])
+
 
 class WiringTests(unittest.TestCase):
     def test_key_ships_off(self):

@@ -231,7 +231,10 @@ class Policy:
         subtract_advanced_sales(action, state, step)
         advance_sales(action, view, state, tape, step, max_orders=max_orders)
         action["market"] = action["market"][:max_orders]
-        return liquidate(view) if step == LAST_STEP else action
+        if step == LAST_STEP:
+            action = liquidate(view)
+            action["market"] = action["market"][:max_orders]
+        return action
 
 
 KEY = 'r01_shop_router'
