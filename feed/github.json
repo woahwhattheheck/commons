@@ -1,141 +1,17 @@
 {
   "counts": {
-    "open_issues": 4,
-    "open_pull_requests": 4,
-    "runs_in_progress": 20,
-    "runs_queued": 757
+    "open_issues": 5,
+    "open_pull_requests": 5,
+    "runs_in_progress": "UNKNOWN",
+    "runs_queued": "UNKNOWN"
   },
-  "degraded": [],
-  "drafts": 141,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
-      "created_at": "2026-09-10T18:42:48Z",
-      "draft": false,
-      "number": 11959,
-      "title": "TITAN: reconcile canonical package with current source and name drift"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "owner/titan-v3-regression-recovery-20260910-01",
-      "created_at": "2026-09-10T18:53:43Z",
-      "draft": false,
-      "number": 11961,
-      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
-      "created_at": "2026-09-10T18:55:16Z",
-      "draft": true,
-      "number": 11963,
-      "title": "TITAN V3: admit all-shed intent-first SELL priority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
-      "created_at": "2026-09-10T18:59:26Z",
-      "draft": false,
-      "number": 11965,
-      "title": "titan-v3: run own-value objective on bound current archive"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
-      "created_at": "2026-09-10T19:00:36Z",
-      "draft": true,
-      "number": 11968,
-      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
-    }
+  "degraded": [
+    "pulls"
   ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/d38-main25b-refresh-20260911-02",
-      "created_at": "2026-09-11T08:06:27Z",
-      "draft": true,
-      "number": 12342,
-      "title": "tools: refresh reviewed deliverable manifest on main25b"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/kcwater-main25b-refresh-20260911-01",
-      "created_at": "2026-09-11T08:03:51Z",
-      "draft": true,
-      "number": 12341,
-      "title": "feat(kcwater): refresh reviewed phased-lab salvage on main25b"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/outcome-commerce-two-source-pin-refresh-20260911-current",
-      "created_at": "2026-09-11T07:49:11Z",
-      "draft": true,
-      "number": 12338,
-      "title": "fix(commerce): refresh two source authority pins"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/github-state-main-b95-refresh-20260911-01",
-      "created_at": "2026-09-11T07:40:04Z",
-      "draft": true,
-      "number": 12336,
-      "title": "github_state: refresh reviewed heads/closures/count custody on mainb95"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/bd12-main-f398-refresh-20260911-01",
-      "created_at": "2026-09-11T07:29:47Z",
-      "draft": true,
-      "number": 12334,
-      "title": "fix(agt): refresh reviewed replay precedence on main f398"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/observability-main-f398-refresh-20260911-01",
-      "created_at": "2026-09-11T07:25:05Z",
-      "draft": true,
-      "number": 12332,
-      "title": "observability: refresh reviewed command-road repair on mainf398"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/bd12-agt-replay-mainefd2-refresh-20260911-01",
-      "created_at": "2026-09-11T06:48:12Z",
-      "draft": true,
-      "number": 12306,
-      "title": "fix(agt): refresh reviewed replay precedence on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/titan-12156-run-bound-receipt-successor-20260911",
-      "created_at": "2026-09-11T06:11:28Z",
-      "draft": true,
-      "number": 12299,
-      "title": "test(titan): refresh inherited contracts with run-bound receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/kcwater-canonical-salvage-main9134-20260911-01",
-      "created_at": "2026-09-11T06:01:33Z",
-      "draft": true,
-      "number": 12296,
-      "title": "feat(kcwater): salvage canonical phased lab relocation LIMS"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/bd12-main9134-refresh-20260911-03",
-      "created_at": "2026-09-11T05:52:31Z",
-      "draft": false,
-      "number": 12293,
-      "title": "fix(agt): refresh-compose reviewed replay precedence closure on current main"
-    }
-  ],
-  "pulls_listed": 195,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 37.9,
+  "pulls_listed": "UNKNOWN",
+  "pulls_listing": "UNKNOWN",
+  "queue_depth_per_runner": "UNKNOWN",
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T08:07:37Z",
-  "undatable_pulls": []
+  "unchanged_since": "2026-09-11T09:28:24Z"
 }
