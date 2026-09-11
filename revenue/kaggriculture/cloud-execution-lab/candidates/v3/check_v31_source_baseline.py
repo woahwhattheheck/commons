@@ -23,6 +23,10 @@ import subprocess
 import sys
 import tempfile
 
+# _materialize_source imports build_v3/apply_v3 in-process.  Disable cache writes before
+# those imports so the source tree remains byte/file-set immutable (no __pycache__).
+sys.dont_write_bytecode = True
+
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
