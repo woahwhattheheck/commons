@@ -29,6 +29,14 @@ import build_v3  # noqa: E402
 _MODULE_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\.py")
 
 
+def manifest_keys(manifest):
+    """Return the manifest keys object, rejecting present malformed containers."""
+    keys = manifest.get("keys", {})
+    if not isinstance(keys, dict):
+        raise AssertionError("manifest keys must be an object")
+    return keys
+
+
 def declared_modules(spec):
     """Return the local Python modules named by a manifest key's module field."""
     raw = spec.get("module")
@@ -39,14 +47,14 @@ def declared_modules(spec):
 
 def keyed_specs(manifest):
     """Yield (key, spec) for switchable manifest lanes with declared modules."""
-    for key, spec in (manifest.get("keys") or {}).items():
+    for key, spec in manifest_keys(manifest).items():
         if isinstance(spec, dict) and "default" in spec and "module" in spec:
             yield key, spec
 
 
 def config_contracts(manifest):
     """Yield every manifest value that must be present and consumed at runtime."""
-    keys = manifest.get("keys") or {}
+    keys = manifest_keys(manifest)
     for key, spec in keyed_specs(manifest):
         yield key, spec["default"]
     params = keys.get("params", {})
