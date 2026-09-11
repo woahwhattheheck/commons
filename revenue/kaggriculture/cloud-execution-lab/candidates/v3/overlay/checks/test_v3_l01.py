@@ -105,6 +105,32 @@ class RouteTapeTests(unittest.TestCase):
         self.assertEqual(sum(after.values()), 148)
         self.assertGreaterEqual(act['LEANPLANT'], 92)
 
+    def test_leanplant_cap_boundaries_and_idempotence(self):
+        def synthetic(count):
+            return {'synthetic': [
+                {'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []}
+                for _ in range(count)
+            ]}
+
+        for count in (0, 1, 71, 72):
+            with self.subTest(count=count):
+                R = synthetic(count)
+                before = copy.deepcopy(R)
+                act = Counter()
+                l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+                self.assertEqual(R, before)
+                self.assertEqual(act['LEANPLANT'], 0)
+
+        R = synthetic(73)
+        act = Counter()
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(l01.plant_counts(R['synthetic'])['WHEAT'], 72)
+        self.assertEqual(act['LEANPLANT'], 1)
+        once = copy.deepcopy(R)
+        l01.patch_routes(R, flags(LEANPLANT=True), act, [])
+        self.assertEqual(R, once)
+        self.assertEqual(act['LEANPLANT'], 1)
+
 
 class TrancheTests(unittest.TestCase):
     def test_enlarges_wheat_carrot_and_packs_other_products(self):
