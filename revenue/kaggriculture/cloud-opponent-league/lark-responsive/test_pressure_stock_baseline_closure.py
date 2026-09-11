@@ -38,7 +38,8 @@ def _load_module(name: str, path: Path):
 
 mechanics = _load_module(
     "_titan_pressure_stock_baseline_mechanics",
-    ROOT / "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
+    ROOT
+    / "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
 )
 
 
@@ -222,6 +223,43 @@ class StockBaselineContracts(unittest.TestCase):
         self.assertIsNotNone(certificate)
         assert certificate is not None
         self.assertIsNone(certificate.stock)
+
+    def test_product_buy_splitter_blocks_later_same_product_reorder(self) -> None:
+        # The predecessor used BUY_PRODUCT as a generic segment splitter while
+        # keeping public inventory. That is the stale-baseline hole: WHEAT after
+        # a WHEAT buy must not remain a known public stock.
+        safe_a = _sell("TOMATO", 1, "safe-a")
+        exposed_a = _sell("MILK", 1, "exposed-a")
+        barrier = {
+            "action": "BUY_PRODUCT",
+            "type": "WHEAT",
+            "quantity": 1,
+            "tag": "buy-barrier",
+        }
+        safe_b = _sell("WHEAT", 1, "safe-b")
+        exposed_b = _sell("EGG", 1, "exposed-b")
+        result = candidate.certified_pressure_partition(
+            [safe_a, exposed_a, barrier, safe_b, exposed_b],
+            pressure_by_product={
+                "TOMATO": 0,
+                "MILK": 1,
+                "WHEAT": 0,
+                "EGG": 1,
+            },
+            inventory=_inventory(mechanics.MARKET_I0),
+            max_rival_units=3,
+            price_by_stock=lambda _product, _stock: 5,
+        )
+        self.assertEqual(
+            result.actions,
+            (exposed_a, safe_a, barrier, safe_b, exposed_b),
+        )
+        self.assertEqual(result.decisions[3].kind, "barrier")
+        certificate = result.decisions[3].certificate
+        self.assertIsNotNone(certificate)
+        assert certificate is not None
+        self.assertIsNone(certificate.stock)
+        self.assertEqual(certificate.reason, "invalid_bound_or_inventory")
 
     def test_exact_curve_census_blocks_all_false_public_certificates(self) -> None:
         prices = {

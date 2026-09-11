@@ -4,14 +4,18 @@ on:
   pull_request:
     paths:
       - ".github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml"
+      - ".github/workflows/titan-pressure-delay-invariance-sol-pro.yml"
       - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py"
       - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py"
   push:
     branches:
       - "sol-pro/titan-pressure-stock-baseline-closure-20260910-01"
     paths:
       - ".github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml"
+      - ".github/workflows/titan-pressure-delay-invariance-sol-pro.yml"
       - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py"
+      - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py"
       - "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py"
   workflow_dispatch:
 
@@ -30,12 +34,13 @@ jobs:
       PARENT_SHA: 119ece622cde9d8da373719a3367591d14c5e33c
       ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
       MODULE_BLOB: 3f2547f363c4a316350605cab8581b2ce73947b5
-      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/mechanics.py
+      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
       MODULE_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py
       PREDECESSOR_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py
       DOMAIN_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_product_domain.py
       CLOSURE_TEST: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_stock_baseline_closure.py
       WORKFLOW_PATH: .github/workflows/titan-pressure-stock-baseline-closure-sol-pro.yml
+      DELAY_WORKFLOW_PATH: .github/workflows/titan-pressure-delay-invariance-sol-pro.yml
       EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
       PYTHONDONTWRITEBYTECODE: "1"
       PYTHONHASHSEED: "0"
@@ -61,8 +66,10 @@ jobs:
 
           expected = {
               os.environ["MODULE_PATH"],
+              os.environ["PREDECESSOR_TEST"],
               os.environ["CLOSURE_TEST"],
               os.environ["WORKFLOW_PATH"],
+              os.environ["DELAY_WORKFLOW_PATH"],
           }
           changed = {
               path
@@ -88,7 +95,7 @@ jobs:
           import os
           from pathlib import Path
 
-          for key in ("MODULE_PATH", "CLOSURE_TEST"):
+          for key in ("MODULE_PATH", "PREDECESSOR_TEST", "CLOSURE_TEST"):
               path = Path(os.environ[key])
               ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
           PY
@@ -106,7 +113,7 @@ jobs:
           grep -Eq '^Ran 4 tests in [0-9.]+s$' "$evidence/DOMAIN.log"
           grep -Fxq 'OK' "$evidence/DOMAIN.log"
           python -B "$CLOSURE_TEST" -v 2>&1 | tee "$evidence/CLOSURE.log"
-          grep -Eq '^Ran 4 tests in [0-9.]+s$' "$evidence/CLOSURE.log"
+          grep -Eq '^Ran 5 tests in [0-9.]+s$' "$evidence/CLOSURE.log"
           grep -Fxq 'OK' "$evidence/CLOSURE.log"
 
       - name: Emit deterministic exact-head receipt
@@ -126,8 +133,10 @@ jobs:
           changed_paths = sorted(
               [
                   os.environ["MODULE_PATH"],
+                  os.environ["PREDECESSOR_TEST"],
                   os.environ["CLOSURE_TEST"],
                   os.environ["WORKFLOW_PATH"],
+                  os.environ["DELAY_WORKFLOW_PATH"],
               ]
           )
           payload = {
@@ -144,7 +153,7 @@ jobs:
                   path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
                   for path in changed_paths
               },
-              "tests": {"predecessor": 11, "product_domain": 4, "closure": 4},
+              "tests": {"predecessor": 11, "product_domain": 4, "closure": 5},
               "false_certificate_census": 169226,
               "witness": {
                   "public_wheat": 9900,

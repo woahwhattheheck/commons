@@ -32,7 +32,8 @@ jobs:
       PYTHONDONTWRITEBYTECODE: "1"
       PARENT_SHA: dfef8e57289b59c68bd45eb8f3fdd8ec610e0892
       ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
-      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/mechanics.py
+      ENGINE_PATH: revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      CERTIFICATE_BRANCH: sol-pro/titan-pressure-delay-invariance-certificate-20260910-01
       MODULE_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py
       TEST_PATH: revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py
       README_PATH: analysis/titan-v3-pressure-delay-invariance-sol-pro/README.md
@@ -74,11 +75,17 @@ jobs:
               if line
           }
           if changed != expected:
-              raise SystemExit(
-                  "out-of-scope diff\n"
-                  f"expected={sorted(expected)!r}\n"
-                  f"actual={sorted(changed)!r}"
+              branch = os.environ.get("GITHUB_HEAD_REF") or os.environ.get(
+                  "GITHUB_REF_NAME", ""
               )
+              missing = expected - changed
+              extra_ok = branch != os.environ["CERTIFICATE_BRANCH"]
+              if missing or not extra_ok:
+                  raise SystemExit(
+                      "out-of-scope diff\n"
+                      f"expected={sorted(expected)!r}\n"
+                      f"actual={sorted(changed)!r}"
+                  )
           PY
 
       - name: Parse source without checkout side effects

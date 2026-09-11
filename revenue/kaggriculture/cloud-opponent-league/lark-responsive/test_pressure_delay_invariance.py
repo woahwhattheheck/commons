@@ -9,12 +9,20 @@ import itertools
 import sys
 import unittest
 from pathlib import Path
-from types import SimpleNamespace
+from types import ModuleType, SimpleNamespace
 from typing import Any, Mapping, Sequence
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 sys.path.insert(0, str(HERE))
+
+# Official interpreter blob 3c202c7e imports only resolve_episode_seed.
+pkg = ModuleType("kaggle_environments")
+pkg.__path__ = []  # type: ignore[attr-defined]
+utils = ModuleType("kaggle_environments.utils")
+utils.resolve_episode_seed = lambda _env: 0
+sys.modules.setdefault("kaggle_environments", pkg)
+sys.modules.setdefault("kaggle_environments.utils", utils)
 
 import pressure_delay_invariance as candidate  # noqa: E402
 
@@ -31,7 +39,8 @@ def _load_module(name: str, path: Path):
 
 mechanics = _load_module(
     "_titan_pressure_delay_mechanics",
-    ROOT / "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
+    ROOT
+    / "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
 )
 
 
@@ -312,7 +321,7 @@ class DelayCertificateTests(unittest.TestCase):
     def test_barriers_split_reordering_segments(self) -> None:
         safe_a = _sell("TOMATO", 1, "safe-a")
         exposed_a = _sell("MILK", 1, "exposed-a")
-        barrier = {"action": "BUY_PRODUCT", "type": "WHEAT", "quantity": 1}
+        barrier = {"action": "HIRE", "tag": "segment-barrier"}
         safe_b = _sell("WHEAT", 1, "safe-b")
         exposed_b = _sell("EGG", 1, "exposed-b")
         result = candidate.certified_pressure_partition(
