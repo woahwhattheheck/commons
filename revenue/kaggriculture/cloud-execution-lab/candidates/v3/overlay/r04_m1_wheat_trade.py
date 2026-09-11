@@ -99,8 +99,16 @@ def _market_rows(planned):
     return rows
 
 
-def _future_literal_pickup(tape, step):
-    """Return (due_step, units), or (None, 0), without crossing the current day."""
+def _future_literal_pickup(tape, step, actor_count):
+    """Return (due_step, units) for a pickup executable by a current actor.
+
+    Future HIRE/purchase rows are a hard veto below, so the live actor count
+    cannot increase before the certified pickup. Tape hand rows beyond that
+    count are non-executable in the official interpreter and must not create
+    speculative WHEAT demand.
+    """
+    if type(actor_count) is not int or actor_count < 1:
+        return None, 0
     if not isinstance(tape, (list, tuple)) or len(tape) <= step + LOOKAHEAD_MIN:
         return None, 0
     end = min(len(tape) - 1, step + LOOKAHEAD_MAX, (step // 24 + 1) * 24 - 1)
@@ -124,8 +132,13 @@ def _future_literal_pickup(tape, step):
         if due < step + LOOKAHEAD_MIN:
             continue
         demand = 0
-        for command in commands:
+        for actor, command in enumerate(commands):
             if len(command) >= 2 and command[:2] == ["PICKUP", "WHEAT"]:
+                # Extra tape hand rows do not imply a live hand. With HIRE
+                # already vetoed on every intervening row, such a command is
+                # provably unreachable and cannot justify an early market buy.
+                if actor >= actor_count:
+                    return None, 0
                 quantity = command[2] if len(command) >= 3 else 1
                 if not _plain_nonnegative_int(quantity):
                     return None, 0
@@ -217,7 +230,7 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
             REPORT["funding_vetoes"] += 1
             return action
 
-    due, demand = _future_literal_pickup(tape, step)
+    due, demand = _future_literal_pickup(tape, step, len(commands))
     if due is None:
         return action
     REPORT["future_pickups"] += 1

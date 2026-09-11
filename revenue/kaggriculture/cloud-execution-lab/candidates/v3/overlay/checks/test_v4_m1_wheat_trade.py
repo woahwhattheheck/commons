@@ -96,6 +96,22 @@ class M1WheatTrade(unittest.TestCase):
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 3]])
         self.assertEqual(lane.REPORT["buy_units"], 3)
 
+    def test_future_pickup_must_belong_to_current_actor(self):
+        self.prime(step=100, inventory=100)
+        obs = observation(101, market_inventory=98)
+        obs["farms"][0]["hands"] = []
+        obs["private"]["inventories"] = [{}]
+        parent = {"farmer": ["PASS"], "hands": [], "market": []}
+
+        # The frozen tape has a hand WHEAT pickup at step 104, but this farm has
+        # no hand and every intervening HIRE is already a hard M1 veto. The
+        # official interpreter therefore cannot execute that pickup, so M1 must
+        # not buy WHEAT for it.
+        out = self.run_lane(obs, parent, tape_with_pickup(104, 2))
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["future_pickups"], 0)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
     def test_engine_float_money_activates(self):
         self.prime(step=100, inventory=100)
         parent = empty_action()
