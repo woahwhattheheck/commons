@@ -1,14 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
 """TITAN V4 D4: guarded same-day STRAWBERRY sale timing.
 
-This is the repaired V3.1 D4 mechanism carried into the single V4 tree.  It is
-inactive unless the V4 feature key is enabled.  When enabled it may advance only
+This is the repaired V3.1 D4 mechanism carried into the single V4 tree. It is
+inactive unless the V4 feature key is enabled. When enabled it may advance only
 STRAWBERRY quantity that is already present in projected shed stock and already
 scheduled for a later same-day authored SELL, strictly beyond the parent E184
 sale horizon and strictly before the next incumbent EVENING_FLUSH callback.
 
 The matching sale-window debt is booked on the authored due step so the future
-sale remains single-owned.  Malformed or ambiguous public/runtime state fails
+sale remains single-owned. Malformed or ambiguous public/runtime state fails
 closed to the exact parent action.
 """
 
@@ -47,7 +47,7 @@ def _next_incumbent_flush(step):
     """Return the next same-day live EVENING_FLUSH callback owning STRAWBERRY."""
     if not base.EVENING_FLUSH or ITEM not in base.FLUSH_ITEMS:
         return None
-    day_start = (step // 24) * 24
+    day_start = (step // base.TURNS_PER_DAY) * base.TURNS_PER_DAY
     for hour in base.FLUSH_HOURS:
         flush_step = day_start + hour
         if flush_step >= step:
@@ -58,7 +58,7 @@ def _next_incumbent_flush(step):
 def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=MIN_PRICE):
     """Return ``(action, added_qty, reservations)`` for the repaired D4 rider.
 
-    ``reservations`` is a tuple of ``(due_step, qty)`` pairs.  Every no-op returns
+    ``reservations`` is a tuple of ``(due_step, qty)`` pairs. Every no-op returns
     the exact input ``action`` object and leaves ``sale_window_debts`` untouched.
     """
     if not isinstance(action, dict):
@@ -107,8 +107,6 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=MIN
                and command[:2] == ["PICKUP", ITEM] for command in queue):
             return action, 0, ()
 
-    # Match E184's animal-PLACE uncertainty guard: projected_shed deliberately
-    # does not model a failed animal placement falling back into shed inventory.
     try:
         if any(len(command) > 1 and command[0] == "PLACE" and command[1] in base.ANIMALS
                and view.inventory(actor).get(command[1], 0) > 0
@@ -132,7 +130,9 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=MIN
         return action, 0, ()
 
     start = step + horizon + 1
-    end = min(base.LAST_STEP, (step // 24 + 1) * 24 - 1, (END_DAY + 1) * 24 - 1)
+    end = min(base.LAST_STEP,
+              (step // base.TURNS_PER_DAY + 1) * base.TURNS_PER_DAY - 1,
+              (END_DAY + 1) * base.TURNS_PER_DAY - 1)
     next_flush = _next_incumbent_flush(step)
     if next_flush is not None:
         end = min(end, next_flush - 1)
@@ -204,15 +204,18 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=MIN
     return result, added, tuple(reservations)
 
 
-def apply_d4_strawberry_timing(action, observation, configuration=None, *, enabled=False):
-    """Apply D4 after the parent policy and before ROW_ORDER / EVENING_FLUSH."""
-    if not enabled:
+def apply_d4_strawberry_timing(action, observation, configuration=None, *,
+                               enabled=False, min_price=MIN_PRICE):
+    """Apply D4 after H4 and before ROW_ORDER / EVENING_FLUSH."""
+    if not enabled or not isinstance(action, dict):
+        return action
+    if type(min_price) is not int or min_price < 2:
         return action
     if not isinstance(observation, dict):
         return action
     step = observation.get("step")
     player = observation.get("player")
-    if type(step) is not int or type(player) is not int:
+    if type(step) is not int or type(player) is not int or player not in (0, 1):
         return action
 
     policy = getattr(base, "_POLICY", None)
@@ -231,7 +234,7 @@ def apply_d4_strawberry_timing(action, observation, configuration=None, *, enabl
         return action
 
     result, added, reservations = advance_midgame_strawberry(
-        action, view, state, tapes[plan], step, min_price=MIN_PRICE
+        action, view, state, tapes[plan], step, min_price=min_price
     )
     if added:
         state.d4_last = {
@@ -239,5 +242,6 @@ def apply_d4_strawberry_timing(action, observation, configuration=None, *, enabl
             "price": view.prices.get(ITEM),
             "quantity": added,
             "reservations": reservations,
+            "min_price": min_price,
         }
     return result
