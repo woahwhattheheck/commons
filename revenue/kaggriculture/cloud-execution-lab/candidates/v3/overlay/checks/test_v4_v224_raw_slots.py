@@ -185,6 +185,33 @@ class V224RawSlots(unittest.TestCase):
                          [["SELL", "WOOL", 2], ["HIRE"], [],
                           ["SELL", "MILK", 3], ["BUY_SEED", "WHEAT", 1]])
 
+    def test_over_cap_frozen_change_keeps_only_raw_executable_prefix(self):
+        parent = action([[], *[["HIRE"] for _ in range(9)], ["SELL", "WOOL", 1]])
+        out = lane.sales_first_raw_slots(parent, max_orders=10)
+        self.assertIsNot(out, parent)
+        self.assertEqual(len(parent["market"]), 11)
+        self.assertEqual(out["market"], parent["market"][:10])
+        self.assertEqual(out["market"][0], [])
+        self.assertNotIn(["SELL", "WOOL", 1], out["market"])
+
+    def test_over_cap_unchanged_frozen_prefix_does_not_truncate_parent(self):
+        parent = action([["HIRE"] for _ in range(10)] + [["SELL", "WOOL", 1]])
+        out = lane.sales_first_raw_slots(parent, max_orders=10)
+        self.assertIs(out, parent)
+        self.assertEqual(len(out["market"]), 11)
+        self.assertEqual(out["market"][-1], ["SELL", "WOOL", 1])
+
+    def test_over_cap_malformed_barrier_preserves_prefix_but_hides_tail(self):
+        prefix = [["BOGUS", "WOOL", 1], ["SELL", "WOOL", 2]]
+        prefix += [["HIRE"] for _ in range(8)]
+        parent = action(prefix + [["SELL", "MILK", 1]])
+        out = lane.sales_first_raw_slots(parent, max_orders=10)
+        self.assertIsNot(out, parent)
+        self.assertEqual(out["market"], prefix)
+        self.assertEqual(out["market"][0], ["BOGUS", "WOOL", 1])
+        self.assertEqual(out["market"][1], ["SELL", "WOOL", 2])
+        self.assertNotIn(["SELL", "MILK", 1], out["market"])
+
     def test_router_flag_off_preserves_frozen_v224_compaction(self):
         parent = action([[], ["SELL", "WOOL", 2]])
         r04.V224_RAW_SLOTS = False
