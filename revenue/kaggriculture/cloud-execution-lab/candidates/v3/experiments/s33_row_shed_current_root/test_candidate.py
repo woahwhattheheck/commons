@@ -55,20 +55,26 @@ class RowShedTests(unittest.TestCase):
         result = order_sells(market, self.inventory, {"CARROT": 0, "WHEAT": 10})
         self.assertEqual(result[0], ["SELL", "WHEAT", 10])
 
-    def test_negative_projected_stock_clamps_to_zero(self):
+    def test_negative_projection_falls_back_to_whole_parent_sort(self):
         market = [["SELL", "CARROT", 1000], ["SELL", "WHEAT", 10]]
+        legacy = order_sells(market, self.inventory, None)
         result = order_sells(market, self.inventory, {"CARROT": -99, "WHEAT": 10})
-        self.assertEqual(result[0], ["SELL", "WHEAT", 10])
+        self.assertEqual(result, legacy)
 
-    def test_bool_projection_falls_back_to_parent_requested_score(self):
+    def test_bool_projection_falls_back_to_whole_parent_sort(self):
         market = [["SELL", "WHEAT", 100], ["SELL", "CARROT", 1000]]
+        legacy = order_sells(market, self.inventory, None)
         result = order_sells(market, self.inventory, {"WHEAT": 100, "CARROT": True})
-        self.assertEqual(result[0], ["SELL", "CARROT", 1000])
+        self.assertEqual(result, legacy)
 
-    def test_missing_projection_falls_back_to_parent_requested_score(self):
+    def test_partial_projection_falls_back_to_whole_parent_sort(self):
         market = [["SELL", "WHEAT", 100], ["SELL", "CARROT", 1000]]
-        result = order_sells(market, self.inventory, {"WHEAT": 100})
-        self.assertEqual(result[0], ["SELL", "CARROT", 1000])
+        legacy = order_sells(market, self.inventory, None)
+        self.assertEqual(legacy[0], ["SELL", "CARROT", 1000])
+        # Per-row fallback would use CARROT=5 but legacy WHEAT=100 and flip this
+        # ordering; whole-block fallback must preserve the inherited sort instead.
+        result = order_sells(market, self.inventory, {"CARROT": 5})
+        self.assertEqual(result, legacy)
 
     def test_zero_score_tie_is_stable(self):
         market = [["SELL", "UNKNOWN_A", 10], ["SELL", "UNKNOWN_B", 10]]
