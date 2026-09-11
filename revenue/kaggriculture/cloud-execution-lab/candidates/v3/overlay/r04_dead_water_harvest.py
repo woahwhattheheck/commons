@@ -1,32 +1,22 @@
 # SPDX-License-Identifier: Apache-2.0
 """V4 W1: recover provably dead WATER turns into same-tile HARVEST.
 
-This lane is intentionally narrower than worker reassignment. It never hires,
-moves, buys, plants, services animals, or touches market rows. During the
-existing late-water window it only rewrites an authored ["WATER"] when:
+W1 is intentionally narrow. On the actual day-28 hour-23 pre-EOD callback of
+the standard game it may replace an authored same-tile ["WATER"] with
+["HARVEST"] only when WATER is provably wasted, the standing plant is provably
+harvestable, annual future yield is not sacrificed, actor geometry is exact,
+and a whole-farm capacity upper bound proves that every unit which can be
+carried after this turn still fits in the 100-unit shed at the immediately
+following end of day. Final day (day 29 / step >= 696) is deliberately
+excluded: there is no later EOD auto-drop, so harvest legality alone does not
+prove that new cargo is ever delivered or monetized.
 
-* the WATER is provably wasted (the plant is already watered today, or a
-  non-sentinel public max_lifespan_step is at/before the current step),
-* the same standing plant is provably harvestable from public state, and
-* for a non-ongoing crop, an already-watered harvest cannot destroy a remaining
-  future yield opportunity.
-
-Annual crops start with yield_units == 1 before maturity in the official engine,
-so yield_units alone is not sufficient. Also, HARVEST removes annual crops from
-the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
-before max_yield_day. Ongoing crops use max_lifespan_step == -1 as a sentinel
-until their terminal production, so that value must never be treated as expired.
-The timing proof is valid only under the standard 720-step, 24-turn/day, 10x10
-engine configuration and a public day consistent with step. Hour 23 is excluded:
-HARVEST moves yield into actor cargo before the engine's end-of-day shed drop,
-where a full shed can discard that cargo even though the parent WATER would have
-left ongoing-crop yield safely on the plant. A WATER candidate must also be the
-only actor on its public tile. Unexpected state fails closed.
+Unexpected or malformed state returns the exact parent action object.
 """
 from __future__ import annotations
 
 LATE_START = 672
-LATE_END = 718
+LATE_END = 695
 
 FIRST_YIELD_DAY = {
     "WHEAT": 2,
@@ -36,9 +26,6 @@ FIRST_YIELD_DAY = {
     "MELON": 10,
 }
 
-# Official engine crop semantics. Ongoing-crop HARVEST preserves the plant;
-# annual-crop HARVEST removes it. For the latter, an already-watered action is
-# replaceable only once the crop has reached its final water/yield age.
 ONGOING_CROPS = {"TOMATO", "STRAWBERRY"}
 ANNUAL_MAX_YIELD_DAY = {
     "WHEAT": 4,
@@ -50,6 +37,16 @@ _STANDARD_CONFIGURATION = {
     "episodeSteps": 720,
     "turnsPerDay": 24,
     "boardSize": 10,
+    "shedCapacity": 100,
+}
+
+_MARKET_SHED_INFLOW = {"BUY_PRODUCT", "BUY_ANIMAL"}
+_MARKET_KNOWN_SAFE = {"SELL", "HIRE", "BUY_LAND", "BUY_SEED"}
+_KNOWN_UNIT_OPS = {
+    "PASS", "NORTH", "SOUTH", "EAST", "WEST",
+    "WATER", "DIG", "FERTILIZE", "PLANT", "HARVEST",
+    "PICKUP", "PLACE", "FEED", "CARE", "COLLECT_FERTILIZER",
+    "BUILD_COOP", "BUILD_PASTURE",
 }
 
 _WATER = ["WATER"]
@@ -62,6 +59,8 @@ report = {
     "expiring": 0,
     "not_harvestable": 0,
     "future_yield_block": 0,
+    "capacity_block": 0,
+    "terminal_day_block": 0,
     "recovered": 0,
 }
 
@@ -89,7 +88,6 @@ def _cfg(configuration, key):
 
 
 def _standard_configuration(configuration):
-    """Require the exact public timing/board constants used by this proof."""
     if configuration is None:
         return False
     for key, expected in _STANDARD_CONFIGURATION.items():
@@ -111,33 +109,42 @@ def _position_key(position):
         return _UNKNOWN
 
 
-def _worker_tile(farm, position):
-    try:
-        key = _position_key(position)
-        if key is _UNKNOWN:
-            return _UNKNOWN
-        x, y = key
-        tiles = farm["tiles"]
-        if y < 0 or y >= len(tiles):
-            return _UNKNOWN
-        row = tiles[y]
-        if x < 0 or x >= len(row):
-            return _UNKNOWN
-        return row[x]
-    except Exception:
+def _valid_board(tiles):
+    return (
+        isinstance(tiles, list)
+        and len(tiles) == 10
+        and all(isinstance(row, list) and len(row) == 10 for row in tiles)
+    )
+
+
+def _worker_tile(tiles, position):
+    key = _position_key(position)
+    if key is _UNKNOWN:
         return _UNKNOWN
+    x, y = key
+    if not (0 <= x < 10 and 0 <= y < 10):
+        return _UNKNOWN
+    return tiles[y][x]
+
+
+def _strict_inventory_total(mapping):
+    if not isinstance(mapping, dict):
+        return None
+    total = 0
+    for item, quantity in mapping.items():
+        if not isinstance(item, str) or not _plain_int(quantity) or quantity < 0:
+            return None
+        total += quantity
+    return total
 
 
 def _wasted_water_reason(step, tile):
-    """Return why WATER is wasted on this plant, else None."""
     try:
         if not (isinstance(tile, dict) and tile.get("kind") == "PLANT"):
             return None
         if tile.get("watered_today") is True:
             return "already_watered"
         max_lifespan_step = tile.get("max_lifespan_step")
-        # Ongoing crops use -1 as "no terminal decay scheduled yet". Treating
-        # that sentinel as <= step would incorrectly kill productive WATER.
         if (
             _plain_int(max_lifespan_step)
             and max_lifespan_step >= 0
@@ -150,7 +157,6 @@ def _wasted_water_reason(step, tile):
 
 
 def _harvestable(tile, day):
-    """Prove that HARVEST can collect positive units on the standing plant."""
     try:
         if not (isinstance(tile, dict) and tile.get("kind") == "PLANT"):
             return False
@@ -170,14 +176,6 @@ def _harvestable(tile, day):
 
 
 def _harvest_preserves_future_yield(tile, day, reason):
-    """Prove this recovery cannot destroy a remaining annual yield opportunity.
-
-    Expiring plants are already past the engine's productive window. Ongoing
-    crops survive HARVEST, so collecting held yield does not destroy future
-    production. An annual crop is different: HARVEST removes the plant, so an
-    already-watered mature crop must have reached max_yield_day before we can
-    safely consume it here.
-    """
     if reason == "expiring":
         return True
     try:
@@ -193,6 +191,72 @@ def _harvest_preserves_future_yield(tile, day, reason):
         return False
 
 
+def _tile_yield_upper_bound(tile):
+    if not isinstance(tile, dict):
+        return None
+    units = tile.get("yield_units", 0)
+    if not _plain_int(units) or units < 0:
+        return None
+    return units
+
+
+def _market_preserves_capacity(action):
+    market = action.get("market", _UNKNOWN)
+    if not isinstance(market, list):
+        return False
+    for order in market:
+        if not isinstance(order, list):
+            return False
+        if not order:
+            continue
+        if not isinstance(order[0], str):
+            return False
+        op = order[0]
+        if op in _MARKET_SHED_INFLOW:
+            return False
+        if op not in _MARKET_KNOWN_SAFE:
+            return False
+    return True
+
+
+def _capacity_safe(private, commands, actor_tiles, candidate_indices):
+    """Prove all carried inventory after unit work fits the immediate EOD shed."""
+    if not isinstance(private, dict):
+        return False
+    inventories = private.get("inventories", _UNKNOWN)
+    shed = private.get("shed", _UNKNOWN)
+    if not isinstance(inventories, list) or len(inventories) != len(commands):
+        return False
+
+    shed_total = _strict_inventory_total(shed)
+    if shed_total is None:
+        return False
+    carried_total = 0
+    for inventory in inventories:
+        subtotal = _strict_inventory_total(inventory)
+        if subtotal is None:
+            return False
+        carried_total += subtotal
+
+    inflow = 0
+    candidates = set(candidate_indices)
+    for index, (command, tile) in enumerate(zip(commands, actor_tiles)):
+        if not command or not isinstance(command[0], str):
+            return False
+        op = command[0]
+        if op not in _KNOWN_UNIT_OPS:
+            return False
+        if index in candidates or op == "HARVEST":
+            gain = _tile_yield_upper_bound(tile)
+            if gain is None:
+                return False
+            inflow += gain
+        elif op == "COLLECT_FERTILIZER":
+            inflow += 1
+
+    return shed_total + carried_total + inflow <= _STANDARD_CONFIGURATION["shedCapacity"]
+
+
 def apply_dead_water_harvest(observation, action, configuration=None, enabled=True):
     """Recover same-tile HARVESTs; return the original object when unchanged."""
     if not enabled:
@@ -200,37 +264,40 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
     try:
         if not _standard_configuration(configuration):
             return action
-        step = observation["step"]
-        day = observation["day"]
-        player = observation["player"]
+        if not isinstance(observation, dict) or not isinstance(action, dict):
+            return action
+
+        step = observation.get("step", _UNKNOWN)
+        day = observation.get("day", _UNKNOWN)
+        player = observation.get("player", _UNKNOWN)
         if not _plain_int(step) or not _plain_int(day):
             return action
-        # Maturity consumes day while the late/expiry window uses step. They
-        # must describe one engine clock or the state is ambiguous.
         if day != step // 24:
             return action
         if not _plain_int(player) or player not in (0, 1):
             return action
-        if step < LATE_START or step > LATE_END:
+        if step < LATE_START or step > 718:
             return action
-        # Unit actions execute before EOD. On hour 23, HARVEST transfers yield
-        # to actor inventory and the subsequent automatic shed drop may destroy
-        # overflow. Parent WATER can leave ongoing-crop yield safely on-plant,
-        # so cargo safety is not provable without a whole-farm capacity proof.
-        if step % 24 == 23:
+        if step >= 696:
+            report["terminal_day_block"] += 1
             return action
-        if not isinstance(action, dict):
+        if step % 24 != 23:
             return action
 
-        farms = observation["farms"]
+        farms = observation.get("farms", _UNKNOWN)
         if not isinstance(farms, list) or player >= len(farms):
             return action
         farm = farms[player]
         if not isinstance(farm, dict):
             return action
-        farm_hands = farm.get("hands")
+        tiles = farm.get("tiles", _UNKNOWN)
+        if not _valid_board(tiles):
+            return action
+
+        farm_hands = farm.get("hands", _UNKNOWN)
+        farmer_position = farm.get("farmer", _UNKNOWN)
         farmer_command = action.get("farmer", _UNKNOWN)
-        action_hands = action.get("hands")
+        action_hands = action.get("hands", _UNKNOWN)
         if (
             not isinstance(farm_hands, list)
             or not isinstance(farmer_command, list)
@@ -238,38 +305,30 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
             or any(not isinstance(command, list) for command in action_hands)
         ):
             return action
-        # Actor commands are positional. Never let zip() silently truncate a
-        # partial/malformed action vector and still rewrite another actor.
         if len(farm_hands) != len(action_hands):
             return action
-        positions = [farm["farmer"]] + list(farm_hands)
-        commands = [farmer_command] + list(action_hands)
 
-        # Prove all actor geometry before any telemetry or partial mutation.
+        positions = [farmer_position] + list(farm_hands)
+        commands = [farmer_command] + list(action_hands)
         position_keys = []
         actor_tiles = []
         for position in positions:
             key = _position_key(position)
             if key is _UNKNOWN:
                 return action
-            tile = _worker_tile(farm, position)
+            tile = _worker_tile(tiles, position)
             if tile is _UNKNOWN:
                 return action
             position_keys.append(key)
             actor_tiles.append(tile)
 
-        # A same-tile substitution ceases to be actor-local when another actor
-        # shares the tile: row ordering can change who receives the first effect
-        # or cargo. Fail closed for that WATER candidate regardless of sibling
-        # command so W1 never changes multi-actor interaction semantics.
         for index, command in enumerate(commands):
             if command == _WATER and position_keys.count(position_keys[index]) > 1:
                 return action
 
         report["steps_active"] += 1
 
-        changed = False
-        new_commands = list(commands)
+        candidate_indices = []
         for index, (command, tile) in enumerate(zip(commands, actor_tiles)):
             if command != _WATER:
                 continue
@@ -283,12 +342,27 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
             if not _harvest_preserves_future_yield(tile, day, reason):
                 report["future_yield_block"] += 1
                 continue
+            candidate_indices.append(index)
+
+        if not candidate_indices:
+            return action
+        if not _market_preserves_capacity(action):
+            report["capacity_block"] += 1
+            return action
+        if not _capacity_safe(
+            observation.get("private", _UNKNOWN),
+            commands,
+            actor_tiles,
+            candidate_indices,
+        ):
+            report["capacity_block"] += 1
+            return action
+
+        new_commands = list(commands)
+        for index in candidate_indices:
             new_commands[index] = list(_HARVEST)
             report["recovered"] += 1
-            changed = True
 
-        if not changed:
-            return action
         out = dict(action)
         out["farmer"] = new_commands[0]
         out["hands"] = new_commands[1:]
