@@ -164,6 +164,96 @@
         "observed_at": "2026-09-05T11:29:50.741356+00:00",
         "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
       }
+    },
+    {
+      "sku": "salesforce-contact-preflight",
+      "product": "prod_VEjxCssrzGkXUw",
+      "price": "price_1UEGTIATH4EDE7XDdc0qQtku",
+      "plink": "plink_1UEGTQATH4EDE7XDkFP2PPsF",
+      "url": "https://buy.stripe.com/4gM8wO4SxbnrdKV9h043S0m",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "permit-intake-receipt",
+      "product": "prod_VEjya8bNUjB7Jm",
+      "price": "price_1UEGUEATH4EDE7XDMAhW5g5q",
+      "plink": "plink_1UEGUOATH4EDE7XDFIif4d4O",
+      "url": "https://buy.stripe.com/8x2cN42Kp8bf8qBgJs43S0n",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "catering-deposit-rescue",
+      "product": "prod_VEjzxX5w6hjflY",
+      "price": "price_1UEGVfATH4EDE7XDZlwP30Bz",
+      "plink": "plink_1UEGVoATH4EDE7XDglYAlRRs",
+      "url": "https://buy.stripe.com/dRmdR8acR4Z36it2SC43S0q",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "invoice-exception-pack",
+      "product": "prod_VEjwhnEI16Uvh8",
+      "price": "price_1UEGSvATH4EDE7XDeMuvXKcT",
+      "plink": "plink_1UEGT5ATH4EDE7XDA7WFJthA",
+      "url": "https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "open-model-release-receipt",
+      "product": "prod_VEjypDHK6VviOz",
+      "price": "price_1UEGUXATH4EDE7XDYx2ZF3x8",
+      "plink": "plink_1UEGUgATH4EDE7XD1fhfWxzw",
+      "url": "https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "fleet-work-order-exactly-once",
+      "product": "prod_VEjyMqs2iykv7r",
+      "price": "price_1UEGUpATH4EDE7XDl2JOk8q1",
+      "plink": "plink_1UEGV0ATH4EDE7XD8vmj5Afc",
+      "url": "https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
     }
   ],
   "inert_duplicate_urls": [
