@@ -142,6 +142,13 @@ jobs:
               'games': games,
           }
           assert frozenset(module.normalize(copy.deepcopy(valid), 'valid')) == module.EXPECTED_KEYS
+          module.assert_fingerprint_custody(
+              copy.deepcopy(valid),
+              'valid-custody',
+              candidate_sha='b' * 64,
+              current_self_sha='c' * 64,
+              arlene_sha='d' * 64,
+          )
 
           def rejects(name, mutate):
               poisoned = copy.deepcopy(valid)
@@ -151,6 +158,21 @@ jobs:
               except AssertionError:
                   return
               raise AssertionError(f'{name}: poison accepted')
+
+          def rejects_custody(name, mutate):
+              poisoned = copy.deepcopy(valid)
+              mutate(poisoned)
+              try:
+                  module.assert_fingerprint_custody(
+                      poisoned,
+                      name,
+                      candidate_sha='b' * 64,
+                      current_self_sha='c' * 64,
+                      arlene_sha='d' * 64,
+                  )
+              except AssertionError:
+                  return
+              raise AssertionError(f'{name}: custody poison accepted')
 
           rejects('opponents-list', lambda r: r.__setitem__('opponents', list(module.OPPONENTS)))
           rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
@@ -162,6 +184,14 @@ jobs:
           rejects('failure', lambda r: r['games'][0].__setitem__('failure', 'boom'))
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'bad'))
           rejects('bad-recheck', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
+          rejects_custody('candidate-byte-substitution', lambda r: r['candidate'].__setitem__('sha256', 'e' * 64))
+          rejects_custody('current-self-byte-substitution', lambda r: r['opponents']['current_self'].__setitem__('sha256', 'e' * 64))
+          rejects_custody('arlene-byte-substitution', lambda r: r['opponents']['arlene'].__setitem__('sha256', 'e' * 64))
+          def substitute_all(r):
+              r['candidate']['sha256'] = 'e' * 64
+              r['opponents']['current_self']['sha256'] = 'f' * 64
+              r['opponents']['arlene']['sha256'] = '0' * 64
+          rejects_custody('coherent-valid-fingerprint-substitution', substitute_all)
           print('B11_8E3_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
           PY
           test -z "$(git status --porcelain)"
