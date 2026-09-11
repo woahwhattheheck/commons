@@ -10,6 +10,7 @@ for path in (HERE, OVERLAY):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
+import compose_current_root as composer  # noqa: E402
 import r04_row_shed as row_shed  # noqa: E402
 import r04_full_router as r04  # noqa: E402
 
@@ -74,6 +75,45 @@ class RowShedContract(unittest.TestCase):
         def broken(*_args):
             raise RuntimeError("no trusted default curve")
         self.assertIs(row_shed.order_leading_sells(market, {}, {"MELON": 5, "WOOL": 5}, broken), market)
+
+
+class ComposerContract(unittest.TestCase):
+    def setUp(self):
+        self.r04_path = V3 / "overlay" / "r04_full_router.py"
+        self.apply_path = V3 / "apply_v3.py"
+        self.r04_before = self.r04_path.read_text(encoding="utf-8")
+        self.apply_before = self.apply_path.read_text(encoding="utf-8")
+
+    def test_composer_patches_exact_current_root_without_writing(self):
+        r04_after = composer.patch_r04(self.r04_before)
+        apply_after = composer.patch_apply(self.apply_before)
+
+        self.assertIn("ROW_SHED = False", r04_after)
+        self.assertIn("b5_carrot_fertilizer=None, b5_jit_fertilize=None, row_shed=None", r04_after)
+        self.assertIn("global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, ROW_SHED", r04_after)
+        self.assertIn("r04_row_shed", apply_after)
+        self.assertIn("bool(self.features.r04_b5_jit_fertilize),\\n", apply_after)
+        self.assertIn("bool(self.features.r04_row_shed))(observation, configuration)", apply_after)
+
+        # Pure transform: source tree is unchanged until a later production consumer opts in.
+        self.assertEqual(self.r04_path.read_text(encoding="utf-8"), self.r04_before)
+        self.assertEqual(self.apply_path.read_text(encoding="utf-8"), self.apply_before)
+
+    def test_composer_refuses_double_application(self):
+        with self.assertRaises(RuntimeError):
+            composer.patch_r04(composer.patch_r04(self.r04_before))
+        with self.assertRaises(RuntimeError):
+            composer.patch_apply(composer.patch_apply(self.apply_before))
+
+    def test_existing_b5_jit_and_l3_markers_survive_patch(self):
+        after = composer.patch_r04(self.r04_before)
+        for marker in (
+            "B5_CARROT_FERTILIZER = False",
+            "B5_JIT_FERTILIZE = False",
+            "NO_LATE_SALE_ADVANCE_STEP = 648",
+            "SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')",
+        ):
+            self.assertEqual(after.count(marker), self.r04_before.count(marker), marker)
 
 
 if __name__ == "__main__":
