@@ -2,10 +2,10 @@
 """B5 evaluation arm: opportunistic no-detour CARROT fertilization.
 
 This experiment is outside ``overlay/**`` and therefore cannot alter the deterministic
-V3 package or submission defaults.  It pins the live V3.1 R04 baseline, then replaces
-only an already-idle PASS with FERTILIZE when that worker is already standing on a
-CARROT plant, already carrying fertilizer, and the tile is not fertilized through the
-next two days.  No pathing, buying, hiring, market, or non-idle worker command changes.
+V3 package or submission defaults. It pins the live V3.1 R04 baseline, then replaces
+only an already-idle literal PASS with FERTILIZE when that worker is already standing
+on a CARROT plant, already carries fertilizer, and the tile is not fertilized through
+the next two days. Malformed or type-ambiguous state preserves the parent action.
 """
 from __future__ import annotations
 
@@ -34,44 +34,94 @@ _BASE_AGENT = base.install(**LIVE_BASELINE)
 REPORT = {"carrot_fertilize_requests": 0}
 
 
+def _strict_int(value):
+    """Return exact JSON integer values only; bool/float/string are malformed here."""
+    return value if type(value) is int else None
+
+
 def _eligible(tile, inventory, day):
-    """True only for a carried-fertilizer CARROT top-up with three-day coverage."""
+    """True only for an exactly typed carried-fertilizer CARROT top-up."""
+    if type(tile) is not dict or type(inventory) is not dict:
+        return False
+    if tile.get("kind") != "PLANT" or tile.get("crop") != "CARROT":
+        return False
+    fertilizer = _strict_int(inventory.get("FERTILIZER", 0))
+    coverage = _strict_int(tile.get("fertilized_until_day"))
     return (
-        isinstance(tile, dict)
-        and tile.get("kind") == "PLANT"
-        and tile.get("crop") == "CARROT"
-        and int(inventory.get("FERTILIZER", 0)) > 0
-        and int(tile.get("fertilized_until_day", -1)) < day + 2
+        fertilizer is not None
+        and fertilizer > 0
+        and coverage is not None
+        and coverage < day + 2
     )
 
 
 def apply_carrot_fertilizer(observation, action):
-    """Replace eligible PASS rows without touching the caller's action object."""
-    player = int(observation["player"])
-    day = int(observation["step"]) // 24
-    farm = observation["farms"][player]
-    private = observation["private"]
-    inventories = private.get("inventories") or []
-    positions = [farm["farmer"], *(farm.get("hands") or [])]
-    commands = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
+    """Replace exact PASS rows; malformed/ambiguous state returns exact parent identity."""
+    if type(observation) is not dict or type(action) is not dict:
+        return action
+
+    player = _strict_int(observation.get("player"))
+    step = _strict_int(observation.get("step"))
+    if player is None or player < 0 or step is None or step < 0:
+        return action
+
+    farms = observation.get("farms")
+    private = observation.get("private")
+    if type(farms) is not list or player >= len(farms) or type(private) is not dict:
+        return action
+    farm = farms[player]
+    if type(farm) is not dict:
+        return action
+
+    tiles = farm.get("tiles")
+    farmer_position = farm.get("farmer")
+    hand_positions = farm.get("hands")
+    inventories = private.get("inventories")
+    farmer_command = action.get("farmer")
+    hand_commands = action.get("hands")
+    if (
+        type(tiles) is not list
+        or type(farmer_position) is not list
+        or type(hand_positions) is not list
+        or type(inventories) is not list
+        or type(farmer_command) is not list
+        or type(hand_commands) is not list
+    ):
+        return action
+
+    positions = [farmer_position, *hand_positions]
+    commands = [farmer_command, *hand_commands]
+    if len(commands) != len(positions) or len(inventories) != len(positions):
+        return action
+
+    # Validate actor coordinates/inventory shapes before mutating any row. A malformed
+    # unrelated hand must not partially admit a transform for another actor.
+    actor_cells = []
+    for position, inventory in zip(positions, inventories):
+        if type(position) is not list or len(position) < 2 or type(inventory) is not dict:
+            return action
+        x = _strict_int(position[0])
+        y = _strict_int(position[1])
+        if x is None or y is None or y < 0 or y >= len(tiles):
+            return action
+        row = tiles[y]
+        if type(row) is not list or x < 0 or x >= len(row):
+            return action
+        actor_cells.append((x, y, row[x]))
+
+    day = step // 24
     claimed = set()
     changed = False
+    next_commands = list(commands)
 
-    for actor, (command, position) in enumerate(zip(commands, positions)):
-        if command != ["PASS"] or actor >= len(inventories):
+    for actor, (command, inventory, cell) in enumerate(zip(commands, inventories, actor_cells)):
+        # Do not synthesize a PASS from missing/falsey/malformed command rows.
+        if command != ["PASS"]:
             continue
-        try:
-            x, y = int(position[0]), int(position[1])
-            if not (0 <= y < len(farm["tiles"]) and 0 <= x < len(farm["tiles"][y])):
-                continue
-            if (x, y) in claimed:
-                continue
-            tile = farm["tiles"][y][x]
-        except (KeyError, TypeError, ValueError, IndexError):
+        x, y, tile = cell
+        if (x, y) in claimed or not _eligible(tile, inventory, day):
             continue
-        if not _eligible(tile, inventories[actor] or {}, day):
-            continue
-        commands[actor] = ["FERTILIZE"]
+        next_commands[actor] = ["FERTILIZE"]
         claimed.add((x, y))
         REPORT["carrot_fertilize_requests"] += 1
         changed = True
@@ -79,8 +129,8 @@ def apply_carrot_fertilizer(observation, action):
     if not changed:
         return action
     result = copy.deepcopy(action)
-    result["farmer"] = commands[0]
-    result["hands"] = commands[1:]
+    result["farmer"] = next_commands[0]
+    result["hands"] = next_commands[1:]
     return result
 
 
