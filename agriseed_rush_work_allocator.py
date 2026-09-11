@@ -462,21 +462,6 @@ def evaluate_row(
     if not _text(row.get("billing_account")):
         return _hold_record(row, "MISSING_BILLING")
 
-    regulated = int(spec["biological_hours"])
-    reported = int(row.get("reported_duration_hours") or 0)
-    # Rush may flag priority but must never shorten regulated duration.
-    if reported < regulated:
-        reported = regulated
-    if bool(row.get("rush")) and int(row.get("rush_shorten_hours") or 0):
-        reported = regulated
-
-    # Submission identity is bound to a freshly recomputed effective source
-    # payload.  The caller-provided source_sha256 is evidence, not authority.
-    source_row = dict(row)
-    source_row["reported_duration_hours"] = reported
-    source_sha256 = sha256_hex(_source_payload(source_row))
-    submission_id = _text(row.get("submission_id"))
-
     bag = _text(row.get("bag_barcode"))
     if not bag or bag in seen_bags:
         return _hold_record(row, "DUPLICATE_BAG_BARCODE")
@@ -496,6 +481,21 @@ def evaluate_row(
         return _hold_record(row, "INVALID_RULE_CERTIFICATE")
     if ANALYSTS[analyst]["site"] != spec["site"]:
         return _hold_record(row, "INVALID_RULE_CERTIFICATE")
+
+    # Only rows that have survived the original first-seen HOLD sequence reach
+    # effective-payload normalization and binding.  Bound IDs were already
+    # resolved above, so malformed would-be accession payloads cannot outrank a
+    # pre-existing duplicate/certificate/lot/sampler HOLD on first sight.
+    regulated = int(spec["biological_hours"])
+    reported = int(row.get("reported_duration_hours") or 0)
+    if reported < regulated:
+        reported = regulated
+    if bool(row.get("rush")) and int(row.get("rush_shorten_hours") or 0):
+        reported = regulated
+    source_row = dict(row)
+    source_row["reported_duration_hours"] = reported
+    source_sha256 = sha256_hex(_source_payload(source_row))
+    submission_id = _text(row.get("submission_id"))
 
     # Persist the identity binding only for successfully accessioned rows.
     # HOLD -> corrected-first-seen behavior remains intentionally out of scope
