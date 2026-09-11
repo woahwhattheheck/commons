@@ -110,6 +110,52 @@ class B5CarrotFertilizerTest(unittest.TestCase):
             with self.subTest(obs=obs):
                 self.assertIdentity(obs, action)
 
+    def test_later_bad_position_cancels_earlier_eligible_replacement(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        obs = {
+            "step": 120,
+            "player": 0,
+            "farms": [{
+                "tiles": [[carrot]],
+                "farmer": [0, 0],
+                "hands": [[99, 99]],
+            }],
+            "private": {"inventories": [{"FERTILIZER": 1}, {}]},
+        }
+        action = {"farmer": ["PASS"], "hands": [["PASS"]], "market": []}
+        self.assertIdentity(obs, action)
+
+    def test_later_malformed_command_cancels_earlier_eligible_replacement(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        obs = {
+            "step": 120,
+            "player": 0,
+            "farms": [{
+                "tiles": [[carrot]],
+                "farmer": [0, 0],
+                "hands": [[0, 0]],
+            }],
+            "private": {"inventories": [{"FERTILIZER": 1}, {}]},
+        }
+        for malformed in (None, [], "PASS", [1]):
+            with self.subTest(malformed=malformed):
+                self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [malformed], "market": []})
+
+    def test_later_malformed_inventory_cancels_earlier_eligible_replacement(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        obs = {
+            "step": 120,
+            "player": 0,
+            "farms": [{
+                "tiles": [[carrot]],
+                "farmer": [0, 0],
+                "hands": [[0, 0]],
+            }],
+            "private": {"inventories": [{"FERTILIZER": 1}, None]},
+        }
+        action = {"farmer": ["PASS"], "hands": [["WATER"]], "market": []}
+        self.assertIdentity(obs, action)
+
     def test_live_baseline_tuple_is_explicit(self):
         self.assertEqual(m.LIVE_BASELINE, {
             "horizon": 8,
