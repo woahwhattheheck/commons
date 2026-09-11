@@ -3,10 +3,10 @@
   "operation": "titan-v3-integration-20260909-01",
   "owner_rule": "2026-09-09: all fleet work lands in candidates/v3 as deterministic TITAN-CONFIG.json keys, not as split candidate directories. exports/titan-current.tar.gz and the Kaggle submission stay with Bryce.",
   "base": {
-    "archive": "exports/titan-current.tar.gz",
+    "archive": "exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz",
     "sha256": "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1",
-    "bytes": 427870,
-    "files": 110,
+    "bytes": 428158,
+    "files": 109,
     "main_sha_seen": "741e7262 (Reconcile canonical TITAN package with current documentation source, 2026-09-10T19:19Z), read from main 2026-09-10; code-identical to 17f53608 (only SOURCE.json, TITAN-RELEASE.md, reference/decision/README.md differ)",
     "note": "supersedes 17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86 (main 47d3b556) and a055fd56 (main 0d82aa7c, the base of the 2026-09-09 V3 panels); the completion block carries a second diagnostics receipt after _finish_production, so the post-hook anchor ends at the _finish_production line and _v3_post_final runs before that receipt"
   },
