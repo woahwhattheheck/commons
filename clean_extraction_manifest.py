@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import ntpath
 from pathlib import PurePosixPath
 from typing import Any
 
@@ -65,6 +66,9 @@ def normalize_path(raw: str, *, directory: bool = False) -> str:
     if not isinstance(raw, str) or not raw or "\\" in raw:
         raise ReplayError(f"invalid archive path: {raw!r}")
     candidate = raw[:-1] if directory and raw.endswith("/") else raw
+    drive, _ = ntpath.splitdrive(candidate)
+    if drive or ntpath.isabs(candidate):
+        raise ReplayError(f"Windows drive/rooted archive path: {raw!r}")
     path = PurePosixPath(candidate)
     if (
         not candidate

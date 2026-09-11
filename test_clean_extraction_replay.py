@@ -1,5 +1,7 @@
 import hashlib,io,json,os,stat,tarfile,tempfile,unittest,warnings,zipfile
 from pathlib import Path
+from clean_extraction_archive import extract_tar,extract_zip
+from clean_extraction_manifest import normalize_path
 from clean_extraction_replay import ReplayError,main,replay_archive
 
 def canon(v):return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
@@ -42,6 +44,16 @@ class T(unittest.TestCase):
             cases.append((p,"type metadata"))
             for archive,msg in cases:
                 with self.subTest(msg=msg),self.assertRaisesRegex(ReplayError,msg):replay_archive(archive,self.manifest)
+    def test_windows_drive_paths_fail_before_extraction(self):
+        for name in ("C:/escape.txt","C:relative.txt","Z:/foreign.txt","//server/share/escape.txt"):
+            with self.subTest(name=name),self.assertRaisesRegex(ReplayError,"Windows drive/rooted"):
+                normalize_path(name)
+        for ext,writer,extractor in (("zip",write_zip,extract_zip),("tar",write_tar,extract_tar)):
+            with self.subTest(ext=ext),tempfile.TemporaryDirectory()as td:
+                root=Path(td);archive=root/f"drive.{ext}";fresh=root/"fresh";fresh.mkdir();writer(archive,{"C:/escape.txt":b"x"})
+                with self.assertRaisesRegex(ReplayError,"Windows drive/rooted"):
+                    extractor(archive,fresh,10,1024)
+                self.assertEqual([],list(fresh.rglob("*")))
     def test_tar_guards(self):
         for typ,msg in((tarfile.SYMTYPE,"symlink"),(tarfile.LNKTYPE,"hardlink"),(tarfile.FIFOTYPE,"special")):
             with self.subTest(msg=msg),tempfile.TemporaryDirectory()as td:
