@@ -1,0 +1,88 @@
+{
+ "counts": {
+  "drift": {
+   "contained": 0,
+   "current": 97,
+   "disjoint": 126,
+   "overlap": 38,
+   "unknown": 2
+  },
+  "hosted": {
+   "CANCELLED_NOT_RUN": 2,
+   "FAILED": 171,
+   "NOT_EXECUTED_QUEUED": 65,
+   "RUNNING": 4,
+   "SUCCESS": 21
+  },
+  "lanes_open": 248,
+  "lanes_with_several_open": 10,
+  "listed_open": 263,
+  "listed_recent_closed": 181,
+  "open_prs": 263
+ },
+ "degraded": [],
+ "files": {
+  "branch": "state/coordination",
+  "full": "coordination.json"
+ },
+ "main": {
+  "committed_at": "2026-09-11T11:04:43Z",
+  "sha": "35794a732b5d09e57ad6f466dcde788eeb51a9c0"
+ },
+ "observed_at": "2026-09-11T12:01:27Z",
+ "queue": {
+  "in_progress": 20,
+  "oldest_queued_age_s": 8214,
+  "queued": 2124
+ },
+ "schema": "commons-coordination-head/v1",
+ "several_open": [
+  {
+   "lane": "lane-12226",
+   "open": [
+    12226,
+    12293,
+    12306,
+    12334
+   ]
+  },
+  {
+   "lane": "lane-12541",
+   "open": [
+    12564,
+    12565,
+    12566
+   ]
+  },
+  {
+   "lane": "lane-12166",
+   "open": [
+    12166,
+    12175,
+    12405
+   ]
+  },
+  {
+   "lane": "lane-12182",
+   "open": [
+    12182,
+    12187,
+    12197
+   ]
+  },
+  {
+   "lane": "lane-12212",
+   "open": [
+    12212,
+    12475
+   ]
+  },
+  {
+   "lane": "lane-12345",
+   "open": [
+    12345,
+    12382
+   ]
+  }
+ ]
+}
