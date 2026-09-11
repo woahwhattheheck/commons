@@ -152,6 +152,24 @@ class ExternalityGateTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.ExternalityError, "requires both baseline and candidate"):
             gate.evaluate(one_arm)
 
+    def test_multiple_row_container_aliases_reject_bool_int_false_green(self):
+        valid = cell(seat=0)
+        type_confused = copy.deepcopy(valid)
+        type_confused["candidate_seat"] = False
+        doc = document([valid])
+        doc["results"] = [type_confused]
+        with self.assertRaisesRegex(
+            gate.ExternalityError, "multiple row-container representations are ambiguous"
+        ):
+            gate.evaluate(doc)
+
+        equal_duplicate = document([valid])
+        equal_duplicate["games"] = copy.deepcopy(equal_duplicate["cells"])
+        with self.assertRaisesRegex(
+            gate.ExternalityError, "multiple row-container representations are ambiguous"
+        ):
+            gate.evaluate(equal_duplicate)
+
     def test_positive_rival_terminal_delta_blocks_even_when_margin_improves(self):
         row = cell(baseline=(100, 90), candidate=(110, 95))
         report = gate.evaluate(document([row]))
