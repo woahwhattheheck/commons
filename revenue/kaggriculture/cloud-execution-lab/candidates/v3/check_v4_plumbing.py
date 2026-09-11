@@ -2,11 +2,15 @@
 """Fail closed if a V4 recomposition drops a landed key or its runtime plumbing.
 
 The current PR's ``apply_v4.KEYS`` is compared with the target branch copy supplied
-by CI.  Every key already present on the target must survive.  The candidate is then
+by CI. Every key already present on the target must survive. The candidate is then
 materialised through the real V3/V4 build recipe and each head key is required to be
-present in config and ``Features`` with a default-OFF source landing.  R04 keys also
-must retain their router flag, install parameter/setter, a live action-router seam,
-and TitanAgent install wiring.
+present in config and ``Features`` with a default-OFF source landing. R04 keys also
+must retain their router flag, install parameter/setter, at least one live router
+read of that flag, and TitanAgent install wiring.
+
+The checker deliberately does *not* prescribe where an R04 key must act. V4 contains
+legitimate inner, outer/final-action, and inline repairs; monotonic plumbing should
+protect those seams without forcing every key through one helper-import pattern.
 
 This checker intentionally derives the contract from the moving target branch rather
 than maintaining a second key ledger.
@@ -118,54 +122,50 @@ def _find_function(tree: ast.AST, name: str) -> ast.FunctionDef:
     raise AssertionError(f"materialized r04_full_router.py has no {name}()")
 
 
-def _function_reads_flag_and_imports_module(function: ast.FunctionDef, flag: str, module: str) -> bool:
-    reads_flag = any(
-        isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Load)
+def _global_names(function: ast.FunctionDef) -> set[str]:
+    return {
+        name
         for node in ast.walk(function)
-    )
-    imports_module = any(
-        isinstance(node, ast.Import) and any(alias.name == module for alias in node.names)
-        for node in ast.walk(function)
-    )
-    return reads_flag and imports_module
+        if isinstance(node, ast.Global)
+        for name in node.names
+    }
 
 
-def _router_action_seam(router_tree: ast.AST, flag: str, module: str) -> str | None:
-    """Return the live router function that gates/imports a V4 helper.
+def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
+    """Return one top-level production function that reads ``flag``.
 
-    V4 has two legitimate composition positions today:
-    - ``_v3_stack`` for inner transforms such as PLACE/H3d;
-    - ``v3_agent`` for outer transforms such as B10 that must see the final
-      action after B9/H3c wrappers.
-
-    Requiring both the flag read and helper import in the same action-building
-    function avoids accepting a dead flag in one function plus an unrelated import
-    elsewhere in the module.
+    V4 feature seams are intentionally heterogeneous. A key may wrap ``_v3_stack``,
+    run as an outer/final-action transform in ``v3_agent``, or gate an inline repair
+    inside an existing R04 planner/helper. Requiring a live read somewhere outside
+    ``install`` proves the installed flag is consumed without constraining that
+    mechanism to a same-named helper module or a particular composition layer.
     """
-    for function_name in ("_v3_stack", "v3_agent"):
-        function = _find_function(router_tree, function_name)
-        if _function_reads_flag_and_imports_module(function, flag, module):
-            return function_name
+    for function in getattr(router_tree, "body", []):
+        if not isinstance(function, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            continue
+        if function.name == "install":
+            continue
+        if any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Load)
+               for node in ast.walk(function)):
+            return function.name
     return None
 
 
 def _assert_r04_router_contract(router_tree: ast.AST, runtime_tree: ast.AST, key: str) -> None:
     suffix = key.removeprefix("r04_")
     flag = suffix.upper()
-    module = "r04_" + suffix
 
     assert flag in _top_level_false_names(router_tree), f"{key}: router {flag} must source-land False"
 
     install = _find_function(router_tree, "install")
     install_args = {arg.arg for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)}
     assert suffix in install_args, f"{key}: router install() missing {suffix} parameter"
+    assert flag in _global_names(install), f"{key}: router install() does not declare {flag} global"
     assert any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Store)
                for node in ast.walk(install)), f"{key}: router install() never sets {flag}"
 
-    seam = _router_action_seam(router_tree, flag, module)
-    assert seam is not None, (
-        f"{key}: neither _v3_stack() nor v3_agent() both reads {flag} and imports {module}"
-    )
+    reader = _router_flag_reader(router_tree, flag)
+    assert reader is not None, f"{key}: router never reads live flag {flag} outside install()"
 
     assert _runtime_install_wired(runtime_tree, key, suffix), (
         f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)"
