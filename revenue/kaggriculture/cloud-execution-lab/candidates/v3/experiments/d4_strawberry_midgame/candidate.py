@@ -3,8 +3,9 @@
 
 This module is evidence-only and default-off. It does not invent liquidation.
 It only advances STRAWBERRY quantity that is already scheduled by the selected
-R04 tape later in the *same day*, is beyond the parent E184 sale horizon, and is
-already present in the projected shed now. The corresponding E184-style debt is
+R04 tape later in the *same day*, is beyond the parent E184 sale horizon, is
+strictly before the next incumbent EVENING_FLUSH callback, and is already
+present in the projected shed now. The corresponding E184-style debt is
 recorded on the authored due step so the future row is reduced by exactly the
 quantity advanced here.
 
@@ -30,6 +31,35 @@ D4_MIN_PRICE = None  # None is exact identity / disabled.
 
 def _strict_nonnegative_int(value):
     return value if type(value) is int and value >= 0 else None
+
+
+def _valid_debt_map(debts):
+    """Validate the full inherited E184 debt ledger before D4 can mutate it."""
+    if not isinstance(debts, dict):
+        return False
+    for due_step, ledger in debts.items():
+        if type(due_step) is not int or not (0 <= due_step <= base.LAST_STEP):
+            return False
+        if not isinstance(ledger, dict):
+            return False
+        for item, quantity in ledger.items():
+            if item not in base.PRODUCTS or _strict_nonnegative_int(quantity) is None:
+                return False
+    return True
+
+
+def _next_incumbent_flush(step):
+    """Return the next same-day live EVENING_FLUSH callback owning STRAWBERRY."""
+    if not base.EVENING_FLUSH or ITEM not in base.FLUSH_ITEMS:
+        return None
+    day_start = (step // 24) * 24
+    for hour in base.FLUSH_HOURS:
+        flush_step = day_start + hour
+        # The outer live flush executes after D4 on the same callback, so an
+        # equal step already owns all residual eligible STRAWBERRY stock.
+        if flush_step >= step:
+            return flush_step
+    return None
 
 
 def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=None):
@@ -94,11 +124,19 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=Non
     # double-booking D4.
     start = step + horizon + 1
     end = min(base.LAST_STEP, (step // 24 + 1) * 24 - 1, (END_DAY + 1) * 24 - 1)
+
+    # EVENING_FLUSH is an outer live V3.1 owner that runs after this wrapper on
+    # h21/h22/h23. Never attribute a later authored row when the incumbent
+    # flush can own the same projected stock first. If this callback itself is
+    # a flush hour, there is no distinct D4 temporal gap at all.
+    next_flush = _next_incumbent_flush(step)
+    if next_flush is not None:
+        end = min(end, next_flush - 1)
     if start > end:
         return action, 0, ()
 
     original_debts = getattr(state, "sale_window_debts", {})
-    if not isinstance(original_debts, dict):
+    if not _valid_debt_map(original_debts):
         return action, 0, ()
 
     reservations = []
@@ -132,11 +170,7 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=Non
                 planned += qty
 
         due_map = original_debts.get(due_step, {})
-        if not isinstance(due_map, dict):
-            return action, 0, ()
-        already = _strict_nonnegative_int(due_map.get(ITEM, 0))
-        if already is None:
-            return action, 0, ()
+        already = due_map.get(ITEM, 0)
         remaining_due = max(0, planned - already)
         amount = min(remaining_stock, remaining_due)
         if amount:
