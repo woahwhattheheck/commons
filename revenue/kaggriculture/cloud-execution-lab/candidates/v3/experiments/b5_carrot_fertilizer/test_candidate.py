@@ -66,6 +66,14 @@ class B5CarrotFertilizerTest(unittest.TestCase):
         self.assertEqual(result["hands"], [["PASS"]])
         self.assertEqual(m.REPORT["carrot_fertilize_requests"], 1)
 
+    def test_extra_live_hand_without_explicit_action_row_does_not_block_farmer(self):
+        obs = observation(carrot(), hands=[[0, 0]], hand_inventories=[{"FERTILIZER": 1}])
+        action = pass_action()
+        result = m.apply_carrot_fertilizer(obs, action)
+        self.assertEqual(result["farmer"], ["FERTILIZE"])
+        self.assertEqual(result["hands"], [])
+        self.assertEqual(m.REPORT["carrot_fertilize_requests"], 1)
+
     def test_bad_position_fails_closed(self):
         obs = observation(carrot())
         obs["farms"][0]["farmer"] = [99, 99]
