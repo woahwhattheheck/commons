@@ -53,7 +53,7 @@ jobs:
           print('B5 A612 EVIDENCE SCOPE OK', len(actual))
           PY
 
-      - name: Prove reducer rejects undeclared or duplicated panel cells
+      - name: Prove reducer binds exact requested panel membership
         shell: bash
         run: |
           set -euo pipefail
@@ -69,38 +69,56 @@ jobs:
 
           base = {
               'engine_ref': module.ENGINE_REF,
-              'seeds': [101],
-              'opponents': ['opponent-a'],
-              'games': [
-                  {'status': 'complete', 'opponent': 'opponent-a', 'seed': 101, 'candidate_seat': 0,
-                   'scores': [10, 9], 'trace_sha256': 'trace-0'},
-                  {'status': 'complete', 'opponent': 'opponent-a', 'seed': 101, 'candidate_seat': 1,
-                   'scores': [9, 10], 'trace_sha256': 'trace-1'},
-              ],
+              'seeds': list(module.EXPECTED_SEEDS),
+              'opponents': list(module.EXPECTED_OPPONENTS),
+              'games': [],
           }
-          assert len(module.normalized_games(copy.deepcopy(base), 'good')) == 2
+          for opponent in module.EXPECTED_OPPONENTS:
+              for seed in module.EXPECTED_SEEDS:
+                  for seat in (0, 1):
+                      base['games'].append({
+                          'status': 'complete',
+                          'opponent': opponent,
+                          'seed': seed,
+                          'candidate_seat': seat,
+                          'scores': [10 + seat, 9 - seat],
+                          'trace_sha256': f'trace-{opponent}-{seed}-{seat}',
+                      })
+          assert len(module.normalized_games(copy.deepcopy(base), 'good')) == len(module.EXPECTED_KEYS)
 
           poisons = []
+
+          # The old reducer accepted this if metadata and games agreed on the substituted seed.
           bad = copy.deepcopy(base)
-          bad['games'][0]['seed'] = 999
-          poisons.append(('undeclared seed', bad))
+          requested = module.EXPECTED_SEEDS[0]
+          bad['seeds'][0] = 2611152999
+          for game in bad['games']:
+              if game['seed'] == requested:
+                  game['seed'] = 2611152999
+          poisons.append(('self-consistent substituted seed', bad))
+
+          # Likewise a fully substituted opponent must fail against the literal requested panel.
           bad = copy.deepcopy(base)
-          bad['games'][0]['opponent'] = 'opponent-x'
-          poisons.append(('undeclared opponent', bad))
+          bad['opponents'][0] = 'not-the-requested-opponent'
+          for game in bad['games']:
+              game['opponent'] = 'not-the-requested-opponent'
+          poisons.append(('self-consistent substituted opponent', bad))
+
           bad = copy.deepcopy(base)
-          bad['seeds'] = [101, 101]
-          poisons.append(('duplicate declared seed', bad))
+          bad['games'].pop()
+          poisons.append(('missing requested cell', bad))
+
           bad = copy.deepcopy(base)
-          bad['opponents'] = ['opponent-a', 'opponent-a']
-          poisons.append(('duplicate declared opponent', bad))
+          bad['games'].append(copy.deepcopy(bad['games'][0]))
+          poisons.append(('duplicate requested cell', bad))
 
           for label, report in poisons:
               try:
                   module.normalized_games(report, label)
               except SystemExit:
                   continue
-              raise SystemExit(f'{label}: reducer accepted poisoned panel metadata/cell')
-          print('B5 A612 REDUCER MEMBERSHIP PREDECESSORS OK', len(poisons))
+              raise SystemExit(f'{label}: reducer accepted poisoned panel')
+          print('B5 A612 EXACT REQUESTED PANEL PREDECESSORS OK', len(poisons))
           PY
 
       - name: Prove canonical package receipts before materialization
