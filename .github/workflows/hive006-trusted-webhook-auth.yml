@@ -1,0 +1,72 @@
+name: hive006-trusted-webhook-auth
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hive/voice-support-desk/**'
+      - '.github/workflows/hive006-trusted-webhook-auth.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-webhook-auth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_PARENT: acbbd1a7245ef61628211637eb88655fa93a1c4c
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Assert literal head, parent, and six-path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
+          python - <<'PY'
+          import os
+          import subprocess
+
+          expected = sorted([
+              ".github/workflows/hive006-trusted-webhook-auth.yml",
+              "p/sol-astra-hive006-trusted-webhook-auth-20260910-01.md",
+              "revenue/hive/voice-support-desk/TRUSTED-WEBHOOK.md",
+              "revenue/hive/voice-support-desk/requirements-webhook.txt",
+              "revenue/hive/voice-support-desk/test_twilio_webhook.py",
+              "revenue/hive/voice-support-desk/twilio_webhook.py",
+          ])
+          rows = subprocess.check_output(
+              ["git", "diff", "--name-status", "--no-renames", os.environ["EXPECTED_PARENT"], "HEAD"],
+              text=True,
+          ).splitlines()
+          got = []
+          for row in rows:
+              status, path = row.split("\t", 1)
+              if status != "A":
+                  raise SystemExit(f"expected additive-only six-path delta, got: {row}")
+              got.append(path)
+          if sorted(got) != expected:
+              raise SystemExit(f"unexpected changed paths: {sorted(got)}")
+          PY
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned provider validator
+        working-directory: revenue/hive/voice-support-desk
+        run: python -m pip install --disable-pip-version-check -r requirements-webhook.txt
+      - name: Compile exact head
+        working-directory: revenue/hive/voice-support-desk
+        run: python -m py_compile desk.py merchant_auth.py twilio_webhook.py test_desk.py test_merchant_auth.py test_twilio_webhook.py
+      - name: Run original and authenticated-edge suites
+        working-directory: revenue/hive/voice-support-desk
+        run: python -W error::ResourceWarning -B -m unittest -v test_desk.py test_merchant_auth.py test_twilio_webhook.py
+      - name: Assert clean tree
+        run: |
+          find revenue/hive/voice-support-desk -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --exit-code
+          test -z "$(git status --porcelain=v1)"
