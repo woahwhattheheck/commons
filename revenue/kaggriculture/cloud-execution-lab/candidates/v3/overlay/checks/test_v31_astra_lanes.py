@@ -31,7 +31,7 @@ CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10, "shedCapacity
           "maxMarketOrdersPerTurn": 10, "farmHandCostMult": 1}
 
 # Shipped values of the three keys in TITAN-CONFIG.json and in Features().
-SHIPPED = {"r04_mirror_horizon": False, "r04_terminal_fertilizer": False, "r04_goose_rescue": False}
+SHIPPED = {"r04_mirror_horizon": False, "r04_terminal_fertilizer": True, "r04_goose_rescue": True}
 
 
 def farm(tiles=None, farmer=(4, 4), hands=(), hires=0):

@@ -12,8 +12,8 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "42016857799afda334295b72714da119631bda761dae349a215a019358f13bcd",
-    "bytes": 577856,
+    "sha256": "5f54eda4a06d1288de3e81667b0d524de064762577f461371d5172dbfb5d6d9c",
+    "bytes": 578603,
     "files": 148
   },
   "releases": [
@@ -373,7 +373,7 @@
     "b11_mirror_horizon.py": "d84894f2433edd7c71adb55ba2c1537016a42ace8c5a47a1fa93cc8dfcad044e",
     "b5_fertilize.py": "f2d03ab19e1a233566cfc9076bd8b9843c7f8d611703578218bd73c1af0f626f",
     "b9_terminal_fertilizer.py": "13566a3317a6ed54817879ba4750b57bb3146521485192130264450043d04566",
-    "checks/test_v31_astra_lanes.py": "90928a6a47fbc80a8c0b75e09c5031e81e37c329387e76788467b143d0dbb3fa",
+    "checks/test_v31_astra_lanes.py": "abda4ad180b60f662e326d236970a3806d2444b5a2622434f47eb0f2c91ee979",
     "checks/test_v31_b5_fertilize.py": "545870cf5585ac9247a3a851dd51d1d40a7cbb232bc5e187acd8c2b98d8194fd",
     "checks/test_v31_dribble_dump.py": "925f32fd8e0e15a7ea51c95c0c9130c320ca9ed6ce23aca7b214ec3a66bf68d5",
     "checks/test_v31_fert_hand.py": "50847482ba36981c315f08763beb4aaec5d7f832749e4069e308f4451ecd4386",
@@ -408,6 +408,6 @@
     "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "08c0decdd3b50935b3661d1e8b61c5216d90bf06d1c759db11142e38c106d392"
+    "apply_v3.py": "0ea2e80a74f3ce4b7409f1ed42735945ab6b9d5040b8885ae6c585c320a464e2"
   }
 }

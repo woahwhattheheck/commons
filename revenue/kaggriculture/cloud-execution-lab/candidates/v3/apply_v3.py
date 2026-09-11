@@ -47,8 +47,8 @@ PARAMS = {
     "r04_fert_hand": True,
     "r04_dribble_dump": False,
     "r04_mirror_horizon": False,
-    "r04_terminal_fertilizer": False,
-    "r04_goose_rescue": False,
+    "r04_terminal_fertilizer": True,
+    "r04_goose_rescue": True,
 }
 
 FIELDS = (
@@ -95,8 +95,8 @@ FIELDS = (
     "    r04_fert_hand: bool = True\n"
     "    r04_dribble_dump: bool = False\n"
     "    r04_mirror_horizon: bool = False\n"
-    "    r04_terminal_fertilizer: bool = False\n"
-    "    r04_goose_rescue: bool = False\n"
+    "    r04_terminal_fertilizer: bool = True\n"
+    "    r04_goose_rescue: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -502,6 +502,28 @@ RELEASE_NOTE = (
 "Gate: clean trajectory-matched cells 9+ / 0- / 0=, mean +15.1, 8.2% of steps rewritten. The V3.1\n"
 "stack with E1 measured +1,477 per game against V3.0, 16 of 16 cells positive.\n"
 "Checks: `checks/test_v31_dribble_dump.py`.\n"
+"\n"
+"Lanes by ASTRA · GPT-5.6 SOL around the whole R04 agent, applied in v3_agent() the way each\n"
+"was gated (modules are the reviewed donor blobs verbatim):\n"
+"\n"
+"Key `r04_goose_rescue` (H3c, shipped on; overlay/h3c_goose_eod_cap_rescue.py, blob 2044d6cf,\n"
+"#12473 / #12555): at hour 23 a COLLECT_FERTILIZER on a fed and cared GOOSE whose held eggs would\n"
+"clip at max_held 4 in tonight's production becomes HARVEST, guarded by the standard config, a\n"
+"whole-farm shed-capacity bound, no stacked worker and no same-turn animal or product purchase.\n"
+"ASTRA gate: Arlene 10+ / 6= / 0-, mean +110.4; ApexV7 6+ / 2= / 0-, +144.5; Reyhan 4+ / 4= / 0-,\n"
+"+102.9. Final-stack gate on this package's modules: field (official reference evaluator, 21 v25\n"
+"shards, 1,344 games) +142.1 margin per game, better in 1,030, 1340-4 against 1338-6; live bench\n"
+"(88 games of submission 56159263, opponents pinned) +125.7 per game, better in 63, 77-11.\n"
+"\n"
+"Key `r04_terminal_fertilizer` (B9, shipped on; overlay/b9_terminal_fertilizer.py, #12538 blob\n"
+"ed8d6923): at steps 716-717 a literal PASS by a worker beside the shed on an animal with fertilizer\n"
+"available becomes COLLECT_FERTILIZER; at 718, when it collected, SELL FERTILIZER rows trail the\n"
+"other rows inside the executable market prefix. ASTRA gate: Arlene 12+ / 4= / 0-, mean +4.75.\n"
+"Final-stack gate: field +1.6 per game, better in 882, worse in none; live bench +2.0, 59 / 0.\n"
+"\n"
+"Key `r04_mirror_horizon` (B11, shipped off; overlay/b11_mirror_horizon.py, blob 94b270f3): sale\n"
+"horizon 10 for a callback after eight consecutive exact public farm mirrors.\n"
+"Checks: `checks/test_v31_astra_lanes.py`.\n"
 )
 
 

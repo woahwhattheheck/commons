@@ -2,8 +2,8 @@
   "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
   "NOTICE": "5a246d37a036145e6b15f4382d2b4349799b0112ae030b29b6e013286a6e282a",
   "SOURCE.json": "3249398b6aa56d1b3464db8d0cce5aa35e8edee397fc4341bd710d1f74dad469",
-  "TITAN-CONFIG.json": "a09e2471b9fca30e49ef35da60995e3efec904b6cb15b523b66ff06b0f2eb3fb",
-  "TITAN-RELEASE.md": "5e1374a4765cab861642be538fbc76155e3d85a69de2d1cb79b84c8b0b7050d6",
+  "TITAN-CONFIG.json": "f7dd2dbb39eaca8f825b31df0d01df2cb67ef1240e54968b193187fbaef44c0e",
+  "TITAN-RELEASE.md": "5765a5ec896ed88b2d37cd95ccbc0e5fac062f926962255fcf22f4954ae8645f",
   "b11_mirror_horizon.py": "d84894f2433edd7c71adb55ba2c1537016a42ace8c5a47a1fa93cc8dfcad044e",
   "b5_fertilize.py": "f2d03ab19e1a233566cfc9076bd8b9843c7f8d611703578218bd73c1af0f626f",
   "b9_terminal_fertilizer.py": "13566a3317a6ed54817879ba4750b57bb3146521485192130264450043d04566",
@@ -39,7 +39,7 @@
   "checks/test_seed_retry.py": "6180896c9f355bb8ad36d7e086f37706461724adb10ff95a6ed3bd3ce6e606be",
   "checks/test_selected_pruning.py": "90886784fabbc9002b01d8edeeae8ed0ceabc1ffd678e56c6107806b72e580b9",
   "checks/test_terminal_history_join.py": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
-  "checks/test_v31_astra_lanes.py": "90928a6a47fbc80a8c0b75e09c5031e81e37c329387e76788467b143d0dbb3fa",
+  "checks/test_v31_astra_lanes.py": "abda4ad180b60f662e326d236970a3806d2444b5a2622434f47eb0f2c91ee979",
   "checks/test_v31_b5_fertilize.py": "545870cf5585ac9247a3a851dd51d1d40a7cbb232bc5e187acd8c2b98d8194fd",
   "checks/test_v31_dribble_dump.py": "925f32fd8e0e15a7ea51c95c0c9130c320ca9ed6ce23aca7b214ec3a66bf68d5",
   "checks/test_v31_fert_hand.py": "50847482ba36981c315f08763beb4aaec5d7f832749e4069e308f4451ecd4386",
@@ -146,5 +146,5 @@
   "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
   "spatial_tempo.py": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
   "terminal_history_join.py": "e1482ba22eeb2784157f337e2abc055cf4e9ac7cc8d464fe75a67cc38ec41582",
-  "titan_runtime.py": "fe85b03ebdfdc79e7b84100d110f1df79a0621cd8a7036e3d6a7966ebe769c13"
+  "titan_runtime.py": "b9a7067a2258d3ab53bb6b720d9a38a3225ef9e468a885ac2a2a4cd2b933ae3b"
 }
