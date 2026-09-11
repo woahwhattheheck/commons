@@ -1,0 +1,104 @@
+name: TITAN V3.1 current-root D3 merge policy
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-8e3-d3-merge-policy.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  current-root-d3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout literal event head with full history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind live 8e3 root, exact scope, and reviewed donor blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          REPORT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py'
+          REPORT_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py'
+          D3='revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py'
+          D3_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py'
+          WORKFLOW='.github/workflows/titan-v31-8e3-d3-merge-policy.yml'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+
+          git diff --name-only "$BASE...HEAD" > /tmp/v31-d3-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/v31-d3-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-8e3-d3-merge-policy.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected current-root D3 scope: {sorted(actual)!r}')
+          print('V31 CURRENT-ROOT D3 SCOPE OK', len(actual))
+          PY
+
+          test "$(git rev-parse "HEAD:$REPORT")" = 'e64975e8d9ef58551f9581c86068ead3d0e1f254'
+          test "$(git rev-parse "HEAD:$REPORT_TEST")" = 'e626da18d85c717c273b49d87abbcc9d4856cce8'
+          test "$(git rev-parse "HEAD:$D3")" = '0afa6a99620fd6530497fd8473eb426897693d64'
+          test "$(git rev-parse "HEAD:$D3_TEST")" = 'af42eca51bc277a01a4be05b18dd9d4dbb377108'
+          git diff --check "$BASE...HEAD"
+
+      - name: Run seat-aware normalizer and D3 contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -B -m py_compile \
+            v31_delta_distribution_report.py \
+            test_v31_delta_distribution_report.py \
+            v31_externality_gate.py \
+            test_v31_externality_gate.py
+
+          python3 -B test_v31_delta_distribution_report.py |& tee /tmp/v31-delta-tests.log
+          grep -F 'Ran 9 tests' /tmp/v31-delta-tests.log
+          grep -F 'OK' /tmp/v31-delta-tests.log
+
+          python3 -B test_v31_externality_gate.py |& tee /tmp/v31-d3-tests.log
+          grep -F 'Ran 19 tests' /tmp/v31-d3-tests.log
+          grep -F 'OK' /tmp/v31-d3-tests.log
+
+          python3 -O -B test_v31_delta_distribution_report.py |& tee /tmp/v31-delta-tests-opt.log
+          grep -F 'Ran 9 tests' /tmp/v31-delta-tests-opt.log
+          grep -F 'OK' /tmp/v31-delta-tests-opt.log
+
+          python3 -O -B test_v31_externality_gate.py |& tee /tmp/v31-d3-tests-opt.log
+          grep -F 'Ran 19 tests' /tmp/v31-d3-tests-opt.log
+          grep -F 'OK' /tmp/v31-d3-tests-opt.log
+
+      - name: Recheck live root and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test -z "$(git status --porcelain)"
