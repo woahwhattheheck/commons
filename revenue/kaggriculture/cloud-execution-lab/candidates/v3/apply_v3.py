@@ -44,6 +44,7 @@ PARAMS = {
     "r04_b5_carrot_fertilizer": True,
     "r04_b5_jit_fertilize": True,
     "r04_row_shed": True,
+    "r04_fert_hand": True,
 }
 
 FIELDS = (
@@ -87,6 +88,7 @@ FIELDS = (
     "    r04_b5_carrot_fertilizer: bool = True\n"
     "    r04_b5_jit_fertilize: bool = True\n"
     "    r04_row_shed: bool = True\n"
+    "    r04_fert_hand: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -216,7 +218,8 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_strawberry_topup),\n"
     "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
     "                                 bool(self.features.r04_b5_jit_fertilize),\n"
-    "                                 bool(self.features.r04_row_shed))(observation, configuration)\n"
+    "                                 bool(self.features.r04_row_shed),\n"
+    "                                 fert_hand=bool(self.features.r04_fert_hand))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -232,6 +235,7 @@ RUNTIME_METHODS = (
     "                self.diagnostics['b5_carrot_fertilizer'] = bool(self.features.r04_b5_carrot_fertilizer)\n"
     "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
     "                self.diagnostics['row_shed'] = bool(self.features.r04_row_shed)\n"
+    "                self.diagnostics['fert_hand'] = bool(self.features.r04_fert_hand)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -460,6 +464,18 @@ RELEASE_NOTE = (
 "evaluator, 1,280 games per arm against published agents): row shed with cattle_early off\n"
 "1273 W / 7 L, +540.0 margin per game against V3.0; the top-40 leaderboard bench (160 recorded\n"
 "games of the current top-40 teams, their play pinned) 96 W / 64 L for the same build.\n"
+"\n"
+"Key `r04_fert_hand` (V3.1, shipped on): the endgame fertilizer hand (overlay/r04_fert_hand.py).\n"
+"On days 24-28 one extra hand is hired after the tape's own hires when the carrot price pays for\n"
+"it (the n-th hire of a day costs fib(n)); it picks up FERTILIZER at the shed, buying the\n"
+"shortfall, and fertilizes the tape's young CARROTs before their yield-bearing WATER (+1 carrot\n"
+"per tile). The stack underneath never sees the extra hand. Seen on the ladder in senkin13's,\n"
+"Syed Asad Ali's and Terry Luo's play. Live bench (80 games of submission 56159263, opponents\n"
+"pinned), on the row-shed modules with cattle_early off: +439.4 margin per game, better in 55,\n"
+"worse in none, 69-11 -> 70-10. Field gate (official reference evaluator on the v25 shards, 32\n"
+"seeds x both seats per shard, 3,008 games against 16 published agents over two seed blocks,\n"
+"base = 8e3d R04 modules with row-shed and cattle off): +320.3 margin per game, better in 2,109,\n"
+"worse in 2, no result changed. Checks: `checks/test_v31_fert_hand.py`.\n"
 )
 
 
