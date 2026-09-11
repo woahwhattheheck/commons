@@ -451,11 +451,12 @@ RELEASE_NOTE = (
 "it (the n-th hire of a day costs fib(n)); it picks up FERTILIZER at the shed, buying the\n"
 "shortfall, and fertilizes the tape's young CARROTs before their yield-bearing WATER (+1 carrot\n"
 "per tile). The stack underneath never sees the extra hand. Seen on the ladder in senkin13's and\n"
-"Syed Asad Ali's play. Live bench (80 games of submission 56159263, opponents pinned), this\n"
-"package against the V3.1 package with B5: +402.7 margin per game, better in 36, worse in none,\n"
-"68-12 -> 70-10. Field gate (official reference evaluator, 30 v25 shards x 32 seeds x both seats,\n"
-"1,920 games against 16 published agents, base = these R04 modules with row-shed and cattle off):\n"
-"+261.6 margin per game, better in 853, worse in none, W-L unchanged at 1910-10.\n"
+"Syed Asad Ali's play. It hires when the expected gain is at least 1.2x the hire price and 100\n"
+"above it. Live bench (80 games of submission 56159263, opponents pinned), this package against\n"
+"the V3.1 package with B5: +440.0 margin per game, better in 55, worse in none, 68-12 -> 70-10.\n"
+"Field gate (official reference evaluator on the v25 shards, 32 seeds x both seats per shard,\n"
+"3,008 games against 16 published agents over two seed blocks, base = these R04 modules with\n"
+"row-shed and cattle off): +320.3 margin per game, better in 2,109, worse in 2, no result changed.\n"
 "Checks: `checks/test_v31_fert_hand.py`.\n"
 )
 
