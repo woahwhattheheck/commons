@@ -102,6 +102,18 @@ class H3bSheepClip(unittest.TestCase):
         self.assertEqual(result["hands"][0], ["EAST"])
         self.assertEqual(state["work"][1]["command"], ["EAST"])
 
+    def test_distance_two_reroute_fails_closed_without_persistent_target_lock(self):
+        # V233 reselects min(tasks) every callback.  From h21 a move two tiles
+        # toward urgent B can be reversed at h22 by the earlier nonurgent A,
+        # losing the authored harvest while B still clips.  H3b therefore only
+        # owns adjacent detours unless it grows a persistent target latch.
+        action, observation, state = fixture(step=18 * 24 + 21, position=(5, 5))
+        observation["farms"][0]["tiles"][5][6]["yield_units"] = 1
+        observation["farms"][0]["tiles"][5][7]["yield_units"] = 6
+        result = self.run_case(action, observation, state)
+        self.assertIs(result, action)
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_nonharvest_parent_is_exact_identity(self):
         action, observation, state = fixture(command=["CARE"])
         result = self.run_case(action, observation, state)
