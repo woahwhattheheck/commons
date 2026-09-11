@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind literal 8e3 root, donor bytes, and six-path scope
+      - name: Bind literal 8e3 root, repaired donor bytes, and six-path scope
         shell: bash
         run: |
           set -euo pipefail
@@ -51,7 +51,8 @@ jobs:
           test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
           test "$(git merge-base "$ROOT" HEAD)" = "$ROOT"
 
-          test "$(git rev-parse "HEAD:$CAND")" = '1f2f3d05bceb62fbbb9c3d6474364cfd32b256e2'
+          # Candidate differs from reviewed #12468 only by the current-root import binding repair.
+          test "$(git rev-parse "HEAD:$CAND")" = '2ed3f7a7b915e0cab385f62ee7fc528d51a79828'
           test "$(git rev-parse "HEAD:$TEST")" = 'ea30a397d3ec6baddea60d667efdd011e3779228'
           test "$(git rev-parse "HEAD:$PATCH")" = '9933b22d187daee8ae7ee394690b0d3f19c73cb6'
           test "$(git rev-parse "HEAD:$KILLERS")" = '49f35001a52dbb313a0b62160eb32426efa8053d'
@@ -82,6 +83,26 @@ jobs:
           PY
           git diff --check "$ROOT"..HEAD
           test -z "$(git status --porcelain)"
+
+      - name: Prove C4 imports the exact current V3 overlay parent
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          from pathlib import Path
+          import candidate
+          expected = (candidate.V3 / 'overlay' / 'r04_full_router.py').resolve()
+          actual = Path(candidate.base.__file__).resolve()
+          if actual != expected:
+              raise SystemExit(f'C4 parent import drift: {actual} != {expected}')
+          if candidate.V3.name != 'v3':
+              raise SystemExit(f'C4 V3 root drift: {candidate.V3}')
+          print('C4_PARENT_IMPORT_BOUND', actual)
+          PY
+          test -z "$(find . -type d -name __pycache__ -print -quit)"
 
       - name: Apply reviewed whole-predebt repair ephemerally
         shell: bash
