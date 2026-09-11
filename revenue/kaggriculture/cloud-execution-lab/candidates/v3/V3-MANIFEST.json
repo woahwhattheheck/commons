@@ -147,7 +147,7 @@
       "default": false,
       "seam": "TitanAgent._v3_r02_install at the end of _initialize; _v3_r02_step inside the deadline context",
       "module": "r02_route_bank.py, r01_tapes.py",
-      "effect": "the same tapes seated in place as the canonical MAIN route; TITAN keeps the market"
+      "effect": "the same tapes seated as the canonical MAIN route; TITAN keeps the market"
     },
     "r03_full_router": {
       "default": false,
