@@ -1,0 +1,27 @@
+name: titan-v31-r04-fast-clone-production-port
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_fast_clone/production.patch"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_fast_clone/validate_production_patch.py"
+      - ".github/workflows/titan-v31-r04-fast-clone-production-port.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-r04-fast-clone-production-port-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production-port:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply and prove frozen-base R04 fast clone
+        run: >-
+          python3
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_fast_clone/validate_production_patch.py

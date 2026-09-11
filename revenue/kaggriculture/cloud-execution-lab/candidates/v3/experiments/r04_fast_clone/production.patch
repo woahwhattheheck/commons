@@ -1,0 +1,52 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+@@ -60,6 +60,40 @@ PRODUCTS = (
+ WEED_BLOCKED_WORK = {"PLANT", "BUILD_COOP", "BUILD_PASTURE"}
+ ANIMALS = {"GOOSE", "COW", "SHEEP"}
+ 
++_R04_JSON_SCALAR_TYPES = frozenset((str, int, float, bool, type(None)))
++
++
++def _r04_is_fast_tape_action(template):
++    """Return whether template is exactly the shallow-clone-safe R04 JSON action shape."""
++    if (type(template) is not dict or len(template) != 3
++            or "farmer" not in template or "hands" not in template or "market" not in template):
++        return False
++    farmer, hands, market = template["farmer"], template["hands"], template["market"]
++    if type(farmer) is not list or type(hands) is not list or type(market) is not list:
++        return False
++    for value in farmer:
++        if type(value) not in _R04_JSON_SCALAR_TYPES:
++            return False
++    for rows in (hands, market):
++        for row in rows:
++            if type(row) is not list:
++                return False
++            for value in row:
++                if type(value) not in _R04_JSON_SCALAR_TYPES:
++                    return False
++    return True
++
++
++def _r04_clone_tape_action(template):
++    """Clone the frozen tape schema; fail closed to deepcopy for any future schema."""
++    if not _r04_is_fast_tape_action(template):
++        return copy.deepcopy(template)
++    return {
++        "farmer": list(template["farmer"]),
++        "hands": [list(row) for row in template["hands"]],
++        "market": [list(row) for row in template["market"]],
++    }
++
+ # Keys are the first two shops in their observed order; values index actions.json.
+ # All other pairs keep plan 0. Plan 1 is the previous yarn-market continuation.
+ # Plans 3..12 are the ten distinct continuations selected in the latest search.
+@@ -249,6 +283,6 @@ class Policy:
+ 
+         view = FarmView(observation)
+         tape = self.tapes[state.plan]
+-        action = copy.deepcopy(tape[step])
++        action = _r04_clone_tape_action(tape[step])
+         repair_weeds(action, view, state, step)
+         subtract_advanced_sales(action, state, step)
