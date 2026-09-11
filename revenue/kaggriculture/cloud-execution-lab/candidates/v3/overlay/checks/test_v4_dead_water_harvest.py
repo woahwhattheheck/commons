@@ -71,6 +71,17 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
+    def test_unwatered_ongoing_negative_lifespan_sentinel_is_not_expiring(self):
+        # Official ongoing crops use -1 until terminal production. WATER is
+        # productive here and must not be replaced merely because -1 <= step.
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     watered_today=False, max_lifespan_step=-1)
+        action = _action()
+        out = lane.apply_dead_water_harvest(_obs(tile), action)
+        self.assertIs(out, action)
+        self.assertEqual(lane.get_report()["expiring"], 0)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
     def test_expiring_unwatered_mature_plant_recovers_harvest(self):
         tile = _tile(crop="CARROT", planted_day=25, yield_units=4,
                      watered_today=False, max_lifespan_step=680)
@@ -109,20 +120,29 @@ class DeadWaterHarvestTest(unittest.TestCase):
             action,
         )
 
-    def test_unknown_position_non_water_and_bool_player_fail_closed(self):
+    def test_malformed_hands_bool_player_and_non_water_fail_closed(self):
         observation = _obs(_tile())
         observation["farms"][0]["farmer"] = [-1, 0]
         action = _action()
         self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+
         pass_action = _action(["PASS"])
         self.assertIs(
             lane.apply_dead_water_harvest(_obs(_tile()), pass_action),
             pass_action,
         )
+
         bool_player = _action()
         self.assertIs(
             lane.apply_dead_water_harvest(_obs(_tile(), player=True), bool_player),
             bool_player,
+        )
+
+        malformed_hands = _action()
+        malformed_hands["hands"] = (["WATER"],)
+        self.assertIs(
+            lane.apply_dead_water_harvest(_obs(_tile()), malformed_hands),
+            malformed_hands,
         )
 
 
