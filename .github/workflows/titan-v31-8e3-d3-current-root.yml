@@ -1,0 +1,83 @@
+name: titan-v31-8e3-d3-current-root
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py'
+      - '.github/workflows/titan-v31-8e3-d3-current-root.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  current-root-d3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind literal current root, exact scope, and reviewed donor blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=8e3d92a286806f9f9525973ee7d359b629a11487
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git fetch --no-tags origin refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
+          test "$(git merge-base "$ROOT" HEAD)" = "$ROOT"
+          git diff --check "$ROOT"..HEAD
+          git diff --name-only "$ROOT"..HEAD | sort > /tmp/d3-current-paths.txt
+          cat > /tmp/d3-expected-paths.txt <<'EOF'
+          .github/workflows/titan-v31-8e3-d3-current-root.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py
+          EOF
+          diff -u /tmp/d3-expected-paths.txt /tmp/d3-current-paths.txt
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_delta_distribution_report.py)" = e64975e8d9ef58551f9581c86068ead3d0e1f254
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_delta_distribution_report.py)" = e626da18d85c717c273b49d87abbcc9d4856cce8
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/v31_externality_gate.py)" = 0afa6a99620fd6530497fd8473eb426897693d64
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_externality_gate.py)" = af42eca51bc277a01a4be05b18dd9d4dbb377108
+          test -z "$(git status --porcelain)"
+
+      - name: Syntax-check exact evidence tools without checkout dirt
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in (
+              'v31_delta_distribution_report.py',
+              'test_v31_delta_distribution_report.py',
+              'v31_externality_gate.py',
+              'test_v31_externality_gate.py',
+          ):
+              path = Path(name)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('D3_CURRENT_ROOT_COMPILE_OK')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run reviewed normalizer and D3 predecessor suites
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -B test_v31_delta_distribution_report.py
+          python -B -m unittest -v test_v31_externality_gate.py
+          python -O -B test_v31_delta_distribution_report.py
+          python -O -B -m unittest -v test_v31_externality_gate.py
+
+      - name: Prove checkout stayed clean
+        run: test -z "$(git status --porcelain)"
