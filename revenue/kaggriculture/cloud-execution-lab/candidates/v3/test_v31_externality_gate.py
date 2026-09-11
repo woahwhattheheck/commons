@@ -152,6 +152,28 @@ class ExternalityGateTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.ExternalityError, "requires both baseline and candidate"):
             gate.evaluate(one_arm)
 
+    def test_multiple_row_container_aliases_reject_bool_int_seat_confusion(self):
+        doc = document()
+        doc["results"] = copy.deepcopy(doc["cells"])
+        doc["results"][0]["candidate_seat"] = False
+        # This is the exact trap: JSON-distinct 0/false compare equal in Python.
+        self.assertEqual(doc["cells"], doc["results"])
+        with self.assertRaisesRegex(
+            gate.ExternalityError, "multiple row-container representations are ambiguous"
+        ):
+            gate.evaluate(doc)
+
+    def test_multiple_row_container_aliases_reject_bool_int_score_confusion(self):
+        doc = document([cell(baseline=(1, 90), candidate=(2, 85))])
+        doc["games"] = copy.deepcopy(doc["cells"])
+        doc["games"][0]["baseline"]["scores"][0] = True
+        # Same Python-equality alias class, now in a score scalar rather than seat identity.
+        self.assertEqual(doc["cells"], doc["games"])
+        with self.assertRaisesRegex(
+            gate.ExternalityError, "multiple row-container representations are ambiguous"
+        ):
+            gate.evaluate(doc)
+
     def test_positive_rival_terminal_delta_blocks_even_when_margin_improves(self):
         row = cell(baseline=(100, 90), candidate=(110, 95))
         report = gate.evaluate(document([row]))
