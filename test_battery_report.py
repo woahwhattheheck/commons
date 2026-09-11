@@ -87,6 +87,16 @@ class BatteryReportTests(unittest.TestCase):
         self.assertFalse(data["results"][0]["source_in_checkout_commit"])
         self.assertEqual(data["counts"]["unresolved_source_files"], 1)
 
+    def test_passing_untracked_path_cannot_become_source_linked_pass(self):
+        data = self.build(self.raw(("node", "test_not_tracked.js", 0)), "success")
+        self.assertEqual(data["conclusion"], "INCOMPLETE")
+        self.assertFalse(data["complete"])
+        self.assertEqual(data["counts"]["completed_files"], 1)
+        self.assertEqual(data["counts"]["failed_files"], 0)
+        self.assertEqual(data["counts"]["unresolved_source_files"], 1)
+        self.assertFalse(data["results"][0]["source_in_checkout_commit"])
+        self.assertIn("passing executed file(s) are not present in the recorded checkout", " ".join(data["problems"]))
+
     def test_interrupted_and_truncated_records_keep_completed_files(self):
         prefix = stream(("checkout_sha", self.sha, ""), ("python3", "test_alpha.py", 0))
         for raw in (prefix, prefix + b"python3\0infra/test_beta.py\0", prefix + b"python3\0partial"):
