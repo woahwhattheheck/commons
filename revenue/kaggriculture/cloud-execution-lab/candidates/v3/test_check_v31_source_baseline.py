@@ -14,6 +14,9 @@ import check_v31_source_baseline as baseline  # noqa: E402
 
 
 class PackageIntegrityGateTests(unittest.TestCase):
+    def test_runner_disables_dynamic_import_bytecode_writes(self):
+        self.assertTrue(sys.dont_write_bytecode)
+
     def test_check_invokes_build_v3_check_and_propagates_failure(self):
         completed = mock.Mock(returncode=17)
         with mock.patch.object(baseline.subprocess, "run", return_value=completed) as run:
