@@ -22,22 +22,44 @@ import r04_full_router as base  # noqa: E402
 import r04_h4_strawberry as h4  # noqa: E402
 
 
-def install_joint(host=None, horizon=None, opening=None, row_order=None,
-                  evening_flush=None, sale_fertilizer=None, cattle_early=None,
-                  no_late_sale_advance_step=648):
-    """Return H4's agent with Riot L3 explicitly enabled.
+# Exact shipped V3.1 baseline knobs from apply_v3.PARAMS / ready submission config.
+# The only experimental factors in this evaluator arm are H4 strawberry_topup and
+# L3 no_late_sale_advance at the frozen cutoff.
+JOINT_EVALUATOR_CONFIG = {
+    "r04_sale_horizon": 8,
+    "r04_open_roundtrip": 0,
+    "r04_row_order": True,
+    "r04_evening_flush": True,
+    "r04_sale_fertilizer": True,
+    "r04_cattle_early": True,
+    "r04_kill_late_water": False,
+    "r04_strawberry_endgame": False,
+    "h4_strawberry_topup": True,
+    "r04_no_late_sale_advance": True,
+    "r04_no_late_sale_advance_step": 648,
+}
 
-    L1/L2 remain at their parent defaults.  H4's own reconcile function detects the
-    L3 globals and becomes exact identity/no-debt at and after the configured cutoff.
+
+def install_joint(host=None, horizon=8, opening=0, row_order=True,
+                  evening_flush=True, sale_fertilizer=True, cattle_early=True,
+                  no_late_sale_advance_step=648):
+    """Return H4's agent on the shipped V3.1 baseline with Riot L3 enabled.
+
+    The defaults intentionally pin the ready-submission V3.1 R04 baseline.  L1/L2 are
+    explicitly disabled so a raw-file evaluator import changes exactly two factors:
+    H4 strawberry top-up and L3 late-sale-advance suppression.  H4's reconcile function
+    detects the L3 globals and becomes exact identity/no-debt at and after the cutoff.
     """
     candidate = h4.install(host, horizon, opening, row_order, evening_flush,
                            sale_fertilizer, cattle_early, strawberry_topup=True)
-    base.install(no_late_sale_advance=True,
+    base.install(kill_late_water=False,
+                 strawberry_endgame=False,
+                 no_late_sale_advance=True,
                  no_late_sale_advance_step=no_late_sale_advance_step)
     return candidate
 
 
-# Standard evaluator entrypoint. Importing this module arms exactly H4 + L3 and
-# exposes the same module-level callable contract as a normal Kaggriculture agent.
-# This avoids an untracked ad-hoc wrapper in the benchmark harness.
+# Standard evaluator entrypoint. Importing this module pins the shipped V3.1 baseline,
+# arms exactly H4 + L3, and exposes the same module-level callable contract as a normal
+# Kaggriculture agent. This avoids hidden caller config/path reconstruction in the bench.
 agent = install_joint()
