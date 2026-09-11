@@ -8,7 +8,8 @@ instead of one while covered.  This helper deliberately does *not* route a worke
 purchase fertilizer, hire, or alter market rows.  It may replace only a literal selected
 PASS when the same worker's next authored command is literal WATER, the worker stays in
 the same day, is already standing on an uncovered MELON inside the yield window, already
-carries fertilizer, and has no inherited repair queue debt.
+carries fertilizer, has enough yield-cap headroom for fertilizer to increase that WATER,
+and has no inherited repair queue debt.
 
 "Next authored" is intentionally weaker than "next actual action": later dynamic overlays
 can still override a tape row.  The experiment reports this exact evidence boundary and
@@ -99,8 +100,14 @@ def _melon_qualifies(tile: Any, inventory: dict[str, Any], day: int) -> tuple[bo
         return False, "already_watered"
     if fertilized_until >= day:
         return False, "already_covered"
-    if yield_units >= MELON_MAX_YIELD:
-        return False, "yield_cap"
+
+    # Fertilizer is useful only if it changes the next WATER result.  Near the cap,
+    # baseline +1 and fertilized +2 can collapse to the same capped yield; spending
+    # a PASS and one fertilizer there is pure opportunity cost.
+    baseline_after_water = min(MELON_MAX_YIELD, yield_units + 1)
+    fertilized_after_water = min(MELON_MAX_YIELD, yield_units + 2)
+    if fertilized_after_water <= baseline_after_water:
+        return False, "no_marginal_yield"
 
     age = day - planted_day
     if not (MELON_WINDOW_START <= age <= MELON_MAX_YIELD_DAY):
