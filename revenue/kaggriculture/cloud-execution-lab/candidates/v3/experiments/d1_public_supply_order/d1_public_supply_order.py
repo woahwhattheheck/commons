@@ -19,6 +19,7 @@ from typing import Any
 
 _CROP_PRODUCTS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
 _ANIMAL_PRODUCTS = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
+_ANIMAL_STRUCTURES = {"GOOSE": "COOP", "COW": "PASTURE", "SHEEP": "PASTURE"}
 _PRODUCTS = _CROP_PRODUCTS | set(_ANIMAL_PRODUCTS.values()) | {"FERTILIZER"}
 
 REPORT = {
@@ -42,8 +43,8 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
 
     A structurally malformed rival board is never partially trusted. Normal locked/empty
     cells and non-producing well-formed tiles contribute no signal. A PLANT or occupied
-    animal structure must carry an exact known product/animal and nonnegative integer
-    ``yield_units``; otherwise the entire public signal fails closed.
+    animal structure must carry an exact known crop/animal, legal structure kind, and
+    nonnegative integer ``yield_units``; otherwise the entire public signal fails closed.
     """
     if type(observation) is not dict:
         return {}
@@ -82,6 +83,8 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
             animal = tile.get("animal")
             if animal is not None:
                 if type(animal) is not str or animal not in _ANIMAL_PRODUCTS:
+                    return {}
+                if kind != _ANIMAL_STRUCTURES[animal]:
                     return {}
                 units = _strict_nonnegative_int(tile.get("yield_units"))
                 if units is None:
