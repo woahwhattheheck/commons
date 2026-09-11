@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Exact evaluator entrypoint for H1 last-live terminal harvest rescue."""
+"""Exact evaluator entrypoint for H1 first-decay annual harvest rescue."""
 from __future__ import annotations
 
 from pathlib import Path
