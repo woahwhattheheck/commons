@@ -42,7 +42,7 @@ jobs:
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object "$DIR/run_current_stack.py")" = 'bd1639fab21d8bd26673c127713703f65c660ada'
+          test "$(git hash-object "$DIR/run_current_stack.py")" = 'b27e84f3e7965cdcc99633042eecacc077f6bfca'
           test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
 
@@ -111,8 +111,8 @@ jobs:
               'candidate': {'entry': 'main.py', 'callable': 'agent', 'sha256': 'b' * 64},
               'seeds': list(m.SEEDS),
               'opponents': {
-                  name: {'entry': 'main.py', 'callable': 'agent', 'sha256': 'c' * 64}
-                  for name in m.OPPONENTS
+                  'h8_self': {'entry': 'main.py', 'callable': 'agent', 'sha256': 'c' * 64},
+                  'arlene': {'entry': 'arlene.py', 'callable': 'agent', 'sha256': 'c' * 64},
               },
               'reproducibility': {'same_trace_and_scores': True},
               'games': games,
@@ -151,6 +151,7 @@ jobs:
           rejects('bad-candidate-sha', lambda r: r['candidate'].__setitem__('sha256', 'bad'))
           rejects('wrong-opponent-set', lambda r: r.__setitem__('opponents', {'h8_self': r['opponents']['h8_self']}))
           rejects('bad-opponent-entry', lambda r: r['opponents']['h8_self'].__setitem__('entry', 'other.py'))
+          rejects('bad-arlene-entry', lambda r: r['opponents']['arlene'].__setitem__('entry', 'main.py'))
           rejects('bad-opponent-callable', lambda r: r['opponents']['h8_self'].__setitem__('callable', 'other'))
           rejects('missing-cell', lambda r: r['games'].pop())
           rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
