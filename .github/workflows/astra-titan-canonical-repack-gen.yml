@@ -1,0 +1,68 @@
+name: ASTRA TITAN canonical repack generator
+on:
+  push:
+    branches:
+      - astra/titan-canonical-repack-gen-4403-20260911
+    paths:
+      - .github/workflows/astra-titan-canonical-repack-gen.yml
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Bind immutable source parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "4403d361bc9769e09d12a59d732ea12861d0b2b7"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/early_capital.py)" = "c87f1d1c9d7b416c5316837634f7e721c85811fa"
+      - name: Render and verify canonical release
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab
+          old_sha="$(sha256sum exports/titan-current.tar.gz | awk '{print $1}')"
+          python3 build_integrated.py | tee "$RUNNER_TEMP/build-receipt.json"
+          python3 build_integrated.py --check | tee "$RUNNER_TEMP/verify-receipt.json"
+          python3 - "$RUNNER_TEMP/repack" "$old_sha" <<'PY'
+          import hashlib, json, pathlib, shutil, sys, tarfile
+          root = pathlib.Path.cwd()
+          out = pathlib.Path(sys.argv[1])
+          old_sha = sys.argv[2]
+          paths = [
+              pathlib.Path('exports/titan-current.tar.gz'),
+              pathlib.Path('runtime/integrated-selected/CURRENT-SOURCE.json'),
+              pathlib.Path('runtime/integrated-selected/CURRENT-ARCHIVE.json'),
+              pathlib.Path('exports/historical') / f'titan-{old_sha}.tar.gz',
+          ]
+          out.mkdir(parents=True, exist_ok=True)
+          rows=[]
+          for rel in paths:
+              src=root/rel
+              if not src.is_file():
+                  raise SystemExit(f'missing publication output: {rel}')
+              dest=out/rel
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copyfile(src,dest)
+              data=src.read_bytes()
+              rows.append({'path':rel.as_posix(),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          with tarfile.open(root/'exports/titan-current.tar.gz','r:gz') as tf:
+              names=tf.getnames()
+          if len(names) != 109:
+              raise SystemExit(f'expected 109 archive members, got {len(names)}')
+          meta={'source_parent':'4403d361bc9769e09d12a59d732ea12861d0b2b7','early_capital_blob':'c87f1d1c9d7b416c5316837634f7e721c85811fa','archive_members':len(names),'outputs':rows}
+          (out/'REPACK-GENERATION-RECEIPT.json').write_text(json.dumps(meta,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(meta,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-canonical-repack-4403
+          path: ${{ runner.temp }}/repack/
+          if-no-files-found: error
+          retention-days: 1
