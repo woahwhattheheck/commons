@@ -36,6 +36,12 @@ MANIFEST = HERE / "V3-MANIFEST.json"
 CANON = HERE.parent.parent / "exports" / "titan-current.tar.gz"
 
 
+def _require(condition, message):
+    """Fail closed even when Python assertions are disabled with -O/PYTHONOPTIMIZE."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def manifest():
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
@@ -51,7 +57,7 @@ def package_files(canon_path=None):
     archive = Path(canon_path or CANON)
     data = archive.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
-    assert digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"])
+    _require(digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"]))
     work = Path(tempfile.mkdtemp(prefix="titan-v3-"))
     try:
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
@@ -119,11 +125,11 @@ def main(argv):
         return
     m = manifest()
     if "--check" in argv:
-        assert m["archive"]["sha256"] == digest, "V3-MANIFEST.json archive.sha256 %s != rebuilt %s" % (m["archive"]["sha256"], digest)
-        assert m["archive"]["files"] == len(files), "V3-MANIFEST.json archive.files drifted"
-        assert m["overlay"] == source_shas(), "V3-MANIFEST.json overlay hashes drifted"
+        _require(m["archive"]["sha256"] == digest, "V3-MANIFEST.json archive.sha256 %s != rebuilt %s" % (m["archive"]["sha256"], digest))
+        _require(m["archive"]["files"] == len(files), "V3-MANIFEST.json archive.files drifted")
+        _require(m["overlay"] == source_shas(), "V3-MANIFEST.json overlay hashes drifted")
         recorded = json.loads((HERE / "FILES.json").read_text(encoding="utf-8"))
-        assert recorded == shas, "FILES.json drifted"
+        _require(recorded == shas, "FILES.json drifted")
         print("V3 CHECK OK", digest, len(files), "files", len(blob), "bytes")
         return
     DIST.mkdir(exist_ok=True)
