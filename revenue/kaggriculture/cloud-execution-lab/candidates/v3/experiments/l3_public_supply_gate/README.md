@@ -20,9 +20,15 @@ rival_net_supply_lower_bound =
   - our_previous_requested_SELL_quantity
 ```
 
-The engine transition is `delta_inventory = own_sell + rival_sell - own_buy - rival_buy - town_consume`. Executed own SELL cannot exceed our requested SELL quantity, and omitting our own BUY contribution only makes the estimate smaller. Therefore a **positive** lower bound proves positive rival net supply without reading private rival inventory or guessing opponent identity.
+The engine transition is `delta_inventory = own_sell + rival_sell - own_buy - rival_buy - town_consume`. Executed own SELL cannot exceed our requested SELL quantity, and omitting our own BUY contribution only makes the estimate smaller. A floor-price `$1` SELL also remains conservative here because the official engine pays it without increasing public market inventory. Therefore a **positive** lower bound proves positive rival net supply without reading private rival inventory or guessing opponent identity.
 
-The gate keeps an 8-transition lookback, matching the shipped E184 sale horizon. If any product has a positive rival-supply lower bound in that window, normal E184 reservation remains enabled. Only a clean window permits #12377's L3 suppression. First observation, gaps/rewinds, malformed public state, or unknown shops all fail closed to baseline E184 behavior.
+The gate keeps an 8-transition lookback, matching the shipped E184 sale horizon. If any product has a positive rival-supply lower bound in that window, normal E184 reservation remains enabled. L3 suppression requires a **complete eight-transition clean window**; first observation, incomplete warmup, gaps/rewinds, malformed public scalar types, malformed own SELL quantities, invalid town intervals, or unknown shops all fail closed to baseline E184 behavior. Public inventory/step/player/config interval scalars are exact non-bool integers rather than Python-coerced aliases.
+
+## Focused source predecessors
+
+The hardened predecessor suite is **13/13 PASS** under both normal Python and `python -O`. It covers full-window warmup, pressure expiry, gap warmup, rewind fail-close, exact duplicate-shop/center demand, conservative unfillable own SELL subtraction, unknown shops, missing inventory, string/float/bool public inventory, string/float/bool step/player, malformed SELL quantities, and strict positive town intervals.
+
+The dedicated workflow checks out the literal PR head SHA, proves the exact #12377 parent is its merge base, and rejects any diff outside the four additive experiment/workflow paths before executing those predecessors and live-R04 source pins.
 
 ## Small diagnostic receipt — not promotion evidence
 
@@ -37,8 +43,10 @@ With the public-supply lower-bound gate:
 - official starter seed101: baseline own `181100`, unconditional L3 `181252`, gated `181159` — gated retains **+59** of the +152 L3 upside;
 - official starter seed102: baseline own `178346`, unconditional L3 `178436`, gated `178424` — gated retains **+78** of the +90 L3 upside.
 
+Those executions were run before the parser/warmup hardening; the normal full-episode path already has a mature eight-transition history long before step648, so the repair is intended to preserve that signal while closing malformed/reset fail-opens. They remain tiny diagnostic evidence only, not a post-repair exact-package promotion gate.
+
 This 2-seed diagnostic only establishes a plausible Pareto direction. It is **not** a default-on, merge, package, leaderboard, or Kaggle claim.
 
 ## Required next gate
 
-Before any integration proposal, materialize the exact candidate under the fleet's 1:1 fidelity standard and run the frozen official panel plus widened self-play/strong-opponent panels. Bind exact interpreter blobs, canonical/package identity, live `TITAN-CONFIG`, paired seeds/seats, and exact opponent fingerprints. Report per-cell paired Delta-M, L3 suppressions, guard decisions, positive lower-bound products/units, avoided reservation quantities/debts, and every negative transition. Reject on new-loss pathology or if the rescue disappears under exact-package execution.
+Before any integration proposal, materialize the exact repaired candidate under the fleet's 1:1 fidelity standard and run the frozen official panel plus widened self-play/strong-opponent panels. Bind exact interpreter blobs, canonical/package identity, live `TITAN-CONFIG`, paired seeds/seats, and exact opponent fingerprints. Report per-cell paired Delta-M, L3 suppressions, guard decisions, positive lower-bound products/units, avoided reservation quantities/debts, and every negative transition. Reject on new-loss pathology or if the rescue disappears under exact-package execution.
