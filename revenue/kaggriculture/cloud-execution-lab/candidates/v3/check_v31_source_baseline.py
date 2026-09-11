@@ -7,9 +7,10 @@ matches ``V3-MANIFEST.json:base.sha256``.  This runner therefore deliberately re
 The explicit tree is copied to a temporary directory first, preserving symbolic links.
 That exact temporary copy is then verified against this source tree's committed
 ``FILES.json`` before any normalization or test executes, avoiding a verify-then-copy
-TOCTOU gap.  Submission mode may differ only in
+TOCTOU gap.  Submission mode may differ only in the JSON boolean
 ``TITAN-CONFIG.json:r04_sale_window=true``; that config is normalized in memory to source
-mode for its recorded hash.  The caller's package is never edited.
+mode for its recorded hash.  Non-boolean values fail closed.  The caller's package is
+never edited.
 """
 from __future__ import annotations
 
@@ -50,10 +51,19 @@ def _materialize_source(target: Path) -> None:
     )
 
 
+def _sale_window_value(data: dict) -> bool:
+    value = data.get("r04_sale_window")
+    if value is True:
+        return True
+    if value is False:
+        return False
+    raise SystemExit("TITAN-CONFIG.json r04_sale_window must be JSON boolean true or false")
+
+
 def _normalized_config_bytes(path: Path) -> bytes:
     raw = path.read_bytes()
     data = json.loads(raw.decode("utf-8"))
-    if bool(data.get("r04_sale_window", False)):
+    if _sale_window_value(data):
         data["r04_sale_window"] = False
         return (json.dumps(data, indent=2) + "\n").encode("utf-8")
     return raw
@@ -108,7 +118,7 @@ def _copy_tree(source: Path, target: Path) -> None:
 def _force_source_mode(target: Path) -> tuple[bool, dict]:
     config_path = target / "TITAN-CONFIG.json"
     data = json.loads(config_path.read_text(encoding="utf-8"))
-    original = bool(data.get("r04_sale_window", False))
+    original = _sale_window_value(data)
     # These are the two measured V3.1 base mechanisms.  A tree that lacks them is not
     # the d5eca5b12 V3.1 baseline and should not silently receive a green receipt.
     for key in ("r04_sale_fertilizer", "r04_cattle_early"):
