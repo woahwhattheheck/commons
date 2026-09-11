@@ -141,6 +141,43 @@ class StrictRewriteContract(unittest.TestCase):
                     original,
                 )
 
+    def test_negative_inventory_fails_closed(self):
+        obs = observation(inventory={"MILK": 10100}, shops=["PIZZA_SHOP"])
+        obs["market"]["inventory"]["MILK"] = -1
+        original = action([["SELL", "MILK", 50]])
+        self.assertIs(strict.apply_price_forecaster(obs, original), original)
+
+    def test_falsey_non_list_tape_market_is_not_laundered_to_empty(self):
+        for value in (False, 0, ""):
+            with self.subTest(tape_market=value):
+                tape = [None] * 302
+                tape[301] = {"market": value}
+                original = action([["SELL", "MILK", 50]])
+                self.assertIs(
+                    strict.apply_price_forecaster(
+                        observation(inventory={"MILK": 10100}, shops=["PIZZA_SHOP"]),
+                        original,
+                        tape=tape,
+                    ),
+                    original,
+                )
+
+    def test_tuple_market_rows_fail_closed_without_shape_coercion(self):
+        cases = [
+            [("SELL", "WOOL", 60), ["HIRE"]],
+            [["SELL", "MILK", 50], ("HIRE",)],
+        ]
+        for rows in cases:
+            with self.subTest(rows=rows):
+                original = action(rows)
+                before = copy.deepcopy(original)
+                out = strict.apply_price_forecaster(
+                    observation(inventory={"MILK": 10100, "WOOL": 9900}, shops=["PIZZA_SHOP", "YARN_STORE"]),
+                    original,
+                )
+                self.assertIs(out, original)
+                self.assertEqual(original, before)
+
     def test_poisoned_rival_state_does_not_get_coerced(self):
         pf._FLOW["rate"]["MILK"] = "1.0"
         original = action([["SELL", "MILK", 50]])
