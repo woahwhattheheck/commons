@@ -38,7 +38,7 @@ def fake_defer(items):
 
 class H10BTests(unittest.TestCase):
     def test_disabled_exact_identity_and_no_state_read(self):
-        st = state(); parent_action = action([["SELL", "MILK", 3]])
+        parent_action = action([["SELL", "MILK", 3]])
         def forbidden(_obs):
             raise AssertionError("disabled path must not read state")
         wrapped = h.wrap_r04_agent(lambda *_: parent_action, absorption, enabled=False, state_getter=forbidden)
@@ -97,6 +97,24 @@ class H10BTests(unittest.TestCase):
         self.assertIs(wrapped(obs(10), {}), parent_action)
         self.assertEqual(st.sale_window_debts, {12: {"MILK": 3}})
 
+    def test_state_replacement_with_carried_accounting_fails_open(self):
+        before = state()
+        after = state(sale_window_debts={12: {"MILK": 3}}, advanced_sales={"MILK": 3}, sale_due_step=11)
+        current = {"state": before}
+        parent_action = action([["SELL", "MILK", 6]])
+        def getter(_obs):
+            return current["state"]
+        def parent(*_):
+            current["state"] = after
+            return parent_action
+        wrapped = h.wrap_r04_agent(parent, absorption, enabled=True,
+                                   state_getter=getter, e11_apply=fake_defer(["MILK"]))
+        self.assertIs(wrapped(obs(10), {}), parent_action)
+        self.assertEqual(after.sale_window_debts, {12: {"MILK": 3}})
+        self.assertEqual(after.advanced_sales, {"MILK": 3})
+        self.assertEqual(after.sale_due_step, 11)
+        self.assertEqual(wrapped.telemetry["last_by_player"][0]["reason"], "STATE_REPLACED")
+
     def test_combined_native_and_e184_exact_booking_refunds_atomically(self):
         st = state(); parent_action = action([["SELL", "MILK", 6]])
         def parent(*_):
@@ -121,6 +139,52 @@ class H10BTests(unittest.TestCase):
         out = wrapped(obs(10), {})
         self.assertEqual(out["market"], [[], ["SELL", "FERTILIZER", 5]])
         self.assertEqual(st.sale_window_debts, {12: {"FERTILIZER": 5}})
+
+    def test_poisoned_accounting_quantities_fail_open(self):
+        for bad in (True, 3.7, "3"):
+            with self.subTest(bad=bad):
+                st = state(); parent_action = action([["SELL", "MILK", 3]])
+                def parent(*_, bad=bad):
+                    st.sale_window_debts = {12: {"MILK": bad}}
+                    return parent_action
+                wrapped = h.wrap_r04_agent(parent, absorption, enabled=True,
+                                           state_getter=lambda _obs: st, e11_apply=fake_defer(["MILK"]))
+                self.assertIs(wrapped(obs(10), {}), parent_action)
+                self.assertEqual(st.sale_window_debts, {12: {"MILK": bad}})
+                self.assertTrue(wrapped.telemetry["last_by_player"][0]["reason"].startswith("INVALID_POST_ACCOUNTING_"))
+
+    def test_poisoned_due_steps_fail_open(self):
+        for bad_due in (True, 12.0, "12"):
+            with self.subTest(bad_due=bad_due):
+                st = state(); parent_action = action([["SELL", "MILK", 3]])
+                def parent(*_, bad_due=bad_due):
+                    st.sale_window_debts = {bad_due: {"MILK": 3}}
+                    return parent_action
+                wrapped = h.wrap_r04_agent(parent, absorption, enabled=True,
+                                           state_getter=lambda _obs: st, e11_apply=fake_defer(["MILK"]))
+                self.assertIs(wrapped(obs(10), {}), parent_action)
+
+    def test_poisoned_returned_sell_quantities_fail_open(self):
+        for bad in (True, 3.0, "3"):
+            with self.subTest(bad=bad):
+                st = state(); parent_action = action([["SELL", "MILK", bad]])
+                def parent(*_):
+                    st.sale_window_debts = {12: {"MILK": 3}}
+                    return parent_action
+                wrapped = h.wrap_r04_agent(parent, absorption, enabled=True,
+                                           state_getter=lambda _obs: st, e11_apply=fake_defer(["MILK"]))
+                self.assertIs(wrapped(obs(10), {}), parent_action)
+                self.assertEqual(st.sale_window_debts, {12: {"MILK": 3}})
+                self.assertEqual(wrapped.telemetry["last_by_player"][0]["reason"], "MALFORMED_TARGET_SELL_QUANTITY")
+
+    def test_poisoned_item_keys_fail_open(self):
+        st = state(); parent_action = action([["SELL", "MILK", 3]])
+        def parent(*_):
+            st.sale_window_debts = {12: {7: 3}}
+            return parent_action
+        wrapped = h.wrap_r04_agent(parent, absorption, enabled=True,
+                                   state_getter=lambda _obs: st, e11_apply=fake_defer(["MILK"]))
+        self.assertIs(wrapped(obs(10), {}), parent_action)
 
 
 if __name__ == "__main__":
