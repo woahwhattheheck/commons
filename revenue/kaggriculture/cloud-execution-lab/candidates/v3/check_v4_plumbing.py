@@ -6,12 +6,13 @@ by CI. Every key already present on the target must survive. The candidate is th
 materialised through the real V3/V4 build recipe. Every head key must retain complete
 runtime plumbing; keys newly introduced relative to the target must additionally
 source-land default-OFF. R04 keys must retain their router flag, install
-parameter/setter, at least one live router read of that flag, and TitanAgent install
-wiring.
+parameter/setter, a reachable production read (or a proven install-time callable
+selector), and TitanAgent install wiring.
 
 The checker deliberately does *not* prescribe where an R04 key must act. V4 contains
-legitimate inner, outer/final-action, and inline repairs; monotonic plumbing should
-protect those seams without forcing every key through one helper-import pattern.
+legitimate inner, outer/final-action, inline repairs, and install-selected wrappers;
+monotonic plumbing should protect those seams without forcing every key through one
+helper-import pattern.
 
 This checker intentionally derives the contract from the moving target branch rather
 than maintaining a second key ledger.
@@ -132,24 +133,104 @@ def _global_names(function: ast.FunctionDef) -> set[str]:
     }
 
 
-def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
-    """Return one top-level production function that reads ``flag``.
+def _loads_name(node: ast.AST, name: str) -> bool:
+    return any(
+        isinstance(child, ast.Name)
+        and child.id == name
+        and isinstance(child.ctx, ast.Load)
+        for child in ast.walk(node)
+    )
 
-    V4 feature seams are intentionally heterogeneous. A key may wrap ``_v3_stack``,
-    run as an outer/final-action transform in ``v3_agent``, or gate an inline repair
-    inside an existing R04 planner/helper. Requiring a live read somewhere outside
-    ``install`` proves the installed flag is consumed without constraining that
-    mechanism to a same-named helper module or a particular composition layer.
+
+def _top_level_function_bindings(router_tree: ast.AST) -> dict[str, ast.AST]:
+    """Approximate final module bindings for top-level functions and aliases.
+
+    R04 builds its policy as a chain of repeated ``agent`` definitions captured into
+    stable ``*_PARENT`` aliases before the name is rebound. Walking the top-level
+    statements in execution order preserves those captures well enough to distinguish
+    a function that participates in the final production chain from an unreferenced
+    helper that merely happens to mention a feature flag.
     """
-    for function in getattr(router_tree, "body", []):
-        if not isinstance(function, (ast.FunctionDef, ast.AsyncFunctionDef)):
+    bindings: dict[str, ast.AST] = {}
+    for node in getattr(router_tree, "body", []):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            bindings[node.name] = node
             continue
-        if function.name == "install":
+        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Name):
+            source = bindings.get(node.value.id)
+            if source is not None:
+                for target in node.targets:
+                    if isinstance(target, ast.Name):
+                        bindings[target.id] = source
             continue
-        if any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Load)
-               for node in ast.walk(function)):
-            return function.name
+        if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name) and isinstance(node.value, ast.Name):
+            source = bindings.get(node.value.id)
+            if source is not None:
+                bindings[node.target.id] = source
+            continue
+        if isinstance(node, ast.Delete):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    bindings.pop(target.id, None)
+    return bindings
+
+
+def _production_function_nodes(router_tree: ast.AST) -> set[ast.AST]:
+    """Return top-level function objects reachable from the installed ``v3_agent``.
+
+    Name loads in a function are resolved through final module bindings. Captured
+    wrapper aliases (``_FOO_PARENT = agent``) retain the specific earlier function
+    object because the sequential binding pass records the alias before ``agent`` is
+    rebound. This is a structural reachability proof, not semantic execution, but it
+    rejects a dead helper that has no path from the runtime entry point.
+    """
+    bindings = _top_level_function_bindings(router_tree)
+    root = bindings.get("v3_agent")
+    if root is None:
+        return set()
+    reachable: set[ast.AST] = set()
+    stack = [root]
+    while stack:
+        function = stack.pop()
+        if function in reachable:
+            continue
+        reachable.add(function)
+        for child in ast.walk(function):
+            if not isinstance(child, ast.Name) or not isinstance(child.ctx, ast.Load):
+                continue
+            target = bindings.get(child.id)
+            if target is not None and target not in reachable:
+                stack.append(target)
+    return reachable
+
+
+def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
+    """Return one production-reachable function that reads ``flag``."""
+    for function in _production_function_nodes(router_tree):
+        if _loads_name(function, flag):
+            return getattr(function, "name", "<anonymous>")
     return None
+
+
+def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bool:
+    """Accept a flag consumed by install only when it selects a non-baseline callable.
+
+    Setter-only reads/stores do not count. A legitimate outer wrapper may instead be
+    constructed/cached in ``install()`` and returned as the runtime agent (for example
+    a hidden-hand observation wrapper). In that case the flag itself appears in an
+    ``if`` test and the guarded branch returns a callable other than bare ``v3_agent``.
+    """
+    for node in ast.walk(install):
+        if not isinstance(node, ast.If) or not _loads_name(node.test, flag):
+            continue
+        for statement in node.body:
+            for child in ast.walk(statement):
+                if not isinstance(child, ast.Return) or child.value is None:
+                    continue
+                if isinstance(child.value, ast.Name) and child.value.id == "v3_agent":
+                    continue
+                return True
+    return False
 
 
 def _assert_r04_router_contract(
@@ -175,7 +256,11 @@ def _assert_r04_router_contract(
                for node in ast.walk(install)), f"{key}: router install() never sets {flag}"
 
     reader = _router_flag_reader(router_tree, flag)
-    assert reader is not None, f"{key}: router never reads live flag {flag} outside install()"
+    install_selector = _install_selects_callable_on_flag(install, flag)
+    assert reader is not None or install_selector, (
+        f"{key}: router flag {flag} is neither read on the production v3_agent chain "
+        "nor used by install() to select a non-baseline runtime callable"
+    )
 
     assert _runtime_install_wired(runtime_tree, key, suffix), (
         f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)"
