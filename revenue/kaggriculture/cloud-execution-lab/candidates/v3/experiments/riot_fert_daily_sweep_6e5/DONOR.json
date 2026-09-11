@@ -1,5 +1,5 @@
 {
-  "schema": "titan-v31-current-root-donor/v1",
+  "schema": "titan-v31-current-root-donor/v2",
   "factor": "r04_fert_daily_sweep",
   "display_name": "Riot fert-daily-sweep",
   "authority": "DONOR_ONLY",
@@ -24,22 +24,41 @@
     "source_blob": "cd6c1dd50a439f58bce9434db8d628ca8d6f978f",
     "compatibility_test": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/riot_fert_daily_sweep_6e5/test_factor.py"
   },
+  "safe_consume": {
+    "authority": "SOURCE_SAFE_DONOR_ONLY",
+    "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/riot_fert_daily_sweep_6e5/safe_consume.py",
+    "source_blob": "f5c53772c820fde6e42a42d065d14fc438a8b9cc",
+    "test_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/riot_fert_daily_sweep_6e5/test_safe_consume.py",
+    "test_blob": "aa092eb6a741d9fe9a43b58629bba30b1506a774",
+    "drop_requires": [
+      "explicit exact shedCapacity",
+      "strict current shed occupancy",
+      "entire worker inventory fits before market processing",
+      "prior same-step unit commands have proven shed effect",
+      "later tape has no FERTILIZE or FEED for worker",
+      "worker carries no animal"
+    ],
+    "market_rows_as_capacity_evidence": false,
+    "economics_authority": false
+  },
   "production_contract": {
     "default": false,
     "router_seam": "after POLICY_AGENT and before ROW_ORDER",
     "mutates_market_rows": false,
     "moves_workers": false,
     "eligible_commands": ["PASS"],
-    "rewrites": ["COLLECT_FERTILIZER", "DROP"]
+    "rewrites": ["COLLECT_FERTILIZER", "DROP"],
+    "consume_semantics_from": "safe_consume"
   },
   "must_preserve_on_consume": [
     "r04_b5_carrot_fertilizer",
     "r04_b5_jit_fertilize",
     "r04_strawberry_topup",
     "r04_no_late_sale_advance",
+    "r04_row_shed",
     "r04_sale_fertilizer",
     "r04_cattle_early"
   ],
-  "next_authority": "Recompose once onto the literal final #12565 L3 package, keep default OFF, then run paired current-package economics before any promotion.",
-  "notes": "Riot called this lane B5, but it is NOT the shipped B5 CARROT/JIT architecture. Do not alias their evidence or defaults."
+  "next_authority": "Recompose the safe-consume theorem once onto the literal final #12565/post-row-shed/cattle package, keep default OFF, then run paired current-package economics before any promotion.",
+  "notes": "Original Riot bytes remain provenance only. Official DROP can discard overflow because unit actions execute before market and the engine deletes the whole worker inventory after partial fit; do not consume the original unrestricted DROP theorem."
 }

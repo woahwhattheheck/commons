@@ -14,19 +14,24 @@ Original factor blob: `cd6c1dd50a439f58bce9434db8d628ca8d6f978f`
 
 Original focused-test blob: `fb51b305289a311e9e8e4a3a63c38c18c5a1fd30`
 
-The copied `r04_fert_daily_sweep.py` in this directory is byte-identical to the original factor blob. Riot called the lane "B5", but it is **not** the shipped B5 CARROT/JIT architecture; do not alias their evidence or defaults.
+The copied `r04_fert_daily_sweep.py` in this directory remains byte-identical to the original factor blob. Riot called the lane "B5", but it is **not** the shipped B5 CARROT/JIT architecture; do not alias their evidence or defaults.
 
-## Donor theorem
+## Source-safety correction
 
-The factor is default-OFF. It considers only workers whose command is exactly `PASS`:
+Independent review of the frozen official engine found that the original donor's delivery theorem is too broad to consume directly. Official unit actions run **before** market processing. For `DROP`, the engine transfers only `min(worker_inventory, shed_room)` and then deletes the entire worker inventory, so a full or nearly-full shed can discard overflow. A same-step `SELL` cannot create room in time to make that DROP safe. `shedCapacity` is configurable, so a source wrapper must not assume the default value 100.
 
-- an idle worker on an animal tile with daily fertilizer available may become `COLLECT_FERTILIZER`;
-- an idle worker beside the shed holding fertilizer may become `DROP` only when the same-day tape proves that doing so will not starve later `FERTILIZE`/`FEED` work and the worker is not carrying an animal;
-- workers do not move;
-- no market rows are added or reordered by this factor;
-- malformed/unreadable evidence fails closed to incumbent action behavior.
+The original Riot bytes are intentionally preserved for provenance. `safe_consume.py` is the current source-safe consumption theorem:
 
-The intended production seam is after `POLICY_AGENT` and before `ROW_ORDER`.
+- fertilizer collection remains available only for exact literal `PASS`, a known animal tile, and exact boolean `fertilizer_available is True`;
+- synthetic DROP is disabled unless the caller supplies an exact non-negative integer `shed_capacity` from the live environment configuration;
+- the worker's **entire** strict non-negative inventory must fit in the shed at unit-action time;
+- multiple wrapper-authorized DROPs reserve their complete payload in farmer/hand execution order;
+- any earlier unit command other than PASS/COLLECT_FERTILIZER (or a DROP already authorized by the wrapper) blocks a later synthetic DROP rather than guessing whether that command changes shed occupancy;
+- later tape FERTILIZE/FEED work and animal cargo still block DROP;
+- same-step market rows are never used as capacity evidence and are never changed;
+- malformed capacity, shed, worker inventory, positions, commands, or callback structure fail closed to incumbent action behavior.
+
+This correction is source custody only. It carries no economics claim; the original lane's old behavior must not authorize the safe wrapper.
 
 ## Why this branch is additive
 
@@ -39,19 +44,21 @@ Therefore this donor changes only files under this experiment directory. It is *
 From `revenue/kaggriculture/cloud-execution-lab/candidates/v3`:
 
 ```bash
-python -B -m unittest -v experiments/riot_fert_daily_sweep_6e5/test_factor.py
+python -B -m unittest -v \
+  experiments/riot_fert_daily_sweep_6e5/test_factor.py \
+  experiments/riot_fert_daily_sweep_6e5/test_safe_consume.py
 ```
 
-The focused contract checks factor behavior plus the current-root preservation boundary. `DONOR.json` binds the original branch/head/blob provenance and the exact stack keys a future consumer must preserve.
+`test_factor.py` preserves the original donor provenance contract. `test_safe_consume.py` kills the official-engine overflow/order failure classes without touching production R04. `DONOR.json` binds both layers.
 
 ## Consumption contract
 
-Consume this factor once, only after the literal final `#12565` L3 package head exists:
+Consume this factor once, only after the literal final `#12565` L3 package head exists and only if the lane is still worth an economics spend:
 
-1. Copy the exact `cd6c1dd50a439f58bce9434db8d628ca8d6f978f` factor bytes into the production overlay.
+1. Preserve the exact original `cd6c1dd50a439f58bce9434db8d628ca8d6f978f` bytes as provenance, but port the **safe_consume.py theorem**, not the original unrestricted DROP path, into production.
 2. Wire it at the reviewed `POLICY_AGENT -> ROW_ORDER` seam with a new `r04_fert_daily_sweep` configuration key that remains default `false`.
-3. Preserve the final package's B5 CARROT + JIT, H4, fail-closed L3, sale-fertilizer, and post-L3 cattle decision exactly; regenerate FILES/manifest through the optimizer-safe builder rather than replaying Riot's stale metadata.
-4. Run the exact factor/source/package contracts on that final parent.
-5. Run paired current-package economics with treatment differing only by `r04_fert_daily_sweep`; no default promotion from this donor alone.
+3. Pass the live configuration's exact `shedCapacity` into the safe delivery seam. Missing/malformed capacity must mean collection-only, never guessed default capacity.
+4. Preserve the final package's B5 CARROT + JIT, H4, fail-closed L3, strict row-shed, sale-fertilizer, and post-L3 cattle decision exactly; regenerate FILES/manifest through the optimizer-safe builder rather than replaying Riot's stale metadata.
+5. Run both source contracts on that final parent, then paired current-package economics with treatment differing only by `r04_fert_daily_sweep`; no default promotion from this donor alone.
 
 No Actions workflow or PR is attached to this donor under the current saturated runner queue.
