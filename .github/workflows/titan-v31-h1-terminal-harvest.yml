@@ -1,0 +1,67 @@
+name: titan-v31-h1-terminal-harvest
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h1_terminal_harvest.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/**'
+      - '.github/workflows/titan-v31-h1-terminal-harvest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Compile and run focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
+        run: |
+          set -euo pipefail
+          python -B -m py_compile h1_terminal_harvest.py test_h1_terminal_harvest.py h1_terminal_harvest/candidate.py
+          python -B -m unittest -v test_h1_terminal_harvest.py
+
+      - name: Smoke exact evaluator custody and package neutrality
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          import build_v3
+
+          candidate = Path('experiments/h1_terminal_harvest/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('h1_candidate', candidate)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'h1_terminal_harvest': True,
+              'official_interpreter_commit': '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c',
+              'official_engine_sha256': 'bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e',
+          }
+          assert module.H1_EVALUATOR_CONFIG == expected
+          assert module.agent.h1_enabled is True
+          assert not any(name.startswith('experiments/') for name in build_v3.source_shas())
+          print('H1 SOURCE GATE OK')
+          PY
+
+      - name: Prove checkout stayed clean
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
