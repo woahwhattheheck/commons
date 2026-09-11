@@ -243,6 +243,8 @@ def patch_json_object(
     replacement_value, replacement_text = _parse_replacement(replacement)
     replacement_bytes = replacement_text.encode("utf-8")
     patched = prefix + replacement_bytes + suffix
+    if patched == source:
+        raise PatchError("replacement produces a byte-identical document")
 
     patched_root, _ = _SpanParser(patched.decode("utf-8")).parse()
     expected_root = _replace_semantic(root, path, replacement_value)
