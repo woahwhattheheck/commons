@@ -157,6 +157,24 @@ class DeadFeedCare(unittest.TestCase):
         self.assertIs(lane.apply_dead_feed_care(
             parent, observation(tile=tile), dict(CONFIG), enabled=True), parent)
 
+    def test_unreachable_animal_state_fails_closed(self):
+        parent = action()
+        cases = (
+            ("GOOSE", "yield_units", 5),
+            ("COW", "yield_units", 7),
+            ("SHEEP", "yield_units", 7),
+            ("GOOSE", "consecutive_unfed", 2),
+            ("GOOSE", "pending_care_bonus", 2),
+            ("COW", "pending_care_bonus", 3),
+            ("SHEEP", "pending_care_bonus", 4),
+        )
+        for species, field, value in cases:
+            with self.subTest(species=species, field=field, value=value):
+                tile = animal_tile(species)
+                tile[field] = value
+                self.assertIs(lane.apply_dead_feed_care(
+                    parent, observation(tile=tile), dict(CONFIG), enabled=True), parent)
+
     def test_unhashable_animal_state_fails_closed(self):
         parent = action()
         tile = animal_tile()
