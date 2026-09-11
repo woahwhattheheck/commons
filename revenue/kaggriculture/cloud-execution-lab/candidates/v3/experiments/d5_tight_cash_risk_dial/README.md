@@ -13,9 +13,12 @@ already-existing suppression seam be used only when the live game is publicly
 close enough that taking the risk is useful?
 
 The first source-safe proxy is the absolute gap between the two farms' current
-public `money` fields at the first L3 decision (step 648). The classification is
-latched for the remainder of that episode so the candidate cannot switch arms
-because its own later market choices changed cash.
+public `money` fields at the **literal L3 latch step 648**. Classification is
+one-shot and latched for the remainder of that player's episode so the candidate
+cannot switch arms because its own later market choices changed cash. If step
+648 is malformed or skipped, that player remains guarded for the rest of the
+episode; a later 649/700 callback may not classify. Player state is isolated, so
+malformed input for one seat cannot erase the other seat's established latch.
 
 This is **not** a claim that cash gap equals score gap or net-worth gap. It is a
 public, contemporaneous development proxy only. The candidate does not inspect
@@ -30,10 +33,12 @@ The candidate temporarily gates only `r04_no_late_sale_advance.suppressed()`.
 - guarded arm: baseline E184 `reserve_sales()` remains enabled;
 - no worker command, market quantity, row order, debt record, tape, production
   choice, or terminal liquidation is directly rewritten by D5;
-- malformed or ambiguous public state fails closed to baseline E184.
+- malformed, skipped, or ambiguous latch state fails closed to baseline E184.
 
-The gate accepts JSON integers only. Bool/float/string aliases for step, player,
-public money, threshold, or enable state are rejected.
+The original #12446 carrier accepts JSON integers only. An orthogonal repair
+lane owns official-engine `money` float reachability; this exact-latch child does
+**not** claim to close that separate blocker. Step/player/threshold semantics
+remain strict and non-coercive here.
 
 ## Screening parameter — no promotion authority
 
@@ -46,7 +51,7 @@ A threshold is eligible for further consideration only with paired evidence
 that reports, per cell:
 
 - candidate seat and exact opponent fingerprint;
-- `cash_gap` captured at the latch step;
+- `cash_gap` captured at the literal latch step;
 - guarded vs suppressed late decisions;
 - candidate and control own score, rival score, and competitive margin;
 - `Δown`, `Δrival`, and `Δmargin` (D3 externality screen);
@@ -65,9 +70,10 @@ python3 -B -m unittest -v test_candidate.py
 python3 -O -B -m unittest -v test_candidate.py
 ```
 
-The predecessor suite covers public-cash symmetry; strict bool/float/string
-rejection; exact two-player farm shape; before/at/after latch behavior; inclusive
-cutoff semantics; treatment/control latching; rewind/reset; malformed latch
-recovery; parameter typing; guarded/allowed L3 call-site behavior; preservation
-of L3 telemetry; disabled/pre-threshold identity; and malformed predicate
-inputs.
+The predecessor suite covers public-cash symmetry; strict type rejection;
+exact two-player farm shape; before/at/after exact-latch behavior; inclusive
+cutoff semantics; treatment/control latching; rewind/reset; malformed-648
+permanent guard; skipped-648 permanent guard; first-callback-after-648 guard;
+interleaved-seat isolation; parameter typing; guarded/allowed L3 call-site
+behavior; preservation of L3 telemetry; disabled/pre-threshold identity; and
+malformed predicate inputs.
