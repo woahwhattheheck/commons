@@ -135,6 +135,12 @@
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
       "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); FERTILIZER in the sale window r04_sale_fertilizer (default true, V3.1); V231 day-8 cattle window r04_cattle_early (default true, V3.1); takes precedence over R03 and R01"
+    },
+    "r04_price_forecaster": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent after EVENING_FLUSH via install(price_forecaster=...)",
+      "module": "r04_price_forecaster.py, r04_full_router.py",
+      "effect": "steps 288-717: SELL rows whose forecasted price peak (pinned curve, deterministic town consumption, inferred rival flow) beats selling now are deferred; cash-guarded by upcoming tape purchases; deferred units stay in the shed and the sale window re-advances them later"
     }
   },
   "lanes": [
@@ -318,6 +324,15 @@
         "first-call setup through the TITAN entrypoint: under 0.5 s on step 0, 1-3 ms per later step (TITAN budget 1.0 s)",
         "V3.1 pinned-leader bench (leader_pin.py / pin_batch.py): 98 recorded top-band hosted seats (48 episodes, both seats) replayed on their own seeds with each recorded seat's purchases pinned to the recording (pin_selftest.py: 49 of 49 tapes, both seats, reproduce exactly). V3.0 wins 68 of 98. Margin change against V3.0 per game: r04_sale_fertilizer +48.8 (90 better, 0 worse, 8 same); r04_cattle_early +325.4 (13 better, 4 worse, 81 same); both on +374.1 (88 better, 4 worse, 6 same).",
         "V3.1 standalone arms (V3.0 standalone composition plus the key; 8 seeds 2611151001-008, both seats, 16 games per cell): r04_sale_fertilizer vs V3.0 15-0-1 +104, berat_v33 16-0-0 +3831, gluzdov_twocoins 16-0-0 +3663, prvsiyan_soil 16-0-0 +2942; r04_cattle_early berat_v33 16-0-0 +3730, gluzdov_twocoins 16-0-0 +3561, prvsiyan_soil 16-0-0 +2841 (its day-8 window needs a milk shop pair and opens on none of these eight seeds against these opponents)."
+      ]
+    },
+    {
+      "id": "E3",
+      "key": "r04_price_forecaster",
+      "status": "pending",
+      "owner": "Riot",
+      "lineage": [
+        "exploit-hunt E lane: exact price-path forecaster"
       ]
     }
   ],

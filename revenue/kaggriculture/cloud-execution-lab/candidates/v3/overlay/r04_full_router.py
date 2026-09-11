@@ -45,6 +45,9 @@ import base64
 import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
+# R04 lane E3 (price-forecaster): forward-simulates the price path per good
+# and defers SELL rows into forecasted peaks.
+import r04_price_forecaster
 
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
@@ -1499,6 +1502,10 @@ OPEN_ROUNDTRIP = 0
 # a rival's same-item row. Quantities and every non-SELL row are unchanged; a configuration
 # that overrides marketParams leaves the order untouched.
 ROW_ORDER = False
+# R04 lane E3 (r04_price_forecaster): when True, v3_agent defers SELL rows
+# whose forecasted price peak beats selling now (steps 288-717). Set via
+# install(price_forecaster=...); off unless installed on.
+PRICE_FORECASTER = False
 _RO_PARAMS = {
     "WHEAT": (25, 400, "sqrt", 0.80, "log", 0.20), "CARROT": (35, 450, "hinge", 1.00, "sqrt", 0.70),
     "TOMATO": (60, 200, "hinge", 0.40, "sqrt", 0.60), "STRAWBERRY": (120, 100, "sqrt", 0.70, "linear", 1.60),
@@ -1589,6 +1596,17 @@ def evening_flush(observation, action):
     return action
 
 
+def _forecaster_tape(observation):
+    """Return the route tape for the lane's cash guard, or None when unavailable."""
+    try:
+        if _POLICY is None:
+            return None
+        state = _POLICY.players[int(observation["player"])]
+        return _POLICY.tapes[state.plan]
+    except Exception:
+        return None
+
+
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
@@ -1600,6 +1618,9 @@ def v3_agent(observation, configuration=None):
             action["market"] = ordered
     if EVENING_FLUSH:
         action = evening_flush(observation, action)
+    if PRICE_FORECASTER and not ((configuration or {}).get("marketParams") or {}):
+        action = r04_price_forecaster.apply_price_forecaster(
+            observation, action, _forecaster_tape(observation))
     if (OPEN_ROUNDTRIP > 0 and int(observation["step"]) == 0
             and [list(o) for o in action.get("market") or []] == TAPE_OPENING):
         action = dict(action)
@@ -1609,7 +1630,7 @@ def v3_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None, price_forecaster=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1617,8 +1638,14 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
     first two shops consume MILK and neither is the YARN_STORE.
+    price_forecaster turns on the E3 forward price-path planner
+    (r04_price_forecaster.py): at steps 288-717 it defers SELL rows whose
+    forecasted price peak beats selling now, subject to a cash guard for
+    upcoming tape purchases; deferred units stay in the shed and the sale
+    window re-advances them later.
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global PRICE_FORECASTER
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1664,6 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if price_forecaster is not None:
+        PRICE_FORECASTER = bool(price_forecaster)
     return v3_agent

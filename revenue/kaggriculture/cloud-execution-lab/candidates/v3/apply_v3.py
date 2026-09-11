@@ -35,6 +35,7 @@ PARAMS = {
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
+    "r04_price_forecaster": False,
 }
 
 FIELDS = (
@@ -69,6 +70,7 @@ FIELDS = (
     "    r04_evening_flush: bool = True\n"
     "    r04_sale_fertilizer: bool = True\n"
     "    r04_cattle_early: bool = True\n"
+    "    r04_price_forecaster: bool = False\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -80,7 +82,7 @@ RUNTIME_METHODS = (
     "        return bool(f.e11_rival_sell or f.rival_model or f.e20_hire_guard\n"
     "                    or f.l01_land or f.l01_sheep or f.l01_day0buy or f.l01_tranche or f.l01_leanplant\n"
     "                    or f.r01_shop_router or f.r02_route_bank or f.r03_full_router\n"
-    "                    or f.r04_sale_window)\n\n"
+    "                    or f.r04_sale_window or f.r04_price_forecaster)\n\n"
     "    def _v3_config(self):\n"
     "        \"\"\"Deterministic package keys for the V3 lanes, carried inside the game config.\"\"\"\n"
     "        f = self.features\n"
@@ -188,13 +190,15 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_row_order),\n"
     "                                 bool(self.features.r04_evening_flush),\n"
     "                                 bool(self.features.r04_sale_fertilizer),\n"
-    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
+    "                                 bool(self.features.r04_cattle_early),\n"
+    "                                 bool(self.features.r04_price_forecaster))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
     "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
+    "                self.diagnostics['price_forecaster'] = bool(self.features.r04_price_forecaster)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
