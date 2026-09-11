@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          PARENT='ee7561f32c779cd561409a99dc506f0d6ffaf27d'
+          PARENT='dd41984ec477d6a1b07bbab2779a2e9f54f879c4'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
           test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
@@ -37,7 +37,7 @@ jobs:
           test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
           python3 - <<'PY'
           import subprocess
-          parent = 'ee7561f32c779cd561409a99dc506f0d6ffaf27d'
+          parent = 'dd41984ec477d6a1b07bbab2779a2e9f54f879c4'
           expected = {
               '.github/workflows/titan-v31-live-cattle-off-conditional-ab.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/materialize_live_cattle_ab.py',
@@ -156,7 +156,7 @@ jobs:
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/cattle-ab.md
-            printf '\nEvidence-only child of #12505 exact `ee7561f32c779cd561409a99dc506f0d6ffaf27d`; no gameplay/default/package-source/Kaggle mutation.\n'
+            printf '\nEvidence-only child of #12505 exact `dd41984ec477d6a1b07bbab2779a2e9f54f879c4`; no gameplay/default/package-source/Kaggle mutation.\n'
           } > /tmp/cattle-comment.md
           gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
 
@@ -164,5 +164,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git diff --check 'ee7561f32c779cd561409a99dc506f0d6ffaf27d'..HEAD
+          git diff --check 'dd41984ec477d6a1b07bbab2779a2e9f54f879c4'..HEAD
           test -z "$(git status --porcelain)"
