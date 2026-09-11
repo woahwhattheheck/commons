@@ -12,9 +12,9 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "088ce50169a0087ebb0f2f1c09358d2aebd8ac93a2b27e42b613098cd126fd90",
-    "bytes": 528738,
-    "files": 126
+    "sha256": "0c64ca6d52d94f7b166d2e38336a01b40c6caf488fb40005e17a540a6e8b9f81",
+    "bytes": 545585,
+    "files": 133
   },
   "releases": [
     {
@@ -135,6 +135,36 @@
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
       "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); FERTILIZER in the sale window r04_sale_fertilizer (default true, V3.1); V231 day-8 cattle window r04_cattle_early (default true, V3.1); takes precedence over R03 and R01"
+    },
+    "r04_kill_late_water": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent between POLICY_AGENT and ROW_ORDER",
+      "module": "r04_kill_late_water.py",
+      "effect": "steps 672-718: WATER with no possible payoff becomes PASS"
+    },
+    "r04_strawberry_endgame": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent between POLICY_AGENT and ROW_ORDER: applies only when installed on",
+      "module": "r04_strawberry_endgame.py, r04_full_router.py",
+      "effect": "at most r04_strawberry_max_plants (default 8) [\"PLANT\", \"WHEAT\"] orders in steps [576, 648] become [\"PLANT\", \"STRAWBERRY\"], at most 2 per step, only while strawberry seeds are held; seed-gated so it no-ops without seeds; non-WHEAT plantings and market rows untouched; watering/harvest/drop ride the crop-agnostic tape cadence"
+    },
+    "r04_strawberry_max_plants": {
+      "default": 8,
+      "seam": "r04_full_router.install strawberry_max_plants parameter, passed positionally from TitanAgent._v3_r03_act",
+      "module": "r04_strawberry_endgame.py, r04_full_router.py",
+      "effect": "total per-game cap on strawberry-endgame conversions; non-negative int"
+    },
+    "r04_no_late_sale_advance": {
+      "default": false,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "no future tape-planned sale is pulled forward into today's SELL rows at steps >= r04_no_late_sale_advance_step (default 648); the tape's own late SELL rows are kept; pre-threshold debts still settle (V3.1, ASTRA / GPT-5.6 SOL B10 port)"
+    },
+    "r04_no_late_sale_advance_step": {
+      "default": 648,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "absolute step at or above which the E184 reservation is suppressed when r04_no_late_sale_advance is on"
     }
   },
   "lanes": [
@@ -296,7 +326,12 @@
         "r04_row_order",
         "r04_evening_flush",
         "r04_sale_fertilizer",
-        "r04_cattle_early"
+        "r04_cattle_early",
+        "r04_kill_late_water",
+        "r04_strawberry_endgame",
+        "r04_strawberry_max_plants",
+        "r04_no_late_sale_advance",
+        "r04_no_late_sale_advance_step"
       ],
       "status": "integrated",
       "lineage": [
@@ -341,6 +376,10 @@
     "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
     "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
     "checks/test_v3_r04.py": "116faac16e8438154bc5d3a03f77f729e82c73284f46afac10cf0a35f8f98e37",
+    "checks/test_v3_r04_l3_rival_gate.py": "45c9c57c7e7d563dbbc8ea925006880759d18ff7285ddaa743d9434118206d58",
+    "checks/test_v3_r04_late_water.py": "c97206b9d5c4583dbfdc8476c77b204692f7049daa79705914f58ae0de3f7a91",
+    "checks/test_v3_r04_no_late_advance.py": "498fa57b1b2b16a7351f743e0d7051fbddbeb1bbc7052289aeffc212a98fbf9f",
+    "checks/test_v3_r04_strawberry.py": "281aa36ff0d9f3dba33e3d41a7af7aeb74f70032ac215f67a3606a7c0f983e1c",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
@@ -348,9 +387,12 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "281117d7460d57c71a8caa9f30ed81cd918b714ad88638d47cb06d071bc12239",
+    "r04_full_router.py": "9ee52e8f6bbd76399293e9730921c3c6c6fc7fb965f498ccabc4479e112c6c60",
+    "r04_kill_late_water.py": "601170700110118b2d5692fb298ccc8fb3d3d3e3bab190c7113be3636f09b97d",
+    "r04_no_late_sale_advance.py": "a0abd894ae7b33477167ad8bd17df7fc1d0ebad91fbaa407b2aa9b11998ee0f7",
+    "r04_strawberry_endgame.py": "4f7abca92cb44793046524847cefab73d5fcb7d0d9a91e0d0c1434c7a7b98fea",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "84560b01567833ec1eecb31c127e325e286d77bb7cc40bb88089734a125ed34f"
+    "apply_v3.py": "07fcb634621ef19b3984484aa49e4850e3ab7c93336ecfcdbf49cffb2bee40ba"
   }
 }
