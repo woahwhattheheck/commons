@@ -206,6 +206,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
             continue
         site = (x, y)
         if site in seen_sites:
+            # Two qualifying collectors on one animal are action-order ambiguous.
             return action
         seen_sites.add(site)
         candidates.append((actor, site, units, overflow, placed))
@@ -213,6 +214,9 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
     if not candidates:
         return action
 
+    # A stacked worker with any other active command can invalidate the claimed
+    # zero-movement substitution.  The critical case is an existing HARVEST: then
+    # H3c's second HARVEST would be a no-op while sacrificing fertilizer collection.
     for actor, site, _units, _overflow, _placed in candidates:
         for other, (other_site, other_command) in enumerate(zip(normalized_positions, rows)):
             if other == actor or other_site != site:
@@ -234,6 +238,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
                 return action
             unit_inflow_upper_bound += gain
         elif op == "COLLECT_FERTILIZER":
+            # At most one unit, even if the observed tile is not actually collectible.
             unit_inflow_upper_bound += 1
 
     if shed_total + carried_total + unit_inflow_upper_bound > STANDARD_CONFIG["shedCapacity"]:
