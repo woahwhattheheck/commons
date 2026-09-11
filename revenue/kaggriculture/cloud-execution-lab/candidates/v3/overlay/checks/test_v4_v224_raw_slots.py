@@ -194,6 +194,21 @@ class V224RawSlots(unittest.TestCase):
         self.assertIs(out, parent)
         self.assertEqual(out["market"], [[], ["SELL", "WOOL", 2]])
 
+    def test_router_flag_on_preserves_reorder_telemetry(self):
+        r04.V224_RAW_SLOTS = True
+        before = r04._V224_REPORT["reordered_market_turns"]
+        parent = action([["HIRE"], ["SELL", "WOOL", 2]])
+        out = r04._v224_sales_first(parent)
+        self.assertIsNot(out, parent)
+        self.assertEqual(out["market"], [["SELL", "WOOL", 2], ["HIRE"]])
+        self.assertEqual(r04._V224_REPORT["reordered_market_turns"], before + 1)
+
+        before = r04._V224_REPORT["reordered_market_turns"]
+        barrier = action([[], ["SELL", "WOOL", 2]])
+        out = r04._v224_sales_first(barrier)
+        self.assertIs(out, barrier)
+        self.assertEqual(r04._V224_REPORT["reordered_market_turns"], before)
+
     def test_raw_slot_changes_lockstep_receipt_against_rival_sell(self):
         # Rival sells MILK in row 0. With the authored None barrier our SELL is
         # row 1 and sees the post-rival inventory; frozen V224 compaction moves
