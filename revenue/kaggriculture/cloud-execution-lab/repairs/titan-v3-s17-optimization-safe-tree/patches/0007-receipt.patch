@@ -1,0 +1,91 @@
+diff --git a/S17-HARDENING-RECEIPT.json b/S17-HARDENING-RECEIPT.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..8561e93b4be57ea6ce7c1543aa35250be98c72f3
+--- /dev/null
++++ b/S17-HARDENING-RECEIPT.json
+@@ -0,0 +1,85 @@
++{
++  "base_commit": "14dbbc4940262790f7e21c0bdc7a941842f238ba",
++  "canonical": {
++    "bytes": 429604,
++    "files": 122,
++    "path": "../../exports/titan-current.tar.gz",
++    "sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
++  },
++  "ci_release_gate": {
++    "canonical_build_check": "required",
++    "materialized_tree_closure": "required",
++    "s17_package_tests": {
++      "required": true,
++      "tests": 54
++    },
++    "workflow": ".github/workflows/titan-v3-s17-optimization-safe-tree.yml"
++  },
++  "composition_inputs": {
++    "assert_audit_slack_ts": "1789068591.968719",
++    "exact_tree_head": "f0aa57e3550e88372703caa95dc9f1cdf3d61546",
++    "exact_tree_patch_blob": "50ba4eac1a733aceef3575be95bf319a1e30e68b",
++    "exact_tree_pr": 11990
++  },
++  "created_utc": "2026-09-11T00:01:24Z",
++  "expected_package": {
++    "bytes": 482234,
++    "files": 122,
++    "sha256": "6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f"
++  },
++  "local_verification": {
++    "normal_unittest": {
++      "result": "pass",
++      "tests": 13
++    },
++    "optimized_unittest": {
++      "result": "pass",
++      "tests": 13
++    },
++    "py_compile": "pass"
++  },
++  "operation": "TITAN-V3-S17-OPTIMIZATION-SAFE-EXACT-TREE-COMPOSITION-20260910-01",
++  "schema": "titan.v3.s17-hardening-receipt.v1",
++  "scope": {
++    "canonical_archive_mutation": false,
++    "default_change": false,
++    "expected_package_byte_change": false,
++    "gameplay_change": false,
++    "provider_or_kaggle_action": false,
++    "score_or_promotion_claim": false
++  },
++  "source_object": {
++    "bytes": 68057,
++    "links": 0,
++    "regular_members": 18,
++    "sha256": "5b0559f07c0d2abfdc21b85362472cb848bd43555f1fcf5a67230192adfc6616",
++    "slack_file_id": "F0C1076QWK0",
++    "unsafe_names": 0
++  },
++  "source_receipts": {
++    "S17-HARDENING.md": {
++      "after": "37ba7f699d7fcb6e79b3f4835bc961fe967385b62f7c53432910aa35dfa90229",
++      "before": null
++    },
++    "V3-MANIFEST.json": {
++      "after": "e4da7abe7929bacf6a3320638675023054c995b7024d51008662e10f74543bf5",
++      "before": "93059a16c3e0e4d7bde35061ff736761edfa33e3d76307f4f016644b02b4a692"
++    },
++    "apply_v3.py": {
++      "after": "bda9a7bab0e468e978cfed024038aedfc27d58475472a5f28a1c6ef07649145f",
++      "before": "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de"
++    },
++    "build_v3.py": {
++      "after": "e116539e6c256f4ee933d3536244d3215d60a68e6ef7d91d927891b827d4b714",
++      "before": "cfcb383e6cba811e17d687cb080fea1f55723c8aa734edbe9c37ec3743f923d0"
++    },
++    "test_build_v3_tree.py": {
++      "after": "6086ed819d99e88f180849af66a902a59faea2643e7c048a756785cf92c6e562",
++      "before": null
++    },
++    "test_v3_optimization_hardening.py": {
++      "after": "9bb160df29d33680702cbaf9ffc81e7bdadcfe046ef919294962b3c99ab3d812",
++      "before": null
++    }
++  }
++}

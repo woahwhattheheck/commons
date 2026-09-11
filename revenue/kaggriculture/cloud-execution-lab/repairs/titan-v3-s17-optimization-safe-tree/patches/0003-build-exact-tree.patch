@@ -1,0 +1,144 @@
+diff --git a/build_v3.py b/build_v3.py
+index ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d..8adc02b38ad08e26f6c910dfbe037d9e44176892 100644
+--- a/build_v3.py
++++ b/build_v3.py
+@@ -24,7 +24,7 @@ import shutil
+ import sys
+ import tarfile
+ import tempfile
+-from pathlib import Path
++from pathlib import Path, PurePosixPath
+ 
+ HERE = Path(__file__).resolve().parent
+ sys.path.insert(0, str(HERE))
+@@ -51,7 +51,11 @@ def package_files(canon_path=None):
+     archive = Path(canon_path or CANON)
+     data = archive.read_bytes()
+     digest = hashlib.sha256(data).hexdigest()
+-    assert digest == m["base"]["sha256"], "canonical archive %s is %s, manifest pins %s" % (archive, digest, m["base"]["sha256"])
++    if digest != m["base"]["sha256"]:
++        raise ValueError(
++            "canonical archive %s is %s, manifest pins %s"
++            % (archive, digest, m["base"]["sha256"])
++        )
+     work = Path(tempfile.mkdtemp(prefix="titan-v3-"))
+     try:
+         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+@@ -103,6 +107,95 @@ def source_shas():
+     return shas
+ 
+ 
++def _tree_member(name):
++    """Return a canonical relative POSIX path or reject an unsafe/ambiguous name."""
++    if not isinstance(name, str) or not name or "\\" in name:
++        raise ValueError("unsafe V3 tree member %r" % (name,))
++    relative = PurePosixPath(name)
++    if (
++        relative.is_absolute()
++        or relative.as_posix() != name
++        or any(part in ("", ".", "..") for part in relative.parts)
++    ):
++        raise ValueError("unsafe V3 tree member %r" % (name,))
++    return relative
++
++
++def materialize_tree(files, target):
++    """Publish exactly ``files`` into an absent or empty directory, all-or-nothing.
++
++    A non-empty/file/symlink target is never merged with the candidate. Bytes are
++    staged beside the target, read back, and only then renamed into place so stale
++    modules and partial writes cannot enter a panel tree.
++    """
++    target = Path(target)
++    if not target.name or target.name in (".", ".."):
++        raise ValueError("unsafe V3 tree target %s" % target)
++    target_was_empty = False
++    if target.is_symlink():
++        raise FileExistsError("refusing symlink --tree target %s" % target)
++    if target.exists():
++        if not target.is_dir():
++            raise FileExistsError("refusing non-directory --tree target %s" % target)
++        if any(target.iterdir()):
++            raise FileExistsError("refusing non-empty --tree target %s" % target)
++        target_was_empty = True
++
++    target.parent.mkdir(parents=True, exist_ok=True)
++    stage = Path(tempfile.mkdtemp(prefix=".%s.stage-" % target.name, dir=str(target.parent)))
++    published = False
++    try:
++        expected = {}
++        for name in sorted(files):
++            relative = _tree_member(name)
++            blob = files[name]
++            if not isinstance(blob, bytes):
++                raise TypeError("V3 tree member %s is not bytes" % name)
++            destination = stage.joinpath(*relative.parts)
++            destination.parent.mkdir(parents=True, exist_ok=True)
++            destination.write_bytes(blob)
++            expected[name] = blob
++
++        observed = {
++            path.relative_to(stage).as_posix(): path.read_bytes()
++            for path in sorted(p for p in stage.rglob("*") if p.is_file())
++        }
++        if observed != expected:
++            raise RuntimeError("staged V3 tree differs from requested files")
++
++        if target_was_empty:
++            if target.is_symlink() or not target.is_dir() or any(target.iterdir()):
++                raise FileExistsError("--tree target changed during materialization: %s" % target)
++            target.rmdir()
++        elif target.exists():
++            raise FileExistsError("--tree target appeared during materialization: %s" % target)
++        try:
++            stage.rename(target)
++        except Exception:
++            if target_was_empty and not target.exists():
++                target.mkdir()
++            raise
++        published = True
++    finally:
++        if not published:
++            shutil.rmtree(stage, ignore_errors=True)
++
++
++def verify_check(manifest_data, digest, file_count, source_hashes, recorded, rebuilt):
++    """Fail closed when any advertised package receipt differs from rebuilt bytes."""
++    if manifest_data["archive"]["sha256"] != digest:
++        raise ValueError(
++            "V3-MANIFEST.json archive.sha256 %s != rebuilt %s"
++            % (manifest_data["archive"]["sha256"], digest)
++        )
++    if manifest_data["archive"]["files"] != file_count:
++        raise ValueError("V3-MANIFEST.json archive.files drifted")
++    if manifest_data["overlay"] != source_hashes:
++        raise ValueError("V3-MANIFEST.json overlay hashes drifted")
++    if recorded != rebuilt:
++        raise ValueError("FILES.json drifted")
++
++
+ def main(argv):
+     canon = Path(argv[argv.index("--canonical") + 1]) if "--canonical" in argv else None
+     files = package_files(canon)
+@@ -111,19 +204,13 @@ def main(argv):
+     shas = file_shas(files)
+     if "--tree" in argv:
+         target = Path(argv[argv.index("--tree") + 1])
+-        for name, data in files.items():
+-            path = target / name
+-            path.parent.mkdir(parents=True, exist_ok=True)
+-            path.write_bytes(data)
++        materialize_tree(files, target)
+         print("V3 TREE", target, len(files), "files", digest)
+         return
+     m = manifest()
+     if "--check" in argv:
+-        assert m["archive"]["sha256"] == digest, "V3-MANIFEST.json archive.sha256 %s != rebuilt %s" % (m["archive"]["sha256"], digest)
+-        assert m["archive"]["files"] == len(files), "V3-MANIFEST.json archive.files drifted"
+-        assert m["overlay"] == source_shas(), "V3-MANIFEST.json overlay hashes drifted"
+         recorded = json.loads((HERE / "FILES.json").read_text(encoding="utf-8"))
+-        assert recorded == shas, "FILES.json drifted"
++        verify_check(m, digest, len(files), source_shas(), recorded, shas)
+         print("V3 CHECK OK", digest, len(files), "files", len(blob), "bytes")
+         return
+     DIST.mkdir(exist_ok=True)

@@ -1,0 +1,53 @@
+diff --git a/apply_v3.py b/apply_v3.py
+index a7f716d742bd9ea45f2e370b2f151f5ee15ba042..f5a6332c84b841da1769102d63ae767986981c36 100644
+--- a/apply_v3.py
++++ b/apply_v3.py
+@@ -267,10 +267,33 @@ R01_NOTICE = (
+ 
+ def _replace_once(text, old, new, label):
+     count = text.count(old)
+-    assert count == 1, "%s: expected 1 match, found %d" % (label, count)
++    if count != 1:
++        raise ValueError("%s: expected 1 match, found %d" % (label, count))
+     return text.replace(old, new)
+ 
+ 
++def _add_config_defaults(data):
++    """Add the V3 keys atomically, only when every target key is absent."""
++    if not isinstance(data, dict):
++        raise TypeError("TITAN-CONFIG.json must contain a JSON object")
++    defaults = {
++        key: False
++        for key in (
++            ("e11_rival_sell", "rival_model", "e20_hire_guard")
++            + L01_KEYS
++            + ("r01_shop_router", "r02_route_bank")
++        )
++    }
++    defaults.update(PARAMS)
++    conflicts = sorted(key for key in defaults if key in data)
++    if conflicts:
++        raise ValueError(
++            "TITAN-CONFIG.json already defines %s" % ", ".join(conflicts)
++        )
++    data.update(defaults)
++    return data
++
++
+ def apply(src):
+     def read(name):
+         return io.open(os.path.join(src, name), encoding="utf-8", newline="").read()
+@@ -358,12 +381,7 @@ def apply(src):
+ 
+     cfg_path = os.path.join(src, "TITAN-CONFIG.json")
+     data = json.loads(io.open(cfg_path, encoding="utf-8").read())
+-    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank"):
+-        assert key not in data, key
+-        data[key] = False
+-    for key, value in PARAMS.items():
+-        assert key not in data, key
+-        data[key] = value
++    _add_config_defaults(data)
+     with io.open(cfg_path, "w", encoding="utf-8", newline="\n") as handle:
+         handle.write(json.dumps(data, indent=2) + "\n")
+ 

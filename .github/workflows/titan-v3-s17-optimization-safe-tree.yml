@@ -1,0 +1,191 @@
+name: titan-v3-s17-optimization-safe-tree
+
+"on":
+  push:
+    branches:
+      - sol-pro/titan-v3-s17-optimization-safe-tree-20260910-01
+    paths:
+      - .github/workflows/titan-v3-s17-optimization-safe-tree.yml
+      - revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-s17-optimization-safe-tree/**
+  pull_request:
+    paths:
+      - .github/workflows/titan-v3-s17-optimization-safe-tree.yml
+      - revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-s17-optimization-safe-tree/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-s17-hardening:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REPAIR: revenue/kaggriculture/cloud-execution-lab/repairs/titan-v3-s17-optimization-safe-tree
+      SOURCE_BRANCH: v3/rebase-14dbbc49-20260910-01
+      CANDIDATE_PATH: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+      CANONICAL: revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      CANONICAL_SHA256: b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9
+      EXPECTED_ARCHIVE_SHA256: 6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact patch-series receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git merge-base 14dbbc4940262790f7e21c0bdc7a941842f238ba HEAD)" = "14dbbc4940262790f7e21c0bdc7a941842f238ba"
+          cd "$REPAIR"
+          echo "2994447565c3830fbbc3c3e9b4528cb6d31c8179b9944616bc6bb2a4734c4b81  SERIES.json" | sha256sum --check --strict
+          echo "581cbad954c8fcb07b05567cb1300737313f27ed0f757e7dafea9d03dcbaf3bb  S17-HARDENING-RECEIPT.json" | sha256sum --check --strict
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+
+          root = Path(".")
+          series = json.loads((root / "SERIES.json").read_text(encoding="utf-8"))
+          rows = series.get("apply_in_order")
+          if series.get("schema") != "titan.v3.s17-repair-series.v1" or not isinstance(rows, list):
+              raise SystemExit("invalid S17 repair series schema")
+          names = []
+          for row in rows:
+              name = row["file"]
+              path = root / "patches" / name
+              data = path.read_bytes()
+              digest = hashlib.sha256(data).hexdigest()
+              if len(data) != row["bytes"] or digest != row["sha256"]:
+                  raise SystemExit("S17 repair patch receipt mismatch: %s" % name)
+              names.append(name)
+          if names != sorted(names) or len(names) != 7:
+              raise SystemExit("S17 repair series must contain seven ordered patches")
+          print("S17_PATCH_SERIES_OK", len(names), "patches")
+          PY
+
+      - name: Compose the exact source branch when available
+        id: compose
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "$SOURCE_BRANCH"
+          source_commit="$(git rev-parse FETCH_HEAD)"
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
+          if ! git cat-file -e "$source_commit:$CANDIDATE_PATH/build_v3.py" 2>/dev/null; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Exact S17 landing branch does not yet expose $CANDIDATE_PATH; canonical composition gate is deferred, not passed."
+            exit 0
+          fi
+          composed="$RUNNER_TEMP/titan-v3-s17-composed"
+          mkdir -p "$composed"
+          git archive "$source_commit" "$CANDIDATE_PATH" | tar -x -C "$composed"
+          candidate="$composed/$CANDIDATE_PATH"
+          test "$(find "$candidate" -type f | wc -l)" = 18
+          cd "$candidate"
+          echo "cfcb383e6cba811e17d687cb080fea1f55723c8aa734edbe9c37ec3743f923d0  build_v3.py" | sha256sum --check --strict
+          echo "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de  apply_v3.py" | sha256sum --check --strict
+          echo "93059a16c3e0e4d7bde35061ff736761edfa33e3d76307f4f016644b02b4a692  V3-MANIFEST.json" | sha256sum --check --strict
+          git init -q
+          git apply "$GITHUB_WORKSPACE/$REPAIR/patches/"*.patch
+          test "$(find . -type f -not -path './.git/*' | wc -l)" = 22
+          echo "e116539e6c256f4ee933d3536244d3215d60a68e6ef7d91d927891b827d4b714  build_v3.py" | sha256sum --check --strict
+          echo "bda9a7bab0e468e978cfed024038aedfc27d58475472a5f28a1c6ef07649145f  apply_v3.py" | sha256sum --check --strict
+          echo "e4da7abe7929bacf6a3320638675023054c995b7024d51008662e10f74543bf5  V3-MANIFEST.json" | sha256sum --check --strict
+          echo "6086ed819d99e88f180849af66a902a59faea2643e7c048a756785cf92c6e562  test_build_v3_tree.py" | sha256sum --check --strict
+          echo "9bb160df29d33680702cbaf9ffc81e7bdadcfe046ef919294962b3c99ab3d812  test_v3_optimization_hardening.py" | sha256sum --check --strict
+          echo "37ba7f699d7fcb6e79b3f4835bc961fe967385b62f7c53432910aa35dfa90229  S17-HARDENING.md" | sha256sum --check --strict
+          echo "581cbad954c8fcb07b05567cb1300737313f27ed0f757e7dafea9d03dcbaf3bb  S17-HARDENING-RECEIPT.json" | sha256sum --check --strict
+          echo "available=true" >> "$GITHUB_OUTPUT"
+          echo "COMPOSED_CANDIDATE=$candidate" >> "$GITHUB_ENV"
+
+      - name: Compile and run optimization-safe source contracts
+        if: steps.compose.outputs.available == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$COMPOSED_CANDIDATE"
+          python -B -m py_compile build_v3.py apply_v3.py test_build_v3_tree.py test_v3_optimization_hardening.py
+          python -B -m unittest -v test_build_v3_tree.py test_v3_optimization_hardening.py 2>&1 | tee "$RUNNER_TEMP/hardening-normal.log"
+          grep -F "Ran 13 tests" "$RUNNER_TEMP/hardening-normal.log"
+          PYTHONOPTIMIZE=1 python -B -m unittest -v test_build_v3_tree.py test_v3_optimization_hardening.py 2>&1 | tee "$RUNNER_TEMP/hardening-optimized.log"
+          grep -F "Ran 13 tests" "$RUNNER_TEMP/hardening-optimized.log"
+
+      - name: Rebuild and verify the pinned V3 package
+        if: steps.compose.outputs.available == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$CANONICAL_SHA256  $GITHUB_WORKSPACE/$CANONICAL" | sha256sum --check --strict
+          cd "$COMPOSED_CANDIDATE"
+          canonical="$GITHUB_WORKSPACE/$CANONICAL"
+          python -B build_v3.py --canonical "$canonical" --check 2>&1 | tee "$RUNNER_TEMP/build-check.log"
+          grep -F "V3 CHECK OK $EXPECTED_ARCHIVE_SHA256 122 files 482234 bytes" "$RUNNER_TEMP/build-check.log"
+          target="$RUNNER_TEMP/titan-v3-s17"
+          python -B build_v3.py --canonical "$canonical" --tree "$target" 2>&1 | tee "$RUNNER_TEMP/tree.log"
+          grep -F "V3 TREE $target 122 files $EXPECTED_ARCHIVE_SHA256" "$RUNNER_TEMP/tree.log"
+          echo "V3_TREE=$target" >> "$GITHUB_ENV"
+
+      - name: Verify exact materialized-tree closure
+        if: steps.compose.outputs.available == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$COMPOSED_CANDIDATE"
+          python - "$V3_TREE" <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import sys
+
+          root = Path(sys.argv[1])
+          expected = json.loads(Path("FILES.json").read_text(encoding="utf-8"))
+          observed = {
+              path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(item for item in root.rglob("*") if item.is_file())
+          }
+          if observed != expected:
+              missing = sorted(set(expected) - set(observed))
+              extra = sorted(set(observed) - set(expected))
+              changed = sorted(name for name in set(expected) & set(observed) if expected[name] != observed[name])
+              raise SystemExit(
+                  "materialized tree differs from FILES.json: missing=%r extra=%r changed=%r"
+                  % (missing, extra, changed)
+              )
+          print("V3_TREE_CLOSURE_OK", len(observed), "files")
+          PY
+
+      - name: Run all four S17 package suites
+        if: steps.compose.outputs.available == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$V3_TREE"
+          python -B -m unittest -v \
+            checks/test_v3_features.py \
+            checks/test_v3_l01.py \
+            checks/test_v3_r01.py \
+            checks/test_v3_r02.py 2>&1 | tee "$RUNNER_TEMP/s17-suites.log"
+          grep -F "Ran 54 tests" "$RUNNER_TEMP/s17-suites.log"
+
+      - name: Record deferred canonical gate explicitly
+        if: steps.compose.outputs.available != 'true'
+        shell: bash
+        run: |
+          {
+            echo '### S17 canonical composition gate deferred'
+            echo
+            echo "Exact source branch commit: \`${{ steps.compose.outputs.source_commit }}\`"
+            echo
+            echo "The branch does not yet expose \`$CANDIDATE_PATH\`. The seven-patch series receipts passed; no source-test, canonical-build, 122-file closure, 54/54 package-test, score, or promotion claim is made by this workflow run."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Diff hygiene
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check 14dbbc4940262790f7e21c0bdc7a941842f238ba HEAD

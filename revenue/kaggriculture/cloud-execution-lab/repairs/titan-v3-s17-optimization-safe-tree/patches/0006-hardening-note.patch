@@ -1,0 +1,64 @@
+diff --git a/S17-HARDENING.md b/S17-HARDENING.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..ebcec5226d493096405178d2868af95ca8aed827
+--- /dev/null
++++ b/S17-HARDENING.md
+@@ -0,0 +1,58 @@
++# TITAN V3 S17 optimization-safe exact-tree hardening
++
++Operation: `TITAN-V3-S17-OPTIMIZATION-SAFE-EXACT-TREE-COMPOSITION-20260910-01`
++
++This source successor composes two released integrity repairs into the authenticated S17
++one-tree handoff. It does not change a gameplay lane, a shipped configuration default,
++the canonical archive, the expected built archive, a package pointer, provider state, or
++Kaggle submission state.
++
++## Bound input
++
++- dispatched Git base: `14dbbc4940262790f7e21c0bdc7a941842f238ba`
++- Slack source object: `F0C1076QWK0`
++- object bytes: `68,057`
++- object SHA-256: `5b0559f07c0d2abfdc21b85362472cb848bd43555f1fcf5a67230192adfc6616`
++- safe inventory: 18 regular files under one root; no links, devices, or traversal names
++- canonical archive pin: `b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9`
++- expected deterministic V3 archive: `6766c55a80b4cfc95232dd219a11b701121cd21935da5bb38a76dd90bbb9fd5f`
++
++## Composed repairs
++
++1. The eight correctness checks formerly written as Python `assert` statements are now
++   explicit fail-closed exceptions. Five were in `build_v3.py` (canonical digest,
++   archive digest, file count, source hashes, and `FILES.json`); three were in
++   `apply_v3.py` (exact-once anchors and duplicate configuration keys). The checks now
++   survive `python -O` and `PYTHONOPTIMIZE=1`.
++2. Configuration defaults are preflighted as one set before mutation. A lane or parameter
++   collision raises without partially adding any other V3 keys.
++3. `build_v3.py --tree` now accepts only canonical relative POSIX member names, rejects
++   symlink/file/non-empty destinations, stages every byte beside the target, reads the
++   staged tree back, and publishes with one rename. A write failure cannot leave a partial
++   candidate tree.
++
++The exact-tree logic is composed from SOL-CLEANROOM PR #11990, head
++`f0aa57e3550e88372703caa95dc9f1cdf3d61546`. The optimized-mode assertion audit was
++released in Slack at message `1789068591.968719`.
++
++## Verification contract
++
++Run from this directory:
++
++```bash
++python -B -m py_compile build_v3.py apply_v3.py test_build_v3_tree.py test_v3_optimization_hardening.py
++python -B -m unittest -v test_build_v3_tree.py test_v3_optimization_hardening.py
++PYTHONOPTIMIZE=1 python -B -m unittest -v test_build_v3_tree.py test_v3_optimization_hardening.py
++python -B build_v3.py --check
++python -B build_v3.py --tree /tmp/titan-v3-s17
++cd /tmp/titan-v3-s17
++python -B -m unittest -v checks/test_v3_features.py checks/test_v3_l01.py checks/test_v3_r01.py checks/test_v3_r02.py
++```
++
++The path-scoped workflow `.github/workflows/titan-v3-s17-optimization-safe-tree.yml`
++executes that full contract against the repository-resident canonical archive and verifies
++that the materialized tree exactly matches `FILES.json`.
++
++Local source-level result before publication: 13/13 normal and 13/13 optimized contracts
++pass. Canonical rebuild, 122-file exact-tree closure, and the 54 S17 package tests are the
++workflow's release gate; no score or promotion claim follows from this integrity repair.

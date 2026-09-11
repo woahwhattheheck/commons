@@ -1,0 +1,12 @@
+diff --git a/V3-MANIFEST.json b/V3-MANIFEST.json
+index 76d05bd2b56cd80d6870f9f4fd352438d8a63ca7..e1afe5428bfaa065ff68c241edc0bb04713c3a3e 100644
+--- a/V3-MANIFEST.json
++++ b/V3-MANIFEST.json
+@@ -220,6 +220,6 @@
+     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
+     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
+     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
+-    "apply_v3.py": "eb6d8e558e84bd5aeec2a178007ba9f46a76be01e4d269e7c852f25df8ff45de"
++    "apply_v3.py": "bda9a7bab0e468e978cfed024038aedfc27d58475472a5f28a1c6ef07649145f"
+   }
+ }
