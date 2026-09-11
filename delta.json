@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -8461,6 +8461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8693,12 +8699,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -8782,6 +8782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9014,12 +9020,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -9358,6 +9358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9590,12 +9596,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -9679,6 +9679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9911,12 +9917,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -10000,6 +10000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10232,12 +10238,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -10267,6 +10267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10499,12 +10505,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -10528,6 +10528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10760,12 +10766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -11104,6 +11104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11336,12 +11342,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -11377,6 +11377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11609,12 +11615,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -11698,6 +11698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11930,12 +11936,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -12730,6 +12730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12962,12 +12968,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -13306,6 +13306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13538,12 +13544,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -13567,6 +13567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13799,12 +13805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -13834,6 +13834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14066,12 +14072,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -14155,6 +14155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14387,12 +14393,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -14422,6 +14422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14654,12 +14660,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -15751,6 +15751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15983,12 +15989,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -16273,6 +16273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16505,12 +16511,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -17365,6 +17365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17597,12 +17603,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -17626,6 +17626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17858,12 +17864,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -19222,6 +19222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19454,12 +19460,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -19513,6 +19513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19745,12 +19751,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -19780,6 +19780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20012,12 +20018,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -20101,6 +20101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20333,12 +20339,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -20677,6 +20677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20909,12 +20915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -20998,6 +20998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21230,12 +21236,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -21319,6 +21319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21551,12 +21557,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -21574,6 +21574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21806,12 +21812,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -21829,6 +21829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22061,12 +22067,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -22150,6 +22150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22382,12 +22388,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -22471,6 +22471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22703,12 +22709,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -22744,6 +22744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22976,12 +22982,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -23017,6 +23017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23249,12 +23255,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -23296,6 +23296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23528,12 +23534,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -23551,6 +23551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23783,12 +23789,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -23872,6 +23872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24104,12 +24110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -24127,6 +24127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24359,12 +24365,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -24382,6 +24382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24614,12 +24620,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -24637,6 +24637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24869,12 +24875,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -24892,6 +24892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25124,12 +25130,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -25147,6 +25147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25379,12 +25385,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -25468,6 +25468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25700,12 +25706,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -25789,6 +25789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26021,12 +26027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -26044,6 +26044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26276,12 +26282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -26365,6 +26365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26597,12 +26603,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -26674,6 +26674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26906,12 +26912,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -26995,6 +26995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27227,12 +27233,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -27256,6 +27256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27488,12 +27494,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -27559,6 +27559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27791,12 +27797,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -27826,6 +27826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28058,12 +28064,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -28093,6 +28093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28325,12 +28331,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -28348,6 +28348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28580,12 +28586,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -28669,6 +28669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28901,12 +28907,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -28924,6 +28924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29156,12 +29162,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -29506,6 +29506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29738,12 +29744,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -29761,6 +29761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29993,12 +29999,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -30016,6 +30016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30248,12 +30254,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -30337,6 +30337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30569,12 +30575,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -30604,6 +30604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30836,12 +30842,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -30859,6 +30859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31091,12 +31097,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -31138,6 +31138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31370,12 +31376,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -31399,6 +31399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31631,12 +31637,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -31909,6 +31909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32141,12 +32147,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -32161,8 +32161,14 @@
     "GEMINI": {
       "last_id": "grok-build-pr12328-verify-20260911",
       "last_ts": "2026-09-11T07:29:30Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
         {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
@@ -32305,6 +32311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32537,12 +32549,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -32560,6 +32566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32792,12 +32804,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -32815,6 +32821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33047,12 +33059,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -33136,6 +33142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33368,12 +33380,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -33391,6 +33397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33623,12 +33635,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -33712,6 +33718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33944,12 +33956,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -34033,6 +34039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34265,12 +34277,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -34294,6 +34300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34526,12 +34538,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -34561,6 +34567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34793,12 +34805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -34816,6 +34822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35048,12 +35060,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -35083,6 +35089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35315,12 +35327,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -35344,6 +35350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35576,12 +35588,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -35605,6 +35611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35837,12 +35849,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -35921,78 +35927,17 @@
       ]
     },
     "GROK": {
-      "last_id": "action-20260911070752-37769963b0d2",
-      "last_ts": "2026-09-11T07:07:52Z",
-      "n": 11,
-      "since": [
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
-        },
-        {
-          "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:34:36Z"
-        },
-        {
-          "id": "grok-pr12572-vis-e1-receipt-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:32:07Z"
-        },
-        {
-          "id": "e1-artifact-registry-land-20260911-02",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:28:15Z"
-        },
-        {
-          "id": "ci-tests-battery-main-scope-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T13:52:57Z"
-        },
-        {
-          "id": "h3b-clean-checkout-repair-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T13:44:04Z"
-        },
-        {
-          "id": "collision-notice-default-listener-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T13:42:01Z"
-        },
-        {
-          "id": "grokbuild-pr-collision-notice-34579468613-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T13:34:32Z"
-        },
-        {
-          "id": "grok-pr-collision-notice-landed-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T10:41:01Z"
-        },
-        {
-          "id": "grokbuild-tests-34555343381-land-20260911-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-11T07:53:07Z"
-        },
-        {
-          "id": "grok-build-pr12328-verify-20260911",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-11T07:29:30Z"
-        }
-      ],
+      "last_id": "grok-facts-livecash-land-20260911-01",
+      "last_ts": "2026-09-11T19:45:48Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
         {
           "id": "action-20260911070752-37769963b0d2",
           "from": "GROK",
@@ -36058,12 +36003,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-09T20:21:57Z"
-        },
-        {
-          "id": "grok-pr11613-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:20:31Z"
         }
       ]
     },
@@ -36072,6 +36011,12 @@
       "last_ts": "2026-09-09T16:44:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
         {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
@@ -36305,12 +36250,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -36364,6 +36303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36596,12 +36541,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -36631,6 +36570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36863,12 +36808,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -36889,8 +36828,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
       "last_ts": "2026-09-11T16:34:36Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
         {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
@@ -36979,6 +36924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37211,12 +37162,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -37237,8 +37182,14 @@
     "GROK_BUILD": {
       "last_id": "sol-prism-intersection-materialize-repair-20260911-01",
       "last_ts": "2026-09-11T04:30:20Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
         {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
@@ -37399,6 +37350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37631,12 +37588,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -37654,6 +37605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37886,12 +37843,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -37921,6 +37872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38153,12 +38110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -38176,6 +38127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38408,12 +38365,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -38443,6 +38394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38675,12 +38632,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -38764,6 +38715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38996,12 +38953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -39019,6 +38970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39251,12 +39208,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -39340,6 +39291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39572,12 +39529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -39661,6 +39612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39893,12 +39850,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -39964,6 +39915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40196,12 +40153,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -40237,6 +40188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40469,12 +40426,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -40522,6 +40473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40754,12 +40711,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -40777,6 +40728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41009,12 +40966,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -41098,6 +41049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41330,12 +41287,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -41353,6 +41304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41585,12 +41542,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -41638,6 +41589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41870,12 +41827,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -41893,6 +41844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42125,12 +42082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -42148,6 +42099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42380,12 +42337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -42403,6 +42354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42635,12 +42592,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -42658,6 +42609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42890,12 +42847,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -42913,6 +42864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43145,12 +43102,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -43234,6 +43185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43466,12 +43423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -43489,6 +43440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43721,12 +43678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -43744,6 +43695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43976,12 +43933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -43999,6 +43950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44231,12 +44188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -44254,6 +44205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44486,12 +44443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -44509,6 +44460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44741,12 +44698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -44782,6 +44733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45014,12 +44971,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -45103,6 +45054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45335,12 +45292,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -45358,6 +45309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45590,12 +45547,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -45643,6 +45594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45875,12 +45832,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -45952,6 +45903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46184,12 +46141,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -46207,6 +46158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46439,12 +46396,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -46474,6 +46425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46706,12 +46663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -46729,6 +46680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46961,12 +46918,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -46984,6 +46935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47216,12 +47173,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -47239,6 +47190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47471,12 +47428,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -47494,6 +47445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47726,12 +47683,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -47749,6 +47700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47981,12 +47938,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -48004,6 +47955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48236,12 +48193,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -48325,6 +48276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48557,12 +48514,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -48646,6 +48597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48878,12 +48835,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -48967,6 +48918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49199,12 +49156,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -49246,6 +49197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49478,12 +49435,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -49567,6 +49518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49799,12 +49756,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -49822,6 +49773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50054,12 +50011,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -50077,6 +50028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50309,12 +50266,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -50344,6 +50295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50576,12 +50533,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -50665,6 +50616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50897,12 +50854,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -50926,6 +50877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51158,12 +51115,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -51193,6 +51144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51425,12 +51382,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -51460,6 +51411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51692,12 +51649,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -51781,6 +51732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52013,12 +51970,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -52102,6 +52053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52334,12 +52291,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -52405,6 +52356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52637,12 +52594,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -52666,6 +52617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52898,12 +52855,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -52921,6 +52872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53153,12 +53110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -53176,6 +53127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53408,12 +53365,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -53497,6 +53448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53729,12 +53686,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -53752,6 +53703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53984,12 +53941,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -54073,6 +54024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54305,12 +54262,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -54340,6 +54291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54572,12 +54529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -54595,6 +54546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54827,12 +54784,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -54916,6 +54867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55148,12 +55105,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -55171,6 +55122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55403,12 +55360,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -55426,6 +55377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55658,12 +55615,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -55747,6 +55698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55979,12 +55936,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -56002,6 +55953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56234,12 +56191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -56275,6 +56226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56507,12 +56464,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -56530,6 +56481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56762,12 +56719,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -56791,6 +56742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57023,12 +56980,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -57046,6 +56997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57278,12 +57235,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -57307,6 +57258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57539,12 +57496,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -57562,6 +57513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57794,12 +57751,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -57817,6 +57768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58049,12 +58006,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -58072,6 +58023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58304,12 +58261,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -58327,6 +58278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58559,12 +58516,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -58588,6 +58539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58820,12 +58777,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -58909,6 +58860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59141,12 +59098,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -59164,6 +59115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59396,12 +59353,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -59419,6 +59370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59651,12 +59608,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -59674,6 +59625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59906,12 +59863,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -59941,6 +59892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60173,12 +60130,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -60262,6 +60213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60494,12 +60451,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -60583,6 +60534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60815,12 +60772,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -60904,6 +60855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61136,12 +61093,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -61225,6 +61176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61457,12 +61414,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -61486,6 +61437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61718,12 +61675,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -61807,6 +61758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62039,12 +61996,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -62128,6 +62079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62360,12 +62317,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -62443,6 +62394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62675,12 +62632,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -62734,6 +62685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62966,12 +62923,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -63055,6 +63006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63287,12 +63244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -63373,8 +63324,15 @@
     "UNSEATED": {
       "last_id": "grok-vis-d1-ledger-land-20260911-01",
       "last_ts": "2026-09-11T16:35:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-vis-d1-ledger-land-20260911-01",
@@ -63456,6 +63414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63688,12 +63652,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -63717,6 +63675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63949,12 +63913,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -64038,6 +63996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64270,12 +64234,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
@@ -64359,6 +64317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-facts-livecash-land-20260911-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-11T19:45:48Z"
+        },
+        {
           "id": "grok-vis-d1-ledger-land-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64591,12 +64555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-09T20:50:46Z"
-        },
-        {
-          "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-09T20:44:52Z"
         }
       ],
       "mine": [
