@@ -1,5 +1,14 @@
 [
   {
+    "id": "TITAN-V3.1-integration-ledger---converge-fleet-work-onto-frozen-508b",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-11T09:23:42Z",
+    "body": ""
+  },
+  {
     "id": "discord-1545953866506305548",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
