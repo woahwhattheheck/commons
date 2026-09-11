@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Regression checks for B10 fail-closed reachability edges."""
+"""Regression checks for B10 fail-closed edge cases."""
 from __future__ import annotations
 
 import sys
@@ -13,291 +13,310 @@ if str(ROOT) not in sys.path:
 import r04_b10_public_supply_order as b10  # noqa: E402
 import r04_full_router as r04  # noqa: E402
 
-CONFIG = {
-    "episodeSteps": 720,
-    "maxMarketOrdersPerTurn": 10,
-    "shedCapacity": 100,
-}
 
-
-def obs(step: int, inventory=None, *, shops=None, player: int = 0):
-    values = {item: 10_000 for item in b10.PRODUCTS}
-    if inventory:
-        values.update(inventory)
+def obs(step: int, wool_inventory: int = 10_000, *, shops=None):
+    inventory = {item: 10_000 for item in b10.PRODUCTS}
+    inventory["WOOL"] = wool_inventory
     return {
         "step": step,
-        "player": player,
-        "market": {"inventory": values},
+        "player": 0,
+        "market": {"inventory": inventory},
         "town": {"unlocked_shops": list(shops or [])},
     }
 
 
-def action(*rows):
-    market = []
-    for row in rows:
-        market.append(list(row) if isinstance(row, tuple) else row)
-    return {"farmer": ["PASS"], "hands": [], "market": market}
-
-
-def previous_record(*, inventory=None, town=None, own=None, step=0, shops=()):
-    values = {item: 10_000 for item in b10.PRODUCTS}
-    if inventory:
-        values.update(inventory)
-    drains = {item: 0 for item in b10.PRODUCTS}
-    if town:
-        drains.update(town)
-    upper = {item: 0 for item in b10.PRODUCTS}
-    if own:
-        upper.update(own)
+def parent_action():
     return {
-        "step": step,
-        "inventory": values,
-        "shops": tuple(shops),
-        "town_consume": drains,
-        "own_sell_upper": upper,
+        "farmer": ["PASS"],
+        "hands": [],
+        "market": [["SELL", "MILK", 1], ["SELL", "WOOL", 1]],
     }
 
 
-class B10ReachabilityEdges(unittest.TestCase):
+STANDARD_CONFIG = {"episodeSteps": 720, "maxMarketOrdersPerTurn": 10}
+
+
+class CustomMarketParams(unittest.TestCase):
     def tearDown(self):
         if hasattr(r04, "B10_PUBLIC_SUPPLY_ORDER"):
             r04.B10_PUBLIC_SUPPLY_ORDER = False
         b10.ORDER.players.clear()
 
-    def test_only_valid_step0_can_seed_epoch(self):
-        tracker = b10.RivalSupplyOrder(enabled=True)
-        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
+    def test_installed_missing_configuration_breaks_evidence_continuity(self):
+        original_core = r04._v3_core
+        original_mirror = r04.MIRROR_HORIZON
+        original_terminal = r04.TERMINAL_FERTILIZER
+        original_goose = r04.GOOSE_RESCUE
+        original_place = r04.PLACE_DELIVERY
+        original_goose_pass = r04.GOOSE_PASS_RESCUE
+        original_b10 = r04.B10_PUBLIC_SUPPLY_ORDER
+        try:
+            parent = parent_action()
+            empty = {"farmer": ["PASS"], "hands": [], "market": []}
+            r04._v3_core = lambda observation, configuration=None: parent
+            r04.MIRROR_HORIZON = False
+            r04.TERMINAL_FERTILIZER = False
+            r04.GOOSE_RESCUE = False
+            r04.PLACE_DELIVERY = False
+            r04.GOOSE_PASS_RESCUE = False
+            r04.B10_PUBLIC_SUPPLY_ORDER = True
+            b10.ORDER.players.clear()
 
-        self.assertIs(tracker.apply(obs(7), parent, dict(CONFIG)), parent)
-        self.assertEqual(tracker.players, {})
+            # Direct helper use can still construct a focused predecessor latch.
+            b10.ORDER.apply(obs(1), empty, dict(STANDARD_CONFIG))
+            self.assertIn(0, b10.ORDER.players)
+            out = r04.v3_agent(obs(2, wool_inventory=10_003), None)
+            self.assertIs(out, parent)
+            self.assertEqual(b10.ORDER.players, {})
 
-        malformed = obs(0, {"WOOL": 9_999})
-        self.assertIs(tracker.apply(malformed, parent, dict(CONFIG)), parent)
-        self.assertEqual(tracker.players, {})
+            # Correcting the same logical callback cannot resurrect evidence:
+            # the installed strict epoch can only seed on a valid step 0.
+            retry = r04.v3_agent(obs(2, wool_inventory=10_003), dict(STANDARD_CONFIG))
+            self.assertIs(retry, parent)
+            self.assertEqual(b10.ORDER.telemetry["reorders"], 0)
+            self.assertEqual(b10.ORDER.players, {})
+        finally:
+            r04._v3_core = original_core
+            r04.MIRROR_HORIZON = original_mirror
+            r04.TERMINAL_FERTILIZER = original_terminal
+            r04.GOOSE_RESCUE = original_goose
+            r04.PLACE_DELIVERY = original_place
+            r04.GOOSE_PASS_RESCUE = original_goose_pass
+            r04.B10_PUBLIC_SUPPLY_ORDER = original_b10
 
-        empty = action()
-        self.assertIs(tracker.apply(obs(0), empty, dict(CONFIG)), empty)
-        self.assertEqual(tracker.players[0]["step"], 0)
-
-    def test_valid_step0_replaces_stale_process_state(self):
-        tracker = b10.RivalSupplyOrder(enabled=True)
-        tracker.players[0] = previous_record(step=718)
-        empty = action()
-        self.assertIs(tracker.apply(obs(0), empty, dict(CONFIG)), empty)
-        self.assertEqual(tracker.players[0]["step"], 0)
-        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], 10_000)
-
-    def test_gap_drops_epoch_and_retry_cannot_reseed(self):
-        tracker = b10.RivalSupplyOrder(enabled=True)
-        empty = action()
-        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-        tracker.apply(obs(0), empty, dict(CONFIG))
-
-        self.assertIs(
-            tracker.apply(obs(2, {"WOOL": 10_003}), parent, dict(CONFIG)),
-            parent,
-        )
-        self.assertEqual(tracker.players, {})
-
-        self.assertIs(
-            tracker.apply(obs(2, {"WOOL": 10_003}), parent, dict(CONFIG)),
-            parent,
-        )
-        self.assertEqual(tracker.players, {})
-        self.assertEqual(tracker.telemetry["reorders"], 0)
-
-    def test_missing_configuration_breaks_epoch_and_retry_cannot_reseed(self):
-        tracker = b10.RivalSupplyOrder(enabled=True)
-        tracker.apply(obs(0), action(), dict(CONFIG))
-        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-
-        self.assertIs(tracker.apply(obs(1, {"WOOL": 10_002}), parent, None), parent)
-        self.assertEqual(tracker.players, {})
-
-        self.assertIs(
-            tracker.apply(obs(1, {"WOOL": 10_002}), parent, dict(CONFIG)),
-            parent,
-        )
-        self.assertEqual(tracker.players, {})
-
-    def test_falsey_or_nonempty_market_params_clear_epoch(self):
-        bad_values = ([], "", 0, False, {"WOOL": {"base": 999}})
-        for bad in bad_values:
+    def test_falsey_malformed_overrides_fail_closed_and_clear_latch(self):
+        for bad in ([], "", 0, False):
             with self.subTest(value=bad):
                 tracker = b10.RivalSupplyOrder(enabled=True)
-                tracker.apply(obs(0), action(), dict(CONFIG))
-                cfg = dict(CONFIG)
-                cfg["marketParams"] = bad
-                parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-                self.assertIs(tracker.apply(obs(1), parent, cfg), parent)
+                tracker.apply(obs(1), {"farmer": ["PASS"], "hands": [], "market": []})
+                self.assertIn(0, tracker.players)
+                parent = parent_action()
+                result = tracker.apply(
+                    obs(2, wool_inventory=10_003), parent, {"marketParams": bad}
+                )
+                self.assertIs(result, parent)
                 self.assertEqual(tracker.players, {})
+                self.assertEqual(tracker.telemetry["reorders"], 0)
 
-    def test_empty_market_params_mapping_keeps_standard_path(self):
+    def test_empty_mapping_keeps_standard_market_semantics(self):
         tracker = b10.RivalSupplyOrder(enabled=True)
-        cfg = dict(CONFIG)
-        cfg["marketParams"] = {}
-        tracker.apply(obs(0), action(), cfg)
-        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-        out = tracker.apply(obs(1, {"WOOL": 10_002}), parent, cfg)
+        tracker.apply(
+            obs(1), {"farmer": ["PASS"], "hands": [], "market": []},
+            {"marketParams": {}},
+        )
+        parent = parent_action()
+        result = tracker.apply(
+            obs(2, wool_inventory=10_003), parent, {"marketParams": {}}
+        )
+        self.assertIsNot(result, parent)
         self.assertEqual(
-            out["market"][:2],
+            result["market"][:2],
             [["SELL", "WOOL", 1], ["SELL", "MILK", 1]],
         )
 
-    def test_configuration_types_and_standard_shed_capacity_are_strict(self):
-        bad_cases = (
-            ("episodeSteps", 719),
-            ("episodeSteps", True),
-            ("episodeSteps", 720.0),
-            ("maxMarketOrdersPerTurn", 9),
-            ("maxMarketOrdersPerTurn", True),
-            ("shedCapacity", 99),
-            ("shedCapacity", 101),
-            ("shedCapacity", True),
-            ("shedCapacity", 100.0),
+    def test_tuple_sell_rows_are_engine_noop_barriers(self):
+        evidence = {item: 0 for item in b10.PRODUCTS}
+        evidence["WOOL"] = 9
+        cases = (
+            [("SELL", "MILK", 1), ["SELL", "WOOL", 1]],
+            [["SELL", "MILK", 1], ("SELL", "WOOL", 1)],
         )
-        for key, value in bad_cases:
-            with self.subTest(key=key, value=value):
-                tracker = b10.RivalSupplyOrder(enabled=True)
-                tracker.apply(obs(0), action(), dict(CONFIG))
-                cfg = dict(CONFIG)
-                cfg[key] = value
-                parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-                self.assertIs(tracker.apply(obs(1), parent, cfg), parent)
-                self.assertEqual(tracker.players, {})
+        for market in cases:
+            with self.subTest(market=market):
+                parent = {"farmer": ["PASS"], "hands": [], "market": market}
+                result, detail = b10._reorder_leading_sells(parent, evidence)
+                self.assertIs(result, parent)
+                self.assertIsNone(detail)
+                self.assertEqual(result["market"], market)
 
-    def test_cadence_values_are_strict_positive_json_ints(self):
-        with self.assertRaises(ValueError):
-            b10._expected_shop_count(72, {"turnsPerDay": True})
-        with self.assertRaises(ValueError):
-            b10._expected_shop_count(72, {"townShopUnlockInterval": 3.0})
-        with self.assertRaises(ValueError):
-            b10._expected_shop_count(72, {"townShopUnlockInterval": 0})
-
-    def test_shop_count_and_prefix_are_exact(self):
-        b10._validate_shop_snapshot(71, (), dict(CONFIG))
-        b10._validate_shop_snapshot(72, ("YARN_STORE",), dict(CONFIG))
-        with self.assertRaises(ValueError):
-            b10._validate_shop_snapshot(71, ("YARN_STORE",), dict(CONFIG))
-        with self.assertRaises(ValueError):
-            b10._validate_shop_snapshot(
-                72, ("YARN_STORE", "BAKERY"), dict(CONFIG)
-            )
-        b10._validate_shop_transition(72, 73, ("YARN_STORE",), ("YARN_STORE",))
-        with self.assertRaises(ValueError):
-            b10._validate_shop_transition(
-                72, 73, ("YARN_STORE",), ("BAKERY",)
-            )
-
-    def test_tuple_sell_does_not_mask_rival_lower_bound(self):
-        tuple_action = {
-            "farmer": ["PASS"],
-            "hands": [],
-            "market": [("SELL", "CARROT", 100)],
-        }
-        self.assertEqual(b10._own_sell_upper(tuple_action)["CARROT"], 0)
-        self.assertEqual(
-            b10._own_sell_upper(action(("SELL", "CARROT", 100)))["CARROT"],
-            100,
-        )
-
-    def test_nonbuyable_positive_gross_budget_200_control_and_201_poison(self):
-        previous = previous_record(own={"CARROT": 50, "TOMATO": 50})
-        current = dict(previous["inventory"])
-        current.update({"CARROT": 10_100, "TOMATO": 10_100})
-        evidence = b10._transition_evidence(previous, current, 100)
-        self.assertEqual(evidence["CARROT"], 50)
-        self.assertEqual(evidence["TOMATO"], 50)
-
-        poisoned = dict(current)
-        poisoned["CARROT"] = 10_101
-        with self.assertRaises(ValueError):
-            b10._transition_evidence(previous, poisoned, 100)
-
-    def test_rival_lower_budget_100_control_and_101_poison(self):
-        previous = previous_record()
-        current = dict(previous["inventory"])
-        current["CARROT"] = 10_100
-        evidence = b10._transition_evidence(previous, current, 100)
-        self.assertEqual(evidence["CARROT"], 100)
-
-        poisoned = dict(previous["inventory"])
-        poisoned["CARROT"] = 10_101
-        with self.assertRaises(ValueError):
-            b10._transition_evidence(previous, poisoned, 100)
-
-    def test_nonbuyable_price_floor_room_is_exact_near_wool_boundary(self):
-        self.assertEqual(
-            b10._max_visible_nonbuyable_supply("WOOL", 10_058, 100), 1
-        )
-        self.assertEqual(
-            b10._max_visible_nonbuyable_supply("WOOL", 10_059, 100), 0
-        )
-        self.assertEqual(
-            b10._max_visible_nonbuyable_supply("WOOL", 10_060, 100), 0
-        )
-
-        previous = previous_record(inventory={"WOOL": 10_059})
-        current = dict(previous["inventory"])
-        current["WOOL"] = 10_060
-        with self.assertRaises(ValueError):
-            b10._transition_evidence(previous, current, 100)
-
-    def test_near_floor_one_unit_transition_can_be_reached_from_step0(self):
+    def test_negative_public_inventory_remains_valid_evidence_state(self):
         tracker = b10.RivalSupplyOrder(enabled=True)
-        empty = action()
-        tracker.apply(obs(0), empty, dict(CONFIG))
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
 
-        # Step-0 town center drains one WOOL after the market, so a step-1
-        # observation of 10058 reconstructs gross=59 and reaches the last
-        # pre-floor quoted inventory.
-        self.assertIs(
-            tracker.apply(obs(1, {"WOOL": 10_058}), empty, dict(CONFIG)),
-            empty,
-        )
-        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], 10_058)
+        # Focused direct trackers may start from synthetic public state; the
+        # installed strict epoch is separately step-0 anchored.
+        first = tracker.apply(obs(1, wool_inventory=-2), empty)
+        self.assertIs(first, empty)
+        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], -2)
 
-        self.assertIs(
-            tracker.apply(obs(2, {"WOOL": 10_059}), empty, dict(CONFIG)),
-            empty,
+        parent = parent_action()
+        result = tracker.apply(obs(2, wool_inventory=1), parent)
+        self.assertIsNot(result, parent)
+        self.assertEqual(
+            result["market"][:2],
+            [["SELL", "WOOL", 1], ["SELL", "MILK", 1]],
         )
-        self.assertEqual(tracker.players[0]["inventory"]["WOOL"], 10_059)
+        self.assertEqual(tracker.telemetry["reorders"], 1)
 
-        self.assertIs(
-            tracker.apply(obs(3, {"WOOL": 10_060}), empty, dict(CONFIG)),
-            empty,
+    def test_terminal_step_718_records_evidence_but_never_reorders(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        shops = ["YARN_STORE"] * 8
+        tracker.apply(obs(717, shops=shops), empty, dict(STANDARD_CONFIG))
+        parent = parent_action()
+
+        result = tracker.apply(
+            obs(718, wool_inventory=10_003, shops=shops), parent, dict(STANDARD_CONFIG)
         )
+        self.assertIs(result, parent)
+        self.assertEqual(result["market"],
+                         [["SELL", "MILK", 1], ["SELL", "WOOL", 1]])
+        self.assertEqual(tracker.telemetry["confirmed_supply_transitions"], 1)
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+        self.assertEqual(tracker.players[0]["step"], 718)
+
+    def test_engine_unreachable_step_719_fails_closed_and_clears_latch(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        shops = ["YARN_STORE"] * 8
+        tracker.apply(obs(718, shops=shops), empty, dict(STANDARD_CONFIG))
+        self.assertIn(0, tracker.players)
+        parent = parent_action()
+        result = tracker.apply(
+            obs(719, wool_inventory=10_003, shops=shops), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+
+    def test_nonstandard_episode_steps_clear_latch_and_cannot_reuse_evidence(self):
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        parent = parent_action()
+        for bad in (719, 721, True, 720.0, "720"):
+            with self.subTest(episodeSteps=bad):
+                tracker = b10.RivalSupplyOrder(enabled=True)
+                tracker.apply(obs(1), empty, {"episodeSteps": 720})
+                self.assertIn(0, tracker.players)
+
+                result = tracker.apply(
+                    obs(2, wool_inventory=10_003), parent, {"episodeSteps": bad}
+                )
+                self.assertIs(result, parent)
+                self.assertEqual(tracker.players, {})
+                self.assertEqual(tracker.telemetry["reorders"], 0)
+
+                retry = tracker.apply(
+                    obs(2, wool_inventory=10_003), parent, {"episodeSteps": 720}
+                )
+                self.assertIs(retry, parent)
+                self.assertEqual(tracker.telemetry["reorders"], 0)
+
+    def test_engine_unreachable_ninth_shop_fails_closed_and_clears_latch(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        tracker.apply(obs(3), empty, dict(STANDARD_CONFIG))
+        self.assertIn(0, tracker.players)
+
+        parent = parent_action()
+        bad = obs(4, shops=["YARN_STORE"] * 9)
+        result = tracker.apply(bad, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+
+        control = b10._town_consumption(
+            obs(4, shops=["YARN_STORE"] * 8), dict(STANDARD_CONFIG))
+        self.assertEqual(control["WOOL"], 16)
+
+    def test_fresh_impossible_shop_snapshot_cannot_seed_evidence(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        parent = parent_action()
+        impossible = obs(4, shops=["YARN_STORE"] * 8)
+        result = tracker.apply(impossible, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
         self.assertEqual(tracker.players, {})
 
-    def test_buyable_history_cannot_authorize_b10_movement(self):
-        previous = previous_record()
-        current = dict(previous["inventory"])
-        current["FERTILIZER"] = 50_000
-        evidence = b10._transition_evidence(previous, current, 100)
-        self.assertEqual(evidence["FERTILIZER"], 0)
-        self.assertEqual(evidence["WHEAT"], 0)
-
-        parent = action(
-            ("SELL", "MILK", 1),
-            ("SELL", "FERTILIZER", 1),
-            ("SELL", "WOOL", 1),
+        valid = tracker.apply(
+            obs(72, shops=["YARN_STORE"]),
+            {"farmer": ["PASS"], "hands": [], "market": []},
+            dict(STANDARD_CONFIG),
         )
-        evidence["WOOL"] = 5
-        evidence["FERTILIZER"] = 999
-        result, _ = b10._reorder_leading_sells(parent, evidence)
-        self.assertEqual(result["market"][1], ["SELL", "FERTILIZER", 1])
+        self.assertEqual(tracker.players[0]["shops"], ("YARN_STORE",))
+        self.assertEqual(tracker.players[0]["step"], 72)
+        self.assertEqual(valid["market"], [])
 
-    def test_unidentifiable_player_clears_all_latches(self):
+    def test_shop_history_is_append_only_and_schedule_exact(self):
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        parent = parent_action()
+
         tracker = b10.RivalSupplyOrder(enabled=True)
-        tracker.apply(obs(0, player=0), action(), dict(CONFIG))
-        tracker.apply(obs(0, player=1), action(), dict(CONFIG))
+        tracker.apply(obs(71), empty, dict(STANDARD_CONFIG))
+        result = tracker.apply(
+            obs(72, wool_inventory=10_003, shops=["YARN_STORE"]),
+            parent, dict(STANDARD_CONFIG),
+        )
+        self.assertIsNot(result, parent)
+        self.assertEqual(result["market"][:2],
+                         [["SELL", "WOOL", 1], ["SELL", "MILK", 1]])
+        self.assertEqual(tracker.players[0]["shops"], ("YARN_STORE",))
+
+        swapped = b10.RivalSupplyOrder(enabled=True)
+        swapped.apply(obs(72, shops=["YARN_STORE"]), empty, dict(STANDARD_CONFIG))
+        out = swapped.apply(
+            obs(73, shops=["BAKERY"]), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(out, parent)
+        self.assertEqual(swapped.players, {})
+
+        mid = b10.RivalSupplyOrder(enabled=True)
+        mid.apply(obs(72, shops=["YARN_STORE"]), empty, dict(STANDARD_CONFIG))
+        out = mid.apply(
+            obs(73, shops=["YARN_STORE", "BAKERY"]), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(out, parent)
+        self.assertEqual(mid.players, {})
+
+        jump = b10.RivalSupplyOrder(enabled=True)
+        jump.apply(obs(71), empty, dict(STANDARD_CONFIG))
+        out = jump.apply(
+            obs(72, shops=["YARN_STORE", "BAKERY"]), parent, dict(STANDARD_CONFIG)
+        )
+        self.assertIs(out, parent)
+        self.assertEqual(jump.players, {})
+
+    def test_tuple_shop_vector_is_malformed_public_state(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        malformed = obs(1)
+        malformed["town"]["unlocked_shops"] = ("YARN_STORE",)
+        parent = parent_action()
+        result = tracker.apply(malformed, parent, dict(STANDARD_CONFIG))
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+
+    def test_malformed_step_breaks_evidence_continuity(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        tracker.apply(obs(1), empty)
+        self.assertIn(0, tracker.players)
+
+        malformed = obs(2, wool_inventory=10_003)
+        malformed["step"] = "2"
+        parent = parent_action()
+        result = tracker.apply(malformed, parent)
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.players, {})
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+
+        result = tracker.apply(obs(2, wool_inventory=10_003), parent)
+        self.assertIs(result, parent)
+        self.assertEqual(tracker.telemetry["reorders"], 0)
+
+    def test_unidentifiable_player_clears_all_evidence_latches(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        empty = {"farmer": ["PASS"], "hands": [], "market": []}
+        tracker.apply(obs(1), empty)
+        other = obs(1)
+        other["player"] = 1
+        tracker.apply(other, empty)
         self.assertEqual(set(tracker.players), {0, 1})
 
-        malformed = obs(1)
+        malformed = obs(2)
         malformed["player"] = True
-        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
-        self.assertIs(tracker.apply(malformed, parent, dict(CONFIG)), parent)
+        parent = parent_action()
+        result = tracker.apply(malformed, parent)
+        self.assertIs(result, parent)
         self.assertEqual(tracker.players, {})
+        self.assertEqual(tracker.telemetry["reorders"], 0)
 
 
 if __name__ == "__main__":

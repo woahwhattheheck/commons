@@ -77,8 +77,11 @@ def apply(src):
         "                                                                     enabled=True)\n"
         "    if B10_PUBLIC_SUPPLY_ORDER:\n"
         "        import r04_b10_public_supply_order\n"
-        "        action = r04_b10_public_supply_order.apply_public_supply_order(\n"
-        "            observation, action, configuration, enabled=True)\n"
+        "        if configuration is None:\n"
+        "            r04_b10_public_supply_order.invalidate_public_supply_order(observation)\n"
+        "        else:\n"
+        "            action = r04_b10_public_supply_order.apply_public_supply_order(\n"
+        "                observation, action, configuration, enabled=True)\n"
         "    return action\n",
         "R04 B10 outermost seam",
     )
