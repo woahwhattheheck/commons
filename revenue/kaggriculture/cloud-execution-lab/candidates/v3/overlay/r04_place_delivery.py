@@ -42,26 +42,25 @@ def apply_place_delivery(observation, action, enabled=False):
     except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
         return action
 
-    # Parent actions normally use a list farmer command plus a list of hand
-    # commands. Fail closed on malformed containers instead of letting the
-    # star-unpack below raise or reinterpret strings/dicts as worker lists.
+    # Parent actions are positional: one farmer command plus exactly one command
+    # per hand. Missing/partial vectors are ambiguous and must not be padded or
+    # silently truncated before a destructive DROP rewrite.
     raw_farmer = action.get("farmer")
     raw_hands = action.get("hands")
-    if raw_farmer is not None and not isinstance(raw_farmer, list):
+    if not isinstance(raw_farmer, list) or not isinstance(raw_hands, list):
         return action
-    if raw_hands is not None and not isinstance(raw_hands, list):
-        return action
-    workers = [raw_farmer or ["PASS"], *(raw_hands or [])]
+    workers = [raw_farmer, *raw_hands]
 
     # Validate the public geometry/inventory surfaces used by beside_shed() and
-    # inventory() before the transform touches them.  A truncated public worker
-    # surface is ambiguous: never rewrite only a prefix of the parent's workers.
+    # inventory() before the transform touches them. Exact actor cardinality is
+    # required in both directions: neither the public state nor the parent action
+    # may expose only a prefix of the actual worker set.
     if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
             or not isinstance(view.inventories, list)):
         return action
-    if len(view.positions) < len(workers) or len(view.inventories) < len(workers):
+    if len(view.positions) != len(workers) or len(view.inventories) != len(workers):
         return action
-    for position in view.positions[:len(workers)]:
+    for position in view.positions:
         if (not isinstance(position, (list, tuple)) or len(position) != 2
                 or type(position[0]) is not int or type(position[1]) is not int):
             return action
@@ -153,7 +152,7 @@ def apply_place_delivery(observation, action, enabled=False):
         remaining -= quantity
 
     out = dict(action)
-    out["farmer"] = out_workers[0] if out_workers else ["PASS"]
+    out["farmer"] = out_workers[0]
     out["hands"] = out_workers[1:]
 
     try:
