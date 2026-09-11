@@ -3,15 +3,17 @@
 """Default-OFF B9 terminal fertilizer micro-stacker.
 
 This experiment wraps an existing V3.1 agent. Under the explicit standard
-720-step / 24-turn-day runtime only, it changes literal PASS worker commands at
-steps 716-717 when that represented worker is already on a shed-adjacent animal
-tile with public ``fertilizer_available is True``. Missing, empty, malformed, or
+720-step / 24-turn-day runtime with a strictly typed market execution cap, it
+changes literal PASS worker commands at steps 716-717 when that represented
+worker is already on a shed-adjacent animal tile with public
+``fertilizer_available is True``. Missing, empty, malformed, or
 cardinality-mismatched parent worker commands are never synthesized into PASS.
 
 At step 718 the existing V3.1 liquidator remains authoritative; iff this wrapper
 collected terminal fertilizer in the same episode, ``SELL FERTILIZER`` rows are
-stable-partitioned behind all pre-existing rows, preserving the parent's relative
-terminal market order.
+stable-partitioned behind the other rows *inside the exact executable market
+prefix only*. The raw tail is left at its original indexes, so B9 cannot change
+which parent market rows are executable under ``maxMarketOrdersPerTurn``.
 """
 from __future__ import annotations
 
@@ -52,6 +54,13 @@ def _standard_terminal_timing(configuration):
         and _exact_int(turns_per_day)
         and turns_per_day == TURNS_PER_DAY
     )
+
+
+def _executable_market_cap(configuration):
+    raw_cap = _configuration_value(configuration, "maxMarketOrdersPerTurn")
+    if not _exact_int(raw_cap):
+        return None
+    return max(1, raw_cap)
 
 
 def _valid_worker_position(position, board_size):
@@ -139,22 +148,26 @@ def _collect_passes(observation, action):
     return result, True
 
 
-def _trail_fertilizer_sales(action):
-    if type(action) is not dict or type(action.get("market")) is not list:
+def _trail_fertilizer_sales(action, executable_market_cap):
+    if (type(action) is not dict or type(action.get("market")) is not list
+            or not _exact_int(executable_market_cap) or executable_market_cap < 1):
         return action
     market = action["market"]
+    prefix_end = min(len(market), executable_market_cap)
+    prefix = market[:prefix_end]
+    tail = market[prefix_end:]
     non_fert = []
     fert = []
-    for order in market:
+    for order in prefix:
         if type(order) is list and len(order) >= 2 and order[0] == "SELL" and order[1] == "FERTILIZER":
             fert.append(order)
         else:
             non_fert.append(order)
-    reordered = non_fert + fert
-    if not fert or reordered == market:
+    reordered_prefix = non_fert + fert
+    if not fert or reordered_prefix == prefix:
         return action
     result = copy.deepcopy(action)
-    result["market"] = copy.deepcopy(reordered)
+    result["market"] = copy.deepcopy(reordered_prefix + tail)
     return result
 
 
@@ -167,7 +180,8 @@ class TerminalFertilizerAgent:
 
     def __call__(self, observation, configuration=None):
         action = self.parent(observation, configuration)
-        if not _standard_terminal_timing(configuration):
+        executable_market_cap = _executable_market_cap(configuration)
+        if not _standard_terminal_timing(configuration) or executable_market_cap is None:
             self._state.clear()
             return action
         try:
@@ -197,7 +211,7 @@ class TerminalFertilizerAgent:
                 state["collected"] = True
             return result
         if step == TERMINAL_STEP and state["collected"]:
-            return _trail_fertilizer_sales(action)
+            return _trail_fertilizer_sales(action, executable_market_cap)
         return action
 
 
