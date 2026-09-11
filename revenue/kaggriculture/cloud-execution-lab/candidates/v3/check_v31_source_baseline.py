@@ -44,6 +44,9 @@ SUITES = (
 def _subprocess_env() -> dict[str, str]:
     env = dict(os.environ)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    # build_v3.py --check uses assertions for integrity invariants.  Never inherit an
+    # optimization request that would strip those assertions from the checker process.
+    env.pop("PYTHONOPTIMIZE", None)
     return env
 
 
