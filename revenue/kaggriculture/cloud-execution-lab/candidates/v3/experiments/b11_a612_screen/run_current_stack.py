@@ -114,8 +114,6 @@ def materialize(repo: Path, root: Path) -> tuple[Path, Path]:
                 raise AssertionError(f"materialized package missing {required}")
 
     donor = git(repo, "show", f"{DONOR_COMMIT}:{DONOR_PATH}")
-    actual_blob = git(repo, "hash-object", "--stdin", input=donor) if False else None
-    # subprocess helper above intentionally has no stdin; compute Git blob SHA exactly here.
     header = f"blob {len(donor)}\0".encode()
     if hashlib.sha1(header + donor).hexdigest() != DONOR_BLOB:
         raise AssertionError("reviewed B11 donor blob drift")
