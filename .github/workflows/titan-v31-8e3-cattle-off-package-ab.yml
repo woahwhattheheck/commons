@@ -41,7 +41,7 @@ jobs:
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object "$DIR/report_ab.py")" = '472b8761419bcccba165d97de71228dabe893588'
+          test "$(git hash-object "$DIR/report_ab.py")" = '503b1aff0ff73544bf9eb662db417e51b1f45de5'
           test "$(git hash-object "$DIR/materialize_ab.py")" = '739ba35a1ef178921a6554db6b1f3e07a153e571'
           test "$(git hash-object "$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
@@ -142,7 +142,61 @@ jobs:
           rejects('incomplete', lambda r: r['games'][0].__setitem__('status', 'error'))
           rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'not-a-sha'))
+
+          control_config = {
+              'r04_sale_window': True,
+              'r04_sale_fertilizer': True,
+              'r04_strawberry_topup': True,
+              'r04_no_late_sale_advance': True,
+              'r04_sale_horizon': 8,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_cattle_early': True,
+          }
+          candidate_config = dict(control_config)
+          candidate_config['r04_cattle_early'] = False
+          materialization = {
+              'on_package_sha256': 'd' * 64,
+              'off_package_sha256': 'e' * 64,
+              'on_to_off_changed_members': ['TITAN-CONFIG.json'],
+              'on_to_off_changed_config_keys': ['r04_cattle_early'],
+              'control_config': control_config,
+              'candidate_config': candidate_config,
+          }
+          module.validate_materialization(copy.deepcopy(materialization))
+
+          def rejects_materialization(name, mutate):
+              poisoned = copy.deepcopy(materialization)
+              mutate(poisoned)
+              try:
+                  module.validate_materialization(poisoned)
+              except SystemExit:
+                  return
+              raise AssertionError(f'{name}: materialization poison was accepted')
+
+          rejects_materialization(
+              'equal-package-digests',
+              lambda r: r.__setitem__('off_package_sha256', r['on_package_sha256']),
+          )
+          rejects_materialization(
+              'extra-config-key-drift',
+              lambda r: r.__setitem__(
+                  'on_to_off_changed_config_keys',
+                  ['r04_cattle_early', 'r04_sale_horizon'],
+              ),
+          )
+
+          module.validate_receipt_pair(copy.deepcopy(valid), copy.deepcopy(valid))
+          fingerprint_drift = copy.deepcopy(valid)
+          fingerprint_drift['candidate']['sha256'] = 'd' * 64
+          try:
+              module.validate_receipt_pair(valid, fingerprint_drift)
+          except SystemExit:
+              pass
+          else:
+              raise AssertionError('candidate-entry fingerprint drift was accepted')
+
           print('CATTLE_AB_8E3_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
+          print('CATTLE_AB_8E3_PACKAGE_IDENTITY_POISONS_OK')
           PY
           test -z "$(git status --porcelain)"
 
@@ -172,6 +226,7 @@ jobs:
           assert r['canonical_commit'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
           assert r['canonical_package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
           assert r['package_members'] == 139
+          assert r['on_package_sha256'] != r['off_package_sha256']
           assert r['on_to_off_changed_members'] == ['TITAN-CONFIG.json']
           assert r['on_to_off_changed_config_keys'] == ['r04_cattle_early']
           assert r['control_config']['r04_cattle_early'] is True
