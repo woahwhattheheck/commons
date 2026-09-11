@@ -2,7 +2,7 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, leaderboard, or Kaggle state.
 
-Snapshot: **2026-09-11 after #12535 P0 advanced from `6e5e3c7c…` to `0fc8ea0d…`.** Optional factor heads move quickly; this ledger intentionally records exact landing-critical coordinates and uses PR identities for optional evidence lanes unless a literal head matters to the assembly theorem.
+Snapshot: **2026-09-11 after #12535 P0 advanced from `6e5e3c7c…` to `0fc8ea0d…` and sole #12565 L3 rebound to `410aa0eb…`.** Optional factor heads move quickly; this ledger intentionally records exact landing-critical coordinates and uses PR identities for optional evidence lanes unless a literal head matters to the assembly theorem.
 
 ## Canonical authority
 
@@ -34,20 +34,26 @@ The new terminal theorem rechecks live canonical, literal event head, remote fea
 
 ### 2. Sole L3 consumer — #12565
 
-**Live topology:** PR base is already #12535 `0fc8ea0d…`; current feature head `59df632b366dc71da415b58bca3f03f6297e8f9f` is ahead-only from that base with the same three staging paths.
+**Live topology:** PR base is exact #12535 `0fc8ea0d…`; current feature head is `410aa0eb3fe115342ab7bfa2af25f7acea65cc64`, ahead-only from that base with exactly the same three committed staging paths.
 
-**Current proof state: STALE-RED until same-line repair lands.** The R4 workflow on this head still hard-codes old `BASE=6e5e3c7…`, so its old staging run/artifact `34591687224` is superseded as landing authority even if it eventually executes.
+**Static state: P0 rebound / source / package / read-only handoff theorem PASS; hosted and final committed head pending.** `59df632b… -> 410aa0eb…` changes only the staging workflow. Reviewed donor patch `bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c` and 17-test contract `b572bb0adad3b8ca53100d4d44b35c5a374e8302` are unchanged.
 
-The existing same-ref owner must keep one L3 line and:
+R4 now:
 
-- rebind every P0/base/freshness token to `0fc8ea0d…` while preserving reviewed donor patch `bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c` and 17-test contract `b572bb0adad3b8ca53100d4d44b35c5a374e8302`;
-- start any Git-data final-tree collapse from new P0 tree, not the old `6e5` tree, so #12535's terminal-freshness workflow is preserved;
-- keep the read-only complete five-path handoff (permanent gate + FILES + manifest + repaired R04 + packaged L3 test);
-- attest deletion of all three staging paths as well as installation of the five final paths;
-- recheck live P0 + canonical + feature head at the tail of staging and at the tail of the permanent gate after expensive work;
-- avoid a `workflow_dispatch` surface whose custody expressions only exist for PR events unless explicit dispatch inputs are added.
+- binds live recovery/base to exact `0fc8ea0d…`, pins P0 recovery-workflow blob `dd8711297b18b6703677da0bc4eb14c9178ac67d`, and retains optimizer-safe builder/regression/archive + R04/apply/FILES/manifest/H4/L3/B5/JIT custody;
+- applies only the reviewed L3 repair and exact 17-test contract;
+- runs source contracts, normal + `PYTHONOPTIMIZE=1` deterministic package checks, materializes, reruns all 17 package contracts, and exact-types preservation of H4, L3@648, sale-fertilizer, horizon8, cattle-ON, B5 CARROT and JIT;
+- remains read-only (`contents: read`, `persist-credentials:false`) and never mutates refs;
+- deterministically generates the permanent read-only gate and exact five intended final bytes: gate + FILES + manifest + repaired R04 + packaged L3 test;
+- carries a second base/canonical freshness re-fetch **after** the permanent gate's expensive work, with template-token cardinality binding that tail check;
+- records base/canonical/staging head plus gate/FILES/manifest/router/test blobs and a five-path binary patch in the success-only handoff artifact;
+- rechecks live P0 + canonical before artifact publication.
 
-No sibling L3 consumer and no #12541 resurrection.
+Dedicated exact-head staging run `34592846594` and generics are queued/pending. The old `34591687224@316e…` artifact/run is predecessor evidence only.
+
+Final collapse is an authorized integration operation, not another gameplay implementation. Consume the attested five files against exact P0 so the three staging paths disappear, recheck feature/P0/canonical immediately before ref movement, and require the resulting base-relative delta to be exactly those five paths. Then the literal final head needs fresh exact-head review + permanent-gate/generic terminal green + current-stack 41-live L3 classifier/economics.
+
+Nonblocking cleanup: the generated `workflow_dispatch` surface uses PR-only base expressions and therefore fails closed rather than being a useful manual authority path; remove it or add explicit dispatch inputs later. No sibling L3 consumer and no #12541 resurrection.
 
 ### 3. Cattle decision — #12540
 
@@ -134,9 +140,9 @@ Do not reopen these exact mechanisms without a materially different design/conte
 ## Assembly order
 
 1. **#12535 `0fc8…` terminal green.**
-2. **Rebind/finish the sole #12565 line on `0fc8…`; land exact final five-path L3 package/gate and rerun current-stack L3 economics.**
+2. **Finish the sole #12565 `410aa…` read-only staging run; consume its exact five-path handoff into a literal final L3 head and require final gate + current-stack L3 economics.**
 3. **Transfer/rerun cattle; assemble cattle OFF if the current directional winner survives.**
-4. **Consume #12551 strict semantics once through #12566 on that parent; regenerate metadata/package; run cattle-OFF × row-shed-ON interaction + D3.**
+4. **Consume #12551 strict semantics once through #12566 on that parent, regenerate metadata/package, and run cattle-OFF × row-shed-ON interaction + D3.**
 5. Only then recompose optional survivors that still justify spend, one lane at a time, on the assembled root.
 6. Generate final FILES/MANIFEST/package receipts after selected source composition, not from stale side branches.
 7. **Apply #12505-compatible final score transform LAST** with literal final-tuple preconditions and optimizer-safe package custody.
