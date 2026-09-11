@@ -149,6 +149,11 @@ def materialize(repo: Path) -> tuple[dict[str, bytes], dict[str, bytes], dict]:
     if typed(left) != typed(right):
         raise AssertionError("typed config differs outside r04_sale_horizon")
 
+    h8_main_sha = sha256_bytes(h8["main.py"])
+    h10_main_sha = sha256_bytes(h10["main.py"])
+    if h8_main_sha != h10_main_sha:
+        raise AssertionError("config-only treatment unexpectedly changed main.py bytes")
+
     receipt = {
         "schema": "titan-v31-8e3-h13-cattleoff-materialization/v1",
         "current_commit": CURRENT_COMMIT,
@@ -159,6 +164,9 @@ def materialize(repo: Path) -> tuple[dict[str, bytes], dict[str, bytes], dict]:
         "h8_to_h10_changed_members": changed,
         "h8_package_sha256": sha256_bytes(build_v3.build_bytes(h8)),
         "h10_package_sha256": sha256_bytes(build_v3.build_bytes(h10)),
+        "h8_main_sha256": h8_main_sha,
+        "h10_main_sha256": h10_main_sha,
+        "arlene_sha256": ARLENE_SHA256,
         "h8_config": cfg8,
         "h10_config": cfg10,
     }
@@ -248,6 +256,34 @@ def normalized_games(report: dict, label: str) -> dict[tuple[str, int, int], dic
     if frozenset(rows) != expected:
         raise AssertionError(f"{label}: exact 32-cell Cartesian set missing")
     return rows
+
+
+def validate_actual_fingerprint_custody(control_report: dict, candidate_report: dict, materialization: dict) -> None:
+    expected_h8 = materialization.get("h8_main_sha256")
+    expected_h10 = materialization.get("h10_main_sha256")
+    expected_arlene = materialization.get("arlene_sha256")
+    if not is_sha256(expected_h8) or not is_sha256(expected_h10):
+        raise AssertionError("materialization missing exact candidate main.py fingerprints")
+    if expected_arlene != ARLENE_SHA256:
+        raise AssertionError("materialization Arlene fingerprint drift")
+
+    h8_fp = strict_fingerprint(control_report.get("candidate"), "h8.candidate")
+    h8_self_fp = strict_fingerprint(control_report.get("opponents", {}).get("h8_self"), "h8.opponents['h8_self']")
+    h8_arlene_fp = strict_fingerprint(control_report.get("opponents", {}).get("arlene"), "h8.opponents['arlene']")
+    h10_fp = strict_fingerprint(candidate_report.get("candidate"), "h10.candidate")
+    h10_self_fp = strict_fingerprint(candidate_report.get("opponents", {}).get("h8_self"), "h10.opponents['h8_self']")
+    h10_arlene_fp = strict_fingerprint(candidate_report.get("opponents", {}).get("arlene"), "h10.opponents['arlene']")
+
+    if h8_fp["sha256"] != expected_h8 or h8_self_fp["sha256"] != expected_h8:
+        raise AssertionError("h8 report fingerprint is not bound to materialized h8/main.py")
+    if h10_fp["sha256"] != expected_h10:
+        raise AssertionError("h10 report fingerprint is not bound to materialized h10/main.py")
+    if h10_self_fp["sha256"] != expected_h8:
+        raise AssertionError("h10 fixed h8_self fingerprint is not bound to materialized h8/main.py")
+    if h8_arlene_fp["sha256"] != ARLENE_SHA256 or h10_arlene_fp["sha256"] != ARLENE_SHA256:
+        raise AssertionError("Arlene report fingerprint is not bound to pinned vendored source")
+    if control_report.get("opponents") != candidate_report.get("opponents"):
+        raise AssertionError("fixed opponent fingerprints drifted across arms")
 
 
 def components(game: dict) -> tuple[float, float, float]:
@@ -353,20 +389,7 @@ def main() -> int:
         report10 = evaluate(repo, engine_dir, h10_dir / "main.py", h8_dir / "main.py", raw10)
         rows8 = normalized_games(report8, "h8")
         rows10 = normalized_games(report10, "h10")
-
-        # H8 control custody is fingerprint identity, not a zero score-margin theorem.
-        h8_fp = strict_fingerprint(report8.get("candidate"), "h8.candidate")
-        h8_self_fp = strict_fingerprint(report8.get("opponents", {}).get("h8_self"), "h8.opponents['h8_self']")
-        h10_fp = strict_fingerprint(report10.get("candidate"), "h10.candidate")
-        h10_self_fp = strict_fingerprint(report10.get("opponents", {}).get("h8_self"), "h10.opponents['h8_self']")
-        if h8_fp != h8_self_fp:
-            raise AssertionError("h8 control candidate/opponent fingerprint drift")
-        if h10_self_fp != h8_self_fp:
-            raise AssertionError("h8 self opponent fingerprint drift across arms")
-        if h10_fp != h8_self_fp:
-            raise AssertionError("h10 entry fingerprint drift; only TITAN-CONFIG.json may differ")
-        if report8.get("opponents") != report10.get("opponents"):
-            raise AssertionError("fixed opponent fingerprints drifted across arms")
+        validate_actual_fingerprint_custody(report8, report10, materialization)
 
         self_summary, self_rows = summarize(rows8, rows10, "h8_self")
         arlene_summary, arlene_rows = summarize(rows8, rows10, "arlene")
@@ -394,7 +417,9 @@ def main() -> int:
             "rng_seed": EXPECTED_RNG_SEED,
             "seeds": list(SEEDS),
             "opponents": list(OPPONENTS),
-            "h8_entry_fingerprint_sha256": h8_self_fp["sha256"],
+            "h8_entry_fingerprint_sha256": materialization["h8_main_sha256"],
+            "h10_entry_fingerprint_sha256": materialization["h10_main_sha256"],
+            "arlene_fingerprint_sha256": ARLENE_SHA256,
             "h8_self": {"summary": self_summary, "rows": self_rows},
             "arlene": {"summary": arlene_summary, "rows": arlene_rows},
             "all_negative_cells": [row for row in all_rows if row["delta_margin"] < 0],
@@ -410,6 +435,8 @@ def main() -> int:
             f"- current deterministic package: `{CURRENT_PACKAGE_SHA256}` / 139 files",
             "- both arms: cattle OFF; B5 CARROT + JIT + H4 + gated-L3 + sale-fertilizer ON",
             "- sole treatment: `r04_sale_horizon` strict integer `8 -> 10`",
+            f"- bound h8/h10 main.py fingerprint: `{materialization['h8_main_sha256']}`",
+            f"- bound Arlene fingerprint: `{ARLENE_SHA256}`",
             f"- trace-changed cells: {changed}/32",
             "",
             f"- h8-self: {self_summary['positive']}+/{self_summary['negative']}-/{self_summary['zero']}=; mean ΔM {self_summary['mean_delta_margin']:.3f}; mean Δown {self_summary['mean_delta_own']:.3f}; mean Δrival {self_summary['mean_delta_rival']:.3f}",
