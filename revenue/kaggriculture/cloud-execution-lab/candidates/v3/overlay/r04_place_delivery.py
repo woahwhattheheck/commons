@@ -69,6 +69,14 @@ def apply_place_delivery(observation, action, enabled=False):
         return action
     workers = [raw_farmer, *raw_hands]
 
+    # The official unit interpreter accepts only list commands. projected_shed()
+    # is more permissive and will interpret tuple-shaped DROP lookalikes, so a
+    # non-list sibling could otherwise consume phantom capacity in both proof
+    # projections and make a stock-changing PLACE candidate appear equal to the
+    # parent. Keep the proof surface identical to engine execution semantics.
+    if any(not isinstance(command, list) for command in workers):
+        return action
+
     # Validate the public geometry/inventory surfaces used by beside_shed() and
     # inventory() before the transform touches them. beside_shed() derives the
     # shed center from len(tiles), so malformed board dimensions must not be

@@ -80,6 +80,51 @@ class PlaceDeliveryCashMonotone(unittest.TestCase):
         out = lane.apply_place_delivery(observation, parent, enabled=True)
         self.assertIs(out, parent)
 
+    def test_tuple_drop_cannot_poison_projected_shed_equality(self):
+        # Official unit actions are list-only; r04.projected_shed is intentionally
+        # lightweight and will interpret a tuple-shaped DROP. With one free slot,
+        # that phantom tuple can make parent/candidate projections both say
+        # CARROT even though the engine would execute parent CARROT vs candidate
+        # WOOL. The terminal rewrite must therefore reject any non-list command.
+        tiles = [["LOCKED"] * 10 for _ in range(10)]
+        farm = {
+            "tiles": tiles,
+            "farmer": [4, 4],
+            "hands": [[4, 4], [4, 4]],
+        }
+        prices = {product: 10 for product in r04.PRODUCTS}
+        prices["WOOL"] = 100
+        observation = {
+            "step": 718,
+            "player": 0,
+            "farms": [farm],
+            "private": {
+                "shed": {"WHEAT": 99},
+                "inventories": [
+                    {"CARROT": 1},
+                    {"CARROT": 1},
+                    {"WOOL": 1},
+                ],
+            },
+            "market": {"prices": prices},
+        }
+        parent = {
+            "farmer": ["DROP"],
+            "hands": [("DROP",), ["DROP"]],
+            "market": [
+                ["SELL", "WHEAT", 99],
+                ["SELL", "CARROT", 1],
+                ["SELL", "WOOL", 1],
+            ],
+        }
+
+        # The proof surrogate demonstrates the trap: the tuple consumes the
+        # slot in projected_shed(), but the engine's _apply_unit_action() ignores
+        # it because it is not a list. Fail closed before using that surrogate.
+        view = r04.FarmView(observation)
+        self.assertEqual(r04.projected_shed(parent, view)["CARROT"], 1)
+        self.assertIs(lane.apply_place_delivery(observation, parent, enabled=True), parent)
+
 
 if __name__ == "__main__":
     unittest.main()
