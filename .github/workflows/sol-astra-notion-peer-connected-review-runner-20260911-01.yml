@@ -1,0 +1,65 @@
+name: sol-astra-notion-peer-connected-review-runner-20260911-01
+
+on:
+  push:
+    branches:
+      - sol-astra/notion-peer-connected-review-runner-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Bind carrier topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "ae53dafa3457bfb524e5e44aff69a8099a610897"
+          mapfile -t changed < <(git diff --name-only HEAD^ HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = ".github/workflows/sol-astra-notion-peer-connected-review-runner-20260911-01.yml"
+      - name: Compile focused service-tag code
+        run: python3 -m py_compile host/slack_service_tag.py host/slack_service_tag_worker.py test_slack_service_tags.py test_slack_service_tag_worker.py
+      - name: Run focused current-main service-tag contracts
+        run: python3 -m unittest -v test_slack_service_tags.py test_slack_service_tag_worker.py
+      - name: Prove Notion routing boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'host')
+          import slack_service_tag as sst
+          out = sst.route('@notion list databases', connected=['slack'])
+          roads = {j['road'] for j in out['jobs'] if j['tag'] == 'notion'}
+          assert 'SLACK_CUSTOM_TOOL' in roads, out
+          assert 'OWNER_SIGNIN' not in roads, out
+          assert 'IN_HARNESS' not in roads, out
+          custom = next(j for j in out['slack_jobs'] if j['kind'] == 'SLACK_CUSTOM_TOOL')
+          assert custom['peer_desk'] == 'GOAT', custom
+          assert custom['this_process_tools'] is False, custom
+          assert not any(j['kind'] == 'OWNER_BLOCKER' for j in out['slack_jobs']), out
+          print('NOTION_ROUTE_OK')
+          PY
+      - name: Hash exact historical five-path surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            ground/SLACK_SERVICE_TAGS.json
+            ground/SLACK_SERVICE_TAGS.md
+            p/cursor-slack-notion-peer-connected-20260902-01.md
+            test_slack_service_tag_worker.py
+            test_slack_service_tags.py
+          )
+          for p in "${paths[@]}"; do
+            test -f "$p"
+            printf '%s  %s\n' "$(git hash-object "$p")" "$p"
+          done
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain)"
