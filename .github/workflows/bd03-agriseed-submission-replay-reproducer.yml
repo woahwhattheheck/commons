@@ -1,0 +1,72 @@
+name: bd03-agriseed-submission-replay-reproducer
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/bd03-agriseed-submission-replay-reproducer.yml'
+      - 'agriseed_rush_work_allocator.py'
+      - 'revenue/agriseed_rush_work_allocator/repro_submission_id_payload_replay.py'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce-current-main-defect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EXPECTED_PARENT: 'd23518492e0e51bce6aea2cb628d2446dd985e8f'
+      REPRO: 'revenue/agriseed_rush_work_allocator/repro_submission_id_payload_replay.py'
+      SOURCE: 'agriseed_rush_work_allocator.py'
+      SOURCE_BLOB: 'f63f50d1c66c4086e9a4f7121e8d3fffe404fa67'
+    steps:
+      - name: Checkout literal pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact predecessor and source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXPECTED_PARENT"
+          test "$(git rev-list --count "$EXPECTED_PARENT"..HEAD)" = 1
+          test "$(git hash-object "$SOURCE")" = "$SOURCE_BLOB"
+          mapfile -t changed < <(git diff --name-only "$EXPECTED_PARENT" HEAD)
+          printf '%s\n' "${changed[@]}"
+          test "${#changed[@]}" -eq 2
+          test "${changed[0]}" = '.github/workflows/bd03-agriseed-submission-replay-reproducer.yml'
+          test "${changed[1]}" = 'revenue/agriseed_rush_work_allocator/repro_submission_id_payload_replay.py'
+          git diff --check "$EXPECTED_PARENT"..HEAD
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile source and reproducer
+        run: python -B -m py_compile "$SOURCE" "$REPRO"
+
+      - name: Reproduce changed-payload same-submission double accession
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$REPRO" | tee "$RUNNER_TEMP/bd03-agriseed-reproducer.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bd03-agriseed-reproducer-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bd03-agriseed-reproducer.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain)"
