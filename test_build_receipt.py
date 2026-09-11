@@ -22,7 +22,25 @@ def sample():
             {"name": "unit", "status": "pass", "command": "python -m unittest"},
             {"name": "lint", "status": "not_run"},
         ],
-        "hosted": {"state": "queued", "run_ids": [42, 7]},
+        "hosted": {
+            "state": "queued",
+            "runs": [
+                {
+                    "run_id": 42,
+                    "event": "pull_request",
+                    "run_head_sha": HEAD,
+                    "executed_checkout_sha": None,
+                    "checkout_mode": "pr_merge_ref",
+                },
+                {
+                    "run_id": 7,
+                    "event": "push",
+                    "run_head_sha": HEAD,
+                    "executed_checkout_sha": HEAD,
+                    "checkout_mode": "push_dispatch_sha",
+                },
+            ],
+        },
         "provider_nonclaims": [
             "no provider mutation",
             "no customer/payment mutation",
@@ -42,7 +60,10 @@ class BuildReceiptTests(unittest.TestCase):
             [row["name"] for row in got["tests"]], ["lint", "unit"]
         )
         self.assertEqual(got["tests"][1]["status"], "PASS")
-        self.assertEqual(got["hosted"], {"state": "QUEUED", "run_ids": [7, 42]})
+        self.assertEqual(got["hosted"]["state"], "QUEUED")
+        self.assertEqual([row["run_id"] for row in got["hosted"]["runs"]], [7, 42])
+        self.assertEqual(got["hosted"]["runs"][1]["executed_checkout_sha"], None)
+        self.assertEqual(got["hosted"]["runs"][1]["checkout_mode"], "PR_MERGE_REF")
         self.assertEqual(got["release_state"], "RELEASED")
 
     def test_canonical_json_is_stable(self):
@@ -50,7 +71,7 @@ class BuildReceiptTests(unittest.TestCase):
         payload = sample()
         payload["paths"].reverse()
         payload["tests"].reverse()
-        payload["hosted"]["run_ids"].reverse()
+        payload["hosted"]["runs"].reverse()
         payload["provider_nonclaims"].reverse()
         self.assertEqual(first, canonical_json(payload))
         self.assertEqual(
@@ -87,6 +108,26 @@ class BuildReceiptTests(unittest.TestCase):
             with self.subTest(path=bad), self.assertRaises(ReceiptError):
                 normalize_receipt(payload)
 
+    def test_preserves_run_head_vs_executed_checkout_identity(self):
+        payload = sample()
+        merge_sha = "c" * 40
+        payload["hosted"] = {
+            "state": "success",
+            "runs": [
+                {
+                    "run_id": 99,
+                    "event": "pull_request",
+                    "run_head_sha": HEAD,
+                    "executed_checkout_sha": merge_sha,
+                    "checkout_mode": "pr_merge_ref",
+                }
+            ],
+        }
+        got = normalize_receipt(payload)["hosted"]["runs"][0]
+        self.assertEqual(got["run_head_sha"], HEAD)
+        self.assertEqual(got["executed_checkout_sha"], merge_sha)
+        self.assertNotEqual(got["run_head_sha"], got["executed_checkout_sha"])
+
     def test_rejects_duplicate_paths_tests_nonclaims_and_run_ids(self):
         payload = sample()
         payload["paths"] = ["a", "a"]
@@ -101,8 +142,8 @@ class BuildReceiptTests(unittest.TestCase):
         with self.assertRaisesRegex(ReceiptError, "contains duplicates"):
             normalize_receipt(payload)
         payload = sample()
-        payload["hosted"]["run_ids"] = [1, 1]
-        with self.assertRaisesRegex(ReceiptError, "contains duplicates"):
+        payload["hosted"]["runs"][1]["run_id"] = payload["hosted"]["runs"][0]["run_id"]
+        with self.assertRaisesRegex(ReceiptError, "duplicate hosted run_id"):
             normalize_receipt(payload)
 
     def test_rejects_invalid_states_and_not_run_with_ids(self):
@@ -115,8 +156,12 @@ class BuildReceiptTests(unittest.TestCase):
         with self.assertRaisesRegex(ReceiptError, "status invalid"):
             normalize_receipt(payload)
         payload = sample()
-        payload["hosted"] = {"state": "not_run", "run_ids": [99]}
+        payload["hosted"] = {"state": "not_run", "runs": sample()["hosted"]["runs"][:1]}
         with self.assertRaisesRegex(ReceiptError, "cannot carry"):
+            normalize_receipt(payload)
+        payload = sample()
+        payload["hosted"] = {"state": "queued", "runs": []}
+        with self.assertRaisesRegex(ReceiptError, "requires at least one run"):
             normalize_receipt(payload)
 
     def test_cli_accepts_file_and_fails_closed(self):
