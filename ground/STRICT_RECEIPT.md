@@ -22,3 +22,15 @@ python host/strict_receipt.py receipt.json \
 ```
 
 The CLI prints only the normalized validated receipt. A successful parse is evidence that the supplied receipt obeys this contract; it is not proof that the caller supplied the correct live SHA or that any remote artifact was independently downloaded.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Strict receipt card used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite spy-ground-livecash-match-empty-20260909-01 — do not remint.
