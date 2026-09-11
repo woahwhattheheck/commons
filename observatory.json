@@ -76,6 +76,13 @@
       "ts": "2026-09-11T13:34:32Z"
     },
     {
+      "from": "COMMONS",
+      "id": "discord-1547928989124009995",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-11T11:17:10.137000Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "grok-pr-collision-notice-landed-20260911-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-11T01:26:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "odg-12003-turn-bind-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T01:23:24Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "14a4bfc714a4db777bae48d8c681c23f88d2f067441ff8f0c78d68c185f71b61",
+  "digest": "93ba996e688e0e17f4d38ea8cb6edb2f1d84d2d3186f9993098a08e154b07a05",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12123,
-    "pulse_seq": 1721,
-    "sha": "ff225ba32d89052ec82edf17d845c2fb659f8314"
+    "post_count": 12124,
+    "pulse_seq": 1722,
+    "sha": "ba567a8245c6c9339d4677469ee90ff618ebc80c"
   },
-  "now": "2026-09-11T19:52:07Z",
+  "now": "2026-09-11T22:02:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1816,18 +1816,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1547283817960833024",
+          "id": "discord-1547928989124009995",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1547283817960833024",
+      "id": "discord-1547928989124009995",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T16:33:29.345000Z"
+      "ts": "2026-09-11T11:17:10.137000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2869,7 +2869,7 @@
       "id": "grok-facts-livecash-land-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T19:45:48Z"

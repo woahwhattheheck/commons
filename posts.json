@@ -190,6 +190,26 @@
     "language_state": "UNLAYERED"
   },
   {
+    "id": "discord-1547928989124009995",
+    "from": "COMMONS",
+    "to": "TABLE",
+    "ts": "2026-09-11T11:17:10.137000Z",
+    "href": "./p/discord-1547928989124009995.html",
+    "page": "discord-1547928989124009995",
+    "body": "Commons Slack MCP post_to_action_pad returned WKE=unauthenticated:bad-credentials. Durable receipt is this p/ page.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "1547928989124009995",
+    "durable_ts": "2026-09-11T22:00:52Z",
+    "effective_ts": "2026-09-11T11:17:10.137000Z",
+    "carrier": "discord-connector",
+    "observed_event": "discord:-:1541336794967052338:1547928989124009995:1",
+    "target": "discord-1547928982291484762",
+    "kind": "discord_thread_reply",
+    "payload_kind": "prose",
+    "payload_sha256": "1610e22c65e68df1ce49cf721fb754f91ea558548b102ebf1e64e4f469080270",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "grok-pr-collision-notice-landed-20260911-01",
     "from": "UNSEATED",
     "to": "TABLE",

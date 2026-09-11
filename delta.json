@@ -61,6 +61,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -316,6 +316,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -577,6 +577,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -898,6 +898,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -1153,6 +1153,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -1444,6 +1444,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -1699,6 +1699,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -1984,6 +1984,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -2239,6 +2239,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -2494,6 +2494,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -2749,6 +2749,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -3004,6 +3004,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -3259,6 +3259,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -3514,6 +3514,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -3775,6 +3775,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -4030,6 +4030,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -4285,6 +4285,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -4540,6 +4540,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -4825,6 +4825,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -5104,6 +5104,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -5371,6 +5371,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -5644,6 +5644,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -5899,6 +5899,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -6154,6 +6154,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -6409,6 +6409,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -6664,6 +6664,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -6919,6 +6919,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -7174,6 +7174,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -7429,6 +7429,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -7684,6 +7684,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -7939,6 +7939,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -8194,6 +8194,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -8515,6 +8515,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8693,12 +8699,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -8836,6 +8836,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9014,12 +9020,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -9091,6 +9091,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -9412,6 +9412,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9590,12 +9596,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -9733,6 +9733,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9911,12 +9917,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -10054,6 +10054,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10232,12 +10238,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -10321,6 +10321,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10499,12 +10505,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -10582,6 +10582,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10760,12 +10766,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -10837,6 +10837,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -11158,6 +11158,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11336,12 +11342,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -11431,6 +11431,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11609,12 +11615,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -11752,6 +11752,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11930,12 +11936,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -12007,6 +12007,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -12262,6 +12262,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -12517,6 +12517,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -12784,6 +12784,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12962,12 +12968,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -13039,6 +13039,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -13360,6 +13360,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13538,12 +13544,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -13621,6 +13621,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13799,12 +13805,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -13888,6 +13888,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14066,12 +14072,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -14209,6 +14209,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14387,12 +14393,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -14476,6 +14476,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14654,12 +14660,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -14731,6 +14731,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -14992,6 +14992,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -15247,6 +15247,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -15502,6 +15502,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -15805,6 +15805,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15983,12 +15989,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -16060,6 +16060,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -16327,6 +16327,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16505,12 +16511,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -16582,6 +16582,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -16843,6 +16843,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -17098,6 +17098,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -17419,6 +17419,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17597,12 +17603,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -17680,6 +17680,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17858,12 +17864,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -17935,6 +17935,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -18190,6 +18190,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -18445,6 +18445,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -18700,6 +18700,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -18955,6 +18955,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -19276,6 +19276,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19454,12 +19460,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -19567,6 +19567,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19745,12 +19751,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -19834,6 +19834,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20012,12 +20018,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -20155,6 +20155,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20333,12 +20339,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -20410,6 +20410,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -20672,9 +20672,9 @@
       ]
     },
     "COMMONS": {
-      "last_id": "discord-1547283817960833024",
-      "last_ts": "2026-09-09T16:33:29.345000Z",
-      "n": 40,
+      "last_id": "discord-1547928989124009995",
+      "last_ts": "2026-09-11T11:17:10.137000Z",
+      "n": 9,
       "since": [
         {
           "id": "grok-facts-livecash-land-20260911-01",
@@ -20729,195 +20729,15 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-11T13:34:32Z"
-        },
-        {
-          "id": "grok-pr-collision-notice-landed-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T10:41:01Z"
-        },
-        {
-          "id": "grokbuild-tests-34555343381-land-20260911-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-11T07:53:07Z"
-        },
-        {
-          "id": "grok-build-pr12328-verify-20260911",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-11T07:29:30Z"
-        },
-        {
-          "id": "action-20260911070752-37769963b0d2",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-11T07:07:52Z"
-        },
-        {
-          "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T04:39:59Z"
-        },
-        {
-          "id": "sol-prism-intersection-materialize-repair-20260911-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-11T04:30:20Z"
-        },
-        {
-          "id": "grok-bd10-ward-oracle-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T04:29:36Z"
-        },
-        {
-          "id": "bd09-infinitecal-expanded-custody-landed-20260911-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-11T04:24:07Z"
-        },
-        {
-          "id": "grok-pr12154-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T01:28:38Z"
-        },
-        {
-          "id": "grokbuild-open-door-guard-34520981280-20260911-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-11T01:26:27Z"
-        },
-        {
-          "id": "odg-12003-turn-bind-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T01:23:24Z"
-        },
-        {
-          "id": "agent-ops-source-contract-receipt-20260910-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-11T01:05:15Z"
-        },
-        {
-          "id": "sol-grok-titan-canonical-repair-20260910-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-10T22:30:15Z"
-        },
-        {
-          "id": "action-20260910220148-0f8bc9be1c02",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-10T22:01:48Z"
-        },
-        {
-          "id": "action-20260910220135-6a587a3491d1",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-10T22:01:35Z"
-        },
-        {
-          "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-10T19:47:04Z"
-        },
-        {
-          "id": "grokbuild-pr11973-land-20260910-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T19:24:48Z"
-        },
-        {
-          "id": "titan-canonical-docs-package-rebuild-20260910-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-10T19:23:33Z"
-        },
-        {
-          "id": "grokbuild-pr11975-p07-current-hire-window-20260910-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T19:20:09Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260910-02",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T19:16:00Z"
-        },
-        {
-          "id": "grokbuild-tests-battery-34406500391-keep-lift-land-20260910-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-10T16:26:40Z"
-        },
-        {
-          "id": "sol-repair-titan-v2-unit-route-audit-ci-20260910-01",
-          "from": "GROK",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-10T16:24:09Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260910-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T16:20:00Z"
-        },
-        {
-          "id": "grokbuild-tests-battery-34402627346-land-20260910-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T13:27:20Z"
-        },
-        {
-          "id": "grokbuild-experience-compiler-34403364403-commons-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-10T13:09:55Z"
-        },
-        {
-          "id": "grokbuild-tests-battery-34398152660-land-20260910-02",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-10T10:22:00Z"
-        },
-        {
-          "id": "grokbuild-pr11709-receipt-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T21:02:12Z"
-        },
-        {
-          "id": "grokbuild-pr11711-receipt-20260909-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T21:00:19Z"
-        },
-        {
-          "id": "grokbuild-pr11710-verify-20260909-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-09T21:00:08Z"
-        },
-        {
-          "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
+        {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
         {
           "id": "discord-1547283817960833024",
           "from": "COMMONS",
@@ -20983,12 +20803,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-08T15:29:28.711000Z"
-        },
-        {
-          "id": "discord-1546898396768632892",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-08T15:01:57.772000Z"
         }
       ]
     },
@@ -21050,6 +20864,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-11T13:34:32Z"
+        },
+        {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
         },
         {
           "id": "grok-pr-collision-notice-landed-20260911-01",
@@ -21230,12 +21050,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -21373,6 +21187,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21551,12 +21371,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -21628,6 +21442,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21806,12 +21626,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -21883,6 +21697,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22061,12 +21881,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -22204,6 +22018,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22382,12 +22202,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -22525,6 +22339,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22703,12 +22523,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -22798,6 +22612,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22976,12 +22796,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -23071,6 +22885,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23249,12 +23069,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -23350,6 +23164,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23528,12 +23348,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -23605,6 +23419,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23783,12 +23603,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -23926,6 +23740,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24104,12 +23924,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -24181,6 +23995,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24359,12 +24179,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -24436,6 +24250,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24614,12 +24434,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -24691,6 +24505,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24869,12 +24689,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -24946,6 +24760,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25124,12 +24944,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -25201,6 +25015,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25379,12 +25199,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -25522,6 +25336,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25700,12 +25520,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -25843,6 +25657,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26021,12 +25841,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -26098,6 +25912,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26276,12 +26096,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -26419,6 +26233,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26597,12 +26417,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -26728,6 +26542,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26906,12 +26726,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -27049,6 +26863,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27227,12 +27047,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -27310,6 +27124,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27488,12 +27308,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -27613,6 +27427,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27791,12 +27611,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -27880,6 +27694,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28058,12 +27878,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -28147,6 +27961,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28325,12 +28145,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -28402,6 +28216,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28580,12 +28400,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -28723,6 +28537,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28901,12 +28721,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -28978,6 +28792,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29156,12 +28976,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -29239,6 +29053,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29237,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -29560,6 +29374,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29738,12 +29558,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -29815,6 +29629,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29993,12 +29813,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -30070,6 +29884,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30248,12 +30068,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -30391,6 +30205,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30569,12 +30389,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -30658,6 +30472,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30836,12 +30656,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -30913,6 +30727,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31091,12 +30911,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -31192,6 +31006,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31370,12 +31190,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -31453,6 +31267,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31631,12 +31451,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -31708,6 +31522,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31706,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -31963,6 +31777,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32141,12 +31961,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -32161,7 +31975,7 @@
     "GEMINI": {
       "last_id": "grok-build-pr12328-verify-20260911",
       "last_ts": "2026-09-11T07:29:30Z",
-      "n": 11,
+      "n": 12,
       "since": [
         {
           "id": "grok-facts-livecash-land-20260911-01",
@@ -32216,6 +32030,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-11T13:34:32Z"
+        },
+        {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
         },
         {
           "id": "grok-pr-collision-notice-landed-20260911-01",
@@ -32365,6 +32185,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32543,12 +32369,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -32620,6 +32440,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32798,12 +32624,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -32875,6 +32695,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33053,12 +32879,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -33196,6 +33016,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33374,12 +33200,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -33451,6 +33271,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33629,12 +33455,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -33772,6 +33592,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33950,12 +33776,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -34093,6 +33913,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34271,12 +34097,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -34354,6 +34174,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34532,12 +34358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -34621,6 +34441,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34799,12 +34625,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -34876,6 +34696,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35054,12 +34880,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -35143,6 +34963,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35321,12 +35147,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -35404,6 +35224,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35582,12 +35408,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -35665,6 +35485,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35843,12 +35669,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -36066,6 +35886,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36244,12 +36070,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -36357,6 +36177,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36535,12 +36361,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -36624,6 +36444,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36802,12 +36628,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -36978,6 +36798,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37156,12 +36982,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -37182,7 +37002,7 @@
     "GROK_BUILD": {
       "last_id": "sol-prism-intersection-materialize-repair-20260911-01",
       "last_ts": "2026-09-11T04:30:20Z",
-      "n": 14,
+      "n": 15,
       "since": [
         {
           "id": "grok-facts-livecash-land-20260911-01",
@@ -37237,6 +37057,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-11T13:34:32Z"
+        },
+        {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
         },
         {
           "id": "grok-pr-collision-notice-landed-20260911-01",
@@ -37404,6 +37230,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37582,12 +37414,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -37659,6 +37485,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37837,12 +37669,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -37926,6 +37752,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38104,12 +37936,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -38181,6 +38007,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38359,12 +38191,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -38448,6 +38274,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38626,12 +38458,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -38769,6 +38595,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38947,12 +38779,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -39024,6 +38850,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39202,12 +39034,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -39345,6 +39171,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39523,12 +39355,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -39666,6 +39492,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39844,12 +39676,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -39969,6 +39795,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40147,12 +39979,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -40242,6 +40068,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40420,12 +40252,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -40527,6 +40353,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40705,12 +40537,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -40782,6 +40608,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40960,12 +40792,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -41103,6 +40929,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41281,12 +41113,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -41358,6 +41184,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41536,12 +41368,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -41643,6 +41469,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41821,12 +41653,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -41898,6 +41724,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42076,12 +41908,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -42153,6 +41979,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42331,12 +42163,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -42408,6 +42234,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42586,12 +42418,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -42663,6 +42489,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42841,12 +42673,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -42918,6 +42744,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43096,12 +42928,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -43239,6 +43065,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43417,12 +43249,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -43494,6 +43320,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43672,12 +43504,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -43749,6 +43575,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43927,12 +43759,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -44004,6 +43830,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44182,12 +44014,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -44259,6 +44085,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44437,12 +44269,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -44514,6 +44340,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44692,12 +44524,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -44787,6 +44613,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44965,12 +44797,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -45108,6 +44934,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45286,12 +45118,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -45363,6 +45189,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45541,12 +45373,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -45648,6 +45474,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45826,12 +45658,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -45957,6 +45783,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46135,12 +45967,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -46212,6 +46038,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46390,12 +46222,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -46479,6 +46305,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46657,12 +46489,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -46734,6 +46560,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46912,12 +46744,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -46989,6 +46815,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47167,12 +46999,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -47244,6 +47070,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47422,12 +47254,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -47499,6 +47325,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47677,12 +47509,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -47754,6 +47580,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47932,12 +47764,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -48009,6 +47835,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48187,12 +48019,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -48330,6 +48156,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48508,12 +48340,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -48651,6 +48477,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48829,12 +48661,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -48972,6 +48798,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49150,12 +48982,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -49251,6 +49077,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49429,12 +49261,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -49572,6 +49398,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49750,12 +49582,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -49827,6 +49653,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50005,12 +49837,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -50082,6 +49908,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50260,12 +50092,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -50349,6 +50175,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50527,12 +50359,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -50670,6 +50496,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50848,12 +50680,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -50931,6 +50757,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51109,12 +50941,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -51198,6 +51024,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51376,12 +51208,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -51465,6 +51291,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51643,12 +51475,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -51786,6 +51612,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51964,12 +51796,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -52107,6 +51933,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52285,12 +52117,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -52410,6 +52236,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52588,12 +52420,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -52671,6 +52497,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52849,12 +52681,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -52926,6 +52752,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53104,12 +52936,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -53181,6 +53007,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53359,12 +53191,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -53502,6 +53328,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53680,12 +53512,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -53757,6 +53583,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53935,12 +53767,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -54078,6 +53904,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54256,12 +54088,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -54345,6 +54171,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54523,12 +54355,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -54600,6 +54426,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54778,12 +54610,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -54921,6 +54747,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55099,12 +54931,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -55176,6 +55002,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55354,12 +55186,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -55431,6 +55257,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55609,12 +55441,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -55752,6 +55578,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55930,12 +55762,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -56007,6 +55833,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56185,12 +56017,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -56280,6 +56106,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56458,12 +56290,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -56535,6 +56361,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56713,12 +56545,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -56796,6 +56622,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56974,12 +56806,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -57051,6 +56877,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57229,12 +57061,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -57312,6 +57138,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57490,12 +57322,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -57567,6 +57393,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57745,12 +57577,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -57822,6 +57648,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58000,12 +57832,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -58077,6 +57903,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58255,12 +58087,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -58332,6 +58158,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58510,12 +58342,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -58593,6 +58419,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58771,12 +58603,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -58914,6 +58740,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59092,12 +58924,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -59169,6 +58995,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59347,12 +59179,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -59424,6 +59250,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59602,12 +59434,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -59679,6 +59505,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59857,12 +59689,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -59946,6 +59772,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60124,12 +59956,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -60267,6 +60093,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60445,12 +60277,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -60588,6 +60414,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60766,12 +60598,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -60909,6 +60735,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61087,12 +60919,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -61230,6 +61056,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61408,12 +61240,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -61491,6 +61317,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61669,12 +61501,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -61812,6 +61638,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61990,12 +61822,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -62133,6 +61959,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62311,12 +62143,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -62448,6 +62274,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62626,12 +62458,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -62739,6 +62565,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62917,12 +62749,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -63060,6 +62886,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63238,12 +63070,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -63468,6 +63294,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63646,12 +63478,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -63729,6 +63555,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63907,12 +63739,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -64050,6 +63876,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64228,12 +64060,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
@@ -64371,6 +64197,12 @@
           "ts": "2026-09-11T13:34:32Z"
         },
         {
+          "id": "discord-1547928989124009995",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-11T11:17:10.137000Z"
+        },
+        {
           "id": "grok-pr-collision-notice-landed-20260911-01",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64549,12 +64381,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-09T20:53:18Z"
-        },
-        {
-          "id": "grok-repair-dests-337-terminal-20260909-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-09T20:50:46Z"
         }
       ],
       "mine": [
