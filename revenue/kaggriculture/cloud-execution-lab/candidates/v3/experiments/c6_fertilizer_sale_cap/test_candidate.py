@@ -127,16 +127,29 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
             580: {"FERTILIZER": 2},
         })
 
-    def test_full_cap_removes_only_e184_row_and_preserves_other_rows(self):
+    def test_full_cap_preserves_owned_slot_and_every_later_parent_index(self):
         obs = observation(shed=5)
         action = {
             "farmer": ["PASS"],
             "hands": [],
-            "market": [["SELL", "FERTILIZER", 5], ["BUY_SEED", "TOMATO", 2]],
+            "market": [
+                ["SELL", "FERTILIZER", 5],
+                ["BUY_SEED", "TOMATO", 2],
+                ["HIRE"],
+                ["SELL", "MILK", 1],
+            ],
         }
+        before_action = copy.deepcopy(action)
         state = debt_state({578: {"FERTILIZER": 5}, 590: {"WOOL": 3}})
         result = m.cap_owned_fertilizer_advance(obs, action, state, {578: 5}, reserve=5)
-        self.assertEqual(result["market"], [["BUY_SEED", "TOMATO", 2]])
+        self.assertEqual(action, before_action)
+        self.assertEqual(result["market"], [
+            [],
+            ["BUY_SEED", "TOMATO", 2],
+            ["HIRE"],
+            ["SELL", "MILK", 1],
+        ])
+        self.assertEqual(result["market"][1:], before_action["market"][1:])
         self.assertEqual(state.sale_window_debts, {590: {"WOOL": 3}})
         self.assertEqual(m.REPORT["fert_advance_units_withheld"], 5)
 
@@ -145,7 +158,7 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
         action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "FERTILIZER", 3]]}
         state = debt_state({578: {"FERTILIZER": 7, "MILK": 2}})
         result = m.cap_owned_fertilizer_advance(obs, action, state, {578: 3}, reserve=3)
-        self.assertEqual(result["market"], [])
+        self.assertEqual(result["market"], [[]])
         self.assertEqual(state.sale_window_debts, {578: {"FERTILIZER": 4, "MILK": 2}})
 
     def test_ownership_mismatch_is_exact_identity_and_keeps_debt(self):
