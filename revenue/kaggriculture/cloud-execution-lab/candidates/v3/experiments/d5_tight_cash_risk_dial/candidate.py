@@ -9,10 +9,12 @@ suppression is permitted.
 The proxy is deliberately modest and fully public: at the exact first late-game
 L3 decision (step 648), compare the two farms' currently observed ``money``
 values and latch whether their absolute gap is within an explicit development
-threshold.  The proxy is *not* final score, net worth, rival private
-shed/inventory, rival orders, or an opponent identity classifier.  A malformed,
-skipped, or ambiguous latch observation permanently keeps baseline E184 for
-that player until an episode rewind.
+threshold.  The official engine stores farm money as ``float(starting_money)``;
+D5 therefore accepts only exact finite integral int/float money values and
+normalizes them to integers without rounding.  The proxy is *not* final score,
+net worth, rival private shed/inventory, rival orders, or an opponent identity
+classifier.  A malformed, skipped, or ambiguous latch observation permanently
+keeps baseline E184 for that player until an episode rewind.
 
 ``DEFAULT_MAX_ABS_CASH_GAP`` is a screening parameter, not a promoted value.
 Economics must sweep/rebind it under exact package/interpreter custody before
@@ -22,6 +24,7 @@ any production/default decision.
 from __future__ import annotations
 
 from collections.abc import Mapping
+import math
 from pathlib import Path
 import sys
 from typing import Any
@@ -46,6 +49,21 @@ def _strict_int(value: Any, name: str) -> int:
     return value
 
 
+def _strict_integral_money(value: Any, name: str) -> int:
+    """Accept exact engine-money values without coercive rounding.
+
+    The pinned official engine initializes ``money`` as a float and only moves
+    it by integer-priced transactions, so valid observations are commonly
+    integral floats such as ``3000.0``.  Bool, strings, non-finite floats and
+    non-integral floats remain malformed and fail closed.
+    """
+    if type(value) is int:
+        return value
+    if type(value) is float and math.isfinite(value) and value.is_integer():
+        return int(value)
+    raise ValueError(f"{name} must be a finite integral number")
+
+
 def public_cash_gap(observation: Mapping[str, Any]) -> int:
     """Return |our public cash - rival public cash| for the two-player game."""
     if not isinstance(observation, Mapping):
@@ -61,7 +79,7 @@ def public_cash_gap(observation: Mapping[str, Any]) -> int:
     for index, farm in enumerate(farms):
         if not isinstance(farm, Mapping):
             raise ValueError(f"farms[{index}] must be a mapping")
-        money.append(_strict_int(farm.get("money"), f"farms[{index}].money"))
+        money.append(_strict_integral_money(farm.get("money"), f"farms[{index}].money"))
     return abs(money[player] - money[1 - player])
 
 
