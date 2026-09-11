@@ -1,141 +1,17 @@
 {
   "counts": {
-    "open_issues": 5,
-    "open_pull_requests": 5,
-    "runs_in_progress": 18,
-    "runs_queued": 496
+    "open_issues": 6,
+    "open_pull_requests": 6,
+    "runs_in_progress": "UNKNOWN",
+    "runs_queued": "UNKNOWN"
   },
-  "degraded": [],
-  "drafts": 214,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
-      "created_at": "2026-09-10T18:42:48Z",
-      "draft": false,
-      "number": 11959,
-      "title": "TITAN: reconcile canonical package with current source and name drift"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "owner/titan-v3-regression-recovery-20260910-01",
-      "created_at": "2026-09-10T18:53:43Z",
-      "draft": false,
-      "number": 11961,
-      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
-      "created_at": "2026-09-10T18:55:16Z",
-      "draft": true,
-      "number": 11963,
-      "title": "TITAN V3: admit all-shed intent-first SELL priority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
-      "created_at": "2026-09-10T18:59:26Z",
-      "draft": false,
-      "number": 11965,
-      "title": "titan-v3: run own-value objective on bound current archive"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
-      "created_at": "2026-09-10T19:00:36Z",
-      "draft": true,
-      "number": 11968,
-      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
-    }
+  "degraded": [
+    "pulls"
   ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-a2-review-holding-check-20260911-01",
-      "created_at": "2026-09-11T17:26:39Z",
-      "draft": true,
-      "number": 12589,
-      "title": "visibility A2: exact-head review holding check"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-b6-generated-path-moves-20260911-01",
-      "created_at": "2026-09-11T15:27:25Z",
-      "draft": true,
-      "number": 12587,
-      "title": "host: classify generated-path moves for visibility B6"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/vis-f1-owner-directive-index-20260911",
-      "created_at": "2026-09-11T14:38:43Z",
-      "draft": true,
-      "number": 12586,
-      "title": "coordination: strict owner-directive broadcast/ACK index"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/vis-c5-run-watch-20260911",
-      "created_at": "2026-09-11T14:18:09Z",
-      "draft": true,
-      "number": 12585,
-      "title": "coordination: add strict queued-run watch reducer"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/vis-b4-root-moves-20260911",
-      "created_at": "2026-09-11T14:15:02Z",
-      "draft": true,
-      "number": 12584,
-      "title": "visibility B4: conservative root-move events"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/vis-a3-lane-load-20260911",
-      "created_at": "2026-09-11T14:10:58Z",
-      "draft": true,
-      "number": 12583,
-      "title": "visibility A3: conservative lane-load signal"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-f3-f4-needs-queues-20260911",
-      "created_at": "2026-09-11T13:54:55Z",
-      "draft": true,
-      "number": 12582,
-      "title": "visibility F3/F4: strict needs-runner and needs-owner queues"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-d6-opponent-witness-20260911",
-      "created_at": "2026-09-11T13:50:07Z",
-      "draft": true,
-      "number": 12581,
-      "title": "visibility D6: digest-keyed opponent and causal-witness registry"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-d5-finding-census-20260911",
-      "created_at": "2026-09-11T13:47:57Z",
-      "draft": true,
-      "number": 12580,
-      "title": "visibility D5: explicit three-layer finding activation census"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/vis-d4-lane-registry-20260911",
-      "created_at": "2026-09-11T13:45:59Z",
-      "draft": true,
-      "number": 12579,
-      "title": "visibility D4: strict factor lane registry with rejection propagation"
-    }
-  ],
-  "pulls_listed": 277,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 27.6,
+  "pulls_listed": "UNKNOWN",
+  "pulls_listing": "UNKNOWN",
+  "queue_depth_per_runner": "UNKNOWN",
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T18:20:34Z",
-  "undatable_pulls": []
+  "unchanged_since": "2026-09-11T19:52:25Z"
 }
