@@ -30,23 +30,10 @@ AUTHORITATIVE_PANEL = HERE / "OFFICIAL-GATE-PANEL.json"
 
 CANONICAL_V31_CONFIG_KEYS = frozenset(
     {
-        "consumer",
-        "frozen",
-        "seed",
-        "funding",
-        "terminal_route",
-        "committed",
-        "budget_seconds",
-        "reserve_seconds",
-        "terminal_history",
-        "redundant_hire",
-        "fourth_quadrant",
-        "market_pressure",
-        "committed_seed_retry",
-        "operating_stock",
-        "idle_fertilizer",
-        "crop_release",
-        "early_capital",
+        "consumer", "frozen", "seed", "funding", "terminal_route", "committed",
+        "budget_seconds", "reserve_seconds", "terminal_history", "redundant_hire",
+        "fourth_quadrant", "market_pressure", "committed_seed_retry", "operating_stock",
+        "idle_fertilizer", "crop_release", "early_capital",
     }
 )
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -121,7 +108,6 @@ def _live_v31_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
 
 
 def _required_v31_config_keys(manifest: Mapping[str, Any]) -> set[str]:
-    """Every known canonical + V3 integration key that a live V3.1 config must record."""
     required = set(CANONICAL_V31_CONFIG_KEYS)
     keys = _mapping(manifest.get("keys"), "manifest.keys")
     params = _mapping(keys.get("params"), "manifest.keys.params")
@@ -236,17 +222,22 @@ def _validate_panel_and_results(
     receipt: Mapping[str, Any], panel: Mapping[str, Any]
 ) -> dict[str, float | int]:
     expected = _expected_cells(panel)
-    if panel.get("games_per_opponent") != len(expected):
-        raise ReceiptError("panel.games_per_opponent must equal the frozen seed x seat cell count")
+    games_per_opponent = panel.get("games_per_opponent")
+    if (
+        isinstance(games_per_opponent, bool)
+        or not isinstance(games_per_opponent, int)
+        or games_per_opponent != len(expected)
+    ):
+        raise ReceiptError("panel.games_per_opponent must be an exact integer equal to the frozen seed x seat cell count")
     gate = _mapping(receipt.get("panel"), "receipt.panel")
-    if gate.get("seeds") != panel.get("seeds"):
-        raise ReceiptError("receipt.panel.seeds must exactly match OFFICIAL-GATE-PANEL.json")
-    if gate.get("seats") != panel.get("seats"):
-        raise ReceiptError("receipt.panel.seats must exactly match OFFICIAL-GATE-PANEL.json")
+    if not _json_equal(gate.get("seeds"), panel.get("seeds")):
+        raise ReceiptError("receipt.panel.seeds must exactly match OFFICIAL-GATE-PANEL.json with JSON type strictness")
+    if not _json_equal(gate.get("seats"), panel.get("seats")):
+        raise ReceiptError("receipt.panel.seats must exactly match OFFICIAL-GATE-PANEL.json with JSON type strictness")
     if gate.get("seed_list_sha256") != panel.get("seed_list_sha256"):
         raise ReceiptError("receipt.panel.seed_list_sha256 mismatch")
-    if gate.get("games_per_opponent") != panel.get("games_per_opponent"):
-        raise ReceiptError("receipt.panel.games_per_opponent mismatch")
+    if not _json_equal(gate.get("games_per_opponent"), games_per_opponent):
+        raise ReceiptError("receipt.panel.games_per_opponent must exactly match with JSON type strictness")
 
     opponent = _mapping(receipt.get("opponent"), "opponent")
     if not isinstance(opponent.get("name"), str) or not opponent["name"].strip():
@@ -298,9 +289,7 @@ def _validate_panel_and_results(
 
 
 def _validate_receipt_against_inputs(
-    receipt: Mapping[str, Any],
-    manifest: Mapping[str, Any],
-    panel: Mapping[str, Any],
+    receipt: Mapping[str, Any], manifest: Mapping[str, Any], panel: Mapping[str, Any]
 ) -> dict[str, Any]:
     """Pure consistency validator; it never grants official eligibility."""
     if receipt.get("schema") != RECEIPT_SCHEMA:
@@ -313,30 +302,18 @@ def _validate_receipt_against_inputs(
         reason = receipt.get("practice_reason")
         if not isinstance(reason, str) or not reason.strip():
             raise ReceiptError("practice receipts must state a non-empty practice_reason")
-        return {
-            "valid": True,
-            "mode": "practice",
-            "official_gate_eligible": False,
-            "reason": reason.strip(),
-        }
+        return {"valid": True, "mode": "practice", "official_gate_eligible": False, "reason": reason.strip()}
     if mode != "official":
         raise ReceiptError("mode must be exactly 'official' or 'practice'")
 
     _validate_provenance(receipt, manifest)
     _validate_config(receipt, manifest)
     result = _validate_panel_and_results(receipt, panel)
-    return {
-        "valid": True,
-        "mode": "official",
-        "input_contract_valid": True,
-        **result,
-    }
+    return {"valid": True, "mode": "official", "input_contract_valid": True, **result}
 
 
 def validate_receipt(
-    receipt: Mapping[str, Any],
-    manifest: Mapping[str, Any],
-    panel: Mapping[str, Any],
+    receipt: Mapping[str, Any], manifest: Mapping[str, Any], panel: Mapping[str, Any]
 ) -> dict[str, Any]:
     """Validate caller-supplied mappings without granting official provenance."""
     if receipt.get("mode") == "official":
@@ -394,35 +371,19 @@ def _same_path(left: Path, right: Path) -> bool:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("receipt", type=Path)
-    parser.add_argument(
-        "--manifest",
-        type=Path,
-        default=AUTHORITATIVE_MANIFEST,
-        help="custom manifest for practice-mode validation only",
-    )
-    parser.add_argument(
-        "--panel",
-        type=Path,
-        default=AUTHORITATIVE_PANEL,
-        help="custom panel for practice-mode validation only",
-    )
+    parser.add_argument("--manifest", type=Path, default=AUTHORITATIVE_MANIFEST, help="custom manifest for practice-mode validation only")
+    parser.add_argument("--panel", type=Path, default=AUTHORITATIVE_PANEL, help="custom panel for practice-mode validation only")
     args = parser.parse_args(argv)
     try:
         receipt = _read_json(args.receipt, "receipt")
         if receipt.get("mode") == "official":
-            if not _same_path(args.manifest, AUTHORITATIVE_MANIFEST) or not _same_path(
-                args.panel, AUTHORITATIVE_PANEL
-            ):
+            if not _same_path(args.manifest, AUTHORITATIVE_MANIFEST) or not _same_path(args.panel, AUTHORITATIVE_PANEL):
                 raise ReceiptError(
                     "official mode rejects --manifest/--panel overrides; authoritative sibling files are mandatory"
                 )
             result = validate_authoritative_receipt(receipt)
         else:
-            result = validate_receipt(
-                receipt,
-                _read_json(args.manifest, "manifest"),
-                _read_json(args.panel, "panel"),
-            )
+            result = validate_receipt(receipt, _read_json(args.manifest, "manifest"), _read_json(args.panel, "panel"))
     except ReceiptError as exc:
         print(f"FIDELITY ERROR: {exc}", file=sys.stderr)
         return 2
