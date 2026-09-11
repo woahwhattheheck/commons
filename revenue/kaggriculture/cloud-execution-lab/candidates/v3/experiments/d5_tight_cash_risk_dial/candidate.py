@@ -6,12 +6,13 @@ package inputs, defaults, routes, quantities, or accounting.  The only decision
 under test is whether #12377's already-existing late E184 reservation
 suppression is permitted.
 
-The proxy is deliberately modest and fully public: at the first late-game L3
-decision, compare the two farms' currently observed ``money`` values and latch
-whether their absolute gap is within an explicit development threshold.  The
-proxy is *not* final score, net worth, rival private shed/inventory, rival
-orders, or an opponent identity classifier.  A malformed or ambiguous public
-observation keeps baseline E184 behavior.
+The proxy is deliberately modest and fully public: at the exact first late-game
+L3 decision (step 648), compare the two farms' currently observed ``money``
+values and latch whether their absolute gap is within an explicit development
+threshold.  The proxy is *not* final score, net worth, rival private
+shed/inventory, rival orders, or an opponent identity classifier.  A malformed,
+skipped, or ambiguous latch observation permanently keeps baseline E184 for
+that player until an episode rewind.
 
 ``DEFAULT_MAX_ABS_CASH_GAP`` is a screening parameter, not a promoted value.
 Economics must sweep/rebind it under exact package/interpreter custody before
@@ -65,11 +66,15 @@ def public_cash_gap(observation: Mapping[str, Any]) -> int:
 
 
 class TightCashGate:
-    """Latch one public cash-gap classification at the first late decision.
+    """Latch one public cash-gap classification at literal ``latch_step``.
 
-    Latching prevents the candidate's own later market behavior from moving the
-    classifier in and out of the treatment arm.  A rewind/same-step restart is
-    treated as a new episode, matching R04's own ``step <= last_step`` reset.
+    Exact-step latching prevents a malformed/skipped latch callback from
+    classifying later after our own market behavior may have moved cash.  Once
+    the latch step is missed or malformed, that player remains guarded for the
+    rest of the episode.  Player state is isolated: malformed input for one seat
+    never clears another seat's established latch/evidence.  A rewind/same-step
+    restart is treated as a new episode for that player, matching R04's own
+    ``step <= last_step`` reset boundary.
     """
 
     def __init__(
@@ -84,27 +89,43 @@ class TightCashGate:
         self.players: dict[int, dict[str, Any]] = {}
         self.last_evidence: dict[int, dict[str, Any]] = {}
 
-    def _clear_all(self) -> None:
-        self.players.clear()
-        self.last_evidence.clear()
+    def _clear_player(self, player: int) -> None:
+        self.players.pop(player, None)
+        self.last_evidence.pop(player, None)
+
+    def _guard_player(self, player: int, state: dict[str, Any], step: int, reason: str) -> bool:
+        state["latched"] = False
+        self.last_evidence[player] = {
+            "step": step,
+            "tight": False,
+            "reason": reason,
+        }
+        return False
 
     def allow(self, observation: Mapping[str, Any]) -> bool:
         """Return whether the existing L3 suppression may run on this call."""
+        if not isinstance(observation, Mapping):
+            return False
+
+        # Resolve player first so malformed state can only invalidate that seat.
         try:
-            if not isinstance(observation, Mapping):
-                raise ValueError("observation must be a mapping")
-            step = _strict_int(observation.get("step"), "step")
             player = _strict_int(observation.get("player"), "player")
-            if step < 0 or player not in (0, 1):
-                raise ValueError("invalid step/player")
+            if player not in (0, 1):
+                raise ValueError("player must be 0 or 1")
         except (TypeError, ValueError):
-            self._clear_all()
+            return False
+
+        try:
+            step = _strict_int(observation.get("step"), "step")
+            if step < 0:
+                raise ValueError("step must be non-negative")
+        except (TypeError, ValueError):
+            self._clear_player(player)
             return False
 
         state = self.players.get(player)
         if state is not None and step <= state["last_step"]:
-            self.players.pop(player, None)
-            self.last_evidence.pop(player, None)
+            self._clear_player(player)
             state = None
         if state is None:
             state = {"last_step": step, "latched": None}
@@ -112,18 +133,18 @@ class TightCashGate:
         else:
             state["last_step"] = step
 
-        if step < self.latch_step:
-            return False
         if state["latched"] is not None:
             return bool(state["latched"])
+        if step < self.latch_step:
+            return False
+        if step > self.latch_step:
+            return self._guard_player(player, state, step, "missed_latch_step")
 
+        # Only literal latch_step may inspect the public cash proxy.
         try:
             gap = public_cash_gap(observation)
         except (TypeError, ValueError):
-            # Never carry a partially established late-game classification.
-            self.players.pop(player, None)
-            self.last_evidence.pop(player, None)
-            return False
+            return self._guard_player(player, state, step, "malformed_latch_observation")
 
         tight = gap <= self.max_abs_cash_gap
         state["latched"] = tight
