@@ -105,7 +105,10 @@ def assert_fingerprint_custody(
     *,
     candidate_sha: str,
     current_self_sha: str,
+    candidate_entry: str,
+    current_self_entry: str = "main.py",
     arlene_sha: str = ARLENE_SHA256,
+    arlene_entry: str = "arlene.py",
 ) -> None:
     candidate = strict_fingerprint(report.get("candidate"), f"{label}.candidate")
     opponents = report.get("opponents")
@@ -125,6 +128,20 @@ def assert_fingerprint_custody(
     }
     if got != expected:
         raise AssertionError(f"{label}: fingerprint bytes drift got={got!r} expected={expected!r}")
+    expected_entries = {
+        "candidate": candidate_entry,
+        "current_self": current_self_entry,
+        "arlene": arlene_entry,
+    }
+    got_entries = {
+        "candidate": candidate["entry"],
+        "current_self": current_self["entry"],
+        "arlene": arlene["entry"],
+    }
+    if got_entries != expected_entries:
+        raise AssertionError(
+            f"{label}: fingerprint entries drift got={got_entries!r} expected={expected_entries!r}"
+        )
 
 
 def read_tree(root: Path) -> dict[str, bytes]:
@@ -488,12 +505,14 @@ def main() -> int:
             "control",
             candidate_sha=control_main_sha,
             current_self_sha=control_main_sha,
+            candidate_entry="main.py",
         )
         assert_fingerprint_custody(
             candidate_report,
             "candidate",
             candidate_sha=candidate_entry_sha,
             current_self_sha=control_main_sha,
+            candidate_entry="b11_candidate.py",
         )
         if control_report.get("opponents") != candidate_report.get("opponents"):
             raise AssertionError("fixed opponent fingerprints drifted across arms")
