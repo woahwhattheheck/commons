@@ -68,7 +68,8 @@ jobs:
             'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/candidate.py',
             'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py',
           }
-          assert actual == expected, (sorted(actual), sorted(expected))
+          if actual != expected:
+              raise SystemExit(f'B7 current-root scope drift: actual={sorted(actual)!r} expected={sorted(expected)!r}')
           print('B7_CURRENTROOT_SCOPE_OK', len(actual))
           PY
           git diff --check "$PARENT_SHA...HEAD"
@@ -102,11 +103,11 @@ jobs:
           PY
           test -z "$(git status --porcelain)"
 
-      - name: Prove strict receipt normalizer rejects type and digest poison
+      - name: Prove strict receipt normalizer rejects type and digest poison under optimization
         shell: bash
         run: |
           set -euo pipefail
-          python -B - <<'PY'
+          python -O -B - <<'PY'
           import copy
           import importlib.util
           from pathlib import Path
@@ -114,7 +115,8 @@ jobs:
           path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py')
           spec = importlib.util.spec_from_file_location('b7_gate', path)
           gate = importlib.util.module_from_spec(spec)
-          assert spec.loader is not None
+          if spec.loader is None:
+              raise SystemExit('B7 gate loader missing')
           spec.loader.exec_module(gate)
           label = 'poison'
           valid = [
@@ -129,7 +131,8 @@ jobs:
               }
               for seed in gate.SEEDS for seat in (0, 1)
           ]
-          assert len(gate.exact_cells({'games': copy.deepcopy(valid)}, label)) == 16
+          if len(gate.exact_cells({'games': copy.deepcopy(valid)}, label)) != 16:
+              raise SystemExit('B7 valid predecessor did not normalize to 16 exact cells')
 
           def rejected(name, mutate):
               games = copy.deepcopy(valid)
@@ -161,17 +164,28 @@ jobs:
           OUT="$RUNNER_TEMP/b7-currentroot"
           python -B "$ROOT/experiments/b7_shed_room_guard/run_gate.py" --repo-root "$GITHUB_WORKSPACE" --output-dir "$OUT" |& tee "$RUNNER_TEMP/b7.log"
           grep -F 'B7_CURRENTROOT_RESULT ' "$RUNNER_TEMP/b7.log"
-          OUT="$OUT" python -B - <<'PY'
+          OUT="$OUT" python -O -B - <<'PY'
           import json, os
           from pathlib import Path
           r=json.loads((Path(os.environ['OUT'])/'b7-currentroot-receipt.json').read_text())
-          s=r['summary']; d=r['disposition']
-          assert r['schema']=='titan-v31-b7-currentroot-gate/v2'
-          assert s['scheduled']==16 and s['wins']+s['ties']+s['losses']==16
-          if s['trace_changed_cells']==0: assert d=='KILL_INACTIVE'
-          elif s['losses']>0: assert d=='HOLD_NEGATIVE_CELL'
-          elif s['mean_delta_margin']>0: assert d=='PASS_WIDEN_ONLY'
-          else: assert d=='HOLD_NO_POSITIVE_MARGIN'
+          s=r.get('summary')
+          d=r.get('disposition')
+          if r.get('schema') != 'titan-v31-b7-currentroot-gate/v2':
+              raise SystemExit(f'B7 receipt schema drift: {r.get("schema")!r}')
+          if not isinstance(s, dict):
+              raise SystemExit('B7 receipt summary missing')
+          if s.get('scheduled') != 16 or s.get('wins', 0)+s.get('ties', 0)+s.get('losses', 0) != 16:
+              raise SystemExit(f'B7 receipt cardinality drift: {s!r}')
+          if s.get('trace_changed_cells') == 0:
+              expected='KILL_INACTIVE'
+          elif s.get('losses', 0) > 0:
+              expected='HOLD_NEGATIVE_CELL'
+          elif s.get('mean_delta_margin', 0) > 0:
+              expected='PASS_WIDEN_ONLY'
+          else:
+              expected='HOLD_NO_POSITIVE_MARGIN'
+          if d != expected:
+              raise SystemExit(f'B7 disposition mismatch: got={d!r} expected={expected!r} summary={s!r}')
           print('B7_CURRENTROOT_RECEIPT_OK', d, s)
           PY
 
