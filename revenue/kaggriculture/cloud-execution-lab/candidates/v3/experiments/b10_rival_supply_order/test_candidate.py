@@ -42,8 +42,6 @@ class RivalSupplyOrderTests(unittest.TestCase):
         self.assertEqual(lower["MILK"], 0)
 
     def test_own_buy_only_hides_rival_supply(self):
-        # Realization can be rival SELL +5 and our BUY -2 => observed +3.
-        # Since own BUY is omitted from the lower bound, only +3 is proved.
         previous = {item: 100 for item in b10.PRODUCTS}
         current = dict(previous)
         current["EGG"] = 103
@@ -171,6 +169,30 @@ class RivalSupplyOrderTests(unittest.TestCase):
         result, detail = b10._reorder_leading_sells(parent, evidence)
         self.assertIs(result, parent)
         self.assertIsNone(detail)
+
+    def test_nonstandard_or_ambiguous_market_cap_fails_closed_and_clears_latch(self):
+        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
+        for cap in (1, 3, 0, -1, True, 10.0, "10", 11):
+            with self.subTest(cap=cap):
+                tracker = b10.RivalSupplyOrder(enabled=True)
+                tracker.apply(obs(1), action())
+                self.assertIn(0, tracker.players)
+                result = tracker.apply(
+                    obs(2, {"WOOL": 10_003}),
+                    parent,
+                    {"maxMarketOrdersPerTurn": cap},
+                )
+                self.assertIs(result, parent)
+                self.assertEqual(tracker.players, {})
+                self.assertEqual(tracker.telemetry["reorders"], 0)
+
+    def test_invalid_player_never_seeds_or_uses_tracker_state(self):
+        tracker = b10.RivalSupplyOrder(enabled=True)
+        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1))
+        self.assertIs(tracker.apply(obs(1, player=2), parent), parent)
+        self.assertIs(tracker.apply(obs(2, {"WOOL": 10_003}, player=2), parent), parent)
+        self.assertEqual(tracker.players, {})
+        self.assertEqual(tracker.telemetry["reorders"], 0)
 
 
 if __name__ == "__main__":
