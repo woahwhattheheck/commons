@@ -1,0 +1,73 @@
+name: titan-v31-b11-mirror-horizon
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/**'
+      - '.github/workflows/titan-v31-b11-mirror-horizon.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact head, parent, frozen scope, and R04 source
+        env:
+          EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          FROZEN='508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          PARENT='1e08cbc6c808fac89291bbd6a9f00e6c6a566c7f'
+          HEAD="$(git rev-parse HEAD)"
+          test "$HEAD" = "$EXPECTED_HEAD"
+          git cat-file -e "$FROZEN^{commit}"
+          git cat-file -e "$PARENT^{commit}"
+          test "$(git merge-base "$PARENT" "$HEAD")" = "$PARENT"
+          test "$(git merge-base "$FROZEN" "$HEAD")" = "$FROZEN"
+
+          child_actual="$(git diff --name-only "$PARENT" "$HEAD" | LC_ALL=C sort)"
+          child_expected="$(printf '%s\n' \
+            '.github/workflows/titan-v31-b11-mirror-horizon.yml' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/test_b11_mirror_horizon.py' \
+            | LC_ALL=C sort)"
+          test "$child_actual" = "$child_expected"
+
+          full_actual="$(git diff --name-only "$FROZEN" "$HEAD" | LC_ALL=C sort)"
+          full_expected="$(printf '%s\n' \
+            '.github/workflows/titan-v31-b11-mirror-horizon.yml' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/README.md' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/candidate.py' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/test_b11_mirror_horizon.py' \
+            | LC_ALL=C sort)"
+          test "$full_actual" = "$full_expected"
+
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          test "$(git hash-object "$R04")" = '21c4f1db0298f8955b1f5ad366bd780a89cad206'
+          test -z "$(git status --porcelain)"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused B11 predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon
+        run: python -B -m unittest -v test_b11_mirror_horizon.py
+      - name: Optimized-interpreter B11 predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon
+        run: python -O -B -m unittest -v test_b11_mirror_horizon.py
+      - name: Parse B11 entrypoints
+        run: >-
+          python -B -m py_compile
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/test_b11_mirror_horizon.py
+      - name: Require clean checkout
+        run: test -z "$(git status --porcelain)"
