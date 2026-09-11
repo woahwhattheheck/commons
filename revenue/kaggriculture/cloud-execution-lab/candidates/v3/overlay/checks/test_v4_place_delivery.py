@@ -98,6 +98,19 @@ class PlaceDelivery(unittest.TestCase):
         )
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_cross_worker_distinct_products_fail_closed_on_moving_quotes(self):
+        # Standard-market witness: MILK inventory 10016 quotes 126 then 124,
+        # while STRAWBERRY inventory 9999 quotes 128 then 120. With two shed
+        # slots, parent actor order sells MILK2 for 250. Spot-price prioritizing
+        # STRAWBERRY would sell it for only 248 despite 128 > 126 initially.
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(
+            shed={"WHEAT": 98},
+            inventories=[{"MILK": 2}, {"STRAWBERRY": 2}],
+            prices={"MILK": 126, "STRAWBERRY": 128},
+        )
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_overflow_becomes_bounded_place_and_preserves_excess_cargo(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
@@ -125,14 +138,14 @@ class PlaceDelivery(unittest.TestCase):
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
         self.assertEqual(out["market"], [["SELL", "WHEAT", 100]])
 
-    def test_capacity_goes_to_higher_value_worker(self):
+    def test_same_product_overflow_can_choose_worker_without_curve_comparison(self):
         parent = action(["DROP"], [["DROP"]])
         obs = observation(shed={"WHEAT": 98},
-                          inventories=[{"CARROT": 5}, {"WOOL": 5}],
-                          prices={"CARROT": 5, "WOOL": 100})
+                          inventories=[{"WOOL": 5}, {"WOOL": 5}],
+                          prices={"WOOL": 100})
         out = lane.apply_place_delivery(obs, parent, enabled=True)
-        self.assertEqual(out["farmer"], ["PASS"])
-        self.assertEqual(out["hands"], [["PLACE", "WOOL", 2]])
+        self.assertEqual(out["farmer"], ["PLACE", "WOOL", 2])
+        self.assertEqual(out["hands"], [["PASS"]])
         self.assertIn(["SELL", "WOOL", 2], out["market"])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
 
@@ -164,6 +177,12 @@ class PlaceDelivery(unittest.TestCase):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
         obs["farms"][0]["farmer"] = [4]
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_out_of_board_sibling_actor_fails_closed_before_valid_rewrite(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        obs["farms"][0]["hands"] = [[-1, 4]]
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
     def test_malformed_board_shape_fails_closed_to_exact_parent(self):
