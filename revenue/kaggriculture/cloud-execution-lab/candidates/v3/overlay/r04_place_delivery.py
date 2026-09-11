@@ -11,8 +11,7 @@ their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
 including multi-product cargo, stays untouched.  On overflow, scarce capacity
 goes to the highest public-price cargo first and excess cargo stays on workers.
-Malformed terminal step/shed/inventory/price state fails closed to the parent
-action.
+Malformed terminal step/shed/inventory state fails closed to the parent action.
 """
 from __future__ import annotations
 
@@ -45,12 +44,12 @@ def apply_place_delivery(observation, action, enabled=False):
     workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
 
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
+    # The public price map is also the engine's public product namespace, so this
+    # proof does not add a second product/action enumeration to the V4 wrapper.
+    if not isinstance(view.prices, dict):
+        return action
     payload = 0
     has_drop = False
-    touched_products = {
-        item for item, quantity in raw_shed.items()
-        if item in r04.PRODUCTS and quantity > 0
-    }
     for worker in range(min(len(workers), len(view.positions))):
         command = workers[worker]
         if not (isinstance(command, list) and command and command[0] == "DROP"):
@@ -63,21 +62,12 @@ def apply_place_delivery(observation, action, enabled=False):
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
                 return action
-            payload += held
-            if item in r04.PRODUCTS and held > 0:
-                touched_products.add(item)
+            if item in view.prices:
+                payload += held
         has_drop = True
     if has_drop:
         remaining = max(0, int(r04.SHED_CAPACITY) - sum(raw_shed.values()))
         if payload <= remaining:
-            return action
-
-    # Overflow rewriting recomputes terminal SELLs and prioritizes PLACE cargo by
-    # public price.  Do not coerce malformed prices into a different policy.
-    if not isinstance(view.prices, dict):
-        return action
-    for item in touched_products:
-        if type(view.prices.get(item)) is not int:
             return action
 
     eligible = []
@@ -96,9 +86,14 @@ def apply_place_delivery(observation, action, enabled=False):
         for item, held in inventory.items():
             if item not in r04.PRODUCTS or not _positive_plain_int(held):
                 continue
-            price = view.prices[item]
+            price = view.prices.get(item, 0)
+            if type(price) is not int:
+                try:
+                    price = int(price)
+                except (TypeError, ValueError):
+                    price = 0
             product_order = r04.PRODUCTS.index(item)
-            choices.append((price, held, -product_order, item))
+            choices.append((int(price), int(held), -product_order, item))
         if choices:
             price, held, _, item = max(choices)
             eligible.append((price, held, worker, item))
