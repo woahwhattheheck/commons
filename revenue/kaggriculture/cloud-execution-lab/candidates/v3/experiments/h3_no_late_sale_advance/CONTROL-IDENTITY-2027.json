@@ -1,0 +1,29 @@
+{
+  "schema": "titan.v31.h3-control-identity.v1",
+  "package_main_sha256": "c4c22d0f2b1071cadf6a9f74effccc8cb20ea9f4d10ca1cf9f1fe57351709dc1",
+  "package_r04_full_router_sha256": "281117d7460d57c71a8caa9f30ed81cd918b714ad88638d47cb06d071bc12239",
+  "control_wrapper_sha256": "2f3ed65894e2c41398dccaf42738c6604e7e0c5ebf0d705bc4db1a16e258137e",
+  "opponent": {
+    "label": "arlene",
+    "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+  },
+  "seed": 2027,
+  "both_seats": true,
+  "cells": [
+    {
+      "candidate_seat": 0,
+      "main_scores": [76863.0, 70554.0],
+      "control_scores": [76863.0, 70554.0],
+      "main_trace_sha256": "1f4beb9497a365d244373b3da1e5d31bc2b7a490b661b7461ffc658b8e7638bc",
+      "control_trace_sha256": "1f4beb9497a365d244373b3da1e5d31bc2b7a490b661b7461ffc658b8e7638bc"
+    },
+    {
+      "candidate_seat": 1,
+      "main_scores": [70554.0, 76863.0],
+      "control_scores": [70554.0, 76863.0],
+      "main_trace_sha256": "bb4adfce8b9786cc0567561f1c81fc755328536dc9b7c7a795f62dac5da2d02e",
+      "control_trace_sha256": "bb4adfce8b9786cc0567561f1c81fc755328536dc9b7c7a795f62dac5da2d02e"
+    }
+  ],
+  "result": "PASS_EXACT_TRACE_AND_SCORE_IDENTITY"
+}
