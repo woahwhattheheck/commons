@@ -3,138 +3,138 @@
     "open_issues": 4,
     "open_pull_requests": 4,
     "runs_in_progress": 18,
-    "runs_queued": 2162
+    "runs_queued": 849
   },
   "degraded": [],
-  "drafts": 59,
+  "drafts": 87,
   "longest_open": [
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-one-tree-transport-custody-20260910-01",
-      "created_at": "2026-09-10T19:33:33Z",
+      "branch": "sol-composer/titan-v3-seed-cluster-tail-closure-20260910-01",
+      "created_at": "2026-09-10T20:41:40Z",
       "draft": false,
-      "number": 12000,
-      "title": "TITAN V3: block stale one-tree transport re-pins"
+      "number": 12077,
+      "title": "TITAN V3: close hidden independent-seed composition tails"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-execution/titan-v3-e20-executed-hire-allowance-repair-20260910-01",
-      "created_at": "2026-09-10T19:34:04Z",
+      "branch": "sol-pro/titan-pressure-stock-baseline-closure-20260910-01",
+      "created_at": "2026-09-10T20:43:14Z",
       "draft": true,
-      "number": 12001,
-      "title": "TITAN V3: make E20 HIRE allowance execution-aware"
+      "number": 12078,
+      "title": "fix(titan): invalidate pressure baselines after stock-changing barriers"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-guardrail/titan-v3-multi-lot-realized-anchor-custody-20260910-01",
-      "created_at": "2026-09-10T19:34:08Z",
-      "draft": true,
-      "number": 12002,
-      "title": "TITAN V3: prove realized-anchor custody gap in multi-lot allocator"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-e11-tranche-defer-closure-20260910-01",
-      "created_at": "2026-09-10T19:34:59Z",
+      "branch": "sol-pro/titan-v3-own-value-promotion-closure-custody-02118bc",
+      "created_at": "2026-09-10T20:43:18Z",
       "draft": false,
-      "number": 12003,
-      "title": "TITAN V3: close E11 \u2192 tranche deferred-SELL reintroduction"
+      "number": 12079,
+      "title": "test(titan): close own-value promotion evidence custody"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-market-prefix-transport-safety-20260910-01",
-      "created_at": "2026-09-10T19:35:44Z",
-      "draft": true,
-      "number": 12004,
-      "title": "TITAN V3: fail closed on unsafe market-prefix transport"
+      "branch": "sol-pro/titan-v3-ladder-mixture-robust-20260910",
+      "created_at": "2026-09-10T20:43:48Z",
+      "draft": false,
+      "number": 12080,
+      "title": "titan-v3: gate promotion against hosted opponent-mixture shift"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-tailguard/titan-v3-paired-cell-tail-admission-20260910-01",
+      "created_at": "2026-09-10T20:43:57Z",
+      "draft": false,
+      "number": 12081,
+      "title": "TITAN V3: fail-closed paired-cell own-cash tail gate"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/rule-arbitrage-unshallow-20260910-01",
-      "created_at": "2026-09-10T22:58:28Z",
-      "draft": false,
-      "number": 12123,
-      "title": "fix(actions): make rule-arbitrage ancestry depth-independent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "opus/offer-shelf-checkout-links-20260910-clean",
-      "created_at": "2026-09-10T22:53:44Z",
-      "draft": false,
-      "number": 12121,
-      "title": "Add live Stripe checkout links to the offer shelf"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "agent/titan-v3-historical-calibration-transport-custody-astra-20260910",
-      "created_at": "2026-09-10T22:52:42Z",
+      "branch": "astra/d38-deliverable-manifest-main1517-refresh-20260911-01",
+      "created_at": "2026-09-11T04:34:29Z",
       "draft": true,
-      "number": 12120,
-      "title": "ci: harden calibration packet transport and retest materialized source"
+      "number": 12254,
+      "title": "tools: refresh-compose reviewed deliverable manifest on main1517"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "agent/titan-v3-cross-product-slot-frozen-port-20260910",
-      "created_at": "2026-09-10T22:49:55Z",
+      "branch": "astra/bd01-csu-golden-main1517-refresh-20260911-01",
+      "created_at": "2026-09-11T04:32:27Z",
       "draft": true,
-      "number": 12118,
-      "title": "TITAN V3: execute shared SELL-slot reservations in selected frozen consumer"
+      "number": 12253,
+      "title": "test(csu): refresh-compose independent golden on main1517"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/titan-hour-existing-door-20260910-01",
-      "created_at": "2026-09-10T22:48:43Z",
-      "draft": false,
-      "number": 12117,
-      "title": "Link TITAN hour to existing White Box checkout"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "titan-v3-land-target-successor-12107",
-      "created_at": "2026-09-10T22:48:43Z",
-      "draft": false,
-      "number": 12116,
-      "title": "fix(titan): certify land targets on the atomic-plant parent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra-recovery/hive006-trusted-webhook-auth-20260910-01",
-      "created_at": "2026-09-10T22:46:58Z",
-      "draft": false,
-      "number": 12115,
-      "title": "hive006: add authenticated Twilio webhook edge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-cumulative-seed-row-allocation-20260910-01",
-      "created_at": "2026-09-10T22:45:48Z",
+      "branch": "astra/bd08-aquatrace-main4691-refresh-20260911-01",
+      "created_at": "2026-09-11T04:27:06Z",
       "draft": true,
-      "number": 12114,
-      "title": "fix(titan): close seed-capital chronology on the official interpreter"
+      "number": 12252,
+      "title": "test(aquatrace): refresh-compose public-source custody on main4691"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-compositor/titan-v3-funding-town-decay-authenticated-composition-20260910-01",
-      "created_at": "2026-09-10T22:42:14Z",
+      "branch": "ibis/bd11-csu-projection-main81d6-20260911-01",
+      "created_at": "2026-09-11T04:24:33Z",
       "draft": true,
-      "number": 12112,
-      "title": "TITAN V3: authenticate town-to-decay funding composition"
+      "number": 12251,
+      "title": "test(csu): compose expanded job projection custody on main81d6"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "agent/titan-v3-receipt-prefix-ci-custody-astra-20260910",
-      "created_at": "2026-09-10T22:38:34Z",
+      "branch": "marlow/denton-bacteriology-reconcile-20260910",
+      "created_at": "2026-09-11T04:02:58Z",
       "draft": true,
-      "number": 12111,
-      "title": "ci: make receipt-prefix evidence run on the literal head"
+      "number": 12242,
+      "title": "feat: reconcile Denton bacteriology acceptance LIMS"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "ibis/d39-windows-drive-containment-20260910-01",
+      "created_at": "2026-09-11T04:02:33Z",
+      "draft": true,
+      "number": 12241,
+      "title": "fix(tools): reject Windows drive archive paths"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/bd11-csu-job-projection-custody-20260910-01",
+      "created_at": "2026-09-11T03:47:06Z",
+      "draft": true,
+      "number": 12239,
+      "title": "test(csu): bind expanded job measurement projection"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/bd08-aquatrace-public-source-boundary-20260910-01",
+      "created_at": "2026-09-11T03:38:02Z",
+      "draft": true,
+      "number": 12237,
+      "title": "test(aquatrace): bind public-source observation custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/bd01-csu-malt-independent-golden-20260910-01",
+      "created_at": "2026-09-11T03:34:48Z",
+      "draft": true,
+      "number": 12236,
+      "title": "test: bind CSU malt jobs to independent golden"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "gpt56-sol/bd10-ward-independent-oracle-20260910-01",
+      "created_at": "2026-09-11T03:33:04Z",
+      "draft": true,
+      "number": 12235,
+      "title": "test: freeze independent Ward evidence oracle"
     }
   ],
   "pulls_listed": 100,
-  "queue_depth_per_runner": 120.1,
+  "queue_depth_per_runner": 47.2,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-10T23:00:21Z",
+  "unchanged_since": "2026-09-11T04:42:23Z",
   "undatable_pulls": []
 }

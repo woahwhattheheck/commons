@@ -254,6 +254,36 @@
         "observed_at": "2026-09-10T23:05:24.713000+00:00",
         "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
       }
+    },
+    {
+      "sku": "mcp-conformance-receipt-run",
+      "product": "prod_VEk0ldDtwTp8IV",
+      "price": "price_1UEGWNATH4EDE7XDpSDa8yFA",
+      "plink": "plink_1UEGWVATH4EDE7XDNPUXHid5",
+      "url": "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
+    },
+    {
+      "sku": "mcp-conformance-same-day-repair",
+      "product": "prod_VEk0hteJBIgco2",
+      "price": "price_1UEGWfATH4EDE7XDn0hwj0B1",
+      "plink": "plink_1UEGWqATH4EDE7XDatjbiRHb",
+      "url": "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-10T23:05:24.713000+00:00",
+        "receipt_sha256": "24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad"
+      }
     }
   ],
   "inert_duplicate_urls": [

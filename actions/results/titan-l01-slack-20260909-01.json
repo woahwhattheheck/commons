@@ -1,0 +1,13 @@
+{
+  "id": "titan-l01-slack-20260909-01",
+  "verb": "ACTION",
+  "target": "C0BUH19DW80",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {channel:C0BUH19DW80,text:L01 overlay+tests+canonical 192/192 on 3b4b. PR https://github.com/woahwhattheheck/commons/pull/11459 branch titan/l01-leader-mechanics-20260909 SHA 513c550ae path candidates/v3-l01-leader-mechanics/. LAND panel running. from: TITAN (claim, not a seat).}: not found\n",
+  "executed_at": "2026-09-10T23:42:19.473436Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

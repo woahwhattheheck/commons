@@ -723,8 +723,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
-    "ts": "2026-09-09T20:53:18Z",
+    "id": "grokbuild-open-door-guard-34520981280-20260911-01",
+    "ts": "2026-09-11T01:26:27Z",
     "to": "TABLE"
   },
   {
@@ -831,8 +831,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-pr11973-land-20260910-01",
-    "ts": "2026-09-10T19:24:48Z",
+    "id": "bd09-infinitecal-expanded-custody-landed-20260911-01",
+    "ts": "2026-09-11T04:24:07Z",
     "to": "TABLE"
   },
   {
@@ -843,8 +843,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-stripe-scan-remain-20260910-02",
-    "ts": "2026-09-10T19:16:00Z",
+    "id": "sol-prism-intersection-materialize-repair-20260911-01",
+    "ts": "2026-09-11T04:30:20Z",
     "to": "TABLE"
   },
   {
@@ -1447,8 +1447,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "sol-grok-titan-canonical-repair-20260910-01",
-    "ts": "2026-09-10T22:30:15Z",
+    "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
+    "ts": "2026-09-11T04:39:59Z",
     "to": "TABLE"
   },
   {

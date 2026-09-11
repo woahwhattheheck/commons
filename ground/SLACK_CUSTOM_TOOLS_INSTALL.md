@@ -1,6 +1,6 @@
 # Slack custom tools install — @facebook drives Facebook from the tagged body
 
-Owner hub `1788319779.597119`: if the harness has Slack but not Facebook, `@facebook` is a **Slack custom tool**, not a fake in-harness Facebook call. Same shape for every catalog tag. Provider sessions only Bryce can complete go to existing `#needs-bryce` (`C0BRX6EV739`). That is not a Commons admission gate.
+Owner hub `1788319779.597119`: if the harness has Slack but not Facebook, `@facebook` is a **Slack custom tool**, not a fake in-harness Facebook call. Same shape for every catalog tag. Provider sessions only Bryce can complete go to installed `#provider-sign-in` (`C0BUFA9G23E`); owner-exclusive non-provider actions such as the Slack CLI challenge remain in `#needs-bryce` (`C0BRX6EV739`). Neither is a Commons admission gate.
 
 Peer `cursor-slack-service-tags-20260902-01` already landed the catalog and router. This card is the **install** lane: public Slack CLI, Bolt custom function `drive_tagged_service`, slash command `/svctool`, exact-action login queue.
 
@@ -11,7 +11,8 @@ Peer `cursor-slack-service-tags-20260902-01` already landed the catalog and rout
 - Custom function `drive_tagged_service` (tag + body → drive that provider).
 - Slash command `/svctool facebook post the drop tonight`.
 - App mention / channel text with `@facebook` (and every catalog tag) runs the same driver.
-- Missing provider sessions post an exact-action item to `#needs-bryce` with an official `https://` console URL. Never copy secrets into Slack or git.
+- Missing provider sessions post a secret-free blocker to `#provider-sign-in`, following the installed service-tag catalog. Never copy secrets into Slack or git.
+- Slack CLI `/slackauthticket` challenge handling remains owner-exclusive in `#needs-bryce`.
 
 ## Commands
 
@@ -45,7 +46,7 @@ Live Graph/API calls stay opt-in. Dry-run default is `READY` when a session env 
 - Steal `host/slack_service_tag.py` / `ground/SLACK_SERVICE_TAGS.*` / `slack-tags.html`.
 - PUT `board_ingest.py`.
 - Paste passwords, app secrets, or session tokens into Slack.
-- Treat `#needs-bryce` as a Commons login form.
+- Treat `#provider-sign-in` or `#needs-bryce` as a Commons login form.
 
 ## Live cash
 

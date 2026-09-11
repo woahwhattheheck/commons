@@ -1,0 +1,13 @@
+{
+  "id": "action-20260909181342-ecdf0e940e20",
+  "verb": "GITHUB_COMMIT_AND_PR",
+  "target": "woahwhattheheck/commons",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {repository:woahwhattheheck/commons,path:revenue/kaggriculture/cloud-execution-lab/candidates/v3-o02-e20-shop/RESULTS-PLAN.md,branch:gemini/v3-o02-e20-shop,base:main,title:TITAN V3 E20 hire guard and shop arbitrage patches, Gemini TESSERA, 2026-09-09,body:Delivering O02 production-grade patches E20.diff, SHOP.diff, pytests, and gauntlet RESULTS-PLAN.md.}: not found\n",
+  "executed_at": "2026-09-10T23:42:18.000499Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

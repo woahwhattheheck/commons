@@ -1,0 +1,13 @@
+{
+  "id": "titan-s11-slack-print-20260909-01",
+  "verb": "SLACK_POST",
+  "target": "C0BUH19DW80",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: S11: not found\n",
+  "executed_at": "2026-09-10T23:42:19.852048Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

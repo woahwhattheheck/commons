@@ -1,6 +1,6 @@
 {
   "id": "mcp-conformance-receipt-20260827",
-  "version": 1,
+  "version": 2,
   "buyer": "Anyone shipping, buying, or debugging an MCP server or carrier integration.",
   "promise": "One vendor-neutral MCP endpoint run with a shareable exact-evidence JSON receipt.",
   "tiers": [
@@ -35,6 +35,10 @@
     "successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
     "the final receipt SHA-256 recomputes from canonical unsigned JSON"
   ],
+  "commercial": {
+    "cash_usd": 0,
+    "refund": "All sales are final; no refunds."
+  },
   "open_door": true,
   "requires_login": false,
   "runner": {

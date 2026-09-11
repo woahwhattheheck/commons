@@ -39,7 +39,7 @@ The nine rows, independently checked:
 
 UNKNOWN ledger: owner, artifact, hash, and freshness on every default row; monitoring and backup/restore/DR private paths; training/UAT and buyer sign-off public sources; later-SHA path map. Machine: revenue/aquatrace_ops_acceptance/unknown_ledger.json.
 
-Public criteria URLs measured HTTP 200 at 2026-08-31T07:34:07Z. Those pages are not AquaTrace evidence.
+Frozen `revenue/aquatrace_ops_acceptance/public_sources.json` records HTTP 200 observations for seven criteria URLs at 2026-08-31T07:34:07Z. The executable battery does not revalidate those URLs; this is custody of the committed observation, not a live-network claim. Those pages are criteria cites, not AquaTrace evidence.
 
 State: HOLD / BUILD-AND-VERIFY. NOT_READY until evidence. PRE-SALE TRANSPORT: NONE. cash_usd=0. No outreach. No City contact. No bid submission. grok.com dry. Open Door. No login.
 
