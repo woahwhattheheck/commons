@@ -165,8 +165,26 @@ jobs:
             echo E20_CURRENT_ROOT_FINAL_CLEAN
           fi
 
+      - name: Recheck live current-root custody before authoritative handoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EVENT_BASE='${{ github.event.pull_request.base.sha }}'
+          EVENT_BASE_REF='${{ github.event.pull_request.base.ref }}'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$EVENT_BASE_REF" = "$STACK_REF"
+          STACK="$(git ls-remote origin refs/heads/$STACK_REF | cut -f1)"
+          test -n "$STACK"
+          test "$EVENT_BASE" = "$STACK"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | cut -f1)" = "$ROOT"
+          echo E20_CURRENT_ROOT_END_FRESHNESS_OK "$STACK" "$ROOT"
+
       - name: Upload deterministic handoff
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: titan-v31-e20-current-root-${{ github.run_id }}
