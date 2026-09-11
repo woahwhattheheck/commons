@@ -179,6 +179,14 @@ def outcome(margin):
 def validate_materialization(materialization):
     if not isinstance(materialization, dict):
         raise SystemExit("materialization receipt must be an object")
+    on_package_sha256 = strict_trace(
+        materialization.get("on_package_sha256"), "materialization.on_package_sha256"
+    )
+    off_package_sha256 = strict_trace(
+        materialization.get("off_package_sha256"), "materialization.off_package_sha256"
+    )
+    if on_package_sha256 == off_package_sha256:
+        raise SystemExit("materialization package digests are identical; cattle A/B did not materialize")
     if materialization.get("on_to_off_changed_members") != ["TITAN-CONFIG.json"]:
         raise SystemExit("materialization is not one-member cattle A/B")
     if materialization.get("on_to_off_changed_config_keys") != ["r04_cattle_early"]:
@@ -209,6 +217,13 @@ def validate_materialization(materialization):
         raise SystemExit("candidate L3 threshold is not literal int 648")
 
 
+def validate_receipt_pair(control_raw, candidate_raw):
+    if control_raw["opponents"] != candidate_raw["opponents"]:
+        raise SystemExit("fixed cattle_on opponent fingerprint drifted across arms")
+    if control_raw["candidate"] != candidate_raw["candidate"]:
+        raise SystemExit("shared candidate entry fingerprint drifted across cattle A/B arms")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("materialization")
@@ -225,10 +240,7 @@ def main():
     candidate = normalized_games(candidate_raw, "candidate")
     if control.keys() != candidate.keys():
         raise SystemExit("paired cell key mismatch")
-    if control_raw["opponents"] != candidate_raw["opponents"]:
-        raise SystemExit("fixed cattle_on opponent fingerprint drifted across arms")
-    if control_raw["candidate"]["sha256"] == candidate_raw["candidate"]["sha256"]:
-        raise SystemExit("control/candidate fingerprints are identical; cattle A/B did not materialize")
+    validate_receipt_pair(control_raw, candidate_raw)
 
     rows = []
     transitions = {}
