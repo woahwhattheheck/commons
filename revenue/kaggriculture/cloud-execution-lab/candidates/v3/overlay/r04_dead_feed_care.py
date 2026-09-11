@@ -20,6 +20,14 @@ _ANIMAL_KIND = {"GOOSE": "COOP", "COW": "PASTURE", "SHEEP": "PASTURE"}
 telemetry = Counter()
 
 
+def _standard_configuration(configuration: Any) -> bool:
+    """H3c's public config theorem plus this lane's 720-step season bound."""
+    if not h3c._standard_configuration(configuration):
+        return False
+    episode_steps = h3c._cfg(configuration, "episodeSteps")
+    return type(episode_steps) is int and episode_steps == 720
+
+
 def _strict_animal(tile: Any, day: int):
     if not isinstance(tile, dict):
         return None
@@ -49,7 +57,7 @@ def _strict_animal(tile: Any, day: int):
 
 def apply_dead_feed_care(action: Any, observation: Any, configuration: Any, *, enabled=False):
     """Replace only literal dead FEED rows; every uncertain path preserves identity."""
-    if not enabled or not h3c._standard_configuration(configuration):
+    if not enabled or not _standard_configuration(configuration):
         return action
     if not isinstance(observation, dict):
         return action
