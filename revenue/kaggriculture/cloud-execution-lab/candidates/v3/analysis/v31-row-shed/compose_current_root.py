@@ -51,13 +51,13 @@ def patch_r04(text: str) -> str:
     text = _replace_once(
         text,
         "        level = int(inventory.get(item, _RO_I0))\n        quantity = max(0, int(order[2]))\n        return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity\n",
-        "        level = int(inventory.get(item, _RO_I0))\n        quantity = max(0, int(order[2]))\n        if projected_stock is not None:\n            try:\n                available = projected_stock.get(item, 0)\n                if type(available) is not int or available < 0:\n                    return 0\n                quantity = min(quantity, available)\n            except Exception:\n                return 0\n        return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity\n",
+        "        level = int(inventory.get(item, _RO_I0))\n        quantity = max(0, int(order[2]))\n        if projected_stock is not None:\n            try:\n                if item in projected_stock:\n                    available = projected_stock.get(item)\n                    if type(available) is int and available >= 0:\n                        quantity = min(quantity, available)\n            except Exception:\n                pass  # Fail closed to the incumbent requested-quantity score.\n        return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity\n",
         "r04 executable quantity",
     )
     text = _replace_once(
         text,
         "        ordered = order_sells(market, inventory)\n        if ordered != market:\n",
-        "        projected = None\n        if ROW_SHED:\n            try:\n                projected = projected_shed(action, FarmView(observation))\n            except Exception:\n                projected = None\n        ordered = market if ROW_SHED and projected is None else order_sells(market, inventory, projected)\n        if ordered != market:\n",
+        "        projected = None\n        if ROW_SHED:\n            try:\n                projected = projected_shed(action, FarmView(observation))\n            except Exception:\n                projected = None\n        ordered = order_sells(market, inventory, projected)\n        if ordered != market:\n",
         "r04 v3_agent row-shed projection",
     )
     text = _replace_once(
