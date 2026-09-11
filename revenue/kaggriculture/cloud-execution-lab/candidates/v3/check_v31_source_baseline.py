@@ -4,10 +4,12 @@ The live V3.1 branch does not currently guarantee that its checked-in canonical 
 matches ``V3-MANIFEST.json:base.sha256``.  This runner therefore deliberately requires
 ``--package-tree`` instead of implicitly calling ``build_v3.package_files()``.
 
-Before copying or testing that explicit tree, verify its complete file set and hashes
-against this source tree's committed ``FILES.json``.  Submission mode is allowed to differ
-only in ``TITAN-CONFIG.json:r04_sale_window=true``; that config is normalized in memory to
-source mode before its recorded hash is checked.  The caller's package is never edited.
+The explicit tree is copied to a temporary directory first, preserving symbolic links.
+That exact temporary copy is then verified against this source tree's committed
+``FILES.json`` before any normalization or test executes, avoiding a verify-then-copy
+TOCTOU gap.  Submission mode may differ only in
+``TITAN-CONFIG.json:r04_sale_window=true``; that config is normalized in memory to source
+mode for its recorded hash.  The caller's package is never edited.
 """
 from __future__ import annotations
 
@@ -96,7 +98,11 @@ def _verify_package_tree(source: Path) -> None:
 
 
 def _copy_tree(source: Path, target: Path) -> None:
-    shutil.copytree(source, target, dirs_exist_ok=True)
+    if not source.is_dir():
+        raise SystemExit("--package-tree must name a materialized package directory")
+    # Preserve links rather than dereferencing them; verification rejects any link in
+    # the exact temp tree that will be tested.
+    shutil.copytree(source, target, dirs_exist_ok=True, symlinks=True)
 
 
 def _force_source_mode(target: Path) -> tuple[bool, dict]:
@@ -124,11 +130,11 @@ def run(package_tree: Path | None = None) -> int:
     if package_tree is None:
         _materialize_source(Path("."))
     source = package_tree.resolve()
-    _verify_package_tree(source)
 
     with tempfile.TemporaryDirectory(prefix="titan-v31-source-baseline-") as temp:
         target = Path(temp)
         _copy_tree(source, target)
+        _verify_package_tree(target)
         source_label = str(source)
 
         submission_mode, data = _force_source_mode(target)
@@ -163,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
         "--package-tree",
         type=Path,
         required=True,
-        help="exact materialized/submission-mode package tree to verify, copy, and test",
+        help="exact materialized/submission-mode package tree to copy, verify, and test",
     )
     args = parser.parse_args(argv)
     return run(args.package_tree)
