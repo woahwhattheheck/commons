@@ -163,6 +163,33 @@ class S1FertSweepTest(unittest.TestCase):
         parent = action()
         self.assertIs(lane._consider_hire(obs, parent, st, tape, CONFIG), parent)
 
+    def test_future_native_purchase_and_unknown_market_rows_block_hire(self):
+        obs = observation()
+        for order in (
+            ["BUY_LAND", "NE"],
+            ["BUY_PRODUCT", "WHEAT", 1],
+            ["BUY_SEED", "WHEAT", 1],
+            ["BUY_ANIMAL", "SHEEP", 1],
+            ["UNKNOWN_MARKET_OP"],
+        ):
+            with self.subTest(order=order):
+                tape = pass_tape()
+                tape[obs["step"] + 2]["market"] = [order]
+                st = lane._Day(4)
+                parent = action()
+                self.assertIs(
+                    lane._consider_hire(obs, parent, st, tape, CONFIG),
+                    parent,
+                )
+
+    def test_future_native_sell_does_not_block_hire(self):
+        obs = observation()
+        tape = pass_tape()
+        tape[obs["step"] + 2]["market"] = [["SELL", "WHEAT", 1]]
+        st = lane._Day(4)
+        result = lane._consider_hire(obs, action(), st, tape, CONFIG)
+        self.assertEqual(result["market"], [["HIRE"]])
+
     def test_future_native_collection_blocks_hire(self):
         obs = observation()
         tape = pass_tape()
