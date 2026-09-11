@@ -1473,17 +1473,47 @@ _SALE_PARENT = agent
 del agent
 
 
+# L3 rival gate: an on-tape lineage rival runs the tape's shared opening, so its farmer
+# stands where ours does on nearly every step 1-143, whichever plan it takes at 144.
+# Measured on the 41 live games of submission 56159263: on-tape rivals match on 123-143
+# of those steps, off-tape rivals on 14-99. Against an on-tape rival the late sales L3
+# stops advancing were front-running its own late sales of the same goods, so L3 is held
+# back against them. Only positive evidence switches L3 off: with no readable opening the
+# lane behaves exactly as before.
+RIVAL_GATE_WINDOW = (1, 144)
+RIVAL_GATE_SHARE = 0.8
+_RIVAL_TAPE = {'same': 0, 'seen': 0, 'last': -1}
+
+
+def rival_on_tape(observation, step):
+    """True when the rival's farmer matched ours on >= RIVAL_GATE_SHARE of the observed opening."""
+    if step <= _RIVAL_TAPE['last']:
+        _RIVAL_TAPE.update(same=0, seen=0)
+    _RIVAL_TAPE['last'] = step
+    try:
+        farms = observation['farms']
+        me = int(observation['player'])
+        ours, theirs = list(farms[me]['farmer']), list(farms[1 - me]['farmer'])
+    except Exception:
+        ours = theirs = None
+    if ours is not None and RIVAL_GATE_WINDOW[0] <= step < RIVAL_GATE_WINDOW[1]:
+        _RIVAL_TAPE['seen'] += 1
+        _RIVAL_TAPE['same'] += ours == theirs
+    return _RIVAL_TAPE['seen'] > 0 and _RIVAL_TAPE['same'] >= RIVAL_GATE_SHARE * _RIVAL_TAPE['seen']
+
+
 def agent(observation, configuration=None):
     action = _SALE_PARENT(observation, configuration)
     step = int(observation['step'])
+    on_tape = rival_on_tape(observation, step)
     if step < ADVANCE_START or step >= LAST_STEP:
         return action
     state = _POLICY.players[int(observation['player'])]
     # V3.1 lane L3 (peer B10 port): suppress the reservation at or after the
     # threshold instead of undoing it later, so the per-due-step debt
     # bookkeeping is never corrupted. Flag off short-circuits: byte-identical.
-    if not r04_no_late_sale_advance.suppressed(step, NO_LATE_SALE_ADVANCE,
-                                              NO_LATE_SALE_ADVANCE_STEP):
+    if on_tape or not r04_no_late_sale_advance.suppressed(step, NO_LATE_SALE_ADVANCE,
+                                                          NO_LATE_SALE_ADVANCE_STEP):
         reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
     if step >= 144:
         action = _v224_sales_first(action)
