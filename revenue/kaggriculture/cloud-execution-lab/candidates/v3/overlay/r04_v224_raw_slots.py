@@ -57,12 +57,44 @@ def _crossable(row, sell_item):
     return True
 
 
+def _frozen_projection(original):
+    """Return frozen V224's projected prefix, or None if its code would raise.
+
+    This is used only to preserve one outer side effect of the frozen wrapper:
+    when V224 would have changed the executable prefix, it published that prefix
+    and thereby hid rows beyond the engine's market-order cap from later R04
+    wrappers. The repaired lane must not make those non-executable rows visible.
+    """
+    try:
+        orders = [list(row) for row in original
+                  if row and (row[0] in ("HIRE", "BUY_LAND")
+                              or (len(row) >= 3 and int(row[2]) > 0))]
+        for index in range(len(orders)):
+            order = orders[index]
+            if order[0] != "SELL":
+                continue
+            cursor = index
+            while cursor > 0:
+                previous = orders[cursor - 1]
+                if previous[0] == "SELL":
+                    break
+                if (previous[0] in ("BUY_PRODUCT", "BUY_ANIMAL")
+                        and previous[1] == order[1]):
+                    break
+                orders[cursor - 1], orders[cursor] = orders[cursor], orders[cursor - 1]
+                cursor -= 1
+        return orders
+    except (IndexError, KeyError, TypeError, ValueError):
+        return None
+
+
 def sales_first_raw_slots(action, *, max_orders=MAX_ORDERS):
     """Apply V224 ordering without deleting or crossing raw-slot barriers.
 
-    The exact parent object is returned when no safe swap is available.
-    When a swap occurs, V224's existing executable-prefix behavior is retained:
-    only the first ``max_orders`` rows are published.
+    The exact parent object is returned when no safe swap is available, except
+    when frozen V224 would already have published a changed executable prefix;
+    in that case rows beyond ``max_orders`` stay hidden from downstream wrappers.
+    When a swap occurs, V224's existing executable-prefix behavior is retained.
     """
     if not isinstance(action, dict):
         return action
@@ -84,7 +116,12 @@ def sales_first_raw_slots(action, *, max_orders=MAX_ORDERS):
             cursor -= 1
             changed = True
 
-    if not changed:
+    publish_prefix = changed
+    if not publish_prefix and len(market) > max_orders:
+        frozen = _frozen_projection(original)
+        publish_prefix = frozen is not None and frozen != original
+
+    if not publish_prefix:
         return action
     result = dict(action)
     result["market"] = rows
