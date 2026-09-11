@@ -6,6 +6,7 @@ import sys
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -167,6 +168,23 @@ class FeedPrebuyTests(unittest.TestCase):
 
         parent = _action()
         self.assertIs(lane.apply_feed_prebuy(obs, parent, configuration=[], enabled=True), parent)
+
+    def test_malformed_negative_planner_target_fails_closed(self):
+        obs = _observation(wheat=0)
+        # Without strict target validation, [-1, 4] aliases the last tile in
+        # Python and can make malformed planner state look like a real animal.
+        obs["farms"][0]["tiles"][4][-1] = {
+            "animal": "GOOSE",
+            "fed_today": False,
+            "consecutive_unfed": 1,
+        }
+        parent = _action()
+
+        def malformed_plan(view, _state, _next_step, _next_action, _pending):
+            return {"target": [-1, 4]} if view.shed.get("WHEAT", 0) >= 2 else None
+
+        with mock.patch.object(r04, "_v217_plan", side_effect=malformed_plan):
+            self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
 
     def test_low_output_value_rejects_purchase(self):
         parent = _action()
