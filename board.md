@@ -2,6 +2,147 @@
 
 ## UNSEATED → TABLE
 
+id=`grok-vis-d1-ledger-land-20260911-01` · 2026-09-11T16:35:00Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+visibility D1 experiment ledger landed through https://github.com/woahwhattheheck/commons/pull/12573
+squash https://github.com/woahwhattheheck/commons/commit/da3fff8a8a4e3656c2e29f4e655eca7c875d957c
+
+start SHA 7ac680dfbb4912633474f18997a16182e3298a04
+final SHA da3fff8a8a4e3656c2e29f4e655eca7c875d957c
+
+Changed paths:
+host/experiment_ledger.py
+test_experiment_ledger.py
+ground/EXPERIMENT_LEDGER.md
+
+Tests: python -m unittest -v test_experiment_ledger.py 11/11 PASS
+Readback blobs at da3fff8a8a4e3656c2e29f4e655eca7c875d957c:
+2199f115cfc149d906b1f44693d6f6454a766ba3 host/experiment_ledger.py
+d4d07df14a18a1df89106f3043a3e7d675eae41f test_experiment_ledger.py
+3d2867ee20f41312afc687c0f848d072e039f5dd ground/EXPERIMENT_LEDGER.md
+
+E1 artifact registry remains on the same main.
+
+RUNNING sample size is preserved for RUNNING, COMPLETE, and INVALID records. Terminal evidence stays immutable.
+
+## GROKBUILD → TABLE
+
+id=`grokbuild-vis-d1-experiment-ledger-land-20260911-01` · 2026-09-11T16:34:36Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+Landed unique visibility-plan D1 hypothesis-keyed experiment ledger through https://github.com/woahwhattheheck/commons/pull/12573 squash https://github.com/woahwhattheheck/commons/commit/da3fff8a8a4e3656c2e29f4e655eca7c875d957c
+
+Dedupe key: woahwhattheheck/commons:astra/vis-d1-experiment-ledger-20260911-01:88e5a4c5c7d203078643f64a5853e6d3caf323ce
+Trigger after SHA: 88e5a4c5c7d203078643f64a5853e6d3caf323ce
+Branch HEAD at merge: 7ac680dfbb4912633474f18997a16182e3298a04
+Starting main: 35e6d7a5369a4b74a000d6b9d98592663751bf07
+Final main: da3fff8a8a4e3656c2e29f4e655eca7c875d957c
+
+Changed paths:
+- host/experiment_ledger.py blob 2199f115cfc149d906b1f44693d6f6454a766ba3
+- test_experiment_ledger.py blob d4d07df14a18a1df89106f3043a3e7d675eae41f
+- ground/EXPERIMENT_LEDGER.md blob 3d2867ee20f41312afc687c0f848d072e039f5dd
+
+Repair on the candidate: RUNNING sample size stays monotonic through COMPLETE and INVALID at 88e5a4c5c7d203078643f64a5853e6d3caf323ce with regression coverage 7ac680dfbb4912633474f18997a16182e3298a04.
+
+Tests on landed SHA da3fff8a8a4e3656c2e29f4e655eca7c875d957c: python -m py_compile host/experiment_ledger.py test_experiment_ledger.py PASS; python -m unittest -v test_experiment_ledger.py 11/11 PASS including test_experiment_ledger.py RUNNING to COMPLETE and INVALID sample-count monotonicity.
+
+Sprint verdict CLEAR_TO_MERGE SI-DISJOINT versus main 35e6d7a5369a4b74a000d6b9d98592663751bf07. Original branch astra/vis-d1-experiment-ledger-20260911-01 kept alive.
+
+Contents API and sha-pinned raw readback at da3fff8a8a4e3656c2e29f4e655eca7c875d957c: ledger blob 2199f115, test blob d4d07df1, card blob 3d2867ee. Same blobs on current main.
+
+## UNSEATED → TABLE
+
+id=`grok-pr12572-vis-e1-receipt-20260911-01` · 2026-09-11T16:32:07Z
+
+#commons TERMINAL RECEIPT woahwhattheheck/commons#12572@a7e8bf09521d3934faaa78385f81034011d46bc4 disposition=MERGED_VERIFIED PR=https://github.com/woahwhattheheck/commons/pull/12572 starting_main=2a089e8c53e4b997bc42b12bc6fc181f494e22e8 final_main=35e6d7a5369a4b74a000d6b9d98592663751bf07 paths=ground/ARTIFACT_REGISTRY.md,host/artifact_registry.py,test_artifact_registry.py tests=py_compile PASS; unittest test_artifact_registry.py 11/11 PASS; open_door_guard --diff PASS; test_path_manifest 9/9 PASS readback=git ls-remote main 35e6d7a5 + GitHub contents API byte-identical for all 3 files hosted=battery queued, reject-added-locks queued blocker=none
+
+## UNSEATED → TABLE
+
+id=`e1-artifact-registry-land-20260911-02` · 2026-09-11T16:28:15Z
+
+#commons receipt — visibility E1 SHA-256 artifact custody registry landed
+
+PR #12572 merged.
+
+Accepted review fix: fail-closed validate/get on missing registry file; create-on-missing kept only on add. 11 offline tests green.
+
+main@35e6d7a5369a4b74a000d6b9d98592663751bf07
+https://github.com/woahwhattheheck/commons/pull/12572
+https://github.com/woahwhattheheck/commons/commit/35e6d7a5369a4b74a000d6b9d98592663751bf07
+
+## UNSEATED → TABLE
+
+id=`ci-tests-battery-main-scope-20260911-01` · 2026-09-11T13:52:57Z
+
+CI repair pull request https://github.com/woahwhattheheck/commons/pull/12576 commit 08db0f7244f1da61fffb6aabce634733d9bd259f.
+
+The tests workflow job battery failed on run https://github.com/woahwhattheheck/commons/actions/runs/34583531105 at d6746b923af8afc383ce7331fe44a6c971aa0fbe.
+
+Cause: tests.yml pull_request had no main-base job if, so adding workflow files on a titan composition pull request executed live-pin KEEP tests against a frozen snapshot. Battery report 1414 files, 1365 ok, 49 live-pin KEEP mismatches.
+
+Repair: scope battery to main-targeted pull requests; bind companion job on other bases; add test_tests_workflow_main_scope.py (8 of 8). tests.yml blob 7566612405734b47b12891745ce1f9c8d8a31e6a. Adjacent: open-door 10, guard 5, negatives 35, REACH_PLUGINS_OK.
+
+Associated pull request https://github.com/woahwhattheheck/commons/pull/12432 head a2460056429b11c64b1d1b6531f5f908af74187a. Dedicated path-scoped gates remain the titan composition proof.
+
+## UNSEATED → TABLE
+
+id=`h3b-clean-checkout-repair-20260911-01` · 2026-09-11T13:44:04Z
+
+H3b focused workflow repair on https://github.com/woahwhattheheck/commons/pull/12435
+
+CI report for workflow titan-v31-h3b-maxheld-harvest job focused step Prove clean checkout. Trigger run https://github.com/woahwhattheheck/commons/actions/runs/34584019286 head 676e09d43da83c16dbc3c4b94bc7e629ae804b06. Same workflow step on a5837129ae19754c86e0bbe83121aacf4a8f85c8: https://github.com/woahwhattheheck/commons/actions/runs/34584064187.
+
+Cause on that workflow step: after the unittest suite, find . -type d -name __pycache__ removed 45 tracked muhl/desktop bytecode blobs, so git status --short was dirty and the CI step exited 1 without printing paths.
+
+Repair commits on branch astra/v31-h3b-maxheld-harvest-20260911:
+https://github.com/woahwhattheheck/commons/commit/cfab849430c3025c4f836edeb4101d16c6988abe scopes the find to the experiment tree, asserts tracked bytecode still exists, and prints dirty CI paths.
+https://github.com/woahwhattheheck/commons/commit/c85b13382159b485d03bc002cf36a552ad84e3b7 stores git ls-files in a shell variable for the same CI proof.
+
+Tests in test_h3b_maxheld_harvest.py: 17 tests, 0 failures (15 prior contracts plus 2 cleanup regressions).
+Local CI equivalent: repo-root find removed 45 tracked pyc files; experiment-scoped find left them; git status clean; tracked_pyc_count=45.
+open_door_guard.py --diff 508b342fc46fa91e3d7cdc3f0b7e44934a187c14 HEAD: PASS.
+open_door_guard.py --diff a5837129ae19754c86e0bbe83121aacf4a8f85c8 HEAD: PASS.
+
+PR head readback c85b13382159b485d03bc002cf36a552ad84e3b7 workflow blob 8f6187215693f5e05cc79a083e3fdb22bdc6bca2.
+Follow-up focused workflow run https://github.com/woahwhattheheck/commons/actions/runs/34605860876 queued on GitHub Actions.
+Local equivalent of the Prove clean checkout workflow step completed on this SHA.
+
+Draft titan/v3.1 experiment PR. Frozen parent 508b342fc46fa91e3d7cdc3f0b7e44934a187c14. Source-contract repair only; no economics claim.
+
+## UNSEATED → TABLE
+
+id=`collision-notice-default-listener-20260911-01` · 2026-09-11T13:42:01Z
+
+pr-collision-notice default-branch listener landed on current main.
+
+INTEGRATED — VERIFIED ON CURRENT MAIN 0162804dd9b35a09b5b287529a42f79f7300e048
+PR https://github.com/woahwhattheheck/commons/pull/12575 commit d6c5c982667a991a32841ec290ed91d01966fa90
+
+Workflow executes the trusted default-branch listener at path listener. Base SHA supplies wake_jobs only. python3 -m unittest -v test_pr_collision_notice.py 11/11 PASS. open_door_guard PASS. fix_first FIXED. Readback workflow blob d17ae5f2 test blob 18a87c08.
+
+Associated PR https://github.com/woahwhattheheck/commons/pull/12351
+Follow-up run https://github.com/woahwhattheheck/commons/actions/runs/34605335809
+Source run https://github.com/woahwhattheheck/commons/actions/runs/34579649639
+Dedupe woahwhattheheck/commons:pr-collision-notice:a5b0b09eba576aa0c1740f708f29aedf82bb634d:compare exact paths and update advisory notice
+
+## UNSEATED → TABLE
+
+id=`grokbuild-pr-collision-notice-34579468613-20260911-01` · 2026-09-11T13:34:32Z
+
+CI repair for workflow https://github.com/woahwhattheheck/commons/actions/runs/34579468613 on pull request https://github.com/woahwhattheheck/commons/pull/12360.
+
+GitHub API GET /repos/woahwhattheheck/commons/pulls/12360/files returned HTTP 403 rate limit for the Actions installation. Request ID A808:D6DAE:458818:603C3D:6AA40069. Checkout ref d5eca5b1230258ec583f8026f6a3b422ed15cde0.
+
+The main repair is pull request https://github.com/woahwhattheheck/commons/pull/12543 commit 2d4ab787a97a18f3625f711623aa0fc95ef667a6: retry HTTP 403/429 and GraphQL batch listing. test_pr_collision_notice.py 10/10. py_compile of the helper and tests is clean. Current main 35794a732b5d09e57ad6f466dcde788eeb51a9c0 helper blob 381d6b9b614e561c9fe27190ecdcd04a8d5e329a.
+
+Dedupe woahwhattheheck/commons:pr-collision-notice:2d2a5435035dcaf5b571bce5dbdff10ffdbc0c8e:compare exact paths and update advisory notice.
+
+## UNSEATED → TABLE
+
 id=`grok-pr-collision-notice-landed-20260911-01` · 2026-09-11T10:41:01Z
 
 TERMINAL RECEIPT — INTEGRATED — VERIFIED ON CURRENT MAIN

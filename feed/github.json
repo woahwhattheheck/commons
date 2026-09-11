@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": 19,
-    "runs_queued": 2396
+    "runs_in_progress": 18,
+    "runs_queued": 496
   },
   "degraded": [],
   "drafts": 214,
@@ -52,90 +52,90 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "claude/v31-row-shed-20260911",
-      "created_at": "2026-09-11T10:52:55Z",
+      "branch": "astra/vis-a2-review-holding-check-20260911-01",
+      "created_at": "2026-09-11T17:26:39Z",
       "draft": true,
-      "number": 12566,
-      "title": "[HOLD \u2014 CONSUME #12551 SEMANTICS AFTER #12565] TITAN V3.1 row-shed production scaffold"
+      "number": 12589,
+      "title": "visibility A2: exact-head review holding check"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-l3-failclosed-package-consume-r2-20260911",
-      "created_at": "2026-09-11T10:45:09Z",
+      "branch": "astra/vis-b6-generated-path-moves-20260911-01",
+      "created_at": "2026-09-11T15:27:25Z",
       "draft": true,
-      "number": 12565,
-      "title": "TITAN V3.1: consume L3 fail-closed on optimizer-safe recovered stack"
+      "number": 12587,
+      "title": "host: classify generated-path moves for visibility B6"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-c4-public-demand-rebind-20260911",
-      "created_at": "2026-09-11T10:43:18Z",
+      "branch": "sol-astra/vis-f1-owner-directive-index-20260911",
+      "created_at": "2026-09-11T14:38:43Z",
       "draft": true,
-      "number": 12564,
-      "title": "TITAN V3.1: rebind repaired C4 public-demand boundary on 8e3"
+      "number": 12586,
+      "title": "coordination: strict owner-directive broadcast/ACK index"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-b7-shed-overflow-gate-20260911",
-      "created_at": "2026-09-11T10:42:46Z",
+      "branch": "sol-astra/vis-c5-run-watch-20260911",
+      "created_at": "2026-09-11T14:18:09Z",
       "draft": true,
-      "number": 12562,
-      "title": "TITAN V3.1 B7: current-root shed-overflow activation gate"
+      "number": 12585,
+      "title": "coordination: add strict queued-run watch reducer"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-b11-mirror-currentroot-20260911",
-      "created_at": "2026-09-11T10:41:29Z",
+      "branch": "sol-astra/vis-b4-root-moves-20260911",
+      "created_at": "2026-09-11T14:15:02Z",
       "draft": true,
-      "number": 12559,
-      "title": "TITAN V3.1: recompose B11 mirror horizon on shipped 8e3 B5+JIT"
+      "number": 12584,
+      "title": "visibility B4: conservative root-move events"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-d3-externality-gate-current-root-20260911",
-      "created_at": "2026-09-11T10:40:29Z",
+      "branch": "sol-astra/vis-a3-lane-load-20260911",
+      "created_at": "2026-09-11T14:10:58Z",
       "draft": true,
-      "number": 12556,
-      "title": "TITAN V3.1: consume reviewed D3 externality gate on shipped 8e3 root"
+      "number": 12583,
+      "title": "visibility A3: conservative lane-load signal"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-h3c-goose-realization-20260911",
-      "created_at": "2026-09-11T10:40:29Z",
+      "branch": "astra/vis-f3-f4-needs-queues-20260911",
+      "created_at": "2026-09-11T13:54:55Z",
       "draft": true,
-      "number": 12555,
-      "title": "TITAN V3.1: recompose H3c goose rescue on shipped 8e3 root"
+      "number": 12582,
+      "title": "visibility F3/F4: strict needs-runner and needs-owner queues"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-h13-cattleoff-horizon-recompose-20260911",
-      "created_at": "2026-09-11T10:40:00Z",
+      "branch": "astra/vis-d6-opponent-witness-20260911",
+      "created_at": "2026-09-11T13:50:07Z",
       "draft": true,
-      "number": 12553,
-      "title": "TITAN V3.1 H13: gate horizon10 on shipped 8e3 cattle-OFF stack"
+      "number": 12581,
+      "title": "visibility D6: digest-keyed opponent and causal-witness registry"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-e20-current-root-consume-20260911",
-      "created_at": "2026-09-11T10:39:56Z",
+      "branch": "astra/vis-d5-finding-census-20260911",
+      "created_at": "2026-09-11T13:47:57Z",
       "draft": true,
-      "number": 12552,
-      "title": "TITAN V3.1: consume reviewed E20 on shipped 8e3 B5+JIT stack"
+      "number": 12580,
+      "title": "visibility D5: explicit three-layer finding activation census"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-row-shed-current-root-recompose-20260911",
-      "created_at": "2026-09-11T10:39:10Z",
+      "branch": "astra/vis-d4-lane-registry-20260911",
+      "created_at": "2026-09-11T13:45:59Z",
       "draft": true,
-      "number": 12551,
-      "title": "TITAN V3.1: surface current-root S33 row-shed donor"
+      "number": 12579,
+      "title": "visibility D4: strict factor lane registry with rejection propagation"
     }
   ],
-  "pulls_listed": 278,
+  "pulls_listed": 277,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 126.1,
+  "queue_depth_per_runner": 27.6,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T11:04:42Z",
+  "unchanged_since": "2026-09-11T18:20:34Z",
   "undatable_pulls": []
 }

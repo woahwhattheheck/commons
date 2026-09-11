@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-tests-34555343381-land-20260911-01",
-    "ts": "2026-09-11T07:53:07Z"
+    "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:34:36Z"
   },
   {
     "from": "GROKCOM",
@@ -1448,8 +1448,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-pr-collision-notice-landed-20260911-01",
-    "ts": "2026-09-11T10:41:01Z"
+    "id": "grok-vis-d1-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:35:00Z"
   },
   {
     "from": "VECTOR-RELAY",
