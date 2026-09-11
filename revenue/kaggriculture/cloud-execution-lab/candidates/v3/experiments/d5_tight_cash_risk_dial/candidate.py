@@ -21,6 +21,7 @@ any production/default decision.
 from __future__ import annotations
 
 from collections.abc import Mapping
+import math
 from pathlib import Path
 import sys
 from typing import Any
@@ -45,6 +46,20 @@ def _strict_int(value: Any, name: str) -> int:
     return value
 
 
+def _strict_money(value: Any, name: str) -> int:
+    """Accept the pinned engine's finite integral float money representation only.
+
+    ``_new_farm()`` initializes money with ``float(starting_money)`` and all
+    official price/cost mutations are integer-valued additions/subtractions, so
+    live observations carry integer-valued floats such as ``3000.0``.  Keep the
+    type contract exact: bools, ints, strings, fractional floats and non-finite
+    floats are ambiguous and fail closed.
+    """
+    if type(value) is not float or not math.isfinite(value) or not value.is_integer():
+        raise ValueError(f"{name} must be a finite integral float")
+    return int(value)
+
+
 def public_cash_gap(observation: Mapping[str, Any]) -> int:
     """Return |our public cash - rival public cash| for the two-player game."""
     if not isinstance(observation, Mapping):
@@ -60,7 +75,7 @@ def public_cash_gap(observation: Mapping[str, Any]) -> int:
     for index, farm in enumerate(farms):
         if not isinstance(farm, Mapping):
             raise ValueError(f"farms[{index}] must be a mapping")
-        money.append(_strict_int(farm.get("money"), f"farms[{index}].money"))
+        money.append(_strict_money(farm.get("money"), f"farms[{index}].money"))
     return abs(money[player] - money[1 - player])
 
 
