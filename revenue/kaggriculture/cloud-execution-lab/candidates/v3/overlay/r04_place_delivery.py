@@ -11,6 +11,8 @@ their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
 including multi-product cargo, stays untouched.  On overflow, scarce capacity
 goes to the highest public-price cargo first and excess cargo stays on workers.
+A single PLACE can name only one product, so overflow actors carrying multiple
+sellable products fail closed rather than underfilling capacity versus DROP.
 Malformed terminal step/shed/inventory/price/position/board state fails closed
 to the parent action.
 """
@@ -73,6 +75,7 @@ def apply_place_delivery(observation, action, enabled=False):
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
     payload = 0
     has_drop = False
+    multi_product_drop = False
     touched_products = {
         item for item, quantity in raw_shed.items()
         if item in r04.PRODUCTS and quantity > 0
@@ -86,16 +89,25 @@ def apply_place_delivery(observation, action, enabled=False):
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
             return action
+        sellable_products = 0
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
                 return action
             payload += held
             if item in r04.PRODUCTS and held > 0:
                 touched_products.add(item)
+                sellable_products += 1
+        if sellable_products > 1:
+            multi_product_drop = True
         has_drop = True
     if has_drop:
         remaining = max(0, int(r04.SHED_CAPACITY) - sum(raw_shed.values()))
         if payload <= remaining:
+            return action
+        # One unit action can PLACE only one named product. Rewriting a
+        # multi-product DROP could leave free shed slots that baseline DROP
+        # would have filled with the same actor's second product.
+        if multi_product_drop:
             return action
 
     # Overflow rewriting reprices PLACE priority and rebuilds terminal SELLs.
