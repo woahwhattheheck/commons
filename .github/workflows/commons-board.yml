@@ -136,23 +136,50 @@ jobs:
           # is open. JSON Lines, one pull per line; --pulls-complete is passed
           # only when the paginated read finished, otherwise the module
           # compares the listing with the open count and says PARTIAL.
+          # Each row keeps its head SHA, GitHub's updated_at and its base, so a
+          # session holding a reviewed or claimed head sees it move from one read.
           PULLS_COMPLETE=""
           if gh api --paginate "repos/$REPO/pulls?state=open&per_page=100&sort=created&direction=desc" \
-              --jq '.[]|{number,title,draft,created_at,user:{login:.user.login},head:{ref:.head.ref}}' \
+              --jq '.[]|{number,title,draft,created_at,updated_at,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
               > /tmp/open_pulls.jsonl 2>/dev/null; then
             PULLS_COMPLETE="--pulls-complete"
           else
             rm -f /tmp/open_pulls.jsonl
           fi
-          OPEN_PRS=$(gh api "search/issues?q=repo:$REPO+is:pr+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
-          OPEN_ISSUES=$(gh api "search/issues?q=repo:$REPO+is:issue+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
+          # The newest closures, merged or not, with the head that closed. One
+          # page of the most recently updated closed pulls; the module orders
+          # by closed_at. A failed call removes the file, and the module then
+          # names the closed listing as unread instead of showing no closures.
+          gh api "repos/$REPO/pulls?state=closed&sort=updated&direction=desc&per_page=30" \
+              --jq '.[]|{number,title,created_at,closed_at,merged_at,user:{login:.user.login},head:{ref:.head.ref,sha:.head.sha},base:{ref:.base.ref}}' \
+              > /tmp/closed_pulls.jsonl 2>/dev/null || rm -f /tmp/closed_pulls.jsonl
+          # Open counts from the repository's own totals first. The search
+          # index is a separate road that can lag: on 2026-09-11 a bake read 4
+          # open pull requests from search while its own listing held 100.
+          COUNTS_SOURCE=graphql
+          COUNTS=$(gh api graphql -f owner="${REPO%%/*}" -f name="${REPO#*/}" \
+              -f query='query($owner:String!,$name:String!){repository(owner:$owner,name:$name){pullRequests(states:OPEN){totalCount} issues(states:OPEN){totalCount}}}' \
+              --jq '"\(.data.repository.pullRequests.totalCount) \(.data.repository.issues.totalCount)"' 2>/dev/null || true)
+          OPEN_PRS="${COUNTS%% *}"
+          OPEN_ISSUES="${COUNTS#* }"
+          case "$COUNTS" in *" "*) ;; *) OPEN_ISSUES="" ;; esac
+          case "$OPEN_PRS" in ''|*[!0-9]*) OPEN_PRS="" ;; esac
+          case "$OPEN_ISSUES" in ''|*[!0-9]*) OPEN_ISSUES="" ;; esac
+          if [ -z "$OPEN_PRS" ]; then
+            COUNTS_SOURCE=search
+            OPEN_PRS=$(gh api "search/issues?q=repo:$REPO+is:pr+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
+            OPEN_ISSUES=$(gh api "search/issues?q=repo:$REPO+is:issue+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
+          fi
+          [ -n "$OPEN_PRS" ] || COUNTS_SOURCE=""
           RUNS_QUEUED=$(gh api "repos/$REPO/actions/runs?per_page=1&status=queued" --jq .total_count 2>/dev/null || true)
           RUNS_RUNNING=$(gh api "repos/$REPO/actions/runs?per_page=1&status=in_progress" --jq .total_count 2>/dev/null || true)
           python3 -m host.github_state --write --repository "$REPO" \
+            ${COUNTS_SOURCE:+--counts-source "$COUNTS_SOURCE"} \
             ${OPEN_PRS:+--open-prs "$OPEN_PRS"} \
             ${OPEN_ISSUES:+--open-issues "$OPEN_ISSUES"} \
             ${RUNS_QUEUED:+--runs-queued "$RUNS_QUEUED"} \
             ${RUNS_RUNNING:+--runs-in-progress "$RUNS_RUNNING"} \
+            --closed /tmp/closed_pulls.jsonl \
             $([ -f /tmp/open_pulls.jsonl ] && echo --pulls /tmp/open_pulls.jsonl $PULLS_COMPLETE) || true
           # The module replaces feed/github.json atomically, so a failure above
           # leaves the previous bytes. Still, never stage a bake that does not
