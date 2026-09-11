@@ -1,0 +1,105 @@
+name: titan-v31-authoritative-receipt-guard
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/validate_official_gate_receipt.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_validate_official_gate_receipt.py'
+      - '.github/workflows/titan-v31-authoritative-receipt-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-receipt-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact parent, frozen base, scope, and reviewed blobs
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_BASE: ${{ github.event.pull_request.base.sha || '' }}
+        run: |
+          set -euo pipefail
+          PARENT=3b08f36fd4d51dee298ed24dfe54944c917a6049
+          FROZEN=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          VALIDATOR=revenue/kaggriculture/cloud-execution-lab/candidates/v3/validate_official_gate_receipt.py
+          TESTS=revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_validate_official_gate_receipt.py
+          WORKFLOW=.github/workflows/titan-v31-authoritative-receipt-guard.yml
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          if [ -n "$EVENT_BASE" ]; then test "$EVENT_BASE" = "$PARENT"; fi
+          git cat-file -e "$PARENT^{commit}"
+          git cat-file -e "$FROZEN^{commit}"
+          git merge-base --is-ancestor "$FROZEN" HEAD
+
+          test "$(git rev-parse "HEAD:$VALIDATOR")" = "64cc9aa7777d8f4d3b3b91837d6b23bea50066e9"
+          test "$(git rev-parse "HEAD:$TESTS")" = "445f83d6c8367393f57eabbab8281383b7931f1f"
+
+          python - <<'PY'
+          import subprocess
+
+          frozen = '508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', frozen, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-authoritative-receipt-guard.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/validate_official_gate_receipt.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_validate_official_gate_receipt.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected receipt-guard scope: {sorted(actual)}')
+          print('V31_RECEIPT_SCOPE_OK', len(actual))
+          PY
+
+          test "$(git diff --name-only "$PARENT" HEAD)" = "$WORKFLOW"
+          git diff --check "$FROZEN" HEAD
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile exact validator and tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile \
+            validate_official_gate_receipt.py \
+            test_validate_official_gate_receipt.py
+
+      - name: Run focused receipt contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_validate_official_gate_receipt.py |& tee /tmp/v31-receipt.log
+          grep -F 'Ran 19 tests' /tmp/v31-receipt.log
+          grep -F 'OK' /tmp/v31-receipt.log
+
+      - name: Re-run contracts with assertions optimized out
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONOPTIMIZE=1 python -B -m unittest -v test_validate_official_gate_receipt.py |& tee /tmp/v31-receipt-opt.log
+          grep -F 'Ran 19 tests' /tmp/v31-receipt-opt.log
+          grep -F 'OK' /tmp/v31-receipt-opt.log
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --porcelain)"
