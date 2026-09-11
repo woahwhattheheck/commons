@@ -183,6 +183,14 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(out["resolved_via"], "explicit-pr")
         self.assertEqual(transport.text_calls, [])
 
+    def test_implicit_review_coordination_failure_is_not_not_indexed(self):
+        failure = ResolutionError("NETWORK_ERROR", "coordination unavailable")
+        transport = FakeTransport(text_by_url={"https://coord.example/state": failure})
+        with self.assertRaises(ResolutionError) as caught:
+            resolver(transport).resolve("review:222")
+        self.assertEqual(caught.exception.code, "NETWORK_ERROR")
+        self.assertEqual(transport.json_calls, [])
+
     def test_marker_prefers_exact_coordination_index(self):
         rows = json.dumps(
             [
@@ -210,6 +218,21 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(out["resolved_via"], "coordination-index")
         self.assertEqual(out["target"]["state"], "MERGED")
         self.assertFalse(any("/search/issues" in url for url in transport.json_calls))
+
+    def test_marker_coordination_failure_does_not_fallback_to_search(self):
+        failure = ResolutionError("NETWORK_ERROR", "coordination unavailable")
+        transport = FakeTransport(
+            text_by_url={"https://coord.example/state": failure},
+            json_by_url={
+                "https://api.example/search/issues?q=repo%3Ao%2Fr+is%3Apr+%22LANE-X%22&per_page=10": {
+                    "items": [{"number": 12, "pull_request": {"url": "p12"}}]
+                }
+            },
+        )
+        with self.assertRaises(ResolutionError) as caught:
+            resolver(transport).resolve("marker:LANE-X")
+        self.assertEqual(caught.exception.code, "NETWORK_ERROR")
+        self.assertEqual(transport.json_calls, [])
 
     def test_marker_search_requires_unique_pr(self):
         rows = "[]"
