@@ -42,7 +42,7 @@ jobs:
           set -euo pipefail
           test "$(git merge-base 14dbbc4940262790f7e21c0bdc7a941842f238ba HEAD)" = "14dbbc4940262790f7e21c0bdc7a941842f238ba"
           cd "$REPAIR"
-          echo "2994447565c3830fbbc3c3e9b4528cb6d31c8179b9944616bc6bb2a4734c4b81  SERIES.json" | sha256sum --check --strict
+          echo "63bf980ecf93cdc49434ce7880c2142d4110c38794dd70afb0157ac5f595ced9  SERIES.json" | sha256sum --check --strict
           echo "581cbad954c8fcb07b05567cb1300737313f27ed0f757e7dafea9d03dcbaf3bb  S17-HARDENING-RECEIPT.json" | sha256sum --check --strict
           python - <<'PY'
           from pathlib import Path
