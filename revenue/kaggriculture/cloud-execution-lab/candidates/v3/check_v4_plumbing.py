@@ -5,8 +5,8 @@ The current PR's ``apply_v4.KEYS`` is compared with the target branch copy suppl
 by CI.  Every key already present on the target must survive.  The candidate is then
 materialised through the real V3/V4 build recipe and each head key is required to be
 present in config and ``Features`` with a default-OFF source landing.  R04 keys also
-must retain their router flag, install parameter/setter, stack seam, and TitanAgent
-install wiring.
+must retain their router flag, install parameter/setter, a live action-router seam,
+and TitanAgent install wiring.
 
 This checker intentionally derives the contract from the moving target branch rather
 than maintaining a second key ledger.
@@ -118,6 +118,37 @@ def _find_function(tree: ast.AST, name: str) -> ast.FunctionDef:
     raise AssertionError(f"materialized r04_full_router.py has no {name}()")
 
 
+def _function_reads_flag_and_imports_module(function: ast.FunctionDef, flag: str, module: str) -> bool:
+    reads_flag = any(
+        isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Load)
+        for node in ast.walk(function)
+    )
+    imports_module = any(
+        isinstance(node, ast.Import) and any(alias.name == module for alias in node.names)
+        for node in ast.walk(function)
+    )
+    return reads_flag and imports_module
+
+
+def _router_action_seam(router_tree: ast.AST, flag: str, module: str) -> str | None:
+    """Return the live router function that gates/imports a V4 helper.
+
+    V4 has two legitimate composition positions today:
+    - ``_v3_stack`` for inner transforms such as PLACE/H3d;
+    - ``v3_agent`` for outer transforms such as B10 that must see the final
+      action after B9/H3c wrappers.
+
+    Requiring both the flag read and helper import in the same action-building
+    function avoids accepting a dead flag in one function plus an unrelated import
+    elsewhere in the module.
+    """
+    for function_name in ("_v3_stack", "v3_agent"):
+        function = _find_function(router_tree, function_name)
+        if _function_reads_flag_and_imports_module(function, flag, module):
+            return function_name
+    return None
+
+
 def _assert_r04_router_contract(router_tree: ast.AST, runtime_tree: ast.AST, key: str) -> None:
     suffix = key.removeprefix("r04_")
     flag = suffix.upper()
@@ -131,12 +162,10 @@ def _assert_r04_router_contract(router_tree: ast.AST, runtime_tree: ast.AST, key
     assert any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Store)
                for node in ast.walk(install)), f"{key}: router install() never sets {flag}"
 
-    stack = _find_function(router_tree, "_v3_stack")
-    assert any(isinstance(node, ast.Name) and node.id == flag and isinstance(node.ctx, ast.Load)
-               for node in ast.walk(stack)), f"{key}: _v3_stack() never reads {flag}"
-    assert any(isinstance(node, ast.Import)
-               and any(alias.name == module for alias in node.names)
-               for node in ast.walk(stack)), f"{key}: _v3_stack() never imports {module}"
+    seam = _router_action_seam(router_tree, flag, module)
+    assert seam is not None, (
+        f"{key}: neither _v3_stack() nor v3_agent() both reads {flag} and imports {module}"
+    )
 
     assert _runtime_install_wired(runtime_tree, key, suffix), (
         f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)"
