@@ -1,0 +1,148 @@
+name: TITAN V3.1 H1 realization gate
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-h1-realization-gate.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/baseline.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/realization_report.py'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-paired-realization-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind parent, scope, and reviewed gameplay bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='27cc9236fc0034c8e84b580ba6501da5e3b1a8a1'
+          H1='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest.py'
+          CAND='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/candidate.py'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git hash-object "$H1")" = '9d72a68c777b1a1c801c6f3bd461e8caf7283b4f'
+          test "$(git hash-object "$CAND")" = '1633a759b7640411ceacdde194c249ea463e5843'
+          test "$(git hash-object "$R04")" = '21c4f1db0298f8955b1f5ad366bd780a89cad206'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          python3 - <<'PY'
+          import subprocess
+          base = '27cc9236fc0034c8e84b580ba6501da5e3b1a8a1'
+          expected = {
+              '.github/workflows/titan-v31-h1-realization-gate.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/realization_report.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}...HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'wrong H1 execution-gate scope: actual={sorted(actual)!r} expected={sorted(expected)!r}')
+          PY
+
+      - name: Syntax-check evidence carrier without dirtying checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/realization_report.py',
+          ):
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run exact V3.1 control self-play panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/baseline.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$BASE" \
+            --opponent "v31=$BASE" \
+            --seeds 2611151001,2611151002 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h1-control.json
+
+      - name: Run H1 against the same exact V3.1 cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/baseline.py'
+          H1='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/candidate.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$H1" \
+            --opponent "v31=$BASE" \
+            --seeds 2611151001,2611151002 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h1-candidate.json
+
+      - name: Derive paired realization verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h1_terminal_harvest/realization_report.py \
+            /tmp/h1-control.json /tmp/h1-candidate.json \
+            --json-out /tmp/h1-realization.json \
+            --markdown-out /tmp/h1-realization.md
+          cat /tmp/h1-realization.md
+          cat /tmp/h1-realization.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: h1-realization-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/h1-control.json
+            /tmp/h1-candidate.json
+            /tmp/h1-realization.json
+            /tmp/h1-realization.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/h1-realization.md
+            printf '\nThis is an execution screen only; gameplay bytes are inherited unchanged from #12416 exact `27cc9236fc0034c8e84b580ba6501da5e3b1a8a1`.\n'
+          } > /tmp/h1-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/h1-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
