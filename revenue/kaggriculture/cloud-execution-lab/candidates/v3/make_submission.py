@@ -9,7 +9,7 @@ only the submission config transform:
 * r04_sale_window = true;
 * r04_sale_fertilizer = true;
 * r04_cattle_early = false;
-* r04_sale_horizon is optionally overridden by argv[4].
+* r04_sale_horizon = 8 unless argv[4] supplies a positive integer override.
 
 The cattle default is intentionally OFF for the score-facing submission after the
 2026-09-11 opponent-diverse field harm check: 1,984 games/arm against 14 published
@@ -24,6 +24,7 @@ import sys
 from typing import Mapping
 
 
+DEFAULT_SUBMISSION_HORIZON = 8
 SUBMISSION_KEYS = (
     "r03_full_router",
     "r04_sale_window",
@@ -40,6 +41,12 @@ def _require_bool(config: Mapping[str, object], key: str) -> None:
         raise AssertionError(f"{key} must exist as a JSON boolean before submission transform")
 
 
+def _positive_int(value, label):
+    if type(value) is not int or value <= 0:
+        raise AssertionError(f"{label} must be a positive integer")
+    return value
+
+
 def apply_submission_config(files, horizon=None):
     """Return a detached package-file mapping with the field-gated submission config.
 
@@ -52,16 +59,17 @@ def apply_submission_config(files, horizon=None):
         raise AssertionError("TITAN-CONFIG.json must decode to an object")
     for key in ("r04_sale_window", "r04_sale_fertilizer", "r04_cattle_early"):
         _require_bool(config, key)
+    _positive_int(config.get("r04_sale_horizon"), "base r04_sale_horizon")
     if config["r04_sale_window"] is not False:
         raise AssertionError("base package must ship with r04_sale_window=false")
 
+    target_horizon = DEFAULT_SUBMISSION_HORIZON if horizon is None else _positive_int(
+        horizon, "submission horizon"
+    )
     config["r04_sale_window"] = True
+    config["r04_sale_horizon"] = target_horizon
     config["r04_sale_fertilizer"] = True
     config["r04_cattle_early"] = False
-    if horizon is not None:
-        if type(horizon) is not int or horizon <= 0:
-            raise AssertionError("submission horizon must be a positive integer")
-        config["r04_sale_horizon"] = horizon
 
     out["TITAN-CONFIG.json"] = (json.dumps(config, indent=2) + "\n").encode("utf-8")
     return out, config
