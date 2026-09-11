@@ -29,6 +29,7 @@ jobs:
           set -euo pipefail
           BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
           PATCH="$V3/experiments/l3_failclosed_consume_8e3/repair.patch"
@@ -39,6 +40,7 @@ jobs:
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
           test "$(git rev-parse "$BASE:$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -173,18 +175,20 @@ jobs:
                     ref: __EVENT_HEAD_EXPR__
                     fetch-depth: 0
 
-                - name: Bind exact event base, live base, final scope, and shipped bytes
+                - name: Bind exact event base, live base, live canonical, final scope, and shipped bytes
                   shell: bash
                   run: |
                     set -euo pipefail
                     EXPECTED_HEAD='__EVENT_HEAD_EXPR__'
                     EXPECTED_BASE='__EVENT_BASE_EXPR__'
                     BASE_REF='__EVENT_BASE_REF_EXPR__'
+                    CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
                     V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
                     test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
                     test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
                     git fetch --no-tags origin "$BASE_REF"
                     test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_BASE"
+                    test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
                     test "$(git hash-object "$V3/overlay/r04_full_router.py")" = '__POST_BOOTSTRAP_ROUTER_BLOB__'
                     test "$(git hash-object "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
                     test "$(git hash-object "$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -321,21 +325,24 @@ jobs:
           PY
           git diff --cached --check
 
-      - name: Recheck live base then commit with feature-head compare-and-swap
+      - name: Recheck live base and canonical then commit with feature-head compare-and-swap
         shell: bash
         run: |
           set -euo pipefail
           BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          CANONICAL='8e3d92a286806f9f9525973ee7d359b629a11487'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
           HEAD_REF='${{ github.event.pull_request.head.ref }}'
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           REMOTE_BEFORE="$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')"
           test "$REMOTE_BEFORE" = "$EXPECTED_HEAD"
           git config user.name 'Astra Titan Integration'
           git config user.email 'actions@users.noreply.github.com'
           git commit -m 'TITAN V3.1: make rival-gated L3 fail closed on recovered B5+JIT stack'
           FINAL_HEAD="$(git rev-parse HEAD)"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           git push origin "HEAD:refs/heads/$HEAD_REF"
           echo "L3 r2 production consumer pushed $FINAL_HEAD"
