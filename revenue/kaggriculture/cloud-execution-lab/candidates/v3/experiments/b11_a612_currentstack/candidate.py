@@ -14,8 +14,9 @@ from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-V3 = HERE.parents[2]
-OVERLAY = V3 / "overlay"
+# In-repo: .../v3/experiments/b11_a612_currentstack.  Materialized evaluator:
+# candidate.py is copied directly beside r04_full_router.py in the package root.
+OVERLAY = HERE.parents[1] / "overlay" if HERE.parent.name == "experiments" else HERE
 for path in (HERE, OVERLAY):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
