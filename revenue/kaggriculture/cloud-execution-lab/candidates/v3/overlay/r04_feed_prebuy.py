@@ -28,25 +28,45 @@ def _plain_nonnegative_int(value):
 
 
 def _config_ok(configuration, r04):
+    """Require the exact standard geometry/timing/capacity contract V217 assumes."""
     if configuration is None:
         return True
     if not isinstance(configuration, dict):
         return False
+    expected = {
+        "boardSize": 10,
+        "turnsPerDay": 24,
+        "shedCapacity": int(r04.SHED_CAPACITY),
+        "maxMarketOrdersPerTurn": int(r04.MAX_ORDERS),
+    }
+    for key, default in expected.items():
+        value = configuration.get(key, default)
+        if type(value) is not int or value != default:
+            return False
     market_params = configuration.get("marketParams")
-    if market_params not in (None, {}):
+    if market_params is not None and not isinstance(market_params, dict):
         return False
-    cap = configuration.get("maxMarketOrdersPerTurn", r04.MAX_ORDERS)
-    return type(cap) is int and cap >= 1
+    return not market_params
 
 
-def _all_pass(action):
-    if not isinstance(action, dict):
+def _all_pass(observation, action):
+    """Prove every currently owned actor has one literal PASS action row."""
+    if not isinstance(action, dict) or not isinstance(observation, dict):
         return False
-    farmer = action.get("farmer") or ["PASS"]
-    hands = action.get("hands") or []
+    player = observation.get("player")
+    farms = observation.get("farms")
+    if type(player) is not int or not isinstance(farms, list) or not 0 <= player < len(farms):
+        return False
+    farm = farms[player]
+    if not isinstance(farm, dict) or not isinstance(farm.get("hands"), list):
+        return False
+    farmer = action.get("farmer")
+    hands = action.get("hands")
     if not isinstance(farmer, list) or not isinstance(hands, list):
         return False
-    return farmer == ["PASS"] and all(command == ["PASS"] for command in hands)
+    if farmer != ["PASS"] or len(hands) != len(farm["hands"]):
+        return False
+    return all(isinstance(command, list) and command == ["PASS"] for command in hands)
 
 
 def _proxy_view(observation, quantity, r04):
@@ -127,7 +147,7 @@ def _next_v217_task(observation, action, quantity, r04):
 
 
 def _purchase_quantity(observation, action, configuration, r04):
-    if not _config_ok(configuration, r04) or not _all_pass(action):
+    if not _config_ok(configuration, r04) or not _all_pass(observation, action):
         return None
     market = action.get("market")
     if not isinstance(market, list) or market:
