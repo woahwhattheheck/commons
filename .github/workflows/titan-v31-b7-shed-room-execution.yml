@@ -1,0 +1,86 @@
+name: titan-v31-b7-shed-room-execution
+
+on:
+  pull_request:
+    branches:
+      - 'astra/v31-b7-shed-room-drop-guard-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/baseline.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py'
+      - '.github/workflows/titan-v31-b7-shed-room-execution.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b7-shed-room-execution-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  paired-official-interpreter-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Compile gate files in memory
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in ('baseline.py', 'candidate.py', 'run_gate.py'):
+              path = Path(name)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('B7 EXECUTION COMPILE OK')
+          PY
+
+      - name: Run frozen 8-seed x both-seat paired gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b7-shed-room-gate"
+          mkdir -p "$OUT"
+          env -u PYTHONOPTIMIZE python -B \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" | tee "$OUT/run.log"
+          grep -F 'B7_GATE_RESULT ' "$OUT/run.log"
+          test -s "$OUT/b7-execution-receipt.json"
+          test -s "$OUT/b7-control-baseline-vs-baseline.json"
+          test -s "$OUT/b7-candidate-vs-baseline.json"
+
+      - name: Prove evidence-only child scope
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/b7-gate-changed
+          cat /tmp/b7-gate-changed
+          while IFS= read -r path; do
+            case "$path" in
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/baseline.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py|.github/workflows/titan-v31-b7-shed-room-execution.yml) ;;
+              *) echo "unexpected path in B7 execution child: $path" >&2; exit 1 ;;
+            esac
+          done < /tmp/b7-gate-changed
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact B7 gate receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-b7-shed-room-gate-${{ github.run_id }}
+          path: ${{ runner.temp }}/b7-shed-room-gate/
+          if-no-files-found: error
+          retention-days: 14
