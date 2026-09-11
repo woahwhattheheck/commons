@@ -488,6 +488,24 @@ def _margin(game):
     return float(game["scores"][seat]) - float(game["scores"][1 - seat])
 
 
+def _classify_cells(cells):
+    shifted = [row for row in cells if row.get("shift")]
+    activated = [row for row in shifted if row["shift"].get("all_shifted_events_executed")]
+    negative = [row for row in activated if row["delta_margin"] < 0]
+    positive = [row for row in activated if row["delta_margin"] > 0]
+    if any(row["shift"].get("suppression_failures") for row in shifted):
+        disposition = "REJECT_SUPPRESSION_PROVENANCE_MISMATCH"
+    elif not activated:
+        disposition = "NO_RUNTIME_COMPLETE_CHAIN_ON_PANEL"
+    elif negative:
+        disposition = "HOLD_RUNTIME_CHAIN_HAS_NEGATIVE_CELL"
+    elif positive:
+        disposition = "PROMISING_FULLCHAIN_RUNTIME_WIDEN_REQUIRED"
+    else:
+        disposition = "HOLD_FULLCHAIN_EXECUTES_WITHOUT_MONEY_GAIN"
+    return activated, negative, positive, disposition
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
@@ -521,19 +539,7 @@ def main(argv=None):
                 "shift": candidate["shift"],
             })
 
-    activated = [row for row in cells if row["shift"] and row["shift"].get("all_shifted_events_executed")]
-    negative = [row for row in activated if row["delta_margin"] < 0]
-    positive = [row for row in activated if row["delta_margin"] > 0]
-    if not activated:
-        disposition = "NO_RUNTIME_COMPLETE_CHAIN_ON_PANEL"
-    elif any(row["shift"].get("suppression_failures") for row in activated):
-        disposition = "REJECT_SUPPRESSION_PROVENANCE_MISMATCH"
-    elif negative:
-        disposition = "HOLD_RUNTIME_CHAIN_HAS_NEGATIVE_CELL"
-    elif positive:
-        disposition = "PROMISING_FULLCHAIN_RUNTIME_WIDEN_REQUIRED"
-    else:
-        disposition = "HOLD_FULLCHAIN_EXECUTES_WITHOUT_MONEY_GAIN"
+    activated, negative, positive, disposition = _classify_cells(cells)
 
     report = {
         "schema": "titan-v31-b4-fullchain-feasibility/v1",
