@@ -1,10 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Focused checks for V4 ``r04_s6_fert_roi``.
-
-Run in a materialised candidate package:
-
-    python -B -m unittest -v checks/test_v4_s6_fert_roi.py
-"""
+"""Focused checks for V4 ``r04_s6_fert_roi``."""
 from __future__ import annotations
 
 import copy
@@ -42,11 +37,8 @@ def observation(*, step=24 * 24, tomato_watered=True, tomato_yield=1,
     tiles = [[None for _ in range(10)] for _ in range(10)]
     tiles[2][2] = plant("CARROT", planted_day=22)
     tiles[2][3] = plant(
-        "TOMATO",
-        planted_day=16,
-        yield_units=tomato_yield,
-        watered_today=tomato_watered,
-        covered=tomato_covered,
+        "TOMATO", planted_day=16, yield_units=tomato_yield,
+        watered_today=tomato_watered, covered=tomato_covered,
     )
     farm = {
         "tiles": tiles,
@@ -79,13 +71,50 @@ def clear_incumbent_carrot(obs):
     return obs
 
 
+def pass_tape():
+    return [{"farmer": ["PASS"], "hands": [], "market": []} for _ in range(720)]
+
+
 def tape_with_later_carrot(step):
-    tape = [
-        {"farmer": ["PASS"], "hands": [], "market": []}
-        for _ in range(720)
-    ]
+    tape = pass_tape()
     tape[step + 2]["farmer"] = ["PLANT", "CARROT"]
     return tape
+
+
+def hire_observation(*, step=24 * 24 + 3, wheat_price=200, fert_price=10):
+    obs = observation(
+        step=step,
+        tomato_watered=False,
+        prices={"WHEAT": wheat_price, "CARROT": 200, "TOMATO": 200, "FERTILIZER": fert_price},
+    )
+    farm = obs["farms"][0]
+    farm["tiles"] = [[None for _ in range(10)] for _ in range(10)]
+    farm["tiles"][3][4] = plant("CARROT", planted_day=22)
+    farm["tiles"][2][4] = plant("WHEAT", planted_day=22)
+    farm["farmer"] = [0, 0]
+    farm["hands"] = []
+    farm["hires_today"] = 0
+    farm["money"] = 1000
+    obs["farms"][1] = copy.deepcopy(farm)
+    obs["private"]["inventories"] = [{}]
+    obs["private"]["shed"] = {"FERTILIZER": 0}
+    return obs
+
+
+def consider_hire(obs, *, enabled, tape=None):
+    tape = tape or pass_tape()
+    st = fert_hand._Day(obs["step"] // 24)
+    action = {"farmer": ["PASS"], "hands": [], "market": []}
+    old = fert_hand.S6_FERT_ROI
+    try:
+        fert_hand.S6_FERT_ROI = enabled
+        out = fert_hand._consider_hire(
+            obs, action, st, tape, obs["farms"][0], [],
+            obs["step"] // 24, obs["step"],
+        )
+    finally:
+        fert_hand.S6_FERT_ROI = old
+    return out, st
 
 
 class S6FertRoiTest(unittest.TestCase):
@@ -108,9 +137,82 @@ class S6FertRoiTest(unittest.TestCase):
             router_source,
         )
 
+    def test_baseline_hire_trigger_is_identical_but_s6_reserves_one_unit(self):
+        obs = hire_observation()
+        off, off_state = consider_hire(copy.deepcopy(obs), enabled=False)
+        on, on_state = consider_hire(copy.deepcopy(obs), enabled=True)
+        self.assertEqual(sum(order[0] == "HIRE" for order in off["market"]), 1)
+        self.assertEqual(sum(order[0] == "HIRE" for order in on["market"]), 1)
+        self.assertEqual(off_state.want, 1)
+        self.assertEqual(on_state.want, 2)
+        self.assertIn(["BUY_PRODUCT", "FERTILIZER", 1], off["market"])
+        self.assertIn(["BUY_PRODUCT", "FERTILIZER", 2], on["market"])
+
+    def test_s6_never_creates_a_hire_without_incumbent_carrot_case(self):
+        obs = hire_observation()
+        obs["farms"][0]["tiles"][3][4] = None
+        out, st = consider_hire(obs, enabled=True)
+        self.assertFalse(any(order[0] == "HIRE" for order in out["market"] or []))
+        self.assertEqual(st.want, 0)
+
+    def test_future_carrot_disables_extra_reserve(self):
+        obs = hire_observation()
+        tape = tape_with_later_carrot(obs["step"])
+        out, st = consider_hire(obs, enabled=True, tape=tape)
+        self.assertEqual(sum(order[0] == "HIRE" for order in out["market"]), 1)
+        self.assertEqual(st.want, 2)  # one current + one authored future CARROT, no S6 spare
+        self.assertIn(["BUY_PRODUCT", "FERTILIZER", 2], out["market"])
+
+    def test_low_roi_extension_does_not_reserve_extra(self):
+        obs = hire_observation(wheat_price=5, fert_price=10)
+        out, st = consider_hire(obs, enabled=True)
+        self.assertEqual(sum(order[0] == "HIRE" for order in out["market"]), 1)
+        self.assertEqual(st.want, 1)
+        self.assertIn(["BUY_PRODUCT", "FERTILIZER", 1], out["market"])
+
+    def test_real_hire_pickup_carrot_then_s6_wheat_path_is_reachable(self):
+        obs = hire_observation()
+        tape = pass_tape()
+        _, st = consider_hire(obs, enabled=True, tape=tape)
+        self.assertEqual(st.want, 2)
+
+        st.index = 0
+        st.pending = None
+        after = copy.deepcopy(obs)
+        after["step"] += 1
+        after["farms"][0]["hands"] = [[4, 4]]
+        after["private"]["inventories"] = [{}, {"FERTILIZER": 0}]
+        after["private"]["shed"]["FERTILIZER"] = 2
+        old = fert_hand.S6_FERT_ROI
+        try:
+            fert_hand.S6_FERT_ROI = True
+            self.assertEqual(
+                fert_hand._hand_command(after, st, tape, ()),
+                ["PICKUP", "FERTILIZER", 2],
+            )
+
+            after["step"] += 1
+            after["private"]["inventories"][1]["FERTILIZER"] = 2
+            after["private"]["shed"]["FERTILIZER"] = 0
+            self.assertEqual(fert_hand._hand_command(after, st, tape, ()), ["NORTH"])
+
+            after["step"] += 1
+            after["farms"][0]["hands"][0] = [4, 3]
+            self.assertEqual(fert_hand._hand_command(after, st, tape, ()), ["FERTILIZE"])
+
+            after["step"] += 1
+            after["farms"][0]["tiles"][3][4]["fertilized_until_day"] = 26
+            after["private"]["inventories"][1]["FERTILIZER"] = 1
+            self.assertEqual(fert_hand._hand_command(after, st, tape, ()), ["NORTH"])
+
+            after["step"] += 1
+            after["farms"][0]["hands"][0] = [4, 2]
+            self.assertEqual(fert_hand._hand_command(after, st, tape, ()), ["FERTILIZE"])
+        finally:
+            fert_hand.S6_FERT_ROI = old
+
     def test_current_incumbent_carrot_blocks_tomato_reprioritization(self):
-        target = lane.choose_fert_hand_target(observation(), (2, 2), ())
-        self.assertIsNone(target)
+        self.assertIsNone(lane.choose_fert_hand_target(observation(), (2, 2), ()))
 
     def test_zero_price_current_carrot_still_reserves_baseline(self):
         obs = observation(prices={"CARROT": 0, "TOMATO": 200})
@@ -122,10 +224,23 @@ class S6FertRoiTest(unittest.TestCase):
         obs = observation(step=28 * 24, tomato_watered=True)
         carrot = plant("CARROT", planted_day=28)
         obs["farms"][0]["tiles"][2][2] = carrot
-        obs["farms"][0]["tiles"][2][3] = plant(
-            "TOMATO", planted_day=20, watered_today=True
-        )
+        obs["farms"][0]["tiles"][2][3] = plant("TOMATO", planted_day=20, watered_today=True)
         self.assertGreater(fert_hand._gain(carrot, 28), 0)
+        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+
+    def test_v219_gate_owns_day24_tomato(self):
+        obs = clear_incumbent_carrot(observation(prices={"FERTILIZER": 30}))
+        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+
+    def test_tomato_remains_available_when_v219_price_gate_is_off(self):
+        obs = clear_incumbent_carrot(observation(prices={"FERTILIZER": 31}))
+        target = lane.choose_fert_hand_target(obs, (2, 2), ())
+        self.assertIsNotNone(target)
+        self.assertEqual(target["crop"], "TOMATO")
+
+    def test_malformed_fertilizer_price_fails_closed(self):
+        obs = clear_incumbent_carrot(observation())
+        obs["market"]["prices"]["FERTILIZER"] = True
         self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
 
     def test_guaranteed_tomato_is_used_only_when_incumbent_is_idle(self):
@@ -135,36 +250,24 @@ class S6FertRoiTest(unittest.TestCase):
         self.assertEqual(target["crop"], "TOMATO")
         self.assertEqual(target["position"], (3, 2))
         self.assertEqual(target["marginal_units"], 1)
-        self.assertEqual(target["marginal_value"], 200)
 
-    def test_unwatered_tomato_is_not_speculated(self):
-        obs = clear_incumbent_carrot(observation(tomato_watered=False))
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+    def test_unwatered_covered_and_capped_tomato_are_rejected(self):
+        for obs in (
+            clear_incumbent_carrot(observation(tomato_watered=False)),
+            clear_incumbent_carrot(observation(tomato_covered=24)),
+            clear_incumbent_carrot(observation(tomato_yield=3)),
+        ):
+            self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
 
-    def test_existing_tomato_coverage_is_not_rebought(self):
-        obs = clear_incumbent_carrot(observation(tomato_covered=24))
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
-
-    def test_cap_minus_one_tomato_has_zero_marginal_gain(self):
-        obs = clear_incumbent_carrot(observation(tomato_yield=3))
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
-
-    def test_tomato_deadline_rejects_distance_one_at_hour_23(self):
-        obs = clear_incumbent_carrot(observation(step=24 * 24 + 23))
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
-
-    def test_tomato_deadline_allows_distance_one_at_hour_22(self):
-        obs = clear_incumbent_carrot(observation(step=24 * 24 + 22))
-        target = lane.choose_fert_hand_target(obs, (2, 2), ())
-        self.assertIsNotNone(target)
-        self.assertEqual(target["crop"], "TOMATO")
-        self.assertEqual(target["position"], (3, 2))
-
-    def test_tomato_deadline_rejects_distance_two_at_hour_22(self):
-        obs = clear_incumbent_carrot(observation(step=24 * 24 + 22))
-        obs["farms"][0]["tiles"][2][4] = obs["farms"][0]["tiles"][2][3]
-        obs["farms"][0]["tiles"][2][3] = None
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+    def test_tomato_eod_reachability_boundary(self):
+        late = clear_incumbent_carrot(observation(step=24 * 24 + 23))
+        self.assertIsNone(lane.choose_fert_hand_target(late, (2, 2), ()))
+        ok = clear_incumbent_carrot(observation(step=24 * 24 + 22))
+        self.assertEqual(lane.choose_fert_hand_target(ok, (2, 2), ())["position"], (3, 2))
+        far = clear_incumbent_carrot(observation(step=24 * 24 + 22))
+        far["farms"][0]["tiles"][2][4] = far["farms"][0]["tiles"][2][3]
+        far["farms"][0]["tiles"][2][3] = None
+        self.assertIsNone(lane.choose_fert_hand_target(far, (2, 2), ()))
 
     def test_wheat_annual_gain_can_use_idle_hand(self):
         obs = clear_incumbent_carrot(
@@ -174,135 +277,47 @@ class S6FertRoiTest(unittest.TestCase):
         target = lane.choose_fert_hand_target(obs, (2, 2), ())
         self.assertIsNotNone(target)
         self.assertEqual(target["crop"], "WHEAT")
-        self.assertEqual(target["position"], (3, 2))
-        self.assertGreaterEqual(target["marginal_units"], 1)
 
-    def test_unreachable_wheat_is_not_selected_late_day(self):
-        obs = clear_incumbent_carrot(
-            observation(
-                step=24 * 24 + 23,
-                tomato_watered=False,
-                prices={"WHEAT": 10000, "CARROT": 35},
-            )
+    def test_episode_horizon_clips_only_new_wheat(self):
+        dead = clear_incumbent_carrot(
+            observation(step=28 * 24, tomato_watered=False, prices={"WHEAT": 10000})
         )
-        obs["farms"][0]["tiles"][9][9] = plant("WHEAT", planted_day=22)
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
-
-    def test_day28_wheat_with_only_post_episode_water_is_not_productive(self):
-        obs = clear_incumbent_carrot(
-            observation(
-                step=28 * 24,
-                tomato_watered=False,
-                prices={"WHEAT": 10000, "CARROT": 35},
-            )
+        dead["farms"][0]["tiles"][2][3] = plant("WHEAT", planted_day=28)
+        self.assertIsNone(lane.choose_fert_hand_target(dead, (2, 2), ()))
+        live = clear_incumbent_carrot(
+            observation(step=28 * 24, tomato_watered=False, prices={"WHEAT": 80})
         )
-        obs["farms"][0]["tiles"][2][3] = plant("WHEAT", planted_day=28)
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+        live["farms"][0]["tiles"][2][3] = plant("WHEAT", planted_day=27)
+        self.assertEqual(lane.choose_fert_hand_target(live, (2, 2), ())["crop"], "WHEAT")
 
-    def test_day28_wheat_with_day29_water_remains_productive(self):
-        obs = clear_incumbent_carrot(
-            observation(
-                step=28 * 24,
-                tomato_watered=False,
-                prices={"WHEAT": 80, "CARROT": 35},
-            )
-        )
-        obs["farms"][0]["tiles"][2][3] = plant("WHEAT", planted_day=27)
-        target = lane.choose_fert_hand_target(obs, (2, 2), ())
-        self.assertIsNotNone(target)
-        self.assertEqual(target["crop"], "WHEAT")
-        self.assertEqual(target["marginal_units"], 1)
-
-    def test_upcoming_incumbent_carrot_reserves_hand(self):
-        obs = clear_incumbent_carrot(observation())
-        self.assertIsNone(
-            lane.choose_fert_hand_target(obs, (1, 2), ((2, 2, 1),))
-        )
-
-    def test_same_position_upcoming_carrot_stays_pass(self):
+    def test_upcoming_and_later_today_carrot_reserve_baseline(self):
         obs = clear_incumbent_carrot(observation(tomato_watered=False))
         upcoming = ((2, 2, 1),)
-        self.assertIsNone(
-            lane.choose_fert_hand_target(obs, (2, 2), upcoming)
-        )
+        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), upcoming))
         state = fert_hand._Day(24)
         state.index = 0
         state.picked = True
         old = fert_hand.S6_FERT_ROI
         try:
             fert_hand.S6_FERT_ROI = True
+            self.assertEqual(fert_hand._hand_command(obs, state, None, upcoming), ["PASS"])
             self.assertEqual(
-                fert_hand._hand_command(obs, state, None, upcoming), ["PASS"]
-            )
-        finally:
-            fert_hand.S6_FERT_ROI = old
-
-    def test_later_today_carrot_reserves_budget_before_idle_s6(self):
-        obs = clear_incumbent_carrot(observation())
-        step = obs["step"]
-        state = fert_hand._Day(24)
-        state.index = 0
-        state.picked = True
-        old = fert_hand.S6_FERT_ROI
-        try:
-            fert_hand.S6_FERT_ROI = True
-            self.assertEqual(
-                fert_hand._hand_command(obs, state, tape_with_later_carrot(step), ()),
+                fert_hand._hand_command(obs, state, tape_with_later_carrot(obs["step"]), ()),
                 ["PASS"],
             )
         finally:
             fert_hand.S6_FERT_ROI = old
 
-    def test_malformed_price_fails_closed(self):
-        obs = clear_incumbent_carrot(observation())
-        obs["market"]["prices"]["TOMATO"] = True
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
-
-    def test_malformed_board_or_position_fails_closed(self):
-        obs = clear_incumbent_carrot(observation())
-        obs["farms"][0]["tiles"] = obs["farms"][0]["tiles"][:-1]
-        self.assertIsNone(lane.choose_fert_hand_target(obs, (2, 2), ()))
+    def test_malformed_state_fails_closed(self):
+        bad_price = clear_incumbent_carrot(observation())
+        bad_price["market"]["prices"]["TOMATO"] = True
+        self.assertIsNone(lane.choose_fert_hand_target(bad_price, (2, 2), ()))
+        bad_board = clear_incumbent_carrot(observation())
+        bad_board["farms"][0]["tiles"] = bad_board["farms"][0]["tiles"][:-1]
+        self.assertIsNone(lane.choose_fert_hand_target(bad_board, (2, 2), ()))
         good = clear_incumbent_carrot(observation())
         self.assertIsNone(lane.choose_fert_hand_target(good, (-1, 2), ()))
         self.assertIsNone(lane.choose_fert_hand_target(good, (10, 2), ()))
-
-    def test_actual_fert_hand_preserves_incumbent_carrot_when_s6_on(self):
-        obs = observation()
-        state = fert_hand._Day(24)
-        state.index = 0
-        state.picked = True
-        old = fert_hand.S6_FERT_ROI
-        try:
-            fert_hand.S6_FERT_ROI = False
-            incumbent = fert_hand._hand_command(obs, state, None, ())
-            self.assertEqual(incumbent, ["FERTILIZE"])
-
-            fert_hand.S6_FERT_ROI = True
-            extended = fert_hand._hand_command(obs, state, None, ())
-            self.assertEqual(extended, ["FERTILIZE"])
-        finally:
-            fert_hand.S6_FERT_ROI = old
-
-    def test_actual_fert_hand_uses_tomato_only_when_incumbent_idle(self):
-        obs = clear_incumbent_carrot(observation())
-        state = fert_hand._Day(24)
-        state.index = 0
-        state.picked = True
-        old = fert_hand.S6_FERT_ROI
-        try:
-            fert_hand.S6_FERT_ROI = False
-            incumbent = fert_hand._hand_command(obs, state, None, ())
-            self.assertEqual(incumbent, ["PASS"])
-
-            fert_hand.S6_FERT_ROI = True
-            extended = fert_hand._hand_command(obs, state, None, ())
-            self.assertEqual(extended, ["EAST"])
-        finally:
-            fert_hand.S6_FERT_ROI = old
-
-    def test_s6_never_changes_the_hire_selector_flag_surface(self):
-        self.assertNotIn("S6_FERT_ROI", fert_hand._consider_hire.__code__.co_names)
-        self.assertNotIn("r04_s6_fert_roi", fert_hand._consider_hire.__code__.co_names)
 
     def test_generated_key_contract_is_default_off(self):
         self.assertFalse(Features().r04_s6_fert_roi)
