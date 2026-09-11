@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""H1 experiment: rescue mature annual yield on L1's exact last-live WATER turn.
+"""H1 experiment: rescue mature annual yield at L1's first-decay WATER boundary.
 
-L1 kill-late-water proves WATER is worthless when an annual crop reaches its
-max_lifespan_step. The official engine executes the unit action before end-of-turn
-decay, so a mature crop with physical yield can still be HARVESTed on that exact
-step. H1 changes only that case: WATER -> HARVEST on the same tile.
+L1 kill-late-water suppresses WATER when an annual crop has reached or passed its
+``max_lifespan_step``. In the official engine, equality is the crop's *first decay
+tick*, not necessarily its final live action: decay subtracts one yield unit at
+equality and then every two steps until the tile weeds. The unit action executes
+before that decay. At exact equality an annual crop is already one day beyond its
+last WATER-yield window, so WATER adds no annual yield, while same-tile HARVEST can
+still collect every currently mature unit before the first decay subtracts one.
 
-This is intentionally narrower than the rejected B3 water-suppression lane:
-no future-service assumption is needed because max_lifespan_step == step is the
-crop's final live action turn. Future or stale lifespan states, ongoing crops,
-unknown/malformed state, non-WATER commands, and nonstandard turnsPerDay all
-preserve the exact parent action object.
+H1 deliberately changes only that exact first-decay boundary:
+``WATER -> HARVEST`` when ``max_lifespan_step == step`` and mature physical yield
+is present. It does not generalize to ``max_lifespan_step < step`` even though a
+multi-unit crop can legally survive later decay ticks; stale/future lifespan states,
+ongoing crops, unknown/malformed state, non-WATER commands, and nonstandard
+``turnsPerDay`` all preserve the exact parent action object.
 """
 from __future__ import annotations
 
@@ -78,7 +82,7 @@ def _tile_for_actor(observation, actor):
         return None
 
 
-def _last_live_harvestable(step, tile):
+def _first_decay_harvestable(step, tile):
     if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
         return False
     crop = tile.get("crop")
@@ -91,7 +95,9 @@ def _last_live_harvestable(step, tile):
         return False
     if planted < 0 or units <= 0:
         return False
-    # Equality is deliberate. lifespan < step is inconsistent with official chronology.
+    # Equality is deliberate: this experiment owns only the first decay tick.
+    # A multi-unit annual crop may legally survive later (lifespan < step) ticks,
+    # but those states are intentionally outside this bounded theorem.
     if lifespan != step:
         return False
     day = step // TURNS_PER_DAY
@@ -99,7 +105,7 @@ def _last_live_harvestable(step, tile):
 
 
 def transform(observation, action, configuration=None, enabled=False):
-    """Return parent action or a copy with exact-expiry WATER -> HARVEST rescues."""
+    """Return parent action or a copy with first-decay WATER -> HARVEST rescues."""
     if not enabled:
         telemetry["disabled"] += 1
         return action
@@ -130,7 +136,7 @@ def transform(observation, action, configuration=None, enabled=False):
     for actor, command in enumerate(commands):
         if command != ["WATER"]:
             continue
-        if _last_live_harvestable(step, _tile_for_actor(observation, actor)):
+        if _first_decay_harvestable(step, _tile_for_actor(observation, actor)):
             replacements.append(actor)
         else:
             telemetry["water_not_rescuable"] += 1
