@@ -1,0 +1,341 @@
+name: TITAN V3.1 current-recovery L3 fail-closed bootstrap r2
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-a612-restore-5f6-canonical-archive-20260911
+    paths:
+      - '.github/workflows/titan-v31-8e3-l3-failclosed-bootstrap-r2.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/**'
+
+permissions:
+  contents: write
+
+jobs:
+  consume-reviewed-repair:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact writable feature head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Bind current recovery head and exact reviewed donors
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          PATCH="$V3/experiments/l3_failclosed_consume_8e3/repair.patch"
+          DONOR_TEST="$V3/experiments/l3_failclosed_consume_8e3/test_failclosed.py"
+          ROUTER="$V3/overlay/r04_full_router.py"
+          PROD_TEST="$V3/overlay/checks/test_v3_r04_l3_rival_gate.py"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin "$BASE_REF"
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
+          test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
+          test "$(git rev-parse "$BASE:$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
+          test "$(git rev-parse "$BASE:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          test "$(git rev-parse "$BASE:$V3/tooling_tests/test_build_v3_fail_closed.py")" = '3db16ff0eaace1c6b718e303607a6323a46666ea'
+          test "$(git rev-parse "$BASE:$V3/FILES.json")" = 'f79539bde12aa679ad506996454627b6f2ad8cbb'
+          test "$(git rev-parse "$BASE:$V3/V3-MANIFEST.json")" = '5501fc5dbbe2bf361d1d7fd110bcb520da7cf005'
+          test "$(git rev-parse "$BASE:$V3/overlay/r04_h4_strawberry.py")" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+          test "$(git rev-parse "$BASE:$V3/overlay/r04_no_late_sale_advance.py")" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+          test "$(git rev-parse "$BASE:$V3/overlay/b5_fertilize.py")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+          test "$(git rev-parse "$BASE:$V3/overlay/jit_pass_fertilize.py")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz")" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
+          test "$(git hash-object "$PATCH")" = 'bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c'
+          test "$(git hash-object "$DONOR_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          git diff --name-only "$BASE"..HEAD > /tmp/l3-r2-staging-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/l3-r2-staging-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-8e3-l3-failclosed-bootstrap-r2.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/test_failclosed.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'L3 r2 staging scope drift: {sorted(actual)!r}')
+          print('L3_R2_STAGING_SCOPE_OK', len(actual))
+          PY
+          git diff --check "$BASE"..HEAD
+
+      - name: Apply only the reviewed L3 repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          PATCH="$V3/experiments/l3_failclosed_consume_8e3/repair.patch"
+          DONOR_TEST="$V3/experiments/l3_failclosed_consume_8e3/test_failclosed.py"
+          ROUTER="$V3/overlay/r04_full_router.py"
+          PROD_TEST="$V3/overlay/checks/test_v3_r04_l3_rival_gate.py"
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          cp "$DONOR_TEST" "$PROD_TEST"
+          test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+          ):
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
+          PY
+
+      - name: Run source fail-closed contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r2-source-tests.log
+          grep -F 'Ran 17 tests' /tmp/l3-r2-source-tests.log
+          grep -F 'OK' /tmp/l3-r2-source-tests.log
+
+      - name: Rebuild through immutable optimizer-safe builder and preserve shipped stack
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py | tee /tmp/l3-r2-build.log
+          python -B build_v3.py --check | tee /tmp/l3-r2-check.log
+          PYTHONOPTIMIZE=1 python -B build_v3.py --check | tee /tmp/l3-r2-opt-check.log
+          grep -F 'V3 CHECK OK' /tmp/l3-r2-check.log
+          grep -F 'V3 CHECK OK' /tmp/l3-r2-opt-check.log
+          rm -rf /tmp/l3-r2-tree
+          python -B build_v3.py --tree /tmp/l3-r2-tree
+          (
+            cd /tmp/l3-r2-tree
+            python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r2-tree-tests.log
+          )
+          grep -F 'Ran 17 tests' /tmp/l3-r2-tree-tests.log
+          grep -F 'OK' /tmp/l3-r2-tree-tests.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('/tmp/l3-r2-tree/TITAN-CONFIG.json').read_text())
+          expected = {
+              'r04_strawberry_topup': True,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_sale_horizon': 8,
+              'r04_b5_carrot_fertilizer': True,
+              'r04_b5_jit_fertilize': True,
+          }
+          for key, value in expected.items():
+              actual = cfg[key]
+              if type(actual) is not type(value) or actual != value:
+                  raise SystemExit((key, actual, value))
+          print('L3_R2_CONFIG_PRESERVED_B5_JIT_OK')
+          PY
+          rm -rf dist
+
+      - name: Install permanent read-only exact-base gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > .github/workflows/titan-v31-current-l3-failclosed-package.yml <<'YAML'
+          name: TITAN V3.1 current L3 fail-closed package gate
+
+          on:
+            pull_request:
+              branches:
+                - astra/v31-a612-restore-5f6-canonical-archive-20260911
+                - titan/v3.1-20260911
+              paths:
+                - '.github/workflows/titan-v31-current-l3-failclosed-package.yml'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            exact-source-package-custody:
+              runs-on: ubuntu-latest
+              timeout-minutes: 20
+              steps:
+                - name: Checkout exact event head
+                  uses: actions/checkout@v4
+                  with:
+                    ref: __EVENT_HEAD_EXPR__
+                    fetch-depth: 0
+
+                - name: Bind exact event base, live base, final scope, and shipped bytes
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    EXPECTED_HEAD='__EVENT_HEAD_EXPR__'
+                    EXPECTED_BASE='__EVENT_BASE_EXPR__'
+                    BASE_REF='__EVENT_BASE_REF_EXPR__'
+                    V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+                    test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+                    test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+                    git fetch --no-tags origin "$BASE_REF"
+                    test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_BASE"
+                    test "$(git hash-object "$V3/overlay/r04_full_router.py")" = '__POST_BOOTSTRAP_ROUTER_BLOB__'
+                    test "$(git hash-object "$V3/overlay/checks/test_v3_r04_l3_rival_gate.py")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+                    test "$(git hash-object "$V3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
+                    test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+                    test "$(git hash-object "$V3/tooling_tests/test_build_v3_fail_closed.py")" = '3db16ff0eaace1c6b718e303607a6323a46666ea'
+                    test "$(git hash-object "$V3/overlay/r04_h4_strawberry.py")" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+                    test "$(git hash-object "$V3/overlay/r04_no_late_sale_advance.py")" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+                    test "$(git hash-object "$V3/overlay/b5_fertilize.py")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+                    test "$(git hash-object "$V3/overlay/jit_pass_fertilize.py")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+                    git diff --name-only "$EXPECTED_BASE"..HEAD > /tmp/l3-r2-final-paths.txt
+                    python - <<'PY'
+                    from pathlib import Path
+                    actual = set(Path('/tmp/l3-r2-final-paths.txt').read_text().splitlines())
+                    expected = {
+                        '.github/workflows/titan-v31-current-l3-failclosed-package.yml',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+                    }
+                    if actual != expected:
+                        raise SystemExit(f'L3 r2 final scope drift: {sorted(actual)!r}')
+                    print('L3_R2_FINAL_SCOPE_OK', len(actual))
+                    PY
+                    git diff --check "$EXPECTED_BASE"..HEAD
+
+                - name: Run exact contracts and deterministic package checks
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r2-final-tests.log
+                    grep -F 'Ran 17 tests' /tmp/l3-r2-final-tests.log
+                    grep -F 'OK' /tmp/l3-r2-final-tests.log
+                    python -B build_v3.py --check | tee /tmp/l3-r2-final-check.log
+                    PYTHONOPTIMIZE=1 python -B build_v3.py --check | tee /tmp/l3-r2-final-opt-check.log
+                    grep -F 'V3 CHECK OK' /tmp/l3-r2-final-check.log
+                    grep -F 'V3 CHECK OK' /tmp/l3-r2-final-opt-check.log
+                    rm -rf /tmp/l3-r2-final-tree
+                    python -B build_v3.py --tree /tmp/l3-r2-final-tree
+                    (
+                      cd /tmp/l3-r2-final-tree
+                      python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-r2-final-tree-tests.log
+                    )
+                    grep -F 'Ran 17 tests' /tmp/l3-r2-final-tree-tests.log
+                    grep -F 'OK' /tmp/l3-r2-final-tree-tests.log
+                    python - <<'PY'
+                    import json
+                    from pathlib import Path
+                    cfg = json.loads(Path('/tmp/l3-r2-final-tree/TITAN-CONFIG.json').read_text())
+                    expected = {
+                        'r04_strawberry_topup': True,
+                        'r04_no_late_sale_advance': True,
+                        'r04_no_late_sale_advance_step': 648,
+                        'r04_sale_fertilizer': True,
+                        'r04_cattle_early': True,
+                        'r04_sale_horizon': 8,
+                        'r04_b5_carrot_fertilizer': True,
+                        'r04_b5_jit_fertilize': True,
+                    }
+                    for key, value in expected.items():
+                        actual = cfg[key]
+                        if type(actual) is not type(value) or actual != value:
+                            raise SystemExit((key, actual, value))
+                    print('L3_R2_FINAL_CONFIG_PRESERVED_B5_JIT_OK')
+                    PY
+
+                - name: Prove checkout stayed clean
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    test -z "$(git status --porcelain)"
+          YAML
+          ROUTER_BLOB="$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)"
+          ROUTER_BLOB="$ROUTER_BLOB" python3 - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path('.github/workflows/titan-v31-current-l3-failclosed-package.yml')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              '__EVENT_HEAD_EXPR__': '$' + '{{ github.event.pull_request.head.sha || github.sha }}',
+              '__EVENT_BASE_EXPR__': '$' + '{{ github.event.pull_request.base.sha }}',
+              '__EVENT_BASE_REF_EXPR__': '$' + '{{ github.event.pull_request.base.ref }}',
+              '__POST_BOOTSTRAP_ROUTER_BLOB__': os.environ['ROUTER_BLOB'],
+          }
+          router = replacements['__POST_BOOTSTRAP_ROUTER_BLOB__']
+          if len(router) != 40 or any(c not in '0123456789abcdef' for c in router):
+              raise SystemExit(f'invalid repaired router blob {router!r}')
+          expected_counts = {
+              '__EVENT_HEAD_EXPR__': 2,
+              '__EVENT_BASE_EXPR__': 1,
+              '__EVENT_BASE_REF_EXPR__': 1,
+              '__POST_BOOTSTRAP_ROUTER_BLOB__': 1,
+          }
+          for token, count in expected_counts.items():
+              if text.count(token) != count:
+                  raise SystemExit(f'unexpected template token count {token}: {text.count(token)} != {count}')
+          for token, value in replacements.items():
+              text = text.replace(token, value)
+          if any(token in text for token in replacements):
+              raise SystemExit('unresolved permanent-gate template token')
+          path.write_text(text, encoding='utf-8')
+          print('L3_R2_PERMANENT_GATE_TEMPLATE_OK', router)
+          PY
+
+      - name: Collapse privileged staging to exact five-path production delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          git rm .github/workflows/titan-v31-8e3-l3-failclosed-bootstrap-r2.yml
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/repair.patch
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_8e3/test_failclosed.py
+          git add \
+            .github/workflows/titan-v31-current-l3-failclosed-package.yml \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py
+          git diff --cached --name-only "$BASE" > /tmp/l3-r2-final-staged.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/l3-r2-final-staged.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-current-l3-failclosed-package.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'L3 r2 final staged scope drift: {sorted(actual)!r}')
+          print('L3_R2_FINAL_STAGED_SCOPE_OK', len(actual))
+          PY
+          git diff --cached --check
+
+      - name: Recheck live base then commit with feature-head compare-and-swap
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          HEAD_REF='${{ github.event.pull_request.head.ref }}'
+          git fetch --no-tags origin "$BASE_REF"
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          REMOTE_BEFORE="$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')"
+          test "$REMOTE_BEFORE" = "$EXPECTED_HEAD"
+          git config user.name 'Astra Titan Integration'
+          git config user.email 'actions@users.noreply.github.com'
+          git commit -m 'TITAN V3.1: make rival-gated L3 fail closed on recovered B5+JIT stack'
+          FINAL_HEAD="$(git rev-parse HEAD)"
+          git push origin "HEAD:refs/heads/$HEAD_REF"
+          echo "L3 r2 production consumer pushed $FINAL_HEAD"
