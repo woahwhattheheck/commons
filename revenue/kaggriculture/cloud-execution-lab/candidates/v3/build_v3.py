@@ -9,11 +9,12 @@
 
 Recipe: resolve the SHA-256 pinned in V3-MANIFEST.json under base.sha256 to the
 immutable ../../exports/historical/titan-<sha256>.tar.gz archive, copy overlay/ over
-it (the lane modules and the check), then run apply_v3.apply() which edits
-titan_runtime.py, scheduler.py, frozen_selected.py, TITAN-CONFIG.json and
-TITAN-RELEASE.md with exact-anchor replacements.  Fixed tar metadata makes the
-archive a pure function of (canonical, overlay, apply_v3).  dist/ is a build product
-and is not committed; a shard verifies each materialised file against FILES.json.
+it (the lane modules and the check), then run apply_v3.apply() followed by
+apply_h4.apply().  The first stage edits the existing V3 seams; the second adds the
+reviewed H4 package key and R04-only delegate seam, shipped false. Fixed tar metadata
+makes the archive a pure function of (canonical, overlay, apply_v3, apply_h4). dist/
+is a build product and is not committed; a shard verifies each materialised file
+against FILES.json.
 """
 import gzip
 import hashlib
@@ -29,6 +30,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import apply_v3  # noqa: E402
+import apply_h4  # noqa: E402
 
 OVERLAY = HERE / "overlay"
 DIST = HERE / "dist"
@@ -76,6 +78,7 @@ def package_files(canon_path=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(blob)
         apply_v3.apply(str(work))
+        apply_h4.apply(str(work))
         files = {}
         for path in sorted(p for p in work.rglob("*") if p.is_file()):
             files[path.relative_to(work).as_posix()] = path.read_bytes()
@@ -109,6 +112,7 @@ def file_shas(files):
 def source_shas():
     shas = file_shas(overlay_files())
     shas["apply_v3.py"] = hashlib.sha256((HERE / "apply_v3.py").read_bytes()).hexdigest()
+    shas["apply_h4.py"] = hashlib.sha256((HERE / "apply_h4.py").read_bytes()).hexdigest()
     return shas
 
 
@@ -128,6 +132,7 @@ def main(argv):
         return
     m = manifest()
     if "--check" in argv:
+        apply_h4.require_manifest(m)
         _require(m["archive"]["sha256"] == digest, "V3-MANIFEST.json archive.sha256 %s != rebuilt %s" % (m["archive"]["sha256"], digest))
         _require(m["archive"]["files"] == len(files), "V3-MANIFEST.json archive.files drifted")
         _require(m["overlay"] == source_shas(), "V3-MANIFEST.json overlay hashes drifted")
@@ -142,6 +147,7 @@ def main(argv):
     m["archive"] = {"path": "dist/titan-v3.tar.gz (build product, not committed)", "sha256": digest,
                     "bytes": len(blob), "files": len(files)}
     m["overlay"] = source_shas()
+    apply_h4.update_manifest(m)
     MANIFEST.write_text(json.dumps(m, indent=2) + "\n", encoding="utf-8")
     print("V3 BUILD", digest, len(files), "files", len(blob), "bytes")
 

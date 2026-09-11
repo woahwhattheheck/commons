@@ -1,0 +1,91 @@
+name: titan-v31-h4-production-wiring
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-convergence-e20-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - '.github/workflows/titan-v31-h4-production-wiring.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-wiring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind convergence parent and reviewed H4 donor
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=49627a786f1a5c04cfaa0f1576a849c818128817
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = "ecad11eb195a82273f73b78ac7b319552a27cbcd"
+
+      - name: Parse production-wiring source
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile build_v3.py apply_h4.py overlay/r04_h4_strawberry.py overlay/checks/test_v3_h4_wiring.py
+
+      - name: Regenerate and verify deterministic package custody
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B build_v3.py |& tee /tmp/v31-h4-build.log
+          grep -F 'V3 BUILD ' /tmp/v31-h4-build.log
+          python -B build_v3.py --check |& tee /tmp/v31-h4-check.log
+          grep -F 'V3 CHECK OK ' /tmp/v31-h4-check.log
+
+      - name: Materialize package and prove H4 production wiring
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/titan-v31-h4-tree
+          python -B build_v3.py --tree /tmp/titan-v31-h4-tree |& tee /tmp/v31-h4-tree.log
+          grep -F 'V3 TREE ' /tmp/v31-h4-tree.log
+          (
+            cd /tmp/titan-v31-h4-tree
+            python -B -m unittest -v checks/test_v3_h4_wiring.py
+          )
+          python -B -m unittest -v experiments/h4_strawberry/test_v31_h4_strawberry.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('/tmp/titan-v31-h4-tree/TITAN-CONFIG.json').read_text())
+          assert cfg['r04_sale_window'] is False
+          assert cfg['r04_strawberry_topup'] is False
+          print('V31_H4_PACKAGE_DEFAULTS_OK')
+          PY
+
+      - name: Emit exact generated custody receipts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64
+          from pathlib import Path
+          for name, label in [('V3-MANIFEST.json', 'MANIFEST'), ('FILES.json', 'FILES')]:
+              data = Path(name).read_bytes()
+              print('V31_H4_%s_BASE64_BEGIN' % label)
+              print(base64.b64encode(data).decode('ascii'))
+              print('V31_H4_%s_BASE64_END' % label)
+          PY
