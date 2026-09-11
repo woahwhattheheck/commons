@@ -53,6 +53,16 @@ class StrictJsonTests(unittest.TestCase):
                         replacement=replacement,
                     )
 
+    def test_rejects_byte_identical_replacement(self):
+        with self.assertRaisesRegex(PatchError, "byte-identical"):
+            patch_json_object(
+                SOURCE,
+                pointer="/target",
+                expected_file_sha256=sha256_bytes(SOURCE),
+                expected_target_sha256=sha256_bytes(TARGET),
+                replacement=TARGET,
+            )
+
     def test_normal_json_still_patches_and_preserves_outside_bytes(self):
         patched, receipt = patch_json_object(
             SOURCE,
