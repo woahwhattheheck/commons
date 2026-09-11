@@ -1,0 +1,210 @@
+name: TITAN V3.1 current 8e3 B11 mirror screen
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-a612-restore-5f6-canonical-archive-20260911
+    paths:
+      - '.github/workflows/titan-v31-8e3-b11-mirror-screen.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_8e3_screen/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-current-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout literal evidence head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind 8e3 gameplay root, recovery parent, exact scope, and donor
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          DONOR='d8fb85e7dd510cb816e616864760446332e5be7b'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          RUNNER="$V3/experiments/b11_8e3_screen/run_current_stack.py"
+          WORKFLOW='.github/workflows/titan-v31-8e3-b11-mirror-screen.yml'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test '${{ github.event.pull_request.base.sha }}' = "$STACK"
+          test "$(git merge-base "$STACK" HEAD)" = "$STACK"
+          git cat-file -e "$DONOR^{commit}"
+          test "$(git rev-parse "$DONOR:$V3/experiments/b11_mirror_horizon/b11_mirror_horizon.py")" = '94b270f36c4a27b3d958ac3420bbe5764ac327a1'
+
+          git fetch --no-tags origin \
+            '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911' \
+            "+$RECOVERY:refs/remotes/origin/v31-recovery"
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$LIVE"
+          test "$(git rev-parse refs/remotes/origin/v31-recovery)" = "$STACK"
+
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-8e3-b11-mirror-screen.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_8e3_screen/run_current_stack.py
+          EOF
+          sort -o /tmp/expected /tmp/expected
+          git diff --name-only "$STACK...HEAD" | sort > /tmp/actual
+          diff -u /tmp/expected /tmp/actual
+          git diff --check "$STACK...HEAD" -- "$RUNNER" "$WORKFLOW"
+
+          test "$(git rev-parse "$STACK:$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git rev-parse "$STACK:$V3/overlay/r04_full_router.py")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
+          test "$(git rev-parse "$STACK:$V3/overlay/b5_fertilize.py")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+          test "$(git rev-parse "$STACK:$V3/overlay/jit_pass_fertilize.py")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+
+          for path in \
+            "$V3/FILES.json" \
+            "$V3/V3-MANIFEST.json" \
+            "$V3/apply_v3.py" \
+            "$V3/overlay/r04_full_router.py" \
+            "$V3/overlay/r04_h4_strawberry.py" \
+            "$V3/overlay/r04_no_late_sale_advance.py" \
+            "$V3/overlay/b5_fertilize.py" \
+            "$V3/overlay/jit_pass_fertilize.py" \
+            revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.json \
+            revenue/kaggriculture/cloud-execution-lab/reference/engine/utils.py
+          do
+            test "$(git rev-parse "$STACK:$path")" = "$(git rev-parse "$LIVE:$path")"
+          done
+          echo B11_8E3_CUSTODY_OK
+
+      - name: Prove current shipped package rebuilds through immutable base custody
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -B build_v3.py --check |& tee /tmp/b11-build-check.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/b11-build-check.log
+          test -z "$(git status --porcelain)"
+
+      - name: Compile runner and freeze native evaluator receipt poisons
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import copy
+          import importlib.util
+          import math
+          from pathlib import Path
+
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_8e3_screen/run_current_stack.py')
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          spec = importlib.util.spec_from_file_location('b11_8e3', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+
+          def fp(sha):
+              return {'entry': 'main.py', 'callable': 'agent', 'sha256': sha}
+
+          games = []
+          for opponent in module.OPPONENTS:
+              for seed in module.SEEDS:
+                  for seat in (0, 1):
+                      games.append({
+                          'opponent': opponent,
+                          'seed': seed,
+                          'candidate_seat': seat,
+                          'status': 'complete',
+                          'failure': None,
+                          'scores': [100.0 + seat, 90.0 - seat],
+                          'trace_sha256': 'a' * 64,
+                      })
+          valid = {
+              'schema_version': 1,
+              'engine_ref': module.ENGINE_REF,
+              'agent_rng_seed': module.RNG_SEED,
+              'candidate': fp('b' * 64),
+              'seeds': list(module.SEEDS),
+              'opponents': {name: fp(('c' if i == 0 else 'd') * 64) for i, name in enumerate(module.OPPONENTS)},
+              'reproducibility': {'same_trace_and_scores': True},
+              'games': games,
+          }
+          assert frozenset(module.normalize(copy.deepcopy(valid), 'valid')) == module.EXPECTED_KEYS
+
+          def rejects(name, mutate):
+              poisoned = copy.deepcopy(valid)
+              mutate(poisoned)
+              try:
+                  module.normalize(poisoned, name)
+              except AssertionError:
+                  return
+              raise AssertionError(f'{name}: poison accepted')
+
+          rejects('opponents-list', lambda r: r.__setitem__('opponents', list(module.OPPONENTS)))
+          rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
+          rejects('missing-cell', lambda r: r['games'].pop())
+          rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
+          rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
+          rejects('bool-seat', lambda r: r['games'][0].__setitem__('candidate_seat', False))
+          rejects('nan-score', lambda r: r['games'][0].__setitem__('scores', [math.nan, 1.0]))
+          rejects('failure', lambda r: r['games'][0].__setitem__('failure', 'boom'))
+          rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'bad'))
+          rejects('bad-recheck', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
+          print('B11_8E3_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run current 8e3 B11 two-regime composition gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b11-8e3"
+          mkdir -p "$OUT"
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_8e3_screen/run_current_stack.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" |& tee "$RUNNER_TEMP/b11-8e3.log"
+          cat "$OUT/receipt.md" >> "$GITHUB_STEP_SUMMARY"
+          python3 - "$OUT/receipt.json" <<'PY'
+          import json, pathlib, sys
+          data = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert data['schema'] == 'titan-v31-b11-8e3-screen/v1'
+          assert data['gameplay_root'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
+          assert data['stack_head'] == 'ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          assert data['package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
+          assert data['reviewed_b11_donor']['blob'] == '94b270f36c4a27b3d958ac3420bbe5764ac327a1'
+          print('B11_8E3_DISPOSITION', data['disposition'])
+          print('B11_8E3_ARLENE_IDENTITY', data['arlene_exact_h8_identity'])
+          print('B11_8E3_SELF', data['self']['summary'])
+          print('B11_8E3_ARLENE', data['arlene']['summary'])
+          PY
+
+      - name: Recheck live root and stack before retaining evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          git fetch --no-tags origin \
+            '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911' \
+            '+refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911:refs/remotes/origin/v31-recovery'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$LIVE"
+          test "$(git rev-parse refs/remotes/origin/v31-recovery)" = "$STACK"
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact paired evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-8e3-b11-mirror-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/b11-8e3
+            ${{ runner.temp }}/b11-8e3.log
+          if-no-files-found: error
+          retention-days: 14
