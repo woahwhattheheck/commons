@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Fail if a manifest-declared keyed V3 lane does not reach the built artifact.
+"""Fail if a manifest-declared V3 key does not reach the built artifact.
 
-This complements ``build_v3.py --check``.  The builder already proves byte-for-byte
-reproducibility; this preflight proves that every manifest key with a declared module
-is present in the generated config, ships byte-identical to its overlay source, and
-is import-reachable from the package entrypoint.
+This complements ``build_v3.py --check``. The builder already proves byte-for-byte
+reproducibility; this preflight proves that every manifest lane with a declared module
+ships byte-identical/import-reachable, and that every declared config key/parameter has
+the manifest value and a semantic use in code reachable from the package entrypoint.
 
 Usage:
     python check_v31_artifact_reachability.py
@@ -38,10 +38,29 @@ def declared_modules(spec):
 
 
 def keyed_specs(manifest):
-    """Yield (key, spec) for switchable manifest lanes, excluding params/metadata."""
+    """Yield (key, spec) for switchable manifest lanes with declared modules."""
     for key, spec in (manifest.get("keys") or {}).items():
         if isinstance(spec, dict) and "default" in spec and "module" in spec:
             yield key, spec
+
+
+def config_contracts(manifest):
+    """Yield every manifest value that must be present and consumed at runtime."""
+    keys = manifest.get("keys") or {}
+    for key, spec in keyed_specs(manifest):
+        yield key, spec["default"]
+    params = keys.get("params") or {}
+    if not isinstance(params, dict):
+        raise AssertionError("manifest keys.params must be an object")
+    for key, value in params.items():
+        yield key, value
+
+
+def _parse_python(files, path):
+    try:
+        return ast.parse(files[path].decode("utf-8"), filename=path)
+    except (SyntaxError, UnicodeDecodeError) as error:
+        raise AssertionError("cannot parse packed Python file %s: %s" % (path, error))
 
 
 def local_import_graph(files):
@@ -53,10 +72,7 @@ def local_import_graph(files):
     }
     graph = {path: set() for path in local.values()}
     for path in graph:
-        try:
-            tree = ast.parse(files[path].decode("utf-8"), filename=path)
-        except (SyntaxError, UnicodeDecodeError) as error:
-            raise AssertionError("cannot parse packed Python file %s: %s" % (path, error))
+        tree = _parse_python(files, path)
         for node in ast.walk(tree):
             roots = []
             if isinstance(node, ast.Import):
@@ -84,6 +100,51 @@ def reachable_paths(files, root="main.py"):
     return seen
 
 
+def _string_constant(node):
+    return node.value if isinstance(node, ast.Constant) and isinstance(node.value, str) else None
+
+
+def executable_key_references(files, paths):
+    """Return config-key names used semantically in reachable executable AST.
+
+    Deliberately ignore arbitrary string constants, comments and docstrings. A key counts
+    when code accesses it as an attribute, mapping subscript, mapping-style get/pop/
+    setdefault call, or getattr/hasattr/setattr/delattr target.
+    """
+    refs = set()
+    for path in sorted(paths):
+        if not path.endswith(".py"):
+            continue
+        tree = _parse_python(files, path)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Attribute):
+                refs.add(node.attr)
+                continue
+            if isinstance(node, ast.Subscript):
+                value = _string_constant(node.slice)
+                if value is not None:
+                    refs.add(value)
+                continue
+            if not isinstance(node, ast.Call):
+                continue
+            if isinstance(node.func, ast.Attribute) and node.func.attr in {"get", "pop", "setdefault"}:
+                if node.args:
+                    value = _string_constant(node.args[0])
+                    if value is not None:
+                        refs.add(value)
+            elif isinstance(node.func, ast.Name) and node.func.id in {"getattr", "hasattr", "setattr", "delattr"}:
+                if len(node.args) >= 2:
+                    value = _string_constant(node.args[1])
+                    if value is not None:
+                        refs.add(value)
+    return refs
+
+
+def _same_json_scalar(actual, expected):
+    """Keep JSON booleans distinct from integers and integers distinct from floats."""
+    return type(actual) is type(expected) and actual == expected
+
+
 def validate_reachability(manifest, files, overlay):
     """Return deterministic human-readable contract failures for one built package."""
     errors = []
@@ -101,24 +162,22 @@ def validate_reachability(manifest, files, overlay):
         config = {}
         errors.append("invalid or missing TITAN-CONFIG.json: %s" % type(error).__name__)
 
-    reachable_source = "\n".join(
-        files[path].decode("utf-8", errors="replace")
-        for path in sorted(reachable)
-        if path.endswith(".py")
-    )
-
-    for key, spec in keyed_specs(manifest):
+    runtime_refs = executable_key_references(files, reachable)
+    contracts = list(config_contracts(manifest))
+    seen_contracts = set()
+    for key, expected in contracts:
+        if key in seen_contracts:
+            errors.append("%s: duplicate manifest config contract" % key)
+            continue
+        seen_contracts.add(key)
         if key not in config:
             errors.append("%s: missing from TITAN-CONFIG.json" % key)
-        elif config[key] != spec["default"]:
-            errors.append(
-                "%s: config default %r != manifest %r"
-                % (key, config[key], spec["default"])
-            )
+        elif not _same_json_scalar(config[key], expected):
+            errors.append("%s: config default %r != manifest %r" % (key, config[key], expected))
+        if key not in runtime_refs:
+            errors.append("%s: not referenced by executable code reachable from main.py" % key)
 
-        if not re.search(r"\b%s\b" % re.escape(key), reachable_source):
-            errors.append("%s: not referenced by code reachable from main.py" % key)
-
+    for key, spec in keyed_specs(manifest):
         modules = declared_modules(spec)
         if not modules:
             errors.append("%s: manifest module field names no .py modules" % key)
@@ -152,11 +211,14 @@ def main(argv=None):
         return 1
 
     specs = list(keyed_specs(manifest))
+    contracts = list(config_contracts(manifest))
     modules = sorted({module for _, spec in specs for module in declared_modules(spec)})
     print(
         "V31 REACHABILITY OK",
         len(specs),
-        "keys",
+        "lanes",
+        len(contracts),
+        "config contracts",
         len(modules),
         "declared modules",
         len(files),

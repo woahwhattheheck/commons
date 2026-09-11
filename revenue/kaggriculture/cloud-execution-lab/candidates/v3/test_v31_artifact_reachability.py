@@ -19,7 +19,10 @@ class ArtifactReachabilityTests(unittest.TestCase):
                 "lane_flag": {
                     "default": False,
                     "module": "lane_mod.py",
-                }
+                },
+                "params": {
+                    "lane_limit": 3,
+                },
             }
         }
         files = {
@@ -29,10 +32,10 @@ class ArtifactReachabilityTests(unittest.TestCase):
                 b"    if cfg.get('lane_flag'):\n"
                 b"        from lane_mod import run_lane\n"
                 b"        return run_lane()\n"
-                b"    return 0\n"
+                b"    return cfg.get('lane_limit', 0)\n"
             ),
             "lane_mod.py": lane,
-            "TITAN-CONFIG.json": b'{"lane_flag": false}',
+            "TITAN-CONFIG.json": b'{"lane_flag": false, "lane_limit": 3}',
         }
         overlay = {"lane_mod.py": lane}
         return manifest, files, overlay
@@ -57,7 +60,7 @@ class ArtifactReachabilityTests(unittest.TestCase):
         manifest, files, overlay = self.fixture()
         files["titan_runtime.py"] = (
             b"def run(cfg):\n"
-            b"    return bool(cfg.get('lane_flag'))\n"
+            b"    return bool(cfg.get('lane_flag')) + cfg.get('lane_limit', 0)\n"
         )
         errors = validate_reachability(manifest, files, overlay)
         self.assertTrue(any("not import-reachable" in error for error in errors))
@@ -67,8 +70,61 @@ class ArtifactReachabilityTests(unittest.TestCase):
         files["TITAN-CONFIG.json"] = b"{}"
         files["titan_runtime.py"] = b"from lane_mod import run_lane\ndef run(cfg):\n    return run_lane()\n"
         errors = validate_reachability(manifest, files, overlay)
-        self.assertTrue(any("missing from TITAN-CONFIG.json" in error for error in errors))
-        self.assertTrue(any("not referenced by code reachable" in error for error in errors))
+        self.assertTrue(any("lane_flag: missing from TITAN-CONFIG.json" in error for error in errors))
+        self.assertTrue(any("lane_limit: missing from TITAN-CONFIG.json" in error for error in errors))
+        self.assertTrue(any("lane_flag: not referenced by executable code" in error for error in errors))
+        self.assertTrue(any("lane_limit: not referenced by executable code" in error for error in errors))
+
+    def test_manifest_param_default_drift_fails(self):
+        manifest, files, overlay = self.fixture()
+        files["TITAN-CONFIG.json"] = b'{"lane_flag": false, "lane_limit": 4}'
+        errors = validate_reachability(manifest, files, overlay)
+        self.assertTrue(any("lane_limit: config default 4 != manifest 3" in error for error in errors))
+
+    def test_manifest_param_type_drift_fails(self):
+        manifest, files, overlay = self.fixture()
+        manifest["keys"]["params"]["lane_limit"] = True
+        files["TITAN-CONFIG.json"] = b'{"lane_flag": false, "lane_limit": 1}'
+        errors = validate_reachability(manifest, files, overlay)
+        self.assertTrue(any("lane_limit: config default 1 != manifest True" in error for error in errors))
+
+    def test_param_comment_docstring_and_dead_string_do_not_count_as_use(self):
+        manifest, files, overlay = self.fixture()
+        files["titan_runtime.py"] = (
+            b"from lane_mod import run_lane\n"
+            b"def run(cfg):\n"
+            b"    # lane_limit must not satisfy runtime reachability\n"
+            b"    marker = 'lane_limit'\n"
+            b"    if cfg.get('lane_flag'):\n"
+            b"        return run_lane()\n"
+            b"    return marker\n"
+        )
+        errors = validate_reachability(manifest, files, overlay)
+        self.assertTrue(any("lane_limit: not referenced by executable code" in error for error in errors))
+
+    def test_lane_comment_docstring_and_dead_string_do_not_count_as_use(self):
+        manifest, files, overlay = self.fixture()
+        files["titan_runtime.py"] = (
+            b"from lane_mod import run_lane\n"
+            b"def run(cfg):\n"
+            b"    '''lane_flag'''\n"
+            b"    # lane_flag must not satisfy runtime reachability\n"
+            b"    marker = 'lane_flag'\n"
+            b"    return run_lane() + cfg.get('lane_limit', 0)\n"
+        )
+        errors = validate_reachability(manifest, files, overlay)
+        self.assertTrue(any("lane_flag: not referenced by executable code" in error for error in errors))
+
+    def test_attribute_reference_counts_as_semantic_use(self):
+        manifest, files, overlay = self.fixture()
+        files["titan_runtime.py"] = (
+            b"from lane_mod import run_lane\n"
+            b"def run(self):\n"
+            b"    if self.features.lane_flag:\n"
+            b"        return run_lane()\n"
+            b"    return self.features.lane_limit\n"
+        )
+        self.assertEqual([], validate_reachability(manifest, files, overlay))
 
 
 if __name__ == "__main__":
