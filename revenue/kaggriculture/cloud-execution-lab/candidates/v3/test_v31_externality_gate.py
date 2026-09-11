@@ -26,11 +26,15 @@ def cell(seat=0, baseline=(100, 90), candidate=(110, 85), opponent="opp", seed=1
     }
 
 
-def document(rows=None, *, complete=True, events=None):
+def flat_cell(
+    seat=0, baseline=(100, 90), candidate=(110, 85), opponent="opp", seed=1
+):
     return {
-        "cells": list(rows or [cell()]),
-        "externality_complete": complete,
-        "externality_events": list(events or []),
+        "opponent": opponent,
+        "seed": seed,
+        "candidate_seat": seat,
+        "baseline_scores": list(baseline),
+        "candidate_scores": list(candidate),
     }
 
 
@@ -56,21 +60,97 @@ def event(
     }
 
 
+def _row_key(row):
+    return (str(row["opponent"]).strip(), str(row["seed"]).strip(), int(row["candidate_seat"]))
+
+
+def _event_key(raw):
+    return (str(raw["opponent"]).strip(), str(raw["seed"]).strip(), int(raw["candidate_seat"]))
+
+
+def document(rows=None, *, complete=True, events=None):
+    rows = list(rows or [cell()])
+    events = list(events or [])
+    doc = {
+        "cells": rows,
+        "externality_complete": complete,
+        "externality_events": events,
+    }
+    if complete:
+        counts = {_row_key(row): 0 for row in rows}
+        for raw in events:
+            key = _event_key(raw)
+            if key in counts:
+                counts[key] += 1
+        doc["externality_coverage"] = [
+            {
+                "opponent": key[0],
+                "seed": key[1],
+                "candidate_seat": key[2],
+                "source": "official_replay",
+                "events_observed": counts[key],
+            }
+            for key in counts
+        ]
+    return doc
+
+
 class ExternalityGateTests(unittest.TestCase):
     def test_clean_complete_trace_passes(self):
         report = gate.evaluate(document())
         self.assertEqual(report["verdict"], "PASS")
+        self.assertEqual(report["schema"], "titan-v31-d3-externality-gate-v2")
+        self.assertEqual(report["trace_coverage"]["receipts"], 1)
+        self.assertIs(report["trace_coverage"]["all_cells_covered"], True)
         self.assertEqual(report["terminal"]["mean_delta_own"], 10.0)
         self.assertEqual(report["terminal"]["mean_delta_rival"], -5.0)
         self.assertEqual(report["terminal"]["mean_delta_m"], 15.0)
 
-    def test_seat1_uses_official_player_order(self):
+    def test_seat1_nested_scores_use_official_player_order(self):
         row = cell(seat=1, baseline=(90, 100), candidate=(85, 110))
         report = gate.evaluate(document([row]))
         self.assertEqual(report["verdict"], "PASS")
         self.assertEqual(report["terminal"]["mean_delta_own"], 10.0)
         self.assertEqual(report["terminal"]["mean_delta_rival"], -5.0)
         self.assertEqual(report["terminal"]["mean_delta_m"], 15.0)
+
+    def test_reviewer_seat1_flat_vector_false_green_is_killed(self):
+        row = flat_cell(seat=1, baseline=(90, 100), candidate=(110, 100))
+        report = gate.evaluate(document([row]))
+        self.assertEqual(report["terminal"]["mean_delta_own"], 0.0)
+        self.assertEqual(report["terminal"]["mean_delta_rival"], 20.0)
+        self.assertEqual(report["terminal"]["mean_delta_m"], -20.0)
+        self.assertEqual(report["verdict"], "BLOCK")
+
+    def test_flat_and_nested_score_forms_must_agree_after_seat_normalization(self):
+        row = cell(seat=1, baseline=(90, 100), candidate=(85, 110))
+        row["baseline_scores"] = [90, 100]
+        row["candidate_scores"] = [85, 110]
+        report = gate.evaluate(document([row]))
+        self.assertEqual(report["verdict"], "PASS")
+
+        poisoned = copy.deepcopy(row)
+        poisoned["candidate_scores"] = [999, 110]
+        with self.assertRaisesRegex(gate.delta_report.DataError, "conflicting candidate score forms"):
+            gate.evaluate(document([poisoned]))
+
+    def test_mixed_arm_pair_and_row_container_representations_fail_closed(self):
+        doc = document()
+        doc["baseline"] = [
+            {"opponent": "opp", "seed": 1, "candidate_seat": 0, "scores": [100, 90]}
+        ]
+        doc["candidate"] = [
+            {"opponent": "opp", "seed": 1, "candidate_seat": 0, "scores": [999, 0]}
+        ]
+        with self.assertRaisesRegex(
+            gate.ExternalityError, "mixed arm-pair and row-container representations"
+        ):
+            gate.evaluate(doc)
+
+        one_arm = document()
+        one_arm["baseline"] = []
+        with self.assertRaisesRegex(gate.ExternalityError, "requires both baseline and candidate"):
+            gate.evaluate(one_arm)
 
     def test_positive_rival_terminal_delta_blocks_even_when_margin_improves(self):
         row = cell(baseline=(100, 90), candidate=(110, 95))
@@ -102,10 +182,44 @@ class ExternalityGateTests(unittest.TestCase):
     def test_incomplete_or_missing_trace_can_never_pass(self):
         hold = gate.evaluate(document(complete=False))
         self.assertEqual(hold["verdict"], "HOLD")
+        self.assertIs(hold["trace_coverage"]["all_cells_covered"], False)
 
         raw = {"cells": [cell()]}
         hold = gate.evaluate(raw)
         self.assertEqual(hold["verdict"], "HOLD")
+
+    def test_complete_trace_requires_exact_per_cell_coverage_receipts(self):
+        missing = document()
+        del missing["externality_coverage"]
+        with self.assertRaisesRegex(gate.ExternalityError, "requires externality_coverage"):
+            gate.evaluate(missing)
+
+        mismatch = document(events=[event()])
+        mismatch["externality_coverage"][0]["events_observed"] = 0
+        with self.assertRaisesRegex(gate.ExternalityError, "event count mismatch"):
+            gate.evaluate(mismatch)
+
+        rows = [cell(seed=1), cell(seed=2)]
+        incomplete = document(rows)
+        incomplete["externality_coverage"] = incomplete["externality_coverage"][:1]
+        with self.assertRaisesRegex(gate.ExternalityError, "exactly one receipt per paired cell"):
+            gate.evaluate(incomplete)
+
+    def test_coverage_receipts_reject_duplicates_unknown_cells_and_type_confusion(self):
+        dup = document()
+        dup["externality_coverage"].append(copy.deepcopy(dup["externality_coverage"][0]))
+        with self.assertRaisesRegex(gate.ExternalityError, "duplicate externality coverage cell"):
+            gate.evaluate(dup)
+
+        unknown = document()
+        unknown["externality_coverage"][0]["seed"] = 999
+        with self.assertRaisesRegex(gate.ExternalityError, "unknown paired cell"):
+            gate.evaluate(unknown)
+
+        confused = document()
+        confused["externality_coverage"][0]["events_observed"] = False
+        with self.assertRaisesRegex(gate.ExternalityError, "non-negative JSON integer"):
+            gate.evaluate(confused)
 
     def test_negative_margin_blocks_independently_of_trace(self):
         row = cell(baseline=(100, 90), candidate=(101, 95))
