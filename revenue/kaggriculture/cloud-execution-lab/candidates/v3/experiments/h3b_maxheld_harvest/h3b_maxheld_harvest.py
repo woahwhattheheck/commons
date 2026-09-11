@@ -117,6 +117,7 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if type(step) is not int or type(player) is not int or player < 0:
             return action
         day = step // 24
+        hour = step % 24
         # The final day has special V233 cargo-return timing and no useful post-season refresh.
         if day < 12 or day >= 29:
             return action
@@ -194,8 +195,23 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if (not isinstance(pos, (list, tuple)) or len(pos) != 2
                 or type(pos[0]) is not int or type(pos[1]) is not int):
             return action
-        urgent.sort(key=lambda row: (-row[3], abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1]), row[0]))
-        _order, target, _units, overflow, _placed, _bonus = urgent[0]
+
+        # A cap-loss rescue is only real if movement plus the HARVEST callback
+        # both fit before this day's EOD refresh.  Without this deadline check,
+        # a late move can displace a useful parent HARVEST and still arrive too
+        # late to prevent the very overflow H3b is trying to rescue.
+        remaining_callbacks = 24 - hour
+        reachable = []
+        for row in urgent:
+            distance = abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1])
+            if distance + 1 <= remaining_callbacks:
+                reachable.append(row)
+        if not reachable:
+            telemetry["deadline_declines"] += 1
+            continue
+
+        reachable.sort(key=lambda row: (-row[3], abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1]), row[0]))
+        _order, target, _units, overflow, _placed, _bonus = reachable[0]
         desired = base._v219_walk(tuple(pos), target) or ["HARVEST"]
         if commands[actor] == desired:
             telemetry["already_prioritized"] += 1
