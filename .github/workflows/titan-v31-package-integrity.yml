@@ -6,12 +6,14 @@ on:
       - 'titan/v3.1-20260911'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
       - '.github/workflows/titan-v31-package-integrity.yml'
   push:
     branches:
       - 'titan/v3.1-20260911'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
       - '.github/workflows/titan-v31-package-integrity.yml'
   workflow_dispatch:
 
@@ -39,12 +41,24 @@ jobs:
           git rev-parse HEAD
           git status --short
 
+      - name: Verify Python assertions are active
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          env -u PYTHONOPTIMIZE python -B - <<'PY'
+          import sys
+          if sys.flags.optimize != 0:
+              raise SystemExit('package-integrity check requires Python optimization level 0')
+          print('PYTHON ASSERTIONS ACTIVE')
+          PY
+
       - name: Verify deterministic V3 package metadata
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          python -B build_v3.py --check | tee /tmp/titan-v31-package-check.log
+          env -u PYTHONOPTIMIZE python -B build_v3.py --check | tee /tmp/titan-v31-package-check.log
           grep -F 'V3 CHECK OK' /tmp/titan-v31-package-check.log
 
       - name: Prove package check did not mutate checkout
