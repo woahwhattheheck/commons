@@ -12,7 +12,7 @@ The lane is deliberately narrow:
 - days 4..23 only (no overlap with the shipped endgame fert hand or V218);
 - standard 720/24/10/100/10 field with farm-hand cost multiplier 1 only;
 - no current HIRE, purchase, or COLLECT_FERTILIZER row;
-- no authored future HIRE or COLLECT_FERTILIZER for the rest of the day;
+- no authored future cash-spending/ambiguous market row or COLLECT_FERTILIZER for the rest of the day;
 - SE targets are excluded so V233's dedicated sheep workers keep ownership;
 - a worst-case shed-corner start must reach enough collections before EOD;
 - quoted fertilizer value must conservatively clear the Fibonacci hire cost.
@@ -136,10 +136,16 @@ def _future_conflict(tape: Any, step: int) -> bool:
             hands = action.get("hands", [])
             if not isinstance(market, list) or not isinstance(hands, list):
                 return True
-            if any(not isinstance(order, list) for order in market):
-                return True
-            if any(order and order[0] == "HIRE" for order in market):
-                return True
+            # S1 appends a real HIRE now, so it must not consume cash needed by a
+            # later authored market obligation.  SELL and empty rows cannot spend
+            # our private cash; every other/unknown market opcode fails closed.
+            for order in market:
+                if not isinstance(order, list):
+                    return True
+                if not order:
+                    continue
+                if not isinstance(order[0], str) or order[0] != "SELL":
+                    return True
             commands = [action.get("farmer")] + hands
             for command in commands:
                 if command is None:
