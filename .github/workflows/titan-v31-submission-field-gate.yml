@@ -1,0 +1,111 @@
+name: titan-v31-submission-field-gate
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_make_submission_config.py'
+      - '.github/workflows/titan-v31-submission-field-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  field-gated-submission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact shipped V3.1 parent and child scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git diff --name-only "$BASE"..HEAD > /tmp/field-gate-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/field-gate-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-submission-field-gate.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_make_submission_config.py',
+          }
+          assert actual == expected, (sorted(actual), sorted(expected))
+          print('SUBMISSION FIELD-GATE SCOPE OK', len(actual))
+          PY
+
+      - name: Prove shipped deterministic package is unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check
+
+      - name: Run submission config predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v tooling_tests/test_make_submission_config.py
+
+      - name: Prove only cattle-facing config changes on shipped H4 plus rival-gated L3 package
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import json
+          import build_v3
+          import make_submission
+
+          base = build_v3.package_files()
+          original = json.loads(base['TITAN-CONFIG.json'])
+          assert original['r04_sale_window'] is False
+          assert original['r04_sale_fertilizer'] is True
+          assert original['r04_cattle_early'] is True
+          assert original['r04_strawberry_topup'] is True
+          assert original['r04_no_late_sale_advance'] is True
+          assert original['r04_no_late_sale_advance_step'] == 648
+
+          changed, config = make_submission.apply_submission_config(base, 8)
+          differing = sorted(name for name in base if base[name] != changed[name])
+          assert differing == ['TITAN-CONFIG.json'], differing
+          assert set(base) == set(changed)
+          assert config['r04_sale_window'] is True
+          assert config['r04_sale_fertilizer'] is True
+          assert config['r04_cattle_early'] is False
+          assert config['r04_sale_horizon'] == 8
+          assert config['r04_strawberry_topup'] is True
+          assert config['r04_no_late_sale_advance'] is True
+          assert config['r04_no_late_sale_advance_step'] == 648
+          for key, value in original.items():
+              if key not in {'r04_sale_window', 'r04_sale_horizon', 'r04_sale_fertilizer', 'r04_cattle_early'}:
+                  assert config[key] == value, (key, value, config[key])
+          parsed = json.loads(changed['TITAN-CONFIG.json'])
+          assert parsed == config
+          print('POST-12494 SUBMISSION TUPLE OK', {
+              'r04_sale_window': config['r04_sale_window'],
+              'r04_sale_horizon': config['r04_sale_horizon'],
+              'r04_sale_fertilizer': config['r04_sale_fertilizer'],
+              'r04_cattle_early': config['r04_cattle_early'],
+              'r04_no_late_sale_advance': config['r04_no_late_sale_advance'],
+              'r04_strawberry_topup': config['r04_strawberry_topup'],
+          })
+          PY
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
