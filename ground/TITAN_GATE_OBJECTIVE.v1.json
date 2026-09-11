@@ -1,0 +1,16 @@
+{
+  "schema": "commons-gate-objective/v1",
+  "objective_id": "titan-paired-evaluator-score-delta-v1",
+  "score_unit": "evaluator_score",
+  "direction": "maximize",
+  "pairing": {
+    "candidate_field": "candidate_score",
+    "control_field": "control_score",
+    "delta": "candidate_minus_control"
+  },
+  "summary": {
+    "primary": "mean_delta",
+    "counts": ["better", "equal", "worse"],
+    "sample_size": "pairs"
+  }
+}
