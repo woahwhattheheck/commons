@@ -18,6 +18,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          # PR events normally check out a synthetic merge ref. The L3 gate's
+          # custody claim is about the exact candidate head, so bind the job to it.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact PR-head checkout
+        if: github.event_name == 'pull_request'
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
       - name: Focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
         run: python -B -m unittest -v test_candidate.py
