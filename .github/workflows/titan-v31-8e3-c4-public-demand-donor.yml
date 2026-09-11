@@ -55,7 +55,7 @@ jobs:
           test "$(git rev-parse "HEAD:$CAND")" = '9f7f597ae196dee13061bc74e07da49866ee6688'
           test "$(git rev-parse "HEAD:$TEST")" = 'ea30a397d3ec6baddea60d667efdd011e3779228'
           test "$(git rev-parse "HEAD:$PATCH")" = '9933b22d187daee8ae7ee394690b0d3f19c73cb6'
-          test "$(git rev-parse "HEAD:$KILLERS")" = '7b4cd67e3c6950a1186de3877a740e80d6f29f4d'
+          test "$(git rev-parse "HEAD:$KILLERS")" = 'b779be02558ce4661533ec743b3ba7dcc46f6e52'
 
           # Current shipped 8e3 gameplay bytes.
           test "$(git rev-parse "HEAD:$R04")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
@@ -105,8 +105,7 @@ jobs:
               'OPEN_ROUNDTRIP': 0,
               'ROW_ORDER': True,
               'EVENING_FLUSH': True,
-              'SALE_FERTILIZER': True,
-              'CATTLE_EARLY': True,
+              '_V231_EARLY': True,
               'KILL_LATE_WATER': False,
               'STRAWBERRY_ENDGAME': False,
               'STRAWBERRY_MAX_PLANTS': 8,
@@ -120,6 +119,8 @@ jobs:
               got = getattr(candidate.base, name)
               if type(got) is not type(wanted) or got != wanted:
                   raise SystemExit(f'C4 parent flag drift: {name}={got!r}, expected {wanted!r}')
+          if candidate.base.SALE_EXCLUDED != ('WHEAT',):
+              raise SystemExit(f'C4 sale-fertilizer drift: SALE_EXCLUDED={candidate.base.SALE_EXCLUDED!r}')
           if candidate._PARENT_AGENT is not candidate.base.v3_agent:
               raise SystemExit('C4 frozen parent callable is not exact base.v3_agent')
           print('C4_PARENT_TUPLE_BOUND', actual)
