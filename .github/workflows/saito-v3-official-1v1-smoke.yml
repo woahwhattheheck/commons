@@ -1,0 +1,139 @@
+name: SAITO TITAN V3 official 1v1 smoke
+
+on:
+  push:
+    branches:
+      - agent/saito-v3-official-1v1-smoke-20260910-01
+
+permissions:
+  contents: read
+
+jobs:
+  official-1v1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout exact smoke head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind parent and workflow-only delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "0db46d2fb8847c7908940abc5a83eb7cc143cc7b"
+          test "$(git diff --name-only HEAD^ HEAD)" = ".github/workflows/saito-v3-official-1v1-smoke.yml"
+          echo "SMOKE_HEAD=$(git rev-parse HEAD)"
+          echo "V3_PARENT=$(git rev-parse HEAD^)"
+
+      - name: Verify canonical archive and V3 source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          CANON="revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
+          V3="revenue/kaggriculture/cloud-execution-lab/candidates/v3"
+          echo "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9  $CANON" | sha256sum -c -
+          python3 "$V3/build_v3.py" --check --canonical "$CANON"
+
+      - name: Materialize three one-factor arms
+        shell: bash
+        run: |
+          set -euo pipefail
+          V3="revenue/kaggriculture/cloud-execution-lab/candidates/v3"
+          CANON="revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
+          rm -rf /tmp/saito-v3off /tmp/saito-r01on /tmp/saito-r02on /tmp/saito-results
+          mkdir -p /tmp/saito-results
+          for arm in v3off r01on r02on; do
+            python3 "$V3/build_v3.py" --tree "/tmp/saito-$arm" --canonical "$CANON"
+          done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for arm, flags in {
+              "v3off": {},
+              "r01on": {"r01_shop_router": True},
+              "r02on": {"r02_route_bank": True},
+          }.items():
+              p = Path(f"/tmp/saito-{arm}/TITAN-CONFIG.json")
+              cfg = json.loads(p.read_text())
+              # One-factor smoke: every optional V3 gameplay key stays at its
+              # materialized default except the named arm flag.
+              for key, value in flags.items():
+                  cfg[key] = value
+              p.write_text(json.dumps(cfg, indent=2, sort_keys=True) + "\n")
+              print("ARM_CONFIG", arm, {k: cfg.get(k) for k in ("r01_shop_router", "r02_route_bank")})
+          PY
+
+      - name: Run focused V3 contracts on R02 arm
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/saito-r02on
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v \
+            checks/test_v3_features.py \
+            checks/test_v3_l01.py \
+            checks/test_v3_r01.py \
+            checks/test_v3_r02.py \
+            2>&1 | tee /tmp/saito-results/contracts.log
+
+      - name: Run actual official-interpreter 1v1 games
+        shell: bash
+        run: |
+          set -euo pipefail
+          for arm in v3off r01on r02on; do
+            D="/tmp/saito-$arm"
+            python3 "$D/checks/reference/evaluator/evaluate.py" \
+              --engine-dir "$D/checks/reference/engine" \
+              --loader "$D/checks/reference/evaluator/loader.py" \
+              --candidate "$D/main.py::agent" \
+              --opponent starter=official_starter \
+              --seeds 2611091001 \
+              --rng-seed 20260910 \
+              --action-timeout 15 \
+              --startup-timeout 15 \
+              --game-timeout 240 \
+              --recheck-first \
+              --output "/tmp/saito-results/$arm.json" \
+              2>&1 | tee "/tmp/saito-results/$arm.log"
+          done
+
+      - name: Emit compact exact-game receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee /tmp/saito-results/receipt.txt
+          import hashlib, json
+          from pathlib import Path
+          print("PARENT 0db46d2fb8847c7908940abc5a83eb7cc143cc7b")
+          print("CANON b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9")
+          for arm in ("v3off", "r01on", "r02on"):
+              p = Path(f"/tmp/saito-results/{arm}.json")
+              r = json.loads(p.read_text())
+              games = sorted(r["games"], key=lambda g: g["candidate_seat"])
+              compact = []
+              for g in games:
+                  compact.append({
+                      "seat": g["candidate_seat"],
+                      "status": g["status"],
+                      "scores": g.get("scores"),
+                      "trace": g.get("trace_sha256"),
+                      "failure": g.get("failure"),
+                  })
+              print("ARM", arm, "candidate", r["candidate"]["sha256"],
+                    "engine", r["engine_sha256"]["kaggriculture.py"],
+                    "summary", json.dumps(r["summary"], sort_keys=True),
+                    "games", json.dumps(compact, sort_keys=True),
+                    "repro", json.dumps(r.get("reproducibility"), sort_keys=True),
+                    "report_sha256", hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Retain game receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: saito-v3-official-1v1-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/saito-results
+          if-no-files-found: error
+          retention-days: 30
