@@ -23,6 +23,7 @@ CONFIG = {
     "boardSize": 10,
     "shedCapacity": 100,
     "maxMarketOrdersPerTurn": 10,
+    "farmHandCostMult": 1,
 }
 
 
@@ -113,6 +114,8 @@ class S1FertSweepTest(unittest.TestCase):
             {**CONFIG, "boardSize": 9},
             {**CONFIG, "shedCapacity": 99},
             {**CONFIG, "maxMarketOrdersPerTurn": 9},
+            {**CONFIG, "farmHandCostMult": 2},
+            {**CONFIG, "farmHandCostMult": True},
             {**CONFIG, "episodeSteps": True},
             {**CONFIG, "marketParams": {"WHEAT": {}}},
             {**CONFIG, "marketParams": []},
