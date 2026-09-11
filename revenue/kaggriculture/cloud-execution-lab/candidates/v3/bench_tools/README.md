@@ -7,7 +7,7 @@ This directory republishes the narrow PRESSURE/selective-rerun seat fix from fle
 - Slack file: `F0C0YEV23PD` (`Pinned-leader bench tools v2`)
 - Original archive SHA256: `b2ebe94e9311e3a344d5434d30b9734efc7239241b30683ebaf8b8712db5f226`
 - Visible patch: `bench-v2-seat-selector.patch`
-- Visible patch SHA256: `83b5418a4d1143f04e64cd5aaa73a1a8af2853e917182df0c748b867f241bbf7`
+- Visible patch SHA256: `043562b8dd90061402949ccc543a105b19fc0bb5298752f73d8c6881f2cdf71`
 
 This tooling lives outside `candidates/v3/overlay/**`; it is not a submission/package input and changes no gameplay policy, config default, evaluator scoring, opponent, or Kaggle artifact.
 
@@ -23,14 +23,20 @@ This tooling lives outside `candidates/v3/overlay/**`; it is not a submission/pa
 - README warns never to paste candidate-seat coordinates into `--episodes`.
 - `tools/test_seat_selector.py` binds unchanged leader-seat selection, correct candidate-seat inversion, and invalid-seat fail-closed behavior.
 
-## Validation
+## Exact apply + validation recipe
 
-Apply `bench-v2-seat-selector.patch` to the exact Slack archive above, then run:
+The patch uses standard `a/` / `b/` paths and is intended to be applied from the extracted `titan-bench-tools-v2` root with `-p1`:
 
 ```bash
-cd titan-bench-tools-v2/tools
+sha256sum /path/to/bench-v2.tar.gz
+# must be: b2ebe94e9311e3a344d5434d30b9734efc7239241b30683ebaf8b8712db5f226
+
+tar -xzf /path/to/bench-v2.tar.gz
+cd titan-bench-tools-v2
+patch --batch --forward -p1 < /path/to/bench-v2-seat-selector.patch
+cd tools
 python -B -m unittest -v test_seat_selector.py
 python -B -m py_compile *.py
 ```
 
-Local receipt before publication: 3/3 focused tests PASS; all 10 Python files syntax-compile.
+Publication revalidation used a fresh extraction of the exact Slack archive above. The patch applied all four paths cleanly; the focused selector suite was 3/3 PASS and all 10 Python files syntax-compiled.
