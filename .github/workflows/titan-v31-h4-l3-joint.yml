@@ -70,19 +70,22 @@ jobs:
           print('H4_STRUCTURAL_RECEIPT', 372, 292, 80)
           PY
 
-      - name: Smoke direct joint evaluator entrypoint
+      - name: Smoke self-contained joint evaluator entrypoint
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
           set -euo pipefail
-          PYTHONPATH="experiments/h4_l3_joint:overlay" python - <<'PY'
-          import joint_arm
-          import r04_full_router as base
-          import r04_h4_strawberry as h4
-          assert callable(joint_arm.agent)
-          assert h4.STRAWBERRY_TOPUP is True
-          assert base.NO_LATE_SALE_ADVANCE is True
-          assert base.NO_LATE_SALE_ADVANCE_STEP == 648
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('experiments/h4_l3_joint/joint_arm.py').resolve()
+          spec = importlib.util.spec_from_file_location('h4_l3_joint_exact', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          assert callable(module.agent)
+          assert module.h4.STRAWBERRY_TOPUP is True
+          assert module.base.NO_LATE_SALE_ADVANCE is True
+          assert module.base.NO_LATE_SALE_ADVANCE_STEP == 648
           print('JOINT_ENTRYPOINT_OK')
           PY
 
