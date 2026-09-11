@@ -1,0 +1,71 @@
+name: titan-v31-h13-l3-interaction
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_l3_interaction/**'
+      - '.github/workflows/titan-v31-h13-l3-interaction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-h13-l3-interaction-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frozen-interaction-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Fetch and bind pinned source objects
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            '+refs/pull/12377/head:refs/remotes/origin/titan-h13-l3-source' \
+            '+refs/pull/12392/head:refs/remotes/origin/titan-h13-canonical-carrier'
+          git cat-file -e 'd181d6ecf848f88885bc1cc348c456714b7360cd^{commit}'
+          git cat-file -e 'c580f7805cc7468094c0e880f4923133d45d70d0^{commit}'
+          echo "event_head=$(git rev-parse HEAD)"
+          echo "l3_ref=$(git rev-parse refs/remotes/origin/titan-h13-l3-source)"
+          echo "canonical_ref=$(git rev-parse refs/remotes/origin/titan-h13-canonical-carrier)"
+
+      - name: Run exact horizon-10-on-L3 vs horizon-8-on-L3 panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/h13-l3-interaction"
+          mkdir -p "$OUT"
+          env -u PYTHONOPTIMIZE python -B \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_l3_interaction/run_interaction.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" | tee "$OUT/run.log"
+          grep -F 'H13_L3_RESULT ' "$OUT/run.log"
+          test -s "$OUT/interaction-receipt.json"
+          test -s "$OUT/h10-vs-h8-l3-raw.json"
+          test -s "$OUT/control-h8-vs-h8.json"
+
+      - name: Prove experiment left checkout clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact interaction receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-h13-l3-interaction-${{ github.run_id }}
+          path: ${{ runner.temp }}/h13-l3-interaction/
+          if-no-files-found: error
+          retention-days: 14
