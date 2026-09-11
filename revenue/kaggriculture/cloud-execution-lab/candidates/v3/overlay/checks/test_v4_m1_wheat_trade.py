@@ -103,20 +103,12 @@ class M1WheatTrade(unittest.TestCase):
         obs["private"]["inventories"] = [{}]
         parent = {"farmer": ["PASS"], "hands": [], "market": []}
 
-        # The frozen tape has a hand WHEAT pickup at step 104, but this farm has
-        # no hand and every intervening HIRE is already a hard M1 veto. The
-        # official interpreter therefore cannot execute that pickup, so M1 must
-        # not buy WHEAT for it.
         out = self.run_lane(obs, parent, tape_with_pickup(104, 2))
         self.assertIs(out, parent)
         self.assertEqual(lane.REPORT["future_pickups"], 0)
         self.assertEqual(lane.REPORT["buy_orders"], 0)
 
     def test_future_shed_inflow_before_pickup_vetoes_capacity_hazard(self):
-        # With 98 units already in the shed, a two-unit M1 buy would fill it.
-        # An authored DROP/PLACE before the certified pickup can then lose cargo
-        # that baseline would have admitted into those two free slots. M1 does
-        # not own that future disposition, so the prebuy must fail closed.
         for command in (["DROP"], ["PLACE", "CARROT", 2]):
             with self.subTest(command=command):
                 lane.reset_for_tests()
@@ -241,6 +233,29 @@ class M1WheatTrade(unittest.TestCase):
         out = self.run_lane(observation(101, market_inventory=98), parent, tape)
         self.assertIs(out, parent)
 
+    def test_future_purchase_after_pickup_same_day_vetoes_early_spend(self):
+        self.prime(step=100, inventory=100)
+        tape = tape_with_pickup(103, 2)
+        # The pickup is a valid t+2 demand witness, but M1's spend at t can
+        # still starve this same-day purchase even though it occurs later.
+        tape[110]["market"] = [["BUY_LAND"]]
+        parent = empty_action()
+        out = self.run_lane(observation(101, market_inventory=98), parent, tape)
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["future_pickups"], 0)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
+    def test_next_day_purchase_does_not_block_same_day_pickup(self):
+        self.prime(step=100, inventory=100)
+        tape = tape_with_pickup(103, 2)
+        # step 120 is the first callback of the next day for current step 101.
+        tape[120]["market"] = [["BUY_LAND"]]
+        parent = empty_action()
+        out = self.run_lane(observation(101, market_inventory=98), parent, tape)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+        self.assertEqual(lane.REPORT["future_pickups"], 1)
+        self.assertEqual(lane.REPORT["buy_orders"], 1)
+
     def test_shared_shed_capacity_veto(self):
         self.prime(step=100, inventory=100)
         parent = empty_action()
@@ -280,8 +295,6 @@ class M1WheatTrade(unittest.TestCase):
         )
         self.assertIs(first, parent_buy)
 
-        # The next public drop can be our already-shipped controller's fill,
-        # not hidden rival demand. It must therefore be ineligible to arm M1.
         parent = empty_action()
         out = self.run_lane(
             observation(102, market_inventory=96),

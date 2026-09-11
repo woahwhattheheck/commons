@@ -118,22 +118,26 @@ def _parent_requests_wheat_buy(rows):
 
 
 def _future_literal_pickup(tape, step, actor_count):
-    """Return (due_step, units) for a pickup executable by a current actor.
+    """Return a funded same-day pickup executable by a current actor.
 
-    Future HIRE/purchase rows are a hard veto below, so the live actor count
-    cannot increase before the certified pickup. Tape hand rows beyond that
-    count are non-executable in the official interpreter and must not create
-    speculative WHEAT demand. Any intervening authored DROP/PLACE is also a
-    hard veto: M1's earlier market buy occupies shed capacity immediately, so
-    later unit-phase shed inflow could otherwise discard cargo before the
-    certified WHEAT pickup has a chance to free space.
+    The pickup candidate itself must remain two to six callbacks ahead. Before
+    that pickup, future HIRE/purchase rows and DROP/PLACE shed inflow are hard
+    vetoes exactly as before. Once a candidate is found, keep its ``(due,
+    demand)`` but continue scanning the selected tape through the rest of the
+    same day: any executable-prefix HIRE/BUY row still owns future cash, so M1
+    may not spend against it now. Purchases on the next day do not block.
     """
     if type(actor_count) is not int or actor_count < 1:
         return None, 0
     if not isinstance(tape, (list, tuple)) or len(tape) <= step + LOOKAHEAD_MIN:
         return None, 0
-    end = min(len(tape) - 1, step + LOOKAHEAD_MAX, (step // 24 + 1) * 24 - 1)
-    for due in range(step + 1, end + 1):
+
+    day_end = min(len(tape) - 1, (step // 24 + 1) * 24 - 1)
+    candidate_end = min(day_end, step + LOOKAHEAD_MAX)
+    candidate_due = None
+    candidate_demand = 0
+
+    for due in range(step + 1, candidate_end + 1):
         planned = tape[due]
         if not isinstance(planned, dict):
             return None, 0
@@ -161,8 +165,8 @@ def _future_literal_pickup(tape, step, actor_count):
         for actor, command in enumerate(commands):
             if len(command) >= 2 and command[:2] == ["PICKUP", "WHEAT"]:
                 # Extra tape hand rows do not imply a live hand. With HIRE
-                # already vetoed on every intervening row, such a command is
-                # provably unreachable and cannot justify an early market buy.
+                # already vetoed before the pickup, such a command is provably
+                # unreachable and cannot justify an early market buy.
                 if actor >= actor_count:
                     return None, 0
                 quantity = command[2] if len(command) >= 3 else 1
@@ -170,8 +174,34 @@ def _future_literal_pickup(tape, step, actor_count):
                     return None, 0
                 demand += quantity
         if demand > 0:
-            return due, demand
-    return None, 0
+            candidate_due = due
+            candidate_demand = demand
+            break
+
+    if candidate_due is None:
+        return None, 0
+
+    # M1's market buy spends cash now. The certified pickup can occur before a
+    # later same-day acquisition, so returning at the pickup would miss cash
+    # ownership that baseline still has. Inspect only the official executable
+    # market prefix after the pickup; next-day rows are outside this day's cash
+    # contract and are intentionally not scanned.
+    for due in range(candidate_due + 1, day_end + 1):
+        planned = tape[due]
+        if not isinstance(planned, dict):
+            return None, 0
+        rows = _market_rows(planned)
+        if rows is None:
+            return None, 0
+        for row in rows[:MAX_ORDERS]:
+            if not row:
+                continue
+            if not isinstance(row[0], str):
+                return None, 0
+            if row[0] in _PURCHASE_OPS:
+                return None, 0
+
+    return candidate_due, candidate_demand
 
 
 def _observe_scarcity(player, step, day, wheat_inventory):
