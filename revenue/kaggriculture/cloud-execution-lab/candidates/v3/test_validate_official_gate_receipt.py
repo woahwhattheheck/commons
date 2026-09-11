@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -183,19 +184,51 @@ def valid_receipt():
     }
 
 
+def validate_synthetic(receipt=None, manifest_value=None, panel_value=None):
+    return guard._validate_receipt_against_inputs(
+        valid_receipt() if receipt is None else receipt,
+        manifest() if manifest_value is None else manifest_value,
+        panel() if panel_value is None else panel_value,
+    )
+
+
 class SimFidelityGuardTests(unittest.TestCase):
-    def test_valid_official_receipt_passes_with_authoritative_v31_release(self):
-        result = guard.validate_receipt(valid_receipt(), manifest(), panel())
+    def test_valid_synthetic_contract_passes_only_internal_consistency_helper(self):
+        result = validate_synthetic()
         self.assertTrue(result["official_gate_eligible"])
         self.assertEqual(result["cells"], 4)
 
-    def test_current_repo_manifest_cannot_false_green_without_v31_release(self):
+    def test_public_mapping_api_cannot_mint_official_eligibility(self):
+        with self.assertRaisesRegex(guard.ReceiptError, "cannot mint official eligibility"):
+            guard.validate_receipt(valid_receipt(), manifest(), panel())
+
+    def test_authoritative_wrapper_uses_repo_inputs_and_current_repo_fails_closed(self):
         repo_manifest = json.loads((HERE / "V3-MANIFEST.json").read_text(encoding="utf-8"))
         latest = repo_manifest["releases"][-1]
         if latest.get("version") == guard.LIVE_RELEASE_VERSION:
             self.skipTest("repo now records an authoritative V3.1 release")
         with self.assertRaisesRegex(guard.ReceiptError, "authoritative V3.1"):
-            guard.validate_receipt(valid_receipt(), repo_manifest, panel())
+            guard.validate_authoritative_receipt(valid_receipt())
+
+    def test_official_cli_rejects_custom_manifest_and_panel_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            receipt_path = root / "receipt.json"
+            manifest_path = root / "manifest.json"
+            panel_path = root / "panel.json"
+            receipt_path.write_text(json.dumps(valid_receipt()), encoding="utf-8")
+            manifest_path.write_text(json.dumps(manifest()), encoding="utf-8")
+            panel_path.write_text(json.dumps(panel()), encoding="utf-8")
+            rc = guard.main(
+                [
+                    str(receipt_path),
+                    "--manifest",
+                    str(manifest_path),
+                    "--panel",
+                    str(panel_path),
+                ]
+            )
+        self.assertEqual(rc, 2)
 
     def test_incomplete_v31_release_config_fails_even_if_version_matches(self):
         broken_manifest = manifest()
@@ -204,93 +237,99 @@ class SimFidelityGuardTests(unittest.TestCase):
         broken_receipt["baseline"]["config"].pop("r04_sale_fertilizer")
         broken_receipt["candidate"]["config"].pop("r04_sale_fertilizer")
         with self.assertRaisesRegex(guard.ReceiptError, "not a complete live TITAN-CONFIG"):
-            guard.validate_receipt(broken_receipt, broken_manifest, panel())
+            validate_synthetic(broken_receipt, broken_manifest)
+
+    def test_new_manifest_lane_without_release_config_fails_dynamically(self):
+        broken_manifest = manifest()
+        broken_manifest["keys"]["future_lane"] = {"default": False}
+        with self.assertRaisesRegex(guard.ReceiptError, "future_lane"):
+            validate_synthetic(manifest_value=broken_manifest)
 
     def test_wrong_interpreter_commit_fails(self):
         receipt = valid_receipt()
         receipt["interpreter"]["commit"] = "deadbeef"
         with self.assertRaisesRegex(guard.ReceiptError, "interpreter.commit"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_interpreter_must_be_blob_verified_clean(self):
         receipt = valid_receipt()
         receipt["interpreter"]["verified_clean"] = False
         with self.assertRaisesRegex(guard.ReceiptError, "verified_clean"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_wrong_canonical_archive_fails(self):
         receipt = valid_receipt()
         receipt["candidate"]["base_archive_sha256"] = "9" * 64
         with self.assertRaisesRegex(guard.ReceiptError, "manifest.base.sha256"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_live_submission_config_mismatch_fails(self):
         receipt = valid_receipt()
         receipt["baseline"]["config"]["r04_sale_horizon"] = 99
         with self.assertRaisesRegex(guard.ReceiptError, "exactly equal"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_baseline_bool_int_type_confusion_fails(self):
         receipt = valid_receipt()
         receipt["baseline"]["config"]["r04_sale_window"] = 1
         with self.assertRaisesRegex(guard.ReceiptError, r"type\+value strictness"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
         receipt = valid_receipt()
         receipt["baseline"]["config"]["e20_hire_guard"] = 0
         with self.assertRaisesRegex(guard.ReceiptError, r"type\+value strictness"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_undeclared_candidate_config_drift_fails(self):
         receipt = valid_receipt()
         receipt["candidate"]["config"]["r04_sale_horizon"] = 7
         with self.assertRaisesRegex(guard.ReceiptError, "declared"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_candidate_override_bool_int_type_confusion_fails(self):
         receipt = valid_receipt()
         receipt["candidate"]["config_overrides"]["e20_hire_guard"] = 1
         receipt["candidate"]["config"]["e20_hire_guard"] = 1
         with self.assertRaisesRegex(guard.ReceiptError, "changes JSON type"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_seed_or_seat_substitution_fails(self):
         receipt = valid_receipt()
         receipt["panel"]["seeds"] = [101, 999]
         with self.assertRaisesRegex(guard.ReceiptError, "seeds"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_frozen_panel_metadata_must_be_self_consistent(self):
         broken = panel()
         broken["seeds"] = [101, 101]
         with self.assertRaisesRegex(guard.ReceiptError, "duplicates"):
-            guard.validate_receipt(valid_receipt(), manifest(), broken)
+            validate_synthetic(panel_value=broken)
         broken = panel()
         broken["games_per_opponent"] = 99
         with self.assertRaisesRegex(guard.ReceiptError, "seed x seat"):
-            guard.validate_receipt(valid_receipt(), manifest(), broken)
+            validate_synthetic(panel_value=broken)
         broken = panel()
         broken["seed_list_sha256"] = "c" * 64
         with self.assertRaisesRegex(guard.ReceiptError, "recomputed"):
-            guard.validate_receipt(valid_receipt(), manifest(), broken)
+            validate_synthetic(panel_value=broken)
 
     def test_opponent_bytes_must_match_between_arms(self):
         receipt = valid_receipt()
         receipt["opponent"]["same_bytes_between_arms"] = False
         with self.assertRaisesRegex(guard.ReceiptError, "same_bytes_between_arms"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_partial_panel_fails(self):
         receipt = valid_receipt()
         receipt["per_cell_results"].pop()
         with self.assertRaisesRegex(guard.ReceiptError, "partial frozen panel"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_seat_one_delta_is_recomputed_from_seat_ordered_scores(self):
         receipt = valid_receipt()
         seat_one = next(row for row in receipt["per_cell_results"] if row["candidate_seat"] == 1)
         seat_one["delta_m"] *= -1
         with self.assertRaisesRegex(guard.ReceiptError, "seat-aware recomputation"):
-            guard.validate_receipt(receipt, manifest(), panel())
+            validate_synthetic(receipt)
 
     def test_practice_receipt_must_be_explicitly_non_official(self):
         practice = {
