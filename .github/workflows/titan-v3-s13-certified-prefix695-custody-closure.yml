@@ -1,0 +1,167 @@
+name: titan-v3-s13-certified-prefix695-custody-closure
+
+on:
+  push:
+    branches:
+      - sol-astra/titan-v3-s13-12129-custody-closure-20260910
+    paths:
+      - '.github/workflows/titan-v3-s13-certified-prefix695-custody-closure.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/**'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-certified-prefix695-custody-closure.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  close-evidence-custody:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EXACT_PARENT: '7ac82fdc07788f58c504282b54460fa29152ab06'
+      CERT_HEAD: 'cbfff2bec813e2c2609ce9c5819b74669e98c566'
+      CERT_BLOB: '89a3325eb541ae0e8a81e1e0a426292820f10d98'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact successor topology and path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-s13-certified-prefix695-custody-closure.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v2.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/diagnostic_evaluate.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/test_certified_report_v2.py
+          EOF
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --check "$EXACT_PARENT"..HEAD
+
+      - name: Bind exact donor and prove Python 3.11 parity import
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CHILD="$LAB/analysis/titan-v3-s13-certified-prefix695-sol-pro"
+          git fetch --no-tags origin "$CERT_HEAD"
+          test "$(git rev-parse FETCH_HEAD)" = "$CERT_HEAD"
+          CERT_PATH=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro/action_applicability.py
+          git show "$CERT_HEAD:$CERT_PATH" > "$RUNNER_TEMP/action_applicability.py"
+          test "$(git hash-object "$RUNNER_TEMP/action_applicability.py")" = "$CERT_BLOB"
+          CHILD="$CHILD" DONOR="$RUNNER_TEMP/action_applicability.py" python - <<'PY'
+          import importlib.util
+          import os
+          from pathlib import Path
+          import sys
+
+          _ABSENT = object()
+          def load(name, path):
+              spec = importlib.util.spec_from_file_location(name, path)
+              if spec is None or spec.loader is None:
+                  raise RuntimeError(f"cannot load {path}")
+              module = importlib.util.module_from_spec(spec)
+              prior = sys.modules.get(name, _ABSENT)
+              sys.modules[name] = module
+              try:
+                  spec.loader.exec_module(module)
+              finally:
+                  if prior is _ABSENT:
+                      sys.modules.pop(name, None)
+                  else:
+                      sys.modules[name] = prior
+              return module
+
+          child = load('certified_runtime', Path(os.environ['CHILD']) / 'certified_route_runtime.py')
+          donor = load('donor_certificate', Path(os.environ['DONOR']))
+          cfg = {
+              'boardSize': 10, 'turnsPerDay': 24, 'shedCapacity': 100,
+              'maxMarketOrdersPerTurn': 10, 'farmHandCostMult': 1,
+              'marketParams': None,
+          }
+          action = {'farmer': ['MOVE', 'EAST'], 'hands': [], 'market': [['SELL', 'WHEAT', 1]]}
+          compared = 0
+          for seat in (0, 1):
+              for mode in ('units', 'market', 'full'):
+                  for step, money in ((24, 0), (25, 1000), (695, 99999)):
+                      farms = [
+                          {
+                              'money': money + index,
+                              'hands': [],
+                              'hires_today': 0,
+                              'unlocked_quadrants': ['NW'],
+                              'tiles': [],
+                              'farmer': {'location': [index, 0], 'inventory': []},
+                          }
+                          for index in (0, 1)
+                      ]
+                      obs = {
+                          'step': step,
+                          'day': step // 24,
+                          'player': seat,
+                          'farms': farms,
+                          'private': {'shed': {'WHEAT': step}, 'seeds': {}},
+                          'market': {'inventory': {'WHEAT': 10000 - step}, 'shops': []},
+                      }
+                      assert child.prestate_certificate(
+                          obs, cfg, action, seat=seat, mode=mode
+                      ) == donor.prestate_certificate(
+                          obs, cfg, action, seat=seat, mode=mode
+                      )
+                      compared += 1
+          assert compared == 18
+          print('DONOR_PARITY_IMPORT_OK', compared)
+          PY
+
+      - name: Prove source-level activation custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CHILD="$LAB/analysis/titan-v3-s13-certified-prefix695-sol-pro"
+          CLOSURE="$LAB/analysis/titan-v3-s13-certified-prefix695-custody-closure"
+          (
+            cd "$CHILD"
+            python -m py_compile *.py
+            python -m unittest -v
+          )
+          (
+            cd "$CLOSURE"
+            python -m py_compile *.py
+            python -m unittest -v
+          )
+          CLOSURE="$CLOSURE" python - <<'PY'
+          import importlib.util
+          import os
+          from pathlib import Path
+
+          path = Path(os.environ['CLOSURE']) / 'diagnostic_evaluate.py'
+          spec = importlib.util.spec_from_file_location('diagnostic_evaluate_contract', path)
+          module = importlib.util.module_from_spec(spec)
+          assert spec.loader is not None
+          spec.loader.exec_module(module)
+          actual = module.git_blob_sha(module.BASE_EVALUATOR.read_bytes())
+          assert actual == module.BASE_EVALUATOR_BLOB
+          print('DIAGNOSTIC_EVALUATOR_BASE_PIN_OK', actual)
+          PY
+          git diff --exit-code -- .
