@@ -46,6 +46,12 @@ class SubmissionConfigTests(unittest.TestCase):
         self.assertEqual(out["main.py"], source["main.py"])
         self.assertNotEqual(out["TITAN-CONFIG.json"], source["TITAN-CONFIG.json"])
 
+    def test_field_gated_tuple_does_not_inherit_future_base_horizon(self):
+        _, config = submission.apply_submission_config(base_files(r04_sale_horizon=10))
+        self.assertEqual(config["r04_sale_horizon"], 8)
+        self.assertIs(config["r04_sale_fertilizer"], True)
+        self.assertIs(config["r04_cattle_early"], False)
+
     def test_sale_fertilizer_is_forced_on_even_if_base_default_moves(self):
         out, config = submission.apply_submission_config(base_files(r04_sale_fertilizer=False))
         self.assertIs(config["r04_sale_fertilizer"], True)
@@ -60,6 +66,12 @@ class SubmissionConfigTests(unittest.TestCase):
             with self.subTest(bad=bad):
                 with self.assertRaisesRegex(AssertionError, "positive integer"):
                     submission.apply_submission_config(base_files(), bad)
+
+    def test_base_horizon_contract_fails_closed_before_transform(self):
+        for bad in (None, 0, -1, True, 8.0, "8"):
+            with self.subTest(bad=bad):
+                with self.assertRaisesRegex(AssertionError, "base r04_sale_horizon must be a positive integer"):
+                    submission.apply_submission_config(base_files(r04_sale_horizon=bad))
 
     def test_submission_boolean_contracts_fail_closed(self):
         for key in ("r04_sale_window", "r04_sale_fertilizer", "r04_cattle_early"):
