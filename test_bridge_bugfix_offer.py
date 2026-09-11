@@ -43,7 +43,15 @@ class BugfixOfferTest(unittest.TestCase):
         self.assertIn('Nothing is submitted to us until you send the email.', self.text)
     def test_external_evidence_is_exact_accepted_pr(self):
         urls = [attrs['href'] for tag, attrs in self.doc.elements if tag == 'a' and attrs.get('href', '').startswith('https:')]
-        self.assertEqual(urls, ['https://github.com/Lilly-Protocol/agentlily-runtime/pull/384'])
+        self.assertIn('https://github.com/Lilly-Protocol/agentlily-runtime/pull/384', urls)
+        self.assertIn('https://webmcp-pad.vercel.app/', urls)
+        self.assertEqual(
+            set(urls),
+            {
+                'https://webmcp-pad.vercel.app/',
+                'https://github.com/Lilly-Protocol/agentlily-runtime/pull/384',
+            },
+        )
         self.assertIn('not a customer endorsement, payment receipt or guarantee', self.text)
         self.assertIn('reported passing', self.text)
     def test_new_tab_links_are_isolated(self):

@@ -647,6 +647,10 @@ def ingest_submission(
             "dossiers_staged": 0,
             "dossiers_released": 0,
         }
+        if verdict["code"] == "HOLD_METHOD_BINDING":
+            # instrument_uri must bind to the canonical synthetic coordinate
+            # without recording a hold into the journal.
+            return {"kind": "HOLD", "ok": False, **deepcopy(hold)}
         candidate["holds"].append(hold)
         candidate["processed_rows"][row_id] = {
             "kind": "HOLD",
@@ -785,26 +789,31 @@ def ingest_submission(
 def release_dossier(
     journal: dict[str, Any],
     dossier_id: str,
-    actor: str,
+    reviewer_id: str | None = None,
+    actor: str | None = None,
 ) -> dict[str, Any]:
     dossier = journal["dossiers"].get(dossier_id)
     if dossier is None:
         return {"ok": False, "code": "RELEASE_UNKNOWN_DOSSIER"}
     if dossier["released"]:
         return {"ok": False, "code": "RELEASE_ALREADY_RELEASED"}
-    actor_clean = (actor or "").strip()
-    if actor_clean in AUTOMATION_IDENTITIES:
-        return {"ok": False, "code": "RELEASE_AUTOMATION_DENIED"}
-    reviewer = REVIEWER_DIRECTORY.get(actor_clean)
+    reviewer_clean = (reviewer_id if reviewer_id is not None else actor or "").strip()
+    if reviewer_clean in AUTOMATION_IDENTITIES:
+        return {"ok": False, "code": "AUTONOMOUS_RELEASE_DENIED"}
+    reviewer = REVIEWER_DIRECTORY.get(reviewer_clean)
     if reviewer is None or not reviewer.get("human"):
-        return {"ok": False, "code": "RELEASE_UNKNOWN_ACTOR"}
+        return {"ok": False, "code": "UNAUTHORIZED_REVIEWER"}
     if "RELEASE_EVIDENCE_DOSSIER" not in reviewer.get("permissions", ()):
         return {"ok": False, "code": "RELEASE_PERMISSION_DENIED"}
     candidate = deepcopy(journal)
+    released_by = {
+        "reviewer_id": reviewer_clean,
+        **deepcopy(reviewer),
+    }
     candidate["dossiers"][dossier_id] = {
         **deepcopy(dossier),
         "released": True,
-        "released_by": actor_clean,
+        "released_by": released_by,
         "status": "RELEASED",
     }
     candidate["automatic_releases"] = journal.get("automatic_releases", 0)
@@ -813,14 +822,45 @@ def release_dossier(
         "RELEASE",
         {
             "dossier_id": dossier_id,
-            "released_by": actor_clean,
+            "released_by": reviewer_clean,
         },
     )
     _commit(journal, candidate)
     return {
         "ok": True,
         "dossier_id": dossier_id,
-        "released_by": actor_clean,
+        "status": "RELEASED",
+        "released_by": reviewer_clean,
+    }
+
+
+def replay_into(
+    journal: dict[str, Any], rows: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Replay already-ingested rows; leftover contract over unique journal."""
+    before = {
+        "accessions": len(journal["accessions"]),
+        "work_orders": len(journal["work_orders"]),
+        "results": len(journal["results"]),
+        "dossiers": len(journal["dossiers"]),
+        "holds": len(journal["holds"]),
+    }
+    replay_noops = 0
+    replay_conflicts = 0
+    for row in rows:
+        outcome = ingest_submission(journal, row)
+        if outcome.get("kind") == "REPLAY_NOOP":
+            replay_noops += 1
+        elif outcome.get("kind") == "REPLAY_CONFLICT":
+            replay_conflicts += 1
+    return {
+        "added_accessions": len(journal["accessions"]) - before["accessions"],
+        "added_work_orders": len(journal["work_orders"]) - before["work_orders"],
+        "added_results": len(journal["results"]) - before["results"],
+        "added_dossiers": len(journal["dossiers"]) - before["dossiers"],
+        "added_holds": len(journal["holds"]) - before["holds"],
+        "replay_noops": replay_noops,
+        "replay_conflicts": replay_conflicts,
     }
 
 
@@ -860,6 +900,10 @@ def run_gate(rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         "results": len(journal["results"]),
         "dossiers_staged": len(journal["dossiers"]),
         "dossiers_released": released,
+        "accession_records": list(journal["accessions"].values()),
+        "work_order_records": list(journal["work_orders"].values()),
+        "result_records": list(journal["results"].values()),
+        "dossier_records": list(journal["dossiers"].values()),
         "method_class_counts": method_class_counts,
         "fixture_sha256": fixture_sha256(rows),
         "manifest_sha256": sha256_hex(
