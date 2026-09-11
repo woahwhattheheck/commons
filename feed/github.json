@@ -2,11 +2,11 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": 20,
-    "runs_queued": 2224
+    "runs_in_progress": 23,
+    "runs_queued": 2269
   },
   "degraded": [],
-  "drafts": 235,
+  "drafts": 236,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -52,6 +52,30 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-b7-shed-overflow-gate-20260911",
+      "created_at": "2026-09-11T10:42:46Z",
+      "draft": true,
+      "number": 12562,
+      "title": "TITAN V3.1 B7: current-root shed-overflow activation gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-b11-mirror-horizon-20260911",
+      "created_at": "2026-09-11T10:42:34Z",
+      "draft": true,
+      "number": 12561,
+      "title": "TITAN V3.1: screen B11 mirror horizon on 8e3 B5+JIT stack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-b11-mirror-screen-20260911",
+      "created_at": "2026-09-11T10:42:16Z",
+      "draft": true,
+      "number": 12560,
+      "title": "TITAN V3.1: re-screen B11 mirror horizon on shipped 8e3+B5+JIT"
+    },
+    {
+      "author": "woahwhattheheck",
       "branch": "astra/v31-8e3-b11-mirror-currentroot-20260911",
       "created_at": "2026-09-11T10:41:29Z",
       "draft": true,
@@ -65,14 +89,6 @@
       "draft": true,
       "number": 12558,
       "title": "TITAN V3.1: preserve S33 row-shed donor on shipped 8e3 root"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-d3-merge-policy-consume-20260911",
-      "created_at": "2026-09-11T10:40:42Z",
-      "draft": true,
-      "number": 12557,
-      "title": "TITAN V3.1: consume D3 merge policy on shipped 8e3 root"
     },
     {
       "author": "woahwhattheheck",
@@ -113,29 +129,13 @@
       "draft": true,
       "number": 12552,
       "title": "TITAN V3.1: consume reviewed E20 on shipped 8e3 B5+JIT stack"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-row-shed-current-root-recompose-20260911",
-      "created_at": "2026-09-11T10:39:10Z",
-      "draft": true,
-      "number": 12551,
-      "title": "TITAN V3.1: surface current-root S33 row-shed donor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "opus/obs-ghstate-main828-compose-20260911-01",
-      "created_at": "2026-09-11T10:37:59Z",
-      "draft": true,
-      "number": 12546,
-      "title": "observability + github_state: compose reviewed command road and heads custody on current main"
     }
   ],
-  "pulls_listed": 300,
+  "pulls_listed": 301,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 111.2,
+  "queue_depth_per_runner": 98.7,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T10:41:53Z",
+  "unchanged_since": "2026-09-11T10:42:50Z",
   "undatable_pulls": []
 }
