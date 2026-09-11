@@ -13,7 +13,7 @@
 <section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
   <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
 </section>
-  <p>A local, evidence-first gate for one open-model release manifest. It verifies exactly eight declared artifacts, recomputes every SHA-256, runs one deterministic loader, and emits JSON plus a static HTML receipt.</p>
+  <p>A local, evidence-first gate for one open-model release manifest. It verifies exactly eight declared artifacts, recomputes every SHA-256, runs one manifest-declared loader, and emits JSON plus a static HTML receipt.</p>
 <p class="price-actions"><a class="cta" href="https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a> <span class="small">Secure Stripe checkout opens in a new tab.</span></p>
   
 <section id="live-cash" aria-label="Live cash">
@@ -27,7 +27,7 @@
   </ul>
 </section>
 <h2>Binary acceptance</h2>
-  <ul><li>PASS only at 8/8 matching artifacts and loader exit 0.</li><li>Any missing path, changed byte, timeout, or loader error is FAIL with the exact stage.</li><li>Inputs are capped at 10 MiB and 60 seconds; no database or training.</li></ul>
+  <ul><li>PASS only at 8/8 matching artifacts and loader exit 0.</li><li>Any missing path, changed byte, timeout, or loader error is FAIL with the exact stage.</li><li>Inputs are capped at 10 MiB and 60 seconds.</li><li>The receipt does not attest or prevent filesystem, network, database, training, or publication side effects of the manifest-declared loader; it does not itself deploy or publish the release.</li></ul>
   <p><code>python open_model_release_receipt.py verify manifest.json</code></p>
   <div class="cta"><strong>$199 / one business day</strong><br>Independent completeness diagnostic on one real release manifest. Optional $2,500 proof for one approved CI integration after a pass.</div>
 <p class="price-actions"><a class="cta" href="https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a> <span class="small">Secure Stripe checkout opens in a new tab.</span></p>
