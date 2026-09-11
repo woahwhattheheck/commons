@@ -1,0 +1,147 @@
+name: Astra D01 Pixel catalog continuation
+
+on:
+  push:
+    branches:
+      - astra/d01-pixel-catalog-continuation-20260911
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: astra/d01-pixel-catalog-continuation-20260911
+          fetch-depth: 0
+
+      - name: Patch only the released Pixel catalog blocks
+        env:
+          BASE_SHA: 780fdbe4fac26213b10774c328074e205f06e1f3
+        run: |
+          python - <<'PY'
+          from copy import deepcopy
+          import json
+          from pathlib import Path
+
+          path = Path("revenue/outcome_commerce/catalog.json")
+          raw = path.read_text(encoding="utf-8")
+          before = json.loads(raw)
+
+          assert before["funnels"]["ho-pixel-pack"]["priority"] == 7
+          assert before["funnels"]["ho-pixel-pack"]["readiness"] == "READY_FOR_QUALIFICATION"
+          assert before["funnels"]["ho-pixel-pack"]["qualification"]["route"] == "humans.html"
+          assert before["funnels"]["ho-pixel-pack"]["conversion"] == {
+              "mode": "CUSTOMER_SPECIFIC_INVOICE",
+              "status": "NOT_ISSUED",
+              "next_step": "Confirm the public page and issue a buyer-specific invoice.",
+              "state_after": "FUNDED",
+              "evidence_required": "Written scope and cleared provider authorization.",
+          }
+
+          hits = [row for row in before["listings"] if row.get("id") == "ho-pixel-pack"]
+          assert len(hits) == 1
+          listing_before = hits[0]
+          assert listing_before["state"] == "CANDIDATE"
+          assert listing_before["source"] == {
+              "path": "revenue/human_outcomes/offers.json",
+              "pointer": "/offers/3",
+              "offer_id": "ho-pixel-pack",
+              "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+              "terms_authority": "source",
+          }
+          assert listing_before["pricing"] == {
+              "currency": "USD",
+              "mode": "fixed_outcome",
+              "components": [{
+                  "id": "fixed_fee",
+                  "kind": "fixed",
+                  "amount": "800.00",
+                  "basis": "one accepted agent pack",
+              }],
+          }
+
+          funnel = deepcopy(before["funnels"]["ho-pixel-pack"])
+          funnel["readiness"] = "READY_FOR_CHECKOUT"
+          funnel["acquisition"]["primary_channel"] = "Direct public pixel-portfolio.html"
+          funnel["qualification"]["route"] = "pixel-portfolio.html"
+          funnel["conversion"] = {
+              "mode": "ACTIVE_STRIPE_LINK",
+              "status": "ACTIVE_CHARGEABLE",
+              "next_step": "Open the existing verified one-time USD 800 checkout on pixel-portfolio.html, then follow the source-contract intake boundaries. A click is intent, not cash.",
+              "state_after": "FUNDED",
+              "evidence_required": "Provider readback on 2026-09-10 proves the link active; the 2026-08-28 account capability snapshot proves charges_enabled=true and payouts_enabled=true. A click is not authorization, settlement, payout, bank availability, or cash.",
+          }
+
+          listing = {}
+          for key, value in listing_before.items():
+              if key == "source":
+                  listing["source_artifact"] = {
+                      "path": "revenue/pixel_agent_pack/contract.json",
+                      "blob_sha": "299705e062ff98c9939c5d6bde383ca565c21b8f",
+                      "terms_authority": "source",
+                  }
+              else:
+                  listing[key] = deepcopy(value)
+          listing["state"] = "PUBLIC_OFFER"
+          listing["outcome"]["acceptance_source"] = "revenue/pixel_agent_pack/contract.json#/acceptance"
+          listing["routes"] = {
+              "human": "pixel-portfolio.html",
+              "machine": "revenue/pixel_agent_pack/contract.json",
+          }
+          listing["checkout"] = {
+              "status": "ACTIVE_CHARGEABLE",
+              "provider": "stripe",
+              "url": "https://buy.stripe.com/fZufZgfxb9fj8qBbp843S0t",
+              "link_active": True,
+              "account_charges_enabled": True,
+              "account_payouts_enabled": True,
+              "capability_evidence": {
+                  "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+                  "observed_at": "2026-09-10T23:05:24.713000+00:00",
+              },
+          }
+
+          funnel_start = raw.index('    "ho-pixel-pack": {', raw.index('"funnels"'))
+          funnel_end = raw.index('    "sku-tip-20260826": {', funnel_start)
+          listing_start = raw.index('    {\n      "id": "ho-pixel-pack",', raw.index('"listings"'))
+          listing_end = raw.index('    {\n      "id": "sku-tip-20260826",', listing_start)
+
+          funnel_text = '    "ho-pixel-pack": ' + json.dumps(funnel, indent=2, ensure_ascii=False).replace('\n', '\n    ') + ',\n'
+          listing_text = '    ' + json.dumps(listing, indent=2, ensure_ascii=False).replace('\n', '\n    ') + ',\n'
+          post = raw[:funnel_start] + funnel_text + raw[funnel_end:listing_start] + listing_text + raw[listing_end:]
+          after = json.loads(post)
+
+          expected = deepcopy(before)
+          expected["funnels"]["ho-pixel-pack"] = funnel
+          expected["listings"] = [listing if row.get("id") == "ho-pixel-pack" else row for row in expected["listings"]]
+          assert after == expected
+          assert after["funnels"]["ho-pixel-pack"]["fulfillment"] == before["funnels"]["ho-pixel-pack"]["fulfillment"]
+          assert after["funnels"]["ho-pixel-pack"]["qualification"]["required"] == before["funnels"]["ho-pixel-pack"]["qualification"]["required"]
+          assert [row for row in after["listings"] if row.get("id") == "ho-pixel-pack"][0]["pricing"] == listing_before["pricing"]
+          assert sum(1 for row in after["listings"] if row.get("id") == "ho-pixel-pack") == 1
+          assert list(after["funnels"]).count("ho-pixel-pack") == 1
+
+          path.write_text(post, encoding="utf-8")
+          PY
+
+          python -m json.tool revenue/outcome_commerce/catalog.json >/dev/null
+          python host/outcome_commerce.py validate
+
+      - name: Prove one-file final tree and publish
+        env:
+          BASE_SHA: 780fdbe4fac26213b10774c328074e205f06e1f3
+          BRANCH: astra/d01-pixel-catalog-continuation-20260911
+        run: |
+          rm .github/workflows/astra-d01-pixel-catalog-continuation.yml
+          changed="$(git diff --name-only "$BASE_SHA" --)"
+          test "$changed" = "revenue/outcome_commerce/catalog.json"
+          git diff --check "$BASE_SHA" -- revenue/outcome_commerce/catalog.json
+          git config user.name "astra-continuation"
+          git config user.email "astra-continuation@users.noreply.github.com"
+          git add -A
+          git commit -m "commerce: publish Pixel Agent Pack checkout catalog"
+          git push origin "HEAD:$BRANCH"
