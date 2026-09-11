@@ -70,15 +70,35 @@ class B5CarrotFertilizerTest(unittest.TestCase):
 
     def test_atomic_validation_rejects_later_malformed_actor(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
-        # Actor 0 is eligible, but a later explicit PASS actor is out of bounds.
         obs = observation(carrot, hands=[[99, 99]], hand_inventories=[{"FERTILIZER": 1}])
         self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
-        # Same partial-mutation killer with a malformed later inventory mapping.
         obs = observation(carrot, hands=[[0, 0]], hand_inventories=[None])
         self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
-        # A malformed later explicit command is also whole-action invalid, not ignorable.
         obs = observation(carrot, hands=[[0, 0]], hand_inventories=[{"FERTILIZER": 1}])
         self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [[None]], "market": []})
+
+    def test_atomic_validation_rejects_later_poisoned_evidence(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        for bad_fertilizer in (True, -1, 1.0, "1", None):
+            with self.subTest(fertilizer=bad_fertilizer):
+                obs = observation(carrot, hands=[[0, 0]], hand_inventories=[{"FERTILIZER": bad_fertilizer}])
+                self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
+
+        obs = observation(carrot, hands=[[0, 0]], hand_inventories=[{}])
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS", 1]], "market": []})
+
+        bad_carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": None}
+        obs = {
+            "step": 120,
+            "player": 0,
+            "farms": [{
+                "tiles": [[carrot, bad_carrot]],
+                "farmer": [0, 0],
+                "hands": [[1, 0]],
+            }],
+            "private": {"inventories": [{"FERTILIZER": 1}, {}]},
+        }
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [["PASS"]], "market": []})
 
     def test_falsey_or_missing_command_never_fabricates_pass(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
