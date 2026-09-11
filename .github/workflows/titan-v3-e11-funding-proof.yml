@@ -1,0 +1,66 @@
+name: titan-v3-e11-funding-proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-e11-funding-proof.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_e11_funding.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-e11-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact successor topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          expected_parent='73e4c563c02d114144208e137ba875d18e0f899e'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = '.github/workflows/titan-v3-e11-funding-proof.yml'
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile E11 source and proof modules
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: |
+          python -m py_compile \
+            e11_rival_sell.py \
+            checks/test_v3_features.py \
+            checks/test_v3_e11_funding.py
+
+      - name: Run declared V3 suite plus focused E11 funding killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: |
+          python -m unittest -v \
+            checks/test_v3_features.py \
+            checks/test_v3_e11_funding.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
