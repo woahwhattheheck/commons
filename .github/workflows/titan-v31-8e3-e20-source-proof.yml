@@ -1,0 +1,89 @@
+name: TITAN V3.1 8e3 E20 source proof
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - '.github/workflows/titan-v31-8e3-e20-source-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-8e3-e20-source-proof-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind current root, exact donor bytes, and three-path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='8e3d92a286806f9f9525973ee7d359b629a11487'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          E20='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+          APPLY='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          B5='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_fertilize.py'
+          JIT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/jit_pass_fertilize.py'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
+          test "$(git merge-base "$ROOT" HEAD)" = "$ROOT"
+
+          # Shipped 8e3 still had the pre-repair E20/test bytes.
+          test "$(git rev-parse "$ROOT:$E20")" = '341eed454cae08cfeba31b5205a10263e50999d8'
+          test "$(git rev-parse "$ROOT:$TEST")" = '20b18deda0fa1a58f5200f8934255019561bdef7'
+
+          # Consume the independently reviewed #12516/#12497 postimages byte-for-byte.
+          test "$(git rev-parse "HEAD:$E20")" = 'cd497140d188794d610d3ae387de8758ecbd0765'
+          test "$(git rev-parse "HEAD:$TEST")" = '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f'
+
+          # Preserve the shipped B5+JIT integration/root bytes exactly.
+          test "$(git rev-parse "HEAD:$APPLY")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
+          test "$(git rev-parse "HEAD:$R04")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
+          test "$(git rev-parse "HEAD:$B5")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
+          test "$(git rev-parse "HEAD:$JIT")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+
+          git diff --name-only "$ROOT"..HEAD > /tmp/e20-8e3-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/e20-8e3-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-8e3-e20-source-proof.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+          }
+          assert actual == expected, sorted(actual)
+          print('E20_8E3_SCOPE_OK', len(actual))
+          PY
+          git diff --check "$ROOT"..HEAD
+
+      - name: Run reviewed E20 and integrated V3 feature contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest -v checks/test_v3_features.py
+
+      - name: Prove source checkout stays clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          echo 'E20_8E3_SOURCE_PROOF_OK'
