@@ -82,11 +82,33 @@ jobs:
           spec = importlib.util.spec_from_file_location('h4_l3_joint_exact', path)
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_kill_late_water': False,
+              'r04_strawberry_endgame': False,
+              'h4_strawberry_topup': True,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+          }
+          assert module.JOINT_EVALUATOR_CONFIG == expected
           assert callable(module.agent)
+          assert module.base.SALE_HORIZON == 8
+          assert module.base.OPEN_ROUNDTRIP == 0
+          assert module.base.ROW_ORDER is True
+          assert module.base.EVENING_FLUSH is True
+          assert module.base.SALE_EXCLUDED == ('WHEAT',)
+          assert module.base._V231_EARLY is True
+          assert module.base.KILL_LATE_WATER is False
+          assert module.base.STRAWBERRY_ENDGAME is False
           assert module.h4.STRAWBERRY_TOPUP is True
           assert module.base.NO_LATE_SALE_ADVANCE is True
           assert module.base.NO_LATE_SALE_ADVANCE_STEP == 648
-          print('JOINT_ENTRYPOINT_OK')
+          print('JOINT_ENTRYPOINT_OK', expected)
           PY
 
       - name: Prove checkout stayed clean
