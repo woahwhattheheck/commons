@@ -21,12 +21,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Bind stacked scope
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git cat-file -e bc3de14fff86079e70659fd3c2ea42ffd2101b97^{commit}
+          test "$(git merge-base bc3de14fff86079e70659fd3c2ea42ffd2101b97 HEAD)" = "bc3de14fff86079e70659fd3c2ea42ffd2101b97"
           git diff --name-only bc3de14fff86079e70659fd3c2ea42ffd2101b97..HEAD | tee /tmp/d3-paths.txt
           python - <<'PY'
           from pathlib import Path
@@ -40,18 +44,34 @@ jobs:
           assert set(paths) == allowed, paths
           print('D3_SCOPE_OK', len(paths))
           PY
+          test -z "$(git status --porcelain)"
 
-      - name: Compile evidence tools
+      - name: Syntax-check evidence tools without mutating checkout
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         run: |
-          python -m py_compile v31_delta_distribution_report.py v31_externality_gate.py test_v31_externality_gate.py
+          python - <<'PY'
+          from pathlib import Path
+          for name in (
+              'v31_delta_distribution_report.py',
+              'v31_externality_gate.py',
+              'test_v31_externality_gate.py',
+          ):
+              path = Path(name)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('D3_COMPILE_OK')
+          PY
+          test -z "$(git status --porcelain)"
 
       - name: Preserve parent score-normalization suite
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: python -B test_v31_delta_distribution_report.py
 
       - name: Run D3 focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: python -B -m unittest -v test_v31_externality_gate.py
 
       - name: Prove checkout stayed clean
