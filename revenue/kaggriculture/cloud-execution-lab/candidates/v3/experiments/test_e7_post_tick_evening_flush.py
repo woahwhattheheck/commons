@@ -121,6 +121,16 @@ class E7PostTickTests(unittest.TestCase):
         self.assertEqual(expected, agent(observation, config(turnsPerDay="24")))
         self.assertEqual(1, agent.telemetry["config_reject"])
 
+    def test_falsey_non_mapping_market_params_fail_closed(self):
+        parent = Parent()
+        agent = install(parent, enabled=True)
+        observation = obs(23)
+        expected = r04.evening_flush(observation, parent(observation, config()))
+        for value in ([], 0, False, ""):
+            with self.subTest(value=value):
+                self.assertEqual(expected, agent(observation, config(marketParams=value)))
+        self.assertEqual(4, agent.telemetry["config_reject"])
+
     def test_release_tops_up_existing_same_item_sell_without_new_row(self):
         parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2]]}})
         agent = install(parent, enabled=True)
@@ -128,6 +138,30 @@ class E7PostTickTests(unittest.TestCase):
         agent(obs(24), config())
         released = agent(obs(25, milk_price=12), config())
         self.assertEqual([["SELL", "MILK", 5]], released["market"])
+
+    def test_release_topup_preserves_raw_placeholder_indices(self):
+        market = [["HIRE"], [], ["SELL", "MILK", 2], ["HIRE"]]
+        parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": market}})
+        agent = install(parent, enabled=True)
+        agent(obs(23), config())
+        agent(obs(24), config())
+        released = agent(obs(25, milk_price=12), config())
+        self.assertEqual(["HIRE"], released["market"][0])
+        self.assertEqual([], released["market"][1])
+        self.assertEqual(["SELL", "MILK", 5], released["market"][2])
+        self.assertEqual(["HIRE"], released["market"][3])
+        self.assertEqual(4, len(released["market"]))
+
+    def test_release_appends_after_raw_placeholder_without_reindexing(self):
+        market = [["HIRE"], [], ["HIRE"]]
+        parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": market}})
+        agent = install(parent, enabled=True)
+        agent(obs(23), config())
+        agent(obs(24), config())
+        released = agent(obs(25, milk_price=12), config())
+        self.assertEqual(market, released["market"][:3])
+        self.assertEqual(["SELL", "MILK", 5], released["market"][3])
+        self.assertEqual(4, len(released["market"]))
 
     def test_release_market_full_records_shortfall_and_does_not_displace_parent(self):
         full = [["HIRE"] for _ in range(10)]
@@ -137,6 +171,18 @@ class E7PostTickTests(unittest.TestCase):
         agent(obs(24), config())
         released = agent(obs(25, milk_price=12), config())
         self.assertEqual(full, released["market"])
+        self.assertEqual(5, agent.telemetry["release_shortfall_units"])
+
+    def test_release_full_raw_market_with_placeholder_does_not_compact(self):
+        full = [["HIRE"] for _ in range(10)]
+        full[4] = []
+        parent = Parent({25: {"farmer": ["PASS"], "hands": [], "market": full}})
+        agent = install(parent, enabled=True)
+        agent(obs(23), config())
+        agent(obs(24), config())
+        released = agent(obs(25, milk_price=12), config())
+        self.assertEqual(full, released["market"])
+        self.assertEqual([], released["market"][4])
         self.assertEqual(5, agent.telemetry["release_shortfall_units"])
 
     def test_bool_shed_quantity_is_not_coerced_into_capacity_proof(self):
