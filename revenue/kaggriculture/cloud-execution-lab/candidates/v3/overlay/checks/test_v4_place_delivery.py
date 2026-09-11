@@ -134,6 +134,12 @@ class PlaceDelivery(unittest.TestCase):
                           prices={"CARROT": "30"})
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_malformed_shed_product_price_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
+                          prices={"WHEAT": "10"})
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_malformed_worker_position_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
