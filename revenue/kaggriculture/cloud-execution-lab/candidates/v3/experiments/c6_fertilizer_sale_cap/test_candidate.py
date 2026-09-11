@@ -112,6 +112,21 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
         self.assertEqual(state.sale_window_debts, {578: {"FERTILIZER": 5}, 590: {"MILK": 2}})
         self.assertEqual(m.REPORT["fert_advance_units_withheld"], 3)
 
+    def test_partial_refund_restores_latest_due_first_and_keeps_nearer_suppression(self):
+        obs = observation(shed=10)
+        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "FERTILIZER", 8]]}
+        state = debt_state({578: {"FERTILIZER": 3}, 580: {"FERTILIZER": 5}})
+        result = m.cap_owned_fertilizer_advance(
+            obs, action, state, {578: 3, 580: 5}, reserve=5,
+        )
+        # Post-sale stock would be 2, so 3 units are withheld. The farther due
+        # row is restored first; the nearer due row remains fully suppressed.
+        self.assertEqual(result["market"], [["SELL", "FERTILIZER", 5]])
+        self.assertEqual(state.sale_window_debts, {
+            578: {"FERTILIZER": 3},
+            580: {"FERTILIZER": 2},
+        })
+
     def test_full_cap_removes_only_e184_row_and_preserves_other_rows(self):
         obs = observation(shed=5)
         action = {
