@@ -70,7 +70,7 @@ def incumbent_order_sells(market, inventory):
 
     def value(order):
         item = order[1]
-        if item not in r04._RO_PARAMS:
+        if item not in r04._RO_PARAMS or len(order) < 3:
             return 0
         quantity = max(0, int(order[2]))
         level = int(inventory.get(item, r04._RO_I0))
@@ -98,21 +98,38 @@ class OrderSells(unittest.TestCase):
                     incumbent_order_sells(copy.deepcopy(market), copy.deepcopy(inventory)),
                 )
 
+    def test_without_shed_preserves_known_two_field_sell_semantics(self):
+        market = [["SELL", "WOOL"], ["SELL", "MILK", 6], ["HIRE"]]
+        self.assertEqual(
+            r04.order_sells(copy.deepcopy(market), {}),
+            incumbent_order_sells(copy.deepcopy(market), {}),
+        )
+
     def test_with_shed_rows_are_priced_at_the_units_they_can_sell(self):
         ordered = r04.order_sells([list(o) for o in self.MARKET], {}, {"WOOL": 1, "MILK": 6})
         self.assertEqual(ordered, [["SELL", "MILK", 6], ["SELL", "WOOL", 1000], ["HIRE"], ["SELL", "EGG", 3]])
 
     def test_shed_changes_only_the_order_never_a_row(self):
         market = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["SELL", "STRAWBERRY", 40], ["BUY_SEED", "WHEAT", 3]]
-        ordered = r04.order_sells([list(o) for o in market], {}, {"WOOL": 0, "MILK": 6, "STRAWBERRY": 2})
-        self.assertEqual(sorted(map(tuple, ordered[:3])), sorted(map(tuple, market[:3])))
-        self.assertEqual(ordered[3:], market[3:])
+        snapshot = copy.deepcopy(market)
+        ordered = r04.order_sells(market, {}, {"WOOL": 0, "MILK": 6, "STRAWBERRY": 2})
+        self.assertEqual(sorted(map(tuple, ordered[:3])), sorted(map(tuple, snapshot[:3])))
+        self.assertEqual(ordered[3:], snapshot[3:])
+        self.assertEqual(market, snapshot)
 
     def test_missing_projection_falls_back_for_the_whole_leading_block(self):
         market = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"]]
         incumbent = r04.order_sells(copy.deepcopy(market), {})
         self.assertEqual(
             r04.order_sells(copy.deepcopy(market), {}, {"MILK": 6}),
+            incumbent,
+        )
+
+    def test_negative_projection_falls_back_for_the_whole_leading_block(self):
+        market = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"]]
+        incumbent = r04.order_sells(copy.deepcopy(market), {})
+        self.assertEqual(
+            r04.order_sells(copy.deepcopy(market), {}, {"WOOL": -1, "MILK": 6}),
             incumbent,
         )
 
@@ -131,6 +148,7 @@ class OrderSells(unittest.TestCase):
             [["SELL", "WOOL", True], ["SELL", "MILK", 6], ["HIRE"]],
             [["SELL", "WOOL", 1000], ["SELL", "MILK", 6000.0], ["HIRE"]],
             [["SELL", "WOOL", 1000], ["SELL", "MILK", "6000"], ["HIRE"]],
+            [["SELL", "WOOL", -1], ["SELL", "MILK", 6], ["HIRE"]],
         )
         for market in cases:
             with self.subTest(market=market):
@@ -139,10 +157,19 @@ class OrderSells(unittest.TestCase):
                     market,
                 )
 
+    def test_equal_scores_keep_incumbent_relative_order(self):
+        market = [["SELL", "UNKNOWN_A", 1], ["SELL", "UNKNOWN_B", 2], ["HIRE"]]
+        self.assertEqual(r04.order_sells(copy.deepcopy(market), {}, {}), market)
+
 
 class Wiring(unittest.TestCase):
     def tearDown(self):
         reset()
+
+    @staticmethod
+    def _raw_action():
+        return {"farmer": ["PASS"], "hands": [],
+                "market": [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]]}
 
     def test_key_ships_on(self):
         data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
@@ -160,8 +187,7 @@ class Wiring(unittest.TestCase):
     def test_v3_agent_uses_the_shed_only_while_the_key_is_on(self):
         saved = r04.POLICY_AGENT
         try:
-            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [],
-                                                      "market": [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]]}
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(self._raw_action())
             obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
             r04.install(None, 8, 0, True, False, row_shed=False)
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]])
@@ -187,22 +213,72 @@ class Wiring(unittest.TestCase):
     def test_row_shed_preserves_raw_falsey_barrier_and_tail_index(self):
         saved = r04.POLICY_AGENT
         try:
-            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [],
-                                                      "market": [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]]}
+            raw = [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]]
+            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [], "market": copy.deepcopy(raw)}
             obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
             r04.install(None, 8, 0, True, False, row_shed=True)
-            self.assertEqual(
-                r04.v3_agent(obs, dict(CONFIG))["market"],
-                [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]],
-            )
+            self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], raw)
         finally:
             r04.POLICY_AGENT = saved
+
+    def test_row_shed_malformed_configuration_fails_closed_to_parent_action(self):
+        saved = r04.POLICY_AGENT
+        try:
+            raw = self._raw_action()
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(raw)
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=True)
+            for bad in (False, 0, "", [], "bad", ["bad"], 1):
+                with self.subTest(bad=bad):
+                    self.assertEqual(r04.v3_agent(obs, bad), raw)
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_row_shed_non_dict_market_params_fail_closed_even_when_falsey(self):
+        saved = r04.POLICY_AGENT
+        try:
+            raw = self._raw_action()
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(raw)
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=True)
+            for bad in (False, 0, "", [], "bad", ["bad"]):
+                with self.subTest(bad=bad):
+                    cfg = dict(CONFIG)
+                    cfg["marketParams"] = bad
+                    self.assertEqual(r04.v3_agent(obs, cfg), raw)
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_row_shed_truthy_malformed_raw_row_fails_closed_to_parent_action(self):
+        saved = r04.POLICY_AGENT
+        try:
+            raw = {"farmer": ["PASS"], "hands": [],
+                   "market": [["SELL", "WOOL", 1000], 1, ["SELL", "MILK", 6]]}
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(raw)
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=True)
+            self.assertEqual(r04.v3_agent(obs, dict(CONFIG)), raw)
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_row_shed_projection_failure_fails_closed_to_parent_action(self):
+        saved_policy = r04.POLICY_AGENT
+        saved_projected = r04.projected_shed
+        try:
+            raw = self._raw_action()
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(raw)
+            r04.projected_shed = lambda action, view: (_ for _ in ()).throw(ValueError("poison"))
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=True)
+            self.assertEqual(r04.v3_agent(obs, dict(CONFIG)), raw)
+        finally:
+            r04.POLICY_AGENT = saved_policy
+            r04.projected_shed = saved_projected
 
     def test_row_order_off_ignores_the_key(self):
         saved = r04.POLICY_AGENT
         try:
-            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [],
-                                                      "market": [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]]}
+            r04.POLICY_AGENT = lambda obs, cfg=None: copy.deepcopy(self._raw_action())
             r04.install(None, 8, 0, False, False, row_shed=True)
             obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]])
