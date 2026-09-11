@@ -1,0 +1,109 @@
+diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/README.md /mnt/data/benchv2_inspect/titan-bench-tools-v2/README.md
+--- /mnt/data/benchv2_original/titan-bench-tools-v2/README.md	2026-09-11 04:00:00.000000000 +0000
++++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/README.md	2026-09-11 08:36:14.060838115 +0000
+@@ -5,5 +5,5 @@
+ - Set `TITAN_TAPES` to a directory (every `*.json` in it) or to a manifest file (one tape path per line, relative paths resolve against the manifest's folder). Unset keeps each tool's old default.
+ - Every tool prints `tapes: N from <source>` before it runs.
+ - `tapes_bench49.txt` freezes the historical 49-tape set (48 top-band episodes plus 107720626). The V3.0 68–30 / 98-seat result and the V3.1 per-game figures were measured on it. To use it from the unpacked handoff bundle, put this manifest next to `tapes/`.
+-- `windriver.py` prints a `PRESSURE` line for any game in which an actor's slowest step reached 0.9 s. Agents with a step deadline (TITAN's 1.0 s entrypoint) fall back to PASS under machine load, so rerun those games at lower `--workers`. `leader_pin.py` rows now carry each actor's `max_call_seconds`.
+-- `leader_pin.py --episodes EP:SEAT,...` restricts a run to chosen seats.
++- `windriver.py` prints a `PRESSURE` line for any game in which an actor's slowest step reached 0.9 s. Agents with a step deadline (TITAN's 1.0 s entrypoint) fall back to PASS under machine load, so rerun those games at lower `--workers`. PRESSURE records now carry both `candidate_seat` and the opposite `leader_seat` explicitly. `leader_pin.py` rows carry each actor's `max_call_seconds`.
++- `leader_pin.py --episodes EP:LEADER_SEAT,...` preserves the original selector meaning. When the source record is expressed in candidate-seat coordinates (including PRESSURE/candidate records), use `--candidate-episodes EP:CANDIDATE_SEAT,...`; it converts to the opposite pinned leader seat before filtering. Never paste a candidate seat into `--episodes`.
+diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/leader_pin.py
+--- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/leader_pin.py	2026-09-11 04:00:00.000000000 +0000
++++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/leader_pin.py	2026-09-11 08:36:14.060383131 +0000
+@@ -1,6 +1,6 @@
+ """Play candidates against recorded leaders whose farms are pinned to the recording.
+ 
+-usage: python leader_pin.py <outdir> [--only NAME[,NAME...]] [--episodes EP:SEAT,...] <label=path.py::agent> [...]
++usage: python leader_pin.py <outdir> [--only NAME[,NAME...]] [--episodes EP:LEADER_SEAT,... | --candidate-episodes EP:CANDIDATE_SEAT,...] <label=path.py::agent> [...]
+ 
+ Same games as leader_run.py (every compact tape in replays/tapes/, each recorded seat S played
+ open-loop, the candidate in seat 1-S, same agent-process protocol), with one change: seat S's
+@@ -32,6 +32,17 @@
+ BIG = 1.0e12
+ 
+ 
++def parse_episode_seats(value, *, candidate_seats=False):
++    """Parse EP:SEAT selectors; optionally convert candidate seats to leader seats."""
++    out = set()
++    for item in value.split(","):
++        episode, seat = (int(x) for x in item.split(":"))
++        if seat not in (0, 1):
++            raise ValueError("seat must be 0 or 1: %s" % item)
++        out.add((episode, 1 - seat if candidate_seats else seat))
++    return out
++
++
+ def install(engine):
+     orig_init = engine._initialize
+     orig_interp = engine.interpreter
+@@ -137,9 +148,9 @@
+         args.pop(0)
+         only = set(args.pop(0).split(","))
+     episodes = None
+-    if args and args[0] == "--episodes":
+-        args.pop(0)
+-        episodes = {tuple(int(x) for x in item.split(":")) for item in args.pop(0).split(",")}
++    if args and args[0] in ("--episodes", "--candidate-episodes"):
++        selector_flag = args.pop(0)
++        episodes = parse_episode_seats(args.pop(0), candidate_seats=(selector_flag == "--candidate-episodes"))
+     candidates = [c.split("=", 1) for c in args]
+     os.makedirs(outdir, exist_ok=True)
+     engine = windriver.get_engine(ENGINE_DIR, LOADER)
+diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/test_seat_selector.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/test_seat_selector.py
+--- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/test_seat_selector.py	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/test_seat_selector.py	2026-09-11 08:36:14.060913134 +0000
+@@ -0,0 +1,27 @@
++import unittest
++
++import leader_pin
++
++
++class SeatSelectorTests(unittest.TestCase):
++    def test_existing_leader_seat_selector_is_unchanged(self):
++        self.assertEqual(
++            leader_pin.parse_episode_seats("107720626:0,107730410:1"),
++            {(107720626, 0), (107730410, 1)},
++        )
++
++    def test_candidate_seat_selector_inverts_for_leader_pin(self):
++        self.assertEqual(
++            leader_pin.parse_episode_seats(
++                "107720626:0,107730410:1", candidate_seats=True
++            ),
++            {(107720626, 1), (107730410, 0)},
++        )
++
++    def test_invalid_seat_fails_closed(self):
++        with self.assertRaisesRegex(ValueError, "seat must be 0 or 1"):
++            leader_pin.parse_episode_seats("107720626:2", candidate_seats=True)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff -ruN /mnt/data/benchv2_original/titan-bench-tools-v2/tools/windriver.py /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/windriver.py
+--- /mnt/data/benchv2_original/titan-bench-tools-v2/tools/windriver.py	2026-09-11 04:00:00.000000000 +0000
++++ /mnt/data/benchv2_inspect/titan-bench-tools-v2/tools/windriver.py	2026-09-11 08:36:14.060712937 +0000
+@@ -320,7 +320,9 @@
+         slow = [round(act.get("max_call_seconds") or 0.0, 3) for act in g.get("actors") or []]
+         if any(s >= PRESSURE_SECONDS for s in slow):
+             pressured.append({"opponent": g.get("opponent"), "seed": g["seed"],
+-                              "candidate_seat": g["candidate_seat"], "max_call_seconds": slow})
++                              "candidate_seat": g["candidate_seat"],
++                              "leader_seat": 1 - g["candidate_seat"],
++                              "max_call_seconds": slow})
+             if g["status"] == "complete" and g.get("opponent") in agg:
+                 agg[g["opponent"]]["pressured"] = agg[g["opponent"]].get("pressured", 0) + 1
+ 
+@@ -332,7 +334,9 @@
+         print("PRESSURE %d game(s) had a step >= %.1f s; agents with step timers may have fallen back. "
+               "Rerun them at lower --workers: %s" % (
+                   len(pressured), PRESSURE_SECONDS,
+-                  ", ".join("%s/%d/%d" % (p["opponent"], p["seed"], p["candidate_seat"]) for p in pressured)),
++                  ", ".join("%s/seed=%d/candidate_seat=%d/leader_seat=%d" %
++                            (p["opponent"], p["seed"], p["candidate_seat"], p["leader_seat"])
++                            for p in pressured)),
+               flush=True)
+     (outdir / "SUMMARY.json").write_text(json.dumps(summary, indent=2))
+     (outdir / "GAMES.jsonl").write_text("".join(json.dumps(g) + "\n" for g in games))
