@@ -37,7 +37,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           git fetch --no-tags origin "$BASE_REF"
-          test "$(git rev-parse "refs/remotes/origin/$BASE_REF")" = "$BASE"
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git rev-parse "$BASE:$ROUTER")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
           test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -63,6 +63,7 @@ jobs:
               raise SystemExit(f'prebootstrap scope drift: actual={sorted(actual)!r}')
           print('L3_PREBOOTSTRAP_SCOPE_OK', len(actual))
           PY
+          git diff --check "$BASE"..HEAD
 
       - name: Apply reviewed fail-closed repair and replace stale packaged contract
         shell: bash
@@ -173,7 +174,7 @@ jobs:
                     test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
                     test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
                     git fetch --no-tags origin "$BASE_REF"
-                    test "$(git rev-parse "refs/remotes/origin/$BASE_REF")" = "$EXPECTED_BASE"
+                    test "$(git rev-parse FETCH_HEAD)" = "$EXPECTED_BASE"
                     test "$(git hash-object "$ROUTER")" = '__POST_BOOTSTRAP_ROUTER_BLOB__'
                     test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
                     test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
@@ -298,6 +299,7 @@ jobs:
               raise SystemExit(f'final staged scope drift: {sorted(actual)!r}')
           print('L3_FINAL_STAGED_SCOPE_OK', len(actual))
           PY
+          git diff --cached --check
 
       - name: Commit only after exact remote-head compare-and-swap
         shell: bash
