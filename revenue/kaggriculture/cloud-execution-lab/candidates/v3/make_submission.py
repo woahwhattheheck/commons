@@ -1,20 +1,18 @@
-"""Build the score-facing V3.1 submission archive with the field-gated R04 tuple.
+"""Build the score-facing V3.1 submission archive from the shipped package.
 
 usage: python make_submission.py <candidates/v3 dir> <canonical tar.gz> <out.tar.gz> [horizon]
 
-Uses build_v3.package_files() and build_v3.build_bytes() so the archive is the same
-deterministic function of (canonical, overlay, apply_v3) as the V3.1 build, then performs
-only the submission config transform:
+Uses build_v3.package_files() and build_v3.build_bytes() so the archive remains the
+same deterministic function of (canonical, overlay, apply_v3), then performs only the
+score-facing TITAN-CONFIG transform:
 
 * r04_sale_window = true;
 * r04_sale_fertilizer = true;
 * r04_cattle_early = false;
-* r04_sale_horizon = 8 unless argv[4] supplies a positive integer override.
+* r04_sale_horizon = 8 unless argv[4] supplies a positive integer override;
+* shipped H4 strawberry top-up and rival-gated L3 must already be true and remain true.
 
-All other shipped keys, including H4 ``r04_strawberry_topup`` and rival-gated L3
-``r04_no_late_sale_advance``, are inherited unchanged from the materialized package.
-
-The cattle default is intentionally OFF for the score-facing submission after the
+The cattle default is intentionally OFF only for the score-facing submission after the
 2026-09-11 opponent-diverse field harm check: 1,984 games/arm against 14 published
 agents lost 48 baseline wins with cattle_early enabled (1909-75 vs 1957-27), while
 sale_fertilizer preserved the 1957-27 record and improved paired margin.
@@ -53,20 +51,28 @@ def _positive_int(value, label):
 
 
 def apply_submission_config(files, horizon=None):
-    """Return a detached package-file mapping with the field-gated submission config.
-
-    This helper is intentionally pure with respect to ``files`` so tooling/tests can
-    prove that TITAN-CONFIG.json is the only changed package member.
-    """
+    """Return detached package files with only the score-facing config edited."""
     out = dict(files)
     config = json.loads(out["TITAN-CONFIG.json"].decode("utf-8"))
     if not isinstance(config, dict):
         raise AssertionError("TITAN-CONFIG.json must decode to an object")
-    for key in ("r04_sale_window", "r04_sale_fertilizer", "r04_cattle_early"):
+
+    for key in (
+        "r04_sale_window",
+        "r04_sale_fertilizer",
+        "r04_cattle_early",
+        "r04_no_late_sale_advance",
+        "r04_strawberry_topup",
+    ):
         _require_bool(config, key)
     _positive_int(config.get("r04_sale_horizon"), "base r04_sale_horizon")
+
     if config["r04_sale_window"] is not False:
         raise AssertionError("base package must ship with r04_sale_window=false")
+    if config["r04_no_late_sale_advance"] is not True:
+        raise AssertionError("shipped V3.1 must keep rival-gated L3 enabled before transform")
+    if config["r04_strawberry_topup"] is not True:
+        raise AssertionError("shipped V3.1 must keep H4 strawberry top-up enabled before transform")
 
     target_horizon = DEFAULT_SUBMISSION_HORIZON if horizon is None else _positive_int(
         horizon, "submission horizon"
@@ -87,9 +93,8 @@ def main(argv=None):
             "usage: python make_submission.py <candidates/v3 dir> <canonical tar.gz> <out.tar.gz> [horizon]"
         )
     v3, canon, output = argv[:3]
-    # Fail closed on caller-controlled score-facing input before importing the package
-    # builder or touching canonical/package bytes. This preserves the reviewed builder
-    # boundary even for malformed/invalid CLI horizons.
+    # Fail closed on caller-controlled score-facing input before changing sys.path,
+    # importing the package builder, or touching canonical/package bytes.
     horizon = None
     if len(argv) == 4:
         horizon = _positive_int(int(argv[3]), "submission horizon")
