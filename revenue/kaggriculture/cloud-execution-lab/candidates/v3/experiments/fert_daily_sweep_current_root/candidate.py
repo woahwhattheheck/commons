@@ -33,9 +33,28 @@ def _active_tape(observation):
         return None
 
 
+def _engine_shed_capacity(configuration):
+    """Mirror the engine's ``int(get(configuration, 'shedCapacity', 100))``."""
+    try:
+        if configuration is None:
+            raw = 100
+        elif isinstance(configuration, dict):
+            raw = configuration.get("shedCapacity", 100)
+        else:
+            raw = getattr(configuration, "shedCapacity", 100)
+        return int(raw)
+    except Exception:
+        return None
+
+
 def agent(observation, configuration=None):
     action = BASE(observation, configuration)
-    return apply_fert_daily_sweep(observation, action, _active_tape(observation))
+    return apply_fert_daily_sweep(
+        observation,
+        action,
+        _active_tape(observation),
+        _engine_shed_capacity(configuration),
+    )
 
 
 FERT_DAILY_CURRENTROOT_CONFIG = dict(CURRENT_STACK_CONFIG)
