@@ -413,7 +413,7 @@ class InteractionGateTests(unittest.TestCase):
         reports = make_reports()
         manifest = make_manifest(reports)
         manifest["factors"]["certified_pressure"]["contract"] = "proxy-zero-partition"
-        with self.assertRaisesRegex(gate.EvidenceError, "contract identity mismatch"):
+        with self.assertRaisesRegex(gate.EvidenceError, "contract fingerprint mismatch"):
             gate.assess(reports, manifest)
         manifest = make_manifest(reports)
         manifest["factors"]["certified_pressure"]["rival_bound_source"] = "proxyQuantity"
