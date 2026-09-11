@@ -171,6 +171,19 @@ class PlaceDelivery(unittest.TestCase):
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_missing_action_actor_fields_fail_closed_to_exact_parent(self):
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        missing_hands = {"farmer": ["DROP"], "market": []}
+        self.assertIs(lane.apply_place_delivery(obs, missing_hands, enabled=True), missing_hands)
+        missing_farmer = {"hands": [["DROP"]], "market": []}
+        self.assertIs(lane.apply_place_delivery(obs, missing_farmer, enabled=True), missing_farmer)
+
+    def test_parent_actor_prefix_fails_closed_to_exact_parent(self):
+        parent = {"farmer": ["DROP"], "hands": [], "market": []}
+        obs = observation(shed={"WHEAT": 98},
+                          inventories=[{"CARROT": 5}, {"WOOL": 5}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_farm_view_failure_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
