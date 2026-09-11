@@ -23,7 +23,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - name: Bind exact canonical base, scope, score transform, and evaluator
+      - name: Bind exact canonical base, live target, scope, score transform, and evaluator
         shell: bash
         run: |
           set -euo pipefail
@@ -32,7 +32,7 @@ jobs:
           test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           git fetch --no-tags origin titan/v3.1-20260911
-          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
           test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
           test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py)" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
@@ -40,7 +40,7 @@ jobs:
           test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
           test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
           test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py)" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
-          git diff --name-only "$BASE"..HEAD > /tmp/cattle-ab-paths.txt
+          git diff --name-only "$BASE"...HEAD > /tmp/cattle-ab-paths.txt
           python3 - <<'PY'
           from pathlib import Path
           actual = set(Path('/tmp/cattle-ab-paths.txt').read_text().splitlines())
@@ -54,8 +54,9 @@ jobs:
               raise SystemExit(f'cattle A/B scope drift: {sorted(actual)!r}')
           print('CATTLE_AB_SCOPE_OK', len(actual))
           PY
+          git diff --check "$BASE...HEAD"
 
-      - name: Freeze reducer membership and type poisons
+      - name: Freeze native evaluator receipt membership and type poisons
         shell: bash
         run: |
           set -euo pipefail
@@ -75,7 +76,7 @@ jobs:
           for seed in module.EXPECTED_SEEDS:
               for seat in (0, 1):
                   games.append({
-                      'opponent': 'cattle_on',
+                      'opponent': module.EXPECTED_OPPONENT,
                       'seed': seed,
                       'candidate_seat': seat,
                       'status': 'complete',
@@ -84,9 +85,14 @@ jobs:
                       'trace_sha256': trace,
                   })
           valid = {
+              'schema_version': 1,
               'engine_ref': module.ENGINE_REF,
+              'agent_rng_seed': module.EXPECTED_RNG_SEED,
+              'candidate': {'entry': 'main.py', 'callable': 'agent', 'sha256': 'b' * 64},
               'seeds': list(module.EXPECTED_SEEDS),
-              'opponents': ['cattle_on'],
+              'opponents': {
+                  module.EXPECTED_OPPONENT: {'entry': 'main.py', 'callable': 'agent', 'sha256': 'c' * 64},
+              },
               'reproducibility': {'same_trace_and_scores': True},
               'games': games,
           }
@@ -103,11 +109,17 @@ jobs:
                   return
               raise AssertionError(f'{name}: poison was accepted')
 
+          rejects('legacy-list-opponents', lambda r: r.__setitem__('opponents', [module.EXPECTED_OPPONENT]))
           rejects('substituted-seed-metadata', lambda r: r['seeds'].__setitem__(0, 999999))
           rejects('duplicate-seed-metadata', lambda r: r['seeds'].__setitem__(1, r['seeds'][0]))
           rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
-          rejects('substituted-opponent-metadata', lambda r: r.__setitem__('opponents', ['other']))
-          rejects('duplicate-opponent-metadata', lambda r: r.__setitem__('opponents', ['cattle_on', 'cattle_on']))
+          rejects('substituted-opponent-metadata', lambda r: r.__setitem__('opponents', {'other': r['opponents'][module.EXPECTED_OPPONENT]}))
+          rejects('bad-opponent-entry', lambda r: r['opponents'][module.EXPECTED_OPPONENT].__setitem__('entry', 'other.py'))
+          rejects('bad-opponent-sha', lambda r: r['opponents'][module.EXPECTED_OPPONENT].__setitem__('sha256', 'bad'))
+          rejects('bad-candidate-entry', lambda r: r['candidate'].__setitem__('entry', 'other.py'))
+          rejects('bad-candidate-sha', lambda r: r['candidate'].__setitem__('sha256', 'bad'))
+          rejects('wrong-rng', lambda r: r.__setitem__('agent_rng_seed', module.EXPECTED_RNG_SEED + 1))
+          rejects('bool-rng', lambda r: r.__setitem__('agent_rng_seed', True))
           rejects('missing-cell', lambda r: r['games'].pop())
           rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
           rejects('substituted-game-seed', lambda r: r['games'][0].__setitem__('seed', 999999))
@@ -125,7 +137,7 @@ jobs:
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'not-a-sha'))
 
           compile(path.read_text(), str(path), 'exec')
-          print('CATTLE_AB_REDUCER_POISONS_OK', len(module.EXPECTED_KEYS))
+          print('CATTLE_AB_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
           PY
           test -z "$(git status --porcelain)"
 
@@ -205,6 +217,14 @@ jobs:
           cat /tmp/cattle-ab-report.md
           cat /tmp/cattle-ab-report.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Recheck live canonical before artifact publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+
       - name: Retain exact package and economics receipts
         uses: actions/upload-artifact@v4
         with:
@@ -225,6 +245,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/cattle-ab-report.md
