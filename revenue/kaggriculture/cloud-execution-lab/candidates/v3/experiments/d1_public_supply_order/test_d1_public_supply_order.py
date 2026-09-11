@@ -43,11 +43,16 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         obs = observation(
             {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3},
             {"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2},
+            {"kind": "COOP", "animal": "GOOSE", "yield_units": 4},
+            {"kind": "PASTURE", "animal": "COW", "yield_units": 5},
             {"kind": "WEED", "yield_units": 9},
             "LOCKED",
             None,
         )
-        self.assertEqual(public_rival_supply(obs), {"STRAWBERRY": 3, "WOOL": 2})
+        self.assertEqual(
+            public_rival_supply(obs),
+            {"STRAWBERRY": 3, "WOOL": 2, "EGG": 4, "MILK": 5},
+        )
 
     def test_malformed_producing_counter_invalidates_whole_signal(self):
         valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
@@ -71,6 +76,19 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         for bad_obs in cases:
             with self.subTest(bad_obs=bad_obs):
                 self.assertEqual(public_rival_supply(bad_obs), {})
+
+    def test_animal_signal_requires_legal_structure_kind(self):
+        valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
+        malformed = (
+            {"kind": "WEED", "animal": "SHEEP", "yield_units": 4},
+            {"kind": "COOP", "animal": "SHEEP", "yield_units": 4},
+            {"kind": "PASTURE", "animal": "GOOSE", "yield_units": 4},
+            {"kind": "COOP", "animal": "COW", "yield_units": 4},
+            {"animal": "SHEEP", "yield_units": 4},
+        )
+        for tile in malformed:
+            with self.subTest(tile=tile):
+                self.assertEqual(public_rival_supply(observation(valid, tile)), {})
 
     def test_disabled_is_exact_parent_identity(self):
         parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
