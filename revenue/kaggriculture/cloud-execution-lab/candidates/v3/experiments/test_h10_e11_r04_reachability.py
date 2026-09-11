@@ -202,6 +202,36 @@ class H10E11R04Tests(unittest.TestCase):
             "FAIL_CLOSED_UNKNOWN_PREDECESSOR_SALE_ACCOUNTING",
         )
 
+    def test_unknown_predecessor_native_accounting_fails_closed_without_refund(self):
+        st = state()
+        calls = {"n": 0}
+        produced = []
+        def getter(_observation):
+            calls["n"] += 1
+            if calls["n"] == 3:
+                raise RuntimeError("pre-state unavailable")
+            return st
+        def parent(observation, _configuration=None):
+            item = action(4)
+            produced.append(item)
+            if int(observation["step"]) == 6:
+                st.advanced_sales = {"MILK": 2}
+                st.sale_due_step = 7
+            return item
+
+        wrapped = h10.wrap_r04_agent(
+            parent, absorb_one, enabled=True, state_getter=getter,
+        )
+        wrapped(obs(5, 40), CFG)
+        out = wrapped(obs(6, 10), CFG)
+        self.assertIs(out, produced[1])
+        self.assertEqual(st.advanced_sales, {"MILK": 2})
+        self.assertEqual(st.sale_due_step, 7)
+        self.assertEqual(
+            wrapped.telemetry["last_by_player"][0]["reason"],
+            "FAIL_CLOSED_UNKNOWN_PREDECESSOR_SALE_ACCOUNTING",
+        )
+
     def test_booked_quantity_larger_than_removed_sell_fails_closed(self):
         st = state()
         produced = []
@@ -224,6 +254,32 @@ class H10E11R04Tests(unittest.TestCase):
             wrapped.telemetry["last_by_player"][0]["reason"],
             "FAIL_CLOSED_BOOKED_QTY_EXCEEDS_DEFERRED_SELL",
         )
+
+    def test_combined_native_and_e184_overbook_fails_closed(self):
+        st = state()
+        produced = []
+        def parent(observation, _configuration=None):
+            item = action(5)
+            produced.append(item)
+            if int(observation["step"]) == 6:
+                st.advanced_sales = {"MILK": 3}
+                st.sale_due_step = 7
+                st.sale_window_debts = {8: {"MILK": 3}}
+            return item
+
+        wrapped = h10.wrap_r04_agent(
+            parent, absorb_one, enabled=True, state_getter=lambda _obs: st,
+        )
+        wrapped(obs(5, 40), CFG)
+        out = wrapped(obs(6, 10), CFG)
+        self.assertIs(out, produced[1])
+        self.assertEqual(st.advanced_sales, {"MILK": 3})
+        self.assertEqual(st.sale_due_step, 7)
+        self.assertEqual(st.sale_window_debts, {8: {"MILK": 3}})
+        report = wrapped.telemetry["last_by_player"][0]
+        self.assertEqual(report["reason"], "FAIL_CLOSED_BOOKED_QTY_EXCEEDS_DEFERRED_SELL")
+        self.assertEqual(report["booked_sale_qty"], {"MILK": 6})
+        self.assertEqual(report["removed_sell_qty"], {"MILK": 5})
 
     def test_non_row_stable_e11_result_fails_closed_without_accounting_mutation(self):
         st = state(sale_window_debts={8: {"MILK": 1}})
