@@ -103,11 +103,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -B - <<'PY'
+          CHECK="$RUNNER_TEMP/b11-native-receipt-poisons.py"
+          cat > "$CHECK" <<'PY'
           import copy
           import importlib.util
           import math
           from pathlib import Path
+
+          def require(condition, message):
+              if not condition:
+                  raise AssertionError(message)
 
           path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_8e3_screen/run_current_stack.py')
           compile(path.read_text(encoding='utf-8'), str(path), 'exec')
@@ -115,8 +120,8 @@ jobs:
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
 
-          def fp(sha):
-              return {'entry': 'main.py', 'callable': 'agent', 'sha256': sha}
+          def fp(entry, sha):
+              return {'entry': entry, 'callable': 'agent', 'sha256': sha}
 
           games = []
           for opponent in module.OPPONENTS:
@@ -135,13 +140,19 @@ jobs:
               'schema_version': 1,
               'engine_ref': module.ENGINE_REF,
               'agent_rng_seed': module.RNG_SEED,
-              'candidate': fp('b' * 64),
+              'candidate': fp('main.py', 'b' * 64),
               'seeds': list(module.SEEDS),
-              'opponents': {name: fp(('c' if i == 0 else 'd') * 64) for i, name in enumerate(module.OPPONENTS)},
+              'opponents': {
+                  'current_self': fp('main.py', 'c' * 64),
+                  'arlene': fp('arlene.py', 'd' * 64),
+              },
               'reproducibility': {'same_trace_and_scores': True},
               'games': games,
           }
-          assert frozenset(module.normalize(copy.deepcopy(valid), 'valid')) == module.EXPECTED_KEYS
+          require(
+              frozenset(module.normalize(copy.deepcopy(valid), 'valid')) == module.EXPECTED_KEYS,
+              'valid native receipt coverage rejected',
+          )
           module.assert_fingerprint_custody(
               copy.deepcopy(valid),
               'valid-custody',
@@ -149,6 +160,13 @@ jobs:
               current_self_sha='c' * 64,
               arlene_sha='d' * 64,
           )
+
+          def require_entries(report, candidate_entry):
+              require(report['candidate']['entry'] == candidate_entry, 'candidate entry drift')
+              require(report['opponents']['current_self']['entry'] == 'main.py', 'current_self entry drift')
+              require(report['opponents']['arlene']['entry'] == 'arlene.py', 'arlene entry drift')
+
+          require_entries(valid, 'main.py')
 
           def rejects(name, mutate):
               poisoned = copy.deepcopy(valid)
@@ -174,6 +192,15 @@ jobs:
                   return
               raise AssertionError(f'{name}: custody poison accepted')
 
+          def rejects_entry(name, mutate):
+              poisoned = copy.deepcopy(valid)
+              mutate(poisoned)
+              try:
+                  require_entries(poisoned, 'main.py')
+              except AssertionError:
+                  return
+              raise AssertionError(f'{name}: entry poison accepted')
+
           rejects('opponents-list', lambda r: r.__setitem__('opponents', list(module.OPPONENTS)))
           rejects('bool-seed-metadata', lambda r: r['seeds'].__setitem__(0, True))
           rejects('missing-cell', lambda r: r['games'].pop())
@@ -192,8 +219,15 @@ jobs:
               r['opponents']['current_self']['sha256'] = 'f' * 64
               r['opponents']['arlene']['sha256'] = '0' * 64
           rejects_custody('coherent-valid-fingerprint-substitution', substitute_all)
+          rejects_entry('candidate-entry-substitution', lambda r: r['candidate'].__setitem__('entry', 'other.py'))
+          rejects_entry('current-self-entry-substitution', lambda r: r['opponents']['current_self'].__setitem__('entry', 'other.py'))
+          rejects_entry('arlene-entry-substitution', lambda r: r['opponents']['arlene'].__setitem__('entry', 'other.py'))
           print('B11_8E3_NATIVE_RECEIPT_POISONS_OK', len(module.EXPECTED_KEYS))
           PY
+          python3 -B "$CHECK" | tee "$RUNNER_TEMP/b11-native-poisons.normal.log"
+          PYTHONOPTIMIZE=1 python3 -O -B "$CHECK" | tee "$RUNNER_TEMP/b11-native-poisons.optimized.log"
+          diff -u "$RUNNER_TEMP/b11-native-poisons.normal.log" "$RUNNER_TEMP/b11-native-poisons.optimized.log"
+          grep -F 'B11_8E3_NATIVE_RECEIPT_POISONS_OK 32' "$RUNNER_TEMP/b11-native-poisons.normal.log"
           test -z "$(git status --porcelain)"
 
       - name: Run current 8e3 B11 two-regime composition gate
@@ -206,35 +240,60 @@ jobs:
             --repo-root "$GITHUB_WORKSPACE" \
             --output-dir "$OUT" |& tee "$RUNNER_TEMP/b11-8e3.log"
           cat "$OUT/receipt.md" >> "$GITHUB_STEP_SUMMARY"
-          python3 - "$OUT/receipt.json" <<'PY'
-          import json, pathlib, sys
-          data = json.loads(pathlib.Path(sys.argv[1]).read_text())
-          assert data['schema'] == 'titan-v31-b11-8e3-screen/v1'
-          assert data['gameplay_root'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
-          assert data['stack_head'] == '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
-          assert data['package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
-          assert data['reviewed_b11_donor']['blob'] == '94b270f36c4a27b3d958ac3420bbe5764ac327a1'
+          CHECK="$RUNNER_TEMP/b11-final-receipt-check.py"
+          cat > "$CHECK" <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          def require(condition, message):
+              if not condition:
+                  raise AssertionError(message)
+
+          receipt_path = pathlib.Path(sys.argv[1])
+          data = json.loads(receipt_path.read_text())
+          require(data['schema'] == 'titan-v31-b11-8e3-screen/v1', 'receipt schema drift')
+          require(data['gameplay_root'] == '8e3d92a286806f9f9525973ee7d359b629a11487', 'gameplay root drift')
+          require(data['stack_head'] == '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a', 'stack head drift')
+          require(data['package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13', 'package receipt drift')
+          require(data['reviewed_b11_donor']['blob'] == '94b270f36c4a27b3d958ac3420bbe5764ac327a1', 'B11 donor blob drift')
           materialization = data['materialization']
-          assert materialization['score_transform_donor']['blob'] == '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          assert materialization['raw_to_control_changed_members'] == ['TITAN-CONFIG.json']
-          assert materialization['raw_to_control_changed_config_keys'] == ['r04_sale_window']
-          assert materialization['off_to_control_changed_config_keys'] == ['r04_cattle_early']
+          require(materialization['score_transform_donor']['blob'] == '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d', 'score transform donor drift')
+          require(materialization['raw_to_control_changed_members'] == ['TITAN-CONFIG.json'], 'raw/control member drift')
+          require(materialization['raw_to_control_changed_config_keys'] == ['r04_sale_window'], 'raw/control config drift')
+          require(materialization['off_to_control_changed_config_keys'] == ['r04_cattle_early'], 'cattle ON derivation drift')
           control = materialization['control_config']
-          assert control['r04_sale_window'] is True
-          assert control['r04_sale_horizon'] == 8 and type(control['r04_sale_horizon']) is int
-          assert control['r04_sale_fertilizer'] is True
-          assert control['r04_cattle_early'] is True
-          assert control['r04_strawberry_topup'] is True
-          assert control['r04_no_late_sale_advance'] is True
-          assert control['r04_no_late_sale_advance_step'] == 648
-          assert control['r04_b5_carrot_fertilizer'] is True
-          assert control['r04_b5_jit_fertilize'] is True
+          require(control['r04_sale_window'] is True, 'sale window not enabled')
+          require(control['r04_sale_horizon'] == 8 and type(control['r04_sale_horizon']) is int, 'sale horizon not exact H8')
+          require(control['r04_sale_fertilizer'] is True, 'sale fertilizer drift')
+          require(control['r04_cattle_early'] is True, 'cattle ON control drift')
+          require(control['r04_strawberry_topup'] is True, 'H4 strawberry drift')
+          require(control['r04_no_late_sale_advance'] is True, 'L3 gate enable drift')
+          require(control['r04_no_late_sale_advance_step'] == 648, 'L3 step drift')
+          require(control['r04_b5_carrot_fertilizer'] is True, 'B5 CARROT drift')
+          require(control['r04_b5_jit_fertilize'] is True, 'B5 JIT drift')
+
+          control_raw = json.loads((receipt_path.parent / 'control-raw.json').read_text())
+          candidate_raw = json.loads((receipt_path.parent / 'candidate-raw.json').read_text())
+          require(control_raw['candidate']['entry'] == 'main.py', 'control candidate entry drift')
+          require(control_raw['opponents']['current_self']['entry'] == 'main.py', 'control current_self entry drift')
+          require(control_raw['opponents']['arlene']['entry'] == 'arlene.py', 'control Arlene entry drift')
+          require(candidate_raw['candidate']['entry'] == 'b11_candidate.py', 'B11 candidate entry drift')
+          require(candidate_raw['opponents']['current_self']['entry'] == 'main.py', 'candidate current_self entry drift')
+          require(candidate_raw['opponents']['arlene']['entry'] == 'arlene.py', 'candidate Arlene entry drift')
+          require(control_raw['opponents'] == candidate_raw['opponents'], 'opponent fingerprint map drift across arms')
+
           print('B11_8E3_SCOREFACING_CONTROL_OK', control)
+          print('B11_8E3_FINGERPRINT_ENTRIES_OK')
           print('B11_8E3_DISPOSITION', data['disposition'])
           print('B11_8E3_ARLENE_IDENTITY', data['arlene_exact_h8_identity'])
           print('B11_8E3_SELF', data['self']['summary'])
           print('B11_8E3_ARLENE', data['arlene']['summary'])
           PY
+          python3 -B "$CHECK" "$OUT/receipt.json" | tee "$RUNNER_TEMP/b11-final-receipt.normal.log"
+          PYTHONOPTIMIZE=1 python3 -O -B "$CHECK" "$OUT/receipt.json" | tee "$RUNNER_TEMP/b11-final-receipt.optimized.log"
+          diff -u "$RUNNER_TEMP/b11-final-receipt.normal.log" "$RUNNER_TEMP/b11-final-receipt.optimized.log"
+          grep -Fx 'B11_8E3_FINGERPRINT_ENTRIES_OK' "$RUNNER_TEMP/b11-final-receipt.normal.log"
 
       - name: Recheck live root and stack before retaining evidence
         shell: bash
