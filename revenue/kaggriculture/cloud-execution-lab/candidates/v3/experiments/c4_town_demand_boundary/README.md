@@ -24,9 +24,10 @@ try again after demand has reduced market inventory.
 
 ## Source contract
 
-C4 is inserted immediately after `POLICY_AGENT` and before shipped `ROW_ORDER -> EVENING_FLUSH ->
-OPEN_ROUNDTRIP` composition. It snapshots the player's existing `sale_window_debts`, calls the
-unchanged parent, and considers only debt added by that exact callback.
+C4 snapshots the player's existing `sale_window_debts`, then executes the **full unchanged V3.1
+parent**, including shipped `ROW_ORDER -> EVENING_FLUSH -> OPEN_ROUNDTRIP` composition. Only after
+the final parent action exists does C4 compare the post-parent debt map and consider debt added
+by that exact callback.
 
 A new reservation is eligible for rollback only when:
 
@@ -35,17 +36,22 @@ A new reservation is eligible for rollback only when:
 - every unlocked shop name is a known official shop;
 - at least one public town tick between current step (inclusive) and due step (exclusive)
   deterministically consumes that item;
-- the post-parent action contains exactly one matching E184 SELL row with enough strict-int
-  quantity to reverse the new reservation.
+- the final parent action contains exactly one matching SELL row with enough strict-int quantity
+  to reverse the new E184 reservation.
 
 All edits are proven first. Then C4 atomically subtracts only the newly-created cross-tick debt
-and the same quantity from its current E184 SELL row. Existing debt, native parent sales,
-worker commands and unrelated market rows are untouched. Any malformed/ambiguous state fails
-closed to the exact parent action and parent debt map.
+and the same quantity from that final SELL row. Existing debt, worker commands and unrelated
+market rows are untouched. If the parent action has multiple same-item SELL rows (for example a
+later wrapper created another row), C4 fails closed rather than guessing which row owns the E184
+quantity.
 
-Because E184 itself blocks an item already present in the current market, a newly-created debt
-has a unique reservation row at this seam. The experiment deliberately does not edit native
-current sales.
+If an E184 row is fully rolled back, C4 replaces that **final raw market slot** with `[]` rather
+than deleting/compacting it. Because no incumbent wrapper runs after C4, every unrelated parent
+row retains its exact raw index against the rival's lockstep market queue. This post-parent
+placement is a deliberate custody constraint.
+
+Any malformed/ambiguous state, unknown shop, nonstandard clock or invalid debt shape preserves
+the exact parent action and parent debt map.
 
 ## Why this is not automatically a win
 
@@ -66,6 +72,6 @@ multiple opponent families with telemetry for:
 - own cash, rival cash and paired margin;
 - any stranded/unsold inventory or market-row-cap interaction.
 
-Kill immediately on malformed-state mutation, native-sale mutation, debt mismatch, increased
-unsold terminal inventory, or negative paired margin. No default/package/Kaggle mutation follows
-from source tests alone.
+Kill immediately on malformed-state mutation, unrelated parent-row movement, debt mismatch,
+increased unsold terminal inventory, or negative paired margin. No default/package/Kaggle
+mutation follows from source tests alone.
