@@ -48,6 +48,7 @@ class H7R04RivalResponseTests(unittest.TestCase):
         arm = h7.install(parent_with(action), enabled=False)
         self.assertIs(arm(obs(), {"maxMarketOrdersPerTurn": 10}), action)
         self.assertEqual(arm.telemetry["changed"], 0)
+        self.assertEqual(arm.telemetry["proposals"], 0)
         self.assertEqual(arm.telemetry["reasons"]["OFF"], 1)
 
     def test_public_early_expander_appends_land_after_final_r04_rows(self):
@@ -63,7 +64,38 @@ class H7R04RivalResponseTests(unittest.TestCase):
         self.assertEqual(out["market"][:-1], before["market"])
         self.assertEqual(out["market"][-1], ["BUY_LAND"])
         self.assertEqual(arm.telemetry["changed"], 1)
+        self.assertEqual(arm.telemetry["proposals"], 1)
+        self.assertEqual(arm.telemetry["confirmed_unlocks"], 0)
         self.assertEqual(arm.telemetry["archetypes"]["EARLY_EXPANDER"], 1)
+
+    def test_cash_spend_predecessor_is_proposal_not_activation(self):
+        # Reviewer predecessor: canonical O01 normally runs before downstream capital
+        # ordering; this final-R04 arm does not. With exactly first-land cash and an
+        # earlier executable HIRE, BUY_LAND can be proposed yet later fail to execute.
+        action = {"farmer": ["PASS"], "hands": [], "market": [["HIRE"]]}
+        arm = h7.install(parent_with(action), enabled=True)
+        out = arm(obs(step=10, own_money=1000), {"maxMarketOrdersPerTurn": 10})
+        self.assertEqual(out["market"], [["HIRE"], ["BUY_LAND"]])
+        self.assertEqual(arm.telemetry["proposals"], 1)
+        self.assertEqual(arm.telemetry["confirmed_unlocks"], 0)
+
+        # A later public observation still showing NW settles the proposal as no unlock.
+        arm(obs(step=145, own_money=997, own_unlocked=["NW"]), {"maxMarketOrdersPerTurn": 10})
+        self.assertEqual(arm.telemetry["proposals"], 1)
+        self.assertEqual(arm.telemetry["confirmed_unlocks"], 0)
+        self.assertEqual(arm.telemetry["no_unlock_next_observation"], 1)
+
+    def test_later_quadrant_unlock_is_counted_separately_from_proposal(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        arm = h7.install(parent_with(action), enabled=True)
+        arm(obs(step=10, own_money=1000), {"maxMarketOrdersPerTurn": 10})
+        self.assertEqual(arm.telemetry["proposals"], 1)
+        self.assertEqual(arm.telemetry["confirmed_unlocks"], 0)
+
+        arm(obs(step=11, own_money=0, own_unlocked=["NW", "NE"]), {"maxMarketOrdersPerTurn": 10})
+        self.assertEqual(arm.telemetry["proposals"], 1)
+        self.assertEqual(arm.telemetry["confirmed_unlocks"], 1)
+        self.assertEqual(arm.telemetry["no_unlock_next_observation"], 0)
 
     def test_full_final_queue_fails_closed_instead_of_displacing_flush_row(self):
         rows = [["SELL", "STRAWBERRY", i + 1] for i in range(10)]
@@ -109,7 +141,7 @@ class H7R04RivalResponseTests(unittest.TestCase):
         self.assertIs(out, action)
         self.assertEqual(arm.telemetry["reasons"]["EARLY_EXPANDER_NO_EDIT"], 1)
 
-    def test_new_episode_resets_price_history_per_player(self):
+    def test_new_episode_resets_price_and_pending_history_per_player(self):
         action = {"farmer": ["PASS"], "hands": [], "market": []}
         arm = h7.install(parent_with(action), enabled=True)
         arm(obs(step=200, rival_unlocked=["NW"], prices={"WHEAT": 40}), {"maxMarketOrdersPerTurn": 10})
@@ -117,6 +149,7 @@ class H7R04RivalResponseTests(unittest.TestCase):
         self.assertEqual(arm.telemetry["archetypes"]["AGGRESSIVE_MARKET_DUMPER"], 1)
         arm(obs(step=0, rival_unlocked=["NW"], prices={"WHEAT": 10}), {"maxMarketOrdersPerTurn": 10})
         self.assertEqual(arm.telemetry["archetypes"]["AGGRESSIVE_MARKET_DUMPER"], 1)
+        self.assertEqual(arm.telemetry["no_unlock_next_observation"], 0)
 
 
 if __name__ == "__main__":
