@@ -24,7 +24,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind canonical parent, evidence-only scope, and repaired B5 source
+      - name: Bind canonical parent, live target, evidence-only scope, and repaired B5 source
         shell: bash
         run: |
           set -euo pipefail
@@ -35,6 +35,8 @@ jobs:
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
           git cat-file -e "$B5^{commit}"
           test "$(git show "$B5:$CAND" | git hash-object --stdin)" = '4e4f9d490332f075cf50df595cb7a067d6236066'
           test "$(git show "$B5:$TEST" | git hash-object --stdin)" = '234261f4301daf02bdbd7806cca4418f31cf7c75'
@@ -49,6 +51,56 @@ jobs:
           if actual != expected:
               raise SystemExit(f'wrong B5 a612 evidence scope: actual={sorted(actual)!r} expected={sorted(expected)!r}')
           print('B5 A612 EVIDENCE SCOPE OK', len(actual))
+          PY
+
+      - name: Prove reducer rejects undeclared or duplicated panel cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import copy
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_a612_screen/paired_report.py')
+          spec = importlib.util.spec_from_file_location('b5_paired_report', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+
+          base = {
+              'engine_ref': module.ENGINE_REF,
+              'seeds': [101],
+              'opponents': ['opponent-a'],
+              'games': [
+                  {'status': 'complete', 'opponent': 'opponent-a', 'seed': 101, 'candidate_seat': 0,
+                   'scores': [10, 9], 'trace_sha256': 'trace-0'},
+                  {'status': 'complete', 'opponent': 'opponent-a', 'seed': 101, 'candidate_seat': 1,
+                   'scores': [9, 10], 'trace_sha256': 'trace-1'},
+              ],
+          }
+          assert len(module.normalized_games(copy.deepcopy(base), 'good')) == 2
+
+          poisons = []
+          bad = copy.deepcopy(base)
+          bad['games'][0]['seed'] = 999
+          poisons.append(('undeclared seed', bad))
+          bad = copy.deepcopy(base)
+          bad['games'][0]['opponent'] = 'opponent-x'
+          poisons.append(('undeclared opponent', bad))
+          bad = copy.deepcopy(base)
+          bad['seeds'] = [101, 101]
+          poisons.append(('duplicate declared seed', bad))
+          bad = copy.deepcopy(base)
+          bad['opponents'] = ['opponent-a', 'opponent-a']
+          poisons.append(('duplicate declared opponent', bad))
+
+          for label, report in poisons:
+              try:
+                  module.normalized_games(report, label)
+              except SystemExit:
+                  continue
+              raise SystemExit(f'{label}: reducer accepted poisoned panel metadata/cell')
+          print('B5 A612 REDUCER MEMBERSHIP PREDECESSORS OK', len(poisons))
           PY
 
       - name: Prove canonical package receipts before materialization
