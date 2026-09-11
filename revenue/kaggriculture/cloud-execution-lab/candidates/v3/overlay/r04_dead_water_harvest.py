@@ -89,6 +89,11 @@ def _standard_configuration(configuration):
 
 def _worker_tile(farm, position):
     try:
+        # Public worker positions are coordinate vectors. Do not let an
+        # arbitrary two-item iterable (for example mapping keys) become proof
+        # that the worker is standing on a plant.
+        if not isinstance(position, (list, tuple)) or len(position) != 2:
+            return _UNKNOWN
         x, y = position
         if not _plain_int(x) or not _plain_int(y):
             return _UNKNOWN
