@@ -23,15 +23,24 @@ NO_TOWN = {"townShopSellInterval": 9999, "townCenterSellInterval": 9999}
 
 
 class PublicSupplyGateTests(unittest.TestCase):
-    def test_own_requested_supply_is_not_rival_pressure(self):
+    def test_own_requested_supply_is_not_rival_pressure_but_full_warmup_is_required(self):
         gate = c.PublicSupplyGate(lookback=8)
         before = inventory()
         self.assertFalse(gate.begin(obs(647, before)))
         gate.finish(obs(647, before), {"market": [["SELL", "MILK", 5]]}, NO_TOWN)
         after = inventory()
         after["MILK"] += 5
-        self.assertTrue(gate.begin(obs(648, after)))
+
+        # The transition is clean, but one clean sample cannot prove the missing
+        # seven transitions were pressure-free.
+        self.assertFalse(gate.begin(obs(648, after)))
         self.assertEqual(gate.last_evidence[0]["MILK"], 0)
+        gate.finish(obs(648, after), {"market": []}, NO_TOWN)
+
+        for step in range(649, 655):
+            self.assertFalse(gate.begin(obs(step, after)))
+            gate.finish(obs(step, after), {"market": []}, NO_TOWN)
+        self.assertTrue(gate.begin(obs(655, after)))
 
     def test_positive_residual_proves_rival_net_supply_and_guards(self):
         gate = c.PublicSupplyGate(lookback=8)
@@ -85,20 +94,64 @@ class PublicSupplyGateTests(unittest.TestCase):
         gate.finish(obs(647, state, shops=("UNKNOWN",)), {"market": []}, {})
         self.assertFalse(gate.begin(obs(648, state)))
 
-    def test_gap_and_rewind_fail_closed_and_reset_history(self):
-        gate = c.PublicSupplyGate()
+    def test_gap_and_rewind_require_a_new_full_clean_window(self):
+        gate = c.PublicSupplyGate(lookback=8)
         state = inventory()
         gate.begin(obs(647, state))
         gate.finish(obs(647, state), {"market": []}, NO_TOWN)
+
+        # A gap destroys the unknown seven-transition history.
         self.assertFalse(gate.begin(obs(650, state)))
         gate.finish(obs(650, state), {"market": []}, NO_TOWN)
-        self.assertFalse(gate.begin(obs(649, state)))
+        for step in range(651, 658):
+            self.assertFalse(gate.begin(obs(step, state)))
+            gate.finish(obs(step, state), {"market": []}, NO_TOWN)
+        self.assertTrue(gate.begin(obs(658, state)))
+        gate.finish(obs(658, state), {"market": []}, NO_TOWN)
 
-    def test_malformed_public_inventory_fails_closed(self):
-        gate = c.PublicSupplyGate()
-        bad = obs(1, inventory())
-        del bad["market"]["inventory"]["MILK"]
-        self.assertFalse(gate.begin(bad))
+        # Rewind is the same unknown-history boundary.
+        self.assertFalse(gate.begin(obs(657, state)))
+
+    def test_public_inventory_requires_exact_nonnegative_integers(self):
+        for malformed in ("10000", 10000.0, True, None):
+            with self.subTest(malformed=malformed):
+                levels = inventory()
+                levels["MILK"] = malformed
+                with self.assertRaises((TypeError, ValueError)):
+                    c._market_inventory(obs(1, levels))
+
+        negative = inventory()
+        negative["MILK"] = -1
+        with self.assertRaises(ValueError):
+            c._market_inventory(obs(1, negative))
+
+    def test_step_player_and_intervals_require_exact_integers(self):
+        gate = c.PublicSupplyGate(lookback=2)
+        self.assertFalse(gate.begin(obs("1", inventory())))
+        self.assertFalse(gate.begin(obs(1, inventory(), player=True)))
+        with self.assertRaises(ValueError):
+            c._town_consumption(obs(1, inventory()), {"townShopSellInterval": "4"})
+        with self.assertRaises(ValueError):
+            c._town_consumption(obs(1, inventory()), {"townCenterSellInterval": 24.0})
+
+    def test_sell_quantity_requires_exact_positive_integer(self):
+        for malformed in ("5", 5.0, True, 0, -1):
+            with self.subTest(malformed=malformed):
+                with self.assertRaises(ValueError):
+                    c._own_sell_upper_bound({"market": [["SELL", "MILK", malformed]]})
+
+    def test_malformed_finish_resets_mature_history(self):
+        gate = c.PublicSupplyGate(lookback=2)
+        state = inventory()
+        self.assertFalse(gate.begin(obs(1, state)))
+        gate.finish(obs(1, state), {"market": []}, NO_TOWN)
+        self.assertFalse(gate.begin(obs(2, state)))
+        gate.finish(obs(2, state), {"market": []}, NO_TOWN)
+        self.assertTrue(gate.begin(obs(3, state)))
+
+        gate.finish(obs(3, state), {"market": [["SELL", "MILK", "1"]]}, NO_TOWN)
+        self.assertFalse(gate.begin(obs(4, state)))
+        self.assertEqual(len(gate.players[0]["pressure"]), 0)
 
 
 if __name__ == "__main__":
