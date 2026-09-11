@@ -46,6 +46,8 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             {"kind": "COOP", "animal": "GOOSE", "yield_units": 4},
             {"kind": "PASTURE", "animal": "COW", "yield_units": 5},
             {"kind": "WEED", "yield_units": 9},
+            {"kind": "COOP"},
+            {"kind": "PASTURE"},
             "LOCKED",
             None,
         )
@@ -85,6 +87,19 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             {"kind": "PASTURE", "animal": "GOOSE", "yield_units": 4},
             {"kind": "COOP", "animal": "COW", "yield_units": 4},
             {"animal": "SHEEP", "yield_units": 4},
+        )
+        for tile in malformed:
+            with self.subTest(tile=tile):
+                self.assertEqual(public_rival_supply(observation(valid, tile)), {})
+
+    def test_unknown_or_conflicting_nonproducing_kind_invalidates_whole_signal(self):
+        valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
+        malformed = (
+            {"kind": "BARN"},
+            {},
+            {"kind": "WEED", "crop": "CARROT"},
+            {"kind": "COOP", "crop": "CARROT"},
+            {"kind": "PASTURE", "crop": "CARROT"},
         )
         for tile in malformed:
             with self.subTest(tile=tile):
