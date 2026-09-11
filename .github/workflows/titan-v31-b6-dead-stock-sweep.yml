@@ -1,0 +1,65 @@
+name: titan-v31-b6-dead-stock-sweep
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/**'
+      - '.github/workflows/titan-v31-b6-dead-stock-sweep.yml'
+  push:
+    branches:
+      - 'astra/v31-b6-dead-stock-sweep-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/**'
+      - '.github/workflows/titan-v31-b6-dead-stock-sweep.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused B6 predecessor suite
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep
+          -p 'test_*.py'
+      - name: Optimization-safe focused suite
+        env:
+          PYTHONOPTIMIZE: '1'
+        run: >-
+          python -B -m unittest discover -v
+          -s revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep
+          -p 'test_*.py'
+      - name: Census native product PICKUP obligations in exact authored tapes
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3')
+          exp = root / 'experiments' / 'b6_dead_stock_sweep'
+          sys.path.insert(0, str(exp))
+          import candidate
+
+          census = {}
+          for plan, tape in enumerate(candidate.base._INLINE_TAPES):
+              final = {}
+              for step, action in enumerate(tape):
+                  commands = [action.get('farmer') or ['PASS'], *(action.get('hands') or [])]
+                  for command in commands:
+                      if command and len(command) > 1 and command[0] == 'PICKUP':
+                          item = command[1]
+                          if item in candidate.base.PRODUCTS:
+                              final[item] = step
+              census[str(plan)] = final
+          assert len(candidate.base._INLINE_TAPES) == 13
+          assert all(len(tape) == candidate.base.LAST_STEP + 1 for tape in candidate.base._INLINE_TAPES)
+          print(json.dumps(census, sort_keys=True))
+          PY
