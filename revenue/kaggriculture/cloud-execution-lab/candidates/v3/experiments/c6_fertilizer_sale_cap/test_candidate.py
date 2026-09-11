@@ -88,6 +88,61 @@ class C6FertilizerSaleCapTest(unittest.TestCase):
         obs = observation(step=27 * 24, inventories=[{}, {"FERTILIZER": 3}])
         self.assertEqual(m.v219_fertilizer_reserve(obs), 7)
 
+    def test_pickup_requested_role_is_not_future_reserve(self):
+        m.base._V219_STATES[0] = {
+            "committed": True,
+            "day": 24,
+            "workers": {
+                0: {
+                    "kind": "crop",
+                    "needs_fertilizer": True,
+                    "loaded": False,
+                    "pickup_requested": True,
+                },
+            },
+        }
+        obs = observation(inventories=[{"FERTILIZER": 0}])
+        self.assertEqual(m.v219_fertilizer_reserve(obs), 0)
+
+    def test_mixed_pickup_requested_and_future_roles_reserve_only_future_loader(self):
+        m.base._V219_STATES[0] = {
+            "committed": True,
+            "day": 24,
+            "workers": {
+                0: {
+                    "kind": "crop",
+                    "needs_fertilizer": True,
+                    "loaded": False,
+                    "pickup_requested": True,
+                },
+                1: {
+                    "kind": "crop",
+                    "needs_fertilizer": True,
+                    "loaded": False,
+                    "pickup_requested": False,
+                },
+            },
+        }
+        obs = observation(inventories=[{"FERTILIZER": 0}, {"FERTILIZER": 2}])
+        self.assertEqual(m.v219_fertilizer_reserve(obs), 3)
+
+    def test_malformed_pickup_requested_flag_fails_closed(self):
+        for bad in (1, "yes", None, [], {}):
+            with self.subTest(bad=bad):
+                m.base._V219_STATES[0] = {
+                    "committed": True,
+                    "day": 24,
+                    "workers": {
+                        0: {
+                            "kind": "crop",
+                            "needs_fertilizer": True,
+                            "loaded": False,
+                            "pickup_requested": bad,
+                        },
+                    },
+                }
+                self.assertIsNone(m.v219_fertilizer_reserve(observation()))
+
     def test_loaded_worker_and_other_days_need_no_reserve(self):
         m.base._V219_STATES[0] = {
             "committed": True,
