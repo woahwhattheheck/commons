@@ -116,6 +116,31 @@ class LaneRegistryTests(unittest.TestCase):
                 read_registry(handle.name)
         self.assertEqual(caught.exception.code, "INVALID_JSON")
 
+    def test_duplicate_lane_state_json_key_fails_before_rejection_can_be_erased(self):
+        text = (
+            '{"version":1,"lanes":[{'
+            '"id":"A","canonical_parent":"main@abc","durable_carrier":"pr:A",'
+            '"terminal_state":"REJECTED","terminal_state":"PASSED",'
+            '"next_gate":"field gate","production_consumer":"v3/final","composes":[]}]}'
+        )
+        with tempfile.NamedTemporaryFile("w+", encoding="utf-8") as handle:
+            handle.write(text)
+            handle.flush()
+            with self.assertRaises(RegistryError) as caught:
+                read_registry(handle.name)
+        self.assertEqual(caught.exception.code, "DUPLICATE_JSON_KEY")
+        self.assertEqual(caught.exception.details["key"], "terminal_state")
+
+    def test_duplicate_top_level_json_key_fails_before_indexing(self):
+        text = '{"version":1,"version":1,"lanes":[]}'
+        with tempfile.NamedTemporaryFile("w+", encoding="utf-8") as handle:
+            handle.write(text)
+            handle.flush()
+            with self.assertRaises(RegistryError) as caught:
+                read_registry(handle.name)
+        self.assertEqual(caught.exception.code, "DUPLICATE_JSON_KEY")
+        self.assertEqual(caught.exception.details["key"], "version")
+
 
 if __name__ == "__main__":
     unittest.main()

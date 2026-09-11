@@ -237,13 +237,22 @@ def render_registry(lanes: dict[str, Lane]) -> dict[str, Any]:
     }
 
 
+def _strict_object(pairs: Iterable[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise RegistryError("DUPLICATE_JSON_KEY", "JSON object contains a duplicate key", key=key)
+        out[key] = value
+    return out
+
+
 def read_registry(path: str) -> dict[str, Lane]:
     if path == "-":
         text = sys.stdin.read()
     else:
         text = Path(path).read_text(encoding="utf-8")
     try:
-        payload = json.loads(text)
+        payload = json.loads(text, object_pairs_hook=_strict_object)
     except json.JSONDecodeError as exc:
         raise RegistryError("INVALID_JSON", "registry is not strict JSON", line=exc.lineno, column=exc.colno) from exc
     return load_registry(payload)
