@@ -103,12 +103,61 @@ class C5WheatDemandTests(unittest.TestCase):
         self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
         self.assertEqual(rider.telemetry["relocations"], 0)
 
+    def test_malformed_step_with_known_player_clears_only_that_latch(self):
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100, player=0), action())
+        rider.apply(obs(1, 200, player=1), action())
+        self.assertEqual(set(rider.players), {0, 1})
+
+        bad = obs(2, 99, player=0)
+        bad["step"] = "2"
+        parent = action(("SELL", "WHEAT", 3))
+        self.assertIs(rider.apply(bad, parent), parent)
+        self.assertNotIn(0, rider.players)
+        self.assertIn(1, rider.players)
+
+        self.assertIs(rider.apply(obs(2, 99, price=30, player=0), parent), parent)
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
+        self.assertEqual(rider.telemetry["relocations"], 0)
+
+    def test_unidentifiable_player_clears_all_transition_state(self):
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100, player=0), action())
+        rider.apply(obs(1, 200, player=1), action())
+        self.assertEqual(set(rider.players), {0, 1})
+
+        bad = obs(2, 99, player=0)
+        bad["player"] = True
+        parent = action(("SELL", "WHEAT", 3))
+        self.assertIs(rider.apply(bad, parent), parent)
+        self.assertEqual(rider.players, {})
+
+        self.assertIs(rider.apply(obs(2, 99, price=30, player=0), parent), parent)
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
+        self.assertEqual(rider.telemetry["relocations"], 0)
+
     def test_own_buy_upper_bound_masks_self_caused_inventory_drop(self):
         rider = c5.WheatDemandRider(enabled=True)
         rider.apply(obs(1, 100), action(("BUY_PRODUCT", "WHEAT", 2)))
         parent = action(("SELL", "WHEAT", 3))
         self.assertIs(rider.apply(obs(2, 98, price=30), parent), parent)
         self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
+
+    def test_tuple_market_rows_are_engine_inert(self):
+        parent = {"farmer": ["PASS"], "hands": [],
+                  "market": [("SELL", "WHEAT", 3), ["SELL", "MILK", 1]]}
+        out, moved = c5._relocate_wheat_sell(parent, 10)
+        self.assertIs(out, parent)
+        self.assertIsNone(moved)
+
+        self.assertEqual(
+            c5._own_wheat_buy_upper(
+                {"market": [("BUY_PRODUCT", "WHEAT", 9), ["BUY_PRODUCT", "WHEAT", 2]]}, 10
+            ),
+            2,
+        )
+        self.assertIs(c5._cash_spending(("HIRE",)), False)
+        self.assertIs(c5._cash_spending(["HIRE"]), True)
 
     def test_later_purchase_veto_preserves_sale_funding(self):
         rider = c5.WheatDemandRider(enabled=True)
