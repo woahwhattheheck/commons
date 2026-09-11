@@ -89,11 +89,11 @@ def _overflow_at_next_refresh(tile: Any, day: int) -> int | None:
 def _commands(action: Any):
     if not isinstance(action, dict):
         return None
-    farmer = action.get("farmer") or ["PASS"]
-    hands = action.get("hands") or []
+    farmer = action.get("farmer", _MISSING)
+    hands = action.get("hands", _MISSING)
     if not isinstance(farmer, list) or not isinstance(hands, list):
         return None
-    if any(not isinstance(command, list) for command in hands):
+    if not farmer or any(not isinstance(command, list) for command in hands):
         return None
     return [farmer, *list(hands)]
 
@@ -223,7 +223,7 @@ def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, e
         return action
 
     result = copy.deepcopy(action)
-    result_commands = [result.get("farmer") or ["PASS"], *(result.get("hands") or [])]
+    result_commands = [result["farmer"], *result["hands"]]
     for actor, desired, _overflow in replacements:
         if actor >= len(result_commands):
             return action
