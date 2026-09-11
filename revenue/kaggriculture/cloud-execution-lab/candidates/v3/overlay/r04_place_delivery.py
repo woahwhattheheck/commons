@@ -9,10 +9,12 @@ unplaced cargo.  This lane is shipped off as ``r04_place_delivery``.
 When enabled, terminal-step DROP actions beside the shed are changed only when
 their combined payload would overflow the remaining shed capacity.  If every
 payload fits, the exact parent action is returned so normal DROP behavior,
-including multi-product cargo, stays untouched.  On overflow, scarce capacity
-goes to the highest public-price cargo first and excess cargo stays on workers.
-Malformed terminal step/shed/inventory/price/position/board state fails closed
-to the parent action.
+including multi-product cargo, stays untouched.  Overflow also fails closed when
+one worker carries multiple sellable products: the engine permits only one PLACE
+command per worker, so rewriting that DROP could leave profitable shed capacity
+unused.  Otherwise scarce capacity goes to the highest public-price cargo first
+and excess cargo stays on workers.  Malformed terminal step/shed/inventory/
+price/position/board state fails closed to the parent action.
 """
 from __future__ import annotations
 
@@ -71,8 +73,13 @@ def apply_place_delivery(observation, action, enabled=False):
             return action
 
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
+    # A worker with >1 positive sellable product is also fail-closed on overflow:
+    # one unit action can PLACE only one product, while DROP can fill room from
+    # multiple inventory rows. Rewriting such a worker can therefore lower the
+    # final-turn liquidation value by leaving capacity unused.
     payload = 0
     has_drop = False
+    multi_sellable_drop = False
     touched_products = {
         item for item, quantity in raw_shed.items()
         if item in r04.PRODUCTS and quantity > 0
@@ -86,16 +93,22 @@ def apply_place_delivery(observation, action, enabled=False):
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
             return action
+        sellable_kinds = 0
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
                 return action
             payload += held
             if item in r04.PRODUCTS and held > 0:
                 touched_products.add(item)
+                sellable_kinds += 1
+        if sellable_kinds > 1:
+            multi_sellable_drop = True
         has_drop = True
     if has_drop:
         remaining = max(0, int(r04.SHED_CAPACITY) - sum(raw_shed.values()))
         if payload <= remaining:
+            return action
+        if multi_sellable_drop:
             return action
 
     # Overflow rewriting reprices PLACE priority and rebuilds terminal SELLs.
