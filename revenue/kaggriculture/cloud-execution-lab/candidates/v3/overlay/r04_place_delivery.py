@@ -42,7 +42,16 @@ def apply_place_delivery(observation, action, enabled=False):
     except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
         return action
 
-    workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
+    # Parent actions normally use a list farmer command plus a list of hand
+    # commands. Fail closed on malformed containers instead of letting the
+    # star-unpack below raise or reinterpret strings/dicts as worker lists.
+    raw_farmer = action.get("farmer")
+    raw_hands = action.get("hands")
+    if raw_farmer is not None and not isinstance(raw_farmer, list):
+        return action
+    if raw_hands is not None and not isinstance(raw_hands, list):
+        return action
+    workers = [raw_farmer or ["PASS"], *(raw_hands or [])]
 
     # Validate the public geometry/inventory surfaces used by beside_shed() and
     # inventory() before the transform touches them.  A truncated public worker
