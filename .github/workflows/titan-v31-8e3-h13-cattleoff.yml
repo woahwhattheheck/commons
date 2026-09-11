@@ -42,7 +42,7 @@ jobs:
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
-          test "$(git hash-object "$DIR/run_current_stack.py")" = '9114903887c290cf542c7fd156082495992913e5'
+          test "$(git hash-object "$DIR/run_current_stack.py")" = '65a359c489f22bde56d7b09082e02939644de197'
           test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
 
@@ -76,7 +76,7 @@ jobs:
           done
           git diff --check "$STACK...HEAD"
 
-      - name: Prove strict native receipt rejects aliases and malformed cells before spend
+      - name: Prove strict native receipt and paired H8 baseline before spend
         shell: bash
         run: |
           set -euo pipefail
@@ -117,7 +117,22 @@ jobs:
               'reproducibility': {'same_trace_and_scores': True},
               'games': games,
           }
-          assert frozenset(m.normalized_games(copy.deepcopy(valid), 'valid')) == m.expected_keys()
+          rows = m.normalized_games(copy.deepcopy(valid), 'valid')
+          assert frozenset(rows) == m.expected_keys()
+
+          # Identical policy comparisons need not have zero raw self-play margin.
+          # The reducer must pair against the observed same-cell H8 baseline instead.
+          raw_self_margins = [
+              m.components(rows[('h8_self', seed, seat)])[2]
+              for seed in m.SEEDS for seat in (0, 1)
+          ]
+          assert any(value != 0 for value in raw_self_margins)
+          paired_identity, identity_rows = m.summarize(rows, rows, 'h8_self')
+          assert paired_identity['positive'] == 0
+          assert paired_identity['negative'] == 0
+          assert paired_identity['zero'] == 16
+          assert paired_identity['mean_delta_margin'] == 0
+          assert all(row['delta_margin'] == 0 for row in identity_rows)
 
           def rejects(name, mutate):
               r = copy.deepcopy(valid)
@@ -131,7 +146,12 @@ jobs:
           rejects('sub-seed-meta', lambda r: r['seeds'].__setitem__(0, 999))
           rejects('bool-seed-meta', lambda r: r['seeds'].__setitem__(0, True))
           rejects('wrong-rng', lambda r: r.__setitem__('agent_rng_seed', m.EXPECTED_RNG_SEED + 1))
+          rejects('bad-candidate-entry', lambda r: r['candidate'].__setitem__('entry', 'other.py'))
+          rejects('bad-candidate-callable', lambda r: r['candidate'].__setitem__('callable', 'other'))
+          rejects('bad-candidate-sha', lambda r: r['candidate'].__setitem__('sha256', 'bad'))
           rejects('wrong-opponent-set', lambda r: r.__setitem__('opponents', {'h8_self': r['opponents']['h8_self']}))
+          rejects('bad-opponent-entry', lambda r: r['opponents']['h8_self'].__setitem__('entry', 'other.py'))
+          rejects('bad-opponent-callable', lambda r: r['opponents']['h8_self'].__setitem__('callable', 'other'))
           rejects('missing-cell', lambda r: r['games'].pop())
           rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
           rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
@@ -144,6 +164,7 @@ jobs:
           rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
           rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'bad'))
           print('H13_8E3_RECEIPT_POISONS_OK', len(m.expected_keys()))
+          print('H13_8E3_NONZERO_H8_BASELINE_PAIRED_OK', raw_self_margins[0])
           PY
           test -z "$(git status --porcelain)"
 
