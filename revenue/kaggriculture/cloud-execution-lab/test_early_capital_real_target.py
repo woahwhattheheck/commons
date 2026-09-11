@@ -229,7 +229,12 @@ class EarlyCapitalRealTargetContracts(unittest.TestCase):
                     m, observation, CFG, source, None)
                 self.assertIs(out, source)
                 self.assertFalse(report['changed'])
-                self.assertEqual(report['reason'], 'no_admitted_capital')
+                expected_reason = (
+                    'capital_certificate_failed'
+                    if unlocked in (None, 'NW,NE,SW', [])
+                    else 'no_admitted_capital'
+                )
+                self.assertEqual(report['reason'], expected_reason)
                 self.assertIsNone(report['certified_land_rows'])
 
     def test_official_engine_noop_land_reorder_loses_one_dollar(self):

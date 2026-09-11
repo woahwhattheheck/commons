@@ -14,7 +14,7 @@ from test_early_capital_executable_prefix import CFG, action, load_official_engi
 
 
 EARLY_CAPITAL_PATH = Path('early_capital.py')
-EARLY_CAPITAL_BLOB = '21c4ac15583e45f6f55ef615d95fc3db93637194'
+EARLY_CAPITAL_BLOB = 'c87f1d1c9d7b416c5316837634f7e721c85811fa'
 
 
 def git_blob(data: bytes) -> str:
@@ -119,13 +119,17 @@ class PostUnitSeedDemandContracts(unittest.TestCase):
             step=2,
             action_row={'farmer': ['PLANT', 'WHEAT'], 'hands': [], 'market': []},
         )
-        fixed, _ = order_early_capital(m, observation, CFG, source, future)
+        fixed, report = order_early_capital(m, observation, CFG, source, future)
 
-        self.assertEqual(fixed['market'], [
-            ['SELL', 'MELON', 1],
-            ['BUY_SEED', 'WHEAT', 1],
-            ['BUY_LAND'],
-        ])
+        # SELL certifies $250, but the required $10 WHEAT seed is OPERATING.
+        # Promoting both ahead of LAND would leave only $990, so the stronger
+        # commit-real certificate must preserve the authored order unchanged.
+        self.assertIs(fixed, source)
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'no_admitted_capital')
+        self.assertEqual(report['certified_operating_rows'], [1])
+        self.assertEqual(report['certified_capital_rows'], [])
+        self.assertEqual(report['cash_after_operating_lower_bound'], 990.0)
 
     def test_post_unit_residual_seed_covers_one_future_plant(self):
         source = self._source(farmer_action=['PLANT', 'WHEAT'])

@@ -5,9 +5,8 @@ on:
     paths:
       - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
       - '.github/workflows/titan-v3-early-capital-real-target.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'
   workflow_dispatch:
 
 permissions:
@@ -28,7 +27,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Assert exact checkout, released parent, and bounded diff
+      - name: Assert exact child, immutable parent, and contract-refresh-only diff
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: python
@@ -36,46 +35,53 @@ jobs:
           import os
           import subprocess
 
-          parent = '69b07cf42d3111469e8523f84efd9014cc30c0a9'
+          parent = '4403d361bc9769e09d12a59d732ea12861d0b2b7'
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
-          predecessor = '21c4ac15583e45f6f55ef615d95fc3db93637194'
-          head = subprocess.check_output(
-              ['git', 'rev-parse', 'HEAD'], text=True).strip()
-          assert head == os.environ['EXPECTED_HEAD'], (
-              head, os.environ['EXPECTED_HEAD'])
-
-          subprocess.check_call(
-              ['git', 'merge-base', '--is-ancestor', parent, head])
+          post_test = 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
+          real_test = 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
+          source_blob = 'c87f1d1c9d7b416c5316837634f7e721c85811fa'
+          old_post_blob = '535f1762d3ac26d769ee9b7b208d15cf5050f526'
+          new_post_blob = '19632a077e21eab9bdeea0ab09c6a500d78aec3c'
+          old_real_blob = 'aa3a1315d6137314830b0e877ea9c133c4f6e13a'
+          new_real_blob = '69df329eee57389731a52b6271aa04b91a0bcee9'
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD'], (head, os.environ['EXPECTED_HEAD'])
+          subprocess.check_call(['git', 'merge-base', '--is-ancestor', parent, head])
           commit_count = int(subprocess.check_output(
-              ['git', 'rev-list', '--count', f'{parent}..{head}'],
-              text=True,
+              ['git', 'rev-list', '--count', f'{parent}..{head}'], text=True,
           ).strip())
           assert commit_count == 1, commit_count
-
-          parent_source = subprocess.check_output(
-              ['git', 'rev-parse', f'{parent}:{source}'], text=True).strip()
-          assert parent_source == predecessor, (parent_source, predecessor)
-
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'{parent}:{source}'], text=True,
+          ).strip() == source_blob
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'HEAD:{source}'], text=True,
+          ).strip() == source_blob
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'{parent}:{post_test}'], text=True,
+          ).strip() == old_post_blob
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'HEAD:{post_test}'], text=True,
+          ).strip() == new_post_blob
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'{parent}:{real_test}'], text=True,
+          ).strip() == old_real_blob
+          assert subprocess.check_output(
+              ['git', 'rev-parse', f'HEAD:{real_test}'], text=True,
+          ).strip() == new_real_blob
           allowed = {
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
               '.github/workflows/titan-v3-early-capital-real-target.yml',
-              source,
-              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
-              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py',
+              post_test,
+              real_test,
           }
           changed = set(subprocess.check_output(
-              ['git', 'diff', '--name-only', parent, head],
-              text=True,
+              ['git', 'diff', '--name-only', parent, head], text=True,
           ).splitlines())
-          print({
-              'head': head,
-              'parent': parent,
-              'commit_count': commit_count,
-              'changed': sorted(changed),
-          })
+          print({'head': head, 'parent': parent, 'commit_count': commit_count, 'changed': sorted(changed)})
           assert changed == allowed, (changed, allowed)
 
-      - name: Bind commit-real source and official interpreter
+      - name: Bind mechanism, refreshed contracts, and official interpreter
         shell: python
         run: |
           import hashlib
@@ -84,6 +90,10 @@ jobs:
           expected = {
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'):
                   'c87f1d1c9d7b416c5316837634f7e721c85811fa',
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'):
+                  '19632a077e21eab9bdeea0ab09c6a500d78aec3c',
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'):
+                  '69df329eee57389731a52b6271aa04b91a0bcee9',
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'):
                   '044a4f9c0a4a44dde10ada57563238bcaf82075d',
               Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'):
@@ -91,9 +101,7 @@ jobs:
           }
           for path, expected_blob in expected.items():
               data = path.read_bytes()
-              actual = hashlib.sha1(
-                  b'blob ' + str(len(data)).encode() + b'\0' + data
-              ).hexdigest()
+              actual = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
               assert actual == expected_blob, (path, actual, expected_blob)
 
       - name: Compile inherited and commit-real contracts
@@ -119,9 +127,9 @@ jobs:
               test_early_capital_post_unit_seed_demand \
               test_early_capital_real_target \
               test_early_capital_commit_real \
-            2>&1 | tee "$RUNNER_TEMP/early-capital-commit-real-tests.log"
+            2>&1 | tee "$RUNNER_TEMP/early-capital-12156-contract-refresh-tests.log"
 
-      - name: Emit deterministic exact-head receipt
+      - name: Emit deterministic contract-refresh receipt
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: python
@@ -136,6 +144,9 @@ jobs:
               Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
               Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
@@ -147,48 +158,40 @@ jobs:
               files[str(path)] = {
                   'bytes': len(data),
                   'sha256': hashlib.sha256(data).hexdigest(),
-                  'git_blob': hashlib.sha1(
-                      b'blob ' + str(len(data)).encode() + b'\0' + data
-                  ).hexdigest(),
+                  'git_blob': hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest(),
               }
-
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
-          mechanics = 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
-          engine = 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+          post_test = 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
+          real_test = 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
           assert files[source]['git_blob'] == 'c87f1d1c9d7b416c5316837634f7e721c85811fa'
-          assert files[mechanics]['git_blob'] == '044a4f9c0a4a44dde10ada57563238bcaf82075d'
-          assert files[engine]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
-
-          log = Path(os.environ['RUNNER_TEMP']) / 'early-capital-commit-real-tests.log'
-          head = subprocess.check_output(
-              ['git', 'rev-parse', 'HEAD'], text=True).strip()
+          assert files[post_test]['git_blob'] == '19632a077e21eab9bdeea0ab09c6a500d78aec3c'
+          assert files[real_test]['git_blob'] == '69df329eee57389731a52b6271aa04b91a0bcee9'
+          log = Path(os.environ['RUNNER_TEMP']) / 'early-capital-12156-contract-refresh-tests.log'
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
           receipt = {
-              'schema': 'titan-v3-early-capital-commit-real/v1',
+              'schema': 'titan-v3-pr12156-inherited-contract-refresh/v1',
               'head': head,
               'expected_head': os.environ['EXPECTED_HEAD'],
-              'base': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
-              'parent_head': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
-              'parent_source_blob':
-                  '21c4ac15583e45f6f55ef615d95fc3db93637194',
+              'parent_head': '4403d361bc9769e09d12a59d732ea12861d0b2b7',
+              'mechanism_parent': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'mechanism_source_blob': 'c87f1d1c9d7b416c5316837634f7e721c85811fa',
+              'post_unit_test_head_blob': '19632a077e21eab9bdeea0ab09c6a500d78aec3c',
+              'real_target_test_head_blob': '69df329eee57389731a52b6271aa04b91a0bcee9',
               'files': files,
               'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
-              'scope': (
-                  'commit-real capital certificate after guaranteed funding '
-                  'and operating costs; exact land/animal resource allocation; '
-                  'canonical repackaging and games remain T08 custody'
-              ),
+              'scope': 'inherited test-contract refresh only; commit-real mechanism bytes unchanged',
           }
           assert receipt['head'] == receipt['expected_head']
-          out = Path(os.environ['RUNNER_TEMP']) / 'early-capital-commit-real-receipt.json'
+          out = Path(os.environ['RUNNER_TEMP']) / 'early-capital-12156-contract-refresh-receipt.json'
           out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
           print(out.read_text(), end='')
 
       - uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-early-capital-commit-real-${{ github.run_id }}-${{ github.run_attempt }}
+          name: titan-v3-early-capital-real-target-12156-contract-refresh-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/early-capital-commit-real-tests.log
-            ${{ runner.temp }}/early-capital-commit-real-receipt.json
+            ${{ runner.temp }}/early-capital-12156-contract-refresh-tests.log
+            ${{ runner.temp }}/early-capital-12156-contract-refresh-receipt.json
           if-no-files-found: error
           retention-days: 30
 
