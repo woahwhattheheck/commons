@@ -3,60 +3,76 @@
     "open_issues": 4,
     "open_pull_requests": 4,
     "runs_in_progress": 20,
-    "runs_queued": 797
+    "runs_queued": 757
   },
   "degraded": [],
-  "drafts": 88,
+  "drafts": 141,
   "longest_open": [
     {
       "author": "woahwhattheheck",
-      "branch": "agent/titan-v3-returned-action-diff-sol-prism",
-      "created_at": "2026-09-10T20:44:29Z",
+      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
+      "created_at": "2026-09-10T18:42:48Z",
       "draft": false,
-      "number": 12082,
-      "title": "analysis: add same-state returned-action differential harness"
+      "number": 11959,
+      "title": "TITAN: reconcile canonical package with current source and name drift"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v2-disabled-spatial-identity-20260910",
-      "created_at": "2026-09-10T20:47:03Z",
+      "branch": "owner/titan-v3-regression-recovery-20260910-01",
+      "created_at": "2026-09-10T18:53:43Z",
       "draft": false,
-      "number": 12083,
-      "title": "TITAN: make disabled SpatialTempo installation a strict identity"
+      "number": 11961,
+      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-official-transition-oracle-20260910-01",
-      "created_at": "2026-09-10T20:51:28Z",
+      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
+      "created_at": "2026-09-10T18:55:16Z",
       "draft": true,
-      "number": 12084,
-      "title": "TITAN V3 donor: sterile full-interpreter custody and post-town stages"
+      "number": 11963,
+      "title": "TITAN V3: admit all-shed intent-first SELL priority"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-schema/titan-v3-state-conditioned-score-domain-normalization-20260910-01",
-      "created_at": "2026-09-10T20:53:58Z",
+      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
+      "created_at": "2026-09-10T18:59:26Z",
       "draft": false,
-      "number": 12087,
-      "title": "TITAN V3: normalize state-conditioned SELL reports into true-relative domain"
+      "number": 11965,
+      "title": "titan-v3: run own-value objective on bound current archive"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-pr12072-executable-pin-closure-20260910-01",
-      "created_at": "2026-09-10T20:56:18Z",
+      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
+      "created_at": "2026-09-10T19:00:36Z",
       "draft": true,
-      "number": 12090,
-      "title": "fix(titan): bind queue IDs to all declared comparison inputs"
+      "number": 11968,
+      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "astra/kcwater-main-b95-refresh-20260911-01",
-      "created_at": "2026-09-11T07:42:52Z",
+      "branch": "astra/d38-main25b-refresh-20260911-02",
+      "created_at": "2026-09-11T08:06:27Z",
       "draft": true,
-      "number": 12337,
-      "title": "feat(kcwater): refresh reviewed phased-lab salvage on mainb95"
+      "number": 12342,
+      "title": "tools: refresh reviewed deliverable manifest on main25b"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/kcwater-main25b-refresh-20260911-01",
+      "created_at": "2026-09-11T08:03:51Z",
+      "draft": true,
+      "number": 12341,
+      "title": "feat(kcwater): refresh reviewed phased-lab salvage on main25b"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/outcome-commerce-two-source-pin-refresh-20260911-current",
+      "created_at": "2026-09-11T07:49:11Z",
+      "draft": true,
+      "number": 12338,
+      "title": "fix(commerce): refresh two source authority pins"
     },
     {
       "author": "woahwhattheheck",
@@ -81,14 +97,6 @@
       "draft": true,
       "number": 12332,
       "title": "observability: refresh reviewed command-road repair on mainf398"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/d38-main-b009-refresh-20260911-01",
-      "created_at": "2026-09-11T06:55:21Z",
-      "draft": true,
-      "number": 12314,
-      "title": "tools: refresh-compose reviewed deliverable manifest on mainb009"
     },
     {
       "author": "woahwhattheheck",
@@ -121,21 +129,13 @@
       "draft": false,
       "number": 12293,
       "title": "fix(agt): refresh-compose reviewed replay precedence closure on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-astra/d18-offer-alignment-main9134-refresh-20260911-04",
-      "created_at": "2026-09-11T05:51:00Z",
-      "draft": true,
-      "number": 12291,
-      "title": "host: refresh-compose reviewed offer contract alignment on main9134"
     }
   ],
-  "pulls_listed": 100,
+  "pulls_listed": 195,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.9,
+  "queue_depth_per_runner": 37.9,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T07:45:14Z",
+  "unchanged_since": "2026-09-11T08:07:37Z",
   "undatable_pulls": []
 }
