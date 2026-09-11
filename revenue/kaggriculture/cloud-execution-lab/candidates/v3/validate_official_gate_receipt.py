@@ -21,6 +21,15 @@ class ReceiptError(ValueError):
 
 RECEIPT_SCHEMA = "titan-v31-gate-receipt/v1"
 OFFICIAL_INTERPRETER_COMMIT = "28b6d8af3"
+V31_RELEASE_VERSION = "3.1"
+V31_LIVE_R04_PARAM_KEYS = (
+    "r04_sale_horizon",
+    "r04_open_roundtrip",
+    "r04_row_order",
+    "r04_evening_flush",
+    "r04_sale_fertilizer",
+    "r04_cattle_early",
+)
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -63,11 +72,52 @@ def _score_pair(value: Any, label: str) -> tuple[float, float]:
     return _number(value[0], f"{label}[0]"), _number(value[1], f"{label}[1]")
 
 
-def _latest_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
+def _json_equal(left: Any, right: Any) -> bool:
+    """JSON value equality with exact runtime types (so True != 1 and False != 0)."""
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        return set(left) == set(right) and all(_json_equal(left[key], right[key]) for key in left)
+    if isinstance(left, list):
+        return len(left) == len(right) and all(_json_equal(a, b) for a, b in zip(left, right))
+    return left == right
+
+
+def _authoritative_v31_release(manifest: Mapping[str, Any]) -> Mapping[str, Any]:
+    """Return the latest release only when it is authoritative for the V3.1 live package."""
     releases = manifest.get("releases")
     if not isinstance(releases, list) or not releases:
         raise ReceiptError("manifest.releases must be a non-empty list")
-    return _mapping(releases[-1], "manifest.releases[-1]")
+    release = _mapping(releases[-1], "manifest.releases[-1]")
+    if release.get("version") != V31_RELEASE_VERSION:
+        raise ReceiptError(
+            "manifest latest release is not an authoritative V3.1 live-submission release"
+        )
+
+    live = _mapping(release.get("config"), "manifest V3.1 release.config")
+    if live.get("r04_sale_window") is not True:
+        raise ReceiptError("manifest V3.1 release.config r04_sale_window must be true")
+
+    keys = _mapping(manifest.get("keys"), "manifest.keys")
+    params = _mapping(keys.get("params"), "manifest.keys.params")
+    for key in V31_LIVE_R04_PARAM_KEYS:
+        if key not in params:
+            raise ReceiptError(f"manifest.keys.params missing V3.1 live parameter: {key}")
+        if key not in live:
+            raise ReceiptError(f"manifest V3.1 release.config missing live parameter: {key}")
+        if not _json_equal(live[key], params[key]):
+            raise ReceiptError(
+                f"manifest V3.1 live config {key!r}={live[key]!r} "
+                f"does not match manifest.keys.params {params[key]!r}"
+            )
+
+    submission = _mapping(
+        release.get("submission_archive"), "manifest V3.1 release.submission_archive"
+    )
+    _sha256(
+        submission.get("sha256"), "manifest V3.1 release.submission_archive.sha256"
+    )
+    return release
 
 
 def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
@@ -89,24 +139,26 @@ def _expected_cells(panel: Mapping[str, Any]) -> set[tuple[int, int]]:
 
 
 def _validate_config(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
-    release = _latest_release(manifest)
-    expected_live = _mapping(release.get("config"), "manifest latest release.config")
-    submission = _mapping(release.get("submission_archive"), "manifest latest release.submission_archive")
+    release = _authoritative_v31_release(manifest)
+    expected_live = _mapping(release.get("config"), "manifest V3.1 release.config")
+    submission = _mapping(
+        release.get("submission_archive"), "manifest V3.1 release.submission_archive"
+    )
     expected_submission_sha = _sha256(
-        submission.get("sha256"), "manifest latest release.submission_archive.sha256"
+        submission.get("sha256"), "manifest V3.1 release.submission_archive.sha256"
     )
 
     baseline = _mapping(receipt.get("baseline"), "baseline")
     if baseline.get("submission_archive_sha256") != expected_submission_sha:
-        raise ReceiptError("baseline.submission_archive_sha256 does not match the live-submission release")
+        raise ReceiptError("baseline.submission_archive_sha256 does not match the V3.1 live submission")
     baseline_config = _mapping(baseline.get("config"), "baseline.config")
     for key, expected in expected_live.items():
         if key not in baseline_config:
             raise ReceiptError(f"baseline.config missing live-submission key: {key}")
-        if baseline_config[key] != expected:
+        if not _json_equal(baseline_config[key], expected):
             raise ReceiptError(
                 f"baseline.config[{key!r}]={baseline_config[key]!r} "
-                f"does not match live submission {expected!r}"
+                f"does not match live submission {expected!r} with exact JSON type+value"
             )
 
     candidate = _mapping(receipt.get("candidate"), "candidate")
@@ -119,8 +171,11 @@ def _validate_config(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) ->
     if unknown:
         raise ReceiptError(f"candidate.config_overrides contains unknown keys: {unknown}")
     expected_candidate.update(overrides)
-    if dict(candidate_config) != expected_candidate:
-        raise ReceiptError("candidate.config differs from baseline by more than declared config_overrides")
+    if not _json_equal(dict(candidate_config), expected_candidate):
+        raise ReceiptError(
+            "candidate.config differs from baseline by more than declared config_overrides "
+            "under exact JSON type+value equality"
+        )
 
 
 def _validate_provenance(receipt: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
@@ -150,13 +205,13 @@ def _validate_panel_and_results(
     if panel.get("games_per_opponent") != len(expected):
         raise ReceiptError("panel.games_per_opponent must equal the frozen seed x seat cell count")
     gate = _mapping(receipt.get("panel"), "receipt.panel")
-    if gate.get("seeds") != panel.get("seeds"):
+    if not _json_equal(gate.get("seeds"), panel.get("seeds")):
         raise ReceiptError("receipt.panel.seeds must exactly match OFFICIAL-GATE-PANEL.json")
-    if gate.get("seats") != panel.get("seats"):
+    if not _json_equal(gate.get("seats"), panel.get("seats")):
         raise ReceiptError("receipt.panel.seats must exactly match OFFICIAL-GATE-PANEL.json")
     if gate.get("seed_list_sha256") != panel.get("seed_list_sha256"):
         raise ReceiptError("receipt.panel.seed_list_sha256 mismatch")
-    if gate.get("games_per_opponent") != panel.get("games_per_opponent"):
+    if not _json_equal(gate.get("games_per_opponent"), panel.get("games_per_opponent")):
         raise ReceiptError("receipt.panel.games_per_opponent mismatch")
 
     opponent = _mapping(receipt.get("opponent"), "opponent")
