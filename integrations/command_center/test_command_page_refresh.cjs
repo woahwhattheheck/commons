@@ -2,8 +2,10 @@
 // command.html follows the refresh protocol AGENT_VIEW gives every seat: read
 // pulse.json, pay for feed/head.json only when seq moved, re-read the slower
 // bake files once per bake period, retry any panel that failed, and fetch
-// nothing while the tab is hidden. These tests run the page's real inline
-// script against a stub DOM and a recording fetch.
+// nothing while the tab is hidden. It reads each bake from main and uses the
+// copy Pages serves beside it only when main cannot be read. These tests run
+// the page's real inline script against a stub DOM and a recording fetch;
+// `taken()` lists the reads made on main, `site()` the fallback reads.
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
@@ -16,6 +18,7 @@ const inline=[...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>
 const ALL=['./feed/github.json','./feed/head.json','./pulse.json','./seats.json'];
 const SLOW=['./feed/github.json','./pulse.json','./seats.json'];
 const BEACON=['./pulse.json'];
+const RAW='https://raw.githubusercontent.com/woahwhattheheck/commons/main/';
 
 function stubElement(){
   return {
@@ -27,8 +30,10 @@ function stubElement(){
   };
 }
 
-function page(seats,repo){
-  const world={clock:1_789_080_000_000,seq:100,failing:new Set(),requests:[],intervals:new Map(),nextId:1};
+function page(seats,repo,opts){
+  opts=opts||{};
+  const world={clock:1_789_080_000_000,seq:100,failing:new Set(),mainDown:!!opts.mainDown,
+    requests:[],site:[],urls:[],intervals:new Map(),nextId:1};
   const elements={};
   const documentHandlers={};
   const document={
@@ -44,7 +49,7 @@ function page(seats,repo){
     './seats.json':seats||{seats:[],roster:[],open_cants:[],liveness_basis:'bake'},
     './feed/github.json':repo||{counts:{},newest_pulls:[],longest_open_pulls:[]}
   });
-  const context=vm.createContext({
+  const context=vm.createContext(Object.assign({
     document,console,Math,JSON,Promise,Number,String,Array,Object,Error,isFinite,encodeURIComponent,
     navigator:{clipboard:{writeText:async()=>{}}},
     setTimeout:()=>0,
@@ -52,18 +57,23 @@ function page(seats,repo){
     clearInterval:id=>{world.intervals.delete(id);},
     Date:class extends Date{static now(){return world.clock;}},
     fetch:async url=>{
-      const file=url.split('?')[0];
-      world.requests.push(file);
+      const bare=url.split('?')[0];
+      // raw.githubusercontent.com/<owner>/<repo>/main/<path> is the main road.
+      const onMain=bare.startsWith('https://raw.githubusercontent.com/');
+      const file=onMain?'./'+bare.split('/').slice(6).join('/'):bare;
+      (onMain?world.requests:world.site).push(file);
+      if(onMain) world.urls.push(bare);
       const body=bodies()[file];
-      if(!body||world.failing.has(file)) return {ok:false,status:503,json:async()=>({})};
+      if(!body||world.failing.has(file)||(onMain&&world.mainDown)) return {ok:false,status:503,json:async()=>({})};
       return {ok:true,status:200,json:async()=>JSON.parse(JSON.stringify(body))};
     }
-  });
+  },opts.location?{location:opts.location}:{}));
   vm.runInContext(inline[0],context);
   const settle=async()=>{for(let i=0;i<25;i++) await new Promise(r=>setImmediate(r));};
   return {
     world,document,elements,settle,
     taken(){return world.requests.splice(0).sort();},
+    site(){return world.site.splice(0).sort();},
     async tick(){
       assert.equal(world.intervals.size,1,'exactly one refresh interval while visible');
       const [{fn,ms}]=[...world.intervals.values()];
@@ -283,6 +293,63 @@ test('the page names all four bakes it reads and every producer',()=>{
   for(const producer of ['board_ingest.py','host/feed_delta.py','host/seat_census.py','host/github_state.py']){
     assert.ok(html.includes(producer),producer);
   }
+});
+
+test('every bake is read from main, not from the copy Pages serves beside the page',async()=>{
+  const p=page();await p.settle();
+  assert.deepEqual(p.taken(),ALL);
+  assert.deepEqual(p.site(),[]);
+  assert.ok(p.world.urls.every(u=>u.startsWith(RAW)),p.world.urls.join(' '));
+  assert.match(p.elements.road.textContent,
+    /^Read from main \(raw\.githubusercontent\.com\/woahwhattheheck\/commons\/main\/\)/);
+});
+
+test('when main cannot be read the page shows the site copy and says it trails main',async()=>{
+  const p=page(undefined,undefined,{mainDown:true});await p.settle();
+  assert.deepEqual(p.taken(),ALL,'main is asked first');
+  assert.deepEqual(p.site(),ALL);
+  assert.equal(p.elements.degraded.hidden,true,'a file the site copy supplied is not unread');
+  const road=p.elements.road.textContent;
+  assert.match(road,/^Main could not be read for feed\/github\.json \(HTTP 503\), feed\/head\.json \(HTTP 503\)/);
+  assert.match(road,/Showing this site's copy of those files, which trails main/);
+  await p.tick();
+  assert.deepEqual(p.taken(),BEACON,'while main is down the panels still follow seq');
+  assert.deepEqual(p.site(),BEACON,'one extra request a minute, not four');
+  p.world.mainDown=false;await p.tick();
+  assert.deepEqual(p.taken(),ALL,'once the beacon answers from main, panels held from the site are re-read');
+  assert.deepEqual(p.site(),[]);
+  assert.match(p.elements.road.textContent,/^Read from main/);
+  await p.tick();
+  assert.deepEqual(p.taken(),BEACON);
+});
+
+test('a file neither main nor the site can supply is unread, with both reasons',async()=>{
+  const p=page();p.world.failing.add('./seats.json');await p.settle();
+  assert.equal(p.elements.degraded.hidden,false);
+  assert.match(p.elements.degraded.textContent,/\.\/seats\.json \(main: HTTP 503; this site: HTTP 503\)/);
+  assert.doesNotMatch(p.elements.road.textContent,/seats\.json/,'an unread file is not described as a site copy');
+});
+
+test('on a github.io page, main is the repository the page is served from',async()=>{
+  const fork=page(undefined,undefined,{location:{hostname:'someone.github.io',pathname:'/fork/command.html'}});
+  await fork.settle();
+  assert.ok(fork.world.urls.length===4);
+  assert.ok(fork.world.urls.every(u=>u.startsWith('https://raw.githubusercontent.com/someone/fork/main/')),
+    fork.world.urls.join(' '));
+  const user=page(undefined,undefined,{location:{hostname:'someone.github.io',pathname:'/command.html'}});
+  await user.settle();
+  assert.ok(user.world.urls.every(u=>u.startsWith('https://raw.githubusercontent.com/someone/someone.github.io/main/')),
+    user.world.urls.join(' '));
+  const local=page(undefined,undefined,{location:{hostname:'127.0.0.1',pathname:'/command.html'}});
+  await local.settle();
+  assert.ok(local.world.urls.every(u=>u.startsWith(RAW)),local.world.urls.join(' '));
+});
+
+test('the headline says how long ago the bake ran',async()=>{
+  const p=page();await p.settle();
+  // pulse.ts is 2026-09-10T22:00:00Z and the page clock is 40 minutes later.
+  assert.equal(Date.parse('2026-09-10T22:00:00Z')+40*60_000,p.world.clock);
+  assert.match(p.elements.headline.textContent,/^2026-09-10T22:00:00Z \(baked 40m ago\) · head abc/);
 });
 
 test('board rows open the post through the HEAD pin, not the Pages bake',async()=>{
