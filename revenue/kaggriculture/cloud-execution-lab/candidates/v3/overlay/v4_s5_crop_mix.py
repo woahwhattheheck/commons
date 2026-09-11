@@ -1,26 +1,34 @@
 # SPDX-License-Identifier: Apache-2.0
-"""V4 S5: late crop-mix timing experiment.
+"""V4 S5: census-bounded late crop-mix timing experiment.
 
 The active ``retain_wheat`` mode tests the exact late-game divergence seen in the
-107953186 mirror loss: keep the day-24/25 crop rotation on WHEAT longer instead
-of pivoting to CARROT immediately.
+107953186 mirror loss without turning every late CARROT decision into WHEAT.
+That replay starts day 24 at 38 WHEAT tiles versus the winner's 37, then starts
+day 25 at 37 versus the winner's 41.  The winning mirror keeps materially more
+WHEAT through the rotation window while moving into CARROT later.
 
-The transform is deliberately narrow and RNG-neutral for the current callback:
+S5 therefore uses a *tile-census floor*, not a blanket crop substitution:
 
-* it never adds, removes, or reorders market rows;
-* a qualifying ``BUY_SEED CARROT q`` becomes ``BUY_SEED WHEAT q`` with the
-  exact same positive integer quantity, so seed count is preserved and spend
-  can only decrease under the official $20 CARROT / $10 WHEAT seed costs;
-* current ``PLANT CARROT`` commands become ``PLANT WHEAT`` only when the
-  pre-market private seed state proves that every original WHEAT/CARROT plant
-  would have seed and that every rewritten plant also has WHEAT. Unit actions
-  execute before market orders, so same-turn seed purchases are never credited;
-* the market rewrite is allowed only when no later cash-spending order can be
-  enabled by the saved seed cost.
+* day 24: preserve at least 37 observed WHEAT tiles;
+* day 25: preserve at least 41 observed WHEAT tiles.
 
-The helper is source-only until it survives the paired V4 field/live gate. The
+Only an observed deficit can activate the lane.  Current ``PLANT CARROT``
+commands are converted in actor order only up to that deficit and only when the
+pre-market seed state proves the parent WHEAT/CARROT plants and the selected
+candidate WHEAT plants are seed-backed.  A qualifying ``BUY_SEED CARROT q`` may
+become ``BUY_SEED WHEAT q`` only for residual deficit, with the exact same
+positive integer quantity.  Under the pinned engine this preserves seed count
+and lowers seed spend ($20 CARROT -> $10 WHEAT).  The seed rewrite is also vetoed
+when any later cash-spending order could be enabled by the saved cash.
+
+The transform never adds/removes/reorders market rows, never changes actor
+cardinality, never uses RNG, and uses same-turn seed purchases only for future
+callbacks because unit actions execute before market orders.
+
+The helper is source-only until it survives the paired V4 field/live gate.  The
 eventual installed seam must pass the live configuration; enabled operation
-fails closed unless the standard 720-step / 24-turn-day contract is explicit.
+fails closed unless the standard 720-step / 24-turn-day / 10x10 contract is
+explicit.
 """
 
 MODE_OFF = "off"
@@ -29,9 +37,10 @@ MODES = (MODE_OFF, MODE_RETAIN_WHEAT)
 
 EPISODE_STEPS = 720
 TURNS_PER_DAY = 24
-ACTIVE_DAYS = frozenset((24, 25))
+BOARD_SIZE = 10
 WHEAT_SEED_COST = 10
 CARROT_SEED_COST = 20
+WHEAT_TILE_FLOOR = {24: 37, 25: 41}
 
 _CASH_SPEND_OPS = frozenset(
     ("HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL")
@@ -52,6 +61,7 @@ def _standard_configuration(configuration):
     for key, expected in (
         ("episodeSteps", EPISODE_STEPS),
         ("turnsPerDay", TURNS_PER_DAY),
+        ("boardSize", BOARD_SIZE),
     ):
         value = _cfg_get(configuration, key)
         if type(value) is not int or value != expected:
@@ -86,13 +96,46 @@ def _actor_commands(action):
     return [farmer, *hands]
 
 
-def _rewrite_safe_seed_row(market):
-    """Return ``(index, row)`` for one quantity-preserving late seed rewrite.
+def _own_crop_counts(observation):
+    player = observation.get("player")
+    farms = observation.get("farms")
+    if type(player) is not int or player not in (0, 1):
+        return None
+    if not isinstance(farms, list) or player >= len(farms):
+        return None
+    farm = farms[player]
+    if not isinstance(farm, dict):
+        return None
+    tiles = farm.get("tiles")
+    if not isinstance(tiles, list) or len(tiles) != BOARD_SIZE:
+        return None
 
-    Only the final cash-spending order may be rewritten. Later SELL rows are
-    harmless; malformed/unknown later rows fail closed because their cash or
-    state effect is not proven.
+    wheat = 0
+    carrot = 0
+    for row in tiles:
+        if not isinstance(row, list) or len(row) != BOARD_SIZE:
+            return None
+        for tile in row:
+            if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
+                continue
+            crop = tile.get("crop")
+            if crop == "WHEAT":
+                wheat += 1
+            elif crop == "CARROT":
+                carrot += 1
+    return wheat, carrot
+
+
+def _rewrite_safe_seed_row(market, max_quantity):
+    """Return one quantity-preserving CARROT->WHEAT seed-row rewrite.
+
+    The row must fit entirely inside ``max_quantity``; S5 never splits a market
+    row because that would change order count.  Only the final cash-spending
+    order may be rewritten.  Later SELL rows are safe; malformed/unknown later
+    rows fail closed.
     """
+    if type(max_quantity) is not int or max_quantity <= 0:
+        return None
     if not isinstance(market, list):
         return None
 
@@ -103,7 +146,7 @@ def _rewrite_safe_seed_row(market):
         op = row[0]
         if op == "BUY_SEED" and len(row) == 3 and row[1] == "CARROT":
             quantity = row[2]
-            if type(quantity) is int and quantity > 0:
+            if type(quantity) is int and 0 < quantity <= max_quantity:
                 candidate = (index, row)
         elif op not in _CASH_SPEND_OPS and op not in _SAFE_TRAILING_OPS:
             return None
@@ -130,11 +173,7 @@ def apply_crop_mix(
     mode=MODE_OFF,
     configuration=None,
 ):
-    """Return the narrow S5 late-rotation variant of ``action``.
-
-    The exact parent object is returned whenever a guard fails or no change is
-    available. All mutation is copy-on-write.
-    """
+    """Return the narrow, census-bounded S5 late-rotation variant."""
     if _normalized_mode(mode) != MODE_RETAIN_WHEAT or not isinstance(action, dict):
         return action
     if not _standard_configuration(configuration):
@@ -146,7 +185,18 @@ def apply_crop_mix(
     day = observation.get("day")
     if type(step) is not int or type(day) is not int:
         return action
-    if step < 0 or day != step // TURNS_PER_DAY or day not in ACTIVE_DAYS:
+    if step < 0 or day != step // TURNS_PER_DAY:
+        return action
+    floor = WHEAT_TILE_FLOOR.get(day)
+    if floor is None:
+        return action
+
+    crop_counts = _own_crop_counts(observation)
+    if crop_counts is None:
+        return action
+    wheat_tiles, _ = crop_counts
+    deficit = max(0, floor - wheat_tiles)
+    if deficit <= 0:
         return action
 
     private = observation.get("private")
@@ -168,19 +218,22 @@ def apply_crop_mix(
     wheat_plants = sum(_literal_plant(command, "WHEAT") for command in commands)
     carrot_plants = sum(_literal_plant(command, "CARROT") for command in commands)
 
-    # Preserve which current PLANT commands can execute. This is deliberately
-    # conservative: all original WHEAT/CARROT plants must be seed-backed, and
-    # WHEAT must also cover every proposed CARROT->WHEAT rewrite.
-    rewrite_plants = (
-        carrot_plants > 0
-        and carrot >= carrot_plants
-        and wheat >= wheat_plants + carrot_plants
-    )
+    # Parent crop plants must be seed-backed before S5 is allowed to claim
+    # current-callback occupancy equivalence.  Candidate WHEAT uses only the
+    # seed surplus beyond the parent's authored WHEAT plants.
+    plant_budget = 0
+    if carrot >= carrot_plants and wheat >= wheat_plants:
+        plant_budget = min(
+            deficit,
+            carrot_plants,
+            wheat - wheat_plants,
+        )
 
+    residual = deficit - plant_budget
     market = action.get("market")
-    market_rewrite = _rewrite_safe_seed_row(market)
+    market_rewrite = _rewrite_safe_seed_row(market, residual)
 
-    if not rewrite_plants and market_rewrite is None:
+    if plant_budget <= 0 and market_rewrite is None:
         return action
 
     changed = dict(action)
@@ -191,16 +244,21 @@ def apply_crop_mix(
         new_market[index] = row
         changed["market"] = new_market
 
-    if rewrite_plants:
+    if plant_budget > 0:
+        remaining = plant_budget
         farmer = action["farmer"]
-        if _literal_plant(farmer, "CARROT"):
+        if remaining and _literal_plant(farmer, "CARROT"):
             changed["farmer"] = ["PLANT", "WHEAT"]
+            remaining -= 1
 
         hands = action["hands"]
-        hand_indexes = [
-            index for index, command in enumerate(hands)
-            if _literal_plant(command, "CARROT")
-        ]
+        hand_indexes = []
+        for index, command in enumerate(hands):
+            if remaining <= 0:
+                break
+            if _literal_plant(command, "CARROT"):
+                hand_indexes.append(index)
+                remaining -= 1
         if hand_indexes:
             new_hands = list(hands)
             for index in hand_indexes:

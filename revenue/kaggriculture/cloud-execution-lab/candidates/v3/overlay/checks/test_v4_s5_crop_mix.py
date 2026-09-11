@@ -14,13 +14,27 @@ if str(ROOT) not in sys.path:
 
 import v4_s5_crop_mix as lane  # noqa: E402
 
-CONFIG = {"episodeSteps": 720, "turnsPerDay": 24}
+CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10}
 
 
-def observation(day=24, wheat=3, carrot=3):
+def _tiles(wheat_tiles=0, carrot_tiles=0):
+    if wheat_tiles < 0 or carrot_tiles < 0 or wheat_tiles + carrot_tiles > 100:
+        raise ValueError("bad census")
+    cells = []
+    cells.extend({"kind": "PLANT", "crop": "WHEAT"} for _ in range(wheat_tiles))
+    cells.extend({"kind": "PLANT", "crop": "CARROT"} for _ in range(carrot_tiles))
+    cells.extend(None for _ in range(100 - len(cells)))
+    return [cells[i:i + 10] for i in range(0, 100, 10)]
+
+
+def observation(day=25, wheat=3, carrot=3, wheat_tiles=37, carrot_tiles=4):
+    own = {"tiles": _tiles(wheat_tiles, carrot_tiles)}
+    rival = {"tiles": _tiles()}
     return {
         "step": day * 24,
         "day": day,
+        "player": 0,
+        "farms": [own, rival],
         "private": {"seeds": {"WHEAT": wheat, "CARROT": carrot}},
     }
 
@@ -38,61 +52,148 @@ class S5CropMix(unittest.TestCase):
         parent = action(["PLANT", "CARROT"], [], [["BUY_SEED", "CARROT", 4]])
         self.assertIs(lane.apply_crop_mix(observation(), parent, "off", CONFIG), parent)
 
-    def test_requires_explicit_standard_time_contract(self):
+    def test_requires_explicit_standard_contract(self):
         parent = action(["PLANT", "CARROT"], [], [["BUY_SEED", "CARROT", 4]])
         bad_configs = (
             None,
-            {"episodeSteps": 719, "turnsPerDay": 24},
-            {"episodeSteps": 720, "turnsPerDay": 12},
-            {"episodeSteps": True, "turnsPerDay": 24},
-            {"episodeSteps": 720, "turnsPerDay": True},
+            {"episodeSteps": 719, "turnsPerDay": 24, "boardSize": 10},
+            {"episodeSteps": 720, "turnsPerDay": 12, "boardSize": 10},
+            {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 12},
+            {"episodeSteps": True, "turnsPerDay": 24, "boardSize": 10},
         )
         for configuration in bad_configs:
             with self.subTest(configuration=configuration):
                 self.assertIs(
-                    lane.apply_crop_mix(
-                        observation(), parent, "retain_wheat", configuration
-                    ),
+                    lane.apply_crop_mix(observation(), parent, "retain_wheat", configuration),
                     parent,
                 )
 
     def test_attribute_configuration_is_supported(self):
         parent = action(["PASS"], [], [["BUY_SEED", "CARROT", 4]])
         out = lane.apply_crop_mix(
-            observation(),
-            parent,
-            "retain_wheat",
-            SimpleNamespace(**CONFIG),
+            observation(wheat_tiles=37), parent, "retain_wheat", SimpleNamespace(**CONFIG)
         )
         self.assertEqual(out["market"], [["BUY_SEED", "WHEAT", 4]])
 
     def test_only_days_24_and_25_activate(self):
-        parent = action(["PASS"], [], [["BUY_SEED", "CARROT", 4]])
+        parent = action(["PASS"], [], [["BUY_SEED", "CARROT", 1]])
         for day in (0, 23, 26, 29):
             with self.subTest(day=day):
                 self.assertIs(
-                    lane.apply_crop_mix(
-                        observation(day=day), parent, "retain_wheat", CONFIG
-                    ),
+                    lane.apply_crop_mix(observation(day=day, wheat_tiles=0), parent, "retain_wheat", CONFIG),
                     parent,
                 )
 
-    def test_quantity_preserving_carrot_buy_becomes_cheaper_wheat(self):
+    def test_exact_replay_start_census_does_not_blanket_convert(self):
+        # 107953186 starts d24 at WHEAT38 while the winner starts at 37.
         parent = action(
-            ["PASS"],
+            ["PLANT", "CARROT"],
+            [["PLANT", "CARROT"]],
+            [["BUY_SEED", "CARROT", 2]],
+        )
+        self.assertIs(
+            lane.apply_crop_mix(
+                observation(day=24, wheat=10, carrot=10, wheat_tiles=38, carrot_tiles=0),
+                parent,
+                "retain_wheat",
+                CONFIG,
+            ),
+            parent,
+        )
+
+    def test_day24_floor_allows_only_observed_deficit(self):
+        parent = action(["PLANT", "CARROT"], [["PLANT", "CARROT"]], [])
+        out = lane.apply_crop_mix(
+            observation(day=24, wheat=2, carrot=2, wheat_tiles=36),
+            parent,
+            "retain_wheat",
+            CONFIG,
+        )
+        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
+        self.assertEqual(out["hands"], [["PLANT", "CARROT"]])
+
+    def test_day25_uses_winner_start_floor_and_caps_plant_swaps(self):
+        # W37 vs winner W41 => deficit four. Six authored CARROT plants must not
+        # all be converted merely because seed is available.
+        parent = action(
+            ["PLANT", "CARROT"],
+            [["PLANT", "CARROT"] for _ in range(5)],
             [],
-            [["SELL", "MILK", 1], ["BUY_SEED", "CARROT", 4], ["SELL", "WOOL", 2]],
+        )
+        out = lane.apply_crop_mix(
+            observation(day=25, wheat=10, carrot=10, wheat_tiles=37),
+            parent,
+            "retain_wheat",
+            CONFIG,
+        )
+        commands = [out["farmer"], *out["hands"]]
+        self.assertEqual(commands.count(["PLANT", "WHEAT"]), 4)
+        self.assertEqual(commands.count(["PLANT", "CARROT"]), 2)
+
+    def test_seed_proof_bounds_current_plant_rewrites(self):
+        parent = action(
+            ["PLANT", "WHEAT"],
+            [["PLANT", "CARROT"], ["PLANT", "CARROT"]],
+            [],
+        )
+        # W37 => deficit4, but only one WHEAT seed remains beyond the parent's
+        # authored WHEAT plant, so exactly one CARROT command may be rewritten.
+        out = lane.apply_crop_mix(
+            observation(day=25, wheat=2, carrot=2, wheat_tiles=37),
+            parent,
+            "retain_wheat",
+            CONFIG,
+        )
+        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
+        self.assertEqual(out["hands"], [["PLANT", "WHEAT"], ["PLANT", "CARROT"]])
+
+    def test_parent_carrot_plants_must_be_seed_backed(self):
+        parent = action(["PLANT", "CARROT"], [], [])
+        self.assertIs(
+            lane.apply_crop_mix(
+                observation(wheat=10, carrot=0, wheat_tiles=37),
+                parent,
+                "retain_wheat",
+                CONFIG,
+            ),
+            parent,
+        )
+
+    def test_residual_deficit_can_rewrite_equal_quantity_seed_row(self):
+        # W37 => deficit4. One current plant consumes one unit of deficit, so a
+        # q3 final seed row may supply exactly the residual without row splitting.
+        parent = action(
+            ["PLANT", "CARROT"],
+            [],
+            [["SELL", "MILK", 1], ["BUY_SEED", "CARROT", 3], ["SELL", "WOOL", 2]],
         )
         original = copy.deepcopy(parent)
-        out = lane.apply_crop_mix(observation(), parent, "retain_wheat", CONFIG)
+        out = lane.apply_crop_mix(
+            observation(wheat=1, carrot=1, wheat_tiles=37),
+            parent,
+            "retain_wheat",
+            CONFIG,
+        )
+        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
         self.assertEqual(
             out["market"],
-            [["SELL", "MILK", 1], ["BUY_SEED", "WHEAT", 4], ["SELL", "WOOL", 2]],
+            [["SELL", "MILK", 1], ["BUY_SEED", "WHEAT", 3], ["SELL", "WOOL", 2]],
         )
-        self.assertEqual(len(out["market"]), len(parent["market"]))
         self.assertEqual(out["market"][1][2], parent["market"][1][2])
         self.assertLess(lane.WHEAT_SEED_COST, lane.CARROT_SEED_COST)
         self.assertEqual(parent, original)
+
+    def test_seed_row_larger_than_residual_is_not_split(self):
+        parent = action(["PLANT", "CARROT"], [], [["BUY_SEED", "CARROT", 4]])
+        # deficit4 minus one plant => residual3; q4 must remain CARROT.
+        out = lane.apply_crop_mix(
+            observation(wheat=1, carrot=1, wheat_tiles=37),
+            parent,
+            "retain_wheat",
+            CONFIG,
+        )
+        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
+        self.assertEqual(out["market"], [["BUY_SEED", "CARROT", 4]])
 
     def test_saved_seed_cash_cannot_enable_later_purchase(self):
         parents = (
@@ -105,7 +206,9 @@ class S5CropMix(unittest.TestCase):
         for parent in parents:
             with self.subTest(market=parent["market"]):
                 self.assertIs(
-                    lane.apply_crop_mix(observation(), parent, "retain_wheat", CONFIG),
+                    lane.apply_crop_mix(
+                        observation(wheat_tiles=37), parent, "retain_wheat", CONFIG
+                    ),
                     parent,
                 )
 
@@ -120,61 +223,31 @@ class S5CropMix(unittest.TestCase):
         for parent in parents:
             with self.subTest(market=parent["market"]):
                 self.assertIs(
-                    lane.apply_crop_mix(observation(), parent, "retain_wheat", CONFIG),
+                    lane.apply_crop_mix(
+                        observation(wheat_tiles=37), parent, "retain_wheat", CONFIG
+                    ),
                     parent,
                 )
 
-    def test_current_carrot_plants_swap_only_with_full_seed_proof(self):
-        parent = action(
-            ["PLANT", "WHEAT"],
-            [["PLANT", "CARROT"], ["PLANT", "CARROT"]],
-            [],
-        )
-        # Parent has seed for its commands, but candidate cannot cover all three
-        # WHEAT plants yet, so current occupancy must remain unchanged.
-        self.assertIs(
-            lane.apply_crop_mix(
-                observation(wheat=2, carrot=2), parent, "retain_wheat", CONFIG
-            ),
-            parent,
-        )
-        out = lane.apply_crop_mix(
-            observation(wheat=3, carrot=2), parent, "retain_wheat", CONFIG
-        )
-        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
-        self.assertEqual(out["hands"], [["PLANT", "WHEAT"], ["PLANT", "WHEAT"]])
-        self.assertEqual(parent["hands"], [["PLANT", "CARROT"], ["PLANT", "CARROT"]])
-
-    def test_parent_carrot_plants_must_be_seed_backed(self):
+    def test_malformed_census_or_player_fails_closed(self):
         parent = action(["PLANT", "CARROT"], [], [])
-        self.assertIs(
-            lane.apply_crop_mix(
-                observation(wheat=10, carrot=0), parent, "retain_wheat", CONFIG
-            ),
-            parent,
-        )
-
-    def test_market_and_plant_rewrites_compose_copy_on_write(self):
-        parent = action(
-            ["PLANT", "CARROT"],
-            [["PASS"], ["PLANT", "CARROT"]],
-            [["BUY_SEED", "CARROT", 3], ["SELL", "MILK", 1]],
-        )
-        original = copy.deepcopy(parent)
-        out = lane.apply_crop_mix(
-            observation(wheat=2, carrot=2), parent, "retain_wheat", CONFIG
-        )
-        self.assertEqual(out["farmer"], ["PLANT", "WHEAT"])
-        self.assertEqual(out["hands"], [["PASS"], ["PLANT", "WHEAT"]])
-        self.assertEqual(
-            out["market"], [["BUY_SEED", "WHEAT", 3], ["SELL", "MILK", 1]]
-        )
-        self.assertEqual(parent, original)
+        cases = []
+        bad = observation(wheat=10, carrot=10, wheat_tiles=37)
+        bad["player"] = True
+        cases.append(bad)
+        bad = observation(wheat=10, carrot=10, wheat_tiles=37)
+        bad["farms"][0]["tiles"] = bad["farms"][0]["tiles"][:-1]
+        cases.append(bad)
+        bad = observation(wheat=10, carrot=10, wheat_tiles=37)
+        bad["farms"][0]["tiles"][0] = tuple(bad["farms"][0]["tiles"][0])
+        cases.append(bad)
+        for obs in cases:
+            self.assertIs(lane.apply_crop_mix(obs, parent, "retain_wheat", CONFIG), parent)
 
     def test_inconsistent_step_day_fails_closed(self):
-        parent = action(["PASS"], [], [["BUY_SEED", "CARROT", 4]])
-        obs = observation(day=24)
-        obs["day"] = 25
+        parent = action(["PASS"], [], [["BUY_SEED", "CARROT", 1]])
+        obs = observation(day=25, wheat_tiles=37)
+        obs["day"] = 24
         self.assertIs(lane.apply_crop_mix(obs, parent, "retain_wheat", CONFIG), parent)
 
 
