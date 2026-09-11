@@ -1,0 +1,180 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Focused V4 checks for repaired D4 STRAWBERRY timing."""
+from __future__ import annotations
+
+import inspect
+import json
+import sys
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+import r04_d4_strawberry_timing as d4  # noqa: E402
+import r04_full_router as r04  # noqa: E402
+from titan_runtime import Features  # noqa: E402
+
+
+class View:
+    def __init__(self, stock=12, price=200):
+        self.shed = {item: 0 for item in r04.PRODUCTS}
+        self.shed["STRAWBERRY"] = stock
+        self.prices = {item: 1 for item in r04.PRODUCTS}
+        self.prices["STRAWBERRY"] = price
+        self.positions = []
+        self.inventories = []
+
+    def inventory(self, actor):
+        return {}
+
+    def beside_shed(self, position):
+        return False
+
+
+def action(market=None):
+    return {"farmer": ["PASS"], "hands": [], "market": list(market or [])}
+
+
+def tape_with(step, qty=1000, pickup_step=None):
+    tape = [{"farmer": ["PASS"], "hands": [], "market": []}
+            for _ in range(r04.LAST_STEP + 1)]
+    tape[step]["market"] = [["SELL", "STRAWBERRY", qty]]
+    if pickup_step is not None:
+        tape[pickup_step]["farmer"] = ["PICKUP", "STRAWBERRY", 1]
+    return tape
+
+
+def state(debts=None):
+    return SimpleNamespace(queues={}, sale_window_debts={} if debts is None else debts)
+
+
+class D4V4Tests(unittest.TestCase):
+    def setUp(self):
+        self.old_horizon = r04.SALE_HORIZON
+        self.old_flush = r04.EVENING_FLUSH
+        r04.SALE_HORIZON = 8
+        r04.EVENING_FLUSH = True
+        for key in d4.REPORT:
+            d4.REPORT[key] = 0 if key in ("engaged", "units_advanced") else None
+
+    def tearDown(self):
+        r04.SALE_HORIZON = self.old_horizon
+        r04.EVENING_FLUSH = self.old_flush
+        if hasattr(r04, "D4_STRAWBERRY_TIMING"):
+            r04.D4_STRAWBERRY_TIMING = False
+
+    def test_key_ships_off_and_install_round_trips(self):
+        data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
+        self.assertIs(data["r04_d4_strawberry_timing"], False)
+        self.assertIs(Features(**data).r04_d4_strawberry_timing, False)
+        r04.install(d4_strawberry_timing=True)
+        self.assertIs(r04.D4_STRAWBERRY_TIMING, True)
+        r04.install(d4_strawberry_timing=False)
+        self.assertIs(r04.D4_STRAWBERRY_TIMING, False)
+
+    def test_d4_is_composed_before_row_order_and_evening_flush(self):
+        source = inspect.getsource(r04._v3_stack)
+        self.assertLess(source.index("r04_d4_strawberry_timing.apply_d4"),
+                        source.index("if ROW_ORDER"))
+        self.assertLess(source.index("r04_d4_strawberry_timing.apply_d4"),
+                        source.index("if EVENING_FLUSH"))
+
+    def test_disabled_apply_returns_exact_parent_object(self):
+        parent = action()
+        self.assertIs(d4.apply_d4({}, parent, enabled=False), parent)
+
+    def test_pre_flush_authored_sale_is_advanced_and_reserved(self):
+        original = action()
+        st = state()
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, original, View(stock=12, price=200), st, tape_with(380), 369,
+            min_price=180)
+        self.assertIsNot(out, original)
+        self.assertEqual(12, added)
+        self.assertEqual(((380, 12),), reservations)
+        self.assertEqual([["SELL", "STRAWBERRY", 12]], out["market"])
+        self.assertEqual({380: {"STRAWBERRY": 12}}, st.sale_window_debts)
+        self.assertEqual([], original["market"])
+
+    def test_incumbent_flush_owns_later_h22_sale(self):
+        original = action()
+        st = state()
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, original, View(), st, tape_with(382), 373, min_price=180)
+        self.assertIs(out, original)
+        self.assertEqual((0, ()), (added, reservations))
+        self.assertEqual({}, st.sale_window_debts)
+
+    def test_current_strawberry_trade_is_h4_owned(self):
+        original = action([["SELL", "STRAWBERRY", 2]])
+        st = state()
+        out, added, _ = d4.advance_midgame_strawberry(
+            r04, original, View(), st, tape_with(380), 369, min_price=180)
+        self.assertIs(out, original)
+        self.assertEqual(0, added)
+
+    def test_future_pickup_blocks_the_advance(self):
+        original = action()
+        st = state()
+        out, added, _ = d4.advance_midgame_strawberry(
+            r04, original, View(), st, tape_with(380, pickup_step=379), 369,
+            min_price=180)
+        self.assertIs(out, original)
+        self.assertEqual(0, added)
+
+    def test_existing_e184_debt_is_subtracted_exactly(self):
+        original = action()
+        st = state({380: {"STRAWBERRY": 8}})
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, original, View(stock=5), st, tape_with(380, qty=10), 369,
+            min_price=180)
+        self.assertEqual(2, added)
+        self.assertEqual(((380, 2),), reservations)
+        self.assertEqual(10, st.sale_window_debts[380]["STRAWBERRY"])
+        self.assertEqual([["SELL", "STRAWBERRY", 2]], out["market"])
+
+    def test_full_inherited_debt_map_is_fail_closed(self):
+        malformed = (
+            {True: {"STRAWBERRY": 1}},
+            {"380": {"STRAWBERRY": 1}},
+            {720: {"STRAWBERRY": 1}},
+            {380: []},
+            {380: {"STRAWBERRY": True}},
+            {380: {"STRAWBERRY": 1.0}},
+            {380: {"STRAWBERRY": "1"}},
+            {380: {"STRAWBERRY": -1}},
+            {380: {"NOT_A_PRODUCT": 1}},
+        )
+        for debts in malformed:
+            with self.subTest(debts=debts):
+                original = action()
+                st = state(debts)
+                out, added, reservations = d4.advance_midgame_strawberry(
+                    r04, original, View(stock=5), st, tape_with(380, qty=10), 369,
+                    min_price=180)
+                self.assertIs(out, original)
+                self.assertEqual((0, ()), (added, reservations))
+                self.assertIs(st.sale_window_debts, debts)
+
+    def test_price_order_cap_and_day_guards_are_identity(self):
+        cases = [
+            (View(price=179), action(), 369),
+            (View(), action([["SELL", "WHEAT", 1] for _ in range(r04.MAX_ORDERS)]), 369),
+            (View(), action(), 287),
+            (View(), action(), 456),
+        ]
+        for view, original, step in cases:
+            with self.subTest(step=step, market=len(original["market"])):
+                st = state()
+                due = min(max(step + 11, 0), r04.LAST_STEP)
+                out, added, _ = d4.advance_midgame_strawberry(
+                    r04, original, view, st, tape_with(due), step, min_price=180)
+                self.assertIs(out, original)
+                self.assertEqual(0, added)
+
+
+if __name__ == "__main__":
+    unittest.main()
