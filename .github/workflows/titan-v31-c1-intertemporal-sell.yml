@@ -1,0 +1,57 @@
+name: TITAN V3.1 C1 intertemporal SELL
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell/**'
+      - '.github/workflows/titan-v31-c1-intertemporal-sell.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact head, frozen ancestry, scope, and imported sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          HEAD_EXPECTED='${{ github.event.pull_request.head.sha }}'
+          test "$(git rev-parse HEAD)" = "$HEAD_EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+
+          ROOT='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          R04="$ROOT/overlay/r04_full_router.py"
+          TAPES="$ROOT/overlay/r01_tapes.py"
+          ENGINE='revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+          test "$(git rev-parse "$BASE:$R04")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+          test "$(git rev-parse "$BASE:$TAPES")" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+          test "$(git rev-parse "$BASE:$ENGINE")" = 3c202c7ee921da239356789e266b694635103fc4
+
+          git diff --name-only "$BASE"...HEAD | sort > /tmp/actual
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-c1-intertemporal-sell.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell/test_candidate.py
+          EOF
+          sort -o /tmp/expected /tmp/expected
+          diff -u /tmp/expected /tmp/actual
+
+      - name: Focused source tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c1_intertemporal_sell
+        run: |
+          python -B -m py_compile candidate.py test_candidate.py
+          python -B -m unittest -q test_candidate.py
+
+      - name: Prove test did not mutate checkout
+        run: |
+          test -z "$(git status --porcelain)"
