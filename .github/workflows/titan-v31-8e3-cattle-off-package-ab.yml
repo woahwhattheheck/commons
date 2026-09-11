@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          STACK='0fc8ea0d399a9506873f7249415e2491db2ff565'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
@@ -39,6 +39,7 @@ jobs:
           test "$(git merge-base "$STACK" HEAD)" = "$STACK"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+          test "$(git rev-parse "$STACK:.github/workflows/titan-v31-canonical-base-recovery.yml")" = 'dd8711297b18b6703677da0bc4eb14c9178ac67d'
 
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
           test "$(git hash-object "$DIR/report_ab.py")" = '0cd5a74e02cd9555b8c7c3275f9e27c696512531'
@@ -322,15 +323,19 @@ jobs:
           cat /tmp/cattle-ab-report.md
           cat /tmp/cattle-ab-report.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Recheck live canonical and recovery parent before publication
+      - name: Recheck live canonical, recovery parent, and feature head before publication
         shell: bash
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          STACK='0fc8ea0d399a9506873f7249415e2491db2ff565'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          HEAD_REF='${{ github.event.pull_request.head.ref }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+          test "$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')" = "$EXPECTED_HEAD"
 
       - name: Retain exact package and economics receipts
         uses: actions/upload-artifact@v4
@@ -353,14 +358,18 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          STACK='0fc8ea0d399a9506873f7249415e2491db2ff565'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          HEAD_REF='${{ github.event.pull_request.head.ref }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+          test "$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')" = "$EXPECTED_HEAD"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/cattle-ab-report.md
-            printf '\nExact shipped-8e3 B5+JIT package A/B. Gameplay root: `8e3d92a...`; build-custody parent: #12535 `6e5e3c7c...`; #12505 score-transform donor blob: `9c5e4642...`. Both arms retain B5 CARROT + JIT + H4 + gated L3 + sale-fertilizer; only cattle differs. No source/default/package-input/Kaggle mutation.\n'
+            printf '\nExact shipped-8e3 B5+JIT package A/B. Gameplay root: `8e3d92a...`; build-custody parent: #12535 `0fc8ea0d...`; #12505 score-transform donor blob: `9c5e4642...`. Both arms retain B5 CARROT + JIT + H4 + gated L3 + sale-fertilizer; only cattle differs. No source/default/package-input/Kaggle mutation.\n'
           } > /tmp/cattle-comment.md
           gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
 
