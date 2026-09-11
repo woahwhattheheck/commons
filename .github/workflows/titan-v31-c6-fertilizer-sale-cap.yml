@@ -1,0 +1,52 @@
+name: TITAN V3.1 C6 fertilizer sale cap
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/**"
+      - ".github/workflows/titan-v31-c6-fertilizer-sale-cap.yml"
+  workflow_dispatch:
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Bind frozen V3.1 base and additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          test "$(git rev-parse "$BASE:$R04")" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          git diff --name-only "$BASE"...HEAD | LC_ALL=C sort > /tmp/actual
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-c6-fertilizer-sale-cap.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/census.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/test_candidate.py
+          EOF
+          sed -i 's/^          //' /tmp/expected
+          LC_ALL=C sort -o /tmp/expected /tmp/expected
+          diff -u /tmp/expected /tmp/actual
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Frozen-tape C6 reachability census
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap
+        run: python -B census.py
+      - name: Focused C6 predecessor tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap
+        run: python -B -m unittest -v test_candidate.py
+      - name: Focused C6 predecessor tests under python -O
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap
+        run: python -O -B -m unittest -v test_candidate.py
+      - name: Compile experiment entrypoints
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/census.py
