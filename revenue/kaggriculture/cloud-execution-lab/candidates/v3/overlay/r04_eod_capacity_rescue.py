@@ -2,16 +2,16 @@
 """V4 EOD capacity rescue: sell same-product shed stock to save carried overflow.
 
 At hour 23 the official interpreter runs unit actions, then the market, then the
-end-of-day inventory drop.  That final drop deletes carried overflow when the
-shared 100-unit shed is full.  This lane is deliberately narrow: when every
+end-of-day inventory drop. That final drop deletes carried overflow when the
+shared 100-unit shed is full. This lane is deliberately narrow: when every
 carried unit is the same product, all unit commands are cargo-neutral, and no
 existing market order changes shed stock, append a SELL for exactly the amount
-that would otherwise be discarded.  The EOD drop then re-admits the same product,
+that would otherwise be discarded. The EOD drop then re-admits the same product,
 so post-EOD private shed composition matches the unmodified path while the
 otherwise-lost carried units are preserved economically through the sale.
 
-The key ships disabled.  Ambiguous or malformed state returns the exact parent
-object.  Promotion remains a paired economics decision because a sale above the
+The key ships disabled. Ambiguous or malformed state returns the exact parent
+object. Promotion remains a paired economics decision because a sale above the
 $1 floor changes public market supply even though the private shed theorem is
 exact.
 """
@@ -67,7 +67,7 @@ def apply_eod_capacity_rescue(action: Any, observation: Any, configuration: Any,
     if not enabled or not h3c._standard_configuration(configuration):
         return action
     # H3c's shared standard-config theorem intentionally covers only the
-    # fields its own mechanism consumes.  This lane additionally hard-codes
+    # fields its own mechanism consumes. This lane additionally hard-codes
     # the 720-step season boundary (last usable pre-EOD step 695), so require
     # that public configuration explicitly and without bool/int coercion.
     episode_steps = h3c._cfg(configuration, "episodeSteps")
@@ -106,9 +106,13 @@ def apply_eod_capacity_rescue(action: Any, observation: Any, configuration: Any,
         return action
 
     # Restrict the theorem to commands that cannot change carried quantities or
-    # shed stock during the unit-action phase.
+    # shed stock during the unit-action phase. Require a literal string op before
+    # frozenset membership so malformed list/dict heads fail closed instead of
+    # raising TypeError while hashing an unhashable object.
     for command in rows:
-        if not isinstance(command, list) or not command or command[0] not in _CARGO_NEUTRAL:
+        if (not isinstance(command, list) or not command
+                or not isinstance(command[0], str)
+                or command[0] not in _CARGO_NEUTRAL):
             telemetry["cargo_action_block"] += 1
             return action
 
