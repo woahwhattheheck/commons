@@ -1,0 +1,133 @@
+name: titan-v3-r02-focused-proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-r02-focused-proof.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r02_route_bank.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r02.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-r02-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EXACT_PARENT: 'bde26017775a9975bfa2a89d976f02efb208e99b'
+      SOURCE: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r02_route_bank.py'
+      SUITE: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r02.py'
+      SOURCE_BLOB: '0d869fe81e0ff06eb153ab1720219ac8dfb56f88'
+      SUITE_BLOB: 'b5440818f0594272e27325046f0a5ae0feb6ce7f'
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind exact successor topology and one-path scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          workflow='.github/workflows/titan-v3-r02-focused-proof.yml'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          mapfile -t changed < <(git diff --name-only "$EXACT_PARENT" HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = "$workflow"
+          git diff --check "$EXACT_PARENT"..HEAD
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind reviewed R02 source and declared suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object "$SOURCE")" = "$SOURCE_BLOB"
+          test "$(git hash-object "$SUITE")" = "$SUITE_BLOB"
+
+      - name: Compile R02 source and declared suite without repository bytecode
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          for raw in (os.environ['SOURCE'], os.environ['SUITE']):
+              path = Path(raw)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+
+      - name: Run declared R02 suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v checks/test_v3_r02.py \
+            2>&1 | tee "$RUNNER_TEMP/r02-focused-tests.log"
+
+      - name: Emit exact-head proof receipt
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          def git_blob(data: bytes) -> str:
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+          files = {}
+          for key in ('SOURCE', 'SUITE'):
+              path = Path(os.environ[key])
+              data = path.read_bytes()
+              files[str(path)] = {
+                  'bytes': len(data),
+                  'git_blob': git_blob(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+          assert files[os.environ['SOURCE']]['git_blob'] == os.environ['SOURCE_BLOB']
+          assert files[os.environ['SUITE']]['git_blob'] == os.environ['SUITE_BLOB']
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD']
+          assert parent == os.environ['EXACT_PARENT']
+          log = Path(os.environ['RUNNER_TEMP']) / 'r02-focused-tests.log'
+          receipt = {
+              'schema': 'titan-v3-r02-focused-proof-receipt/v1',
+              'head': head,
+              'exact_parent': parent,
+              'files': files,
+              'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
+              'scope': 'focused proof only; reviewed R02 source and declared suite are pinned and unchanged',
+          }
+          out = Path(os.environ['RUNNER_TEMP']) / 'r02-focused-proof-receipt.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text(), end='')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-r02-focused-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/r02-focused-tests.log
+            ${{ runner.temp }}/r02-focused-proof-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain)"
