@@ -97,13 +97,12 @@ class PlaceDelivery(unittest.TestCase):
         self.assertIn(["SELL", "WHEAT", 98], out["market"])
         self.assertEqual(sum(row[2] for row in out["market"]), 100)
 
-    def test_animal_cargo_counts_toward_overflow_without_product_price(self):
+    def test_animal_cargo_overflow_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"GOOSE": 3}, {}])
-        out = lane.apply_place_delivery(obs, parent, enabled=True)
-        self.assertEqual(out["farmer"], ["PASS"])
-        self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
-        self.assertEqual(out["market"], [["SELL", "WHEAT", 98]])
+        # Baseline DROP admits two GOOSE into the shared shed. PLACE cannot name
+        # animals, so suppressing DROP would change the full projected shed dict.
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
     def test_full_shed_never_drops_worker_cargo(self):
         parent = action(["DROP"], [["PASS"]])
