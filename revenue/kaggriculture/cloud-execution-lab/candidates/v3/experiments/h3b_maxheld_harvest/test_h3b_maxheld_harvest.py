@@ -90,6 +90,24 @@ class H3bContracts(unittest.TestCase):
         self.assertIs(result, action)
         self.assertEqual(state["work"][1]["command"], ["HARVEST"])
 
+    def test_non_harvest_parent_command_is_identity(self):
+        for command in (["CARE"], ["COLLECT_FERTILIZER"], ["PASS"], ["EAST"]):
+            with self.subTest(command=command):
+                action, observation, state = fixture()
+                action["hands"][0] = list(command)
+                state["work"][1]["command"] = list(command)
+                result = self.run_case(action, observation, state)
+                self.assertIs(result, action)
+                self.assertEqual(state["work"][1]["command"], command)
+
+    def test_too_late_to_reach_and_harvest_is_identity(self):
+        action, observation, state = fixture(step=18 * 24 + 23)
+        state["last_step"] = observation["step"]
+        state["work"][1]["step"] = observation["step"]
+        result = self.run_case(action, observation, state)
+        self.assertIs(result, action)
+        self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_no_imminent_overflow_is_identity(self):
         action, observation, state = fixture()
         observation["farms"][0]["tiles"][5][6]["yield_units"] = 4
