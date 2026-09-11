@@ -45,6 +45,7 @@
       if (!rail || typeof rail !== "object") continue;
       if (rail.sku !== sku || rail.url !== checkout.url) continue;
       if (rail.link_active !== true || rail.livemode !== true) continue;
+      if (rail.exposure !== "CHECKOUT_FIRST" && rail.exposure !== "INTAKE_FIRST") continue;
       var evidence = rail.evidence && typeof rail.evidence === "object" ? rail.evidence : {
         reference: snapshotEvidence.reference,
         observed_at: snapshot && snapshot.observed_at
