@@ -6,12 +6,8 @@ on:
       - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
       - '.github/workflows/titan-v3-early-capital-real-target.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_executable_prefix.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'
   workflow_dispatch:
 
 permissions:
@@ -32,43 +28,75 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Assert exact checkout and authenticated atomic successor diff
+      - name: Assert exact checkout, released parent, and bounded diff
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: python
         run: |
           import os
           import subprocess
 
+          parent = '69b07cf42d3111469e8523f84efd9014cc30c0a9'
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
-          predecessor = 'dca5c4aff7961896fa2e996e0f886bc8f6a2c41c'
+          predecessor = '21c4ac15583e45f6f55ef615d95fc3db93637194'
           head = subprocess.check_output(
               ['git', 'rev-parse', 'HEAD'], text=True).strip()
           assert head == os.environ['EXPECTED_HEAD'], (
               head, os.environ['EXPECTED_HEAD'])
 
-          base = os.environ.get('BASE_SHA', '')
-          assert base, 'pull-request base SHA is required'
-          actual_predecessor = subprocess.check_output(
-              ['git', 'rev-parse', f'{base}:{source}'], text=True).strip()
-          assert actual_predecessor == predecessor, (
-              actual_predecessor, predecessor)
+          subprocess.check_call(
+              ['git', 'merge-base', '--is-ancestor', parent, head])
+          commit_count = int(subprocess.check_output(
+              ['git', 'rev-list', '--count', f'{parent}..{head}'],
+              text=True,
+          ).strip())
+          assert commit_count == 1, commit_count
+
+          parent_source = subprocess.check_output(
+              ['git', 'rev-parse', f'{parent}:{source}'], text=True).strip()
+          assert parent_source == predecessor, (parent_source, predecessor)
 
           allowed = {
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
               '.github/workflows/titan-v3-early-capital-real-target.yml',
               source,
-              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py',
           }
           changed = set(subprocess.check_output(
-              ['git', 'diff', '--name-only', f'{base}...HEAD'],
+              ['git', 'diff', '--name-only', parent, head],
               text=True,
           ).splitlines())
+          print({
+              'head': head,
+              'parent': parent,
+              'commit_count': commit_count,
+              'changed': sorted(changed),
+          })
           assert changed == allowed, (changed, allowed)
 
-      - name: Compile atomic parent and successor contracts
+      - name: Bind commit-real source and official interpreter
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+
+          expected = {
+              Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'):
+                  'c87f1d1c9d7b416c5316837634f7e721c85811fa',
+              Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'):
+                  '044a4f9c0a4a44dde10ada57563238bcaf82075d',
+              Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'):
+                  '3c202c7ee921da239356789e266b694635103fc4',
+          }
+          for path, expected_blob in expected.items():
+              data = path.read_bytes()
+              actual = hashlib.sha1(
+                  b'blob ' + str(len(data)).encode() + b'\0' + data
+              ).hexdigest()
+              assert actual == expected_blob, (path, actual, expected_blob)
+
+      - name: Compile inherited and commit-real contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
@@ -77,9 +105,10 @@ jobs:
             test_early_capital.py \
             test_early_capital_executable_prefix.py \
             test_early_capital_post_unit_seed_demand.py \
-            test_early_capital_real_target.py
+            test_early_capital_real_target.py \
+            test_early_capital_commit_real.py
 
-      - name: Run atomic parent and land-target regression suite
+      - name: Execute complete early-capital contract stack
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
           set -euo pipefail
@@ -89,12 +118,12 @@ jobs:
               test_early_capital_executable_prefix \
               test_early_capital_post_unit_seed_demand \
               test_early_capital_real_target \
-            2>&1 | tee "$RUNNER_TEMP/post-unit-seed-demand-atomic-composed-tests.log"
+              test_early_capital_commit_real \
+            2>&1 | tee "$RUNNER_TEMP/early-capital-commit-real-tests.log"
 
-      - name: Emit deterministic atomic composition receipt
+      - name: Emit deterministic exact-head receipt
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: python
         run: |
           import hashlib
@@ -107,8 +136,8 @@ jobs:
               Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
               Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
-              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'),
           ]
@@ -126,44 +155,40 @@ jobs:
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
           mechanics = 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
           engine = 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
-          assert files[source]['git_blob'] == '21c4ac15583e45f6f55ef615d95fc3db93637194'
+          assert files[source]['git_blob'] == 'c87f1d1c9d7b416c5316837634f7e721c85811fa'
           assert files[mechanics]['git_blob'] == '044a4f9c0a4a44dde10ada57563238bcaf82075d'
           assert files[engine]['git_blob'] == '3c202c7ee921da239356789e266b694635103fc4'
 
-          log = (
-              Path(os.environ['RUNNER_TEMP'])
-              / 'post-unit-seed-demand-atomic-composed-tests.log'
-          )
+          log = Path(os.environ['RUNNER_TEMP']) / 'early-capital-commit-real-tests.log'
+          head = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip()
           receipt = {
-              'schema': 'titan-v3-post-unit-seed-demand/v2-atomic-land-successor',
-              'head': subprocess.check_output(
-                  ['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'schema': 'titan-v3-early-capital-commit-real/v1',
+              'head': head,
               'expected_head': os.environ['EXPECTED_HEAD'],
-              'base': os.environ['BASE_SHA'],
-              'predecessor_source_blob':
-                  'dca5c4aff7961896fa2e996e0f886bc8f6a2c41c',
+              'base': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'parent_head': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'parent_source_blob':
+                  '21c4ac15583e45f6f55ef615d95fc3db93637194',
               'files': files,
               'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
               'scope': (
-                  'official atomic PLANT admission plus future-only seed demand '
-                  'and certified land targets; no games or archive rebuild'
+                  'commit-real capital certificate after guaranteed funding '
+                  'and operating costs; exact land/animal resource allocation; '
+                  'canonical repackaging and games remain T08 custody'
               ),
           }
           assert receipt['head'] == receipt['expected_head']
-          out = (
-              Path(os.environ['RUNNER_TEMP'])
-              / 'post-unit-seed-demand-atomic-composed-receipt.json'
-          )
-          out.write_text(
-              json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          out = Path(os.environ['RUNNER_TEMP']) / 'early-capital-commit-real-receipt.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
           print(out.read_text(), end='')
 
       - uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-post-unit-seed-demand-atomic-${{ github.run_id }}-${{ github.run_attempt }}
+          name: titan-v3-post-unit-seed-demand-commit-real-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/post-unit-seed-demand-atomic-composed-tests.log
-            ${{ runner.temp }}/post-unit-seed-demand-atomic-composed-receipt.json
+            ${{ runner.temp }}/early-capital-commit-real-tests.log
+            ${{ runner.temp }}/early-capital-commit-real-receipt.json
           if-no-files-found: error
           retention-days: 30
 
