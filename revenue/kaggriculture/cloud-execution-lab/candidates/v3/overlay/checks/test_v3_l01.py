@@ -186,5 +186,19 @@ class WiringTests(unittest.TestCase):
         self.assertEqual(action['market'], [['SELL', 'WHEAT', 3]])
 
 
+def _load_zero_slice_contracts():
+    """Expose standalone LEANPLANT killers through the declared S17 L01 suite."""
+    path = Path(__file__).with_name('test_v3_l01_leanplant_zero_slice.py')
+    spec = importlib.util.spec_from_file_location('v3_l01_zero_slice_contracts', path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'cannot load zero-slice contracts from {path}')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.LeanplantZeroSliceTests
+
+
+LeanplantZeroSliceTests = _load_zero_slice_contracts()
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
