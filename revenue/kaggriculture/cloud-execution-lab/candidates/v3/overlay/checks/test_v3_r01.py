@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -76,6 +77,28 @@ class PolicyTests(unittest.TestCase):
         late.act(synthetic_observation(700, shops=("SMOOTHIE_SHOP", "YARN_STORE")))
         self.assertEqual(late.policy.players[0].plan, 2)
 
+    def test_configured_cap_blocks_inert_advanced_sale_bookkeeping(self):
+        obs = synthetic_observation(5)
+        obs["private"]["shed"]["CARROT"] = 3
+        view = r01.FarmView(obs)
+        state = r01.DayState()
+        action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "WHEAT", 1]]}
+        tape = [{"market": []} for _ in range(7)]
+        tape[6] = {"market": [["SELL", "CARROT", 3]]}
+        r01.advance_sales(action, view, state, tape, 5, max_orders=r01._market_order_limit({"maxMarketOrdersPerTurn": 1}))
+        self.assertEqual(action["market"], [["SELL", "WHEAT", 1]])
+        self.assertEqual(state.advanced_sales, {})
+        self.assertEqual(state.sale_due_step, -1)
+        next_action = {"market": [["SELL", "CARROT", 3]]}
+        r01.subtract_advanced_sales(next_action, state, 6)
+        self.assertEqual(next_action["market"], [["SELL", "CARROT", 3]])
+
+    def test_market_cap_matches_engine_minimum_one_and_fallback(self):
+        self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": 0}), 1)
+        self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": -3}), 1)
+        self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": 4}), 4)
+        self.assertEqual(r01._market_order_limit({"maxMarketOrdersPerTurn": "bad"}), r01.MAX_ORDERS)
+
     def test_last_step_liquidates(self):
         policy = r01.RouterPolicy()
         action = policy.act(synthetic_observation(r01.LAST_STEP))
@@ -102,6 +125,18 @@ class WiringTests(unittest.TestCase):
         self.assertEqual(agent.diagnostics["r01_plan"], 0)
         self.assertFalse(agent.ready)
         self.assertIsNone(getattr(agent, "controller", None))
+
+    def test_delegate_threads_engine_market_cap(self):
+        agent = TitanAgent(Features(r01_shop_router=True))
+        returned = {"farmer": ["PASS"], "hands": [], "market": []}
+        with patch.object(r01.RouterPolicy, "act", autospec=True, return_value=returned) as mocked:
+            action = agent.act(
+                synthetic_observation(0),
+                {"episodeSteps": 720, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 1},
+            )
+        self.assertIs(action, returned)
+        self.assertEqual(mocked.call_count, 1)
+        self.assertEqual(mocked.call_args.args[2]["maxMarketOrdersPerTurn"], 1)
 
     def test_notice_carries_attribution(self):
         notice = (ROOT / "NOTICE").read_text(encoding="utf-8")
