@@ -1,0 +1,109 @@
+name: titan-v31-b7-shed-room-guard
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/**'
+      - '.github/workflows/titan-v31-b7-shed-room-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b7-shed-room-guard-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Compile in memory and run focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          from pathlib import Path
+          for name in (
+              'b7_shed_room_guard.py',
+              'test_b7_shed_room_guard.py',
+              'b7_shed_room_guard/candidate.py',
+          ):
+              path = Path(name)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('B7 COMPILE OK')
+          PY
+          python -B -m unittest -v test_b7_shed_room_guard.py
+
+      - name: Bind engine theorem and candidate custody
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import hashlib
+          import importlib.util
+          from pathlib import Path
+          import build_v3
+
+          lab = Path('../..').resolve()
+          engine = lab / 'reference' / 'engine' / 'kaggriculture.py'
+          engine_sha = hashlib.sha256(engine.read_bytes()).hexdigest()
+          expected_engine_sha = 'bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e'
+          assert engine_sha == expected_engine_sha, (engine_sha, expected_engine_sha)
+
+          candidate = Path('experiments/b7_shed_room_guard/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('b7_candidate', candidate)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'b7_shed_room_guard': True,
+              'official_interpreter_commit': '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c',
+              'official_engine_sha256': expected_engine_sha,
+          }
+          assert set(module.B7_EVALUATOR_CONFIG) == set(expected)
+          for key, value in expected.items():
+              actual = module.B7_EVALUATOR_CONFIG[key]
+              assert type(actual) is type(value) and actual == value, (key, actual, value)
+          assert module.agent.b7_enabled is True
+          assert not any(name.startswith('experiments/') for name in build_v3.source_shas())
+          print('B7 CUSTODY OK', engine_sha)
+          PY
+
+      - name: Prove exact experiment-only PR scope
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/b7-changed
+          cat /tmp/b7-changed
+          while IFS= read -r path; do
+            case "$path" in
+              revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/*|.github/workflows/titan-v31-b7-shed-room-guard.yml) ;;
+              *) echo "unexpected path in B7 room guard: $path" >&2; exit 1 ;;
+            esac
+          done < /tmp/b7-changed
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
