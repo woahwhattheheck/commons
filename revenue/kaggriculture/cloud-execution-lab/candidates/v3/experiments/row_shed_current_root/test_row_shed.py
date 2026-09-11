@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 import unittest
 
+from candidate import CURRENT_8E3, install as install_candidate
 from row_shed import effective_quantity, order_sells
 
 
@@ -26,7 +27,7 @@ class RowShedContracts(unittest.TestCase):
         self.assertEqual(sorted(row[2] for row in result), [4, 1000])
 
     def test_row_shed_can_reverse_raw_quantity_priority(self):
-        # Raw requested quantities favor the 1000-unit strawberry row.  The physical shed
+        # Raw requested quantities favor the 1000-unit strawberry row. The physical shed
         # has only 1 strawberry but 8 wool, so executable-impact ranking puts WOOL first.
         market = [["SELL", "STRAWBERRY", 1000], ["SELL", "WOOL", 8]]
         result = order_sells(market, {"STRAWBERRY": 10000, "WOOL": 10000},
@@ -71,6 +72,32 @@ class RowShedContracts(unittest.TestCase):
                 self.assertIs(order_sells(market, {"WOOL": 10000, "MILK": 10000},
                                           {"WOOL": 5, "MILK": 5}, self.price,
                                           {"WOOL": 1, "MILK": 1}), market)
+
+    def test_current_root_tuple_preserves_shipped_b5_h4_l3_and_sale_fert(self):
+        self.assertTrue(CURRENT_8E3["row_order"])
+        self.assertTrue(CURRENT_8E3["evening_flush"])
+        self.assertTrue(CURRENT_8E3["sale_fertilizer"])
+        self.assertTrue(CURRENT_8E3["no_late_sale_advance"])
+        self.assertEqual(CURRENT_8E3["no_late_sale_advance_step"], 648)
+        self.assertTrue(CURRENT_8E3["strawberry_topup"])
+        self.assertTrue(CURRENT_8E3["b5_carrot_fertilizer"])
+        self.assertTrue(CURRENT_8E3["b5_jit_fertilize"])
+
+    def test_disabled_wrapper_delegates_native_tuple_without_recomposition(self):
+        calls = []
+
+        class FakeR04:
+            @staticmethod
+            def install(*args):
+                calls.append(args)
+                return object()
+
+        result = install_candidate(FakeR04, row_shed=False)
+        self.assertIsNotNone(result)
+        self.assertEqual(len(calls), 1)
+        # host, horizon, opening, row_order, evening_flush ... trailing B5 flags
+        self.assertEqual(calls[0][1:5], (8, 0, True, True))
+        self.assertEqual(calls[0][-2:], (True, True))
 
 
 if __name__ == "__main__":
