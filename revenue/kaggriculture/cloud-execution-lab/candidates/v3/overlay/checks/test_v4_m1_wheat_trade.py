@@ -269,6 +269,28 @@ class M1WheatTrade(unittest.TestCase):
                             tape_with_pickup(105, 2))
         self.assertIs(out, parent)
 
+    def test_parent_wheat_buy_cannot_self_certify_next_scarcity(self):
+        self.prime(step=100, inventory=100)
+        parent_buy = empty_action()
+        parent_buy["market"] = [["BUY_PRODUCT", "WHEAT", 2]]
+        first = self.run_lane(
+            observation(101, market_inventory=98),
+            parent_buy,
+            tape_with_pickup(104, 2),
+        )
+        self.assertIs(first, parent_buy)
+
+        # The next public drop can be our already-shipped controller's fill,
+        # not hidden rival demand. It must therefore be ineligible to arm M1.
+        parent = empty_action()
+        out = self.run_lane(
+            observation(102, market_inventory=96),
+            parent,
+            tape_with_pickup(105, 2),
+        )
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
     def test_install_and_titan_diagnostics_carry_key(self):
         r04.install(None, 8, 0, False, False, m1_wheat_trade=True)
         self.assertIs(r04.M1_WHEAT_TRADE, True)
