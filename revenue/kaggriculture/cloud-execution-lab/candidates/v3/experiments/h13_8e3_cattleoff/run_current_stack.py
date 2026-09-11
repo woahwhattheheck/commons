@@ -189,11 +189,11 @@ def strict_score(value, label: str) -> float:
     return float(value)
 
 
-def strict_fingerprint(value, label: str) -> dict:
+def strict_fingerprint(value, label: str, *, expected_entry: str = "main.py") -> dict:
     if type(value) is not dict:
         raise AssertionError(f"{label}: fingerprint must be object")
-    if value.get("entry") != "main.py" or value.get("callable") != "agent":
-        raise AssertionError(f"{label}: expected main.py/agent fingerprint")
+    if value.get("entry") != expected_entry or value.get("callable") != "agent":
+        raise AssertionError(f"{label}: expected {expected_entry}/agent fingerprint")
     if not is_sha256(value.get("sha256")):
         raise AssertionError(f"{label}: malformed fingerprint sha256")
     return value
@@ -217,8 +217,8 @@ def normalized_games(report: dict, label: str) -> dict[tuple[str, int, int], dic
     opponents = report.get("opponents")
     if type(opponents) is not dict or set(opponents) != set(OPPONENTS):
         raise AssertionError(f"{label}: opponent metadata mismatch")
-    for name in OPPONENTS:
-        strict_fingerprint(opponents[name], f"{label}.opponents[{name!r}]")
+    strict_fingerprint(opponents["h8_self"], f"{label}.opponents['h8_self']")
+    strict_fingerprint(opponents["arlene"], f"{label}.opponents['arlene']", expected_entry="arlene.py")
     repro = report.get("reproducibility")
     if type(repro) is not dict or repro.get("same_trace_and_scores") is not True:
         raise AssertionError(f"{label}: reproducibility must be literal true")
@@ -269,10 +269,10 @@ def validate_actual_fingerprint_custody(control_report: dict, candidate_report: 
 
     h8_fp = strict_fingerprint(control_report.get("candidate"), "h8.candidate")
     h8_self_fp = strict_fingerprint(control_report.get("opponents", {}).get("h8_self"), "h8.opponents['h8_self']")
-    h8_arlene_fp = strict_fingerprint(control_report.get("opponents", {}).get("arlene"), "h8.opponents['arlene']")
+    h8_arlene_fp = strict_fingerprint(control_report.get("opponents", {}).get("arlene"), "h8.opponents['arlene']", expected_entry="arlene.py")
     h10_fp = strict_fingerprint(candidate_report.get("candidate"), "h10.candidate")
     h10_self_fp = strict_fingerprint(candidate_report.get("opponents", {}).get("h8_self"), "h10.opponents['h8_self']")
-    h10_arlene_fp = strict_fingerprint(candidate_report.get("opponents", {}).get("arlene"), "h10.opponents['arlene']")
+    h10_arlene_fp = strict_fingerprint(candidate_report.get("opponents", {}).get("arlene"), "h10.opponents['arlene']", expected_entry="arlene.py")
 
     if h8_fp["sha256"] != expected_h8 or h8_self_fp["sha256"] != expected_h8:
         raise AssertionError("h8 report fingerprint is not bound to materialized h8/main.py")
