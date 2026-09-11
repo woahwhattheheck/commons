@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE=ccb128a10c40cb71c4f8ff07b05a88578679dc6c
+          BASE=6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a
           CANON=8e3d92a286806f9f9525973ee7d359b629a11487
           STACK_REF=astra/v31-a612-restore-5f6-canonical-archive-20260911
           R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
