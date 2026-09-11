@@ -2,7 +2,7 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, leaderboard, or Kaggle state.
 
-Snapshot: **2026-09-11 after #12535 P0 advanced from `6e5e3c7c…` to `0fc8ea0d…` and sole #12565 L3 rebound to `410aa0eb…`.** Optional factor heads move quickly; this ledger intentionally records exact landing-critical coordinates and uses PR identities for optional evidence lanes unless a literal head matters to the assembly theorem.
+Snapshot: **2026-09-11 after P0 `0fc8ea0d…`, sole L3 R5 `c4aabda0…`, cattle current-P0 rebind `f050a600…`, and row-shed tests-first scaffold `f06d2d96…`.** Optional factor heads move quickly; this ledger records literal landing-critical coordinates and uses PR identities for optional evidence lanes unless a literal head matters to the assembly theorem.
 
 ## Canonical authority
 
@@ -28,46 +28,64 @@ This is one workflow-only terminal-freshness commit after reviewed `6e5e3c7c…`
 - optimizer-safe builder blob `528cfabbe377f829cb584726c41bd2f64061373b`;
 - optimizer regression blob `3db16ff0eaace1c6b718e303607a6323a46666ea`.
 
-The new terminal theorem rechecks live canonical, literal event head, remote feature head and clean checkout **after** expensive work. Exact recovery run `34592372037` and generic contexts are queued/pending at this snapshot. Queued is not green.
+The terminal theorem rechecks live canonical, literal event head, remote feature head and clean checkout **after** expensive work. Exact recovery run `34592372037` and generic contexts remain queued/pending at this snapshot. Queued is not green.
 
-**Do not land or treat downstream `6e5…` children as current authority until `0fc8…` is terminal-green.** Freeze speculative child rebase churn while runners are saturated.
+**Do not land or treat downstream stale-parent children as current authority until `0fc8…` is terminal-green.** Freeze speculative child rebase churn while runners are saturated.
 
 ### 2. Sole L3 consumer — #12565
 
-**Live topology:** PR base is exact #12535 `0fc8ea0d…`; current feature head is `410aa0eb3fe115342ab7bfa2af25f7acea65cc64`, ahead-only from that base with exactly the same three committed staging paths.
+**Live topology:** PR base is exact #12535 `0fc8ea0d…`; current exact feature head is `c4aabda08e7960d6d3ac60b2d98761301ff9ce85`, one workflow-only commit above reviewed R4 `410aa0eb…` with the same exact three committed staging paths.
 
-**Static state: P0 rebound / source / package / read-only handoff theorem PASS; hosted and final committed head pending.** `59df632b… -> 410aa0eb…` changes only the staging workflow. Reviewed donor patch `bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c` and 17-test contract `b572bb0adad3b8ca53100d4d44b35c5a374e8302` are unchanged.
+**Static state: source/package theorem PASS + R5 transport-custody PASS; hosted execution and final collapse commit pending.** Reviewed donor patch `bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c` and 17-test contract `b572bb0adad3b8ca53100d4d44b35c5a374e8302` are unchanged.
 
-R4 now:
+R5 now:
 
-- binds live recovery/base to exact `0fc8ea0d…`, pins P0 recovery-workflow blob `dd8711297b18b6703677da0bc4eb14c9178ac67d`, and retains optimizer-safe builder/regression/archive + R04/apply/FILES/manifest/H4/L3/B5/JIT custody;
+- binds live recovery/base to exact `0fc8ea0d…`, canonical to exact `8e3d92a…`, local event HEAD and remote feature ref at entry;
+- pins P0 recovery-workflow blob `dd8711297b18b6703677da0bc4eb14c9178ac67d` and retains optimizer-safe builder/regression/archive + R04/apply/FILES/manifest/H4/L3/B5/JIT custody;
 - applies only the reviewed L3 repair and exact 17-test contract;
 - runs source contracts, normal + `PYTHONOPTIMIZE=1` deterministic package checks, materializes, reruns all 17 package contracts, and exact-types preservation of H4, L3@648, sale-fertilizer, horizon8, cattle-ON, B5 CARROT and JIT;
 - remains read-only (`contents: read`, `persist-credentials:false`) and never mutates refs;
-- deterministically generates the permanent read-only gate and exact five intended final bytes: gate + FILES + manifest + repaired R04 + packaged L3 test;
-- carries a second base/canonical freshness re-fetch **after** the permanent gate's expensive work, with template-token cardinality binding that tail check;
-- records base/canonical/staging head plus gate/FILES/manifest/router/test blobs and a five-path binary patch in the success-only handoff artifact;
-- rechecks live P0 + canonical before artifact publication.
+- generates the permanent read-only gate and exact five intended final bytes: gate + FILES + manifest + repaired R04 + packaged L3 test;
+- carries feature-head CAS at **both** entry and terminal boundaries in the staging workflow and generated permanent gate, preventing a superseding same-ref commit from stale-greening old work;
+- emits exactly three REMOVE paths and five WRITE paths, plus an eight-operation manifest;
+- mechanically replays those operations in an isolated worktree created from exact P0, requires the resulting P0-relative delta to be **exactly five final paths**, verifies all final blobs and P0 recovery-workflow custody, records the resulting Git tree id, and emits a binary five-path patch + SHA256;
+- rechecks local HEAD + remote feature ref + live P0 + canonical immediately before success-only handoff publication.
 
-Dedicated exact-head staging run `34592846594` and generics are queued/pending. The old `34591687224@316e…` artifact/run is predecessor evidence only.
+Dedicated exact-head R5 run `34593898959` and generic contexts are queued/pending. Queued is not green. Pre-R5 artifacts/runs are predecessor evidence only.
 
-Final collapse is an authorized integration operation, not another gameplay implementation. Consume the attested five files against exact P0 so the three staging paths disappear, recheck feature/P0/canonical immediately before ref movement, and require the resulting base-relative delta to be exactly those five paths. Then the literal final head needs fresh exact-head review + permanent-gate/generic terminal green + current-stack 41-live L3 classifier/economics.
+Final collapse is an authorized integration operation, not another gameplay implementation. Only after R5 + required generics are terminal-green and the literal feature/P0/canonical refs still match may an integrator consume the attested operation manifest into a literal five-path final head. That literal final head then needs fresh exact-head review + permanent-gate/generic terminal green + current-stack 41-live L3 classifier/economics.
 
-Nonblocking cleanup: the generated `workflow_dispatch` surface uses PR-only base expressions and therefore fails closed rather than being a useful manual authority path; remove it or add explicit dispatch inputs later. No sibling L3 consumer and no #12541 resurrection.
+No sibling L3 consumer and no #12541 resurrection.
 
 ### 3. Cattle decision — #12540
 
-**Current evidence head:** `a5d2786553f1d6771a590e04d3787611479cf154`, still rooted on superseded `6e5` and therefore predecessor evidence only.
+**Current evidence head:** `f050a600e62d9069c8c05431d88c32698167e994`, now physically rebound to exact current P0 `0fc8ea0d…`.
 
-The one-key package theorem is the useful donor: ON/OFF may differ only in strict `TITAN-CONFIG.json:r04_cattle_early`, with B5/JIT/H4/L3@648/sale-fertilizer/horizon8 preserved and optimizer-safe custody. Durable receipt identity is explicit 8e3/current-package, not stale `a612`.
+Server compare from P0 is ahead-only with exact merge-base `0fc8…` and exactly four additive evidence/CI paths:
 
-S32/S33/S34 direction strongly favors **cattle OFF**; S34 reported cattle OFF at 99.2% wins vs cattle ON at 95.8% across 1,280 games/arm. That is spend/assembly direction, not final-package authority.
+- `.github/workflows/titan-v31-8e3-cattle-off-package-ab.yml`;
+- `.../experiments/cattle_ab_8e3/make_submission_12505.py`;
+- `.../experiments/cattle_ab_8e3/materialize_ab.py`;
+- `.../experiments/cattle_ab_8e3/report_ab.py`.
 
-After final #12565 lands, transfer/rerun the cattle theorem on that literal package. Do not reopen broad cattle-ON exploration absent a materially new regime predicate.
+Static current-P0 custody is clean:
+
+- live canonical remains exact `8e3d92a…` and recovery parent exact `0fc8…`;
+- P0 recovery workflow blob is pinned;
+- the reducer/materializer authority checks survive optimized Python;
+- durable receipt schema is 8e3/current-package, not stale `a612`;
+- ON/OFF package trees differ only in `TITAN-CONFIG.json:r04_cattle_early` (`true -> false`), with distinct package digests and all 139 members accounted for;
+- B5 CARROT/JIT, H4, L3@648, sale-fertilizer and horizon8 are preserved in both arms;
+- the official evaluator receipt binds exact seed×seat membership, opponent/candidate fingerprints, engine/RNG, finite typed scores, trace SHA, completion/failure state and reproducibility;
+- canonical + P0 + remote feature head are re-resolved before artifact retention / durable receipt publication.
+
+Dedicated exact-head run `34593406058` and generic contexts are queued/pending. This is static source/custody PASS, **not** hosted economics or production/default authority.
+
+Field direction strongly favors **cattle OFF** (S32/S33/S34). The production flip still belongs inside the one post-L3 combined consumer; do not create a separate cattle config carrier.
 
 ### 4. Row-shed — sole semantic donor #12551; sole production scaffold #12566
 
-**Semantic donor:** #12551 exact `9f531ff08bfa1da0fddb982227933d0430abf42a`; reviewed source `row_shed.py@cf78d1196fbf7451f331c99af46e32176acb4fa4`.
+**Semantic donor:** #12551 exact `9f531ff08bfa1da0fddb982227933d0430abf42a`; reviewed source semantics are unchanged from the repaired donor line. The `70db… -> 9f531…` hop is workflow-only optimizer-safe tuple custody.
 
 Strict theorem:
 
@@ -76,14 +94,29 @@ Strict theorem:
 - reorder only the contiguous leading SELL block;
 - requested quantities remain strict non-bool/nonnegative integers and unchanged;
 - projected-shed ranking is allowed only when **every** known leading SELL has complete strict nonnegative-int projection;
-- missing/partial/type-poison projection forces a coherent whole-block fallback to incumbent requested-quantity scoring; never hybridize projected rows with synthetic zero;
-- stable ties; malformed configuration / `marketParams` / raw-row shapes fail closed to exact parent behavior.
+- missing/partial/negative/type-poison projection forces a coherent whole-block fallback to incumbent requested-quantity scoring; never hybridize projected rows with synthetic zero;
+- stable ties; malformed configuration / `marketParams` / raw-row shapes / projection exceptions fail closed to exact parent behavior.
 
-**Production scaffold:** #12566 exact `edb7ab69b4eac41dabdca5337a24a43be5e7297f` is still intentionally RED. The temporary privileged source-rewrite workflow was added then removed; net production tree remains the tests-first predecessor. Literal R04 still compacts falsey market slots and uses coercive/per-row `shed.get(item,0)` logic. Do not call this repaired because the SHA moved.
+**Production scaffold:** #12566 exact `f06d2d96f60e08ca881584c913a52f6363df0f17` is still intentionally SOURCE-HOLD / direct-8e3.
 
-Existing same-ref source owner should transplant the strict #12551 theorem directly. Do not weaken the strengthened tests, do not add another self-mutating workflow, and do not create a sibling consumer.
+The net `6bf3… -> f06d…` delta changes only `overlay/checks/test_v31_row_shed.py`. Those tests now strengthen the executable specification with missing/negative/type-poison projection, type-poisoned requested quantities, OFF-arm incumbent coercion, falsey-slot/tail-index preservation, malformed configuration, malformed/falsey `marketParams`, malformed raw rows, projection exceptions, input immutability and stable ties.
 
-Even after source parity, #12566 remains topology-HOLD until recomposed **after final #12565 and the selected cattle state**. The final cattle-OFF + strict-row-shed-ON package must rerun current-stack S34-style economics (or prove full-panel trace/score equivalence); old permissive row-shed field scores cannot be laundered onto stricter source semantics.
+**Production R04 did not change.** It remains Git blob `366c0245014989c772561ad55b20bd8a80e6275f`, which still:
+
+- compacts falsey market rows before ROW_ORDER in `v3_agent()`; and
+- ranks with per-row coercive `int(...)` + `shed.get(item, 0)`, so incomplete/type-poison projected evidence can authorize a mixed-evidence order instead of coherent whole-block fallback.
+
+The temporary `contents: write` self-pushing source workflow has been quarantined/removed from the net current tree. Do not resurrect it. The next source action stays on **this same #12566 ref** and materializes an exact reviewed R04 postimage through an ordinary authorized repository/CAS commit. Do not weaken the strengthened tests and do not create a sibling consumer.
+
+Even after source parity, #12566 remains topology-HOLD until recomposed **after final #12565 and the selected cattle state**.
+
+The eventual combined consumer should preserve row-shed wiring (`r04_row_shed=True` in package `PARAMS`, generated `Features`, and the install call) while changing `r04_cattle_early=False` in **both** package `PARAMS` and generated `Features`, then regenerate FILES/MANIFEST/package exactly once from the literal final L3 parent.
+
+**Independent final-tuple proof is required.** Broad `test_v3_features.py` does not explicitly assert the row-shed/cattle dispositions, while `test_v3_r04.py` derives `DEFAULT_CATTLE` from `Features()` and therefore follows whatever default is generated. The final materialized-package gate must independently require exact-bool `TITAN-CONFIG.json:r04_row_shed is True` **and** `r04_cattle_early is False`, with `Features(**config)` matching both.
+
+The combined post-L3 consumer must also evolve the permanent L3 read-only gate to the wider exact source/apply/config/FILES/manifest/package scope. Current path accounting is nine assembly paths unless a reviewed smaller equivalent is proved: the eight #12566 integration paths plus evolution of `.github/workflows/titan-v31-current-l3-failclosed-package.yml`.
+
+Never transplant direct-8e3 #12566 FILES/MANIFEST bytes onto final L3; regenerate them from the assembled parent. Then run current-stack cattle-OFF × strict-row-shed-ON economics plus D3 externality policy. Old permissive row-shed field scores cannot be laundered onto stricter source semantics.
 
 ### 5. Optional survivors — evidence lanes, not assembly roots
 
@@ -106,19 +139,25 @@ A P0/package advance does **not** erase reviewed source facts. It does erase the
 
 #12505's transform source is structurally reusable because it preserves unknown config keys, but its stale gate is not final authority.
 
-Final consumer must bind the literal assembled pre-state, including at minimum:
+Reusable transform donor: `dd41984ec477d6a1b07bbab2779a2e9f54f879c4` / `make_submission.py` blob `9c5e46428f0a2357d7db6e46c4aa5f1f4748717d`.
+
+Final tuple theorem donor: `astra/v31-6e5-final-submission-tuple-contract-donor-20260911@56ba6fabc776c3df4264ea60b17c769e18fb9e65`.
+
+The transform implementation **must not be consumed alone**. The theorem requires the literal assembled pre-state, including at minimum:
 
 - B5 CARROT = true;
 - B5 JIT = true;
 - H4 strawberry top-up = true;
 - fail-closed L3 = true at exact int step 648;
-- cattle = false if final cattle gate keeps the current winner;
+- cattle = false if the final cattle gate keeps the current winner;
 - strict row-shed = true **and** row-order = true;
 - sale-fertilizer = true;
 - chosen sale horizon explicitly (current field winner is exact int 8 unless a later reviewed H13/H10 decision supersedes it);
-- any other accepted final factors and their exact typed values.
+- kill-late-water = false;
+- strawberry-endgame = false / max8;
+- every other accepted final factor and exact typed value.
 
-For the standard H8 path, cattle OFF and horizon8 are already assembled state. The last transform should truthfully show only the score-facing intended config delta(s), preserve every unrelated key/type/value, preserve all non-config package members byte-for-byte, and run authority checks under normal + optimized Python. Do not let the LAST transform silently normalize away a winning upstream horizon or resurrect cattle ON.
+For the standard H8 path, cattle OFF and horizon8 are already assembled state. The LAST transform must truthfully show only the intended score-facing delta(s), preserve every unrelated config key/type/value, preserve all non-config package members byte-for-byte, and run authority checks under normal + optimized Python. Do not let the LAST transform normalize away a winning upstream horizon, resurrect cattle ON, or drop strict row-shed.
 
 ## Durable rejects / no-spend
 
@@ -140,10 +179,10 @@ Do not reopen these exact mechanisms without a materially different design/conte
 ## Assembly order
 
 1. **#12535 `0fc8…` terminal green.**
-2. **Finish the sole #12565 `410aa…` read-only staging run; consume its exact five-path handoff into a literal final L3 head and require final gate + current-stack L3 economics.**
-3. **Transfer/rerun cattle; assemble cattle OFF if the current directional winner survives.**
-4. **Consume #12551 strict semantics once through #12566 on that parent, regenerate metadata/package, and run cattle-OFF × row-shed-ON interaction + D3.**
+2. **Finish sole #12565 `c4aabda0…` R5 read-only staging run; consume its attested 3-REMOVE/5-WRITE collapse only after exact-head + generics are terminal green; then require the literal five-path final head's permanent gate + current-stack L3 economics.**
+3. **Use #12540 `f050a600…` as the current-P0 cattle evidence lane; carry cattle OFF into production only through the single post-L3 combined consumer if the final-stack gate preserves the winner.**
+4. **Materialize #12551 strict semantics on the same #12566 ref, recompose that source + cattle OFF above final L3, regenerate metadata/package once, evolve the permanent gate, and run current-stack cattle-OFF × strict-row-shed-ON interaction + D3.**
 5. Only then recompose optional survivors that still justify spend, one lane at a time, on the assembled root.
 6. Generate final FILES/MANIFEST/package receipts after selected source composition, not from stale side branches.
-7. **Apply #12505-compatible final score transform LAST** with literal final-tuple preconditions and optimizer-safe package custody.
+7. **Apply the #12505 transform LAST** with the `56ba6fab…` final-tuple theorem and optimizer-safe package custody.
 8. Produce the next leaderboard artifact only from that one assembled tree, naming literal ancestry, every consumed carrier, package digest and final transform.
