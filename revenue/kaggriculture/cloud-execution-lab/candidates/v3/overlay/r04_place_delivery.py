@@ -12,9 +12,10 @@ payload fits, the exact parent action is returned so normal DROP behavior,
 including multi-product cargo, stays untouched.  Overflow also fails closed when
 one worker carries multiple sellable products: the engine permits only one PLACE
 command per worker, so rewriting that DROP could leave profitable shed capacity
-unused.  Otherwise scarce capacity goes to the highest public-price cargo first
-and excess cargo stays on workers.  Malformed terminal step/shed/inventory/
-price/position/board state fails closed to the parent action.
+unused.  Finally, a candidate rewrite must project to the exact same shed vector
+as the parent DROP action; public-price priority is never allowed to change the
+product composition admitted by baseline actor order.  Malformed terminal step/
+shed/inventory/price/position/board state fails closed to the parent action.
 """
 from __future__ import annotations
 
@@ -114,9 +115,10 @@ def apply_place_delivery(observation, action, enabled=False):
         if multi_sellable_drop:
             return action
 
-    # Overflow rewriting reprices PLACE priority and rebuilds terminal SELLs.
-    # Validate every sellable product that can participate; never coerce a
-    # malformed public price into a different cargo choice or sale order.
+    # Overflow rewriting may consider public-price priority, but the candidate is
+    # accepted only if it reproduces the exact baseline DROP shed vector below.
+    # This blocks cross-actor product swaps whose current quotes look attractive
+    # but whose realized terminal cash can regress under rival supply pressure.
     if not isinstance(view.prices, dict):
         return action
     for item in touched_products:
@@ -161,7 +163,9 @@ def apply_place_delivery(observation, action, enabled=False):
 
     used = sum(raw_shed.values())
     remaining = max(0, int(r04.SHED_CAPACITY) - used)
-    # Public value first; stable worker index breaks equal-value ties.
+    # Public value first; stable worker index breaks equal-value ties. Any choice
+    # that changes baseline admitted composition is rejected by the exact stock
+    # theorem below.
     eligible.sort(key=lambda row: (-row[0], row[2], row[3]))
     for _, held, worker, item in eligible:
         if remaining <= 0:
@@ -177,11 +181,18 @@ def apply_place_delivery(observation, action, enabled=False):
     out["hands"] = out_workers[1:]
 
     try:
+        parent_stock = r04.projected_shed(action, view)
         stock = r04.projected_shed(out, view)
     except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
         return action
-    if not isinstance(stock, dict):
+    if not isinstance(parent_stock, dict) or not isinstance(stock, dict):
         return action
+    # This is the safety theorem: the DROP->PLACE transform may preserve excess
+    # worker cargo, but it must not change any product/quantity admitted to the
+    # shed on the current turn. That keeps the terminal liquidation input exact.
+    if stock != parent_stock:
+        return action
+
     market = []
     for item in r04.PRODUCTS:
         quantity = stock.get(item, 0)
