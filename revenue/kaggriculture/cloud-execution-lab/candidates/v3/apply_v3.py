@@ -32,6 +32,7 @@ PARAMS = {
     "r04_sale_horizon": 8,
     "r04_open_roundtrip": 0,
     "r04_row_order": True,
+    "r04_evening_flush": True,
 }
 
 FIELDS = (
@@ -63,6 +64,7 @@ FIELDS = (
     "    r04_sale_horizon: int = 8\n"
     "    r04_open_roundtrip: int = 0\n"
     "    r04_row_order: bool = True\n"
+    "    r04_evening_flush: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -179,10 +181,12 @@ RUNTIME_METHODS = (
     "                from r04_full_router import install\n"
     "                output = install(self, int(self.features.r04_sale_horizon),\n"
     "                                 int(self.features.r04_open_roundtrip),\n"
-    "                                 bool(self.features.r04_row_order))(observation, configuration)\n"
+    "                                 bool(self.features.r04_row_order),\n"
+    "                                 bool(self.features.r04_evening_flush))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
+    "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -325,7 +329,9 @@ RELEASE_NOTE = (
     "round trip size measured (10-45) gives up 67-103 coins, enough to stall the tape's early buys.\n"
     "`r04_row_order` (default True) sorts the leading SELL rows by the price drop\n"
     "each causes on the pinned default price curves, steepest first, so a contested unit clears\n"
-    "before a rival's same-item row at a later index; quantities are unchanged. With either key on the canonical\n"
+    "before a rival's same-item row at a later index; quantities are unchanged. `r04_evening_flush`\n"
+    "(default True) sells at hours 21-23 the projected shed stock of WOOL, MILK, STRAWBERRY and MELON,\n"
+    "which no farm action consumes, ahead of the other rows. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
     "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
 )

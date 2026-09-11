@@ -29,6 +29,7 @@ CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10, "shedCapacity
 DEFAULT_HORIZON = r04.SALE_HORIZON
 DEFAULT_OPENING = Features().r04_open_roundtrip
 DEFAULT_ROW_ORDER = Features().r04_row_order
+DEFAULT_FLUSH = Features().r04_evening_flush
 
 
 def synthetic_observation(step, shed=None, shops=("BAKERY", "YARN_STORE"), player=0, money=1000):
@@ -59,6 +60,7 @@ class Horizon(unittest.TestCase):
         r04.SALE_HORIZON = DEFAULT_HORIZON
         r04.OPEN_ROUNDTRIP = 0
         r04.ROW_ORDER = False
+        r04.EVENING_FLUSH = False
 
 
 class ModuleTests(Horizon):
@@ -174,7 +176,7 @@ class OpeningTests(Horizon):
         self.assertEqual(later, r04.agent(synthetic_observation(1), dict(CONFIG)))
 
     def test_opening_zero_is_the_published_agent(self):
-        off = r04.install(None, DEFAULT_HORIZON, 0)
+        off = r04.install(None, DEFAULT_HORIZON, 0, False, False)
         steps = list(range(0, 30)) + [288, 300, r04.LAST_STEP]
         direct = [r04.agent(synthetic_observation(t), dict(CONFIG)) for t in steps]
         wrapped = [off(synthetic_observation(t), dict(CONFIG)) for t in steps]
@@ -227,7 +229,7 @@ class RowOrderTests(Horizon):
         self.assertEqual(r04.order_sells([["SELL", "WOOL", 5], ["HIRE"]], {}), [["SELL", "WOOL", 5], ["HIRE"]])
 
     def test_row_order_off_is_the_published_agent_after_step0(self):
-        off = r04.install(None, DEFAULT_HORIZON, 0, False)
+        off = r04.install(None, DEFAULT_HORIZON, 0, False, False)
         steps = list(range(0, 30)) + [288, 300, r04.LAST_STEP]
         direct = [r04.agent(synthetic_observation(t), dict(CONFIG)) for t in steps]
         self.assertEqual([off(synthetic_observation(t), dict(CONFIG)) for t in steps], direct)
@@ -249,6 +251,42 @@ class RowOrderTests(Horizon):
         self.assertEqual(off, [["SELL", "WHEAT", 10], ["SELL", "WOOL", 10]])
 
 
+class FlushTests(Horizon):
+    SHED = {"WOOL": 7, "MILK": 3, "WHEAT": 5, "FERTILIZER": 4}
+
+    def run_stub(self, step, market, flush=True, shed=None):
+        def stub(observation, configuration=None):
+            return {"farmer": ["PASS"], "hands": [], "market": [list(o) for o in market]}
+        saved = r04.POLICY_AGENT
+        r04.POLICY_AGENT = stub
+        try:
+            agent = r04.install(None, DEFAULT_HORIZON, 0, False, flush)
+            return agent(synthetic_observation(step, shed=shed or self.SHED), dict(CONFIG))["market"]
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_flushes_steep_stock_at_hours_21_to_23(self):
+        for step in (45, 46, 47, 21 + 24 * 20):
+            self.assertEqual(self.run_stub(step, [["HIRE"]]), [["SELL", "WOOL", 7], ["SELL", "MILK", 3], ["HIRE"]], step)
+
+    def test_no_flush_outside_the_window_or_on_day_zero(self):
+        for step in (21, 22, 23, 24, 40, 44, 48, r04.LAST_STEP):
+            self.assertEqual(self.run_stub(step, [["HIRE"]]), [["HIRE"]], step)
+
+    def test_quantities_already_being_sold_are_not_doubled(self):
+        self.assertEqual(self.run_stub(45, [["SELL", "WOOL", 2]]),
+                         [["SELL", "WOOL", 5], ["SELL", "MILK", 3], ["SELL", "WOOL", 2]])
+
+    def test_order_cap_is_respected(self):
+        market = [["HIRE"]] * 9
+        out = self.run_stub(45, market)
+        self.assertEqual(len(out), 10)
+        self.assertEqual(out[0], ["SELL", "WOOL", 7])
+
+    def test_off_is_identity(self):
+        self.assertEqual(self.run_stub(45, [["HIRE"]], flush=False), [["HIRE"]])
+
+
 class WiringTests(Horizon):
     def play(self, callable_, steps):
         return [callable_(synthetic_observation(step), dict(CONFIG)) for step in steps]
@@ -259,6 +297,7 @@ class WiringTests(Horizon):
         self.assertEqual(data["r04_sale_horizon"], DEFAULT_HORIZON)
         self.assertEqual(data["r04_open_roundtrip"], DEFAULT_OPENING)
         self.assertIs(data["r04_row_order"], DEFAULT_ROW_ORDER)
+        self.assertIs(data["r04_evening_flush"], DEFAULT_FLUSH)
         features = Features(**data)
         self.assertIs(features.r04_sale_window, False)
         self.assertEqual(features.r04_sale_horizon, DEFAULT_HORIZON)
@@ -274,12 +313,13 @@ class WiringTests(Horizon):
         self.assertEqual(agent.diagnostics["sale_horizon"], DEFAULT_HORIZON)
         self.assertEqual(agent.diagnostics["open_roundtrip"], DEFAULT_OPENING)
         self.assertIs(agent.diagnostics["row_order"], DEFAULT_ROW_ORDER)
+        self.assertIs(agent.diagnostics["evening_flush"], DEFAULT_FLUSH)
         self.assertFalse(agent.ready)
         self.assertIsNone(getattr(agent, "controller", None))
 
     def test_delegate_output_equals_the_published_agent(self):
         steps = list(range(0, 40)) + [143, 144, 145, 287, 288, 289, 300, 301, 647, 648, 700, 712, 717, r04.LAST_STEP]
-        direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER), steps)
+        direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER, DEFAULT_FLUSH), steps)
         agent = TitanAgent(Features(r04_sale_window=True))
         delegated = self.play(lambda obs, cfg: agent.act(obs, cfg), steps)
         self.assertEqual(delegated, direct)

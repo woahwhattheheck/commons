@@ -6,7 +6,7 @@
 # r01_tapes (byte-identical tapes), the redundant deepcopy of that private decode is
 # skipped (every rule only reads the tapes), E184's `def agent` is preceded by `del agent`
 # (the pattern every inherited layer uses), and a V3 seam is appended: install(), and an
-# opening round-trip and SELL row-order wrapper that stays off unless installed on.
+# opening round-trip, SELL row-order and evening-flush wrapper, each off unless installed on.
 #
 #   Base policy and the thirteen action tapes: yhay81, Shop Router 0909
 #     https://www.kaggle.com/code/yhay81/shop-router-0909
@@ -1546,6 +1546,40 @@ def order_sells(market, inventory):
     return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
 
 
+# EVENING_FLUSH sells, at hours 21-23 of every day after the first, the full projected shed
+# stock of the steep-curve products that no farm action consumes (WOOL, MILK, STRAWBERRY,
+# MELON), ahead of the other rows. Rivals that sell their overnight drop at hours 0-1 then meet
+# a market our units already reached.
+EVENING_FLUSH = False
+FLUSH_ITEMS = ("WOOL", "MILK", "STRAWBERRY", "MELON")
+FLUSH_HOURS = (21, 22, 23)
+
+
+def evening_flush(observation, action):
+    step = int(observation["step"])
+    if step >= LAST_STEP or step < 24 or step % 24 not in FLUSH_HOURS:
+        return action
+    view = FarmView(observation)
+    stock = projected_shed(action, view)
+    market = [list(o) for o in action.get("market") or [] if o]
+    selling = {}
+    for order in market:
+        if order[0] == "SELL" and len(order) >= 3:
+            selling[order[1]] = selling.get(order[1], 0) + max(0, int(order[2]))
+    extra = []
+    for item in FLUSH_ITEMS:
+        quantity = int(stock.get(item, 0)) - selling.get(item, 0)
+        if quantity > 0 and int(view.prices.get(item, 0)) >= 2:
+            extra.append(["SELL", item, quantity])
+    room = MAX_ORDERS - len(market)
+    if not extra or room <= 0:
+        return action
+    extra.sort(key=lambda order: -int(view.prices.get(order[1], 0)) * order[2])
+    action = dict(action)
+    action["market"] = extra[:room] + market
+    return action
+
+
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
@@ -1555,6 +1589,8 @@ def v3_agent(observation, configuration=None):
         if ordered != market:
             action = dict(action)
             action["market"] = ordered
+    if EVENING_FLUSH:
+        action = evening_flush(observation, action)
     if (OPEN_ROUNDTRIP > 0 and int(observation["step"]) == 0
             and [list(o) for o in action.get("market") or []] == TAPE_OPENING):
         action = dict(action)
@@ -1563,12 +1599,12 @@ def v3_agent(observation, configuration=None):
     return action
 
 
-def install(host=None, horizon=None, opening=None, row_order=None):
+def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON at call time, exactly as the published policy factory sets it.
     """
-    global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER
+    global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1581,4 +1617,6 @@ def install(host=None, horizon=None, opening=None, row_order=None):
         OPEN_ROUNDTRIP = opening
     if row_order is not None:
         ROW_ORDER = bool(row_order)
+    if evening_flush is not None:
+        EVENING_FLUSH = bool(evening_flush)
     return v3_agent

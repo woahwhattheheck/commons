@@ -12,8 +12,8 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "b37eeefc2f3fa433210bc9a2e314c063ad55b1744de649bfb774a3285f7f45ff",
-    "bytes": 525826,
+    "sha256": "c30e5b0a4e6ff0a80ff228696251c5169e4f45eba49c39285f2015269ac12f68",
+    "bytes": 526837,
     "files": 126
   },
   "keys": {
@@ -42,7 +42,8 @@
       "g01_land_cash_floor": 0,
       "r04_sale_horizon": 8,
       "r04_open_roundtrip": 0,
-      "r04_row_order": true
+      "r04_row_order": true,
+      "r04_evening_flush": true
     },
     "l01_land": {
       "default": false,
@@ -96,7 +97,7 @@
       "default": false,
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
-      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); takes precedence over R03 and R01"
+      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); takes precedence over R03 and R01"
     }
   },
   "lanes": [
@@ -255,7 +256,8 @@
         "r04_sale_window",
         "r04_sale_horizon",
         "r04_open_roundtrip",
-        "r04_row_order"
+        "r04_row_order",
+        "r04_evening_flush"
       ],
       "status": "integrated",
       "lineage": [
@@ -268,10 +270,12 @@
         "r04_sale_horizon=8 (standalone composition): gluzdov_twocoins 16-0-0 +4262, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4365, prvsiyan_soil 16-0-0 +3453, berat_v33 16-0-0 +4113, ravi_v21mem 16-0-0 +42452, web3cainiao_v21 16-0-0 +53197, boatlee_v21 16-0-0 +26412, sokolovsky 16-0-0 +38318, tokenjunkielabs_v2 16-0-0 +7550, nusrati_2715 16-0-0 +6982, r04(horizon 3) 16-0-0 +3140, r04(horizon 4) 16-0-0 +2950, r04(horizon 6) 16-0-0 +3568",
         "r04_sale_horizon=4 (standalone composition): gluzdov_twocoins 16-0-0 +5151, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4891, prvsiyan_soil 16-0-0 +4349, berat_v33 16-0-0 +5012, ravi_v21mem 16-0-0 +43400, web3cainiao_v21 16-0-0 +53745, boatlee_v21 16-0-0 +26197, sokolovsky 16-0-0 +38957, tokenjunkielabs_v2 16-0-0 +8632, nusrati_2715 16-0-0 +8059, r04(horizon 3) 16-0-0 +3620",
         "private lineage tier: 49 recorded seats of 13 private agents that follow the public tapes (hands agreement with their best tape 458-719 of 719 steps; mtmr_s1, Yusuke Hayashi, insuperabilehart, Michael Shihong Zhang and nine others, rated about 2850-2960) from 48 hosted Kaggle episodes that the pinned engine reproduces exactly; each recorded seat plays open-loop on its own seed against the candidate in the other seat (recorded seats drift 0-3% from their recorded scores): gluzdov_twocoins 11-38, prvsiyan_soil 20-29, r04 horizon 4 24-25, horizon 6 27-22, horizon 8 32-17 (mean +3803), horizon 10 33-16, horizon 12 32-17, horizon 16 32-17",
-        "shipped defaults (r04_sale_horizon 8, r04_row_order true, r04_open_roundtrip 0): r04(h8, no row order) 16-0-0 +1882, prvsiyan_soil 16-0-0 +3778, gluzdov_twocoins 16-0-0 +4654, berat_v33 16-0-0 +4496; against the 49 private lineage-tier seats 35-14 (horizon 8 without row order 32-17), replay drift -1.2%",
         "opening round trip, measured and shipped off: against the published opening a trip of n=45 takes 39 coins (the rival's early purchases start failing between 26 and 39 coins short; live 16-0, +941), but against openers that sell a lot of wheat at step 0 (ymg_aq, Gleb Tumanov) every size measured, 10-45, gives up 67-103 coins; on seed 779172307 against ymg_aq's recorded opening n=45 turned a 123,213 finish into 96,049. The step-0 action cannot depend on the rival, so that exposure is real in play",
         "stack with opening 45 (for reference): r04(h8 + row order) 16-0-0 +940, r04(h8 + opening 45) 16-0-0 +1882, r04(h8, no row order) 16-0-0 +2892, r04(h8 + opening 60) 16-0-0 +2863, prvsiyan_soil 16-0-0 +4931, gluzdov_twocoins 16-0-0 +7113, berat_v33 16-0-0 +8251",
-        "V3 tree through the TITAN entrypoint versus the standalone composition: 32 of 32 games identical at the shipped defaults; 32 of 32 with opening 45; 16 of 16 at each of horizons 3, 4 and 8 without row order",
+        "shipped defaults (r04_sale_horizon 8, r04_row_order true, r04_evening_flush true, r04_open_roundtrip 0): r04(h8 + row order) 16-0-0 +449, prvsiyan_soil 16-0-0 +2841, gluzdov_twocoins 16-0-0 +3561; against the 49 recorded private lineage-tier seats 37-12 (35-14 without the flush, 32-17 without row order); against recorded off-tape seats outside the top six 8-5 (7-6 without the flush); against recorded top-six seats 28-6 with or without it (those seats drift about -15% from their recorded scores, so that proxy is loose)",
+        "row order without the flush: r04(h8, no row order) 16-0-0 +1882, prvsiyan_soil 16-0-0 +3778, gluzdov_twocoins 16-0-0 +4654, berat_v33 16-0-0 +4496",
+        "sale-hour evidence: the off-tape top agents place about a third of their steep-product SELL quantity at hours 0-1 and a quarter at hours 21-23; the tape lineage sells mostly at hours 16-22. A flush at hour 0 alone went 4-12 against the same stack without it, a flush at hour 23 alone 16-0 (+437), hours 21-23 16-0 (+449)",
+        "V3 tree through the TITAN entrypoint versus the standalone composition: 24 of 24 games identical at the shipped defaults; 32 of 32 with row order only; 32 of 32 with opening 45; 16 of 16 at each of horizons 3, 4 and 8",
         "first-call setup through the TITAN entrypoint: under 0.5 s on step 0, 1-3 ms per later step (TITAN budget 1.0 s)"
       ]
     }
@@ -295,7 +299,7 @@
     "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
     "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
     "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
-    "checks/test_v3_r04.py": "77c6d23ee3a37a1f136e4d171b8d0d43060723419dca66f999262547e6168487",
+    "checks/test_v3_r04.py": "3f2f625df3e3bd900a23b8005061fb82491bf2d7218a0efb9f37a4b516209119",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
@@ -303,9 +307,9 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "b2c0294a6dd443366fe0adc9c65b132d0a98e93a4aeaeb6ddb6c788666644487",
+    "r04_full_router.py": "04903c4c13079afc18392f67e0fdf74de223228312b3a70d061b75be096671fe",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "7d00328ce2b58ce268e0f957b4acb37c03676a929b70f3cde95a9a4adbc6b0c5"
+    "apply_v3.py": "38eb7881c31db908c41ab271bb8b3c17507d43367c0c0c842e4c04d10f0a9817"
   }
 }
