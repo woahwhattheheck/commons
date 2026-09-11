@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 6,
-    "open_pull_requests": 6,
-    "runs_in_progress": 20,
-    "runs_queued": 66
+    "open_issues": 5,
+    "open_pull_requests": 5,
+    "runs_in_progress": 19,
+    "runs_queued": 75
   },
   "degraded": [],
   "drafts": 219,
@@ -50,6 +50,14 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-eod-capacity-rescue-20260911",
+      "created_at": "2026-09-11T22:03:22Z",
+      "draft": false,
+      "number": 12612,
+      "title": "TITAN V4: add default-off EOD capacity rescue lane"
+    },
     {
       "author": "woahwhattheheck",
       "branch": "astra/v4-c5-wheat-demand-20260911",
@@ -121,21 +129,13 @@
       "draft": false,
       "number": 12598,
       "title": "TITAN V4: add S6 fertilizer-hand ROI allocator key"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-b10-public-supply-20260911",
-      "created_at": "2026-09-11T21:49:33Z",
-      "draft": false,
-      "number": 12597,
-      "title": "TITAN V4 B10: public-supply SELL ordering key"
     }
   ],
-  "pulls_listed": 286,
+  "pulls_listed": 287,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 3.3,
+  "queue_depth_per_runner": 3.9,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T22:02:46Z",
+  "unchanged_since": "2026-09-11T22:03:40Z",
   "undatable_pulls": []
 }
