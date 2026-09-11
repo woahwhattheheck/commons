@@ -150,6 +150,46 @@ class T(unittest.TestCase):
                 a(obs(step=717), config)
                 self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
 
+    def test_invalid_observation_identity_clears_existing_collection_provenance(self):
+        neutral = {"farmer": ["PASS"], "hands": [], "market": []}
+        terminal = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+        }
+
+        def parent(o, _cfg=None):
+            if isinstance(o, dict) and o.get("step") == 718 and o.get("player") == 0:
+                return copy.deepcopy(terminal)
+            return copy.deepcopy(neutral)
+
+        missing_step = obs(step=717)
+        missing_step.pop("step")
+        missing_player = obs(step=717)
+        missing_player.pop("player")
+        missing_farms = obs(step=717)
+        missing_farms.pop("farms")
+        bad_farms = obs(step=717)
+        bad_farms["farms"] = None
+        poisons = (
+            ("missing-step", missing_step),
+            ("bool-step", obs(step=True)),
+            ("negative-step", obs(step=-1)),
+            ("past-end-step", obs(step=720)),
+            ("missing-player", missing_player),
+            ("bool-player", obs(step=717, player=True)),
+            ("negative-player", obs(step=717, player=-1)),
+            ("out-of-range-player", obs(step=717, player=1)),
+            ("missing-farms", missing_farms),
+            ("bad-farms", bad_farms),
+        )
+        for label, poison in poisons:
+            with self.subTest(label=label):
+                a = make_agent(parent)
+                self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
+                self.assertEqual(a(poison, STANDARD), neutral)
+                self.assertEqual(a(obs(step=718), STANDARD)["market"], terminal["market"])
+
     def test_trails_only_after_collection(self):
         terminal = {
             "farmer": ["PASS"],
