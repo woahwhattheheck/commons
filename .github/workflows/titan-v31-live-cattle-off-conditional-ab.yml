@@ -1,0 +1,166 @@
+name: TITAN V3.1 live cattle-off conditional A/B
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-live-cattle-off-conditional-ab.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/materialize_live_cattle_ab.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/live_cattle_ab_report.py'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-live-stack-cattle-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact live score-facing parent and evidence-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a595843f2ed64ec591cc1a1a2939897585f5b285'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          test "$(git hash-object "$V3/make_submission.py")" = '01865627bf6889bfadfb6c1bd83f6fe0e6be4593'
+          test "$(git hash-object "$V3/build_v3.py")" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          python3 - <<'PY'
+          import subprocess
+          parent = 'a595843f2ed64ec591cc1a1a2939897585f5b285'
+          expected = {
+              '.github/workflows/titan-v31-live-cattle-off-conditional-ab.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/materialize_live_cattle_ab.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/live_cattle_ab_report.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{parent}...HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'wrong live cattle A/B scope: actual={sorted(actual)!r} expected={sorted(expected)!r}')
+          PY
+
+      - name: Syntax-check evidence scripts in memory
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/materialize_live_cattle_ab.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/live_cattle_ab_report.py',
+          ):
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Recheck shipped deterministic package
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check
+
+      - name: Materialize exact live cattle ON/OFF score-facing trees
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B tooling_tests/materialize_live_cattle_ab.py \
+            --on-dir /tmp/cattle-on \
+            --off-dir /tmp/cattle-off \
+            --receipt /tmp/cattle-materialization.json
+          test -f /tmp/cattle-on/main.py
+          test -f /tmp/cattle-off/main.py
+          cat /tmp/cattle-materialization.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run cattle-ON control against exact cattle-ON live stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/cattle-on/main.py \
+            --opponent 'cattle_on=/tmp/cattle-on/main.py' \
+            --seeds 2611151001,2611151002 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/cattle-control.json
+
+      - name: Run cattle-OFF candidate against the same cattle-ON live stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate /tmp/cattle-off/main.py \
+            --opponent 'cattle_on=/tmp/cattle-on/main.py' \
+            --seeds 2611151001,2611151002 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/cattle-candidate.json
+
+      - name: Derive paired live conditional interaction receipt
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B tooling_tests/live_cattle_ab_report.py \
+            /tmp/cattle-control.json \
+            /tmp/cattle-candidate.json \
+            /tmp/cattle-materialization.json \
+            --json-out /tmp/cattle-ab.json \
+            --markdown-out /tmp/cattle-ab.md
+          cat /tmp/cattle-ab.md
+          cat /tmp/cattle-ab.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-cattle-off-conditional-ab-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/cattle-materialization.json
+            /tmp/cattle-control.json
+            /tmp/cattle-candidate.json
+            /tmp/cattle-ab.json
+            /tmp/cattle-ab.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/cattle-ab.md
+            printf '\nEvidence-only child of #12505 exact `a595843f2ed64ec591cc1a1a2939897585f5b285`; no gameplay/default/package-source/Kaggle mutation.\n'
+          } > /tmp/cattle-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
