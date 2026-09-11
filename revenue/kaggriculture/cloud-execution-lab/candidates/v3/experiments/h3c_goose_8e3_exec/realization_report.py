@@ -33,6 +33,12 @@ def _valid_sha256(value):
     return isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
 
 
+def _expected_sha256(value, label):
+    if not _valid_sha256(value):
+        raise ValueError(f"{label}: expected source sha256 must be canonical lowercase hex")
+    return value
+
+
 def _validate_fingerprint(value, label, expected_entry):
     if not isinstance(value, dict):
         raise ValueError(f"{label}: fingerprint must be an object")
@@ -163,6 +169,27 @@ def validate_pair_metadata(control, candidate):
         raise ValueError("H3c candidate entry fingerprint unexpectedly equals baseline")
 
 
+def validate_actual_byte_fingerprints(
+    control, candidate, expected_baseline_sha256, expected_candidate_sha256,
+    expected_evaluator_sha256,
+):
+    """Bind report fingerprints to the literal checked-out source bytes used by the gate."""
+    baseline_sha = _expected_sha256(expected_baseline_sha256, "baseline")
+    candidate_sha = _expected_sha256(expected_candidate_sha256, "candidate")
+    evaluator_sha = _expected_sha256(expected_evaluator_sha256, "evaluator")
+    checks = (
+        (control["candidate"]["sha256"], baseline_sha, "control candidate"),
+        (control["opponents"][EXPECTED_OPPONENT]["sha256"], baseline_sha, "control opponent"),
+        (candidate["opponents"][EXPECTED_OPPONENT]["sha256"], baseline_sha, "candidate opponent"),
+        (candidate["candidate"]["sha256"], candidate_sha, "H3c candidate"),
+        (control["evaluator_sha256"], evaluator_sha, "control evaluator"),
+        (candidate["evaluator_sha256"], evaluator_sha, "candidate evaluator"),
+    )
+    for actual, expected, label in checks:
+        if actual != expected:
+            raise ValueError(f"{label} fingerprint does not match checked-out bytes: {actual!r} != {expected!r}")
+
+
 def score_pair(game):
     seat = game["candidate_seat"]
     scores = game["scores"]
@@ -186,12 +213,21 @@ def main():
     p.add_argument("candidate")
     p.add_argument("--json-out", required=True)
     p.add_argument("--markdown-out", required=True)
+    p.add_argument("--expected-baseline-sha256", required=True)
+    p.add_argument("--expected-candidate-sha256", required=True)
+    p.add_argument("--expected-evaluator-sha256", required=True)
     args = p.parse_args()
     control, candidate = load(args.control), load(args.candidate)
     try:
         cg = validate_report(control, "control", "baseline.py")
         hg = validate_report(candidate, "candidate", "candidate.py")
         validate_pair_metadata(control, candidate)
+        validate_actual_byte_fingerprints(
+            control, candidate,
+            args.expected_baseline_sha256,
+            args.expected_candidate_sha256,
+            args.expected_evaluator_sha256,
+        )
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
     cells = []
@@ -236,6 +272,11 @@ def main():
         "control_candidate": control["candidate"],
         "h3c_candidate": candidate["candidate"],
         "opponent_fingerprint": control["opponents"][EXPECTED_OPPONENT],
+        "checked_out_source_sha256": {
+            "baseline.py": args.expected_baseline_sha256,
+            "candidate.py": args.expected_candidate_sha256,
+            "evaluate.py": args.expected_evaluator_sha256,
+        },
         "cells": cells,
         "summary": {
             "paired_cells": len(cells), "trace_changed_cells": trace_changed,

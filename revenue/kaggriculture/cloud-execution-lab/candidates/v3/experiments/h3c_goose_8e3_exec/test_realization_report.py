@@ -13,7 +13,12 @@ m = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(m)
 
 
-def valid_report(candidate_entry="baseline.py", candidate_sha="c" * 64):
+BASELINE_SHA = "c" * 64
+CANDIDATE_SHA = "d" * 64
+EVALUATOR_SHA = "5" * 64
+
+
+def valid_report(candidate_entry="baseline.py", candidate_sha=BASELINE_SHA):
     games = []
     for seed in m.EXPECTED_SEEDS:
         for seat in (0, 1):
@@ -27,7 +32,7 @@ def valid_report(candidate_entry="baseline.py", candidate_sha="c" * 64):
                 "trace_sha256": ("a" if seat == 0 else "b") * 64,
                 "daily_bank": [],
             })
-    baseline_fp = {"entry": "baseline.py", "callable": "agent", "sha256": "c" * 64}
+    baseline_fp = {"entry": "baseline.py", "callable": "agent", "sha256": BASELINE_SHA}
     return {
         "schema_version": 1,
         "engine_ref": m.EXPECTED_ENGINE_REF,
@@ -37,7 +42,7 @@ def valid_report(candidate_entry="baseline.py", candidate_sha="c" * 64):
             "utils.py": "3" * 64,
         },
         "loader_sha256": "4" * 64,
-        "evaluator_sha256": "5" * 64,
+        "evaluator_sha256": EVALUATOR_SHA,
         "candidate": {"entry": candidate_entry, "callable": "agent", "sha256": candidate_sha},
         "seeds": list(m.EXPECTED_SEEDS),
         "agent_rng_seed": m.EXPECTED_AGENT_RNG_SEED,
@@ -146,7 +151,7 @@ class StrictReceiptTests(unittest.TestCase):
         report["candidate"]["sha256"] = "bad"
         with self.assertRaisesRegex(ValueError, "invalid fingerprint sha256"):
             m.validate_report(report, "candidate-hash")
-        candidate = valid_report("candidate.py", "d" * 64)
+        candidate = valid_report("candidate.py", CANDIDATE_SHA)
         m.validate_report(candidate, "candidate", "candidate.py")
 
     def test_rng_and_source_metadata_are_fail_closed(self):
@@ -173,7 +178,7 @@ class StrictReceiptTests(unittest.TestCase):
 
     def test_pair_metadata_binds_same_baseline_and_evaluator(self):
         control = valid_report()
-        candidate = valid_report("candidate.py", "d" * 64)
+        candidate = valid_report("candidate.py", CANDIDATE_SHA)
         m.validate_report(control, "control", "baseline.py")
         m.validate_report(candidate, "candidate", "candidate.py")
         m.validate_pair_metadata(control, candidate)
@@ -189,9 +194,48 @@ class StrictReceiptTests(unittest.TestCase):
             m.validate_pair_metadata(control, poisoned)
 
         poisoned = copy.deepcopy(candidate)
-        poisoned["candidate"]["sha256"] = "c" * 64
+        poisoned["candidate"]["sha256"] = BASELINE_SHA
         with self.assertRaisesRegex(ValueError, "unexpectedly equals baseline"):
             m.validate_pair_metadata(control, poisoned)
+
+    def test_actual_byte_fingerprints_bind_checked_out_sources(self):
+        control = valid_report()
+        candidate = valid_report("candidate.py", CANDIDATE_SHA)
+        m.validate_actual_byte_fingerprints(
+            control, candidate, BASELINE_SHA, CANDIDATE_SHA, EVALUATOR_SHA
+        )
+
+        poison_cases = (
+            ("control candidate", lambda c, h: c["candidate"].__setitem__("sha256", "e" * 64)),
+            ("control opponent", lambda c, h: c["opponents"][m.EXPECTED_OPPONENT].__setitem__("sha256", "e" * 64)),
+            ("candidate opponent", lambda c, h: h["opponents"][m.EXPECTED_OPPONENT].__setitem__("sha256", "e" * 64)),
+            ("H3c candidate", lambda c, h: h["candidate"].__setitem__("sha256", "e" * 64)),
+            ("control evaluator", lambda c, h: c.__setitem__("evaluator_sha256", "e" * 64)),
+            ("candidate evaluator", lambda c, h: h.__setitem__("evaluator_sha256", "e" * 64)),
+        )
+        for label, mutate in poison_cases:
+            with self.subTest(label=label):
+                c = valid_report()
+                h = valid_report("candidate.py", CANDIDATE_SHA)
+                mutate(c, h)
+                with self.assertRaisesRegex(ValueError, label):
+                    m.validate_actual_byte_fingerprints(
+                        c, h, BASELINE_SHA, CANDIDATE_SHA, EVALUATOR_SHA
+                    )
+
+    def test_expected_source_hashes_must_be_canonical_sha256(self):
+        control = valid_report()
+        candidate = valid_report("candidate.py", CANDIDATE_SHA)
+        for baseline, treatment, evaluator in (
+            ("bad", CANDIDATE_SHA, EVALUATOR_SHA),
+            (BASELINE_SHA, "D" * 64, EVALUATOR_SHA),
+            (BASELINE_SHA, CANDIDATE_SHA, True),
+        ):
+            with self.subTest(baseline=baseline, treatment=treatment, evaluator=evaluator):
+                with self.assertRaisesRegex(ValueError, "expected source sha256"):
+                    m.validate_actual_byte_fingerprints(
+                        control, candidate, baseline, treatment, evaluator
+                    )
 
 
 if __name__ == "__main__":
