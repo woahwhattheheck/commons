@@ -1,0 +1,60 @@
+name: TITAN V3.1 B11 mirror horizon
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/**"
+      - ".github/workflows/titan-v31-b11-mirror-horizon.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact head, frozen parent and producer inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          test "$(git cat-file -t "$BASE")" = commit
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+
+          R04_PATH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          TAPE_PATH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py
+          test "$(git rev-parse "HEAD:$R04_PATH")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+          test "$(git rev-parse "HEAD:$TAPE_PATH")" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+
+          EXPECTED=$(printf '%s\n' \
+            .github/workflows/titan-v31-b11-mirror-horizon.yml \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/README.md \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/b11_mirror_horizon.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon/test_b11_mirror_horizon.py | sort)
+          ACTUAL=$(git diff --name-only "$BASE"...HEAD | sort)
+          if [[ "$ACTUAL" != "$EXPECTED" ]]; then
+            echo "Unexpected frozen-base scope:" >&2
+            printf '%s\n' "$ACTUAL" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Focused predecessors and syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b11_mirror_horizon
+          python "$ROOT/test_b11_mirror_horizon.py"
+          python -m py_compile "$ROOT/b11_mirror_horizon.py" "$ROOT/candidate.py" "$ROOT/test_b11_mirror_horizon.py"
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
