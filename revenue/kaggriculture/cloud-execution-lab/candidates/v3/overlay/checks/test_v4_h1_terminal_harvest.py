@@ -40,11 +40,13 @@ def observation(current_tile=None, *, step=672, hands=None):
     farm = {"farmer": [0, 0], "hands": [list(p) for p in (hands or [])],
             "tiles": tiles, "money": 1000, "unlocked_quadrants": ["NW"],
             "hires_today": 0}
+    prices = {product: 10 for product in r04.PRODUCTS}
     return {"step": step, "day": step // 24, "hour": step % 24,
             "player": 0, "farms": [farm, copy.deepcopy(farm)],
             "private": {"inventories": [{} for _ in range(1 + len(hands or []))],
                         "shed": {}, "seeds": {}},
-            "market": {"prices": {}}, "town": {"unlocked_shops": []}}
+            "market": {"prices": prices},
+            "town": {"unlocked_shops": ["BAKERY", "YARN_STORE"]}}
 
 
 def action(farmer=None, hands=None, market=None):
