@@ -45,6 +45,9 @@ import base64
 import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
+# R04 lane L3 (no-late-sale-advance, peer B10 port): the pure suppression
+# predicate for the E184 reservation call site.
+import r04_no_late_sale_advance
 
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
@@ -1372,6 +1375,11 @@ SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')
 ADVANCE_START = 288
 _SALE_NATIVE_ADVANCE = advance_sales
 _SALE_NATIVE_SUBTRACT = subtract_advanced_sales
+# V3.1 lane L3 (r04_no_late_sale_advance, peer B10 port): when True, the E184
+# reservation call site is gated by r04_no_late_sale_advance.suppressed() at or
+# after NO_LATE_SALE_ADVANCE_STEP. Read at call time, exactly like SALE_HORIZON.
+NO_LATE_SALE_ADVANCE = False
+NO_LATE_SALE_ADVANCE_STEP = 648
 
 
 
@@ -1467,7 +1475,12 @@ def agent(observation, configuration=None):
     if step < ADVANCE_START or step >= LAST_STEP:
         return action
     state = _POLICY.players[int(observation['player'])]
-    reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
+    # V3.1 lane L3 (peer B10 port): suppress the reservation at or after the
+    # threshold instead of undoing it later, so the per-due-step debt
+    # bookkeeping is never corrupted. Flag off short-circuits: byte-identical.
+    if not r04_no_late_sale_advance.suppressed(step, NO_LATE_SALE_ADVANCE,
+                                              NO_LATE_SALE_ADVANCE_STEP):
+        reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
     if step >= 144:
         action = _v224_sales_first(action)
     return action
@@ -1609,16 +1622,20 @@ def v3_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None,
+            no_late_sale_advance=None, no_late_sale_advance_step=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
     factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
-    first two shops consume MILK and neither is the YARN_STORE.
+    first two shops consume MILK and neither is the YARN_STORE. no_late_sale_advance (lane L3,
+    the ASTRA / GPT-5.6 SOL B10 port) gates the E184 reservation call site: with it on, no
+    future sale is pulled forward at steps >= no_late_sale_advance_step (default 648).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1654,11 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if no_late_sale_advance is not None:
+        NO_LATE_SALE_ADVANCE = bool(no_late_sale_advance)
+    if no_late_sale_advance_step is not None:
+        no_late_sale_advance_step = int(no_late_sale_advance_step)
+        if no_late_sale_advance_step < 0:
+            raise ValueError("no-late-sale-advance step must be non-negative")
+        NO_LATE_SALE_ADVANCE_STEP = no_late_sale_advance_step
     return v3_agent

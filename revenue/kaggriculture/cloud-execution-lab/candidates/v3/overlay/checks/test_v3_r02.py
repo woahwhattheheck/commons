@@ -142,7 +142,7 @@ class WiringTests(unittest.TestCase):
         self.assertIs(data["r02_route_bank"], False)
         self.assertIs(Features(**data).r02_route_bank, False)
         self.assertTrue(TitanAgent(Features(r02_route_bank=True))._v3_active())
-        self.assertFalse(TitanAgent(Features())._v3_active())
+        self.assertFalse(TitanAgent(Features(r04_no_late_sale_advance=False))._v3_active())
 
 
 if __name__ == "__main__":

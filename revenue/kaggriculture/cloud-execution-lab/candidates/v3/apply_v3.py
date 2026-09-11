@@ -35,6 +35,8 @@ PARAMS = {
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
+    "r04_no_late_sale_advance": True,
+    "r04_no_late_sale_advance_step": 648,
 }
 
 FIELDS = (
@@ -69,6 +71,8 @@ FIELDS = (
     "    r04_evening_flush: bool = True\n"
     "    r04_sale_fertilizer: bool = True\n"
     "    r04_cattle_early: bool = True\n"
+    "    r04_no_late_sale_advance: bool = True\n"
+    "    r04_no_late_sale_advance_step: int = 648\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -80,7 +84,7 @@ RUNTIME_METHODS = (
     "        return bool(f.e11_rival_sell or f.rival_model or f.e20_hire_guard\n"
     "                    or f.l01_land or f.l01_sheep or f.l01_day0buy or f.l01_tranche or f.l01_leanplant\n"
     "                    or f.r01_shop_router or f.r02_route_bank or f.r03_full_router\n"
-    "                    or f.r04_sale_window)\n\n"
+    "                    or f.r04_sale_window or f.r04_no_late_sale_advance)\n\n"
     "    def _v3_config(self):\n"
     "        \"\"\"Deterministic package keys for the V3 lanes, carried inside the game config.\"\"\"\n"
     "        f = self.features\n"
@@ -188,13 +192,17 @@ RUNTIME_METHODS = (
     "                                 bool(self.features.r04_row_order),\n"
     "                                 bool(self.features.r04_evening_flush),\n"
     "                                 bool(self.features.r04_sale_fertilizer),\n"
-    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
+    "                                 bool(self.features.r04_cattle_early),\n"
+    "                                 bool(self.features.r04_no_late_sale_advance),\n"
+    "                                 int(self.features.r04_no_late_sale_advance_step))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
     "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
     "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
+    "                self.diagnostics['no_late_sale_advance'] = bool(self.features.r04_no_late_sale_advance)\n"
+    "                self.diagnostics['no_late_sale_advance_step'] = int(self.features.r04_no_late_sale_advance_step)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -346,6 +354,19 @@ RELEASE_NOTE = (
     "YARN_STORE; the published day-9 window is unchanged. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
     "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
+    "\n"
+    "Lane L3 (V3.1): `r04_no_late_sale_advance` (default True) gates the E184 reservation\n"
+    "call site in the R04 `agent()` wrapper: at steps >= `r04_no_late_sale_advance_step`\n"
+    "(default 648) no future tape-planned sale is pulled forward into today's SELL rows;\n"
+    "the tape's own late SELL rows are published tape behavior, not advancement, and are\n"
+    "kept. Debts recorded before the threshold still settle through\n"
+    "`subtract_advanced_sales()`. This is the port of the peer B10 lane: ASTRA and\n"
+    "GPT-5.6 SOL's S20-R01 ablation on the canonical v3 optimizer found that disabling\n"
+    "sale advancement at absolute step >= 648 measured +328.60 own and +289.90 margin\n"
+    "(48/48 positive); re-gated on the live R04 route it measured +152.2 margin/game\n"
+    "(60 paired official-evaluator games across 3 opponents, +58/-2/=0). With the flag\n"
+    "off the reservation path is byte-identical. Checks:\n"
+    "`checks/test_v3_r04_no_late_advance.py`.\n"
 )
 
 

@@ -87,7 +87,7 @@ class WiringTests(unittest.TestCase):
         data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
         self.assertIs(data["r01_shop_router"], False)
         self.assertIs(Features(**data).r01_shop_router, False)
-        agent = TitanAgent(Features())
+        agent = TitanAgent(Features(r04_no_late_sale_advance=False))
         self.assertFalse(agent._v3_active())
         self.assertFalse(hasattr(agent, "_v3_r01"))
 
