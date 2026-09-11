@@ -24,13 +24,14 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind fert-hand P0, canonical, feature ref, and Struct-safe reviewed donors
+      - name: Bind fert-hand P0, gameplay canonical, live control-plane tip, and Struct-safe reviewed donors
         shell: bash
         run: |
           set -euo pipefail
           BASE='46ade0009190124221cff5fd13e6bcb3f2126ac0'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
-          CANONICAL='720c125c29faec426ebc0000f8d5e9dcdc07a827'
+          GAMEPLAY_CANONICAL='720c125c29faec426ebc0000f8d5e9dcdc07a827'
+          CANONICAL_REF='refs/heads/titan/v3.1-20260911'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
           HEAD_REF='${{ github.event.pull_request.head.ref }}'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
@@ -42,8 +43,24 @@ jobs:
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
-          test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
+          test "$(git merge-base "$GAMEPLAY_CANONICAL" "$BASE")" = "$GAMEPLAY_CANONICAL"
+
+          # The canonical branch may advance for CI/control-plane maintenance without
+          # changing TITAN gameplay. Bind the live tip, then prove every delta from
+          # the reviewed gameplay anchor is confined to the collision-listener file.
+          git fetch --no-tags origin "$CANONICAL_REF"
+          CANONICAL_TIP="$(git rev-parse FETCH_HEAD)"
+          test "$(git merge-base "$GAMEPLAY_CANONICAL" "$CANONICAL_TIP")" = "$GAMEPLAY_CANONICAL"
+          CONTROL_DELTA="$(git diff --name-only "$GAMEPLAY_CANONICAL".."$CANONICAL_TIP")"
+          if [ -n "$CONTROL_DELTA" ]; then
+            test "$CONTROL_DELTA" = '.github/workflows/pr-collision-notice.yml'
+          fi
+          test "$(git rev-parse "$CANONICAL_TIP:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
+          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          echo "L3_R6_GAMEPLAY_CANONICAL=$GAMEPLAY_CANONICAL"
+          echo "L3_R6_LIVE_CANONICAL_TIP=$CANONICAL_TIP"
+          echo "L3_R6_CONTROL_DELTA=${CONTROL_DELTA:-<none>}"
+
           test "$(git rev-parse "$BASE:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
           test "$(git rev-parse "$BASE:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git hash-object "$PATCH")" = '84becf2f6135e2d9155863cf6887a340a7852dba'
@@ -134,14 +151,25 @@ jobs:
           set -euo pipefail
           BASE='46ade0009190124221cff5fd13e6bcb3f2126ac0'
           BASE_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
-          CANONICAL='720c125c29faec426ebc0000f8d5e9dcdc07a827'
+          GAMEPLAY_CANONICAL='720c125c29faec426ebc0000f8d5e9dcdc07a827'
+          CANONICAL_REF='refs/heads/titan/v3.1-20260911'
           EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
           HEAD_REF='${{ github.event.pull_request.head.ref }}'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          ROUTER="$V3/overlay/r04_full_router.py"
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')" = "$EXPECTED_HEAD"
           git fetch --no-tags origin "$BASE_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$BASE"
-          test "$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')" = "$EXPECTED_HEAD"
-          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
-          echo L3_R6_STRUCT_SAFE_TERMINAL_FRESHNESS_OK
+          test "$(git merge-base "$GAMEPLAY_CANONICAL" "$BASE")" = "$GAMEPLAY_CANONICAL"
+          git fetch --no-tags origin "$CANONICAL_REF"
+          CANONICAL_TIP="$(git rev-parse FETCH_HEAD)"
+          test "$(git merge-base "$GAMEPLAY_CANONICAL" "$CANONICAL_TIP")" = "$GAMEPLAY_CANONICAL"
+          CONTROL_DELTA="$(git diff --name-only "$GAMEPLAY_CANONICAL".."$CANONICAL_TIP")"
+          if [ -n "$CONTROL_DELTA" ]; then
+            test "$CONTROL_DELTA" = '.github/workflows/pr-collision-notice.yml'
+          fi
+          test "$(git rev-parse "$CANONICAL_TIP:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
+          test "$(git rev-parse "$CANONICAL_TIP:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          echo "L3_R6_STRUCT_SAFE_TERMINAL_FRESHNESS_OK gameplay=$GAMEPLAY_CANONICAL canonical_tip=$CANONICAL_TIP"
