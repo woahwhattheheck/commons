@@ -1,0 +1,50 @@
+{
+  "id": "mcp-conformance-receipt-20260827",
+  "version": 1,
+  "buyer": "Anyone shipping, buying, or debugging an MCP server or carrier integration.",
+  "promise": "One vendor-neutral MCP endpoint run with a shareable exact-evidence JSON receipt.",
+  "tiers": [
+    {
+      "id": "receipt-run",
+      "price_usd": 49,
+      "delivery_window": "same session after a reachable public endpoint is supplied",
+      "deliverables": [
+        "initialize and protocol-negotiation evidence",
+        "tools, resources, and prompts discovery",
+        "required-tool parity with exact missing set",
+        "request, response, input, and final receipt SHA-256 values",
+        "public-safe endpoint label with URL credentials omitted"
+      ]
+    },
+    {
+      "id": "same-day-repair",
+      "price_usd": 250,
+      "delivery_window": "same day after a reproducible failure and writable repository are supplied",
+      "deliverables": [
+        "everything in receipt-run",
+        "one focused implementation repair",
+        "focused regression coverage",
+        "fresh conformance receipt after repair"
+      ]
+    }
+  ],
+  "acceptance": [
+    "receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
+    "endpoint label omits URL userinfo, query, and fragment",
+    "transport and discovery outcomes are explicit",
+    "every response body is represented by exact byte length and SHA-256",
+    "the final receipt SHA-256 recomputes from canonical unsigned JSON"
+  ],
+  "open_door": true,
+  "requires_login": false,
+  "runner": {
+    "path": "host/mcp_conformance.py",
+    "dependencies": "Python 3 standard library only",
+    "default_mode": "read-only discovery",
+    "optional_mode": "caller-explicit arbitrary tools/call with response body hashed by default"
+  },
+  "intake_boundary": "public MCP endpoint and required tool names only; a public repository URL may be supplied for repair",
+  "data_boundary": "keep credentials, tokens, private repository URLs, buyer records, and provider data outside public Commons receipts",
+  "execution_boundary": "server tools are not invoked by default; optional tool execution occurs only when the caller explicitly supplies the tool name and JSON arguments; response content is hashed and omitted unless inclusion is explicitly requested",
+  "payment_boundary": "a posted intent, quote, recorded provider URL, or conformance receipt is not payment, authorization, settlement, payout, bank availability, or cash"
+}
