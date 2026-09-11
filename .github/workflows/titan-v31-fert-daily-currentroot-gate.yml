@@ -59,7 +59,7 @@ jobs:
           test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/jit_pass_fertilize.py')" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
           test "$(git rev-parse 'HEAD:revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py')" = 'bdb9cf58148a3c7961c085f4902759537decabf6'
 
-      - name: Prove live roots before evaluator spend
+      - name: Prove live roots and feature head before evaluator spend
         shell: bash
         run: |
           set -euo pipefail
@@ -67,8 +67,16 @@ jobs:
           git fetch --no-tags origin '+refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911:refs/remotes/origin/v31-p0-live'
           test "$(git rev-parse refs/remotes/origin/titan-v3.1-live)" = '8e3d92a286806f9f9525973ee7d359b629a11487'
           test "$(git rev-parse refs/remotes/origin/v31-p0-live)" = '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          if [ '${{ github.event_name }}' = 'pull_request' ]; then
+            HEAD_REF='${{ github.event.pull_request.head.ref }}'
+            EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+            test -n "$HEAD_REF"
+            test -n "$EXPECTED_HEAD"
+            git fetch --no-tags origin "+refs/heads/$HEAD_REF:refs/remotes/origin/fert-daily-head-live"
+            test "$(git rev-parse refs/remotes/origin/fert-daily-head-live)" = "$EXPECTED_HEAD"
+          fi
 
-      - name: Compile and prove donor contract
+      - name: Compile and prove donor contract under normal and optimized Python
         shell: bash
         run: |
           set -euo pipefail
@@ -82,26 +90,45 @@ jobs:
           PY
           python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py --check
           PYTHONOPTIMIZE=1 python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py --check
-          PYTHONPATH="$ROOT" python - <<'PY'
+          for optimize in 0 1; do
+            PYTHONOPTIMIZE="$optimize" PYTHONPATH="$ROOT" python - <<'PY'
           import donor
+
+          def require(condition, message):
+              if not condition:
+                  raise AssertionError(message)
+
           tiles = [[None for _ in range(10)] for _ in range(10)]
           tiles[2][2] = {'animal': 'COW', 'fertilizer_available': True}
           obs = {'step': 100, 'player': 0,
                  'farms': [{'tiles': tiles, 'farmer': [2,2], 'hands': []}],
                  'private': {'inventories': [{}]}}
           parent = {'farmer': ['PASS'], 'hands': [], 'market': []}
-          assert donor.apply_fert_daily_sweep(obs, parent, [])['farmer'] == ['COLLECT_FERTILIZER']
+          require(
+              donor.apply_fert_daily_sweep(obs, parent, [])['farmer'] == ['COLLECT_FERTILIZER'],
+              'fert-daily collection contract failed',
+          )
           busy = {'farmer': ['FERTILIZE'], 'hands': [], 'market': []}
-          assert donor.apply_fert_daily_sweep(obs, busy, []) is busy
+          require(
+              donor.apply_fert_daily_sweep(obs, busy, []) is busy,
+              'fert-daily must not steal a non-PASS worker',
+          )
           tiles2 = [[None for _ in range(10)] for _ in range(10)]
           obs2 = {'step': 100, 'player': 0,
                   'farms': [{'tiles': tiles2, 'farmer': [4,4], 'hands': []}],
                   'private': {'inventories': [{'FERTILIZER': 2}]}}
-          assert donor.apply_fert_daily_sweep(obs2, parent, [{}]*719)['farmer'] == ['DROP']
+          require(
+              donor.apply_fert_daily_sweep(obs2, parent, [{}]*719)['farmer'] == ['DROP'],
+              'fert-daily drop contract failed',
+          )
           obs2['private']['inventories'][0]['COW'] = 1
-          assert donor.apply_fert_daily_sweep(obs2, parent, [{}]*719) is parent
+          require(
+              donor.apply_fert_daily_sweep(obs2, parent, [{}]*719) is parent,
+              'fert-daily animal-cargo veto failed',
+          )
           print('FERT_DAILY_DONOR_CONTRACT_OK')
           PY
+          done
           test -z "$(git status --porcelain)"
 
       - name: Run paired current-root gate
@@ -114,21 +141,38 @@ jobs:
             --repo-root "$GITHUB_WORKSPACE" \
             --output-dir "$OUT" |& tee "$RUNNER_TEMP/fert-daily-currentroot.log"
           cat "$OUT/receipt.md" >> "$GITHUB_STEP_SUMMARY"
-          python - "$OUT/receipt.json" <<'PY'
+          PYTHONOPTIMIZE=1 python - "$OUT/receipt.json" <<'PY'
           import json, pathlib, sys
+
+          def require(condition, message):
+              if not condition:
+                  raise AssertionError(message)
+
           data = json.loads(pathlib.Path(sys.argv[1]).read_text())
-          assert data['schema'] == 'titan-v31-fert-daily-currentroot-gate/v1'
-          assert data['parent_head'] == '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
-          assert data['canonical_head'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
-          assert data['donor']['blob'] == 'cd6c1dd50a439f58bce9434db8d628ca8d6f978f'
-          assert data['current_tuple']['b5_carrot_fertilizer'] is True
-          assert data['current_tuple']['b5_jit_fertilize'] is True
-          assert data['current_tuple']['no_late_sale_advance'] is True
-          print('FERT_DAILY_CURRENTROOT_DISPOSITION', data['disposition'])
-          print('FERT_DAILY_CURRENTROOT_SUMMARIES', data['summaries'])
+          require(data.get('schema') == 'titan-v31-fert-daily-currentroot-gate/v1', 'receipt schema drift')
+          require(data.get('parent_head') == '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a', 'parent head drift')
+          require(data.get('canonical_head') == '8e3d92a286806f9f9525973ee7d359b629a11487', 'canonical head drift')
+          donor = data.get('donor')
+          require(isinstance(donor, dict), 'donor receipt object required')
+          require(donor.get('blob') == 'cd6c1dd50a439f58bce9434db8d628ca8d6f978f', 'donor blob drift')
+          current_tuple = data.get('current_tuple')
+          require(isinstance(current_tuple, dict), 'current tuple object required')
+          require(current_tuple.get('b5_carrot_fertilizer') is True, 'B5 CARROT missing')
+          require(current_tuple.get('b5_jit_fertilize') is True, 'B5 JIT missing')
+          require(current_tuple.get('no_late_sale_advance') is True, 'L3 missing')
+          require(current_tuple.get('no_late_sale_advance_step') == 648, 'L3 threshold drift')
+          disposition = data.get('disposition')
+          require(
+              disposition in {'KILL_INACTIVE_CURRENTROOT', 'HOLD_NEGATIVE_PAIRED_CELL', 'PASS_WIDEN_ONLY', 'HOLD_NO_POSITIVE_MARGIN'},
+              'unknown disposition',
+          )
+          summaries = data.get('summaries')
+          require(isinstance(summaries, dict) and set(summaries) == {'current_self', 'arlene'}, 'summary coverage drift')
+          print('FERT_DAILY_CURRENTROOT_DISPOSITION', disposition)
+          print('FERT_DAILY_CURRENTROOT_SUMMARIES', summaries)
           PY
 
-      - name: Recheck live roots before retaining evidence
+      - name: Recheck live roots and feature head before retaining evidence
         shell: bash
         run: |
           set -euo pipefail
@@ -136,6 +180,14 @@ jobs:
           git fetch --no-tags origin '+refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911:refs/remotes/origin/v31-p0-live'
           test "$(git rev-parse refs/remotes/origin/titan-v3.1-live)" = '8e3d92a286806f9f9525973ee7d359b629a11487'
           test "$(git rev-parse refs/remotes/origin/v31-p0-live)" = '6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
+          if [ '${{ github.event_name }}' = 'pull_request' ]; then
+            HEAD_REF='${{ github.event.pull_request.head.ref }}'
+            EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+            test -n "$HEAD_REF"
+            test -n "$EXPECTED_HEAD"
+            git fetch --no-tags origin "+refs/heads/$HEAD_REF:refs/remotes/origin/fert-daily-head-live"
+            test "$(git rev-parse refs/remotes/origin/fert-daily-head-live)" = "$EXPECTED_HEAD"
+          fi
           test -z "$(git status --porcelain)"
 
       - name: Upload exact paired evidence
