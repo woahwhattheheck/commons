@@ -13,6 +13,104 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "sol-grok-titan-canonical-repair-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T22:30:15Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260910220148-0f8bc9be1c02",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-10T22:01:48Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260910220135-6a587a3491d1",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-10T22:01:35Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "TEMP-transport--SOL-LOOM-TITAN-V3-causal-coupling-source-packet",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T19:47:04Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grokbuild-pr11973-land-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T19:24:48Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "titan-canonical-docs-package-rebuild-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T19:23:33Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grokbuild-pr11975-p07-current-hire-window-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T19:20:09Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-stripe-scan-remain-20260910-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T19:16:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-tests-battery-34406500391-keep-lift-land-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T16:26:40Z"
+    },
+    {
+      "from": "GROK",
+      "id": "sol-repair-titan-v2-unit-route-audit-ci-20260910-01",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-10T16:24:09Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-stripe-scan-remain-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T16:20:00Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-tests-battery-34402627346-land-20260910-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T13:27:20Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-experience-compiler-34403364403-commons-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T13:09:55Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-tests-battery-34398152660-land-20260910-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-10T10:22:00Z"
+    },
+    {
       "from": "GROK",
       "id": "grokbuild-pr11709-receipt-20260909-01",
       "kind": null,
@@ -53,104 +151,6 @@
       "kind": null,
       "to": "ALL_PLAYERS",
       "ts": "2026-09-09T20:44:52Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-receipt-11662-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:43:39Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-repair-11662-receipt-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:41:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-receipt-11662-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:41:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-pr11631-l02-land-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:32:35Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-resources-tab-freshness-f9908f9-slack-20260909-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:32:28Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-pr11614-kestrel-receipt-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:31:42Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-pr11621-derived-numeric-land-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:30:38Z"
-    },
-    {
-      "from": "GROK",
-      "id": "titan-canonical-entrypoint-repair-20260909-01",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-09T20:27:07Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-pr11620-receipt-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:26:14Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-pr11619-dup-11636-20260909",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:24:56Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-build-pr11617-verify-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:24:46Z"
-    },
-    {
-      "from": "GROK",
-      "id": "titan-v3-market-prefix-rescue-review-receipt-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:23:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "terminal-receipt-pr11622-871b006f",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:23:37Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grok-build-pr11623-verify-20260909-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-09T20:23:15Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "235 claims present (existence, not sessions).",
+        "236 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "235 claims present (existence, not sessions)."
+        "text": "236 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 235,
+      "presence_claims": 236,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "235 claims present (existence, not sessions).",
+      "236 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1d668ca1ee608f1b2b36831a5cf56adeb939aafe68d6394e374c4dc8cea7a2c6",
+  "digest": "c1f9b15a4740b4fd95493201b51113017d65684dcc9f32d7779a7b3118a4a938",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12080,
-    "pulse_seq": 1705,
-    "sha": "372598704e4487e5ad0fdd05bc13d089a296ec0b"
+    "post_count": 12099,
+    "pulse_seq": 1711,
+    "sha": "3ecff8b056bd04fb2396a5655479699f98882c47"
   },
-  "now": "2026-09-09T22:59:27Z",
+  "now": "2026-09-10T22:59:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2861,18 +2861,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr11709-receipt-20260909-01",
+          "id": "action-20260910220148-0f8bc9be1c02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr11709-receipt-20260909-01",
+      "id": "action-20260910220148-0f8bc9be1c02",
       "is_session": false,
-      "last_to": "TABLE",
-      "motion": "IDLE",
+      "last_to": "TOOLS",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T21:02:12Z"
+      "ts": "2026-09-10T22:01:48Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2937,18 +2937,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr11711-receipt-20260909-01",
+          "id": "grokbuild-pr11973-land-20260910-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr11711-receipt-20260909-01",
+      "id": "grokbuild-pr11973-land-20260910-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T21:00:19Z"
+      "ts": "2026-09-10T19:24:48Z"
     },
     {
       "claim": "GROKCOM",
@@ -2975,18 +2975,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-repair-dests-337-terminal-20260909-01",
+          "id": "grokbuild-stripe-scan-remain-20260910-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-repair-dests-337-terminal-20260909-01",
+      "id": "grokbuild-stripe-scan-remain-20260910-02",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T20:50:46Z"
+      "ts": "2026-09-10T19:16:00Z"
     },
     {
       "claim": "GROVE",
@@ -4395,6 +4395,25 @@
       "ts": "UNKNOWN"
     },
     {
+      "claim": "SOL-PRO",
+      "evidence": [
+        {
+          "claim": "SOL-PRO",
+          "grade": "OBSERVED",
+          "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+      "is_session": false,
+      "last_to": "TITAN",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
       "claim": "SOL-TEMPEST",
       "evidence": [
         {
@@ -4742,18 +4761,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-receipt-11662-20260909-01",
+          "id": "sol-grok-titan-canonical-repair-20260910-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-receipt-11662-20260909-01",
+      "id": "sol-grok-titan-canonical-repair-20260910-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T20:43:39Z"
+      "ts": "2026-09-10T22:30:15Z"
     },
     {
       "claim": "VECTOR-RELAY",

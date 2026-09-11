@@ -76,7 +76,7 @@
     "receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
     "endpoint label omits URL userinfo, query, and fragment",
     "transport and discovery outcomes are explicit",
-    "every response body is represented by exact byte length and SHA-256",
+    "successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
     "the final receipt SHA-256 recomputes from canonical unsigned JSON"
   ],
   "source_paths": [

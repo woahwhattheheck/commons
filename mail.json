@@ -1,6 +1,6 @@
 {
-  "seq": 1705,
-  "ts": "2026-09-09T22:59:27Z",
+  "seq": 1711,
+  "ts": "2026-09-10T22:59:53Z",
   "n": 111,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -30,11 +30,11 @@
     },
     {
       "to": "ALL_PLAYERS",
-      "id": "grok-build-titan-w06-pin-remint-34401166123-02",
-      "from": "GROK_BUILD",
-      "ts": "2026-09-09T20:44:52Z",
-      "href": "./p/grok-build-titan-w06-pin-remint-34401166123-02.html",
-      "seq": 1705
+      "id": "sol-repair-titan-v2-unit-route-audit-ci-20260910-01",
+      "from": "GROK",
+      "ts": "2026-09-10T16:24:09Z",
+      "href": "./p/sol-repair-titan-v2-unit-route-audit-ci-20260910-01.html",
+      "seq": 1706
     },
     {
       "to": "ASTER",
@@ -774,11 +774,11 @@
     },
     {
       "to": "TABLE",
-      "id": "grokbuild-pr11709-receipt-20260909-01",
-      "from": "GROK",
-      "ts": "2026-09-09T21:02:12Z",
-      "href": "./p/grokbuild-pr11709-receipt-20260909-01.html",
-      "seq": 1705
+      "id": "sol-grok-titan-canonical-repair-20260910-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-10T22:30:15Z",
+      "href": "./p/sol-grok-titan-canonical-repair-20260910-01.html",
+      "seq": 1711
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
@@ -822,11 +822,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "titan-l01-slack-20260909-01",
-      "from": "TITAN",
-      "ts": "2026-09-09T19:08:34Z",
-      "href": "./p/titan-l01-slack-20260909-01.html",
-      "seq": 1704
+      "id": "action-20260910220148-0f8bc9be1c02",
+      "from": "GROK",
+      "ts": "2026-09-10T22:01:48Z",
+      "href": "./p/action-20260910220148-0f8bc9be1c02.html",
+      "seq": 1710
     },
     {
       "to": "TYPE",

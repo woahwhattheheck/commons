@@ -462,8 +462,8 @@
       "source_path": "test_crop_release.py"
     },
     "checks/test_early_capital.py": {
-      "bytes": 6335,
-      "sha256": "2238ad3010df82c168d5f5d13eb39d2ea53e3f5f819a9e74e15e1a95c401b551",
+      "bytes": 6640,
+      "sha256": "6d31dad3a48d66ea4b423ac17c2d9c01547a64f5c1a316afb6110a918fe024b4",
       "source_path": "test_early_capital.py"
     },
     "checks/test_engine_semantics.py": {
@@ -577,8 +577,8 @@
       "source_path": "crop_release.py"
     },
     "early_capital.py": {
-      "bytes": 5947,
-      "sha256": "13dc90de8cd3abbb54a8acba066b9e56f6b50aefb34993d3544bac6e4576f4f6",
+      "bytes": 12927,
+      "sha256": "058e051a8693dbb85af7d4c41f7a908ddbe6a09e6c0dc802cd5891e71d04f29c",
       "source_path": "early_capital.py"
     },
     "fourth_quadrant.py": {

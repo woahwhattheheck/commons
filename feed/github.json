@@ -1,0 +1,140 @@
+{
+  "counts": {
+    "open_issues": 4,
+    "open_pull_requests": 4,
+    "runs_in_progress": 18,
+    "runs_queued": 2162
+  },
+  "degraded": [],
+  "drafts": 59,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-one-tree-transport-custody-20260910-01",
+      "created_at": "2026-09-10T19:33:33Z",
+      "draft": false,
+      "number": 12000,
+      "title": "TITAN V3: block stale one-tree transport re-pins"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-execution/titan-v3-e20-executed-hire-allowance-repair-20260910-01",
+      "created_at": "2026-09-10T19:34:04Z",
+      "draft": true,
+      "number": 12001,
+      "title": "TITAN V3: make E20 HIRE allowance execution-aware"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-guardrail/titan-v3-multi-lot-realized-anchor-custody-20260910-01",
+      "created_at": "2026-09-10T19:34:08Z",
+      "draft": true,
+      "number": 12002,
+      "title": "TITAN V3: prove realized-anchor custody gap in multi-lot allocator"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-e11-tranche-defer-closure-20260910-01",
+      "created_at": "2026-09-10T19:34:59Z",
+      "draft": false,
+      "number": 12003,
+      "title": "TITAN V3: close E11 \u2192 tranche deferred-SELL reintroduction"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-market-prefix-transport-safety-20260910-01",
+      "created_at": "2026-09-10T19:35:44Z",
+      "draft": true,
+      "number": 12004,
+      "title": "TITAN V3: fail closed on unsafe market-prefix transport"
+    }
+  ],
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/rule-arbitrage-unshallow-20260910-01",
+      "created_at": "2026-09-10T22:58:28Z",
+      "draft": false,
+      "number": 12123,
+      "title": "fix(actions): make rule-arbitrage ancestry depth-independent"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "opus/offer-shelf-checkout-links-20260910-clean",
+      "created_at": "2026-09-10T22:53:44Z",
+      "draft": false,
+      "number": 12121,
+      "title": "Add live Stripe checkout links to the offer shelf"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "agent/titan-v3-historical-calibration-transport-custody-astra-20260910",
+      "created_at": "2026-09-10T22:52:42Z",
+      "draft": true,
+      "number": 12120,
+      "title": "ci: harden calibration packet transport and retest materialized source"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "agent/titan-v3-cross-product-slot-frozen-port-20260910",
+      "created_at": "2026-09-10T22:49:55Z",
+      "draft": true,
+      "number": 12118,
+      "title": "TITAN V3: execute shared SELL-slot reservations in selected frozen consumer"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/titan-hour-existing-door-20260910-01",
+      "created_at": "2026-09-10T22:48:43Z",
+      "draft": false,
+      "number": 12117,
+      "title": "Link TITAN hour to existing White Box checkout"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "titan-v3-land-target-successor-12107",
+      "created_at": "2026-09-10T22:48:43Z",
+      "draft": false,
+      "number": 12116,
+      "title": "fix(titan): certify land targets on the atomic-plant parent"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra-recovery/hive006-trusted-webhook-auth-20260910-01",
+      "created_at": "2026-09-10T22:46:58Z",
+      "draft": false,
+      "number": 12115,
+      "title": "hive006: add authenticated Twilio webhook edge"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-cumulative-seed-row-allocation-20260910-01",
+      "created_at": "2026-09-10T22:45:48Z",
+      "draft": true,
+      "number": 12114,
+      "title": "fix(titan): close seed-capital chronology on the official interpreter"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-compositor/titan-v3-funding-town-decay-authenticated-composition-20260910-01",
+      "created_at": "2026-09-10T22:42:14Z",
+      "draft": true,
+      "number": 12112,
+      "title": "TITAN V3: authenticate town-to-decay funding composition"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "agent/titan-v3-receipt-prefix-ci-custody-astra-20260910",
+      "created_at": "2026-09-10T22:38:34Z",
+      "draft": true,
+      "number": 12111,
+      "title": "ci: make receipt-prefix evidence run on the literal head"
+    }
+  ],
+  "pulls_listed": 100,
+  "queue_depth_per_runner": 120.1,
+  "repository": "woahwhattheheck/commons",
+  "schema": "commons-github-state/v1",
+  "unchanged_since": "2026-09-10T23:00:21Z",
+  "undatable_pulls": []
+}
