@@ -21,7 +21,13 @@ from r01_tapes import load_tapes  # noqa: E402
 from titan_runtime import Features, TitanAgent  # noqa: E402
 
 
-def synthetic_observation(step, shops=("BAKERY", "YARN_STORE"), player=0, money=1000):
+def synthetic_observation(
+    step,
+    shops=("BAKERY", "YARN_STORE"),
+    player=0,
+    money=1000,
+    shed=None,
+):
     size = 10
     tiles = [["LOCKED"] * size for _ in range(size)]
     for y in range(3, 7):
@@ -31,9 +37,17 @@ def synthetic_observation(step, shops=("BAKERY", "YARN_STORE"), player=0, money=
             "unlocked_quadrants": ["NW"], "hires_today": 0}
     return {"step": step, "day": step // 24, "hour": step % 24, "player": player,
             "farms": [farm, copy.deepcopy(farm)],
-            "private": {"inventories": [{}], "shed": {"WHEAT": 5}},
+            "private": {"inventories": [{}], "shed": dict(shed or {"WHEAT": 5})},
             "market": {"prices": {product: 10 for product in r01.PRODUCTS}},
             "town": {"unlocked_shops": list(shops)}}
+
+
+def install_sale_fixture(router, *, current_market, next_market):
+    """Replace two plan-0 tape cells so sale-advance behavior is deterministic."""
+    tape = router.policy.tapes[0]
+    tape[10] = {"farmer": ["PASS"], "hands": [], "market": copy.deepcopy(current_market)}
+    tape[11] = {"farmer": ["PASS"], "hands": [], "market": copy.deepcopy(next_market)}
+    tape[12] = {"farmer": ["PASS"], "hands": [], "market": []}
 
 
 class TapeTests(unittest.TestCase):
@@ -81,6 +95,68 @@ class PolicyTests(unittest.TestCase):
         action = policy.act(synthetic_observation(r01.LAST_STEP))
         self.assertEqual(action["market"], [["SELL", "WHEAT", 5]])
 
+    def test_cap_one_does_not_record_inert_tail_advance_or_subtract_next_turn(self):
+        policy = r01.RouterPolicy()
+        install_sale_fixture(
+            policy,
+            current_market=[["BUY_LAND"]],
+            next_market=[["SELL", "CARROT", 3]],
+        )
+        cfg = {"maxMarketOrdersPerTurn": 1}
+        action = policy.act(synthetic_observation(10, shed={"CARROT": 3}), cfg)
+        self.assertEqual(action["market"], [["BUY_LAND"]])
+        state = policy.policy.players[0]
+        self.assertEqual(state.advanced_sales, {})
+        self.assertEqual(state.sale_due_step, -1)
+        next_action = policy.act(synthetic_observation(11, shed={"CARROT": 3}), cfg)
+        self.assertEqual(next_action["market"], [["SELL", "CARROT", 3]])
+
+    def test_next_turn_inert_tail_sale_is_not_advanced_into_live_slot(self):
+        policy = r01.RouterPolicy()
+        install_sale_fixture(
+            policy,
+            current_market=[],
+            next_market=[["BUY_LAND"], ["SELL", "CARROT", 3]],
+        )
+        action = policy.act(
+            synthetic_observation(10, shed={"CARROT": 3}),
+            {"maxMarketOrdersPerTurn": 1},
+        )
+        self.assertEqual(action["market"], [])
+        self.assertEqual(policy.policy.players[0].advanced_sales, {})
+
+    def test_zero_and_negative_caps_match_engine_minimum_one(self):
+        for cap in (0, -3):
+            with self.subTest(cap=cap):
+                policy = r01.RouterPolicy()
+                install_sale_fixture(
+                    policy,
+                    current_market=[["BUY_LAND"]],
+                    next_market=[["SELL", "CARROT", 3]],
+                )
+                action = policy.act(
+                    synthetic_observation(10, shed={"CARROT": 3}),
+                    {"maxMarketOrdersPerTurn": cap},
+                )
+                self.assertEqual(action["market"], [["BUY_LAND"]])
+                self.assertEqual(policy.policy.players[0].advanced_sales, {})
+
+    def test_default_ten_preserves_published_sale_advance(self):
+        policy = r01.RouterPolicy()
+        install_sale_fixture(
+            policy,
+            current_market=[["BUY_LAND"]],
+            next_market=[["SELL", "CARROT", 3]],
+        )
+        action = policy.act(synthetic_observation(10, shed={"CARROT": 3}))
+        self.assertEqual(
+            action["market"],
+            [["BUY_LAND"], ["SELL", "CARROT", 3]],
+        )
+        self.assertEqual(policy.policy.players[0].advanced_sales, {"CARROT": 3})
+        next_action = policy.act(synthetic_observation(11, shed={"CARROT": 3}))
+        self.assertEqual(next_action["market"], [["SELL", "CARROT", 0]])
+
 
 class WiringTests(unittest.TestCase):
     def test_key_ships_off(self):
@@ -102,6 +178,26 @@ class WiringTests(unittest.TestCase):
         self.assertEqual(agent.diagnostics["r01_plan"], 0)
         self.assertFalse(agent.ready)
         self.assertIsNone(getattr(agent, "controller", None))
+
+    def test_delegate_receives_engine_market_cap(self):
+        agent = TitanAgent(Features(r01_shop_router=True))
+        router = r01.install(agent)
+        install_sale_fixture(
+            router,
+            current_market=[["BUY_LAND"]],
+            next_market=[["SELL", "CARROT", 3]],
+        )
+        action = agent.act(
+            synthetic_observation(10, shed={"CARROT": 3}),
+            {
+                "episodeSteps": 720,
+                "turnsPerDay": 24,
+                "maxMarketOrdersPerTurn": 1,
+            },
+        )
+        self.assertEqual(action["market"], [["BUY_LAND"]])
+        self.assertEqual(router.policy.players[0].advanced_sales, {})
+        self.assertEqual(agent.diagnostics["status"], "completed")
 
     def test_notice_carries_attribution(self):
         notice = (ROOT / "NOTICE").read_text(encoding="utf-8")
