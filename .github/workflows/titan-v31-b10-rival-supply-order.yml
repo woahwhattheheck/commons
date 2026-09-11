@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - astra/v31-b10-rival-supply-order-20260911
+      - astra/v31-b10-exec-prefix-custody-repair-20260911
 
 permissions:
   contents: read
@@ -36,13 +37,31 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind exact source dependencies
+      - name: Bind exact frozen scope and source dependencies
         shell: bash
         run: |
           set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           test "$(git rev-parse "HEAD:$R04")" = "$EXPECTED_R04_BLOB"
           test "$(git rev-parse "HEAD:$ENGINE")" = "$EXPECTED_ENGINE_BLOB"
+          python - <<'PY'
+          import subprocess
+          base = '508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          expected = {
+              '.github/workflows/titan-v31-b10-rival-supply-order.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b10_rival_supply_order/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b10_rival_supply_order/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b10_rival_supply_order/test_candidate.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', base, 'HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'unexpected B10 scope: {sorted(actual)}')
+          print('B10_SCOPE_OK', len(actual))
+          PY
           git diff --check
           test -z "$(git status --short)"
 
@@ -58,7 +77,7 @@ jobs:
           set -euo pipefail
           python -B -m py_compile candidate.py test_candidate.py
           python -B -m unittest -v test_candidate.py 2>&1 | tee "$RUNNER_TEMP/B10-TEST.log"
-          grep -E '^Ran 16 tests in [0-9.]+s$' "$RUNNER_TEMP/B10-TEST.log"
+          grep -E '^Ran 18 tests in [0-9.]+s$' "$RUNNER_TEMP/B10-TEST.log"
           grep -Fx 'OK' "$RUNNER_TEMP/B10-TEST.log"
           ! grep -E 'FAILED|ERROR|skipped=' "$RUNNER_TEMP/B10-TEST.log"
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
