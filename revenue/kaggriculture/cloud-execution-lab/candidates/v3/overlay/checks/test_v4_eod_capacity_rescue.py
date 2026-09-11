@@ -129,6 +129,16 @@ class EodCapacityRescue(unittest.TestCase):
         self.assertIs(lane.apply_eod_capacity_rescue(
             parent, obs, dict(CONFIG), enabled=True), parent)
 
+    def test_unhashable_unit_op_heads_fail_closed(self):
+        obs = observation(shed={"WHEAT": 98, "CARROT": 1})
+        for malformed in ([[]], [{}]):
+            parent = action(farmer=malformed)
+            self.assertIs(
+                lane.apply_eod_capacity_rescue(
+                    parent, obs, dict(CONFIG), enabled=True),
+                parent,
+            )
+
     def test_existing_shed_changing_market_order_fails_closed(self):
         parent = action(market=[["SELL", "CARROT", 1]])
         obs = observation(shed={"WHEAT": 98, "CARROT": 1})
