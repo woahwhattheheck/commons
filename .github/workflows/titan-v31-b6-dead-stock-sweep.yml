@@ -21,6 +21,45 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Pin exact PR head and frozen V3.1 custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha || github.sha }}'
+          expected_base='508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          expected_tape_blob='a43289b9cc5e34a2481fddf652762a7d92f427ef'
+          tape_path='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py'
+
+          actual_head="$(git rev-parse HEAD)"
+          test "$actual_head" = "$expected_head" || {
+            echo "::error::workflow checked out $actual_head, expected literal candidate head $expected_head"
+            exit 1
+          }
+
+          git cat-file -e "${expected_base}^{commit}"
+          expected_paths=(
+            '.github/workflows/titan-v31-b6-dead-stock-sweep.yml'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/README.md'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/candidate.py'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/test_candidate.py'
+          )
+          mapfile -t actual_paths < <(git diff --name-only "$expected_base" HEAD | sort)
+          mapfile -t expected_sorted < <(printf '%s\n' "${expected_paths[@]}" | sort)
+          if ! diff -u <(printf '%s\n' "${expected_sorted[@]}") <(printf '%s\n' "${actual_paths[@]}"); then
+            echo '::error::base-to-head scope drifted outside the four reviewed B6 files'
+            exit 1
+          fi
+
+          actual_tape_blob="$(git rev-parse "HEAD:${tape_path}")"
+          test "$actual_tape_blob" = "$expected_tape_blob" || {
+            echo "::error::r01_tapes.py blob $actual_tape_blob != frozen $expected_tape_blob"
+            exit 1
+          }
+          echo "candidate_head=$actual_head"
+          echo "tape_blob=$actual_tape_blob"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
