@@ -1,0 +1,278 @@
+name: TITAN V3.1 a612 L3 fail-closed package bootstrap
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-a612-l3-failclosed-bootstrap.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/**'
+
+permissions:
+  contents: write
+
+jobs:
+  consume-reviewed-repair:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout writable feature branch at exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Bind canonical base, exact bootstrap scope, and donor bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          PATCH='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/repair.patch'
+          DONOR_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/test_failclosed.py'
+          ROUTER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          PROD_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+          test "$(git rev-parse "$BASE:$ROUTER")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
+          test "$(git rev-parse "$BASE:$PROD_TEST")" = '543101ea0499a529e024675d8299a896b3e5f9dd'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py")" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py")" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py")" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+          test "$(git rev-parse "$BASE:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py")" = 'ec02a9ba52abc22ff9ec5aac3ea2351d80d1761d'
+          test "$(git hash-object "$PATCH")" = 'bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c'
+          test "$(git hash-object "$DONOR_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          git diff --name-only "$BASE"..HEAD > /tmp/l3-bootstrap-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/l3-bootstrap-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-a612-l3-failclosed-bootstrap.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/test_failclosed.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'prebootstrap scope drift: actual={sorted(actual)!r}')
+          print('L3_PREBOOTSTRAP_SCOPE_OK', len(actual))
+          PY
+
+      - name: Apply reviewed fail-closed repair and replace stale packaged contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/repair.patch'
+          DONOR_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/test_failclosed.py'
+          ROUTER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          PROD_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          cp "$DONOR_TEST" "$PROD_TEST"
+          test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+          ):
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
+          PY
+
+      - name: Run production-path fail-closed predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-production-tests.log
+          grep -F 'Ran 17 tests' /tmp/l3-production-tests.log
+          grep -F 'OK' /tmp/l3-production-tests.log
+
+      - name: Regenerate and verify deterministic package
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py | tee /tmp/l3-build.log
+          python -B build_v3.py --check | tee /tmp/l3-build-check.log
+          grep -F 'V3 BUILD' /tmp/l3-build.log
+          grep -F 'V3 CHECK OK' /tmp/l3-build-check.log
+          rm -rf /tmp/l3-materialized
+          python -B build_v3.py --tree /tmp/l3-materialized | tee /tmp/l3-tree.log
+          (
+            cd /tmp/l3-materialized
+            python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-materialized-tests.log
+          )
+          grep -F 'Ran 17 tests' /tmp/l3-materialized-tests.log
+          grep -F 'OK' /tmp/l3-materialized-tests.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('/tmp/l3-materialized/TITAN-CONFIG.json').read_text())
+          assert cfg['r04_strawberry_topup'] is True
+          assert cfg['r04_no_late_sale_advance'] is True
+          assert cfg['r04_no_late_sale_advance_step'] == 648
+          assert cfg['r04_sale_fertilizer'] is True
+          assert cfg['r04_cattle_early'] is True
+          assert cfg['r04_sale_horizon'] == 8
+          print('L3_CONFIG_PRESERVED_OK')
+          PY
+          rm -rf dist
+
+      - name: Install permanent read-only exact-head gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > .github/workflows/titan-v31-a612-l3-failclosed-package.yml <<'YAML'
+          name: TITAN V3.1 a612 L3 fail-closed package gate
+
+          on:
+            pull_request:
+              branches:
+                - titan/v3.1-20260911
+              paths:
+                - '.github/workflows/titan-v31-a612-l3-failclosed-package.yml'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            exact-source-package-custody:
+              runs-on: ubuntu-latest
+              timeout-minutes: 20
+              steps:
+                - name: Checkout exact event head
+                  uses: actions/checkout@v4
+                  with:
+                    ref: ${{ github.event.pull_request.head.sha || github.sha }}
+                    fetch-depth: 0
+
+                - name: Bind exact canonical parent, final scope, and source bytes
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+                    EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+                    ROUTER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+                    PROD_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
+                    test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+                    test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+                    git fetch --no-tags origin titan/v3.1-20260911
+                    test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+                    test "$(git hash-object "$ROUTER")" = '__POST_BOOTSTRAP_ROUTER_BLOB__'
+                    test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py)" = '7a96c0f1d38fff674493e92bc420eb3dfe821f20'
+                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+                    test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+                    git diff --name-only "$BASE"..HEAD > /tmp/l3-final-paths.txt
+                    python - <<'PY'
+                    from pathlib import Path
+                    actual = set(Path('/tmp/l3-final-paths.txt').read_text().splitlines())
+                    expected = {
+                        '.github/workflows/titan-v31-a612-l3-failclosed-package.yml',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+                    }
+                    if actual != expected:
+                        raise SystemExit(f'final L3 scope drift: {sorted(actual)!r}')
+                    print('L3_FINAL_SCOPE_OK', len(actual))
+                    PY
+
+                - name: Run production fail-closed contracts
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    python -B -m unittest -v overlay/checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-tests.log
+                    grep -F 'Ran 17 tests' /tmp/l3-tests.log
+                    grep -F 'OK' /tmp/l3-tests.log
+
+                - name: Verify deterministic source package and materialized contract
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    python -B build_v3.py --check | tee /tmp/l3-check.log
+                    grep -F 'V3 CHECK OK' /tmp/l3-check.log
+                    rm -rf /tmp/l3-final-tree
+                    python -B build_v3.py --tree /tmp/l3-final-tree
+                    (
+                      cd /tmp/l3-final-tree
+                      python -B -m unittest -v checks/test_v3_r04_l3_rival_gate.py |& tee /tmp/l3-tree-tests.log
+                    )
+                    grep -F 'Ran 17 tests' /tmp/l3-tree-tests.log
+                    grep -F 'OK' /tmp/l3-tree-tests.log
+                    python - <<'PY'
+                    import json
+                    from pathlib import Path
+                    cfg = json.loads(Path('/tmp/l3-final-tree/TITAN-CONFIG.json').read_text())
+                    assert cfg['r04_strawberry_topup'] is True
+                    assert cfg['r04_no_late_sale_advance'] is True
+                    assert cfg['r04_no_late_sale_advance_step'] == 648
+                    assert cfg['r04_sale_fertilizer'] is True
+                    assert cfg['r04_cattle_early'] is True
+                    assert cfg['r04_sale_horizon'] == 8
+                    print('L3_MATERIALIZED_CONFIG_OK')
+                    PY
+
+                - name: Prove checkout stayed clean
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    test -z "$(git status --porcelain)"
+          YAML
+
+      - name: Collapse bootstrap to final production delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git rm .github/workflows/titan-v31-a612-l3-failclosed-bootstrap.yml
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/repair.patch
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_failclosed_consume_a612/test_failclosed.py
+          git add \
+            .github/workflows/titan-v31-a612-l3-failclosed-package.yml \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py
+          git diff --cached --name-only "$BASE" > /tmp/l3-final-staged.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/l3-final-staged.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-a612-l3-failclosed-package.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'final staged scope drift: {sorted(actual)!r}')
+          print('L3_FINAL_STAGED_SCOPE_OK', len(actual))
+          PY
+          test -z "$(git status --porcelain --untracked-files=no | grep '^.[^MADRCTU?! ]' || true)"
+
+      - name: Commit only after exact remote-head compare-and-swap
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha }}'
+          HEAD_REF='${{ github.event.pull_request.head.ref }}'
+          REMOTE_BEFORE="$(git ls-remote origin "refs/heads/$HEAD_REF" | awk '{print $1}')"
+          test "$REMOTE_BEFORE" = "$EXPECTED_HEAD"
+          git config user.name 'Astra Titan Integration'
+          git config user.email 'actions@users.noreply.github.com'
+          git commit -m 'TITAN V3.1: make rival-gated L3 fail closed on ambiguous opening'
+          FINAL_HEAD="$(git rev-parse HEAD)"
+          git push origin "HEAD:refs/heads/$HEAD_REF"
+          echo "FINAL_HEAD=$FINAL_HEAD" >> "$GITHUB_ENV"
+          echo "L3 production consumer pushed $FINAL_HEAD"
