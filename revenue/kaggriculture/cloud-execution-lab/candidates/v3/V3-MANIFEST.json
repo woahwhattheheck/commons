@@ -16,6 +16,41 @@
     "bytes": 526837,
     "files": 126
   },
+  "releases": [
+    {
+      "version": "3.0",
+      "tree_commit": "2ff565d0efc69dbfd6bf955e6f15384f449a2d91",
+      "package": {
+        "path": "dist/titan-v3.tar.gz",
+        "sha256": "c30e5b0a4e6ff0a80ff228696251c5169e4f45eba49c39285f2015269ac12f68",
+        "files": 126
+      },
+      "submission_archive": {
+        "name": "titan-v3.tar.gz",
+        "builder": "python make_submission.py <candidates/v3> ../../exports/titan-current.tar.gz titan-v3.tar.gz 8",
+        "edit": "the package with TITAN-CONFIG.json r04_sale_window set true; nothing else changed",
+        "sha256": "a06298447704e65c7b101788dd559d3b8a1be7a5a44d5492767fb43c60bea897",
+        "bytes": 526839,
+        "files": 126
+      },
+      "config": {
+        "r04_sale_window": true,
+        "r04_sale_horizon": 8,
+        "r04_open_roundtrip": 0,
+        "r04_row_order": true,
+        "r04_evening_flush": true
+      },
+      "kaggle": {
+        "competition": "kaggriculture (competitionId 147734)",
+        "submission_id": 56159263,
+        "team_id": 16846069,
+        "submitted_utc": "2026-09-11T05:32:05.740Z",
+        "content_length": 526839,
+        "description": "TITAN V3 - R04 sale window (horizon 8, SELL row order, evening flush; opening round-trip 0). Commit 2ff565d0e, package c30e5b0a, archive sha256 a0629844."
+      },
+      "boundary": "Everything committed up to and including tree_commit is V3.0. All work after this record is V3.1."
+    }
+  ],
   "keys": {
     "e11_rival_sell": {
       "default": false,

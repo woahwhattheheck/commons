@@ -31,6 +31,10 @@ this tree is what he promotes from.
 | (none) | O02 shop priority multiplier | same chain, ARGUS A7 | `shop_arb.py` is a tested scoring-only callable; no production seam, `absorption()` is never patched | n/a |
 | `early_capital` | horizon-aware same-queue capital ordering | canonical | already in the canonical archive | on |
 | `l01_land`, `l01_sheep`, `l01_day0buy`, `l01_leanplant` | L01 leader mechanisms on the Arlene MAIN tape: BUY_LAND at steps 74/98, COW→SHEEP after step 1, the SpaTaro day-0 basket, last 92 wheat plants to PASS | Grok Build #5, PR #11459 (`candidates/v3-l01-leader-mechanics`) | `TitanAgent._v3_l01_install` at the end of `_initialize` patches `controller.R` once | off; panel decides |
+| `r01_shop_router` | R01 yhay81 Shop Router 0909 base policy and its 13 tapes | yhay81, Apache-2.0 | first line of `TitanAgent.act`, whole-turn delegate | off |
+| `r02_route_bank` | R02 the same tapes seated as the canonical MAIN route; TITAN keeps the market | R01 tapes | `TitanAgent._v3_r02_install` | off |
+| `r03_full_router` | R03 the complete published shop-router policy (base + layers V216-V234) | prvsiyan, Apache-2.0 | first line of `TitanAgent.act` | off |
+| `r04_sale_window` + `r04_sale_horizon`, `r04_open_roundtrip`, `r04_row_order`, `r04_evening_flush` | R04 R03 with the E184 sale window outermost, horizon 8, SELL row order on the exact price curve, evening flush of WOOL/MILK/STRAWBERRY/MELON at hours 21-23 | Dmitrii Gluzdov E184, Apache-2.0 | first line of `TitanAgent.act`; precedence R04 > R03 > R01 | off in the package; on in the V3.0 submission |
 | `l01_tranche` | L01 live sale tranches from day 28 (WHEAT ≤57, CARROT ≤32, pack the other shed products) | same | `TitanAgent._v3_post_final`, after `_finish_production` | off |
 | `joint_actor_assignment` (reserved) | P07 joint actor assignment | Grok Build #6 | lands here | pending |
 | `terminal_liquidation`, `land_unlock_timing`, `opening_script`, `tight_guard` (reserved) | T01–T04 | TESSERA designs on Slack C0BUH19DW80; Grok Build #2 | lands here | pending |
@@ -40,6 +44,16 @@ this tree is what he promotes from.
 Parameters carried with the keys: `rival_dump_price_drop` 15.0, `rival_dump_lookback_steps` 8,
 `e11_min_future_absorption` 2, `e20_max_hires_per_day` 3, `e20_min_unwatered_crops` 3,
 `g01_early_expander_step` 144, `g01_land_cash_floor` 0.
+
+## Releases
+
+| version | tree commit | package | submission archive | Kaggle |
+|---|---|---|---|---|
+| 3.0 | `2ff565d0e` | `c30e5b0a` (126 files) | `titan-v3.tar.gz` sha256 `a0629844`, 526,839 bytes: the package with `r04_sale_window` true (horizon 8, row order on, evening flush on, opening round trip 0) | submission 56159263, 2026-09-11 05:32 UTC |
+
+`make_submission.py` rebuilds the submission archive from the package with that one
+config edit and the same fixed tar metadata. Everything up to the 3.0 tree commit is V3.0;
+all later work is V3.1 (`V3-MANIFEST.json` `releases`).
 
 ## How a lane lands
 
