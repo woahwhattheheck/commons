@@ -34,7 +34,8 @@ jobs:
           sparse-checkout: |
             wake_jobs
           sparse-checkout-cone-mode: false
+          path: target
       - name: compare exact paths and update advisory notice
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 listener/pr_collision_notice.py
+        run: python3 listener/pr_collision_notice.py --repo-root target
