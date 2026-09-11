@@ -3,10 +3,11 @@
 
 The current PR's ``apply_v4.KEYS`` is compared with the target branch copy supplied
 by CI. Every key already present on the target must survive. The candidate is then
-materialised through the real V3/V4 build recipe and each head key is required to be
-present in config and ``Features`` with a default-OFF source landing. R04 keys also
-must retain their router flag, install parameter/setter, at least one live router
-read of that flag, and TitanAgent install wiring.
+materialised through the real V3/V4 build recipe. Every head key must retain complete
+runtime plumbing; keys newly introduced relative to the target must additionally
+source-land default-OFF. R04 keys must retain their router flag, install
+parameter/setter, at least one live router read of that flag, and TitanAgent install
+wiring.
 
 The checker deliberately does *not* prescribe where an R04 key must act. V4 contains
 legitimate inner, outer/final-action, and inline repairs; monotonic plumbing should
@@ -94,8 +95,8 @@ def _runtime_install_wired(tree: ast.AST, key: str, suffix: str) -> bool:
     return False
 
 
-def _top_level_false_names(tree: ast.AST) -> set[str]:
-    out: set[str] = set()
+def _top_level_bool_names(tree: ast.AST) -> dict[str, bool]:
+    out: dict[str, bool] = {}
     for node in getattr(tree, "body", []):
         targets: Iterable[ast.AST]
         value = None
@@ -107,11 +108,11 @@ def _top_level_false_names(tree: ast.AST) -> set[str]:
             value = node.value
         else:
             continue
-        if not (isinstance(value, ast.Constant) and value.value is False):
+        if not (isinstance(value, ast.Constant) and type(value.value) is bool):
             continue
         for target in targets:
             if isinstance(target, ast.Name):
-                out.add(target.id)
+                out[target.id] = value.value
     return out
 
 
@@ -151,11 +152,20 @@ def _router_flag_reader(router_tree: ast.AST, flag: str) -> str | None:
     return None
 
 
-def _assert_r04_router_contract(router_tree: ast.AST, runtime_tree: ast.AST, key: str) -> None:
+def _assert_r04_router_contract(
+    router_tree: ast.AST,
+    runtime_tree: ast.AST,
+    key: str,
+    *,
+    require_default_off: bool,
+) -> None:
     suffix = key.removeprefix("r04_")
     flag = suffix.upper()
 
-    assert flag in _top_level_false_names(router_tree), f"{key}: router {flag} must source-land False"
+    router_defaults = _top_level_bool_names(router_tree)
+    assert flag in router_defaults, f"{key}: router {flag} must be a literal boolean"
+    if require_default_off:
+        assert router_defaults[flag] is False, f"{key}: newly landed router {flag} must source-land False"
 
     install = _find_function(router_tree, "install")
     install_args = {arg.arg for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)}
@@ -175,8 +185,10 @@ def _assert_r04_router_contract(router_tree: ast.AST, runtime_tree: ast.AST, key
 def check(base_apply_v4: Path) -> None:
     base_keys = _literal_keys(base_apply_v4)
     head_keys = _literal_keys(APPLY_V4)
-    removed = sorted(set(base_keys) - set(head_keys))
+    base_key_set = set(base_keys)
+    removed = sorted(base_key_set - set(head_keys))
     assert not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed)
+    new_keys = set(head_keys) - base_key_set
 
     files = build_v3.package_files()
     for required in ("TITAN-CONFIG.json", "titan_runtime.py", "r04_full_router.py"):
@@ -189,12 +201,20 @@ def check(base_apply_v4: Path) -> None:
 
     for key in head_keys:
         assert key in config, f"{key}: missing from materialized TITAN-CONFIG.json"
-        assert config[key] is False, f"{key}: source landing must remain default-OFF"
+        assert type(config[key]) is bool, f"{key}: materialized config value must be boolean"
         assert key in feature_defaults, f"{key}: missing from materialized Features"
-        assert feature_defaults[key] is False, f"{key}: Features default must remain False"
+        assert type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean"
+        if key in new_keys:
+            assert config[key] is False, f"{key}: new source landing must remain default-OFF"
+            assert feature_defaults[key] is False, f"{key}: new Features default must remain False"
         assert _contains_feature_ref(runtime_tree, key), f"{key}: TitanAgent never references self.features.{key}"
         if key.startswith("r04_"):
-            _assert_r04_router_contract(router_tree, runtime_tree, key)
+            _assert_r04_router_contract(
+                router_tree,
+                runtime_tree,
+                key,
+                require_default_off=key in new_keys,
+            )
 
     print("V4 PLUMBING OK", "base", list(base_keys), "head", list(head_keys))
 
