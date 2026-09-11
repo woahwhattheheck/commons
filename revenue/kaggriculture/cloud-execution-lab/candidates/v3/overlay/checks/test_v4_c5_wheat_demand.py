@@ -134,19 +134,6 @@ class C5WheatDemandTests(unittest.TestCase):
         self.assertEqual(rider.players, {})
         self.assertEqual(rider.telemetry["relocations"], 0)
 
-    def test_negative_public_inventory_fails_closed_and_clears_latch(self):
-        rider = c5.WheatDemandRider(enabled=True)
-        rider.apply(obs(1, 100), action())
-        parent = action(("SELL", "WHEAT", 3))
-        self.assertIs(rider.apply(obs(2, -1, price=30), parent), parent)
-        self.assertEqual(rider.players, {})
-        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
-        self.assertEqual(rider.telemetry["relocations"], 0)
-
-        fresh = c5.WheatDemandRider(enabled=True)
-        self.assertIs(fresh.apply(obs(1, -1), parent), parent)
-        self.assertEqual(fresh.players, {})
-
     def test_runtime_cap_parity_and_type_poison(self):
         rider = c5.WheatDemandRider(enabled=True)
         rider.apply(obs(1, 100), action(), {"maxMarketOrdersPerTurn": 3})

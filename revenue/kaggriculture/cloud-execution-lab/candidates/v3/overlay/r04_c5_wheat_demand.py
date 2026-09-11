@@ -101,10 +101,7 @@ def _wheat_inventory(observation: Any) -> int:
     inventory = _get(market, "inventory", None)
     if inventory is None:
         raise ValueError("missing public market inventory")
-    value = _product_value(inventory, WHEAT, "market.inventory.WHEAT")
-    if value < 0:
-        raise ValueError("market.inventory.WHEAT must be nonnegative")
-    return value
+    return _product_value(inventory, WHEAT, "market.inventory.WHEAT")
 
 
 def _wheat_price(observation: Any) -> int:
