@@ -21,6 +21,38 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Bind exact head, frozen ancestry, scope, and imported source custody
+        env:
+          EXPECTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          BASE='508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          HEAD="$(git rev-parse HEAD)"
+          test "$HEAD" = "$EXPECTED_HEAD"
+          git cat-file -e "$BASE^{commit}"
+          git merge-base --is-ancestor "$BASE" "$HEAD"
+          test "$(git merge-base "$BASE" "$HEAD")" = "$BASE"
+
+          actual="$(git diff --name-only "$BASE" "$HEAD" | LC_ALL=C sort)"
+          expected="$(printf '%s\n' \
+            '.github/workflows/titan-v31-b6-dead-stock-sweep.yml' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/README.md' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/candidate.py' \
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b6_dead_stock_sweep/test_candidate.py' \
+            | LC_ALL=C sort)"
+          if [ "$actual" != "$expected" ]; then
+            printf 'unexpected B6 scope\nEXPECTED:\n%s\nACTUAL:\n%s\n' "$expected" "$actual" >&2
+            exit 1
+          fi
+
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          TAPES='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py'
+          test "$(git hash-object "$R04")" = '21c4f1db0298f8955b1f5ad366bd780a89cad206'
+          test "$(git hash-object "$TAPES")" = 'a43289b9cc5e34a2481fddf652762a7d92f427ef'
+          test -z "$(git status --porcelain)"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
