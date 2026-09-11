@@ -37,15 +37,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.workflow_sha }}
+          ref: ${{ inputs.expected_head_sha }}
           persist-credentials: false
-      - name: Validate workflow source identity
+      - name: Validate exact target identity and clean tree
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$GITHUB_WORKFLOW_SHA"
-        env:
-          GITHUB_WORKFLOW_SHA: ${{ github.workflow_sha }}
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD_SHA"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
       - name: Materialize holding input
         shell: bash
         run: |
