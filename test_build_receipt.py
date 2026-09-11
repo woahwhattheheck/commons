@@ -73,7 +73,15 @@ class BuildReceiptTests(unittest.TestCase):
         payload["base"] = "abc123"
         with self.assertRaisesRegex(ReceiptError, "40-hex"):
             normalize_receipt(payload)
-        for bad in ("../secret", "/tmp/x", r"a\b", "dir/../x", "dir/"):
+        for bad in (
+            "../secret",
+            "/tmp/x",
+            r"a\b",
+            "dir/../x",
+            "dir/",
+            "a//b",
+            "a/./b",
+        ):
             payload = sample()
             payload["paths"] = [bad]
             with self.subTest(path=bad), self.assertRaises(ReceiptError):
