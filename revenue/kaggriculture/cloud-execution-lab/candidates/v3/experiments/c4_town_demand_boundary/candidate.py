@@ -26,12 +26,18 @@ from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-V3 = HERE.parents[2]
+V3 = HERE.parents[1]
 OVERLAY = V3 / "overlay"
 if str(OVERLAY) not in sys.path:
     sys.path.insert(0, str(OVERLAY))
 
 import r04_full_router as base  # noqa: E402
+
+EXPECTED_BASE_PATH = (OVERLAY / "r04_full_router.py").resolve()
+if Path(base.__file__).resolve() != EXPECTED_BASE_PATH:
+    raise ImportError(
+        f"C4 parent import drift: {Path(base.__file__).resolve()} != {EXPECTED_BASE_PATH}"
+    )
 
 SHOP_PRODUCTS = {
     "BAKERY": ("EGG", "WHEAT"),
