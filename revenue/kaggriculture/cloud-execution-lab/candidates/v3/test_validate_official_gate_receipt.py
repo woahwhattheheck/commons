@@ -193,9 +193,10 @@ def validate_synthetic(receipt=None, manifest_value=None, panel_value=None):
 
 
 class SimFidelityGuardTests(unittest.TestCase):
-    def test_valid_synthetic_contract_passes_only_internal_consistency_helper(self):
+    def test_valid_synthetic_contract_never_mints_official_eligibility(self):
         result = validate_synthetic()
-        self.assertTrue(result["official_gate_eligible"])
+        self.assertTrue(result["input_contract_valid"])
+        self.assertNotIn("official_gate_eligible", result)
         self.assertEqual(result["cells"], 4)
 
     def test_public_mapping_api_cannot_mint_official_eligibility(self):
