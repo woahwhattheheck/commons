@@ -152,6 +152,41 @@ class StrawberryTopupTests(unittest.TestCase):
         self.assertIs(out, act)
         self.assertEqual(added, 0)
 
+    def test_composed_l3_cutoff_dominates_h4_without_debt(self):
+        had_flag = hasattr(r04, "NO_LATE_SALE_ADVANCE")
+        had_step = hasattr(r04, "NO_LATE_SALE_ADVANCE_STEP")
+        old_flag = getattr(r04, "NO_LATE_SALE_ADVANCE", None)
+        old_step = getattr(r04, "NO_LATE_SALE_ADVANCE_STEP", None)
+        try:
+            r04.NO_LATE_SALE_ADVANCE = True
+            r04.NO_LATE_SALE_ADVANCE_STEP = 648
+
+            # Below the L3 cutoff, H4 remains eligible inside the current route block.
+            self.tape[641]["market"] = [["SELL", "STRAWBERRY", 4]]
+            pre = action(2)
+            out, added = self.run_candidate(pre, shed={"STRAWBERRY": 10}, step=640)
+            self.assertEqual((added, out["market"][0][2]), (4, 6))
+            self.assertEqual(self.state.sale_window_debts, {641: {"STRAWBERRY": 4}})
+
+            # At the cutoff, H4 must be exact identity and must write no debt.
+            self.state = r04.DayState()
+            self.tape = blank_tape()
+            self.tape[649]["market"] = [["SELL", "STRAWBERRY", 4]]
+            at_cutoff = action(2)
+            out, added = self.run_candidate(at_cutoff, shed={"STRAWBERRY": 10}, step=648)
+            self.assertIs(out, at_cutoff)
+            self.assertEqual(added, 0)
+            self.assertFalse(hasattr(self.state, "sale_window_debts"))
+        finally:
+            if had_flag:
+                r04.NO_LATE_SALE_ADVANCE = old_flag
+            else:
+                delattr(r04, "NO_LATE_SALE_ADVANCE")
+            if had_step:
+                r04.NO_LATE_SALE_ADVANCE_STEP = old_step
+            else:
+                delattr(r04, "NO_LATE_SALE_ADVANCE_STEP")
+
 
 if __name__ == "__main__":
     unittest.main()
