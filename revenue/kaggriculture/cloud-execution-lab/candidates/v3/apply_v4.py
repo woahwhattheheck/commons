@@ -8,7 +8,7 @@ import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue")
+KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_c5_wheat_demand")
 
 
 def _replace_once(text, old, new, label):
@@ -32,6 +32,7 @@ def apply(src):
         "GOOSE_RESCUE = False\n"
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
+        "C5_WHEAT_DEMAND = False\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -52,9 +53,39 @@ def apply(src):
     )
     router = _replace_once(
         router,
+        "def v3_agent(observation, configuration=None):\n"
+        "    global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT\n"
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE):\n"
+        "        return _v3_core(observation, configuration)\n",
+        "def v3_agent(observation, configuration=None):\n"
+        "    global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT\n"
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or C5_WHEAT_DEMAND):\n"
+        "        return _v3_core(observation, configuration)\n",
+        "R04 C5 outer-wrapper dispatch",
+    )
+    router = _replace_once(
+        router,
+        "    if GOOSE_RESCUE:\n"
+        "        import h3c_goose_eod_cap_rescue\n"
+        "        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,\n"
+        "                                                                     enabled=True)\n"
+        "    return action\n",
+        "    if GOOSE_RESCUE:\n"
+        "        import h3c_goose_eod_cap_rescue\n"
+        "        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,\n"
+        "                                                                     enabled=True)\n"
+        "    if C5_WHEAT_DEMAND:\n"
+        "        import r04_c5_wheat_demand\n"
+        "        action = r04_c5_wheat_demand.apply_c5_wheat_demand(\n"
+        "            observation, action, configuration, enabled=True)\n"
+        "    return action\n",
+        "R04 C5 final-action seam",
+    )
+    router = _replace_once(
+        router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, c5_wheat_demand=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -64,13 +95,15 @@ def apply(src):
         "    mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,\n"
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
-        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n",
+        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
+        "    c5_wheat_demand is the final-action public WHEAT buy-signal rider; it only relocates an\n"
+        "    already-authored WHEAT SELL after strict prior-step public evidence and funding guards.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, C5_WHEAT_DEMAND\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -84,6 +117,8 @@ def apply(src):
         "        PLACE_DELIVERY = bool(place_delivery)\n"
         "    if goose_pass_rescue is not None:\n"
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
+        "    if c5_wheat_demand is not None:\n"
+        "        C5_WHEAT_DEMAND = bool(c5_wheat_demand)\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -95,7 +130,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n\n    def __post_init__(self):",
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
-        "    r04_goose_pass_rescue: bool = False\n\n    def __post_init__(self):",
+        "    r04_goose_pass_rescue: bool = False\n"
+        "    r04_c5_wheat_demand: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -105,7 +141,8 @@ def apply(src):
         "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
-        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue))(observation, configuration)\n",
+        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
+        "                                 c5_wheat_demand=bool(self.features.r04_c5_wheat_demand))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -113,7 +150,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n",
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
-        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n",
+        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
+        "                self.diagnostics['c5_wheat_demand'] = bool(self.features.r04_c5_wheat_demand)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
