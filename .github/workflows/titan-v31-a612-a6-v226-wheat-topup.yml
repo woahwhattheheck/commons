@@ -26,11 +26,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind exact a612 parent, evidence scope, and producer bytes
+      - name: Bind exact a612 parent, live canonical, evidence scope, and producer bytes
         shell: bash
         run: |
           set -euo pipefail
           PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          LIVE_REF='titan/v3.1-20260911'
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
           R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
@@ -38,6 +39,8 @@ jobs:
           APPLY='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          git fetch --no-tags origin "$LIVE_REF"
+          test "$(git rev-parse FETCH_HEAD)" = "$PARENT"
           test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
           test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
           test "$(git hash-object "$ARLENE")" = 'bdb9cf58148a3c7961c085f4902759537decabf6'
@@ -53,6 +56,7 @@ jobs:
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/baseline.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/candidate.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/report.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/test_report.py',
           }
           actual = set(subprocess.check_output(
               ['git', 'diff', '--name-only', f'{parent}...HEAD'], text=True
@@ -67,7 +71,7 @@ jobs:
           PY
           git diff --check "$PARENT...HEAD"
 
-      - name: Bind shipped tuple and scoped V226 shim
+      - name: Bind shipped tuple, scoped V226 shim, and strict receipt predecessors
         shell: bash
         run: |
           set -euo pipefail
@@ -97,7 +101,7 @@ jobs:
           for key, value in expected.items():
               actual = apply_v3.PARAMS[key]
               assert type(actual) is type(value) and actual == value, (key, actual, value)
-          for path in (exp/'baseline.py', exp/'candidate.py', exp/'report.py'):
+          for path in (exp/'baseline.py', exp/'candidate.py', exp/'report.py', exp/'test_report.py'):
               compile(path.read_text(encoding='utf-8'), str(path), 'exec')
 
           spec = importlib.util.spec_from_file_location('a6_candidate', exp/'candidate.py')
@@ -122,6 +126,7 @@ jobs:
           assert module.base._v226_topup is original
           print('A6 SHIPPED TUPLE + SCOPED V226 SHIM OK')
           PY
+          python3 -B -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a6_v226_wheat_topup_ablation/test_report.py
           test -z "$(git status --porcelain)"
 
       - name: Prepare pinned official interpreter
@@ -176,6 +181,14 @@ jobs:
           cat /tmp/a6-v226-report.md
           cat /tmp/a6-v226-report.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Recheck live canonical before artifact publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse FETCH_HEAD)" = "$PARENT"
+
       - name: Retain exact receipts
         uses: actions/upload-artifact@v4
         with:
@@ -197,6 +210,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          PARENT='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin titan/v3.1-20260911
+          test "$(git rev-parse FETCH_HEAD)" = "$PARENT"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/a6-v226-report.md
