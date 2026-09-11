@@ -1,0 +1,28 @@
+name: titan-v31-b9-terminal-fertilizer
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b9_terminal_fertilizer/**"
+      - ".github/workflows/titan-v31-b9-terminal-fertilizer.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b9-terminal-fertilizer-${{ github.event.pull_request.head.sha || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate exact-head carrier
+        env:
+          TITAN_EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python3 revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b9_terminal_fertilizer/validate_carrier.py
