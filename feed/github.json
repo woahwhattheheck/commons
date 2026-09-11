@@ -2,7 +2,7 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": 8,
+    "runs_in_progress": 5,
     "runs_queued": 2
   },
   "degraded": [],
@@ -60,35 +60,11 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-r5-bakery-yarn-route-20260911",
-      "created_at": "2026-09-11T22:18:42Z",
-      "draft": false,
-      "number": 12624,
-      "title": "TITAN V4 R5: default-off BAKERY\u2192YARN route correction"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-v233-eod-service-20260911",
-      "created_at": "2026-09-11T22:18:40Z",
-      "draft": false,
-      "number": 12623,
-      "title": "TITAN V4: salvage V233 hour23 sheep service before EOD reset"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "astra/v4-plumbing-monotonic-guard-20260911",
       "created_at": "2026-09-11T22:13:47Z",
-      "draft": false,
+      "draft": true,
       "number": 12620,
       "title": "TITAN V4: enforce monotonic key plumbing"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-integration-protocol-20260911",
-      "created_at": "2026-09-11T22:13:01Z",
-      "draft": false,
-      "number": 12619,
-      "title": "TITAN V4: document single-tree integration protocol"
     },
     {
       "author": "woahwhattheheck",
@@ -129,13 +105,37 @@
       "draft": true,
       "number": 12609,
       "title": "TITAN V4 F2: pre-buy WHEAT only when it unlocks V217 rescue"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-m1-wheat-trade-20260911",
+      "created_at": "2026-09-11T21:58:09Z",
+      "draft": true,
+      "number": 12605,
+      "title": "TITAN V4 M1: bounded future WHEAT demand hedge"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-h3b-sheep-clip-20260911",
+      "created_at": "2026-09-11T21:57:50Z",
+      "draft": true,
+      "number": 12603,
+      "title": "TITAN V4 H3b: port repaired sheep max-held harvest priority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-dead-water-harvest",
+      "created_at": "2026-09-11T21:53:46Z",
+      "draft": false,
+      "number": 12601,
+      "title": "TITAN V4: recover provably dead WATER as same-tile HARVEST"
     }
   ],
-  "pulls_listed": 290,
+  "pulls_listed": 286,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 0.2,
+  "queue_depth_per_runner": 0.4,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T23:20:39Z",
+  "unchanged_since": "2026-09-11T23:53:42Z",
   "undatable_pulls": []
 }
