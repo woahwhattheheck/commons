@@ -5,8 +5,8 @@ This lane is intentionally narrower than worker reassignment. It never hires,
 moves, buys, plants, services animals, or touches market rows. During the
 existing late-water window it only rewrites an authored ["WATER"] when:
 
-* the WATER is provably wasted (the plant is already watered today, or its
-  public max_lifespan_step is at/before the current step),
+* the WATER is provably wasted (the plant is already watered today, or a
+  non-sentinel public max_lifespan_step is at/before the current step),
 * the same standing plant is provably harvestable from public state, and
 * for a non-ongoing crop, an already-watered harvest cannot destroy a remaining
   future yield opportunity.
@@ -14,7 +14,9 @@ existing late-water window it only rewrites an authored ["WATER"] when:
 Annual crops start with yield_units == 1 before maturity in the official engine,
 so yield_units alone is not sufficient. Also, HARVEST removes annual crops from
 the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
-before max_yield_day. Unexpected state fails closed.
+before max_yield_day. Ongoing crops use max_lifespan_step == -1 as a sentinel
+until their terminal production, so that value must never be treated as expired.
+Unexpected state fails closed.
 """
 from __future__ import annotations
 
@@ -90,7 +92,13 @@ def _wasted_water_reason(step, tile):
         if tile.get("watered_today") is True:
             return "already_watered"
         max_lifespan_step = tile.get("max_lifespan_step")
-        if _plain_int(max_lifespan_step) and max_lifespan_step <= step:
+        # Ongoing crops use -1 as "no terminal decay scheduled yet". Treating
+        # that sentinel as <= step would incorrectly kill productive WATER.
+        if (
+            _plain_int(max_lifespan_step)
+            and max_lifespan_step >= 0
+            and max_lifespan_step <= step
+        ):
             return "expiring"
     except Exception:
         return None
@@ -162,8 +170,14 @@ def apply_dead_water_harvest(observation, action, enabled=True):
         if not isinstance(farms, list) or player >= len(farms):
             return action
         farm = farms[player]
-        positions = [farm["farmer"]] + list(farm.get("hands") or [])
-        commands = [action.get("farmer")] + list(action.get("hands") or [])
+        if not isinstance(farm, dict):
+            return action
+        farm_hands = farm.get("hands")
+        action_hands = action.get("hands")
+        if not isinstance(farm_hands, list) or not isinstance(action_hands, list):
+            return action
+        positions = [farm["farmer"]] + list(farm_hands)
+        commands = [action.get("farmer")] + list(action_hands)
         report["steps_active"] += 1
 
         changed = False
