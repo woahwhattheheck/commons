@@ -86,19 +86,6 @@ class ArtifactRegistryTests(unittest.TestCase):
             import hashlib
             self.assertEqual(digest, hashlib.sha256(b"abc\x00\n").hexdigest())
 
-    def test_missing_registry_is_only_created_by_explicit_add_path(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = os.path.join(tmp, "missing.json")
-            with self.assertRaises(FileNotFoundError):
-                ar.load_registry(path)
-            self.assertEqual(ar.load_registry(path, create_if_missing=True), ar.empty_registry())
-
-            script = os.path.join(os.path.dirname(__file__), "host", "artifact_registry.py")
-            validate = subprocess.run([sys.executable, script, "validate", path],
-                                      text=True, capture_output=True)
-            self.assertNotEqual(validate.returncode, 0)
-            self.assertFalse(os.path.exists(path))
-
     def test_cli_add_validate_get_roundtrip(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, "registry.json")
@@ -112,6 +99,25 @@ class ArtifactRegistryTests(unittest.TestCase):
             get = subprocess.run(base + ["get", path, A], text=True, capture_output=True)
             self.assertEqual(get.returncode, 0, get.stderr)
             self.assertEqual(json.loads(get.stdout)["size_bytes"], 7)
+
+    def test_cli_validate_missing_file_exits_nonzero(self):
+        base = [sys.executable, os.path.join(os.path.dirname(__file__), "host", "artifact_registry.py")]
+        missing = os.path.join(tempfile.gettempdir(), "does-not-exist-artifact-registry-%s.json" % os.getpid())
+        if os.path.exists(missing):
+            os.unlink(missing)
+        validate = subprocess.run(base + ["validate", missing], text=True, capture_output=True)
+        self.assertNotEqual(validate.returncode, 0, validate.stdout + validate.stderr)
+        self.assertIn("does not exist", validate.stderr)
+        get = subprocess.run(base + ["get", missing, A], text=True, capture_output=True)
+        self.assertNotEqual(get.returncode, 0, get.stdout + get.stderr)
+        self.assertIn("does not exist", get.stderr)
+        # add still creates
+        source = json.dumps({"kind": "git_blob", "repo": "o/r", "blob_sha": BLOB})
+        add = subprocess.run(base + ["add", missing, A, "--source-json", source],
+                             text=True, capture_output=True)
+        self.assertEqual(add.returncode, 0, add.stderr)
+        if os.path.exists(missing):
+            os.unlink(missing)
 
 
 if __name__ == "__main__":
