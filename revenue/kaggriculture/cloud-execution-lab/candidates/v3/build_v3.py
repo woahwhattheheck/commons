@@ -29,6 +29,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import apply_v3  # noqa: E402
+import h6_milk_pace  # noqa: E402
 
 OVERLAY = HERE / "overlay"
 DIST = HERE / "dist"
@@ -67,6 +68,7 @@ def package_files(canon_path=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(blob)
         apply_v3.apply(str(work))
+        h6_milk_pace.apply(str(work))
         files = {}
         for path in sorted(p for p in work.rglob("*") if p.is_file()):
             files[path.relative_to(work).as_posix()] = path.read_bytes()
@@ -100,6 +102,7 @@ def file_shas(files):
 def source_shas():
     shas = file_shas(overlay_files())
     shas["apply_v3.py"] = hashlib.sha256((HERE / "apply_v3.py").read_bytes()).hexdigest()
+    shas["h6_milk_pace.py"] = hashlib.sha256((HERE / "h6_milk_pace.py").read_bytes()).hexdigest()
     return shas
 
 
