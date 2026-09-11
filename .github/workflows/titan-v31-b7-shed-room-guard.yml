@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - 'titan/v3.1-20260911'
+      - 'astra/v31-b7-actor-order-repair-20260911'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py'
@@ -28,6 +29,41 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+
+      - name: Bind exact repaired head and frozen custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          ROOT=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          SRC="$ROOT/experiments/b7_shed_room_guard.py"
+          TEST="$ROOT/experiments/test_b7_shed_room_guard.py"
+          CAND="$ROOT/experiments/b7_shed_room_guard/candidate.py"
+          R04="$ROOT/overlay/r04_full_router.py"
+          TAPES="$ROOT/overlay/r01_tapes.py"
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git cat-file -e "$BASE^{commit}"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+
+          test "$(git rev-parse "HEAD:$SRC")" = a27da659884c0f9a9594cbd9332b5edb4d7f3307
+          test "$(git rev-parse "HEAD:$TEST")" = 406962b66cefbd5e2d6399da94e80df599aee0cc
+          test "$(git rev-parse "HEAD:$CAND")" = aeec4bb5f52f971cff376f8aae21edec3ad77c3a
+          test "$(git rev-parse "HEAD:$R04")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+          test "$(git rev-parse "HEAD:$TAPES")" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+
+          cat > /tmp/b7-expected <<'EOF'
+          .github/workflows/titan-v31-b7-shed-room-guard.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py
+          EOF
+          git diff --name-only "$BASE" HEAD | LC_ALL=C sort > /tmp/b7-actual
+          LC_ALL=C sort /tmp/b7-expected -o /tmp/b7-expected
+          diff -u /tmp/b7-expected /tmp/b7-actual
+          git diff --check "$BASE" HEAD
+          echo "B7 EXACT-HEAD CUSTODY OK $EXPECTED_HEAD"
 
       - name: Compile in memory and run focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
@@ -87,20 +123,6 @@ jobs:
           assert not any(name.startswith('experiments/') for name in build_v3.source_shas())
           print('B7 CUSTODY OK', engine_sha)
           PY
-
-      - name: Prove exact experiment-only PR scope
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/b7-changed
-          cat /tmp/b7-changed
-          while IFS= read -r path; do
-            case "$path" in
-              revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_b7_shed_room_guard.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/*|.github/workflows/titan-v31-b7-shed-room-guard.yml) ;;
-              *) echo "unexpected path in B7 room guard: $path" >&2; exit 1 ;;
-            esac
-          done < /tmp/b7-changed
 
       - name: Prove checkout stayed clean
         shell: bash
