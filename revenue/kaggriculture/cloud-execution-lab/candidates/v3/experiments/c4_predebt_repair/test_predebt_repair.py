@@ -64,6 +64,51 @@ class C4PreDebtRepairTests(unittest.TestCase):
         self.assertEqual(st.sale_window_debts, {})
         self.assertEqual(c4.telemetry["units_rolled_back"], 2)
 
+    def test_frozen_8e3_entrypoint_binds_entire_shipped_r04_tuple(self):
+        self.assertEqual(c4.base.SALE_HORIZON, 8)
+        self.assertEqual(c4.base.OPEN_ROUNDTRIP, 0)
+        self.assertIs(c4.base.ROW_ORDER, True)
+        self.assertIs(c4.base.EVENING_FLUSH, True)
+        self.assertIs(c4.base.SALE_FERTILIZER, True)
+        self.assertIs(c4.base.CATTLE_EARLY, True)
+        self.assertIs(c4.base.KILL_LATE_WATER, False)
+        self.assertIs(c4.base.STRAWBERRY_ENDGAME, False)
+        self.assertEqual(c4.base.STRAWBERRY_MAX_PLANTS, 8)
+        self.assertIs(c4.base.NO_LATE_SALE_ADVANCE, True)
+        self.assertEqual(c4.base.NO_LATE_SALE_ADVANCE_STEP, 648)
+        self.assertIs(c4.base.STRAWBERRY_TOPUP, True)
+        self.assertIs(c4.base.B5_CARROT_FERTILIZER, True)
+        self.assertIs(c4.base.B5_JIT_FERTILIZE, True)
+        self.assertIs(c4._PARENT_AGENT, c4.base.v3_agent)
+
+    def test_explicit_parent_callable_is_delegated_exactly(self):
+        old_parent = c4._PARENT_AGENT
+        old_enabled = c4.C4_ENABLED
+        returned = {"farmer": ["PASS"], "hands": [], "market": []}
+        seen = []
+
+        def sentinel(obs, config=None):
+            seen.append((obs, config))
+            return returned
+
+        try:
+            wrapped = c4.install(parent_agent=sentinel, c4_enabled=False)
+            obs = {"player": 0, "step": 123}
+            config = {"sentinel": True}
+            out = wrapped(obs, config)
+            self.assertIs(out, returned)
+            self.assertEqual(seen, [(obs, config)])
+            self.assertIs(c4._PARENT_AGENT, sentinel)
+        finally:
+            c4._PARENT_AGENT = old_parent
+            c4.C4_ENABLED = old_enabled
+
+    def test_explicit_parent_cannot_be_mixed_with_r04_knobs(self):
+        with self.assertRaises(ValueError):
+            c4.install(parent_agent=lambda observation, configuration=None: {}, horizon=8)
+        with self.assertRaises(TypeError):
+            c4.install(parent_agent=object())
+
 
 if __name__ == "__main__":
     unittest.main()
