@@ -3,13 +3,15 @@
 
 The current PR's ``apply_v4.KEYS`` is compared with the target branch copy supplied
 by CI. Every key already present on the target must survive. The candidate is then
-materialised through the real V3/V4 build recipe. Every head key must retain complete
-runtime plumbing; keys newly introduced relative to the target must additionally
-source-land default-OFF. R04 keys must retain their router flag, install
-parameter/setter, a reachable production read (or a proven install-time callable
-selector), and TitanAgent install wiring.
+materialised through the real V3/V4 build recipe. This guard intentionally treats
+all current V4 keys as source-landed safety switches: every key must remain OFF in
+TITAN-CONFIG, Features, and (for r04 keys) the router until a future promotion
+changes this contract explicitly.
 
-Failures use explicit exceptions so ``python -O`` cannot strip the contract.
+Runtime wiring checks are production-rooted. TitanAgent references are accepted only
+from methods reachable from ``TitanAgent.act`` through ``self.<method>(...)`` calls;
+a dead helper cannot satisfy the contract. Router flag reads are likewise rooted at
+``v3_agent``. Failures use explicit exceptions so ``python -O`` cannot strip them.
 """
 from __future__ import annotations
 
@@ -41,7 +43,10 @@ def _literal_keys(path: Path) -> tuple[str, ...]:
         if not isinstance(node, ast.Assign):
             continue
         if any(isinstance(target, ast.Name) and target.id == "KEYS" for target in node.targets):
-            value = ast.literal_eval(node.value)
+            try:
+                value = ast.literal_eval(node.value)
+            except (ValueError, TypeError):
+                value = None
             break
     _require(isinstance(value, (tuple, list)), f"{path}: KEYS must be a literal tuple/list")
     keys = tuple(value)
@@ -92,17 +97,56 @@ def _contains_feature_ref(node: ast.AST, key: str) -> bool:
     return False
 
 
-def _runtime_install_wired(agent: ast.ClassDef, key: str, suffix: str) -> bool:
-    for node in ast.walk(agent):
-        if not isinstance(node, ast.Call):
+def _agent_methods(agent: ast.ClassDef) -> dict[str, ast.FunctionDef | ast.AsyncFunctionDef]:
+    return {
+        node.name: node
+        for node in agent.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    }
+
+
+def _reachable_agent_methods(agent: ast.ClassDef) -> set[ast.AST]:
+    """Methods reachable from production ``act`` via direct ``self.method()`` calls."""
+    methods = _agent_methods(agent)
+    root = methods.get("act")
+    _require(root is not None, "materialized TitanAgent has no act() production root")
+    reachable: set[ast.AST] = set()
+    stack: list[ast.AST] = [root]
+    while stack:
+        method = stack.pop()
+        if method in reachable:
             continue
-        func = node.func
-        if not ((isinstance(func, ast.Attribute) and func.attr == "install")
-                or (isinstance(func, ast.Name) and func.id == "install")):
-            continue
-        for keyword in node.keywords:
-            if keyword.arg == suffix and _contains_feature_ref(keyword.value, key):
-                return True
+        reachable.add(method)
+        for node in ast.walk(method):
+            if not isinstance(node, ast.Call):
+                continue
+            func = node.func
+            if not (isinstance(func, ast.Attribute)
+                    and isinstance(func.value, ast.Name)
+                    and func.value.id == "self"):
+                continue
+            target = methods.get(func.attr)
+            if target is not None and target not in reachable:
+                stack.append(target)
+    return reachable
+
+
+def _reachable_feature_ref(methods: set[ast.AST], key: str) -> bool:
+    return any(_contains_feature_ref(method, key) for method in methods)
+
+
+def _runtime_install_wired(methods: set[ast.AST], key: str, suffix: str) -> bool:
+    for method in methods:
+        for node in ast.walk(method):
+            if not isinstance(node, ast.Call):
+                continue
+            func = node.func
+            if not ((isinstance(func, ast.Attribute) and func.attr == "install")
+                    or (isinstance(func, ast.Name) and func.id == "install")):
+                continue
+            for keyword in node.keywords:
+                if keyword.arg == suffix and _contains_feature_ref(keyword.value, key):
+                    return True
     return False
 
 
@@ -153,7 +197,7 @@ def _loads_name(node: ast.AST, name: str) -> bool:
 
 
 def _direct_body_nodes(function: ast.AST) -> list[ast.AST]:
-    """Statements in *function* excluding nested function/class/lambda bodies."""
+    """Nodes in *function* excluding nested function/class/lambda bodies."""
     skip: set[int] = set()
     for child in ast.walk(function):
         if child is function:
@@ -234,18 +278,15 @@ def _install_selects_callable_on_flag(install: ast.FunctionDef, flag: str) -> bo
 
 def _assert_r04_router_contract(
     router_tree: ast.AST,
-    agent: ast.ClassDef,
+    reachable_agent: set[ast.AST],
     key: str,
-    *,
-    require_default_off: bool,
 ) -> None:
     suffix = key.removeprefix("r04_")
     flag = suffix.upper()
 
     router_defaults = _top_level_bool_names(router_tree)
     _require(flag in router_defaults, f"{key}: router {flag} must be a literal boolean")
-    if require_default_off:
-        _require(router_defaults[flag] is False, f"{key}: newly landed router {flag} must source-land False")
+    _require(router_defaults[flag] is False, f"{key}: V4 router {flag} must remain source-default False")
 
     install = _find_function(router_tree, "install")
     install_args = {arg.arg for arg in (*install.args.posonlyargs, *install.args.args, *install.args.kwonlyargs)}
@@ -265,18 +306,17 @@ def _assert_r04_router_contract(
         "nor used by install() to select a non-baseline runtime callable",
     )
     _require(
-        _runtime_install_wired(agent, key, suffix),
-        f"{key}: TitanAgent does not pass self.features.{key} to router install({suffix}=...)",
+        _runtime_install_wired(reachable_agent, key, suffix),
+        f"{key}: production-reachable TitanAgent does not pass self.features.{key} "
+        f"to router install({suffix}=...)",
     )
 
 
 def check(base_apply_v4: Path) -> None:
     base_keys = _literal_keys(base_apply_v4)
     head_keys = _literal_keys(APPLY_V4)
-    base_key_set = set(base_keys)
-    removed = sorted(base_key_set - set(head_keys))
+    removed = sorted(set(base_keys) - set(head_keys))
     _require(not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed))
-    new_keys = set(head_keys) - base_key_set
 
     files = build_v3.package_files()
     for required in ("TITAN-CONFIG.json", "titan_runtime.py", "r04_full_router.py"):
@@ -287,25 +327,28 @@ def check(base_apply_v4: Path) -> None:
     router_tree = ast.parse(files["r04_full_router.py"].decode("utf-8"), filename="r04_full_router.py")
     feature_defaults = _feature_defaults(runtime_tree)
     agent = _titan_agent_class(runtime_tree)
+    reachable_agent = _reachable_agent_methods(agent)
 
     for key in head_keys:
         _require(key in config, f"{key}: missing from materialized TITAN-CONFIG.json")
         _require(type(config[key]) is bool, f"{key}: materialized config value must be boolean")
+        _require(config[key] is False, f"{key}: V4 config default must remain False")
         _require(key in feature_defaults, f"{key}: missing from materialized Features")
         _require(type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean")
-        if key in new_keys:
-            _require(config[key] is False, f"{key}: new source landing must remain default-OFF")
-            _require(feature_defaults[key] is False, f"{key}: new Features default must remain False")
-        _require(_contains_feature_ref(agent, key), f"{key}: TitanAgent never references self.features.{key}")
+        _require(feature_defaults[key] is False, f"{key}: V4 Features default must remain False")
+        _require(
+            _reachable_feature_ref(reachable_agent, key),
+            f"{key}: production-reachable TitanAgent never references self.features.{key}",
+        )
         if key.startswith("r04_"):
-            _assert_r04_router_contract(
-                router_tree,
-                agent,
-                key,
-                require_default_off=key in new_keys,
-            )
+            _assert_r04_router_contract(router_tree, reachable_agent, key)
 
-    print("V4 PLUMBING OK", "base", list(base_keys), "head", list(head_keys))
+    print(
+        "V4 PLUMBING OK",
+        "base", list(base_keys),
+        "head", list(head_keys),
+        "reachable_agent_methods", sorted(getattr(node, "name", "<anonymous>") for node in reachable_agent),
+    )
 
 
 def main() -> None:
