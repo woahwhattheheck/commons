@@ -76,11 +76,11 @@ jobs:
           done
           git diff --check "$STACK...HEAD"
 
-      - name: Freeze native evaluator receipt membership and type poisons
+      - name: Freeze native evaluator receipt membership and type poisons under optimization
         shell: bash
         run: |
           set -euo pipefail
-          python3 -B - <<'PY'
+          python3 -O -B - <<'PY'
           import copy
           import importlib.util
           import math
@@ -89,6 +89,8 @@ jobs:
           path = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3/report_ab.py')
           spec = importlib.util.spec_from_file_location('cattle_report_ab', path)
           module = importlib.util.module_from_spec(spec)
+          if spec.loader is None:
+              raise SystemExit('cattle reducer loader missing')
           spec.loader.exec_module(module)
 
           expected_schema = 'titan-v31-8e3-current-package-cattle-off-ab/v2'
@@ -125,8 +127,10 @@ jobs:
               'games': games,
           }
           normalized = module.normalized_games(copy.deepcopy(valid), 'valid')
-          assert frozenset(normalized) == module.EXPECTED_KEYS
-          assert len(normalized) == 16
+          if frozenset(normalized) != module.EXPECTED_KEYS:
+              raise SystemExit('valid cattle predecessor did not normalize to exact requested cells')
+          if len(normalized) != 16:
+              raise SystemExit(f'valid cattle predecessor normalized to {len(normalized)} cells, expected 16')
 
           def rejects(name, mutate):
               poisoned = copy.deepcopy(valid)
@@ -228,26 +232,44 @@ jobs:
             --on-tree /tmp/cattle-on \
             --off-tree /tmp/cattle-off \
             --receipt /tmp/cattle-materialization.json | tee /tmp/cattle-materialization.log
-          python3 - <<'PY'
+          python3 -O -B - <<'PY'
           import json
           r = json.load(open('/tmp/cattle-materialization.json'))
-          assert r['canonical_commit'] == '8e3d92a286806f9f9525973ee7d359b629a11487'
-          assert r['canonical_package_sha256'] == '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
-          assert r['package_members'] == 139
-          assert r['on_package_sha256'] != r['off_package_sha256']
-          assert r['on_to_off_changed_members'] == ['TITAN-CONFIG.json']
-          assert r['on_to_off_changed_config_keys'] == ['r04_cattle_early']
-          assert r['control_config']['r04_cattle_early'] is True
-          assert r['candidate_config']['r04_cattle_early'] is False
+          expected_commit = '8e3d92a286806f9f9525973ee7d359b629a11487'
+          expected_package = '4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13'
+          if r.get('canonical_commit') != expected_commit:
+              raise SystemExit(f"wrong cattle materialization canonical {r.get('canonical_commit')!r}")
+          if r.get('canonical_package_sha256') != expected_package:
+              raise SystemExit(f"wrong cattle materialization package {r.get('canonical_package_sha256')!r}")
+          if r.get('package_members') != 139 or type(r.get('package_members')) is not int:
+              raise SystemExit(f"wrong cattle materialization member count {r.get('package_members')!r}")
+          if r.get('on_package_sha256') == r.get('off_package_sha256'):
+              raise SystemExit('cattle ON/OFF package digests unexpectedly identical')
+          if r.get('on_to_off_changed_members') != ['TITAN-CONFIG.json']:
+              raise SystemExit(f"cattle package member drift {r.get('on_to_off_changed_members')!r}")
+          if r.get('on_to_off_changed_config_keys') != ['r04_cattle_early']:
+              raise SystemExit(f"cattle config isolation drift {r.get('on_to_off_changed_config_keys')!r}")
+          if r.get('control_config', {}).get('r04_cattle_early') is not True:
+              raise SystemExit('cattle control is not literal ON')
+          if r.get('candidate_config', {}).get('r04_cattle_early') is not False:
+              raise SystemExit('cattle candidate is not literal OFF')
           for arm in ('control_config', 'candidate_config'):
-              c = r[arm]
-              assert c['r04_b5_carrot_fertilizer'] is True
-              assert c['r04_b5_jit_fertilize'] is True
-              assert c['r04_strawberry_topup'] is True
-              assert c['r04_no_late_sale_advance'] is True
-              assert c['r04_sale_fertilizer'] is True
-              assert type(c['r04_sale_horizon']) is int and c['r04_sale_horizon'] == 8
-              assert type(c['r04_no_late_sale_advance_step']) is int and c['r04_no_late_sale_advance_step'] == 648
+              c = r.get(arm)
+              if type(c) is not dict:
+                  raise SystemExit(f'{arm} is not an object')
+              for key in (
+                  'r04_b5_carrot_fertilizer',
+                  'r04_b5_jit_fertilize',
+                  'r04_strawberry_topup',
+                  'r04_no_late_sale_advance',
+                  'r04_sale_fertilizer',
+              ):
+                  if c.get(key) is not True:
+                      raise SystemExit(f'{arm} lost required factor {key}')
+              if type(c.get('r04_sale_horizon')) is not int or c['r04_sale_horizon'] != 8:
+                  raise SystemExit(f"{arm} horizon drift {c.get('r04_sale_horizon')!r}")
+              if type(c.get('r04_no_late_sale_advance_step')) is not int or c['r04_no_late_sale_advance_step'] != 648:
+                  raise SystemExit(f"{arm} L3 step drift {c.get('r04_no_late_sale_advance_step')!r}")
           print('CATTLE_AB_8E3_ONE_KEY_STACK_OK', r['on_package_sha256'], r['off_package_sha256'])
           PY
 
