@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - astra/v31-c5-wheat-demand-rider-20260911
+      - astra/v31-c5-wheat-demand-rider-repair-20260911
 
 permissions:
   contents: read
@@ -24,6 +25,7 @@ jobs:
       CASE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider
       R04: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
       ENGINE: revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      FROZEN_BASE: 508b342fc46fa91e3d7cdc3f0b7e44934a187c14
       EXPECTED_R04_BLOB: 21c4f1db0298f8955b1f5ad366bd780a89cad206
       EXPECTED_ENGINE_BLOB: 3c202c7ee921da239356789e266b694635103fc4
       EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -36,11 +38,23 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind exact candidate source dependencies
+      - name: Bind exact frozen-base scope and source dependencies
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git merge-base "$FROZEN_BASE" HEAD)" = "$FROZEN_BASE"
+
+          git diff --name-only "$FROZEN_BASE" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/C5-ACTUAL-PATHS"
+          cat > "$RUNNER_TEMP/C5-EXPECTED-PATHS" <<'EOF'
+          .github/workflows/titan-v31-c5-wheat-demand-rider.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c5_wheat_demand_rider/test_candidate.py
+          EOF
+          LC_ALL=C sort -o "$RUNNER_TEMP/C5-EXPECTED-PATHS" "$RUNNER_TEMP/C5-EXPECTED-PATHS"
+          diff -u "$RUNNER_TEMP/C5-EXPECTED-PATHS" "$RUNNER_TEMP/C5-ACTUAL-PATHS"
+
           test "$(git rev-parse "HEAD:$R04")" = "$EXPECTED_R04_BLOB"
           test "$(git rev-parse "HEAD:$ENGINE")" = "$EXPECTED_ENGINE_BLOB"
           git diff --check
@@ -51,14 +65,14 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Compile and run focused predecessor suite
+      - name: Compile and run focused repaired predecessor suite
         working-directory: ${{ env.CASE }}
         shell: bash
         run: |
           set -euo pipefail
           python -B -m py_compile candidate.py test_candidate.py
           python -B -m unittest -v test_candidate.py 2>&1 | tee "$RUNNER_TEMP/C5-TEST.log"
-          grep -E '^Ran 15 tests in [0-9.]+s$' "$RUNNER_TEMP/C5-TEST.log"
+          grep -E '^Ran 24 tests in [0-9.]+s$' "$RUNNER_TEMP/C5-TEST.log"
           grep -Fx 'OK' "$RUNNER_TEMP/C5-TEST.log"
           ! grep -E 'FAILED|ERROR|skipped=' "$RUNNER_TEMP/C5-TEST.log"
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
@@ -71,4 +85,7 @@ jobs:
           name: titan-v31-c5-wheat-demand-rider-${{ github.run_id }}
           retention-days: 14
           if-no-files-found: error
-          path: ${{ runner.temp }}/C5-TEST.log
+          path: |
+            ${{ runner.temp }}/C5-TEST.log
+            ${{ runner.temp }}/C5-ACTUAL-PATHS
+            ${{ runner.temp }}/C5-EXPECTED-PATHS
