@@ -8,10 +8,12 @@ Run in a materialised candidate package:
 from __future__ import annotations
 
 import copy
+import inspect
 import json
 import sys
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +60,11 @@ class PlaceDelivery(unittest.TestCase):
         self.assertIs(data["r04_place_delivery"], False)
         self.assertIs(Features(**data).r04_place_delivery, False)
 
+    def test_installed_seam_passes_real_configuration(self):
+        source = inspect.getsource(r04._v3_stack)
+        self.assertIn("apply_place_delivery", source)
+        self.assertIn("configuration=configuration", source)
+
     def test_disabled_is_exact_parent_object(self):
         parent = action(["DROP"], [["DROP"]], [["SELL", "WHEAT", 1]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {"WOOL": 5}])
@@ -68,6 +75,33 @@ class PlaceDelivery(unittest.TestCase):
         obs = observation(step=717, shed={"WHEAT": 98},
                           inventories=[{"CARROT": 5}, {"WOOL": 5}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_nonstandard_configuration_is_exact_parent_object(self):
+        parent = action(["DROP"], [["PASS"]], [["SELL", "WHEAT", 100], ["SELL", "CARROT", 1]])
+        obs = observation(shed={"WHEAT": 100}, inventories=[{"CARROT": 1}, {}])
+        for field, value in (
+            ("episodeSteps", 721),
+            ("turnsPerDay", 12),
+            ("boardSize", 12),
+            ("shedCapacity", 101),
+            ("maxMarketOrdersPerTurn", 9),
+            ("shedCapacity", True),
+        ):
+            bad = dict(CONFIG)
+            bad[field] = value
+            with self.subTest(field=field, value=value):
+                self.assertIs(
+                    lane.apply_place_delivery(obs, parent, enabled=True, configuration=bad),
+                    parent,
+                )
+
+    def test_standard_attribute_configuration_keeps_positive_path(self):
+        parent = action(["DROP"], [["PASS"]], [["SELL", "WHEAT", 98], ["SELL", "CARROT", 2]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
+                          prices={"CARROT": 1000})
+        out = lane.apply_place_delivery(
+            obs, parent, enabled=True, configuration=SimpleNamespace(**CONFIG))
+        self.assertEqual(out["farmer"], ["PLACE", "CARROT", 2])
 
     def test_terminal_without_adjacent_drop_is_exact_parent_object(self):
         parent = action(["PASS"], [["PASS"]], [["SELL", "WHEAT", 98]])

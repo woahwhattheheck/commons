@@ -22,12 +22,42 @@ to the exact parent action.
 from __future__ import annotations
 
 
+_MISSING = object()
+_STANDARD_CONFIG = {
+    "episodeSteps": 720,
+    "boardSize": 10,
+    "turnsPerDay": 24,
+    "shedCapacity": 100,
+    "maxMarketOrdersPerTurn": 10,
+}
+
+
 def _positive_plain_int(value):
     return type(value) is int and value > 0
 
 
-def apply_place_delivery(observation, action, enabled=False):
+def _cfg(configuration, name):
+    if isinstance(configuration, dict):
+        return configuration.get(name, _MISSING)
+    return getattr(configuration, name, _MISSING)
+
+
+def _standard_configuration(configuration):
+    for name, expected in _STANDARD_CONFIG.items():
+        actual = _cfg(configuration, name)
+        if type(actual) is not int or actual != expected:
+            return False
+    return True
+
+
+def apply_place_delivery(observation, action, enabled=False, configuration=None):
     if not enabled:
+        return action
+    # Installed V4 always passes the real Kaggle configuration. Keep None as a
+    # standard-config compatibility mode for direct helper callers/tests, but any
+    # supplied configuration must prove the constants used by this helper's
+    # terminal/capacity projection before a destructive rewrite is considered.
+    if configuration is not None and not _standard_configuration(configuration):
         return action
     if not isinstance(observation, dict) or type(observation.get("step")) is not int:
         return action
