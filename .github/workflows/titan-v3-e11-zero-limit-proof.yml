@@ -1,0 +1,73 @@
+name: titan-v3-e11-zero-limit-proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-e11-zero-limit-proof.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_e11_funding.py'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-e11-zero-limit-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+
+      - name: Bind reviewed successor topology and proof inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_head='${{ github.event.pull_request.head.sha }}'
+          expected_parent='11f0a966a85cd7b62c9904b629b30c1c506d5a11'
+          source='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py'
+          declared='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+          focused='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_e11_funding.py'
+          test "$(git rev-parse HEAD)" = "$expected_head"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          test "$(git rev-list --count "$expected_parent"..HEAD)" = 1
+          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = '.github/workflows/titan-v3-e11-zero-limit-proof.yml'
+          test "$(git hash-object "$source")" = '32c89f233c22da1c805a02ae968b220e0c7adb61'
+          test "$(git hash-object "$declared")" = '20b18deda0fa1a58f5200f8934255019561bdef7'
+          test "$(git hash-object "$focused")" = '3751852b60a5389bcd42824922ed5922cfa0bb77'
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile reviewed E11 source and proof modules
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: |
+          python -m py_compile \
+            e11_rival_sell.py \
+            checks/test_v3_features.py \
+            checks/test_v3_e11_funding.py
+
+      - name: Run declared V3 suite plus strengthened E11 funding killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: |
+          python -m unittest -v \
+            checks/test_v3_features.py \
+            checks/test_v3_e11_funding.py
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
