@@ -26,6 +26,12 @@ CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10,
           "farmHandCostMult": 1}
 
 
+class StructConfig:
+    def __init__(self, data):
+        for key, value in data.items():
+            setattr(self, key, value)
+
+
 def animal_tile(species="GOOSE", *, fed=True, cared=False, placed_day=0):
     return {"kind": "COOP" if species == "GOOSE" else "PASTURE",
             "animal": species, "placed_day": placed_day, "yield_units": 1,
@@ -78,6 +84,12 @@ class DeadFeedCare(unittest.TestCase):
                 self.assertEqual(out["market"], [["SELL", "WOOL", 1]])
                 self.assertEqual(parent["farmer"], ["FEED"])
 
+    def test_struct_configuration_is_supported(self):
+        parent = action()
+        out = lane.apply_dead_feed_care(
+            parent, observation(), StructConfig(CONFIG), enabled=True)
+        self.assertEqual(out["farmer"], ["CARE"])
+
     def test_not_fed_is_exact_parent_object(self):
         parent = action()
         self.assertIs(lane.apply_dead_feed_care(
@@ -103,6 +115,22 @@ class DeadFeedCare(unittest.TestCase):
         parent = action()
         bad = dict(CONFIG)
         bad["shedCapacity"] = 99
+        self.assertIs(lane.apply_dead_feed_care(
+            parent, observation(), bad, enabled=True), parent)
+
+    def test_nonstandard_episode_steps_fails_closed(self):
+        parent = action()
+        for episode_steps in (696, 721, True):
+            with self.subTest(episode_steps=episode_steps):
+                bad = dict(CONFIG)
+                bad["episodeSteps"] = episode_steps
+                self.assertIs(lane.apply_dead_feed_care(
+                    parent, observation(), bad, enabled=True), parent)
+
+    def test_missing_episode_steps_fails_closed(self):
+        parent = action()
+        bad = dict(CONFIG)
+        del bad["episodeSteps"]
         self.assertIs(lane.apply_dead_feed_care(
             parent, observation(), bad, enabled=True), parent)
 
