@@ -17,8 +17,13 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+# Source tree keeps R04 under overlay/. Deterministic submission archives flatten
+# those same package-input bytes beside main.py. Support both explicitly so the
+# experiment module itself is identical between focused source tests and a
+# materialized practice gate.
+SOURCE = ROOT / "overlay" if (ROOT / "overlay" / "r04_full_router.py").is_file() else ROOT
+if str(SOURCE) not in sys.path:
+    sys.path.insert(0, str(SOURCE))
 
 import r04_full_router as r04  # noqa: E402
 
