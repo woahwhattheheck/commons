@@ -40,18 +40,18 @@ jobs:
           test "$live_canonical" = "$root"
           test "$live_recovery" = "$parent"
 
-          expected=$'.github/workflows/titan-v31-row-shed-currentroot.yml\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/r04_row_shed.py\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/test_r04_row_shed.py'
+          expected=$'.github/workflows/titan-v31-row-shed-currentroot.yml\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/compose_current_root.py\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/r04_row_shed.py\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/test_r04_row_shed.py'
           actual="$(git diff --name-only "$parent"...HEAD | LC_ALL=C sort)"
           test "$actual" = "$expected"
 
           # The donor is source-contract only: no production/package/default bytes here.
-          ! git diff --name-only "$parent"...HEAD | grep -Eq '(^|/)(overlay|apply_v3.py|FILES.json|V3-MANIFEST.json|build_v3.py)$'
+          ! git diff --name-only "$parent"...HEAD | grep -Eq '(^|/)(overlay/|apply_v3.py$|FILES.json$|V3-MANIFEST.json$|build_v3.py$)'
 
       - name: Run row-shed source contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         run: |
           python -m unittest -v analysis/v31-row-shed/test_r04_row_shed.py
-          python -m py_compile analysis/v31-row-shed/r04_row_shed.py analysis/v31-row-shed/test_r04_row_shed.py
+          python -m py_compile analysis/v31-row-shed/compose_current_root.py analysis/v31-row-shed/r04_row_shed.py analysis/v31-row-shed/test_r04_row_shed.py
 
       - name: Require clean checkout
         run: git diff --exit-code
