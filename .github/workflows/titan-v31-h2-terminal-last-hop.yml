@@ -1,0 +1,103 @@
+name: titan-v31-h2-terminal-last-hop
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/**'
+      - '.github/workflows/titan-v31-h2-terminal-last-hop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind frozen base, exact scope, and reviewed parent blobs
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_BASE: 508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git cat-file -e "$EXPECTED_BASE^{commit}"
+          test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py)" = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
+          git diff --name-only "$EXPECTED_BASE"...HEAD | tee /tmp/h2-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          paths = {p for p in Path('/tmp/h2-paths.txt').read_text().splitlines() if p}
+          allowed = {
+              '.github/workflows/titan-v31-h2-terminal-last-hop.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/test_h2_terminal_last_hop.py',
+          }
+          assert paths == allowed, (sorted(paths), sorted(allowed))
+          print('H2_SCOPE_OK', len(paths))
+          PY
+          git diff --check "$EXPECTED_BASE"...HEAD
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check without mutating checkout
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop')
+          for name in ('r04_h2_terminal_last_hop.py', 'candidate.py', 'test_h2_terminal_last_hop.py'):
+              path = root / name
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          print('H2_COMPILE_OK')
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run focused H2 predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest -v test_h2_terminal_last_hop.py
+
+      - name: Verify candidate pins exact live V3.1 tuple
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -B - <<'PY'
+          import candidate
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'h2_terminal_last_hop': True,
+          }
+          assert candidate.LIVE_CONFIG == expected, candidate.LIVE_CONFIG
+          print('H2_LIVE_TUPLE_OK')
+          PY
+
+      - name: Prove V3 package inputs remain neutral
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py --check
+
+      - name: Prove checkout stayed clean
+        run: test -z "$(git status --porcelain)"
