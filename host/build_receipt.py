@@ -61,9 +61,10 @@ def _path(value: Any) -> str:
     if "\\" in text or text.startswith("/") or text.endswith("/"):
         raise ReceiptError(f"unsafe repo-relative path: {text!r}")
     path = PurePosixPath(text)
-    if any(part in {"", ".", ".."} for part in path.parts):
-        raise ReceiptError(f"unsafe repo-relative path: {text!r}")
-    return path.as_posix()
+    canonical = path.as_posix()
+    if canonical != text or any(part == ".." for part in path.parts):
+        raise ReceiptError(f"unsafe or non-canonical repo-relative path: {text!r}")
+    return canonical
 
 
 def _string_list(value: Any, field: str) -> list[str]:
