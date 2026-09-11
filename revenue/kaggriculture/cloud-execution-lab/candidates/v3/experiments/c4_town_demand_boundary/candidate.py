@@ -2,16 +2,21 @@
 # SPDX-License-Identifier: Apache-2.0
 """C4 practice arm: keep E184 sale reservations from crossing a known town-demand tick.
 
-The official engine commits both players' market rows before ``_town_consume``.  A bot cannot
-observe the rival's same-turn action, so C4 does *not* try to predict a quiet rival turn.  It
+The official engine commits both players' market rows before ``_town_consume``. A bot cannot
+observe the rival's same-turn action, so C4 does *not* try to predict a quiet rival turn. It
 uses only deterministic public demand: unlocked shops consume every four steps and town center
-consumes every 24 steps.  If E184 newly pulls an authored future SELL backward across one of
+consumes every 24 steps. If E184 newly pulls an authored future SELL backward across one of
 those known demand ticks, C4 rolls back only that newly-created reservation and leaves the
 future authored sale in place.
 
-This module lives outside ``overlay/**`` and is default-off.  It changes timing only; source
+C4 snapshots E184 debt before the parent call, executes the *full unmodified V3.1 parent*, then
+applies its rollback to the final action. This ordering is deliberate: a zeroed E184 row remains
+an explicit raw ``[]`` market slot, so C4 cannot make incumbent ROW_ORDER compact a placeholder
+and shift unrelated parent rows against different rival lockstep indices.
+
+This module lives outside ``overlay/**`` and is default-off. It changes timing only; source
 custody is not an economics claim because lower pre-tick supply may also improve the rival's
-quotes.  Paired Delta-margin is required before promotion.
+quotes. Paired Delta-margin is required before promotion.
 """
 from __future__ import annotations
 
@@ -117,10 +122,11 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
                                  enabled=False):
     """Undo only *new* E184 reservations that jumped over deterministic public demand.
 
-    The function is called immediately after ``POLICY_AGENT`` and before ROW_ORDER /
-    EVENING_FLUSH.  At that seam E184 has appended a unique SELL row for every item it advances,
-    because ``reserve_sales`` blocks items already present in the parent market.  We first prove
-    every action/debt edit, then mutate a copy plus one replacement debt map atomically.
+    The function is called after the full V3.1 parent action has been composed. E184 itself
+    blocks advancing an item already present in the pre-reservation market. Later parent layers
+    may create a second same-item row; in that case the final action is ambiguous and C4 fails
+    closed. All action/debt edits are proven first, then one copied action and one copied debt
+    map replace the parent result atomically.
     """
     telemetry["calls"] += 1
     if not enabled:
@@ -199,14 +205,13 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
             return action
         edits[index] = quantity - rollback
 
-    # All invariants proven: make action+debt replacement together.
+    # All invariants proven. This is the final post-parent action, so an explicit [] remains at
+    # this exact raw index and cannot be compacted by an incumbent wrapper after C4.
     out = copy.deepcopy(action)
     for index, quantity in edits.items():
         if quantity:
             out["market"][index][2] = quantity
         else:
-            # This was an E184-appended row. Keep an explicit placeholder until the incumbent
-            # post-policy ROW_ORDER stage normalizes final SELL order exactly as usual.
             out["market"][index] = []
 
     new_debts = copy.deepcopy(after)
@@ -229,40 +234,28 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
 
 
 def c4_agent(observation, configuration=None):
-    """Exact V3.1 post-policy composition with C4 inserted before ROW_ORDER/flush."""
+    """Snapshot E184 debt, execute exact shipped parent, then apply bounded C4 rollback."""
     player = observation.get("player") if isinstance(observation, dict) else None
     before = {}
+    snapshot_ok = True
     if C4_ENABLED and type(player) is int and base._POLICY is not None:
         state = base._POLICY.players.get(player)
         if state is not None:
             snapshot = _debt_snapshot(state)
-            if snapshot is not None:
+            if snapshot is None:
+                snapshot_ok = False
+            else:
                 before = snapshot
 
-    action = base.POLICY_AGENT(observation, configuration)
-    if C4_ENABLED and type(player) is int and base._POLICY is not None:
+    # Use the full incumbent V3.1 composition; do not duplicate ROW_ORDER/FLUSH logic here.
+    action = base.v3_agent(observation, configuration)
+
+    if C4_ENABLED and snapshot_ok and type(player) is int and base._POLICY is not None:
         state = base._POLICY.players.get(player)
         if state is not None:
             action = rollback_cross_tick_advances(
                 action, observation, state, before, configuration, enabled=True
             )
-
-    # Preserve shipped V3.1 post-policy order exactly.
-    if base.ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
-        inventory = (observation.get("market") or {}).get("inventory") or {}
-        market = [list(order) for order in action.get("market") or [] if order]
-        ordered = base.order_sells(market, inventory)
-        if ordered != market:
-            action = dict(action)
-            action["market"] = ordered
-    if base.EVENING_FLUSH:
-        action = base.evening_flush(observation, action)
-    if (base.OPEN_ROUNDTRIP > 0 and int(observation["step"]) == 0
-            and [list(order) for order in action.get("market") or []] == base.TAPE_OPENING):
-        action = dict(action)
-        action["market"] = [["BUY_PRODUCT", "WHEAT", 13],
-                            ["BUY_PRODUCT", "WHEAT", base.OPEN_ROUNDTRIP],
-                            ["SELL", "WHEAT", base.OPEN_ROUNDTRIP]]
     return action
 
 
