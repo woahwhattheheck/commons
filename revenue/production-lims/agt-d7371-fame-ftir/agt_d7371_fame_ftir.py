@@ -152,6 +152,14 @@ class AgTD7371Lane:
             if prior != digest:
                 return self._result(record, "HOLD", "REPLAY_PAYLOAD_CONFLICT")
             return self._result(record, "IDEMPOTENT", "IDEMPOTENT_REPLAY", idempotent=True)
+
+        # Convert values that can raise only after replay classification, but still
+        # before binding first-seen state. This preserves replay conflict precedence.
+        try:
+            qc_target_vv = float(record["qc_target_vv"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError("qc_target_vv must be numeric") from exc
+
         # Bind first-seen content even for held submissions so exact replay is zero-add.
         self.state.processed_submissions[submission_id] = digest
 
@@ -174,7 +182,7 @@ class AgTD7371Lane:
         if rounded_fame(record["raw_fame_vv"]) != float(record["reported_fame_vv"]):
             return self._hold(record, "RESULT_FORMAT_MISMATCH")
 
-        if record["qc_standard_id"] != QC_STANDARD_ID or float(record["qc_target_vv"]) != QC_TARGET_VV:
+        if record["qc_standard_id"] != QC_STANDARD_ID or qc_target_vv != QC_TARGET_VV:
             return self._hold(record, "QC_MISMATCH")
         if not isinstance(record["qc_recovery_pct"], (int, float)) or isinstance(record["qc_recovery_pct"], bool):
             return self._hold(record, "QC_MISMATCH")

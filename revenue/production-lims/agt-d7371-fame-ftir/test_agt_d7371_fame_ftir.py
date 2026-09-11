@@ -184,6 +184,45 @@ class AgTD7371LaneTests(unittest.TestCase):
         lane.process_many(records)
         self.assertEqual(frozen, canonical_json(records))
 
+    def test_13_qc_target_conversion_fails_before_state_mutation(self) -> None:
+        lane = AgTD7371Lane()
+        probe = copy.deepcopy(self.records[0])
+        probe["qc_target_vv"] = "not-a-number"
+        before = lane.state.digest()
+        with self.assertRaisesRegex(ValueError, "qc_target_vv must be numeric"):
+            lane.process(probe)
+        self.assertEqual(before, lane.state.digest())
+        self.assertEqual({}, lane.state.processed_submissions)
+        self.assertEqual([], lane.state.holds)
+        self.assertEqual([], lane.state.events)
+
+        coercible = copy.deepcopy(self.records[0])
+        coercible["qc_target_vv"] = "3.0"
+        self.assertEqual("READY", lane.process(coercible)["state"])
+
+        wrong_numeric_lane = AgTD7371Lane()
+        wrong_numeric = copy.deepcopy(self.records[0])
+        wrong_numeric["qc_target_vv"] = 4.0
+        result = wrong_numeric_lane.process(wrong_numeric)
+        self.assertEqual(("HOLD", "QC_MISMATCH"), (result["state"], result["code"]))
+        self.assertIn(wrong_numeric["submission_id"], wrong_numeric_lane.state.processed_submissions)
+
+    def test_14_changed_replay_malformed_qc_preserves_conflict_precedence(self) -> None:
+        lane = AgTD7371Lane()
+        first = copy.deepcopy(self.records[0])
+        self.assertEqual("READY", lane.process(first)["state"])
+        before = lane.state.digest()
+
+        changed = copy.deepcopy(first)
+        changed["qc_target_vv"] = "not-a-number"
+        result = lane.process(changed)
+
+        self.assertEqual(
+            ("HOLD", "REPLAY_PAYLOAD_CONFLICT"),
+            (result["state"], result["code"]),
+        )
+        self.assertEqual(before, lane.state.digest())
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
