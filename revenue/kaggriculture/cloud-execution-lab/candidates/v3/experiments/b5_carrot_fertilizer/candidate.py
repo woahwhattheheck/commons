@@ -4,7 +4,7 @@
 This experiment is outside ``overlay/**`` and therefore cannot alter the deterministic
 V3 package or submission defaults. It pins the live V3.1 R04 baseline, then replaces
 only an already-authored literal PASS with FERTILIZE when that worker is already standing
-on a CARROT plant, already carrying fertilizer, and the tile is not fertilized through
+on a CARROT plant, already carries fertilizer, and the tile is not fertilized through
 the next two days. Malformed or non-canonical state fails closed to the parent action.
 """
 from __future__ import annotations
@@ -55,6 +55,26 @@ def _eligible(tile, inventory, day):
     )
 
 
+def _actor_surface_valid(command, position, inventory, tiles):
+    """Validate every actor before any replacement can be recorded."""
+    if not isinstance(command, list) or not command or not isinstance(command[0], str):
+        return False
+    if (
+        not isinstance(position, (list, tuple))
+        or len(position) != 2
+        or not _int(position[0])
+        or not _int(position[1])
+        or not isinstance(inventory, dict)
+    ):
+        return False
+    x, y = position
+    return (
+        0 <= y < len(tiles)
+        and isinstance(tiles[y], list)
+        and 0 <= x < len(tiles[y])
+    )
+
+
 def apply_carrot_fertilizer(observation, action):
     """Replace eligible literal PASS rows; malformed inputs preserve parent identity."""
     if not isinstance(observation, dict) or not isinstance(action, dict):
@@ -95,22 +115,18 @@ def apply_carrot_fertilizer(observation, action):
     if not isinstance(tiles, list):
         return action
 
+    actor_rows = list(zip(commands, positions, inventories))
+    if any(not _actor_surface_valid(command, position, inventory, tiles)
+           for command, position, inventory in actor_rows):
+        return action
+
     day = step // 24
     claimed = set()
     replacements = {}
-    for actor, (command, position, inventory) in enumerate(zip(commands, positions, inventories)):
+    for actor, (command, position, inventory) in enumerate(actor_rows):
         if command != ["PASS"]:
             continue
-        if (
-            not isinstance(position, (list, tuple))
-            or len(position) != 2
-            or not _int(position[0])
-            or not _int(position[1])
-        ):
-            return action
         x, y = position
-        if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
-            continue
         if (x, y) in claimed:
             continue
         tile = tiles[y][x]
