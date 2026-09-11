@@ -81,7 +81,7 @@ def apply_place_delivery(observation, action, enabled=False):
     # Validate the public geometry/inventory surfaces used by beside_shed() and
     # inventory() before the transform touches them. beside_shed() derives the
     # shed center from len(tiles), so malformed board dimensions must not be
-    # allowed to redefine shed adjacency. Exact actor cardinality is required in
+    # allowed to redefine shed adjacency. Worker-set cardinality is required in
     # both directions: neither the public state nor the parent action may expose
     # only a prefix of the actual worker set.
     if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
@@ -149,7 +149,6 @@ def apply_place_delivery(observation, action, enabled=False):
         price = view.prices.get(item)
         if type(price) is not int or price < 0:
             return action
-
     eligible = []
     touched = False
     for worker in range(len(workers)):
