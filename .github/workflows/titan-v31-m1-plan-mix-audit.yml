@@ -1,0 +1,28 @@
+name: titan-v31-m1-plan-mix-audit
+
+on:
+  push:
+    branches:
+      - 'astra/v31-m1-plan-mix-audit-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/m1_plan_mix_audit/**'
+      - '.github/workflows/titan-v31-m1-plan-mix-audit.yml'
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/m1_plan_mix_audit/**'
+      - '.github/workflows/titan-v31-m1-plan-mix-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact 13-tape post-route production / sale census
+        run: python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/m1_plan_mix_audit/audit.py
