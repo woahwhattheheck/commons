@@ -1,5 +1,14 @@
 [
   {
+    "id": "DELETE-ME-noop",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-11T10:37:15Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "TITAN-V3.1-integration-ledger---converge-fleet-work-onto-frozen-508b",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
