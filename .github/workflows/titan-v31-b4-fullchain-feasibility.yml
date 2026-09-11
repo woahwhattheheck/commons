@@ -67,7 +67,7 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest -v test_fullchain_probe.py 2>&1 | tee "$RUNNER_TEMP/b4-fullchain-tests.log"
-          grep -E '^Ran 10 tests in [0-9.]+s$' "$RUNNER_TEMP/b4-fullchain-tests.log"
+          grep -E '^Ran 11 tests in [0-9.]+s$' "$RUNNER_TEMP/b4-fullchain-tests.log"
           grep -Fx 'OK' "$RUNNER_TEMP/b4-fullchain-tests.log"
           python -B - <<'PY'
           from pathlib import Path
