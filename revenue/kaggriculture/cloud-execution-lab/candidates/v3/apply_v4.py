@@ -8,7 +8,7 @@ import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue")
+KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_v224_raw_slots")
 
 
 def _replace_once(text, old, new, label):
@@ -28,10 +28,22 @@ def apply(src):
     router = read("r04_full_router.py")
     router = _replace_once(
         router,
+        "def _v224_sales_first(action):\n"
+        "    original=action.get('market',[])[:MAX_ORDERS]\n",
+        "def _v224_sales_first(action):\n"
+        "    if V224_RAW_SLOTS:\n"
+        "        import r04_v224_raw_slots\n"
+        "        return r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
+        "    original=action.get('market',[])[:MAX_ORDERS]\n",
+        "R04 V4 V224 raw-slot seam",
+    )
+    router = _replace_once(
+        router,
         "GOOSE_RESCUE = False\n_TERMINAL_FERTILIZER_AGENT = None\n",
         "GOOSE_RESCUE = False\n"
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
+        "V224_RAW_SLOTS = False\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -54,7 +66,7 @@ def apply(src):
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, v224_raw_slots=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -64,13 +76,16 @@ def apply(src):
         "    mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,\n"
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
-        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n",
+        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
+        "    v224_raw_slots preserves lockstep-significant raw market slots while retaining V224 SELL\n"
+        "    bubbling across contiguous effectful rows.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n"
+        "    global V224_RAW_SLOTS\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -84,6 +99,8 @@ def apply(src):
         "        PLACE_DELIVERY = bool(place_delivery)\n"
         "    if goose_pass_rescue is not None:\n"
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
+        "    if v224_raw_slots is not None:\n"
+        "        V224_RAW_SLOTS = bool(v224_raw_slots)\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -95,7 +112,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n\n    def __post_init__(self):",
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
-        "    r04_goose_pass_rescue: bool = False\n\n    def __post_init__(self):",
+        "    r04_goose_pass_rescue: bool = False\n"
+        "    r04_v224_raw_slots: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -105,7 +123,8 @@ def apply(src):
         "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
-        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue))(observation, configuration)\n",
+        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
+        "                                 v224_raw_slots=bool(self.features.r04_v224_raw_slots))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -113,7 +132,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n",
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
-        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n",
+        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
+        "                self.diagnostics['v224_raw_slots'] = bool(self.features.r04_v224_raw_slots)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
