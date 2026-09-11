@@ -93,7 +93,11 @@ def apply_row_shed(observation, action, r04, configuration=None):
         view = r04.FarmView(observation)
         projected = r04.projected_shed(action, view)
         inventory = (observation.get("market") or {}).get("inventory") or {}
-        market = [list(order) for order in action.get("market") or [] if order]
+        # Keep the exact market row cardinality and tail objects. Empty slots are execution
+        # positions, not disposable representation: compacting them can move later rows into
+        # the engine's executable prefix. order_sells() itself only replaces the leading
+        # contiguous SELL positions when the ranking changes.
+        market = action.get("market") or []
         ordered = order_sells(market, inventory, projected, r04._ro_price, r04._RO_PARAMS, r04._RO_I0)
     except Exception:
         return action
