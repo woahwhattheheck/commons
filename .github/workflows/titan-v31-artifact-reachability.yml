@@ -1,0 +1,82 @@
+name: titan-v31-artifact-reachability
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
+      - '.github/workflows/titan-v31-artifact-reachability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  materialized-reachability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact package-custody parent and additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=c580f7805cc7468094c0e880f4923133d45d70d0
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          python - <<'PY'
+          import subprocess
+          parent = 'c580f7805cc7468094c0e880f4923133d45d70d0'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-artifact-reachability.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected reachability composition scope: {sorted(actual)}')
+          print('V31_REACHABILITY_SCOPE_OK', len(actual))
+          PY
+
+      - name: Run focused reachability predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_v31_artifact_reachability.py |& tee /tmp/v31-reach-unit.log
+          grep -F 'Ran 14 tests' /tmp/v31-reach-unit.log
+          grep -F 'OK' /tmp/v31-reach-unit.log
+
+      - name: Prove frozen canonical build and runtime reachability
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(python - <<'PY'
+          import sys
+          print(sys.flags.optimize)
+          PY
+          )" = "0"
+          python -B build_v3.py --check |& tee /tmp/v31-build.log
+          grep -F 'V3 CHECK OK ' /tmp/v31-build.log
+          python -B check_v31_artifact_reachability.py |& tee /tmp/v31-reach.log
+          grep -F 'V31 REACHABILITY OK ' /tmp/v31-reach.log
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
