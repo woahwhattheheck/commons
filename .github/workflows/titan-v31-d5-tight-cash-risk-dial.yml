@@ -1,0 +1,51 @@
+name: TITAN V3.1 D5 tight-cash risk dial
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-d5-tight-cash-risk-dial.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial/**'
+
+permissions:
+  contents: read
+
+jobs:
+  focused-source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact PR head and additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='d181d6ecf848f88885bc1cc348c456714b7360cd'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          git merge-base --is-ancestor "$BASE" HEAD
+          python3 - <<'PY'
+          import subprocess
+          base = 'd181d6ecf848f88885bc1cc348c456714b7360cd'
+          expected = {
+              '.github/workflows/titan-v31-d5-tight-cash-risk-dial.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial/test_candidate.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}...HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'wrong D5 scope: actual={sorted(actual)!r} expected={sorted(expected)!r}')
+          PY
+
+      - name: Focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial
+        run: python3 -B -m unittest -v test_candidate.py
+
+      - name: Focused predecessors under python -O
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d5_tight_cash_risk_dial
+        run: python3 -O -B -m unittest -v test_candidate.py
