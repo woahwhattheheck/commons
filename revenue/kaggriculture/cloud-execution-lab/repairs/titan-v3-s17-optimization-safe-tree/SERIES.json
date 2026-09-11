@@ -18,8 +18,8 @@
     },
     {
       "file": "0004-tree-contracts.patch",
-      "bytes": 4859,
-      "sha256": "bf4b289a0095506db764897f1dd73fce4813ca2c5332b7266fc0c3b9ad1a190b"
+      "bytes": 4858,
+      "sha256": "a8634892dab33850fdf9f0cfc1bd36e5f619acd2e382260d11a917b31b8f3605"
     },
     {
       "file": "0005-optimization-contracts.patch",
