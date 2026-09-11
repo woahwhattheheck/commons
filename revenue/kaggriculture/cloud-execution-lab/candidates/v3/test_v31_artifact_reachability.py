@@ -106,6 +106,24 @@ class ArtifactReachabilityTests(unittest.TestCase):
                     manifest["keys"]["params"] = {}
                 self.assertEqual([], validate_reachability(manifest, files, overlay))
 
+    def test_falsey_non_object_manifest_keys_fail_closed(self):
+        for keys in ([], "", 0, False, None):
+            with self.subTest(keys=keys):
+                manifest, files, overlay = self.fixture()
+                manifest["keys"] = keys
+                with self.assertRaisesRegex(AssertionError, "manifest keys must be an object"):
+                    validate_reachability(manifest, files, overlay)
+
+    def test_missing_or_empty_manifest_keys_remain_valid(self):
+        for mode in ("missing", "empty"):
+            with self.subTest(mode=mode):
+                manifest, files, overlay = self.fixture()
+                if mode == "missing":
+                    del manifest["keys"]
+                else:
+                    manifest["keys"] = {}
+                self.assertEqual([], validate_reachability(manifest, files, overlay))
+
     def test_param_comment_docstring_and_dead_string_do_not_count_as_use(self):
         manifest, files, overlay = self.fixture()
         files["titan_runtime.py"] = (
