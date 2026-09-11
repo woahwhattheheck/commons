@@ -153,6 +153,16 @@ class SimFidelityGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(guard.ReceiptError, "seeds"):
             guard.validate_receipt(receipt, manifest(), panel())
 
+    def test_frozen_panel_metadata_must_be_self_consistent(self):
+        broken = panel()
+        broken["seeds"] = [101, 101]
+        with self.assertRaisesRegex(guard.ReceiptError, "duplicates"):
+            guard.validate_receipt(valid_receipt(), manifest(), broken)
+        broken = panel()
+        broken["games_per_opponent"] = 99
+        with self.assertRaisesRegex(guard.ReceiptError, "seed x seat"):
+            guard.validate_receipt(valid_receipt(), manifest(), broken)
+
     def test_opponent_bytes_must_match_between_arms(self):
         receipt = valid_receipt()
         receipt["opponent"]["same_bytes_between_arms"] = False
