@@ -78,13 +78,13 @@ def _apply_place_delivery(observation, action):
     eligible = []
     for worker, inventory in touched:
         choices = []
-        for item, held in inventory.items():
-            if item not in r04.PRODUCTS or not _plain_positive_int(held):
+        for product_order, item in enumerate(r04.PRODUCTS):
+            held = inventory.get(item, 0)
+            if not _plain_positive_int(held):
                 continue
             price = view.prices.get(item)
             if type(price) is not int:
                 return action
-            product_order = r04.PRODUCTS.index(item)
             choices.append((price, held, -product_order, item))
         if choices:
             price, held, _, item = max(choices)
