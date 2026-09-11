@@ -2,11 +2,11 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 5,
-    "runs_in_progress": 23,
-    "runs_queued": 2269
+    "runs_in_progress": 19,
+    "runs_queued": 2396
   },
   "degraded": [],
-  "drafts": 236,
+  "drafts": 214,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -52,6 +52,30 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "branch": "claude/v31-row-shed-20260911",
+      "created_at": "2026-09-11T10:52:55Z",
+      "draft": true,
+      "number": 12566,
+      "title": "[HOLD \u2014 CONSUME #12551 SEMANTICS AFTER #12565] TITAN V3.1 row-shed production scaffold"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-l3-failclosed-package-consume-r2-20260911",
+      "created_at": "2026-09-11T10:45:09Z",
+      "draft": true,
+      "number": 12565,
+      "title": "TITAN V3.1: consume L3 fail-closed on optimizer-safe recovered stack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-c4-public-demand-rebind-20260911",
+      "created_at": "2026-09-11T10:43:18Z",
+      "draft": true,
+      "number": 12564,
+      "title": "TITAN V3.1: rebind repaired C4 public-demand boundary on 8e3"
+    },
+    {
+      "author": "woahwhattheheck",
       "branch": "astra/v31-8e3-b7-shed-overflow-gate-20260911",
       "created_at": "2026-09-11T10:42:46Z",
       "draft": true,
@@ -60,35 +84,11 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-b11-mirror-horizon-20260911",
-      "created_at": "2026-09-11T10:42:34Z",
-      "draft": true,
-      "number": 12561,
-      "title": "TITAN V3.1: screen B11 mirror horizon on 8e3 B5+JIT stack"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-b11-mirror-screen-20260911",
-      "created_at": "2026-09-11T10:42:16Z",
-      "draft": true,
-      "number": 12560,
-      "title": "TITAN V3.1: re-screen B11 mirror horizon on shipped 8e3+B5+JIT"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "astra/v31-8e3-b11-mirror-currentroot-20260911",
       "created_at": "2026-09-11T10:41:29Z",
       "draft": true,
       "number": 12559,
       "title": "TITAN V3.1: recompose B11 mirror horizon on shipped 8e3 B5+JIT"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v31-s33-row-shed-8e3-20260911",
-      "created_at": "2026-09-11T10:40:55Z",
-      "draft": true,
-      "number": 12558,
-      "title": "TITAN V3.1: preserve S33 row-shed donor on shipped 8e3 root"
     },
     {
       "author": "woahwhattheheck",
@@ -108,14 +108,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v31-8e3-row-shed-current-root-20260911-01",
-      "created_at": "2026-09-11T10:40:17Z",
-      "draft": true,
-      "number": 12554,
-      "title": "TITAN V3.1: bind S33 row-shed to current 8e3 convergence root"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "astra/v31-8e3-h13-cattleoff-horizon-recompose-20260911",
       "created_at": "2026-09-11T10:40:00Z",
       "draft": true,
@@ -129,13 +121,21 @@
       "draft": true,
       "number": 12552,
       "title": "TITAN V3.1: consume reviewed E20 on shipped 8e3 B5+JIT stack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v31-8e3-row-shed-current-root-recompose-20260911",
+      "created_at": "2026-09-11T10:39:10Z",
+      "draft": true,
+      "number": 12551,
+      "title": "TITAN V3.1: surface current-root S33 row-shed donor"
     }
   ],
-  "pulls_listed": 301,
+  "pulls_listed": 278,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 98.7,
+  "queue_depth_per_runner": 126.1,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T10:42:50Z",
+  "unchanged_since": "2026-09-11T11:04:42Z",
   "undatable_pulls": []
 }
