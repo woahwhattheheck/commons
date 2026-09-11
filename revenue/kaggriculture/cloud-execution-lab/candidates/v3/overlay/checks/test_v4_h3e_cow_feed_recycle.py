@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import copy
 import unittest
+from unittest import mock
 
+import r04_full_router as r04
 import r04_h3e_cow_feed_recycle as lane
 
 CFG = {
@@ -20,11 +22,13 @@ def _cow(**overrides):
     tile = {
         "kind": "PASTURE",
         "animal": "COW",
+        "placed_day": 0,
         "yield_units": 0,
         "consecutive_unfed": 1,
         "fed_today": False,
         "cared_today": True,
         "fertilizer_available": False,
+        "pending_care_bonus": 0,
     }
     tile.update(overrides)
     return tile
@@ -145,6 +149,57 @@ class CowFeedRecycleTest(unittest.TestCase):
             action,
         )
         self.assertEqual(lane.telemetry["stacked_worker_block"], 1)
+
+    def test_outer_seam_sees_reconstructed_hidden_actor(self):
+        # r04_fert_hand hides its owned hand from _v3_stack and reinserts that
+        # command in _v3_core. Model the reconstructed whole action directly:
+        # the visible farmer's CARE is dead, but the hidden hand already FEEDs
+        # the same cow. H3e must run outside _v3_core so the stacked-worker veto
+        # sees that FEED rather than spending a second WHEAT.
+        observation = _obs(
+            _cow(), hands=[(0, 0)], inventories=[{"WHEAT": 1}, {"WHEAT": 1}]
+        )
+        reconstructed = _action(["CARE"], [["FEED"]])
+        old_flags = (
+            r04.MIRROR_HORIZON,
+            r04.TERMINAL_FERTILIZER,
+            r04.GOOSE_RESCUE,
+            r04.COW_FEED_RECYCLE,
+        )
+        try:
+            r04.MIRROR_HORIZON = False
+            r04.TERMINAL_FERTILIZER = False
+            r04.GOOSE_RESCUE = False
+            r04.COW_FEED_RECYCLE = True
+            with mock.patch.object(r04, "_v3_core", return_value=reconstructed):
+                out = r04.v3_agent(observation, CFG)
+            self.assertIs(out, reconstructed)
+            self.assertEqual(lane.telemetry["stacked_worker_block"], 1)
+        finally:
+            (r04.MIRROR_HORIZON,
+             r04.TERMINAL_FERTILIZER,
+             r04.GOOSE_RESCUE,
+             r04.COW_FEED_RECYCLE) = old_flags
+
+    def test_eod_read_metadata_poison_fails_closed(self):
+        action = _action(["CARE"])
+        malformed = [
+            _cow(placed_day=True),
+            _cow(placed_day="0"),
+            _cow(placed_day=29),  # step 695 is day 28
+            _cow(pending_care_bonus=-1),
+            _cow(pending_care_bonus="0"),
+        ]
+        missing_placed = _cow()
+        del missing_placed["placed_day"]
+        missing_bonus = _cow()
+        del missing_bonus["pending_care_bonus"]
+        malformed.extend((missing_placed, missing_bonus))
+        for tile in malformed:
+            self.assertIs(
+                lane.apply_cow_feed_recycle(action, _obs(tile), CFG, enabled=True),
+                action,
+            )
 
     def test_non_cow_and_other_commands_are_untouched(self):
         goose = _cow(animal="GOOSE", kind="COOP")
