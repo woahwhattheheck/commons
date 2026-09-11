@@ -2,26 +2,26 @@
 """Experiment-only C5 wheat demand rider.
 
 The experiment uses only public market/town observations plus our own previous
-returned action.  Between callbacks t and t+1 the official engine gives, for
-WHEAT::
+returned action.  The official engine's market inventory counts successful BUYs
+as negative inventory and successful SELLs as positive inventory *except* a SELL
+quoted at the $1 floor, which pays the seller but does not add market inventory.
+For WHEAT between callbacks this gives a conservative gross-buy theorem::
 
-    delta_inventory = own_sell - own_buy + rival_sell - rival_buy - town_consume
+    rival_buy >= previous_inventory - current_inventory
+                 - town_consume - own_buy_requested_upper_bound
 
-Therefore a conservative lower bound on rival net demand is::
-
-    rival_buy - rival_sell >= previous_inventory - current_inventory
-                              - town_consume - own_buy_requested_upper_bound
-
-because executed own BUY cannot exceed our requested BUY quantity and executed
-own SELL is non-negative.  A positive value therefore proves *realized* rival
-net WHEAT demand without reading rival orders or private inventory.
+Visible own/rival sells can only make this bound smaller, failed/partial own BUYs
+can only make it smaller, and inventory-invisible $1 sells do not make inventory
+fall.  A positive value therefore proves at least that many realized rival
+BUY_PRODUCT(WHEAT) units; it does *not* prove rival net demand after hidden sells.
 
 On such a transition, C5 may move exactly one already-authored current WHEAT
 SELL row to a newly appended trailing market row.  The original row becomes an
-empty no-op, every other row keeps the exact same index/content, total WHEAT
-SELL quantity is unchanged, and any later cash-spending row vetoes the move so
-we cannot remove sale funding from a purchase.  No future-sale debt, production
-change, feed reservation, or hidden-opponent prediction is introduced.
+empty no-op, every other raw row keeps the exact same index/content, total WHEAT
+SELL quantity is unchanged, and any later executable cash-spending row vetoes
+the move so we cannot remove sale funding from a purchase.  The executable row
+cap is derived from the current runtime configuration with official integer
+clamping (max(1, cap)); non-integer/bool cap values fail closed.
 
 This module lives outside overlay/**.  It is default-OFF research evidence and
 has no release/default/package/Kaggle authority.
@@ -40,7 +40,7 @@ if str(OVERLAY) not in sys.path:
 
 import r04_full_router as base  # noqa: E402
 
-MAX_ORDERS = 10
+DEFAULT_MAX_ORDERS = 10
 WHEAT = "WHEAT"
 BUY_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL"}
 SHOPS = {
@@ -77,6 +77,12 @@ def _positive_int(value: Any, label: str) -> int:
 def _interval(configuration: Any, key: str, default: int) -> int:
     value = _get(configuration, key, default) if configuration is not None else default
     return _positive_int(value, key)
+
+
+def _market_cap(configuration: Any = None) -> int:
+    """Strict subset of official cap semantics: exact ints clamp to >=1; others fail closed."""
+    value = _get(configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_ORDERS) if configuration is not None else DEFAULT_MAX_ORDERS
+    return max(1, _strict_int(value, "maxMarketOrdersPerTurn"))
 
 
 def _step_player(observation: Mapping[str, Any]) -> tuple[int, int]:
@@ -131,17 +137,19 @@ def _town_wheat_consumption(observation: Mapping[str, Any], configuration: Any =
     return consume
 
 
-def _market_rows(action: Mapping[str, Any]) -> list[Any]:
+def _market_rows(action: Mapping[str, Any], executable_cap: int) -> list[Any]:
     market = _get(action, "market", None)
     if not isinstance(market, list):
         raise ValueError("action.market must be a list")
-    return market[:MAX_ORDERS]
+    if type(executable_cap) is not int or executable_cap < 1:
+        raise ValueError("executable cap must be a positive integer")
+    return market[:executable_cap]
 
 
-def _own_wheat_buy_upper(action: Mapping[str, Any]) -> int:
+def _own_wheat_buy_upper(action: Mapping[str, Any], executable_cap: int) -> int:
     """Upper-bound successfully executed own WHEAT BUY_PRODUCT units."""
     total = 0
-    for order in _market_rows(action):
+    for order in _market_rows(action, executable_cap):
         if not isinstance(order, (list, tuple)) or not order:
             continue
         if order[0] != "BUY_PRODUCT" or len(order) < 2 or order[1] != WHEAT:
@@ -153,13 +161,13 @@ def _own_wheat_buy_upper(action: Mapping[str, Any]) -> int:
     return total
 
 
-def _rival_wheat_demand_lower_bound(
+def _rival_wheat_buy_lower_bound(
     previous_inventory: int,
     current_inventory: int,
     previous_town_consume: int,
     previous_own_buy_upper: int,
 ) -> int:
-    """Conservative lower bound on rival BUY_PRODUCT(WHEAT) - rival WHEAT SELL."""
+    """Conservative lower bound on gross realized rival BUY_PRODUCT(WHEAT) units."""
     return (
         int(previous_inventory)
         - int(current_inventory)
@@ -172,11 +180,14 @@ def _cash_spending(order: Any) -> bool:
     return isinstance(order, (list, tuple)) and bool(order) and order[0] in BUY_OPS
 
 
-def _relocate_wheat_sell(action: Mapping[str, Any]) -> tuple[Mapping[str, Any], dict[str, int] | None]:
-    """Move one current WHEAT SELL to a new trailing row without shifting any other row."""
-    market = _market_rows(action)
-    # Appending must remain inside the engine's executable 10-row prefix.
-    if len(market) >= MAX_ORDERS:
+def _relocate_wheat_sell(
+    action: Mapping[str, Any], executable_cap: int
+) -> tuple[Mapping[str, Any], dict[str, int] | None]:
+    """Move one executable WHEAT SELL to a new executable tail row without shifting others."""
+    market = _market_rows(action, executable_cap)
+    # Appending must remain inside the runtime executable prefix.  If raw action
+    # has a tail past the cap, len(market)==cap and this fails closed.
+    if len(market) >= executable_cap:
         return action, None
 
     wheat_rows: list[tuple[int, Sequence[Any]]] = []
@@ -196,9 +207,9 @@ def _relocate_wheat_sell(action: Mapping[str, Any]) -> tuple[Mapping[str, Any], 
 
     if len(wheat_rows) != 1:
         return action, None
-    index, order = wheat_rows[0]
+    index, _order = wheat_rows[0]
 
-    # Removing the earlier sale must not remove funding from any later spend.
+    # Removing the earlier sale must not remove funding from any later executable spend.
     if any(_cash_spending(row) for row in market[index + 1 :]):
         return action, None
 
@@ -221,10 +232,10 @@ class WheatDemandRider:
         self.enabled = bool(enabled)
         self.players: dict[int, dict[str, int]] = {}
         self.telemetry = {
-            "confirmed_demand_transitions": 0,
+            "confirmed_rival_buy_transitions": 0,
             "relocations": 0,
             "moved_units": 0,
-            "last_demand_lower_bound": 0,
+            "last_rival_buy_lower_bound": 0,
             "last_from_index": None,
             "last_to_index": None,
         }
@@ -235,7 +246,7 @@ class WheatDemandRider:
         previous = self.players.get(player)
         if previous is None or step != previous["step"] + 1:
             return step, player, 0
-        lower = _rival_wheat_demand_lower_bound(
+        lower = _rival_wheat_buy_lower_bound(
             previous["inventory"],
             current_inventory,
             previous["town_consume"],
@@ -243,19 +254,30 @@ class WheatDemandRider:
         )
         return step, player, lower
 
-    def _finish(
+    def _current_record(
         self,
         observation: Mapping[str, Any],
         action: Mapping[str, Any],
         configuration: Any = None,
-    ) -> None:
+    ) -> tuple[int, dict[str, int], int, int]:
+        """Validate/materialize all current evidence before any timing mutation."""
         step, player = _step_player(observation)
-        self.players[player] = {
+        executable_cap = _market_cap(configuration)
+        price = _wheat_price(observation)
+        record = {
             "step": step,
             "inventory": _wheat_inventory(observation),
             "town_consume": _town_wheat_consumption(observation, configuration),
-            "own_buy_upper": _own_wheat_buy_upper(action),
+            "own_buy_upper": _own_wheat_buy_upper(action, executable_cap),
         }
+        return player, record, price, executable_cap
+
+    def _forget_player(self, observation: Mapping[str, Any]) -> None:
+        try:
+            _, player = _step_player(observation)
+            self.players.pop(player, None)
+        except (KeyError, TypeError, ValueError):
+            pass
 
     def apply(
         self,
@@ -265,38 +287,37 @@ class WheatDemandRider:
     ) -> Mapping[str, Any]:
         """Return exact parent unless all public C5 predicates are proved."""
         try:
-            _, _, lower = self._begin(observation)
+            _, player, lower = self._begin(observation)
+            current_player, current_record, current_price, executable_cap = self._current_record(
+                observation, parent_action, configuration
+            )
+            if current_player != player:
+                raise ValueError("player changed while materializing evidence")
         except (KeyError, TypeError, ValueError):
-            # Malformed public evidence cannot authorize a timing mutation.
+            # Current malformed evidence invalidates the transition *before* any
+            # relocation and clears stale state so it cannot authorize next turn.
+            self._forget_player(observation)
             return parent_action
 
         result: Mapping[str, Any] = parent_action
         if lower > 0:
-            self.telemetry["confirmed_demand_transitions"] += 1
-            self.telemetry["last_demand_lower_bound"] = lower
-            if self.enabled:
+            self.telemetry["confirmed_rival_buy_transitions"] += 1
+            self.telemetry["last_rival_buy_lower_bound"] = lower
+            if self.enabled and current_price > 1:
                 try:
-                    if _wheat_price(observation) > 1:
-                        candidate, moved = _relocate_wheat_sell(parent_action)
-                        if moved is not None:
-                            result = candidate
-                            self.telemetry["relocations"] += 1
-                            self.telemetry["moved_units"] += moved["quantity"]
-                            self.telemetry["last_from_index"] = moved["from_index"]
-                            self.telemetry["last_to_index"] = moved["to_index"]
+                    candidate, moved = _relocate_wheat_sell(parent_action, executable_cap)
+                    if moved is not None:
+                        result = candidate
+                        self.telemetry["relocations"] += 1
+                        self.telemetry["moved_units"] += moved["quantity"]
+                        self.telemetry["last_from_index"] = moved["from_index"]
+                        self.telemetry["last_to_index"] = moved["to_index"]
                 except (KeyError, TypeError, ValueError):
                     result = parent_action
 
-        try:
-            # The transform never changes BUY_PRODUCT rows, but record the exact
-            # returned action so the next transition is bound to what we emitted.
-            self._finish(observation, result, configuration)
-        except (KeyError, TypeError, ValueError):
-            try:
-                _, player = _step_player(observation)
-                self.players.pop(player, None)
-            except (KeyError, TypeError, ValueError):
-                pass
+        # Relocation changes only a SELL row, so the already-validated record of
+        # own BUY upper-bound/town/public inventory is identical for result.
+        self.players[player] = current_record
         return result
 
 
