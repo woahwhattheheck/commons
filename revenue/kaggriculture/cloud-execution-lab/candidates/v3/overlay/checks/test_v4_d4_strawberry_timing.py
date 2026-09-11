@@ -89,6 +89,7 @@ class D4V4Tests(unittest.TestCase):
                         source.index("if ROW_ORDER"))
         self.assertLess(source.index("r04_d4_strawberry_timing.apply_d4"),
                         source.index("if EVENING_FLUSH"))
+        self.assertIn("observation, action, configuration, enabled=True", source)
 
     def test_disabled_apply_returns_exact_parent_object(self):
         parent = action()
@@ -97,8 +98,12 @@ class D4V4Tests(unittest.TestCase):
     def test_nonstandard_configuration_and_bad_player_fail_closed(self):
         parent = action()
         obs = {"step": 369, "player": 0}
+        self.assertTrue(d4._standard_configuration(dict(CONFIG)))
+        self.assertTrue(d4._standard_configuration(SimpleNamespace(**CONFIG)))
         bad = dict(CONFIG)
         bad["maxMarketOrdersPerTurn"] = 9
+        self.assertFalse(d4._standard_configuration(bad))
+        self.assertFalse(d4._standard_configuration(None))
         self.assertIs(d4.apply_d4(obs, parent, bad, enabled=True), parent)
         self.assertIs(d4.apply_d4({"step": 369, "player": True}, parent,
                                   dict(CONFIG), enabled=True), parent)
@@ -111,6 +116,17 @@ class D4V4Tests(unittest.TestCase):
             r04, parent, View(), state(), tape_with(380), 369, min_price=180)
         self.assertIs(out, parent)
         self.assertEqual((0, ()), (added, reservations))
+
+    def test_malformed_future_work_is_exact_parent(self):
+        parent = action()
+        future = tape_with(380)
+        future[378]["hands"] = 7
+        memory = state()
+        out, added, reservations = d4.advance_midgame_strawberry(
+            r04, parent, View(), memory, future, 369, min_price=180)
+        self.assertIs(out, parent)
+        self.assertEqual((0, ()), (added, reservations))
+        self.assertEqual({}, memory.sale_window_debts)
 
     def test_missing_debt_state_is_exact_parent(self):
         parent = action()
