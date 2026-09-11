@@ -43,7 +43,11 @@ jobs:
               '.github/workflows/titan-v31-b2-row-frontrun-audit.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b2_row_frontrun/audit_row_residual.py',
           }
-          assert paths == allowed, (sorted(paths), sorted(allowed))
+          if paths != allowed:
+              raise SystemExit(
+                  'B2 audit scope drift: '
+                  f'actual={sorted(paths)!r} expected={sorted(allowed)!r}'
+              )
           print('B2_AUDIT_SCOPE_OK', len(paths))
           PY
           test -z "$(git status --porcelain)"
