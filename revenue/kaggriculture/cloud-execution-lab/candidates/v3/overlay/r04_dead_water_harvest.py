@@ -17,8 +17,11 @@ the board: a mature WHEAT/CARROT/MELON can still have remaining yield growth
 before max_yield_day. Ongoing crops use max_lifespan_step == -1 as a sentinel
 until their terminal production, so that value must never be treated as expired.
 The timing proof is valid only under the standard 720-step, 24-turn/day, 10x10
-engine configuration and a public day consistent with step. A WATER candidate
-must also be the only actor on its public tile. Unexpected state fails closed.
+engine configuration and a public day consistent with step. Hour 23 is excluded:
+HARVEST moves yield into actor cargo before the engine's end-of-day shed drop,
+where a full shed can discard that cargo even though the parent WATER would have
+left ongoing-crop yield safely on the plant. A WATER candidate must also be the
+only actor on its public tile. Unexpected state fails closed.
 """
 from __future__ import annotations
 
@@ -202,13 +205,19 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
         player = observation["player"]
         if not _plain_int(step) or not _plain_int(day):
             return action
-        # Maturity consumes day while the late-window/expiry proof consumes
-        # step. They must describe one engine clock or the state is ambiguous.
+        # Maturity consumes day while the late/expiry window uses step. They
+        # must describe one engine clock or the state is ambiguous.
         if day != step // 24:
             return action
         if not _plain_int(player) or player not in (0, 1):
             return action
         if step < LATE_START or step > LATE_END:
+            return action
+        # Unit actions execute before EOD. On hour 23, HARVEST transfers yield
+        # to actor inventory and the subsequent automatic shed drop may destroy
+        # overflow. Parent WATER can leave ongoing-crop yield safely on-plant,
+        # so cargo safety is not provable without a whole-farm capacity proof.
+        if step % 24 == 23:
             return action
         if not isinstance(action, dict):
             return action
