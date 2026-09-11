@@ -1,0 +1,47 @@
+name: titan-v31-h13-horizon10-carrier
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/**'
+      - '.github/workflows/titan-v31-h13-horizon10-carrier.yml'
+  push:
+    branches:
+      - 'titan/v31-h13-horizon10-carrier-*'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/**'
+      - '.github/workflows/titan-v31-h13-horizon10-carrier.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile exact carrier files
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/materialize_horizon_pair.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/test_materialize_horizon_pair.py
+      - name: Run focused contracts
+        run: |
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/test_materialize_horizon_pair.py -v
+      - name: Prove experiment-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > /tmp/changed
+            cat /tmp/changed
+            while IFS= read -r path; do
+              case "$path" in
+                revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_horizon10/*|.github/workflows/titan-v31-h13-horizon10-carrier.yml) ;;
+                *) echo "unexpected path in H13 carrier: $path" >&2; exit 1 ;;
+              esac
+            done < /tmp/changed
+          fi
