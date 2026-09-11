@@ -15,13 +15,18 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-      - name: Bind frozen V3.1 base and additive scope
+      - name: Bind frozen V3.1 ancestry, source blobs and additive scope
         shell: bash
         run: |
           set -euo pipefail
           BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
           R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          TAPES=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           test "$(git rev-parse "$BASE:$R04")" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          test "$(git rev-parse "HEAD:$R04")" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          test "$(git rev-parse "$BASE:$TAPES")" = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
+          test "$(git rev-parse "HEAD:$TAPES")" = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
           git diff --name-only "$BASE"...HEAD | LC_ALL=C sort > /tmp/actual
           cat > /tmp/expected <<'EOF'
           .github/workflows/titan-v31-c6-fertilizer-sale-cap.yml
@@ -45,8 +50,16 @@ jobs:
       - name: Focused C6 predecessor tests under python -O
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap
         run: python -O -B -m unittest -v test_candidate.py
-      - name: Compile experiment entrypoints
+      - name: Syntax compile without checkout mutation
+        shell: bash
         run: |
-          python -B -m py_compile \
-            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py \
-            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/census.py
+          python - <<'PY'
+          from pathlib import Path
+          for name in (
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/candidate.py",
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/census.py",
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c6_fertilizer_sale_cap/test_candidate.py",
+          ):
+              source = Path(name).read_text(encoding="utf-8")
+              compile(source, name, "exec")
+          PY
