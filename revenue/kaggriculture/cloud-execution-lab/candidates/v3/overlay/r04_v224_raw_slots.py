@@ -14,6 +14,7 @@ same-item BUY_PRODUCT / BUY_ANIMAL remain barriers exactly as in V224.
 from __future__ import annotations
 
 MAX_ORDERS = 10
+_QUANTITY_VERBS = {"BUY_PRODUCT", "BUY_ANIMAL", "BUY_SEED", "SELL"}
 
 
 def _positive_effect(row):
@@ -21,6 +22,8 @@ def _positive_effect(row):
         return False
     if row[0] in ("HIRE", "BUY_LAND"):
         return True
+    if row[0] not in _QUANTITY_VERBS:
+        return False
     return len(row) >= 3 and type(row[2]) is int and row[2] > 0
 
 
