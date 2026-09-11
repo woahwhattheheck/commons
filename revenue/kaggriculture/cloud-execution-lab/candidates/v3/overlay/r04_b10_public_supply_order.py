@@ -1,32 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """V4 B10: public rival-supply SELL ordering.
 
-This is the repaired #12487 mechanism, packaged as a V4 helper. It uses only
-public market/town observations plus our own previous returned action. For a
-product p between callbacks t and t+1 the official engine gives::
+B10 uses only public market/town observations plus our own previously returned
+action. Evidence is accepted only inside a valid step-0-anchored contiguous
+epoch. Any malformed callback, missing configuration, gap, repeat, or rewind
+drops that player's latch and cannot re-seed it mid-episode.
 
-    delta_inventory = own_sell + rival_sell - own_buy - rival_buy - town_consume
-
-Because executed own SELL cannot exceed our requested SELL quantity and executed
-own BUY is non-negative::
-
-    rival_sell - rival_buy >= delta_inventory + town_consume - own_sell_requested
-
-A positive lower bound therefore proves realized rival net supply without
-reading rival orders, shed, or carried inventory.
-
-When enabled, B10 may reorder only the parent's already-existing leading SELL
-block. WHEAT stays at its exact row index (C5 owns WHEAT timing), every quantity
-and non-WHEAT row is preserved, and products with stronger proved prior-step
-rival net supply move earlier among the remaining non-WHEAT SELL positions.
-A later cash-spending row vetoes the transform so B10 cannot perturb financing
-for HIRE/BUY_* obligations. The terminal callback at step 718 is observation-
-only for B10 under the standard 720-step episode: upstream B9/PLACE own the final
-liquidation row semantics, so B10 records public evidence but never reorders that
-callback. Nonstandard episode lengths, missing installed runtime configuration,
-and engine-unreachable callback/town/market history fail closed and break
-evidence continuity. All current public evidence is validated before mutation;
-malformed or ambiguous state fails closed to the exact parent action.
+Only the seven products that cannot be BUY_PRODUCT'ed are eligible to move.
+WHEAT and FERTILIZER remain pinned at their exact incoming row indices. This
+keeps B10's authorization theorem on a public-state surface we can prove from
+the official engine without reconstructing hidden buy/sell cycles.
 """
 from __future__ import annotations
 
@@ -38,16 +21,31 @@ PRODUCTS = (
     "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
     "EGG", "MILK", "WOOL", "FERTILIZER",
 )
+NONBUYABLE_PRODUCTS = (
+    "CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG", "MILK", "WOOL",
+)
+PINNED_PRODUCTS = frozenset(("WHEAT", "FERTILIZER"))
 WHEAT = "WHEAT"
 STANDARD_MARKET_I0 = 10_000
-NON_BUYABLE_PRODUCTS = tuple(
-    item for item in PRODUCTS if item not in ("WHEAT", "FERTILIZER")
-)
+STANDARD_SHED_CAPACITY = 100
 STANDARD_MAX_ORDERS = 10
 STANDARD_EPISODE_STEPS = 720
 LAST_AGENT_STEP = STANDARD_EPISODE_STEPS - 2
 MAX_UNLOCKED_SHOPS = 8
 BUY_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL"}
+
+# First standard-market inventory at which a SELL quotes $1 and therefore
+# stops incrementing public inventory. EGG's standard curve never reaches the
+# $1 floor in the reachable B10 horizon, so its room is bounded by shed mass.
+NONBUYABLE_FLOOR_INVENTORY = {
+    "CARROT": 10_842,
+    "TOMATO": 10_529,
+    "STRAWBERRY": 10_062,
+    "MELON": 10_158,
+    "MILK": 10_076,
+    "WOOL": 10_059,
+}
+
 SHOPS = {
     "BAKERY": ("EGG", "WHEAT"),
     "PIZZA_SHOP": ("MILK", "TOMATO", "WHEAT"),
@@ -68,7 +66,7 @@ def _get(value: Any, key: str, default: Any = None) -> Any:
 
 
 def _strict_int(value: Any, label: str) -> int:
-    if type(value) is not int:  # bool must not alias int in evidence logic.
+    if type(value) is not int:
         raise ValueError("%s must be a JSON integer" % label)
     return value
 
@@ -88,19 +86,31 @@ def _step_player(observation: Mapping[str, Any]) -> tuple[int, int]:
     return step, player
 
 
-def _require_standard_market_cap(configuration: Any = None) -> int:
-    episode_value = (_get(configuration, "episodeSteps", STANDARD_EPISODE_STEPS)
-                     if configuration is not None else STANDARD_EPISODE_STEPS)
-    episode_steps = _strict_int(episode_value, "episodeSteps")
+def _require_standard_market_cap(configuration: Any = None) -> tuple[int, int]:
+    if configuration is None:
+        raise ValueError("installed runtime configuration is required")
+
+    episode_steps = _strict_int(
+        _get(configuration, "episodeSteps", STANDARD_EPISODE_STEPS),
+        "episodeSteps",
+    )
     if episode_steps != STANDARD_EPISODE_STEPS:
         raise ValueError("B10 supports only standard episodeSteps=720")
 
-    value = (_get(configuration, "maxMarketOrdersPerTurn", STANDARD_MAX_ORDERS)
-             if configuration is not None else STANDARD_MAX_ORDERS)
-    cap = _strict_int(value, "maxMarketOrdersPerTurn")
+    cap = _strict_int(
+        _get(configuration, "maxMarketOrdersPerTurn", STANDARD_MAX_ORDERS),
+        "maxMarketOrdersPerTurn",
+    )
     if cap != STANDARD_MAX_ORDERS:
         raise ValueError("B10 supports only standard maxMarketOrdersPerTurn=10")
-    return cap
+
+    shed_capacity = _positive_int(
+        _get(configuration, "shedCapacity", STANDARD_SHED_CAPACITY),
+        "shedCapacity",
+    )
+    if shed_capacity != STANDARD_SHED_CAPACITY:
+        raise ValueError("B10 supports only standard shedCapacity=100")
+    return cap, shed_capacity
 
 
 def _inventory(observation: Mapping[str, Any]) -> dict[str, int]:
@@ -108,8 +118,10 @@ def _inventory(observation: Mapping[str, Any]) -> dict[str, int]:
     raw = _get(market, "inventory", None)
     if not isinstance(raw, Mapping):
         raise ValueError("market.inventory must be a mapping")
-    return {item: _strict_int(raw[item], "market.inventory.%s" % item)
-            for item in PRODUCTS}
+    return {
+        item: _strict_int(raw[item], "market.inventory.%s" % item)
+        for item in PRODUCTS
+    }
 
 
 def _interval(configuration: Any, key: str, default: int) -> int:
@@ -120,8 +132,6 @@ def _interval(configuration: Any, key: str, default: int) -> int:
 def _shop_vector(observation: Mapping[str, Any]) -> tuple[str, ...]:
     town = _get(observation, "town", None)
     shops = _get(town, "unlocked_shops", None)
-    # Official observations are JSON arrays. Accepting tuple-like synthetic
-    # state would weaken the fail-closed public-evidence contract.
     if not isinstance(shops, list):
         raise ValueError("town.unlocked_shops must be a list")
     if len(shops) > MAX_UNLOCKED_SHOPS:
@@ -133,22 +143,21 @@ def _shop_vector(observation: Mapping[str, Any]) -> tuple[str, ...]:
 
 
 def _expected_shop_count(step: int, configuration: Any = None) -> int:
-    """Exact number of shop instances reachable in the official append-only town."""
     turns_per_day = _interval(configuration, "turnsPerDay", 24)
     unlock_interval = _interval(configuration, "townShopUnlockInterval", 3)
     day = step // turns_per_day
     return min(MAX_UNLOCKED_SHOPS, day // unlock_interval)
 
 
-def _validate_shop_snapshot(step: int, shops: Sequence[str], configuration: Any = None) -> None:
-    expected = _expected_shop_count(step, configuration)
-    if len(shops) != expected:
+def _validate_shop_snapshot(step: int, shops: Sequence[str],
+                            configuration: Any = None) -> None:
+    if len(shops) != _expected_shop_count(step, configuration):
         raise ValueError("town shop count is unreachable at this callback step")
 
 
 def _validate_shop_transition(previous_step: int, current_step: int,
-                              previous_shops: Sequence[str], current_shops: Sequence[str]) -> None:
-    """Prove append-only ordered history across consecutive official callbacks."""
+                              previous_shops: Sequence[str],
+                              current_shops: Sequence[str]) -> None:
     if current_step != previous_step + 1:
         raise ValueError("shop transition requires consecutive callbacks")
     previous = tuple(previous_shops)
@@ -157,67 +166,8 @@ def _validate_shop_transition(previous_step: int, current_step: int,
         raise ValueError("town shop history must preserve the exact prior prefix")
 
 
-def _count_multiples(start: int, stop: int, interval: int) -> int:
-    """Count multiples of interval in the half-open integer range [start, stop)."""
-    if start >= stop:
-        return 0
-    first = ((start + interval - 1) // interval) * interval
-    if first >= stop:
-        return 0
-    return 1 + (stop - 1 - first) // interval
-
-
-def _cumulative_town_drain(step: int, shops: Sequence[str],
-                           configuration: Any = None) -> dict[str, int]:
-    """Exact deterministic drain over already-processed steps [0, step)."""
-    turns_per_day = _interval(configuration, "turnsPerDay", 24)
-    unlock_interval = _interval(configuration, "townShopUnlockInterval", 3)
-    shop_interval = _interval(configuration, "townShopSellInterval", 4)
-    center_interval = _interval(configuration, "townCenterSellInterval", 24)
-
-    drain = {item: 0 for item in PRODUCTS}
-    center_hits = _count_multiples(0, step, center_interval)
-    for item in CENTER_PRODUCTS:
-        drain[item] += center_hits
-
-    unlock_stride = turns_per_day * unlock_interval
-    for index, shop in enumerate(shops, start=1):
-        unlock_step = index * unlock_stride
-        hits = _count_multiples(unlock_step, step, shop_interval)
-        if not hits:
-            continue
-        products = SHOPS[shop]
-        multiplier = 2 if len(products) == 1 else 1
-        for item in products:
-            drain[item] += hits * multiplier
-    return drain
-
-
-def _validate_market_snapshot(step: int, inventory: Mapping[str, int],
-                              shops: Sequence[str], configuration: Any = None) -> None:
-    """Reject market states unreachable under the accepted standard-market model."""
-    if step == 0 and any(inventory[item] != STANDARD_MARKET_I0 for item in PRODUCTS):
-        raise ValueError("step-0 market inventory must equal standard I0")
-
-    cumulative_drain = _cumulative_town_drain(step, shops, configuration)
-    for item in NON_BUYABLE_PRODUCTS:
-        minimum = STANDARD_MARKET_I0 - cumulative_drain[item]
-        if inventory[item] < minimum:
-            raise ValueError("non-buyable market inventory is below reachable town-drain floor")
-
-
-def _validate_nonbuyable_transition(previous_inventory: Mapping[str, int],
-                                    current_inventory: Mapping[str, int],
-                                    previous_town_consume: Mapping[str, int]) -> None:
-    """No official operation besides deterministic town drain can lower these rows."""
-    for item in NON_BUYABLE_PRODUCTS:
-        minimum = previous_inventory[item] - previous_town_consume[item]
-        if current_inventory[item] < minimum:
-            raise ValueError("non-buyable market inventory dropped beyond town demand")
-
-
-def _town_consumption(observation: Mapping[str, Any], configuration: Any = None) -> dict[str, int]:
-    """Exact deterministic public town demand after this callback's market phase."""
+def _town_consumption(observation: Mapping[str, Any],
+                      configuration: Any = None) -> dict[str, int]:
     step, _ = _step_player(observation)
     shop_interval = _interval(configuration, "townShopSellInterval", 4)
     center_interval = _interval(configuration, "townCenterSellInterval", 24)
@@ -246,9 +196,12 @@ def _market_rows(action: Mapping[str, Any]) -> list[Any]:
 
 
 def _own_sell_upper(action: Mapping[str, Any]) -> dict[str, int]:
+    """Requested SELL upper bound using only rows the engine can execute."""
     upper = {item: 0 for item in PRODUCTS}
     for order in _market_rows(action):
-        if not isinstance(order, (list, tuple)) or not order:
+        # Official _parse_order requires a list. Tuple-shaped lookalikes are
+        # market no-ops and must not mask the rival-supply lower bound.
+        if not isinstance(order, list) or not order:
             continue
         if order[0] != "SELL":
             continue
@@ -258,16 +211,79 @@ def _own_sell_upper(action: Mapping[str, Any]) -> dict[str, int]:
     return upper
 
 
+def _gross_market_delta(previous_inventory: Mapping[str, int],
+                        current_inventory: Mapping[str, int],
+                        previous_town_consume: Mapping[str, int]) -> dict[str, int]:
+    return {
+        item: (
+            int(current_inventory[item])
+            - int(previous_inventory[item])
+            + int(previous_town_consume[item])
+        )
+        for item in PRODUCTS
+    }
+
+
 def _rival_supply_lower_bound(previous_inventory: Mapping[str, int],
                               current_inventory: Mapping[str, int],
                               previous_town_consume: Mapping[str, int],
                               previous_own_sell_upper: Mapping[str, int]) -> dict[str, int]:
+    gross = _gross_market_delta(
+        previous_inventory, current_inventory, previous_town_consume
+    )
     return {
-        item: (int(current_inventory[item]) - int(previous_inventory[item])
-               + int(previous_town_consume[item])
-               - int(previous_own_sell_upper[item]))
+        item: gross[item] - int(previous_own_sell_upper[item])
         for item in PRODUCTS
     }
+
+
+def _max_visible_nonbuyable_supply(item: str, start_inventory: int,
+                                   shed_capacity: int) -> int:
+    """Max public +inventory reachable before the standard $1 SELL floor."""
+    if item not in NONBUYABLE_PRODUCTS:
+        raise ValueError("visible-supply floor applies only to non-buyables")
+    ceiling = 2 * shed_capacity
+    floor_inventory = NONBUYABLE_FLOOR_INVENTORY.get(item)
+    if floor_inventory is None:
+        return ceiling
+    return max(0, min(ceiling, floor_inventory - int(start_inventory)))
+
+
+def _transition_evidence(previous: Mapping[str, Any],
+                         current_inventory: Mapping[str, int],
+                         shed_capacity: int) -> dict[str, int]:
+    """Validate one consecutive edge and return certifiable rival lower bounds."""
+    gross = _gross_market_delta(
+        previous["inventory"], current_inventory, previous["town_consume"]
+    )
+
+    for item in NONBUYABLE_PRODUCTS:
+        value = gross[item]
+        if value < 0:
+            raise ValueError("non-buyable public inventory over-drop")
+        room = _max_visible_nonbuyable_supply(
+            item, previous["inventory"][item], shed_capacity
+        )
+        if value > room:
+            raise ValueError("non-buyable public supply exceeds standard price-floor room")
+
+    # Only the non-buyable domain is authorized to move. Across those products,
+    # both players can expose at most their two starting sheds of positive mass.
+    if sum(gross[item] for item in NONBUYABLE_PRODUCTS) > 2 * shed_capacity:
+        raise ValueError("non-buyable positive public net exceeds two-shed capacity")
+
+    lower = {
+        item: gross[item] - int(previous["own_sell_upper"][item])
+        for item in PRODUCTS
+    }
+    if sum(max(0, lower[item]) for item in NONBUYABLE_PRODUCTS) > shed_capacity:
+        raise ValueError("proved rival non-buyable net exceeds one-shed capacity")
+
+    # Buyable-product history is intentionally outside B10's authorization
+    # theorem. Keep it from influencing telemetry or ordering.
+    for item in PINNED_PRODUCTS:
+        lower[item] = 0
+    return lower
 
 
 def _cash_spending(order: Any) -> bool:
@@ -278,9 +294,6 @@ def _leading_sell_count(rows: Sequence[Any]) -> int:
     lead = 0
     while lead < len(rows):
         order = rows[lead]
-        # The official engine parses only list orders. A tuple that merely
-        # looks like SELL is a no-op timing slot and must never be activated
-        # by B10's copy-on-write conversion to list.
         if not isinstance(order, list) or not order or order[0] != "SELL":
             break
         lead += 1
@@ -289,7 +302,6 @@ def _leading_sell_count(rows: Sequence[Any]) -> int:
 
 def _reorder_leading_sells(action: Mapping[str, Any],
                            evidence: Mapping[str, int]) -> tuple[Mapping[str, Any], dict[str, Any] | None]:
-    """Prioritize proved rival-supply products inside the existing leading SELL block."""
     rows = _market_rows(action)
     lead = _leading_sell_count(rows)
     if lead < 2:
@@ -304,7 +316,7 @@ def _reorder_leading_sells(action: Mapping[str, Any],
         if len(order) < 3 or order[1] not in PRODUCTS:
             return action, None
         _positive_int(order[2], "leading SELL quantity")
-        if order[1] == WHEAT:
+        if order[1] in PINNED_PRODUCTS:
             continue
         movable_indices.append(index)
         movable_rows.append(list(order))
@@ -344,10 +356,6 @@ class RivalSupplyOrder:
         }
 
     def _drop_player(self, observation: Any) -> None:
-        # Latch invalidation must not depend on step validity: a malformed-step
-        # callback breaks evidence continuity just as surely as any other bad
-        # current observation. If even the player cannot be identified safely,
-        # discard all latches rather than allowing stale cross-call evidence.
         try:
             player = _strict_int(_get(observation, "player", None), "player")
         except (KeyError, TypeError, ValueError):
@@ -358,30 +366,17 @@ class RivalSupplyOrder:
             return
         self.players.pop(player, None)
 
-    def _begin(self, observation: Mapping[str, Any], configuration: Any = None) -> tuple[int, int, dict[str, int]]:
-        step, player = _step_player(observation)
-        current = _inventory(observation)
-        current_shops = _shop_vector(observation)
-        _validate_shop_snapshot(step, current_shops, configuration)
-        _validate_market_snapshot(step, current, current_shops, configuration)
-        previous = self.players.get(player)
-        if previous is None or step != previous["step"] + 1:
-            return step, player, {}
-        _validate_shop_transition(previous["step"], step, previous["shops"], current_shops)
-        _validate_nonbuyable_transition(previous["inventory"], current,
-                                        previous["town_consume"])
-        lower = _rival_supply_lower_bound(previous["inventory"], current,
-                                          previous["town_consume"], previous["own_sell_upper"])
-        return step, player, lower
-
-    def _current_record(self, observation: Mapping[str, Any], action: Mapping[str, Any],
-                        configuration: Any = None) -> tuple[int, dict[str, Any]]:
-        """Validate/materialize current evidence before any action mutation."""
+    def _current_record(self, observation: Mapping[str, Any],
+                        action: Mapping[str, Any],
+                        configuration: Any) -> tuple[int, dict[str, Any]]:
         step, player = _step_player(observation)
         shops = _shop_vector(observation)
         _validate_shop_snapshot(step, shops, configuration)
         inventory = _inventory(observation)
-        _validate_market_snapshot(step, inventory, shops, configuration)
+        if step == 0 and any(
+            inventory[item] != STANDARD_MARKET_I0 for item in PRODUCTS
+        ):
+            raise ValueError("step0 market inventory must equal standard I0")
         return player, {
             "step": step,
             "inventory": inventory,
@@ -390,28 +385,50 @@ class RivalSupplyOrder:
             "own_sell_upper": _own_sell_upper(action),
         }
 
-    def apply(self, observation: Mapping[str, Any], parent_action: Mapping[str, Any],
+    def apply(self, observation: Mapping[str, Any],
+              parent_action: Mapping[str, Any],
               configuration: Any = None) -> Mapping[str, Any]:
+        if configuration is None:
+            self._drop_player(observation)
+            return parent_action
+
         try:
-            _require_standard_market_cap(configuration)
+            _, shed_capacity = _require_standard_market_cap(configuration)
         except (KeyError, TypeError, ValueError):
             self._drop_player(observation)
             return parent_action
 
-        custom_params = (_get(configuration, "marketParams", None)
-                         if configuration is not None else None)
+        custom_params = _get(configuration, "marketParams", None)
         if custom_params is not None:
             if not isinstance(custom_params, Mapping) or custom_params:
                 self._drop_player(observation)
                 return parent_action
 
         try:
-            step, player, evidence = self._begin(observation, configuration)
-            current_player, current_record = self._current_record(
+            player, current_record = self._current_record(
                 observation, parent_action, configuration
             )
-            if current_player != player:
-                raise ValueError("player changed while materializing current evidence")
+            step = current_record["step"]
+
+            # A valid step0 explicitly replaces stale process/module state and is
+            # the only legal episode seed.
+            if step == 0:
+                self.players[player] = current_record
+                return parent_action
+
+            previous = self.players.get(player)
+            if previous is None:
+                return parent_action
+            if step != previous["step"] + 1:
+                self.players.pop(player, None)
+                return parent_action
+
+            _validate_shop_transition(
+                previous["step"], step, previous["shops"], current_record["shops"]
+            )
+            evidence = _transition_evidence(
+                previous, current_record["inventory"], shed_capacity
+            )
         except (KeyError, TypeError, ValueError):
             self._drop_player(observation)
             return parent_action
@@ -432,8 +449,6 @@ class RivalSupplyOrder:
                 except (KeyError, TypeError, ValueError):
                     result = parent_action
 
-        # B10 only reorders existing SELL rows, so the prevalidated current
-        # inventory/town/own-SELL record is identical for the returned action.
         self.players[player] = current_record
         return result
 
@@ -442,12 +457,11 @@ ORDER = RivalSupplyOrder(enabled=True)
 
 
 def invalidate_public_supply_order(observation) -> None:
-    """Break public-evidence continuity without applying the market transform."""
     ORDER._drop_player(observation)
 
 
-def apply_public_supply_order(observation, parent_action, configuration=None, enabled=True):
-    """Apply B10 to the final parent action; disabled is exact object identity."""
+def apply_public_supply_order(observation, parent_action,
+                              configuration=None, enabled=True):
     if not enabled:
         return parent_action
     ORDER.enabled = True
