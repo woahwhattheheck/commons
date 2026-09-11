@@ -142,6 +142,26 @@ class FertMix(unittest.TestCase):
         out = self._run(obs2, parent)
         self.assertEqual(out["hands"], [["FERTILIZE"]])
 
+    def test_string_step_fails_closed_to_exact_parent(self):
+        parent = action()
+        obs = observation()
+        obs["step"] = "586"
+        self.assertIs(self._run(obs, parent), parent)
+
+    def test_string_player_fails_closed_to_exact_parent(self):
+        parent = action()
+        obs = observation()
+        obs["player"] = "0"
+        self.assertIs(self._run(obs, parent), parent)
+
+    def test_float_public_prices_fail_closed_to_exact_parent(self):
+        parent = action()
+        for item in ("WHEAT", "FERTILIZER"):
+            with self.subTest(item=item):
+                obs = observation()
+                obs["market"]["prices"][item] = float(obs["market"]["prices"][item])
+                self.assertIs(self._run(obs, parent), parent)
+
 
 if __name__ == "__main__":
     unittest.main()
