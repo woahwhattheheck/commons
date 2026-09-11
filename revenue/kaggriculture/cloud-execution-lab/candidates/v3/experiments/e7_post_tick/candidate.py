@@ -16,7 +16,7 @@ for path in (HERE.parent, OVERLAY):
 from e7_center_tick_veto import REPORT, install  # noqa: E402
 
 # Exact ready-submission V3.1 R04 tuple. E7 changes only whether E184 may
-# reserve non-fertilizer future sales on guaranteed town-center ticks.
+# reserve non-fertilizer future sales on runtime-proven town-center ticks.
 agent = install(
     None,
     enabled=True,
@@ -36,7 +36,9 @@ E7_EVALUATOR_CONFIG = {
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
     "e7_center_tick_veto": True,
-    "e7_tick_interval": 24,
+    "e7_requires_townCenterSellInterval": 24,
+    "e7_interval_type": "literal-int",
+    "e7_nonstandard_or_malformed_config": "exact-parent",
     "e7_preserve_fertilizer": True,
 }
 
