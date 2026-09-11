@@ -11,18 +11,22 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 from pathlib import Path
 
 EXPECTED_APPLY_V3_GIT_BLOB = "a7f716d742bd9ea45f2e370b2f151f5ee15ba042"
+
+
+def _string_block(source: str) -> str:
+    """Encode generated runtime source as adjacent string literals in apply_v3.py."""
+    return "".join("    " + json.dumps(line) + "\n" for line in source.splitlines(keepends=True))
+
 
 INIT_OLD = (
     '"        self._v3_l01_install()\\n"\n'
     '        "        self._v3_r02_install()\\n"'
 )
-INIT_NEW = (
-    '"        self._v3_r02_install()\\n"\n'
-    '        "        self._v3_l01_install()\\n"'
-)
+INIT_NEW = '"        self._v3_r02_l01_install()\\n"'
 
 R02_METHOD_OLD = '''    "    def _v3_r02_step(self, obs):\\n"
     "        \\\"\\\"\\\"V3 lane R02: the published plan switches at steps 144 and 648. Identity when off.\\\"\\\"\\\"\\n"
@@ -38,27 +42,152 @@ R02_METHOD_OLD = '''    "    def _v3_r02_step(self, obs):\\n"
     "\\n"
 '''
 
-R02_METHOD_NEW = '''    "    def _v3_r02_step(self, obs):\\n"
-    "        \\\"\\\"\\\"V3 lane R02: preserve L01 tape edits across route-bank replacements.\\\"\\\"\\\"\\n"
-    "        if not self.features.r02_route_bank:\\n"
-    "            return\\n"
-    "        try:\\n"
-    "            from r02_route_bank import step\\n"
-    "            before = int((getattr(self, '_v3_r02', None) or {}).get('replaced') or 0)\\n"
-    "            state = step(self, obs, True)\\n"
-    "            after = int((state or {}).get('replaced') or 0)\\n"
-    "            l01_reapplied = False\\n"
-    "            if after > before and (self.features.l01_land or self.features.l01_sheep or\\n"
-    "                                   self.features.l01_day0buy or self.features.l01_leanplant):\\n"
-    "                self._v3_l01_install()\\n"
-    "                l01_reapplied = True\\n"
-    "            self.diagnostics['v3_r02_step'] = {'plan': state.get('plan'), 'endgame': state.get('endgame'),\\n"
-    "                                               'replaced': state.get('replaced'),\\n"
-    "                                               'l01_reapplied': l01_reapplied}\\n"
-    "        except Exception as error:\\n"
-    "            self.diagnostics['v3_r02_step'] = {'error': type(error).__name__}\\n"
-    "\\n"
+R02_RUNTIME_NEW = r'''
+    def _v3_l01_r02_snapshot(self):
+        """Snapshot the mutable route/state seam before an R02 replacement."""
+        import copy
+        controller = self.controller
+        routes_ref = controller.R
+        route_refs = dict(routes_ref)
+        state_present = hasattr(self, '_v3_r02')
+        state_ref = getattr(self, '_v3_r02', None)
+        fs_present = hasattr(controller, '_fs_for')
+        fs_value = getattr(controller, '_fs_for', None)
+        routes_before, state_before = copy.deepcopy((routes_ref, state_ref))
+        return (controller, routes_ref, route_refs, state_present, state_ref, fs_present,
+                routes_before, state_before, fs_value)
+
+    def _v3_l01_r02_restore(self, snapshot):
+        """Restore the route-list identities plus R02/cache state from a seam snapshot."""
+        (controller, routes_ref, route_refs, state_present, state_ref, fs_present,
+         routes_before, state_before, fs_before) = snapshot
+        controller.R = routes_ref
+        routes_ref.clear()
+        routes_ref.update(route_refs)
+        restored = set()
+        for key, route in route_refs.items():
+            marker = id(route)
+            if marker in restored:
+                continue
+            route[:] = routes_before[key]
+            restored.add(marker)
+        if state_present:
+            if state_ref is None:
+                self._v3_r02 = None
+            else:
+                state_ref.clear()
+                state_ref.update(state_before)
+                self._v3_r02 = state_ref
+        elif hasattr(self, '_v3_r02'):
+            delattr(self, '_v3_r02')
+        if fs_present:
+            controller._fs_for = fs_before
+        elif hasattr(controller, '_fs_for'):
+            delattr(controller, '_fs_for')
+
+    def _v3_r02_l01_install(self):
+        """Seat R02 then L01 atomically whenever both tape lanes are active."""
+        tape_l01 = bool(self.features.l01_land or self.features.l01_sheep or
+                        self.features.l01_day0buy or self.features.l01_leanplant)
+        if not self.features.r02_route_bank or not tape_l01:
+            self._v3_r02_install()
+            self._v3_l01_install()
+            return
+        snapshot = None
+        try:
+            snapshot = self._v3_l01_r02_snapshot()
+            self._v3_r02_install()
+            self._v3_l01_install()
+            r02_reasons = list((self.diagnostics.get('v3_r02') or {}).get('reasons') or [])
+            l01_reasons = list((self.diagnostics.get('v3_l01') or {}).get('reasons') or [])
+            error = next((reason for reason in r02_reasons
+                          if isinstance(reason, str) and reason.startswith('V3_R02_ERROR_')), None)
+            if error is None:
+                error = next((reason for reason in l01_reasons
+                              if isinstance(reason, str) and reason.startswith('V3_L01_ERROR_')), None)
+            if error is not None:
+                self._v3_l01_r02_restore(snapshot)
+                if isinstance(self.diagnostics.get('v3_r02'), dict):
+                    self.diagnostics['v3_r02']['rolled_back'] = True
+                self.diagnostics['v3_l01_r02_init'] = {'rolled_back': True, 'error': error}
+                return
+            self.diagnostics['v3_l01_r02_init'] = {'rolled_back': False, 'l01_applied': True}
+        except Exception as error:
+            if snapshot is not None:
+                self._v3_l01_r02_restore(snapshot)
+                if isinstance(self.diagnostics.get('v3_r02'), dict):
+                    self.diagnostics['v3_r02']['rolled_back'] = True
+            self.diagnostics['v3_l01_r02_init'] = {'rolled_back': True,
+                                                   'error': type(error).__name__}
+
+    def _v3_r02_step(self, obs):
+        """V3 lane R02: atomically preserve L01 tape edits across route-bank replacements."""
+        if not self.features.r02_route_bank:
+            return
+        try:
+            from r02_route_bank import FINAL_PLAN_STEP, ROUTE_STEP, plan_for, step
+            current = getattr(self, '_v3_r02', None)
+            obs_step = obs.get('step')
+            if obs_step is None:
+                obs_step = int(obs.get('day', 0)) * 24 + int(obs.get('hour', 0))
+            obs_step = int(obs_step)
+            will_replace = False
+            if current is not None and current.get('tapes') is not None:
+                if obs_step >= ROUTE_STEP and current.get('plan') in (None, 0):
+                    will_replace = bool(plan_for(obs))
+                if obs_step >= FINAL_PLAN_STEP and not current.get('endgame'):
+                    will_replace = True
+            if not will_replace:
+                state = step(self, obs, True)
+                self.diagnostics['v3_r02_step'] = {'plan': state.get('plan'),
+                                                   'endgame': state.get('endgame'),
+                                                   'replaced': state.get('replaced'),
+                                                   'l01_reapplied': False,
+                                                   'rolled_back': False}
+                return
+
+            snapshot = self._v3_l01_r02_snapshot()
+            before = int((current or {}).get('replaced') or 0)
+            try:
+                state = step(self, obs, True)
+                after = int((state or {}).get('replaced') or 0)
+                l01_reapplied = False
+                if after > before and (self.features.l01_land or self.features.l01_sheep or
+                                       self.features.l01_day0buy or self.features.l01_leanplant):
+                    self._v3_l01_install()
+                    l01_reasons = list((self.diagnostics.get('v3_l01') or {}).get('reasons') or [])
+                    l01_error = next((reason for reason in l01_reasons
+                                      if isinstance(reason, str) and reason.startswith('V3_L01_ERROR_')), None)
+                    if l01_error is not None:
+                        self._v3_l01_r02_restore(snapshot)
+                        self.diagnostics['v3_r02_step'] = {'plan': (current or {}).get('plan'),
+                                                           'endgame': (current or {}).get('endgame'),
+                                                           'replaced': before,
+                                                           'l01_reapplied': False,
+                                                           'rolled_back': True,
+                                                           'error': l01_error}
+                        return
+                    l01_reapplied = True
+                self.diagnostics['v3_r02_step'] = {'plan': state.get('plan'),
+                                                   'endgame': state.get('endgame'),
+                                                   'replaced': state.get('replaced'),
+                                                   'l01_reapplied': l01_reapplied,
+                                                   'rolled_back': False}
+            except Exception as error:
+                self._v3_l01_r02_restore(snapshot)
+                self.diagnostics['v3_r02_step'] = {'plan': (current or {}).get('plan'),
+                                                   'endgame': (current or {}).get('endgame'),
+                                                   'replaced': before,
+                                                   'l01_reapplied': False,
+                                                   'rolled_back': True,
+                                                   'error': type(error).__name__}
+        except Exception as error:
+            self.diagnostics['v3_r02_step'] = {'error': type(error).__name__,
+                                               'l01_reapplied': False,
+                                               'rolled_back': False}
+
 '''
+R02_METHOD_NEW = _string_block(R02_RUNTIME_NEW)
 
 
 def git_blob_sha(data: bytes) -> str:
