@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - titan/v3.1-20260911
+      - astra/v31-fleet-convergence-20260911
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
