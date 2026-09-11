@@ -100,6 +100,23 @@ def _market_rows(planned):
     return rows
 
 
+def _parent_requests_wheat_buy(rows):
+    """Whether the parent's executable raw prefix can lower public WHEAT stock.
+
+    Quantity/fill exactness is deliberately not needed here. Any authored
+    BUY_PRODUCT WHEAT in the official ten-row prefix makes the following public
+    inventory transition causally ambiguous, so M1 suppresses that transition
+    rather than letting another shipped controller self-certify scarcity.
+    """
+    if not isinstance(rows, list):
+        return False
+    return any(
+        len(row) >= 2 and row[0] == "BUY_PRODUCT" and row[1] == "WHEAT"
+        for row in rows[:MAX_ORDERS]
+        if isinstance(row, list) and row
+    )
+
+
 def _future_literal_pickup(tape, step, actor_count):
     """Return (due_step, units) for a pickup executable by a current actor.
 
@@ -210,7 +227,17 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
     if not _plain_nonnegative_int(wheat_market) or type(wheat_price) is not int or wheat_price < 1:
         return action
 
+    # Record parent-system WHEAT demand even on callbacks where M1 itself will
+    # return early. Otherwise a V226/V234 buy at this step can lower public
+    # inventory and falsely certify scarcity for M1 on the next callback.
+    rows = _market_rows(action)
+    if rows is None:
+        return action
+    parent_wheat_buy = _parent_requests_wheat_buy(rows)
+
     tracker, scarcity = _observe_scarcity(player, step, day, wheat_market)
+    if parent_wheat_buy:
+        tracker["last_buy"] = step
     if not scarcity:
         return action
     REPORT["scarcity_steps"] += 1
@@ -223,9 +250,8 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
         except Exception:
             return action
 
-    rows = _market_rows(action)
     commands = _commands(action)
-    if (rows is None or commands is None or len(rows) >= MAX_ORDERS
+    if (commands is None or len(rows) >= MAX_ORDERS
             or len(commands) != len(farm_hands) + 1):
         return action
     if any(command and command[0] in ("DROP", "PLACE", "PICKUP") for command in commands):
