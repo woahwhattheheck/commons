@@ -1,0 +1,39 @@
+name: Titan V3.1 H10 E11 reachability audit
+
+on:
+  push:
+    branches:
+      - astra/v31-h10-e11-r04-reachability-audit-20260911
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+
+permissions:
+  contents: read
+
+jobs:
+  h10-negative-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Freeze E11/R04 predecessor killers
+        run: |
+          python -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h10_e11_no_final_port.py
+      - name: Syntax compile
+        run: |
+          python -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h10_e11_no_final_port.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e11_rival_sell.py
+      - name: Keep negative audit out of V3 package inputs
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python - <<'PY'
+          import build_v3
+          shas = build_v3.source_shas()
+          assert not any(name.startswith('experiments/') for name in shas), sorted(shas)
+          assert 'test_h10_e11_no_final_port.py' not in shas
+          print('H10 audit stays packaging-neutral:', len(shas), 'tracked V3 source inputs')
+          PY
