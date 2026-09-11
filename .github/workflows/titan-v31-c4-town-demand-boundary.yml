@@ -1,0 +1,99 @@
+name: titan-v31-c4-town-demand-boundary
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/**'
+      - '.github/workflows/titan-v31-c4-town-demand-boundary.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind frozen base, exact scope and imported sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          test "$(git merge-base HEAD "$BASE")" = "$BASE"
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          test "$(sha256sum revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py | awk '{print $1}')" = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+          git diff --name-only "$BASE" HEAD | sort > /tmp/actual-paths
+          cat > /tmp/expected-paths <<'EOF'
+          .github/workflows/titan-v31-c4-town-demand-boundary.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/test_candidate.py
+          EOF
+          sort -o /tmp/expected-paths /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          test -z "$(git status --porcelain)"
+
+      - name: Compile and run focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile candidate.py test_candidate.py
+          python -B -m unittest -v test_candidate.py
+
+      - name: Optimization-safe focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
+        env:
+          PYTHONOPTIMIZE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_candidate.py
+
+      - name: Prove evaluator tuple and package neutrality
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          import build_v3
+
+          path = Path('experiments/c4_town_demand_boundary/candidate.py').resolve()
+          spec = importlib.util.spec_from_file_location('c4_candidate_exact', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'townShopSellInterval': 4,
+              'townCenterSellInterval': 24,
+              'c4_town_demand_boundary': True,
+              'official_interpreter_commit': '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c',
+          }
+          assert module.C4_EVALUATOR_CONFIG == expected
+          assert callable(module.agent)
+          assert module.C4_ENABLED is True
+          assert not any(name.startswith('experiments/') for name in build_v3.source_shas())
+          print('C4 SOURCE GATE OK')
+          PY
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
