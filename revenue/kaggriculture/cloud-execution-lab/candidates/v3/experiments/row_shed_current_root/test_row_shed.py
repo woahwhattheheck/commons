@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 import unittest
+from copy import deepcopy
 
 from candidate import CURRENT_8E3, install as install_candidate
-from row_shed import effective_quantity, order_sells
+from row_shed import apply_row_shed, effective_quantity, order_sells
 
 
 class RowShedContracts(unittest.TestCase):
@@ -48,6 +49,43 @@ class RowShedContracts(unittest.TestCase):
                              {"STRAWBERRY": 1, "WOOL": 1, "MILK": 1})
         self.assertEqual(result[2:], market[2:])
         self.assertEqual(result[0], ["SELL", "WOOL", 8])
+
+    def test_apply_reorder_preserves_empty_slots_and_tail_indices(self):
+        action = {
+            "market": [
+                ["SELL", "STRAWBERRY", 1000],
+                ["SELL", "WOOL", 8],
+                [],
+                ["HIRE"],
+                ["SELL", "MILK", 1000],
+            ]
+        }
+        before = deepcopy(action)
+        observation = {
+            "market": {"inventory": {"STRAWBERRY": 10000, "WOOL": 10000, "MILK": 10000}}
+        }
+
+        class FakeR04:
+            _RO_PARAMS = {"STRAWBERRY": object(), "WOOL": object(), "MILK": object()}
+            _RO_I0 = 10000
+
+            @staticmethod
+            def FarmView(_observation):
+                return object()
+
+            @staticmethod
+            def projected_shed(_action, _view):
+                return {"STRAWBERRY": 1, "WOOL": 8, "MILK": 99}
+
+        FakeR04._ro_price = staticmethod(self.price)
+        result = apply_row_shed(observation, action, FakeR04, {})
+
+        self.assertEqual(action, before)
+        self.assertEqual(len(result["market"]), len(before["market"]))
+        self.assertEqual(result["market"][:2], [before["market"][1], before["market"][0]])
+        self.assertEqual(result["market"][2:], before["market"][2:])
+        self.assertEqual(result["market"][2], [])
+        self.assertEqual(result["market"][3], ["HIRE"])
 
     def test_equal_scores_are_stable(self):
         def flat_price(item, level):
