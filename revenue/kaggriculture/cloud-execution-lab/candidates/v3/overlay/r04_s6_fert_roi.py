@@ -78,7 +78,7 @@ def standard_configuration(configuration: Any) -> bool:
         return False
     if market_params is None:
         return True
-    return type(market_params) is dict and not market_params
+    return isinstance(market_params, dict) and not market_params
 
 
 def _annual_gain(
