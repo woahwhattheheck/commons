@@ -62,7 +62,8 @@ def apply(src):
         "        action = r04_dribble_dump.apply_dribble_dump(observation, action)\n"
         "    if D4_STRAWBERRY_TIMING:\n"
         "        import r04_d4_strawberry_timing\n"
-        "        action = r04_d4_strawberry_timing.apply_d4(observation, action, enabled=True)\n"
+        "        action = r04_d4_strawberry_timing.apply_d4(\n"
+        "            observation, action, configuration, enabled=True)\n"
         "    if ROW_ORDER and ROW_SHED:\n",
         "R04 D4 pre-order/pre-flush seam",
     )
