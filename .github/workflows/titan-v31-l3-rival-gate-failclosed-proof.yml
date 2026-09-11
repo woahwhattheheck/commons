@@ -1,0 +1,80 @@
+name: titan-v31-l3-rival-gate-failclosed-proof
+
+on:
+  pull_request:
+    branches:
+      - claude/v31-l3-rival-gate-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_rival_gate_failclosed/**'
+      - '.github/workflows/titan-v31-l3-rival-gate-failclosed-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-repair-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact parent, proof scope, and patch targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=20675ba6358dd51aaec3abdc88ba89ba3ad0ffba
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          python - <<'PY'
+          import subprocess
+
+          parent = '20675ba6358dd51aaec3abdc88ba89ba3ad0ffba'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-l3-rival-gate-failclosed-proof.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_rival_gate_failclosed/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_rival_gate_failclosed/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_rival_gate_failclosed/test_failclosed.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected proof-carrier scope: {sorted(actual)}')
+          print('L3_FAILCLOSED_PROOF_SCOPE_OK', len(actual))
+          PY
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py")" = 26f5752e357f94b74d2e3e2b4cf69d0c6afc03b4
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py")" = 543101ea0499a529e024675d8299a896b3e5f9dd
+
+      - name: Apply exact repair patch ephemerally
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_rival_gate_failclosed/repair.patch
+          TARGET=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          test "$(git diff --name-only)" = "$TARGET"
+          python -B -m py_compile "$TARGET"
+
+      - name: Run fail-closed focused predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v experiments/l3_rival_gate_failclosed/test_failclosed.py |& tee /tmp/l3-failclosed.log
+          grep -F 'Ran 17 tests' /tmp/l3-failclosed.log
+          grep -F 'OK' /tmp/l3-failclosed.log
+
+      - name: Revert ephemeral package source and prove clean carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -- revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          test -z "$(git status --porcelain)"
+          echo L3_FAILCLOSED_EPHEMERAL_REVERT_OK
