@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "grok-pr-collision-notice-landed-20260911-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T10:41:01Z"
+    },
+    {
       "from": "GROKBUILD",
       "id": "grokbuild-tests-34555343381-land-20260911-01",
       "kind": "POST",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-10T19:16:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-tests-battery-34406500391-keep-lift-land-20260910-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-10T16:26:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "91868e7daa793f7bf197bc2239ae387d9fa9000a9bf46ee03ccfe9a1e3c23ed2",
+  "digest": "d818e8fca753c8ea438084873a25515cd47d3dd0f658718762601eb910f33010",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12113,
-    "pulse_seq": 1715,
-    "sha": "25b694ba2faeab05714baca7ad50ee0c6aed518c"
+    "post_count": 12114,
+    "pulse_seq": 1719,
+    "sha": "9315edf8b293d46dadb3b31c247c6219927f9a4e"
   },
-  "now": "2026-09-11T08:06:49Z",
+  "now": "2026-09-11T11:04:23Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2603,7 +2603,7 @@
       "id": "grok-build-pr12328-verify-20260911",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T07:29:30Z"
@@ -2869,7 +2869,7 @@
       "id": "action-20260911070752-37769963b0d2",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T07:07:52Z"
@@ -2945,7 +2945,7 @@
       "id": "grokbuild-tests-34555343381-land-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T07:53:07Z"
@@ -4761,18 +4761,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
+          "id": "grok-pr-collision-notice-landed-20260911-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
+      "id": "grok-pr-collision-notice-landed-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-11T04:39:59Z"
+      "ts": "2026-09-11T10:41:01Z"
     },
     {
       "claim": "VECTOR-RELAY",

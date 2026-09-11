@@ -1,12 +1,12 @@
 {
   "counts": {
-    "open_issues": 4,
-    "open_pull_requests": 4,
-    "runs_in_progress": 20,
-    "runs_queued": 757
+    "open_issues": 5,
+    "open_pull_requests": 5,
+    "runs_in_progress": 19,
+    "runs_queued": 2396
   },
   "degraded": [],
-  "drafts": 141,
+  "drafts": 214,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -52,90 +52,90 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "astra/d38-main25b-refresh-20260911-02",
-      "created_at": "2026-09-11T08:06:27Z",
+      "branch": "claude/v31-row-shed-20260911",
+      "created_at": "2026-09-11T10:52:55Z",
       "draft": true,
-      "number": 12342,
-      "title": "tools: refresh reviewed deliverable manifest on main25b"
+      "number": 12566,
+      "title": "[HOLD \u2014 CONSUME #12551 SEMANTICS AFTER #12565] TITAN V3.1 row-shed production scaffold"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/kcwater-main25b-refresh-20260911-01",
-      "created_at": "2026-09-11T08:03:51Z",
+      "branch": "astra/v31-8e3-l3-failclosed-package-consume-r2-20260911",
+      "created_at": "2026-09-11T10:45:09Z",
       "draft": true,
-      "number": 12341,
-      "title": "feat(kcwater): refresh reviewed phased-lab salvage on main25b"
+      "number": 12565,
+      "title": "TITAN V3.1: consume L3 fail-closed on optimizer-safe recovered stack"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/outcome-commerce-two-source-pin-refresh-20260911-current",
-      "created_at": "2026-09-11T07:49:11Z",
+      "branch": "astra/v31-8e3-c4-public-demand-rebind-20260911",
+      "created_at": "2026-09-11T10:43:18Z",
       "draft": true,
-      "number": 12338,
-      "title": "fix(commerce): refresh two source authority pins"
+      "number": 12564,
+      "title": "TITAN V3.1: rebind repaired C4 public-demand boundary on 8e3"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/github-state-main-b95-refresh-20260911-01",
-      "created_at": "2026-09-11T07:40:04Z",
+      "branch": "astra/v31-8e3-b7-shed-overflow-gate-20260911",
+      "created_at": "2026-09-11T10:42:46Z",
       "draft": true,
-      "number": 12336,
-      "title": "github_state: refresh reviewed heads/closures/count custody on mainb95"
+      "number": 12562,
+      "title": "TITAN V3.1 B7: current-root shed-overflow activation gate"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd12-main-f398-refresh-20260911-01",
-      "created_at": "2026-09-11T07:29:47Z",
+      "branch": "astra/v31-8e3-b11-mirror-currentroot-20260911",
+      "created_at": "2026-09-11T10:41:29Z",
       "draft": true,
-      "number": 12334,
-      "title": "fix(agt): refresh reviewed replay precedence on main f398"
+      "number": 12559,
+      "title": "TITAN V3.1: recompose B11 mirror horizon on shipped 8e3 B5+JIT"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/observability-main-f398-refresh-20260911-01",
-      "created_at": "2026-09-11T07:25:05Z",
+      "branch": "astra/v31-8e3-d3-externality-gate-current-root-20260911",
+      "created_at": "2026-09-11T10:40:29Z",
       "draft": true,
-      "number": 12332,
-      "title": "observability: refresh reviewed command-road repair on mainf398"
+      "number": 12556,
+      "title": "TITAN V3.1: consume reviewed D3 externality gate on shipped 8e3 root"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd12-agt-replay-mainefd2-refresh-20260911-01",
-      "created_at": "2026-09-11T06:48:12Z",
+      "branch": "astra/v31-8e3-h3c-goose-realization-20260911",
+      "created_at": "2026-09-11T10:40:29Z",
       "draft": true,
-      "number": 12306,
-      "title": "fix(agt): refresh reviewed replay precedence on current main"
+      "number": 12555,
+      "title": "TITAN V3.1: recompose H3c goose rescue on shipped 8e3 root"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/titan-12156-run-bound-receipt-successor-20260911",
-      "created_at": "2026-09-11T06:11:28Z",
+      "branch": "astra/v31-8e3-h13-cattleoff-horizon-recompose-20260911",
+      "created_at": "2026-09-11T10:40:00Z",
       "draft": true,
-      "number": 12299,
-      "title": "test(titan): refresh inherited contracts with run-bound receipts"
+      "number": 12553,
+      "title": "TITAN V3.1 H13: gate horizon10 on shipped 8e3 cattle-OFF stack"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/kcwater-canonical-salvage-main9134-20260911-01",
-      "created_at": "2026-09-11T06:01:33Z",
+      "branch": "astra/v31-8e3-e20-current-root-consume-20260911",
+      "created_at": "2026-09-11T10:39:56Z",
       "draft": true,
-      "number": 12296,
-      "title": "feat(kcwater): salvage canonical phased lab relocation LIMS"
+      "number": 12552,
+      "title": "TITAN V3.1: consume reviewed E20 on shipped 8e3 B5+JIT stack"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd12-main9134-refresh-20260911-03",
-      "created_at": "2026-09-11T05:52:31Z",
-      "draft": false,
-      "number": 12293,
-      "title": "fix(agt): refresh-compose reviewed replay precedence closure on current main"
+      "branch": "astra/v31-8e3-row-shed-current-root-recompose-20260911",
+      "created_at": "2026-09-11T10:39:10Z",
+      "draft": true,
+      "number": 12551,
+      "title": "TITAN V3.1: surface current-root S33 row-shed donor"
     }
   ],
-  "pulls_listed": 195,
+  "pulls_listed": 278,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 37.9,
+  "queue_depth_per_runner": 126.1,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T08:07:37Z",
+  "unchanged_since": "2026-09-11T11:04:42Z",
   "undatable_pulls": []
 }
