@@ -6,13 +6,14 @@
   "workflow": [
     "verify exactly eight declared artifacts",
     "recompute every SHA-256",
-    "run one deterministic loader",
+    "run one manifest-declared loader",
     "emit a JSON receipt and a static HTML receipt"
   ],
   "acceptance": [
     "PASS only at 8/8 matching artifacts and loader exit 0",
     "any missing path, changed byte, timeout, or loader error is FAIL with the exact stage",
-    "inputs are capped at 10 MiB and 60 seconds"
+    "inputs are capped at 10 MiB and 60 seconds",
+    "loader exit is the loader-behavior assertion; filesystem, network, database, training, and publication side effects of the manifest-declared loader are outside this receipt's assurance"
   ],
   "deliverables": [
     "independent completeness verdict for one release manifest",
@@ -29,8 +30,8 @@
   },
   "open_door": true,
   "requires_login": false,
-  "data_boundary": "local or HTTP artifacts only; no database; no model training",
-  "decision_boundary": "completeness receipt only; no training-quality claim and no production deployment",
+  "data_boundary": "local or HTTP artifacts only; manifest-declared loader side effects are outside the completeness receipt's assurance",
+  "decision_boundary": "completeness receipt only; no training-quality or loader-side-effect-safety claim; the receipt does not itself deploy or publish the release",
   "sources": [
     "open-model-release-receipt.html",
     "features/registry/open-model-release-receipt.json",
