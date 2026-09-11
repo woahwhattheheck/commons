@@ -2,155 +2,149 @@
 
 Status: **routing / decision custody only**. This file changes no gameplay, defaults, package bytes, evaluator state, provider state, submission, or Kaggle state.
 
-Snapshot refreshed: **2026-09-11 after #12537 B5+JIT shipment, #12535 recovery publication, #12540 cattle publication/review, #12541 L3 publication, S33 strict row-shed donor #12547, durable E20 donor #12542, and latest terminal harm screens**.
+Snapshot refreshed: **2026-09-11 after repaired P0 `6e5e3c7c…`, sole L3 successor #12565, cattle rebind #12540, sole row-shed owner #12551, E20 freshness repair #12552, and current-root B11/D3/C4 carriers.**
 
 ## Canonical authority
 
-Current literal integration root:
+Current literal integration root remains:
 
 `titan/v3.1-20260911@8e3d92a286806f9f9525973ee7d359b629a11487` (#12537)
 
-This root physically ships H4 strawberry top-up + rival-gated L3 + B5 CARROT fertilizer + JIT PASS→FERTILIZE. Deterministic package receipt: `4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13`, 139 files.
+It physically ships H4 strawberry top-up + rival-gated L3 + B5 CARROT fertilizer + JIT PASS→FERTILIZE. Deterministic package receipt: `4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13`, 139 files.
 
-**Root-switch rule:** every pre-8e3 “current-stack” carrier is predecessor evidence only until it is explicitly recomposed on 8e3 or a later literal canonical. Reviewed donor bytes may transfer; stale branch ancestry and stale economics may not.
+**Root-switch rule:** pre-8e3 ancestry is evidence only until explicitly rebound. A newer P0/package parent also invalidates child “current-stack” claims until that child is rebound or proves exact compatibility. Reviewed donor bytes may transfer; stale ancestry and stale economics may not.
 
-A Slack/local line is never integration authority unless its exact GitHub ref/commit is durably inspectable.
+A Slack/local/bot line is never integration authority unless its exact GitHub ref/commit is durably inspectable.
 
 ## Non-negotiable convergence rule
 
-A fleet result is not finished because an experiment, bot report, local branch, or PR is good. It is finished only when it reaches one durable state:
+A fleet result is finished only when it reaches one durable state:
 
-- `CONVERGENCE_READY`: current-root source/custody/economics required for the claim are terminal and exactly one production/package/submission consumer exists;
-- `HOLD`: useful evidence exists, but the next blocker is named and attached here;
+- `CONVERGENCE_READY`: exact current parent + durable source/custody/economics + one named production/package/submission consumer;
+- `HOLD`: useful evidence exists, but the next blocker is explicit;
 - `REJECT`: negative/no-realization/no-activation/duplicate evidence is preserved so the fleet does not respawn it.
 
 One winning integration head per lane. Experiments may race; production consumers may not.
 
-## Shipped / ancestry — do not fork
+## Shipped ancestry — do not fork
 
-### B5 CARROT + JIT fertilizer — SHIPPED in #12537
+### B5 CARROT + JIT — SHIPPED in #12537
 
-#12537 merged as canonical `8e3d92a...`.
+Canonical `8e3d92a...` carries B5 CARROT + JIT with H4 + gated-L3. The shipped package measured +106.0 margin/game, 41/41 live games better than the prior V3.1 replay set. Old #12526/#12524 are ancestry only.
 
-The exact package carried B5 CARROT + JIT with H4 + gated-L3 and measured **+106.0 margin/game, 41/41 live games better** against the prior shipped V3.1 replay set; package receipt `4d920b2d...`, 139 files.
+## P0 build/custody chain
 
-Old #12526 B5 and #12524 JIT current-a612 evidence are ancestry only. Both are closed superseded by #12537. Do not create a second B5/JIT production line.
+### #12535 immutable base + optimizer-safe custody — HOLD FOR HOSTED GREEN
 
-## P0 correctness / build chain
+Exact head: `6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a`, direct child of 8e3, exactly four build/custody paths.
 
-### Immutable manifest-pinned base recovery — #12535
+It restores exact historical 5f6 archive blob `10e92806...`, defaults the builder to manifest-pinned immutable history, and replaces optimizer-strippable custody asserts with explicit `_require(...)` checks. Builder blob `528cfabbe377f829cb584726c41bd2f64061373b`; optimizer regression blob `3db16ff0eaace1c6b718e303607a6323a46666ea`.
 
-Current carrier: #12535 head `ccb128a10c40cb71c4f8ff07b05a88578679dc6c`, direct current-root composition over `8e3d92a...`.
+Dedicated exact-head recovery run `34590331259` is queued/pending at this snapshot. Source/provenance/PYOPT review passed; **queued is not green and #12535 must not land until exact-head hosted proof is terminal**.
 
-It restores exact historical 5f6 base blob `10e92806...` at the digest-addressed path and makes `build_v3.py` default to the manifest-pinned immutable historical archive rather than mutable `exports/titan-current.tar.gz`.
+All downstream current-stack carriers must bind this exact P0 head until canonical advances.
 
-The dedicated gate binds live 8e3, exact three-path build/custody scope, historical provenance, builder postimage, and exact current package rebuild `4d920b2d...` / 139 files for both default and explicit historical input.
+### #12565 sole L3 fail-closed package consumer — CURRENT SUCCESSOR
 
-**State: P0 current-root build-custody carrier; terminal hosted proof / landing owned by fleet.** Do not copy the 5f6 archive workaround into child lanes; stack/recompose on the one recovery line.
+#12541 is closed unmerged and superseded. Sole current L3 line is draft **#12565**, base exact #12535 `6e5e3c7c...`, head `9f304e73a9cfaa95d7dd9144b6b8762ba66e4767`, ahead-only with exactly three additive staging paths.
 
-### L3 ambiguity fail-closed successor — #12541
+Reviewed L3 donors remain exact: patch `bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c`, 17-test contract `b572bb0adad3b8ca53100d4d44b35c5a374e8302`. The bootstrap pins optimizer-safe builder/test/archive custody, preserves B5 CARROT + JIT + H4 + sale-fertilizer + cattle-ON + horizon8, rebuilds/materializes normal and `PYTHONOPTIMIZE=1`, then self-collapses to the permanent five-path production/package state.
 
-Current carrier: draft **#12541** head `41fa08c4e351e7a943b636f26ae78190fa693529`, stacked on exact #12535 `ccb128a...`.
-
-It preserves exact reviewed L3 donors (`bc7f57e2...` patch / `b572bb0a...` 17-test contract), pins the #12537 B5+JIT R04/apply/helpers plus #12535 immutable-base builder, applies only the reviewed fail-closed L3 hunk, rebuilds/materializes, explicitly proves B5 CARROT + JIT + H4 + sale-fertilizer + L3 remain ON, then self-collapses to exactly five production/custody paths with a permanent read-only gate.
-
-Review `5177691546`: **WRITE/CAS + DONOR + B5/JIT PRESERVATION PASS · EXECUTION/FINAL HEAD PENDING**. Exact write run at snapshot: `34589605067` queued. The old pre-freshness run is inert by event-head assertion.
-
-Old #12528 is stale a612 ancestry only. **Do not spawn a second L3 production consumer.**
+**State: source/package staging only; hosted bootstrap + final read-only head review + current-stack 41-live-game classifier/economics remain required.** Do not fork another L3 consumer; if P0 moves, rebind #12565.
 
 ## Score-facing cattle chain
 
-### Final score-transform authority — #12505
+### #12505 final score transform — APPLY LAST
 
-#12505 remains the single score-facing submission transform authority. It is applied last, above every selected gameplay/package change.
+#12505 remains the single final score-facing submission transform authority.
 
-Field evidence has strengthened repeatedly:
-- S32: cattle-OFF **1525W/11L** vs cattle-ON **1486W/50L**, 1,536 games/arm across 16 published opponents;
-- S33: 1,920 games/arm across 16 published opponents, cattle-ON loses **60 more games** than cattle-OFF.
+Field anchors remain strong: S32 cattle-OFF 1525W/11L vs cattle-ON 1486W/50L across 1,536 games/arm; S33 reports cattle-ON losing 60 more games across 1,920 games/arm. Those field receipts do not replace current-package interaction proof.
 
-### Current shipped-package interaction gate — #12540
+### #12540 current-package cattle A/B — STATIC CUSTODY PASS / HOSTED PENDING
 
-Current carrier: draft #12540 exact head `3185592b115cedc5dc0abd066bb2f3b11a4116f7`, stacked on #12535 build custody while byte-binding gameplay back to literal `8e3d92a...`.
+Exact current head: `9abaeecf21bb424b47258534ec36a570ab1c8dc3`, base exact #12535 `6e5e3c7c...`, exactly four additive evidence/CI paths.
 
-Exactly four additive evidence/CI paths. It reuses exact #12505 score-transform donor and hardened #12529 native-schema reducer, rebuilds exact package `4d920b2d...` / 139 files, and refuses evaluator spend unless both arms retain **B5 CARROT + JIT + H4 + gated-L3 + sale-fertilizer + horizon8**. The only ON↔OFF config difference may be `r04_cattle_early`.
+The prior reducer false-red is repaired: ON/OFF materializations must have distinct package digests, differ only in `TITAN-CONFIG.json:r04_cattle_early`, and intentionally share the same `main.py` candidate fingerprint. Repaired reducer blob: `503b1aff0ff73544bf9eb662db417e51b1f45de5`.
 
-**Current blocker: REDUCER FALSE-RED HOLD.** Exact-head review found that the official evaluator fingerprints the candidate entry file, while the valid cattle ON↔OFF materialization intentionally changes only `TITAN-CONFIG.json:r04_cattle_early`; the two `main.py` fingerprints should therefore be equal. The current reducer incorrectly requires candidate fingerprint inequality and can reject every valid A/B after evaluator spend. Repair in place before execution: bind arm distinction to distinct materialized package digests + the exact one-member/one-key config theorem, require the shared entry fingerprint, and add equal-package/extra-key poison coverage. Do not treat queued run `34589501611` as economics authority from the blocked head.
+The 6e5 rebind is statically reviewed. **No cattle economics authority until a fresh exact-head hosted gate completes.** Before final default/submission authority, rerun/recompose after #12565 final L3 unless exact package/trace identity across the L3 source change is proved. Any negative ΔM cell, zero policy delta, or zero money realization => HOLD. Positive/no-negative evidence only widens to opponent-diverse proof and then #12505.
 
-After that repair, the intended gate remains exact 8-seed × both-seat current-root self-play. Any negative ΔM cell, zero policy delta, or zero money realization HOLDS. Positive/no-negative self-play only supports opponent-diverse widening / final #12505 transform.
+## Fresh high-value factor — S33 row-shed
 
-Old #12529 is closed superseded by #12540; #12531 remains closed duplicate. All new cattle authority converges through #12540 → #12505.
+### #12551 sole owner / semantic donor — DONOR ONLY
 
-## Fresh high-value factor — row-shed
+S33 reported row-shed better in 1,912/1,920 games (6 worse, 2 same), no opponent-level loss, about +421.1/game vs V3.0. That stale-parent field receipt is evidence linkage, not current-root promotion authority.
 
-S33 reports a large new row-shed result: pricing each leading SELL row by `min(order quantity, projected shed)` instead of raw order quantity was better than the prior score-facing config in **1,912/1,920 games** (6 worse, 2 same), added no loss against any opponent, and was reported +421.1/game vs V3.0.
+The sole durable owner is draft **#12551**, branch `astra/v31-8e3-row-shed-current-root-recompose-20260911`, current exact head `9186b8738e6d45a33bec64fb02092b13928d9d19`, direct child of literal 8e3. It is exactly one custody workflow plus README/candidate/row_shed/test under additive experiment scope, with 10 focused contracts.
 
-The strongest durable current-root semantic donor is now draft **#12547**, branch `astra/v31-s33-row-shed-8e3-20260911`, exact head `c6a60466ec2c6acaa0344943482994e4535f1411`, direct child of shipped `8e3d92a...`. It has exactly four additive source-contract/CI paths and 11 focused contracts. Current candidate blob: `d6fe214646225e95ae40c3ea0fa33c43d274e608`.
+Semantics: re-rank only the contiguous leading SELL block; score known products with `q_eff=min(requested_quantity, projected_shed[item])`; preserve emitted quantities, raw empty slots/indices, suffix/barriers and stable ties. Projection validity is whole-block coherent: missing/partial/negative/bool/string/float-poisoned evidence falls back for the whole leading block to incumbent requested-quantity scoring, never a hybrid sort.
 
-The mechanism still changes ROW_ORDER valuation only: each leading SELL score uses `q_eff=min(requested_qty, projected_shed[item])`; SELL rows/quantities and everything after the first non-SELL barrier remain unchanged. The repaired donor now requires one coherent strict non-negative integer projected-shed map for the whole known leading SELL block. Missing, partial, negative, bool/string/float-poisoned, or otherwise malformed projection causes the **entire leading block** to fall back to inherited requested-quantity scoring, avoiding a hybrid S33/legacy sort.
+#12547 is duplicate/provenance evidence only; #12548 is closed; #12554 is closed duplicate. **Do not spawn another row-shed implementation.** The eventual single production consumer must compose after #12535/#12565, preserve B5 CARROT + JIT + H4 + fail-closed L3 + sale-fertilizer, and remain orthogonal to #12540 until cattle is terminal.
 
-Earlier one-path donor `3f36b6fb...` / blob `b260d2c8...` remains implementation provenance only. Later duplicate #12548 must not be consumed: its coercing projection semantics do not match #12547's fail-closed contract. Other donor siblings are not production authority.
+## Current-root survivor / infrastructure carriers
 
-**Routing constraint:** #12547 is source/contract custody, not direct merge/default authority. Earliest current-root row-shed owner retains production ownership; consume #12547's strict semantics rather than recreating them. The one production consumer must recompose on the then-current canonical after #12535/#12541, explicitly retain B5 CARROT + JIT + H4 + fail-closed L3 + sale-fertilizer, and keep row-shed orthogonal to #12540’s cattle theorem until each factor has terminal current-root evidence.
-
-## Optional factors requiring 8e3 recompose before promotion
-
-The following old carriers are stale as current-stack authority after #12537. Preserve their donor/evidence value, but do not merge their old ancestry:
-
-| Lane | Pre-8e3 / durable donor evidence | 8e3 routing |
+| Lane | Durable carrier | State / routing |
 | --- | --- | --- |
-| B11 adaptive mirror horizon | frozen evidence: Arlene exact H8 identity; mirror 16+/0-/0=, mean ΔM +1503.5; old #12534 a612 carrier | recompose on 8e3/successor only after P0 chain; preserve exact-Arlene identity + current-self positive/no-negative theorem; do not copy stale opponent-list reducer schema literally |
-| A6 V226 WHEAT top-up ablation | old #12532 a612 evidence | rerun only if still strategically useful on current root; do not conflate with the separately rejected Muse G-A6 “grow feed instead of buying” lane without exact lineage |
-| H3c GOOSE realization | old #12521 a612 evidence | current-root materialized package + realization + D3 required |
-| H13 conditional horizon10 | old #12523 a612 evidence | recompose on current root; unconditional H10 remains rejected |
-| E20 executable-prefix parity | durable direct-8e3 source donor #12542 head `590ee82969afaee74487dc2ecf624f58580b4b84`; exact reviewed source/test postimages only | after P0/L3/cattle ordering, consume #12542's exact two postimages onto then-current canonical and regenerate package metadata once; #12542 itself is donor-only, not package/default authority |
-| B9 terminal fertilizer tail | repaired donor #12538 head `17f8e66ebfcb91a9ae07c5d81fe9aa96adfeb93d`; review blockers mechanically closed, still frozen/pre-8e3 evidence | only if rereview/CI survives and economics warrant more spend, transplant reviewed semantics into one then-current-root consumer; never merge frozen ancestry as live authority |
-| C4 public-demand boundary | repaired source theorem | requires one current-root consumer before package/default authority |
-| G-E1 `r04_dribble_dump` | weak trajectory-matched gate: 9+/0-/0=, mean +15.1, ~8.2% rewritten steps, zero measured rival benefit; no durable source donor found | LOW PRIORITY / DONOR-PROVENANCE REQUIRED. Do not recreate from prose. If exact source+receipt surfaces, repeat under trajectory-matched current-root custody before any consumer |
+| E20 executable-prefix parity | #12552 `eaa64c6a36dc7cc7b24980c576bf3e4fc49079bc`, base 6e5 | Reviewed donor bytes unchanged (`cd497140...` source / `93bc971e...` tests). One workflow-only repair added end-of-run #12535+8e3 freshness recheck and changed authoritative artifact upload to success-only; exact-head run `34590857452` queued/pending. Do not commit final FILES/MANIFEST ahead of final #12565 L3 package; recompose once post-L3. |
+| B11 adaptive mirror horizon | #12559 `d7f2bf6f3b353917ba15405fdf070a9c01e6a532`, base 6e5, exactly two child paths | Evidence-only. Reviewed donor `94b270f3...`; H10 only after eight exact public mirrors, restore in `finally`; Arlene must remain exact H8 identity; any negative ΔM HOLD. |
+| D3 externality merge gate | #12556 `dad1a905ed1567c860f62949781f7afa55cc8484`, direct 8e3, five paths | Single current-root D3 infrastructure carrier after duplicate collapse. Runs reviewed normalizer + D3 policy normal/`-O`, exact 9+19 test counts and post-spend canonical freshness. Hosted terminal proof pending. Use this for winner externality evidence; do not fork. |
+| C4 public-demand boundary | #12564 `2dfbe2c9dbc40378abe2df5e069077cf757e1b69`, direct 8e3, six additive paths | Current-root donor only. Reuses reviewed #12468 source/tests and #12510 whole-predebt repair/tests byte-for-byte. Needs current-package activation + opponent-diverse Δown/Δrival/ΔM through D3 before any production consumer. |
+| B9 terminal fertilizer tail | #12538 `b4d95e09731aa1d11ee80f969dd997560a8893f9` | Frozen/pre-8e3 donor only. Literal-PASS/timing/state-provenance repairs landed; predecessor economics small. Recompose only if current-stack economics warrant spend. |
+| H13 conditional horizon10 | #12553 current 6e5 child | Evidence-only interaction lane; keep separate from B11 and cattle; any negative cell HOLD. |
+| C6 causal guard | #12452 `f46ae6a71e0428c02c3a99df6b4a96923d7aafea` | Frozen evidence repair; hosted pending; no package/default authority. |
+| G-E1 `r04_dribble_dump` | no durable exact source donor | LOW PRIORITY / PROVENANCE REQUIRED. Do not recreate from prose. |
+
+## Unpublished Muse integration side tree — NON-CANONICAL UNTIL DURABLE
+
+Muse Slack messages currently claim default-OFF integration of L3+C1+B1+D2+B6+B5+A1 and cite short SHAs such as B6 `a014bcd95`, D2 `ca660add6`, B5 `720a1ac3b`, A1 `6f82ef4a3`.
+
+Direct fleet checks have not resolved the cited D2/B6 short SHAs in `woahwhattheheck/commons` and no durable remote carrier with full parent/head/path/blob map has yet been accepted into this spine. Therefore these messages are **UNPUBLISHED SIDE-TREE EVIDENCE, NOT V3.1 CANONICAL AUTHORITY**.
+
+Do not respawn their implementations. Once exact durable GitHub coordinates surface, consume exact reviewed bytes/default states into the one post-#12535/#12565 assembly tree or preserve them donor-only. Default-OFF code carriage does **not** override existing negative economics dispositions below.
 
 ## Durable rejects / no-spend
 
 Do not reopen these exact mechanisms without a materially different design/context:
 
-- **A1 V219 ablation — REJECT:** field gate 1,536 games/arm; V219 ON 1525W/11L vs ablation 1393W/143L, ~−1797 margin/game overall; #12530 closed. Keep V219 shipped.
-- **G-A4 second-wave melons — HARD REJECT:** 16/16 cells, mean ΔM −2,542, 0+/16-/0=. The lane fires as designed (day-12 seed buys + added crew) but seed cost, recurring hires, and tile/water opportunity destroy value; worst reported seed lost ~9k. Do not spend an 8e3 recompose on this exact mechanism.
-- **G-B6 dead-stock / terminal sweep — REJECT:** 11/16 paired cells completed (5 infrastructure flakes), mean ΔM **−34,660**, signs +2/−9. Under `r04_sale_fertilizer`, the presumed “dead” inventory is still strategic stock; the sweep dumps it near the $2 floor and disrupts incumbent sale planning. Reported own-score loss is roughly 30–60k while the opponent is largely unaffected. Do not spend a current-root recompose on this exact mechanism without a materially different stock-liveness theorem.
-- **B1 alternate-day feed — HARD REJECT:** 16/16, mean ΔM −65,329; herd escapes in 6/16 cells.
+- **A1 V219 ablation — REJECT:** 1,536 games/arm; V219 ON 1525W/11L vs ablation 1393W/143L, ~−1797 margin/game. Keep V219 shipped.
+- **G-A4 second-wave melons — HARD REJECT:** 16/16 negative, mean ΔM −2,542.
+- **G-B6 dead-stock / terminal sweep — REJECT:** 11/16 completed, mean ΔM −34,660, +2/−9; sale-fertilizer stock was not actually dead.
+- **B1 alternate-day feed — HARD REJECT:** 16/16, mean ΔM −65,329; herd escapes in 6/16.
 - **D2 early fragile-stock drain — REJECT:** 16/16, mean ΔM −500, 0+/16-/0= despite real engagement.
-- **B3 bonus-window watering / WATER→PASS outside window — REJECT:** 16/16, mean ΔM −71,514, +2/−14/=0.
-- **E3 price-forecaster / dropped-SELL receding-horizon design — HARD REJECT:** 16/16, mean ΔM −55,475, 0+/16-/0=. Mechanism was heavily active (~304 steps / 215 rows dropped), but dropped SELL rows were never re-added; ~87,700 units remained unsold at step 719.
-- **Muse G-A6 “grow feed instead of buying” construction — REJECT:** 16/16, mean ΔM −25,241, +2/−14/=0; 26 seeds bought and 73 placed, but the opportunistic crew rarely completed plant/water/harvest conversion, destroying cash/labor value. This label is not automatically identical to #12532 V226 ablation without source lineage.
-- **C1 STRAWBERRY sale deferral — ZERO REALIZATION:** 12/16 request mutations but zero sellable STRAWBERRY realization; all scores exact-parent; #12525 closed.
-- **C1 market-maker / Cournot-cap + dump-radar screen — REJECT INERT:** 16/16, mean ΔM +0.75 attributable to harness noise; mechanism never engaged and action traces were byte-identical. Only reconsider against an explicitly dump-heavy public opponent where its trigger can actually fire.
+- **B3 bonus-window watering / WATER→PASS — REJECT:** mean ΔM −71,514, +2/−14/=0.
+- **E3 dropped-SELL forecaster — HARD REJECT:** mean ΔM −55,475; ~87,700 units unsold at step 719.
+- **Muse G-A6 grow-feed construction — REJECT:** mean ΔM −25,241, +2/−14/=0.
+- **C1 STRAWBERRY sale deferral — ZERO REALIZATION:** 12/16 request mutations but zero sellable realization; exact-parent scores.
+- **C1 market-maker / Cournot-cap + dump-radar — REJECT INERT:** mechanism never engaged; action traces byte-identical.
 - B8 reserve guard: zero authoritative activations/decision changes.
-- H2 last-hop scope: zero realization activations.
-- C5 old Arlene screen: detector live but zero eligible authored WHEAT SELL relocations.
-- duplicate #12531 cattle panel; old #12529 a612 cattle execution carrier; duplicate pre-8e3 B5/JIT landing branches.
+- H2 last-hop scope: zero realization.
+- C5 old Arlene screen: zero eligible authored WHEAT SELL relocations.
+- duplicate #12531 cattle; old #12529 cattle execution ancestry; old #12541 L3; duplicate row-shed carriers #12547/#12548/#12554; duplicate D3 #12557.
 
-## Common receipt / promotion policy
+## Common promotion policy
 
-- #12425 D3 remains the common own/rival/competitive-margin + product-externality merge-policy gate once its exact-head proof is terminal/rebound as needed.
 - Own-score gain, self-play gain, action-trace change, or a local composite suite alone is not promotion authority.
-- Every current-root economics receipt must bind exact candidate/control package identity, exact opponent bytes/fingerprints, requested seed/seat Cartesian set, official interpreter/evaluator identity, finite typed scores, duplicate/completeness/failure checks, and activation/realization where required.
+- Every current-root economics receipt must bind exact candidate/control package identity, opponent bytes/fingerprints, requested seed/seat Cartesian set, official interpreter/evaluator identity, finite typed scores, duplicate/completeness/failure checks, and activation/realization where required.
+- D3 #12556 is the current-root externality-policy carrier for winner evidence once terminal.
 - A queued/pending/null/cancelled workflow is never green.
-- A canonical advance invalidates “current-stack” claims on children until they rebind or explicitly prove compatibility.
+- A canonical/P0/package advance invalidates current-stack child authority until explicit rebind/compatibility proof.
 
 ## Current assembly order
 
-1. **Land one immutable-base recovery:** #12535 or an exact stronger equivalent; do not duplicate the 5f6 fix.
-2. **Land one current-root L3 fail-closed correctness consumer:** #12541 only, after its generated final head + permanent package/replay gate become terminal.
-3. **Repair then resolve cattle on the resulting literal root through #12540 / successor**, retaining B5+JIT; the current reducer false-red must be closed before evaluator spend. Keep #12505 as the final score transform.
-4. **Promote row-shed onto the resulting root if its exact durable donor + field receipt survive current-root composition.** Consume #12547 head `c6a60466...` / candidate blob `d6fe2146...`; do not recreate the mechanism or import stale ancestry wholesale.
-5. **Recompose optional survivors only on then-current canonical:** B11 / #12532-if-distinct / H3c / H13 / #12542 E20 / B9 / C4 as evidence warrants. G-E1 stays parked until exact donor provenance surfaces.
-6. For every economic survivor create **one** narrow production consumer, deterministic package receipt, opponent-diverse D3, then a deliberate default decision.
-7. Apply the final #12505 submission transform **last**, above every selected production/package change.
-8. Produce the next leaderboard artifact only from that assembled tree, with a receipt naming exact canonical ancestry + every consumed production carrier + exact score transform.
+1. **Terminal-green #12535** immutable base + optimizer-safe custody; merge one P0 line only.
+2. **#12565** bootstrap/collapse/final read-only proof; then current-stack L3 classifier/economics. No #12541 resurrection.
+3. **Recompose/rerun #12540 cattle** on the final L3 package (or prove exact identity across L3); opponent-diverse widening if positive; keep #12505 as final score transform.
+4. **Promote one row-shed production consumer from #12551 exact semantics** onto that same assembled root; run current-package activation/economics and D3 externality accounting.
+5. **Consume optional survivors only once onto then-current canonical**: #12552 E20, #12559 B11, H13, C4 #12564, B9 if warranted, C6 if warranted. Generate FILES/MANIFEST/package metadata only after final source composition, not per side branch.
+6. For every economic survivor, use one narrow production consumer + deterministic package receipt + opponent-diverse D3 + explicit default decision.
+7. Apply **#12505 final score transform last**, above every selected gameplay/package change.
+8. Produce the next leaderboard artifact only from that one assembled tree, with receipt naming literal canonical ancestry, every consumed production carrier, package digest, and final score transform.
 
 ## Collision / anti-isolation rules
 
-1. Earlier durable current-root owner wins unless explicitly rejected/closed/superseded.
+1. Earlier durable owner wins unless explicitly closed/rejected/superseded.
 2. Reviewed donor bytes can be transplanted; stale branch ancestry cannot.
 3. No inherited economics across stack changes.
-4. Evidence-only PRs and local bot lines never silently become production/package authority.
+4. Evidence-only PRs, local branches, and bot messages never silently become production/package authority.
 5. Preserve negative/no-realization results so the fleet does not respawn dead predicates.
-6. A lane on an unpushed branch is not integrated. Push a carrier, name exact parent/head, then route it here.
-7. If you discover a winner, the handoff is incomplete until you can name: **literal current parent, exact durable carrier, terminal state, next gate, and intended production consumer.**
+6. A lane on an unpushed branch is not integrated. Publish exact durable parent/head/path/blob coordinates, then route it here.
+7. If a winner is found, handoff is incomplete until it names: **literal current parent, exact durable carrier, terminal state, next gate, intended production consumer, and assembly position.**
