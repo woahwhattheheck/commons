@@ -2,25 +2,23 @@
 # SPDX-License-Identifier: Apache-2.0
 """B4 audit: execute a conservative one-day-earlier native SHEEP chain.
 
-This is evidence tooling, not a production candidate.  The static tape linker first
+This is evidence tooling, not a production candidate. The static tape linker first
 requires one unambiguous day-9 native SHEEP buy whose actor-local PICKUP->PLACE units
-balance exactly.  The counterfactual then moves only those linked events 24 turns
+balance exactly. The counterfactual then moves only those linked events 24 turns
 earlier, without stealing authored work:
 
-* BUY_ANIMAL/SHEEP is appended after the incumbent market rows, so existing cash
-  commitments retain priority;
+* BUY_ANIMAL/SHEEP is appended after incumbent market rows, preserving existing
+  cash commitments;
 * PICKUP/PLACE may replace only a literal parent PASS in the same actor slot;
 * an original event is suppressed only after its shifted counterpart executed;
 * every later shifted event requires all earlier linked events to have executed;
 * the chain is enabled only when YARN_STORE is already public before the first
-  shift, which makes V231's later day-9 sheep->cow substitution structurally
-  impossible (its late gate requires no YARN_STORE in the unlocked shop set).
+  shift, making V231's later day-9 sheep->cow substitution structurally
+  impossible (that late gate requires no YARN_STORE among unlocked shops).
 
-The official interpreter itself decides cash, shed capacity, position, pasture,
-pickup/place legality, feed/service consequences, and terminal money.  The probe
-reports execution telemetry and paired score deltas versus the exact same parent
-policy with no shift.  A failed prerequisite is evidence against a blind tape move,
-not permission to weaken the engine theorem.
+The official interpreter decides cash, shed capacity, positions, pasture legality,
+pickup/place execution, service consequences, and terminal score. A failed
+prerequisite is evidence against a blind tape move, never permission to weaken it.
 """
 from __future__ import annotations
 
@@ -34,7 +32,7 @@ import sys
 
 HERE = Path(__file__).resolve().parent
 V3 = HERE.parents[1]
-LAB = V3.parents[2]
+LAB = V3.parents[1]
 OVERLAY = V3 / "overlay"
 EVALUATOR = LAB / "reference" / "evaluator" / "evaluate.py"
 ENGINE_DIR = LAB / "reference" / "engine"
@@ -42,6 +40,8 @@ R04 = OVERLAY / "r04_full_router.py"
 
 FROZEN = "508b342fc46fa91e3d7cdc3f0b7e44934a187c14"
 TURNS_PER_DAY = 24
+ROUTE_STEP = 144
+FINAL_PLAN_STEP = 648
 MAX_ORDERS = 10
 DAY9 = range(9 * TURNS_PER_DAY, 10 * TURNS_PER_DAY)
 CHAIN_STOP = 12 * TURNS_PER_DAY
@@ -105,10 +105,7 @@ def _sheep_events(action):
             and command[1] == "SHEEP"
         ):
             qty = 1 if len(command) < 3 else command[2]
-            if type(qty) is not int or qty <= 0:
-                result.append((actor, command, None))
-            else:
-                result.append((actor, command, qty))
+            result.append((actor, command, qty if type(qty) is int and qty > 0 else None))
     return result
 
 
@@ -128,13 +125,10 @@ def _raw_target_ok(tape, event):
     if event["kind"] == "buy":
         if _sheep_buy_rows(action):
             return False, "target-already-buys-sheep"
-        if len([row for row in _market(action) if isinstance(row, list) and row]) >= MAX_ORDERS:
-            return False, "target-market-full"
-        return True, "ok"
+        occupied = len([row for row in _market(action) if isinstance(row, list) and row])
+        return (occupied < MAX_ORDERS, "ok" if occupied < MAX_ORDERS else "target-market-full")
     command = _worker_cmd(action, event["actor"])
-    if command != ["PASS"]:
-        return False, "target-actor-authored-work"
-    return True, "ok"
+    return (command == ["PASS"], "ok" if command == ["PASS"] else "target-actor-authored-work")
 
 
 def build_chain_spec(tape, plan: int) -> dict:
@@ -149,9 +143,6 @@ def build_chain_spec(tape, plan: int) -> dict:
         return {"plan": plan, "status": "ambiguous-day9-buy", "events": []}
 
     buy_step, row_index, buy_row, units = buys[0]
-    # A second native sheep buy before the linked placement completes would make
-    # ownership ambiguous.  Actor-local balance starts at zero intentionally:
-    # pre-existing sheep cargo cannot be credited to this purchase.
     carried: dict[int, int] = {}
     placed = 0
     worker_events = []
@@ -189,32 +180,26 @@ def build_chain_spec(tape, plan: int) -> dict:
     if complete_step is None or placed != units or any(carried.values()):
         return {"plan": plan, "status": "incomplete-pickup-place-chain", "events": []}
 
-    events = [
-        {
-            "id": f"p{plan}-buy-{buy_step}",
-            "kind": "buy",
-            "source_step": buy_step,
-            "target_step": buy_step - TURNS_PER_DAY,
-            "row_index": row_index,
-            "row": buy_row,
-            "qty": units,
-        }
-    ]
+    events = [{
+        "id": f"p{plan}-buy-{buy_step}",
+        "kind": "buy",
+        "source_step": buy_step,
+        "target_step": buy_step - TURNS_PER_DAY,
+        "row_index": row_index,
+        "row": buy_row,
+        "qty": units,
+    }]
     for number, (step, actor, command, qty) in enumerate(worker_events):
-        events.append(
-            {
-                "id": f"p{plan}-worker-{number}-{step}-{actor}",
-                "kind": command[0].lower(),
-                "source_step": step,
-                "target_step": step - TURNS_PER_DAY,
-                "actor": actor,
-                "command": command,
-                "qty": qty,
-            }
-        )
+        events.append({
+            "id": f"p{plan}-worker-{number}-{step}-{actor}",
+            "kind": command[0].lower(),
+            "source_step": step,
+            "target_step": step - TURNS_PER_DAY,
+            "actor": actor,
+            "command": command,
+            "qty": qty,
+        })
 
-    # All original relative order must survive the translation.  Reject two
-    # events mapped onto the same actor/turn or a pickup/place at/before the buy.
     seen_actor_targets = set()
     for event in events[1:]:
         key = (event["target_step"], event["actor"])
@@ -248,9 +233,6 @@ def _fresh_r04(tag: str):
     if str(OVERLAY) not in sys.path:
         sys.path.insert(0, str(OVERLAY))
     module = _load(R04, f"b4_r04_{tag}")
-    # Cattle early is intentionally OFF: the score-facing field result already
-    # rejects that arm.  V231's later day-9 substitution still exists; the
-    # YARN_STORE guard below prevents this audit from bypassing it.
     agent = module.install(
         None,
         horizon=8,
@@ -348,8 +330,6 @@ class ShiftRuntime:
         if not self.spec.get("static_safe"):
             return action, []
         if self.first_target == step and self.enabled is None:
-            # V231 late substitution requires no YARN_STORE at day9.  Requiring
-            # it already unlocked before the shift makes bypass impossible.
             self.enabled = "YARN_STORE" in _shops(observation)
         if not self.enabled:
             return action, []
@@ -383,7 +363,6 @@ class ShiftRuntime:
                 result = _set_worker(result, event["actor"], event["command"])
             pending.append((event, before))
 
-        # Suppress the original event only after the shifted event actually ran.
         for event in self.spec.get("events", []):
             if event["source_step"] != step or not self.success.get(event["id"], False):
                 continue
@@ -453,11 +432,7 @@ def _run_game(evalmod, engine, seed, candidate_seat, specs, shifted):
     if cfg.get("seed") is not None:
         raise AssertionError("engine exposed seed after initialization")
 
-    loaded = []
-    for seat in range(2):
-        module, agent = _fresh_r04(f"{seed}_{candidate_seat}_{int(shifted)}_{seat}")
-        loaded.append((module, agent))
-
+    loaded = [_fresh_r04(f"{seed}_{candidate_seat}_{int(shifted)}_{seat}") for seat in range(2)]
     runtime = None
     trace = hashlib.sha256()
     chosen_plan = None
@@ -473,10 +448,19 @@ def _run_game(evalmod, engine, seed, candidate_seat, specs, shifted):
                 raise AssertionError("parent returned non-object action")
             plan = _plan(module, seat)
             if seat == candidate_seat and plan is not None:
-                chosen_plan = plan
-                if runtime is None:
+                if ROUTE_STEP <= step < FINAL_PLAN_STEP:
+                    chosen_plan = plan
+                may_rebind = (
+                    runtime is None
+                    or (
+                        runtime.spec.get("plan") != plan
+                        and not runtime.attempts
+                        and (runtime.first_target is None or step < runtime.first_target)
+                    )
+                )
+                if may_rebind:
                     runtime = ShiftRuntime(specs.get(plan, {"plan": plan, "status": "missing-spec", "events": []}))
-                if shifted:
+                if shifted and runtime is not None:
                     action, seat_pending = runtime.transform(action, observation, seat, step)
                     pending.extend((seat, event, before) for event, before in seat_pending)
             actions.append(action)
@@ -488,12 +472,11 @@ def _run_game(evalmod, engine, seed, candidate_seat, specs, shifted):
             grouped = [(event, before) for seat, event, before in pending if seat == candidate_seat]
             runtime.observe(grouped, state[candidate_seat].observation, candidate_seat, step)
         if all(row.status == "DONE" for row in state):
-            scores = [row.reward for row in state]
             return {
                 "seed": seed,
                 "candidate_seat": candidate_seat,
                 "plan": chosen_plan,
-                "scores": scores,
+                "scores": [row.reward for row in state],
                 "trace_sha256": trace.hexdigest(),
                 "shift": runtime.report() if runtime is not None else None,
             }
@@ -526,19 +509,17 @@ def main(argv=None):
             candidate = _run_game(evalmod, engine, seed, seat, specs, shifted=True)
             if control["plan"] != candidate["plan"]:
                 raise AssertionError(("route-plan-drift", seed, seat, control["plan"], candidate["plan"]))
-            cells.append(
-                {
-                    "seed": seed,
-                    "candidate_seat": seat,
-                    "plan": candidate["plan"],
-                    "control_scores": control["scores"],
-                    "candidate_scores": candidate["scores"],
-                    "control_trace_sha256": control["trace_sha256"],
-                    "candidate_trace_sha256": candidate["trace_sha256"],
-                    "delta_margin": _margin(candidate) - _margin(control),
-                    "shift": candidate["shift"],
-                }
-            )
+            cells.append({
+                "seed": seed,
+                "candidate_seat": seat,
+                "plan": candidate["plan"],
+                "control_scores": control["scores"],
+                "candidate_scores": candidate["scores"],
+                "control_trace_sha256": control["trace_sha256"],
+                "candidate_trace_sha256": candidate["trace_sha256"],
+                "delta_margin": _margin(candidate) - _margin(control),
+                "shift": candidate["shift"],
+            })
 
     activated = [row for row in cells if row["shift"] and row["shift"].get("all_shifted_events_executed")]
     negative = [row for row in activated if row["delta_margin"] < 0]
