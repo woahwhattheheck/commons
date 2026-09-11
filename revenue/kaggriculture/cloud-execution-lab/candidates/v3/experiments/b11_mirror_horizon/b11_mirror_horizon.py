@@ -21,6 +21,7 @@ BASE_HORIZON = 8
 MIRROR_HORIZON = 10
 MIRROR_STREAK_REQUIRED = 8
 _SIGNATURE_KEYS = ("tiles", "farmer", "hands", "unlocked_quadrants", "hires_today")
+_VALID_QUADRANTS = {"NW", "NE", "SW", "SE"}
 
 _TRACKERS = {}
 REPORT = {
@@ -68,23 +69,80 @@ def _strict_int(value):
     return type(value) is int
 
 
+def _position(value):
+    return (
+        isinstance(value, list)
+        and len(value) == 2
+        and all(_strict_int(coord) for coord in value)
+    )
+
+
+def _tiles(value):
+    if not isinstance(value, list) or not value:
+        return False
+    width = None
+    for row in value:
+        if not isinstance(row, list) or not row:
+            return False
+        if width is None:
+            width = len(row)
+        elif len(row) != width:
+            return False
+        if any(cell is not None and not isinstance(cell, dict) for cell in row):
+            return False
+    return True
+
+
 def _signature(farm):
+    """Return a type-safe public structural signature or ``None``.
+
+    Equality is useful as regime evidence only after each field is independently
+    known to have the public engine shape.  Otherwise two equal malformed farms
+    (for example ``hires_today=True`` or ``hands='same'``) could manufacture a
+    mirror certificate merely by being equally malformed.
+    """
     if not isinstance(farm, dict):
         return None
     if any(key not in farm for key in _SIGNATURE_KEYS):
         return None
+
+    tiles = farm["tiles"]
+    farmer = farm["farmer"]
+    hands = farm["hands"]
+    quadrants = farm["unlocked_quadrants"]
+    hires = farm["hires_today"]
+    if not _tiles(tiles) or not _position(farmer):
+        return None
+    if not isinstance(hands, list) or any(not _position(pos) for pos in hands):
+        return None
+    if (
+        not isinstance(quadrants, list)
+        or any(type(value) is not str or value not in _VALID_QUADRANTS for value in quadrants)
+        or len(set(quadrants)) != len(quadrants)
+    ):
+        return None
+    if not _strict_int(hires) or hires < 0:
+        return None
+
     # Copy only public, strategy-structural fields.  The copy prevents later
     # mutation of the shared observation object from changing a recorded sig.
     return {key: copy.deepcopy(farm[key]) for key in _SIGNATURE_KEYS}
+
+
+def _clear_recoverable_tracker(player):
+    if _strict_int(player) and player in (0, 1):
+        _TRACKERS.pop(player, None)
 
 
 def mirror_certificate(observation):
     """Return (certified, streak, reason) and update continuity state.
 
     Certification requires exactly two public farms, a literal integer player
-    id in {0,1}, a literal integer step, exact JSON-type/value equality of the
-    structural farm signatures, and eight consecutive callbacks.  Any gap,
-    rewind, mismatch or malformed structure fails closed to horizon 8.
+    id in {0,1}, a literal integer step, exact public-field schemas, recursive
+    JSON-type/value equality of the structural farm signatures, and eight
+    consecutive callbacks.  Any gap, rewind, mismatch or malformed structure
+    fails closed to horizon 8; malformed input also clears any recoverable
+    player tracker immediately rather than letting stale streak state survive.
     """
     REPORT["callbacks"] += 1
     if not isinstance(observation, dict):
@@ -102,6 +160,7 @@ def mirror_certificate(observation):
         or len(farms) != 2
     ):
         REPORT["malformed_observations"] += 1
+        _clear_recoverable_tracker(player)
         return False, 0, "malformed-envelope"
 
     own = _signature(farms[player])
@@ -118,7 +177,8 @@ def mirror_certificate(observation):
         if not _strict_int(last_step) or step != last_step + 1:
             REPORT["gap_resets"] += 1
         else:
-            streak = prior.get("streak", 0) if _strict_int(prior.get("streak")) else 0
+            prior_streak = prior.get("streak", 0)
+            streak = prior_streak if _strict_int(prior_streak) and prior_streak >= 0 else 0
 
     mirror = _json_equal(own, rival)
     if mirror:
@@ -163,7 +223,6 @@ def install(
     def adaptive_agent(observation, configuration=None):
         certified, streak, reason = mirror_certificate(observation)
         selected = MIRROR_HORIZON if certified else BASE_HORIZON
-        r04.SALE_HORIZON = selected
         if selected == MIRROR_HORIZON:
             REPORT["h10_callbacks"] += 1
         else:
@@ -173,7 +232,17 @@ def install(
             REPORT["trace"].append(
                 {"step": step, "horizon": selected, "streak": streak, "reason": reason}
             )
-        return parent(observation, configuration)
+
+        # SALE_HORIZON is a module-global knob read synchronously by E184.  Keep
+        # the selected value scoped to this one parent callback so a sibling
+        # control/experiment sharing the imported r04 module cannot inherit B11
+        # policy state, including when the parent raises.
+        prior_horizon = r04.SALE_HORIZON
+        r04.SALE_HORIZON = selected
+        try:
+            return parent(observation, configuration)
+        finally:
+            r04.SALE_HORIZON = prior_horizon
 
     adaptive_agent.__name__ = "b11_mirror_adaptive_agent"
     return adaptive_agent
