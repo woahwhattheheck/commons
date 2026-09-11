@@ -447,7 +447,7 @@
         "status": "NOT_ISSUED",
         "next_step": "Confirm the public page and issue a buyer-specific invoice.",
         "state_after": "FUNDED",
-        "evidence_required": "Written scope and cleared provider authorization."
+        "evidence_required": "Written scope plus cleared provider authorization."
       },
       "fulfillment": {
         "deliverables": [
@@ -856,7 +856,7 @@
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
         ],
-        "message": "10 million generated tokens for $1 on Muhlnickel — 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
         "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
         "cta": "Send the capacity ask"
       },
