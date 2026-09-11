@@ -20,6 +20,7 @@ class NamedHumanLabelMatrixTests(unittest.TestCase):
             "Anne-Marie O'Neill",
             "李 雷",
             "Systema Reviewer",
+            "Automationa Cruz",
         )
         for label in accepted:
             with self.subTest(label=label):
@@ -50,13 +51,44 @@ class NamedHumanLabelMatrixTests(unittest.TestCase):
             with self.subTest(label=label):
                 self.assertFalse(is_named_human_label(label))
 
+    def test_mixed_run_partitions_cannot_reconstruct_reserved_tokens(self):
+        rejected = (
+            "a.gent Reviewer",
+            "ag.ent Reviewer",
+            "age.nt Reviewer",
+            "agen.t Reviewer",
+            "sys.tem Reviewer",
+            "serv.ice Account",
+            "b.ot User",
+            "bo.t User",
+            "r.obot User",
+            "aut.o Reviewer",
+            "auto.mated Reviewer",
+            "auto.mation Reviewer",
+        )
+        for label in rejected:
+            with self.subTest(label=label):
+                self.assertFalse(is_named_human_label(label))
+
+    def test_nfkc_compatibility_forms_are_checked_for_reserved_tokens(self):
+        rejected = (
+            "ＡＩ Reviewer",
+            "ＢＯＴ Reviewer",
+            "Ｓｙｓｔｅｍ Reviewer",
+            "ＳＥＲＶＩＣＥ Account",
+            "Ａ．ＧＥＮＴ Reviewer",
+        )
+        for label in rejected:
+            with self.subTest(label=label):
+                self.assertFalse(is_named_human_label(label))
+
     def test_digits_and_punctuation_are_token_boundaries(self):
         for label in ("System2 Operator", "bot123 user", "service_7_account"):
             with self.subTest(label=label):
                 self.assertFalse(is_named_human_label(label))
 
     def test_reserved_substrings_inside_larger_names_are_not_blocked(self):
-        for label in ("Agentson Reviewer", "Serviceman Lee", "Automationa Cruz"):
+        for label in ("Agentson Reviewer", "Serviceman Lee", "Automationa Cruz", "Systema Reviewer"):
             with self.subTest(label=label):
                 self.assertTrue(is_named_human_label(label))
 

@@ -6,6 +6,7 @@ callers must enforce identity, role, approval, and permission separately.
 """
 from __future__ import annotations
 
+import unicodedata
 from typing import Any
 
 
@@ -22,14 +23,16 @@ RESERVED_IDENTITY_TOKENS = frozenset(
         "system",
     }
 )
+_MAX_RESERVED_TOKEN_LENGTH = max(map(len, RESERVED_IDENTITY_TOKENS))
 
 
 def _alphabetic_runs(label: str) -> tuple[str, ...]:
-    """Split a label into case-folded Unicode alphabetic runs."""
+    """Split an NFKC-normalized, case-folded label into Unicode alphabetic runs."""
 
+    normalized = unicodedata.normalize("NFKC", label).casefold()
     runs: list[str] = []
     current: list[str] = []
-    for char in label.casefold():
+    for char in normalized:
         if char.isalpha():
             current.append(char)
             continue
@@ -42,19 +45,17 @@ def _alphabetic_runs(label: str) -> tuple[str, ...]:
 
 
 def _has_segmented_reserved_token(runs: tuple[str, ...]) -> bool:
-    """Catch reserved words split into consecutive one-letter runs."""
+    """Catch reserved words reconstructed from two or more adjacent runs."""
 
-    for start, token in enumerate(runs):
-        if len(token) != 1:
+    for start in range(len(runs)):
+        joined = runs[start]
+        if len(joined) >= _MAX_RESERVED_TOKEN_LENGTH:
             continue
-        joined = ""
-        for candidate in runs[start:]:
-            if len(candidate) != 1:
-                break
-            joined += candidate
+        for stop in range(start + 1, len(runs)):
+            joined += runs[stop]
             if joined in RESERVED_IDENTITY_TOKENS:
                 return True
-            if len(joined) > max(map(len, RESERVED_IDENTITY_TOKENS)):
+            if len(joined) >= _MAX_RESERVED_TOKEN_LENGTH:
                 break
     return False
 
