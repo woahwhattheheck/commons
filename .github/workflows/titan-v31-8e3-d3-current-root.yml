@@ -54,7 +54,9 @@ jobs:
 
       - name: Syntax-check exact evidence tools without checkout dirt
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
         run: |
+          set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           for name in (
@@ -71,13 +73,32 @@ jobs:
 
       - name: Run reviewed normalizer and D3 predecessor suites
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
-          python -B test_v31_delta_distribution_report.py
-          python -B -m unittest -v test_v31_externality_gate.py
-          python -O -B test_v31_delta_distribution_report.py
-          python -O -B -m unittest -v test_v31_externality_gate.py
+          set -euo pipefail
+          python -B test_v31_delta_distribution_report.py |& tee /tmp/v31-delta-tests.log
+          grep -F 'Ran 9 tests' /tmp/v31-delta-tests.log
+          grep -F 'OK' /tmp/v31-delta-tests.log
 
-      - name: Prove checkout stayed clean
-        run: test -z "$(git status --porcelain)"
+          python -B test_v31_externality_gate.py |& tee /tmp/v31-d3-tests.log
+          grep -F 'Ran 19 tests' /tmp/v31-d3-tests.log
+          grep -F 'OK' /tmp/v31-d3-tests.log
+
+          python -O -B test_v31_delta_distribution_report.py |& tee /tmp/v31-delta-tests-opt.log
+          grep -F 'Ran 9 tests' /tmp/v31-delta-tests-opt.log
+          grep -F 'OK' /tmp/v31-delta-tests-opt.log
+
+          python -O -B test_v31_externality_gate.py |& tee /tmp/v31-d3-tests-opt.log
+          grep -F 'Ran 19 tests' /tmp/v31-d3-tests-opt.log
+          grep -F 'OK' /tmp/v31-d3-tests-opt.log
+
+      - name: Recheck live root and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=8e3d92a286806f9f9525973ee7d359b629a11487
+          git fetch --no-tags origin refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
+          test -z "$(git status --porcelain)"
