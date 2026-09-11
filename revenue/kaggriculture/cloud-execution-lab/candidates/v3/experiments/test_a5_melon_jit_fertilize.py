@@ -91,6 +91,21 @@ class A5MelonJitTests(unittest.TestCase):
         tile["yield_units"] = a5.MELON_MAX_YIELD
         self.assertIs(a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)[0], action)
 
+    def test_max_minus_one_has_zero_marginal_yield(self):
+        obs, action, nxt = fixture(yield_units=a5.MELON_MAX_YIELD - 1)
+        frozen = copy.deepcopy(action)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(action, frozen)
+        self.assertEqual(rows, ())
+
+    def test_two_units_headroom_remains_eligible(self):
+        obs, action, nxt = fixture(yield_units=a5.MELON_MAX_YIELD - 2)
+        out, rows = a5.apply_melon_jit_fertilize(action, obs, nxt, enabled=True)
+        self.assertIsNot(out, action)
+        self.assertEqual(out["hands"], [["FERTILIZE"]])
+        self.assertEqual(len(rows), 1)
+
     def test_bool_and_string_quantities_do_not_coerce(self):
         for bad in (True, "2", 2.0):
             with self.subTest(bad=bad):
