@@ -95,25 +95,31 @@ def apply_carrot_fertilizer(observation, action):
     if not isinstance(tiles, list):
         return action
 
-    day = step // 24
-    claimed = set()
-    replacements = {}
-    for actor, (command, position, inventory) in enumerate(zip(commands, positions, inventories)):
-        if command != ["PASS"]:
-            continue
+    # Atomic validation pass. No replacement is recorded until every explicitly
+    # represented actor row is canonical enough for this transform to reason about.
+    actor_rows = []
+    for command, position, inventory in zip(commands, positions, inventories):
+        if not isinstance(command, list) or not command or not isinstance(command[0], str):
+            return action
         if (
             not isinstance(position, (list, tuple))
             or len(position) != 2
             or not _int(position[0])
             or not _int(position[1])
+            or not isinstance(inventory, dict)
         ):
             return action
         x, y = position
         if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
+            return action
+        actor_rows.append((command, inventory, x, y, tiles[y][x]))
+
+    day = step // 24
+    claimed = set()
+    replacements = {}
+    for actor, (command, inventory, x, y, tile) in enumerate(actor_rows):
+        if command != ["PASS"] or (x, y) in claimed:
             continue
-        if (x, y) in claimed:
-            continue
-        tile = tiles[y][x]
         if not _eligible(tile, inventory, day):
             continue
         replacements[actor] = ["FERTILIZE"]
