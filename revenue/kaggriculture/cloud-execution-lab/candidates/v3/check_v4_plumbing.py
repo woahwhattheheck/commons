@@ -371,6 +371,9 @@ class TitanAgent:
         """
 class TitanAgent:
     def act(self):
+        def dead_local():
+            self._dead_poison()
+            return install(place_delivery=self.features.r04_place_delivery)
         return self._v3_r03_act()
     def _v3_r03_act(self):
         return None
