@@ -20,6 +20,13 @@ cannot switch arms because its own later market choices changed cash. If step
 episode; a later 649/700 callback may not classify. Player state is isolated, so
 malformed input for one seat cannot erase the other seat's established latch.
 
+The pinned official engine initializes farm money as `float(starting_money)` and
+moves it with integer-priced game transactions. D5 therefore treats an exact
+finite **integral** float such as `3000.0` as the same public money value as
+`3000`, normalizing it without rounding. Bool values, numeric strings,
+non-integral floats, NaN, and infinities fail closed. Step, player, latch step,
+and threshold remain strict non-bool integers.
+
 This is **not** a claim that cash gap equals score gap or net-worth gap. It is a
 public, contemporaneous development proxy only. The candidate does not inspect
 rival shed/inventory/orders, private observations, replay outcome, evaluator
@@ -34,11 +41,6 @@ The candidate temporarily gates only `r04_no_late_sale_advance.suppressed()`.
 - no worker command, market quantity, row order, debt record, tape, production
   choice, or terminal liquidation is directly rewritten by D5;
 - malformed, skipped, or ambiguous latch state fails closed to baseline E184.
-
-The original #12446 carrier accepts JSON integers only. An orthogonal repair
-lane owns official-engine `money` float reachability; this exact-latch child does
-**not** claim to close that separate blocker. Step/player/threshold semantics
-remain strict and non-coercive here.
 
 ## Screening parameter — no promotion authority
 
@@ -70,10 +72,12 @@ python3 -B -m unittest -v test_candidate.py
 python3 -O -B -m unittest -v test_candidate.py
 ```
 
-The predecessor suite covers public-cash symmetry; strict type rejection;
-exact two-player farm shape; before/at/after exact-latch behavior; inclusive
-cutoff semantics; treatment/control latching; rewind/reset; malformed-648
-permanent guard; skipped-648 permanent guard; first-callback-after-648 guard;
-interleaved-seat isolation; parameter typing; guarded/allowed L3 call-site
-behavior; preservation of L3 telemetry; disabled/pre-threshold identity; and
-malformed predicate inputs.
+The predecessor suite binds the pinned engine's public-money float contract and
+covers public-cash symmetry; exact integral-float reachability; bool/string/
+fractional/nonfinite money rejection; exact two-player farm shape;
+before/at/after exact-latch behavior; inclusive cutoff semantics;
+treatment/control latching; rewind/reset; malformed-648 permanent guard;
+skipped-648 permanent guard; first-callback-after-648 guard; interleaved-seat
+isolation; parameter typing; guarded/allowed L3 call-site behavior;
+preservation of L3 telemetry; disabled/pre-threshold identity; and malformed
+predicate inputs.
