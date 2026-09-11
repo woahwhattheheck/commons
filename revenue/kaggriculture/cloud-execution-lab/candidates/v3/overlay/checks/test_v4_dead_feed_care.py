@@ -129,6 +129,13 @@ class DeadFeedCare(unittest.TestCase):
         self.assertIs(lane.apply_dead_feed_care(
             parent, observation(tile=tile), dict(CONFIG), enabled=True), parent)
 
+    def test_unhashable_animal_state_fails_closed(self):
+        parent = action()
+        tile = animal_tile()
+        tile["animal"] = []
+        self.assertIs(lane.apply_dead_feed_care(
+            parent, observation(tile=tile), dict(CONFIG), enabled=True), parent)
+
     def test_install_and_titan_diagnostics_carry_key(self):
         r04.install(dead_feed_care=True)
         self.assertIs(r04.DEAD_FEED_CARE, True)
