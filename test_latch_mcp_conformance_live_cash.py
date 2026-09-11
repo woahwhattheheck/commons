@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Hermetic: mcp-conformance.html Live cash — tip-shelf product doors."""
+"""Hermetic: mcp-conformance.html checkout doors fail closed through pay.js."""
 from __future__ import annotations
 import re
 import unittest
 from pathlib import Path
+
 ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "mcp-conformance.html"
-# The only Stripe URLs allowed on the page: the two canonical MCP rails in
-# revenue/checkout_capability/snapshot.json.
-CANONICAL_CHECKOUTS = {
-    "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r",
-    "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s",
+CANONICAL_SKUS = {
+    "mcp-conformance-receipt-run",
+    "mcp-conformance-same-day-repair",
 }
 REQUIRED = [
     'id="live-cash"',
@@ -22,15 +21,30 @@ REQUIRED = [
     "$29 Autopsy",
     "$199 dealer diagnostic",
 ]
+
+
 class LatchMcpConformanceLiveCashTest(unittest.TestCase):
-    def test_direct_product_doors(self) -> None:
+    def test_direct_product_doors_use_canonical_fail_closed_slots(self) -> None:
         self.assertTrue(PAGE.is_file())
         text = PAGE.read_text(encoding="utf-8")
         for needle in REQUIRED:
             self.assertIn(needle, text, f"missing {needle}")
-        stripe = set(re.findall(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+", text))
-        self.assertEqual(stripe, CANONICAL_CHECKOUTS)
-        self.assertEqual(text.count("buy.stripe.com"), len(CANONICAL_CHECKOUTS))
+
+        # Static HTML must never bypass the shared capability projector/browser gate.
+        stripe = set(re.findall(r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+", text))
+        self.assertEqual(stripe, set())
+        self.assertNotIn("buy.stripe.com", text)
+        self.assertNotIn("donate.stripe.com", text)
+
+        slots = set(re.findall(r'class="js-checkout-slot" data-sku="([^"]+)"', text))
+        self.assertEqual(slots, CANONICAL_SKUS)
+        self.assertEqual(text.count('class="js-checkout-slot"'), len(CANONICAL_SKUS))
+        self.assertIn('<script src="./pay.js?v=20260902a"></script>', text)
+        self.assertIn("$49 fixed", text)
+        self.assertIn("$250 fixed", text)
+        self.assertGreaterEqual(text.count("All sales final."), 2)
         self.assertNotIn("tools-cash.html", text)
+
+
 if __name__ == "__main__":
     unittest.main()
