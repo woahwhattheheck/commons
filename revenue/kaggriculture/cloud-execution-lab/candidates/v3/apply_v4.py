@@ -41,9 +41,10 @@ def apply(src):
         "    action = POLICY_AGENT(observation, configuration)\n",
         "def _v3_stack(observation, configuration=None):\n"
         "    action = POLICY_AGENT(observation, configuration)\n"
-        "    if PLACE_DELIVERY:\n"
+        "    if PLACE_DELIVERY and configuration is not None:\n"
         "        import r04_place_delivery\n"
-        "        action = r04_place_delivery.apply_place_delivery(observation, action, enabled=True)\n"
+        "        action = r04_place_delivery.apply_place_delivery(\n"
+        "            observation, action, enabled=True, configuration=configuration)\n"
         "    if GOOSE_PASS_RESCUE:\n"
         "        import r04_goose_pass_rescue\n"
         "        action = r04_goose_pass_rescue.apply_goose_pass_rescue(\n"
