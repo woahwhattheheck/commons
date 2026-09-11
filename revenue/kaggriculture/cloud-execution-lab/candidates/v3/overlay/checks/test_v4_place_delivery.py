@@ -146,6 +146,18 @@ class PlaceDelivery(unittest.TestCase):
         obs["farms"][0]["farmer"] = [4]
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_truncated_worker_positions_fail_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(shed={"WHEAT": 98},
+                          inventories=[{"CARROT": 5}, {"WOOL": 5}])
+        obs["farms"][0]["hands"] = []
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_truncated_worker_inventories_fail_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_farm_view_failure_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
