@@ -16,35 +16,41 @@ jobs:
     timeout-minutes: 8
     env:
       EXACT_PARENT: 'b3be1c24d93365fb2775385d7ff4b212ba1703ca'
+      REPAIR_PARENT: 'e588a6508d8898c5fc49b2eac70f23cabb8cb5d4'
       DIR: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor'
       V2: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure/certified_report_v2.py'
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Bind exact successor topology and three-path scope
+      - name: Bind exact repair topology and three-path scope
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
-          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
-          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          test "$(git rev-parse HEAD^)" = "$REPAIR_PARENT"
+          test "$(git rev-parse HEAD^^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$REPAIR_PARENT"..HEAD)" = 1
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 2
           cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
           .github/workflows/titan-v3-s13-provenance-successor.yml
           revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor/certified_report_v3.py
           revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-provenance-successor/test_certified_report_v3.py
           EOF
-          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
-          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --name-only "$REPAIR_PARENT"..HEAD | sort > "$RUNNER_TEMP/REPAIR-PATHS.txt"
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/STACK-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/REPAIR-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/STACK-PATHS.txt"
+          git diff --check "$REPAIR_PARENT"..HEAD
           git diff --check "$EXACT_PARENT"..HEAD
 
       - name: Compile without repository bytecode
@@ -96,15 +102,16 @@ jobs:
           assert head == os.environ['EXPECTED_HEAD']
           log = Path(os.environ['RUNNER_TEMP']) / 's13-provenance-tests.log'
           receipt = {
-              'schema': 'titan-v3-s13-provenance-successor-source-receipt/v1',
+              'schema': 'titan-v3-s13-provenance-successor-source-receipt/v2',
               'head': head,
+              'repair_parent': os.environ['REPAIR_PARENT'],
               'exact_parent': os.environ['EXACT_PARENT'],
               'files': files,
               'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
               'scope': (
-                  'evidence-only provenance successor; exact v2 builder pinned; '
-                  'no gameplay, evaluator, candidate, config, archive, pointer, '
-                  'provider, Kaggle, promotion, merge, or submission mutation'
+                  'evidence-only provenance successor; one-read evaluator byte custody; '
+                  'exact v2 builder pinned; no gameplay, evaluator, candidate, config, '
+                  'archive, pointer, provider, Kaggle, promotion, merge, or submission mutation'
               ),
           }
           out = Path(os.environ['RUNNER_TEMP']) / 's13-provenance-source-receipt.json'

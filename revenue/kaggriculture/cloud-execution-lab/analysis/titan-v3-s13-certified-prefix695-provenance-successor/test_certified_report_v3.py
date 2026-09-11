@@ -7,6 +7,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
+import certified_report_v3 as report_module
 from certified_report_v3 import CertifiedReportError, V2_BLOB, V2_PATH, build_report, git_blob_sha
 
 
@@ -172,6 +173,44 @@ class ProvenanceSuccessorTests(unittest.TestCase):
                 hashlib.sha256(path.read_bytes()).hexdigest(),
             )
         self.assertIn("carrier_receipt", result["companion_bindings"])
+
+    def test_replaced_path_after_validation_cannot_change_captured_verdict(self):
+        control, unsafe, certified = self.inputs()
+        control_path = self.write("control.json", control)
+        unsafe_path = self.write("unsafe.json", unsafe)
+        certified_path = self.write("certified.json", certified)
+        certified_bytes = certified_path.read_bytes()
+        certified_digest = hashlib.sha256(certified_bytes).hexdigest()
+
+        original_validate = report_module._validate_cross_arm
+
+        def validate_then_replace(provenance):
+            original_validate(provenance)
+            certified_path.write_text("{}\n", encoding="utf-8")
+
+        report_module._validate_cross_arm = validate_then_replace
+        try:
+            result = build_report(
+                control_path,
+                unsafe_path,
+                certified_path,
+                source_seat=0,
+                identities={
+                    "git_head": G,
+                    "archive_sha256": "8" * 64,
+                    "source_manifest_sha256": "9" * 64,
+                },
+                bindings={"carrier_receipt": self.root / "carrier.json"},
+            )
+        finally:
+            report_module._validate_cross_arm = original_validate
+
+        self.assertEqual(result["verdict"], "CERTIFIED_SURVIVOR")
+        self.assertEqual(
+            result["input_reports"]["certified_prefix"]["sha256"],
+            certified_digest,
+        )
+        self.assertNotEqual(hashlib.sha256(certified_path.read_bytes()).hexdigest(), certified_digest)
 
     def test_altered_cross_arm_loader_fails_closed(self):
         def mutate(_control, _unsafe, certified):
