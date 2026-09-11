@@ -175,11 +175,11 @@ def apply_fert_mix(observation, action, enabled=False):
         if (not isinstance(position, (list, tuple)) or len(position) != 2
                 or type(position[0]) is not int or type(position[1]) is not int):
             return action
-        choices = _targets(observation, (position[0], position[1]))
-        if not choices:
+        wheat_targets = _targets(observation, (position[0], position[1]))
+        if not wheat_targets:
             REPORT["declined_no_roi"] += 1
             return action
-        _, _, ty, tx, _ = min(choices)
+        _, _, ty, tx, _ = min(wheat_targets)
         REPORT["engaged"] += 1
 
         out = dict(action)
