@@ -45,6 +45,13 @@ import base64
 import lzma
 # The thirteen 719-step tapes are carried once for the tree, in r01_tapes.
 from r01_tapes import load_tapes
+# R04 lane L1 "kill-late-water": suppresses provably dead WATER commands, steps 672-718.
+from r04_kill_late_water import apply_kill_late_water
+# V3.1 lane L2: bounded late wheat->strawberry planting conversion (off unless installed).
+from r04_strawberry_endgame import apply_strawberry_endgame
+# R04 lane L3 (no-late-sale-advance, peer B10 port): the pure suppression
+# predicate for the E184 reservation call site.
+import r04_no_late_sale_advance
 
 _INLINE_TAPES = load_tapes()
 TURNS_PER_DAY = 24
@@ -1372,6 +1379,11 @@ SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')
 ADVANCE_START = 288
 _SALE_NATIVE_ADVANCE = advance_sales
 _SALE_NATIVE_SUBTRACT = subtract_advanced_sales
+# V3.1 lane L3 (r04_no_late_sale_advance, peer B10 port): when True, the E184
+# reservation call site is gated by r04_no_late_sale_advance.suppressed() at or
+# after NO_LATE_SALE_ADVANCE_STEP. Read at call time, exactly like SALE_HORIZON.
+NO_LATE_SALE_ADVANCE = False
+NO_LATE_SALE_ADVANCE_STEP = 648
 
 
 
@@ -1467,7 +1479,12 @@ def agent(observation, configuration=None):
     if step < ADVANCE_START or step >= LAST_STEP:
         return action
     state = _POLICY.players[int(observation['player'])]
-    reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
+    # V3.1 lane L3 (peer B10 port): suppress the reservation at or after the
+    # threshold instead of undoing it later, so the per-due-step debt
+    # bookkeeping is never corrupted. Flag off short-circuits: byte-identical.
+    if not r04_no_late_sale_advance.suppressed(step, NO_LATE_SALE_ADVANCE,
+                                              NO_LATE_SALE_ADVANCE_STEP):
+        reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
     if step >= 144:
         action = _v224_sales_first(action)
     return action
@@ -1564,6 +1581,19 @@ FLUSH_ITEMS = ("WOOL", "MILK", "STRAWBERRY", "MELON")
 FLUSH_HOURS = (21, 22, 23)
 
 
+# KILL_LATE_WATER suppresses WATER commands that provably cannot pay off (no planted
+# crop under the worker, already watered today, or the crop dead/dying), steps 672-718.
+# Set via install(kill_late_water=...); off unless installed on.
+KILL_LATE_WATER = False
+
+
+# STRAWBERRY_ENDGAME converts up to STRAWBERRY_MAX_PLANTS late ["PLANT", "WHEAT"]
+# orders into ["PLANT", "STRAWBERRY"], only while strawberry seeds are held.
+# Seed-gated and bounded per game; the published wheat engine is untouched.
+STRAWBERRY_ENDGAME = False
+STRAWBERRY_MAX_PLANTS = 8
+
+
 def evening_flush(observation, action):
     step = int(observation["step"])
     if step >= LAST_STEP or step < 24 or step % 24 not in FLUSH_HOURS:
@@ -1591,6 +1621,10 @@ def evening_flush(observation, action):
 
 def v3_agent(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
+    if KILL_LATE_WATER:
+        action = apply_kill_late_water(observation, action)
+    if STRAWBERRY_ENDGAME:
+        action = apply_strawberry_endgame(observation, action, STRAWBERRY_MAX_PLANTS)
     if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
         inventory = (observation.get("market") or {}).get("inventory") or {}
         market = [list(o) for o in action.get("market") or [] if o]
@@ -1609,16 +1643,27 @@ def v3_agent(observation, configuration=None):
 
 
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
-            sale_fertilizer=None, cattle_early=None):
+            sale_fertilizer=None, cattle_early=None, kill_late_water=None,
+            strawberry_endgame=None, strawberry_max_plants=None,
+            no_late_sale_advance=None, no_late_sale_advance_step=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
     factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
     window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
     also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
-    first two shops consume MILK and neither is the YARN_STORE.
+    first two shops consume MILK and neither is the YARN_STORE; kill_late_water suppresses
+    WATER commands that provably cannot pay off at steps 672-718 (lane L1).
+    strawberry_endgame turns on the L2 late-planting conversion (r04_strawberry_endgame.py):
+    at most strawberry_max_plants ["PLANT", "WHEAT"] orders in steps [576, 648] become
+    ["PLANT", "STRAWBERRY"], only while strawberry seeds are held at that step; everything
+    else rides the existing machinery. no_late_sale_advance (lane L3, the ASTRA /
+    GPT-5.6 SOL B10 port) gates the E184 reservation call site: with it on, no future
+    sale is pulled forward at steps >= no_late_sale_advance_step (default 648).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
+    global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
+    global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1637,4 +1682,20 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
     if cattle_early is not None:
         _V231_EARLY = bool(cattle_early)
+    if kill_late_water is not None:
+        KILL_LATE_WATER = bool(kill_late_water)
+    if strawberry_endgame is not None:
+        STRAWBERRY_ENDGAME = bool(strawberry_endgame)
+    if strawberry_max_plants is not None:
+        strawberry_max_plants = int(strawberry_max_plants)
+        if strawberry_max_plants < 0:
+            raise ValueError("strawberry max plants must be non-negative")
+        STRAWBERRY_MAX_PLANTS = strawberry_max_plants
+    if no_late_sale_advance is not None:
+        NO_LATE_SALE_ADVANCE = bool(no_late_sale_advance)
+    if no_late_sale_advance_step is not None:
+        no_late_sale_advance_step = int(no_late_sale_advance_step)
+        if no_late_sale_advance_step < 0:
+            raise ValueError("no-late-sale-advance step must be non-negative")
+        NO_LATE_SALE_ADVANCE_STEP = no_late_sale_advance_step
     return v3_agent

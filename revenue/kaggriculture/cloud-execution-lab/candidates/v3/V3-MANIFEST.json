@@ -135,6 +135,36 @@
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
       "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 0, the published opening); SELL row order r04_row_order (default true); evening flush r04_evening_flush (default true); FERTILIZER in the sale window r04_sale_fertilizer (default true, V3.1); V231 day-8 cattle window r04_cattle_early (default true, V3.1); takes precedence over R03 and R01"
+    },
+    "r04_kill_late_water": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent between POLICY_AGENT and ROW_ORDER",
+      "module": "r04_kill_late_water.py",
+      "effect": "steps 672-718: WATER with no possible payoff becomes PASS"
+    },
+    "r04_strawberry_endgame": {
+      "default": false,
+      "seam": "r04_full_router.v3_agent between POLICY_AGENT and ROW_ORDER: applies only when installed on",
+      "module": "r04_strawberry_endgame.py, r04_full_router.py",
+      "effect": "at most r04_strawberry_max_plants (default 8) [\"PLANT\", \"WHEAT\"] orders in steps [576, 648] become [\"PLANT\", \"STRAWBERRY\"], at most 2 per step, only while strawberry seeds are held; seed-gated so it no-ops without seeds; non-WHEAT plantings and market rows untouched; watering/harvest/drop ride the crop-agnostic tape cadence"
+    },
+    "r04_strawberry_max_plants": {
+      "default": 8,
+      "seam": "r04_full_router.install strawberry_max_plants parameter, passed positionally from TitanAgent._v3_r03_act",
+      "module": "r04_strawberry_endgame.py, r04_full_router.py",
+      "effect": "total per-game cap on strawberry-endgame conversions; non-negative int"
+    },
+    "r04_no_late_sale_advance": {
+      "default": false,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "no future tape-planned sale is pulled forward into today's SELL rows at steps >= r04_no_late_sale_advance_step (default 648); the tape's own late SELL rows are kept; pre-threshold debts still settle (V3.1, ASTRA / GPT-5.6 SOL B10 port)"
+    },
+    "r04_no_late_sale_advance_step": {
+      "default": 648,
+      "seam": "r04_full_router E184 agent() reservation call site via install()",
+      "module": "r04_no_late_sale_advance.py, r04_full_router.py",
+      "effect": "absolute step at or above which the E184 reservation is suppressed when r04_no_late_sale_advance is on"
     }
   },
   "lanes": [
@@ -296,7 +326,12 @@
         "r04_row_order",
         "r04_evening_flush",
         "r04_sale_fertilizer",
-        "r04_cattle_early"
+        "r04_cattle_early",
+        "r04_kill_late_water",
+        "r04_strawberry_endgame",
+        "r04_strawberry_max_plants",
+        "r04_no_late_sale_advance",
+        "r04_no_late_sale_advance_step"
       ],
       "status": "integrated",
       "lineage": [
