@@ -29,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Pull requests must validate the literal candidate head, not GitHub's
+          # synthetic merge ref (which could mask stale-head key loss).
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
           persist-credentials: false
           sparse-checkout-cone-mode: false
@@ -40,16 +43,27 @@ jobs:
       - name: Capture exact target V4 apply layer
         shell: bash
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          # PR: target branch snapshot carried by the event.
+          # Push: prior canonical commit, so a direct key deletion cannot compare
+          # the new apply_v4.py to itself and silently pass.
+          BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event_name == 'push' && github.event.before || '' }}
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$HEAD_SHA"
           APPLY=revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py
           if [[ -n "${BASE_SHA:-}" ]]; then
+            if [[ "$BASE_SHA" =~ ^0+$ ]]; then
+              echo "refusing zero/unknown predecessor SHA" >&2
+              exit 1
+            fi
             if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
               git fetch --no-tags --depth=1 origin "$BASE_SHA"
             fi
             git show "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
           else
+            # workflow_dispatch has no predecessor event; it still checks the
+            # complete current materialized plumbing, but cannot prove monotonicity.
             cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
           fi
 
