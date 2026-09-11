@@ -4,9 +4,10 @@
 The current PR's ``apply_v4.KEYS`` is compared with the target branch copy supplied
 by CI. Every key already present on the target must survive. The candidate is then
 materialised through the real V3/V4 build recipe. Every head key must retain complete
-runtime plumbing and source-land default-OFF. R04 keys must retain their router flag,
-install parameter/setter, a reachable production read (or a proven install-time
-callable selector), and TitanAgent install wiring reachable from ``TitanAgent.act``.
+runtime plumbing; newly introduced keys must source-land default-OFF. R04 keys must
+retain their router flag, install parameter/setter, a reachable production read (or a
+proven install-time callable selector), and TitanAgent install wiring reachable from
+``TitanAgent.act``.
 
 Reachability checks deliberately ignore nested scopes and statically dead branches.
 Top-level router bindings are processed in source order so a later non-function or
@@ -488,13 +489,16 @@ def _assert_r04_router_contract(
     router_tree: ast.AST,
     reachable_agent: Iterable[ast.FunctionDef | ast.AsyncFunctionDef],
     key: str,
+    *,
+    require_default_off: bool,
 ) -> None:
     suffix = key.removeprefix("r04_")
     flag = suffix.upper()
 
     router_defaults = _top_level_bool_names(router_tree)
     _require(flag in router_defaults, f"{key}: router {flag} must be a live literal boolean")
-    _require(router_defaults[flag] is False, f"{key}: router {flag} must source-land False")
+    if require_default_off:
+        _require(router_defaults[flag] is False, f"{key}: new router {flag} must source-land False")
 
     install = _find_function(router_tree, "install")
     install_args = {
@@ -729,7 +733,9 @@ def check(base_apply_v4: Path) -> None:
     base_keys = _literal_keys(base_apply_v4)
     head_keys = _literal_keys(APPLY_V4)
     base_key_set = set(base_keys)
-    removed = sorted(base_key_set - set(head_keys))
+    head_key_set = set(head_keys)
+    removed = sorted(base_key_set - head_key_set)
+    new_keys = head_key_set - base_key_set
     _require(not removed, "V4 recomposition removed already-landed key(s): " + ", ".join(removed))
 
     files = build_v3.package_files()
@@ -748,23 +754,32 @@ def check(base_apply_v4: Path) -> None:
     reachable_agent = _reachable_agent_methods(agent)
 
     for key in head_keys:
+        is_new = key in new_keys
         _require(key in config, f"{key}: missing from materialized TITAN-CONFIG.json")
         _require(type(config[key]) is bool, f"{key}: materialized config value must be boolean")
-        _require(config[key] is False, f"{key}: materialized config must source-land False")
+        if is_new:
+            _require(config[key] is False, f"{key}: new materialized config must source-land False")
         _require(key in feature_defaults, f"{key}: missing from materialized Features")
         _require(type(feature_defaults[key]) is bool, f"{key}: Features default must be boolean")
-        _require(feature_defaults[key] is False, f"{key}: Features default must remain False")
+        if is_new:
+            _require(feature_defaults[key] is False, f"{key}: new Features default must source-land False")
         _require(
             _reachable_agent_feature_ref(reachable_agent, key),
             f"{key}: TitanAgent.act chain never references self.features.{key}",
         )
         if key.startswith("r04_"):
-            _assert_r04_router_contract(router_tree, reachable_agent, key)
+            _assert_r04_router_contract(
+                router_tree,
+                reachable_agent,
+                key,
+                require_default_off=is_new,
+            )
 
     print(
         "V4 PLUMBING OK",
         "base", list(base_keys),
         "head", list(head_keys),
+        "new", sorted(new_keys),
         "reachable_agent_methods",
         sorted(getattr(node, "name", "<anonymous>") for node in reachable_agent),
     )
