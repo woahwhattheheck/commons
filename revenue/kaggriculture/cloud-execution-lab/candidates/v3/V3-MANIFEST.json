@@ -49,6 +49,31 @@
         "description": "TITAN V3 - R04 sale window (horizon 8, SELL row order, evening flush; opening round-trip 0). Commit 2ff565d0e, package c30e5b0a, archive sha256 a0629844."
       },
       "boundary": "Everything committed up to and including tree_commit is V3.0. All work after this record is V3.1."
+    },
+    {
+      "version": "3.1",
+      "tree_commit": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+      "source_branch": "claude/v31-final-20260911",
+      "package": {
+        "path": "dist/titan-v3.tar.gz",
+        "sha256": "3f98599280dec218955ed4387be786c33cff070d97ef9e5ad3f7a39a74dfbbe3",
+        "files": 148
+      },
+      "submission_archive": {
+        "name": "titan-v3.1.tar.gz",
+        "sha256": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+        "bytes": 579497,
+        "files": 148
+      },
+      "kaggle": {
+        "competition": "kaggriculture (competitionId 147734)",
+        "submission_id": 56172377,
+        "team_id": 16846069,
+        "submitted_utc": "2026-09-11T20:36:50Z",
+        "content_length": 579497,
+        "description": "TITAN V3.1. Source a90d888f0, package 3f985992, archive sha256 5db3921f."
+      },
+      "boundary": "V3.1 submission 56172377 is bound to tree_commit and source_branch above. titan/v4-20260911 branches from this exact source; later commits are V4."
     }
   ],
   "keys": {
