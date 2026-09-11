@@ -86,6 +86,19 @@ class ArtifactRegistryTests(unittest.TestCase):
             import hashlib
             self.assertEqual(digest, hashlib.sha256(b"abc\x00\n").hexdigest())
 
+    def test_missing_registry_is_only_created_by_explicit_add_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "missing.json")
+            with self.assertRaises(FileNotFoundError):
+                ar.load_registry(path)
+            self.assertEqual(ar.load_registry(path, create_if_missing=True), ar.empty_registry())
+
+            script = os.path.join(os.path.dirname(__file__), "host", "artifact_registry.py")
+            validate = subprocess.run([sys.executable, script, "validate", path],
+                                      text=True, capture_output=True)
+            self.assertNotEqual(validate.returncode, 0)
+            self.assertFalse(os.path.exists(path))
+
     def test_cli_add_validate_get_roundtrip(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, "registry.json")
