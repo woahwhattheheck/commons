@@ -94,7 +94,13 @@ def public_rival_supply(observation: Any) -> dict[str, int]:
                     result[product] = result.get(product, 0) + units
                 continue
 
-            # Soil, weed, empty structures, etc. are well-formed non-signal tiles.
+            # Only official non-producing tile shapes are admissible evidence.
+            # Unknown/missing kinds or a crop attached to a non-PLANT tile make the
+            # whole public board ambiguous rather than being silently ignored.
+            if kind not in ("WEED", "COOP", "PASTURE"):
+                return {}
+            if tile.get("crop") is not None:
+                return {}
     return result
 
 
