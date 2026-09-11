@@ -1712,7 +1712,7 @@
         "path": "revenue/production_survival/offer.json",
         "pointer": "/ladder/0",
         "offer_id": "production-survival-sprint",
-        "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
+        "blob_sha": "830e8e9a3ddae95799142eba6bcbd03f85eb4787",
         "terms_authority": "source"
       },
       "pricing": {
@@ -1783,7 +1783,7 @@
         "path": "commercial.json",
         "pointer": "/offer",
         "offer_id": "white-box-gguf-pilot-30d",
-        "blob_sha": "30ecdec61d19f005330f75ae239ca469482ff06a",
+        "blob_sha": "6ddccf56cbcf0768f57b902cadb8aeef96cdd43c",
         "terms_authority": "source"
       },
       "pricing": {
