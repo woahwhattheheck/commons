@@ -147,6 +147,20 @@ class FloorLiquidationTests(unittest.TestCase):
                     action,
                 ))
 
+    def test_missing_configuration_proof_fails_closed(self):
+        full = standard_config()
+        partial = dict(full)
+        partial.pop("townCenterSellInterval")
+        cases = [None, {}, partial]
+        for configuration in cases:
+            with self.subTest(configuration=configuration):
+                action = {"farmer": ["PASS"], "hands": [], "market": []}
+                self.assertIs(action, e5.apply_floor_liquidation(
+                    observation(shed={"EGG": 4}, prices={"EGG": 1}),
+                    configuration,
+                    action,
+                ))
+
     def test_malformed_existing_same_item_sell_fails_closed(self):
         for row in (["SELL", "EGG"], ["SELL", "EGG", 1.0], ["SELL", "EGG", True]):
             with self.subTest(row=row):
