@@ -3,14 +3,14 @@
 """B3 experiment: replace provably low-value WATER with same-tile HARVEST.
 
 The transform is intentionally narrow and stateless. It only edits a parent WATER
-when the official interpreter's public crop state proves that skipping this watering:
+when the official interpreter's public crop state proves that the substitution
+cannot reduce crop value or worsen survival state.
 
-* cannot create a second consecutive dry day at the next daily refresh;
-* cannot sacrifice an immediate non-ongoing WATER yield increment; and
-* cannot sacrifice a fertilized ongoing-production bonus due at the next refresh.
-
-Even then, it edits only when the same tile already holds legally harvestable yield.
-Otherwise the exact parent action object is returned.
+For non-ongoing crops, HARVEST removes the mature plant, so future drought state is
+irrelevant once an immediate harvest is legal. For ongoing crops, a WATER may be
+replaced only when `watered_today` is already true; this preserves the exact drought
+counter that the parent action would leave at the next daily refresh. Any missing or
+malformed crop-state proof preserves the exact parent action object.
 
 Official source pin used for the crop semantics:
   interpreter commit 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c
@@ -101,17 +101,19 @@ def _tile_for_actor(observation, actor):
 
 
 def _crop_state(tile):
-    """Return validated public crop state or None; never coerce malformed booleans."""
+    """Return validated public crop state or None; never invent missing proof."""
     if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
         return None
     crop = tile.get("crop")
     if crop not in CROPS:
         return None
+    if "fertilized_until_day" not in tile:
+        return None
     planted = tile.get("planted_day")
     dry = tile.get("consecutive_unwatered")
     watered = tile.get("watered_today")
     units = tile.get("yield_units")
-    fertilized_until = tile.get("fertilized_until_day", -1)
+    fertilized_until = tile.get("fertilized_until_day")
     if type(planted) is not int or type(dry) is not int or type(watered) is not bool:
         return None
     if type(units) is not int or type(fertilized_until) is not int:
@@ -184,12 +186,18 @@ def transform(observation, action, configuration=None, enabled=False):
             continue
         crop, planted, dry, watered, units, fertilized_until = state
 
-        # If it was not already watered, a second consecutive dry day weeds the tile.
+        # Preserve WATER when this refresh would otherwise be the second dry day.
         if not watered and dry >= 1:
             telemetry["kept_survival_water"] += 1
             continue
         if _water_has_crop_value(day, crop, planted, watered, units, fertilized_until):
             telemetry["kept_yield_water"] += 1
+            continue
+        # HARVEST leaves ongoing crops in place. Without a proven future rescue,
+        # skipping today's first WATER would move dry 0->1 and can make tomorrow's
+        # missed WATER lethal. Only an already-watered ongoing tile is drought-neutral.
+        if CROPS[crop]["ongoing"] and not watered:
+            telemetry["kept_ongoing_survival_water"] += 1
             continue
         if not _harvestable(day, crop, planted, units):
             telemetry["no_productive_replacement"] += 1
