@@ -165,6 +165,24 @@ class H3cContracts(unittest.TestCase):
         action["hands"] = [["COLLECT_FERTILIZER"], ["COLLECT_FERTILIZER"]]
         self.assertIs(self.apply(observation, action), action)
 
+    def test_same_tile_existing_harvest_blocks_redundant_swap(self):
+        observation, action = fixture()
+        observation["farms"][0]["farmer"] = [2, 2]
+        action["farmer"] = ["HARVEST"]
+        self.assertIs(self.apply(observation, action), action)
+
+    def test_same_tile_other_active_service_blocks_action_order_ambiguity(self):
+        observation, action = fixture()
+        observation["farms"][0]["farmer"] = [2, 2]
+        action["farmer"] = ["CARE"]
+        self.assertIs(self.apply(observation, action), action)
+
+    def test_same_tile_pass_does_not_block(self):
+        observation, action = fixture()
+        observation["farms"][0]["farmer"] = [2, 2]
+        action["farmer"] = ["PASS"]
+        self.assertEqual(self.apply(observation, action)["hands"][0], ["HARVEST"])
+
     def test_capacity_guard_accounts_for_candidate_egg_units(self):
         observation, action = fixture(shed={"WHEAT": 97})
         self.assertIs(self.apply(observation, action), action)
