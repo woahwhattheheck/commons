@@ -1,0 +1,57 @@
+name: TITAN V3.1 D4 flush ownership repair
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/**"
+      - ".github/workflows/titan-v31-d4-flush-ownership-repair.yml"
+  workflow_dispatch:
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Bind reviewed parent and repair scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=736700fb5f9efd692c119dc546028a1e68978c69
+          FROZEN=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          R04=revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git rev-parse "$FROZEN:$R04")" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          git diff --name-only "$PARENT"...HEAD | LC_ALL=C sort > /tmp/actual
+          cat > /tmp/expected <<'EOF'
+          .github/workflows/titan-v31-d4-flush-ownership-repair.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/test_candidate.py
+          EOF
+          sed -i 's/^          //' /tmp/expected
+          LC_ALL=C sort -o /tmp/expected /tmp/expected
+          diff -u /tmp/expected /tmp/actual
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Focused D4 repair predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame
+        run: python -B -m unittest -v test_candidate.py
+      - name: Focused D4 repair predecessors under python -O
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame
+        run: python -O -B -m unittest -v test_candidate.py
+      - name: Syntax compile without checkout mutation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in (
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/candidate.py",
+              "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d4_strawberry_midgame/test_candidate.py",
+          ):
+              source = Path(name).read_text(encoding="utf-8")
+              compile(source, name, "exec")
+          PY
