@@ -1,0 +1,22 @@
+name: TITAN V3.1 B5 carrot fertilizer
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_carrot_fertilizer/**"
+      - ".github/workflows/titan-v31-b5-carrot-fertilizer.yml"
+  workflow_dispatch:
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Focused B5 predecessor tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_carrot_fertilizer
+        run: python -B -m unittest -v test_candidate.py
+      - name: Compile experiment entrypoint
+        run: python -B -m py_compile revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b5_carrot_fertilizer/candidate.py
