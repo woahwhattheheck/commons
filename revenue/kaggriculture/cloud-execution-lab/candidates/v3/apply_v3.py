@@ -34,7 +34,7 @@ PARAMS = {
     "r04_row_order": True,
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
-    "r04_cattle_early": True,
+    "r04_cattle_early": False,
     "r04_kill_late_water": False,
     "r04_strawberry_endgame": False,
     "r04_strawberry_max_plants": 8,
@@ -77,7 +77,7 @@ FIELDS = (
     "    r04_row_order: bool = True\n"
     "    r04_evening_flush: bool = True\n"
     "    r04_sale_fertilizer: bool = True\n"
-    "    r04_cattle_early: bool = True\n"
+    "    r04_cattle_early: bool = False\n"
     "    r04_kill_late_water: bool = False\n"
     "    r04_strawberry_endgame: bool = False\n"
     "    r04_strawberry_max_plants: int = 8\n"
@@ -452,7 +452,14 @@ RELEASE_NOTE = (
 "Field gate (official reference evaluator, 30 v25 shards x 32 seeds x both seats, 1,920 games\n"
 "against 16 published agents), the a6120d0e R04 modules with r04_cattle_early off: +281.4 margin\n"
 "per game, better in 1,912 of 1,920 games, 1911 W / 9 L against 1908 W / 2 T / 10 L without it.\n"
-"Checks: `checks/test_v31_row_shed.py`.\n"
+"Checks: `checks/test_v31_row_shed.py`. The production seam keeps raw market slots and tail\n"
+"indices (an empty row ends the leading block) and falls back to requested-quantity pricing for\n"
+"the whole block on incomplete or non-int projected-shed evidence (the reviewed #12551 contract).\n"
+"\n"
+"`r04_cattle_early` ships off. S34 field gate on this package's modules (official reference\n"
+"evaluator, 1,280 games per arm against published agents): row shed with cattle_early off\n"
+"1273 W / 7 L, +540.0 margin per game against V3.0; the top-40 leaderboard bench (160 recorded\n"
+"games of the current top-40 teams, their play pinned) 96 W / 64 L for the same build.\n"
 )
 
 
