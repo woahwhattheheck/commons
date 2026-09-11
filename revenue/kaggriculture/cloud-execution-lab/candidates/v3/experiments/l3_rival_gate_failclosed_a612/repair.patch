@@ -1,0 +1,144 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py
+@@ -1476,42 +1476,120 @@
+ # L3 rival gate: an on-tape lineage rival runs the tape's shared opening, so its farmer
+ # stands where ours does on nearly every step 1-143, whichever plan it takes at 144.
+ # Measured on the 41 live games of submission 56159263: on-tape rivals match on 123-143
+-# of those steps, off-tape rivals on 14-99. Against an on-tape rival the late sales L3
+-# stops advancing were front-running its own late sales of the same goods, so L3 is held
+-# back against them. Only positive evidence switches L3 off: with no readable opening the
+-# lane behaves exactly as before.
++# of those steps, off-tape rivals on 14-99. Because unconditional L3 is harmful on the
++# tape-heavy regime, ambiguity must fail closed to incumbent E184: only a complete,
++# contiguous, strictly-typed public opening may certify OFF_TAPE and enable L3.
+ RIVAL_GATE_WINDOW = (1, 144)
+ RIVAL_GATE_SHARE = 0.8
+-_RIVAL_TAPE = {'same': 0, 'seen': 0, 'last': -1}
++RIVAL_GATE_REQUIRED_SEEN = RIVAL_GATE_WINDOW[1] - RIVAL_GATE_WINDOW[0]
++_RIVAL_TAPE = {
++    'same': 0,
++    'seen': 0,
++    'last': -1,
++    'decision': None,
++    'valid': True,
++}
++
++
++def _reset_rival_tape():
++    _RIVAL_TAPE.update(same=0, seen=0, last=-1, decision=None, valid=True)
++
++
++def _strict_opening_pair(observation, step):
++    """Return exact public farmer coordinates, or None for malformed/type-poisoned state."""
++    if type(observation) is not dict or type(step) is not int:
++        return None
++    if type(observation.get('step')) is not int or observation['step'] != step:
++        return None
++    me = observation.get('player')
++    if type(me) is not int or me not in (0, 1):
++        return None
++    farms = observation.get('farms')
++    if type(farms) is not list or len(farms) != 2:
++        return None
++    pair = []
++    for index in (me, 1 - me):
++        farm = farms[index]
++        if type(farm) is not dict:
++            return None
++        farmer = farm.get('farmer')
++        if type(farmer) is not list or len(farmer) != 2:
++            return None
++        if any(type(coordinate) is not int for coordinate in farmer):
++            return None
++        pair.append(tuple(farmer))
++    return tuple(pair)
+ 
+ 
+ def rival_on_tape(observation, step):
+-    """True when the rival's farmer matched ours on >= RIVAL_GATE_SHARE of the observed opening."""
+-    if step <= _RIVAL_TAPE['last']:
+-        _RIVAL_TAPE.update(same=0, seen=0)
++    """Fail closed to True unless the complete public opening proves OFF_TAPE."""
++    if type(step) is not int:
++        _RIVAL_TAPE['valid'] = False
++        return True
++
++    previous = _RIVAL_TAPE['last']
++    if step <= previous:
++        _reset_rival_tape()
++        previous = -1
++
++    if _RIVAL_TAPE['decision'] is not None and step >= RIVAL_GATE_WINDOW[1]:
++        _RIVAL_TAPE['last'] = step
++        return _RIVAL_TAPE['decision']
++
++    if previous == -1:
++        if step not in (0, RIVAL_GATE_WINDOW[0]):
++            _RIVAL_TAPE['valid'] = False
++    elif step != previous + 1:
++        _RIVAL_TAPE['valid'] = False
+     _RIVAL_TAPE['last'] = step
+-    try:
+-        farms = observation['farms']
+-        me = int(observation['player'])
+-        ours, theirs = list(farms[me]['farmer']), list(farms[1 - me]['farmer'])
+-    except Exception:
+-        ours = theirs = None
+-    if ours is not None and RIVAL_GATE_WINDOW[0] <= step < RIVAL_GATE_WINDOW[1]:
+-        _RIVAL_TAPE['seen'] += 1
+-        _RIVAL_TAPE['same'] += ours == theirs
+-    return _RIVAL_TAPE['seen'] > 0 and _RIVAL_TAPE['same'] >= RIVAL_GATE_SHARE * _RIVAL_TAPE['seen']
++
++    if step < RIVAL_GATE_WINDOW[0]:
++        return True
++    if step >= RIVAL_GATE_WINDOW[1]:
++        return True
++
++    pair = _strict_opening_pair(observation, step)
++    if pair is None:
++        _RIVAL_TAPE['valid'] = False
++        return True
++
++    ours, theirs = pair
++    _RIVAL_TAPE['seen'] += 1
++    _RIVAL_TAPE['same'] += ours == theirs
++    if step == RIVAL_GATE_WINDOW[1] - 1:
++        if _RIVAL_TAPE['valid'] and _RIVAL_TAPE['seen'] == RIVAL_GATE_REQUIRED_SEEN:
++            _RIVAL_TAPE['decision'] = (
++                _RIVAL_TAPE['same'] >= RIVAL_GATE_SHARE * _RIVAL_TAPE['seen']
++            )
++            return _RIVAL_TAPE['decision']
++    return True
++
++
++def _strict_step_player(observation):
++    if type(observation) is not dict:
++        return None
++    step = observation.get('step')
++    player = observation.get('player')
++    if type(step) is not int or type(player) is not int or player not in (0, 1):
++        return None
++    return step, player
+ 
+ 
+ def agent(observation, configuration=None):
+     action = _SALE_PARENT(observation, configuration)
+-    step = int(observation['step'])
++    strict = _strict_step_player(observation)
++    if strict is None:
++        return action
++    step, player = strict
+     on_tape = rival_on_tape(observation, step)
+     if step < ADVANCE_START or step >= LAST_STEP:
+         return action
+-    state = _POLICY.players[int(observation['player'])]
++    state = _POLICY.players[player]
+     # V3.1 lane L3 (peer B10 port): suppress the reservation at or after the
+     # threshold instead of undoing it later, so the per-due-step debt
+-    # bookkeeping is never corrupted. Flag off short-circuits: byte-identical.
++    # bookkeeping is never corrupted. Unknown/incomplete opening evidence is
++    # treated as on-tape, preserving incumbent E184 instead of enabling L3.
+     if on_tape or not r04_no_late_sale_advance.suppressed(step, NO_LATE_SALE_ADVANCE,
+                                                           NO_LATE_SALE_ADVANCE_STEP):
+         reserve_sales(action, FarmView(observation), state, _POLICY.tapes[state.plan], step)
