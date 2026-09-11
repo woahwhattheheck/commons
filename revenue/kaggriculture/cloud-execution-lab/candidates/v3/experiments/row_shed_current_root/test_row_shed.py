@@ -95,13 +95,21 @@ class RowShedContracts(unittest.TestCase):
                              {"WOOL": 5, "MILK": 5}, flat_price, {"WOOL": 1, "MILK": 1})
         self.assertEqual(result, market)
 
-    def test_malformed_projected_stock_fails_closed(self):
-        market = [["SELL", "WOOL", 5], ["SELL", "MILK", 5]]
-        for projected in ({"WOOL": True, "MILK": 5}, {"WOOL": -1, "MILK": 5},
-                          {"WOOL": 5}, None):
+    def test_malformed_projection_falls_back_to_whole_block_inherited_sort(self):
+        market = [["SELL", "STRAWBERRY", 1000], ["SELL", "WOOL", 8]]
+        inventory = {"STRAWBERRY": 10000, "WOOL": 10000}
+        known = {"STRAWBERRY": 1, "WOOL": 1}
+        inherited = order_sells(market, inventory, None, self.price, known)
+        self.assertEqual(inherited[0], ["SELL", "STRAWBERRY", 1000])
+        malformed = (
+            {"STRAWBERRY": 1},
+            {"STRAWBERRY": 1, "WOOL": True},
+            {"STRAWBERRY": 1, "WOOL": -1},
+            None,
+        )
+        for projected in malformed:
             with self.subTest(projected=projected):
-                self.assertIs(order_sells(market, {"WOOL": 10000, "MILK": 10000}, projected,
-                                          self.price, {"WOOL": 1, "MILK": 1}), market)
+                self.assertEqual(order_sells(market, inventory, projected, self.price, known), inherited)
 
     def test_bool_or_noninteger_order_quantity_fails_closed(self):
         for quantity in (True, 1.0, "1", -1):
