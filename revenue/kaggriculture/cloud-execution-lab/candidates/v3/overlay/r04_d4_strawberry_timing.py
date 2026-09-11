@@ -3,7 +3,7 @@
 
 This is the repaired V3.1 D4 mechanism carried into the single V4 tree.  It is
 inactive unless the V4 feature key is enabled.  When enabled it may advance only
-STRawberry quantity that is already present in projected shed stock and already
+STRAWBERRY quantity that is already present in projected shed stock and already
 scheduled for a later same-day authored SELL, strictly beyond the parent E184
 sale horizon and strictly before the next incumbent EVENING_FLUSH callback.
 
@@ -101,7 +101,7 @@ def advance_midgame_strawberry(action, view, state, tape, step, *, min_price=MIN
     if not isinstance(queues, dict):
         return action, 0, ()
     for queue in queues.values():
-        if not isinstance(queue, (list, tuple)):
+        if not isinstance(queue, (list, tuple)) and not hasattr(queue, "__iter__"):
             return action, 0, ()
         if any(isinstance(command, list) and len(command) > 1
                and command[:2] == ["PICKUP", ITEM] for command in queue):
