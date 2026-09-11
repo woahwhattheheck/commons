@@ -176,6 +176,10 @@ def apply_dead_water_harvest(observation, action, enabled=True):
         action_hands = action.get("hands")
         if not isinstance(farm_hands, list) or not isinstance(action_hands, list):
             return action
+        # Actor commands are positional. Never let zip() silently truncate a
+        # partial/malformed action vector and still rewrite another actor.
+        if len(farm_hands) != len(action_hands):
+            return action
         positions = [farm["farmer"]] + list(farm_hands)
         commands = [action.get("farmer")] + list(action_hands)
         report["steps_active"] += 1
