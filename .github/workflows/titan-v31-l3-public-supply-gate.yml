@@ -18,6 +18,30 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Exact-head and additive-scope guard
+        env:
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_PARENT: d181d6ecf848f88885bc1cc348c456714b7360cd
+        run: |
+          set -euo pipefail
+          if [ -n "${PR_HEAD}" ]; then
+            test "$(git rev-parse HEAD)" = "${PR_HEAD}"
+          fi
+          test "$(git merge-base HEAD "${EXPECTED_PARENT}")" = "${EXPECTED_PARENT}"
+          mapfile -t actual < <(git diff --name-only "${EXPECTED_PARENT}"...HEAD | sort)
+          expected=(
+            '.github/workflows/titan-v31-l3-public-supply-gate.yml'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate/README.md'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate/candidate.py'
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate/test_candidate.py'
+          )
+          test "${#actual[@]}" -eq "${#expected[@]}"
+          for i in "${!expected[@]}"; do
+            test "${actual[$i]}" = "${expected[$i]}"
+          done
       - name: Focused predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/l3_public_supply_gate
         run: python -B -m unittest -v test_candidate.py
