@@ -6,7 +6,9 @@
 order_sells() ranks the leading SELL block by the price drop each row causes. With the key on,
 v3_agent() passes the projected shed stock and each row is priced at min(order quantity, shed),
 so a tape row that asks for 1000 units but can fill 2 no longer outranks a row that clears real
-units. The key ships on in TITAN-CONFIG.json and acts only inside the R04 whole-turn delegate.
+units. The production seam must preserve the reviewed S33 donor contract: raw market slots and
+tail indices are never compacted, and incomplete/type-poisoned projected-shed evidence falls
+back coherently to incumbent requested-quantity ROW_ORDER for the whole leading block.
 Standard library only.
 """
 from __future__ import annotations
@@ -75,9 +77,36 @@ class OrderSells(unittest.TestCase):
         self.assertEqual(sorted(map(tuple, ordered[:3])), sorted(map(tuple, market[:3])))
         self.assertEqual(ordered[3:], market[3:])
 
-    def test_missing_item_in_shed_prices_the_row_at_zero(self):
-        ordered = r04.order_sells([["SELL", "WOOL", 50], ["SELL", "EGG", 2]], {}, {"EGG": 2})
-        self.assertEqual(ordered, [["SELL", "EGG", 2], ["SELL", "WOOL", 50]])
+    def test_missing_projection_falls_back_for_the_whole_leading_block(self):
+        market = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"]]
+        incumbent = r04.order_sells(copy.deepcopy(market), {})
+        self.assertEqual(
+            r04.order_sells(copy.deepcopy(market), {}, {"MILK": 6}),
+            incumbent,
+        )
+
+    def test_type_poisoned_projection_falls_back_for_the_whole_leading_block(self):
+        market = [["SELL", "WOOL", 1000], ["SELL", "MILK", 6], ["HIRE"]]
+        incumbent = r04.order_sells(copy.deepcopy(market), {})
+        for bad in (True, 1.0, "1"):
+            with self.subTest(bad=bad):
+                self.assertEqual(
+                    r04.order_sells(copy.deepcopy(market), {}, {"WOOL": bad, "MILK": 6}),
+                    incumbent,
+                )
+
+    def test_type_poisoned_requested_quantity_preserves_raw_parent_order(self):
+        cases = (
+            [["SELL", "WOOL", True], ["SELL", "MILK", 6], ["HIRE"]],
+            [["SELL", "WOOL", 1000], ["SELL", "MILK", 6000.0], ["HIRE"]],
+            [["SELL", "WOOL", 1000], ["SELL", "MILK", "6000"], ["HIRE"]],
+        )
+        for market in cases:
+            with self.subTest(market=market):
+                self.assertEqual(
+                    r04.order_sells(copy.deepcopy(market), {}, {"WOOL": 1, "MILK": 6}),
+                    market,
+                )
 
 
 class Wiring(unittest.TestCase):
@@ -107,6 +136,20 @@ class Wiring(unittest.TestCase):
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "WOOL", 1000], ["SELL", "MILK", 6]])
             r04.install(None, 8, 0, True, False, row_shed=True)
             self.assertEqual(r04.v3_agent(obs, dict(CONFIG))["market"], [["SELL", "MILK", 6], ["SELL", "WOOL", 1000]])
+        finally:
+            r04.POLICY_AGENT = saved
+
+    def test_row_shed_preserves_raw_falsey_barrier_and_tail_index(self):
+        saved = r04.POLICY_AGENT
+        try:
+            r04.POLICY_AGENT = lambda obs, cfg=None: {"farmer": ["PASS"], "hands": [],
+                                                      "market": [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]]}
+            obs = synthetic_observation(300, {"WOOL": 1, "MILK": 6})
+            r04.install(None, 8, 0, True, False, row_shed=True)
+            self.assertEqual(
+                r04.v3_agent(obs, dict(CONFIG))["market"],
+                [["SELL", "WOOL", 1000], [], ["SELL", "MILK", 6]],
+            )
         finally:
             r04.POLICY_AGENT = saved
 
