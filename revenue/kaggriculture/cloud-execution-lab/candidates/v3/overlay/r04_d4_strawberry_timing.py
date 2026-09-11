@@ -20,6 +20,13 @@ ITEM = "STRAWBERRY"
 START_DAY = 12
 END_DAY = 18
 DEFAULT_MIN_PRICE = 180
+STANDARD_CONFIG = {
+    "boardSize": 10,
+    "turnsPerDay": 24,
+    "shedCapacity": 100,
+    "maxMarketOrdersPerTurn": 10,
+}
+_MISSING = object()
 REPORT = {
     "engaged": 0,
     "units_advanced": 0,
@@ -30,6 +37,26 @@ REPORT = {
 
 def _strict_nonnegative_int(value):
     return value if type(value) is int and value >= 0 else None
+
+
+def _cfg(configuration, name):
+    if configuration is None:
+        return _MISSING
+    try:
+        if isinstance(configuration, dict):
+            return configuration.get(name, _MISSING)
+        return getattr(configuration, name, _MISSING)
+    except Exception:
+        return _MISSING
+
+
+def _standard_configuration(configuration):
+    for name, expected in STANDARD_CONFIG.items():
+        actual = _cfg(configuration, name)
+        if actual is _MISSING or type(actual) is not int or actual != expected:
+            return False
+    params = _cfg(configuration, "marketParams")
+    return params is _MISSING or params is None or params == {}
 
 
 def _valid_debt_map(base, debts):
@@ -68,12 +95,18 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
     if step >= base.LAST_STEP or not isinstance(action, dict):
         return action, 0, ()
 
-    price = view.prices.get(ITEM)
+    prices = getattr(view, "prices", None)
+    if not isinstance(prices, dict):
+        return action, 0, ()
+    price = prices.get(ITEM)
     if type(price) is not int or price < min_price:
         return action, 0, ()
 
     market = action.get("market")
-    if not isinstance(market, list) or len(market) >= base.MAX_ORDERS:
+    farmer = action.get("farmer")
+    hands = action.get("hands")
+    if (not isinstance(market, list) or len(market) >= base.MAX_ORDERS
+            or not isinstance(farmer, list) or not isinstance(hands, list)):
         return action, 0, ()
 
     # H4 owns any current STRAWBERRY row; D4 covers only the temporal gap.
@@ -83,13 +116,13 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
         if len(order) > 1 and order[1] == ITEM and order[0] in ("SELL", "BUY_PRODUCT"):
             return action, 0, ()
 
-    commands = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
+    commands = [farmer, *hands]
     if any(not isinstance(command, list) or not command for command in commands):
         return action, 0, ()
     if any(len(command) > 1 and command[:2] == ["PICKUP", ITEM] for command in commands):
         return action, 0, ()
 
-    queues = getattr(state, "queues", None)
+    queues = getattr(state, "queues", _MISSING)
     if not isinstance(queues, dict):
         return action, 0, ()
     for queue in queues.values():
@@ -105,12 +138,8 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
                and view.inventory(actor).get(command[1], 0) > 0
                for actor, command in enumerate(commands)):
             return action, 0, ()
-    except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
-        return action, 0, ()
-
-    try:
         stock = base.projected_shed(action, view)
-    except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
+    except Exception:
         return action, 0, ()
     if not isinstance(stock, dict):
         return action, 0, ()
@@ -130,8 +159,8 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
     if start > end:
         return action, 0, ()
 
-    original_debts = getattr(state, "sale_window_debts", {})
-    if not _valid_debt_map(base, original_debts):
+    original_debts = getattr(state, "sale_window_debts", _MISSING)
+    if original_debts is _MISSING or not _valid_debt_map(base, original_debts):
         return action, 0, ()
 
     if not isinstance(tape, (list, tuple)) or len(tape) <= end:
@@ -192,9 +221,12 @@ def advance_midgame_strawberry(base, action, view, state, tape, step,
     return result, added, tuple(reservations)
 
 
-def apply_d4(observation, action, enabled=False, min_price=DEFAULT_MIN_PRICE):
+def apply_d4(observation, action, configuration=None, enabled=False,
+             min_price=DEFAULT_MIN_PRICE):
     """Apply D4 to the current live R04 policy state; exact-parent on ambiguity."""
     if not enabled:
+        return action
+    if type(min_price) is not int or min_price < 2 or not _standard_configuration(configuration):
         return action
     try:
         import r04_full_router as base
@@ -202,7 +234,7 @@ def apply_d4(observation, action, enabled=False, min_price=DEFAULT_MIN_PRICE):
             return action
         player = observation.get("player")
         step = observation.get("step")
-        if type(player) is not int or type(step) is not int:
+        if type(player) is not int or player not in (0, 1) or type(step) is not int:
             return action
         policy = base._POLICY
         if policy is None:
