@@ -22,7 +22,7 @@ import sys
 from dataclasses import dataclass
 from typing import Any, Callable, Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 DEFAULT_REPO = "woahwhattheheck/commons"
@@ -117,7 +117,10 @@ def _coordination_rows(text: str) -> list[dict[str, Any]]:
         for line in text.splitlines():
             if not line.strip():
                 continue
-            item = json.loads(line)
+            try:
+                item = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ResolutionError("BAD_COORDINATION_STATE", "coordination JSONL is malformed") from exc
             if not isinstance(item, dict):
                 raise ResolutionError("BAD_COORDINATION_STATE", "JSONL row is not an object")
             rows.append(item)
@@ -130,7 +133,9 @@ def _coordination_rows(text: str) -> list[dict[str, Any]]:
     if isinstance(parsed, dict):
         for key in ("pull_requests", "prs", "rows"):
             rows = parsed.get(key)
-            if isinstance(rows, list) and all(isinstance(row, dict) for row in rows):
+            if isinstance(rows, list):
+                if not all(isinstance(row, dict) for row in rows):
+                    raise ResolutionError("BAD_COORDINATION_STATE", "coordination row collection contains non-object rows")
                 return list(rows)
         return [parsed]
     raise ResolutionError("BAD_COORDINATION_STATE", "coordination payload is not object/array/JSONL")
@@ -206,10 +211,7 @@ class Resolver:
 
     def _coord(self) -> list[dict[str, Any]]:
         if self._coord_cache is None:
-            try:
-                self._coord_cache = _coordination_rows(self.get_text(self.coordination_url))
-            except Exception:
-                self._coord_cache = []
+            self._coord_cache = _coordination_rows(self.get_text(self.coordination_url))
         return self._coord_cache
 
     def resolve(self, raw: str) -> dict[str, Any]:
