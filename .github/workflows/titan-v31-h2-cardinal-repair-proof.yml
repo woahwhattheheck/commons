@@ -1,0 +1,93 @@
+name: titan-v31-h2-cardinal-repair-proof
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-h2-terminal-last-hop-rescue-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_cardinal_repair/**'
+      - '.github/workflows/titan-v31-h2-cardinal-repair-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-parent-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact parent, additive scope, and source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=626a8f671deb25a08858ede9632b74d626680db9
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          python - <<'PY'
+          import subprocess
+          parent = '626a8f671deb25a08858ede9632b74d626680db9'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-h2-cardinal-repair-proof.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_cardinal_repair/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_cardinal_repair/test_cardinal_repair.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected H2 repair-proof scope: {sorted(actual)}')
+          print('H2_CARDINAL_REPAIR_SCOPE_OK', len(actual))
+          PY
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py")" = a281d106cec76af089dce89318a81288daf79128
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/test_h2_terminal_last_hop.py")" = 3780848675b7bf185243de428ab740a81830d116
+
+      - name: Apply cardinal repair ephemerally
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_cardinal_repair/repair.patch
+          TARGET=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          test "$(git diff --name-only)" = "$TARGET"
+          python -B -m py_compile "$TARGET"
+
+      - name: Run inherited H2 predecessor suite
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_h2_terminal_last_hop.py |& tee /tmp/h2-parent.log
+          grep -F 'Ran 17 tests' /tmp/h2-parent.log
+          grep -F 'OK' /tmp/h2-parent.log
+
+      - name: Run real-cardinal repair killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v experiments/h2_cardinal_repair/test_cardinal_repair.py |& tee /tmp/h2-cardinal.log
+          grep -F 'Ran 3 tests' /tmp/h2-cardinal.log
+          grep -F 'OK' /tmp/h2-cardinal.log
+
+      - name: Revert ephemeral source and prove clean carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -- revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py
+          test -z "$(git status --porcelain)"
+          echo H2_CARDINAL_REPAIR_EPHEMERAL_REVERT_OK
