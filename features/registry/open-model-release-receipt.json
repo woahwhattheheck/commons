@@ -2,7 +2,7 @@
   "schema": "commons-feature-v1",
   "id": "open-model-release-receipt",
   "name": "Open Model Release Receipt",
-  "capability": "Produces a bounded release receipt for local or HTTP model artifacts without claiming training quality or production deployment.",
+  "capability": "Produces a bounded release receipt for local or HTTP model artifacts without claiming training quality, loader-side-effect safety, or production deployment.",
   "owner_subsystem": "commerce",
   "carrier": "CODEX",
   "claimed_paths": ["open-model-release-receipt.html", "open_model_release_receipt.py"],
@@ -10,12 +10,13 @@
   "public_entrypoint": "open-model-release-receipt.html",
   "dependencies": [],
   "resource_links": [],
-  "next_gap": "Keep buyer acceptance and production deployment unclaimed until separately measured.",
+  "next_gap": "Keep buyer acceptance, loader side effects, and production deployment unclaimed until separately measured.",
   "commercial": {"entry_usd": 199, "proof_usd": 2500, "cash_usd": 0},
   "boundaries": [
     "local or HTTP artifacts only",
     "exactly eight artifacts and at most 10 MiB",
-    "no model training or quality claim",
-    "no production deployment"
+    "manifest-declared loader exit is asserted; loader filesystem, network, database, training, and publication side effects are outside receipt assurance",
+    "no training-quality claim",
+    "no production deployment claim"
   ]
 }
