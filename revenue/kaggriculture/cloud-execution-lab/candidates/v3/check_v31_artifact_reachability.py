@@ -49,7 +49,7 @@ def config_contracts(manifest):
     keys = manifest.get("keys") or {}
     for key, spec in keyed_specs(manifest):
         yield key, spec["default"]
-    params = keys.get("params") or {}
+    params = keys.get("params", {})
     if not isinstance(params, dict):
         raise AssertionError("manifest keys.params must be an object")
     for key, value in params.items():
