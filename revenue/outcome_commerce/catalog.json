@@ -1455,7 +1455,7 @@
         "acceptance": [
           "The same input produces the same decision",
           "A duplicate replay creates no second approval request",
-          "A crash after durable intent can retry to exactly one approval request"
+          "A crash after durable intent retries to exactly one approval request"
         ],
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
@@ -1482,7 +1482,7 @@
           "commerce.html anchored catalog entry",
           "Named-human follow-up about a matching duplicate, replay, or conflict failure"
         ],
-        "message": "$199 for a one-business-day independent completeness diagnostic of one release manifest: eight artifacts, recomputed SHA-256, one deterministic loader, JSON and HTML receipts.",
+        "message": "$199 for a one-business-day independent completeness diagnostic of one release manifest: eight artifacts, recomputed SHA-256, one manifest-declared loader, JSON and HTML receipts.",
         "route": "commerce.html#open-model-release-receipt",
         "cta": "Open verified checkout"
       },
@@ -1490,7 +1490,7 @@
         "route": "open-model-release-receipt.html",
         "required": [
           "One real release manifest declaring exactly eight artifacts, local or HTTP, at most 10 MiB",
-          "No model training, quality claim, private credentials, or production deployment"
+          "Completeness receipt only: no training-quality or loader-side-effect-safety claim, and the receipt does not itself deploy or publish the release"
         ],
         "state_after": "QUALIFIED"
       },
@@ -1510,7 +1510,8 @@
         "acceptance": [
           "PASS only at 8/8 matching artifacts and loader exit 0",
           "Any missing path, changed byte, timeout, or loader error is FAIL with the exact stage",
-          "Inputs are capped at 10 MiB and 60 seconds"
+          "Inputs are capped at 10 MiB and 60 seconds",
+          "Loader exit is the loader-behavior assertion; filesystem, network, database, training, and publication side effects of the manifest-declared loader are outside this receipt's assurance"
         ],
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
@@ -2529,8 +2530,8 @@
       "name": "Invoice Exception Pack Diagnostic",
       "state": "PUBLIC_OFFER",
       "source_artifact": {
-        "path": "revenue/invoice_exception_pack/contract.json",
-        "blob_sha": "faa5742a4b045f55073fa2386aee9f4e17eab76a",
+        "path": "invoice-exception-pack.json",
+        "blob_sha": "d8d381c2861a9a9b629ab2f03d6ca58bfdf77ce5",
         "terms_authority": "source"
       },
       "pricing": {
@@ -2546,12 +2547,12 @@
         ]
       },
       "outcome": {
-        "acceptance_source": "revenue/invoice_exception_pack/contract.json",
+        "acceptance_source": "invoice-exception-pack.json",
         "evidence_required": true
       },
       "routes": {
         "human": "invoice-exception-pack.html",
-        "machine": "revenue/invoice_exception_pack/contract.json"
+        "machine": "invoice-exception-pack.json"
       },
       "checkout": {
         "status": "ACTIVE_CHARGEABLE",
@@ -2572,7 +2573,7 @@
       "state": "PUBLIC_OFFER",
       "source_artifact": {
         "path": "revenue/open_model_release_receipt/contract.json",
-        "blob_sha": "1f32390fd2d587f6e43a4c10ac5cd5480f3cf014",
+        "blob_sha": "7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
         "terms_authority": "source"
       },
       "pricing": {
