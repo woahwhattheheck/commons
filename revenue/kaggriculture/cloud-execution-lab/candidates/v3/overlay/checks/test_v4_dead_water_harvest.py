@@ -145,6 +145,17 @@ class DeadWaterHarvestTest(unittest.TestCase):
             malformed_hands,
         )
 
+    def test_partial_actor_vectors_fail_closed(self):
+        observation = _obs(_tile())
+        observation["farms"][0]["hands"] = [[0, 0]]
+        action = _action()
+        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+
+        observation = _obs(_tile())
+        action = _action()
+        action["hands"] = [["WATER"]]
+        self.assertIs(lane.apply_dead_water_harvest(observation, action), action)
+
 
 if __name__ == "__main__":
     unittest.main()
