@@ -22,11 +22,16 @@ class Poison:
 
 
 def observation(*tiles, player=0):
-    board = [list(tiles)]
+    board = [[None for _ in range(10)] for _ in range(10)]
+    for index, tile in enumerate(tiles):
+        if index >= 100:
+            raise ValueError("test helper accepts at most one 10x10 board")
+        y, x = divmod(index, 10)
+        board[y][x] = tile
     return {
         "player": player,
         "farms": [
-            {"tiles": [[None for _ in tiles]]},
+            {"tiles": [[None for _ in range(10)] for _ in range(10)]},
             {"tiles": board},
         ],
         "private": Poison(),
@@ -79,6 +84,22 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
             with self.subTest(bad_obs=bad_obs):
                 self.assertEqual(public_rival_supply(bad_obs), {})
 
+    def test_partial_or_ragged_board_cannot_authorize_from_visible_subset(self):
+        valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
+        cases = []
+        truncated = observation(valid)
+        truncated["farms"][1]["tiles"].pop()
+        cases.append(truncated)
+        ragged = observation(valid)
+        ragged["farms"][1]["tiles"][9].pop()
+        cases.append(ragged)
+        oversized = observation(valid)
+        oversized["farms"][1]["tiles"].append([None for _ in range(10)])
+        cases.append(oversized)
+        for bad_obs in cases:
+            with self.subTest(shape=[len(row) if isinstance(row, list) else None for row in bad_obs["farms"][1]["tiles"]]):
+                self.assertEqual(public_rival_supply(bad_obs), {})
+
     def test_animal_signal_requires_legal_structure_kind(self):
         valid = {"kind": "PLANT", "crop": "STRAWBERRY", "yield_units": 3}
         malformed = (
@@ -123,6 +144,21 @@ class D1PublicSupplyOrderTest(unittest.TestCase):
         for bad in ([], "bad", True, 1):
             with self.subTest(bad=bad):
                 self.assertIs(apply_public_supply_order(obs, parent, bad), parent)
+
+    def test_falsey_market_params_type_poison_fails_closed(self):
+        obs = observation({"kind": "PASTURE", "animal": "SHEEP", "yield_units": 2})
+        for market_params in ([], "", 0, False, 1, True, "custom"):
+            with self.subTest(market_params=market_params):
+                parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+                self.assertIs(
+                    apply_public_supply_order(obs, parent, {"marketParams": market_params}),
+                    parent,
+                )
+        for default_config in ({}, {"marketParams": None}, {"marketParams": {}}):
+            with self.subTest(default_config=default_config):
+                parent = action(["SELL", "MILK", 2], ["SELL", "WOOL", 2])
+                changed = apply_public_supply_order(obs, parent, default_config)
+                self.assertEqual(changed["market"], [["SELL", "WOOL", 2], ["SELL", "MILK", 2]])
 
     def test_stable_promote_pressured_rows_only_inside_leading_sell_block(self):
         milk = ["SELL", "MILK", 4]
