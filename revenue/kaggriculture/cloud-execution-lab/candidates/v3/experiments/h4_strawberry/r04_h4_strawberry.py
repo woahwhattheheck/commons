@@ -33,8 +33,16 @@ def reconcile_strawberry(action, view, state, tape, step, enabled=False):
     E184's conservative blockers: route/shop boundaries, current/future pickup,
     current/future same-item purchase, animal PLACE uncertainty, price floor and
     already-recorded sale-window debt.
+
+    If this experiment is composed onto Riot's L3 no-late-sale-advance source,
+    L3 dominates: H4 is exact identity at/after the configured cutoff.  ``getattr``
+    keeps the standalone V3.1 base byte-behavior unchanged because those globals do
+    not exist there.
     """
     if not enabled or step < base.ADVANCE_START or step >= base.LAST_STEP:
+        return action, 0
+    if (getattr(base, "NO_LATE_SALE_ADVANCE", False)
+            and step >= int(getattr(base, "NO_LATE_SALE_ADVANCE_STEP", 648))):
         return action, 0
 
     market = action.get("market") or []
