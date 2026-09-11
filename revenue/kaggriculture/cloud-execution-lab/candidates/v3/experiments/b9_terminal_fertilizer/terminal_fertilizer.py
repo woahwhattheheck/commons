@@ -54,10 +54,37 @@ def _standard_terminal_timing(configuration):
     )
 
 
+def _valid_worker_position(position, board_size):
+    return (
+        type(position) is list
+        and len(position) == 2
+        and all(_exact_int(v) for v in position)
+        and _exact_int(board_size)
+        and board_size > 0
+        and all(0 <= v < board_size for v in position)
+    )
+
+
+def _valid_selected_farm_envelope(farm):
+    if not isinstance(farm, dict):
+        return False
+    try:
+        tiles = farm["tiles"]
+        farmer = farm["farmer"]
+        hands = farm["hands"]
+    except (KeyError, TypeError):
+        return False
+    if (not isinstance(tiles, list) or not tiles
+            or any(not isinstance(row, list) for row in tiles)
+            or any(len(row) != len(tiles) for row in tiles)
+            or not isinstance(hands, list)):
+        return False
+    positions = [farmer, *hands]
+    return all(_valid_worker_position(position, len(tiles)) for position in positions)
+
+
 def _beside_shed(position, board_size):
-    if (type(position) is not list or len(position) != 2
-            or not all(_exact_int(v) for v in position)
-            or not _exact_int(board_size) or board_size <= 0):
+    if not _valid_worker_position(position, board_size):
         return False
     center = board_size // 2
     return position[0] in (center - 1, center) and position[1] in (center - 1, center)
@@ -76,13 +103,9 @@ def _collect_passes(observation, action):
         if not _exact_int(player) or not isinstance(farms, list) or not (0 <= player < len(farms)):
             return action, False
         farm = farms[player]
-        if not isinstance(farm, dict):
+        if not _valid_selected_farm_envelope(farm):
             return action, False
         tiles, farmer, hands = farm["tiles"], farm["farmer"], farm["hands"]
-        if (not isinstance(tiles, list) or not tiles or any(not isinstance(row, list) for row in tiles)
-                or any(len(row) != len(tiles) for row in tiles)
-                or not isinstance(hands, list)):
-            return action, False
         positions = [farmer, *hands]
         if "farmer" not in action or "hands" not in action:
             return action, False
@@ -101,8 +124,6 @@ def _collect_passes(observation, action):
         if command != ["PASS"] or not _beside_shed(position, len(tiles)):
             continue
         x, y = position
-        if not (0 <= y < len(tiles) and 0 <= x < len(tiles[y])):
-            continue
         tile = tiles[y][x]
         if (not isinstance(tile, dict) or tile.get("animal") not in ANIMALS
                 or tile.get("fertilizer_available") is not True):
@@ -159,6 +180,9 @@ class TerminalFertilizerAgent:
         if (not _exact_int(step) or not 0 <= step < EPISODE_STEPS
                 or not _exact_int(player) or not isinstance(farms, list)
                 or not 0 <= player < len(farms)):
+            self._state.clear()
+            return action
+        if not _valid_selected_farm_envelope(farms[player]):
             self._state.clear()
             return action
 
