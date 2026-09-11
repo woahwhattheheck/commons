@@ -43,7 +43,7 @@ jobs:
           BASE="$(git merge-base "$EVENT_BASE" HEAD)"
           test "$BASE" = "$EVENT_BASE"
           commit_count="$(git rev-list --count "$BASE"..HEAD)"
-          test "$commit_count"" -ge 1
+          test "$commit_count" -ge 1
           test "$commit_count" -le 30
           test -z "$(git diff --diff-filter=D --name-only "$BASE"...HEAD)"
           unexpected="$(
@@ -76,8 +76,8 @@ jobs:
           python -B -m unittest -v \
             test_contracts_a.py test_contracts_b.py test_contracts_c.py \
             2>&1 | tee "$RUNNER_TEMP/TEST.log"
-          test "$(grep -c '^test_.* \.\.\. ok$' "$RUNNER_TEMP/TEST.log")" -eq 35
-          grep -E '^Ran 35 tests in [0-9.]+s$' "$RUNNER_TEMP/TEST.log"
+          test "$(grep -c '^test_.* \.\.\. ok$' "$RUNNER_TEMP/TEST.log")" -eq 37
+          grep -E '^Ran 37 tests in [0-9.]+s$' "$RUNNER_TEMP/TEST.log"
           grep -Fx 'OK' "$RUNNER_TEMP/TEST.log"
           ! grep -E 'FAILED|skipped=' "$RUNNER_TEMP/TEST.log"
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
@@ -135,6 +135,28 @@ jobs:
           PY
           test -z "$(git status --short)"
 
+      - name: Prove HOLD is nonzero in promotion gate mode
+        working-directory: ${{ env.CASE }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          python -B mixture_gate.py \
+            --input "$RUNNER_TEMP/EXAMPLE_INPUT.json" \
+            --output "$RUNNER_TEMP/GATE_RECEIPT.json" \
+            --require-verdict ROBUST_ADVANCE \
+            > "$RUNNER_TEMP/GATE_STDOUT.log" 2> "$RUNNER_TEMP/GATE_STDERR.log"
+          status=$?
+          set -e
+          test "$status" -eq 3
+          python - "$RUNNER_TEMP/GATE_RECEIPT.json" <<'PY'
+          import json, sys
+          row = json.load(open(sys.argv[1], encoding="utf-8"))
+          assert row["verdict"] == "ROBUST_HOLD", row["verdict"]
+          print(row["receipt_sha256"])
+          PY
+          test -z "$(git status --short)"
+
       - name: Emit immutable evidence receipt
         shell: bash
         run: |
@@ -154,8 +176,9 @@ jobs:
               "schema": "titan-v3-ladder-mixture-ci-receipt/v1",
               "exact_head": head,
               "exact_base": base,
-              "tests": 35,
+              "tests": 37,
               "peer_assist_contracts": 3,
+              "gate_mode_hold_exit": 3,
               "example_verdict": "ROBUST_HOLD",
               "policy_mutation": False,
               "game_execution": False,
@@ -185,5 +208,8 @@ jobs:
             ${{ runner.temp }}/EXAMPLE_STDOUT.log
             ${{ runner.temp }}/EXAMPLE_INPUT.json
             ${{ runner.temp }}/EXAMPLE_RECEIPT.json
+            ${{ runner.temp }}/GATE_STDOUT.log
+            ${{ runner.temp }}/GATE_STDERR.log
+            ${{ runner.temp }}/GATE_RECEIPT.json
             ${{ runner.temp }}/CI_RECEIPT.json
             ${{ runner.temp }}/SHA256SUMS
