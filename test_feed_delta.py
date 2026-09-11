@@ -189,6 +189,79 @@ class TestReader(TempRepo):
         self.assertEqual(result["events"], [])
 
 
+class TestUndatedIsReachable(TempRepo):
+    """A record no cursor can reach must still reach the reader.
+
+    The predecessor listed undated ids in the shard and dropped them from
+    `since()`. A session could then watch the pulse sequence advance, ask for
+    the delta, and be told COMPLETE with nothing in it.
+    """
+
+    def build(self, rows):
+        self.write("recent.json", rows)
+        self.write("pulse.json", {"seq": 5})
+        feed_delta.write_shards(self.root)
+
+    def test_seq_advanced_but_only_an_undated_record_arrived(self):
+        dated = bake(3)
+        self.build(dated)
+        current = json.loads(self.read("feed/head.json"))["covers"]["newest"]
+        self.assertEqual(feed_delta.since(current, self.root)["state"],
+                         "COMPLETE")
+
+        # The only new thing has no landing time and no author time.
+        self.build(dated + [{"id": "clockless", "from": "SEAT", "body": "x"}])
+        result = feed_delta.since(current, self.root)
+
+        self.assertEqual(result["count"], 0, "no cursor can reach it")
+        self.assertNotEqual(result["state"], "COMPLETE",
+                            "a caller told COMPLETE would stop here")
+        self.assertEqual(result["state"], "UNORDERED_GAP")
+        self.assertEqual(result["undated"], ["clockless"])
+        self.assertTrue(result["requires_full_read"])
+        self.assertEqual(result["next_read"], "recent.json")
+
+    def test_a_clean_shard_still_reports_complete(self):
+        self.build(bake(3))
+        result = feed_delta.since("", self.root)
+        self.assertEqual(result["state"], "COMPLETE")
+        self.assertEqual(result["undated"], [])
+        self.assertFalse(result["requires_full_read"])
+        self.assertEqual(result["next_read"], "")
+
+    def test_an_undated_record_forces_the_full_read_even_behind_the_shard(self):
+        # A cursor older than the shard would widen to feed/window.json, but an
+        # undated record is not in any shard's order, so only the full read
+        # reaches both.
+        self.build(bake(3) + [{"id": "clockless", "from": "S", "body": "x"}])
+        result = feed_delta.since("2000-01-01T00:00:00Z|ancient", self.root)
+        self.assertEqual(result["state"], "UNORDERED_GAP")
+        self.assertEqual(result["undated"], ["clockless"])
+        self.assertEqual(result["next_read"], "recent.json")
+        behind = feed_delta.since("2000-01-01T00:00:00Z|ancient", self.root)
+        self.assertTrue(behind["requires_full_read"])
+
+    def test_a_gap_without_undated_records_widens_one_step(self):
+        self.build(bake(3))
+        result = feed_delta.since("2000-01-01T00:00:00Z|ancient", self.root)
+        self.assertEqual(result["state"], "GAP_EXCEEDS_SHARD")
+        self.assertEqual(result["next_read"], "feed/window.json")
+        self.assertFalse(result["requires_full_read"])
+
+    def test_the_window_shard_points_at_the_full_bake(self):
+        self.build(bake(3) + [{"id": "clockless", "from": "S", "body": "x"}])
+        result = feed_delta.since("", self.root, shard="window")
+        self.assertEqual(result["state"], "UNORDERED_GAP")
+        self.assertEqual(result["next_read"], "recent.json")
+
+    def test_an_unreadable_shard_reports_an_empty_undated_list(self):
+        self.build(bake(2))
+        os.remove(os.path.join(self.root, "feed", "head.json"))
+        result = feed_delta.since("", self.root)
+        self.assertEqual(result["state"], "FINDER-FAILED")
+        self.assertEqual(result["undated"], [])
+
+
 class TestCursor(unittest.TestCase):
     def test_events_sharing_a_landing_second_both_survive(self):
         rows = [
