@@ -12,6 +12,7 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -73,6 +74,18 @@ class PlaceDelivery(unittest.TestCase):
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {"WOOL": 5}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_roomy_shed_keeps_drop_exact_parent_object(self):
+        parent = action(["DROP"], [["DROP"]], [["SELL", "WHEAT", 90]])
+        obs = observation(shed={"WHEAT": 90},
+                          inventories=[{"CARROT": 5}, {"WOOL": 5}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_roomy_shed_preserves_multi_product_drop(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 90},
+                          inventories=[{"CARROT": 5, "WOOL": 5}, {}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_overflow_becomes_bounded_place_and_preserves_excess_cargo(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
@@ -83,6 +96,14 @@ class PlaceDelivery(unittest.TestCase):
         self.assertIn(["SELL", "CARROT", 2], out["market"])
         self.assertIn(["SELL", "WHEAT", 98], out["market"])
         self.assertEqual(sum(row[2] for row in out["market"]), 100)
+
+    def test_animal_cargo_counts_toward_overflow_without_product_price(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"GOOSE": 3}, {}])
+        out = lane.apply_place_delivery(obs, parent, enabled=True)
+        self.assertEqual(out["farmer"], ["PASS"])
+        self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
+        self.assertEqual(out["market"], [["SELL", "WHEAT", 98]])
 
     def test_full_shed_never_drops_worker_cargo(self):
         parent = action(["DROP"], [["PASS"]])
@@ -102,6 +123,80 @@ class PlaceDelivery(unittest.TestCase):
         self.assertEqual(out["hands"], [["PLACE", "WOOL", 2]])
         self.assertIn(["SELL", "WOOL", 2], out["market"])
         self.assertNotIn(["DROP"], [out["farmer"], *out["hands"]])
+
+    def test_string_step_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        obs["step"] = "718"
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_shed_quantity_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        obs["private"]["shed"]["WHEAT"] = "98"
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_touched_price_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
+                          prices={"CARROT": "30"})
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_shed_product_price_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
+                          prices={"WHEAT": "10"})
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_worker_position_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        obs["farms"][0]["farmer"] = [4]
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_board_shape_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        obs["farms"][0]["tiles"] = [["LOCKED"] * 2 for _ in range(2)]
+        obs["farms"][0]["farmer"] = [0, 0]
+        obs["farms"][0]["hands"] = [[1, 0]]
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_truncated_worker_positions_fail_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(shed={"WHEAT": 98},
+                          inventories=[{"CARROT": 5}, {"WOOL": 5}])
+        obs["farms"][0]["hands"] = []
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_truncated_worker_inventories_fail_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_malformed_action_hands_fail_closed_to_exact_parent(self):
+        parent = action(["DROP"], 7)
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_missing_action_actor_fields_fail_closed_to_exact_parent(self):
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        missing_hands = {"farmer": ["DROP"], "market": []}
+        self.assertIs(lane.apply_place_delivery(obs, missing_hands, enabled=True), missing_hands)
+        missing_farmer = {"hands": [["DROP"]], "market": []}
+        self.assertIs(lane.apply_place_delivery(obs, missing_farmer, enabled=True), missing_farmer)
+
+    def test_parent_actor_prefix_fails_closed_to_exact_parent(self):
+        parent = {"farmer": ["DROP"], "hands": [], "market": []}
+        obs = observation(shed={"WHEAT": 98},
+                          inventories=[{"CARROT": 5}, {"WOOL": 5}])
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
+    def test_farm_view_failure_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
+        with mock.patch.object(r04, "FarmView", side_effect=ValueError("bad observation")):
+            self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
     def test_install_and_titan_diagnostics_carry_key(self):
         r04.install(None, 8, 0, False, False, place_delivery=True)
