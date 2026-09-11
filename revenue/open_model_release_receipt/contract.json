@@ -5,7 +5,7 @@
     "one open-model release manifest",
     "exactly eight declared artifacts: weights, config, tokenizer, loader_ref, data_provenance, license, evaluation, and sha256sums",
     "recompute every declared SHA-256 under the bounded artifact-byte budget",
-    "run one deterministic loader from the manifest with a bounded timeout",
+    "run one manifest-declared loader with a bounded timeout",
     "emit JSON plus a static HTML receipt"
   ],
   "acceptance": [
@@ -14,7 +14,7 @@
     "local artifact paths and loader cwd remain inside the manifest directory",
     "remote artifact reads are limited to HTTP or HTTPS",
     "artifact bytes are capped at 10 MiB total and loader runtime is capped at 60 seconds",
-    "the diagnostic performs no database work or model training"
+    "the verifier invokes the manifest-declared loader but does not attest or prevent that loader's filesystem, network, database, training, or publication side effects"
   ],
   "commercial": {
     "diagnostic_usd": 199,
@@ -26,6 +26,6 @@
   },
   "open_door": true,
   "requires_login": false,
-  "data_boundary": "one buyer-supplied release manifest and its referenced artifact bytes; local paths remain inside the manifest directory; remote reads are HTTP(S) only; 10 MiB total artifact cap; no database or training",
-  "decision_boundary": "binary release-completeness verification only: eight artifact digests plus one loader exit; never model training or release publication"
+  "data_boundary": "one buyer-supplied release manifest and its referenced artifact bytes; local paths remain inside the manifest directory; remote artifact reads are HTTP(S) only; 10 MiB total artifact cap; the manifest-declared loader may perform side effects outside the receipt's assurance",
+  "decision_boundary": "binary release-completeness verification only: eight artifact digests plus one manifest-declared loader exit; the receipt does not attest or prevent loader side effects and does not itself publish the release"
 }
