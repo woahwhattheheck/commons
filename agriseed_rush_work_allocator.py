@@ -403,7 +403,57 @@ def _hold_record(row: dict[str, Any], reason: str) -> dict[str, Any]:
     return record
 
 
-def evaluate_row(row: dict[str, Any], seen_bags: set[str]) -> dict[str, Any]:
+def _bound_submission_replay(
+    row: dict[str, Any],
+    seen_submissions: dict[str, str],
+) -> dict[str, Any] | None:
+    """Resolve an already-bound submission before any first-seen HOLD path."""
+    submission_id = _text(row.get("submission_id"))
+    previous_source_sha256 = seen_submissions.get(submission_id)
+    if previous_source_sha256 is None:
+        return None
+
+    method = _text(row.get("method"))
+    if method not in METHOD_CATALOG:
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
+
+    spec = METHOD_CATALOG[method]
+    try:
+        regulated = int(spec["biological_hours"])
+        reported = int(row.get("reported_duration_hours") or 0)
+        if reported < regulated:
+            reported = regulated
+        if bool(row.get("rush")) and int(row.get("rush_shorten_hours") or 0):
+            reported = regulated
+        source_row = dict(row)
+        source_row["reported_duration_hours"] = reported
+        source_sha256 = sha256_hex(_source_payload(source_row))
+    except (KeyError, TypeError, ValueError):
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH") from None
+
+    if previous_source_sha256 != source_sha256:
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
+    return {
+        "submission_id": row["submission_id"],
+        "bag_barcode": row.get("bag_barcode"),
+        "method": row.get("method"),
+        "state": "IDEMPOTENT_REPLAY",
+        "released": False,
+        "released_by": None,
+        "rush": bool(row.get("rush")),
+        "source_sha256": source_sha256,
+    }
+
+
+def evaluate_row(
+    row: dict[str, Any],
+    seen_bags: set[str],
+    seen_submissions: dict[str, str],
+) -> dict[str, Any]:
+    bound_replay = _bound_submission_replay(row, seen_submissions)
+    if bound_replay is not None:
+        return bound_replay
+
     method = _text(row.get("method"))
     if method not in METHOD_CATALOG:
         return _hold_record(row, "INVALID_RULE_CERTIFICATE")
@@ -426,9 +476,10 @@ def evaluate_row(row: dict[str, Any], seen_bags: set[str]) -> dict[str, Any]:
     if spec["requires_authorized_sampler"] and _text(row.get("sampler_id")) not in AUTHORIZED_ISTA_SAMPLERS:
         return _hold_record(row, "UNAUTHORIZED_ISTA_SAMPLER")
 
+    # Preserve the preimage order exactly for first-seen rows: regulated
+    # duration parsing/normalization precedes analyst/site validation.
     regulated = int(spec["biological_hours"])
     reported = int(row.get("reported_duration_hours") or 0)
-    # Rush may flag priority but must never shorten regulated duration.
     if reported < regulated:
         reported = regulated
     if bool(row.get("rush")) and int(row.get("rush_shorten_hours") or 0):
@@ -440,7 +491,14 @@ def evaluate_row(row: dict[str, Any], seen_bags: set[str]) -> dict[str, Any]:
     if ANALYSTS[analyst]["site"] != spec["site"]:
         return _hold_record(row, "INVALID_RULE_CERTIFICATE")
 
-    seen_bags.add(bag)
+    source_row = dict(row)
+    source_row["reported_duration_hours"] = reported
+    source_sha256 = sha256_hex(_source_payload(source_row))
+    submission_id = _text(row.get("submission_id"))
+
+    # Construct and hash the complete accession before committing either
+    # identity set. Any exception below this point must leave replay/bag state
+    # unchanged so only a successfully returned accession becomes bound.
     accession_id = f"AST-ACC-{int(row['index']):04d}"
     report = {
         "accession_id": accession_id,
@@ -465,19 +523,24 @@ def evaluate_row(row: dict[str, Any], seen_bags: set[str]) -> dict[str, Any]:
         "state": "ACCESSIONED",
         "released": False,
         "released_by": None,
-        "source_sha256": row["source_sha256"],
+        "source_sha256": source_sha256,
     }
     report["report_sha256"] = sha256_hex(
         {k: v for k, v in report.items() if k != "report_sha256"}
     )
+
+    seen_submissions[submission_id] = source_sha256
+    seen_bags.add(bag)
     return report
 
 
 def run_gate(rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     rows = deepcopy(rows) if rows is not None else build_acceptance_fixture()
     seen_bags: set[str] = set()
+    seen_submissions: dict[str, str] = {}
     accessions: list[dict[str, Any]] = []
     holds: list[dict[str, Any]] = []
+    duplicates = 0
 
     for row in rows:
         working = dict(row)
@@ -486,19 +549,22 @@ def run_gate(rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
             working["reported_duration_hours"] = max(
                 1, int(working["regulated_biological_hours"]) - RUSH_SHORTEN_ATTEMPT_HOURS
             )
-        outcome = evaluate_row(working, seen_bags)
+        outcome = evaluate_row(working, seen_bags, seen_submissions)
         if outcome["state"] == "ACCESSIONED":
             accessions.append(outcome)
+        elif outcome["state"] == "IDEMPOTENT_REPLAY":
+            duplicates += 1
         else:
             holds.append(outcome)
 
     # Replay must add zero new accessions.
     replay_seen = set(seen_bags)
+    replay_submissions = dict(seen_submissions)
     replay_added = 0
     first_pass_bags = set(seen_bags)
     for row in rows:
         before = set(replay_seen)
-        outcome = evaluate_row(dict(row), replay_seen)
+        outcome = evaluate_row(dict(row), replay_seen, replay_submissions)
         if outcome["state"] == "ACCESSIONED":
             new_bags = replay_seen - before
             if new_bags - first_pass_bags:
@@ -555,7 +621,7 @@ def run_gate(rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         "input_rows": len(rows),
         "accessioned": len(accessions),
         "held": len(holds),
-        "duplicates": 0,
+        "duplicates": duplicates,
         "replay_added_accessions": replay_added,
         "rush_never_shortened": sum(
             1
