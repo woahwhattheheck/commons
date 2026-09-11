@@ -24,9 +24,12 @@ RECEIPT_SCHEMA = "titan-v31-gate-receipt/v1"
 OFFICIAL_INTERPRETER_COMMIT = "28b6d8af3"
 LIVE_RELEASE_VERSION = "3.1"
 SEED_LIST_ENCODING = "ASCII decimal seed per line, LF after every seed including the final seed"
+HERE = Path(__file__).resolve().parent
+AUTHORITATIVE_MANIFEST = HERE / "V3-MANIFEST.json"
+AUTHORITATIVE_PANEL = HERE / "OFFICIAL-GATE-PANEL.json"
 
 # Frozen canonical TITAN-CONFIG keys inherited by the V3.1 package before the V3
-# integration keys are applied.  The V3 keys themselves are derived dynamically
+# integration keys are applied. The V3 keys themselves are derived dynamically
 # from V3-MANIFEST.json below, so adding a lane makes old release metadata fail closed.
 CANONICAL_V31_CONFIG_KEYS = frozenset(
     {
@@ -297,11 +300,17 @@ def _validate_panel_and_results(
     return {"cells": len(rows), "mean_delta_m": mean}
 
 
-def validate_receipt(
+def _validate_receipt_against_inputs(
     receipt: Mapping[str, Any],
     manifest: Mapping[str, Any],
     panel: Mapping[str, Any],
 ) -> dict[str, Any]:
+    """Pure consistency validator used by focused tests and trusted wrappers.
+
+    This function does not establish where manifest/panel mappings came from.  Callers
+    must not treat its official result as provenance unless the mappings were loaded by
+    validate_authoritative_receipt().
+    """
     if receipt.get("schema") != RECEIPT_SCHEMA:
         raise ReceiptError(f"schema must be {RECEIPT_SCHEMA}")
 
@@ -332,6 +341,25 @@ def validate_receipt(
     }
 
 
+def validate_receipt(
+    receipt: Mapping[str, Any],
+    manifest: Mapping[str, Any],
+    panel: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Validate caller-supplied mappings without granting official provenance.
+
+    Arbitrary manifest/panel objects are useful for tests and practice receipts, but
+    they are not a trusted source of truth.  Official callers must use
+    validate_authoritative_receipt(), which owns the repository input paths.
+    """
+    if receipt.get("mode") == "official":
+        raise ReceiptError(
+            "caller-supplied manifest/panel mappings cannot mint official eligibility; "
+            "use validate_authoritative_receipt()"
+        )
+    return _validate_receipt_against_inputs(receipt, manifest, panel)
+
+
 def _read_json(path: Path, label: str) -> Mapping[str, Any]:
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
@@ -340,19 +368,71 @@ def _read_json(path: Path, label: str) -> Mapping[str, Any]:
     return _mapping(value, label)
 
 
+def _read_authoritative_json(path: Path, label: str) -> tuple[Mapping[str, Any], str]:
+    if path.is_symlink():
+        raise ReceiptError(f"authoritative {label} must not be a symlink: {path}")
+    if not path.is_file():
+        raise ReceiptError(f"authoritative {label} is not a regular file: {path}")
+    try:
+        raw = path.read_bytes()
+        value = json.loads(raw.decode("utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ReceiptError(f"cannot read authoritative {label} JSON {path}: {exc}") from exc
+    return _mapping(value, label), hashlib.sha256(raw).hexdigest()
+
+
+def validate_authoritative_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
+    """Validate official evidence against only this checkout's committed sibling inputs."""
+    if receipt.get("mode") != "official":
+        raise ReceiptError("validate_authoritative_receipt() requires mode='official'")
+    manifest, manifest_sha256 = _read_authoritative_json(AUTHORITATIVE_MANIFEST, "manifest")
+    panel, panel_sha256 = _read_authoritative_json(AUTHORITATIVE_PANEL, "panel")
+    result = _validate_receipt_against_inputs(receipt, manifest, panel)
+    result["authoritative_inputs"] = {
+        "manifest": AUTHORITATIVE_MANIFEST.name,
+        "manifest_sha256": manifest_sha256,
+        "panel": AUTHORITATIVE_PANEL.name,
+        "panel_sha256": panel_sha256,
+    }
+    return result
+
+
+def _same_path(left: Path, right: Path) -> bool:
+    return left.expanduser().resolve(strict=False) == right.expanduser().resolve(strict=False)
+
+
 def main(argv: list[str] | None = None) -> int:
-    here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("receipt", type=Path)
-    parser.add_argument("--manifest", type=Path, default=here / "V3-MANIFEST.json")
-    parser.add_argument("--panel", type=Path, default=here / "OFFICIAL-GATE-PANEL.json")
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=AUTHORITATIVE_MANIFEST,
+        help="custom manifest for practice-mode validation only",
+    )
+    parser.add_argument(
+        "--panel",
+        type=Path,
+        default=AUTHORITATIVE_PANEL,
+        help="custom panel for practice-mode validation only",
+    )
     args = parser.parse_args(argv)
     try:
-        result = validate_receipt(
-            _read_json(args.receipt, "receipt"),
-            _read_json(args.manifest, "manifest"),
-            _read_json(args.panel, "panel"),
-        )
+        receipt = _read_json(args.receipt, "receipt")
+        if receipt.get("mode") == "official":
+            if not _same_path(args.manifest, AUTHORITATIVE_MANIFEST) or not _same_path(
+                args.panel, AUTHORITATIVE_PANEL
+            ):
+                raise ReceiptError(
+                    "official mode rejects --manifest/--panel overrides; authoritative sibling files are mandatory"
+                )
+            result = validate_authoritative_receipt(receipt)
+        else:
+            result = validate_receipt(
+                receipt,
+                _read_json(args.manifest, "manifest"),
+                _read_json(args.panel, "panel"),
+            )
     except ReceiptError as exc:
         print(f"FIDELITY ERROR: {exc}", file=sys.stderr)
         return 2
