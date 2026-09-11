@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/cattle_ab_8e3'
           V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
@@ -43,7 +43,7 @@ jobs:
           test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
           test "$(git hash-object "$DIR/report_ab.py")" = '503b1aff0ff73544bf9eb662db417e51b1f45de5'
           test "$(git hash-object "$DIR/materialize_ab.py")" = '739ba35a1ef178921a6554db6b1f3e07a153e571'
-          test "$(git hash-object "$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git hash-object "$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
           test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
 
           git diff --name-only "$STACK...HEAD" > /tmp/cattle-ab-8e3-paths.txt
@@ -297,7 +297,7 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
@@ -323,14 +323,14 @@ jobs:
         run: |
           set -euo pipefail
           LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK='6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a'
           RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
           test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/cattle-ab-report.md
-            printf '\nExact shipped-8e3 B5+JIT package A/B. Gameplay root: `8e3d92a...`; build-custody parent: #12535 `ccb128a...`; #12505 score-transform donor blob: `9c5e4642...`. Both arms retain B5 CARROT + JIT + H4 + gated L3 + sale-fertilizer; only cattle differs. No source/default/package-input/Kaggle mutation.\n'
+            printf '\nExact shipped-8e3 B5+JIT package A/B. Gameplay root: `8e3d92a...`; build-custody parent: #12535 `6e5e3c7c...`; #12505 score-transform donor blob: `9c5e4642...`. Both arms retain B5 CARROT + JIT + H4 + gated L3 + sale-fertilizer; only cattle differs. No source/default/package-input/Kaggle mutation.\n'
           } > /tmp/cattle-comment.md
           gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/cattle-comment.md
 
