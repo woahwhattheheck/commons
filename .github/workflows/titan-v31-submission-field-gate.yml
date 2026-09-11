@@ -71,6 +71,10 @@ jobs:
           import make_submission
 
           base = build_v3.package_files()
+          base_config = json.loads(base['TITAN-CONFIG.json'])
+          assert base_config['r04_strawberry_topup'] is True
+          assert base_config['r04_no_late_sale_advance'] is True
+
           changed, config = make_submission.apply_submission_config(base, 8)
           differing = sorted(name for name in base if base[name] != changed[name])
           assert differing == ['TITAN-CONFIG.json'], differing
@@ -79,6 +83,9 @@ jobs:
           assert config['r04_sale_fertilizer'] is True
           assert config['r04_cattle_early'] is False
           assert config['r04_sale_horizon'] == 8
+          # The cattle-off transform must retain both factors already shipped by #12494.
+          assert config['r04_strawberry_topup'] is True
+          assert config['r04_no_late_sale_advance'] is True
           parsed = json.loads(changed['TITAN-CONFIG.json'])
           assert parsed == config
           print('SUBMISSION FIELD-GATED TUPLE OK', {
@@ -86,6 +93,8 @@ jobs:
               'r04_sale_horizon': config['r04_sale_horizon'],
               'r04_sale_fertilizer': config['r04_sale_fertilizer'],
               'r04_cattle_early': config['r04_cattle_early'],
+              'r04_strawberry_topup': config['r04_strawberry_topup'],
+              'r04_no_late_sale_advance': config['r04_no_late_sale_advance'],
           })
           PY
 
