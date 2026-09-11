@@ -1,0 +1,216 @@
+name: titan-v31-a612-e20-rebind
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_e20_a612_exec_prefix.py'
+      - '.github/workflows/titan-v31-a612-e20-rebind.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-a612-e20-rebind-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-current-rebind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout literal child head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind canonical a612 parent, exact scope, donor, and shipped lanes
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          python3 - <<'PY'
+          import subprocess
+
+          base = 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          expected = {
+              '.github/workflows/titan-v31-a612-e20-rebind.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_e20_a612_exec_prefix.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', base, 'HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'unexpected a612->E20 child scope: {sorted(actual)!r}')
+
+          blobs = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py':
+                  'cd497140d188794d610d3ae387de8758ecbd0765',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_e20_a612_exec_prefix.py':
+                  '6008758b138a1d4f9950be37d9d03fc5081e2c6b',
+              # Score-facing bytes shipped by #12494 must remain untouched by this correctness child.
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py':
+                  '7a96c0f1d38fff674493e92bc420eb3dfe821f20',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py':
+                  'd797ecd6068dc714d2ba45d44c2d672842116c7b',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h4_strawberry.py':
+                  'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_no_late_sale_advance.py':
+                  'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0',
+          }
+          for path, want in blobs.items():
+              got = subprocess.check_output(['git', 'rev-parse', f'HEAD:{path}'], text=True).strip()
+              if got != want:
+                  raise SystemExit(f'blob drift {path}: {got} != {want}')
+          print('A612_E20_SCOPE_OK', len(actual))
+          print('A612_E20_BLOBS_OK', len(blobs))
+          PY
+          git diff --check "$BASE" HEAD
+          test -z "$(git status --porcelain)"
+
+      - name: Run reviewed E20 source contracts plus canonical predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -B tooling_tests/test_e20_a612_exec_prefix.py |& tee /tmp/e20-focused.log
+          grep -F 'OK' /tmp/e20-focused.log
+          cd overlay
+          python3 -B -m unittest -v checks/test_v3_features.py |& tee /tmp/e20-existing.log
+          grep -F 'OK' /tmp/e20-existing.log
+
+      - name: Generate deterministic canonical package rebind
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/a612-e20-rebind"
+          TREE="$RUNNER_TEMP/a612-e20-tree"
+          mkdir -p "$OUT" "$TREE"
+
+          python3 -B build_v3.py |& tee "$OUT/build.log"
+          grep -F 'V3 BUILD ' "$OUT/build.log"
+          python3 -B build_v3.py --check |& tee "$OUT/check.log"
+          grep -F 'V3 CHECK OK ' "$OUT/check.log"
+          python3 -B build_v3.py --tree "$TREE" |& tee "$OUT/tree.log"
+          grep -F 'V3 TREE ' "$OUT/tree.log"
+
+          cmp overlay/e20_hire_guard.py "$TREE/e20_hire_guard.py"
+          test "$(git hash-object "$TREE/e20_hire_guard.py")" = 'cd497140d188794d610d3ae387de8758ecbd0765'
+
+          # The canonical H4/L3 score-facing sources are not part of this child.
+          test "$(git hash-object overlay/r04_h4_strawberry.py)" = 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8'
+          test "$(git hash-object overlay/r04_no_late_sale_advance.py)" = 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0'
+
+          cp FILES.json "$OUT/FILES.json"
+          cp V3-MANIFEST.json "$OUT/V3-MANIFEST.json"
+          cp dist/titan-v3.tar.gz "$OUT/titan-v3.tar.gz"
+          cp dist/titan-v3.sha256 "$OUT/titan-v3.sha256"
+          git diff -- FILES.json V3-MANIFEST.json > "$OUT/rebind.patch"
+          test -s "$OUT/rebind.patch"
+
+          python3 - "$OUT" <<'PY'
+          import hashlib, json, pathlib, subprocess, sys
+          out = pathlib.Path(sys.argv[1])
+          manifest = json.loads((out / 'V3-MANIFEST.json').read_text())
+          package = out / 'titan-v3.tar.gz'
+          archive_sha = hashlib.sha256(package.read_bytes()).hexdigest()
+          receipt = {
+              'schema': 'titan-v31-a612-e20-rebind/v1',
+              'canonical_parent': 'a6120d0ea1bdb75eb0da2239220efce551f624a6',
+              'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'reviewed_donor': {
+                  'source_pr': 12405,
+                  'source_head': 'f2fbc5b6aefbc7e40a50d51fea352923eb379a85',
+                  'e20_blob': 'cd497140d188794d610d3ae387de8758ecbd0765',
+              },
+              'preserved_score_facing': {
+                  'apply_v3_blob': '7a96c0f1d38fff674493e92bc420eb3dfe821f20',
+                  'r04_blob': 'd797ecd6068dc714d2ba45d44c2d672842116c7b',
+                  'h4_blob': 'd6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8',
+                  'l3_blob': 'fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0',
+              },
+              'generated_archive': manifest['archive'],
+              'generated_archive_sha256_recomputed': archive_sha,
+              'generated_files_sha256': hashlib.sha256((out / 'FILES.json').read_bytes()).hexdigest(),
+              'generated_manifest_sha256': hashlib.sha256((out / 'V3-MANIFEST.json').read_bytes()).hexdigest(),
+              'truth_boundary': (
+                  'CI-generated deterministic rebind from canonical a612 plus the reviewed E20 source postimage. '
+                  'Generated metadata/archive are review artifacts; a deliberate follow-up must land the reviewed '
+                  'FILES/V3-MANIFEST rebound before this repair is package authority.'
+              ),
+          }
+          if archive_sha != manifest['archive']['sha256']:
+              raise SystemExit('archive digest disagrees with generated manifest')
+          (out / 'E20-A612-REBIND-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          )
+          print('A612_E20_REBIND_RECEIPT', archive_sha)
+          PY
+
+      - name: Prove materialized E20 mechanics
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          TREE="$RUNNER_TEMP/a612-e20-tree"
+          python3 -B - "$TREE" <<'PY'
+          import copy, pathlib, sys
+          tree = pathlib.Path(sys.argv[1])
+          sys.path.insert(0, str(tree))
+          import e20_hire_guard as e20
+
+          obs = {'step': 10, 'player': 0, 'farms': [
+              {'hires_today': 3, 'tiles': [[{'kind':'PLANT','watered_today':True}]]},
+              {'hires_today': 0, 'tiles': [[None]]},
+          ]}
+          action = {'market': [['SELL','WHEAT',1] for _ in range(10)] + [['HIRE']]}
+          before = copy.deepcopy(action)
+          out, report = e20.apply_hire_guard(obs, action, {'maxMarketOrdersPerTurn': 10}, enabled=True)
+          assert out is action and out == before and report['reason'] == 'NO_HIRE'
+
+          action = {'market': [['HIRE'], ['HIRE']]}
+          out, report = e20.apply_hire_guard(obs, action, {'maxMarketOrdersPerTurn': 0}, enabled=True)
+          assert out['market'] == [[], ['HIRE']] and report['dropped_indices'] == [0]
+          print('A612_E20_MATERIALIZED_MECHANICS_OK')
+          PY
+
+      - name: Prove builder dirtied only generated metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+          }
+          if changed != expected:
+              raise SystemExit(f'unexpected builder mutation: {sorted(changed)!r}')
+          print('A612_E20_GENERATED_METADATA_ONLY', len(changed))
+          PY
+
+      - name: Upload exact canonical rebind handoff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-a612-e20-rebind-${{ github.run_id }}
+          path: ${{ runner.temp }}/a612-e20-rebind/
+          if-no-files-found: error
+          retention-days: 14
