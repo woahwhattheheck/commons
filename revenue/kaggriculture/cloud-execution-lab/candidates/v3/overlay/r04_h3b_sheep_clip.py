@@ -23,6 +23,7 @@ SHEEP_FIRST_YIELD_DAY = 6
 SHEEP_INTERVAL = 3
 SHEEP_MAX_HELD = 6
 STANDARD_CONFIG = {
+    "episodeSteps": 720,
     "boardSize": 10,
     "turnsPerDay": 24,
     "shedCapacity": 100,
