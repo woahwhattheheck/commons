@@ -2,6 +2,8 @@ name: TITAN V3.1 a612 JIT live interaction
 
 on:
   pull_request:
+    branches:
+      - titan/v3.1-20260911
     paths:
       - '.github/workflows/titan-v31-a612-jit-live-interaction.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
@@ -28,14 +30,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind a612 ancestry, exact evidence scope, and reviewed producers
+      - name: Bind live a612 parent, exact evidence scope, and reviewed producers
         shell: bash
         run: |
           set -euo pipefail
           BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
-          EVENT_BASE='${{ github.event.pull_request.base.sha || '' }}'
-          BASE_REF='${{ github.event.pull_request.base.ref || '' }}'
           R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
           TAPE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py'
           JIT='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
@@ -43,11 +43,8 @@ jobs:
           EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          if [ -n "$EVENT_BASE" ]; then
-            test "$EVENT_BASE" = "$BASE"
-            git fetch --no-tags origin "$BASE_REF"
-            test "$(git rev-parse "refs/remotes/origin/$BASE_REF")" = "$BASE"
-          fi
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
           test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
           test "$(git hash-object "$TAPE")" = 'a43289b9cc5e34a2481fddf652762a7d92f427ef'
           test "$(git hash-object "$JIT")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
@@ -70,6 +67,7 @@ jobs:
           ).splitlines())
           if actual != expected:
               raise SystemExit(f'wrong a612 JIT evidence scope: {sorted(actual)!r}')
+          print('A612 JIT EXACT SCOPE OK', len(actual))
           PY
           git diff --check "$BASE...HEAD"
 
@@ -120,6 +118,14 @@ jobs:
           python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
             --prepare-engine /tmp/kag-engine
 
+      - name: Recheck live canonical before evaluator spend
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+
       - name: Run exact shipped a612 control
         shell: bash
         run: |
@@ -151,6 +157,83 @@ jobs:
             --recheck-first \
             --output /tmp/a612-jit.json
 
+      - name: Fail closed on exact receipt structure before reducer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import json
+          import math
+          from pathlib import Path
+
+          engine = '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c'
+          seeds = (2611151001, 2611151002, 2611151003, 2611151004)
+          expected = {('a612', seed, seat) for seed in seeds for seat in (0, 1)}
+
+          def sha(value):
+              return isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value)
+
+          def fingerprint(value, entry, label):
+              if not isinstance(value, dict):
+                  raise SystemExit(f'{label}: fingerprint must be object')
+              if value.get('entry') != entry or value.get('callable') != 'agent' or not sha(value.get('sha256')):
+                  raise SystemExit(f'{label}: wrong fingerprint {value!r}')
+
+          def check(path, label, candidate_entry):
+              report = json.loads(Path(path).read_text())
+              if not isinstance(report, dict) or report.get('engine_ref') != engine:
+                  raise SystemExit(f'{label}: wrong engine/report shape')
+              if type(report.get('agent_rng_seed')) is not int or report.get('agent_rng_seed') != 20260911:
+                  raise SystemExit(f'{label}: wrong agent_rng_seed')
+              if report.get('seeds') != list(seeds) or any(type(v) is not int for v in report.get('seeds', [])):
+                  raise SystemExit(f'{label}: wrong seed panel')
+              if report.get('reproducibility', {}).get('same_trace_and_scores') is not True:
+                  raise SystemExit(f'{label}: reproducibility failed')
+              opponents = report.get('opponents')
+              if not isinstance(opponents, dict) or set(opponents) != {'a612'}:
+                  raise SystemExit(f'{label}: wrong opponent metadata keys')
+              fingerprint(opponents['a612'], 'baseline.py', f'{label}:opponent')
+              fingerprint(report.get('candidate'), candidate_entry, f'{label}:candidate')
+              games = report.get('games')
+              if not isinstance(games, list):
+                  raise SystemExit(f'{label}: games must be list')
+              seen = set()
+              for index, game in enumerate(games):
+                  if not isinstance(game, dict) or game.get('status') != 'complete' or not isinstance(game.get('status'), str):
+                      raise SystemExit(f'{label}[{index}]: incomplete/invalid game')
+                  opponent, seed, seat = game.get('opponent'), game.get('seed'), game.get('candidate_seat')
+                  if opponent != 'a612' or not isinstance(opponent, str):
+                      raise SystemExit(f'{label}[{index}]: wrong opponent')
+                  if type(seed) is not int or seed not in seeds or type(seat) is not int or seat not in (0, 1):
+                      raise SystemExit(f'{label}[{index}]: invalid seed/seat type or value')
+                  cell = (opponent, seed, seat)
+                  if cell in seen:
+                      raise SystemExit(f'{label}: duplicate cell {cell!r}')
+                  seen.add(cell)
+                  scores = game.get('scores')
+                  if not isinstance(scores, list) or len(scores) != 2 or any(type(v) not in (int, float) or not math.isfinite(v) for v in scores):
+                      raise SystemExit(f'{label}[{index}]: invalid scores')
+                  if not sha(game.get('trace_sha256')):
+                      raise SystemExit(f'{label}[{index}]: invalid trace')
+              if seen != expected:
+                  raise SystemExit(f'{label}: exact 8-cell panel mismatch missing={sorted(expected-seen)!r} extra={sorted(seen-expected)!r}')
+              return report
+
+          control = check('/tmp/a612-control.json', 'control', 'baseline.py')
+          candidate = check('/tmp/a612-jit.json', 'candidate', 'candidate.py')
+          if control['opponents'] != candidate['opponents']:
+              raise SystemExit('opponent fingerprint mismatch')
+          print('A612 JIT STRICT RECEIPT FIREWALL OK', len(expected))
+          PY
+
+      - name: Recheck live canonical before reducing or publishing evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
+
       - name: Reduce paired live interaction receipt
         shell: bash
         run: |
@@ -181,6 +264,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$BASE"
           {
             printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
             cat /tmp/a612-jit-report.md
