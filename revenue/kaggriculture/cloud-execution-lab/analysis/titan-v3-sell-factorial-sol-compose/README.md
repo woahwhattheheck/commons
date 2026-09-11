@@ -18,7 +18,7 @@ The gate runs no games and edits no runtime. It is an evidence consumer intended
 
 ## Evidence contract
 
-All four reports must have identical evaluator provenance, opponents, seeds, limits, and RNG seed. Every report must contain the same complete `opponent × seed × seat` grid. A required arm manifest additionally binds each executed candidate fingerprint to one build receipt and one canonical archive/source/runtime tree. The manifest must prove that:
+All four reports must have identical evaluator provenance, opponents, seeds, limits, and RNG seed. Every report must contain the same complete `opponent × seed × seat` grid. An arm manifest additionally binds each executed candidate fingerprint to one build receipt and one canonical archive/source/runtime tree. The manifest must prove that:
 
 - `control` contains neither factor;
 - `own_value` contains exactly the reviewed own-value source;
