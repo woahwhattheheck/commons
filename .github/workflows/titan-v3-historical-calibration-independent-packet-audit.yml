@@ -1,0 +1,186 @@
+name: titan-v3 historical calibration independent packet audit
+
+on:
+  push:
+    branches:
+      - sol-astra/titan-v3-12120-packet-trust-root-20260910
+    paths:
+      - '.github/workflows/titan-v3-historical-calibration-independent-packet-audit.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-historical-calibration-independent-packet-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-packet-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      EXACT_PARENT: 'b0d600a0121b94b432f8d9a177e188adf5734a58'
+      DECLARED_BASE: 'c51049d671b55d282e0fed5df37a0be7c513a838'
+      DELIVERY: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration-sol-pro-delivery'
+      SOURCE_PREFIX: 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-historical-rank-inversion-calibration'
+      EXPECTED_GZIP_SHA256: '318418c0d673d3566a36f47efd94d89899d0dc5b33d888c2aa587591d69c614c'
+      EXPECTED_PATCH_ID: 'fbd98806a52f1160586d09e997207bbe1a2280c8'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind literal one-path successor
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          test "$(git diff --name-only "$EXACT_PARENT"..HEAD)" = ".github/workflows/titan-v3-historical-calibration-independent-packet-audit.yml"
+          git diff --check "$EXACT_PARENT"..HEAD
+
+      - name: Reconstruct packet from independently pinned repository blobs
+        id: packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVIDENCE="$RUNNER_TEMP/packet-audit"
+          mkdir -p "$EVIDENCE"
+          cd "$GITHUB_WORKSPACE"
+          cat > "$EVIDENCE/blob-pins.txt" <<'EOF'
+          58d3babb226b9897f3dcb8d50216ca7e20bfd2c6 packet.b64.part-00
+          4bfe3c196306f6b1fb1e13ea911dad6defdc6098 packet.b64.part-01
+          577009a8c792b870ca88f5dcb68068d27b32baa3 packet.b64.part-02
+          6e8ec5ec5f601b8939e6535d09e0569987c5321a packet.b64.part-03
+          EOF
+          while read -r blob name; do
+            path="$DELIVERY/$name"
+            test "$(git hash-object "$path")" = "$blob"
+            test -f "$path" && test ! -L "$path"
+            printf '%s %s %s\n' "$blob" "$(wc -c < "$path" | tr -d ' ')" "$name"
+          done < "$EVIDENCE/blob-pins.txt" > "$EVIDENCE/observed-parts.txt"
+
+          cat "$DELIVERY"/packet.b64.part-0{0,1,2,3} \
+            | tr -d '\n' \
+            | base64 --decode \
+            > "$EVIDENCE/packet.gz"
+          test "$(sha256sum "$EVIDENCE/packet.gz" | cut -d' ' -f1)" = "$EXPECTED_GZIP_SHA256"
+          gzip -cd "$EVIDENCE/packet.gz" > "$EVIDENCE/calibration.patch"
+          test "$(wc -c < "$EVIDENCE/calibration.patch" | tr -d ' ')" = 103581
+          patch_id="$(git patch-id --stable < "$EVIDENCE/calibration.patch" | awk 'NR==1 {print $1}')"
+          test "$patch_id" = "$EXPECTED_PATCH_ID"
+          printf '%s\n' "$patch_id" > "$EVIDENCE/stable-patch-id.txt"
+          sha256sum "$EVIDENCE/packet.gz" "$EVIDENCE/calibration.patch" > "$EVIDENCE/SHA256SUMS"
+
+          git apply --numstat "$EVIDENCE/calibration.patch" > "$EVIDENCE/patch-numstat.txt"
+          test "$(wc -l < "$EVIDENCE/patch-numstat.txt" | tr -d ' ')" = 14
+          awk -F '\t' -v prefix="$SOURCE_PREFIX" '
+            $1 !~ /^[0-9]+$/ || $2 !~ /^[0-9]+$/ { bad=1 }
+            index($3, prefix) != 1 { bad=1 }
+            { add += $1; del += $2; rows += 1 }
+            END { if (bad || rows != 14 || add != 2027 || del != 0) exit 1 }
+          ' "$EVIDENCE/patch-numstat.txt"
+          cut -f3 "$EVIDENCE/patch-numstat.txt" | LC_ALL=C sort -u > "$EVIDENCE/patch-paths.txt"
+          test "$(wc -l < "$EVIDENCE/patch-paths.txt" | tr -d ' ')" = 14
+          git apply --summary "$EVIDENCE/calibration.patch" > "$EVIDENCE/patch-summary.txt"
+          echo "evidence=$EVIDENCE" >> "$GITHUB_OUTPUT"
+
+      - name: Check exact declared-base applicability without trusting transport verifier
+        id: apply
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVIDENCE="${{ steps.packet.outputs.evidence }}"
+          if ! git cat-file -e "$DECLARED_BASE^{commit}" 2>/dev/null; then
+            git fetch --no-tags origin "$DECLARED_BASE"
+          fi
+          test "$(git rev-parse "$DECLARED_BASE^{commit}")" = "$DECLARED_BASE"
+          work="$RUNNER_TEMP/materialized-source"
+          git worktree add --detach "$work" "$DECLARED_BASE"
+
+          set +e
+          git -C "$work" apply --check --verbose "$EVIDENCE/calibration.patch" \
+            > "$EVIDENCE/apply-check.log" 2>&1
+          rc=$?
+          set -e
+          printf '%s\n' "$rc" > "$EVIDENCE/apply-check.status"
+          echo "apply_ok=$([ "$rc" -eq 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+          if [ "$rc" -eq 0 ]; then
+            git -C "$work" apply --index "$EVIDENCE/calibration.patch"
+            git -C "$work" diff --cached --name-status > "$EVIDENCE/materialized-name-status.txt"
+            git -C "$work" diff --cached --numstat > "$EVIDENCE/materialized-numstat.txt"
+            diff -u \
+              <(cut -f3 "$EVIDENCE/patch-numstat.txt" | LC_ALL=C sort) \
+              <(cut -f2 "$EVIDENCE/materialized-name-status.txt" | LC_ALL=C sort)
+            test "$(wc -l < "$EVIDENCE/materialized-name-status.txt" | tr -d ' ')" = 14
+          fi
+          echo "work=$work" >> "$GITHUB_OUTPUT"
+
+      - name: Compile delivered Python and run exactly 42 tests
+        if: steps.apply.outputs.apply_ok == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVIDENCE="${{ steps.packet.outputs.evidence }}"
+          work="${{ steps.apply.outputs.work }}"
+          mapfile -t added < <(git -C "$work" diff --cached --diff-filter=A --name-only)
+          test "${#added[@]}" = 14
+          for rel in "${added[@]}"; do
+            case "$rel" in
+              *.py)
+                python -B - "$work/$rel" <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path(sys.argv[1])
+          compile(path.read_text(encoding="utf-8"), str(path), "exec")
+          PY
+                ;;
+            esac
+          done
+          mapfile -t tests < <(printf '%s\n' "${added[@]}" | grep -E '(^|/)test[^/]*\.py$' || true)
+          test "${#tests[@]}" -ge 1
+          test_dir="$(dirname "${tests[0]}")"
+          for rel in "${tests[@]}"; do
+            test "$(dirname "$rel")" = "$test_dir"
+          done
+          (
+            cd "$work/$test_dir"
+            python -B - <<'PY'
+          import json
+          import unittest
+          suite = unittest.defaultTestLoader.discover(".", pattern="test*.py")
+          count = suite.countTestCases()
+          if count != 42:
+              raise SystemExit(f"expected exactly 42 delivered tests, discovered {count}")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not result.wasSuccessful():
+              raise SystemExit(1)
+          print(json.dumps({"tests_discovered": count, "tests_passed": count}))
+          PY
+          ) 2>&1 | tee "$EVIDENCE/delivered-tests.log"
+
+      - name: Retain independent packet audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-historical-calibration-packet-audit-${{ github.run_id }}
+          path: ${{ runner.temp }}/packet-audit
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Fail closed when declared-base application is impossible
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVIDENCE="${{ steps.packet.outputs.evidence }}"
+          test -f "$EVIDENCE/apply-check.status"
+          test "$(cat "$EVIDENCE/apply-check.status")" = 0
+          git worktree remove --force "${{ steps.apply.outputs.work }}"
+          test -z "$(git status --porcelain=v1)"
