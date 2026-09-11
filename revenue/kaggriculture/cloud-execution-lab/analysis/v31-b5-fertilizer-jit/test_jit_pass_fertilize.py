@@ -65,6 +65,40 @@ class JitPassFertilizeTests(unittest.TestCase):
         out, _ = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
         self.assertIs(out, action)
 
+    def test_wheat_max_minus_one_has_zero_marginal_yield(self):
+        obs, action, nxt = fixture(); obs["farms"][0]["tiles"][1][1]["yield_units"] = 5
+        out, rows = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action); self.assertEqual(rows, ())
+
+    def test_carrot_max_minus_one_has_zero_marginal_yield(self):
+        obs, action, nxt = fixture(); tile = obs["farms"][0]["tiles"][1][1]
+        tile.update(crop="CARROT", planted_day=16, yield_units=3)
+        out, rows = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action); self.assertEqual(rows, ())
+
+    def test_melon_max_minus_one_has_zero_marginal_yield(self):
+        obs, action, nxt = fixture(); tile = obs["farms"][0]["tiles"][1][1]
+        tile.update(crop="MELON", planted_day=8, yield_units=5)
+        out, rows = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action); self.assertEqual(rows, ())
+
+    def test_two_units_headroom_still_qualifies(self):
+        obs, action, nxt = fixture(); obs["farms"][0]["tiles"][1][1]["yield_units"] = 4
+        out, rows = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
+        self.assertIsNot(out, action); self.assertEqual(len(rows), 1)
+
+    def test_same_tile_multi_worker_matches_fail_closed(self):
+        obs, action, nxt = fixture()
+        obs["farms"][0]["hands"] = [[1, 1], [1, 1]]
+        obs["private"]["inventories"] = [{}, {"FERTILIZER": 3}, {"FERTILIZER": 2}]
+        action["hands"] = [["PASS"], ["PASS"]]
+        nxt["hands"] = [["WATER"], ["WATER"]]
+        frozen = copy.deepcopy(action)
+        out, rows = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(action, frozen)
+        self.assertEqual(rows, ())
+
     def test_watered_same_day_fails_closed(self):
         obs, action, nxt = fixture(); obs["farms"][0]["tiles"][1][1]["watered_today"] = True
         out, _ = jit.apply_jit_pass_fertilize(action, obs, nxt, enabled=True)
