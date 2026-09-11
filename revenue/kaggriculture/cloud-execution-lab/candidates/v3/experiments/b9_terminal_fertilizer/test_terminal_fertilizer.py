@@ -4,7 +4,7 @@ import unittest
 from terminal_fertilizer import make_agent
 
 
-STANDARD = {"episodeSteps": 720, "turnsPerDay": 24}
+STANDARD = {"episodeSteps": 720, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10}
 
 
 def obs(step=716, player=0, pos=(4, 4), fert=True, animal="COW", hands=None):
@@ -93,12 +93,12 @@ class T(unittest.TestCase):
             {},
             {"episodeSteps": 720},
             {"turnsPerDay": 24},
-            {"episodeSteps": True, "turnsPerDay": 24},
-            {"episodeSteps": 720.0, "turnsPerDay": 24},
-            {"episodeSteps": 719, "turnsPerDay": 24},
-            {"episodeSteps": 720, "turnsPerDay": True},
-            {"episodeSteps": 720, "turnsPerDay": 24.0},
-            {"episodeSteps": 720, "turnsPerDay": 23},
+            {"episodeSteps": True, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            {"episodeSteps": 720.0, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            {"episodeSteps": 719, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            {"episodeSteps": 720, "turnsPerDay": True, "maxMarketOrdersPerTurn": 10},
+            {"episodeSteps": 720, "turnsPerDay": 24.0, "maxMarketOrdersPerTurn": 10},
+            {"episodeSteps": 720, "turnsPerDay": 23, "maxMarketOrdersPerTurn": 10},
         )
         for config in bad_configs:
             with self.subTest(config=config):
@@ -106,6 +106,20 @@ class T(unittest.TestCase):
                 self.assertEqual(a(obs(), config), action)
         a = make_agent(parent_with(action))
         self.assertEqual(a(obs(), dict(STANDARD))["farmer"], ["COLLECT_FERTILIZER"])
+
+    def test_market_cap_is_explicit_and_type_strict(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        bad_caps = (None, True, False, 10.0, "10", [], {})
+        for cap in bad_caps:
+            with self.subTest(cap=cap):
+                config = dict(STANDARD)
+                config["maxMarketOrdersPerTurn"] = cap
+                a = make_agent(parent_with(action))
+                self.assertEqual(a(obs(), config), action)
+        missing = dict(STANDARD)
+        missing.pop("maxMarketOrdersPerTurn")
+        a = make_agent(parent_with(action))
+        self.assertEqual(a(obs(), missing), action)
 
     def test_nonstandard_timing_does_not_leave_collection_provenance(self):
         calls = {
@@ -121,7 +135,7 @@ class T(unittest.TestCase):
             return copy.deepcopy(calls[o["step"]])
 
         a = make_agent(parent)
-        a(obs(step=716), {"episodeSteps": 719, "turnsPerDay": 24})
+        a(obs(step=716), {"episodeSteps": 719, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10})
         self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
 
     def test_invalid_timing_clears_existing_collection_provenance(self):
@@ -139,7 +153,7 @@ class T(unittest.TestCase):
             return copy.deepcopy(calls[o["step"]])
 
         bad_configs = (
-            {"episodeSteps": 719, "turnsPerDay": 24},
+            {"episodeSteps": 719, "turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
             {},
             None,
         )
@@ -148,6 +162,29 @@ class T(unittest.TestCase):
                 a = make_agent(parent)
                 self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
                 a(obs(step=717), config)
+                self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
+
+    def test_invalid_market_cap_clears_existing_collection_provenance(self):
+        calls = {
+            716: {"farmer": ["PASS"], "hands": [], "market": []},
+            717: {"farmer": ["PASS"], "hands": [], "market": []},
+            718: {
+                "farmer": ["PASS"],
+                "hands": [],
+                "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+            },
+        }
+
+        def parent(o, _cfg=None):
+            return copy.deepcopy(calls[o["step"]])
+
+        for cap in (None, True, 10.0, "10"):
+            with self.subTest(cap=cap):
+                poison = dict(STANDARD)
+                poison["maxMarketOrdersPerTurn"] = cap
+                a = make_agent(parent)
+                self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
+                a(obs(step=717), poison)
                 self.assertEqual(a(obs(step=718), STANDARD)["market"], calls[718]["market"])
 
     def test_invalid_observation_identity_clears_existing_collection_provenance(self):
@@ -277,6 +314,57 @@ class T(unittest.TestCase):
                 ["SELL", "FERTILIZER", 2],
             ],
         )
+
+    def test_terminal_reorder_stays_inside_executable_prefix(self):
+        terminal = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [
+                ["SELL", "FERTILIZER", 1],
+                ["SELL", "WOOL", 2],
+                ["SELL", "WHEAT", 3],
+                ["SELL", "FERTILIZER", 99],
+                ["SELL", "MILK", 4],
+            ],
+        }
+        calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: terminal}
+
+        def parent(o, _cfg=None):
+            return copy.deepcopy(calls[o["step"]])
+
+        config = dict(STANDARD)
+        config["maxMarketOrdersPerTurn"] = 3
+        a = make_agent(parent)
+        a(obs(step=716), config)
+        self.assertEqual(
+            a(obs(step=718), config)["market"],
+            [
+                ["SELL", "WOOL", 2],
+                ["SELL", "WHEAT", 3],
+                ["SELL", "FERTILIZER", 1],
+                ["SELL", "FERTILIZER", 99],
+                ["SELL", "MILK", 4],
+            ],
+        )
+
+    def test_cap_one_and_clamped_caps_preserve_executable_row(self):
+        terminal = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+        }
+        calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: terminal}
+
+        def parent(o, _cfg=None):
+            return copy.deepcopy(calls[o["step"]])
+
+        for cap in (1, 0, -3):
+            with self.subTest(cap=cap):
+                config = dict(STANDARD)
+                config["maxMarketOrdersPerTurn"] = cap
+                a = make_agent(parent)
+                a(obs(step=716), config)
+                self.assertEqual(a(obs(step=718), config)["market"], terminal["market"])
 
     def test_rewind_resets_collection_provenance(self):
         calls = {
