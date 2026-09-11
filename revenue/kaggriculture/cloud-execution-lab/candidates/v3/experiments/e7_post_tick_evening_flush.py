@@ -14,9 +14,9 @@ replaces only that outer layer:
   retained units change end-of-day shed-overflow behavior;
 * the withheld quantity is attempted at next-day hour 1, after the hour-0 town-center
   tick, capped by then-current projected stock and the 10-row market limit;
-* existing native/E184 rows are never removed.  If the current action already sells the
-  same item, E7 only tops that row up; otherwise it prepends one row, mirroring the
-  incumbent flush's priority.
+* existing native/E184 rows are never removed, compacted or reindexed.  If the current
+  action already sells the same item, E7 only tops that row up in place; otherwise it
+  appends one row only when a new trailing raw slot is available.
 
 This is deliberately an experiment, not a theorem that post-tick prices always improve:
 a rival can still trade at hour 0.  Telemetry records the observed pre/post quote delta
@@ -44,6 +44,7 @@ WITHHOLD_HOUR = 23
 RELEASE_HOUR = 1
 UNSAFE_WORK = {"HARVEST", "PICKUP", "DROP", "PLACE", "COLLECT_FERTILIZER"}
 SHED_ADDING_MARKET = {"BUY_PRODUCT", "BUY_ANIMAL"}
+_MISSING = object()
 
 
 def _cfg(configuration, name, default):
@@ -69,8 +70,10 @@ def _standard_configuration(configuration):
         return False
     if not _exact_int(configuration, "townCenterSellInterval", TURNS_PER_DAY):
         return False
-    market_params = _cfg(configuration, "marketParams", None)
-    return not market_params
+    market_params = _cfg(configuration, "marketParams", _MISSING)
+    if market_params is _MISSING:
+        return True
+    return isinstance(market_params, dict) and not market_params
 
 
 def _strict_step_player(observation):
@@ -97,6 +100,21 @@ def _normalized_market(action):
             return None
         market.append(list(order))
     return market
+
+
+def _raw_market_slots(action):
+    """Copy market rows without compacting or reindexing empty list placeholders."""
+    if not isinstance(action, dict):
+        return None
+    raw = action.get("market", [])
+    if not isinstance(raw, list):
+        return None
+    slots = []
+    for order in raw:
+        if not isinstance(order, list):
+            return None
+        slots.append(list(order))
+    return slots
 
 
 def _incumbent_flush(observation, action):
@@ -170,11 +188,13 @@ def _worker_actions_safe(action):
 
 
 def _market_does_not_add_shed(action):
-    market = _normalized_market(action)
+    market = _raw_market_slots(action)
     if market is None or len(market) > MAX_ORDERS:
         return False
     for order in market:
-        if not order or not isinstance(order[0], str):
+        if not order:
+            continue
+        if not isinstance(order[0], str):
             return False
         if order[0] in SHED_ADDING_MARKET:
             return False
@@ -247,8 +267,8 @@ class PostTickEveningFlush:
         if not pending or pending["source_step"] + 2 != step:
             return action
         state["pending"] = None
-        market = _normalized_market(action)
-        if market is None:
+        market = _raw_market_slots(action)
+        if market is None or len(market) > MAX_ORDERS:
             self.telemetry["release_malformed_market"] += 1
             return action
         try:
@@ -257,10 +277,11 @@ class PostTickEveningFlush:
         except (KeyError, TypeError, ValueError, IndexError):
             self.telemetry["release_malformed_state"] += 1
             return action
-
         selling = {}
         same_item_row = {}
         for idx, row in enumerate(market):
+            if not row:
+                continue
             if len(row) >= 3 and row[0] == "SELL" and row[1] in r04.FLUSH_ITEMS:
                 if type(row[2]) is not int or row[2] < 0:
                     self.telemetry["release_malformed_sell"] += 1
@@ -274,7 +295,6 @@ class PostTickEveningFlush:
             self.telemetry["release_malformed_price"] += 1
             return action
 
-        prepend = []
         released = {}
         shortfall = {}
         for _, item, wanted in pending["rows"]:
@@ -286,8 +306,9 @@ class PostTickEveningFlush:
             idx = same_item_row.get(item)
             if idx is not None:
                 market[idx][2] += qty
-            elif len(market) + len(prepend) < MAX_ORDERS:
-                prepend.append(["SELL", item, qty])
+            elif len(market) < MAX_ORDERS:
+                market.append(["SELL", item, qty])
+                same_item_row[item] = len(market) - 1
             else:
                 shortfall[item] = wanted
                 continue
@@ -314,7 +335,7 @@ class PostTickEveningFlush:
         if not released:
             return action
         result = dict(action)
-        result["market"] = prepend + market
+        result["market"] = market
         return result
 
     def __call__(self, observation, configuration=None):
