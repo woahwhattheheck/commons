@@ -1695,7 +1695,7 @@ def _b5_fertilize(observation, action):
     return action
 
 
-def v3_agent(observation, configuration=None):
+def _v3_stack(observation, configuration=None):
     action = POLICY_AGENT(observation, configuration)
     if STRAWBERRY_TOPUP:
         action = _strawberry_topup(observation, action)
@@ -1722,11 +1722,34 @@ def v3_agent(observation, configuration=None):
     return action
 
 
+# V3.1 endgame fertilizer hand (r04_fert_hand.py): on days 24-28 one extra hand fertilizes the
+# tape's young CARROTs whenever the carrot price pays for the hire. It wraps the whole stack
+# above and keeps it blind to the extra hand (hand, inventory and command re-indexed around it).
+FERT_HAND = False
+_FERT_HAND_AGENT = None
+
+
+def _policy_tape(observation):
+    state = _POLICY.players.get(int(observation['player']))
+    return _POLICY.tapes[state.plan]
+
+
+def v3_agent(observation, configuration=None):
+    global _FERT_HAND_AGENT
+    if FERT_HAND:
+        if _FERT_HAND_AGENT is None:
+            import r04_fert_hand
+            r04_fert_hand.FERT_HAND = True
+            _FERT_HAND_AGENT = r04_fert_hand.wrap(_v3_stack, _policy_tape)
+        return _FERT_HAND_AGENT(observation, configuration)
+    return _v3_stack(observation, configuration)
+
+
 def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
             sale_fertilizer=None, cattle_early=None, kill_late_water=None,
             strawberry_endgame=None, strawberry_max_plants=None,
             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
-            b5_carrot_fertilizer=None, b5_jit_fertilize=None):
+            b5_carrot_fertilizer=None, b5_jit_fertilize=None, fert_hand=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
@@ -1741,11 +1764,12 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
     else rides the existing machinery. no_late_sale_advance (lane L3, the ASTRA /
     GPT-5.6 SOL B10 port) gates the E184 reservation call site: with it on, no future
     sale is pulled forward at steps >= no_late_sale_advance_step (default 648).
+    fert_hand runs the stack inside r04_fert_hand.wrap() (the endgame fertilizer hand).
     """
     global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     global KILL_LATE_WATER, STRAWBERRY_ENDGAME, STRAWBERRY_MAX_PLANTS
     global NO_LATE_SALE_ADVANCE, NO_LATE_SALE_ADVANCE_STEP, STRAWBERRY_TOPUP
-    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE
+    global B5_CARROT_FERTILIZER, B5_JIT_FERTILIZE, FERT_HAND
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1786,4 +1810,6 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         B5_CARROT_FERTILIZER = bool(b5_carrot_fertilizer)
     if b5_jit_fertilize is not None:
         B5_JIT_FERTILIZE = bool(b5_jit_fertilize)
+    if fert_hand is not None:
+        FERT_HAND = bool(fert_hand)
     return v3_agent
