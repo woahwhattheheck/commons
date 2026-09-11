@@ -193,12 +193,24 @@ def _purchase_quantity(observation, action, configuration, r04):
     if type(wheat_price) is not int or wheat_price <= 0:
         return None
 
-    target = task.get("target")
-    try:
-        x, y = target
-        tile = farms[player]["tiles"][y][x]
-    except (TypeError, ValueError, KeyError, IndexError):
+    # The V217 planner normally returns an in-bounds board coordinate, but F2's
+    # fail-closed contract must not let malformed planner/state data exploit
+    # Python negative indexing or non-integer coordinates when valuing a buy.
+    if not isinstance(task, dict):
         return None
+    target = task.get("target")
+    if (not isinstance(target, (list, tuple)) or len(target) != 2
+            or type(target[0]) is not int or type(target[1]) is not int):
+        return None
+    x, y = target
+    farm = farms[player]
+    tiles = farm.get("tiles") if isinstance(farm, dict) else None
+    if not isinstance(tiles, list) or not 0 <= y < len(tiles):
+        return None
+    row = tiles[y]
+    if not isinstance(row, list) or not 0 <= x < len(row):
+        return None
+    tile = row[x]
     if not isinstance(tile, dict):
         return None
     product = _PRODUCT_BY_ANIMAL.get(tile.get("animal"))
@@ -208,7 +220,6 @@ def _purchase_quantity(observation, action, configuration, r04):
     if output_price < wheat_price + 20 or output_price * 2 < wheat_price * 3:
         return None
 
-    farm = farms[player]
     money = farm.get("money") if isinstance(farm, dict) else None
     if type(money) is not int or money < 0:
         return None
