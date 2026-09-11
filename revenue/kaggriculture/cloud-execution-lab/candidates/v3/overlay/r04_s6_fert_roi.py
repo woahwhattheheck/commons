@@ -21,6 +21,9 @@ from typing import Any
 TURNS_PER_DAY = 24
 EPISODE_STEPS = 720
 BOARD_SIZE = 10
+SHED_CAPACITY = 100
+MAX_MARKET_ORDERS_PER_TURN = 10
+FARM_HAND_COST_MULT = 1
 FINAL_ACTION_DAY = (EPISODE_STEPS - 2) // TURNS_PER_DAY
 FERT_HAND_DAYS = (24, 25, 26, 27, 28)
 S6_EXTRA_FERT_CAP = 1
@@ -46,22 +49,36 @@ def _plain_int(value: Any, *, minimum: int | None = None) -> bool:
     return type(value) is int and (minimum is None or value >= minimum)
 
 
+def _config_value(configuration: Any, name: str, missing: Any):
+    if isinstance(configuration, dict):
+        return configuration.get(name, missing)
+    return getattr(configuration, name, missing)
+
+
 def standard_configuration(configuration: Any) -> bool:
+    """Accept only the semantic engine configuration S6's proof models."""
     if configuration is None:
         return False
-    expected = {
+    missing = object()
+    expected_ints = {
         "episodeSteps": EPISODE_STEPS,
         "turnsPerDay": TURNS_PER_DAY,
         "boardSize": BOARD_SIZE,
+        "shedCapacity": SHED_CAPACITY,
+        "maxMarketOrdersPerTurn": MAX_MARKET_ORDERS_PER_TURN,
+        "farmHandCostMult": FARM_HAND_COST_MULT,
     }
     try:
-        for name, value in expected.items():
-            actual = configuration.get(name) if isinstance(configuration, dict) else getattr(configuration, name)
+        for name, value in expected_ints.items():
+            actual = _config_value(configuration, name, missing)
             if type(actual) is not int or actual != value:
                 return False
+        market_params = _config_value(configuration, "marketParams", None)
     except (KeyError, TypeError, AttributeError):
         return False
-    return True
+    if market_params is None:
+        return True
+    return type(market_params) is dict and not market_params
 
 
 def _annual_gain(
@@ -229,7 +246,7 @@ def _route_callbacks(start, baseline_targets, extension):
     sheds = _shed_tiles()
     pos = start
     remaining = [tuple(target) for target in baseline_targets]
-    callbacks = 1  # initial PICKUP callback
+    callbacks = 1
     for _ in range(128):
         if remaining:
             if pos in sheds:
@@ -241,7 +258,7 @@ def _route_callbacks(start, baseline_targets, extension):
             at_pos = next((i for i, t in enumerate(remaining) if (t[0], t[1]) == pos), None)
             if at_pos is not None:
                 remaining.pop(at_pos)
-                callbacks += 1  # incumbent FERTILIZE
+                callbacks += 1
                 continue
             goal = min(
                 remaining,
@@ -265,7 +282,7 @@ def _route_callbacks(start, baseline_targets, extension):
             callbacks += 1
             continue
         if pos == target_pos:
-            return callbacks + 1  # S6 FERTILIZE
+            return callbacks + 1
         nxt = _step_position(pos, target_pos, sheds)
         if nxt == pos:
             return None
