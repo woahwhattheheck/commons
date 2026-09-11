@@ -89,15 +89,37 @@ class PackageTreeCustodyTests(unittest.TestCase):
                 with self.assertRaisesRegex(SystemExit, "hash mismatch: TITAN-CONFIG.json"):
                     baseline._verify_package_tree(package)
 
-    def test_integrity_failure_happens_before_copy(self):
-        package = Path("not-used")
+    def test_run_verifies_temp_copy_before_source_mode_or_suites(self):
+        package = Path("not-used").resolve()
         with (
-            mock.patch.object(baseline, "_verify_package_tree", side_effect=SystemExit("bad package")),
             mock.patch.object(baseline, "_copy_tree") as copy_tree,
+            mock.patch.object(baseline, "_verify_package_tree", side_effect=SystemExit("bad package")) as verify,
+            mock.patch.object(baseline, "_force_source_mode") as source_mode,
+            mock.patch.object(baseline.subprocess, "run") as run,
         ):
             with self.assertRaisesRegex(SystemExit, "bad package"):
                 baseline.run(package)
-        copy_tree.assert_not_called()
+
+        copy_tree.assert_called_once()
+        self.assertEqual(copy_tree.call_args.args[0], package)
+        verified_target = verify.call_args.args[0]
+        self.assertNotEqual(verified_target, package)
+        self.assertEqual(verified_target, copy_tree.call_args.args[1])
+        source_mode.assert_not_called()
+        run.assert_not_called()
+
+    def test_copy_preserves_symlinks_for_verifier_rejection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = root / "source"
+            target = root / "target"
+            source.mkdir()
+            (source / "real.txt").write_text("ok\n", encoding="utf-8")
+            (source / "alias.txt").symlink_to("real.txt")
+            baseline._copy_tree(source, target)
+            self.assertTrue((target / "alias.txt").is_symlink())
+            with self.assertRaisesRegex(SystemExit, "symbolic links"):
+                baseline._verify_package_tree(target)
 
 
 if __name__ == "__main__":
