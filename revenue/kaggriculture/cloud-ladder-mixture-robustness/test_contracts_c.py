@@ -15,6 +15,7 @@ from test_support import (
     build_document, quantity_fraction,
 )
 
+
 class MixtureGateContractsC(unittest.TestCase):
     def test_cli_returns_zero_for_economic_hold(self):
         doc = build_document(
@@ -34,6 +35,72 @@ class MixtureGateContractsC(unittest.TestCase):
                 code = gate.main(["--input", str(source), "--output", str(output)])
             self.assertEqual(code, 0)
             self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["verdict"], "ROBUST_HOLD")
+
+    def test_cli_gate_mode_returns_zero_only_for_robust_advance(self):
+        advance = build_document({"a": [(10, 0)] * 5})
+
+        hold = build_document(
+            {"a": [(20, 0)] * 5, "b": [(-30, 0)] * 5},
+            counts={"a": 4, "b": 1},
+            bounds={"a": ("1/2", "4/5"), "b": ("1/5", "1/2")},
+            radius="3/10",
+            own_floor=-100,
+            margin_floor=-100,
+        )
+
+        uncalibrated = build_document({"a": [(10, 0)] * 5})
+        uncalibrated["calibration"]["families"][0]["status"] = "INVERTED"
+
+        insufficient = build_document({"a": [(10, 0)] * 5}, minimum_seed_clusters=6)
+
+        blocked_evidence = build_document({"a": [(10, 0)] * 5})
+        blocked_evidence["panel"]["causality_status"] = "CAUSAL_FAIL"
+
+        inactive = build_document({"a": [(0, 0)] * 5}, strict=False)
+
+        cases = (
+            ("ROBUST_ADVANCE", advance, 0),
+            ("ROBUST_HOLD", hold, 3),
+            ("BLOCK_UNCALIBRATED", uncalibrated, 3),
+            ("MORE_EVIDENCE_REQUIRED", insufficient, 3),
+            ("BLOCK_EVIDENCE", blocked_evidence, 3),
+            ("INACTIVE", inactive, 3),
+        )
+        for expected_verdict, doc, expected_code in cases:
+            with self.subTest(verdict=expected_verdict):
+                with tempfile.TemporaryDirectory() as temporary:
+                    root = Path(temporary)
+                    source = root / "input.json"
+                    output = root / "output.json"
+                    source.write_text(json.dumps(doc), encoding="utf-8")
+                    with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                        code = gate.main([
+                            "--input", str(source),
+                            "--output", str(output),
+                            "--require-verdict", "ROBUST_ADVANCE",
+                        ])
+                    self.assertEqual(code, expected_code)
+                    self.assertEqual(
+                        json.loads(output.read_text(encoding="utf-8"))["verdict"],
+                        expected_verdict,
+                    )
+
+    def test_cli_gate_mode_keeps_malformed_evidence_distinct(self):
+        doc = build_document({"a": [(10, 0)] * 5})
+        doc["schema"] = "wrong"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "input.json"
+            output = root / "output.json"
+            source.write_text(json.dumps(doc), encoding="utf-8")
+            with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                code = gate.main([
+                    "--input", str(source),
+                    "--output", str(output),
+                    "--require-verdict", "ROBUST_ADVANCE",
+                ])
+            self.assertEqual(code, 2)
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["verdict"], "MALFORMED_EVIDENCE")
 
     def test_cli_returns_two_and_receipt_for_malformed_input(self):
         doc = build_document({"a": [(10, 0)] * 5})
