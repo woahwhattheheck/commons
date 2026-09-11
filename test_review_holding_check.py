@@ -96,13 +96,13 @@ class CheckApiTests(unittest.TestCase):
 
     def test_success_updates_matching_check(self):
         result = r.evaluate(None, HEAD, now=NOW)
-        ext = f"review-holding:none:{HEAD}"
+        ext = f"review-holding:{HEAD}"
         calls = []
 
         def fake(method, url, token, body=None):
             calls.append((method, url, body))
             if method == "GET":
-                return {"check_runs": [{"id": 88, "external_id": ext}]}
+                return {"check_runs": [{"id": 88, "external_id": ext, "status": "in_progress"}]}
             return {"id": 88}
 
         with mock.patch.object(r, "_request", side_effect=fake):
@@ -112,6 +112,23 @@ class CheckApiTests(unittest.TestCase):
         self.assertEqual(calls[-1][2]["status"], "completed")
         self.assertEqual(calls[-1][2]["conclusion"], "success")
         self.assertNotIn("head_sha", calls[-1][2])
+
+    def test_new_live_holding_after_completed_check_creates_fresh_run(self):
+        result = r.evaluate(holding(), HEAD, now=NOW)
+        ext = f"review-holding:{HEAD}"
+        calls = []
+
+        def fake(method, url, token, body=None):
+            calls.append((method, url, body))
+            if method == "GET":
+                return {"check_runs": [{"id": 99, "external_id": ext, "status": "completed", "conclusion": "success"}]}
+            return {"id": 100}
+
+        with mock.patch.object(r, "_request", side_effect=fake):
+            receipt = r.publish_check(result, repo="o/r", token="t")
+        self.assertEqual(receipt["action"], "created")
+        self.assertEqual(calls[-1][0], "POST")
+        self.assertEqual(calls[-1][2]["status"], "in_progress")
 
 
 if __name__ == "__main__":
