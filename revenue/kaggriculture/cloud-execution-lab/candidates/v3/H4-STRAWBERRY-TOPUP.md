@@ -21,7 +21,17 @@ market already contains a SELL for that item.  Therefore an undersized current S
 prevents the sale window from reserving additional already-planned strawberry units even when
 current projected shed stock can fill them.
 
-`overlay/r04_h4_strawberry.py` closes only that live seam.
+`experiments/h4_strawberry/r04_h4_strawberry.py` closes only that live seam.
+
+## Packaging boundary
+
+H4 is intentionally kept under `experiments/` while it is standalone/default-off.  V3's
+`build_v3.py` packages and hashes every file under `overlay/`; placing experimental code or
+checks there would change package inputs and require regenerated `FILES.json` and
+`V3-MANIFEST.json` even though H4 is not wired into the shipped policy.  The H4 CI therefore
+runs the exact source baseline, the focused experiment checks, and `build_v3.py --check`.
+Promotion into the live route must be an explicit integration step that wires the feature and
+regenerates deterministic package manifests together.
 
 ## Contract
 
