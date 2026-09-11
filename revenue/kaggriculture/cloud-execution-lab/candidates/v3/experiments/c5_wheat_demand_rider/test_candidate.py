@@ -23,18 +23,24 @@ def action(*rows):
 
 
 class WheatDemandRiderTests(unittest.TestCase):
-    def test_rival_demand_lower_bound_exact_without_own_buy_or_town(self):
-        self.assertEqual(c5._rival_wheat_demand_lower_bound(100, 97, 0, 0), 3)
+    def test_rival_gross_buy_lower_bound_exact_without_own_buy_or_town(self):
+        self.assertEqual(c5._rival_wheat_buy_lower_bound(100, 97, 0, 0), 3)
 
-    def test_town_and_own_buy_cannot_fabricate_rival_demand(self):
+    def test_town_and_own_buy_cannot_fabricate_rival_gross_buy(self):
         # Three units disappeared: one deterministic town unit + two units we
-        # ourselves could have bought.  Rival lower bound is therefore zero.
-        self.assertEqual(c5._rival_wheat_demand_lower_bound(100, 97, 1, 2), 0)
+        # ourselves could have bought. Rival gross-buy lower bound is zero.
+        self.assertEqual(c5._rival_wheat_buy_lower_bound(100, 97, 1, 2), 0)
 
-    def test_own_sell_only_makes_lower_bound_more_conservative(self):
-        # Example realization: our SELL +3 and rival BUY -5 produce net -2.
-        # The bound sees only -2 and proves at least two rival net-buy units.
-        self.assertEqual(c5._rival_wheat_demand_lower_bound(100, 98, 0, 0), 2)
+    def test_own_visible_sell_only_makes_gross_buy_bound_more_conservative(self):
+        # Example realization: our visible SELL +3 and rival BUY -5 produce net -2.
+        # The bound sees only -2 and proves at least two rival BUY units.
+        self.assertEqual(c5._rival_wheat_buy_lower_bound(100, 98, 0, 0), 2)
+
+    def test_floor_sell_invisibility_does_not_turn_the_bound_into_net_demand(self):
+        # A rival may BUY 5 and separately SELL 4 at the $1 hard floor. Those
+        # floor SELLs do not increase market inventory, so the public bound is 5
+        # even though hidden buy-minus-sell net demand is only 1.
+        self.assertEqual(c5._rival_wheat_buy_lower_bound(100, 95, 0, 0), 5)
 
     def test_town_consumption_matches_official_intervals(self):
         self.assertEqual(c5._town_wheat_consumption(obs(1, 100, shops=["BAKERY"])), 0)
@@ -50,7 +56,7 @@ class WheatDemandRiderTests(unittest.TestCase):
         self.assertIs(rider.apply(obs(4, 100, shops=["UNKNOWN"]), parent), parent)
         self.assertEqual(rider.players, {})
 
-    def test_confirmed_demand_moves_only_wheat_row_to_new_trailing_slot(self):
+    def test_confirmed_rival_buy_moves_only_wheat_row_to_new_trailing_slot(self):
         rider = c5.WheatDemandRider(enabled=True)
         first = action(("SELL", "MILK", 1))
         self.assertIs(rider.apply(obs(1, 100), first), first)
@@ -60,11 +66,12 @@ class WheatDemandRiderTests(unittest.TestCase):
         result = rider.apply(obs(2, 99, price=30), parent)
 
         self.assertIsNot(result, parent)
-        self.assertEqual(parent, original)  # parent object is never mutated
+        self.assertEqual(parent, original)
         self.assertEqual(result["market"][0], [])
         self.assertEqual(result["market"][1], ["SELL", "MILK", 2])
         self.assertEqual(result["market"][2], ["SELL", "WOOL", 1])
         self.assertEqual(result["market"][3], ["SELL", "WHEAT", 3])
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 1)
         self.assertEqual(rider.telemetry["relocations"], 1)
         self.assertEqual(rider.telemetry["moved_units"], 3)
 
@@ -74,17 +81,16 @@ class WheatDemandRiderTests(unittest.TestCase):
         parent = action(("SELL", "WHEAT", 3), ("SELL", "MILK", 2))
         result = rider.apply(obs(2, 99, price=30), parent)
         self.assertIs(result, parent)
-        self.assertEqual(rider.telemetry["confirmed_demand_transitions"], 1)
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 1)
         self.assertEqual(rider.telemetry["relocations"], 0)
 
     def test_deterministic_town_tick_is_subtracted_before_authorization(self):
         rider = c5.WheatDemandRider(enabled=True)
-        # Step 4 will consume one WHEAT at BAKERY after its market phase.
         rider.apply(obs(4, 100, shops=["BAKERY"]), action())
         parent = action(("SELL", "WHEAT", 3))
         result = rider.apply(obs(5, 99, price=30, shops=["BAKERY"]), parent)
         self.assertIs(result, parent)
-        self.assertEqual(rider.telemetry["confirmed_demand_transitions"], 0)
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
 
     def test_own_buy_request_upper_bound_masks_possible_self_caused_drop(self):
         rider = c5.WheatDemandRider(enabled=True)
@@ -92,7 +98,7 @@ class WheatDemandRiderTests(unittest.TestCase):
         parent = action(("SELL", "WHEAT", 3))
         result = rider.apply(obs(2, 98, price=30), parent)
         self.assertIs(result, parent)
-        self.assertEqual(rider.telemetry["confirmed_demand_transitions"], 0)
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
 
     def test_gap_or_rewind_does_not_authorize_on_stale_transition(self):
         rider = c5.WheatDemandRider(enabled=True)
@@ -101,7 +107,7 @@ class WheatDemandRiderTests(unittest.TestCase):
         self.assertIs(rider.apply(obs(3, 90, price=30), parent), parent)
         self.assertEqual(rider.telemetry["relocations"], 0)
 
-    def test_full_market_prefix_preserves_parent(self):
+    def test_full_standard_market_prefix_preserves_parent(self):
         rider = c5.WheatDemandRider(enabled=True)
         rider.apply(obs(1, 100), action())
         rows = [["SELL", "WHEAT", 1]] + [["SELL", "MILK", 1] for _ in range(9)]
@@ -131,6 +137,84 @@ class WheatDemandRiderTests(unittest.TestCase):
         parent = action(("BUY_PRODUCT", "WHEAT", True))
         self.assertIs(rider.apply(obs(1, 100), parent), parent)
         self.assertEqual(rider.players, {})
+
+    def test_unknown_current_shop_after_valid_signal_fails_before_relocation_and_resets(self):
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action())
+        parent = action(("SELL", "WHEAT", 3))
+        result = rider.apply(obs(2, 99, price=30, shops=["UNKNOWN"]), parent)
+        self.assertIs(result, parent)
+        self.assertEqual(rider.players, {})
+        self.assertEqual(rider.telemetry["confirmed_rival_buy_transitions"], 0)
+        self.assertEqual(rider.telemetry["relocations"], 0)
+
+    def test_malformed_current_cadence_after_valid_signal_fails_before_relocation(self):
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action())
+        parent = action(("SELL", "WHEAT", 3))
+        bad = {"townShopSellInterval": "4"}
+        result = rider.apply(obs(2, 99, price=30), parent, bad)
+        self.assertIs(result, parent)
+        self.assertEqual(rider.players, {})
+        self.assertEqual(rider.telemetry["relocations"], 0)
+
+    def test_runtime_cap_one_cannot_move_sale_out_of_executable_prefix(self):
+        cfg = {"maxMarketOrdersPerTurn": 1}
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action(), cfg)
+        parent = action(("SELL", "WHEAT", 3))
+        self.assertIs(rider.apply(obs(2, 99, price=30), parent, cfg), parent)
+
+    def test_runtime_cap_three_appends_into_exact_last_executable_slot(self):
+        cfg = {"maxMarketOrdersPerTurn": 3}
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action(), cfg)
+        parent = action(("SELL", "WHEAT", 3), ("SELL", "MILK", 1))
+        result = rider.apply(obs(2, 99, price=30), parent, cfg)
+        self.assertEqual(result["market"], [[], ["SELL", "MILK", 1], ["SELL", "WHEAT", 3]])
+        self.assertEqual(rider.telemetry["last_to_index"], 2)
+
+    def test_runtime_cap_three_full_prefix_preserves_final_executable_sale(self):
+        cfg = {"maxMarketOrdersPerTurn": 3}
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action(), cfg)
+        parent = action(("SELL", "MILK", 1), ("SELL", "WOOL", 1), ("SELL", "WHEAT", 3))
+        self.assertIs(rider.apply(obs(2, 99, price=30), parent, cfg), parent)
+
+    def test_zero_and_negative_runtime_caps_match_engine_clamp_to_one(self):
+        for cap in (0, -3):
+            with self.subTest(cap=cap):
+                cfg = {"maxMarketOrdersPerTurn": cap}
+                rider = c5.WheatDemandRider(enabled=True)
+                rider.apply(obs(1, 100), action(), cfg)
+                parent = action(("SELL", "WHEAT", 3))
+                self.assertIs(rider.apply(obs(2, 99, price=30), parent, cfg), parent)
+
+    def test_non_integer_runtime_cap_poison_fails_closed_and_resets(self):
+        for cap in (True, 3.0, "3", None):
+            with self.subTest(cap=cap):
+                rider = c5.WheatDemandRider(enabled=True)
+                rider.apply(obs(1, 100), action())
+                parent = action(("SELL", "WHEAT", 3))
+                cfg = {"maxMarketOrdersPerTurn": cap}
+                self.assertIs(rider.apply(obs(2, 99, price=30), parent, cfg), parent)
+                self.assertEqual(rider.players, {})
+                self.assertEqual(rider.telemetry["relocations"], 0)
+
+    def test_raw_tail_beyond_runtime_cap_is_preserved_exactly(self):
+        cfg = {"maxMarketOrdersPerTurn": 3}
+        rider = c5.WheatDemandRider(enabled=True)
+        rider.apply(obs(1, 100), action(), cfg)
+        parent = action(
+            ("SELL", "WHEAT", 3),
+            ("SELL", "MILK", 1),
+            ("SELL", "WOOL", 1),
+            ("SELL", "EGG", 9),
+        )
+        original = copy.deepcopy(parent)
+        result = rider.apply(obs(2, 99, price=30), parent, cfg)
+        self.assertIs(result, parent)
+        self.assertEqual(parent, original)
 
 
 if __name__ == "__main__":
