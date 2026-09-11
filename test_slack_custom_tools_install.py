@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install Slack custom tools that drive @facebook. Queue sign-in to #needs-bryce."""
+"""Install Slack custom tools; provider sessions use #provider-sign-in."""
 from __future__ import annotations
 
 import json
@@ -113,12 +113,14 @@ class SlackCliInstallTest(unittest.TestCase):
 
 
 class DriveCustomToolTest(unittest.TestCase):
-    def test_facebook_without_session_queues_needs_bryce(self) -> None:
+    def test_facebook_without_session_queues_provider_signin(self) -> None:
         out = app.drive("facebook", "post the drop tonight", sessions={})
         self.assertEqual(out["state"], "NEEDS_OWNER_SIGNIN")
-        self.assertEqual(out["channel_id"], "C0BRX6EV739")
-        self.assertIn("https://developers.facebook.com/apps/", out["needs_bryce_text"])
-        self.assertIn("post the drop tonight", out["needs_bryce_text"])
+        self.assertEqual(out["channel_id"], "C0BUFA9G23E")
+        self.assertEqual(out["channel_name"], "#provider-sign-in")
+        self.assertIn("NEED:", out["owner_signin_text"])
+        self.assertEqual(out["owner_signin_text"], out["needs_bryce_text"])
+        self.assertIn("#provider-sign-in", out["result"])
         self.assertFalse(out["copy_secrets"])
         self.assertNotIn("Bearer", json.dumps(out))
         self.assertEqual(out["intent"]["url"], "https://graph.facebook.com/v21.0/me/feed")
@@ -184,6 +186,9 @@ class DriveCustomToolTest(unittest.TestCase):
         states = {row["state"] for row in payload["outcomes"]}
         self.assertIn("NEEDS_OWNER_SIGNIN", states)
         self.assertNotIn("IN_HARNESS", states)
+        owner = next(row for row in payload["outcomes"] if row["state"] == "NEEDS_OWNER_SIGNIN")
+        self.assertEqual(owner["channel_id"], "C0BUFA9G23E")
+        self.assertEqual(owner["channel_name"], "#provider-sign-in")
         self.assertIs(payload["commons_admission"], False)
 
     def test_connected_gmail_stays_in_harness(self) -> None:
@@ -214,6 +219,7 @@ class DriveCustomToolTest(unittest.TestCase):
         self.assertTrue((ROOT / "host" / "slack_custom_tools_app.py").is_file())
         self.assertTrue((ROOT / "ground" / "NEEDS_BRYCE_QUEUE.json").is_file())
         card = (ROOT / "ground" / "SLACK_CUSTOM_TOOLS_INSTALL.md").read_text(encoding="utf-8")
+        self.assertIn("#provider-sign-in", card)
         self.assertIn("#needs-bryce", card)
         self.assertIn("drive_tagged_service", card)
         self.assertNotIn("PLACEHOLDER_WILL", card)

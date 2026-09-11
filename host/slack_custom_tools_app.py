@@ -3,7 +3,7 @@
 
 Does not replace host/slack_service_tag.py. That module routes @tags.
 This module executes SLACK_CUSTOM_TOOL jobs: official Graph/API intents
-when a session exists, otherwise a #needs-bryce exact-action item.
+when a session exists, otherwise the installed provider-sign-in exact-action queue.
 
 Live HTTP is opt-in (http_request callback). Default is dry-run READY.
 Secrets never appear in returned dicts or Slack text.
@@ -128,6 +128,31 @@ def _redact_result(state: str, tag: str, detail: str) -> str:
     return f"{state} @{tag} {detail}".strip()
 
 
+def _provider_signin_surface(tag: str, body: str) -> tuple[str, str, str]:
+    """Return the current provider-session queue and secret-free blocker text."""
+    try:
+        import slack_service_tag as sst
+
+        cat = sst.load_catalog()
+        signin = sst._signin_channel(cat)
+        channel_id = str(signin.get("id") or "C0BUFA9G23E")
+        channel_name = str(signin.get("name") or "#provider-sign-in")
+        text = sst.format_owner_blocker({"tag": tag, "body": body})
+        return channel_id, channel_name, text
+    except Exception:
+        url = signin_url(tag) or "official provider console"
+        text = (
+            f"NEED: complete the official {tag} provider session in that provider's UI\n"
+            f"WHY ONLY BRYCE: this harness has Slack, not an in-harness {tag} tool\n"
+            f"SMALLEST ACTION: sign in at {url}, then reply in thread\n"
+            f"EVIDENCE: Slack custom-tool job @{tag}\n"
+            f"AFTER: peer resumes the tagged body through @{tag}\n"
+            f"BODY: {str(body or '').strip()}\n"
+            "Do not paste a password, API key, session token, or other secret into Slack."
+        )
+        return "C0BUFA9G23E", "#provider-sign-in", text
+
+
 def drive(
     tag: str,
     body: str,
@@ -146,6 +171,7 @@ def drive(
         "commons_admission": False,
         "intent": intent,
         "needs_bryce_text": None,
+        "owner_signin_text": None,
         "http_called": False,
     }
     if not name:
@@ -162,18 +188,18 @@ def drive(
             )
             return out
         if needs_owner:
-            item = provider_signin_item(
-                name,
-                body,
-                resume_worker_url=resume_worker_url,
-            )
+            channel_id, channel_name, signin_text = _provider_signin_surface(name, body)
             out["state"] = "NEEDS_OWNER_SIGNIN"
-            out["needs_bryce_text"] = format_item(item)
-            out["channel_id"] = "C0BRX6EV739"
+            # Preserve the legacy key for existing callers while routing to the
+            # current provider-session queue rather than the owner-exclusive queue.
+            out["needs_bryce_text"] = signin_text
+            out["owner_signin_text"] = signin_text
+            out["channel_id"] = channel_id
+            out["channel_name"] = channel_name
             out["result"] = _redact_result(
                 "NEEDS_OWNER_SIGNIN",
                 name,
-                "queue #needs-bryce " + (signin_url(name) or ""),
+                f"queue {channel_name} " + (signin_url(name) or ""),
             )
             return out
         out["state"] = "READY"
@@ -216,8 +242,8 @@ def drive_tagged_jobs(
         tag = str(job.get("tag") or "")
         body = str(job.get("body") or "")
         if road == "OWNER_SIGNIN" and tag in custom_tags:
-            # drive() on the custom-tool job already queues #needs-bryce
-            # when the session is missing.
+            # drive() on the custom-tool job emits the same provider-session
+            # blocker on the installed provider-sign-in queue when needed.
             continue
         if road == "IN_HARNESS":
             outcomes.append(
