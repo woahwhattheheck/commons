@@ -1,0 +1,70 @@
+name: titan-v31-h4-horizon10
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/**'
+      - '.github/workflows/titan-v31-h4-horizon10.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h4-horizon10-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact H4 parent and additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=70b04f34731fb0f3e1bf7640b500ad6228ca4dd2
+          git merge-base --is-ancestor "$BASE" HEAD
+          python - <<'PY'
+          import subprocess
+          base = '70b04f34731fb0f3e1bf7640b500ad6228ca4dd2'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', base, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-h4-horizon10.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_horizon10/test_h4_horizon10.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected H4+h10 scope: {sorted(actual)}')
+          print('H4_H10_SCOPE_OK', len(actual))
+          PY
+
+      - name: Run inherited H4 predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -v -s experiments/h4_strawberry -p 'test_v31_h4_strawberry.py' |& tee /tmp/h4-parent.log
+          grep -F 'Ran 13 tests' /tmp/h4-parent.log
+          grep -F 'OK' /tmp/h4-parent.log
+
+      - name: Run H4 horizon10 custody tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B experiments/h4_horizon10/test_h4_horizon10.py |& tee /tmp/h4-h10.log
+          grep -F 'Ran 2 tests' /tmp/h4-h10.log
+          grep -F 'OK' /tmp/h4-h10.log
+          python -B -m py_compile experiments/h4_horizon10/candidate.py experiments/h4_horizon10/test_h4_horizon10.py
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
