@@ -131,9 +131,19 @@ jobs:
           # API hiccup must never take the owner-pin push with it, and the
           # module reads an absent count as UNKNOWN rather than as zero.
           REPO="${{ github.repository }}"
-          gh api "repos/$REPO/pulls?state=open&per_page=100&sort=created&direction=desc" \
-            --jq '[.[]|{number,title,draft,created_at,user:{login:.user.login},head:{ref:.head.ref}}]' \
-            > /tmp/open_pulls.json 2>/dev/null || rm -f /tmp/open_pulls.json
+          # Every page, not the newest hundred: "longest open" read from the
+          # oldest row of one newest-first page is wrong once more than a page
+          # is open. JSON Lines, one pull per line; --pulls-complete is passed
+          # only when the paginated read finished, otherwise the module
+          # compares the listing with the open count and says PARTIAL.
+          PULLS_COMPLETE=""
+          if gh api --paginate "repos/$REPO/pulls?state=open&per_page=100&sort=created&direction=desc" \
+              --jq '.[]|{number,title,draft,created_at,user:{login:.user.login},head:{ref:.head.ref}}' \
+              > /tmp/open_pulls.jsonl 2>/dev/null; then
+            PULLS_COMPLETE="--pulls-complete"
+          else
+            rm -f /tmp/open_pulls.jsonl
+          fi
           OPEN_PRS=$(gh api "search/issues?q=repo:$REPO+is:pr+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
           OPEN_ISSUES=$(gh api "search/issues?q=repo:$REPO+is:issue+is:open&per_page=1" --jq .total_count 2>/dev/null || true)
           RUNS_QUEUED=$(gh api "repos/$REPO/actions/runs?per_page=1&status=queued" --jq .total_count 2>/dev/null || true)
@@ -143,7 +153,12 @@ jobs:
             ${OPEN_ISSUES:+--open-issues "$OPEN_ISSUES"} \
             ${RUNS_QUEUED:+--runs-queued "$RUNS_QUEUED"} \
             ${RUNS_RUNNING:+--runs-in-progress "$RUNS_RUNNING"} \
-            $([ -f /tmp/open_pulls.json ] && echo --pulls /tmp/open_pulls.json) || true
+            $([ -f /tmp/open_pulls.jsonl ] && echo --pulls /tmp/open_pulls.jsonl $PULLS_COMPLETE) || true
+          # The module replaces feed/github.json atomically, so a failure above
+          # leaves the previous bytes. Still, never stage a bake that does not
+          # parse: put back the committed copy rather than publish it.
+          python3 -c "import json,sys; json.load(open('feed/github.json', encoding='utf-8'))" \
+            2>/dev/null || git checkout -- feed/github.json 2>/dev/null || true
           git add recent.json ground/MANUAL.md projection_state.json projection/converged
           git add feed seats.json seats || true
           if git diff --cached --quiet; then

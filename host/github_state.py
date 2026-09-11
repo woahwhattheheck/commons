@@ -21,9 +21,17 @@ Honesty rules, the same ones the delta shards keep:
   "no open pull requests" and "nobody asked" are different facts.
 * If the pull request listing cannot be read, the listing sections are absent
   and named in `degraded` rather than rendered as an empty queue.
+* The listing says whether it is every open pull request (`pulls_listing`
+  COMPLETE) or a subset (PARTIAL). "Longest open" is only published from a
+  complete listing: the oldest row of a newest-first page is not the oldest
+  open pull request, so a partial listing names itself in `degraded` and leaves
+  that section out instead of mislabelling it.
 * `unchanged_since` is the moment the content last actually moved. A rebuild
   that observed the same state leaves the file completely alone, so a quiet
   cycle produces no diff and the timestamp keeps meaning something.
+* The file is replaced atomically. An interrupted or failed write leaves the
+  previous bytes exactly as they were, so a masked producer failure in the
+  workflow can never stage half a file.
 """
 
 from __future__ import annotations
@@ -90,7 +98,22 @@ def _pull(row):
     }
 
 
-def build(pulls, counts, now=None, degraded=None):
+def _listing_state(rows, open_prs, complete):
+    """COMPLETE, PARTIAL or UNKNOWN for a listing of `rows` open pull requests.
+
+    `complete` is the caller's own knowledge: True when every page was fetched
+    (the workflow passes --pulls-complete only after a paginated read
+    succeeded). Without it the listing is compared with the separately counted
+    total; a listing shorter than the total is PARTIAL.
+    """
+    if complete is True:
+        return "COMPLETE"
+    if isinstance(open_prs, int):
+        return "COMPLETE" if len(rows) >= open_prs else "PARTIAL"
+    return UNKNOWN
+
+
+def build(pulls, counts, now=None, degraded=None, complete=None):
     """Normalise a pulls listing plus supplied counts into the payload.
 
     `now` is accepted and deliberately unused. Nothing observation-relative is
@@ -107,7 +130,7 @@ def build(pulls, counts, now=None, degraded=None):
             "runs_queued": _count(counts.get("runs_queued")),
             "runs_in_progress": _count(counts.get("runs_in_progress")),
         },
-        "degraded": sorted(degraded or []),
+        "degraded": list(degraded or []),
     }
 
     queued = payload["counts"]["runs_queued"]
@@ -121,20 +144,43 @@ def build(pulls, counts, now=None, degraded=None):
 
     if pulls is None:
         payload["pulls_listed"] = UNKNOWN
+        payload["pulls_listing"] = UNKNOWN
+        payload["degraded"] = sorted(set(payload["degraded"]))
         return payload
 
-    rows = [_pull(row) for row in pulls if isinstance(row, dict)]
+    rows, seen = [], set()
+    for row in pulls:
+        if not isinstance(row, dict):
+            continue
+        pull = _pull(row)
+        # A pull that opens or closes between page reads shifts every later
+        # page by one, so the same row can arrive twice. Count it once.
+        key = pull["number"]
+        if key is not None:
+            if key in seen:
+                continue
+            seen.add(key)
+        rows.append(pull)
     # Order only on a timestamp that actually parses. A non-empty but malformed
     # value sorts as a plain string, and most malformed values sort above every
     # real ISO date, which would put the one broken row at the top of the page.
     dated = [r for r in rows if _parse_ts(r["created_at"])]
     dated.sort(key=lambda r: r["created_at"], reverse=True)
+    listing = _listing_state(rows, payload["counts"]["open_pull_requests"],
+                             complete)
     payload["pulls_listed"] = len(rows)
+    payload["pulls_listing"] = listing
     payload["undatable_pulls"] = sorted(
         r["number"] for r in rows if r not in dated and r["number"] is not None)
     payload["newest_pulls"] = dated[:NEWEST_N]
-    payload["longest_open"] = list(reversed(dated[-OLDEST_N:])) if dated else []
+    if listing == "COMPLETE":
+        payload["longest_open"] = list(reversed(dated[-OLDEST_N:])) if dated else []
+    else:
+        # The oldest row of a subset is not the longest-open pull request.
+        payload["degraded"].append("pulls-partial" if listing == "PARTIAL"
+                                   else "pulls-coverage-unknown")
     payload["drafts"] = sum(1 for r in rows if r["draft"])
+    payload["degraded"] = sorted(set(payload["degraded"]))
     return payload
 
 
@@ -164,14 +210,70 @@ def write(root, payload, now):
         return False
 
     payload = dict(payload, unchanged_since=now)
-    with open(path, "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(_dump(payload))
+    _replace_atomically(path, _dump(payload))
     return True
+
+
+def _replace_atomically(path, text):
+    """Write `text` to `path` so a reader sees the old bytes or the new, never half.
+
+    Same directory, flushed and fsynced, then os.replace. Any failure removes
+    the temporary file and leaves the previous file untouched.
+    """
+    folder = os.path.dirname(path)
+    tmp = os.path.join(folder, ".%s.%d.tmp" % (os.path.basename(path), os.getpid()))
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(text)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        raise
 
 
 def _read_json(path):
     with open(path, encoding="utf-8") as fh:
         return json.load(fh)
+
+
+def _read_pulls(path):
+    """A JSON array, or JSON Lines as `gh api --paginate --jq '.[]|...'` writes.
+
+    Returns None when the file holds neither, so the caller names the listing
+    as degraded instead of reading garbage as an empty queue.
+    """
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    stripped = text.strip()
+    if not stripped:
+        return None
+    if stripped[0] == "[":
+        try:
+            value = json.loads(stripped)
+        except ValueError:
+            return None
+        return value if isinstance(value, list) else None
+    rows = []
+    for line in stripped.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            value = json.loads(line)
+        except ValueError:
+            return None
+        if isinstance(value, list):
+            rows.extend(value)
+        elif isinstance(value, dict):
+            rows.append(value)
+        else:
+            return None
+    return rows
 
 
 def self_test():
@@ -187,7 +289,7 @@ def self_test():
     ]
     counts = {"repository": "o/r", "open_prs": 106, "open_issues": 3,
               "runs_queued": 2284, "runs_in_progress": 18}
-    out = build(pulls, counts, now)
+    out = build(pulls, counts, now, complete=True)
 
     assert out["counts"]["open_pull_requests"] == 106
     assert out["counts"]["runs_queued"] == 2284
@@ -195,10 +297,22 @@ def self_test():
     assert [p["number"] for p in out["newest_pulls"]] == [3, 2, 1], out["newest_pulls"]
     assert out["longest_open"][0]["number"] == 1, out["longest_open"]
     assert out["pulls_listed"] == 4
+    assert out["pulls_listing"] == "COMPLETE"
     assert out["undatable_pulls"] == [4], out["undatable_pulls"]
     assert out["drafts"] == 1
     assert out["newest_pulls"][0]["branch"] == "b3"
-    assert _dump(build(pulls, counts, "2026-09-11T09:00:00Z")) == _dump(out)
+    assert _dump(build(pulls, counts, "2026-09-11T09:00:00Z", complete=True)) == _dump(out)
+
+    # Four rows against 106 counted open: a subset, so no longest-open claim.
+    partial = build(pulls, counts, now)
+    assert partial["pulls_listing"] == "PARTIAL", partial["pulls_listing"]
+    assert "longest_open" not in partial
+    assert partial["degraded"] == ["pulls-partial"], partial["degraded"]
+    assert [p["number"] for p in partial["newest_pulls"]] == [3, 2, 1]
+
+    # A row repeated across a page boundary is counted once.
+    twice = build(pulls + pulls[:2], counts, now, complete=True)
+    assert twice["pulls_listed"] == 4, twice["pulls_listed"]
 
     sparse = build(None, {"repository": "o/r"}, now)
     assert sparse["counts"]["open_pull_requests"] == UNKNOWN
@@ -215,7 +329,7 @@ def self_test():
     named = build(None, {}, now, degraded=["pulls"])
     assert named["degraded"] == ["pulls"]
 
-    assert _dump(build(pulls, counts, now)) == _dump(out)
+    assert _dump(build(pulls, counts, now, complete=True)) == _dump(out)
     print("github_state self-test: PASS")
     return 0
 
@@ -223,7 +337,11 @@ def self_test():
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--root", default=ROOT)
-    ap.add_argument("--pulls", help="JSON file from the open pull requests call")
+    ap.add_argument("--pulls", help="open pull requests: a JSON array, or JSON "
+                    "Lines as `gh api --paginate --jq '.[]|...'` writes them")
+    ap.add_argument("--pulls-complete", action="store_true",
+                    help="every page of the listing was read; without this the "
+                    "listing is compared with --open-prs")
     ap.add_argument("--repository", default="")
     ap.add_argument("--open-prs")
     ap.add_argument("--open-issues")
@@ -243,9 +361,9 @@ def main(argv=None):
     pulls, degraded = None, []
     if args.pulls:
         try:
-            pulls = _read_json(args.pulls)
-            if not isinstance(pulls, list):
-                pulls, degraded = None, ["pulls"]
+            pulls = _read_pulls(args.pulls)
+            if pulls is None:
+                degraded = ["pulls"]
         except Exception:
             pulls, degraded = None, ["pulls"]
     else:
@@ -257,7 +375,7 @@ def main(argv=None):
         "open_issues": args.open_issues,
         "runs_queued": args.runs_queued,
         "runs_in_progress": args.runs_in_progress,
-    }, now, degraded)
+    }, now, degraded, complete=True if args.pulls_complete else None)
 
     if args.write:
         changed = write(args.root, payload, now)
