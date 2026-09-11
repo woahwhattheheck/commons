@@ -1,0 +1,76 @@
+name: titan-v4-h3b-sheep-clip
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_h3b_sheep_clip.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_h3b_sheep_clip.py'
+      - '.github/workflows/titan-v4-h3b-sheep-clip.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact head and V4 ancestry
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git cat-file -e "$EXPECTED_BASE^{commit}"
+          test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+          git diff --check "$EXPECTED_BASE"...HEAD
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Materialize candidate package
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --tree "$RUNNER_TEMP/h3b-tree"
+          python -B -m py_compile \
+            "$RUNNER_TEMP/h3b-tree/r04_full_router.py" \
+            "$RUNNER_TEMP/h3b-tree/r04_h3b_sheep_clip.py" \
+            "$RUNNER_TEMP/h3b-tree/titan_runtime.py"
+
+      - name: Run V4 delivery composition and H3b contracts
+        working-directory: ${{ runner.temp }}/h3b-tree
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v \
+            checks/test_v4_place_delivery.py \
+            checks/test_v4_goose_pass_rescue.py \
+            checks/test_v4_h3b_sheep_clip.py
+
+      - name: Prove shipped OFF config
+        working-directory: ${{ runner.temp }}/h3b-tree
+        shell: python
+        run: |
+          import json
+          from titan_runtime import Features
+          data = json.load(open('TITAN-CONFIG.json', encoding='utf-8'))
+          assert data['r04_h3b_sheep_clip'] is False
+          assert Features(**data).r04_h3b_sheep_clip is False
+          print('H3B OFF CONFIG OK')
+
+      - name: Prove clean checkout
+        run: |
+          set -euo pipefail
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --short)"
