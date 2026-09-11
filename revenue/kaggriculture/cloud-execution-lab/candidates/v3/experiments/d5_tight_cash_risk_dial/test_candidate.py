@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import math
+from pathlib import Path
 import unittest
 
 import candidate as c
@@ -18,12 +20,24 @@ def obs(step=648, player=0, money0=10000, money1=12000):
 
 
 class PublicCashGapTests(unittest.TestCase):
+    def test_pinned_engine_initializes_public_money_as_float(self):
+        engine = Path(__file__).resolve().parents[4] / "reference" / "engine" / "kaggriculture.py"
+        source = engine.read_text(encoding="utf-8")
+        self.assertIn('"money": float(starting_money)', source)
+
     def test_cash_gap_is_public_and_player_symmetric(self):
         self.assertEqual(c.public_cash_gap(obs(player=0, money0=100, money1=230)), 130)
         self.assertEqual(c.public_cash_gap(obs(player=1, money0=100, money1=230)), 130)
 
-    def test_money_bool_float_and_string_fail_closed(self):
-        for malformed in (True, 100.0, "100"):
+    def test_official_integral_float_money_is_exactly_reachable(self):
+        self.assertEqual(c.public_cash_gap(obs(player=0, money0=100.0, money1=230.0)), 130)
+        self.assertEqual(c.public_cash_gap(obs(player=1, money0=100, money1=230.0)), 130)
+        gate = c.TightCashGate(max_abs_cash_gap=5000)
+        self.assertTrue(gate.allow(obs(step=648, money0=10000.0, money1=12000.0)))
+        self.assertEqual(gate.last_evidence[0]["cash_gap"], 2000)
+
+    def test_money_bool_nonintegral_string_and_nonfinite_fail_closed(self):
+        for malformed in (True, 100.5, "100", math.inf, -math.inf, math.nan):
             with self.subTest(malformed=malformed):
                 state = obs(money0=malformed)
                 with self.assertRaises(ValueError):
