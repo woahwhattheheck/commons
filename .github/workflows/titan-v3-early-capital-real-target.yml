@@ -6,6 +6,7 @@ on:
       - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
       - '.github/workflows/titan-v3-early-capital-real-target.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'
   workflow_dispatch:
@@ -28,7 +29,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Assert exact checkout, released parent, and bounded diff
+      - name: Assert exact stacked checkout and bounded diffs
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: python
@@ -36,44 +37,54 @@ jobs:
           import os
           import subprocess
 
-          parent = '69b07cf42d3111469e8523f84efd9014cc30c0a9'
+          reviewed_parent = '4403d361bc9769e09d12a59d732ea12861d0b2b7'
+          source_parent = '69b07cf42d3111469e8523f84efd9014cc30c0a9'
           source = 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
           predecessor = '21c4ac15583e45f6f55ef615d95fc3db93637194'
           head = subprocess.check_output(
               ['git', 'rev-parse', 'HEAD'], text=True).strip()
           assert head == os.environ['EXPECTED_HEAD'], (
               head, os.environ['EXPECTED_HEAD'])
-
-          subprocess.check_call(
-              ['git', 'merge-base', '--is-ancestor', parent, head])
-          commit_count = int(subprocess.check_output(
-              ['git', 'rev-list', '--count', f'{parent}..{head}'],
-              text=True,
-          ).strip())
-          assert commit_count == 1, commit_count
+          assert subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD^'], text=True).strip() == reviewed_parent
+          assert subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD^^'], text=True).strip() == source_parent
 
           parent_source = subprocess.check_output(
-              ['git', 'rev-parse', f'{parent}:{source}'], text=True).strip()
+              ['git', 'rev-parse', f'{source_parent}:{source}'], text=True).strip()
           assert parent_source == predecessor, (parent_source, predecessor)
 
-          allowed = {
+          child_allowed = {
+              '.github/workflows/titan-v3-post-unit-seed-demand.yml',
+              '.github/workflows/titan-v3-early-capital-real-target.yml',
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
+          }
+          child_changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', reviewed_parent, head],
+              text=True,
+          ).splitlines())
+          assert child_changed == child_allowed, (child_changed, child_allowed)
+
+          stack_allowed = {
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
               '.github/workflows/titan-v3-early-capital-real-target.yml',
               source,
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py',
           }
-          changed = set(subprocess.check_output(
-              ['git', 'diff', '--name-only', parent, head],
+          stack_changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', source_parent, head],
               text=True,
           ).splitlines())
+          assert stack_changed == stack_allowed, (stack_changed, stack_allowed)
           print({
               'head': head,
-              'parent': parent,
-              'commit_count': commit_count,
-              'changed': sorted(changed),
+              'reviewed_parent': reviewed_parent,
+              'source_parent': source_parent,
+              'child_changed': sorted(child_changed),
+              'stack_changed': sorted(stack_changed),
           })
-          assert changed == allowed, (changed, allowed)
 
       - name: Bind commit-real source and official interpreter
         shell: python
@@ -136,6 +147,7 @@ jobs:
               Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
               Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
@@ -166,8 +178,8 @@ jobs:
               'schema': 'titan-v3-early-capital-commit-real/v1',
               'head': head,
               'expected_head': os.environ['EXPECTED_HEAD'],
-              'base': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
-              'parent_head': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'source_parent': '69b07cf42d3111469e8523f84efd9014cc30c0a9',
+              'reviewed_parent': '4403d361bc9769e09d12a59d732ea12861d0b2b7',
               'parent_source_blob':
                   '21c4ac15583e45f6f55ef615d95fc3db93637194',
               'files': files,
@@ -175,7 +187,8 @@ jobs:
               'scope': (
                   'commit-real capital certificate after guaranteed funding '
                   'and operating costs; exact land/animal resource allocation; '
-                  'canonical repackaging and games remain T08 custody'
+                  'stale source-pin custody repaired; canonical repackaging and '
+                  'games remain T08 custody'
               ),
           }
           assert receipt['head'] == receipt['expected_head']
