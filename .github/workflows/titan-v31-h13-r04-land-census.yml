@@ -1,0 +1,48 @@
+name: TITAN V3.1 H13 R04 land structural census
+
+on:
+  push:
+    branches:
+      - astra/h13-r04-land-census-20260911
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-experiments/h13-r04-land-census/**"
+      - ".github/workflows/titan-v31-h13-r04-land-census.yml"
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-experiments/h13-r04-land-census/**"
+      - ".github/workflows/titan-v31-h13-r04-land-census.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-h13-r04-land-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  structural-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile audit
+        run: python -m py_compile revenue/kaggriculture/cloud-execution-lab/candidates/v3-experiments/h13-r04-land-census/audit_r04_land.py
+      - name: Decode exact R04 tapes and derive land deadlines
+        run: python revenue/kaggriculture/cloud-execution-lab/candidates/v3-experiments/h13-r04-land-census/audit_r04_land.py
+      - name: Upload structural receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-h13-r04-land-census
+          path: revenue/kaggriculture/cloud-execution-lab/candidates/v3-experiments/h13-r04-land-census/H13-R04-LAND-CENSUS.json
+          if-no-files-found: error
+          retention-days: 14
