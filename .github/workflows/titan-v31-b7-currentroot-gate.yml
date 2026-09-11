@@ -145,8 +145,11 @@ jobs:
           rejected('float-seat', lambda g: g[0].__setitem__('candidate_seat', 0.0))
           rejected('bool-seed', lambda g: g[0].__setitem__('seed', True))
           rejected('float-seed', lambda g: g[0].__setitem__('seed', float(g[0]['seed'])))
-          rejected('nonhex-trace', lambda g: g[0].__setitem__('trace_sha256', 'g' * 64))
+          rejected('bool-score', lambda g: g[0].__setitem__('scores', [True, 1]))
           rejected('nan-score', lambda g: g[0].__setitem__('scores', [float('nan'), 1]))
+          rejected('posinf-score', lambda g: g[0].__setitem__('scores', [float('inf'), 1]))
+          rejected('neginf-score', lambda g: g[0].__setitem__('scores', [float('-inf'), 1]))
+          rejected('nonhex-trace', lambda g: g[0].__setitem__('trace_sha256', 'g' * 64))
           rejected('duplicate-cell', lambda g: g.append(copy.deepcopy(g[0])))
           rejected('missing-cell', lambda g: g.pop())
           PY
