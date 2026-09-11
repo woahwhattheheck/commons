@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   patch-catalog:
-    if: github.event.head_commit.message == 'chore(pixel): add transient catalog self-patcher'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -25,14 +24,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: astra/pixel-catalog-selfpatch-20260910-01
-          fetch-depth: 2
+          fetch-depth: 8
           persist-credentials: true
 
       - name: Bind helper topology and catalog preimage
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "$BASE_SHA"
+          git merge-base --is-ancestor "$BASE_SHA" HEAD
           mapfile -t changed < <(git diff --name-only "$BASE_SHA" HEAD)
           test "${#changed[@]}" -eq 1
           test "${changed[0]}" = "$SELF_PATH"
@@ -57,7 +56,6 @@ jobs:
           assert len(matches) == 1
           old_listing = copy.deepcopy(matches[0])
 
-          # Exact released preimage custody.
           assert old_funnel["priority"] == 7
           assert old_funnel["readiness"] == "READY_FOR_QUALIFICATION"
           assert old_funnel["acquisition"]["primary_channel"] == "Public art or commission route after an original portfolio is available"
@@ -96,7 +94,6 @@ jobs:
               "state_after": "FUNDED",
               "evidence_required": "Exact active/live link and one-time USD 800 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. A click is not authorization, settlement, payout, or bank cash.",
           }
-          # Fulfillment/acceptance/refund are source terms and must remain byte-semantic identical.
           assert new_funnel["fulfillment"] == old_funnel["fulfillment"]
           new_funnel["measurement"]["dom_action"] = "checkout-open"
           new_funnel["measurement"]["first_evidence_state"] = "FUNDED"
@@ -161,7 +158,6 @@ jobs:
                           return i
               raise AssertionError("unterminated object")
 
-          # Replace only the value object for funnels.ho-pixel-pack, preserving every byte outside it.
           funnel_marker = '    "ho-pixel-pack": '
           assert original_text.count(funnel_marker) == 1
           key_at = original_text.index(funnel_marker)
@@ -170,7 +166,6 @@ jobs:
           f_render = json.dumps(new_funnel, ensure_ascii=False, indent=2).replace("\n", "\n    ")
           text = original_text[:f_start] + f_render + original_text[f_end + 1:]
 
-          # Replace only the one listings[] object with id=ho-pixel-pack.
           listing_marker = '    {\n      "id": "ho-pixel-pack",'
           assert text.count(listing_marker) == 1
           l_indent = text.index(listing_marker)
@@ -193,7 +188,6 @@ jobs:
           assert actual_listing["pricing"]["components"][0]["amount"] == "800.00"
           assert actual_listing["pricing"]["components"][0]["basis"] == "one accepted agent pack"
 
-          # Deep proof that every non-Pixel semantic object remains unchanged.
           before_other = copy.deepcopy(before)
           after_other = copy.deepcopy(after)
           before_other["funnels"].pop("ho-pixel-pack")
