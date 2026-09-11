@@ -1,4 +1,4 @@
-name: TITAN V3.1 fert-hand L3 fail-closed staging r6
+name: TITAN V3.1 fert-hand L3 fail-closed staging r6 struct-safe
 
 on:
   pull_request:
@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Bind fert-hand P0, canonical, feature ref, and reviewed donors
+      - name: Bind fert-hand P0, canonical, feature ref, and Struct-safe reviewed donors
         shell: bash
         run: |
           set -euo pipefail
@@ -46,8 +46,8 @@ jobs:
           test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
           test "$(git rev-parse "$BASE:$ROUTER")" = '743185916233aeed41bedc8acfb8b61615ee7f4a'
           test "$(git rev-parse "$BASE:$V3/build_v3.py")" = '528cfabbe377f829cb584726c41bd2f64061373b'
-          test "$(git hash-object "$PATCH")" = 'bc7f57e2fc1a806a7050f0bf88f9f776e9dbeb3c'
-          test "$(git hash-object "$DONOR_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          test "$(git hash-object "$PATCH")" = '84becf2f6135e2d9155863cf6887a340a7852dba'
+          test "$(git hash-object "$DONOR_TEST")" = 'eeb07459a70a30eae689fc3e706d31b1916a6d97'
           git diff --name-only "$BASE"..HEAD > /tmp/l3-r6-staging-paths.txt
           python3 - <<'PY'
           from pathlib import Path
@@ -63,7 +63,7 @@ jobs:
           PY
           git diff --check "$BASE"..HEAD
 
-      - name: Apply only the reviewed L3 repair
+      - name: Apply only the Struct-safe reviewed L3 repair
         shell: bash
         run: |
           set -euo pipefail
@@ -75,10 +75,10 @@ jobs:
           git apply --check "$PATCH"
           git apply "$PATCH"
           cp "$DONOR_TEST" "$PROD_TEST"
-          test "$(git hash-object "$PROD_TEST")" = 'b572bb0adad3b8ca53100d4d44b35c5a374e8302'
+          test "$(git hash-object "$PROD_TEST")" = 'eeb07459a70a30eae689fc3e706d31b1916a6d97'
           python3 -m py_compile "$ROUTER" "$PROD_TEST"
 
-      - name: Run fail-closed source contracts
+      - name: Run fail-closed source contracts on Kaggle-shaped Struct fixtures
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         run: |
@@ -144,4 +144,4 @@ jobs:
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$CANONICAL"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
           test "$(git merge-base "$CANONICAL" "$BASE")" = "$CANONICAL"
-          echo L3_R6_TERMINAL_FRESHNESS_OK
+          echo L3_R6_STRUCT_SAFE_TERMINAL_FRESHNESS_OK

@@ -30,8 +30,8 @@ diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04
 +
 +
 +def _strict_opening_pair(observation, step):
-+    """Return exact public farmer coordinates, or None for any malformed/type-poisoned state."""
-+    if type(observation) is not dict or type(step) is not int:
++    """Return exact public farmer coordinates, or None for malformed/type-poisoned state."""
++    if not isinstance(observation, dict) or type(step) is not int:
 +        return None
 +    if type(observation.get('step')) is not int or observation['step'] != step:
 +        return None
@@ -44,7 +44,7 @@ diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04
 +    pair = []
 +    for index in (me, 1 - me):
 +        farm = farms[index]
-+        if type(farm) is not dict:
++        if not isinstance(farm, dict):
 +            return None
 +        farmer = farm.get('farmer')
 +        if type(farmer) is not list or len(farmer) != 2:
@@ -114,7 +114,7 @@ diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04
 +
 +
 +def _strict_step_player(observation):
-+    if type(observation) is not dict:
++    if not isinstance(observation, dict):
 +        return None
 +    step = observation.get('step')
 +    player = observation.get('player')

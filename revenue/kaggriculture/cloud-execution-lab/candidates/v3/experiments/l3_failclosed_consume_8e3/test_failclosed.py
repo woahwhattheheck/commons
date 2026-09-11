@@ -3,7 +3,7 @@
 
 A complete, contiguous, strictly typed public opening may certify OFF_TAPE. Anything
 ambiguous preserves incumbent E184 (equivalent to treating the rival as on-tape).
-Standard library only.
+Standard library only. Fixtures model Kaggle's recursive Struct(dict) transport.
 """
 from __future__ import annotations
 
@@ -21,12 +21,26 @@ import r04_full_router as r04  # noqa: E402
 import r04_no_late_sale_advance as nla  # noqa: E402
 
 
+class Struct(dict):
+    """Minimal stdlib facsimile of kaggle_environments.utils.Struct."""
+
+    __getattr__ = dict.__getitem__
+
+
+def structify(value):
+    if isinstance(value, dict):
+        return Struct({key: structify(item) for key, item in value.items()})
+    if isinstance(value, list):
+        return [structify(item) for item in value]
+    return value
+
+
 def observation(step, ours=(4, 4), theirs=(4, 4), player=0):
     farm = {"tiles": [], "farmer": list(ours), "hands": []}
     rival = copy.deepcopy(farm)
     rival["farmer"] = list(theirs)
     farms = [farm, rival] if player == 0 else [rival, farm]
-    return {"step": step, "player": player, "farms": farms}
+    return structify({"step": step, "player": player, "farms": farms})
 
 
 def play_complete(match_steps, player=0):
