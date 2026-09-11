@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - 'titan/v3.1-20260911'
+      - 'astra/v31-e7-post-town-tick-20260911'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/e7_post_tick_evening_flush.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_e7_post_tick_evening_flush.py'
@@ -23,6 +24,31 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact frozen scope and imported blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          BASE='508b342fc46fa91e3d7cdc3f0b7e44934a187c14'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor "$BASE" HEAD
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = '21c4f1db0298f8955b1f5ad366bd780a89cad206'
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py)" = 'a43289b9cc5e34a2481fddf652762a7d92f427ef'
+          git diff --name-only "$BASE"..HEAD > /tmp/e7-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/e7-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-e7-post-tick-flush.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/e7_post_tick_evening_flush.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_e7_post_tick_evening_flush.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/e7_post_tick/candidate.py',
+          }
+          assert actual == expected, (sorted(actual), sorted(expected))
+          print('E7 EXACT SCOPE OK', len(actual))
+          PY
 
       - name: Compile and run E7 predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
@@ -33,6 +59,7 @@ jobs:
 
       - name: Smoke exact evaluator custody and package neutrality
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
         run: |
           set -euo pipefail
           python -B - <<'PY'
@@ -65,6 +92,7 @@ jobs:
           PY
 
       - name: Prove checkout stayed clean
+        shell: bash
         run: |
           set -euo pipefail
           test -z "$(git status --porcelain)"
