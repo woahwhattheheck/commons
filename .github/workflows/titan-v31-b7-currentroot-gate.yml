@@ -100,7 +100,7 @@ jobs:
           from pathlib import Path
           r=json.loads((Path(os.environ['OUT'])/'b7-currentroot-receipt.json').read_text())
           s=r['summary']; d=r['disposition']
-          assert r['schema']=='titan-v31-b7-currentroot-gate/v1'
+          assert r['schema']=='titan-v31-b7-currentroot-gate/v2'
           assert s['scheduled']==16 and s['wins']+s['ties']+s['losses']==16
           if s['trace_changed_cells']==0: assert d=='KILL_INACTIVE'
           elif s['losses']>0: assert d=='HOLD_NEGATIVE_CELL'
