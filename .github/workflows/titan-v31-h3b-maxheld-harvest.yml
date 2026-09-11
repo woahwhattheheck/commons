@@ -5,6 +5,8 @@ on:
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/**'
       - '.github/workflows/titan-v31-h3b-maxheld-harvest.yml'
+      - '.github/workflows/tests.yml'
+      - 'test_tests_workflow_main_scope.py'
 
 permissions:
   contents: read
@@ -33,7 +35,7 @@ jobs:
           test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
           unexpected="$(
             git diff --name-only "$EXPECTED_BASE"...HEAD |
-            grep -Ev '^(\.github/workflows/titan-v31-h3b-maxheld-harvest\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/.*)$' || true
+            grep -Ev '^(\.github/workflows/titan-v31-h3b-maxheld-harvest\.yml|\.github/workflows/tests\.yml|test_tests_workflow_main_scope\.py|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/.*)$' || true
           )"
           test -z "$unexpected" || { printf 'unexpected paths:\n%s\n' "$unexpected"; exit 1; }
           git diff --check "$EXPECTED_BASE"...HEAD
@@ -48,11 +50,15 @@ jobs:
           python -B -m py_compile \
             revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/h3b_maxheld_harvest.py \
             revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/candidate.py \
-            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/test_h3b_maxheld_harvest.py
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/test_h3b_maxheld_harvest.py \
+            test_tests_workflow_main_scope.py
 
       - name: Run focused fail-closed contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest
         run: python -B -m unittest -v test_h3b_maxheld_harvest.py
+
+      - name: Prove engine battery stays off frozen titan PRs
+        run: python -B test_tests_workflow_main_scope.py
 
       - name: Prove clean checkout
         run: |
