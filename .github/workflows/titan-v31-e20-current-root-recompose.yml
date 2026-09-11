@@ -31,30 +31,31 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind current root, custody parent, donor bytes, and scope
+      - name: Bind live current-root custody parent, donor bytes, and scope
         shell: bash
         run: |
           set -euo pipefail
           ROOT='8e3d92a286806f9f9525973ee7d359b629a11487'
-          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
           STACK_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EVENT_BASE='${{ github.event.pull_request.base.sha }}'
+          EVENT_BASE_REF='${{ github.event.pull_request.base.ref }}'
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
           SRC='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
           TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
-          WF='.github/workflows/titan-v31-e20-current-root-recompose.yml'
-          FILES='revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
-          MANIFEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
 
           test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$EVENT_BASE_REF" = "$STACK_REF"
+          STACK="$(git ls-remote origin refs/heads/$STACK_REF | cut -f1)"
+          test -n "$STACK"
+          test "$EVENT_BASE" = "$STACK"
           test "$(git merge-base "$STACK" HEAD)" = "$STACK"
           test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | cut -f1)" = "$ROOT"
-          test "$(git ls-remote origin refs/heads/$STACK_REF | cut -f1)" = "$STACK"
 
           test "$(git rev-parse "$STACK:$SRC")" = '341eed454cae08cfeba31b5205a10263e50999d8'
           test "$(git rev-parse "$STACK:$TEST")" = '20b18deda0fa1a58f5200f8934255019561bdef7'
           test "$(git rev-parse "HEAD:$SRC")" = 'cd497140d188794d610d3ae387de8758ecbd0765'
           test "$(git rev-parse "HEAD:$TEST")" = '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f'
-          test "$(git rev-parse "$STACK:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test -f revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_build_v3_fail_closed.py
 
           git diff --name-only "$STACK"..HEAD > /tmp/e20-paths.txt
           python - <<'PY'
@@ -81,11 +82,14 @@ jobs:
           git diff --check "$STACK"..HEAD
           test -z "$(git status --porcelain)"
 
-      - name: Run reviewed E20 source predecessors
-        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+      - name: Run reviewed E20 and builder fail-closed predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         env:
           PYTHONDONTWRITEBYTECODE: '1'
-        run: python -B -m unittest -v checks/test_v3_features.py
+        run: |
+          python -B -m unittest -v overlay/checks/test_v3_features.py
+          python -B -m unittest -v tooling_tests/test_build_v3_fail_closed.py
+          PYTHONOPTIMIZE=1 python -B -m unittest -v tooling_tests/test_build_v3_fail_closed.py
 
       - name: Build staging handoff or verify committed package metadata
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
@@ -118,7 +122,7 @@ jobs:
           if [ -f dist/titan-v3.tar.gz ]; then cp dist/titan-v3.tar.gz "$OUT/titan-v3.tar.gz"; fi
           if [ -f dist/titan-v3.sha256 ]; then cp dist/titan-v3.sha256 "$OUT/titan-v3.sha256"; fi
 
-      - name: Run E20 predecessors from materialized package
+      - name: Run E20 predecessors from materialized package and preserve shipped tuple
         shell: bash
         env:
           PYTHONDONTWRITEBYTECODE: '1'
