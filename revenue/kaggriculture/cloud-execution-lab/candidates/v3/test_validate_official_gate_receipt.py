@@ -18,20 +18,87 @@ SHA = "a" * 64
 OTHER_SHA = "b" * 64
 
 BASE_CONFIG = {
+    "consumer": "frozen",
+    "frozen": True,
+    "seed": True,
+    "funding": True,
+    "terminal_route": False,
+    "committed": True,
+    "budget_seconds": 1.0,
+    "reserve_seconds": 0.01,
+    "terminal_history": False,
+    "redundant_hire": True,
+    "fourth_quadrant": False,
+    "market_pressure": True,
+    "committed_seed_retry": False,
+    "operating_stock": True,
+    "idle_fertilizer": True,
+    "crop_release": True,
+    "early_capital": True,
+    "e11_rival_sell": False,
+    "rival_model": False,
+    "e20_hire_guard": False,
+    "l01_land": False,
+    "l01_sheep": False,
+    "l01_day0buy": False,
+    "l01_tranche": False,
+    "l01_leanplant": False,
+    "r01_shop_router": False,
+    "r02_route_bank": False,
+    "r03_full_router": False,
     "r04_sale_window": True,
+    "rival_dump_price_drop": 15.0,
+    "rival_dump_lookback_steps": 8,
+    "e11_min_future_absorption": 2,
+    "e20_max_hires_per_day": 3,
+    "e20_min_unwatered_crops": 3,
+    "g01_early_expander_step": 144,
+    "g01_land_cash_floor": 0,
     "r04_sale_horizon": 8,
     "r04_open_roundtrip": 0,
     "r04_row_order": True,
     "r04_evening_flush": True,
     "r04_sale_fertilizer": True,
     "r04_cattle_early": True,
-    "lane_x": False,
 }
+
+V3_BOOL_KEYS = [
+    "e11_rival_sell",
+    "rival_model",
+    "e20_hire_guard",
+    "l01_land",
+    "l01_sheep",
+    "l01_day0buy",
+    "l01_tranche",
+    "l01_leanplant",
+    "r01_shop_router",
+    "r02_route_bank",
+    "r03_full_router",
+    "r04_sale_window",
+]
+V3_PARAM_KEYS = [
+    "rival_dump_price_drop",
+    "rival_dump_lookback_steps",
+    "e11_min_future_absorption",
+    "e20_max_hires_per_day",
+    "e20_min_unwatered_crops",
+    "g01_early_expander_step",
+    "g01_land_cash_floor",
+    "r04_sale_horizon",
+    "r04_open_roundtrip",
+    "r04_row_order",
+    "r04_evening_flush",
+    "r04_sale_fertilizer",
+    "r04_cattle_early",
+]
 
 
 def manifest():
+    keys = {key: {"default": False} for key in V3_BOOL_KEYS}
+    keys["params"] = {key: BASE_CONFIG[key] for key in V3_PARAM_KEYS}
     return {
         "base": {"sha256": SHA},
+        "keys": keys,
         "releases": [
             {
                 "version": guard.LIVE_RELEASE_VERSION,
@@ -57,7 +124,7 @@ def panel():
 def valid_receipt():
     base_config = dict(BASE_CONFIG)
     candidate_config = dict(base_config)
-    candidate_config["lane_x"] = True
+    candidate_config["e20_hire_guard"] = True
     rows = []
     scores = {
         (101, 0): ([10, 9], [12, 9]),
@@ -96,7 +163,7 @@ def valid_receipt():
             "base_archive_sha256": SHA,
             "package_sha256": "e" * 64,
             "config": candidate_config,
-            "config_overrides": {"lane_x": True},
+            "config_overrides": {"e20_hire_guard": True},
         },
         "panel": {
             "seeds": list(frozen["seeds"]),
@@ -130,6 +197,15 @@ class SimFidelityGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(guard.ReceiptError, "authoritative V3.1"):
             guard.validate_receipt(valid_receipt(), repo_manifest, panel())
 
+    def test_incomplete_v31_release_config_fails_even_if_version_matches(self):
+        broken_manifest = manifest()
+        broken_manifest["releases"][-1]["config"].pop("r04_sale_fertilizer")
+        broken_receipt = valid_receipt()
+        broken_receipt["baseline"]["config"].pop("r04_sale_fertilizer")
+        broken_receipt["candidate"]["config"].pop("r04_sale_fertilizer")
+        with self.assertRaisesRegex(guard.ReceiptError, "not a complete live TITAN-CONFIG"):
+            guard.validate_receipt(broken_receipt, broken_manifest, panel())
+
     def test_wrong_interpreter_commit_fails(self):
         receipt = valid_receipt()
         receipt["interpreter"]["commit"] = "deadbeef"
@@ -157,11 +233,11 @@ class SimFidelityGuardTests(unittest.TestCase):
     def test_baseline_bool_int_type_confusion_fails(self):
         receipt = valid_receipt()
         receipt["baseline"]["config"]["r04_sale_window"] = 1
-        with self.assertRaisesRegex(guard.ReceiptError, "type\+value strictness"):
+        with self.assertRaisesRegex(guard.ReceiptError, r"type\+value strictness"):
             guard.validate_receipt(receipt, manifest(), panel())
         receipt = valid_receipt()
-        receipt["baseline"]["config"]["lane_x"] = 0
-        with self.assertRaisesRegex(guard.ReceiptError, "type\+value strictness"):
+        receipt["baseline"]["config"]["e20_hire_guard"] = 0
+        with self.assertRaisesRegex(guard.ReceiptError, r"type\+value strictness"):
             guard.validate_receipt(receipt, manifest(), panel())
 
     def test_undeclared_candidate_config_drift_fails(self):
@@ -172,8 +248,8 @@ class SimFidelityGuardTests(unittest.TestCase):
 
     def test_candidate_override_bool_int_type_confusion_fails(self):
         receipt = valid_receipt()
-        receipt["candidate"]["config_overrides"]["lane_x"] = 1
-        receipt["candidate"]["config"]["lane_x"] = 1
+        receipt["candidate"]["config_overrides"]["e20_hire_guard"] = 1
+        receipt["candidate"]["config"]["e20_hire_guard"] = 1
         with self.assertRaisesRegex(guard.ReceiptError, "changes JSON type"):
             guard.validate_receipt(receipt, manifest(), panel())
 
