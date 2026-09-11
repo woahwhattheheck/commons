@@ -8,8 +8,8 @@ reviewed LAST score-facing TITAN-CONFIG transform.
 
 The transform is deliberately fail closed. It will not manufacture upstream gameplay
 decisions: the literal assembled input must already carry the held H8/open0/native
-ROW_ORDER+flush, cattle-OFF, H4, repaired L3@648, B5 CARROT+JIT and strict row-shed
-tuple. Under that theorem the only actual config value delta is
+ROW_ORDER+flush, cattle-OFF, H4, repaired L3@648, B5 CARROT+JIT, strict row-shed and
+fert-hand tuple. Under that theorem the only actual config value delta is
 r04_sale_window=false -> true.
 """
 from __future__ import annotations
@@ -31,6 +31,7 @@ PRESERVED_TRUE_KEYS = (
     "r04_b5_carrot_fertilizer",
     "r04_b5_jit_fertilize",
     "r04_row_shed",
+    "r04_fert_hand",
 )
 PRESERVED_FALSE_KEYS = (
     "r04_kill_late_water",
@@ -57,6 +58,7 @@ SUBMISSION_KEYS = (
     "r04_b5_carrot_fertilizer",
     "r04_b5_jit_fertilize",
     "r04_row_shed",
+    "r04_fert_hand",
     "r01_shop_router",
     "r02_route_bank",
 )
