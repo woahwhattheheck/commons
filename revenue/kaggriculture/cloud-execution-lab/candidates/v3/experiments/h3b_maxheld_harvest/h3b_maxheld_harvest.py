@@ -2,11 +2,11 @@
 """H3b experiment: prioritize a V233 sheep harvest only at a proven cap-loss seam.
 
 The official interpreter caps SHEEP yield at six units.  This experiment does not
-broadly move HARVEST ahead of FEED or CARE.  It only reprioritizes one of V233's
-existing sheep-worker tasks when every sheep in that worker's assigned block is
-already fed and cared, the worker is not carrying WOOL/FERTILIZER home, and at
-least one sheep is due to produce at tonight's refresh with enough held yield to
-lose units to ``max_held``.
+broadly move HARVEST ahead of FEED, CARE, fertilizer collection, or cargo return.
+It can only replace a literal current HARVEST of a non-overflow sheep with travel
+toward (or HARVEST of) an already-fed-and-cared sheep that will otherwise lose
+units to ``max_held`` at tonight's production refresh.  The urgent sheep must be
+reachable and harvestable before that refresh.
 
 The transform is intentionally post-policy and default-off.  When any proof is
 missing, malformed, nonstandard, or inconsistent with V233's same-call work
@@ -117,6 +117,7 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if type(step) is not int or type(player) is not int or player < 0:
             return action
         day = step // 24
+        hour = step % 24
         # The final day has special V233 cargo-return timing and no useful post-season refresh.
         if day < 12 or day >= 29:
             return action
@@ -152,6 +153,11 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if not isinstance(parent_command, list) or commands[actor] != parent_command:
             # A later layer changed the worker or the V233 accounting snapshot is ambiguous.
             return action
+        # H3b is only a harvest-for-harvest target swap.  It never preempts FEED,
+        # CARE, COLLECT_FERTILIZER, movement/setup, PASS, or cargo return.
+        if parent_command != ["HARVEST"]:
+            continue
+
         inventory = inventories[actor]
         if not isinstance(inventory, dict):
             return action
@@ -161,6 +167,11 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if inventory.get("WOOL", 0) or inventory.get("FERTILIZER", 0):
             # Preserve V233's cargo-return priority exactly.
             continue
+
+        pos = positions[actor]
+        if (not isinstance(pos, (list, tuple)) or len(pos) != 2
+                or type(pos[0]) is not int or type(pos[1]) is not int):
+            return action
 
         parsed = []
         for order, target in enumerate(targets):
@@ -187,16 +198,29 @@ def reprioritize(action: dict[str, Any], observation: dict[str, Any], configurat
         if not parsed:
             continue
 
-        urgent = [row for row in parsed if row[3] > 0]
+        current = next((row for row in parsed if row[1] == tuple(pos)), None)
+        if current is None or current[2] <= 0 or current[3] > 0:
+            # The literal parent HARVEST must be physically explained by a nonurgent
+            # sheep under this worker.  If the current sheep is itself urgent, the
+            # parent is already protecting it and H3b has nothing to fix.
+            continue
+
+        urgent = []
+        remaining_slots = 24 - hour
+        for row in parsed:
+            if row[3] <= 0:
+                continue
+            distance = abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1])
+            if distance + 1 <= remaining_slots:
+                urgent.append((*row, distance))
         if not urgent:
             continue
-        pos = positions[actor]
-        if (not isinstance(pos, (list, tuple)) or len(pos) != 2
-                or type(pos[0]) is not int or type(pos[1]) is not int):
-            return action
-        urgent.sort(key=lambda row: (-row[3], abs(pos[0] - row[1][0]) + abs(pos[1] - row[1][1]), row[0]))
-        _order, target, _units, overflow, _placed, _bonus = urgent[0]
+
+        urgent.sort(key=lambda row: (-row[3], row[6], row[0]))
+        _order, target, _units, overflow, _placed, _bonus, _distance = urgent[0]
         desired = base._v219_walk(tuple(pos), target) or ["HARVEST"]
+        # Current sheep is proven nonurgent and the target is urgent, so desired should
+        # differ; keep this defensive identity path in case the helper contract changes.
         if commands[actor] == desired:
             telemetry["already_prioritized"] += 1
             continue
