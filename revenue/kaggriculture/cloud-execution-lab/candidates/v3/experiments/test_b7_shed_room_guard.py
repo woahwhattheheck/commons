@@ -112,6 +112,24 @@ class ShedRoomGuardTests(unittest.TestCase):
         self.assertEqual(result["hands"], [["PLACE", "WOOL", 1]])
         self.assertEqual(b7.telemetry["saved_units"], 4)
 
+    def test_actor_order_prior_pickup_fails_guard_closed(self):
+        # Official actor order: actor0 PICKUP frees five slots before actor1 DROP,
+        # so the parent can deposit all five WOOL. B7 must not use stale room=0
+        # to rewrite actor1 to PASS.
+        obs = observation(
+            shed={"CARROT": 5, "WHEAT": 95},
+            inventories=[{}, {"WOOL": 5}],
+            hands=[(5, 4)],
+        )
+        action = {
+            "farmer": ["PICKUP", "CARROT", 5],
+            "hands": [["DROP"]],
+            "market": [],
+        }
+        self.assertIs(b7.transform(obs, action, config(), enabled=True), action)
+        self.assertEqual(b7.telemetry["changed_actions"], 0)
+        self.assertEqual(b7.telemetry["pickup_before_guarded_drop"], 1)
+
     def test_ambiguous_animal_place_fails_entire_transform_closed(self):
         obs = observation(
             shed={"WHEAT": 100},
@@ -133,6 +151,21 @@ class ShedRoomGuardTests(unittest.TestCase):
         action = {"farmer": ["DROP"], "hands": ["PASS"], "market": []}
         self.assertIs(b7.transform(obs, action, config(), enabled=True), action)
         self.assertEqual(b7.telemetry["changed_actions"], 0)
+
+    def test_malformed_later_position_fails_entire_transform_closed(self):
+        action = {"farmer": ["DROP"], "hands": [["PASS"]], "market": []}
+        for bad_position in ([5], [True, 4], [10, 4], "54"):
+            with self.subTest(position=bad_position):
+                obs = observation(
+                    shed={"WHEAT": 100},
+                    inventories=[{"WOOL": 5}, {}],
+                    hands=[(5, 4)],
+                )
+                obs["farms"][0]["hands"][0] = bad_position
+                b7.telemetry.clear()
+                self.assertIs(b7.transform(obs, action, config(), enabled=True), action)
+                self.assertEqual(b7.telemetry["changed_actions"], 0)
+                self.assertEqual(b7.telemetry["malformed_position"], 1)
 
     def test_malformed_inventory_and_config_fail_closed(self):
         action = {"farmer": ["DROP"], "hands": [], "market": []}
