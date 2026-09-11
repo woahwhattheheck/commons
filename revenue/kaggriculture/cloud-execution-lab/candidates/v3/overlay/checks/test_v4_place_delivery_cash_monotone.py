@@ -125,6 +125,29 @@ class PlaceDeliveryCashMonotone(unittest.TestCase):
         self.assertEqual(r04.projected_shed(parent, view)["CARROT"], 1)
         self.assertIs(lane.apply_place_delivery(observation, parent, enabled=True), parent)
 
+    def test_third_player_id_fails_closed_to_exact_parent(self):
+        # Official Kaggriculture declares exactly two agents, so player=2 is
+        # malformed even if a poisoned observation also supplies a third farm.
+        tiles = [["LOCKED"] * 10 for _ in range(10)]
+        farm = {"tiles": tiles, "farmer": [4, 4], "hands": []}
+        prices = {product: 10 for product in r04.PRODUCTS}
+        observation = {
+            "step": 718,
+            "player": 2,
+            "farms": [farm, farm, farm],
+            "private": {
+                "shed": {"WHEAT": 98},
+                "inventories": [{"CARROT": 5}],
+            },
+            "market": {"prices": prices},
+        }
+        parent = {
+            "farmer": ["DROP"],
+            "hands": [],
+            "market": [["SELL", "WHEAT", 98], ["SELL", "CARROT", 2]],
+        }
+        self.assertIs(lane.apply_place_delivery(observation, parent, enabled=True), parent)
+
 
 if __name__ == "__main__":
     unittest.main()
