@@ -16,9 +16,10 @@ D3 hardens two evidence boundaries beyond the current parent reporter:
 
 * every generic score vector, including top-level ``baseline_scores`` and
   ``candidate_scores``, is the pinned evaluator's player order ``[seat0, seat1]``;
-* arm-pair input (``baseline`` + ``candidate``) may not coexist with a row-container
-  alias (``cells``/``results``/``games``/``matches``), so representations cannot
-  silently precedence-win over contradictory evidence.
+* top-level evidence uses exactly one row-container alias, and arm-pair input
+  (``baseline`` + ``candidate``) may not coexist with a row-container alias
+  (``cells``/``results``/``games``/``matches``), so representations cannot silently
+  precedence-win over contradictory or Python-equal-but-type-distinct evidence.
 
 Input extends the normal paired-evidence document with:
 
@@ -107,6 +108,11 @@ def _validate_document_representation(document: Any) -> None:
         return
     arm_keys = [key for key in ("baseline", "candidate") if key in document]
     container_keys = [key for key in _ROW_CONTAINERS if key in document]
+    if len(container_keys) > 1:
+        raise ExternalityError(
+            "multiple row-container representations are ambiguous: "
+            + ", ".join(container_keys)
+        )
     if arm_keys and len(arm_keys) != 2:
         raise ExternalityError(
             "top-level arm evidence requires both baseline and candidate"
