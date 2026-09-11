@@ -1,0 +1,69 @@
+name: sol-astra-running-cost-review-runner-20260911-01
+
+on:
+  push:
+    branches:
+      - sol-astra/running-cost-review-runner-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Bind carrier topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "ae53dafa3457bfb524e5e44aff69a8099a610897"
+          mapfile -t changed < <(git diff --name-only HEAD^ HEAD)
+          test "${#changed[@]}" -eq 1
+          test "${changed[0]}" = ".github/workflows/sol-astra-running-cost-review-runner-20260911-01.yml"
+      - name: Compile focused implementation
+        run: python3 -m py_compile host/business_pack_running_cost.py test_business_pack_running_cost.py
+      - name: Run focused and nearest shared contracts
+        run: python3 -m unittest -v test_business_pack_running_cost.py test_business_pack_unique.py test_business_packs.py
+      - name: Prove current running-cost truth
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, 'host')
+          import business_pack_running_cost as rc
+          law=json.load(open('ground/BUSINESS_PACK_RUNNING_COST.json'))
+          assert law['running_cost']=='OWNER_UNSET', law
+          assert law['owner_pasted_running_cost'] is False, law
+          assert law['checkout']=='NOT_MINTED', law
+          assert law['agents_spend_ads'] is False, law
+          assert law['did_not_invent_percent_or_equity'] is True, law
+          assert law['for_this_price_requires_running_cost'] is True, law
+          print('RUNNING_COST_TRUTH_OK')
+          PY
+      - name: Hash exact historical eleven-path surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            business-packs.html
+            ground/BUSINESS_PACKS.json
+            ground/BUSINESS_PACKS.md
+            ground/BUSINESS_PACK_RUNNING_COST.json
+            ground/BUSINESS_PACK_RUNNING_COST.md
+            host/business_pack_running_cost.py
+            p/cursor-business-pack-running-cost-20260902-01.md
+            packs/_template/day.md
+            packs/_template/offer.md
+            packs/_template/running-cost.md
+            test_business_pack_running_cost.py
+          )
+          for p in "${paths[@]}"; do
+            test -f "$p"
+            printf '%s  %s\n' "$(git hash-object "$p")" "$p"
+          done
+      - name: Clean checkout
+        run: test -z "$(git status --porcelain)"
