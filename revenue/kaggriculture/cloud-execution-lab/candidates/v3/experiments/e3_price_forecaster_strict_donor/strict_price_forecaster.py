@@ -44,8 +44,8 @@ def _strict_qty(value):
 
 
 def _strict_market_row(row):
-    """Validate one truthy market row without changing its shape."""
-    if not isinstance(row, (list, tuple)) or not row or not isinstance(row[0], str):
+    """Validate one truthy authored market row without changing its shape."""
+    if not isinstance(row, list) or not row or not isinstance(row[0], str):
         raise ValueError("malformed market row")
     if row[0] in ("SELL", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL"):
         if len(row) < 3:
@@ -60,9 +60,9 @@ def _leading_sell_block(market):
     for index, row in enumerate(market):
         if not row:
             break
-        if not isinstance(row, (list, tuple)) or not row:
+        if not isinstance(row, list):
             raise ValueError("malformed leading market row")
-        op = row[0] if row else None
+        op = row[0]
         if op != "SELL":
             break
         if len(row) < 3 or row[1] not in PRODUCTS:
@@ -101,8 +101,8 @@ def _strict_observation(observation):
     if not isinstance(inventory, dict) or not isinstance(prices, dict):
         raise ValueError("market inventory/prices must be dicts")
     for item in PRODUCTS:
-        if item not in inventory or not _is_int(inventory[item]):
-            raise ValueError("market inventory must contain strict integer product entries")
+        if item not in inventory or not _is_int(inventory[item]) or inventory[item] < 0:
+            raise ValueError("market inventory must contain non-negative strict integer product entries")
         if item not in prices or not _is_number(prices[item]) or prices[item] < 0:
             raise ValueError("market prices must contain finite non-negative product entries")
 
@@ -160,9 +160,13 @@ def _strict_upcoming_purchase_cost(tape, step, prices):
             continue
         if not isinstance(entry, dict):
             raise ValueError("malformed tape entry")
-        rows = entry.get("market") or []
-        if not isinstance(rows, list):
+        raw_rows = entry.get("market")
+        if raw_rows is None:
+            rows = []
+        elif not isinstance(raw_rows, list):
             raise ValueError("malformed tape market")
+        else:
+            rows = raw_rows
         for row in rows:
             if not row:
                 continue
