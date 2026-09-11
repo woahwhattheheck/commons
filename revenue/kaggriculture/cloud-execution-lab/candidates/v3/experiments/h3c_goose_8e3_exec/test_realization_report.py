@@ -7,12 +7,13 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location("h3c_realization_report_tested", HERE / "realization_report.py")
-assert SPEC and SPEC.loader
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("cannot load realization_report.py")
 m = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(m)
 
 
-def valid_report():
+def valid_report(candidate_entry="baseline.py", candidate_sha="c" * 64):
     games = []
     for seed in m.EXPECTED_SEEDS:
         for seat in (0, 1):
@@ -22,18 +23,31 @@ def valid_report():
                 "candidate_seat": seat,
                 "status": "complete",
                 "scores": [100 + seat, 90 - seat],
+                "failure": None,
                 "trace_sha256": ("a" if seat == 0 else "b") * 64,
                 "daily_bank": [],
             })
+    baseline_fp = {"entry": "baseline.py", "callable": "agent", "sha256": "c" * 64}
     return {
+        "schema_version": 1,
         "engine_ref": m.EXPECTED_ENGINE_REF,
+        "engine_sha256": {
+            "kaggriculture.py": "1" * 64,
+            "kaggriculture.json": "2" * 64,
+            "utils.py": "3" * 64,
+        },
+        "loader_sha256": "4" * 64,
+        "evaluator_sha256": "5" * 64,
+        "candidate": {"entry": candidate_entry, "callable": "agent", "sha256": candidate_sha},
         "seeds": list(m.EXPECTED_SEEDS),
-        "opponents": {
-            m.EXPECTED_OPPONENT: {
-                "entry": "baseline.py",
-                "callable": "agent",
-                "sha256": "c" * 64,
-            }
+        "agent_rng_seed": m.EXPECTED_AGENT_RNG_SEED,
+        "limits": {"action_rpc_seconds": 1.0},
+        "opponents": {m.EXPECTED_OPPONENT: baseline_fp},
+        "reproducibility": {
+            "checked": True,
+            "same_trace_and_scores": True,
+            "original_trace": "a" * 64,
+            "replay_trace": "a" * 64,
         },
         "games": games,
     }
@@ -97,7 +111,7 @@ class StrictReceiptTests(unittest.TestCase):
         game1 = valid_report()["games"][1]
         self.assertEqual(m.score_pair(game1), (89, 101))
 
-    def test_trace_and_status_must_be_exact(self):
+    def test_trace_status_and_failure_must_be_exact(self):
         report = valid_report()
         report["games"][0]["trace_sha256"] = "not-a-hash"
         with self.assertRaisesRegex(ValueError, "invalid trace_sha256"):
@@ -106,6 +120,10 @@ class StrictReceiptTests(unittest.TestCase):
         report["games"][0]["status"] = True
         with self.assertRaises(ValueError):
             m.validate_report(report, "status")
+        report = valid_report()
+        report["games"][0]["failure"] = {"kind": "timeout"}
+        with self.assertRaisesRegex(ValueError, "non-null failure"):
+            m.validate_report(report, "failure")
 
     def test_opponent_metadata_must_match_exact_evaluator_shape(self):
         poisons = []
@@ -118,6 +136,62 @@ class StrictReceiptTests(unittest.TestCase):
             with self.subTest(index=index):
                 with self.assertRaises(ValueError):
                     m.validate_report(poisoned, "opponent-meta")
+
+    def test_candidate_fingerprint_entry_and_hash_are_bound(self):
+        report = valid_report()
+        report["candidate"]["entry"] = "candidate.py"
+        with self.assertRaisesRegex(ValueError, "wrong fingerprint entry"):
+            m.validate_report(report, "candidate-entry")
+        report = valid_report()
+        report["candidate"]["sha256"] = "bad"
+        with self.assertRaisesRegex(ValueError, "invalid fingerprint sha256"):
+            m.validate_report(report, "candidate-hash")
+        candidate = valid_report("candidate.py", "d" * 64)
+        m.validate_report(candidate, "candidate", "candidate.py")
+
+    def test_rng_and_source_metadata_are_fail_closed(self):
+        for value in (True, "20260911", 20260912):
+            with self.subTest(rng=value):
+                report = valid_report()
+                report["agent_rng_seed"] = value
+                with self.assertRaisesRegex(ValueError, "wrong agent_rng_seed"):
+                    m.validate_report(report, "rng")
+        report = valid_report(); report["evaluator_sha256"] = "bad"
+        with self.assertRaisesRegex(ValueError, "invalid evaluator_sha256"):
+            m.validate_report(report, "eval")
+        report = valid_report(); report["engine_sha256"].pop("utils.py")
+        with self.assertRaisesRegex(ValueError, "engine_sha256 shape mismatch"):
+            m.validate_report(report, "engine")
+
+    def test_reproducibility_must_be_checked_and_trace_identical(self):
+        report = valid_report(); report["reproducibility"]["same_trace_and_scores"] = False
+        with self.assertRaisesRegex(ValueError, "did not pass"):
+            m.validate_report(report, "repro")
+        report = valid_report(); report["reproducibility"]["replay_trace"] = "b" * 64
+        with self.assertRaisesRegex(ValueError, "trace mismatch"):
+            m.validate_report(report, "repro-trace")
+
+    def test_pair_metadata_binds_same_baseline_and_evaluator(self):
+        control = valid_report()
+        candidate = valid_report("candidate.py", "d" * 64)
+        m.validate_report(control, "control", "baseline.py")
+        m.validate_report(candidate, "candidate", "candidate.py")
+        m.validate_pair_metadata(control, candidate)
+
+        poisoned = copy.deepcopy(candidate)
+        poisoned["opponents"][m.EXPECTED_OPPONENT]["sha256"] = "e" * 64
+        with self.assertRaisesRegex(ValueError, "metadata drift: opponents"):
+            m.validate_pair_metadata(control, poisoned)
+
+        poisoned = copy.deepcopy(candidate)
+        poisoned["evaluator_sha256"] = "6" * 64
+        with self.assertRaisesRegex(ValueError, "metadata drift: evaluator_sha256"):
+            m.validate_pair_metadata(control, poisoned)
+
+        poisoned = copy.deepcopy(candidate)
+        poisoned["candidate"]["sha256"] = "c" * 64
+        with self.assertRaisesRegex(ValueError, "unexpectedly equals baseline"):
+            m.validate_pair_metadata(control, poisoned)
 
 
 if __name__ == "__main__":
