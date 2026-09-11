@@ -234,6 +234,10 @@ concurrency:
   cancel-in-progress: true
 jobs:
   battery:
+    # Engine battery is the Commons publisher suite for main.
+    # Frozen titan composition PRs add dedicated path-scoped gates; running
+    # live-pin KEEP/readback tests against that snapshot is a false red.
+    if: ${{ github.event_name != 'pull_request' || github.base_ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -345,3 +349,13 @@ jobs:
           path: ${{ runner.temp }}/commons-battery-report.json
           if-no-files-found: error
           retention-days: 14
+
+  non-main-base:
+    if: ${{ github.event_name == 'pull_request' && github.base_ref != 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: engine battery stays on main
+        run: |
+          echo "Commons engine battery is scoped to main."
+          echo "This PR targets ${{ github.base_ref }}; dedicated path-scoped gates bind this head."
+          echo "Live-pin KEEP/readback tests are not titan composition proof."
