@@ -92,11 +92,12 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
     No account, no login, no token. This page reads four static files
     (<span class="mono">pulse.json</span>, <span class="mono">feed/head.json</span>,
     <span class="mono">seats.json</span>, <span class="mono">feed/github.json</span>)
-    and nothing else. A file it cannot read is named as unread; it is never drawn
-    as an empty panel.
+    from main, and nothing else. A file it cannot read is named as unread; it is
+    never drawn as an empty panel.
   </p>
 
   <div id="degraded" class="note bad" hidden></div>
+  <div id="road" class="note small"></div>
 
   <section class="grid" aria-label="Operation state">
     <article class="panel" aria-labelledby="h-board">
@@ -218,17 +219,69 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
 // warm, and the bucket rolls often enough that the page is never meaningfully
 // behind the five-minute bake.
 const bucket = () => Math.floor(Date.now() / 15000);
-const state = { pulse:null, feed:null, seats:null, repo:null, failed:[] };
+const state = { pulse:null, feed:null, seats:null, repo:null, failed:[], roads:{} };
+
+// Where the bakes come from. A Pages deploy waits in the same Actions queue as
+// every check, so the copy served beside this page can trail main by a day or
+// more: on 2026-09-11 the site was serving main from 34 hours earlier. Each
+// bake is read from main through raw.githubusercontent.com (no auth, any
+// origin, about five minutes of CDN cache). The copy beside the page is read
+// only when main cannot be, and the page says which files it is showing that
+// way.
+function mainBase(){
+  const loc = typeof location === "undefined" ? null : location;
+  const host = loc && loc.hostname ? String(loc.hostname) : "";
+  if(/\.github\.io$/i.test(host)){
+    const first = String(loc.pathname || "/").split("/").filter(Boolean)[0] || "";
+    const repo = !first || first.includes(".") ? host : first;
+    return "https://raw.githubusercontent.com/" + host.split(".")[0] + "/" + repo + "/main/";
+  }
+  return "https://raw.githubusercontent.com/woahwhattheheck/commons/main/";
+}
+const MAIN = mainBase();
+
+async function fetchJson(url){
+  const res = await fetch(url, { cache: "default" });
+  if(!res.ok) throw new Error("HTTP " + res.status);
+  return await res.json();
+}
 
 async function grab(path){
+  const file = path.replace(/^\.\//, "");
+  const v = "?v=" + bucket();
+  let missed;
   try{
-    const res = await fetch(path + "?v=" + bucket(), { cache: "default" });
-    if(!res.ok) throw new Error("HTTP " + res.status);
-    return await res.json();
+    const body = await fetchJson(MAIN + file + v);
+    state.roads[file] = { road:"main" };
+    return body;
+  }catch(err){ missed = err.message; }
+  try{
+    const body = await fetchJson(path + v);
+    state.roads[file] = { road:"site", why:missed };
+    return body;
   }catch(err){
-    state.failed.push(path + " (" + err.message + ")");
+    delete state.roads[file];
+    state.failed.push(path + " (main: " + missed + "; this site: " + err.message + ")");
     return null;                       // null is "unread", never an empty view
   }
+}
+
+const onSite = file => !!(state.roads[file] && state.roads[file].road === "site");
+
+function renderRoad(){
+  const el = document.getElementById("road");
+  const site = Object.keys(state.roads).filter(onSite).sort();
+  if(!site.length){
+    el.textContent = Object.keys(state.roads).length
+      ? "Read from main (" + MAIN.replace(/^https:\/\//, "") + "), not from the copy this "
+        + "site serves, which waits for a Pages deploy."
+      : "";
+    return;
+  }
+  el.textContent = "Main could not be read for " +
+    site.map(f => f + " (" + state.roads[f].why + ")").join(", ") +
+    ". Showing this site's copy of " + (site.length > 1 ? "those files" : "that file") +
+    ", which trails main by however long the last Pages deploy waited for a runner.";
 }
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g,
@@ -318,7 +371,12 @@ function renderBeacon(){
   el.textContent = "seq " + state.pulse.seq;
   const counts = state.seats ? currentSeatSnapshot().counts : {};
   const events = state.feed ? state.feed.count : "unread";
-  line.textContent = state.pulse.ts + " · head " +
+  // The bake's own clock. Hours here mean the board bake is waiting for a
+  // runner, and the newest work is only in Slack and GitHub.
+  const baked = Date.parse(state.pulse.ts);
+  const age = isFinite(baked)
+    ? " (baked " + ago(Math.max(0, Math.round((Date.now() - baked) / 1000))) + ")" : "";
+  line.textContent = state.pulse.ts + age + " · head " +
     String(state.pulse.head || "").slice(0,8) + " · " +
     (state.pulse.post_count || "?") + " posts · " +
     (counts.LIVE || 0) + " live · " + events + " events in the shard";
@@ -664,8 +722,14 @@ async function load(force){
   const pulse = await grab("./pulse.json");
   state.pulse = pulse;
   const seq = pulse ? known(pulse.seq) : null;
-  const needFeed = force || !state.feed || seq === null || seq !== seen.seq;
+  // When the beacon came back from main, panels still held from the site copy
+  // are re-read at once. While main is down they follow seq as usual, so an
+  // unreachable main costs one extra request a minute, not four.
+  const back = !!(pulse && state.roads["pulse.json"] && state.roads["pulse.json"].road === "main");
+  const needFeed = force || !state.feed || seq === null || seq !== seen.seq ||
+    (back && onSite("feed/head.json"));
   const needSlow = force || needFeed || !state.seats || !state.repo ||
+    (back && (onSite("seats.json") || onSite("feed/github.json"))) ||
     Date.now() - seen.slowAt >= BAKE_MS;
   const [feed, seats, repo] = await Promise.all([
     needFeed ? grab("./feed/head.json") : state.feed,
@@ -682,7 +746,7 @@ async function load(force){
   // Seats and repository rows carry ages computed from this browser's clock,
   // so they re-render every tick even when the files were not re-read.
   renderSeats(); renderRepo(); renderUnblocks();
-  renderDegraded();
+  renderDegraded(); renderRoad();
   document.getElementById("refresh").disabled = false;
 }
 
