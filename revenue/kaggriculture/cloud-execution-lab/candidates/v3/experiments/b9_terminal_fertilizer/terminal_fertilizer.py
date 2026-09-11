@@ -2,11 +2,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """Default-OFF B9 terminal fertilizer micro-stacker.
 
-This experiment wraps an existing V3.1 agent. It changes only literal PASS worker
-commands at steps 716-717 when that worker is already on a shed-adjacent animal tile
-with public fertilizer_available == True. Step 718 keeps the parent's liquidation
-but moves SELL FERTILIZER rows behind all pre-existing rows iff this wrapper collected
-fertilizer in the same episode, preserving the parent's existing terminal sale order.
+This experiment wraps an existing V3.1 agent. Under the explicit standard
+720-step / 24-turn-day runtime only, it changes literal PASS worker commands at
+steps 716-717 when that represented worker is already on a shed-adjacent animal
+tile with public ``fertilizer_available is True``. Missing, empty, malformed, or
+cardinality-mismatched parent worker commands are never synthesized into PASS.
+
+At step 718 the existing V3.1 liquidator remains authoritative; iff this wrapper
+collected terminal fertilizer in the same episode, ``SELL FERTILIZER`` rows are
+stable-partitioned behind all pre-existing rows, preserving the parent's relative
+terminal market order.
 """
 from __future__ import annotations
 
@@ -14,11 +19,39 @@ import copy
 
 COLLECT_STEPS = frozenset((716, 717))
 TERMINAL_STEP = 718
+EPISODE_STEPS = 720
+TURNS_PER_DAY = 24
 ANIMALS = frozenset(("GOOSE", "COW", "SHEEP"))
+_MISSING = object()
 
 
 def _exact_int(value):
     return type(value) is int
+
+
+def _configuration_value(configuration, key):
+    if configuration is None:
+        return _MISSING
+    if isinstance(configuration, dict):
+        return configuration[key] if key in configuration else _MISSING
+    getter = getattr(configuration, "get", None)
+    if callable(getter):
+        try:
+            return getter(key, _MISSING)
+        except Exception:
+            return _MISSING
+    return getattr(configuration, key, _MISSING)
+
+
+def _standard_terminal_timing(configuration):
+    episode_steps = _configuration_value(configuration, "episodeSteps")
+    turns_per_day = _configuration_value(configuration, "turnsPerDay")
+    return (
+        _exact_int(episode_steps)
+        and episode_steps == EPISODE_STEPS
+        and _exact_int(turns_per_day)
+        and turns_per_day == TURNS_PER_DAY
+    )
 
 
 def _beside_shed(position, board_size):
@@ -28,6 +61,10 @@ def _beside_shed(position, board_size):
         return False
     center = board_size // 2
     return position[0] in (center - 1, center) and position[1] in (center - 1, center)
+
+
+def _valid_parent_command(command):
+    return isinstance(command, list) and bool(command) and isinstance(command[0], str)
 
 
 def _collect_passes(observation, action):
@@ -47,18 +84,23 @@ def _collect_passes(observation, action):
                 or not isinstance(hands, list)):
             return action, False
         positions = [farmer, *hands]
-        action_hands = action.get("hands")
-        if not isinstance(action_hands, list):
+        if "farmer" not in action or "hands" not in action:
             return action, False
-        workers = [action.get("farmer") or ["PASS"], *action_hands]
+        farmer_action = action["farmer"]
+        action_hands = action["hands"]
+        if not isinstance(action_hands, list) or len(action_hands) != len(hands):
+            return action, False
+        workers = [farmer_action, *action_hands]
+        if len(workers) != len(positions) or any(not _valid_parent_command(command) for command in workers):
+            return action, False
     except (KeyError, IndexError, TypeError):
         return action, False
 
     changed = False
-    for index in range(min(len(workers), len(positions))):
-        if workers[index] != ["PASS"] or not _beside_shed(positions[index], len(tiles)):
+    for index, (command, position) in enumerate(zip(workers, positions)):
+        if command != ["PASS"] or not _beside_shed(position, len(tiles)):
             continue
-        x, y = positions[index]
+        x, y = position
         if not (0 <= y < len(tiles) and 0 <= x < len(tiles[y])):
             continue
         tile = tiles[y][x]
@@ -104,12 +146,15 @@ class TerminalFertilizerAgent:
 
     def __call__(self, observation, configuration=None):
         action = self.parent(observation, configuration)
+        if not _standard_terminal_timing(configuration):
+            return action
         try:
             step = observation["step"]
             player = observation["player"]
         except (KeyError, TypeError):
             return action
-        if not _exact_int(step) or not _exact_int(player):
+        if (not _exact_int(step) or not 0 <= step < EPISODE_STEPS
+                or not _exact_int(player)):
             return action
 
         state = self._state.get(player)
