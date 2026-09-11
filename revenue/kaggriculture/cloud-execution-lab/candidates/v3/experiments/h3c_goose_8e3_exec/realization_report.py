@@ -10,6 +10,8 @@ import statistics
 from pathlib import Path
 
 EXPECTED_ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+EXPECTED_ENGINE_FILES = frozenset(("kaggriculture.py", "kaggriculture.json", "utils.py"))
+EXPECTED_AGENT_RNG_SEED = 20260911
 EXPECTED_OPPONENT = "v31_8e3"
 EXPECTED_SEEDS = (2611151001, 2611151002, 2611151003, 2611151004)
 EXPECTED_CELLS = frozenset(
@@ -31,6 +33,18 @@ def _valid_sha256(value):
     return isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
 
 
+def _validate_fingerprint(value, label, expected_entry):
+    if not isinstance(value, dict):
+        raise ValueError(f"{label}: fingerprint must be an object")
+    if set(value) != {"entry", "callable", "sha256"}:
+        raise ValueError(f"{label}: fingerprint keys mismatch {sorted(value)!r}")
+    if value.get("entry") != expected_entry or value.get("callable") != "agent":
+        raise ValueError(f"{label}: wrong fingerprint entry/callable {value!r}")
+    if not _valid_sha256(value.get("sha256")):
+        raise ValueError(f"{label}: invalid fingerprint sha256")
+    return value
+
+
 def validate_game(game, label):
     if not isinstance(game, dict):
         raise ValueError(f"{label}: game must be an object")
@@ -45,6 +59,8 @@ def validate_game(game, label):
         raise ValueError(f"{label}: invalid candidate_seat {seat!r}")
     if game.get("status") != "complete" or not isinstance(game.get("status"), str):
         raise ValueError(f"{label}: incomplete/invalid status {game.get('status')!r}")
+    if game.get("failure") is not None:
+        raise ValueError(f"{label}: complete game has non-null failure {game.get('failure')!r}")
     scores = game.get("scores")
     if not isinstance(scores, list) or len(scores) != 2:
         raise ValueError(f"{label}: scores must be a two-element list")
@@ -63,21 +79,50 @@ def validate_opponent_metadata(report, label):
     opponents = report.get("opponents")
     if not isinstance(opponents, dict) or set(opponents) != {EXPECTED_OPPONENT}:
         raise ValueError(f"{label}: opponent metadata must contain exactly {EXPECTED_OPPONENT!r}")
-    fingerprint = opponents[EXPECTED_OPPONENT]
-    if not isinstance(fingerprint, dict):
-        raise ValueError(f"{label}: opponent fingerprint must be an object")
-    if fingerprint.get("entry") != "baseline.py" or fingerprint.get("callable") != "agent":
-        raise ValueError(f"{label}: wrong opponent fingerprint entry/callable {fingerprint!r}")
-    if not _valid_sha256(fingerprint.get("sha256")):
-        raise ValueError(f"{label}: invalid opponent fingerprint sha256")
+    return _validate_fingerprint(
+        opponents[EXPECTED_OPPONENT], f"{label}:opponent", "baseline.py"
+    )
 
 
-def validate_report(report, label):
+def _validate_source_metadata(report, label, expected_candidate_entry):
+    if type(report.get("schema_version")) is not int or report.get("schema_version") != 1:
+        raise ValueError(f"{label}: wrong schema_version {report.get('schema_version')!r}")
+    engine_hashes = report.get("engine_sha256")
+    if not isinstance(engine_hashes, dict) or set(engine_hashes) != EXPECTED_ENGINE_FILES:
+        raise ValueError(f"{label}: engine_sha256 shape mismatch")
+    if any(not _valid_sha256(value) for value in engine_hashes.values()):
+        raise ValueError(f"{label}: invalid engine source sha256")
+    for field in ("loader_sha256", "evaluator_sha256"):
+        if not _valid_sha256(report.get(field)):
+            raise ValueError(f"{label}: invalid {field}")
+    if type(report.get("agent_rng_seed")) is not int or report.get("agent_rng_seed") != EXPECTED_AGENT_RNG_SEED:
+        raise ValueError(f"{label}: wrong agent_rng_seed {report.get('agent_rng_seed')!r}")
+    candidate = _validate_fingerprint(
+        report.get("candidate"), f"{label}:candidate", expected_candidate_entry
+    )
+    opponent = validate_opponent_metadata(report, label)
+    return candidate, opponent
+
+
+def _validate_reproducibility(report, label):
+    repro = report.get("reproducibility")
+    if not isinstance(repro, dict):
+        raise ValueError(f"{label}: reproducibility must be an object")
+    if repro.get("checked") is not True or repro.get("same_trace_and_scores") is not True:
+        raise ValueError(f"{label}: reproducibility check did not pass")
+    original = repro.get("original_trace")
+    replay = repro.get("replay_trace")
+    if not _valid_sha256(original) or not _valid_sha256(replay) or original != replay:
+        raise ValueError(f"{label}: reproducibility trace mismatch")
+
+
+def validate_report(report, label, expected_candidate_entry="baseline.py"):
     if not isinstance(report, dict):
         raise ValueError(f"{label}: report must be an object")
     if report.get("engine_ref") != EXPECTED_ENGINE_REF:
         raise ValueError(f"{label}: wrong engine ref {report.get('engine_ref')!r}")
-    validate_opponent_metadata(report, label)
+    _validate_source_metadata(report, label, expected_candidate_entry)
+    _validate_reproducibility(report, label)
     seeds = report.get("seeds")
     if not isinstance(seeds, list) or len(seeds) != len(EXPECTED_SEEDS):
         raise ValueError(f"{label}: seed panel shape mismatch")
@@ -97,6 +142,25 @@ def validate_report(report, label):
         extra = sorted(frozenset(indexed) - EXPECTED_CELLS)
         raise ValueError(f"{label}: exact paired cell set mismatch missing={missing!r} extra={extra!r}")
     return indexed
+
+
+def validate_pair_metadata(control, candidate):
+    """Bind the two reports to the same evaluator/engine/opponent execution custody."""
+    shared_fields = (
+        "engine_ref", "engine_sha256", "loader_sha256", "evaluator_sha256",
+        "opponents", "seeds", "agent_rng_seed", "limits",
+    )
+    for field in shared_fields:
+        if control.get(field) != candidate.get(field):
+            raise ValueError(f"paired receipt metadata drift: {field}")
+    control_fp = control["candidate"]
+    opponent_fp = control["opponents"][EXPECTED_OPPONENT]
+    if control_fp != opponent_fp:
+        raise ValueError("control candidate fingerprint must equal the baseline opponent fingerprint")
+    if candidate["opponents"][EXPECTED_OPPONENT] != opponent_fp:
+        raise ValueError("candidate arm opponent fingerprint drift")
+    if candidate["candidate"]["sha256"] == opponent_fp["sha256"]:
+        raise ValueError("H3c candidate entry fingerprint unexpectedly equals baseline")
 
 
 def score_pair(game):
@@ -125,8 +189,9 @@ def main():
     args = p.parse_args()
     control, candidate = load(args.control), load(args.candidate)
     try:
-        cg = validate_report(control, "control")
-        hg = validate_report(candidate, "candidate")
+        cg = validate_report(control, "control", "baseline.py")
+        hg = validate_report(candidate, "candidate", "candidate.py")
+        validate_pair_metadata(control, candidate)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
     cells = []
@@ -163,10 +228,14 @@ def main():
     else:
         disposition = "HOLD_MARGIN_NEUTRAL"
     result = {
-        "schema": "titan-v31-h3c-8e3-realization/v1",
+        "schema": "titan-v31-h3c-8e3-realization/v2",
         "engine_ref": EXPECTED_ENGINE_REF,
+        "agent_rng_seed": EXPECTED_AGENT_RNG_SEED,
         "seeds": list(EXPECTED_SEEDS),
         "opponent": EXPECTED_OPPONENT,
+        "control_candidate": control["candidate"],
+        "h3c_candidate": candidate["candidate"],
+        "opponent_fingerprint": control["opponents"][EXPECTED_OPPONENT],
         "cells": cells,
         "summary": {
             "paired_cells": len(cells), "trace_changed_cells": trace_changed,
@@ -180,7 +249,7 @@ def main():
     Path(args.json_out).write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     lines = [
         "## H3c goose rescue — shipped 8e3 current-root realization", "",
-        f"Engine `{EXPECTED_ENGINE_REF}` · **{len(cells)}** paired cells · trace deltas **{trace_changed}/{len(cells)}** · money deltas **{money_changed}/{len(cells)}**.", "",
+        f"Engine `{EXPECTED_ENGINE_REF}` · RNG `{EXPECTED_AGENT_RNG_SEED}` · **{len(cells)}** paired cells · trace deltas **{trace_changed}/{len(cells)}** · money deltas **{money_changed}/{len(cells)}**.", "",
         f"ΔM signs **{pos}+ / {neg}- / {tie}=** · mean Δown **{mean_own:+.3f}** · mean Δrival **{mean_rival:+.3f}** · mean ΔM **{mean_margin:+.3f}**.", "",
         f"**Disposition: `{disposition}`**", "",
         "| seed | seat | trace Δ | Δown | Δrival | ΔM | first daily-bank divergence |",
