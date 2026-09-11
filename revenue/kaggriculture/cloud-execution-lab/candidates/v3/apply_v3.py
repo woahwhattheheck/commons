@@ -41,6 +41,8 @@ PARAMS = {
     "r04_no_late_sale_advance": True,
     "r04_no_late_sale_advance_step": 648,
     "r04_strawberry_topup": True,
+    "r04_b5_carrot_fertilizer": True,
+    "r04_b5_jit_fertilize": True,
 }
 
 FIELDS = (
@@ -81,6 +83,8 @@ FIELDS = (
     "    r04_no_late_sale_advance: bool = True\n"
     "    r04_no_late_sale_advance_step: int = 648\n"
     "    r04_strawberry_topup: bool = True\n"
+    "    r04_b5_carrot_fertilizer: bool = True\n"
+    "    r04_b5_jit_fertilize: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -207,7 +211,9 @@ RUNTIME_METHODS = (
     "                                 int(self.features.r04_strawberry_max_plants),\n"
     "                                 bool(self.features.r04_no_late_sale_advance),\n"
     "                                 int(self.features.r04_no_late_sale_advance_step),\n"
-    "                                 bool(self.features.r04_strawberry_topup))(observation, configuration)\n"
+    "                                 bool(self.features.r04_strawberry_topup),\n"
+    "                                 bool(self.features.r04_b5_carrot_fertilizer),\n"
+    "                                 bool(self.features.r04_b5_jit_fertilize))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
@@ -220,6 +226,8 @@ RUNTIME_METHODS = (
     "                self.diagnostics['no_late_sale_advance'] = bool(self.features.r04_no_late_sale_advance)\n"
     "                self.diagnostics['no_late_sale_advance_step'] = int(self.features.r04_no_late_sale_advance_step)\n"
     "                self.diagnostics['strawberry_topup'] = bool(self.features.r04_strawberry_topup)\n"
+    "                self.diagnostics['b5_carrot_fertilizer'] = bool(self.features.r04_b5_carrot_fertilizer)\n"
+    "                self.diagnostics['b5_jit_fertilize'] = bool(self.features.r04_b5_jit_fertilize)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -425,6 +433,14 @@ RELEASE_NOTE = (
 "seed with the opponent's recorded play pinned (V3.0 reproduces every recorded reward).\n"
 "Against V3.1: H4 +32.6, rival-gated L3 +36.3, both together +68.9 margin per game\n"
 "(34 better, 4 worse).\n"
+"\n"
+"Lane B5 (V3.1, ASTRA · GPT-5.6 SOL): `r04_b5_carrot_fertilizer` and `r04_b5_jit_fertilize`\n"
+"(both shipped on) spend authored PASS turns on fertilizer that pays: a CARROT top-up where\n"
+"the worker already stands (overlay/b5_fertilize.py, the #12499 functions verbatim) and\n"
+"just-in-time fertilizer before a yield-bearing WATER on the worker's own tile\n"
+"(overlay/jit_pass_fertilize.py, #12428 verbatim). Applied last in v3_agent(). Shipping\n"
+"evidence on the same 41 live games, against the V3.1 package with H4 and gated L3: +106.0\n"
+"margin per game, better in all 41. Checks: `checks/test_v31_b5_fertilize.py`.\n"
 )
 
 
