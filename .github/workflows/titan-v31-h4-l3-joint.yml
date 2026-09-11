@@ -83,6 +83,17 @@ jobs:
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
           assert callable(module.agent)
+          # Exact V3.1 baseline, not r04_full_router.py source defaults.
+          assert module.base.SALE_HORIZON == 8
+          assert module.base.OPEN_ROUNDTRIP == 0
+          assert module.base.ROW_ORDER is True
+          assert module.base.EVENING_FLUSH is True
+          assert module.base.SALE_EXCLUDED == ('WHEAT',)
+          assert module.base._V231_EARLY is True
+          # This factorial arm is exactly H4 + L3; L1/L2 stay off.
+          assert module.base.KILL_LATE_WATER is False
+          assert module.base.STRAWBERRY_ENDGAME is False
+          assert module.base.STRAWBERRY_MAX_PLANTS == 8
           assert module.h4.STRAWBERRY_TOPUP is True
           assert module.base.NO_LATE_SALE_ADVANCE is True
           assert module.base.NO_LATE_SALE_ADVANCE_STEP == 648
