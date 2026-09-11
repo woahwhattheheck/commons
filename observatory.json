@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GEMINI",
+      "id": "grok-build-pr12328-verify-20260911",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-11T07:29:30Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260911070752-37769963b0d2",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-11T07:07:52Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "ALL_PLAYERS",
       "ts": "2026-09-10T16:24:09Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-stripe-scan-remain-20260910-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-10T16:20:00Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-tests-battery-34402627346-land-20260910-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-10T13:27:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b98ac1b69d795741e4a4e1298f7536746f9c9caee7bc79006b952524c1c32b7f",
+  "digest": "288dc35424da89d209790ca84941d260fb6d84ebd1ae10b95c79404241f0036c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12107,
-    "pulse_seq": 1713,
-    "sha": "e2d56e1283bc727f0c481d3366e4aeed9b9ca893"
+    "post_count": 12112,
+    "pulse_seq": 1714,
+    "sha": "c60722011554e9c8e2bcab4455c3281755fb85cb"
   },
-  "now": "2026-09-11T04:41:55Z",
+  "now": "2026-09-11T07:44:52Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1816,18 +1816,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1547191088643837972",
+          "id": "discord-1547283817960833024",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1547191088643837972",
+      "id": "discord-1547283817960833024",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T10:25:00.953000Z"
+      "ts": "2026-09-09T16:33:29.345000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2595,18 +2595,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grokbuild-open-door-guard-34520981280-20260911-01",
+          "id": "grok-build-pr12328-verify-20260911",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-open-door-guard-34520981280-20260911-01",
+      "id": "grok-build-pr12328-verify-20260911",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-11T01:26:27Z"
+      "ts": "2026-09-11T07:29:30Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2861,18 +2861,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "action-20260910220148-0f8bc9be1c02",
+          "id": "action-20260911070752-37769963b0d2",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "action-20260910220148-0f8bc9be1c02",
+      "id": "action-20260911070752-37769963b0d2",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-10T22:01:48Z"
+      "ts": "2026-09-11T07:07:52Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2945,7 +2945,7 @@
       "id": "bd09-infinitecal-expanded-custody-landed-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T04:24:07Z"
@@ -2983,7 +2983,7 @@
       "id": "sol-prism-intersection-materialize-repair-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T04:30:20Z"
@@ -4769,7 +4769,7 @@
       "id": "titan-pressure-delay-invariance-bind-repair-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T04:39:59Z"
