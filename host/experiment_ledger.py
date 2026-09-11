@@ -244,7 +244,7 @@ def record_bench(ledger: Mapping[str, Any], hypothesis_id: str, bench_name: str,
         raise ValueError("terminal bench evidence is immutable: %s/%s" % (hypothesis_id, bench_name))
     if not _transition_allowed(old["state"], new["state"]):
         raise ValueError("invalid bench transition %s -> %s" % (old["state"], new["state"]))
-    if old["state"] == "RUNNING" and new["state"] == "RUNNING":
+    if old["state"] == "RUNNING" and new["state"] in {"RUNNING", "COMPLETE", "INVALID"}:
         old_n = old.get("sample_size") or 0
         new_n = new.get("sample_size") or 0
         if new_n < old_n:
