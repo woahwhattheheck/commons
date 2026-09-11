@@ -1,7 +1,26 @@
 diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
 --- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
 +++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
-@@ -157,6 +157,31 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
+@@ -59,5 +59,17 @@
+ CENTER_INTERVAL = 24
+ C4_ENABLED = False
+ _PARENT_AGENT = base.v3_agent
++
++def _base_parent_state(observation):
++    policy = base._POLICY
++    if policy is None or not isinstance(observation, dict):
++        return None
++    player = observation.get("player")
++    if type(player) is not int:
++        return None
++    return policy.players.get(player)
++
++
++_PARENT_STATE_GETTER = _base_parent_state
+ 
+ telemetry = Counter()
+ 
+@@ -157,6 +169,31 @@ def rollback_cross_tick_advances(action, observation, state, before_debts, confi
          telemetry["malformed"] += 1
          return action
  
@@ -36,3 +55,90 @@ diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments
      per_due = {}
      per_item = {}
      for due_step, due_items in after.items():
+@@ -248,23 +285,37 @@ def c4_agent(observation, configuration=None):
+     """Snapshot E184 debt, execute the explicitly bound parent, then apply C4 rollback."""
+     player = observation.get("player") if isinstance(observation, dict) else None
+     before = {}
++    before_state = None
+     snapshot_ok = True
+-    if C4_ENABLED and type(player) is int and base._POLICY is not None:
+-        state = base._POLICY.players.get(player)
+-        if state is not None:
+-            snapshot = _debt_snapshot(state)
+-            if snapshot is None:
+-                snapshot_ok = False
+-            else:
+-                before = snapshot
++    if C4_ENABLED and type(player) is int:
++        try:
++            before_state = _PARENT_STATE_GETTER(observation)
++        except Exception:
++            telemetry["parent_state_error"] += 1
++            snapshot_ok = False
++        if snapshot_ok and before_state is not None:
++            snapshot = _debt_snapshot(before_state)
++            if snapshot is None:
++                snapshot_ok = False
++            else:
++                before = snapshot
+ 
+     action = _PARENT_AGENT(observation, configuration)
+ 
+-    if C4_ENABLED and snapshot_ok and type(player) is int and base._POLICY is not None:
+-        state = base._POLICY.players.get(player)
+-        if state is not None:
+-            action = rollback_cross_tick_advances(
+-                action, observation, state, before, configuration, enabled=True
+-            )
++    if C4_ENABLED and snapshot_ok and type(player) is int:
++        try:
++            state = _PARENT_STATE_GETTER(observation)
++        except Exception:
++            telemetry["parent_state_error"] += 1
++            return action
++        if state is None:
++            telemetry["parent_state_unavailable"] += 1
++            return action
++        if before_state is not None and state is not before_state:
++            telemetry["parent_state_changed"] += 1
++            return action
++        action = rollback_cross_tick_advances(
++            action, observation, state, before, configuration, enabled=True
++        )
+     return action
+ 
+ 
+@@ -273,8 +324,8 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
+             no_late_sale_advance=None, no_late_sale_advance_step=None, strawberry_topup=None,
+             b5_carrot_fertilizer=None, b5_jit_fertilize=None, c4_enabled=None,
+-            parent_agent=None):
++            parent_agent=None, parent_state_getter=None):
+     """Bind C4 around either an explicit parent callable or a fully spelled R04 tuple."""
+-    global C4_ENABLED, _PARENT_AGENT
++    global C4_ENABLED, _PARENT_AGENT, _PARENT_STATE_GETTER
+     knobs = (
+         horizon, opening, row_order, evening_flush, sale_fertilizer, cattle_early,
+         kill_late_water, strawberry_endgame, strawberry_max_plants,
+@@ -287,8 +338,13 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
+     if parent_agent is not None:
+         if not callable(parent_agent):
+             raise TypeError("parent_agent must be callable")
++        if not callable(parent_state_getter):
++            raise TypeError("parent_state_getter must be callable with explicit parent_agent")
+         if host is not None or any(value is not None for value in knobs):
+             raise ValueError("explicit parent_agent cannot be combined with R04 install knobs")
+         _PARENT_AGENT = parent_agent
++        _PARENT_STATE_GETTER = parent_state_getter
+     else:
++        if parent_state_getter is not None:
++            raise ValueError("parent_state_getter requires explicit parent_agent")
+         _PARENT_AGENT = base.install(
+             host=host,
+@@ -307,6 +363,7 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
+             b5_carrot_fertilizer=b5_carrot_fertilizer,
+             b5_jit_fertilize=b5_jit_fertilize,
+         )
++        _PARENT_STATE_GETTER = _base_parent_state
+     if c4_enabled is not None:
+         C4_ENABLED = bool(c4_enabled)
+     return c4_agent
