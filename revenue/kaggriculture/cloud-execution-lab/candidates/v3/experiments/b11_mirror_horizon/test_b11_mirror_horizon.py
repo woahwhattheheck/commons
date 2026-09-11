@@ -17,12 +17,12 @@ for path in (HERE.parent, OVERLAY):
 import b11_mirror_horizon as b11  # noqa: E402
 
 
-def farm(*, money=3000.0, x=4, hand_count=1, hires=1):
+def farm(*, money=3000.0, x=0, hand_count=1, hires=1):
     return {
         "money": money,
-        "tiles": [[None, None], [None, {"kind": "PLANT", "crop": "WHEAT"}]],
-        "farmer": [x, 4],
-        "hands": [[4, 4] for _ in range(hand_count)],
+        "tiles": [[None, "LOCKED"], [None, {"kind": "PLANT", "crop": "WHEAT"}]],
+        "farmer": [x, 0],
+        "hands": [[0, 1] for _ in range(hand_count)],
         "unlocked_quadrants": ["NW"],
         "hires_today": hires,
     }
@@ -61,7 +61,7 @@ class B11MirrorTests(unittest.TestCase):
     def test_structural_mismatch_fails_closed_and_resets_streak(self):
         for step in range(7):
             b11.mirror_certificate(obs(step))
-        rival = farm(x=5)
+        rival = farm(x=1)
         certified, streak, reason = b11.mirror_certificate(obs(7, right=rival))
         self.assertFalse(certified)
         self.assertEqual(streak, 0)
@@ -100,6 +100,59 @@ class B11MirrorTests(unittest.TestCase):
         self.assertEqual(streak, 0)
         self.assertEqual(reason, "malformed-farm")
 
+    def test_equal_malformed_structures_never_build_mirror_streak(self):
+        def set_hires_bool(f): f.__setitem__("hires_today", True)
+        def set_hands_string(f): f.__setitem__("hands", "same-string")
+        def set_farmer_dict(f): f.__setitem__("farmer", {"x": 0, "y": 0})
+        def set_tiles_string(f): f.__setitem__("tiles", "same-string")
+        def set_bad_quadrant(f): f.__setitem__("unlocked_quadrants", ["NW", 1])
+        def set_bad_tile_kind(f): f["tiles"][0][0] = {"kind": "ALIEN"}
+        def set_tuple_position(f): f.__setitem__("farmer", (0, 0))
+        mutators = (
+            set_hires_bool,
+            set_hands_string,
+            set_farmer_dict,
+            set_tiles_string,
+            set_bad_quadrant,
+            set_bad_tile_kind,
+            set_tuple_position,
+        )
+        for mutate in mutators:
+            with self.subTest(mutate=mutate.__name__):
+                b11.reset_state()
+                left, right = farm(), farm()
+                mutate(left); mutate(right)
+                for step in range(8):
+                    certified, streak, reason = b11.mirror_certificate(obs(step, left, right))
+                    self.assertFalse(certified)
+                    self.assertEqual(streak, 0)
+                    self.assertEqual(reason, "malformed-farm")
+
+    def test_malformed_farm_clears_existing_recoverable_streak(self):
+        for step in range(7):
+            b11.mirror_certificate(obs(step))
+        left, right = farm(), farm()
+        left["hires_today"] = True
+        right["hires_today"] = True
+        certified, streak, _ = b11.mirror_certificate(obs(7, left, right))
+        self.assertFalse(certified)
+        self.assertEqual(streak, 0)
+        certified, streak, _ = b11.mirror_certificate(obs(8))
+        self.assertFalse(certified)
+        self.assertEqual(streak, 1)
+
+    def test_tile_structure_accepts_only_known_public_layout_domain(self):
+        self.assertIsNone(b11._tile_structure(None))
+        self.assertEqual(b11._tile_structure("LOCKED"), "LOCKED")
+        self.assertEqual(b11._tile_structure({"kind": "WEED"}), ["WEED"])
+        self.assertEqual(b11._tile_structure({"kind": "PLANT", "crop": "CARROT"}), ["PLANT", "CARROT"])
+        self.assertEqual(b11._tile_structure({"kind": "COOP", "animal": "GOOSE"}), ["COOP", "GOOSE"])
+        self.assertEqual(b11._tile_structure({"kind": "PASTURE", "animal": "SHEEP"}), ["PASTURE", "SHEEP"])
+        self.assertIs(b11._tile_structure({"kind": "PLANT", "crop": "ALIEN"}), b11._INVALID)
+        self.assertIs(b11._tile_structure({"kind": "COOP", "animal": "COW"}), b11._INVALID)
+        self.assertIs(b11._tile_structure({"kind": "PASTURE", "animal": "GOOSE"}), b11._INVALID)
+        self.assertIs(b11._tile_structure({"kind": "ALIEN"}), b11._INVALID)
+
     def test_json_comparator_is_type_strict(self):
         self.assertFalse(b11._json_equal({"hires_today": True}, {"hires_today": 1}))
         self.assertFalse(b11._json_equal([0], [False]))
@@ -134,8 +187,7 @@ class B11MirrorTests(unittest.TestCase):
         for step in range(8):
             agent(obs(step))
         self.assertEqual(seen[-1], 10)
-        control_observed_horizon = b11.r04.SALE_HORIZON
-        self.assertEqual(control_observed_horizon, 8)
+        self.assertEqual(b11.r04.SALE_HORIZON, 8)
 
     def test_parent_exception_restores_prior_shared_horizon(self):
         calls = {"n": 0}
@@ -188,12 +240,14 @@ class B11MirrorTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 b11.install(enabled=False, horizon=bad)
 
-    def test_signature_copy_is_not_aliased_to_observation(self):
+    def test_signature_is_detached_from_observation(self):
         original = farm()
         sig = b11._signature(original)
         self.assertIsNotNone(sig)
-        original["hands"][0][0] = 99
-        self.assertEqual(sig["hands"][0][0], 4)
+        original["hands"][0][0] = 1
+        original["tiles"][1][1]["crop"] = "CARROT"
+        self.assertEqual(sig["hands"][0][0], 0)
+        self.assertEqual(sig["tiles"][1][1], ["PLANT", "WHEAT"])
 
 
 if __name__ == "__main__":
