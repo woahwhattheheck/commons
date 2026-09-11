@@ -158,6 +158,7 @@ jobs:
               'valid-custody',
               candidate_sha='b' * 64,
               current_self_sha='c' * 64,
+              candidate_entry='main.py',
               arlene_sha='d' * 64,
           )
 
@@ -186,6 +187,7 @@ jobs:
                       name,
                       candidate_sha='b' * 64,
                       current_self_sha='c' * 64,
+                      candidate_entry='main.py',
                       arlene_sha='d' * 64,
                   )
               except AssertionError:
