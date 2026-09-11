@@ -419,35 +419,36 @@
     },
     "ho-pixel-pack": {
       "priority": 7,
-      "readiness": "READY_FOR_QUALIFICATION",
+      "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A buyer who wants one visible sprite, walk loop, and public-post-linked speak line.",
       "trigger": "A named public page needs a small original agent character with a binary visual deliverable.",
       "acquisition": {
-        "primary_channel": "Public art or commission route after an original portfolio is available",
+        "primary_channel": "pixel-portfolio.html direct public offer and verified checkout route",
         "alternate_channels": [
           "humans.html public OFFER intake",
           "8bit.html direct share"
         ],
         "message": "$800 over five days for one sprite, one walk loop, and one speak line linked to a public post.",
-        "route": "commerce.html#ho-pixel-pack",
-        "cta": "Name the sprite job"
+        "route": "pixel-portfolio.html",
+        "cta": "Open verified checkout"
       },
       "qualification": {
-        "route": "humans.html",
+        "route": "pixel-portfolio.html",
         "required": [
-          "Offer id",
-          "Named public page",
-          "Desired sprite job",
-          "Start window"
+          "Offer id ho-pixel-pack",
+          "One human job",
+          "One public pixel artifact or page",
+          "Start window",
+          "Public, non-confidential interest first; founder-sent private contact stays off Commons"
         ],
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "CUSTOMER_SPECIFIC_INVOICE",
-        "status": "NOT_ISSUED",
-        "next_step": "Confirm the public page and issue a buyer-specific invoice.",
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 800 checkout, then follow the source-contract intake and delivery terms. A click is intent, not cash.",
         "state_after": "FUNDED",
-        "evidence_required": "Written scope and cleared provider authorization."
+        "evidence_required": "Exact active/live link and one-time USD 800 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. A click is not authorization, settlement, payout, or bank cash."
       },
       "fulfillment": {
         "deliverables": [
@@ -465,16 +466,16 @@
         "refund": "If no sprite lands on the named public page in 5 days after intake, founder refunds. Art-direction churn after acceptance is a change order."
       },
       "measurement": {
-        "dom_action": "qualification-open",
+        "dom_action": "checkout-open",
         "click_truth": "INTENT_ONLY",
-        "first_evidence_state": "DISCOVERED",
+        "first_evidence_state": "FUNDED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [
         "white-box-gguf-pilot-30d"
       ],
       "gaps": [
-        "An original portfolio and send-ready target are not yet evidenced"
+        "A click is not authorization, settlement, payout, or BANK_AVAILABLE cash. Collected cash remains USD 0."
       ]
     },
     "sku-tip-20260826": {
@@ -1802,17 +1803,15 @@
     {
       "id": "ho-pixel-pack",
       "name": "8-bit / pixel agent pack",
-      "state": "CANDIDATE",
-      "source": {
-        "path": "revenue/human_outcomes/offers.json",
-        "pointer": "/offers/3",
-        "offer_id": "ho-pixel-pack",
-        "blob_sha": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/pixel_agent_pack/contract.json",
+        "blob_sha": "299705e062ff98c9939c5d6bde383ca565c21b8f",
         "terms_authority": "source"
       },
       "pricing": {
         "currency": "USD",
-        "mode": "fixed_outcome",
+        "mode": "fixed",
         "components": [
           {
             "id": "fixed_fee",
@@ -1823,12 +1822,24 @@
         ]
       },
       "outcome": {
-        "acceptance_source": "revenue/human_outcomes/offers.json#/offers/3/acceptance",
+        "acceptance_source": "revenue/pixel_agent_pack/contract.json",
         "evidence_required": true
       },
       "routes": {
-        "human": "humans.html",
-        "machine": "revenue/human_outcomes/offers.json"
+        "human": "pixel-portfolio.html",
+        "machine": "revenue/pixel_agent_pack/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/fZufZgfxb9fj8qBbp843S0t",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
       }
     },
     {
