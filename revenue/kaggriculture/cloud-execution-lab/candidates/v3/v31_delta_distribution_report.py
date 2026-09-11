@@ -25,6 +25,8 @@ class DataError(ValueError):
 
 _MISSING = object()
 _EPS = 1e-9
+_OPPONENT_KEYS = ("opponent", "opponent_name", "rival_name")
+_SEED_KEYS = ("seed", "game_seed")
 _SEAT_KEYS = ("candidate_seat", "seat", "our_seat")
 
 
@@ -54,6 +56,41 @@ def _seat(value: Any) -> int:
     return value
 
 
+def _resolved_opponent(mapping: Mapping[str, Any], label: str = "record") -> str:
+    present: list[tuple[str, str]] = []
+    for key in _OPPONENT_KEYS:
+        if key not in mapping:
+            continue
+        value = mapping[key]
+        if not isinstance(value, str) or not value.strip():
+            raise DataError(f"{label}.{key} must be a non-empty string")
+        present.append((key, value.strip()))
+    if not present:
+        raise DataError(f"{label} missing opponent; expected one of: " + ", ".join(_OPPONENT_KEYS))
+    values = {value for _, value in present}
+    if len(values) != 1:
+        rendered = ", ".join(f"{key}={value!r}" for key, value in present)
+        raise DataError(f"{label} has contradictory opponent aliases: {rendered}")
+    return present[0][1]
+
+
+def _seed(value: Any, label: str) -> str:
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise DataError(f"{label} must be an integer or string")
+    return str(value)
+
+
+def _resolved_seed(mapping: Mapping[str, Any], label: str = "record") -> str:
+    present = [(key, _seed(mapping[key], f"{label}.{key}")) for key in _SEED_KEYS if key in mapping]
+    if not present:
+        raise DataError(f"{label} missing seed; expected one of: " + ", ".join(_SEED_KEYS))
+    values = {value for _, value in present}
+    if len(values) != 1:
+        rendered = ", ".join(f"{key}={value!r}" for key, value in present)
+        raise DataError(f"{label} has contradictory seed aliases: {rendered}")
+    return present[0][1]
+
+
 def _resolved_seat(mapping: Mapping[str, Any], label: str = "record") -> int:
     present = [(key, _seat(mapping[key])) for key in _SEAT_KEYS if key in mapping]
     if not present:
@@ -66,13 +103,7 @@ def _resolved_seat(mapping: Mapping[str, Any], label: str = "record") -> int:
 
 
 def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
-    opponent = _first(record, ("opponent", "opponent_name", "rival_name"))
-    if not isinstance(opponent, str) or not opponent.strip():
-        raise DataError("opponent must be a non-empty string")
-    seed = _first(record, ("seed", "game_seed"))
-    if isinstance(seed, bool) or not isinstance(seed, (int, str)):
-        raise DataError("seed must be an integer or string")
-    return opponent.strip(), str(seed), _resolved_seat(record)
+    return _resolved_opponent(record), _resolved_seed(record), _resolved_seat(record)
 
 
 def _score_sequence(value: Any, label: str) -> Sequence[Any]:
@@ -88,25 +119,79 @@ def _seat_ordered_scores(scores: Any, seat: int, label: str) -> tuple[float, flo
     return (seat0, seat1) if seat == 0 else (seat1, seat0)
 
 
+def _resolved_numeric_alias(mapping: Mapping[str, Any], keys: Sequence[str], label: str) -> float | object:
+    present = [(key, _number(mapping[key], f"{label}.{key}")) for key in keys if key in mapping]
+    if not present:
+        return _MISSING
+    first = present[0][1]
+    if any(not math.isclose(value, first, rel_tol=0.0, abs_tol=_EPS) for _, value in present[1:]):
+        rendered = ", ".join(f"{key}={value:.12g}" for key, value in present)
+        raise DataError(f"{label} has contradictory numeric aliases: {rendered}")
+    return first
+
+
+def _pairs_agree(left: tuple[float, float], right: tuple[float, float]) -> bool:
+    return all(math.isclose(a, b, rel_tol=0.0, abs_tol=_EPS) for a, b in zip(left, right))
+
+
+def _resolved_score_representations(label: str, representations: Sequence[tuple[str, tuple[float, float]]]) -> tuple[float, float]:
+    if not representations:
+        raise DataError(f"{label} missing score representation")
+    first_name, first_pair = representations[0]
+    for name, pair in representations[1:]:
+        if not _pairs_agree(first_pair, pair):
+            raise DataError(
+                f"{label} has contradictory score representations: "
+                f"{first_name}={first_pair!r}, {name}={pair!r}"
+            )
+    return first_pair
+
+
+def _explicit_pair(mapping: Mapping[str, Any], own_keys: Sequence[str], rival_keys: Sequence[str], label: str) -> tuple[float, float] | object:
+    own = _resolved_numeric_alias(mapping, own_keys, label)
+    rival = _resolved_numeric_alias(mapping, rival_keys, label)
+    if own is _MISSING and rival is _MISSING:
+        return _MISSING
+    if own is _MISSING or rival is _MISSING:
+        raise DataError(f"{label} explicit own/rival representation is incomplete")
+    return float(own), float(rival)
+
+
 def _pair_from_mapping(mapping: Mapping[str, Any], label: str, seat: int) -> tuple[float, float]:
+    representations: list[tuple[str, tuple[float, float]]] = []
     scores = mapping.get("scores", _MISSING)
     if scores is not _MISSING:
-        return _seat_ordered_scores(scores, seat, f"{label}.scores")
-    own = _first(mapping, ("own", "ours", "own_score", "our_score", "score"))
-    rival = _first(mapping, ("rival", "rival_score", "opponent_score", "their_score"))
-    return _number(own, f"{label}.own"), _number(rival, f"{label}.rival")
+        representations.append(("scores", _seat_ordered_scores(scores, seat, f"{label}.scores")))
+    explicit = _explicit_pair(
+        mapping,
+        ("own", "ours", "own_score", "our_score", "score"),
+        ("rival", "rival_score", "opponent_score", "their_score"),
+        label,
+    )
+    if explicit is not _MISSING:
+        representations.append(("own/rival", explicit))
+    return _resolved_score_representations(label, representations)
 
 
 def _arm_scores(record: Mapping[str, Any], arm: str, seat: int) -> tuple[float, float]:
-    nested = record.get(arm, _MISSING)
-    if isinstance(nested, Mapping):
-        return _pair_from_mapping(nested, arm, seat)
+    representations: list[tuple[str, tuple[float, float]]] = []
+    if arm in record:
+        nested = record[arm]
+        if not isinstance(nested, Mapping):
+            raise DataError(f"{arm} must be an object")
+        representations.append((arm, _pair_from_mapping(nested, arm, seat)))
     scores = record.get(f"{arm}_scores", _MISSING)
     if scores is not _MISSING:
-        return _seat_ordered_scores(scores, seat, f"{arm}_scores")
-    own = _first(record, (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"))
-    rival = _first(record, (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"))
-    return _number(own, f"{arm}_own"), _number(rival, f"{arm}_rival")
+        representations.append((f"{arm}_scores", _seat_ordered_scores(scores, seat, f"{arm}_scores")))
+    explicit = _explicit_pair(
+        record,
+        (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"),
+        (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"),
+        arm,
+    )
+    if explicit is not _MISSING:
+        representations.append((f"{arm}_own/rival", explicit))
+    return _resolved_score_representations(arm, representations)
 
 
 def _activation_mapping(record: Mapping[str, Any]) -> Mapping[str, Any]:
