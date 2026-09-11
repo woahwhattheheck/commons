@@ -11,6 +11,7 @@ from __future__ import annotations
 import copy
 import importlib
 import inspect
+import os
 from pathlib import Path
 import statistics
 import subprocess
@@ -21,8 +22,16 @@ HERE = Path(__file__).resolve()
 V3 = HERE.parents[2]
 OVERLAY = V3 / "overlay"
 SOURCE = OVERLAY / "r04_full_router.py"
+TAPES = OVERLAY / "r01_tapes.py"
 PATCH = HERE.with_name("production.patch")
+EXPECTED_BASE = "508b342fc46fa91e3d7cdc3f0b7e44934a187c14"
 EXPECTED_SOURCE_BLOB = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+EXPECTED_TAPES_BLOB = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
+EXPECTED_PATHS = {
+    ".github/workflows/titan-v31-r04-fast-clone-production-port.yml",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_fast_clone/production.patch",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/r04_fast_clone/validate_production_patch.py",
+}
 EXPECTED_ACTIONS = 13 * 719
 MIN_MEDIAN_SPEEDUP = 1.50
 
@@ -46,6 +55,33 @@ def run(*args: str) -> subprocess.CompletedProcess[str]:
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
     )
+
+
+def validate_checkout_custody() -> str:
+    expected_head = os.environ.get("TITAN_EXPECTED_HEAD_SHA", "").strip()
+    if not expected_head:
+        raise AssertionError("TITAN_EXPECTED_HEAD_SHA is required")
+    observed_head = run("git", "rev-parse", "HEAD").stdout.strip()
+    if observed_head != expected_head:
+        raise AssertionError(f"wrong checkout head: expected {expected_head}, got {observed_head}")
+    dirty = run("git", "status", "--porcelain").stdout.strip()
+    if dirty:
+        raise AssertionError(f"checkout is dirty before proof:\n{dirty}")
+    merge_base = run("git", "merge-base", EXPECTED_BASE, observed_head).stdout.strip()
+    if merge_base != EXPECTED_BASE:
+        raise AssertionError(
+            f"wrong frozen ancestry: expected merge-base {EXPECTED_BASE}, got {merge_base}"
+        )
+    changed = {
+        line.strip()
+        for line in run("git", "diff", "--name-only", f"{EXPECTED_BASE}...{observed_head}").stdout.splitlines()
+        if line.strip()
+    }
+    if changed != EXPECTED_PATHS:
+        missing = sorted(EXPECTED_PATHS - changed)
+        extra = sorted(changed - EXPECTED_PATHS)
+        raise AssertionError(f"wrong proof-only scope: missing={missing} extra={extra}")
+    return observed_head
 
 
 def validate_future_schema_fallback(r04) -> int:
@@ -95,10 +131,17 @@ def timed(fn, actions, repeats: int = 7) -> tuple[float, float]:
 
 
 def main() -> None:
+    observed_head = validate_checkout_custody()
+
     observed_blob = run("git", "hash-object", str(SOURCE.relative_to(ROOT))).stdout.strip()
     if observed_blob != EXPECTED_SOURCE_BLOB:
         raise AssertionError(
             f"wrong frozen R04 source blob: expected {EXPECTED_SOURCE_BLOB}, got {observed_blob}"
+        )
+    observed_tapes_blob = run("git", "hash-object", str(TAPES.relative_to(ROOT))).stdout.strip()
+    if observed_tapes_blob != EXPECTED_TAPES_BLOB:
+        raise AssertionError(
+            f"wrong frozen R01 tape blob: expected {EXPECTED_TAPES_BLOB}, got {observed_tapes_blob}"
         )
 
     run("git", "apply", "--check", str(PATCH.relative_to(ROOT)))
@@ -151,6 +194,7 @@ def main() -> None:
         )
 
     print("R04 FAST CLONE PRODUCTION PATCH PASS")
+    print(f"head={observed_head} base={EXPECTED_BASE} changed_paths={len(EXPECTED_PATHS)}")
     print(
         f"actions={len(actions)} fallback_shapes={fallback_shapes} "
         f"future_fallback_cases={future_fallback_cases}"
