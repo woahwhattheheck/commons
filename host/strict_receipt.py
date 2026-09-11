@@ -44,6 +44,13 @@ def _nonempty(value: Any, field: str) -> str:
     return value.strip()
 
 
+def _literal_nonempty(value: Any, field: str) -> str:
+    """Validate an identifier without rewriting its literal identity."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("%s must be a non-empty string" % field)
+    return value
+
+
 def _strict_int(value: Any, field: str) -> int:
     if type(value) is not int:  # bool is intentionally rejected.
         raise ValueError("%s must be a strict non-bool integer" % field)
@@ -84,7 +91,7 @@ def normalize_panel(value: Mapping[str, Any]) -> Dict[str, Any]:
     opponents: List[str] = []
     seen_opponents = set()
     for index, item in enumerate(opponents_in):
-        opponent = _nonempty(item, "requested_panel.opponents[%d]" % index)
+        opponent = _literal_nonempty(item, "requested_panel.opponents[%d]" % index)
         if opponent in seen_opponents:
             raise ValueError("duplicate requested opponent: %s" % opponent)
         seen_opponents.add(opponent)
@@ -104,7 +111,7 @@ def normalize_cell(value: Mapping[str, Any], index: int) -> Dict[str, Any]:
         raise ValueError("cells[%d] must contain exactly seed, opponent, score" % index)
     return {
         "seed": _strict_int(value["seed"], "cells[%d].seed" % index),
-        "opponent": _nonempty(value["opponent"], "cells[%d].opponent" % index),
+        "opponent": _literal_nonempty(value["opponent"], "cells[%d].opponent" % index),
         "score": _finite(value["score"], "cells[%d].score" % index),
     }
 
