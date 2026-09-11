@@ -1,0 +1,60 @@
+name: titan-v31-h3b-maxheld-harvest
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/**'
+      - '.github/workflows/titan-v31-h3b-maxheld-harvest.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact head, frozen base, and experiment-only scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$EXPECTED_BASE" = "508b342fc46fa91e3d7cdc3f0b7e44934a187c14"
+          git cat-file -e "$EXPECTED_BASE^{commit}"
+          test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+          unexpected="$(
+            git diff --name-only "$EXPECTED_BASE"...HEAD |
+            grep -Ev '^(\.github/workflows/titan-v31-h3b-maxheld-harvest\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/.*)$' || true
+          )"
+          test -z "$unexpected" || { printf 'unexpected paths:\n%s\n' "$unexpected"; exit 1; }
+          git diff --check "$EXPECTED_BASE"...HEAD
+          test -z "$(git status --short)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile exact H3b experiment
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/h3b_maxheld_harvest.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest/test_h3b_maxheld_harvest.py
+
+      - name: Run focused fail-closed contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest
+        run: python -B -m unittest -v test_h3b_maxheld_harvest.py
+
+      - name: Prove clean checkout
+        run: |
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --short)"
