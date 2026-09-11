@@ -74,7 +74,7 @@ def _replace_tail(route, tape, at, controller):
 
 def install(agent, enabled, tapes=None):
     """Seat plan 0 as the MAIN route contents. Identity when the key is off."""
-    state = {'plan': None, 'endgame': False, 'reasons': [], 'replaced': 0}
+    state = {'plan': None, 'endgame': False, 'reasons': [], 'replaced': 0, 'replaced_total': 0}
     if not enabled:
         state['reasons'].append(NOOP)
         agent._v3_r02 = state
@@ -83,7 +83,9 @@ def install(agent, enabled, tapes=None):
     tapes = tapes if tapes is not None else load_tapes()
     controller = agent.controller
     route = controller.R[_route_id(controller)]
-    state['replaced'] += _replace_tail(route, tapes[0], 0, controller)
+    replaced = _replace_tail(route, tapes[0], 0, controller)
+    state['replaced'] = replaced
+    state['replaced_total'] = replaced
     state['plan'] = 0
     state['tapes'] = tapes
     state['reasons'].append('R02_seated:plan0')
@@ -92,10 +94,16 @@ def install(agent, enabled, tapes=None):
 
 
 def step(agent, observation, enabled):
-    """Apply the published switches for this step. Idempotent; identity when off."""
+    """Apply the published switches for this step. Idempotent; identity when off.
+
+    ``replaced`` is the number of route rows replaced by this call so runtime diagnostics
+    describe the current turn. ``replaced_total`` preserves the cumulative custody count.
+    """
     state = getattr(agent, '_v3_r02', None)
     if not enabled or state is None or state.get('tapes') is None:
         return state
+    state.setdefault('replaced_total', int(state.get('replaced') or 0))
+    state['replaced'] = 0
     obs_step = observation.get('step')
     if obs_step is None:
         obs_step = int(observation.get('day', 0)) * 24 + int(observation.get('hour', 0))
@@ -106,11 +114,15 @@ def step(agent, observation, enabled):
     if obs_step >= ROUTE_STEP and state.get('plan') in (None, 0):
         chosen = plan_for(observation)
         if chosen:
-            state['replaced'] += _replace_tail(route, tapes[chosen], ROUTE_STEP, controller)
+            replaced = _replace_tail(route, tapes[chosen], ROUTE_STEP, controller)
+            state['replaced'] += replaced
+            state['replaced_total'] += replaced
         state['plan'] = chosen
         state['reasons'].append('R02_plan:%d' % chosen)
     if obs_step >= FINAL_PLAN_STEP and not state.get('endgame'):
-        state['replaced'] += _replace_tail(route, tapes[FINAL_PLAN], FINAL_PLAN_STEP, controller)
+        replaced = _replace_tail(route, tapes[FINAL_PLAN], FINAL_PLAN_STEP, controller)
+        state['replaced'] += replaced
+        state['replaced_total'] += replaced
         state['endgame'] = True
         state['reasons'].append('R02_endgame:plan%d' % FINAL_PLAN)
     return state
