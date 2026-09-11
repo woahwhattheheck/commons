@@ -62,12 +62,20 @@ def _action():
 
 def _standard_config():
     return {
+        "episodeSteps": 720,
         "boardSize": 10,
         "turnsPerDay": 24,
         "shedCapacity": 100,
         "maxMarketOrdersPerTurn": 10,
         "marketParams": {},
     }
+
+
+def _apply(observation, action, configuration=None, enabled=True):
+    if configuration is None:
+        configuration = _standard_config()
+    return lane.apply_feed_prebuy(
+        observation, action, configuration=configuration, enabled=enabled)
 
 
 class FeedPrebuyTests(unittest.TestCase):
@@ -89,49 +97,77 @@ class FeedPrebuyTests(unittest.TestCase):
 
     def test_disabled_returns_exact_parent(self):
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(_observation(), parent, enabled=False), parent)
+        self.assertIs(_apply(_observation(), parent, enabled=False), parent)
 
     def test_two_wheat_prebuy_unlocks_literal_v217_rescue(self):
         parent = _action()
-        out = lane.apply_feed_prebuy(_observation(wheat=0), parent, enabled=True)
+        out = _apply(_observation(wheat=0), parent)
         self.assertIsNot(out, parent)
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
         self.assertEqual(parent["market"], [])
 
     def test_explicit_standard_config_preserves_activation(self):
-        out = lane.apply_feed_prebuy(
-            _observation(wheat=0), _action(), configuration=_standard_config(), enabled=True)
+        out = _apply(_observation(wheat=0), _action(), configuration=_standard_config())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
+    def test_kaggle_attribute_config_preserves_activation(self):
+        values = _standard_config()
+        values.pop("marketParams")  # absent is standard semantics too
+        config = SimpleNamespace(**values)
+        out = lane.apply_feed_prebuy(
+            _observation(wheat=0), _action(), configuration=config, enabled=True)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
+    def test_missing_config_and_nonstandard_episode_fail_closed(self):
+        parent = _action()
+        self.assertIs(
+            lane.apply_feed_prebuy(_observation(), parent, configuration=None, enabled=True),
+            parent,
+        )
+
+        config = _standard_config()
+        config["episodeSteps"] = 721
+        parent = _action()
+        self.assertIs(_apply(_observation(), parent, configuration=config), parent)
+
+        attr_config = SimpleNamespace(**_standard_config())
+        attr_config.episodeSteps = 721
+        parent = _action()
+        self.assertIs(
+            lane.apply_feed_prebuy(
+                _observation(), parent, configuration=attr_config, enabled=True),
+            parent,
+        )
+
     def test_engine_float_money_activates_and_type_poison_fails_closed(self):
-        out = lane.apply_feed_prebuy(_observation(money=5000.0), _action(), enabled=True)
+        out = _apply(_observation(money=5000.0), _action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
         for bad_money in (True, float("nan"), float("inf"), float("-inf"), -1.0, "5000"):
             parent = _action()
             with self.subTest(money=bad_money):
                 self.assertIs(
-                    lane.apply_feed_prebuy(_observation(money=bad_money), parent, enabled=True),
+                    _apply(_observation(money=bad_money), parent),
                     parent,
                 )
 
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
-        out = lane.apply_feed_prebuy(_observation(wheat=1), _action(), enabled=True)
+        out = _apply(_observation(wheat=1), _action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 1]])
 
     def test_does_not_buy_when_v217_is_already_funded(self):
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(_observation(wheat=2), parent, enabled=True), parent)
+        self.assertIs(_apply(_observation(wheat=2), parent), parent)
 
     def test_existing_market_order_is_a_hard_barrier(self):
         parent = _action()
         parent["market"] = [["SELL", "CARROT", 1]]
-        self.assertIs(lane.apply_feed_prebuy(_observation(), parent, enabled=True), parent)
+        self.assertIs(_apply(_observation(), parent), parent)
 
     def test_nonpass_unit_action_is_a_hard_barrier(self):
         parent = _action()
         parent["farmer"] = ["EAST"]
-        self.assertIs(lane.apply_feed_prebuy(_observation(), parent, enabled=True), parent)
+        self.assertIs(_apply(_observation(), parent), parent)
 
     def test_actor_surface_must_be_explicit_and_cardinality_exact(self):
         obs = _observation()
@@ -142,21 +178,22 @@ class FeedPrebuyTests(unittest.TestCase):
         malformed.extend((missing_farmer, missing_hands, empty_farmer))
         for parent in malformed:
             with self.subTest(parent=parent):
-                self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
+                self.assertIs(_apply(obs, parent), parent)
 
         one_hand_obs = _observation()
         one_hand_obs["farms"][0]["hands"] = [[4, 4]]
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(one_hand_obs, parent, enabled=True), parent)
+        self.assertIs(_apply(one_hand_obs, parent), parent)
 
         one_hand_obs["private"]["inventories"] = [{}, {}]
         parent = {"farmer": ["PASS"], "hands": [["PASS"]], "market": []}
-        out = lane.apply_feed_prebuy(one_hand_obs, parent, enabled=True)
+        out = _apply(one_hand_obs, parent)
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
     def test_nonstandard_engine_contract_fails_closed(self):
         obs = _observation()
         variants = (
+            ("episodeSteps", 719),
             ("boardSize", 11),
             ("turnsPerDay", 23),
             ("shedCapacity", 99),
@@ -170,16 +207,21 @@ class FeedPrebuyTests(unittest.TestCase):
             parent = _action()
             with self.subTest(key=key, value=value):
                 self.assertIs(
-                    lane.apply_feed_prebuy(obs, parent, configuration=config, enabled=True),
+                    _apply(obs, parent, configuration=config),
                     parent,
                 )
 
-        parent = _action()
-        config = _standard_config(); config["marketParams"] = {"WHEAT": {}}
-        self.assertIs(lane.apply_feed_prebuy(obs, parent, configuration=config, enabled=True), parent)
+        for market_params in ({"WHEAT": {}}, [], "", 0, False):
+            parent = _action()
+            config = _standard_config(); config["marketParams"] = market_params
+            with self.subTest(marketParams=market_params):
+                self.assertIs(_apply(obs, parent, configuration=config), parent)
 
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(obs, parent, configuration=[], enabled=True), parent)
+        self.assertIs(
+            lane.apply_feed_prebuy(obs, parent, configuration=[], enabled=True),
+            parent,
+        )
 
     def test_malformed_negative_planner_target_fails_closed(self):
         obs = _observation(wheat=0)
@@ -196,38 +238,38 @@ class FeedPrebuyTests(unittest.TestCase):
             return {"target": [-1, 4]} if view.shed.get("WHEAT", 0) >= 2 else None
 
         with mock.patch.object(r04, "_v217_plan", side_effect=malformed_plan):
-            self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
+            self.assertIs(_apply(obs, parent), parent)
 
     def test_low_output_value_rejects_purchase(self):
         parent = _action()
         self.assertIs(
-            lane.apply_feed_prebuy(_observation(wheat_price=40, egg_price=50), parent, enabled=True),
+            _apply(_observation(wheat_price=40, egg_price=50), parent),
             parent,
         )
 
     def test_cash_reserve_rejects_purchase(self):
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(_observation(money=1050.0), parent, enabled=True), parent)
+        self.assertIs(_apply(_observation(money=1050.0), parent), parent)
 
     def test_capacity_rejects_purchase(self):
         obs = _observation()
         obs["private"]["shed"] = {"WHEAT": 0, "CARROT": 99}
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
+        self.assertIs(_apply(obs, parent), parent)
 
     def test_wrong_hour_returns_exact_parent(self):
         obs = _observation()
         obs["step"] = 38
         r04._POLICY.players[0].last_step = 38
         parent = _action()
-        self.assertIs(lane.apply_feed_prebuy(obs, parent, enabled=True), parent)
+        self.assertIs(_apply(obs, parent), parent)
 
     def test_parent_and_observation_are_not_mutated(self):
         obs = _observation()
         parent = _action()
         before_obs = copy.deepcopy(obs)
         before_parent = copy.deepcopy(parent)
-        lane.apply_feed_prebuy(obs, parent, enabled=True)
+        _apply(obs, parent)
         self.assertEqual(obs, before_obs)
         self.assertEqual(parent, before_parent)
 
