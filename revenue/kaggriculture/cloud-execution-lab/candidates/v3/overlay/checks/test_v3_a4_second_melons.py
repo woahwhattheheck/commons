@@ -164,6 +164,21 @@ class HiringTests(unittest.TestCase):
         out = a4.apply_a4(obs2, empty_action(hands=0), enabled=True)
         self.assertEqual(out["hands"], [])
 
+    def test_late_second_hire_gets_queue(self):
+        # Hire 1 lands on step 290 -> crew [1], queues built for one worker.
+        obs1 = synthetic_observation(289, money=5000, seeds={"MELON": 6})
+        a4.apply_a4(obs1, empty_action(), enabled=True)
+        obs2 = synthetic_observation(290, money=5000, seeds={"MELON": 6},
+                                     hands=[[6, 6]])
+        out2 = a4.apply_a4(obs2, empty_action(hands=1), enabled=True)
+        self.assertNotEqual(out2["hands"][0], ["PASS"])
+        # Hire 2 lands a step later -> crew grows mid-day; queues rebuild so
+        # the second worker is not left idle.
+        obs3 = synthetic_observation(291, money=5000, seeds={"MELON": 6},
+                                     hands=[[6, 6], [6, 5]])
+        out3 = a4.apply_a4(obs3, empty_action(hands=2), enabled=True)
+        self.assertNotEqual(out3["hands"][1], ["PASS"])
+
 
 class WorkerProgramTests(unittest.TestCase):
     def setUp(self):

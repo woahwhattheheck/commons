@@ -80,7 +80,9 @@ def reset():
     """Clear per-player state and telemetry (episode boundary / test isolation)."""
     _STATES.clear()
     for key in REPORT:
-        REPORT[key] = 0 if isinstance(REPORT[key], int) else False
+        # NB: bool is a subclass of int; check it first so "enabled" resets to
+        # False, not 0.
+        REPORT[key] = False if isinstance(REPORT[key], bool) else 0
 
 
 def _new_state():
@@ -91,6 +93,7 @@ def _new_state():
         "hire_pending": False,
         "queues": {},        # cmd_idx -> deque of jobs
         "jobs_built_day": -1,
+        "jobs_built_crew": (),  # crew tuple the queues were built for
     }
 
 
@@ -205,6 +208,7 @@ def _build_jobs(state, tiles, plant_day, day, count, board, crew):
             queues[worker] = q
     state["queues"] = queues
     state["jobs_built_day"] = day
+    state["jobs_built_crew"] = tuple(crew)
 
 
 def _crew_command(state, worker, obs, farm, board, plant_day, day, count, seeds):
@@ -356,7 +360,11 @@ def apply_a4(observation, action, *, enabled=False, count=DEFAULT_COUNT,
         action["market"] = market
 
     # --- workers: (re)build today's job queues once the crew is known --------
-    if state["crew"] and state["jobs_built_day"] != day:
+    # Rebuild when the crew membership changes mid-day (e.g. the second hire
+    # lands a step after the first), not just on day rollover, so a late
+    # worker is never left without a queue.
+    if state["crew"] and (state["jobs_built_day"] != day
+                          or tuple(state["crew"]) != state["jobs_built_crew"]):
         _build_jobs(state, farm["tiles"], plant_day, day, count, board, state["crew"])
 
     if not state["crew"]:

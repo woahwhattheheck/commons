@@ -12,8 +12,8 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "ea5a74d30e0378e06ff60fdd3e01a7d6a925e277c02982bbe29add997fdf1d8a",
-    "bytes": 537706,
+    "sha256": "80c9af5baa83764f99dd90664c44c20105214ecd97666e738a071b4dcb49796b",
+    "bytes": 538061,
     "files": 128
   },
   "releases": [
@@ -335,8 +335,8 @@
     "results": []
   },
   "overlay": {
-    "a4_second_melons.py": "33bc61330b868116e8d7c5220b0886ddba11a8ac89e275dd6e73f013c2d8a85f",
-    "checks/test_v3_a4_second_melons.py": "d926c2a40cc96f791e7f241aedfa87be5d2e600320bfbeba688b9870a717d92c",
+    "a4_second_melons.py": "22f58ceefbb41e1aef180c5ac8c0ab1728d91a086a2ca4abf1353a3dcd3f6a39",
+    "checks/test_v3_a4_second_melons.py": "40bde58265643b6a4b448d297eaf20531e579321ded6b31c8375fea3a4714ada",
     "checks/test_v3_features.py": "19f8c42da93bf9d1f7db7722af80f5b6ab12c249362ddb95d9142c1c57d76e8d",
     "checks/test_v3_l01.py": "fb3a4ecebbc37021977423dfc23cc0bb3db75eddc41dae6a9db8eb490462a589",
     "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
