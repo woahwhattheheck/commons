@@ -24,6 +24,10 @@ class B5CarrotFertilizerTest(unittest.TestCase):
     def setUp(self):
         m.REPORT["carrot_fertilize_requests"] = 0
 
+    def assertIdentity(self, obs, action):
+        self.assertIs(m.apply_carrot_fertilizer(obs, action), action)
+        self.assertEqual(m.REPORT["carrot_fertilize_requests"], 0)
+
     def test_eligible_pass_becomes_fertilize_without_mutating_input(self):
         obs = observation({"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1})
         action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2]]}
@@ -41,16 +45,13 @@ class B5CarrotFertilizerTest(unittest.TestCase):
             ({"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}, ["WATER"]),
         ):
             with self.subTest(tile=tile, command=command):
-                action = {"farmer": command, "hands": [], "market": []}
-                self.assertIs(m.apply_carrot_fertilizer(observation(tile), action), action)
+                self.assertIdentity(observation(tile), {"farmer": command, "hands": [], "market": []})
 
     def test_requires_carried_fertilizer_and_incomplete_three_day_coverage(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
-        action = {"farmer": ["PASS"], "hands": [], "market": []}
-        self.assertIs(m.apply_carrot_fertilizer(observation(carrot, fertilizer=0), action), action)
-        # step 120 is day 5; coverage through day 7 is already complete.
+        self.assertIdentity(observation(carrot, fertilizer=0), {"farmer": ["PASS"], "hands": [], "market": []})
         covered = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": 7}
-        self.assertIs(m.apply_carrot_fertilizer(observation(covered), action), action)
+        self.assertIdentity(observation(covered), {"farmer": ["PASS"], "hands": [], "market": []})
 
     def test_duplicate_workers_on_one_tile_consume_at_most_one_request(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
@@ -61,12 +62,53 @@ class B5CarrotFertilizerTest(unittest.TestCase):
         self.assertEqual(result["hands"], [["PASS"]])
         self.assertEqual(m.REPORT["carrot_fertilize_requests"], 1)
 
-    def test_bad_position_fails_closed(self):
+    def test_bad_position_is_identity(self):
         carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
         obs = observation(carrot)
         obs["farms"][0]["farmer"] = [99, 99]
+        self.assertIdentity(obs, {"farmer": ["PASS"], "hands": [], "market": []})
+
+    def test_falsey_or_missing_command_never_fabricates_pass(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        for value in (None, [], ""):
+            with self.subTest(value=value):
+                self.assertIdentity(observation(carrot), {"farmer": value, "hands": [], "market": []})
+        self.assertIdentity(observation(carrot), {"hands": [], "market": []})
+
+    def test_noncanonical_integer_fields_fail_closed(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
         action = {"farmer": ["PASS"], "hands": [], "market": []}
-        self.assertIs(m.apply_carrot_fertilizer(obs, action), action)
+        cases = []
+        for bad in (True, 1.0, "1"):
+            obs = observation(carrot, fertilizer=bad); cases.append(obs)
+            obs = observation(carrot); obs["step"] = bad; cases.append(obs)
+            obs = observation(carrot); obs["player"] = bad; cases.append(obs)
+            obs = observation(carrot); obs["farms"][0]["farmer"] = [bad, 0]; cases.append(obs)
+            obs = observation(carrot); obs["farms"][0]["farmer"] = [0, bad]; cases.append(obs)
+        for obs in cases:
+            with self.subTest(obs=obs):
+                self.assertIdentity(obs, action)
+
+    def test_missing_or_malformed_coverage_fails_closed(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        for coverage in (None, True, 1.0, "1"):
+            tile = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": coverage}
+            with self.subTest(coverage=coverage):
+                self.assertIdentity(observation(tile), action)
+        tile = {"kind": "PLANT", "crop": "CARROT"}
+        self.assertIdentity(observation(tile), action)
+
+    def test_malformed_shapes_fail_closed(self):
+        carrot = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": -1}
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        variants = []
+        obs = observation(carrot); obs["private"]["inventories"] = None; variants.append(obs)
+        obs = observation(carrot); obs["farms"][0]["hands"] = None; variants.append(obs)
+        obs = observation(carrot); obs["farms"][0]["tiles"] = None; variants.append(obs)
+        obs = observation(carrot); obs["private"]["inventories"] = []; variants.append(obs)
+        for obs in variants:
+            with self.subTest(obs=obs):
+                self.assertIdentity(obs, action)
 
     def test_live_baseline_tuple_is_explicit(self):
         self.assertEqual(m.LIVE_BASELINE, {
