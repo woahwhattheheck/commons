@@ -1,0 +1,62 @@
+name: titan-v31-h3c-goose-eod-cap-rescue
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue/**'
+      - '.github/workflows/titan-v31-h3c-goose-eod-cap-rescue.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact head, frozen base, source blobs, and scope
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$EXPECTED_BASE" = "508b342fc46fa91e3d7cdc3f0b7e44934a187c14"
+          git cat-file -e "$EXPECTED_BASE^{commit}"
+          test "$(git merge-base "$EXPECTED_BASE" HEAD)" = "$EXPECTED_BASE"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "21c4f1db0298f8955b1f5ad366bd780a89cad206"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py)" = "3c202c7ee921da239356789e266b694635103fc4"
+          unexpected="$(
+            git diff --name-only "$EXPECTED_BASE"...HEAD |
+            grep -Ev '^(\.github/workflows/titan-v31-h3c-goose-eod-cap-rescue\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue/.*)$' || true
+          )"
+          test -z "$unexpected" || { printf 'unexpected paths:\n%s\n' "$unexpected"; exit 1; }
+          git diff --check "$EXPECTED_BASE"...HEAD
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile exact experiment
+        run: |
+          python -B -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue/h3c_goose_eod_cap_rescue.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue/candidate.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue/test_h3c_goose_eod_cap_rescue.py
+
+      - name: Run focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_eod_cap_rescue
+        run: python -B -m unittest -v test_h3c_goose_eod_cap_rescue.py
+
+      - name: Prove clean checkout
+        run: |
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --short)"
