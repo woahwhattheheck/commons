@@ -120,6 +120,7 @@ jobs:
           p = Path(sys.argv[1])
           compile(p.read_text(encoding='utf-8'), str(p), 'exec')
           PY
+          git hash-object "$CAND" | tee "$RUNNER_TEMP/c4-repaired-postimage.txt"
           test -z "$(find . -type d -name __pycache__ -print -quit)"
 
       - name: Run inherited C4 predecessors
@@ -144,13 +145,17 @@ jobs:
           grep -F 'Ran 4 tests' "$RUNNER_TEMP/c4-repair.log"
           grep -F 'OK' "$RUNNER_TEMP/c4-repair.log"
 
-      - name: Restore donor source and prove clean checkout
+      - name: Restore donor, recheck live root, and prove clean checkout
         shell: bash
         run: |
           set -euo pipefail
+          ROOT='8e3d92a286806f9f9525973ee7d359b629a11487'
           CAND='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py'
           git checkout -- "$CAND"
           test -z "$(git status --porcelain)"
+          # A proof that started on 8e3 must not finish green after canonical has advanced.
+          git fetch --no-tags origin '+refs/heads/titan/v3.1-20260911:refs/remotes/origin/titan/v3.1-20260911'
+          test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
           echo C4_8E3_REPAIRED_DONOR_OK
 
       - name: Upload source-proof logs
@@ -161,5 +166,6 @@ jobs:
           path: |
             ${{ runner.temp }}/c4-parent.log
             ${{ runner.temp }}/c4-repair.log
+            ${{ runner.temp }}/c4-repaired-postimage.txt
           if-no-files-found: error
           retention-days: 14
