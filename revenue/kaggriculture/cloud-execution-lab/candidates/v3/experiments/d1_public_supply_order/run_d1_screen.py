@@ -342,10 +342,10 @@ def exact_cells(report: dict, label: str) -> dict[tuple[int, int], dict]:
     return result
 
 
-def side_scores(game: dict) -> tuple[float, float]:
+def side_scores(game: dict) -> tuple[int | float, int | float]:
     seat = game["candidate_seat"]
     scores = game["scores"]
-    return float(scores[seat]), float(scores[1 - seat])
+    return scores[seat], scores[1 - seat]
 
 
 def summarize(control: dict[tuple[int, int], dict], candidate: dict[tuple[int, int], dict]) -> dict:
