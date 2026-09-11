@@ -1,0 +1,56 @@
+name: TITAN V3.1 H5 terminal animal capital
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_terminal_animal_capital/**"
+      - ".github/workflows/titan-v31-h5-terminal-animal-capital.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind frozen base and exact additive scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=508b342fc46fa91e3d7cdc3f0b7e44934a187c14
+          git cat-file -e "${BASE}^{commit}"
+          git merge-base --is-ancestor "$BASE" HEAD
+
+          expected="$(mktemp)"
+          actual="$(mktemp)"
+          cat >"$expected" <<'EOF'
+          .github/workflows/titan-v31-h5-terminal-animal-capital.yml
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_terminal_animal_capital/README.md
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_terminal_animal_capital/candidate.py
+          revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_terminal_animal_capital/test_candidate.py
+          EOF
+          git diff --name-only "$BASE"...HEAD | sort >"$actual"
+          diff -u "$expected" "$actual"
+
+      - name: Run focused predecessors normally and under python -O
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h5_terminal_animal_capital
+          python -m py_compile "$DIR/candidate.py" "$DIR/test_candidate.py"
+          python -m unittest discover -s "$DIR" -p 'test_candidate.py' -v
+          python -O -m unittest discover -s "$DIR" -p 'test_candidate.py' -v
+
+      - name: Require clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
