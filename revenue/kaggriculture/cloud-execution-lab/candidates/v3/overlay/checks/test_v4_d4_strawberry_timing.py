@@ -63,6 +63,7 @@ class D4V4Tests(unittest.TestCase):
     def setUp(self):
         self.old_horizon = r04.SALE_HORIZON
         self.old_flush = r04.EVENING_FLUSH
+        self.old_min_price = getattr(r04, "D4_STRAWBERRY_MIN_PRICE", 180)
         r04.SALE_HORIZON = 8
         r04.EVENING_FLUSH = True
         for key in d4.REPORT:
@@ -73,23 +74,37 @@ class D4V4Tests(unittest.TestCase):
         r04.EVENING_FLUSH = self.old_flush
         if hasattr(r04, "D4_STRAWBERRY_TIMING"):
             r04.D4_STRAWBERRY_TIMING = False
+        if hasattr(r04, "D4_STRAWBERRY_MIN_PRICE"):
+            r04.D4_STRAWBERRY_MIN_PRICE = self.old_min_price
 
     def test_key_ships_off_and_install_round_trips(self):
         data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
         self.assertIs(data["r04_d4_strawberry_timing"], False)
-        self.assertIs(Features(**data).r04_d4_strawberry_timing, False)
-        r04.install(d4_strawberry_timing=True)
+        self.assertEqual(data["r04_d4_strawberry_min_price"], 180)
+        features = Features(**data)
+        self.assertIs(features.r04_d4_strawberry_timing, False)
+        self.assertEqual(features.r04_d4_strawberry_min_price, 180)
+        r04.install(d4_strawberry_timing=True, d4_strawberry_min_price=211)
         self.assertIs(r04.D4_STRAWBERRY_TIMING, True)
+        self.assertEqual(r04.D4_STRAWBERRY_MIN_PRICE, 211)
         r04.install(d4_strawberry_timing=False)
         self.assertIs(r04.D4_STRAWBERRY_TIMING, False)
 
-    def test_d4_is_composed_before_row_order_and_evening_flush(self):
+    def test_install_rejects_type_poisoned_or_too_low_threshold(self):
+        for bad in (True, 1, 1.0, "180"):
+            with self.subTest(value=bad):
+                before = r04.D4_STRAWBERRY_MIN_PRICE
+                with self.assertRaises(ValueError):
+                    r04.install(d4_strawberry_min_price=bad)
+                self.assertEqual(r04.D4_STRAWBERRY_MIN_PRICE, before)
+
+    def test_d4_is_composed_after_h4_before_row_order_and_evening_flush(self):
         source = inspect.getsource(r04._v3_stack)
-        self.assertLess(source.index("r04_d4_strawberry_timing.apply_d4"),
-                        source.index("if ROW_ORDER"))
-        self.assertLess(source.index("r04_d4_strawberry_timing.apply_d4"),
-                        source.index("if EVENING_FLUSH"))
-        self.assertIn("observation, action, configuration, enabled=True", source)
+        d4_index = source.index("r04_d4_strawberry_timing.apply_d4")
+        self.assertLess(source.index("if STRAWBERRY_TOPUP"), d4_index)
+        self.assertLess(d4_index, source.index("if ROW_ORDER"))
+        self.assertLess(d4_index, source.index("if EVENING_FLUSH"))
+        self.assertIn("min_price=D4_STRAWBERRY_MIN_PRICE", source)
 
     def test_disabled_apply_returns_exact_parent_object(self):
         parent = action()

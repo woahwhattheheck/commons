@@ -33,6 +33,7 @@ def apply(src):
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
         "D4_STRAWBERRY_TIMING = False\n"
+        "D4_STRAWBERRY_MIN_PRICE = 180\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -63,7 +64,8 @@ def apply(src):
         "    if D4_STRAWBERRY_TIMING:\n"
         "        import r04_d4_strawberry_timing\n"
         "        action = r04_d4_strawberry_timing.apply_d4(\n"
-        "            observation, action, configuration, enabled=True)\n"
+        "            observation, action, configuration, enabled=True,\n"
+        "            min_price=D4_STRAWBERRY_MIN_PRICE)\n"
         "    if ROW_ORDER and ROW_SHED:\n",
         "R04 D4 pre-order/pre-flush seam",
     )
@@ -71,7 +73,8 @@ def apply(src):
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None, d4_strawberry_timing=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, d4_strawberry_timing=None,\n"
+        "            d4_strawberry_min_price=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -82,13 +85,15 @@ def apply(src):
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
-        "    d4_strawberry_timing advances only repaired, authored pre-flush STRAWBERRY sale quantity.\n",
+        "    d4_strawberry_timing advances only repaired, authored pre-flush STRAWBERRY sale quantity\n"
+        "    at d4_strawberry_min_price or higher (default 180).\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, D4_STRAWBERRY_TIMING\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n"
+        "    global D4_STRAWBERRY_TIMING, D4_STRAWBERRY_MIN_PRICE\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -104,6 +109,10 @@ def apply(src):
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
         "    if d4_strawberry_timing is not None:\n"
         "        D4_STRAWBERRY_TIMING = bool(d4_strawberry_timing)\n"
+        "    if d4_strawberry_min_price is not None:\n"
+        "        if type(d4_strawberry_min_price) is not int or d4_strawberry_min_price < 2:\n"
+        "            raise ValueError(\"D4 strawberry minimum price must be an integer >= 2\")\n"
+        "        D4_STRAWBERRY_MIN_PRICE = d4_strawberry_min_price\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -116,7 +125,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
         "    r04_goose_pass_rescue: bool = False\n"
-        "    r04_d4_strawberry_timing: bool = False\n\n    def __post_init__(self):",
+        "    r04_d4_strawberry_timing: bool = False\n"
+        "    r04_d4_strawberry_min_price: int = 180\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -127,7 +137,8 @@ def apply(src):
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
         "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
-        "                                 d4_strawberry_timing=bool(self.features.r04_d4_strawberry_timing))(observation, configuration)\n",
+        "                                 d4_strawberry_timing=bool(self.features.r04_d4_strawberry_timing),\n"
+        "                                 d4_strawberry_min_price=self.features.r04_d4_strawberry_min_price)(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -136,7 +147,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
         "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
-        "                self.diagnostics['d4_strawberry_timing'] = bool(self.features.r04_d4_strawberry_timing)\n",
+        "                self.diagnostics['d4_strawberry_timing'] = bool(self.features.r04_d4_strawberry_timing)\n"
+        "                self.diagnostics['d4_strawberry_min_price'] = self.features.r04_d4_strawberry_min_price\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
@@ -146,6 +158,8 @@ def apply(src):
     for key in KEYS:
         assert key not in data, key
         data[key] = False
+    assert "r04_d4_strawberry_min_price" not in data
+    data["r04_d4_strawberry_min_price"] = 180
     with io.open(cfg_path, "w", encoding="utf-8", newline="\n") as handle:
         handle.write(json.dumps(data, indent=2) + "\n")
     return src
