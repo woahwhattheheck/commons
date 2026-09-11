@@ -14,22 +14,33 @@ same-item BUY_PRODUCT / BUY_ANIMAL remain barriers exactly as in V224.
 from __future__ import annotations
 
 MAX_ORDERS = 10
-_QUANTITY_VERBS = {"BUY_PRODUCT", "BUY_ANIMAL", "BUY_SEED", "SELL"}
+_PRODUCTS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
+             "EGG", "MILK", "WOOL", "FERTILIZER"}
+_SEEDS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
+_ANIMALS = {"GOOSE", "COW", "SHEEP"}
+_ITEM_DOMAINS = {
+    "BUY_PRODUCT": _PRODUCTS,
+    "BUY_ANIMAL": _ANIMALS,
+    "BUY_SEED": _SEEDS,
+    "SELL": _PRODUCTS,
+}
 
 
 def _positive_effect(row):
     if not isinstance(row, list) or not row or type(row[0]) is not str:
         return False
-    if row[0] in ("HIRE", "BUY_LAND"):
+    verb = row[0]
+    if verb in ("HIRE", "BUY_LAND"):
         return True
-    if row[0] not in _QUANTITY_VERBS:
+    domain = _ITEM_DOMAINS.get(verb)
+    if domain is None or len(row) < 3:
         return False
-    return len(row) >= 3 and type(row[2]) is int and row[2] > 0
+    return (type(row[1]) is str and row[1] in domain
+            and type(row[2]) is int and row[2] > 0)
 
 
 def _sell_item(row):
-    if (not isinstance(row, list) or len(row) < 3 or row[0] != "SELL"
-            or type(row[1]) is not str or type(row[2]) is not int or row[2] <= 0):
+    if not _positive_effect(row) or row[0] != "SELL":
         return None
     return row[1]
 
