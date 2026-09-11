@@ -1,0 +1,171 @@
+name: titan-v31-e20-current-root-recompose
+
+on:
+  pull_request:
+    branches:
+      - 'astra/v31-a612-restore-5f6-canonical-archive-20260911'
+      - 'titan/v3.1-20260911'
+    paths:
+      - '.github/workflows/titan-v31-e20-current-root-recompose.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-e20-current-root-recompose-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind current root, custody parent, donor bytes, and scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          STACK_REF='astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          SRC='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+          WF='.github/workflows/titan-v31-e20-current-root-recompose.yml'
+          FILES='revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+          MANIFEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$STACK" HEAD)" = "$STACK"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | cut -f1)" = "$ROOT"
+          test "$(git ls-remote origin refs/heads/$STACK_REF | cut -f1)" = "$STACK"
+
+          test "$(git rev-parse "$STACK:$SRC")" = '341eed454cae08cfeba31b5205a10263e50999d8'
+          test "$(git rev-parse "$STACK:$TEST")" = '20b18deda0fa1a58f5200f8934255019561bdef7'
+          test "$(git rev-parse "HEAD:$SRC")" = 'cd497140d188794d610d3ae387de8758ecbd0765'
+          test "$(git rev-parse "HEAD:$TEST")" = '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f'
+          test "$(git rev-parse "$STACK:revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+
+          git diff --name-only "$STACK"..HEAD > /tmp/e20-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/e20-paths.txt').read_text().splitlines())
+          staging = {
+              '.github/workflows/titan-v31-e20-current-root-recompose.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+          }
+          final = staging | {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+          }
+          if actual == staging:
+              mode = 'staging'
+          elif actual == final:
+              mode = 'final'
+          else:
+              raise SystemExit(f'unexpected E20 current-root scope: {sorted(actual)!r}')
+          Path('/tmp/e20-mode').write_text(mode)
+          print('E20_CURRENT_ROOT_SCOPE_OK', mode, len(actual))
+          PY
+          git diff --check "$STACK"..HEAD
+          test -z "$(git status --porcelain)"
+
+      - name: Run reviewed E20 source predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest -v checks/test_v3_features.py
+
+      - name: Build staging handoff or verify committed package metadata
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          MODE="$(cat /tmp/e20-mode)"
+          OUT="$RUNNER_TEMP/e20-current-root"
+          TREE="$RUNNER_TEMP/e20-current-root-tree"
+          mkdir -p "$OUT" "$TREE"
+          if [ "$MODE" = staging ]; then
+            python -B build_v3.py |& tee "$OUT/build.log"
+            grep -F 'V3 BUILD ' "$OUT/build.log"
+            python -B build_v3.py --check |& tee "$OUT/check.log"
+            git diff -- FILES.json V3-MANIFEST.json > "$OUT/generated-metadata.patch"
+            test -s "$OUT/generated-metadata.patch"
+          else
+            python -B build_v3.py --check |& tee "$OUT/check.log"
+            test -z "$(git status --porcelain)"
+          fi
+          grep -F 'V3 CHECK OK ' "$OUT/check.log"
+          python -B build_v3.py --tree "$TREE" |& tee "$OUT/tree.log"
+          grep -F 'V3 TREE ' "$OUT/tree.log"
+          cmp overlay/e20_hire_guard.py "$TREE/e20_hire_guard.py"
+          cmp overlay/checks/test_v3_features.py "$TREE/checks/test_v3_features.py"
+          cp FILES.json "$OUT/FILES.json"
+          cp V3-MANIFEST.json "$OUT/V3-MANIFEST.json"
+          if [ -f dist/titan-v3.tar.gz ]; then cp dist/titan-v3.tar.gz "$OUT/titan-v3.tar.gz"; fi
+          if [ -f dist/titan-v3.sha256 ]; then cp dist/titan-v3.sha256 "$OUT/titan-v3.sha256"; fi
+
+      - name: Run E20 predecessors from materialized package
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/e20-current-root-tree"
+          python -B -m unittest -v checks/test_v3_features.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cfg = json.loads(Path('TITAN-CONFIG.json').read_text())
+          assert cfg['e20_hire_guard'] is False
+          assert cfg['r04_sale_fertilizer'] is True
+          assert cfg['r04_cattle_early'] is True
+          assert cfg['r04_strawberry_topup'] is True
+          assert cfg['r04_no_late_sale_advance'] is True
+          assert cfg['r04_b5_carrot_fertilizer'] is True
+          assert cfg['r04_b5_jit_fertilize'] is True
+          print('E20_CURRENT_ROOT_PRESERVATION_OK')
+          PY
+
+      - name: Verify staging dirt or final clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          MODE="$(cat /tmp/e20-mode)"
+          if [ "$MODE" = staging ]; then
+            python - <<'PY'
+          import subprocess
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+          }
+          assert changed == expected, sorted(changed)
+          print('E20_CURRENT_ROOT_GENERATED_METADATA_ONLY', len(changed))
+          PY
+          else
+            test -z "$(git status --porcelain)"
+            echo E20_CURRENT_ROOT_FINAL_CLEAN
+          fi
+
+      - name: Upload deterministic handoff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-e20-current-root-${{ github.run_id }}
+          path: ${{ runner.temp }}/e20-current-root/
+          if-no-files-found: error
+          retention-days: 14
