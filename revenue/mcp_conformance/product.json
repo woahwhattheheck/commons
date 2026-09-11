@@ -70,8 +70,7 @@
   "payment": {
     "state": "ACTIVE_CHARGEABLE",
     "claim": "A posted intent, quote, recorded URL, or report is not payment, settlement, payout, bank availability, or cash.",
-    "external_requirement": "A chargeable hosted-provider checkout for this exact SKU must be created and verified in the provider before the page may call it active.",
-    "refund": "All sales are final; no refunds."
+    "external_requirement": "A chargeable hosted-provider checkout for this exact SKU must be created and verified in the provider before the page may call it active."
   },
   "acceptance": [
     "receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
