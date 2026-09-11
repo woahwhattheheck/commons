@@ -47,6 +47,17 @@ def _positive_int(value, label):
     return value
 
 
+def _parse_cli_horizon(raw):
+    """Parse the optional CLI horizon before build/package code can run."""
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        raise SystemExit("sale horizon must be an integer of at least 1") from None
+    if value < 1:
+        raise SystemExit("sale horizon must be at least 1")
+    return value
+
+
 def apply_submission_config(files, horizon=None):
     """Return a detached package-file mapping with the field-gated submission config.
 
@@ -82,7 +93,10 @@ def main(argv=None):
             "usage: python make_submission.py <candidates/v3 dir> <canonical tar.gz> <out.tar.gz> [horizon]"
         )
     v3, canon, output = argv[:3]
-    horizon = int(argv[3]) if len(argv) == 4 else None
+    # Preserve the previously reviewed submission-builder contract: malformed or
+    # nonpositive CLI horizons must fail before importing build_v3 or touching the
+    # canonical/package path.
+    horizon = _parse_cli_horizon(argv[3]) if len(argv) == 4 else None
     sys.path.insert(0, v3)
     import build_v3  # noqa: E402
 
