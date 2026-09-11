@@ -1,0 +1,57 @@
+name: TITAN V3.1 row-shed current-root source contract
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-row-shed-currentroot.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/**'
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind current convergence ancestry and source-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='8e3d92a286806f9f9525973ee7d359b629a11487'
+          parent='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          recovery_ref='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          canonical_ref='refs/heads/titan/v3.1-20260911'
+
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          git cat-file -e "$root^{commit}"
+          git cat-file -e "$parent^{commit}"
+          git merge-base --is-ancestor "$root" "$parent"
+          git merge-base --is-ancestor "$parent" HEAD
+
+          live_canonical="$(git ls-remote origin "$canonical_ref" | awk '{print $1}')"
+          live_recovery="$(git ls-remote origin "$recovery_ref" | awk '{print $1}')"
+          test "$live_canonical" = "$root"
+          test "$live_recovery" = "$parent"
+
+          expected=$'.github/workflows/titan-v31-row-shed-currentroot.yml\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/r04_row_shed.py\nrevenue/kaggriculture/cloud-execution-lab/candidates/v3/analysis/v31-row-shed/test_r04_row_shed.py'
+          actual="$(git diff --name-only "$parent"...HEAD | LC_ALL=C sort)"
+          test "$actual" = "$expected"
+
+          # The donor is source-contract only: no production/package/default bytes here.
+          ! git diff --name-only "$parent"...HEAD | grep -Eq '(^|/)(overlay|apply_v3.py|FILES.json|V3-MANIFEST.json|build_v3.py)$'
+
+      - name: Run row-shed source contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python -m unittest -v analysis/v31-row-shed/test_r04_row_shed.py
+          python -m py_compile analysis/v31-row-shed/r04_row_shed.py analysis/v31-row-shed/test_r04_row_shed.py
+
+      - name: Require clean checkout
+        run: git diff --exit-code
