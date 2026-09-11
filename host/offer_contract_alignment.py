@@ -78,6 +78,8 @@ def _load_json_bytes(raw: bytes, label: str) -> Any:
         raise AlignmentError("%s must be UTF-8 JSON" % label) from exc
     except json.JSONDecodeError as exc:
         raise AlignmentError("%s is invalid JSON: %s" % (label, exc)) from exc
+    except InvalidOperation as exc:
+        raise AlignmentError("%s contains a JSON number outside the supported decimal range" % label) from exc
 
 
 def _safe_relative_path(root: Path, value: Any, field: str) -> tuple[str, Path]:
