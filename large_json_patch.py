@@ -35,6 +35,10 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _reject_nonstandard_constant(value: str) -> Any:
+    raise PatchError(f"non-standard JSON constant {value!r} is not allowed")
+
+
 def _decode_pointer(pointer: str) -> tuple[str, ...]:
     if pointer == "":
         return ()
@@ -60,7 +64,7 @@ def _decode_pointer(pointer: str) -> tuple[str, ...]:
 class _SpanParser:
     def __init__(self, text: str):
         self.text = text
-        self.decoder = json.JSONDecoder()
+        self.decoder = json.JSONDecoder(parse_constant=_reject_nonstandard_constant)
         self.nodes: dict[tuple[str, ...], Node] = {}
 
     def parse(self) -> tuple[Any, dict[tuple[str, ...], Node]]:
@@ -266,6 +270,40 @@ def patch_json_object(
     return patched, receipt
 
 
+def _paths_alias(left: Path, right: Path) -> bool:
+    try:
+        if left.resolve() == right.resolve():
+            return True
+    except OSError:
+        pass
+    try:
+        return left.exists() and right.exists() and os.path.samefile(left, right)
+    except OSError:
+        return False
+
+
+def _validate_product_paths(
+    source: Path,
+    replacement: Path,
+    output: Path,
+    receipt: Path | None,
+) -> None:
+    inputs = (("source", source), ("replacement", replacement))
+    products = [("output", output)]
+    if receipt is not None:
+        products.append(("receipt", receipt))
+
+    for product_name, product_path in products:
+        for input_name, input_path in inputs:
+            if _paths_alias(product_path, input_path):
+                raise PatchError(
+                    f"{product_name} must differ from {input_name}; "
+                    "this tool never overwrites its inputs"
+                )
+    if receipt is not None and _paths_alias(output, receipt):
+        raise PatchError("receipt must differ from output")
+
+
 def _write_atomic(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=str(path.parent))
@@ -297,16 +335,21 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    _validate_product_paths(
+        args.source,
+        args.replacement_file,
+        args.output,
+        args.receipt,
+    )
     source = args.source.read_bytes()
+    replacement = args.replacement_file.read_bytes()
     patched, receipt = patch_json_object(
         source,
         pointer=args.pointer,
         expected_file_sha256=args.expected_file_sha256,
         expected_target_sha256=args.expected_target_sha256,
-        replacement=args.replacement_file.read_bytes(),
+        replacement=replacement,
     )
-    if args.output.resolve() == args.source.resolve():
-        raise PatchError("output must differ from source; this tool never overwrites its input")
     _write_atomic(args.output, patched)
     if args.receipt:
         payload = (json.dumps(receipt, sort_keys=True, indent=2) + "\n").encode("utf-8")
