@@ -92,8 +92,9 @@ def _standard_config(configuration) -> bool:
         if type(value) is not int or value != expected:
             return False
     market_params = _cfg_value(configuration, "marketParams", None)
-    if market_params not in (None, {}):
-        return False
+    if market_params is not None:
+        if not isinstance(market_params, dict) or market_params:
+            return False
     return True
 
 
