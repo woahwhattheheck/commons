@@ -7,7 +7,9 @@ rank only the contiguous leading SELL block using the units that can actually be
 sold from the current projected shed, rather than the tape's requested quantity.
 
 The transform never changes a market row or quantity.  It only reorders existing
-leading SELL rows.  Malformed inputs fail closed to the original market ordering.
+leading SELL rows.  Missing or malformed projected-stock evidence falls back to
+the incumbent requested-quantity score for that row rather than manufacturing a
+zero-unit signal.
 """
 
 
@@ -16,16 +18,20 @@ def _strict_nonnegative_int(value):
 
 
 def effective_sell_quantity(order, projected_shed):
-    """Return min(requested SELL units, projected shed units), or None on ambiguity."""
+    """Return executable quantity; bad projection evidence falls back to requested."""
     if not isinstance(order, (list, tuple)) or len(order) < 3 or order[0] != "SELL":
         return None
-    if not isinstance(projected_shed, dict):
-        return None
-    item = order[1]
     requested = order[2]
-    available = projected_shed.get(item, 0)
-    if not _strict_nonnegative_int(requested) or not _strict_nonnegative_int(available):
+    if not _strict_nonnegative_int(requested):
         return None
+    if not isinstance(projected_shed, dict):
+        return requested
+    item = order[1]
+    if item not in projected_shed:
+        return requested
+    available = projected_shed.get(item)
+    if not _strict_nonnegative_int(available):
+        return requested
     return min(requested, available)
 
 
