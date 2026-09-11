@@ -403,11 +403,57 @@ def _hold_record(row: dict[str, Any], reason: str) -> dict[str, Any]:
     return record
 
 
+def _bound_submission_replay(
+    row: dict[str, Any],
+    seen_submissions: dict[str, str],
+) -> dict[str, Any] | None:
+    """Resolve an already-bound submission before any first-seen HOLD path."""
+    submission_id = _text(row.get("submission_id"))
+    previous_source_sha256 = seen_submissions.get(submission_id)
+    if previous_source_sha256 is None:
+        return None
+
+    method = _text(row.get("method"))
+    if method not in METHOD_CATALOG:
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
+
+    spec = METHOD_CATALOG[method]
+    try:
+        regulated = int(spec["biological_hours"])
+        reported = int(row.get("reported_duration_hours") or 0)
+        if reported < regulated:
+            reported = regulated
+        if bool(row.get("rush")) and int(row.get("rush_shorten_hours") or 0):
+            reported = regulated
+        source_row = dict(row)
+        source_row["reported_duration_hours"] = reported
+        source_sha256 = sha256_hex(_source_payload(source_row))
+    except (KeyError, TypeError, ValueError):
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH") from None
+
+    if previous_source_sha256 != source_sha256:
+        raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
+    return {
+        "submission_id": row["submission_id"],
+        "bag_barcode": row.get("bag_barcode"),
+        "method": row.get("method"),
+        "state": "IDEMPOTENT_REPLAY",
+        "released": False,
+        "released_by": None,
+        "rush": bool(row.get("rush")),
+        "source_sha256": source_sha256,
+    }
+
+
 def evaluate_row(
     row: dict[str, Any],
     seen_bags: set[str],
     seen_submissions: dict[str, str],
 ) -> dict[str, Any]:
+    bound_replay = _bound_submission_replay(row, seen_submissions)
+    if bound_replay is not None:
+        return bound_replay
+
     method = _text(row.get("method"))
     if method not in METHOD_CATALOG:
         return _hold_record(row, "INVALID_RULE_CERTIFICATE")
@@ -430,20 +476,6 @@ def evaluate_row(
     source_row["reported_duration_hours"] = reported
     source_sha256 = sha256_hex(_source_payload(source_row))
     submission_id = _text(row.get("submission_id"))
-    previous_source_sha256 = seen_submissions.get(submission_id)
-    if previous_source_sha256 is not None:
-        if previous_source_sha256 != source_sha256:
-            raise ValueError("SUBMISSION_ID_PAYLOAD_MISMATCH")
-        return {
-            "submission_id": row["submission_id"],
-            "bag_barcode": row.get("bag_barcode"),
-            "method": row.get("method"),
-            "state": "IDEMPOTENT_REPLAY",
-            "released": False,
-            "released_by": None,
-            "rush": bool(row.get("rush")),
-            "source_sha256": source_sha256,
-        }
 
     bag = _text(row.get("bag_barcode"))
     if not bag or bag in seen_bags:
