@@ -60,7 +60,13 @@ jobs:
           git apply --check "$PATCH"
           git apply "$PATCH"
           test "$(git diff --name-only)" = "$TARGET"
-          python -B -m py_compile "$TARGET"
+          python - "$TARGET" <<'PY'
+          from pathlib import Path
+          import sys
+          path = Path(sys.argv[1])
+          compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          test -z "$(git status --porcelain --untracked-files=all | grep '__pycache__' || true)"
 
       - name: Run inherited C4 predecessors
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
