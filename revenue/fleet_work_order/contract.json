@@ -1,0 +1,35 @@
+{
+  "id": "fleet-work-order-exactly-once",
+  "version": 1,
+  "buyer": "fleet/logistics maintenance director or equivalent work-order owner",
+  "workflow": [
+    "one synthetic inspection or fault event with event_id, vehicle_id, fault_code, severity, reported_at, and optional note",
+    "event_id plus normalized event bytes establish the idempotency identity",
+    "exactly one work order and exactly one escalation for an accepted source event",
+    "crash after prepare or after effect persistence can resume without duplicating either effect",
+    "one durable closeout receipt records COMMITTED or ROLLED_BACK state",
+    "deliver a field contract, replay fixtures, exception taxonomy, run receipt, and written fit verdict for one approved workflow"
+  ],
+  "acceptance": [
+    "event_id, vehicle_id, fault_code, severity, and reported_at are required; severity is LOW, MEDIUM, HIGH, or CRITICAL; reported_at must parse as a timestamp",
+    "replaying identical normalized event bytes after commit is a no-op that returns the existing receipt",
+    "reusing an event_id with different normalized bytes returns an explicit conflict and preserves the original event",
+    "crash and resume must converge to one work order, one escalation, one committed receipt, and zero duplicate effects",
+    "an incomplete synthetic event may roll back provisional effects and leaves a ROLLED_BACK receipt with zero effects remaining",
+    "a committed work order refuses rollback and requires operator closeout rather than silent erasure",
+    "the diagnostic uses synthetic or redacted inputs only and requires no vehicle credentials or private fleet data",
+    "the diagnostic does not dispatch technicians, connect to a production fleet, approve spend, or pay an invoice"
+  ],
+  "commercial": {
+    "diagnostic_usd": 199,
+    "diagnostic_window": "one business day",
+    "optional_pilot_usd": 2500,
+    "proof_only_after_fit": true,
+    "cash_usd": 0,
+    "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+  },
+  "open_door": true,
+  "requires_login": false,
+  "data_boundary": "synthetic or redacted inspection/fault fixtures only; no vehicle credentials, private production fleet connection, or required private fleet data",
+  "decision_boundary": "exactly-once work-order diagnostic only; never technician dispatch, production-fleet mutation, spend approval, or invoice payment"
+}
