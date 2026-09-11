@@ -23,11 +23,14 @@ ever touched, so higher-value tape work is never displaced:
             items (a DROP would otherwise strand a tape-planned PLACE), and the
             tape plans no FERTILIZE or FEED for that worker for the rest of the
             day (both consume worker inventory): the PASS becomes ["DROP"], which
-            moves the fertilizer into the shed the same step. This needs the
-            route tape; when tape is None the deliver half is skipped and only
-            collection runs. Fertilizer that is not dropped same-day still reaches
-            the shed through the tape's own DROP rows or the end-of-day inventory
-            sweep.
+            moves the worker's cargo into the shed the same step. Delivery is
+            authorized only when strict current shed + every parent DROP cargo +
+            every new DROP cargo fits the canonical 100-unit shed. If capacity or
+            inventory evidence is malformed, all new DROPs fail closed to PASS.
+            This needs the route tape; when tape is None the deliver half is
+            skipped and only collection runs. Fertilizer that is not dropped
+            same-day still reaches the shed through the tape's own DROP rows or
+            the end-of-day inventory sweep.
 
 Early sale needs no new market rows: with the V3.1 default r04_sale_fertilizer on,
 the E184 sale window's reserve_sales already advances the tape's planned
@@ -45,6 +48,7 @@ from __future__ import annotations
 _PASS = ["PASS"]
 _COLLECT = ["COLLECT_FERTILIZER"]
 _DROP = ["DROP"]
+_SHED_CAPACITY = 100
 
 # Worker-inventory consumers the deliver half must not starve: FERTILIZE takes
 # FERTILIZER, FEED takes WHEAT. (PLACE takes animal items; those are excluded by
@@ -149,6 +153,54 @@ def _collectable(tile):
     )
 
 
+def _strict_nonnegative_int(value):
+    return type(value) is int and value >= 0
+
+
+def _strict_inventory_total(inventory):
+    """Return exact cargo units, or None when capacity evidence is ambiguous."""
+    if not isinstance(inventory, dict):
+        return None
+    total = 0
+    for value in inventory.values():
+        if not _strict_nonnegative_int(value):
+            return None
+        total += value
+    return total
+
+
+def _drop_capacity_safe(observation, positions, inventories, commands, candidates):
+    """Prove parent DROPs plus all proposed DROPs fit the canonical shed.
+
+    PICKUP actions are intentionally ignored: treating their shed release as zero is
+    conservative. Existing DROP cargo is included even when its worker might fail to
+    reach the shed, so a new DROP can never consume capacity a parent DROP may need.
+    """
+    try:
+        private = observation.get("private")
+        if not isinstance(private, dict):
+            return False
+        shed_total = _strict_inventory_total(private.get("shed"))
+        if shed_total is None or shed_total > _SHED_CAPACITY:
+            return False
+        if not isinstance(inventories, list) or len(commands) > len(positions):
+            return False
+        candidate_set = set(candidates)
+        cargo_total = 0
+        for index, command in enumerate(commands):
+            if command != _DROP and index not in candidate_set:
+                continue
+            if index >= len(inventories):
+                return False
+            cargo = _strict_inventory_total(inventories[index])
+            if cargo is None:
+                return False
+            cargo_total += cargo
+        return shed_total + cargo_total <= _SHED_CAPACITY
+    except Exception:
+        return False
+
+
 def apply_fert_daily_sweep(observation, action, tape=None):
     """Rewrite idle workers into fertilizer collection/delivery; never raises.
 
@@ -183,6 +235,7 @@ def _apply(observation, action, tape):
     report["steps_active"] += 1
     changed = False
     claimed = set()
+    drop_candidates = []
     new_commands = list(commands)
     for index, (command, position) in enumerate(zip(commands, positions)):
         # Budget rule: only idle workers are ever touched. Any real command,
@@ -218,7 +271,8 @@ def _apply(observation, action, tape):
             continue
         if not _beside_shed(tiles, position):
             continue
-        if int(inventory.get("FERTILIZER", 0)) <= 0:
+        fertilizer = inventory.get("FERTILIZER", 0)
+        if not _strict_nonnegative_int(fertilizer) or fertilizer <= 0:
             continue
         if any(item in _ANIMALS for item in inventory):
             # A held animal is waiting on a tape-planned PLACE; a DROP would
@@ -228,9 +282,17 @@ def _apply(observation, action, tape):
         if _has_inventory_work(tape, index, step):
             report["drop_skipped_guard"] += 1
             continue
-        new_commands[index] = list(_DROP)
-        report["dropped"] += 1
-        changed = True
+        drop_candidates.append(index)
+
+    if drop_candidates:
+        if _drop_capacity_safe(observation, positions, inventories, commands, drop_candidates):
+            for index in drop_candidates:
+                new_commands[index] = list(_DROP)
+            report["dropped"] += len(drop_candidates)
+            changed = True
+        else:
+            report["drop_skipped_guard"] += len(drop_candidates)
+
     if not changed:
         return action
     new_action = dict(action)
