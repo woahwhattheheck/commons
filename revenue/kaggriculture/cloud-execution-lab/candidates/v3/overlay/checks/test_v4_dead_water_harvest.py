@@ -164,6 +164,16 @@ class DeadWaterHarvestTest(unittest.TestCase):
         action["hands"] = [["WATER"]]
         self.assertIs(_apply(observation, action), action)
 
+    def test_nonvector_worker_position_fails_closed(self):
+        # A mapping is a two-item iterable too.  Before the strict shape guard,
+        # keys 0,1 could be unpacked as x=0,y=1 and authorize a rewrite.
+        observation = _obs(_tile())
+        observation["farms"][0]["tiles"] = [[{"kind": "SOIL"}], [_tile()]]
+        observation["farms"][0]["farmer"] = {0: "x", 1: "y"}
+        action = _action()
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
     def test_inconsistent_public_clock_fails_closed(self):
         # Maturity uses `day` while the late/expiry window uses `step`; do not
         # let a malformed clock make an immature plant appear harvestable.
