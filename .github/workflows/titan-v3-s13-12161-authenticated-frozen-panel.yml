@@ -1,0 +1,383 @@
+name: titan-v3-s13-12161-authenticated-frozen-panel
+
+on:
+  push:
+    branches:
+      - sol-astra/titan-v3-s13-12161-auth-frozen-panel-20260910
+    paths:
+      - '.github/workflows/titan-v3-s13-12161-authenticated-frozen-panel.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-12161-authenticated-frozen-panel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  authenticated-frozen-panel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+      EXACT_PARENT: 'b3be1c24d93365fb2775385d7ff4b212ba1703ca'
+      CERT_HEAD: 'cbfff2bec813e2c2609ce9c5819b74669e98c566'
+      CERT_BLOB: '89a3325eb541ae0e8a81e1e0a426292820f10d98'
+      SOURCE_EPISODE: '107223760'
+      SOURCE_REPLAY_SHA256: 'c72ad0d81c65f93f4988f147e5e4bd50a2edfa3aaa631455e76e9e80dfb81b18'
+      FROZEN_SEEDS: '539131249,1834999074,2609097301,2609097302'
+      EXPECTED_ARCHIVE_SHA256: '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86'
+      EXPECTED_SOURCE_MANIFEST_SHA256: '1feec5a68ffde28ab7b5c7d2c92a34aa66ff5705b7d88182ef6af98df8bb5083'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact execution child and evidence adapters
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-s13-12161-authenticated-frozen-panel.yml
+          EOF
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --check "$EXACT_PARENT"..HEAD
+          CLOSURE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure
+          test "$(git hash-object "$CLOSURE/diagnostic_evaluate.py")" = 49b493fcd77c8a63b45ce823ff5bed9260b617f8
+          test "$(git hash-object "$CLOSURE/certified_report_v2.py")" = df35cf41cfa664c2832f54082ce80eb1c2b2bee6
+          test "$(git hash-object "$CLOSURE/test_certified_report_v2.py")" = cd3286d8c67974bcb69f8d573163b9e4a7f7a286
+          (
+            cd "$CLOSURE"
+            python -m py_compile *.py
+            python -m unittest -v
+          ) 2>&1 | tee "$RUNNER_TEMP/CUSTODY-CLOSURE-CONTRACTS.txt"
+          git diff --exit-code -- .
+
+      - name: Bind exact certificate donor with repaired Python 3.11 loader
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          PARENT="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          PREFIX="$LAB/analysis/titan-v3-s13-prefix-695-sol-pro"
+          CHILD="$LAB/analysis/titan-v3-s13-certified-prefix695-sol-pro"
+          test "$(git hash-object "$PARENT/leader_route_distillation.py")" = 4e84e70f0c1b5a535d48b06bada6350ea2d5cd58
+          test "$(git hash-object "$PARENT/leader_route_runtime.py")" = 3b2b94151c1fd91cd8ec020909863da551262ee9
+          test "$(git hash-object "$PREFIX/prefix_route.py")" = d9171b1caec6ae001e27e7f6e04e1c8a4d17ef1f
+          git fetch --no-tags origin "$CERT_HEAD"
+          test "$(git rev-parse FETCH_HEAD)" = "$CERT_HEAD"
+          CERT_PATH=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-action-applicability-sol-pro/action_applicability.py
+          git show "$CERT_HEAD:$CERT_PATH" > "$RUNNER_TEMP/action_applicability.py"
+          test "$(git hash-object "$RUNNER_TEMP/action_applicability.py")" = "$CERT_BLOB"
+          CHILD="$CHILD" DONOR="$RUNNER_TEMP/action_applicability.py" python - <<'PY'
+          import importlib.util, os, sys
+          from pathlib import Path
+          _ABSENT = object()
+          def load(name, path):
+              spec = importlib.util.spec_from_file_location(name, path)
+              if spec is None or spec.loader is None:
+                  raise RuntimeError(f"cannot load {path}")
+              module = importlib.util.module_from_spec(spec)
+              previous = sys.modules.get(name, _ABSENT)
+              sys.modules[name] = module
+              try:
+                  spec.loader.exec_module(module)
+              finally:
+                  if previous is _ABSENT:
+                      sys.modules.pop(name, None)
+                  else:
+                      sys.modules[name] = previous
+              return module
+          child = load('certified_runtime', Path(os.environ['CHILD'])/'certified_route_runtime.py')
+          donor = load('donor_certificate', Path(os.environ['DONOR']))
+          cfg = {'boardSize':10,'turnsPerDay':24,'shedCapacity':100,'maxMarketOrdersPerTurn':10,'farmHandCostMult':1,'marketParams':None}
+          action = {'farmer':['MOVE','EAST'],'hands':[],'market':[['SELL','WHEAT',1]]}
+          compared = 0
+          for seat in (0,1):
+              for mode in ('units','market','full'):
+                  for step,money in ((24,0),(25,1000),(695,99999)):
+                      farms = [
+                          {'money':money+index,'hands':[],'hires_today':0,'unlocked_quadrants':['NW'],'tiles':[],'farmer':{'location':[index,0],'inventory':[]}}
+                          for index in (0,1)
+                      ]
+                      obs = {'step':step,'day':step//24,'player':seat,'farms':farms,'private':{'shed':{'WHEAT':step},'seeds':{}},'market':{'inventory':{'WHEAT':10000-step},'shops':[]}}
+                      assert child.prestate_certificate(obs,cfg,action,seat=seat,mode=mode) == donor.prestate_certificate(obs,cfg,action,seat=seat,mode=mode)
+                      compared += 1
+          assert compared == 18
+          print('DONOR_PARITY_IMPORT_OK', compared)
+          PY
+
+      - name: Run exact certified-arm contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHILD=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro
+          (
+            cd "$CHILD"
+            python -m py_compile *.py
+            python -m unittest -v
+          ) 2>&1 | tee "$RUNNER_TEMP/CERTIFIED-PREFIX-CONTRACTS.txt"
+          git diff --exit-code -- .
+
+      - name: Install pinned official interpreter
+        run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
+
+      - name: Download and bind exact source replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
+          mkdir -p "$OUT/replays"
+          curl --fail --location --compressed --retry 5 --retry-all-errors \
+            --connect-timeout 30 --max-time 300 \
+            --user-agent 'TITAN-V3-S13-certified-prefix-authenticated-panel/1.0' \
+            "https://www.kaggle.com/competitions/episodes/${SOURCE_EPISODE}/replay.json" \
+            -o "$OUT/replays/episode_${SOURCE_EPISODE}.json"
+          test "$(sha256sum "$OUT/replays/episode_${SOURCE_EPISODE}.json" | cut -d' ' -f1)" = "$SOURCE_REPLAY_SHA256"
+
+      - name: Materialize exact complete-archive control
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CARRIER="$LAB/analysis/titan-v3-own-value-archive-carrier-sol-foundry"
+          OBJECTIVE="$LAB/analysis/titan-v3-own-value-objective-sol-objective"
+          OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
+          test "$(git hash-object "$CARRIER/archive_carrier.py")" = 2f5be09c36368732ddf80a84f3a86b36b2ae405e
+          test "$(git hash-object "$CARRIER/archive_runtime_guard.py")" = 2fbc4b45d2f0f06f8ccef2665d8d740d73c9e3db
+          test "$(git hash-object "$OBJECTIVE/own_value_objective.py")" = 17c49e220de6b8c1c1ba15a95e4707a3d9cd1ea0
+          python "$CARRIER/archive_carrier.py" materialize \
+            --lab-root "$LAB" \
+            --pointer "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json" \
+            --overlay "$OBJECTIVE/own_value_objective.py" \
+            --output "$OUT/carrier" \
+            --git-head "$(git rev-parse HEAD)" \
+            | tee "$OUT/MATERIALIZE.json"
+          python "$CARRIER/archive_carrier.py" probe \
+            --entry "$OUT/carrier/control/control_entry.py" \
+            --output "$OUT/CONTROL-PROBE.json" \
+            > "$OUT/CONTROL-PROBE-STDOUT.json"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          receipt = json.loads((root/'carrier/CARRIER-RECEIPT.json').read_text())
+          probe = json.loads((root/'CONTROL-PROBE.json').read_text())
+          assert receipt['archive']['sha256'] == os.environ['EXPECTED_ARCHIVE_SHA256']
+          assert receipt['archive']['source_manifest_sha256'] == os.environ['EXPECTED_SOURCE_MANIFEST_SHA256']
+          assert receipt['canonical_runtime_equal'] is True
+          assert receipt['canonical_repository_modified'] is False
+          assert probe['install_receipt'] is None
+          PY
+          git diff --exit-code -- .
+
+      - name: Rebuild unsafe prefix and emit exact-certified child
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          PARENT="$LAB/analysis/titan-v3-s13-leader-route-distillation-sol-pro"
+          PREFIX="$LAB/analysis/titan-v3-s13-prefix-695-sol-pro"
+          CHILD="$LAB/analysis/titan-v3-s13-certified-prefix695-sol-pro"
+          OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
+          python "$PARENT/leader_route_distillation.py" compile \
+            --input-dir "$OUT/replays" \
+            --output "$OUT/LEADER-BANK.json" \
+            --max-candidates 1
+          python "$PARENT/leader_route_distillation.py" emit \
+            --bank "$OUT/LEADER-BANK.json" \
+            --runtime "$PARENT/leader_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --output-dir "$OUT/arms"
+          OUT="$OUT" python - <<'PY' > "$OUT/FULL-ARM-PATH.txt"
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          rows = json.loads((root/'arms/MANIFEST.json').read_text())['arms']
+          matches = [row for row in rows if row['source_episode'] == '107223760' and row['mode'] == 'post24_full']
+          assert len(matches) == 1
+          print(root/'arms'/matches[0]['path'])
+          PY
+          FULL_ARM="$(cat "$OUT/FULL-ARM-PATH.txt")"
+          FULL_SHA="$(sha256sum "$FULL_ARM" | cut -d' ' -f1)"
+          python "$PREFIX/prefix_route.py" build \
+            --source-arm "$FULL_ARM" \
+            --expected-source-sha256 "$FULL_SHA" \
+            --runtime "$PARENT/leader_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --cutoff 695 \
+            --output "$OUT/pensukesan-prefix-695.py" \
+            --receipt "$OUT/PREFIX-695-RECEIPT.json" \
+            > "$OUT/PREFIX-695-STDOUT.json"
+          PREFIX_SHA="$(sha256sum "$OUT/pensukesan-prefix-695.py" | cut -d' ' -f1)"
+          CHILD="$CHILD" DONOR="$RUNNER_TEMP/action_applicability.py" OUT="$OUT" PREFIX_SHA="$PREFIX_SHA" python - <<'PY' > "$OUT/REAL-REPLAY-CERTIFICATE-PARITY.json"
+          import importlib.util, json, os, sys
+          from pathlib import Path
+          child_dir = Path(os.environ['CHILD'])
+          sys.path.insert(0, str(child_dir))
+          import certified_prefix as compiler
+          _ABSENT = object()
+          def load(name, path):
+              spec = importlib.util.spec_from_file_location(name, path)
+              if spec is None or spec.loader is None:
+                  raise RuntimeError(f"cannot load {path}")
+              module = importlib.util.module_from_spec(spec)
+              previous = sys.modules.get(name, _ABSENT)
+              sys.modules[name] = module
+              try:
+                  spec.loader.exec_module(module)
+              finally:
+                  if previous is _ABSENT:
+                      sys.modules.pop(name, None)
+                  else:
+                      sys.modules[name] = previous
+              return module
+          donor = load('real_replay_donor', Path(os.environ['DONOR']))
+          root = Path(os.environ['OUT'])
+          arm = root/'pensukesan-prefix-695.py'
+          meta, tape = compiler.decode_prefix_arm(arm, expected_python_sha256=os.environ['PREFIX_SHA'])
+          rows, cfg, _ = compiler.load_source_replay(
+              root/'replays/episode_107223760.json',
+              expected_sha256=os.environ['SOURCE_REPLAY_SHA256'],
+              expected_episode='107223760',
+              expected_seat=meta['SOURCE_SEAT'],
+              expected_team=str(meta['SOURCE_TEAM']),
+          )
+          mode = compiler.CERTIFICATE_MODE[meta['mode']]
+          compared = 0
+          for key, entry in tape.items():
+              step = int(key); action = entry['action']; obs = rows[step][1]
+              left = compiler.prestate_certificate(obs, cfg, action, seat=meta['SOURCE_SEAT'], mode=mode)
+              right = donor.prestate_certificate(obs, cfg, action, seat=meta['SOURCE_SEAT'], mode=mode)
+              assert left == right, step
+              compared += 1
+          assert compared == 696
+          print(json.dumps({'rows_compared': compared, 'mode': mode, 'source_seat': meta['SOURCE_SEAT']}, sort_keys=True))
+          PY
+          python "$CHILD/certified_prefix.py" \
+            --source-arm "$OUT/pensukesan-prefix-695.py" \
+            --source-replay "$OUT/replays/episode_${SOURCE_EPISODE}.json" \
+            --runtime "$CHILD/certified_route_runtime.py" \
+            --baseline-entry "$OUT/carrier/control/control_entry.py" \
+            --output "$OUT/pensukesan-prefix-695-certified.py" \
+            --receipt "$OUT/CERTIFIED-PREFIX-695-RECEIPT.json" \
+            --expected-source-arm-sha256 "$PREFIX_SHA" \
+            --expected-replay-sha256 "$SOURCE_REPLAY_SHA256" \
+            --expected-episode "$SOURCE_EPISODE" \
+            --expected-cutoff 695 \
+            > "$OUT/CERTIFIED-PREFIX-695-STDOUT.json"
+          python -m py_compile "$OUT/pensukesan-prefix-695-certified.py"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          receipt = json.loads((root/'CERTIFIED-PREFIX-695-RECEIPT.json').read_text())
+          assert receipt['certificate_summary']['rows'] == 696
+          assert receipt['certificate_summary']['owned_rows'] == 672
+          assert receipt['source_seat_portability'] is False
+          assert receipt['market_outcome_claim'] is False
+          PY
+          git diff --exit-code -- .
+
+      - name: Execute unchanged frozen panel with authenticated certified diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CLOSURE="$LAB/analysis/titan-v3-s13-certified-prefix695-custody-closure"
+          OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
+          COMMON=(
+            --engine-dir "$LAB/reference/engine"
+            --loader "$KAG/20260907-offline-agent/evaluate.py"
+            --opponent "arlene=$LAB/runtime/variants/v1/reference/next-panel/vendor/arlene.py::agent"
+            --opponent "v1=$LAB/runtime/variants/v1/candidate.py::agent"
+            --seeds "$FROZEN_SEEDS"
+            --rng-seed 20260913
+            --action-timeout 1.0
+            --startup-timeout 15
+            --game-timeout 180
+            --recheck-first
+          )
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
+            --candidate "$OUT/carrier/control/control_entry.py::agent" \
+            --output "$OUT/control.json"
+          python "$KAG/cloud-eval/evaluate.py" "${COMMON[@]}" \
+            --candidate "$OUT/pensukesan-prefix-695.py::agent" \
+            --output "$OUT/unsafe-prefix-695.json"
+          python "$CLOSURE/diagnostic_evaluate.py" "${COMMON[@]}" \
+            --candidate "$OUT/pensukesan-prefix-695-certified.py::agent" \
+            --output "$OUT/certified-prefix-695-authenticated.json"
+
+      - name: Build authenticated exact-cell disposition
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CLOSURE="$LAB/analysis/titan-v3-s13-certified-prefix695-custody-closure"
+          OUT="$RUNNER_TEMP/titan-v3-s13-certified-prefix"
+          SOURCE_SEAT="$(python - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path('${{ runner.temp }}/titan-v3-s13-certified-prefix/pensukesan-prefix-695-certified.py')
+          tree = ast.parse(path.read_text())
+          for node in tree.body:
+              if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'SOURCE_SEAT':
+                  print(ast.literal_eval(node.value)); break
+          else:
+              raise SystemExit('SOURCE_SEAT missing')
+          PY
+          )"
+          python "$CLOSURE/certified_report_v2.py" \
+            --control "$OUT/control.json" \
+            --unsafe-prefix "$OUT/unsafe-prefix-695.json" \
+            --certified-prefix "$OUT/certified-prefix-695-authenticated.json" \
+            --source-seat "$SOURCE_SEAT" \
+            --output "$OUT/CERTIFIED-PREFIX-695-AUTHENTICATED-REPORT.json" \
+            --markdown "$OUT/CERTIFIED-PREFIX-695-AUTHENTICATED-REPORT.md" \
+            | tee "$OUT/CERTIFIED-PREFIX-695-AUTHENTICATED-REPORT-STDOUT.json"
+          cat "$OUT/CERTIFIED-PREFIX-695-AUTHENTICATED-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+          OUT="$OUT" python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['OUT'])
+          report = json.loads((root/'CERTIFIED-PREFIX-695-AUTHENTICATED-REPORT.json').read_text())
+          assert report['unsafe_prefix']['pair_rows'] == 16
+          assert report['certified_prefix']['pair_rows'] == 16
+          assert report['off_seat_exact_fallback'] is True
+          assert isinstance(report['source_seat_activated'], bool)
+          assert type(report['source_seat_activation_cells']) is int
+          assert type(report['source_seat_activation_events']) is int
+          assert len(report['runtime_diagnostics_sha256']) == 64
+          assert report['verdict'] in {'CERTIFIED_SURVIVOR','CERTIFICATE_REJECTS_TRANSPLANT','CERTIFIED_HOLD'}
+          print('AUTHENTICATED_PANEL_VERDICT', report['verdict'])
+          print('AUTHENTICATED_ACTIVATION', report['source_seat_activation_cells'], report['source_seat_activation_events'])
+          PY
+          git diff --exit-code -- .
+
+      - name: Upload authenticated frozen-panel evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-s13-12161-authenticated-panel-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/CUSTODY-CLOSURE-CONTRACTS.txt
+            ${{ runner.temp }}/CERTIFIED-PREFIX-CONTRACTS.txt
+            ${{ runner.temp }}/titan-v3-s13-certified-prefix
+          if-no-files-found: error
+          retention-days: 30
