@@ -1,0 +1,29 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h2_terminal_last_hop/r04_h2_terminal_last_hop.py
+@@ -42,6 +42,7 @@ STANDARD_CONFIG = {
+     "maxMarketOrdersPerTurn": 10,
+ }
+ RESCUE_STEP = 717
++CARDINAL_MOVES = {"NORTH", "SOUTH", "EAST", "WEST"}
+ SAFE_OTHER_WORK = {
+     "PASS", "DROP", "PLACE", "PICKUP", "CARE", "FEED", "WATER", "DIG",
+     "PLANT", "BUILD_COOP", "BUILD_PASTURE",
+@@ -204,7 +205,7 @@ def rescue_last_hop(action: Any, observation: Any, configuration: Any, *, enable
+     # Any other move can race for the same shed cell.  HARVEST/COLLECT can create
+     # additional product after our capacity census.  Both cases fail closed.
+     for command in commands:
+-        if command[0] == "MOVE":
++        if command[0] in CARDINAL_MOVES:
+             return action, None, 0
+         if command[0] not in SAFE_OTHER_WORK:
+             return action, None, 0
+@@ -229,7 +230,8 @@ def rescue_last_hop(action: Any, observation: Any, configuration: Any, *, enable
+             continue
+         target = min(free_last_hops)
+         replacement = base._v219_walk(position, target)
+-        if not isinstance(replacement, list) or not replacement or replacement[0] != "MOVE":
++        if (not isinstance(replacement, list) or len(replacement) != 1
++                or replacement[0] not in CARDINAL_MOVES):
+             continue
+         candidates.append((actor, units, target, replacement))
