@@ -16,7 +16,15 @@ from typing import Any
 import h3c_goose_eod_cap_rescue as h3c
 
 _MISSING = object()
-_ANIMAL_KIND = {"GOOSE": "COOP", "COW": "PASTURE", "SHEEP": "PASTURE"}
+# species -> (required structure, max held product, max reachable pending-care bonus)
+# A fed animal can carry consecutive_unfed 0 or 1 during the day; >=2 would have
+# escaped at the previous EOD.  The pending bonus can accumulate for at most one
+# production interval because it is consumed on the next fed production day.
+_ANIMAL_LIMITS = {
+    "GOOSE": ("COOP", 4, 1),
+    "COW": ("PASTURE", 6, 2),
+    "SHEEP": ("PASTURE", 6, 3),
+}
 telemetry = Counter()
 
 
@@ -32,8 +40,10 @@ def _strict_animal(tile: Any, day: int):
     if not isinstance(tile, dict):
         return None
     animal = tile.get("animal", _MISSING)
-    if (not isinstance(animal, str) or animal not in _ANIMAL_KIND
-            or tile.get("kind", _MISSING) != _ANIMAL_KIND[animal]):
+    if not isinstance(animal, str) or animal not in _ANIMAL_LIMITS:
+        return None
+    required_kind, max_held, max_bonus = _ANIMAL_LIMITS[animal]
+    if tile.get("kind", _MISSING) != required_kind:
         return None
     placed = tile.get("placed_day", _MISSING)
     units = tile.get("yield_units", _MISSING)
@@ -44,13 +54,13 @@ def _strict_animal(tile: Any, day: int):
     bonus = tile.get("pending_care_bonus", _MISSING)
     if type(placed) is not int or not 0 <= placed <= day:
         return None
-    if type(units) is not int or units < 0:
+    if type(units) is not int or not 0 <= units <= max_held:
         return None
-    if type(consecutive_unfed) is not int or consecutive_unfed < 0:
+    if type(consecutive_unfed) is not int or not 0 <= consecutive_unfed <= 1:
         return None
     if type(fed) is not bool or type(cared) is not bool or type(fertilizer) is not bool:
         return None
-    if type(bonus) is not int or bonus < 0:
+    if type(bonus) is not int or not 0 <= bonus <= max_bonus:
         return None
     return animal, fed, cared
 
