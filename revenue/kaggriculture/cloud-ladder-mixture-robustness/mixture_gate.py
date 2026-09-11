@@ -17,6 +17,7 @@ from mixture_common import (
 from mixture_evaluate import evaluate
 from mixture_optimize import _worst_case_mixture
 
+
 def _atomic_write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     _require(not path.is_symlink(), "OUTPUT_SYMLINK", "output path must not be a symlink", output=str(path))
@@ -53,6 +54,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--require-verdict",
+        choices=("ROBUST_ADVANCE",),
+        help=(
+            "Gate mode: after writing the complete receipt, return nonzero unless the "
+            "well-formed result has the required promotion verdict. Omit for report mode."
+        ),
+    )
     args = parser.parse_args(argv)
     safe_output: Path | None = None
     try:
@@ -74,6 +83,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         receipt = evaluate(document)
         _atomic_write_json(output_path, receipt)
         print(json.dumps({"verdict": receipt["verdict"], "receipt_sha256": receipt["receipt_sha256"]}, sort_keys=True))
+        if args.require_verdict is not None and receipt["verdict"] != args.require_verdict:
+            return 3
         return 0
     except ValidationError as exc:
         failure = {
