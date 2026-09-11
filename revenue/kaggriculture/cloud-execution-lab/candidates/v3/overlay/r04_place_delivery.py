@@ -69,6 +69,9 @@ def apply_place_delivery(observation, action, enabled=False):
         if (not isinstance(position, (list, tuple)) or len(position) != 2
                 or type(position[0]) is not int or type(position[1]) is not int):
             return action
+        x, y = position
+        if not (0 <= x < 10 and 0 <= y < 10):
+            return action
 
     # Preserve baseline DROP semantics unless an actual capacity overflow exists.
     payload = 0
