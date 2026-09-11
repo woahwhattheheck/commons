@@ -8,10 +8,11 @@ literal ``COLLECT_FERTILIZER`` on the GOOSE the actor is already standing on to
 ``HARVEST`` when tonight's production would otherwise clip held yield.
 
 The guard is deliberately narrow: the goose is already fed+cared, fertilizer is
-actually collectible, the harvest is legal, the production tick is due, the current
-shed has room for every item that will be auto-dropped after the candidate harvest,
-and all relevant JSON-like state uses exact scalar types.  Any ambiguity returns the
-exact parent action object.
+actually collectible, the harvest is legal, the production tick is due, and a
+whole-farm upper bound proves every item that can be added by this turn's unit work
+still fits in the EOD shed.  Same-turn BUY_PRODUCT/BUY_ANIMAL rows are vetoed because
+their lockstep realization is rival-dependent.  Any ambiguity returns the exact
+parent action object.
 """
 from __future__ import annotations
 
@@ -112,6 +113,16 @@ def _parent_rows(action: Any):
     return [farmer, *hands]
 
 
+def _harvest_upper_bound(tile: Any) -> int | None:
+    """Conservative current-turn carried-unit increase for a HARVEST row."""
+    if not isinstance(tile, dict):
+        return 0
+    units = tile.get("yield_units", 0)
+    if type(units) is not int or units < 0:
+        return None
+    return units
+
+
 def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any, *, enabled=False):
     """Return the candidate action; no-match and malformed paths preserve identity."""
     if not enabled or not _standard_configuration(configuration):
@@ -145,6 +156,18 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
     if rows is None or len(rows) != len(positions) or len(inventories) != len(positions):
         return action
 
+    market = action.get("market", _MISSING)
+    if not isinstance(market, list):
+        return action
+    for order in market:
+        if not isinstance(order, list):
+            return action
+        if order and not isinstance(order[0], str):
+            return action
+        if order and order[0] in ("BUY_PRODUCT", "BUY_ANIMAL"):
+            telemetry["market_inflow_block"] += 1
+            return action
+
     shed_total = _strict_inventory_total(shed)
     if shed_total is None:
         return action
@@ -157,6 +180,7 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
 
     candidates = []
     seen_sites = set()
+    actor_tiles = []
     day = step // 24
     for actor, (position, command, inventory) in enumerate(zip(positions, rows, inventories)):
         if (not isinstance(position, list) or len(position) != 2
@@ -165,9 +189,10 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
         x, y = position
         if not (0 <= y < len(tiles) and isinstance(tiles[y], list) and len(tiles[y]) == 10 and 0 <= x < 10):
             return action
+        tile = tiles[y][x]
+        actor_tiles.append(tile)
         if command != ["COLLECT_FERTILIZER"]:
             continue
-        tile = tiles[y][x]
         goose = _strict_goose(tile)
         if goose is None:
             continue
@@ -187,11 +212,23 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
     if not candidates:
         return action
 
-    # Candidate HARVEST adds ``units`` to carried inventory while baseline COLLECT
-    # would add exactly one fertilizer.  Require enough EOD shed room for the entire
-    # candidate carried state so no unrelated item can be discarded/reordered by the swap.
-    candidate_added = sum(units for _actor, units, _overflow, _placed in candidates)
-    if shed_total + carried_total + candidate_added > STANDARD_CONFIG["shedCapacity"]:
+    candidate_by_actor = {actor: units for actor, units, _overflow, _placed in candidates}
+    unit_inflow_upper_bound = 0
+    for actor, (command, tile) in enumerate(zip(rows, actor_tiles)):
+        if actor in candidate_by_actor:
+            unit_inflow_upper_bound += candidate_by_actor[actor]
+            continue
+        op = command[0] if command else None
+        if op == "HARVEST":
+            gain = _harvest_upper_bound(tile)
+            if gain is None:
+                return action
+            unit_inflow_upper_bound += gain
+        elif op == "COLLECT_FERTILIZER":
+            # At most one unit, even if the observed tile is not actually collectible.
+            unit_inflow_upper_bound += 1
+
+    if shed_total + carried_total + unit_inflow_upper_bound > STANDARD_CONFIG["shedCapacity"]:
         telemetry["capacity_block"] += 1
         return action
 
