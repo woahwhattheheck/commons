@@ -9,7 +9,7 @@ or different-head holding reduces to SUCCESS; malformed evidence is INVALID.
 With --publish-check, the same result is mirrored to a GitHub Check Run without
 keeping a runner occupied: PENDING -> in_progress, SUCCESS -> completed/success,
 INVALID -> completed/failure. A later invocation updates the same check by an
-exact external_id derived from (key, head_sha).
+exact external_id derived from the head SHA.
 """
 
 from __future__ import annotations
@@ -164,14 +164,19 @@ def publish_check(result: dict, *, repo: str, token: str, check_name: str = CHEC
     if not isinstance(check_name, str) or not check_name.strip() or len(check_name) > 100:
         raise InputError("check name must be nonempty and <= 100 chars")
     head = result["expected_head_sha"]
-    key = result.get("key") or "none"
-    external_id = f"review-holding:{key}:{head}"
+    external_id = f"review-holding:{head}"
     base = f"https://api.github.com/repos/{repo}"
     query = urllib.parse.urlencode({"check_name": check_name, "per_page": 100})
     listing = _request("GET", f"{base}/commits/{head}/check-runs?{query}", token)
     runs = listing.get("check_runs", []) if isinstance(listing, dict) else []
     matches = [r for r in runs if isinstance(r, dict) and r.get("external_id") == external_id]
-    target_id = max((r.get("id") for r in matches if type(r.get("id")) is int), default=None)
+    matches = sorted(
+        (r for r in matches if type(r.get("id")) is int),
+        key=lambda r: r["id"],
+        reverse=True,
+    )
+    target = matches[0] if matches else None
+    target_id = target.get("id") if target else None
     state = result["state"]
     if state == "PENDING":
         payload = {
@@ -198,7 +203,8 @@ def publish_check(result: dict, *, repo: str, token: str, check_name: str = CHEC
                 "summary": f"state={state}; reason={result.get('reason', 'invalid')}",
             },
         }
-    if target_id is None:
+    must_create = target_id is None or (state == "PENDING" and target.get("status") == "completed")
+    if must_create:
         response = _request("POST", f"{base}/check-runs", token, payload)
         action = "created"
     else:
