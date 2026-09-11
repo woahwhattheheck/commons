@@ -1,0 +1,171 @@
+name: titan-v3-s13-certified-report-provenance
+
+on:
+  push:
+    branches:
+      - sol-astra/titan-v3-12161-report-provenance-20260910
+    paths:
+      - '.github/workflows/titan-v3-s13-certified-report-provenance.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/certified_report_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/test_certified_report_v3.py'
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v3-s13-certified-report-provenance.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/certified_report_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/test_certified_report_v3.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  authenticated-report-provenance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      EXACT_PARENT: 'b3be1c24d93365fb2775385d7ff4b212ba1703ca'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Bind exact successor topology and inherited evidence adapters
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "$EXACT_PARENT"
+          test "$(git rev-list --count "$EXACT_PARENT"..HEAD)" = 1
+          cat > "$RUNNER_TEMP/EXPECTED-PATHS.txt" <<'EOF'
+          .github/workflows/titan-v3-s13-certified-report-provenance.yml
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/certified_report_v3.py
+          revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra/test_certified_report_v3.py
+          EOF
+          git diff --name-only "$EXACT_PARENT"..HEAD | sort > "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          diff -u "$RUNNER_TEMP/EXPECTED-PATHS.txt" "$RUNNER_TEMP/ACTUAL-PATHS.txt"
+          git diff --check "$EXACT_PARENT"..HEAD
+          CLOSURE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure
+          test "$(git hash-object "$CLOSURE/certified_report_v2.py")" = df35cf41cfa664c2832f54082ce80eb1c2b2bee6
+          test "$(git hash-object "$CLOSURE/diagnostic_evaluate.py")" = 49b493fcd77c8a63b45ce823ff5bed9260b617f8
+          test "$(git hash-object revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-sol-pro/certified_route_runtime.py)" = 6bd90321a3eb4a0c3666118426bbb53dbd923312
+          test "$(git hash-object revenue/kaggriculture/cloud-eval/evaluate.py)" = 077feb2208b6e0c1727835eb4f8089709bf67f3b
+          test "$(git hash-object revenue/kaggriculture/20260907-offline-agent/evaluate.py)" = 23948e10cfc3d32f46c9abb1321b0d8fc8db21d5
+
+      - name: Run predecessor killers for authenticated provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          CLOSURE=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-prefix695-custody-closure
+          REPORTER=revenue/kaggriculture/cloud-execution-lab/analysis/titan-v3-s13-certified-report-provenance-sol-astra
+          (
+            cd "$CLOSURE"
+            python -m py_compile certified_report_v2.py test_certified_report_v2.py diagnostic_evaluate.py
+            python -m unittest -v test_certified_report_v2.py
+          ) 2>&1 | tee "$RUNNER_TEMP/V2-CONTRACTS.txt"
+          (
+            cd "$REPORTER"
+            python -m py_compile certified_report_v3.py test_certified_report_v3.py
+            python -m unittest -v test_certified_report_v3.py
+          ) 2>&1 | tee "$RUNNER_TEMP/V3-CONTRACTS.txt"
+          grep -F 'Ran 5 tests' "$RUNNER_TEMP/V2-CONTRACTS.txt"
+          grep -F 'Ran 9 tests' "$RUNNER_TEMP/V3-CONTRACTS.txt"
+          cat "$RUNNER_TEMP/V2-CONTRACTS.txt" "$RUNNER_TEMP/V3-CONTRACTS.txt" > "$RUNNER_TEMP/AUTHENTICATED-REPORT-CONTRACTS.txt"
+          git diff --exit-code -- .
+
+      - name: Real evaluator to DiagnosticActor to retained diagnostics smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          KAG=revenue/kaggriculture
+          CLOSURE="$LAB/analysis/titan-v3-s13-certified-prefix695-custody-closure"
+          REPORTER="$LAB/analysis/titan-v3-s13-certified-report-provenance-sol-astra"
+          BASELINE="$KAG/20260907-offline-agent/main.py"
+          test "$(git hash-object "$BASELINE")" = f76bfdaa442b63c2a35de829e52e006fc55f6049
+          cat > "$RUNNER_TEMP/smoke_candidate.py" <<PY
+          from __future__ import annotations
+          import importlib.util
+          from pathlib import Path
+          import sys
+          _path = Path(r"$GITHUB_WORKSPACE/$BASELINE")
+          _spec = importlib.util.spec_from_file_location("s13_provenance_smoke_baseline", _path)
+          if _spec is None or _spec.loader is None:
+              raise RuntimeError("cannot load smoke baseline")
+          _baseline = importlib.util.module_from_spec(_spec)
+          sys.modules[_spec.name] = _baseline
+          _spec.loader.exec_module(_baseline)
+          def agent(obs, configuration=None):
+              return _baseline.agent(obs, configuration)
+          def diagnostics():
+              return {
+                  "source_seat": 0,
+                  "activation_steps": [],
+                  "activation_count": 0,
+                  "certificate_checks": 0,
+                  "certificate_matches": 0,
+                  "handoff_step": 0,
+                  "handoff_reason": "smoke_evidence_only",
+                  "certificate_donor_head": "cbfff2bec813e2c2609ce9c5819b74669e98c566",
+                  "certificate_donor_blob": "89a3325eb541ae0e8a81e1e0a426292820f10d98",
+              }
+          PY
+          python "$CLOSURE/diagnostic_evaluate.py" \
+            --engine-dir "$LAB/reference/engine" \
+            --loader "$KAG/20260907-offline-agent/evaluate.py" \
+            --candidate "$RUNNER_TEMP/smoke_candidate.py::agent" \
+            --opponent 'starter=official_starter' \
+            --seeds '101' \
+            --rng-seed 23 \
+            --action-timeout 1 \
+            --startup-timeout 15 \
+            --game-timeout 60 \
+            --episode-steps 4 \
+            --recheck-first \
+            --output "$RUNNER_TEMP/diagnostic-smoke.json"
+          CLOSURE="$CLOSURE" REPORTER="$REPORTER" LAB="$LAB" KAG="$KAG" python - <<'PY'
+          import os
+          from pathlib import Path
+          import sys
+          closure = Path(os.environ['CLOSURE'])
+          reporter = Path(os.environ['REPORTER'])
+          sys.path.insert(0, str(reporter))
+          import certified_report_v3 as v3
+          report_path = Path(os.environ['RUNNER_TEMP']) / 'diagnostic-smoke.json'
+          candidate = str(Path(os.environ['RUNNER_TEMP']) / 'smoke_candidate.py') + '::agent'
+          expected = v3.expected_report_provenance(
+              evaluator=closure / 'diagnostic_evaluate.py',
+              expected_evaluator_blob=v3.DIAGNOSTIC_EVALUATOR_BLOB,
+              candidate=candidate,
+              loader=Path(os.environ['KAG']) / '20260907-offline-agent/evaluate.py',
+              engine_dir=Path(os.environ['LAB']) / 'reference/engine',
+              opponents={'starter': 'official_starter'},
+              seeds=[101],
+              rng_seed=23,
+              action_timeout=1.0,
+              startup_timeout=15.0,
+              game_timeout=60.0,
+              require_recheck=True,
+          )
+          raw = v3.v2.strict_load(report_path)
+          receipt = v3.validate_report_provenance(
+              raw, expected, label='real_diagnostic_smoke', source_seat=0
+          )
+          assert receipt['cells'] == 2
+          for game in raw['games']:
+              actor = game['actors'][game['candidate_seat']]
+              assert actor['agent_diagnostics']['handoff_reason'] == 'smoke_evidence_only'
+          print('REAL_DIAGNOSTIC_ACTOR_PROVENANCE_OK', receipt)
+          PY
+          git diff --exit-code -- .
