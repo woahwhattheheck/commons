@@ -130,6 +130,32 @@ class H10E11R04Tests(unittest.TestCase):
         self.assertEqual(out["market"], [[]])
         self.assertEqual(state.sale_window_debts, {8: {"MILK": 2}})
 
+    def test_unknown_predecessor_debt_fails_closed_without_refund(self):
+        state = SimpleNamespace(sale_window_debts={8: {"MILK": 2}})
+        calls = {"n": 0}
+        produced = []
+        def getter(_observation):
+            calls["n"] += 1
+            if calls["n"] == 3:  # pre-parent getter on second turn only
+                raise RuntimeError("pre-state unavailable")
+            return state
+        def parent(_observation, _configuration=None):
+            item = action(4)
+            produced.append(item)
+            return item
+
+        wrapped = h10.wrap_r04_agent(
+            parent, absorb_one, enabled=True, state_getter=getter,
+        )
+        wrapped(obs(5, 40), CFG)
+        out = wrapped(obs(6, 10), CFG)
+        self.assertIs(out, produced[1])
+        self.assertEqual(state.sale_window_debts, {8: {"MILK": 2}})
+        self.assertEqual(
+            wrapped.telemetry["last_by_player"][0]["reason"],
+            "FAIL_CLOSED_UNKNOWN_PREDECESSOR_DEBT",
+        )
+
     def test_parent_debt_larger_than_removed_sell_fails_closed(self):
         state = SimpleNamespace(sale_window_debts={})
         produced = []
