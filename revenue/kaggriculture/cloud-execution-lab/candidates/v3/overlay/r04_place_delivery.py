@@ -14,7 +14,8 @@ terminal SELL rows, raw market indices, quantities, public-market trajectory,
 and own cash path are unchanged even against arbitrary hidden rival orders; the
 only possible difference is overflow cargo remaining on a worker instead of
 being destroyed after the last useful callback. Any ambiguous or malformed
-state fails closed to the exact parent action.
+state, including positive cargo outside the local projected-shed product model,
+fails closed to the exact parent action.
 """
 from __future__ import annotations
 
@@ -43,8 +44,14 @@ def apply_place_delivery(observation, action, enabled=False):
     raw_shed = private.get("shed") if isinstance(private, dict) else None
     if not isinstance(raw_shed, dict):
         return action
-    if any(type(quantity) is not int or quantity < 0 for quantity in raw_shed.values()):
-        return action
+    for item, quantity in raw_shed.items():
+        if type(quantity) is not int or quantity < 0:
+            return action
+        # projected_shed intentionally models PRODUCTS only. If the live shed
+        # already contains any other positive key, its capacity semantics cannot
+        # be proven by the local theorem.
+        if quantity > 0 and item not in r04.PRODUCTS:
+            return action
     try:
         view = r04.FarmView(observation)
     except (KeyError, TypeError, ValueError, IndexError, AttributeError, OverflowError):
@@ -101,6 +108,12 @@ def apply_place_delivery(observation, action, enabled=False):
             return action
         for item, held in inventory.items():
             if type(held) is not int or held < 0:
+                return action
+            # Official DROP iterates generic positive inventory rows, whereas
+            # projected_shed intentionally ignores non-PRODUCTS. Such cargo would
+            # make parent_stock an incomplete model (and can change which later
+            # product reaches scarce capacity), so the transform must fail closed.
+            if held > 0 and item not in r04.PRODUCTS:
                 return action
             payload += held
             if item in r04.PRODUCTS and held > 0:
