@@ -8,7 +8,7 @@ import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue")
+KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_d4_strawberry_midgame")
 
 
 def _replace_once(text, old, new, label):
@@ -32,6 +32,7 @@ def apply(src):
         "GOOSE_RESCUE = False\n"
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
+        "D4_STRAWBERRY_MIDGAME = False\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -52,9 +53,23 @@ def apply(src):
     )
     router = _replace_once(
         router,
+        "    if DRIBBLE_DUMP:\n"
+        "        import r04_dribble_dump\n"
+        "        action = r04_dribble_dump.apply_dribble_dump(observation, action)\n",
+        "    if D4_STRAWBERRY_MIDGAME:\n"
+        "        import r04_d4_strawberry_midgame\n"
+        "        action = r04_d4_strawberry_midgame.apply_d4(\n"
+        "            action, observation, configuration, enabled=True)\n"
+        "    if DRIBBLE_DUMP:\n"
+        "        import r04_dribble_dump\n"
+        "        action = r04_dribble_dump.apply_dribble_dump(observation, action)\n",
+        "R04 V4 D4 seam",
+    )
+    router = _replace_once(
+        router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, d4_strawberry_midgame=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -64,13 +79,16 @@ def apply(src):
         "    mirror_horizon, terminal_fertilizer and goose_rescue switch the ASTRA lanes B11, B9 and H3c,\n"
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
-        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n",
+        "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
+        "    d4_strawberry_midgame advances only authored same-day STRAWBERRY sales in the repaired\n"
+        "    pre-evening-flush timing gap, with matching E184 debt reservations.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE\n"
+        "    global D4_STRAWBERRY_MIDGAME\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -84,6 +102,8 @@ def apply(src):
         "        PLACE_DELIVERY = bool(place_delivery)\n"
         "    if goose_pass_rescue is not None:\n"
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
+        "    if d4_strawberry_midgame is not None:\n"
+        "        D4_STRAWBERRY_MIDGAME = bool(d4_strawberry_midgame)\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -95,7 +115,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n\n    def __post_init__(self):",
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
-        "    r04_goose_pass_rescue: bool = False\n\n    def __post_init__(self):",
+        "    r04_goose_pass_rescue: bool = False\n"
+        "    r04_d4_strawberry_midgame: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -105,7 +126,8 @@ def apply(src):
         "                                 terminal_fertilizer=bool(self.features.r04_terminal_fertilizer),\n"
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
-        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue))(observation, configuration)\n",
+        "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
+        "                                 d4_strawberry_midgame=bool(self.features.r04_d4_strawberry_midgame))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -113,7 +135,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n",
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
-        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n",
+        "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
+        "                self.diagnostics['d4_strawberry_midgame'] = bool(self.features.r04_d4_strawberry_midgame)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
