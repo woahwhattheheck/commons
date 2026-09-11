@@ -1,0 +1,132 @@
+name: titan-v31-b7-currentroot-gate
+
+on:
+  pull_request:
+    branches: ['astra/v31-a612-restore-5f6-canonical-archive-20260911']
+    paths:
+      - '.github/workflows/titan-v31-b7-currentroot-gate.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-b7-currentroot-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-currentroot-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ROOT: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+      LIVE_BRANCH: titan/v3.1-20260911
+      ROOT_SHA: 8e3d92a286806f9f9525973ee7d359b629a11487
+      PARENT_SHA: 6e5e3c7cc5302d6db4b702cc4fd7c8ca721d7b8a
+      R04_BLOB: 7edacbfb4916b8f241b689ded6643240ca02a9ec
+      APPLY_BLOB: a43d6c470ab05d87803fb016966d1cc54fab9d17
+      B7_DONOR_BLOB: a27da659884c0f9a9594cbd9332b5edb4d7f3307
+      PACKAGE_SHA256: 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact stack, donor, scope, and live gameplay bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          SOURCE="$ROOT/experiments/b7_shed_room_guard.py"
+          R04="$ROOT/overlay/r04_full_router.py"
+          APPLY="$ROOT/apply_v3.py"
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$PARENT_SHA" HEAD)" = "$PARENT_SHA"
+          test "$(git rev-parse "HEAD:$SOURCE")" = "$B7_DONOR_BLOB"
+          test "$(git rev-parse "HEAD:$R04")" = "$R04_BLOB"
+          test "$(git rev-parse "HEAD:$APPLY")" = "$APPLY_BLOB"
+          git diff --name-only "$PARENT_SHA" HEAD > /tmp/b7-paths
+          python - <<'PY'
+          from pathlib import Path
+          actual=set(Path('/tmp/b7-paths').read_text().splitlines())
+          expected={
+            '.github/workflows/titan-v31-b7-currentroot-gate.yml',
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard.py',
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/baseline.py',
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/candidate.py',
+            'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/b7_shed_room_guard/run_gate.py',
+          }
+          assert actual == expected, (sorted(actual), sorted(expected))
+          print('B7_CURRENTROOT_SCOPE_OK', len(actual))
+          PY
+          git diff --check "$PARENT_SHA...HEAD"
+          git fetch --no-tags origin "+refs/heads/$LIVE_BRANCH:refs/remotes/origin/$LIVE_BRANCH"
+          LIVE="$(git rev-parse "refs/remotes/origin/$LIVE_BRANCH")"
+          test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
+          test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
+          test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
+          echo "B7_CURRENTROOT_LIVE_OK $LIVE"
+
+      - name: Prove immutable-base rebuild and compile carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd "$ROOT" && python -B build_v3.py --check) |& tee "$RUNNER_TEMP/b7-build.log"
+          grep -F "V3 CHECK OK $PACKAGE_SHA256 139 files" "$RUNNER_TEMP/b7-build.log"
+          python -B - <<'PY'
+          from pathlib import Path
+          root=Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments')
+          for rel in ('b7_shed_room_guard.py','b7_shed_room_guard/baseline.py','b7_shed_room_guard/candidate.py','b7_shed_room_guard/run_gate.py'):
+              path=root/rel
+              compile(path.read_text(), str(path), 'exec')
+              print('B7_COMPILE_OK', rel)
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run official-interpreter paired screen
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b7-currentroot"
+          python -B "$ROOT/experiments/b7_shed_room_guard/run_gate.py" --repo-root "$GITHUB_WORKSPACE" --output-dir "$OUT" |& tee "$RUNNER_TEMP/b7.log"
+          grep -F 'B7_CURRENTROOT_RESULT ' "$RUNNER_TEMP/b7.log"
+          OUT="$OUT" python -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          r=json.loads((Path(os.environ['OUT'])/'b7-currentroot-receipt.json').read_text())
+          s=r['summary']; d=r['disposition']
+          assert r['schema']=='titan-v31-b7-currentroot-gate/v1'
+          assert s['scheduled']==16 and s['wins']+s['ties']+s['losses']==16
+          if s['trace_changed_cells']==0: assert d=='KILL_INACTIVE'
+          elif s['losses']>0: assert d=='HOLD_NEGATIVE_CELL'
+          elif s['mean_delta_margin']>0: assert d=='PASS_WIDEN_ONLY'
+          else: assert d=='HOLD_NO_POSITIVE_MARGIN'
+          print('B7_CURRENTROOT_RECEIPT_OK', d, s)
+          PY
+
+      - name: Recheck live gameplay freshness after spend
+        shell: bash
+        run: |
+          set -euo pipefail
+          R04="$ROOT/overlay/r04_full_router.py"; APPLY="$ROOT/apply_v3.py"
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha || github.sha }}'
+          git fetch --no-tags origin "+refs/heads/$LIVE_BRANCH:refs/remotes/origin/$LIVE_BRANCH"
+          LIVE="$(git rev-parse "refs/remotes/origin/$LIVE_BRANCH")"
+          test "$(git merge-base "$ROOT_SHA" "$LIVE")" = "$ROOT_SHA"
+          test "$(git rev-parse "$LIVE:$R04")" = "$R04_BLOB"
+          test "$(git rev-parse "$LIVE:$APPLY")" = "$APPLY_BLOB"
+          echo "B7_CURRENTROOT_POSTSPEND_FRESH $LIVE"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-b7-currentroot-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/b7-currentroot/
+            ${{ runner.temp }}/b7.log
+            ${{ runner.temp }}/b7-build.log
+          if-no-files-found: error
