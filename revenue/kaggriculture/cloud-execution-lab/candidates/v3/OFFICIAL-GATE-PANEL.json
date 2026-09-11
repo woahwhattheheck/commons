@@ -16,6 +16,7 @@
   "seats": [0, 1],
   "games_per_opponent": 16,
   "seed_list_sha256": "8a23c181bec872e74b82bfbaf6a3c83af36de8189214868107937d2213382dac",
+  "seed_list_sha256_encoding": "ASCII decimal seed per line, LF after every seed including the final seed",
   "rules": {
     "paired_seats_required": true,
     "same_seed_seat_cells_required_between_baseline_and_candidate": true,
