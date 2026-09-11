@@ -51,13 +51,13 @@ jobs:
           test "$(git rev-parse refs/remotes/origin/titan/v3.1-20260911)" = "$ROOT"
           test "$(git merge-base "$ROOT" HEAD)" = "$ROOT"
 
-          # Candidate differs from reviewed #12468 only by the current-root import binding repair.
-          test "$(git rev-parse "HEAD:$CAND")" = '2ed3f7a7b915e0cab385f62ee7fc528d51a79828'
+          # Current donor binds the exact overlay parent and spells the full shipped 8e3 R04 tuple.
+          test "$(git rev-parse "HEAD:$CAND")" = '9f7f597ae196dee13061bc74e07da49866ee6688'
           test "$(git rev-parse "HEAD:$TEST")" = 'ea30a397d3ec6baddea60d667efdd011e3779228'
           test "$(git rev-parse "HEAD:$PATCH")" = '9933b22d187daee8ae7ee394690b0d3f19c73cb6'
-          test "$(git rev-parse "HEAD:$KILLERS")" = '49f35001a52dbb313a0b62160eb32426efa8053d'
+          test "$(git rev-parse "HEAD:$KILLERS")" = '7b4cd67e3c6950a1186de3877a740e80d6f29f4d'
 
-          # Current shipped 8e3 gameplay bytes: C4 delegates to this exact incumbent stack.
+          # Current shipped 8e3 gameplay bytes.
           test "$(git rev-parse "HEAD:$R04")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
           test "$(git rev-parse "HEAD:$APPLY")" = 'a43d6c470ab05d87803fb016966d1cc54fab9d17'
           test "$(git rev-parse "HEAD:$B5")" = '2a9d606835b0d04d832a4737dcb381ad3fbef1ae'
@@ -84,7 +84,7 @@ jobs:
           git diff --check "$ROOT"..HEAD
           test -z "$(git status --porcelain)"
 
-      - name: Prove C4 imports the exact current V3 overlay parent
+      - name: Prove C4 imports and activates the exact current 8e3 parent tuple
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
         env:
           PYTHONDONTWRITEBYTECODE: '1'
@@ -100,7 +100,29 @@ jobs:
               raise SystemExit(f'C4 parent import drift: {actual} != {expected}')
           if candidate.V3.name != 'v3':
               raise SystemExit(f'C4 V3 root drift: {candidate.V3}')
-          print('C4_PARENT_IMPORT_BOUND', actual)
+          checks = {
+              'SALE_HORIZON': 8,
+              'OPEN_ROUNDTRIP': 0,
+              'ROW_ORDER': True,
+              'EVENING_FLUSH': True,
+              'SALE_FERTILIZER': True,
+              'CATTLE_EARLY': True,
+              'KILL_LATE_WATER': False,
+              'STRAWBERRY_ENDGAME': False,
+              'STRAWBERRY_MAX_PLANTS': 8,
+              'NO_LATE_SALE_ADVANCE': True,
+              'NO_LATE_SALE_ADVANCE_STEP': 648,
+              'STRAWBERRY_TOPUP': True,
+              'B5_CARROT_FERTILIZER': True,
+              'B5_JIT_FERTILIZE': True,
+          }
+          for name, wanted in checks.items():
+              got = getattr(candidate.base, name)
+              if type(got) is not type(wanted) or got != wanted:
+                  raise SystemExit(f'C4 parent flag drift: {name}={got!r}, expected {wanted!r}')
+          if candidate._PARENT_AGENT is not candidate.base.v3_agent:
+              raise SystemExit('C4 frozen parent callable is not exact base.v3_agent')
+          print('C4_PARENT_TUPLE_BOUND', actual)
           PY
           test -z "$(find . -type d -name __pycache__ -print -quit)"
 
@@ -134,7 +156,7 @@ jobs:
           grep -F 'Ran 14 tests' "$RUNNER_TEMP/c4-parent.log"
           grep -F 'OK' "$RUNNER_TEMP/c4-parent.log"
 
-      - name: Run whole-predebt killers
+      - name: Run whole-predebt and parent-custody killers
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         env:
           PYTHONDONTWRITEBYTECODE: '1'
@@ -142,7 +164,7 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest -v experiments/c4_predebt_repair/test_predebt_repair.py |& tee "$RUNNER_TEMP/c4-repair.log"
-          grep -F 'Ran 4 tests' "$RUNNER_TEMP/c4-repair.log"
+          grep -F 'Ran 7 tests' "$RUNNER_TEMP/c4-repair.log"
           grep -F 'OK' "$RUNNER_TEMP/c4-repair.log"
 
       - name: Restore donor, recheck live root, and prove clean checkout
