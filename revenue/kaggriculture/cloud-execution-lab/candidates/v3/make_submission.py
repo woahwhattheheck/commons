@@ -87,7 +87,13 @@ def main(argv=None):
             "usage: python make_submission.py <candidates/v3 dir> <canonical tar.gz> <out.tar.gz> [horizon]"
         )
     v3, canon, output = argv[:3]
-    horizon = int(argv[3]) if len(argv) == 4 else None
+    # Fail closed on caller-controlled score-facing input before importing the package
+    # builder or touching canonical/package bytes. This preserves the reviewed builder
+    # boundary even for malformed/invalid CLI horizons.
+    horizon = None
+    if len(argv) == 4:
+        horizon = _positive_int(int(argv[3]), "submission horizon")
+
     sys.path.insert(0, v3)
     import build_v3  # noqa: E402
 
