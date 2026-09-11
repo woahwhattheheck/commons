@@ -180,6 +180,36 @@ class E20ContractTests(unittest.TestCase):
         self.assertEqual(out["market"], [[], ["SELL", "WHEAT", 1], []])
         self.assertEqual(report["dropped_indices"], [0, 2])
 
+    def test_tail_only_hire_beyond_market_cap_is_exact_identity(self):
+        obs = observation(hires_today=3, own_tiles=[[plant(True)]])
+        action = {"market": [["SELL", "WHEAT", 1] for _ in range(10)] + [["HIRE"]]}
+        before = deepcopy(action)
+        out, report = e20.apply_hire_guard(obs, action, {"maxMarketOrdersPerTurn": 10}, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(out, before)
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "NO_HIRE")
+
+    def test_tail_hire_does_not_consume_remaining_allowance(self):
+        obs = observation(hires_today=2, own_tiles=[[plant(True)]])
+        action = {"market": [["HIRE"]] + [["SELL", "WHEAT", 1] for _ in range(9)] + [["HIRE"]]}
+        before = deepcopy(action)
+        out, report = e20.apply_hire_guard(obs, action, {"maxMarketOrdersPerTurn": 10}, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(out, before)
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "HIRES_WITHIN_LOW_DEMAND_ALLOWANCE")
+
+    def test_excess_hire_inside_custom_prefix_still_drops_and_tail_survives(self):
+        obs = observation(hires_today=2, own_tiles=[[plant(True)]])
+        action = {"market": [["HIRE"], ["SELL", "WHEAT", 1], ["HIRE"], ["HIRE"]]}
+        original = deepcopy(action)
+        out, report = e20.apply_hire_guard(obs, action, {"maxMarketOrdersPerTurn": 3}, enabled=True)
+        self.assertEqual(action, original)
+        self.assertEqual(out["market"], [["HIRE"], ["SELL", "WHEAT", 1], [], ["HIRE"]])
+        self.assertEqual(report["dropped_indices"], [2])
+        self.assertTrue(report["changed"])
+
     def test_real_unwatered_plant_demand_leaves_queue_untouched(self):
         obs = observation(hires_today=3, own_tiles=[[plant(False), plant(False), plant(False)]])
         action = {"market": [["HIRE"], ["HIRE"]]}
