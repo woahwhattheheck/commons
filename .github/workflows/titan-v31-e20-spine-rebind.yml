@@ -1,0 +1,184 @@
+name: titan-v31-e20-spine-rebind
+
+on:
+  pull_request:
+    branches:
+      - 'astra/v31-custody-reachability-h4-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py'
+      - '.github/workflows/titan-v31-e20-spine-rebind.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-e20-spine-rebind-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-reviewed-e20:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact child head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind durable parent and exact reviewed donor blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT='a56147829df7f451ad2c9aefabdcd696bdbba190'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          python - <<'PY'
+          import subprocess
+          parent = 'a56147829df7f451ad2c9aefabdcd696bdbba190'
+          expected = {
+              '.github/workflows/titan-v31-e20-spine-rebind.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'unexpected E20 child scope: {sorted(actual)}')
+          blobs = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py':
+                  'cd497140d188794d610d3ae387de8758ecbd0765',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_features.py':
+                  '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f',
+          }
+          for path, want in blobs.items():
+              got = subprocess.check_output(['git', 'rev-parse', f'HEAD:{path}'], text=True).strip()
+              if got != want:
+                  raise SystemExit(f'donor blob drift {path}: {got} != {want}')
+          print('E20_CHILD_SCOPE_OK', len(actual))
+          print('E20_REVIEWED_BLOBS_OK', len(blobs))
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Run reviewed E20 predecessors on source tree
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v checks/test_v3_features.py |& tee /tmp/e20-source-tests.log
+          grep -F 'OK' /tmp/e20-source-tests.log
+
+      - name: Prove new overlay is reachable before rebinding metadata
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B check_v31_artifact_reachability.py |& tee /tmp/e20-pre-rebind-reachability.log
+          grep -F 'V31 REACHABILITY OK ' /tmp/e20-pre-rebind-reachability.log
+          test -z "$(git status --porcelain)"
+
+      - name: Generate deterministic FILES manifest and package rebind
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/e20-rebind"
+          TREE="$RUNNER_TEMP/e20-materialized-tree"
+          mkdir -p "$OUT" "$TREE"
+          python -B build_v3.py |& tee "$OUT/build.log"
+          grep -F 'V3 BUILD ' "$OUT/build.log"
+          python -B build_v3.py --check |& tee "$OUT/check.log"
+          grep -F 'V3 CHECK OK ' "$OUT/check.log"
+          python -B build_v3.py --tree "$TREE" |& tee "$OUT/tree.log"
+          grep -F 'V3 TREE ' "$OUT/tree.log"
+          cmp overlay/e20_hire_guard.py "$TREE/e20_hire_guard.py"
+          cmp overlay/checks/test_v3_features.py "$TREE/checks/test_v3_features.py"
+          cp FILES.json "$OUT/FILES.json"
+          cp V3-MANIFEST.json "$OUT/V3-MANIFEST.json"
+          cp dist/titan-v3.tar.gz "$OUT/titan-v3.tar.gz"
+          cp dist/titan-v3.sha256 "$OUT/titan-v3.sha256"
+          git diff -- FILES.json V3-MANIFEST.json > "$OUT/rebind.patch"
+          python - "$OUT" <<'PY'
+          import hashlib, json, pathlib, subprocess, sys
+          out = pathlib.Path(sys.argv[1])
+          manifest = json.loads((out / 'V3-MANIFEST.json').read_text())
+          package = out / 'titan-v3.tar.gz'
+          receipt = {
+              'schema': 'titan-v31-e20-spine-rebind/v1',
+              'parent': 'a56147829df7f451ad2c9aefabdcd696bdbba190',
+              'head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'reviewed_donor': {
+                  'source_pr': 12405,
+                  'source_head': 'f2fbc5b6aefbc7e40a50d51fea352923eb379a85',
+                  'e20_blob': 'cd497140d188794d610d3ae387de8758ecbd0765',
+                  'tests_blob': '93bc971edc14de3bf60d7a1921bb5d5bbe6df89f',
+              },
+              'generated_archive': manifest['archive'],
+              'generated_archive_sha256_recomputed': hashlib.sha256(package.read_bytes()).hexdigest(),
+              'generated_files_sha256': hashlib.sha256((out / 'FILES.json').read_bytes()).hexdigest(),
+              'generated_manifest_sha256': hashlib.sha256((out / 'V3-MANIFEST.json').read_bytes()).hexdigest(),
+              'truth_boundary': (
+                  'CI-generated deterministic rebind from the exact child head. '
+                  'Generated FILES/V3-MANIFEST/package are review artifacts and are not '
+                  'committed promotion authority until a deliberate follow-up lands them.'
+              ),
+          }
+          if receipt['generated_archive_sha256_recomputed'] != manifest['archive']['sha256']:
+              raise SystemExit('generated archive digest does not match generated manifest')
+          (out / 'E20-REBIND-RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          )
+          print('E20_REBIND_RECEIPT', receipt['generated_archive_sha256_recomputed'])
+          PY
+          grep -F 'E20_REBIND_RECEIPT ' "$OUT/E20-REBIND-RECEIPT.json" >/dev/null || true
+          test -s "$OUT/rebind.patch"
+
+      - name: Run E20 predecessors from the materialized package
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          TREE="$RUNNER_TEMP/e20-materialized-tree"
+          cd "$TREE"
+          python -B -m unittest -v checks/test_v3_features.py |& tee "$RUNNER_TEMP/e20-rebind/materialized-tests.log"
+          grep -F 'OK' "$RUNNER_TEMP/e20-rebind/materialized-tests.log"
+
+      - name: Prove builder dirtied only generated metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import subprocess
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          expected = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+          }
+          if changed != expected:
+              raise SystemExit(f'unexpected builder mutation: {sorted(changed)}')
+          print('E20_REBIND_GENERATED_METADATA_ONLY', len(changed))
+          PY
+
+      - name: Upload exact generated rebind handoff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-e20-spine-rebind-${{ github.run_id }}
+          path: ${{ runner.temp }}/e20-rebind/
+          if-no-files-found: error
+          retention-days: 14
