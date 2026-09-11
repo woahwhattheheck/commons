@@ -32,6 +32,13 @@ def _last_action_step(config: Mapping[str, Any]) -> int:
         return 718
 
 
+def _market_order_limit(config: Mapping[str, Any]) -> int:
+    try:
+        return max(0, int(config.get("maxMarketOrdersPerTurn", 10)))
+    except (TypeError, ValueError):
+        return 10
+
+
 def apply_hire_guard(
     obs: Mapping[str, Any],
     action: Mapping[str, Any],
@@ -81,9 +88,10 @@ def apply_hire_guard(
     if not isinstance(raw_market, list):
         report["reason"] = "BAD_MARKET_QUEUE"
         return action, report
+    market_order_limit = _market_order_limit(cfg)
     hire_indices = [
         index
-        for index, order in enumerate(raw_market)
+        for index, order in enumerate(raw_market[:market_order_limit])
         if isinstance(order, list) and order and order[0] == "HIRE"
     ]
     if not hire_indices:
