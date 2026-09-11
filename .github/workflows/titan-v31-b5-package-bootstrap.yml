@@ -1,0 +1,487 @@
+name: titan-v31-b5-package-bootstrap
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-custody-reachability-h4-20260911
+    paths:
+      - '.github/workflows/titan-v31-b5-package-bootstrap.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_carrot_fertilizer.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json'
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout writable feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Bind exact convergence parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=a56147829df7f451ad2c9aefabdcd696bdbba190
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py")" = 1255473beb2da45e390f236209f90c53935a45f1
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py")" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+
+      - name: Materialize strict B5 package wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import textwrap
+
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3')
+          apply_path = root / 'apply_v3.py'
+          text = apply_path.read_text(encoding='utf-8')
+
+          def replace_once(source, old, new, label):
+              count = source.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label}: expected 1 anchor, found {count}')
+              return source.replace(old, new, 1)
+
+          if 'b5_carrot_fertilizer: bool = False' not in text:
+              text = replace_once(
+                  text,
+                  '    "    r04_cattle_early: bool = True\\n"\n)',
+                  '    "    r04_cattle_early: bool = True\\n"\n'
+                  '    "    # B5 CARROT no-detour fertilizer factor; package-wired but shipped OFF.\\n"\n'
+                  '    "    b5_carrot_fertilizer: bool = False\\n"\n)',
+                  'B5 feature field',
+              )
+              text = replace_once(
+                  text,
+                  '    "                    or f.r04_sale_window)\\n\\n"',
+                  '    "                    or f.r04_sale_window or f.b5_carrot_fertilizer)\\n\\n"',
+                  'B5 active flag',
+              )
+              text = replace_once(
+                  text,
+                  '    "                \'e20_hire_guard\': bool(f.e20_hire_guard),\\n"',
+                  '    "                \'e20_hire_guard\': bool(f.e20_hire_guard),\\n"\n'
+                  '    "                \'b5_carrot_fertilizer\': bool(f.b5_carrot_fertilizer),\\n"',
+                  'B5 config receipt',
+              )
+              hook = '    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\\n"'
+              replacement = hook + '\n' + (
+                  '    "                if self.features.b5_carrot_fertilizer:\\n"\n'
+                  '    "                    from b5_carrot_fertilizer import apply_carrot_fertilizer\\n"\n'
+                  '    "                    before_b5 = output\\n"\n'
+                  '    "                    output = apply_carrot_fertilizer(observation, configuration, output)\\n"\n'
+                  '    "                    self.diagnostics[\'b5_carrot_fertilizer\'] = {\'activated\': output is not before_b5}\\n"'
+              )
+              text = replace_once(text, hook, replacement, 'B5 post-R04 seam')
+              text = replace_once(
+                  text,
+                  '    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank", "r03_full_router", "r04_sale_window"):',
+                  '    for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS + ("r01_shop_router", "r02_route_bank", "r03_full_router", "r04_sale_window", "b5_carrot_fertilizer"):',
+                  'B5 config key',
+              )
+              apply_path.write_text(text, encoding='utf-8')
+
+          module = textwrap.dedent(r'''\
+          # SPDX-License-Identifier: Apache-2.0
+          """Production-carrier helper for the reviewed B5 CARROT no-detour factor.
+
+          Standard-config action semantics match the repaired experiment: only an already
+          authored literal PASS may become FERTILIZE, only on the worker's current CARROT
+          tile, and only from fertilizer already carried by that actor.  This package
+          carrier additionally requires literal turnsPerDay=24 because the reviewed
+          experiment derives day from step//24.  Missing, malformed, or type-confused
+          evidence fails closed to exact parent action identity.
+          """
+          from __future__ import annotations
+
+          import copy
+
+          DONOR_EXPERIMENT = "astra/v31-b5-carrot-fertilizer-20260911"
+          DONOR_REVIEWED_BLOB = "bc16574a9cf0d503c2dc1c8c503d7229e7edfbde"
+          _MISSING = object()
+
+
+          def _int(value):
+              return type(value) is int
+
+
+          def _config_value(configuration, key):
+              if configuration is None:
+                  return _MISSING
+              if isinstance(configuration, dict):
+                  return configuration.get(key, _MISSING)
+              getter = getattr(configuration, "get", None)
+              if callable(getter):
+                  try:
+                      return getter(key, _MISSING)
+                  except (AttributeError, KeyError, TypeError, ValueError):
+                      return _MISSING
+              try:
+                  return getattr(configuration, key, _MISSING)
+              except (AttributeError, KeyError, TypeError, ValueError):
+                  return _MISSING
+
+
+          def _standard_timing(configuration):
+              turns = _config_value(configuration, "turnsPerDay")
+              return type(turns) is int and turns == 24
+
+
+          def _eligible(tile, inventory, day):
+              if not isinstance(tile, dict) or not isinstance(inventory, dict) or not _int(day):
+                  return False
+              fertilizer = inventory.get("FERTILIZER")
+              coverage = tile.get("fertilized_until_day")
+              return (
+                  tile.get("kind") == "PLANT"
+                  and tile.get("crop") == "CARROT"
+                  and _int(fertilizer)
+                  and fertilizer > 0
+                  and _int(coverage)
+                  and coverage < day + 2
+              )
+
+
+          def apply_carrot_fertilizer(observation, configuration, action):
+              """Return B5 action; every malformed represented actor poisons the transform."""
+              if not _standard_timing(configuration):
+                  return action
+              if not isinstance(observation, dict) or not isinstance(action, dict):
+                  return action
+              player = observation.get("player")
+              step = observation.get("step")
+              farms = observation.get("farms")
+              private = observation.get("private")
+              if (
+                  not _int(player)
+                  or player < 0
+                  or not _int(step)
+                  or step < 0
+                  or not isinstance(farms, list)
+                  or player >= len(farms)
+                  or not isinstance(private, dict)
+              ):
+                  return action
+
+              farm = farms[player]
+              inventories = private.get("inventories")
+              farm_hands = farm.get("hands") if isinstance(farm, dict) else None
+              action_hands = action.get("hands")
+              if (
+                  not isinstance(farm, dict)
+                  or "farmer" not in farm
+                  or "farmer" not in action
+                  or not isinstance(farm_hands, list)
+                  or not isinstance(action_hands, list)
+                  or not isinstance(inventories, list)
+              ):
+                  return action
+
+              positions = [farm["farmer"], *farm_hands]
+              commands = [action["farmer"], *action_hands]
+              if len(positions) != len(commands) or len(commands) != len(inventories):
+                  return action
+              tiles = farm.get("tiles")
+              if not isinstance(tiles, list):
+                  return action
+
+              actor_rows = []
+              for command, position, inventory in zip(commands, positions, inventories):
+                  if not isinstance(command, list) or not command or not isinstance(command[0], str):
+                      return action
+                  if command[0] == "PASS" and command != ["PASS"]:
+                      return action
+                  if (
+                      not isinstance(position, (list, tuple))
+                      or len(position) != 2
+                      or not _int(position[0])
+                      or not _int(position[1])
+                      or not isinstance(inventory, dict)
+                  ):
+                      return action
+                  if "FERTILIZER" in inventory:
+                      fertilizer = inventory["FERTILIZER"]
+                      if not _int(fertilizer) or fertilizer < 0:
+                          return action
+                  x, y = position
+                  if y < 0 or y >= len(tiles) or not isinstance(tiles[y], list) or x < 0 or x >= len(tiles[y]):
+                      return action
+                  tile = tiles[y][x]
+                  if (
+                      command == ["PASS"]
+                      and isinstance(tile, dict)
+                      and tile.get("kind") == "PLANT"
+                      and tile.get("crop") == "CARROT"
+                  ):
+                      if "fertilized_until_day" not in tile or not _int(tile.get("fertilized_until_day")):
+                          return action
+                  actor_rows.append((command, inventory, x, y, tile))
+
+              day = step // 24
+              claimed = set()
+              replacements = {}
+              for actor, (command, inventory, x, y, tile) in enumerate(actor_rows):
+                  if command != ["PASS"] or (x, y) in claimed:
+                      continue
+                  if not _eligible(tile, inventory, day):
+                      continue
+                  replacements[actor] = ["FERTILIZE"]
+                  claimed.add((x, y))
+
+              if not replacements:
+                  return action
+              result = copy.deepcopy(action)
+              result_commands = [result["farmer"], *result["hands"]]
+              for actor, command in replacements.items():
+                  result_commands[actor] = command
+              result["farmer"] = result_commands[0]
+              result["hands"] = result_commands[1:]
+              return result
+          ''')
+          module_path = root / 'overlay' / 'b5_carrot_fertilizer.py'
+          module_path.write_text(module, encoding='utf-8')
+
+          tests = textwrap.dedent(r'''\
+          import copy
+          import sys
+          import unittest
+          from pathlib import Path
+
+          ROOT = Path(__file__).resolve().parents[1]
+          OVERLAY = ROOT / "overlay"
+          if str(OVERLAY) not in sys.path:
+              sys.path.insert(0, str(OVERLAY))
+
+          import b5_carrot_fertilizer as b5
+
+
+          def cfg(value=24):
+              return {"turnsPerDay": value}
+
+
+          def fixture(*, two=False):
+              tiles = [[None for _ in range(10)] for _ in range(10)]
+              tiles[0][0] = {"kind": "PLANT", "crop": "CARROT", "fertilized_until_day": 0}
+              if two:
+                  tiles[0][1] = {"kind": "PLANT", "crop": "WHEAT", "fertilized_until_day": 0}
+              farm = {"farmer": [0, 0], "hands": ([[1, 0]] if two else []), "tiles": tiles}
+              action = {"farmer": ["PASS"], "hands": ([['PASS']] if two else []), "market": [["SELL", "WHEAT", 1]]}
+              inventories = [{"FERTILIZER": 1}]
+              if two:
+                  inventories.append({"FERTILIZER": 0})
+              observation = {"step": 24, "player": 0, "farms": [farm], "private": {"inventories": inventories}}
+              return observation, action
+
+
+          class B5PackageWiringTests(unittest.TestCase):
+              def test_standard_positive_preserves_parent_and_market(self):
+                  observation, action = fixture()
+                  before = copy.deepcopy(action)
+                  result = b5.apply_carrot_fertilizer(observation, cfg(), action)
+                  self.assertIsNot(result, action)
+                  self.assertEqual(["FERTILIZE"], result["farmer"])
+                  self.assertEqual(before, action)
+                  self.assertEqual(before["market"], result["market"])
+
+              def test_runtime_cadence_is_strict(self):
+                  for configuration in (None, {}, cfg(12), cfg(True), cfg(24.0), cfg("24")):
+                      with self.subTest(configuration=configuration):
+                          observation, action = fixture()
+                          self.assertIs(action, b5.apply_carrot_fertilizer(observation, configuration, action))
+
+              def test_nonpass_and_noncarrot_are_identity(self):
+                  observation, action = fixture()
+                  action["farmer"] = ["CARE"]
+                  self.assertIs(action, b5.apply_carrot_fertilizer(observation, cfg(), action))
+                  observation, action = fixture()
+                  observation["farms"][0]["tiles"][0][0]["crop"] = "WHEAT"
+                  self.assertIs(action, b5.apply_carrot_fertilizer(observation, cfg(), action))
+
+              def test_later_poisoned_fertilizer_is_whole_action_identity(self):
+                  observation, action = fixture(two=True)
+                  observation["private"]["inventories"][1]["FERTILIZER"] = "1"
+                  self.assertIs(action, b5.apply_carrot_fertilizer(observation, cfg(), action))
+
+              def test_later_pass_like_row_is_whole_action_identity(self):
+                  observation, action = fixture(two=True)
+                  action["hands"][0] = ["PASS", 1]
+                  self.assertIs(action, b5.apply_carrot_fertilizer(observation, cfg(), action))
+
+              def test_later_carrot_coverage_poison_is_whole_action_identity(self):
+                  observation, action = fixture(two=True)
+                  observation["farms"][0]["tiles"][0][1]["crop"] = "CARROT"
+                  observation["farms"][0]["tiles"][0][1]["fertilized_until_day"] = None
+                  self.assertIs(action, b5.apply_carrot_fertilizer(observation, cfg(), action))
+
+
+          if __name__ == "__main__":
+              unittest.main()
+          ''')
+          test_path = root / 'tooling_tests' / 'test_b5_carrot_package_wiring.py'
+          test_path.write_text(tests, encoding='utf-8')
+
+          manifest_path = root / 'V3-MANIFEST.json'
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          manifest.setdefault('keys', {})['b5_carrot_fertilizer'] = {
+              'default': False,
+              'seam': 'R04 whole-route delegate post-policy, immediately before TitanAgent returns the R04 action',
+              'module': 'b5_carrot_fertilizer.py',
+              'effect': 'CARROT-only no-detour PASS->FERTILIZE using already-carried fertilizer; strict turnsPerDay=24; shipped OFF',
+          }
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+
+          reach_path = Path('.github/workflows/titan-v31-artifact-reachability.yml')
+          reach = reach_path.read_text(encoding='utf-8')
+          marker = "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/test_v31_h4_strawberry.py',\n"
+          additions = marker + (
+              "              '.github/workflows/titan-v31-b5-carrot-package-wiring.yml',\n"
+              "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',\n"
+              "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',\n"
+              "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',\n"
+              "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_carrot_fertilizer.py',\n"
+              "              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_b5_carrot_package_wiring.py',\n"
+          )
+          if "overlay/b5_carrot_fertilizer.py" not in reach:
+              if reach.count(marker) != 1:
+                  raise SystemExit('reachability scope anchor drift')
+              reach = reach.replace(marker, additions, 1)
+              reach_path.write_text(reach, encoding='utf-8')
+
+          gate = textwrap.dedent(r'''\
+          name: titan-v31-b5-carrot-package-wiring
+
+          on:
+            pull_request:
+              branches:
+                - astra/v31-custody-reachability-h4-20260911
+              paths:
+                - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+                - '.github/workflows/titan-v31-artifact-reachability.yml'
+                - '.github/workflows/titan-v31-b5-carrot-package-wiring.yml'
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            source-package-gate:
+              runs-on: ubuntu-latest
+              timeout-minutes: 15
+              steps:
+                - name: Checkout exact event head
+                  uses: actions/checkout@v4
+                  with:
+                    ref: ${{ github.event.pull_request.head.sha || github.sha }}
+                    fetch-depth: 0
+
+                - name: Bind exact convergence parent and scope
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    PARENT=a56147829df7f451ad2c9aefabdcd696bdbba190
+                    EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+                    test "$(git rev-parse HEAD)" = "$EXPECTED"
+                    git merge-base --is-ancestor "$PARENT" HEAD
+                    test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py")" = 21c4f1db0298f8955b1f5ad366bd780a89cad206
+                    test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py")" = a43289b9cc5e34a2481fddf652762a7d92f427ef
+                    python - <<'PY'
+                    import subprocess
+                    parent = 'a56147829df7f451ad2c9aefabdcd696bdbba190'
+                    actual = set(subprocess.check_output(['git','diff','--name-only',parent,'HEAD'], text=True).splitlines())
+                    expected = {
+                        '.github/workflows/titan-v31-artifact-reachability.yml',
+                        '.github/workflows/titan-v31-b5-carrot-package-wiring.yml',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_carrot_fertilizer.py',
+                        'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_b5_carrot_package_wiring.py',
+                    }
+                    if actual != expected:
+                        raise SystemExit(f'B5 package-wiring scope drift: {sorted(actual)}')
+                    print('B5_PACKAGE_SCOPE_OK', len(actual))
+                    PY
+
+                - name: Run B5 source and poison contracts
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    python -B -m unittest -v tooling_tests.test_b5_carrot_package_wiring |& tee /tmp/b5-tests.log
+                    grep -F 'Ran 6 tests' /tmp/b5-tests.log
+                    grep -F 'OK' /tmp/b5-tests.log
+
+                - name: Rebuild-check and materialize exact package
+                  working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    env -u PYTHONOPTIMIZE python -B build_v3.py --check | tee /tmp/b5-build.log
+                    grep -F 'V3 CHECK OK' /tmp/b5-build.log
+                    rm -rf /tmp/b5-tree
+                    env -u PYTHONOPTIMIZE python -B build_v3.py --tree /tmp/b5-tree
+                    python - <<'PY'
+                    import json
+                    from pathlib import Path
+                    tree = Path('/tmp/b5-tree')
+                    cfg = json.loads((tree / 'TITAN-CONFIG.json').read_text())
+                    assert cfg['b5_carrot_fertilizer'] is False
+                    runtime = (tree / 'titan_runtime.py').read_text()
+                    assert 'b5_carrot_fertilizer: bool = False' in runtime
+                    assert 'from b5_carrot_fertilizer import apply_carrot_fertilizer' in runtime
+                    assert (tree / 'b5_carrot_fertilizer.py').is_file()
+                    print('B5_MATERIALIZED_DEFAULT_OFF_OK')
+                    PY
+
+                - name: Prove checkout stayed clean
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    test -z "$(git status --porcelain)"
+          ''')
+          Path('.github/workflows/titan-v31-b5-carrot-package-wiring.yml').write_text(gate, encoding='utf-8')
+          PY
+
+      - name: Regenerate deterministic package metadata
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v tooling_tests.test_b5_carrot_package_wiring
+          python -B build_v3.py
+          python -B build_v3.py --check
+          rm -rf dist
+
+      - name: Commit regenerated source and custody metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Astra Titan Integration'
+          git config user.email 'actions@users.noreply.github.com'
+          git add \
+            .github/workflows/titan-v31-artifact-reachability.yml \
+            .github/workflows/titan-v31-b5-carrot-package-wiring.yml \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/FILES.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/b5_carrot_fertilizer.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_b5_carrot_package_wiring.py
+          if git diff --cached --quiet; then
+            echo 'B5 package wiring already materialized'
+            exit 0
+          fi
+          git commit -m 'TITAN V3.1: package-wire B5 CARROT behind default-off key'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
