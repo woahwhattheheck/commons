@@ -1,0 +1,93 @@
+name: titan-v31-c4-predebt-repair-proof
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-c4-town-demand-boundary-20260911
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_predebt_repair/**'
+      - '.github/workflows/titan-v31-c4-predebt-repair-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-parent-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind exact parent, additive scope, and source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          PARENT=45941b17fe0d379ee35b3d2971957d257c9a1740
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          git merge-base --is-ancestor "$PARENT" HEAD
+          test "$(git merge-base "$PARENT" HEAD)" = "$PARENT"
+          python - <<'PY'
+          import subprocess
+          parent = '45941b17fe0d379ee35b3d2971957d257c9a1740'
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
+          ).splitlines())
+          expected = {
+              '.github/workflows/titan-v31-c4-predebt-repair-proof.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_predebt_repair/repair.patch',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_predebt_repair/test_predebt_repair.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'unexpected C4 repair-proof scope: {sorted(actual)}')
+          print('C4_PREDEBT_REPAIR_SCOPE_OK', len(actual))
+          PY
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py")" = 1f2f3d05bceb62fbbb9c3d6474364cfd32b256e2
+          test "$(git rev-parse "$PARENT:revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/test_candidate.py")" = ea30a397d3ec6baddea60d667efdd011e3779228
+
+      - name: Apply whole-predebt repair ephemerally
+        shell: bash
+        run: |
+          set -euo pipefail
+          PATCH=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_predebt_repair/repair.patch
+          TARGET=revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
+          git apply --check "$PATCH"
+          git apply "$PATCH"
+          test "$(git diff --name-only)" = "$TARGET"
+          python -B -m py_compile "$TARGET"
+
+      - name: Run inherited C4 predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v test_candidate.py |& tee /tmp/c4-parent.log
+          grep -F 'Ran 14 tests' /tmp/c4-parent.log
+          grep -F 'OK' /tmp/c4-parent.log
+
+      - name: Run whole-predebt repair killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v experiments/c4_predebt_repair/test_predebt_repair.py |& tee /tmp/c4-predebt.log
+          grep -F 'Ran 4 tests' /tmp/c4-predebt.log
+          grep -F 'OK' /tmp/c4-predebt.log
+
+      - name: Revert ephemeral source and prove clean carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -- revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/c4_town_demand_boundary/candidate.py
+          test -z "$(git status --porcelain)"
+          echo C4_PREDEBT_REPAIR_EPHEMERAL_REVERT_OK
