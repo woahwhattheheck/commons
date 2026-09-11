@@ -1,12 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Focused checks for V4 ``r04_dead_water_harvest``.
-
-Run in a materialised candidate package:
-
-    python -B -m unittest -v checks/test_v4_dead_water_harvest.py
-"""
+"""Focused checks for V4 ``r04_dead_water_harvest``."""
 from __future__ import annotations
 
+import copy
 import unittest
 
 import r04_dead_water_harvest as lane
@@ -24,17 +20,24 @@ def _tile(crop="WHEAT", planted_day=24, yield_units=3,
     }
 
 
-def _obs(tile, step=680, day=28, player=0):
+def _board(tile):
+    tiles = [[{"kind": "SOIL"} for _ in range(10)] for _ in range(10)]
+    tiles[0][0] = tile
+    return tiles
+
+
+def _obs(tile, step=695, day=28, player=0):
     farm = {
         "farmer": [0, 0],
         "hands": [],
-        "tiles": [[tile]],
+        "tiles": _board(tile),
     }
     return {
         "step": step,
         "day": day,
         "player": player,
-        "farms": [farm],
+        "farms": [farm, copy.deepcopy(farm)],
+        "private": {"inventories": [{}], "shed": {}},
     }
 
 
@@ -43,7 +46,12 @@ def _action(command=None):
 
 
 def _config():
-    return {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10}
+    return {
+        "episodeSteps": 720,
+        "turnsPerDay": 24,
+        "boardSize": 10,
+        "shedCapacity": 100,
+    }
 
 
 def _apply(observation, action, configuration=None, enabled=True):
@@ -58,16 +66,11 @@ class DeadWaterHarvestTest(unittest.TestCase):
         lane.reset()
 
     def test_already_watered_max_age_annual_recovers_harvest(self):
-        # WHEAT max_yield_day=4. At age 4 an already-watered plant has no
-        # remaining future WATER growth, so removing it by HARVEST is safe.
         out = _apply(_obs(_tile()), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
     def test_mature_but_premax_annual_preserves_future_yield(self):
-        # WHEAT first_yield_day=2 but max_yield_day=4. At day 28 a plant from
-        # day 26 is harvestable and already watered, yet HARVEST would remove
-        # the plant and destroy its day-29 yield opportunity.
         tile = _tile(crop="WHEAT", planted_day=26, yield_units=3,
                      watered_today=True, max_lifespan_step=744)
         action = _action()
@@ -75,30 +78,45 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(out, action)
         self.assertEqual(lane.get_report()["future_yield_block"], 1)
 
-    def test_already_watered_ongoing_crop_can_harvest_without_removal(self):
+    def test_already_watered_ongoing_crop_can_harvest_when_capacity_proven(self):
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
                      watered_today=True, max_lifespan_step=-1)
         out = _apply(_obs(tile), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["recovered"], 1)
 
-    def test_hour23_ongoing_crop_fails_closed_before_eod_cargo_drop(self):
-        # Unit actions execute before EOD. On step 695 (day 28 hour 23),
-        # HARVEST would move held TOMATO into actor cargo; a full shed can then
-        # discard it during the automatic inventory drop. Parent WATER no-ops
-        # and leaves the ongoing crop's held yield safely on the plant.
+    def test_hour23_full_shed_ongoing_crop_fails_closed(self):
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
                      watered_today=True, max_lifespan_step=-1)
-        observation = _obs(tile, step=695, day=28)
+        observation = _obs(tile)
         observation["private"] = {"inventories": [{}], "shed": {"WHEAT": 100}}
         action = _action()
         out = _apply(observation, action)
         self.assertIs(out, action)
+        self.assertEqual(lane.get_report()["capacity_block"], 1)
         self.assertEqual(lane.get_report()["recovered"], 0)
 
+    def test_hour22_is_identity_even_with_room(self):
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     watered_today=True, max_lifespan_step=-1)
+        action = _action()
+        out = _apply(_obs(tile, step=694, day=28), action)
+        self.assertIs(out, action)
+        self.assertEqual(lane.get_report()["recovered"], 0)
+
+    def test_final_day_is_identity_without_delivery_theorem(self):
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     watered_today=True, max_lifespan_step=-1)
+        action = _action()
+        out = _apply(_obs(tile, step=719, day=29), action)
+        self.assertIs(out, action)
+        self.assertEqual(lane.get_report()["terminal_day_block"], 0)
+        action2 = _action()
+        out2 = _apply(_obs(tile, step=718, day=29), action2)
+        self.assertIs(out2, action2)
+        self.assertEqual(lane.get_report()["terminal_day_block"], 1)
+
     def test_unwatered_ongoing_negative_lifespan_sentinel_is_not_expiring(self):
-        # Official ongoing crops use -1 until terminal production. WATER is
-        # productive here and must not be replaced merely because -1 <= step.
         tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
                      watered_today=False, max_lifespan_step=-1)
         action = _action()
@@ -109,13 +127,12 @@ class DeadWaterHarvestTest(unittest.TestCase):
 
     def test_expiring_unwatered_mature_plant_recovers_harvest(self):
         tile = _tile(crop="CARROT", planted_day=25, yield_units=4,
-                     watered_today=False, max_lifespan_step=680)
+                     watered_today=False, max_lifespan_step=695)
         out = _apply(_obs(tile), _action())
         self.assertEqual(out["farmer"], ["HARVEST"])
         self.assertEqual(lane.get_report()["expiring"], 1)
 
     def test_annual_yield_units_before_maturity_fails_closed(self):
-        # Official engine initializes non-ongoing crops with yield_units == 1.
         tile = _tile(crop="WHEAT", planted_day=28, yield_units=1,
                      watered_today=True, max_lifespan_step=792)
         action = _action()
@@ -136,10 +153,7 @@ class DeadWaterHarvestTest(unittest.TestCase):
 
     def test_outside_window_and_disabled_are_identity(self):
         action = _action()
-        self.assertIs(
-            _apply(_obs(_tile(), step=671, day=27), action),
-            action,
-        )
+        self.assertIs(_apply(_obs(_tile(), step=671, day=27), action), action)
         self.assertIs(
             lane.apply_dead_water_harvest(_obs(_tile()), action, enabled=False),
             action,
@@ -155,17 +169,11 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(_apply(_obs(_tile()), pass_action), pass_action)
 
         bool_player = _action()
-        self.assertIs(
-            _apply(_obs(_tile(), player=True), bool_player),
-            bool_player,
-        )
+        self.assertIs(_apply(_obs(_tile(), player=True), bool_player), bool_player)
 
         malformed_hands = _action()
         malformed_hands["hands"] = (["WATER"],)
-        self.assertIs(
-            _apply(_obs(_tile()), malformed_hands),
-            malformed_hands,
-        )
+        self.assertIs(_apply(_obs(_tile()), malformed_hands), malformed_hands)
 
     def test_partial_actor_vectors_fail_closed(self):
         observation = _obs(_tile())
@@ -179,20 +187,15 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(_apply(observation, action), action)
 
     def test_nonvector_worker_position_fails_closed(self):
-        # A mapping is a two-item iterable too. Before the strict shape guard,
-        # keys 0,1 could be unpacked as x=0,y=1 and authorize a rewrite.
         observation = _obs(_tile())
-        observation["farms"][0]["tiles"] = [[{"kind": "SOIL"}], [_tile()]]
         observation["farms"][0]["farmer"] = {0: "x", 1: "y"}
         action = _action()
         self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["recovered"], 0)
 
     def test_inconsistent_public_clock_fails_closed(self):
-        # Maturity uses `day` while the late/expiry window uses `step`; do not
-        # let a malformed clock make an immature plant appear harvestable.
         action = _action()
-        observation = _obs(_tile(), step=680, day=29)
+        observation = _obs(_tile(), step=695, day=29)
         self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["recovered"], 0)
 
@@ -207,20 +210,20 @@ class DeadWaterHarvestTest(unittest.TestCase):
             ("episodeSteps", 721),
             ("turnsPerDay", 25),
             ("boardSize", 11),
+            ("shedCapacity", 101),
             ("turnsPerDay", True),
+            ("shedCapacity", True),
         ):
             configuration = _config()
             configuration[key] = bad_value
-            self.assertIs(
-                _apply(observation, action, configuration=configuration),
-                action,
-            )
+            self.assertIs(_apply(observation, action, configuration=configuration), action)
 
     def test_attribute_configuration_matches_runtime_surface(self):
         class Configuration:
             episodeSteps = 720
             turnsPerDay = 24
             boardSize = 10
+            shedCapacity = 100
 
         out = lane.apply_dead_water_harvest(
             _obs(_tile()), _action(), Configuration(), enabled=True)
@@ -228,8 +231,6 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertEqual(lane.get_report()["recovered"], 1)
 
     def test_stacked_actor_candidate_fails_closed(self):
-        # Changing one row on a shared tile can change action ordering or who
-        # receives cargo, so W1 must not treat this as an actor-local rewrite.
         observation = _obs(_tile())
         observation["farms"][0]["hands"] = [[0, 0]]
         action = _action()
@@ -238,8 +239,6 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertEqual(lane.get_report()["recovered"], 0)
 
     def test_malformed_inactive_actor_blocks_partial_mutation(self):
-        # Even when only the farmer authored WATER, malformed sibling geometry
-        # must prevent a prefix rewrite rather than being skipped with continue.
         observation = _obs(_tile())
         observation["farms"][0]["hands"] = [[99, 99]]
         action = _action()
@@ -248,15 +247,68 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertEqual(lane.get_report()["recovered"], 0)
 
     def test_malformed_sibling_command_blocks_partial_mutation(self):
-        # A malformed sibling action row must not coexist with a valid-prefix
-        # WATER rewrite on another actor.
         observation = _obs(_tile())
-        observation["farms"][0]["tiles"] = [[_tile(), {"kind": "SOIL"}]]
         observation["farms"][0]["hands"] = [[1, 0]]
         action = _action()
         action["hands"] = ["PASS"]
         self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["recovered"], 0)
+
+    def test_full_board_shape_is_required(self):
+        observation = _obs(_tile())
+        observation["farms"][0]["tiles"] = [[_tile()]]
+        action = _action()
+        self.assertIs(_apply(observation, action), action)
+
+        observation = _obs(_tile())
+        observation["farms"][0]["tiles"][9] = [{"kind": "SOIL"}] * 9
+        action = _action()
+        self.assertIs(_apply(observation, action), action)
+
+    def test_existing_market_shed_inflow_blocks_rewrite(self):
+        observation = _obs(_tile(crop="TOMATO", planted_day=18,
+                                     yield_units=2, max_lifespan_step=-1))
+        action = _action()
+        action["market"] = [["BUY_PRODUCT", "WHEAT", 1]]
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["capacity_block"], 1)
+
+    def test_existing_sell_is_conservatively_safe(self):
+        observation = _obs(_tile(crop="TOMATO", planted_day=18,
+                                     yield_units=2, max_lifespan_step=-1))
+        action = _action()
+        action["market"] = [["SELL", "WHEAT", 1]]
+        out = _apply(observation, action)
+        self.assertEqual(out["farmer"], ["HARVEST"])
+        self.assertEqual(out["market"], action["market"])
+
+    def test_sibling_harvest_inflow_is_included_in_capacity_bound(self):
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     max_lifespan_step=-1)
+        observation = _obs(tile)
+        observation["farms"][0]["hands"] = [[1, 0]]
+        observation["farms"][0]["tiles"][0][1] = {
+            "kind": "PLANT", "crop": "TOMATO", "planted_day": 18,
+            "yield_units": 99, "watered_today": True,
+            "max_lifespan_step": -1,
+        }
+        observation["private"]["inventories"] = [{}, {}]
+        action = _action()
+        action["hands"] = [["HARVEST"]]
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["capacity_block"], 1)
+
+    def test_current_carried_inventory_is_included_in_capacity_bound(self):
+        tile = _tile(crop="TOMATO", planted_day=18, yield_units=2,
+                     max_lifespan_step=-1)
+        observation = _obs(tile)
+        observation["private"] = {
+            "inventories": [{"WHEAT": 9}],
+            "shed": {"CARROT": 90},
+        }
+        action = _action()
+        self.assertIs(_apply(observation, action), action)
+        self.assertEqual(lane.get_report()["capacity_block"], 1)
 
 
 if __name__ == "__main__":
