@@ -158,6 +158,9 @@ def transform(observation: Any, action: Any, configuration: Any = None, enabled:
     placed_units = 0
 
     for actor, command in enumerate(commands):
+        if not isinstance(command, list):
+            telemetry["malformed_action"] += 1
+            return action
         inventory = _actor_inventory(inventories, actor)
         if inventory is None:
             telemetry["malformed_inventory"] += 1
