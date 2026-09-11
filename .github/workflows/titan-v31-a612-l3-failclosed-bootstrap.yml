@@ -150,7 +150,7 @@ jobs:
                 - name: Checkout exact event head
                   uses: actions/checkout@v4
                   with:
-                    ref: ${{ github.event.pull_request.head.sha || github.sha }}
+                    ref: __EVENT_HEAD_EXPR__
                     fetch-depth: 0
 
                 - name: Bind exact canonical parent, final scope, and source bytes
@@ -158,7 +158,7 @@ jobs:
                   run: |
                     set -euo pipefail
                     BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
-                    EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+                    EXPECTED_HEAD='__EVENT_HEAD_EXPR__'
                     ROUTER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
                     PROD_TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r04_l3_rival_gate.py'
                     test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
@@ -229,6 +229,31 @@ jobs:
                     set -euo pipefail
                     test -z "$(git status --porcelain)"
           YAML
+          ROUTER_BLOB="$(git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)"
+          ROUTER_BLOB="$ROUTER_BLOB" python3 - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path('.github/workflows/titan-v31-a612-l3-failclosed-package.yml')
+          text = path.read_text(encoding='utf-8')
+          dynamic = '$' + '{{ github.event.pull_request.head.sha || github.sha }}'
+          router = os.environ['ROUTER_BLOB']
+          if len(router) != 40 or any(ch not in '0123456789abcdef' for ch in router):
+              raise SystemExit(f'invalid repaired router blob {router!r}')
+          if text.count('__EVENT_HEAD_EXPR__') != 2:
+              raise SystemExit('unexpected event-head template token count')
+          if text.count('__POST_BOOTSTRAP_ROUTER_BLOB__') != 1:
+              raise SystemExit('unexpected router template token count')
+          text = text.replace('__EVENT_HEAD_EXPR__', dynamic)
+          text = text.replace('__POST_BOOTSTRAP_ROUTER_BLOB__', router)
+          if '__EVENT_HEAD_EXPR__' in text or '__POST_BOOTSTRAP_ROUTER_BLOB__' in text:
+              raise SystemExit('unresolved permanent-gate template token')
+          if text.count(dynamic) != 2:
+              raise SystemExit('dynamic event-head expression not installed twice')
+          if text.count(router) != 1:
+              raise SystemExit('repaired router blob not installed exactly once')
+          path.write_text(text, encoding='utf-8')
+          print('L3_PERMANENT_GATE_TEMPLATE_OK', router)
+          PY
 
       - name: Collapse bootstrap to final production delta
         shell: bash
@@ -259,7 +284,6 @@ jobs:
               raise SystemExit(f'final staged scope drift: {sorted(actual)!r}')
           print('L3_FINAL_STAGED_SCOPE_OK', len(actual))
           PY
-          test -z "$(git status --porcelain --untracked-files=no | grep '^.[^MADRCTU?! ]' || true)"
 
       - name: Commit only after exact remote-head compare-and-swap
         shell: bash
