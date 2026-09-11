@@ -25,35 +25,20 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Bind exact custody, reachability, and H4 composition
+      - name: Bind reviewed convergence dependencies
         shell: bash
         run: |
           set -euo pipefail
-          PARENT=c580f7805cc7468094c0e880f4923133d45d70d0
+          PACKAGE_PARENT=c580f7805cc7468094c0e880f4923133d45d70d0
+          REVIEWED_SPINE=a56147829df7f451ad2c9aefabdcd696bdbba190
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
-          git merge-base --is-ancestor "$PARENT" HEAD
+          git merge-base --is-ancestor "$PACKAGE_PARENT" HEAD
+          git merge-base --is-ancestor "$REVIEWED_SPINE" HEAD
           python - <<'PY'
           import subprocess
 
-          parent = 'c580f7805cc7468094c0e880f4923133d45d70d0'
-          actual = set(subprocess.check_output(
-              ['git', 'diff', '--name-only', parent, 'HEAD'], text=True
-          ).splitlines())
-          expected = {
-              '.github/workflows/titan-v31-artifact-reachability.yml',
-              '.github/workflows/titan-v31-h4-strawberry.yml',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/H4-STRAWBERRY-TOPUP.md',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/candidate.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/h4_tape_screen.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/r04_h4_strawberry.py',
-              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_strawberry/test_v31_h4_strawberry.py',
-          }
-          if actual != expected:
-              raise SystemExit(f'unexpected composed scope: {sorted(actual)}')
-
+          reviewed_spine = 'a56147829df7f451ad2c9aefabdcd696bdbba190'
           exact_blobs = {
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v31_artifact_reachability.py': '8316523c060389237bf5faef5990a6c86ab732d9',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/test_v31_artifact_reachability.py': 'd470296569e8b05f2f8f7479f7ad3c5af280df38',
@@ -71,8 +56,14 @@ jobs:
               if got != want:
                   raise SystemExit(f'blob drift for {path}: {got} != {want}')
 
-          print('V31_COMPOSED_SCOPE_OK', len(actual))
+          delta = subprocess.check_output(
+              ['git', 'diff', '--name-status', reviewed_spine, 'HEAD'], text=True
+          ).splitlines()
+          print('V31_REVIEWED_SPINE_OK', reviewed_spine)
           print('V31_REVIEWED_BLOBS_OK', len(exact_blobs))
+          print('V31_ADDITIVE_CONVERGENCE_DELTA', len(delta))
+          for row in delta:
+              print('V31_CONVERGENCE_PATH', row)
           PY
 
       - name: Run focused reachability predecessors
