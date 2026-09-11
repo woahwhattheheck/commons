@@ -52,6 +52,13 @@ SHOP_PLANS = {
 }
 
 
+def _market_order_limit(config):
+    try:
+        return max(1, int((config or {}).get("maxMarketOrdersPerTurn", MAX_ORDERS)))
+    except (AttributeError, TypeError, ValueError):
+        return MAX_ORDERS
+
+
 class FarmView:
     """Only the current own farm, private inventory, and public prices."""
 
@@ -156,7 +163,7 @@ def subtract_advanced_sales(action, state, step):
     state.sale_due_step = -1
 
 
-def advance_sales(action, view, state, tape, step):
+def advance_sales(action, view, state, tape, step, max_orders=MAX_ORDERS):
     """Bring eligible sales from our next planned action forward by one turn."""
     next_step = step + 1
     if next_step > LAST_STEP or next_step % 72 == 0 or (step % 4 == 0 and step < 144):
@@ -175,7 +182,7 @@ def advance_sales(action, view, state, tape, step):
         quantity = min(stock.get(item, 0), planned.get(item, 0))
         if quantity <= 0 or int(view.prices.get(item, 0)) < 2:
             continue
-        if len(action["market"]) >= MAX_ORDERS:
+        if len(action["market"]) >= max_orders:
             break
         action["market"].append(["SELL", item, quantity])
         state.advanced_sales[item] = quantity
@@ -201,8 +208,9 @@ class Policy:
             raise ValueError("Expected 13 complete, 719-turn action tapes")
         self.players = {}
 
-    def act(self, observation):
+    def act(self, observation, config=None):
         step, player = int(observation["step"]), int(observation["player"])
+        max_orders = _market_order_limit(config)
         state = self.players.get(player)
         if state is None or step <= state.last_step:
             state = self.players[player] = DayState()
@@ -219,8 +227,8 @@ class Policy:
         action = copy.deepcopy(tape[step])
         repair_weeds(action, view, state, step)
         subtract_advanced_sales(action, state, step)
-        advance_sales(action, view, state, tape, step)
-        action["market"] = action["market"][:MAX_ORDERS]
+        advance_sales(action, view, state, tape, step, max_orders=max_orders)
+        action["market"] = action["market"][:max_orders]
         return liquidate(view) if step == LAST_STEP else action
 
 
@@ -233,7 +241,7 @@ class RouterPolicy:
     def __init__(self):
         self.policy = Policy(None)
 
-    def act(self, observation):
+    def act(self, observation, config=None):
         step, player = int(observation["step"]), int(observation["player"])
         state = self.policy.players.get(player)
         if (state is None or step <= state.last_step) and step > ROUTE_STEP:
@@ -246,7 +254,7 @@ class RouterPolicy:
                 state.plan = 2
             state.last_step = step - 1
             self.policy.players[player] = state
-        return self.policy.act(observation)
+        return self.policy.act(observation, config)
 
 
 def install(agent):
