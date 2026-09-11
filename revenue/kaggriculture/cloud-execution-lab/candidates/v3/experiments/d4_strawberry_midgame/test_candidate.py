@@ -44,7 +44,7 @@ def tape_with(step, qty=1000, pickup_step=None):
 
 class D4Tests(unittest.TestCase):
     def state(self, debts=None):
-        return SimpleNamespace(queues={}, sale_window_debts=dict(debts or {}))
+        return SimpleNamespace(queues={}, sale_window_debts={} if debts is None else debts)
 
     def test_advances_only_beyond_parent_horizon_same_day(self):
         old = base.SALE_HORIZON
@@ -73,6 +73,60 @@ class D4Tests(unittest.TestCase):
         self.assertIs(out, original)
         self.assertEqual((0, ()), (added, reservations))
         self.assertEqual({}, state.sale_window_debts)
+
+    def test_incumbent_evening_flush_owns_later_h22_row(self):
+        old_horizon, old_flush = base.SALE_HORIZON, base.EVENING_FLUSH
+        base.SALE_HORIZON = 8
+        base.EVENING_FLUSH = True
+        try:
+            # day15 h13 -> authored h22 SELL. Live h21 EVENING_FLUSH owns the
+            # projected stock first, so D4 must not attribute h22 as its source.
+            original = action()
+            state = self.state()
+            out, added, reservations = d4.advance_midgame_strawberry(
+                original, View(stock=12, price=200), state, tape_with(382), 373,
+                min_price=180,
+            )
+            self.assertIs(out, original)
+            self.assertEqual((0, ()), (added, reservations))
+            self.assertEqual({}, state.sale_window_debts)
+        finally:
+            base.SALE_HORIZON, base.EVENING_FLUSH = old_horizon, old_flush
+
+    def test_authored_sale_before_next_flush_remains_d4_owned(self):
+        old_horizon, old_flush = base.SALE_HORIZON, base.EVENING_FLUSH
+        base.SALE_HORIZON = 8
+        base.EVENING_FLUSH = True
+        try:
+            # day15 h09 -> start h18; authored h20 SELL precedes live h21 flush.
+            original = action()
+            state = self.state()
+            out, added, reservations = d4.advance_midgame_strawberry(
+                original, View(stock=12, price=200), state, tape_with(380), 369,
+                min_price=180,
+            )
+            self.assertEqual(12, added)
+            self.assertEqual(((380, 12),), reservations)
+            self.assertEqual([["SELL", "STRAWBERRY", 12]], out["market"])
+            self.assertEqual({380: {"STRAWBERRY": 12}}, state.sale_window_debts)
+        finally:
+            base.SALE_HORIZON, base.EVENING_FLUSH = old_horizon, old_flush
+
+    def test_flush_disabled_preserves_original_h22_gap(self):
+        old_horizon, old_flush = base.SALE_HORIZON, base.EVENING_FLUSH
+        base.SALE_HORIZON = 8
+        base.EVENING_FLUSH = False
+        try:
+            state = self.state()
+            out, added, reservations = d4.advance_midgame_strawberry(
+                action(), View(stock=12, price=200), state, tape_with(382), 373,
+                min_price=180,
+            )
+            self.assertEqual(12, added)
+            self.assertEqual(((382, 12),), reservations)
+            self.assertEqual([["SELL", "STRAWBERRY", 12]], out["market"])
+        finally:
+            base.SALE_HORIZON, base.EVENING_FLUSH = old_horizon, old_flush
 
     def test_price_threshold_is_fail_closed_and_identity(self):
         original = action()
@@ -114,6 +168,35 @@ class D4Tests(unittest.TestCase):
         self.assertEqual(((402, 2),), reservations)
         self.assertEqual(10, state.sale_window_debts[402]["STRAWBERRY"])
         self.assertEqual([["SELL", "STRAWBERRY", 2]], out["market"])
+
+    def test_full_inherited_debt_map_is_validated_before_mutation(self):
+        malformed = (
+            {True: {"STRAWBERRY": 1}},
+            {"402": {"STRAWBERRY": 1}},
+            {720: {"STRAWBERRY": 1}},
+            {402: []},
+            {402: {"STRAWBERRY": True}},
+            {402: {"STRAWBERRY": 1.0}},
+            {402: {"STRAWBERRY": "1"}},
+            {402: {"STRAWBERRY": -1}},
+            {402: {"NOT_A_PRODUCT": 1}},
+        )
+        old_flush = base.EVENING_FLUSH
+        base.EVENING_FLUSH = False
+        try:
+            for debts in malformed:
+                with self.subTest(debts=debts):
+                    original = action()
+                    state = self.state(debts)
+                    out, added, reservations = d4.advance_midgame_strawberry(
+                        original, View(stock=5), state, tape_with(402, qty=10), 384,
+                        min_price=180,
+                    )
+                    self.assertIs(out, original)
+                    self.assertEqual((0, ()), (added, reservations))
+                    self.assertIs(state.sale_window_debts, debts)
+        finally:
+            base.EVENING_FLUSH = old_flush
 
     def test_never_crosses_midnight(self):
         original = action()
