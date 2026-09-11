@@ -1,0 +1,219 @@
+name: TITAN V3.1 8e3 H13 cattle-OFF horizon gate
+
+on:
+  pull_request:
+    branches:
+      - astra/v31-a612-restore-5f6-canonical-archive-20260911
+    paths:
+      - '.github/workflows/titan-v31-8e3-h13-cattleoff.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  h13-current-root:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Bind exact current root, recovery parent, scope, and source custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff'
+          V3='revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          ARLENE='revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          test '${{ github.event.pull_request.base.sha }}' = "$STACK"
+          test "$(git merge-base "$STACK" HEAD)" = "$STACK"
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+
+          test "$(git hash-object "$DIR/make_submission_12505.py")" = '9c5e46428f0a2357d7db6e46c4aa5f1f4748717d'
+          test "$(git hash-object "$DIR/run_current_stack.py")" = '9114903887c290cf542c7fd156082495992913e5'
+          test "$(git hash-object "$V3/build_v3.py")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz)" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
+
+          git diff --name-only "$STACK...HEAD" > /tmp/h13-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/h13-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-8e3-h13-cattleoff.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff/make_submission_12505.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff/run_current_stack.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'H13 current-root scope drift: {sorted(actual)!r}')
+          print('H13_8E3_SCOPE_OK', len(actual))
+          PY
+
+          for path in \
+            "$V3/FILES.json" \
+            "$V3/V3-MANIFEST.json" \
+            "$V3/apply_v3.py" \
+            "$V3/overlay/r04_full_router.py" \
+            "$V3/overlay/r04_h4_strawberry.py" \
+            "$V3/overlay/r04_no_late_sale_advance.py" \
+            "$V3/overlay/b5_fertilize.py" \
+            "$V3/overlay/jit_pass_fertilize.py" \
+            "$EVAL" \
+            "$ARLENE"
+          do
+            git show "$LIVE:$path" | cmp - "$path"
+          done
+          git diff --check "$STACK...HEAD"
+
+      - name: Prove strict native receipt rejects aliases and malformed cells before spend
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import copy
+          import importlib.util
+          import math
+          from pathlib import Path
+
+          p = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff/run_current_stack.py')
+          spec = importlib.util.spec_from_file_location('h13_current', p)
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+
+          trace = 'a' * 64
+          games = []
+          for opp in m.OPPONENTS:
+              for seed in m.SEEDS:
+                  for seat in (0, 1):
+                      games.append({
+                          'opponent': opp,
+                          'seed': seed,
+                          'candidate_seat': seat,
+                          'status': 'complete',
+                          'failure': None,
+                          'scores': [100.0 + seat, 90.0 - seat],
+                          'trace_sha256': trace,
+                      })
+          valid = {
+              'engine_ref': m.ENGINE_REF,
+              'agent_rng_seed': m.EXPECTED_RNG_SEED,
+              'candidate': {'entry': 'main.py', 'callable': 'agent', 'sha256': 'b' * 64},
+              'seeds': list(m.SEEDS),
+              'opponents': {
+                  name: {'entry': 'main.py', 'callable': 'agent', 'sha256': 'c' * 64}
+                  for name in m.OPPONENTS
+              },
+              'reproducibility': {'same_trace_and_scores': True},
+              'games': games,
+          }
+          assert frozenset(m.normalized_games(copy.deepcopy(valid), 'valid')) == m.expected_keys()
+
+          def rejects(name, mutate):
+              r = copy.deepcopy(valid)
+              mutate(r)
+              try:
+                  m.normalized_games(r, name)
+              except (AssertionError, TypeError):
+                  return
+              raise AssertionError(f'{name}: poison accepted')
+
+          rejects('sub-seed-meta', lambda r: r['seeds'].__setitem__(0, 999))
+          rejects('bool-seed-meta', lambda r: r['seeds'].__setitem__(0, True))
+          rejects('wrong-rng', lambda r: r.__setitem__('agent_rng_seed', m.EXPECTED_RNG_SEED + 1))
+          rejects('wrong-opponent-set', lambda r: r.__setitem__('opponents', {'h8_self': r['opponents']['h8_self']}))
+          rejects('missing-cell', lambda r: r['games'].pop())
+          rejects('duplicate-cell', lambda r: r['games'].append(copy.deepcopy(r['games'][0])))
+          rejects('bool-game-seed', lambda r: r['games'][0].__setitem__('seed', True))
+          rejects('bool-seat', lambda r: r['games'][0].__setitem__('candidate_seat', False))
+          rejects('bad-seat', lambda r: r['games'][0].__setitem__('candidate_seat', 2))
+          rejects('nan-score', lambda r: r['games'][0].__setitem__('scores', [math.nan, 1.0]))
+          rejects('bool-score', lambda r: r['games'][0].__setitem__('scores', [True, 1.0]))
+          rejects('failure', lambda r: r['games'][0].__setitem__('failure', 'boom'))
+          rejects('incomplete', lambda r: r['games'][0].__setitem__('status', 'error'))
+          rejects('truthy-repro', lambda r: r.__setitem__('reproducibility', {'same_trace_and_scores': 1}))
+          rejects('bad-trace', lambda r: r['games'][0].__setitem__('trace_sha256', 'bad'))
+          print('H13_8E3_RECEIPT_POISONS_OK', len(m.expected_keys()))
+          PY
+          test -z "$(git status --porcelain)"
+
+      - name: Prove exact current deterministic package rebuilds
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        env:
+          PYTHONOPTIMIZE: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -B build_v3.py --check | tee /tmp/h13-build.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/h13-build.log
+
+      - name: Execute exact cattle-OFF horizon8 vs horizon10 two-regime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/h13-8e3
+          mkdir -p /tmp/h13-8e3
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h13_8e3_cattleoff/run_current_stack.py \
+            --repo-root . \
+            --output-dir /tmp/h13-8e3 | tee /tmp/h13-8e3/run.log
+          cat /tmp/h13-8e3/receipt.md
+          cat /tmp/h13-8e3/receipt.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Recheck live root and recovery parent before publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+
+      - name: Retain exact materialization and evaluator receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: h13-8e3-cattleoff-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/h13-8e3/materialization.json
+            /tmp/h13-8e3/h8-control-raw.json
+            /tmp/h13-8e3/h10-candidate-raw.json
+            /tmp/h13-8e3/receipt.json
+            /tmp/h13-8e3/receipt.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          STACK='ccb128a10c40cb71c4f8ff07b05a88578679dc6c'
+          RECOVERY='refs/heads/astra/v31-a612-restore-5f6-canonical-archive-20260911'
+          test "$(git ls-remote origin refs/heads/titan/v3.1-20260911 | awk '{print $1}')" = "$LIVE"
+          test "$(git ls-remote origin "$RECOVERY" | awk '{print $1}')" = "$STACK"
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/h13-8e3/receipt.md
+            printf '\nEvidence only. Exact current package + #12505 cattle-OFF transform; B5/JIT/H4/gated-L3/sale-fert held fixed. Any negative cell is a HOLD. No default/package/Kaggle authority.\n'
+          } > /tmp/h13-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/h13-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
