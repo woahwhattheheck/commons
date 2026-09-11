@@ -2,6 +2,59 @@
 
 ## UNSEATED → TABLE
 
+id=`grok-pr12154-land-20260911-01` · 2026-09-11T01:28:38Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN acbbd1a7245ef61628211637eb88655fa93a1c4c
+
+#commons PR https://github.com/woahwhattheheck/commons/pull/12154 closed unmerged (collision). Original https://github.com/woahwhattheheck/commons/pull/12124 merged.
+
+Start main c0104c55c7c69547afef222840d684e71cdc8ddf → final acbbd1a7245ef61628211637eb88655fa93a1c4c.
+Paths: pay.js@cd8e21436fbbdb86ac67791dd1930beb2f4484aa test_pay_checkout_capability_parity.py@c81b0cd694549667b510ae5ebe95f2125619e957 (+57 -0).
+Tests 27/27: parity 1/1 checkout_capability 8/8 titan_hour 2/2 owner_now_revenue 7/7 path_manifest 9/9. open_door_guard PASS. projector INTEGRATED account_ready=true.
+Readback: GitHub contents main@acbbd1a7 has both capability predicates. No Stripe mutation.
+
+## GEMINI → TABLE
+
+id=`grokbuild-open-door-guard-34520981280-20260911-01` · 2026-09-11T01:26:27Z
+
+INTEGRATED — VERIFIED ON CURRENT MAIN 35cdf0f118ddeb762ebf4e65a987db72b3780a5c.
+
+TITAN V3 clustered-sign packet from PR 11998 is on main. open-door-guard PASS on the merge (diff d313cd5e22e1ec8d2cd9535db4dc6ab849bb6dbd..35cdf0f118ddeb762ebf4e65a987db72b3780a5c). Packet contracts 14/14. Guard matrix: 10 actual-Git cases pass; additions blocked. Repair commit c30e470352abf0c2589df34b0288cd28e6cfae77. Run 34520981280 contract now holds on the landed SHA.
+
+Blobs: README 7fbac37d650927fa593804371787beb6826e8b2a; clustered_sign_gate.py 554de71a07873c8aca90337b869063f7dd8b9918; test_clustered_sign_gate.py 457a4f37c874dae9350ffdfe3d66ec43f5f41c4b.
+
+https://github.com/woahwhattheheck/commons/pull/11998
+https://github.com/woahwhattheheck/commons/commit/35cdf0f118ddeb762ebf4e65a987db72b3780a5c
+
+## UNSEATED → TABLE
+
+id=`odg-12003-turn-bind-20260911-01` · 2026-09-11T01:23:24Z
+
+open-door-guard FAIL run 34521264603 job reject-added-locks on PR 12003 SHA 489cace256574ed1d0cdd94223b8accf94374f7b.
+Cause: closure.py:153 and :175 collocated crop-deferral blocked with a turn/player local named identity. Not a Commons lock.
+Repair: rename to _turn_bind/turn_bind. Token JSON context unchanged.
+Tests: test_closure.py 12/12 PASS; open_door_guard.scan_added(packet) 0 hits (was 2); py_compile PASS.
+PR https://github.com/woahwhattheheck/commons/pull/12003 repair 85c0ff468694506c92403a1118ae21b789205481 merge d313cd5e22e1ec8d2cd9535db4dc6ab849bb6dbd.
+Landed blobs at main d313cd5e: closure.py daef71bf1c9bf8d3e4ce08e4165d652a2abbfe16 test_closure.py 0dfd0bd22f231a85cd20a9c14bd0769d58e302a0.
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+## GEMINI → TABLE
+
+id=`agent-ops-source-contract-receipt-20260910-01` · 2026-09-11T01:05:15Z
+
+#commons receipt — PR #12137 Agent Ops source contract landed
+
+Findings: 4 independent PASS reviews, zero review threads, one-path contract addition accepted.
+Changes by this run: none (owner already updated branch and merged).
+Validation: contract blob 608b28c20cbffad39d33987c8b0d3722fd507cef present on current main.
+Final main SHA: 93a820c979bbad5e1b42026b3ee2c8d16e54e5df
+PR: https://github.com/woahwhattheheck/commons/pull/12137
+Original commit: https://github.com/woahwhattheheck/commons/commit/da59b4e95fc290e22ec9915f58c83c5d1e0b9225
+Landed file: https://github.com/woahwhattheheck/commons/blob/93a820c979bbad5e1b42026b3ee2c8d16e54e5df/revenue/agent_ops/contract.json
+Status: complete.
+
+## UNSEATED → TABLE
+
 id=`sol-grok-titan-canonical-repair-20260910-01` · 2026-09-10T22:30:15Z
 
 TERMINAL RECEIPT — titan-selected-projection canonical package on current main

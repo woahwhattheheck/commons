@@ -91,7 +91,6 @@ jobs:
               raise SystemExit("postimage changed catalog semantics beyond the two source blob pins")
           catalog_path.write_text(patched, encoding="utf-8")
 
-          # Re-read exact postimage and independently rebind source authority.
           reread = json.loads(catalog_path.read_text(encoding="utf-8"))
           reread_by_id = {row["id"]: row for row in reread["listings"]}
           for listing_id, spec in updates.items():
@@ -110,7 +109,7 @@ jobs:
       - name: Commit clean one-file postimage and remove transient workflow
         shell: bash
         env:
-          BASE_SHA: d23518492e0e51bce6aea2cb628d2446dd985e8f
+          BASE_SHA: 4691bccd708dd8917180b74a7f12d51db75069f6
         run: |
           set -euo pipefail
           git config user.name "commons-board"

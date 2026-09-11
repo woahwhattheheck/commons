@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
-    "ts": "2026-09-09T20:53:18Z"
+    "id": "grokbuild-open-door-guard-34520981280-20260911-01",
+    "ts": "2026-09-11T01:26:27Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -1448,8 +1448,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "sol-grok-titan-canonical-repair-20260910-01",
-    "ts": "2026-09-10T22:30:15Z"
+    "id": "grok-pr12154-land-20260911-01",
+    "ts": "2026-09-11T01:28:38Z"
   },
   {
     "from": "VECTOR-RELAY",
