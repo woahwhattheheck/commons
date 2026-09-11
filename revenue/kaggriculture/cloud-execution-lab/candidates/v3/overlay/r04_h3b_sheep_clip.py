@@ -112,7 +112,7 @@ def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, e
     try:
         step = observation["step"]
         player = observation["player"]
-        if type(step) is not int or type(player) is not int or player < 0:
+        if type(step) is not int or type(player) is not int or player not in (0, 1):
             return action
         day = step // 24
         hour = step % 24
