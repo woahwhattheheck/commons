@@ -172,8 +172,10 @@ def _fertilizer_sell_rows(action):
     rows = []
     total = 0
     for index, order in enumerate(market):
-        if not isinstance(order, list) or not order:
+        if not isinstance(order, list):
             return None
+        if not order:
+            continue
         if len(order) >= 2 and order[:2] == ["SELL", "FERTILIZER"]:
             if len(order) < 3:
                 return None
