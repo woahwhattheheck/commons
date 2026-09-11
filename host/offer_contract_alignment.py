@@ -137,6 +137,35 @@ def _pointer(value: Any, pointer: Any, field: str) -> Any:
     return node
 
 
+def _json_selector_equal(left: Any, right: Any) -> bool:
+    """Compare selector values by JSON type domains, not Python coercions."""
+    if left is None or right is None:
+        return left is None and right is None
+    if isinstance(left, bool) or isinstance(right, bool):
+        return isinstance(left, bool) and isinstance(right, bool) and left == right
+    if isinstance(left, (int, Decimal)) or isinstance(right, (int, Decimal)):
+        if not isinstance(left, (int, Decimal)) or not isinstance(right, (int, Decimal)):
+            return False
+        return Decimal(str(left)) == Decimal(str(right))
+    if isinstance(left, str) or isinstance(right, str):
+        return isinstance(left, str) and isinstance(right, str) and left == right
+    if isinstance(left, list) or isinstance(right, list):
+        return (
+            isinstance(left, list)
+            and isinstance(right, list)
+            and len(left) == len(right)
+            and all(_json_selector_equal(a, b) for a, b in zip(left, right))
+        )
+    if isinstance(left, dict) or isinstance(right, dict):
+        return (
+            isinstance(left, dict)
+            and isinstance(right, dict)
+            and set(left) == set(right)
+            and all(_json_selector_equal(left[key], right[key]) for key in left)
+        )
+    return False
+
+
 def _selector(document: Any, spec: Any, field: str) -> Any:
     if not isinstance(spec, dict):
         raise AlignmentError("%s must be an object" % field)
@@ -160,7 +189,13 @@ def _selector(document: Any, spec: Any, field: str) -> Any:
     key = match["field"]
     if not isinstance(key, str) or not key:
         raise AlignmentError("%s.match.field must be a non-empty string" % field)
-    hits = [row for row in collection if isinstance(row, dict) and row.get(key) == match["equals"]]
+    hits = [
+        row
+        for row in collection
+        if isinstance(row, dict)
+        and key in row
+        and _json_selector_equal(row[key], match["equals"])
+    ]
     if len(hits) != 1:
         raise AlignmentError("%s.match must resolve exactly one row; got %d" % (field, len(hits)))
     return hits[0]
@@ -288,7 +323,10 @@ def check_alignment(spec: Any, *, root: Path) -> dict[str, Any]:
         if not isinstance(document_spec, dict) or set(document_spec) != {"path"}:
             raise AlignmentError("documents.%s requires exactly path" % name)
         relative, resolved = _safe_relative_path(root, document_spec["path"], "documents.%s.path" % name)
-        raw = resolved.read_bytes()
+        try:
+            raw = resolved.read_bytes()
+        except OSError as exc:
+            raise AlignmentError("cannot read document %s: %s" % (relative, exc)) from exc
         documents[name] = LoadedDocument(
             path=relative,
             resolved=resolved,

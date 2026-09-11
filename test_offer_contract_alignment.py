@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import host.offer_contract_alignment as oca
 
@@ -142,6 +143,35 @@ class OfferContractAlignmentTests(unittest.TestCase):
         self._write("catalog.json", self.catalog)
         with self.assertRaisesRegex(oca.AlignmentError, "exactly one row"):
             oca.check_alignment(self.spec, root=self.root)
+
+    def test_selector_missing_field_is_not_explicit_null(self):
+        selector = {
+            "document": "catalog_doc",
+            "match": {"collection": "/rows", "field": "id", "equals": None},
+        }
+        with self.assertRaisesRegex(oca.AlignmentError, "got 0"):
+            oca._selector({"rows": [{"value": "missing"}]}, selector, "view")
+        row = {"id": None, "value": "explicit-null"}
+        self.assertIs(oca._selector({"rows": [row]}, selector, "view"), row)
+
+    def test_selector_boolean_and_number_are_distinct_json_types(self):
+        for row_value, selector_value in ((True, 1), (1, True), (False, 0), (0, False)):
+            with self.subTest(row_value=row_value, selector_value=selector_value):
+                selector = {
+                    "document": "catalog_doc",
+                    "match": {
+                        "collection": "/rows",
+                        "field": "id",
+                        "equals": selector_value,
+                    },
+                }
+                with self.assertRaisesRegex(oca.AlignmentError, "got 0"):
+                    oca._selector({"rows": [{"id": row_value}]}, selector, "view")
+
+    def test_document_read_oserror_is_invalid_input(self):
+        with mock.patch.object(Path, "read_bytes", side_effect=OSError("disappeared")):
+            with self.assertRaisesRegex(oca.AlignmentError, "cannot read document"):
+                oca.check_alignment(self.spec, root=self.root)
 
     def test_path_escape_is_rejected(self):
         self.spec["documents"]["contract_doc"]["path"] = "../contract.json"
