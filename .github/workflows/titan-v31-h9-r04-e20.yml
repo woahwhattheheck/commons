@@ -1,0 +1,40 @@
+name: Titan V3.1 H9 R04 E20 reachability
+
+on:
+  push:
+    branches:
+      - astra/v31-h9-r04-e20-reachability-20260911
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+
+permissions:
+  contents: read
+
+jobs:
+  focused-h9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused H9 contract checks
+        run: |
+          python -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h9_r04_e20_hire_guard.py
+      - name: Syntax compile
+        run: |
+          python -m py_compile \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h9_r04_e20_hire_guard.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/test_h9_r04_e20_hire_guard.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/e20_hire_guard.py
+      - name: Prove experiment stays outside package source set
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        run: |
+          python - <<'PY'
+          import build_v3
+          shas = build_v3.source_shas()
+          assert not any(name.startswith('experiments/') for name in shas), sorted(shas)
+          assert 'h9_r04_e20_hire_guard.py' not in shas
+          print('H9 packaging-neutral source-set check OK:', len(shas), 'tracked V3 source inputs')
+          PY
