@@ -1,0 +1,33 @@
+{
+  "schema": "titan.v31.h3-h4.arlene-factorial.v1",
+  "truth_boundary": "Factor-level 2x2 on exact ready-to-submit V3.1 R04 bytes. H3 is call-site-equivalent reserve_sales skip at step>=648. H4 is a local semantic mirror of PR #12344 source with comments/docstrings omitted; this is not an exact packaged H4 branch proof.",
+  "base_package_sha256": "e4e5a3acfe4984c89c22c7aa841b4ddd6efe4f4cd71e507d1dabecbb6e865849",
+  "seeds": [2611151001,2611151002,2611151003,2611151004,2611151005,2611151006,2611151007,2611151008],
+  "both_seats": true,
+  "summary": {
+    "H3|CONTROL": {"mean":204.75,"median":183.0,"positive":16,"zero":0,"negative":0,"min":110.0,"max":339.0},
+    "H4|CONTROL": {"mean":24.375,"median":16.0,"positive":10,"zero":0,"negative":6,"min":-15.0,"max":116.0},
+    "BOTH|CONTROL": {"mean":229.125,"median":200.0,"positive":16,"zero":0,"negative":0,"min":137.0,"max":357.0},
+    "H4|H3": {"mean":24.375,"median":16.0,"positive":10,"zero":0,"negative":6,"min":-15.0,"max":116.0},
+    "H3|H4": {"mean":204.75,"median":183.0,"positive":16,"zero":0,"negative":0,"min":110.0,"max":339.0},
+    "INTERACTION": {"mean":0.0,"median":0.0,"positive":0,"zero":16,"negative":0,"min":0.0,"max":0.0}
+  },
+  "cells": [
+    {"seed":2611151001,"seat":0,"h3_dm":110.0,"h4_dm":64.0,"both_dm":174.0,"h4_given_h3_dm":64.0,"interaction":0.0},
+    {"seed":2611151001,"seat":1,"h3_dm":110.0,"h4_dm":64.0,"both_dm":174.0,"h4_given_h3_dm":64.0,"interaction":0.0},
+    {"seed":2611151002,"seat":0,"h3_dm":208.0,"h4_dm":14.0,"both_dm":222.0,"h4_given_h3_dm":14.0,"interaction":0.0},
+    {"seed":2611151002,"seat":1,"h3_dm":208.0,"h4_dm":14.0,"both_dm":222.0,"h4_given_h3_dm":14.0,"interaction":0.0},
+    {"seed":2611151003,"seat":0,"h3_dm":289.0,"h4_dm":23.0,"both_dm":312.0,"h4_given_h3_dm":23.0,"interaction":0.0},
+    {"seed":2611151003,"seat":1,"h3_dm":289.0,"h4_dm":23.0,"both_dm":312.0,"h4_given_h3_dm":23.0,"interaction":0.0},
+    {"seed":2611151004,"seat":0,"h3_dm":174.0,"h4_dm":-15.0,"both_dm":159.0,"h4_given_h3_dm":-15.0,"interaction":0.0},
+    {"seed":2611151004,"seat":1,"h3_dm":174.0,"h4_dm":-15.0,"both_dm":159.0,"h4_given_h3_dm":-15.0,"interaction":0.0},
+    {"seed":2611151005,"seat":0,"h3_dm":188.0,"h4_dm":-10.0,"both_dm":178.0,"h4_given_h3_dm":-10.0,"interaction":0.0},
+    {"seed":2611151005,"seat":1,"h3_dm":188.0,"h4_dm":-10.0,"both_dm":178.0,"h4_given_h3_dm":-10.0,"interaction":0.0},
+    {"seed":2611151006,"seat":0,"h3_dm":178.0,"h4_dm":116.0,"both_dm":294.0,"h4_given_h3_dm":116.0,"interaction":0.0},
+    {"seed":2611151006,"seat":1,"h3_dm":178.0,"h4_dm":116.0,"both_dm":294.0,"h4_given_h3_dm":116.0,"interaction":0.0},
+    {"seed":2611151007,"seat":0,"h3_dm":339.0,"h4_dm":18.0,"both_dm":357.0,"h4_given_h3_dm":18.0,"interaction":0.0},
+    {"seed":2611151007,"seat":1,"h3_dm":339.0,"h4_dm":18.0,"both_dm":357.0,"h4_given_h3_dm":18.0,"interaction":0.0},
+    {"seed":2611151008,"seat":0,"h3_dm":152.0,"h4_dm":-15.0,"both_dm":137.0,"h4_given_h3_dm":-15.0,"interaction":0.0},
+    {"seed":2611151008,"seat":1,"h3_dm":152.0,"h4_dm":-15.0,"both_dm":137.0,"h4_given_h3_dm":-15.0,"interaction":0.0}
+  ]
+}
