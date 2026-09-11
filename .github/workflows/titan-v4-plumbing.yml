@@ -1,0 +1,63 @@
+name: titan-v4-plumbing
+
+on:
+  pull_request:
+    branches:
+      - titan/v4-20260911
+    paths:
+      - '.github/workflows/titan-v4-plumbing.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+  push:
+    branches:
+      - titan/v4-20260911
+    paths:
+      - '.github/workflows/titan-v4-plumbing.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v4-plumbing-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/titan-v4-plumbing.yml
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+
+      - name: Capture exact target V4 apply layer
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          APPLY=revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py
+          if [[ -n "${BASE_SHA:-}" ]]; then
+            if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$BASE_SHA"
+            fi
+            git show "${BASE_SHA}:${APPLY}" > "$RUNNER_TEMP/base_apply_v4.py"
+          else
+            cp "$APPLY" "$RUNNER_TEMP/base_apply_v4.py"
+          fi
+
+      - name: Verify monotonic V4 plumbing and materialized runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          python3 -m py_compile "$LAB/check_v4_plumbing.py"
+          python3 "$LAB/check_v4_plumbing.py" \
+            --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
