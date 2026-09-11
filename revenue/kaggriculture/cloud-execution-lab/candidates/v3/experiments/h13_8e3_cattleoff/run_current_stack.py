@@ -181,6 +181,16 @@ def strict_score(value, label: str) -> float:
     return float(value)
 
 
+def strict_fingerprint(value, label: str) -> dict:
+    if type(value) is not dict:
+        raise AssertionError(f"{label}: fingerprint must be object")
+    if value.get("entry") != "main.py" or value.get("callable") != "agent":
+        raise AssertionError(f"{label}: expected main.py/agent fingerprint")
+    if not is_sha256(value.get("sha256")):
+        raise AssertionError(f"{label}: malformed fingerprint sha256")
+    return value
+
+
 def expected_keys() -> frozenset[tuple[str, int, int]]:
     return frozenset((opp, seed, seat) for opp in OPPONENTS for seed in SEEDS for seat in (0, 1))
 
@@ -195,13 +205,12 @@ def normalized_games(report: dict, label: str) -> dict[tuple[str, int, int], dic
     seeds = report.get("seeds")
     if type(seeds) is not list or [strict_int(v, f"{label}.seed") for v in seeds] != list(SEEDS):
         raise AssertionError(f"{label}: exact seed metadata mismatch")
+    strict_fingerprint(report.get("candidate"), f"{label}.candidate")
     opponents = report.get("opponents")
     if type(opponents) is not dict or set(opponents) != set(OPPONENTS):
         raise AssertionError(f"{label}: opponent metadata mismatch")
     for name in OPPONENTS:
-        meta = opponents[name]
-        if type(meta) is not dict or not is_sha256(meta.get("sha256")):
-            raise AssertionError(f"{label}: malformed opponent fingerprint {name}")
+        strict_fingerprint(opponents[name], f"{label}.opponents[{name!r}]")
     repro = report.get("reproducibility")
     if type(repro) is not dict or repro.get("same_trace_and_scores") is not True:
         raise AssertionError(f"{label}: reproducibility must be literal true")
@@ -345,10 +354,19 @@ def main() -> int:
         rows8 = normalized_games(report8, "h8")
         rows10 = normalized_games(report10, "h10")
 
-        # Identical h8-vs-h8 is a seat/custody sentinel.
-        identity = [components(rows8[("h8_self", seed, seat)])[2] for seed in SEEDS for seat in (0, 1)]
-        if any(value != 0 for value in identity):
-            raise AssertionError(f"h8 self identity not exact tie: {identity}")
+        # H8 control custody is fingerprint identity, not a zero score-margin theorem.
+        h8_fp = strict_fingerprint(report8.get("candidate"), "h8.candidate")
+        h8_self_fp = strict_fingerprint(report8.get("opponents", {}).get("h8_self"), "h8.opponents['h8_self']")
+        h10_fp = strict_fingerprint(report10.get("candidate"), "h10.candidate")
+        h10_self_fp = strict_fingerprint(report10.get("opponents", {}).get("h8_self"), "h10.opponents['h8_self']")
+        if h8_fp != h8_self_fp:
+            raise AssertionError("h8 control candidate/opponent fingerprint drift")
+        if h10_self_fp != h8_self_fp:
+            raise AssertionError("h8 self opponent fingerprint drift across arms")
+        if h10_fp != h8_self_fp:
+            raise AssertionError("h10 entry fingerprint drift; only TITAN-CONFIG.json may differ")
+        if report8.get("opponents") != report10.get("opponents"):
+            raise AssertionError("fixed opponent fingerprints drifted across arms")
 
         self_summary, self_rows = summarize(rows8, rows10, "h8_self")
         arlene_summary, arlene_rows = summarize(rows8, rows10, "arlene")
@@ -376,6 +394,7 @@ def main() -> int:
             "rng_seed": EXPECTED_RNG_SEED,
             "seeds": list(SEEDS),
             "opponents": list(OPPONENTS),
+            "h8_entry_fingerprint_sha256": h8_self_fp["sha256"],
             "h8_self": {"summary": self_summary, "rows": self_rows},
             "arlene": {"summary": arlene_summary, "rows": arlene_rows},
             "all_negative_cells": [row for row in all_rows if row["delta_margin"] < 0],
