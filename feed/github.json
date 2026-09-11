@@ -2,139 +2,140 @@
   "counts": {
     "open_issues": 4,
     "open_pull_requests": 4,
-    "runs_in_progress": 18,
-    "runs_queued": 849
+    "runs_in_progress": 20,
+    "runs_queued": 797
   },
   "degraded": [],
-  "drafts": 87,
+  "drafts": 88,
   "longest_open": [
     {
       "author": "woahwhattheheck",
-      "branch": "sol-composer/titan-v3-seed-cluster-tail-closure-20260910-01",
-      "created_at": "2026-09-10T20:41:40Z",
+      "branch": "agent/titan-v3-returned-action-diff-sol-prism",
+      "created_at": "2026-09-10T20:44:29Z",
       "draft": false,
-      "number": 12077,
-      "title": "TITAN V3: close hidden independent-seed composition tails"
+      "number": 12082,
+      "title": "analysis: add same-state returned-action differential harness"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-pressure-stock-baseline-closure-20260910-01",
-      "created_at": "2026-09-10T20:43:14Z",
+      "branch": "sol-pro/titan-v2-disabled-spatial-identity-20260910",
+      "created_at": "2026-09-10T20:47:03Z",
+      "draft": false,
+      "number": 12083,
+      "title": "TITAN: make disabled SpatialTempo installation a strict identity"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-official-transition-oracle-20260910-01",
+      "created_at": "2026-09-10T20:51:28Z",
       "draft": true,
-      "number": 12078,
-      "title": "fix(titan): invalidate pressure baselines after stock-changing barriers"
+      "number": 12084,
+      "title": "TITAN V3 donor: sterile full-interpreter custody and post-town stages"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-own-value-promotion-closure-custody-02118bc",
-      "created_at": "2026-09-10T20:43:18Z",
+      "branch": "sol-schema/titan-v3-state-conditioned-score-domain-normalization-20260910-01",
+      "created_at": "2026-09-10T20:53:58Z",
       "draft": false,
-      "number": 12079,
-      "title": "test(titan): close own-value promotion evidence custody"
+      "number": 12087,
+      "title": "TITAN V3: normalize state-conditioned SELL reports into true-relative domain"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-ladder-mixture-robust-20260910",
-      "created_at": "2026-09-10T20:43:48Z",
-      "draft": false,
-      "number": 12080,
-      "title": "titan-v3: gate promotion against hosted opponent-mixture shift"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-tailguard/titan-v3-paired-cell-tail-admission-20260910-01",
-      "created_at": "2026-09-10T20:43:57Z",
-      "draft": false,
-      "number": 12081,
-      "title": "TITAN V3: fail-closed paired-cell own-cash tail gate"
+      "branch": "sol-pro/titan-v3-pr12072-executable-pin-closure-20260910-01",
+      "created_at": "2026-09-10T20:56:18Z",
+      "draft": true,
+      "number": 12090,
+      "title": "fix(titan): bind queue IDs to all declared comparison inputs"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "astra/d38-deliverable-manifest-main1517-refresh-20260911-01",
-      "created_at": "2026-09-11T04:34:29Z",
+      "branch": "astra/kcwater-main-b95-refresh-20260911-01",
+      "created_at": "2026-09-11T07:42:52Z",
       "draft": true,
-      "number": 12254,
-      "title": "tools: refresh-compose reviewed deliverable manifest on main1517"
+      "number": 12337,
+      "title": "feat(kcwater): refresh reviewed phased-lab salvage on mainb95"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd01-csu-golden-main1517-refresh-20260911-01",
-      "created_at": "2026-09-11T04:32:27Z",
+      "branch": "astra/github-state-main-b95-refresh-20260911-01",
+      "created_at": "2026-09-11T07:40:04Z",
       "draft": true,
-      "number": 12253,
-      "title": "test(csu): refresh-compose independent golden on main1517"
+      "number": 12336,
+      "title": "github_state: refresh reviewed heads/closures/count custody on mainb95"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd08-aquatrace-main4691-refresh-20260911-01",
-      "created_at": "2026-09-11T04:27:06Z",
+      "branch": "astra/bd12-main-f398-refresh-20260911-01",
+      "created_at": "2026-09-11T07:29:47Z",
       "draft": true,
-      "number": 12252,
-      "title": "test(aquatrace): refresh-compose public-source custody on main4691"
+      "number": 12334,
+      "title": "fix(agt): refresh reviewed replay precedence on main f398"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "ibis/bd11-csu-projection-main81d6-20260911-01",
-      "created_at": "2026-09-11T04:24:33Z",
+      "branch": "astra/observability-main-f398-refresh-20260911-01",
+      "created_at": "2026-09-11T07:25:05Z",
       "draft": true,
-      "number": 12251,
-      "title": "test(csu): compose expanded job projection custody on main81d6"
+      "number": 12332,
+      "title": "observability: refresh reviewed command-road repair on mainf398"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "marlow/denton-bacteriology-reconcile-20260910",
-      "created_at": "2026-09-11T04:02:58Z",
+      "branch": "astra/d38-main-b009-refresh-20260911-01",
+      "created_at": "2026-09-11T06:55:21Z",
       "draft": true,
-      "number": 12242,
-      "title": "feat: reconcile Denton bacteriology acceptance LIMS"
+      "number": 12314,
+      "title": "tools: refresh-compose reviewed deliverable manifest on mainb009"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "ibis/d39-windows-drive-containment-20260910-01",
-      "created_at": "2026-09-11T04:02:33Z",
+      "branch": "astra/bd12-agt-replay-mainefd2-refresh-20260911-01",
+      "created_at": "2026-09-11T06:48:12Z",
       "draft": true,
-      "number": 12241,
-      "title": "fix(tools): reject Windows drive archive paths"
+      "number": 12306,
+      "title": "fix(agt): refresh reviewed replay precedence on current main"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/bd11-csu-job-projection-custody-20260910-01",
-      "created_at": "2026-09-11T03:47:06Z",
+      "branch": "astra/titan-12156-run-bound-receipt-successor-20260911",
+      "created_at": "2026-09-11T06:11:28Z",
       "draft": true,
-      "number": 12239,
-      "title": "test(csu): bind expanded job measurement projection"
+      "number": 12299,
+      "title": "test(titan): refresh inherited contracts with run-bound receipts"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-astra/bd08-aquatrace-public-source-boundary-20260910-01",
-      "created_at": "2026-09-11T03:38:02Z",
+      "branch": "astra/kcwater-canonical-salvage-main9134-20260911-01",
+      "created_at": "2026-09-11T06:01:33Z",
       "draft": true,
-      "number": 12237,
-      "title": "test(aquatrace): bind public-source observation custody"
+      "number": 12296,
+      "title": "feat(kcwater): salvage canonical phased lab relocation LIMS"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/bd01-csu-malt-independent-golden-20260910-01",
-      "created_at": "2026-09-11T03:34:48Z",
-      "draft": true,
-      "number": 12236,
-      "title": "test: bind CSU malt jobs to independent golden"
+      "branch": "astra/bd12-main9134-refresh-20260911-03",
+      "created_at": "2026-09-11T05:52:31Z",
+      "draft": false,
+      "number": 12293,
+      "title": "fix(agt): refresh-compose reviewed replay precedence closure on current main"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "gpt56-sol/bd10-ward-independent-oracle-20260910-01",
-      "created_at": "2026-09-11T03:33:04Z",
+      "branch": "sol-astra/d18-offer-alignment-main9134-refresh-20260911-04",
+      "created_at": "2026-09-11T05:51:00Z",
       "draft": true,
-      "number": 12235,
-      "title": "test: freeze independent Ward evidence oracle"
+      "number": 12291,
+      "title": "host: refresh-compose reviewed offer contract alignment on main9134"
     }
   ],
   "pulls_listed": 100,
-  "queue_depth_per_runner": 47.2,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 39.9,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-11T04:42:23Z",
+  "unchanged_since": "2026-09-11T07:45:14Z",
   "undatable_pulls": []
 }
