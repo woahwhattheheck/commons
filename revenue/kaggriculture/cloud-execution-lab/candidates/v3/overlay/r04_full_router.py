@@ -5,7 +5,9 @@
 # published Apache-2.0 sources, unchanged except that the inline tape blob now comes from
 # r01_tapes (byte-identical tapes), the redundant deepcopy of that private decode is
 # skipped (every rule only reads the tapes), E184's `def agent` is preceded by `del agent`
-# (the pattern every inherited layer uses), and a V3 seam is appended: install(), and an
+# (the pattern every inherited layer uses), two published constants became parameters with
+# their published values as defaults (E184's excluded-item tuple, SALE_EXCLUDED; V231's
+# day-8 cattle window, _V231_EARLY), and a V3 seam is appended: install(), and an
 # opening round-trip, SELL row-order and evening-flush wrapper, each off unless installed on.
 #
 #   Base policy and the thirteen action tapes: yhay81, Shop Router 0909
@@ -1071,6 +1073,8 @@ agent.telemetry=_V226_REPORT
 # Bounded livestock substitution; confirm owned animals before redirecting workers.
 _V231_PARENT=agent
 _V231_CAP=4
+# V3 parameter (r04_cattle_early): day-8 window, off = published gate.
+_V231_EARLY=False
 _V231_STATES={}
 _V231_REPORT={}
 
@@ -1140,11 +1144,14 @@ def _v231_controller(obs,action,state,cap):
     cargo=sum(int(inv.get(a,0)) for inv in inventories for a in ('COW','SHEEP','GOOSE'))
     stock_animals=sum(int(shed.get(a,0)) for a in ('COW','SHEEP','GOOSE'))
     milk_shops=sum(shop in ('PIZZA_SHOP','ICE_CREAM_SHOP','SMOOTHIE_SHOP') for shop in shops)
-    if (216<=step<=227 and len(shops)>=3 and state['confirmed']<cap and not state['reserved']
+    _early=(_V231_EARLY and 190<=step<=215 and len(shops)>=2 and 'YARN_STORE' not in shops[:2]
+            and sum(shop in ('PIZZA_SHOP','ICE_CREAM_SHOP','SMOOTHIE_SHOP') for shop in shops[:2])>=2)
+    _late=(216<=step<=227 and len(shops)>=3 and milk_shops>=2 and 'YARN_STORE' not in shops
+            and int(prices.get('MILK',0))>=int(prices.get('WOOL',0)))
+    if ((_early or _late) and state['confirmed']<cap and not state['reserved']
             and not any(state['carrying'].values()) and not state['pending_places']
             and not cargo and not stock_animals and len(animal_orders)==1
-            and animal_orders[0][1]=='SHEEP' and milk_shops>=2 and 'YARN_STORE' not in shops
-            and int(prices.get('MILK',0))>=int(prices.get('WOOL',0))
+            and animal_orders[0][1]=='SHEEP'
             and counts['COW']>=4 and counts['SHEEP']>=2):
         order=animal_orders[0];quantity=int(order[2])
         if 1<=quantity<=2 and quantity<=cap-state['confirmed']:
@@ -1360,6 +1367,8 @@ This module is appended to the audited Moon policy during development staging.
 """
 
 SALE_HORIZON = 8
+# V3 parameter (r04_sale_fertilizer): items the window never advances; published value.
+SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')
 ADVANCE_START = 288
 _SALE_NATIVE_ADVANCE = advance_sales
 _SALE_NATIVE_SUBTRACT = subtract_advanced_sales
@@ -1408,7 +1417,7 @@ def reserve_sales(action, view, state, tape, step):
         return
     debts = getattr(state, 'sale_window_debts', {})
     for item in PRODUCTS:
-        if item in ('WHEAT', 'FERTILIZER') or item in blocked or view.prices.get(item, 0) < 2:
+        if item in SALE_EXCLUDED or item in blocked or view.prices.get(item, 0) < 2:
             continue
         available = max(0, int(stock.get(item, 0)))
         if not available or len(market) >= MAX_ORDERS:
@@ -1599,12 +1608,17 @@ def v3_agent(observation, configuration=None):
     return action
 
 
-def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None):
+def install(host=None, horizon=None, opening=None, row_order=None, evening_flush=None,
+            sale_fertilizer=None, cattle_early=None):
     """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
-    E184 reads SALE_HORIZON at call time, exactly as the published policy factory sets it.
+    E184 reads SALE_HORIZON and SALE_EXCLUDED at call time, exactly as the published policy
+    factory sets SALE_HORIZON; V231 reads _V231_EARLY at call time. sale_fertilizer lets the
+    window advance FERTILIZER (the published window skips WHEAT and FERTILIZER); cattle_early
+    also runs V231's sheep-to-cow swap at the day-8 purchase (steps 190-215) when both of the
+    first two shops consume MILK and neither is the YARN_STORE.
     """
-    global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH
+    global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER, EVENING_FLUSH, SALE_EXCLUDED, _V231_EARLY
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
@@ -1619,4 +1633,8 @@ def install(host=None, horizon=None, opening=None, row_order=None, evening_flush
         ROW_ORDER = bool(row_order)
     if evening_flush is not None:
         EVENING_FLUSH = bool(evening_flush)
+    if sale_fertilizer is not None:
+        SALE_EXCLUDED = ('WHEAT',) if sale_fertilizer else ('WHEAT', 'FERTILIZER')
+    if cattle_early is not None:
+        _V231_EARLY = bool(cattle_early)
     return v3_agent

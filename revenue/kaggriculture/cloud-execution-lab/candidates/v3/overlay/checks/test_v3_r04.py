@@ -6,7 +6,8 @@
 Covers the E184 reservation rules on constructed tapes (horizon, per-due-step debts, the
 72-step boundary, upcoming pickups, WHEAT/FERTILIZER exclusion), the horizon parameter,
 the opening round trip, the delegate seam (output identical to the installed agent), precedence
-over R03 and R01, and off-identity of the wiring. Standard library only.
+over R03 and R01, off-identity of the wiring, and the V3.1 parameters (FERTILIZER in the sale
+window, V231's day-8 cattle window). Standard library only.
 """
 from __future__ import annotations
 
@@ -30,6 +31,9 @@ DEFAULT_HORIZON = r04.SALE_HORIZON
 DEFAULT_OPENING = Features().r04_open_roundtrip
 DEFAULT_ROW_ORDER = Features().r04_row_order
 DEFAULT_FLUSH = Features().r04_evening_flush
+DEFAULT_FERT = Features().r04_sale_fertilizer
+DEFAULT_CATTLE = Features().r04_cattle_early
+PUBLISHED_EXCLUDED = ('WHEAT', 'FERTILIZER')
 
 
 def synthetic_observation(step, shed=None, shops=("BAKERY", "YARN_STORE"), player=0, money=1000):
@@ -61,6 +65,8 @@ class Horizon(unittest.TestCase):
         r04.OPEN_ROUNDTRIP = 0
         r04.ROW_ORDER = False
         r04.EVENING_FLUSH = False
+        r04.SALE_EXCLUDED = PUBLISHED_EXCLUDED
+        r04._V231_EARLY = False
 
 
 class ModuleTests(Horizon):
@@ -287,6 +293,78 @@ class FlushTests(Horizon):
         self.assertEqual(self.run_stub(45, [["HIRE"]], flush=False), [["HIRE"]])
 
 
+def herd_observation(step, shops, cows=4, sheep=2, shed=None):
+    """A farm with `cows` cows and `sheep` sheep placed, nothing carried, nothing in the shed."""
+    obs = synthetic_observation(step, shed=shed or {"WHEAT": 5}, shops=shops)
+    tiles = obs["farms"][0]["tiles"]
+    spots = [(x, y) for y in range(3, 7) for x in range(3, 7) if (x, y) != (4, 4)]
+    for n, (x, y) in enumerate(spots[:cows + sheep]):
+        tiles[y][x] = {"kind": "PASTURE", "animal": "COW" if n < cows else "SHEEP", "placed_day": 3,
+                       "yield_units": 0}
+    obs["market"]["prices"].update({"MILK": 200, "WOOL": 150})
+    return obs
+
+
+class V31Tests(Horizon):
+    MILK_PAIR = ("PIZZA_SHOP", "ICE_CREAM_SHOP")
+
+    def gate(self, step, shops, early, order=("BUY_ANIMAL", "SHEEP", 2)):
+        r04._V231_EARLY = early
+        action = {"farmer": ["PASS"], "hands": [], "market": [list(order)]}
+        out = r04._v231_controller(herd_observation(step, shops), action, r04._v231_new_state(), r04._V231_CAP)
+        return out["market"]
+
+    def test_parameter_defaults_are_the_published_values(self):
+        self.assertEqual(r04.SALE_EXCLUDED, PUBLISHED_EXCLUDED)
+        self.assertIs(r04._V231_EARLY, False)
+        source = (ROOT / "r04_full_router.py").read_text(encoding="utf-8")
+        self.assertIn("SALE_EXCLUDED = ('WHEAT', 'FERTILIZER')", source)
+        self.assertIn("_V231_EARLY=False", source)
+
+    def test_sale_fertilizer_lets_the_window_advance_fertilizer_only(self):
+        tape = blank_tape()
+        tape[301]["market"] = [["SELL", "WHEAT", 4], ["SELL", "FERTILIZER", 4]]
+        r04.install(None, 3, None, None, None, True, None)
+        self.assertEqual(r04.SALE_EXCLUDED, ("WHEAT",))
+        action = empty_action()
+        view = r04.FarmView(synthetic_observation(300, shed={"WHEAT": 10, "FERTILIZER": 10}))
+        r04.reserve_sales(action, view, r04.DayState(), tape, 300)
+        self.assertEqual(action["market"], [["SELL", "FERTILIZER", 4]])
+        r04.install(None, 3, None, None, None, False, None)
+        self.assertEqual(r04.SALE_EXCLUDED, PUBLISHED_EXCLUDED)
+        action = empty_action()
+        r04.reserve_sales(action, view, r04.DayState(), tape, 300)
+        self.assertEqual(action["market"], [])
+
+    def test_cattle_early_swaps_the_day8_sheep_purchase_on_a_milk_pair(self):
+        self.assertEqual(self.gate(196, self.MILK_PAIR, True), [["BUY_ANIMAL", "COW", 2]])
+        self.assertEqual(self.gate(196, self.MILK_PAIR, False), [["BUY_ANIMAL", "SHEEP", 2]])
+
+    def test_cattle_early_needs_two_milk_shops_and_no_yarn_store(self):
+        for shops in (("PIZZA_SHOP", "BAKERY"), ("YARN_STORE", "PIZZA_SHOP"), ("ICE_CREAM_SHOP", "YARN_STORE"),
+                      ("PIZZA_SHOP",)):
+            self.assertEqual(self.gate(196, shops, True), [["BUY_ANIMAL", "SHEEP", 2]], shops)
+
+    def test_cattle_early_window_is_steps_190_to_215(self):
+        for step in (189, 216):
+            self.assertEqual(self.gate(step, self.MILK_PAIR, True), [["BUY_ANIMAL", "SHEEP", 2]], step)
+        for step in (190, 215):
+            self.assertEqual(self.gate(step, self.MILK_PAIR, True), [["BUY_ANIMAL", "COW", 2]], step)
+
+    def test_published_day9_window_is_unchanged(self):
+        shops = ("PIZZA_SHOP", "ICE_CREAM_SHOP", "BAKERY")
+        for early in (False, True):
+            self.assertEqual(self.gate(220, shops, early), [["BUY_ANIMAL", "COW", 2]], early)
+
+    def test_install_sets_both_parameters(self):
+        r04.install(None, DEFAULT_HORIZON, 0, False, False, True, True)
+        self.assertEqual((r04.SALE_EXCLUDED, r04._V231_EARLY), (("WHEAT",), True))
+        r04.install(None, DEFAULT_HORIZON, 0, False, False, False, False)
+        self.assertEqual((r04.SALE_EXCLUDED, r04._V231_EARLY), (PUBLISHED_EXCLUDED, False))
+        r04.install(None, DEFAULT_HORIZON)
+        self.assertEqual((r04.SALE_EXCLUDED, r04._V231_EARLY), (PUBLISHED_EXCLUDED, False))
+
+
 class WiringTests(Horizon):
     def play(self, callable_, steps):
         return [callable_(synthetic_observation(step), dict(CONFIG)) for step in steps]
@@ -298,6 +376,8 @@ class WiringTests(Horizon):
         self.assertEqual(data["r04_open_roundtrip"], DEFAULT_OPENING)
         self.assertIs(data["r04_row_order"], DEFAULT_ROW_ORDER)
         self.assertIs(data["r04_evening_flush"], DEFAULT_FLUSH)
+        self.assertIs(data["r04_sale_fertilizer"], DEFAULT_FERT)
+        self.assertIs(data["r04_cattle_early"], DEFAULT_CATTLE)
         features = Features(**data)
         self.assertIs(features.r04_sale_window, False)
         self.assertEqual(features.r04_sale_horizon, DEFAULT_HORIZON)
@@ -314,12 +394,15 @@ class WiringTests(Horizon):
         self.assertEqual(agent.diagnostics["open_roundtrip"], DEFAULT_OPENING)
         self.assertIs(agent.diagnostics["row_order"], DEFAULT_ROW_ORDER)
         self.assertIs(agent.diagnostics["evening_flush"], DEFAULT_FLUSH)
+        self.assertIs(agent.diagnostics["sale_fertilizer"], DEFAULT_FERT)
+        self.assertIs(agent.diagnostics["cattle_early"], DEFAULT_CATTLE)
         self.assertFalse(agent.ready)
         self.assertIsNone(getattr(agent, "controller", None))
 
     def test_delegate_output_equals_the_published_agent(self):
         steps = list(range(0, 40)) + [143, 144, 145, 287, 288, 289, 300, 301, 647, 648, 700, 712, 717, r04.LAST_STEP]
-        direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER, DEFAULT_FLUSH), steps)
+        direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER, DEFAULT_FLUSH,
+                                       DEFAULT_FERT, DEFAULT_CATTLE), steps)
         agent = TitanAgent(Features(r04_sale_window=True))
         delegated = self.play(lambda obs, cfg: agent.act(obs, cfg), steps)
         self.assertEqual(delegated, direct)
@@ -329,6 +412,15 @@ class WiringTests(Horizon):
         agent.act(synthetic_observation(0), dict(CONFIG))
         self.assertEqual(r04.SALE_HORIZON, 5)
         self.assertEqual(agent.diagnostics["sale_horizon"], 5)
+
+    def test_v31_parameters_reach_the_policy(self):
+        for on in (True, False):
+            agent = TitanAgent(Features(r04_sale_window=True, r04_sale_fertilizer=on, r04_cattle_early=on))
+            agent.act(synthetic_observation(0), dict(CONFIG))
+            self.assertEqual(r04.SALE_EXCLUDED, ("WHEAT",) if on else PUBLISHED_EXCLUDED)
+            self.assertIs(r04._V231_EARLY, on)
+            self.assertIs(agent.diagnostics["sale_fertilizer"], on)
+            self.assertIs(agent.diagnostics["cattle_early"], on)
 
     def test_r04_takes_precedence_over_r03_and_r01(self):
         agent = TitanAgent(Features(r01_shop_router=True, r03_full_router=True, r04_sale_window=True))

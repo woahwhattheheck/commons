@@ -33,6 +33,8 @@ PARAMS = {
     "r04_open_roundtrip": 0,
     "r04_row_order": True,
     "r04_evening_flush": True,
+    "r04_sale_fertilizer": True,
+    "r04_cattle_early": True,
 }
 
 FIELDS = (
@@ -65,6 +67,8 @@ FIELDS = (
     "    r04_open_roundtrip: int = 0\n"
     "    r04_row_order: bool = True\n"
     "    r04_evening_flush: bool = True\n"
+    "    r04_sale_fertilizer: bool = True\n"
+    "    r04_cattle_early: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -182,11 +186,15 @@ RUNTIME_METHODS = (
     "                output = install(self, int(self.features.r04_sale_horizon),\n"
     "                                 int(self.features.r04_open_roundtrip),\n"
     "                                 bool(self.features.r04_row_order),\n"
-    "                                 bool(self.features.r04_evening_flush))(observation, configuration)\n"
+    "                                 bool(self.features.r04_evening_flush),\n"
+    "                                 bool(self.features.r04_sale_fertilizer),\n"
+    "                                 bool(self.features.r04_cattle_early))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
     "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
     "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "                self.diagnostics['evening_flush'] = bool(self.features.r04_evening_flush)\n"
+    "                self.diagnostics['sale_fertilizer'] = bool(self.features.r04_sale_fertilizer)\n"
+    "                self.diagnostics['cattle_early'] = bool(self.features.r04_cattle_early)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -331,7 +339,11 @@ RELEASE_NOTE = (
     "each causes on the pinned default price curves, steepest first, so a contested unit clears\n"
     "before a rival's same-item row at a later index; quantities are unchanged. `r04_evening_flush`\n"
     "(default True) sells at hours 21-23 the projected shed stock of WOOL, MILK, STRAWBERRY and MELON,\n"
-    "which no farm action consumes, ahead of the other rows. With either key on the canonical\n"
+    "which no farm action consumes, ahead of the other rows. `r04_sale_fertilizer` (default True)\n"
+    "lets the sale window advance FERTILIZER, which the published window skips with WHEAT.\n"
+    "`r04_cattle_early` (default True) also runs V231's bounded sheep-to-cow swap at the day-8\n"
+    "purchase (steps 190-215) when both of the first two shops consume MILK and neither is the\n"
+    "YARN_STORE; the published day-9 window is unchanged. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
     "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
 )
