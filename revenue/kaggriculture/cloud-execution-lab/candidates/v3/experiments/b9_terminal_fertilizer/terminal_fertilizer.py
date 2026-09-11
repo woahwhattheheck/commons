@@ -152,10 +152,14 @@ class TerminalFertilizerAgent:
         try:
             step = observation["step"]
             player = observation["player"]
+            farms = observation["farms"]
         except (KeyError, TypeError):
+            self._state.clear()
             return action
         if (not _exact_int(step) or not 0 <= step < EPISODE_STEPS
-                or not _exact_int(player)):
+                or not _exact_int(player) or not isinstance(farms, list)
+                or not 0 <= player < len(farms)):
+            self._state.clear()
             return action
 
         state = self._state.get(player)
