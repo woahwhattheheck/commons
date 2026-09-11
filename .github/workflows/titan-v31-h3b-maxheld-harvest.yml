@@ -61,8 +61,11 @@ jobs:
           # Repo tracks muhl/desktop/**/__pycache__/*.pyc. A root-tree find deletes
           # those blobs and fails this step with a silent dirty checkout.
           find "$EXPERIMENT" -type d -name __pycache__ -prune -exec rm -rf {} +
-          while IFS= read -r path; do
-            test -e "$path" || { printf 'deleted tracked bytecode: %s\n' "$path"; exit 1; }
-          done < <(git ls-files | grep -E '__pycache__|\.pyc$' || true)
+          tracked="$(git ls-files | grep -E '__pycache__|\.pyc$' || true)"
+          if [ -n "$tracked" ]; then
+            printf '%s\n' "$tracked" | while IFS= read -r path; do
+              test -e "$path" || { printf 'deleted tracked bytecode: %s\n' "$path"; exit 1; }
+            done
+          fi
           dirty="$(git status --short)"
           test -z "$dirty" || { printf 'dirty checkout:\n%s\n' "$dirty"; exit 1; }
