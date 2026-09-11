@@ -1,0 +1,76 @@
+name: titan-v31-d1-public-supply-order
+
+on:
+  pull_request:
+    branches:
+      - 'titan/v3.1-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/**'
+      - '.github/workflows/titan-v31-d1-public-supply-order.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v31-d1-public-supply-order-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-paired-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Fetch immutable canonical carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin '+refs/pull/12392/head:refs/remotes/origin/titan-d1-canonical-carrier'
+          test "$(git rev-parse refs/remotes/origin/titan-d1-canonical-carrier)" = 'c580f7805cc7468094c0e880f4923133d45d70d0'
+          git cat-file -e '508b342fc46fa91e3d7cdc3f0b7e44934a187c14^{commit}'
+          git cat-file -e 'c580f7805cc7468094c0e880f4923133d45d70d0^{commit}'
+          echo "event_head=$(git rev-parse HEAD)"
+
+      - name: Focused D1 source contracts
+        shell: bash
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order
+        run: |
+          set -euo pipefail
+          env -u PYTHONOPTIMIZE python -B -m unittest -v test_d1_public_supply_order.py
+          python -m py_compile d1_public_supply_order.py run_d1_screen.py test_d1_public_supply_order.py
+
+      - name: Exact V3.1 paired externality screen
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/titan-d1-public-supply"
+          mkdir -p "$OUT"
+          env -u PYTHONOPTIMIZE python -B \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/d1_public_supply_order/run_d1_screen.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUT" | tee "$OUT/run.log"
+          grep -F 'D1_RESULT ' "$OUT/run.log"
+          test -s "$OUT/D1-PAIRED-RECEIPT.json"
+          test -s "$OUT/control-v31-vs-v31.json"
+          test -s "$OUT/d1-vs-v31.json"
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+
+      - name: Upload exact receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v31-d1-public-supply-order-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-d1-public-supply/
+          if-no-files-found: warn
+          retention-days: 14
