@@ -1,6 +1,6 @@
 # TITAN V3 clustered sign selector
 
-This packet repairs a statistical custody error in sparse mirrored panels. A both-seat pair is a blocked replication of one opponent/seed condition, not automatically two independent Bernoulli sign trials. Counting every positive seat row independently can turn deterministic mirror duplication into false exact significance.
+This packet repairs a statistical custody error in sparse mirrored panels. A mirrored player-position pair is a matched replication of one opponent/seed condition, not automatically two independent Bernoulli sign trials. Counting every positive position row independently can turn deterministic mirror duplication into false exact significance.
 
 ## Predecessor witness
 

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Cluster-aware sign consistency gate for paired TITAN game panels.
 
-A mirrored both-seat panel is a blocked experiment.  Treating the two seat rows
-as independent Bernoulli sign draws creates pseudo-replication whenever the
-pair shares a seed/opponent state path.  This module validates the literal
-paired grid, reports the naive cell tail for diagnosis, and makes its decision
-from declared clusters.  The conservative default uses ``seed`` as the
-experimental unit while also retaining ``(opponent, seed)`` sensitivity.
+A mirrored player-position panel is a matched-pair experiment.  Treating those
+two position rows as independent Bernoulli sign draws creates
+pseudo-replication whenever the pair shares a seed/opponent state path.  This
+module validates the literal paired grid, reports the naive cell tail for
+diagnosis, and makes its decision from declared clusters.  The conservative
+default uses ``seed`` as the experimental unit while also retaining
+``(opponent, seed)`` sensitivity.
 
 This is an evidence classifier only.  It never loads or mutates an agent.
 """

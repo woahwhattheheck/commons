@@ -1,14 +1,22 @@
 from __future__ import annotations
 
 import math
+import sys
 import unittest
 from fractions import Fraction
+from pathlib import Path
 
 from clustered_sign_gate import EvidenceError, analyze, exact_upper_sign_tail
 
 
 SEEDS = [539131249, 1834999074, 2609097301, 2609097302, 2609097303, 2609097304, 2611092201, 2611092207]
 OPPONENTS = ["arlene", "v1"]
+PACKET_DIR = Path(__file__).resolve().parent
+REPO_ROOT = next(
+    path
+    for path in (PACKET_DIR, *PACKET_DIR.parents)
+    if (path / "open_door_guard.py").is_file()
+)
 
 
 def row(opponent, seed, seat, own=0, rival=0, changed=False):
@@ -147,6 +155,20 @@ class ClusteredSelectorTests(unittest.TestCase):
     def test_no_action_or_score_signal_is_not_a_rejection(self):
         rows = [row("arlene", 1, 0), row("arlene", 1, 1)]
         self.assertEqual(analyze(rows)["verdict"], "NO_SIGNAL")
+
+    def test_packet_sources_do_not_add_admission_lock_phrases(self):
+        if str(REPO_ROOT) not in sys.path:
+            sys.path.insert(0, str(REPO_ROOT))
+        import open_door_guard as guard
+
+        added = []
+        for path in sorted(PACKET_DIR.iterdir()):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(REPO_ROOT).as_posix()
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                added.append(guard.AddedLine(rel, number, line))
+        self.assertEqual(guard.scan_added(added), [])
 
 
 if __name__ == "__main__":
