@@ -99,8 +99,13 @@ def _melon_qualifies(tile: Any, inventory: dict[str, Any], day: int) -> tuple[bo
         return False, "already_watered"
     if fertilized_until >= day:
         return False, "already_covered"
-    if yield_units >= MELON_MAX_YIELD:
-        return False, "yield_cap"
+    # Fertilizer is useful here only if it changes the next WATER result.  The
+    # ordinary annual-crop WATER adds one unit; a covered WATER adds two, both
+    # capped at MELON_MAX_YIELD.  At held yield 5, for example, both paths land
+    # at the cap of 6, so consuming fertilizer plus the current PASS is strictly
+    # zero-marginal and must fail closed.
+    if min(MELON_MAX_YIELD, yield_units + 2) <= min(MELON_MAX_YIELD, yield_units + 1):
+        return False, "no_marginal_yield"
 
     age = day - planted_day
     if not (MELON_WINDOW_START <= age <= MELON_MAX_YIELD_DAY):
