@@ -88,6 +88,24 @@ class ArtifactReachabilityTests(unittest.TestCase):
         errors = validate_reachability(manifest, files, overlay)
         self.assertTrue(any("lane_limit: config default 1 != manifest True" in error for error in errors))
 
+    def test_falsey_non_object_manifest_params_fail_closed(self):
+        for params in ([], "", 0, False, None):
+            with self.subTest(params=params):
+                manifest, files, overlay = self.fixture()
+                manifest["keys"]["params"] = params
+                with self.assertRaisesRegex(AssertionError, "manifest keys.params must be an object"):
+                    validate_reachability(manifest, files, overlay)
+
+    def test_missing_or_empty_manifest_params_remain_valid(self):
+        for mode in ("missing", "empty"):
+            with self.subTest(mode=mode):
+                manifest, files, overlay = self.fixture()
+                if mode == "missing":
+                    del manifest["keys"]["params"]
+                else:
+                    manifest["keys"]["params"] = {}
+                self.assertEqual([], validate_reachability(manifest, files, overlay))
+
     def test_param_comment_docstring_and_dead_string_do_not_count_as_use(self):
         manifest, files, overlay = self.fixture()
         files["titan_runtime.py"] = (
