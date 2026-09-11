@@ -10,6 +10,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing_monotonic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
   push:
     branches:
@@ -20,6 +21,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing_monotonic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/V3-MANIFEST.json'
   workflow_dispatch:
 
@@ -148,8 +150,12 @@ jobs:
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
-          python3 -m py_compile "$LAB/check_v4_plumbing.py"
+          python3 -m py_compile \
+            "$LAB/check_v4_plumbing.py" \
+            "$LAB/check_v4_plumbing_monotonic.py"
           python3 -O "$LAB/check_v4_plumbing.py" \
+            --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
+          python3 -O "$LAB/check_v4_plumbing_monotonic.py" \
             --base-apply-v4 "$RUNNER_TEMP/base_apply_v4.py"
           python3 - <<'PY'
           import ast
