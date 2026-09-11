@@ -45,9 +45,12 @@ def apply_place_delivery(observation, action, enabled=False):
     workers = [action.get("farmer") or ["PASS"], *(action.get("hands") or [])]
 
     # Validate the public geometry/inventory surfaces used by beside_shed() and
-    # inventory() before the transform touches them.
+    # inventory() before the transform touches them.  A truncated public worker
+    # surface is ambiguous: never rewrite only a prefix of the parent's workers.
     if (not isinstance(view.tiles, list) or not isinstance(view.positions, list)
             or not isinstance(view.inventories, list)):
+        return action
+    if len(view.positions) < len(workers) or len(view.inventories) < len(workers):
         return action
     for position in view.positions[:len(workers)]:
         if (not isinstance(position, (list, tuple)) or len(position) != 2
@@ -61,7 +64,7 @@ def apply_place_delivery(observation, action, enabled=False):
         item for item, quantity in raw_shed.items()
         if item in r04.PRODUCTS and quantity > 0
     }
-    for worker in range(min(len(workers), len(view.positions))):
+    for worker in range(len(workers)):
         command = workers[worker]
         if not (isinstance(command, list) and command and command[0] == "DROP"):
             continue
@@ -94,7 +97,7 @@ def apply_place_delivery(observation, action, enabled=False):
 
     eligible = []
     touched = False
-    for worker in range(min(len(workers), len(view.positions))):
+    for worker in range(len(workers)):
         command = workers[worker]
         if not (isinstance(command, list) and command and command[0] == "DROP"):
             continue
@@ -121,7 +124,7 @@ def apply_place_delivery(observation, action, enabled=False):
     # Every shed-adjacent terminal DROP is removed even when there is no safe
     # capacity or recognized product. Cargo left on a worker is preserved.
     out_workers = [list(command) if isinstance(command, list) else command for command in workers]
-    for worker in range(min(len(out_workers), len(view.positions))):
+    for worker in range(len(out_workers)):
         command = out_workers[worker]
         if (isinstance(command, list) and command and command[0] == "DROP"
                 and view.beside_shed(view.positions[worker])):
