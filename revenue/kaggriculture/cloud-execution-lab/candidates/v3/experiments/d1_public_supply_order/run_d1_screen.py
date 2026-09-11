@@ -18,6 +18,7 @@ import argparse
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 import shutil
 import statistics
@@ -31,6 +32,7 @@ V31_BASE_COMMIT = "508b342fc46fa91e3d7cdc3f0b7e44934a187c14"
 CANONICAL_CARRIER_COMMIT = "c580f7805cc7468094c0e880f4923133d45d70d0"
 CANONICAL_SHA256 = "5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1"
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
+AGENT_RNG_SEED = 20260907
 SEEDS = tuple(range(2611151001, 2611151009))
 
 LAB_REL = Path("revenue/kaggriculture/cloud-execution-lab")
@@ -69,6 +71,14 @@ def sha256_bytes(data: bytes) -> str:
 
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def is_sha256(value) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value)
+    )
 
 
 def run(args, *, cwd: Path) -> None:
@@ -198,14 +208,76 @@ def make_candidate(repo: Path, control: Path, candidate: Path) -> dict:
     }
 
 
+def expected_fingerprint(entry: Path) -> dict:
+    return {"entry": entry.name, "callable": "agent", "sha256": sha256_file(entry)}
+
+
+def validate_evaluator_report(
+    report: dict,
+    label: str,
+    candidate_main: Path,
+    opponent_main: Path,
+    repo: Path,
+) -> None:
+    if not isinstance(report, dict):
+        raise AssertionError("evaluator report is not an object")
+    schema_version = report.get("schema_version")
+    if type(schema_version) is not int or schema_version != 1:
+        raise AssertionError(f"evaluator schema drift: {schema_version!r}")
+    if report.get("engine_ref") != ENGINE_REF:
+        raise AssertionError(f"evaluator engine ref drift: {report.get('engine_ref')!r}")
+    evaluator_sha = report.get("evaluator_sha256")
+    expected_evaluator_sha = sha256_file(repo / EVALUATOR_REL)
+    if evaluator_sha != expected_evaluator_sha:
+        raise AssertionError(
+            f"evaluator fingerprint drift: {evaluator_sha!r} != {expected_evaluator_sha!r}"
+        )
+
+    seeds = report.get("seeds")
+    if not isinstance(seeds, list) or len(seeds) != len(SEEDS):
+        raise AssertionError(f"evaluator seed metadata shape drift: {seeds!r}")
+    if any(type(seed) is not int for seed in seeds) or tuple(seeds) != SEEDS:
+        raise AssertionError(f"evaluator seed metadata drift: {seeds!r}")
+    rng_seed = report.get("agent_rng_seed")
+    if type(rng_seed) is not int or rng_seed != AGENT_RNG_SEED:
+        raise AssertionError(f"evaluator RNG seed drift: {rng_seed!r}")
+
+    candidate = report.get("candidate")
+    expected_candidate = expected_fingerprint(candidate_main)
+    if candidate != expected_candidate:
+        raise AssertionError(
+            f"candidate fingerprint drift: {candidate!r} != {expected_candidate!r}"
+        )
+    opponents = report.get("opponents")
+    expected_opponent = expected_fingerprint(opponent_main)
+    if not isinstance(opponents, dict) or set(opponents) != {label}:
+        raise AssertionError(f"opponent fingerprint membership drift: {opponents!r}")
+    if opponents[label] != expected_opponent:
+        raise AssertionError(
+            f"opponent fingerprint drift: {opponents[label]!r} != {expected_opponent!r}"
+        )
+
+    reproducibility = report.get("reproducibility")
+    if not isinstance(reproducibility, dict):
+        raise AssertionError("evaluator report lacks replay determinism receipt")
+    if reproducibility.get("checked") is not True:
+        raise AssertionError("evaluator replay determinism check was not executed")
+    if reproducibility.get("same_trace_and_scores") is not True:
+        raise AssertionError("evaluator first-cell replay check failed")
+    original_trace = reproducibility.get("original_trace")
+    replay_trace = reproducibility.get("replay_trace")
+    if not is_sha256(original_trace) or not is_sha256(replay_trace):
+        raise AssertionError("evaluator replay trace digest is malformed")
+    if original_trace != replay_trace:
+        raise AssertionError("evaluator replay trace digest changed")
+
+
 def run_evaluator(
     repo: Path,
     candidate_main: Path,
     opponent_main: Path,
     label: str,
     output: Path,
-    *,
-    recheck_first: bool,
 ) -> dict:
     args = [
         sys.executable,
@@ -219,19 +291,17 @@ def run_evaluator(
         f"{label}={opponent_main}",
         "--seeds",
         ",".join(map(str, SEEDS)),
+        "--rng-seed",
+        str(AGENT_RNG_SEED),
         "--game-timeout",
         "180",
+        "--recheck-first",
         "--output",
         output,
     ]
-    if recheck_first:
-        args.append("--recheck-first")
     run(args, cwd=repo)
     report = json.loads(output.read_text(encoding="utf-8"))
-    if report.get("engine_ref") != ENGINE_REF:
-        raise AssertionError(f"evaluator engine ref drift: {report.get('engine_ref')!r}")
-    if recheck_first and (report.get("reproducibility") or {}).get("same_trace_and_scores") is not True:
-        raise AssertionError("candidate first-cell replay check failed")
+    validate_evaluator_report(report, label, candidate_main, opponent_main, repo)
     return report
 
 
@@ -241,10 +311,18 @@ def exact_cells(report: dict, label: str) -> dict[tuple[int, int], dict]:
         raise AssertionError("evaluator report has no games list")
     expected = {(seed, seat) for seed in SEEDS for seat in (0, 1)}
     result = {}
-    for game in games:
+    for index, game in enumerate(games):
+        if not isinstance(game, dict):
+            raise AssertionError(f"game row {index} is not an object: {game!r}")
         if game.get("opponent") != label:
             raise AssertionError(f"unexpected opponent label: {game.get('opponent')!r}")
-        key = (game.get("seed"), game.get("candidate_seat"))
+        seed = game.get("seed")
+        seat = game.get("candidate_seat")
+        if type(seed) is not int or type(seat) is not int:
+            raise AssertionError(f"non-integer seed/seat in game row {index}: {(seed, seat)!r}")
+        if seat not in (0, 1):
+            raise AssertionError(f"invalid candidate seat in game row {index}: {seat!r}")
+        key = (seed, seat)
         if key not in expected or key in result:
             raise AssertionError(f"unexpected/duplicate cell: {key}")
         if game.get("status") != "complete" or game.get("failure") is not None:
@@ -252,6 +330,12 @@ def exact_cells(report: dict, label: str) -> dict[tuple[int, int], dict]:
         scores = game.get("scores")
         if not (isinstance(scores, list) and len(scores) == 2):
             raise AssertionError(f"invalid scores for {key}: {scores!r}")
+        for score in scores:
+            if type(score) not in (int, float) or not math.isfinite(score):
+                raise AssertionError(f"non-finite/non-numeric score for {key}: {scores!r}")
+        trace = game.get("trace_sha256")
+        if not is_sha256(trace):
+            raise AssertionError(f"invalid trace digest for {key}: {trace!r}")
         result[key] = game
     if set(result) != expected:
         raise AssertionError(f"missing cells: {sorted(expected - set(result))}")
@@ -259,7 +343,7 @@ def exact_cells(report: dict, label: str) -> dict[tuple[int, int], dict]:
 
 
 def side_scores(game: dict) -> tuple[float, float]:
-    seat = int(game["candidate_seat"])
+    seat = game["candidate_seat"]
     scores = game["scores"]
     return float(scores[seat]), float(scores[1 - seat])
 
@@ -340,7 +424,6 @@ def main() -> int:
             control_dir / "main.py",
             "exact_v31_control",
             control_raw,
-            recheck_first=False,
         )
         candidate_report = run_evaluator(
             repo,
@@ -348,7 +431,6 @@ def main() -> int:
             control_dir / "main.py",
             "exact_v31",
             candidate_raw,
-            recheck_first=True,
         )
         control_cells = exact_cells(control_report, "exact_v31_control")
         candidate_cells = exact_cells(candidate_report, "exact_v31")
@@ -386,7 +468,13 @@ def main() -> int:
                 "hidden_rival_state_reads": 0,
                 "custom_market_params": "fail_closed",
             },
-            "panel": {"seeds": list(SEEDS), "seats": [0, 1], "paired_cells": 16},
+            "panel": {
+                "seeds": list(SEEDS),
+                "seats": [0, 1],
+                "paired_cells": 16,
+                "agent_rng_seed": AGENT_RNG_SEED,
+                "recheck_first": True,
+            },
             "summary": summary,
             "disposition": disposition,
             "raw": {
