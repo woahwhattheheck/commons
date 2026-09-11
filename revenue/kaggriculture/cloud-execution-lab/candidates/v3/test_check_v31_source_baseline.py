@@ -43,6 +43,12 @@ class PackageTreeCustodyTests(unittest.TestCase):
         manifest.write_text(json.dumps(recorded), encoding="utf-8")
         return package, manifest
 
+    def _write_sale_window(self, package: Path, value) -> None:
+        path = package / "TITAN-CONFIG.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["r04_sale_window"] = value
+        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+
     def test_submission_toggle_is_the_only_allowed_hash_difference(self):
         with tempfile.TemporaryDirectory() as temp:
             package, manifest = self._fixture(Path(temp), submission=True)
@@ -54,6 +60,23 @@ class PackageTreeCustodyTests(unittest.TestCase):
             package, manifest = self._fixture(Path(temp), submission=False)
             with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
                 baseline._verify_package_tree(package)
+
+    def test_non_boolean_sale_window_values_fail_custody(self):
+        for value in (1, "true", [True], {"enabled": True}, None):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as temp:
+                package, manifest = self._fixture(Path(temp))
+                self._write_sale_window(package, value)
+                with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                    with self.assertRaisesRegex(SystemExit, "must be JSON boolean"):
+                        baseline._verify_package_tree(package)
+
+    def test_force_source_mode_also_rejects_non_boolean_values(self):
+        for value in (1, "false", [], {"enabled": False}, None):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as temp:
+                package, _manifest = self._fixture(Path(temp))
+                self._write_sale_window(package, value)
+                with self.assertRaisesRegex(SystemExit, "must be JSON boolean"):
+                    baseline._force_source_mode(package)
 
     def test_extra_file_fails_closed(self):
         with tempfile.TemporaryDirectory() as temp:
