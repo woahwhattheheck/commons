@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/titan-v31-canonical-base-recovery.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_build_v3_fail_closed.py'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
   workflow_dispatch:
 
@@ -32,6 +33,7 @@ jobs:
           EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
           ARCHIVE='revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
           BUILDER='revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py'
+          TEST='revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_build_v3_fail_closed.py'
           WORKFLOW='.github/workflows/titan-v31-canonical-base-recovery.yml'
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
@@ -44,6 +46,7 @@ jobs:
           expected = {
               '.github/workflows/titan-v31-canonical-base-recovery.yml',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v3/build_v3.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_build_v3_fail_closed.py',
               'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz',
           }
           if actual != expected:
@@ -51,8 +54,9 @@ jobs:
           print('V31 BASE RECOVERY SCOPE OK', len(actual))
           PY
           test "$(git rev-parse "HEAD:$ARCHIVE")" = '10e92806e24a32f3f301e32edbb1f0b5106be92a'
-          test "$(git rev-parse "HEAD:$BUILDER")" = '3d9309bd9c6fa94244420bbf4e1c37b3437a0fb6'
-          git diff --check "$BASE...HEAD" -- "$WORKFLOW" "$BUILDER"
+          test "$(git rev-parse "HEAD:$BUILDER")" = '528cfabbe377f829cb584726c41bd2f64061373b'
+          test "$(git rev-parse "HEAD:$TEST")" = '3db16ff0eaace1c6b718e303607a6323a46666ea'
+          git diff --check "$BASE...HEAD" -- "$WORKFLOW" "$BUILDER" "$TEST"
 
       - name: Prove recovered bytes are the historical 5f6 generation
         shell: bash
@@ -79,19 +83,24 @@ jobs:
           print('V31 BASE ACTUAL BYTES', 428158, 'MANIFEST_RECORDED_BYTES', manifest['base'].get('bytes'))
           PY
 
-      - name: Prove builder defaults to immutable manifest-pinned history
+      - name: Prove builder defaults to immutable manifest-pinned history and survives optimization
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
         shell: bash
         env:
-          PYTHONOPTIMIZE: '0'
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
           set -euo pipefail
-          python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-default.log
+          python3 -B -m unittest -v tooling_tests/test_build_v3_fail_closed.py |& tee /tmp/v31-base-recovery-pyopt-test.log
+          grep -F 'Ran 2 tests' /tmp/v31-base-recovery-pyopt-test.log
+          grep -F 'OK' /tmp/v31-base-recovery-pyopt-test.log
+          PYTHONOPTIMIZE=0 python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-default.log
           grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-default.log
-          python3 -B build_v3.py --check --canonical ../../exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz |& tee /tmp/v31-base-recovery-explicit.log
+          PYTHONOPTIMIZE=0 python3 -B build_v3.py --check --canonical ../../exports/historical/titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz |& tee /tmp/v31-base-recovery-explicit.log
           grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-explicit.log
           cmp /tmp/v31-base-recovery-default.log /tmp/v31-base-recovery-explicit.log
+          PYTHONOPTIMIZE=1 python3 -B build_v3.py --check |& tee /tmp/v31-base-recovery-optimized.log
+          grep -F 'V3 CHECK OK 4d920b2d8948488dc4f491a3a2b3d038c830d723baaaaba1e4470799b66f7d13 139 files' /tmp/v31-base-recovery-optimized.log
+          cmp /tmp/v31-base-recovery-default.log /tmp/v31-base-recovery-optimized.log
 
       - name: Prove checkout stayed clean
         shell: bash
