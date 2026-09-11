@@ -30,6 +30,8 @@ PARAMS = {
     "g01_early_expander_step": 144,
     "g01_land_cash_floor": 0,
     "r04_sale_horizon": 8,
+    "r04_open_roundtrip": 45,
+    "r04_row_order": True,
 }
 
 FIELDS = (
@@ -59,6 +61,8 @@ FIELDS = (
     "    # R04 the R03 policy with the E184 sale window outermost (Gluzdov, Apache-2.0): whole-route delegate.\n"
     "    r04_sale_window: bool = False\n"
     "    r04_sale_horizon: int = 8\n"
+    "    r04_open_roundtrip: int = 45\n"
+    "    r04_row_order: bool = True\n"
 )
 
 L01_KEYS = ("l01_land", "l01_sheep", "l01_day0buy", "l01_tranche", "l01_leanplant")
@@ -173,8 +177,12 @@ RUNTIME_METHODS = (
     "        try:\n"
     "            if route == 'r04_sale_window':\n"
     "                from r04_full_router import install\n"
-    "                output = install(self, int(self.features.r04_sale_horizon))(observation, configuration)\n"
+    "                output = install(self, int(self.features.r04_sale_horizon),\n"
+    "                                 int(self.features.r04_open_roundtrip),\n"
+    "                                 bool(self.features.r04_row_order))(observation, configuration)\n"
     "                self.diagnostics['sale_horizon'] = int(self.features.r04_sale_horizon)\n"
+    "                self.diagnostics['open_roundtrip'] = int(self.features.r04_open_roundtrip)\n"
+    "                self.diagnostics['row_order'] = bool(self.features.r04_row_order)\n"
     "            else:\n"
     "                from r03_full_router import install\n"
     "                output = install(self)(observation, configuration)\n"
@@ -309,7 +317,13 @@ RELEASE_NOTE = (
     "the one-turn sale advance is replaced by reservations that sell now the units the tape plans\n"
     "to sell over the next `r04_sale_horizon` own actions, bounded by projected stock, never\n"
     "across a 72-step route boundary, never past an upcoming pickup or purchase of the item,\n"
-    "with per-due-step debts so no advanced unit is sold twice. With either key on the canonical\n"
+    "with per-due-step debts so no advanced unit is sold twice. `r04_open_roundtrip` (default 45)\n"
+    "replaces the published step-0 wheat wash trade (BUY 13, SELL 13, BUY 13) with BUY 13, BUY n,\n"
+    "SELL n: the same net +13 WHEAT, but the market pairs both players' rows index by index, so\n"
+    "the larger round trip moves a few coins from a rival whose rows mirror the tape; 0 keeps the\n"
+    "published opening. `r04_row_order` (default True) sorts the leading SELL rows by the price drop\n"
+    "each causes on the pinned default price curves, steepest first, so a contested unit clears\n"
+    "before a rival's same-item row at a later index; quantities are unchanged. With either key on the canonical\n"
     "controller never runs; R04 takes precedence over R03, and both over R01. Attribution is\n"
     "appended to NOTICE. Checks: `checks/test_v3_r04.py`.\n"
 )

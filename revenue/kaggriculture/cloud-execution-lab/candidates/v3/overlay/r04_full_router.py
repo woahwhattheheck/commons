@@ -5,7 +5,8 @@
 # published Apache-2.0 sources, unchanged except that the inline tape blob now comes from
 # r01_tapes (byte-identical tapes), the redundant deepcopy of that private decode is
 # skipped (every rule only reads the tapes), E184's `def agent` is preceded by `del agent`
-# (the pattern every inherited layer uses), and a KEY / install() seam is appended.
+# (the pattern every inherited layer uses), and a V3 seam is appended: install(), and an
+# opening round-trip and SELL row-order wrapper that stays off unless installed on.
 #
 #   Base policy and the thirteen action tapes: yhay81, Shop Router 0909
 #     https://www.kaggle.com/code/yhay81/shop-router-0909
@@ -1467,22 +1468,117 @@ agent.telemetry = _SALE_PARENT.telemetry
 
 
 # --- V3 seam -----------------------------------------------------------------
-# Nothing above this line is modified policy.
+# Nothing above this line is modified policy. Below: the V3 opening round trip, a thin
+# wrapper around the published agent, and the install() entry the runtime calls.
 
 KEY = "r04_sale_window"
 
 POLICY_AGENT = agent
 
+# The published step-0 market is the tape's wheat wash trade. The market engine pairs both
+# players' rows index by index and quotes each paired unit from the same pre-commit
+# inventory, so a larger round trip in the same rows moves a few coins between the players.
+# OPEN_ROUNDTRIP = n replaces the published step-0 market with BUY 13, BUY n, SELL n (net
+# +13 WHEAT, the same as the published trade); 0 keeps the published opening.
+TAPE_OPENING = [["BUY_PRODUCT", "WHEAT", 13], ["SELL", "WHEAT", 13], ["BUY_PRODUCT", "WHEAT", 13]]
+OPEN_ROUNDTRIP = 0
 
-def install(host=None, horizon=None):
-    """Return the published agent callable; set the E184 sale horizon when one is given.
+
+# ROW_ORDER sorts the leading block of SELL rows by the price drop each row causes on the
+# pinned default price curves (kaggriculture MARKET_PARAMS), steepest first. Rows execute
+# index by index across both players, so a contested unit sold at a lower index clears before
+# a rival's same-item row. Quantities and every non-SELL row are unchanged; a configuration
+# that overrides marketParams leaves the order untouched.
+ROW_ORDER = False
+_RO_PARAMS = {
+    "WHEAT": (25, 400, "sqrt", 0.80, "log", 0.20), "CARROT": (35, 450, "hinge", 1.00, "sqrt", 0.70),
+    "TOMATO": (60, 200, "hinge", 0.40, "sqrt", 0.60), "STRAWBERRY": (120, 100, "sqrt", 0.70, "linear", 1.60),
+    "MELON": (250, 300, "log", 0.20, "sq", 3.60), "EGG": (50, 332, "hinge", 0.40, "log", 0.20),
+    "MILK": (160, 122, "sqrt", 0.60, "linear", 1.60), "WOOL": (200, 105, "log", 0.20, "sq", 3.20),
+    "FERTILIZER": (100, 200, "linear", 0.40, "linear", 0.40)}
+_RO_I0 = 10000
+
+
+def _ro_shape(func, x, span):
+    x = max(0.0, x)
+    if func == "linear":
+        return x
+    if func == "sq":
+        return x * x
+    if func == "sqrt":
+        return x ** 0.5
+    if func == "log":
+        import math
+        return math.log(1.0 + x)
+    if func == "hinge":
+        u = x / span
+        return u + 8.0 * max(0.0, u - 1.0) ** 2
+    return x
+
+
+def _ro_price(item, inventory):
+    base, span, below_f, below_t, above_f, above_t = _RO_PARAMS[item]
+    if inventory < _RO_I0:
+        amp = below_t * base / _ro_shape(below_f, span, span)
+        price = base + amp * _ro_shape(below_f, _RO_I0 - inventory, span)
+    else:
+        amp = above_t * base / _ro_shape(above_f, span, span)
+        price = base - amp * _ro_shape(above_f, inventory - _RO_I0, span)
+    return max(1, int(round(price)))
+
+
+def order_sells(market, inventory):
+    """Leading SELL rows sorted by the price drop each causes, steepest first."""
+    lead = 0
+    while lead < len(market) and market[lead] and market[lead][0] == "SELL":
+        lead += 1
+    if lead < 2:
+        return market
+
+    def drop(order):
+        item = order[1]
+        if item not in _RO_PARAMS or len(order) < 3:
+            return 0
+        level = int(inventory.get(item, _RO_I0))
+        quantity = max(0, int(order[2]))
+        return (_ro_price(item, level) - _ro_price(item, level + quantity)) * quantity
+
+    return sorted(market[:lead], key=drop, reverse=True) + market[lead:]
+
+
+def v3_agent(observation, configuration=None):
+    action = POLICY_AGENT(observation, configuration)
+    if ROW_ORDER and not ((configuration or {}).get("marketParams") or {}):
+        inventory = (observation.get("market") or {}).get("inventory") or {}
+        market = [list(o) for o in action.get("market") or [] if o]
+        ordered = order_sells(market, inventory)
+        if ordered != market:
+            action = dict(action)
+            action["market"] = ordered
+    if (OPEN_ROUNDTRIP > 0 and int(observation["step"]) == 0
+            and [list(o) for o in action.get("market") or []] == TAPE_OPENING):
+        action = dict(action)
+        action["market"] = [["BUY_PRODUCT", "WHEAT", 13], ["BUY_PRODUCT", "WHEAT", OPEN_ROUNDTRIP],
+                            ["SELL", "WHEAT", OPEN_ROUNDTRIP]]
+    return action
+
+
+def install(host=None, horizon=None, opening=None, row_order=None):
+    """Return the V3 agent callable; set the sale horizon, opening round trip and row order.
 
     E184 reads SALE_HORIZON at call time, exactly as the published policy factory sets it.
     """
-    global SALE_HORIZON
+    global SALE_HORIZON, OPEN_ROUNDTRIP, ROW_ORDER
     if horizon is not None:
         horizon = int(horizon)
         if horizon < 1:
             raise ValueError("sale horizon must be at least 1")
         SALE_HORIZON = horizon
-    return POLICY_AGENT
+    if opening is not None:
+        opening = int(opening)
+        if opening < 0:
+            raise ValueError("opening round trip must be non-negative")
+        OPEN_ROUNDTRIP = opening
+    if row_order is not None:
+        ROW_ORDER = bool(row_order)
+    return v3_agent

@@ -5,7 +5,7 @@
 
 Covers the E184 reservation rules on constructed tapes (horizon, per-due-step debts, the
 72-step boundary, upcoming pickups, WHEAT/FERTILIZER exclusion), the horizon parameter,
-the delegate seam (output identical to calling the published agent directly), precedence
+the opening round trip, the delegate seam (output identical to the installed agent), precedence
 over R03 and R01, and off-identity of the wiring. Standard library only.
 """
 from __future__ import annotations
@@ -27,6 +27,8 @@ from titan_runtime import Features, TitanAgent  # noqa: E402
 CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10, "shedCapacity": 100,
           "maxMarketOrdersPerTurn": 10, "farmHandCostMult": 1}
 DEFAULT_HORIZON = r04.SALE_HORIZON
+DEFAULT_OPENING = Features().r04_open_roundtrip
+DEFAULT_ROW_ORDER = Features().r04_row_order
 
 
 def synthetic_observation(step, shed=None, shops=("BAKERY", "YARN_STORE"), player=0, money=1000):
@@ -55,6 +57,8 @@ def empty_action():
 class Horizon(unittest.TestCase):
     def tearDown(self):
         r04.SALE_HORIZON = DEFAULT_HORIZON
+        r04.OPEN_ROUNDTRIP = 0
+        r04.ROW_ORDER = False
 
 
 class ModuleTests(Horizon):
@@ -72,7 +76,7 @@ class ModuleTests(Horizon):
             self.assertTrue(hasattr(r04, name), name)
 
     def test_install_sets_the_horizon(self):
-        self.assertIs(r04.install(None, 5), r04.agent)
+        self.assertIs(r04.install(None, 5), r04.v3_agent)
         self.assertEqual(r04.SALE_HORIZON, 5)
         with self.assertRaises(ValueError):
             r04.install(None, 0)
@@ -155,6 +159,96 @@ class ReservationTests(Horizon):
         self.assertEqual(action["market"], [["SELL", "MILK", 4]])
 
 
+class OpeningTests(Horizon):
+    ROUNDTRIP = [["BUY_PRODUCT", "WHEAT", 13], ["BUY_PRODUCT", "WHEAT", 45], ["SELL", "WHEAT", 45]]
+
+    def test_published_step0_market_is_the_tape_opening(self):
+        self.assertEqual(r04.agent(synthetic_observation(0), dict(CONFIG))["market"], r04.TAPE_OPENING)
+        self.assertTrue(all(tape[0]["market"] == r04.TAPE_OPENING for tape in load_tapes()))
+
+    def test_opening_replaces_only_the_step0_market(self):
+        on = r04.install(None, DEFAULT_HORIZON, 45)
+        first = on(synthetic_observation(0), dict(CONFIG))
+        self.assertEqual(first["market"], self.ROUNDTRIP)
+        later = on(synthetic_observation(1), dict(CONFIG))
+        self.assertEqual(later, r04.agent(synthetic_observation(1), dict(CONFIG)))
+
+    def test_opening_zero_is_the_published_agent(self):
+        off = r04.install(None, DEFAULT_HORIZON, 0)
+        steps = list(range(0, 30)) + [288, 300, r04.LAST_STEP]
+        direct = [r04.agent(synthetic_observation(t), dict(CONFIG)) for t in steps]
+        wrapped = [off(synthetic_observation(t), dict(CONFIG)) for t in steps]
+        self.assertEqual(wrapped, direct)
+
+    def test_negative_opening_is_rejected(self):
+        with self.assertRaises(ValueError):
+            r04.install(None, DEFAULT_HORIZON, -1)
+
+
+def _reference_engine():
+    """Load checks/reference/engine/kaggriculture.py with a stub for its one package import."""
+    import importlib.util
+    import random
+    import types
+    utils = types.ModuleType("kaggle_environments.utils")
+    utils.resolve_episode_seed = lambda *a, **k: 0
+    package = types.ModuleType("kaggle_environments")
+    saved = {k: sys.modules.get(k) for k in ("kaggle_environments", "kaggle_environments.utils")}
+    sys.modules["kaggle_environments"] = package
+    sys.modules["kaggle_environments.utils"] = utils
+    try:
+        path = ROOT / "checks" / "reference" / "engine" / "kaggriculture.py"
+        spec = importlib.util.spec_from_file_location("v3_reference_kaggriculture", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                sys.modules.pop(key, None)
+            else:
+                sys.modules[key] = value
+
+
+class RowOrderTests(Horizon):
+    def test_price_curve_matches_the_reference_engine(self):
+        engine = _reference_engine()
+        for item in engine.PRODUCTS:
+            for level in (9000, 9500, 9900, 9999, 10000, 10001, 10050, 10300, 11000, 14000):
+                self.assertEqual(r04._ro_price(item, level), engine.market_price(item, level), (item, level))
+
+    def test_leading_sells_sorted_by_price_drop(self):
+        market = [["SELL", "WHEAT", 10], ["SELL", "WOOL", 10], ["HIRE"], ["SELL", "MILK", 3]]
+        ordered = r04.order_sells(market, {})
+        self.assertEqual(ordered, [["SELL", "WOOL", 10], ["SELL", "WHEAT", 10], ["HIRE"], ["SELL", "MILK", 3]])
+
+    def test_single_or_no_leading_sell_is_untouched(self):
+        self.assertEqual(r04.order_sells([["HIRE"], ["SELL", "WOOL", 5]], {}), [["HIRE"], ["SELL", "WOOL", 5]])
+        self.assertEqual(r04.order_sells([["SELL", "WOOL", 5], ["HIRE"]], {}), [["SELL", "WOOL", 5], ["HIRE"]])
+
+    def test_row_order_off_is_the_published_agent_after_step0(self):
+        off = r04.install(None, DEFAULT_HORIZON, 0, False)
+        steps = list(range(0, 30)) + [288, 300, r04.LAST_STEP]
+        direct = [r04.agent(synthetic_observation(t), dict(CONFIG)) for t in steps]
+        self.assertEqual([off(synthetic_observation(t), dict(CONFIG)) for t in steps], direct)
+
+    def test_row_order_applies_and_market_params_override_disables_it(self):
+        def stub(observation, configuration=None):
+            return {"farmer": ["PASS"], "hands": [], "market": [["SELL", "WHEAT", 10], ["SELL", "WOOL", 10]]}
+        saved = r04.POLICY_AGENT
+        r04.POLICY_AGENT = stub
+        try:
+            on = r04.install(None, DEFAULT_HORIZON, 0, True)
+            reordered = on(synthetic_observation(5), dict(CONFIG))["market"]
+            kept = on(synthetic_observation(5), dict(CONFIG, marketParams={"WOOL": {"base": 10}}))["market"]
+            off = r04.install(None, DEFAULT_HORIZON, 0, False)(synthetic_observation(5), dict(CONFIG))["market"]
+        finally:
+            r04.POLICY_AGENT = saved
+        self.assertEqual(reordered, [["SELL", "WOOL", 10], ["SELL", "WHEAT", 10]])
+        self.assertEqual(kept, [["SELL", "WHEAT", 10], ["SELL", "WOOL", 10]])
+        self.assertEqual(off, [["SELL", "WHEAT", 10], ["SELL", "WOOL", 10]])
+
+
 class WiringTests(Horizon):
     def play(self, callable_, steps):
         return [callable_(synthetic_observation(step), dict(CONFIG)) for step in steps]
@@ -163,6 +257,8 @@ class WiringTests(Horizon):
         data = json.loads((ROOT / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
         self.assertIs(data["r04_sale_window"], False)
         self.assertEqual(data["r04_sale_horizon"], DEFAULT_HORIZON)
+        self.assertEqual(data["r04_open_roundtrip"], DEFAULT_OPENING)
+        self.assertIs(data["r04_row_order"], DEFAULT_ROW_ORDER)
         features = Features(**data)
         self.assertIs(features.r04_sale_window, False)
         self.assertEqual(features.r04_sale_horizon, DEFAULT_HORIZON)
@@ -176,12 +272,14 @@ class WiringTests(Horizon):
         self.assertEqual(agent.diagnostics["status"], "completed")
         self.assertEqual(agent.diagnostics["route"], "r04_sale_window")
         self.assertEqual(agent.diagnostics["sale_horizon"], DEFAULT_HORIZON)
+        self.assertEqual(agent.diagnostics["open_roundtrip"], DEFAULT_OPENING)
+        self.assertIs(agent.diagnostics["row_order"], DEFAULT_ROW_ORDER)
         self.assertFalse(agent.ready)
         self.assertIsNone(getattr(agent, "controller", None))
 
     def test_delegate_output_equals_the_published_agent(self):
         steps = list(range(0, 40)) + [143, 144, 145, 287, 288, 289, 300, 301, 647, 648, 700, 712, 717, r04.LAST_STEP]
-        direct = self.play(r04.agent, steps)
+        direct = self.play(r04.install(None, DEFAULT_HORIZON, DEFAULT_OPENING, DEFAULT_ROW_ORDER), steps)
         agent = TitanAgent(Features(r04_sale_window=True))
         delegated = self.play(lambda obs, cfg: agent.act(obs, cfg), steps)
         self.assertEqual(delegated, direct)

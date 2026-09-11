@@ -12,8 +12,8 @@
   },
   "archive": {
     "path": "dist/titan-v3.tar.gz (build product, not committed)",
-    "sha256": "35bb3b6fce4aaa6dcc0b9fa78b1d6c8a9da299bf8ddb7f99b0523ce4de60a6b0",
-    "bytes": 522866,
+    "sha256": "ef0abf2d0a1aa51fef7cb133b63249e8868dae61b0cf55567f2f53130120cd81",
+    "bytes": 525725,
     "files": 126
   },
   "keys": {
@@ -40,7 +40,9 @@
       "e20_min_unwatered_crops": 3,
       "g01_early_expander_step": 144,
       "g01_land_cash_floor": 0,
-      "r04_sale_horizon": 8
+      "r04_sale_horizon": 8,
+      "r04_open_roundtrip": 45,
+      "r04_row_order": true
     },
     "l01_land": {
       "default": false,
@@ -94,7 +96,7 @@
       "default": false,
       "seam": "TitanAgent.act first line: whole-route delegate, the canonical controller is never built",
       "module": "r04_full_router.py, r01_tapes.py",
-      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); takes precedence over R03 and R01"
+      "effect": "R03 policy with the E184 sale window outermost, horizon r04_sale_horizon (default 8); opening round trip r04_open_roundtrip (default 45); SELL row order r04_row_order (default true); takes precedence over R03 and R01"
     }
   },
   "lanes": [
@@ -251,7 +253,9 @@
       "id": "R04",
       "key": [
         "r04_sale_window",
-        "r04_sale_horizon"
+        "r04_sale_horizon",
+        "r04_open_roundtrip",
+        "r04_row_order"
       ],
       "status": "integrated",
       "lineage": [
@@ -264,8 +268,10 @@
         "r04_sale_horizon=8 (standalone composition): gluzdov_twocoins 16-0-0 +4262, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4365, prvsiyan_soil 16-0-0 +3453, berat_v33 16-0-0 +4113, ravi_v21mem 16-0-0 +42452, web3cainiao_v21 16-0-0 +53197, boatlee_v21 16-0-0 +26412, sokolovsky 16-0-0 +38318, tokenjunkielabs_v2 16-0-0 +7550, nusrati_2715 16-0-0 +6982, r04(horizon 3) 16-0-0 +3140, r04(horizon 4) 16-0-0 +2950, r04(horizon 6) 16-0-0 +3568",
         "r04_sale_horizon=4 (standalone composition): gluzdov_twocoins 16-0-0 +5151, gluzdov_twocoins(its sale_horizon setting 3) 16-0-0 +4891, prvsiyan_soil 16-0-0 +4349, berat_v33 16-0-0 +5012, ravi_v21mem 16-0-0 +43400, web3cainiao_v21 16-0-0 +53745, boatlee_v21 16-0-0 +26197, sokolovsky 16-0-0 +38957, tokenjunkielabs_v2 16-0-0 +8632, nusrati_2715 16-0-0 +8059, r04(horizon 3) 16-0-0 +3620",
         "private lineage tier: 49 recorded seats of 13 private agents that follow the public tapes (hands agreement with their best tape 458-719 of 719 steps; mtmr_s1, Yusuke Hayashi, insuperabilehart, Michael Shihong Zhang and nine others, rated about 2850-2960) from 48 hosted Kaggle episodes that the pinned engine reproduces exactly; each recorded seat plays open-loop on its own seed against the candidate in the other seat (recorded seats drift 0-3% from their recorded scores): gluzdov_twocoins 11-38, prvsiyan_soil 20-29, r04 horizon 4 24-25, horizon 6 27-22, horizon 8 32-17 (mean +3803), horizon 10 33-16, horizon 12 32-17, horizon 16 32-17",
-        "V3 tree with r04_sale_window on through the TITAN entrypoint versus the standalone composition: 16 of 16 games identical final scores at horizons 3, 4 and 8 each (prvsiyan_soil and gluzdov_twocoins, seeds 2611151001-004, both seats)",
-        "default horizon 8: top of the private-tier plateau (horizons 8-12) with the largest mean margin there, 16-0 against every public agent measured, and 16-0 head to head against horizons 3, 4 and 6; r04_sale_horizon stays a parameter",
+        "shipped defaults (r04_sale_horizon 8, r04_open_roundtrip 45, r04_row_order true), standalone composition: r04(h8 + row order) 16-0-0 +940, r04(h8 + opening 45) 16-0-0 +1882, r04(h8, published opening, no row order) 16-0-0 +2892, r04(h8 + opening 60) 16-0-0 +2863, prvsiyan_soil 16-0-0 +4931, gluzdov_twocoins 16-0-0 +7113, berat_v33 16-0-0 +8251",
+        "row order alone on horizon 8: r04(h8, published opening, no row order) 16-0-0 +1882, prvsiyan_soil 16-0-0 +3778, gluzdov_twocoins 16-0-0 +4654, berat_v33 16-0-0 +4496; against the 49 private lineage-tier seats 35-14 (horizon 8 without it 32-17), replay drift -1.2%",
+        "opening round trip on horizon 8 (the published opening is BUY 13, SELL 13, BUY 13): step-0 cash moved from a tape-opening rival is 26 coins at n=30/40, 39 at n=45/50, 52 at n=60/70, 65 at n=80; the rival's early purchases start failing between 26 and 39 coins short. Live, 8 seeds, both seats: n=45 16-0 vs the published opening (+941) and 16-0 vs n=60 (+911); n=60 16-0 vs the published opening (+1284); n=80/90 16-0 vs the published opening (+3096/+3687) but 0-16 vs n=60 and short of the 13 WHEAT at n>=80 against round-trippers. n=45 gives up at most 28 coins (to n=30 openers) and takes 37-39 from published and n=60 openers",
+        "V3 tree through the TITAN entrypoint versus the standalone composition: 32 of 32 games identical at the shipped defaults, and 16 of 16 at each of horizons 3, 4 and 8 without the opening or row order",
         "first-call setup through the TITAN entrypoint: 0.45 s on step 0, about 3 ms per later step (TITAN budget 1.0 s)"
       ]
     }
@@ -289,7 +295,7 @@
     "checks/test_v3_r01.py": "5f708e0e0fa722a55652440ca88c413c0340cd771c3cd43892e10e23fb679edd",
     "checks/test_v3_r02.py": "f8910905e259d9e1b775fc343ff192f3e0bf52772bfcb60abbbecd83acda1ddf",
     "checks/test_v3_r03.py": "67ea6def3e34f6508ec55889f4fd9a41d1877c436fe65331e47981da487e8422",
-    "checks/test_v3_r04.py": "512b78273a5f726c21ebb4da972ca45f79fe4de5e6d2ebdef0501d6bec9bbf2f",
+    "checks/test_v3_r04.py": "77c6d23ee3a37a1f136e4d171b8d0d43060723419dca66f999262547e6168487",
     "e11_rival_sell.py": "0871703888bfd128a9118c0fd59fa6c6a7b4ce509d22d803b97255622bff4816",
     "e20_hire_guard.py": "3d841b271bd735d4edecfc05be31753bd94f5a5fcfb37e0fea24df4eeb7372ea",
     "l01_mechanics.py": "65fc1841f6d00b6db78e2eb88d98e9e7b05053502e0de527bce1f1a60fbe9691",
@@ -297,9 +303,9 @@
     "r01_tapes.py": "4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18",
     "r02_route_bank.py": "c7904b40a5ebc21a2728314d0603678807784339cc13e420d45218d043cdd962",
     "r03_full_router.py": "605ae5c1b5b14a60ffdbc19a6e4d4a9691f3b2b28860c10782642a658b28b15c",
-    "r04_full_router.py": "62de51a077bca8b5a38fabd6b55c20288fc72abcaf2f646bce15f8faa25df073",
+    "r04_full_router.py": "b2c0294a6dd443366fe0adc9c65b132d0a98e93a4aeaeb6ddb6c788666644487",
     "rival_model.py": "0329fbf5d707781ed385d5bb309a89d7340271fb8368c7ef01ba52a312066f25",
     "shop_arb.py": "135b67dd9d0ecc6cc66deabf275ac5e598054cdcf8ce1295ce666dc1860e8655",
-    "apply_v3.py": "39861f722719d174d8b216251bf4f28429d21f0874b79c6924ef190a763dbfb1"
+    "apply_v3.py": "24ef971fe6d46af19ad1fe9daacaf12dbe6211646b71b6192ba0c0c6b33e3714"
   }
 }
