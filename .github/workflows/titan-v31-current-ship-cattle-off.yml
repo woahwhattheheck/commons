@@ -1,0 +1,126 @@
+name: TITAN V3.1 current-ship cattle-off
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_make_submission_config.py'
+      - '.github/workflows/titan-v31-current-ship-cattle-off.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  field-gated-submission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind shipped V3.1 parent and exact child scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED_HEAD='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git cat-file -t "$BASE")" = commit
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+
+          git diff --name-only "$BASE"...HEAD > /tmp/current-cattle-off-paths.txt
+          python - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/current-cattle-off-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-current-ship-cattle-off.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/make_submission.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/tooling_tests/test_make_submission_config.py',
+          }
+          assert actual == expected, (sorted(actual), sorted(expected))
+          print('CURRENT SHIP CATTLE-OFF SCOPE OK', len(actual))
+          PY
+
+      - name: Pin shipped H4 and rival-gated L3 source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          V3=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          test "$(git rev-parse HEAD:$V3/apply_v3.py)" = 7a96c0f1d38fff674493e92bc420eb3dfe821f20
+          test "$(git rev-parse HEAD:$V3/overlay/r04_full_router.py)" = d797ecd6068dc714d2ba45d44c2d672842116c7b
+          test "$(git rev-parse HEAD:$V3/overlay/r04_h4_strawberry.py)" = d6e3ffb76856ff171dab2a45b4d3c1788f2b2cb8
+          test "$(git rev-parse HEAD:$V3/overlay/r04_no_late_sale_advance.py)" = fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0
+
+      - name: Prove shipped deterministic package is unchanged
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B build_v3.py --check
+
+      - name: Run current-package submission predecessors
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest -v tooling_tests/test_make_submission_config.py
+          python -B -m py_compile make_submission.py tooling_tests/test_make_submission_config.py
+
+      - name: Prove only TITAN-CONFIG changes and shipped lanes survive
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import json
+          import build_v3
+          import make_submission
+
+          base = build_v3.package_files()
+          changed, config = make_submission.apply_submission_config(base)
+          differing = sorted(name for name in base if base[name] != changed[name])
+          assert differing == ['TITAN-CONFIG.json'], differing
+          assert set(base) == set(changed)
+          before = json.loads(base['TITAN-CONFIG.json'])
+          after = json.loads(changed['TITAN-CONFIG.json'])
+          assert after == config
+
+          expected_changes = {
+              'r04_sale_window': True,
+              'r04_sale_horizon': 8,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': False,
+          }
+          for key, value in expected_changes.items():
+              assert after[key] == value, (key, after[key], value)
+
+          assert before['r04_strawberry_topup'] is True
+          assert after['r04_strawberry_topup'] is True
+          assert before['r04_no_late_sale_advance'] is True
+          assert after['r04_no_late_sale_advance'] is True
+          assert after['r04_no_late_sale_advance_step'] == before['r04_no_late_sale_advance_step'] == 648
+
+          unchanged = set(before) - set(expected_changes)
+          for key in unchanged:
+              assert after[key] == before[key], (key, before[key], after[key])
+
+          print('CURRENT SHIP SUBMISSION TUPLE OK', {
+              'r04_sale_window': after['r04_sale_window'],
+              'r04_sale_horizon': after['r04_sale_horizon'],
+              'r04_sale_fertilizer': after['r04_sale_fertilizer'],
+              'r04_cattle_early': after['r04_cattle_early'],
+              'r04_no_late_sale_advance': after['r04_no_late_sale_advance'],
+              'r04_strawberry_topup': after['r04_strawberry_topup'],
+          })
+          PY
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check 'a6120d0ea1bdb75eb0da2239220efce551f624a6'...HEAD
+          test -z "$(git status --porcelain)"
