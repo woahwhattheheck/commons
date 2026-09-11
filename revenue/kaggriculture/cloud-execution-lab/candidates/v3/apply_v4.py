@@ -1,6 +1,6 @@
 """Apply V4 key plumbing after the frozen V3.1 integration.
 
-V3.1 source is the submitted baseline.  V4 lanes add exact-string edits in this
+V3.1 source is the submitted baseline. V4 lanes add exact-string edits in this
 small follow-on layer so the V3.1 integration recipe remains an immutable receipt.
 Every edit is asserted to match exactly once.
 """
@@ -52,12 +52,40 @@ def apply(src):
         "    if GOOSE_PASS_RESCUE:\n"
         "        import r04_goose_pass_rescue\n"
         "        action = r04_goose_pass_rescue.apply_goose_pass_rescue(\n"
-        "            action, observation, configuration, enabled=True)\n"
+        "            action, observation, configuration, enabled=True)\n",
+        "R04 V4 stack seams",
+    )
+    # H3e must see the whole reconstructed actor surface. _v3_core() is where
+    # r04_fert_hand removes its hidden hand from the parent view and reinserts
+    # that hand's command afterward, so an H3e call inside _v3_stack() cannot
+    # prove stacked-actor safety. Keep it in the outer v3_agent() wrapper.
+    router = _replace_once(
+        router,
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE):\n"
+        "        return _v3_core(observation, configuration)\n",
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or COW_FEED_RECYCLE):\n"
+        "        return _v3_core(observation, configuration)\n",
+        "R04 V4 H3e outer fast path",
+    )
+    router = _replace_once(
+        router,
+        "    if GOOSE_RESCUE:\n"
+        "        import h3c_goose_eod_cap_rescue\n"
+        "        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,\n"
+        "                                                                     enabled=True)\n"
+        "    return action\n\n\n"
+        "def install(",
+        "    if GOOSE_RESCUE:\n"
+        "        import h3c_goose_eod_cap_rescue\n"
+        "        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,\n"
+        "                                                                     enabled=True)\n"
         "    if COW_FEED_RECYCLE:\n"
         "        import r04_h3e_cow_feed_recycle\n"
         "        action = r04_h3e_cow_feed_recycle.apply_cow_feed_recycle(\n"
-        "            action, observation, configuration, enabled=True)\n",
-        "R04 V4 stack seams",
+        "            action, observation, configuration, enabled=True)\n"
+        "    return action\n\n\n"
+        "def install(",
+        "R04 V4 H3e outer seam",
     )
     router = _replace_once(
         router,
@@ -74,7 +102,8 @@ def apply(src):
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
-        "    cow_feed_recycle turns only provably dead hour-23 COW service into same-tile FEED.\n",
+        "    cow_feed_recycle runs around the reconstructed whole agent and turns only provably dead\n"
+        "    hour-23 COW service into same-tile FEED.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
