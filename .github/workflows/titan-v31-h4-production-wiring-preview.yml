@@ -1,0 +1,42 @@
+name: titan-v31-h4-production-wiring-preview
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_production_wiring_prep/**'
+      - '.github/workflows/titan-v31-h4-production-wiring-preview.yml'
+  push:
+    branches:
+      - 'astra/v31-h4-production-wiring-prep-20260911'
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_production_wiring_prep/**'
+      - '.github/workflows/titan-v31-h4-production-wiring-preview.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Focused non-mutating wiring-preview tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_production_wiring_prep
+        run: python -B -m unittest -v test_preview.py
+      - name: Materialize prospective wiring out of tree
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h4_production_wiring_prep
+        run: |
+          rm -rf /tmp/titan-v31-h4-wiring-preview
+          python -B preview.py --out /tmp/titan-v31-h4-wiring-preview | tee /tmp/h4-wiring-preview.log
+          grep -F 'source_r04_blob=21c4f1db0298f8955b1f5ad366bd780a89cad206' /tmp/h4-wiring-preview.log
+          grep -F 'source_h4_donor_blob=ecad11eb195a82273f73b78ac7b319552a27cbcd' /tmp/h4-wiring-preview.log
+          grep -F 'preview_h4_overlay_blob=ecad11eb195a82273f73b78ac7b319552a27cbcd' /tmp/h4-wiring-preview.log
+          grep -F 'H4_PRODUCTION_WIRING_PREVIEW_OK' /tmp/h4-wiring-preview.log
+      - name: Prove repository checkout stayed clean
+        run: test -z "$(git status --porcelain)"
