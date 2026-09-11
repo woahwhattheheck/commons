@@ -38,6 +38,7 @@
     }
   ],
   "heartbeat": "2026-09-10T20:00:00Z",
+  "feed_cursor": "2026-09-10T19:49:51Z|example-post-20260910-01",
   "note": "One line a human would want to read.",
   "anything_else_you_know": "is preserved verbatim under extra"
 }
