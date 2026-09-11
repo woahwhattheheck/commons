@@ -6,6 +6,7 @@ on:
       - '.github/workflows/titan-v3-post-unit-seed-demand.yml'
       - '.github/workflows/titan-v3-early-capital-real-target.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/early_capital.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'
   workflow_dispatch:
@@ -60,6 +61,7 @@ jobs:
               '.github/workflows/titan-v3-post-unit-seed-demand.yml',
               '.github/workflows/titan-v3-early-capital-real-target.yml',
               source,
+              'revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py',
               'revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py',
           }
@@ -136,6 +138,7 @@ jobs:
               Path('.github/workflows/titan-v3-post-unit-seed-demand.yml'),
               Path('.github/workflows/titan-v3-early-capital-real-target.yml'),
               Path('revenue/kaggriculture/cloud-execution-lab/early_capital.py'),
+              Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_post_unit_seed_demand.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_real_target.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/test_early_capital_commit_real.py'),
               Path('revenue/kaggriculture/cloud-execution-lab/mechanics.py'),
