@@ -11,6 +11,10 @@ sys.path.insert(0, str(HERE))
 import audit_b5_fertilizer as audit  # noqa: E402
 
 
+def _row(op="WATER"):
+    return {"farmer": [op], "hands": [], "market": []}
+
+
 class B5FertilizerTapeAuditTests(unittest.TestCase):
     def test_fake_census_counts_only_present_worker_slots(self):
         tape = [
@@ -26,13 +30,13 @@ class B5FertilizerTapeAuditTests(unittest.TestCase):
         self.assertEqual(report["global_unit_counts"]["FERTILIZE"], 1)
         self.assertEqual(report["global_unit_counts"]["WATER"], 1)
         self.assertEqual(report["global_unit_counts"]["COLLECT_FERTILIZER"], 1)
-        # Main farmer PASS at step 0 + hand PASS at step 1.  The absent hand at
+        # Main farmer PASS at step 0 + hand PASS at step 1. The absent hand at
         # step 0 is not an actor and must not be counted as idle capacity.
         self.assertEqual(report["global_unit_counts"]["PASS"], 2)
         self.assertEqual(report["global_fertilizer_market_counts"]["BUY_PRODUCT:FERTILIZER"], 1)
         self.assertEqual(report["global_fertilizer_market_counts"]["SELL:FERTILIZER"], 1)
 
-    def test_idle_streak_requires_six_literal_pass_rows(self):
+    def test_idle_streak_requires_six_literal_same_day_pass_rows(self):
         short = [{"farmer": ["PASS"], "market": []} for _ in range(5)]
         long = [{"farmer": ["PASS"], "market": []} for _ in range(6)]
         a = audit.audit_tapes([short])["routes"][0]["idle_streaks_ge_6"]
@@ -46,6 +50,44 @@ class B5FertilizerTapeAuditTests(unittest.TestCase):
             "start_day": 0,
             "end_day": 0,
         }])
+
+    def test_idle_streak_never_stitches_partial_days_across_midnight(self):
+        for before, after in ((5, 1), (2, 4), (3, 3)):
+            with self.subTest(before=before, after=after):
+                tape = [_row() for _ in range(30)]
+                for step in range(24 - before, 24):
+                    tape[step] = _row("PASS")
+                for step in range(24, 24 + after):
+                    tape[step] = _row("PASS")
+                streaks = audit.audit_tapes([tape])["routes"][0]["idle_streaks_ge_6"]
+                self.assertEqual(streaks, [])
+
+    def test_six_passes_after_midnight_remain_a_valid_same_day_window(self):
+        tape = [_row() for _ in range(30)]
+        for step in range(24, 30):
+            tape[step] = _row("PASS")
+        streaks = audit.audit_tapes([tape])["routes"][0]["idle_streaks_ge_6"]
+        self.assertEqual(streaks, [{
+            "worker": 0,
+            "start_step": 24,
+            "end_step": 29,
+            "length": 6,
+            "start_day": 1,
+            "end_day": 1,
+        }])
+
+    def test_empty_or_missing_worker_action_never_manufactures_pass_capacity(self):
+        empty = [{"farmer": [], "hands": [], "market": []} for _ in range(6)]
+        missing = [{"hands": [], "market": []} for _ in range(6)]
+        for tape in (empty, missing):
+            report = audit.audit_tapes([tape])
+            self.assertEqual(report["routes"][0]["idle_streaks_ge_6"], [])
+            self.assertEqual(report["global_unit_counts"].get("PASS", 0), 0)
+            self.assertEqual(report["global_unit_counts"]["MALFORMED"], 6)
+
+    def test_malformed_hands_fail_closed_instead_of_disappearing(self):
+        with self.assertRaisesRegex(TypeError, "row.hands"):
+            audit.audit_tapes([[{"farmer": ["PASS"], "hands": {}, "market": []}]])
 
     def test_non_object_route_row_fails_closed(self):
         with self.assertRaises(TypeError):
