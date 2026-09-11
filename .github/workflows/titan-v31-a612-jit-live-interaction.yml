@@ -1,0 +1,181 @@
+name: TITAN V3.1 a612 JIT live interaction
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v31-a612-jit-live-interaction.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: titan-v31-a612-jit-live-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-live-interaction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Bind a612 ancestry, exact evidence scope, and reviewed producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          EXPECTED='${{ github.event.pull_request.head.sha || github.sha }}'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          TAPE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_tapes.py'
+          JIT='revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit/jit_pass_fertilize.py'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git hash-object "$R04")" = 'd797ecd6068dc714d2ba45d44c2d672842116c7b'
+          test "$(git hash-object "$TAPE")" = 'a43289b9cc5e34a2481fddf652762a7d92f427ef'
+          test "$(git hash-object "$JIT")" = '6ef7ddcd9590e3cb3f55ceb708b8026235d59410'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          python3 -B - <<'PY'
+          import subprocess
+          base = 'a6120d0ea1bdb75eb0da2239220efce551f624a6'
+          expected = {
+              '.github/workflows/titan-v31-a612-jit-live-interaction.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/README.md',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/report.py',
+          }
+          actual = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}...HEAD'], text=True
+          ).splitlines())
+          if actual != expected:
+              raise SystemExit(f'wrong a612 JIT evidence scope: {sorted(actual)!r}')
+          PY
+          git diff --check "$BASE...HEAD"
+
+      - name: Bind exact shipped tuple and helper predecessors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import sys
+          from pathlib import Path
+          v3 = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3').resolve()
+          sys.path.insert(0, str(v3))
+          import apply_v3
+          expected = {
+              'r04_sale_horizon': 8,
+              'r04_open_roundtrip': 0,
+              'r04_row_order': True,
+              'r04_evening_flush': True,
+              'r04_sale_fertilizer': True,
+              'r04_cattle_early': True,
+              'r04_kill_late_water': False,
+              'r04_strawberry_endgame': False,
+              'r04_strawberry_max_plants': 8,
+              'r04_no_late_sale_advance': True,
+              'r04_no_late_sale_advance_step': 648,
+              'r04_strawberry_topup': True,
+          }
+          for key, value in expected.items():
+              actual = apply_v3.PARAMS[key]
+              assert type(actual) is type(value) and actual == value, (key, actual, value)
+          for name in (
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/report.py',
+          ):
+              compile(Path(name).read_text(encoding='utf-8'), name, 'exec')
+          print('A612 TUPLE + EVIDENCE COMPILE OK')
+          PY
+          cd revenue/kaggriculture/cloud-execution-lab/analysis/v31-b5-fertilizer-jit
+          python3 -B -m unittest -v test_jit_pass_fertilize.py
+          cd - >/dev/null
+          test -z "$(git status --porcelain)"
+
+      - name: Prepare pinned official interpreter
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py \
+            --prepare-engine /tmp/kag-engine
+
+      - name: Run exact shipped a612 control
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/baseline.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$BASE" \
+            --opponent "a612=$BASE" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/a612-control.json
+
+      - name: Run exact reviewed JIT wrapper on shipped a612
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASE='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/baseline.py'
+          JIT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/candidate.py'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$JIT" \
+            --opponent "a612=$BASE" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/a612-jit.json
+
+      - name: Reduce paired live interaction receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/a612_jit_live_interaction/report.py \
+            /tmp/a612-control.json /tmp/a612-jit.json \
+            --json-out /tmp/a612-jit-report.json \
+            --markdown-out /tmp/a612-jit-report.md
+          cat /tmp/a612-jit-report.md
+          cat /tmp/a612-jit-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: a612-jit-live-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/a612-control.json
+            /tmp/a612-jit.json
+            /tmp/a612-jit-report.json
+            /tmp/a612-jit-report.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/a612-jit-report.md
+          } > /tmp/comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
