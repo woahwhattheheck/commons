@@ -86,6 +86,18 @@ class PlaceDelivery(unittest.TestCase):
                           inventories=[{"CARROT": 5, "WOOL": 5}, {}])
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_overflow_multi_product_drop_fails_closed_to_parent(self):
+        # Baseline farmer DROP admits both products and fills all ten free shed
+        # slots before the hand's final unit is discarded. A one-product PLACE
+        # rewrite would otherwise underfill the shed and lose terminal value.
+        parent = action(["DROP"], [["DROP"]])
+        obs = observation(
+            shed={"WHEAT": 90},
+            inventories=[{"WOOL": 5, "CARROT": 5}, {"WHEAT": 1}],
+            prices={"WOOL": 100, "CARROT": 10, "WHEAT": 5},
+        )
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_overflow_becomes_bounded_place_and_preserves_excess_cargo(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
