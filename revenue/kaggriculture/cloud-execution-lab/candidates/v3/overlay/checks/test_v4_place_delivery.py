@@ -128,6 +128,12 @@ class PlaceDelivery(unittest.TestCase):
         obs["private"]["shed"]["WHEAT"] = "98"
         self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
 
+    def test_malformed_touched_price_fails_closed_to_exact_parent(self):
+        parent = action(["DROP"], [["PASS"]])
+        obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}],
+                          prices={"CARROT": "30"})
+        self.assertIs(lane.apply_place_delivery(obs, parent, enabled=True), parent)
+
     def test_farm_view_failure_fails_closed_to_exact_parent(self):
         parent = action(["DROP"], [["PASS"]])
         obs = observation(shed={"WHEAT": 98}, inventories=[{"CARROT": 5}, {}])
