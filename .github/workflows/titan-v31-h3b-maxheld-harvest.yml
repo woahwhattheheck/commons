@@ -56,5 +56,13 @@ jobs:
 
       - name: Prove clean checkout
         run: |
-          find . -type d -name __pycache__ -prune -exec rm -rf {} +
-          test -z "$(git status --short)"
+          set -euo pipefail
+          EXPERIMENT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest'
+          # Repo tracks muhl/desktop/**/__pycache__/*.pyc. A root-tree find deletes
+          # those blobs and fails this step with a silent dirty checkout.
+          find "$EXPERIMENT" -type d -name __pycache__ -prune -exec rm -rf {} +
+          while IFS= read -r path; do
+            test -e "$path" || { printf 'deleted tracked bytecode: %s\n' "$path"; exit 1; }
+          done < <(git ls-files | grep -E '__pycache__|\.pyc$' || true)
+          dirty="$(git status --short)"
+          test -z "$dirty" || { printf 'dirty checkout:\n%s\n' "$dirty"; exit 1; }

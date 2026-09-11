@@ -193,6 +193,52 @@ class H3bContracts(unittest.TestCase):
         self.assertEqual(action, before)
         self.assertNotEqual(result, before)
 
+    def test_workflow_cleanup_does_not_use_repo_root_pycache_find(self):
+        repo = HERE.parents[6]
+        text = (repo / ".github/workflows/titan-v31-h3b-maxheld-harvest.yml").read_text(encoding="utf-8")
+        self.assertNotRegex(text, r"find \. -type d -name __pycache__")
+        self.assertIn(
+            "EXPERIMENT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest'",
+            text,
+        )
+        self.assertIn('find "$EXPERIMENT" -type d -name __pycache__', text)
+        self.assertIn("deleted tracked bytecode:", text)
+
+    def test_experiment_scoped_pycache_cleanup_preserves_foreign_bytecode(self):
+        import subprocess
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            experiment = root / "revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3b_maxheld_harvest"
+            foreign = root / "muhl/desktop/MUHLNICKEL_HARNESSES/__pycache__"
+            experiment.mkdir(parents=True)
+            foreign.mkdir(parents=True)
+            (experiment / "__pycache__").mkdir()
+            (experiment / "__pycache__" / "drop.pyc").write_bytes(b"x")
+            tracked = foreign / "muhlop_operator.cpython-312.pyc"
+            tracked.write_bytes(b"keep")
+            subprocess.check_call(
+                [
+                    "find",
+                    str(experiment),
+                    "-type",
+                    "d",
+                    "-name",
+                    "__pycache__",
+                    "-prune",
+                    "-exec",
+                    "rm",
+                    "-rf",
+                    "{}",
+                    "+",
+                ],
+                cwd=root,
+            )
+            self.assertTrue(tracked.is_file())
+            self.assertEqual(tracked.read_bytes(), b"keep")
+            self.assertFalse((experiment / "__pycache__").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
