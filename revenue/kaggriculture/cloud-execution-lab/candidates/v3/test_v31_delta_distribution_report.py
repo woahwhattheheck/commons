@@ -125,6 +125,18 @@ class DeltaDistributionReportTests(unittest.TestCase):
         self.assertEqual(report["delta_m"]["mean"], 20.0)
         self.assertEqual(report["by_seat"]["1"]["mean_delta_m"], 20.0)
 
+    def test_paired_flat_score_vectors_are_player_ordered_for_seat1(self):
+        record = {
+            "opponent": "official",
+            "seed": 99,
+            "candidate_seat": 1,
+            "baseline_scores": [90, 100],
+            "candidate_scores": [90, 120],
+        }
+        report = reporter.analyze([record])
+        self.assertEqual(report["delta_m"]["mean"], 20.0)
+        self.assertEqual(report["by_seat"]["1"]["mean_delta_m"], 20.0)
+
     def test_conflicting_aliases_and_score_forms_fail_closed(self):
         with self.assertRaisesRegex(reporter.DataError, "conflicting seat aliases"):
             reporter.analyze(
@@ -164,6 +176,37 @@ class DeltaDistributionReportTests(unittest.TestCase):
                         "candidate": {"own": 11, "rival": 9},
                     }
                 ]
+            )
+
+    def test_evidence_schema_families_fail_closed_instead_of_shadowing(self):
+        arm_document = {
+            "baseline": [{"opponent": "a", "seed": 1, "seat": 0, "own": 10, "rival": 9}],
+            "candidate": [{"opponent": "a", "seed": 1, "seat": 0, "own": 11, "rival": 9}],
+        }
+        conflicting_cells = [cell("b", 2, 0, (5, 4), (6, 4))]
+        mixed = dict(arm_document)
+        mixed["cells"] = conflicting_cells
+        with self.assertRaisesRegex(reporter.DataError, "mixed evidence schema families"):
+            reporter.load_records(mixed)
+
+        malformed_arm_plus_cells = {
+            "baseline": {},
+            "candidate": arm_document["candidate"],
+            "cells": conflicting_cells,
+        }
+        with self.assertRaisesRegex(reporter.DataError, "mixed evidence schema families"):
+            reporter.load_records(malformed_arm_plus_cells)
+
+        with self.assertRaisesRegex(reporter.DataError, "baseline and candidate arms must both be lists"):
+            reporter.load_records({"baseline": {}, "candidate": []})
+
+    def test_duplicate_record_container_aliases_compare_json_types_strictly(self):
+        with self.assertRaisesRegex(reporter.DataError, "conflicting evidence-container aliases"):
+            reporter.load_records(
+                {
+                    "cells": [{"sentinel": True}],
+                    "results": [{"sentinel": 1}],
+                }
             )
 
     def test_consistent_aliases_are_allowed(self):
