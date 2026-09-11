@@ -1,0 +1,70 @@
+name: astra outcome-commerce pr12338 current-main refresh
+
+on:
+  push:
+    branches:
+      - sol-astra/outcome-commerce-pr12338-main1f40-refresh-20260911
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - name: Compose fresh main and patch only the two reviewed pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "commons-astra"
+          git config user.email "commons-astra@users.noreply.github.com"
+          git fetch origin main
+          git merge --no-edit origin/main
+
+          test "$(git hash-object revenue/production_survival/offer.json)" = "830e8e9a3ddae95799142eba6bcbd03f85eb4787"
+          test "$(git hash-object commercial.json)" = "6ddccf56cbcf0768f57b902cadb8aeef96cdd43c"
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("revenue/outcome_commerce/catalog.json")
+          before = path.read_text(encoding="utf-8")
+          pairs = [
+              (
+                  "84b664c07d0677a92c8e79797f80ebde823da447",
+                  "830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+              ),
+              (
+                  "30ecdec61d19f005330f75ae239ca469482ff06a",
+                  "6ddccf56cbcf0768f57b902cadb8aeef96cdd43c",
+              ),
+          ]
+          after = before
+          for old, new in pairs:
+              if before.count(old) != 1:
+                  raise SystemExit(f"expected exactly one old pin {old}, got {before.count(old)}")
+              if before.count(new) != 0:
+                  raise SystemExit(f"new pin already present unexpectedly: {new}")
+              after = after.replace(old, new)
+          json.loads(after)
+          if len(after) != len(before):
+              raise SystemExit("pin replacement changed byte length")
+          path.write_text(after, encoding="utf-8", newline="")
+          PY
+
+          rm .github/workflows/astra-outcome-commerce-pr12338-refresh.yml
+          git add revenue/outcome_commerce/catalog.json .github/workflows/astra-outcome-commerce-pr12338-refresh.yml
+          git diff --cached --check
+          git commit -m "fix(commerce): refresh two source authority pins on current main"
+
+          mapfile -t paths < <(git diff --name-only origin/main...HEAD)
+          test "${#paths[@]}" -eq 1
+          test "${paths[0]}" = "revenue/outcome_commerce/catalog.json"
+          test "$(git diff --numstat origin/main...HEAD -- revenue/outcome_commerce/catalog.json)" = $'2\t2\trevenue/outcome_commerce/catalog.json'
+          git diff --unified=0 origin/main...HEAD -- revenue/outcome_commerce/catalog.json
+          git push origin "HEAD:${{ github.ref_name }}"
