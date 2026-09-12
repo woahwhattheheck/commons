@@ -71,6 +71,16 @@ class Tests(unittest.TestCase):
         with self.assertRaisesRegex(G.ChampionError, "margin"):
             G.validate_report(x)
 
+    def test_margin_can_improve_every_cell_while_own_score_loses_and_must_reject(self):
+        x = report()
+        for c in x["cells"]:
+            c["candidate_own"] = c["champion_own"] - 1
+            c["candidate_rival"] = c["champion_rival"] - 100
+            c["incumbent_own"] = c["champion_own"] - 2
+            c["incumbent_rival"] = c["champion_rival"]
+        with self.assertRaisesRegex(G.ChampionError, "strictly beat V3.1"):
+            G.validate_report(x)
+
     def test_new_loss_fails(self):
         x = report()
         c = x["cells"][0]
