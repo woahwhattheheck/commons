@@ -1,8 +1,10 @@
 """Benchmark against the pinned unmodified official game interpreter.
 
-Fetches only three public source files to a temporary directory. No Kaggle
-login/data downloads/package dependencies; no private opponent information
-is given to agents. This driver is not the hosted Kaggle runner.
+Fetches only three public source files to a cache. Every engine load single-reads
+and Git-blob-authenticates those files, then executes only a private snapshot of
+the captured bytes. No Kaggle login/data downloads/package dependencies; no
+private opponent information is given to agents. This driver is not the hosted
+Kaggle runner.
 """
 from __future__ import annotations
 import argparse
@@ -23,6 +25,18 @@ from typing import Any, Callable
 
 ENGINE_REF = "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c"
 RAW = "https://raw.githubusercontent.com/Kaggle/kaggle-environments/" + ENGINE_REF
+ENGINE_FILES = {
+    "kaggriculture.py": "kaggle_environments/envs/kaggriculture/kaggriculture.py",
+    "kaggriculture.json": "kaggle_environments/envs/kaggriculture/kaggriculture.json",
+    "utils.py": "kaggle_environments/utils.py",
+}
+ENGINE_BLOBS = {
+    "kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+    "kaggriculture.json": "b354d06b742fe48402513792253f1a5c29366b20",
+    "utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87",
+}
+
+
 class Struct(dict):
     def __getattr__(self, key):
         try: return self[key]
@@ -30,35 +44,127 @@ class Struct(dict):
     def __setattr__(self, key, value): self[key] = value
 
 
-def get_engine(cache):
+def git_blob_bytes(raw: bytes) -> str:
+    if type(raw) is not bytes:
+        raise TypeError("engine source must be bytes")
+    return hashlib.sha1(
+        b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw
+    ).hexdigest()
+
+
+def _capture_engine_file(path: Path, expected_blob: str) -> bytes:
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"Official engine authority must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = git_blob_bytes(raw)
+    if actual != expected_blob:
+        raise ValueError(
+            f"Official engine source mismatch: {path.name}; "
+            f"expected blob {expected_blob}, got {actual}"
+        )
+    return raw
+
+
+def capture_engine_sources(cache):
+    """Single-read the three official sources and authenticate exactly those bytes."""
     root = Path(cache)
     root.mkdir(parents=True, exist_ok=True)
-    files = {
-        "kaggriculture.py": "kaggle_environments/envs/kaggriculture/kaggriculture.py",
-        "kaggriculture.json": "kaggle_environments/envs/kaggriculture/kaggriculture.json",
-        "utils.py": "kaggle_environments/utils.py",
-    }
+    captured = {}
     hashes = {}
-    for name, path in files.items():
+    for name, source_path in ENGINE_FILES.items():
         local = root / name
         if not local.exists():
-            with urllib.request.urlopen(RAW + "/" + path, timeout=60) as response:
-                local.write_bytes(response.read())
-        hashes[name] = hashlib.sha256(local.read_bytes()).hexdigest()
-    # Compile the actual upstream seed helper instead of substituting its logic.
-    parsed = ast.parse((root/"utils.py").read_text())
-    helper = next(n for n in parsed.body if isinstance(n, ast.FunctionDef) and n.name=="resolve_episode_seed")
-    namespace = {"Any":Any,"Callable":Callable,"random":random}
-    exec(compile(ast.Module(body=[helper],type_ignores=[]),"upstream_seed_helper","exec"),namespace)
-    package = types.ModuleType("kaggle_environments")
-    utils = types.ModuleType("kaggle_environments.utils")
-    utils.resolve_episode_seed = namespace["resolve_episode_seed"]
-    sys.modules["kaggle_environments"] = package
-    sys.modules["kaggle_environments.utils"] = utils
-    spec = importlib.util.spec_from_file_location("official_kaggriculture", root/"kaggriculture.py")
-    engine = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(engine)
-    return engine, hashes
+            if local.is_symlink():
+                raise ValueError(
+                    f"Official engine authority must not be a dangling symlink: {local}"
+                )
+            with urllib.request.urlopen(RAW + "/" + source_path, timeout=60) as response:
+                downloaded = response.read()
+            actual = git_blob_bytes(downloaded)
+            expected = ENGINE_BLOBS[name]
+            if actual != expected:
+                raise ValueError(
+                    f"Downloaded official engine source mismatch: {name}; "
+                    f"expected blob {expected}, got {actual}"
+                )
+            # Fail rather than following/replacing a path that appeared after our
+            # existence check. A retry may then authenticate the winning file.
+            with local.open("xb") as stream:
+                stream.write(downloaded)
+        raw = _capture_engine_file(local, ENGINE_BLOBS[name])
+        captured[name] = raw
+        hashes[name] = hashlib.sha256(raw).hexdigest()
+    return captured, hashes
+
+
+def private_engine_snapshot(captured: dict[str, bytes]):
+    """Publish authenticated captured engine bytes into a fresh private snapshot."""
+    if set(captured) != set(ENGINE_FILES):
+        raise ValueError("Captured engine member set is incomplete or unexpected")
+    temporary = tempfile.TemporaryDirectory(prefix="kaggriculture-engine-captured-")
+    root = Path(temporary.name)
+    try:
+        for name in ENGINE_FILES:
+            raw = captured[name]
+            if type(raw) is not bytes or git_blob_bytes(raw) != ENGINE_BLOBS[name]:
+                raise ValueError(f"Captured official engine bytes drifted: {name}")
+            target = root / name
+            with target.open("xb") as stream:
+                stream.write(raw)
+            if target.is_symlink() or not target.is_file() or target.read_bytes() != raw:
+                raise ValueError(f"Private official engine publication drifted: {name}")
+        return temporary, root
+    except BaseException:
+        temporary.cleanup()
+        raise
+
+
+def get_engine(cache):
+    """Load the pinned interpreter only from one authenticated private byte snapshot."""
+    captured, hashes = capture_engine_sources(cache)
+    custody, root = private_engine_snapshot(captured)
+    try:
+        # Compile the actual upstream seed helper instead of substituting its logic.
+        parsed = ast.parse(captured["utils.py"].decode("utf-8"))
+        helper = next(
+            n for n in parsed.body
+            if isinstance(n, ast.FunctionDef) and n.name == "resolve_episode_seed"
+        )
+        namespace = {"Any": Any, "Callable": Callable, "random": random}
+        exec(
+            compile(
+                ast.Module(body=[helper], type_ignores=[]),
+                "upstream_seed_helper",
+                "exec",
+            ),
+            namespace,
+        )
+        package = types.ModuleType("kaggle_environments")
+        utils = types.ModuleType("kaggle_environments.utils")
+        utils.resolve_episode_seed = namespace["resolve_episode_seed"]
+        sys.modules["kaggle_environments"] = package
+        sys.modules["kaggle_environments.utils"] = utils
+
+        # The engine reads kaggriculture.json via __file__; both code and JSON are
+        # the authenticated private copies, never the caller-visible cache.
+        spec = importlib.util.spec_from_file_location(
+            "official_kaggriculture", root / "kaggriculture.py"
+        )
+        if spec is None or spec.loader is None:
+            raise ValueError("Cannot construct pinned official engine module")
+        engine = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(engine)
+
+        # Keep the private source tree alive for the lifetime of the loaded engine.
+        # This prevents later code from resolving engine.__file__ into a deleted
+        # directory and makes the custody boundary explicit for diagnostics.
+        engine._engine_source_custody = custody
+        engine._engine_source_sha256 = dict(hashes)
+        return engine, hashes
+    except BaseException:
+        custody.cleanup()
+        raise
 
 
 def load_agent(path, overrides=None):
