@@ -71,7 +71,10 @@ class FakeEngine:
                         continue
                     private["shed"][item] -= 1
                     states[0].observation.farms[player]["money"] += price
-                    states[0].observation.market["inventory"][item] += 1
+                    # Official engine: a SELL quoted at the $1 floor does not
+                    # increase public supply. Mirror that edge exactly.
+                    if price > 1:
+                        states[0].observation.market["inventory"][item] += 1
                     orders[player]["remaining"] -= 1
                     committed = True
                 if not committed:
@@ -115,6 +118,13 @@ class CosellOracleTests(unittest.TestCase):
         rows = m.collision_curve(FakeEngine, item="WOOL", inventories=[900, 910, 920], quantity=2)
         self.assertEqual([x["inventory"] for x in rows], [900, 910, 920])
         self.assertTrue(all(x["simultaneous_gain_vs_wait"] > 0 for x in rows))
+
+    def test_floor_transition_refuses_unequal_terminal_counterfactual(self):
+        # At inventory 998 the aligned pair is quoted $2/$2 and both units add
+        # supply, while wait-behind quotes $2 then $1 and the floor sale does
+        # not add supply. The oracle must refuse to call that a pure cash delta.
+        with self.assertRaises(AssertionError):
+            m.compare(FakeEngine, item="WOOL", inventory=998, self_qty=1, rival_qty=1)
 
     def test_repository_engine_exact_when_present(self):
         path = m.default_engine_path()
