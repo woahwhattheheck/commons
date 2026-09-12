@@ -24,6 +24,28 @@ def load(path: Path, name: str):
     return module
 
 
+def _require_complete_telemetry(cell: dict) -> None:
+    """Bind every published telemetry row to one completed engine callback."""
+    if cell["status"] != "complete" or not isinstance(cell["telemetry"], dict):
+        raise RuntimeError(f"current-native census incomplete in seat {cell['seat']}")
+    steps = cell.get("steps")
+    telemetry = cell["telemetry"]
+    if type(steps) is not int or steps < 0:
+        raise RuntimeError(f"invalid runner step count in seat {cell['seat']}: {steps!r}")
+    required = ("callback_attempts", "callbacks", "telemetry_errors")
+    if any(type(telemetry.get(name)) is not int for name in required):
+        raise RuntimeError(f"telemetry custody fields missing/malformed in seat {cell['seat']}")
+    attempts = telemetry["callback_attempts"]
+    callbacks = telemetry["callbacks"]
+    errors = telemetry["telemetry_errors"]
+    if attempts != steps or callbacks != steps or errors != 0:
+        raise RuntimeError(
+            "telemetry custody mismatch in seat "
+            f"{cell['seat']}: steps={steps} attempts={attempts} "
+            f"callbacks={callbacks} errors={errors}"
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runtime", type=Path, required=True)
@@ -50,7 +72,7 @@ def main() -> int:
                              entry=str(entry) + "::agent")
         os.environ.pop("ORDERBUDGET_TELEMETRY_PATH", None)
         telemetry = json.loads(telemetry_path.read_text()) if telemetry_path.is_file() else None
-        cells.append({
+        cell = {
             "seat": seat,
             "status": result.get("status"),
             "steps": result.get("steps"),
@@ -61,18 +83,23 @@ def main() -> int:
             "trace_sha256": result.get("trace_sha256"),
             "world_sha256": result.get("world_sha256"),
             "telemetry": telemetry,
-        })
+        }
+        _require_complete_telemetry(cell)
+        cells.append(cell)
 
-    if any(cell["status"] != "complete" or not isinstance(cell["telemetry"], dict) for cell in cells):
-        raise RuntimeError("current-native census did not complete in both seats")
     report = {
-        "schema": "titan.v4.market-order-budget.current-native-census.v1",
-        "method": "telemetry-only wrapper returns native parent action unchanged; native self-play, both seats",
+        "schema": "titan.v4.market-order-budget.current-native-census.v2",
+        "method": (
+            "telemetry-only wrapper returns native parent action unchanged; native self-play, both seats; "
+            "published cells require callback_attempts == callbacks == runner steps and telemetry_errors == 0"
+        ),
         "seed": args.seed,
         "cells": cells,
         "summary": {
             "complete_cells": len(cells),
+            "callback_attempts": sum(cell["telemetry"]["callback_attempts"] for cell in cells),
             "callbacks": sum(cell["telemetry"]["callbacks"] for cell in cells),
+            "telemetry_errors": sum(cell["telemetry"]["telemetry_errors"] for cell in cells),
             "max_raw_rows": max(cell["telemetry"]["max_raw_rows"] for cell in cells),
             "max_active_slot": max((cell["telemetry"]["max_active_slot"] for cell in cells if cell["telemetry"]["max_active_slot"] is not None), default=None),
             "structural_overflow_callbacks": sum(cell["telemetry"]["structural_overflow_callbacks"] for cell in cells),
