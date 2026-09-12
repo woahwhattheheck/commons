@@ -41,14 +41,14 @@ The composite closes that gap. GANDER supplies the route and post-EOD0 state; ST
 
 ## Source custody
 
-The composite consumes the two canonical source contracts and the exact official engine:
+The composite authenticates every executable helper **before importing it**, then consumes the exact official engine:
 
 - official engine Git blob `3c202c7ee921da239356789e266b694635103fc4`;
 - official engine SHA-256 `bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e`;
-- `opening-expansion-economics/goose_printer_oracle.py` for GANDER site geometry and authored Day-1 route counts;
-- `repairs/gameplay/dead-feed-care/starvation_cadence.py` for authenticated engine loading and intermittent-feed semantics.
+- GANDER helper `goose_printer_oracle.py` Git blob `38ae7715c233c74f24aacd5fe09f4d0d7a630037`;
+- STARVEORACLE helper `starvation_cadence.py` Git blob `8831ff953faf033cc6d3892c6f32ccd1ee1af06c`.
 
-The simulator starts at the exact semantic post-EOD0 GANDER boundary and runs the official interpreter for every callback from Day 1 through Day 29.
+Only after both helper blobs match does the composite execute them. GANDER supplies site geometry and authored Day-1 route counts; STARVEORACLE supplies exact-engine loading and intermittent-feed semantics. The simulator then starts at the exact semantic post-EOD0 GANDER boundary and runs the official interpreter for every callback from Day 1 through Day 29.
 
 ## Next gate
 
@@ -66,4 +66,4 @@ python -O test_gander_starve_cadence.py
 python gander_starve_cadence.py
 ```
 
-The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit, explicit CARE exclusion and exact source identities.
+The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit, pre-import helper custody, explicit CARE exclusion and exact engine identities.
