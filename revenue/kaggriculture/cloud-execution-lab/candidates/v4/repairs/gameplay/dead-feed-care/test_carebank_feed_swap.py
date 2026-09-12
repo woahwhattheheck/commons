@@ -181,6 +181,47 @@ class CarebankFeedSwap(unittest.TestCase):
         self.assertIs(lane.apply_carebank_feed_swap(
             action, obs, CFG, route, enabled=True), action)
 
+    def test_truthy_enable_poison_is_identity_and_telemetry_inert(self):
+        poison = ("false", 1, 1.0, [True], {"enabled": False})
+        for token in poison:
+            with self.subTest(seam="carebank", token=token):
+                obs, action, route = fixture()
+                before = copy.deepcopy(lane.telemetry)
+                self.assertIs(
+                    lane.apply_carebank_feed_swap(
+                        action, obs, CFG, route, enabled=token
+                    ),
+                    action,
+                )
+                self.assertEqual(lane.telemetry, before)
+            with self.subTest(seam="dead_feed_care", token=token):
+                obs, action, _ = fixture(
+                    step=240, placed=0, pending=0, fed=True, cared=False,
+                    rows=[["FEED"]],
+                )
+                before = copy.deepcopy(lane.telemetry)
+                self.assertIs(
+                    lane.apply_dead_feed_care(action, obs, CFG, enabled=token),
+                    action,
+                )
+                self.assertEqual(lane.telemetry, before)
+
+    def test_literal_true_remains_active_on_both_apply_seams(self):
+        obs, action, route = fixture()
+        carebank = lane.apply_carebank_feed_swap(
+            action, obs, CFG, route, enabled=True
+        )
+        self.assertEqual(carebank["farmer"], ["FEED"])
+        self.assertEqual(action["farmer"], ["COLLECT_FERTILIZER"])
+
+        obs, action, _ = fixture(
+            step=240, placed=0, pending=0, fed=True, cared=False,
+            rows=[["FEED"]],
+        )
+        dead_feed = lane.apply_dead_feed_care(action, obs, CFG, enabled=True)
+        self.assertEqual(dead_feed["farmer"], ["CARE"])
+        self.assertEqual(action["farmer"], ["FEED"])
+
     def test_legacy_repeated_feed_care_unchanged(self):
         obs, action, _ = fixture(
             step=240, placed=0, pending=0, fed=True, cared=False,
