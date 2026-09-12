@@ -1,0 +1,60 @@
+{
+  "lane": "ASTRA-W1-SUBSET",
+  "status": "tested-source-repair-not-production-activation",
+  "canonical_branch": "main",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "source_claim": "https://github.com/woahwhattheheck/commons/pull/12601#issuecomment-5642678955",
+  "donor": {
+    "commit": "85536f343bd42d84d67e0622eefa51acf98c2096",
+    "helper_path": "donor/overlay/r04_dead_water_harvest.py",
+    "helper_blob": "7bef7daef02c859e572cc0972821ce3aa4017714",
+    "helper_bytes": 12008,
+    "test_path": "donor/overlay/checks/test_v4_dead_water_harvest.py",
+    "test_blob": "4bfbc8ac3553a56947854fb0c0ca9f8cb8104dd4",
+    "test_bytes": 13477,
+    "preserved_unmodified": true
+  },
+  "postimage": {
+    "file": "r04_dead_water_harvest.py",
+    "git_blob": "f56a453234edaf3e214d61247f761a7cd2e92bb9",
+    "bytes": 14551,
+    "sha256": "f107f33131a36170be30f290723ca5e26bf0a372a7d5e953f634187bc9d88a99"
+  },
+  "regression": {
+    "file": "test_v4_w1_capacity_subset.py",
+    "git_blob": "127815a9988bc240f27acc1484ab50c53085bbab",
+    "bytes": 12304,
+    "sha256": "13e7898d869fab4ddfafef2a668fc52c71ca0b45d75541a441eb45073cab2108"
+  },
+  "executed": {
+    "environment": "cloud session CPython 3.13.5",
+    "donor_git_blob_identity": "PASS for helper and original tests",
+    "original_tests_on_donor": 27,
+    "predecessor_red_test_methods": 5,
+    "predecessor_failing_subcases": 6,
+    "normal_passed": 52,
+    "optimized_passed": 52,
+    "original_test_methods": 27,
+    "new_test_methods": 25,
+    "exhaustive_subset_oracle_comparisons": 17745,
+    "returned_action_capacity_nonmutation_cases": 832,
+    "py_compile": "PASS",
+    "unchanged_original_functions": 15,
+    "modified_original_functions": ["apply_dead_water_harvest"],
+    "new_functions": ["_max_recovered_subset", "_capacity_subset"],
+    "server_created_source_and_test_blobs_match_executed_bytes": true
+  },
+  "scope": {
+    "objective": "maximum whole harvested units within residual certified capacity; lexicographic actor-index tie",
+    "final_capacity_authority": "unchanged original _capacity_safe",
+    "window": "existing step 695 only",
+    "new_feature_keys": [],
+    "feature_defaults_changed": false,
+    "shared_apply_changed": false,
+    "legacy_materializer_executed": false,
+    "production_changed": false,
+    "kaggle_submitted": false,
+    "new_full_games": 0,
+    "price_optimality_or_economic_gain_claimed": false
+  }
+}
