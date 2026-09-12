@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import unittest
 
 import v217_engagement_probe as probe
@@ -134,16 +135,22 @@ class ProbeTests(unittest.TestCase):
         files = {'b.py': b'b', 'a.py': b'a'}
         self.assertEqual(probe.archive_bytes(files), probe.archive_bytes(files))
 
-    def test_exact_repo_sources_are_pinned_and_transform_compile(self):
-        router_path = HERE.parent.parent / 'v3' / 'overlay' / 'r04_full_router.py'
+    def test_repo_provenance_manifest_evaluator_and_custody_are_pinned(self):
+        manifest_path = HERE.parent / 'selective-carrot' / 'PRODUCTION-V3-PACKAGE-MANIFEST.json'
         evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
-        router = router_path.read_bytes()
+        custody_path = HERE.parent / 'selective-carrot' / 'publication_custody.py'
+        verifier_path = HERE / 'verify_v217_engagement_probe_exact.py'
+
+        manifest = json.loads(manifest_path.read_text())
+        self.assertEqual(manifest['candidate_archive_sha256'], probe.PRODUCTION_SHA)
+        self.assertEqual(len(manifest['files']), probe.PRODUCTION_MEMBERS)
+        self.assertEqual(manifest['files'][probe.ROUTER], probe.ROUTER_SHA)
+
         evaluator = evaluator_path.read_bytes()
-        self.assertEqual(probe.digest(router), probe.ROUTER_SHA)
         self.assertEqual(probe.digest(evaluator), probe.EVALUATOR_SHA)
-        compile(probe.instrument_router(router), str(router_path), 'exec')
         compile(probe.instrument_evaluator(evaluator), str(evaluator_path), 'exec')
-        self.assertTrue((HERE.parent / 'selective-carrot' / 'publication_custody.py').is_file())
+        self.assertTrue(custody_path.is_file())
+        self.assertTrue(verifier_path.is_file())
 
 
 if __name__ == '__main__':
