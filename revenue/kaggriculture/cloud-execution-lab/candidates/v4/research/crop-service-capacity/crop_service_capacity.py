@@ -2,21 +2,21 @@
 """Source-derived crop service capacity bounds for TITAN V4.
 
 This module deliberately does not choose crops, schedule movement, predict market
-fills, or mutate returned actions.  It exposes action-budget ceilings that a
-planner may consume before expanding its crop footprint.
+fills, or mutate returned actions. It exposes conservative action-budget ceilings
+that a planner may consume before expanding its crop footprint.
 
 The official engine creates every plant with ``consecutive_unwatered == 1``.
 At end of day an unwatered plant increments that counter and becomes a weed at
-``>= 2``.  Therefore establishing one new plant that still exists after the
-same end-of-day boundary requires at least two unit actions before that
-boundary: one PLANT and one WATER.  Movement, seed acquisition, fertilizer,
-harvest, and all non-crop work can only consume additional capacity.
+``>= 2``. Therefore establishing one new plant that still exists after the same
+end-of-day boundary requires at least two unit actions before that boundary:
+one PLANT and one WATER.
 
-The functions below are intentionally envelopes, not feasibility proofs.
-``current_labor_ceiling`` is conditional on taking no future HIRE credit.
-``absolute_action_ceiling`` may credit the maximum number of future HIRE rows
-per callback and therefore is a loose but safe impossibility bound; it ignores
-cash and all competing market rows, so it can only overestimate capacity.
+The bounds are intentionally envelopes, not feasibility proofs. In particular,
+future BUY_LAND / DIG / HARVEST can increase the set of plantable cells, so
+*current* empty owned tiles are telemetry only and must not cap an impossibility
+bound. The observation-authoritative board cell count is a safe physical upper
+bound for simultaneous surviving new plants; ignoring the extra actions/cash
+needed to make those cells plantable only overestimates capacity.
 """
 
 from __future__ import annotations
@@ -42,6 +42,7 @@ class CapacityEnvelope:
     callbacks_remaining: int
     current_actors: int
     empty_owned_tiles: int
+    board_tiles: int
     current_labor_action_slots: int
     future_hire_action_slots_upper: int
     current_labor_ceiling: int
@@ -55,6 +56,7 @@ class CapacityEnvelope:
             "callbacks_remaining": self.callbacks_remaining,
             "current_actors": self.current_actors,
             "empty_owned_tiles": self.empty_owned_tiles,
+            "board_tiles": self.board_tiles,
             "current_labor_action_slots": self.current_labor_action_slots,
             "future_hire_action_slots_upper": self.future_hire_action_slots_upper,
             "current_labor_ceiling": self.current_labor_ceiling,
@@ -74,7 +76,9 @@ def _mapping(value: Any, name: str) -> Mapping[str, Any]:
     return value
 
 
-def _farm_from_observation(observation: Mapping[str, Any]) -> tuple[int, Mapping[str, Any]]:
+def _farm_from_observation(
+    observation: Mapping[str, Any],
+) -> tuple[int, Mapping[str, Any], int]:
     obs = _mapping(observation, "observation")
     player = _strict_int(obs.get("player"), "player")
     farms = obs.get("farms")
@@ -95,12 +99,13 @@ def _farm_from_observation(observation: Mapping[str, Any]) -> tuple[int, Mapping
             width = len(row)
         elif len(row) != width:
             raise CapacityInputError("tiles_must_be_rectangular")
-    return player, farm
+    assert width is not None
+    return player, farm, len(tiles) * width
 
 
 def _empty_owned_tiles(farm: Mapping[str, Any]) -> int:
     # None is the engine's exact representation for an empty, unlocked tile.
-    # "LOCKED", weeds, plants, structures, and animals are unavailable.
+    # "LOCKED", weeds, plants, structures, and animals are unavailable *now*.
     return sum(tile is None for row in farm["tiles"] for tile in row)
 
 
@@ -116,25 +121,26 @@ def capacity_envelope(
     observation: Mapping[str, Any],
     configuration: Mapping[str, Any] | None = None,
 ) -> CapacityEnvelope:
-    """Return two source-derived upper bounds for same-day crop expansion.
+    """Return two conservative upper bounds for same-day crop expansion.
 
     ``current_labor_ceiling``:
-        Maximum new plants supportable by unit-action count if no future HIRE
-        credit is taken. This is conditional and intentionally ignores
-        movement and every competing action, so it is still only an upper
-        bound.
+        Maximum new surviving plants supportable by unit-action count if no
+        future HIRE credit is taken. It does *not* assume the currently owned
+        empty-cell set is frozen: future BUY_LAND / DIG / HARVEST may make more
+        cells plantable, so the only physical cap used here is total observed
+        board cells.
 
     ``absolute_action_ceiling``:
         A looser hard upper bound that grants ``maxMarketOrdersPerTurn`` future
-        HIREs after *every* remaining callback, assumes every such hand can act
-        on every later callback, ignores all HIRE cost/cash/row competition,
-        and then caps by currently empty owned tiles. A proposal above this
-        number is impossible even under that unrealistically generous labor
-        schedule.
+        HIREs after every remaining callback, assumes every such hand can act on
+        every later callback, ignores all HIRE/LAND cost and competing work,
+        and caps only by total observed board cells.
 
     Each surviving new plant is charged two unit actions (PLANT + WATER).
+    Passing either bound proves nothing about feasibility; exceeding the chosen
+    bound is the only certified conclusion.
     """
-    player, farm = _farm_from_observation(observation)
+    player, farm, board_tiles = _farm_from_observation(observation)
     turns_per_day = _config_int(configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY)
     max_market_orders = _config_int(
         configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_MARKET_ORDERS
@@ -151,16 +157,20 @@ def capacity_envelope(
     current_slots = current_actors * callbacks_remaining
 
     # Market executes after unit actions. Hands hired after the current callback
-    # can act on R-1 later callbacks; hands hired after the next can act on
-    # R-2, etc. Granting the full market-row cap as HIRE every callback produces
-    # a deliberately loose upper bound independent of cash/fills.
+    # can act on R-1 later callbacks; hands hired after the next can act on R-2,
+    # etc. Granting the full market-row cap as HIRE every callback produces a
+    # deliberately loose upper bound independent of cash/fills.
     future_hire_slots = (
         max_market_orders * callbacks_remaining * (callbacks_remaining - 1) // 2
     )
     absolute_slots = current_slots + future_hire_slots
 
-    current_ceiling = min(empty_owned, current_slots // 2)
-    absolute_ceiling = min(empty_owned, absolute_slots // 2)
+    # IMPORTANT: current empty owned tiles are not a hard future cap. BUY_LAND
+    # can unlock cells in market phase for later callbacks, while DIG/HARVEST can
+    # reclaim occupied cells. Counting every observed board cell as potentially
+    # plantable is deliberately loose but preserves one-sided impossibility.
+    current_ceiling = min(board_tiles, current_slots // 2)
+    absolute_ceiling = min(board_tiles, absolute_slots // 2)
 
     return CapacityEnvelope(
         player=player,
@@ -169,6 +179,7 @@ def capacity_envelope(
         callbacks_remaining=callbacks_remaining,
         current_actors=current_actors,
         empty_owned_tiles=empty_owned,
+        board_tiles=board_tiles,
         current_labor_action_slots=current_slots,
         future_hire_action_slots_upper=future_hire_slots,
         current_labor_ceiling=current_ceiling,
@@ -186,9 +197,9 @@ def assess_proposed_expansion(
     """Classify only what the action budget can prove.
 
     Returns ``IMPOSSIBLE_ACTION_BUDGET`` only when the proposal exceeds the
-    applicable upper bound. Otherwise returns ``NOT_CERTIFIED``: movement,
-    seed collateral, actor/target assignment, watering route, other work, and
-    future market execution still need their existing owners' proofs.
+    applicable conservative upper bound. Otherwise returns ``NOT_CERTIFIED``:
+    movement, seed collateral, actor/target assignment, watering route, future
+    land/reclamation actions, other work, and market execution remain unproved.
     """
     proposed = _strict_int(proposed_new_plants, "proposed_new_plants")
     if not isinstance(no_future_hires, bool):

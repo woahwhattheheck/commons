@@ -15,7 +15,7 @@ SPEC.loader.exec_module(mod)
 
 def obs(*, hour=0, hands=0, empty=25, player=0):
     side = 5
-    cells = [None] * empty + [{"kind": "WEED"}] * (side * side - empty)
+    cells = [None] * empty + ["LOCKED"] * (side * side - empty)
     rows = [cells[i:i + side] for i in range(0, len(cells), side)]
     farm = {
         "farmer": [2, 2],
@@ -52,18 +52,33 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(e.future_hire_action_slots_upper, 10)
         self.assertEqual(e.absolute_action_ceiling, 6)
 
-    def test_physical_empty_tiles_cap_both_bounds(self):
+    def test_current_empty_tiles_are_telemetry_not_hard_future_cap(self):
         e = mod.capacity_envelope(obs(hour=0, hands=4, empty=3))
-        self.assertEqual(e.current_labor_ceiling, 3)
-        self.assertEqual(e.absolute_action_ceiling, 3)
+        self.assertEqual(e.empty_owned_tiles, 3)
+        self.assertEqual(e.board_tiles, 25)
+        self.assertEqual(e.current_labor_ceiling, 25)
+        self.assertEqual(e.absolute_action_ceiling, 25)
 
-    def test_locked_or_occupied_tiles_are_not_empty(self):
+    def test_future_land_prevents_false_impossible_under_no_hire_bound(self):
+        # At hour 20 a BUY_LAND can execute after this callback and unlock cells
+        # for hours 21-23. The bound is intentionally not a schedule proof; it
+        # must not reject 2 plants merely because only 1 cell is empty *now*.
+        result = mod.assess_proposed_expansion(
+            obs(hour=20, hands=1, empty=1), 2, no_future_hires=True
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["envelope"]["empty_owned_tiles"], 1)
+        self.assertEqual(result["envelope"]["board_tiles"], 25)
+        self.assertEqual(result["ceiling"], 4)
+
+    def test_locked_or_occupied_tiles_are_not_current_empty(self):
         o = obs(hour=0, empty=25)
         o["farms"][0]["tiles"][0][0] = "LOCKED"
         o["farms"][0]["tiles"][0][1] = {"kind": "PLANT", "crop": "WHEAT"}
         o["farms"][0]["tiles"][0][2] = {"kind": "COOP"}
         e = mod.capacity_envelope(o)
         self.assertEqual(e.empty_owned_tiles, 22)
+        self.assertEqual(e.board_tiles, 25)
 
     def test_custom_turns_and_market_cap(self):
         e = mod.capacity_envelope(
@@ -77,9 +92,7 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(e.absolute_action_ceiling, 10)
 
     def test_conditional_no_hire_rejection(self):
-        result = mod.assess_proposed_expansion(
-            obs(hour=22), 2, no_future_hires=True
-        )
+        result = mod.assess_proposed_expansion(obs(hour=22), 2, no_future_hires=True)
         self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
         self.assertEqual(result["ceiling"], 1)
         self.assertEqual(result["bound"], "current_labor")
@@ -92,6 +105,11 @@ class CapacityTests(unittest.TestCase):
     def test_above_absolute_bound_is_impossible(self):
         result = mod.assess_proposed_expansion(obs(hour=22), 7)
         self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
+
+    def test_board_cell_cap_still_bounds_enormous_labor(self):
+        e = mod.capacity_envelope(obs(hour=0, hands=50, empty=1))
+        self.assertEqual(e.current_labor_ceiling, 25)
+        self.assertEqual(e.absolute_action_ceiling, 25)
 
     def test_zero_proposal_is_not_certified_not_promoted(self):
         result = mod.assess_proposed_expansion(obs(hour=23), 0)
