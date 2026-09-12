@@ -1,10 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
 """Authenticated native reachability/economics runner for W1 with H1 shadow census.
 
-Each invocation runs one complete two-seat official-engine game.  ``baseline``
+Each invocation runs one complete two-seat official-engine game. ``baseline``
 executes canonical V4 unchanged; ``w1`` applies the landed capacity-safe W1 only
-at the returned-action boundary.  H1 is always observed counterfactually and is
-never executed here.  Compare baseline/w1 with identical seed+seat.
+at the returned-action boundary. H1 is always observed counterfactually and is
+never executed here. Compare baseline/w1 with identical seed+seat.
+
+The authenticated native runtime and the canonical V4 research workspace are
+explicitly separate inputs. This prevents a materialized release root from being
+mistaken for the repository donor tree (or vice versa).
 """
 from __future__ import annotations
 
@@ -90,10 +94,13 @@ def json_bytes(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
 
 
-def game(root: Path, loader, engine, *, seed: int, seat: int, variant: str):
+def game(root: Path, workspace: Path, loader, engine, *, seed: int, seat: int, variant: str):
     parent = load(f"harvest_native_parent_{variant}_{seat}", root / "main.py")
-    workspace = root / "candidates/v4"
     probe = HarvestProbe(workspace)
+    donor_sha256 = {
+        "w1": digest(probe.w1_path.read_bytes()),
+        "h1": digest(probe.h1_path.read_bytes()),
+    }
     cfg, env, state = initialize(loader, engine, seed)
     counters = Counter()
     statuses = Counter()
@@ -159,6 +166,7 @@ def game(root: Path, loader, engine, *, seed: int, seat: int, variant: str):
         "census": dict(counters),
         "events": events,
         "donor_reports": probe.reports(),
+        "donor_sha256": donor_sha256,
         "action_trace_sha256": action_trace.hexdigest(),
         "state_trace_sha256": state_trace.hexdigest(),
         "max_parent_call_seconds": max(times),
@@ -170,7 +178,10 @@ def game(root: Path, loader, engine, *, seed: int, seat: int, variant: str):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--root", type=Path, required=True,
+                        help="authenticated materialized native runtime root")
+    parser.add_argument("--workspace", type=Path, required=True,
+                        help="canonical candidates/v4 workspace containing W1/H1 donors")
     parser.add_argument("--archive", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--variant", choices=("baseline", "w1"), default="baseline")
@@ -179,12 +190,15 @@ def main():
     args = parser.parse_args()
 
     root = args.root.resolve()
+    workspace = args.workspace.resolve()
     archive = args.archive.resolve()
+    require(workspace.is_dir(), "V4 workspace missing")
     members = authenticate(root, archive)
     sys.path.insert(0, str(root))
     loader = load("harvest_official_loader", root / "checks/reference/evaluator/loader.py")
     engine, engine_hashes = loader.get_engine(root / "checks/reference/engine")
-    result = game(root, loader, engine, seed=args.seed, seat=args.seat, variant=args.variant)
+    result = game(root, workspace, loader, engine,
+                  seed=args.seed, seat=args.seat, variant=args.variant)
     result.update({
         "python": platform.python_version(),
         "optimized": bool(sys.flags.optimize),
@@ -198,7 +212,8 @@ def main():
     print(json.dumps({
         "seed": result["seed"], "seat": result["seat"], "variant": result["variant"],
         "rewards": result["rewards"], "census": result["census"],
-        "events": len(result["events"]), "promotion_authorized": False,
+        "events": len(result["events"]), "donor_sha256": result["donor_sha256"],
+        "promotion_authorized": False,
     }, sort_keys=True))
 
 
