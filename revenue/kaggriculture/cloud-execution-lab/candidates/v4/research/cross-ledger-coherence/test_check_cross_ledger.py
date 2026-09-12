@@ -149,6 +149,59 @@ class CrossLedgerTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "bad_composition_intake_pr" for e in result["errors"]))
 
+    def test_declared_component_id_exact_match_passes(self):
+        canonical, integration, composition = fixture()
+        integration["landed"][1]["component_id"] = "row-shed-sell-order"
+        result = cross.audit(canonical, integration, composition)
+        self.assertTrue(result["ok"], result)
+
+    def test_declared_component_id_wrong_same_package_and_state_fails(self):
+        canonical, integration, composition = fixture()
+        integration["landed"][1]["component_id"] = "wrong-id"
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(
+            e["code"] == "component_id_split_brain"
+            and e["integration_component"] == "wrong-id"
+            and e["composition_component"] == "row-shed-sell-order"
+            for e in result["errors"]
+        ), result)
+
+    def test_declared_component_id_is_exact_not_trimmed(self):
+        canonical, integration, composition = fixture()
+        integration["landed"][1]["component_id"] = " row-shed-sell-order "
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(e["code"] == "component_id_split_brain" for e in result["errors"]), result)
+
+    def test_blank_or_nonstring_component_id_fails(self):
+        for value in ("", "   ", None, 1, True, []):
+            with self.subTest(value=value):
+                canonical, integration, composition = fixture()
+                integration["landed"][1]["component_id"] = value
+                result = cross.audit(canonical, integration, composition)
+                self.assertFalse(result["ok"], result)
+                self.assertTrue(any(e["code"] == "bad_landed_component_id" for e in result["errors"]), result)
+
+    def test_component_id_alone_marks_explicit_custody_and_requires_state(self):
+        canonical, integration, composition = fixture()
+        integration["landed"][0]["component_id"] = "fast-tape-clone-current-runtime"
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(e["code"] == "composition_intake_without_state" for e in result["errors"]), result)
+
+    def test_component_id_without_repair_path_fails(self):
+        canonical, integration, composition = fixture()
+        integration["landed"].append({
+            "lane": "orphan identity claim",
+            "component_id": "row-shed-sell-order",
+            "composition_state": "blocked",
+            "status": "bad",
+        })
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(e["code"] == "composition_marked_landed_row_without_repair_path" for e in result["errors"]), result)
+
     def test_duplicate_landed_repair_path_fails(self):
         canonical, integration, composition = fixture()
         integration["landed"].append({"lane": "duplicate clone custody", "repair_path": "repairs/performance/fast-tape-clone", "status": "source_only"})
