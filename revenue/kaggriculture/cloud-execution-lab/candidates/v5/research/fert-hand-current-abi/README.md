@@ -16,9 +16,12 @@ The useful invariant is parent isolation, not the legacy wrapper:
 2. leave the producer's farmer, incumbent-hand and market decisions untouched;
 3. after selection, reinsert only the owned hand's action at the exact hidden index;
 4. reserve future authored HIRE and FERTILIZER pickup intent from a complete same-day route tail before admitting the extra hand or consuming fertilizer;
-5. reproduce the same candidate decision on same-step retries and drop ownership on day rollover/cardinality ambiguity.
+5. reproduce the same candidate decision on unchanged same-step retries, but retire a cached candidate HIRE if refreshed current/future parent authority now contains HIRE;
+6. drop ownership on day rollover/cardinality ambiguity.
 
-`fert_hand_current.py` implements those two boundaries as an instance-local adapter. It does not call a producer, edit `titan_runtime.py`, flip a config/default, build an archive, or alter Kaggle state.
+`fert_hand_current.py` contains the recovered base theorem. **The public consumption surface is `fert_hand_current_safe.FertHandCurrentABI`**, which adds refreshed-parent retry revalidation and permanent fail-closed retirement of a conflicting cached HIRE. New consumers must import the public class from `fert_hand_current_safe`, not instantiate the base class directly.
+
+Neither module calls a producer, edits `titan_runtime.py`, flips a config/default, builds an archive, or alters Kaggle state.
 
 ## Admission
 
@@ -31,9 +34,9 @@ Before any production activation, this source needs a fresh current-V5 matched e
 Run from this directory:
 
 ```bash
-python -B -m unittest -v test_fert_hand_current.py
-python -O -B -m unittest -v test_fert_hand_current.py
-python -B -m py_compile fert_hand_current.py test_fert_hand_current.py
+python -B -m unittest -v test_fert_hand_current.py test_fert_hand_retry_safe.py
+python -O -B -m unittest -v test_fert_hand_current.py test_fert_hand_retry_safe.py
+python -B -m py_compile fert_hand_current.py fert_hand_current_safe.py test_fert_hand_current.py test_fert_hand_retry_safe.py
 ```
 
-The tests bind submitted-V3.1 provenance, engine HIRE-cost parity, exact parent-view removal/reinsertion, same-step retry stability, market preservation, complete-route-tail gating, collision/capacity rejection, strict public identity/configuration, cardinality fail-close, and day-reset ownership.
+The tests bind submitted-V3.1 provenance, engine HIRE-cost parity, exact parent-view removal/reinsertion, clean same-step retry stability, refreshed current/future HIRE retirement with no resurrection, malformed retry fail-close, market preservation, complete-route-tail gating, collision/capacity rejection, strict public identity/configuration, cardinality fail-close, and day-reset ownership.
