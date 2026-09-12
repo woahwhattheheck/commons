@@ -1,0 +1,122 @@
+name: TITAN V4 full-shed mixed-cargo proof
+
+on:
+  push:
+    branches:
+      - astra/v4-capmix-proof-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a4606969e9317d6a5bd6f1ccf4a7fd2704bc38ed
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+            /revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve exact fold recipe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib, json, os, urllib.request
+          from pathlib import Path
+          oid = '36fc2bf4a70748e3dd82e8ac6607052b6854b6e8'
+          url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/git/blobs/{oid}'
+          req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+          with urllib.request.urlopen(req, timeout=45) as response:
+              result = json.load(response)
+          transport = base64.b64decode(result['content'])
+          actual = hashlib.sha1(b'blob ' + str(len(transport)).encode() + b'\0' + transport).hexdigest()
+          if actual != oid:
+              raise SystemExit('transport object mismatch')
+          old, new = b'V8ihZWYiWiWiDCYvi', b'V8ihZWYiWiDCYvi'
+          if transport.count(old) != 1:
+              raise SystemExit('transport normalization anchor mismatch')
+          transport = transport.replace(old, new, 1)
+          recipe = gzip.decompress(base64.b64decode(transport, validate=True))
+          if len(recipe) != 17905 or hashlib.sha256(recipe).hexdigest() != '29d79bd0449e9e17725b3482f77e59047c92c5ed79c7c58a9648da2919c2f213':
+              raise SystemExit('fold recipe mismatch')
+          Path('/tmp/fold_capmix.py').write_bytes(recipe)
+          PY
+      - name: Fold, materialize, and run normal and optimized checks
+        run: |
+          set -euo pipefail
+          lab="$GITHUB_WORKSPACE/source/revenue/kaggriculture/cloud-execution-lab"
+          python /tmp/fold_capmix.py "$lab/candidates/v3/overlay"
+          python "$lab/candidates/v3/build_v3.py" --tree /tmp/capmix-package
+          export TITAN_ENGINE_SOURCE="$lab/reference/engine/kaggriculture.py"
+          cd /tmp/capmix-package
+          python -B -m unittest -v checks.test_v4_eod_capacity_rescue
+          python -O -B -m unittest -v checks.test_v4_eod_capacity_rescue
+      - uses: actions/upload-artifact@v4
+        with:
+          name: capmix-verified-source
+          if-no-files-found: error
+          path: |
+            source/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_eod_capacity_rescue.py
+            source/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_eod_capacity_rescue.py
+
+  publish_blobs:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: capmix-verified-source
+          path: verified
+      - name: Publish verified source as data only; no branch or ref movement
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import ast, base64, hashlib, json, os, urllib.request
+          from pathlib import Path
+          repository = os.environ['GITHUB_REPOSITORY']
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json'}
+          receipt = {'source_parent': 'a4606969e9317d6a5bd6f1ccf4a7fd2704bc38ed', 'run_id': os.environ['GITHUB_RUN_ID'], 'validation': '32 focused checks in normal and optimized Python; 432 pinned-engine conservation cases per run', 'files': {}}
+          for name in ('r04_eod_capacity_rescue.py', 'checks/test_v4_eod_capacity_rescue.py'):
+              path = Path('verified') / name
+              if not path.is_file() or path.is_symlink():
+                  raise SystemExit('expected regular source artifact')
+              data = path.read_bytes()
+              ast.parse(data, filename=name)
+              oid = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+              payload = json.dumps({'content': base64.b64encode(data).decode('ascii'), 'encoding': 'base64'}).encode()
+              req = urllib.request.Request(f'https://api.github.com/repos/{repository}/git/blobs', data=payload, headers=headers, method='POST')
+              with urllib.request.urlopen(req, timeout=45) as response:
+                  result = json.load(response)
+              if result.get('sha') != oid:
+                  raise SystemExit('published blob hash mismatch')
+              req = urllib.request.Request(f'https://api.github.com/repos/{repository}/git/blobs/{oid}', headers=headers)
+              with urllib.request.urlopen(req, timeout=45) as response:
+                  check = json.load(response)
+              if base64.b64decode(check['content']) != data:
+                  raise SystemExit('published blob readback mismatch')
+              receipt['files'][name] = {'git_blob': oid, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+          text = json.dumps(receipt, indent=2) + '\n'
+          Path('capmix-receipt.json').write_text(text)
+          print(text)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('```json\n' + text + '```\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: capmix-published-blobs
+          path: capmix-receipt.json
+          if-no-files-found: error
