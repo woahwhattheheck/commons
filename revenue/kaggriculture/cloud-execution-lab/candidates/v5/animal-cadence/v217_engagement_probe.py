@@ -163,9 +163,15 @@ def _v217_probe_observe(view,st,step,action,pending,tape,end):
         if len(commands)>end-step or any(_v217_farmer(tape,step+i)!=['PASS'] for i in range(len(commands))):
             continue
         pos=start
+        safe=True
         for cmd in commands:
-            if cmd[0] in _V217_MOVES:
-                dx,dy=_V217_MOVES[cmd[0]];pos=(pos[0]+dx,pos[1]+dy)
+            nxt=_v217_probe_advance(view.tiles,pos,cmd)
+            if nxt is None:
+                safe=False
+                break
+            pos=nxt
+        if not safe:
+            continue
         if pos!=start:
             return
         _V217_PROBE_REPORT['counterfactual_plan']+=1
