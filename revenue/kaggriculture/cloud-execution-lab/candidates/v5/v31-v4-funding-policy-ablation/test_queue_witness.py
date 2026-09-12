@@ -26,15 +26,28 @@ def _load_exact():
     if not value:
         raise unittest.SkipTest(f"{ROOT_ENV} is required for exact-source witnesses")
     root = Path(value).resolve(strict=True)
-    expected = root / "frozen_selected.py"
-    if not expected.is_file():
-        raise AssertionError(f"missing exact frozen_selected.py under {root}")
-    sys.path.insert(0, str(root))
-    for name in ("frozen_selected", "scheduler", "seller_snapshot", "selected_sell_core"):
+    # The submitted archive flattens these helpers, but the pinned source tree
+    # retains them in sibling project directories. Import only that same tree.
+    sources = {
+        "frozen_selected": root / "frozen_selected.py",
+        "scheduler": root / "scheduler.py",
+        "mechanics": root / "mechanics.py",
+        "selected_sell_core": root / "selected_sell_core.py",
+        "observed_clone": root.parent / "cloud-runtime-pulse" / "observed_clone.py",
+        "seller_snapshot": root.parent / "cloud-quickstep" / "seller_snapshot.py",
+    }
+    for name, path in sources.items():
+        if not path.is_file():
+            raise AssertionError(f"missing exact {name} source: {path}")
+    sys.path[:0] = [str(root), str(root.parent / "cloud-runtime-pulse"),
+                   str(root.parent / "cloud-quickstep")]
+    for name in sources:
         sys.modules.pop(name, None)
     module = importlib.import_module("frozen_selected")
-    if Path(module.__file__).resolve() != expected.resolve():
-        raise AssertionError(f"loaded wrong frozen_selected.py: {module.__file__}")
+    for name, expected in sources.items():
+        loaded = sys.modules[name]
+        if Path(loaded.__file__).resolve() != expected.resolve():
+            raise AssertionError(f"loaded wrong {name} source: {loaded.__file__}")
     return module
 
 

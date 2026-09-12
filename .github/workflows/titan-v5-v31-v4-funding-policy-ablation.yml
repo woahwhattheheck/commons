@@ -49,6 +49,11 @@ jobs:
           PYTHONPATH="$root/candidates/v5/v31-v4-funding-policy-ablation" python - <<'PY'
           from pathlib import Path
           import ablation
+          import paired
+
+          assert paired.HELPER_GIT_BLOB == '719e3514d72bc7ea4c3e505836d16fcddae11019'
+          paired.capture_git_blob(Path('revenue/kaggriculture') / paired.HELPER,
+                                  paired.HELPER_GIT_BLOB)
 
           v31 = Path('/tmp/funding-v31-frozen.py').read_bytes()
           v4 = Path('/tmp/funding-v4-frozen.py').read_bytes()

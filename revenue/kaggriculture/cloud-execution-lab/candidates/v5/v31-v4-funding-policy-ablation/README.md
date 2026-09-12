@@ -39,7 +39,7 @@ Axis A intentionally retains V4's `item_budget`; it does **not** rewind E08's ev
 
 ## Matched engine screen
 
-`paired.py` reuses the Git-blob-authenticated V5 joint-liquidity evaluator/opponent harness (`fbc5e320b8a2ee63af11dc9856c956a679823409`). It single-reads and SHA256-authenticates both submitted archives, snapshots the evaluator/loader/opponent bank, and runs five arms per matched opponent/seed/seat cell:
+`paired.py` reuses the Git-blob-authenticated V5 joint-liquidity evaluator/opponent harness (`719e3514d72bc7ea4c3e505836d16fcddae11019`). It single-reads and SHA256-authenticates both submitted archives, snapshots the evaluator/loader/opponent bank, and runs five arms per matched opponent/seed/seat cell:
 
 - exact V3.1 reference;
 - intact V4 control;
