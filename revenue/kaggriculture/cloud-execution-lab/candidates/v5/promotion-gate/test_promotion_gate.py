@@ -47,11 +47,11 @@ def _engagement(candidate_id):
         "first_divergence": {
             "observation": 2,
             "key": {"seed": 7, "seat": 0, "step": 12, "phase": "market"},
-            "control_fingerprint": "2" * 64,
-            "candidate_fingerprint": "3" * 64,
+            "control_fingerprint": "c" * 64,
+            "candidate_fingerprint": "d" * 64,
         },
-        "control_sequence_fingerprint": "4" * 64,
-        "candidate_sequence_fingerprint": "5" * 64,
+        "control_sequence_fingerprint": "e" * 64,
+        "candidate_sequence_fingerprint": "f" * 64,
         "key_fields": ["seed", "seat", "step", "phase"],
         "control_id": "v5c:" + "1" * 64,
         "candidate_id": candidate_id,
@@ -110,10 +110,76 @@ class PromotionGateTest(unittest.TestCase):
         engagement = _engagement(manifest["candidate_id"])
         engagement["classification"] = "NO_OP_OBSERVED"
         engagement["divergence_count"] = 0
-        engagement["engagement_rate"] = 0.0
         engagement["first_divergence"] = None
         with self.assertRaisesRegex(gate.PromotionError, "must be ENGAGED"):
             gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+
+    def test_impossible_engagement_summary_is_rejected(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        runtime = _runtime(candidate_id)
+        cases = [
+            (
+                "rate",
+                lambda report: report.__setitem__("engagement_rate", 0.5),
+                "rate disagrees",
+            ),
+            (
+                "threshold-type",
+                lambda report: report.__setitem__("noop_threshold", True),
+                "noop_threshold must be a plain int",
+            ),
+            (
+                "impossible-first-index",
+                lambda report: report["first_divergence"].__setitem__("observation", 8),
+                "inconsistent with divergence count",
+            ),
+            (
+                "duplicate-key-fields",
+                lambda report: report.__setitem__("key_fields", ["seed", "seed"]),
+                "key_fields must be unique",
+            ),
+            (
+                "first-key-shape",
+                lambda report: report["first_divergence"].__setitem__(
+                    "key", {"seed": 7, "seat": 0, "step": 12}
+                ),
+                "key must match key_fields exactly",
+            ),
+            (
+                "bad-decision-fingerprint",
+                lambda report: report["first_divergence"].__setitem__(
+                    "control_fingerprint", "not-a-sha"
+                ),
+                "64 lowercase hex",
+            ),
+            (
+                "non-divergent-fingerprints",
+                lambda report: report["first_divergence"].__setitem__(
+                    "candidate_fingerprint",
+                    report["first_divergence"]["control_fingerprint"],
+                ),
+                "fingerprints must differ",
+            ),
+            (
+                "bad-sequence-fingerprint",
+                lambda report: report.__setitem__(
+                    "candidate_sequence_fingerprint", "0" * 63
+                ),
+                "64 lowercase hex",
+            ),
+            (
+                "missing-first-divergence",
+                lambda report: report.__setitem__("first_divergence", None),
+                "requires first_divergence object",
+            ),
+        ]
+        for label, mutate, message in cases:
+            with self.subTest(label=label):
+                engagement = json.loads(json.dumps(_engagement(candidate_id)))
+                mutate(engagement)
+                with self.assertRaisesRegex(gate.PromotionError, message):
+                    gate.build_receipt(manifest, engagement, runtime)
 
     def test_stale_runtime_pass_with_extra_callback_is_rejected(self):
         manifest = _manifest()
@@ -160,7 +226,7 @@ class PromotionGateTest(unittest.TestCase):
                 _runtime(manifest["candidate_id"]),
             )
 
-    def test_self_hashed_unsorted_component_records_are_rejected(self):
+    def test_self_hashed_component_order_and_uniqueness_are_rejected(self):
         manifest = _manifest()
         first = manifest["components"][0]
         second = {
@@ -172,6 +238,19 @@ class PromotionGateTest(unittest.TestCase):
         manifest["components"] = [first, second]
         _rehash_manifest(manifest)
         with self.assertRaisesRegex(gate.PromotionError, "must be sorted by name"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+        manifest = _manifest()
+        duplicate = json.loads(json.dumps(manifest["components"][0]))
+        duplicate["source"] = "other.py"
+        duplicate["source_sha256"] = "c" * 64
+        manifest["components"].append(duplicate)
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "names must be unique"):
             gate.build_receipt(
                 manifest,
                 _engagement(manifest["candidate_id"]),
@@ -195,31 +274,18 @@ class PromotionGateTest(unittest.TestCase):
                 _runtime(manifest["candidate_id"]),
             )
 
-    def test_partial_handwritten_engagement_report_is_rejected(self):
+    def test_engagement_shape_is_exact_after_semantic_validation(self):
         manifest = _manifest()
-        engagement = _engagement(manifest["candidate_id"])
-        del engagement["candidate_sequence_fingerprint"]
+        candidate_id = manifest["candidate_id"]
+        engagement = _engagement(candidate_id)
+        engagement["invented"] = True
         with self.assertRaisesRegex(gate.PromotionError, "engagement report keys mismatch"):
-            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+            gate.build_receipt(manifest, engagement, _runtime(candidate_id))
 
-    def test_engagement_redundant_fields_are_exact(self):
-        manifest = _manifest()
-        engagement = _engagement(manifest["candidate_id"])
-        engagement["engagement_rate"] = 0.5
-        with self.assertRaisesRegex(gate.PromotionError, "rate disagrees"):
-            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
-
-        engagement = _engagement(manifest["candidate_id"])
-        engagement["first_divergence"]["candidate_fingerprint"] = (
-            engagement["first_divergence"]["control_fingerprint"]
-        )
-        with self.assertRaisesRegex(gate.PromotionError, "fingerprints must differ"):
-            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
-
-        engagement = _engagement(manifest["candidate_id"])
-        del engagement["first_divergence"]["key"]["phase"]
-        with self.assertRaisesRegex(gate.PromotionError, "key must match key_fields"):
-            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+        engagement = _engagement(candidate_id)
+        engagement["first_divergence"]["invented"] = True
+        with self.assertRaisesRegex(gate.PromotionError, "first_divergence keys mismatch"):
+            gate.build_receipt(manifest, engagement, _runtime(candidate_id))
 
     def test_runtime_headroom_is_recomputed(self):
         manifest = _manifest()
