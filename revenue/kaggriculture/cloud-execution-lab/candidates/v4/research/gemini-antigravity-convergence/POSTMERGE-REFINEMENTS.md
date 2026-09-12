@@ -10,6 +10,10 @@ The useful successor to the rejected sold-only / blind fixed lifetime cap is now
 
 `research/market-baseline/COUNTER_AMBUSH.md` now consumes authenticated Apex source custody from #13027. The source-real FERT event is at most four units, not the old synthetic 40-unit sensitivity: at market inventory 10,000, Apex max-four followed by our buy-four changes cost from $402 to $399 (only a $3 direct quote subsidy); at the $1 sell floor Apex adds zero public inventory and creates $0 direct subsidy. The useful descendant is the public-state-conditioned Strawberry timing edge, not a giant fertilizer sponge or hard-coded folklore.
 
+## EGG — legal town-clock scarcity timing
+
+The direct EGG buyout / dark-pool short squeeze remains engine-invalid because `BUY_PRODUCT` accepts only WHEAT and FERTILIZER. #13033 preserves the useful residue under `research/sale-window-engagement/gemini_egg_timing.py`: move an already-planned literal `SELL EGG` only to later legal PASS/append destinations, measure every candidate with the pinned full-interpreter sale-window harness, and require an actually realized retiming. This captures public town-demand scarcity pulses without inventing an EGG purchase path or a blanket “always hold” rule; rival supply and row/cash effects remain visible.
+
 ## WEEDBANK — reversible occupancy lease
 
 The blanket empty-structure carpet remains rejected, but the engine exposes a narrower source-real mechanism. `BUILD_COOP` / `BUILD_PASTURE` can temporarily remove a `None` tile from weed RNG eligibility; a later `DIG` of the still-empty structure restores `None`; changing total empty tiles also changes the shared EOD RNG cursor that feeds public shop unlocks.
