@@ -3,10 +3,10 @@
 """Default-OFF B7 $1 EOD same-product replacement guard.
 
 This helper covers a strict-dominance corner of the official market/EOD order.
-When an EOD callback would discard only one non-buyable carried product X, and
-our already-authored market prefix is SELL-only, one appended floor-price SELL
-of X can replace shed X with the otherwise-discarded carried X. At the official
-$1 floor that sale credits cash without adding public supply.
+When an EOD callback would discard only one non-buyable carried product X, an
+appended floor-price SELL of X can replace shed X with the otherwise-discarded
+carried X. At the official $1 floor that sale credits cash without adding public
+supply.
 
 The transform intentionally requires an authenticated ``market_price_fn`` ABI;
 it does not duplicate pricing semantics. It is research/default-OFF evidence and
@@ -73,8 +73,8 @@ def _strict_shed(value: Any) -> dict[str, int] | None:
 
 
 def _sell_prefix(shed: dict[str, int], rows: Any, cap: int) -> tuple[dict[str, int], dict[str, int]] | None:
-    """Project our private shed through an exact, nonempty SELL-only prefix."""
-    if not isinstance(rows, list) or not rows or len(rows) >= cap:
+    """Project our private shed through an exact SELL-only prefix, possibly empty."""
+    if not isinstance(rows, list) or len(rows) >= cap:
         return None
     out = dict(shed)
     sold: dict[str, int] = {}
@@ -338,5 +338,5 @@ def install(parent, *, market_price_fn=None, enabled: bool = False):
         )
     agent.parent = parent
     agent.telemetry = telemetry
-    agent.b7_eod_floor_replacement_enabled = enabled is True
+    agent.b7_eod_floor_replacement_enabled = enabled is True and callable(market_price_fn)
     return agent
