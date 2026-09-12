@@ -139,11 +139,49 @@ class PhysicalTransitionTests(unittest.TestCase):
         self.assertEqual(farm["hands"], [])
         self.assertEqual(private["shed"]["WHEAT"], 0)
 
+    def test_preexisting_cash_survives_ignored_sell_credit_for_hire(self):
+        result, farm, private, state = run(
+            [["SELL", "WHEAT", 1], ["HIRE"]], money=1, shed={"WHEAT": 1})
+        self.assertTrue(result["resolved"])
+        self.assertFalse(state["funding_exact"])
+        self.assertEqual(farm["money"], 0)
+        self.assertEqual(farm["hires_today"], 1)
+        self.assertEqual(len(farm["hands"]), 1)
+        self.assertEqual(len(private["inventories"]), 2)
+
+    def test_preexisting_cash_survives_ignored_sell_credit_for_animal(self):
+        result, farm, private, state = run(
+            [["SELL", "WHEAT", 1], ["BUY_ANIMAL", "GOOSE", 1]],
+            money=300, shed={"WHEAT": 1})
+        self.assertTrue(result["resolved"])
+        self.assertFalse(state["funding_exact"])
+        self.assertEqual(farm["money"], 0)
+        self.assertEqual(private["shed"].get("GOOSE", 0), 1)
+
+    def test_uncertain_sell_credit_cannot_prove_animal_rejection(self):
+        result, farm, private, _ = run(
+            [["SELL", "WHEAT", 1], ["BUY_ANIMAL", "GOOSE", 1]],
+            money=0, shed={"WHEAT": 1})
+        self.assertFalse(result["resolved"])
+        self.assertIn("buy_animal_funding_unknown", result["reason"])
+        self.assertEqual(farm["money"], 0)
+        self.assertEqual(private["shed"].get("GOOSE", 0), 0)
+
+    def test_uncertain_sell_credit_cannot_prove_product_rejection(self):
+        result, farm, private, _ = run(
+            [["SELL", "CARROT", 1], ["BUY_PRODUCT", "WHEAT", 1]],
+            money=0, shed={"CARROT": 1})
+        self.assertFalse(result["resolved"])
+        self.assertIn("buy_product_quote_unknown", result["reason"])
+        self.assertEqual(farm["money"], 0)
+        self.assertEqual(private["shed"].get("WHEAT", 0), 0)
+
     def test_prior_unmodeled_purchase_does_not_authorize_hire(self):
         result, farm, _, _ = run(
             [["BUY_SEED", "WHEAT", 1], ["HIRE"]], money=10)
         self.assertFalse(result["resolved"])
         self.assertIn("hire_funding_unknown", result["reason"])
+        self.assertEqual(farm["money"], 0)
         self.assertEqual(farm["hands"], [])
 
     def test_non_first_buy_product_quote_fails_closed(self):
