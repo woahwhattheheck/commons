@@ -21,9 +21,12 @@ _STANDARD_CONFIG = {
 
 
 def _cfg(configuration, name):
-    if isinstance(configuration, dict):
-        return configuration.get(name, _MISSING)
-    return getattr(configuration, name, _MISSING) if configuration is not None else _MISSING
+    try:
+        if isinstance(configuration, dict):
+            return configuration.get(name, _MISSING)
+        return getattr(configuration, name, _MISSING) if configuration is not None else _MISSING
+    except Exception:
+        return _MISSING
 
 
 def _standard_configuration(configuration):
@@ -111,7 +114,10 @@ def plan_v217_eod_tail(view, st, step, action, pending, *, tape,
         return None
     if not isinstance(inventory, dict):
         return None
-    need_pickup = inventory.get("WHEAT", 0) < 1
+    worker_wheat = inventory.get("WHEAT", 0)
+    if type(worker_wheat) is not int or worker_wheat < 0:
+        return None
+    need_pickup = worker_wheat < 1
     if need_pickup:
         try:
             if any(inventory.values()) or not view.beside_shed(start):
