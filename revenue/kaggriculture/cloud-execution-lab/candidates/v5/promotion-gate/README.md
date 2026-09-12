@@ -42,8 +42,13 @@ python candidates/v5/promotion-gate/promotion_gate.py \
 
 `economics_gate.py` closes a separate release boundary. A candidate that is
 identifiable, engaged, and fast is not necessarily competitive. The economics
-gate therefore accepts only raw paired cells with exact control/candidate
-`v5c:` identities and recomputes each margin itself.
+gate accepts only raw paired cells and recomputes each margin itself.
+
+The v2 economics report is also execution-bound. It carries exact control and
+candidate `v5c:` identities, the candidate manifest's engine/opponent-pack
+identity, and the exact old/new release archive SHA-256 values. The release
+transaction supplies every one of those expected values independently and
+rejects stale or cross-wired evidence.
 
 A paired-economics PASS requires:
 
@@ -51,11 +56,13 @@ A paired-economics PASS requires:
 - exactly one seat-0 and one seat-1 cell per seed;
 - unique cells in canonical `(seed, seat)` order;
 - exact nonnegative integer own/rival scores for both control and candidate;
-- no caller-supplied aggregate or claimed delta fields; and
+- no caller-supplied aggregate or claimed delta fields;
+- execution authority equal to the promotion manifest and release archive pair;
+  and
 - nonnegative aggregate paired margin delta.
 
-The receipt records the recomputed cell/seed counts, sign counts, margin sums,
-mean delta, and canonical panel digest.
+The receipt records execution identity, recomputed cell/seed counts, sign counts,
+margin sums, mean delta, and canonical panel digest.
 
 ```bash
 python candidates/v5/promotion-gate/economics_gate.py economics-report.json \
@@ -64,15 +71,16 @@ python candidates/v5/promotion-gate/economics_gate.py economics-report.json \
 
 ## Release transaction
 
-`release_transaction.py` is the only pointer-transition authority in this
-directory. Version 2 keeps the existing promotion replay, V4 trusted-base replay,
+`release_transaction.py` is the pointer-transition authority in this directory.
+Version 2 keeps the existing promotion replay, V4 trusted-base replay,
 source/archive binding, expected-old transaction, and atomic commit semantics,
 but now also requires `--economics-report`.
 
 The release transaction replays `economics_gate.validate_report()` against the
-**same candidate and control IDs** carried by the promotion receipt. It binds the
-raw economics-report SHA-256 and recomputed panel metrics into the transition
-identity. Negative-mean, incomplete, duplicate, unbalanced, or cross-build
+**same candidate/control, engine/opponent, and old/new archive authorities**
+already authenticated by the transition. It binds the raw economics-report
+SHA-256 and recomputed panel metrics into the transition identity. Negative-mean,
+incomplete, duplicate, unbalanced, stale-archive, wrong-opponent, or cross-build
 panels fail before a release pointer can move.
 
 Exit status is `0` only for a PASS receipt. Invalid, ambiguous, incomplete,
