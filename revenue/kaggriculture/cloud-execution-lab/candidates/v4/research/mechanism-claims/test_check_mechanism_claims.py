@@ -2,8 +2,13 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import sys
 import tempfile
 import unittest
+
+HERE = Path(__file__).resolve().parent
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
 
 from check_mechanism_claims import RegistryError, git_blob, load_json_bytes, verify
 
