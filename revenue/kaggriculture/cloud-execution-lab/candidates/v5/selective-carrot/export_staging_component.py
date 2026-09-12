@@ -320,28 +320,6 @@ def preflight_component(manifest: dict, payloads: dict[str, bytes]) -> None:
             raise ExportError("composer preflight addition surface mismatch")
 
 
-def _prepare_publication_directories(paths: Iterable[Path]) -> list[tuple[Path, int, int]]:
-    """Create missing publication parents and retain exact identities for rollback."""
-    owned: list[tuple[Path, int, int]] = []
-    targets = sorted({Path(path).parent for path in paths}, key=lambda p: (len(p.parts), str(p)))
-    for target in targets:
-        missing: list[Path] = []
-        cursor = target
-        while not cursor.exists():
-            missing.append(cursor)
-            parent = cursor.parent
-            if parent == cursor:
-                raise ExportError(f"cannot resolve publication parent for {target}")
-            cursor = parent
-        for directory in reversed(missing):
-            directory.mkdir()
-            st = os.lstat(directory)
-            if not stat.S_ISDIR(st.st_mode) or stat.S_ISLNK(st.st_mode):
-                raise ExportError(f"created publication parent is not an ordinary directory: {directory}")
-            owned.append((directory, st.st_dev, st.st_ino))
-    return owned
-
-
 def _rollback_publication_directories(owned: Iterable[tuple[Path, int, int]]) -> None:
     """Best-effort remove only still-owned empty directories, deepest first."""
     for directory, dev, ino in reversed(list(owned)):
@@ -357,6 +335,37 @@ def _rollback_publication_directories(owned: Iterable[tuple[Path, int, int]]) ->
             directory.rmdir()
         except OSError:
             pass
+
+
+def _prepare_publication_directories(paths: Iterable[Path]) -> list[tuple[Path, int, int]]:
+    """Create missing publication parents and retain exact identities for rollback."""
+    owned: list[tuple[Path, int, int]] = []
+    try:
+        targets = sorted(
+            {Path(path).parent for path in paths},
+            key=lambda p: (len(p.parts), str(p)),
+        )
+        for target in targets:
+            missing: list[Path] = []
+            cursor = target
+            while not cursor.exists():
+                missing.append(cursor)
+                parent = cursor.parent
+                if parent == cursor:
+                    raise ExportError(f"cannot resolve publication parent for {target}")
+                cursor = parent
+            for directory in reversed(missing):
+                directory.mkdir()
+                st = os.lstat(directory)
+                if not stat.S_ISDIR(st.st_mode) or stat.S_ISLNK(st.st_mode):
+                    raise ExportError(
+                        f"created publication parent is not an ordinary directory: {directory}"
+                    )
+                owned.append((directory, st.st_dev, st.st_ino))
+    except Exception:
+        _rollback_publication_directories(owned)
+        raise
+    return owned
 
 
 def publish_component(out_dir: Path, manifest: dict, payloads: dict[str, bytes]) -> None:
