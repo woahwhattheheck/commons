@@ -3,8 +3,8 @@
 
 The public ``route_matrix_row_receipt.py`` facade dispatches here. The older
 row/snapshot helpers live in ``_route_matrix_row_receipt_core.py``; this layer
-adds proof that the route manifest, materialized payload and bytes actually
-executed by the pinned evaluator are the same candidate.
+adds proof that the route manifest, canonical candidate archive, materialized
+payload, and bytes executed by the pinned evaluator are the same candidate.
 """
 from __future__ import annotations
 
@@ -22,19 +22,55 @@ import _route_matrix_row_receipt_core as core
 
 OFFICIAL_FILE_LOADER_SHA256 = "65fe4058deeaa5fb983a0ec9c6e7e53fdd8368ec"
 PUBLICATION_CUSTODY_SHA256 = "547e733b53380983f219bb894e0586822e386bb6"
+BUILD_DELIVERY_SHA256 = "29b9584e7d15efb96c770608160f038e7d743807"
 
 
 def _safe_member(name: Any) -> str:
     if not isinstance(name, str) or not name:
         raise ValueError("candidate manifest member names must be nonempty strings")
     path = Path(name)
-    if path.is_absolute() or name.startswith(("/", "\\")) or any(part in ("", ".", "..") for part in path.parts):
+    if (path.is_absolute() or name.startswith(("/", "\\"))
+            or any(part in ("", ".", "..") for part in path.parts)):
         raise ValueError(f"unsafe candidate manifest member path: {name!r}")
     return Path(*path.parts).as_posix()
 
 
+def _load_exact_module(name: str, path: Path, expected_sha256: str):
+    path = Path(path).resolve(strict=True)
+    if path.is_symlink() or not path.is_file():
+        raise ValueError(f"{name} authority must be an ordinary file")
+    actual = core.sha256_file(path)
+    if actual != expected_sha256:
+        raise ValueError(f"{name} identity drift: {actual}")
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ValueError(f"cannot import {name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(spec.name, None)
+        raise
+    return module
+
+
+def _build_delivery_module():
+    path = Path(__file__).resolve().parents[2] / "selective-carrot" / "build_delivery.py"
+    return _load_exact_module("titan_v5_build_delivery", path, BUILD_DELIVERY_SHA256)
+
+
+def canonical_archive_members(archive: Path, expected_sha256: str) -> dict[str, bytes]:
+    """Decode via the exact route-builder archive parser.
+
+    ``build_delivery.members`` single-reads and SHA-authenticates the gzip tar,
+    and rejects non-files, duplicate/noncanonical paths, traversal and backslashes.
+    """
+    return _build_delivery_module().members(Path(archive), expected_sha256)
+
+
 def capture_candidate(root: Path, archive: Path, manifest: dict[str, Any]):
-    """Single-read the exact manifest-bound route payload and archive."""
+    """Single-read one manifest-bound root and prove its canonical tar is identical."""
     root, archive = Path(root), Path(archive)
     if root.is_symlink() or not root.is_dir():
         raise ValueError("candidate root must be an ordinary directory")
@@ -74,10 +110,19 @@ def capture_candidate(root: Path, archive: Path, manifest: dict[str, Any]):
             raise ValueError(f"candidate root member SHA256 drift: {name}")
         captured[name] = body
 
-    archive_bytes = archive.read_bytes()
-    archive_sha = hashlib.sha256(archive_bytes).hexdigest()
-    if archive_sha != manifest["candidate_archive_sha256"]:
-        raise ValueError("candidate archive does not match route manifest")
+    archive_sha = manifest.get("candidate_archive_sha256")
+    if not isinstance(archive_sha, str) or len(archive_sha) != 64:
+        raise ValueError("route manifest is missing candidate archive SHA256")
+    archived = canonical_archive_members(archive, archive_sha)
+    archive_map = {
+        name: hashlib.sha256(body).hexdigest()
+        for name, body in sorted(archived.items())
+    }
+    if archive_map != expected:
+        raise ValueError("candidate archive member SHA map does not match route manifest files")
+    if archived != captured:
+        raise ValueError("candidate archive bytes do not match executable root capture")
+
     manifest_sha = hashlib.sha256(
         json.dumps(expected, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
@@ -85,6 +130,7 @@ def capture_candidate(root: Path, archive: Path, manifest: dict[str, Any]):
         "candidate_archive_sha256": archive_sha,
         "candidate_files_manifest_sha256": manifest_sha,
         "member_count": len(captured),
+        "archive_root_byte_identity": True,
     }
 
 
@@ -147,18 +193,9 @@ def verify_snapshot(root: Path, captured: dict[str, bytes]) -> None:
 
 def shared_publication():
     path = Path(__file__).resolve().parents[2] / "selective-carrot" / "publication_custody.py"
-    if core.sha256_file(path) != PUBLICATION_CUSTODY_SHA256:
-        raise ValueError("shared publication custody identity drift")
-    spec = importlib.util.spec_from_file_location("titan_v5_publication_custody", path)
-    if spec is None or spec.loader is None:
-        raise ValueError("cannot import shared publication custody")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    try:
-        spec.loader.exec_module(module)
-    except BaseException:
-        sys.modules.pop(spec.name, None)
-        raise
+    module = _load_exact_module(
+        "titan_v5_publication_custody", path, PUBLICATION_CUSTODY_SHA256
+    )
     return module.publish_exclusive
 
 
@@ -185,17 +222,27 @@ def main() -> int:
     p.add_argument("--receipt-out", type=Path, required=True)
     args = p.parse_args()
 
-    manifest = core.validate_route_manifest(core._load_json(args.route_manifest, "route manifest"), args.plan_index)
+    manifest = core.validate_route_manifest(
+        core._load_json(args.route_manifest, "route manifest"), args.plan_index
+    )
     if core.sha256_file(args.loader) != core.LOADER_SHA256:
         raise ValueError("loader identity drift")
     evaluator = core._import_exact_evaluator(args.evaluator)
-    captured, materialization = capture_candidate(args.candidate_root, args.candidate_archive, manifest)
-    custody, snapshot_root, adapter, snapshot_authority = private_snapshot(captured, args.official_file_loader)
+    captured, materialization = capture_candidate(
+        args.candidate_root, args.candidate_archive, manifest
+    )
+    custody, snapshot_root, adapter, snapshot_authority = private_snapshot(
+        captured, args.official_file_loader
+    )
     try:
         candidate = evaluator.resolve_spec(str(adapter) + "::agent")
         opponent = evaluator.resolve_spec(args.opponent)
-        c_before = core._entry_fingerprint(evaluator, candidate, snapshot_authority["generated_adapter_sha256"], "candidate")
-        o_before = core._entry_fingerprint(evaluator, opponent, args.opponent_entry_sha256, "opponent")
+        c_before = core._entry_fingerprint(
+            evaluator, candidate, snapshot_authority["generated_adapter_sha256"], "candidate"
+        )
+        o_before = core._entry_fingerprint(
+            evaluator, opponent, args.opponent_entry_sha256, "opponent"
+        )
         engine, engine_hashes = evaluator.get_engine(args.engine_dir, args.loader)
         pair = [candidate, opponent] if args.seat == 0 else [opponent, candidate]
         game, snapshot = core.play_with_public_snapshot(
@@ -205,14 +252,20 @@ def main() -> int:
         verify_snapshot(snapshot_root, captured)
         if core.sha256_file(args.official_file_loader) != OFFICIAL_FILE_LOADER_SHA256:
             raise ValueError("official file loader changed during native game")
-        c_after = core._entry_fingerprint(evaluator, candidate, snapshot_authority["generated_adapter_sha256"], "candidate")
-        o_after = core._entry_fingerprint(evaluator, opponent, args.opponent_entry_sha256, "opponent")
+        c_after = core._entry_fingerprint(
+            evaluator, candidate, snapshot_authority["generated_adapter_sha256"], "candidate"
+        )
+        o_after = core._entry_fingerprint(
+            evaluator, opponent, args.opponent_entry_sha256, "opponent"
+        )
         if c_after != c_before or o_after != o_before:
             raise ValueError("entry fingerprint changed during native game")
     finally:
         custody.cleanup()
 
-    row = core.make_row(manifest, args.plan_index, args.seed, args.opponent_label, args.seat, snapshot, game)
+    row = core.make_row(
+        manifest, args.plan_index, args.seed, args.opponent_label, args.seat, snapshot, game
+    )
     receipt = {
         "schema": core.SCHEMA,
         "route_candidate_archive_sha256": manifest["candidate_archive_sha256"],
@@ -240,12 +293,19 @@ def main() -> int:
             json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
         ).hexdigest(),
     }
-    row_bytes = (json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode()
-    receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
+    row_bytes = (
+        json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n"
+    ).encode()
+    receipt_bytes = (
+        json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n"
+    ).encode()
     shared_publication()(((args.row_out, row_bytes), (args.receipt_out, receipt_bytes)))
     print(json.dumps({
-        "seed": args.seed, "opponent": args.opponent_label, "seat": args.seat,
-        "forced_plan": args.plan_index, "snapshot_sha256": row["snapshot_sha256"],
+        "seed": args.seed,
+        "opponent": args.opponent_label,
+        "seat": args.seat,
+        "forced_plan": args.plan_index,
+        "snapshot_sha256": row["snapshot_sha256"],
         "terminal_margin": row["terminal_margin"],
     }, sort_keys=True))
     return 0
