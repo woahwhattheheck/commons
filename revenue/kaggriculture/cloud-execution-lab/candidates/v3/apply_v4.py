@@ -40,60 +40,18 @@ def apply(src):
     )
     router = _replace_once(
         router,
-        "def _v217_plan(view, st, step, action, pending):\n",
-        "def _v217_plan(view, st, step, action, pending, configuration=None):\n",
-        "V217 EOD tail configuration parameter",
-    )
-    router = _replace_once(
-        router,
-        "        opposite = {'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}\n"
-        "        commands = ([['PICKUP','WHEAT']] if need_pickup else []) + [[m] for m in moves] + [['FEED']] + [[opposite[m]] for m in reversed(moves)]\n"
-        "        if len(commands) > end-step or any(_v217_farmer(tape, step+i) != ['PASS'] for i in range(len(commands))):\n"
-        "            continue\n"
-        "        positions = []\n"
-        "        pos = start\n"
-        "        for cmd in commands:\n"
-        "            positions.append(pos)\n"
-        "            if cmd[0] in _V217_MOVES:\n"
-        "                dx, dy = _V217_MOVES[cmd[0]]\n"
-        "                pos = (pos[0]+dx, pos[1]+dy)\n"
-        "        assert pos == start\n"
-        "        return {'step':step, 'route':st.get('plan'), 'commands':commands,\n"
-        "                'positions':positions, 'target':(x,y)}\n",
-        "        opposite = {'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}\n"
-        "        forward = ([['PICKUP','WHEAT']] if need_pickup else []) + [[m] for m in moves] + [['FEED']]\n"
-        "        roundtrip = forward + [[opposite[m]] for m in reversed(moves)]\n"
-        "        commands = roundtrip\n"
-        "        eod_tail = False\n"
-        "        if V217_EOD_TAIL:\n"
+        "        task=_v217_plan(view,st,step,action,pending)\n"
+        "        if task:\n",
+        "        task=_v217_plan(view,st,step,action,pending)\n"
+        "        if V217_EOD_TAIL and task is None:\n"
         "            import r04_v217_eod_tail\n"
-        "            commands, eod_tail = r04_v217_eod_tail.apply_v217_eod_tail(\n"
-        "                forward, roundtrip, targets=targets, step=step, end=end,\n"
-        "                farmer_rows=[_v217_farmer(tape, future_step)\n"
-        "                             for future_step in range(step, end)],\n"
+        "            task = r04_v217_eod_tail.plan_v217_eod_tail(\n"
+        "                view, st, step, action, pending,\n"
+        "                tape=_POLICY.tapes[st['plan']],\n"
+        "                projected_wheat=projected_shed(action, view).get('WHEAT', 0),\n"
         "                configuration=configuration, enabled=True)\n"
-        "        if len(commands) > end-step or any(_v217_farmer(tape, step+i) != ['PASS'] for i in range(len(commands))):\n"
-        "            continue\n"
-        "        positions = []\n"
-        "        pos = start\n"
-        "        for cmd in commands:\n"
-        "            positions.append(pos)\n"
-        "            if cmd[0] in _V217_MOVES:\n"
-        "                dx, dy = _V217_MOVES[cmd[0]]\n"
-        "                pos = (pos[0]+dx, pos[1]+dy)\n"
-        "        if eod_tail:\n"
-        "            assert pos == (x, y)\n"
-        "        else:\n"
-        "            assert pos == start\n"
-        "        return {'step':step, 'route':st.get('plan'), 'commands':commands,\n"
-        "                'positions':positions, 'target':(x,y)}\n",
-        "V217 EOD tail matching-module seam",
-    )
-    router = _replace_once(
-        router,
-        "        task=_v217_plan(view,st,step,action,pending)\n",
-        "        task=_v217_plan(view,st,step,action,pending,configuration)\n",
-        "V217 EOD tail configuration forwarding",
+        "        if task:\n",
+        "V217 EOD tail matching-module wrapper seam",
     )
     router = _replace_once(
         router,
@@ -162,8 +120,8 @@ def apply(src):
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
         "    b10_public_supply_order is the outermost V4 market-order transform: it reorders only\n"
         "    existing leading non-WHEAT SELL rows after proved prior-step public rival supply.\n"
-        "    v217_eod_tail makes only a sole otherwise-unreachable V217 starvation rescue fit before\n"
-        "    a proven nightly reset; any rescue whose incumbent round trip fits is unchanged.\n",
+        "    v217_eod_tail adds only a sole final-pre-reset V217 starvation rescue when the\n"
+        "    incumbent round trip is otherwise too long; every failed proof is predecessor identity.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
