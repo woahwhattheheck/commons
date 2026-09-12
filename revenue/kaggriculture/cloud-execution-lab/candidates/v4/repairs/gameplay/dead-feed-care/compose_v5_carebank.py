@@ -53,8 +53,12 @@ SELECT_BEFORE = (
 )
 SELECT_AFTER = (
     "                selected = self.production.act(obs)\n"
-    "                # W2-V5 scratch seam: preserve the one selected-action pipeline.\n"
+    "                # W2-V5 scratch seam: keep the completed parent as the deadline fallback.\n"
     "                if self.features.r04_dead_feed_care:\n"
+    "                    parent_checkpoint = (deepcopy(selected), self.controller.cur)\n"
+    "                    fallback = parent_checkpoint[0]\n"
+    "                    selected_checkpoint = parent_checkpoint\n"
+    "                    self.selected = parent_checkpoint[0]\n"
     "                    stage = 'r04_dead_feed_care'\n"
     "                    care = load('_titan_dead_feed_care',\n"
     "                                HERE/'r04_dead_feed_care.py', cache=True)\n"
@@ -177,6 +181,7 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         "strict_feature_types": True,
         "consumer_contract": "frozen_nonterminal_only",
         "selected_pipeline": ["apply_dead_feed_care", "apply_carebank_feed_swap"],
+        "deadline_fallback": "completed_parent_selected_action",
     }
 
 
