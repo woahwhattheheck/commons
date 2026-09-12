@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-r04-terminal-route-selection-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T23:02:00Z",
+  "heartbeat_at": "2026-09-12T23:02:00Z",
+  "ttl_s": 1800,
+  "note": "Wide gameplay lane on the ONE canonical production-v3/V5 family: source-bind the hard forced R04 terminal plan2 transition at step648, reuse/extend the shared route-probe pattern rather than minting per-plan wrappers, and test terminal plans 0..12 at step648 only while preserving every pre648 action including actual step144 selection and all downstream V4/carrot logic. Prior released S20 evidence localized late deterioration after the forced takeover. No future RNG/seed oracle, no terminal-animal ROI specialization, no CURRENT/default/release/Kaggle mutation. Earlier concrete current-V5 terminal-route bytes win and this holding yields on overlap."
+}
