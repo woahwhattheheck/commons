@@ -39,6 +39,21 @@
       "after": [],
       "conflicts": [],
       "note": "Blocked until literal-current-main reachability census and fresh exact-cell economic gate authorize recomposition."
+    },
+    {
+      "id": "row-shed-sell-order",
+      "state": "blocked",
+      "reason": "Current-ABI source component is landed, but no authenticated materialized runtime postimage/composer output is pinned; official-engine/full-game activation gate also remains required.",
+      "package": "repairs/gameplay/row-shed-sell-order",
+      "entrypoints": [
+        "repairs/gameplay/row-shed-sell-order/row_shed_sell_order.py"
+      ],
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "STRATUM semantics remain authoritative; LOOM only records that source custody is not yet a composable runtime edge."
     }
   ],
   "discovery": {
@@ -48,7 +63,8 @@
     ],
     "patterns": [
       "port_current_runtime.py",
-      "build_native_d4.py"
+      "build_native_d4.py",
+      "row_shed_sell_order.py"
     ],
     "strict": true,
     "ignore": []
