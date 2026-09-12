@@ -91,6 +91,37 @@ def capture_authenticated(path: Path, expected_git_blob: str) -> bytes:
     return raw
 
 
+def capture_sha256(path: Path, expected_sha256: str, label: str) -> bytes:
+    """Single-read SHA256 authentication for caller-supplied binary evidence."""
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"{label} must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = sha256_bytes(raw)
+    if actual != expected_sha256:
+        raise ValueError(f"{label} moved; expected SHA256 {expected_sha256}, got {actual}")
+    return raw
+
+
+def archive_members_captured(helper, raw: bytes) -> dict[str, bytes]:
+    """Parse only the exact baseline bytes authenticated by the caller.
+
+    The shared parser is reused, but it receives a fresh private snapshot rather than
+    the caller-controlled live path, closing authenticate-then-reopen races.
+    """
+    if type(raw) is not bytes:
+        raise TypeError("captured archive must be bytes")
+    with tempfile.TemporaryDirectory(prefix="v4-factorial-baseline-") as temp:
+        snapshot = Path(temp) / "submitted-v4.tar.gz"
+        with snapshot.open("xb") as stream:
+            stream.write(raw)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if snapshot.is_symlink() or not snapshot.is_file():
+            raise ValueError("Private baseline snapshot is not an ordinary file")
+        return helper.archive_members(snapshot)
+
+
 def exact_v4_config(raw: bytes) -> dict:
     if sha256_bytes(raw) != V4_CONFIG_SHA256:
         raise ValueError("TITAN-CONFIG.json is not the exact submitted V4 config")
@@ -242,12 +273,11 @@ def main() -> int:
 
     root = args.kg_root.resolve(strict=True)
     engine_dir = args.engine_dir.resolve(strict=True)
-    baseline_path = args.baseline.resolve(strict=True)
+    baseline_path = Path(args.baseline)
     output = args.output.resolve()
     if output.exists():
         raise FileExistsError(output)
-    if sha256_bytes(baseline_path.read_bytes()) != BASELINE_SHA256:
-        raise ValueError("Baseline is not exact submitted V4 archive")
+    baseline_raw = capture_sha256(baseline_path, BASELINE_SHA256, "Baseline archive")
 
     helper_path = root / HELPER
     helper_raw = capture_authenticated(helper_path, HELPER_GIT_BLOB)
@@ -255,7 +285,7 @@ def main() -> int:
     if helper.BASELINE_SHA256 != BASELINE_SHA256:
         raise ValueError("Helper baseline authority disagrees with this harness")
 
-    baseline = helper.archive_members(baseline_path)
+    baseline = archive_members_captured(helper, baseline_raw)
     exact_v4_config(baseline["TITAN-CONFIG.json"])
     arm_payloads = {arm: arm_members(baseline, arm) for arm in arms}
     arm_ids = {arm: arm_identity(payload) for arm, payload in arm_payloads.items()}
@@ -302,6 +332,7 @@ def main() -> int:
         "v4_source": V4_SOURCE,
         "baseline_archive_sha256": BASELINE_SHA256,
         "baseline_config_sha256": V4_CONFIG_SHA256,
+        "baseline_execution": "single-read SHA256-authenticated captured bytes via private snapshot",
         "changed_member_contract": ["TITAN-CONFIG.json"],
         "factor_features": list(FEATURES),
         "design": args.design,
@@ -319,13 +350,15 @@ def main() -> int:
         "python": sys.version,
         "platform": platform.platform(),
         "method": (
-            "Every arm is extracted fresh from the exact submitted V4 archive. "
-            "Only TITAN-CONFIG.json may differ, and only the four booleans that were "
-            "added/enabled in V4 versus submitted V3.1 may change. The shared helper "
-            "executes from its single authenticated captured byte snapshot; evaluator, "
-            "loader, packer, reference bank and opponent support execute from the "
-            "authenticated snapshot inherited from joint-liquidity-bench. Each arm gets "
-            "a fresh persistent agent process and private payload; arm order rotates by cell."
+            "Every arm is extracted from one single-read SHA256-authenticated capture of "
+            "the exact submitted V4 archive, parsed through a private snapshot. Only "
+            "TITAN-CONFIG.json may differ, and only the four booleans added/enabled in V4 "
+            "versus submitted V3.1 may change; v31_flags is a four-flag ablation, not a "
+            "behavioral reconstruction of V3.1. The shared helper executes from its single "
+            "authenticated captured byte snapshot; evaluator, loader, packer, reference "
+            "bank and opponent support execute from the authenticated snapshot inherited "
+            "from joint-liquidity-bench. Each arm gets a fresh persistent agent process and "
+            "private payload; arm order rotates by cell."
         ),
     }
     helper.write_json(output / "run.json", run)
