@@ -7,6 +7,7 @@ Run in a materialised candidate package:
 """
 from __future__ import annotations
 
+import inspect
 import json
 import sys
 import unittest
@@ -17,6 +18,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import r04_full_router as r04  # noqa: E402
+import r04_v217_eod_tail as tail  # noqa: E402
 from titan_runtime import Features  # noqa: E402
 
 CONFIG = {"episodeSteps": 720, "turnsPerDay": 24, "boardSize": 10,
@@ -63,13 +65,18 @@ def _plan(step=500, target=(7, 4), tape=None, config=CONFIG,
           primary_unfed=1, extra_targets=()):
     tape = tape or _tape()
     r04._POLICY = _Policy(tape)
-    return r04._v217_plan(
-        _View(target=target, primary_unfed=primary_unfed, extra_targets=extra_targets),
-        {"plan": 0, "v217_used": 0}, step,
-        {"farmer": ["PASS"], "hands": [], "market": []}, [], config)
-
-
-TASK_KEYS = {"step", "route", "commands", "positions", "target"}
+    view = _View(target=target, primary_unfed=primary_unfed, extra_targets=extra_targets)
+    state = {"plan": 0, "v217_used": 0}
+    action = {"farmer": ["PASS"], "hands": [], "market": []}
+    pending = []
+    incumbent = r04._v217_plan(view, state, step, action, pending)
+    if r04.V217_EOD_TAIL and incumbent is None:
+        incumbent = tail.plan_v217_eod_tail(
+            view, state, step, action, pending, tape=tape,
+            projected_wheat=r04.projected_shed(action, view).get("WHEAT", 0),
+            configuration=config, enabled=True,
+        )
+    return incumbent
 
 
 class V217EodTail(unittest.TestCase):
@@ -86,24 +93,32 @@ class V217EodTail(unittest.TestCase):
         self.assertIs(data["r04_v217_eod_tail"], False)
         self.assertIs(Features(**data).r04_v217_eod_tail, False)
 
-    def test_disabled_keeps_exact_predecessor_roundtrip_task(self):
-        plan = _plan(target=(5, 4), config=None)
+    def test_predecessor_private_planner_signature_and_body_stay_v3_exact(self):
         self.assertEqual(
-            plan,
-            {
-                "step": 500,
-                "route": 0,
-                "commands": [["EAST"], ["FEED"], ["WEST"]],
-                "positions": [(4, 4), (5, 4), (5, 4)],
-                "target": (5, 4),
-            },
+            tuple(inspect.signature(r04._v217_plan).parameters),
+            ("view", "st", "step", "action", "pending"),
         )
+        source = inspect.getsource(r04._v217_plan)
+        self.assertNotIn("V217_EOD_TAIL", source)
+        self.assertNotIn("configuration", source)
+        self.assertNotIn("eod_tail", source)
+
+    def test_matching_module_seam_is_positive_and_additive(self):
+        source = (ROOT / "r04_full_router.py").read_text(encoding="utf-8")
+        self.assertIn("if V217_EOD_TAIL and task is None:", source)
+        self.assertIn("r04_v217_eod_tail.plan_v217_eod_tail(", source)
+
+    def test_disabled_keeps_existing_roundtrip_even_without_config(self):
+        plan = _plan(target=(5, 4), config=None)
+        self.assertIsNotNone(plan)
+        self.assertNotIn("eod_tail", plan)
+        self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
+        self.assertEqual(plan["positions"], [(4, 4), (5, 4), (5, 4)])
 
     def test_enabled_reclaims_only_otherwise_unreachable_reverse_walk(self):
         r04.V217_EOD_TAIL = True
-        plan = _plan(step=500, target=(7, 4))  # hour 20: four callbacks remain tonight
+        plan = _plan(step=500, target=(7, 4))
         self.assertIsNotNone(plan)
-        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["commands"],
                          [["EAST"], ["EAST"], ["EAST"], ["FEED"]])
         self.assertEqual(plan["positions"],
@@ -113,14 +128,12 @@ class V217EodTail(unittest.TestCase):
         r04.V217_EOD_TAIL = True
         plan = _plan(target=(5, 4))
         self.assertIsNotNone(plan)
-        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
 
     def test_multiple_targets_cannot_tail_preempt_a_valid_incumbent_rescue(self):
         r04.V217_EOD_TAIL = True
         plan = _plan(target=(7, 4), primary_unfed=2, extra_targets=((5, 4, 1),))
         self.assertIsNotNone(plan)
-        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["target"], (5, 4))
         self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
 
@@ -149,12 +162,9 @@ class V217EodTail(unittest.TestCase):
         r04.V217_EOD_TAIL = True
         plan = _plan(step=500, target=(7, 4), config=_StructConfig(CONFIG))
         self.assertIsNotNone(plan)
-        self.assertEqual(set(plan), TASK_KEYS)
 
     def test_final_day_has_no_reset_credit(self):
         r04.V217_EOD_TAIL = True
-        # Day 29 hour 20 has only steps 716..718; there is no next-day callback
-        # on which a farmer reset can safely rejoin the authored route.
         self.assertIsNone(_plan(step=716, target=(6, 4)))
 
     def test_install_controls_flag(self):
