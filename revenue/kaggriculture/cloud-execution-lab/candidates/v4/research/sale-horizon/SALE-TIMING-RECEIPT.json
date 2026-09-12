@@ -53,7 +53,7 @@
     "mutation-receipts/MUTATION-RECEIPT.json": {"bytes": 2837, "sha256": "1c4487ccc128bbdaebcb1cf99d0f93b0d2d02abf3d6e7c9b928304d3818f9377"},
     "mutation-receipts/normal-current_turn_only.txt": {"bytes": 4497, "sha256": "a3a3a5dce611ae73cb666f4c693cf4896d3b175d46b7c9dcd8fa5ac632812fc4"},
     "mutation-receipts/normal-default_on.txt": {"bytes": 1090, "sha256": "d353e59b8a33d952ad355c9bfb180cdff0175e2c7ba77085626c5a632f5d2ba0"},
-    "mutation-receipts/normal-drop_before_alignment.txt": {"bytes": 4781, "sha256": "cc1fc1d17b11038b3185a21d8edb0af84b55453ed1923d67cca0c59132cbb994"},
+    "mutation-receipts/normal-drop_before_alignment.txt": {"bytes": 4781, "sha256": "cc1fc1d17b11038b3185a21d8edb0af84b55453edb153d67cca0c59132cbb994"},
     "mutation-receipts/normal-touch_forced_rescue.txt": {"bytes": 2778, "sha256": "e11ac0aa2421f275cba205afced66c8bc37b0f0c47ac27bed3532218d111545f"},
     "mutation-receipts/normal-touch_relaxed_rules.txt": {"bytes": 1452, "sha256": "5da9fa540d038ca48f224a61225526cb43e3aa2378e92f4176cd81673a6393ff"},
     "mutation-receipts/optimized-current_turn_only.txt": {"bytes": 4497, "sha256": "10bf36b22c6e7051b583e535513b2e8ca13bbcb402aa679ab27f7ddfab24020f"},
