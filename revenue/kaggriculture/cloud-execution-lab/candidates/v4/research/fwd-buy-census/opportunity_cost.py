@@ -109,6 +109,7 @@ def tick(engine, state, env, seat, step, own_action):
     global CALLBACKS
     for s in state:
         s.observation.step = step
+        s.observation.day, s.observation.hour = divmod(step, env.configuration.turnsPerDay)
         s.action = action()
     state[seat].action = copy.deepcopy(own_action)
     before = state[seat].observation.farms[seat]["money"]
@@ -177,7 +178,7 @@ def headroom_pair(engine, *, seat=0, quantity=4, room=4, harvest=4,
 
 
 def capital_pair(engine, *, seat=0, cash=26):
-    """A $26 early WHEAT purchase may block tomorrow's authored $1 HIRE.
+    """A $26 early WHEAT purchase may block the next callback's $1 HIRE.
 
     A common later DIG clears the unharvested annual crop, so final physical
     state is equal. This is a fixed-script opportunity, not optimal play.
