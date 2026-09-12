@@ -263,7 +263,7 @@ def _purchase_quantity(observation, action, configuration, r04):
 
 
 def apply_route12_seed_reserve(observation, action, configuration=None, enabled=False):
-    if not enabled:
+    if enabled is not True:
         return action
     if not isinstance(observation, dict) or type(observation.get("step")) is not int:
         return action
