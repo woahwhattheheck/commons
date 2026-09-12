@@ -135,6 +135,46 @@ class RegimeHistoryTests(unittest.TestCase):
         self.assertEqual(h.regime_step, 3)
         self.assertEqual(h.signal(3, 'CARROT')['stress'], 0)
 
+    def test_same_step_retry_does_not_advance_mix_confirmation(self):
+        h = PublicRegimeHistory(change_confirmations=2)
+        base = obs(0, rival_tile=tile('CARROT', 0))
+        changed1 = obs(1, rival_tile=tile('MILK', 0))
+        changed2 = obs(2, rival_tile=tile('MILK', 0))
+        h.observe(None, base, None, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        h.observe(base, changed1, {'market': []}, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        self.assertEqual(h.regime_step, 0)
+        self.assertEqual(h.candidate_streak, 1)
+        h.observe(changed1, changed1, {'market': []}, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        self.assertEqual(h.regime_step, 0)
+        self.assertEqual(h.candidate_streak, 1)
+        h.observe(changed1, changed2, {'market': []}, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        self.assertEqual(h.regime_step, 2)
+        self.assertEqual(h.candidate_streak, 0)
+
+    def test_backward_step_reseeds_and_clears_old_evidence(self):
+        h = PublicRegimeHistory(change_confirmations=2)
+        base = obs(5, rival_tile=tile('CARROT', 0))
+        changed = obs(6, rival_tile=tile('MILK', 0))
+        rewind = obs(2, rival_tile=tile('MILK', 0))
+        h.observe(None, base, None, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        h.harvests['CARROT'] = [(5, 9)]
+        h.flows['CARROT'] = [(5, 4)]
+        h.observe(base, changed, {'market': []}, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        self.assertEqual(h.candidate_streak, 1)
+        h.observe(changed, rewind, {'market': []}, {}, products=PRODUCTS,
+                  product_of=product_of, absorption=no_absorption)
+        self.assertEqual(h.regime_step, 2)
+        self.assertEqual(h.candidate_streak, 0)
+        self.assertEqual(h.signal(2, 'CARROT')['stress'], 0)
+        self.assertEqual(dict(h.harvests), {})
+        self.assertEqual(dict(h.flows), {})
+
     def test_wrapper_initializes_opening_mix_before_first_transition(self):
         here = Path(__file__).resolve().parent
         stub = """\
