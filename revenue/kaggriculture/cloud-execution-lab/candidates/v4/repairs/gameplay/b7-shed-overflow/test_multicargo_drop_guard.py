@@ -104,6 +104,14 @@ class MultiCargoDropGuardTest(unittest.TestCase):
         parent = action([["DROP"]])
         self.assertIs(GUARD.transform(observation(2, [{"MILK": 1, "WOOL": 3}]), parent, CFG, enabled=True), parent)
 
+    def test_zero_quantity_key_fails_that_drop_closed(self):
+        parent = action([["DROP"]])
+        obs = observation(0, [{"MILK": 2, "WOOL": 0}])
+        self.assertIs(GUARD.transform(obs, parent, CFG, enabled=True), parent)
+        drop_shed, drop_inv = project_drop(obs["private"]["shed"], obs["private"]["inventories"][0])
+        self.assertEqual(drop_shed, obs["private"]["shed"])
+        self.assertEqual(drop_inv, {})
+
     def test_animal_first_with_room_fails_closed(self):
         parent = action([["DROP"]])
         self.assertIs(GUARD.transform(observation(2, [{"GOOSE": 5, "MILK": 3}]), parent, CFG, enabled=True), parent)
