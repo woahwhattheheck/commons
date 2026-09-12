@@ -1,0 +1,45 @@
+{
+  "conclusion": [
+    "Do not create a generic GOOSE acquisition controller: native reachable plan0 already authors BUY/PICKUP/PLACE/COOP lifecycle.",
+    "The only retention defect observed by this gate is the existing V224 raw-slot compaction lane; use #12615 semantics instead of a GOOSE-specific repair.",
+    "A V224 ON gate should include the concrete plan0 step265 GOOSE witness because the empty raw slot controls lockstep timing of BUY_LAND and BUY_ANIMAL GOOSE."
+  ],
+  "current_source_confirmation": {
+    "e184": "outer sale-window returns parent unchanged before ADVANCE_START=288",
+    "v224": "current donor still filters market with `if o`, deleting falsey raw slots",
+    "v231": "GOOSE witness steps are outside V231 early/late substitution windows ending at 227",
+    "v233": "returns parent unchanged for day<12; witness steps 241-275 are days 10-11"
+  },
+  "frozen_whole_router_smoke": {
+    "exact_match_steps": [241,253,254,259,260,268,275],
+    "first_mutating_layer": "V224 _v224_sales_first",
+    "nonidentical_steps": [265],
+    "observation_class": "synthetic neutral sequential observations, steps 0..275, plan0 fallback; high cash; no special V231/V233 gates",
+    "stage_bisection": {
+      "_V224_PARENT": "preserves empty raw slot",
+      "_V226_PARENT": "slot already removed, therefore V224 is mutator"
+    },
+    "step265_final_market": [["HIRE"],["HIRE"],["HIRE"],["HIRE"],["HIRE"],["BUY_LAND"],["BUY_ANIMAL","GOOSE",1],["BUY_PRODUCT","FERTILIZER",1],["BUY_SEED","STRAWBERRY",2]],
+    "step265_native_market": [["HIRE"],["HIRE"],["HIRE"],["HIRE"],["HIRE"],[],["BUY_LAND"],["BUY_ANIMAL","GOOSE",1],["BUY_PRODUCT","FERTILIZER",1],["BUY_SEED","STRAWBERRY",2]]
+  },
+  "limits": [
+    "Frozen whole-router smoke executed the exact frozen V3.1 router, not a materialized current V4 production package.",
+    "Synthetic neutral observations establish wrapper retention/compaction behavior, not engine execution or economics.",
+    "Current V4 confirmation is source-level for V231/V233/E184/V224; package/economic promotion remains a separate gate."
+  ],
+  "reachability": {
+    "live_goose_steps_plan0": [241,253,254,259,260,265,268,275],
+    "plan0": "reachable as SHOP_PLANS fallback after route step 144",
+    "plan2": "not reachable at steps 241-275; plan 2 is forced only at FINAL_PLAN_STEP=648"
+  },
+  "schema": "titan.v4.goose-r04-retention.v1",
+  "source_pins": {
+    "current_v4_donor_router_git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d",
+    "frozen_v31_router_git_blob": "21c4f1db0298f8955b1f5ad366bd780a89cad206",
+    "native_tapes_git_blob": "a43289b9cc5e34a2481fddf652762a7d92f427ef",
+    "v224_helper_git_blob": "43afebae35560e54dde645cff656c8be8031851f",
+    "v224_owner_pr": 12615,
+    "v224_test_git_blob": "4e3ece39b80bbfea4d4232745f9ef01c1c53c205"
+  },
+  "status": "CONVERGED_TO_EXISTING_V224_RAW_SLOT_LANE"
+}
