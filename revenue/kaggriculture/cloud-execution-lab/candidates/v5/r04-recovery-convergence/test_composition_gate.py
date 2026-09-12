@@ -104,7 +104,7 @@ class CompositionGateTests(unittest.TestCase):
         self.assertEqual(receipt["status"], "CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF")
         self.assertEqual(receipt["blockers"], [])
         self.assertEqual(receipt["component_count"], len(mod.REQUIRED_SLOTS))
-        self.assertEqual(receipt["combined_candidate_id"], "v5c:" + "a" * 64 if False else "v5c:" + "a" * 0 + "a" * 0)
+        self.assertEqual(receipt["combined_candidate_id"], "v5c:" + "a" * 64)
         self.assertFalse(receipt["default_flip_authority"])
         self.assertFalse(receipt["release_authority"])
         self.assertFalse(receipt["kaggle_submission_authority"])
