@@ -31,6 +31,14 @@ def function_from(source: str, name: str, namespace=None):
     return ns[name]
 
 
+def quantities(orders):
+    result = {}
+    for order in orders:
+        if order and len(order) > 2 and order[0] == "SELL":
+            result[order[1]] = result.get(order[1], 0) + max(0, int(order[2]))
+    return result
+
+
 class CurrentPrefixCompositionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -105,6 +113,35 @@ class CurrentPrefixCompositionTests(unittest.TestCase):
         new_fn(farm, new_private, orders, 10, 1)
         self.assertEqual(old_private["shed"]["MILK"], 0)
         self.assertEqual(new_private["shed"]["MILK"], 4)
+
+    def test_represented_market_matches_engine_list_only_normalization(self):
+        patched = current._rewrite_frozen(self.raw_frozen)
+        new_fn = function_from(patched, "apply_represented_market")
+        private = {"shed": {"MILK": 4}}
+        # The official interpreter treats tuple/non-list market values as [].
+        new_fn({"hands": []}, private, (["SELL", "MILK", 4],), 10, 1)
+        self.assertEqual(private["shed"]["MILK"], 4)
+
+    def test_joint_queue_does_not_reject_preserved_raw_suffix_length(self):
+        patched = current._rewrite_frozen(self.raw_frozen)
+        materialize = function_from(patched, "materialize_sales")
+        ns = {
+            "PRODUCTS": {"MILK"},
+            "sale_quantities": quantities,
+            "materialize_sales": materialize,
+            "shared_slot_ledger": lambda plans, orders_at, cap: {
+                "plans": plans, "cap": cap
+            },
+        }
+        old_fn = function_from(self.raw_frozen, "joint_queue_ledger", ns)
+        new_fn = function_from(patched, "joint_queue_ledger", ns)
+        orders_at = lambda _t: [[], ["SELL", "MILK", 1]]
+        args = (
+            {"MILK": [(0, 0)]}, {"MILK": 0}, {}, {"MILK": 1},
+            {"stock_upper": {"MILK": 1}}, orders_at, 0, 0, 1,
+        )
+        self.assertIsNone(old_fn(*args))
+        self.assertIsNotNone(new_fn(*args))
 
     def test_horizon_does_not_treat_suffix_sell_as_executable_slot(self):
         patched = current._rewrite_frozen(self.raw_frozen)
