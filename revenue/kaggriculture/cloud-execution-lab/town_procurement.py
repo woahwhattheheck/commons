@@ -49,6 +49,8 @@ class _Pending:
     post_unit_wheat: int
 
 
+# One actor normally owns one player, but keying avoids accidental cross-seat
+# state contamination in direct/unit tests.
 _STATE: dict[int, dict[str, Any]] = {}
 
 
@@ -87,7 +89,11 @@ def reset(*, player: int | None = None) -> None:
 
 
 def observe(observation: Any) -> dict[str, Any]:
-    """Reconcile the immediately previous target from public private-shed state."""
+    """Reconcile the immediately previous target from public private-shed state.
+
+    This runs at canonical entrypoint start, before a new controller is built or
+    any deadline timer can cancel finalization.  It never mutates an action.
+    """
     player = _player(observation)
     step = _step(observation)
     if step == 0:
@@ -214,7 +220,30 @@ def suppress_confirmed(observation: Any, action: Any, configuration: Any = None)
     return out, report
 
 
-def apply(observation: Any, action: Any, post_unit_observation: Any, configuration: Any = None, *, completed: bool) -> tuple[Any, dict[str, Any]]:
+def _target_pre_market_wheat(observation: Any, action: Any) -> int | None:
+    if not isinstance(action, dict):
+        return None
+    unit_rows = []
+    farmer = action.get("farmer")
+    if isinstance(farmer, list):
+        unit_rows.append(farmer)
+    hands = action.get("hands")
+    if isinstance(hands, list):
+        unit_rows.extend(row for row in hands if isinstance(row, list))
+    for row in unit_rows:
+        if not row:
+            continue
+        if row[0] == "DROP":
+            return None
+        if row[0] == "PICKUP" and len(row) > 1 and row[1] == "WHEAT":
+            return None
+    try:
+        return _shed_wheat(observation)
+    except ValueError:
+        return None
+
+
+def apply(observation: Any, action: Any, configuration: Any = None, *, completed: bool) -> tuple[Any, dict[str, Any]]:
     """Apply source suppression or initiate one exact target advance."""
     step = _step(observation)
     player = _player(observation)
@@ -226,9 +255,6 @@ def apply(observation: Any, action: Any, post_unit_observation: Any, configurati
         return action, report
     if not completed:
         report["status"] = "target_requires_completed_action"
-        return action, report
-    if post_unit_observation is None:
-        report["status"] = "target_missing_post_unit_snapshot"
         return action, report
     hit = _unique_wheat_buy(action)
     if hit is None:
@@ -247,10 +273,9 @@ def apply(observation: Any, action: Any, post_unit_observation: Any, configurati
     if baseline_qty != move_qty:
         report.update(status="target_quantity_drift", baseline_qty=baseline_qty, expected_qty=move_qty)
         return action, report
-    try:
-        post_wheat = _shed_wheat(post_unit_observation)
-    except ValueError:
-        report["status"] = "target_invalid_post_unit_snapshot"
+    post_wheat = _target_pre_market_wheat(observation, action)
+    if post_wheat is None:
+        report["status"] = "target_unit_wheat_ambiguous"
         return action, report
     state = _state(player)
     if state.get("pending") is not None:
