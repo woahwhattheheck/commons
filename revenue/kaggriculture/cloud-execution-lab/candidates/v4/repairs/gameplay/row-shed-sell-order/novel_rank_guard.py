@@ -303,7 +303,7 @@ class FinalActionNoveltyGuard:
 
 # Compatibility aliases for the earlier rank-only/direct-pressure carrier. The
 # semantics are intentionally stricter now: callers must supply final returned
-actions from the complete remaining canonical pipeline.
+# actions from the complete remaining canonical pipeline.
 PressureNoveltyGuard = FinalActionNoveltyGuard
 NovelRankGuard = FinalActionNoveltyGuard
 
