@@ -70,3 +70,12 @@ jobs:
               "member_count": receipt["member_count"],
           }, sort_keys=True))
           PY
+      - name: Publish exact treatment bytes for independent review
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v5-production-recovery-town-off
+          path: |
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/production-recovery-survivorship/town-off-a.tar.gz
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/production-recovery-survivorship/town-off-a.json
+          if-no-files-found: error
+          compression-level: 0
