@@ -30,6 +30,25 @@ python -O -B test_s13_tail_settlement.py
 
 Python 3.13.5: **30/30 normal and 30/30 optimized**. Includes 15,552 independently enumerated clock cases, 800 funded-prefix quantity cases, 216 valid standard-domain comparisons with the exact original donor, and five executed predecessor discriminators (string evidence, later center pulse, configuration drift, malformed config, inert suffix veto). Syntax compilation also passed. These are isolated callback/clock/quantity checks using a documented contract projector; they are NOT full-engine transitions, generated-package acceptance, hosted games, or economic measurements. The historical reported 25-case suite was not supplied and is not counted as rerun here.
 
+### Pinned-engine follow-up
+
+The original five-file package merged through #12689 into canonical main at `f1988cb64d6bc628fb59ea3a590896e8f9e86d7a`. First-parent comparison verified exactly those five additions, preserving all concurrent main changes. Engine test follow-up landed at `618232a8923ae2ee790ad743e0392cdc6a0f57eb`, and its execution receipt at `6782ae4c950a2d9e22c820e665b058fd2940fd3e`.
+
+`test_s13_engine.py` adds **8/8 normal and 8/8 optimized** actual-engine fixture tests. Combined discovery passes **38/38 in both modes**, no skips. The source is pinned to engine blob `3c202c7ee921da239356789e266b694635103fc4` and configuration blob `b354d06b742fe48402513792253f1a5c29366b20`; SHA256 validation is mandatory. Physical fixtures were recovered from Slack `F0C18AXAL04`, outer SHA256 `8fb4776b416f32dcd978f57a6f8caf42c84d2245d5f9a08962adbe814dadab8e`. No historical materializer was executed.
+
+```sh
+python -B test_s13_engine.py
+python -O -B test_s13_engine.py
+python -B -m unittest discover -s . -p 'test_s13*.py' -v
+python -O -B -m unittest discover -s . -p 'test_s13*.py' -v
+```
+
+The engine suite discovers this repository's `reference/engine` through ancestors, or accepts `TITAN_ENGINE_DIR` with the same mandatory hashes. Only the unavailable framework seed-resolution import is replaced by a raising stub; initialized fixtures never call it. All game-transition functions are compiled from the pinned official AST unchanged. The test-only unit projector supports PASS/DROP/PLACE/PICKUP and calls the official unit function in actor order. It is deliberately NOT a general current-runtime projector.
+
+Coverage includes 288 paired market worlds across both seats and price-floor/scarcity/cap/suffix cases; 48 real unit/shared-capacity worlds; actor-order pickup-before-hand-drop; net-new/reserve caps with actual delivery; and full-interpreter OFF identity through final-step DONE.
+
+A two-callback regression supplies a concrete economic consequence, not a field score: at steps 716/717, shed MILK12, market inventory10030 and four observed SMOOTHIE_SHOP instances, the malformed-string predecessor sweeps early for **$1026**; the repaired guard and unchanged parent each return **$1078**, with identical final MILK shed0/public inventory10038. The repair avoids the **$52 loss in this controlled fixture**. Whole-game economics and current-production ABI integration remain unmeasured. Full hashes, scope, counts, and the corrected initial harness assertion are recorded in `ENGINE_VALIDATION.json`; normal and optimized engine receipts were byte-identical.
+
 ## Integration boundary
 
 No production/runtime, key/config/default, archive, workflow, opponent, or Kaggle submission changed. The function requires explicit `enabled=True` AND a caller-supplied exact selected-unit projector. Current-runtime projector binding remains a separate integration gate; do not invoke an old R04 materializer to obtain it. This preterminal helper is distinct from the T01 final-step adapter being ported by ASTRA-ENDPORT.
