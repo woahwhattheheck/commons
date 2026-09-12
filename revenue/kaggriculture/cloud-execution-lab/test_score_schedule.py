@@ -149,14 +149,34 @@ class ScoreScheduleTests(unittest.TestCase):
             actual=compile_policy(core.MarketPath(**args),plans,quantity,streams,now+1,core.absorption)
             self.assertEqual(actual,expected);self.assertEqual((args,plans,streams),before)
 
-    def test_fertilizer_does_not_consume_center_interval(self):
-        args=model_args('FERTILIZER');args['config']['townCenterSellInterval']=0
-        model=core.MarketPath(**args)
-        self.assertEqual(model.score(((249,2),),2,2,'paired'),reference_score(model,((249,2),),2,2,'paired'))
+    def test_nonpositive_intervals_match_engine_cadence_one(self):
+        plan=((242,1),(249,1));rival=((242,3),)
+        for key in ('townShopSellInterval','townCenterSellInterval'):
+            for value in (0,-7):
+                with self.subTest(key=key,value=value):
+                    raw=model_args();raw['config'][key]=value
+                    effective=deepcopy(raw);effective['config'][key]=1
+                    self.assertEqual(
+                        tuple(core.absorption('EGG',step,raw['shops'],raw['config'])
+                              for step in range(raw['now'],raw['end']+1)),
+                        tuple(core.absorption('EGG',step,effective['shops'],effective['config'])
+                              for step in range(effective['now'],effective['end']+1)))
+                    self.assertEqual(core.MarketPath(**raw).score(plan,2,rival,'after'),
+                                     core.MarketPath(**effective).score(plan,2,rival,'after'))
+                    core.clear_shared_market_path_cache()
+                    self.assertIs(core.shared_market_path(**raw),
+                                  core.shared_market_path(**effective))
 
-    def test_invalid_shop_interval_still_raises(self):
-        args=model_args();args['config']['townShopSellInterval']=0
-        with self.assertRaises(ZeroDivisionError):core.MarketPath(**args).score((),2,0,'paired')
+    def test_fertilizer_does_not_consume_nonpositive_center_interval(self):
+        plan=((249,2),)
+        for value in (0,-7):
+            with self.subTest(value=value):
+                raw=model_args('FERTILIZER');raw['config']['townCenterSellInterval']=value
+                effective=deepcopy(raw);effective['config']['townCenterSellInterval']=1
+                self.assertEqual(core.absorption('FERTILIZER',249,[],raw['config']),0)
+                self.assertEqual(core.absorption('EGG',249,[],raw['config']),1)
+                self.assertEqual(core.MarketPath(**raw).score(plan,2,2,'paired'),
+                                 core.MarketPath(**effective).score(plan,2,2,'paired'))
 
     def test_shared_projection_cache_reuses_equal_value_context(self):
         core.clear_shared_market_path_cache()
