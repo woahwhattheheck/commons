@@ -21,6 +21,7 @@
 - Equipment export/import package cards: `tenon-r4-equipment-export-import-package-cards-20260906-01`
 - Equipment inspect role card: `tenon-r4-equipment-inspect-role-card-20260906-01`
 - Equipment prove-handoff card: `hinge-r4-equipment-prove-handoff-card-20260906-01`
+- Equipment create role card: `hinge-r4-equipment-create-role-card-20260912-01`
 
 ## Live cash
 
