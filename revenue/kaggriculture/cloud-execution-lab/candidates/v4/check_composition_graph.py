@@ -121,11 +121,11 @@ def _discover(root: Path, discovery: dict[str, Any]) -> tuple[set[str], set[str]
             unsafe.add(scan_root)
             continue
         for path in base.rglob("*"):
-            if not path.is_file():
-                continue
             rel = path.relative_to(root).as_posix()
             if path.is_symlink():
                 unsafe.add(rel)
+                continue
+            if not path.is_file():
                 continue
             if any(
                 isinstance(pattern, str)
