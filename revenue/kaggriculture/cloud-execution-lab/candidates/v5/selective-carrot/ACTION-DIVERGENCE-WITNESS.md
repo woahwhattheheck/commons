@@ -14,9 +14,10 @@ and temporarily subclasses that evaluator's `Actor`. The subclass records the
 same action response that the evaluator passes to the official interpreter;
 there is no second policy call and no evaluator source edit. Two exact runs are
 made for each requested seat. Candidate and opponent observation/action hashes
-are compared step by step. The report binds each complete hash trace with a
-trace digest and publishes a bounded per-step hash/full-action window around the
-first action divergence.
+are compared step by step. The report retains four complete compact hash vectors
+(left/right candidate and left/right opponent), binds each complete trace with
+the historical trace digest, and publishes a bounded per-step hash/full-action
+window around the first action divergence.
 
 A candidate action is labeled the first observed divergence only when its action
 changes before the opponent's and both candidate/opponent observation streams
@@ -32,15 +33,21 @@ match the immutable native-9901 authority. This closes the gap where an exact
 archive could be named in the report while an unrelated extracted entry path
 was actually executed.
 
-Custody PASS and causal-positive are intentionally separate. The validator
-parses the four first-divergence fields and recomputes the recorder's exact
-candidate-first ordering predicate rather than trusting the report's summary
-bit; it also checks `first_any_action_divergence_step` and
-`all_actions_identical` for internal consistency. It then surfaces the per-seat
-`candidate_action_is_first_observed_divergence` results and emits
-`causal_candidate_first_both_seats`. An opponent-first witness can therefore
-PASS exact experiment custody while remaining explicitly causal-false;
-validator PASS alone never authorizes a repair.
+Custody PASS and causal-positive are intentionally separate. The validator does
+not trust the report's first-divergence primitives or causal summary. It requires
+all four 719-row compact hash vectors, verifies exact contiguous topology and
+SHA256 shape, reconstructs and verifies the recorder's aggregate trace digests,
+recomputes candidate/opponent action and observation first-diff locations from
+the vectors themselves, and only then derives `first_any_action_divergence_step`,
+`all_actions_identical`, and the candidate-first predicate. Reported summaries
+must agree with those independently derived values. An opponent-first witness
+can therefore PASS exact experiment custody while remaining explicitly
+causal-false; validator PASS alone never authorizes a repair.
+
+The complete vectors are now part of the admission proof. Older summary-only
+witness reports are inadmissible and cannot be upgraded by re-signing or by
+running only the newer validator: a fresh witness run with the current recorder
+is required.
 
 ## Source contract
 
@@ -56,14 +63,16 @@ python -O -B -m unittest -v \
   test_action_divergence_witness.py test_validate_native_9901_action_witness.py
 ```
 
-The recorder suite has 9 tests and the exact-target authority validator has 12.
+The recorder suite has 10 tests and the exact-target authority validator has 15.
 Together they cover candidate-first, opponent-first, same-step observation
-divergence, identical traces, bounded witness windows, topology rejection, seat
-parsing, SHA validation, executed-entry drift, engine drift, terminal-score
-drift, duplicate seats, timeout drift, report tampering, a claimed run with no
-actual action divergence, a missing causal label, a re-signed forged causal
-summary, a re-signed inconsistent first-action summary, and the explicit
-distinction between custody PASS and causal-false.
+divergence, identical traces, bounded witness windows, complete compact vector
+publication, topology rejection, seat parsing, SHA validation, executed-entry
+drift, engine drift, terminal-score drift, duplicate seats, timeout drift,
+report tampering, a claimed run with no actual action divergence, a missing
+causal label, old summary-only evidence, vector/trace-digest tampering, a
+re-signed forged causal summary, a re-signed inconsistent first-action summary,
+and a coordinated re-signed forgery of all four primitive divergence summaries
+plus derived summaries while the complete vectors remain opponent-first.
 
 ## Exact native-9901 target
 
@@ -113,10 +122,12 @@ python -B validate_native_9901_action_witness.py \
 
 The validator requires the retained terminals exactly before returning PASS:
 V3.1 seat 0 `[74143, 64333]`, production-v3 seat 0 `[73906, 63838]`, and the
-same scores reversed for seat 1. It also requires 719 completed actions per arm
-and at least one real action divergence in each seat. A repair may be proposed
-from this receipt only if `causal_candidate_first_both_seats` is true; otherwise
-the report is exact custody/evidence but not a candidate-first causal witness.
+same scores reversed for seat 1. It also requires 719 completed actions per arm,
+four complete 719-row trace vectors whose reconstructed digests match the
+recorder receipt, and at least one real action divergence in each seat. A repair
+may be proposed from this receipt only if `causal_candidate_first_both_seats` is
+true; otherwise the report is exact custody/evidence but not a candidate-first
+causal witness.
 
 This tool is evidence-only. A witness does not authorize a gameplay change,
 CURRENT/release movement, or Kaggle submission. If both seats identify the same
