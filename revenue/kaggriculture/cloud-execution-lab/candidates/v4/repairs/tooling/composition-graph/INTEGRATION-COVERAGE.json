@@ -1,0 +1,62 @@
+{
+  "schema": "titan-v4-integration-composition-coverage/v1",
+  "mode": "fail_closed",
+  "purpose": "Classify every landed INTEGRATION.json repair_path against the sole V4 composition authority so current-ABI work cannot remain invisible to COMPOSITION.json.",
+  "entries": [
+    {
+      "repair_path": "repairs/gameplay/early-capital",
+      "lane": "Recovered early-capital post-unit and commit-real ordering",
+      "disposition": "blocked",
+      "graph_component": null,
+      "reason": "Current class-turn component is tested, but INTEGRATION records no full act, combined optional-transform proof, field economics, or source/archive promotion. Bind the repaired output into the combined stack without clobbering LIVEPATH before graph registration."
+    },
+    {
+      "repair_path": "repairs/gameplay/eod-capacity-rescue",
+      "lane": "Native EOD rescue return-boundary port",
+      "disposition": "blocked",
+      "graph_component": null,
+      "reason": "Current native return component is tested/default-OFF, but INTEGRATION records no natural rescue engagement, all-lane composition, latest full-archive execution, or full-season economics."
+    },
+    {
+      "repair_path": "repairs/gameplay/exec-pace-2",
+      "lane": "EXEC-PACE-2 adaptive execution pacing",
+      "disposition": "blocked",
+      "graph_component": null,
+      "reason": "Exact donor and repaired current component are tested, but INTEGRATION records no current runtime wiring, returned-action gate, or whole-agent economics. Existing EXEC-PACE field ownership retains that execution gate."
+    },
+    {
+      "repair_path": "repairs/gameplay/feed-stock-terminal",
+      "lane": "Terminal feed-stock admission discriminator",
+      "disposition": "evidence_only",
+      "graph_component": null,
+      "reason": "This is an inactive native admission experiment with no natural engagement or whole-agent economics; retain it as evidence until a current runtime promotion path is independently established."
+    },
+    {
+      "repair_path": "repairs/gameplay/row-shed-sell-order",
+      "lane": "Recovered V3.1 row-shed SELL ordering",
+      "disposition": "blocked",
+      "graph_component": "row-shed-sell-order",
+      "reason": "INTEGRATION explicitly records composition_state=blocked; an authenticated materialized runtime postimage and full-game activation gate are still required."
+    },
+    {
+      "repair_path": "repairs/gameplay/s8-egg-care",
+      "lane": "S8 egg care",
+      "disposition": "blocked",
+      "graph_component": null,
+      "reason": "Reopened source/current composer is tested, but INTEGRATION explicitly says not native-integrated and requires native binding plus returned-action/field evidence before composition."
+    },
+    {
+      "repair_path": "repairs/performance/fast-tape-clone",
+      "lane": "Recovered V3.1 fast clone current-ABI port",
+      "disposition": "compose",
+      "graph_component": "fast-tape-clone-current-runtime"
+    },
+    {
+      "repair_path": "repairs/scheduler-action-prefix",
+      "lane": "Scheduler action-prefix accounting",
+      "disposition": "blocked",
+      "graph_component": null,
+      "reason": "The landed transformer is not a runtime module and INTEGRATION records no full package/economics run; materialize it into the current combined scheduler postimage before composition."
+    }
+  ]
+}
