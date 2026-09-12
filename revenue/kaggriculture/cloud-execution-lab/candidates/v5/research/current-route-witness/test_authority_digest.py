@@ -110,6 +110,16 @@ class AuthorityDigestTests(unittest.TestCase):
         self.assertNotEqual(a.player, b.player)
         self.assertNotEqual(a.window_sha256, b.window_sha256)
 
+    def test_nonfinite_value_outside_requested_window_fails_closed(self):
+        controller = Controller()
+        controller.R["main"][3]["market"] = [["SELL", "CARROT", float("inf")]]
+        self.assertIsNone(self.bind(controller, observation(0), lookahead=1))
+
+    def test_nonfinite_value_in_requested_row_fails_closed(self):
+        controller = Controller()
+        controller.R["main"][1]["market"] = [["SELL", "CARROT", float("-inf")]]
+        self.assertIsNone(self.bind(controller, observation(0), lookahead=1))
+
 
 if __name__ == "__main__":
     unittest.main()
