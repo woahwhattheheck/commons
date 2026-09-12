@@ -176,7 +176,7 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
             outcome=state['outcomes'].get(target,{})
             if outcome.get('completed',0)<before['required']:continue
             candidates.append((
-                (moved,int(state['money']),source-target,target-destination,item),
+                (moved,-int(state['money']),source-target,target-destination,item),
                 candidate,
                 {'applied':True,'target_index':target,
                  'target_order':copy.deepcopy(original[target]),
