@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build deterministic Titan V5 A/B/AB archives from exact component postimages.
 
-The builder deliberately has no policy semantics.  A component is a set of exact
+The builder deliberately has no policy semantics. A component is a set of exact
 source postimages plus the configuration values required to make those bytes live.
 It fails closed on stale hashes, archive/source path escape, incompatible overlays,
-and conflicting config requirements.
+conflicting config requirements, and component/baseline preimage drift.
 """
 from __future__ import annotations
 
@@ -15,11 +15,15 @@ import hashlib
 import io
 import json
 from pathlib import Path, PurePosixPath
+import re
 import tarfile
 from typing import Any
 
-SCHEMA = "titan-v5-composition-v1"
+SCHEMA = "titan-v5-composition-v2"
 CONFIG_MEMBER = "TITAN-CONFIG.json"
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_COMPONENT_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+_RESERVED_VARIANT_NAMES = frozenset({"control"})
 
 
 class CompositionError(RuntimeError):
@@ -38,6 +42,12 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def _sha256_text(value: Any, *, label: str) -> str:
+    if not isinstance(value, str) or _SHA256_RE.fullmatch(value) is None:
+        raise CompositionError(f"{label} must be 64 lowercase hex characters")
+    return value
+
+
 def _safe_rel(value: str, *, label: str) -> str:
     path = PurePosixPath(value)
     if path.is_absolute() or not path.parts or any(part in ("", ".", "..") for part in path.parts):
@@ -45,11 +55,11 @@ def _safe_rel(value: str, *, label: str) -> str:
     return str(path)
 
 
-def _read_archive(path: Path) -> tuple[list[tarfile.TarInfo], dict[str, bytes]]:
+def _read_archive_bytes(data: bytes) -> tuple[list[tarfile.TarInfo], dict[str, bytes]]:
     infos: list[tarfile.TarInfo] = []
     payloads: dict[str, bytes] = {}
     seen: set[str] = set()
-    with tarfile.open(path, "r:gz") as archive:
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
         for raw in archive.getmembers():
             info = copy.copy(raw)
             name = _safe_rel(info.name, label="archive member")
@@ -109,7 +119,11 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
 
     result: dict[str, dict[str, Any]] = {}
     for name, raw in manifest["components"].items():
-        if not isinstance(name, str) or not name or "/" in name or "\\" in name:
+        if (
+            not isinstance(name, str)
+            or _COMPONENT_RE.fullmatch(name) is None
+            or name in _RESERVED_VARIANT_NAMES
+        ):
             raise CompositionError(f"invalid component name: {name!r}")
         if not isinstance(raw, dict):
             raise CompositionError(f"component {name} must be an object")
@@ -125,9 +139,14 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
                 raise CompositionError(f"component {name} file entry must be an object")
             archive_path = _safe_rel(str(entry.get("archive_path", "")), label="archive_path")
             source_path = _safe_rel(str(entry.get("source_path", "")), label="source_path")
-            expected = entry.get("sha256")
-            if not isinstance(expected, str) or len(expected) != 64:
-                raise CompositionError(f"component {name} file {archive_path} needs sha256")
+            expected = _sha256_text(
+                entry.get("sha256"),
+                label=f"component {name} file {archive_path} sha256",
+            )
+            preimage = _sha256_text(
+                entry.get("preimage_sha256"),
+                label=f"component {name} file {archive_path} preimage_sha256",
+            )
             lexical_source = resolved_root.joinpath(*PurePosixPath(source_path).parts)
             try:
                 source = lexical_source.resolve(strict=True)
@@ -154,12 +173,43 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
                 {
                     "archive_path": archive_path,
                     "source_path": source_path,
+                    "preimage_sha256": preimage,
                     "sha256": actual,
                     "data": data,
                 }
             )
         result[name] = {"files": loaded_files, "config": config}
     return result
+
+
+def _validate_preimages(
+    base_payloads: dict[str, bytes],
+    regular_members: set[str],
+    components: dict[str, dict[str, Any]],
+) -> None:
+    """Authenticate component compatibility with the exact baseline before output."""
+    seen: dict[str, tuple[str, str]] = {}
+    for name in sorted(components):
+        for entry in components[name]["files"]:
+            target = entry["archive_path"]
+            if target not in base_payloads:
+                raise CompositionError(f"component {name} targets absent archive member: {target}")
+            if target not in regular_members:
+                raise CompositionError(f"component {name} targets non-regular archive member: {target}")
+            expected = entry["preimage_sha256"]
+            prior = seen.get(target)
+            if prior is not None and prior[1] != expected:
+                raise CompositionError(
+                    f"components {prior[0]} and {name} disagree on baseline preimage for {target}: "
+                    f"{prior[1]} != {expected}"
+                )
+            seen[target] = (name, expected)
+            actual = sha256_bytes(base_payloads[target])
+            if actual != expected:
+                raise CompositionError(
+                    f"component {name} baseline preimage mismatch for {target}: "
+                    f"expected {expected}, got {actual}"
+                )
 
 
 def _apply_variant(
@@ -219,20 +269,24 @@ def _apply_variant(
 
 def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Path) -> dict[str, Any]:
     manifest = _load_manifest(manifest_path)
-    expected_sha = manifest["baseline"].get("sha256")
-    if not isinstance(expected_sha, str) or len(expected_sha) != 64:
-        raise CompositionError("baseline.sha256 must be a 64-character digest")
-    actual_sha = sha256_file(baseline)
+    expected_sha = _sha256_text(manifest["baseline"].get("sha256"), label="baseline.sha256")
+    try:
+        baseline_bytes = baseline.read_bytes()
+    except OSError as exc:
+        raise CompositionError(f"cannot read baseline archive: {exc}") from exc
+    actual_sha = sha256_bytes(baseline_bytes)
     if actual_sha != expected_sha:
         raise CompositionError(f"baseline SHA256 mismatch: expected {expected_sha}, got {actual_sha}")
 
-    infos, base_payloads = _read_archive(baseline)
+    infos, base_payloads = _read_archive_bytes(baseline_bytes)
     expected_members = manifest["baseline"].get("member_count")
     if expected_members is not None and len(infos) != expected_members:
         raise CompositionError(
             f"baseline member count mismatch: expected {expected_members}, got {len(infos)}"
         )
     components = _load_components(manifest, source_root)
+    regular_members = {info.name for info in infos if info.isfile()}
+    _validate_preimages(base_payloads, regular_members, components)
     names = tuple(sorted(components))
     variants: list[tuple[str, tuple[str, ...]]] = [
         ("control", ()),
@@ -241,7 +295,20 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
         (f"{names[0]}+{names[1]}", names),
     ]
 
-    output.mkdir(parents=True, exist_ok=True)
+    # Preflight every variant before creating output. Source/preimage drift,
+    # overlay conflicts, and malformed config requirements therefore cannot
+    # leave a partial A/B/AB evidence directory behind.
+    prepared: list[tuple[str, tuple[str, ...], dict[str, bytes], list[str], dict[str, Any]]] = []
+    for label, enabled in variants:
+        if not enabled:
+            payloads = base_payloads
+            changed: list[str] = []
+            requested_config: dict[str, Any] = {}
+        else:
+            payloads, changed, requested_config = _apply_variant(base_payloads, components, enabled)
+        prepared.append((label, enabled, payloads, changed, requested_config))
+
+    output.mkdir(parents=True, exist_ok=False)
     receipt: dict[str, Any] = {
         "schema": SCHEMA,
         "baseline": {"sha256": actual_sha, "member_count": len(infos)},
@@ -251,19 +318,16 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
     for name in names:
         receipt["components"][name] = {
             "files": [
-                {k: entry[k] for k in ("archive_path", "source_path", "sha256")}
+                {
+                    k: entry[k]
+                    for k in ("archive_path", "source_path", "preimage_sha256", "sha256")
+                }
                 for entry in components[name]["files"]
             ],
             "config": components[name]["config"],
         }
 
-    for label, enabled in variants:
-        if not enabled:
-            payloads = base_payloads
-            changed: list[str] = []
-            requested_config: dict[str, Any] = {}
-        else:
-            payloads, changed, requested_config = _apply_variant(base_payloads, components, enabled)
+    for label, enabled, payloads, changed, requested_config in prepared:
         filename = label.replace("+", "-plus-") + ".tar.gz"
         target = output / filename
         _write_archive(target, infos, payloads)
