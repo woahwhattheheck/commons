@@ -53,20 +53,52 @@ class TerminalHistoryJoin:
             weighted.make_selector,utility.build_table,full.solve_full_table,
             full.verify_certificate,rng=random.Random(0),tie_break=self.tie_break)
 
+    @staticmethod
+    def _clock_period(cfg):
+        value=(cfg or {}).get('turnsPerDay',24)
+        if type(value) is not int or value<=0:
+            raise ValueError('turnsPerDay must be a positive plain int')
+        return value
+
+    @classmethod
+    def _observation_step(cls, obs, cfg=None):
+        """Bind one public observation to an exact nonnegative decision clock."""
+        if not isinstance(obs,dict):
+            raise ValueError('observation must be an object')
+        has_step='step' in obs;has_day='day' in obs;has_hour='hour' in obs
+        if has_day!=has_hour:
+            raise ValueError('public day/hour must be supplied together')
+        step=None
+        if has_step:
+            step=obs['step']
+            if type(step) is not int or step<0:
+                raise ValueError('public step must be a nonnegative plain int')
+        if has_day:
+            day=obs['day'];hour=obs['hour'];period=cls._clock_period(cfg)
+            if type(day) is not int or day<0:
+                raise ValueError('public day must be a nonnegative plain int')
+            if type(hour) is not int or not 0<=hour<period:
+                raise ValueError('public hour must be a plain int in day range')
+            derived=day*period+hour
+            if step is not None and step!=derived:
+                raise ValueError('public step disagrees with day/hour')
+            step=derived
+        if step is None:
+            raise ValueError('public clock requires step or paired day/hour')
+        return step
+
     def defer_observation(self, obs):
         """Journal an interrupted public observation before making a stable copy."""
+        cfg=None if self.pending is None else self.pending[1]
+        step=self._observation_step(obs,cfg)
         # The first pointer store is intentionally tiny: if an outer signal lands
         # during deepcopy, the exact observation object is still retained for the
         # next guarded call rather than silently losing the adjacency witness.
-        self.deferred_observation=obs
-        self.deferred_observation=deepcopy(obs)
-
-    def _observation_step(self, obs):
-        if obs.get('step') is not None:return int(obs['step'])
-        period=24
-        if self.pending is not None:
-            period=max(1,int((self.pending[1] or {}).get('turnsPerDay',24)))
-        return int(obs['day'])*period+int(obs['hour'])
+        if 'step' in obs:
+            self.deferred_observation=obs
+        else:
+            self.deferred_observation=dict(obs);self.deferred_observation['step']=step
+        self.deferred_observation=deepcopy(self.deferred_observation)
 
     def _observation_working_bridge(self):
         """Fork mutable bridge state while sharing injected code dependencies."""
@@ -104,7 +136,7 @@ class TerminalHistoryJoin:
             'bridge':working,
             'observed_fills':observed,
             'fill_result':deepcopy(working.ledger.last_result),
-            'observed_step':self._observation_step(obs),
+            'observed_step':self._observation_step(obs,cfg),
         }
         return self._publish_observation_commit()
 
@@ -119,7 +151,8 @@ class TerminalHistoryJoin:
 
     def observe(self, obs):
         """Bind the ACTUALLY returned prior action, then reconcile atomically."""
-        now=self._observation_step(obs)
+        cfg=None if self.pending is None else self.pending[1]
+        now=self._observation_step(obs,cfg)
 
         # A deadline can land while a completed private transition is being
         # published. Finish that journal first; repeated publication is safe.
@@ -137,7 +170,8 @@ class TerminalHistoryJoin:
 
         deferred=getattr(self,'deferred_observation',None)
         if deferred is not None:
-            deferred_step=self._observation_step(deferred)
+            deferred_cfg=None if self.pending is None else self.pending[1]
+            deferred_step=self._observation_step(deferred,deferred_cfg)
             if now<deferred_step:
                 # New/reordered stream: let the normal strict-backstep contract
                 # below discard the old pending receipt as well.
@@ -147,7 +181,7 @@ class TerminalHistoryJoin:
                 self.diagnostics={};self.fill_result=None
                 return
             else:
-                prior=int(self.pending[0]['step'])
+                prior=self._observation_step(self.pending[0],self.pending[1])
                 if deferred_step!=prior+1:
                     # A stored pointer is useful only when it is the exact
                     # adjacency witness. Never promote an arbitrary old gap into
@@ -166,7 +200,7 @@ class TerminalHistoryJoin:
             self.diagnostics={};self.fill_result=None
             return
         before,cfg,final,post=self.pending
-        prior=int(before['step'])
+        prior=self._observation_step(before,cfg)
         if now<prior:
             # A strict backstep is a new episode/reset boundary. Never carry a
             # pending action across it; a later step could otherwise cross-link
@@ -192,14 +226,21 @@ class TerminalHistoryJoin:
     def remember(self, obs, cfg, final, post):
         # A canceled unit stage has no final snapshot. Do not record a requested
         # quantity as a fill or synthesize a second projection for it.
-        self.pending=None if post is None else deepcopy((obs,cfg,final,post))
+        step=self._observation_step(obs,cfg)
+        if post is None:
+            self.pending=None
+            return
+        pending=deepcopy((obs,cfg,final,post))
+        if 'step' not in pending[0]:pending[0]['step']=step
+        self.pending=pending
 
     def transform(self, obs, cfg, selected, post, *, deadline):
         if not self.terminal_enabled:return selected
-        if int(obs['step'])!=int(cfg.get('episodeSteps',720))-2:return selected
+        step=self._observation_step(obs,cfg)
+        if step!=int(cfg.get('episodeSteps',720))-2:return selected
         if self.selector is None:self._initialize_terminal()
         family=self.joint.build_joint_terminal_scenarios(self.bridge.history,self.m.PRODUCTS,
-            int(obs['step']),capacity=int(cfg.get('shedCapacity',100)),
+            step,capacity=int(cfg.get('shedCapacity',100)),
             max_orders=int(cfg.get('maxMarketOrdersPerTurn',10)),**self.hypotheses)
         self.diagnostics['family']=family
         if not family['ready'] or post is None:return selected
