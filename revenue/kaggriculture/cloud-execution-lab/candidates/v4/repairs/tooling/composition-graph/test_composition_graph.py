@@ -151,6 +151,13 @@ class CompositionGraphTests(unittest.TestCase):
         result = cg.validate_manifest(self.manifest([a]), self.root)
         self.assertIn("unsafe_entrypoint_resolution", self.codes(result))
 
+    def test_reachable_follows_directed_edges(self):
+        edges = {"a": {"b"}, "b": {"c"}, "c": set()}
+        self.assertTrue(cg._reachable("a", "c", edges))
+        self.assertTrue(cg._reachable("a", "a", edges))
+        self.assertFalse(cg._reachable("c", "a", edges))
+        self.assertFalse(cg._reachable("a", "missing", edges))
+
 
 if __name__ == "__main__":
     unittest.main()
