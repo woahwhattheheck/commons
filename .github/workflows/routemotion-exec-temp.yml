@@ -1,0 +1,65 @@
+name: ROUTEMOTION exact-head execution
+
+on:
+  push:
+    branches:
+      - astra/routemotion-exec-temp-20260912
+
+permissions:
+  contents: read
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact demanded head
+        uses: actions/checkout@v4
+        with:
+          ref: 386171138eb401fbdcb5468b4c424f89dd4979c9
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Execute exact source-bound gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion
+          python -B -m unittest -q test_route_motion_census.py 2>&1 | tee /tmp/normal.txt
+          python -O -B -m unittest -q test_route_motion_census.py 2>&1 | tee /tmp/opt.txt
+          python -B route_motion_census.py --output /tmp/route-motion.json
+          python - <<'PY'
+          import json, pathlib
+          p = pathlib.Path('/tmp/route-motion.json')
+          data = json.loads(p.read_text())
+          receipt = {
+              'checked_head': '386171138eb401fbdcb5468b4c424f89dd4979c9',
+              'sources': data['sources'],
+              'totals': data['totals'],
+              'routes': [
+                  {
+                      'plan': r['plan'],
+                      'movement_rows': r['movement_rows'],
+                      'closed_loop_count': r['closed_loop_count'],
+                      'provably_pass_equivalent_count': r['provably_pass_equivalent_count'],
+                      'boundary_noop_rows': r['boundary_noop_rows'],
+                      'closed_hire_free_motion_loops': r['closed_hire_free_motion_loops'],
+                  }
+                  for r in data['routes']
+              ],
+          }
+          pathlib.Path('/tmp/ROUTEMOTION-EXEC.json').write_text(json.dumps(receipt, indent=2, sort_keys=True)+'\n')
+          print('ROUTEMOTION_EXEC_RECEIPT_BEGIN')
+          print(json.dumps(receipt, sort_keys=True))
+          print('ROUTEMOTION_EXEC_RECEIPT_END')
+          PY
+      - name: Upload execution receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: routemotion-exec-386171138e
+          path: |
+            /tmp/route-motion.json
+            /tmp/ROUTEMOTION-EXEC.json
+            /tmp/normal.txt
+            /tmp/opt.txt
+          if-no-files-found: error
