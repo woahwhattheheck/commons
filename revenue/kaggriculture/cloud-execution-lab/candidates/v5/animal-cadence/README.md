@@ -18,7 +18,9 @@ The last point is an explicit negative predecessor for the rejected “infinite 
 
 ## Candidate
 
-`alternate_feed.py::apply_alternate_feed(observation, selected)` is a pure selected-action transform. It replaces a selected `FEED` with `PASS` only when the actor actually carries WHEAT, the animal is on the exact zero-strike leg (`consecutive_unfed == 0`), no current or pending CARE value can be lost, and no same-tile selected CARE exists. Once the public state reports one unfed day, the next FEED is retained.
+`alternate_feed.py::apply_alternate_feed(observation, selected, next_day_feed_positions=...)` is a pure selected-action transform. It replaces a selected `FEED` with `PASS` only when the animal tile is covered by an external next-day-feed certificate, the actor actually carries WHEAT, the animal is on the exact zero-strike leg (`consecutive_unfed == 0`), no current or pending CARE value can be lost, and no same-tile selected CARE exists. Once the public state reports one unfed day, the next FEED is retained.
+
+The next-day certificate is deliberately explicit. A one-day engine survival fact does not prove the unchanged parent route will feed tomorrow. The caller must construct the certified tile set from the exact current route/tail and discard it on any route switch, checkpoint/rejoin, reset, or other future-tape change. Empty or malformed certificates fail closed and leave the selected action untouched.
 
 The transform preserves market rows, other unit actions, action-slot topology, and both inputs. It emits a deterministic report including exact edited actors and the number of WHEAT units avoided.
 
@@ -31,8 +33,8 @@ python -B candidates/v5/animal-cadence/test_alternate_feed.py
 python -O -B candidates/v5/animal-cadence/test_alternate_feed.py
 ```
 
-The test module calls the preserved evaluator/engine for the survival, production, fertilizer-refresh, and FERTILIZE-negative predecessors; candidate tests are separate and do not substitute an engine implementation.
+The test module calls the preserved evaluator/engine for the survival, production, fertilizer-refresh, and FERTILIZE-negative predecessors; candidate tests separately cover certificate custody, exact state types, CARE preservation, WHEAT spend, and action topology. They do not substitute an engine implementation.
 
 ## Evaluation handoff
 
-For matched simulation, wrap the unchanged current-V5 selected action with `apply_alternate_feed` and compare against the same current-V5 baseline on identical opponent/seed/seat cells. Record candidate identity, engagement count (`report.changed`), WHEAT saved, paired own-score and margin deltas, loss flips/new losses, and any CARE-bonus divergence. Promotion requires matched current-line evidence; this package itself makes no activation claim.
+For matched simulation, derive `next_day_feed_positions` from the unchanged current-V5 route/tail, apply the transform to the selected action, and compare against the same current-V5 baseline on identical opponent/seed/seat cells. Record candidate identity, certificate construction rules, engagement count (`report.changed`), WHEAT saved, paired own-score and margin deltas, loss flips/new losses, and any CARE-bonus or escape divergence. Promotion requires matched current-line evidence; this package itself makes no activation claim.
