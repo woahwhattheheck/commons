@@ -59,8 +59,15 @@ def authenticate_engine_bytes(data: bytes) -> dict[str, str]:
     return {"git_blob": git_blob, "sha256": sha256}
 
 
+def _plain_int(value: object, name: str) -> int:
+    if type(value) is not int:
+        raise Refusal(f"{name} must be a plain int")
+    return value
+
+
 def _plain_nonnegative_int(value: object, name: str) -> int:
-    if type(value) is not int or value < 0:
+    value = _plain_int(value, name)
+    if value < 0:
         raise Refusal(f"{name} must be a plain nonnegative int")
     return value
 
@@ -158,6 +165,52 @@ def _authored_rows(
     return farmer_action, hands_actions, [farmer_action, *hands_actions]
 
 
+def _executable_market_prefix(
+    authored_action: Any,
+    market_prefix_limit: int,
+) -> tuple[list[Any], int]:
+    """Mirror the engine's prefix extraction without inventing market execution.
+
+    The official engine applies ``max(1, int(maxMarketOrdersPerTurn))`` before
+    parsing rows. This evidence layer is stricter about the supplied config
+    value: it must already be a plain integer, so bool/float/string coercions
+    cannot silently change which rows are considered executable.
+    """
+    configured = _plain_int(market_prefix_limit, "market_prefix_limit")
+    executable_limit = max(1, configured)
+    if not isinstance(authored_action, Mapping):
+        return [], executable_limit
+    rows = authored_action.get("market", [])
+    if not isinstance(rows, list):
+        return [], executable_limit
+    return rows[:executable_limit], executable_limit
+
+
+def _assert_market_vacancy_resolved(
+    authored_action: Any,
+    market_prefix_limit: int,
+) -> int:
+    """Reject executable BUY_LAND until exact market replay is supplied.
+
+    BUY_LAND is atomic in the market phase and can turn an entire locked
+    quadrant into ``None`` before the same end-of-day weed/shop RNG scan. Its
+    success cannot safely be inferred from starting money alone: preceding
+    authored rows and opponent lockstep can alter executable cash. Therefore a
+    BUY_LAND row inside the executable market prefix is an explicit evidence
+    boundary, while a suffix row beyond that prefix is inert this callback.
+    """
+    rows, executable_limit = _executable_market_prefix(
+        authored_action, market_prefix_limit
+    )
+    for index, row in enumerate(rows):
+        if isinstance(row, list) and row and row[0] == "BUY_LAND":
+            raise Refusal(
+                "executable-prefix BUY_LAND requires exact market replay "
+                f"before vacancy authority (market index {index})"
+            )
+    return executable_limit
+
+
 def _blocked_plants(
     unit_actions: Sequence[Any],
     seeds: Mapping[str, int],
@@ -226,13 +279,18 @@ def authored_vacancy_projection(
     farm: Mapping[str, Any],
     own_seeds: Mapping[str, Any],
     authored_action: Any,
+    market_prefix_limit: int,
 ) -> dict[str, Any]:
     """Project exact same-callback vacancy change from an already-authored action.
 
     Unit actions execute main farmer first, then existing hands in list order.
     Same-crop PLANT oversubscription is blocked atomically before execution,
-    matching the official interpreter.
+    matching the official interpreter. Market rows are checked first so an
+    executable BUY_LAND cannot be mislabeled vacancy-neutral.
     """
+    executable_market_limit = _assert_market_vacancy_resolved(
+        authored_action, market_prefix_limit
+    )
     tiles = _tiles(farm)
     positions = actor_positions(farm)
     seeds = _private_seed_counts(own_seeds)
@@ -279,10 +337,12 @@ def authored_vacancy_projection(
         raise Refusal("internal vacancy projection mismatch")
 
     return {
-        "schema": "titan-v4-rngreach/authored-vacancy-v1",
+        "schema": "titan-v4-rngreach/authored-vacancy-v2",
         "empty_before": empty_before,
         "empty_after": empty_after,
         "delta": total_delta,
+        "market_prefix_limit": executable_market_limit,
+        "market_vacancy_resolved": True,
         "blocked_plant_crops": sorted(blocked),
         "effects": effects,
         "natural_engagement": total_delta != 0,
@@ -410,6 +470,7 @@ def reachability_report(
     day: int,
     shop_interval: int,
     unlocked_shop_count: int,
+    market_prefix_limit: int,
     seed_start: int = 1,
     seed_stop: int = 512,
     engine_bytes: bytes | None = None,
@@ -434,6 +495,7 @@ def reachability_report(
         farm=farms[own_farm_id],
         own_seeds=own_seeds,
         authored_action=authored_action,
+        market_prefix_limit=market_prefix_limit,
     )
 
     panel = None
@@ -449,7 +511,7 @@ def reachability_report(
         )
 
     return {
-        "schema": "titan-v4-rngreach/reachability-v1",
+        "schema": "titan-v4-rngreach/reachability-v2",
         "source_authenticated": source_identity is not None,
         "source_identity": source_identity,
         "unlock_due": unlock_due,
@@ -470,6 +532,7 @@ def reachability_report(
         "limits": [
             "episode seed is not a live input",
             "offline seed panel measures sensitivity, not live prediction",
+            "executable-prefix BUY_LAND requires exact market replay before vacancy authority",
             "opponent same-turn tile changes can move the final RNG cursor",
             "authored engagement does not prove the action was chosen for RNG reasons",
             "WEEDBANK owns deliberate reversible occupancy-lease economics",
