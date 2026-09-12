@@ -6,9 +6,15 @@ FUNDING-PERF -> CAPTRACE.  The official interpreter then decays plants after
 market and town consumption, but the composed funding trace still returns from
 each represented turn without that deterministic stage.
 
+The represented funding trace also omits the official end-of-day lifecycle.
+This adapter therefore admits only horizons that remain inside one exact
+24-turn day, matching the current replay's existing ``t // 24`` and literal
+``24`` unit-stage semantics.  Cross-EOD replay fails closed rather than
+fabricating workers, inventories, plant refresh, or shed state.
+
 This adapter applies only to the exact current full-chain funding seam.  It
-adds one line at the outer represented-turn tail and otherwise preserves every
-byte.  It does not mutate root source, activate COMPOSITION, or publish a
+adds the same-day guard plus the one plant-decay line and otherwise preserves
+every byte.  It does not mutate root source, activate COMPOSITION, or publish a
 runtime/archive/submission.
 """
 from __future__ import annotations
@@ -17,6 +23,13 @@ import ast
 import hashlib
 
 TARGET = "_funding_trace"
+EOD_GUARD = (
+    "    _funding_turns_per_day = config.get('turnsPerDay', 24)\n"
+    "    if type(_funding_turns_per_day) is not int or _funding_turns_per_day != 24:\n"
+    "        raise ValueError('funding replay requires exact 24-turn day')\n"
+    "    if now // _funding_turns_per_day != end // _funding_turns_per_day:\n"
+    "        raise ValueError('funding replay cannot cross end-of-day lifecycle')\n"
+)
 DECAY_LINE = "        m._decay_plants(f, t)\n"
 
 # Current CAPTRACE-accepted postimages.  Full V4 custody is narrowed further by
@@ -107,15 +120,25 @@ def _preimage_details(source: str) -> tuple[ast.FunctionDef, ast.For, int]:
     ]
     if existing:
         raise ValueError("authenticated predecessor unexpectedly already contains plant decay")
+    if "_funding_turns_per_day" in part:
+        raise ValueError("authenticated predecessor unexpectedly already contains EOD guard")
     return fn, loop, fn.body[index + 1].lineno
 
 
 def _verify_post(source: str) -> None:
-    fn, _start, _end, _part = _target(source)
+    fn, start, end, part = _target(source)
     loops = [node for node in fn.body if _is_outer_funding_loop(node)]
     if len(loops) != 1:
         raise ValueError("postimage lost the unique outer funding loop")
     loop = loops[0]
+
+    if part.count(EOD_GUARD) != 1:
+        raise ValueError("postimage must contain exactly one same-day funding guard")
+    offsets = _offsets(source)
+    guard_start = source.find(EOD_GUARD, start, end)
+    if guard_start < 0 or guard_start + len(EOD_GUARD) != offsets[loop.lineno - 1]:
+        raise ValueError("same-day funding guard must immediately precede the represented-turn loop")
+
     calls = [
         call for call in ast.walk(fn)
         if isinstance(call, ast.Call) and _name(call.func) == "m._decay_plants"
@@ -134,23 +157,27 @@ def _verify_post(source: str) -> None:
 
 
 def apply(source: str) -> str:
-    """Add exactly one official plant-decay stage or fail closed."""
+    """Add the same-day guard and official plant-decay stage or fail closed."""
     if not isinstance(source, str):
         raise TypeError("source must be decoded UTF-8 text")
 
-    if "m._decay_plants(f, t)" in source:
-        if source.count(DECAY_LINE) != 1:
-            raise ValueError("plant-decay postimage is ambiguous")
-        predecessor = source.replace(DECAY_LINE, "", 1)
+    has_guard = EOD_GUARD in source or "_funding_turns_per_day" in source
+    has_decay = "m._decay_plants(f, t)" in source
+    if has_guard or has_decay:
+        if source.count(EOD_GUARD) != 1 or source.count(DECAY_LINE) != 1:
+            raise ValueError("funding plant-decay postimage is ambiguous")
+        predecessor = source.replace(EOD_GUARD, "", 1).replace(DECAY_LINE, "", 1)
         _preimage_details(predecessor)
         _verify_post(source)
         return source
 
-    _fn, _loop, return_line = _preimage_details(source)
+    _fn, loop, return_line = _preimage_details(source)
     lines = source.splitlines(keepends=True)
     lines.insert(return_line - 1, DECAY_LINE)
+    lines.insert(loop.lineno - 1, EOD_GUARD)
     result = "".join(lines)
-    if result.replace(DECAY_LINE, "", 1) != source:
-        raise ValueError("plant-decay adapter changed bytes outside the one-line insertion")
+    predecessor = result.replace(EOD_GUARD, "", 1).replace(DECAY_LINE, "", 1)
+    if predecessor != source:
+        raise ValueError("funding adapter changed bytes outside the guard/decay insertions")
     _verify_post(result)
     return result
