@@ -232,9 +232,11 @@ def _route_feed_certificate(route: Any, step: int, site: tuple[int, int]) -> dic
                     pickup_step = t
             continue
         if op == "DROP":
-            if pos in ((4, 4), (5, 4), (4, 5), (5, 5)):
-                shed_saved += carried_saved
-                carried_saved = 0
+            # Once the certified unit is in the main farmer bag, re-DROP would
+            # re-expose it to same-callback hands/market and later shed-capacity
+            # competition. Decline instead of inventing a second custody model.
+            if carried_saved > 0:
+                return None
             continue
         if op == "FEED":
             if carried_saved > 0:
