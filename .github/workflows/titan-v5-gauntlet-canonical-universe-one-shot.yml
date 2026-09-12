@@ -1,0 +1,119 @@
+name: titan-v5-gauntlet-canonical-universe-one-shot
+
+on:
+  push:
+    branches:
+      - astra/v5-v31-v4-gauntlet-reducer-20260912
+    paths:
+      - ".github/workflows/titan-v5-gauntlet-canonical-universe-one-shot.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v5-gauntlet-canonical-universe-one-shot
+  cancel-in-progress: false
+
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Assert exact staging head and capture fresh main
+        env:
+          BRANCH: astra/v5-v31-v4-gauntlet-reducer-20260912
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git fetch origin main "$BRANCH"
+          test "$(git rev-parse origin/$BRANCH)" = "${{ github.sha }}"
+          echo "MERGED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git merge --no-edit origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Apply canonical-universe + multi-index closure
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
+          text = path.read_text()
+          old = 'run("git", "diff", "--name-only", BASE)'
+          new = 'run("git", "diff", "--name-only", "origin/main...HEAD")'
+          if text.count(old) != 1:
+              raise SystemExit("one-shot scope-fence anchor drifted")
+          path.write_text(text.replace(old, new, 1))
+          PY
+          python revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_reduce_gauntlet.py")
+          text = path.read_text()
+          old = '["B", "A"]'
+          new = '["recorded-submission:2", "recorded-submission:1"]'
+          if text.count(old) != 1:
+              raise SystemExit("synthetic family expectation anchor drifted")
+          path.write_text(text.replace(old, new, 1))
+          PY
+
+      - name: Run reducer contracts normal and optimized
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile reduce_gauntlet.py test_reduce_gauntlet.py
+          python -B -m unittest -v test_reduce_gauntlet
+          python -O -B -m unittest -v test_reduce_gauntlet
+          python - <<'PY'
+          import hashlib
+          import reduce_gauntlet as rg
+          raw = rg._read_regular_bytes(rg.CANONICAL_MANIFEST_PATH)
+          assert hashlib.sha256(raw).hexdigest() == rg.CANONICAL_MANIFEST_SHA256
+          assert callable(rg._captured_materializer())
+          print("canonical source pins: PASS")
+          PY
+          find .. -type d -name __pycache__ -prune -exec rm -rf {} +
+
+      - name: Diff and cleanliness gates
+        run: |
+          set -euo pipefail
+          git diff --check
+          test -z "$(git status --porcelain | grep -E '__pycache__|\.pyc$' || true)"
+          changed="$(git diff --name-only origin/main...HEAD; git diff --name-only)"
+          printf '%s\n' "$changed"
+          unexpected="$(printf '%s\n' "$changed" | sed '/^$/d' | sort -u | grep -Ev '^(\.github/workflows/titan-v5-(v31-v4-gauntlet-reducer|gauntlet-canonical-universe-one-shot)\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py))$' || true)"
+          test -z "$unexpected"
+
+      - name: Publish one permanent same-branch successor
+        env:
+          BRANCH: astra/v5-v31-v4-gauntlet-reducer-20260912
+        run: |
+          set -euo pipefail
+          git fetch origin main "$BRANCH"
+          test "$(git rev-parse origin/$BRANCH)" = "${{ github.sha }}"
+          test "$(git rev-parse origin/main)" = "$MERGED_MAIN"
+          git rm .github/workflows/titan-v5-gauntlet-canonical-universe-one-shot.yml
+          git rm revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py
+          git add \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/README.md \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/reduce_gauntlet.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_reduce_gauntlet.py
+          git diff --cached --check
+          staged="$(git diff --cached --name-only)"
+          test -n "$staged"
+          unexpected="$(printf '%s\n' "$staged" | grep -Ev '^(\.github/workflows/titan-v5-gauntlet-canonical-universe-one-shot\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py))$' || true)"
+          test -z "$unexpected"
+          git commit -m "fix(v5): authenticate canonical gauntlet universe across shard indexes"
+          git push origin HEAD:"$BRANCH"
