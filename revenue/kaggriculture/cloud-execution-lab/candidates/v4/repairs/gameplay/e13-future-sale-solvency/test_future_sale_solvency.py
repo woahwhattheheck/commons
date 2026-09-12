@@ -6,10 +6,12 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import shutil
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 
 HERE = Path(__file__).resolve().parent
@@ -44,6 +46,23 @@ class E13CurrentV4Tests(unittest.TestCase):
         cls.receipt_path = temp / "receipt.json"
         cls.record = port.materialize(ROOT, cls.candidate_path, cls.receipt_path)
         cls.candidate = _load("titan_v4_e13_candidate", cls.candidate_path)
+
+        # The pinned engine imports resolve_episode_seed for environment setup.
+        # These tests execute only exact market interpreter helpers, so provide
+        # the uncalled symbol when kaggle-environments is absent on CI.
+        try:
+            import kaggle_environments.utils  # type: ignore  # noqa: F401
+        except ModuleNotFoundError:
+            import types
+
+            package = types.ModuleType("kaggle_environments")
+            package.__path__ = []
+            utils = types.ModuleType("kaggle_environments.utils")
+            utils.resolve_episode_seed = lambda _env: 0
+            package.utils = utils
+            sys.modules["kaggle_environments"] = package
+            sys.modules["kaggle_environments.utils"] = utils
+        cls.engine = _load("titan_v4_e13_engine", ROOT / port.ENGINE_REL)
 
     @classmethod
     def tearDownClass(cls):
@@ -133,6 +152,7 @@ class E13CurrentV4Tests(unittest.TestCase):
         self.assertEqual(cert["funding_turn"], new["now"] + 1)
         self.assertEqual(cert["comparison_end"], new["now"] + 2)
         self.assertEqual(cert["post_funding_acquisitions"], 1)
+        self.assertEqual(cert["reference_acquisitions"], 1)
         self.assertFalse(cert["fallback"])
 
     def test_sufficient_future_receipt_still_releases_current_sale(self):
@@ -142,6 +162,7 @@ class E13CurrentV4Tests(unittest.TestCase):
         minimum, cert = self.minimum(self.candidate, fixture, end=fixture["now"] + 2)
         self.assertEqual(minimum, 0)
         self.assertEqual(cert["post_funding_acquisitions"], 1)
+        self.assertGreaterEqual(cert["scenario_terminal_cash"][0], 0)
         self.assertFalse(cert["fallback"])
 
     def test_same_turn_escrow_boundary_is_unchanged(self):
@@ -158,6 +179,7 @@ class E13CurrentV4Tests(unittest.TestCase):
                 old_result = self.minimum(predecessor, old, end=old["now"] + 1)
                 new_result = self.minimum(self.candidate, new, end=new["now"] + 1)
                 self.assertEqual(new_result[0], old_result[0])
+                self.assertEqual(new_result[0], 0)
                 self.assertEqual(new_result[1]["post_funding_acquisitions"], 0)
                 self.assertEqual(new_result[1]["comparison_end"], old_result[1]["prefix_end"])
 
@@ -184,6 +206,7 @@ class E13CurrentV4Tests(unittest.TestCase):
         self.assertEqual(new_result[0], old_result[0])
         self.assertEqual(new_result[0], 0)
         self.assertEqual(new_result[1]["post_funding_acquisitions"], 0)
+        self.assertEqual(new_result[1]["comparison_end"], old_result[1]["prefix_end"])
 
     def test_partial_multiunit_acquisition_is_preserved(self):
         fixture = self.fixture(self.candidate, wool=1, wool_inventory=10100)
@@ -194,6 +217,61 @@ class E13CurrentV4Tests(unittest.TestCase):
         self.assertLessEqual(minimum, 10)
         self.assertEqual(cert["post_funding_acquisitions"], 2)
         self.assertEqual(cert["protected_acquisition_rows"], 1)
+
+    def _run_official_market_sequence(
+        self, current_milk: int, future_wool: int, wool_inventory: int
+    ) -> int:
+        engine = self.engine
+        config = {
+            "boardSize": 10,
+            "shedCapacity": 100,
+            "maxMarketOrdersPerTurn": 10,
+            "farmHandCostMult": 1,
+        }
+        market = engine._new_market()
+        market["inventory"]["WOOL"] = wool_inventory
+        engine._refresh_prices(market)
+        farms = [engine._new_farm(10, 0), engine._new_farm(10, 0)]
+        privates = [engine._new_private(), engine._new_private()]
+        privates[0]["shed"]["MILK"] = 10
+        privates[0]["shed"]["WOOL"] = future_wool
+        state = [
+            SimpleNamespace(
+                observation=SimpleNamespace(
+                    market=market, farms=farms, private=privates[0]
+                ),
+                action={},
+            ),
+            SimpleNamespace(
+                observation=SimpleNamespace(
+                    market=market, farms=farms, private=privates[1]
+                ),
+                action={},
+            ),
+        ]
+        env = SimpleNamespace(configuration=config)
+
+        def market_stage(first: list[Any], second: list[Any] | None = None):
+            state[0].action = {"market": copy.deepcopy(first)}
+            state[1].action = {"market": copy.deepcopy(second or [])}
+            engine._process_market(state, env)
+
+        market_stage([["SELL", "MILK", current_milk]] if current_milk else [])
+        market_stage([["SELL", "WOOL", future_wool]] if future_wool else [])
+        market_stage([["BUY_ANIMAL", "COW", 1]])
+        return int(privates[0]["shed"]["COW"])
+
+    def test_pinned_interpreter_confirms_three_unit_boundary(self):
+        self.assertEqual(
+            port.git_blob_sha((ROOT / port.ENGINE_REL).read_bytes()),
+            port.EXPECTED_ENGINE_GIT_BLOB,
+        )
+        self.assertEqual(self._run_official_market_sequence(0, 1, 10100), 0)
+        self.assertEqual(self._run_official_market_sequence(2, 1, 10100), 0)
+        self.assertEqual(self._run_official_market_sequence(3, 1, 10100), 1)
+
+    def test_pinned_interpreter_confirms_sufficient_future_sale(self):
+        self.assertEqual(self._run_official_market_sequence(0, 2, 10000), 1)
 
     def test_materialization_is_deterministic_and_nonmutating(self):
         source_path = ROOT / port.SOURCE_REL
@@ -217,6 +295,44 @@ class E13CurrentV4Tests(unittest.TestCase):
             self.assertFalse(record["custody"]["canonical_source_mutated"])
         self.assertEqual(source_path.read_bytes(), source_before)
         self.assertEqual(engine_path.read_bytes(), engine_before)
+
+    def _copy_exact_inputs(self, destination: Path):
+        for relative in (port.SOURCE_REL, port.ENGINE_REL):
+            target = destination / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / relative, target)
+
+    def test_source_drift_fails_before_candidate_write(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            self._copy_exact_inputs(td)
+            source = td / port.SOURCE_REL
+            source.write_bytes(source.read_bytes() + b"\n")
+            output = td / "candidate.py"
+            receipt = td / "receipt.json"
+            with self.assertRaisesRegex(port.PortError, "source Git blob mismatch"):
+                port.materialize(td, output, receipt)
+            self.assertFalse(output.exists())
+            self.assertFalse(receipt.exists())
+
+    def test_engine_drift_fails_before_candidate_write(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            self._copy_exact_inputs(td)
+            engine = td / port.ENGINE_REL
+            engine.write_bytes(engine.read_bytes() + b"\n")
+            output = td / "candidate.py"
+            receipt = td / "receipt.json"
+            with self.assertRaisesRegex(port.PortError, "engine Git blob mismatch"):
+                port.materialize(td, output, receipt)
+            self.assertFalse(output.exists())
+            self.assertFalse(receipt.exists())
+
+    def test_canonical_paths_are_never_valid_outputs(self):
+        with tempfile.TemporaryDirectory() as td:
+            receipt = Path(td) / "receipt.json"
+            with self.assertRaisesRegex(port.PortError, "refusing to overwrite"):
+                port.materialize(ROOT, ROOT / port.SOURCE_REL, receipt)
 
 
 if __name__ == "__main__":
