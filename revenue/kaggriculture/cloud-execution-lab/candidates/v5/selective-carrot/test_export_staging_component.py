@@ -214,6 +214,15 @@ class ExportContractTests(unittest.TestCase):
                             overlap_after={"a": "first"},
                         )
 
+    def test_component_dependency_conflict_intersection_rejects(self):
+        with self.assertRaisesRegex(exp.ExportError, "both depend on and conflict with"):
+            self.derive(
+                [("a", b"A")],
+                [("a", b"B")],
+                depends_on=["p01"],
+                conflicts_with=["p01"],
+            )
+
     def test_overlap_on_baseline_owned_member_rejects(self):
         with self.assertRaisesRegex(exp.ExportError, "baseline-owned"):
             self.derive(
