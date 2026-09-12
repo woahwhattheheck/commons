@@ -41,6 +41,7 @@ def _observation(wheat=0, money=5000.0, wheat_price=30, egg_price=100):
             "inventories": [{}],
         },
         "market": {
+            "inventory": {"WHEAT": 10000},
             "prices": {
                 "WHEAT": wheat_price,
                 "EGG": egg_price,
@@ -143,13 +144,57 @@ class FeedPrebuyTests(unittest.TestCase):
         out = _apply(_observation(money=5000.0), _action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
-        for bad_money in (True, float("nan"), float("inf"), float("-inf"), -1.0, "5000"):
+        class IntSubclass(int):
+            pass
+
+        class FloatSubclass(float):
+            pass
+
+        for bad_money in (
+            True,
+            float("nan"),
+            float("inf"),
+            float("-inf"),
+            -1.0,
+            "5000",
+            IntSubclass(5000),
+            FloatSubclass(5000.0),
+            10 ** 1000,
+        ):
             parent = _action()
             with self.subTest(money=bad_money):
                 self.assertIs(
                     _apply(_observation(money=bad_money), parent),
                     parent,
                 )
+
+    def test_public_wheat_stock_must_cover_exact_prebuy_quantity(self):
+        bad_inventories = (
+            {"WHEAT": 0},
+            {"WHEAT": 1},
+            {"WHEAT": True},
+            {"WHEAT": 2.0},
+            {"WHEAT": -1},
+            {"WHEAT": "2"},
+            {"WHEAT": None},
+            {},
+        )
+        for inventory in bad_inventories:
+            obs = _observation(wheat=0)
+            obs["market"]["inventory"] = inventory
+            parent = _action()
+            with self.subTest(inventory=inventory):
+                self.assertIs(_apply(obs, parent), parent)
+
+        obs = _observation(wheat=0)
+        del obs["market"]["inventory"]
+        parent = _action()
+        self.assertIs(_apply(obs, parent), parent)
+
+        obs = _observation(wheat=0)
+        obs["market"]["inventory"] = {"WHEAT": 2}
+        out = _apply(obs, _action())
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
         out = _apply(_observation(wheat=1), _action())
