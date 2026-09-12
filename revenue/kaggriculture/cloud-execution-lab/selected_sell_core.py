@@ -12,6 +12,27 @@ _spec = importlib.util.spec_from_file_location("selected_sell_receipts", Path(__
 receipt_math = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(receipt_math)
 
+_ABSORPTION_CACHE_SIZE = 8192
+
+
+def _shop_products_signature(shops):
+    """Freeze the observable town-shop product mapping for exact cache keys."""
+    return tuple((shop, tuple(m.SHOPS.get(shop, ()))) for shop in shops)
+
+
+@lru_cache(maxsize=_ABSORPTION_CACHE_SIZE)
+def _cached_absorption(item, step, shop_products, shop_interval, center_interval):
+    """Exact town absorption for one absolute step, shared across optimizers."""
+    n = 0
+    if step % shop_interval == 0:
+        for _shop, products in shop_products:
+            if item in products:
+                n += 2 if len(products) == 1 else 1
+    if item != 'FERTILIZER' and step % center_interval == 0:
+        n += 1
+    return n
+
+
 def absorption(item, step, shops, config):
     n=0
     if step % int(config.get('townShopSellInterval',4))==0:
@@ -65,14 +86,17 @@ class MarketPath:
         if steps:
             rival_orders=dict(rival) if isinstance(rival,tuple) else {self.now:rival}
             # A model scores many plans against the same dated town consumption.
-            # Key the observable inputs, so edits between calls invalidate the
-            # schedule rather than inheriting stale shops or configuration.
-            context=(self.item,self.now,self.end,tuple(self.shops),
-                     self.config.get('townShopSellInterval',4),
-                     self.config.get('townCenterSellInterval',24))
+            # Freeze every observable input used by absorption so cross-model
+            # cache reuse cannot survive shop-product or interval mutations.
+            shop_products=_shop_products_signature(self.shops)
+            shop_interval=int(self.config.get('townShopSellInterval',4))
+            center_interval=int(self.config.get('townCenterSellInterval',24))
+            context=(self.item,self.now,self.end,shop_products,
+                     shop_interval,center_interval)
             if getattr(self,'_score_context',None)!=context:
-                consumed=tuple(absorption(self.item,t,self.shops,self.config)
-                               for t in steps)
+                consumed=tuple(_cached_absorption(
+                    self.item,t,shop_products,shop_interval,center_interval)
+                    for t in steps)
                 self._score_context=context
                 self._score_consumed=consumed
             else:
