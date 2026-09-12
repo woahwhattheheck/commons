@@ -191,6 +191,29 @@ class ExportContractTests(unittest.TestCase):
                     current_receipt_raw=receipt, current_receipt_sha256=exp.digest(receipt),
                     component_id="second", overlap_after={"a": "first"})
 
+    def test_receipt_dependency_and_conflict_fields_must_be_lists(self):
+        baseline = packed([("a", b"A")])
+        current = packed([("a", b"X")])
+        candidate = packed([("a", b"Y")])
+        for field, bad in (("depends_on", ""), ("conflicts_with", {"first": True})):
+            with self.subTest(field=field):
+                component = replacement_component("first", "a", b"A", b"X")
+                component[field] = bad
+                receipt = receipt_for(baseline, current, [component])
+                with self.baseline_contract(baseline):
+                    with self.assertRaisesRegex(exp.ExportError, f"receipt {field} must be a list"):
+                        exp.derive_component(
+                            baseline_raw=baseline,
+                            current_raw=current,
+                            candidate_raw=candidate,
+                            candidate_sha256=exp.digest(candidate),
+                            current_sha256=exp.digest(current),
+                            current_receipt_raw=receipt,
+                            current_receipt_sha256=exp.digest(receipt),
+                            component_id="second",
+                            overlap_after={"a": "first"},
+                        )
+
     def test_overlap_on_baseline_owned_member_rejects(self):
         with self.assertRaisesRegex(exp.ExportError, "baseline-owned"):
             self.derive(
