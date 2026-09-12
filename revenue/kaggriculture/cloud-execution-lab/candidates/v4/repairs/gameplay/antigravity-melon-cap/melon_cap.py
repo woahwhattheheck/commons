@@ -13,10 +13,12 @@ engine town-center consumption is handled only by the sold-count fallback.
 FourthQuadrant proposals are atomic executable alternatives. Canonical producer
 custody lives in each route variant's bundle + patches: bundle lots bind the
 selected tile, plant step and 1-based worker to an exact ``PLANT MELON`` patch,
-and bundle.land binds the appended ``BUY_LAND`` / ``BUY_SEED MELON`` pair. Outer
-metadata is only a cross-check. A MELON alternative is therefore admitted whole
-and unchanged only when every route authenticates the same executable tile set
-and seed quantity and that whole commitment fits the remaining real-world cap.
+and bundle.land binds the appended ``BUY_LAND`` / ``BUY_SEED MELON`` pair. The
+entire executable MELON-PLANT slot set in each route must equal those lot-bound
+slots, so an extra farmer/hand command cannot hide outside bundle metadata.
+Outer metadata is only a cross-check. A MELON alternative is admitted whole and
+unchanged only when every route authenticates the same executable tile set and
+seed quantity and that whole commitment fits the remaining real-world cap.
 
 Default OFF. The runtime must not call this module unless the existing
 ``r04_melon_cap`` flag is exactly ``True``.
@@ -53,8 +55,6 @@ def _own_farm(observation: Any) -> dict[str, Any] | None:
 
 
 def _town_consumed_before_step(step: int) -> int:
-    # Agent observation at step s reflects interpreter transitions for steps
-    # 0..s-1. _town_consume fires at transition step % 24 == 0.
     return 0 if step == 0 else (step + TOWN_CENTER_INTERVAL - 1) // TOWN_CENTER_INTERVAL
 
 
@@ -63,21 +63,15 @@ def lifetime_melon_sold(observation: Any) -> int | None:
     farm = _own_farm(observation)
     if farm is None:
         return None
-
     counters = farm.get("sale_counters")
     if isinstance(counters, dict) and "MELON" in counters:
         return _plain_nonnegative_int(counters["MELON"])
-
     step = _plain_nonnegative_int(_get(observation, "step"))
     market = _get(observation, "market")
     inventory = market.get("inventory") if isinstance(market, dict) else None
     inv = _plain_nonnegative_int(inventory.get("MELON")) if isinstance(inventory, dict) else None
     if step is None or inv is None:
         return None
-
-    # MELON cannot be BUY_PRODUCT'ed and shops do not consume it. Rival sales
-    # raise the same public inventory, so attributing all positive drift to us
-    # is conservative for a cap.
     return max(0, inv - MARKET_I0 + _town_consumed_before_step(step))
 
 
@@ -90,7 +84,6 @@ def held_melon_units(observation: Any) -> int | None:
     inventories = private.get("inventories")
     if not isinstance(shed, dict) or not isinstance(inventories, list):
         return None
-
     shed_melon = _plain_nonnegative_int(shed.get("MELON", 0))
     if shed_melon is None:
         return None
@@ -124,7 +117,6 @@ def planted_melon_reserve(observation: Any) -> int | None:
 
 
 def committed_melon_units(observation: Any) -> int | None:
-    """Sold + held + maximum future yield of already-planted MELON."""
     sold = lifetime_melon_sold(observation)
     held = held_melon_units(observation)
     planted = planted_melon_reserve(observation)
@@ -134,7 +126,6 @@ def committed_melon_units(observation: Any) -> int | None:
 
 
 def remaining_melon_budget(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> int:
-    """Uncommitted MELON units; malformed custody fails closed to zero."""
     limit = _plain_nonnegative_int(cap)
     committed = committed_melon_units(observation)
     if limit is None or committed is None:
@@ -156,7 +147,6 @@ def _tile_key(tile: Any) -> tuple[int, int] | None:
 
 
 def _worker_action(row: Any, worker: int) -> Any:
-    """Return FourthQuadrant's 1-based hired-hand action from one patch row."""
     if not isinstance(row, dict) or type(worker) is not int or worker <= 0:
         return None
     hands = row.get("hands")
@@ -165,14 +155,52 @@ def _worker_action(row: Any, worker: int) -> Any:
     return hands[worker - 1]
 
 
-def _owned_seed_units(variant: Any) -> int | None:
-    """Authenticate FourthQuadrant's proposal-owned seed purchase.
+def _semantic_melon_plant(action: Any) -> bool | None:
+    """Match engine-dispatched PLANT MELON shape conservatively.
 
-    ``bundle.land.slot`` is the producer-recorded insertion point immediately
-    after inherited market rows. Canonical producer order at that point is
-    BUY_LAND, BUY_SEED, then HIREs. Binding this position avoids mistaking an
-    inherited BUY_SEED elsewhere in the authored route for proposal spending.
+    The engine dispatches unit actions from leading tokens, so extra trailing
+    tokens do not make a hidden MELON plant safe to ignore. Malformed authored
+    action containers fail closed instead of being treated as inert evidence.
     """
+    if not isinstance(action, (list, tuple)):
+        return None
+    if not action:
+        return False
+    if action[0] != "PLANT":
+        return False
+    if len(action) < 2:
+        return None
+    return action[1] == "MELON"
+
+
+def _semantic_melon_plant_slots(patches: Any) -> set[tuple[int, int]] | None:
+    """Return every executable MELON-PLANT slot; worker 0 denotes farmer."""
+    if not isinstance(patches, dict):
+        return None
+    slots: set[tuple[int, int]] = set()
+    for step, row in patches.items():
+        if _plain_nonnegative_int(step) is None or not isinstance(row, dict):
+            return None
+        if "farmer" in row:
+            is_melon = _semantic_melon_plant(row["farmer"])
+            if is_melon is None:
+                return None
+            if is_melon:
+                slots.add((step, 0))
+        hands = row.get("hands", [])
+        if not isinstance(hands, (list, tuple)):
+            return None
+        for worker, action in enumerate(hands, 1):
+            is_melon = _semantic_melon_plant(action)
+            if is_melon is None:
+                return None
+            if is_melon:
+                slots.add((step, worker))
+    return slots
+
+
+def _owned_seed_units(variant: Any) -> int | None:
+    """Authenticate FourthQuadrant's proposal-owned seed purchase."""
     if not isinstance(variant, dict):
         return None
     patches = variant.get("patches")
@@ -205,15 +233,14 @@ def _owned_seed_units(variant: Any) -> int | None:
 def executable_melon_plants(proposal: Any) -> int | None:
     """Authenticate one canonical FourthQuadrant MELON alternative.
 
-    Each route's harvested lot contract must cover the exact outer tile set.
-    Every lot must point to the precise ``plant_step`` and 1-based worker patch
-    that executes ``PLANT MELON``. The proposal-owned BUY_SEED quantity at the
-    bundle land insertion point must equal that same commitment. Route variants
-    and outer metadata must all agree or the proposal fails closed.
+    Bundle lots must cover the exact outer tile set and bind exact hand slots.
+    The full route patch table must contain exactly those semantic MELON PLANT
+    slots—no extra farmer/hand MELON command may remain unbound. The proposal-
+    owned BUY_SEED quantity at the recorded land insertion point must equal the
+    same commitment. Route variants and outer metadata must all agree.
     """
     if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
         return None
-
     tiles = proposal.get("tiles")
     if not isinstance(tiles, (list, tuple)) or not tiles:
         return None
@@ -222,7 +249,6 @@ def executable_melon_plants(proposal: Any) -> int | None:
         return None
     expected = len(outer_tiles)
     expected_tiles = set(outer_tiles)
-
     if "size" in proposal:
         size = _plain_nonnegative_int(proposal.get("size"))
         if size != expected:
@@ -230,7 +256,6 @@ def executable_melon_plants(proposal: Any) -> int | None:
     seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
     if seed_units != expected:
         return None
-
     variants = proposal.get("variants")
     if not isinstance(variants, dict) or not variants:
         return None
@@ -242,6 +267,9 @@ def executable_melon_plants(proposal: Any) -> int | None:
         bundle = variant.get("bundle")
         lots = bundle.get("lots") if isinstance(bundle, dict) else None
         if not isinstance(patches, dict) or not isinstance(lots, list):
+            return None
+        semantic_slots = _semantic_melon_plant_slots(patches)
+        if semantic_slots is None or len(semantic_slots) != expected:
             return None
         if _owned_seed_units(variant) != expected:
             return None
@@ -268,20 +296,13 @@ def executable_melon_plants(proposal: Any) -> int | None:
             return None
         if len(set(plant_slots)) != expected:
             return None
-
+        if semantic_slots != set(plant_slots):
+            return None
     return expected
 
 
 def filter_proposals(proposals: Any, observation: Any,
                      cap: int = MELON_LIFETIME_UNIT_CAP) -> list[Any]:
-    """Keep every whole executable MELON alternative that fits the budget.
-
-    FourthQuadrant proposals are mutually exclusive: its admission callback
-    returns exactly one supplied proposal. Candidate alternatives therefore do
-    not consume one another's budget. Non-MELON proposals are outside this
-    repair and pass through unchanged. Oversized or malformed MELON proposals
-    are skipped, never truncated.
-    """
     if not isinstance(proposals, (list, tuple)):
         return []
     plants_left = max_melon_plants(observation, cap)
@@ -299,7 +320,6 @@ def filter_proposals(proposals: Any, observation: Any,
 
 def plants_blocked(observation: Any, planned_melon_plants: Any,
                    cap: int = MELON_LIFETIME_UNIT_CAP) -> int:
-    """Number of requested new MELON tiles that exceed the remaining reserve."""
     planned = _plain_nonnegative_int(planned_melon_plants)
     if planned is None:
         return 0
