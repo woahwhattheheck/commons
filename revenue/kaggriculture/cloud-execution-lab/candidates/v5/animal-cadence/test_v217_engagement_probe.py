@@ -72,6 +72,21 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(report['events'][0]['target'], [1, 1])
         self.assertIn([3, 3], report['events'][0]['feed_targets'])
 
+    def test_blocked_counterfactual_round_trip_does_not_claim_engagement(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[0][1] = 'LOCKED'
+        tiles[0][2] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[0, 0], [3, 3]], tiles)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+        self.assertEqual(report['events'], [])
+
     def test_same_target_future_feed_does_not_claim_counterfactual(self):
         ns, policy = loaded_module()
         tiles = [[None for _ in range(5)] for _ in range(5)]
@@ -135,7 +150,7 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(probe.archive_bytes(files), probe.archive_bytes(files))
 
     def test_exact_repo_sources_are_pinned_and_transform_compile(self):
-        router_path = HERE.parent.parent / 'v3' / 'overlay' / 'r04_full_router.py'
+        router_path = HERE.parent.parent / 'v4' / 'donor' / 'overlay' / 'r04_full_router.py'
         evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
         router = router_path.read_bytes()
         evaluator = evaluator_path.read_bytes()
