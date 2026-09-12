@@ -12,8 +12,8 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
-import os
 from pathlib import Path
+import shutil
 import statistics
 import sys
 
@@ -63,28 +63,25 @@ def exact_identity(base, off) -> bool:
 
 
 def _run_arm(runner, runtime, seat, seed, out_dir, entry, *, enabled, telemetry_path=None):
-    old_enabled = os.environ.get("HYDRA_ENABLED")
-    old_telemetry = os.environ.get("HYDRA_TELEMETRY_PATH")
+    mode_path = runtime / "HYDRA-FIELD-MODE.json"
+    runtime_telemetry = runtime / "HYDRA-FIELD-TELEMETRY.json"
+    mode_path.unlink(missing_ok=True)
+    runtime_telemetry.unlink(missing_ok=True)
+    if enabled is not None:
+        mode_path.write_text(json.dumps({
+            "schema": "titan.v4.hydra.field-mode.v1",
+            "enabled": bool(enabled),
+        }, sort_keys=True) + "\n", encoding="utf-8")
     try:
-        if enabled is None:
-            os.environ.pop("HYDRA_ENABLED", None)
-        else:
-            os.environ["HYDRA_ENABLED"] = "1" if enabled else "0"
-        if telemetry_path is None:
-            os.environ.pop("HYDRA_TELEMETRY_PATH", None)
-        else:
-            os.environ["HYDRA_TELEMETRY_PATH"] = str(telemetry_path)
-        return runner.play(runtime, seed, seat, out_dir,
-                           opponent=runtime, passive=False, entry=entry)
+        result = runner.play(runtime, seed, seat, out_dir,
+                             opponent=runtime, passive=False, entry=entry)
+        if telemetry_path is not None and runtime_telemetry.is_file():
+            telemetry_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(runtime_telemetry, telemetry_path)
+        return result
     finally:
-        if old_enabled is None:
-            os.environ.pop("HYDRA_ENABLED", None)
-        else:
-            os.environ["HYDRA_ENABLED"] = old_enabled
-        if old_telemetry is None:
-            os.environ.pop("HYDRA_TELEMETRY_PATH", None)
-        else:
-            os.environ["HYDRA_TELEMETRY_PATH"] = old_telemetry
+        mode_path.unlink(missing_ok=True)
+        runtime_telemetry.unlink(missing_ok=True)
 
 
 def main():
