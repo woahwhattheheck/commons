@@ -409,25 +409,29 @@ def agent(observation, configuration=None):
     replace = (_INSTANCE is None or match_reset)
     instance = None if replace else _INSTANCE
 
-    # A live instance can carry a route committed by the preceding callback.
-    # Snapshot that provenance before the current callback clears or mutates any
-    # publication fields.  Never infer provenance from controller.cur, which can
-    # contain an interrupted current proposal.
+    # A live instance carries two distinct route clocks: the callback that
+    # actually committed the route and the latest callback the instance observed.
+    # Keep them separate so a prelude fallback cannot relabel an old route as new.
     prior_live_route = None
     if instance is not None:
         prior_route = getattr(instance, '_completed_route', None)
-        prior_step = getattr(instance, '_entrypoint_last_step', None)
-        prior_player = getattr(instance, '_entrypoint_last_player', observation['player'])
+        observed_step = getattr(instance, '_entrypoint_last_step', None)
+        route_step = getattr(instance, '_entrypoint_completed_route_step', observed_step)
+        route_player = getattr(
+            instance, '_entrypoint_completed_route_player',
+            getattr(instance, '_entrypoint_last_player', observation['player']))
         if (type(prior_route) is str
-                and type(prior_step) is int and prior_step >= 0
-                and prior_player == observation['player']
-                and step in (prior_step, prior_step + 1)):
+                and type(route_step) is int and route_step >= 0
+                and type(observed_step) is int and observed_step >= route_step
+                and route_player == observation['player']
+                and step in (observed_step, observed_step + 1)):
             prior_live_route = {
-                'route_step': prior_step,
-                'observed_step': prior_step,
+                'route_step': route_step,
+                'observed_step': observed_step,
                 'player': observation['player'],
                 'route': prior_route,
             }
+    prior_route_authority = route_journal if route_journal is not None else prior_live_route
 
     # Snapshot only state certified before this call mutates the live instance.
     # If a prior outer timeout already discarded the instance, carry its saved
@@ -485,6 +489,9 @@ def agent(observation, configuration=None):
         instance.selected = None
         instance.post = None
         instance._remember_seller_fallback(obs)
+        if prior_live_route is not None:
+            instance._entrypoint_completed_route_step = prior_live_route['route_step']
+            instance._entrypoint_completed_route_player = prior_live_route['player']
         instance._entrypoint_last_step = step
         instance._entrypoint_last_player = observation['player']
         instance.diagnostics = {
@@ -510,12 +517,27 @@ def agent(observation, configuration=None):
                 # discarded finalizer object.
                 if route_journal is not None:
                     instance._completed_route = route_journal['route']
+                    instance._entrypoint_completed_route_step = route_journal['route_step']
+                    instance._entrypoint_completed_route_player = route_journal['player']
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
                     stager(spatial_recovery)
                 _INSTANCE = instance
             stage = 'entrypoint_runtime'
             output = instance.act(observation, cfg, entry_started=entry_started)
+            current_route = getattr(instance, '_completed_route', None)
+            inner_status = getattr(instance, 'diagnostics', {}).get('status')
+            prior_route = (None if prior_route_authority is None
+                           else prior_route_authority['route'])
+            if (type(current_route) is str
+                    and (inner_status == 'completed'
+                         or prior_route_authority is None
+                         or current_route != prior_route)):
+                instance._entrypoint_completed_route_step = step
+                instance._entrypoint_completed_route_player = observation['player']
+            elif prior_route_authority is not None:
+                instance._entrypoint_completed_route_step = prior_route_authority['route_step']
+                instance._entrypoint_completed_route_player = prior_route_authority['player']
             # Publish only after a complete inner return. A foreign exception or
             # outer cancellation keeps the prior marker or discards the instance.
             instance._entrypoint_last_step = step
@@ -535,11 +557,15 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # A current selected action may publish a new route authority. Earlier
-        # construction/runtime cancellation carries only authenticated prior
-        # route provenance while advancing the observed-callback watermark.
         route = None if instance is None else getattr(instance, '_completed_route', None)
-        if stage == 'entrypoint_finalization' and type(route) is str:
+        prior = prior_route_authority
+        route_changed = (prior is None or route != prior.get('route'))
+        current_route_authoritative = (
+            stage == 'entrypoint_finalization'
+            and type(route) is str
+            and (inner.get('status') == 'completed' or route_changed)
+        )
+        if current_route_authoritative:
             _ROUTE_RECOVERY = {
                 'route_step': step,
                 'observed_step': step,
@@ -547,7 +573,6 @@ def agent(observation, configuration=None):
                 'route': route,
             }
         else:
-            prior = route_journal if route_journal is not None else prior_live_route
             _ROUTE_RECOVERY = _route_recovery_advance(prior, step)
         _INSTANCE = None
         return fallback
