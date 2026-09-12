@@ -1,0 +1,83 @@
+name: astra-v4-seam-shape-probe
+on:
+  push:
+    branches: [astra/v4-runtime-shape-probe-20260911]
+    paths: ['.github/workflows/astra-v4-seam-shape-probe.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      - name: Recover pinned archive, materialize, report seams
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          lab=pathlib.Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3')
+          arc=pathlib.Path('revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz')
+          pin=json.loads((lab/'V3-MANIFEST.json').read_text())['base']['sha256']
+          hist=f'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-{pin}.tar.gz'
+          def h(b): return hashlib.sha256(b).hexdigest()
+          def cat(ref,p):
+              q=subprocess.run(['git','cat-file','-e',f'{ref}:{p}'],capture_output=True)
+              return None if q.returncode else subprocess.check_output(['git','cat-file','blob',f'{ref}:{p}'])
+          b=arc.read_bytes() if arc.exists() else None
+          if b is None or h(b)!=pin:
+              subprocess.run(['git','fetch','--no-tags','--filter=blob:none','origin','main'],check=True)
+              ref=subprocess.check_output(['git','rev-parse','FETCH_HEAD'],text=True).strip()
+              b=next((x for x in (cat(ref,hist),cat(ref,str(arc))) if x is not None and h(x)==pin),None)
+          if b is None: raise SystemExit('pin recovery failed')
+          arc.parent.mkdir(parents=True,exist_ok=True); arc.write_bytes(b)
+          PY
+          OUT="$RUNNER_TEMP/tree"
+          LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          python3 "$LAB/build_v3.py" --tree "$OUT"
+          python3 - "$OUT" <<'PY'
+          import ast,pathlib,sys
+          root=pathlib.Path(sys.argv[1])
+          def src(path): return path.read_text(encoding='utf-8')
+          rr_text=src(root/'r04_full_router.py'); rr=ast.parse(rr_text)
+          rt_text=src(root/'titan_runtime.py'); rt=ast.parse(rt_text)
+          main_text=src(root/'main.py'); mt=ast.parse(main_text)
+          install=next(n for n in rr.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name=='install')
+          rlines=rr_text.splitlines()
+          print('INSTALL_RANGE',install.lineno,getattr(install,'end_lineno',None))
+          for n in ast.walk(install):
+              if isinstance(n,ast.If):
+                  names={x.id for x in ast.walk(n.test) if isinstance(x,ast.Name)}
+                  if names & {'place_delivery','goose_pass_rescue','b10_public_supply_order'}:
+                      print('SETTER_IF',n.lineno,ast.unparse(n.test),'BODY', [ast.unparse(x) for x in n.body])
+              if isinstance(n,ast.Return): print('INSTALL_RETURN',n.lineno,ast.unparse(n.value) if n.value else 'None')
+          for n in rr.body:
+              if not isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)): continue
+              for x in ast.walk(n):
+                  if isinstance(x,ast.If):
+                      ids={z.id for z in ast.walk(x.test) if isinstance(z,ast.Name)}
+                      flags=sorted(ids & {'PLACE_DELIVERY','GOOSE_PASS_RESCUE','B10_PUBLIC_SUPPLY_ORDER'})
+                      if flags:
+                          print('ROUTER_GUARD',n.name,x.lineno,flags,ast.unparse(x.test),'BODY',[ast.unparse(y)[:500] for y in x.body])
+          agent=next(n for n in rt.body if isinstance(n,ast.ClassDef) and n.name=='TitanAgent')
+          for n in agent.body:
+              if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name in {'__init__','_v3_r03_act'}:
+                  print('AGENT_METHOD',n.name,n.lineno,getattr(n,'end_lineno',None))
+                  lines=rt_text.splitlines()
+                  for i in range(n.lineno-1,min(len(lines),n.lineno+40)):
+                      print('RUNTIME_SRC',i+1,lines[i])
+          for n in mt.body:
+              if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name=='_new_instance':
+                  print('MAIN_NEW_INSTANCE',n.lineno,getattr(n,'end_lineno',None))
+                  lines=main_text.splitlines()
+                  for i in range(n.lineno-1,min(len(lines),getattr(n,'end_lineno',n.lineno))): print('MAIN_SRC',i+1,lines[i])
+          PY
