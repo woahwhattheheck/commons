@@ -6,6 +6,7 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import compose_e14_off as c
 
@@ -34,8 +35,22 @@ def make_tar(entries, *, special=None) -> bytes:
 
 class HistoricalIdentityTests(unittest.TestCase):
     def test_e14_commit_parent_is_pinned_predecessor(self):
-        parent = c._run_git(REPO_ROOT, "rev-parse", f"{c.E14_COMMIT}^").decode().strip()
-        self.assertEqual(parent, c.PRE_E14_COMMIT)
+        lineage = c.validate_git_ancestry(REPO_ROOT)
+        self.assertEqual(lineage["e14_commit"], c.E14_COMMIT)
+        self.assertEqual(lineage["immediate_parent"], c.PRE_E14_COMMIT)
+        self.assertEqual(lineage["parent_count"], 1)
+        self.assertEqual(lineage["submitted_v4_source"], c.V4_SOURCE)
+        self.assertTrue(lineage["e14_ancestor_of_submitted_v4"])
+
+    def test_wrong_immediate_parent_fails_inside_builder_authority(self):
+        with patch.object(c, "PRE_E14_COMMIT", c.V31_SOURCE):
+            with self.assertRaisesRegex(ValueError, "sole parent"):
+                c.validate_git_ancestry(REPO_ROOT)
+
+    def test_e14_must_be_on_submitted_v4_lineage(self):
+        with patch.object(c, "V4_SOURCE", c.PRE_E14_COMMIT):
+            with self.assertRaisesRegex(ValueError, "not an ancestor of submitted V4"):
+                c.validate_git_ancestry(REPO_ROOT)
 
     def test_exact_scheduler_blob_lineage(self):
         self.assertEqual(
