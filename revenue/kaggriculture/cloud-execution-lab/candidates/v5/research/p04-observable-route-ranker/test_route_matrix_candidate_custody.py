@@ -43,6 +43,20 @@ class CandidateCustody(unittest.TestCase):
         archive.write_bytes(custody._build_delivery_module().archive_bytes(files))
         return payload, archive, files, manifest(files, archive)
 
+    def test_helper_sha256_pins_match_merged_helpers(self):
+        source = Path(custody.__file__).resolve()
+        selective = source.parents[2] / "selective-carrot"
+        kaggriculture = source.parents[5]
+        helpers = {
+            selective / "build_delivery.py": custody.BUILD_DELIVERY_SHA256,
+            selective / "publication_custody.py": custody.PUBLICATION_CUSTODY_SHA256,
+            kaggriculture / "cloud-pack" / "official.py": custody.OFFICIAL_FILE_LOADER_SHA256,
+        }
+        for path, expected in helpers.items():
+            with self.subTest(path=path):
+                self.assertEqual(64, len(expected))
+                self.assertEqual(expected, custody.core.sha256_file(path))
+
     def test_capture_binds_canonical_archive_manifest_and_exact_tree(self):
         with tempfile.TemporaryDirectory() as td:
             payload, archive, files, m = self.fixture(Path(td))
