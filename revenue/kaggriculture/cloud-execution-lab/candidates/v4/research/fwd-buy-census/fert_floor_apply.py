@@ -15,9 +15,10 @@ Two constructed witnesses are retained deliberately:
 * ``run_pair`` is the minimal one-water CARROT proof (+1 possible unit).
 * ``run_amortized_pair`` executes a source-reachable MELON survival prefix from
   day 4 through the day-10 fertilizer window, then holds that crop through all
-  three fertilizer-active days. One FERT plus the same two custody/application
-  callbacks can therefore boost three common WATER callbacks while every
-  intervening EOD transition is executed by the pinned interpreter.
+  three fertilizer-active days and to its first legal harvest age on day 13.
+  One FERT plus the same two custody/application callbacks can therefore boost
+  three common WATER callbacks while every intervening EOD transition is
+  executed by the pinned interpreter.
 
 Both deliberately charge the real market buy and use the real interpreter for
 every custody/action transition. Positive constructed cash is mechanism evidence,
@@ -50,9 +51,6 @@ def floor_buy_threshold(engine: Any) -> int:
     """Lowest *pre-buy* FERT inventory whose one-unit post-buy quote is $1."""
     params = engine.MARKET_PARAMS[ITEM]
     start = int(params["I0"])
-    # The current source is monotone linear above I0. Keep a bounded search so a
-    # future source drift fails visibly instead of silently importing an algebraic
-    # assumption about shape/rounding.
     for inventory in range(start, start + 100000):
         quote = engine.market_price(ITEM, inventory - 1)
         if quote == engine.PRICE_FLOOR:
@@ -79,7 +77,6 @@ def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
     obs = state[seat].observation
     obs.market["inventory"][ITEM] = fert_inventory
     engine._refresh_prices(obs.market)
-
     farm = obs.farms[seat]
     x, y = farm["farmer"]
     tile = engine._new_plant(crop, plant_day, env.configuration.turnsPerDay)
@@ -171,15 +168,12 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
             trace.append(_tick(engine, state, env, seat, step,
                                unit_action(row, market=market)))
         result[arm] = oc.finish(state, seat, trace)
-
     control = result["control"]
     candidate = result["floor_apply"]
     candidate_harvest = _trace_at(candidate, 94)["inventories"][0].get(CROP, 0)
     control_harvest = _trace_at(control, 94)["inventories"][0].get(CROP, 0)
-    cert = _base_certificate(
-        engine, seat=seat, fert_inventory=fert_inventory,
-        control=control, candidate=candidate,
-    )
+    cert = _base_certificate(engine, seat=seat, fert_inventory=fert_inventory,
+                             control=control, candidate=candidate)
     cert.update({
         "witness": "MINIMAL_ONE_WATER_CARROT",
         "crop": CROP,
@@ -196,15 +190,13 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
 def run_amortized_pair(engine: Any, *, seat: int = 0,
                        fert_inventory: int | None = None,
                        cash: int = 3000) -> dict:
-    """Use one FERT across a reachable three-day MELON WATER window.
+    """Use one FERT across a source-real three-day MELON WATER window.
 
-    The fixture begins with a newly planted day-4 MELON, then executes the
-    shared survival prefix through the official interpreter: WATER on days 4,
-    6 and 8 keeps the crop live while all three calls remain before MELON's
-    yield window (age < 6), so the pre-FERT yield at the end of day 9 is still
-    zero. One FERTILIZE on day 10 is then active through day 12 inclusive.
-    Candidate and control share all survival and production WATER callbacks;
-    only BUY/PICKUP/FERTILIZE differ.
+    A newly planted day-4 MELON starts with one held unit. Shared WATER at days
+    4, 6 and 8 keeps it alive before its annual WATER-yield window (age < 6).
+    One FERTILIZE on day 10 is active through day 12. Shared production WATER at
+    days 10, 11 and 12 realizes the full fertilizer lifetime. The crop is then
+    held alive until day 13, MELON's first legal harvest day for a day-4 plant.
     """
     if type(seat) is not int or seat not in (0, 1):
         raise ValueError("seat must be 0 or 1")
@@ -215,14 +207,14 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
     prefert_step = 10 * 24 - 1
     world = _fixture(
         engine, seat, fert_inventory=fert_inventory, cash=cash,
-        crop=AMORTIZED_CROP, yield_units=0, plant_day=plant_day,
+        crop=AMORTIZED_CROP, yield_units=1, plant_day=plant_day,
         consecutive_unwatered=1,
     )
     result = {}
     survival_water_steps = {4 * 24, 6 * 24, 8 * 24}
     water_steps = {10 * 24 + 3, 11 * 24, 12 * 24}
-    harvest_step = 12 * 24 + 1
-    liquidation_step = 12 * 24 + 2
+    harvest_step = 13 * 24
+    liquidation_step = harvest_step + 1
     for arm in ("control", "floor_apply"):
         state, env = copy.deepcopy(world)
         trace = []
@@ -246,7 +238,6 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
             trace.append(_tick(engine, state, env, seat, step,
                                unit_action(row, market=market)))
         result[arm] = oc.finish(state, seat, trace)
-
     control = result["control"]
     candidate = result["floor_apply"]
     candidate_harvest = _trace_at(candidate, harvest_step)["inventories"][0].get(
@@ -255,10 +246,8 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
         AMORTIZED_CROP, 0)
     prefert_candidate = _trace_at(candidate, prefert_step)["tile"]
     prefert_control = _trace_at(control, prefert_step)["tile"]
-    cert = _base_certificate(
-        engine, seat=seat, fert_inventory=fert_inventory,
-        control=control, candidate=candidate,
-    )
+    cert = _base_certificate(engine, seat=seat, fert_inventory=fert_inventory,
+                             control=control, candidate=candidate)
     cert.update({
         "witness": "AMORTIZED_THREE_DAY_MELON",
         "crop": AMORTIZED_CROP,
@@ -273,6 +262,8 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
         "prefert_candidate_tile": prefert_candidate,
         "prefert_control_tile": prefert_control,
         "market_buy_step": 10 * 24,
+        "harvest_step": harvest_step,
+        "source_created_initial_yield_units": 1,
         "extra_unit_callbacks_per_incremental_unit": (
             2 / (candidate_harvest - control_harvest)
             if candidate_harvest > control_harvest else None
@@ -287,8 +278,7 @@ def run_panel(engine: Any) -> dict:
     rows = []
     for seat in (0, 1):
         for inventory in (threshold - 1, threshold, threshold + 100):
-            pair = run_pair(engine, seat=seat, fert_inventory=inventory)
-            rows.append(pair["certificate"])
+            rows.append(run_pair(engine, seat=seat, fert_inventory=inventory)["certificate"])
     amortized = [
         run_amortized_pair(engine, seat=seat, fert_inventory=threshold)["certificate"]
         for seat in (0, 1)
