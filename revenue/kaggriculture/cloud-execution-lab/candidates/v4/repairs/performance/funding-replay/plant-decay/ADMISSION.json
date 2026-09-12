@@ -24,13 +24,30 @@
     "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
     "runtime_decay_semantics_must_match_official_ast": true
   },
-  "defect": "the current authenticated funding replay executes represented unit and market/town stages but omits the official deterministic post-market plant-decay stage before the next represented callback",
+  "defects": [
+    "the current authenticated funding replay executes represented unit and market/town stages but omits the official deterministic post-market plant-decay stage before the next represented callback",
+    "the current replay accepts horizons crossing official end-of-day while simulating none of the EOD lifecycle: hand deletion, inventory-to-shed drop, worker reset, daily plant/animal refresh, or private inventory reset"
+  ],
   "repair": {
+    "same_day_guard": {
+      "turns_per_day": 24,
+      "reason": "the authenticated replay already hardcodes t // 24 and literal 24 in represented unit execution; non-24 clocks are outside its source-real domain",
+      "cross_eod_behavior": "raise ValueError before represented unit replay when now // 24 differs from end // 24",
+      "full_eod_simulation_claim": false
+    },
     "inserted_source": "m._decay_plants(f, t)",
-    "position": "final statement of each outer represented funding turn, after TOWNPATH and immediately before the funding receipt return boundary",
-    "delta": "exactly one source line",
-    "idempotence": "accepted only when deleting that exact line reconstructs an authenticated full-chain predecessor",
+    "position": "final statement of each admitted outer represented funding turn, after TOWNPATH and immediately before the funding receipt return boundary",
+    "delta": "one exact same-day guard block plus one exact plant-decay source line",
+    "idempotence": "accepted only when deleting the exact guard and decay line reconstructs an authenticated full-chain predecessor",
     "fail_closed": true
+  },
+  "cross_eod_killer": {
+    "now": 119,
+    "end": 120,
+    "predecessor_state": "one existing hand and matching private inventory before official step-119 EOD",
+    "future_route": {"120": "hand[0] HARVEST"},
+    "predecessor_defect": "the replay carries that hand across EOD and executes actor index 1 at step 120 even though official EOD removed all hands",
+    "candidate_expected": "reject before step-120 unit replay"
   },
   "season_reachable_witness": {
     "now": 120,
@@ -46,13 +63,24 @@
     "reason": "official step-120 decay reduces WHEAT 2->1; the later HARVEST/DROP then leaves one capacity slot for the baseline goose only when the inherited MILK sale is preserved"
   },
   "focused_gate": {
-    "tests_per_mode": 7,
+    "tests_per_mode": 9,
     "modes": ["normal", "PYTHONOPTIMIZE=1"],
     "compile": ["apply_plant_decay.py", "test_plant_decay.py"],
-    "materializes_actual_current_v4_funding_chain": true
+    "materializes_actual_current_v4_funding_chain": true,
+    "must_cover": [
+      "exact authenticated four-stage predecessor",
+      "guard-plus-decay reversible idempotent composition",
+      "raw/town-only and target-span drift refusal",
+      "non-24-turn clock refusal",
+      "119-to-120 stale-hand cross-EOD killer",
+      "step-120 decay boundary",
+      "same-day season-reachable capacity witness"
+    ]
   },
   "forbidden": [
     "new V4 root or controller",
+    "claiming full EOD lifecycle simulation",
+    "cross-EOD funding replay admission",
     "direct mutation of root frozen_selected.py",
     "COMPOSITION.json activation before exact-head execution and authenticated current postimage binding",
     "runtime/default/config/archive/Kaggle/submission mutation"
