@@ -18,22 +18,30 @@
   "published_bytes": {
     "composer": {
       "path": "compose_current_h3s420.py",
-      "git_blob": "188d315e2e0fc0a008c508b365aa2cb04fb70591",
-      "sha256": "3850822630b9273ec49a408ad87b810c91a81e67c4a90eba5cbb1898774b223b",
-      "bytes": 6222
+      "git_blob": "7c5778b4d6d7c47f8feca7e800fc8093267b66f8",
+      "sha256": "1dca571afef17fd4b30623d0fa4c40cd19ee255fc2f3692b310355d4c60f04a0",
+      "bytes": 7595
     },
     "tests": {
       "path": "test_compose_current_h3s420.py",
-      "git_blob": "d0b3e7707fb3b1b7ab108fa4b35eb9a66ff8e660",
-      "sha256": "c86c6c22236759c5f0b07c1899009991c6c438ea340fd7f12fa05c5f594297ab",
-      "bytes": 5558
+      "git_blob": "58cdeedfe251c408ab3f5d1186159a3d910da359",
+      "sha256": "728252ad4cc6583a82b44a4386650acbe92fbde9182e09c8082d658a81332898",
+      "bytes": 6599
     }
   },
   "authored_validation": {
-    "normal": "13/13 PASS",
-    "optimized": "13/13 PASS",
+    "normal": "15/15 PASS",
+    "optimized": "15/15 PASS",
     "py_compile": "PASS",
+    "source_real_native": "enabled compose PASS on exact pinned fc7baf5c source; output git-blob:3eac84271bd7ced81cb5bad8584d0f5c6dc4d149",
+    "source_real_loom4": "enabled rewrite PASS on exact reconstructed 4a5d3d5f postimage; output git-blob:712f7334288951bdc5b8dd2a1aa1d7f985cd50dc",
     "byte_binding": "published composer/test Git blobs equal the executed local bytes"
+  },
+  "source_real_repair": {
+    "predecessor_bug": "global BLOCK_END uniqueness rejected real FrozenSelected because terminal settlement and normal materialization both contain out=copy.deepcopy(base)",
+    "repair": "scope start/end discovery to the unique FrozenSelected.transform method; require one start and one end after that start",
+    "terminal_path_preserved": true,
+    "unknown_or_ambiguous_post_start_boundary": "REFUSE"
   },
   "composition_scope": {
     "captrace": "top-level _funding_trace and funded_minimum_now only",
