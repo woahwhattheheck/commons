@@ -24,6 +24,7 @@ GRAPH_TEST = 'test_fast_clone_graph_contract.py'
 ORIGINAL_TEST = 'test_r04_fast_tape_clone.py'
 PINS = {
     HELPER: 'b7c1fd2f7f786c5dc5f8a3b9a7116815ea40607a',
+    GRAPH_TEST: 'da78c6664ff9b0537a910cf4672355fcaafb0a9e',
     ORIGINAL_TEST: 'a292131f3a9b47c00d74585ca2691beb07fbb44a',
     'r01_tapes.py': 'a43289b9cc5e34a2481fddf652762a7d92f427ef',
     'port_fast_tape_clone.py': '39bb7f9bf95cfa32a99c1a30843ba47d506709ad',
@@ -85,7 +86,7 @@ def main(argv=None):
         parser.error('--generated-only does not consume --tapes')
     try:
         inputs = {HELPER: read_pinned(HERE / HELPER, HELPER),
-                  GRAPH_TEST: (HERE / GRAPH_TEST).read_bytes()}
+                  GRAPH_TEST: read_pinned(HERE / GRAPH_TEST, GRAPH_TEST)}
         expected = 8
         if not args.generated_only:
             path = args.tapes
