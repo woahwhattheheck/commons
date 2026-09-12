@@ -8,11 +8,11 @@ preserve literal-bool activation semantics.
 
 The contract is narrow on purpose.  A callable whose parameter is literally
 named ``enabled`` and defaults to the bool ``False`` may not activate through
-Python truthiness (``if enabled``, ``if not enabled``, ``bool(enabled)``, or
-``enabled == True``).  Those forms accept values such as ``1`` or non-empty
-containers.  Exact identity tests (``enabled is True`` / ``is not True``) are
-safe.  A top-level fail-closed guard that rejects every non-bool before the first
-truthiness use is also safe.
+Python truthiness (``if enabled``, ``if not enabled``, ``enabled and value``,
+``enabled or value``, ``not enabled``, ``bool(enabled)``, or ``enabled == True``).
+Those forms accept values such as ``1`` or non-empty containers.  Exact identity
+tests (``enabled is True`` / ``is not True``) are safe.  A top-level fail-closed
+guard that rejects every non-bool before the first truthiness use is also safe.
 """
 from __future__ import annotations
 
@@ -208,6 +208,17 @@ class _TruthinessVisitor(ast.NodeVisitor):
         self._test(node.test)
         self.visit(node.body)
         self.visit(node.orelse)
+
+    def visit_BoolOp(self, node: ast.BoolOp) -> None:  # noqa: N802
+        # BoolOp coerces operands through Python truthiness even when the whole
+        # expression is returned, assigned, or passed as a call argument.
+        self._test(node)
+        self.generic_visit(node)
+
+    def visit_UnaryOp(self, node: ast.UnaryOp) -> None:  # noqa: N802
+        if isinstance(node.op, ast.Not):
+            self._test(node)
+        self.generic_visit(node)
 
     def visit_Call(self, node: ast.Call) -> None:  # noqa: N802
         if _call(node, "bool", 1) and _name(node.args[0], "enabled"):
