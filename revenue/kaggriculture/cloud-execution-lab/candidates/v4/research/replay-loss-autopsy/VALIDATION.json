@@ -16,9 +16,9 @@
       "sha256": "e04b9be113b8089d7d0bcc858908f4aa766c3a52b6b1f41e5e10af59ca15b694"
     },
     "test_compare_episode_extracts.py": {
-      "bytes": 9918,
-      "git_blob_sha1": "63b91d34a49582b8a42c5d16b0ed6985ade314de",
-      "sha256": "e3ee145f7db63441cf6509727dee001bbc6d6d8798969ebd0a3b3af0654b6b8b"
+      "bytes": 11621,
+      "git_blob_sha1": "6bd4cd50cee5fe1e27356927e373b72ca1ba2e3c",
+      "sha256": "68385633af7d1b7bfa4d6dd8a2ec11bfffc9d6032379785719b362a8905822fc"
     },
     "test_extract_episode.py": {
       "bytes": 7951,
@@ -39,16 +39,16 @@
     "real_replay_episode_executed": false,
     "synthetic_only": true,
     "unittest_normal": {
-      "comparator_tests": 14,
+      "comparator_tests": 16,
       "extractor_tests": 8,
       "status": "PASS",
-      "tests": 22
+      "tests": 24
     },
     "unittest_optimized": {
-      "comparator_tests": 14,
+      "comparator_tests": 16,
       "extractor_tests": 8,
       "status": "PASS",
-      "tests": 22
+      "tests": 24
     }
   }
 }
