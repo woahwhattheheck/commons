@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -61,6 +60,35 @@ def fixture():
     return canonical, integration, composition
 
 
+def d4_binding():
+    return {
+        "schema": cross.SEMANTIC_BINDINGS_SCHEMA,
+        "bindings": [{
+            "component": "d4-strawberry-timing",
+            "package": "research/d4-strawberry-timing",
+            "composition_state": "blocked",
+            "integration_lane": "D4 strawberry timing",
+            "integration_disposition": "KILL_reachable_but_output_inert_do_not_stack_or_activate",
+            "composition_disposition_marker": "REACHABLE_BUT_OUTPUT_INERT",
+        }],
+    }
+
+
+def add_d4(canonical, integration, composition):
+    del canonical
+    integration["negative_or_parked"].append({
+        "lane": "D4 strawberry timing",
+        "disposition": "KILL_reachable_but_output_inert_do_not_stack_or_activate",
+    })
+    composition["components"].append({
+        "id": "d4-strawberry-timing",
+        "state": "blocked",
+        "package": "research/d4-strawberry-timing",
+        "reason": "Natural D4 engagement exists but there is no output-changing postimage.",
+        "note": "REACHABLE_BUT_OUTPUT_INERT per authenticated closure.",
+    })
+
+
 class CrossLedgerTests(unittest.TestCase):
     def test_coherent_fixture_passes(self):
         result = cross.audit(*fixture())
@@ -71,11 +99,7 @@ class CrossLedgerTests(unittest.TestCase):
 
     def test_compose_without_landed_custody_fails(self):
         canonical, integration, composition = fixture()
-        composition["components"].append({
-            "id": "orphan-runtime-edge",
-            "state": "compose",
-            "package": "repairs/performance/orphan-runtime-edge",
-        })
+        composition["components"].append({"id": "orphan-runtime-edge", "state": "compose", "package": "repairs/performance/orphan-runtime-edge"})
         result = cross.audit(canonical, integration, composition)
         self.assertFalse(result["ok"])
         self.assertIn("orphan-runtime-edge", result["unmapped_compose_components"])
@@ -83,14 +107,19 @@ class CrossLedgerTests(unittest.TestCase):
 
     def test_blocked_without_landed_path_is_warning_not_false_custody(self):
         canonical, integration, composition = fixture()
-        composition["components"].append({
-            "id": "research-hold",
-            "state": "blocked",
-            "package": "research/some-hold",
-        })
+        composition["components"].append({"id": "research-hold", "state": "blocked", "package": "research/some-hold"})
         result = cross.audit(canonical, integration, composition)
         self.assertTrue(result["ok"], result)
         self.assertTrue(any(w["code"] == "noncompose_without_exact_landed_path" for w in result["warnings"]))
+
+    def test_negative_exact_path_maps_blocked_component(self):
+        canonical, integration, composition = fixture()
+        integration["negative_or_parked"].append({"lane": "research hold", "repair_path": "research/some-hold", "disposition": "HOLD"})
+        composition["components"].append({"id": "research-hold", "state": "blocked", "package": "research/some-hold"})
+        result = cross.audit(canonical, integration, composition)
+        self.assertTrue(result["ok"], result)
+        self.assertFalse(any(w.get("component") == "research-hold" for w in result["warnings"]))
+        self.assertTrue(any(m.get("component") == "research-hold" and m.get("custody") == "negative_or_parked" for m in result["mappings"]))
 
     def test_explicit_blocked_link_must_exist(self):
         canonical, integration, composition = fixture()
@@ -122,22 +151,24 @@ class CrossLedgerTests(unittest.TestCase):
 
     def test_duplicate_landed_repair_path_fails(self):
         canonical, integration, composition = fixture()
-        integration["landed"].append({
-            "lane": "duplicate clone custody",
-            "repair_path": "repairs/performance/fast-tape-clone",
-            "status": "source_only",
-        })
+        integration["landed"].append({"lane": "duplicate clone custody", "repair_path": "repairs/performance/fast-tape-clone", "status": "source_only"})
         result = cross.audit(canonical, integration, composition)
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "duplicate_landed_repair_path" for e in result["errors"]))
 
+    def test_duplicate_negative_repair_path_fails(self):
+        canonical, integration, composition = fixture()
+        integration["negative_or_parked"] = [
+            {"lane": "a", "repair_path": "research/x", "disposition": "HOLD"},
+            {"lane": "b", "repair_path": "research/x", "disposition": "HOLD"},
+        ]
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "duplicate_negative_repair_path" for e in result["errors"]))
+
     def test_duplicate_component_package_fails(self):
         canonical, integration, composition = fixture()
-        composition["components"].append({
-            "id": "second-clone-owner",
-            "state": "blocked",
-            "package": "repairs/performance/fast-tape-clone",
-        })
+        composition["components"].append({"id": "second-clone-owner", "state": "blocked", "package": "repairs/performance/fast-tape-clone"})
         result = cross.audit(canonical, integration, composition)
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "duplicate_component_package" for e in result["errors"]))
@@ -168,11 +199,7 @@ class CrossLedgerTests(unittest.TestCase):
 
     def test_negative_exact_package_cannot_be_composed(self):
         canonical, integration, composition = fixture()
-        integration["negative_or_parked"] = [{
-            "lane": "retired clone",
-            "repair_path": "repairs/performance/fast-tape-clone",
-            "disposition": "NO_BUILD",
-        }]
+        integration["negative_or_parked"] = [{"lane": "retired clone", "repair_path": "repairs/performance/fast-tape-clone", "disposition": "NO_BUILD"}]
         result = cross.audit(canonical, integration, composition)
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "negative_lane_is_composed" for e in result["errors"]))
@@ -181,11 +208,60 @@ class CrossLedgerTests(unittest.TestCase):
         canonical, integration, composition = fixture()
         integration["landed"][0]["repair_path"] = "../escape"
         composition["components"][0]["package"] = "/absolute"
+        integration["negative_or_parked"] = [{"lane": "bad", "repair_path": "../negative", "disposition": "HOLD"}]
         result = cross.audit(canonical, integration, composition)
         self.assertFalse(result["ok"])
         codes = {e["code"] for e in result["errors"]}
         self.assertIn("unsafe_landed_repair_path", codes)
         self.assertIn("unsafe_component_package", codes)
+        self.assertIn("unsafe_negative_repair_path", codes)
+
+    def test_semantic_binding_catches_d4_negative_disposition_drift(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        integration["negative_or_parked"][-1]["disposition"] = "KILL_literal_V4_reachability_zero_do_not_stack_or_activate"
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "semantic_binding_negative_disposition_split_brain" for e in result["errors"]))
+
+    def test_semantic_binding_catches_d4_composition_marker_drift(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        composition["components"][-1]["note"] = "COLD_ZERO_REACHABILITY"
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "semantic_binding_composition_disposition_split_brain" for e in result["errors"]))
+
+    def test_semantic_binding_catches_state_drift(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        composition["components"][-1]["state"] = "evidence_only"
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "semantic_binding_state_split_brain" for e in result["errors"]))
+
+    def test_semantic_binding_catches_component_package_drift(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        binding = d4_binding()
+        binding["bindings"][0]["package"] = "research/other-d4"
+        result = cross.audit(canonical, integration, composition, binding)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "semantic_binding_component_package_split_brain" for e in result["errors"]))
+
+    def test_semantic_binding_happy_path_is_visible(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(1, len(result["semantic_mappings"]))
+        self.assertEqual("d4-strawberry-timing", result["semantic_mappings"][0]["component"])
+
+    def test_bad_semantic_binding_schema_fails(self):
+        canonical, integration, composition = fixture()
+        result = cross.audit(canonical, integration, composition, {"schema": "wrong", "bindings": []})
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e["code"] == "bad_semantic_bindings_schema" for e in result["errors"]))
 
     def test_duplicate_json_keys_rejected_at_load(self):
         with tempfile.TemporaryDirectory() as td:
