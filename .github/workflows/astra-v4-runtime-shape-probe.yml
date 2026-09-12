@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: astra-v4-runtime-shape-probe
+  cancel-in-progress: true
+
 jobs:
   probe:
     runs-on: ubuntu-24.04
@@ -20,6 +24,11 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
       - name: Materialize and print exact decorator AST
         shell: bash
         run: |
@@ -38,35 +47,33 @@ jobs:
           print('SELLER_STATE_SIGNATURE', ast.unparse(target.args))
           lines = text.splitlines()
           lo = max(0, target.lineno - 4)
-          hi = min(len(lines), (getattr(target, 'end_lineno', target.lineno) or target.lineno) + 2)
+          hi = min(len(lines), target.lineno + 6)
           for i in range(lo, hi):
-              if i + 1 > target.lineno + 6:
-                  break
               print(f'SELLER_STATE_SOURCE {i+1}: {lines[i]}')
-          class_bound = set()
+          names = sorted({d.id for d in target.decorator_list if isinstance(d, ast.Name)})
           module_bound = set()
-          def bound_name(node):
-              if isinstance(node, ast.Name): return {node.id}
-              if isinstance(node, (ast.Tuple, ast.List)):
+          class_bound = set()
+          def bind_target(t):
+              if isinstance(t, ast.Name): return {t.id}
+              if isinstance(t, (ast.Tuple, ast.List)):
                   out=set()
-                  for e in node.elts: out |= bound_name(e)
+                  for e in t.elts: out |= bind_target(e)
                   return out
               return set()
           for n in tree.body:
               if isinstance(n, ast.Assign):
-                  for t in n.targets: module_bound |= bound_name(t)
+                  for t in n.targets: module_bound |= bind_target(t)
               elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
                   module_bound.add(n.name)
               elif isinstance(n, (ast.Import, ast.ImportFrom)):
                   for a in n.names: module_bound.add(a.asname or a.name.split('.',1)[0])
           for n in agent.body:
               if isinstance(n, ast.Assign):
-                  for t in n.targets: class_bound |= bound_name(t)
+                  for t in n.targets: class_bound |= bind_target(t)
               elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
                   class_bound.add(n.name)
               elif isinstance(n, (ast.Import, ast.ImportFrom)):
                   for a in n.names: class_bound.add(a.asname or a.name.split('.',1)[0])
-          names = sorted({d.id for d in target.decorator_list if isinstance(d, ast.Name)})
           print('DECORATOR_NAMES', names)
           print('DECORATOR_MODULE_BOUND', sorted(set(names) & module_bound))
           print('DECORATOR_CLASS_BOUND', sorted(set(names) & class_bound))
