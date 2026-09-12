@@ -33,6 +33,29 @@
     if (typeof evidence.observed_at !== "string" || !/(?:Z|[+-]\d\d:\d\d)$/.test(evidence.observed_at)) return false;
     return !Number.isNaN(Date.parse(evidence.observed_at));
   }
+  function canonicalRailMatches(snapshot, listing) {
+    var checkout = listing && listing.checkout;
+    var sku = listing && listing.id;
+    var capability = checkout && checkout.capability_evidence;
+    if (typeof sku !== "string" || !sku || !checkout || !capability) return false;
+    var rails = snapshot && Array.isArray(snapshot.canonical_rails) ? snapshot.canonical_rails : [];
+    var snapshotEvidence = snapshot && snapshot.evidence && typeof snapshot.evidence === "object" ? snapshot.evidence : {};
+    for (var i = 0; i < rails.length; i += 1) {
+      var rail = rails[i];
+      if (!rail || typeof rail !== "object") continue;
+      if (rail.sku !== sku || rail.url !== checkout.url) continue;
+      if (rail.link_active !== true || rail.livemode !== true) continue;
+      if (rail.exposure !== "CHECKOUT_FIRST" && rail.exposure !== "INTAKE_FIRST") continue;
+      var evidence = rail.evidence && typeof rail.evidence === "object" ? rail.evidence : {
+        reference: snapshotEvidence.reference,
+        observed_at: snapshot && snapshot.observed_at
+      };
+      if (evidence.reference !== capability.reference) continue;
+      if (evidence.observed_at !== capability.observed_at) continue;
+      return true;
+    }
+    return false;
+  }
   function accountReady(snapshot) {
     var provider = snapshot && snapshot.provider || {};
     return provider.name === "stripe" &&
@@ -54,6 +77,7 @@
     if (checkout.account_payouts_enabled !== true) return false;
     if (!isStripeCheckoutUrl(checkout.url)) return false;
     if (!hasDurableCapabilityEvidence(checkout)) return false;
+    if (!canonicalRailMatches(snapshot, listing)) return false;
     var inert = snapshot.inert_duplicate_urls || [];
     if (inert.indexOf(checkout.url) !== -1) return false;
     return true;
