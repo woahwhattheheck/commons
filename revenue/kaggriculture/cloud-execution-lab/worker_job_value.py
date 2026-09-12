@@ -272,6 +272,12 @@ def evaluate_worker_job(*, start_step: int, actions: Sequence[Sequence[Any]],
                               required_quantity=output["quantity"],
                               unmatched_quantity=remaining)
                 return report
+        for index, event in enumerate(events):
+            if event["kind"] == "sale" and sale_remaining[index]:
+                report.update(complete=True, reason="sale_not_attributed_to_output",
+                              item=event["item"], sale_step=event["step"],
+                              unmatched_quantity=sale_remaining[index])
+                return report
 
         input_cost = 0.0
         sale_receipt = 0.0
