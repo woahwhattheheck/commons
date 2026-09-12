@@ -67,6 +67,10 @@ enter cross-lane scope groups.
 - A quarantined foreign-root or unbound repo-write event does not reserve its
   `event_id`, so it cannot shadow a later valid canonical event carrying the
   same provider ID.
+- If two or more otherwise-authoritative rows carry the same provider
+  `event_id`, the **entire conflicting ID group is quarantined**. Raw export
+  line order therefore cannot choose which duplicate CLAIM, HEARTBEAT, or
+  terminal row gets lease authority. Duplicate diagnostics remain visible.
 - Read-only rootless events remain authoritative for backwards compatibility;
   this exception is explicit in the report policy.
 - Heartbeats without a live claim and terminal events without a claim are
