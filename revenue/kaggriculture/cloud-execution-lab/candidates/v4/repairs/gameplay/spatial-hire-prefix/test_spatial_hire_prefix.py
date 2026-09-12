@@ -64,7 +64,8 @@ def module_from(data: bytes, name: str):
 BASE = module_from(SOURCE, '_thistle_base')
 FIX = module_from(PATCHED, '_thistle_fix')
 COUNTS = Counter()
-CAPS = (None, -3, 0, 1, 2, 5, 10, 12, '2', 2.9, False, True)
+CAPS = (None, -3, 0, 1, 2, 5, 10, 12)
+POISON_CAPS = ('2', 2.9, False, True)
 
 
 class SpatialHirePrefixTests(unittest.TestCase):
@@ -132,7 +133,7 @@ class SpatialHirePrefixTests(unittest.TestCase):
 
     def test_current_selected_scan_uses_raw_prefix(self):
         for cap in CAPS:
-            limit=max(1,int(10 if cap is None else cap))
+            limit=max(1,10 if cap is None else cap)
             for seat in (0,1):
                 for filler in (['PASS'], [], ['SELL','WHEAT',0]):
                     obs,cfg,route=self.fixture(cap,seat)
@@ -145,7 +146,7 @@ class SpatialHirePrefixTests(unittest.TestCase):
 
     def test_future_authored_scan_uses_raw_prefix(self):
         for cap in CAPS:
-            limit=max(1,int(10 if cap is None else cap))
+            limit=max(1,10 if cap is None else cap)
             for seat in (0,1):
                 for step in (28,29,30,31):
                     obs,cfg,route=self.fixture(cap,seat)
@@ -161,9 +162,22 @@ class SpatialHirePrefixTests(unittest.TestCase):
                             self.assertEqual(fixed.R['case'][tick]['hands'],route[tick]['hands'])
                         COUNTS['route_suffix_cases']+=1
 
+    def test_noninteger_market_caps_fail_closed(self):
+        for cap in POISON_CAPS:
+            coerced_limit=max(1,int(cap))
+            for seat in (0,1):
+                obs,cfg,route=self.fixture(cap,seat)
+                market=[['PASS'] for _ in range(coerced_limit)]+[['HIRE']]
+                with self.subTest(cap=cap,seat=seat):
+                    self.assertFalse(self.direct(FIX,obs,cfg,route,market).plans)
+                    route[30]['market']=deepcopy(market)
+                    p,o=self.owner(FIX,obs,cfg,route);p.act(deepcopy(obs))
+                    self.assertFalse(o.plans)
+                    COUNTS['poison_cap_fail_closed_cases']+=1
+
     def test_every_live_hire_slot_remains_a_boundary(self):
         for cap in CAPS:
-            limit=max(1,int(10 if cap is None else cap))
+            limit=max(1,10 if cap is None else cap)
             for slot in range(limit):
                 for seat in (0,1):
                     obs,cfg,route=self.fixture(cap,seat)
@@ -196,7 +210,7 @@ class SpatialHirePrefixTests(unittest.TestCase):
 
     def test_full_engine_suffix_invariance_and_executable_hire_controls(self):
         for cap in CAPS:
-            limit=max(1,int(10 if cap is None else cap))
+            limit=max(1,10 if cap is None else cap)
             for seat in (0,1):
                 for filler in ([],['PASS'],['SELL','WHEAT',0]):
                     obs,cfg,_=self.fixture(cap,seat)
@@ -259,7 +273,8 @@ class SpatialHirePrefixTests(unittest.TestCase):
             'route_full_vector': text.replace("route[step].get('market',[])[:market_limit]", "route[step].get('market',[])"),
             'off_by_one': text.replace('[:market_limit]', '[:market_limit+1]'),
             'filter_before_cap': text.replace("selected.get('market',[])[:market_limit]", "[x for x in selected.get('market',[]) if x][:market_limit]").replace("route[step].get('market',[])[:market_limit]", "[x for x in route[step].get('market',[]) if x][:market_limit]"),
-            'zero_minimum': text.replace('market_limit=max(1,int(', 'market_limit=max(0,int('),
+            'zero_minimum': text.replace('market_limit=max(1,raw_market_limit)', 'market_limit=max(0,raw_market_limit)'),
+            'coerce_type_poison': text.replace("if type(raw_market_limit) is not int:return selected\n        market_limit=max(1,raw_market_limit)", "market_limit=max(1,int(raw_market_limit))"),
         }
         original = FIX
         snapshot = COUNTS.copy()
@@ -270,6 +285,7 @@ class SpatialHirePrefixTests(unittest.TestCase):
                 suite = unittest.TestSuite(SpatialHirePrefixTests(test) for test in (
                     'test_current_selected_scan_uses_raw_prefix',
                     'test_future_authored_scan_uses_raw_prefix',
+                    'test_noninteger_market_caps_fail_closed',
                     'test_every_live_hire_slot_remains_a_boundary'))
                 result = unittest.TextTestRunner(stream=io.StringIO()).run(suite)
                 self.assertFalse(result.wasSuccessful(), name)

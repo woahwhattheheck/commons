@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import math
 import sys
@@ -32,30 +33,34 @@ ALIASES = {
     "market_qty": ("qty", "quantity", "amount", "units"),
 }
 
-def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
+
+def _capture_csv(path: Path) -> tuple[list[str], list[dict[str, str]], dict]:
+    """Capture one immutable byte snapshot and derive both rows and provenance.
+
+    The source-bound theorem requires the parsed rows and recorded digest/size to
+    describe the same bytes.  Never reopen the pathname after this capture.
+    """
     with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
+        raw = f.read()
+    text = raw.decode("utf-8")
+    reader = csv.DictReader(io.StringIO(text, newline=""))
+    if reader.fieldnames is None:
+        raise ValueError(f"{path}: missing CSV header")
+    fields = list(reader.fieldnames)
+    if len(fields) != len(set(fields)):
+        raise ValueError(f"{path}: duplicate CSV header names")
+    rows = []
+    for line_no, row in enumerate(reader, start=2):
+        if None in row or any(value is None for value in row.values()):
+            raise ValueError(f"{path}: malformed CSV row at line {line_no}")
+        rows.append(dict(row))
+    source = {
+        "path": str(path),
+        "bytes": len(raw),
+        "sha256": hashlib.sha256(raw).hexdigest(),
+    }
+    return fields, rows, source
 
-def _source_info(path: Path) -> dict:
-    return {"path": str(path), "bytes": path.stat().st_size, "sha256": _sha256(path)}
-
-def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
-    with path.open("r", encoding="utf-8", newline="") as f:
-        reader = csv.DictReader(f)
-        if reader.fieldnames is None:
-            raise ValueError(f"{path}: missing CSV header")
-        fields = list(reader.fieldnames)
-        if len(fields) != len(set(fields)):
-            raise ValueError(f"{path}: duplicate CSV header names")
-        rows = []
-        for line_no, row in enumerate(reader, start=2):
-            if None in row or any(value is None for value in row.values()):
-                raise ValueError(f"{path}: malformed CSV row at line {line_no}")
-            rows.append(dict(row))
-    return fields, rows
 
 def _resolve(fields: list[str], semantic: str, *, required: bool, override: str | None = None) -> str | None:
     if override is not None:
@@ -88,8 +93,10 @@ def _resolve(fields: list[str], semantic: str, *, required: bool, override: str 
         raise ValueError(f"missing {semantic}; headers={fields}")
     return None
 
+
 def _episode_match(value: str, wanted: str) -> bool:
     return value.strip() == wanted
+
 
 def _int_or_none(value: str | None) -> int | None:
     if value is None:
@@ -104,12 +111,15 @@ def _int_or_none(value: str | None) -> int | None:
         return None
     return int(text, 10)
 
+
 def _num_sort_key(value: str) -> tuple[int, int | str]:
     iv = _int_or_none(value)
     return (0, iv) if iv is not None else (1, value)
 
+
 def _day(step: int | None, turns_per_day: int) -> int | None:
     return None if step is None else step // turns_per_day
+
 
 def _event_sort_key(event: dict) -> tuple:
     step = event.get("step")
@@ -122,6 +132,7 @@ def _event_sort_key(event: dict) -> tuple:
         kind_rank,
         event.get("row_index", 0),
     )
+
 
 def _counter_rows(counter: Counter[tuple]) -> list[dict]:
     out = []
@@ -137,6 +148,7 @@ def _counter_rows(counter: Counter[tuple]) -> list[dict]:
             }
         )
     return out
+
 
 def _market_rows(counts: Counter[tuple], qtys: Counter[tuple]) -> list[dict]:
     out = []
@@ -155,6 +167,7 @@ def _market_rows(counts: Counter[tuple], qtys: Counter[tuple]) -> list[dict]:
         )
     return out
 
+
 def extract(
     actions_path: Path,
     markets_path: Path,
@@ -170,9 +183,9 @@ def extract(
     if turns_per_day <= 0:
         raise ValueError("turns_per_day must be > 0")
 
-    afields, arows = _read_csv(actions_path)
-    mfields, mrows = _read_csv(markets_path)
-    xfields, xrows = _read_csv(meta_path)
+    afields, arows, asource = _capture_csv(actions_path)
+    mfields, mrows, msource = _capture_csv(markets_path)
+    xfields, xrows, xsource = _capture_csv(meta_path)
 
     column_map = column_map or {}
     acols = column_map.get("farmer_actions", {})
@@ -281,10 +294,14 @@ def extract(
     return {
         "schema": "titan.v4.replay-loss-autopsy.v1",
         "episode": episode,
+        "parameters": {
+            "tail_callbacks": tail_callbacks,
+            "turns_per_day": turns_per_day,
+        },
         "inputs": {
-            "farmer_actions": _source_info(actions_path),
-            "market_orders": _source_info(markets_path),
-            "matches_meta": _source_info(meta_path),
+            "farmer_actions": asource,
+            "market_orders": msource,
+            "matches_meta": xsource,
         },
         "resolved_columns": {
             "farmer_actions": amap,
@@ -316,6 +333,7 @@ def extract(
         ],
     }
 
+
 def _parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser()
     p.add_argument("--farmer-actions", required=True, type=Path)
@@ -327,6 +345,7 @@ def _parser() -> argparse.ArgumentParser:
     p.add_argument("--output", type=Path)
     p.add_argument("--schema-json", type=Path, help="Optional explicit column map for ambiguous datasets")
     return p
+
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
@@ -354,6 +373,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     else:
         sys.stdout.write(text)
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

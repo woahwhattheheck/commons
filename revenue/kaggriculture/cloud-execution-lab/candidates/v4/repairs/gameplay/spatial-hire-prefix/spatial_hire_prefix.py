@@ -21,7 +21,9 @@ OLD = """        # HIRE happens after unit moves. Existing positions choose the 
 NEW = """        # HIRE happens after unit moves. Existing positions choose the spawn
         # corner, so every worker must rejoin before the next executable hire.
         # Raw slots consume the engine cap even when their order is a no-op.
-        market_limit=max(1,int(self.configuration.get('maxMarketOrdersPerTurn',10)))
+        raw_market_limit=self.configuration.get('maxMarketOrdersPerTurn',10)
+        if type(raw_market_limit) is not int:return selected
+        market_limit=max(1,raw_market_limit)
         if any(a and a[0]=='HIRE' for a in selected.get('market',[])[:market_limit]):return selected
         for step in range(now,end):
             if any(a and a[0]=='HIRE' for a in route[step].get('market',[])[:market_limit]):

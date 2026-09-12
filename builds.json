@@ -353,29 +353,13 @@
  "n_open_prs": 100,
  "open_prs": [
   {
-   "number": 11961,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: recover and execute saturated-queue SELL growth screen",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11961",
-   "base_freshness": {
-    "base_sha": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 11963,
    "author": "woahwhattheheck",
    "title": "TITAN V3: admit all-shed intent-first SELL priority",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11963",
    "base_freshness": {
     "base_sha": "5e996707221b9340db982246f164e0c53a7a471e",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11968",
    "base_freshness": {
     "base_sha": "175a844cb01bbb56cb9cc54c0097a489c4997275",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,28 +391,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11983",
    "base_freshness": {
     "base_sha": "6461d3bc4813d50c9c5d9144e195318c835ff0c2",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11976,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: exact V2.5 feature-reachability bisect",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11976",
-   "base_freshness": {
-    "base_sha": "3854f1cc46340f5099ade910e2cfc7b36606425e",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -439,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11990",
    "base_freshness": {
     "base_sha": "0e7ea5f2bd78040dfc38758d08b149f392c1fb3b",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,55 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11986",
    "base_freshness": {
     "base_sha": "6461d3bc4813d50c9c5d9144e195318c835ff0c2",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11981,
-   "author": "woahwhattheheck",
-   "title": "DO NOT MERGE: opening-market solvency gate and arithmetic fixtures (evidence handoff)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11981",
-   "base_freshness": {
-    "base_sha": "0e7ea5f2bd78040dfc38758d08b149f392c1fb3b",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11982,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3 P07: observation-certified joint actor assignment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11982",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11980,
-   "author": "woahwhattheheck",
-   "title": "[HOLD / stale transport] Repair V3 L01 leanplant idempotence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11980",
-   "base_freshness": {
-    "base_sha": "0e7ea5f2bd78040dfc38758d08b149f392c1fb3b",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11994",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,23 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12004",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12002,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: prove realized-anchor custody gap in multi-lot allocator",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12002",
-   "base_freshness": {
-    "base_sha": "74a77b154af1783a1c3767e484ff3d801966b73e",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,7 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11995",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -583,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12000",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,23 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11993",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12007,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: execute L01 holdout on the live 5f6a package",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12007",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -631,7 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11974",
    "base_freshness": {
     "base_sha": "3854f1cc46340f5099ade910e2cfc7b36606425e",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -647,7 +535,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12021",
    "base_freshness": {
     "base_sha": "8e7dc64900d1efd4af0c0feb9928d955fa40f70c",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -663,7 +551,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12010",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -679,7 +567,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12024",
    "base_freshness": {
     "base_sha": "4e78e49dd54949b9d6f8477b08bfbfa61c31e5cd",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -695,7 +583,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12013",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -711,7 +599,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12011",
    "base_freshness": {
     "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -727,7 +615,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12023",
    "base_freshness": {
     "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -743,7 +631,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11997",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -759,7 +647,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12014",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -775,7 +663,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12009",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -791,7 +679,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12019",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -807,7 +695,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12001",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -823,7 +711,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11988",
    "base_freshness": {
     "base_sha": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -839,7 +727,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12012",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -855,28 +743,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11989",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11979,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3 P07: bind exact joint actors atomically",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11979",
-   "base_freshness": {
-    "base_sha": "3854f1cc46340f5099ade910e2cfc7b36606425e",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -887,7 +759,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12027",
    "base_freshness": {
     "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -903,7 +775,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12005",
    "base_freshness": {
     "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -919,28 +791,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12031",
    "base_freshness": {
     "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12028,
-   "author": "woahwhattheheck",
-   "title": "test(titan): partial-carry repair with causal economic admission",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12028",
-   "base_freshness": {
-    "base_sha": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -951,7 +807,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12035",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -967,7 +823,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12036",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -983,7 +839,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12016",
    "base_freshness": {
     "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -999,39 +855,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12026",
    "base_freshness": {
     "base_sha": "21011846096daad1dd487df0efedf209303c1cb5",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12033,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3 P07: bind physical actor closure to paired score evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12033",
-   "base_freshness": {
-    "base_sha": "1aa2e3fcc7bc500ef74615b4bc6be03309d26712",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12037,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: close E13 future-sale solvency hole",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12037",
-   "base_freshness": {
-    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1047,7 +871,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12051",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1063,7 +887,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12029",
    "base_freshness": {
     "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1079,7 +903,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12043",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1095,28 +919,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12056",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 11965,
-   "author": "woahwhattheheck",
-   "title": "titan-v3: run own-value objective on bound current archive",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/11965",
-   "base_freshness": {
-    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1127,7 +935,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12039",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1143,7 +951,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12055",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1159,23 +967,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11969",
    "base_freshness": {
     "base_sha": "57ff26af5884980d25374c576d2dc1da449f1cc5",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12050,
-   "author": "woahwhattheheck",
-   "title": "test(titan): retire dormant intent-priority on the live frozen path",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12050",
-   "base_freshness": {
-    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1191,60 +983,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12057",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12044,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3 infrastructure: read-only strict-pressure transport evidence (semantic HOLD)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12044",
-   "base_freshness": {
-    "base_sha": "dfef8e57289b59c68bd45eb8f3fdd8ec610e0892",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12061,
-   "author": "woahwhattheheck",
-   "title": "[HOLD] titan-v3: reusable own-value \u00d7 strict-pressure factorial gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12061",
-   "base_freshness": {
-    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12062,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: maximize certified cash in same-turn funding ties",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12062",
-   "base_freshness": {
-    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1255,60 +999,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12060",
    "base_freshness": {
     "base_sha": "ce740f7d767136185c1bfee46e4a798c17b12303",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12040,
-   "author": "woahwhattheheck",
-   "title": "test(titan): spend one-shot own-value disjoint holdout",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12040",
-   "base_freshness": {
-    "base_sha": "b6b9a8a4ca26152bbfe1a3833380ca885e5c4cae",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12058,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: state-conditioned safe own-value SELL selector",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12058",
-   "base_freshness": {
-    "base_sha": "b6b9a8a4ca26152bbfe1a3833380ca885e5c4cae",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12077,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: close hidden independent-seed composition tails",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12077",
-   "base_freshness": {
-    "base_sha": "6f92daf79863e1df1837edec50d37dee56308de3",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1319,7 +1015,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12076",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1335,7 +1031,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12042",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1351,60 +1047,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12084",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12087,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: normalize state-conditioned SELL reports into true-relative domain",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12087",
-   "base_freshness": {
-    "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12082,
-   "author": "woahwhattheheck",
-   "title": "analysis: add same-state returned-action differential harness",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12082",
-   "base_freshness": {
-    "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12081,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: fail-closed paired-cell own-cash tail gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12081",
-   "base_freshness": {
-    "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1415,7 +1063,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12071",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1431,7 +1079,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12093",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1447,44 +1095,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12095",
    "base_freshness": {
     "base_sha": "959d71ed724378db3ff71e7e87222b830769ead0",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12092,
-   "author": "woahwhattheheck",
-   "title": "fix(titan): eliminate comparison false PASSes in noninterference gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12092",
-   "base_freshness": {
-    "base_sha": "1b1d84b18851f180511b98041a9b39fc874ab2e1",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12079,
-   "author": "woahwhattheheck",
-   "title": "test(titan): close own-value promotion evidence custody",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12079",
-   "base_freshness": {
-    "base_sha": "b1962a216fafd1c654fb96b2a4baa5fb81e2f1c0",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1495,7 +1111,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12096",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1511,7 +1127,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12072",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1527,7 +1143,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12100",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1543,7 +1159,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12046",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1559,7 +1175,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12101",
    "base_freshness": {
     "base_sha": "1b1d84b18851f180511b98041a9b39fc874ab2e1",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1575,7 +1191,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12074",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1591,7 +1207,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12068",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1607,7 +1223,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12067",
    "base_freshness": {
     "base_sha": "5ab2c77d07f8da62b82fe2de85d87ca1e2c9456b",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1623,7 +1239,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12066",
    "base_freshness": {
     "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1639,28 +1255,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12110",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12032,
-   "author": "woahwhattheheck",
-   "title": "TITAN V3: reject engine-invalid L01 day-zero basket",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12032",
-   "base_freshness": {
-    "base_sha": "4a26ad897efe3fc3349c6126e2747e49ca9f5ead",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1671,7 +1271,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12105",
    "base_freshness": {
     "base_sha": "5d1b376d33858dd827e7e20051cc49648d313034",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1687,28 +1287,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12103",
    "base_freshness": {
     "base_sha": "81cb68dddc701ba5c7ed906418c9fb5f485e1b45",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12083,
-   "author": "woahwhattheheck",
-   "title": "TITAN: make disabled SpatialTempo installation a strict identity",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12083",
-   "base_freshness": {
-    "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1719,7 +1303,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11959",
    "base_freshness": {
     "base_sha": "98a98108998efac9e53a8b045f0fb2c85a4b19e2",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1735,7 +1319,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12118",
    "base_freshness": {
     "base_sha": "47aa401c647f330cdd7acae31515e1351f557fad",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1751,44 +1335,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12099",
    "base_freshness": {
     "base_sha": "ed65812449a2cd021b0635a60ff9171957f3e386",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12070,
-   "author": "woahwhattheheck",
-   "title": "TITAN v3 adversarial league: scheduled round-robin + Elo ledger + alarms",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12070",
-   "base_freshness": {
-    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12128,
-   "author": "woahwhattheheck",
-   "title": "TITAN v3 league: fail-closed matched-cell promotion gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12128",
-   "base_freshness": {
-    "base_sha": "b0cb868eca645a3ee03530a07dae0b17495b5add",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -1799,7 +1351,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12130",
    "base_freshness": {
     "base_sha": "d425b3da1f5d67d87d333fb31986335f98051107",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1815,7 +1367,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12127",
    "base_freshness": {
     "base_sha": "ab2c8ff0368e410f175279b0e0299993209c2670",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1831,23 +1383,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12150",
    "base_freshness": {
     "base_sha": "c8257adbc171b39c75bc44d3795c15b9502daafe",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 12116,
-   "author": "woahwhattheheck",
-   "title": "fix(titan): certify land targets on the atomic-plant parent",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12116",
-   "base_freshness": {
-    "base_sha": "8d8c9b076853623041cf7c991e40225d8fe59f3a",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1863,7 +1399,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12155",
    "base_freshness": {
     "base_sha": "7ac82fdc07788f58c504282b54460fa29152ab06",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1879,7 +1415,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12120",
    "base_freshness": {
     "base_sha": "7212ae0c6c9ca82e13a6ff13a2549094762269e1",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1895,7 +1431,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/11971",
    "base_freshness": {
     "base_sha": "175a844cb01bbb56cb9cc54c0097a489c4997275",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1911,7 +1447,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12175",
    "base_freshness": {
     "base_sha": "8b0569d1b506c4d1e8075ce8a4e3e32f9b11fd6d",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1927,7 +1463,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12172",
    "base_freshness": {
     "base_sha": "acbbd1a7245ef61628211637eb88655fa93a1c4c",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1943,7 +1479,471 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12161",
    "base_freshness": {
     "base_sha": "7ac82fdc07788f58c504282b54460fa29152ab06",
-    "main_sha": "324a32ad0175335454588712612aba616ccd63fc",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12178,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3 S13: authenticate report provenance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12178",
+   "base_freshness": {
+    "base_sha": "b3be1c24d93365fb2775385d7ff4b212ba1703ca",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12170,
+   "author": "woahwhattheheck",
+   "title": "ci(titan): independently audit historical calibration packet",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12170",
+   "base_freshness": {
+    "base_sha": "b0d600a0121b94b432f8d9a177e188adf5734a58",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12184,
+   "author": "woahwhattheheck",
+   "title": "ci(titan): repair commit-real exact-head evidence pin",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12184",
+   "base_freshness": {
+    "base_sha": "69b07cf42d3111469e8523f84efd9014cc30c0a9",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12186,
+   "author": "woahwhattheheck",
+   "title": "Fix browser parity on canonical rail exposure",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12186",
+   "base_freshness": {
+    "base_sha": "f16615ddb9d1d63126453705700265dc25cb373c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12191,
+   "author": "woahwhattheheck",
+   "title": "test(titan): replay PR12153 swallowed-error predecessor",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12191",
+   "base_freshness": {
+    "base_sha": "72df964c456cae2049e590505869453cf1e3ce20",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12188,
+   "author": "woahwhattheheck",
+   "title": "Fix source binding in battery reports",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12188",
+   "base_freshness": {
+    "base_sha": "acbbd1a7245ef61628211637eb88655fa93a1c4c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12185,
+   "author": "woahwhattheheck",
+   "title": "ci: fail root battery on tracked checkout mutation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12185",
+   "base_freshness": {
+    "base_sha": "acbbd1a7245ef61628211637eb88655fa93a1c4c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12192,
+   "author": "woahwhattheheck",
+   "title": "fix(ci): preserve battery harness-failure precedence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12192",
+   "base_freshness": {
+    "base_sha": "e25442712e3bf21f2f1fb7bbb084a2b1d270ee63",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12183,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3 S13: authenticate certified report provenance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12183",
+   "base_freshness": {
+    "base_sha": "b3be1c24d93365fb2775385d7ff4b212ba1703ca",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12187,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): cap R01 terminal liquidation prefix",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12187",
+   "base_freshness": {
+    "base_sha": "d568c42d7f4a0fdada02fe9d584655b5a851e883",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 11992,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3 S13: distill top-leader replays into executable route arms",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/11992",
+   "base_freshness": {
+    "base_sha": "0df4b26890cdc556bf329c7328243cf4cb6cfc24",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12208,
+   "author": "woahwhattheheck",
+   "title": "host: add generic first-seen payload binding helper",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12208",
+   "base_freshness": {
+    "base_sha": "acbbd1a7245ef61628211637eb88655fa93a1c4c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12047,
+   "author": "woahwhattheheck",
+   "title": "TITAN audit: disprove proxy-zero and raw-inventory bounded dominance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12047",
+   "base_freshness": {
+    "base_sha": "c51049d671b55d282e0fed5df37a0be7c513a838",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12214,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): materialize focused R02 proof",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12214",
+   "base_freshness": {
+    "base_sha": "084e465c9f03ce0b2c5ec0a5cc6fe4ac44a81501",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12215,
+   "author": "woahwhattheheck",
+   "title": "host: bind expanded golden rows to independent digest",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12215",
+   "base_freshness": {
+    "base_sha": "eb79207d05ff7935323bb19f78a583bad7ac0eea",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12020,
+   "author": "woahwhattheheck",
+   "title": "TITAN V3: decontaminate deterministic rival crop decay from SELL stress",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12020",
+   "base_freshness": {
+    "base_sha": "2e2e7e52fd2d5c62117ac49c7f1eabb505078ffb",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12216,
+   "author": "woahwhattheheck",
+   "title": "fix(tools): close JSON patch strictness and alias gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12216",
+   "base_freshness": {
+    "base_sha": "8cf1558224320df446ea493099ff09f23d696926",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12218,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): materialize focused R01 proof",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12218",
+   "base_freshness": {
+    "base_sha": "29c1d7c351a97a1409ccb2cf821f795cb5965f6c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12220,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): materialize focused L01 proof",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12220",
+   "base_freshness": {
+    "base_sha": "6ccb51e5fd6ac0e98cdab6e61b1164a5074fed55",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12201,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): close S13 report byte custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12201",
+   "base_freshness": {
+    "base_sha": "e588a6508d8898c5fc49b2eac70f23cabb8cb5d4",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12236,
+   "author": "woahwhattheheck",
+   "title": "test: bind CSU malt jobs to independent golden",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12236",
+   "base_freshness": {
+    "base_sha": "8969ef857e8331b8b3b6d0311fd890c1820e1d2b",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12237,
+   "author": "woahwhattheheck",
+   "title": "test(aquatrace): bind public-source observation custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12237",
+   "base_freshness": {
+    "base_sha": "8969ef857e8331b8b3b6d0311fd890c1820e1d2b",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12234,
+   "author": "woahwhattheheck",
+   "title": "tools: add clean-extraction archive replay validator",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12234",
+   "base_freshness": {
+    "base_sha": "d23518492e0e51bce6aea2cb628d2446dd985e8f",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12239,
+   "author": "woahwhattheheck",
+   "title": "test(csu): bind expanded job measurement projection",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12239",
+   "base_freshness": {
+    "base_sha": "8969ef857e8331b8b3b6d0311fd890c1820e1d2b",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12235,
+   "author": "woahwhattheheck",
+   "title": "test: freeze independent Ward evidence oracle",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12235",
+   "base_freshness": {
+    "base_sha": "8969ef857e8331b8b3b6d0311fd890c1820e1d2b",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12078,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): invalidate pressure baselines after stock-changing barriers",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12078",
+   "base_freshness": {
+    "base_sha": "119ece622cde9d8da373719a3367591d14c5e33c",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12190,
+   "author": "woahwhattheheck",
+   "title": "fix(titan): make R02 replacement diagnostics per-call",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12190",
+   "base_freshness": {
+    "base_sha": "9a584f6e887b6231f78a12538d0bbbd319dba471",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12267,
+   "author": "woahwhattheheck",
+   "title": "test(titan): close PR12156 evidence-pin hold",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12267",
+   "base_freshness": {
+    "base_sha": "4403d361bc9769e09d12a59d732ea12861d0b2b7",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 12242,
+   "author": "woahwhattheheck",
+   "title": "feat: reconcile Denton bacteriology acceptance LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/12242",
+   "base_freshness": {
+    "base_sha": "13a3b379a0c2de4a441139aa5287023922cfa471",
+    "main_sha": "4948fc14074098b445def2ec9035ecfde15836d9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
