@@ -1,21 +1,21 @@
 # SPDX-License-Identifier: Apache-2.0
-"""V4 EOD capacity rescue: sell same-product shed stock to save carried overflow.
+"""V4 EOD capacity rescue: sell the exact discarded product vector before EOD.
 
-At hour 23 the official interpreter runs unit actions, then the market, then
-town consume, then the end-of-day inventory drop. That final drop deletes
-carried overflow when the shared 100-unit shed is full. This lane is
-deliberately narrow: when every carried unit is the same product, all unit
-commands are cargo-neutral, no existing market order changes shed stock, and
-town consumption cannot fire on this hour-23 callback, append a SELL for
-exactly the amount that would otherwise be discarded. The EOD drop then
-re-admits the same product, so post-EOD private shed composition matches the
-unmodified path while the otherwise-lost carried units are preserved
-economically through the sale.
+The official interpreter runs unit work, market orders, then the EOD drop.
+Under the inherited cargo-neutral/market-neutral/timing guards, reproduce
+which carried products the baseline will discard. Inventories are visited in
+actor-list order. Never rely on the insertion order of keys within a JSON
+inventory: a capacity boundary inside a mixed-product actor fails closed.
+Full actors before or after that boundary have order-independent effects.
 
-The key ships disabled. Ambiguous or malformed state returns the exact parent
-object. Promotion remains a paired economics decision because a sale above the
-$1 floor changes public market supply even though the private shed theorem is
-exact.
+If shed stock covers EVERY discarded product and ALL rescue SELL rows fit,
+sell that whole vector before EOD. With carried vector Q, admitted vector A,
+and discarded vector D = Q - A, final private shed is S - D + Q = S + A,
+exactly the unmodified path. Partial vector rescue is deliberately forbidden.
+
+The existing key ships disabled. Ambiguous or malformed state returns the
+exact parent object. Cash and public/rival market effects still require the
+paired economics gate; this source theorem is not a promotion decision.
 """
 from __future__ import annotations
 
@@ -35,10 +35,9 @@ _SHED_CHANGING_MARKET = frozenset({"SELL", "BUY_PRODUCT", "BUY_ANIMAL"})
 # stock. Any other raw head has an unspecified shed effect, so this helper
 # returns the parent rather than assuming the row is shed-neutral.
 _SHED_NEUTRAL_MARKET = frozenset({"HIRE", "BUY_LAND", "BUY_SEED"})
-# Official kaggriculture.json defaults. Hour-23 (step % 24 == 23) is not a
-# consume tick under these intervals, so pre-town overflow equals pre-EOD
-# overflow. A custom interval that consumes on this callback can free shed
-# room after the rescue SELL and break private-shed identity.
+# Preserve the predecessor's official timing admission contract. Town consumes
+# PUBLIC market inventory, not private shed stock; these conservative pins are
+# retained unchanged rather than widening configuration support in this lane.
 _STANDARD_TOWN_INTERVALS = {
     "townShopSellInterval": 4,
     "townCenterSellInterval": 24,
@@ -46,30 +45,44 @@ _STANDARD_TOWN_INTERVALS = {
 telemetry = Counter()
 
 
-def _single_carried_product(inventories: Any, products):
-    """Return (product, total) iff all positive carried cargo is one known product."""
-    if not isinstance(inventories, list):
+def _discarded_products(inventories: Any, room: int, products) -> dict[str, int] | None:
+    """Return the whole EOD loss vector only when independent of mapping order.
+
+    List order is actor order in the official drop routine. A fully admitted
+    or fully discarded actor is insensitive to its inventory's key ordering.
+    A partly admitted actor is provable only with one positive product.
+    Validate every carried item, including later actors after room is zero.
+    """
+    if not isinstance(inventories, list) or type(room) is not int or room < 0:
         return None
-    product = None
-    total = 0
+    discarded = {}
     for inventory in inventories:
         if not isinstance(inventory, dict):
             return None
+        positive = {}
+        total = 0
         for item, quantity in inventory.items():
             if not isinstance(item, str) or type(quantity) is not int or quantity < 0:
                 return None
-            if quantity <= 0:
+            if quantity == 0:
                 continue
             if item not in products:
                 return None
-            if product is None:
-                product = item
-            elif item != product:
-                return None
+            positive[item] = quantity
             total += quantity
-    if product is None or total <= 0:
-        return None
-    return product, total
+        if total <= room:
+            room -= total
+            continue
+        if room:
+            # JSON object order is not evidence of the engine's insertion order.
+            if len(positive) != 1:
+                return None
+            item, quantity = next(iter(positive.items()))
+            positive[item] = quantity - room
+            room = 0
+        for item, quantity in positive.items():
+            discarded[item] = discarded.get(item, 0) + quantity
+    return discarded
 
 
 def _standard_town_intervals(configuration: Any) -> bool:
@@ -84,14 +97,14 @@ def _standard_town_intervals(configuration: Any) -> bool:
 
 
 def apply_eod_capacity_rescue(action: Any, observation: Any, configuration: Any, *, enabled=False):
-    """Append one bounded same-product SELL or preserve exact parent identity."""
+    """Append the bounded, whole loss vector or preserve exact parent identity."""
     if not enabled or not h3c._standard_configuration(configuration):
         return action
     # H3c's shared standard-config theorem intentionally covers only the
     # fields its own mechanism consumes. This lane additionally hard-codes
     # the 720-step season boundary (last usable pre-EOD step 695) and the
-    # official town consume intervals so hour-23 overflow is computed after
-    # a market that is not followed by a consume tick.
+    # inherited official town consume intervals. This extension changes only
+    # the cargo proof, not the predecessor's configuration admission surface.
     episode_steps = h3c._cfg(configuration, "episodeSteps")
     if type(episode_steps) is not int or episode_steps != 720:
         return action
@@ -159,43 +172,51 @@ def apply_eod_capacity_rescue(action: Any, observation: Any, configuration: Any,
 
     import r04_full_router as r04
 
-    carried = _single_carried_product(inventories, r04.PRODUCTS)
-    if carried is None:
-        return action
-    product, carried_total = carried
-
     shed_total = h3c._strict_inventory_total(shed)
     if shed_total is None:
         return action
     capacity = h3c.STANDARD_CONFIG["shedCapacity"]
     if shed_total > capacity:
         return action
-    overflow = shed_total + carried_total - capacity
-    if overflow <= 0:
+    discarded = _discarded_products(inventories, capacity - shed_total, r04.PRODUCTS)
+    if not discarded:
         return action
-    # Under a valid pre-EOD state, overflow can never exceed carried cargo.
-    if overflow > carried_total:
+    # A partial vector can change which later product the drop admits. Require
+    # coverage and executable raw slots for the WHOLE vector before any edit.
+    if len(market) + len(discarded) > h3c.STANDARD_CONFIG["maxMarketOrdersPerTurn"]:
+        telemetry["rescue_order_budget_block"] += 1
         return action
-
-    shed_quantity = shed.get(product, 0)
-    if type(shed_quantity) is not int or shed_quantity < overflow:
-        telemetry["same_product_stock_block"] += 1
-        return action
-
     prices = market_obs.get("prices", _MISSING)
     if not isinstance(prices, dict):
         return action
-    price = prices.get(product, _MISSING)
-    if type(price) is not int or price < 1:
-        return action
+    rescue_rows = []
+    rescued_units = 0
+    quoted_cash = 0
+    floor_units = 0
+    for product in sorted(discarded):
+        quantity = discarded[product]
+        shed_quantity = shed.get(product, 0)
+        if type(shed_quantity) is not int or shed_quantity < quantity:
+            telemetry["same_product_stock_block"] += 1
+            return action
+        price = prices.get(product, _MISSING)
+        if type(price) is not int or price < 1:
+            return action
+        rescue_rows.append(["SELL", product, quantity])
+        rescued_units += quantity
+        quoted_cash += quantity * price
+        if price == 1:
+            floor_units += quantity
 
     result = copy.deepcopy(action)
-    result["market"].append(["SELL", product, overflow])
+    result["market"].extend(rescue_rows)
     telemetry["activations"] += 1
-    telemetry["rescued_units"] += overflow
-    telemetry["quoted_cash"] += overflow * price
-    if price == 1:
-        telemetry["floor_price_units"] += overflow
+    telemetry["rescued_units"] += rescued_units
+    telemetry["quoted_cash"] += quoted_cash
+    if floor_units:
+        telemetry["floor_price_units"] += floor_units
+    if len(rescue_rows) > 1:
+        telemetry["mixed_product_activations"] += 1
     return result
 
 
