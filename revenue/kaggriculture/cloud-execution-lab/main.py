@@ -20,6 +20,7 @@ def _new_instance(root, feature_data):
             self.town_procurement_enabled = town_enabled
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
+            self._history_checkpoint = None
 
         def _export_spatial_recovery(self):
             """Copy only state certified before the next entrypoint call starts.
@@ -66,23 +67,44 @@ def _new_instance(root, feature_data):
             # but before production consumes the new public observation.
             super()._initialize()
             self._restore_spatial_recovery()
+            # TerminalHistoryJoin publishes observation transitions transactionally.
+            # Retain the fully constructed object before TitanAgent can suspend it
+            # during a history_observation deadline, including the first lazy call.
+            if self.history is not None:
+                self._history_checkpoint = self.history
 
         def act(self, observation, configuration=None, *, entry_started=None):
-            """Retain an atomic pre-call history across its inner deadline only."""
-            history_checkpoint = self.history
+            """Retain retryable history across the inner observation deadline."""
+            history_checkpoint = self.history or self._history_checkpoint
             output = super().act(observation, configuration,
                                  entry_started=entry_started)
-            if (history_checkpoint is not None
-                    and self.history is None
+            if (self.history is None
                     and self.diagnostics.get('status') == 'deadline_fallback'
                     and self.diagnostics.get('fallback_stage') == 'history_observation'):
-                # TitanAgent deliberately suspended history while constructing
-                # the fallback, so no current fallback action was rebound into
-                # the prior receipt. TerminalHistoryJoin.observe is copy-on-write;
-                # an interrupted reconciliation therefore leaves this exact
-                # pre-call object safe to retry on the next public callback.
-                self.history = history_checkpoint
-                self.diagnostics['history_observation_recovery'] = 'restored_pre_call'
+                history_checkpoint = history_checkpoint or self._history_checkpoint
+                if history_checkpoint is not None:
+                    # A signal can land after Titan marks the history stage but
+                    # before TerminalHistoryJoin journals the observation. Fill
+                    # only that tiny gap; if the join already journaled it, keep
+                    # the existing stable copy/commit intact.
+                    if (getattr(history_checkpoint, 'pending', None) is not None
+                            and getattr(history_checkpoint, 'deferred_observation', None) is None
+                            and getattr(history_checkpoint, '_observation_commit', None) is None):
+                        recovery_obs = dict(observation)
+                        if recovery_obs.get('step') is None:
+                            cfg = dict(configuration or {})
+                            recovery_obs['step'] = (int(recovery_obs['day'])
+                                * int(cfg.get('turnsPerDay', 24))
+                                + int(recovery_obs['hour']))
+                        history_checkpoint.defer_observation(recovery_obs)
+                    # TitanAgent deliberately suspended history while constructing
+                    # its safe fallback, so the fallback action was never rebound
+                    # into the prior receipt. Restore only the pre-call join.
+                    self.history = history_checkpoint
+                    self._history_checkpoint = history_checkpoint
+                    self.diagnostics['history_observation_recovery'] = 'restored_retryable'
+            elif self.history is not None:
+                self._history_checkpoint = self.history
             return output
 
         def _checkpoint_finalizer(self, obs, selected, stage):
