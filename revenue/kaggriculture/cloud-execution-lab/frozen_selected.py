@@ -11,10 +11,21 @@ from seller_snapshot import seller_public_observation
 from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger
 
 
+def _engine_market_prefix(action, config):
+    """Return exactly the market rows the pinned engine can execute this turn."""
+    market=action.get('market',[]) if isinstance(action,dict) else []
+    queue=list(market) if isinstance(market,list) else []
+    return queue[:max(1,int(config.get('maxMarketOrdersPerTurn',10)))]
+
+
 def materialize_sales(orders, current, shed, targets, max_orders):
     """The existing emitter, including empty indexes and one physical lot budget."""
     market=[];remaining=dict(current);available=dict(shed)
-    for raw in orders:
+    max_orders=max(1,int(max_orders))
+    for index,raw in enumerate(orders):
+        if index>=max_orders:
+            market.append(raw)
+            continue
         o=list(raw)
         if o and o[0]=='SELL' and len(o)>2 and o[1] in targets:
             item=o[1]
@@ -24,7 +35,7 @@ def materialize_sales(orders, current, shed, targets, max_orders):
         else:market.append(o)
     for item in sorted(targets):
         q=min(remaining.get(item,0),max(0,available.get(item,0)))
-        if q>0 and len(market)<int(max_orders):
+        if q>0 and len(market)<max_orders:
             market.append(['SELL',item,q]);available[item]=available.get(item,0)-q
     return market
 
@@ -133,8 +144,10 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
     """
     original=copy.deepcopy(orders)
     if not original:return original,None
+    max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
     baseline=_market_prefix_state(
-        original,farm,private,market,shops,config,now,rival_quantity,len(original)-1)
+        original,farm,private,market,shops,config,now,rival_quantity,
+        min(len(original),max_orders)-1)
     target=None
     for index in sorted(baseline['outcomes']):
         outcome=baseline['outcomes'][index]
@@ -150,7 +163,7 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
     before=baseline['outcomes'][target]
     candidates=[]
     targets=set(targets)
-    source_limit=barrier if barrier is not None else len(original)
+    source_limit=min(barrier if barrier is not None else len(original),max_orders)
     for source in range(target+1,source_limit):
         row=original[source]
         if not (row and len(row)>2 and row[0]=='SELL'
@@ -223,7 +236,7 @@ def _funding_trace(obs, config, farm, private, route, now, end, current_market,
     inventory = {k: int(v) for k, v in obs['market']['inventory'].items()}
     params = obs['market'].get('params')
     cap = int(config.get('shedCapacity', 100))
-    max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+    max_orders = max(1, int(config.get('maxMarketOrdersPerTurn', 10)))
     hires = int(f.get('hires_today', 0))
     buy_items = set()
     for t in range(now, end + 1):
@@ -392,6 +405,7 @@ def joint_resource_bound(obs, config, base, farm, private, route, end,
     current acquisition executes in order. Requested future sales earn no cash.
     """
     now=int(obs['step']);size=len(farm['tiles']);cap=int(config.get('shedCapacity',100))
+    max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
     if (int(config.get('turnsPerDay',24))!=24 or size!=10
             or now//24!=end//24 or end<=now or end%24==23):return None
     last=int(config.get('episodeSteps',720))-2
@@ -399,15 +413,13 @@ def joint_resource_bound(obs, config, base, farm, private, route, end,
     capital_end=min(last,end+1)
     if capital_end%24==23:return None
     if any(now<checkpoint<=capital_end for checkpoint,*_ in parent.DECISIONS):return None
-    if (current_market is not None
-            and len(current_market)>int(config.get('maxMarketOrdersPerTurn',10))):return None
     def orders_at(t):
         return (base['market'] if current_market is None else current_market) if t==now else route[t].get('market',[]) if t<len(route) else []
     budget_farm={'unlocked_quadrants':list(farm['unlocked_quadrants'])}
     hires=int(farm['hires_today']);cost=0;arrivals={}
     for t in range(now,capital_end+1):
         if t>now and t%24==0:hires=0
-        for order in orders_at(t):
+        for order in list(orders_at(t))[:max_orders]:
             if not order:continue
             op=order[0]
             if op not in ('SELL','HIRE','BUY_LAND','BUY_SEED','BUY_ANIMAL'):return None
@@ -428,7 +440,7 @@ def joint_resource_bound(obs, config, base, farm, private, route, end,
         state=_market_prefix_state(
             current_market,farm,private,obs['market'],
             obs.get('town',{}).get('unlocked_shops',[]),config,now,
-            rival_quantity,len(current_market)-1)
+            rival_quantity,min(len(current_market),max_orders)-1)
         if (state['unsupported_index'] is not None
                 or any(row['completed']<row['required']
                        for row in state['outcomes'].values())):return None
@@ -461,6 +473,7 @@ def joint_resource_bound(obs, config, base, farm, private, route, end,
 
 def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end, max_orders):
     """Account for every retained plan using the actual emitter and stock bounds."""
+    max_orders=max(1,int(max_orders))
     committed={p:list(rows) for p,rows in planned.items()}
     wanted_now=dict(current)
     for item,plan in plans.items():
@@ -470,15 +483,15 @@ def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end
     for t in range(now,end+1):
         stock=shed if t==now else bound['stock_upper']
         targets={p for p in PRODUCTS if stock.get(p,0)>0}
-        raw=sale_quantities(orders_at(t))
+        raw=sale_quantities(list(orders_at(t))[:max_orders])
         # Unfilled earlier intentions can still be due. Do not take credit for
         # their requested sales, or forget unchanged products with existing plans.
         wanted=(wanted_now if t==now else {
             p:min(stock[p],raw.get(p,0)+sum(q for d,q in committed.get(p,[]) if d<=t))
             for p in targets})
         market=materialize_sales(orders_at(t),wanted,stock,targets,max_orders)
-        actual=sale_quantities(market)
-        if len(market)>max_orders or any(actual.get(p,0)!=q for p,q in wanted.items() if p in targets):return None
+        actual=sale_quantities(market[:max_orders])
+        if any(actual.get(p,0)!=q for p,q in wanted.items() if p in targets):return None
         for p,q in wanted.items():
             if p in targets:all_plans.setdefault(p,[]).append((t,q))
     return shared_slot_ledger(all_plans,orders_at,max_orders)
@@ -506,17 +519,18 @@ def event_aware_horizon(now, last, route, targets, shops, config):
     if checkpoints:
         represented_end=min(represented_end,min(checkpoints)-1)
     baseline_end=min(now+HORIZON,represented_end)
-    max_orders=int(config.get('maxMarketOrdersPerTurn',10))
+    max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
     service_dates={}
     for item in sorted(targets):
         for date in range(baseline_end+1,represented_end+1):
             if not absorption(item,date-1,shops,config):
                 continue
             orders=route[date].get('market',[]) if date<len(route) else []
-            has_slot=len(orders)<max_orders
+            prefix=(orders if isinstance(orders,list) else [])[:max_orders]
+            has_slot=len(prefix)<max_orders
             has_item_slot=any(
                 o and len(o)>2 and o[0]=='SELL' and o[1]==item
-                for o in orders)
+                for o in prefix)
             if has_slot or has_item_slot:
                 service_dates[item]=date
                 break
@@ -526,14 +540,15 @@ def event_aware_horizon(now, last, route, targets, shops, config):
                 'extended':end>baseline_end}
 
 
-def apply_represented_market(farm, private, orders, size):
+def apply_represented_market(farm, private, orders, size, max_orders):
     """Apply one represented market stage to copied own physical state.
 
     Current-step post-unit state is pre-market.  HIRE, SELL, and product/animal
     buys must land before later unit stages, matching receipt_profile's current
     then future market transition.
     """
-    for order in orders or ():
+    queue=orders if isinstance(orders,list) else []
+    for order in queue[:max(1,int(max_orders))]:
         if not order:
             continue
         if order[0]=='SELL' and len(order)>2:
@@ -561,7 +576,8 @@ def represented_shed_event(now, baseline_end, hard_end, route, farm, private, co
         return None
     f,p=copy.deepcopy(farm),copy.deepcopy(private)
     size=len(f['tiles'])
-    apply_represented_market(f,p,current_market,size)
+    market_limit=config.get('maxMarketOrdersPerTurn',10)
+    apply_represented_market(f,p,current_market,size,market_limit)
     turns_per_day=int(config.get('turnsPerDay',24))
     for t in range(now+1,hard_end+1):
         action=route[t] if t<len(route) else parent.PASS
@@ -573,7 +589,7 @@ def represented_shed_event(now, baseline_end, hard_end, route, farm, private, co
         after=sum(p['shed'].values())
         if t>baseline_end and after>before:
             return t
-        apply_represented_market(f,p,action.get('market',[]),size)
+        apply_represented_market(f,p,action.get('market',[]),size,market_limit)
     return None
 
 
@@ -609,7 +625,7 @@ class FrozenSelected(SellScheduler):
             out['market']=parent._terminal_settlement(shed,obs['market']['prices'],out['market'])
             self.pending={};self.previous=seller_public_observation(obs);return out
         baseline_q={}
-        for o in base['market']:
+        for o in _engine_market_prefix(base,config):
             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
@@ -641,7 +657,8 @@ class FrozenSelected(SellScheduler):
                 q=min(rem,q)
                 if q>0:reference.append((min(t,item_end),q));rem-=q
             for t in range(now+1,item_end+1):
-                for order in route[t].get('market',[]) if t<len(route) else []:
+                action=route[t] if t<len(route) else parent.PASS
+                for order in _engine_market_prefix(action,config):
                     if order and order[0]=='SELL' and order[1]==item and rem>0:
                         q=min(rem,max(0,int(order[2])));reference.append((t,q));rem-=q
             reference=tuple((t,sum(q for d,q in reference if d==t)) for t in sorted({t for t,_ in reference}))
@@ -666,8 +683,9 @@ class FrozenSelected(SellScheduler):
             def feasible(plan):
                 for t,q in plan:
                     if q<=0:continue
-                    orders=base['market'] if t==now else route[t].get('market',[]) if t<len(route) else []
-                    if len(orders)>=int(config.get('maxMarketOrdersPerTurn',10)):
+                    market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
+                    orders=_engine_market_prefix(market_action,config)
+                    if len(orders)>=max(1,int(config.get('maxMarketOrdersPerTurn',10))):
                         offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==item)
                         if q>offered:return False
                 return receipt_feasible(plan)
@@ -753,7 +771,8 @@ class FrozenSelected(SellScheduler):
             lambda product:self.rival_supply(obs,product))
         if funding is not None:self.diagnostics['same_turn_funding']=funding
         for item,q in targets.items():
-            sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
+            sold=sum(o[2] for o in _engine_market_prefix(out,config)
+                     if o and o[0]=='SELL' and o[1]==item)
             self.pending[item]=max(0,q-sold)
             if not self.pending[item]:self.planned.pop(item,None)
         self.previous=seller_public_observation(obs)

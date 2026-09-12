@@ -19,16 +19,62 @@ def _market_limit(configuration):
     return max(1, int(configuration.get("maxMarketOrdersPerTurn", 10)))
 
 
+def _plain_nonnegative_int(value, name):
+    if type(value) is not int or value < 0:
+        raise ValueError(f"{name}_must_be_plain_nonnegative_int")
+    return value
+
+
+def _public_player(observation):
+    """Bind the public seat before any overlay state can be mutated."""
+    if not isinstance(observation, Mapping):
+        raise ValueError("observation_must_be_mapping")
+    player = observation.get("player")
+    if type(player) is not int or player not in (0, 1):
+        raise ValueError("player_must_be_plain_0_or_1")
+    return player
+
+
+def _day_length(configuration):
+    value = configuration.get("turnsPerDay", 24)
+    if type(value) is not int or value <= 0:
+        raise ValueError("turnsPerDay_must_be_plain_positive_int")
+    return value
+
+
 def _step(observation, configuration):
-    value = observation.get("step")
-    if value is not None:
-        return int(value)
-    return (int(observation["day"]) * int(configuration.get("turnsPerDay", 24))
-            + int(observation["hour"]))
+    """Bind exact public clock/seat identity before stateful overlay work."""
+    _public_player(observation)
+    has_step = "step" in observation
+    has_day = "day" in observation
+    has_hour = "hour" in observation
+    if has_day != has_hour:
+        raise ValueError("day_hour_must_be_paired")
+
+    if has_step:
+        step = _plain_nonnegative_int(observation["step"], "step")
+        if has_day:
+            day = _plain_nonnegative_int(observation["day"], "day")
+            hour = _plain_nonnegative_int(observation["hour"], "hour")
+            day_len = _day_length(configuration)
+            if hour >= day_len:
+                raise ValueError("hour_out_of_range")
+            if step != day * day_len + hour:
+                raise ValueError("public_clock_mismatch")
+        return step
+
+    if not has_day:
+        raise ValueError("step_or_day_hour_required")
+    day = _plain_nonnegative_int(observation["day"], "day")
+    hour = _plain_nonnegative_int(observation["hour"], "hour")
+    day_len = _day_length(configuration)
+    if hour >= day_len:
+        raise ValueError("hour_out_of_range")
+    return day * day_len + hour
 
 
 def _unlocked_count(observation):
-    player = int(observation["player"])
+    player = _public_player(observation)
     return len(observation["farms"][player].get("unlocked_quadrants", ()))
 
 

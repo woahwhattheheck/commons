@@ -22,6 +22,15 @@ def expect_error(fn, contains):
         raise AssertionError(f"expected IdentityError containing {contains!r}")
 
 
+def expect_cli_error(argv):
+    try:
+        main(argv)
+    except SystemExit as exc:
+        check(exc.code == 2, f"expected CLI exit 2, got {exc.code!r}")
+    else:
+        raise AssertionError("expected CLI identity failure")
+
+
 def fixture(root):
     root = Path(root)
     (root / "a.py").write_text("A = 1\n", encoding="utf-8")
@@ -189,6 +198,57 @@ def test_cli_build_and_validate():
             ["--root", root, "validate", str(spec_path), str(manifest_path)]
         )
         check(rc == 0, "validate CLI failed")
+
+
+def test_cli_rejects_duplicate_keys_and_nonstandard_numbers():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec_path = Path(root, "spec.json")
+        canonical = json.dumps(spec)
+        cases = {
+            "duplicate-top": canonical.replace(
+                '"base_id": "main@abc123"',
+                '"base_id": "main@old", "base_id": "main@abc123"',
+                1,
+            ),
+            "duplicate-component": canonical.replace(
+                '"source": "a.py"',
+                '"source": "b.py", "source": "a.py"',
+                1,
+            ),
+            "duplicate-config": canonical.replace(
+                '"budget": 1.0', '"budget": 9.0, "budget": 1.0', 1
+            ),
+            "nan": canonical.replace('"budget": 1.0', '"budget": NaN', 1),
+            "infinity": canonical.replace(
+                '"budget": 1.0', '"budget": Infinity', 1
+            ),
+            "negative-infinity": canonical.replace(
+                '"budget": 1.0', '"budget": -Infinity', 1
+            ),
+        }
+        for label, text in cases.items():
+            spec_path.write_text(text, encoding="utf-8")
+            output = Path(root, f"{label}.manifest.json")
+            expect_cli_error(
+                ["--root", root, "build", str(spec_path), "--output", str(output)]
+            )
+            check(not output.exists(), f"{label}: invalid JSON published a manifest")
+
+        spec_path.write_text(canonical, encoding="utf-8")
+        manifest = build_manifest(root, spec)
+        manifest_path = Path(root, "ambiguous-manifest.json")
+        manifest_text = json.dumps(manifest)
+        candidate = manifest["candidate_id"]
+        manifest_text = manifest_text.replace(
+            f'"candidate_id": "{candidate}"',
+            f'"candidate_id": "v5c:{"0" * 64}", "candidate_id": "{candidate}"',
+            1,
+        )
+        manifest_path.write_text(manifest_text, encoding="utf-8")
+        expect_cli_error(
+            ["--root", root, "validate", str(spec_path), str(manifest_path)]
+        )
 
 
 def test_cli_output_does_not_reuse_foreign_temp_path():
