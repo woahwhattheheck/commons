@@ -55,6 +55,23 @@ class QueueClassification(unittest.TestCase):
         self.assertTrue(got["cancel_candidate"])
         self.assertIn(B, got["reason"])
 
+    def test_incomplete_mixed_pr_refs_fail_closed_before_moved_candidate(self):
+        snap = self.snapshot([], [pr(7, B)], complete_open_prs=False)
+        got = q.classify_run(
+            run(13, prs=(7, 8), event="pull_request"), snap, q.DEFAULT_REPO
+        )
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+        self.assertIn("8", got["reason"])
+
+    def test_complete_mixed_pr_refs_may_use_observed_moved_open_pr(self):
+        snap = self.snapshot([], [pr(7, B)], complete_open_prs=True)
+        got = q.classify_run(
+            run(14, prs=(7, 8), event="pull_request"), snap, q.DEFAULT_REPO
+        )
+        self.assertEqual(got["classification"], "SUPERSEDED_PR_HEAD_CANDIDATE")
+        self.assertTrue(got["cancel_candidate"])
+
     def test_closed_pr_reference_is_candidate_only_with_complete_open_pr_inventory(self):
         complete = self.snapshot([], [])
         got = q.classify_run(run(4, prs=(7,), event="pull_request"), complete, q.DEFAULT_REPO)
