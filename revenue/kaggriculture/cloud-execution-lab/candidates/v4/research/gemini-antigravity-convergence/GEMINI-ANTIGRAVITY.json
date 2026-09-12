@@ -160,13 +160,12 @@
       "gemini_label": "MELON zero-demand / lifetime cap",
       "origin_buckets": ["pre_manifest_antigravity", "claim_board"],
       "literal_claim": "Because MELON has no ordinary town-center demand, cap total MELON production with a hard lifetime counter.",
-      "disposition": "FIELD_BLOCKED",
-      "best_form": "The crude sold-only cap is harmful, and the later purported corrected carrier is not yet trustworthy: shallow outer metadata shrink can leave executable variants[*].patches intact, while decrementing one shared budget across mutually-exclusive proposals can reject valid alternatives. The required descendant must authenticate executable MELON cardinality per whole proposal alternative, with no cross-alternative decrement.",
-      "activation": "BLOCKED",
-      "canonical_evidence": ["revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/melon_cap.py", "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/liquidation_bound.py"],
-      "provenance_pull_numbers": [12987, 12996, 13013, 13032],
-      "next_gate": "Keep MELON blocked until the active package repair proves producer-to-consumer executable-cardinality and whole-alternative semantics, rebinds canonical custody, then passes current-native both-seat economics.",
-      "do_not_repeat_without_new_evidence": true
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "The crude sold-only cap is harmful. The repaired default-off source component authenticates complete executable MELON PLANT cardinality and exact first-day land/seed/hire suffix custody for each whole proposal, while evaluating mutually exclusive route alternatives independently rather than decrementing one shared budget.",
+      "activation": "DEFAULT_OFF",
+      "canonical_evidence": ["revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/melon_cap.py", "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/test_melon_cap.py", "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/MANIFEST.json", "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/INTEGRATION-SPEC.md"],
+      "provenance_pull_numbers": [12987, 12996, 13013, 13032, 13118],
+      "next_gate": "Gate current-native composition on natural both-seat engagement, then require positive paired economics without new-loss strata before activation."
     },
     {
       "id": "gemini.npc-market-baseline",
