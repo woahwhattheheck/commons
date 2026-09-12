@@ -18,6 +18,7 @@ from __future__ import annotations
 from typing import Any, Mapping, Sequence
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+CONFIG_GIT_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
 DEFAULT_TURNS_PER_DAY = 24
 DEFAULT_EPISODE_STEPS = 720
 DEFAULT_MAX_MARKET_ORDERS = 10
@@ -145,6 +146,7 @@ def _not_certified(reason: str, *, candidates: Sequence[int] = ()) -> dict[str, 
         "doomed_actor_indices": [],
         "watered_actor_indices": [],
         "engine_git_blob": ENGINE_GIT_BLOB,
+        "configuration_git_blob": CONFIG_GIT_BLOB,
         "decision_authority": False,
     }
 
@@ -331,6 +333,7 @@ def assess_same_eod_plant_survival(
                     str(index): list(candidate_targets[index]) for index in candidates
                 },
                 "engine_git_blob": ENGINE_GIT_BLOB,
+                "configuration_git_blob": CONFIG_GIT_BLOB,
                 "decision_authority": False,
             }
 
@@ -344,6 +347,7 @@ def assess_same_eod_plant_survival(
                 str(index): list(candidate_targets[index]) for index in candidates
             },
             "engine_git_blob": ENGINE_GIT_BLOB,
+            "configuration_git_blob": CONFIG_GIT_BLOB,
             "decision_authority": False,
         }
     except (PlantGuardInputError, KeyError, TypeError, IndexError) as error:
