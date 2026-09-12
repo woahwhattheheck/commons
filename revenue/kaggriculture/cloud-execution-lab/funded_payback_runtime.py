@@ -35,13 +35,14 @@ def _evaluation_row(row):
     market = row.get('market', [])
     if not isinstance(market, list):
         return row
-    noop_slots = [slot for slot, order in enumerate(market) if _engine_noop(order)]
-    if not noop_slots:
-        return row
-    result = deepcopy(row)
-    for slot in noop_slots:
+    result = None
+    for slot, order in enumerate(market):
+        if not _engine_noop(order):
+            continue
+        if result is None:
+            result = deepcopy(row)
         result['market'][slot] = ['PASS']
-    return result
+    return row if result is None else result
 
 
 def _evaluation_route(route):
@@ -60,6 +61,23 @@ def _evaluation_route(route):
     # that contract while keeping the overwhelmingly common canonical list hot
     # path allocation-free when no translation is needed.
     return route if isinstance(route, list) else list(route)
+
+
+def _evaluation_routes(routes):
+    """Translate only changed routes; preserve the canonical plain-dict hot path."""
+    result = None
+    for key, route in routes.items():
+        evaluation = _evaluation_route(route)
+        if evaluation is route:
+            continue
+        if result is None:
+            result = dict(routes)
+        result[key] = evaluation
+    if result is not None:
+        return result
+    # The previous mapping comprehension always materialized arbitrary Mapping
+    # inputs as a plain dict. Preserve that contract outside the canonical dict.
+    return routes if type(routes) is dict else dict(routes)
 
 
 def make_admission(base_class):
@@ -86,8 +104,7 @@ def make_admission(base_class):
             return candidate, rejoin
 
         def __call__(self, mechanics, observation, configuration, routes, proposals):
-            evaluation_routes = {key: _evaluation_route(route)
-                                 for key, route in routes.items()}
+            evaluation_routes = _evaluation_routes(routes)
             configured_seconds = self.seconds
             action_deadline = self._action_deadline
             try:

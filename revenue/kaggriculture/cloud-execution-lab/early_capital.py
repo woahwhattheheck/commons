@@ -216,6 +216,99 @@ def _certified_funding(active, mechanics, post_private):
     return funding, units
 
 
+def _capital_prefix_funded(ordered, ranks, funding_units, mechanics,
+                           observation, configuration):
+    """Prove moved-ahead operating spend cannot starve admitted capital.
+
+    SELL receipts are credited only for already-certified own units and only at
+    the official market floor. Every operating/capital row moved before an
+    admitted purchase is charged at its exact fixed cost. This deliberately
+    rejects a reorder when public evidence cannot prove the capital purchase
+    still executes; it never assumes current quotes or rival future flow.
+    """
+    try:
+        player = observation.get('player')
+        if isinstance(player, bool) or not isinstance(player, int):
+            return False, {'reason': 'unsupported_player'}
+        farms = observation.get('farms')
+        if not isinstance(farms, (list, tuple)) or not (0 <= player < len(farms)):
+            return False, {'reason': 'unsupported_player'}
+        farm = farms[player]
+        money = farm.get('money')
+        if isinstance(money, bool) or not isinstance(money, (int, float)) or money < 0:
+            return False, {'reason': 'unsupported_cash'}
+        floor = getattr(mechanics, 'PRICE_FLOOR', None)
+        if isinstance(floor, bool) or not isinstance(floor, (int, float)) or floor < 0:
+            return False, {'reason': 'unsupported_price_floor'}
+        mult = configuration.get('farmHandCostMult', 1)
+        if isinstance(mult, bool) or not isinstance(mult, (int, float)) or mult < 0:
+            return False, {'reason': 'unsupported_hire_multiplier'}
+        hires = farm.get('hires_today', len(farm.get('hands', [])))
+        if isinstance(hires, bool) or not isinstance(hires, int) or hires < 0:
+            return False, {'reason': 'unsupported_hire_count'}
+        unlocked = farm.get('unlocked_quadrants')
+        if not isinstance(unlocked, (list, tuple)) or not unlocked:
+            return False, {'reason': 'unsupported_land_state'}
+        land_index = len(unlocked) - 1
+        required = 0.0
+        guaranteed = float(money)
+        capital_rows = []
+        for original_index, order in ordered:
+            rank = ranks[original_index]
+            if rank == FUNDING:
+                units = funding_units.get(original_index, 0)
+                if isinstance(units, bool) or not isinstance(units, int) or units < 0:
+                    return False, {'reason': 'unsupported_funding_units'}
+                guaranteed += float(units) * float(floor)
+                continue
+            if rank == OPERATING:
+                op = order[0]
+                if op == 'HIRE':
+                    hire_cost = getattr(mechanics, '_hire_cost', None)
+                    if not callable(hire_cost):
+                        return False, {'reason': 'unsupported_hire_cost'}
+                    cost = hire_cost(hires, mult)
+                    hires += 1
+                elif op == 'BUY_SEED':
+                    quantity = order[2] if len(order) > 2 else None
+                    if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0:
+                        return False, {'reason': 'unsupported_operating_quantity'}
+                    cost = quantity * mechanics.CROPS[order[1]]['seed']
+                else:
+                    return False, {'reason': 'unsupported_operating_order'}
+                required += float(cost)
+                continue
+            if rank != CAPITAL:
+                continue
+            op = order[0]
+            if op == 'BUY_LAND':
+                prices = getattr(mechanics, 'LAND_PRICES', None)
+                if not isinstance(prices, (list, tuple)) or not (0 <= land_index < len(prices)):
+                    return False, {'reason': 'unsupported_land_cost'}
+                cost = prices[land_index]
+                land_index += 1
+            elif op == 'BUY_ANIMAL':
+                quantity = order[2] if len(order) > 2 else None
+                if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity <= 0:
+                    return False, {'reason': 'unsupported_capital_quantity'}
+                cost = quantity * mechanics.ANIMALS[order[1]]['cost']
+            else:
+                return False, {'reason': 'unsupported_capital_order'}
+            required += float(cost)
+            capital_rows.append({'index': original_index, 'op': op,
+                                 'required_cash_floor': required,
+                                 'guaranteed_cash_floor': guaranteed})
+            if guaranteed < required:
+                return False, {'reason': 'capital_would_lose_funding',
+                               'guaranteed_cash_floor': guaranteed,
+                               'required_cash_floor': required,
+                               'capital_rows': capital_rows}
+        return True, {'reason': 'certified', 'guaranteed_cash_floor': guaranteed,
+                      'required_cash_floor': required, 'capital_rows': capital_rows}
+    except (AttributeError, IndexError, KeyError, OverflowError, TypeError, ValueError):
+        return False, {'reason': 'unsupported_cash_certificate'}
+
+
 def _capital_admitted(order, mechanics, remaining, day):
     if not isinstance(order, list) or not order:
         return False
@@ -336,6 +429,13 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
     if reordered_active == active:
         report.update(reason='already_ordered', moved=0, horizon_end=horizon,
                       remaining_days=remaining)
+        return selected, report
+    funded, cash_report = _capital_prefix_funded(
+        ordered, ranks, funding_units, mechanics, observation, configuration)
+    report['capital_funding'] = cash_report
+    if not funded:
+        report.update(reason='capital_prefix_not_fully_funded', moved=0,
+                      horizon_end=horizon, remaining_days=remaining)
         return selected, report
     result = deepcopy(selected)
     result['market'] = deepcopy(reordered)
