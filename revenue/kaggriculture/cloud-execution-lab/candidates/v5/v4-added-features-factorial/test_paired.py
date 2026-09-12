@@ -123,6 +123,57 @@ class FactorialTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 MODULE.capture_sha256(link, expected, "Baseline archive")
 
+    def test_captured_harness_survives_source_swap_after_auth(self):
+        raw = b"VALUE = 7\n"
+        expected = MODULE.sha256_bytes(raw)
+        with tempfile.TemporaryDirectory() as temp:
+            origin = Path(temp) / "evaluator.py"
+            origin.write_bytes(raw)
+            captured = MODULE.capture_sha256(origin, expected, "Evaluator")
+            origin.write_bytes(b"VALUE = 99\n")
+            loaded = MODULE.load_captured(captured, origin, "factorial_swap_captured")
+            self.assertEqual(loaded.VALUE, 7)
+            self.assertNotEqual(origin.read_bytes(), captured)
+
+    def test_captured_harness_survives_source_delete_after_auth(self):
+        raw = b"VALUE = 11\n"
+        expected = MODULE.sha256_bytes(raw)
+        with tempfile.TemporaryDirectory() as temp:
+            origin = Path(temp) / "pack.py"
+            origin.write_bytes(raw)
+            captured = MODULE.capture_sha256(origin, expected, "Packer")
+            origin.unlink()
+            loaded = MODULE.load_captured(captured, origin, "factorial_delete_captured")
+            self.assertEqual(loaded.VALUE, 11)
+            self.assertFalse(origin.exists())
+
+    def test_private_loader_is_written_only_from_authenticated_capture(self):
+        raw = b"VALUE = 23\n"
+        expected = MODULE.sha256_bytes(raw)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            origin = root / "public-evidence-loader.py"
+            origin.write_bytes(raw)
+            captured = MODULE.capture_sha256(origin, expected, "Candidate loader")
+            origin.write_bytes(b"VALUE = 101\n")
+            private = root / "private-runtime" / "evaluate.py"
+            self.assertEqual(
+                MODULE.write_private_runtime_bytes(captured, private, expected), private
+            )
+            self.assertEqual(private.read_bytes(), raw)
+            self.assertNotEqual(private.read_bytes(), origin.read_bytes())
+
+    def test_private_loader_rejects_wrong_captured_digest(self):
+        raw = b"VALUE = 23\n"
+        expected = MODULE.sha256_bytes(raw)
+        with tempfile.TemporaryDirectory() as temp:
+            private = Path(temp) / "private-runtime" / "evaluate.py"
+            with self.assertRaisesRegex(
+                ValueError, "Private runtime bytes do not match authenticated SHA256"
+            ):
+                MODULE.write_private_runtime_bytes(b"VALUE = 24\n", private, expected)
+            self.assertFalse(private.exists())
+
     def test_screen_is_v4_all_four_off_plus_each_single_off(self):
         self.assertEqual(tuple(MODULE.design_arms("screen")), MODULE.SCREEN_ARMS)
         self.assertIn("all_four_off", MODULE.SCREEN_ARMS)
