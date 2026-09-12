@@ -67,6 +67,24 @@ def _new_instance(root, feature_data):
             super()._initialize()
             self._restore_spatial_recovery()
 
+        def act(self, observation, configuration=None, *, entry_started=None):
+            """Retain an atomic pre-call history across its inner deadline only."""
+            history_checkpoint = self.history
+            output = super().act(observation, configuration,
+                                 entry_started=entry_started)
+            if (history_checkpoint is not None
+                    and self.history is None
+                    and self.diagnostics.get('status') == 'deadline_fallback'
+                    and self.diagnostics.get('fallback_stage') == 'history_observation'):
+                # TitanAgent deliberately suspended history while constructing
+                # the fallback, so no current fallback action was rebound into
+                # the prior receipt. TerminalHistoryJoin.observe is copy-on-write;
+                # an interrupted reconciliation therefore leaves this exact
+                # pre-call object safe to retry on the next public callback.
+                self.history = history_checkpoint
+                self.diagnostics['history_observation_recovery'] = 'restored_pre_call'
+            return output
+
         def _checkpoint_finalizer(self, obs, selected, stage):
             """Publish only a fully returned current-turn action stage.
 
