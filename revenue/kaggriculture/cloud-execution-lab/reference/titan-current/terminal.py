@@ -34,6 +34,17 @@ def toward(a, b):
     return ['PASS']
 
 
+def observation_identity(observation):
+    """Return exact public player/step identity or reject before policy state."""
+    player = observation.get('player')
+    step = observation.get('step')
+    if type(player) is not int or player not in (0, 1):
+        raise ValueError('player must be exact int 0 or 1')
+    if type(step) is not int or step < 0:
+        raise ValueError('step must be a nonnegative exact int')
+    return player, step
+
+
 @dataclass(frozen=True)
 class Job:
     pos: tuple[int, int]
@@ -268,14 +279,14 @@ def overlay(observation, parent_action, configuration=None):
     Caller owns parent state. The overlay itself is stateless and replans from
     the current visible observation; safe to compose after other earlier lanes.
     """
+    player, now = observation_identity(observation)
     cfg = configuration or {}
     turns = int(cfg.get('turnsPerDay', 24))
     final = int(cfg.get('episodeSteps', 720)) - 2
-    now = int(observation.get('step', 0))
     start = (final // turns) * turns + 2
     if now < start or now > final:
         return parent_action
-    farm = observation['farms'][int(observation['player'])]
+    farm = observation['farms'][player]
     private = observation['private']
     capacity = max(1, int(cfg.get('shedCapacity', 100)))
     prices = {k: max(1, observation['market']['prices'].get(k, 1)) for k in PRODUCTS}
@@ -366,12 +377,11 @@ class Planner:
         self.player = None
 
     def act(self, observation, parent_action, configuration=None, own_future_actions=None):
+        player, now = observation_identity(observation)
         cfg = configuration or {}
         turns = int(cfg.get('turnsPerDay', 24))
         final = int(cfg.get('episodeSteps', 720)) - 2
-        now = int(observation.get('step', 0))
         start = (final // turns) * turns + 2
-        player = int(observation['player'])
         if now < start or now > final:
             self.queues = None
             self.last_step = now
