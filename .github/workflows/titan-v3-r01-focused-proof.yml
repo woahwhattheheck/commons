@@ -4,8 +4,9 @@ on:
   pull_request:
     paths:
       - '.github/workflows/titan-v3-r01-focused-proof.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_shop_router.py'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r01.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
 
 permissions:
   contents: read
@@ -17,50 +18,213 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONHASHSEED: '0'
+      PROOF_PARENT: '29c1d7c351a97a1409ccb2cf821f795cb5965f6c'
+      SOURCE_PARENT: '026ccf3282dcc037403f9e486e3f5cdf77ded0d1'
+      V3_DIR: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+      SOURCE: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_shop_router.py'
+      SUITE: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r01.py'
+      APPLY: 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v3.py'
+      CANONICAL: 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      SOURCE_BLOB: 'b099a13a3dcaa40fcdd2bac97ff30495adfbf131'
+      SUITE_BLOB: '8b2af47cf1fc0d700ffd39be1e88a8abf2101c8b'
+      APPLY_BLOB: '1f97d30f9ef2f95ad1ea3c942b123b8b4ff2f57e'
+      CANONICAL_BLOB: 'f23e7bbf925b71bf2e45db3752cf8430e3a56e65'
+      CANONICAL_SHA256: 'b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9'
+      CANONICAL_BYTES: '429604'
     steps:
       - name: Checkout exact pull request head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
 
-      - name: Bind exact successor topology
+      - name: Bind exact repair topology and one-path scope
         shell: bash
         run: |
           set -euo pipefail
           expected_head='${{ github.event.pull_request.head.sha }}'
-          expected_parent='026ccf3282dcc037403f9e486e3f5cdf77ded0d1'
           workflow='.github/workflows/titan-v3-r01-focused-proof.yml'
           test "$(git rev-parse HEAD)" = "$expected_head"
-          test "$(git rev-parse HEAD^)" = "$expected_parent"
-          mapfile -t changed < <(git diff --name-only "$expected_parent" HEAD)
+          test "$(git rev-parse HEAD^)" = "$PROOF_PARENT"
+          test "$(git rev-parse HEAD^^)" = "$SOURCE_PARENT"
+          test "$(git rev-list --count "$PROOF_PARENT"..HEAD)" = 1
+          mapfile -t changed < <(git diff --name-only "$PROOF_PARENT" HEAD)
           test "${#changed[@]}" -eq 1
           test "${changed[0]}" = "$workflow"
+          git diff --check "$PROOF_PARENT"..HEAD
 
       - name: Set up pinned Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Bind reviewed R01 source and declared suite
+      - name: Bind reviewed source, suite and materialization inputs
         shell: bash
         run: |
           set -euo pipefail
-          source='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r01_shop_router.py'
-          suite='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v3_r01.py'
-          test "$(git hash-object "$source")" = 'b099a13a3dcaa40fcdd2bac97ff30495adfbf131'
-          test "$(git hash-object "$suite")" = '8b2af47cf1fc0d700ffd39be1e88a8abf2101c8b'
+          test "$(git hash-object "$SOURCE")" = "$SOURCE_BLOB"
+          test "$(git hash-object "$SUITE")" = "$SUITE_BLOB"
+          test "$(git hash-object "$APPLY")" = "$APPLY_BLOB"
+          test "$(git hash-object "$CANONICAL")" = "$CANONICAL_BLOB"
+          test "$(wc -c < "$CANONICAL" | tr -d ' ')" = "$CANONICAL_BYTES"
+          printf '%s  %s\n' "$CANONICAL_SHA256" "$CANONICAL" | sha256sum -c -
 
-      - name: Compile R01 source and declared suite
-        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
-        run: python -m py_compile r01_shop_router.py checks/test_v3_r01.py
+      - name: Compile reviewed Python inputs without repository bytecode
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          for raw in (os.environ['SOURCE'], os.environ['SUITE'], os.environ['APPLY']):
+              path = Path(raw)
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
 
-      - name: Run declared R01 suite
-        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
-        run: python -m unittest -v checks/test_v3_r01.py
+      - name: Materialize exact V3 package in runner temp
+        shell: python
+        run: |
+          import os
+          import shutil
+          import tarfile
+          from pathlib import Path
 
-      - name: Require clean checkout
+          canonical = Path(os.environ['CANONICAL'])
+          overlay = Path(os.environ['V3_DIR']) / 'overlay'
+          tree = Path(os.environ['RUNNER_TEMP']) / 'r01-materialized'
+          if tree.exists():
+              shutil.rmtree(tree)
+          tree.mkdir(parents=True)
+
+          with tarfile.open(canonical, mode='r:gz') as archive:
+              for member in archive.getmembers():
+                  if not member.isfile():
+                      continue
+                  name = member.name[2:] if member.name.startswith('./') else member.name
+                  rel = Path(name)
+                  if rel.is_absolute() or '..' in rel.parts:
+                      raise RuntimeError(f'unsafe canonical member: {member.name}')
+                  target = tree / rel
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  source = archive.extractfile(member)
+                  if source is None:
+                      raise RuntimeError(f'cannot read canonical member: {member.name}')
+                  target.write_bytes(source.read())
+
+          for source in sorted(overlay.rglob('*')):
+              if not source.is_file() or '__pycache__' in source.parts or source.suffix == '.pyc':
+                  continue
+              target = tree / source.relative_to(overlay)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(source.read_bytes())
+
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
+              env.write(f'R01_TREE={tree}\n')
+
+      - name: Apply exact V3 integration edits to materialized package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$APPLY" "$R01_TREE"
+          test -f "$R01_TREE/titan_runtime.py"
+          test -f "$R01_TREE/r01_shop_router.py"
+          test -f "$R01_TREE/r01_tapes.py"
+          test -f "$R01_TREE/checks/test_v3_r01.py"
+          test -f "$R01_TREE/TITAN-CONFIG.json"
+          test -f "$R01_TREE/NOTICE"
+          cmp --silent "$SOURCE" "$R01_TREE/r01_shop_router.py"
+          cmp --silent "$SUITE" "$R01_TREE/checks/test_v3_r01.py"
+
+      - name: Compile materialized runtime and R01 suite
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          root = Path(os.environ['R01_TREE'])
+          for rel in ('titan_runtime.py', 'r01_shop_router.py', 'r01_tapes.py', 'checks/test_v3_r01.py'):
+              path = root / rel
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+
+      - name: Run declared R01 suite from materialized package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$R01_TREE"
+          python -B -m unittest -v checks/test_v3_r01.py \
+            2>&1 | tee "$RUNNER_TEMP/r01-focused-tests.log"
+
+      - name: Emit exact-head materialized proof receipt
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          def git_blob(data: bytes) -> str:
+              return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+          expected_blobs = {
+              'SOURCE': os.environ['SOURCE_BLOB'],
+              'SUITE': os.environ['SUITE_BLOB'],
+              'APPLY': os.environ['APPLY_BLOB'],
+              'CANONICAL': os.environ['CANONICAL_BLOB'],
+          }
+          inputs = {}
+          for key in ('SOURCE', 'SUITE', 'APPLY', 'CANONICAL'):
+              path = Path(os.environ[key])
+              data = path.read_bytes()
+              entry = {
+                  'bytes': len(data),
+                  'git_blob': git_blob(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+              assert entry['git_blob'] == expected_blobs[key]
+              inputs[str(path)] = entry
+
+          tree = Path(os.environ['R01_TREE'])
+          materialized = {}
+          for rel in ('titan_runtime.py', 'r01_shop_router.py', 'r01_tapes.py', 'checks/test_v3_r01.py', 'TITAN-CONFIG.json', 'NOTICE'):
+              data = (tree / rel).read_bytes()
+              materialized[rel] = {
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+          assert (tree / 'r01_shop_router.py').read_bytes() == Path(os.environ['SOURCE']).read_bytes()
+          assert (tree / 'checks/test_v3_r01.py').read_bytes() == Path(os.environ['SUITE']).read_bytes()
+
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          proof_parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^'], text=True).strip()
+          source_parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^^'], text=True).strip()
+          assert head == os.environ['EXPECTED_HEAD']
+          assert proof_parent == os.environ['PROOF_PARENT']
+          assert source_parent == os.environ['SOURCE_PARENT']
+          log = Path(os.environ['RUNNER_TEMP']) / 'r01-focused-tests.log'
+          receipt = {
+              'schema': 'titan-v3-r01-focused-materialized-proof-receipt/v2',
+              'head': head,
+              'proof_parent': proof_parent,
+              'source_parent': source_parent,
+              'inputs': inputs,
+              'materialized': materialized,
+              'test_log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
+              'scope': 'focused proof only; exact canonical archive + reviewed V3 overlay + exact apply_v3 materialize the unchanged R01 suite',
+          }
+          out = Path(os.environ['RUNNER_TEMP']) / 'r01-focused-proof-receipt.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text(), end='')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v3-r01-focused-materialized-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/r01-focused-tests.log
+            ${{ runner.temp }}/r01-focused-proof-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Require clean repository checkout
         shell: bash
         run: |
           set -euo pipefail
