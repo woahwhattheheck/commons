@@ -18,16 +18,27 @@ Historical objects are resolved from Git history by the focused tests; no retype
 
 The authorizing surface is `market_microstack_current_safe.R04MarketMicrostackCurrentABI`. `market_microstack_current.py` is theorem-donor mechanics only.
 
-Future-route evidence is no longer an arbitrary `future_actions` argument. `market_route_authority.bind_market_route_authority(controller, observation)` consumes the merged canonical `current-route-witness/CurrentRouteWindow` from the installed `R[cur]`, then independently verifies:
+Future-route evidence is not accepted as an arbitrary caller mapping. `market_route_authority.bind_market_route_authority(...)` currently consumes the landed shared `CurrentRouteWindow` v2 (`main@a2eee7eecbfb2605147645d3de3b1c2c0ceb0bf0`, blob `b84768c7560e746f6c9144fea672554e0dad39f7`) **plus** an exact immutable producer receipt shaped as:
 
-- exact current step/index, public worker cardinality, route id/source/controller type;
-- strict JSON bytes (`allow_nan=False`) and SHA-256 for the **entire installed route**;
+```text
+{route_step, last_step, player, route}
+```
+
+For market authorization the receipt must describe the current selected-action callback exactly: `route_step == last_step == observation.step`, receipt player must equal observation player, and `receipt.route` must exist in the installed controller route table. A carried older receipt is continuity evidence only and cannot authorize H8/H4 on the current selected action.
+
+The adapter passes only `receipt.route` to the landed shared-window binder and then independently re-verifies:
+
+- strict JSON bytes (`allow_nan=False`) and SHA-256 for the **entire** `R[receipt.route]`;
+- exact current step/index, route id/source/controller type and public worker cardinality;
 - every bounded future row's exact step, action bytes/hash and worker cardinality;
-- a market authority SHA-256 over the complete canonical window receipt plus queue authority.
+- route-table/reference stability across serialization;
+- one market authority SHA-256 over the complete shared-window receipt, the complete immutable producer receipt, and queue authority.
 
-The submitted router had a deferred worker-command queue. The current installed Arlene controller does not: its complete mutable instance state is exactly `R`, `cur`, `_fs`, `_fs_for`. That exact state-key set is bound as `installed-intact-arlene:no-separate-deferred-command-queue:v1`. Any new controller instance state fails closed until a canonical queue authority exists. An arbitrary empty list is not accepted as proof.
+Raw `controller.cur` is deliberately not a trust root in this carrier.
 
-The first canonical current-route source authority is merged commit `d61e0333efe5697b56a867ed84a23e909195d3f4`, route-witness blob `987e8a52e4f5ab48aa8390bb5655aac23e6c2f39`, installed Arlene blob `bdb9cf58148a3c7961c085f4902759537decabf6`. Later compatible hotfixes may strengthen the shared witness; this carrier re-verifies the bytes it consumes itself.
+The submitted router also consulted a deferred worker-command queue. The current installed Arlene controller has no separate queue: its complete mutable instance state is exactly `R`, `cur`, `_fs`, `_fs_for`. That exact state-key set is bound as `installed-intact-arlene:no-separate-deferred-command-queue:v1`. Any additional instance state fails closed until a canonical queue authority exists; an arbitrary caller-provided empty list is not proof.
+
+The shared route/receipt seam is still moving upstream. #13424 owns the immutable producer-receipt source; #13439 owns the canonical shared witness successor. **This carrier must rejoin their final landed contract before merge.** The local receipt checks here are a consumer-side safety belt, not permission to fork another route oracle.
 
 ## Recovered stages
 
@@ -54,30 +65,21 @@ The score-facing combined row-order/row-shed theorem remains owned by #13399 and
 
 Intended current composition:
 
-`selected action -> canonical CurrentRouteWindow/MarketRouteAuthority -> H8/L3/V224 -> H4 -> #13399 row_order_shed -> evening flush -> downstream current finalizers`
+`selected action -> committed route receipt/shared CurrentRouteWindow/MarketRouteAuthority -> H8/L3/V224 -> H4 -> #13399 row_order_shed -> evening flush -> downstream current finalizers`
 
 ## Retry custody
 
-Current V5 callbacks can retry a public step. The historical whole-route code treated same-step callbacks as reset; that is unsafe once the shared debt ledger is public. The authorizing adapter therefore stores immutable pre-step checkpoints:
+Current V5 callbacks can retry a public step. The authorizing adapter stores immutable pre-step checkpoints:
 
 - `step < previous_step`: true rewind/new stream;
-- exact same-step + identical route/observation/action/projection receipt: return the cached result/report without touching live shared H8/H4 debt;
-- same-step changed evidence or route digest: restore pre-step player/rival state and recompute;
-- H4 has its own revision+authority-keyed transaction checkpoint.
+- exact same-step + identical observation/action/projection/route-authority receipt: return the cached result/report without touching live shared H8/H4 debt;
+- same-step changed evidence or authority digest: restore pre-step player/rival state and recompute;
+- H4 has its own sale-revision + authority-digest transaction checkpoint.
 
 This prevents same-step retries from erasing L3's opening certificate, losing future debt, double-reserving STRAWBERRY, or resurrecting a prior attempt after evidence changed.
 
 ## Contracts
 
-Exact-PR-head CI runs Python 3.11/3.12, normal and `python -O`, with full Git history. Focused contracts cover donor object identity, canonical route/no-queue provenance, strict non-finite rejection anywhere in the full route, H8/debt/native pre-288 behavior, fertilizer, pickup/PLACE vetoes, L3 OFF_TAPE/on-tape/incomplete opening, 648 debt settlement, V224 ordering, retry transactions, shared H4 debt/retries/route matching, and evening timing/capacity.
+Exact-PR-head CI runs Python 3.11/3.12, normal and `python -O`, with full Git history. Focused contracts cover donor object identity, committed-route/no-queue provenance, carried/cross-player/wrong-route receipt rejection, strict non-finite rejection anywhere in the full route, H8/debt/native pre-288 behavior, FERTILIZER, pickup/PLACE vetoes, L3 OFF_TAPE/on-tape/incomplete opening, step-648 debt settlement, V224 ordering, retry transactions, shared H4 debt/retries/route matching, and evening timing/capacity.
 
-```bash
-python -B -m unittest -v \
-  test_market_microstack_current.py test_retry_transactions.py \
-  test_h4_shared_current.py test_route_authority.py test_source_authority.py
-python -O -B -m unittest -v \
-  test_market_microstack_current.py test_retry_transactions.py \
-  test_h4_shared_current.py test_route_authority.py test_source_authority.py
-```
-
-Historical V3.1 score superiority is motivation, not current-V5 promotion authority. Runtime/default activation still requires the one composition gate plus matched both-seat current-V5 economics against the exact V3.1 authority under the shared release firewall.
+Historical V3.1 score superiority is motivation, not current-V5 promotion authority. Runtime/default activation still requires final shared route/receipt convergence, the one composition gate, and matched both-seat current-V5 economics against exact V3.1 under the shared release firewall.
