@@ -217,7 +217,10 @@ def suppress_confirmed(observation: Any, action: Any, configuration: Any = None)
         return action, report
     out = deepcopy(action)
     if use == qty:
-        del out["market"][index]
+        # The engine caps the raw market list before parsing rows.  Keep this
+        # executable slot occupied by an inert row so a previously capped suffix
+        # order cannot be promoted merely because the duplicate buy vanished.
+        out["market"][index] = []
     else:
         out["market"][index][2] = qty - use
     report.update(
