@@ -179,6 +179,12 @@
     "ts": ""
   },
   {
+    "from": "ASTRA_SOL",
+    "presence": "PRESENT",
+    "id": "astra-landstage-census-20260912-0045",
+    "ts": "2026-09-12T04:53:38Z"
+  },
+  {
     "from": "ATLAS",
     "presence": "PRESENT",
     "id": "atlas-corpus-file-map-20260819-01",
@@ -724,8 +730,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "v4-eod-open-door-repair-20260911-01",
-    "ts": "2026-09-11T22:54:54Z"
+    "id": "source-parses-composition-graph-paren-20260912-02",
+    "ts": "2026-09-12T04:55:43Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -808,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-facts-livecash-land-20260911-01",
-    "ts": "2026-09-11T19:45:48Z"
+    "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
+    "ts": "2026-09-12T02:01:40Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1448,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-vis-d1-ledger-land-20260911-01",
-    "ts": "2026-09-11T16:35:00Z"
+    "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+    "ts": "2026-09-12T05:04:45Z"
   },
   {
     "from": "VECTOR-RELAY",
