@@ -25,28 +25,40 @@ class GanderStarveCompositeTests(unittest.TestCase):
         self.assertEqual(self.safe["feed_days"][0], 1)
         self.assertEqual(self.safe["skip_days"][0], 2)
 
-    def test_alternation_halves_remaining_feed_load_without_output_loss(self):
-        self.assertEqual(len(self.safe["feed_days"]), 15)
-        self.assertEqual(len(self.safe["skip_days"]), 14)
-        self.assertEqual(self.safe["wheat_consumed"], 135)
-        self.assertEqual(self.safe["wheat_saved_vs_feed_daily_days_1_29"], 126)
-        self.assertEqual(self.safe["action_attempts"]["feed_attempts"], 135)
+    def test_official_terminal_boundary_is_step_718_without_eod29(self):
+        self.assertEqual(self.safe["final_executable_step"], 718)
+        self.assertEqual(self.safe["last_step_executed"], 718)
+        self.assertEqual(self.safe["last_eod_day"], 28)
+        self.assertTrue(self.safe["terminal_day_feed_is_dead_work"])
+        self.assertNotIn(29, self.safe["feed_days"])
+        self.assertIn(29, self.safe["skip_days"])
+
+    def test_alternation_halves_real_feed_obligations_without_output_loss(self):
+        self.assertEqual(len(self.safe["feed_days"]), 14)
+        self.assertEqual(len(self.safe["skip_days"]), 15)
+        self.assertEqual(self.safe["feed_days"][-1], 27)
+        self.assertEqual(self.safe["wheat_consumed"], 126)
         self.assertEqual(
-            self.safe["feed_actions_saved_vs_feed_daily_days_1_29"], 126
+            self.safe["wheat_saved_vs_feed_every_real_eod_obligation"], 126
         )
-        self.assertEqual(self.safe["egg_total"], 9 * 27)
-        self.assertEqual(self.safe["fertilizer_total"], 9 * 30)
+        self.assertEqual(self.safe["action_attempts"]["feed_attempts"], 126)
+        self.assertEqual(
+            self.safe["feed_actions_saved_vs_feed_every_real_eod_obligation"], 126
+        )
+        self.assertEqual(self.safe["egg_total"], 9 * 26)
+        self.assertEqual(self.safe["fertilizer_total"], 9 * 29)
 
     def test_skip_feed_slots_realize_egg_without_held_cap_clipping(self):
-        # Mature EGG is harvested only on even skip-feed days. Two production
-        # refreshes can accumulate between those visits, still below max_held=4.
-        self.assertEqual(self.safe["action_attempts"]["harvest_attempts"], 13 * 9)
+        # Mature EGG is harvested on even skip-feed days plus terminal day 29.
+        # At most two production refreshes accumulate between harvest visits.
+        self.assertEqual(self.safe["action_attempts"]["harvest_attempts"], 14 * 9)
         self.assertLessEqual(self.safe["max_goose_yield_units_seen"], 2)
-        self.assertEqual(self.safe["final_held_egg"], 2 * 9)
+        self.assertEqual(self.safe["final_held_egg"], 0)
+        self.assertEqual(self.safe["final_pending_fertilizer"], 0)
 
     def test_same_two_worker_geometry_fits_after_daily_hire(self):
         self.assertEqual(self.safe["action_attempts"]["hire_orders"], 29)
-        self.assertLessEqual(self.safe["max_route_actions_after_hire"], 23)
+        self.assertLessEqual(self.safe["max_route_actions_after_hire"], 20)
         self.assertEqual(
             self.safe["source_contract"]["gander_day1_service_counts"],
             {
@@ -59,13 +71,15 @@ class GanderStarveCompositeTests(unittest.TestCase):
 
     def test_alternation_creates_route_capacity_for_all_nine_harvests(self):
         contract = self.safe["source_contract"]
-        self.assertEqual(contract["post_hire_unit_slots"], 23)
+        self.assertEqual(contract["regular_post_hire_unit_slots"], 23)
+        self.assertEqual(contract["terminal_post_hire_unit_slots"], 22)
         self.assertEqual(contract["route_lengths"]["feed_fert"], [20, 21])
         self.assertEqual(
             contract["route_lengths"]["skip_feed_fert_harvest"], [19, 20]
         )
         self.assertEqual(contract["route_lengths"]["feed_fert_harvest"], [25, 25])
         self.assertFalse(contract["all_nine_feed_fert_harvest_fits_two_workers"])
+        self.assertTrue(contract["terminal_skip_feed_fert_harvest_fits_two_workers"])
 
     def test_care_is_explicitly_out_of_scope(self):
         self.assertEqual(self.safe["action_attempts"]["care_attempts"], 0)
