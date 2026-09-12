@@ -129,6 +129,29 @@ def project_eod_drop(
     return {"shed": out_shed, "deposited": deposited, "discarded": discarded}
 
 
+def _validated_prices(market: dict[str, Any], market_price_fn: Callable[..., Any]) -> dict[str, int] | None:
+    """Authenticate the complete observed price map before adding a refresh row."""
+    public_inventory = market.get("inventory")
+    observed_prices = market.get("prices")
+    if not isinstance(public_inventory, dict) or not isinstance(observed_prices, dict):
+        return None
+    params = market.get("params")
+    resolved: dict[str, int] = {}
+    for item in PRODUCTS:
+        stock = public_inventory.get(item)
+        observed = observed_prices.get(item)
+        if type(stock) is not int or type(observed) is not int:
+            return None
+        try:
+            quote = market_price_fn(item, stock, params)
+        except Exception:
+            return None
+        if type(quote) is not int or quote != observed:
+            return None
+        resolved[item] = quote
+    return resolved
+
+
 def analyze(
     observation: Any,
     action: Any,
@@ -234,22 +257,15 @@ def analyze(
         result["reason"] = "insufficient_same_product_shed_stock"
         return result
 
-    public_inventory = market.get("inventory")
-    if not isinstance(public_inventory, dict):
-        result["reason"] = "market_state"
+    prices = _validated_prices(market, market_price_fn)
+    if prices is None:
+        result["reason"] = "market_price_map_drift"
         return result
-    public_stock = public_inventory.get(item)
-    if type(public_stock) is not int:
-        result["reason"] = "market_state"
-        return result
-    try:
-        quote = market_price_fn(item, public_stock, market.get("params"))
-    except Exception:
-        result["reason"] = "market_price_abi"
-        return result
-    if type(quote) is not int or quote != 1:
+    quote = prices[item]
+    if quote != 1:
         result["reason"] = "not_exact_floor_quote"
         return result
+    public_stock = market["inventory"][item]
 
     candidate_shed = dict(post_prefix_shed)
     candidate_shed[item] -= units
