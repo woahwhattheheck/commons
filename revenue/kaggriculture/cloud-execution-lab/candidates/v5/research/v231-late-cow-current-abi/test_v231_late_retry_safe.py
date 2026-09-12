@@ -55,6 +55,25 @@ class TestV231LateRetrySafe(unittest.TestCase):
         self.assertEqual(arm.transform(next_obs, pickup), pickup)
         self.assertEqual(arm.states[0]["confirmed"], 0)
 
+    def test_malformed_same_step_retry_does_not_rewind_valid_poststate(self):
+        arm = V231LateCurrentABISafe(enabled=True)
+        obs = observation(step=216)
+        parent = selected([["BUY_ANIMAL", "SHEEP", 1]])
+        self.assertEqual(
+            arm.transform(obs, parent)["market"], [["BUY_ANIMAL", "COW", 1]]
+        )
+        committed_attempt = arm.states[0]
+
+        malformed = {"farmer": ["PASS"], "hands": "not-a-list", "market": []}
+        self.assertEqual(arm.transform(obs, malformed), malformed)
+        self.assertEqual(arm.states[0], committed_attempt)
+
+        # The next well-formed retry still recomputes from the original pre-step
+        # snapshot, proving the malformed attempt neither committed nor poisoned it.
+        retry = arm.transform(obs, parent)
+        self.assertEqual(retry["market"], [["BUY_ANIMAL", "COW", 1]])
+        self.assertEqual(arm.states[0], committed_attempt)
+
     def test_identical_harvest_retry_does_not_double_credit(self):
         arm = V231LateCurrentABISafe(enabled=True)
         state = _new_state()
