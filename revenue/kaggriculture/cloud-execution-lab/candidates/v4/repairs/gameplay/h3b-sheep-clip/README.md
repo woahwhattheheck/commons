@@ -1,20 +1,20 @@
 # H3b sheep max-held harvest-priority recovery
 
-Canonical V4 source-custody recovery from PR #12603, exact source head `1deeee1c1509e6d767d485f139201ece5fb12af2`.
+Canonical V4 source-custody recovery from PR #12603, kept inside the single `candidates/v4` tree and the existing `repairs/gameplay/h3b-sheep-clip` authority.
 
-Preserved exact reviewed bytes only:
-- helper `r04_h3b_sheep_clip.py`: Git blob `062d408cf84bc59b0f50dbfb31768684e3ef3828`;
-- focused test `test_v4_h3b_sheep_clip.py`: Git blob `b13f221c16ad17442ededb226cc3363cb7d0e172`.
+## Current source closure
 
-The stale PR's shared `apply_v4.py` and workflow are intentionally not carried. This recovery does not add or enable a feature key, change config/defaults, mutate the live router/runtime, execute a legacy materializer, or make an economics/promotion claim.
+This package now folds the two detached fail-closed successors preserved in the #12603 history into the current V4 ABI:
 
-The preserved H3b theorem is narrow: an existing V233 sheep-worker HARVEST may be reprioritized within its assigned block only when next-refresh WOOL clipping is provable; service debt, cargo-return, malformed/nonstandard state, stale snapshots, final-day cases, and non-persistent multi-step reroutes fail closed. Any future wiring must be re-reviewed against the then-current canonical V233 state/accounting seam and remain default-OFF until separately promoted.
+- required standard configuration must be *observed*: `_standard_configuration()` asks `_cfg(..., _MISSING)` instead of silently substituting expected constants, so `configuration=None` or any missing required field fails closed;
+- sheep custody is structure-authenticated: `_strict_sheep()` requires both `kind == "PASTURE"` and `animal == "SHEEP"` before H3b may reason about clipping risk.
 
-## Current disposition — SOURCE HOLD
+Exact repaired helper blob: `r04_h3b_sheep_clip.py@100ddda513f433f33cd98704a0abab4d49e6c4da`, byte-equivalent to the strongest preserved helper successor for the combined source theorem. The prior focused suite `test_v4_h3b_sheep_clip.py@b13f221c16ad17442ededb226cc3363cb7d0e172` is retained unchanged. Additive current-ABI regressions live in `test_h3b_custody_closure.py@ce5464e631856a90665bc585c530cfd470fb2fd1` and cover missing configuration evidence, non-PASTURE SHEEP impostors, state/action preservation on rejection, and the canonical positive PASTURE/SHEEP path.
 
-The exact custody bytes above are **not current merge/promotion authority**. They predate two later exact fail-closed source successors preserved in the #12603 history:
+The H3b theorem remains narrow: an existing V233 sheep-worker HARVEST may be reprioritized within its assigned block only when next-refresh WOOL clipping is provable; service debt, cargo-return, malformed/nonstandard state, stale snapshots, final-day cases, and non-persistent multi-step reroutes fail closed.
 
-- detached commit `8ad3fb832d9c4b0a6c4e5989c8594de5a89858d5`, parent `1deeee1c1509e6d767d485f139201ece5fb12af2`, repairs required-configuration absence so `_standard_configuration()` asks for `_MISSING` instead of silently substituting expected constants; its focused regressions cover `configuration=None` and each missing required standard field. The canonical helper still contains `_cfg(configuration, name, expected)`, so this delta is not present here.
-- detached successor `1eb2440a8c9bace32967452468682242f89ed074` adds strict `PASTURE` structure authentication to `_strict_sheep()`. Its repaired helper blob is `100ddda513f433f33cd98704a0abab4d49e6c4da` and additive regression blob is `83d911dbfdfd3cc97a7befa6679848b9fe595770`. The canonical helper currently checks `animal == "SHEEP"` but not `kind == "PASTURE"`, so this delta is also not present here.
+## Authority boundary
 
-Keep the current package as exact donor custody only. Before any H3b wiring or promotion, fold these fail-closed semantic deltas into this **same** `repairs/gameplay/h3b-sheep-clip` package (or a byte-equivalent current-ABI successor), rerun focused normal/optimized tests against the then-current canonical V233 seam, and record the resulting exact blobs/receipt in the central integration ledger. Do not revive the legacy `apply_v4.py` carrier or create a sibling V4 root.
+This is still a default-OFF source repair. It does not add workers, animals, land, seed, market rows, service work, a new feature key, a sibling controller, a sibling V4 root, runtime/default activation, archive mutation, or Kaggle mutation. The stale PR's shared `apply_v4.py` and workflow remain deliberately excluded.
+
+Source closure alone is not economics/promotion authority. Focused normal/optimized execution against the current canonical V233 seam plus repository control-plane/current-V233 gates remain required before merge; any future runtime wiring requires a separate current-native engagement/economics decision. Exact execution receipt and any central integration-ledger update must describe the bytes actually executed, not merely this source review.
