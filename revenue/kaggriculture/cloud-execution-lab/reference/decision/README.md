@@ -4,7 +4,7 @@ One decision: hire one more hand only when its **incremental, completed sale val
 
 ## Why this decision
 
-At source pin [52b71bf](https://github.com/woahwhattheheck/commons/tree/52b71bf15433cf6831e4373d4fd84fb9ffcbcf05/revenue/kaggriculture/cloud-frontier-policy/next-panel), Arlene v14 main requests 12 daily hands on days 18–24 and 481 HARVEST, 1122 WATER, 381 CARE actions overall. Apex's two tapes also request 12 hands on days 18–24; both request 466 HARVEST and 384 CARE actions. `inspect_sources.py` decodes data without importing either policy. Counts are intended work, not successful executions.
+At source pin 52b71bf15433cf6831e4373d4fd84fb9ffcbcf05/revenue/kaggriculture/cloud-frontier-policy/next-panel, Arlene v14 main requests 12 daily hands on days 18–24 and 481 HARVEST, 1122 WATER, 381 CARE actions overall. Apex's two tapes also request 12 hands on days 18–24; both request 466 HARVEST and 384 CARE actions. `inspect_sources.py` decodes data without importing either policy. Counts are intended work, not successful executions.
 
 Arlene's `act` protects daily storage, liquidates route-dead stock and settles terminal inventory. Apex's native `policy.cpp` invokes its budget guard every **72** turns, despite the header's six-day name; it sells above static route reserves to fund purchases and hires. Its Python market layer adds shop-sensitive sales and observable opponent crop maturity, alongside schedule-specific triggers. None of those tapes or trigger times enter this selector.
 
