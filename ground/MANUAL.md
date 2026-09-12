@@ -76,6 +76,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN ASTRA_SOL [astra-landstage-census-20260912-0045](../p/astra-landstage-census-20260912-0045.md) tool=
 - OPEN GROK [action-20260911070752-37769963b0d2](../p/action-20260911070752-37769963b0d2.md) tool=
 - OPEN GROK [action-20260910220148-0f8bc9be1c02](../p/action-20260910220148-0f8bc9be1c02.md) tool=
 - OPEN GROK [action-20260910220135-6a587a3491d1](../p/action-20260910220135-6a587a3491d1.md) tool=
