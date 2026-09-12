@@ -25,6 +25,20 @@ CONSUMER_INSERT = CONSUMER_ANCHOR + (
     "                self.consumer.exec_pace_apply = pace.apply_candidate\n"
 )
 
+FALLBACK_ANCHOR = (
+    "    def _remember_seller_fallback(self, obs):\n"
+    "        \"\"\"Queue one completed fallback observation for a later reconstruction.\"\"\"\n"
+    "        if self.features.consumer != 'frozen':\n"
+    "            return\n"
+)
+FALLBACK_STATE_INSERT = (
+    "        if getattr(self.features, 'exec_pace', False) is True:\n"
+    "            exec_pace_state = getattr(self, '_exec_pace_state', None)\n"
+    "            if exec_pace_state is not None:\n"
+    "                exec_pace_state.note_prices(obs)\n"
+)
+FALLBACK_INSERT = FALLBACK_ANCHOR + FALLBACK_STATE_INSERT
+
 TRANSFORM_ANCHOR = (
     "        self.observe(obs)\n"
     "        farm,private=post_units(obs,base,config)\n"
@@ -61,6 +75,8 @@ def _replace_once(source, anchor, replacement, label):
 def compose_sources(titan_runtime_source, frozen_selected_source):
     titan = _replace_once(titan_runtime_source, FEATURE_ANCHOR, FEATURE_INSERT, "Features")
     titan = _replace_once(titan, CONSUMER_ANCHOR, CONSUMER_INSERT, "FrozenSelected construction")
+    titan = _replace_once(titan, FALLBACK_ANCHOR, FALLBACK_INSERT,
+                          "deadline fallback observation")
     frozen = _replace_once(frozen_selected_source, TRANSFORM_ANCHOR, TRANSFORM_INSERT,
                            "FrozenSelected transform observer")
     frozen = _replace_once(frozen, PLAN_ANCHOR, PLAN_INSERT, "FrozenSelected plan gate")
