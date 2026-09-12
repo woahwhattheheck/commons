@@ -34,6 +34,7 @@ class PublicRegimeHistory:
         self.candidate_mix = None
         self.candidate_streak = 0
         self.regime_step = 0
+        self.mix_observed_step = None
         self.last_diagnostics = {}
 
     @staticmethod
@@ -61,12 +62,41 @@ class PublicRegimeHistory:
                     counts[product] += 1
         return tuple((p, counts[p]) for p in products)
 
+    def _seed_mix(self, now, mix, *, clear_evidence=False):
+        if clear_evidence:
+            self.harvests.clear()
+            self.flows.clear()
+        self.stable_mix = mix
+        self.candidate_mix = None
+        self.candidate_streak = 0
+        self.regime_step = now
+        self.mix_observed_step = now
+
     def _update_mix(self, now, mix):
         changed = False
-        if self.stable_mix is None:
-            self.stable_mix = mix
-            self.regime_step = now
+        if self.stable_mix is None or self.mix_observed_step is None:
+            self._seed_mix(now, mix)
             return changed
+
+        # Retry callbacks may repeat the exact same public step.  Persistence is
+        # evidence across distinct observations in time, not callback count.  A
+        # same-step replacement may revise the candidate, but never advances it.
+        if now == self.mix_observed_step:
+            if mix == self.stable_mix:
+                self.candidate_mix = None
+                self.candidate_streak = 0
+            elif mix != self.candidate_mix:
+                self.candidate_mix = mix
+                self.candidate_streak = 1
+            return changed
+
+        # A strictly backward observation is a new-game/rewind boundary for this
+        # bounded helper.  Old evidence cannot safely be attributed across it.
+        if now < self.mix_observed_step:
+            self._seed_mix(now, mix, clear_evidence=True)
+            return changed
+
+        self.mix_observed_step = now
         if mix == self.stable_mix:
             self.candidate_mix = None
             self.candidate_streak = 0
