@@ -61,6 +61,37 @@ class TownProcurementMarketGrammarTests(unittest.TestCase):
         self.assertEqual(report["status"], "target_advanced")
         self.assertEqual(result["market"][2][2], 6)
 
+    def test_infinite_market_quantities_fail_closed_as_inert(self):
+        for quantity in (float("inf"), float("-inf")):
+            with self.subTest(quantity=quantity):
+                self.assertIsNone(
+                    town_procurement._market_quantity(
+                        ["BUY_PRODUCT", "WHEAT", quantity],
+                        "BUY_PRODUCT",
+                        "WHEAT",
+                    )
+                )
+                self.assertIsNone(
+                    town_procurement._market_quantity(
+                        ["SELL", "WHEAT", quantity],
+                        "SELL",
+                        "WHEAT",
+                    )
+                )
+
+        action = self._action([
+            ["SELL", "WHEAT", float("inf"), "overflowing-inert-row"],
+            ["BUY_PRODUCT", "WHEAT", 3],
+        ])
+        result, report = town_procurement.apply(
+            self._observation(200),
+            action,
+            {"maxMarketOrdersPerTurn": 2},
+            completed=True,
+        )
+        self.assertEqual(report["status"], "target_advanced")
+        self.assertEqual(result["market"][1][2], 6)
+
     def test_engine_valid_coercible_wheat_sell_still_blocks_target(self):
         action = self._action([
             ["SELL", "WHEAT", "1", "engine-valid-metadata"],
@@ -87,6 +118,20 @@ class TownProcurementMarketGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             town_procurement._prefix_limit({}, {"maxMarketOrdersPerTurn": -3}), 1
+        )
+
+    def test_infinite_market_cap_fails_closed_to_engine_floor(self):
+        self.assertEqual(
+            town_procurement._prefix_limit(
+                {}, {"maxMarketOrdersPerTurn": float("inf")}
+            ),
+            1,
+        )
+        self.assertEqual(
+            town_procurement._prefix_limit(
+                {}, {"maxMarketOrdersPerTurn": float("-inf")}
+            ),
+            1,
         )
 
 
