@@ -166,9 +166,20 @@ _INSTANCE = None
 _LAST_STEP = None
 
 
+def _public_step(observation):
+    if 'step' not in observation:
+        raise ValueError('public step is required')
+    step = observation['step']
+    if type(step) is not int:
+        raise TypeError('step must be a plain int')
+    if step < 0:
+        raise ValueError('step must be nonnegative')
+    return step
+
+
 def agent(observation, configuration=None):
     global _INSTANCE, _LAST_STEP
-    step = int(observation.get('step', 0))
+    step = _public_step(observation)
     rebuild = _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP)
     if rebuild:
         candidate = TerminalSell()
