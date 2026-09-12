@@ -27,7 +27,59 @@ It keeps the existing E20 key/default semantics and changes only HIRE-index disc
 the executable raw prefix. Focused V4 regression coverage freezes suffix-HIRE identity,
 the official cap-0 -> cap-1 clamp, active-prefix-only limiting, and key-OFF exact identity.
 
-Local receipt on the published bytes: `py_compile` PASS; 4/4 focused tests PASS.
+Initial local receipt on the published bytes: `py_compile` PASS; 4/4 focused tests PASS.
+The same carrier now also contains KESTREL-V4's test-only successor with a 9,604-case
+raw-slot/cap/budget differential matrix plus demand, terminal, idempotence, malformed-market,
+nonmutation, and disabled-path contracts. Production E20 bytes remain unchanged by that
+successor.
+
+### R04 fast tape-action clone — CURRENT-ROOT SOURCE-READY
+
+V3.1 proof carrier #12431 retains `production.patch` blob
+`84346b65edacbfb2e46580adace4ec407707ed5e`. The mechanism shallow-clones only the exact
+JSON tape-action schema and fails closed to `copy.deepcopy` for any future schema.
+
+The reviewed proof covered all 9,347 tape actions, alias safety/future-schema fallbacks, and a
+>=1.50x median speed gate. Current V4 still contains `action = copy.deepcopy(tape[step])` and
+has no `_r04_clone_tape_action` helper, so the optimization was not inherited.
+
+This salvage branch now carries `docs/v4_salvage_fast_clone.py`, pinned to current V4 router
+blob `a3e2fe87c717d128e43c9b65bae2265f40d1d76d`. It accepts exactly the two reviewed semantic
+hunks (helper insertion + one `Policy.act` callsite replacement), compiles the generated
+postimage, and rejects any source drift. `overlay/checks/test_v4_fast_clone_salvage.py` binds
+the same postimage to all 13 x 719 = 9,347 frozen tape actions, checks per-row alias separation,
+and exercises future-schema fail-closed fallback.
+
+Do not paste the frozen V3.1 router postimage over V4: current R04 has later gameplay layers.
+Consume the generated modern postimage only after the serial queue front advances.
+
+### SELL scheduler executable-prefix family — CURRENT-ROOT SOURCE-READY
+
+The V3 source/evidence carriers #12005 and #12018 identified the same interpreter boundary in
+two scheduler projections:
+
+- `SellScheduler.cash_reserve()` must not charge engine-inert market suffix rows;
+- `SellScheduler.receipt_profile()` must not replay suffix SELL/BUY/HIRE rows that the engine
+  never executes.
+
+Current V4 `cloud-execution-lab/scheduler.py` blob
+`da1b6fb571e79ba7dab54c8d816e45afb934e4d2` still iterates unsliced current/future market
+queues in both paths. The official engine remains exact blob
+`3c202c7ee921da239356789e266b694635103fc4`, so the interpreter boundary itself has not drifted.
+
+The old #12018 materializer was bound to stale scheduler blob
+`a483b24dd72b580d7d8811636b54d2d44f391575`; its whole-file postimage is not merge authority.
+This branch instead carries `docs/v4_salvage_scheduler_prefix.py`, pinned to the current V4
+scheduler + official engine. It inserts one shared `_engine_market_prefix()` helper and rewires
+only the current cash-reserve loop, receipt-profile current-market prepass, and receipt-profile
+market loop. `overlay/checks/test_v4_scheduler_prefix_salvage.py` binds those exact three
+consumers, verifies the official engine source anchors, exercises 1,512 raw-queue/cap cases,
+and fails closed on scheduler or engine drift.
+
+#12026 (inherited purchase prefix stability) is a related stronger safety theorem and should
+be reconciled when the generated scheduler postimage is consumed rather than independently
+layered after it. #12036 remains an experiment around physical partial fills; do not silently
+promote it.
 
 ## Already consumed by current V4 — DO NOT DUPLICATE
 
@@ -53,45 +105,6 @@ do not re-port the V3.1 donor under a new key.
 The current V4 queue already contains dedicated carriers for F3, W1, S1, F2, H3b, M1,
 raw-slot handling, S6, H3e, C5, EOD capacity rescue, R5, and the parked A1 donor. Treat those
 as V4-owned unless an exact source comparison proves a missing semantic repair.
-
-## Genuine stranded work requiring current-root composition
-
-### R04 fast tape-action clone — SOURCE-READY, NOT YET LIVE
-
-V3.1 proof carrier #12431 retains `production.patch` blob
-`84346b65edacbfb2e46580adace4ec407707ed5e`. The mechanism shallow-clones only the exact
-JSON tape-action schema and fails closed to `copy.deepcopy` for any future schema.
-
-The reviewed proof covered all 9,347 tape actions, alias safety/future-schema fallbacks, and a
->=1.50x median speed gate. Current V4 still contains `action = copy.deepcopy(tape[step])` and
-has no `_r04_clone_tape_action` helper, so the optimization was not inherited.
-
-Do not paste the frozen V3.1 router postimage over V4: current R04 has later gameplay layers.
-Rebase the two semantic hunks onto the current R04 source, rerun all-action equality/alias
-proofs, and only then consume the modern postimage.
-
-### SELL scheduler executable-prefix family — DEFECT STILL VISIBLE, REBASE REQUIRED
-
-The V3 source/evidence carriers #12005 and #12018 identified the same interpreter boundary in
-two scheduler projections:
-
-- `SellScheduler.cash_reserve()` must not charge engine-inert market suffix rows;
-- `SellScheduler.receipt_profile()` must not replay suffix SELL/BUY/HIRE rows that the engine
-  never executes.
-
-Current V4 `cloud-execution-lab/scheduler.py` blob
-`da1b6fb571e79ba7dab54c8d816e45afb934e4d2` still iterates unsliced current/future market
-queues in both paths, so the defect class remains visible.
-
-The old #12018 materializer was bound to scheduler blob
-`a483b24dd72b580d7d8811636b54d2d44f391575`, not the current V4 blob. Therefore the old
-whole-file candidate is not merge authority. Rebase the official
-`q[:max(1, maxMarketOrdersPerTurn)]` rule onto current source and retain the existing
-scheduler lineage.
-
-#12026 (inherited purchase prefix stability) is a related stronger safety theorem and should
-be reconciled during that current-root scheduler pass rather than independently layered after
-it. #12036 remains an experiment around physical partial fills; do not silently promote it.
 
 ## HOLD / negative / experiment-only — DO NOT PROMOTE AS SALVAGE
 
@@ -123,5 +136,6 @@ not be duplicated. The canonical branch is currently unprotected, so candidate-o
 is not itself merge authority; #12620's current plan uses an independent exact Git-object audit
 for bootstrap and keeps a trusted control-plane gate as a separate follow-up.
 
-Until the front advances, salvage work should remain draft/source-carrier state and be
-recomposed onto the then-current canonical V4 head rather than force-moving the shared branch.
+Until the front advances, salvage work remains draft/source-carrier state. Re-read the shared
+canonical head, re-materialize these current-root postimages if required, and serialize them
+into that **one** tree; never force-move the shared branch or mint a sibling V4 root.
