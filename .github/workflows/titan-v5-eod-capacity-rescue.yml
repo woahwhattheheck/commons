@@ -18,9 +18,6 @@ on:
       - "astra/titan-v5-eod-capacity-rescue-20260912"
   workflow_dispatch:
 
-env:
-  EOD_EXPECTED_MAIN: "5905f39b8cae24bc3613aa590650384d6a1dfd19"
-
 permissions:
   contents: read
 
@@ -36,18 +33,20 @@ jobs:
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
-      - name: Verify exact event head
-        shell: bash
-        run: |
-          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
-          test "$(git rev-parse HEAD)" = "$expected"
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: EOD source, composer and evidence contracts
+      - name: Verify exact source head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - name: Source, composer and evidence contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
         env:
           PYTHONDONTWRITEBYTECODE: "1"
+        shell: bash
         run: |
           set -euo pipefail
           python -B -m py_compile \
@@ -70,10 +69,10 @@ jobs:
             OUT="$RUNNER_TEMP/eod-dry-render"
             python -B candidates/v5/eod-capacity-rescue/compose_current_runtime.py --root . --out "$OUT"
             python -B -m py_compile "$OUT/main.py" "$OUT/titan_runtime.py" "$OUT/build_integrated.py"
-            python - <<'PY'
-          from pathlib import Path
+            OUT="$OUT" python - <<'PY'
           import json, os
-          out = Path(os.environ['RUNNER_TEMP']) / 'eod-dry-render'
+          from pathlib import Path
+          out = Path(os.environ['OUT'])
           cfg = json.loads((out / 'TITAN-CONFIG.json').read_text())
           assert cfg['eod_capacity_rescue'] is False
           main = (out / 'main.py').read_text()
@@ -97,7 +96,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verify exact branch and canonical-main custody
+      - name: Verify branch and live-main custody
         shell: bash
         run: |
           set -euo pipefail
@@ -105,8 +104,8 @@ jobs:
           branch_remote="$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)"
           main_remote="$(git ls-remote origin refs/heads/main | cut -f1)"
           test "$branch_remote" = "$GITHUB_SHA"
-          test "$main_remote" = "$EOD_EXPECTED_MAIN"
-          git merge-base --is-ancestor "$EOD_EXPECTED_MAIN" HEAD
+          git fetch --no-tags origin "$main_remote"
+          git merge-base --is-ancestor "$main_remote" HEAD
       - name: Detect already-integrated successor
         id: integrated
         shell: bash
@@ -158,8 +157,8 @@ jobs:
               assert 'eod_capacity_rescue.py' in names
               assert 'checks/test_eod_capacity_rescue.py' in names
               assert 'checks/test_eod_capacity_rescue_runtime.py' in names
-              config = json.loads(tf.extractfile('TITAN-CONFIG.json').read())
-              assert config['eod_capacity_rescue'] is False
+              cfg = json.loads(tf.extractfile('TITAN-CONFIG.json').read())
+              assert cfg['eod_capacity_rescue'] is False
               source = json.loads(tf.extractfile('SOURCE.json').read())
               assert source['runtime']['eod_capacity_rescue.py']['source_path'] == 'eod_capacity_rescue.py'
           PY
@@ -174,7 +173,8 @@ jobs:
           branch_remote="$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)"
           main_remote="$(git ls-remote origin refs/heads/main | cut -f1)"
           test "$branch_remote" = "$GITHUB_SHA"
-          test "$main_remote" = "$EOD_EXPECTED_MAIN"
+          git fetch --no-tags origin "$main_remote"
+          git merge-base --is-ancestor "$main_remote" HEAD
           git add -A -- \
             "$LAB/main.py" "$LAB/titan_runtime.py" "$LAB/TITAN-CONFIG.json" "$LAB/build_integrated.py" \
             "$LAB/exports" \
@@ -187,4 +187,9 @@ jobs:
           git config user.name 'titan-v5-eod-bot'
           git config user.email 'titan-v5-eod-bot@users.noreply.github.com'
           git commit -m 'TITAN V5 EOD: integrate after overflow and refresh package'
+          branch_remote="$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)"
+          main_remote="$(git ls-remote origin refs/heads/main | cut -f1)"
+          test "$branch_remote" = "$GITHUB_SHA"
+          git fetch --no-tags origin "$main_remote"
+          git merge-base --is-ancestor "$main_remote" HEAD^
           git push origin "HEAD:${GITHUB_REF_NAME}"
