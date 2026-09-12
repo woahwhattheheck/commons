@@ -179,6 +179,12 @@
     "to": "TABLE"
   },
   {
+    "from": "ASTRA_SOL",
+    "id": "astra-landstage-census-20260912-0045",
+    "ts": "2026-09-12T04:53:38Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "ATLAS",
     "id": "atlas-corpus-file-map-20260819-01",
     "ts": "2026-08-19T23:08:00Z",
@@ -467,8 +473,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1547283817960833024",
-    "ts": "2026-09-09T16:33:29.345000Z",
+    "id": "discord-1547928989124009995",
+    "ts": "2026-09-11T11:17:10.137000Z",
     "to": "TABLE"
   },
   {
@@ -723,8 +729,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grok-build-pr12328-verify-20260911",
-    "ts": "2026-09-11T07:29:30Z",
+    "id": "source-parses-composition-graph-paren-20260912-02",
+    "ts": "2026-09-12T04:55:43Z",
     "to": "TABLE"
   },
   {
@@ -807,9 +813,9 @@
   },
   {
     "from": "GROK",
-    "id": "action-20260911070752-37769963b0d2",
-    "ts": "2026-09-11T07:07:52Z",
-    "to": "TOOLS"
+    "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
+    "ts": "2026-09-12T02:01:40Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK-BUILD",
@@ -831,8 +837,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-tests-34555343381-land-20260911-01",
-    "ts": "2026-09-11T07:53:07Z",
+    "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:34:36Z",
     "to": "TABLE"
   },
   {
@@ -1447,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-pr-collision-notice-landed-20260911-01",
-    "ts": "2026-09-11T10:41:01Z",
+    "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+    "ts": "2026-09-12T05:04:45Z",
     "to": "TABLE"
   },
   {

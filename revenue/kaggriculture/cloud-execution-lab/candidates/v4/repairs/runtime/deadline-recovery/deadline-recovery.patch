@@ -1,0 +1,25 @@
+--- a/titan_runtime.py
++++ b/titan_runtime.py
+@@ -585,6 +585,7 @@
+                 raise
+             # Cancellation can interrupt a state mutation. Reconstruct next turn
+             # from observed state rather than reuse partially updated ledgers.
++            initialization_completed = self.ready
+             self.ready = False
+             # Retain only the route paired with a complete selected fallback.
+             # A producer interrupted before returning cannot commit its choice.
+@@ -598,7 +599,13 @@
+             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
+                                     elapsed_seconds=time.perf_counter()-started,
+                                     act_cpu_seconds=time.process_time()-cpu_started)
+-            output = self._finish_production(obs, output, cfg)
++            # Readiness, not attribute presence or stage, certifies that all
++            # controller-dependent finalizers were installed. Reconstruction
++            # can leave old attributes even when the new initialization fails.
++            if initialization_completed:
++                output = self._finish_production(obs, output, cfg)
++            else:
++                self.diagnostics['finalizer_skipped'] = 'incomplete_initialization'
+             # Include the reserved fallback/finalizer window in the receipt.
+             self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                     act_cpu_seconds=time.process_time()-cpu_started)

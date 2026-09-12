@@ -42,6 +42,41 @@ class CheckPythonTests(unittest.TestCase):
             self.assertEqual(len(bad), 1)
             self.assertIn("U+2026", bad[0][1])
 
+    def test_unclosed_paren_production_break_is_caught(self):
+        """The exact unclosed-paren bytes from check_composition_graph.py must fail."""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "broken.py")
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write(
+                    "def _reachable(start, target, edges):\n"
+                    "    todo = [start]\n"
+                    "    seen = set()\n"
+                    "    while todo:\n"
+                    "        cur = todo.pop()\n"
+                    "        if cur == target:\n"
+                    "            return True\n"
+                    "        if cur in seen:\n"
+                    "            continue\n"
+                    "        seen.add(cur)\n"
+                    "        todo.extend(sorted(edges.get(cur, ()), reverse=True)\n"
+                    "    return False\n"
+                )
+            bad = source_parses.check_python([path])
+            self.assertEqual(len(bad), 1)
+            self.assertIn("never closed", bad[0][1])
+
+    def test_composition_graph_on_disk_parses(self):
+        path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "revenue",
+            "kaggriculture",
+            "cloud-execution-lab",
+            "candidates",
+            "v4",
+            "check_composition_graph.py",
+        )
+        self.assertEqual(source_parses.check_python([path]), [])
+
     def test_ellipsis_inside_a_string_is_not_a_failure(self):
         """U+2026 appears 330 times in tracked source, legitimately.
 

@@ -1,0 +1,133 @@
+{
+  "canonical_workspace": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181145018989",
+  "component_output": {
+    "bytes": 40083,
+    "git_blob": "ddcb07738d34c0327842ebd3ca3efbd1177ab6fe",
+    "sha256": "2b3ffc7a4422f3fc0f8268a1a5abca0a640a8ccbe224b4abcb01fa96b547f36a"
+  },
+  "date": "2026-09-11",
+  "files": {
+    "check_crop_input_prefix.py": {
+      "bytes": 22074,
+      "git_blob": "4cad84c42dd5cc0da9378e42d06bad9f29784dd0",
+      "sha256": "4462efc8214d1d5bb2bfda3677de7aa14c7940712ae7b8995d794f36e971f4f9"
+    },
+    "compose_crop_input_prefix.py": {
+      "bytes": 3477,
+      "git_blob": "b5d643e6b355c724b5abf002fdc1a596669d0c8b",
+      "sha256": "70ea16d41cb2e856a262a54136e44beec484ba601863a3fcc005155ce70c96bc"
+    },
+    "run_crop_prefix_controls.py": {
+      "bytes": 2465,
+      "git_blob": "230c9fbfb487a6774ad94e02498b56d30b4dc1ef",
+      "sha256": "a1cfb0bc619de38f706689f6daf5bf5ac4c66cd3c062985bad23e582fb071b89"
+    }
+  },
+  "inherited_tests": {
+    "bytes": 31283,
+    "errors": 0,
+    "failures": 0,
+    "file": "checks/test_crop_release.py",
+    "git_blob": "19720197551d83cd22f9223c614d4c2efc4c8ecb",
+    "modified": false,
+    "normal": 22,
+    "optimized": 22,
+    "sha256": "ed950524cc6bfaaea4a22af9c9c67bb4e2fb8cb81ac08a325917b22860c82704"
+  },
+  "input": {
+    "bytes": 40073,
+    "git_blob": "dd318e5bbe6245913c3dcb8c07d0752fd1ebd735",
+    "sha256": "86dd3186af6ee137c848c1722c9f8c2676264a34c5a703b07e47ecd999116f49"
+  },
+  "input_artifact": {
+    "id": 10175943272,
+    "member_root": "final-pressure-runtime",
+    "zip_sha256": "3a3b74936d238bf884f89a1b279f42676cda35c590f131a6a3548de52d61b4e8"
+  },
+  "limits": [
+    "Constructed native component and official-interpreter transition evidence; no full games, natural-frequency, hosted or EV claim.",
+    "Two source lines changed only inside propose_input_repair; raw queue and input/fill receipt binding preserved.",
+    "Native crop configuration support remains unchanged at 10 market slots.",
+    "Production source, feature defaults, controller, release archive, CI workflow and Kaggle submission unchanged.",
+    "Same-method peer drift must be resolved explicitly before integration."
+  ],
+  "negative_controls": {
+    "assertion_failures_per_variant_each_mode": [
+      94,
+      34,
+      81,
+      2,
+      88,
+      111,
+      60,
+      2
+    ],
+    "criterion": "all 16 test methods execute, at least one unittest assertion fails, process exits 1; error-only rejection not accepted",
+    "errors_per_variant_each_mode": [
+      15,
+      14,
+      15,
+      0,
+      3,
+      15,
+      1,
+      0
+    ],
+    "rejected_normal": 8,
+    "rejected_optimized": 8,
+    "variants": [
+      "original",
+      "wheat_tail",
+      "capacity_tail",
+      "cap9",
+      "cap11",
+      "compact",
+      "truncate",
+      "allow_active_buy"
+    ]
+  },
+  "new_tests": {
+    "counts_per_mode": {
+      "engine_calls": 151,
+      "fill_receipts": 72,
+      "in_cap_controls": 56,
+      "native_owner_calls": 8,
+      "suffix_vectors": 60
+    },
+    "errors": 0,
+    "failures": 0,
+    "normal": 16,
+    "optimized": 16,
+    "skipped": 0
+  },
+  "owner": "ASTRA-ROOTSTOCK",
+  "python": "3.13.5",
+  "run_sha256": {
+    "controls-normal.json": "73e4a1678d0cc2a68f3d5142abecf778092d2849052bfd5e48de95aad22fae8c",
+    "controls-optimized.json": "4ffe16ad877f449b532703edcce9b21c09a22226cbd989cb99292ef78c67888b",
+    "native-normal.log": "6c34cb92fef3102fb81927eafeec83227da2f6ba945009d2d231be294cde002c",
+    "native-optimized.log": "0259ec0bcff2c111ac8cbca0ff3c0b305dee067e5647ecea670f7143a0fd7ad8",
+    "normal.json": "84fc95426b1e44427f36f83e491d9953319f3918afe0be6cfb82341e4ebc5d44",
+    "optimized.json": "c9ed5957a9d054ca3cbfac379fcfcd6d90bf5d6dbf2d4fb6628a3f345f9a3276"
+  },
+  "schema": "titan-v4-crop-input-prefix-receipt-v1",
+  "witnesses": [
+    {
+      "own_cash_delta": -72,
+      "rival_cash_delta": 0,
+      "scope": "constructed one-transition restoration, not EV",
+      "seat": 0,
+      "step": 457,
+      "wheat_delta": 3
+    },
+    {
+      "own_cash_delta": -72,
+      "rival_cash_delta": 0,
+      "scope": "constructed one-transition restoration, not EV",
+      "seat": 1,
+      "step": 457,
+      "wheat_delta": 3
+    }
+  ]
+}

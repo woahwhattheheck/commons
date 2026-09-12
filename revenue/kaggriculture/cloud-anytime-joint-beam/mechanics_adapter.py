@@ -149,7 +149,11 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
     """
     def transition(state: State, idx: int, action: Action) -> State | None:
         # idx==0 starts a fresh worker tuple, which also permits callers to reuse
-        # a prior successor as the initial state of a later turn.
+        # a prior successor as the initial state of a later turn. A pruned idx==0
+        # call drops any surviving prefix metadata from the input state: the
+        # metadata can only describe a previous turn, and the prune yields no
+        # successor to overwrite it, so leaving it would make a later idx>0
+        # call on the same state raise on the stale prefix.
         metadata = None if idx == 0 else state.get(_TRANSITION_META_KEY)
         crop = _plant_crop(action)
         op = action[0] if isinstance(action, list) and action else None
@@ -171,6 +175,17 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
             )
             changed = farm != state["farm"] or private != state["private"]
             if not changed and op != "PASS":
+                if idx == 0:
+                    # A fresh worker tuple starts here, so any prefix metadata
+                    # still present must be stale: the caller reused a successor
+                    # from a previous turn (documented multi-turn use). This
+                    # pruned call produces no successor to overwrite it, so
+                    # drop the stale key from the input state now; otherwise a
+                    # later idx>0 call on the same state (the beam continues
+                    # canonical prunes on the unchanged state) would read the
+                    # stale prefix and raise. The key is internal to one beam
+                    # search and ignored by the scorer.
+                    state.pop(_TRANSITION_META_KEY, None)
                 return None
             out = dict(state)
             out["farm"] = farm
@@ -255,6 +270,12 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
             and op not in ("PASS", "PLANT")
             and not rollback_sensitive_noop
         ):
+            if idx == 0:
+                # Same stale-metadata drop as the fast path above: idx==0
+                # starts a fresh worker tuple, so surviving prefix metadata is
+                # from a previous turn and this pruned call yields no successor
+                # to overwrite it.
+                state.pop(_TRANSITION_META_KEY, None)
             return None
 
         out = dict(state)
