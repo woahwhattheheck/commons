@@ -1,6 +1,13 @@
 name: titan-v4-graphpost-receipt-bind
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/titan-v4-graphpost-receipt-bind.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/run_composed_postimage.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/test_postimage_snapshot.py'
   push:
     branches:
       - sol/graphpost-receipt-bind-20260912
@@ -13,7 +20,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
