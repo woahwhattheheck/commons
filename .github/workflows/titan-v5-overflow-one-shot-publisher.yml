@@ -1,0 +1,120 @@
+name: TITAN V5 overflow one-shot publisher
+
+on:
+  push:
+    branches:
+      - sol/titan-v5-overflow-safe-drop-convergence-20260912-01
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v5-overflow-one-shot-publisher
+  cancel-in-progress: false
+
+jobs:
+  integrate-test-publish:
+    if: ${{ !contains(github.event.head_commit.message, '[overflow-published]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sol/titan-v5-overflow-safe-drop-convergence-20260912-01
+          fetch-depth: 0
+
+      - name: Apply anchored current-lineage integration
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          lab = Path('revenue/kaggriculture/cloud-execution-lab')
+
+          def replace_once(path, old, new):
+              path = Path(path)
+              text = path.read_text()
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'anchor mismatch for {path}: expected 1, got {count}')
+              path.write_text(text.replace(old, new))
+
+          runtime = lab / 'titan_runtime.py'
+          replace_once(
+              runtime,
+              "    exec_pace: bool = False\n\n    def __post_init__(self):",
+              "    exec_pace: bool = False\n    overflow_safe_drop: bool = False\n\n    def __post_init__(self):",
+          )
+          replace_once(
+              runtime,
+              "        bool_fields = (*bool_fields, 'exec_pace')\n",
+              "        bool_fields = (*bool_fields, 'exec_pace', 'overflow_safe_drop')\n",
+          )
+          replace_once(
+              runtime,
+              "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n",
+              "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n        if self.overflow_safe_drop and (self.consumer != 'frozen' or self.terminal_route):\n            raise ValueError('overflow_safe_drop is the tested nonterminal frozen composition')\n",
+          )
+
+          main = lab / 'main.py'
+          replace_once(
+              main,
+              "    features = Features(**feature_data)\n    if town_enabled and (features.consumer != 'frozen' or features.terminal_route):\n        raise ValueError('town_procurement is the tested nonterminal frozen composition')\n\n    class FinalPressureAgent(TitanAgent):",
+              "    features = Features(**feature_data)\n    if town_enabled and (features.consumer != 'frozen' or features.terminal_route):\n        raise ValueError('town_procurement is the tested nonterminal frozen composition')\n\n    overflow_safe_drop = None\n    if getattr(features, 'overflow_safe_drop', False):\n        source = root/'overflow_safe_drop.py'\n        if not source.is_file():\n            source = root/'candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'\n        overflow_safe_drop = load('_titan_overflow_safe_drop', source, cache=True)\n\n    class FinalPressureAgent(TitanAgent):",
+          )
+          replace_once(
+              main,
+              "            self.town_procurement_enabled = town_enabled\n            self._finalizer_checkpoint = None\n",
+              "            self.town_procurement_enabled = town_enabled\n            self.overflow_safe_drop = overflow_safe_drop\n            self._finalizer_checkpoint = None\n",
+          )
+          replace_once(
+              main,
+              "            if self.town_procurement_enabled:\n                from town_procurement import apply\n                returned, report = apply(obs, returned, cfg, completed=completed)\n                self.diagnostics['town_procurement'] = report\n                self._checkpoint_finalizer(obs, returned, 'town_procurement')\n            return returned\n",
+              "            if self.town_procurement_enabled:\n                from town_procurement import apply\n                returned, report = apply(obs, returned, cfg, completed=completed)\n                self.diagnostics['town_procurement'] = report\n                self._checkpoint_finalizer(obs, returned, 'town_procurement')\n            # Overflow preservation is an optional final-return transform only.\n            # Do not run it on an incomplete producer result or on the terminal\n            # settlement step, where liquidation semantics own the returned bytes.\n            if self.overflow_safe_drop is not None and completed:\n                episode_steps = cfg.get('episodeSteps', 720)\n                nonterminal = (type(episode_steps) is int and episode_steps >= 2\n                               and obs.get('step') != episode_steps - 2)\n                if nonterminal:\n                    returned, report = self.overflow_safe_drop.transform(returned, obs, cfg)\n                    self.diagnostics['overflow_safe_drop'] = report\n                    self._checkpoint_finalizer(obs, returned, 'overflow_safe_drop')\n            return returned\n",
+          )
+
+          builder = lab / 'build_integrated.py'
+          replace_once(
+              builder,
+              "        mapping[p]=p\n    # Package ECON's landed callback from its attributed source rather than\n",
+              "        mapping[p]=p\n    mapping['overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'\n    # Package ECON's landed callback from its attributed source rather than\n",
+          )
+          replace_once(
+              builder,
+              "    mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'\n",
+              "    mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'\n    mapping['checks/test_overflow_safe_drop_runtime.py']='test_overflow_safe_drop_runtime.py'\n    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'\n",
+          )
+
+          config = lab / 'TITAN-CONFIG.json'
+          replace_once(
+              config,
+              '  "exec_pace": false\n}\n',
+              '  "exec_pace": false,\n  "overflow_safe_drop": false\n}\n',
+          )
+          PY
+
+      - name: Compile and focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -m py_compile main.py titan_runtime.py build_integrated.py test_overflow_safe_drop_runtime.py candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py
+          python -B candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py
+          python -O -B candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py
+          python -B -m unittest -v test_overflow_safe_drop_runtime.py test_config_metadata_boundary.py
+          python -O -B -m unittest -v test_overflow_safe_drop_runtime.py test_config_metadata_boundary.py
+
+      - name: Publish canonical current release
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -B build_integrated.py
+          python -B build_integrated.py --check
+
+      - name: Commit source and canonical postimage, remove one-shot workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/titan-v5-overflow-one-shot-publisher.yml
+          git config user.name "titan-v5-overflow-publisher"
+          git config user.email "titan-v5-overflow-publisher@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          test -n "$(git diff --cached --name-only)"
+          git commit -m "TITAN V5: wire overflow-safe DROP default off [overflow-published]"
+          git push origin HEAD:sol/titan-v5-overflow-safe-drop-convergence-20260912-01
