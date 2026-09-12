@@ -93,7 +93,7 @@ jobs:
             --tar "$work/production.tar.gz"
           printf '%s  %s\n' "$PRODUCTION_SHA" "$work/production.tar.gz" | sha256sum -c -
 
-      - name: Materialize screen twice and verify nested archives
+      - name: Materialize screen twice and verify full member custody
         shell: bash
         run: |
           set -euo pipefail
@@ -113,26 +113,60 @@ jobs:
           python - "$work" <<'PY'
           import hashlib, json, pathlib, sys, tarfile
           root = pathlib.Path(sys.argv[1])
+
+          def digest(raw):
+              return hashlib.sha256(raw).hexdigest()
+
+          def file_digest(path):
+              return digest(path.read_bytes())
+
+          baseline_root = root / 'production'
+          baseline = {
+              path.relative_to(baseline_root).as_posix(): file_digest(path)
+              for path in sorted(baseline_root.rglob('*')) if path.is_file()
+          }
+          assert len(baseline) == 92, len(baseline)
+
           receipt = json.loads((root / 'screen-a.json').read_text())
           assert receipt['baseline_archive_sha256'] == '20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239'
+          assert receipt['baseline_members'] == baseline
           assert set(receipt['arms']) == {'seed_hire_off', 'inventory_spatial_off', 'late_market_off'}
           assert receipt['kaggle_submission_hold'] is True
-          bundle_sha = hashlib.sha256((root / 'screen-a.tar.gz').read_bytes()).hexdigest()
+          bundle_sha = file_digest(root / 'screen-a.tar.gz')
           assert bundle_sha == receipt['bundle_sha256']
+
           for arm, record in receipt['arms'].items():
               archive = root / 'screen' / 'arms' / f'{arm}.tar.gz'
-              assert hashlib.sha256(archive.read_bytes()).hexdigest() == record['archive_sha256']
+              assert file_digest(archive) == record['archive_sha256']
+              observed = {}
+              with tarfile.open(archive, 'r:gz') as tf:
+                  for member in tf.getmembers():
+                      assert member.isfile(), (arm, member.name)
+                      stream = tf.extractfile(member)
+                      assert stream is not None
+                      observed[member.name] = digest(stream.read())
+              assert len(observed) == 92, (arm, len(observed))
+              assert observed == record['members'], arm
+              assert set(observed) == set(baseline), arm
+              assert record['changed_members'] == ['TITAN-CONFIG.json']
+              assert observed['TITAN-CONFIG.json'] == record['config_sha256']
+              for name, member_sha in baseline.items():
+                  if name != 'TITAN-CONFIG.json':
+                      assert observed[name] == member_sha, (arm, name)
+
               dest = root / f'unpack-{arm}'
               dest.mkdir()
               with tarfile.open(archive, 'r:gz') as tf:
                   tf.extractall(dest)
-              files = [p for p in dest.rglob('*') if p.is_file()]
-              assert len(files) == 92, (arm, len(files))
               cfg = json.loads((dest / 'TITAN-CONFIG.json').read_text())
               assert cfg['consumer'] == 'frozen'
               assert cfg['town_procurement'] is True
-              assert record['changed_members'] == ['TITAN-CONFIG.json']
-          print(json.dumps({'bundle_sha256': bundle_sha, 'arms': receipt['arms']}, sort_keys=True))
+
+          print(json.dumps({
+              'baseline_members': len(baseline),
+              'bundle_sha256': bundle_sha,
+              'arms': {name: record['archive_sha256'] for name, record in receipt['arms'].items()},
+          }, sort_keys=True))
           PY
           for arm in seed_hire_off inventory_spatial_off late_market_off; do
             python -m compileall -q "$work/unpack-$arm"
