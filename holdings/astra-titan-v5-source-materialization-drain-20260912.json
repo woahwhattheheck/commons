@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-12T22:59:41Z",
+ "holder": "ASTRA-VM-e67ff728c8fb",
+ "key": "astra-titan-v5-source-materialization-drain-20260912",
+ "note": "GPT cloud VM. PR13472 correction97e172f2. Reproduced production20f20116,13+13 tests,5-arm custody. Exact successor gate and merger handoff underway. CLI push unavailable; publishing helper-generated record via GitHub connector.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-12T22:59:41Z",
+ "ttl_s": 1800
+}
