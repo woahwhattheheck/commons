@@ -43,13 +43,14 @@ def raw(obj):
 
 
 class ReplayProfileTest(unittest.TestCase):
-    def build(self, replay, *, submission=PINNED, ident=None, seat=0):
+    def build(self, replay, *, submission=PINNED, ident=None, seat=0, frontier_pack=None):
         ident = identity() if ident is None else ident
+        frontier_pack = pack() if frontier_pack is None else frontier_pack
         return p.build_profile(
             replay,
             raw(replay),
-            pack(),
-            raw(pack()),
+            frontier_pack,
+            raw(frontier_pack),
             ident,
             raw(ident),
             submission_id=submission,
@@ -107,6 +108,37 @@ class ReplayProfileTest(unittest.TestCase):
         replay = {"id": 108115160, "steps": [row(), row()]}
         with self.assertRaisesRegex(p.ReplayProfileError, "not a pinned rated frontier target"):
             self.build(replay, submission=999)
+
+    def test_frontier_pack_submission_ids_are_type_exact(self):
+        replay = {"id": 108115160, "steps": [row(), row()]}
+        malformed = {"frontier_targets": [{"rank": 1, "rated_submission_id": True}]}
+        with self.assertRaisesRegex(p.ReplayProfileError, "rated_submission_id must be a plain integer"):
+            self.build(
+                replay,
+                submission=1,
+                ident=identity(submission=1),
+                frontier_pack=malformed,
+            )
+
+    def test_frontier_pack_rejects_duplicate_and_malformed_targets(self):
+        replay = {"id": 108115160, "steps": [row(), row()]}
+        duplicate = {
+            "frontier_targets": [
+                {"rank": 1, "rated_submission_id": PINNED},
+                {"rank": 2, "rated_submission_id": PINNED},
+            ]
+        }
+        with self.assertRaisesRegex(p.ReplayProfileError, "duplicate rated_submission_id"):
+            self.build(replay, frontier_pack=duplicate)
+
+        non_object = {
+            "frontier_targets": [
+                {"rank": 1, "rated_submission_id": PINNED},
+                PINNED,
+            ]
+        }
+        with self.assertRaisesRegex(p.ReplayProfileError, r"frontier_targets\[1\] must be an object"):
+            self.build(replay, frontier_pack=non_object)
 
     def test_identity_manifest_mismatch_fails_closed(self):
         replay = {"id": 108115160, "steps": [row(), row()]}

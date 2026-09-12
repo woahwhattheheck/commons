@@ -87,6 +87,28 @@ def _episode_agents(manifest: Mapping[str, Any]) -> tuple[int, Sequence[Any]]:
     return episode_id, agents
 
 
+def _pinned_submission_ids(pack: Mapping[str, Any]) -> set[int]:
+    """Return the exact rated frontier ids, rejecting ambiguous pack structure."""
+    targets = pack.get("frontier_targets")
+    if not isinstance(targets, list):
+        raise ReplayProfileError("frontier pack missing frontier_targets")
+    pinned: set[int] = set()
+    for index, entry in enumerate(targets):
+        if not isinstance(entry, dict):
+            raise ReplayProfileError(f"frontier_targets[{index}] must be an object")
+        submission_id = _plain_int(
+            entry.get("rated_submission_id"),
+            field=f"frontier_targets[{index}].rated_submission_id",
+            minimum=1,
+        )
+        if submission_id in pinned:
+            raise ReplayProfileError(
+                f"duplicate rated_submission_id {submission_id} in frontier pack"
+            )
+        pinned.add(submission_id)
+    return pinned
+
+
 def validate_identity(
     pack: Mapping[str, Any],
     manifest: Mapping[str, Any],
@@ -98,14 +120,7 @@ def validate_identity(
     submission_id = _plain_int(submission_id, field="submission_id", minimum=1)
     seat = _plain_int(seat, field="seat", minimum=0)
 
-    targets = pack.get("frontier_targets")
-    if not isinstance(targets, list):
-        raise ReplayProfileError("frontier pack missing frontier_targets")
-    pinned = {
-        entry.get("rated_submission_id")
-        for entry in targets
-        if isinstance(entry, dict)
-    }
+    pinned = _pinned_submission_ids(pack)
     if submission_id not in pinned:
         raise ReplayProfileError(
             f"submission {submission_id} is not a pinned rated frontier target"
