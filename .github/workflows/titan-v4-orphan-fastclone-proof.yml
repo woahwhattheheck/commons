@@ -1,0 +1,44 @@
+name: TITAN V4 orphan fast-clone donor validate
+
+on:
+  push:
+    branches:
+      - astra/v4-orphan-fastclone-proof-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile donor and apply to exact 15b2 source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/titan_v4_fold_fast_clone.py
+          path='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${path}?ref=15b2b5d2025a7c6976557b5ec3e458a3f09f412b" \
+            | jq -r '.content' | tr -d '\n' | base64 -d > /tmp/apply_v4.py
+          test "$(git hash-object /tmp/apply_v4.py)" = f67f8ce7d5f5779c1fad9b1e51e3b736b02b513d
+          python tools/titan_v4_fold_fast_clone.py /tmp/apply_v4.py
+          python -m py_compile /tmp/apply_v4.py
+          grep -Fq 'R04 V4 reviewed fast tape clone helper' /tmp/apply_v4.py
+          grep -Fq 'R04 V4 fast tape clone hot path' /tmp/apply_v4.py
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          text = Path('/tmp/apply_v4.py').read_text()
+          ast.parse(text)
+          assert text.count('R04 V4 reviewed fast tape clone helper') == 1
+          assert text.count('R04 V4 fast tape clone hot path') == 1
+          assert '_r04_clone_tape_action(tape[step])' in text
+          print('PASS fast-clone donor syntax/CAS')
+          PY
