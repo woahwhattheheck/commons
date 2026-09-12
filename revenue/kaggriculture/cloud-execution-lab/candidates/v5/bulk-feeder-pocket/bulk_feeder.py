@@ -283,6 +283,8 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
     _validate_observation_start(observation, start)
     if type(turns_per_day) is not int or turns_per_day <= 0:
         raise WitnessError("turns_per_day must be a positive plain int")
+    if turns_per_day != 24:
+        raise WitnessError("turns_per_day must match the canonical 24-turn route calendar")
     if type(shed_capacity) is not int or shed_capacity <= 0:
         raise WitnessError("shed_capacity must be a positive plain int")
     if mechanics is None:
