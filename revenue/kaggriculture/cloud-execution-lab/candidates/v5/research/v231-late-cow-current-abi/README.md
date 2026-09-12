@@ -35,23 +35,21 @@ The historical source is authority for semantics, not current promotion evidence
 
 ## Current surface
 
-`v231_late_current_safe.V231LateCurrentABISafe`
+`v231_late_current.V231LateCurrentABI`
 
-`enabled=False` is detached identity. `enabled=True` applies only the late V231
-selected-action transform. Malformed current envelopes fail closed to an unchanged
-deep copy. The adapter is research-only: there is no runtime feature, config/default
-flip, archive rebuild, release pointer change, or Kaggle mutation here.
+There is exactly one current V231 adapter. `enabled=False` is detached identity.
+`enabled=True` applies only the late V231 selected-action transform. Malformed current
+envelopes fail closed to an unchanged deep copy before retry/private state is touched.
+The adapter is research-only: there is no runtime feature, config/default flip, archive
+rebuild, release pointer change, or Kaggle mutation here.
 
-Current callbacks may retry the same public step. Retry custody is transactional:
-the public safe adapter snapshots the pre-step V231 state and restores that same
-preimage before every same-step retry. Identical retries are action/state idempotent;
-changed same-step evidence recomputes only from the pre-step snapshot. A true rewind
-starts a fresh epoch. This prevents pending purchase/placement ownership or milk credit
-from disappearing, duplicating, or resurrecting across retries.
-
-`v231_late_current.V231LateCurrentABI` remains the recovered donor-semantic core; it is
-not the public current callback surface because its historical `step <= last` reset is
-not retry-safe at a selected-action boundary.
+Current callbacks may retry the same public step. Retry custody is transactional inside
+the canonical adapter: the exact pre-step V231 state is captured once; an identical
+same-step retry returns the recorded output/post-state; changed valid evidence recomputes
+only from that same pre-step snapshot. A malformed retry is detached identity and cannot
+rewind or replace a valid attempt. A true rewind starts a fresh epoch. This prevents
+pending purchase/placement ownership or milk credit from disappearing, duplicating, or
+resurrecting across retries without creating a second V231 state machine.
 
 ## Focused contracts
 
@@ -68,9 +66,10 @@ The suites prove:
 - placement confirmation binds the owned site/day;
 - harvested milk credit can enlarge an existing MILK sell row but never invent one;
 - malformed current envelope/cardinality/scalar-hands drift fails closed;
-- identical same-step retry preserves pending purchase ownership into the next callback;
-- changed same-step evidence recomputes from pre-step authority and retires the old buy;
-- harvest retry cannot double-apply milk credit or sale quantity;
+- identical same-step purchase and HARVEST retries are action/state idempotent;
+- changed same-step selected/observation evidence recomputes from pre-step authority and
+  retires abandoned purchase/harvest effects;
+- malformed same-step retry leaves both candidate state and retry transaction unchanged;
 - rewind resets all V231 ownership.
 
 ## Local gate
@@ -78,12 +77,12 @@ The suites prove:
 From this directory:
 
 ```bash
-python -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
-python -O -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
-python -m py_compile v231_late_current.py v231_late_current_safe.py test_v231_late_current.py test_v231_late_retry_safe.py
+python -B -m unittest -v test_v231_late_current.py test_v231_retry_boundary.py
+python -O -B -m unittest -v test_v231_late_current.py test_v231_retry_boundary.py
+python -m py_compile v231_late_current.py test_v231_late_current.py test_v231_retry_boundary.py
 ```
 
-The dedicated exact-head Python 3.11/3.12 workflow runs this same full core + retry-safe
+The dedicated exact-head Python 3.11/3.12 workflow runs this same canonical adapter
 contract set and requires a clean source tree after execution.
 
 Promotion requires a fresh current-V5 matched screen. First measure OFF vs V231-late.
