@@ -59,9 +59,23 @@ class H5ExecutablePrefixTests(unittest.TestCase):
         self.assertFalse(plan["eligible"])
         self.assertEqual(plan["reason"], "DOWNSTREAM_AFFORDABILITY_AMBIGUITY")
 
+    def test_nonpositive_plain_int_limit_uses_one_executable_row(self):
+        for value in (0, -1, -99):
+            with self.subTest(value=value):
+                cfg = {**BASE, "maxMarketOrdersPerTurn": value}
+                suffix = ["HIRE", 1]
+                a = action(["BUY_ANIMAL", "GOOSE", 1], suffix)
+                plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
+                self.assertTrue(plan["eligible"])
+                self.assertEqual(plan["max_market_orders"], 1)
+                self.assertEqual(plan["drop_indices"], [0])
+                out = apply_terminal_animal_capital(a, {"step": 717}, cfg, enabled=True)
+                self.assertEqual(out["market"], [[], suffix])
+                self.assertEqual(a["market"], [["BUY_ANIMAL", "GOOSE", 1], suffix])
+
     def test_explicit_bad_market_limit_fails_closed(self):
         a = action(["BUY_ANIMAL", "GOOSE", 1])
-        for value in (None, True, 1.0, "10", 0, -1):
+        for value in (None, True, False, 1.0, "10"):
             with self.subTest(value=value):
                 cfg = {**BASE, "maxMarketOrdersPerTurn": value}
                 plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
