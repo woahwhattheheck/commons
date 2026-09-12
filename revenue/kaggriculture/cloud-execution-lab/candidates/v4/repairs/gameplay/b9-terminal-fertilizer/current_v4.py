@@ -54,7 +54,7 @@ class CurrentV4TerminalFertilizer:
 
     def apply(self, observation, action, configuration=None, *,
               enabled=False, completed=False):
-        if not enabled:
+        if enabled is not True:
             return self._identity(action, "disabled", clear=True)
         if not completed:
             return self._identity(action, "producer_not_completed", clear=True)
