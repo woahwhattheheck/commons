@@ -35,6 +35,27 @@ class WitnessTests(unittest.TestCase):
         self.assertEqual(got["witness_window"][1]["left_candidate"]["action"], {"a": 7})
         self.assertEqual(got["witness_window"][1]["right_candidate"]["action"], {"a": 8})
 
+    def test_complete_compact_vectors_bind_trace_digest_without_full_actions(self):
+        trace = [row(i, i, i + 10) for i in range(5)]
+        got = w.compare_traces(trace, trace, trace, trace)
+        vectors = got["trace_vectors"]
+        self.assertEqual(
+            set(vectors),
+            {"left_candidate", "right_candidate", "left_opponent", "right_opponent"},
+        )
+        compact = vectors["left_candidate"]
+        self.assertEqual(len(compact), 5)
+        self.assertEqual([item["step"] for item in compact], list(range(5)))
+        self.assertEqual(
+            set(compact[0]),
+            {"step", "observation_sha256", "action_sha256"},
+        )
+        expected_digest = w._digest([
+            {key: value for key, value in item.items() if key != "action"}
+            for item in trace
+        ])
+        self.assertEqual(got["left_candidate_trace_sha256"], expected_digest)
+
     def test_identical_traces_have_no_window(self):
         trace = [row(i, i, i + 10) for i in range(5)]
         got = w.compare_traces(trace, trace, trace, trace)
