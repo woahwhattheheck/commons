@@ -20,6 +20,7 @@ from pathlib import Path
 
 
 SCHEMA = "titan-v5/animal-cadence/next-feed-certificate/v1"
+OFFICIAL_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 ENGINE_MECHANICS_GIT_BLOB = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
 PRODUCER_GIT_BLOB = "bdb9cf58148a3c7961c085f4902759537decabf6"
 OPERATING_STOCK_GIT_BLOB = "fbf11b58fc47cc922e72ddb17ae4f7a4e095702c"
@@ -28,6 +29,7 @@ SPATIAL_TEMPO_GIT_BLOB = "a2f13cd9871e6da24b2ccf3297c4c96ac324100e"
 CROP_RELEASE_GIT_BLOB = "f8b0b2a5c2a5cbcf2f7c5e2eac5527bd4bb83974"
 
 _SOURCE_PINS = {
+    "reference/engine/kaggriculture.py": OFFICIAL_ENGINE_GIT_BLOB,
     "mechanics.py": ENGINE_MECHANICS_GIT_BLOB,
     "reference/next-panel/vendor/arlene.py": PRODUCER_GIT_BLOB,
     "operating_stock.py": OPERATING_STOCK_GIT_BLOB,
@@ -115,7 +117,7 @@ def _strict_configuration(configuration):
     return resolved
 
 
-def _public_identity(observation):
+def _public_identity(observation, turns_per_day=None):
     if not isinstance(observation, dict):
         raise ValueError("malformed_observation")
     player = observation.get("player")
@@ -124,6 +126,20 @@ def _public_identity(observation):
         raise ValueError("malformed_public_identity")
     if type(step) is not int or step < 0:
         raise ValueError("malformed_public_identity")
+    if turns_per_day is not None:
+        if type(turns_per_day) is not int or turns_per_day <= 0:
+            raise ValueError("malformed_public_clock")
+        missing = object()
+        day = observation.get("day", missing)
+        hour = observation.get("hour", missing)
+        if (day is missing) != (hour is missing):
+            raise ValueError("malformed_public_clock")
+        if day is not missing:
+            if (type(day) is not int or day < 0
+                    or type(hour) is not int or not 0 <= hour < turns_per_day):
+                raise ValueError("malformed_public_clock")
+            if step != day * turns_per_day + hour:
+                raise ValueError("public_clock_mismatch")
     farms = observation.get("farms")
     private = observation.get("private")
     if not isinstance(farms, list) or player >= len(farms) or not isinstance(farms[player], dict):
@@ -288,7 +304,7 @@ def build_next_feed_certificate(observation, selected, configuration, controller
         report["source_pins"] = _authenticate_sources(root)
         _authenticate_feature_profile(features)
         cfg = _strict_configuration(configuration)
-        player, step = _public_identity(observation)
+        player, step = _public_identity(observation, cfg["turnsPerDay"])
         if step % cfg["turnsPerDay"] != cfg["turnsPerDay"] - 1:
             raise ValueError("not_day_close")
         if step >= cfg["episodeSteps"] - cfg["turnsPerDay"]:
