@@ -52,7 +52,7 @@ python -B staging_composer.py \
 
 The receipt binds baseline/candidate SHA256, every component-manifest SHA256, ordered dependencies/conflicts, replacements with exact pre/post identities, additions with explicit absence preconditions and postimages, complete final member hashes, and `kaggle_submission_hold=true`.
 
-Output paths are create-only. Both finals are reserved before either payload is written; both reserved descriptors stay open while payloads are written and fsynced. Before success, each final pathname is re-authenticated as a regular file with the exact reserved device/inode and exact payload bytes, parent directories are fsynced, and the pathname/payload verification is repeated. Failure cleanup removes only pathnames that still resolve to an inode owned by this invocation, so a foreign replacement is preserved. This is a fail-closed publication verification boundary; it does not claim that an untrusted actor can never rename a pathname after the final check.
+Output publication delegates to the canonical shared `publication_custody.publish_exclusive()` primitive rather than carrying a second writer implementation. The shared helper reserves every final pathname before any payload is written, keeps reservation descriptors live through rollback ownership decisions, writes and fsyncs exact payloads, re-authenticates each final pathname/device/inode/payload before success, and fsyncs each unique parent directory. Failure cleanup removes only still-owned pathnames, so a foreign replacement is preserved. The composer retains only a thin two-file adapter and its `ComposerError` surface; custody semantics live in one audited implementation shared by V5 builders and the composer.
 
 ## Boundary
 
@@ -61,7 +61,7 @@ This tool answers only: **can these exact reviewed component bytes be composed w
 Focused gate:
 
 ```bash
-python -B -m py_compile staging_composer.py test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
-python -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
-python -O -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
+python -B -m py_compile publication_custody.py staging_composer.py test_publication_custody.py test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
+python -B -m unittest -v test_publication_custody.py test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
+python -O -B -m unittest -v test_publication_custody.py test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
 ```
