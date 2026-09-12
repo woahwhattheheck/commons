@@ -33,6 +33,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/titan-v4-trust-root.yml
+            /host/titan_v4_trust_root.py
 
       - name: Authenticate candidate workflow as Git data only
         shell: bash
@@ -65,23 +66,5 @@ jobs:
             exit 1
           fi
 
-          entry="$(git ls-tree "$HEAD_SHA" -- "$WORKFLOW")"
-          if [[ -z "$entry" ]]; then
-            echo "candidate is missing $WORKFLOW" >&2
-            exit 1
-          fi
-          read -r mode type object path <<<"$entry"
-          if [[ "$mode" != "100644" || "$type" != "blob" || \
-                "$path" != "$WORKFLOW" || -z "$object" ]]; then
-            echo "candidate workflow must be one ordinary 100644 Git blob" >&2
-            printf 'mode=%q type=%q object=%q path=%q\n' \
-              "$mode" "$type" "$object" "$path" >&2
-            exit 1
-          fi
-          if [[ "$object" != "$APPROVED_WORKFLOW_BLOB" ]]; then
-            echo "candidate changed frozen Titan-V4 workflow authority" >&2
-            echo "expected_blob=$APPROVED_WORKFLOW_BLOB observed_blob=$object" >&2
-            exit 1
-          fi
-
-          echo "TITAN V4 TRUST ROOT OK head=$HEAD_SHA workflow_blob=$object"
+          python3 host/titan_v4_trust_root.py --self-test
+          python3 host/titan_v4_trust_root.py
