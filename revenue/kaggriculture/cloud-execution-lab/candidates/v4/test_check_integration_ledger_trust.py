@@ -102,6 +102,27 @@ class IntegrationLedgerTrustTests(unittest.TestCase):
         self.assertEqual(1, len(errors), errors)
         self.assertIn("lane must not have leading/trailing whitespace", errors[0])
 
+    def test_custody_path_whitespace_alias_is_rejected_not_normalized(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, integration = _base()
+            integration["custody_blocked"] = [{
+                "lane": "raw guard",
+                "custody_path": " repairs/gameplay/raw-guard ",
+                "status": "awaiting_raw_payload",
+            }]
+            directory = root / "repairs" / "gameplay" / "raw-guard"
+            directory.mkdir(parents=True)
+            _write_root(root, canonical, integration)
+            _write_json(directory / "MANIFEST.json", {
+                "lane": "raw guard",
+                "status": "awaiting_raw_payload",
+                "required_next_step": "publish exact bytes",
+            })
+            errors = ledger.validate(root)
+        self.assertEqual(1, len(errors), errors)
+        self.assertIn("custody_path must not have leading/trailing whitespace", errors[0])
+
     def test_duplicate_integration_key_is_rejected_even_when_values_match(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
