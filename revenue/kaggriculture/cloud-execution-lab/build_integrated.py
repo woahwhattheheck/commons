@@ -88,9 +88,20 @@ def source_files():
     return mapping
 
 
+def _resolved_source(source):
+    """Resolve one mapped source and confine it to the Kaggriculture tree."""
+    path=(ROOT/source).resolve(strict=True)
+    source_root=ROOT.parent.resolve()
+    try:
+        path.relative_to(source_root)
+    except ValueError as exc:
+        raise ValueError(f'Release source escapes Kaggriculture tree: {source}') from exc
+    return path
+
+
 def render():
     mapping=source_files()
-    blobs={p:(ROOT/source).read_bytes() for p,source in mapping.items()}
+    blobs={p:_resolved_source(source).read_bytes() for p,source in mapping.items()}
     manifest=json.loads((ROOT/(RECORD+'RELEASE.json')).read_text())
     manifest.update(entrypoint='main.py::agent',config='TITAN-CONFIG.json',
         default=json.loads(blobs['TITAN-CONFIG.json']),
