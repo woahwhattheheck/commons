@@ -26,11 +26,18 @@ class ReleaseTests(unittest.TestCase):
     self.assertIn('funded_payback.py',t.getnames())
     self.assertIn('seed_retry.py',t.getnames())
     self.assertIn('early_capital.py',t.getnames())
+    self.assertIn('integrated_main.py',t.getnames())
+    self.assertIn('integrated_parent.py',t.getnames())
     self.assertIn('checks/test_early_capital.py',t.getnames())
+    self.assertIn('checks/test_config_metadata_boundary.py',t.getnames())
     self.assertEqual(manifest['runtime']['seed_retry.py']['source_path'],
                      '../cloud-committed-seed-retry/seed_retry.py')
     self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
-    self.assertNotIn('integrated_main.py',t.getnames())
+    unpacked=Path(tmp)/'packaged';t.extractall(unpacked)
+    packaged=subprocess.run(
+        [sys.executable,str(unpacked/'checks/test_config_metadata_boundary.py')],
+        cwd=unpacked,capture_output=True,text=True)
+    self.assertEqual(packaged.returncode,0,packaged.stdout+packaged.stderr)
    first=(root/b.ARCHIVE).read_bytes();self.assertEqual(call().returncode,0);self.assertEqual(first,(root/b.ARCHIVE).read_bytes())
    for target in ['main.py','TITAN-CONFIG.json',b.RECORD+'CURRENT-SOURCE.json',b.RECORD+'CURRENT-ARCHIVE.json',b.ARCHIVE,'reference/titan-history/selected_action_history.py']:
     p=root/target;original=p.read_bytes()
@@ -54,9 +61,12 @@ class ReleaseTests(unittest.TestCase):
    self.assertIn('SOURCE.json', regular)
    self.assertEqual(len(regular), receipt['runtime_files'] + 1)
    self.assertIn('early_capital.py',names)
+   self.assertIn('integrated_main.py',names)
+   self.assertIn('integrated_parent.py',names)
    self.assertIn('checks/test_early_capital.py',names)
    self.assertIn('checks/test_final_market_pressure_entrypoint.py',names)
    self.assertIn('checks/test_entrypoint_deadline.py',names)
+   self.assertIn('checks/test_config_metadata_boundary.py',names)
    packaged_early=t.extractfile('early_capital.py').read()
    self.assertEqual(packaged_early,(b.ROOT/'early_capital.py').read_bytes())
    self.assertIn(b'def _market_limit',packaged_early)
@@ -79,6 +89,7 @@ class ReleaseTests(unittest.TestCase):
    self.assertIn(b'class FinalPressureAgent',main)
    self.assertIn(b'_final_pressure_boundary',main)
    self.assertIn(b'def _entrypoint_fallback',main)
+   self.assertIn(b'def _runtime_feature_data',main)
    self.assertIn(b'entrypoint_guard',main)
 
  def test_live_package_matches_documentation_and_keeps_predecessor(self):
