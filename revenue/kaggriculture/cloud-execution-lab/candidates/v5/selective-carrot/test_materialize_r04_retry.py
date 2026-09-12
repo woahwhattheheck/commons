@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import materialize_r04_retry as retry
 
 
+PASS_SOURCE = b'PASS = {"farmer": ["PASS"], "hands": [], "market": []}\n'
 OVERLAY = b"""
 _ArleneAgent = Agent
 class Agent(_ArleneAgent):
@@ -84,7 +85,7 @@ class RetrySafeR04(unittest.TestCase):
             def __init__(self):
                 self.base_initialized = True
 
-        raw = b"class Agent:\n    def __init__(self):\n        pass\n" + OVERLAY
+        raw = PASS_SOURCE + b"class Agent:\n    def __init__(self):\n        pass\n" + OVERLAY
         patched = retry.patch_vendor(raw)
         namespace = {}
         sys.modules["r04_full_router"] = r04
@@ -95,7 +96,7 @@ class RetrySafeR04(unittest.TestCase):
         return agent, r04, context, calls
 
     def test_transform_changes_only_vendor(self):
-        raw = b"prefix\n" + OVERLAY + b"suffix\n"
+        raw = PASS_SOURCE + b"prefix\n" + OVERLAY + b"suffix\n"
         files = {retry.VENDOR: raw, "main.py": b"same\n", "x.py": b"same\n"}
         out = retry.transform(files)
         self.assertEqual(set(out), set(files))
@@ -110,6 +111,8 @@ class RetrySafeR04(unittest.TestCase):
             retry.patch_vendor(OVERLAY + OVERLAY)
         with self.assertRaisesRegex(ValueError, "act seam"):
             retry.patch_vendor(retry._INIT_ANCHOR + b"\n")
+        with self.assertRaisesRegex(ValueError, "canonical vendored PASS"):
+            retry.patch_vendor(OVERLAY)
 
     def test_nonzero_route_survives_identical_retry_without_reentry(self):
         agent, r04, context, calls = self.fixture()
@@ -131,23 +134,43 @@ class RetrySafeR04(unittest.TestCase):
         self.assertEqual(again["market"], [["SELL", "WOOL", 7]])
         self.assertEqual(len(calls), 2)
 
-    def test_changed_same_step_rejects_before_donor_mutation(self):
+    def test_changed_same_step_returns_legal_pass_without_donor_mutation(self):
         agent, r04, context, calls = self.fixture()
         agent.act({"player": 0, "step": 144})
         agent.act({"player": 0, "step": 145, "tag": "a"})
-        before = deepcopy(r04._POLICY.players[0].__dict__)
-        with self.assertRaisesRegex(RuntimeError, "changed same-step"):
-            agent.act({"player": 0, "step": 145, "tag": "b"})
-        self.assertEqual(r04._POLICY.players[0].__dict__, before)
+        state = r04._POLICY.players[0]
+        before = deepcopy(state.__dict__)
+        returned = agent.act({"player": 0, "step": 145, "tag": "b"})
+        self.assertEqual(returned, {"farmer": ["PASS"], "hands": [], "market": []})
+        self.assertEqual(state.__dict__, before)
         self.assertEqual(len(calls), 2)
+        continued = agent.act({"player": 0, "step": 146, "tag": "c"})
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(state.plan, 7)
+        self.assertEqual(state.last_step, 146)
+        self.assertEqual(state.queue[-1], (146, "c"))
+        self.assertEqual(continued["market"], [["SELL", "WOOL", 7]])
 
-    def test_configuration_change_same_step_rejects(self):
+    def test_configuration_change_same_step_returns_legal_pass(self):
         agent, r04, context, calls = self.fixture()
         obs = {"player": 0, "step": 144}
         agent.act(obs)
+        before = deepcopy(r04._POLICY.players[0].__dict__)
         context.configuration = {"turnsPerDay": 12}
-        with self.assertRaisesRegex(RuntimeError, "changed same-step"):
-            agent.act(obs)
+        returned = agent.act(obs)
+        self.assertEqual(returned, {"farmer": ["PASS"], "hands": [], "market": []})
+        self.assertEqual(r04._POLICY.players[0].__dict__, before)
+        self.assertEqual(len(calls), 1)
+
+    def test_same_step_internal_state_drift_returns_legal_pass(self):
+        agent, r04, context, calls = self.fixture()
+        obs = {"player": 0, "step": 144}
+        agent.act(obs)
+        r04._POLICY.players[0].last_step = 143
+        before = deepcopy(r04._POLICY.players[0].__dict__)
+        returned = agent.act(obs)
+        self.assertEqual(returned, {"farmer": ["PASS"], "hands": [], "market": []})
+        self.assertEqual(r04._POLICY.players[0].__dict__, before)
         self.assertEqual(len(calls), 1)
 
     def test_backward_step_delegates_to_donor_reset(self):
