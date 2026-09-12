@@ -83,6 +83,22 @@ def write_private_runtime_bytes(raw: bytes, path: Path, expected: str) -> Path:
     return path
 
 
+def require_private_execution_path(path: Path, private_root: Path, public_output: Path) -> Path:
+    """Fail closed unless an executable leaf resolves inside the private panel runtime."""
+    resolved = Path(path).resolve()
+    private = Path(private_root).resolve()
+    public = Path(public_output).resolve()
+    try:
+        resolved.relative_to(private)
+    except ValueError as exc:
+        raise ValueError(f"Execution leaf escaped private runtime: {resolved}") from exc
+    try:
+        resolved.relative_to(public)
+    except ValueError:
+        return resolved
+    raise ValueError(f"Execution leaf must not originate from caller-visible output: {resolved}")
+
+
 def margin(game: dict, seat: int):
     if game.get("status") != "complete" or game.get("steps") != 719:
         return None
@@ -221,12 +237,21 @@ def main() -> int:
         snapshot_root = output / ".harness-snapshot"
         shutil.copytree(runtime_snapshot, snapshot_root)
 
+        # Every executable leaf is generated and retained under the private panel
+        # runtime. Caller-visible output is evidence only, never an execution root.
+        leaf_root = private_root / "execution-leaves"
+        opponent_root = leaf_root / "opponents"
+        game_root = leaf_root / "games"
+        opponent_root.mkdir(parents=True, exist_ok=False)
+        game_root.mkdir(parents=True, exist_ok=False)
+
         runtime = {}
+        opponent_adapters = {}
         opponent_receipts = {}
         expected_bridge = harness["repository_files"][helper.BANK + "/reference_policies.py"]["sha256"]
         expected_registry = harness["repository_files"][helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
         for opponent in opponents:
-            runtime[opponent] = output / "opponents" / opponent
+            runtime[opponent] = opponent_root / opponent
             receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
             if (receipt.get("bridge_sha256") != expected_bridge
                     or receipt.get("source_registry_sha256") != expected_registry
@@ -234,6 +259,12 @@ def main() -> int:
                 raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
             if Path(receipt.get("support_root", "")).resolve(strict=True) != runtime_snapshot:
                 raise ValueError(f"Opponent did not bind private runtime snapshot: {opponent}")
+            adapter = require_private_execution_path(
+                runtime[opponent] / "adapter.py", private_root, output
+            )
+            if not adapter.is_file() or adapter.is_symlink():
+                raise ValueError(f"Opponent adapter must be an ordinary private file: {opponent}")
+            opponent_adapters[opponent] = adapter
             opponent_receipts[opponent] = receipt
 
         run = {
@@ -259,6 +290,7 @@ def main() -> int:
                 "pack_sha256": hashlib.sha256(pack_raw).hexdigest(),
                 "bridge_sha256": hashlib.sha256(bridge_raw).hexdigest(),
                 "loader_sha256": hashlib.sha256(loader_raw).hexdigest(),
+                "leaf_execution": "opponent + per-game candidate adapters/payloads private for full execution lifetime",
                 "public_snapshot": ".harness-snapshot (evidence only; never executed)",
             },
             "harness": harness,
@@ -292,13 +324,21 @@ def main() -> int:
                         "margin_delta": None,
                     }
                     for arm in order:
-                        with tempfile.TemporaryDirectory(prefix=f"{cell_id}-{arm}-", dir=output) as temp:
+                        with tempfile.TemporaryDirectory(prefix=f"{cell_id}-{arm}-", dir=game_root) as temp:
                             directory = Path(temp)
                             payload = directory / "payload"
                             helper.extract_members(arm_payloads[arm], payload)
+                            candidate_main = require_private_execution_path(
+                                payload / "main.py", private_root, output
+                            )
+                            if not candidate_main.is_file() or candidate_main.is_symlink():
+                                raise ValueError("Candidate main.py must be an ordinary private file")
                             adapter = directory / "adapter.py"
-                            pack.write_adapter(adapter, payload / "main.py")
-                            rival = str(runtime[opponent] / "adapter.py")
+                            pack.write_adapter(adapter, candidate_main)
+                            adapter = require_private_execution_path(adapter, private_root, output)
+                            if not adapter.is_file() or adapter.is_symlink():
+                                raise ValueError("Candidate adapter must be an ordinary private file")
+                            rival = str(opponent_adapters[opponent])
                             specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
                             engine, _ = evaluator.get_engine(engine_dir, loader)
                             game = evaluator.play(
