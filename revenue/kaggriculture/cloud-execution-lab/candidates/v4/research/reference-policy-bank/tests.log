@@ -1,0 +1,20 @@
+test_body_typeerror_is_not_retried_or_converted_to_pass (__main__.ExistingActorIntegration.test_body_typeerror_is_not_retried_or_converted_to_pass) ... ok
+test_fresh_process_globals_rng_and_working_directory (__main__.ExistingActorIntegration.test_fresh_process_globals_rng_and_working_directory) ... ok
+test_import_is_inside_first_timed_action (__main__.ExistingActorIntegration.test_import_is_inside_first_timed_action) ... ok
+test_network_guard_installed_before_policy_load (__main__.ExistingActorIntegration.test_network_guard_installed_before_policy_load) ... ok
+test_non_json_action_is_failure (__main__.ExistingActorIntegration.test_non_json_action_is_failure) ... ok
+test_official_last_callable_and_one_argument_contract (__main__.ExistingActorIntegration.test_official_last_callable_and_one_argument_contract) ... ok
+test_preparation_and_runtime_pin_enforcement (__main__.ExistingActorIntegration.test_preparation_and_runtime_pin_enforcement) ... ok
+test_private_observation_and_configuration_cannot_mutate_parent (__main__.ExistingActorIntegration.test_private_observation_and_configuration_cannot_mutate_parent) ... ok
+test_seed_seat_and_step_boundary (__main__.ExistingActorIntegration.test_seed_seat_and_step_boundary) ... ok
+test_support_pin_enforcement (__main__.ExistingActorIntegration.test_support_pin_enforcement) ... ok
+test_timeout_terminates_actor_no_pass (__main__.ExistingActorIntegration.test_timeout_terminates_actor_no_pass) ... ok
+test_empty_or_missing_closure_rejected (__main__.FilePins.test_empty_or_missing_closure_rejected) ... ok
+test_escape_absolute_and_symlink_rejected (__main__.FilePins.test_escape_absolute_and_symlink_rejected) ... ok
+test_exact_bytes_and_changed_source (__main__.FilePins.test_exact_bytes_and_changed_source) ... ok
+test_timeout_and_rng_validation_precede_files (__main__.FilePins.test_timeout_and_rng_validation_precede_files) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 6.275s
+
+OK
