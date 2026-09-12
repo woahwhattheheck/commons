@@ -52,6 +52,15 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             ENGINE_GIT_BLOBS=engine_pins,
         ), patch.object(k, 'BASE_MECHANICS_BLOB', k.git_blob(files['mechanics.py']))
 
+    def probe_args(self, root: Path, output: Path, expected_runner: str, digest: str):
+        return [
+            '--native-root', str(root / 'unused-native-root'),
+            '--output', str(output),
+            '--expected-runner-git-blob', expected_runner,
+            '--control-probe',
+            '--expected-control-bundle-sha256', digest,
+        ]
+
     def test_path_replacement_after_capture_cannot_change_materialized_execution_bytes(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d) / 'root'; root.mkdir()
@@ -122,9 +131,6 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             captured, digest = k.capture_control_bundle(mutable, expected_runner)
             self.assertEqual(original, captured)
 
-            # Source-real predecessor closures: after good capture, neither the
-            # repository path nor an attacker-created scratch path is execution
-            # authority. The child source comes only from captured bytes on stdin.
             (mutable / 'run_kinetic_games.py').write_text(
                 'raise SystemExit("MUTATED REPO RUNNER EXECUTED")\n'
             )
@@ -137,18 +143,10 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                 'raise SystemExit("MUTATED SCRATCH RUNNER EXECUTED")\n'
             )
             output = base / 'probe.json'
-            runner_args = [
-                '--native-root', str(base / 'unused-native-root'),
-                '--output', str(output),
-                '--expected-runner-git-blob', expected_runner,
-                '--control-probe',
-                '--expected-control-bundle-sha256', digest,
-            ]
             proc = k.run_captured_runner(
                 captured['run_kinetic_games.py'],
                 expected_runner,
-                runner_args,
-                python_flags=['-B'],
+                self.probe_args(base, output, expected_runner, digest),
                 timeout=20,
             )
             stderr = proc.stderr.decode('utf-8', errors='replace')
@@ -162,8 +160,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                 k.run_captured_runner(
                     (mutable / 'run_kinetic_games.py').read_bytes(),
                     expected_runner,
-                    runner_args,
-                    python_flags=['-B'],
+                    self.probe_args(base, output, expected_runner, digest),
                     timeout=20,
                 )
 
@@ -248,7 +245,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             proc = subprocess.run(
                 [
                     sys.executable,
-                    '-B',
+                    '-I', '-S', '-B',
                     str(root / 'run_kinetic_games.py'),
                     '--native-root', str(root / 'unused-native-root'),
                     '--output', str(output),
@@ -263,6 +260,40 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             self.assertNotEqual(proc.returncode, 0)
             self.assertIn('not launched from authenticated captured bytes', proc.stderr)
             self.assertFalse(output.exists())
+
+    def test_hostile_pythonpath_sitecustomize_cannot_run_before_child_bootstrap(self):
+        with tempfile.TemporaryDirectory() as d:
+            base = Path(d)
+            control = base / 'control'; control.mkdir()
+            original = self.control_fixture(control)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
+            captured, digest = k.capture_control_bundle(control, expected_runner)
+            hostile = base / 'hostile'; hostile.mkdir()
+            marker = base / 'sitecustomize-executed'
+            (hostile / 'sitecustomize.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("EXECUTED")\n'
+                'raise RuntimeError("hostile sitecustomize executed")\n'
+            )
+            output = base / 'probe.json'
+            with patch.dict(k.os.environ, {
+                'PYTHONPATH': str(hostile),
+                'PYTHONSTARTUP': str(hostile / 'sitecustomize.py'),
+                'PYTHONINSPECT': '1',
+            }, clear=False):
+                proc = k.run_captured_runner(
+                    captured['run_kinetic_games.py'],
+                    expected_runner,
+                    self.probe_args(base, output, expected_runner, digest),
+                    optimized=True,
+                    timeout=20,
+                )
+            stderr = proc.stderr.decode('utf-8', errors='replace')
+            self.assertEqual(proc.returncode, 0, stderr)
+            self.assertFalse(marker.exists(), stderr)
+            receipt = json.loads(output.read_text())
+            self.assertIs(receipt['runner_executed_from_captured_bytes'], True)
+            self.assertEqual(receipt['executed_control_runner_blob'], expected_runner)
 
 
 if __name__ == '__main__':
