@@ -13,7 +13,9 @@ sys.modules[SPEC.name] = mod
 SPEC.loader.exec_module(mod)
 
 
-def obs(*, hour=0, hands=0, empty=25, player=0):
+def obs(*, hour=0, step=None, hands=0, empty=25, player=0):
+    if step is None:
+        step = hour
     side = 5
     cells = [None] * empty + ["LOCKED"] * (side * side - empty)
     rows = [cells[i:i + side] for i in range(0, len(cells), side)]
@@ -22,7 +24,7 @@ def obs(*, hour=0, hands=0, empty=25, player=0):
         "hands": [[2, 2] for _ in range(hands)],
         "tiles": rows,
     }
-    return {"player": player, "hour": hour, "farms": [farm]}
+    return {"player": player, "hour": hour, "step": step, "farms": [farm]}
 
 
 class CapacityTests(unittest.TestCase):
@@ -46,6 +48,7 @@ class CapacityTests(unittest.TestCase):
         e = mod.capacity_envelope(
             obs(hour=22, hands=0),
             {"turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            configuration_authenticated=True,
         )
         self.assertEqual(e.current_labor_action_slots, 2)
         self.assertEqual(e.current_labor_ceiling, 1)
@@ -84,6 +87,7 @@ class CapacityTests(unittest.TestCase):
         e = mod.capacity_envelope(
             obs(hour=4, hands=1),
             {"turnsPerDay": 8, "maxMarketOrdersPerTurn": 2},
+            configuration_authenticated=True,
         )
         self.assertEqual(e.callbacks_remaining, 4)
         self.assertEqual(e.current_labor_action_slots, 8)
@@ -139,16 +143,91 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaises(mod.CapacityInputError):
             mod.capacity_envelope(obs(hour=24))
 
+    def test_terminal_partial_day_does_not_require_phantom_water(self):
+        # Standard episodeSteps=720 makes step 718 the final executable callback.
+        # Starting the final day at step 696 leaves 23 executable callbacks but
+        # no hour-23 EOD. Thirteen one-action PLANTs are therefore not impossible
+        # by action count even though the old PLANT+WATER theorem capped at 12.
+        result = mod.assess_proposed_expansion(
+            obs(hour=0, step=696, hands=0), 13, no_future_hires=True
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["ceiling"], 23)
+        self.assertEqual(result["envelope"]["callbacks_remaining"], 23)
+        self.assertFalse(result["envelope"]["eod_reachable_before_terminal"])
+        self.assertEqual(
+            result["envelope"]["unit_actions_per_surviving_new_plant"], 1
+        )
+
+    def test_last_real_eod_keeps_two_action_charge(self):
+        result = mod.assess_proposed_expansion(
+            obs(hour=23, step=695, hands=0), 1, no_future_hires=True
+        )
+        self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
+        self.assertEqual(result["ceiling"], 0)
+        self.assertTrue(result["envelope"]["eod_reachable_before_terminal"])
+        self.assertEqual(
+            result["envelope"]["unit_actions_per_surviving_new_plant"], 2
+        )
+
+    def test_after_final_executable_callback_refused(self):
+        with self.assertRaisesRegex(
+            mod.CapacityInputError, "^step_after_final_executable_callback$"
+        ):
+            mod.capacity_envelope(obs(hour=23, step=719))
+
+    def test_hour_step_mismatch_refused(self):
+        with self.assertRaisesRegex(mod.CapacityInputError, "^hour_step_mismatch$"):
+            mod.capacity_envelope(obs(hour=23, step=22))
+
     def test_inputs_not_mutated(self):
         o = obs(hour=7, hands=2)
         before = copy.deepcopy(o)
         mod.assess_proposed_expansion(o, 3)
         self.assertEqual(o, before)
 
-    def test_engine_and_donor_identity_exposed(self):
+    def test_engine_config_and_donor_identity_exposed(self):
         r = mod.assess_proposed_expansion(obs(), 1)
         self.assertEqual(r["engine_git_blob"], "3c202c7ee921da239356789e266b694635103fc4")
+        self.assertEqual(
+            r["configuration_git_blob"],
+            "b354d06b742fe48402513792253f1a5c29366b20",
+        )
         self.assertEqual(r["historical_donor_pr"], 9806)
+
+    def test_explicit_configuration_requires_authentication_for_envelope(self):
+        with self.assertRaisesRegex(
+            mod.CapacityInputError, "^configuration_not_authenticated$"
+        ):
+            mod.capacity_envelope(
+                obs(hour=0),
+                {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+            )
+
+    def test_unauthenticated_custom_config_cannot_certify_impossibility(self):
+        # With trusted turnsPerDay=1, one actor has only one unit slot and
+        # proposal 1 exceeds the zero-plant PLANT+WATER ceiling. Without custody,
+        # those caller values cannot be allowed to manufacture IMPOSSIBLE.
+        result = mod.assess_proposed_expansion(
+            obs(hour=0),
+            1,
+            {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "configuration_not_authenticated")
+        self.assertIsNone(result["ceiling"])
+        self.assertIsNone(result["envelope"])
+
+    def test_authenticated_custom_config_can_certify_exact_bound(self):
+        result = mod.assess_proposed_expansion(
+            obs(hour=0),
+            1,
+            {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+            configuration_authenticated=True,
+        )
+        self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
+        self.assertEqual(result["ceiling"], 0)
+        self.assertEqual(result["envelope"]["turns_per_day"], 1)
 
 
 if __name__ == "__main__":

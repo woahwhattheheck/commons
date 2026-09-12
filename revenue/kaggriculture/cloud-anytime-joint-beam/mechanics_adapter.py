@@ -8,7 +8,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import copy
-from typing import Any, Callable, Iterable, Mapping
+import json
+from typing import Any, Callable, Hashable, Iterable, Mapping
 
 from joint_action_beam import Action, State
 
@@ -149,7 +150,11 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
     """
     def transition(state: State, idx: int, action: Action) -> State | None:
         # idx==0 starts a fresh worker tuple, which also permits callers to reuse
-        # a prior successor as the initial state of a later turn.
+        # a prior successor as the initial state of a later turn. A pruned idx==0
+        # call drops any surviving prefix metadata from the input state: the
+        # metadata can only describe a previous turn, and the prune yields no
+        # successor to overwrite it, so leaving it would make a later idx>0
+        # call on the same state raise on the stale prefix.
         metadata = None if idx == 0 else state.get(_TRANSITION_META_KEY)
         crop = _plant_crop(action)
         op = action[0] if isinstance(action, list) and action else None
@@ -171,6 +176,17 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
             )
             changed = farm != state["farm"] or private != state["private"]
             if not changed and op != "PASS":
+                if idx == 0:
+                    # A fresh worker tuple starts here, so any prefix metadata
+                    # still present must be stale: the caller reused a successor
+                    # from a previous turn (documented multi-turn use). This
+                    # pruned call produces no successor to overwrite it, so
+                    # drop the stale key from the input state now; otherwise a
+                    # later idx>0 call on the same state (the beam continues
+                    # canonical prunes on the unchanged state) would read the
+                    # stale prefix and raise. The key is internal to one beam
+                    # search and ignored by the scorer.
+                    state.pop(_TRANSITION_META_KEY, None)
                 return None
             out = dict(state)
             out["farm"] = farm
@@ -255,6 +271,12 @@ def mechanics_transition(mechanics: Any, context: MechanicsContext) -> Callable[
             and op not in ("PASS", "PLANT")
             and not rollback_sensitive_noop
         ):
+            if idx == 0:
+                # Same stale-metadata drop as the fast path above: idx==0
+                # starts a fresh worker tuple, so surviving prefix metadata is
+                # from a previous turn and this pruned call yields no successor
+                # to overwrite it.
+                state.pop(_TRANSITION_META_KEY, None)
             return None
 
         out = dict(state)
@@ -454,3 +476,86 @@ def mechanics_scorer(mechanics: Any, context: ScoreContext = ScoreContext()) -> 
             + w.obligations * c["obligations"]
         )
     return score
+
+
+def _canonical_transition_metadata(metadata: tuple) -> list:
+    """Render replay metadata deterministically for state keys.
+
+    The metadata tuple carries a frozenset of blocked crops and a demand
+    mapping; both need canonical ordering so equal game situations hash equal
+    regardless of insertion order.
+    """
+    origin_farm, origin_private, start_idx, actions, demand, blocked = metadata
+    return [
+        origin_farm,
+        origin_private,
+        start_idx,
+        list(actions),
+        sorted((str(crop), int(n)) for crop, n in dict(demand).items()),
+        sorted(str(crop) for crop in blocked),
+    ]
+
+
+def _stable_state_key(state: State) -> str:
+    """Stable hashable identity of a successor state.
+
+    Provider-internal replay metadata (``_TRANSITION_META_KEY``) is included:
+    two states with equal keys behave identically under future transitions of
+    this provider. Unserializable leaves fall back to ``repr``.
+    """
+    if isinstance(state, dict):
+        metadata = state.get(_TRANSITION_META_KEY)
+        game = {key: value for key, value in state.items() if key != _TRANSITION_META_KEY}
+        payload = [
+            game,
+            _canonical_transition_metadata(metadata) if metadata is not None else None,
+        ]
+    else:
+        payload = state
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"), default=repr)
+
+
+class KaggricultureRules:
+    """MechanicsProvider: the Kaggriculture worker-phase rules behind the interface.
+
+    This is the same interpreter-faithful transition and bounded candidate
+    family as the module-level functions; the class only adapts them to the
+    game-agnostic protocol in ``game_rules`` so the beam core and any future
+    title can share one search path.
+    """
+
+    def __init__(self, mechanics: Any, context: MechanicsContext):
+        self._mechanics = mechanics
+        self._context = context
+        self._transition = mechanics_transition(mechanics, context)
+
+    @property
+    def mechanics(self) -> Any:
+        return self._mechanics
+
+    @property
+    def context(self) -> MechanicsContext:
+        return self._context
+
+    def legal_actions(
+        self, state: State, idx: int, canonical: Action
+    ) -> Iterable[Action]:
+        return bounded_worker_candidates(self._mechanics, state, idx, canonical)
+
+    def transition(
+        self, state: State, idx: int, action: Action
+    ) -> State | None:
+        return self._transition(state, idx, action)
+
+    def state_key(self, state: State) -> Hashable:
+        return _stable_state_key(state)
+
+
+class KaggricultureScorer:
+    """Scorer: bounded worker-state economics behind the evaluator interface."""
+
+    def __init__(self, mechanics: Any, context: ScoreContext = ScoreContext()):
+        self._score = mechanics_scorer(mechanics, context)
+
+    def __call__(self, state: State, actions: tuple[Action, ...]) -> int:
+        return self._score(state, actions)

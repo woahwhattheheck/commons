@@ -197,7 +197,10 @@ class RowShedSellOrderTests(unittest.TestCase):
             inventory = {}
             for _ in range(count):
                 item = rng.choice(PRODUCTS)
-                quantity = rng.randint(0, 1200)
+                # Zero-unit SELL is engine-dead in V4 and intentionally outside
+                # this historical parity domain; its barrier contract is tested
+                # separately in test_row_shed_market_prefix.py.
+                quantity = rng.randint(1, 1200)
                 block.append(["SELL", item, quantity])
                 shed[item] = rng.randint(0, 25)
                 inventory[item] = rng.randint(9500, 10600)

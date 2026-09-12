@@ -279,9 +279,9 @@ def _capacity_safe(private, commands, actor_tiles, candidate_indices):
     return shed_total + carried_total + inflow <= _STANDARD_CONFIGURATION["shedCapacity"]
 
 
-def apply_dead_water_harvest(observation, action, configuration=None, enabled=True):
+def apply_dead_water_harvest(observation, action, configuration=None, enabled=False):
     """Recover same-tile HARVESTs; return the original object when unchanged."""
-    if not enabled:
+    if enabled is not True:
         return action
     try:
         if not _standard_configuration(configuration):

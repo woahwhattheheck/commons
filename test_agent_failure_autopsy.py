@@ -366,6 +366,24 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         result = FULFILLMENT.validate_report(report, intake)
         self.assertEqual(result["disposition"], "REFUND_REQUIRED")
 
+    def test_deadline_cli_stamps_offer_cash(self):
+        """Landed fulfillment.py deadline CLI stamps amount_usd + refund."""
+        import io
+        import contextlib
+        stamp = "2026-09-04T15:00:00-04:00"
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = FULFILLMENT.main(["deadline", "--usable-evidence-at", stamp])
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertEqual(out["usable_evidence_at"], stamp)
+        self.assertEqual(out["delivery_due_at"], "2026-09-07T15:00:00-04:00")
+        self.assertEqual(out["amount_usd"], 29)
+        self.assertIn("refund usd 29", str(out["refund"]).lower())
+        blob = json.dumps(out)
+        for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+            self.assertNotIn(forbidden, blob)
+
 
 if __name__ == "__main__":
     unittest.main()

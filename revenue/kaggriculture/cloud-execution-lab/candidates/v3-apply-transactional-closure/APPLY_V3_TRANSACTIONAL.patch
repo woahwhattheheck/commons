@@ -1,0 +1,231 @@
+--- a/candidates/v3/apply_v3.py
++++ b/candidates/v3/apply_v3.py
+@@ -19,7 +19,9 @@
+ import io
+ import json
+ import os
++import stat
+ import sys
++import tempfile
+ 
+ PARAMS = {
+     "rival_dump_price_drop": 15.0,
+@@ -183,15 +185,49 @@
+     return text.replace(old, new)
+ 
+ 
+-def apply(src):
+-    def read(name):
+-        return io.open(os.path.join(src, name), encoding="utf-8", newline="").read()
++TARGET_FILES = (
++    "titan_runtime.py",
++    "scheduler.py",
++    "frozen_selected.py",
++    "TITAN-CONFIG.json",
++    "TITAN-RELEASE.md",
++)
++
++
++class ApplyTransactionError(RuntimeError):
++    """A commit failed and one or more original files could not be restored."""
+ 
+-    def write(name, text):
+-        with io.open(os.path.join(src, name), "w", encoding="utf-8", newline="") as handle:
+-            handle.write(text)
+ 
+-    runtime = read("titan_runtime.py")
++def _load_source_set(src):
++    """Read and validate the complete five-file input set before rendering.
++
++    The canonical integration operation is deliberately limited to regular files.
++    Replacing a symlink would mutate a different ownership boundary than the package
++    tree named by ``src``.
++    """
++    source = {}
++    modes = {}
++    for name in TARGET_FILES:
++        path = os.path.join(src, name)
++        info = os.lstat(path)
++        if not stat.S_ISREG(info.st_mode):
++            raise ValueError("%s: expected a regular file" % name)
++        with open(path, "rb") as handle:
++            raw = handle.read()
++        try:
++            text = raw.decode("utf-8")
++        except UnicodeDecodeError as error:
++            raise ValueError("%s: expected UTF-8 source" % name) from error
++        source[name] = (raw, text)
++        modes[name] = stat.S_IMODE(info.st_mode)
++    return source, modes
++
++
++def _render_source_set(source):
++    """Return every edited file in memory; no package byte is mutated here."""
++    rendered = {name: pair[1] for name, pair in source.items()}
++
++    runtime = rendered["titan_runtime.py"]
+     runtime = _replace_once(runtime, "\n\n    def __post_init__(self):", "\n" + FIELDS + "\n    def __post_init__(self):", "Features fields")
+     runtime = _replace_once(
+         runtime,
+@@ -226,9 +262,9 @@
+         "l01 install seam",
+     )
+     runtime = _replace_once(runtime, "    __call__ = act\n", RUNTIME_METHODS + "    __call__ = act\n", "v3 methods")
+-    write("titan_runtime.py", runtime)
++    rendered["titan_runtime.py"] = runtime
+ 
+-    sched = read("scheduler.py")
++    sched = rendered["scheduler.py"]
+     sched = _replace_once(sched, "    def act(self, obs, config=None):\n", SELLER_METHOD + "    def act(self, obs, config=None):\n", "scheduler method")
+     sched = _replace_once(
+         sched,
+@@ -236,9 +272,9 @@
+         "        out['market']=market\n        out=self._v3_e11_before_pending(obs,config,out,now)\n        for item,q in targets.items():\n",
+         "scheduler pre-pending seam",
+     )
+-    write("scheduler.py", sched)
++    rendered["scheduler.py"] = sched
+ 
+-    frozen = read("frozen_selected.py")
++    frozen = rendered["frozen_selected.py"]
+     frozen = _replace_once(
+         frozen,
+         "        if funding is not None:self.diagnostics['same_turn_funding']=funding\n        for item,q in targets.items():\n",
+@@ -247,20 +283,129 @@
+         "        for item,q in targets.items():\n",
+         "frozen pre-pending seam",
+     )
+-    write("frozen_selected.py", frozen)
++    rendered["frozen_selected.py"] = frozen
+ 
+-    cfg_path = os.path.join(src, "TITAN-CONFIG.json")
+-    data = json.loads(io.open(cfg_path, encoding="utf-8").read())
++    data = json.loads(rendered["TITAN-CONFIG.json"])
+     for key in ("e11_rival_sell", "rival_model", "e20_hire_guard") + L01_KEYS:
+-        assert key not in data, key
++        if key in data:
++            raise AssertionError(key)
+         data[key] = False
+     for key, value in PARAMS.items():
+-        assert key not in data, key
++        if key in data:
++            raise AssertionError(key)
+         data[key] = value
+-    with io.open(cfg_path, "w", encoding="utf-8", newline="\n") as handle:
+-        handle.write(json.dumps(data, indent=2) + "\n")
++    rendered["TITAN-CONFIG.json"] = json.dumps(data, indent=2) + "\n"
++    rendered["TITAN-RELEASE.md"] = rendered["TITAN-RELEASE.md"] + RELEASE_NOTE
++    return rendered
++
++
++def _temp_file(path, payload, mode, role):
++    """Durably stage one file beside its target and return the temporary path."""
++    directory = os.path.dirname(path) or "."
++    prefix = ".%s.v3-%s-" % (os.path.basename(path), role)
++    fd, temporary = tempfile.mkstemp(prefix=prefix, dir=directory)
++    try:
++        os.fchmod(fd, mode)
++        with os.fdopen(fd, "wb") as handle:
++            handle.write(payload)
++            handle.flush()
++            os.fsync(handle.fileno())
++    except BaseException:
++        try:
++            os.close(fd)
++        except OSError:
++            pass
++        try:
++            os.unlink(temporary)
++        except OSError:
++            pass
++        raise
++    return temporary
++
++
++def _unlink(path):
++    if not path:
++        return
++    try:
++        os.unlink(path)
++    except FileNotFoundError:
++        pass
++
++
++def _fsync_directory(path):
++    """Best-effort directory durability; unsupported platforms remain functional."""
++    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
++    try:
++        fd = os.open(path or ".", flags)
++    except OSError:
++        return
++    try:
++        os.fsync(fd)
++    except OSError:
++        pass
++    finally:
++        os.close(fd)
++
++
++def _commit_source_set(src, source, modes, rendered):
++    """Replace all five files, restoring exact originals after any BaseException.
++
++    Stages and backups are created before the first replacement. A process crash can
++    still interrupt a portable multi-file transaction, but every synchronous failure
++    (including KeyboardInterrupt/SystemExit) is rollback-safe and leaves recovery
++    bytes on disk if rollback itself cannot complete.
++    """
++    staged = {}
++    backups = {}
++    committed = []
++    directories = set()
++    try:
++        for name in TARGET_FILES:
++            target = os.path.join(src, name)
++            directories.add(os.path.dirname(target) or ".")
++            staged[name] = _temp_file(target, rendered[name].encode("utf-8"), modes[name], "stage")
++            backups[name] = _temp_file(target, source[name][0], modes[name], "backup")
++
++        for name in TARGET_FILES:
++            target = os.path.join(src, name)
++            os.replace(staged[name], target)
++            staged[name] = None
++            committed.append(name)
++        for directory in directories:
++            _fsync_directory(directory)
++    except BaseException as commit_error:
++        rollback_errors = []
++        for name in reversed(committed):
++            target = os.path.join(src, name)
++            try:
++                os.replace(backups[name], target)
++                backups[name] = None
++            except BaseException as rollback_error:
++                rollback_errors.append((name, rollback_error))
++        for directory in directories:
++            _fsync_directory(directory)
++        for path in staged.values():
++            _unlink(path)
++        # Keep any backup that could not be restored as an explicit recovery artifact.
++        for name, path in backups.items():
++            if name not in {failed_name for failed_name, _ in rollback_errors}:
++                _unlink(path)
++        if rollback_errors:
++            details = ", ".join("%s:%s" % (name, type(error).__name__) for name, error in rollback_errors)
++            raise ApplyTransactionError("commit failed and rollback was incomplete: " + details) from commit_error
++        raise
++    else:
++        for path in backups.values():
++            _unlink(path)
++        for path in staged.values():
++            _unlink(path)
+ 
+-    write("TITAN-RELEASE.md", read("TITAN-RELEASE.md") + RELEASE_NOTE)
++
++def apply(src):
++    """Validate, render, and transactionally install the V3 five-file edit set."""
++    source, modes = _load_source_set(src)
++    rendered = _render_source_set(source)
++    _commit_source_set(src, source, modes, rendered)
+     return src
+ 
+ 

@@ -8,7 +8,8 @@ controller, scheduler, config key, runtime entrypoint, archive or release.
 
 Default custody is the authenticated LOOM-5 CAPTRACE+LIVEPATH frozen postimage.
 A different whole-file input may be supplied only explicitly for reproduction;
-the method-level source pin remains mandatory in every case.
+the method-level source pin remains mandatory and the receipt binds the actual
+authenticated whole-file input rather than claiming canonical predecessor bytes.
 """
 from __future__ import annotations
 
@@ -18,8 +19,8 @@ import hashlib
 import json
 from pathlib import Path
 
-ROW_SHED_SOURCE_BLOB = "9df048a4ba866d154861b6885f59502cf9e01cae"
-ROW_SHED_SOURCE_SHA256 = "ebde4930a46f4bc582fcf5b0f039138d0d91d3686ee114e2266a79d72461bb23"
+ROW_SHED_SOURCE_BLOB = "5d3f1137a300480f6574accd9ccdfb3e11e431cf"
+ROW_SHED_SOURCE_SHA256 = "e0460c91db6ad2487778f18dcec4b2ee41a53b833eaa0831425a56fd07d0fc42"
 GRAPH_PREDECESSOR_FROZEN_BLOB = "4a5d3d5f4bed04acf73c7339e41fed56badf34c9"
 GRAPH_PREDECESSOR_FROZEN_SHA256 = "4dc1de418632edd0a0bb66b9b01ab267c73225badabf0b62b5dee81d50233c5e"
 METHOD_BEFORE_SHA256 = "593ef59a03a3e9a54d001ab12edc7c11ca0c803f20759f5b51b2c82d036457ea"
@@ -106,10 +107,15 @@ def main() -> None:
     frozen_path = args.package / "frozen_selected.py"
     frozen = frozen_path.read_bytes()
     input_blob = git_blob(frozen)
+    input_sha256 = hashlib.sha256(frozen).hexdigest()
     if input_blob != args.frozen_blob:
         raise SystemExit(f"frozen_selected.py input blob {input_blob} != explicit pin {args.frozen_blob}")
 
     changed = compose_frozen(frozen.decode("utf-8")).encode("utf-8")
+    canonical_graph_input = (
+        input_blob == GRAPH_PREDECESSOR_FROZEN_BLOB
+        and input_sha256 == GRAPH_PREDECESSOR_FROZEN_SHA256
+    )
     receipt = {
         "schema": "titan-v4-row-shed-composition/v1",
         "scope": "current-selected-sell-row-order-only",
@@ -123,8 +129,14 @@ def main() -> None:
         },
         "graph_predecessor": {
             "surface": "frozen_selected.py",
+            "git_blob": input_blob,
+            "sha256": input_sha256,
+        },
+        "canonical_graph_predecessor": {
+            "surface": "frozen_selected.py",
             "git_blob": GRAPH_PREDECESSOR_FROZEN_BLOB,
             "sha256": GRAPH_PREDECESSOR_FROZEN_SHA256,
+            "matches_input": canonical_graph_input,
         },
         "materialization": {
             "input_git_blob": input_blob,
@@ -140,6 +152,7 @@ def main() -> None:
         ],
         "limitations": [
             "source composition only",
+            "noncanonical explicit reproduction inputs are receipt-bound but are not canonical graph evidence",
             "default graph predecessor must still be materialized by the sole graph runner",
             "no official-engine/full-game activation evidence is claimed",
         ],

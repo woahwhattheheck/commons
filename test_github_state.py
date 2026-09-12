@@ -145,8 +145,10 @@ class TestTimeIsNotBakedIn(unittest.TestCase):
     def test_a_malformed_creation_is_listed_but_never_ordered(self):
         rows = pulls(2) + [{"number": 999, "title": "broken clock",
                             "user": {"login": "a"}, "created_at": "whenever"}]
-        payload = github_state.build(rows, COUNTS, "2026-09-10T21:00:00Z",
-                                     complete=True)
+        # The count matches the listing, so coverage is COMPLETE and
+        # longest_open exists; the case under test is ordering, not coverage.
+        payload = github_state.build(rows, dict(COUNTS, open_prs=3),
+                                     "2026-09-10T21:00:00Z", complete=True)
         self.assertEqual(payload["pulls_listed"], 3)
         self.assertEqual(payload["undatable_pulls"], [999])
         self.assertNotIn(999, [p["number"] for p in payload["newest_pulls"]])

@@ -70,22 +70,182 @@ def _valid_observation(obs: Any) -> bool:
         player = obs["player"]
         farms = obs["farms"]
         private = obs["private"]
+        if type(player) is not int or player not in (0, 1):
+            return False
+        if not isinstance(farms, list) or len(farms) != 2:
+            return False
+        if not isinstance(private, dict):
+            return False
         farm = farms[player]
+        if not isinstance(farm, dict):
+            return False
         tiles = farm["tiles"]
         inventories = private["inventories"]
     except (KeyError, IndexError, TypeError):
         return False
-    if type(player) is not int or player not in (0, 1) or len(farms) != 2:
+    if not isinstance(tiles, list) or len(tiles) != 10:
         return False
-    if len(tiles) != 10 or any(not isinstance(row, list) or len(row) != 10 for row in tiles):
+    if any(not isinstance(row, list) or len(row) != 10 for row in tiles):
         return False
-    positions = [farm.get("farmer"), *(farm.get("hands") or [])]
+    hands = farm.get("hands")
+    if not isinstance(hands, list) or not isinstance(inventories, list):
+        return False
+    positions = [farm.get("farmer"), *hands]
     if len(inventories) != len(positions):
         return False
     for position in positions:
         if not (isinstance(position, (list, tuple)) and len(position) == 2
                 and all(type(coord) is int and 0 <= coord < 10 for coord in position)):
             return False
+    return True
+
+
+def _literal_nonnegative_int(value: Any) -> bool:
+    return type(value) is int and value >= 0
+
+
+_STATE_COUNTERS = (
+    "confirmed",
+    "reserved",
+    "wool_credit",
+    "requested",
+    "failed_purchase_units",
+    "picked",
+    "placed",
+    "failed_placements",
+    "extra_wool_harvested",
+    "extra_wool_sale_requests",
+)
+
+
+def _valid_state(state: Any) -> bool:
+    """Validate persistent lane custody before any read, reset, or mutation."""
+    if not isinstance(state, dict):
+        return False
+    last = state.get("last")
+    if type(last) is not int or last < -1:
+        return False
+    for key in _STATE_COUNTERS:
+        if key not in state or not _literal_nonnegative_int(state[key]):
+            return False
+
+    pending = state.get("pending_buy")
+    if pending is not None:
+        if not isinstance(pending, dict):
+            return False
+        before = pending.get("before")
+        quantity = pending.get("quantity")
+        if (not _literal_nonnegative_int(before)
+                or type(quantity) is not int
+                or not 1 <= quantity <= MAX_ORDER_QTY):
+            return False
+
+    carrying = state.get("carrying")
+    if not isinstance(carrying, dict):
+        return False
+    for actor, quantity in carrying.items():
+        if type(actor) is not int or actor < 0 or not _literal_nonnegative_int(quantity):
+            return False
+
+    pending_places = state.get("pending_places")
+    if not isinstance(pending_places, list):
+        return False
+    for record in pending_places:
+        if not isinstance(record, dict):
+            return False
+        actor = record.get("actor")
+        site = record.get("site")
+        day = record.get("day")
+        if type(actor) is not int or actor < 0 or not _literal_nonnegative_int(day):
+            return False
+        if not (isinstance(site, (list, tuple)) and len(site) == 2
+                and all(type(coord) is int and 0 <= coord < 10 for coord in site)):
+            return False
+
+    sites = state.get("sites")
+    if not isinstance(sites, dict):
+        return False
+    for site, day in sites.items():
+        if not (isinstance(site, tuple) and len(site) == 2
+                and all(type(coord) is int and 0 <= coord < 10 for coord in site)
+                and _literal_nonnegative_int(day)):
+            return False
+    return True
+
+
+def _safe_numeric_observation(obs: Any) -> bool:
+    """Reject numeric poison before S2 can mutate state or coerce it with int()."""
+    try:
+        player = obs["player"]
+        farm = obs["farms"][player]
+        private = obs["private"]
+        shed = private["shed"]
+        inventories = private["inventories"]
+        prices = obs["market"]["prices"]
+        shops = obs["town"]["unlocked_shops"]
+        tiles = farm["tiles"]
+    except (KeyError, IndexError, TypeError):
+        return False
+
+    if not isinstance(shed, dict) or not isinstance(prices, dict) or not isinstance(shops, list):
+        return False
+    if any(type(item) is not str for item in shops):
+        return False
+    if not _literal_nonnegative_int(farm.get("money", 0)):
+        return False
+    if any(type(item) is not str or not _literal_nonnegative_int(count)
+           for item, count in shed.items()):
+        return False
+    for inventory in inventories:
+        if not isinstance(inventory, dict):
+            return False
+        if any(type(item) is not str or not _literal_nonnegative_int(count)
+               for item, count in inventory.items()):
+            return False
+    for item in ("WOOL", "MILK"):
+        if item in prices and not _literal_nonnegative_int(prices[item]):
+            return False
+    for row in tiles:
+        for tile in row:
+            if isinstance(tile, dict) and "yield_units" in tile:
+                if not _literal_nonnegative_int(tile["yield_units"]):
+                    return False
+    return True
+
+
+def _safe_parent_numerics(parent_action: Any) -> bool:
+    """Validate only parent fields S2 later feeds through int()."""
+    if not isinstance(parent_action, dict):
+        return False
+    market = parent_action.get("market")
+    if not isinstance(market, list):
+        return False
+    farmer = parent_action.get("farmer")
+    hands = parent_action.get("hands")
+    if farmer is not None and not isinstance(farmer, list):
+        return False
+    if hands is not None and not isinstance(hands, list):
+        return False
+    commands = []
+    if isinstance(farmer, list):
+        commands.append(farmer)
+    if isinstance(hands, list):
+        commands.extend(hands)
+    for command in commands:
+        if not isinstance(command, list) or not command:
+            continue
+        if command[0] in ("PICKUP", "PLACE") and len(command) >= 3:
+            if not _literal_nonnegative_int(command[2]):
+                return False
+    for order in market[:MAX_ORDERS]:
+        if not (isinstance(order, list) and len(order) >= 3):
+            continue
+        if order[0] == "SELL":
+            if type(order[1]) is not str or not _literal_nonnegative_int(order[2]):
+                return False
+        elif order[:2] == ["BUY_ANIMAL", "COW"]:
+            if not _literal_nonnegative_int(order[2]):
+                return False
     return True
 
 
@@ -206,12 +366,11 @@ def apply_s2_swap(
     native_tape: Any,
 ) -> dict[str, Any]:
     """Apply one S2 callback; return exact parent object whenever the theorem is not proven."""
-    if not enabled or not _exact_standard(configuration) or not _valid_observation(observation):
-        return parent_action
-
-    # Reject an unusable parent before consuming any pending transaction.
-    if (not isinstance(parent_action, dict)
-            or not isinstance(parent_action.get("market"), list)):
+    if (enabled is not True or not _exact_standard(configuration)
+            or not _valid_observation(observation)
+            or not _safe_numeric_observation(observation)
+            or not _safe_parent_numerics(parent_action)
+            or not _valid_state(state)):
         return parent_action
 
     step = observation.get("step")

@@ -140,6 +140,15 @@ class ComposerTests(unittest.TestCase):
         "@dataclass(frozen=True)\nclass Features:\n"
         "    early_capital: bool = False\n"
         "class X:\n"
+        "    def __init__(self):\n"
+        "        self._completed_seller_state = None\n"
+        "        self._seller_fallback_observations = []\n"
+        "        self.spatial = None\n"
+        "    def _remember_seller_fallback(self, obs):\n"
+        "        \"\"\"Queue one completed fallback observation for a later reconstruction.\"\"\"\n"
+        "        if self.features.consumer != 'frozen':\n"
+        "            return\n"
+        "        step = int(obs['step'])\n"
         "    def f(self,f):\n"
         "        if True:\n"
         "            self.consumer = FrozenSelected()\n"
@@ -159,7 +168,8 @@ class ComposerTests(unittest.TestCase):
     def test_composer_is_default_off_and_source_bound(self):
         titan, frozen = composer.compose_sources(self.TITAN, self.FROZEN)
         self.assertIn("exec_pace: bool = False", titan)
-        self.assertIn("if f.exec_pace", titan)
+        self.assertIn("if f.exec_pace is True", titan)
+        self.assertIn("_exec_pace_fallback_observations", titan)
         self.assertIn("exec_pace_state", frozen)
         self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
         self.assertNotIn("continue\n", composer.PLAN_INSERT)
@@ -236,6 +246,7 @@ class ComposerTests(unittest.TestCase):
         self.assertIn("exec_pace", parsed)
         self.assertIs(parsed["exec_pace"], False)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
+        self.assertEqual(titan.count("_exec_pace_fallback_observations"), 4)
         self.assertEqual(frozen.count("exec_pace_apply"), 3)
         self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
         self.assertNotIn("gate_plan(reference.get", frozen)

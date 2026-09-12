@@ -1,57 +1,66 @@
 # V4 row-shed SELL ordering
 
-This repair recovers the strongest unported V3.1 sale-order theorem into the sole canonical V4 workspace without importing the V3 router or creating a new controller. `repairs/gameplay/row-shed-sell-order` is the authoritative source package.
+This repair recovers the strongest unported V3.1 sale-order theorem into the sole canonical V4 workspace without importing the V3 router or creating a new controller. `repairs/gameplay/row-shed-sell-order` is the authoritative source package; the race-created `row-shed-ordering` carrier from PR #12768 is superseded and removed during consolidation rather than becoming a second implementation.
 
 ## Provenance
 
 - V3.1 evidence commit: `7cbe552087626d09dbd8a84be8fa89efc7320ad0`
 - historical router blob: `21210f396335431e81d300e118487dd859d54468`
+- historical focused regression: `candidates/v3/overlay/checks/test_v31_row_shed.py`
+- historical source SHA-256: `569b515c89f56a8f060ce94de218a341ae0e5b3c8e0e2c6428a8a0f08a462b05`
+- historical focused-test SHA-256: `b8f81248e37078d15e767f2883c59589a670353c248c5d5eab126b58f41cabee`
 - historical S34 field gate: 1,280 games per arm, 1273 W / 7 L and +540.0 margin/game against V3.0
 - historical top-40 recorded replay bench: 96 W / 64 L
 
 Those scores are historical provenance, not a V4 strength claim.
 
-## Current-ABI donor
+## Current-ABI contract
 
-`RowShedSellOrder.transform(...)` consumes the current stack's caller-owned post-unit shed projection. It constructs no producer or controller and never mutates its input action. The intended theorem is narrowly about reordering engine-executable leading SELL rows by the price drop caused by units that can actually be filled.
+`RowShedSellOrder.transform(...)` consumes the current stack's already-owned `post_unit_shed` projection. It constructs no producer, invokes no parent controller, and never mutates the selected action.
 
-The current donor/source-composition line has its own active prefix-custody repair: official market execution is limited to `max(1, int(maxMarketOrdersPerTurn))`, engine-dead SELL quantity zero must not be treated as sortable, and no inert suffix row may be promoted into the executable prefix. That source/composer authority is separate from this file's novelty helper. Do not use the novelty helper to bypass or substitute for the donor's prefix/positive-quantity gate.
+Only the **engine-executable prefix** of the leading contiguous SELL block can move. The prefix length follows the official market rule: missing configuration uses the current default of 10, while an exact integer `maxMarketOrdersPerTurn` is normalized with `max(1, value)`. Bool, float, string, or other type-poisoned cap values fail closed. Within that executable prefix, each SELL row is ranked by the market-price drop caused by the units it can actually fill: `min(requested_quantity, post_unit_shed[item])`.
 
-## Complete-pipeline final-action novelty admission
+The first falsey row, non-SELL row, or plain-integer SELL with requested quantity `<= 0` inside the executable prefix is a hard barrier. Every market row at or beyond the executable-prefix boundary is engine-inert evidence for this transform and is preserved byte-for-byte in content and order, including truthy malformed values that the official engine never parses after prefix truncation. In particular, a high-impact SELL or malformed poison beyond the engine cap cannot enter or veto an otherwise valid executable-prefix reorder.
 
-`novel_rank_guard.py` is an evidence/admission primitive, not a runtime controller. Earlier variants compared an intermediate pressure rank, then directly replayed LARK pressure from the STRATUM seam. Both are insufficient.
+The transform fails closed to the caller action on missing/incomplete/type-poisoned stock evidence, malformed rows inside the executable prefix, malformed market/configuration input, invalid inventory/quote evidence, or a pricing failure. This is intentionally stricter than V3.1's incumbent requested-quantity fallback: V4 does not activate a second legacy ROW_ORDER policy when the post-unit projection is ambiguous. The expanded regression suite contains explicit divergence witnesses so that this safety decision cannot be accidentally “fixed” back into the V3 behavior.
 
-STRATUM is injected inside `FrozenSelected.transform`, immediately after its post-unit projection. Existing seller economics still run afterward and may resize, blank, append or move market rows before TITAN later invokes canonical market pressure. A direct pressure replay from the STRATUM seam therefore skips real stateful policy and can claim novelty that disappears before pressure is ever reached.
+Current ABI market parameters are passed through to the current quote function. Historical V3.1 parity remains provenance for the predecessor donor; current V4 correctness is additionally bounded by the official executable market-prefix semantics and must be judged on that engine-visible prefix rather than on inert suffix ordering.
 
-The corrected guard does **not** replay seller or pressure code. Its caller must supply two already-produced final returned actions from an authenticated, isolated dual-arm execution of the complete remaining canonical suffix: incumbent and STRATUM. The guard then admits STRATUM only when both conditions hold:
+## Pressure-novel admission
 
-1. the pre-seller STRATUM candidate is an exact permutation of the same leading positive-quantity SELL rows entirely inside the source-safe executable market prefix, with duplicate multiplicity preserved and every barrier/inert suffix/non-market surface byte-identical; and
-2. after the complete remaining seller + pressure pipeline, the two returned actions still differ in **official engine-parsed market semantics** inside the executable prefix.
+`novel_rank_guard.py` is an additive admission layer for the current V4 stack, where the already-enabled LARK market-pressure transform can independently choose a leading-SELL order. It does not construct either ranking and remains source-only pending current-stack composition/evidence.
 
-The final comparison mirrors `_parse_order()` plus the supported-item dispatch from authenticated reference engine blob `3c202c7ee921da239356789e266b694635103fc4`: parser-dead rows normalize to an inert slot, HIRE/BUY_LAND ignore extra tokens, quantity-bearing orders use the engine's `int(...)` coercion and positive-quantity rule, and unsupported items/sub-ops are inert. Interior inert slots are preserved because their lockstep index relative to the opponent is observable; only inert trailing slots are trimmed after the raw executable prefix is sliced.
+The guard was authored as a fail-closed comparison primitive over supplied parent, row-shed, and pressure candidates. Any future composition must preserve the executable-prefix boundary above and prove novelty on the actual downstream returned action; a difference in pre-downstream rank alone is not production evidence. Missing/malformed executable-prefix evidence, cardinality drift, row/quantity changes, suffix movement in the parent-to-row-shed arm, or non-market mutation remain fail-closed conditions. Final-action bytes beyond the executable market prefix are ignored for engine-effect novelty because the engine never parses them.
 
-Therefore suffix-only differences, zero-quantity versus empty rows, HIRE/BUY_LAND extra-token differences, coercible quantity spellings, unsupported-item rows, and absent versus inert trailing slots do not establish novelty. A zero-quantity SELL remains a hard pre-seller ordering barrier. Plain integer cap 0/negative normalizes to one executable row; bool/float/string cap poison fails closed. If final arms differ on non-market action surfaces, evidence is non-comparable and fails closed rather than attributing the difference to STRATUM.
+This is deliberately an admission primitive rather than a new controller or a new pressure implementation. The canonical pressure transform remains the rank authority; later composition may consume it only through the single canonical graph/postimage route.
 
-This deliberately leaves closure/authentication of the complete dual-arm suffix to the sole final-return evidence carrier. It neither imports nor recreates `FrozenSelected`, selected-SELL economics, LARK pressure, the evaluator, or the engine.
+## Composition
 
-## Composition and custody
-
-Intended source order remains:
+Intended seam:
 
 1. caller-owned current selected-action unit projection;
-2. `RowShedSellOrder` using that packet's `post_unit_shed`;
-3. existing remaining `FrozenSelected` SELL economics;
-4. canonical market pressure;
-5. final returned action / engine boundary.
+2. `RowShedSellOrder` using that packet's `post_unit_shed` and the official executable market-prefix bound;
+3. optional pressure-novel admission against the canonical market-pressure candidate, revalidated on the same executable prefix;
+4. current `SelectedActionSell` / `OrderedSelectedSell` economics;
+5. existing composer/materializer;
+6. final returned-action evidence proving any credited rank survives downstream transforms inside the executable prefix.
 
-LOOM registered this package in the canonical composition graph. The dedicated returned-action workflow owns proof that an internal row-shed change survives the whole remaining route. `FinalActionNoveltyGuard` may consume those final arm outputs; it does not replace that workflow and it is not activation authority by itself.
+LOOM PR #12777 registered this package as `row-shed-sell-order` in the canonical composition graph. PR #12998 subsequently added the sole authenticated graph-postimage field carrier: it materializes the exact graph predecessor, overlays only the existing row-shed source bytes, and measures natural both-seat official-engine engagement with action-transparent diagnostics. That carrier is evidence-only and does not activate row-shed in production. The field carrier must be rebound to the current donor/composer identities and prefix-scoped diagnostics before it can mint new positive evidence.
 
-Do not fork the scheduler, producer, seller, market engine, evaluator, pressure family, runtime, archive, or V4 tree to consume this repair.
+Do not fork the scheduler, producer, market engine, evaluator, canonical pressure family, or canonical V4 tree to consume this repair.
 
 ## Validation
 
-The historical/current donor suite remains separate from this novelty helper and must be rebound after the executable-prefix/positive-quantity source repair.
+`test_row_shed_sell_order.py` retains the original current-ABI boundary contract plus a literal independent V3.1 reference implementation and predecessor validation history. Because the donor source changed to enforce the executable-prefix theorem, prior 14/14 normal, 14/14 optimized, and 1,600-case parity counts are predecessor evidence until rerun on the exact repaired source.
 
-`test_novel_rank_guard.py` now contains 20 focused contracts for the complete-pipeline theorem. In addition to the original collapse/survivor, prefix-custody, barrier, multiplicity, poison, malformed-evidence, and immutability cases, parser-equivalence killers cover zero-quantity versus empty, HIRE extra tokens, coercible quantities, trailing inert-slot equivalence, interior inert-slot alignment, and unsupported market items. Exact current source/test blobs pass 20/20 normal, 20/20 under `-O`, and `py_compile`.
+`test_row_shed_market_prefix.py` adds focused current-source predecessors for:
 
-No production/default activation or full-game strength claim follows from these source contracts. Promotion still requires the repaired donor, exact current composition, final-return custody, natural engagement, and paired own/rival/margin economics on the one canonical V4.
+- a high-impact SELL beyond `maxMarketOrdersPerTurn` that must not enter or move the executable prefix;
+- truthy malformed suffix poison beyond the cap that must neither veto nor move a valid in-prefix reorder, while the same poison inside the prefix fails closed;
+- zero and negative exact-integer caps normalizing to one executable market row;
+- plain-integer non-positive SELL rows acting as engine-dead ordering barriers; and
+- bool/float/string cap poison failing closed to the caller fallback.
+
+`test_novel_rank_guard.py` retains its source-only pressure-rank admission contracts, but final novelty remains gated on executable-prefix and downstream-return evidence in the sole field route.
+
+A current official-engine/full-game both-seat economic gate remains required before any production/default activation. No queued or pending hosted run is treated as green evidence.

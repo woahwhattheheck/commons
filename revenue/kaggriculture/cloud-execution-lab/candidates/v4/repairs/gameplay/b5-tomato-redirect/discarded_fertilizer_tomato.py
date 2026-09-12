@@ -55,15 +55,19 @@ def apply_discarded_fertilizer(observation, action, configuration=None, *, enabl
 
     if not isinstance(observation, dict) or not isinstance(action, dict):
         return unchanged('unsupported_packet')
-    cfg = {} if configuration is None else configuration
-    if not isinstance(cfg, dict):
+    if not isinstance(configuration, dict):
         return unchanged('unsupported_configuration')
+    cfg = configuration
     for key, standard in (('boardSize', 10), ('turnsPerDay', 24),
                           ('episodeSteps', 720), ('shedCapacity', 100)):
-        value = cfg.get(key, standard)
+        if key not in cfg:
+            return unchanged('unsupported_configuration')
+        value = cfg[key]
         if type(value) is not int or value != standard:
             return unchanged('unsupported_configuration')
-    cap = cfg.get('maxMarketOrdersPerTurn', 10)
+    if 'maxMarketOrdersPerTurn' not in cfg:
+        return unchanged('unsupported_configuration')
+    cap = cfg['maxMarketOrdersPerTurn']
     if type(cap) is not int:
         return unchanged('unsupported_market_cap')
     cap = max(1, cap)  # Exact engine raw-slot admission, including zero/negative.

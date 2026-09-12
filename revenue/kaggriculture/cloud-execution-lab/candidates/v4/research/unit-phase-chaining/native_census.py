@@ -11,21 +11,23 @@ artifact, production source, defaults, or returned actions used by the game.
 from __future__ import annotations
 
 import argparse
+import atexit
 import copy
 import hashlib
-import importlib
+import importlib.util
 import json
 import math
+import os
+import shutil
+import stat
 import sys
+import tempfile
+import types
 from collections import Counter, defaultdict
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 HERE = Path(__file__).resolve().parent
-if str(HERE) not in sys.path:
-    sys.path.insert(0, str(HERE))
-from unit_pipeline_admission import reorder_unit_pipeline
-
 ENGINE_REL = Path("checks/reference/engine/kaggriculture.py")
 MAIN_REL = Path("main.py")
 CONFIG_REL = Path("TITAN-CONFIG.json")
@@ -33,6 +35,7 @@ ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 MAIN_GIT_BLOB = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
 CONFIG_GIT_BLOB = "3a3bef83899d3010fad623b628d9e95d9978111b"
 ADMISSION_GIT_BLOB = "f02448806f66e524fdc317c23b620fde45a926c9"
+SOURCE_SHA256 = "e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2"
 ARTIFACT_ID = 10175943272
 INNER_TAR_SHA256 = "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
 PANEL_SEEDS = (17, 101, 6607, 9922999, 2026091201, 2026091207, 2026091213, 2026091219)
@@ -48,35 +51,337 @@ CHAIN_KEYS = (
     "FERTILIZE_WATER_FRESH_BONUS",
     "BUILD_PLACE",
 )
+_MAX_RUNTIME_FILES = 512
+_MAX_RUNTIME_FILE_BYTES = 64 * 1024 * 1024
+_MAX_RUNTIME_TOTAL_BYTES = 256 * 1024 * 1024
 
 
 def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
 
 
-def _verify(path: Path, expected: str, label: str) -> None:
-    got = git_blob_sha(path.read_bytes())
-    if got != expected:
-        raise ValueError(f"{label} Git blob mismatch: expected {expected}, got {got}")
+def _reject_constant(value: str) -> None:
+    raise ValueError(f"non-finite JSON constant is not allowed: {value}")
+
+
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON object key: {key!r}")
+        result[key] = value
+    return result
+
+
+def _strict_json(data: bytes, label: str) -> Any:
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"{label} is not UTF-8") from exc
+    try:
+        return json.loads(text, object_pairs_hook=_strict_object, parse_constant=_reject_constant)
+    except (json.JSONDecodeError, ValueError) as exc:
+        raise ValueError(f"invalid strict JSON in {label}: {exc}") from exc
+
+
+def _safe_member_name(value: Any) -> PurePosixPath:
+    if type(value) is not str or not value or "\\" in value:
+        raise ValueError("runtime member must be a non-empty POSIX path string")
+    path = PurePosixPath(value)
+    if path.is_absolute() or path.as_posix() != value or any(part in ("", ".", "..") for part in path.parts):
+        raise ValueError(f"unsafe runtime member path: {value!r}")
+    return path
+
+
+def _read_fd_all(fd: int, *, max_bytes: int) -> bytes:
+    chunks: list[bytes] = []
+    total = 0
+    while True:
+        chunk = os.read(fd, min(1024 * 1024, max_bytes + 1 - total))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > max_bytes:
+            raise ValueError("runtime member exceeds custody size limit")
+    return b"".join(chunks)
+
+
+def _read_root_member(root_fd: int, member: PurePosixPath, *, max_bytes: int) -> bytes:
+    if not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "O_DIRECTORY"):
+        raise ValueError("platform lacks nofollow directory custody")
+    current_fd = os.dup(root_fd)
+    try:
+        for part in member.parts[:-1]:
+            next_fd = os.open(
+                part,
+                os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW,
+                dir_fd=current_fd,
+            )
+            os.close(current_fd)
+            current_fd = next_fd
+        leaf_fd = os.open(member.parts[-1], os.O_RDONLY | os.O_NOFOLLOW, dir_fd=current_fd)
+        try:
+            info = os.fstat(leaf_fd)
+            if not stat.S_ISREG(info.st_mode):
+                raise ValueError(f"runtime member is not a regular file: {member.as_posix()}")
+            if info.st_size < 0 or info.st_size > max_bytes:
+                raise ValueError(f"runtime member size is outside custody limit: {member.as_posix()}")
+            data = _read_fd_all(leaf_fd, max_bytes=max_bytes)
+            if len(data) != info.st_size:
+                raise ValueError(f"runtime member changed while captured: {member.as_posix()}")
+            return data
+        finally:
+            os.close(leaf_fd)
+    finally:
+        os.close(current_fd)
+
+
+def _open_root_fd(root: Path) -> int:
+    if not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "O_DIRECTORY"):
+        raise ValueError("platform lacks nofollow directory custody")
+    return os.open(str(root), os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+
+
+def _validate_runtime_row(member: str, row: Any) -> tuple[str, int]:
+    if type(row) is not dict or set(row) != {"source_path", "sha256", "bytes"}:
+        raise ValueError(f"runtime row has unexpected shape: {member}")
+    source_path = row["source_path"]
+    digest = row["sha256"]
+    size = row["bytes"]
+    if type(source_path) is not str or not source_path:
+        raise ValueError(f"runtime source_path must be a non-empty string: {member}")
+    if (
+        type(digest) is not str
+        or len(digest) != 64
+        or digest != digest.lower()
+        or any(ch not in "0123456789abcdef" for ch in digest)
+    ):
+        raise ValueError(f"runtime SHA-256 is malformed: {member}")
+    if type(size) is not int or not 0 <= size <= _MAX_RUNTIME_FILE_BYTES:
+        raise ValueError(f"runtime byte count is invalid: {member}")
+    return digest, size
+
+
+def _capture_native_runtime(
+    package: Path,
+    *,
+    required_git_blobs: dict[str, str] | None = None,
+    required_source_sha256: str | None = SOURCE_SHA256,
+) -> dict[str, Any]:
+    package = Path(package)
+    root_fd = _open_root_fd(package)
+    try:
+        source_bytes = _read_root_member(
+            root_fd, PurePosixPath("SOURCE.json"), max_bytes=_MAX_RUNTIME_FILE_BYTES
+        )
+        if required_source_sha256 is not None:
+            source_digest = hashlib.sha256(source_bytes).hexdigest()
+            if source_digest != required_source_sha256:
+                raise ValueError(
+                    "SOURCE.json SHA-256 mismatch: "
+                    f"expected {required_source_sha256}, got {source_digest}"
+                )
+        manifest = _strict_json(source_bytes, "SOURCE.json")
+        if type(manifest) is not dict:
+            raise ValueError("SOURCE.json must be an object")
+        if manifest.get("entrypoint") != "main.py::agent" or manifest.get("config") != "TITAN-CONFIG.json":
+            raise ValueError("SOURCE.json entrypoint/config contract mismatch")
+        runtime = manifest.get("runtime")
+        if type(runtime) is not dict or not runtime or len(runtime) > _MAX_RUNTIME_FILES:
+            raise ValueError("SOURCE.json runtime map is missing or outside custody bounds")
+
+        captured: dict[str, bytes] = {}
+        total = 0
+        for member, row in runtime.items():
+            path = _safe_member_name(member)
+            digest, size = _validate_runtime_row(member, row)
+            data = _read_root_member(root_fd, path, max_bytes=_MAX_RUNTIME_FILE_BYTES)
+            if len(data) != size:
+                raise ValueError(f"runtime byte count mismatch: {member}")
+            if hashlib.sha256(data).hexdigest() != digest:
+                raise ValueError(f"runtime SHA-256 mismatch: {member}")
+            total += len(data)
+            if total > _MAX_RUNTIME_TOTAL_BYTES:
+                raise ValueError("declared runtime closure exceeds custody total-size limit")
+            captured[member] = data
+    finally:
+        os.close(root_fd)
+
+    required = required_git_blobs if required_git_blobs is not None else {
+        ENGINE_REL.as_posix(): ENGINE_GIT_BLOB,
+        MAIN_REL.as_posix(): MAIN_GIT_BLOB,
+        CONFIG_REL.as_posix(): CONFIG_GIT_BLOB,
+    }
+    for member, expected in required.items():
+        data = captured.get(member)
+        if data is None:
+            raise ValueError(f"required native runtime member missing: {member}")
+        got = git_blob_sha(data)
+        if got != expected:
+            raise ValueError(f"{member} Git blob mismatch: expected {expected}, got {got}")
+    if "checks/test_engine_semantics.py" not in captured:
+        raise ValueError("declared native runtime is missing checks/test_engine_semantics.py")
+    return {"source_bytes": source_bytes, "manifest": manifest, "runtime": captured}
+
+
+def _materialize_frozen_runtime(capture: dict[str, Any]) -> Path:
+    runtime = capture["runtime"]
+    root = Path(tempfile.mkdtemp(prefix="titan-unitpipe-frozen-"))
+    atexit.register(shutil.rmtree, root, ignore_errors=True)
+    try:
+        for member, data in runtime.items():
+            relative = _safe_member_name(member)
+            target = root.joinpath(*relative.parts)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("xb") as stream:
+                stream.write(data)
+        with (root / "SOURCE.json").open("xb") as stream:
+            stream.write(capture["source_bytes"])
+    except Exception:
+        shutil.rmtree(root, ignore_errors=True)
+        raise
+    return root
+
+
+def _is_under(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+        return True
+    except ValueError:
+        return False
+
+
+def _system_import_paths(paths: list[str]) -> list[str]:
+    roots = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
+    result: list[str] = []
+    for value in paths:
+        if not value:
+            continue
+        try:
+            resolved = Path(value).resolve()
+        except OSError:
+            continue
+        if any(_is_under(resolved, root) for root in roots):
+            result.append(value)
+    return result
+
+
+def _declared_runtime_import_roots(capture: dict[str, Any]) -> set[str]:
+    names: set[str] = set()
+    for member in capture["runtime"]:
+        path = _safe_member_name(member)
+        if len(path.parts) == 1 and path.suffix == ".py":
+            name = path.stem
+        elif len(path.parts) > 1:
+            name = path.parts[0]
+        else:
+            continue
+        if name.isidentifier():
+            names.add(name)
+    return names
+
+
+def _reject_preloaded_runtime_modules(capture: dict[str, Any]) -> None:
+    for name in sorted(_declared_runtime_import_roots(capture)):
+        module = sys.modules.get(name)
+        if module is None:
+            continue
+        origin = getattr(module, "__file__", None)
+        shown = "<no __file__>" if origin is None else str(origin)
+        raise ValueError(
+            f"declared runtime module is already loaded before frozen execution: {name} -> {shown}"
+        )
+
+
+def _load_module_from_file(path: Path, prefix: str):
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+    name = f"{prefix}_{digest}_{os.getpid()}"
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ValueError(f"cannot load frozen module: {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(name, None)
+        raise
+    return module
+
+
+def _assert_new_module_origins(before: set[str], frozen: Path) -> None:
+    system_roots = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
+    for name in set(sys.modules) - before:
+        module = sys.modules.get(name)
+        origin = getattr(module, "__file__", None)
+        if not origin:
+            continue
+        try:
+            path = Path(origin).resolve()
+        except OSError:
+            continue
+        if _is_under(path, frozen) or any(_is_under(path, root) for root in system_roots):
+            continue
+        raise ValueError(f"undeclared non-system import escaped frozen runtime: {name} -> {path}")
+
+
+def _load_fixture_from_capture(capture: dict[str, Any]):
+    frozen = _materialize_frozen_runtime(capture)
+    _reject_preloaded_runtime_modules(capture)
+    prior_path = list(sys.path)
+    sys.path[:] = [str(frozen), str(frozen / "checks"), *_system_import_paths(prior_path)]
+    before_modules = set(sys.modules)
+    fixture_module = _load_module_from_file(
+        frozen / "checks/test_engine_semantics.py", "titan_unitpipe_engine_semantics"
+    )
+    EngineSemantics = getattr(fixture_module, "EngineSemantics", None)
+    if EngineSemantics is None:
+        raise ValueError("frozen engine fixture has no EngineSemantics")
+    EngineSemantics.setUpClass()
+    main = _load_module_from_file(frozen / "main.py", "titan_unitpipe_main")
+    if not callable(getattr(main, "agent", None)):
+        raise ValueError("frozen native main has no callable agent")
+    _assert_new_module_origins(before_modules, frozen)
+    return EngineSemantics.engine, EngineSemantics.ev, main
+
+
+def _load_admission_snapshot(path: Path) -> tuple[bytes, Any]:
+    root_fd = _open_root_fd(path.parent)
+    try:
+        data = _read_root_member(
+            root_fd, PurePosixPath(path.name), max_bytes=_MAX_RUNTIME_FILE_BYTES
+        )
+    finally:
+        os.close(root_fd)
+    got = git_blob_sha(data)
+    if got != ADMISSION_GIT_BLOB:
+        raise ValueError(
+            f"canonical admission helper Git blob mismatch: expected {ADMISSION_GIT_BLOB}, got {got}"
+        )
+    module = types.ModuleType("titan_unitpipe_admission_snapshot")
+    module.__file__ = str(path)
+    exec(compile(data, str(path), "exec"), module.__dict__, module.__dict__)
+    function = getattr(module, "reorder_unit_pipeline", None)
+    if not callable(function):
+        raise ValueError("authenticated admission helper lacks reorder_unit_pipeline")
+    return data, function
+
+
+ADMISSION_SOURCE_BYTES, reorder_unit_pipeline = _load_admission_snapshot(
+    HERE / "unit_pipeline_admission.py"
+)
 
 
 def verify_sources(package: Path) -> None:
-    _verify(package / ENGINE_REL, ENGINE_GIT_BLOB, "official engine")
-    _verify(package / MAIN_REL, MAIN_GIT_BLOB, "native main.py")
-    _verify(package / CONFIG_REL, CONFIG_GIT_BLOB, "native TITAN-CONFIG.json")
-    _verify(HERE / "unit_pipeline_admission.py", ADMISSION_GIT_BLOB, "canonical admission helper")
+    _capture_native_runtime(package)
+    if git_blob_sha(ADMISSION_SOURCE_BYTES) != ADMISSION_GIT_BLOB:
+        raise ValueError("captured admission helper identity changed")
 
 
 def load_fixture(package: Path):
-    verify_sources(package)
-    sys.path.insert(0, str(package))
-    sys.path.insert(1, str(package / "checks"))
-    from test_engine_semantics import EngineSemantics
-
-    EngineSemantics.setUpClass()
-    engine, ev = EngineSemantics.engine, EngineSemantics.ev
-    main = importlib.import_module("main")
-    return engine, ev, main
+    capture = _capture_native_runtime(package)
+    return _load_fixture_from_capture(capture)
 
 
 def _op(row: Any) -> str:

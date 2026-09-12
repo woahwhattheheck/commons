@@ -1,6 +1,6 @@
 {
   "repair": "current-ABI row-shed SELL ordering",
-  "status": "canonical V4 repair component; composition blocked pending authenticated runtime postimage; production/default activation requires official-engine/full-game gate",
+  "status": "canonical V4 repair component; executable-prefix/source-semantics custody rebound; exact-head execution and authenticated runtime postimage still pending; production/default activation requires official-engine/full-game gate",
   "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
   "canonical_package": "repairs/gameplay/row-shed-sell-order",
   "historical_provenance": {
@@ -13,42 +13,61 @@
     "top40_recorded_replay_bench": "96 W / 64 L"
   },
   "current_abi_pins": {
+    "official_engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "official_engine_spec_blob": "b354d06b742fe48402513792253f1a5c29366b20",
     "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
     "selected_action_sell_blob": "68b82183466fa92c80a40cabc0c5d9575bdd79cc",
     "ordered_selected_sell_blob": "8ce1394077df47dfc322a44f363050a6467292a3"
   },
-  "component_blob": "9df048a4ba866d154861b6885f59502cf9e01cae",
-  "focused_regression_blob": "9075529e054117be0506879b3b48cbcb0b4a9c53",
-  "readme_blob": "409419dc91d3ecffbe4332a03dd8c915607559cb",
+  "component_blob": "5d3f1137a300480f6574accd9ccdfb3e11e431cf",
+  "component_sha256": "e0460c91db6ad2487778f18dcec4b2ee41a53b833eaa0831425a56fd07d0fc42",
+  "focused_regression_blob": "4832871eed60f887e66aca2053493f62a9da7490",
+  "market_prefix_regression_blob": "2a3b9891148d1c17c2d50e7d50a52bda0ef45dfd",
+  "composer_blob": "6ee8f80d754c9ff56a0f9bfbcaf937a7f209c314",
+  "composer_regression_blob": "b86bee67cb9474ad665a341c1feda7398ac61178",
+  "readme_blob": "06e12cecc88cede62d35a79d23fc9aab34efa2d7",
   "contract": [
     "consume caller-owned post-unit shed projection; never construct or invoke a production controller",
-    "reorder only the leading contiguous SELL block",
-    "a falsey row or first non-SELL row is a hard barrier and every suffix index is preserved",
-    "rank each leading SELL by the price drop of min(requested quantity, projected shed stock)",
+    "reorder only the leading contiguous SELL rows that also lie inside the official executable market prefix",
+    "missing maxMarketOrdersPerTurn uses spec-pinned default 10; exact integer values use max(1, value); bool/non-int type poison fails closed",
+    "a falsey row, plain-int non-positive engine-dead SELL row, or first non-SELL row inside the executable prefix is a hard ordering barrier",
+    "truthy malformed values beyond the executable-prefix boundary are engine-inert evidence for this transform and are preserved exactly rather than vetoing an in-prefix reorder",
+    "sortable SELL requested quantities must be plain positive integers; projected shed and public inventory counts may remain zero",
+    "every scored SELL item must have an explicit public market.inventory entry; missing public inventory never falls back to fabricated MARKET_I0 evidence",
+    "every market row at or beyond the executable-prefix boundary is preserved in exact value and order",
+    "rank each executable live SELL by the price drop of min(requested quantity, projected shed stock)",
     "never change a SELL row or mutate the caller action; stable ties preserve relative order",
-    "missing, incomplete, malformed or type-poisoned evidence fails closed to the caller fallback action",
-    "the complete-projection/default-market domain remains parity-compatible with the reviewed V3.1 donor",
-    "the V3.1 incomplete-projection requested-quantity fallback is intentionally NOT carried into V4"
+    "missing, incomplete, malformed executable-prefix or type-poisoned evidence fails closed to the caller fallback action",
+    "historical V3.1 donor parity remains provenance on the engine-valid positive-quantity and complete-public-inventory domain",
+    "the V3.1 incomplete-projection requested-quantity fallback is intentionally NOT carried into V4",
+    "composition receipts bind the actual authenticated whole-file predecessor; noncanonical explicit reproduction inputs cannot claim canonical predecessor identity"
   ],
   "composition": {
     "graph_id": "row-shed-sell-order",
     "graph_intake_pr": 12777,
     "state": "blocked",
-    "reason": "source custody is landed but no authenticated materialized runtime postimage/composer output is pinned",
+    "reason": "repaired source/composer custody is not yet backed by exact-head execution plus a rebound authenticated materialized runtime postimage/field receipt",
     "intended_order": [
       "caller-owned current selected-action unit projection",
-      "RowShedSellOrder using projection packet post_unit_shed",
+      "RowShedSellOrder using projection packet post_unit_shed inside the official executable market prefix",
+      "optional pressure-novel admission revalidated on that same prefix",
       "current SelectedActionSell / OrderedSelectedSell economics",
-      "existing V4 composer/materializer"
+      "existing V4 composer/materializer",
+      "final returned-action evidence proving any credited order survives downstream inside the executable prefix"
     ]
   },
   "focused_validation": {
-    "normal": "14/14 pass",
-    "optimized": "14/14 pass under python -O",
-    "complete_projection_default_market_reference_parity_per_mode": 800,
-    "complete_projection_default_market_reference_parity_total": 1600,
-    "intentional_divergence": "incomplete/type-poisoned projection fails closed in V4 instead of V3.1 requested-quantity fallback",
-    "scope": "component-level current-ABI contract and donor parity; not a full-game V4 strength receipt"
+    "predecessor_source_blob": "9df048a4ba866d154861b6885f59502cf9e01cae",
+    "predecessor_normal": "14/14 pass",
+    "predecessor_optimized": "14/14 pass under python -O",
+    "predecessor_complete_projection_default_market_reference_parity_per_mode": 800,
+    "predecessor_complete_projection_default_market_reference_parity_total": 1600,
+    "current_source_normal": "pending_exact_head_execution",
+    "current_source_optimized": "pending_exact_head_execution",
+    "market_prefix_regression": "pending_exact_head_execution",
+    "composer_regression": "pending_exact_head_execution",
+    "intentional_divergence": "incomplete projection/public inventory fails closed in V4 instead of V3.1 fallback semantics, truthy malformed values beyond the executable prefix are preserved as inert evidence, and plain-int non-positive engine-dead SELL rows are hard barriers rather than sortable legacy rows",
+    "scope": "component-level current-ABI contract, executable-prefix custody, explicit public evidence, and honest composition provenance; not a full-game V4 strength receipt"
   },
   "duplicate_convergence": {
     "canonical_source_pr": 12754,
@@ -62,6 +81,7 @@
     "do not create or retain a second row-shed source package",
     "do not change production/default/archive/Kaggle state from this repair alone",
     "materialize an authenticated current runtime postimage before moving the composition graph edge out of blocked",
+    "field evidence must bind market_prefix_limit and final returned positions before minting a reorder witness",
     "run the then-current official-engine/full-game both-seat gate before activation"
   ]
 }
