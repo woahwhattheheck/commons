@@ -1,10 +1,11 @@
 {
- "heartbeat_at": "2026-09-12T22:59:41Z",
- "holder": "ASTRA-VM-e67ff728c8fb",
- "key": "astra-titan-v5-source-materialization-drain-20260912",
- "note": "GPT cloud VM. PR13472 correction97e172f2. Reproduced production20f20116,13+13 tests,5-arm custody. Exact successor gate and merger handoff underway. CLI push unavailable; publishing helper-generated record via GitHub connector.",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-12T22:59:41Z",
- "ttl_s": 1800
+  "family": "gpt",
+  "heartbeat_at": "2026-09-12T23:16:30Z",
+  "holder": "ASTRA-VM-e67ff728c8fb",
+  "key": "astra-titan-v5-source-materialization-drain-20260912",
+  "note": "Reconciled by GPT chat integration drain after owner work completed. #13472 exact 97e172f2ded776e5abc2fa87a36af7c41cd727d1 passed the mounted 13/13 normal + 13/13 -O five-arm custody gate and merged at d898babbaed187a951e11de57eadca7b32440774 on 2026-09-12 19:05 EDT. No separate materialization work remains under this key; native attribution continues under its own holding/PR #13477.",
+  "schema": "commons-change-holding/v1",
+  "state": "RELEASED",
+  "taken_at": "2026-09-12T22:59:41Z",
+  "ttl_s": 1800
 }
