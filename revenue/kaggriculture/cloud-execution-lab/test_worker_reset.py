@@ -9,7 +9,8 @@ outcomes must agree, and step 0 must replace the prior TitanAgent instance.
 
 The candidate is called on one persistent worker thread per process, matching
 the existing 719-call worker-episode oracle and exercising the thread deadline
-guard across the episode boundary.
+guard across the episode boundary. Every call also proves that the guard has
+restored the worker's trace hook and active-deadline ContextVar before returning.
 
 This is a verification harness only; it does not alter production policy.
 """
@@ -97,6 +98,18 @@ def _configuration(engine, evaluator, seed: int):
     return cfg
 
 
+def _call_candidate(candidate, observation, cfg):
+    """One worker-thread call plus timeout-guard cleanup assertions."""
+    action = candidate(observation, cfg)
+    import titan_runtime
+
+    if sys.gettrace() is not None:
+        raise AssertionError("deadline trace hook leaked past candidate return")
+    if titan_runtime.deadline._ACTIVE_TIMER.get() is not None:
+        raise AssertionError("deadline ContextVar leaked past candidate return")
+    return action
+
+
 def _run_game(
     engine_semantics,
     candidate,
@@ -127,7 +140,7 @@ def _run_game(
         for player in (0, 1):
             state[player].observation.step = step
         action = executor.submit(
-            candidate, copy.deepcopy(state[seat].observation), cfg
+            _call_candidate, candidate, copy.deepcopy(state[seat].observation), cfg
         ).result(timeout=2)
         encoded = json.dumps(action, sort_keys=True, separators=(",", ":"), allow_nan=False)
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
@@ -164,6 +177,7 @@ def _run_game(
         "status": [player.status for player in state],
         "rewards": [player.reward for player in state],
         "singleton_replaced": True,
+        "deadline_guard_clean_after_every_call": True,
     }, active_instance
 
 
@@ -224,7 +238,16 @@ def _scenario_projection(result: dict[str, Any], name: str):
     game = result["results"][name]
     return {
         key: game[key]
-        for key in ("seed", "seat", "calls", "last_step", "action_sha256", "status", "rewards")
+        for key in (
+            "seed",
+            "seat",
+            "calls",
+            "last_step",
+            "action_sha256",
+            "status",
+            "rewards",
+            "deadline_guard_clean_after_every_call",
+        )
     }
 
 
@@ -272,7 +295,7 @@ def verify() -> dict[str, Any]:
             "For these two full official-interpreter games on one persistent worker thread, "
             "action trace and terminal result are identical whether the game runs first in a "
             "fresh process or second after the other game; step zero replaces the prior "
-            "TitanAgent singleton."
+            "TitanAgent singleton and deadline guard state is clean after every call."
         ),
     }
 
