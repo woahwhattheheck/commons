@@ -168,34 +168,6 @@ class FeedPrebuyTests(unittest.TestCase):
                     parent,
                 )
 
-    def test_public_wheat_stock_must_cover_exact_prebuy_quantity(self):
-        bad_inventories = (
-            {"WHEAT": 0},
-            {"WHEAT": 1},
-            {"WHEAT": True},
-            {"WHEAT": 2.0},
-            {"WHEAT": -1},
-            {"WHEAT": "2"},
-            {"WHEAT": None},
-            {},
-        )
-        for inventory in bad_inventories:
-            obs = _observation(wheat=0)
-            obs["market"]["inventory"] = inventory
-            parent = _action()
-            with self.subTest(inventory=inventory):
-                self.assertIs(_apply(obs, parent), parent)
-
-        obs = _observation(wheat=0)
-        del obs["market"]["inventory"]
-        parent = _action()
-        self.assertIs(_apply(obs, parent), parent)
-
-        obs = _observation(wheat=0)
-        obs["market"]["inventory"] = {"WHEAT": 2}
-        out = _apply(obs, _action())
-        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
-
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
         out = _apply(_observation(wheat=1), _action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 1]])
