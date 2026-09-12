@@ -2,9 +2,11 @@
   "canonical_patch_base_commit": "8191b812cdd83fa7ccd3baed2faed85cade5bae4",
   "default_enabled": false,
   "development_validation": {
-    "normal": "16 discovered; 15 pass, 1 skip (out-of-tree current-source binding only)",
-    "optimized": "16 discovered; 15 pass, 1 skip (out-of-tree current-source binding only)",
-    "py_compile": "pass"
+    "original_current_runtime_suite": "16 discovered; 15 pass, 1 skip (out-of-tree current-source binding only)",
+    "lifecycle_normal": "7 discovered; 7 pass",
+    "lifecycle_optimized": "7 discovered; 7 pass",
+    "py_compile": "pass",
+    "current_source_execution_gate": "PENDING repo-mounted exact-head run; do not treat queued Actions as green"
   },
   "semantic_blocker_resolution": {
     "live_main_alias_callsite_found": false,
@@ -13,7 +15,9 @@
     "blocking_continue_removed": true,
     "blocked_candidate_marks_existing_accepted_contract_false": true,
     "literal_composer_fragment_acceleration_test": "pass",
-    "forced_feasibility_bypass_test": "pass"
+    "forced_feasibility_bypass_test": "pass",
+    "literal_true_feature_activation": true,
+    "agent_owned_trend_state_survives_consumer_reconstruction": true
   },
   "economic_status": "UNTESTED on current composed ABI; no promotion claim",
   "files": {
@@ -22,12 +26,16 @@
       "sha256": "80a0fcdfe0283fa8ea55e530e5da9419ab6202255c65a1ad447a9daf37a4d58b"
     },
     "compose_current_runtime.py": {
-      "bytes": 4145,
-      "sha256": "61e60d3e73055e201ff2f215ddf829297f01a01dbf5630387786b70070a4172b"
+      "bytes": 4417,
+      "sha256": "8bee468dc9dc61db1173f2e025289097764776290e265a6fef22ee3f87b36282"
     },
     "test_current_runtime_exec_pace.py": {
       "bytes": 11565,
       "sha256": "75d01b2518e8f019fb2671765709723016770d30fbaf66b7a0a3ffd2b595a34d"
+    },
+    "test_exec_pace_lifecycle.py": {
+      "bytes": 5864,
+      "sha256": "5950db1c4b7530c2ee0cc8da8aee93daa7805d1df0500f9d024a59bf49ba7340"
     },
     "CURRENT-RUNTIME.md": {
       "bytes": 4892,
@@ -38,11 +46,12 @@
   "legacy_materializer_executed": false,
   "required_in_repo_gate": "test_current_repository_sources_are_composable_when_present must run, not skip, in Commons tree",
   "authenticated_live_main": {
-    "commit": "f66abebbc5620d702d69ab0c8b32b5634e50a1cd",
+    "commit": "b6556eaff22009eaae9b82a2909d478eb05d11cc",
     "frozen_selected_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
     "titan_runtime_blob": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
-    "titan_config_blob": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "titan_config_blob": "86c18cee3cec97bbd0e35791fa90b48ecb8925f1",
     "exec_pace_key_present_in_config": false,
-    "composer_anchors_present": true
+    "composer_anchors_present": true,
+    "source_binding_method": "connector read verified singleton Titan feature/consumer anchors and unchanged FrozenSelected observer/plan seam; execution delegated separately"
   }
 }
