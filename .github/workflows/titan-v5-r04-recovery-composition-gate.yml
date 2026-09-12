@@ -17,10 +17,11 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
     steps:
-      - name: Checkout exact PR head
+      - name: Checkout exact PR head with full Git object history
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Assert exact event head
@@ -38,13 +39,14 @@ jobs:
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/r04-recovery-convergence
         run: |
           set -euo pipefail
+          python -m py_compile composition_gate.py test_composition_gate.py
           python -B -m unittest -v test_composition_gate.py
           python -O -B -m unittest -v test_composition_gate.py
-          python -m py_compile composition_gate.py test_composition_gate.py
 
       - name: Clean checkout
         shell: bash
         run: |
           set -euo pipefail
+          git diff --check
           git diff --exit-code
           git diff --cached --exit-code
