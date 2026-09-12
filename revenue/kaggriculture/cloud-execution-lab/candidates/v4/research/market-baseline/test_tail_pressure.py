@@ -4,7 +4,7 @@ import tail_pressure as T
 
 
 class TailPressureTests(unittest.TestCase):
-    def test_helpers_are_pinned_to_current_canonical_sources(self):
+    def test_helpers_are_pinned_to_authenticated_snapshots(self):
         self.assertEqual(
             T.verify_helpers(),
             {
@@ -13,6 +13,13 @@ class TailPressureTests(unittest.TestCase):
                 "counter_ambush": T.COUNTER_AMBUSH_BLOB,
             },
         )
+        r = T.pressure_certificate(
+            item="STRAWBERRY", starting_inventory=10_000,
+            own_units=8, rival_units=8, pre_step=402,
+        )
+        self.assertTrue(r["helper_snapshots_authenticated_before_execution"])
+        self.assertEqual(r["helper_identities"], T.verify_helpers())
+        self.assertIs(T.d.m, T.m)
 
     def test_apex_380_event_has_positive_counter_and_tail_headroom(self):
         shops = (
