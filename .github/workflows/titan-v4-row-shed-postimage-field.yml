@@ -325,32 +325,131 @@ jobs:
                   "trace_changed": changed,
               })
 
+          def bind_returned_reorder(scores, returned_market):
+              def result(bound, reason, *, diagnostic_reordered=False, original=None, ranked=None, positions=None):
+                  return {
+                      "bound": bound,
+                      "reason": reason,
+                      "diagnostic_reordered": diagnostic_reordered,
+                      "original_order": [] if original is None else original,
+                      "ranked_order": [] if ranked is None else ranked,
+                      "returned_positions": [] if positions is None else positions,
+                  }
+
+              if not isinstance(scores, list) or len(scores) < 2:
+                  return result(False, "invalid_scores")
+              normalized = []
+              for position, score in enumerate(scores):
+                  if not isinstance(score, dict):
+                      return result(False, "invalid_score_entry")
+                  original_index = score.get("original_index")
+                  item = score.get("item")
+                  requested = score.get("requested")
+                  impact = score.get("impact")
+                  if type(original_index) is not int or original_index != position:
+                      return result(False, "invalid_original_index")
+                  if type(item) is not str or not item:
+                      return result(False, "invalid_item")
+                  if type(requested) is not int or requested < 0:
+                      return result(False, "invalid_requested")
+                  if type(impact) is not int:
+                      return result(False, "invalid_impact")
+                  normalized.append((original_index, item, requested, impact))
+
+              signatures = [(entry[1], entry[2]) for entry in normalized]
+              if len(set(signatures)) != len(signatures):
+                  return result(False, "duplicate_diagnostic_signature")
+              ranked_entries = sorted(normalized, key=lambda entry: entry[3], reverse=True)
+              original = [entry[0] for entry in normalized]
+              ranked = [entry[0] for entry in ranked_entries]
+              if ranked == original:
+                  return result(False, "diagnostic_identity", original=original, ranked=ranked)
+              if not isinstance(returned_market, list):
+                  return result(False, "returned_market_not_list", diagnostic_reordered=True, original=original, ranked=ranked)
+
+              leading = []
+              for row in returned_market:
+                  if not row:
+                      break
+                  if not isinstance(row, list):
+                      return result(False, "malformed_returned_leading_row", diagnostic_reordered=True, original=original, ranked=ranked)
+                  if not row or row[0] != "SELL":
+                      break
+                  if len(row) < 3 or type(row[1]) is not str or not row[1] or type(row[2]) is not int or row[2] < 0:
+                      return result(False, "malformed_returned_sell", diagnostic_reordered=True, original=original, ranked=ranked)
+                  leading.append((row[1], row[2]))
+
+              ranked_signatures = [(entry[1], entry[2]) for entry in ranked_entries]
+              positions = []
+              for signature in ranked_signatures:
+                  matches = [index for index, candidate in enumerate(leading) if candidate == signature]
+                  if len(matches) != 1:
+                      return result(False, "returned_signature_missing_or_ambiguous", diagnostic_reordered=True, original=original, ranked=ranked)
+                  positions.append(matches[0])
+              if positions != sorted(positions):
+                  return result(False, "returned_order_does_not_preserve_rank", diagnostic_reordered=True, original=original, ranked=ranked, positions=positions)
+              return result(True, "bound", diagnostic_reordered=True, original=original, ranked=ranked, positions=positions)
+
+          predecessor_scores = [
+              {"original_index": 0, "item": "CARROT", "requested": 1, "impact": 1},
+              {"original_index": 1, "item": "WOOL", "requested": 1, "impact": 10},
+          ]
+          restored = bind_returned_reorder(predecessor_scores, [["SELL", "CARROT", 1], ["SELL", "WOOL", 1]])
+          if restored["bound"] or restored["reason"] != "returned_order_does_not_preserve_rank":
+              raise SystemExit(f"returned-action predecessor false-green: {restored}")
+          survived = bind_returned_reorder(predecessor_scores, [["SELL", "WOOL", 1], ["SELL", "CARROT", 1]])
+          if not survived["bound"]:
+              raise SystemExit(f"returned-action positive control failed: {survived}")
+          duplicate = bind_returned_reorder(predecessor_scores, [["SELL", "WOOL", 1], ["SELL", "CARROT", 1], ["SELL", "CARROT", 1]])
+          if duplicate["bound"] or duplicate["reason"] != "returned_signature_missing_or_ambiguous":
+              raise SystemExit(f"duplicate returned-row ambiguity false-green: {duplicate}")
+          changed_quantity = bind_returned_reorder(predecessor_scores, [["SELL", "WOOL", 1], ["SELL", "CARROT", 2]])
+          if changed_quantity["bound"] or changed_quantity["reason"] != "returned_signature_missing_or_ambiguous":
+              raise SystemExit(f"changed-quantity returned-row false-green: {changed_quantity}")
+
           telemetry = []
           tele_path = out / "row-shed-telemetry.jsonl"
           if tele_path.is_file():
               telemetry = [json.loads(line) for line in tele_path.read_text().splitlines() if line.strip()]
           applied = []
+          internal_reordered = []
           reordered = []
+          unbound_reorders = []
+          invalid_bindings = []
           for rec in telemetry:
               diag = rec.get("diagnostics") or {}
               if diag.get("status") != "applied":
                   continue
               applied.append(rec)
               scores = diag.get("scores") or []
-              ranked = [x.get("original_index") for x in sorted(scores, key=lambda x: x.get("impact", 0), reverse=True)]
-              original = [x.get("original_index") for x in scores]
-              if ranked != original:
-                  reordered.append({
+              binding = bind_returned_reorder(scores, rec.get("returned_market"))
+              if binding["diagnostic_reordered"]:
+                  witness = {
                       "step": rec.get("step"),
                       "player": rec.get("player"),
-                      "original_order": original,
-                      "ranked_order": ranked,
+                      "original_order": binding["original_order"],
+                      "ranked_order": binding["ranked_order"],
+                      "returned_positions": binding["returned_positions"],
+                      "returned_action_binding": binding["reason"],
+                      "scores": scores,
+                      "returned_market": rec.get("returned_market"),
+                  }
+                  internal_reordered.append(witness)
+                  if binding["bound"]:
+                      reordered.append(witness)
+                  else:
+                      unbound_reorders.append(witness)
+              elif binding["reason"] != "diagnostic_identity":
+                  invalid_bindings.append({
+                      "step": rec.get("step"),
+                      "player": rec.get("player"),
+                      "returned_action_binding": binding["reason"],
                       "scores": scores,
                       "returned_market": rec.get("returned_market"),
                   })
 
           receipt = {
-              "schema": "titan-v4-row-shed-postimage-field/v1",
+              "schema": "titan-v4-row-shed-postimage-field/v2",
               "generation": "authenticated-b567-composition-foundation",
               "foundation_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
               "graph_frozen_git_blob": "4a5d3d5f4bed04acf73c7339e41fed56badf34c9",
@@ -361,9 +460,15 @@ jobs:
               "scheduled_games_per_arm": 6,
               "applied_callbacks": len(applied),
               "natural_activation_witness": bool(applied),
+              "internal_reorder_candidates": len(internal_reordered),
+              "returned_action_unbound_reorder_candidates": len(unbound_reorders),
+              "returned_action_binding_failures": len(invalid_bindings),
               "natural_reorder_callbacks": len(reordered),
               "natural_reorder_witness": bool(reordered),
+              "returned_action_binding_required": True,
               "reorder_witnesses": reordered[:20],
+              "unbound_reorder_candidates": unbound_reorders[:20],
+              "invalid_binding_callbacks": invalid_bindings[:20],
               "paired_cells": cells,
               "trace_changed_cells": trace_changes,
               "paired_margin_delta_mean": statistics.mean(margin_deltas),
@@ -373,8 +478,12 @@ jobs:
               "production_activated": False,
               "promotion_authorized": False,
           }
-          if reordered:
+          if invalid_bindings:
+              receipt["verdict"] = "HOLD_RETURNED_ACTION_BINDING_INVALID"
+          elif reordered:
               receipt["verdict"] = "NATURAL_REORDER_WITNESS"
+          elif unbound_reorders:
+              receipt["verdict"] = "HOLD_REORDER_NOT_BOUND_TO_RETURNED_ACTION"
           elif applied:
               receipt["verdict"] = "NATURAL_ENGAGEMENT_NO_REORDER_IN_PANEL"
           else:
@@ -383,7 +492,9 @@ jobs:
           print(json.dumps({
               "verdict": receipt["verdict"],
               "applied_callbacks": receipt["applied_callbacks"],
+              "internal_reorder_candidates": receipt["internal_reorder_candidates"],
               "natural_reorder_callbacks": receipt["natural_reorder_callbacks"],
+              "returned_action_unbound_reorder_candidates": receipt["returned_action_unbound_reorder_candidates"],
               "trace_changed_cells": trace_changes,
               "paired_margin_delta_mean": receipt["paired_margin_delta_mean"],
           }, sort_keys=True))
