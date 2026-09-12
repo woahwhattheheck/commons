@@ -88,13 +88,30 @@ class R5CurrentAbiClosure(unittest.TestCase):
     def test_closure_is_diagnostic_only(self):
         self.assertEqual(
             self.manifest["status"],
-            "preserved_generator_level_donor_not_integrated",
+            "closed_nonportable_current_abi",
         )
         self.assertFalse(self.manifest["default"])
+        closure = self.manifest["current_abi_closure"]
+        self.assertEqual(closure["proved_by_pr"], 12836)
+        self.assertEqual(
+            closure["verdict"],
+            "nonportable_no_current_authoritative_target",
+        )
+        self.assertIn("identity-preserving legacy-plan-3", closure["reopen_only_if"])
         self.assertIn("do not execute legacy apply_v4 against the current production ABI",
                       self.manifest["integration_contract"])
         self.assertIn("do not replace or overwrite the shared modern composer/materializer with the legacy generator",
                       self.manifest["integration_contract"])
+        self.assertTrue(any(
+            "do not approximate the legacy tape-9 continuation" in line
+            for line in self.manifest["integration_contract"]
+        ))
+
+    def test_report_records_closed_manifest_state(self):
+        self.assertEqual(
+            self.report["manifest_status_before_audit"],
+            "closed_nonportable_current_abi",
+        )
 
     def test_report_is_stable_json(self):
         encoded = json.dumps(self.report, sort_keys=True, separators=(",", ":"))
