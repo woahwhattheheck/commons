@@ -45,11 +45,20 @@ def _runtime_feature_data(feature_data):
     }
 
 
+def _town_procurement_enabled(feature_data):
+    """Bind the entrypoint-owned town flag with the runtime's exact-bool policy."""
+    value = feature_data.get('town_procurement', False)
+    if type(value) is not bool:
+        raise TypeError('town_procurement must be bool')
+    return value
+
+
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
     feature_data = _runtime_feature_data(feature_data)
-    town_enabled = bool(feature_data.pop('town_procurement', False))
+    town_enabled = _town_procurement_enabled(feature_data)
+    feature_data.pop('town_procurement', None)
     features = Features(**feature_data)
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
         raise ValueError('town_procurement is the tested nonterminal frozen composition')
@@ -335,8 +344,8 @@ def agent(observation, configuration=None):
 
     feature_data = (json.loads((root/'TITAN-CONFIG.json').read_text())
                     if replace else None)
-    town_enabled = (bool(feature_data.get('town_procurement', False)) if replace
-                    else bool(getattr(instance, 'town_procurement_enabled', False)))
+    town_enabled = (_town_procurement_enabled(feature_data) if replace
+                    else instance.town_procurement_enabled)
     if town_enabled:
         receipt_obs = dict(observation)
         receipt_obs['step'] = step
