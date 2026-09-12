@@ -197,7 +197,7 @@ def build_single_counterfactual(
     enabled: bool = False,
 ):
     """Rewrite one conditional current FEED to PASS for external replay only."""
-    if not enabled:
+    if enabled is not True:
         return current_action
     if type(candidate_index) is not int or candidate_index < 0:
         return current_action
