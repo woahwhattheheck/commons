@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-12T23:48:08Z",
+ "heartbeat_at": "2026-09-12T23:55:58Z",
  "holder": "ASTRA-GPT-5.6-Sol-chat",
  "key": "pr-13512",
- "note": "review + merge drain; independent exact-head source pass for V5 exporter overlap custody corrective",
+ "note": "review + merge drain; current semantic head f44be001 source-clean review 5188629945; exact-head mounted/hosted execution still pending, HOLD merge",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-12T23:48:08Z",
