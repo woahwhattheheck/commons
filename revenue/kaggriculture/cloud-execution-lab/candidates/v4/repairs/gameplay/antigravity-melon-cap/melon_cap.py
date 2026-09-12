@@ -6,6 +6,13 @@ sufficient to cap lifetime production: held MELON and live MELON plantings are
 already committed supply too. This source therefore reserves all three before
 admitting any new MELON proposal.
 
+FourthQuadrant proposals are mutually exclusive alternatives. Their executable
+work lives in ``proposal['variants'][route_id]['patches']``; outer ``tiles`` and
+``seed_units`` are metadata only. MELON alternatives are therefore admitted
+whole and unchanged only after every route variant authenticates the same
+executable MELON PLANT cardinality. An oversized or malformed MELON alternative
+is dropped; inspecting one alternative never spends budget for another.
+
 The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
 engine town-center consumption is handled only by the sold-count fallback.
@@ -138,17 +145,95 @@ def max_melon_plants(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> in
     return remaining_melon_budget(observation, cap) // MELON_UNITS_PER_PLANT
 
 
-def _proposal_size(proposal: dict[str, Any]) -> tuple[int | None, list[Any] | None]:
+def _is_melon_plant(action: Any) -> bool:
+    return (isinstance(action, (list, tuple)) and len(action) >= 2
+            and action[0] == "PLANT" and action[1] == "MELON")
+
+
+def _variant_new_melon_plants(variant: Any, workers: int) -> int | None:
+    """Count executable MELON PLANTs in FourthQuadrant-added worker slots.
+
+    Canonical FourthQuadrant appends ``workers`` temporary workers after the
+    ``incumbent_hands`` recorded in each ``worker_days`` entry. Counting only
+    those slots avoids charging unrelated authored actions copied into patch
+    rows while still inspecting the exact rows the consumer will execute.
+    """
+    if not isinstance(variant, dict) or workers <= 0:
+        return None
+    patches = variant.get("patches")
+    worker_days = variant.get("worker_days")
+    if not isinstance(patches, dict) or not isinstance(worker_days, list):
+        return None
+
+    days: dict[int, int] = {}
+    for entry in worker_days:
+        if not isinstance(entry, dict):
+            return None
+        day = _plain_nonnegative_int(entry.get("day"))
+        incumbent = _plain_nonnegative_int(entry.get("incumbent_hands"))
+        if day is None or incumbent is None or day in days:
+            return None
+        days[day] = incumbent
+    if not days:
+        return None
+
+    plants = 0
+    for step, row in patches.items():
+        step_i = _plain_nonnegative_int(step)
+        if step_i is None or not isinstance(row, dict):
+            return None
+        incumbent = days.get(step_i // 24)
+        if incumbent is None:
+            return None
+        hands = row.get("hands", [])
+        if not isinstance(hands, (list, tuple)):
+            return None
+        for action in hands[incumbent:incumbent + workers]:
+            plants += int(_is_melon_plant(action))
+    return plants
+
+
+def executable_melon_plants(proposal: Any) -> int | None:
+    """Authenticate one canonical FourthQuadrant MELON alternative.
+
+    All route variants must execute the same positive number of newly-added
+    MELON PLANT actions, and that cardinality must agree with producer metadata.
+    Any mismatch fails closed rather than trusting shallow metadata.
+    """
+    if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
+        return None
+    workers = _plain_nonnegative_int(proposal.get("workers"))
     tiles = proposal.get("tiles")
-    if isinstance(tiles, (list, tuple)):
-        return len(tiles), list(tiles)
-    size = _plain_nonnegative_int(proposal.get("size"))
-    return size, None
+    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
+    variants = proposal.get("variants")
+    if (workers is None or workers <= 0 or not isinstance(tiles, (list, tuple))
+            or not isinstance(variants, dict) or not variants):
+        return None
+    expected = len(tiles)
+    if expected <= 0 or seed_units != expected:
+        return None
+
+    counts = []
+    for route_id, variant in variants.items():
+        if not isinstance(route_id, str) or not route_id:
+            return None
+        count = _variant_new_melon_plants(variant, workers)
+        if count is None:
+            return None
+        counts.append(count)
+    if any(count != expected for count in counts):
+        return None
+    return expected
 
 
 def filter_proposals(proposals: Any, observation: Any,
                      cap: int = MELON_LIFETIME_UNIT_CAP) -> list[Any]:
-    """Bound the *aggregate* new MELON commitment across one proposal batch."""
+    """Keep complete MELON alternatives whose executable commitment fits.
+
+    FourthQuadrant admission selects at most one supplied proposal, so candidate
+    alternatives do not spend one another's budget. Objects are never shrunk:
+    admitted alternatives retain identity for the consumer's membership check.
+    """
     if not isinstance(proposals, (list, tuple)):
         return []
     plants_left = max_melon_plants(observation, cap)
@@ -157,28 +242,9 @@ def filter_proposals(proposals: Any, observation: Any,
         if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
             out.append(proposal)
             continue
-
-        size, tiles = _proposal_size(proposal)
-        if size is None or size <= 0 or plants_left <= 0:
-            continue
-        allowed = min(size, plants_left)
-        plants_left -= allowed
-
-        if allowed == size:
+        plants = executable_melon_plants(proposal)
+        if plants is not None and plants <= plants_left:
             out.append(proposal)
-            continue
-
-        shrunk = dict(proposal)
-        if tiles is not None:
-            shrunk["tiles"] = tiles[:allowed]
-        if "size" in shrunk:
-            shrunk["size"] = allowed
-        if "seed_units" in shrunk:
-            seed_units = _plain_nonnegative_int(shrunk["seed_units"])
-            if seed_units is None:
-                continue
-            shrunk["seed_units"] = seed_units * allowed // size
-        out.append(shrunk)
     return out
 
 
