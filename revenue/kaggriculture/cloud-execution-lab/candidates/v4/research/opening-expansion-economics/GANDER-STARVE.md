@@ -29,6 +29,18 @@ Across the remaining Day 1..29 service window, the constructed cadence:
 
 These are mechanism/action/wheat-unit results. They are **not cash or terminal-margin results**: WHEAT acquisition price, EGG/FERT sale timing, shed pressure, CARE opportunity cost, rival behavior, town demand and displaced opening work are not priced here.
 
+## Route-capacity dividend
+
+The alternation is more than a WHEAT discount. Under the exact canonical GANDER two-worker partition and the 23 unit-action slots remaining after the daily HIRE:
+
+| service | main farmer | hired hand | fits both? |
+| --- | ---: | ---: | --- |
+| FEED + FERT | 20 | 21 | yes |
+| skip FEED + FERT + HARVEST | 19 | 20 | yes |
+| FEED + FERT + HARVEST | 25 | 25 | **no** |
+
+So an all-nine same-day full service pass cannot be performed by these two workers when FEED is retained; each route is two actions over the available window. Removing FEED on the safe alternating days makes the all-nine EGG harvest fit while still collecting every FERT. This does not prove that no more complex rotating-harvest schedule could work under daily feeding, but it proves the direct full-service route that the composite replaces is infeasible and quantifies the capacity created by the skip.
+
 ## Why this is stronger than either input alone
 
 STARVEORACLE proves that an unfed-but-surviving goose still receives base EGG production and fertilizer, but it does not prove a nine-goose live route can service the next feed and realize output in time. GANDER proves the nine-goose geometry and daily FEED/FERT route, but it pays the full WHEAT/action load.
@@ -54,7 +66,7 @@ Only after both helper blobs match does the composite execute them. GANDER suppl
 
 The gameplay/economics owner should consume this cadence through the existing opener/native scheduler, not a sibling controller. Run current-native both seats against current opponents and compare the incumbent opening with feasible GANDER counts under exact WHEAT acquisition and sale behavior. Record CARE displacement, shed occupancy, EGG/FERT realization and sale timing, fallback feed-deadline safety, natural engagement, and terminal margin.
 
-Promotion requires positive paired terminal economics with no escape/storage/new-loss regressions. The 126-unit WHEAT saving is a strong mechanism signal, not an activation decision.
+Promotion requires positive paired terminal economics with no escape/storage/new-loss regressions. The 126-unit WHEAT saving and the two-worker route-capacity dividend are strong mechanism signals, not an activation decision.
 
 ## Validation
 
@@ -66,4 +78,4 @@ python -O test_gander_starve_cadence.py
 python gander_starve_cadence.py
 ```
 
-The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit, pre-import helper custody, explicit CARE exclusion and exact engine identities.
+The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit and full-service overflow, pre-import helper custody, explicit CARE exclusion and exact engine identities.
