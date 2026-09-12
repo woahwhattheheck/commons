@@ -8,24 +8,10 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/eod_capacity_rescue.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_eod_capacity_rescue.py"
       - "revenue/kaggriculture/cloud-execution-lab/test_eod_capacity_rescue_runtime.py"
-      - "revenue/kaggriculture/cloud-execution-lab/main.py"
-      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
-      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
-      - "revenue/kaggriculture/cloud-execution-lab/build_integrated.py"
       - ".github/workflows/titan-v5-eod-capacity-rescue.yml"
   push:
     branches:
       - "astra/titan-v5-eod-capacity-rescue-20260912"
-    paths:
-      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/eod-capacity-rescue/**"
-      - "revenue/kaggriculture/cloud-execution-lab/eod_capacity_rescue.py"
-      - "revenue/kaggriculture/cloud-execution-lab/test_eod_capacity_rescue.py"
-      - "revenue/kaggriculture/cloud-execution-lab/test_eod_capacity_rescue_runtime.py"
-      - "revenue/kaggriculture/cloud-execution-lab/main.py"
-      - "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py"
-      - "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json"
-      - "revenue/kaggriculture/cloud-execution-lab/build_integrated.py"
-      - ".github/workflows/titan-v5-eod-capacity-rescue.yml"
   workflow_dispatch:
 
 permissions:
@@ -58,13 +44,12 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m py_compile \
-            eod_capacity_rescue.py test_eod_capacity_rescue.py \
+            eod_capacity_rescue.py test_eod_capacity_rescue.py test_eod_capacity_rescue_runtime.py \
             candidates/v5/eod-capacity-rescue/compose_current_runtime.py \
             candidates/v5/eod-capacity-rescue/paired_current.py \
             candidates/v5/eod-capacity-rescue/test_compose_current_runtime.py \
             candidates/v5/eod-capacity-rescue/test_paired_current.py \
-            candidates/v5/eod-capacity-rescue/test_paired_current_custody.py \
-            test_eod_capacity_rescue_runtime.py
+            candidates/v5/eod-capacity-rescue/test_paired_current_custody.py
           python -B -m unittest -v test_eod_capacity_rescue.py
           python -O -B -m unittest -v test_eod_capacity_rescue.py
           cd candidates/v5/eod-capacity-rescue
@@ -78,85 +63,3 @@ jobs:
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           git diff --check
           test -z "$(git status --porcelain)"
-
-  integrate-and-publish-current:
-    if: github.event_name == 'push' && github.ref_name == 'astra/titan-v5-eod-capacity-rescue-20260912'
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Verify exact branch custody
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          remote="$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)"
-          test "$remote" = "$GITHUB_SHA"
-      - name: Detect already-integrated successor
-        id: integrated
-        shell: bash
-        run: |
-          if grep -q 'eod_capacity_rescue: bool = False' revenue/kaggriculture/cloud-execution-lab/titan_runtime.py; then
-            echo 'skip=true' >> "$GITHUB_OUTPUT"
-          else
-            echo 'skip=false' >> "$GITHUB_OUTPUT"
-          fi
-      - name: Materialize, verify and build canonical package
-        if: steps.integrated.outputs.skip != 'true'
-        shell: bash
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
-        run: |
-          set -euo pipefail
-          LAB=revenue/kaggriculture/cloud-execution-lab
-          OUT="$RUNNER_TEMP/eod-current-postimage"
-          python -B "$LAB/candidates/v5/eod-capacity-rescue/compose_current_runtime.py" --root "$LAB" --out "$OUT"
-          cp "$OUT/main.py" "$LAB/main.py"
-          cp "$OUT/titan_runtime.py" "$LAB/titan_runtime.py"
-          cp "$OUT/TITAN-CONFIG.json" "$LAB/TITAN-CONFIG.json"
-          cp "$OUT/build_integrated.py" "$LAB/build_integrated.py"
-          cd "$LAB"
-          python -B -m py_compile \
-            main.py titan_runtime.py build_integrated.py eod_capacity_rescue.py \
-            test_eod_capacity_rescue.py test_eod_capacity_rescue_runtime.py \
-            test_overflow_safe_drop_runtime.py test_entrypoint_deadline.py \
-            test_final_market_pressure_entrypoint.py
-          python -B -m unittest -v \
-            test_eod_capacity_rescue.py test_eod_capacity_rescue_runtime.py \
-            test_overflow_safe_drop_runtime.py test_entrypoint_deadline.py \
-            test_final_market_pressure_entrypoint.py
-          python -O -B -m unittest -v \
-            test_eod_capacity_rescue.py test_eod_capacity_rescue_runtime.py \
-            test_overflow_safe_drop_runtime.py test_entrypoint_deadline.py \
-            test_final_market_pressure_entrypoint.py
-          python -B build_integrated.py
-          python -B build_integrated.py --check
-          find . -type d -name __pycache__ -prune -exec rm -rf {} +
-          git diff --check
-      - name: Publish one same-carrier successor
-        if: steps.integrated.outputs.skip != 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          LAB=revenue/kaggriculture/cloud-execution-lab
-          remote="$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}" | cut -f1)"
-          test "$remote" = "$GITHUB_SHA"
-          git add -A -- \
-            "$LAB/main.py" "$LAB/titan_runtime.py" "$LAB/TITAN-CONFIG.json" "$LAB/build_integrated.py" \
-            "$LAB/exports" \
-            "$LAB/runtime/integrated-selected/CURRENT-SOURCE.json" \
-            "$LAB/runtime/integrated-selected/CURRENT-ARCHIVE.json"
-          unexpected="$(git diff --cached --name-only | grep -Ev '^revenue/kaggriculture/cloud-execution-lab/(main.py|titan_runtime.py|TITAN-CONFIG.json|build_integrated.py|exports/|runtime/integrated-selected/CURRENT-(SOURCE|ARCHIVE)\.json)$' || true)"
-          test -z "$unexpected"
-          git diff --cached --check
-          git config user.name 'titan-v5-eod-bot'
-          git config user.email 'titan-v5-eod-bot@users.noreply.github.com'
-          git commit -m 'TITAN V5 EOD: integrate after overflow and refresh package'
-          git push origin "HEAD:${GITHUB_REF_NAME}"
