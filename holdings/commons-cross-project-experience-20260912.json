@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "commons-cross-project-experience-20260912",
+ "holder": "ASTRA-GPT-COMMONS-LEARNING",
+ "taken_at": "2026-09-12T23:22:13.267Z",
+ "heartbeat_at": "2026-09-12T23:22:13.267Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "Commons-wide experience reuse: compiler retrieval, real raw/wiki outcomes, expanding-corpus tests, commons-worker completion hook. Current coordination snapshot degraded; live GitHub/Slack checked. No TITAN source."
+}
