@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import stat
 
 BASE_SHA = '20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239'
 V31_SHA = '5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361'
@@ -16,7 +17,7 @@ ROUTER = 'r04_full_router.py'
 ROUTER_SHA = '41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a'
 GATE = 'p01_productive_expansion_gate.py'
 ANCHOR = b'\n\ndef _v219_walk(pos, target):\n'
-WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks, then require observed payback.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_gate_accepts', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_supply',\n             'p01_projected_gross_ceiling', 'p01_modeled_cost_ceiling'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if record['decision'] is None:\n        _V219_REPORT['p01_gate_passthroughs'] += 1\n        return True\n    _V219_REPORT['p01_visible_rival_field_supply'] = int(record['visible_rival_field_supply_bound'])\n    _V219_REPORT['p01_projected_gross_ceiling'] = int(record['projected_gross_ceiling'])\n    _V219_REPORT['p01_modeled_cost_ceiling'] = int(record['modeled_cost_ceiling'])\n    if record['decision']:\n        _V219_REPORT['p01_gate_accepts'] += 1\n        return True\n    _V219_REPORT['p01_payback_rejects'] += 1\n    return False\n'''
+WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks, then apply only a\n# reject-safe public-evidence negative-payback proof. Inconclusive evidence\n# preserves the exact parent decision.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_projection',\n             'p01_modeled_gross_visible_field', 'p01_gross_upper_bound',\n             'p01_unavoidable_cost_floor', 'p01_labor_cost_floor'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if 'visible_rival_field_projection' in record:\n        _V219_REPORT['p01_visible_rival_field_projection'] = int(record['visible_rival_field_projection'])\n    if record.get('modeled_gross_visible_field') is not None:\n        _V219_REPORT['p01_modeled_gross_visible_field'] = int(record['modeled_gross_visible_field'])\n    if 'gross_revenue_upper_bound' in record:\n        _V219_REPORT['p01_gross_upper_bound'] = int(record['gross_revenue_upper_bound'])\n    if 'unavoidable_cost_floor' in record:\n        _V219_REPORT['p01_unavoidable_cost_floor'] = int(record['unavoidable_cost_floor'])\n    if 'labor_cost_floor' in record:\n        _V219_REPORT['p01_labor_cost_floor'] = int(record['labor_cost_floor'])\n    if record['decision'] is None:\n        _V219_REPORT['p01_gate_passthroughs'] += 1\n        return True\n    if record['decision'] is False:\n        _V219_REPORT['p01_payback_rejects'] += 1\n        return False\n    raise RuntimeError('P01 gate returned unsupported positive decision')\n'''
 
 
 def _sha(raw):
@@ -55,65 +56,35 @@ def _validate_publication_paths(out, tar_path, receipt_path):
         raise ValueError('archive and receipt must not be inside the output directory')
 
 
-def _reserve(path):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, 'O_NOFOLLOW'):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o644)
-    stat = os.fstat(fd)
-    return fd, (stat.st_dev, stat.st_ino)
-
-
-def _write_reserved(fd, payload):
-    view = memoryview(payload)
-    while view:
-        written = os.write(fd, view)
-        if written <= 0:
-            raise OSError('short write while publishing P01 artifact')
-        view = view[written:]
-    os.fsync(fd)
-
-
-def _unlink_if_owned(path, identity):
-    path = Path(path)
-    try:
-        stat = path.stat(follow_symlinks=False)
-    except FileNotFoundError:
-        return
-    if (stat.st_dev, stat.st_ino) == identity:
-        path.unlink()
-
-
 def _rmtree_if_owned(path, identity):
     path = Path(path)
     try:
-        stat = path.stat(follow_symlinks=False)
+        stat_result = os.lstat(path)
     except FileNotFoundError:
         return
-    if (stat.st_dev, stat.st_ino) == identity and path.is_dir():
+    if ((stat_result.st_dev, stat_result.st_ino) == identity
+            and stat.S_ISDIR(stat_result.st_mode)):
         shutil.rmtree(path)
 
 
 def _publish(files, packed, receipt, out, tar_path, receipt_path):
-    """Publish archive+receipt as one create-exclusive owned pair."""
+    """Publish the output tree plus an archive/receipt pair using shared custody."""
+    from publication_custody import publish_exclusive
+
     out, tar_path, receipt_path = map(Path, (out, tar_path, receipt_path))
     _validate_publication_paths(out, tar_path, receipt_path)
     if out.exists():
         raise FileExistsError('output directory already exists')
 
-    tar_fd = receipt_fd = None
-    owned_finals = []
+    out_fd = None
     out_identity = None
     try:
-        tar_fd, tar_identity = _reserve(tar_path)
-        owned_finals.append((tar_path, tar_identity))
-        receipt_fd, receipt_identity = _reserve(receipt_path)
-        owned_finals.append((receipt_path, receipt_identity))
-
         out.mkdir(parents=True)
-        out_stat = out.stat(follow_symlinks=False)
+        flags = os.O_RDONLY | getattr(os, 'O_DIRECTORY', 0) | getattr(os, 'O_NOFOLLOW', 0)
+        out_fd = os.open(out, flags)
+        out_stat = os.fstat(out_fd)
+        if not stat.S_ISDIR(out_stat.st_mode):
+            raise OSError('output path is not a directory')
         out_identity = (out_stat.st_dev, out_stat.st_ino)
         for name, body in files.items():
             path = out / name
@@ -121,22 +92,17 @@ def _publish(files, packed, receipt, out, tar_path, receipt_path):
             path.write_bytes(body)
 
         receipt_bytes = (json.dumps(receipt, indent=2) + '\n').encode('utf-8')
-        _write_reserved(tar_fd, packed)
-        _write_reserved(receipt_fd, receipt_bytes)
-        os.close(tar_fd); tar_fd = None
-        os.close(receipt_fd); receipt_fd = None
+        publish_exclusive([
+            (tar_path, packed),
+            (receipt_path, receipt_bytes),
+        ])
     except BaseException:
-        for fd in (tar_fd, receipt_fd):
-            if fd is not None:
-                try:
-                    os.close(fd)
-                except OSError:
-                    pass
         if out_identity is not None:
             _rmtree_if_owned(out, out_identity)
-        for path, identity in reversed(owned_finals):
-            _unlink_if_owned(path, identity)
         raise
+    finally:
+        if out_fd is not None:
+            os.close(out_fd)
 
 
 def main():
@@ -159,14 +125,15 @@ def main():
     files = inject(base_files, gate_source)
     packed = archive_bytes(files)
     receipt = {
-        'schema': 'titan-v5-p01-productive-expansion/v2',
+        'schema': 'titan-v5-p01-productive-expansion/v3',
         'base_candidate_sha256': BASE_SHA,
         'candidate_archive_sha256': _sha(packed),
         'v31_archive_sha256': V31_SHA,
         'delivery_archive_sha256': DELIVERY_SHA,
         'changed_members': [ROUTER, GATE],
-        'labor_model': 'same-day-authored-parent-hires-upper-bound',
-        'rival_supply_scope': 'visible-field-only',
+        'decision_contract': 'reject-only-unavoidable-cost-floor-vs-default-curve-gross-upper-bound',
+        'labor_model': 'day18-commitment-hires-only-lower-bound',
+        'rival_supply_scope': 'visible-field-telemetry-only',
         'default_activation': False,
         'kaggle_submission_hold': True,
         'files': {name: _sha(body) for name, body in sorted(files.items())},
