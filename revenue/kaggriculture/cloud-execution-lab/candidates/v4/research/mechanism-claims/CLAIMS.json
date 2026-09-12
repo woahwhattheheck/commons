@@ -84,6 +84,27 @@
       ]
     },
     {
+      "id": "engine.fertilizer-floor-sale-recoverable-warehouse",
+      "status": "FALSIFIED",
+      "proposition": "A FERTILIZER unit sold at a $1 quote is added to public market inventory and can be bought back as recoverable off-site custody, making the floor a zero-friction infinite warehouse.",
+      "scope": "Pinned official-engine floor-price SELL custody plus the landed B7 exact-engine/current-ABI correction; paid disposal for shed-capacity relief and above-floor FERT sales are separate mechanisms.",
+      "disposition": "Do not build or revive r04_fert_warehouse, or any policy that counts a $1 FERT SELL as recoverable warehouse stock. Treat floor SELL as destructive shed disposal and consume the existing b7-shed-overflow floor-disposal authority for capacity-relief work.",
+      "next_gate": "Re-open only if an authenticated engine changes the $1 SELL supply exception or BUY_PRODUCT custody semantics, or if a successor engine supplies a distinct recoverable-storage mechanism.",
+      "tags": ["engine", "fertilizer", "market", "storage"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/b7-shed-overflow/FERT_FLOOR_DISPOSAL.md",
+          "git_blob": "1508ae340149793684b779b662ea3c2c24583ac9",
+          "anchors": [
+            "A `$1` sale can still be a **paid disposal** that opens shed room before the EOD inventory sweep.",
+            "Official engine blob `3c202c7ee921da239356789e266b694635103fc4` makes floor-price FERT sales destructive custody:",
+            "Therefore the old “zero-friction infinite off-site warehouse” interpretation is false."
+          ]
+        }
+      ]
+    },
+    {
       "id": "engine.market-first-commit-seat-advantage",
       "status": "FALSIFIED",
       "proposition": "Seat identity receives a structural market-quote advantage solely because player 0 commits market units before player 1 after both have been quoted from the same pre-commit inventory.",
@@ -99,6 +120,26 @@
           "anchors": [
             "\"market_seat_order_causal\": False,",
             "_assert_swapped(state_ab, state_ba)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.sell-consumes-shed-only",
+      "status": "CONFIRMED",
+      "proposition": "Official market SELL commits remove product units only from private shed stock; a returned SELL row has no actor or container selector and cannot directly liquidate worker-carried hand inventory.",
+      "scope": "Pinned official _commit_unit SELL branch only; worker DROP/PLACE, end-of-day inventory sweep, and candidate planning are separate mechanisms.",
+      "disposition": "Any SELL planner that reasons about carried inventories must first prove stock reaches the shed or remain fail-closed; do not emit extra SELL rows for hand inventory as if market execution selected a carrier.",
+      "next_gate": "Re-open only if an authenticated engine changes SELL to include an actor/container selector or another direct carried-inventory market path.",
+      "tags": ["engine", "market", "orders", "storage"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
+          "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+          "anchors": [
+            "if op == \"SELL\":",
+            "if private[\"shed\"].get(item, 0) <= 0:",
+            "private[\"shed\"][item] -= 1"
           ]
         }
       ]
