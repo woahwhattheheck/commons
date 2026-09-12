@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -238,6 +239,21 @@ class ProductiveExpansionPublication(unittest.TestCase):
             self.assertFalse(tar.exists())
             self.assertFalse(receipt.exists())
             self.assertFalse(out.exists())
+
+    def test_foreign_output_tree_replacement_is_preserved(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
+            def replace_tree_and_fail(_pairs):
+                shutil.rmtree(out)
+                out.mkdir()
+                (out/'FOREIGN').write_text('keep', encoding='utf-8')
+                raise OSError('injected shared publication failure')
+            with patch.object(publication_custody, 'publish_exclusive', side_effect=replace_tree_and_fail):
+                with self.assertRaisesRegex(OSError, 'injected shared publication failure'):
+                    builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            self.assertEqual((out/'FOREIGN').read_text(encoding='utf-8'), 'keep')
+            self.assertFalse(tar.exists())
+            self.assertFalse(receipt.exists())
 
     def test_success_delegates_pair_to_shared_publication_custody(self):
         with tempfile.TemporaryDirectory() as temp:
