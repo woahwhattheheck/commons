@@ -1,7 +1,9 @@
 import importlib.util
+import json
 import pathlib
 import tempfile
 import unittest
+from unittest import mock
 
 HERE = pathlib.Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location("route_motion_census", HERE / "route_motion_census.py")
@@ -16,6 +18,34 @@ def action(farmer=None, market=None):
         "hands": [],
         "market": market or [],
     }
+
+
+def standard_spec(board_size=10, turns_per_day=24):
+    return json.dumps(
+        {
+            "configuration": {
+                "boardSize": {"type": "integer", "default": board_size, "minimum": 4},
+                "turnsPerDay": {"type": "integer", "default": turns_per_day, "minimum": 1},
+            }
+        },
+        sort_keys=True,
+    ).encode("utf-8")
+
+
+def fake_engine():
+    return ("\n".join(mod.ENGINE_MARKERS) + "\n").encode("utf-8")
+
+
+def fake_router():
+    return ("\n".join(mod.ROUTER_MARKERS) + "\n").encode("utf-8")
+
+
+def fake_tapes():
+    return (
+        "def load_tapes():\n"
+        "    row = {'farmer': ['PASS'], 'hands': [], 'market': []}\n"
+        "    return [[dict(row) for _ in range(719)] for _ in range(13)]\n"
+    ).encode("utf-8")
 
 
 class MotionCensusTests(unittest.TestCase):
@@ -40,8 +70,6 @@ class MotionCensusTests(unittest.TestCase):
         self.assertEqual(
             report["closed_hire_free_motion_loops"][0]["movement_rows"], [0, 1]
         )
-        # Replacing only one member would leave the other executed move and
-        # therefore cannot inherit the closed-loop equivalence theorem.
         start = mod._default_spawn()
         after_east, _ = mod._move(start, "EAST", mod.BOARD_SIZE)
         after_west_only, _ = mod._move(start, "WEST", mod.BOARD_SIZE)
@@ -135,29 +163,123 @@ class MotionCensusTests(unittest.TestCase):
         self.assertEqual(route[647]["farmer"][1], 7)
         self.assertEqual(route[648]["farmer"][1], 2)
 
+    def test_standard_config_is_bound_to_10_by_10_and_24_turn_day(self):
+        self.assertEqual(
+            mod._standard_configuration(standard_spec()),
+            {"boardSize": 10, "turnsPerDay": 24},
+        )
+
+    def test_board_size_default_drift_fails_closed(self):
+        with self.assertRaises(mod.MotionCensusError):
+            mod._standard_configuration(standard_spec(board_size=12))
+
+    def test_turns_per_day_default_drift_fails_closed(self):
+        with self.assertRaises(mod.MotionCensusError):
+            mod._standard_configuration(standard_spec(turns_per_day=48))
+
+    def test_plain_integer_motion_configuration_required(self):
+        with self.assertRaises(mod.MotionCensusError):
+            mod.census_route([], board_size=True)
+        with self.assertRaises(mod.MotionCensusError):
+            mod.census_route([], turns_per_day=24.0)
+
     def test_source_drift_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
             root = pathlib.Path(td)
             engine = root / "engine.py"
+            spec = root / "engine.json"
             tapes = root / "tapes.py"
             router = root / "router.py"
             engine.write_text("x = 1\n", encoding="utf-8")
+            spec.write_bytes(standard_spec())
             tapes.write_text("x = 1\n", encoding="utf-8")
             router.write_text("x = 1\n", encoding="utf-8")
             with self.assertRaises(mod.MotionCensusError):
                 mod.verify_sources(
                     engine_path=engine,
+                    engine_spec_path=spec,
                     tapes_path=tapes,
                     router_path=router,
                 )
 
+    def test_authenticated_snapshots_survive_path_swap(self):
+        engine_bytes = fake_engine()
+        spec_bytes = standard_spec()
+        tape_bytes = fake_tapes()
+        router_bytes = fake_router()
+        poison = b"raise RuntimeError('path reopened after authentication')\n"
+
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            engine = root / "engine.py"
+            spec = root / "engine.json"
+            tapes = root / "tapes.py"
+            router = root / "router.py"
+            originals = {
+                engine: engine_bytes,
+                spec: spec_bytes,
+                tapes: tape_bytes,
+                router: router_bytes,
+            }
+            for path, data in originals.items():
+                path.write_bytes(data)
+
+            real_read = mod._read_snapshot
+
+            def capture_then_swap(path):
+                data = real_read(path)
+                path.write_bytes(poison)
+                return data
+
+            patches = (
+                mock.patch.object(mod, "EXPECTED_ENGINE_BLOB", mod._git_blob_bytes(engine_bytes)),
+                mock.patch.object(mod, "EXPECTED_ENGINE_SPEC_BLOB", mod._git_blob_bytes(spec_bytes)),
+                mock.patch.object(mod, "EXPECTED_TAPES_BLOB", mod._git_blob_bytes(tape_bytes)),
+                mock.patch.object(mod, "EXPECTED_ROUTER_BLOB", mod._git_blob_bytes(router_bytes)),
+                mock.patch.object(mod, "_read_snapshot", side_effect=capture_then_swap),
+            )
+            with patches[0], patches[1], patches[2], patches[3], patches[4]:
+                verified = mod.verify_sources(
+                    engine_path=engine,
+                    engine_spec_path=spec,
+                    tapes_path=tapes,
+                    router_path=router,
+                )
+
+            self.assertEqual(
+                verified.source_blobs["engine_blob"], mod._git_blob_bytes(engine_bytes)
+            )
+            self.assertEqual(
+                verified.source_blobs["r04_full_router_blob"], mod._git_blob_bytes(router_bytes)
+            )
+            self.assertEqual(
+                verified.standard_configuration,
+                {"boardSize": 10, "turnsPerDay": 24},
+            )
+            loaded = mod.load_tapes(path=tapes, snapshot=verified.tapes_snapshot)
+            self.assertEqual(len(loaded), 13)
+            self.assertTrue(all(len(tape) == 719 for tape in loaded))
+
     def test_checkout_sources_and_full_bank(self):
-        if not (mod.ENGINE_PATH.exists() and mod.TAPES_PATH.exists() and mod.ROUTER_PATH.exists()):
+        if not (
+            mod.ENGINE_PATH.exists()
+            and mod.ENGINE_SPEC_PATH.exists()
+            and mod.TAPES_PATH.exists()
+            and mod.ROUTER_PATH.exists()
+        ):
             self.skipTest("repository checkout not mounted")
         sources = mod.verify_sources()
-        tapes = mod.load_tapes()
+        tapes = mod.load_tapes(snapshot=sources.tapes_snapshot)
         report = mod.build_report(tapes, sources)
         self.assertEqual(report["schema"], "titan.v4.route-motion-census.v2")
+        self.assertEqual(
+            report["standard_configuration"],
+            {"boardSize": 10, "turnsPerDay": 24},
+        )
+        self.assertEqual(
+            report["sources"]["engine_spec_blob"],
+            mod.EXPECTED_ENGINE_SPEC_BLOB,
+        )
         self.assertEqual(len(report["routes"]), 13)
         self.assertEqual(
             report["totals"]["individually_pass_equivalent_count"],
