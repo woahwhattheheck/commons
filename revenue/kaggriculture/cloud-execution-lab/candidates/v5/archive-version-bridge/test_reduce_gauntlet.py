@@ -18,12 +18,20 @@ class ReduceGauntletTests(unittest.TestCase):
             "candidate_sha256": rg.EXACT[label],
             "index_sha256": "a" * 64,
             "engine": {"e": "b" * 64},
+            "evaluator_sha256": "c" * 64,
+            "loader_sha256": "d" * 64,
             "selected_fixtures": selected_fixtures,
             "group": "all",
             "shard": shard,
             "shards": shards,
         })
         return path
+
+    def mutate_run(self, root, **updates):
+        path = Path(root) / "run.json"
+        run = json.loads(path.read_text())
+        run.update(updates)
+        write_json(path, run)
 
     def game(
         self,
@@ -143,9 +151,7 @@ class ReduceGauntletTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             a = self.root(td, "v31")
             b = self.root(td, "v4")
-            run = json.loads((a / "run.json").read_text())
-            run["candidate_sha256"] = "0" * 64
-            write_json(a / "run.json", run)
+            self.mutate_run(a, candidate_sha256="0" * 64)
             with self.assertRaises(rg.ReductionError):
                 rg.reduce_roots([a], [b])
 
@@ -163,6 +169,44 @@ class ReduceGauntletTests(unittest.TestCase):
             b = self.root(td, "v4", selected_fixtures=3)
             with self.assertRaises(rg.ReductionError):
                 rg.reduce_roots([a], [b])
+
+    def test_cross_version_index_identity_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a, b = self.root(td, "v31"), self.root(td, "v4")
+            self.mutate_run(b, index_sha256="e" * 64)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b])
+
+    def test_cross_version_engine_identity_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a, b = self.root(td, "v31"), self.root(td, "v4")
+            self.mutate_run(b, engine={"e": "f" * 64})
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b])
+
+    def test_cross_version_evaluator_identity_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a, b = self.root(td, "v31"), self.root(td, "v4")
+            self.mutate_run(b, evaluator_sha256="e" * 64)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b])
+
+    def test_cross_version_loader_identity_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a, b = self.root(td, "v31"), self.root(td, "v4")
+            self.mutate_run(b, loader_sha256="e" * 64)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b])
+
+    def test_duplicate_shard_receipt_fails_without_cell_collision(self):
+        with tempfile.TemporaryDirectory() as td:
+            a0 = self.root(td, "v31", 0, 2, selected_fixtures=1)
+            duplicate = Path(td) / "v31-duplicate"
+            duplicate.mkdir()
+            (duplicate / "run.json").write_bytes((a0 / "run.json").read_bytes())
+            b0 = self.root(td, "v4", 0, 2, selected_fixtures=1)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a0, duplicate], [b0])
 
     def test_duplicate_cell_across_roots_fails(self):
         with tempfile.TemporaryDirectory() as td:
