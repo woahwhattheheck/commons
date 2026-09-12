@@ -41,7 +41,7 @@ def fixture(*, step=23, shed=None, cargo=None, market=None):
         },
         'market': {'prices': {item: 4 for item in (
             'WHEAT', 'CARROT', 'TOMATO', 'STRAWBERRY', 'MELON',
-            'EGG', 'MILK', 'WOOL', 'FERTILIZER')},
+            'EGG', 'MILK', 'WOOL', 'FERTILIZER')}},
     }
     action = {'farmer': ['PASS'], 'hands': [], 'market': list(market or [])}
     return obs, action
