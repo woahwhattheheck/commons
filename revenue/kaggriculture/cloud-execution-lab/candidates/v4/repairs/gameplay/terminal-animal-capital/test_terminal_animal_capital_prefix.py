@@ -19,27 +19,29 @@ class H5ExecutablePrefixTests(unittest.TestCase):
         rows = [["SELL", "WHEAT", 1] for _ in range(10)]
         rows.append(["BUY_ANIMAL", "COW", 1])
         a = action(*rows)
-        plan = plan_terminal_animal_capital(a, {"step": 648}, BASE)
+        plan = plan_terminal_animal_capital(a, {"step": 717}, BASE)
         self.assertFalse(plan["eligible"])
         self.assertEqual(plan["reason"], "NO_PROVABLY_DEAD_ANIMAL_CAPITAL")
-        self.assertIs(apply_terminal_animal_capital(a, {"step": 648}, BASE, enabled=True), a)
+        self.assertIs(
+            apply_terminal_animal_capital(a, {"step": 717}, BASE, enabled=True), a
+        )
 
     def test_custom_limit_drops_only_executable_dead_row_and_preserves_suffix(self):
         cfg = {**BASE, "maxMarketOrdersPerTurn": 1}
         suffix = ["BUY_SEED", "WHEAT", 999]
         a = action(["BUY_ANIMAL", "GOOSE", 1], suffix)
-        plan = plan_terminal_animal_capital(a, {"step": 648}, cfg)
+        plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
         self.assertTrue(plan["eligible"])
         self.assertEqual(plan["drop_indices"], [0])
         self.assertEqual(plan["max_market_orders"], 1)
-        out = apply_terminal_animal_capital(a, {"step": 648}, cfg, enabled=True)
+        out = apply_terminal_animal_capital(a, {"step": 717}, cfg, enabled=True)
         self.assertEqual(out["market"], [[], suffix])
         self.assertEqual(a["market"], [["BUY_ANIMAL", "GOOSE", 1], suffix])
 
     def test_nonexecuted_protected_suffix_does_not_block_executable_drop(self):
         cfg = {**BASE, "maxMarketOrdersPerTurn": 1}
         a = action(["BUY_ANIMAL", "SHEEP", 1], ["HIRE", 1])
-        plan = plan_terminal_animal_capital(a, {"step": 648}, cfg)
+        plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
         self.assertTrue(plan["eligible"])
         self.assertEqual(plan["drop_indices"], [0])
 
@@ -47,13 +49,13 @@ class H5ExecutablePrefixTests(unittest.TestCase):
         cfg = {**BASE, "maxMarketOrdersPerTurn": 1}
         malformed = {"not": "an executable market row"}
         a = action(["BUY_ANIMAL", "COW", 1], malformed)
-        out = apply_terminal_animal_capital(a, {"step": 648}, cfg, enabled=True)
+        out = apply_terminal_animal_capital(a, {"step": 717}, cfg, enabled=True)
         self.assertEqual(out["market"], [[], malformed])
 
     def test_executable_protected_row_still_blocks(self):
         cfg = {**BASE, "maxMarketOrdersPerTurn": 2}
         a = action(["BUY_ANIMAL", "GOOSE", 1], ["HIRE", 1])
-        plan = plan_terminal_animal_capital(a, {"step": 648}, cfg)
+        plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
         self.assertFalse(plan["eligible"])
         self.assertEqual(plan["reason"], "DOWNSTREAM_AFFORDABILITY_AMBIGUITY")
 
@@ -62,22 +64,25 @@ class H5ExecutablePrefixTests(unittest.TestCase):
         for value in (None, True, 1.0, "10", 0, -1):
             with self.subTest(value=value):
                 cfg = {**BASE, "maxMarketOrdersPerTurn": value}
-                plan = plan_terminal_animal_capital(a, {"step": 648}, cfg)
+                plan = plan_terminal_animal_capital(a, {"step": 717}, cfg)
                 self.assertFalse(plan["eligible"])
                 self.assertEqual(plan["reason"], "BAD_MAX_MARKET_ORDERS")
-                self.assertIs(apply_terminal_animal_capital(a, {"step": 648}, cfg, enabled=True), a)
+                self.assertIs(
+                    apply_terminal_animal_capital(a, {"step": 717}, cfg, enabled=True),
+                    a,
+                )
 
     def test_object_config_distinguishes_missing_from_explicit_none(self):
         a = action(["BUY_ANIMAL", "GOOSE", 1])
         missing = SimpleNamespace(turnsPerDay=24, episodeSteps=720)
-        missing_plan = plan_terminal_animal_capital(a, {"step": 648}, missing)
+        missing_plan = plan_terminal_animal_capital(a, {"step": 717}, missing)
         self.assertTrue(missing_plan["eligible"])
         self.assertEqual(missing_plan["max_market_orders"], 10)
 
         malformed = SimpleNamespace(
             turnsPerDay=24, episodeSteps=720, maxMarketOrdersPerTurn=None
         )
-        bad_plan = plan_terminal_animal_capital(a, {"step": 648}, malformed)
+        bad_plan = plan_terminal_animal_capital(a, {"step": 717}, malformed)
         self.assertFalse(bad_plan["eligible"])
         self.assertEqual(bad_plan["reason"], "BAD_MAX_MARKET_ORDERS")
 
