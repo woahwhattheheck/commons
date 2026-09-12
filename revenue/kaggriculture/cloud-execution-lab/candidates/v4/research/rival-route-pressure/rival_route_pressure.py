@@ -57,7 +57,9 @@ def _market_limit(configuration: Mapping[str, Any]) -> int:
     raw = configuration.get("maxMarketOrdersPerTurn", 10)
     # The official interpreter uses max(1, int(...)); its JSON schema is integer.
     # Evidence code is stricter: malformed/bool input is not reinterpreted.
-    return _positive_int(raw, "maxMarketOrdersPerTurn")
+    if isinstance(raw, bool) or not isinstance(raw, int):
+        raise UnsupportedEvidence("maxMarketOrdersPerTurn must be an integer")
+    return max(1, raw)
 
 
 def _action_market(action: Any) -> list[Any]:
