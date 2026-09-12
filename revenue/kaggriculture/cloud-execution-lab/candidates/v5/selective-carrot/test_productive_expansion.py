@@ -47,13 +47,26 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertEqual(gate.incremental_hire_cost(3, 0, 1, fib), fib(3))
         self.assertEqual(fib(3), 3)
 
-    def test_many_authored_parent_hires_do_not_inflate_reject_floor(self):
+    def test_many_authored_future_hires_do_not_inflate_reject_floor(self):
         labor, by_day = gate.route_labor_cost_floor(
             obs(hires_today=0), object(), noisy_day_factory(parent_hires=30), fib
         )
-        self.assertEqual(labor, 27)
-        self.assertEqual(by_day[18], 2)
-        self.assertEqual(by_day[19], 1)
+        self.assertEqual(labor, 2)
+        self.assertEqual(by_day, {18: 2})
+
+    def test_future_days_are_not_consulted_by_reject_floor(self):
+        calls = []
+        def day18_only(native, day):
+            calls.append(day)
+            if day != 18:
+                raise AssertionError('future conditional route spend is not floor authority')
+            return [{'market': [], 'hands': []}]
+        labor, by_day = gate.route_labor_cost_floor(
+            obs(hires_today=0), object(), day18_only, fib
+        )
+        self.assertEqual(labor, 2)
+        self.assertEqual(by_day, {18: 2})
+        self.assertEqual(calls, [18])
 
     def test_large_standing_work_width_does_not_set_fibonacci_index(self):
         clean = gate.route_labor_cost_floor(
@@ -63,16 +76,15 @@ class ProductiveExpansionGate(unittest.TestCase):
             obs(), object(), noisy_day_factory(parent_hires=0, hand_noise=200), fib
         )[0]
         self.assertEqual(clean, noisy)
-        self.assertEqual(clean, 27)
+        self.assertEqual(clean, 2)
 
-    def test_current_hires_today_affects_day18_then_dawn_resets(self):
+    def test_current_hires_today_affects_only_day18_floor(self):
         labor, by_day = gate.route_labor_cost_floor(
             obs(hires_today=3), object(), noisy_day_factory(), fib
         )
-        self.assertEqual(by_day[18], fib(3) + fib(4))
+        self.assertEqual(by_day, {18: fib(3) + fib(4)})
         self.assertEqual(by_day[18], 8)
-        self.assertEqual(by_day[19], 1)
-        self.assertEqual(labor, 33)
+        self.assertEqual(labor, 8)
 
     def test_flat_seventy_is_inconclusive_not_false_reject(self):
         record = gate.evaluate(
@@ -84,8 +96,9 @@ class ProductiveExpansionGate(unittest.TestCase):
         )
         self.assertIsNone(record['decision'])
         self.assertEqual(record['reason'], 'negative_payback_not_proven')
-        self.assertEqual(record['labor_cost_floor'], 27)
-        self.assertEqual(record['unavoidable_cost_floor'], 4527)
+        self.assertEqual(record['labor_cost_floor'], 2)
+        self.assertEqual(record['labor_cost_floor_by_day'], {18: 2})
+        self.assertEqual(record['unavoidable_cost_floor'], 4502)
         self.assertEqual(record['gross_revenue_upper_bound'], 5600)
 
     def test_large_observed_same_day_ordinal_can_prove_negative(self):
@@ -98,8 +111,8 @@ class ProductiveExpansionGate(unittest.TestCase):
         )
         self.assertFalse(record['decision'])
         self.assertEqual(record['reason'], 'proven_negative_payback')
-        self.assertEqual(record['labor_cost_floor'], 2609)
-        self.assertEqual(record['unavoidable_cost_floor'], 7109)
+        self.assertEqual(record['labor_cost_floor'], 2584)
+        self.assertEqual(record['unavoidable_cost_floor'], 7084)
         self.assertEqual(record['gross_revenue_upper_bound'], 5600)
 
     def test_visible_rival_field_is_telemetry_not_rejection_authority(self):
@@ -159,7 +172,8 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertEqual(record['future_inventory_floor'], -3896)
         self.assertEqual(record['future_tomato_quote_ceiling'], 4966)
         self.assertEqual(record['gross_revenue_upper_bound'], 397280)
-        self.assertEqual(record['unavoidable_cost_floor'], 200943)
+        self.assertEqual(record['labor_cost_floor'], 196418)
+        self.assertEqual(record['unavoidable_cost_floor'], 200918)
         self.assertIsNone(record['decision'])
         self.assertEqual(record['reason'], 'negative_payback_not_proven')
 
