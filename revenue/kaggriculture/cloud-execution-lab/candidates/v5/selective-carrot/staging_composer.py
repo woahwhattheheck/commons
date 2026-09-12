@@ -426,6 +426,23 @@ def _fsync_directory(directory: Path) -> None:
         os.close(fd)
 
 
+def _unlink_if_owned(path: Path, fd: int, owned: tuple[int, int]) -> None:
+    """Best-effort cooperative rollback while the reserved inode is still pinned."""
+    live = os.fstat(fd)
+    if (live.st_dev, live.st_ino) != owned:
+        return
+    try:
+        current = os.lstat(path)
+    except FileNotFoundError:
+        return
+    if not stat.S_ISREG(current.st_mode) or (current.st_dev, current.st_ino) != owned:
+        return
+    try:
+        os.unlink(path)
+    except FileNotFoundError:
+        pass
+
+
 def publish_pair(out: Path, receipt_path: Path, archive_raw: bytes, receipt_raw: bytes) -> None:
     out, receipt_path = Path(out), Path(receipt_path)
     if out == receipt_path:
@@ -452,18 +469,20 @@ def publish_pair(out: Path, receipt_path: Path, archive_raw: bytes, receipt_raw:
         _verify_owned_final(out, opened[0][2], archive_raw)
         _verify_owned_final(receipt_path, opened[1][2], receipt_raw)
     except Exception:
-        for _, fd, _ in opened:
-            try:
-                os.close(fd)
-            except OSError:
-                pass
-        for path, _, owned in opened:
-            try:
-                st = os.lstat(path)
-                if (st.st_dev, st.st_ino) == owned:
-                    os.unlink(path)
-            except FileNotFoundError:
-                pass
+        # Keep reservation fds live until every rollback ownership decision is
+        # complete. Cleanup is best-effort and must not mask the root failure.
+        try:
+            for path, fd, owned in reversed(opened):
+                try:
+                    _unlink_if_owned(path, fd, owned)
+                except Exception:
+                    pass
+        finally:
+            for _, fd, _ in opened:
+                try:
+                    os.close(fd)
+                except OSError:
+                    pass
         raise
     else:
         for _, fd, _ in opened:
