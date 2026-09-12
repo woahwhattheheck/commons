@@ -332,7 +332,7 @@ class SpatialTempo:
         self._sale_proposal=None
         if self.sale_obligation is not None and now<self.sale_obligation['step']:
             self.sale_obligation=None;self.receipt_events=[]
-        if state and (not self.supported or now<=state['step'] or now//24!=state['day']):
+        if state and (not self.supported or now<state['step'] or now//24!=state['day']):
             state=None
         self.plans={} if not state else {i:p for i,p in state['plans'].items()
                                         if (p['end']>now or p.get('kind')=='idle_fertilizer')
