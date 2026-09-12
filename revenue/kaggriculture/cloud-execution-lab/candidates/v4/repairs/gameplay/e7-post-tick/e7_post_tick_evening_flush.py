@@ -17,6 +17,8 @@ replaces only that outer layer:
 * at next-day hour 1, after the hour-0 town tick, E7 sells at most the withheld quantity
   still present in projected shed stock. Existing same-item SELL rows are topped up in
   place; otherwise a new row is appended only when a literal trailing slot is available;
+* withholding requires the release callback to fit through episodeSteps - 2;
+* release rechecks the supported configuration and reports partial shortfalls;
 * existing native/E184 rows are never removed, compacted, reduced, or reindexed.
 
 This is deliberately an experiment, not a theorem that post-tick prices always improve:
@@ -43,6 +45,7 @@ SHED_CAPACITY = 100
 MAX_ORDERS = 10
 WITHHOLD_HOUR = 23
 RELEASE_HOUR = 1
+DEFAULT_EPISODE_STEPS = 720
 UNSAFE_WORK = {"HARVEST", "PICKUP", "DROP", "PLACE", "COLLECT_FERTILIZER"}
 SHED_ADDING_MARKET = {"BUY_PRODUCT", "BUY_ANIMAL"}
 
@@ -72,6 +75,20 @@ def _standard_configuration(configuration):
         return False
     market_params = _cfg(configuration, "marketParams", None)
     return market_params is None or (type(market_params) is dict and not market_params)
+
+
+def _release_is_executable(configuration, release_step):
+    """The official interpreter finishes after action episodeSteps - 2.
+
+    Do not coerce booleans, numeric strings or floats into a horizon proof.
+    Equality is valid: a sale can execute on the final action callback.
+    """
+    episode_steps = _cfg(configuration, "episodeSteps", DEFAULT_EPISODE_STEPS)
+    return (
+        type(episode_steps) is int
+        and episode_steps >= 2
+        and release_step <= episode_steps - 2
+    )
 
 
 def _strict_step_player(observation):
@@ -246,11 +263,15 @@ class PostTickEveningFlush:
         state["last_step"] = step
         return state
 
-    def _release(self, observation, action, state, step):
+    def _release(self, observation, action, state, step, configuration=None):
         pending = state.get("pending")
         if not pending or pending["source_step"] + 2 != step:
             return action
         state["pending"] = None
+        if not (_standard_configuration(configuration)
+                and _release_is_executable(configuration, step)):
+            self.telemetry["release_config_reject"] += 1
+            return action
         market = _normalized_market(action)
         if market is None or len(market) > MAX_ORDERS:
             self.telemetry["release_malformed_market"] += 1
@@ -294,6 +315,10 @@ class PostTickEveningFlush:
             else:
                 shortfall[item] = wanted
                 continue
+            # Shortfall counts units not incrementally issued by E7, including
+            # units already covered by parent SELLs; it is not lost cash/stock.
+            if qty < wanted:
+                shortfall[item] = wanted - qty
             selling[item] = selling.get(item, 0) + qty
             released[item] = released.get(item, 0) + qty
             self.telemetry["released_rows"] += 1
@@ -338,7 +363,7 @@ class PostTickEveningFlush:
             return r04.evening_flush(observation, action)
 
         if hour == RELEASE_HOUR:
-            return self._release(observation, action, state, step)
+            return self._release(observation, action, state, step, configuration)
 
         if hour != WITHHOLD_HOUR:
             return action
@@ -346,6 +371,9 @@ class PostTickEveningFlush:
         live = _incumbent_flush(observation, action)
         if not _standard_configuration(configuration):
             self.telemetry["config_reject"] += 1
+            return live
+        if not _release_is_executable(configuration, step + 2):
+            self.telemetry["horizon_reject"] += 1
             return live
         extras = _flush_extras(observation, action)
         if extras is None:
