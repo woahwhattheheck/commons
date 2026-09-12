@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """Pre-registered low-complexity selector fitter for the TITAN V5 P04 route matrix.
 
-The fitting procedure is intentionally frozen before R00-R12 outcome inspection.
-It can choose only an incumbent-preserving global override or one equality
-predicate over the public step-144 feature signature already defined by #13478.
-The discovery matrix can nominate a rule; only fresh held-out native games can
-make that nominated rule policy-ready.
+Discovery can nominate only a frozen, observation-only rule. Fresh held-out native
+cells are required before any runtime component or promotion decision.
 """
 from __future__ import annotations
 
@@ -92,10 +89,6 @@ SPEC = {
     },
 }
 
-# This universe was publicly fixed by the route-matrix board before any R00-R12
-# result existed. It is deliberately separate from the rule SPEC above: the
-# post-review hardening binds the fitter to the already-timestamped experiment
-# universe without changing the preregistered rule grammar or qualification.
 DISCOVERY_UNIVERSE = {
     "schema": "titan-v5-p04-discovery-universe/v1",
     "source": {
@@ -165,7 +158,6 @@ def _feature_value(value: Any, label: str) -> str | int:
 def _validate_authority(report: dict[str, Any]) -> None:
     if report.get("schema") != RANKER_SCHEMA:
         raise ValueError("route-ranker schema mismatch")
-    authority = report.get("authority")
     expected = {
         "production_archive_sha256": PRODUCTION_ARCHIVE_SHA256,
         "router_source_sha256": ROUTER_SOURCE_SHA256,
@@ -173,7 +165,7 @@ def _validate_authority(report: dict[str, Any]) -> None:
         "route_step": ROUTE_STEP,
         "forced_terminal_plan_step": FINAL_PLAN_STEP,
     }
-    if authority != expected:
+    if report.get("authority") != expected:
         raise ValueError("route-ranker authority mismatch")
     if report.get("policy_ready") is not False:
         raise ValueError("discovery report must remain policy_ready=false")
@@ -185,10 +177,7 @@ def _normalize_group(group: Any) -> dict[str, Any]:
     for name in ("seed", "opponent", "seat", "features", "incumbent_plan", "plans"):
         if name not in group:
             raise ValueError(f"route-ranker group missing {name}")
-    seed = group["seed"]
-    seat = group["seat"]
-    opponent = group["opponent"]
-    incumbent = group["incumbent_plan"]
+    seed, opponent, seat, incumbent = group["seed"], group["opponent"], group["seat"], group["incumbent_plan"]
     if isinstance(seed, bool) or not isinstance(seed, int):
         raise ValueError("seed must be integer")
     if not isinstance(opponent, str) or not opponent:
@@ -238,10 +227,7 @@ def _normalize_group(group: Any) -> dict[str, Any]:
 
 
 def _expected_discovery_keys() -> set[tuple[int, str, int]]:
-    return {
-        (row["seed"], row["opponent"], row["seat"])
-        for row in DISCOVERY_UNIVERSE["group_keys"]
-    }
+    return {(row["seed"], row["opponent"], row["seat"]) for row in DISCOVERY_UNIVERSE["group_keys"]}
 
 
 def validate_discovery_report(report: Any) -> list[dict[str, Any]]:
@@ -255,15 +241,12 @@ def validate_discovery_report(report: Any) -> list[dict[str, Any]]:
     keys = [(g["seed"], g["opponent"], g["seat"]) for g in groups]
     if len(keys) != len(set(keys)):
         raise ValueError("duplicate seed/opponent/seat discovery group")
-    expected_keys = _expected_discovery_keys()
-    actual_keys = set(keys)
-    if actual_keys != expected_keys:
-        missing = sorted(expected_keys - actual_keys)
-        extra = sorted(actual_keys - expected_keys)
-        raise ValueError(f"discovery universe mismatch: missing={missing} extra={extra}")
+    expected, actual = _expected_discovery_keys(), set(keys)
+    if actual != expected:
+        raise ValueError(f"discovery universe mismatch: missing={sorted(expected - actual)} extra={sorted(actual - expected)}")
     if report.get("complete_snapshot_groups") != len(groups):
         raise ValueError("complete_snapshot_groups mismatch")
-    if len(groups) != len(expected_keys):
+    if len(groups) != len(expected):
         raise ValueError("complete_snapshot_groups does not match pre-outcome discovery universe")
     return groups
 
@@ -281,13 +264,13 @@ def enumerate_rules(groups: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     for group in groups:
         for name in ALLOWED_FEATURES:
             values[name].add(group["features"][name])
-    rules = []
-    for plan in OVERRIDE_PLANS:
-        rules.append({"predicate": None, "override_plan": plan})
+    rules = [{"predicate": None, "override_plan": plan} for plan in OVERRIDE_PLANS]
     for feature in ALLOWED_FEATURES:
         for value in sorted(values[feature], key=lambda x: (type(x).__name__, repr(x))):
-            for plan in OVERRIDE_PLANS:
-                rules.append({"predicate": {"feature": feature, "value": value}, "override_plan": plan})
+            rules.extend(
+                {"predicate": {"feature": feature, "value": value}, "override_plan": plan}
+                for plan in OVERRIDE_PLANS
+            )
     return sorted(rules, key=_rule_key)
 
 
@@ -325,14 +308,16 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
         selected = selected_plan_for_features(group["features"], group["incumbent_plan"], rule)
         if selected == group["incumbent_plan"]:
             continue
-        row = group["plans"][selected]
+        candidate = group["plans"][selected]
+        control = group["plans"][group["incumbent_plan"]]
         engaged.append({
             "seed": group["seed"],
             "opponent": group["opponent"],
             "seat": group["seat"],
-            "delta_margin": row["delta_margin_vs_incumbent"],
-            "delta_own": row["delta_own_vs_incumbent"],
-            "failures": row["failures"],
+            "delta_margin": candidate["delta_margin_vs_incumbent"],
+            "delta_own": candidate["delta_own_vs_incumbent"],
+            "candidate_failures": candidate["failures"],
+            "incumbent_failures": control["failures"],
         })
 
     seeds = {g["seed"] for g in groups}
@@ -343,13 +328,17 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
     engaged_seats = {g["seat"] for g in engaged}
     dm = [g["delta_margin"] for g in engaged]
     do = [g["delta_own"] for g in engaged]
-    failures = sum(bool(g["failures"]) for g in engaged)
+    candidate_failure_groups = sum(bool(g["candidate_failures"]) for g in engaged)
+    incumbent_failure_groups = sum(bool(g["incumbent_failures"]) for g in engaged)
+    comparison_failure_groups = sum(
+        bool(g["candidate_failures"] or g["incumbent_failures"]) for g in engaged
+    )
     qualified = bool(engaged)
     qualified = qualified and len(engaged) >= SPEC["discovery_qualification"]["minimum_engaged_groups"]
     qualified = qualified and len(engaged_seeds) >= _coverage_floor(len(seeds))
     qualified = qualified and len(engaged_opponents) >= _coverage_floor(len(opponents))
     qualified = qualified and len(engaged_seats) >= _coverage_floor(len(seats))
-    qualified = qualified and failures == 0
+    qualified = qualified and comparison_failure_groups == 0
     qualified = qualified and min(dm, default=float("-inf")) >= 0
     qualified = qualified and min(do, default=float("-inf")) >= 0
     qualified = qualified and sum(dm) > 0
@@ -360,7 +349,9 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
         "engaged_distinct_seeds": len(engaged_seeds),
         "engaged_distinct_opponents": len(engaged_opponents),
         "engaged_distinct_seats": len(engaged_seats),
-        "failure_groups": failures,
+        "failure_groups": comparison_failure_groups,
+        "candidate_failure_groups": candidate_failure_groups,
+        "incumbent_failure_groups": incumbent_failure_groups,
         "min_delta_margin": min(dm) if dm else None,
         "min_delta_own": min(do) if do else None,
         "mean_delta_margin": statistics.fmean(dm) if dm else None,
@@ -371,9 +362,7 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
 
 
 def _selection_key(result: dict[str, Any]) -> tuple[Any, ...]:
-    rule = result["rule"]
-    pred = rule.get("predicate")
-    # min() uses this key: negate performance terms, then prefer simpler/lower lexical rules.
+    pred = result["rule"].get("predicate")
     return (
         -result["min_delta_margin"],
         -result["min_delta_own"],
@@ -383,7 +372,7 @@ def _selection_key(result: dict[str, Any]) -> tuple[Any, ...]:
         0 if pred is None else 1,
         "" if pred is None else pred["feature"],
         "" if pred is None else json.dumps(pred["value"], sort_keys=True),
-        rule["override_plan"],
+        result["rule"]["override_plan"],
     )
 
 
@@ -392,7 +381,7 @@ def fit_selector(report: Any) -> dict[str, Any]:
     evaluated = [evaluate_rule(groups, rule) for rule in enumerate_rules(groups)]
     qualified = [item for item in evaluated if item["qualified"]]
     selected = min(qualified, key=_selection_key) if qualified else None
-    result = {
+    return {
         "schema": SCHEMA,
         "preregistration_spec_sha256": SPEC_SHA256,
         "discovery_universe_sha256": DISCOVERY_UNIVERSE_SHA256,
@@ -408,11 +397,10 @@ def fit_selector(report: Any) -> dict[str, Any]:
         "hold_reason": (
             "Discovery may nominate only the byte-frozen preregistered rule. Fresh held-out native games "
             "must validate that exact rule before any runtime component or promotion decision."
-            if selected is not None else
-            "No preregistered low-complexity rule met the discovery non-regression and coverage gate."
+            if selected is not None
+            else "No preregistered low-complexity rule met the discovery non-regression and coverage gate."
         ),
     }
-    return result
 
 
 def main() -> None:
