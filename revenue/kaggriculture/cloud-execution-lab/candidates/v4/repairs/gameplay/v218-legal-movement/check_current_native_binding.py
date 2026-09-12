@@ -2,9 +2,10 @@
 """Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It accepts an explicit V218/router binding directly. Native semantic equivalence counts as
-wired only when the sole canonical V4 composition graph carries an authenticated evidence-only
-registration for the same semantic sources and this checker.
+It accepts an explicit executable V218/router source binding directly. Config-only metadata is
+diagnostic, not wiring. Native semantic equivalence counts as wired only when the sole canonical
+V4 composition graph carries an authenticated evidence-only registration for the same semantic
+sources and this checker.
 """
 from __future__ import annotations
 import argparse, ast, hashlib, json
@@ -241,25 +242,30 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
     source_identities = receipt.get("current_source_identities")
     if not isinstance(source_identities, dict):
         return {"registered": False, "reason": "semantic_source_identities_missing"}
-    expected = {}
-    semantic_sources = semantic.get("sources")
-    if not isinstance(semantic_sources, dict):
-        return {"registered": False, "reason": "semantic_sources_missing"}
+    expected_sources = {}
     for key in ("main", "runtime", "frozen", "scheduler", "arlene", "spatial"):
-        row = semantic_sources.get(key)
-        if not isinstance(row, dict) or type(row.get("path")) is not str or type(row.get("git_blob")) is not str:
+        row = semantic.get("sources", {}).get(key)
+        if not isinstance(row, dict):
             return {"registered": False, "reason": "semantic_source_receipt_missing", "source": key}
-        expected[row["path"]] = row["git_blob"]
+        expected_sources[row["path"]] = row["git_blob"]
     config_path = root / "TITAN-CONFIG.json"
     if not config_path.is_file():
-        return {"registered": False, "reason": "semantic_config_missing"}
-    expected["TITAN-CONFIG.json"] = git_blob(config_path.read_bytes())
-    if source_identities != expected:
+        return {"registered": False, "reason": "semantic_config_source_missing"}
+    expected_sources["TITAN-CONFIG.json"] = git_blob(config_path.read_bytes())
+    if set(source_identities) != set(expected_sources):
         return {
             "registered": False,
             "reason": "semantic_source_identity_mismatch",
-            "expected": expected,
+            "expected": expected_sources,
             "actual": source_identities,
+        }
+    actual = {path: source_identities.get(path) for path in expected_sources}
+    if actual != expected_sources:
+        return {
+            "registered": False,
+            "reason": "semantic_source_identity_mismatch",
+            "expected": expected_sources,
+            "actual": actual,
         }
     semantic_evidence = receipt.get("semantic_evidence")
     if not isinstance(semantic_evidence, dict) or semantic_evidence.get("frozen_nonterminal_config") is not True:
@@ -271,7 +277,7 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
         "component": V218_COMPONENT_ID,
         "receipt": V218_RECEIPT_REL,
         "checker_identity": checker_blob,
-        "source_identities": expected,
+        "source_identities": expected_sources,
     }
 
 
@@ -307,9 +313,13 @@ def audit(root: Path) -> dict:
     config_v218_keys = sorted(
         k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower()
     )
-    router_refs = sum(row["hits"]["r04_full_router"] for row in refs)
-    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in refs)
-    explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
+    executable_refs = [row for row in refs if Path(row["path"]).suffix == ".py"]
+    router_refs = sum(row["hits"]["r04_full_router"] for row in executable_refs)
+    v218_refs = sum(
+        row["hits"]["v218"] + row["hits"]["movement_parity"]
+        for row in executable_refs
+    )
+    explicit_binding = bool(router_refs or v218_refs)
     semantic = _native_semantic_equivalence(root, config)
     equivalent = bool(semantic.get("equivalent"))
     registration = (
@@ -340,6 +350,7 @@ def audit(root: Path) -> dict:
         },
         "package_text_files_scanned": scanned,
         "binding_refs": refs,
+        "executable_binding_refs": executable_refs,
         "router_ref_count": router_refs,
         "v218_ref_count": v218_refs,
         "explicit_binding": explicit_binding,
