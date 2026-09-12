@@ -20,6 +20,14 @@ BOOL_GUARD_INSERT = (
     "        bool_fields = (*bool_fields, 'exec_pace')\n"
     + BOOL_GUARD_ANCHOR
 )
+EXEC_PACE_GUARD_ANCHOR = (
+    "        if self.terminal_route and self.consumer != 'frozen':\n"
+    "            raise ValueError('terminal_route is the tested frozen SELL composition')\n"
+)
+EXEC_PACE_GUARD_INSERT = EXEC_PACE_GUARD_ANCHOR + (
+    "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
+)
 
 FALLBACK_STATE_ANCHOR = (
     "        self._completed_seller_state = None\n"
@@ -101,6 +109,8 @@ def compose_sources(titan_runtime_source, frozen_selected_source):
     titan = _replace_once(titan_runtime_source, FEATURE_ANCHOR, FEATURE_INSERT, "Features")
     titan = _replace_once(titan, BOOL_GUARD_ANCHOR, BOOL_GUARD_INSERT,
                           "Features exact-bool guard")
+    titan = _replace_once(titan, EXEC_PACE_GUARD_ANCHOR, EXEC_PACE_GUARD_INSERT,
+                          "EXEC-PACE composition guard")
     titan = _replace_once(titan, FALLBACK_STATE_ANCHOR, FALLBACK_STATE_INSERT,
                           "EXEC-PACE fallback state")
     titan = _replace_once(titan, FALLBACK_OBSERVER_ANCHOR, FALLBACK_OBSERVER_INSERT,
