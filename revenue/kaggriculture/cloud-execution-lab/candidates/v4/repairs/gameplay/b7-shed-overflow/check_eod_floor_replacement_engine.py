@@ -3,17 +3,22 @@
 """Official-engine differential for B7 $1 EOD same-product replacement."""
 from __future__ import annotations
 
+import builtins
 import copy
 import hashlib
-import importlib.util
+import io
 import json
 from pathlib import Path
+import tempfile
+import types
 
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
-HELPER_BLOB = "9c3591fe28d8b6be7511832b799d693ad89afbaf"
+ENGINE_CONFIG_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
+HELPER_BLOB = "a0ec44ee5877918fe3559f701582bf5863edcbbf"
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
+ENGINE_CONFIG = LAB / "reference" / "engine" / "kaggriculture.json"
 HELPER = HERE / "eod_floor_replacement.py"
 CFG = {"turnsPerDay": 24, "shedCapacity": 100, "maxMarketOrdersPerTurn": 10}
 
@@ -22,38 +27,121 @@ class CheckError(RuntimeError):
     pass
 
 
-def git_blob(path: Path) -> str:
-    data = path.read_bytes()
+def git_blob_bytes(data: bytes) -> str:
     return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
 
 
-def load(name: str, path: Path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise CheckError(f"cannot load {path}")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+def capture(path: Path, expected: str, label: str) -> bytes:
+    """Read an authority exactly once and authenticate those captured bytes."""
+    data = path.read_bytes()
+    observed = git_blob_bytes(data)
+    if observed != expected:
+        raise CheckError(f"{label} drift: {observed}")
+    return data
 
 
-def assert_sources():
-    engine_blob = git_blob(ENGINE)
-    helper_blob = git_blob(HELPER)
-    if engine_blob != ENGINE_BLOB:
-        raise CheckError(f"engine drift: {engine_blob}")
-    if helper_blob != HELPER_BLOB:
-        raise CheckError(f"helper drift: {helper_blob}")
-    return {"engine": engine_blob, "helper": helper_blob}
+def load_captured(
+    name: str,
+    path: Path,
+    data: bytes,
+    *,
+    config_path: Path | None = None,
+    config_bytes: bytes | None = None,
+):
+    """Compile/exec captured source bytes; never reopen the verified source path.
+
+    kaggriculture.py reads its adjacent JSON specification at import time. For
+    that module only, bind the exact captured JSON bytes to that path through a
+    module-local builtins mapping so executed engine authority is
+    (engine.py bytes, kaggriculture.json bytes), both captured once.
+    """
+    module = types.ModuleType(name)
+    module.__file__ = str(path)
+    module.__package__ = ""
+    module.__dict__["__name__"] = name
+
+    builtin_map = dict(vars(builtins))
+    if config_path is not None:
+        if config_bytes is None:
+            raise CheckError("captured config bytes required")
+        target = str(config_path.resolve())
+        real_open = builtins.open
+
+        def pinned_open(file, *args, **kwargs):
+            try:
+                resolved = str(Path(file).resolve())
+            except (TypeError, ValueError, OSError):
+                resolved = None
+            if resolved == target:
+                mode = args[0] if args else kwargs.get("mode", "r")
+                if not isinstance(mode, str) or any(flag in mode for flag in ("w", "a", "x", "+")):
+                    raise CheckError("engine config authority is read-only")
+                if "b" in mode:
+                    return io.BytesIO(config_bytes)
+                encoding = kwargs.get("encoding") or "utf-8"
+                return io.StringIO(config_bytes.decode(encoding))
+            return real_open(file, *args, **kwargs)
+
+        builtin_map["open"] = pinned_open
+
+    module.__dict__["__builtins__"] = builtin_map
+    code = compile(data, str(path), "exec")
+    exec(code, module.__dict__)
+    return module
+
+
+def capture_sources():
+    engine_bytes = capture(ENGINE, ENGINE_BLOB, "engine")
+    config_bytes = capture(ENGINE_CONFIG, ENGINE_CONFIG_BLOB, "engine config")
+    helper_bytes = capture(HELPER, HELPER_BLOB, "helper")
+    return {
+        "engine_bytes": engine_bytes,
+        "config_bytes": config_bytes,
+        "helper_bytes": helper_bytes,
+        "pins": {
+            "engine": git_blob_bytes(engine_bytes),
+            "engine_config": git_blob_bytes(config_bytes),
+            "helper": git_blob_bytes(helper_bytes),
+        },
+    }
+
+
+def capture_once_regression(engine_bytes: bytes, config_bytes: bytes, helper_bytes: bytes) -> bool:
+    """Prove pathname replacement after capture cannot change executed bytes."""
+    with tempfile.TemporaryDirectory(prefix="b7-capture-once-") as raw:
+        root = Path(raw)
+        engine_path = root / "kaggriculture.py"
+        config_path = root / "kaggriculture.json"
+        helper_path = root / "eod_floor_replacement.py"
+        engine_path.write_bytes(engine_bytes)
+        config_path.write_bytes(config_bytes)
+        helper_path.write_bytes(helper_bytes)
+
+        captured_engine = engine_path.read_bytes()
+        captured_config = config_path.read_bytes()
+        captured_helper = helper_path.read_bytes()
+
+        # Replace all backing paths after capture. Executing by pathname here
+        # would raise (or fail JSON parsing); capture-once execution must ignore it.
+        engine_path.write_text("raise RuntimeError('reopened engine path')\n")
+        config_path.write_text("{not-json")
+        helper_path.write_text("raise RuntimeError('reopened helper path')\n")
+
+        engine = load_captured(
+            "_b7_capture_engine",
+            engine_path,
+            captured_engine,
+            config_path=config_path,
+            config_bytes=captured_config,
+        )
+        helper = load_captured("_b7_capture_helper", helper_path, captured_helper)
+        if engine.PRICE_FLOOR != 1 or not callable(helper.analyze):
+            raise CheckError("capture-once regression loaded unexpected authority")
+    return True
 
 
 def floor_stock(engine, item: str) -> int:
-    """Find any exact-$1 stock using only the authenticated engine price ABI.
-
-    Some official glut curves (notably EGG/log) reach the hard floor only at
-    inventories orders of magnitude beyond ordinary play. A fixed linear scan
-    is therefore not a valid checker oracle. Exponentially grow from the
-    product's own T scale and require the engine itself to report the floor.
-    """
+    """Find any exact-$1 stock using only the authenticated engine price ABI."""
     p = engine.MARKET_PARAMS[item]
     start = int(p["I0"])
     if engine.market_price(item, start, None) == 1:
@@ -167,9 +255,20 @@ def run_rival_floor_stability(engine, helper):
 
 
 def run():
-    pins = assert_sources()
-    engine = load("_b7_floor_engine", ENGINE)
-    helper = load("_b7_floor_helper", HELPER)
+    captured = capture_sources()
+    engine = load_captured(
+        "_b7_floor_engine",
+        ENGINE,
+        captured["engine_bytes"],
+        config_path=ENGINE_CONFIG,
+        config_bytes=captured["config_bytes"],
+    )
+    helper = load_captured("_b7_floor_helper", HELPER, captured["helper_bytes"])
+    if not capture_once_regression(
+        captured["engine_bytes"], captured["config_bytes"], captured["helper_bytes"]
+    ):
+        raise CheckError("capture-once regression failed")
+
     expected_nonbuyable = set(engine.PRODUCTS) - {"WHEAT", "FERTILIZER"}
     if set(helper.NONBUYABLE_PRODUCTS) != expected_nonbuyable:
         raise CheckError("non-buyable product domain drift")
@@ -190,7 +289,8 @@ def run():
     return {
         "status": "PASS",
         "scope": "official-engine B7 floor SELL + EOD same-product replacement; default-OFF/unwired",
-        "pins": pins,
+        "pins": captured["pins"],
+        "capture_once_path_swap_regression": True,
         "cells": cells,
         "cash_gain_sum": gain,
         "cells_by_item": by_item,
