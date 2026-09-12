@@ -230,10 +230,14 @@ def make_agent(production=None, *, seed=True, committed=True, sell=True, horizon
 
 
 _INSTANCE = None
+_LAST_STEP = None
+
 
 def agent(observation, configuration=None):
-    global _INSTANCE
+    global _INSTANCE, _LAST_STEP
     cfg = dict(configuration or {})
-    if _INSTANCE is None or absolute_step(observation, cfg) == 0:
+    step = absolute_step(observation, cfg)
+    if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
         _INSTANCE = make_agent()
+    _LAST_STEP = step
     return _INSTANCE.act(observation, cfg)
