@@ -1,0 +1,68 @@
+name: TITAN V5 frozen executable prefix recovery
+
+on:
+  push:
+    branches:
+      - astra-v5-frozen-executable-prefix
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v5-frozen-prefix-recovery
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply reviewed frozen-only executable-prefix theorem
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euxo pipefail
+          python -B - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          lab = Path.cwd()
+          composer_path = lab / 'candidates/v4/repairs/scheduler-action-prefix/compose_current_native.py'
+          spec = importlib.util.spec_from_file_location('v5_frozen_prefix_composer', composer_path)
+          composer = importlib.util.module_from_spec(spec)
+          assert spec.loader is not None
+          spec.loader.exec_module(composer)
+
+          target = lab / 'frozen_selected.py'
+          before = target.read_text()
+          if 'scheduling._engine_market_prefix' in before:
+              raise SystemExit('frozen executable-prefix theorem already present/partial; refuse')
+          after = composer._rewrite_frozen(before)
+          if after.count('scheduling._engine_market_prefix') != 4:
+              raise SystemExit('unexpected scheduler-prefix consumer count')
+          target.write_text(after)
+          print('before_git_blob=' + composer.git_blob(before.encode()))
+          print('after_git_blob=' + composer.git_blob(after.encode()))
+          PY
+      - name: Run current-native predecessor killers
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euxo pipefail
+          python -B -m py_compile frozen_selected.py test_frozen_selected_executable_prefix_v5.py
+          python -B test_frozen_selected_executable_prefix_v5.py
+          python -O -B test_frozen_selected_executable_prefix_v5.py
+      - name: Commit only canonical frozen source
+        run: |
+          set -euxo pipefail
+          git config user.name 'titan-v5-prefix-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+          test -n "$(git diff --cached --name-only)"
+          test "$(git diff --cached --name-only)" = "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py"
+          git commit -m 'TITAN V5: bind FrozenSelected to executable market prefix'
+          git push origin HEAD:astra-v5-frozen-executable-prefix
