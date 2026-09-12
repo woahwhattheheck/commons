@@ -25,7 +25,7 @@ import types
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 V4_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
 V4_SOURCE = "4af1113154e78c662780e6658cd920daac7902e3"
-HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+HELPER_GIT_BLOB = "719e3514d72bc7ea4c3e505836d16fcddae11019"
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 FEATURES = ("idle_fertilizer", "crop_release", "early_capital", "town_procurement")
 SCHEMA = "astra.v5.v4-added-features-factorial.v3"
@@ -149,7 +149,7 @@ def feature_vector(name: str) -> dict[str, bool]:
             raise ValueError(f"Unknown feature-off arm: {name}")
         return {feature: feature != target for feature in FEATURES}
     if name.startswith("mask_") and len(name) == len("mask_") + len(FEATURES):
-        bits = name[len("mask_"):]
+        bits = name[len("mask_\"):]
         if any(bit not in "01" for bit in bits):
             raise ValueError(f"Invalid mask arm: {name}")
         return {feature: bit == "1" for feature, bit in zip(FEATURES, bits)}
