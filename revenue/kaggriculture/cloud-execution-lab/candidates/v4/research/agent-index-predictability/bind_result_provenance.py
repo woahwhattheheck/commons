@@ -60,16 +60,23 @@ def _loads_strict(text: str, label: str) -> Any:
         raise ProvenanceError(f"{label}: invalid JSON: {exc}") from exc
 
 
-def _finite_number(value: Any, label: str) -> float:
+def _finite_number(value: Any, label: str) -> int | float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ProvenanceError(f"{label} must be a finite number")
-    try:
-        result = float(value)
-    except (OverflowError, ValueError) as exc:
-        raise ProvenanceError(f"{label} must be finite") from exc
-    if not math.isfinite(result):
+    if isinstance(value, int):
+        # Keep exact integer identity for provenance comparisons.  Conversion is
+        # only a range probe so integers outside downstream floating capacity
+        # continue to fail closed instead of becoming +/-inf later.
+        try:
+            finite_probe = float(value)
+        except (OverflowError, ValueError) as exc:
+            raise ProvenanceError(f"{label} must be finite") from exc
+        if not math.isfinite(finite_probe):
+            raise ProvenanceError(f"{label} must be finite")
+        return value
+    if not math.isfinite(value):
         raise ProvenanceError(f"{label} must be finite")
-    return result
+    return value
 
 
 def _strict_int(value: Any, label: str, *, minimum: int | None = None) -> int:
@@ -204,7 +211,9 @@ def _read_jsonl(path: str | Path) -> list[dict[str, Any]]:
     return rows
 
 
-def _derived_outcome(row: Mapping[str, Any], index: int) -> tuple[int, float, float, float]:
+def _derived_outcome(
+    row: Mapping[str, Any], index: int
+) -> tuple[int, int | float, int | float, int | float]:
     seat = _strict_int(row.get("seat"), f"row {index} seat")
     if seat not in (0, 1):
         raise ProvenanceError(f"row {index} seat must be literal 0 or 1")
@@ -222,28 +231,21 @@ def _derived_outcome(row: Mapping[str, Any], index: int) -> tuple[int, float, fl
     right = _finite_number(rewards[1], f"row {index} rewards[1]")
     candidate = left if seat == 0 else right
     opponent = right if seat == 0 else left
-    margin = candidate - opponent
+    margin = _finite_number(candidate - opponent, f"row {index} derived margin")
 
-    if "candidate_score" in row and not math.isclose(
-        _finite_number(row["candidate_score"], f"row {index} candidate_score"),
-        candidate,
-        rel_tol=1e-12,
-        abs_tol=1e-9,
+    # These optional fields are assertions about the exact engine-derived
+    # outcome, not alternative numerical estimates.  Relative tolerances are
+    # unsafe without a trusted magnitude bound: at 1e20, rel_tol=1e-12 admits
+    # tens of millions of absolute contradiction.
+    if "candidate_score" in row and (
+        _finite_number(row["candidate_score"], f"row {index} candidate_score") != candidate
     ):
         raise ProvenanceError(f"row {index} candidate_score contradicts rewards")
-    if "opponent_score" in row and not math.isclose(
-        _finite_number(row["opponent_score"], f"row {index} opponent_score"),
-        opponent,
-        rel_tol=1e-12,
-        abs_tol=1e-9,
+    if "opponent_score" in row and (
+        _finite_number(row["opponent_score"], f"row {index} opponent_score") != opponent
     ):
         raise ProvenanceError(f"row {index} opponent_score contradicts rewards")
-    if "margin" in row and not math.isclose(
-        _finite_number(row["margin"], f"row {index} margin"),
-        margin,
-        rel_tol=1e-12,
-        abs_tol=1e-9,
-    ):
+    if "margin" in row and _finite_number(row["margin"], f"row {index} margin") != margin:
         raise ProvenanceError(f"row {index} margin contradicts rewards")
     return seat, candidate, opponent, margin
 
