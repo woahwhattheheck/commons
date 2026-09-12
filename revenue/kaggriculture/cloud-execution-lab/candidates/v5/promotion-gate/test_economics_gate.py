@@ -30,8 +30,6 @@ def report(*, delta: int = 10):
         for seat in (0, 1):
             control_own = 1000 + seed + seat
             control_rival = 900 + seed
-            # Preserve rival score and move own score by delta so paired margin
-            # delta is exactly `delta` in every cell.
             cells.append(
                 {
                     "seed": seed,
@@ -165,8 +163,6 @@ class EconomicsGateTests(unittest.TestCase):
 
     def test_unbalanced_seat_panel_is_rejected(self):
         value = report()
-        # Keep eight unique cells but replace the final seat-1 cell by a new
-        # seed that has only seat 0. Both affected seeds are incomplete.
         value["cells"][-1] = {
             **value["cells"][-1],
             "seed": 104,
@@ -193,6 +189,14 @@ class EconomicsGateTests(unittest.TestCase):
             with self.subTest(bad=bad):
                 value = report()
                 value["cells"][0]["candidate_own"] = bad
+                with self.assertRaisesRegex(gate.EconomicsError, "plain int"):
+                    validate(value)
+
+    def test_oversized_scores_and_seeds_are_rejected(self):
+        for field in ("candidate_own", "seed"):
+            with self.subTest(field=field):
+                value = report()
+                value["cells"][0][field] = 1 << 100
                 with self.assertRaisesRegex(gate.EconomicsError, "plain int"):
                     validate(value)
 
