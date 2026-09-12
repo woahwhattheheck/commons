@@ -84,27 +84,44 @@ def missing_mapped_sources(lab: Path | None = None) -> list[str]:
 
 
 def materialize_live_worker_root(lab: Path, dest: Path) -> Path:
-    """Copy the lab and place attributed root modules beside main.py.
+    """Copy the lab and place archive-layout members for isolated live workers.
 
     The live-source hosted step previously copied only cloud-execution-lab
     into a temp root. Bare imports and SOURCE.json then failed even after the
-    sibling files were present in the checkout. The packaged archive already
-    stores these members next to main.py; live workers need the same layout.
+    sibling files were present in the checkout. A real lab ``checks/`` directory
+    also suppresses the historical ``checks -> .`` symlink, so mapped
+    ``checks/reference/engine/utils.py`` (and the rest of the archive checks
+    layout) must be overlaid explicitly. GitHub Actions run 34690162038 failed
+    while the live worker tried to read that missing path after
+    ``--materialize-live`` reported PASS.
     """
     lab = Path(lab).resolve()
     dest = Path(dest)
     if dest.exists():
         raise FileExistsError(dest)
     shutil.copytree(lab, dest, symlinks=True)
-    checks = dest / "checks"
-    if not checks.exists():
-        checks.symlink_to(".")
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+
+    for member, source in source_files().items():
+        origin = (lab / source).resolve()
+        if not origin.is_file():
+            raise FileNotFoundError(origin)
+        target = dest / member
+        if target.is_file():
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(origin.read_bytes())
     for member, origin in attributed_root_modules(lab).items():
         if not origin.is_file():
             raise FileNotFoundError(origin)
         target = dest / member
         if target.resolve() != origin:
             target.write_bytes(origin.read_bytes())
+    checks = dest / "checks"
+    if not checks.exists():
+        checks.symlink_to(".")
     published = lab / "runtime/integrated-selected/CURRENT-SOURCE.json"
     if published.is_file() and not (dest / "SOURCE.json").is_file():
         (dest / "SOURCE.json").write_bytes(published.read_bytes())
