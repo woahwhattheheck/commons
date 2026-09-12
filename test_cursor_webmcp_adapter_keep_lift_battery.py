@@ -32,7 +32,7 @@ KEEP = {
     "catalog.html": "35a7069f",
     "boards.html": "e4b46040",
     "hub_pages.py": "44bbd2ec",
-    "door.js": "de1d570b",
+    "door.js": "dc59355d",
     "test_cursor_webmcp_adapter_keep_lift.py": "6d7745e4",
     "test_webmcp_door.py": "21b6993f",
     "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "8f2440f4",
