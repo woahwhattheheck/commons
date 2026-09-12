@@ -1,0 +1,80 @@
+name: astra-fresh-loss-two-tails-20260912
+
+on:
+  push:
+    branches:
+      - astra/fresh-loss-two-tails-20260912
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-public-replays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public Kaggle episode responses
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p replay-bundle
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import urllib.request
+
+          episode_ids = [108052878, 108052137, 108029864]
+          endpoint = "https://www.kaggle.com/requests/EpisodeService/GetEpisodeReplay"
+          root = pathlib.Path("replay-bundle")
+          manifest = {
+              "endpoint": endpoint,
+              "episode_ids": episode_ids,
+              "responses": [],
+          }
+
+          for episode_id in episode_ids:
+              payload = json.dumps({"EpisodeId": episode_id}, separators=(",", ":")).encode("utf-8")
+              request = urllib.request.Request(
+                  endpoint,
+                  data=payload,
+                  headers={
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "User-Agent": "Mozilla/5.0 titan-v4-public-replay-forensics",
+                  },
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=60) as response:
+                  body = response.read()
+                  status = int(response.status)
+                  content_type = response.headers.get("Content-Type", "")
+              name = f"episode-{episode_id}-response.json"
+              (root / name).write_bytes(body)
+              parsed = json.loads(body.decode("utf-8"))
+              text = json.dumps(parsed, sort_keys=True, separators=(",", ":")).encode("utf-8")
+              manifest["responses"].append(
+                  {
+                      "episode_id": episode_id,
+                      "http_status": status,
+                      "content_type": content_type,
+                      "raw_bytes": len(body),
+                      "raw_sha256": hashlib.sha256(body).hexdigest(),
+                      "canonical_json_sha256": hashlib.sha256(text).hexdigest(),
+                      "top_level_keys": sorted(parsed) if isinstance(parsed, dict) else None,
+                  }
+              )
+
+          (root / "FETCH-MANIFEST.json").write_text(
+              json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(manifest, indent=2, sort_keys=True))
+          PY
+      - name: Upload exact replay responses
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-fresh-loss-two-tails-replays
+          path: replay-bundle
+          if-no-files-found: error
+          retention-days: 1
