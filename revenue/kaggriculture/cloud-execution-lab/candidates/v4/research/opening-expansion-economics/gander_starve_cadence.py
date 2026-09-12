@@ -31,6 +31,8 @@ STARVE_PATH = V4_ROOT / "repairs" / "gameplay" / "dead-feed-care" / "starvation_
 
 PINNED_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 PINNED_ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+PINNED_GANDER_GIT_BLOB = "38ae7715c233c74f24aacd5fe09f4d0d7a630037"
+PINNED_STARVE_GIT_BLOB = "8831ff953faf033cc6d3892c6f32ccd1ee1af06c"
 GOOSE_COUNT = 9
 SEASON_DAYS = 30
 FIRST_SERVICE_DAY = 1
@@ -40,6 +42,13 @@ INITIAL_WHEAT = 1000
 
 class GanderStarveError(RuntimeError):
     pass
+
+
+def _git_blob(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()
 
 
 def _load(path: Path, name: str) -> ModuleType:
@@ -113,6 +122,19 @@ def worker_route(
 
 
 def _canonical_sources() -> tuple[ModuleType, ModuleType]:
+    # Authenticate helper bytes before import/exec.  These helpers are part of
+    # the proof surface, not merely references to semantic constants.
+    gander_blob = _git_blob(GANDER_PATH)
+    starve_blob = _git_blob(STARVE_PATH)
+    if gander_blob != PINNED_GANDER_GIT_BLOB:
+        raise GanderStarveError(
+            f"GANDER helper drift: expected {PINNED_GANDER_GIT_BLOB}, got {gander_blob}"
+        )
+    if starve_blob != PINNED_STARVE_GIT_BLOB:
+        raise GanderStarveError(
+            f"STARVEORACLE helper drift: expected {PINNED_STARVE_GIT_BLOB}, got {starve_blob}"
+        )
+
     gander = _load(GANDER_PATH, "titan_v4_gander_starve_gander")
     starve = _load(STARVE_PATH, "titan_v4_gander_starve_starve")
     if getattr(gander, "EXPECTED_ENGINE_BLOB", None) != PINNED_ENGINE_GIT_BLOB:
@@ -311,6 +333,8 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
         "action_attempts": counts,
         "source_contract": {
             "gander_frontier_geese": GOOSE_COUNT,
+            "gander_helper_git_blob": _git_blob(GANDER_PATH),
+            "starve_helper_git_blob": _git_blob(STARVE_PATH),
             "gander_day1_service_counts": contract["authored_counts"],
             "starve_engine_git_blob": getattr(starve, "ENGINE_GIT_BLOB"),
             "care_used": False,
