@@ -155,14 +155,17 @@ def publish_exclusive(files: Iterable[tuple[Path, bytes]]) -> None:
             _verify_final(item)
         _fsync_parents(item.path for item in owned)
     except Exception:
+        # Decide path ownership while the reservation fds still pin their
+        # original inodes.  Closing first would reopen an inode-reuse window
+        # between a hostile unlink/recreate and rollback.
+        for item in reversed(owned):
+            _unlink_if_owned(item)
         for item in owned:
             if item.fd >= 0:
                 try:
                     os.close(item.fd)
                 except OSError:
                     pass
-        for item in reversed(owned):
-            _unlink_if_owned(item)
         raise
     else:
         for item in owned:
