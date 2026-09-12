@@ -314,7 +314,13 @@ def _new_instance(root, feature_data):
                 returned, report = apply(obs, returned, cfg, completed=completed)
                 self.diagnostics['town_procurement'] = report
                 self._checkpoint_finalizer(obs, returned, 'town_procurement')
-            if self.row_shed_enabled and completed:
+            episode_steps = cfg.get('episodeSteps', 720)
+            terminal_step = (
+                type(episode_steps) is int
+                and type(obs.get('step')) is int
+                and obs['step'] == episode_steps - 2
+            )
+            if self.row_shed_enabled and completed and not terminal_step:
                 returned = self._row_shed_final_selected(obs, cfg, returned)
                 self._checkpoint_finalizer(obs, returned, 'row_shed')
             return returned
