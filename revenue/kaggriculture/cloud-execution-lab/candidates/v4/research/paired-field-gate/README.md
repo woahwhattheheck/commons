@@ -8,7 +8,7 @@ must not conceal a negative dairy-opponent or candidate-seat stratum.
 The implementation reuses `load_records` and `analyze` from the existing
 `repairs/tooling/delta-evidence/v31_delta_distribution_report.py` recovered by
 #12646. No reporter copy or private score parser is added. The exact tested
-reporter Git blob is `a37f0be3eb7db79d6e7162cee3b7e472e2afab6a`; a different byte
+reporter Git blob is `5fa647b46dd2c359bc045a435d1542b1b06ed738`; a different byte
 identity fails before import. A later reporter successor requires an explicit
 review, regression run and pin update, not automatic acceptance.
 
@@ -32,9 +32,10 @@ explicit `own`/`rival` is already candidate-relative:
 {"opponent":"dairy-rival","seed":101,"candidate_seat":1,"baseline":{"scores":[900,1000]},"candidate":{"scores":[900,1001]}}
 ```
 
-For the pinned legacy reporter, flat `baseline_scores`/`candidate_scores` and
-multiple paired-container aliases are intentionally rejected: their disputed
-seat/type-equality semantics are owned by the separate reporter-repair lane.
+Flat `baseline_scores`/`candidate_scores` and multiple paired-container aliases
+remain intentionally rejected at this screen boundary to avoid misinterpreting
+legacy evidence. The shared reporter itself now has the peer-owned seat/type
+repair plus strict raw-JSON handling; this consumer does not undo those repairs.
 Use a single `cells`/`results`/`games`/`matches` container or a list, and nested
 scores or explicit own/rival fields. The CLI also rejects duplicate JSON keys,
 nonfinite constants and invalid UTF-8.
@@ -89,6 +90,8 @@ alias ambiguity, strict JSON, output safety, and deterministic order invariance.
 
 Both normal and optimized Python execute the real hash-pinned dependency.
 See `execution-receipt.json` for the local test receipt and source hashes.
+The initial a37 dependency and the reviewed, exact 24,465-byte 5fa successor both
+passed the same 41 tests in normal and optimized Python. No reporter copy was added.
 
 ## Evidence limits and integration boundary
 
