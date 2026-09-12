@@ -8,28 +8,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 from pathlib import Path
 from types import ModuleType
 from typing import Any
 
-from cobuy_opening_collision import (
-    APEX_GUARD_BLOB,
-    APEX_MAIN_BLOB,
-    APEX_POLICY_BLOB,
-    APEX_TAPE_BLOB,
-    ARLENE_BLOB,
-    ENGINE_BLOB,
-    MARKET_OPS,
-    MAX_ORDERS,
-    PRODUCTS,
-    TURNS,
-    checked_text,
-    decode_apex_action,
-    parse_apex_tapes,
-)
-
+COBUY_HELPER_BLOB = "c965ec1411aa5f6cff790be771504e2d43a2fd7d"
 SCHEMA = "titan-v4-cobuy-719-authored-collision-atlas/v1"
 BUYABLE = ("WHEAT", "FERTILIZER")
 APEX_GUARD_INTERVAL = 144
@@ -41,21 +25,57 @@ def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
+def _load_verified_source_module(path: Path, expected_blob: str, name: str) -> ModuleType:
+    """Read, authenticate, compile, and execute one immutable byte snapshot.
+
+    The pathname is read exactly once.  `compile()` consumes the authenticated
+    in-memory bytes, so replacing the file after that read cannot change what
+    executes while retaining the reviewed Git-blob identity.
+    """
+    data = path.read_bytes()
+    actual = git_blob(data)
+    if actual != expected_blob:
+        raise ValueError(f"Git blob mismatch for {path}: {actual} != {expected_blob}")
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"non-UTF-8 verified source: {path}") from exc
+    module = ModuleType(name)
+    module.__file__ = str(path)
+    code = compile(text, f"{path}@gitblob:{actual}", "exec")
+    exec(code, module.__dict__)
+    return module
+
+
+# The sibling helper defines the reviewed tape codec/source identities used by
+# the opening COBUY theorem.  Importing it normally would make those executable
+# bytes an unauthenticated dependency, so execute one exact reviewed snapshot.
+_HELPER = _load_verified_source_module(
+    Path(__file__).with_name("cobuy_opening_collision.py"),
+    COBUY_HELPER_BLOB,
+    "_cobuy_opening_collision_verified",
+)
+APEX_GUARD_BLOB = _HELPER.APEX_GUARD_BLOB
+APEX_MAIN_BLOB = _HELPER.APEX_MAIN_BLOB
+APEX_POLICY_BLOB = _HELPER.APEX_POLICY_BLOB
+APEX_TAPE_BLOB = _HELPER.APEX_TAPE_BLOB
+ARLENE_BLOB = _HELPER.ARLENE_BLOB
+ENGINE_BLOB = _HELPER.ENGINE_BLOB
+MARKET_OPS = _HELPER.MARKET_OPS
+MAX_ORDERS = _HELPER.MAX_ORDERS
+PRODUCTS = _HELPER.PRODUCTS
+TURNS = _HELPER.TURNS
+checked_text = _HELPER.checked_text
+decode_apex_action = _HELPER.decode_apex_action
+parse_apex_tapes = _HELPER.parse_apex_tapes
+
+
 def _require_blob(path: Path, expected: str, label: str) -> bytes:
     data = path.read_bytes()
     actual = git_blob(data)
     if actual != expected:
         raise ValueError(f"{label} Git blob mismatch: {actual} != {expected}")
     return data
-
-
-def _load_module(path: Path, name: str) -> ModuleType:
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ValueError(f"could not import {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 def _buy_row(raw: Any) -> tuple[str, int] | None:
@@ -78,8 +98,8 @@ def _arlene_row_stable(market: list[Any], row: int) -> bool:
 
 
 def load_arlene(path: Path) -> ModuleType:
-    _require_blob(path, ARLENE_BLOB, "Arlene")
-    module = _load_module(path, "_cobuy_719_arlene")
+    # Single-read verified snapshot: never authenticate then reopen this path.
+    module = _load_verified_source_module(path, ARLENE_BLOB, "_cobuy_719_arlene")
     for name in ("routes", "MAX_ORDERS", "FINAL_EXECUTABLE_STEP"):
         if not hasattr(module, name):
             raise ValueError(f"Arlene source missing {name}")
@@ -334,6 +354,7 @@ def build_atlas(
         "decision_authority": False,
         "source_blobs": {
             "official_engine": ENGINE_BLOB,
+            "cobuy_opening_collision.py": COBUY_HELPER_BLOB,
             "arlene": ARLENE_BLOB,
             "apex_tape": APEX_TAPE_BLOB,
             "apex_policy": APEX_POLICY_BLOB,
@@ -382,6 +403,7 @@ def build_atlas(
         "limits": [
             "This is an authored-source atlas, not a replay of hidden rival current actions.",
             "The already-closed step-0 WHEAT13 guardrail is separated from novel frontier collisions.",
+            "Arlene and the shared COBUY helper execute only from authenticated in-memory source snapshots.",
             "Apex six-day guard boundaries fail closed because budget sales may be moved ahead of buys.",
             "Arlene rows after an authored SELL fail closed because clamp_sells may delete that SELL and shift the buy.",
             "Route-pair candidates are research narrowing only; only route-invariant collisions are authoritative.",
