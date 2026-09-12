@@ -40,7 +40,7 @@ def fixture(
             else [inv if inv is not None else {"MILK": 3}]
         ),
     }
-    return selected, farm, private, config or {}
+    return selected, farm, private, {} if config is None else config
 
 
 class UnitMarketBridgeTests(unittest.TestCase):
@@ -168,6 +168,15 @@ class UnitMarketBridgeTests(unittest.TestCase):
         out, report = bridge.transform(selected, farm, private, config)
         self.assertIs(out, selected)
         self.assertEqual(report["reason"], "final_worker_not_shed_adjacent")
+
+    def test_falsey_non_mapping_configurations_fail_closed(self):
+        selected, farm, private, _ = fixture(["PASS"])
+        for malformed in (False, 0, "", [], ()):
+            with self.subTest(malformed=malformed):
+                out, report = bridge.transform(selected, farm, private, malformed)
+                self.assertIs(out, selected)
+                self.assertEqual(report["classification"], "NO_OP")
+                self.assertEqual(report["reason"], "malformed_config")
 
 
 if __name__ == "__main__":
