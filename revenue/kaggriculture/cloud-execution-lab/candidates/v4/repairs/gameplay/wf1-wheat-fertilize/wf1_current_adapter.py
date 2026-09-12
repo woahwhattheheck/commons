@@ -2,8 +2,7 @@
 """Fail-closed current-V4 ABI guard for the exact WF1 wheat-fertilize donor.
 
 The profitable donor policy remains byte-for-byte in ``r04_wheat_fert.py``.  This
-module adds only the current canonical runtime's input-domain contract before
-calling it.  It is deliberately unwired and default-OFF.
+module adds input-domain and selected-actor admission guards before calling it.  It is deliberately unwired and default-OFF.
 """
 from __future__ import annotations
 
@@ -118,6 +117,43 @@ def _current_shape(observation: Any, action: Any) -> bool:
     return True
 
 
+
+def _selection_observation(observation: dict, action: dict) -> dict:
+    """Do not replace WATER when selected own actors already fund tile coverage.
+
+    The donor's ``claimed`` set covers only substitutions made by the donor,
+    not FERTILIZE commands already selected by another controller. Mark only
+    colliding WATER actors ineligible, before donor credit is recorded. Other
+    actors, tiles, shed stock and the returned command rows remain untouched.
+    No collision returns the original observation without allocating a copy.
+    """
+    farm = observation["farms"][observation["player"]]
+    positions = [farm["farmer"], *farm["hands"]]
+    commands = [action["farmer"], *action["hands"]]
+    inventories = observation["private"]["inventories"]
+    covered = {
+        tuple(position)
+        for position, command, inventory in zip(positions, commands, inventories)
+        if command[0] == "FERTILIZE" and inventory.get("FERTILIZER", 0) > 0
+    }
+    blocked = [
+        index
+        for index, (position, command, inventory) in enumerate(
+            zip(positions, commands, inventories))
+        if (command[0] == "WATER" and tuple(position) in covered
+            and inventory.get("FERTILIZER", 0) > 0)
+    ]
+    if not blocked:
+        return observation
+    # Shallow-copy only the admission surface. The exact donor reads these
+    # structures but does not mutate observations; it copies modified actions.
+    selected_inventories = list(inventories)
+    for index in blocked:
+        selected_inventories[index] = dict(inventories[index], FERTILIZER=0)
+    selected_private = dict(observation["private"], inventories=selected_inventories)
+    return dict(observation, private=selected_private)
+
+
 def apply_wf1_current(observation: Any, action: Any, configuration: Any, *, enabled: bool = False):
     """Apply exact donor semantics only on the current canonical input domain."""
     if enabled is not True:
@@ -125,6 +161,7 @@ def apply_wf1_current(observation: Any, action: Any, configuration: Any, *, enab
     if not _standard_configuration(configuration) or not _current_shape(observation, action):
         return action
     try:
-        return _donor.apply_wheat_fertilize(observation, action, enabled=True)
+        return _donor.apply_wheat_fertilize(
+            _selection_observation(observation, action), action, enabled=True)
     except Exception:
         return action
