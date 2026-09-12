@@ -66,6 +66,7 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
             "crop_release": True,
             "early_capital": True,
             "town_procurement": True,
+            "exec_pace": False,
         }
         x, y = self.spawn
         tiles = [[None for _ in range(10)] for _ in range(10)]
@@ -155,6 +156,10 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
         self.assertEqual(
             report["source_pins"]["TITAN-CONFIG.json"], builder.CONFIG_GIT_BLOB)
         self.assertEqual(
+            report["source_pins"]["frozen_selected.py"], builder.FROZEN_SELECTED_GIT_BLOB)
+        self.assertEqual(
+            report["source_pins"]["exec_pace_runtime.py"], builder.EXEC_PACE_RUNTIME_GIT_BLOB)
+        self.assertEqual(
             report["source_pins"]["reference/titan-current/redundant_hire.py"],
             builder.REDUNDANT_HIRE_GIT_BLOB,
         )
@@ -183,6 +188,7 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
             ("early_capital", False),
             ("town_procurement", False),
             ("committed_seed_retry", True),
+            ("exec_pace", True),
         )
         for field, value in cases:
             with self.subTest(field=field, value=value):
