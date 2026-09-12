@@ -40,35 +40,24 @@ def _fake_apex_tape(buy_steps: dict[int, tuple[int, int, int]] | None = None) ->
 class AtlasUnitTests(unittest.TestCase):
     def test_arlene_intersection_fails_closed_after_sell_prefix(self):
         routes = {
-            "a": _route(
-                [
-                    {"market": [["BUY_PRODUCT", "WHEAT", 13]]},
-                    {
-                        "market": [
-                            ["SELL", "MILK", 1],
-                            ["BUY_PRODUCT", "WHEAT", 3],
-                        ]
-                    },
-                    {"market": [["BUY_PRODUCT", "FERTILIZER", 2]]},
-                ]
-            ),
-            "b": _route(
-                [
-                    {"market": [["BUY_PRODUCT", "WHEAT", 13]]},
-                    {"market": [["BUY_PRODUCT", "WHEAT", 3]]},
-                    {"market": [["BUY_PRODUCT", "FERTILIZER", 2]]},
-                ]
-            ),
+            "a": _route([
+                {"market": [["BUY_PRODUCT", "WHEAT", 13]]},
+                {"market": [["SELL", "MILK", 1], ["BUY_PRODUCT", "WHEAT", 3]]},
+                {"market": [["BUY_PRODUCT", "FERTILIZER", 2]]},
+            ]),
+            "b": _route([
+                {"market": [["BUY_PRODUCT", "WHEAT", 13]]},
+                {"market": [["BUY_PRODUCT", "WHEAT", 3]]},
+                {"market": [["BUY_PRODUCT", "FERTILIZER", 2]]},
+            ]),
         }
         module = SimpleNamespace(
             routes=lambda: routes,
             MAX_ORDERS=atlas.MAX_ORDERS,
             FINAL_EXECUTABLE_STEP=2,
         )
-        per = atlas.arlene_route_pulses(module)
-        invariant = atlas._invariant_pulses(per)
         self.assertEqual(
-            invariant,
+            atlas._invariant_pulses(atlas.arlene_route_pulses(module)),
             [
                 {"step": 0, "row": 0, "item": "WHEAT", "qty": 13},
                 {"step": 2, "row": 0, "item": "FERTILIZER", "qty": 2},
@@ -104,14 +93,36 @@ class AtlasUnitTests(unittest.TestCase):
         self.assertFalse(opening["raw_index_stable"])
 
     def test_apex_pass_rows_compress_like_python_entrypoint(self):
-        # PASS is omitted by Apex _unpack_action, so following BUY becomes row0.
         text = _fake_apex_tape()
         text = text.replace('"0 0"', '"0 2 0 0 1 4 0 2"', 1)
         per = atlas.apex_route_pulses(text, native_verified_opening=True)
         pulse = next(p for p in per["0"] if p["step"] == 0)
+        self.assertEqual((pulse["row"], pulse["item"], pulse["qty"]), (0, "WHEAT", 2))
+
+    def test_apex_executable_cap_applies_after_pass_compression(self):
+        # Ten encoded PASS rows disappear in _unpack_action. An encoded index-10
+        # BUY therefore becomes executable Python row0 and must survive market[:10].
+        text = _fake_apex_tape()
+        encoded = "0 11 " + " ".join(["0 0 1"] * 10 + ["4 0 7"])
+        text = text.replace('"0 0"', f'"{encoded}"', 1)
+        per = atlas.apex_route_pulses(text, native_verified_opening=True)
+        pulse = next(p for p in per["0"] if p["step"] == 0)
+        self.assertEqual((pulse["row"], pulse["item"], pulse["qty"]), (0, "WHEAT", 7))
+
+    def test_repeated_same_item_buys_are_not_collapsed(self):
+        own = [
+            {"step": 7, "row": 0, "item": "WHEAT", "qty": 2},
+            {"step": 7, "row": 3, "item": "WHEAT", "qty": 5},
+        ]
+        rival = [
+            {"step": 7, "row": 0, "item": "WHEAT", "qty": 11},
+            {"step": 7, "row": 2, "item": "WHEAT", "qty": 13},
+        ]
+        pairs = atlas._pair_collisions(own, rival)
+        self.assertEqual(len(pairs), 4)
         self.assertEqual(
-            (pulse["row"], pulse["item"], pulse["qty"]),
-            (0, "WHEAT", 2),
+            {(p["own_row"], p["rival_row"]) for p in pairs},
+            {(0, 0), (0, 2), (3, 0), (3, 2)},
         )
 
     def test_source_contracts_fail_closed(self):
@@ -143,27 +154,22 @@ class ExactCheckoutTests(unittest.TestCase):
         self.assertTrue(first["controls"]["step0_wheat_collision_present"])
         self.assertTrue(first["controls"]["step0_wheat_same_row"])
         opening = [
-            c
-            for c in first["authoritative_collisions"]
+            c for c in first["authoritative_collisions"]
             if c["step"] == 0 and c["item"] == "WHEAT"
         ]
         self.assertEqual(len(opening), 1)
         self.assertEqual(
             (
-                opening[0]["own_row"],
-                opening[0]["own_qty"],
-                opening[0]["rival_row"],
-                opening[0]["rival_qty"],
+                opening[0]["own_row"], opening[0]["own_qty"],
+                opening[0]["rival_row"], opening[0]["rival_qty"],
             ),
             (0, 13, 0, 13),
         )
-        excluded = set(
-            first["scope"]["guard_boundaries_excluded_without_native_receipt"]
-        )
+        excluded = set(first["scope"]["guard_boundaries_excluded_without_native_receipt"])
         for collision in first["authoritative_collisions"]:
             self.assertNotIn(collision["step"], excluded)
-            self.assertLessEqual(collision["own_row"], atlas.MAX_ORDERS - 1)
-            self.assertLessEqual(collision["rival_row"], atlas.MAX_ORDERS - 1)
+            self.assertLess(collision["own_row"], atlas.MAX_ORDERS)
+            self.assertLess(collision["rival_row"], atlas.MAX_ORDERS)
             self.assertIn(collision["item"], atlas.BUYABLE)
         json.dumps(first, sort_keys=True)
 
