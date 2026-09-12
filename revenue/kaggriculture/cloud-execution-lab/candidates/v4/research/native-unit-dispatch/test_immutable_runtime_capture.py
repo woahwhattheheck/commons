@@ -5,6 +5,8 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -38,6 +40,13 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             for name in k.ENGINE_GIT_BLOBS
         }
         return manifest_raw, files, engine_pins
+
+    def control_fixture(self, root: Path):
+        source_root = Path(k.__file__).resolve().parent
+        files = {name: (source_root / name).read_bytes() for name in k.CONTROL_FILES}
+        for name, raw in files.items():
+            (root / name).write_bytes(raw)
+        return files
 
     def patches(self, manifest_raw, files, engine_pins):
         return patch.multiple(
@@ -106,6 +115,60 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             with outer, base:
                 with self.assertRaisesRegex(ValueError, 'Unsafe runtime input: main.py'):
                     k.capture_runtime(root)
+
+    def test_control_bundle_survives_repo_runner_replacement_and_executes_frozen_program(self):
+        with tempfile.TemporaryDirectory() as d:
+            base = Path(d)
+            mutable = base / 'mutable-control'; mutable.mkdir()
+            original = self.control_fixture(mutable)
+            captured, digest = k.capture_control_bundle(mutable)
+            self.assertEqual(original, captured)
+
+            # This is the predecessor: after parent capture, the repository
+            # runner is replaced. Children must never reopen this path.
+            (mutable / 'run_kinetic_games.py').write_text(
+                'raise SystemExit("MUTATED REPO RUNNER EXECUTED")\n'
+            )
+            frozen = base / 'frozen-control'
+            k.materialize_control_bundle(frozen, captured)
+            output = base / 'probe.json'
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    '-B',
+                    str(frozen / 'run_kinetic_games.py'),
+                    '--native-root',
+                    str(base / 'unused-native-root'),
+                    '--output',
+                    str(output),
+                    '--control-probe',
+                    '--expected-control-bundle-sha256',
+                    digest,
+                ],
+                capture_output=True,
+                text=True,
+                timeout=20,
+            )
+            self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+            receipt = json.loads(output.read_text())
+            self.assertEqual(receipt['executed_control_bundle_sha256'], digest)
+            self.assertEqual(
+                receipt['executed_control_runner_blob'],
+                k.composer.git_blob(original['run_kinetic_games.py']),
+            )
+            self.assertEqual(
+                (frozen / 'run_kinetic_games.py').read_bytes(),
+                original['run_kinetic_games.py'],
+            )
+
+    def test_control_helper_drift_fails_closed_before_child_launch(self):
+        for name in ('compose_kinetic.py', 'check_kinetic.py'):
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as d:
+                root = Path(d)
+                self.control_fixture(root)
+                (root / name).write_bytes(b'DRIFT = True\n')
+                with self.assertRaisesRegex(ValueError, f'Unverified control input: {name}'):
+                    k.capture_control_bundle(root)
 
 
 if __name__ == '__main__':
