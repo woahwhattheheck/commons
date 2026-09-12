@@ -24,6 +24,8 @@ class RawPhaseCensusTests(unittest.TestCase):
         tapes = empty_tapes()
         tapes[0][10]["market"] = [["BUY_PRODUCT", "WHEAT", 3], []]
         report = census.census_tapes(tapes, contract())
+        self.assertFalse(report["current_native_reach_authority"])
+        self.assertEqual(report["candidate_surface"], "authored_r01_tape_pre_transforms")
         self.assertEqual(report["unique_candidate_coordinates"], 1)
         self.assertEqual(report["candidates"][0]["selected_plans"], [0, 1, 3])
 
