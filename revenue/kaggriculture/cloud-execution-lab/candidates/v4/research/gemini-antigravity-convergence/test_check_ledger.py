@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 import check_ledger as C
 
@@ -37,6 +39,15 @@ class GeminiConvergenceTests(unittest.TestCase):
             C.validate_document(doc, self.root)
         if pattern is not None:
             self.assertIn(pattern, str(ctx.exception))
+
+    def writeCanonicalLedger(self, doc=None):
+        path = self.root / C.CANONICAL_LEDGER_REL
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            json.dumps(self.doc if doc is None else doc, sort_keys=True),
+            encoding="utf-8",
+        )
+        return path
 
     def test_complete_ledger_accepts(self):
         result = C.validate_document(copy.deepcopy(self.doc), self.root)
@@ -128,7 +139,7 @@ class GeminiConvergenceTests(unittest.TestCase):
             self.skipTest(f"symlinks unavailable: {exc}")
         rel = C.V4_PREFIX + "research/current-alias/stale.md"
         doc["entries"][0]["canonical_evidence"][0] = rel
-        self.assertRejected(doc, "symlink path component")
+        self.assertRejected(doc, "symlink component")
 
     def test_leaf_symlink_rejected(self):
         doc = copy.deepcopy(self.doc)
@@ -140,7 +151,7 @@ class GeminiConvergenceTests(unittest.TestCase):
             path.symlink_to(backing.name)
         except (OSError, NotImplementedError) as exc:
             self.skipTest(f"symlinks unavailable: {exc}")
-        self.assertRejected(doc, "symlink path component")
+        self.assertRejected(doc, "symlink component")
 
     def test_missing_evidence_rejected(self):
         doc = copy.deepcopy(self.doc)
@@ -184,6 +195,23 @@ class GeminiConvergenceTests(unittest.TestCase):
         doc["entries"][0]["provenance_pull_numbers"] = [True]
         self.assertRejected(doc, "invalid PR provenance")
 
+    def test_type_poison_declared_sets_fail_closed(self):
+        doc = copy.deepcopy(self.doc)
+        doc["source_stream"]["included_buckets"][0] = {}
+        self.assertRejected(doc, "included_buckets")
+        doc = copy.deepcopy(self.doc)
+        doc["allowed_dispositions"][0] = []
+        self.assertRejected(doc, "allowed_dispositions")
+        doc = copy.deepcopy(self.doc)
+        doc["entries"][0]["origin_buckets"][0] = {}
+        self.assertRejected(doc, "origin_buckets")
+        doc = copy.deepcopy(self.doc)
+        doc["entries"][0]["canonical_evidence"][0] = {}
+        self.assertRejected(doc, "string canonical_evidence")
+        doc = copy.deepcopy(self.doc)
+        doc["entry_count"] = 34.0
+        self.assertRejected(doc, "entry_count mismatch")
+
     def test_nonfinite_json_rejected(self):
         path = self.root / "bad.json"
         path.write_text('{"x": NaN}', encoding="utf-8")
@@ -209,6 +237,46 @@ class GeminiConvergenceTests(unittest.TestCase):
         doc = copy.deepcopy(self.doc)
         doc["source_stream"]["included_buckets"].append("master_manifest")
         self.assertRejected(doc, "included_buckets")
+
+    def test_validate_path_rejects_alternate_ledger(self):
+        canonical = self.writeCanonicalLedger()
+        alternate = canonical.with_name("alternate.json")
+        alternate.write_bytes(canonical.read_bytes())
+        with self.assertRaisesRegex(C.ConvergenceError, "ledger path must be canonical"):
+            C.validate_path(alternate, self.root)
+
+    def test_validate_path_rejects_canonical_ledger_symlink(self):
+        canonical = self.writeCanonicalLedger()
+        backing = canonical.with_name("ledger.real.json")
+        canonical.replace(backing)
+        try:
+            canonical.symlink_to(backing.name)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symlinks unavailable: {exc}")
+        with self.assertRaisesRegex(C.ConvergenceError, "symlink component"):
+            C.validate_path(canonical, self.root)
+
+    def test_validate_path_rejects_swap_between_validation_and_open(self):
+        canonical = self.writeCanonicalLedger()
+        attacker = canonical.with_name("attacker.json")
+        attacker.write_bytes(canonical.read_bytes())
+        original = canonical.with_name("original.json")
+        real_open = C.os.open
+        fired = {"done": False}
+
+        def swapping_open(path, flags, *args, **kwargs):
+            if Path(path) == canonical and not fired["done"]:
+                canonical.replace(original)
+                attacker.replace(canonical)
+                fired["done"] = True
+            return real_open(path, flags, *args, **kwargs)
+
+        with mock.patch.object(C.os, "open", side_effect=swapping_open):
+            with self.assertRaisesRegex(
+                C.ConvergenceError, "changed between validation and open"
+            ):
+                C.validate_path(canonical, self.root)
+        self.assertTrue(fired["done"])
 
 
 if __name__ == "__main__":
