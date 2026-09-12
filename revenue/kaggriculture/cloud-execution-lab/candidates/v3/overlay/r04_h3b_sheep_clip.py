@@ -55,7 +55,9 @@ def _standard_configuration(configuration: Any) -> bool:
 
 
 def _strict_sheep(tile: Any):
-    if not isinstance(tile, dict) or tile.get("animal") != "SHEEP":
+    if (not isinstance(tile, dict)
+            or tile.get("kind") != "PASTURE"
+            or tile.get("animal") != "SHEEP"):
         return None
     placed = tile.get("placed_day", _MISSING)
     units = tile.get("yield_units", _MISSING)
