@@ -59,9 +59,9 @@ jobs:
           )"
           test "$local_blob" = 12a3eb23dd1052a769baa16ce861890f21911e14
 
-          encoded="$(base64 -w0 final.py)"
-          blob="$(gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/blobs" \
-            -f content="$encoded" -f encoding=base64 --jq .sha)"
+          base64 -w0 final.py > final.b64
+          blob="$(jq -n --rawfile content final.b64 '{content:$content,encoding:"base64"}' \
+            | gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/blobs" --input - --jq .sha)"
           test "$blob" = "$local_blob"
 
           base=033a87af6c29176b4cd2ffb3cd3ae472fc917ea6
