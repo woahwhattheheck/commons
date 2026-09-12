@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import check_control_plane as guard
 
@@ -218,6 +219,52 @@ class ControlPlaneHardeningTests(unittest.TestCase):
             result = guard.validate_control_plane(root, delegate=False)
         self.assertFalse(result["ok"])
         self.assertTrue(any("manifest:" in e and "duplicate object key 'lane'" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_blocker_manifest_parent_swap_after_trust_check_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "root"
+            _make_root(root)
+            integration = _base_integration()
+            integration["custody_blocked"] = [
+                {
+                    "lane": "raw",
+                    "custody_path": "repairs/raw",
+                    "status": "awaiting_raw_payload",
+                }
+            ]
+            _dump(root / "INTEGRATION.json", integration)
+            raw = root / "repairs" / "raw"
+            raw.mkdir()
+            _dump(raw / "MANIFEST.json", {"lane": "raw", "status": "awaiting_raw_payload"})
+            external = base / "external"
+            external.mkdir()
+            _dump(external / "MANIFEST.json", {"lane": "external", "status": "awaiting_raw_payload"})
+
+            original_check = guard._check_trust_path
+            swapped = False
+
+            def swap_after_check(root_arg, rel, label, errors, *, require_file=False):
+                nonlocal swapped
+                original_check(
+                    root_arg,
+                    rel,
+                    label,
+                    errors,
+                    require_file=require_file,
+                )
+                if label == "custody raw manifest" and not errors and not swapped:
+                    raw.rename(root / "repairs" / "raw-before-swap")
+                    os.symlink(external, raw, target_is_directory=True)
+                    swapped = True
+
+            with mock.patch.object(guard, "_check_trust_path", side_effect=swap_after_check):
+                result = guard.validate_control_plane(root, delegate=False)
+
+        self.assertTrue(swapped)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any("custody raw manifest:" in e for e in result["errors"]), result)
 
     def test_delegate_failures_are_data_not_tracebacks(self):
         with tempfile.TemporaryDirectory() as td:

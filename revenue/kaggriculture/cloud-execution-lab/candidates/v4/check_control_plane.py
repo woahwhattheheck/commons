@@ -46,21 +46,57 @@ def _reject_constant(token: str) -> Any:
 def _read_regular_bytes(path: Path, label: str) -> bytes:
     if path.is_symlink():
         raise ControlPlaneError(f"{label} must not be a symlink")
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+
+    nofollow = getattr(os, "O_NOFOLLOW", 0)
+    directory = getattr(os, "O_DIRECTORY", 0)
+    supports_dir_fd = getattr(os, "supports_dir_fd", set())
+    if not nofollow or not directory or os.open not in supports_dir_fd:
+        raise ControlPlaneError(f"secure no-follow open unavailable for {label}")
+
+    # Keep the caller's lexical path: resolving here would follow exactly the
+    # ancestor symlink this primitive is responsible for rejecting.
+    absolute = Path(os.path.abspath(os.fspath(path)))
+    anchor = absolute.anchor
+    if not anchor:
+        raise ControlPlaneError(f"cannot anchor {label} for secure open")
+    parts = absolute.relative_to(anchor).parts
+    if not parts:
+        raise ControlPlaneError(f"{label} must be a regular file")
+
+    dir_flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | nofollow | directory
+    file_flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | nofollow
+    dir_fd = -1
+    fd = -1
     try:
-        fd = os.open(path, flags)
-    except OSError as exc:
-        raise ControlPlaneError(f"cannot open {label}: {exc}") from exc
-    try:
+        dir_fd = os.open(anchor, dir_flags)
+        for part in parts[:-1]:
+            next_fd = os.open(part, dir_flags, dir_fd=dir_fd)
+            try:
+                opened = os.fstat(next_fd)
+                if not stat.S_ISDIR(opened.st_mode):
+                    raise ControlPlaneError(f"{label} path component {part!r} must be a directory")
+            except Exception:
+                os.close(next_fd)
+                raise
+            os.close(dir_fd)
+            dir_fd = next_fd
+
+        fd = os.open(parts[-1], file_flags, dir_fd=dir_fd)
         opened = os.fstat(fd)
         if not stat.S_ISREG(opened.st_mode):
             raise ControlPlaneError(f"{label} must be a regular file")
         with os.fdopen(fd, "rb") as stream:
             fd = -1
             return stream.read()
+    except ControlPlaneError:
+        raise
+    except OSError as exc:
+        raise ControlPlaneError(f"cannot open {label} without following path symlinks: {exc}") from exc
     finally:
         if fd >= 0:
             os.close(fd)
+        if dir_fd >= 0:
+            os.close(dir_fd)
 
 
 def strict_load(path: Path) -> dict[str, Any]:
