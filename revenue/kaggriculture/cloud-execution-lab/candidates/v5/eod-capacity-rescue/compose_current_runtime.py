@@ -2,10 +2,11 @@
 # SPDX-License-Identifier: Apache-2.0
 """Materialize the default-OFF EOD-capacity rescue into current TITAN V5.
 
-The composer deliberately edits only four current-lineage integration surfaces
-and fails closed unless each expected anchor occurs exactly once.  It writes a
-scratch postimage tree; callers review/test the postimages before copying them
-back to the owned carrier branch.
+The composer is source-custody evidence for the serial late-finalizer chain.
+It edits only the four current-lineage integration surfaces and fails closed
+unless the exact post-overflow anchors occur once.  The intended returned-action
+order is pressure -> town procurement -> overflow-safe-drop -> EOD rescue ->
+return.  Combined row-order/shed is downstream and deliberately absent here.
 """
 from __future__ import annotations
 
@@ -28,45 +29,49 @@ def compose_runtime(text: str) -> str:
         raise ValueError('titan_runtime.py already mentions eod_capacity_rescue')
     text = _replace_once(
         text,
-        "    exec_pace: bool = False\n",
-        "    exec_pace: bool = False\n    eod_capacity_rescue: bool = False\n",
-        'runtime feature field',
+        "    overflow_safe_drop: bool = False\n",
+        "    overflow_safe_drop: bool = False\n    eod_capacity_rescue: bool = False\n",
+        'runtime post-overflow feature field',
     )
     text = _replace_once(
         text,
-        "        bool_fields = (*bool_fields, 'exec_pace')\n",
-        "        bool_fields = (*bool_fields, 'exec_pace', 'eod_capacity_rescue')\n",
+        "        bool_fields = (*bool_fields, 'exec_pace', 'overflow_safe_drop')\n",
+        "        bool_fields = (*bool_fields, 'exec_pace', 'overflow_safe_drop', 'eod_capacity_rescue')\n",
         'runtime exact-bool tuple',
     )
     anchor = (
-        "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
-        "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
+        "        if self.overflow_safe_drop and (self.consumer != 'frozen' or self.terminal_route):\n"
+        "            raise ValueError('overflow_safe_drop is the tested nonterminal frozen composition')\n"
     )
     replacement = anchor + (
         "        if self.eod_capacity_rescue and (self.consumer != 'frozen' or self.terminal_route):\n"
-        "            raise ValueError('eod_capacity_rescue is the tested nonterminal frozen SELL composition')\n"
+        "            raise ValueError('eod_capacity_rescue is the tested post-overflow frozen composition')\n"
     )
-    return _replace_once(text, anchor, replacement, 'runtime topology guard')
+    return _replace_once(text, anchor, replacement, 'runtime post-overflow topology guard')
 
 
 def compose_main(text: str) -> str:
     if "self.diagnostics['eod_capacity_rescue']" in text:
         raise ValueError('main.py already wires eod_capacity_rescue')
     anchor = (
-        "            if self.town_procurement_enabled:\n"
-        "                from town_procurement import apply\n"
-        "                returned, report = apply(obs, returned, cfg, completed=completed)\n"
-        "                self.diagnostics['town_procurement'] = report\n"
-        "                self._checkpoint_finalizer(obs, returned, 'town_procurement')\n"
+        "            # Overflow preservation is an optional final-return transform only.\n"
+        "            # Do not run it on an incomplete producer result or on the terminal\n"
+        "            # settlement step, where liquidation semantics own the returned bytes.\n"
+        "            if self.overflow_safe_drop is not None and completed:\n"
+        "                episode_steps = cfg.get('episodeSteps', 720)\n"
+        "                nonterminal = (type(episode_steps) is int and episode_steps >= 2\n"
+        "                               and obs.get('step') != episode_steps - 2)\n"
+        "                if nonterminal:\n"
+        "                    returned, report = self.overflow_safe_drop.transform(returned, obs, cfg)\n"
+        "                    self.diagnostics['overflow_safe_drop'] = report\n"
+        "                    self._checkpoint_finalizer(obs, returned, 'overflow_safe_drop')\n"
         "            return returned\n"
     )
-    replacement = (
-        "            if self.town_procurement_enabled:\n"
-        "                from town_procurement import apply\n"
-        "                returned, report = apply(obs, returned, cfg, completed=completed)\n"
-        "                self.diagnostics['town_procurement'] = report\n"
-        "                self._checkpoint_finalizer(obs, returned, 'town_procurement')\n"
-        "            if features.eod_capacity_rescue:\n"
+    replacement = anchor[:-len("            return returned\n")] + (
+        "            # EOD capacity rescue is serially downstream of overflow.  It\n"
+        "            # consumes exactly those returned bytes once and never starts\n"
+        "            # after an incomplete producer result.\n"
+        "            if features.eod_capacity_rescue and completed:\n"
         "                from eod_capacity_rescue import apply_native_eod_capacity_rescue\n"
         "                returned, report = apply_native_eod_capacity_rescue(\n"
         "                    returned, obs, cfg, enabled=True)\n"
@@ -74,7 +79,7 @@ def compose_main(text: str) -> str:
         "                self._checkpoint_finalizer(obs, returned, 'eod_capacity_rescue')\n"
         "            return returned\n"
     )
-    return _replace_once(text, anchor, replacement, 'final returned-action seam')
+    return _replace_once(text, anchor, replacement, 'post-overflow final returned-action seam')
 
 
 def compose_config(text: str) -> str:
@@ -83,16 +88,14 @@ def compose_config(text: str) -> str:
         raise ValueError('TITAN-CONFIG.json must be an object')
     if 'eod_capacity_rescue' in payload:
         raise ValueError('TITAN-CONFIG.json already has eod_capacity_rescue')
-    if payload.get('exec_pace') is not False:
-        raise ValueError('expected current exec_pace default false anchor')
-    # Keep insertion beside the newest production feature while preserving the
-    # canonical pretty-printed JSON shape used by this repository.
+    if payload.get('overflow_safe_drop') is not False:
+        raise ValueError('expected canonical overflow_safe_drop default false anchor')
     payload['eod_capacity_rescue'] = False
     return json.dumps(payload, indent=2) + '\n'
 
 
 def compose_build(text: str) -> str:
-    if "mapping['eod_capacity_rescue.py']" in text or "checks/test_eod_capacity_rescue.py" in text:
+    if "'eod_capacity_rescue.py'" in text or "checks/test_eod_capacity_rescue.py" in text:
         raise ValueError('build_integrated.py already maps EOD rescue')
     text = _replace_once(
         text,
@@ -102,10 +105,10 @@ def compose_build(text: str) -> str:
     )
     text = _replace_once(
         text,
-        "    mapping['checks/test_early_capital.py']='test_early_capital.py'\n",
-        "    mapping['checks/test_early_capital.py']='test_early_capital.py'\n"
+        "    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'\n",
+        "    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'\n"
         "    mapping['checks/test_eod_capacity_rescue.py']='test_eod_capacity_rescue.py'\n",
-        'build focused check map',
+        'build post-overflow focused check map',
     )
     return text
 
