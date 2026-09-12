@@ -1,0 +1,92 @@
+{
+  "package": "ASTRA-LIMINAL seven-lane rescue",
+  "scope": "research-only; single TITAN V4 line",
+  "claim_channel": "C0C0Z8AHGP2",
+  "claim_parent_ts": "1789182925.344409",
+  "claim_ts": "1789183595.665269",
+  "pinned_native_archive": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+    "sha256": "b5675e3930121e7d664d4f33153f0ae7360def1d50873da7063b181126346430",
+    "source_commit": "5f90410048395dcb5880d7f810a1ffdefeeebf30",
+    "file_count": 109,
+    "entrypoint": "main.py::agent"
+  },
+  "historical_degenerate_receipt": {
+    "channel": "C0C0Z8AHGP2",
+    "message_ts": "1789176848.262749",
+    "status": "Slack evidence; historical workspace source itself not recovered on current main"
+  },
+  "lanes": [
+    {
+      "label": "mono-carrot",
+      "source_recovery": "label/source absent from current main code index",
+      "receipt_recovery": "historical degenerate leaderboard reports approximately -$10.7k aggregate delta",
+      "disposition": "do_not_resurrect",
+      "reason": "closest-to-neutral all-in still negative; crop-wide concentration throws away diversification and is not a current-compatible mechanism",
+      "successor": null
+    },
+    {
+      "label": "seed-hoard",
+      "source_recovery": "label/source absent from current main code index",
+      "receipt_recovery": "historical leaderboard approximately -$11k overall; same receipt reports two seeds where NOT PLANTING improved outcome by roughly $6k-$27k",
+      "disposition": "salvage_mechanism_not_policy",
+      "reason": "global seed hoarding is negative; the useful signal is selective avoidance of demonstrably bad optional new commitments",
+      "successor": "planting_regime_gate.py"
+    },
+    {
+      "label": "mono-melon",
+      "source_recovery": "label/source absent from current main code index",
+      "receipt_recovery": "historical degenerate leaderboard reports approximately -$16k aggregate delta",
+      "disposition": "do_not_resurrect",
+      "reason": "negative all-in concentration result; retain diversification invariant",
+      "successor": null
+    },
+    {
+      "label": "production-side care-bank",
+      "source_recovery": "exact production donor/receipt not recovered on current main; bench CARE work is distinct and must not be substituted",
+      "receipt_recovery": "ambiguous in DEAD-LANE-AUDIT; no trustworthy production activation/economic receipt recovered here",
+      "disposition": "quarantine_evidence_only",
+      "reason": "active W2/S8 CARE work has separate owners and receipts; inventing a donor or conflating bench and production would violate custody",
+      "successor": null
+    },
+    {
+      "label": "tomato_program",
+      "source_recovery": "exact label/source absent from current main code index",
+      "receipt_recovery": "ambiguous in DEAD-LANE-AUDIT; historical MONO-TOMATO catastrophe is a separate experiment and is not treated as this donor",
+      "disposition": "quarantine_evidence_only",
+      "reason": "no exact source/base/config identity; do not infer identity from similarly named tomato experiments",
+      "successor": null
+    },
+    {
+      "label": "B4",
+      "source_recovery": "exact label/source absent from current main code index",
+      "receipt_recovery": "ambiguous in DEAD-LANE-AUDIT; exact receipt not recovered",
+      "disposition": "quarantine_evidence_only",
+      "reason": "opaque label with no durable source or executable receipt is not promotable evidence",
+      "successor": null
+    },
+    {
+      "label": "water-only PASS",
+      "source_recovery": "partial semantics recovered from due-day water receipt; exact historical donor label still ambiguous",
+      "receipt_recovery": "due-day service receipt explicitly rejects today's-water-only-for-tomorrow cases",
+      "disposition": "guardrail_not_policy",
+      "reason": "watering is load-bearing; tomorrow-only benefit is insufficient evidence to displace required due-day service logic",
+      "successor": null,
+      "receipt": {
+        "channel": "C0C0Z8AHGP2",
+        "message_ts": "1788927789.989919"
+      }
+    }
+  ],
+  "promotion_contract": {
+    "production_default_archive_kaggle_change": false,
+    "required_before_any_wiring": [
+      "current-compatible adapter at pre-commit planting boundary",
+      "verified conservative value floor from current-native/official-engine evidence",
+      "both-seat paired economics",
+      "engagement counts",
+      "negative controls",
+      "no regression of existing commitments, WATER/CARE/harvest obligations, or final-action receipt lifecycle"
+    ]
+  }
+}
