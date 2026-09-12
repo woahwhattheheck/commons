@@ -191,15 +191,15 @@ def apply_place_delivery(observation, action, enabled=False, configuration=None)
         inventory = view.inventory(worker)
         if not isinstance(inventory, dict):
             return action
-        choices = []
+        ranked_payloads = []
         for item, held in inventory.items():
             if item not in r04.PRODUCTS or not _positive_plain_int(held):
                 continue
             price = view.prices[item]
             product_order = r04.PRODUCTS.index(item)
-            choices.append((price, held, -product_order, item))
-        if choices:
-            price, held, _, item = max(choices)
+            ranked_payloads.append((price, held, -product_order, item))
+        if ranked_payloads:
+            price, held, _, item = max(ranked_payloads)
             eligible.append((price, held, worker, item))
 
     if not touched:
