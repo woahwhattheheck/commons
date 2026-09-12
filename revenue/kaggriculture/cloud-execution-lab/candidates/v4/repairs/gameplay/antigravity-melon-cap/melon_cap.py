@@ -7,11 +7,13 @@ already committed supply too. This source therefore reserves all three before
 admitting any new MELON proposal.
 
 FourthQuadrant proposals are mutually exclusive alternatives. Their executable
-work lives in ``proposal['variants'][route_id]['patches']``; outer ``tiles`` and
-``seed_units`` are metadata only. MELON alternatives are therefore admitted
-whole and unchanged only after every route variant authenticates the same
-executable MELON PLANT cardinality. An oversized or malformed MELON alternative
-is dropped; inspecting one alternative never spends budget for another.
+work lives in ``proposal['variants'][route_id]['patches']`` and each harvested
+bundle lot binds the planted tile, plant step, and 1-based worker slot back to
+that program. Outer ``tiles`` and ``seed_units`` are metadata only. MELON
+alternatives are therefore admitted whole and unchanged only after every route
+variant authenticates the same executable MELON PLANT set. An oversized or
+malformed MELON alternative is dropped; inspecting one alternative never spends
+budget for another.
 
 The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
@@ -145,84 +147,83 @@ def max_melon_plants(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> in
     return remaining_melon_budget(observation, cap) // MELON_UNITS_PER_PLANT
 
 
-def _is_melon_plant(action: Any) -> bool:
-    return (isinstance(action, (list, tuple)) and len(action) >= 2
-            and action[0] == "PLANT" and action[1] == "MELON")
-
-
-def _variant_new_melon_plants(variant: Any, workers: int) -> int | None:
-    """Count executable MELON PLANTs in FourthQuadrant-added worker slots.
-
-    Canonical FourthQuadrant appends ``workers`` temporary workers after the
-    ``incumbent_hands`` recorded in each ``worker_days`` entry. Counting only
-    those slots avoids charging unrelated authored actions copied into patch
-    rows while still inspecting the exact rows the consumer will execute.
-    """
-    if not isinstance(variant, dict) or workers <= 0:
+def _tile_key(tile: Any) -> tuple[int, int] | None:
+    if not isinstance(tile, (list, tuple)) or len(tile) != 2:
         return None
-    patches = variant.get("patches")
-    worker_days = variant.get("worker_days")
-    if not isinstance(patches, dict) or not isinstance(worker_days, list):
+    x, y = tile
+    if type(x) is not int or type(y) is not int:
         return None
+    return x, y
 
-    days: dict[int, int] = {}
-    for entry in worker_days:
-        if not isinstance(entry, dict):
-            return None
-        day = _plain_nonnegative_int(entry.get("day"))
-        incumbent = _plain_nonnegative_int(entry.get("incumbent_hands"))
-        if day is None or incumbent is None or day in days:
-            return None
-        days[day] = incumbent
-    if not days:
+
+def _worker_action(row: Any, worker: int) -> Any:
+    """Return FourthQuadrant's 1-based hired-hand action from a patch row."""
+    if not isinstance(row, dict) or type(worker) is not int or worker <= 0:
         return None
-
-    plants = 0
-    for step, row in patches.items():
-        step_i = _plain_nonnegative_int(step)
-        if step_i is None or not isinstance(row, dict):
-            return None
-        incumbent = days.get(step_i // 24)
-        if incumbent is None:
-            return None
-        hands = row.get("hands", [])
-        if not isinstance(hands, (list, tuple)):
-            return None
-        for action in hands[incumbent:incumbent + workers]:
-            plants += int(_is_melon_plant(action))
-    return plants
+    hands = row.get("hands")
+    if not isinstance(hands, list) or worker > len(hands):
+        return None
+    return hands[worker - 1]
 
 
 def executable_melon_plants(proposal: Any) -> int | None:
     """Authenticate one canonical FourthQuadrant MELON alternative.
 
-    All route variants must execute the same positive number of newly-added
-    MELON PLANT actions, and that cardinality must agree with producer metadata.
-    Any mismatch fails closed rather than trusting shallow metadata.
+    Each bundle lot must bind a unique outer tile to the exact ``plant_step``
+    and 1-based worker slot whose patch action is ``PLANT MELON``. Every route
+    variant must cover the same outer tile set. This prevents shallow metadata
+    from understating executable work while avoiding unrelated incumbent route
+    actions.
     """
     if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
         return None
-    workers = _plain_nonnegative_int(proposal.get("workers"))
+
     tiles = proposal.get("tiles")
-    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
-    variants = proposal.get("variants")
-    if (workers is None or workers <= 0 or not isinstance(tiles, (list, tuple))
-            or not isinstance(variants, dict) or not variants):
+    if not isinstance(tiles, (list, tuple)) or not tiles:
         return None
-    expected = len(tiles)
-    if expected <= 0 or seed_units != expected:
+    outer_tiles = [_tile_key(tile) for tile in tiles]
+    if any(tile is None for tile in outer_tiles) or len(set(outer_tiles)) != len(outer_tiles):
+        return None
+    expected = len(outer_tiles)
+
+    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
+    if seed_units != expected:
         return None
 
-    counts = []
-    for route_id, variant in variants.items():
-        if not isinstance(route_id, str) or not route_id:
-            return None
-        count = _variant_new_melon_plants(variant, workers)
-        if count is None:
-            return None
-        counts.append(count)
-    if any(count != expected for count in counts):
+    variants = proposal.get("variants")
+    if not isinstance(variants, dict) or not variants:
         return None
+
+    expected_tiles = set(outer_tiles)
+    for route_id, variant in variants.items():
+        if not isinstance(route_id, str) or not route_id or not isinstance(variant, dict):
+            return None
+        patches = variant.get("patches")
+        bundle = variant.get("bundle")
+        lots = bundle.get("lots") if isinstance(bundle, dict) else None
+        if not isinstance(patches, dict) or not isinstance(lots, list):
+            return None
+
+        melon_lots: list[tuple[tuple[int, int], int, int]] = []
+        for lot in lots:
+            if not isinstance(lot, dict) or lot.get("crop") != "MELON":
+                return None
+            tile = _tile_key(lot.get("tile"))
+            plant_step = _plain_nonnegative_int(lot.get("plant_step"))
+            worker = _plain_nonnegative_int(lot.get("worker"))
+            if tile is None or plant_step is None or worker is None or worker <= 0:
+                return None
+            row = patches.get(plant_step)
+            if _worker_action(row, worker) != ["PLANT", "MELON"]:
+                return None
+            melon_lots.append((tile, plant_step, worker))
+
+        if len(melon_lots) != expected:
+            return None
+        lot_tiles = [item[0] for item in melon_lots]
+        if len(set(lot_tiles)) != expected or set(lot_tiles) != expected_tiles:
+            return None
+
     return expected
 
 
