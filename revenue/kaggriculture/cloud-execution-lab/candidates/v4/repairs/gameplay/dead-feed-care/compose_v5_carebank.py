@@ -1,0 +1,205 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Source-bound scratch composer for the existing W2 CAREBANK service lane.
+
+This does not create a second policy authority or change production defaults.  It
+materializes the already-reviewed ``dead_feed_care.py`` helper into an exact
+current-V5 package, behind the existing ``r04_dead_feed_care`` feature key, so
+matched official-engine engagement/economics can be measured before promotion.
+"""
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+from pathlib import Path
+import shutil
+
+RUNTIME_BLOB = "da8d5fe86543e1732b0c3ff4675f661bdd2c8d71"
+CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
+HELPER_BLOB = "a93f7fbc3054aaeb2d04878dc620aec66d8a3377"
+HELPER_RELATIVE = Path("candidates/v4/repairs/gameplay/dead-feed-care/dead_feed_care.py")
+
+FEATURE_BEFORE = "    early_capital: bool = False\n\n    def __post_init__(self):"
+FEATURE_AFTER = (
+    "    early_capital: bool = False\n"
+    "    r04_dead_feed_care: bool = False\n\n"
+    "    def __post_init__(self):"
+)
+BOOL_BEFORE = (
+    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
+    "        )"
+)
+BOOL_AFTER = (
+    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
+    "            'r04_dead_feed_care',\n"
+    "        )"
+)
+COMPAT_BEFORE = (
+    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
+    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+)
+COMPAT_AFTER = (
+    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
+    "        if self.r04_dead_feed_care and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('r04_dead_feed_care requires nonterminal frozen SELL')\n"
+    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+)
+SELECT_BEFORE = (
+    "                selected = self.production.act(obs)\n"
+    "                self.selected = deepcopy(selected)"
+)
+SELECT_AFTER = (
+    "                selected = self.production.act(obs)\n"
+    "                # W2-V5 scratch seam: keep the completed parent as the deadline fallback.\n"
+    "                if self.features.r04_dead_feed_care:\n"
+    "                    parent_checkpoint = (deepcopy(selected), self.controller.cur)\n"
+    "                    fallback = parent_checkpoint[0]\n"
+    "                    selected_checkpoint = parent_checkpoint\n"
+    "                    self.selected = parent_checkpoint[0]\n"
+    "                    stage = 'r04_dead_feed_care'\n"
+    "                    care = load('_titan_dead_feed_care',\n"
+    "                                HERE/'r04_dead_feed_care.py', cache=True)\n"
+    "                    selected = care.apply_dead_feed_care(\n"
+    "                        selected, obs, cfg, enabled=True)\n"
+    "                    selected = care.apply_carebank_feed_swap(\n"
+    "                        selected, obs, cfg, self.controller.R[self.controller.cur],\n"
+    "                        enabled=True)\n"
+    "                self.selected = deepcopy(selected)"
+)
+
+
+def git_blob_id(data: bytes) -> str:
+    header = f"blob {len(data)}\0".encode()
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def replace_once(text: str, before: str, after: str, label: str) -> str:
+    if text.count(before) != 1:
+        raise ValueError(f"{label} seam drifted: expected exactly one anchor")
+    return text.replace(before, after, 1)
+
+
+def patch_runtime(text: str) -> str:
+    """Add the existing W2 feature/hook to the exact current V5 runtime."""
+    if "r04_dead_feed_care" in text:
+        raise ValueError("runtime already contains r04_dead_feed_care; explicit rebind required")
+    text = replace_once(text, FEATURE_BEFORE, FEATURE_AFTER, "feature")
+    text = replace_once(text, BOOL_BEFORE, BOOL_AFTER, "exact-bool")
+    text = replace_once(text, COMPAT_BEFORE, COMPAT_AFTER, "consumer-contract")
+    text = replace_once(text, SELECT_BEFORE, SELECT_AFTER, "selected-checkpoint")
+    ast.parse(text)
+    return text
+
+
+def patch_config(text: str, *, enabled: bool) -> str:
+    data = json.loads(text)
+    if type(data) is not dict:
+        raise ValueError("TITAN-CONFIG.json must be an object")
+    if "r04_dead_feed_care" in data:
+        raise ValueError("config already contains r04_dead_feed_care")
+    if type(enabled) is not bool:
+        raise TypeError("enabled must be bool")
+    data["r04_dead_feed_care"] = enabled
+    return json.dumps(data, indent=2) + "\n"
+
+
+def _helper_functions(path: Path) -> set[str]:
+    return {
+        node.name for node in ast.parse(path.read_text(encoding="utf-8")).body
+        if isinstance(node, ast.FunctionDef)
+    }
+
+
+def materialize(source_root: Path, package_root: Path, output: Path, *, enabled: bool = False) -> dict:
+    """Create an isolated authenticated V5 control/treatment package."""
+    source_root = source_root.resolve()
+    package_root = package_root.resolve()
+    output = output.resolve()
+    if output.exists() or output == package_root or package_root in output.parents:
+        raise ValueError("output must be a new path outside the input package")
+
+    runtime = package_root / "titan_runtime.py"
+    config = package_root / "TITAN-CONFIG.json"
+    helper = source_root / HELPER_RELATIVE
+    expected = {
+        "titan_runtime.py": (runtime, RUNTIME_BLOB),
+        "TITAN-CONFIG.json": (config, CONFIG_BLOB),
+        str(HELPER_RELATIVE): (helper, HELPER_BLOB),
+    }
+    actual = {}
+    for label, (path, expected_blob) in expected.items():
+        if not path.is_file():
+            raise ValueError(f"missing authenticated source: {label}")
+        blob = git_blob_id(path.read_bytes())
+        actual[label] = blob
+        if blob != expected_blob:
+            raise ValueError(f"source authentication failed for {label}: {blob}")
+
+    funcs = _helper_functions(helper)
+    required = {"apply_dead_feed_care", "apply_carebank_feed_swap"}
+    if not required.issubset(funcs):
+        raise ValueError("authenticated W2 helper is missing required public APIs")
+    if (package_root / "r04_dead_feed_care.py").exists():
+        raise ValueError("input package already contains W2 helper; explicit composition required")
+
+    runtime_after = patch_runtime(runtime.read_text(encoding="utf-8"))
+    config_after = patch_config(config.read_text(encoding="utf-8"), enabled=enabled)
+
+    shutil.copytree(package_root, output, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    (output / "titan_runtime.py").write_text(runtime_after, encoding="utf-8")
+    (output / "TITAN-CONFIG.json").write_text(config_after, encoding="utf-8")
+    shutil.copyfile(helper, output / "r04_dead_feed_care.py")
+
+    return {
+        "schema": "titan-v5-carebank-current-native/v1",
+        "authority": "candidates/v4/repairs/gameplay/dead-feed-care",
+        "source_blobs": actual,
+        "outputs": {
+            "titan_runtime.py": {
+                "git_blob": git_blob_id((output / "titan_runtime.py").read_bytes()),
+                "sha256": sha256((output / "titan_runtime.py").read_bytes()),
+            },
+            "TITAN-CONFIG.json": {
+                "git_blob": git_blob_id((output / "TITAN-CONFIG.json").read_bytes()),
+                "sha256": sha256((output / "TITAN-CONFIG.json").read_bytes()),
+            },
+            "r04_dead_feed_care.py": {
+                "git_blob": git_blob_id((output / "r04_dead_feed_care.py").read_bytes()),
+                "sha256": sha256((output / "r04_dead_feed_care.py").read_bytes()),
+            },
+        },
+        "feature_key": "r04_dead_feed_care",
+        "enabled_in_scratch_only": enabled,
+        "production_default_changed": False,
+        "strict_feature_types": True,
+        "consumer_contract": "frozen_nonterminal_only",
+        "selected_pipeline": ["apply_dead_feed_care", "apply_carebank_feed_swap"],
+        "deadline_fallback": "completed_parent_selected_action",
+    }
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source-root", required=True, type=Path)
+    parser.add_argument("--package-root", required=True, type=Path)
+    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--enable", action="store_true", help="enable only in the scratch output")
+    parser.add_argument("--receipt", type=Path)
+    args = parser.parse_args(argv)
+    receipt = materialize(args.source_root, args.package_root, args.output, enabled=args.enable)
+    payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+    if args.receipt is not None:
+        args.receipt.write_text(payload, encoding="utf-8")
+    print(payload, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
