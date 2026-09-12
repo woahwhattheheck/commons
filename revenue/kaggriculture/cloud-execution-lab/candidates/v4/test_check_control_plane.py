@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import os
+import tempfile
+import unittest
+from pathlib import Path
+
+import check_control_plane as guard
+
+
+def _dump(path: Path, value: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+
+
+def _base_composition() -> dict[str, object]:
+    return {
+        "schema": "titan-v4-composition/v1",
+        "mode": "fail_closed",
+        "canonical_branch": "main",
+        "canonical_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+        "components": [
+            {
+                "id": "alpha",
+                "state": "compose",
+                "package": "repairs/alpha",
+                "entrypoints": ["repairs/alpha/apply.py"],
+                "receipt": "repairs/alpha/RECEIPT.json",
+                "transforms": [
+                    {
+                        "surface": "x.py",
+                        "input_identity": "git-blob:" + "a" * 40,
+                        "output_identity": "git-blob:" + "b" * 40,
+                    }
+                ],
+                "requires": [],
+                "before": [],
+                "after": [],
+                "conflicts": [],
+            }
+        ],
+        "discovery": {"roots": ["repairs"], "patterns": ["apply.py"], "strict": True, "ignore": []},
+    }
+
+
+def _base_integration() -> dict[str, object]:
+    return {
+        "schema": "titan-v4-integration-ledger/v1",
+        "canonical_branch": "main",
+        "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+        "landed": [],
+        "recovered_not_yet_composed": [],
+        "custody_blocked": [],
+        "negative_or_parked": [],
+    }
+
+
+def _make_root(root: Path) -> None:
+    _dump(
+        root / "CANONICAL.json",
+        {
+            "canonical_branch": "main",
+            "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+        },
+    )
+    _dump(root / "INTEGRATION.json", _base_integration())
+    _dump(root / "COMPOSITION.json", _base_composition())
+    (root / "repairs" / "alpha").mkdir(parents=True)
+    (root / "repairs" / "alpha" / "apply.py").write_text("pass\n", encoding="utf-8")
+    _dump(root / "repairs" / "alpha" / "RECEIPT.json", {"ok": True})
+
+
+class ControlPlaneHardeningTests(unittest.TestCase):
+    def test_valid_minimal_control_plane_passes_hardening(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertTrue(result["ok"], result)
+
+    def test_duplicate_json_member_is_rejected_at_any_depth(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "COMPOSITION.json").write_text(
+                '{"schema":"titan-v4-composition/v1","components":[{"id":"a","id":"b"}]}\n',
+                encoding="utf-8",
+            )
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("duplicate object key 'id'" in e for e in result["errors"]), result)
+
+    def test_nonfinite_json_constant_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "CANONICAL.json").write_text('{"x":NaN}\n', encoding="utf-8")
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("non-finite JSON constant 'NaN'" in e for e in result["errors"]), result)
+
+    def test_non_object_manifest_fails_without_traceback(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "COMPOSITION.json").write_text("[]\n", encoding="utf-8")
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertIn("COMPOSITION.json must contain one JSON object", result["errors"])
+
+    def test_duplicate_relation_target_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            composition = _base_composition()
+            composition["components"][0]["requires"] = ["beta", "beta"]  # type: ignore[index]
+            _dump(root / "COMPOSITION.json", composition)
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertIn("component alpha requires: duplicate relation target 'beta'", result["errors"])
+
+    def test_all_input_output_identity_fields_use_exact_git_blob_grammar(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            composition = _base_composition()
+            composition["components"][0]["standalone_receipt_edges"] = [  # type: ignore[index]
+                {
+                    "surface": "y.py",
+                    "input_identity": "git-blob:" + "A" * 40,
+                    "output_identity": "sha256:" + "b" * 64,
+                }
+            ]
+            _dump(root / "COMPOSITION.json", composition)
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertEqual(2, sum("COMPOSITION identity" in e for e in result["errors"]), result)
+
+    def test_declared_receipt_must_exist(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "repairs" / "alpha" / "RECEIPT.json").unlink()
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("declared file is missing" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_symlink_ancestor_inside_root_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            real = root / "real"
+            (real / "alpha").mkdir(parents=True)
+            (real / "alpha" / "apply.py").write_text("pass\n", encoding="utf-8")
+            _dump(real / "alpha" / "RECEIPT.json", {"ok": True})
+            (root / "repairs" / "alpha" / "apply.py").unlink()
+            (root / "repairs" / "alpha" / "RECEIPT.json").unlink()
+            (root / "repairs" / "alpha").rmdir()
+            os.symlink(real, root / "repairs" / "link")
+            composition = _base_composition()
+            component = composition["components"][0]  # type: ignore[index]
+            component["package"] = "repairs/link/alpha"
+            component["entrypoints"] = ["repairs/link/alpha/apply.py"]
+            component["receipt"] = "repairs/link/alpha/RECEIPT.json"
+            _dump(root / "COMPOSITION.json", composition)
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("symlink ancestry is forbidden" in e for e in result["errors"]), result)
+
+    def test_live_blocker_manifest_is_strict_loaded(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            integration = _base_integration()
+            integration["custody_blocked"] = [
+                {
+                    "lane": "raw",
+                    "custody_path": "repairs/raw",
+                    "status": "awaiting_raw_payload",
+                }
+            ]
+            _dump(root / "INTEGRATION.json", integration)
+            (root / "repairs" / "raw").mkdir()
+            (root / "repairs" / "raw" / "MANIFEST.json").write_text(
+                '{"lane":"raw","lane":"rewritten","status":"awaiting_raw_payload"}\n',
+                encoding="utf-8",
+            )
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("manifest:" in e and "duplicate object key 'lane'" in e for e in result["errors"]), result)
+
+    def test_delegate_failures_are_data_not_tracebacks(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "check_integration_ledger.py").write_text(
+                "def validate(root):\n    raise RuntimeError('boom')\n",
+                encoding="utf-8",
+            )
+            (root / "check_composition_graph.py").write_text(
+                "def validate_manifest(manifest, root):\n    return {'errors': []}\n",
+                encoding="utf-8",
+            )
+            result = guard.validate_control_plane(root, delegate=True)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("integration delegate failure: RuntimeError: boom" in e for e in result["errors"]), result)
+
+    def test_error_order_is_deterministic(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            composition = _base_composition()
+            component = composition["components"][0]  # type: ignore[index]
+            component["before"] = ["z", "z"]
+            component["after"] = ["a", "a"]
+            _dump(root / "COMPOSITION.json", composition)
+            first = guard.validate_control_plane(root, delegate=False)
+            second = guard.validate_control_plane(root, delegate=False)
+        self.assertEqual(first, second)
+        self.assertEqual(first["errors"], sorted(first["errors"]))
+
+
+if __name__ == "__main__":
+    unittest.main()
