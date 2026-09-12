@@ -156,7 +156,6 @@ def _validate_typed(value: Any, field: str) -> None:
     tag = value.get("t")
     if type(tag) is not str:
         raise PromotionError(f"{field}.t must be a string")
-
     if tag == "none":
         if set(value) != {"t"}:
             raise PromotionError(f"{field} none value has noncanonical keys")
@@ -164,7 +163,6 @@ def _validate_typed(value: Any, field: str) -> None:
     if set(value) != {"t", "v"}:
         raise PromotionError(f"{field} typed value has noncanonical keys")
     payload = value["v"]
-
     if tag == "bool":
         if type(payload) is not bool:
             raise PromotionError(f"{field} bool payload must be an exact bool")
@@ -225,7 +223,6 @@ def _validate_component(component: Any, index: int) -> str:
     ):
         raise PromotionError(f"{field}.source must be a canonical relative path")
     _hex64(component["source_sha256"], f"{field}.source_sha256")
-
     activation = component["activation"]
     if type(activation) is not dict:
         raise PromotionError(f"{field}.activation must be an object")
@@ -242,6 +239,16 @@ def _validate_component(component: Any, index: int) -> str:
     else:
         raise PromotionError(f"{field}.activation mode is not canonical")
     return name
+
+
+def _engagement_key_fields(value: Any) -> tuple[str, ...]:
+    if type(value) is not list or not value:
+        raise PromotionError("engagement key_fields must be a non-empty list")
+    if any(type(field) is not str or not field for field in value):
+        raise PromotionError("engagement key_fields must contain non-empty strings")
+    if len(value) != len(set(value)):
+        raise PromotionError("engagement key_fields must be unique")
+    return tuple(value)
 
 
 def validate_manifest(manifest: Mapping[str, Any]) -> str:
@@ -282,7 +289,7 @@ def validate_manifest(manifest: Mapping[str, Any]) -> str:
 
 
 def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
-    """Require a canonical identity-stamped engagement report for the manifest candidate."""
+    """Require one canonical producer-shaped ENGAGED report for this candidate."""
     if type(report) is not dict:
         raise PromotionError("engagement report must be an object")
     if set(report) != _ENGAGEMENT_KEYS:
@@ -291,64 +298,66 @@ def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
         raise PromotionError(
             f"engagement report keys mismatch; missing={missing!r} extra={extra!r}"
         )
-
-    control_id = _v5c(report["control_id"], "engagement control_id")
-    engaged_id = _v5c(report["candidate_id"], "engagement candidate_id")
+    control_id = _v5c(report.get("control_id"), "engagement control_id")
+    engaged_id = _v5c(report.get("candidate_id"), "engagement candidate_id")
     if control_id == engaged_id:
         raise PromotionError("engagement control_id and candidate_id must differ")
     if engaged_id != candidate_id:
         raise PromotionError("engagement candidate_id does not match candidate manifest")
-    if report["classification"] != "ENGAGED":
+    if report.get("classification") != "ENGAGED":
         raise PromotionError("engagement classification must be ENGAGED")
 
-    observations = _plain_int(report["observations"], "engagement observations", minimum=1)
-    _plain_int(report["noop_threshold"], "engagement noop_threshold", minimum=1)
+    observations = _plain_int(report.get("observations"), "engagement observations", minimum=1)
+    _plain_int(report.get("noop_threshold"), "engagement noop_threshold", minimum=1)
     divergence = _plain_int(
-        report["divergence_count"], "engagement divergence_count", minimum=1
+        report.get("divergence_count"), "engagement divergence_count", minimum=1
     )
     if divergence > observations:
         raise PromotionError("engagement divergence_count exceeds observations")
-    rate = _finite_number(report["engagement_rate"], "engagement engagement_rate", minimum=0.0)
+    rate = _finite_number(
+        report.get("engagement_rate"), "engagement engagement_rate", minimum=0.0
+    )
     expected_rate = divergence / observations
-    if rate > 1.0 or not math.isclose(rate, expected_rate, rel_tol=0.0, abs_tol=1e-15):
+    if not math.isclose(rate, expected_rate, rel_tol=0.0, abs_tol=1e-15):
         raise PromotionError("engagement rate disagrees with divergence count")
 
-    key_fields = report["key_fields"]
-    if (
-        type(key_fields) is not list
-        or not key_fields
-        or any(type(field) is not str or not field for field in key_fields)
-        or len(key_fields) != len(set(key_fields))
-    ):
-        raise PromotionError("engagement key_fields must be unique non-empty strings")
-    _hex64(
-        report["control_sequence_fingerprint"],
-        "engagement control_sequence_fingerprint",
-    )
-    _hex64(
-        report["candidate_sequence_fingerprint"],
-        "engagement candidate_sequence_fingerprint",
-    )
-
-    first = report["first_divergence"]
-    if type(first) is not dict or set(first) != _DIVERGENCE_KEYS:
-        raise PromotionError("ENGAGED report requires canonical first_divergence")
+    key_fields = _engagement_key_fields(report.get("key_fields"))
+    first = report.get("first_divergence")
+    if type(first) is not dict:
+        raise PromotionError("ENGAGED report requires first_divergence object")
+    if set(first) != _DIVERGENCE_KEYS:
+        raise PromotionError("engagement first_divergence keys mismatch")
     first_observation = _plain_int(
-        first["observation"], "engagement first_divergence observation", minimum=1
+        first.get("observation"), "engagement first_divergence observation", minimum=1
     )
-    if first_observation > observations:
-        raise PromotionError("engagement first_divergence exceeds observations")
-    key = first["key"]
-    if type(key) is not dict or set(key) != set(key_fields):
-        raise PromotionError("engagement first_divergence key must match key_fields")
+    latest_possible_first = observations - divergence + 1
+    if first_observation > latest_possible_first:
+        raise PromotionError(
+            "engagement first_divergence observation is inconsistent with divergence count"
+        )
+    first_key = first.get("key")
+    if type(first_key) is not dict or set(first_key) != set(key_fields):
+        raise PromotionError(
+            "engagement first_divergence key must match key_fields exactly"
+        )
     control_fp = _hex64(
-        first["control_fingerprint"], "engagement first_divergence control_fingerprint"
+        first.get("control_fingerprint"),
+        "engagement first_divergence control_fingerprint",
     )
     candidate_fp = _hex64(
-        first["candidate_fingerprint"], "engagement first_divergence candidate_fingerprint"
+        first.get("candidate_fingerprint"),
+        "engagement first_divergence candidate_fingerprint",
     )
     if control_fp == candidate_fp:
         raise PromotionError("engagement first_divergence fingerprints must differ")
+    _hex64(
+        report.get("control_sequence_fingerprint"),
+        "engagement control_sequence_fingerprint",
+    )
+    _hex64(
+        report.get("candidate_sequence_fingerprint"),
+        "engagement candidate_sequence_fingerprint",
+    )
     return control_id
 
 
