@@ -15,11 +15,13 @@ _spec.loader.exec_module(receipt_math)
 
 def absorption(item, step, shops, config):
     n=0
-    if step % int(config.get('townShopSellInterval',4))==0:
+    shop_interval=max(1,int(config.get('townShopSellInterval',4)))
+    center_interval=max(1,int(config.get('townCenterSellInterval',24)))
+    if step % shop_interval==0:
         for shop in shops:
             products=m.SHOPS.get(shop,())
             if item in products:n+=2 if len(products)==1 else 1
-    if item!='FERTILIZER' and step % int(config.get('townCenterSellInterval',24))==0:n+=1
+    if item!='FERTILIZER' and step % center_interval==0:n+=1
     return n
 
 class MarketPath:
@@ -106,8 +108,8 @@ def _market_path_key(item, inventory, params, shops, config, now, end):
         shops_key=tuple(shops)
         shop_products=tuple((shop,tuple(m.SHOPS.get(shop,()))) for shop in shops_key)
         hash((shops_key,shop_products))
-        shop_interval=int(config.get('townShopSellInterval',4))
-        center_interval=int(config.get('townCenterSellInterval',24))
+        shop_interval=max(1,int(config.get('townShopSellInterval',4)))
+        center_interval=max(1,int(config.get('townCenterSellInterval',24)))
         return (item,int(inventory),params_blob,shops_key,shop_products,shop_interval,
                 center_interval,int(now),int(end))
     except (TypeError,ValueError,OverflowError):
