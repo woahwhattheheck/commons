@@ -17,6 +17,11 @@ class Joined(unittest.TestCase):
   OrderedSelectedSellTests.setUpClass();cls.h=OrderedSelectedSellTests()
  def actor(self,hyp=HYP):
   obj=TitanAgent(Features(terminal_history=True,history_hypotheses=hyp));obj._initialize();return obj
+ @staticmethod
+ def bind_clock(obs,step,cfg):
+  period=cfg.get('turnsPerDay',24)
+  obs['step']=step;obs['day']=step//period;obs['hour']=step%period
+  return obs
  def train(self,obj,seat=0):
   # These are actual prior public transitions: no rival private stock is fed
   # to the runtime bridge. Their zero non-operating supply is observed evidence.
@@ -26,8 +31,7 @@ class Joined(unittest.TestCase):
    final=action(hands=[['PASS']] if seat==0 else [])
    obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
    self.h.advance(state,env,final,step)
-   after=copy.deepcopy(state[seat].observation)
-   after['step']=step+1  # The official runner supplies the next decision index.
+   after=self.bind_clock(copy.deepcopy(state[seat].observation),step+1,cfg)
    obj.history.observe(after)
    self.assertEqual(obj.history.diagnostics['observed_fills']['status'],'recorded')
  def test_actual_dispatch_changes_terminal_order_using_completed_history(self):
@@ -81,6 +85,50 @@ class Joined(unittest.TestCase):
   self.assertEqual(out,selected);self.assertEqual(obj.history.pending[2],selected)
   self.assertEqual(obj.diagnostics['fallback_stage'],'terminal_history');self.assertLess(elapsed,1)
   RESULTS.append({'case':'deadline_records_actual_fallback','seconds':elapsed})
+ def test_history_public_clock_rejects_aliases_before_receipt_mutation(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  malformed=copy.deepcopy(obs);malformed['step']='100'
+  with self.assertRaises(ValueError):
+   obj.history.remember(malformed,cfg,final,copy.deepcopy(malformed))
+  self.assertIsNone(obj.history.pending)
+  obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
+  pending=copy.deepcopy(obj.history.pending)
+  for alias in (True,'101',101.0,-1,None):
+   with self.subTest(alias=alias):
+    after=copy.deepcopy(obs);after['step']=alias
+    with patch.object(obj.history,'_publish_observation_commit',side_effect=AssertionError('clock mutated history')):
+     with self.assertRaises(ValueError):obj.history.observe(after)
+    self.assertEqual(obj.history.pending,pending)
+    self.assertIsNone(obj.history.deferred_observation)
+  mismatch=self.bind_clock(copy.deepcopy(obs),102,cfg);mismatch['step']=101
+  with self.assertRaises(ValueError):obj.history.observe(mismatch)
+  self.assertEqual(obj.history.pending,pending)
+  RESULTS.append({'case':'history_public_clock_aliases_fail_before_receipt_mutation','passed':True})
+ def test_history_day_hour_fallback_is_exact_and_canonicalized(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  period=cfg.get('turnsPerDay',24)
+  fallback=copy.deepcopy(obs);fallback.pop('step',None)
+  fallback['day']=100//period;fallback['hour']=100%period
+  obj.history.remember(fallback,cfg,final,copy.deepcopy(fallback))
+  self.assertEqual(obj.history.pending[0]['step'],100)
+  self.assertEqual(obj.history._observation_step(
+      {'step':101,'day':101//period,'hour':101%period},cfg),101)
+  for bad_period in (True,0,-1,'24',24.0):
+   bad_cfg=copy.deepcopy(cfg);bad_cfg['turnsPerDay']=bad_period
+   fresh=self.actor()
+   with self.subTest(turnsPerDay=bad_period):
+    with self.assertRaises(ValueError):fresh.history.remember(
+        fallback,bad_cfg,final,copy.deepcopy(fallback))
+    self.assertIsNone(fresh.history.pending)
+  malformed=copy.deepcopy(obs);malformed['step']=True
+  selected=action(hands=[['PASS']])
+  with patch.object(obj.history.joint,'build_joint_terminal_scenarios',
+                    side_effect=AssertionError('malformed clock reached selector inputs')):
+   with self.assertRaises(ValueError):obj.history.transform(
+       malformed,cfg,selected,copy.deepcopy(malformed),deadline=None)
+  RESULTS.append({'case':'history_day_hour_fallback_exact_and_canonical','passed':True})
  def test_forward_gap_drops_stale_pending_without_reconciling(self):
   obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
   final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
@@ -89,7 +137,7 @@ class Joined(unittest.TestCase):
   with patch.object(obj.history,'defer_observation',side_effect=AssertionError('same-step retry journal')),patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('same-step retry reconcile')):
    obj.history.observe(retry)
   self.assertIsNotNone(obj.history.pending)
-  after=copy.deepcopy(obs);after['step']=102
+  after=self.bind_clock(copy.deepcopy(obs),102,cfg)
   with patch.object(obj.history,'defer_observation',side_effect=AssertionError('stale forward-gap journal')),patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('stale forward-gap reconcile')):
    obj.history.observe(after)
   self.assertIsNone(obj.history.pending);self.assertIsNone(obj.history.deferred_observation)
@@ -101,9 +149,9 @@ class Joined(unittest.TestCase):
   obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
   final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
   obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
-  deferred=copy.deepcopy(obs);deferred['step']=102
+  deferred=self.bind_clock(copy.deepcopy(obs),102,cfg)
   obj.history.deferred_observation=copy.deepcopy(deferred)
-  current=copy.deepcopy(obs);current['step']=103
+  current=self.bind_clock(copy.deepcopy(obs),103,cfg)
   with patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('stale deferred-gap reconcile')):
    obj.history.observe(current)
   self.assertIsNone(obj.history.pending);self.assertIsNone(obj.history.deferred_observation)
