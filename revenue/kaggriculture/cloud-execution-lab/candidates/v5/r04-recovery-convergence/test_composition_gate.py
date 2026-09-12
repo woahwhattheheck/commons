@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -13,10 +12,6 @@ SPEC = importlib.util.spec_from_file_location("composition_gate", HERE / "compos
 mod = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 SPEC.loader.exec_module(mod)
-
-
-def h(ch: str, n: int) -> str:
-    return ch * n
 
 
 def valid_component(slot: str, index: int) -> dict:
@@ -83,6 +78,19 @@ class CompositionGateTests(unittest.TestCase):
         self.assertEqual(receipt["status"], "BLOCKED")
         self.assertIn("missing_component:h3c_goose_rescue", receipt["blockers"])
 
+    def test_row_order_and_row_shed_are_distinct_required_slots(self):
+        manifest = valid_manifest()
+        manifest["components"] = [
+            component for component in manifest["components"] if component["slot"] != "row_order"
+        ]
+        receipt = mod.evaluate_manifest(manifest)
+        self.assertIn("missing_component:row_order", receipt["blockers"])
+        self.assertNotIn("missing_component:row_shed", receipt["blockers"])
+        self.assertEqual(
+            mod.SUBMITTED_TOPOLOGY["inner_return_pipeline"][2:4],
+            ["row_order", "row_shed"],
+        )
+
     def test_duplicate_semantic_slot_is_hard_error(self):
         manifest = valid_manifest()
         manifest["components"].append(copy.deepcopy(manifest["components"][0]))
@@ -107,7 +115,8 @@ class CompositionGateTests(unittest.TestCase):
 
     def test_negative_economics_blocks_even_when_source_is_green(self):
         manifest = valid_manifest()
-        manifest["components"][2]["economics"]["mean_margin_delta"] = -0.5
+        row_shed = next(c for c in manifest["components"] if c["slot"] == "row_shed")
+        row_shed["economics"]["mean_margin_delta"] = -0.5
         receipt = mod.evaluate_manifest(manifest)
         self.assertEqual(receipt["status"], "BLOCKED")
         self.assertIn("negative_mean_margin:row_shed", receipt["blockers"])
