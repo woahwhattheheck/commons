@@ -1,0 +1,101 @@
+diff --git a/test_build_v3_tree.py b/test_build_v3_tree.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..2e1bbf7639495e133981b2627ad90925251dab92
+--- /dev/null
++++ b/test_build_v3_tree.py
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Predecessor-killing contracts for exact, atomic V3 --tree materialization."""
++from __future__ import annotations
++
++import os
++from pathlib import Path
++import tempfile
++import unittest
++from unittest import mock
++
++import build_v3
++
++
++class MaterializeTreeTests(unittest.TestCase):
++    def test_main_rejects_nonempty_target_without_merging_stale_module(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            stale = target / "sitecustomize.py"
++            stale.write_text("raise RuntimeError('stale tree executed')\n", encoding="utf-8")
++            with mock.patch.object(build_v3, "package_files", return_value={"main.py": b"print('ok')\n"}):
++                with self.assertRaisesRegex(FileExistsError, "non-empty"):
++                    build_v3.main(["--tree", str(target)])
++            self.assertEqual(stale.read_text(encoding="utf-8"), "raise RuntimeError('stale tree executed')\n")
++            self.assertFalse((target / "main.py").exists())
++
++    def test_existing_empty_target_is_replaced_by_exact_tree(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            files = {"main.py": b"MAIN\n", "nested/module.py": b"MODULE\n"}
++            build_v3.materialize_tree(files, target)
++            observed = {
++                path.relative_to(target).as_posix(): path.read_bytes()
++                for path in target.rglob("*") if path.is_file()
++            }
++            self.assertEqual(observed, files)
++            self.assertFalse(any(path.name.startswith(".candidate.stage-") for path in Path(root).iterdir()))
++
++    def test_absent_target_is_published_exactly(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            build_v3.materialize_tree({"main.py": b"MAIN\n"}, target)
++            self.assertEqual((target / "main.py").read_bytes(), b"MAIN\n")
++
++    def test_parent_traversal_is_rejected_without_escape(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            with self.assertRaisesRegex(ValueError, "unsafe V3 tree member"):
++                build_v3.materialize_tree({"../escape.py": b"ESCAPE\n"}, target)
++            self.assertFalse((Path(root) / "escape.py").exists())
++            self.assertFalse(target.exists())
++
++    def test_absolute_and_ambiguous_member_names_are_rejected(self):
++        bad = ("/absolute.py", "./relative.py", "a//b.py", "a\\b.py", "", "a/../b.py")
++        with tempfile.TemporaryDirectory() as root:
++            for index, name in enumerate(bad):
++                with self.subTest(name=name):
++                    target = Path(root) / ("candidate-%d" % index)
++                    with self.assertRaises((TypeError, ValueError)):
++                        build_v3.materialize_tree({name: b"x"}, target)
++                    self.assertFalse(target.exists())
++
++    def test_write_failure_leaves_existing_empty_target_empty(self):
++        with tempfile.TemporaryDirectory() as root:
++            target = Path(root) / "candidate"
++            target.mkdir()
++            original = Path.write_bytes
++
++            def fail_second(path, data):
++                if path.name == "b.py":
++                    raise OSError("injected write failure")
++                return original(path, data)
++
++            with mock.patch.object(Path, "write_bytes", fail_second):
++                with self.assertRaisesRegex(OSError, "injected"):
++                    build_v3.materialize_tree({"a.py": b"A", "b.py": b"B"}, target)
++            self.assertTrue(target.is_dir())
++            self.assertEqual(list(target.iterdir()), [])
++            self.assertFalse(any(path.name.startswith(".candidate.stage-") for path in Path(root).iterdir()))
++
++    @unittest.skipUnless(hasattr(os, "symlink"), "symlinks unavailable")
++    def test_symlink_target_is_rejected_and_destination_untouched(self):
++        with tempfile.TemporaryDirectory() as root:
++            destination = Path(root) / "elsewhere"
++            destination.mkdir()
++            target = Path(root) / "candidate"
++            os.symlink(destination, target, target_is_directory=True)
++            with self.assertRaisesRegex(FileExistsError, "symlink"):
++                build_v3.materialize_tree({"main.py": b"MAIN"}, target)
++            self.assertEqual(list(destination.iterdir()), [])
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

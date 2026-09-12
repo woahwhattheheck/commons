@@ -1,0 +1,170 @@
+diff --git a/test_v3_optimization_hardening.py b/test_v3_optimization_hardening.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..3d6a7bfc39e32fd734af1c3d2b131bf6450c3b96
+--- /dev/null
++++ b/test_v3_optimization_hardening.py
+@@ -0,0 +1,164 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Keep V3 integrity and exact-once checks alive under optimized Python."""
++from __future__ import annotations
++
++import ast
++import hashlib
++import os
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++import textwrap
++import unittest
++from unittest import mock
++
++import apply_v3
++import build_v3
++
++
++HERE = Path(__file__).resolve().parent
++
++
++def run_optimized(source):
++    env = dict(os.environ)
++    env["PYTHONPATH"] = str(HERE) + os.pathsep + env.get("PYTHONPATH", "")
++    return subprocess.run(
++        [sys.executable, "-O", "-c", textwrap.dedent(source)],
++        cwd=str(HERE),
++        env=env,
++        text=True,
++        stdout=subprocess.PIPE,
++        stderr=subprocess.PIPE,
++        check=False,
++    )
++
++
++class ProductionAssertionTests(unittest.TestCase):
++    def test_production_modules_have_no_assert_statements(self):
++        for name in ("build_v3.py", "apply_v3.py"):
++            tree = ast.parse((HERE / name).read_text(encoding="utf-8"), filename=name)
++            lines = [node.lineno for node in ast.walk(tree) if isinstance(node, ast.Assert)]
++            self.assertEqual(lines, [], "%s still has removable asserts" % name)
++
++    def test_replace_once_rejects_zero_and_two_matches(self):
++        with self.assertRaisesRegex(ValueError, "found 0"):
++            apply_v3._replace_once("none", "x", "y", "zero")
++        with self.assertRaisesRegex(ValueError, "found 2"):
++            apply_v3._replace_once("x x", "x", "y", "two")
++
++    def test_config_defaults_reject_existing_lane_and_parameter_keys_without_mutation(self):
++        for initial, message in (
++            ({"sentinel": "unchanged", "r01_shop_router": False}, "r01_shop_router"),
++            ({"sentinel": "unchanged", "rival_dump_price_drop": 15.0}, "rival_dump_price_drop"),
++        ):
++            with self.subTest(key=message):
++                data = dict(initial)
++                with self.assertRaisesRegex(ValueError, message):
++                    apply_v3._add_config_defaults(data)
++                self.assertEqual(data, initial)
++
++    def test_canonical_digest_mismatch_is_explicit(self):
++        with tempfile.TemporaryDirectory() as root:
++            archive = Path(root) / "canonical.tar.gz"
++            archive.write_bytes(b"not the canonical archive")
++            actual = hashlib.sha256(archive.read_bytes()).hexdigest()
++            self.assertNotEqual(actual, "0" * 64)
++            with mock.patch.object(build_v3, "manifest", return_value={"base": {"sha256": "0" * 64}}):
++                with self.assertRaisesRegex(ValueError, "canonical archive"):
++                    build_v3.package_files(archive)
++
++    def test_each_manifest_receipt_mismatch_is_explicit(self):
++        good_manifest = {
++            "archive": {"sha256": "archive", "files": 2},
++            "overlay": {"apply_v3.py": "overlay"},
++        }
++        good_source = {"apply_v3.py": "overlay"}
++        good_files = {"a.py": "a", "b.py": "b"}
++        cases = (
++            ("digest", dict(digest="wrong"), "archive.sha256"),
++            ("file count", dict(file_count=3), "archive.files"),
++            ("overlay", dict(source_hashes={}), "overlay hashes"),
++            ("FILES", dict(recorded={}), "FILES.json"),
++        )
++        defaults = dict(
++            manifest_data=good_manifest,
++            digest="archive",
++            file_count=2,
++            source_hashes=good_source,
++            recorded=good_files,
++            rebuilt=good_files,
++        )
++        for label, changed, message in cases:
++            with self.subTest(label=label):
++                args = dict(defaults)
++                args.update(changed)
++                with self.assertRaisesRegex(ValueError, message):
++                    build_v3.verify_check(**args)
++
++    def test_all_guards_survive_python_optimized_mode(self):
++        result = run_optimized(
++            r'''
++            from pathlib import Path
++            import hashlib
++            import tempfile
++            import apply_v3
++            import build_v3
++
++            def rejects(exc, fn, label):
++                try:
++                    fn()
++                except exc:
++                    return
++                raise SystemExit("optimized Python accepted " + label)
++
++            rejects(ValueError, lambda: apply_v3._replace_once("none", "x", "y", "zero"), "zero anchor")
++            rejects(ValueError, lambda: apply_v3._replace_once("x x", "x", "y", "two"), "two anchors")
++            for initial, label in (
++                ({"sentinel": "unchanged", "r01_shop_router": False}, "lane key"),
++                ({"sentinel": "unchanged", "rival_dump_price_drop": 15.0}, "parameter key"),
++            ):
++                data = dict(initial)
++                rejects(ValueError, lambda data=data: apply_v3._add_config_defaults(data), label)
++                if data != initial:
++                    raise SystemExit("optimized Python partially mutated " + label)
++
++            good_manifest = {"archive": {"sha256": "archive", "files": 2}, "overlay": {"apply_v3.py": "overlay"}}
++            good_source = {"apply_v3.py": "overlay"}
++            good_files = {"a.py": "a", "b.py": "b"}
++            defaults = dict(manifest_data=good_manifest, digest="archive", file_count=2,
++                            source_hashes=good_source, recorded=good_files, rebuilt=good_files)
++            for label, changed in (
++                ("archive sha", {"digest": "wrong"}),
++                ("archive count", {"file_count": 3}),
++                ("overlay", {"source_hashes": {}}),
++                ("FILES", {"recorded": {}}),
++            ):
++                args = dict(defaults); args.update(changed)
++                rejects(ValueError, lambda args=args: build_v3.verify_check(**args), label)
++
++            with tempfile.TemporaryDirectory() as root:
++                archive = Path(root) / "canonical.tar.gz"
++                archive.write_bytes(b"wrong canonical")
++                build_v3.manifest = lambda: {"base": {"sha256": "0" * 64}}
++                rejects(ValueError, lambda: build_v3.package_files(archive), "canonical digest")
++
++            with tempfile.TemporaryDirectory() as root:
++                root = Path(root)
++                target = root / "candidate"
++                rejects(ValueError, lambda: build_v3.materialize_tree({"../escape.py": b"x"}, target), "tree escape")
++                if (root / "escape.py").exists() or target.exists():
++                    raise SystemExit("optimized Python mutated path-escape target")
++                target.mkdir(); (target / "stale.py").write_text("stale")
++                rejects(FileExistsError, lambda: build_v3.materialize_tree({"main.py": b"x"}, target), "stale target")
++                if (target / "main.py").exists():
++                    raise SystemExit("optimized Python merged a stale target")
++            print("OPTIMIZED_GUARDS_OK")
++            '''
++        )
++        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
++        self.assertIn("OPTIMIZED_GUARDS_OK", result.stdout)
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

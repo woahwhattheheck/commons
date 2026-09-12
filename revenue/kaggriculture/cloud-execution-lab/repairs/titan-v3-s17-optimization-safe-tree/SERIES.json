@@ -1,0 +1,40 @@
+{
+  "schema": "titan.v3.s17-repair-series.v1",
+  "apply_in_order": [
+    {
+      "file": "0001-manifest.patch",
+      "bytes": 673,
+      "sha256": "ee291d470a08369242db619ad9b7c3ce830189a1c62cca6809c383a888733164"
+    },
+    {
+      "file": "0002-apply-explicit-guards.patch",
+      "bytes": 1943,
+      "sha256": "7e363ba9ffa714d9fecb9f9ee57f9bce7219d6bf3ab24ff51c5d3662159e0161"
+    },
+    {
+      "file": "0003-build-exact-tree.patch",
+      "bytes": 6161,
+      "sha256": "e53e4c9426e78ffb416e7abfebffb66fb71e8aad59f6ba3feabe1d837d300d01"
+    },
+    {
+      "file": "0004-tree-contracts.patch",
+      "bytes": 4859,
+      "sha256": "bf4b289a0095506db764897f1dd73fce4813ca2c5332b7266fc0c3b9ad1a190b"
+    },
+    {
+      "file": "0005-optimization-contracts.patch",
+      "bytes": 7491,
+      "sha256": "13a8dfb0ac88b0175d8cf695a7267d4840975d150cc58c8e0c9afc58078c752c"
+    },
+    {
+      "file": "0006-hardening-note.patch",
+      "bytes": 3324,
+      "sha256": "6195ac0ee46a935c1cf62aca27c186a89045dd9987205b25a52ba686b6fccab9"
+    },
+    {
+      "file": "0007-receipt.patch",
+      "bytes": 3143,
+      "sha256": "0e9abf718a1d34dc6716e53ff8e8769a12f85432b74d0ab75a9dd5e295d3fc23"
+    }
+  ]
+}
