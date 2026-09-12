@@ -23,7 +23,9 @@ CROPS = frozenset(("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"))
 def _effective_market_limit(configuration: Mapping | None) -> int | None:
     cfg = configuration if isinstance(configuration, Mapping) else {}
     try:
-        # Pinned engine: max(1, int(maxMarketOrdersPerTurn)).
+        # Pinned engine: max(1, int(maxMarketOrdersPerTurn)).  The policy
+        # boundary also catches OverflowError so malformed config is identity
+        # before any candidate edit, rather than pretending the engine skips it.
         return max(1, int(cfg.get("maxMarketOrdersPerTurn", 10)))
     except (TypeError, ValueError, OverflowError):
         return None
@@ -35,6 +37,10 @@ def parse_seed_buy(order: Any) -> tuple[str, int] | None:
     Matches the pinned market grammar: list, len>=3, int() quantity coercion,
     positive quantity, and an official crop. Trailing fields are ignored by the
     engine and are deliberately accepted here without normalizing the row.
+
+    The pinned parser catches TypeError/ValueError only. Consequently an
+    overflowing numeric conversion (for example ``int(float('inf'))``) raises
+    OverflowError here too; callers fail closed on the whole candidate edit.
     """
     if not isinstance(order, list) or len(order) < 3 or order[0] != "BUY_SEED":
         return None
@@ -43,7 +49,7 @@ def parse_seed_buy(order: Any) -> tuple[str, int] | None:
         return None
     try:
         quantity = int(order[2])
-    except (TypeError, ValueError, OverflowError):
+    except (TypeError, ValueError):
         return None
     if quantity <= 0:
         return None
@@ -137,7 +143,11 @@ def transform_with_report(
 
     market = result["market"]
     for index in range(min(len(market), limit)):
-        parsed = parse_seed_buy(market[index])
+        try:
+            parsed = parse_seed_buy(market[index])
+        except OverflowError:
+            report["reason"] = "engine_quantity_overflow"
+            return copy.deepcopy(action), report
         if parsed is None:
             continue
         crop, quantity = parsed
@@ -180,7 +190,14 @@ def census_authored_routes(routes: Any, configuration: Mapping | None = None) ->
             if not isinstance(market, list):
                 return {"certified": False, "reason": "malformed_market", "rows": []}
             for index, order in enumerate(market[:limit]):
-                parsed = parse_seed_buy(order)
+                try:
+                    parsed = parse_seed_buy(order)
+                except OverflowError:
+                    return {
+                        "certified": False,
+                        "reason": "engine_quantity_overflow",
+                        "rows": [],
+                    }
                 if parsed is None:
                     continue
                 crop, quantity = parsed
