@@ -30,6 +30,14 @@ workload. Skip duplicate receipts and routine repetitions that add no knowledge.
 Workers execute the active skill; accumulated wiki evidence is for the separate
 skill-improvement step, which tests a procedural change before retaining it.
 
+For an existing PR/carrier, reserve the canonical target and your operation name
+as one claim before editing: `python host/coordination_claims.py take --pr N
+--operation KEY --holder NAME`. Renew and release with the same aliases. A live
+conflict means the earlier holder owns that target until release/expiry; choose a
+non-overlapping lane instead of minting another operation key for the same PR.
+Pre-PR discovery may use `--operation` alone. The older
+`coordination_state.py take KEY` remains a compatible single-key road.
+
 ## Do not
 
 - Skim `ground/` (81 files). That is the library. Your skill inlined the facts.
