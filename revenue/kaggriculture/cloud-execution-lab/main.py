@@ -386,6 +386,27 @@ def _advance_route_recovery(capsule, step, player):
     return advanced
 
 
+def _instance_route_recovery(instance):
+    """Read only the immutable route receipt published by a complete callback."""
+    if instance is None:
+        return None
+    return _route_recovery_capsule(
+        getattr(instance, '_entrypoint_route_receipt', None))
+
+
+def _store_instance_route_recovery(instance, capsule):
+    """Publish route provenance on the retained runtime without trusting live state."""
+    normalized = _route_recovery_capsule(capsule)
+    if instance is not None:
+        instance._entrypoint_route_receipt = (
+            None if normalized is None else dict(normalized))
+        # Keep the completed-route origin explicit for review/tests and never
+        # reinterpret the latest observed callback as a producer commit.
+        instance._completed_route_step = (
+            None if normalized is None else normalized['route_step'])
+    return normalized
+
+
 def agent(observation, configuration=None):
     global _INSTANCE, _SPATIAL_RECOVERY, _ROUTE_RECOVERY
     import time
@@ -488,6 +509,10 @@ def agent(observation, configuration=None):
         instance.post = None
         instance._remember_seller_fallback(obs)
         instance._entrypoint_last_step = step
+        _store_instance_route_recovery(
+            instance,
+            _advance_route_recovery(
+                _instance_route_recovery(instance), step, player))
         instance.diagnostics = {
             'consumer': instance.features.consumer,
             'parent_calls': 0,
@@ -509,6 +534,7 @@ def agent(observation, configuration=None):
                 # already validated against this exact public callback above.
                 if route_journal is not None:
                     instance._completed_route = route_journal['route']
+                    _store_instance_route_recovery(instance, route_journal)
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
                     stager(spatial_recovery)
@@ -518,6 +544,26 @@ def agent(observation, configuration=None):
             # Publish only after a complete inner return. A foreign exception or
             # outer cancellation keeps the prior marker or discards the instance.
             instance._entrypoint_last_step = step
+            inner = getattr(instance, 'diagnostics', {}) or {}
+            selected = getattr(instance, 'selected', None)
+            route = getattr(instance, '_completed_route', None)
+            if (selected is not None
+                    and inner.get('status') in ('completed', 'deadline_fallback')
+                    and type(route) is str
+                    and route):
+                _store_instance_route_recovery(
+                    instance,
+                    {
+                        'route_step': step,
+                        'last_step': step,
+                        'player': player,
+                        'route': route,
+                    })
+            else:
+                _store_instance_route_recovery(
+                    instance,
+                    _advance_route_recovery(
+                        _instance_route_recovery(instance), step, player))
     except deadline.DeadlineExceeded as error:
         if error is not timer.expired:
             raise
@@ -527,6 +573,7 @@ def agent(observation, configuration=None):
                 and inner.get('status') in ('completed', 'deadline_fallback')):
             stage = 'entrypoint_finalization'
         fallback = _entrypoint_fallback(instance, observation, cfg, deadline)
+        prior_route = _instance_route_recovery(instance) or route_journal
         _record_entrypoint_deadline(instance, stage, entry_started)
         if instance is not None:
             instance.ready = False
@@ -534,12 +581,12 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # Only a producer action completed on THIS callback may move route_step.
-        # Construction/pre-production cancellation carries prior route provenance
-        # forward by observation watermark only; restored state is never relabelled.
+        # Only a producer action committed on THIS callback may move route_step.
+        # Otherwise carry the immutable prior receipt and advance last_step only;
+        # never read a possibly half-mutated live route to invent provenance.
         route = getattr(instance, '_completed_route', None) if instance is not None else None
         if (selected is not None
-                and inner.get('status') == 'completed'
+                and inner.get('status') in ('completed', 'deadline_fallback')
                 and type(route) is str
                 and route):
             _ROUTE_RECOVERY = {
@@ -549,7 +596,7 @@ def agent(observation, configuration=None):
                 'route': route,
             }
         else:
-            _ROUTE_RECOVERY = _advance_route_recovery(route_journal, step, player)
+            _ROUTE_RECOVERY = _advance_route_recovery(prior_route, step, player)
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
