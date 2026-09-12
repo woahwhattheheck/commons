@@ -378,9 +378,9 @@ def propose_pair_swap(
         raise JointAssignmentError("observation must contain farms/private")
 
     cfg = dict(configuration or {})
-    turns_per_day = int(cfg.get("turnsPerDay", 24))
-    if turns_per_day <= 0:
-        raise JointAssignmentError("turnsPerDay must be positive")
+    turns_per_day = cfg.get("turnsPerDay", 24)
+    if type(turns_per_day) is not int or turns_per_day <= 0:
+        raise JointAssignmentError("turnsPerDay must be a positive integer")
     if start_step // turns_per_day != end_step // turns_per_day:
         return JointSwapResult(False, "day_boundary")
     if any(step % turns_per_day == turns_per_day - 1 for step in range(start_step, end_step + 1)):
@@ -408,7 +408,9 @@ def propose_pair_swap(
     board = len(farm.get("tiles", []))
     if board <= 0:
         raise JointAssignmentError("farm tiles must be non-empty")
-    shed_capacity = int(cfg.get("shedCapacity", 100))
+    shed_capacity = cfg.get("shedCapacity", 100)
+    if type(shed_capacity) is not int or shed_capacity <= 0:
+        raise JointAssignmentError("shedCapacity must be a positive integer")
     horizon = end_step - start_step + 1
 
     bundle_a, reason = _extract_bundle(mechanics, farm, route, worker_a, start_step, end_step, board)
