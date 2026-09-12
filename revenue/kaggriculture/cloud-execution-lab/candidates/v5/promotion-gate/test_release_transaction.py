@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import gzip
+from copy import deepcopy
 import hashlib
+import inspect
 import importlib.util
 import io
 import json
@@ -161,6 +163,57 @@ class ReleaseTransactionTests(unittest.TestCase):
             "cells": cells,
         }
         self.economics_raw = canon(self.economics)
+        self.champion = {
+            "schema": rt.CHAMPION_RECEIPT_SCHEMA,
+            "classification": "PASS", "champion_ready": True, "release_authority": False,
+            "v31_source_commit": rt.V31_SOURCE_COMMIT,
+            "v31_submission_id": rt.V31_SUBMISSION_ID,
+            "v31_archive_sha256": rt.V31_ARCHIVE_SHA256,
+            "manifest_sha256": rt.CHAMPION_MANIFEST_SHA256,
+            "target_count": 41, "fixture_count": 123, "cell_count": 246,
+            "incumbent_archive_sha256": self.old["sha256"],
+            "candidate_archive_sha256": self.new["sha256"],
+            "own_sum_delta_vs_incumbent": 492,
+            "own_sum_delta_vs_v31": 246,
+            "margin_sum_delta_vs_incumbent": 492,
+            "margin_sum_delta_vs_v31": 246,
+            "new_losses_vs_incumbent": 0, "new_losses_vs_v31": 0,
+            "strata": [
+                {"submission_id": sub, "seat": seat, "cells": 3,
+                 "own_delta_vs_incumbent": 6, "own_delta_vs_v31": 3}
+                for sub in range(1, 42) for seat in (0, 1)
+            ],
+            "panel_digest": "3" * 64,
+            "harness": {"repo": {}, "engine": {}},
+            "shards": 1,
+            "source_digests": {label: "4" * 64 for label in ("v31", "incumbent", "candidate")},
+            "run_authority": {
+                label: [{"shard": 0, "shards": 1, "selected_fixtures": 123,
+                         "run_sha256": "5" * 64, "index_sha256": "6" * 64}]
+                for label in ("v31", "incumbent", "candidate")
+            },
+        }
+        self.champion_raw = canon(self.champion) + b"\n"
+        self.champion_temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.champion_temp.cleanup)
+        proof = Path(self.champion_temp.name)
+        self.champion_evidence = {key: proof / key for key in rt._CHAMPION_PATH_KEYS}
+        self.champion_evidence.update({key: [proof / key] for key in rt._CHAMPION_ROOT_KEYS})
+        # Canonical evaluator filesystem/arithmetic coverage lives in its own
+        # suite. Here only evaluate() is stubbed, after real pinned-source load,
+        # to isolate transaction cross-binding from existing economics tests.
+        self.champion_evaluate = mock.Mock(side_effect=lambda **_kwargs: deepcopy(self.champion))
+        self.real_load_module = rt._load_module
+
+        def load_module(path, name, **kwargs):
+            module, source = self.real_load_module(path, name, **kwargs)
+            if name == "_titan_v5_canonical_champion":
+                module.evaluate = self.champion_evaluate
+            return module, source
+
+        loader = mock.patch.object(rt, "_load_module", side_effect=load_module)
+        loader.start()
+        self.addCleanup(loader.stop)
         self.trust_result = {
             "ok": True,
             "delegate": True,
@@ -193,6 +246,8 @@ class ReleaseTransactionTests(unittest.TestCase):
             runtime_raw=self.runtime_raw,
             promotion_receipt_raw=self.promotion_raw,
             economics_raw=self.economics_raw,
+            champion_raw=self.champion_raw,
+            champion_evidence=self.champion_evidence,
             promotion_builder=self.builder,
             economics_builder=econ.validate_report,
             trust_result=self.trust_result,
@@ -206,7 +261,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         second = self.build()
         self.assertEqual(first, second)
         self.assertEqual(first["classification"], "PASS")
-        self.assertEqual("titan-v5-release-transaction/v4", first["schema"])
+        self.assertEqual("titan-v5-release-transaction/v5", first["schema"])
         self.assertRegex(first["transition_id"], r"^v5tx:[0-9a-f]{64}$")
         self.assertEqual(first["expected_old"]["archive_sha256"], self.old["sha256"])
         self.assertEqual(first["approved_new"]["archive_sha256"], self.new["sha256"])
@@ -230,6 +285,11 @@ class ReleaseTransactionTests(unittest.TestCase):
         self.assertEqual(first["economics"]["control_archive_sha256"], self.old["sha256"])
         self.assertEqual(first["economics"]["candidate_archive_sha256"], self.new["sha256"])
         self.assertEqual(first["economics"]["cell_count"], 16)
+        self.assertEqual(first["champion"]["cell_count"], 246)
+        self.assertEqual(first["champion"]["receipt_sha256"], sha(self.champion_raw))
+        self.assertEqual(first["champion"]["builder_git_blob"], rt.CHAMPION_GATE_GIT_BLOB)
+        self.assertEqual(first["champion"]["source_digests"], self.champion["source_digests"])
+        self.assertEqual(first["champion"]["run_authority"], self.champion["run_authority"])
         self.assertEqual(first["economics"]["sum_margin_delta"], 160)
         self.assertEqual(
             first["economics"]["per_opponent"],
@@ -400,6 +460,111 @@ class ReleaseTransactionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(rt.TransactionError, "margin arithmetic|margin regresses"):
             self.build(economics_builder=forged_per_opponent)
+
+    def test_champion_receipt_and_backing_evidence_are_required_api_inputs(self):
+        signature = inspect.signature(rt.build_transaction)
+        for key in ("champion_raw", "champion_evidence"):
+            self.assertIs(signature.parameters[key].default, inspect.Parameter.empty)
+        with mock.patch.object(rt, "build_transaction", wraps=rt.build_transaction) as build:
+            self.build()
+            kwargs = dict(build.call_args.kwargs)
+        for key in ("champion_raw", "champion_evidence"):
+            omitted = dict(kwargs)
+            omitted.pop(key)
+            with self.assertRaises(TypeError):
+                rt.build_transaction(**omitted)
+
+    def test_perfect_fake_champion_without_backing_files_cannot_release(self):
+        # Even correct schema/identities/counts and positive invented metrics
+        # cannot substitute for actual authenticated files and complete roots.
+        with mock.patch.object(rt, "_load_module", side_effect=self.real_load_module):
+            with self.assertRaisesRegex(rt.TransactionError, "champion evidence replay failed"):
+                self.build()
+
+    def test_champion_evidence_cannot_override_canonical_pins_or_omit_roots(self):
+        for evidence in (None, {}, {**self.champion_evidence, "repo_pins": {}},
+                         {**self.champion_evidence, "expected_targets": 2},
+                         {**self.champion_evidence, "v31_roots": []}):
+            with self.subTest(evidence=evidence):
+                with self.assertRaisesRegex(rt.TransactionError, "champion evidence"):
+                    self.build(champion_evidence=evidence)
+
+    def test_stale_champion_identity_or_small_panel_cannot_release(self):
+        mutations = {
+            "schema": "titan-v5-champion-ratchet-receipt/v1",
+            "v31_source_commit": "0" * 40, "v31_submission_id": 1,
+            "v31_archive_sha256": "0" * 64, "manifest_sha256": "0" * 64,
+            "incumbent_archive_sha256": "f" * 64, "candidate_archive_sha256": "e" * 64,
+            "target_count": 2, "fixture_count": 8, "cell_count": 16,
+            "champion_ready": False, "release_authority": True,
+        }
+        for key, value in mutations.items():
+            bad = {**self.champion, key: value}
+            with self.subTest(key=key), self.assertRaisesRegex(rt.TransactionError, key):
+                self.build(champion_raw=canon(bad))
+
+    def test_champion_tie_regression_and_new_losses_cannot_release(self):
+        for key, value in (
+            ("own_sum_delta_vs_v31", 0), ("own_sum_delta_vs_incumbent", -1),
+            ("margin_sum_delta_vs_v31", -1), ("new_losses_vs_v31", 1),
+            ("new_losses_vs_incumbent", 1), ("own_sum_delta_vs_v31", True),
+        ):
+            with self.subTest(key=key), self.assertRaises(rt.TransactionError):
+                self.build(champion_raw=canon({**self.champion, key: value}))
+
+    def test_fabricated_strata_or_source_authority_disagrees_with_replay(self):
+        mutations = []
+        negative = deepcopy(self.champion)
+        negative["strata"][0]["own_delta_vs_v31"] = -1
+        mutations.append(negative)
+        for key in ("harness", "source_digests", "run_authority", "strata"):
+            omitted = deepcopy(self.champion)
+            omitted.pop(key)
+            mutations.append(omitted)
+        changed = deepcopy(self.champion)
+        changed["source_digests"]["candidate"] = "f" * 64
+        mutations.append(changed)
+        for bad in mutations:
+            with self.assertRaisesRegex(rt.TransactionError, "authenticated full-panel replay"):
+                self.build(champion_raw=canon(bad))
+
+    def test_champion_replay_receives_all_three_policies_without_small_panel_zip(self):
+        receipt = self.build()
+        self.champion_evaluate.assert_called_once()
+        inputs = self.champion_evaluate.call_args.kwargs
+        self.assertEqual(set(inputs), set(self.champion_evidence) | {
+            "claimed_v31_source_commit", "claimed_v31_submission_id",
+        })
+        self.assertEqual(inputs["candidate_archive"], self.champion_evidence["candidate_archive"])
+        self.assertEqual(inputs["v31_roots"], tuple(self.champion_evidence["v31_roots"]))
+        self.assertNotEqual(receipt["champion"]["cell_count"], receipt["economics"]["cell_count"])
+
+    def test_noncanonical_champion_bytes_reject_even_when_semantically_equal(self):
+        variants = (
+            self.champion_raw + b"\n", canon(self.champion),
+            json.dumps(self.champion, indent=2).encode() + b"\n",
+            self.champion_raw.replace(b'"own_sum_delta_vs_v31":246', b'"own_sum_delta_vs_v31":246.0'),
+        )
+        for raw in variants:
+            with self.assertRaisesRegex(rt.TransactionError, "authenticated full-panel replay"):
+                self.build(champion_raw=raw)
+
+    def test_champion_replayed_evidence_changes_transition(self):
+        first = self.build()
+        self.champion["source_digests"]["candidate"] = "f" * 64
+        changed = self.build(champion_raw=canon(self.champion) + b"\n")
+        self.assertNotEqual(first["champion"]["receipt_sha256"], changed["champion"]["receipt_sha256"])
+        self.assertNotEqual(first["transition_id"], changed["transition_id"])
+
+    def test_changed_champion_builder_is_rejected_before_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            executed = root / "executed"
+            source = root / "builder.py"
+            source.write_text(f"from pathlib import Path\nPath({str(executed)!r}).touch()\n")
+            with self.assertRaisesRegex(rt.TransactionError, "pinned Git blob"):
+                self.real_load_module(source, "untrusted", expected_git_blob=rt.CHAMPION_GATE_GIT_BLOB)
+            self.assertFalse(executed.exists())
 
     def test_trusted_base_gate_must_pass(self):
         with self.assertRaisesRegex(rt.TransactionError, "trusted-base gate"):

@@ -89,9 +89,9 @@ python candidates/v5/promotion-gate/economics_gate.py economics-report.json \
 ## Release transaction
 
 `release_transaction.py` is the pointer-transition authority in this directory.
-Version 4 keeps the existing promotion replay, V4 trusted-base replay,
+Version 5 keeps the existing promotion replay, V4 trusted-base replay,
 source/archive binding, expected-old transaction, and atomic commit semantics,
-and requires `--economics-report`.
+and requires both `--economics-report` and a replayable champion receipt.
 
 The release transaction replays `economics_gate.validate_report()` against the
 same candidate/control, engine/opponent-pack, and old/new archive authorities
@@ -110,9 +110,47 @@ Negative-global, negative-per-opponent, unauthorized-roster, uneven-seed,
 missing-seat, duplicate, stale-archive, wrong-pack, cross-build, or source-path
 race cases fail before a release pointer can move.
 
-This generic firewall is intentionally only the incumbent/control economics
-subgate. The separate V3.1 champion-ratchet owns the final champion objective;
-no V3.1 floor semantics are duplicated here.
+The adaptive Apex+Arlene economics panel and full recorded-opponent champion
+panel remain separate. Both must pass in the same release transaction. Champion
+scoring reuses the merged `../champion-ratchet/champion_gate.py` implementation;
+there is no copied scorer or requirement to zip its 246 cells to the smaller
+adaptive panel.
+
+The programmatic `build_transaction` API requires `champion_raw` and
+`champion_evidence`. The evidence mapping contains exactly `kg_root`,
+`engine_dir`, `manifest_path`, `v31_archive`, `incumbent_archive`,
+`candidate_archive`, `v31_roots`, `incumbent_roots`, and `candidate_roots`.
+The release module checks the canonical champion source's pinned Git blob
+**before execution**, then calls its `evaluate()` over the actual archives,
+harness, manifest, and complete result roots. It does not accept a caller's
+replacement scorer, pin overrides, or a summary without backing evidence.
+This replays existing results; it does not run new games.
+
+The supplied receipt must equal the evaluator's canonical JSON bytes plus one
+newline. Required authority includes exact V3.1 source/submission/archive,
+the canonical 41-target/123-fixture/246-cell panel, and incumbent/candidate
+archives matching the transaction's old/new archives. The champion must
+strictly improve V3.1 own score, preserve incumbent own score, avoid new losses,
+and pass the canonical stratum and margin checks. Its `release_authority=false`
+marks it as a subgate; only this transaction can combine the release evidence.
+The full replayed receipt, its raw SHA-256, and the executed builder identity
+are included in `v5tx`.
+
+The CLI adds these required inputs to the existing transaction arguments:
+
+```text
+--champion-receipt CHAMPION.json
+--champion-engine-dir ENGINE_DIRECTORY
+--champion-v31-archive EXACT_SUBMITTED_V31.tar.gz
+--champion-incumbent-archive CURRENT_CONTROL.tar.gz
+--champion-v31-root V31_RESULT_ROOT          (repeat for every shard)
+--champion-incumbent-root CONTROL_ROOT      (repeat for every shard)
+--champion-candidate-root CANDIDATE_ROOT    (repeat for every shard)
+```
+
+The candidate archive is the existing `--approved-archive` input. The repo's
+canonical corpus manifest and harness are selected internally. Source and
+receipt pins change only with an explicitly reviewed successor integration.
 
 Exit status is `0` only for a PASS receipt. Invalid, ambiguous, incomplete,
 cross-wired, or economically regressive evidence exits `2`.

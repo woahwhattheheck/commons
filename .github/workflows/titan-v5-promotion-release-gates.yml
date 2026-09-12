@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/titan-v5-promotion-release-gates.yml"
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/promotion-gate/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/champion-ratchet/**"
 
 permissions:
   contents: read
@@ -36,8 +37,11 @@ jobs:
           python -B -m py_compile \
             economics_gate.py release_transaction.py promotion_gate.py \
             test_economics_gate.py test_release_transaction.py test_promotion_gate.py
+          python -B -m py_compile ../champion-ratchet/champion_gate.py
           python -B -m unittest -v \
             test_economics_gate test_release_transaction test_promotion_gate
+          python -B -m unittest discover -s ../champion-ratchet -p 'test_champion_gate.py' -v
+          python -O -B -m unittest discover -s ../champion-ratchet -p 'test_champion_gate.py' -v
           python -O -B -m unittest -v \
             test_economics_gate test_release_transaction test_promotion_gate
           find . -type d -name __pycache__ -prune -exec rm -rf {} +

@@ -142,7 +142,10 @@ class EconomicsGateTests(unittest.TestCase):
         )
         for label, opponents in cases:
             with self.subTest(label=label):
-                value = report(opponents=opponents)
+                # Keep the subset above the minimum cell count so this
+                # predecessor reaches roster validation rather than size.
+                seeds = range(100, 108) if label == "subset" else range(100, 104)
+                value = report(opponents=opponents, seeds=seeds)
                 with self.assertRaisesRegex(
                     gate.EconomicsError,
                     "opponent roster must exactly equal authorized release roster",

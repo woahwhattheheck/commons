@@ -3,7 +3,7 @@
 """Fail-closed release-pointer transaction authority for TITAN V5.
 
 This module is outside gameplay. It replays the V5 promotion gate, requires a
-paired competitive-economics PASS bound to the exact execution closure, replays
+paired competitive-economics PASS and the full submitted-V3.1 champion panel, replays
 the current V4 trust-root gate, binds the promoted component bytes into the
 proposed release SOURCE manifest, authenticates the proposed archive/pointer
 pair, and then produces a deterministic expected-old -> approved-new receipt.
@@ -22,6 +22,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 import re
@@ -30,11 +31,22 @@ import tarfile
 import uuid
 from typing import Any, Callable, Mapping
 
-SCHEMA = "titan-v5-release-transaction/v4"
+SCHEMA = "titan-v5-release-transaction/v5"
 TRANSITION_PREFIX = "v5tx:"
 AUTHORIZED_OPPONENT_IDS = ("apex_v7", "arlene_v14")
 REFERENCE_POLICIES_GIT_BLOB = "6bce02dad705ccc57656ff2e2139db215f9fcc57"
 ECONOMICS_RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v4"
+CHAMPION_RECEIPT_SCHEMA = "titan-v5-champion-ratchet-receipt/v2"
+CHAMPION_GATE_GIT_BLOB = "a288e4394b2bcffdaba203ef82bcfbcacb30d5a4"
+V31_SOURCE_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
+V31_SUBMISSION_ID = 56172377
+V31_ARCHIVE_SHA256 = "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361"
+CHAMPION_MANIFEST_SHA256 = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
+_CHAMPION_PATH_KEYS = frozenset((
+    "kg_root", "engine_dir", "manifest_path", "v31_archive",
+    "incumbent_archive", "candidate_archive",
+))
+_CHAMPION_ROOT_KEYS = frozenset(("v31_roots", "incumbent_roots", "candidate_roots"))
 _POINTER_KEYS = frozenset(
     ("path", "entrypoint", "config", "sha256", "bytes",
      "runtime_files", "source_manifest", "source_manifest_sha256")
@@ -427,6 +439,89 @@ def _economics_replay(
     return receipt
 
 
+def _champion_replay(
+    champion_raw: bytes,
+    champion_evidence: Mapping[str, Any],
+    *,
+    control_archive_sha256: str,
+    candidate_archive_sha256: str,
+) -> dict[str, Any]:
+    """Recompute the canonical 246-cell panel from its actual evidence.
+
+    A v2 receipt is a summary, not its own proof. The only builder is the pinned,
+    captured canonical module; callers cannot inject a validator or weaker pins.
+    The adaptive economics panel is separate and is not zipped to these cells.
+    """
+    supplied = _loads(champion_raw, "champion receipt")
+    if type(supplied) is not dict:
+        raise TransactionError("champion receipt must be an object")
+    expected = {
+        "schema": CHAMPION_RECEIPT_SCHEMA,
+        "classification": "PASS", "champion_ready": True, "release_authority": False,
+        "v31_source_commit": V31_SOURCE_COMMIT, "v31_submission_id": V31_SUBMISSION_ID,
+        "v31_archive_sha256": V31_ARCHIVE_SHA256,
+        "manifest_sha256": CHAMPION_MANIFEST_SHA256,
+        "target_count": 41, "fixture_count": 123, "cell_count": 246,
+        "incumbent_archive_sha256": control_archive_sha256,
+        "candidate_archive_sha256": candidate_archive_sha256,
+    }
+    for key, value in expected.items():
+        if type(supplied.get(key)) is not type(value) or supplied[key] != value:
+            raise TransactionError(f"champion receipt {key} disagrees with release authority")
+    for key in ("own_sum_delta_vs_incumbent", "own_sum_delta_vs_v31",
+                "margin_sum_delta_vs_incumbent", "margin_sum_delta_vs_v31"):
+        value = supplied.get(key)
+        if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
+            raise TransactionError(f"champion receipt {key} must be finite and nonnegative")
+    if supplied["own_sum_delta_vs_v31"] <= 0:
+        raise TransactionError("champion must strictly beat V3.1 own score")
+    for key in ("new_losses_vs_incumbent", "new_losses_vs_v31"):
+        if type(supplied.get(key)) is not int or supplied[key] != 0:
+            raise TransactionError(f"champion receipt {key} must be zero")
+
+    if type(champion_evidence) is not dict or set(champion_evidence) != (
+        _CHAMPION_PATH_KEYS | _CHAMPION_ROOT_KEYS
+    ):
+        raise TransactionError("champion evidence requires exact archive, harness, manifest and root inputs")
+    inputs = {}
+    for key in _CHAMPION_PATH_KEYS:
+        value = champion_evidence[key]
+        if not isinstance(value, (str, Path)) or not str(value):
+            raise TransactionError(f"champion evidence {key} must be a path")
+        inputs[key] = Path(value)
+    for key in _CHAMPION_ROOT_KEYS:
+        values = champion_evidence[key]
+        if type(values) not in (list, tuple) or not values or any(
+            not isinstance(value, (str, Path)) or not str(value) for value in values
+        ):
+            raise TransactionError(f"champion evidence {key} requires backing result roots")
+        inputs[key] = tuple(Path(value) for value in values)
+
+    module_path = Path(__file__).resolve().parent.parent / "champion-ratchet/champion_gate.py"
+    module, source = _load_module(
+        module_path, "_titan_v5_canonical_champion", expected_git_blob=CHAMPION_GATE_GIT_BLOB
+    )
+    try:
+        replayed = module.evaluate(
+            **inputs, claimed_v31_source_commit=V31_SOURCE_COMMIT,
+            claimed_v31_submission_id=V31_SUBMISSION_ID,
+        )
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        raise TransactionError(f"champion evidence replay failed: {exc}") from exc
+    if type(replayed) is not dict or _canonical(replayed) + b"\n" != champion_raw:
+        raise TransactionError("champion receipt disagrees with authenticated full-panel replay")
+    # The replay authenticates every harness/archive/manifest/run/cell input,
+    # recomputes strata and all score arithmetic, and enforces full membership.
+    # Keep the entire replayed theorem, plus the exact original receipt bytes,
+    # in the transition identity so evidence-only changes remain observable.
+    return {
+        "receipt_sha256": _sha(champion_raw),
+        "builder_git_blob": CHAMPION_GATE_GIT_BLOB,
+        "builder_sha256": _sha(source),
+        **replayed,
+    }
+
+
 def _trust_digest(files: Mapping[str, bytes]) -> str:
     if set(files) != {
         "CANONICAL.json",
@@ -451,6 +546,8 @@ def build_transaction(
     runtime_raw: bytes,
     promotion_receipt_raw: bytes,
     economics_raw: bytes,
+    champion_raw: bytes,
+    champion_evidence: Mapping[str, Any],
     promotion_builder: Callable[..., Mapping[str, Any]],
     economics_builder: Callable[..., Mapping[str, Any]],
     trust_result: Mapping[str, Any],
@@ -500,6 +597,11 @@ def build_transaction(
         candidate_archive_sha256=new_pointer["sha256"],
     )
     bind_promoted_sources(manifest, source_manifest, archive_members)
+    champion = _champion_replay(
+        champion_raw, champion_evidence,
+        control_archive_sha256=old_pointer["sha256"],
+        candidate_archive_sha256=new_pointer["sha256"],
+    )
 
     if type(trust_result) is not dict or trust_result.get("ok") is not True:
         raise TransactionError("current V4 trusted-base gate did not PASS")
@@ -542,6 +644,7 @@ def build_transaction(
             "per_opponent": economics["per_opponent"],
             "panel_sha256": economics["panel_sha256"],
         },
+        "champion": champion,
         "trusted_base": {
             "control_plane_sha256": trust_sha,
             "validator_sha256": _sha(trust_files["check_control_plane.py"]),
@@ -602,7 +705,7 @@ def commit_pointer(
             raise TransactionError("transaction receipt postimage verification failed")
 
 
-def _load_module(path: Path, name: str):
+def _load_module(path: Path, name: str, *, expected_git_blob: str | None = None):
     """Execute exactly the source bytes authenticated by the first read.
 
     Using loader.exec_module(module) here would reread ``path`` after the bytes
@@ -611,6 +714,10 @@ def _load_module(path: Path, name: str):
     instead; module_from_spec still supplies normal module metadata.
     """
     source = _read(path, name)
+    if expected_git_blob is not None:
+        blob = hashlib.sha1(b"blob " + str(len(source)).encode() + b"\0" + source).hexdigest()
+        if blob != expected_git_blob:
+            raise TransactionError(f"{name} source differs from pinned Git blob")
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise TransactionError(f"cannot load module {path}")
@@ -637,6 +744,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--runtime-report", type=Path, required=True)
     parser.add_argument("--promotion-receipt", type=Path, required=True)
     parser.add_argument("--economics-report", type=Path, required=True)
+    parser.add_argument("--champion-receipt", type=Path, required=True)
+    parser.add_argument("--champion-engine-dir", type=Path, required=True)
+    parser.add_argument("--champion-v31-archive", type=Path, required=True)
+    parser.add_argument("--champion-incumbent-archive", type=Path, required=True)
+    parser.add_argument("--champion-v31-root", type=Path, action="append", required=True)
+    parser.add_argument("--champion-incumbent-root", type=Path, action="append", required=True)
+    parser.add_argument("--champion-candidate-root", type=Path, action="append", required=True)
     parser.add_argument("--v4-root", type=Path, default=default_v4)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--commit", action="store_true")
@@ -670,6 +784,18 @@ def main(argv: list[str] | None = None) -> int:
             runtime_raw=_read(args.runtime_report, "runtime report"),
             promotion_receipt_raw=_read(args.promotion_receipt, "promotion receipt"),
             economics_raw=_read(args.economics_report, "economics report"),
+            champion_raw=_read(args.champion_receipt, "champion receipt"),
+            champion_evidence={
+                "kg_root": lab.parent,
+                "engine_dir": args.champion_engine_dir,
+                "manifest_path": here.parent.parent / "gauntlet-top30-union/manifest.json",
+                "v31_archive": args.champion_v31_archive,
+                "incumbent_archive": args.champion_incumbent_archive,
+                "candidate_archive": args.approved_archive,
+                "v31_roots": args.champion_v31_root,
+                "incumbent_roots": args.champion_incumbent_root,
+                "candidate_roots": args.champion_candidate_root,
+            },
             promotion_builder=promotion_module.build_receipt,
             economics_builder=economics_module.validate_report,
             trust_result=trust_result,
