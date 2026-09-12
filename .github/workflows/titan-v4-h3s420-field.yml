@@ -40,8 +40,8 @@ jobs:
           HELPER=revenue/kaggriculture/cloud-quickstep/scoped_method_cache.py
           CHALLENGER="$V4/research/opponent-challengers/reactive_challengers.py"
 
-          test "$(git hash-object "$SALE/compose_current_h3s420.py")" = 188d315e2e0fc0a008c508b365aa2cb04fb70591
-          test "$(git hash-object "$SALE/test_compose_current_h3s420.py")" = d0b3e7707fb3b1b7ab108fa4b35eb9a66ff8e660
+          test "$(git hash-object "$SALE/compose_current_h3s420.py")" = 7c5778b4d6d7c47f8feca7e800fc8093267b66f8
+          test "$(git hash-object "$SALE/test_compose_current_h3s420.py")" = 58cdeedfe251c408ab3f5d1186159a3d910da359
           test "$(git hash-object "$FUND/apply_town_funding.py")" = 527811763c80e627895d8e11319f8877b18105e6
           test "$(git hash-object "$UNIT")" = e1127c4aad842278a9e617903b0718d21c00f348
           test "$(git hash-object "$FUND/apply_funding_replay.py")" = d579759e8f6bd6c4649d58f220b1b193a9bda491
