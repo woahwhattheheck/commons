@@ -19,6 +19,26 @@ from typing import Any
 import postimage_trust as trust
 
 
+class _SnapshotBytesPath:
+    """Path-compatible receipt view whose bytes are an authenticated snapshot."""
+
+    def __init__(self, path: Path, data: bytes):
+        self._path = Path(path)
+        self._data = bytes(data)
+
+    def read_bytes(self) -> bytes:
+        return self._data
+
+    def __fspath__(self) -> str:
+        return str(self._path)
+
+    def __str__(self) -> str:
+        return str(self._path)
+
+    def __getattr__(self, name: str):
+        return getattr(self._path, name)
+
+
 def _module_from_bytes(
     data: bytes,
     path: Path,
@@ -132,6 +152,7 @@ def _bind_snapshot_loaders(
     frozen_checker_bytes = bytes(checker_bytes)
     frozen_entrypoints = {key: bytes(value) for key, value in entrypoint_bytes.items()}
     frozen_sources = {key: bytes(value) for key, value in support_source_bytes.items()}
+    original_under = runner._under
 
     def snapshot_load_json(path: Path):
         if Path(path) != canonical_manifest:
@@ -186,10 +207,18 @@ def _bind_snapshot_loaders(
             raise error_type("authenticated support snapshot identity mismatch: " + key)
         return data
 
+    def snapshot_under(root: Path, rel: str, *, must_exist: bool = True):
+        path = original_under(root, rel, must_exist=must_exist)
+        if (must_exist and rel == trust.CHECKER_NAME
+                and Path(root).resolve(strict=True) == workspace):
+            return _SnapshotBytesPath(path, frozen_checker_bytes)
+        return path
+
     runner.load_json = snapshot_load_json
     runner._load_checker = snapshot_load_checker
     runner._load_module = snapshot_load_module
     runner._load_support_source = snapshot_load_support_source
+    runner._under = snapshot_under
 
 
 def main() -> int:
