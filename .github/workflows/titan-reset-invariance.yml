@@ -12,7 +12,6 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
       - 'revenue/kaggriculture/cloud-execution-lab/checks/**'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/**'
   push:
     branches: [main]
     paths:
@@ -25,7 +24,6 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
       - 'revenue/kaggriculture/cloud-execution-lab/checks/**'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/**'
   workflow_dispatch:
 
 permissions:
