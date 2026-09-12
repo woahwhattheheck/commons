@@ -131,15 +131,15 @@ def _strict_json(raw: bytes, label: str):
         raise ExportError(f"invalid JSON in {label}: {exc}") from exc
 
 
-def receipt_last_writer(
+def receipt_graph_state(
     *,
     receipt_raw: bytes,
     receipt_sha256: str,
     current_sha256: str,
     baseline: dict[str, bytes],
     current: dict[str, bytes],
-) -> dict[str, str]:
-    """Authenticate one composer receipt and reconstruct exact final writers."""
+) -> tuple[dict[str, str], set[str], dict[str, set[str]]]:
+    """Authenticate one composer receipt and reconstruct writers plus graph state."""
     expected_receipt = _sha(receipt_sha256, "current_receipt_sha256")
     if digest(receipt_raw) != expected_receipt:
         raise ExportError("current composer receipt SHA256 mismatch")
@@ -173,7 +173,7 @@ def receipt_last_writer(
     hashes = {member: digest(body) for member, body in baseline.items()}
     last_writer: dict[str, str] = {}
     included: set[str] = set()
-    prior_components: list[dict] = []
+    historical_conflicts: dict[str, set[str]] = {}
     component_keys = {
         "component_id", "manifest_sha256", "depends_on", "conflicts_with",
         "replacements", "additions",
@@ -202,7 +202,8 @@ def receipt_last_writer(
         if conflict is not None:
             raise ExportError(f"receipt component {cid} conflicts with {conflict}")
         reverse = next(
-            (prev["component_id"] for prev in prior_components if cid in prev["conflicts_with"]),
+            (prior for prior, prior_conflicts in historical_conflicts.items()
+             if cid in prior_conflicts),
             None,
         )
         if reverse is not None:
@@ -251,11 +252,11 @@ def receipt_last_writer(
             last_writer[member] = cid
 
         included.add(cid)
-        prior_components.append({"component_id": cid, "conflicts_with": conflicts})
+        historical_conflicts[cid] = set(conflicts)
 
     if hashes != files:
         raise ExportError("current receipt history does not reproduce final file hashes")
-    return last_writer
+    return last_writer, included, historical_conflicts
 
 
 def derive_component(
@@ -312,14 +313,32 @@ def derive_component(
     candidate = archive_members(candidate_raw, "candidate")
     if expected_current is None:
         last_writer: dict[str, str] = {}
+        included: set[str] = set()
+        historical_conflicts: dict[str, set[str]] = {}
     else:
-        last_writer = receipt_last_writer(
+        last_writer, included, historical_conflicts = receipt_graph_state(
             receipt_raw=current_receipt_raw,
             receipt_sha256=current_receipt_sha256,
             current_sha256=expected_current,
             baseline=baseline,
             current=current,
         )
+
+    if cid in included:
+        raise ExportError(f"component_id already included in current history: {cid}")
+    missing_dep = next((dep for dep in depends if dep not in included), None)
+    if missing_dep is not None:
+        raise ExportError(f"component has unsatisfied dependency: {missing_dep}")
+    forward_conflict = next((item for item in conflicts if item in included), None)
+    if forward_conflict is not None:
+        raise ExportError(f"component conflicts with included component: {forward_conflict}")
+    reverse_conflict = next(
+        (prior for prior, prior_conflicts in historical_conflicts.items()
+         if cid in prior_conflicts),
+        None,
+    )
+    if reverse_conflict is not None:
+        raise ExportError(f"historical component {reverse_conflict} conflicts with {cid}")
 
     missing_baseline = sorted(set(baseline) - set(current))
     if missing_baseline:
