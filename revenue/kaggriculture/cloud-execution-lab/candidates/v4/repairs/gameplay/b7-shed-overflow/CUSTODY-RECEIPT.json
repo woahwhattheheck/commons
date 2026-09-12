@@ -1,0 +1,51 @@
+{
+  "schema": "titan-v4-b7-eod-cargo-custody/v1",
+  "authority": {
+    "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "existing_b7_family": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/b7-shed-overflow",
+    "source_git_blob": "a74d7f195d5ceb0b1565dd64da28c6b8b925b45a",
+    "test_git_blob": "fb6a32d008bc1d91a0d6eedcedf132fb584c1eb5"
+  },
+  "mechanism": {
+    "unit_order": "farmer then hand indices",
+    "eod_deposit_order": "private.inventories list order, then per-inventory insertion order",
+    "admission": "EOD + shed exactly full + all unit rows PASS + market SELL-only + unique strict current-price retained-cargo gain",
+    "rewrite": "at most one shed-adjacent actor PASS -> DROP before market",
+    "default_enabled": false
+  },
+  "constructed_witness": {
+    "step": 263,
+    "shed_before_unit": {"CARROT": 100},
+    "inventories": [{"WHEAT": 10}, {"MILK": 10}],
+    "market": [["SELL", "CARROT", 10]],
+    "shadow_prices": {"WHEAT": 25, "MILK": 160},
+    "baseline_eod_deposited": [{"WHEAT": 10}, {}],
+    "candidate_eod_deposited": [{}, {"MILK": 10}],
+    "baseline_deposited_value": 250,
+    "candidate_deposited_value": 1600,
+    "current_price_value_delta": 1350,
+    "cash_order_change": false
+  },
+  "execution": {
+    "exact_published_source_compiled_in_session": true,
+    "source_independent_behavior_groups_executed": 14,
+    "source_independent_behavior_groups_passed": 14,
+    "filesystem_engine_pin_test_executed": false,
+    "filesystem_engine_pin_test_reason": "isolated container DNS could not resolve public GitHub for exact engine byte fetch",
+    "engine_pin_verified_by_repository_identity": true,
+    "hosted_ci_claimed_green": false
+  },
+  "fail_closed_limits": [
+    "non-EOD",
+    "partial shed room",
+    "any non-PASS unit row",
+    "any market row other than strict positive integer SELL",
+    "no successful shed sale",
+    "non-product carried cargo",
+    "missing/nonfinite/negative carried-product price",
+    "candidate actor not shed-adjacent",
+    "no strict value gain",
+    "ambiguous equal best actor"
+  ],
+  "disposition": "RESEARCH_ONLY_NO_ACTIVATION_CLEARANCE"
+}
