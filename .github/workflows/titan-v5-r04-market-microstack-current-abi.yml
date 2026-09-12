@@ -4,14 +4,21 @@ on:
   pull_request:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/**"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
       - ".github/workflows/titan-v5-r04-market-microstack-current-abi.yml"
 
 permissions:
   contents: read
 
+concurrency:
+  group: titan-v5-r04-market-microstack-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   contracts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -39,12 +46,15 @@ jobs:
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
-          python -m py_compile \
+          python -B -m py_compile \
             market_microstack_current.py \
+            market_route_authority.py \
             market_microstack_current_safe.py \
+            test_support.py \
             test_market_microstack_current.py \
             test_retry_transactions.py \
             test_h4_shared_current.py \
+            test_route_authority.py \
             test_source_authority.py
 
       - name: Focused contracts
@@ -52,10 +62,11 @@ jobs:
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
-          python -B -m unittest -v \
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v \
             test_market_microstack_current.py \
             test_retry_transactions.py \
             test_h4_shared_current.py \
+            test_route_authority.py \
             test_source_authority.py
 
       - name: Focused contracts under optimization
@@ -63,12 +74,17 @@ jobs:
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
-          python -O -B -m unittest -v \
+          PYTHONDONTWRITEBYTECODE=1 python -O -B -m unittest -v \
             test_market_microstack_current.py \
             test_retry_transactions.py \
             test_h4_shared_current.py \
+            test_route_authority.py \
             test_source_authority.py
 
       - name: Test run is source-clean
         shell: bash
-        run: git diff --exit-code
+        run: |
+          find revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi \
+            -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --exit-code
+          test -z "$(git status --porcelain)"
