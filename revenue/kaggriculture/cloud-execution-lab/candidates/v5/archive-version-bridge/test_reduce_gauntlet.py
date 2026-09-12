@@ -11,21 +11,32 @@ def write_json(path, value):
 
 
 class ReduceGauntletTests(unittest.TestCase):
-    def root(self, base, label, shard=0, shards=1):
+    def root(self, base, label, shard=0, shards=1, selected_fixtures=2):
         path = Path(base) / f"{label}-{shard}"
         path.mkdir()
         write_json(path / "run.json", {
             "candidate_sha256": rg.EXACT[label],
             "index_sha256": "a" * 64,
             "engine": {"e": "b" * 64},
-            "selected_fixtures": 2,
+            "selected_fixtures": selected_fixtures,
             "group": "all",
             "shard": shard,
             "shards": shards,
         })
         return path
 
-    def game(self, root, label, opponent, seat, scores, family="F", submission=7, status="complete", steps=719):
+    def game(
+        self,
+        root,
+        label,
+        opponent,
+        seat,
+        scores,
+        family="F",
+        submission=7,
+        status="complete",
+        steps=719,
+    ):
         write_json(root / f"{opponent}-p{seat}.json", {
             "opponent": opponent,
             "submission_id": submission,
@@ -44,27 +55,89 @@ class ReduceGauntletTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             a, b = self.root(td, "v31"), self.root(td, "v4")
             for opp, family, sub, v31, v4 in [
-                ("oppA", "A", 1, ([110, 100], [100, 100]), ([100, 100], [100, 100])),
-                ("oppB", "B", 2, ([130, 100], [100, 110]), ([100, 100], [100, 100])),
+                (
+                    "oppA",
+                    "A",
+                    1,
+                    ([110, 100], [100, 100]),
+                    ([100, 100], [100, 100]),
+                ),
+                (
+                    "oppB",
+                    "B",
+                    2,
+                    ([130, 100], [100, 110]),
+                    ([100, 100], [100, 100]),
+                ),
             ]:
                 self.game(a, "v31", opp, 0, v31[0], family, sub)
                 self.game(a, "v31", opp, 1, v31[1], family, sub)
                 self.game(b, "v4", opp, 0, v4[0], family, sub)
                 self.game(b, "v4", opp, 1, v4[1], family, sub)
-            report = rg.reduce_roots([a], [b], expected_cells=4)
+            report = rg.reduce_roots([a], [b])
             self.assertTrue(report["panel_complete"])
+            self.assertEqual(report["expected_cells"], 4)
             self.assertEqual(report["summary"]["count"], 4)
-            self.assertEqual(report["regression_hotspots"][0]["opponent"], "oppB")
-            self.assertEqual(report["regression_hotspots"][0]["margin_delta_v31_minus_v4"], 30)
-            self.assertEqual([r["family"] for r in report["by_family"]], ["B", "A"])
+            self.assertEqual(
+                report["regression_hotspots"][0]["opponent"],
+                "oppB",
+            )
+            self.assertEqual(
+                report["regression_hotspots"][0][
+                    "margin_delta_v31_minus_v4"
+                ],
+                30,
+            )
+            self.assertEqual(
+                [r["family"] for r in report["by_family"]],
+                ["B", "A"],
+            )
+
+    def test_123_recorded_fixtures_infer_246_cells(self):
+        with tempfile.TemporaryDirectory() as td:
+            v31 = [
+                self.root(td, "v31", 0, 2, selected_fixtures=62),
+                self.root(td, "v31", 1, 2, selected_fixtures=61),
+            ]
+            v4 = [
+                self.root(td, "v4", 0, 2, selected_fixtures=62),
+                self.root(td, "v4", 1, 2, selected_fixtures=61),
+            ]
+            report = rg.reduce_roots(v31, v4)
+            self.assertEqual(report["expected_cells"], 246)
+            self.assertTrue(
+                report["authority"]["panel_topology"][
+                    "complete_cross_version_shard_topology"
+                ]
+            )
+            self.assertFalse(report["panel_complete"])
+
+    def test_incomplete_shard_set_cannot_authorize(self):
+        with tempfile.TemporaryDirectory() as td:
+            a = self.root(td, "v31", 0, 2, selected_fixtures=1)
+            b = self.root(td, "v4", 0, 2, selected_fixtures=1)
+            self.game(a, "v31", "opp", 0, [110, 100])
+            self.game(a, "v31", "opp", 1, [100, 100])
+            self.game(b, "v4", "opp", 0, [100, 100])
+            self.game(b, "v4", "opp", 1, [100, 100])
+            report = rg.reduce_roots([a], [b], expected_cells=2)
+            self.assertFalse(report["panel_complete"])
+            self.assertFalse(
+                report["authority"]["panel_topology"][
+                    "complete_cross_version_shard_topology"
+                ]
+            )
 
     def test_missing_pair_is_non_authorizing_not_silent(self):
         with tempfile.TemporaryDirectory() as td:
             a, b = self.root(td, "v31"), self.root(td, "v4")
             self.game(a, "v31", "opp", 0, [110, 100])
-            report = rg.reduce_roots([a], [b], expected_cells=2)
+            report = rg.reduce_roots([a], [b])
             self.assertFalse(report["panel_complete"])
-            self.assertEqual(report["missing_v4"], [{"opponent": "opp", "seat": 0}])
+            self.assertEqual(
+                report["missing_v4"],
+                [{"opponent": "opp", "seat": 0}],
+            )
 
     def test_candidate_hash_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as td:
@@ -74,7 +147,7 @@ class ReduceGauntletTests(unittest.TestCase):
             run["candidate_sha256"] = "0" * 64
             write_json(a / "run.json", run)
             with self.assertRaises(rg.ReductionError):
-                rg.reduce_roots([a], [b], expected_cells=1)
+                rg.reduce_roots([a], [b])
 
     def test_cross_version_metadata_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as td:
@@ -82,7 +155,14 @@ class ReduceGauntletTests(unittest.TestCase):
             self.game(a, "v31", "opp", 0, [110, 100], family="A")
             self.game(b, "v4", "opp", 0, [100, 100], family="B")
             with self.assertRaises(rg.ReductionError):
-                rg.reduce_roots([a], [b], expected_cells=1)
+                rg.reduce_roots([a], [b])
+
+    def test_cross_version_fixture_count_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a = self.root(td, "v31", selected_fixtures=2)
+            b = self.root(td, "v4", selected_fixtures=3)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b])
 
     def test_duplicate_cell_across_roots_fails(self):
         with tempfile.TemporaryDirectory() as td:
@@ -92,14 +172,20 @@ class ReduceGauntletTests(unittest.TestCase):
             self.game(a0, "v31", "opp", 0, [110, 100])
             self.game(a1, "v31", "opp", 0, [110, 100])
             with self.assertRaises(rg.ReductionError):
-                rg.reduce_roots([a0, a1], [b], expected_cells=1)
+                rg.reduce_roots([a0, a1], [b])
 
     def test_complete_game_wrong_callback_count_fails(self):
         with tempfile.TemporaryDirectory() as td:
             a, b = self.root(td, "v31"), self.root(td, "v4")
             self.game(a, "v31", "opp", 0, [110, 100], steps=718)
             with self.assertRaises(rg.ReductionError):
-                rg.reduce_roots([a], [b], expected_cells=1)
+                rg.reduce_roots([a], [b])
+
+    def test_conflicting_expected_cell_override_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            a, b = self.root(td, "v31"), self.root(td, "v4")
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b], expected_cells=82)
 
     def test_cli_partial_writes_report_and_returns_three(self):
         with tempfile.TemporaryDirectory() as td:
@@ -108,14 +194,18 @@ class ReduceGauntletTests(unittest.TestCase):
             self.game(a, "v31", "opp", 0, [110, 100])
             self.game(b, "v4", "opp", 0, [100, 100])
             code = rg.main([
-                "--v31-root", str(a),
-                "--v4-root", str(b),
-                "--expected-cells", "2",
-                "--output", str(out),
+                "--v31-root",
+                str(a),
+                "--v4-root",
+                str(b),
+                "--output",
+                str(out),
             ])
             self.assertEqual(code, 3)
             self.assertTrue(out.exists())
-            self.assertFalse(json.loads(out.read_text())["panel_complete"])
+            report = json.loads(out.read_text())
+            self.assertEqual(report["expected_cells"], 4)
+            self.assertFalse(report["panel_complete"])
 
 
 if __name__ == "__main__":
