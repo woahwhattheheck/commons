@@ -8,7 +8,7 @@ import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_b10_public_supply_order")
+KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_b10_public_supply_order", "r04_v224_raw_slots")
 
 
 def _replace_once(text, old, new, label):
@@ -28,11 +28,50 @@ def apply(src):
     router = read("r04_full_router.py")
     router = _replace_once(
         router,
+        "def _v224_sales_first(action):\n"
+        "    original=action.get('market',[])[:MAX_ORDERS]\n",
+        "def _v224_sales_first(action, configuration=None):\n"
+        "    if V224_RAW_SLOTS:\n"
+        "        try:\n"
+        "            _v224_cap = (configuration.get('maxMarketOrdersPerTurn')\n"
+        "                         if isinstance(configuration, dict)\n"
+        "                         else getattr(configuration, 'maxMarketOrdersPerTurn'))\n"
+        "        except (AttributeError, KeyError, TypeError, ValueError):\n"
+        "            return action\n"
+        "        if type(_v224_cap) is not int or _v224_cap != MAX_ORDERS:\n"
+        "            return action\n"
+        "        import r04_v224_raw_slots\n"
+        "        changed = r04_v224_raw_slots.sales_first_raw_slots(action, max_orders=MAX_ORDERS)\n"
+        "        if changed is not action:\n"
+        "            _V224_REPORT['reordered_market_turns'] += 1\n"
+        "        return changed\n"
+        "    original=action.get('market',[])[:MAX_ORDERS]\n",
+        "R04 V4 V224 raw-slot seam",
+    )
+    router = _replace_once(
+        router,
+        "    if int(observation['step'])>=144:action=_v224_sales_first(action)\n",
+        "    if int(observation['step'])>=144:action=_v224_sales_first(action, configuration)\n",
+        "R04 V4 V224 direct caller configuration",
+    )
+    router = _replace_once(
+        router,
+        "    if step >= 144:\n"
+        "        action = _v224_sales_first(action)\n"
+        "    return action\n",
+        "    if step >= 144:\n"
+        "        action = _v224_sales_first(action, configuration)\n"
+        "    return action\n",
+        "R04 V4 V224 sale-window caller configuration",
+    )
+    router = _replace_once(
+        router,
         "GOOSE_RESCUE = False\n_TERMINAL_FERTILIZER_AGENT = None\n",
         "GOOSE_RESCUE = False\n"
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
         "B10_PUBLIC_SUPPLY_ORDER = False\n"
+        "V224_RAW_SLOTS = False\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
     )
@@ -89,7 +128,8 @@ def apply(src):
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None, b10_public_supply_order=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, b10_public_supply_order=None,\n"
+        "            v224_raw_slots=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -101,13 +141,16 @@ def apply(src):
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
         "    b10_public_supply_order is the outermost V4 market-order transform: it reorders only\n"
-        "    existing leading non-WHEAT SELL rows after proved prior-step public rival supply.\n",
+        "    existing leading non-WHEAT SELL rows after proved prior-step public rival supply.\n"
+        "    v224_raw_slots preserves lockstep-significant raw market slots while retaining V224 SELL\n"
+        "    bubbling across contiguous effectful rows under the standard 10-order market cap.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, B10_PUBLIC_SUPPLY_ORDER\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, B10_PUBLIC_SUPPLY_ORDER\n"
+        "    global V224_RAW_SLOTS\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -123,6 +166,8 @@ def apply(src):
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
         "    if b10_public_supply_order is not None:\n"
         "        B10_PUBLIC_SUPPLY_ORDER = bool(b10_public_supply_order)\n"
+        "    if v224_raw_slots is not None:\n"
+        "        V224_RAW_SLOTS = bool(v224_raw_slots)\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -135,7 +180,8 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
         "    r04_goose_pass_rescue: bool = False\n"
-        "    r04_b10_public_supply_order: bool = False\n\n    def __post_init__(self):",
+        "    r04_b10_public_supply_order: bool = False\n"
+        "    r04_v224_raw_slots: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -146,7 +192,8 @@ def apply(src):
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
         "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
-        "                                 b10_public_supply_order=bool(self.features.r04_b10_public_supply_order))(observation, configuration)\n",
+        "                                 b10_public_supply_order=bool(self.features.r04_b10_public_supply_order),\n"
+        "                                 v224_raw_slots=bool(self.features.r04_v224_raw_slots))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -155,7 +202,8 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
         "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
-        "                self.diagnostics['b10_public_supply_order'] = bool(self.features.r04_b10_public_supply_order)\n",
+        "                self.diagnostics['b10_public_supply_order'] = bool(self.features.r04_b10_public_supply_order)\n"
+        "                self.diagnostics['v224_raw_slots'] = bool(self.features.r04_v224_raw_slots)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
