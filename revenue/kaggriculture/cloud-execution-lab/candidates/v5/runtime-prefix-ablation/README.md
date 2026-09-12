@@ -20,23 +20,32 @@ The engine-correctness motivation is legitimate. Historical ORDERBUDGET/PREFIX w
 
 This preserves submitted-V4 frozen-seller behavior (including E05/E08), the four later config flags, feed-stock, early-capital, market-pressure, finalizer order, timeout logic, package topology, and every other runtime method.
 
-## Cheap-first natural engagement
+## Engagement authority
 
-`classify_structural_candidate()` is intentionally weaker than a gameplay verdict. Given a native returned action, it reports callbacks where the old and new wrappers have different activation gates or observably different scopes because a nonempty raw suffix exists beyond the executable cap. It never authorizes a policy or score claim.
+The V3.1/V4 delta is evaluated at **internal wrapper inputs**, not at the final returned action. The wrappers under test can themselves delete, reorder, or rewrite suffix rows, so a zero scan of final returned actions cannot prove that the family never engaged upstream.
 
-An executor should first run the exact submitted-V4 control and scan all callbacks. If there are **zero** structural candidates, classify this causal family `COLD` and stop without spending paired games. If candidates exist, replay those exact callbacks through CTRL and ABLATE, require a real returned-action/receipt divergence, then run a small matched Apex/Arlene both-seat panel before expanding.
+`engagement_gate.py` makes that provenance explicit:
+
+- `classify_wrapper_input(stage, action, cfg)` evaluates the exact action entering one of `seed`, `operating_stock`, or `redundant_hire` and uses only that stage's real V3.1/V4 gate/scope delta;
+- `classify_final_action_hint(...)` is positive-only steering evidence; it always records `authorizes_global_cold=false`;
+- `final_action_census(...)` returns `INCONCLUSIVE_NO_FINAL_ACTION_WITNESS`, never `COLD`, when no downstream hint appears.
+
+The older `classify_structural_candidate()` in `ablate_runtime_prefix.py` is retained only as a coarse downstream hint for compatibility. It is **not** a cold-authority surface.
+
+A future mounted execution must either capture the exact per-stage wrapper inputs with a transparent/action-equivalent probe, or skip the heuristic and run a small matched CTRL/ABLATE native panel. Only a real CTRL/ABLATE action/receipt divergence proves natural engagement. Absence on a finite matched panel may retire that tested panel, but must not be generalized to a global family `COLD` verdict without complete wrapper-input authority.
 
 ## Focused contracts
 
 ```bash
 cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/runtime-prefix-ablation
-python -B -m py_compile ablate_runtime_prefix.py test_ablate_runtime_prefix.py
-python -B -m unittest -v test_ablate_runtime_prefix.py
-python -O -B -m unittest -v test_ablate_runtime_prefix.py
+python -B -m py_compile ablate_runtime_prefix.py engagement_gate.py test_ablate_runtime_prefix.py test_engagement_gate.py
+python -B -m unittest -v test_ablate_runtime_prefix.py test_engagement_gate.py
+python -O -B -m unittest -v test_ablate_runtime_prefix.py test_engagement_gate.py
+git diff --check
 ```
 
-The suite authenticates both historical runtime blobs/configs, proves all three wrappers are enabled in both submitted versions, proves exact V3.1 method postimages and exact-V4 non-target bytes, kills source-authority drift, and exercises gate/scope candidates for seed, fertilizer operating stock, and redundant HIRE.
+The suite authenticates both historical runtime blobs/configs, proves all three wrappers are enabled in both submitted versions, proves exact V3.1 method postimages and exact-V4 non-target bytes, kills source-authority drift, exercises stage-specific gate/scope candidates, and proves a zero final-action census remains non-authorizing.
 
 ## Boundaries
 
-No current runtime/default/config/archive/release pointer/Kaggle mutation. No V5 promotion claim. A positive causal result is input to the single V5 composition; a cold/negative result retires the family rather than creating another policy branch.
+No current runtime/default/config/archive/release pointer/Kaggle mutation. No V5 promotion claim. A positive causal result is input to the single V5 composition. A negative result must be scoped to the evidence actually observed rather than inferred from a downstream surface that the treatment itself can rewrite.
