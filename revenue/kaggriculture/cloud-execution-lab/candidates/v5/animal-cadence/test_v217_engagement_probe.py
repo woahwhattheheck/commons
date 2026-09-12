@@ -170,6 +170,11 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(manifest['files'][probe.ROUTER], probe.ROUTER_SHA)
         self.assertEqual(len(manifest['files']), probe.PRODUCTION_MEMBERS)
 
+        router_path = HERE.parent.parent / 'v4' / 'donor' / 'overlay' / probe.ROUTER
+        router = router_path.read_bytes()
+        self.assertEqual(probe.digest(router), probe.ROUTER_SHA)
+        compile(probe.instrument_router(router), str(router_path), 'exec')
+
         evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
         evaluator = evaluator_path.read_bytes()
         self.assertEqual(probe.digest(evaluator), probe.EVALUATOR_SHA)
@@ -177,6 +182,8 @@ class ProbeTests(unittest.TestCase):
 
         publisher = HERE.parent / 'selective-carrot' / 'publication_custody.py'
         self.assertTrue(publisher.is_file())
+        verifier = HERE / 'verify_v217_engagement_probe_exact.py'
+        self.assertTrue(verifier.is_file())
 
 
 if __name__ == '__main__':
