@@ -51,6 +51,32 @@ class BuildTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "exact current V5 parent"):
                 builder.build_candidate(baseline, root / "candidate")
 
+    def test_rejects_nested_output_without_mutating_baseline(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            baseline = self.exact_minimal_baseline(root)
+            marker = baseline / "marker.txt"
+            marker.write_text("control\n")
+            before = {
+                path.relative_to(baseline).as_posix(): path.read_bytes()
+                for path in sorted(baseline.rglob("*"))
+                if path.is_file()
+            }
+            out = baseline / "candidate"
+            with self.assertRaisesRegex(ValueError, "outside baseline root"):
+                builder.build_candidate(baseline, out)
+            self.assertFalse(out.exists())
+            after = {
+                path.relative_to(baseline).as_posix(): path.read_bytes()
+                for path in sorted(baseline.rglob("*"))
+                if path.is_file()
+            }
+            self.assertEqual(after, before)
+            self.assertEqual(
+                builder.git_blob(baseline / "main.py"),
+                builder.EXPECTED_PARENT_MAIN_BLOB,
+            )
+
     def test_materialization_failure_removes_partial_output(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
