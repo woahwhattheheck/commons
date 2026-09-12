@@ -12,9 +12,9 @@ A component is one of:
 - `blocked`: known package whose prerequisites/economic/custody gate is not satisfied.
 - `evidence_only`: preserved evidence that is not executable composition input.
 
-Every active transform names a logical `surface`, an exact `input_identity`, and an exact `output_identity`. Relations (`requires`, `before`, `after`, `conflicts`) are component IDs. The validator rejects unknown relations, active dependencies on blocked/evidence components, active conflicts, cycles, unordered writes to the same surface, stale predecessor identities, duplicate output identities, missing package/entrypoint paths, and strict-discovery entrypoints not registered in the manifest.
+Every active transform names a logical `surface`, an exact `input_identity`, and an exact `output_identity`. Relations (`requires`, `before`, `after`, `conflicts`) are component IDs. The validator rejects unknown relations, active dependencies on blocked/evidence components, active conflicts, cycles, unordered writes to the same surface, stale predecessor identities, duplicate output identities, missing package/entrypoint paths, canonical-root/branch drift, symlink or resolved-path escapes, and strict-discovery entrypoints not registered in the manifest.
 
-The initial graph deliberately stays small. It registers only packages whose source/output status is explicit enough to avoid guessing. Current-ABI fast-tape-clone is the first composable edge; D4 strawberry timing is deliberately blocked because its own manifest requires a fresh reachability/economic gate and prohibits stale V4 wiring.
+The graph deliberately stays conservative. Current-ABI fast-tape-clone is the first composable edge because both predecessor and materialized postimage are authenticated. D4 strawberry timing remains blocked by its reachability/economic contract. Current-ABI row-shed SELL ordering is also blocked at composition intake: its component/dependency pins are preserved, but no authenticated materialized runtime postimage exists yet, so source custody is not misreported as a composed edge.
 
 ## Run
 
