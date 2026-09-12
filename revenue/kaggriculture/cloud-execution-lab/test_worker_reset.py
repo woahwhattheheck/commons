@@ -7,6 +7,10 @@ once after another complete game while the candidate callable, imported runtime
 modules and process caches remain alive. Exact action hashes and terminal
 outcomes must agree, and step 0 must replace the prior TitanAgent instance.
 
+The candidate is called on one persistent worker thread per process, matching
+the existing 719-call worker-episode oracle and exercising the thread deadline
+guard across the episode boundary.
+
 This is a verification harness only; it does not alter production policy.
 """
 from __future__ import annotations
@@ -22,6 +26,7 @@ import sys
 import tarfile
 import tempfile
 import time
+from concurrent.futures import ThreadPoolExecutor
 from io import StringIO
 from pathlib import Path
 from typing import Any, Callable, Dict, Tuple
@@ -92,7 +97,13 @@ def _configuration(engine, evaluator, seed: int):
     return cfg
 
 
-def _run_game(engine_semantics, candidate, scenario: dict[str, int], prior_instance):
+def _run_game(
+    engine_semantics,
+    candidate,
+    executor: ThreadPoolExecutor,
+    scenario: dict[str, int],
+    prior_instance,
+):
     engine = engine_semantics.engine
     evaluator = engine_semantics.ev
     cfg = _configuration(engine, evaluator, scenario["seed"])
@@ -115,7 +126,9 @@ def _run_game(engine_semantics, candidate, scenario: dict[str, int], prior_insta
     for step in range(720):
         for player in (0, 1):
             state[player].observation.step = step
-        action = candidate(copy.deepcopy(state[seat].observation), cfg)
+        action = executor.submit(
+            candidate, copy.deepcopy(state[seat].observation), cfg
+        ).result(timeout=2)
         encoded = json.dumps(action, sort_keys=True, separators=(",", ":"), allow_nan=False)
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
         if current is None:
@@ -158,11 +171,12 @@ def worker(root: Path, order: list[str]) -> dict[str, Any]:
     engine_semantics, candidate = _load_official(root)
     results = {}
     prior_instance = None
-    for name in order:
-        result, prior_instance = _run_game(
-            engine_semantics, candidate, SCENARIOS[name], prior_instance
-        )
-        results[name] = result
+    with ThreadPoolExecutor(1) as executor:
+        for name in order:
+            result, prior_instance = _run_game(
+                engine_semantics, candidate, executor, SCENARIOS[name], prior_instance
+            )
+            results[name] = result
 
     import titan_runtime
 
@@ -170,7 +184,7 @@ def worker(root: Path, order: list[str]) -> dict[str, Any]:
     return {
         "method": (
             "Exact official raw-loader helpers + official interpreter; same candidate callable "
-            "for two full games; offline; reverse-order differential"
+            "on one persistent worker thread for two full games; offline; reverse-order differential"
         ),
         "order": order,
         "results": results,
@@ -255,9 +269,10 @@ def verify() -> dict[str, Any]:
         "module_cache_keys": ab["module_cache_keys"],
         "result": "PASS",
         "claim": (
-            "For these two full official-interpreter games, action trace and terminal result are "
-            "identical whether the game runs first in a fresh process or second after the other "
-            "game; step zero replaces the prior TitanAgent singleton."
+            "For these two full official-interpreter games on one persistent worker thread, "
+            "action trace and terminal result are identical whether the game runs first in a "
+            "fresh process or second after the other game; step zero replaces the prior "
+            "TitanAgent singleton."
         ),
     }
 
