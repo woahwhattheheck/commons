@@ -1,27 +1,24 @@
-name: titan-v2-target-domain-ablation-sol-bulwark
+name: titan-v3-all-shed-intent-priority-sol-parallax
 
 on:
   push:
+    branches:
+      - sol-parallax/titan-v3-all-shed-intent-priority-20260910-01
     paths:
       - '.github/workflows/titan-v2-target-domain-ablation-sol-bulwark.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/**'
-      - 'p/sol-bulwark-titan-v2-target-domain-ablation-20260909-01.md'
-  pull_request:
-    paths:
-      - '.github/workflows/titan-v2-target-domain-ablation-sol-bulwark.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark/**'
-      - 'p/sol-bulwark-titan-v2-target-domain-ablation-20260909-01.md'
+      - 'p/sol-parallax-titan-v3-all-shed-intent-priority-20260910-01.md'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: titan-v3-all-shed-intent-priority-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  exact-target-domain-screen:
+  exact-all-shed-intent-priority-screen:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
@@ -30,14 +27,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 1
           persist-credentials: false
 
       - name: Bind exact checkout
         shell: bash
         env:
-          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          EXPECTED_HEAD: ${{ github.sha }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
@@ -50,46 +47,85 @@ jobs:
       - name: Install pinned official-interpreter dependency
         run: python -m pip install --disable-pip-version-check 'kaggle-environments==1.32.7'
 
-      - name: Run one-factor, binding, and comparison contracts
+      - name: Run factor, binding, comparison, and admission contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/analysis/v2-target-domain-ablation-sol-bulwark
         shell: bash
         run: |
           set -euo pipefail
           python -m unittest -v \
             test_materialize.py \
+            test_materialize_priority.py \
             test_compare.py \
             test_bind_execution.py \
             test_strict_compare.py \
             test_candidate_action_compare.py \
-            test_real_evaluator_receipt.py
+            test_real_evaluator_receipt.py \
+            test_priority_admission.py
           python -m py_compile \
             materialize.py \
+            materialize_priority.py \
             compare.py \
             bind_execution.py \
             strict_compare.py \
             materialize_evaluator.py \
             candidate_action_compare.py \
+            priority_admission.py \
             execution_test_support.py \
             test_materialize.py \
+            test_materialize_priority.py \
             test_compare.py \
             test_bind_execution.py \
             test_strict_compare.py \
             test_candidate_action_compare.py \
-            test_real_evaluator_receipt.py
+            test_real_evaluator_receipt.py \
+            test_priority_admission.py
 
-      - name: Materialize exact V2 one-factor arm
+      - name: Materialize exact all-shed intent-priority arm
         shell: bash
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          python "$CASE/materialize.py" \
+          python "$CASE/materialize_priority.py" \
             --source "$LAB/runtime/variants/v2" \
             --output "$OUT/candidate" \
             --receipt "$OUT/MATERIALIZATION.json"
+
+      - name: Prove target domain and quantities stayed frozen-V2 exact
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
+          python - "$OUT/MATERIALIZATION.json" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          receipt = json.loads(Path(sys.argv[1]).read_text())
+          assert receipt["experiment"] == "titan-v3-all-shed-intent-priority-20260910-01"
+          assert receipt["ablation"]["changed_files"] == ["scheduler.py"]
+          assert receipt["factor"]["target_domain"] == (
+              "all positive non-operating PRODUCTS in the post-unit shed"
+          )
+          assert receipt["factor"]["target_quantity"] == (
+              "full post-unit shed quantity for every target"
+          )
+          assert receipt["factor"]["control_priority"] == "PRODUCTS order"
+          assert receipt["factor"]["candidate_priority"] == [
+              "existing pending scheduler intent",
+              "inherited baseline SELL first-seen order",
+              "remaining PRODUCTS order",
+          ]
+          print(json.dumps({
+              "experiment": receipt["experiment"],
+              "source_scheduler": receipt["source"]["scheduler_git_blob_sha1"],
+              "candidate_scheduler": receipt["ablation"]["scheduler_git_blob_sha1"],
+              "changed_files": receipt["ablation"]["changed_files"],
+          }, sort_keys=True))
+          PY
 
       - name: Materialize candidate-only evaluator evidence
         shell: bash
@@ -98,7 +134,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
           CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           mkdir -p "$OUT/evaluator"
           python "$CASE/materialize_evaluator.py" \
             --source "$KAG/cloud-eval/evaluate.py" \
@@ -112,7 +148,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
           CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           python "$CASE/bind_execution.py" \
             --control-root "$LAB/runtime/variants/v2" \
             --candidate-root "$OUT/candidate" \
@@ -140,7 +176,7 @@ jobs:
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           python "$OUT/evaluator/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
@@ -154,13 +190,13 @@ jobs:
             --game-timeout 180 \
             --output "$OUT/control.json"
 
-      - name: Run closure-bound target-domain ablation panel
+      - name: Run closure-bound intent-priority candidate panel
         shell: bash
         run: |
           set -euo pipefail
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           python "$OUT/evaluator/evaluate.py" \
             --engine-dir "$LAB/reference/engine" \
             --loader "$KAG/20260907-offline-agent/evaluate.py" \
@@ -174,7 +210,7 @@ jobs:
             --game-timeout 180 \
             --output "$OUT/candidate.json"
 
-      - name: Classify exact closure-bound causal signal
+      - name: Classify exact closure-bound candidate-action signal
         id: classify
         if: always()
         shell: bash
@@ -183,7 +219,7 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           KAG=revenue/kaggriculture
           CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
-          OUT="$RUNNER_TEMP/v2-target-domain-ablation"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
           python "$CASE/candidate_action_compare.py" \
             --control "$OUT/control.json" \
             --candidate "$OUT/candidate.json" \
@@ -207,25 +243,45 @@ jobs:
           printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
           exit 0
 
+      - name: Apply win-oriented priority admission
+        id: admit
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          CASE="$LAB/analysis/v2-target-domain-ablation-sol-bulwark"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
+          python "$CASE/priority_admission.py" \
+            --report "$OUT/ABLATION-REPORT.json" \
+            --receipt "$OUT/MATERIALIZATION.json" \
+            --output "$OUT/PRIORITY-ADMISSION.json" \
+            --markdown "$OUT/PRIORITY-ADMISSION.md"
+          status=$?
+          printf 'exit_code=%s\n' "$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
       - name: Publish readable result
         if: always()
         shell: bash
         run: |
-          REPORT="$RUNNER_TEMP/v2-target-domain-ablation/ABLATION-REPORT.md"
-          if [[ -f "$REPORT" ]]; then
-            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          OUT="$RUNNER_TEMP/v3-all-shed-intent-priority"
+          if [[ -f "$OUT/PRIORITY-ADMISSION.md" ]]; then
+            cat "$OUT/PRIORITY-ADMISSION.md" >> "$GITHUB_STEP_SUMMARY"
+          elif [[ -f "$OUT/ABLATION-REPORT.md" ]]; then
+            cat "$OUT/ABLATION-REPORT.md" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo '# V2 target-domain ablation did not reach classification' >> "$GITHUB_STEP_SUMMARY"
+            echo '# All-shed intent-priority panel did not reach classification' >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Retain exact evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: titan-v2-target-domain-ablation-${{ github.run_id }}
+          name: titan-v3-all-shed-intent-priority-${{ github.run_id }}
           path: |
             ${{ runner.temp }}/exact-head.sha
-            ${{ runner.temp }}/v2-target-domain-ablation/
+            ${{ runner.temp }}/v3-all-shed-intent-priority/
           if-no-files-found: error
           retention-days: 30
 
@@ -233,7 +289,7 @@ jobs:
         if: always()
         run: git diff --exit-code -- .
 
-      - name: Require exact broad own-cash upside
+      - name: Require exact win-oriented admission
         if: always()
         shell: bash
-        run: test "${{ steps.classify.outputs.exit_code }}" = '0'
+        run: test "${{ steps.admit.outputs.exit_code }}" = '0'
