@@ -123,6 +123,54 @@ class EarlyCapitalContracts(unittest.TestCase):
         self.assertEqual(report['capital_funding']['guaranteed_cash_floor'], 1001.0)
         self.assertEqual(report['capital_funding']['required_cash_floor'], 1001.0)
 
+    def test_public_clock_requires_exact_plain_int_binding(self):
+        selected = {'farmer': ['PASS'], 'hands': [],
+                    'market': [['SELL', 'MILK', 1], ['BUY_LAND'], ['HIRE']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        good = obs(1, money=1000, shed={'MILK': 1})
+        result, report = order_early_capital(m, good, CFG, selected, route)
+        self.assertTrue(report['changed'])
+        self.assertEqual(result['market'],
+                         [['SELL', 'MILK', 1], ['HIRE'], ['BUY_LAND']])
+
+        bad_clocks = []
+        for value in ('1', True, 1.0, -1):
+            bad = obs(1, money=1000, shed={'MILK': 1})
+            bad['step'] = value
+            bad_clocks.append(('step', value, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['day'] = 1
+        bad_clocks.append(('day_mismatch', 1, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['hour'] = 2
+        bad_clocks.append(('hour_mismatch', 2, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['hour'] = 24
+        bad_clocks.append(('hour_range', 24, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['day'] = True
+        bad_clocks.append(('day_bool', True, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['hour'] = 1.0
+        bad_clocks.append(('hour_float', 1.0, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad.pop('hour')
+        bad_clocks.append(('missing_hour', None, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad.pop('day')
+        bad_clocks.append(('missing_day', None, bad))
+
+        for label, value, bad in bad_clocks:
+            with self.subTest(label=label, value=value):
+                out, bad_report = order_early_capital(m, bad, CFG, selected, route)
+                self.assertEqual(out, selected)
+                self.assertFalse(bad_report['changed'])
+                self.assertEqual(bad_report['reason'], 'unsupported_time')
+
+    def test_exact_day_hour_fallback_without_step_is_preserved(self):
+        selected = {'farmer': ['PASS'], 'hands': [],
+                    'market': [['SELL', 'MILK', 1], ['BUY_LAND'], ['HIRE']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        public = obs(1, money=1000, shed={'MILK': 1})
+        public.pop('step')
+        result, report = order_early_capital(m, public, CFG, selected, route)
+        self.assertTrue(report['changed'])
+        self.assertEqual(result['market'],
+                         [['SELL', 'MILK', 1], ['HIRE'], ['BUY_LAND']])
+
     def test_terminal_and_late_day_fail_closed(self):
         selected = {'farmer': ['PASS'], 'hands': [], 'market': [['BUY_LAND'], ['SELL', 'MILK', 1]]}
         route = [selected] * 720

@@ -35,6 +35,33 @@ def _turns_per_day(config):
     return int(config.get('turnsPerDay', 24))
 
 
+def _public_step(observation, turns_per_day):
+    """Bind the optional reorder to one exact public clock representation."""
+    raw_step = observation.get('step')
+    has_day = 'day' in observation
+    has_hour = 'hour' in observation
+    if has_day != has_hour:
+        raise ValueError('public day/hour must appear together')
+    derived = None
+    if has_day:
+        day = observation['day']
+        hour = observation['hour']
+        if type(day) is not int or day < 0:
+            raise ValueError('public day must be a nonnegative plain integer')
+        if type(hour) is not int or not 0 <= hour < turns_per_day:
+            raise ValueError('public hour must be a plain integer within the day')
+        derived = day * turns_per_day + hour
+    if raw_step is None:
+        if derived is None:
+            raise ValueError('public clock is absent')
+        return derived
+    if type(raw_step) is not int or raw_step < 0:
+        raise ValueError('public step must be a nonnegative plain integer')
+    if derived is not None and raw_step != derived:
+        raise ValueError('public clock fields disagree')
+    return raw_step
+
+
 def _remaining_days(now, config):
     last = _last_step(config)
     tpd = _turns_per_day(config)
@@ -378,15 +405,12 @@ def order_early_capital(mechanics, observation, configuration, selected, route, 
                   suffix_rows=len(suffix))
 
     try:
-        now = int(observation.get('step') if observation.get('step') is not None
-                  else int(observation['day']) * _turns_per_day(configuration)
-                  + int(observation['hour']))
-        last = _last_step(configuration)
         turns_per_day = _turns_per_day(configuration)
+        if turns_per_day <= 0:
+            raise ValueError('turnsPerDay must be positive')
+        now = _public_step(observation, turns_per_day)
+        last = _last_step(configuration)
     except (AttributeError, KeyError, OverflowError, TypeError, ValueError):
-        report['reason'] = 'unsupported_time'
-        return selected, report
-    if turns_per_day <= 0:
         report['reason'] = 'unsupported_time'
         return selected, report
     if now >= last:
