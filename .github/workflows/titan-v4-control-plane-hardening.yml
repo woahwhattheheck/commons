@@ -10,6 +10,10 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/check_composition_graph.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/check_control_plane.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/test_check_control_plane.py'
+      # check_composition_graph.py recursively discovers candidate entrypoints
+      # and authenticates registered package/entrypoint existence under both roots.
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/**'
       - '.github/workflows/titan-v4-control-plane-hardening.yml'
   push:
     branches: [main]
@@ -21,6 +25,9 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/check_composition_graph.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/check_control_plane.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/test_check_control_plane.py'
+      # Keep post-merge validation coupled to the same filesystem dependency set.
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/**'
       - '.github/workflows/titan-v4-control-plane-hardening.yml'
   workflow_dispatch:
 
