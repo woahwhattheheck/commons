@@ -1,0 +1,51 @@
+{
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "executed": {
+    "normal_tests": {
+      "count": 18,
+      "status": "pass"
+    },
+    "optimized_tests": {
+      "count": 18,
+      "status": "pass"
+    },
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "py_compile": {
+      "status": "pass"
+    },
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "files": {
+    "README.md": {
+      "bytes": 3156,
+      "sha256": "2534773448ee14f149a35aa94e5bd585091cc8cc8c77d74311e1f7b730fc78b5"
+    },
+    "crop_service_capacity.py": {
+      "bytes": 8401,
+      "sha256": "59daed2fcdfa1d4049ae3a49cbbaa4a0bff253dd1490def8dfce0a3f3331adf9"
+    },
+    "test_crop_service_capacity.py": {
+      "bytes": 5382,
+      "sha256": "beee6791ed200589f47799d02a162270acb8a1a5f4788899e0fde253a4af7a9a"
+    }
+  },
+  "historical_donor": {
+    "pr": 9806,
+    "reported_paired_dev_mean_delta": 5315.75,
+    "role": "evidence_only"
+  },
+  "limits": [
+    "no current-native economics claim",
+    "no movement or seed feasibility claim",
+    "no runtime/config/default/archive/Kaggle mutation",
+    "absolute_action_ceiling intentionally overcredits future HIRE rows and is only an impossibility bound",
+    "current_labor_ceiling is conditional on no future HIRE credit"
+  ],
+  "schema": "titan-v4-cropscale-validation/v1",
+  "status": "source_derived_research_no_activation",
+  "theorem": [
+    "new plants initialize consecutive_unwatered=1 and watered_today=false",
+    "EOD increments an unwatered plant and converts consecutive_unwatered>=2 to WEED",
+    "therefore a newly established crop surviving the same EOD requires at least PLANT+WATER unit actions"
+  ]
+}
