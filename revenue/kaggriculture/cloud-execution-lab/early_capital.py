@@ -77,6 +77,12 @@ def _qty(order):
 
 
 def _plant_demand(selected, route, now, end):
+    """Count only PLANT demand that the current market stage can still fund.
+
+    The engine resolves the selected unit actions before market actions. A seed
+    bought on turn T therefore cannot rescue a PLANT selected on turn T; only
+    route PLANTs from T+1 onward may reserve BUY_SEED priority here.
+    """
     demand = {}
 
     def add(row):
@@ -91,7 +97,7 @@ def _plant_demand(selected, route, now, end):
                 crop = action[1]
                 demand[crop] = demand.get(crop, 0) + 1
 
-    add(selected)
+    # Do not count `selected`: its unit stage executes before this turn's market.
     if route:
         for t in range(now + 1, min(end + 1, len(route))):
             add(route[t])
