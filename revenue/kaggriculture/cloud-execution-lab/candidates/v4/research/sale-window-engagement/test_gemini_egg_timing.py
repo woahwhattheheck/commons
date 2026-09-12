@@ -63,7 +63,10 @@ class GeminiEggTimingTests(unittest.TestCase):
     def test_fixed_rival_supply_can_destroy_waiting_edge(self):
         state, env = self.fixture(rival_stock=200)
         own = [action(["SELL", "EGG", 12])] + [action() for _ in range(2)]
-        rival = [action(), action(["SELL", "EGG", 200]), action()]
+        # Rival supply is quoted in the same source turn. The baseline receives
+        # the precommit quote, while every delayed candidate faces that supply
+        # after commit (net of town depletion), so waiting must not be blessed.
+        rival = [action(["SELL", "EGG", 200]), action(), action()]
         report = gt.search(
             self.engine, state, env, self.tape(own, rival), start_step=4, seat=0,
             source_turn=0, source_row_index=0, max_delay=2,
