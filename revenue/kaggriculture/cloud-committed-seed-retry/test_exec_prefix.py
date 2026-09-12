@@ -67,6 +67,33 @@ class ExecutablePrefixTests(unittest.TestCase):
             runtime, base.fixture(), cfg, deepcopy(base.PASS))
         self.assertEqual(report['status'], 'appended')
 
+    def test_malformed_selected_prefix_row_is_engine_inert(self):
+        runtime = self.runtime()
+        selected = deepcopy(base.PASS)
+        selected['market'] = [1]
+        action, report = seed_retry.apply_committed_seed_retry(
+            runtime, base.fixture(), base.CFG, selected)
+        self.assertEqual(report['status'], 'appended')
+        self.assertEqual(action['market'], [1, ['BUY_SEED', 'STRAWBERRY', 1]])
+        self.assertEqual(selected['market'], [1])
+
+    def test_malformed_future_product_rows_do_not_veto_or_raise(self):
+        for malformed in (
+            1,
+            ['BUY_PRODUCT'],
+            ['BUY_PRODUCT', 'WHEAT'],
+            ['BUY_PRODUCT', 'WHEAT', 'x'],
+            ['BUY_PRODUCT', 'WHEAT', 0],
+            ['BUY_PRODUCT', 'NOT_A_PRODUCT', 3],
+        ):
+            with self.subTest(malformed=malformed):
+                runtime = self.runtime()
+                runtime.controller.R['fixture'][12]['market'] = [deepcopy(malformed)]
+                action, report = seed_retry.apply_committed_seed_retry(
+                    runtime, base.fixture(), base.CFG, deepcopy(base.PASS))
+                self.assertEqual(report['status'], 'appended')
+                self.assertEqual(action['market'], [['BUY_SEED', 'STRAWBERRY', 1]])
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
