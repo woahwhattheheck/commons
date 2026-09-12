@@ -123,6 +123,52 @@ class IntegrationLedgerTrustTests(unittest.TestCase):
         self.assertEqual(1, len(errors), errors)
         self.assertIn("custody_path must not have leading/trailing whitespace", errors[0])
 
+    def test_whitespace_only_negative_disposition_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, integration = _base()
+            integration["negative_or_parked"] = [{"lane": "parked", "disposition": "   "}]
+            _write_root(root, canonical, integration)
+            errors = ledger.validate(root)
+        self.assertEqual(["negative/parked lane 'parked' lacks disposition"], errors)
+
+    def test_nonfinite_integration_constant_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, _ = _base()
+            _write_json(root / "CANONICAL.json", canonical)
+            (root / "INTEGRATION.json").write_text(
+                '{"schema":"titan-v4-integration-ledger/v1",'
+                '"canonical_branch":"main",'
+                f'"workspace":{json.dumps(ledger.EXPECTED_WORKSPACE)},'
+                '"landed":[],"recovered_not_yet_composed":[],"custody_blocked":[],"negative_or_parked":[],'
+                '"poison":NaN}\n',
+                encoding="utf-8",
+            )
+            errors = ledger.validate(root)
+        self.assertEqual(1, len(errors), errors)
+        self.assertIn("non-finite JSON constant 'NaN'", errors[0])
+
+    def test_nonfinite_manifest_constant_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, integration = _base()
+            integration["custody_blocked"] = [{
+                "lane": "raw guard",
+                "custody_path": "repairs/gameplay/raw-guard",
+                "status": "awaiting_raw_payload",
+            }]
+            directory = root / "repairs" / "gameplay" / "raw-guard"
+            directory.mkdir(parents=True)
+            _write_root(root, canonical, integration)
+            (directory / "MANIFEST.json").write_text(
+                '{"lane":"raw guard","status":"awaiting_raw_payload",'
+                '"required_next_step":"publish exact bytes","poison":Infinity}\n',
+                encoding="utf-8",
+            )
+            errors = ledger.validate(root)
+        self.assertTrue(any("non-finite JSON constant 'Infinity'" in error for error in errors), errors)
+
     def test_duplicate_integration_key_is_rejected_even_when_values_match(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
