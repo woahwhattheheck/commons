@@ -223,6 +223,7 @@ def _write_telemetry() -> None:
     try:
         payload = dict(stats)
         payload["open_rewrite_events"] = [dict(event) for event in _open_events]
+        payload["unresolved_rewrite_events"] = len(_open_events)
         path = Path(TELEMETRY_PATH)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(payload, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
