@@ -10,6 +10,7 @@
     "earlier same-site BUILD_COOP or BUILD_PASTURE can occupy an initially empty tile before a later PLANT, so unresolved build success fails closed rather than minting a false executable-PLANT certificate",
     "movement changes later WATER location and is tracked across the complete authored suffix",
     "observation hour must equal step modulo turnsPerDay under strict integer custody",
+    "same-EOD rejection requires that the current day's hour-23 callback is itself executable at or before episodeSteps-2; authored rows beyond the terminal horizon cannot satisfy suffix custody",
     "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
   ],
   "result_contract": {
@@ -20,11 +21,11 @@
   },
   "executed": {
     "normal_tests": {
-      "count": 24,
+      "count": 29,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 24,
+      "count": 29,
       "status": "pass"
     },
     "py_compile": {
@@ -35,12 +36,12 @@
   },
   "files": {
     "plant_guard.py": {
-      "bytes": 13870,
-      "sha256": "f1941baef65eedf2de533cb417331b71a1c7c6e87098243fdca64feb4ab5b878"
+      "bytes": 14846,
+      "sha256": "80d4b977a0a4512da16b0e65b809884a5753dcfd190ad671c0af47f82e29b03f"
     },
     "test_plant_guard.py": {
-      "bytes": 10266,
-      "sha256": "90658c40f8335b477fc51831349e8a8386b7c9e345fb6a89538f55a71bc326bd"
+      "bytes": 12176,
+      "sha256": "24d0e78fcdf216382cad71f9d91c44045472989936c32734326d3f314b605247"
     }
   },
   "covered_edges": [
@@ -66,10 +67,16 @@
     "different-site BUILD does not hide an executable PLANT",
     "hour/step mismatch fail-closed",
     "step type-poison fail-closed",
+    "standard step718/hour22 plus unused authored step719 cannot certify same-EOD doom",
+    "last real standard EOD at step695/hour23 remains certifiable",
+    "post-terminal step719 fails closed",
+    "custom episodeSteps controls EOD reachability",
+    "episodeSteps type-poison fails closed",
     "input immutability"
   ],
   "limits": [
     "authored suffix custody must be established by the caller",
+    "episodeSteps and turnsPerDay must describe the exact interpreter/configuration whose action custody is being evaluated",
     "earlier clearing actions on initially occupied tiles remain conservative and do not create a certified PLANT candidate",
     "NOT_CERTIFIED is not SAFE or profitable",
     "no controller/scheduler/runtime/default/config/COMPOSITION/evaluator/archive/Kaggle mutation",
