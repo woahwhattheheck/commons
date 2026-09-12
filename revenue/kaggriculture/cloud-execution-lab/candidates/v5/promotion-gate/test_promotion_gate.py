@@ -360,12 +360,14 @@ class PromotionGateTest(unittest.TestCase):
     def test_runtime_headroom_is_recomputed(self):
         manifest = _manifest()
         runtime = _runtime(manifest["candidate_id"])
-        runtime["overall"]["wall_seconds"]["p99"] = 0.09
-        runtime["overall"]["wall_seconds"]["max"] = 0.09
-        runtime["by_candidate"][manifest["candidate_id"]]["wall_seconds"]["p99"] = 0.09
-        runtime["by_candidate"][manifest["candidate_id"]]["wall_seconds"]["max"] = 0.09
-        runtime["by_phase"]["late"]["wall_seconds"]["p99"] = 0.09
-        runtime["by_phase"]["late"]["wall_seconds"]["max"] = 0.09
+        for summary in (
+            runtime["overall"],
+            runtime["by_candidate"][manifest["candidate_id"]],
+            runtime["by_phase"]["late"],
+        ):
+            summary["wall_seconds"]["p95"] = 0.09
+            summary["wall_seconds"]["p99"] = 0.09
+            summary["wall_seconds"]["max"] = 0.09
         with self.assertRaisesRegex(gate.PromotionError, "p99 headroom disagrees"):
             gate.build_receipt(
                 manifest, _engagement(manifest["candidate_id"]), runtime
@@ -422,12 +424,55 @@ class PromotionGateTest(unittest.TestCase):
                 with self.assertRaisesRegex(gate.PromotionError, message):
                     gate.build_receipt(manifest, _engagement(candidate_id), runtime)
 
+    def test_runtime_nearest_rank_identity_is_exact(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+
+        runtime = _runtime(candidate_id)
+        runtime["by_phase"]["early"]["wall_seconds"] = {
+            "p50": 0.01,
+            "p95": 0.015,
+            "p99": 0.018,
+            "max": 0.02,
+        }
+        with self.assertRaisesRegex(gate.PromotionError, "nearest-rank identity"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+        runtime = _runtime(candidate_id)
+        runtime["overall"]["wall_seconds"] = {
+            "p50": 0.03,
+            "p95": 0.055,
+            "p99": 0.058,
+            "max": 0.06,
+        }
+        runtime["by_candidate"][candidate_id]["wall_seconds"] = dict(
+            runtime["overall"]["wall_seconds"]
+        )
+        with self.assertRaisesRegex(gate.PromotionError, "nearest-rank identity"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+        for count, values in (
+            (1, (0.01, 0.02, 0.03, 0.04)),
+            (2, (0.01, 0.02, 0.03, 0.04)),
+            (3, (0.01, 0.02, 0.03, 0.04)),
+            (8, (0.01, 0.02, 0.03, 0.04)),
+        ):
+            with self.subTest(count=count):
+                stats = dict(zip(("p50", "p95", "p99", "max"), values))
+                with self.assertRaisesRegex(gate.PromotionError, "nearest-rank identity"):
+                    gate._validate_stats(stats, "runtime timing", count=count)
+
     def test_runtime_phase_partition_and_contract_are_exact(self):
         manifest = _manifest()
         candidate_id = manifest["candidate_id"]
 
         runtime = _runtime(candidate_id)
         runtime["by_phase"]["early"]["count"] = 1
+        for metric in ("wall_seconds", "cpu_seconds"):
+            maximum = runtime["by_phase"]["early"][metric]["max"]
+            runtime["by_phase"]["early"][metric] = {
+                key: maximum for key in ("p50", "p95", "p99", "max")
+            }
         with self.assertRaisesRegex(gate.PromotionError, "counts must sum"):
             gate.build_receipt(manifest, _engagement(candidate_id), runtime)
 
