@@ -128,8 +128,9 @@ def _represented_market_physical_transition(farm,private,market,orders,config,ta
             sold=min(qty,available)
             if sold<=0:continue
             if item!=target_item:shed[item]=available-sold
-            # The sale is physically real, but its cash and shared post-row
-            # inventory are not used as funding authority for later arrivals.
+            # SELL credit is deliberately not added. The unchanged money remains
+            # a sound lower bound, so later fixed-cost effects may use pre-SALE
+            # cash without trusting unproved receipts.
             state['funding_exact']=False
             continue
         if op=='BUY_PRODUCT':
@@ -140,13 +141,11 @@ def _represented_market_physical_transition(farm,private,market,orders,config,ta
             if qty<=0:continue
             if item not in ('WHEAT','FERTILIZER'):continue
             if shed_total()>=cap:continue
-            if not state['funding_exact']:
-                return unresolved(f'buy_product_funding_unknown:{row_index}')
             money=farm.get('money')
             if isinstance(money,bool) or not isinstance(money,(int,float)) or not math.isfinite(float(money)) or money<0:
                 return unresolved(f'bad_money:{row_index}')
             if not quote_exact:
-                if money<1:continue
+                if state['funding_exact'] and money<1:continue
                 return unresolved(f'buy_product_quote_unknown:{row_index}')
             if not isinstance(market,dict) or not isinstance(market.get('inventory'),dict):
                 return unresolved(f'bad_market:{row_index}')
@@ -156,12 +155,16 @@ def _represented_market_physical_transition(farm,private,market,orders,config,ta
             except Exception:return unresolved(f'bad_market_price:{row_index}')
             if isinstance(price,bool) or not isinstance(price,(int,float)) or not math.isfinite(float(price)) or price<1:
                 return unresolved(f'bad_market_quote:{row_index}')
-            if money<price:continue
+            if money<price:
+                if state['funding_exact']:continue
+                return unresolved(f'buy_product_funding_unknown:{row_index}')
             farm['money']=money-price;shed[item]=shed.get(item,0)+1
             if qty>1:
                 # After the first lockstep unit, the rival commit can change the
-                # next quote. Capacity/floor can still prove a deterministic stop.
-                if shed_total()>=cap or farm['money']<1:continue
+                # next quote. Capacity or exact sub-floor cash can still prove a
+                # deterministic stop; uncertain SELL credit cannot.
+                if shed_total()>=cap:continue
+                if state['funding_exact'] and farm['money']<1:continue
                 return unresolved(f'buy_product_tail_unknown:{row_index}')
             continue
         if op=='BUY_ANIMAL':
@@ -171,31 +174,33 @@ def _represented_market_physical_transition(farm,private,market,orders,config,ta
             if type(qty) is not int:return unresolved(f'coerced_buy_animal_qty:{row_index}')
             if qty<=0 or item not in m.ANIMALS:continue
             if shed_total()>=cap:continue
-            if not state['funding_exact']:
-                return unresolved(f'buy_animal_funding_unknown:{row_index}')
             spec=m.ANIMALS.get(item);cost=spec.get('cost') if isinstance(spec,dict) else None
             if type(cost) is not int or cost<0:return unresolved(f'bad_animal_cost:{row_index}')
             for _ in range(qty):
-                if shed_total()>=cap or farm['money']<cost:break
+                if shed_total()>=cap:break
+                if farm['money']<cost:
+                    if state['funding_exact']:break
+                    return unresolved(f'buy_animal_funding_unknown:{row_index}')
                 farm['money']-=cost;shed[item]=shed.get(item,0)+1
             continue
         if op=='HIRE':
-            if not state['funding_exact']:
-                return unresolved(f'hire_funding_unknown:{row_index}')
             hires=farm.get('hires_today')
             if type(hires) is not int or hires<0:return unresolved(f'bad_hires_today:{row_index}')
             try:cost=m._hire_cost(hires,mult)
             except Exception:return unresolved(f'bad_hire_cost:{row_index}')
             if type(cost) is not int or cost<0:return unresolved(f'bad_hire_cost:{row_index}')
-            if farm['money']<cost:continue
+            if farm['money']<cost:
+                if state['funding_exact']:continue
+                return unresolved(f'hire_funding_unknown:{row_index}')
             farm['money']-=cost;farm['hires_today']=hires+1
             farm['hands'].append(m._spawn_hand(farm,len(farm['tiles'])))
             private['inventories'].append({})
             continue
         if op in ('BUY_SEED','BUY_LAND'):
-            # Their cash debit is outside this physical-arrival seam. Ignoring it
-            # must not authorize a later represented BUY/HIRE.
+            # Their exact debit is outside this physical-arrival seam. Zero is a
+            # sound lower bound, so unmodeled spending cannot fund a later effect.
             state['funding_exact']=False
+            farm['money']=0
             continue
     return {'resolved':True,'reason':'ok'}
 '''
