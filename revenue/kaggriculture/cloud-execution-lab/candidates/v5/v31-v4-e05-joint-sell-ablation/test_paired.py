@@ -33,6 +33,57 @@ class PairedHelpersTest(unittest.TestCase):
             module = paired.load_captured(raw, origin, "e05_test_captured")
             self.assertEqual(module.VALUE, 7)
 
+    def test_captured_harness_survives_source_swap_after_auth(self):
+        raw = b"VALUE = 7\n"
+        expected = hashlib.sha256(raw).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            origin = Path(td) / "evaluator.py"
+            origin.write_bytes(raw)
+            captured = paired.capture_sha256(origin, expected)
+            origin.write_bytes(b"VALUE = 99\n")
+            module = paired.load_captured(captured, origin, "e05_swap_captured")
+            self.assertEqual(module.VALUE, 7)
+            self.assertNotEqual(origin.read_bytes(), captured)
+
+    def test_captured_harness_survives_source_delete_after_auth(self):
+        raw = b"VALUE = 11\n"
+        expected = hashlib.sha256(raw).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            origin = Path(td) / "pack.py"
+            origin.write_bytes(raw)
+            captured = paired.capture_sha256(origin, expected)
+            origin.unlink()
+            module = paired.load_captured(captured, origin, "e05_delete_captured")
+            self.assertEqual(module.VALUE, 11)
+            self.assertFalse(origin.exists())
+
+    def test_private_loader_is_written_from_authenticated_capture(self):
+        raw = b"VALUE = 23\n"
+        expected = hashlib.sha256(raw).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            origin = root / "public-evidence-loader.py"
+            origin.write_bytes(raw)
+            captured = paired.capture_sha256(origin, expected)
+            origin.write_bytes(b"VALUE = 101\n")
+            private = root / "private-runtime" / "evaluate.py"
+            self.assertEqual(
+                paired.write_private_runtime_bytes(captured, private, expected), private
+            )
+            self.assertEqual(private.read_bytes(), raw)
+            self.assertNotEqual(private.read_bytes(), origin.read_bytes())
+
+    def test_private_loader_rejects_wrong_captured_digest(self):
+        raw = b"VALUE = 23\n"
+        expected = hashlib.sha256(raw).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            private = Path(td) / "private-runtime" / "evaluate.py"
+            with self.assertRaisesRegex(
+                ValueError, "Private runtime bytes do not match authenticated SHA256"
+            ):
+                paired.write_private_runtime_bytes(b"VALUE = 24\n", private, expected)
+            self.assertFalse(private.exists())
+
     def test_margin_requires_complete_719(self):
         self.assertEqual(paired.margin({"status": "complete", "steps": 719, "scores": [10, 4]}, 0), 6)
         self.assertIsNone(paired.margin({"status": "complete", "steps": 718, "scores": [10, 4]}, 0))
