@@ -1,76 +1,105 @@
 # Gemini / Antigravity convergence
 
-This package is the **coverage lock**, not a new gameplay controller.
+This package is the **coverage lock**, not a gameplay controller or a second V4.
 
-Gemini/Antigravity produced a dense burst of Kaggriculture mechanics in Slack: the
-15-item fleet claim board plus direct-post-only metagame ideas (Apex clone
-conditioning/counter-ambush, direct short squeeze, shared-RNG frame advancement,
-opening seed cracking, and EGG elasticity). Parallel workers proved, repaired,
-falsified, or field-blocked them across several canonical V4 authorities.
+The canonical ledger now covers 34 authenticated proposition families across the
+current Antigravity fleet stream and authenticated older Gemini source. Parallel
+workers may keep separate implementation/research owners, but every Gemini idea
+must terminate here as one durable V4 disposition: source-real candidate,
+corrected descendant, falsified literal claim, or field-blocked descendant.
 
-`GEMINI-ANTIGRAVITY.json` makes that convergence explicit. Every distinct
-proposition has exactly one durable disposition and points only at **current,
-regular, non-symlink files under `candidates/v4`**:
-
-- `SOURCE_REAL_CANDIDATE`: engine/source mechanism is real; policy value is still gated.
-- `CORRECTED_DESCENDANT`: the useful mechanism survives, but Gemini's literal policy
-  is replaced by a narrower source-safe form.
-- `FALSIFIED`: the literal mechanism/policy is impossible or disproven and is fenced
-  against resurrection without new evidence.
-- `FIELD_BLOCKED`: a useful mechanism or intended descendant exists, but the current
-  policy/source form is unsafe, cold, or source-unsound; a stronger successor contract
-  is required before promotion.
+`GEMINI-ANTIGRAVITY.json` grants no runtime authority. Every evidence path must
+resolve to a current regular non-symlink file under `candidates/v4`; merged/closed
+PRs are provenance, not canonical evidence.
 
 ## Fail-closed custody
 
-The checker hard-codes the complete 21-proposition ID set. Removing a failed idea
-from the JSON does **not** make the suite green; missing IDs fail. A closed or
-merged PR also does not count as evidence: each `canonical_evidence` path must
-exist *now* in the canonical V4 tree.
+The checker hard-codes the complete 34-ID set. Removing a failed idea does not make
+the suite green. It also rejects duplicate JSON keys at every depth, non-finite
+numbers, evidence outside V4, `..`, literal or resolved `legacy/` / `superseded/`
+ancestry, symlink leaves/ancestors, non-regular evidence targets, unsorted/duplicate
+PR provenance, and premature MELON promotion.
 
-The registry is intentionally strict about its own input and filesystem surface:
+`FALSIFIED` and `FIELD_BLOCKED` rows require
+`do_not_repeat_without_new_evidence=true`. Historical labels without authenticated
+Gemini source are provenance-quarantined: **MERIDIAN / OpenMore / ADAPTIVE do not
+mint required Gemini IDs** until an exact source post/commit is recovered.
 
-- JSON is loaded with duplicate-key rejection at **every object depth**; a second
-  `disposition`, `entries`, evidence field, or any other key cannot silently last-win.
-- Non-finite JSON numbers are rejected.
-- Evidence paths outside V4, containing `..`, or traversing literal
-  `legacy/`/`superseded/` components are rejected.
-- Every path component is checked with `lstat`; a symlink leaf or an internal symlink
-  ancestor alias cannot redirect canonical evidence into another subtree.
-- The final evidence target must be a regular file, resolve beneath the repository,
-  and the resolved relative path is checked again for noncanonical ancestry.
-- `FALSIFIED` and `FIELD_BLOCKED` entries require durable
-  `do_not_repeat_without_new_evidence=true` fences.
-
-## Important corrected forms
-
-The coverage contract deliberately preserves negative information:
+## Direct Antigravity corrections
 
 - `$1` FERT is destructive floor disposal, not a recoverable infinite warehouse.
-- **MELON is currently FIELD_BLOCKED.** The crude sold-only cap was harmful, and the
-  later purported repaired carrier still has two source debts: shallow outer metadata
-  shrink can leave executable `variants[*].patches` intact, and a shared budget across
-  FourthQuadrant proposals is invalid because those proposals are mutually-exclusive
-  alternatives. Promotion now requires executable MELON cardinality per whole proposal,
-  no cross-alternative decrement, canonical custody rebind, then current-native economics.
-- Goose Printer's certified Day-0 frontier is 9 geese + one hire, not ten no-hire
-  geese and not a proved cash printer.
-- Intermittent starvation is CARE-aware and must guarantee the next feed; blanket
-  alternate-day starvation destroys CARE value.
-- HYDRA's final `WATER -> PASS` rewrite is field-blocked; a successor must spend
-  the slot productively and bind next-day WATER recovery.
-- Carried inventory is a real intraday custody surface, but current raw Arlene
-  routes have no safe CARRYBANK admission after acquisition/custody checks.
-- Zero-cash structures are not zero-action structures. Blanket weed carpets are
-  rejected; productive structures may still carry measured weed/RNG side effects.
-- Direct TOMATO/EGG/CARROT `BUY_PRODUCT` squeezing is impossible. WHEAT/FERT
-  pressure remains a separate, source-valid market domain.
-- Shared EOD RNG frame advancement is real and lives in canonical TOWNRNG, but the
-  opening weed pattern does not uniquely reveal the hidden seed.
-- EGG's log curve is unusually resilient but finite; EGG cannot be directly bought
-  out of the market.
-- Apex counterplay keeps authenticated clone-latch/Strawberry timing evidence and
-  rejects the exaggerated massive-FERT-sponge branch.
+- Generic cheap-FERT buy/apply arbitrage remains field-blocked until actual public
+  fills, eligible application work, cash/storage/row budget, and paired economics
+  are all proven. It is distinct from the false warehouse.
+- High-quote `R04-FERT-LIQUIDATE` is mechanically real but measured evidence was
+  noisy/redundant with incumbent liquidation; it stays field-blocked rather than
+  being silently dropped.
+- **MELON is FIELD_BLOCKED.** Whole executable proposal/seed/land/cardinality custody
+  must be repaired; shallow metadata shrink and cross-alternative budget spending
+  are invalid because FourthQuadrant alternatives are mutually exclusive.
+- Terminal mass-HIRE is not free score conversion. Terminal reward is money and
+  HIRE wages grow; the surviving TERMINUS form admits only marginal jobs that can
+  repay their wage before terminal. Sixteen total hires cost 2,583 and imply 17
+  workers including the farmer.
+- WHEAT hard-market denial is false: `BUY_PRODUCT WHEAT` has no hard depletion gate
+  and public inventory can cross zero. The surviving form is timed procurement /
+  rival-flow / town-demand pressure with cash, storage, carry and opportunity cost.
+- Analyzer margin clipping is corrected to strict finite/type/representation
+  consistency. Legitimate large finite engine margins (including 165,022) are not
+  clipped merely because they exceed a guessed ±65k bound.
+- EGG elasticity is finite; direct EGG BUY_PRODUCT squeeze is impossible. Timing
+  descendants must identify value in the moved EGG sale receipt itself, not in
+  unrelated downstream spending.
+- Shared RNG frame advancement is real, but opening weeds do not identify the hidden
+  seed. WEEDBANK remains measured/parked rather than assumed positive.
+
+## Authenticated historical Gemini fold
+
+The historical G01 source commit carried three literal controller patches and one
+shop-absorption heuristic. They are now represented in the same lock instead of a
+second registry:
+
+- **G01 E11 rival-dump deferral:** the old post-hoc SELL blanker is field-blocked.
+  Its useful residue routes to public pressure/absorption evidence with adjacent
+  temporal custody, bounded horizon and final returned-action economics.
+- **G01 O01 rival archetype:** direct coarse archetype-driven BUY_LAND/SELL mutation
+  is field-blocked. Only one-way public evidence may survive; no hidden/private
+  opponent inference, stale price maps or identity shortcuts.
+- **G01 E20 hire guard:** the coarse `unserved_tiles()<3` HIRE deletion is falsified
+  as policy because it does not prove downstream labor/service/capital equivalence.
+  Resource-solvency ideas route into existing hire/early-capital/TERMINUS owners.
+- **G01 SHOP_ARB:** the magic 1.5x shop multiplier is replaced by authenticated
+  current unlocked-shop/product town absorption and the source-bound DEMANDVEL
+  oracle.
+
+Historical S33/STRATUM is also first-class coverage: row-shed ordering remains one
+source family and stays field-blocked until executable-prefix semantics, positive
+quantity/inventory evidence, composer custody, complete-pipeline survival and final
+engine-semantic novelty converge with nonnegative both-seat economics.
+
+Gemini Pro capital work routes into KESTREL/early-capital and remains field-blocked
+until natural current admissions clear exact rival-lockstep/economic gates. Gemini
+Flash timing routes into existing TOWNFLASH/TOWNSELL/market authorities; the source
+fact is market-before-town ordering, not a new GOOP/router permission. The old
+idle-hands bundle is split across existing FEED/CARE, GANDER, WHEAT-FERT,
+procurement and acquisition owners; PASS alone is never evidence that replacement
+work is safe.
+
+## Other preserved corrected forms
+
+- Goose Printer: nine geese + one $1 HIRE is the certified Day-0 frontier, not ten
+  no-hire geese or a proved cash printer.
+- Intermittent starvation is CARE-aware and must guarantee the next feed.
+- ALTWATER cannot be a blind final `WATER -> PASS`; productive substitution requires
+  durable recovery-WATER custody.
+- Carried inventory is a real intraday surface but current raw routes have no proven
+  safe CARRYBANK admission.
+- Zero-cash structures are not zero-action structures; blanket carpets are rejected.
+- Direct TOMATO/EGG/CARROT `BUY_PRODUCT` squeezing is engine-impossible.
+- Apex keeps authenticated clone-latch/Strawberry timing evidence while the massive
+  FERT-sponge claim is rejected.
+- DEMANDVEL's best form is the current source-bound absorption-headroom oracle, not
+  static demand tiers.
 
 ## Validation
 
@@ -83,14 +112,14 @@ python -m py_compile check_ledger.py test_check_ledger.py
 python check_ledger.py
 ```
 
-The synthetic contract suite currently contains 18 adversarial tests, including
-predecessors for duplicate root/nested JSON keys, leaf and ancestor symlinks,
-stale ancestry, and premature MELON promotion. Run it in both normal and `-O`
-mode. The final `python check_ledger.py` is the current-checkout gate and also
-requires every canonical evidence path in the real V4 tree to exist.
+The synthetic suite includes the hardened duplicate-key/symlink/ancestry/MELON
+predecessors plus explicit tests that all 13 authenticated extension IDs remain hard
+required and that quarantined MERIDIAN/OpenMore/ADAPTIVE labels are not minted.
+The final `python check_ledger.py` is the current-checkout gate and requires every
+canonical evidence path to exist in the real V4 tree.
 
 This package changes no gameplay/runtime source, feature default, config,
 COMPOSITION, INTEGRATION, archive, evaluator, provider, or Kaggle state. Existing
-mechanism owners retain source, policy, and economics authority; in particular,
-the active MELON source repair remains owned by the existing
-`antigravity-melon-cap` lineage rather than this coverage package.
+mechanism owners retain source/policy/economics authority; this lock only guarantees
+that Gemini ideas cannot disappear, fork V4, or silently revert to weaker literal
+forms.
