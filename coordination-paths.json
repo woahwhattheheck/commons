@@ -1,13 +1,1 @@
-{
- "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-12T23:29:56.518Z",
- "prs": [
-  {"number":13486,"path_count":null,"paths":[]},
-  {"number":13485,"path_count":null,"paths":[]},
-  {"number":13482,"path_count":null,"paths":[]},
-  {"number":13471,"path_count":null,"paths":[]},
-  {"number":13415,"path_count":null,"paths":[]},
-  {"number":13400,"path_count":null,"paths":[]}
- ],
- "schema": "commons-coordination-paths/v1"
-}
+{"note":"paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)","observed_at":"2026-09-12T23:42:12.336Z","prs":[{"number":13508,"path_count":null,"paths":[]},{"number":13507,"path_count":null,"paths":[]},{"number":13505,"path_count":null,"paths":[]},{"number":13502,"path_count":null,"paths":[]},{"number":13503,"path_count":null,"paths":[]},{"number":13501,"path_count":null,"paths":[]},{"number":13490,"path_count":null,"paths":[]},{"number":13486,"path_count":null,"paths":[]},{"number":13485,"path_count":null,"paths":[]},{"number":13471,"path_count":null,"paths":[]},{"number":13415,"path_count":null,"paths":[]},{"number":13400,"path_count":null,"paths":[]}],"schema":"commons-coordination-paths/v1"}

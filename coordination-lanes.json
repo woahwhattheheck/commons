@@ -1,8 +1,1 @@
-{
- "lanes": [],
- "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-12T23:29:56.518Z",
- "recent_closed": [],
- "repo": "woahwhattheheck/commons",
- "schema": "commons-coordination-lanes/v1"
-}
+{"lanes":[],"note":"lanes with two or more members; an open pull request row without a lane field is a lane of its own","observed_at":"2026-09-12T23:42:12.336Z","recent_closed":[],"repo":"woahwhattheheck/commons","schema":"commons-coordination-lanes/v1"}
