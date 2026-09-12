@@ -91,14 +91,15 @@ class RowShedFinalBoundaryTests(unittest.TestCase):
         scheduler.post_units = post_units
 
         row_module = types.ModuleType("row_shed_sell_order")
+        case = self
         class FakeRowShed:
             def __init__(self):
                 self.diagnostics = {}
 
             def transform(self, _obs, _cfg, selected, *, post_unit_shed, fallback_action):
                 calls.append("row_shed")
-                self.assertIs(fallback_action, selected)
-                self.assertEqual(post_unit_shed, {"WOOL": 1, "MILK": 6})
+                case.assertIs(fallback_action, selected)
+                case.assertEqual(post_unit_shed, {"WOOL": 1, "MILK": 6})
                 self.diagnostics = {
                     "status": "applied",
                     "reason": "test",
