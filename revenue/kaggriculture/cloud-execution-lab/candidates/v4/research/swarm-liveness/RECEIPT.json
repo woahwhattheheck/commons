@@ -1,11 +1,12 @@
 {
   "canonical_root": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
   "files_sha256": {
-    "README.md": "3a5fccce0ce29fa44cc36889de36ac488f4b09273d182571586d0c45f95536a5",
+    "README.md": "7b2be5acf65cf2dbb0895bf70b6fef68d4b6836ba748a42f76293a8c4f0fde22",
     "adversarial-events.jsonl": "88f23c681bc1f343423a8d15d3cd96fbc806814444cbe7818b28ffc47ee8960f",
-    "claim_liveness.py": "b0d140fca359f6fdb69ed1b72335b4aa9c72e9c6a36fdd5d7bdd1e181ef9fae4",
+    "claim_liveness.py": "eaef5883a2c39f18a9bd75be31dd83bcf1809d07947aabd79a4038c85915adfc",
     "test_claim_arbitration.py": "4a6431414d33e6eb8052c445cb79b379e257dca25a04ad0d7f68f2c893815a9d",
-    "test_claim_liveness.py": "27a7b92f130c08a6d79810a64e32fddfad7165e7f705af86cf5f9d4d0e08f7ac"
+    "test_claim_liveness.py": "27a7b92f130c08a6d79810a64e32fddfad7165e7f705af86cf5f9d4d0e08f7ac",
+    "test_scope_keys.py": "5106c9304c4c44d78018f831949dcce83f36b2e68d23956e815781f64f802d8e"
   },
   "safety": {
     "arbitration_is_overwrite_authority": false,
@@ -13,13 +14,15 @@
     "equal_earliest_claim_tie_fails_closed": true,
     "fresh_owner_blocks_recovery": true,
     "noncanonical_root_is_anomaly": true,
+    "scope_keys_are_explicit_only": true,
+    "scope_keys_infer_semantic_equivalence": false,
     "stale_is_overwrite_authority": false
   },
   "schema": "titan-v4-swarm-liveness-receipt/v1",
   "scope": "research/control-plane only; no gameplay/default/archive/Kaggle mutation",
   "tests": {
     "compile": {
-      "command": "python -B -m py_compile claim_liveness.py test_claim_liveness.py test_claim_arbitration.py",
+      "command": "python -B -m py_compile claim_liveness.py test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "status": "PASS"
     },
     "fixture": {
@@ -32,25 +35,30 @@
         ]
       },
       "command": "python -B claim_liveness.py adversarial-events.jsonl --as-of 2000 --ttl-seconds 100",
+      "report_sha256": "8cc10fe2e7cde4e3c885ff5851c4be0fa86353cbcce0db2bac3faccc9f347bbb",
+      "scope_groups": [],
       "summary": {
         "active": 1,
         "active_with_stale_owner": 0,
         "anomalies": 1,
         "closed": 1,
         "collisions": 1,
+        "cross_lane_scoped_collisions": 0,
         "lanes": 4,
+        "scoped_active_groups": 0,
+        "scoped_collisions": 0,
         "stale_claims": 1
       }
     },
     "normal": {
-      "command": "python -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py",
+      "command": "python -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 24
+      "passed": 30
     },
     "optimized": {
-      "command": "python -O -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py",
+      "command": "python -O -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 24
+      "passed": 30
     }
   }
 }

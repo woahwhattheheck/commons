@@ -180,14 +180,21 @@ def _summary(values: list[int]) -> dict[str, float | int]:
     }
 
 
-def _paired_summary(values: list[int]) -> dict[str, float | int]:
+def _paired_summary(values: list[int]) -> dict[str, float | int | None]:
     result = _summary(values)
     sd = float(result["sample_stdev"])
     se = sd / math.sqrt(len(values)) if values else 0.0
     mean = float(result["mean"])
     result["standard_error"] = se
-    result["t95_low"] = mean - T_CRIT_DF99_95 * se
-    result["t95_high"] = mean + T_CRIT_DF99_95 * se
+    if len(values) == 100:
+        result["t95_low"] = mean - T_CRIT_DF99_95 * se
+        result["t95_high"] = mean + T_CRIT_DF99_95 * se
+    else:
+        # T_CRIT_DF99_95 is exact only for the canonical 100-seed panel.
+        # Arbitrary CLI sample sizes remain useful for smoke/analytic runs, but
+        # must not be mislabeled as having a df=99 Student-t confidence interval.
+        result["t95_low"] = None
+        result["t95_high"] = None
     result["negative_pairs"] = sum(v < 0 for v in values)
     result["zero_pairs"] = sum(v == 0 for v in values)
     result["positive_pairs"] = sum(v > 0 for v in values)

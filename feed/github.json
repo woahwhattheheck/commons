@@ -3,10 +3,10 @@
     "open_issues": 6,
     "open_pull_requests": 6,
     "runs_in_progress": 19,
-    "runs_queued": 3
+    "runs_queued": 1015
   },
   "degraded": [],
-  "drafts": 224,
+  "drafts": 203,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -52,90 +52,90 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "sol/v4-e20-prefix-parity-20260911-01",
-      "created_at": "2026-09-12T01:32:52Z",
-      "draft": true,
-      "number": 12643,
-      "title": "TITAN V4: salvage missed V3/V3.1 work into the canonical line"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/v4-f3-v217-eod-tail-refile-20260911",
-      "created_at": "2026-09-12T01:05:29Z",
+      "branch": "astra/v4-e13-future-sale-solvency-20260912",
+      "created_at": "2026-09-12T04:22:07Z",
       "draft": false,
-      "number": 12638,
-      "title": "V4 F3: guarded V217 EOD tail compression (refile)"
+      "number": 12877,
+      "title": "TITAN V4 E13: port future-sale solvency closure to current ABI"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-s1-fert-sweep-20260911",
-      "created_at": "2026-09-11T22:22:18Z",
-      "draft": true,
-      "number": 12630,
-      "title": "TITAN V4 S1: add bounded daily fertilizer-sweep hand"
+      "branch": "astra/orderbudget-v4-rejoin-20260912",
+      "created_at": "2026-09-12T04:21:27Z",
+      "draft": false,
+      "number": 12875,
+      "title": "TITAN V4 ORDERBUDGET: fresh-main execution-cap census"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-plumbing-monotonic-guard-20260911",
-      "created_at": "2026-09-11T22:13:47Z",
-      "draft": true,
-      "number": 12620,
-      "title": "TITAN V4: enforce monotonic key plumbing"
+      "branch": "astra-graindebt-1789185731",
+      "created_at": "2026-09-12T04:15:53Z",
+      "draft": false,
+      "number": 12856,
+      "title": "TITAN V4 GRAINDEBT: diagnose feed-stock cap bypass before merchant v2"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-h3e-cow-feed-recycle",
-      "created_at": "2026-09-11T22:10:55Z",
-      "draft": true,
-      "number": 12618,
-      "title": "TITAN V4 H3e: recycle dead COW service into emergency FEED"
+      "branch": "astra/hydra-field-20260912",
+      "created_at": "2026-09-12T04:10:52Z",
+      "draft": false,
+      "number": 12837,
+      "title": "TITAN V4 HYDRA: execute three-arm current-native field gate"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-v224-raw-slots-20260911",
-      "created_at": "2026-09-11T22:04:54Z",
-      "draft": true,
-      "number": 12615,
-      "title": "TITAN V4: preserve lockstep raw slots in V224 SELL ordering"
+      "branch": "astra/r5-current-abi-closure-20260912",
+      "created_at": "2026-09-12T04:09:38Z",
+      "draft": false,
+      "number": 12836,
+      "title": "TITAN V4 R5: prove legacy bakery/yarn route portability against current ABI"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-eod-capacity-rescue-20260911",
-      "created_at": "2026-09-11T22:03:22Z",
-      "draft": true,
-      "number": 12612,
-      "title": "TITAN V4: add default-off EOD capacity rescue lane"
+      "branch": "astra/wf1-current-field-20260912",
+      "created_at": "2026-09-12T04:04:35Z",
+      "draft": false,
+      "number": 12826,
+      "title": "TITAN V4 WF1: execute hardened current-native field gate"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-c5-wheat-demand-20260911",
-      "created_at": "2026-09-11T22:02:37Z",
-      "draft": true,
-      "number": 12611,
-      "title": "TITAN V4 C5: public WHEAT buy-signal rider (default off)"
+      "branch": "astra/v4-reset-invariance-20260911",
+      "created_at": "2026-09-12T03:44:51Z",
+      "draft": false,
+      "number": 12787,
+      "title": "TITAN V4: verify cross-episode process-state reset invariance"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-f2-feed-prebuy-20260911",
-      "created_at": "2026-09-11T22:00:39Z",
+      "branch": "astra/vis-a2-review-holding-check-20260911-01",
+      "created_at": "2026-09-11T17:26:39Z",
       "draft": true,
-      "number": 12609,
-      "title": "TITAN V4 F2: pre-buy WHEAT only when it unlocks V217 rescue"
+      "number": 12589,
+      "title": "visibility A2: exact-head review holding check"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-m1-wheat-trade-20260911",
-      "created_at": "2026-09-11T21:58:09Z",
+      "branch": "astra/vis-b6-generated-path-moves-20260911-01",
+      "created_at": "2026-09-11T15:27:25Z",
       "draft": true,
-      "number": 12605,
-      "title": "TITAN V4 M1: bounded future WHEAT demand hedge"
+      "number": 12587,
+      "title": "host: classify generated-path moves for visibility B6"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-astra/vis-f1-owner-directive-index-20260911",
+      "created_at": "2026-09-11T14:38:43Z",
+      "draft": true,
+      "number": 12586,
+      "title": "coordination: strict owner-directive broadcast/ACK index"
     }
   ],
-  "pulls_listed": 288,
+  "pulls_listed": 272,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 0.2,
+  "queue_depth_per_runner": 53.4,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T01:46:41Z",
+  "unchanged_since": "2026-09-12T04:24:19Z",
   "undatable_pulls": []
 }
