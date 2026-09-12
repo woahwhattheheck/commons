@@ -120,7 +120,7 @@ def render():
                 info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
                 archive.addfile(info,io.BytesIO(data))
     data=output.getvalue()
-    receipt={'path':ARCHIVE,'entrypoint':'main.py::agent',config='TITAN-CONFIG.json',
+    receipt={'path':ARCHIVE,'entrypoint':'main.py::agent','config':'TITAN-CONFIG.json',
              'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),
              'runtime_files':len(mapping),'source_manifest':RECORD+'CURRENT-SOURCE.json',
              'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
