@@ -13,20 +13,63 @@ jobs:
   exact-head-webhook-auth:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      REVIEWED_PARENT_SHA: 'c8257adbc171b39c75bc44d3795c15b9502daafe'
+      PUBLICATION_PARENT_SHA: 'fcaba636557a112ac091ca9018bf0d4a689bf3cd'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout literal event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 3
+          persist-credentials: false
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+
+      - name: Assert exact successor and six-path stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$expected"
+          test "$(git rev-parse HEAD^)" = "$REVIEWED_PARENT_SHA"
+          test "$(git rev-parse HEAD^^)" = "$PUBLICATION_PARENT_SHA"
+
+          cat > "$RUNNER_TEMP/expected-child-paths" <<'EOF'
+          .github/workflows/hive006-trusted-webhook-auth.yml
+          p/sol-astra-hive006-trusted-webhook-auth-20260910-01.md
+          revenue/hive/voice-support-desk/TRUSTED-WEBHOOK.md
+          EOF
+          git diff --name-only "$REVIEWED_PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-child-paths"
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-child-paths" "$RUNNER_TEMP/expected-child-paths"
+          diff -u "$RUNNER_TEMP/expected-child-paths" "$RUNNER_TEMP/actual-child-paths"
+
+          cat > "$RUNNER_TEMP/expected-stack-paths" <<'EOF'
+          .github/workflows/hive006-trusted-webhook-auth.yml
+          p/sol-astra-hive006-trusted-webhook-auth-20260910-01.md
+          revenue/hive/voice-support-desk/TRUSTED-WEBHOOK.md
+          revenue/hive/voice-support-desk/requirements-webhook.txt
+          revenue/hive/voice-support-desk/test_twilio_webhook.py
+          revenue/hive/voice-support-desk/twilio_webhook.py
+          EOF
+          git diff --name-only "$PUBLICATION_PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-stack-paths"
+          LC_ALL=C sort -o "$RUNNER_TEMP/expected-stack-paths" "$RUNNER_TEMP/expected-stack-paths"
+          diff -u "$RUNNER_TEMP/expected-stack-paths" "$RUNNER_TEMP/actual-stack-paths"
+
       - name: Install pinned provider validator
         working-directory: revenue/hive/voice-support-desk
         run: python -m pip install --disable-pip-version-check -r requirements-webhook.txt
+
       - name: Compile exact head
         working-directory: revenue/hive/voice-support-desk
         run: python -m py_compile desk.py merchant_auth.py twilio_webhook.py test_desk.py test_merchant_auth.py test_twilio_webhook.py
+
       - name: Run original and authenticated-edge suites
         working-directory: revenue/hive/voice-support-desk
         run: python -W error::ResourceWarning -B -m unittest -v test_desk.py test_merchant_auth.py test_twilio_webhook.py
+
       - name: Assert clean tree
         run: |
           find revenue/hive/voice-support-desk -type d -name __pycache__ -prune -exec rm -rf {} +
