@@ -22,6 +22,14 @@ class HistoryObservationAtomicTests(unittest.TestCase):
         OrderedSelectedSellTests.setUpClass()
         cls.harness=OrderedSelectedSellTests()
 
+    @staticmethod
+    def bind_clock(obs,step,cfg):
+        period=cfg.get('turnsPerDay',24)
+        obs['step']=step
+        obs['day']=step//period
+        obs['hour']=step%period
+        return obs
+
     def transition(self,step=100):
         history=TerminalHistoryJoin(terminal_enabled=False)
         obs,cfg,state,env=self.harness.fixture(step,{'CARROT':3})
@@ -29,8 +37,7 @@ class HistoryObservationAtomicTests(unittest.TestCase):
         final=action(hands=[['PASS']],market=[['SELL','CARROT',1]])
         history.remember(before,cfg,final,copy.deepcopy(before))
         self.harness.advance(state,env,final,step)
-        after=copy.deepcopy(state[0].observation)
-        after['step']=step+1
+        after=self.bind_clock(copy.deepcopy(state[0].observation),step+1,cfg)
         return history,after,cfg
 
     def test_interrupted_reconciliation_publishes_no_partial_state(self):
@@ -146,8 +153,7 @@ class HistoryObservationAtomicTests(unittest.TestCase):
         # The environment is allowed to advance after the safe fallback. The
         # next guarded call must consume the retained step-301 witness first;
         # step 302 must not turn the old receipt into a nonadjacent unknown.
-        next_observation=copy.deepcopy(after)
-        next_observation['step']=302
+        next_observation=self.bind_clock(copy.deepcopy(after),302,cfg)
         instance.features=Features(budget_seconds=1.0,reserve_seconds=0.01)
         instance.act(next_observation,cfg)
         self.assertEqual(instance.history.bridge.last_consumed_step,300)
@@ -156,10 +162,10 @@ class HistoryObservationAtomicTests(unittest.TestCase):
         self.assertIsNone(instance.history.fill_result)
 
     def test_same_step_and_empty_observation_keep_existing_contract(self):
-        history,after,_=self.transition(step=200)
+        history,after,cfg=self.transition(step=200)
         history.diagnostics={'stale':True}
         history.fill_result={'stale':True}
-        same=copy.deepcopy(after);same['step']=200
+        same=self.bind_clock(copy.deepcopy(after),200,cfg)
         pending=copy.deepcopy(history.pending)
         history.observe(same)
         self.assertEqual(history.pending,pending)
