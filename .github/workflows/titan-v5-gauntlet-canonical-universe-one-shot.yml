@@ -44,9 +44,25 @@ jobs:
           python-version: "3.11"
 
       - name: Apply canonical-universe + multi-index closure
+        env:
+          FROZEN_MANIFEST: ${{ runner.temp }}/titan-v5-gauntlet-manifest-510ca5c5.json
         run: |
           set -euo pipefail
+          manifest_rel="revenue/kaggriculture/cloud-execution-lab/candidates/v5/gauntlet-top30-union/manifest.json"
+          git show "${{ github.sha }}:${manifest_rel}" > "$FROZEN_MANIFEST"
           python - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path
+          frozen = Path(os.environ["FROZEN_MANIFEST"])
+          expected = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924"
+          actual = hashlib.sha256(frozen.read_bytes()).hexdigest()
+          if actual != expected:
+              raise SystemExit(f"historical canonical manifest mismatch: {actual} != {expected}")
+          print(f"historical canonical manifest: {actual}")
+          PY
+          python - <<'PY'
+          import os
           from pathlib import Path
           path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
           text = path.read_text()
@@ -54,28 +70,56 @@ jobs:
           good = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924"
           if text.count(bad) != 2:
               raise SystemExit("canonical manifest SHA repair anchor drifted")
-          path.write_text(text.replace(bad, good))
-          PY
-          python - <<'PY'
-          from pathlib import Path
-          path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
-          text = path.read_text()
-          old = 'run("git", "diff", "--name-only", BASE)'
-          new = 'run("git", "diff", "--name-only", "origin/main...HEAD")'
-          if text.count(old) != 1:
+          text = text.replace(bad, good)
+          old_manifest = 'CANONICAL_MANIFEST = ROOT / "revenue/kaggriculture/cloud-execution-lab/candidates/v5/gauntlet-top30-union/manifest.json"'
+          frozen = str(Path(os.environ["FROZEN_MANIFEST"]))
+          new_manifest = f"CANONICAL_MANIFEST = Path({frozen!r})"
+          if text.count(old_manifest) != 1:
+              raise SystemExit("patcher manifest authority anchor drifted")
+          text = text.replace(old_manifest, new_manifest, 1)
+          old_scope = 'run("git", "diff", "--name-only", BASE)'
+          new_scope = 'run("git", "diff", "--name-only", "origin/main...HEAD")'
+          if text.count(old_scope) != 1:
               raise SystemExit("one-shot scope-fence anchor drifted")
-          path.write_text(text.replace(old, new, 1))
+          path.write_text(text.replace(old_scope, new_scope, 1))
           PY
           python revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py
           python - <<'PY'
+          import os
           from pathlib import Path
-          path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_reduce_gauntlet.py")
-          text = path.read_text()
+          root = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge")
+          frozen_name = "canonical-manifest-510ca5c5438fb65d.json"
+          snapshot = root / frozen_name
+          snapshot.write_bytes(Path(os.environ["FROZEN_MANIFEST"]).read_bytes())
+
+          reducer = root / "reduce_gauntlet.py"
+          text = reducer.read_text()
+          old = 'CANONICAL_MANIFEST_PATH = CANONICAL_PACKAGE / "manifest.json"'
+          new = f'CANONICAL_MANIFEST_PATH = Path(__file__).resolve().parent / "{frozen_name}"'
+          if text.count(old) != 1:
+              raise SystemExit("reducer live-manifest authority anchor drifted")
+          reducer.write_text(text.replace(old, new, 1))
+
+          test = root / "test_reduce_gauntlet.py"
+          text = test.read_text()
           old = '["B", "A"]'
           new = '["recorded-submission:2", "recorded-submission:1"]'
           if text.count(old) != 1:
               raise SystemExit("synthetic family expectation anchor drifted")
-          path.write_text(text.replace(old, new, 1))
+          test.write_text(text.replace(old, new, 1))
+
+          readme = root / "README.md"
+          text = readme.read_text()
+          note = (
+              "\n### Frozen corpus authority\n\n"
+              "The reducer binds the historical shard panel to immutable `canonical-manifest-510ca5c5438fb65d.json` "
+              "(SHA256 `510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924`). "
+              "The live `gauntlet-top30-union/manifest.json` is leaderboard-derived and may advance independently. "
+              "`--corpus` supplies the pinned materializer plus replay bytes; it cannot redefine the 41-submission / 123-fixture universe.\n"
+          )
+          if "### Frozen corpus authority" in text:
+              raise SystemExit("frozen corpus authority note already present unexpectedly")
+          readme.write_text(text.rstrip() + "\n" + note)
           PY
 
       - name: Run reducer contracts normal and optimized
@@ -93,7 +137,11 @@ jobs:
           raw = rg._read_regular_bytes(rg.CANONICAL_MANIFEST_PATH)
           assert hashlib.sha256(raw).hexdigest() == rg.CANONICAL_MANIFEST_SHA256
           assert callable(rg._captured_materializer())
-          print("canonical source pins: PASS")
+          rows, by_id, authority = rg._canonical_materialization(rg.CANONICAL_PACKAGE)
+          assert len(rows) == 123 and len(by_id) == 123
+          assert authority["source_manifest_sha256"] == rg.CANONICAL_MANIFEST_SHA256
+          print("canonical source pins + 123-fixture frozen materialization: PASS")
+          print("canonical materialization:", authority["materialization_manifest_sha256"])
           PY
           find .. -type d -name __pycache__ -prune -exec rm -rf {} +
 
@@ -102,9 +150,9 @@ jobs:
           set -euo pipefail
           git diff --check
           test -z "$(git status --porcelain | grep -E '__pycache__|\.pyc$' || true)"
-          changed="$(git diff --name-only origin/main...HEAD; git diff --name-only)"
+          changed="$(git diff --name-only origin/main...HEAD; git diff --name-only; git ls-files --others --exclude-standard)"
           printf '%s\n' "$changed"
-          unexpected="$(printf '%s\n' "$changed" | sed '/^$/d' | sort -u | grep -Ev '^(\.github/workflows/titan-v5-(v31-v4-gauntlet-reducer|gauntlet-canonical-universe-one-shot)\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py))$' || true)"
+          unexpected="$(printf '%s\n' "$changed" | sed '/^$/d' | sort -u | grep -Ev '^(\.github/workflows/titan-v5-(v31-v4-gauntlet-reducer|gauntlet-canonical-universe-one-shot)\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py|canonical-manifest-510ca5c5438fb65d\.json))$' || true)"
           test -z "$unexpected"
 
       - name: Publish one permanent same-branch successor
@@ -120,11 +168,12 @@ jobs:
           git add \
             revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/README.md \
             revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/reduce_gauntlet.py \
-            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_reduce_gauntlet.py
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_reduce_gauntlet.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/canonical-manifest-510ca5c5438fb65d.json
           git diff --cached --check
           staged="$(git diff --cached --name-only)"
           test -n "$staged"
-          unexpected="$(printf '%s\n' "$staged" | grep -Ev '^(\.github/workflows/titan-v5-gauntlet-canonical-universe-one-shot\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py))$' || true)"
+          unexpected="$(printf '%s\n' "$staged" | grep -Ev '^(\.github/workflows/titan-v5-gauntlet-canonical-universe-one-shot\.yml|revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/(README\.md|reduce_gauntlet\.py|test_reduce_gauntlet\.py|apply_canonical_universe_v4\.py|canonical-manifest-510ca5c5438fb65d\.json))$' || true)"
           test -z "$unexpected"
-          git commit -m "fix(v5): authenticate canonical gauntlet universe across shard indexes"
+          git commit -m "fix(v5): freeze gauntlet evidence universe across shard indexes"
           git push origin HEAD:"$BRANCH"
