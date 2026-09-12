@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: titan-v5-gauntlet-canonical-universe-one-shot
+  group: titan-v5-gauntlet-canonical-universe-one-shot-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
