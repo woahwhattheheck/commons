@@ -23,7 +23,7 @@ python -O -B -m unittest -v test_ablation test_paired
 python -m py_compile ablation.py paired.py test_ablation.py test_paired.py
 ```
 
-Local authoring receipt: 12/12 PASS normal, 12/12 PASS under `-O`, py_compile PASS.
+Local authoring receipt: 12/12 PASS normal, 12/12 PASS under `-O`, py_compile PASS before publication; exact-head CI is authoritative after publication.
 
 ## Matched screen
 
@@ -31,7 +31,7 @@ From this directory on a Linux fleet VM with the pinned engine and exact submitt
 
 ```bash
 python -B paired.py \
-  --kg-root ../../../../.. \
+  --kg-root ../../../.. \
   --engine-dir <pinned-engine-dir> \
   --baseline <exact-v4-archive> \
   --output <fresh-output-dir> \
