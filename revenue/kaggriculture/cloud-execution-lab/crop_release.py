@@ -26,6 +26,19 @@ def units(action):
     return [action.get('farmer') or ['PASS'], *(action.get('hands') or [])]
 
 
+def _public_identity(observation):
+    """Return the canonical public seat/clock pair, rejecting coercible aliases."""
+    if not isinstance(observation, dict):
+        return None
+    player = observation.get('player')
+    step = observation.get('step')
+    if type(player) is not int or player not in (0, 1):
+        return None
+    if type(step) is not int or step < 0:
+        return None
+    return player, step
+
+
 def recipe_compatible(routes, current):
     if current not in (MAIN, MILK_GLUT):
         return False
@@ -52,7 +65,9 @@ def input_price_bounds(mechanics, observation, configuration, route, through=456
     the possible repair separately. No future sale is credited. Eight shops is
     the pinned engine maximum, including duplicate instances.
     """
-    cfg=configuration or {};market=observation['market'];now=int(observation['step'])
+    now=observation.get('step')
+    if type(now) is not int or now < 0:return None
+    cfg=configuration or {};market=observation['market']
     if (market.get('params') not in (None, mechanics.MARKET_PARAMS)
             or cfg.get('shedCapacity',100)!=100 or cfg.get('boardSize',10)!=10
             or cfg.get('maxMarketOrdersPerTurn',10)!=10
@@ -94,17 +109,20 @@ def funded_services(mechanics, observation, configuration, post, route):
     The extra seed and a possible three-wheat repair are prepaid in this
     cash lower bound. Every scheduled HIRE must remain funded through 456.
     """
+    identity=_public_identity(observation)
+    if identity is None:return None, 'unsupported_service_funding_model'
+    seat,now=identity
     cfg=configuration or {};market=observation['market']
-    if (int(observation['step']) != 372 or len(route) <= 456
+    if (now != 372 or len(route) <= 456
             or market.get('params') not in (None, mechanics.MARKET_PARAMS)
             or float(cfg.get('farmHandCostMult', 1)) != 1
-            or int(post['step'])!=372 or int(post['player'])!=int(observation['player'])
+            or _public_identity(post)!=(seat,now)
             or any(len(f['tiles'])!=10 or any(len(row)!=10 for row in f['tiles'])
                    for f in observation['farms']+post['farms'])):
         return None, 'unsupported_service_funding_model'
     prices=input_price_bounds(mechanics,observation,cfg,route)
     if prices is None:return None, 'unsupported_input_price_bound'
-    farm=post['farms'][int(observation['player'])]
+    farm=post['farms'][seat]
     positions=[tuple(farm['farmer']), *map(tuple, farm['hands'])]
     cash=float(farm['money']);hires=int(farm.get('hires_today', len(farm['hands'])))
     initial=cash
@@ -169,8 +187,11 @@ def prepare_release(mechanics, observation, configuration, selected, post,
     actual final return and next-observation seed/site state remain separate.
     """
     report = {'changed': False, 'reason': 'outside_recipe_preparation'}
+    identity=_public_identity(observation)
+    if identity is None:return selected,None,report
+    seat,now=identity
     cfg = configuration or {}
-    if (int(observation['step']) != 372 or post is None
+    if (now != 372 or post is None or _public_identity(post)!=(seat,now)
             or cfg.get('turnsPerDay', 24) != 24
             or cfg.get('episodeSteps', 720) != 720
             or cfg.get('shedCapacity', 100) != 100
@@ -179,7 +200,6 @@ def prepare_release(mechanics, observation, configuration, selected, post,
     if not recipe_compatible(routes, current):
         report['reason'] = 'incompatible_complete_source_rows'
         return selected, None, report
-    seat = int(observation['player'])
     farm = observation['farms'][seat]
     positions = [farm['farmer'], *farm['hands']]
     actions = units(selected)
@@ -191,7 +211,7 @@ def prepare_release(mechanics, observation, configuration, selected, post,
     after = post['farms'][seat]['tiles'][SITE[1]][SITE[0]]
     if (not isinstance(before, dict) or before.get('crop') != 'WHEAT'
             or before.get('kind') != 'PLANT' or before.get('yield_units', 0) <= 0
-            or int(observation['step']) // 24 - before['planted_day'] < mechanics.CROPS['WHEAT']['first_yield_day']
+            or now // 24 - before['planted_day'] < mechanics.CROPS['WHEAT']['first_yield_day']
             or after is not None):
         report['reason'] = 'harvest_did_not_release_expected_crop'
         return selected, None, report
@@ -250,9 +270,9 @@ def prepare_release(mechanics, observation, configuration, selected, post,
 
 def commit_preparation(intent, observation, returned):
     """Bind preparation to the one actual emitted action, not its proposal."""
+    identity=_public_identity(observation)
     if (intent is None or intent.get('status') != 'proposed'
-            or int(observation['step']) != intent['prepared_step']
-            or int(observation['player']) != intent['player']
+            or identity != (intent['player'],intent['prepared_step'])
             or units(returned) != intent['unit_binding']
             or returned.get('market', []) != [intent['seed_order']]):
         return None
@@ -261,10 +281,10 @@ def commit_preparation(intent, observation, returned):
 
 def observed_plant(intent, observation, selected, current, *, actor_owned=False):
     """Use the acquired seed while leaving the preexisting stock floor intact."""
+    identity=_public_identity(observation)
     if (intent is None or intent.get('status') != 'awaiting_seed_and_site_observation'
-            or int(observation['step']) != intent['plant_step']
-            or int(observation['player']) != intent['player'] or current != intent['route']
-            or actor_owned):
+            or identity != (intent['player'],intent['plant_step'])
+            or current != intent['route'] or actor_owned):
         return selected, False
     farm = observation['farms'][intent['player']]
     positions = [farm['farmer'], *farm['hands']]; actions = units(selected)
@@ -288,7 +308,10 @@ def observed_plant(intent, observation, selected, current, *, actor_owned=False)
 
 def _carrots(observation, exclude_site=None):
     """Public/private own carrot sources; seeds are separate operating inputs."""
-    farm = observation['farms'][int(observation['player'])]
+    identity=_public_identity(observation)
+    if identity is None:raise ValueError('invalid_crop_observation_identity')
+    seat,_=identity
+    farm = observation['farms'][seat]
     private = observation['private']
     tiles = [(x, y) for y, row in enumerate(farm['tiles']) for x, tile in enumerate(row)
              if isinstance(tile, dict) and tile.get('crop') == 'CARROT'
@@ -299,8 +322,10 @@ def _carrots(observation, exclude_site=None):
 
 def commit_plant(intent, observation, returned, current):
     """Record only the final emitted change; its success is observed next turn."""
-    if intent is None or int(observation['player']) != intent['player']:
+    identity=_public_identity(observation)
+    if intent is None or identity is None or identity[0] != intent['player']:
         return None
+    seat,now=identity
     actions = units(returned); worker = intent['worker']
     if len(actions) <= worker or actions[worker] != ['PLANT', 'CARROT']:
         return None
@@ -316,9 +341,9 @@ def commit_plant(intent, observation, returned, current):
     if shed or any(carried) or tiles:
         return None
     return dict(intent, status='awaiting_observed_plant',
-                last_observed_step=int(observation['step']),
+                last_observed_step=now,
                 expected_seed_stock=int(observation['private']['seeds'].get('CARROT', 0)) - 1,
-                planted_day=int(observation['step']) // 24,
+                planted_day=now // 24,
                 wheat_reserve_required=3, input_repair_remaining=3,
                 input_repair_receipts=[], crop_receipts=[])
 
@@ -332,7 +357,9 @@ def observe_crop(intent, observation, current):
     """
     if intent is None or intent['status'] in ('proposed', 'awaiting_seed_and_site_observation'):
         return intent
-    now = int(observation['step']); seat = int(observation['player'])
+    identity=_public_identity(observation)
+    if identity is None:return intent
+    seat,now=identity
     prior = int(intent.get('last_observed_step', intent['plant_step']))
     if seat != intent['player'] or now < prior:
         return None
@@ -401,14 +428,15 @@ def observe_crop(intent, observation, current):
 
 def commit_harvest(intent, observation, returned):
     """Bind the existing actor's actual harvest; do not alter a unit action."""
-    if (intent is None or intent['status'] != 'growing'
-            or int(observation['player']) != intent['player']
-            or int(observation['step']) != intent.get('last_observed_step')):
+    identity=_public_identity(observation)
+    if (intent is None or intent['status'] != 'growing' or identity is None
+            or identity[0] != intent['player']
+            or identity[1] != intent.get('last_observed_step')):
         return intent
-    now = int(observation['step']); worker = intent['worker']; x, y = intent['site']
+    seat,now=identity; worker = intent['worker']; x, y = intent['site']
     if now != intent['harvest_step']:
         return intent
-    farm = observation['farms'][int(observation['player'])]
+    farm = observation['farms'][seat]
     positions = [farm['farmer'], *farm['hands']]; actions = units(returned)
     tile = farm['tiles'][y][x]
     shed, carried, other_sites = _carrots(observation, (x, y))
@@ -434,15 +462,15 @@ def commit_deposit(intent, observation, returned, post):
     All carried items, both current collections and every physical purchase
     consume shared room. Current/future sales provide no capacity credit.
     """
-    if (intent is None or intent['status'] != 'carried'
-            or int(observation['player']) != intent['player']
-            or int(observation['step']) != intent.get('last_observed_step')):
+    identity=_public_identity(observation)
+    if (intent is None or intent['status'] != 'carried' or identity is None
+            or identity[0] != intent['player']
+            or identity[1] != intent.get('last_observed_step')):
         return intent
-    now = int(observation['step'])
+    seat,now=identity
     if now != intent['deposit_step']:
         return intent
-    if (post is None or int(post['step']) != now
-            or int(post['player']) != intent['player']):
+    if _public_identity(post) != (seat,now):
         return dict(intent, status='input_recovery_only', receipt_failure='deposit_snapshot_unbound')
     private = post['private']; worker = intent['worker']
     shed, carried, other_sites = _carrots(post)
@@ -468,13 +496,15 @@ def observe_crop_sale(intent, observation, fill_result):
     """Use the existing own-fill ledger; uncertain fills cannot create credit."""
     if intent is None or intent['status'] != 'awaiting_observed_sale':
         return intent
-    if (int(observation['step'])==intent['sale_step']
-            and int(observation['player'])==intent['player']):return intent
+    identity=_public_identity(observation)
+    if identity is None:return intent
+    seat,now=identity
+    if now==intent['sale_step'] and seat==intent['player']:return intent
     p = deepcopy(intent); binding = (fill_result or {}).get('binding', {})
     if (binding.get('step') != p['sale_step'] or binding.get('player') != p['player']
-            or int(observation['player']) != p['player']
+            or seat != p['player']
             or binding.get('action_sha256') != p.get('sale_action_sha256')
-            or int(observation['step']) != p['sale_step'] + 1
+            or now != p['sale_step'] + 1
             or (fill_result or {}).get('status') not in ('reconciled', 'ambiguous')):
         p.update(status='sale_attribution_unknown', receipt_failure='sale_receipt_unbound')
         return p
@@ -501,7 +531,7 @@ def observe_crop_sale(intent, observation, fill_result):
     p['status'] = 'sold' if remaining == 0 else 'deposited'
     if sold:
         p['crop_receipts'].append({'kind': 'sale', 'step': p['sale_step'],
-                                  'observed_at': int(observation['step']), 'units': sold,
+                                  'observed_at': now, 'units': sold,
                                   'cash_receipt': None})
     return p
 
@@ -517,13 +547,14 @@ def propose_input_repair(mechanics,intent,observation,configuration,selected,pos
     """
     report={'changed':False,'reason':'no_due_input_repair'}
     if intent is None:return selected,None,report
-    now=int(observation['step']);n=int(intent.get('input_repair_remaining',0))
+    identity=_public_identity(observation)
+    if identity is None:return selected,None,report
+    seat,now=identity;n=int(intent.get('input_repair_remaining',0))
     if (n<=0 or now<intent['deposit_step'] or now>576
             or intent.get('input_repair_pending') or intent.get('input_repair_unknown')
-            or int(observation['player'])!=intent['player']
-            or now!=intent.get('last_observed_step')):
+            or seat!=intent['player'] or now!=intent.get('last_observed_step')):
         return selected,None,report
-    if (post is None or int(post['step'])!=now or int(post['player'])!=intent['player']):
+    if _public_identity(post)!=(seat,now):
         report['reason']='repair_snapshot_unbound';return selected,None,report
     orders=selected.get('market',[])
     if any(a and len(a)>1 and a[:2]==['BUY_PRODUCT','WHEAT'] for a in orders):
@@ -602,11 +633,13 @@ def propose_input_repair(mechanics,intent,observation,configuration,selected,pos
 
 def commit_input_repair(intent,proposal,observation,returned,post):
     if intent is None or proposal is None:return intent
-    now=int(observation['step']);slot=proposal['slot'];n=proposal['units']
-    if (now!=proposal['step'] or int(observation['player'])!=proposal['player']
+    identity=_public_identity(observation)
+    if identity is None:return intent
+    seat,now=identity;slot=proposal['slot'];n=proposal['units']
+    if (now!=proposal['step'] or seat!=proposal['player']
             or units(returned)!=proposal['unit_binding']
             or returned.get('market',[])!=proposal['expected_market']
-            or post is None or int(post['step'])!=now or int(post['player'])!=proposal['player']):
+            or _public_identity(post)!=(proposal['player'],now)):
         if any(a and len(a)>2 and a[:2]==['BUY_PRODUCT','WHEAT'] and a[2]>0
                for a in returned.get('market',[])[:10]):
             return dict(intent,input_repair_unknown=True)
@@ -622,11 +655,13 @@ def commit_input_repair(intent,proposal,observation,returned,post):
 
 def observe_input_repair(intent,observation,fill_result):
     if intent is None or not intent.get('input_repair_pending'):return intent
-    pending=intent['input_repair_pending'];now=int(observation['step'])
+    identity=_public_identity(observation)
+    if identity is None:return intent
+    seat,now=identity;pending=intent['input_repair_pending']
     if now<=pending['step']:return intent
     p=deepcopy(intent);p.pop('input_repair_pending',None)
     binding=(fill_result or {}).get('binding',{})
-    valid=(now==pending['step']+1 and int(observation['player'])==pending['player']
+    valid=(now==pending['step']+1 and seat==pending['player']
            and binding.get('step')==pending['step'] and binding.get('player')==pending['player']
            and binding.get('action_sha256')==pending['action_sha256']
            and (fill_result or {}).get('status') in ('reconciled','ambiguous'))
@@ -676,11 +711,13 @@ def offer_crop(intent, observation, selected):
     The seller may defer it. This proposal neither bypasses its valuation nor
     counts an emitted request as a fill. Every inherited row keeps its index.
     """
+    identity=_public_identity(observation)
+    if identity is None:return selected,False
+    seat,now=identity
     if (intent is None or intent['status'] != 'deposited'
-            or int(observation['player']) != intent['player']
-            or int(observation['step']) != intent.get('last_observed_step')
+            or seat != intent['player'] or now != intent.get('last_observed_step')
             or intent.get('offered_to_seller')
-            or not intent['outlet_step'] <= int(observation['step']) <= 576):
+            or not intent['outlet_step'] <= now <= 576):
         return selected, False
     n = int(intent['sale_quantity_remaining'])
     shed, carried, sites = _carrots(observation)
@@ -707,10 +744,12 @@ def offer_crop(intent, observation, selected):
 def commit_crop_sale(intent, observation, returned, post, *, offered=False,
                      seller_completed=False):
     """Bind final slots once, sharing the runtime's already completed snapshot."""
-    if (intent is None or intent['status'] != 'deposited'
-            or int(observation['player']) != intent['player']
-            or int(observation['step']) != intent.get('last_observed_step')):
+    identity=_public_identity(observation)
+    if (intent is None or intent['status'] != 'deposited' or identity is None
+            or identity[0] != intent['player']
+            or identity[1] != intent.get('last_observed_step')):
         return intent
+    seat,now=identity
     p = deepcopy(intent)
     if offered and seller_completed:
         p['offered_to_seller'] = True  # Planning ownership only, not a sale.
@@ -724,8 +763,7 @@ def commit_crop_sale(intent, observation, returned, post, *, offered=False,
         quantity = _carrot_sell_quantity(a)
         if quantity is not None:
             rows.append((slot, quantity))
-    if (post is None or int(post['step']) != int(observation['step'])
-            or int(post['player']) != p['player']):
+    if _public_identity(post) != (seat,now):
         p.update(status='sale_attribution_unknown', receipt_failure='sale_snapshot_unbound')
         return p
     shed, carried, sites = _carrots(post)
@@ -734,7 +772,7 @@ def commit_crop_sale(intent, observation, returned, post, *, offered=False,
         return p
     if not rows:
         return p
-    p.update(status='awaiting_observed_sale', sale_step=int(observation['step']),
+    p.update(status='awaiting_observed_sale', sale_step=now,
              sale_orders=rows, offered_to_seller=True,
              sale_action_sha256=hashlib.sha256(json.dumps(returned, sort_keys=True,
                  separators=(',', ':'), allow_nan=False).encode()).hexdigest())

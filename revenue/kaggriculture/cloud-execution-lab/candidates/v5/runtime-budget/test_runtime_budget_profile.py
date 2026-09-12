@@ -82,6 +82,30 @@ class RuntimeBudgetProfileTests(unittest.TestCase):
         self.assertEqual(incomplete["fallback_stage_counts"], {"selected_transform": 1})
         self.assertEqual(incomplete["missing_expected"][0]["step"], 12)
 
+    def test_unexpected_receipts_cannot_dilute_declared_design(self):
+        declared = row(
+            "v5c:a", 7, 0, 0, 0.010,
+            status="deadline_fallback", stage="cold_start",
+        )
+        rows = [declared] + [
+            row("v5c:a", 7, 0, step, 0.010)
+            for step in range(1, 11)
+        ]
+        expected = [
+            {"candidate": "v5c:a", "seed": 7, "seat": 0, "step": 0},
+        ]
+        report = profile_rows(
+            rows,
+            budget_seconds=0.1,
+            max_fallback_rate=0.1,
+            expected_rows=expected,
+        )
+        self.assertLessEqual(report["deadline_fallback_rate"], 0.1)
+        self.assertFalse(report["expected_complete"])
+        self.assertFalse(report["promotion_ready"])
+        self.assertEqual(report["classification"], "BLOCK")
+        self.assertEqual(len(report["unexpected_extra"]), 10)
+
     def test_fallback_ceiling_and_usable_budget_are_both_hard_gates(self):
         rows = [
             row("v5c:a", 3, 0, 0, 0.04),

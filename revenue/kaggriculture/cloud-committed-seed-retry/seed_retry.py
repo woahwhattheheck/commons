@@ -40,9 +40,22 @@ def _active_market(queue: Any, maximum: int) -> list:
     return queue[:maximum]
 
 
+def _is_dynamic_product_order(order: Any) -> bool:
+    """Match the pinned engine's executable BUY_PRODUCT grammar."""
+    if (not isinstance(order, list) or len(order) < 3
+            or order[0] != 'BUY_PRODUCT'
+            or order[1] not in ('WHEAT', 'FERTILIZER')):
+        return False
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError):
+        return False
+    return quantity > 0
+
+
 def _has_dynamic_product_obligation(queues: list[Any], maximum: int) -> bool:
     return any(
-        order and order[0] == 'BUY_PRODUCT'
+        _is_dynamic_product_order(order)
         for queue in queues
         for order in _active_market(queue, maximum)
     )
@@ -71,7 +84,7 @@ def _prefix_cash_reserve(runtime: Any, obs: Mapping[str, Any], cfg: Mapping[str,
         for order in _active_market(queue, maximum):
             spend, hires = _order_spend(order, farm, inventory, params, hires, cfg)
             cost += spend
-            if (order and order[0] == 'BUY_LAND'
+            if (isinstance(order, list) and order and order[0] == 'BUY_LAND'
                     and len(farm['unlocked_quadrants']) <= len(m.LAND_ORDER)):
                 farm['unlocked_quadrants'].append(
                     m.LAND_ORDER[len(farm['unlocked_quadrants']) - 1])

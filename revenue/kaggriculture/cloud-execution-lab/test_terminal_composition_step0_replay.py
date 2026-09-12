@@ -68,6 +68,36 @@ class TerminalCompositionReplayTests(unittest.TestCase):
         self.assertEqual([len(instance.calls) for instance in created], [4, 1])
         self.assertEqual(terminal_composition._LAST_STEP, 3)
 
+    def test_public_step_is_exact_before_wrapper_state_changes(self):
+        old = _StubTerminalSell("old")
+        terminal_composition._INSTANCE = old
+        terminal_composition._LAST_STEP = 5
+
+        rejected = [
+            {},
+            {"step": None},
+            {"step": True},
+            {"step": "4"},
+            {"step": 4.0},
+            {"step": -1},
+        ]
+        with patch.object(terminal_composition, "TerminalSell") as factory:
+            for observation in rejected:
+                with self.subTest(observation=observation):
+                    with self.assertRaises((TypeError, ValueError)):
+                        terminal_composition.agent(observation, {})
+                    self.assertIs(terminal_composition._INSTANCE, old)
+                    self.assertEqual(terminal_composition._LAST_STEP, 5)
+                    self.assertEqual(old.calls, [])
+                    factory.assert_not_called()
+
+        self.assertEqual(
+            terminal_composition.agent({"step": 5}, {}),
+            {"token": "old", "calls": 1},
+        )
+        self.assertIs(terminal_composition._INSTANCE, old)
+        self.assertEqual(terminal_composition._LAST_STEP, 5)
+
     def test_failed_cold_start_publishes_nothing_and_retry_builds_fresh(self):
         failed = _FailingTerminalSell("failed-cold-start")
         retry = _StubTerminalSell("retry-cold-start")
