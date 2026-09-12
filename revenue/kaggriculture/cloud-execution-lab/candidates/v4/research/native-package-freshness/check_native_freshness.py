@@ -198,6 +198,18 @@ def verify_freshness(
             raise InvalidEvidence(f"checkout HEAD drift: expected {expected_commit}, got {head}")
         base["commit"] = head
 
+        # Resolve every tracked source identity through the immutable commit id,
+        # never through the moving HEAD ref.  Otherwise an A->B checkout race
+        # after the initial HEAD check can authenticate B bytes while the report
+        # still attests commit A.
+        tracked_blobs: dict[str, str] = {}
+        for name in CORE_PATHS:
+            repo_rel = live_rel / name
+            tracked_blob = _git(repo_root, "rev-parse", f"{expected_commit}:{repo_rel.as_posix()}")
+            if not _is_hex(tracked_blob, 40):
+                raise InvalidEvidence(f"tracked core identity is not a Git blob id: {repo_rel.as_posix()}")
+            tracked_blobs[name] = tracked_blob
+
         actual_archive_sha256, package = _read_archive_core(archive, expected_archive_sha256)
         base["archive_sha256"] = actual_archive_sha256
 
@@ -207,9 +219,11 @@ def verify_freshness(
             repo_rel = live_rel / name
             live = _read_live_file(repo_root, repo_rel)
             live_blob = _git_blob(live)
-            tracked_blob = _git(repo_root, "rev-parse", f"HEAD:{repo_rel.as_posix()}")
-            if not _is_hex(tracked_blob, 40) or tracked_blob != live_blob:
-                raise InvalidEvidence(f"live file is not byte-identical to HEAD: {repo_rel.as_posix()}")
+            tracked_blob = tracked_blobs[name]
+            if tracked_blob != live_blob:
+                raise InvalidEvidence(
+                    f"live file is not byte-identical to expected commit: {repo_rel.as_posix()}"
+                )
             packed = package[name]
             package_blob = _git_blob(packed)
             same = live == packed
@@ -231,6 +245,16 @@ def verify_freshness(
                     },
                 }
             )
+
+        # A branch ref can move even if the worktree bytes stay unchanged.  A
+        # final ref check keeps the report's commit custody true for the full
+        # verification interval rather than only at entry.
+        head_after = _git(repo_root, "rev-parse", "HEAD")
+        if head_after != expected_commit:
+            raise InvalidEvidence(
+                f"checkout HEAD changed during verification: expected {expected_commit}, got {head_after}"
+            )
+
         base["files"] = records
         base["stale_paths"] = stale
         base["verdict"] = "STALE" if stale else "CURRENT"
