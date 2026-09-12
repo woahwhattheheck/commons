@@ -48,8 +48,9 @@ def _shape(obs,selected):
     if not isinstance(selected.get("farmer"),list) or not isinstance(selected.get("hands"),list) or len(selected["hands"])!=len(hands):return False
     orders=selected.get("market"); return isinstance(orders,list) and len(orders)<=MAX_ORDERS
 
-def _future_conflict(route):
-    for a in route[12*24:min(len(route),30*24)]:
+def _future_conflict(route,start=12*24):
+    if not _nn(start):return True
+    for a in route[start:min(len(route),30*24)]:
         orders=a.get("market") or []
         if any(o and (o[0]=="BUY_LAND" or o[:2]==["BUY_ANIMAL","SHEEP"]) for o in orders):return True
         cmds=[a.get("farmer") or ["PASS"],*(a.get("hands") or [])]
@@ -86,7 +87,7 @@ def _stock(obs,act):
                 add=min(held,max(0,SHED_CAPACITY-total)); stock[item]=stock.get(item,0)+add; total+=add
     return stock
 
-def _state():return {"last":-1,"day":-1,"committed":False,"pending":None,"workers":{},"work":{},"credit":{"WOOL":0,"FERTILIZER":0},"rescue":0,"route_id":None,"route_sha256":None,"route":None,"telemetry":{k:0 for k in TELEMETRY}}
+def _state():return {"last":-1,"day":-1,"committed":False,"pending":None,"workers":{},"work":{},"credit":{"WOOL":0,"FERTILIZER":0},"rescue":0,"route_id":None,"route_sha256":None,"telemetry":{k:0 for k in TELEMETRY}}
 
 @dataclass
 class V233V234SixSheepCurrentABI:
@@ -112,12 +113,10 @@ class V233V234SixSheepCurrentABI:
     def _apply(self,obs,selected,snapshot,live,st):
         step=obs["step"]; day=step//24; hour=step%24; st["last"]=step
         if not 12<=day<=29:return _identity(selected)
-        if st["route"] is None:
+        if st["route_id"] is None:
             if day!=12 or _future_conflict(live):st["telemetry"]["route_declines"]+=1; return _identity(selected)
-            st["route"]=copy.deepcopy(live); st["route_id"]=snapshot.route_id; st["route_sha256"]=snapshot.route_sha256
-        elif snapshot.route_id!=st["route_id"] or snapshot.route_sha256!=st["route_sha256"]:
-            st["telemetry"]["route_declines"]+=1; return _identity(selected)
-        route=st["route"]; farm=obs["farms"][obs["player"]]; private=obs["private"]
+            st["route_id"]=snapshot.route_id; st["route_sha256"]=snapshot.route_sha256
+        farm=obs["farms"][obs["player"]]; private=obs["private"]
         if st["day"]!=day:st["day"]=day; st["workers"]={}; st["work"]={}; st["rescue"]=0
         for actor,prev in list(st["work"].items()):
             if prev["step"]!=step-1 or actor>=len(private["inventories"]):continue
@@ -133,7 +132,7 @@ class V233V234SixSheepCurrentABI:
                 for i in range(2):st["workers"][pending["first"]+i]=[(x,5+i) for x in range(5,8)]
                 st["telemetry"]["workers_confirmed"]+=2
                 if pending["initial"]:st["committed"]=True; st["telemetry"]["committed"]+=1
-        action=self._request(obs,selected,st,route,day,hour)
+        action=self._request(obs,selected,st,live,day,hour)
         if not st["committed"]:return action
         result=copy.deepcopy(action); cmds=[result["farmer"],*result["hands"]]; st["work"]={}
         for actor,targets in st["workers"].items():
@@ -150,6 +149,7 @@ class V233V234SixSheepCurrentABI:
     def _request(self,obs,selected,st,route,day,hour):
         if hour>(2 if st["committed"] else 1) or st.get("requested_day")==day:return _identity(selected)
         if not st["committed"] and (day!=12 or not self._eligible(obs,route)):return _identity(selected)
+        if st["committed"] and _future_conflict(route,obs["step"]):st["telemetry"]["route_declines"]+=1; return _identity(selected)
         planned=_day(route,day); expected=_max_hands(planned); farm=obs["farms"][obs["player"]]
         if expected is None or any(o and o[0]=="HIRE" for a in planned[hour+1:] for o in (a.get("market") or [])):return _identity(selected)
         market=selected["market"]; parent_hires=sum(bool(o) and o[0]=="HIRE" for o in market)
