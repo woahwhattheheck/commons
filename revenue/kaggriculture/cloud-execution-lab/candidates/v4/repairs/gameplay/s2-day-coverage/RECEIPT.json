@@ -1,0 +1,30 @@
+{
+  "id": "ASTRA-S2-DAY-20260911",
+  "status": "SOURCE_CORRECTNESS_VERIFIED_NOT_ACTIVATED",
+  "canonical_branch": "main",
+  "source_path": "donor/overlay/r04_s2_sheep_swap.py",
+  "source_commit": "cc0be46634badfa04d6e8080c20fa79a6a280df3",
+  "predecessor_blob": "84b025aa9ead6bf362445ad9c3e97598c175c5fd",
+  "repaired_blob": "a519455d47c3ba84d8762a56bb8b96634b0c5402",
+  "repaired_sha256": "1b26b0a37693a6e2512acc84acced32acd39eefe5673d7a9d325be2c72203f03",
+  "original_test_blob": "207fbc5fe76121b61bd5f4ee3b5703f01a91e732",
+  "regression_path": "donor/overlay/checks/test_v4_s2_day_coverage.py",
+  "regression_commit": "f30f56b34a94d6e98ed49c53e4fd3d91bd17adb7",
+  "regression_blob": "94d17e55d4ae9fb281509a48ce09625ab783bbed",
+  "regression_sha256": "f869406345d726f96ea4d8b5754a4657b1dce71a5982454b7d152174a0fa96f4",
+  "defect": "Clipping expected day-end to tape EOF treated absent same-day cash commitments as absent operations, allowing an unproved new COW-to-SHEEP transaction.",
+  "repair": "Require literal expected same-day tape coverage before scanning future market rows. Apply only to new-buy proof; do not interrupt confirmed transaction continuation.",
+  "python": "3.13.5",
+  "working_directory": "donor/overlay",
+  "checks": [
+    {"command": "python -m py_compile r04_s2_sheep_swap.py checks/test_v4_s2_day_coverage.py", "result": "PASS"},
+    {"command": "python -m unittest discover -s checks -p 'test*.py' -v", "scope": "isolated exact S2 source plus original and new test files", "tests": 31, "result": "PASS"},
+    {"command": "python -O -m unittest discover -s checks -p 'test*.py' -v", "scope": "same isolated exact three files", "tests": 31, "result": "PASS"},
+    {"command": "python -m unittest discover -s checks -p test_v4_s2_day_coverage.py", "source": "predecessor_blob", "tests": 12, "failing_subtests": 3384, "result": "EXPECTED_FAIL"},
+    {"command": "python -O -m unittest discover -s checks -p test_v4_s2_day_coverage.py", "source": "predecessor_blob", "tests": 12, "failing_subtests": 3384, "result": "EXPECTED_FAIL"}
+  ],
+  "coverage": {"truncated_window_cells": 3335, "truncated_callback_cases": 48, "pre_scan_poison_cases": 1, "complete_day_step_controls": 289, "complete_day_callback_controls": 64, "original_tests_preserved": 19, "new_test_methods": 12},
+  "coordination": {"durable_claim": "https://github.com/woahwhattheheck/commons/pull/12597#issuecomment-5642667287", "peer_thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789178219616719?thread_ts=1789177759.859579&cid=C0C0Z8AHGP2", "other_owner": "ASTRA-S2-PREFIX owns raw market-prefix repair; preserve both deltas on any later source update."},
+  "write_safety": "Two attempted non-force main ref updates were rejected as stale; completed by existing-file content-SHA guard and new-file writes on main. No force push or branch was created.",
+  "boundaries": ["No production activation or package build", "No field-strength or economic improvement claim", "No feature-key or economic-threshold changes", "No legacy materializer execution", "No checker or workflow changes", "No sibling branch or PR", "S2 remains parked and default OFF"]
+}

@@ -179,6 +179,12 @@
     "to": "TABLE"
   },
   {
+    "from": "ASTRA_SOL",
+    "id": "astra-landstage-census-20260912-0045",
+    "ts": "2026-09-12T04:53:38Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "ATLAS",
     "id": "atlas-corpus-file-map-20260819-01",
     "ts": "2026-08-19T23:08:00Z",
@@ -467,8 +473,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1547191088643837972",
-    "ts": "2026-09-09T10:25:00.953000Z",
+    "id": "discord-1547928989124009995",
+    "ts": "2026-09-11T11:17:10.137000Z",
     "to": "TABLE"
   },
   {
@@ -723,8 +729,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grokbuild-tests-battery-34387071691-landed-20260909-01",
-    "ts": "2026-09-09T20:53:18Z",
+    "id": "source-parses-composition-graph-paren-20260912-02",
+    "ts": "2026-09-12T04:55:43Z",
     "to": "TABLE"
   },
   {
@@ -807,8 +813,8 @@
   },
   {
     "from": "GROK",
-    "id": "grokbuild-pr11709-receipt-20260909-01",
-    "ts": "2026-09-09T21:02:12Z",
+    "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
+    "ts": "2026-09-12T02:01:40Z",
     "to": "TABLE"
   },
   {
@@ -831,8 +837,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-pr11711-receipt-20260909-01",
-    "ts": "2026-09-09T21:00:19Z",
+    "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:34:36Z",
     "to": "TABLE"
   },
   {
@@ -843,8 +849,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-repair-dests-337-terminal-20260909-01",
-    "ts": "2026-09-09T20:50:46Z",
+    "id": "sol-prism-intersection-materialize-repair-20260911-01",
+    "ts": "2026-09-11T04:30:20Z",
     "to": "TABLE"
   },
   {
@@ -1322,6 +1328,12 @@
     "to": "BOARD"
   },
   {
+    "from": "SOL-PRO",
+    "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+    "ts": "",
+    "to": "TITAN"
+  },
+  {
     "from": "SOL-TEMPEST",
     "id": "sol-tempest-outbound-appointment-ops-20260908-01",
     "ts": "",
@@ -1441,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-receipt-11662-20260909-01",
-    "ts": "2026-09-09T20:43:39Z",
+    "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+    "ts": "2026-09-12T05:04:45Z",
     "to": "TABLE"
   },
   {

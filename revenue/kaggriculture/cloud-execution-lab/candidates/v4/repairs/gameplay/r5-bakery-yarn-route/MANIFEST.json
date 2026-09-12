@@ -1,0 +1,30 @@
+{
+  "name": "r5-bakery-yarn-route",
+  "status": "preserved_generator_level_donor_not_integrated",
+  "source_pr": 12624,
+  "source_pr_state": "closed_retired_noop",
+  "retired_source_head": "3d7d07ccc0826fd9aef5a7b03791939b7e21925b",
+  "source_base": "ef776d022606945835dca0e561bb8a383d9d1e0d",
+  "authoritative_detached_donor": "6b915d3fb1f4496cf8160f1e9b467344d885ef51",
+  "authoritative_donor_parent": "41998c54e9f06fa38d60e59202d103cf5ba35247",
+  "legacy_generator_blob": "c9762594e1df7bd328ab8ca765e65a477d7f65e8",
+  "focused_test_blob": "5ca35699787dfdf8ab97ff6fc1b9ca1baf2ec7e9",
+  "key": "r04_bakery_yarn_route",
+  "default": false,
+  "mechanism_contract": [
+    "leave published SHOP_PLANS[(BAKERY,YARN_STORE)] == 3 unchanged",
+    "when explicitly enabled, only at ROUTE_STEP=144 and exact full shop list [BAKERY,YARN_STORE], select existing tape 9",
+    "require exact non-bool standard episode/timing/board/unlock/shed/order/hire configuration: episodeSteps=720, turnsPerDay=24, boardSize=10, townShopUnlockInterval=3, shedCapacity=100, maxMarketOrdersPerTurn=10, farmHandCostMult=1",
+    "accept marketParams only absent, null, or exact empty dict",
+    "third-shop prefixes, neighboring/reversed pairs, missing config and nonstandard/bool scalar config remain unchanged"
+  ],
+  "integration_contract": [
+    "main/candidates/v4 is the sole integration line",
+    "these are exact legacy donor bytes only; do not execute legacy apply_v4 against the current production ABI",
+    "do not replace or overwrite the shared modern composer/materializer with the legacy generator",
+    "extract the R5 semantic seam once into the then-current shared composer/runtime in source order",
+    "remain default-OFF until exact-current affected-cell plus unaffected-control evidence authorizes promotion"
+  ],
+  "validation_boundary": "The final detached donor closes the remaining runtime-contract holes identified in review. No current-main materialized-package, hosted, or economics acceptance is claimed by this custody manifest.",
+  "evidence_note": "Historical BAKERY->YARN evidence was sparse (three leader-ledger cells); older-base positive margins are hypothesis evidence, not promotion authority."
+}

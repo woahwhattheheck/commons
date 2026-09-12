@@ -39,6 +39,8 @@
       provider.livemode === true &&
       provider.charges_enabled === true &&
       provider.payouts_enabled === true &&
+      provider.card_payments === "active" &&
+      provider.transfers === "active" &&
       Array.isArray(provider.currently_due) &&
       provider.currently_due.length === 0;
   }

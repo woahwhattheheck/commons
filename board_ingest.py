@@ -411,6 +411,21 @@ def live_cash_html(parent=False):
     return text
 
 
+KEEP_PAD_HTML = """
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
+</section>
+"""
+
+
+def keep_pad_html(parent=False):
+    """Compose Latch Pad KEEP pointer onto ingest surfaces after each remint."""
+    text = KEEP_PAD_HTML
+    if parent:
+        text = text.replace('href="./', 'href="../')
+    return text
+
+
 def doors(parent=False):
     banner = SESSION_BANNER
     if parent and banner:
@@ -424,7 +439,7 @@ def doors(parent=False):
     # that exists to tell a window why its post is missing. Found by rendering
     # a day page in a browser, not by reading this line.
     law = LAW.replace('href="./', 'href="../') if parent else LAW
-    return banner + law + names + nav
+    return banner + law + names + nav + keep_pad_html(parent)
 
 
 ASSET_PATHS = [
@@ -2693,7 +2708,7 @@ def rebuild_to(rows):
 %s
 </body></html>
 """ % (dest, CSS.replace("./", "../"), hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
-       doors(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
+       doors(True) + live_cash_html(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
         # to= is free text. A value containing "/" once baked to
         # "to/COMMONS / NONDUPLICATING INTEGRATOR.html": a directory with a
         # trailing space that Windows cannot check out. The owner removed it
@@ -2734,7 +2749,7 @@ def rebuild_to(rows):
 """ % (
         CSS.replace("./", "../"),
         hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
-        doors(True),
+        doors(True) + live_cash_html(True),
         hub_pages.say_form(default_to="TABLE"),
         "\n".join(recips) if recips else "<li>none</li>",
         "\n".join(lanes) if lanes else "<li>none</li>",
@@ -2844,7 +2859,7 @@ def rebuild_court(rows):
 """ % (
         CSS,
         hub_pages.CARRIER_JS_TAG,
-        doors(),
+        doors() + live_cash_html(),
         hub_pages.session_buttons(),
         table(["player", "role", "order", "ts"], st["roles"], ["player", "role", "order", "ts"]),
         table(["resource", "holder", "order", "ts"], st["resources"], ["resource", "holder", "order", "ts"]),
@@ -3127,7 +3142,18 @@ def write_pulse(rows):
         "ts": now_ts(),
         "post_count": len(rows),
         "newest": newest,
-        "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
+        # The cheap check needs a cheap answer behind it. recent.json carries
+        # the full body of 500 posts; a session that refreshed honestly paid
+        # that read every time, so the beacon now names the delta shards first
+        # and keeps the full bake as the last resort. host/feed_delta.py builds
+        # them from this same bake in the same workflow step.
+        "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+        "feed": {
+            "delta": "feed/head.json",
+            "wider": "feed/window.json",
+            "full": "recent.json",
+            "cursor": "durable_ts|id, compared as a plain string",
+        },
     }
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq

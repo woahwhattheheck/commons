@@ -1,0 +1,13 @@
+{
+  "id": "titan-s11-slack-probe-20260909-01",
+  "verb": "SLACK_POST",
+  "target": "C0BUH19DW80",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {channel:C0BUH19DW80,text:S11 probe}: not found\n",
+  "executed_at": "2026-09-10T23:42:19.972852Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

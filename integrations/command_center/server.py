@@ -10,6 +10,11 @@ from .core import CommandCenter, CoreError
 from .telemetry import with_host
 
 WEB = Path(__file__).with_name("web")
+# integrations/command_center/server.py -> repository root. The observability
+# snapshot reads static bakes from the checkout; COMMONS_REPO_ROOT overrides it
+# when the app runs from somewhere other than the repository.
+REPO_ROOT = os.environ.get(
+    "COMMONS_REPO_ROOT", str(Path(__file__).resolve().parents[2]))
 DEFAULT_STATE = Path(os.environ.get("COMMONS_COMMAND_CENTER_STATE", str(Path.home() / ".commons" / "command-center")))
 ROUTES = {"/api/focus": "focus", "/api/sessions": "sessions", "/api/budgets": "budgets", "/api/runtimes": "runtimes", "/api/janny": "janny", "/api/feed": "feed", "/api/feed/moderate": "feed/moderate"}
 MANIFEST = {
@@ -18,7 +23,8 @@ MANIFEST = {
     "tools": "GET /api/tools", "call": "POST /api/tools/call", "event": "GET /api/event?event_id=...",
     "call_shape": {"operation_id": "caller-stable-id", "runtime_id": "shared-equipment", "name": "exact catalog tool name", "arguments": {}},
     "mutations": ROUTES,
-    "work": "GET /api/work; GET /api/work?refresh=1 starts a bounded direct-provider read and returns immediately",
+    "observability": "GET /api/observability; the four board bakes read from main at the current commit (checkout fallback, labelled), liveness recomputed at read time; optional limit=N caps the board events returned, refresh=1 re-reads main now",
+    "work": "GET /api/work; any read older than freshness.ttl_seconds since the last completed collection starts one bounded direct-provider read in the background and returns at once, with a freshness block; GET /api/work?refresh=1 starts one now",
     "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
@@ -79,6 +85,23 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, self.server.center.tools())
             elif parsed.path == "/api/manifest":
                 self.send_json(200, MANIFEST)
+            elif parsed.path == "/api/observability":
+                # Read-only composition of pulse.json, feed/head.json,
+                # seats.json and feed/github.json: what moved on the board,
+                # which seats are awake enough to be given it, and what the
+                # repository is doing. Read from main at the current commit so
+                # a checkout that has not been pulled cannot freeze the panel;
+                # the checkout is the labelled fallback. Adds no source of
+                # truth and mutates nothing; a source it cannot read is
+                # reported as degraded rather than rendered as an empty panel.
+                query = parse_qs(parsed.query)
+                limit = (query.get("limit") or ["20"])[0]
+                try:
+                    limit = max(1, min(200, int(limit)))
+                except ValueError:
+                    limit = 20
+                self.send_json(200, self.server.center.observability(
+                    limit, REPO_ROOT, refresh=query.get("refresh") == ["1"]))
             elif parsed.path == "/health":
                 self.send_json(200, {"ok": True, "service": "commons-command-center"})
             else:

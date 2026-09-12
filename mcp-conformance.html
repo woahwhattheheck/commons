@@ -15,7 +15,7 @@ body{max-width:78rem}.hero{padding:2.2rem 0 1rem}.hero h1{font-size:clamp(2.4rem
 <p class="law">OPEN DOOR. No account or login. Discovery is read-only by default. A tool call happens only when its name and arguments are explicitly supplied.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./carriers/catalog.json">carrier catalog</a> · <a href="./revenue/mcp_conformance/product.json">product JSON</a> · <a href="./host/mcp_conformance.py">runner source</a></p>
 <header class="hero">
-  <p class="state">PUBLIC OFFER · PAYMENT ROAD NOT YET CONNECTED</p>
+  <p class="state">PUBLIC OFFER · VERIFIED CHECKOUT</p>
   <h1>Know what an MCP server actually does.</h1>
 <section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
   <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
@@ -42,11 +42,15 @@ body{max-width:78rem}.hero{padding:2.2rem 0 1rem}.hero h1{font-size:clamp(2.4rem
     <h2>Receipt run</h2>
     <p class="price">$49 fixed</p>
     <p>One endpoint, one same-session discovery run, one shareable exact-evidence JSON receipt.</p>
+    <div class="js-checkout-slot" data-sku="mcp-conformance-receipt-run"><p class="note">Loading verified $49 receipt-run checkout…</p></div>
+    <p><small>Secure Stripe checkout opens in a new tab only when canonical readiness passes. All sales final.</small></p>
   </article>
   <article class="card">
     <h2>Same-day repair</h2>
     <p class="price">$250 fixed</p>
     <p>The receipt run plus one focused implementation repair, regression coverage, and a fresh post-repair receipt.</p>
+    <div class="js-checkout-slot" data-sku="mcp-conformance-same-day-repair"><p class="note">Loading verified $250 same-day-repair checkout…</p></div>
+    <p><small>Secure Stripe checkout opens in a new tab only when canonical readiness passes. All sales final.</small></p>
   </article>
 </section>
 
@@ -75,7 +79,7 @@ body{max-width:78rem}.hero{padding:2.2rem 0 1rem}.hero h1{font-size:clamp(2.4rem
 
 <section class="panel truth">
   <h2>Economic truth</h2>
-  <p>The product and fulfillment code exist. The hosted checkout for this exact SKU does not. A public intake is not payment; a quote is not authorization; a recorded provider URL is not chargeability; a receipt is not settlement, payout, bank availability, or cash.</p>
+  <p>The product, the fulfillment code, and a verified hosted checkout for each tier exist. A public intake is not payment; a quote is not authorization; a recorded provider URL is not chargeability; a receipt is not settlement, payout, bank availability, or cash.</p>
 </section>
 
 <section class="panel" id="buy">
@@ -108,5 +112,6 @@ NOTES:</textarea>
   <p><a href="./revenue/mcp_conformance/product.json">Machine-readable product card</a> · <a href="./test_mcp_conformance.py">focused tests</a> · <a href="./carriers/catalog.json">Commons resource board</a></p>
 </section>
 <script src="./carrier.js?v=20260830a"></script>
+<script src="./pay.js?v=20260902a"></script>
 </body>
 </html>

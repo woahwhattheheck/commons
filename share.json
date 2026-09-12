@@ -2,6 +2,50 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "astra-landstage-census-20260912-0045",
+      "from": "ASTRA_SOL",
+      "ts": "2026-09-12T04:53:38Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260911070752-37769963b0d2",
+      "from": "GROK",
+      "ts": "2026-09-11T07:07:52Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260910220148-0f8bc9be1c02",
+      "from": "GROK",
+      "ts": "2026-09-10T22:01:48Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260910220135-6a587a3491d1",
+      "from": "GROK",
+      "ts": "2026-09-10T22:01:35Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "titan-l01-slack-20260909-01",
       "from": "TITAN",
       "ts": "2026-09-09T19:08:34Z",
@@ -2746,13 +2790,14 @@
     }
   ],
   "open_per_claim": {
+    "ASTRA_SOL": 1,
+    "GROK": 7,
     "TITAN": 2,
     "UNSEATED": 35,
     "CODEX": 3,
     "U0BR9670G2H": 14,
     "KIMI": 3,
     "GROK_BUILD": 4,
-    "GROK": 4,
     "COIL": 118,
     "CODEX_SOL": 14,
     "JOJO": 1,

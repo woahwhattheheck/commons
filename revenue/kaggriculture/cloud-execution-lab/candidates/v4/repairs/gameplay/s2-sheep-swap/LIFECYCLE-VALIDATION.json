@@ -1,0 +1,386 @@
+{
+  "authored_sources": {
+    "LIFECYCLE.md": {
+      "bytes": 7303,
+      "git_blob": "f97698304c788c038b343c9ed741dd5b756619f8",
+      "sha256": "3c3bae6eef016d0193275b5b1c662664451947a10aa05245d96ecf0239d384cc"
+    },
+    "build_s2_lifecycle.py": {
+      "bytes": 3163,
+      "git_blob": "986ce81e03b54b789699100fe8b7371d90e8cf81",
+      "sha256": "e71fa79147e619df6bd300da7b5987e2a3241260f472101cb9ac08255fa22c34"
+    },
+    "check_s2_lifecycle_mutants.py": {
+      "bytes": 4295,
+      "git_blob": "f6a04138a8a2ede408d20cc9c993c8c760114675",
+      "sha256": "215cd62d9850723a68771bd0b3b7b1bd49e50a95bac53908b45904be559dceab"
+    },
+    "s2_unit_custody.py": {
+      "bytes": 8741,
+      "git_blob": "7be0ef8eacdbf68a01135a8daaf169be5ea5780a",
+      "sha256": "8d17c9e1d256fc88934969a030da3c3448cd0c97da76ceca2ca6ccf3e94c28b8"
+    },
+    "test_s2_lifecycle.py": {
+      "bytes": 28891,
+      "git_blob": "a10e7f41b62a16eb1b1bd9b7649bae735c459e78",
+      "sha256": "53982ab7412492ad161437e24d37ea18e27c78fc1b08232e635e4ad15155122a"
+    }
+  },
+  "canonical_branch": "main",
+  "commands": [
+    "S2_NATIVE_ROOT=<native-root> S2_SOURCE=<current-donor> python test_s2_lifecycle.py",
+    "S2_NATIVE_ROOT=<native-root> S2_SOURCE=<current-donor> python -O test_s2_lifecycle.py",
+    "S2_NATIVE_ROOT=<native-root> S2_SOURCE=<current-donor> python check_s2_lifecycle_mutants.py",
+    "python build_s2_lifecycle.py --source <current-donor> --mechanics <native-root>/mechanics.py --output <new-staged-path>"
+  ],
+  "conservative_countercontrol": {
+    "credited_reserved_sheep": 0,
+    "engine_retained_sheep": 1,
+    "mechanism": "Market SELL releases EOD storage; lower-bound custody intentionally ignores this room."
+  },
+  "coordination": {
+    "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181901544489",
+    "delivery": "Six additive files in the existing S2 family; no successor V4 or controller.",
+    "execution_update": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789182708559459"
+  },
+  "executed": {
+    "cli": {
+      "composition": "PASS",
+      "same_existing_output_repeated": "PASS"
+    },
+    "negative_controls": {
+      "green_controls": {
+        "normal": 31,
+        "optimized": 31
+      },
+      "mutants": [
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "eod_ignores_market_deposits",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "eod_keeps_vanished_hands",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "plant_counts_only_real_actors",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "placement_debited_twice",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "harvest_credit_lost",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "final_action_guard_removed",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "live_state_guard_removed",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "native_pickup_ownership_lost",
+          "optimized": false,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "eod_ignores_market_deposits",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "eod_keeps_vanished_hands",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "plant_counts_only_real_actors",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "placement_debited_twice",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "harvest_credit_lost",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "final_action_guard_removed",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "live_state_guard_removed",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        },
+        {
+          "errors": 0,
+          "failures": 1,
+          "name": "native_pickup_ownership_lost",
+          "optimized": true,
+          "result": "ASSERTION_REJECTED",
+          "tests": 1
+        }
+      ]
+    },
+    "normal": {
+      "completed_transitions": 2229,
+      "constructed_witnesses": [
+        {
+          "callbacks_per_arm": 248,
+          "candidate": {
+            "cash": 6014,
+            "harvested": 10,
+            "placed": 1,
+            "shed": {}
+          },
+          "cash_delta": 2040,
+          "parent": {
+            "cash": 3974,
+            "harvested": 0,
+            "placed": 0,
+            "shed": {
+              "SHEEP": 1
+            }
+          },
+          "seat": 0
+        },
+        {
+          "callbacks_per_arm": 248,
+          "candidate": {
+            "cash": 6014,
+            "harvested": 10,
+            "placed": 1,
+            "shed": {}
+          },
+          "cash_delta": 2040,
+          "parent": {
+            "cash": 3974,
+            "harvested": 0,
+            "placed": 0,
+            "shed": {
+              "SHEEP": 1
+            }
+          },
+          "seat": 1
+        }
+      ],
+      "errors": 0,
+      "failures": 0,
+      "initializations": 1250,
+      "interpreter_calls": 3479,
+      "skips": 0,
+      "tests": 31
+    },
+    "optimized": {
+      "completed_transitions": 2229,
+      "constructed_witnesses": [
+        {
+          "callbacks_per_arm": 248,
+          "candidate": {
+            "cash": 6014,
+            "harvested": 10,
+            "placed": 1,
+            "shed": {}
+          },
+          "cash_delta": 2040,
+          "parent": {
+            "cash": 3974,
+            "harvested": 0,
+            "placed": 0,
+            "shed": {
+              "SHEEP": 1
+            }
+          },
+          "seat": 0
+        },
+        {
+          "callbacks_per_arm": 248,
+          "candidate": {
+            "cash": 6014,
+            "harvested": 10,
+            "placed": 1,
+            "shed": {}
+          },
+          "cash_delta": 2040,
+          "parent": {
+            "cash": 3974,
+            "harvested": 0,
+            "placed": 0,
+            "shed": {
+              "SHEEP": 1
+            }
+          },
+          "seat": 1
+        }
+      ],
+      "errors": 0,
+      "failures": 0,
+      "initializations": 1250,
+      "interpreter_calls": 3479,
+      "skips": 0,
+      "tests": 31
+    },
+    "source_gate_comparison": "Six unchanged function ASTs compared against the exact current donor."
+  },
+  "generated_candidate": {
+    "bytes": 19508,
+    "git_blob": "5a8d4acbe78c2ff5a9157ce6362831f445058516",
+    "sha256": "bb84c00d8b732cb53288cc9561be999da0c580d3f415704de67932e29db079dd"
+  },
+  "id": "ASTRA-SHEPHERD-S2-LIFECYCLE-20260911",
+  "inputs": {
+    "current_donor": {
+      "bytes": 14727,
+      "git_blob": "1e6771644ad897ec30c7420304f21c919414666a",
+      "path": "candidates/v4/donor/overlay/r04_s2_sheep_swap.py",
+      "sha256": "72d80327958264205d31facc312b8a430a863166518a9fa3d645bcdd844ddd18"
+    },
+    "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "existing_artifact_id": 10175943272,
+    "existing_zip_sha256": "3a3b74936d238bf884f89a1b279f42676cda35c590f131a6a3548de52d61b4e8",
+    "native_mechanics": {
+      "bytes": 22526,
+      "git_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+      "path": "mechanics.py",
+      "sha256": "579965e589237d1e5bbcc8b8448188f91b173d4480430d34b3a7f0e07e0c48d3"
+    },
+    "reference_files": {
+      "checks/reference/engine/kaggriculture.json": {
+        "bytes": 6002,
+        "git_blob": "b354d06b742fe48402513792253f1a5c29366b20",
+        "sha256": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867"
+      },
+      "checks/reference/engine/kaggriculture.py": {
+        "bytes": 40356,
+        "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+        "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+      },
+      "checks/reference/engine/utils.py": {
+        "bytes": 8634,
+        "git_blob": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87",
+        "sha256": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+      },
+      "checks/reference/evaluator/loader.py": {
+        "bytes": 8203,
+        "git_blob": "23948e10cfc3d32f46c9abb1321b0d8fc8db21d5",
+        "sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e"
+      }
+    },
+    "runtime_archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+  },
+  "limits": [
+    "Constructed +2040 cash in each seat is a midgame recovery witness, not natural engagement, full-game profit or field EV.",
+    "Terminal animal allocation differs; no equal-asset liquidation comparison.",
+    "EOD custody is a conservative lower bound and can miss sale-released capacity.",
+    "Only the used pinned donor/mechanics/reference dependencies were authenticated, not all runtime members.",
+    "Propose/commit is an in-process final-action consistency contract, not a security boundary.",
+    "Original apply_s2_swap is safe to consume only as an accepted final mutating stage; no actual runtime hook installed."
+  ],
+  "local_log_identities": {
+    "mutants.json": {
+      "bytes": 2911,
+      "git_blob": "5db450ce26234052fa8c31d420b1470def3ae22e",
+      "sha256": "212ea63d0e640c2ecf2b4e20ebffacb207cc7b48ed33595a29e34581d2cb40bf"
+    },
+    "normal.log": {
+      "bytes": 4538,
+      "git_blob": "eece2094643e3bb2661a16f942df92bdaf374f1a",
+      "sha256": "9000075d127bfb8076d93995004783855334215f1141b26234dd29daa25e31d1"
+    },
+    "optimized.log": {
+      "bytes": 4538,
+      "git_blob": "c66910561b40e1ae4de32f44d4097532354c009a",
+      "sha256": "853a281a5abadb12aa4d4833911a1822082f200a2bc77d4ab315941151761cbb"
+    }
+  },
+  "package": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/s2-sheep-swap",
+  "per_full_suite_matrix": {
+    "both_seats": true,
+    "constructed_custody_worlds": 480,
+    "constructed_unit_prefix_worlds": 720
+  },
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "scope": {
+    "actions_dispatch": false,
+    "current_donor_unchanged": true,
+    "historical_donor_preserved": true,
+    "kaggle_submission": false,
+    "native_mechanics_unchanged": true,
+    "new_policy_key": false,
+    "not_run": [
+      "Historical original 19-test donor suite",
+      "Current native main.py::agent composition",
+      "Python 3.11",
+      "Natural S2 engagement census",
+      "Competitive full games",
+      "Whole-agent timing/deadline gate",
+      "Equal-terminal-asset economics",
+      "Current-stack promotion",
+      "Hosted CI validation"
+    ],
+    "production_activation": false
+  },
+  "status": "SOURCE_CORRECTNESS_EXECUTED_DEFAULT_OFF_NOT_INTEGRATED"
+}

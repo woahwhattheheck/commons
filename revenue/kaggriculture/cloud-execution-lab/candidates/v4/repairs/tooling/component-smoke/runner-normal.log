@@ -1,0 +1,23 @@
+test_bind_mutation_fails_whole_run (test_run_components.ComponentRunnerTest.test_bind_mutation_fails_whole_run) ... ok
+test_cli_emits_result_and_exit_code (test_run_components.ComponentRunnerTest.test_cli_emits_result_and_exit_code) ... ok
+test_donor_historical_and_legacy_are_not_selected (test_run_components.ComponentRunnerTest.test_donor_historical_and_legacy_are_not_selected) ... ok
+test_duplicate_helper_names_are_isolated_between_files (test_run_components.ComponentRunnerTest.test_duplicate_helper_names_are_isolated_between_files) ... ok
+test_empty_selection_is_not_green (test_run_components.ComponentRunnerTest.test_empty_selection_is_not_green) ... ok
+test_failed_assertion_stays_red_under_optimization (test_run_components.ComponentRunnerTest.test_failed_assertion_stays_red_under_optimization) ... ok
+test_hyphenated_nonpackage_is_discovered_and_executed (test_run_components.ComponentRunnerTest.test_hyphenated_nonpackage_is_discovered_and_executed) ... ok
+test_import_error_and_import_system_exit_are_not_green (test_run_components.ComponentRunnerTest.test_import_error_and_import_system_exit_are_not_green) ... ok
+test_missing_selector_cannot_hide_behind_passing_suite (test_run_components.ComponentRunnerTest.test_missing_selector_cannot_hide_behind_passing_suite) ... ok
+test_module_without_unittest_is_not_green (test_run_components.ComponentRunnerTest.test_module_without_unittest_is_not_green) ... ok
+test_nonfinite_or_nonpositive_timeouts_rejected (test_run_components.ComponentRunnerTest.test_nonfinite_or_nonpositive_timeouts_rejected) ... ok
+test_selector_escape_is_rejected (test_run_components.ComponentRunnerTest.test_selector_escape_is_rejected) ... ok
+test_skip_and_expected_failure_are_incomplete (test_run_components.ComponentRunnerTest.test_skip_and_expected_failure_are_incomplete) ... ok
+test_source_change_between_modes_is_not_green (test_run_components.ComponentRunnerTest.test_source_change_between_modes_is_not_green) ... ok
+test_symlink_escape_is_rejected (test_run_components.ComponentRunnerTest.test_symlink_escape_is_rejected) ... ok
+test_timeout_is_not_green (test_run_components.ComponentRunnerTest.test_timeout_is_not_green) ... ok
+test_unexpected_success_is_not_green (test_run_components.ComponentRunnerTest.test_unexpected_success_is_not_green) ... ok
+test_zero_exit_without_receipt_is_not_green (test_run_components.ComponentRunnerTest.test_zero_exit_without_receipt_is_not_green) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 11.965s
+
+OK

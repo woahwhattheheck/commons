@@ -6,6 +6,8 @@
     "PARITY_CLEAN": 150,
     "UNIT_ROUNDING_MISMATCH": 9
   },
+  "expanded_records_bytes": 102719,
+  "expanded_records_sha256": "ea7fb4bfa3ecd2f989041f80991db21e7dbaa26a2a30ecf3dd1e052690d8abd8",
   "fixture": "infinitecal_180_records.json",
   "fixture_format": "deterministic_recipe_expands_180_records",
   "fixture_sha256": "44328084e81680382eb11c9701de8b287a9cc6ec27ca613c5c33f0c926de636a",

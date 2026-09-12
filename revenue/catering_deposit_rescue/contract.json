@@ -1,6 +1,6 @@
 {
   "id": "catering-deposit-rescue",
-  "version": 1,
+  "version": 2,
   "buyer": "restaurant-group catering sales director",
   "workflow": [
     "synthetic inquiry",
@@ -43,7 +43,8 @@
     "diagnostic_window": "one business day",
     "optional_proof_usd": 2500,
     "proof_only_after_fit": true,
-    "cash_usd": 0
+    "cash_usd": 0,
+    "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
   },
   "open_door": true,
   "requires_login": false,

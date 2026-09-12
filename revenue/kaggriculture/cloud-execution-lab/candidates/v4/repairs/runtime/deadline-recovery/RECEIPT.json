@@ -1,0 +1,81 @@
+{
+  "baseline_runtime": {
+    "byte_count": 33885,
+    "git_blob": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "sha256": "da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8"
+  },
+  "candidate_runtime": {
+    "byte_count": 34315,
+    "git_blob": "c42344489a3f50d91e2abe8d85d4ee15f34732a1",
+    "sha256": "c290df787bf4b1c69cfbd4997a9f0f2fc6e74f47695744f1c6ea7bcd18766348"
+  },
+  "canonical_branch": "main",
+  "claim": "ASTRA-RECOVERY",
+  "claim_thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789179566615559",
+  "deadline_adapter": {
+    "byte_count": 15458,
+    "git_blob": "664aa4f8a21368c388dfa6714406519b6535ef7f",
+    "sha256": "7f70a25dfb703f50aa83cd281a9722d575571da1073e605c5927fc35453ab486"
+  },
+  "entrypoint": "main.py::agent",
+  "files": {
+    "README.md": {
+      "byte_count": 3670,
+      "git_blob": "c143102f35eabbdba6216299f34af860f3efd1a0",
+      "sha256": "565dd40dfc6d1e68c657c3c2e8057de28f8309aa0c43c53c27fa077f2e369c59"
+    },
+    "deadline-recovery.patch": {
+      "byte_count": 1530,
+      "git_blob": "83fa3bb48e893d0b8aed3178b42d3e846e3bdd98",
+      "sha256": "78925e9126b154cb30652987f4bc2a7ec6d2b2d2f4f4afffce54f876b7257aad"
+    },
+    "repair_deadline_recovery.py": {
+      "byte_count": 3860,
+      "git_blob": "060e8c2896bb18e3372a4bd3e90087c33520b1c1",
+      "sha256": "f4891d983f2d03faa358cb0b9c70ad47958f6e25156082e5ba6a2ea99edbbaf6"
+    },
+    "test_deadline_recovery.py": {
+      "byte_count": 24668,
+      "git_blob": "01ae544cefefa24bb787772e1105623d3010e6ad",
+      "sha256": "58780ab1036c866faa010e691e260d5f940724f6be7eba382a845b2760956c2e"
+    }
+  },
+  "gates": {
+    "feature_defaults_changed": false,
+    "full_game_economics": "NOT_RUN",
+    "full_policy_runtime": "NOT_RUN",
+    "kaggle_submission": false,
+    "legacy_materializer_executed": false,
+    "production_archive_changed": false,
+    "production_runtime_changed": false
+  },
+  "schema": "titan-v4-deadline-recovery/v1",
+  "status": "component_tested_source_only",
+  "validation": {
+    "compile": "PASS",
+    "normal": {
+      "errors": 0,
+      "failures": 0,
+      "initialization_cutpoint_cases": 1204,
+      "real_main_thread_alarm": "PASS",
+      "real_worker_thread_trace": "PASS",
+      "tests": 28,
+      "unsound_repairs_rejected": 4,
+      "warm_cancellation_cases": 44
+    },
+    "optimized": {
+      "errors": 0,
+      "failures": 0,
+      "initialization_cutpoint_cases": 1204,
+      "real_main_thread_alarm": "PASS",
+      "real_worker_thread_trace": "PASS",
+      "tests": 28,
+      "unsound_repairs_rejected": 4,
+      "warm_cancellation_cases": 44
+    },
+    "predecessor_witness": "AttributeError: TitanAgent has no consumer after owned cold-start deadline; terminal liquidation fallback is lost",
+    "python": "3.13.5",
+    "source_scope": "complete exact runtime class with controlled external collaborators; real pinned fallback functions and deadline adapter for named timer tests"
+  },
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/runtime/deadline-recovery"
+}

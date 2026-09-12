@@ -11,7 +11,8 @@
       "exception and approval packet schema",
       "crash, retry, and rollback receipt",
       "Markdown and JSON binary report"
-    ]
+    ],
+    "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
   },
   "pilot_after_fit": {
     "price_usd": 2500,

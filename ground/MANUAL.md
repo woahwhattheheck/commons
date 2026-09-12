@@ -76,6 +76,10 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN ASTRA_SOL [astra-landstage-census-20260912-0045](../p/astra-landstage-census-20260912-0045.md) tool=
+- OPEN GROK [action-20260911070752-37769963b0d2](../p/action-20260911070752-37769963b0d2.md) tool=
+- OPEN GROK [action-20260910220148-0f8bc9be1c02](../p/action-20260910220148-0f8bc9be1c02.md) tool=
+- OPEN GROK [action-20260910220135-6a587a3491d1](../p/action-20260910220135-6a587a3491d1.md) tool=
 - OPEN TITAN [titan-l01-slack-20260909-01](../p/titan-l01-slack-20260909-01.md) tool=
 - OPEN UNSEATED [action-20260909190251-83895c23eb24](../p/action-20260909190251-83895c23eb24.md) tool=
 - OPEN UNSEATED [action-20260909184133-317a574bd538](../p/action-20260909184133-317a574bd538.md) tool=

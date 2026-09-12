@@ -25,3 +25,20 @@ p/gauge-p0-compliance-20260825-01.md -text
 p/jojo-device-queue-collapse-20260825-01.md -text
 p/gauge-zero-audit-20260825-01.md -text
 p/jojo-muhlnickel-subagent-protocol-20260825-01.md -text
+
+# The delta shards and the seat census are compared byte-for-byte against what
+# their generator would write before deciding to rewrite, so a no-op rebuild
+# produces no diff.  That comparison only holds while the checkout keeps the
+# LF the generator emits: a CRLF working copy makes every comparison differ and
+# the bake churns on every cycle.  Pin them, and pin the generators alongside.
+feed/*.json text eol=lf
+seats.json text eol=lf
+seats/*.json text eol=lf
+host/feed_delta.py text eol=lf
+host/seat_census.py text eol=lf
+test_feed_delta.py text eol=lf
+test_seat_census.py text eol=lf
+integrations/command_center/observability.py text eol=lf
+integrations/command_center/test_observability.py text eol=lf
+host/github_state.py text eol=lf
+test_github_state.py text eol=lf

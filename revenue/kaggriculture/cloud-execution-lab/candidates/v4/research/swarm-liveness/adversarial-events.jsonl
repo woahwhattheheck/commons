@@ -1,0 +1,7 @@
+# adversarial normalized claim stream
+{"ts":1800,"lane":"dead-owner","session":"ASTRA-DOWN","event":"CLAIM","event_id":"m1","canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4","writes_repo":true,"requires_artifact":true}
+{"ts":1950,"lane":"live-collision","session":"MUSE","event":"CLAIM","event_id":"m2","canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4"}
+{"ts":1960,"lane":"live-collision","session":"CLAUDE","event":"CLAIM","event_id":"m3","canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4"}
+{"ts":1700,"lane":"closed","session":"ASTRA-DONE","event":"CLAIM","event_id":"m4","canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4","requires_artifact":true}
+{"ts":1750,"lane":"closed","session":"ASTRA-DONE","event":"COMPLETE","event_id":"m5","artifact":"PR#12700","canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4"}
+{"ts":1970,"lane":"wrong-root","session":"OLD-V4","event":"CLAIM","event_id":"m6","canonical_root":"titan/v4-20260911","writes_repo":true}
