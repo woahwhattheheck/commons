@@ -20,6 +20,25 @@ def base_observation():
     }
 
 
+def melon_proposal(plants, *, routes=("A", "B"), outer=None):
+    variants = {}
+    for route in routes:
+        patches = {
+            100 + i: {"hands": [["PLANT", "MELON"]]}
+            for i in range(plants)
+        }
+        variants[route] = {"patches": patches}
+    proposal = {
+        "crop": "MELON",
+        "tiles": list(range(plants)),
+        "seed_units": plants,
+        "variants": variants,
+    }
+    if outer:
+        proposal.update(outer)
+    return proposal
+
+
 class MelonCapTests(unittest.TestCase):
     def test_empty_commitment_allows_four_tiles(self):
         self.assertEqual(M.remaining_melon_budget(base_observation()), 28)
@@ -39,18 +58,56 @@ class MelonCapTests(unittest.TestCase):
         self.assertEqual(M.held_melon_units(obs), 16)
         self.assertEqual(M.max_melon_plants(obs), 2)
 
-    def test_batch_budget_is_consumed_across_proposals(self):
+    def test_executable_cardinality_is_derived_from_all_variants(self):
+        proposal = melon_proposal(4)
+        self.assertEqual(M.executable_melon_plants(proposal), 4)
+
+    def test_whole_proposal_admission_preserves_identity(self):
         obs = base_observation()
-        props = [
-            {"crop": "MELON", "tiles": [0, 1, 2], "seed_units": 3},
-            {"crop": "MELON", "tiles": [3, 4, 5], "seed_units": 3},
-            {"crop": "CARROT", "tiles": list(range(9))},
-        ]
-        out = M.filter_proposals(props, obs)
-        melon_sizes = [len(p["tiles"]) for p in out if isinstance(p, dict) and p.get("crop") == "MELON"]
-        self.assertEqual(melon_sizes, [3, 1])
-        self.assertEqual(sum(melon_sizes), 4)
-        self.assertEqual(out[-1], props[-1])
+        proposal = melon_proposal(4)
+        out = M.filter_proposals([proposal], obs)
+        self.assertEqual(out, [proposal])
+        self.assertIs(out[0], proposal)
+
+    def test_oversize_is_dropped_not_shrunk_and_later_smaller_can_fit(self):
+        obs = base_observation()
+        too_big = melon_proposal(5)
+        three = melon_proposal(3)
+        one = melon_proposal(1)
+        out = M.filter_proposals([too_big, three, one], obs)
+        self.assertEqual(out, [three, one])
+        self.assertIs(out[0], three)
+        self.assertIs(out[1], one)
+
+    def test_mutually_exclusive_alternatives_do_not_consume_each_other(self):
+        obs = base_observation()
+        three = melon_proposal(3)
+        four = melon_proposal(4)
+        carrot = {"crop": "CARROT", "tiles": list(range(9))}
+        out = M.filter_proposals([three, four, carrot], obs)
+        self.assertEqual(out, [three, four, carrot])
+        self.assertIs(out[0], three)
+        self.assertIs(out[1], four)
+
+    def test_route_variant_disagreement_fails_closed(self):
+        proposal = melon_proposal(4)
+        proposal["variants"]["B"]["patches"][999] = {"hands": [["PLANT", "MELON"]]}
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_outer_metadata_cannot_understate_executable_patches(self):
+        proposal = melon_proposal(5)
+        proposal["tiles"] = proposal["tiles"][:4]
+        proposal["seed_units"] = 4
+        proposal["size"] = 4
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_malformed_patch_payload_fails_closed(self):
+        proposal = melon_proposal(1)
+        proposal["variants"]["A"]["patches"][100]["hands"] = [None]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
 
     def test_sold_plus_held_plus_planted_can_close_budget(self):
         obs = base_observation()
@@ -63,7 +120,7 @@ class MelonCapTests(unittest.TestCase):
 
     def test_malformed_custody_fails_closed_for_melon_only(self):
         props = [
-            {"crop": "MELON", "tiles": [1, 2]},
+            melon_proposal(2),
             {"crop": "CARROT", "tiles": [3, 4]},
         ]
         out = M.filter_proposals(props, {"player": "0"})
@@ -84,7 +141,7 @@ class MelonCapTests(unittest.TestCase):
 
     def test_input_is_not_mutated(self):
         obs = base_observation()
-        props = [{"crop": "MELON", "tiles": list(range(6)), "seed_units": 6}]
+        props = [melon_proposal(5)]
         before = copy.deepcopy(props)
         M.filter_proposals(props, obs)
         self.assertEqual(props, before)
