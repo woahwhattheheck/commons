@@ -12,6 +12,8 @@ class RuntimePrefixEngagementGateTests(unittest.TestCase):
         report = gate.classify_wrapper_input("seed", action, {})
         self.assertTrue(report["candidate"])
         self.assertTrue(report["gate_delta"])
+        self.assertEqual(report["surface"], gate.WRAPPER_INPUT_SURFACE)
+        self.assertEqual(report["cap"], 10)
         self.assertFalse(report["authorizes_global_cold"])
 
     def test_seed_scope_candidate_is_stage_specific(self):
@@ -40,7 +42,11 @@ class RuntimePrefixEngagementGateTests(unittest.TestCase):
         report = gate.classify_final_action_hint(action, {})
         self.assertTrue(report["candidate"])
         self.assertEqual(report["verdict"], "POSSIBLE_ENGAGEMENT")
+        self.assertEqual(report["surface"], gate.FINAL_ACTION_SURFACE)
         self.assertFalse(report["authorizes_global_cold"])
+        self.assertTrue(report["stages"])
+        self.assertTrue(all(row["surface"] == gate.FINAL_ACTION_SURFACE for row in report["stages"]))
+        self.assertTrue(all(row["authorizes_global_cold"] is False for row in report["stages"]))
 
     def test_zero_final_action_scan_is_inconclusive_not_cold(self):
         hints = [
@@ -51,6 +57,12 @@ class RuntimePrefixEngagementGateTests(unittest.TestCase):
         self.assertEqual(result["candidate_callbacks"], 0)
         self.assertEqual(result["verdict"], "INCONCLUSIVE_NO_FINAL_ACTION_WITNESS")
         self.assertFalse(result["authorizes_global_cold"])
+
+    def test_configured_cap_receipt_is_not_truncated_to_market_length(self):
+        report = gate.classify_wrapper_input("seed", {"market": [["PASS"]]}, {})
+        self.assertEqual(report["cap"], 10)
+        report = gate.classify_wrapper_input("seed", {"market": [["PASS"], ["HIRE", 1, 2]]}, {"maxMarketOrdersPerTurn": 0})
+        self.assertEqual(report["cap"], 1)
 
     def test_unknown_stage_rejects(self):
         with self.assertRaises(ValueError):
