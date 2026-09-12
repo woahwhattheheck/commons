@@ -81,6 +81,50 @@ class Joined(unittest.TestCase):
   self.assertEqual(out,selected);self.assertEqual(obj.history.pending[2],selected)
   self.assertEqual(obj.diagnostics['fallback_stage'],'terminal_history');self.assertLess(elapsed,1)
   RESULTS.append({'case':'deadline_records_actual_fallback','seconds':elapsed})
+ def test_history_public_clock_rejects_aliases_before_receipt_mutation(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  malformed=copy.deepcopy(obs);malformed['step']='100'
+  with self.assertRaises(ValueError):
+   obj.history.remember(malformed,cfg,final,copy.deepcopy(malformed))
+  self.assertIsNone(obj.history.pending)
+  obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
+  pending=copy.deepcopy(obj.history.pending)
+  for alias in (True,'101',101.0,-1,None):
+   with self.subTest(alias=alias):
+    after=copy.deepcopy(obs);after['step']=alias
+    with patch.object(obj.history,'_publish_observation_commit',side_effect=AssertionError('clock mutated history')):
+     with self.assertRaises(ValueError):obj.history.observe(after)
+    self.assertEqual(obj.history.pending,pending)
+    self.assertIsNone(obj.history.deferred_observation)
+  mismatch=copy.deepcopy(obs);mismatch['step']=101;mismatch['day']=4;mismatch['hour']=6
+  with self.assertRaises(ValueError):obj.history.observe(mismatch)
+  self.assertEqual(obj.history.pending,pending)
+  RESULTS.append({'case':'history_public_clock_aliases_fail_before_receipt_mutation','passed':True})
+ def test_history_day_hour_fallback_is_exact_and_canonicalized(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  period=cfg.get('turnsPerDay',24)
+  fallback=copy.deepcopy(obs);fallback.pop('step',None)
+  fallback['day']=100//period;fallback['hour']=100%period
+  obj.history.remember(fallback,cfg,final,copy.deepcopy(fallback))
+  self.assertEqual(obj.history.pending[0]['step'],100)
+  self.assertEqual(obj.history._observation_step(
+      {'step':101,'day':101//period,'hour':101%period},cfg),101)
+  for bad_period in (True,0,-1,'24',24.0):
+   bad_cfg=copy.deepcopy(cfg);bad_cfg['turnsPerDay']=bad_period
+   fresh=self.actor()
+   with self.subTest(turnsPerDay=bad_period):
+    with self.assertRaises(ValueError):fresh.history.remember(
+        fallback,bad_cfg,final,copy.deepcopy(fallback))
+    self.assertIsNone(fresh.history.pending)
+  malformed=copy.deepcopy(obs);malformed['step']=True
+  selected=action(hands=[['PASS']])
+  with patch.object(obj.history.joint,'build_joint_terminal_scenarios',
+                    side_effect=AssertionError('malformed clock reached selector inputs')):
+   with self.assertRaises(ValueError):obj.history.transform(
+       malformed,cfg,selected,copy.deepcopy(malformed),deadline=None)
+  RESULTS.append({'case':'history_day_hour_fallback_exact_and_canonical','passed':True})
  def test_forward_gap_drops_stale_pending_without_reconciling(self):
   obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
   final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
