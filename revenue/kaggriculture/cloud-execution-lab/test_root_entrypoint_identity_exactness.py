@@ -80,20 +80,23 @@ def _deadline_module():
 class RootEntrypointIdentityExactnessTests(unittest.TestCase):
     def setUp(self):
         self.main = _load_main()
-        self.instance = _Instance()
-        self.recovery = {"last_step": 25, "state": {"marker": "recovery"}}
-        self.main._INSTANCE = self.instance
-        self.main._SPATIAL_RECOVERY = copy.deepcopy(self.recovery)
         self.old_titan_runtime = sys.modules.get("titan_runtime")
         fake_runtime = types.ModuleType("titan_runtime")
         fake_runtime.deadline = _deadline_module()
         sys.modules["titan_runtime"] = fake_runtime
+        self._reset_root_state()
 
     def tearDown(self):
         if self.old_titan_runtime is None:
             sys.modules.pop("titan_runtime", None)
         else:
             sys.modules["titan_runtime"] = self.old_titan_runtime
+
+    def _reset_root_state(self):
+        self.instance = _Instance()
+        self.recovery = {"last_step": 25, "state": {"marker": "recovery"}}
+        self.main._INSTANCE = self.instance
+        self.main._SPATIAL_RECOVERY = copy.deepcopy(self.recovery)
 
     def _assert_rejected_without_root_state_mutation(self, observation, configuration=None):
         selected = self.instance.selected
@@ -112,24 +115,18 @@ class RootEntrypointIdentityExactnessTests(unittest.TestCase):
     def test_player_must_be_exact_public_plain_int(self):
         for player in (True, False, "1", 1.0, -1, 2, None):
             with self.subTest(player=player):
-                self.setUp()
-                try:
-                    self._assert_rejected_without_root_state_mutation(
-                        {"player": player, "step": 25}
-                    )
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                self._assert_rejected_without_root_state_mutation(
+                    {"player": player, "step": 25}
+                )
 
     def test_supplied_step_must_be_present_nonnegative_plain_int(self):
         for step in (True, False, "25", 25.0, -1, None):
             with self.subTest(step=step):
-                self.setUp()
-                try:
-                    self._assert_rejected_without_root_state_mutation(
-                        {"player": 1, "step": step}
-                    )
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                self._assert_rejected_without_root_state_mutation(
+                    {"player": 1, "step": step}
+                )
 
     def test_day_hour_fallback_requires_exact_complete_clock(self):
         bad = (
@@ -149,25 +146,19 @@ class RootEntrypointIdentityExactnessTests(unittest.TestCase):
         )
         for observation, configuration in bad:
             with self.subTest(observation=observation, configuration=configuration):
-                self.setUp()
-                try:
-                    self._assert_rejected_without_root_state_mutation(
-                        observation, configuration
-                    )
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                self._assert_rejected_without_root_state_mutation(
+                    observation, configuration
+                )
 
     def test_day_hour_fallback_requires_positive_plain_int_turns_per_day(self):
         for turns in (True, False, "24", 24.0, 0, -1, None):
             with self.subTest(turnsPerDay=turns):
-                self.setUp()
-                try:
-                    self._assert_rejected_without_root_state_mutation(
-                        {"player": 1, "day": 1, "hour": 1},
-                        {"turnsPerDay": turns},
-                    )
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                self._assert_rejected_without_root_state_mutation(
+                    {"player": 1, "day": 1, "hour": 1},
+                    {"turnsPerDay": turns},
+                )
 
     def test_redundant_clock_fields_must_agree_with_supplied_step(self):
         bad = (
@@ -180,13 +171,10 @@ class RootEntrypointIdentityExactnessTests(unittest.TestCase):
         )
         for observation in bad:
             with self.subTest(observation=observation):
-                self.setUp()
-                try:
-                    self._assert_rejected_without_root_state_mutation(
-                        observation, {"turnsPerDay": 24}
-                    )
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                self._assert_rejected_without_root_state_mutation(
+                    observation, {"turnsPerDay": 24}
+                )
 
     def test_canonical_step_only_and_clock_forms_still_reach_runtime(self):
         cases = (
@@ -199,15 +187,12 @@ class RootEntrypointIdentityExactnessTests(unittest.TestCase):
         )
         for observation, configuration in cases:
             with self.subTest(observation=observation, configuration=configuration):
-                self.setUp()
-                try:
-                    output = self.main.agent(observation, configuration)
-                    self.assertEqual(
-                        output, {"farmer": ["PASS"], "hands": [], "market": []}
-                    )
-                    self.assertEqual(self.instance.act_calls, 1)
-                finally:
-                    self.tearDown()
+                self._reset_root_state()
+                output = self.main.agent(observation, configuration)
+                self.assertEqual(
+                    output, {"farmer": ["PASS"], "hands": [], "market": []}
+                )
+                self.assertEqual(self.instance.act_calls, 1)
 
 
 if __name__ == "__main__":
