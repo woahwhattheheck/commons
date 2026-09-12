@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import importlib.util
 import json
 import math
@@ -133,14 +132,14 @@ def main() -> int:
 
     root = args.kg_root.resolve(strict=True)
     engine_dir = args.engine_dir.resolve(strict=True)
-    baseline_path = args.baseline.resolve(strict=True)
+    baseline_input = args.baseline
     output = args.output.resolve()
     if output.exists():
         raise FileExistsError(output)
     output_parent = output.parent.resolve(strict=True)
 
     # Seal experiment inputs before any evidence output exists.
-    baseline_raw = capture_regular(baseline_path)
+    baseline_raw = capture_regular(baseline_input)
     arms = exact_v4_arms(baseline_raw)
     helper_path = root / HELPER
     helper_raw = capture_regular(helper_path)
