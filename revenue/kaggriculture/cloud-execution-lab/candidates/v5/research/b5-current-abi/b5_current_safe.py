@@ -101,9 +101,11 @@ class B5CurrentABI:
                 # The submitted JIT donor attributes every activation to the
                 # exact public step. b5_current keeps donor action semantics
                 # stateless, so restore that evidence field at the current-ABI
-                # boundary rather than weakening the durable receipt.
+                # boundary rather than weakening the durable receipt. Put the
+                # authenticated public step last so donor/report drift cannot
+                # override the boundary-owned evidence identity.
                 report["jit_activations"] = tuple(
-                    {"step": step, **activation}
+                    {**activation, "step": step}
                     for activation in jit_report["jit_activations"]
                 )
             else:
