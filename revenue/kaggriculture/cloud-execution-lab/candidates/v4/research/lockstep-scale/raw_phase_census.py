@@ -191,6 +191,8 @@ def census_tapes(tapes: list, contract: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema": "titan.v4.lockstep-raw-phase-census.v1",
         "policy_authorized": False,
+        "current_native_reach_authority": False,
+        "candidate_surface": "authored_r01_tape_pre_transforms",
         "tape_git_blob": TAPE_GIT_BLOB,
         "router_git_blob": ROUTER_GIT_BLOB,
         "route_step": route_step,
