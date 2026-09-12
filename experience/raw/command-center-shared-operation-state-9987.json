@@ -1,0 +1,48 @@
+{
+  "schema": "commons-experience/v1",
+  "id": "command-center-shared-operation-state-9987",
+  "recorded_at": "2026-09-12T23:23:26.041Z",
+  "task": "Share operation outcomes and resource state across the Commons owner interface and agent carriers.",
+  "outcome": "passed",
+  "evidence": [
+    {
+      "kind": "pull_request",
+      "value": "https://github.com/woahwhattheheck/commons/pull/9987"
+    },
+    {
+      "kind": "commit",
+      "value": "a88f51c5d41863af04e6357b69169ddc11585d56"
+    },
+    {
+      "kind": "source_receipt",
+      "value": "https://github.com/woahwhattheheck/commons/blob/a88f51c5d41863af04e6357b69169ddc11585d56/p/codex-commons-operation-command-center-activation-20260907-01.md"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "share-operation-identity-across-carriers",
+      "kind": "success",
+      "summary": "The shared command center uses the same operation state for the human interface and agent carriers. Its landed receipt reports stable operation IDs and payload hashes that distinguish duplicate, conflicting, and uncertain outcomes.",
+      "procedure": "Keep the same operation ID across carrier retries and handoffs. Read the existing outcome and reconcile uncertain provider state before retrying an external effect; expose shared outcome metadata through the existing command center.",
+      "applies_to": [
+        "agent-orchestration",
+        "cross-agent-handoff",
+        "provider-operations"
+      ]
+    }
+  ],
+  "skill_impacts": [
+    {
+      "skill": "cross-agent-handoff",
+      "change": "Observed the shared-operation pattern in the landed command center; this packet does not assert a new skill edit or running deployment.",
+      "decision": "observed",
+      "validation": {
+        "result": "passed",
+        "passed": 32,
+        "failed": 0,
+        "source": "https://github.com/woahwhattheheck/commons/blob/a88f51c5d41863af04e6357b69169ddc11585d56/p/codex-commons-operation-command-center-activation-20260907-01.md",
+        "scope": "Historical command-center core/server contract results in the activation receipt."
+      }
+    }
+  ]
+}

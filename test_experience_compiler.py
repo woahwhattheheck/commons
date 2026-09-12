@@ -9,8 +9,11 @@ import host.experience_compiler as compiler
 class ExperienceCompilerTests(unittest.TestCase):
     def test_seed_record_is_valid_and_evidence_backed(self):
         records = compiler.load_records()
-        self.assertEqual(["ai-village-discovery-4945"], [r["id"] for r in records])
-        commit = next(item for item in records[0]["evidence"] if item["kind"] == "commit")
+        by_id = {r["id"]: r for r in records}
+        self.assertEqual(len(records), len(by_id))
+        self.assertIn("ai-village-discovery-4945", by_id)
+        commit = next(item for item in by_id["ai-village-discovery-4945"]["evidence"]
+                      if item["kind"] == "commit")
         self.assertRegex(commit["value"], r"^[0-9a-f]{40}$")
 
     def test_compilation_is_deterministic(self):
@@ -28,7 +31,7 @@ class ExperienceCompilerTests(unittest.TestCase):
         outputs = compiler.compile_outputs(compiler.load_records())
         page = outputs[compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"]
         self.assertIn("experience/raw/ai-village-discovery-4945.json", page)
-        self.assertIn("Success observations: 1", page)
+        self.assertRegex(page, r"Success observations: [1-9][0-9]*")
 
     def test_invalid_commit_evidence_is_rejected(self):
         record = json.loads(
