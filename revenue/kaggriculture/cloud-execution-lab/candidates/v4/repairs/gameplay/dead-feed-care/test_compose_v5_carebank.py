@@ -47,19 +47,27 @@ class V5CarebankComposerTests(unittest.TestCase):
             with self.subTest(path=str(path)):
                 self.assertEqual(git_blob_id(path.read_bytes()), blob)
 
-    def test_runtime_hook_precedes_selected_checkpoint_and_preserves_one_pipeline(self):
+    def test_runtime_hook_preserves_parent_fallback_then_replaces_checkpoint(self):
         out = patch_runtime((LAB / "titan_runtime.py").read_text(encoding="utf-8"))
         self.assertEqual(out.count("r04_dead_feed_care: bool = False"), 1)
         self.assertEqual(out.count("'r04_dead_feed_care',"), 1)
         producer = out.index("selected = self.production.act(obs)")
-        repeated_feed = out.index("selected = care.apply_dead_feed_care(", producer)
+        parent = out.index("parent_checkpoint = (deepcopy(selected), self.controller.cur)", producer)
+        fallback = out.index("fallback = parent_checkpoint[0]", parent)
+        interim_checkpoint = out.index("selected_checkpoint = parent_checkpoint", fallback)
+        repeated_feed = out.index("selected = care.apply_dead_feed_care(", interim_checkpoint)
         carebank = out.index("selected = care.apply_carebank_feed_swap(", repeated_feed)
-        checkpoint = out.index("self.selected = deepcopy(selected)", carebank)
-        transform = out.index("output = self.transform_selected(obs, cfg, selected)", checkpoint)
-        self.assertLess(producer, repeated_feed)
+        final_selected = out.index("self.selected = deepcopy(selected)", carebank)
+        final_checkpoint = out.index("selected_checkpoint = (self.selected, self.controller.cur)", final_selected)
+        transform = out.index("output = self.transform_selected(obs, cfg, selected)", final_checkpoint)
+        self.assertLess(producer, parent)
+        self.assertLess(parent, fallback)
+        self.assertLess(fallback, interim_checkpoint)
+        self.assertLess(interim_checkpoint, repeated_feed)
         self.assertLess(repeated_feed, carebank)
-        self.assertLess(carebank, checkpoint)
-        self.assertLess(checkpoint, transform)
+        self.assertLess(carebank, final_selected)
+        self.assertLess(final_selected, final_checkpoint)
+        self.assertLess(final_checkpoint, transform)
         ast.parse(out)
 
     def test_feature_is_exact_bool_and_only_nonterminal_frozen_can_enable(self):
@@ -104,6 +112,7 @@ class V5CarebankComposerTests(unittest.TestCase):
             self.assertIs(receipt["enabled_in_scratch_only"], False)
             self.assertIs(receipt["production_default_changed"], False)
             self.assertEqual(receipt["consumer_contract"], "frozen_nonterminal_only")
+            self.assertEqual(receipt["deadline_fallback"], "completed_parent_selected_action")
             self.assertEqual(
                 receipt["selected_pipeline"],
                 ["apply_dead_feed_care", "apply_carebank_feed_swap"],
