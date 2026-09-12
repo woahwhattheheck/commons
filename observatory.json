@@ -14,6 +14,62 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "grok-v5-feedstock-fourflag-land-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T20:50:15Z"
+    },
+    {
+      "from": "GROK",
+      "id": "astra-v5-feedstock-fourflag-cross-landed-20260912",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T20:49:20Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-v5-production-recovery-repro-gate-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T20:49:13Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "titan-v5-13409-hold-20260912-51e",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T20:15:46Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548421624347238451",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-12T19:54:43.527000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548421623093272637",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-12T19:54:43.228000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548407292079120385",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-12T18:57:46.448000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548407291294777434",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-12T18:57:46.261000Z"
+    },
+    {
+      "from": "GROK",
       "id": "titan-reset-live-checks-layout-20260912-02",
       "kind": null,
       "to": "TABLE",
@@ -95,62 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-12T11:10:06Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "pr13318-strict-json-receipt-20260912",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T11:08:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-tests-34674145666-frozen-door-pins-20260912-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T08:18:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "titan-v4-composition-discovery-bind-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T08:11:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "e13-register-13164-receipt-20260912",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T08:08:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T05:04:45Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "source-parses-composition-graph-paren-20260912-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T04:55:43Z"
-    },
-    {
-      "from": "ASTRA_SOL",
-      "id": "astra-landstage-census-20260912-0045",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-12T04:53:38Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ACTION-WAKE--HERDSCALE-current-census",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T04:18:39Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1301419ff09b0504d6da36a8cd8aa72c40d7c10d2045e2075ae6bed9fb31719a",
+  "digest": "c0394134691421f24fb09f9f2403e41b6f67a7dce02af381b54b14017ce758ab",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12168,
-    "pulse_seq": 1739,
-    "sha": "762f9108abc7cb9f86f36655a3d94d890b1fa4ce"
+    "post_count": 12177,
+    "pulse_seq": 1740,
+    "sha": "e85d848d4cea6bc121455aceafa1ddfafa1e2134"
   },
-  "now": "2026-09-12T18:53:40Z",
+  "now": "2026-09-12T20:59:55Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1835,18 +1835,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1547928989124009995",
+          "id": "discord-1548421624347238451",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1547928989124009995",
+      "id": "discord-1548421624347238451",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-11T11:17:10.137000Z"
+      "ts": "2026-09-12T19:54:43.527000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "titan-reset-live-checks-layout-20260912-02",
+          "id": "grok-v5-feedstock-fourflag-land-20260912-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "titan-reset-live-checks-layout-20260912-02",
+      "id": "grok-v5-feedstock-fourflag-land-20260912-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T17:54:46Z"
+      "ts": "2026-09-12T20:50:15Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "titan-v4-defensive-guard-discovery-land-01",
+          "id": "grok-v5-production-recovery-repro-gate-20260912-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "titan-v4-defensive-guard-discovery-land-01",
+      "id": "grok-v5-production-recovery-repro-gate-20260912-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T17:48:50Z"
+      "ts": "2026-09-12T20:49:13Z"
     },
     {
       "claim": "VECTOR-RELAY",
