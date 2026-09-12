@@ -8,17 +8,17 @@ shed is already full. The preserved B7 donor proves an exact single-product
 rewrite. This successor extends only cases where one unit command can preserve
 the exact shed/farm post-state:
 
-* room == 0: DROP -> PASS for any well-formed canonical carried cargo.
+* room == 0: DROP -> PASS for canonical carried cargo with positive quantities.
 * room > 0: if the first positive carried item is a PRODUCT and its quantity is
   at least the remaining room, DROP -> PLACE(item, room). The original DROP
   cannot deposit any later item, so the rewrite preserves the exact shed result
   while retaining all cargo that DROP would have destroyed.
 
-If DROP would span multiple carried items, a prior shed PICKUP makes remaining
-room uncertain, the first item is an animal, cargo/state/configuration is
-malformed, or the shed is already over capacity, the exact parent action object
-is returned unchanged. This module is default-OFF and does not wire itself into
-runtime.
+If DROP would span multiple carried items, contains zero-quantity keys that DROP
+would delete, a prior shed PICKUP makes remaining room uncertain, the first item
+is an animal, cargo/state/configuration is malformed, or the shed is already
+over capacity, the exact parent action object is returned unchanged. This module
+is default-OFF and does not wire itself into runtime.
 """
 from __future__ import annotations
 
@@ -163,13 +163,16 @@ def transform(observation: Any, action: Any, configuration: Any = None, enabled:
             deposit = min(room, total)
             replacement: list[Any] | None = None
             retained = total - deposit
-            if positive and retained > 0:
+            all_entries_positive = len(positive) == len(inventory)
+            if positive and all_entries_positive and retained > 0:
                 if room == 0:
                     replacement = ["PASS"]
                 else:
                     first_item, first_qty = positive[0]
                     if first_item in PRODUCTS and first_qty >= room:
                         replacement = ["PLACE", first_item, room]
+            elif positive and not all_entries_positive:
+                telemetry["zero_quantity_drop_key"] += 1
             if replacement is not None:
                 if saw_prior_shed_pickup:
                     telemetry["pickup_before_guarded_drop"] += 1
