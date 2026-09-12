@@ -24,10 +24,11 @@ Inside `apply_committed_seed_retry()` only:
 
 - helper: `exec_prefix.py`
   - Git blob `dc8a4e0e268b0e488946fcb0fc5282c9a0f3442d`
-  - 3,372 bytes
+  - **3,003 bytes**
   - SHA-256 `47bb4a12d9a1761c5719cff363f0c480d9628057382ac7ed6ded4f7bd181db89`
 - focused test: `test_exec_prefix.py`
   - Git blob `bb9fea12b215f0e7404d3ccbc12f7390d95ffa79`
+  - **5,371 bytes**
   - SHA-256 `5843b5bb4081c4f83e9970bea65583e49c1f359a197ac140b88f7d3fb882d238`
 
 Exact server pair was reconstructed locally by Git identity and rerun:
