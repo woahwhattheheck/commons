@@ -16,6 +16,7 @@ TURNS_PER_DAY = 24
 EPISODE_STEPS = 720
 FINAL_PLAN_STEP = 648
 LAST_ACTION_STEP = EPISODE_STEPS - 2
+DEFAULT_MAX_MARKET_ORDERS = 10
 FIRST_YIELD_DAYS = {"GOOSE": 4, "SHEEP": 6, "COW": 8}
 
 
@@ -36,6 +37,22 @@ def _standard_timing(configuration: Any) -> bool:
         and type(steps) is int
         and steps == EPISODE_STEPS
     )
+
+
+def _max_market_orders(configuration: Any) -> int | None:
+    """Return the official executable market prefix length, or fail closed.
+
+    The official specification defaults maxMarketOrdersPerTurn to 10 and the
+    interpreter executes only market[:max_orders].  Missing therefore means the
+    exact engine default; an explicitly malformed/non-positive value is not
+    source-safe for this component and fails closed.
+    """
+    value = _value(configuration, "maxMarketOrdersPerTurn")
+    if value is None:
+        return DEFAULT_MAX_MARKET_ORDERS
+    if type(value) is not int or value <= 0:
+        return None
+    return value
 
 
 def _step(observation: Any) -> int | None:
@@ -74,6 +91,11 @@ def plan_terminal_animal_capital(
         report["reason"] = "NONSTANDARD_OR_MISSING_TIMING"
         return report
 
+    max_orders = _max_market_orders(configuration)
+    if max_orders is None:
+        report["reason"] = "BAD_MAX_MARKET_ORDERS"
+        return report
+
     step = _step(observation)
     if step is None or step < 0:
         report["reason"] = "BAD_STEP"
@@ -90,9 +112,14 @@ def plan_terminal_animal_capital(
         report["reason"] = "BAD_MARKET_QUEUE"
         return report
 
+    # Source-bind the same executable prefix as the official interpreter.
+    # Raw suffix rows are intentionally opaque/preserved because the engine
+    # silently drops them before parsing or committing any market operation.
+    executable_market = market[:max_orders]
+
     parsed_ops: list[str | None] = []
     dead: dict[int, tuple[str, int, int]] = {}
-    for index, row in enumerate(market):
+    for index, row in enumerate(executable_market):
         if row == []:
             parsed_ops.append(None)
             continue
@@ -121,8 +148,9 @@ def plan_terminal_animal_capital(
         report["reason"] = "NO_PROVABLY_DEAD_ANIMAL_CAPITAL"
         return report
 
-    # Blank only a dead suffix.  Saving cash before any later non-SELL,
-    # non-placeholder row could make that later order newly executable.
+    # Blank only a dead executable suffix. Saving cash before any later
+    # executable non-SELL/non-placeholder row could make that later order newly
+    # executable. Raw rows at index >= max_orders never enter this calculation.
     last_protected = -1
     for index, op in enumerate(parsed_ops):
         if op is None or op == "SELL" or index in dead:
@@ -151,6 +179,7 @@ def plan_terminal_animal_capital(
         eligible=True,
         reason="DROP_PROVABLY_DEAD_ANIMAL_CAPITAL_SUFFIX",
         step=step,
+        max_market_orders=max_orders,
         drop_indices=drop,
         dropped_units=units,
         protected_prefix_through=last_protected,
