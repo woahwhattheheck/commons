@@ -61,7 +61,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             '--expected-control-bundle-sha256', digest,
         ]
 
-    def test_path_replacement_after_capture_cannot_change_materialized_execution_bytes(self):
+    def test_path_replacement_after_capture_cannot_change_materialized_transport_bytes(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d) / 'root'; root.mkdir()
             manifest_raw, files, engine_pins = self.fixture(root)
@@ -75,6 +75,51 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             self.assertEqual(files['main.py'], (frozen / 'main.py').read_bytes())
             self.assertEqual(files['mechanics.py'], (frozen / 'mechanics.py').read_bytes())
             self.assertEqual(manifest_raw, (frozen / 'SOURCE.json').read_bytes())
+
+    def test_post_capture_runtime_path_mutation_cannot_change_executed_code_or_data(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            marker = root / 'attacker-executed'
+            captured = {
+                'entry.py': (
+                    'from pathlib import Path\n'
+                    'import helper\n'
+                    'VALUE = helper.VALUE + "|" + '
+                    'Path(__file__).with_name("payload.txt").read_text()\n'
+                ).encode(),
+                'helper.py': b'VALUE = "captured-helper"\n',
+                'payload.txt': b'captured-data',
+            }
+            for name, raw in captured.items():
+                (root / name).write_bytes(raw)
+
+            # Source-real predecessor: after a valid capture, mutate every path
+            # that the old child would later reopen. Memory authority must make
+            # all three attacker replacements irrelevant to execution.
+            (root / 'entry.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("ENTRY")\n'
+                'raise RuntimeError("mutated entry executed")\n'
+            )
+            (root / 'helper.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("HELPER")\n'
+                'VALUE = "mutated-helper"\n'
+            )
+            (root / 'payload.txt').write_text('mutated-data')
+
+            sys.modules.pop('helper', None)
+            sys.modules.pop('kinetic_runtime_fixture', None)
+            try:
+                with k._captured_runtime_authority(captured):
+                    module = k._load_captured_module(
+                        'kinetic_runtime_fixture', 'entry.py', captured
+                    )
+                self.assertEqual(module.VALUE, 'captured-helper|captured-data')
+                self.assertFalse(marker.exists())
+            finally:
+                sys.modules.pop('helper', None)
+                sys.modules.pop('kinetic_runtime_fixture', None)
 
     def test_candidate_mechanics_override_is_exact_and_only_for_mechanics(self):
         with tempfile.TemporaryDirectory() as d:
