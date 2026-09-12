@@ -15,6 +15,9 @@ from __future__ import annotations
 from copy import deepcopy
 
 
+_ANIMALS = frozenset(("GOOSE", "COW", "SHEEP"))
+
+
 def _position(value):
     if (not isinstance(value, (list, tuple)) or len(value) != 2
             or type(value[0]) is not int or type(value[1]) is not int):
@@ -115,15 +118,17 @@ def apply_alternate_feed(observation, selected):
         if type(inventory.get("WHEAT", 0)) is not int or inventory.get("WHEAT", 0) < 1:
             continue
         tile = _tile_at(context["tiles"], position)
-        if not isinstance(tile, dict) or "animal" not in tile:
+        if not isinstance(tile, dict) or tile.get("animal") not in _ANIMALS:
             continue
-        if tile.get("consecutive_unfed") != 0:
+        unfed = tile.get("consecutive_unfed")
+        pending = tile.get("pending_care_bonus", 0)
+        if type(unfed) is not int or unfed != 0:
             continue
         if tile.get("fed_today") is not False or tile.get("cared_today") is not False:
             continue
-        if tile.get("pending_care_bonus", 0) != 0 or position in care_positions:
+        if type(pending) is not int or pending != 0 or position in care_positions:
             continue
-        eligible.append((actor, position, tile.get("animal")))
+        eligible.append((actor, position, tile["animal"]))
 
     if not eligible:
         return selected, report
