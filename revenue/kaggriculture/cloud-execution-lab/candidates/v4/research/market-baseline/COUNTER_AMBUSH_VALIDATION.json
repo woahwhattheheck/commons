@@ -1,0 +1,82 @@
+{
+  "authoring": {
+    "current_native_games": 0,
+    "full_checkout_engine_verifier_executed": false,
+    "normal_tests": "12/12 PASS",
+    "official_engine_games": 0,
+    "optimized_tests": "12/12 PASS",
+    "py_compile": "PASS"
+  },
+  "claims": {
+    "archive_change": false,
+    "config_change": false,
+    "default_change": false,
+    "economic_gain": false,
+    "evaluator_change": false,
+    "hosted_ci_green": false,
+    "kaggle_change": false,
+    "runtime_activation": false,
+    "submission_change": false,
+    "workflow_change": false
+  },
+  "disposition": "RESEARCH_ONLY_DEFAULT_NEUTRAL_NO_DECISION_AUTHORITY",
+  "files": {
+    "COUNTER_AMBUSH.md": {
+      "bytes": 4173,
+      "git_blob": "7ec9088bc8333770de2c92a24240fd021b2d6006",
+      "sha256": "63c2f43e41fa67eddfb67d3e30139d5af97a53b656956e8c45a259352f25ae39"
+    },
+    "counter_ambush.py": {
+      "bytes": 9472,
+      "git_blob": "2d9a2fc47c57296c1764da0135f4e758d02b1d58",
+      "sha256": "7b3f6474df5b5dd930bd9f92157f18c8e4b702721616479399515464bc01ae41"
+    },
+    "test_counter_ambush.py": {
+      "bytes": 3249,
+      "git_blob": "4393a67789369c58662eb59b4f244d058555ce16",
+      "sha256": "b1403fd335bbbb4c30bec7726b849a88277969e99e17034a3c703a52b9c5428a"
+    }
+  },
+  "findings": {
+    "fert40_buy10": {
+      "buy_cost_after_dump": 931,
+      "buy_cost_without_dump": 1011,
+      "discount": 80,
+      "earliest_best_case_fertilize_step_after_buy523": 525,
+      "wheat_base_gross_ceiling": 500,
+      "wheat_gross_break_even_price": 47
+    },
+    "strawberry_380_synthetic_10x10_max_shop_drain": {
+      "gross_relative_margin_swing": 299,
+      "own_timing_gain": 38,
+      "rival_suppression": 261,
+      "town_drain": 8
+    },
+    "strawberry_402_synthetic_10x10_no_shop_drain": {
+      "gross_relative_margin_swing": 384,
+      "own_timing_gain": 192,
+      "rival_suppression": 192,
+      "town_drain": 0
+    }
+  },
+  "opponent_schedule": {
+    "authenticated_source": false,
+    "reported_external_schedule": {
+      "FERTILIZER": [
+        522
+      ],
+      "MELON": [
+        249
+      ],
+      "STRAWBERRY": [
+        381,
+        403,
+        499
+      ]
+    }
+  },
+  "schema": "titan-v4-comeback-validation/v1",
+  "source_pins": {
+    "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4"
+  }
+}
