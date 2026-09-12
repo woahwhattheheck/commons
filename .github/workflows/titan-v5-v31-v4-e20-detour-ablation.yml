@@ -39,7 +39,15 @@ jobs:
         run: |
           set -euo pipefail
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v4-e20-productive-detour-ablation
-          python -m py_compile ablate_e20_productive_detour.py test_ablate_e20_productive_detour.py
-          python -B -m unittest -v test_ablate_e20_productive_detour.py
-          python -O -B -m unittest -v test_ablate_e20_productive_detour.py
+          python -m py_compile \
+            ablate_e20_productive_detour.py \
+            build_submitted_v4_treatment.py \
+            test_ablate_e20_productive_detour.py \
+            test_build_submitted_v4_treatment.py
+          python -B -m unittest -v \
+            test_ablate_e20_productive_detour.py \
+            test_build_submitted_v4_treatment.py
+          python -O -B -m unittest -v \
+            test_ablate_e20_productive_detour.py \
+            test_build_submitted_v4_treatment.py
           git diff --exit-code
