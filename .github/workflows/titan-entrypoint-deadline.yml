@@ -9,6 +9,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/terminal_history_join.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_entrypoint_deadline.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_entrypoint_clock.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_entrypoint_route_capsule.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_final_market_pressure_entrypoint.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_history_observation_atomic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
@@ -37,8 +38,10 @@ jobs:
           python3 -B -m unittest -v \
             test_entrypoint_deadline \
             test_entrypoint_clock \
+            test_entrypoint_route_capsule \
             test_final_market_pressure_entrypoint \
             test_history_observation_atomic
+          python3 -O -B -m unittest -v test_entrypoint_route_capsule
       - name: Immutable package matches source
         run: |
           set -euo pipefail
@@ -54,5 +57,8 @@ jobs:
             PYTHONPATH="$runtime" python3 -B -m unittest -v \
               checks.test_entrypoint_deadline \
               checks.test_entrypoint_clock \
+              checks.test_entrypoint_route_capsule \
               checks.test_final_market_pressure_entrypoint
+            PYTHONPATH="$runtime" python3 -O -B -m unittest -v \
+              checks.test_entrypoint_route_capsule
           )
