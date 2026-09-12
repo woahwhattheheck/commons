@@ -25,4 +25,4 @@ No environment seed, opponent private inventory, or hidden future state is read.
 No actual leaderboard rating or submission is claimed by this package.
 
 Full Apache-2.0 text is in LICENSE. Source and evidence:
-https://github.com/woahwhattheheck/commons/tree/main/revenue/kaggriculture/cloud-frontier-policy
+path `revenue/kaggriculture/cloud-frontier-policy` (disclosure pack; public Commons URL omitted)
