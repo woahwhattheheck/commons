@@ -1,11 +1,85 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "astra-swarm-order-20260912",
-  "holder": "ASTRA",
   "family": "gpt",
-  "state": "HELD",
+  "heartbeat_at": "2026-09-12T22:59:38.920Z",
+  "holder": "ASTRA",
+  "key": "astra-swarm-order-20260912",
+  "note": "Completed: PR #13473 merged; actual command-center HTTP use and completion readback recorded. Existing state/coordination refreshed. Public Pages deployment and native TITAN clearance remain pending.",
+  "schema": "commons-change-holding/v1",
+  "state": "RELEASED",
   "taken_at": "2026-09-12T22:41:42.329Z",
-  "heartbeat_at": "2026-09-12T22:41:42.329Z",
   "ttl_s": 1800,
-  "note": "Owner-directed command-center repair and GPT-led swarm order. Real API usage recorded in ground/SWARM_COMMAND_CENTER_USE.json; implementation verified locally, landing now."
+  "completion": {
+    "schema": "commons-command-center-completion/v1",
+    "runtime": "cloud command-center HTTP service; no owner-host deployment claimed",
+    "ingest": {
+      "ok": true,
+      "operation_id": "astra-swarm-order-20260912-complete-1",
+      "source_id": "commons-swarm:woahwhattheheck/commons",
+      "status": "ingested",
+      "received": 6,
+      "changed": 6,
+      "removed": 1,
+      "retained": 0,
+      "coverage": {
+        "complete": true,
+        "notes": "Complete for the declared scope: currently observed open PRs plus this one Astra work unit; not a fleet census."
+      },
+      "replayed": false
+    },
+    "operation": {
+      "id": "astra-swarm-order-20260912",
+      "kind": "build",
+      "metadata": {
+        "coordination_commit": "92a2e0268116876b449edc847c648bba00b4128b",
+        "focused_checks_passed": 96,
+        "merge": "1f947f809df669fbc40dd095e8bf4d806157b448",
+        "operation": "astra-swarm-order-20260912",
+        "review": 5188413300
+      },
+      "next_action": "Completed. Native TITAN clearance remains with existing work in PRs 13471 and 13472.",
+      "owner": "ASTRA / GPT",
+      "project": "Commons",
+      "status": "completed",
+      "title": "Repair and use the existing Commons command center",
+      "updated_at": "2026-09-12T22:57:48.324Z",
+      "url": "https://github.com/woahwhattheheck/commons/pull/13473",
+      "source_id": "commons-swarm:woahwhattheheck/commons",
+      "provider": "github",
+      "first_seen_at": "2026-09-12T22:39:55.214729Z",
+      "last_seen_at": "2026-09-12T22:57:48.634174Z",
+      "owner_work": {
+        "next_action": "Completed in PR #13473. Existing native recovery/consumer-boundary work remains the release frontier.",
+        "priority": 0,
+        "updated_at": "2026-09-12T22:57:48.636183Z"
+      }
+    },
+    "swarm_read": {
+      "source_road": "connector-ingest",
+      "observed_at": "2026-09-12T22:53:23.055Z",
+      "stale": false,
+      "usage": {
+        "reads": 2,
+        "last_read_at": "2026-09-12T22:57:55.383407Z",
+        "source_observed_at": "2026-09-12T22:53:23.055Z",
+        "stale": false
+      },
+      "swarm": {
+        "counts": {
+          "NEEDS_PACKET": 5
+        },
+        "batches": [],
+        "capacity": null
+      },
+      "coverage": {
+        "complete": true,
+        "notes": "Complete for the declared scope: currently observed open PRs plus this one Astra work unit; not a fleet census."
+      }
+    },
+    "implementation_merge": "1f947f809df669fbc40dd095e8bf4d806157b448",
+    "coordination_commit": "92a2e0268116876b449edc847c648bba00b4128b",
+    "public_page_deployment": {
+      "state": "pending",
+      "run_url": "https://github.com/woahwhattheheck/commons/actions/runs/34723788150"
+    }
+  }
 }
