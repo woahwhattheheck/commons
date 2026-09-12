@@ -22,6 +22,7 @@ from typing import Any
 
 import r04_full_router as base
 
+SHEEP_MAX_HELD = 6
 STANDARD_CONFIG = {
     "episodeSteps": 720,
     "boardSize": 10,
@@ -115,7 +116,7 @@ def _strict_sheep(tile: Any):
     bonus = tile.get("pending_care_bonus", _MISSING)
     if type(placed) is not int or placed < 0:
         return None
-    if type(units) is not int or units < 0:
+    if type(units) is not int or not 0 <= units <= SHEEP_MAX_HELD:
         return None
     if type(consecutive_unfed) is not int or consecutive_unfed < 0:
         return None
