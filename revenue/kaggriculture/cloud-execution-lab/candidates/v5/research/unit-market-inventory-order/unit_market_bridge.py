@@ -8,8 +8,9 @@ observed shed state. It never touches operating inputs (WHEAT/FERTILIZER).
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from copy import deepcopy
-from typing import Any, Mapping
+from typing import Any
 
 PRODUCTS = (
     "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
@@ -89,7 +90,9 @@ def transform(
     """Return a default-off unit/market ordering experiment and deterministic report."""
     if type(selected) is not dict or type(farm) is not dict or type(private) is not dict:
         return selected, _report("malformed_parent")
-    config = dict(configuration or {})
+    if configuration is not None and not isinstance(configuration, Mapping):
+        return selected, _report("malformed_config")
+    config = {} if configuration is None else dict(configuration)
     board_size = _plain_positive(config, "boardSize", 10)
     market_cap = _plain_positive(config, "maxMarketOrdersPerTurn", 10)
     shed_capacity = _plain_positive(config, "shedCapacity", 100)
