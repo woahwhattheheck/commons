@@ -36,8 +36,8 @@ permissions:
   contents: read
 
 concurrency:
-  # Let one publisher finish; GitHub coalesces churn behind it to the newest pending run.
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  # Give every immutable source SHA its own pending slot; shared groups replace older pending runs.
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
