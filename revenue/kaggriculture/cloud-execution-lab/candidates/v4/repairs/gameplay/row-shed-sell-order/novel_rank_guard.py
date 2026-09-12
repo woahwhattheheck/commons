@@ -14,13 +14,14 @@ requires both of these independent facts:
 
 * the STRATUM candidate changed only a leading executable positive-quantity
   SELL block inside the official market prefix; and
-* the two final returned actions still differ inside that engine-executable
-  market prefix after all remaining seller economics and pressure.
+* the two final returned actions still differ in official engine-parsed market
+  semantics inside that executable prefix after all remaining seller economics
+  and pressure.
 
-Suffix-only differences never establish novelty. Missing, malformed or
-non-comparable evidence fails closed to exact parent identity. This is an
-evidence/admission primitive, not a controller and not a second seller/pressure
-implementation.
+Suffix-only or parser-dead differences never establish novelty. Missing,
+malformed or non-comparable evidence fails closed to exact parent identity.
+This is an evidence/admission primitive, not a controller and not a second
+seller/pressure implementation.
 """
 from __future__ import annotations
 
@@ -29,6 +30,25 @@ from copy import deepcopy
 
 class NoveltyEvidenceError(ValueError):
     """Supplied STRATUM/final-action evidence is not auditable."""
+
+
+# Exact public market domains in reference/engine/kaggriculture.py blob
+# 3c202c7ee921da239356789e266b694635103fc4. The local parser below mirrors
+# that engine's _parse_order() and the immediately-following supported-item
+# dispatch. Unknown/unsupported orders are engine-dead, not novelty evidence.
+_SELL_ITEMS = frozenset({
+    "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
+    "EGG", "MILK", "WOOL", "FERTILIZER",
+})
+_BUY_PRODUCT_ITEMS = frozenset({"WHEAT", "FERTILIZER"})
+_BUY_SEED_ITEMS = frozenset({"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"})
+_BUY_ANIMAL_ITEMS = frozenset({"GOOSE", "COW", "SHEEP"})
+_QUANTITY_ITEMS = {
+    "SELL": _SELL_ITEMS,
+    "BUY_PRODUCT": _BUY_PRODUCT_ITEMS,
+    "BUY_SEED": _BUY_SEED_ITEMS,
+    "BUY_ANIMAL": _BUY_ANIMAL_ITEMS,
+}
 
 
 def _market_prefix_limit(configuration):
@@ -137,6 +157,42 @@ def _validate_row_shed_candidate(parent, candidate, lead):
         )
 
 
+def _engine_market_order(row):
+    """Canonicalize one final market row exactly enough for engine behavior.
+
+    Mirrors reference engine blob 3c202c7e... `_parse_order()` plus its
+    supported-item dispatch. Interior dead rows remain explicit sentinels so
+    lockstep slot alignment is preserved; callers may trim only *trailing*
+    dead slots after the executable prefix has already been sliced.
+    """
+    if not isinstance(row, list) or not row:
+        return None
+    op = row[0]
+    if op == "HIRE":
+        return ("HIRE",)
+    if op == "BUY_LAND":
+        return ("BUY_LAND",)
+    allowed_items = _QUANTITY_ITEMS.get(op)
+    if allowed_items is None:
+        return None
+    if len(row) < 3:
+        return None
+    try:
+        quantity = int(row[2])
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if quantity <= 0:
+        return None
+    item = row[1]
+    try:
+        supported = item in allowed_items
+    except TypeError:
+        supported = False
+    if not supported:
+        return None
+    return (op, item, quantity)
+
+
 def _final_executable_prefix(action, limit):
     if not isinstance(action, dict):
         raise NoveltyEvidenceError("final action must be a dict")
@@ -145,7 +201,15 @@ def _final_executable_prefix(action, limit):
         raise NoveltyEvidenceError("final action market must be a list")
     if _truthy_malformed_market_row(rows):
         raise NoveltyEvidenceError("truthy final market row must be a list")
-    return deepcopy(rows[:limit])
+
+    # Engine execution first slices raw rows to maxMarketOrdersPerTurn, then
+    # parses each occupied slot. Preserve inert *interior* slots because their
+    # lockstep index relative to the opponent is observable. Trim only inert
+    # trailing slots: an absent tail and parser-dead tail execute identically.
+    prefix = [_engine_market_order(row) for row in rows[:limit]]
+    while prefix and prefix[-1] is None:
+        prefix.pop()
+    return prefix
 
 
 class FinalActionNoveltyGuard:
