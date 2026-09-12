@@ -1,0 +1,17 @@
+test_atomic_overdemand_matches_full_interpreter (__main__.suite.<locals>.Contracts.test_atomic_overdemand_matches_full_interpreter) ... ok
+test_capital_needs_live_target_full_cash_and_capacity (__main__.suite.<locals>.Contracts.test_capital_needs_live_target_full_cash_and_capacity) ... ok
+test_disabled_consumer_and_finalizer_identity (__main__.suite.<locals>.Contracts.test_disabled_consumer_and_finalizer_identity) ... ok
+test_finalizer_and_direct_hook_agree (__main__.suite.<locals>.Contracts.test_finalizer_and_direct_hook_agree) ... ok
+test_floor_price_funding_preserves_market_inventory (__main__.suite.<locals>.Contracts.test_floor_price_funding_preserves_market_inventory) ... ok
+test_four_semantic_mutants_are_rejected (__main__.suite.<locals>.Contracts.test_four_semantic_mutants_are_rejected) ... ok
+test_future_demand_is_preserved_and_only_residual_is_counted (__main__.suite.<locals>.Contracts.test_future_demand_is_preserved_and_only_residual_is_counted) ... ok
+test_invalid_limits_and_terminal_are_identity (__main__.suite.<locals>.Contracts.test_invalid_limits_and_terminal_are_identity) ... ok
+test_original_eight_contracts (__main__.suite.<locals>.Contracts.test_original_eight_contracts) ... ok
+test_randomized_full_turn_certificates (__main__.suite.<locals>.Contracts.test_randomized_full_turn_certificates) ... ok
+test_raw_suffix_invariance_and_nonmutation (__main__.suite.<locals>.Contracts.test_raw_suffix_invariance_and_nonmutation) ... ok
+test_runtime_finalizer_recovers_land_both_seats_all_day_phases (__main__.suite.<locals>.Contracts.test_runtime_finalizer_recovers_land_both_seats_all_day_phases) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.606s
+
+OK
