@@ -350,16 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 3,
  "open_prs": [
   {
-   "number": 12152,
+   "number": 13369,
    "author": "woahwhattheheck",
-   "title": "fix(titan): protect E11 executable market dependencies",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12152",
+   "title": "TITAN V5: bind WF1 field evidence to immutable package closures",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13369",
    "base_freshness": {
-    "base_sha": "9a584f6e887b6231f78a12538d0bbbd319dba471",
-    "main_sha": "996ad28366e270b44c6887fb644b68233f206de9",
+    "base_sha": "2451733b8e5288dd768a4adbe0365ce5a499836d",
+    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,13 +369,29 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 12141,
+   "number": 13378,
    "author": "woahwhattheheck",
-   "title": "fix(titan): preserve LEANPLANT routes at or below cap",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/12141",
+   "title": "TITAN V5: recover animal yield-cap candidate carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13378",
    "base_freshness": {
-    "base_sha": "9a584f6e887b6231f78a12538d0bbbd319dba471",
-    "main_sha": "996ad28366e270b44c6887fb644b68233f206de9",
+    "base_sha": "f3408fd1cb841e6c1a451458292087c729b3fff7",
+    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13379,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: add source-pinned day-close animal feed certificate authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13379",
+   "base_freshness": {
+    "base_sha": "f3408fd1cb841e6c1a451458292087c729b3fff7",
+    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

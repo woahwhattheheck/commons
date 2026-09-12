@@ -25,7 +25,7 @@ class VariantsTests(unittest.TestCase):
     def test_sale_cadence_changes_only_sales_without_mutation(self):
         obs, action = copy.deepcopy(self.obs), copy.deepcopy(self.action)
         got = self.apply("sale_cadence")
-        self.assertEqual(got["market"], self.action["market"][2:])
+        self.assertEqual(got["market"], [[], []] + self.action["market"][2:])
         self.assertEqual(got["units"], self.action["units"])
         self.assertEqual((self.obs, self.action), (obs, action))
         got["units"][0][1] = 99
@@ -46,8 +46,8 @@ class VariantsTests(unittest.TestCase):
 
     def test_duplicate_shops_and_official_crop_demand(self):
         got = self.apply("crop_demand")
-        self.assertIn(["SELL", "WHEAT", 10], got["market"])
-        self.assertNotIn(["SELL", "CARROT", 3], got["market"])
+        self.assertEqual(got["market"][0], ["SELL", "WHEAT", 10])
+        self.assertEqual(got["market"][1], [])
         self.assertIn(["BUY", "SEED_WHEAT", 2], got["market"])
 
     def test_no_known_demand_does_not_invent_hold(self):
@@ -56,14 +56,85 @@ class VariantsTests(unittest.TestCase):
 
     def test_labor_is_observation_cadence_not_cross_game_state(self):
         got = self.apply("labor_cadence")
-        self.assertFalse(any(o[0] == "HIRE" for o in got["market"]))
+        self.assertEqual(got["market"][3:], [[], []])
         self.obs["hour"] = 2
-        self.assertEqual(sum(o[0] == "HIRE" for o in self.apply("labor_cadence")["market"]), 1)
+        got = self.apply("labor_cadence")
+        self.assertEqual(got["market"][3], ["HIRE"])
+        self.assertEqual(got["market"][4], [])
 
     def test_unknown_and_invalid_parent_fail_closed(self):
         with self.assertRaises(ValueError): self.apply("unknown")
         with self.assertRaises(ValueError):
             variants.transform([], self.obs, "sale_cadence", self.shops, self.cfg)
+
+    def test_engine_inert_non_list_market_is_independent_noop(self):
+        for market in (17, "market", ("SELL",), {"bad": "shape"}):
+            with self.subTest(market=market):
+                action = {"market": market, "units": [["MOVE", 0, 2, 3]]}
+                original = copy.deepcopy(action)
+                got = variants.transform(action, self.obs, "sale_cadence", self.shops, self.cfg)
+                self.assertEqual(got, original)
+                self.assertIsNot(got, action)
+                got["units"][0][1] = 99
+                self.assertEqual(action, original)
+
+    def test_sale_filter_preserves_raw_prefix_and_capped_suffix(self):
+        action = {"market": [["SELL", "WHEAT", 1], ["SELL", "CARROT", 1],
+                             ["HIRE"], ["SELL", "MELON", 1]],
+                  "units": [["PASS"]]}
+        cfg = dict(self.cfg, maxMarketOrdersPerTurn=1)
+        got = variants.transform(action, self.obs, "sale_cadence", self.shops, cfg)
+        self.assertEqual(got["market"],
+                         [[], ["SELL", "CARROT", 1], ["HIRE"], ["SELL", "MELON", 1]])
+        self.assertEqual(action["market"][0], ["SELL", "WHEAT", 1])
+
+    def test_engine_market_cap_floor_is_raw_slot_floor(self):
+        action = {"market": [["SELL", "WHEAT", 1], ["SELL", "CARROT", 1]]}
+        cfg = dict(self.cfg, maxMarketOrdersPerTurn=0)
+        got = variants.transform(action, self.obs, "sale_cadence", self.shops, cfg)
+        self.assertEqual(got["market"], [[], ["SELL", "CARROT", 1]])
+
+    def test_labor_filter_does_not_pull_capped_hire_forward(self):
+        action = {"market": [["PASS"], ["PASS"], ["PASS"], ["HIRE"], ["HIRE"]]}
+        cfg = dict(self.cfg, maxMarketOrdersPerTurn=4)
+        got = variants.transform(action, self.obs, "labor_cadence", self.shops, cfg)
+        self.assertEqual(got["market"], [["PASS"], ["PASS"], ["PASS"], [], ["HIRE"]])
+
+    def test_crop_demand_filter_respects_executable_prefix(self):
+        action = {"market": [["SELL", "CARROT", 1], ["SELL", "WHEAT", 1],
+                             ["SELL", "CARROT", 1]]}
+        cfg = dict(self.cfg, maxMarketOrdersPerTurn=2)
+        got = variants.transform(action, self.obs, "crop_demand", self.shops, cfg)
+        self.assertEqual(got["market"], [[], ["SELL", "WHEAT", 1], ["SELL", "CARROT", 1]])
+
+    def test_inert_sell_grammar_is_preserved_and_trailing_fields_are_valid(self):
+        rows = [["SELL", "WHEAT"],
+                ["SELL", ["WHEAT"], 1],
+                ["SELL", "WHEAT", "bad"],
+                ["SELL", "WHEAT", 0],
+                ["SELL", "WHEAT", float("nan")],
+                ["SELL", "WHEAT", 1, "trailing"]]
+        action = {"market": copy.deepcopy(rows)}
+        got = variants.transform(action, self.obs, "sale_cadence", self.shops, self.cfg)
+        self.assertEqual(got["market"][:-1], rows[:-1])
+        self.assertEqual(got["market"][-1], [])
+        self.assertEqual(action["market"], rows)
+
+    def test_sell_quantity_overflow_remains_engine_fatal(self):
+        action = {"market": [["SELL", "WHEAT", float("inf")]]}
+        with self.assertRaises(OverflowError):
+            variants.transform(action, self.obs, "sale_cadence", self.shops, self.cfg)
+
+    def test_market_cap_overflow_remains_engine_fatal(self):
+        action = {"market": [["SELL", "WHEAT", 1]]}
+        cfg = dict(self.cfg, maxMarketOrdersPerTurn=float("inf"))
+        with self.assertRaises(OverflowError):
+            variants.transform(action, self.obs, "sale_cadence", self.shops, cfg)
+
+    def test_hire_trailing_fields_match_atomic_engine_grammar(self):
+        action = {"market": [["HIRE", "trailing"], ["HIRE"]]}
+        got = variants.transform(action, self.obs, "labor_cadence", self.shops, self.cfg)
+        self.assertEqual(got["market"], [[], []])
 
     def test_actual_actor_signature_and_stats(self):
         class Parent:
@@ -163,7 +234,6 @@ class FreezeTests(unittest.TestCase):
             dest=Path(tmp)/"freeze.json"; league.freeze(root,dest)
             with self.assertRaises(FileExistsError): league.freeze(root,dest)
             with self.assertRaises(ValueError): league.freeze(root,root/"inside.json")
-
 
 
 class EvaluatorContractTests(unittest.TestCase):

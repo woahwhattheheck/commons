@@ -58,6 +58,38 @@ _ENGAGEMENT_KEYS = frozenset(
 _DIVERGENCE_KEYS = frozenset(
     ("observation", "key", "control_fingerprint", "candidate_fingerprint")
 )
+_RUNTIME_KEYS = frozenset(
+    (
+        "classification",
+        "promotion_ready",
+        "receipt_count",
+        "candidate_count",
+        "budget_seconds",
+        "reserve_seconds",
+        "usable_budget_seconds",
+        "p99_headroom_seconds",
+        "max_fallback_rate",
+        "deadline_fallback_count",
+        "deadline_fallback_rate",
+        "fallback_stage_counts",
+        "expected_design_declared",
+        "expected_callback_count",
+        "expected_complete",
+        "missing_expected",
+        "unexpected_extra",
+        "overall",
+        "by_phase",
+        "by_candidate",
+        "phase_contract",
+    )
+)
+_TIMING_KEYS = frozenset(("count", "wall_seconds", "cpu_seconds"))
+_STATS_KEYS = frozenset(("p50", "p95", "p99", "max"))
+_PHASES = ("early", "mid", "late")
+_PHASE_CONTRACT_KEYS = frozenset(("total_steps", "early", "mid", "late"))
+_CANDIDATE_TIMING_KEYS = frozenset(
+    ("count", "wall_seconds", "cpu_seconds", "deadline_fallback_count")
+)
 
 
 class PromotionError(ValueError):
@@ -260,6 +292,52 @@ def _engagement_key_fields(value: Any) -> tuple[str, ...]:
     return tuple(value)
 
 
+def _validate_stats(value: Any, field: str, *, empty: bool) -> None:
+    if type(value) is not dict or set(value) != _STATS_KEYS:
+        raise PromotionError(f"{field} must have exact timing-stat keys")
+    if empty:
+        if any(value[key] is not None for key in ("p50", "p95", "p99", "max")):
+            raise PromotionError(f"{field} must contain only null stats when count is zero")
+        return
+    ordered = [
+        _finite_number(value[key], f"{field} {key}", minimum=0.0)
+        for key in ("p50", "p95", "p99", "max")
+    ]
+    if ordered != sorted(ordered):
+        raise PromotionError(f"{field} percentiles must be monotonic through max")
+
+
+def _validate_timing_summary(
+    value: Any,
+    field: str,
+    *,
+    expected_count: int | None = None,
+) -> int:
+    if type(value) is not dict or set(value) != _TIMING_KEYS:
+        raise PromotionError(f"{field} must have exact timing-summary keys")
+    count = _plain_int(value["count"], f"{field} count")
+    if expected_count is not None and count != expected_count:
+        raise PromotionError(f"{field} count disagrees with receipt_count")
+    _validate_stats(value["wall_seconds"], f"{field} wall_seconds", empty=count == 0)
+    _validate_stats(value["cpu_seconds"], f"{field} cpu_seconds", empty=count == 0)
+    return count
+
+
+def _validate_phase_contract(value: Any) -> int:
+    if type(value) is not dict or set(value) != _PHASE_CONTRACT_KEYS:
+        raise PromotionError("runtime phase_contract must have exact producer keys")
+    total = _plain_int(value["total_steps"], "runtime phase_contract total_steps", minimum=1)
+    expected = {
+        "early": [0, total // 3],
+        "mid": [total // 3, (2 * total) // 3],
+        "late": [(2 * total) // 3, total],
+    }
+    for phase in _PHASES:
+        if value[phase] != expected[phase]:
+            raise PromotionError(f"runtime phase_contract {phase} boundary is noncanonical")
+    return total
+
+
 def validate_manifest(manifest: Mapping[str, Any]) -> str:
     """Validate the identity manifest's closed canonical shape and self-authenticating ID."""
     if type(manifest) is not dict:
@@ -371,66 +449,100 @@ def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
 
 
 def validate_runtime(report: Mapping[str, Any], candidate_id: str) -> None:
-    """Require a complete, candidate-pure runtime admission PASS."""
+    """Require an exact producer-shaped, candidate-pure runtime admission PASS."""
     if type(report) is not dict:
         raise PromotionError("runtime report must be an object")
-    if report.get("classification") != "PASS" or report.get("promotion_ready") is not True:
+    if set(report) != _RUNTIME_KEYS:
+        missing = sorted(_RUNTIME_KEYS - set(report))
+        extra = sorted(set(report) - _RUNTIME_KEYS)
+        raise PromotionError(
+            f"runtime report keys mismatch; missing={missing!r} extra={extra!r}"
+        )
+    if report["classification"] != "PASS" or report["promotion_ready"] is not True:
         raise PromotionError("runtime report must be PASS with promotion_ready=true")
-    if report.get("expected_design_declared") is not True:
+    if report["expected_design_declared"] is not True:
         raise PromotionError("runtime report must declare an expected callback design")
-    if report.get("expected_complete") is not True:
+    if report["expected_complete"] is not True:
         raise PromotionError("runtime report expected design is incomplete")
-    if report.get("missing_expected") != []:
+    if report["missing_expected"] != []:
         raise PromotionError("runtime report contains missing expected callbacks")
-    if report.get("unexpected_extra") != []:
+    if report["unexpected_extra"] != []:
         raise PromotionError("runtime report contains unexpected callbacks")
 
-    receipt_count = _plain_int(report.get("receipt_count"), "runtime receipt_count", minimum=1)
+    receipt_count = _plain_int(report["receipt_count"], "runtime receipt_count", minimum=1)
     expected_count = _plain_int(
-        report.get("expected_callback_count"), "runtime expected_callback_count", minimum=1
+        report["expected_callback_count"], "runtime expected_callback_count", minimum=1
     )
     if expected_count != receipt_count:
         raise PromotionError("runtime expected_callback_count must equal receipt_count")
-    if _plain_int(report.get("candidate_count"), "runtime candidate_count", minimum=1) != 1:
+    if _plain_int(report["candidate_count"], "runtime candidate_count", minimum=1) != 1:
         raise PromotionError("runtime evidence must contain exactly one candidate")
 
-    by_candidate = report.get("by_candidate")
+    overall = report["overall"]
+    _validate_timing_summary(
+        overall,
+        "runtime overall",
+        expected_count=receipt_count,
+    )
+
+    by_candidate = report["by_candidate"]
     if type(by_candidate) is not dict or set(by_candidate) != {candidate_id}:
         raise PromotionError("runtime by_candidate must contain only the manifest candidate")
     candidate_summary = by_candidate[candidate_id]
-    if type(candidate_summary) is not dict:
-        raise PromotionError("runtime candidate summary must be an object")
-    if _plain_int(
-        candidate_summary.get("count"), "runtime candidate callback count", minimum=1
-    ) != receipt_count:
-        raise PromotionError("runtime candidate callback count must equal receipt_count")
+    if type(candidate_summary) is not dict or set(candidate_summary) != _CANDIDATE_TIMING_KEYS:
+        raise PromotionError("runtime candidate summary must have exact producer keys")
+    candidate_timing = {
+        key: candidate_summary[key]
+        for key in ("count", "wall_seconds", "cpu_seconds")
+    }
+    _validate_timing_summary(
+        candidate_timing,
+        "runtime candidate summary",
+        expected_count=receipt_count,
+    )
+    if candidate_timing != overall:
+        raise PromotionError("runtime candidate timing summary must equal overall summary")
 
-    overall = report.get("overall")
-    if type(overall) is not dict:
-        raise PromotionError("runtime overall summary must be an object")
-    if _plain_int(overall.get("count"), "runtime overall count", minimum=1) != receipt_count:
-        raise PromotionError("runtime overall count must equal receipt_count")
+    by_phase = report["by_phase"]
+    if type(by_phase) is not dict or set(by_phase) != set(_PHASES):
+        raise PromotionError("runtime by_phase must contain exactly early, mid, and late")
+    phase_counts = []
+    for phase in _PHASES:
+        phase_counts.append(
+            _validate_timing_summary(by_phase[phase], f"runtime by_phase {phase}")
+        )
+    if sum(phase_counts) != receipt_count:
+        raise PromotionError("runtime by_phase counts must sum to receipt_count")
+    for metric in ("wall_seconds", "cpu_seconds"):
+        phase_maxima = [
+            by_phase[phase][metric]["max"]
+            for phase in _PHASES
+            if by_phase[phase]["count"] > 0
+        ]
+        if not phase_maxima or max(phase_maxima) != overall[metric]["max"]:
+            raise PromotionError(f"runtime by_phase {metric} max disagrees with overall max")
 
-    budget = _finite_number(report.get("budget_seconds"), "runtime budget_seconds", minimum=0.0)
+    _validate_phase_contract(report["phase_contract"])
+
+    budget = _finite_number(report["budget_seconds"], "runtime budget_seconds", minimum=0.0)
     if budget <= 0:
         raise PromotionError("runtime budget_seconds must be > 0")
     reserve = _finite_number(
-        report.get("reserve_seconds"), "runtime reserve_seconds", minimum=0.0
+        report["reserve_seconds"], "runtime reserve_seconds", minimum=0.0
     )
     if reserve >= budget:
         raise PromotionError("runtime reserve_seconds must be < budget_seconds")
     usable = _finite_number(
-        report.get("usable_budget_seconds"), "runtime usable_budget_seconds", minimum=0.0
+        report["usable_budget_seconds"], "runtime usable_budget_seconds", minimum=0.0
     )
     expected_usable = budget - reserve
     if not math.isclose(usable, expected_usable, rel_tol=0.0, abs_tol=1e-15):
         raise PromotionError("runtime usable budget disagrees with budget and reserve")
-    wall = overall.get("wall_seconds")
-    if type(wall) is not dict:
-        raise PromotionError("runtime overall wall_seconds must be an object")
-    p99_wall = _finite_number(wall.get("p99"), "runtime overall p99 wall", minimum=0.0)
+    p99_wall = _finite_number(
+        overall["wall_seconds"]["p99"], "runtime overall p99 wall", minimum=0.0
+    )
     headroom = _finite_number(
-        report.get("p99_headroom_seconds"), "runtime p99_headroom_seconds"
+        report["p99_headroom_seconds"], "runtime p99_headroom_seconds"
     )
     expected_headroom = usable - p99_wall
     if not math.isclose(headroom, expected_headroom, rel_tol=0.0, abs_tol=1e-15):
@@ -439,22 +551,35 @@ def validate_runtime(report: Mapping[str, Any], candidate_id: str) -> None:
         raise PromotionError("runtime p99 wall exceeds usable budget")
 
     fallback_count = _plain_int(
-        report.get("deadline_fallback_count"), "runtime deadline_fallback_count"
+        report["deadline_fallback_count"], "runtime deadline_fallback_count"
     )
     if fallback_count > receipt_count:
         raise PromotionError("runtime deadline_fallback_count exceeds receipt_count")
     candidate_fallbacks = _plain_int(
-        candidate_summary.get("deadline_fallback_count"),
+        candidate_summary["deadline_fallback_count"],
         "runtime candidate deadline_fallback_count",
     )
     if candidate_fallbacks != fallback_count:
         raise PromotionError("runtime candidate fallback count disagrees with overall count")
 
+    fallback_stages = report["fallback_stage_counts"]
+    if type(fallback_stages) is not dict:
+        raise PromotionError("runtime fallback_stage_counts must be an object")
+    stage_total = 0
+    for stage, count in fallback_stages.items():
+        if type(stage) is not str or not stage:
+            raise PromotionError("runtime fallback_stage_counts keys must be non-empty strings")
+        stage_total += _plain_int(
+            count, f"runtime fallback_stage_counts[{stage!r}]", minimum=1
+        )
+    if stage_total != fallback_count:
+        raise PromotionError("runtime fallback_stage_counts must sum to fallback count")
+
     fallback_rate = _finite_number(
-        report.get("deadline_fallback_rate"), "runtime deadline_fallback_rate", minimum=0.0
+        report["deadline_fallback_rate"], "runtime deadline_fallback_rate", minimum=0.0
     )
     fallback_ceiling = _finite_number(
-        report.get("max_fallback_rate"), "runtime max_fallback_rate", minimum=0.0
+        report["max_fallback_rate"], "runtime max_fallback_rate", minimum=0.0
     )
     if fallback_rate > 1.0 or fallback_ceiling > 1.0:
         raise PromotionError("runtime fallback rates must be <= 1")
@@ -537,7 +662,6 @@ def _emit(receipt: Mapping[str, Any], output: Path | None) -> None:
             temporary.unlink(missing_ok=True)
         except OSError:
             pass
-
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
