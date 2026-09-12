@@ -30,7 +30,7 @@ import tarfile
 import uuid
 from typing import Any, Callable, Mapping
 
-SCHEMA = "titan-v5-release-transaction/v2"
+SCHEMA = "titan-v5-release-transaction/v3"
 TRANSITION_PREFIX = "v5tx:"
 _POINTER_KEYS = frozenset(
     ("path", "entrypoint", "config", "sha256", "bytes",
@@ -331,6 +331,19 @@ def _economics_replay(
     for key, value in expected.items():
         if receipt.get(key) != value:
             raise TransactionError(f"economics receipt {key} disagrees with release authority")
+    opponent_count = _plain_int(
+        receipt.get("opponent_count"), "economics receipt opponent_count", 2
+    )
+    opponent_ids = receipt.get("opponent_ids")
+    if (
+        type(opponent_ids) is not list
+        or len(opponent_ids) != opponent_count
+        or any(type(value) is not str or not value for value in opponent_ids)
+        or opponent_ids != sorted(set(opponent_ids))
+    ):
+        raise TransactionError(
+            "economics receipt opponent_ids must be sorted unique strings matching opponent_count"
+        )
     return receipt
 
 
@@ -436,6 +449,8 @@ def build_transaction(
             "report_sha256": _sha(economics_raw),
             "engine_id": economics["engine_id"],
             "opponent_pack_id": economics["opponent_pack_id"],
+            "opponent_count": economics["opponent_count"],
+            "opponent_ids": economics["opponent_ids"],
             "control_archive_sha256": economics["control_archive_sha256"],
             "candidate_archive_sha256": economics["candidate_archive_sha256"],
             "cell_count": economics["cell_count"],
