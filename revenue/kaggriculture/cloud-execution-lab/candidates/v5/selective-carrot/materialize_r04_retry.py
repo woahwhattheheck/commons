@@ -4,8 +4,9 @@
 This evidence carrier does not alter the authenticated V3.1 donor members.  It
 changes only the already-injected production adapter in Arlene's vendored file:
 identical same-step callbacks replay the adapter's prior R04 result without
-re-entering any of R04's nested state machines.  Changed same-step evidence is
-rejected before donor state can be mutated.
+re-entering any of R04's nested state machines.  Changed or internally drifted
+same-step evidence returns the vendored canonical legal PASS before donor state
+can be mutated.
 """
 from __future__ import annotations
 
@@ -18,6 +19,7 @@ BASE_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 VENDOR = "reference/next-panel/vendor/arlene.py"
 SCHEMA = "titan-v5-r04-samestep-state-custody/v1"
 
+_PASS_ANCHOR = b'PASS = {"farmer": ["PASS"], "hands": [], "market": []}\n'
 _INIT_ANCHOR = b"""        self._policy = r04.install(horizon=8, opening=0, row_order=True,
             evening_flush=True, sale_fertilizer=True, cattle_early=False,
             kill_late_water=False, strawberry_endgame=False,
@@ -45,11 +47,11 @@ _ACT_REPLACEMENT = b"""    def act(self, obs):
         prior = self._r04_retry.get(player)
         if prior is not None and step == prior['step']:
             if obs != prior['observation'] or configuration != prior['configuration']:
-                raise RuntimeError('changed same-step R04 retry evidence')
+                return deepcopy(PASS)
             policy = self._r04._POLICY
             state = policy.players.get(player) if policy is not None else None
             if state is None or int(getattr(state, 'last_step', -1)) != step:
-                raise RuntimeError('R04 retry state drift')
+                return deepcopy(PASS)
             self.cur = 'R04-' + str(state.plan)
             return deepcopy(prior['action'])
         if prior is not None and step < prior['step']:
@@ -74,6 +76,8 @@ def patch_vendor(raw: bytes) -> bytes:
         raise ValueError("expected one production R04 install seam")
     if raw.count(_ACT_ANCHOR) != 1:
         raise ValueError("expected one production R04 act seam")
+    if raw.count(_PASS_ANCHOR) != 1:
+        raise ValueError("expected one canonical vendored PASS action")
     out = raw.replace(_INIT_ANCHOR, _INIT_REPLACEMENT, 1)
     out = out.replace(_ACT_ANCHOR, _ACT_REPLACEMENT, 1)
     if out == raw:
@@ -168,7 +172,7 @@ def materialize(base: Path, out_path: Path, receipt_path: Path) -> dict:
         "changed_members": [VENDOR],
         "base_vendor_sha256": digest(source[VENDOR]),
         "candidate_vendor_sha256": digest(changed[VENDOR]),
-        "same_step_contract": "identical-replay-changed-evidence-reject",
+        "same_step_contract": "identical-replay-changed-or-drift-legal-pass",
         "kaggle_submission_hold": True,
     }
     receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
