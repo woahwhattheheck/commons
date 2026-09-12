@@ -19,6 +19,7 @@ That order creates two mechanically real selected-action hazards/opportunities:
 
 `unit_market_bridge.transform()` is intentionally conservative:
 
+- configuration defaults apply only when the configuration argument is `None`; any supplied non-mapping fails closed, and `boardSize`, `maxMarketOrdersPerTurn`, and `shedCapacity` must be positive plain integers when supplied;
 - the executable market prefix uses the configured positive plain-int `maxMarketOrdersPerTurn` and only valid positive SELL quantities;
 - only sale-only goods (`CARROT`, `TOMATO`, `STRAWBERRY`, `MELON`, `EGG`, `MILK`, `WOOL`) participate;
 - **every supplied unit action before the final supplied actor must be shed-inert** (`DROP`, `PICKUP`, and `PLACE` in that prefix all block admission), so observed shed state is still exact immediately before the only edited action;
@@ -32,15 +33,17 @@ The PASS bridge is not a claim that selling earlier is economically superior in 
 
 ## Focused controls
 
-Local authored-byte receipt:
+Exact authored-byte receipt after the configuration-ingress predecessor was folded:
 
 ```text
-python test_unit_market_bridge.py      -> 14/14 PASS
-python -O test_unit_market_bridge.py   -> 14/14 PASS
+python test_unit_market_bridge.py      -> 15/15 PASS
+python -O test_unit_market_bridge.py   -> 15/15 PASS
 python -m py_compile unit_market_bridge.py test_unit_market_bridge.py -> PASS
 ```
 
-The suite covers exact shortfall placement, shed-room clipping, stock-reserving PICKUP suppression/capping, parent immutability, operating-stock exclusion, earlier-shed-mutation refusal, executable market-cap prefix, trailing market metadata, non-list market identity, non-finite quantities, multi-item ambiguity, final-hand support, and shed-adjacency refusal.
+The suite covers exact shortfall placement, shed-room clipping, stock-reserving PICKUP suppression/capping, parent immutability, operating-stock exclusion, earlier-shed-mutation refusal, executable market-cap prefix, trailing market metadata, non-list market identity, non-finite quantities, multi-item ambiguity, final-hand support, shed-adjacency refusal, and the falsey non-mapping configuration family (`False`, `0`, `""`, `[]`, `()`).
+
+Authenticated branch blobs for that receipt are `unit_market_bridge.py@c3d8d48929f99e766b5c041fa6b9eb5c5d83f429` and `test_unit_market_bridge.py@4f2ed9be68cdc70cf2dea08b472e97a66f2c6b87`.
 
 ## Promotion gate
 
