@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "lane": "V4_OPERATING_STOCK_EXECUTABLE_PREFIX",
+  "status": "component_tested_unwired",
+  "canonical_workspace": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "claim": "V4-OPERATING-STOCK-EXEC-PREFIX-20260911-01",
+  "production_pins": {
+    "main_observed": "63a553c463a282201b6d2e54e79eabed3a08328d",
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "operating_stock.py": "781aa90da0d85d0ba23c665e29d6087d182c085e",
+    "TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b"
+  },
+  "production_relevance": {
+    "operating_stock_enabled": true,
+    "bug": "FERTILIZER operating-stock admission reads raw market suffix rows that the engine cannot execute after maxMarketOrdersPerTurn; dead-tail HIRE/BUY rows can falsely block an otherwise valid executable-prefix reservation, and the delegate can rewrite dead suffix SELL rows.",
+    "contrast": "adjacent WHEAT feed-stock caller already gates SELL inspection on market[:10], and several operating-stock subhelpers already bound market scans to maxMarketOrdersPerTurn"
+  },
+  "repair": {
+    "module": "operating_stock_prefix.py",
+    "module_bytes": 4524,
+    "module_sha256": "ece51ffc45cd71816fb8f7b9aabc35517eaaa74df711a8453e4dfb279502ca4d",
+    "module_git_blob": "dafa0afc9f1144bc4c9f768a1e84b4aa01ae05a2",
+    "test": "test_operating_stock_prefix.py",
+    "test_bytes": 5673,
+    "test_sha256": "d288ae4aa73c74b49c871151688360e2307c633a7d963c7a9a744856bd00402d",
+    "test_git_blob": "89655121f25c6f45c5fe0c6e5433754e2fa406b7"
+  },
+  "verification": {
+    "py_compile": "PASS",
+    "unittest_normal": "9/9 PASS",
+    "unittest_optimized": "9/9 PASS",
+    "properties": [
+      "current and future market views expose only the executable prefix",
+      "raw current-action suffix is restored byte-for-byte after a prefix edit",
+      "future route rows are deep-isolated from delegate mutation",
+      "full executable prefixes cannot change length and shift a raw suffix into execution",
+      "nonmarket delegate edits fail closed",
+      "unchanged delegates return the exact parent action object"
+    ]
+  },
+  "boundaries": {
+    "production_wired": false,
+    "default_changed": false,
+    "feature_changed": false,
+    "economics_changed": false,
+    "legacy_materializer_authorized": false,
+    "next_gate": "run the exact current protect_operating_stock delegate through this guard against adversarial row-11+ HIRE/BUY/SELL tails in normal and optimized modes; prove executable-prefix output equivalence to suffix-stripped controls and exact raw-suffix preservation before any current-runtime source port"
+  }
+}
