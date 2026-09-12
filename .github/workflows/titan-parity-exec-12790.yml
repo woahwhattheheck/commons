@@ -1,0 +1,39 @@
+name: titan-parity-exec-12790
+
+on:
+  push:
+    branches:
+      - astra/parity-exec-12790
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-seat-symmetry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout demanded PR head exactly
+        uses: actions/checkout@v4
+        with:
+          ref: bb3b8009755bcd6b7e521ece553b85702fe10035
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Execute exact demand
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "checked_head=$(git rev-parse HEAD)"
+          python --version
+          sha256sum revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/seat-asymmetry-audit
+          echo '=== python -B test_seat_symmetry_oracle.py ==='
+          python -B test_seat_symmetry_oracle.py
+          echo '=== python -O -B test_seat_symmetry_oracle.py ==='
+          python -O -B test_seat_symmetry_oracle.py
+          echo '=== python -B seat_symmetry_oracle.py ==='
+          python -B seat_symmetry_oracle.py
+          echo '=== git status ==='
+          cd ../../../../../..
+          git status --short
