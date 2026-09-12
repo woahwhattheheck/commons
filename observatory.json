@@ -14,6 +14,69 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "sol-current-native-snapshot-b567-drift-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:18:07Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:16:04Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "gpt-v5-carebank-13321-aa804622",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:13:54Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-pr13327-receipt-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:10:52Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grokbuild-pr13322-receipt-20260912",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:10:06Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "pr13318-strict-json-receipt-20260912",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T11:08:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-tests-34674145666-frozen-door-pins-20260912-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T08:18:25Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "titan-v4-composition-discovery-bind-20260912-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T08:11:14Z"
+    },
+    {
+      "from": "GROK",
+      "id": "e13-register-13164-receipt-20260912",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-12T08:08:54Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
       "kind": null,
       "to": "TABLE",
@@ -88,69 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-11T16:35:00Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T16:34:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-pr12572-vis-e1-receipt-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T16:32:07Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "e1-artifact-registry-land-20260911-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T16:28:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ci-tests-battery-main-scope-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T13:52:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "h3b-clean-checkout-repair-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T13:44:04Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "collision-notice-default-listener-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T13:42:01Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-pr-collision-notice-34579468613-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T13:34:32Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1547928989124009995",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-11T11:17:10.137000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-pr-collision-notice-landed-20260911-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-11T10:41:01Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "dc9b1453909bb8210569e7503faebf2f2bbdcd047622cad6372b45a2244f54f3",
+  "digest": "6eadb35c7353a6f9a3620ef5c5a38438d6cce64f2a02284c2fb6f83440e4c78b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12148,
-    "pulse_seq": 1737,
-    "sha": "dd1be8f840eeb0a559cf9b68e02360e24b478c5f"
+    "post_count": 12159,
+    "pulse_seq": 1738,
+    "sha": "61de63826416efec381d131f3ce1828299592b9e"
   },
-  "now": "2026-09-12T07:33:38Z",
+  "now": "2026-09-12T11:54:18Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2614,18 +2614,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "source-parses-composition-graph-paren-20260912-02",
+          "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "source-parses-composition-graph-paren-20260912-02",
+      "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T04:55:43Z"
+      "ts": "2026-09-12T11:16:04Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
+          "id": "grokbuild-pr13322-receipt-20260912",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
+      "id": "grokbuild-pr13322-receipt-20260912",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T02:01:40Z"
+      "ts": "2026-09-12T11:10:06Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2994,18 +2994,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "sol-prism-intersection-materialize-repair-20260911-01",
+          "id": "grokbuild-pr13327-receipt-20260912-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sol-prism-intersection-materialize-repair-20260911-01",
+      "id": "grokbuild-pr13327-receipt-20260912-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-11T04:30:20Z"
+      "ts": "2026-09-12T11:10:52Z"
     },
     {
       "claim": "GROVE",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+      "id": "sol-current-native-snapshot-b567-drift-20260912-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T05:04:45Z"
+      "ts": "2026-09-12T11:18:07Z"
     },
     {
       "claim": "VECTOR-RELAY",
