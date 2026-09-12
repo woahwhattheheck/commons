@@ -1,17 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 """Fail-closed natural-engagement receipt for the V5 fertilizer-floor re-author.
 
-The source adapter deliberately does not invent PICKUP routing.  This reducer
-therefore consumes an ordered tape of *real returned actions plus the next
-public observation* and only calls the feature naturally engaged after one
-complete custody chain is observed:
-
-    strict-floor BUY_PRODUCT -> shed custody
-      -> parent-returned PICKUP -> actor custody
-      -> parent-returned FERTILIZE -> official fertilizer effect
-
-It never calls a producer/controller, never synthesizes actions, and never
-treats a returned command alone as proof that the engine executed it.
+A returned command is never treated as execution proof. Engagement requires a
+contiguous public custody chain:
+  source-authorized low-price BUY_PRODUCT -> shed custody
+  -> parent PICKUP -> actor custody
+  -> same actor FERTILIZE -> inventory consumption + fertilizer window effect.
 """
 from __future__ import annotations
 
@@ -24,7 +18,14 @@ import re
 import sys
 from typing import Any, Mapping
 
-from fert_floor_current import ITEM, STRICT_BUY_PRICE, TURNS_PER_DAY, _eligible_plant
+from fert_floor_current import (
+    ITEM,
+    MAX_BUY_PRICE,
+    TURNS_PER_DAY,
+    _eligible_plant,
+    _source_postbuy_price,
+    _source_public_price,
+)
 
 TAPE_SCHEMA = "titan-v5-fert-floor-natural-tape/v1"
 RECEIPT_SCHEMA = "titan-v5-fert-floor-natural-engagement/v1"
@@ -34,7 +35,7 @@ _ROW_KEYS = frozenset(("observation", "returned_action"))
 
 
 class EngagementError(ValueError):
-    """Tape shape or callback continuity is not sufficient for evidence."""
+    pass
 
 
 def _strict_object(pairs):
@@ -75,6 +76,16 @@ def _exact_nonnegative_int(value: Any, field: str) -> int:
     if type(value) is not int or value < 0:
         raise EngagementError(f"{field} must be a nonnegative plain int")
     return value
+
+
+def _finite_number(value: Any, field: str):
+    if type(value) is int:
+        if value < 0:
+            raise EngagementError(f"{field} must be nonnegative")
+        return value
+    if type(value) is float and math.isfinite(value) and value >= 0:
+        return value
+    raise EngagementError(f"{field} must be a finite nonnegative number")
 
 
 def _fert_qty(inventory: Any, field: str) -> int:
@@ -136,7 +147,10 @@ def _snapshot(observation: Any, returned_action: Any) -> dict[str, Any]:
     if not isinstance(hands, list):
         raise EngagementError("farm.hands must be a list")
     positions = [_position(farm.get("farmer"), "farm.farmer")]
-    positions.extend(_position(value, f"farm.hands[{i}]") for i, value in enumerate(hands))
+    positions.extend(
+        _position(value, f"farm.hands[{i}]")
+        for i, value in enumerate(hands)
+    )
 
     tiles = farm.get("tiles")
     if (
@@ -161,13 +175,13 @@ def _snapshot(observation: Any, returned_action: Any) -> dict[str, Any]:
     shed_fert = _fert_qty(shed, "private.shed")
 
     prices = market_state.get("prices")
-    price = None if not isinstance(prices, Mapping) else prices.get(ITEM)
-    if type(price) not in (int, float) or isinstance(price, bool):
-        raise EngagementError("public fertilizer price must be numeric")
-    if isinstance(price, float) and not math.isfinite(price):
-        raise EngagementError("public fertilizer price must be finite")
-    if price < 0:
-        raise EngagementError("public fertilizer price must be nonnegative")
+    market_inventory = market_state.get("inventory")
+    if not isinstance(prices, Mapping) or not isinstance(market_inventory, Mapping):
+        raise EngagementError("public market price/inventory maps required")
+    price = _finite_number(prices.get(ITEM), "public fertilizer price")
+    fert_inventory = _exact_nonnegative_int(
+        market_inventory.get(ITEM), "public fertilizer inventory"
+    )
 
     farmer_action = returned_action.get("farmer")
     hand_actions = returned_action.get("hands")
@@ -178,7 +192,10 @@ def _snapshot(observation: Any, returned_action: Any) -> dict[str, Any]:
         or not isinstance(hand_actions, list)
         or len(hand_actions) != len(hands)
         or not isinstance(market_actions, list)
-        or any(not isinstance(row, list) or not row for row in [farmer_action, *hand_actions])
+        or any(
+            not isinstance(row, list) or not row
+            for row in [farmer_action, *hand_actions]
+        )
         or any(not isinstance(row, list) or not row for row in market_actions)
     ):
         raise EngagementError("returned action cardinality/rows invalid")
@@ -191,7 +208,8 @@ def _snapshot(observation: Any, returned_action: Any) -> dict[str, Any]:
         "tiles": tiles,
         "actor_fert": actor_fert,
         "shed_fert": shed_fert,
-        "price": float(price),
+        "price": price,
+        "fert_market_inventory": fert_inventory,
         "commands": tuple(tuple(row) for row in [farmer_action, *hand_actions]),
         "market": tuple(tuple(row) for row in market_actions),
     }
@@ -205,13 +223,17 @@ def _fert_market_rows(snapshot: Mapping[str, Any]) -> list[tuple[Any, ...]]:
     ]
 
 
-def _exact_floor_buy(snapshot: Mapping[str, Any]) -> bool:
-    fert_rows = _fert_market_rows(snapshot)
+def _source_authorized_buy(snapshot: Mapping[str, Any]) -> tuple[bool, int | None]:
+    inventory = snapshot["fert_market_inventory"]
+    public = _source_public_price(inventory)
+    postbuy = _source_postbuy_price(inventory)
+    rows = _fert_market_rows(snapshot)
     return (
-        snapshot["price"] == STRICT_BUY_PRICE
+        postbuy is not None
+        and snapshot["price"] == public
         and snapshot["shed_fert"] + sum(snapshot["actor_fert"]) == 0
-        and fert_rows == [("BUY_PRODUCT", ITEM, 1)]
-    )
+        and rows == [("BUY_PRODUCT", ITEM, 1)]
+    ), postbuy
 
 
 def _pickup_actor(snapshot: Mapping[str, Any]) -> int | None:
@@ -235,8 +257,6 @@ def _fertilize_actor(snapshot: Mapping[str, Any], actor: int) -> bool:
 
 
 class NaturalEngagementTracker:
-    """Reduce contiguous public callbacks into source-bound engagement evidence."""
-
     def __init__(self):
         self._prior = None
         self._pending = None
@@ -348,17 +368,20 @@ class NaturalEngagementTracker:
                 raise EngagementError("tape callbacks must be strictly contiguous")
             self._resolve_pending(current)
 
-        # A second fertilizer market action makes custody provenance ambiguous.
         fert_market = _fert_market_rows(current)
         if self._phase != "idle" and fert_market:
             self._abort()
 
-        if self._phase == "idle" and _exact_floor_buy(current):
+        authorized, postbuy = _source_authorized_buy(current)
+        if self._phase == "idle" and authorized:
             self._counts["floor_buy_returned"] += 1
             self._phase = "buy_returned"
             self._cycle = {
                 "buy_step": current["step"],
-                "buy_price": STRICT_BUY_PRICE,
+                "buy_price_ceiling": MAX_BUY_PRICE,
+                "observed_public_price": current["price"],
+                "source_postbuy_price": postbuy,
+                "fert_market_inventory_before": current["fert_market_inventory"],
             }
             self._pending = {"kind": "buy", "before": current}
 
@@ -386,12 +409,22 @@ class NaturalEngagementTracker:
 
         self._prior = current
 
-    def receipt(self, *, source_sha: str, engine_id: str, rows_sha256: str, callback_count: int):
+    def receipt(
+        self,
+        *,
+        source_sha: str,
+        engine_id: str,
+        rows_sha256: str,
+        callback_count: int,
+    ):
         if type(source_sha) is not str or _HEX40.fullmatch(source_sha) is None:
             raise EngagementError("source_sha must be 40 lowercase hex")
         if type(engine_id) is not str or not engine_id.strip():
             raise EngagementError("engine_id must be a non-empty string")
-        if type(rows_sha256) is not str or re.fullmatch(r"[0-9a-f]{64}", rows_sha256) is None:
+        if (
+            type(rows_sha256) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", rows_sha256) is None
+        ):
             raise EngagementError("rows_sha256 must be 64 lowercase hex")
         return {
             "schema": RECEIPT_SCHEMA,
@@ -409,11 +442,11 @@ class NaturalEngagementTracker:
 
 def reduce_tape(report: Any) -> dict[str, Any]:
     if type(report) is not dict or set(report) != _TAPE_KEYS:
-        raise EngagementError("tape must have exact schema/source_sha/engine_id/rows keys")
+        raise EngagementError(
+            "tape must have exact schema/source_sha/engine_id/rows keys"
+        )
     if report["schema"] != TAPE_SCHEMA:
         raise EngagementError(f"tape schema must be {TAPE_SCHEMA}")
-    source_sha = report["source_sha"]
-    engine_id = report["engine_id"]
     rows = report["rows"]
     if not isinstance(rows, list) or not rows:
         raise EngagementError("tape rows must be a non-empty list")
@@ -421,12 +454,14 @@ def reduce_tape(report: Any) -> dict[str, Any]:
     tracker = NaturalEngagementTracker()
     for index, row in enumerate(rows):
         if type(row) is not dict or set(row) != _ROW_KEYS:
-            raise EngagementError(f"rows[{index}] must have exact observation/returned_action keys")
+            raise EngagementError(
+                f"rows[{index}] must have exact observation/returned_action keys"
+            )
         tracker.observe(row["observation"], row["returned_action"])
     digest = hashlib.sha256(_canonical_bytes(rows)).hexdigest()
     return tracker.receipt(
-        source_sha=source_sha,
-        engine_id=engine_id,
+        source_sha=report["source_sha"],
+        engine_id=report["engine_id"],
         rows_sha256=digest,
         callback_count=len(rows),
     )
