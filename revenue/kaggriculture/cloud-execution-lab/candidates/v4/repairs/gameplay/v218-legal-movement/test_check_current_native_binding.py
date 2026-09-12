@@ -1,240 +1,291 @@
-import json, tempfile, unittest
+#!/usr/bin/env python3
+from __future__ import annotations
+import contextlib, io, json, tempfile, unittest
 from pathlib import Path
-import check_current_native_binding as g
+import check_current_native_binding as gate
 
 
-class TestGate(unittest.TestCase):
-    def tree(self, td, main='def agent(o,c=None): return {}\n',
-             runtime='class X: pass\n', cfg=None, extra=None):
-        r=Path(td)
-        (r/'main.py').write_text(main)
-        (r/'titan_runtime.py').write_text(runtime)
-        (r/'TITAN-CONFIG.json').write_text(
-            json.dumps({"consumer":"frozen"} if cfg is None else cfg)
-        )
-        if extra:
-            for name,text in extra.items():
-                p=r/name
-                p.parent.mkdir(parents=True,exist_ok=True)
-                p.write_text(text)
-        return r
+class V218NativeBindingTests(unittest.TestCase):
+    def tree(self, *, ref=False, excluded=False, v218=False):
+        td = tempfile.TemporaryDirectory(); root = Path(td.name)
+        main = "from titan_runtime import TitanAgent\ndef agent(o,c=None): return TitanAgent(c).act(o)\n"
+        runtime = "class TitanAgent:\n def __init__(self,c=None): pass\n def act(self,o): return {}\n"
+        if ref: runtime += "\n# r04_full_router current binding\n"
+        if v218: runtime += "\nV218_MOVEMENT_PARITY = True\n"
+        (root/"main.py").write_text(main)
+        (root/"titan_runtime.py").write_text(runtime)
+        (root/"TITAN-CONFIG.json").write_text(json.dumps({"consumer":"frozen", **({"r04_v218_movement_parity":False} if v218 else {})}))
+        if excluded:
+            (root/"candidates").mkdir(); (root/"candidates"/"proof.py").write_text("r04_full_router v218 movement_parity")
+            (root/"checks").mkdir(); (root/"checks"/"proof.json").write_text('{"v218":true}')
+        return td, root
 
-    def semantic_tree(self, td, *, locked_bug=False, shed_bug=False):
-        move_body = (
-            "  if tile == 'LOCKED': return True\n"
-            if locked_bug else ""
+    def semantic_tree(self):
+        td = tempfile.TemporaryDirectory(); root = Path(td.name)
+        (root/"main.py").write_text(
+            "from titan_runtime import TitanAgent, Features, load\n"
+            "class FinalPressureAgent: pass\n"
+            "def agent(o,c=None):\n    return FinalPressureAgent(o)\n"
         )
-        shed = (
-            " return (x,y) in ((h-1,h-1),(h,h-1),(h-1,h))\n"
-            if shed_bug else
-            " return (x,y) in ((h-1,h-1),(h,h-1),(h-1,h),(h,h))\n"
+        (root/"titan_runtime.py").write_text(
+            "from frozen_selected import FrozenSelected\n"
+            "from spatial_tempo import SpatialTempo\n"
+            "class TitanAgent:\n"
+            "    def __init__(self):\n"
+            "        self.consumer = FrozenSelected()\n"
+            "        self.spatial = SpatialTempo()\n"
+            "        self.controller = object()\n"
+            "        self.spatial.install(self.controller)\n"
         )
-        arlene = (
-            "BOARD=10\n"
-            "MOVES={'NORTH':(0,-1),'SOUTH':(0,1),'EAST':(1,0),'WEST':(-1,0)}\n"
-            "ANIMALS={}\n"
-            "def _shed_adjacent(x,y,board=BOARD):\n"
-            " h=board//2\n" + shed +
-            "def _noop(act,tile,inv,seeds,x,y,board=BOARD):\n"
-            " if not act:return True\n"
-            " op=act[0]\n"
-            " if op in MOVES:\n" +
-            move_body +
-            "  dx,dy=MOVES[op]\n"
-            "  return not (0<=x+dx<board and 0<=y+dy<board)\n"
-            " if op=='PASS':return True\n"
-            " if tile=='LOCKED':return True\n"
-            " return False\n"
+        (root/"TITAN-CONFIG.json").write_text(json.dumps({"consumer":"frozen","terminal_route":False}))
+        (root/"frozen_selected.py").write_text("from scheduler import *\n")
+        (root/"scheduler.py").write_text(
+            "parent = _load('intact_arlene', HERE/'reference/next-panel/vendor/arlene.py')\n"
         )
-        spatial = (
-            "MOVES={'NORTH':(0,-1),'SOUTH':(0,1),'EAST':(1,0),'WEST':(-1,0)}\n"
-            "def move(pos,action,board):\n"
-            " d=MOVES.get(action[0] if action else '')\n"
-            " if d:\n"
-            "  q=(pos[0]+d[0],pos[1]+d[1])\n"
-            "  if 0<=q[0]<board and 0<=q[1]<board:return q\n"
-            " return pos\n"
+        arlene = root/"reference"/"next-panel"/"vendor"; arlene.mkdir(parents=True)
+        (arlene/"arlene.py").write_text(
+            "def _noop(op,tile,farm,private,x,y,size):\n"
+            "    if op in MOVES:\n"
+            "        dx,dy=MOVES[op[0]]\n"
+            "        nx,ny=x+dx,y+dy\n"
+            "        return not (0<=nx<size and 0<=ny<size)\n"
+            "    return False\n\n"
+            "def _shed_adjacent(x,y,size):\n"
+            "    a=size//2-1;b=size//2\n"
+            "    return (x,y) in {(a,a),(b,a),(a,b),(b,b)}\n"
+        )
+        (root/"spatial_tempo.py").write_text(
             "def path(a,b):\n"
-            " return [[('EAST' if b[0]>a[0] else 'WEST')]]*abs(b[0]-a[0])+[[('SOUTH' if b[1]>a[1] else 'NORTH')]]*abs(b[1]-a[1])\n"
+            "    x,y=a;tx,ty=b;out=[]\n"
+            "    while x<tx: out.append(['EAST']);x+=1\n"
+            "    while x>tx: out.append(['WEST']);x-=1\n"
+            "    while y<ty: out.append(['SOUTH']);y+=1\n"
+            "    while y>ty: out.append(['NORTH']);y-=1\n"
+            "    return out\n\n"
+            "def move(pos,op,size):\n"
+            "    if not op or op[0] not in MOVES:return pos\n"
+            "    dx,dy=MOVES[op[0]];x,y=pos;return max(0,min(size-1,x+dx)),max(0,min(size-1,y+dy))\n"
         )
-        return self.tree(
-            td,
-            main=(
-                "from titan_runtime import TitanAgent, Features, load\n"
-                "def f(features):\n"
-                " return FinalPressureAgent(features)\n"
-            ),
-            runtime=(
-                "from frozen_selected import FrozenSelected\n"
-                "from spatial_tempo import SpatialTempo\n"
-                "class X:\n"
-                " def f(self):\n"
-                "  self.consumer = FrozenSelected()\n"
-                "  self.spatial.install(self.controller)\n"
-            ),
-            cfg={"consumer":"frozen","terminal_route":False},
-            extra={
-                "frozen_selected.py":"from scheduler import *\n",
-                "scheduler.py":"parent = _load('intact_arlene', HERE/'reference/next-panel/vendor/arlene.py')\n",
-                "reference/next-panel/vendor/arlene.py":arlene,
-                "spatial_tempo.py":spatial,
-            },
-        )
+        return td, root
 
-    def register_semantic_graph(self, root, *, mutate_sources=False, checker_drift=False, wrong_state=False):
-        checker = root/'candidates/v4'/g.V218_CHECKER_REL
-        checker.parent.mkdir(parents=True,exist_ok=True)
-        checker.write_text("# synthetic registered checker\n")
-        checker_blob=g.git_blob(checker.read_bytes())
-        source_ids={
-            "reference/next-panel/vendor/arlene.py":
-                g.git_blob((root/"reference/next-panel/vendor/arlene.py").read_bytes()),
-            "spatial_tempo.py":
-                g.git_blob((root/"spatial_tempo.py").read_bytes()),
-        }
+    def register_semantic_graph(
+        self,
+        root: Path,
+        *,
+        mutate_checker=False,
+        mutate_sources=False,
+        omit_source=None,
+        main_drift=False,
+    ):
+        pkg = root/"candidates"/"v4"/"repairs"/"gameplay"/"v218-legal-movement"
+        pkg.mkdir(parents=True)
+        checker_rel = "repairs/gameplay/v218-legal-movement/check_current_native_binding.py"
+        receipt_rel = "repairs/gameplay/v218-legal-movement/NATIVE-SEMANTIC-EQUIVALENCE.json"
+        checker = b"semantic checker synthetic\n"
+        (pkg/"check_current_native_binding.py").write_bytes(checker)
+        source_paths = (
+            "main.py",
+            "titan_runtime.py",
+            "frozen_selected.py",
+            "scheduler.py",
+            "reference/next-panel/vendor/arlene.py",
+            "spatial_tempo.py",
+            "TITAN-CONFIG.json",
+        )
+        source_ids = {rel: gate.git_blob((root/rel).read_bytes()) for rel in source_paths}
         if mutate_sources:
-            source_ids["spatial_tempo.py"]="0"*40
-        receipt={
+            source_ids["spatial_tempo.py"] = "0" * 40
+        if main_drift:
+            source_ids["main.py"] = "0" * 40
+        if omit_source:
+            source_ids.pop(omit_source, None)
+        receipt = {
             "schema":"titan-v4-v218-native-semantic-equivalence/v1",
-            "status":"source_revalidated_execution_not_rerun",
             "semantic_checker":{
-                "path":g.V218_CHECKER_REL,
-                "git_blob":("0"*40 if checker_drift else checker_blob),
-                "semantic_disposition_when_all_fail_closed_probes_pass":
-                    "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE",
+                "path":checker_rel,
+                "git_blob":"0"*40 if mutate_checker else gate.git_blob(checker),
             },
-            "current_source_identities":{
-                "reference/next-panel/vendor/arlene.py":source_ids["reference/next-panel/vendor/arlene.py"],
-                "spatial_tempo.py":source_ids["spatial_tempo.py"],
-            },
-            "semantic_evidence":{"frozen_nonterminal_config":True},
+            "current_source_identities":source_ids,
             "control_plane_disposition":"evidence_only_no_transform_required",
             "runtime_promotion_authority":False,
             "economic_authority":False,
+            "semantic_evidence":{"frozen_nonterminal_config":True},
         }
-        receipt_path=root/'candidates/v4'/g.V218_RECEIPT_REL
-        receipt_path.parent.mkdir(parents=True,exist_ok=True)
-        receipt_path.write_text(json.dumps(receipt))
-        graph={
+        (pkg/"NATIVE-SEMANTIC-EQUIVALENCE.json").write_text(json.dumps(receipt))
+        graph = {
             "schema":"titan-v4-composition/v1",
             "components":[{
-                "id":g.V218_COMPONENT_ID,
-                "state":"blocked" if wrong_state else "evidence_only",
-                "package":g.V218_PACKAGE,
-                "entrypoints":[g.V218_CHECKER_REL],
-                "receipt":g.V218_RECEIPT_REL,
+                "id":"v218-native-movement-equivalence",
+                "state":"evidence_only",
+                "package":"repairs/gameplay/v218-legal-movement",
+                "entrypoints":[checker_rel],
                 "transforms":[],
-                "requires":[],
-                "before":[],
-                "after":[],
-                "conflicts":[],
+                "receipt":receipt_rel,
             }],
         }
-        graph_path=root/g.GRAPH_REL
-        graph_path.parent.mkdir(parents=True,exist_ok=True)
-        graph_path.write_text(json.dumps(graph))
+        (root/"candidates"/"v4"/"COMPOSITION.json").write_text(json.dumps(graph))
 
-    def test_unwired_blocks(self):
+    def test_no_ref_blocks(self):
+        td,root=self.tree()
+        with td:
+            r=gate.audit(root)
+            self.assertFalse(r["wired"]); self.assertEqual("BLOCKED_AT_NATIVE_ASSEMBLY",r["disposition"])
+            self.assertEqual([],r["config"]["v218_keys"])
+
+    def test_router_ref_wires(self):
+        td,root=self.tree(ref=True)
+        with td:
+            r=gate.audit(root)
+            self.assertTrue(r["wired"]); self.assertTrue(r["explicit_binding"]); self.assertGreater(r["router_ref_count"],0)
+            self.assertEqual("WIRED_REQUIRES_RUNTIME_GATE",r["disposition"])
+
+    def test_v218_config_is_diagnostic_not_wiring(self):
+        td,root=self.tree(v218=True)
+        with td:
+            r=gate.audit(root)
+            self.assertFalse(r["wired"]); self.assertFalse(r["explicit_binding"])
+            self.assertEqual(["r04_v218_movement_parity"],r["config"]["v218_keys"])
+            self.assertEqual("BLOCKED_AT_NATIVE_ASSEMBLY",r["disposition"])
+
+    def test_excluded_evidence_not_counted(self):
+        td,root=self.tree(excluded=True)
+        with td:
+            r=gate.audit(root)
+            self.assertFalse(r["wired"]); self.assertEqual([],r["binding_refs"])
+
+    def test_missing_fails(self):
         with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.tree(td))
-            self.assertFalse(x['wired'])
-            self.assertEqual(x['disposition'],'BLOCKED_AT_NATIVE_ASSEMBLY')
+            with self.assertRaises(ValueError): gate.audit(Path(td))
 
-    def test_router_reference_wires(self):
-        with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.tree(td, runtime='from r04_full_router import install\n'))
-            self.assertTrue(x['wired'])
-            self.assertTrue(x['explicit_binding'])
-            self.assertEqual(x['disposition'],'WIRED_REQUIRES_RUNTIME_GATE')
+    def test_require_wired_exit_code(self):
+        td,root=self.tree()
+        with td:
+            self.assertEqual(3,gate.main([str(root),"--require-wired"]))
 
-    def test_v218_config_wires(self):
-        with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.tree(td,cfg={'r04_v218_movement_parity':False}))
-            self.assertTrue(x['wired'])
-            self.assertEqual(x['config']['v218_keys'],['r04_v218_movement_parity'])
+    def test_semantic_equivalence_without_authenticated_graph_remains_blocked(self):
+        td,root=self.semantic_tree()
+        with td:
+            r=gate.audit(root)
+            self.assertFalse(r["explicit_binding"])
+            self.assertTrue(r["native_semantic_equivalence"]["equivalent"])
+            self.assertFalse(r["semantic_wired"])
+            self.assertFalse(r["wired"])
+            self.assertEqual("missing_canonical_composition_graph",r["semantic_graph_registration"]["reason"])
+            self.assertEqual("BLOCKED_AT_GRAPH_REGISTRATION",r["disposition"])
 
-    def test_reference_checks_do_not_fake_wiring(self):
-        with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.tree(td,extra={'checks/reference/note.py':'r04_full_router v218'}))
-            self.assertFalse(x['wired'])
+    def test_authenticated_graph_receipt_wires_semantic_equivalence(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            r=gate.audit(root)
+            self.assertTrue(r["native_semantic_equivalence"]["equivalent"])
+            self.assertTrue(r["semantic_wired"])
+            self.assertTrue(r["wired"])
+            self.assertEqual("authenticated_evidence_only_semantic_edge",r["semantic_graph_registration"]["reason"])
+            self.assertEqual(
+                {
+                    "main.py",
+                    "titan_runtime.py",
+                    "frozen_selected.py",
+                    "scheduler.py",
+                    "reference/next-panel/vendor/arlene.py",
+                    "spatial_tempo.py",
+                    "TITAN-CONFIG.json",
+                },
+                set(r["semantic_graph_registration"]["source_identities"]),
+            )
+            self.assertEqual("NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE",r["disposition"])
 
-    def test_candidate_control_plane_tokens_do_not_fake_explicit_wiring(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.tree(td,extra={'candidates/v4/note.py':'r04_full_router v218 movement_parity'})
-            x=g.audit(r)
-            self.assertFalse(x['explicit_binding'])
-            self.assertFalse(x['wired'])
+    def test_semantic_graph_receipt_checker_drift_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root,mutate_checker=True)
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"]); self.assertFalse(r["wired"])
+            self.assertEqual("checker_identity_mismatch",r["semantic_graph_registration"]["reason"])
 
-    def test_native_semantic_equivalence_requires_graph_registration(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            x=g.audit(r)
-            self.assertTrue(x['native_semantic_equivalence']['equivalent'])
-            self.assertFalse(x['semantic_wired'])
-            self.assertEqual(x['disposition'],'BLOCKED_AT_GRAPH_REGISTRATION')
+    def test_semantic_graph_receipt_source_drift_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root,mutate_sources=True)
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"]); self.assertFalse(r["wired"])
+            self.assertEqual("semantic_source_identity_mismatch",r["semantic_graph_registration"]["reason"])
 
-    def test_authenticated_graph_receipt_wires_native_semantic_equivalence(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.register_semantic_graph(r)
-            x=g.audit(r)
-            self.assertTrue(x['semantic_graph_registration']['registered'])
-            self.assertTrue(x['semantic_wired'])
-            self.assertTrue(x['wired'])
-            self.assertEqual(x['disposition'],'NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE')
+    def test_semantic_graph_receipt_main_drift_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root,main_drift=True)
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"]); self.assertFalse(r["wired"])
+            self.assertEqual("semantic_source_identity_mismatch",r["semantic_graph_registration"]["reason"])
 
-    def test_receipt_source_pin_drift_blocks_semantic_wiring(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.register_semantic_graph(r,mutate_sources=True)
-            x=g.audit(r)
-            self.assertFalse(x['semantic_graph_registration']['registered'])
-            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
-            self.assertFalse(x['wired'])
+    def test_semantic_graph_receipt_source_omission_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root,omit_source="scheduler.py")
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"]); self.assertFalse(r["wired"])
+            self.assertEqual("semantic_source_identity_set_mismatch",r["semantic_graph_registration"]["reason"])
+            self.assertIn("scheduler.py",r["semantic_graph_registration"]["expected_paths"])
 
-    def test_receipt_checker_pin_drift_blocks_semantic_wiring(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.register_semantic_graph(r,checker_drift=True)
-            x=g.audit(r)
-            self.assertFalse(x['semantic_graph_registration']['registered'])
-            self.assertEqual(x['semantic_graph_registration']['reason'],'checker_identity_mismatch')
-            self.assertFalse(x['wired'])
+    def test_semantic_graph_duplicate_component_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            graph_path=root/"candidates"/"v4"/"COMPOSITION.json"
+            graph=json.loads(graph_path.read_text()); graph["components"].append(dict(graph["components"][0]))
+            graph_path.write_text(json.dumps(graph))
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"])
+            self.assertEqual("semantic_component_cardinality",r["semantic_graph_registration"]["reason"])
 
-    def test_graph_wrong_state_blocks_semantic_wiring(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.register_semantic_graph(r,wrong_state=True)
-            x=g.audit(r)
-            self.assertFalse(x['semantic_graph_registration']['registered'])
-            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_component_not_evidence_only')
-            self.assertFalse(x['wired'])
+    def test_semantic_graph_duplicate_json_key_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            graph_path=root/"candidates"/"v4"/"COMPOSITION.json"
+            graph_path.write_text('{"schema":"titan-v4-composition/v1","schema":"titan-v4-composition/v1","components":[]}')
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"])
+            self.assertEqual("invalid_canonical_composition_graph",r["semantic_graph_registration"]["reason"])
 
-    def test_locked_move_bug_fails_equivalence(self):
-        with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.semantic_tree(td, locked_bug=True))
-            self.assertFalse(x['native_semantic_equivalence']['equivalent'])
-            self.assertFalse(x['native_semantic_equivalence']['rules']['locked_transit_matches_engine'])
-            self.assertFalse(x['wired'])
+    def test_semantic_graph_nonfinite_json_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            graph_path=root/"candidates"/"v4"/"COMPOSITION.json"
+            graph_path.write_text('{"schema":"titan-v4-composition/v1","components":[],"bad":NaN}')
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"])
+            self.assertEqual("invalid_canonical_composition_graph",r["semantic_graph_registration"]["reason"])
 
-    def test_three_corner_shed_bug_fails_equivalence(self):
-        with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.semantic_tree(td, shed_bug=True))
-            self.assertFalse(x['native_semantic_equivalence']['equivalent'])
-            self.assertFalse(x['native_semantic_equivalence']['rules']['all_four_shed_corners_eligible'])
-            self.assertFalse(x['wired'])
+    def test_semantic_receipt_duplicate_json_key_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            receipt_path=root/"candidates"/"v4"/"repairs"/"gameplay"/"v218-legal-movement"/"NATIVE-SEMANTIC-EQUIVALENCE.json"
+            receipt_path.write_text('{"schema":"titan-v4-v218-native-semantic-equivalence/v1","schema":"titan-v4-v218-native-semantic-equivalence/v1"}')
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"])
+            self.assertEqual("invalid_semantic_receipt",r["semantic_graph_registration"]["reason"])
 
-    def test_cli_require_wired_exit3_without_graph_registration(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.assertEqual(g.main([str(r),'--require-wired']),3)
+    def test_semantic_receipt_nonfinite_json_is_rejected(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            receipt_path=root/"candidates"/"v4"/"repairs"/"gameplay"/"v218-legal-movement"/"NATIVE-SEMANTIC-EQUIVALENCE.json"
+            receipt_path.write_text('{"schema":"titan-v4-v218-native-semantic-equivalence/v1","bad":Infinity}')
+            r=gate.audit(root)
+            self.assertFalse(r["semantic_wired"])
+            self.assertEqual("invalid_semantic_receipt",r["semantic_graph_registration"]["reason"])
 
-    def test_cli_semantic_graph_satisfies_require_wired(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.semantic_tree(td)
-            self.register_semantic_graph(r)
-            self.assertEqual(g.main([str(r),'--require-wired']),0)
+    def test_cli_success_for_authenticated_semantic_equivalence(self):
+        td,root=self.semantic_tree()
+        with td:
+            self.register_semantic_graph(root)
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(0,gate.main([str(root),"--require-wired"]))
 
 
-if __name__=='__main__':
-    unittest.main()
+if __name__ == "__main__": unittest.main()
