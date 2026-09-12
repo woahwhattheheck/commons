@@ -6,7 +6,7 @@ This directory exists to keep V5 convergence honest: one baseline archive, two e
 
 ## Manifest
 
-A v2 manifest has exactly two components. Each replaced member carries both the reviewed baseline member digest (`preimage_sha256`) and the exact replacement/source digest (`sha256`):
+A v2 manifest has exactly two components. Component names are lowercase slugs (`[a-z0-9][a-z0-9_-]{0,63}`) and `control` is reserved, which keeps variant receipt keys and archive filenames collision-free. Each replaced member carries both the reviewed baseline member digest (`preimage_sha256`) and the exact replacement/source digest (`sha256`):
 
 ```json
 {
