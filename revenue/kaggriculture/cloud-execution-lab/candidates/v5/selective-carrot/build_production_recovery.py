@@ -3,7 +3,9 @@
 import argparse
 import ast
 import json
+import os
 from pathlib import Path
+import shutil
 
 from build_delivery import archive_bytes, digest, members
 
@@ -81,6 +83,108 @@ def compose(v31, delivery, overlay, version='v3'):
     return files
 
 
+def _resolved(path):
+    return Path(path).resolve(strict=False)
+
+
+def _validate_publication_paths(out, tar_path, receipt_path):
+    resolved = [_resolved(path) for path in (out, tar_path, receipt_path)]
+    if len(set(resolved)) != len(resolved):
+        raise ValueError('output directory, archive, and manifest paths must be distinct')
+    out_resolved, tar_resolved, receipt_resolved = resolved
+    if out_resolved in tar_resolved.parents or out_resolved in receipt_resolved.parents:
+        raise ValueError('archive and manifest must not be inside the output directory')
+
+
+def _reserve(path):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, 'O_NOFOLLOW'):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags, 0o644)
+    st = os.fstat(fd)
+    return fd, (st.st_dev, st.st_ino)
+
+
+def _write_reserved(fd, payload):
+    view = memoryview(payload)
+    while view:
+        written = os.write(fd, view)
+        if written <= 0:
+            raise OSError('short write while publishing production-recovery artifact')
+        view = view[written:]
+    os.fsync(fd)
+
+
+def _unlink_if_owned(path, identity):
+    path = Path(path)
+    try:
+        st = path.stat(follow_symlinks=False)
+    except FileNotFoundError:
+        return
+    if (st.st_dev, st.st_ino) == identity:
+        path.unlink()
+
+
+def _rmtree_if_owned(path, identity):
+    path = Path(path)
+    try:
+        st = path.stat(follow_symlinks=False)
+    except FileNotFoundError:
+        return
+    if (st.st_dev, st.st_ino) == identity and path.is_dir():
+        shutil.rmtree(path)
+
+
+def _publish(files, packed, receipt, out, tar_path, receipt_path):
+    """Publish extracted files plus create-exclusive archive/manifest finals."""
+    out = Path(out)
+    tar_path = Path(tar_path)
+    receipt_path = Path(receipt_path)
+    _validate_publication_paths(out, tar_path, receipt_path)
+    if out.exists():
+        raise FileExistsError('output directory already exists')
+
+    receipt_bytes = (json.dumps(receipt, indent=2) + '\n').encode('utf-8')
+    tar_fd = None
+    receipt_fd = None
+    owned_finals = []
+    out_identity = None
+    try:
+        tar_fd, tar_identity = _reserve(tar_path)
+        owned_finals.append((tar_path, tar_identity))
+        receipt_fd, receipt_identity = _reserve(receipt_path)
+        owned_finals.append((receipt_path, receipt_identity))
+
+        out.mkdir(parents=True)
+        out_stat = out.stat(follow_symlinks=False)
+        out_identity = (out_stat.st_dev, out_stat.st_ino)
+        for name, body in files.items():
+            path = out / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+
+        _write_reserved(tar_fd, packed)
+        _write_reserved(receipt_fd, receipt_bytes)
+        os.close(tar_fd)
+        tar_fd = None
+        os.close(receipt_fd)
+        receipt_fd = None
+    except BaseException:
+        for fd in (tar_fd, receipt_fd):
+            if fd is not None:
+                try:
+                    os.close(fd)
+                except OSError:
+                    pass
+        if out_identity is not None:
+            _rmtree_if_owned(out, out_identity)
+        for path, identity in reversed(owned_finals):
+            _unlink_if_owned(path, identity)
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--v31', type=Path, required=True)
@@ -90,27 +194,20 @@ def main():
     parser.add_argument('--version', choices=('v2', 'v3'), default='v3')
     args = parser.parse_args()
     receipt_path = args.out.parent / (args.out.name + '-manifest.json')
-    if any(p.exists() for p in (args.out, args.tar, receipt_path)):
-        parser.error('Use new output directory, archive and manifest paths')
     v31 = members(args.v31, V31_SHA)
     delivery = members(args.delivery, DELIVERY_SHA)
     overlay = Path(__file__).with_name('production_recovery_overlay.txt').read_bytes()
     files = compose(v31, delivery, overlay, args.version)
     packed = archive_bytes(files)
-    args.out.mkdir(parents=True)
-    for name, body in files.items():
-        path = args.out / name
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(body)
-    args.tar.parent.mkdir(parents=True, exist_ok=True)
-    with args.tar.open('xb') as stream:
-        stream.write(packed)
     receipt = {'schema': 'titan-production-recovery-build/v3', 'version': args.version,
         'v31_archive_sha256': V31_SHA, 'delivery_archive_sha256': DELIVERY_SHA,
         'candidate_archive_sha256': digest(packed), 'donor_dependencies': list(DEPENDENCIES),
         'files': {name: digest(body) for name, body in sorted(files.items())},
         'kaggle_submission_hold': True}
-    receipt_path.write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
+    try:
+        _publish(files, packed, receipt, args.out, args.tar, receipt_path)
+    except (FileExistsError, ValueError) as exc:
+        parser.error(str(exc))
     print(json.dumps({'out': str(args.out), 'members': len(files),
                       'candidate_archive_sha256': digest(packed)}))
 
