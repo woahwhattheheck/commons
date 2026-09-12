@@ -60,6 +60,7 @@ class CommandCenterEquipment:
             }, "additionalProperties": False,
         }
         specs = [
+            ("swarm_state", "Read the existing PR queue and GPT review batches before building or integrating. Includes stale-state warnings. Ground/SWARM_ORDER.md: GPTs build and lead; non-GPT work needs an exact-change GPT pass. This read is recorded in command-center usage state.", {"refresh": {"type": "boolean"}}, []),
             ("state", "Read the entire operation: canonical resources, service tools, accounts, observed fleet, budgets, focus, and operation outcomes.", {"refresh": {"type": "boolean"}}, []),
             ("work_state", "Read connected work, source freshness and coverage, owner next actions, and direct refresh progress.", {"refresh": {"type": "boolean"}}, []),
             ("refresh_work", "Start one bounded read of configured GitHub and Slack sources, retaining previous observations during refresh. No model or new service is started.", {}, []),
@@ -75,7 +76,7 @@ class CommandCenterEquipment:
         ]
         result = []
         for name, description, properties, required in specs:
-            if name not in {"state", "work_state", "refresh_work"}:
+            if name not in {"state", "work_state", "refresh_work", "swarm_state"}:
                 properties = {"operation_id": {"type": "string", "description": "Stable ID; repeat exact payload on retry."}, **properties}
                 required = ["operation_id"] + required
             result.append({"name": "command_center_" + name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}})
@@ -85,6 +86,8 @@ class CommandCenterEquipment:
                     {"required": ["hidden"]}, {"required": ["action"]}]
         return result
     def call(self, name, arguments):
+        if name == "command_center_swarm_state":
+            return self.center.swarm_state(refresh=bool(arguments.get("refresh", False)))
         if name == "command_center_work_state":
             return self.center.work_state(refresh=bool(arguments.get("refresh", False)))
         if name == "command_center_refresh_work":

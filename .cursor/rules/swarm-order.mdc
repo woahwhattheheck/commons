@@ -1,0 +1,12 @@
+---
+description: Standing owner directive for GPT-led building and swarm integration
+alwaysApply: true
+---
+
+Read ground/SWARM_ORDER.md from current main. This 2026-09-12 owner directive
+supersedes older no-review rules for integration and release. GPTs remain major
+builders and integration leads. Claude, Muse, Grok and unknown/mixed work need
+an exact-change GPT pass before integration; batch independent reviews and reuse
+unchanged approvals when GPT tokens are exhausted. Use the existing command
+center, state/coordination and state/claims at the start and handoff of work.
+Read evidence and follow host/swarm_review.py; never claim a queued test passed.

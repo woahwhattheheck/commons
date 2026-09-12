@@ -52,6 +52,46 @@ def make_archive(members):
     return output.getvalue()
 
 
+class GPTArchiveReviewTests(unittest.TestCase):
+    def setUp(self):
+        self.members = {"SOURCE.json": b"{}", "main.py": b"def agent(obs, config): return 'PASS'\n"}
+        self.archive = make_archive(self.members)
+        self.review = {"schema": "commons-release-review/v1", "decision": "PASS",
+                       "reviewer": {"family": "gpt", "seat": "TEST", "session_ref": "test session"},
+                       "archive_sha256": sha(self.archive), "source_manifest_sha256": sha(b"{}"),
+                       "baseline_sha256": rt.V31_ARCHIVE_SHA256, "production_route": "replacement",
+                       "activation_evidence": "test entrypoint", "required_members": {"main.py": sha(self.members["main.py"])}}
+
+    def validate(self):
+        return rt.validate_gpt_review(canon(self.review), self.archive, b"{}", rt._archive_members(self.archive))
+
+    def test_exact_archive_review_passes_and_binds_receipt(self):
+        self.assertEqual(sha(canon(self.review)), self.validate()["receipt_sha256"])
+
+    def test_archive_or_member_change_requires_review(self):
+        self.review["archive_sha256"] = "0" * 64
+        with self.assertRaisesRegex(rt.TransactionError, "binding mismatch"):
+            self.validate()
+        self.review["archive_sha256"] = sha(self.archive)
+        self.review["required_members"]["r04_full_router.py"] = "0" * 64
+        with self.assertRaisesRegex(rt.TransactionError, "member missing"):
+            self.validate()
+
+    def test_incomplete_r04_restoration_cannot_be_packaged_as_restore(self):
+        self.review["production_route"] = "r04-restored"
+        with self.assertRaisesRegex(rt.TransactionError, "13-file production closure"):
+            self.validate()
+
+    def test_non_gpt_or_pending_release_review_does_not_pass(self):
+        self.review["reviewer"]["family"] = "muse"
+        with self.assertRaisesRegex(rt.TransactionError, "reviewer session"):
+            self.validate()
+        self.review["reviewer"]["family"] = "gpt"
+        self.review["decision"] = "PENDING"
+        with self.assertRaisesRegex(rt.TransactionError, "explicitly PASS"):
+            self.validate()
+
+
 class ReleaseTransactionTests(unittest.TestCase):
     def setUp(self):
         self.component = b"print('candidate')\n"
@@ -252,6 +292,14 @@ class ReleaseTransactionTests(unittest.TestCase):
             economics_builder=econ.validate_report,
             trust_result=self.trust_result,
             trust_files=self.trust_files,
+            gpt_review_raw=canon({
+                "schema": "commons-release-review/v1", "decision": "PASS",
+                "reviewer": {"seat": "TEST-GPT", "family": "gpt", "session_ref": "test fixture"},
+                "archive_sha256": sha(self.archive), "source_manifest_sha256": sha(self.source_raw),
+                "baseline_sha256": rt.V31_ARCHIVE_SHA256, "production_route": "replacement",
+                "activation_evidence": "fixture component called by fixture harness",
+                "required_members": {"feature.py": self.component_sha},
+            }),
         )
         kwargs.update(overrides)
         return rt.build_transaction(**kwargs)
@@ -261,7 +309,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         second = self.build()
         self.assertEqual(first, second)
         self.assertEqual(first["classification"], "PASS")
-        self.assertEqual("titan-v5-release-transaction/v5", first["schema"])
+        self.assertEqual("titan-v5-release-transaction/v6", first["schema"])
         self.assertRegex(first["transition_id"], r"^v5tx:[0-9a-f]{64}$")
         self.assertEqual(first["expected_old"]["archive_sha256"], self.old["sha256"])
         self.assertEqual(first["approved_new"]["archive_sha256"], self.new["sha256"])
