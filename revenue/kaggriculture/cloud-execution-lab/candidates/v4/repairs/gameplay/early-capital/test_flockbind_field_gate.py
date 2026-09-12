@@ -36,6 +36,15 @@ class FieldGateTests(unittest.TestCase):
         self.assertTrue(any("duplicate_coordinate" in r for r in out["reasons"]))
         self.assertTrue(any(r.startswith("missing_coordinates:") for r in out["reasons"]))
 
+    def test_boolean_seat_alias_is_invalid(self):
+        panel = deepcopy(PANEL)
+        cell = next(c for c in panel["cells"] if c["seat"] == 1)
+        cell["seat"] = True
+        out = g.validate_panel(panel)
+        self.assertFalse(out["valid"])
+        self.assertEqual(out["disposition"], "INVALID")
+        self.assertTrue(any("bad_coordinate" in r for r in out["reasons"]))
+
     def test_score_mutation_without_delta_update_is_invalid(self):
         panel = deepcopy(PANEL)
         panel["cells"][0]["candidate_scores"][0] += 1
