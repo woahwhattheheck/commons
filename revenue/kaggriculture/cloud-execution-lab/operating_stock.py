@@ -20,9 +20,16 @@ def _whole(value):
 
 
 def _order_quantity(order):
-    if not isinstance(order, list) or len(order) != 3:
-        raise ValueError('expected a quantity order')
-    return _whole(order[2])
+    """Mirror the pinned engine's quantity parse while keeping proof failures named."""
+    if not isinstance(order, list) or len(order) < 3:
+        raise ValueError('expected an engine quantity order')
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError, OverflowError):
+        raise ValueError('expected an engine quantity order')
+    # The engine ignores nonpositive quantity rows. Modeling them as zero keeps
+    # the same physical/cash effect without making an invalid row finance proof.
+    return max(0, quantity)
 
 
 def _feed_window(mechanics, observation, configuration, selected, farm, private,
@@ -236,7 +243,10 @@ def protect_feed_stock(mechanics, observation, configuration, selected,
             for slot, order in enumerate(result['market'][:10]):
                 if order and order[:2] == ['SELL', 'WHEAT']:
                     take = min(_order_quantity(order), remaining); remaining -= take
-                    result['market'][slot] = ['SELL', 'WHEAT', take] if take else []
+                    if take:
+                        order[2] = take
+                    else:
+                        result['market'][slot] = []
         room = _current_room_bound(mechanics, post_private, result.get('market', []), reset)
         # No credit for future sales or requested pickups when reserving room.
         # This intentionally declines busy arrival windows instead of trading

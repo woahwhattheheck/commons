@@ -136,7 +136,10 @@ class ProjectionLedger:
         if any(q < 0 for q in self.shed.values()):
             raise ValueError('Negative post-unit stock')
         self.capacity = int(config.get('shedCapacity', 100))
-        self.max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+        # Pinned engine _process_market() floors the executable prefix at one.
+        # Mirror that exact topology so feasibility can never skip an order
+        # which the engine will still execute when the configured cap is <= 0.
+        self.max_orders = max(1, int(config.get('maxMarketOrdersPerTurn', 10)))
         self.future = {int(t): copy.deepcopy(orders) for t, orders in projection['future_market'].items()}
         self.future[self.now] = copy.deepcopy(_orders(base))
         self.events = {}

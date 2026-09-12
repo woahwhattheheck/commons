@@ -1,0 +1,141 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Focused contracts for V5 candidate experiment identity."""
+
+import json
+from pathlib import Path
+import tempfile
+
+from v5_candidate_identity import IdentityError, build_manifest, main, validate_manifest
+
+
+def check(condition, message):
+    if not condition:
+        raise AssertionError(message)
+
+
+def expect_error(fn, contains):
+    try:
+        fn()
+    except IdentityError as exc:
+        check(contains in str(exc), (contains, str(exc)))
+    else:
+        raise AssertionError(f"expected IdentityError containing {contains!r}")
+
+
+def fixture(root):
+    root = Path(root)
+    (root / "a.py").write_text("A = 1\n", encoding="utf-8")
+    (root / "b.py").write_text("B = 2\n", encoding="utf-8")
+    return {
+        "base_id": "main@abc123",
+        "engine_id": "engine@3c202c7e",
+        "opponent_pack_id": "top30@v1",
+        "config": {"joint": True, "mode": "mild", "budget": 1.0},
+        "components": [
+            {"name": "joint", "source": "a.py", "activation": {"joint": True}},
+            {"name": "mild", "source": "b.py", "activation": {"mode": "mild"}},
+        ],
+    }
+
+
+def test_deterministic_and_order_independent():
+    with tempfile.TemporaryDirectory() as one, tempfile.TemporaryDirectory() as two:
+        first = fixture(one)
+        second = fixture(two)
+        second["config"] = {"budget": 1.0, "mode": "mild", "joint": True}
+        second["components"].reverse()
+        left = build_manifest(one, first)
+        right = build_manifest(two, second)
+        check(left == right, "identity changed with root/config/component order")
+        check(left["candidate_id"].startswith("v5c:"), "candidate prefix")
+        check(len(left["candidate_id"]) == 68, "candidate digest length")
+
+
+def test_activation_is_type_exact_and_fail_closed():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec["components"][0]["activation"]["joint"] = 1
+        expect_error(lambda: build_manifest(root, spec), "activation mismatch")
+        spec = fixture(root)
+        spec["config"]["joint"] = 1
+        expect_error(lambda: build_manifest(root, spec), "activation mismatch")
+        spec = fixture(root)
+        spec["components"][0]["activation"] = {"missing": True}
+        expect_error(lambda: build_manifest(root, spec), "activation key missing")
+
+
+def test_unconditional_requires_explicit_exact_bool():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec["components"] = [
+            {"name": "base", "source": "a.py", "unconditional": True}
+        ]
+        manifest = build_manifest(root, spec)
+        check(
+            manifest["components"][0]["activation"]["mode"] == "unconditional",
+            "unconditional component not recorded",
+        )
+        spec["components"][0]["unconditional"] = 1
+        expect_error(lambda: build_manifest(root, spec), "exact bool")
+
+
+def test_source_drift_and_manifest_tamper_are_detected():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        manifest = build_manifest(root, spec)
+        validate_manifest(root, spec, manifest)
+        Path(root, "a.py").write_text("A = 99\n", encoding="utf-8")
+        expect_error(lambda: validate_manifest(root, spec, manifest), "does not match")
+        fresh = build_manifest(root, spec)
+        check(fresh["candidate_id"] != manifest["candidate_id"], "source drift kept identity")
+        fresh["candidate_id"] = manifest["candidate_id"]
+        expect_error(lambda: validate_manifest(root, spec, fresh), "does not match")
+
+
+def test_path_escape_missing_file_and_nonfinite_config_rejected():
+    with tempfile.TemporaryDirectory() as parent:
+        root = Path(parent, "root")
+        root.mkdir()
+        Path(parent, "outside.py").write_text("X=1\n", encoding="utf-8")
+        spec = fixture(root)
+        spec["components"][0]["source"] = "../outside.py"
+        expect_error(lambda: build_manifest(root, spec), "escapes root")
+        spec = fixture(root)
+        spec["components"][0]["source"] = "missing.py"
+        expect_error(lambda: build_manifest(root, spec), "not a file")
+        spec = fixture(root)
+        spec["config"]["budget"] = float("nan")
+        expect_error(lambda: build_manifest(root, spec), "non-finite")
+
+
+def test_cli_build_and_validate():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec_path = Path(root, "spec.json")
+        manifest_path = Path(root, "manifest.json")
+        spec_path.write_text(json.dumps(spec), encoding="utf-8")
+        rc = main(
+            ["--root", root, "build", str(spec_path), "--output", str(manifest_path)]
+        )
+        check(rc == 0, "build CLI failed")
+        saved = json.loads(manifest_path.read_text(encoding="utf-8"))
+        check(saved == build_manifest(root, spec), "CLI manifest differs from API")
+        rc = main(
+            ["--root", root, "validate", str(spec_path), str(manifest_path)]
+        )
+        check(rc == 0, "validate CLI failed")
+
+
+def run():
+    tests = [
+        value
+        for name, value in sorted(globals().items())
+        if name.startswith("test_") and callable(value)
+    ]
+    for test in tests:
+        test()
+    print(f"PASS {len(tests)}/{len(tests)}")
+
+
+if __name__ == "__main__":
+    run()
