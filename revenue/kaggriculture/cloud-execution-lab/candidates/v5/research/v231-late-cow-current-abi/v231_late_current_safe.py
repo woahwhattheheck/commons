@@ -17,7 +17,7 @@ import copy
 from dataclasses import dataclass, field
 from typing import Any
 
-from v231_late_current import V231LateCurrentABI, _is_int
+from v231_late_current import V231LateCurrentABI, _is_int, _shape
 
 
 @dataclass
@@ -50,10 +50,16 @@ class V231LateCurrentABISafe:
         if not self.enabled:
             return self._base.transform(observation, selected)
 
-        if not isinstance(observation, dict):
+        # Validate the complete current boundary before touching transaction or
+        # candidate state.  A malformed retry is detached identity, not evidence
+        # that may rewind/replace a previously valid attempt at the same step.
+        if not _shape(observation, selected):
             return self._base.transform(observation, selected)
-        step = observation.get("step")
-        seat = observation.get("player")
+
+        step = observation["step"]
+        seat = observation["player"]
+        # _shape() already proves both are plain ints and the seat indexes farms;
+        # keep the explicit invariant here because this wrapper owns the keys.
         if not _is_int(step) or not _is_int(seat) or seat < 0:
             return self._base.transform(observation, selected)
 
@@ -65,7 +71,7 @@ class V231LateCurrentABISafe:
             prior = None
 
         if prior is not None and step == prior["step"]:
-            # Recompute every retry from the exact same pre-step candidate state.
+            # Recompute every valid retry from the exact same pre-step candidate state.
             if prior["pre_exists"]:
                 self._base._states[seat] = copy.deepcopy(prior["pre_state"])
             else:
