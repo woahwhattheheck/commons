@@ -19,33 +19,36 @@ SPEC.loader.exec_module(gate)
 CONTROL = "v5c:" + "1" * 64
 CANDIDATE = "v5c:" + "2" * 64
 ENGINE = "engine:official-pinned"
-OPPONENT = "frontier:top30-union"
+OPPONENT_PACK = "frontier:top30-union"
+OPPONENTS = ("opponent:alpha", "opponent:beta")
 CONTROL_ARCHIVE = "a" * 64
 CANDIDATE_ARCHIVE = "b" * 64
 
 
-def report(*, delta: int = 10):
+def report(*, delta: int = 10, opponents=OPPONENTS, seeds=range(100, 104)):
     cells = []
-    for seed in range(100, 104):
-        for seat in (0, 1):
-            control_own = 1000 + seed + seat
-            control_rival = 900 + seed
-            cells.append(
-                {
-                    "seed": seed,
-                    "seat": seat,
-                    "control_own": control_own,
-                    "control_rival": control_rival,
-                    "candidate_own": control_own + delta,
-                    "candidate_rival": control_rival,
-                }
-            )
+    for opponent_id in opponents:
+        for seed in seeds:
+            for seat in (0, 1):
+                control_own = 1000 + seed + seat
+                control_rival = 900 + seed
+                cells.append(
+                    {
+                        "opponent_id": opponent_id,
+                        "seed": seed,
+                        "seat": seat,
+                        "control_own": control_own,
+                        "control_rival": control_rival,
+                        "candidate_own": control_own + delta,
+                        "candidate_rival": control_rival,
+                    }
+                )
     return {
         "schema": gate.SCHEMA,
         "control_id": CONTROL,
         "candidate_id": CANDIDATE,
         "engine_id": ENGINE,
-        "opponent_pack_id": OPPONENT,
+        "opponent_pack_id": OPPONENT_PACK,
         "control_archive_sha256": CONTROL_ARCHIVE,
         "candidate_archive_sha256": CANDIDATE_ARCHIVE,
         "cells": cells,
@@ -57,7 +60,7 @@ def validate(value=None, **overrides):
         candidate_id=CANDIDATE,
         control_id=CONTROL,
         engine_id=ENGINE,
-        opponent_pack_id=OPPONENT,
+        opponent_pack_id=OPPONENT_PACK,
         control_archive_sha256=CONTROL_ARCHIVE,
         candidate_archive_sha256=CANDIDATE_ARCHIVE,
     )
@@ -70,14 +73,16 @@ class EconomicsGateTests(unittest.TestCase):
         receipt = validate(report(delta=10))
         self.assertEqual("PASS", receipt["classification"])
         self.assertTrue(receipt["promotion_ready"])
-        self.assertEqual(8, receipt["cell_count"])
+        self.assertEqual(16, receipt["cell_count"])
         self.assertEqual(4, receipt["seed_count"])
-        self.assertEqual(80, receipt["sum_margin_delta"])
+        self.assertEqual(2, receipt["opponent_count"])
+        self.assertEqual(list(OPPONENTS), receipt["opponent_ids"])
+        self.assertEqual(160, receipt["sum_margin_delta"])
         self.assertEqual(10.0, receipt["mean_margin_delta"])
-        self.assertEqual(8, receipt["positive_cells"])
+        self.assertEqual(16, receipt["positive_cells"])
         self.assertEqual(0, receipt["negative_cells"])
         self.assertEqual(ENGINE, receipt["engine_id"])
-        self.assertEqual(OPPONENT, receipt["opponent_pack_id"])
+        self.assertEqual(OPPONENT_PACK, receipt["opponent_pack_id"])
         self.assertEqual(CONTROL_ARCHIVE, receipt["control_archive_sha256"])
         self.assertEqual(CANDIDATE_ARCHIVE, receipt["candidate_archive_sha256"])
         self.assertRegex(receipt["panel_sha256"], r"^[0-9a-f]{64}$")
@@ -85,7 +90,7 @@ class EconomicsGateTests(unittest.TestCase):
     def test_exact_zero_mean_is_no_regression_pass(self):
         receipt = validate(report(delta=0))
         self.assertEqual(0, receipt["sum_margin_delta"])
-        self.assertEqual(8, receipt["tied_cells"])
+        self.assertEqual(16, receipt["tied_cells"])
 
     def test_negative_mean_is_rejected(self):
         with self.assertRaisesRegex(gate.EconomicsError, "mean margin regresses"):
@@ -115,7 +120,7 @@ class EconomicsGateTests(unittest.TestCase):
         cases = [
             ("engine", {"engine_id": "engine:other"}, "engine_id does not match"),
             (
-                "opponent",
+                "opponent-pack",
                 {"opponent_pack_id": "frontier:other"},
                 "opponent_pack_id does not match",
             ),
@@ -155,33 +160,55 @@ class EconomicsGateTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.EconomicsError, "archive hashes must differ"):
             gate.validate_report(value)
 
-    def test_duplicate_seed_seat_is_rejected(self):
+    def test_single_opponent_panel_is_rejected_even_with_enough_cells(self):
+        value = report(opponents=("opponent:alpha",), seeds=range(100, 108))
+        with self.assertRaisesRegex(gate.EconomicsError, "at least 2 distinct opponents"):
+            validate(value)
+
+    def test_opponents_must_cover_identical_seed_sets(self):
+        value = report()
+        for cell in value["cells"]:
+            if cell["opponent_id"] == "opponent:beta" and cell["seed"] == 103:
+                cell["seed"] = 104
+        value["cells"].sort(key=lambda cell: (cell["opponent_id"], cell["seed"], cell["seat"]))
+        with self.assertRaisesRegex(gate.EconomicsError, "identical seed sets"):
+            validate(value)
+
+    def test_every_opponent_seed_requires_both_seats(self):
+        value = report(seeds=range(100, 105))
+        value["cells"] = [
+            cell for cell in value["cells"]
+            if not (
+                cell["opponent_id"] == "opponent:beta"
+                and cell["seed"] == 104
+                and cell["seat"] == 1
+            )
+        ]
+        with self.assertRaisesRegex(gate.EconomicsError, "exactly both seats"):
+            validate(value)
+
+    def test_duplicate_opponent_seed_seat_is_rejected(self):
         value = report()
         value["cells"][1] = copy.deepcopy(value["cells"][0])
         with self.assertRaisesRegex(gate.EconomicsError, "must be unique"):
             validate(value)
 
-    def test_unbalanced_seat_panel_is_rejected(self):
-        value = report()
-        value["cells"][-1] = {
-            **value["cells"][-1],
-            "seed": 104,
-            "seat": 0,
-        }
-        value["cells"] = sorted(value["cells"], key=lambda cell: (cell["seed"], cell["seat"]))
-        with self.assertRaisesRegex(gate.EconomicsError, "exactly both seats"):
-            validate(value)
-
     def test_too_small_panel_is_rejected(self):
         value = report()
-        value["cells"] = value["cells"][:6]
-        with self.assertRaisesRegex(gate.EconomicsError, "at least 8 cells"):
+        value["cells"] = value["cells"][:14]
+        with self.assertRaisesRegex(gate.EconomicsError, "at least 16 cells"):
             validate(value)
 
     def test_noncanonical_cell_order_is_rejected(self):
         value = report()
         value["cells"][0], value["cells"][1] = value["cells"][1], value["cells"][0]
         with self.assertRaisesRegex(gate.EconomicsError, "canonically sorted"):
+            validate(value)
+
+    def test_empty_opponent_id_is_rejected(self):
+        value = report()
+        value["cells"][0]["opponent_id"] = ""
+        with self.assertRaisesRegex(gate.EconomicsError, "non-empty string"):
             validate(value)
 
     def test_bool_and_noninteger_scores_are_rejected(self):
@@ -208,13 +235,14 @@ class EconomicsGateTests(unittest.TestCase):
 
     def test_mixed_sign_panel_uses_recomputed_aggregate(self):
         value = report(delta=0)
-        adjustments = (100, -20, -20, -20, -20, -20, -20, 20)
+        adjustments = [100] + [-10] * 10 + [0] * 5
         for cell, adjustment in zip(value["cells"], adjustments):
             cell["candidate_own"] += adjustment
         receipt = validate(value)
         self.assertEqual(0, receipt["sum_margin_delta"])
-        self.assertEqual(2, receipt["positive_cells"])
-        self.assertEqual(6, receipt["negative_cells"])
+        self.assertEqual(1, receipt["positive_cells"])
+        self.assertEqual(10, receipt["negative_cells"])
+        self.assertEqual(5, receipt["tied_cells"])
 
     def test_json_loader_rejects_duplicate_keys_and_nonfinite_constants(self):
         with self.assertRaisesRegex(gate.EconomicsError, "duplicate JSON object key"):
