@@ -37,12 +37,15 @@ def write_pr_holding(
     now=None,
     remote: str = "origin",
     push: bool = True,
+    attempts: int = 3,
 ) -> dict:
     """Take, renew, or release the canonical ``pr-N`` holding.
 
     The underlying fast-forward-only write and collision reconciliation stay in
     ``coordination_state.holding_write``; this adapter adds no second claim
-    protocol.
+    protocol.  Runtime retries are deliberately one shared-writer attempt at a
+    time so each non-fast-forward retry observes a fresh clock.  An explicitly
+    supplied ``now`` remains fixed for deterministic tests.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -50,18 +53,28 @@ def write_pr_holding(
         raise ValueError("holder must be non-empty text")
     if type(ttl_s) is not int or not 1 <= ttl_s <= 7200:
         raise ValueError("ttl must be between 1 and 7200 seconds")
-    result = cs.holding_write(
-        git,
-        pr_key(pr),
-        holder.strip(),
-        action,
-        ttl_s=ttl_s,
-        note=note,
-        now=now,
-        remote=remote,
-        push=push,
-    )
-    return {"pr": pr, "action": action, **result}
+    if type(attempts) is not int or not 1 <= attempts <= 10:
+        raise ValueError("attempts must be between 1 and 10")
+
+    fixed_now = now
+    result = None
+    for _ in range(attempts):
+        attempt_now = fixed_now if fixed_now is not None else cs._now()
+        result = cs.holding_write(
+            git,
+            pr_key(pr),
+            holder.strip(),
+            action,
+            ttl_s=ttl_s,
+            note=note,
+            now=attempt_now,
+            remote=remote,
+            push=push,
+            attempts=1,
+        )
+        if result.get("ok") or result.get("reason") != "branch kept moving; retry":
+            break
+    return {"pr": pr, "action": action, **(result or {"ok": False, "reason": "no attempt"})}
 
 
 def _positive_pr(text: str) -> int:
