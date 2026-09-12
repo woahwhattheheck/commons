@@ -90,7 +90,7 @@ class L01CurrentV4RegressionTests(unittest.TestCase):
             [["BUY_PRODUCT", "WHEAT"]],
             [["BUY_PRODUCT", "WHEAT", True]],
             [["BUY_PRODUCT", "WHEAT", 0]],
-            [["BUY_PRODUCT", [], 1]],
+            [["BUY_PRODUCT", 123, 1]],
         ]
         for case in cases:
             with self.subTest(case=case):
