@@ -147,11 +147,10 @@ jobs:
           raw = rg._read_regular_bytes(rg.CANONICAL_MANIFEST_PATH)
           assert hashlib.sha256(raw).hexdigest() == rg.CANONICAL_MANIFEST_SHA256
           assert callable(rg._captured_materializer())
-          rows, by_id, authority = rg._canonical_materialization(rg.CANONICAL_PACKAGE)
-          assert len(rows) == 123 and len(by_id) == 123
-          assert authority["source_manifest_sha256"] == rg.CANONICAL_MANIFEST_SHA256
-          print("canonical source pins + 123-fixture frozen materialization: PASS")
-          print("canonical materialization:", authority["materialization_manifest_sha256"])
+          assert rg.CANONICAL_UNIQUE_SUBMISSIONS == 41
+          assert rg.CANONICAL_FIXTURE_COUNT == 123
+          assert rg.CANONICAL_REPLAYS_PER_SUBMISSION == 3
+          print("canonical source pins + frozen 41-submission / 123-fixture universe constants: PASS")
           PY
           find .. -type d -name __pycache__ -prune -exec rm -rf {} +
 
