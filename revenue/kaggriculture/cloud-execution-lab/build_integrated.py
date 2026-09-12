@@ -45,6 +45,7 @@ def source_files():
               'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py',
               'exec_pace_runtime.py','town_procurement.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
+    mapping['overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
     mapping['funded_payback.py']='../cloud-economic-stress/funded_payback/funded_payback.py'
@@ -63,10 +64,16 @@ def source_files():
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
     # Controls and experimental configuration are reproduction inputs only.
     for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
-                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_entrypoint_deadline.py','test_final_market_pressure_entrypoint.py','test_config_metadata_boundary.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
+                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py',
+                 'test_entrypoint_deadline.py','test_entrypoint_route_capsule.py',
+                 'test_final_market_pressure_entrypoint.py','test_config_metadata_boundary.py',
+                 'test_module_recovery.py','test_seed_derived.py','test_route_recovery.py',
+                 'test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
+    mapping['checks/test_overflow_safe_drop_runtime.py']='test_overflow_safe_drop_runtime.py'
+    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
     mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
     mapping['checks/test_operating_stock.py']='test_operating_stock.py'
