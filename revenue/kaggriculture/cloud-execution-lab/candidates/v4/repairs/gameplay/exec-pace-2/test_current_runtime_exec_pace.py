@@ -1,8 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
+import ast
 import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import textwrap
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -107,6 +109,30 @@ class GateTests(unittest.TestCase):
         self.assertEqual(report["reason"], "no-temporal-advance")
         self.assertIs(kept, candidate)
 
+    def test_apply_candidate_suppresses_accelerated_rising_plan(self):
+        state = self.warm()
+        reference = ((24, 1), (28, 4))
+        candidate = ((24, 3), (28, 2))
+        plan, info = runtime.apply_candidate(
+            state, "MILK", reference, candidate,
+            {"accepted": True, "plan": list(candidate), "worst_relative_gain": 9.0})
+        self.assertEqual(plan, reference)
+        self.assertFalse(info["accepted"])
+        self.assertEqual(info["plan"], list(reference))
+        self.assertEqual(info["acceptance_rule"], "exec_pace_block")
+        self.assertTrue(info["exec_pace"]["blocked"])
+
+    def test_apply_candidate_forced_feasibility_bypasses(self):
+        state = self.warm()
+        reference = ((24, 1), (28, 4))
+        candidate = ((24, 3), (28, 2))
+        plan, info = runtime.apply_candidate(
+            state, "MILK", reference, candidate,
+            {"forced_feasibility": True, "accepted": True, "plan": list(candidate)})
+        self.assertIs(plan, candidate)
+        self.assertTrue(info["accepted"])
+        self.assertEqual(info["exec_pace"]["reason"], "forced-feasibility-bypass")
+
 
 class ComposerTests(unittest.TestCase):
     TITAN = (
@@ -135,7 +161,8 @@ class ComposerTests(unittest.TestCase):
         self.assertIn("exec_pace: bool = False", titan)
         self.assertIn("if f.exec_pace", titan)
         self.assertIn("exec_pace_state", frozen)
-        self.assertIn("forced_feasibility", frozen)
+        self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
+        self.assertNotIn("continue\n", composer.PLAN_INSERT)
         config = composer.compose_config('{"consumer":"frozen"}\n')
         self.assertFalse(json.loads(config)["exec_pace"])
 
@@ -145,9 +172,52 @@ class ComposerTests(unittest.TestCase):
         with self.assertRaises(ValueError): composer.compose_sources(titan, frozen)
         with self.assertRaises(ValueError): composer.compose_config('{"exec_pace": false}')
 
+    def test_composed_plan_block_uses_distinct_reference_and_candidate_and_suppresses(self):
+        fragment = textwrap.dedent(composer.PLAN_INSERT)
+        tree = ast.parse(fragment)
+        calls = [node for node in ast.walk(tree)
+                 if isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
+                 and node.func.id == "exec_pace_apply"]
+        self.assertEqual(len(calls), 1)
+        call = calls[0]
+        self.assertIsInstance(call.args[2], ast.Name)
+        self.assertIsInstance(call.args[3], ast.Name)
+        self.assertEqual(call.args[2].id, "reference")
+        self.assertEqual(call.args[3].id, "plan")
+        self.assertNotEqual(call.args[2].id, call.args[3].id)
+
+        probe_source = (
+            "def probe(self, exec_pace_state, item, reference, plan, info, horizon, item_end):\n"
+            + textwrap.indent(fragment, "    ")
+            + "    return plan, info, eligible\n"
+        )
+        namespace = {
+            "seller_choice_rank": lambda info: (
+                bool(info.get("forced_feasibility", False) or info.get("accepted", False)),
+                (bool(info.get("forced_feasibility", False)),
+                 float(info.get("worst_relative_gain", 0.0))),
+            )
+        }
+        exec(compile(probe_source, "composed_exec_pace_probe.py", "exec"), namespace)
+        holder = type("Holder", (), {})()
+        holder.exec_pace_apply = runtime.apply_candidate
+        holder.diagnostics = {"evaluations": []}
+        state = runtime.PriceTrendState()
+        for step in range(25):
+            state.note_prices(observation(step, rising_good="MILK"))
+        reference = ((24, 1), (28, 4))
+        candidate = ((24, 3), (28, 2))
+        plan, info, eligible = namespace["probe"](
+            holder, state, "MILK", reference, candidate,
+            {"accepted": True, "plan": list(candidate), "worst_relative_gain": 9.0},
+            {"baseline_end": 28}, 28)
+        self.assertEqual(plan, reference)
+        self.assertFalse(eligible)
+        self.assertFalse(info["accepted"])
+        self.assertTrue(info["exec_pace"]["blocked"])
+        self.assertEqual(holder.diagnostics["evaluations"][-1]["plan"], list(reference))
+
     def test_current_repository_sources_are_composable_when_present(self):
-        # In the repository this is a mandatory live-source anchor test.  The
-        # standalone development copy under /mnt/data has no production tree.
         package_here = Path(__file__).resolve().parent
         root = package_here.parents[4] if len(package_here.parents) > 4 else None
         if root is None or not (root / "titan_runtime.py").is_file():
@@ -163,7 +233,9 @@ class ComposerTests(unittest.TestCase):
         self.assertIn("exec_pace", parsed)
         self.assertIs(parsed["exec_pace"], False)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
-        self.assertEqual(frozen.count("exec_pace_gate"), 2)
+        self.assertEqual(frozen.count("exec_pace_apply"), 3)
+        self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
+        self.assertNotIn("gate_plan(reference.get", frozen)
 
 
 if __name__ == "__main__":
