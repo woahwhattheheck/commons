@@ -108,6 +108,64 @@ class M1WheatTrade(unittest.TestCase):
         self.assertEqual(lane.REPORT["future_pickups"], 0)
         self.assertEqual(lane.REPORT["buy_orders"], 0)
 
+    def test_future_pickup_requires_shed_reachability(self):
+        self.prime(step=100, inventory=100)
+        obs = observation(101, market_inventory=98)
+        obs["farms"][0]["hands"] = [[0, 0]]
+        parent = empty_action()
+        out = self.run_lane(obs, parent, tape_with_pickup(104, 2))
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["future_pickups"], 0)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
+    def test_literal_future_moves_can_certify_shed_reachability(self):
+        self.prime(step=100, inventory=100)
+        obs = observation(101, market_inventory=98)
+        obs["farms"][0]["hands"] = [[5, 2]]
+        tape = tape_with_pickup(104, 2)
+        tape[102]["hands"] = [["SOUTH"]]
+        tape[103]["hands"] = [["SOUTH"]]
+        parent = empty_action()
+        out = self.run_lane(obs, parent, tape)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+        self.assertEqual(lane.REPORT["future_pickups"], 1)
+
+    def test_current_literal_move_is_part_of_pickup_reachability(self):
+        self.prime(step=100, inventory=100)
+        obs = observation(101, market_inventory=98)
+        obs["farms"][0]["hands"] = [[5, 3]]
+        parent = empty_action()
+        parent["hands"] = [["SOUTH"]]
+        out = self.run_lane(obs, parent, tape_with_pickup(104, 2))
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+
+    def test_future_actor_cardinality_drift_fails_closed(self):
+        self.prime(step=100, inventory=100)
+        tape = tape_with_pickup(104, 2)
+        tape[102]["hands"] = []
+        parent = empty_action()
+        out = self.run_lane(observation(101, market_inventory=98), parent, tape)
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
+    def test_one_turn_wheat_pickup_vetoes_later_m1_shortage(self):
+        self.prime(step=100, inventory=100)
+        tape = tape_with_pickup(104, 2)
+        tape[102]["hands"] = [["PICKUP", "WHEAT", 1]]
+        parent = empty_action()
+        out = self.run_lane(observation(101, market_inventory=98), parent, tape)
+        self.assertIs(out, parent)
+        self.assertEqual(lane.REPORT["buy_orders"], 0)
+
+    def test_dead_market_suffix_before_pickup_does_not_veto(self):
+        self.prime(step=100, inventory=100)
+        tape = tape_with_pickup(104, 2)
+        tape[103]["market"] = [[] for _ in range(10)] + [["BUY_SEED", "CARROT", 1]]
+        parent = empty_action()
+        out = self.run_lane(observation(101, market_inventory=98), parent, tape)
+        self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
+        self.assertEqual(lane.REPORT["buy_orders"], 1)
+
     def test_future_shed_inflow_before_pickup_vetoes_capacity_hazard(self):
         for command in (["DROP"], ["PLACE", "CARROT", 2]):
             with self.subTest(command=command):
@@ -236,8 +294,6 @@ class M1WheatTrade(unittest.TestCase):
     def test_future_purchase_after_pickup_same_day_vetoes_early_spend(self):
         self.prime(step=100, inventory=100)
         tape = tape_with_pickup(103, 2)
-        # The pickup is a valid t+2 demand witness, but M1's spend at t can
-        # still starve this same-day purchase even though it occurs later.
         tape[110]["market"] = [["BUY_LAND"]]
         parent = empty_action()
         out = self.run_lane(observation(101, market_inventory=98), parent, tape)
@@ -248,7 +304,6 @@ class M1WheatTrade(unittest.TestCase):
     def test_next_day_purchase_does_not_block_same_day_pickup(self):
         self.prime(step=100, inventory=100)
         tape = tape_with_pickup(103, 2)
-        # step 120 is the first callback of the next day for current step 101.
         tape[120]["market"] = [["BUY_LAND"]]
         parent = empty_action()
         out = self.run_lane(observation(101, market_inventory=98), parent, tape)
