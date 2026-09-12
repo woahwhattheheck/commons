@@ -21,6 +21,7 @@ import types
 
 import ablate_e20_productive_detour as ablation
 import build_submitted_v4_treatment as builder
+import trace_capture as trace
 
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
@@ -111,20 +112,29 @@ def archive_members(raw: bytes) -> dict[str, bytes]:
     with tarfile.open(fileobj=io.BytesIO(raw), mode="r:gz") as archive:
         for info in archive.getmembers():
             path = PurePosixPath(info.name)
-            if (path.is_absolute() or ".." in path.parts or not info.isfile()
-                    or info.name in out):
+            if (not info.name or "\\" in info.name or path.is_absolute()
+                    or ".." in path.parts or str(path) != info.name
+                    or not info.isfile() or info.name in out):
                 raise ValueError(f"unsafe or duplicate archive member: {info.name}")
             stream = archive.extractfile(info)
             if stream is None:
                 raise ValueError(f"unreadable archive member: {info.name}")
-            out[info.name] = stream.read()
+            data = stream.read()
+            if len(data) != info.size:
+                raise ValueError(f"truncated archive member: {info.name}")
+            out[info.name] = data
+    if "main.py" not in out or "SOURCE.json" not in out:
+        raise ValueError("submitted V4 archive missing required package members")
     return out
 
 
 def extract_members(members: dict[str, bytes], destination: Path) -> None:
     destination.mkdir(parents=True, exist_ok=False)
     for name, data in members.items():
-        path = destination / PurePosixPath(name)
+        rel = PurePosixPath(name)
+        if rel.is_absolute() or ".." in rel.parts or "\\" in name or str(rel) != name:
+            raise ValueError(f"unsafe archive member path: {name}")
+        path = destination.joinpath(*rel.parts)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
 
@@ -209,8 +219,9 @@ def main() -> int:
         raise ValueError("kg-root is not inside the authenticated repository")
     repo_root = Path(repo_proc.stdout.decode("utf-8").strip()).resolve(strict=True)
 
-    # Capture all experiment authority before creating evidence output.
     baseline_raw = capture_regular(args.baseline)
+    if sha256_bytes(baseline_raw) != builder.SUBMITTED_V4_ARCHIVE_SHA256:
+        raise ValueError("baseline is not exact retained submitted V4")
     v31_helper = git_show(repo_root, ablation.V31_COMMIT, ablation.HELPER_PATH)
     treatment_raw, treatment_receipt = builder.build_treatment_archive(
         baseline_raw, v31_helper
@@ -269,11 +280,13 @@ def main() -> int:
         "treatment_receipt": treatment_receipt,
         "treatment_contract": (
             "Exact retained submitted-V4 archive; one semantic member "
-            "redundant_hire.py changes by authenticated post-certificate tail ablation; "
-            "SOURCE.json changes only as truthful metadata; every other member exact."
+            "reference/titan-current/redundant_hire.py changes by authenticated "
+            "post-certificate tail ablation; SOURCE.json changes only as truthful "
+            "metadata; every other member exact."
         ),
         "helper_git_blob": HELPER_GIT_BLOB,
         "helper_sha256": sha256_bytes(helper_raw),
+        "trace_pattern_git_blob": trace.SOURCE_PATTERN_GIT_BLOB,
         "harness": harness,
         "engine": engine_hashes,
         "opponent_receipts": opponent_receipts,
@@ -288,8 +301,7 @@ def main() -> int:
         },
         "engagement_definition": (
             "first returned-action divergence between exact V4 control and detour-OFF; "
-            "because the only gameplay semantic change is E20 detour protection, a natural "
-            "divergence is the causal engagement witness."
+            "the treatment's only gameplay semantic change is E20 detour protection."
         ),
     }
     write_json(output / "run.json", run)
@@ -325,7 +337,7 @@ def main() -> int:
                         specs = ([candidate_spec, rival_spec] if seat == 0
                                  else [rival_spec, candidate_spec])
                         engine, _ = evaluator.get_engine(engine_dir, loader)
-                        game, actions = helper.play_with_candidate_trace(
+                        game, actions = trace.play_with_candidate_trace(
                             evaluator,
                             engine, specs, engine_dir, loader, seed, seat,
                             args.rng_seed, args.action_timeout, args.startup_timeout,
@@ -336,7 +348,7 @@ def main() -> int:
                         game["opponent"] = opponent
                         cell["games"][arm] = game
                         action_traces[arm] = actions
-                        cell["own_action_trace_sha256"][arm] = helper.action_trace_sha256(actions)
+                        cell["own_action_trace_sha256"][arm] = trace.action_trace_sha256(actions)
                         write_json(output / f"{cell_id}-{arm}.json", game)
                         print(json.dumps({
                             "cell_id": cell_id,
@@ -347,8 +359,8 @@ def main() -> int:
                             "failure": game.get("failure"),
                         }), flush=True)
 
-                control_scores = helper.game_scores(cell["games"]["control"], seat)
-                treatment_scores = helper.game_scores(
+                control_scores = trace.game_scores(cell["games"]["control"], seat)
+                treatment_scores = trace.game_scores(
                     cell["games"]["e20_detour_off"], seat
                 )
                 valid = control_scores is not None and treatment_scores is not None
@@ -362,7 +374,7 @@ def main() -> int:
                         key: treatment_scores[key] - control_scores[key]
                         for key in ("own", "rival", "margin")
                     }
-                    divergence = helper.first_action_divergence(
+                    divergence = trace.first_action_divergence(
                         action_traces["control"], action_traces["e20_detour_off"]
                     )
                     cell["engaged"] = divergence is not None
