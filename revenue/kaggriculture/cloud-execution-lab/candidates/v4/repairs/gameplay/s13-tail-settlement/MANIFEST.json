@@ -3,7 +3,7 @@
   "canonical_branch": "main",
   "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/s13-tail-settlement",
   "claim": "V4-S13-TAIL-SETTLEMENT-RECOVERY-20260911-01",
-  "status": "source_and_boundary_tests_complete_runtime_and_economics_unmeasured",
+  "status": "source_and_pinned_engine_validation_complete_runtime_unbound_economics_unmeasured",
   "enabled_default": false,
   "donor": {
     "path": "legacy/tail_settlement.py",
@@ -34,6 +34,24 @@
     "predecessor_discriminators_per_run": 5,
     "projector": "isolated contract fixture, not official engine"
   },
+  "engine_validation": {
+    "test_path": "test_s13_engine.py",
+    "test_git_blob": "ee3c601b691f1f38290d496d1b1345ac4343e3a4",
+    "test_sha256": "2a106f1281895511ad9f37ec203725f5c1feb9e02958d164259739c3bec6b9b1",
+    "receipt_path": "ENGINE_VALIDATION.json",
+    "normal_passed": 8,
+    "optimized_passed": 8,
+    "combined_normal_passed": 38,
+    "combined_optimized_passed": 38,
+    "paired_market_cases": 288,
+    "unit_capacity_cases": 48,
+    "two_callback_fixture_predecessor_cash": 1026,
+    "two_callback_fixture_repaired_and_parent_cash": 1078,
+    "scope": "pinned-engine synthetic transitions only; no whole-game gain claim",
+    "current_production_abi_bound": false
+  },
+  "canonical_merge_pr": 12689,
+  "canonical_merge_commit": "f1988cb64d6bc628fb59ea3a590896e8f9e86d7a",
   "engine_source_read": "3c202c7ee921da239356789e266b694635103fc4",
   "production_plumbing_changed": false,
   "legacy_materializer_executed": false,
