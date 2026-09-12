@@ -23,7 +23,7 @@ class B9H3CFinalizerConvergenceTests(unittest.TestCase):
         cls.captured = M.capture_authorities(LAB)
 
     def test_exact_current_and_semantic_authorities_are_pinned(self):
-        self.assertEqual(M.CURRENT_COMMIT, "70c31154193f6f993a117284ba35e10bf5434ca9")
+        self.assertEqual(M.CURRENT_COMMIT, "d61e0333efe5697b56a867ed84a23e909195d3f4")
         for name, raw in self.captured.items():
             with self.subTest(name=name):
                 self.assertEqual(M.git_blob(raw), M.PINS[name])

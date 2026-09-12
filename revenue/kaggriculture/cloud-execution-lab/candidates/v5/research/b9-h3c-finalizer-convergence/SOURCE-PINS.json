@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "base_commit": "70c31154193f6f993a117284ba35e10bf5434ca9",
+  "base_commit": "d61e0333efe5697b56a867ed84a23e909195d3f4",
   "purpose": "Current-V5 B9 -> H3c single-producer finalizer convergence scratch materialization",
   "current_integration_surfaces": {
     "titan_runtime.py": {

@@ -21,7 +21,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[3]
 
-CURRENT_COMMIT = "70c31154193f6f993a117284ba35e10bf5434ca9"
+CURRENT_COMMIT = "d61e0333efe5697b56a867ed84a23e909195d3f4"
 PINS = {
     "titan_runtime.py": "922c99a571e4ba49726a753739f95afe86e72290",
     "TITAN-CONFIG.json": "ef0bfb1dfa1ce65103a0b178647fc16bc9c7e791",
