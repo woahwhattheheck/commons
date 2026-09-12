@@ -115,6 +115,33 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
                           'player': 0, 'route': 'YARN'})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
 
+    def test_live_prelude_then_runtime_cancellation_keeps_original_route_step(self):
+        live = Instance('YARN')
+        live.post = None
+        live._remember_seller_fallback = lambda _obs: None
+        self.entry._INSTANCE = live
+        self.assertEqual(self.entry.agent(self.obs(227), self.config), PASS)
+
+        # A live-instance prelude fallback observes callback 228 but completes no
+        # new producer route.  It may advance the observation watermark, never
+        # the immutable origin of YARN.
+        with patch('time.perf_counter', side_effect=[0.0, 2.0, 2.0, 2.0]):
+            self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
+        self.assertIs(self.entry._INSTANCE, live)
+        self.assertEqual(live._completed_route, 'YARN')
+
+        def interrupted_before_selection(*_args, **_kwargs):
+            live.controller.cur = 'UNRETURNED_BRANCH'
+            raise ControlledTimer.active.expired
+
+        live.act = interrupted_before_selection
+        self.assertEqual(self.entry.agent(self.obs(229), self.config), PASS)
+        self.assertIsNone(self.entry._INSTANCE)
+        self.assertEqual(self.entry._ROUTE_RECOVERY,
+                         {'route_step': 227, 'observed_step': 229,
+                          'player': 0, 'route': 'YARN'})
+        self.assertEqual(self.resume(230)._completed_route, 'YARN')
+
     def test_constructor_cancellation_advances_observed_watermark(self):
         self.cancel(Instance('YARN'))
         saved = deepcopy(self.entry._ROUTE_RECOVERY)
