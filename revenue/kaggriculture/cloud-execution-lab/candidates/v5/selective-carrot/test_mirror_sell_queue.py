@@ -157,3 +157,20 @@ def test_bool_counts_fail_closed():
     out = lane.transform(obs, {FEATURE: True}, action, post_unit_shed={"WOOL": 30, "MELON": 60})
     assert out == action
     assert "plain nonnegative int" in lane.diagnostics["reason"]
+
+
+def test_price_typeerror_fails_closed_without_abi_retry():
+    action = _action()
+    calls = []
+    def bad_price(*args):
+        calls.append(args)
+        raise TypeError("poisoned market params")
+    lane = MirrorSellQueue(price_fn=bad_price, analyzer=_analyzer_factory(_report()))
+    fallback = {"farmer": ["PASS"], "hands": [], "market": []}
+    out = lane.transform(
+        _obs(), {FEATURE: True}, action,
+        post_unit_shed={"WOOL": 30, "MELON": 60}, fallback_action=fallback,
+    )
+    assert out == fallback
+    assert len(calls) == 1 and len(calls[0]) == 3
+    assert "poisoned market params" in lane.diagnostics["reason"]
