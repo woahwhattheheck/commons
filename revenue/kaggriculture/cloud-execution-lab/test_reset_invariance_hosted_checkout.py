@@ -1,0 +1,192 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Hosted reset-invariance checkout must include attributed package siblings.
+
+GitHub Actions run 34671866030 (titan-reset-invariance, SHA
+ac14e749cf7cc9f3ccc2f61c188bb0c87213aafd) failed in 0s at
+``python3 -B build_integrated.py --check``:
+
+    FileNotFoundError: .../cloud-execution-lab/../cloud-quickstep/seller_snapshot.py
+
+The job sparse-checked out only cloud-execution-lab. The canonical builder
+reads attributed siblings from cloud-quickstep, cloud-runtime-pulse,
+cloud-opponent-league, cloud-committed-seed-retry, and cloud-economic-stress.
+A lab-only copy also cannot import seller_snapshot / observed_clone under
+``python3 -I``. This contract does not require the packaged tarball or a
+full episode.
+"""
+from __future__ import annotations
+
+import os
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+import test_worker_reset as reset
+
+LAB = Path(__file__).resolve().parent
+WORKFLOW = LAB.parents[2] / ".github/workflows/titan-reset-invariance.yml"
+QUICKSTEP = LAB.parent / "cloud-quickstep"
+PULSE = LAB.parent / "cloud-runtime-pulse"
+REPO_LAB = "revenue/kaggriculture/cloud-execution-lab"
+FAILED_SPARSE = (
+    "/.github/workflows/titan-reset-invariance.yml",
+    "/revenue/kaggriculture/cloud-execution-lab/",
+)
+
+
+def parse_sparse_checkout(text: str) -> list[str]:
+    """Return the non-cone sparse-checkout patterns from the hosted workflow."""
+    lines = text.splitlines()
+    patterns: list[str] = []
+    capturing = False
+    for line in lines:
+        if line.strip() == "sparse-checkout: |":
+            capturing = True
+            continue
+        if capturing:
+            if line.startswith("            ") and line.strip():
+                patterns.append(line.strip())
+                continue
+            break
+    if not patterns:
+        raise AssertionError("workflow has no sparse-checkout patterns")
+    return patterns
+
+
+def uncovered_mapped_sources(patterns: list[str], lab: Path | None = None) -> list[str]:
+    """Return source_files() origins not covered by sparse-checkout patterns."""
+    lab = Path(lab or LAB).resolve()
+    normalized = []
+    for pattern in patterns:
+        item = pattern[1:] if pattern.startswith("/") else pattern
+        normalized.append(item)
+    missing = []
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+
+    for member, source in source_files().items():
+        origin = (lab / source).resolve()
+        try:
+            relative = origin.relative_to(lab.parents[2]).as_posix()
+        except ValueError:
+            relative = f"{REPO_LAB}/{source}"
+        if any(
+            relative == item.rstrip("/")
+            or relative.startswith(item if item.endswith("/") else item + "/")
+            for item in normalized
+        ):
+            continue
+        missing.append(f"{member} <- {source}")
+    return missing
+
+
+class HostedResetCheckoutContracts(unittest.TestCase):
+    def test_lab_only_sparse_checkout_misses_seller_snapshot(self):
+        missing = uncovered_mapped_sources(list(FAILED_SPARSE))
+        self.assertTrue(missing)
+        self.assertTrue(any("seller_snapshot.py" in row for row in missing))
+        self.assertTrue(any("observed_clone.py" in row for row in missing))
+
+    def test_repaired_workflow_covers_all_mapped_sources(self):
+        patterns = parse_sparse_checkout(WORKFLOW.read_text(encoding="utf-8"))
+        self.assertIn("/revenue/kaggriculture/cloud-quickstep/", patterns)
+        self.assertIn("/revenue/kaggriculture/cloud-runtime-pulse/", patterns)
+        self.assertEqual(uncovered_mapped_sources(patterns), [])
+
+    def test_attributed_root_modules_name_quickstep_and_pulse(self):
+        mapping = reset.attributed_root_modules(LAB)
+        self.assertEqual(
+            mapping["seller_snapshot.py"],
+            (QUICKSTEP / "seller_snapshot.py").resolve(),
+        )
+        self.assertEqual(
+            mapping["observed_clone.py"],
+            (PULSE / "observed_clone.py").resolve(),
+        )
+
+    def test_lab_only_copy_cannot_import_seller_snapshot(self):
+        with tempfile.TemporaryDirectory(prefix="titan-reset-lab-only-") as folder:
+            dest = Path(folder) / "live"
+            dest.mkdir()
+            (dest / "frozen_selected.py").write_text(
+                "from seller_snapshot import seller_public_observation\n",
+                encoding="utf-8",
+            )
+            env = {
+                "PATH": os.defpath,
+                "HOME": folder,
+                "LANG": "C.UTF-8",
+                "PYTHONDONTWRITEBYTECODE": "1",
+            }
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-I",
+                    "-c",
+                    "import sys; sys.path.insert(0, sys.argv[1]); import frozen_selected",
+                    str(dest),
+                ],
+                cwd=folder,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("seller_snapshot", result.stderr)
+
+    @unittest.skipUnless(
+        (QUICKSTEP / "seller_snapshot.py").is_file()
+        and (PULSE / "observed_clone.py").is_file(),
+        "attributed siblings are not in this checkout",
+    )
+    def test_materialize_live_worker_root_exposes_attributed_modules(self):
+        with tempfile.TemporaryDirectory(prefix="titan-reset-live-") as folder:
+            dest = Path(folder) / "live"
+            reset.materialize_live_worker_root(LAB, dest)
+            self.assertTrue((dest / "seller_snapshot.py").is_file())
+            self.assertTrue((dest / "observed_clone.py").is_file())
+            self.assertEqual(
+                (dest / "seller_snapshot.py").read_bytes(),
+                (QUICKSTEP / "seller_snapshot.py").read_bytes(),
+            )
+            self.assertEqual(
+                (dest / "observed_clone.py").read_bytes(),
+                (PULSE / "observed_clone.py").read_bytes(),
+            )
+            published = LAB / "runtime/integrated-selected/CURRENT-SOURCE.json"
+            if published.is_file():
+                self.assertEqual(
+                    (dest / "SOURCE.json").read_bytes(),
+                    published.read_bytes(),
+                )
+            env = {
+                "PATH": os.defpath,
+                "HOME": folder,
+                "LANG": "C.UTF-8",
+                "PYTHONDONTWRITEBYTECODE": "1",
+            }
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-I",
+                    "-c",
+                    "import sys; sys.path.insert(0, sys.argv[1]); "
+                    "from seller_snapshot import seller_public_observation; "
+                    "from observed_clone import detached_json_value; "
+                    "assert callable(seller_public_observation); "
+                    "assert callable(detached_json_value)",
+                    str(dest),
+                ],
+                cwd=folder,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+
+if __name__ == "__main__":
+    unittest.main()
