@@ -173,6 +173,7 @@ class ComposerTests(unittest.TestCase):
         with self.assertRaises(ValueError): composer.compose_config('{"exec_pace": false}')
 
     def test_composed_plan_block_uses_distinct_reference_and_candidate_and_suppresses(self):
+        # Execute the exact injected composer fragment, not a hand-copied model.
         fragment = textwrap.dedent(composer.PLAN_INSERT)
         tree = ast.parse(fragment)
         calls = [node for node in ast.walk(tree)
@@ -218,6 +219,8 @@ class ComposerTests(unittest.TestCase):
         self.assertEqual(holder.diagnostics["evaluations"][-1]["plan"], list(reference))
 
     def test_current_repository_sources_are_composable_when_present(self):
+        # In the repository this is a mandatory live-source anchor test.  The
+        # standalone development copy under /mnt/data has no production tree.
         package_here = Path(__file__).resolve().parent
         root = package_here.parents[4] if len(package_here.parents) > 4 else None
         if root is None or not (root / "titan_runtime.py").is_file():
