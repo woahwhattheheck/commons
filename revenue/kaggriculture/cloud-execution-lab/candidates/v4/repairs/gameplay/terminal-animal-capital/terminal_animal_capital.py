@@ -49,10 +49,11 @@ def _standard_timing(configuration: Any) -> bool:
 def _max_market_orders(configuration: Any) -> int | None:
     """Return the official executable market prefix length, or fail closed.
 
-    The official specification defaults maxMarketOrdersPerTurn to 10 and the
-    interpreter executes only market[:max_orders]. Missing therefore means the
-    exact engine default; an explicitly present malformed/non-positive value
-    (including None) is not source-safe for this component and fails closed.
+    The official specification defaults maxMarketOrdersPerTurn to 10. For an
+    explicitly supplied plain int, the interpreter executes
+    market[:max(1, value)], so zero and negative ints still expose row 0.
+    Missing therefore means the exact engine default; non-int values remain
+    outside this component's source-safe contract and fail closed.
     """
     if isinstance(configuration, Mapping):
         value = (
@@ -64,9 +65,9 @@ def _max_market_orders(configuration: Any) -> int | None:
         value = getattr(configuration, "maxMarketOrdersPerTurn", _MISSING)
     if value is _MISSING:
         return DEFAULT_MAX_MARKET_ORDERS
-    if type(value) is not int or value <= 0:
+    if type(value) is not int:
         return None
-    return value
+    return max(1, value)
 
 
 def _step(observation: Any) -> int | None:
