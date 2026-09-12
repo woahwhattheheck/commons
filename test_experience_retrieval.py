@@ -60,6 +60,55 @@ class ExperienceRetrievalTests(unittest.TestCase):
         self.assertEqual(3, len(match["observations"]))
         self.assertEqual({"failure", "success"}, {o["kind"] for o in match["observations"]})
 
+    def test_newest_observation_orders_parsed_utc_instants(self):
+        failed = copy.deepcopy(next(
+            r for r in self.records if r["id"] == "experience-compiler-generated-source-drift"
+        ))
+        failed["id"] = "fixture-failed-observation"
+        failed["recorded_at"] = "2026-09-19T23:59:59Z"
+        source = next(r for r in self.records if r["id"] == "experience-compiler-generator-repair-11950")
+        whole_second = copy.deepcopy(source)
+        whole_second["id"] = "fixture-success-whole-second"
+        whole_second["recorded_at"] = "2026-09-20T00:00:00Z"
+        fractional = copy.deepcopy(source)
+        fractional["id"] = "fixture-success-fractional"
+        fractional["recorded_at"] = "2026-09-20T00:00:00.500000Z"
+
+        match = compiler.retrieve_experience(
+            [whole_second, failed, fractional], skill="generated-artifacts", limit=20
+        )["matches"][0]
+        success = next(o for o in match["observations"] if o["kind"] == "success")
+        self.assertEqual("2026-09-20T00:00:00.500000Z", success["recorded_at"])
+
+    def test_validation_rejects_retrieval_unsafe_packet_fields(self):
+        seed = next(r for r in self.records if r["id"] == "ai-village-discovery-4945")
+        cases = (
+            ("recorded_at", 7, "recorded_at"),
+            ("recorded_at", "2026-09-12T23:00:00+00:00", "recorded_at"),
+            ("recorded_at", "2026-09-31T23:00:00Z", "recorded_at"),
+            ("applies_to", ["cross-agent-handoff", 7], "applies_to"),
+            ("applies_to", ["cross-agent-handoff", "cross-agent-handoff"], "unique"),
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for i, (field, value, message) in enumerate(cases):
+                with self.subTest(field=field, value=value):
+                    record = copy.deepcopy(seed)
+                    record["id"] = f"fixture-invalid-retrieval-{i}"
+                    if field == "recorded_at":
+                        record["recorded_at"] = value
+                    else:
+                        record["patterns"][0][field] = value
+                    path = root / f"{record['id']}.json"
+                    with self.assertRaisesRegex(compiler.ExperienceError, message):
+                        compiler.validate_record(record, path)
+
+            duplicate = copy.deepcopy(seed)
+            duplicate["id"] = "fixture-duplicate-pattern"
+            duplicate["patterns"].append(copy.deepcopy(duplicate["patterns"][0]))
+            with self.assertRaisesRegex(compiler.ExperienceError, "duplicate pattern id"):
+                compiler.validate_record(duplicate, root / "fixture-duplicate-pattern.json")
+
     def test_loader_accepts_new_valid_records_without_replacing_seed(self):
         seed = next(r for r in self.records if r["id"] == "ai-village-discovery-4945")
         extra = copy.deepcopy(seed)
