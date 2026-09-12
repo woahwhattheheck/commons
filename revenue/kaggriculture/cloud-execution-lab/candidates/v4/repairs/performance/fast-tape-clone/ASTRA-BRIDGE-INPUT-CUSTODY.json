@@ -117,5 +117,33 @@
   "defaults_changed": false,
   "legacy_materializer_executed": false,
   "new_branch_or_pr": false,
-  "kaggle_changed": false
+  "kaggle_changed": false,
+  "composition_followup": {
+    "peer_runner_blob": "324b1b6b4d9752c88ad86ae15f1f81b08ab9f883",
+    "peer_change": "Adds bounded, pinned Slack-package transport to the same verifier; retains the GRAPH_TEST pin and read_pinned call.",
+    "test_blob": "5a2723aef026228fce9198683f9abe39078e3a2d",
+    "test_commit": "53633cbcb2bca22ca8bc76f5e946018b30ed6c8d",
+    "normal": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "optimized": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "cli_invocations_per_mode": 20,
+    "added_cases": [
+      "graph drift with --slack-package",
+      "graph drift with combined Slack and legacy inputs",
+      "generated-only rejects Slack package",
+      "explicit tapes and Slack package are mutually exclusive"
+    ],
+    "positive_graph_suite": "8/8 normal +8/8 optimized through the exact composed runner",
+    "corpus_transport_status": "Two authorized Slack reads of F0C18AXAL04 returned429. Positive Slack archive, default28 and historical39 runs remain NOT EXECUTED here.",
+    "reproduction_note": "The six-failure historical differential above pairs exact adf5 runner with exact d05a test from a8d7d8cd. The latest 5a2723 test additionally covers peer Slack flags absent from that historical runner; do not expect the same historical failure count when substituting latest tests."
+  }
 }
