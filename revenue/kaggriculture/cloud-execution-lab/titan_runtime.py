@@ -117,6 +117,7 @@ class Features:
     crop_release: bool = False
     early_capital: bool = False
     exec_pace: bool = False
+    overflow_safe_drop: bool = False
 
     def __post_init__(self):
         bool_fields = (
@@ -125,7 +126,7 @@ class Features:
             'fourth_quadrant', 'market_pressure', 'committed_seed_retry',
             'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',
         )
-        bool_fields = (*bool_fields, 'exec_pace')
+        bool_fields = (*bool_fields, 'exec_pace', 'overflow_safe_drop')
         for name in bool_fields:
             if type(getattr(self, name)) is not bool:
                 raise TypeError(f'{name} must be bool')
@@ -144,6 +145,8 @@ class Features:
             raise ValueError('terminal_route is the tested frozen SELL composition')
         if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')
+        if self.overflow_safe_drop and (self.consumer != 'frozen' or self.terminal_route):
+            raise ValueError('overflow_safe_drop is the tested nonterminal frozen composition')
         if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
         if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):
