@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: Apache-2.0
-from copy import deepcopy
 import unittest
 
 import deadcap_seed as d
@@ -18,6 +17,8 @@ class DeadcapSeedTests(unittest.TestCase):
         self.assertEqual(d.parse_seed_buy(["BUY_SEED", "MELON", "2", "opaque"]), ("MELON", 2))
         self.assertEqual(d.parse_seed_buy(["BUY_SEED", "MELON", 2.9]), ("MELON", 2))
         self.assertEqual(d.parse_seed_buy(["BUY_SEED", "MELON", True]), ("MELON", 1))
+        with self.assertRaises(OverflowError):
+            d.parse_seed_buy(["BUY_SEED", "MELON", float("inf")])
         for row in (("BUY_SEED", "MELON", 1), ["BUY_SEED"], ["BUY_SEED", "MELON", "x"],
                     ["BUY_SEED", "PUMPKIN", 1], ["BUY_SEED", "MELON", 0], []):
             self.assertIsNone(d.parse_seed_buy(row))
@@ -52,6 +53,23 @@ class DeadcapSeedTests(unittest.TestCase):
         self.assertEqual(out["hands"], original["hands"])
         self.assertEqual(report["removed"], [{"index": 1, "crop": "MELON", "quantity": 2}])
         self.assertEqual(original["market"][1], ["BUY_SEED", "MELON", "2", "tag"])
+
+    def test_quantity_overflow_refuses_whole_candidate_edit(self):
+        routes = {"a": [frame(), frame()]}
+        action = {"farmer": ["PASS"], "hands": [], "market": [
+            ["BUY_SEED", "MELON", float("inf")],
+            ["BUY_SEED", "CARROT", 1],
+        ]}
+        out, report = d.transform_with_report(
+            action, step=0, routes=routes, enabled=True, route_family_complete=True,
+            dynamic_unit_rewriters=False,
+        )
+        self.assertEqual(out, action)
+        self.assertEqual(report["reason"], "engine_quantity_overflow")
+        census_routes = {"a": [frame(market=action["market"]), frame()]}
+        census = d.census_authored_routes(census_routes)
+        self.assertFalse(census["certified"])
+        self.assertEqual(census["reason"], "engine_quantity_overflow")
 
     def test_cap_zero_and_negative_match_engine_floor_one(self):
         routes = {"a": [frame(), frame()]}
