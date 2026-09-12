@@ -8,103 +8,99 @@ Kaggle state.
 
 Both submitted packages enable `redundant_hire=true`, but the helper changed:
 
-- submitted V3.1 `a90d888f...` has
-  `reference/titan-current/redundant_hire.py` Git blob `4a0bf316...`;
-- submitted V4 `4af11131...` has the same path at Git blob `9ded2a9b...`.
+- submitted V3.1 `a90d888f...` has repository source
+  `revenue/kaggriculture/cloud-execution-lab/reference/titan-current/redundant_hire.py`
+  at Git blob `4a0bf316...`;
+- submitted V4 `4af11131...` has the same repository source at Git blob
+  `9ded2a9b...`.
 
-V3.1's helper proves trailing hired workers physically redundant over the
-remaining shift and replaces their current HIRE rows with zero-quantity SELL
-placeholders. It does **not** edit future producer route bytes.
+V3.1 proves trailing hired workers physically redundant over the remaining shift
+and replaces their current HIRE rows with zero-quantity SELL placeholders. It
+does **not** edit future producer route bytes.
 
-V4 retains that certificate but, after it succeeds, calls `_productive_detour`.
-That branch may protect one otherwise-redundant hire and mutate future route
-rows to `spawn -> HARVEST -> DROP -> rejoin` when the harvested deposit's
-**current observed quote** exceeds the wage. The helper itself states future
-cash compatibility is not established.
+V4 retains that certificate but then calls `_productive_detour`. That branch may
+protect one otherwise-redundant hire and mutate future route rows to
+`spawn -> HARVEST -> DROP -> rejoin` when the harvested deposit's **current
+observed quote** exceeds the wage. The helper itself states future-cash
+compatibility is not established.
 
 The implementation entered through #11130 as a bounded mechanism screen. That
 work explicitly did not complete its requested matched full-game evaluation.
-The later mixed-bundle HIRE counterexample shows the broader redundant-hire
-family matters economically, but it does not establish that this specific
-productive-detour expansion improves the submitted V4.
 
 ## Exact counterfactual
 
 `ablate_e20_productive_detour.py` authenticates both submitted helper Git blobs.
 It keeps every submitted-V4 byte through the completed physical redundancy
 certificate, then replaces only the E20 productive-detour tail with the exact
-submitted-V3.1 deletion tail. Dormant V4 detour helper definitions remain in the
-module; only their call/protection/route-mutation path is removed.
+submitted-V3.1 deletion tail. Dormant V4 detour helper definitions remain; only
+their call/protection/route-mutation path is removed.
 
-The competition artifact is also pinned independently. Submitted V4 control is
-the retained archive SHA256
+Repository-source identity and package-member identity are intentionally kept
+separate. `build_integrated.py` packages that repository source as archive member
+`reference/titan-current/redundant_hire.py`. The treatment builder rejects the
+repository path if it appears as an archive member, preventing a synthetic test
+from validating the wrong namespace.
+
+Submitted V4 control is the retained competition archive SHA256
 `4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b`.
-That is deliberately **not** substituted with the repository's contemporaneous
+This is deliberately **not** substituted with the repository's contemporaneous
 `CURRENT-ARCHIVE.json` object; they are different artifacts.
 
-`build_submitted_v4_treatment.py` accepts only that exact retained archive and
-the exact submitted-V3.1 helper. It emits a deterministic treatment archive and
-receipt. Member-set and byte comparison must prove:
+`build_submitted_v4_treatment.py` accepts only that exact retained archive plus
+the exact V3.1 helper and emits a deterministic treatment archive. It proves:
 
 - exactly one semantic member changes:
   `reference/titan-current/redundant_hire.py`;
-- exactly one metadata member changes: `SOURCE.json`, regenerated so its runtime
-  hash/byte record truthfully binds the treatment helper and records the
-  experiment authority;
-- every other package member, including `main.py`, config and opponent/runtime
-  dependencies, remains byte-identical to submitted V4 control.
+- exactly one metadata member changes: `SOURCE.json`, regenerated to truthfully
+  bind the treatment helper and source/archive authority;
+- every other member remains byte-identical to submitted V4 control.
 
-So the intended paired comparison is:
+## Focused contracts
 
-- **control:** exact retained submitted-V4 archive `4d960155...`;
-- **E20-detour-OFF:** output of `build_submitted_v4_treatment.py` from that
-  control archive.
+Exact-head CI runs normal and `-O` under Python 3.11/3.12 and covers:
 
-Do not compare against V3.1 as the treatment: the point is to ask whether this
-one V4-added behavior explains any of the V4 regression while holding every
-other V4 gameplay byte fixed.
+- exact V3.1/V4 helper Git-object authority and the surgical source splice;
+- direct productive witness: V4 keeps HIRE + authors HARVEST/DROP; treatment
+  deletes the redundant HIRE + leaves future route exact;
+- no-op witness: no productive opportunity => control/treatment action and route
+  are identical;
+- exact report-shape boundary before/after the E20 tail;
+- deterministic archive build, source-manifest rebinding and source/member
+  namespace separation;
+- returned-action trace hashing/divergence/restoration and terminal score logic;
+- paired-runner archive safety and summary contracts;
+- pycompile and clean worktree.
 
-## Source and package contracts
+## One-command matched-game evidence
 
-The focused suites:
+`paired.py` authenticates the retained control, builds treatment in memory,
+authenticates the existing joint-liquidity evaluator/opponent harness by Git
+blob, snapshots it, and runs both arms while observing returned candidate
+actions without modifying evaluator/agent bytes.
 
-- resolve the two exact historical helper objects with `git show` and verify
-  their Git blobs;
-- prove the ablation preserves the entire V4 prefix byte-for-byte and appends
-  the exact V3.1 deletion tail;
-- execute a direct productive witness where submitted V4 keeps the HIRE and
-  rewrites future route rows to HARVEST/DROP while the ablation deletes the HIRE
-  and leaves the route byte-identical;
-- prove a no-productive-opportunity predecessor returns identical actions and
-  route under control and ablation;
-- build a synthetic control package using the exact V4 helper and verify the
-  archive builder changes only helper semantics + `SOURCE.json` metadata;
-- prove deterministic treatment bytes and fail closed on archive, source or
-  manifest-identity drift;
-- run under normal Python and `-O`.
-
-For a real execution:
+Default screen: 16 distinct seeds × both seats × `apex_v7,arlene_v14`.
 
 ```bash
-python build_submitted_v4_treatment.py \
-  --control-archive /path/to/exact-submitted-v4.tar.gz \
-  --v31-helper /path/to/a90d-redundant_hire.py \
-  --output /tmp/v4-e20-detour-off.tar.gz \
-  --receipt /tmp/v4-e20-detour-off.json
+python paired.py \
+  --kg-root /path/to/commons/revenue/kaggriculture \
+  --engine-dir /path/to/official-engine \
+  --baseline /path/to/exact-submitted-v4-4d960155.tar.gz \
+  --output /tmp/e20-detour-ablation
 ```
 
-The command refuses a control archive whose SHA256 is not exactly `4d960155...`.
+The runner refuses a baseline whose SHA256 is not exactly `4d960155...` and
+records the generated treatment SHA, package-diff receipt, authenticated harness
+receipt, engine hashes, per-game scores, returned-action trace hashes, first
+control/treatment divergence, and aggregate all/opponent deltas.
 
-## Economics gate
+First returned-action divergence is the natural E20 engagement witness because
+the treatment's only gameplay semantic change is the productive-detour
+protection path. If the screen is cold, report it as cold; do not infer economics
+from the synthetic source witness.
 
-Run complete official-engine matched games in both seats using identical seeds,
-opponents and package construction. Record at minimum candidate/control score,
-margin, win/tie/loss, first returned-action divergence, E20 detour activation,
-protected worker count, completed job/product/quantity, wage payback, and any
-later divergence from the rewritten route.
+## Promotion boundary
 
-The first screen should be broad enough to answer whether the detour branch is
-actually reached and directional; promotion/reversion requires an opponent-
-diverse holdout and the shared current-V5 champion/economics gate. A positive
-ablation result is evidence to *remove or tighten this V4-added behavior* in the
-one V5 tree, not authority to resurrect a separate V3.1 runtime.
+A directional screen is not promotion authority. Any E20 removal/tightening must
+survive opponent-diverse holdout and the shared current-V5 champion/economics
+gate, then converge through the one V5 runtime. This carrier never authorizes a
+parallel V3.1 runtime or direct release/Kaggle mutation.
