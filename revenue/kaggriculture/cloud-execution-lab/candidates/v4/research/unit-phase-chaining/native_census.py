@@ -34,6 +34,10 @@ CONFIG_GIT_BLOB = "3a3bef83899d3010fad623b628d9e95d9978111b"
 ADMISSION_GIT_BLOB = "f02448806f66e524fdc317c23b620fde45a926c9"
 ARTIFACT_ID = 10175943272
 INNER_TAR_SHA256 = "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+PANEL_SEEDS = (17, 101, 6607, 9922999, 2026091201, 2026091207, 2026091213, 2026091219)
+PANEL_SEATS = (0, 1)
+CELL_SCHEMA = "titan-v4-unit-phase-chaining-native-cell/v1"
+EXPECTED_CALLBACKS_PER_CELL = 719
 CHAIN_KEYS = (
     "DIG_PLANT",
     "PLANT_WATER",
@@ -250,7 +254,7 @@ def run_cell(package: Path, seed: int, seat: int) -> dict[str, Any]:
             break
 
     return {
-        "schema": "titan-v4-unit-phase-chaining-native-cell/v1",
+        "schema": CELL_SCHEMA,
         "source": {
             "artifact_id": ARTIFACT_ID,
             "inner_tar_sha256": INNER_TAR_SHA256,
@@ -274,23 +278,96 @@ def run_cell(package: Path, seed: int, seat: int) -> dict[str, Any]:
     }
 
 
+def _expected_source() -> dict[str, Any]:
+    return {
+        "artifact_id": ARTIFACT_ID,
+        "inner_tar_sha256": INNER_TAR_SHA256,
+        "engine_git_blob": ENGINE_GIT_BLOB,
+        "main_git_blob": MAIN_GIT_BLOB,
+        "config_git_blob": CONFIG_GIT_BLOB,
+        "admission_git_blob": ADMISSION_GIT_BLOB,
+    }
+
+
+def _strict_nonnegative_int(value: Any, label: str) -> int:
+    if type(value) is not int or value < 0:
+        raise ValueError(f"{label} must be a non-negative exact integer")
+    return value
+
+
+def _validate_panel_cells(cells: list[dict[str, Any]]) -> dict[str, Any]:
+    expected_coords = {(seed, seat) for seed in PANEL_SEEDS for seat in PANEL_SEATS}
+    if len(cells) != len(expected_coords):
+        raise ValueError(f"panel must contain exactly {len(expected_coords)} cell reports")
+    expected_source = _expected_source()
+    expected_chain_keys = set(CHAIN_KEYS)
+    expected_admission_keys = {"eligible_groups", "changed_groups"}
+    seen: set[tuple[int, int]] = set()
+    for index, cell in enumerate(cells):
+        if not isinstance(cell, dict):
+            raise ValueError(f"cell {index} must be a JSON object")
+        if cell.get("schema") != CELL_SCHEMA:
+            raise ValueError(f"cell {index} schema mismatch")
+        if cell.get("source") != expected_source:
+            raise ValueError(f"cell {index} source identity mismatch")
+        seed, seat = cell.get("seed"), cell.get("seat")
+        if type(seed) is not int or type(seat) is not int:
+            raise ValueError(f"cell {index} seed/seat must be exact integers")
+        coord = (seed, seat)
+        if coord not in expected_coords:
+            raise ValueError(f"cell {index} has unexpected seed/seat coordinate {coord!r}")
+        if coord in seen:
+            raise ValueError(f"duplicate seed/seat coordinate {coord!r}")
+        seen.add(coord)
+
+        chains = cell.get("realized_chains")
+        if not isinstance(chains, dict) or set(chains) != expected_chain_keys:
+            raise ValueError(f"cell {index} realized_chains shape mismatch")
+        for key in CHAIN_KEYS:
+            _strict_nonnegative_int(chains[key], f"cell {index} realized_chains[{key!r}]")
+
+        admission = cell.get("admission")
+        if not isinstance(admission, dict) or set(admission) != expected_admission_keys:
+            raise ValueError(f"cell {index} admission shape mismatch")
+        for key in expected_admission_keys:
+            _strict_nonnegative_int(admission[key], f"cell {index} admission[{key!r}]")
+
+        for key in ("callbacks", "colocated_callbacks", "colocated_groups"):
+            _strict_nonnegative_int(cell.get(key), f"cell {index} {key}")
+        if cell["callbacks"] != EXPECTED_CALLBACKS_PER_CELL:
+            raise ValueError(
+                f"cell {index} callbacks must equal {EXPECTED_CALLBACKS_PER_CELL} for complete b567 custody"
+            )
+        if cell["colocated_callbacks"] > cell["callbacks"]:
+            raise ValueError(f"cell {index} colocated_callbacks exceeds callbacks")
+
+        scores = cell.get("scores")
+        if (
+            not isinstance(scores, list)
+            or len(scores) != 2
+            or any(type(value) not in (int, float) for value in scores)
+        ):
+            raise ValueError(f"cell {index} scores must be two exact numeric values")
+
+    if seen != expected_coords:
+        missing = sorted(expected_coords - seen)
+        raise ValueError(f"panel is missing seed/seat coordinates: {missing!r}")
+    return expected_source
+
+
 def aggregate_cells(paths: list[Path]) -> dict[str, Any]:
     cells = [json.loads(path.read_text(encoding="utf-8")) for path in paths]
-    if not cells:
-        raise ValueError("at least one cell report is required")
-    expected_source = cells[0]["source"]
-    if any(cell.get("source") != expected_source for cell in cells):
-        raise ValueError("cell source identity mismatch")
+    expected_source = _validate_panel_cells(cells)
     chain_totals: Counter[str] = Counter()
     eligible = changed = callbacks = colocated_callbacks = colocated_groups = 0
     summaries = []
     for cell in cells:
         chain_totals.update(cell["realized_chains"])
-        eligible += int(cell["admission"]["eligible_groups"])
-        changed += int(cell["admission"]["changed_groups"])
-        callbacks += int(cell["callbacks"])
-        colocated_callbacks += int(cell["colocated_callbacks"])
-        colocated_groups += int(cell["colocated_groups"])
+        eligible += cell["admission"]["eligible_groups"]
+        changed += cell["admission"]["changed_groups"]
+        callbacks += cell["callbacks"]
+        colocated_callbacks += cell["colocated_callbacks"]
+        colocated_groups += cell["colocated_groups"]
         summaries.append({key: cell[key] for key in (
             "seed", "seat", "callbacks", "colocated_callbacks", "colocated_groups",
             "realized_chains", "admission", "scores"
