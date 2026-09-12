@@ -29,6 +29,7 @@ except ModuleNotFoundError:
 # Process-local, bounded, content-keyed; never deserialize external input.
 _DERIVED_CACHE = {}
 _CACHE_LIMIT = 4
+_CROPS = ('WHEAT', 'CARROT', 'TOMATO', 'STRAWBERRY', 'MELON')
 
 
 def _derive(routes):
@@ -79,11 +80,26 @@ class SeedBudget:
 
     def apply(self, action, post_unit_seeds, step, current, max_orders=10, *, extra_requests=None):
         result = deepcopy(action)
+        market = result.get('market', [])
+        # Match the engine's queue boundary: a non-list market is ignored. This
+        # reducer is not an action parser and must not turn malformed parent
+        # bytes into an exception while deciding whether a valid seed buy is
+        # redundant.
+        if not isinstance(market, list):
+            return result
         stock = dict(post_unit_seeds)
-        for slot, order in enumerate(result.get('market', [])[:max_orders]):
-            if len(order) < 3 or order[0] != 'BUY_SEED':
+        for slot, order in enumerate(market[:max_orders]):
+            # Official _parse_order() requires a list with at least three
+            # fields. Unknown crops are later rejected by _process_market and
+            # therefore remain inert here rather than being rewritten.
+            if (not isinstance(order, list) or len(order) < 3
+                    or order[0] != 'BUY_SEED' or order[1] not in _CROPS):
                 continue
-            crop, requested = order[1], int(order[2])
+            crop = order[1]
+            try:
+                requested = int(order[2])
+            except (TypeError, ValueError):
+                continue
             if requested <= 0:
                 continue
             # Route recovery adds only its explicit, still-future PLANT request.
@@ -92,7 +108,15 @@ class SeedBudget:
             bound = self.remaining(crop, step, current) + int((extra_requests or {}).get(crop,0))
             retained = min(requested, max(0, bound - int(stock.get(crop, 0))))
             if retained != requested:
-                result['market'][slot] = ['BUY_SEED', crop, retained] if retained else []
+                if retained:
+                    # The engine ignores trailing fields, but downstream
+                    # receipts may rely on their identity. Change only the
+                    # executed quantity when pruning an otherwise valid row.
+                    updated = list(order)
+                    updated[2] = retained
+                    result['market'][slot] = updated
+                else:
+                    result['market'][slot] = []
                 self.events.append(dict(step=step, slot=slot, crop=crop,
                                         requested=requested, retained=retained,
                                         post_unit_stock=int(stock.get(crop, 0)),
