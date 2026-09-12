@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""TITAN V4 COMEBACK: source-bound multi-callback Apex burst economics.
+"""TITAN V4 COMEBACK: source-bound multi-callback Apex max-envelope economics.
 
 Research only. This extends the canonical COMEBACK evidence package without
-adding action-selection authority. It snapshots the exact merged #13027
-counter_ambush.py bytes before evaluating the authenticated 499/500/501
-STRAWBERRY burst.
+adding action-selection authority. The pinned Apex source authenticates a
+conditional <=8 STRAWBERRY SELL rule at callbacks 499/500/501; it does *not*
+authenticate that all three sells actually fire in a realized trajectory.
+
+Accordingly this module evaluates the 8+8+8 sequence only as a deterministic
+maximum-envelope stress case. Realized-event authority requires separate
+state/replay evidence proving the source predicates and returned market rows.
 """
 from __future__ import annotations
 
@@ -16,7 +20,7 @@ from pathlib import Path
 from typing import Any, Iterable, Sequence
 
 BASE_COUNTER_AMBUSH_BLOB = "041b47d3741bdb1f4bd676325fb9949c36ffe51e"
-AUTHENTICATED_APEX_STRAWBERRY_BURST = ((499, 8), (500, 8), (501, 8))
+APEX_STRAWBERRY_MAX_ENVELOPE = ((499, 8), (500, 8), (501, 8))
 
 
 class BurstError(ValueError):
@@ -41,7 +45,13 @@ def load_pinned_base(path: Path):
     except Exception as exc:
         raise BurstError("cannot load pinned COMEBACK base") from exc
 
-    required = ("sell_units", "town_drain", "predump_counterfactual", "APEX_ANTI_CLONE", "APEX_MAIN_SHA256")
+    required = (
+        "sell_units",
+        "town_drain",
+        "predump_counterfactual",
+        "APEX_ANTI_CLONE",
+        "APEX_MAIN_SHA256",
+    )
     missing = [name for name in required if not hasattr(module, name)]
     if missing:
         raise BurstError(f"pinned COMEBACK base contract missing: {missing}")
@@ -52,8 +62,15 @@ def load_pinned_base(path: Path):
         if event.get("item") == "STRAWBERRY"
         and tuple(event.get("steps", ())) == (499, 500, 501)
     ]
-    if len(source_events) != 1 or source_events[0].get("max_sell") != 8:
-        raise BurstError("pinned COMEBACK base no longer authenticates Apex 499/500/501 <=8 burst")
+    if (
+        len(source_events) != 1
+        or source_events[0].get("min_shed") != 8
+        or source_events[0].get("max_sell") != 8
+    ):
+        raise BurstError(
+            "pinned COMEBACK base no longer authenticates the conditional "
+            "Apex 499/500/501 STRAWBERRY <=8 source rule"
+        )
     return module
 
 
@@ -86,9 +103,14 @@ def normalize_events(events: Sequence[Sequence[int]]) -> tuple[tuple[int, int], 
     return tuple(out)
 
 
-def _run_rival_path(base, *, item: str, inventory: int,
-                    events: tuple[tuple[int, int], ...],
-                    unlocked_shops: tuple[str, ...]) -> tuple[list[dict[str, Any]], int]:
+def _run_rival_path(
+    base,
+    *,
+    item: str,
+    inventory: int,
+    events: tuple[tuple[int, int], ...],
+    unlocked_shops: tuple[str, ...],
+) -> tuple[list[dict[str, Any]], int]:
     rows: list[dict[str, Any]] = []
     for step, units in events:
         before = inventory
@@ -109,7 +131,7 @@ def _run_rival_path(base, *, item: str, inventory: int,
     return rows, inventory
 
 
-def burst_counterfactual(
+def envelope_counterfactual(
     base,
     *,
     item: str,
@@ -119,7 +141,7 @@ def burst_counterfactual(
     pre_step: int,
     unlocked_shops: Iterable[str] = (),
 ) -> dict[str, Any]:
-    """Compare a t-1 own sale with waiting until the callback after a rival burst."""
+    """Stress-test a t-1 sale under a supplied hypothetical rival-fill envelope."""
     if not isinstance(item, str) or not item:
         raise BurstError("nonempty item required")
     inventory0 = _nonnegative_int(starting_inventory, "starting_inventory")
@@ -127,21 +149,29 @@ def burst_counterfactual(
     pre = _nonnegative_int(pre_step, "pre_step")
     normalized = normalize_events(events)
     if pre + 1 != normalized[0][0]:
-        raise BurstError("pre_step must be exactly one callback before the first rival event")
+        raise BurstError("pre_step must be exactly one callback before the first envelope event")
     shops = tuple(unlocked_shops)
 
     early = base.sell_units(item, inventory0, own)
     pre_drain = base.town_drain(item, pre, shops)
     early_start = max(0, early["ending_inventory"] - pre_drain)
-    early_events, early_after_burst = _run_rival_path(
-        base, item=item, inventory=early_start, events=normalized, unlocked_shops=shops
+    early_events, early_after = _run_rival_path(
+        base,
+        item=item,
+        inventory=early_start,
+        events=normalized,
+        unlocked_shops=shops,
     )
 
     baseline_start = max(0, inventory0 - pre_drain)
-    baseline_events, baseline_after_burst = _run_rival_path(
-        base, item=item, inventory=baseline_start, events=normalized, unlocked_shops=shops
+    baseline_events, baseline_after = _run_rival_path(
+        base,
+        item=item,
+        inventory=baseline_start,
+        events=normalized,
+        unlocked_shops=shops,
     )
-    late = base.sell_units(item, baseline_after_burst, own)
+    late = base.sell_units(item, baseline_after, own)
 
     event_rows: list[dict[str, Any]] = []
     cumulative_suppression = 0
@@ -163,24 +193,28 @@ def burst_counterfactual(
 
     own_gain = early["gross"] - late["gross"]
     return {
+        "scenario_semantics": "conditional_max_envelope_not_observed_events",
         "item": item,
         "pre_step": pre,
-        "post_burst_sale_step": normalized[-1][0] + 1,
+        "post_envelope_sale_step": normalized[-1][0] + 1,
         "events": event_rows,
         "town_drain_after_pre": pre_drain,
         "own_early_gross": early["gross"],
-        "own_post_burst_gross": late["gross"],
+        "own_post_envelope_gross": late["gross"],
         "own_timing_gain": own_gain,
         "cumulative_rival_suppression": cumulative_suppression,
         "gross_relative_margin_swing": own_gain + cumulative_suppression,
-        "early_path_inventory_after_burst": early_after_burst,
-        "baseline_inventory_before_late_sale": baseline_after_burst,
+        "early_path_inventory_after_envelope": early_after,
+        "baseline_inventory_before_late_sale": baseline_after,
         "late_path_inventory_after_own_sale": late["ending_inventory"],
+        "realized_events_authenticated": False,
         "decision_authority": False,
+        "result_authority": False,
     }
 
 
-def authenticated_apex_report(base_path: Path) -> dict[str, Any]:
+def authenticated_apex_envelope_report(base_path: Path) -> dict[str, Any]:
+    """Return source-authenticated rule custody plus a non-authoritative max scenario."""
     base = load_pinned_base(base_path)
     shops = (
         "BRUNCH_SPOT",
@@ -188,12 +222,12 @@ def authenticated_apex_report(base_path: Path) -> dict[str, Any]:
         "SMOOTHIE_SHOP",
         "FARMERS_MARKET",
     ) * 2
-    burst = burst_counterfactual(
+    envelope = envelope_counterfactual(
         base,
         item="STRAWBERRY",
         starting_inventory=10000,
         own_units=8,
-        events=AUTHENTICATED_APEX_STRAWBERRY_BURST,
+        events=APEX_STRAWBERRY_MAX_ENVELOPE,
         pre_step=498,
         unlocked_shops=shops,
     )
@@ -205,22 +239,44 @@ def authenticated_apex_report(base_path: Path) -> dict[str, Any]:
         pre_step=498,
         unlocked_shops=shops,
     )
+    isolated = first_only["gross_relative_margin_swing"]
     return {
-        "schema": "titan-v4-comeback-apex-burst/v1",
+        "schema": "titan-v4-comeback-apex-max-envelope/v2",
         "base_counter_ambush_git_blob": BASE_COUNTER_AMBUSH_BLOB,
         "apex_main_sha256": base.APEX_MAIN_SHA256,
-        "authenticated_events": [list(row) for row in AUTHENTICATED_APEX_STRAWBERRY_BURST],
-        "source_real_max_shop_drain": burst,
-        "isolated_first_event_swing": first_only["gross_relative_margin_swing"],
-        "naive_three_times_isolated_swing": first_only["gross_relative_margin_swing"] * 3,
-        "burst_minus_naive_isolated": (
-            burst["gross_relative_margin_swing"]
-            - first_only["gross_relative_margin_swing"] * 3
+        "source_rule_authenticated": True,
+        "realized_events_authenticated": False,
+        "source_rule": {
+            "item": "STRAWBERRY",
+            "steps": [499, 500, 501],
+            "min_shed": 8,
+            "max_sell_per_callback": 8,
+            "semantics": "conditional_source_rule_not_realized_event",
+        },
+        "max_envelope_events": [list(row) for row in APEX_STRAWBERRY_MAX_ENVELOPE],
+        "conditional_max_shop_drain_scenario": envelope,
+        "max_envelope_isolated_first_event_swing": isolated,
+        "max_envelope_naive_three_times_isolated_swing": isolated * 3,
+        "max_envelope_minus_naive_isolated": (
+            envelope["gross_relative_margin_swing"] - isolated * 3
         ),
+        "required_realization_evidence": [
+            "per-callback state/replay proving the conditional source branch fired",
+            "returned market row after wrapper mutation/cap for each callback",
+            "realized STRAWBERRY sell quantity/fill at each callback",
+        ],
         "decision_authority": False,
+        "result_authority": False,
+        "activation_authority": False,
     }
 
 
 if __name__ == "__main__":
     here = Path(__file__).resolve().parent
-    print(json.dumps(authenticated_apex_report(here / "counter_ambush.py"), indent=2, sort_keys=True))
+    print(
+        json.dumps(
+            authenticated_apex_envelope_report(here / "counter_ambush.py"),
+            indent=2,
+            sort_keys=True,
+        )
+    )
