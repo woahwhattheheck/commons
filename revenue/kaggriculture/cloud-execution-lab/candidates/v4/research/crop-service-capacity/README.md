@@ -40,7 +40,7 @@ It never returns SAFE. Passing the action-count bound does not prove movement, s
 
 Gemini/Antigravity's PLANTGUARD observation is stronger than a generic action-count warning: a current PLANT can be rejected when the **actual authored unit suffix** proves that no actor reaches that new plant with WATER before the same EOD.
 
-`plant_guard.py` adds that one-sided certificate inside this same CROPSCALE authority. `assess_same_eod_plant_survival(...)` consumes the current selected action plus exactly one authenticated action dict for every remaining callback before EOD. It never predicts or invents a route.
+`plant_guard.py` adds that one-sided certificate inside this same CROPSCALE authority. `assess_same_eod_plant_survival(...)` consumes the current selected action plus exactly one authenticated action dict for every remaining executable callback before that same EOD. It never predicts or invents a route.
 
 The verifier accounts for the mechanics that make the raw slogan unsafe to apply directly:
 
@@ -49,11 +49,12 @@ The verifier accounts for the mechanics that make the raw slogan unsafe to apply
 - same-callback actor order is exact: WATER by an actor **before** the PLANT does not help; WATER by a later actor on the same tile does;
 - actor positions are carried through NORTH/SOUTH/EAST/WEST commands, including out-of-bounds movement no-ops, so later WATER must physically occur on the planted tile;
 - observation `hour` is strict-integer bound to `step % turnsPerDay`; a caller-inconsistent or type-poisoned clock cannot mint an EOD certificate;
-- the suffix must be complete through EOD and preserve existing actor cardinality;
+- terminal horizon is part of the proof: the official interpreter's callback at `episodeSteps - 2` is the last executable callback, so PLANTGUARD first proves that this day's hour-23/EOD callback is at or before that boundary. With the standard `episodeSteps=720`, step718/hour22 cannot be rejected using a nominal authored step719 because step719 and that EOD never execute; the last real EOD callback is step695/hour23;
+- the suffix must be complete through a **reachable** EOD and preserve existing actor cardinality;
 - an executable HIRE before the final callback destroys one-sided rejection because a new actor could create an unrepresented watering path; HIRE beyond the market row cap is inert, and a final-hour HIRE cannot act before that EOD;
-- malformed, incomplete, type-poisoned, unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
+- malformed, incomplete, terminal-unreachable, type-poisoned, unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
 
-The only rejection verdict is `DOOMED_AUTHORED_SUFFIX`. A found WATER returns `NOT_CERTIFIED`, **not SAFE**. The helper changes no action itself and has no runtime/default/config authority. A scheduler may consume the certificate only after proving custody of the suffix; current-native engagement and both-seat economics remain mandatory before suppressing any PLANT in production.
+The only rejection verdict is `DOOMED_AUTHORED_SUFFIX`. A found WATER returns `NOT_CERTIFIED`, **not SAFE**. The helper changes no action itself and has no runtime/default/config authority. A scheduler may consume the certificate only after proving custody of the suffix and exact `episodeSteps`/`turnsPerDay` interpreter configuration; current-native engagement and both-seat economics remain mandatory before suppressing any PLANT in production.
 
 ## Ownership boundaries
 
@@ -80,8 +81,8 @@ python -O -B test_plant_guard.py
 python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **20 CROPSCALE tests** and **24 PLANTGUARD tests** pass in each mode.
+Expected: **20 CROPSCALE tests** and **29 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
-The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing both false impossibility from a current empty-tile snapshot and false survival claims from an unauthenticated planting route.
+The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot, false survival claims from an unauthenticated planting route, and false same-EOD rejection when the episode terminates before that EOD can execute.
