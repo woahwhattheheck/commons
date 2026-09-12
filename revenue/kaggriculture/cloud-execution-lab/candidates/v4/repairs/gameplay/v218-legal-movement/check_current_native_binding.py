@@ -50,6 +50,8 @@ def audit(root: Path) -> dict:
     for path in sorted(root.rglob("*")):
         if not path.is_file() or any(part in EXCLUDE_PARTS for part in path.parts):
             continue
+        # Package executable/config text only. Reference checks are evidence about the
+        # engine, not a production binding into main.py::agent.
         rel = path.relative_to(root)
         if rel.parts and rel.parts[0] == "checks":
             continue
