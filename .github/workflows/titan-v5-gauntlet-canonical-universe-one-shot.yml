@@ -99,12 +99,8 @@ jobs:
           if text.count(old) != 1:
               raise SystemExit("reducer live-manifest authority anchor drifted")
           text = text.replace(old, new, 1)
-          old_authority = '''    manifest_path = (root / "manifest.json").resolve(strict=True)
-    if not manifest_path.is_relative_to(root):
-        raise ReductionError("canonical manifest escaped corpus root")
-'''
-          new_authority = '''    manifest_path = CANONICAL_MANIFEST_PATH.resolve(strict=True)
-'''
+          old_authority = '    manifest_path = (root / "manifest.json").resolve(strict=True)\n    if not manifest_path.is_relative_to(root):\n        raise ReductionError("canonical manifest escaped corpus root")\n'
+          new_authority = '    manifest_path = CANONICAL_MANIFEST_PATH.resolve(strict=True)\n'
           if text.count(old_authority) != 1:
               raise SystemExit("canonical materialization live-manifest anchor drifted")
           reducer.write_text(text.replace(old_authority, new_authority, 1))
