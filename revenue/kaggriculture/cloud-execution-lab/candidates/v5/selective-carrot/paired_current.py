@@ -6,15 +6,21 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import io
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import statistics
 import sys
+import tarfile
 import tempfile
 
 
 ARMS = ("control", "cap4", "cap12")
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
 
 
 def load(path: Path, name: str):
@@ -27,8 +33,38 @@ def load(path: Path, name: str):
     return module
 
 
-def read_json(path: Path):
-    return json.loads(path.read_text(encoding="utf-8"))
+def read_json_bytes(data: bytes):
+    return json.loads(data.decode("utf-8"))
+
+
+def archive_members_bytes(raw: bytes) -> dict[str, bytes]:
+    """Parse one immutable canonical package snapshot without reopening disk."""
+    data = {}
+    with tarfile.open(fileobj=io.BytesIO(raw), mode="r:*") as archive:
+        for member in archive:
+            rel = PurePosixPath(member.name)
+            if (
+                not member.name
+                or "\\" in member.name
+                or rel.is_absolute()
+                or ".." in rel.parts
+                or str(rel) != member.name.rstrip("/")
+            ):
+                raise ValueError(f"Invalid archive path: {member.name}")
+            if member.isdir():
+                continue
+            if not member.isfile() or member.name in data:
+                raise ValueError(f"Non-file or duplicate member: {member.name}")
+            if member.size > 100 * 1024**2:
+                raise ValueError(f"Oversized member: {member.name}")
+            stream = archive.extractfile(member)
+            if stream is None:
+                raise ValueError(f"Unreadable archive member: {member.name}")
+            with stream:
+                data[member.name] = stream.read()
+    if "main.py" not in data or "frozen_selected.py" not in data:
+        raise ValueError("Expected canonical V5 flat archive layout")
+    return data
 
 
 def members(root: Path) -> dict[str, bytes]:
@@ -86,25 +122,42 @@ def main(argv=None) -> int:
     helper_path = (
         root / "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
     )
+    builder_path = here / "build_current.py"
+    launcher_path = Path(__file__).resolve()
+
+    # Bind every mutable local source before importing it. A moving checkout may
+    # continue to acquire later evidence, but this process keeps one code identity.
+    helper_sha256 = sha256_bytes(helper_path.read_bytes())
+    builder_sha256 = sha256_bytes(builder_path.read_bytes())
+    launcher_sha256 = sha256_bytes(launcher_path.read_bytes())
     h = load(helper_path, "carrot_current_bench_helpers")
-    builder = load(here / "build_current.py", "carrot_current_builder")
+    builder = load(builder_path, "carrot_current_builder")
+    if sha256_bytes(helper_path.read_bytes()) != helper_sha256:
+        raise ValueError("benchmark helper moved during import")
+    if sha256_bytes(builder_path.read_bytes()) != builder_sha256:
+        raise ValueError("candidate builder moved during import")
+    if sha256_bytes(launcher_path.read_bytes()) != launcher_sha256:
+        raise ValueError("launcher moved during startup")
 
     current_path = lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
-    current = read_json(current_path)
+    current_manifest_bytes = current_path.read_bytes()
+    current_manifest_sha256 = sha256_bytes(current_manifest_bytes)
+    current = read_json_bytes(current_manifest_bytes)
     if current.get("path") != "exports/titan-current.tar.gz":
         raise ValueError("unexpected current V5 archive path")
     archive = lab / current["path"]
-    archive_digest = h.digest(archive)
+    archive_bytes = archive.read_bytes()
+    archive_digest = sha256_bytes(archive_bytes)
     if archive_digest != current.get("sha256"):
         raise ValueError(
             "CURRENT-ARCHIVE sha256 does not match titan-current.tar.gz"
         )
-    if archive.stat().st_size != current.get("bytes"):
+    if len(archive_bytes) != current.get("bytes"):
         raise ValueError(
             "CURRENT-ARCHIVE byte count does not match titan-current.tar.gz"
         )
     # Freeze the exact control bytes in memory before any long-running work.
-    baseline = h.archive_members(archive)
+    baseline = archive_members_bytes(archive_bytes)
 
     # Acquire the mutable repository harness once, authenticate that closure,
     # then execute evaluator/packer/bridge/opponent support from the snapshot only.
@@ -172,26 +225,37 @@ def main(argv=None) -> int:
             )
         opponent_receipts[opponent] = receipt
 
+    # The source modules are already loaded/frozen in this process. Reject any
+    # checkout movement before publishing their identities into the run receipt.
+    if sha256_bytes(helper_path.read_bytes()) != helper_sha256:
+        raise ValueError("benchmark helper moved after acquisition")
+    if sha256_bytes(builder_path.read_bytes()) != builder_sha256:
+        raise ValueError("candidate builder moved after acquisition")
+    if sha256_bytes(launcher_path.read_bytes()) != launcher_sha256:
+        raise ValueError("launcher moved after acquisition")
+
     run = {
-        "schema": "astra.v5.selective-carrot.current-paired.v2",
+        "schema": "astra.v5.selective-carrot.current-paired.v3",
         "method": (
-            "Fresh full official-interpreter games from the exact CURRENT archive "
-            "captured before execution. The mutable repository is acquisition-only "
+            "Fresh full official-interpreter games from one authenticated in-memory "
+            "CURRENT archive snapshot. The mutable repository is acquisition-only "
             "for the evaluator/packer/bridge/opponent closure; the copied harness is "
             "authenticated against its Git/manifest/registry pins and all game support "
-            "then executes from that snapshot. Same seed/seat/opponent across control, "
-            "cap4 and cap12; deterministic rotating arm order. Linux 1.25s IPC action "
-            "limit; canonical policy retains its own 1s deadline. Not hosted Kaggle rating."
+            "then executes from that snapshot. Local helper/builder/launcher identities "
+            "are captured before import/execution and rechecked before receipt publication. "
+            "Same seed/seat/opponent across control, cap4 and cap12; deterministic rotating "
+            "arm order. Linux 1.25s IPC action limit; canonical policy retains its own 1s "
+            "deadline. Not hosted Kaggle rating."
         ),
         "current_archive": current,
-        "current_archive_manifest_sha256": h.digest(current_path),
+        "current_archive_manifest_sha256": current_manifest_sha256,
         "archive_sha256": archive_digest,
         "control_package_sha256": control_package_sha256,
         "engine": engine_hashes,
         "harness": harness,
-        "helper_sha256": h.digest(helper_path),
-        "builder_sha256": h.digest(here / "build_current.py"),
-        "launcher_sha256": h.digest(__file__),
+        "helper_sha256": helper_sha256,
+        "builder_sha256": builder_sha256,
+        "launcher_sha256": launcher_sha256,
         "build_receipts": build_receipts,
         "candidate_members": {
             arm: {
