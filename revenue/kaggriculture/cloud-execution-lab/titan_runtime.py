@@ -103,10 +103,9 @@ class TitanAgent:
         self.post = None
         self._completed_route = None
         # Frozen SELL mutates several planning/observer fields before returning.
-        # Keep only the last state associated with a successfully returned
-        # action.  Deadline fallback observations are replayed through the
-        # original public observer after reconstruction; interrupted planning is
-        # never promoted into the checkpoint.
+        # Keep observer state associated with a successfully returned action
+        # or a fully replayed fallback prefix. The newest fallback remains
+        # pending and replaceable; interrupted planning is never promoted.
         self._completed_seller_state = None
         self._seller_fallback_observations = []
         self.spatial = None
@@ -150,7 +149,15 @@ class TitanAgent:
         }
 
     def _restore_seller_state(self):
-        """Restore completed SELL intent and replay completed fallback inputs."""
+        """Restore SELL intent and compact fully replayed fallback prefixes.
+
+        The newest pending observation remains outside the checkpoint so a
+        retry of that same public step can replace it exactly. Older pending
+        observations are observer-complete and may be checkpointed. Publishing
+        the checkpoint first is interruption-safe: its exact prior observation
+        identifies and removes a stale prefix if cancellation happens before
+        the pending list is shortened.
+        """
         if self.features.consumer != 'frozen':
             return
         checkpoint = self._completed_seller_state
@@ -163,13 +170,38 @@ class TitanAgent:
             self.consumer.observed_harvests = {
                 item:list(rows) for item,rows in checkpoint['observed_harvests'].items()
             }
-        for skipped in self._seller_fallback_observations:
-            # Observe only public state that was actually supplied to an action
-            # call whose fallback was returned.  Advancing ``previous`` mirrors
-            # the end of a completed transform without retaining any unreturned
-            # planned/pending mutations from that transform.
+
+        pending = list(self._seller_fallback_observations)
+        if (checkpoint is not None
+                and checkpoint.get('_fallback_prefix_checkpoint')):
+            compacted_through = checkpoint.get('previous')
+            for index, skipped in enumerate(pending):
+                if skipped == compacted_through:
+                    pending = pending[index+1:]
+                    self._seller_fallback_observations = pending
+                    break
+        if not pending:
+            return
+
+        prefix, tail = pending[:-1], pending[-1]
+        for skipped in prefix:
+            # Observe only public state actually supplied to a call whose
+            # fallback was returned. Advancing ``previous`` mirrors the end
+            # of a completed transform without retaining interrupted plans.
             self.consumer.observe(skipped)
             self.consumer.previous = deepcopy(skipped)
+
+        if prefix:
+            compacted = self._seller_state(self.consumer)
+            compacted['_fallback_prefix_checkpoint'] = True
+            # Publish the checkpoint before shortening the list. If the
+            # deadline interrupts between these assignments, the marker and
+            # exact previous observation suppress duplicate prefix replay.
+            self._completed_seller_state = compacted
+            self._seller_fallback_observations = [tail]
+
+        self.consumer.observe(tail)
+        self.consumer.previous = deepcopy(tail)
 
     def _remember_seller_fallback(self, obs):
         """Queue one completed fallback observation for a later reconstruction."""

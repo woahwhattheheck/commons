@@ -106,7 +106,18 @@ class OperatingStockTests(unittest.TestCase):
             self.route[step]['hands'][0] = ['PASS']
         self.route[478]['hands'][0] = ['PICKUP', 'FERTILIZER', 3]
         self.route[479]['hands'][0] = ['FERTILIZE']
-        self.unchanged('no_distinct_useful_consumption')
+        self.unchanged('pickup_suffix_contains_nonproductive_consumption')
+
+    def test_day_close_drop_is_in_future_schedule_bound(self):
+        self.route[479]['farmer'] = ['DROP']
+        self.unchanged('unbounded_intervening_drop')
+
+    def test_day_close_protected_site_mutation_is_in_schedule_bound(self):
+        for operation in ('DIG', 'PLANT'):
+            with self.subTest(operation=operation):
+                self.route[478]['farmer'] = ['WEST']
+                self.route[479]['farmer'] = [operation]
+                self.unchanged('target_has_competing_asset_or_input_action')
 
     def test_no_credit_for_requested_purchase_or_input_deposit(self):
         self.route[461]['market'] = [['BUY_PRODUCT', 'FERTILIZER', 3]]
@@ -123,7 +134,7 @@ class OperatingStockTests(unittest.TestCase):
 
     def test_capacity_does_not_use_later_sell_as_room(self):
         self.private['shed']['WOOL'] = 90
-        self.route[462]['farmer'] = ['PLACE', 'WOOL', 2]
+        self.route[462]['farmer'] = ['PLACE', 'WOOL', 9]
         self.route[462]['market'] = [['SELL', 'WOOL', 90]]
         self.unchanged('retained_stock_conflicts_with_arrival_room')
 

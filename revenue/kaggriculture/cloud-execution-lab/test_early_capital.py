@@ -91,6 +91,38 @@ class EarlyCapitalContracts(unittest.TestCase):
         self.assertEqual(sorted(ops), sorted(o[0] for o in selected['market']))
         self.assertEqual(report.get('reduced'), [])
 
+    def test_hire_reorder_cannot_consume_land_funding(self):
+        selected = {'farmer': ['PASS'], 'hands': [],
+                    'market': [['SELL', 'MILK', 1], ['BUY_LAND'], ['HIRE']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        # At the public base quote the original SELL -> LAND path is exactly
+        # affordable: 840 + 160 == 1000. Moving HIRE ahead spends $1 first and
+        # would turn the existing land purchase into an engine no-op.
+        self.assertEqual(m.market_price('MILK', 10000), 160)
+        self.assertEqual(840 + 160, m.LAND_PRICES[0])
+        result, report = order_early_capital(
+            m, obs(1, money=840, shed={'MILK': 1}), CFG, selected, route)
+        self.assertEqual(result, selected)
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'capital_prefix_not_fully_funded')
+        self.assertEqual(report['capital_funding']['reason'], 'capital_would_lose_funding')
+        self.assertEqual(report['capital_funding']['guaranteed_cash_floor'], 841.0)
+        self.assertEqual(report['capital_funding']['required_cash_floor'], 1001.0)
+
+    def test_floor_certified_hire_then_land_reorder_still_fires(self):
+        selected = {'farmer': ['PASS'], 'hands': [],
+                    'market': [['SELL', 'MILK', 1], ['BUY_LAND'], ['HIRE']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        result, report = order_early_capital(
+            m, obs(1, money=1000, shed={'MILK': 1}), CFG, selected, route)
+        self.assertEqual(result['market'],
+                         [['SELL', 'MILK', 1], ['HIRE'], ['BUY_LAND']])
+        self.assertTrue(report['changed'])
+        self.assertEqual(report['reason'], 'ordered')
+        self.assertEqual(report['capital_funding']['reason'], 'certified')
+        self.assertEqual(report['capital_funding']['guaranteed_cash_floor'], 1001.0)
+        self.assertEqual(report['capital_funding']['required_cash_floor'], 1001.0)
+
     def test_terminal_and_late_day_fail_closed(self):
         selected = {'farmer': ['PASS'], 'hands': [], 'market': [['BUY_LAND'], ['SELL', 'MILK', 1]]}
         route = [selected] * 720

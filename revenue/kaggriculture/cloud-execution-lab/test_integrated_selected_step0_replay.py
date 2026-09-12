@@ -17,6 +17,12 @@ class _StubAgent:
         return {"instance": self.name, "calls": len(self.calls)}
 
 
+class _FailingAgent(_StubAgent):
+    def act(self, observation, configuration=None):
+        self.calls.append((deepcopy(observation), dict(configuration or {})))
+        raise RuntimeError("injected reset failure")
+
+
 class OrderedEntrypointReplayTests(unittest.TestCase):
     def setUp(self):
         selected._INSTANCE = None
@@ -50,6 +56,28 @@ class OrderedEntrypointReplayTests(unittest.TestCase):
         self.assertEqual(len(created[0].calls), 4)
         self.assertEqual(len(created[1].calls), 1)
         self.assertEqual(selected._LAST_STEP, 2)
+
+    def test_failed_backstep_does_not_consume_reset_boundary(self):
+        old = _StubAgent("old")
+        failed = _FailingAgent("failed-reset")
+        retry = _StubAgent("retry-reset")
+        selected._INSTANCE = old
+        selected._LAST_STEP = 5
+
+        with patch.object(selected, "make_agent", side_effect=[failed, retry]) as factory:
+            with self.assertRaisesRegex(RuntimeError, "injected reset failure"):
+                selected.agent({"step": 0}, {})
+            self.assertIs(selected._INSTANCE, failed)
+            self.assertEqual(selected._LAST_STEP, 5)
+
+            recovered = selected.agent({"step": 0}, {})
+
+        self.assertEqual(factory.call_count, 2)
+        self.assertIs(selected._INSTANCE, retry)
+        self.assertEqual(recovered["instance"], "retry-reset")
+        self.assertEqual(len(failed.calls), 1)
+        self.assertEqual(len(retry.calls), 1)
+        self.assertEqual(selected._LAST_STEP, 0)
 
 
 if __name__ == "__main__":

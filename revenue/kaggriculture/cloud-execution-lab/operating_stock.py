@@ -176,11 +176,14 @@ def _feed_window(mechanics, observation, configuration, selected, farm, private,
             'arrival_upper_before_last_pickup': sum(q for t, q in arrivals if t < last_pickup)}
 
 
-def _current_room_bound(mechanics, private, orders, reset):
+def _current_room_bound(mechanics, private, orders, reset, capacity=100,
+                        maximum=10):
     """Credit each initial physical unit once; buys never enlarge sale credit."""
+    capacity = _whole(capacity)
+    maximum = _whole(maximum)
     stock = {k: _whole(n) for k, n in private['shed'].items()}
     upper = sum(stock.values()); peak = upper
-    for order in orders[:10]:
+    for order in orders[:maximum]:
         if not order:continue
         op = order[0]
         if op == 'SELL':
@@ -189,9 +192,9 @@ def _current_room_bound(mechanics, private, orders, reset):
             stock[order[1]] = stock.get(order[1], 0) - q; upper -= q
         elif op in ('BUY_PRODUCT', 'BUY_ANIMAL'):upper += _order_quantity(order)
         peak = max(peak, upper)
-        if upper > 100:raise ValueError('withholding_conflicts_with_current_arrival_room')
+        if upper > capacity:raise ValueError('withholding_conflicts_with_current_arrival_room')
     carry = sum(_whole(n) for v in private['inventories'] for n in v.values()) if reset else 0
-    if upper + carry > 100:raise ValueError('withholding_conflicts_with_reset_delivery')
+    if upper + carry > capacity:raise ValueError('withholding_conflicts_with_reset_delivery')
     return {'market_stock_upper': upper, 'market_peak_upper': peak,
             'eod_carry_upper': carry, 'after_delivery_upper': upper + carry}
 
@@ -434,16 +437,19 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if any(o and o[0] == 'HIRE' for o in orders):
         report['reason'] = 'current_hiring_boundary'
         return selected, report
-    for step in range(now + 1, min(end, len(route))):
+    scan_stop = min(end + 1, len(route))
+    for step in range(now + 1, scan_stop):
         if any(o and o[0] == 'HIRE'
                for o in (route[step].get('market') or [])[:maximum]):
             end = step
+            scan_stop = step
             break
     schedule = []
     pickups = []
-    deposits = sum(max(0, int(o[2])) for o in orders
-                   if o and len(o) > 2 and o[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'))
-    for step in range(now + 1, min(end, len(route))):
+    # Future fixed deposits only. Current BUY arrivals are traced in their real
+    # queue order by _current_room_bound after the fertilizer sale is rewritten.
+    deposits = 0
+    for step in range(now + 1, scan_stop):
         row = route[step]
         for order in (row.get('market') or [])[:maximum]:
             if order and order[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'):
@@ -530,10 +536,28 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if withheld > reservation_bound:
         report['reason'] = 'reservation_exceeds_obligation_bound'
         return selected, report
-    # Includes all current stock and requested arrivals; no future purchase is
-    # credited as fertilizer and no future sale is credited as capacity relief.
+    # Trace the candidate current queue after withholding so an earlier owned
+    # SELL can create room for a later current BUY. Future BUY/PLACE deposits
+    # remain fixed arrivals and future SELLs receive zero capacity credit.
+    candidate_orders = deepcopy(orders)
+    remaining = limit
+    for index, order in enumerate(candidate_orders[:maximum]):
+        if order and len(order) > 2 and order[:2] == ['SELL', 'FERTILIZER']:
+            take = min(max(0, int(order[2])), remaining)
+            candidate_orders[index] = ['SELL', 'FERTILIZER', take] if take else []
+            remaining -= take
     capacity = int(cfg.get('shedCapacity', 100))
-    if sum(max(0, int(n)) for n in post_private['shed'].values()) + deposits >= capacity:
+    try:
+        room = _current_room_bound(
+            mechanics, post_private, candidate_orders, False, capacity, maximum)
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        if str(error) in ('withholding_conflicts_with_current_arrival_room',
+                          'withholding_conflicts_with_reset_delivery'):
+            report['reason'] = 'retained_stock_conflicts_with_arrival_room'
+        else:
+            report['reason'] = str(error)
+        return selected, report
+    if room['market_stock_upper'] + deposits > capacity:
         report['reason'] = 'retained_stock_conflicts_with_arrival_room'
         return selected, report
     market = observation['market']; params = market.get('params')
