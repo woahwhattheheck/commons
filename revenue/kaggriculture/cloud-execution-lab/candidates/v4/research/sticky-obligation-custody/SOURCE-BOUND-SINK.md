@@ -17,6 +17,12 @@ The source-bound producer accepts normalized projected **pre-state** (`actor`, c
 
 The result is an immutable, non-serializable in-process `SinkTransitionEvidence` capability registered by the producer. It is bound to exact actor/step/op/item, official source identities, and before/after state digests. A plain mapping with matching-looking fields is rejected.
 
+## Projected-prestate handoff
+
+Producer-issued evidence alone is not enough. A consumed=1 capability derived from pre-state A must never be replayed onto a different projected pre-state B that happens to share the same actor/step/op/item. Every FEED/FERTILIZE row that wants positive sink credit therefore carries `projected_prestate_sha256`, supplied by the upstream projection-custody authority. The consumer requires that value to match the producer evidence's exact `before_sha256`.
+
+Missing, malformed, or mismatched projected-prestate binding contributes **zero** sink capacity. It is not treated as a weaker positive proof. This closes the replay seam while preserving the explicit boundary: the STICKY package does not itself prove that an upstream projected pre-state is authentic; it requires the upstream authority to hand over the exact authenticated digest that it projected.
+
 ## Consumer
 
 `prove_carry_consumption_source_bound()` preserves the incumbent CARRY rules for:
@@ -28,21 +34,26 @@ The result is an immutable, non-serializable in-process `SinkTransitionEvidence`
 - WHEAT HARVEST failing closed as unknown acquisition;
 - duplicate obligated-actor callback rows failing closed.
 
-A FEED/FERTILIZE row contributes sink capacity **only** through `row["sink_transition"]` containing producer-issued evidence for that exact row. Legacy caller fields `consumption_authenticated`, `consumed_item`, and `consumed_units` are ignored and have zero positive authority.
+A FEED/FERTILIZE row contributes sink capacity only when both are present and agree:
 
-This does not claim that a caller's projected pre-state is authentic. Projection/postimage custody remains an upstream prerequisite. The closure is narrower and source-real: given an authenticated projected pre-state, the caller can no longer manufacture the engine effect by assertion.
+1. `row["sink_transition"]` is producer-issued evidence for the exact actor/step/op/item; and
+2. `row["projected_prestate_sha256"]` exactly equals that evidence's authenticated `before_sha256`.
+
+Legacy caller fields `consumption_authenticated`, `consumed_item`, and `consumed_units` are ignored and have zero positive authority.
+
+This does not claim that a caller's projected pre-state is authentic. Projection/postimage custody remains an upstream prerequisite. The closure is narrower and source-real: given an authenticated projected-prestate digest, the caller can no longer manufacture or replay the engine effect by assertion.
 
 ## Run
 
 From this package directory:
 
 ```bash
-python -B -m unittest -v test_source_bound_sink.py
-python -O -B -m unittest -v test_source_bound_sink.py
-python -m py_compile source_bound_sink.py test_source_bound_sink.py
+python -B -m unittest -v test_source_bound_sink.py test_source_bound_sink_prestate_replay.py
+python -O -B -m unittest -v test_source_bound_sink.py test_source_bound_sink_prestate_replay.py
+python -m py_compile source_bound_sink.py test_source_bound_sink.py test_source_bound_sink_prestate_replay.py
 ```
 
-The focused suite covers official source authentication, positive FEED/FERTILIZE consumption, second-FEED no-op, empty-inventory/non-plant no-ops, already-fertilized-but-still-consuming semantics, legacy assertion impotence, forged capability rejection, exact actor/step binding, incumbent competing-inventory burden, and DROP/HARVEST fail-closed boundaries.
+The focused suite covers official source authentication, positive FEED/FERTILIZE consumption, second-FEED no-op, empty-inventory/non-plant no-ops, already-fertilized-but-still-consuming semantics, legacy assertion impotence, forged capability rejection, exact actor/step binding, incumbent competing-inventory burden, DROP/HARVEST fail-closed boundaries, and the source-real prestate replay predecessor: a consuming FEED capability minted from `fed_today=False` cannot authorize a row bound to a `fed_today=True` pre-state, and missing prestate binding cannot contribute a positive sink.
 
 ## Boundaries
 
