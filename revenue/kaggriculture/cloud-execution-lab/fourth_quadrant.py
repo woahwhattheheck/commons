@@ -9,6 +9,7 @@ from copy import deepcopy
 
 MOVES = {'NORTH': (0, -1), 'SOUTH': (0, 1), 'EAST': (1, 0), 'WEST': (-1, 0)}
 ACCESS = ((4, 4), (5, 4), (4, 5), (5, 5))
+CROPS = ('WHEAT', 'CARROT', 'TOMATO', 'STRAWBERRY', 'MELON')
 
 
 def walk(a, b):
@@ -32,53 +33,73 @@ def set_action(row, i, value):
     hands[i-1] = list(value)
 
 
-def _purchase_commitment(row):
-    """Return exact current-step land/seed quantities or fail closed."""
+def _market_limit(configuration):
+    """Mirror the pinned engine's executable market-prefix floor."""
+    return max(1, int((configuration or {}).get('maxMarketOrdersPerTurn', 10)))
+
+
+def _market_rows(row, limit):
+    """Return only rows the engine can attempt; non-list markets execute none."""
+    market = row.get('market', []) if isinstance(row, dict) else []
+    return market[:limit] if isinstance(market, list) else ()
+
+
+def _hire_count(row, configuration=None):
+    limit = _market_limit(configuration)
+    return sum(isinstance(order, list) and bool(order) and order[0] == 'HIRE'
+               for order in _market_rows(row, limit))
+
+
+def _purchase_commitment(row, configuration=None):
+    """Return executable current-step land/seed quantities under engine grammar."""
     land = 0
     seed = {}
-    for order in row.get('market', []):
-        if not order:
+    limit = _market_limit(configuration)
+    for order in _market_rows(row, limit):
+        if not isinstance(order, list) or not order:
             continue
         if order[0] == 'BUY_LAND':
+            # Official _parse_order accepts BUY_LAND by opcode and ignores any
+            # trailing fields.
             land += 1
-        elif order[0] == 'BUY_SEED':
-            if (len(order) < 3 or not isinstance(order[1], str)
-                    or isinstance(order[2], bool) or not isinstance(order[2], int)
-                    or order[2] < 0):
-                return None
-            seed[order[1]] = seed.get(order[1], 0) + order[2]
+        elif order[0] == 'BUY_SEED' and len(order) >= 3:
+            try:
+                quantity = int(order[2])
+            except (TypeError, ValueError):
+                continue
+            # The parser drops nonpositive quantities; _process_market drops
+            # seed items outside the official crop table.
+            if quantity <= 0 or order[1] not in CROPS:
+                continue
+            seed[order[1]] = seed.get(order[1], 0) + quantity
     return land, seed
 
 
-def purchase_commitment_survives(selected, returned):
-    """Require current selected expansion purchases to survive final transforms."""
-    required = _purchase_commitment(selected)
-    if required is None:
-        return False
-    required_land, required_seed = required
+def purchase_commitment_survives(selected, returned, configuration=None):
+    """Require selected executable expansion purchases to survive transforms."""
+    required_land, required_seed = _purchase_commitment(selected, configuration)
     if required_land == 0 and not required_seed:
         return True
-    actual = _purchase_commitment(returned)
-    if actual is None:
-        return False
-    actual_land, actual_seed = actual
+    actual_land, actual_seed = _purchase_commitment(returned, configuration)
     return (actual_land >= required_land
             and all(actual_seed.get(crop, 0) >= units
                     for crop, units in required_seed.items()))
 
 
-def calendar(route, first_day):
+def calendar(route, first_day, configuration=None):
     """Exact authored movement/spawn calendar, independent of farm production.
 
-    Extra hands are hired strictly after every incumbent HIRE in that day, so
-    incumbent spawn selection remains unchanged. An observed runtime mismatch
-    cannot be silently treated as this calendar.
+    Extra hands are hired strictly after every incumbent engine-executable HIRE
+    in that day, so incumbent spawn selection remains unchanged. An observed
+    runtime mismatch cannot be silently treated as this calendar.
     """
     days = {}
+    limit = _market_limit(configuration)
     for day in range(first_day, 30):
         start = day * 24
         hires = [t for t in range(start, min(start+24, 719))
-                 if any(o and o[0] == 'HIRE' for o in route[t].get('market', []))]
+                 if any(isinstance(o, list) and o and o[0] == 'HIRE'
+                        for o in _market_rows(route[t], limit))]
         hire_step = max(hires, default=start-1) + 1
         if hire_step >= min(start+23, 718):
             continue
@@ -89,8 +110,8 @@ def calendar(route, first_day):
                 delta = MOVES.get(a[0] if a else '')
                 if delta:
                     positions[i] = (max(0, min(9, pos[0]+delta[0])), max(0, min(9, pos[1]+delta[1])))
-            for order in route[t].get('market', []):
-                if order and order[0] == 'HIRE':
+            for order in _market_rows(route[t], limit):
+                if isinstance(order, list) and order and order[0] == 'HIRE':
                     positions.append(min(ACCESS, key=lambda p: (positions.count(p), ACCESS.index(p))))
         days[day] = {'step': hire_step, 'positions': positions, 'hands': len(positions)-1}
     return days
@@ -147,9 +168,10 @@ def proposals(mechanics, observation, routes, current, configuration):
         return []
     if any(farm['tiles'][y][x] != 'LOCKED' for y in range(5, 10) for x in range(5, 10)):
         return []
+    limit = _market_limit(configuration)
     compatible = {key: rows for key, rows in routes.items()
                   if key == current or rows[:now] == routes[current][:now]}
-    calendars = {key: calendar(rows, day) for key, rows in compatible.items()}
+    calendars = {key: calendar(rows, day, configuration) for key, rows in compatible.items()}
     tiles = sorted(((x, y) for y in range(5, 10) for x in range(5, 10)),
                    key=lambda p: (sum(p), p[1], p[0]))
     answer = []
@@ -177,7 +199,9 @@ def proposals(mechanics, observation, routes, current, configuration):
                         first = work_day == day
                         orders = ([['BUY_LAND'], ['BUY_SEED', crop, len(chosen)*cycles]] if first else [])
                         orders += [['HIRE'] for _ in range(workers)]
-                        if len(rows[step].get('market', []))+len(orders) > int(configuration.get('maxMarketOrdersPerTurn', 10)):
+                        base_market = rows[step].get('market', [])
+                        if (not isinstance(base_market, list)
+                                or len(base_market)+len(orders) > limit):
                             feasible = False; break
                         row = deepcopy(rows[step]); row.setdefault('market', []).extend(orders); patch[step] = row
                         cost = sum(mechanics._hire_cost(entry['hands']+i, int(configuration.get('farmHandCostMult', 1))) for i in range(workers))
@@ -209,8 +233,8 @@ def proposals(mechanics, observation, routes, current, configuration):
                             if 'harvest' in kind:
                                 delivery = step+len(sequence)
                                 quantity = len(group)*{'TOMATO': 4, 'CARROT': 3, 'MELON': 5}[crop]
-                                row = deepcopy(patch[delivery]); market = row.setdefault('market', [])
-                                if len(market) >= int(configuration.get('maxMarketOrdersPerTurn', 10)):
+                                row = deepcopy(patch[delivery]); market = row.get('market', [])
+                                if not isinstance(market, list) or len(market) >= limit:
                                     feasible = False; break
                                 slot = len(market); market.append(['SELL', crop, quantity]); patch[delivery] = row
                                 for lot in harvested:
@@ -357,11 +381,11 @@ class FourthQuadrant:
             # Only a fully returned producer can publish the future proposal.
             now = int(observation['step'])
             count = 1+len(observation['farms'][int(observation['player'])]['hands'])
-            hire_count = lambda row: sum(bool(o) and o[0] == 'HIRE' for o in row.get('market', []))
             if (self.pending['start'] == now
                     and all(action(returned_action, i) == action(self.selected, i) for i in range(count))
-                    and hire_count(returned_action) == hire_count(self.selected)
-                    and purchase_commitment_survives(self.selected, returned_action)):
+                    and _hire_count(returned_action, self.configuration) == _hire_count(self.selected, self.configuration)
+                    and purchase_commitment_survives(self.selected, returned_action,
+                                                     self.configuration)):
                 self.plan = self.pending; self.generation += 1
                 self.events.append({'step': now, 'kind': 'bundle_admitted',
                     'crop': self.plan['crop'], 'tiles': self.plan['tiles'],
