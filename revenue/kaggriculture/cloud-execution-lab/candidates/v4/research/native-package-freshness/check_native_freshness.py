@@ -30,6 +30,7 @@ CORE_PATHS = (
 CANONICAL_LIVE_DIR = "revenue/kaggriculture/cloud-execution-lab"
 PUBLISHER = "build_integrated.py"
 SOURCE_MANIFEST = "SOURCE.json"
+RELEASE_METADATA = "runtime/integrated-selected/RELEASE.json"
 MAX_ARCHIVE_BYTES = 32 * 1024 * 1024
 MAX_EXTRACTED_BYTES = 64 * 1024 * 1024
 MAX_CORE_MEMBER_BYTES = 4 * 1024 * 1024
@@ -194,6 +195,30 @@ def _strict_json(raw: bytes, *, label: str):
         raise
     except json.JSONDecodeError as exc:
         raise InvalidEvidence(f"{label} is not valid JSON: {exc}") from exc
+
+
+def _read_release_metadata(
+    repo_root: Path,
+    live_rel: PurePosixPath,
+    expected_commit: str,
+) -> tuple[dict, str]:
+    """Read RELEASE exactly once and bind those bytes to the expected commit."""
+    release_rel = live_rel / PurePosixPath(RELEASE_METADATA)
+    raw = _read_live_file(repo_root, release_rel)
+    live_blob = _git_blob(raw)
+    tracked_blob = _git(
+        repo_root,
+        "rev-parse",
+        f"{expected_commit}:{release_rel.as_posix()}",
+    )
+    if not _is_hex(tracked_blob, 40) or tracked_blob != live_blob:
+        raise InvalidEvidence(
+            f"release metadata is not byte-identical to expected commit: {release_rel.as_posix()}"
+        )
+    metadata = _strict_json(raw, label=RELEASE_METADATA)
+    if type(metadata) is not dict:
+        raise InvalidEvidence("RELEASE.json must contain an object")
+    return metadata, live_blob
 
 
 class _ReturnValue(Exception):
@@ -556,7 +581,7 @@ def _publisher_source_map(
 def _read_archive_core(
     archive: Path,
     expected_sha256: str,
-) -> tuple[str, dict[str, bytes], dict[str, str]]:
+) -> tuple[str, dict[str, bytes], dict[str, str], dict]:
     if not _is_hex(expected_sha256, 64):
         raise InvalidEvidence("expected archive sha256 must be lowercase 64-hex")
     if archive.is_symlink():
@@ -617,12 +642,17 @@ def _read_archive_core(
         raise InvalidEvidence("SOURCE.json runtime must be a non-empty object")
 
     source_map: dict[str, str] = {}
+    required_row_keys = {"source_path", "sha256", "bytes"}
     for name, row in runtime.items():
         name = _safe_archive_path(name)
         if name == SOURCE_MANIFEST:
             raise InvalidEvidence("SOURCE.json runtime may not claim SOURCE.json")
         if type(row) is not dict:
             raise InvalidEvidence(f"SOURCE.json runtime row for {name!r} must be an object")
+        if set(row) != required_row_keys:
+            raise InvalidEvidence(
+                f"SOURCE.json runtime row for {name!r} must contain exactly source_path, sha256, bytes"
+            )
         source_path = row.get("source_path")
         expected_member_sha = row.get("sha256")
         expected_member_bytes = row.get("bytes")
@@ -655,7 +685,7 @@ def _read_archive_core(
         if missing_mapped:
             detail.append("missing=" + ",".join(missing_mapped))
         raise InvalidEvidence("archive member set disagrees with SOURCE.json: " + "; ".join(detail))
-    return actual_sha256, {name: found[name] for name in source_map}, source_map
+    return actual_sha256, {name: found[name] for name in source_map}, source_map, manifest
 
 
 def verify_freshness(
@@ -697,7 +727,10 @@ def verify_freshness(
 
         _assert_no_tracked_deletions(repo_root, expected_commit)
         publisher_map = _publisher_source_map(repo_root, live_rel, expected_commit)
-        actual_archive_sha256, package, source_map = _read_archive_core(
+        release_metadata, release_blob = _read_release_metadata(
+            repo_root, live_rel, expected_commit
+        )
+        actual_archive_sha256, package, source_map, source_manifest = _read_archive_core(
             archive, expected_archive_sha256
         )
         base["archive_sha256"] = actual_archive_sha256
@@ -719,6 +752,23 @@ def verify_freshness(
             raise InvalidEvidence(
                 "SOURCE.json runtime does not match canonical publisher source map"
                 + (": " + "; ".join(detail) if detail else "")
+            )
+
+        expected_source_metadata = dict(release_metadata)
+        expected_source_metadata.pop("runtime", None)
+        expected_source_metadata.update(
+            entrypoint="main.py::agent",
+            config="TITAN-CONFIG.json",
+            default=_strict_json(
+                package["TITAN-CONFIG.json"],
+                label="packaged TITAN-CONFIG.json",
+            ),
+        )
+        actual_source_metadata = dict(source_manifest)
+        actual_source_metadata.pop("runtime", None)
+        if actual_source_metadata != expected_source_metadata:
+            raise InvalidEvidence(
+                "SOURCE.json non-runtime metadata does not match authenticated RELEASE metadata"
             )
 
         stale: list[str] = []
@@ -774,6 +824,12 @@ def verify_freshness(
             live_final = _read_live_file(repo_root, PurePosixPath(repo_key))
             if _git_blob(live_final) != tracked_blob:
                 raise InvalidEvidence(f"live file changed during verification: {repo_key}")
+
+        final_release_metadata, final_release_blob = _read_release_metadata(
+            repo_root, live_rel, expected_commit
+        )
+        if final_release_blob != release_blob or final_release_metadata != release_metadata:
+            raise InvalidEvidence("release metadata changed during verification")
 
         final_head = _git(repo_root, "rev-parse", "HEAD")
         if final_head != expected_commit:
