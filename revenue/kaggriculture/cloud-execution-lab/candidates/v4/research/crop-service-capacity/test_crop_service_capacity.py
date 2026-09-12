@@ -46,6 +46,7 @@ class CapacityTests(unittest.TestCase):
         e = mod.capacity_envelope(
             obs(hour=22, hands=0),
             {"turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            configuration_authenticated=True,
         )
         self.assertEqual(e.current_labor_action_slots, 2)
         self.assertEqual(e.current_labor_ceiling, 1)
@@ -84,6 +85,7 @@ class CapacityTests(unittest.TestCase):
         e = mod.capacity_envelope(
             obs(hour=4, hands=1),
             {"turnsPerDay": 8, "maxMarketOrdersPerTurn": 2},
+            configuration_authenticated=True,
         )
         self.assertEqual(e.callbacks_remaining, 4)
         self.assertEqual(e.current_labor_action_slots, 8)
@@ -145,10 +147,48 @@ class CapacityTests(unittest.TestCase):
         mod.assess_proposed_expansion(o, 3)
         self.assertEqual(o, before)
 
-    def test_engine_and_donor_identity_exposed(self):
+    def test_engine_config_and_donor_identity_exposed(self):
         r = mod.assess_proposed_expansion(obs(), 1)
         self.assertEqual(r["engine_git_blob"], "3c202c7ee921da239356789e266b694635103fc4")
+        self.assertEqual(
+            r["configuration_git_blob"],
+            "b354d06b742fe48402513792253f1a5c29366b20",
+        )
         self.assertEqual(r["historical_donor_pr"], 9806)
+
+    def test_explicit_configuration_requires_authentication_for_envelope(self):
+        with self.assertRaisesRegex(
+            mod.CapacityInputError, "^configuration_not_authenticated$"
+        ):
+            mod.capacity_envelope(
+                obs(hour=0),
+                {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+            )
+
+    def test_unauthenticated_custom_config_cannot_certify_impossibility(self):
+        # With trusted turnsPerDay=1, one actor has only one unit slot and
+        # proposal 1 exceeds the zero-plant PLANT+WATER ceiling. Without custody,
+        # those caller values cannot be allowed to manufacture IMPOSSIBLE.
+        result = mod.assess_proposed_expansion(
+            obs(hour=0),
+            1,
+            {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "configuration_not_authenticated")
+        self.assertIsNone(result["ceiling"])
+        self.assertIsNone(result["envelope"])
+
+    def test_authenticated_custom_config_can_certify_exact_bound(self):
+        result = mod.assess_proposed_expansion(
+            obs(hour=0),
+            1,
+            {"turnsPerDay": 1, "maxMarketOrdersPerTurn": 1},
+            configuration_authenticated=True,
+        )
+        self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
+        self.assertEqual(result["ceiling"], 0)
+        self.assertEqual(result["envelope"]["turns_per_day"], 1)
 
 
 if __name__ == "__main__":
