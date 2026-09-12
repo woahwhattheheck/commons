@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import check_control_plane as guard
 
@@ -79,6 +80,20 @@ def _write_graph_stub(root: Path) -> None:
     )
 
 
+def _write_discovery_graph_stub(root: Path) -> None:
+    (root / "check_composition_graph.py").write_text(
+        "from pathlib import Path\n"
+        "def validate_manifest(manifest, root):\n"
+        "    registered = {ep for comp in manifest.get('components', []) if isinstance(comp, dict) "
+        "for ep in comp.get('entrypoints', []) if isinstance(ep, str)}\n"
+        "    base = Path(root) / 'repairs'\n"
+        "    found = {p.relative_to(root).as_posix() for p in base.rglob('apply.py') if p.is_file()}\n"
+        "    errors = [{'code': 'unregistered_entrypoint', 'path': p} for p in sorted(found - registered)]\n"
+        "    return {'errors': errors}\n",
+        encoding="utf-8",
+    )
+
+
 class ControlPlaneHardeningTests(unittest.TestCase):
     def test_valid_minimal_control_plane_passes_hardening(self):
         with tempfile.TemporaryDirectory() as td:
@@ -127,6 +142,71 @@ class ControlPlaneHardeningTests(unittest.TestCase):
                 any(f"{name} must not be a symlink" in e for e in result["errors"]),
                 result,
             )
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_supplied_root_and_root_ancestor_symlinks_are_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            real_root = base / "real-root"
+            _make_root(real_root)
+            alias = base / "root-alias"
+            os.symlink(real_root, alias, target_is_directory=True)
+            result = guard.validate_control_plane(alias, delegate=False)
+            self.assertFalse(result["ok"], result)
+            self.assertTrue(any("control root directory component" in e for e in result["errors"]), result)
+
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            real_parent = base / "real-parent"
+            real_root = real_parent / "root"
+            _make_root(real_root)
+            alias_parent = base / "parent-alias"
+            os.symlink(real_parent, alias_parent, target_is_directory=True)
+            result = guard.validate_control_plane(alias_parent / "root", delegate=False)
+            self.assertFalse(result["ok"], result)
+            self.assertTrue(any("control root directory component" in e for e in result["errors"]), result)
+
+    def test_missing_secure_open_capability_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+
+            for attr in ("O_NOFOLLOW", "O_DIRECTORY"):
+                with self.subTest(capability=attr), mock.patch.object(guard.os, attr, 0):
+                    result = guard.validate_control_plane(root, delegate=False)
+                    self.assertFalse(result["ok"], result)
+                    self.assertTrue(any(f"os.{attr}" in e for e in result["errors"]), result)
+
+            with mock.patch.object(guard.os, "supports_dir_fd", set()):
+                result = guard.validate_control_plane(root, delegate=False)
+                self.assertFalse(result["ok"], result)
+                self.assertTrue(any("os.open dir_fd support" in e for e in result["errors"]), result)
+
+    def test_missing_topology_snapshot_capability_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+
+            supports_fd = set(guard.os.supports_fd)
+            supports_fd.discard(guard.os.listdir)
+            with mock.patch.object(guard.os, "supports_fd", supports_fd):
+                result = guard.validate_control_plane(root, delegate=False)
+                self.assertFalse(result["ok"], result)
+                self.assertTrue(any("os.listdir fd support" in e for e in result["errors"]), result)
+
+            supports_dir_fd = set(guard.os.supports_dir_fd)
+            supports_dir_fd.discard(guard.os.stat)
+            with mock.patch.object(guard.os, "supports_dir_fd", supports_dir_fd):
+                result = guard.validate_control_plane(root, delegate=False)
+                self.assertFalse(result["ok"], result)
+                self.assertTrue(any("os.stat dir_fd support" in e for e in result["errors"]), result)
+
+            supports_follow = set(guard.os.supports_follow_symlinks)
+            supports_follow.discard(guard.os.stat)
+            with mock.patch.object(guard.os, "supports_follow_symlinks", supports_follow):
+                result = guard.validate_control_plane(root, delegate=False)
+                self.assertFalse(result["ok"], result)
+                self.assertTrue(any("os.stat follow_symlinks support" in e for e in result["errors"]), result)
 
     def test_non_object_manifest_fails_without_traceback(self):
         with tempfile.TemporaryDirectory() as td:
@@ -197,6 +277,16 @@ class ControlPlaneHardeningTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any("symlink ancestry is forbidden" in e for e in result["errors"]), result)
 
+    @unittest.skipUnless(hasattr(os, "mkfifo"), "mkfifo unavailable")
+    def test_special_topology_object_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            os.mkfifo(root / "repairs" / "unexpected-fifo")
+            result = guard.validate_control_plane(root, delegate=False)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any("unsupported composition topology object" in e for e in result["errors"]), result)
+
     def test_live_blocker_manifest_is_strict_loaded(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -218,6 +308,60 @@ class ControlPlaneHardeningTests(unittest.TestCase):
             result = guard.validate_control_plane(root, delegate=False)
         self.assertFalse(result["ok"])
         self.assertTrue(any("manifest:" in e and "duplicate object key 'lane'" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_blocker_manifest_parent_swap_after_trust_check_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "root"
+            _make_root(root)
+            integration = _base_integration()
+            integration["custody_blocked"] = [
+                {
+                    "lane": "raw",
+                    "custody_path": "repairs/raw",
+                    "status": "awaiting_raw_payload",
+                }
+            ]
+            _dump(root / "INTEGRATION.json", integration)
+            raw = root / "repairs" / "raw"
+            raw.mkdir()
+            _dump(raw / "MANIFEST.json", {"lane": "raw", "status": "awaiting_raw_payload"})
+            external = base / "external-raw"
+            external.mkdir()
+            _dump(external / "MANIFEST.json", {"lane": "raw", "status": "awaiting_raw_payload"})
+            original = guard._check_trust_path
+            swapped = False
+
+            def swap_parent_after_check(check_root, rel, label, errors, *, require_file=False):
+                nonlocal swapped
+                original(check_root, rel, label, errors, require_file=require_file)
+                if (
+                    label == "custody raw manifest"
+                    and not swapped
+                    and not any(item.startswith("custody raw manifest:") for item in errors)
+                ):
+                    raw.rename(root / "repairs" / "raw-original")
+                    os.symlink(external, raw)
+                    swapped = True
+
+            with mock.patch.object(
+                guard,
+                "_check_trust_path",
+                side_effect=swap_parent_after_check,
+            ):
+                result = guard.validate_control_plane(root, delegate=False)
+
+        self.assertTrue(swapped)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(
+            any(
+                e.startswith("custody raw manifest:")
+                and "directory component" in e
+                for e in result["errors"]
+            ),
+            result,
+        )
 
     def test_delegate_failures_are_data_not_tracebacks(self):
         with tempfile.TemporaryDirectory() as td:
@@ -244,6 +388,105 @@ class ControlPlaneHardeningTests(unittest.TestCase):
             result = guard.validate_control_plane(root, delegate=True)
         self.assertFalse(result["ok"])
         self.assertTrue(any("must not be a symlink" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_root_swap_before_delegate_cannot_redirect_validator_source(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "root"
+            _make_root(root)
+            (root / "check_integration_ledger.py").write_text(
+                "def validate(root):\n    return []\n",
+                encoding="utf-8",
+            )
+            _write_graph_stub(root)
+
+            external = base / "external"
+            external.mkdir()
+            marker = base / "external-validator-executed"
+            (external / "check_integration_ledger.py").write_text(
+                "from pathlib import Path\n"
+                f"Path({str(marker)!r}).write_text('executed', encoding='utf-8')\n"
+                "def validate(root):\n    return []\n",
+                encoding="utf-8",
+            )
+            _write_graph_stub(external)
+
+            original_delegate = guard._delegate
+            swapped = False
+
+            def swap_root_before_delegate(*args, **kwargs):
+                nonlocal swapped
+                if not swapped:
+                    root.rename(base / "root-original")
+                    os.symlink(external, root, target_is_directory=True)
+                    swapped = True
+                return original_delegate(*args, **kwargs)
+
+            with mock.patch.object(
+                guard,
+                "_delegate",
+                side_effect=swap_root_before_delegate,
+            ):
+                result = guard.validate_control_plane(root, delegate=True)
+
+        self.assertTrue(swapped)
+        self.assertFalse(marker.exists(), "external delegate source was executed")
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any("control root" in e for e in result["errors"]), result)
+
+    def test_composition_graph_uses_preflight_topology_after_repairs_swap(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            root = base / "root"
+            _make_root(root)
+            rogue = root / "repairs" / "rogue"
+            rogue.mkdir()
+            (rogue / "apply.py").write_text("pass\n", encoding="utf-8")
+            (root / "check_integration_ledger.py").write_text(
+                "def validate(root):\n    return []\n",
+                encoding="utf-8",
+            )
+            _write_discovery_graph_stub(root)
+
+            clean = base / "clean-repairs"
+            (clean / "alpha").mkdir(parents=True)
+            (clean / "alpha" / "apply.py").write_text("pass\n", encoding="utf-8")
+            _dump(clean / "alpha" / "RECEIPT.json", {"ok": True})
+
+            original_delegate = guard._delegate
+            swapped = False
+
+            def swap_repairs_before_delegate(*args, **kwargs):
+                nonlocal swapped
+                live_repairs = root / "repairs"
+                held = base / "repairs-original"
+                live_repairs.rename(held)
+                clean.rename(live_repairs)
+                swapped = True
+                try:
+                    return original_delegate(*args, **kwargs)
+                finally:
+                    live_repairs.rename(clean)
+                    held.rename(live_repairs)
+
+            with mock.patch.object(
+                guard,
+                "_delegate",
+                side_effect=swap_repairs_before_delegate,
+            ):
+                result = guard.validate_control_plane(root, delegate=True)
+
+        self.assertTrue(swapped)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(
+            any(
+                '"code":"unregistered_entrypoint"' in error
+                and "repairs/rogue/apply.py" in error
+                for error in result["errors"]
+            ),
+            result,
+        )
 
     def test_integration_delegate_reads_preflight_snapshot_after_live_mutation(self):
         with tempfile.TemporaryDirectory() as td:
@@ -306,6 +549,32 @@ class ControlPlaneHardeningTests(unittest.TestCase):
             live = json.loads((root / "repairs" / "raw" / "MANIFEST.json").read_text(encoding="utf-8"))
         self.assertTrue(result["ok"], result)
         self.assertEqual("poisoned-after-preflight", live["lane"])
+
+    def test_custody_directory_topology_is_captured_before_delegate_load(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            integration = _base_integration()
+            integration["custody_blocked"] = [
+                {
+                    "lane": "raw",
+                    "custody_path": "repairs/raw",
+                    "status": "blocked",
+                }
+            ]
+            _dump(root / "INTEGRATION.json", integration)
+            (root / "repairs" / "raw").mkdir()
+            (root / "check_integration_ledger.py").write_text(
+                "from pathlib import Path\n"
+                "live = Path(__file__).resolve().parent / 'repairs/raw'\n"
+                "live.rename(live.with_name('raw-moved-after-preflight'))\n"
+                "def validate(root):\n"
+                "    return [] if (Path(root) / 'repairs/raw').is_dir() else ['custody topology drifted']\n",
+                encoding="utf-8",
+            )
+            _write_graph_stub(root)
+            result = guard.validate_control_plane(root, delegate=True)
+        self.assertTrue(result["ok"], result)
 
     def test_error_order_is_deterministic(self):
         with tempfile.TemporaryDirectory() as td:

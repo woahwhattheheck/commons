@@ -49,9 +49,16 @@ def action(farmer=("PASS",), hands=(), market=()):
     }
 
 
-def assess(obs, selected, suffix=(), config=None):
+def assess(
+    obs, selected, suffix=(), config=None, *, config_authenticated=False
+):
     return mod.assess_same_eod_plant_survival(
-        obs, selected, suffix, config, suffix_authenticated=True
+        obs,
+        selected,
+        suffix,
+        config,
+        suffix_authenticated=True,
+        configuration_authenticated=config_authenticated,
     )
 
 
@@ -143,6 +150,7 @@ class PlantGuardTests(unittest.TestCase):
             selected,
             [action(("PASS",))],
             {"maxMarketOrdersPerTurn": 1, "turnsPerDay": 24},
+            config_authenticated=True,
         )
         self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
 
@@ -275,6 +283,7 @@ class PlantGuardTests(unittest.TestCase):
             action(("PLANT", "WHEAT")),
             [action(("PASS",))],
             {"episodeSteps": 48, "turnsPerDay": 24},
+            config_authenticated=True,
         )
         self.assertEqual(result["verdict"], "NOT_CERTIFIED")
         self.assertEqual(result["reason"], "eod_not_reachable_before_terminal")
@@ -284,9 +293,31 @@ class PlantGuardTests(unittest.TestCase):
             observation(),
             action(("PLANT", "WHEAT")),
             config={"episodeSteps": True},
+            config_authenticated=True,
         )
         self.assertEqual(result["verdict"], "NOT_CERTIFIED")
         self.assertIn("episodeSteps_must_be_int", result["reason"])
+
+    def test_custom_configuration_requires_authentication(self):
+        result = assess(
+            observation(),
+            action(("PLANT", "WHEAT")),
+            config={"episodeSteps": 720, "turnsPerDay": 24},
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "configuration_not_authenticated")
+
+    def test_authenticated_custom_configuration_can_use_exact_values(self):
+        result = assess(
+            observation(hour=23, step=47),
+            action(("PLANT", "WHEAT")),
+            config={"episodeSteps": 48, "turnsPerDay": 24},
+            config_authenticated=True,
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(
+            result["reason"], "step_after_final_executable_callback"
+        )
 
     def test_same_callback_later_dig_removes_candidate(self):
         obs = observation(hands=((1, 1),))

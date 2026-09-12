@@ -13,6 +13,7 @@
     "observation hour must equal step modulo turnsPerDay under strict integer custody",
     "same-EOD rejection requires that the current day's hour-23 callback is itself executable at or before episodeSteps-2; authored rows beyond the terminal horizon cannot satisfy suffix custody",
     "terminal semantics are pinned by the official engine blob and standard episodeSteps/turnsPerDay defaults are pinned by the official configuration blob; returned evidence names both sources",
+    "explicit custom configuration is proof-critical: any caller-supplied configuration map is rejected unless configuration_authenticated is literally True; omitted configuration uses the pinned official defaults",
     "a same-site DIG after an executable current PLANT removes that plant; removed candidates cannot support a same-EOD weed-doom certificate, while a DIG before a later PLANT on an initially empty tile is a no-op",
     "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
   ],
@@ -24,11 +25,11 @@
   },
   "executed": {
     "normal_tests": {
-      "count": 35,
+      "count": 37,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 35,
+      "count": 37,
       "status": "pass"
     },
     "py_compile": {
@@ -39,12 +40,12 @@
   },
   "files": {
     "plant_guard.py": {
-      "bytes": 16254,
-      "sha256": "33954c2eb19bd6c3a701a7e96b35cd9080545b0ceefdc1775fc6d7b9c599a88c"
+      "bytes": 16735,
+      "sha256": "1b467501284b38a26b97ccfc6d65d891a658cec21b62ee1a4f87e3daf89b1118"
     },
     "test_plant_guard.py": {
-      "bytes": 14901,
-      "sha256": "174e9b0e88e65c4467e2b81ece850007744c6ff0d8edea497cd0c73c06ebe29f"
+      "bytes": 15974,
+      "sha256": "f0dacfa0d78945eb78c735eab144f8e81b1e3c9bd06ae6239877c6e4d2f779a2"
     }
   },
   "covered_edges": [
@@ -81,11 +82,13 @@
     "unrelated later DIG does not hide a doomed candidate",
     "mixed removed and surviving unwatered candidates doom only the surviving plant",
     "returned evidence pins engine and configuration Git blobs",
+    "explicit custom configuration without configuration_authenticated fails closed before proof evaluation",
+    "authenticated custom configuration can use exact custom horizon values",
     "input immutability"
   ],
   "limits": [
     "authored suffix custody must be established by the caller",
-    "episodeSteps and turnsPerDay must describe the exact interpreter/configuration whose action custody is being evaluated",
+    "omitted configuration uses pinned official defaults; any explicit custom configuration is accepted only with literal configuration_authenticated=True after caller custody binding",
     "earlier clearing actions on initially occupied tiles remain conservative and do not create a certified PLANT candidate",
     "NOT_CERTIFIED is not SAFE or profitable",
     "no controller/scheduler/runtime/default/config/COMPOSITION/evaluator/archive/Kaggle mutation",

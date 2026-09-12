@@ -6,8 +6,10 @@ before cloning. Child game processes re-capture, authenticate, and materialize a
 immutable scratch runtime, so validated bytes are the bytes later imported and
 executed. Child control code is likewise captured once into an immutable scratch
 bundle, so a later repository-file replacement cannot alter verifier/play logic.
-Changes only mechanics.py in an explicit scratch tree; no config, route, archive
-or release mutation. No observation filtering, actor/market truncation or
+No repository control helper is imported before capture/authentication; the
+composer is compiled and executed only from the already-authenticated captured
+bytes. Changes only mechanics.py in an explicit scratch tree; no config, route,
+archive or release mutation. No observation filtering, actor/market truncation or
 synthetic fill.
 """
 from __future__ import annotations
@@ -15,19 +17,18 @@ import argparse
 import collections
 import copy
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
-import shutil
 import statistics
 import subprocess
 import sys
 import tempfile
 import time
-
-import compose_kinetic as composer
-from check_kinetic import imported
+import types
 
 SOURCE_SHA256 = 'e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2'
+BASE_MECHANICS_BLOB = '044a4f9c0a4a44dde10ada57563238bcaf82075d'
 ENGINE_GIT_BLOBS = {
     'checks/reference/engine/kaggriculture.py': '3c202c7ee921da239356789e266b694635103fc4',
     'checks/reference/engine/kaggriculture.json': 'b354d06b742fe48402513792253f1a5c29366b20',
@@ -48,8 +49,25 @@ def sha_bytes(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def git_blob(raw):
+    """Git blob identity owned by this runner, not by a repo-path helper."""
+    if not isinstance(raw, bytes):
+        raise TypeError('git_blob requires bytes')
+    return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+
+
 def encoded(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
+
+
+def imported(name, path):
+    """Load a module from an already-custodied path without checker dependency."""
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f'Cannot load module: {path}')
+    result = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(result)
+    return result
 
 
 def _safe_relative(name):
@@ -81,10 +99,10 @@ def control_bundle_digest(captured):
 def capture_control_bundle(root=None):
     """Capture child runner plus pinned helper modules exactly once.
 
-    The currently executing runner is captured as bytes and then bound by the
-    returned bundle digest. Its helper modules are additionally authenticated to
-    their reviewed Git blobs. Children are launched only from a materialization
-    of this capture, never from a repository path reopened later.
+    No helper from this bundle is imported or executed before this routine. The
+    helper pins are verified with the runner-owned ``git_blob`` primitive. The
+    runner itself is captured as bytes and bound by the returned bundle digest.
+    Children are launched only from a materialization of this capture.
     """
     root = Path(__file__).resolve().parent if root is None else Path(root).resolve(strict=True)
     captured = {}
@@ -94,10 +112,28 @@ def capture_control_bundle(root=None):
             raise ValueError(f'Unsafe control input: {name}')
         raw = path.read_bytes()
         expected_blob = CONTROL_GIT_BLOBS.get(name)
-        if expected_blob is not None and composer.git_blob(raw) != expected_blob:
+        if expected_blob is not None and git_blob(raw) != expected_blob:
             raise ValueError(f'Unverified control input: {name}')
         captured[name] = raw
     return captured, control_bundle_digest(captured)
+
+
+def load_captured_composer(raw):
+    """Execute only the already-authenticated composer capture privately."""
+    if git_blob(raw) != CONTROL_GIT_BLOBS['compose_kinetic.py']:
+        raise ValueError('Unverified captured composer')
+    try:
+        source = raw.decode('utf-8')
+    except UnicodeError as exc:
+        raise ValueError('Captured composer is not UTF-8') from exc
+    module = types.ModuleType('kinetic_captured_composer')
+    module.__file__ = '<captured-compose_kinetic.py>'
+    exec(compile(source, module.__file__, 'exec'), module.__dict__)
+    if getattr(module, 'BASE_BLOB', None) != BASE_MECHANICS_BLOB:
+        raise ValueError('Captured composer baseline identity mismatch')
+    if not callable(getattr(module, 'compose', None)):
+        raise ValueError('Captured composer missing compose()')
+    return module
 
 
 def materialize_control_bundle(root, captured):
@@ -140,10 +176,10 @@ def capture_runtime(root, expected_mechanics_sha256=None):
         captured[name] = raw
     if 'mechanics.py' not in captured:
         raise ValueError('SOURCE runtime is missing mechanics.py')
-    if expected_mechanics_sha256 is None and composer.git_blob(captured['mechanics.py']) != composer.BASE_BLOB:
+    if expected_mechanics_sha256 is None and git_blob(captured['mechanics.py']) != BASE_MECHANICS_BLOB:
         raise ValueError('Expected immutable original mechanics input')
     for name, expected_blob in ENGINE_GIT_BLOBS.items():
-        if name not in captured or composer.git_blob(captured[name]) != expected_blob:
+        if name not in captured or git_blob(captured[name]) != expected_blob:
             raise ValueError(f'Unverified engine input: {name}')
     return manifest_raw, captured
 
@@ -233,9 +269,9 @@ def main():
             raise ValueError('Child control bundle identity mismatch')
         args.output.write_text(json.dumps({
             'executed_control_bundle_sha256': control_digest,
-            'executed_control_runner_blob': composer.git_blob(control_files['run_kinetic_games.py']),
-            'executed_control_compose_blob': composer.git_blob(control_files['compose_kinetic.py']),
-            'executed_control_check_blob': composer.git_blob(control_files['check_kinetic.py']),
+            'executed_control_runner_blob': git_blob(control_files['run_kinetic_games.py']),
+            'executed_control_compose_blob': git_blob(control_files['compose_kinetic.py']),
+            'executed_control_check_blob': git_blob(control_files['check_kinetic.py']),
         }, sort_keys=True, indent=2)+'\n')
         return 0
 
@@ -255,16 +291,17 @@ def main():
         result['executed_source_manifest_sha256'] = sha_bytes(manifest_raw)
         result['executed_mechanics_sha256'] = sha_bytes(captured['mechanics.py'])
         result['executed_control_bundle_sha256'] = control_digest
-        result['executed_control_runner_blob'] = composer.git_blob(control_files['run_kinetic_games.py'])
-        result['executed_control_compose_blob'] = composer.git_blob(control_files['compose_kinetic.py'])
-        result['executed_control_check_blob'] = composer.git_blob(control_files['check_kinetic.py'])
+        result['executed_control_runner_blob'] = git_blob(control_files['run_kinetic_games.py'])
+        result['executed_control_compose_blob'] = git_blob(control_files['compose_kinetic.py'])
+        result['executed_control_check_blob'] = git_blob(control_files['check_kinetic.py'])
         args.output.write_text(json.dumps(result, sort_keys=True, indent=2)+'\n')
         return 0
     if args.repetitions < 1:
         parser.error('At least one repetition is required')
 
     control_files, control_digest = capture_control_bundle()
-    control_runner_blob = composer.git_blob(control_files['run_kinetic_games.py'])
+    composer = load_captured_composer(control_files['compose_kinetic.py'])
+    control_runner_blob = git_blob(control_files['run_kinetic_games.py'])
     manifest_raw, baseline_files = capture_runtime(args.native_root)
     count = len(baseline_files)
     seeds = [int(v) for v in args.seeds.split(',')]
@@ -337,8 +374,8 @@ def main():
               'mode': 'optimized' if sys.flags.optimize else 'normal', 'instrumented': args.instrument,
               'order_offset': args.order_offset, 'authenticated_runtime_members': count,
               'source_manifest_sha256': sha_bytes(manifest_raw),
-              'source_mechanics_blob': composer.git_blob(parent_bytes),
-              'candidate_mechanics_blob': composer.git_blob(candidate_bytes),
+              'source_mechanics_blob': git_blob(parent_bytes),
+              'candidate_mechanics_blob': git_blob(candidate_bytes),
               'source_mechanics_sha256': baseline_mechanics_sha256,
               'candidate_mechanics_sha256': candidate_mechanics_sha256,
               'control_bundle_sha256': control_digest,
