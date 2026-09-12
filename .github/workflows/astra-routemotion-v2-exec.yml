@@ -1,0 +1,84 @@
+name: astra-routemotion-v2-exec
+
+on:
+  push:
+    branches:
+      - astra/routemotion-v2-exec-20260912
+
+permissions:
+  contents: read
+
+jobs:
+  exact-v2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 88ffc3069beba4156f493bc3d4817a9ebfc83a86
+          persist-credentials: false
+
+      - name: Authenticate exact evidence target
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "88ffc3069beba4156f493bc3d4817a9ebfc83a86"
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          test "$(git hash-object "$LAB/reference/engine/kaggriculture.py")" = "3c202c7ee921da239356789e266b694635103fc4"
+          test "$(git hash-object "$LAB/candidates/v4/donor/overlay/r01_tapes.py")" = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
+          test "$(git hash-object "$LAB/candidates/v4/donor/overlay/r04_full_router.py")" = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+          test "$(git hash-object "$LAB/candidates/v4/research/route-motion/route_motion_census.py")" = "c53a8f2e2dd9bb0664baa88659dda8cd3a198015"
+          test "$(git hash-object "$LAB/candidates/v4/research/route-motion/test_route_motion_census.py")" = "8ac05a9ef0ad9b03fc90134c208e52a388154fee"
+          printf 'exact_target=%s\n' "$(git rev-parse HEAD)"
+
+      - name: Run full-bank v2 census
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          OUT="$RUNNER_TEMP/routemotion-v2.json"
+          python -B "$LAB/candidates/v4/research/route-motion/route_motion_census.py" --output "$OUT"
+          python - "$OUT" <<'PY'
+          import hashlib, json, pathlib, sys
+          p = pathlib.Path(sys.argv[1])
+          data = p.read_bytes()
+          report = json.loads(data)
+          totals = report['totals']
+          required = (
+              'movement_rows',
+              'individually_pass_equivalent_count',
+              'closed_loop_count',
+              'jointly_pass_equivalent_loop_movement_count',
+              'routes_with_safe_rewrites',
+          )
+          print('ROUTEMOTION_V2_TOTALS ' + json.dumps({k: totals[k] for k in required}, sort_keys=True))
+          print('ROUTEMOTION_V2_SHA256 ' + hashlib.sha256(data).hexdigest())
+          print('ROUTEMOTION_V2_BYTES ' + str(len(data)))
+          for route in report['routes']:
+              if route['individually_pass_equivalent_count'] or route['closed_loop_count']:
+                  print('ROUTEMOTION_V2_ROUTE ' + json.dumps({
+                      'plan': route['plan'],
+                      'boundary_noops': route['individually_pass_equivalent_movement_rows'],
+                      'closed_loops': [g['movement_rows'] for g in route['closed_hire_free_motion_loops']],
+                      'joint_rows': route['jointly_pass_equivalent_loop_movement_rows'],
+                  }, sort_keys=True))
+          PY
+
+      - name: Run focused exact source suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          TEST="$LAB/candidates/v4/research/route-motion/test_route_motion_census.py"
+          SRC="$LAB/candidates/v4/research/route-motion/route_motion_census.py"
+          python -B "$TEST" -v
+          python -O -B "$TEST" -v
+          python -m py_compile "$SRC" "$TEST"
+
+      - name: Upload exact v2 report
+        uses: actions/upload-artifact@v4
+        with:
+          name: routemotion-v2-88ffc306
+          path: ${{ runner.temp }}/routemotion-v2.json
+          if-no-files-found: error
+          retention-days: 7
