@@ -13,7 +13,6 @@ jobs:
   serialize:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Build, test, and publish exact detached child of 7f54
         env:
           GH_TOKEN: ${{ github.token }}
@@ -23,10 +22,10 @@ jobs:
           repo="$GITHUB_REPOSITORY"
           parent='7f54f16b2ab85f1b614c1395334b0d03841b6027'
           helper_blob='429e32b3eb0ac9fa7bb440dce8fdf3c882210a6a'
-          patch_blob='cf9ebb5890262c2e04d21a557009d564851d214d'
+          patch_provenance='cf9ebb5890262c2e04d21a557009d564851d214d'
           test_blob='5695a41e8baca3da1b0b730ebcb3c27e6fa0bc8d'
-          helper='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_m1_wheat_trade.py'
-          testpath='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_m1_money_overflow.py'
+          helper='/tmp/r04_m1_wheat_trade.py'
+          testpath='/tmp/test_v4_m1_money_overflow.py'
 
           get_blob() {
             local sha="$1" out="$2"
@@ -35,16 +34,40 @@ jobs:
             test "$(git hash-object "$out")" = "$sha"
           }
 
-          mkdir -p "$(dirname "$helper")" "$(dirname "$testpath")"
           get_blob "$helper_blob" "$helper"
-          get_blob "$patch_blob" /tmp/m1-two-seat.patch
           get_blob "$test_blob" "$testpath"
 
-          git apply --check /tmp/m1-two-seat.patch
-          git apply /tmp/m1-two-seat.patch
+          HELPER="$helper" python - <<'PY'
+          import os
+          from pathlib import Path
+          p = Path(os.environ['HELPER'])
+          text = p.read_text(encoding='utf-8')
+          old = '''    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):
+              return action
+          [0m    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):
+              return action
+          '''.replace('\u001b[0m', '')
+          new = '''    if (
+              not isinstance(market_obs, dict)
+              or not isinstance(private, dict)
+              or not isinstance(farms, list)
+              or len(farms) != 2
+          ):
+              return action
+              if player not in (0, 1) or not isinstance(farms[player], dict):
+              return action
+          '''
+          # Build anchors without YAML indentation artifacts.
+          old = "    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):\n        return action\n    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):\n        return action\n"
+          new = "    if (\n        not isinstance(market_obs, dict)\n        or not isinstance(private, dict)\n        or not isinstance(farms, list)\n        or len(farms) != 2\n    ):\n        return action\n    if player not in (0, 1) or not isinstance(farms[player], dict):\n        return action\n"
+          if text.count(old) != 1:
+              raise SystemExit(f'exact two-seat anchor count={text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8', newline='')
+          PY
+
           python -m py_compile "$helper" "$testpath"
-          PYTHONPATH="$(dirname "$helper")" python "$testpath"
-          PYTHONPATH="$(dirname "$helper")" python -O "$testpath"
+          PYTHONPATH=/tmp python "$testpath"
+          PYTHONPATH=/tmp python -O "$testpath"
 
           new_helper_local="$(git hash-object "$helper")"
           helper_b64="$(base64 -w0 "$helper")"
@@ -54,13 +77,15 @@ jobs:
 
           base_tree="$(gh api "repos/${repo}/git/commits/${parent}" --jq .tree.sha)"
           test "$base_tree" = 'ca8a5771ac0007d76e974a6af3e84a2935132fe5'
+          helper_path='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_m1_wheat_trade.py'
+          test_path='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_m1_money_overflow.py'
 
           tree_payload="$(jq -n \
             --arg base "$base_tree" \
             --arg h "$new_helper_server" \
             --arg t "$test_blob" \
-            --arg hp "$helper" \
-            --arg tp "$testpath" \
+            --arg hp "$helper_path" \
+            --arg tp "$test_path" \
             '{base_tree:$base,tree:[
               {path:$hp,mode:"100644",type:"blob",sha:$h},
               {path:$tp,mode:"100644",type:"blob",sha:$t}
@@ -79,22 +104,11 @@ jobs:
           test "$(gh api "repos/${repo}/compare/${parent}...${child}" --jq .behind_by)" = 0
           test "$(gh api "repos/${repo}/commits/${child}" --jq '.files | length')" = 2
           actual_paths="$(gh api "repos/${repo}/commits/${child}" --jq '[.files[].filename] | sort | join("\n")')"
-          expected_paths="$(printf '%s\n%s\n' "$helper" "$testpath" | sort)"
+          expected_paths="$(printf '%s\n%s\n' "$helper_path" "$test_path" | sort)"
           test "$actual_paths" = "$expected_paths"
 
           echo "DETACHED_CHILD_SHA=${child}"
           echo "TREE_SHA=${tree_sha}"
           echo "HELPER_SHA=${new_helper_server}"
           echo "TEST_SHA=${test_blob}"
-          {
-            echo '### TITAN V4 M1 two-seat detached child'
-            echo
-            echo "- parent: \`${parent}\`"
-            echo "- child: \`${child}\`"
-            echo "- tree: \`${tree_sha}\`"
-            echo "- helper: \`${new_helper_server}\`"
-            echo "- combined regression: \`${test_blob}\`"
-            echo '- normal + `python -O` focused tests: PASS'
-            echo '- compare: ahead 1 / behind 0 / exactly 2 paths'
-            echo '- no gameplay ref moved'
-          } >> "$GITHUB_STEP_SUMMARY"
+          echo "PATCH_PROVENANCE=${patch_provenance}"
