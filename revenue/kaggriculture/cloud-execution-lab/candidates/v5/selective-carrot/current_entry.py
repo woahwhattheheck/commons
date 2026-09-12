@@ -27,6 +27,18 @@ def _git_blob(path: Path) -> str:
     ).hexdigest()
 
 
+def _require_hex(raw: dict, name: str, length: int) -> str:
+    value = raw.get(name)
+    if (
+        type(value) is not str
+        or len(value) != length
+        or value != value.lower()
+        or any(ch not in "0123456789abcdef" for ch in value)
+    ):
+        raise RuntimeError(f"invalid {name}")
+    return value
+
+
 def _load_profile() -> dict:
     raw = json.loads(PROFILE_PATH.read_text(encoding="utf-8"))
     expected = {
@@ -43,15 +55,10 @@ def _load_profile() -> dict:
         raise RuntimeError("unknown selective-carrot current-V5 profile")
     if type(raw["max_active"]) is not int or raw["max_active"] not in (4, 12):
         raise RuntimeError("max_active must be plain int 4 or 12")
-    for name in (
-        "control_package_sha256",
-        "parent_main_git_blob",
-        "selective_carrot_git_blob",
-        "entry_git_blob",
-    ):
-        value = raw[name]
-        if type(value) is not str or len(value) not in (40, 64):
-            raise RuntimeError(f"invalid {name}")
+    _require_hex(raw, "control_package_sha256", 64)
+    _require_hex(raw, "parent_main_git_blob", 40)
+    _require_hex(raw, "selective_carrot_git_blob", 40)
+    _require_hex(raw, "entry_git_blob", 40)
     if _git_blob(HERE / "baseline_main.py") != raw["parent_main_git_blob"]:
         raise RuntimeError("current-V5 parent main identity drift")
     if _git_blob(HERE / "selective_carrot.py") != raw["selective_carrot_git_blob"]:
@@ -122,9 +129,15 @@ def _previous_public_step():
 
 
 def _choice_match_reset(step: int) -> bool:
-    """Reset only on a proven later-step→0 match transition, never a retry."""
+    """Preserve only a positively proven same-match step-zero retry.
+
+    The parent may discard its whole instance after an outer deadline. If that
+    leaves neither an instance marker nor a recovery journal, ``None`` is not
+    evidence that a later step-zero call belongs to the same match. Resetting in
+    that ambiguous case keeps CropChoice reconstruction aligned with the parent.
+    """
     previous_step = _previous_public_step()
-    return step == 0 and previous_step not in (None, 0)
+    return step == 0 and previous_step != 0
 
 
 def agent(observation, configuration=None):
