@@ -137,7 +137,8 @@ def evaluate_worker_job(*, start_step: int, actions: Sequence[Sequence[Any]],
     unit action because Kaggriculture unit actions precede the market queue.
     Output receipts are credited only when the job's harvest has been explicitly
     deposited by a DROP and a provenance-attributed sale occurs at/after that
-    deposit.  Market events must use caller-certified free slots.
+    deposit.  Each physical input or sale unit can satisfy at most one certified
+    requirement/output.  Market events must use caller-certified free slots.
 
     ``receipt_floor`` and ``cost_upper`` are deliberately caller-provided bounds;
     this helper never predicts a future quote or fill.  ``value_per_step`` is strict net
@@ -229,28 +230,53 @@ def evaluate_worker_job(*, start_step: int, actions: Sequence[Sequence[Any]],
                                "quantity": quantity, "amount": amount})
         events.sort(key=lambda event: (event["step"], event["slot"]))
 
-        # Physical input coverage.  Same-step buys are deliberately too late:
-        # unit actions execute before the market queue in the official engine.
-        for requirement in inputs:
+        # Physical input coverage. Same-step buys are deliberately too late, and
+        # each owned/purchased unit can satisfy only one consuming action.
+        consumed_inputs: dict[str, int] = {}
+        for requirement in sorted(inputs, key=lambda row: (row["needed_step"], row["item"])):
+            item = requirement["item"]
             need = requirement["quantity"]
-            have = owned.get(requirement["item"], 0)
-            bought = sum(event["quantity"] for event in events
-                         if event["kind"] == "input"
-                         and event["item"] == requirement["item"]
-                         and event["step"] < requirement["needed_step"])
-            if have + bought < need:
+            purchased = sum(event["quantity"] for event in events
+                            if event["kind"] == "input" and event["item"] == item
+                            and event["step"] < requirement["needed_step"])
+            supplied = owned.get(item, 0) + purchased
+            used = consumed_inputs.get(item, 0)
+            if supplied - used < need:
                 report.update(complete=True, reason="required_input_not_available",
-                              item=requirement["item"], needed_step=requirement["needed_step"])
+                              item=item, needed_step=requirement["needed_step"],
+                              required_quantity=used + need,
+                              available_quantity=supplied)
                 return report
+            consumed_inputs[item] = used + need
 
-        # Provenance-attributed output must reach a certified sale after DROP.
-        for output in outputs:
-            sold = sum(event["quantity"] for event in events
-                       if event["kind"] == "sale" and event["item"] == output["item"]
-                       and event["step"] >= output["sale_ready_step"])
-            if sold < output["quantity"]:
+        # Provenance-attributed output must reach certified sales after DROP.
+        # Allocate each sale unit once, servicing latest-ready output first so
+        # earlier/flexible output cannot consume capacity needed by a later DROP.
+        sale_remaining = [event["quantity"] if event["kind"] == "sale" else 0
+                          for event in events]
+        for output in sorted(outputs,
+                             key=lambda row: (row["sale_ready_step"], row["produced_step"]),
+                             reverse=True):
+            remaining = output["quantity"]
+            for index, event in enumerate(events):
+                if (remaining and event["kind"] == "sale"
+                        and event["item"] == output["item"]
+                        and event["step"] >= output["sale_ready_step"]
+                        and sale_remaining[index]):
+                    used = min(remaining, sale_remaining[index])
+                    sale_remaining[index] -= used
+                    remaining -= used
+            if remaining:
                 report.update(complete=True, reason="output_not_realized_in_sale",
-                              item=output["item"], sale_ready_step=output["sale_ready_step"])
+                              item=output["item"], sale_ready_step=output["sale_ready_step"],
+                              required_quantity=output["quantity"],
+                              unmatched_quantity=remaining)
+                return report
+        for index, event in enumerate(events):
+            if event["kind"] == "sale" and sale_remaining[index]:
+                report.update(complete=True, reason="sale_not_attributed_to_output",
+                              item=event["item"], sale_step=event["step"],
+                              unmatched_quantity=sale_remaining[index])
                 return report
 
         input_cost = 0.0
