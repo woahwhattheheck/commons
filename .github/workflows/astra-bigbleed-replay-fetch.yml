@@ -26,7 +26,7 @@ jobs:
           import urllib.request
 
           endpoint = "https://www.kaggle.com/requests/EpisodeService/GetEpisodeReplay"
-          episode_ids = [108047207, 108051873, 108053957]
+          episode_ids = [108047207, 108051873, 108053957, 108059077]
           out = pathlib.Path("/tmp/bigbleed-replays")
 
           for episode_id in episode_ids:
