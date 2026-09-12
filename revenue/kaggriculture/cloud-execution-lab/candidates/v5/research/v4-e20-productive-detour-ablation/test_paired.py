@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import gzip
 import io
+from pathlib import Path
 import tarfile
 import unittest
 
@@ -81,6 +82,29 @@ class PairedRunnerPureContracts(unittest.TestCase):
         self.assertEqual(summary["apex_v7"]["margin_improved"], 1)
         self.assertEqual(summary["apex_v7"]["margin_unchanged"], 1)
         self.assertEqual(summary["arlene_v14"]["complete_pairs"], 0)
+
+    def test_candidate_and_opponent_execution_never_uses_public_evidence_root(self):
+        source = Path(paired.__file__).read_text(encoding="utf-8")
+        self.assertIn(
+            'private_runtime = tempfile.TemporaryDirectory(',
+            source,
+        )
+        self.assertIn(
+            'runtime[opponent] = private_root / "opponents" / opponent',
+            source,
+        )
+        self.assertIn(
+            'prefix=f"{cell_id}-{arm}-", dir=private_root',
+            source,
+        )
+        self.assertIn(
+            'shutil.copytree(snapshot_root, output / ".harness-snapshot")',
+            source,
+        )
+        self.assertNotIn('runtime[opponent] = output / "opponents" / opponent', source)
+        self.assertNotIn('prefix=f"{cell_id}-{arm}-", dir=output', source)
+        self.assertIn('"public_harness_copy": "evidence_only_never_executed"', source)
+        self.assertIn('"engine_root": "external_verified_path_pending_shared_private_ingest"', source)
 
     def test_authority_constants_match_merged_sources(self):
         self.assertEqual(
