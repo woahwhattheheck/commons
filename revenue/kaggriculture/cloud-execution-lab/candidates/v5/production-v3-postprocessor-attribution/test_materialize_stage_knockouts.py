@@ -119,21 +119,34 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
             m.arm_members(self.baseline(), "not-an-arm")
 
     def test_bundle_is_deterministic_and_binds_every_arm(self):
-        first_bundle, first_receipt = m.build_screen(self.baseline())
-        second_bundle, second_receipt = m.build_screen(self.baseline())
+        baseline = self.baseline()
+        baseline_members = {name: m.digest(body) for name, body in sorted(baseline.items())}
+        first_bundle, first_receipt = m.build_screen(baseline)
+        second_bundle, second_receipt = m.build_screen(baseline)
         self.assertEqual(first_bundle, second_bundle)
         self.assertEqual(first_receipt, second_receipt)
         self.assertEqual(first_receipt["bundle_sha256"], m.digest(first_bundle))
+        self.assertEqual(first_receipt["baseline_members"], baseline_members)
         self.assertEqual(set(first_receipt["arms"]), set(m.ARMS))
         self.assertEqual(first_receipt["native_economics_status"], "PENDING_MATCHED_NATIVE_9901")
         self.assertTrue(first_receipt["kaggle_submission_hold"])
         for arm, record in first_receipt["arms"].items():
+            treatment = m.arm_members(baseline, arm)
+            expected_members = {
+                name: m.digest(body) for name, body in sorted(treatment.items())
+            }
             self.assertEqual(record["changed_members"], ["TITAN-CONFIG.json"])
-            self.assertEqual(record["member_count"], len(self.baseline()))
+            self.assertEqual(record["member_count"], len(baseline))
             self.assertEqual(set(record["config_changes"]), set(m.ARMS[arm]))
+            self.assertEqual(record["members"], expected_members)
+            for name, member_sha in baseline_members.items():
+                if name != "TITAN-CONFIG.json":
+                    self.assertEqual(record["members"][name], member_sha, (arm, name))
 
     def test_bundle_contains_screen_and_three_nested_archives(self):
-        bundle, receipt = m.build_screen(self.baseline())
+        baseline = self.baseline()
+        baseline_members = {name: m.digest(body) for name, body in sorted(baseline.items())}
+        bundle, receipt = m.build_screen(baseline)
         members = m.support.parse_archive_bytes(bundle, receipt["bundle_sha256"])
         self.assertEqual(
             set(members),
@@ -147,12 +160,18 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
         screen = json.loads(members["SCREEN.json"])
         self.assertEqual(screen["schema"], m.SCHEMA)
         self.assertEqual(screen["baseline_archive_sha256"], m.BASELINE_ARCHIVE_SHA256)
+        self.assertEqual(screen["baseline_members"], baseline_members)
         for arm in m.ARMS:
             nested = m.support.parse_archive_bytes(
                 members[f"arms/{arm}.tar.gz"], screen["arms"][arm]["archive_sha256"]
             )
-            self.assertEqual(set(nested), set(self.baseline()))
-            self.assertEqual(nested["main.py"], self.baseline()["main.py"])
+            nested_members = {name: m.digest(body) for name, body in sorted(nested.items())}
+            self.assertEqual(set(nested), set(baseline))
+            self.assertEqual(nested_members, screen["arms"][arm]["members"])
+            self.assertEqual(nested["main.py"], baseline["main.py"])
+            for name, member_sha in baseline_members.items():
+                if name != "TITAN-CONFIG.json":
+                    self.assertEqual(nested_members[name], member_sha, (arm, name))
 
     def test_semantic_map_rotates_only_v3_main_identity(self):
         self.assertEqual(
