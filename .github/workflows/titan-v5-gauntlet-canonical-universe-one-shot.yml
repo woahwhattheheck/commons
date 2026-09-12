@@ -98,7 +98,16 @@ jobs:
           new = f'CANONICAL_MANIFEST_PATH = Path(__file__).resolve().parent / "{frozen_name}"'
           if text.count(old) != 1:
               raise SystemExit("reducer live-manifest authority anchor drifted")
-          reducer.write_text(text.replace(old, new, 1))
+          text = text.replace(old, new, 1)
+          old_authority = '''    manifest_path = (root / "manifest.json").resolve(strict=True)
+    if not manifest_path.is_relative_to(root):
+        raise ReductionError("canonical manifest escaped corpus root")
+'''
+          new_authority = '''    manifest_path = CANONICAL_MANIFEST_PATH.resolve(strict=True)
+'''
+          if text.count(old_authority) != 1:
+              raise SystemExit("canonical materialization live-manifest anchor drifted")
+          reducer.write_text(text.replace(old_authority, new_authority, 1))
 
           test = root / "test_reduce_gauntlet.py"
           text = test.read_text()
