@@ -146,7 +146,7 @@ def apply_alternate_feed(observation, selected, *, next_day_feed_positions=()):
         if not isinstance(tile, dict) or tile.get("animal") not in _ANIMALS:
             continue
         unfed = tile.get("consecutive_unfed")
-        pending = tile.get("pending_care_bonus", 0)
+        pending = tile.get("pending_care_bonus")
         if type(unfed) is not int or unfed != 0:
             continue
         if tile.get("fed_today") is not False or tile.get("cared_today") is not False:
