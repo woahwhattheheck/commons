@@ -1,0 +1,286 @@
+{
+  "aggregate": {
+    "animal_refreshes": 3122,
+    "loss_modes": {
+      "escape_destroyed_bank_or_same_day_care": 18,
+      "production_cap_clipped_old_bank": 70,
+      "same_day_care_no_feed_no_bank": 168,
+      "unfed_production_erased_old_bank": 56
+    },
+    "loss_witnesses": 312,
+    "lost_units": {
+      "clipped_old_bank": 70,
+      "destroyed_old_bank": 12,
+      "erased_old_bank": 148,
+      "same_day_care_no_bank": 186
+    },
+    "successful_places": 136,
+    "successful_services": {
+      "CARE": 2940,
+      "FEED": 2816,
+      "HARVEST": 1052
+    }
+  },
+  "baseline_aligned_cells": [
+    "starter:17:0",
+    "starter:9922999:1"
+  ],
+  "cells": [
+    {
+      "final_route": "ab9669b9abfbea4e",
+      "loss_modes": {
+        "escape_destroyed_bank_or_same_day_care": 9,
+        "production_cap_clipped_old_bank": 2,
+        "same_day_care_no_feed_no_bank": 27,
+        "unfed_production_erased_old_bank": 7
+      },
+      "loss_witness_count": 45,
+      "lost_units": {
+        "clipped_old_bank": 2,
+        "destroyed_old_bank": 6,
+        "erased_old_bank": 23,
+        "same_day_care_no_bank": 36
+      },
+      "refresh_count": 370,
+      "seat": 0,
+      "seed": 17,
+      "successful_places": 17,
+      "successful_services": {"CARE": 354, "FEED": 325, "HARVEST": 109},
+      "terminal_own": 100382.0,
+      "terminal_rival": 3741.0
+    },
+    {
+      "final_route": "ab9669b9abfbea4e",
+      "loss_modes": {
+        "escape_destroyed_bank_or_same_day_care": 9,
+        "production_cap_clipped_old_bank": 2,
+        "same_day_care_no_feed_no_bank": 27,
+        "unfed_production_erased_old_bank": 7
+      },
+      "loss_witness_count": 45,
+      "lost_units": {"clipped_old_bank": 2, "destroyed_old_bank": 6, "erased_old_bank": 23, "same_day_care_no_bank": 36},
+      "refresh_count": 370,
+      "seat": 1,
+      "seed": 17,
+      "successful_places": 17,
+      "successful_services": {"CARE": 354, "FEED": 325, "HARVEST": 109},
+      "terminal_own": 100382.0,
+      "terminal_rival": 3741.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 0,
+      "seed": 101,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 176148.0,
+      "terminal_rival": 3816.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 1,
+      "seed": 101,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 176148.0,
+      "terminal_rival": 3816.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 0,
+      "seed": 2026091201,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 161872.0,
+      "terminal_rival": 3532.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 1,
+      "seed": 2026091201,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 161872.0,
+      "terminal_rival": 3532.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 0,
+      "seed": 9922999,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 187244.0,
+      "terminal_rival": 3550.0
+    },
+    {
+      "final_route": "7015cc00acfa4922",
+      "loss_modes": {"production_cap_clipped_old_bank": 11, "same_day_care_no_feed_no_bank": 19, "unfed_production_erased_old_bank": 7},
+      "loss_witness_count": 37,
+      "lost_units": {"clipped_old_bank": 11, "destroyed_old_bank": 0, "erased_old_bank": 17, "same_day_care_no_bank": 19},
+      "refresh_count": 397,
+      "seat": 1,
+      "seed": 9922999,
+      "successful_places": 17,
+      "successful_services": {"CARE": 372, "FEED": 361, "HARVEST": 139},
+      "terminal_own": 187244.0,
+      "terminal_rival": 3550.0
+    }
+  ],
+  "disposition": "HOT_HANDOFF_NO_POLICY_PATCH",
+  "generated_full_receipt": {
+    "bytes": 536169,
+    "normal_equals_optimized": true,
+    "sha256": "87ad987e18c84935088f4da7146fdae26c269253b208a194a92158d3e6363d11"
+  },
+  "handoff": ["UNITRECYCLE", "ANIMAL-HEADROOM", "W2"],
+  "panel": {"both_seats": true, "cells": 8, "opponent": "official starter", "seeds": [17, 101, 2026091201, 9922999]},
+  "representative_source_real_coordinates": {
+    "escape_destroyed_bank_or_same_day_care": {
+      "animal": "COW",
+      "bank_contributors": [{"actor": 5, "animal": "COW", "bank_before": 2, "fed_before": true, "position": [4, 2], "step": 564, "yield_before": 0}],
+      "care_source_steps": [564, 611],
+      "cared_today": true,
+      "day": 25,
+      "eod_step": 623,
+      "fed_today": false,
+      "lifetime": "s0:COW:2:4,2",
+      "old_bank": 1,
+      "old_bank_clipped": 0,
+      "old_bank_consumed": 0,
+      "old_bank_destroyed_escape": 1,
+      "old_bank_erased_unfed": 0,
+      "position": [4, 2],
+      "post_bank": null,
+      "post_yield": null,
+      "pre_production_headroom": 6,
+      "production_due": true,
+      "route": "ab9669b9abfbea4e",
+      "same_day_care_actor": {"actor": 1, "animal": "COW", "bank_before": 1, "fed_before": false, "position": [4, 2], "step": 611, "yield_before": 0},
+      "same_day_care_wasted_unfed": 1,
+      "seat": 0,
+      "seed": 17,
+      "survived": false,
+      "yield_before": 0
+    },
+    "production_cap_clipped_old_bank": {
+      "animal": "COW",
+      "bank_contributors": [
+        {"actor": 3, "animal": "COW", "bank_before": 0, "fed_before": true, "position": [5, 4], "step": 158, "yield_before": 0},
+        {"actor": 3, "animal": "COW", "bank_before": 1, "fed_before": true, "position": [5, 4], "step": 172, "yield_before": 0},
+        {"actor": 2, "animal": "COW", "bank_before": 2, "fed_before": true, "position": [5, 4], "step": 195, "yield_before": 0},
+        {"actor": 2, "animal": "COW", "bank_before": 3, "fed_before": true, "position": [5, 4], "step": 219, "yield_before": 0},
+        {"actor": 8, "animal": "COW", "bank_before": 4, "fed_before": true, "position": [5, 4], "step": 244, "yield_before": 0},
+        {"actor": 2, "animal": "COW", "bank_before": 5, "fed_before": true, "position": [5, 4], "step": 291, "yield_before": 0}
+      ],
+      "care_source_steps": [158, 172, 195, 219, 244, 291],
+      "cared_today": true,
+      "day": 13,
+      "eod_step": 335,
+      "fed_today": true,
+      "lifetime": "s0:COW:6:5,4",
+      "old_bank": 6,
+      "old_bank_clipped": 1,
+      "old_bank_consumed": 6,
+      "old_bank_destroyed_escape": 0,
+      "old_bank_erased_unfed": 0,
+      "position": [5, 4],
+      "post_bank": 1,
+      "post_yield": 6,
+      "pre_production_headroom": 6,
+      "production_due": true,
+      "route": "ab9669b9abfbea4e",
+      "same_day_care_wasted_unfed": 0,
+      "seat": 0,
+      "seed": 17,
+      "survived": true,
+      "yield_before": 0
+    },
+    "same_day_care_no_feed_no_bank": {
+      "animal": "COW",
+      "bank_contributors": [
+        {"actor": 9, "animal": "COW", "bank_before": 2, "fed_before": true, "position": [6, 3], "step": 476, "yield_before": 3},
+        {"actor": 0, "animal": "COW", "bank_before": 1, "fed_before": true, "position": [6, 3], "step": 501, "yield_before": 3}
+      ],
+      "care_source_steps": [517],
+      "cared_today": true,
+      "day": 21,
+      "eod_step": 527,
+      "fed_today": false,
+      "lifetime": "s0:COW:8:6,3",
+      "old_bank": 2,
+      "old_bank_clipped": 0,
+      "old_bank_consumed": 0,
+      "old_bank_destroyed_escape": 0,
+      "old_bank_erased_unfed": 2,
+      "position": [6, 3],
+      "post_bank": 0,
+      "post_yield": 1,
+      "pre_production_headroom": 6,
+      "production_due": true,
+      "route": "ab9669b9abfbea4e",
+      "same_day_care_actor": {"actor": 8, "animal": "COW", "bank_before": 2, "fed_before": false, "position": [6, 3], "step": 517, "yield_before": 0},
+      "same_day_care_wasted_unfed": 1,
+      "seat": 0,
+      "seed": 17,
+      "survived": true,
+      "yield_before": 0
+    },
+    "unfed_production_erased_old_bank": {
+      "animal": "SHEEP",
+      "bank_contributors": [
+        {"actor": 5, "animal": "SHEEP", "bank_before": 3, "fed_before": true, "position": [7, 4], "step": 609, "yield_before": 0},
+        {"actor": 11, "animal": "SHEEP", "bank_before": 1, "fed_before": true, "position": [7, 4], "step": 633, "yield_before": 4},
+        {"actor": 5, "animal": "SHEEP", "bank_before": 2, "fed_before": true, "position": [7, 4], "step": 671, "yield_before": 0}
+      ],
+      "care_source_steps": [609, 633, 671],
+      "cared_today": false,
+      "day": 28,
+      "eod_step": 695,
+      "fed_today": false,
+      "lifetime": "s0:SHEEP:8:7,4",
+      "old_bank": 3,
+      "old_bank_clipped": 0,
+      "old_bank_consumed": 0,
+      "old_bank_destroyed_escape": 0,
+      "old_bank_erased_unfed": 3,
+      "position": [7, 4],
+      "post_bank": 0,
+      "post_yield": 1,
+      "pre_production_headroom": 6,
+      "production_due": true,
+      "route": "ab9669b9abfbea4e",
+      "same_day_care_wasted_unfed": 0,
+      "seat": 0,
+      "seed": 17,
+      "survived": true,
+      "yield_before": 0
+    }
+  },
+  "routes": ["7015cc00acfa4922", "ab9669b9abfbea4e"],
+  "schema": "titan.v4.caresat-current-native-compact/v1",
+  "scope": "Engine-successful PLACE/CARE/FEED/HARVEST plus exact end-of-day animal refresh; source-real lost CARE only; no authored no-op inference; no paired economics in this package.",
+  "source_pins": {
+    "arlene_git_blob": "bdb9cf58148a3c7961c085f4902759537decabf6",
+    "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4"
+  }
+}
