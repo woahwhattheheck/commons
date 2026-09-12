@@ -103,7 +103,10 @@ def _validate_vector(value: Any, name: str, seat: int) -> list[dict[str, Any]]:
             set(row) == {"step", "observation_sha256", "action_sha256"},
             f"seat {seat} {name} trace row shape invalid",
         )
-        _require(row.get("step") == step, f"seat {seat} {name} trace steps not contiguous")
+        _require(
+            type(row.get("step")) is int and row["step"] == step,
+            f"seat {seat} {name} trace steps not contiguous",
+        )
         for field in ("observation_sha256", "action_sha256"):
             sha = row.get(field)
             _require(
@@ -225,12 +228,21 @@ def _validate_comparison(comparison: dict[str, Any], seat: int) -> tuple[int | N
     return expected_first, expected_causal
 
 
-def validate(report: dict[str, Any]) -> dict[str, Any]:
+def validate(report: dict[str, Any], expected_report_sha256: str) -> dict[str, Any]:
     _require(type(report) is dict, "report must be a JSON object")
     _require(report.get("schema") == SCHEMA, "unexpected report schema")
+    _require(
+        isinstance(expected_report_sha256, str)
+        and _SHA256_RE.fullmatch(expected_report_sha256) is not None,
+        "external report commitment must be a lowercase SHA256",
+    )
 
     claimed_report_sha = report.get("report_sha256")
     _require(isinstance(claimed_report_sha, str), "report_sha256 missing")
+    _require(
+        claimed_report_sha == expected_report_sha256,
+        "external report commitment mismatch",
+    )
     unsigned = dict(report)
     unsigned.pop("report_sha256", None)
     _require(_digest(unsigned) == claimed_report_sha, "report_sha256 mismatch")
@@ -286,6 +298,8 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
         "schema": "titan-v5-production-action-divergence-native-9901-validation/v1",
         "status": "PASS",
         "report_sha256": claimed_report_sha,
+        "external_report_commitment_sha256": expected_report_sha256,
+        "external_report_commitment_verified": True,
         "authority_sha256": report["authority_sha256"],
         "first_any_action_divergence_step": first_steps,
         "candidate_action_is_first_observed_divergence": causal_by_seat,
@@ -297,11 +311,12 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("report", type=Path)
+    parser.add_argument("--expected-report-sha256", required=True)
     args = parser.parse_args(argv)
     try:
         raw = args.report.read_text(encoding="utf-8")
         report = json.loads(raw)
-        result = validate(report)
+        result = validate(report, args.expected_report_sha256)
     except (OSError, json.JSONDecodeError, ValidationError, TypeError, ValueError) as exc:
         print(f"validate_native_9901_action_witness: {exc}", file=sys.stderr)
         return 2
