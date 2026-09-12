@@ -3,7 +3,8 @@
 
 Consumes normalized JSONL exported from coordination surfaces. This module has
 no Slack/GitHub credentials and performs no writes. Its output is routing
-evidence only: STALE_CLAIM is never permission to overwrite peer work.
+evidence only: STALE_CLAIM and collision arbitration are never permission to
+overwrite peer work.
 """
 from __future__ import annotations
 
@@ -144,6 +145,44 @@ def load_jsonl(lines: Iterable[str]) -> list[dict[str, Any]]:
     return out
 
 
+def _arbitrate_fresh_owners(
+    fresh: list[str], owners: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    """Return advisory claim precedence for already-normalized exact lanes.
+
+    Heartbeats never change precedence: the relevant timestamp is the CLAIM
+    that opened the currently-active ownership epoch. A later re-CLAIM after a
+    terminal event starts a new epoch because CLAIM processing resets claim_ts.
+    Equal earliest claim timestamps intentionally fail closed.
+    """
+    active_claims = sorted(
+        (float(owners[session]["claim_ts"]), session) for session in fresh
+    )
+    if not active_claims:
+        return {
+            "basis": "earliest_fresh_claim_ts",
+            "advisory_only": True,
+            "preferred_owner": None,
+            "tied_earliest_claimants": [],
+            "yield_candidates": [],
+        }
+
+    earliest_ts = active_claims[0][0]
+    tied = [session for ts, session in active_claims if ts == earliest_ts]
+    preferred = tied[0] if len(tied) == 1 else None
+    yield_candidates = [
+        session for ts, session in active_claims if ts > earliest_ts
+    ]
+    return {
+        "basis": "earliest_fresh_claim_ts",
+        "advisory_only": True,
+        "preferred_owner": preferred,
+        "preferred_claim_ts": earliest_ts if preferred is not None else None,
+        "tied_earliest_claimants": tied if len(tied) > 1 else [],
+        "yield_candidates": yield_candidates,
+    }
+
+
 def audit_events(
     raw_events: Iterable[dict[str, Any]],
     *,
@@ -205,6 +244,7 @@ def audit_events(
                 claimed_once.add(ev.session)
                 owners[ev.session] = {
                     "state": "ACTIVE",
+                    "claim_ts": ev.ts,
                     "last_ts": ev.ts,
                     "last_event": CLAIM,
                     "requires_artifact": ev.requires_artifact,
@@ -232,6 +272,7 @@ def audit_events(
                     )
                     owners[ev.session] = {
                         "state": ev.event,
+                        "claim_ts": None,
                         "last_ts": ev.ts,
                         "last_event": ev.event,
                         "requires_artifact": ev.requires_artifact,
@@ -269,6 +310,7 @@ def audit_events(
                 {
                     "session": session,
                     "state": state["state"],
+                    "claim_ts": state.get("claim_ts"),
                     "age_seconds": round(age, 6),
                     "last_event": state["last_event"],
                     "last_ts": state["last_ts"],
@@ -295,6 +337,7 @@ def audit_events(
                 "stale_active_owners": stale,
                 "recovery_candidates": stale if not fresh else [],
                 "terminal_owners": terminal,
+                "arbitration": _arbitrate_fresh_owners(fresh, owners),
                 "owners": owner_rows,
             }
         )
@@ -328,6 +371,9 @@ def audit_events(
             "stale_is_overwrite_authority": False,
             "fresh_owner_blocks_recovery": True,
             "noncanonical_root_is_anomaly": True,
+            "earliest_fresh_claim_precedence_is_advisory": True,
+            "equal_earliest_claim_tie_fails_closed": True,
+            "arbitration_is_overwrite_authority": False,
         },
         "summary": summary,
         "lanes": lane_rows,

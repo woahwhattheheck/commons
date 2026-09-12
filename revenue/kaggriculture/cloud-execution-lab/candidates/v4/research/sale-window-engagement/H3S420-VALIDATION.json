@@ -1,30 +1,46 @@
 {
   "lane": "ASTRA-H3S420",
-  "status": "current_source_bridge_tested_default_off_native_economics_pending",
+  "status": "one_tree_source_bridge_tested_default_off_native_economics_pending",
   "home": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement",
   "current_authorities": {
-    "scheduler_git_blob": "a483b24dd72b580d7d8811636b54d2d44f391575",
-    "frozen_selected_git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
-    "historical_r04_donor_git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+    "historical_r04_donor_git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d",
+    "frozen_selected_inputs": {
+      "fc7baf5c179818a55037f6a61d92984d81d1a21c": "native",
+      "ef090f6731c2d1ee648e2caaf3e215641b006518": "captrace",
+      "4a5d3d5f4bed04acf73c7339e41fed56badf34c9": "captrace+livepath"
+    },
+    "scheduler_inputs": {
+      "a483b24dd72b580d7d8811636b54d2d44f391575": "native",
+      "eb289f87adebb7dc7e90046bfbec31a307cb5aaa": "captrace",
+      "b29d1e9887f517506c5b3d858baa9bda5848e73f": "captrace+spindle"
+    }
   },
   "published_bytes": {
     "composer": {
       "path": "compose_current_h3s420.py",
-      "git_blob": "01d8f4600fc0947b025ddd3e05a8f5c78162127b",
-      "sha256": "2fb55bf47595e749943a81b956c4cbc77cb23aebc6cf56b1f4d163303737b416",
-      "bytes": 4996
+      "git_blob": "188d315e2e0fc0a008c508b365aa2cb04fb70591",
+      "sha256": "3850822630b9273ec49a408ad87b810c91a81e67c4a90eba5cbb1898774b223b",
+      "bytes": 6222
     },
     "tests": {
       "path": "test_compose_current_h3s420.py",
-      "git_blob": "63d0e0918a2f2e4f43b4ae2b5724ba5c18b65704",
-      "sha256": "34f2af2c4199df58f3b7fd43ebb7ea9dcc3d7cc4babeaa24bdbe243be8bb7070",
-      "bytes": 4663
+      "git_blob": "d0b3e7707fb3b1b7ab108fa4b35eb9a66ff8e660",
+      "sha256": "c86c6c22236759c5f0b07c1899009991c6c438ea340fd7f12fa05c5f594297ab",
+      "bytes": 5558
     }
   },
   "authored_validation": {
-    "normal": "10/10 PASS",
-    "optimized": "10/10 PASS",
-    "py_compile": "PASS"
+    "normal": "13/13 PASS",
+    "optimized": "13/13 PASS",
+    "py_compile": "PASS",
+    "byte_binding": "published composer/test Git blobs equal the executed local bytes"
+  },
+  "composition_scope": {
+    "captrace": "top-level _funding_trace and funded_minimum_now only",
+    "livepath": "represented_shed_event only",
+    "spindle": "scheduler MarketPath.__init__ only",
+    "h3s420": "FrozenSelected new-plan-selection block plus module-local imported HORIZON",
+    "unknown_postimages": "REFUSE explicit rebase required"
   },
   "semantics": {
     "baseline_horizon": 3,
@@ -43,11 +59,11 @@
     "reason": "old carrier keys are not current Features ABI; current-native ON economics still required"
   },
   "next_gate": [
-    "materialize exact generated frozen_selected.py into the then-current one-stack postimage",
+    "materialize against exact LOOM-4 combined preimages",
     "OFF byte/trace identity",
     "ON natural engagement with separate horizon/suppression diagnostics",
     "both-seat no-fallback current-native execution",
     "realized fill/cash and terminal-margin economics against current opponents",
-    "preserve row-shed and existing sale-window receipt authorities"
+    "preserve row-shed, HARVESTCLOCK/SELLWINDOW, CAPTRACE, LIVEPATH and SPINDLE authorities"
   ]
 }
