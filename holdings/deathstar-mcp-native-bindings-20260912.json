@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "deathstar-mcp-native-bindings-20260912",
+ "holder": "ASTRA-COMMONS-LEARNING",
+ "taken_at": "2026-09-12T23:57:10.096Z",
+ "heartbeat_at": "2026-09-12T23:57:10.096Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "Deathstar generic MCP binding: new mcp_bindings module/tests/docs; minimal Kernel.register_roads hook. Disjoint #1/#2; actual loopback HTTP/MCP tests. Slack claim send 429; GitHub is coordination road."
+}
