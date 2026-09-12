@@ -95,6 +95,8 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         rel = path.relative_to(ROOT)
     except ValueError:
         rel = path
+    if not isinstance(record, dict):
+        raise ExperienceError(f"{rel}: experience packet must be an object")
     required = {
         "schema",
         "id",
@@ -116,7 +118,8 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
     if path.stem != record_id:
         raise ExperienceError(f"{rel}: filename must match id")
     _recorded_at(record["recorded_at"], rel)
-    if record["outcome"] not in {"passed", "failed"}:
+    outcome = record["outcome"]
+    if not isinstance(outcome, str) or outcome not in {"passed", "failed"}:
         raise ExperienceError(f"{rel}: outcome must be passed or failed")
     if not isinstance(record["task"], str) or not record["task"].strip():
         raise ExperienceError(f"{rel}: task must be non-empty")
@@ -124,9 +127,12 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
     if not isinstance(evidence, list) or not evidence:
         raise ExperienceError(f"{rel}: evidence must be non-empty")
     for item in evidence:
-        if not isinstance(item, dict) or not item.get("kind") or not item.get("value"):
+        if not isinstance(item, dict):
             raise ExperienceError(f"{rel}: malformed evidence")
-        if item["kind"] == "commit" and not SHA_RE.fullmatch(item["value"]):
+        kind, value = item.get("kind"), item.get("value")
+        if not isinstance(kind, str) or not kind or not isinstance(value, str) or not value:
+            raise ExperienceError(f"{rel}: malformed evidence")
+        if kind == "commit" and not SHA_RE.fullmatch(value):
             raise ExperienceError(f"{rel}: commit evidence must be a full SHA")
     patterns = record["patterns"]
     if not isinstance(patterns, list) or not patterns:
@@ -142,7 +148,8 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         if pattern_id in seen_patterns:
             raise ExperienceError(f"{rel}: duplicate pattern id: {pattern_id}")
         seen_patterns.add(pattern_id)
-        if pattern["kind"] not in {"success", "failure"}:
+        kind = pattern["kind"]
+        if not isinstance(kind, str) or kind not in {"success", "failure"}:
             raise ExperienceError(f"{rel}: pattern kind must be success or failure")
         if not isinstance(pattern["summary"], str) or not pattern["summary"].strip():
             raise ExperienceError(f"{rel}: pattern summary must be non-empty text")
@@ -162,7 +169,8 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         needed = {"skill", "change", "decision", "validation"}
         if not isinstance(impact, dict) or needed - impact.keys():
             raise ExperienceError(f"{rel}: malformed skill impact")
-        if impact["decision"] not in {"adopted", "rejected", "observed"}:
+        decision = impact["decision"]
+        if not isinstance(decision, str) or decision not in {"adopted", "rejected", "observed"}:
             raise ExperienceError(f"{rel}: invalid skill decision")
         validation = impact["validation"]
         if not isinstance(validation, dict) or "result" not in validation:
