@@ -12,6 +12,7 @@ ROOT = HERE.parents[2]
 EVALUATOR = ROOT / "reference/evaluator/evaluate.py"
 ENGINE_DIR = ROOT / "reference/engine"
 LOADER = ROOT / "reference/evaluator/loader.py"
+_DEFAULT = object()
 
 candidate_spec = importlib.util.spec_from_file_location("v5_animal_cadence", HERE / "alternate_feed.py")
 candidate = importlib.util.module_from_spec(candidate_spec)
@@ -36,6 +37,7 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.farm = {"farmer": [0, 0], "hands": [[4, 4]], "tiles": tiles}
         self.obs = {
             "player": 0,
+            "step": 100,
             "farms": [self.farm, {}],
             "private": {"inventories": [{}, {"WHEAT": 2}]},
         }
@@ -44,10 +46,27 @@ class AlternateFeedCandidateTests(unittest.TestCase):
             "hands": [["FEED"]],
             "market": [["SELL", "EGG", 1]],
         }
+        self.route_identity = {
+            "route_id": "test-route",
+            "route_source_git_blob": "a" * 40,
+            "tail_sha256": "b" * 64,
+        }
+        self.certificate = {
+            "schema": "titan-v5/animal-cadence/next-feed-certificate/v1",
+            "observation_step": 100,
+            **self.route_identity,
+            "feeds": [{"position": [4, 4], "next_feed_step": 120}],
+        }
 
-    def apply(self, certificate=((4, 4),)):
+    def apply(self, certificate=_DEFAULT, route_identity=_DEFAULT):
+        cert = deepcopy(self.certificate) if certificate is _DEFAULT else certificate
+        route = deepcopy(self.route_identity) if route_identity is _DEFAULT else route_identity
         return candidate.apply_alternate_feed(
-            self.obs, self.selected, next_day_feed_positions=certificate)
+            self.obs,
+            self.selected,
+            next_feed_certificate=cert,
+            route_identity=route,
+        )
 
     def test_safe_zero_strike_feed_becomes_pass_without_other_edits(self):
         before = deepcopy((self.obs, self.selected))
@@ -56,26 +75,79 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.assertEqual(result["farmer"], self.selected["farmer"])
         self.assertEqual(result["market"], self.selected["market"])
         self.assertTrue(report["changed"])
+        self.assertEqual(report["feed_actions_suppressed"], 1)
         self.assertEqual(report["wheat_saved"], 1)
         self.assertEqual(report["edits"][0]["animal"], "COW")
+        self.assertEqual(report["edits"][0]["certified_next_feed_step"], 120)
+        self.assertEqual(report["certificate_provenance"]["observation_step"], 100)
         self.assertEqual((self.obs, self.selected), before)
 
-    def test_uncertified_next_day_feed_keeps_selected(self):
-        result, report = candidate.apply_alternate_feed(self.obs, self.selected)
+    def test_uncertified_next_feed_keeps_selected(self):
+        result, report = self.apply(certificate=None)
         self.assertIs(result, self.selected)
-        self.assertEqual(report["reason"], "next_day_feed_uncertified")
+        self.assertEqual(report["reason"], "next_feed_uncertified")
 
-    def test_certificate_must_be_exact_positions(self):
-        for certificate in (None, [True], [(4.0, 4)], [(4, "4")]):
-            with self.subTest(certificate=certificate):
-                result, report = self.apply(certificate)
+    def test_missing_or_malformed_route_identity_keeps_selected(self):
+        for route in (None, {}, {"route_id": "test-route"}):
+            with self.subTest(route=route):
+                result, report = self.apply(route_identity=route)
                 self.assertIs(result, self.selected)
-                self.assertEqual(report["reason"], "malformed_next_day_feed_certificate")
+                self.assertEqual(report["reason"], "malformed_route_identity")
+
+    def test_certificate_must_bind_exact_public_step(self):
+        certificate = deepcopy(self.certificate)
+        certificate["observation_step"] = 99
+        result, report = self.apply(certificate=certificate)
+        self.assertIs(result, self.selected)
+        self.assertEqual(report["reason"], "next_feed_certificate_mismatch")
+
+    def test_certificate_must_bind_current_route_source_and_tail(self):
+        replacements = {
+            "route_id": "other-route",
+            "route_source_git_blob": "c" * 40,
+            "tail_sha256": "d" * 64,
+        }
+        for key, value in replacements.items():
+            with self.subTest(key=key):
+                certificate = deepcopy(self.certificate)
+                certificate[key] = value
+                result, report = self.apply(certificate=certificate)
+                self.assertIs(result, self.selected)
+                self.assertEqual(report["reason"], "next_feed_certificate_mismatch")
+
+    def test_certificate_rejects_bad_hashes_and_nonfuture_feed(self):
+        bad = []
+        route = deepcopy(self.route_identity)
+        route["route_source_git_blob"] = "A" * 40
+        bad.append((deepcopy(self.certificate), route, "malformed_route_identity"))
+        certificate = deepcopy(self.certificate)
+        certificate["feeds"][0]["next_feed_step"] = 100
+        bad.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
+        certificate = deepcopy(self.certificate)
+        certificate["feeds"].append({"position": [4, 4], "next_feed_step": 121})
+        bad.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
+        for certificate, route_identity, reason in bad:
+            with self.subTest(reason=reason):
+                result, report = self.apply(certificate=certificate, route_identity=route_identity)
+                self.assertIs(result, self.selected)
+                self.assertEqual(report["reason"], reason)
 
     def test_certificate_for_another_tile_does_not_authorize_edit(self):
-        result, report = self.apply(((3, 4),))
+        certificate = deepcopy(self.certificate)
+        certificate["feeds"] = [{"position": [3, 4], "next_feed_step": 120}]
+        result, report = self.apply(certificate=certificate)
         self.assertIs(result, self.selected)
         self.assertFalse(report["changed"])
+
+    def test_duplicate_feed_actions_save_one_wheat_per_unique_tile(self):
+        self.farm["farmer"] = [4, 4]
+        self.obs["private"]["inventories"][0]["WHEAT"] = 1
+        self.selected["farmer"] = ["FEED"]
+        result, report = self.apply()
+        self.assertEqual(result["farmer"], ["PASS"])
+        self.assertEqual(result["hands"], [["PASS"]])
+        self.assertEqual(report["feed_actions_suppressed"], 2)
+        self.assertEqual(report["wheat_saved"], 1)
 
     def test_one_strike_leg_keeps_feed(self):
         self.tile["consecutive_unfed"] = 1
@@ -123,10 +195,14 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.assertFalse(report["changed"])
 
     def test_malformed_public_identity_fails_closed(self):
-        self.obs["player"] = True
-        result, report = self.apply()
-        self.assertIs(result, self.selected)
-        self.assertEqual(report["reason"], "malformed_public_identity")
+        for field, value in (("player", True), ("step", True), ("step", "100"), ("step", -1)):
+            with self.subTest(field=field, value=value):
+                self.obs["player"] = 0
+                self.obs["step"] = 100
+                self.obs[field] = value
+                result, report = self.apply()
+                self.assertIs(result, self.selected)
+                self.assertEqual(report["reason"], "malformed_public_identity")
 
 
 class PinnedEngineAnimalCadenceTests(unittest.TestCase):
@@ -177,6 +253,18 @@ class PinnedEngineAnimalCadenceTests(unittest.TestCase):
         tile["fed_today"] = True
         self.engine._daily_refresh_animals(farm, 4)
         self.assertEqual((tile["consecutive_unfed"], tile["yield_units"]), (0, 2))
+
+    def test_duplicate_feed_actions_spend_one_wheat_per_animal_tile(self):
+        farm, tile = self.goose()
+        farm["farmer"] = [0, 0]
+        farm["hands"] = [[0, 0]]
+        private = self.engine._new_private()
+        private["inventories"] = [{"WHEAT": 1}, {"WHEAT": 1}]
+        self.engine._apply_unit_action(farm, private, 0, ["FEED"], 10, 0, 24, 100)
+        self.engine._apply_unit_action(farm, private, 1, ["FEED"], 10, 0, 24, 100)
+        self.assertTrue(tile["fed_today"])
+        self.assertNotIn("WHEAT", private["inventories"][0])
+        self.assertEqual(private["inventories"][1].get("WHEAT"), 1)
 
     def test_surviving_animal_refreshes_fertilizer_every_day(self):
         farm, tile = self.goose()
