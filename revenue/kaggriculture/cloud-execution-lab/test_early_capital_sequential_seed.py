@@ -1,5 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Regression for engine-order seed consumption in early-capital projection."""
+"""Regression for aggregate same-crop PLANT atomicity in early-capital projection.
+
+The pinned interpreter pre-validates all unit PLANT requests for a crop before
+farmer/hand dispatch.  If aggregate demand exceeds held seeds it converts every
+same-crop PLANT to PASS.  The early-capital post-unit projector must mirror that
+outer interpreter contract, not replay _apply_unit_action in isolation.
+"""
 import unittest
 from copy import deepcopy
 
@@ -59,8 +65,8 @@ def route():
     return rows
 
 
-class EarlyCapitalSequentialSeedParity(unittest.TestCase):
-    def test_unit_projection_consumes_available_seed_in_actor_order(self):
+class EarlyCapitalAggregatePlantParity(unittest.TestCase):
+    def test_projection_blocks_all_same_crop_plants_when_seed_demand_exceeds_stock(self):
         public = observation()
         selected = selected_action()
         before_public = deepcopy(public)
@@ -69,11 +75,13 @@ class EarlyCapitalSequentialSeedParity(unittest.TestCase):
         post = _project_post_unit_private(m, public, CFG, selected, 1)
 
         self.assertIsNotNone(post)
-        self.assertEqual(post['seeds']['CARROT'], 0)
+        # The pinned interpreter's aggregate PLANT gate turns both selected
+        # CARROT PLANTs into PASS, so the one held seed remains untouched.
+        self.assertEqual(post['seeds']['CARROT'], 1)
         self.assertEqual(public, before_public)
         self.assertEqual(selected, before_selected)
 
-    def test_next_turn_seed_need_stays_ahead_of_land_after_partial_plant(self):
+    def test_preserved_seed_keeps_unneeded_buy_seed_behind_admitted_land(self):
         public = observation()
         selected = selected_action()
         planned = route()
@@ -81,16 +89,13 @@ class EarlyCapitalSequentialSeedParity(unittest.TestCase):
         before_selected = deepcopy(selected)
         before_route = deepcopy(planned)
 
-        result, report = order_early_capital(
-            m, public, CFG, selected, planned,
-        )
+        result, report = order_early_capital(m, public, CFG, selected, planned)
 
-        self.assertTrue(report['changed'])
-        self.assertEqual(report['reason'], 'ordered')
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'already_ordered')
+        self.assertIs(result, selected)
         self.assertEqual(result['market'],
-                         [['BUY_SEED', 'CARROT', 1], ['BUY_LAND']])
-        self.assertEqual(result['farmer'], selected['farmer'])
-        self.assertEqual(result['hands'], selected['hands'])
+                         [['BUY_LAND'], ['BUY_SEED', 'CARROT', 1]])
         self.assertEqual(public, before_public)
         self.assertEqual(selected, before_selected)
         self.assertEqual(planned, before_route)
