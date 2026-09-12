@@ -3,8 +3,8 @@
 """Three-arm current-native field gate for source-bound HYDRA watering.
 
 For every seed/seat this runner executes BASE, HYDRA-OFF, and HYDRA-ON through
-the existing process-isolated official-interpreter runner. OFF must reproduce
-BASE exactly. ON is measured for natural engagement, safety, and economics.
+the existing process-isolated official-interpreter runner.  OFF must reproduce
+BASE exactly.  ON is measured for natural engagement, safety, and economics.
 This is execution evidence only; it does not promote production defaults.
 """
 from __future__ import annotations
@@ -160,12 +160,27 @@ def main():
     safety_violations = sum(
         int((cell["on_telemetry"] or {}).get("weed_after_rewrite", 0) > 0)
         for cell in completed)
+    off_exact_identity_cells = sum(cell["off_exact_identity"] for cell in cells)
+    total_weeds = tsum("weed_after_rewrite")
+    unresolved = tsum("unresolved_rewrite_events")
+    if len(completed) != len(cells):
+        classification = "INVALID_INCOMPLETE"
+    elif off_exact_identity_cells != len(cells):
+        classification = "INVALID_OFF_IDENTITY"
+    elif total_weeds > 0:
+        classification = "SAFETY_BLOCKED"
+    elif unresolved > 0:
+        classification = "SAFETY_UNRESOLVED"
+    elif not engaged:
+        classification = "COLD"
+    else:
+        classification = "ENGAGED"
     summary = {
         "requested_cells": len(cells),
         "complete_cells": len(completed),
-        "off_exact_identity_cells": sum(cell["off_exact_identity"] for cell in cells),
+        "off_exact_identity_cells": off_exact_identity_cells,
         "engaged_cells": len(engaged),
-        "classification": "COLD" if len(completed) == len(cells) and not engaged else "ENGAGED",
+        "classification": classification,
         "positive_margin_cells": sum(value > 0 for value in deltas),
         "zero_margin_cells": sum(value == 0 for value in deltas),
         "negative_margin_cells": sum(value < 0 for value in deltas),
@@ -177,7 +192,8 @@ def main():
         "eligible_rows": tsum("eligible_rows"),
         "rewritten_rows": tsum("rewritten_rows"),
         "followup_next_day_water": tsum("followup_next_day_water"),
-        "weed_after_rewrite": tsum("weed_after_rewrite"),
+        "weed_after_rewrite": total_weeds,
+        "unresolved_rewrite_events": unresolved,
         "missing_or_replaced_after_rewrite": tsum("missing_or_replaced_after_rewrite"),
         "fertilizer_bonus_blocks": tsum("fertilizer_bonus_blocks"),
         "prior_streak_blocks": tsum("prior_streak_blocks"),
@@ -194,10 +210,8 @@ def main():
         json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
     print(json.dumps(summary, sort_keys=True, allow_nan=False))
 
-    all_complete = len(completed) == len(cells)
-    all_off_exact = summary["off_exact_identity_cells"] == len(cells)
-    safe = summary["weed_after_rewrite"] == 0
-    return int(not (all_complete and all_off_exact and safe))
+    # Candidate harm is a valid field result; only invalid evidence fails the harness.
+    return int(classification.startswith("INVALID_"))
 
 
 if __name__ == "__main__":
