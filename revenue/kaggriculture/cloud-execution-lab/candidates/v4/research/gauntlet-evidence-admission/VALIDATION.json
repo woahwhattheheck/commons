@@ -1,0 +1,55 @@
+{
+  "authored_validation": {
+    "normal": {
+      "failed": 0,
+      "passed": 13
+    },
+    "py_compile": "PASS",
+    "python_optimized": {
+      "failed": 0,
+      "passed": 13
+    }
+  },
+  "authority_git_blob_pins": {
+    "chainlock": "1d5211e39af26f06f49e050ae127fde9fc8a7873",
+    "cohort": "73e3fc9d2da365159f7f1b2be6fa6240142cb493",
+    "quietbox": "f69cba703a97d892d447995b61f5f6c9e3937c91",
+    "spectrum": "68bac86adf100e3e1941a71a2185c50ae059591a"
+  },
+  "files": {
+    "README.md": {
+      "bytes": 3275,
+      "git_blob": "aab3d99754154b354157fb59297d10a27a4dc5a5",
+      "sha256": "53003447817a0c90d37964e050f84233956700b75fae4fd49e881af4c7efd1e4"
+    },
+    "sealchain.py": {
+      "bytes": 21407,
+      "git_blob": "e66df06db287a76fdf3f4395f6cd34317bbfa3a5",
+      "sha256": "9eac9b823d284d1854548dcbc0627123498676675f7738eab0798d1120376dff"
+    },
+    "test_sealchain.py": {
+      "bytes": 12232,
+      "git_blob": "f3e7f78553abb2dab6f02e7e4fbc4a32d9902ab0",
+      "sha256": "980c88f3a8a56b335d75a7bf6112dc4c881884e0c8c1b51c6c88b88b8ca4f4b1"
+    }
+  },
+  "operation": "ASTRA-SEALCHAIN-CURRENT-V4-GAUNTLET-EVIDENCE-ADMISSION",
+  "schema_version": 1,
+  "semantic_controls": [
+    "authority source drift blocks before import",
+    "quiet/loaded coordinate loss blocks",
+    "contention drift beyond QUIETBOX authority defaults blocks",
+    "unresolved or mismatched SPECTRUM panel identity blocks",
+    "identical opponent bytes cannot claim conflicting family/source identities",
+    "one source_id cannot map to multiple exact opponent digests",
+    "COHORT candidate/engine/opponent custody must match CHAINLOCK when supplied",
+    "dirty/incomplete COHORT paired audit blocks",
+    "duplicate JSON keys and bool-seat poison block"
+  ],
+  "side_effects": {
+    "defaults_changed": false,
+    "gameplay_changed": false,
+    "games_launched": 0,
+    "kaggle_submission": false
+  }
+}
