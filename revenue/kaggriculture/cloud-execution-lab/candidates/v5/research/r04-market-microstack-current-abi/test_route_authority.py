@@ -14,10 +14,17 @@ from market_route_authority import (
     CURRENT_ROUTE_AUTHORITY_PATH,
     EXPECTED_CONTROLLER_STATE_KEYS,
     NO_QUEUE_MODEL,
+    ROUTE_SOURCE,
     bind_market_route_authority,
     validate_market_route_authority,
 )
-from test_support import action, authority, controller_with_route, observation
+from test_support import (
+    action,
+    authority,
+    completed_route_receipt,
+    controller_with_route,
+    observation,
+)
 
 
 class MarketRouteAuthorityTests(unittest.TestCase):
@@ -44,7 +51,7 @@ class MarketRouteAuthorityTests(unittest.TestCase):
         self.assertEqual(route_blob, CURRENT_ROUTE_AUTHORITY_BLOB)
         self.assertEqual(controller_blob, CURRENT_CONTROLLER_AUTHORITY_BLOB)
 
-    def test_binder_consumes_real_current_route_window_and_proves_no_queue(self):
+    def test_binder_consumes_real_committed_route_window_and_proves_no_queue(self):
         obs = observation(300)
         future = {301: action(market=[["SELL", "CARROT", 2]])}
         bound = authority(obs, future)
@@ -59,13 +66,69 @@ class MarketRouteAuthorityTests(unittest.TestCase):
         self.assertEqual(actions[301]["market"], [["SELL", "CARROT", 2]])
         self.assertEqual(receipt["authority_sha256"], bound.authority_sha256)
         self.assertEqual(receipt["window"]["current_step"], 300)
-        self.assertEqual(receipt["window"]["route_source"], "installed_controller.R[cur]")
+        self.assertEqual(receipt["window"]["route_source"], ROUTE_SOURCE)
+        self.assertEqual(
+            receipt["completed_route_receipt"],
+            completed_route_receipt(obs),
+        )
+
+    def test_missing_or_carried_receipt_is_not_current_market_authority(self):
+        obs = observation(300)
+        controller = controller_with_route()
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=None,
+                lookahead=8,
+            )
+        )
+        carried = completed_route_receipt(
+            obs, route_step=299, last_step=300
+        )
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=carried,
+                lookahead=8,
+            )
+        )
+
+    def test_wrong_player_or_route_in_receipt_fails_closed(self):
+        obs = observation(300)
+        controller = controller_with_route()
+        wrong_player = completed_route_receipt(obs, player=1)
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=wrong_player,
+                lookahead=8,
+            )
+        )
+        wrong_route = completed_route_receipt(obs, route="missing")
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=wrong_route,
+                lookahead=8,
+            )
+        )
 
     def test_any_new_controller_instance_state_fails_closed_until_queue_authority_exists(self):
         obs = observation(300)
         controller = controller_with_route()
         controller.pending_commands = []
-        self.assertIsNone(bind_market_route_authority(controller, obs, lookahead=8))
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=completed_route_receipt(obs),
+                lookahead=8,
+            )
+        )
 
     def test_wrong_controller_type_fails_closed(self):
         class OtherAgent:
@@ -76,15 +139,28 @@ class MarketRouteAuthorityTests(unittest.TestCase):
         controller.cur = "test-route"
         controller._fs = None
         controller._fs_for = None
-        self.assertIsNone(bind_market_route_authority(controller, observation(300), lookahead=8))
+        obs = observation(300)
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=completed_route_receipt(obs),
+                lookahead=8,
+            )
+        )
 
-    def test_nonfinite_data_anywhere_in_full_route_fails_closed(self):
+    def test_nonfinite_data_anywhere_in_full_committed_route_fails_closed(self):
         obs = observation(300)
         controller = controller_with_route()
-        controller.R[controller.cur][500]["diagnostic"] = float("inf")
-        # The consumer strictly re-verifies the full route even if an older
-        # canonical-window producer happens to accept non-finite JSON itself.
-        self.assertIsNone(bind_market_route_authority(controller, obs, lookahead=8))
+        controller.R["test-route"][500]["diagnostic"] = float("inf")
+        self.assertIsNone(
+            bind_market_route_authority(
+                controller,
+                obs,
+                completed_route_receipt=completed_route_receipt(obs),
+                lookahead=8,
+            )
+        )
 
     def test_digest_tamper_is_not_authority(self):
         obs = observation(300)
@@ -105,13 +181,25 @@ class MarketRouteAuthorityTests(unittest.TestCase):
             validate_market_route_authority(bound, changed_workers, required_end_step=308)
         )
 
-    def test_route_change_changes_market_authority_digest(self):
+    def test_route_or_receipt_change_changes_market_authority_digest(self):
         obs = observation(300)
         first = authority(obs, {301: action(market=[["SELL", "CARROT", 2]])})
         second = authority(obs, {301: action(market=[["SELL", "CARROT", 3]])})
         self.assertNotEqual(first.authority_sha256, second.authority_sha256)
         self.assertNotEqual(first.window.route_sha256, second.window.route_sha256)
         self.assertNotEqual(first.window.window_sha256, second.window.window_sha256)
+
+        # Same route bytes under a different immutable producer receipt can never
+        # be silently reinterpreted as the current selected-action authority.
+        carried = replace(
+            first,
+            completed_route_receipt_json=(
+                '{"last_step":300,"player":0,"route":"test-route","route_step":299}'
+            ),
+        )
+        self.assertIsNone(
+            validate_market_route_authority(carried, obs, required_end_step=308)
+        )
 
 
 if __name__ == "__main__":
