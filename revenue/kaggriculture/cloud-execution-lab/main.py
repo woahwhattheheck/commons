@@ -345,6 +345,30 @@ def _spatial_recovery_journal(snapshot, step):
     return {'last_step': step, 'state': deepcopy(snapshot)}
 
 
+def _route_recovery_valid(journal, player, step):
+    """Accept only one coherent capsule on a same/contiguous public callback."""
+    if not isinstance(journal, dict):
+        return False
+    if set(journal) != {'route_step', 'observed_step', 'player', 'route'}:
+        return False
+    route_step = journal.get('route_step')
+    observed_step = journal.get('observed_step')
+    return (type(route_step) is int and route_step >= 0
+            and type(observed_step) is int and observed_step >= route_step
+            and type(journal.get('player')) is int and journal['player'] == player
+            and type(journal.get('route')) is str
+            and step in (observed_step, observed_step + 1))
+
+
+def _route_recovery_advance(journal, step):
+    """Advance only the observed-callback watermark; route authority is unchanged."""
+    if journal is None:
+        return None
+    advanced = dict(journal)
+    advanced['observed_step'] = step
+    return advanced
+
+
 def agent(observation, configuration=None):
     global _INSTANCE, _SPATIAL_RECOVERY, _ROUTE_RECOVERY
     import time
@@ -365,8 +389,12 @@ def agent(observation, configuration=None):
     journal = _SPATIAL_RECOVERY if isinstance(_SPATIAL_RECOVERY, dict) else None
     journal_step = None if journal is None else journal.get('last_step')
     route_journal = _ROUTE_RECOVERY if isinstance(_ROUTE_RECOVERY, dict) else None
+    if route_journal is not None and not _route_recovery_valid(
+            route_journal, observation['player'], step):
+        _ROUTE_RECOVERY = None
+        route_journal = None
     if journal_step is None and route_journal is not None:
-        journal_step = route_journal.get('last_step')
+        journal_step = route_journal.get('observed_step')
     # Step zero is both a match boundary and a legal same-step retry. Reuse an
     # instance (or a recovery journal) that already returned step zero; only a
     # later-step -> 0 transition proves that retained state belongs to old play.
@@ -427,6 +455,7 @@ def agent(observation, configuration=None):
         # the next visible observation can initialize it normally.
         if replace:
             _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
+            _ROUTE_RECOVERY = _route_recovery_advance(route_journal, step)
             _INSTANCE = None
             return fallback
         obs = dict(observation)
@@ -455,12 +484,10 @@ def agent(observation, configuration=None):
             if replace:
                 instance = _new_instance(root, feature_data)
                 # Preserve only the immutable route ID associated with a fully
-                # completed producer action. Never restore current controller
-                # mutations, seller plans, or a discarded finalizer object.
-                if (route_journal is not None
-                        and route_journal.get('player') == observation['player']
-                        and type(route_journal.get('route')) is str
-                        and step >= route_journal.get('last_step', step + 1)):
+                # completed producer action. Continuity was authenticated above;
+                # never restore controller mutations, seller plans, or a
+                # discarded finalizer object.
+                if route_journal is not None:
                     instance._completed_route = route_journal['route']
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
@@ -486,14 +513,19 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # TitanAgent publishes _completed_route only with a complete selected
-        # action; controller.cur may already contain an interrupted proposal.
-        # A construction cancellation has no new route and keeps the old capsule.
-        if instance is not None:
-            route = getattr(instance, '_completed_route', None)
-            if type(route) is str:
-                _ROUTE_RECOVERY = {'last_step': step, 'player': observation['player'],
-                                   'route': route}
+        # A newly completed current action may publish a new route authority.
+        # Construction/runtime cancellation otherwise carries only the previous
+        # route while advancing its observed-callback watermark.
+        route = None if instance is None else getattr(instance, '_completed_route', None)
+        if stage == 'entrypoint_finalization' and type(route) is str:
+            _ROUTE_RECOVERY = {
+                'route_step': step,
+                'observed_step': step,
+                'player': observation['player'],
+                'route': route,
+            }
+        else:
+            _ROUTE_RECOVERY = _route_recovery_advance(route_journal, step)
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
