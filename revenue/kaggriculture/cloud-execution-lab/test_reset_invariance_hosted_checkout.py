@@ -187,6 +187,65 @@ class HostedResetCheckoutContracts(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_materialize_live_worker_root_exposes_mapped_checks_reference(self):
+        """Run 34690162038: a real lab checks/ hid mapped raw-loader helpers.
+
+        ``materialize_live_worker_root`` used to symlink ``checks -> .`` only
+        when dest/checks was absent. The lab already has a real checks/
+        directory, so the live worker then failed with FileNotFoundError on
+        ``checks/reference/engine/utils.py`` after --materialize-live PASS.
+        """
+        self.assertTrue((LAB / "checks").is_dir())
+        self.assertFalse((LAB / "checks").is_symlink())
+        self.assertFalse((LAB / "checks/reference/engine/utils.py").is_file())
+        self.assertTrue((LAB / "reference/engine/utils.py").is_file())
+        if str(LAB) not in sys.path:
+            sys.path.insert(0, str(LAB))
+        from build_integrated import source_files
+
+        mapped = [
+            "checks/reference/engine/utils.py",
+            "checks/reference/evaluator/official_agent.py",
+            "checks/reference/evaluator/evaluate.py",
+            "checks/reference/evaluator/loader.py",
+        ]
+        mapping = source_files()
+        with tempfile.TemporaryDirectory(prefix="titan-reset-live-checks-") as folder:
+            dest = Path(folder) / "live"
+            reset.materialize_live_worker_root(LAB, dest)
+            for member in mapped:
+                origin = (LAB / mapping[member]).resolve()
+                target = dest / member
+                self.assertTrue(target.is_file(), member)
+                self.assertEqual(target.read_bytes(), origin.read_bytes(), member)
+            self.assertTrue((dest / "seller_snapshot.py").is_file())
+            self.assertTrue((dest / "checks/test_town_procurement.py").is_file())
+            env = {
+                "PATH": os.defpath,
+                "HOME": folder,
+                "LANG": "C.UTF-8",
+                "PYTHONDONTWRITEBYTECODE": "1",
+            }
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-I",
+                    "-c",
+                    "from pathlib import Path; import ast, sys; "
+                    "root = Path(sys.argv[1]); "
+                    "path = root / 'checks/reference/engine/utils.py'; "
+                    "tree = ast.parse(path.read_text(encoding='utf-8')); "
+                    "names = {n.name for n in tree.body if isinstance(n, ast.FunctionDef)}; "
+                    "assert 'read_file' in names, names",
+                    str(dest),
+                ],
+                cwd=folder,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

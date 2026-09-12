@@ -534,8 +534,8 @@
       "source_path": "test_module_recovery.py"
     },
     "checks/test_operating_stock.py": {
-      "bytes": 15721,
-      "sha256": "509e54c2bfbfcf494b433095d0227c81ade18eab41b04282629603c873d5e6ba",
+      "bytes": 16039,
+      "sha256": "ded6892ae08eca86ec51d90ec83fa10af0dcc421066a0c3d72d79d11d0dbef86",
       "source_path": "test_operating_stock.py"
     },
     "checks/test_ordered_selected_sell.py": {
@@ -654,8 +654,8 @@
       "source_path": "../cloud-runtime-pulse/observed_clone.py"
     },
     "operating_stock.py": {
-      "bytes": 36482,
-      "sha256": "cc86d0e4e984bad0724176ec54c9f39787ecd49e3f3218ec579c3787bbb39a4d",
+      "bytes": 36488,
+      "sha256": "57d9a92aa4f97d1969e2be0b22736ece71a3b83bcf9861250006a2a511cfdb57",
       "source_path": "operating_stock.py"
     },
     "ordered_selected_sell.py": {
