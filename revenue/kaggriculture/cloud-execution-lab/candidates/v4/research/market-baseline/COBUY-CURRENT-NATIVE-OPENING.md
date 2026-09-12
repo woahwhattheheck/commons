@@ -12,10 +12,12 @@ Current Apex tape Git blob `00ea34e3a3f340792ff61de0671abb4c1073472a` route 0 st
 
 Pinned official engine `3c202c7ee921da239356789e266b694635103fc4` fills all 13 units for both seats under the default opening world. Same-row costs are `$370 / $370`. If our otherwise identical required buy is shifted to raw row 1 while the rival remains on row 0, costs become `$357 / $383` (seat-swapped symmetrically), with the same terminal WHEAT inventory `9974`. Moving our buy one row later therefore costs us exactly **$13** in this cell; it does not change quantity or terminal public inventory.
 
+## Native entrypoint verification
+
+Independent byte-exact execution authenticated Apex from Actions artifact `10030763484` and the official engine from artifact `10175943272`, then invoked the **real compiled Apex agent** in fresh process/state for each seat using the official default opening constructors (two fresh $1000 farms, empty private state, `_new_market()`, no shops). Both seat 0 and seat 1 returned `market[:10] = [["BUY_PRODUCT", "WHEAT", 13]]`; raw row 0 is exact in both cases. This closes the raw-tape-to-postprocessing custody gap for this opening witness.
+
 ## Disposition
 
 This is **not new alpha**: current TITAN is already aligned at the favorable row. The result is an anti-regression constraint for TOWNPROCURE/other own-buy retimers: preserve step-0 WHEAT13 row 0 unless a later composer independently proves a larger benefit that pays this exact $13 current-cost loss.
 
-The broader 719-step current-native/replay collision census remains a separate gate. This receipt makes no rival-private-action prediction, no field-EV claim, and no runtime/default/config/archive/Kaggle activation claim.
-
-`native_entrypoint_verification.apex_agent_step0_post_guard` remains explicitly pending until an independent full-checkout invocation of the real Apex `main.py.agent` confirms the source row survives all native/postprocessing layers. Raw tape + policy + engine evidence is already source-exact; the pending field prevents that from being mislabeled as post-entrypoint custody.
+The broader 719-step current-native/replay collision census remains a separate gate. This receipt makes no rival-private-action prediction beyond the deterministic authenticated opening witness, no field-EV claim, and no runtime/default/config/archive/Kaggle activation claim.
