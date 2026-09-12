@@ -32,6 +32,7 @@ ALIASES = {
     "market_qty": ("qty", "quantity", "amount", "units"),
 }
 
+
 def _sha256(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -39,8 +40,10 @@ def _sha256(path: Path) -> str:
             h.update(chunk)
     return h.hexdigest()
 
+
 def _source_info(path: Path) -> dict:
     return {"path": str(path), "bytes": path.stat().st_size, "sha256": _sha256(path)}
+
 
 def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
     with path.open("r", encoding="utf-8", newline="") as f:
@@ -56,6 +59,7 @@ def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
                 raise ValueError(f"{path}: malformed CSV row at line {line_no}")
             rows.append(dict(row))
     return fields, rows
+
 
 def _resolve(fields: list[str], semantic: str, *, required: bool, override: str | None = None) -> str | None:
     if override is not None:
@@ -88,8 +92,10 @@ def _resolve(fields: list[str], semantic: str, *, required: bool, override: str 
         raise ValueError(f"missing {semantic}; headers={fields}")
     return None
 
+
 def _episode_match(value: str, wanted: str) -> bool:
     return value.strip() == wanted
+
 
 def _int_or_none(value: str | None) -> int | None:
     if value is None:
@@ -104,12 +110,15 @@ def _int_or_none(value: str | None) -> int | None:
         return None
     return int(text, 10)
 
+
 def _num_sort_key(value: str) -> tuple[int, int | str]:
     iv = _int_or_none(value)
     return (0, iv) if iv is not None else (1, value)
 
+
 def _day(step: int | None, turns_per_day: int) -> int | None:
     return None if step is None else step // turns_per_day
+
 
 def _event_sort_key(event: dict) -> tuple:
     step = event.get("step")
@@ -122,6 +131,7 @@ def _event_sort_key(event: dict) -> tuple:
         kind_rank,
         event.get("row_index", 0),
     )
+
 
 def _counter_rows(counter: Counter[tuple]) -> list[dict]:
     out = []
@@ -137,6 +147,7 @@ def _counter_rows(counter: Counter[tuple]) -> list[dict]:
             }
         )
     return out
+
 
 def _market_rows(counts: Counter[tuple], qtys: Counter[tuple]) -> list[dict]:
     out = []
@@ -154,6 +165,7 @@ def _market_rows(counts: Counter[tuple], qtys: Counter[tuple]) -> list[dict]:
             }
         )
     return out
+
 
 def extract(
     actions_path: Path,
@@ -320,6 +332,7 @@ def extract(
         ],
     }
 
+
 def _parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser()
     p.add_argument("--farmer-actions", required=True, type=Path)
@@ -331,6 +344,7 @@ def _parser() -> argparse.ArgumentParser:
     p.add_argument("--output", type=Path)
     p.add_argument("--schema-json", type=Path, help="Optional explicit column map for ambiguous datasets")
     return p
+
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
@@ -358,6 +372,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     else:
         sys.stdout.write(text)
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
