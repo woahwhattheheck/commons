@@ -53,6 +53,17 @@ class DerivedTests(unittest.TestCase):
   self.assertEqual(b.apply(float_quantity,{},0,'a'),
                    {'market':[['BUY_SEED','CARROT',1,'tag']]})
   self.assertEqual(b.events[-1]['requested'],2)
+ def test_apply_matches_engine_minimum_one_market_cap(self):
+  action={'market':[['BUY_SEED','CARROT',9],['BUY_SEED','WHEAT',9]]}
+  for cap in (0,-1,-9):
+   b=B.SeedBudget(routes())
+   self.assertEqual(b.apply(action,{},0,'a',cap),
+                    {'market':[['BUY_SEED','CARROT',1],['BUY_SEED','WHEAT',9]]})
+   self.assertEqual([e['slot'] for e in b.events],[0])
+  b=B.SeedBudget(routes())
+  self.assertEqual(b.apply(action,{},0,'a',2.9),
+                   {'market':[['BUY_SEED','CARROT',1],['BUY_SEED','WHEAT',1]]})
+  self.assertEqual([e['slot'] for e in b.events],[0,1])
  def test_cancelled_derivation_is_not_published(self):
   class Cancel(BaseException):pass
   derive=B._derive;r=routes()

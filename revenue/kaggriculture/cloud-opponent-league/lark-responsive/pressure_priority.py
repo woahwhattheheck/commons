@@ -24,17 +24,32 @@ SALE_ONLY_GOODS = frozenset(("CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG", "
 _UNSET_RIVAL_QUANTITY = object()
 
 
+def _engine_sell_quantity(order: Any) -> int | None:
+    """Return the pinned engine's positive int()-coerced SELL quantity.
+
+    Classify only; callers always keep the original row bytes.  This keeps every
+    pressure sub-transform on the same grammar as sell_priority._quote().
+    """
+    if not isinstance(order, list) or len(order) < 3 or order[0] != 'SELL':
+        return None
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError, OverflowError):
+        return None
+    return quantity if quantity > 0 else None
+
+
 def _sale_only_terminal_row(order: Any) -> int | None:
     """Classify a row for terminal compaction: positive=1, empty=0, barrier=None."""
     if order == []:
         return 0
-    if not isinstance(order, list) or len(order) != 3 or order[0] != 'SELL':
+    quantity = _engine_sell_quantity(order)
+    if quantity is None:
         return None
-    item, quantity = order[1:]
-    if (not isinstance(item, str) or item not in SALE_ONLY_GOODS
-            or isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0):
+    item = order[1]
+    if not isinstance(item, str) or item not in SALE_ONLY_GOODS:
         return None
-    return int(quantity > 0)
+    return 1
 
 
 def promote_terminal_sale_only_suffix(orders: list, end: int, observation: Mapping,
@@ -45,8 +60,8 @@ def promote_terminal_sale_only_suffix(orders: list, end: int, observation: Mappi
     step and its deadline fallback liquidates visible shed stock there.  A SELL
     row beyond ``maxMarketOrdersPerTurn`` can therefore never execute if it stays
     in the suffix.  On that one step only, compact a contiguous sale-only region
-    across the executable boundary so positive sales occupy known empty/zero
-    slots first.
+    across the executable boundary so positive sales occupy known empty slots
+    first.
 
     This deliberately declines every economic, input, malformed or unknown row;
     it never crosses HIRE/BUY orders or operating-input sales, preserves relative
@@ -109,15 +124,11 @@ def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
     for order in prefix:
         if order == []:
             empty.append(order); continue
-        if not isinstance(order, list) or len(order) != 3 or order[0] != 'SELL':
+        quantity = _engine_sell_quantity(order)
+        if quantity is None:
             return orders
-        item, quantity = order[1:]
-        if (not isinstance(item, str) or item not in PRODUCTS
-                or isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0):
-            return orders
-        if quantity == 0:
-            empty.append(order); continue
-        if item not in SALE_ONLY_GOODS:
+        item = order[1]
+        if not isinstance(item, str) or item not in PRODUCTS or item not in SALE_ONLY_GOODS:
             return orders
         positive.append(order); totals[item] = totals.get(item, 0) + quantity
     candidate = positive + empty
@@ -249,7 +260,7 @@ def transform(action: dict, observation: Mapping,
     result['market'] = orders
 
     def supplied_quantity(order: Any) -> Any:
-        if rival_supply is None or not isinstance(order, list) or len(order) != 3:
+        if rival_supply is None or not isinstance(order, list) or len(order) < 3:
             return _UNSET_RIVAL_QUANTITY
         item = order[1]
         # Lookup only the inherited SELL product grammar. Unhashable or unknown
@@ -277,6 +288,18 @@ def transform(action: dict, observation: Mapping,
         orders[start:stop] = [order for order, _ in ranked]
         start = stop
     result['market'] = compact_sale_only_prefix(orders, end, market, cfg, quote)
+
+    # The V5 close-game objective is an opt-in refinement of this already-final
+    # SELL boundary. Keep the dependency lazy so standalone LARK source tests
+    # remain self-contained when the V5 runtime module is not on sys.path.
+    raw_mode = cfg.get('titanCloseGameSaleRisk', 'legacy')
+    mode = raw_mode.strip().lower() if isinstance(raw_mode, str) else 'legacy'
+    if mode != 'legacy':
+        try:
+            from close_game_sale_risk import transform as close_game_transform
+        except ModuleNotFoundError:
+            return result
+        result = close_game_transform(result, observation, cfg, quote=quote)
     return result
 
 
