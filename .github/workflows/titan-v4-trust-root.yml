@@ -43,7 +43,7 @@ jobs:
           WORKFLOW: .github/workflows/titan-v4-plumbing.yml
           # Frozen candidate-side evidence workflow. Any approved migration is a
           # deliberate trusted-control-plane change, never an ordinary V4 PR edit.
-          APPROVED_WORKFLOW_BLOB: 2a1800c02d2a4c11293bdccc7914ab8f6fd93321
+          APPROVED_WORKFLOW_BLOB: c493cbde254b279d7f8e93b7f30ce07abaa92a18
         run: |
           set -euo pipefail
 
