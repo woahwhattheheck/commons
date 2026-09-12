@@ -42,6 +42,13 @@ selected-action transform. Malformed current envelopes fail closed to an unchang
 deep copy. The adapter is research-only: there is no runtime feature, config/default
 flip, archive rebuild, release pointer change, or Kaggle mutation here.
 
+Current callbacks may retry the same public step. Retry custody is transactional:
+the adapter snapshots pre-step state and the exact input/output/post-state. An identical
+same-step retry replays the detached result without reapplying state transitions; changed
+same-step evidence recomputes only from the pre-step snapshot and replaces the transaction.
+A true rewind resets the episode. This prevents pending purchase/placement ownership or
+milk credit from disappearing, duplicating, or resurrecting across retries.
+
 ## Focused contracts
 
 The suite proves:
@@ -56,7 +63,11 @@ The suite proves:
 - confirmed purchased COW stock owns the corresponding PICKUP/PLACE continuation;
 - placement confirmation binds the owned site/day;
 - harvested milk credit can enlarge an existing MILK sell row but never invent one;
-- malformed current envelope/cardinality fails closed.
+- malformed current envelope/cardinality/scalar-hands drift fails closed;
+- identical same-step retry preserves pending purchase ownership into the next callback;
+- changed same-step evidence recomputes from pre-step authority and retires the old buy;
+- harvest retry cannot double-apply milk credit or sale quantity;
+- rewind resets all V231 ownership.
 
 ## Local gate
 
@@ -67,6 +78,8 @@ python -B -m unittest -v test_v231_late_current.py
 python -O -B -m unittest -v test_v231_late_current.py
 python -m py_compile v231_late_current.py test_v231_late_current.py
 ```
+
+Current strengthened local receipt: 17/17 normal, 17/17 `-O`, compile PASS.
 
 Promotion requires a fresh current-V5 matched screen. First measure OFF vs V231-late.
 If it engages and survives economics, test the composed V231-late → existing gated S2
