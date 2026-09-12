@@ -67,12 +67,12 @@ class Fixture:
                          "family":f"recorded-submission:{f['submission_id']}","candidate_sha256":archive_sha}
                     write_json(r/f"{f['id']}-p{seat}.json",rec)
         return roots
-    def eval(self):
+    def eval(self,**kw):
         return G.evaluate(kg_root=self.kg,engine_dir=self.eng,manifest_path=self.manifest_path,
                           v31_archive=self.v31,incumbent_archive=self.inc,candidate_archive=self.cand,
                           v31_roots=self.roots["v31"],incumbent_roots=self.roots["inc"],candidate_roots=self.roots["cand"],
                           expected_manifest_sha=self.manifest_sha,expected_targets=2,
-                          repo_pins=self.repo_pins,engine_pins=self.engine_pins)
+                          repo_pins=self.repo_pins,engine_pins=self.engine_pins,**kw)
 
 class Tests(unittest.TestCase):
     def setUp(self): self.f=Fixture()
@@ -81,6 +81,35 @@ class Tests(unittest.TestCase):
         r=self.f.eval(); self.assertEqual(12,r["cell_count"]); self.assertTrue(r["champion_ready"])
         self.assertFalse(r["release_authority"]); self.assertGreater(r["own_sum_delta_vs_v31"],0)
         self.assertEqual(4,len(r["strata"]))
+        self.assertEqual(G.V31_SOURCE_COMMIT,r["v31_source_commit"])
+        self.assertEqual(G.V31_SUBMISSION_ID,r["v31_submission_id"])
+        self.assertEqual(self.f.v31_sha,r["v31_archive_sha256"])
+    def test_exact_v31_identity_constants(self):
+        self.assertEqual("a90d888f03987ef0b35cfd20ec3519c6144db08a", G.V31_SOURCE_COMMIT)
+        self.assertEqual(56172377, G.V31_SUBMISSION_ID)
+        self.assertEqual("5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361", self.f.old_v31)
+        saved=G.V31_ARCHIVE_SHA256
+        G.V31_ARCHIVE_SHA256=self.f.old_v31
+        try:
+            ident=G.authenticate_v31_identity()
+        finally:
+            G.V31_ARCHIVE_SHA256=saved
+        self.assertEqual("a90d888f03987ef0b35cfd20ec3519c6144db08a", ident["v31_source_commit"])
+        self.assertEqual(56172377, ident["v31_submission_id"])
+        self.assertEqual("5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361", ident["v31_archive_sha256"])
+    def test_stale_source_commit_rejected_in_release_replay(self):
+        with self.assertRaisesRegex(G.ChampionError,"stale V3.1 source_commit"):
+            G.authenticate_v31_identity(source_commit="0"*40)
+        with self.assertRaisesRegex(G.ChampionError,"stale V3.1 source_commit"):
+            self.f.eval(claimed_v31_source_commit="0"*40)
+    def test_stale_submission_id_rejected_in_release_replay(self):
+        with self.assertRaisesRegex(G.ChampionError,"stale V3.1 submission_id"):
+            G.authenticate_v31_identity(submission_id=1)
+        with self.assertRaisesRegex(G.ChampionError,"stale V3.1 submission_id"):
+            self.f.eval(claimed_v31_submission_id=1)
+    def test_stale_archive_identity_rejected(self):
+        with self.assertRaisesRegex(G.ChampionError,"exact submitted V3.1"):
+            G.authenticate_v31_identity(archive_sha256="f"*64)
     def test_balanced_favorable_subset_cannot_authorize(self):
         p=next(self.f.roots["cand"][0].glob("*-p0.json")); mate=p.with_name(p.name.replace("-p0.json","-p1.json"))
         p.unlink(); mate.unlink()
