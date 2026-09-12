@@ -1,37 +1,68 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Exact-engine differential for ROWSHED mirror lockstep assignment evidence."""
+"""Exact-engine differential for ROWSHED mirror lockstep assignment evidence.
+
+The checker captures and authenticates the official engine and ROWSHED helper
+bytes before either module is executed.  All subsequent proof work runs from
+those captured buffers; the repository paths are never reopened as controls.
+"""
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 import json
 from pathlib import Path
-from types import SimpleNamespace
+import sys
+from types import ModuleType, SimpleNamespace
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
 HELPER = HERE / "mirror_collision_value.py"
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+HELPER_BLOB = "90052d735316461c7b3320a7e968dcddbb2c364e"
 
 
 class CheckError(RuntimeError):
     pass
 
 
-def git_blob_sha(path: Path) -> str:
-    data = path.read_bytes()
+def git_blob_sha_bytes(data: bytes) -> str:
     return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
 
 
-def load(name: str, path: Path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise CheckError(f"cannot load {path}")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+def capture(path: Path, expected_blob: str, label: str) -> tuple[bytes, str]:
+    """Read one control once and authenticate that exact captured buffer."""
+    try:
+        data = path.read_bytes()
+    except OSError as error:
+        raise CheckError(f"cannot capture {label}: {path}") from error
+    actual = git_blob_sha_bytes(data)
+    if actual != expected_blob:
+        raise CheckError(
+            f"{label} drift: expected {expected_blob}, got {actual}"
+        )
+    return data, actual
+
+
+def load_captured(name: str, path: Path, data: bytes) -> ModuleType:
+    """Compile/exec an already-authenticated buffer without reopening its path."""
+    module = ModuleType(name)
+    module.__file__ = str(path)
+    module.__package__ = ""
+    module.__loader__ = None
+    previous = sys.modules.get(name)
+    had_previous = name in sys.modules
+    sys.modules[name] = module
+    try:
+        exec(compile(data, str(path), "exec"), module.__dict__)
+    except Exception as error:  # checker boundary: convert control-load failure
+        raise CheckError(f"cannot execute captured {path.name}") from error
+    finally:
+        if had_previous:
+            sys.modules[name] = previous
+        else:
+            sys.modules.pop(name, None)
+    return module
 
 
 def run_cell(engine, helper, *, item: str, inventory: int, quantity: int) -> dict:
@@ -51,7 +82,11 @@ def run_cell(engine, helper, *, item: str, inventory: int, quantity: int) -> dic
         states.append(
             SimpleNamespace(
                 observation=observation,
-                action={"farmer": ["PASS"], "hands": [], "market": [["SELL", item, quantity]]},
+                action={
+                    "farmer": ["PASS"],
+                    "hands": [],
+                    "market": [["SELL", item, quantity]],
+                },
             )
         )
     env = SimpleNamespace(
@@ -97,11 +132,12 @@ def run_cell(engine, helper, *, item: str, inventory: int, quantity: int) -> dic
 
 
 def run() -> dict:
-    actual_engine = git_blob_sha(ENGINE)
-    if actual_engine != ENGINE_BLOB:
-        raise CheckError(f"engine drift: expected {ENGINE_BLOB}, got {actual_engine}")
-    engine = load("_rowshed_lockstep_engine", ENGINE)
-    helper = load("_rowshed_lockstep_helper", HELPER)
+    # Capture and authenticate BOTH controls before either one executes.  The
+    # buffers below are the sole control authority for the rest of this run.
+    engine_bytes, actual_engine = capture(ENGINE, ENGINE_BLOB, "engine")
+    helper_bytes, actual_helper = capture(HELPER, HELPER_BLOB, "helper")
+    engine = load_captured("_rowshed_lockstep_engine", ENGINE, engine_bytes)
+    helper = load_captured("_rowshed_lockstep_helper", HELPER, helper_bytes)
     if helper.ENGINE_GIT_BLOB != ENGINE_BLOB:
         raise CheckError("helper engine pin drift")
 
@@ -117,7 +153,10 @@ def run() -> dict:
         ("MELON", 10052, 2988, 3095),
         ("WOOL", 1660, 1495, 1576),
     ]
-    got = [(r["item"], r["aligned_cash"], r["promote_gain"], r["demote_loss"]) for r in cells]
+    got = [
+        (r["item"], r["aligned_cash"], r["promote_gain"], r["demote_loss"])
+        for r in cells
+    ]
     if got != expected:
         raise CheckError(f"pinned lockstep witness drift: {got!r}")
 
@@ -125,7 +164,8 @@ def run() -> dict:
         "status": "PASS",
         "scope": "official _process_market identical-row lockstep baseline",
         "engine_git_blob": actual_engine,
-        "helper_git_blob": git_blob_sha(HELPER),
+        "helper_git_blob": actual_helper,
+        "controls_executed_from_captured_bytes": True,
         "cells": cells,
         "carrot_wool_swap_edge": 5 - 5,
         "hosted_wool_melon_swap_edge": 2988 - 1576,
