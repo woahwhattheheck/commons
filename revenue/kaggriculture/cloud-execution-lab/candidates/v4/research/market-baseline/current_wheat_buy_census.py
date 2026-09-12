@@ -2,53 +2,66 @@
 # SPDX-License-Identifier: Apache-2.0
 """Read-only census of authored WHEAT purchases in the current Arlene route bank.
 
-This is routing evidence for TOWNPROCURE.  It does not choose, move, add, suppress,
-or execute market orders.  A zero-row result is meaningful: the town-timing oracle
+This is routing evidence for TOWNPROCURE. It does not choose, move, add, suppress,
+or execute market orders. A zero-row result is meaningful: the town-timing oracle
 has no authored BUY_PRODUCT WHEAT commitment to retime in the current route bank.
+
+Source custody is snapshot-bound: the exact Arlene bytes authenticated here are the
+same bytes compiled and executed to obtain ``routes()``. The pathname is never
+reopened after authentication.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
-import subprocess
+import types
 from collections import Counter
 from pathlib import Path
 
 EXPECTED_VENDOR_BLOB = "bdb9cf58148a3c7961c085f4902759537decabf6"
-SCHEMA = "titan.v4.market-baseline.current-wheat-buy-census.v1"
+SCHEMA = "titan.v4.market-baseline.current-wheat-buy-census.v2"
 
 
 def _lab_root() -> Path:
     return Path(__file__).resolve().parents[4]
 
 
-def _git_blob(path: Path, cwd: Path) -> str:
-    return subprocess.check_output(
-        ["git", "hash-object", str(path)], cwd=cwd, text=True
-    ).strip()
+def _read_snapshot(path: Path) -> bytes:
+    """Read one immutable source snapshot; callers must not reopen *path*."""
+    return path.read_bytes()
 
 
-def _load_vendor(path: Path):
-    spec = importlib.util.spec_from_file_location("titan_v4_current_arlene", path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"cannot load vendor module: {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+def _git_blob_bytes(data: bytes) -> str:
+    if not isinstance(data, bytes):
+        raise TypeError("Git blob input must be bytes")
+    header = b"blob " + str(len(data)).encode("ascii") + b"\0"
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def _load_vendor_snapshot(source: bytes, source_path: Path):
+    """Compile/execute only the already-authenticated vendor bytes."""
+    if not isinstance(source, bytes):
+        raise TypeError("vendor snapshot must be bytes")
+    module = types.ModuleType("titan_v4_current_arlene")
+    module.__file__ = str(source_path)
+    module.__package__ = None
+    code = compile(source, str(source_path), "exec")
+    exec(code, module.__dict__)
     return module
 
 
 def census(*, expected_vendor_blob: str = EXPECTED_VENDOR_BLOB) -> dict:
     lab = _lab_root()
     vendor = lab / "reference" / "next-panel" / "vendor" / "arlene.py"
-    blob = _git_blob(vendor, lab)
+    vendor_snapshot = _read_snapshot(vendor)
+    blob = _git_blob_bytes(vendor_snapshot)
     if blob != expected_vendor_blob:
         raise RuntimeError(
             f"vendor source drift: expected {expected_vendor_blob}, got {blob}"
         )
 
-    module = _load_vendor(vendor)
+    module = _load_vendor_snapshot(vendor_snapshot, vendor)
     routes = module.routes()
     if not isinstance(routes, dict) or not routes:
         raise RuntimeError("vendor routes() returned no route bank")
@@ -104,7 +117,7 @@ def census(*, expected_vendor_blob: str = EXPECTED_VENDOR_BLOB) -> dict:
         "schema": SCHEMA,
         "decision": "AUTHORED_WHEAT_BUYS_PRESENT" if rows else "NO_AUTHORED_WHEAT_BUYS",
         "vendor_git_blob": blob,
-        "vendor_sha256": hashlib.sha256(vendor.read_bytes()).hexdigest(),
+        "vendor_sha256": hashlib.sha256(vendor_snapshot).hexdigest(),
         "route_count": len(routes),
         "route_lengths": route_lengths,
         "buy_product_rows_by_item": dict(sorted(all_buy_products.items())),
@@ -115,6 +128,7 @@ def census(*, expected_vendor_blob: str = EXPECTED_VENDOR_BLOB) -> dict:
         "wheat_buy_rows": rows,
         "limits": [
             "read-only authored-route census; no runtime mutation",
+            "vendor semantics execute from the authenticated byte snapshot, never a reopened path",
             "does not infer unlocked-shop demand, cash, shed headroom, feed duty or rival flow",
             "does not authorize speculative BUY_PRODUCT WHEAT",
             "a downstream retimer must preserve item and quantity and suppress the exact later authored row",
