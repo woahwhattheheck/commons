@@ -1,0 +1,137 @@
+name: titan-v4-postimage-field
+
+on:
+  push:
+    branches:
+      - astra/v4-postimage-field-10175943272
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ARTIFACT_ID: "10175943272"
+      EXPECTED_RELEASE_SHA256: "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+      V4_ROOT: revenue/kaggriculture/cloud-execution-lab/candidates/v4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Authenticate and extract canonical native release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" \
+            --output source-artifact.zip
+          mkdir artifact input
+          unzip -q source-artifact.zip -d artifact
+          RELEASE="$(find artifact -type f -path '*/checked-package/exports/titan-current.tar.gz' -print -quit)"
+          test -n "${RELEASE}"
+          printf '%s  %s\n' "${EXPECTED_RELEASE_SHA256}" "${RELEASE}" | sha256sum --check --strict -
+          tar -xzf "${RELEASE}" -C input
+          test -f input/main.py
+          test -f input/titan_runtime.py
+          test -f input/scheduler.py
+          test -f input/frozen_selected.py
+          test -f input/early_capital.py
+          test -f input/selected_sell_core.py
+
+      - name: Validate canonical composition graph and adapters
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python -B "${V4_ROOT}/build_composed_postimage.py" \
+            --workspace "${V4_ROOT}" --check | tee graph-check.json
+
+      - name: Materialize one authenticated V4 postimage
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python -B "${V4_ROOT}/build_composed_postimage.py" \
+            --workspace "${V4_ROOT}" \
+            --package "${GITHUB_WORKSPACE}/input" \
+            --output "${GITHUB_WORKSPACE}/postimage" | tee materialize-stdout.json
+
+          test "$(git hash-object postimage/titan_runtime.py)" = "2b2bd80e3fa76c61139bdbfeaa58dc8a8987339a"
+          test "$(git hash-object postimage/scheduler.py)" = "b29d1e9887f517506c5b3d858baa9bda5848e73f"
+          test "$(git hash-object postimage/frozen_selected.py)" = "4a5d3d5f4bed04acf73c7339e41fed56badf34c9"
+          test "$(git hash-object postimage/early_capital.py)" = "460355e30349de19f7e51f8b7c30e2751c18c6f9"
+          test "$(git hash-object postimage/selected_sell_core.py)" = "33ef376f10bed223a364a6bc6fbfa3b2419e1701"
+          test "$(git hash-object postimage/scoped_method_cache.py)" = "1438a95e69e76c97542b9b95bff1ca3745fa284e"
+          test "$(git hash-object postimage/projection_clone.py)" = "cf2cd8913bd990469ebf2e5733eee28c6af569ea"
+
+      - name: Parse every Python source without mutating the postimage
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python -B - <<'PY'
+          from pathlib import Path
+          paths = sorted(Path("postimage").rglob("*.py"))
+          for path in paths:
+              compile(path.read_bytes(), str(path), "exec")
+          print(f"parsed_python_files={len(paths)}")
+          PY
+
+      - name: Emit deterministic execution summary and archive
+        run: |
+          set -euo pipefail
+          python -B - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+
+          receipt_path = Path("postimage/V4-POSTIMAGE.json")
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          expected_plan = [
+              "fast-tape-clone-current-runtime",
+              "funding-capacity-stack",
+              "projection-state-clone",
+              "scoped-construction",
+          ]
+          if sorted(receipt["plan"]) != sorted(expected_plan):
+              raise SystemExit(f"unexpected plan: {receipt['plan']!r}")
+          summary = {
+              "schema": "titan-v4-postimage-field/v1",
+              "release_authorized": False,
+              "production_activation": False,
+              "source_commit": os.environ["GITHUB_SHA"],
+              "artifact_id": int(os.environ["ARTIFACT_ID"]),
+              "input_archive_sha256": os.environ["EXPECTED_RELEASE_SHA256"],
+              "receipt_sha256": hashlib.sha256(receipt_path.read_bytes()).hexdigest(),
+              "manifest": receipt["manifest"],
+              "checker": receipt["checker"],
+              "plan": receipt["plan"],
+              "blocked": receipt["blocked"],
+              "evidence_only": receipt["evidence_only"],
+              "changed_files": receipt["changed_files"],
+              "input_tree": receipt["input_tree"],
+              "output_tree": receipt["output_tree"],
+              "components": receipt["components"],
+          }
+          Path("FIELD-SUMMARY.json").write_text(
+              json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          PY
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+            -cf titan-v4-postimage.tar -C postimage .
+          gzip -n titan-v4-postimage.tar
+          sha256sum titan-v4-postimage.tar.gz | tee POSTIMAGE-ARCHIVE.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v4-postimage-${{ github.sha }}
+          path: |
+            postimage/V4-POSTIMAGE.json
+            FIELD-SUMMARY.json
+            graph-check.json
+            materialize-stdout.json
+            POSTIMAGE-ARCHIVE.sha256
+            titan-v4-postimage.tar.gz
+          if-no-files-found: error
+          retention-days: 14
