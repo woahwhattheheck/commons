@@ -147,11 +147,29 @@ class TestGate(unittest.TestCase):
             self.assertTrue(x['explicit_binding'])
             self.assertEqual(x['disposition'],'WIRED_REQUIRES_RUNTIME_GATE')
 
-    def test_v218_config_wires(self):
+    def test_disabled_v218_config_key_is_diagnostic_not_wiring(self):
         with tempfile.TemporaryDirectory() as td:
             x=g.audit(self.tree(td,cfg={'r04_v218_movement_parity':False}))
-            self.assertTrue(x['wired'])
             self.assertEqual(x['config']['v218_keys'],['r04_v218_movement_parity'])
+            self.assertEqual(x['router_ref_count'],0)
+            self.assertEqual(x['v218_ref_count'],0)
+            self.assertEqual(x['executable_binding_refs'],[])
+            self.assertFalse(x['explicit_binding'])
+            self.assertFalse(x['wired'])
+            self.assertEqual(x['disposition'],'BLOCKED_AT_NATIVE_ASSEMBLY')
+
+    def test_v218_runtime_source_consumer_wires(self):
+        with tempfile.TemporaryDirectory() as td:
+            runtime=(
+                "def v218_enabled(config):\n"
+                " return bool(config.get('r04_v218_movement_parity', False))\n"
+            )
+            x=g.audit(self.tree(td,runtime=runtime,cfg={'r04_v218_movement_parity':False}))
+            self.assertGreater(x['v218_ref_count'],0)
+            self.assertTrue(x['executable_binding_refs'])
+            self.assertTrue(x['explicit_binding'])
+            self.assertTrue(x['wired'])
+            self.assertEqual(x['disposition'],'WIRED_REQUIRES_RUNTIME_GATE')
 
     def test_reference_checks_do_not_fake_wiring(self):
         with tempfile.TemporaryDirectory() as td:
