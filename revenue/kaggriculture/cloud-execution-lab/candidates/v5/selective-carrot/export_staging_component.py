@@ -185,8 +185,14 @@ def receipt_last_writer(
         if cid in included:
             raise ExportError(f"duplicate receipt component_id: {cid}")
         _sha(component["manifest_sha256"], "receipt manifest_sha256")
-        depends = _id_list(component["depends_on"], "receipt depends_on")
-        conflicts = _id_list(component["conflicts_with"], "receipt conflicts_with")
+        raw_depends = component["depends_on"]
+        raw_conflicts = component["conflicts_with"]
+        if type(raw_depends) is not list:
+            raise ExportError("receipt depends_on must be a list")
+        if type(raw_conflicts) is not list:
+            raise ExportError("receipt conflicts_with must be a list")
+        depends = _id_list(raw_depends, "receipt depends_on")
+        conflicts = _id_list(raw_conflicts, "receipt conflicts_with")
         if cid in depends or cid in conflicts:
             raise ExportError(f"receipt component {cid} depends/conflicts with itself")
         missing = [dep for dep in depends if dep not in included]
