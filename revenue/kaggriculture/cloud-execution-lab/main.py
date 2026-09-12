@@ -10,14 +10,18 @@ def _new_instance(root, feature_data):
     from titan_runtime import TitanAgent, Features, load
     feature_data = dict(feature_data)
     town_enabled = bool(feature_data.pop('town_procurement', False))
+    shop_first_enabled = bool(feature_data.pop('shop_first', False))
     features = Features(**feature_data)
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
         raise ValueError('town_procurement is the tested nonterminal frozen composition')
+    if shop_first_enabled and (features.consumer != 'frozen' or features.terminal_route):
+        raise ValueError('shop_first is the tested nonterminal frozen live canary')
 
     class FinalPressureAgent(TitanAgent):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
+            self.shop_first_enabled = shop_first_enabled
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
 
@@ -120,6 +124,11 @@ def _new_instance(root, feature_data):
                 finally:
                     self._final_pressure_boundary = False
                 self._checkpoint_finalizer(obs, returned, 'market_pressure')
+            if self.shop_first_enabled:
+                from shop_first import apply as apply_shop_first
+                returned, report = apply_shop_first(obs, returned, cfg)
+                self.diagnostics['shop_first'] = report
+                self._checkpoint_finalizer(obs, returned, 'shop_first')
             if self.town_procurement_enabled:
                 from town_procurement import apply
                 returned, report = apply(obs, returned, cfg, completed=completed)
