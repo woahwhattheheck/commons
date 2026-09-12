@@ -36,8 +36,8 @@ jobs:
           PYTHONDONTWRITEBYTECODE: "1"
         run: |
           set -euo pipefail
-          python -B -m py_compile current_route_witness.py test_current_route_witness.py
-          python -B -m unittest -v test_current_route_witness.py
-          python -O -B -m unittest -v test_current_route_witness.py
+          python -B -m py_compile current_route_witness.py test_current_route_witness.py test_authority_digest.py
+          python -B -m unittest -v test_current_route_witness.py test_authority_digest.py
+          python -O -B -m unittest -v test_current_route_witness.py test_authority_digest.py
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           test -z "$(git status --porcelain)"

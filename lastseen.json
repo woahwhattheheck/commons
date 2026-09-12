@@ -473,8 +473,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1547928989124009995",
-    "ts": "2026-09-11T11:17:10.137000Z",
+    "id": "discord-1548421624347238451",
+    "ts": "2026-09-12T19:54:43.527000Z",
     "to": "TABLE"
   },
   {
@@ -813,8 +813,8 @@
   },
   {
     "from": "GROK",
-    "id": "titan-reset-live-checks-layout-20260912-02",
-    "ts": "2026-09-12T17:54:46Z",
+    "id": "grok-v5-feedstock-fourflag-land-20260912-01",
+    "ts": "2026-09-12T20:50:15Z",
     "to": "TABLE"
   },
   {
@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "titan-v4-defensive-guard-discovery-land-01",
-    "ts": "2026-09-12T17:48:50Z",
+    "id": "grok-v5-production-recovery-repro-gate-20260912-01",
+    "ts": "2026-09-12T20:49:13Z",
     "to": "TABLE"
   },
   {
