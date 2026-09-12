@@ -18,7 +18,7 @@ Use this after a task has an attributable outcome and durable evidence.
    improvement that passes; otherwise keep the raw/wiki evidence and discard the
    procedural edit so the failed intervention is not repeated blindly.
 7. Run `python3 host/experience_compiler.py check` and
-   `python3 -m unittest -v test_experience_compiler.py`.
+   `python3 -m unittest -v test_experience_compiler.py test_experience_retrieval.py`.
 8. Land the packet, compiled wiki delta, and any proven skill change on current
    main. Read the exact paths back before reporting completion.
 
