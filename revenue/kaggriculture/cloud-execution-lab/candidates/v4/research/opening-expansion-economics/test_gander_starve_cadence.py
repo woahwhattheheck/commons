@@ -35,7 +35,7 @@ class GanderStarveCompositeTests(unittest.TestCase):
         self.assertEqual(self.safe["fertilizer_total"], 9 * 30)
 
     def test_skip_feed_slots_realize_egg_without_held_cap_clipping(self):
-        # Mature EGG is harvested only on even skip-feed days.  Two production
+        # Mature EGG is harvested only on even skip-feed days. Two production
         # refreshes can accumulate between those visits, still below max_held=4.
         self.assertEqual(self.safe["action_attempts"]["harvest_attempts"], 13 * 9)
         self.assertLessEqual(self.safe["max_goose_yield_units_seen"], 2)
@@ -62,6 +62,16 @@ class GanderStarveCompositeTests(unittest.TestCase):
             self.report["interpretation"]["wheat_savings_are_units_not_cash"]
         )
         self.assertFalse(self.report["interpretation"]["market_prices_modeled"])
+
+    def test_helpers_are_authenticated_before_execution(self):
+        self.assertEqual(
+            self.safe["source_contract"]["gander_helper_git_blob"],
+            G.PINNED_GANDER_GIT_BLOB,
+        )
+        self.assertEqual(
+            self.safe["source_contract"]["starve_helper_git_blob"],
+            G.PINNED_STARVE_GIT_BLOB,
+        )
 
     def test_current_engine_identity_is_exact(self):
         self.assertEqual(self.safe["engine_git_blob"], G.PINNED_ENGINE_GIT_BLOB)
