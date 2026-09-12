@@ -200,7 +200,7 @@ def _tile_yield_upper_bound(tile):
     return units
 
 
-def _market_preserves_capacity(action):
+def _market_preserves_capacity(action, configuration=None):
     market = action.get("market", _UNKNOWN)
     if not isinstance(market, list):
         return False
@@ -209,7 +209,18 @@ def _market_preserves_capacity(action):
         "EGG", "MILK", "WOOL", "FERTILIZER",
     }
     seeds = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
-    for order in market:
+    try:
+        if isinstance(configuration, dict):
+            cap = configuration.get("maxMarketOrdersPerTurn", 10)
+        else:
+            cap = getattr(configuration, "maxMarketOrdersPerTurn", 10)
+    except Exception:
+        return False
+    if type(cap) is not int:
+        return False
+    # The engine caps raw slots before parsing. Do not filter placeholders or
+    # consult the inert suffix; preserve all original active-row vetoes below.
+    for order in market[:max(1, cap)]:
         if not isinstance(order, list) or not order or not isinstance(order[0], str):
             return False
         op = order[0]
@@ -425,7 +436,7 @@ def apply_dead_water_harvest(observation, action, configuration=None, enabled=Tr
 
         if not candidate_indices:
             return action
-        if not _market_preserves_capacity(action):
+        if not _market_preserves_capacity(action, configuration):
             report["capacity_block"] += 1
             return action
         candidate_indices = _capacity_subset(
