@@ -22,9 +22,13 @@ Required fields are `ts`, `lane`, `session`, and `event`. Supported events are
 `CLAIM`, `HEARTBEAT`, `COMPLETE`, `RELEASED`, `BLOCKED`, `REJECTED`, and
 `SUPERSEDED`. `ts` may be Unix seconds or timezone-aware ISO-8601.
 
-Repository-writing claims should bind `canonical_root`. `requires_artifact`
-lets a claim require a durable artifact before `COMPLETE`. Optional
-`event_id`, `artifact`, `channel`, and `thread_ts` preserve provenance.
+Repository-writing events must bind `canonical_root` exactly to the workspace
+being audited. A repo-writing event with no root, or any event that explicitly
+names a different root, remains visible as anomaly evidence but is quarantined
+from lease authority. Read-only events may omit `canonical_root` for legacy
+compatibility. `requires_artifact` lets a claim require a durable artifact
+before `COMPLETE`. Optional `event_id`, `artifact`, `channel`, and `thread_ts`
+preserve provenance.
 
 `scope_key` is also optional. It is an **operator-supplied normalization key**
 for claims that are known to describe the same ownership surface under
@@ -54,8 +58,17 @@ enter cross-lane scope groups.
   active CLAIM emits `scope_key_drift`; it never silently rekeys ownership.
 - Arbitration is never overwrite, merge, validity, or promotion authority.
 - A fresh owner plus an old silent owner produces `ACTIVE_WITH_STALE_OWNER`.
-- Noncanonical V4 roots are anomalies.
-- Repo-writing claims without a root binding are anomalies.
+- An event whose explicit `canonical_root` differs from the audited root is a
+  `noncanonical_root` anomaly and cannot create, refresh, close, or reopen a
+  canonical lease.
+- Any `writes_repo=true` event is authoritative only when `canonical_root`
+  exactly equals the audited root. A missing binding emits
+  `repo_write_without_root` and is quarantined.
+- A quarantined foreign-root or unbound repo-write event does not reserve its
+  `event_id`, so it cannot shadow a later valid canonical event carrying the
+  same provider ID.
+- Read-only rootless events remain authoritative for backwards compatibility;
+  this exception is explicit in the report policy.
 - Heartbeats without a live claim and terminal events without a claim are
   anomalies rather than silently repaired history.
 - A claim marked `requires_artifact` cannot complete cleanly without one.
