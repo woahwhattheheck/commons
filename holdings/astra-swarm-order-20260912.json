@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-swarm-order-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T22:41:42.329Z",
+  "heartbeat_at": "2026-09-12T22:41:42.329Z",
+  "ttl_s": 1800,
+  "note": "Owner-directed command-center repair and GPT-led swarm order. Real API usage recorded in ground/SWARM_COMMAND_CENTER_USE.json; implementation verified locally, landing now."
+}

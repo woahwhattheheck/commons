@@ -1,1 +1,0 @@
-"""Shared operations control surface."""
