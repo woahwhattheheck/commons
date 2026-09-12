@@ -162,6 +162,15 @@ class TerminalHistoryJoin:
         if now==prior:
             self.diagnostics={};self.fill_result=None
             return
+        if now>prior+1:
+            # Without an exact deferred/journaled prior+1 observation, a forward
+            # gap cannot prove which public transition consumed the returned
+            # action. Drop the receipt instead of cross-attributing intervening
+            # fills/history to an unrelated later observation.
+            self.pending=None
+            self.deferred_observation=None
+            self.diagnostics={};self.fill_result=None
+            return
 
         # Journal the exact adjacency witness before any mutable history work.
         # Reconciliation itself then happens wholly on private bridge state.
