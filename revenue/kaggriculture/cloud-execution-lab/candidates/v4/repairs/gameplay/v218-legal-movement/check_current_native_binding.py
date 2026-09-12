@@ -2,9 +2,11 @@
 """Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It accepts an explicit V218/router binding directly. Native semantic equivalence counts as
-wired only when the sole canonical V4 composition graph carries an authenticated evidence-only
-registration for the same semantic sources and this checker.
+It accepts an explicit executable V218/router source binding directly. Config-key presence and
+inert source text remain visible diagnostics but cannot mint wiring by themselves. Native
+semantic equivalence counts as wired only when the sole canonical V4 composition graph carries
+an authenticated evidence-only registration for the exact live semantic source chain and this
+checker.
 """
 from __future__ import annotations
 import argparse, ast, hashlib, json
@@ -22,6 +24,8 @@ SEMANTIC_RULES = (
     "all_four_shed_corners_eligible",
     "spatial_routes_are_tile_agnostic",
 )
+SEMANTIC_SOURCE_KEYS = ("main", "runtime", "frozen", "scheduler", "arlene", "spatial")
+CONFIG_REL = "TITAN-CONFIG.json"
 
 
 def git_blob(data: bytes) -> str:
@@ -32,13 +36,60 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _token_hits(values) -> dict[str, int]:
+    hits = {tok: 0 for tok in TOKENS}
+    for value in values:
+        if not isinstance(value, str):
+            continue
+        low = value.lower()
+        for tok in TOKENS:
+            hits[tok] += low.count(tok.lower())
+    return hits
+
+
 def _scan_text(path: Path, root: Path):
+    """Raw token diagnostics only; these bytes never authorize explicit wiring."""
     try:
         text = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError):
         return None
-    low = text.lower()
-    hits = {tok: low.count(tok.lower()) for tok in TOKENS}
+    hits = _token_hits((text,))
+    if not any(hits.values()):
+        return None
+    return {"path": str(path.relative_to(root)), "hits": hits}
+
+
+def _scan_executable_python(path: Path, root: Path):
+    """Conservatively detect executable Python identifiers/imports, ignoring inert literals.
+
+    Comments, docstrings and arbitrary string constants are deliberately excluded. Dynamic
+    string-based loading therefore cannot self-authorize this custody gate; it must use the
+    authenticated semantic-equivalence path instead.
+    """
+    try:
+        text = path.read_text(encoding="utf-8")
+        tree = ast.parse(text, filename=str(path))
+    except (UnicodeDecodeError, OSError, SyntaxError):
+        return None
+    values: list[str] = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                values.append(alias.name)
+                if alias.asname:
+                    values.append(alias.asname)
+        elif isinstance(node, ast.ImportFrom):
+            if node.module:
+                values.append(node.module)
+            for alias in node.names:
+                values.append(alias.name)
+                if alias.asname:
+                    values.append(alias.asname)
+        elif isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load):
+            values.append(node.id)
+        elif isinstance(node, ast.Attribute) and isinstance(node.ctx, ast.Load):
+            values.append(node.attr)
+    hits = _token_hits(values)
     if not any(hits.values()):
         return None
     return {"path": str(path.relative_to(root)), "hits": hits}
@@ -172,8 +223,8 @@ def _pairs_no_dupes(pairs):
     return out
 
 
-def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
-    """Authenticate #12923's canonical evidence-only graph edge and its receipt."""
+def _semantic_graph_registration(root: Path, semantic: dict, initial_config_raw: bytes) -> dict:
+    """Authenticate graph/receipt custody against the same immutable proof inputs."""
     graph_path = root / GRAPH_REL
     if not graph_path.is_file():
         return {"registered": False, "reason": "missing_canonical_composition_graph", "path": str(GRAPH_REL)}
@@ -241,19 +292,35 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
     source_identities = receipt.get("current_source_identities")
     if not isinstance(source_identities, dict):
         return {"registered": False, "reason": "semantic_source_identities_missing"}
-    expected = {}
     semantic_sources = semantic.get("sources")
     if not isinstance(semantic_sources, dict):
         return {"registered": False, "reason": "semantic_sources_missing"}
-    for key in ("main", "runtime", "frozen", "scheduler", "arlene", "spatial"):
+    expected: dict[str, str] = {}
+    for key in SEMANTIC_SOURCE_KEYS:
         row = semantic_sources.get(key)
-        if not isinstance(row, dict) or type(row.get("path")) is not str or type(row.get("git_blob")) is not str:
+        if (
+            not isinstance(row, dict)
+            or type(row.get("path")) is not str
+            or type(row.get("git_blob")) is not str
+            or not row.get("path")
+            or not row.get("git_blob")
+        ):
             return {"registered": False, "reason": "semantic_source_receipt_missing", "source": key}
-        expected[row["path"]] = row["git_blob"]
-    config_path = root / "TITAN-CONFIG.json"
-    if not config_path.is_file():
-        return {"registered": False, "reason": "semantic_config_missing"}
-    expected["TITAN-CONFIG.json"] = git_blob(config_path.read_bytes())
+        rel = row["path"]
+        if rel in expected:
+            return {"registered": False, "reason": "duplicate_semantic_source_path", "source": key, "path": rel}
+        expected[rel] = row["git_blob"]
+    if CONFIG_REL in expected:
+        return {"registered": False, "reason": "duplicate_semantic_source_path", "source": "config", "path": CONFIG_REL}
+    expected[CONFIG_REL] = git_blob(initial_config_raw)
+
+    if set(source_identities) != set(expected):
+        return {
+            "registered": False,
+            "reason": "semantic_source_identity_set_mismatch",
+            "expected_paths": sorted(expected),
+            "actual_paths": sorted(source_identities),
+        }
     if source_identities != expected:
         return {
             "registered": False,
@@ -264,6 +331,28 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
     semantic_evidence = receipt.get("semantic_evidence")
     if not isinstance(semantic_evidence, dict) or semantic_evidence.get("frozen_nonterminal_config") is not True:
         return {"registered": False, "reason": "semantic_receipt_missing_frozen_config"}
+
+    # Close the proof->registration TOCTOU: every source, including config, must
+    # still be byte-identical after graph/receipt authentication.
+    for rel, expected_blob in expected.items():
+        path = root / rel
+        try:
+            actual_blob = git_blob(path.read_bytes())
+        except OSError as exc:
+            return {
+                "registered": False,
+                "reason": "semantic_source_changed_after_proof",
+                "source": rel,
+                "error": str(exc),
+            }
+        if actual_blob != expected_blob:
+            return {
+                "registered": False,
+                "reason": "semantic_source_changed_after_proof",
+                "source": rel,
+                "expected": expected_blob,
+                "actual": actual_blob,
+            }
 
     return {
         "registered": True,
@@ -282,12 +371,13 @@ def audit(root: Path) -> dict:
     if missing:
         raise ValueError(f"missing native package files: {missing}")
 
-    config_raw = (root / "TITAN-CONFIG.json").read_bytes()
+    config_raw = (root / CONFIG_REL).read_bytes()
     config = json.loads(config_raw)
     if type(config) is not dict:
         raise ValueError("TITAN-CONFIG.json must be an object")
 
     refs = []
+    executable_refs = []
     scanned = 0
     for path in sorted(root.rglob("*")):
         if not path.is_file() or any(part in EXCLUDE_PARTS for part in path.parts):
@@ -301,19 +391,23 @@ def audit(root: Path) -> dict:
         hit = _scan_text(path, root)
         if hit:
             refs.append(hit)
+        if path.suffix == ".py":
+            executable_hit = _scan_executable_python(path, root)
+            if executable_hit:
+                executable_refs.append(executable_hit)
 
     main = (root / "main.py").read_bytes()
     runtime = (root / "titan_runtime.py").read_bytes()
     config_v218_keys = sorted(
         k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower()
     )
-    router_refs = sum(row["hits"]["r04_full_router"] for row in refs)
-    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in refs)
-    explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
+    router_refs = sum(row["hits"]["r04_full_router"] for row in executable_refs)
+    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in executable_refs)
+    explicit_binding = bool(router_refs or v218_refs)
     semantic = _native_semantic_equivalence(root, config)
     equivalent = bool(semantic.get("equivalent"))
     registration = (
-        _semantic_graph_registration(root, semantic)
+        _semantic_graph_registration(root, semantic, config_raw)
         if equivalent
         else {"registered": False, "reason": "semantic_equivalence_not_proven"}
     )
@@ -340,6 +434,7 @@ def audit(root: Path) -> dict:
         },
         "package_text_files_scanned": scanned,
         "binding_refs": refs,
+        "source_binding_refs": executable_refs,
         "router_ref_count": router_refs,
         "v218_ref_count": v218_refs,
         "explicit_binding": explicit_binding,
