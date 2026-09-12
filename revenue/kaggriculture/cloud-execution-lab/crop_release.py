@@ -657,6 +657,19 @@ def observe_input_repair(intent,observation,fill_result):
     return p
 
 
+def _carrot_sell_quantity(order):
+    """Return the pinned engine's executable CARROT SELL quantity, else None."""
+    if not isinstance(order, list) or len(order) < 3:
+        return None
+    if order[0] != 'SELL' or order[1] != 'CARROT':
+        return None
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError):
+        return None
+    return quantity if quantity > 0 else None
+
+
 def offer_crop(intent, observation, selected):
     """Give the observed lot to the existing selected seller once.
 
@@ -678,11 +691,10 @@ def offer_crop(intent, observation, selected):
            and a[0] in ('PICKUP', 'PLACE', 'PLANT') for a in units(selected)):
         return selected, False
     market = selected.get('market', [])
-    if any(a and len(a) > 1 and a[1] == 'CARROT' and a[0] == 'BUY_PRODUCT'
-           for a in market[:10]):
+    if any(isinstance(a, list) and len(a) > 1 and a[1] == 'CARROT'
+           and a[0] == 'BUY_PRODUCT' for a in market[:10]):
         return selected, False
-    offered = sum(max(0, int(a[2])) for a in market[:10]
-                  if a and len(a) > 2 and a[:2] == ['SELL', 'CARROT'])
+    offered = sum(_carrot_sell_quantity(a) or 0 for a in market[:10])
     if offered >= n:
         return selected, True
     if len(market) >= 10:
@@ -705,11 +717,13 @@ def commit_crop_sale(intent, observation, returned, post, *, offered=False,
     rows = []
     for slot, a in enumerate(returned.get('market', [])[:10]):
         if not a:continue
-        if len(a) > 1 and a[1] == 'CARROT' and a[0] == 'BUY_PRODUCT':
+        if (isinstance(a, list) and len(a) > 1 and a[1] == 'CARROT'
+                and a[0] == 'BUY_PRODUCT'):
             p.update(status='sale_attribution_unknown', receipt_failure='carrot_purchase_in_sale_queue')
             return p
-        if len(a) > 2 and a[:2] == ['SELL', 'CARROT'] and int(a[2]) > 0:
-            rows.append((slot, int(a[2])))
+        quantity = _carrot_sell_quantity(a)
+        if quantity is not None:
+            rows.append((slot, quantity))
     if (post is None or int(post['step']) != int(observation['step'])
             or int(post['player']) != p['player']):
         p.update(status='sale_attribution_unknown', receipt_failure='sale_snapshot_unbound')
