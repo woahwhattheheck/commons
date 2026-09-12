@@ -572,6 +572,84 @@ def main():
     e17_violations = guard.scan_added(e17_lines)
     assert e17_violations == [], e17_violations
 
+    # Run 34665578480 / SHA a7ae519b: attaching the composed V4 donor tree
+    # collocated `action` with `not in` on one B9 worker-slot line, and
+    # collocated `return action` with a local `choices` list in PLACE
+    # delivery ranking. Those are game-envelope / inventory-rank helpers,
+    # not Action Pad admission. Split the B9 membership tests and rename
+    # the rank list so the live donor overlay stays clean. The forbidden
+    # collocations must still fail.
+    v4_b9_path = (
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/"
+        "overlay/b9_terminal_fertilizer.py"
+    )
+    v4_b9_blocked = diff(
+        v4_b9_path,
+        [
+            '        if "farmer" not in action or "hands" not in action:',
+        ],
+    )
+    assert rules(v4_b9_blocked) == {"unlisted-action"}, rules(v4_b9_blocked)
+    v4_b9_allowed = diff(
+        v4_b9_path,
+        [
+            '        if "farmer" not in action:',
+            "            return action, False",
+            '        if "hands" not in action:',
+            "            return action, False",
+        ],
+    )
+    assert guard.scan_diff(v4_b9_allowed) == [], guard.scan_diff(v4_b9_allowed)
+    v4_b9_live = Path(v4_b9_path)
+    v4_b9_lines = [
+        guard.AddedLine(v4_b9_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            v4_b9_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    v4_b9_violations = guard.scan_added(v4_b9_lines)
+    assert v4_b9_violations == [], v4_b9_violations
+
+    v4_place_path = (
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/"
+        "overlay/r04_place_delivery.py"
+    )
+    v4_place_blocked = diff(
+        v4_place_path,
+        [
+            "        if not isinstance(inventory, dict):",
+            "            return action",
+            "        choices = []",
+        ],
+    )
+    assert rules(v4_place_blocked) == {"verb-enum"}, rules(v4_place_blocked)
+    v4_place_allowed = diff(
+        v4_place_path,
+        [
+            "        if not isinstance(inventory, dict):",
+            "            return action",
+            "        ranked_payloads = []",
+            "        for item, held in inventory.items():",
+            "            if item not in r04.PRODUCTS or not _positive_plain_int(held):",
+            "                continue",
+            "            price = view.prices[item]",
+            "            product_order = r04.PRODUCTS.index(item)",
+            "            ranked_payloads.append((price, held, -product_order, item))",
+            "        if ranked_payloads:",
+            "            price, held, _, item = max(ranked_payloads)",
+        ],
+    )
+    assert guard.scan_diff(v4_place_allowed) == [], guard.scan_diff(v4_place_allowed)
+    v4_place_live = Path(v4_place_path)
+    v4_place_lines = [
+        guard.AddedLine(v4_place_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            v4_place_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    v4_place_violations = guard.scan_added(v4_place_lines)
+    assert v4_place_violations == [], v4_place_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.

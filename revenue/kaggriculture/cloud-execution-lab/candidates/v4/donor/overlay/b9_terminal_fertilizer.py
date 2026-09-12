@@ -116,7 +116,9 @@ def _collect_passes(observation, action):
             return action, False
         tiles, farmer, hands = farm["tiles"], farm["farmer"], farm["hands"]
         positions = [farmer, *hands]
-        if "farmer" not in action or "hands" not in action:
+        if "farmer" not in action:
+            return action, False
+        if "hands" not in action:
             return action, False
         farmer_action = action["farmer"]
         action_hands = action["hands"]
