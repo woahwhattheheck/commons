@@ -14,7 +14,7 @@ import types
 
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 ENGINE_CONFIG_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
-HELPER_BLOB = "315d999864c4b3a1cbd4cf2152ec11826719572e"
+HELPER_BLOB = "7ed47fd01e01158d175234824509af25b2ce1725"
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
