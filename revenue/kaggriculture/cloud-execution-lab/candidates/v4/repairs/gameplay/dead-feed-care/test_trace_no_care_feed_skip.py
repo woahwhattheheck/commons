@@ -31,7 +31,7 @@ def observation(step, *, tile=None, wheat=1, position=None, hands=None):
         "hands": own_hands,
     }
     farm1 = {"tiles": tiles1, "farmer": [0, 0], "hands": []}
-    inventories = [{"WHEAT": wheat}] + [{} for _ in own_hands]
+    inventories = [{"WHEAT": wheat}] + [{"WHEAT": wheat} for _ in own_hands]
     return {
         "step": step,
         "player": 0,
@@ -62,7 +62,7 @@ def suffix(start_step, *, overrides=None):
 
 
 class TraceNoCareFeedSkipTests(unittest.TestCase):
-    def test_earlier_feed_with_gapless_no_care_suffix_is_admitted(self):
+    def test_earlier_feed_with_gapless_no_care_suffix_is_conditional_only(self):
         obs = observation(20)
         current = action()
         certs = T.plan_trace_no_care_feed_skip(current, obs, CFG, suffix(20))
@@ -72,10 +72,22 @@ class TraceNoCareFeedSkipTests(unittest.TestCase):
         self.assertEqual(cert["current_hour"], 20)
         self.assertEqual(cert["synthetic_fast_gate_step"], 23)
         self.assertTrue(cert["fixed_tape_only"])
+        self.assertTrue(cert["caller_supplied_tape_only"])
+        self.assertFalse(cert["authenticated_trace_claim"])
+        self.assertFalse(cert["current_native_reachability_claim"])
+        self.assertEqual(
+            cert["remaining_day_certificate"]["provenance"],
+            "CALLER_SUPPLIED_UNVERIFIED_TAPE",
+        )
         self.assertFalse(cert["activation_claim"])
         candidate = T.build_single_counterfactual(
             current, obs, CFG, suffix(20), enabled=True)
         self.assertEqual(candidate["farmer"], ["PASS"])
+
+    def test_current_same_site_extended_plus_exact_feed_is_rejected(self):
+        obs = observation(20, hands=[[1, 1]])
+        current = action(["FEED", "extra"], [["FEED"]])
+        self.assertEqual(T.plan_trace_no_care_feed_skip(current, obs, CFG, suffix(20)), [])
 
     def test_later_same_site_care_blocks(self):
         obs = observation(20)
