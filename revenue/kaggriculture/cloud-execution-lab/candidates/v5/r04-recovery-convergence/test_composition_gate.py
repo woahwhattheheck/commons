@@ -20,7 +20,7 @@ def passing_economics(index: int = 0) -> dict:
         "status": mod.ECONOMICS_PASS,
         "report_sha256": f"{index + 9:x}"[-1] * 64,
         "panel_digest": f"{index + 10:x}"[-1] * 64,
-        "control_id": "v5c:" + "a" * 64,
+        "control_id": "v5c:" + "0" * 64,
         "candidate_id": "v5c:" + f"{index + 1:x}"[-1] * 64,
         "opponents": opponents,
         "seeds_per_opponent": 4,
