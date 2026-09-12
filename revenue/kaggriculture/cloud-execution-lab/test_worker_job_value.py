@@ -70,6 +70,25 @@ class WorkerJobValueTests(unittest.TestCase):
         self.assertEqual(report['input_cost'], 0.0)
         self.assertEqual(report['net_gain'], 12.0)
 
+    def test_input_quantity_is_consumed_once_across_requirements(self):
+        kwargs = self.base()
+        kwargs['actions'][2] = ['FEED']
+        kwargs['required_services'] = {'FEED': 2, 'HARVEST': 1, 'DROP': 1}
+        kwargs['input_requirements'].append(
+            {'item': 'WHEAT', 'quantity': 1, 'needed_step': 102, 'consumer': 'FEED'})
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertTrue(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'required_input_not_available')
+        self.assertEqual(report['needed_step'], 102)
+        self.assertEqual(report['required_quantity'], 2)
+        self.assertEqual(report['available_quantity'], 1)
+
+        kwargs['market_events'][0]['quantity'] = 2
+        kwargs['market_events'][0]['cost_upper'] = 6
+        kwargs['starting_cash'] = 20
+        self.assertTrue(worker_job_value.evaluate_worker_job(**kwargs)['admitted'])
+
     def test_sale_before_explicit_drop_does_not_realize_output(self):
         kwargs = self.base()
         kwargs['market_events'][1]['step'] = 104
@@ -77,6 +96,22 @@ class WorkerJobValueTests(unittest.TestCase):
         report = worker_job_value.evaluate_worker_job(**kwargs)
         self.assertEqual(report['reason'], 'output_not_realized_in_sale')
         self.assertFalse(report['admitted'])
+
+    def test_sale_quantity_is_consumed_once_across_output_certificates(self):
+        kwargs = self.base()
+        kwargs['expected_outputs'].append(
+            {'item': 'MILK', 'quantity': 2, 'produced_step': 103,
+             'sale_ready_step': 105})
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertTrue(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'output_not_realized_in_sale')
+        self.assertEqual(report['item'], 'MILK')
+        self.assertEqual(report['sale_ready_step'], 105)
+        self.assertEqual(report['unmatched_quantity'], 2)
+
+        kwargs['market_events'][1]['quantity'] = 4
+        self.assertTrue(worker_job_value.evaluate_worker_job(**kwargs)['admitted'])
 
     def test_uncertified_market_slot_fails_closed(self):
         kwargs = self.base()
