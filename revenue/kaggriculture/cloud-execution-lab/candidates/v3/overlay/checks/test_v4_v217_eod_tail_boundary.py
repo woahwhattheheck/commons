@@ -81,7 +81,7 @@ class V217EodTailResetBoundary(unittest.TestCase):
         # the engine resets the farmer immediately after that callback.
         plan = _plan((7, 4))
         self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], True)
+        self.assertEqual(set(plan), {"step", "route", "commands", "positions", "target"})
         self.assertEqual(
             plan["commands"],
             [["EAST"], ["EAST"], ["EAST"], ["FEED"]],
