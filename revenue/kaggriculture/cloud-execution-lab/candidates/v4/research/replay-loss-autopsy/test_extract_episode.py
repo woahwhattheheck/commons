@@ -58,6 +58,7 @@ class ReplayLossAutopsyTests(unittest.TestCase):
             self.assertEqual(first.stdout, second.stdout)
             data = json.loads(first.stdout)
             self.assertEqual(data["episode"], "E1")
+            self.assertEqual(data["parameters"], {"tail_callbacks": 24, "turns_per_day": 24})
             self.assertEqual(data["coverage"]["farmer_action_rows"], 3)
             self.assertEqual(data["coverage"]["market_order_rows"], 3)
             self.assertEqual(data["coverage"]["meta_rows"], 1)
@@ -68,6 +69,23 @@ class ReplayLossAutopsyTests(unittest.TestCase):
             self.assertEqual(sells[0]["explicit_qty_sum"], 2)
             self.assertEqual(data["meta_rows_exact"][0]["score0"], "61766")
 
+    def test_custom_day_semantics_are_serialized(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            result = self.run_tool(
+                root,
+                "--tail-callbacks", "7",
+                "--turns-per-day", "12",
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            data = json.loads(result.stdout)
+            self.assertEqual(data["parameters"], {"tail_callbacks": 7, "turns_per_day": 12})
+            harvests = [
+                row for row in data["farmer_summary"]
+                if row["verb"] == "HARVEST" and row["target"] == "WHEAT"
+            ]
+            self.assertEqual(harvests[0]["day"], 58)
+
     def test_output_file_exactly_matches_stdout_shape(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -77,6 +95,7 @@ class ReplayLossAutopsyTests(unittest.TestCase):
             self.assertEqual(result.stdout, "")
             payload = json.loads(out.read_text())
             self.assertEqual(payload["schema"], "titan.v4.replay-loss-autopsy.v1")
+            self.assertEqual(payload["parameters"]["turns_per_day"], 24)
 
     def test_absent_episode_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
