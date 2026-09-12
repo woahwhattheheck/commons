@@ -1,6 +1,6 @@
 # ROUTEMOTION — source-bound fixed-tape motion census
 
-This lane is **research-only and policy-inert**. It measures a narrow class of main-farmer locomotion rewrites in the canonical V4 fixed tapes under the exact official-engine and router semantics pinned by the census.
+This lane is **research-only and policy-inert**. It measures a narrow class of main-farmer locomotion rewrites in the canonical V4 fixed tapes under the exact official-engine, standard-configuration, and router semantics pinned by the census.
 
 It does **not** create a worker planner, alter HIRE cadence, compete with LABORFLOW, or mutate runtime/default/archive/Kaggle bytes.
 
@@ -28,10 +28,13 @@ The census deliberately emits **non-overlapping atomic intervals** rather than e
 At authoring time the tool pins:
 
 - official engine Git blob `3c202c7ee921da239356789e266b694635103fc4`;
+- official engine spec Git blob `b354d06b742fe48402513792253f1a5c29366b20`;
 - canonical 13×719 tape bank Git blob `a43289b9cc5e34a2481fddf652762a7d92f427ef`;
 - canonical R04 router Git blob `a3e2fe87c717d128e43c9b65bae2265f40d1d76d`.
 
-It also requires exact engine/router semantic anchors and fails closed on source drift.
+The spec pin binds the theorem to the standard `boardSize=10` and `turnsPerDay=24` contract. A changed default is not silently accepted: larger boards can turn a boundary no-op into an executable move, and a different day length changes loop reset boundaries.
+
+Every authority is captured exactly once into immutable bytes. Git object identity, engine/router semantic anchors, engine-spec parsing, and tape execution all derive from those captured snapshots; the tool never authenticates one pathname read and then reopens that path for theorem semantics.
 
 The effective route is reconstructed exactly as the live R04 router does:
 
@@ -64,6 +67,8 @@ The v2 output reports per route:
 - individually PASS-equivalent out-of-bounds movement no-ops;
 - closed hire-free movement intervals as atomic rewrite groups;
 - the union of movement rows participating in those groups for census/counting only.
+
+It also emits the exact four source Git blobs and the authenticated standard `boardSize` / `turnsPerDay` values used by the census.
 
 ## Ownership / next gate
 
