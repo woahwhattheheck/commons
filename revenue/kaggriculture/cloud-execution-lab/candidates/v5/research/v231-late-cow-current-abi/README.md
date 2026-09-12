@@ -1,8 +1,8 @@
 # V231 late COW acquisition — current ABI research carrier
 
 This carrier recovers one score-shipped V3.1 semantic that current V5 is missing:
-the **late** V231 livestock substitution. It is a selected-action transform only; it
-does not call or replace the current producer/controller.
+the **late** V231 livestock substitution. It remains a selected-action transform only;
+it does not call or replace the current producer/controller.
 
 ## Why this exists
 
@@ -35,57 +35,66 @@ The historical source is authority for semantics, not current promotion evidence
 
 ## Current surface
 
-`v231_late_current.V231LateCurrentABI`
+The carrier intentionally has two layers with one public current-ABI entry point:
 
-There is exactly one current V231 adapter. `enabled=False` is detached identity.
-`enabled=True` applies only the late V231 selected-action transform. Malformed current
-envelopes fail closed to an unchanged deep copy before retry/private state is touched.
-The adapter is research-only: there is no runtime feature, config/default flip, archive
+- `v231_late_current.V231LateCurrentABI` is the donor-semantic core. It preserves the
+  historical whole-router `step <= last` reset so the recovered late decision/lifecycle
+  theorem can be compared directly to submitted V3.1. Its boundary validation is
+  fail-closed, including malformed selected-hand shapes.
+- `v231_late_current_safe.V231LateCurrentABISafe` is the **public current selected-action
+  surface**. It owns same-step retry custody only; it does not alter the donor decision
+  theorem and does not add a producer/controller call.
+
+`enabled=False` is detached identity. `enabled=True` applies only the late V231 theorem.
+The carrier is research-only: there is no runtime feature, config/default flip, archive
 rebuild, release pointer change, or Kaggle mutation here.
 
-Current callbacks may retry the same public step. Retry custody is transactional inside
-the canonical adapter: the exact pre-step V231 state is captured once; an identical
-same-step retry returns the recorded output/post-state; changed valid evidence recomputes
-only from that same pre-step snapshot. A malformed retry is detached identity and cannot
-rewind or replace a valid attempt. A true rewind starts a fresh epoch. This prevents
-pending purchase/placement ownership or milk credit from disappearing, duplicating, or
-resurrecting across retries without creating a second V231 state machine.
+Current callbacks may retry the same public step. The safe envelope captures the exact
+pre-step V231 candidate state once. Every valid same-step retry is recomputed from that
+same preimage, so an identical retry is action/state idempotent while changed valid
+evidence replaces the abandoned attempt rather than inheriting its post-state. A malformed
+retry is detached identity and cannot mutate transaction or candidate state. A true rewind
+starts a fresh epoch.
 
 ## Focused contracts
 
-The suites prove:
+The combined suites prove:
 
-- exact authority pins;
+- exact submitted authority pins;
 - OFF identity and strict-bool activation;
 - steps 190–215 remain OFF even under otherwise qualifying conditions;
-- steps 216–227 rewrite only the exact bounded SHEEP purchase under the submitted
-  late gates;
-- existing animal cargo/stock, wrong shop/price context, wrong herd state, or multiple
-  animal orders block the substitution;
+- steps 216–227 rewrite only the exact bounded SHEEP purchase under the submitted late
+  milk-shop / no-YARN / MILK>=WOOL / herd / cargo / sole-animal-order gates;
 - confirmed purchased COW stock owns the corresponding PICKUP/PLACE continuation;
 - placement confirmation binds the owned site/day;
 - harvested milk credit can enlarge an existing MILK sell row but never invent one;
 - malformed current envelope/cardinality/scalar-hands drift fails closed;
-- identical same-step purchase and HARVEST retries are action/state idempotent;
-- changed same-step selected/observation evidence recomputes from pre-step authority and
-  retires abandoned purchase/harvest effects;
+- identical purchase and HARVEST retries are action/state idempotent on the public safe
+  surface;
+- changed same-step selected evidence retires an abandoned purchase before the next
+  callback;
+- changed HARVEST evidence restores pre-step authority instead of retaining first-attempt
+  milk credit/sale effects;
 - malformed same-step retry leaves both candidate state and retry transaction unchanged;
-- rewind resets all V231 ownership.
+- rewind resets the V231 epoch.
 
 ## Local gate
 
 From this directory:
 
 ```bash
-python -B -m unittest -v test_v231_late_current.py test_v231_retry_boundary.py
-python -O -B -m unittest -v test_v231_late_current.py test_v231_retry_boundary.py
-python -m py_compile v231_late_current.py test_v231_late_current.py test_v231_retry_boundary.py
+python -m py_compile \
+  v231_late_current.py v231_late_current_safe.py \
+  test_v231_late_current.py test_v231_late_retry_safe.py
+python -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
+python -O -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
 ```
 
-The dedicated exact-head Python 3.11/3.12 workflow runs this same canonical adapter
-contract set and requires a clean source tree after execution.
+Current combined local receipt on these authored bytes: **19/19 normal, 19/19 `-O`,
+compile PASS**. The dedicated exact-head Python 3.11/3.12 workflow runs the same four
+files and also requires a clean source tree after execution.
 
-Promotion requires a fresh current-V5 matched screen. First measure OFF vs V231-late.
-If it engages and survives economics, test the composed V231-late → existing gated S2
-path on the same opponent/seed/seat panel. No default activation is justified by this
-source carrier alone.
+Promotion requires a fresh current-V5 matched screen. First measure OFF vs
+`V231LateCurrentABISafe(enabled=True)`. If it engages and survives economics, test the
+composed V231-late → existing gated S2 path on the same opponent/seed/seat panel. No
+default activation is justified by this source carrier alone.
