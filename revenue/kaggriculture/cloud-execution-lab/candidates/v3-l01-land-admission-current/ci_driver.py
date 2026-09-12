@@ -19,6 +19,7 @@ from ci_prepare import (
     write_manifest,
 )
 from ci_support import run
+from historical_provenance import verify_historical_pair
 
 LANE_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/candidates/"
@@ -59,6 +60,7 @@ def main() -> int:
         if tests.returncode:
             raise RuntimeError(f"unit tests failed: {tests.returncode}")
         historical_delta = historical_check(repo, lane, work, pin)
+        verify_historical_pair(work / "historical-l01", pin["historical_source"])
         build = build_current(repo, lane, lab, work)
         python, engine = install_engine(repo, lab, work, pin)
         route_probe(repo, lane, work, python)
