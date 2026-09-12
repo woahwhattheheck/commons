@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 from pathlib import Path
+import tempfile
 import unittest
 from unittest import mock
 
@@ -58,6 +59,25 @@ class BuildRouteMatrixTests(unittest.TestCase):
             )
         return baseline, result
 
+    def _publication_args(self, root):
+        files = {
+            "main.py": b"entry\n",
+            "r04_full_router.py": ROUTER,
+            "TITAN-CONFIG.json": b"{}\n",
+        }
+        before = ROUTER
+        after = ROUTER.replace(
+            b"SHOP_PLANS.get(tuple(shops[:2]), 0)",
+            b"7",
+            1,
+        )
+        files["r04_full_router.py"] = after
+        packed = builder.archive_bytes(files)
+        out = root / "candidate"
+        tar_path = root / "candidate.tar.gz"
+        receipt_path = root / "candidate-manifest.json"
+        return files, before, after, packed, out, tar_path, receipt_path
+
     def test_exact_baseline_changes_only_router(self):
         baseline, (files, before, after) = self._build(9)
         self.assertEqual(before, ROUTER)
@@ -106,6 +126,80 @@ class BuildRouteMatrixTests(unittest.TestCase):
     def test_rejects_router_identity_drift(self):
         with self.assertRaisesRegex(ValueError, "router identity drift"):
             self._build(router_sha="0" * 64)
+
+    def test_preexisting_receipt_preserved_and_archive_rolled_back(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args = self._publication_args(root)
+            files, before, after, packed, out, tar_path, receipt_path = args
+            receipt_path.write_bytes(b"sentinel\n")
+            with self.assertRaises(FileExistsError):
+                builder._publish(
+                    files,
+                    before,
+                    after,
+                    packed,
+                    7,
+                    builder.ROUTE_STEP,
+                    out,
+                    tar_path,
+                    receipt_path,
+                )
+            self.assertFalse(tar_path.exists())
+            self.assertFalse(out.exists())
+            self.assertEqual(receipt_path.read_bytes(), b"sentinel\n")
+
+    def test_receipt_write_failure_rolls_back_archive_and_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args = self._publication_args(root)
+            files, before, after, packed, out, tar_path, receipt_path = args
+            real_write = builder._write_reserved
+            calls = []
+
+            def fail_receipt(fd, payload):
+                calls.append(fd)
+                if len(calls) == 2:
+                    raise OSError("receipt write failed")
+                return real_write(fd, payload)
+
+            with mock.patch.object(builder, "_write_reserved", side_effect=fail_receipt):
+                with self.assertRaisesRegex(OSError, "receipt write failed"):
+                    builder._publish(
+                        files,
+                        before,
+                        after,
+                        packed,
+                        7,
+                        builder.ROUTE_STEP,
+                        out,
+                        tar_path,
+                        receipt_path,
+                    )
+            self.assertEqual(len(calls), 2)
+            self.assertFalse(tar_path.exists())
+            self.assertFalse(receipt_path.exists())
+            self.assertFalse(out.exists())
+
+    def test_archive_receipt_alias_rejected_before_publication(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args = self._publication_args(root)
+            files, before, after, packed, out, _tar_path, receipt_path = args
+            with self.assertRaisesRegex(ValueError, "must be distinct"):
+                builder._publish(
+                    files,
+                    before,
+                    after,
+                    packed,
+                    7,
+                    builder.ROUTE_STEP,
+                    out,
+                    receipt_path,
+                    receipt_path,
+                )
+            self.assertFalse(out.exists())
+            self.assertFalse(receipt_path.exists())
 
 
 if __name__ == "__main__":
