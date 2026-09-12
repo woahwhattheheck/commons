@@ -5,6 +5,11 @@ This is a thin PR-specific adapter over ``host.coordination_state``.  It keeps
 review/merge drains on the canonical ``pr-N`` key so concurrent seats cannot
 accidentally avoid collision detection by inventing different marker names for
 the same pull request.
+
+The underlying single-key writer owns each fast-forward attempt.  This adapter
+retries a rejected non-fast-forward one attempt at a time so a production call
+observes a fresh clock before deciding whether the winner it just re-read is
+still live.  Explicit ``now=`` values remain fixed for deterministic tests.
 """
 
 from __future__ import annotations
@@ -17,6 +22,10 @@ try:
     from host import coordination_state as cs
 except ImportError:  # Direct execution as ``python host/claim_pr.py``.
     import coordination_state as cs  # type: ignore
+
+
+_RETRY_ATTEMPTS = 3
+_RETRY_REASON = "branch kept moving; retry"
 
 
 def pr_key(pr: int) -> str:
@@ -40,9 +49,11 @@ def write_pr_holding(
 ) -> dict:
     """Take, renew, or release the canonical ``pr-N`` holding.
 
-    The underlying fast-forward-only write and collision reconciliation stay in
-    ``coordination_state.holding_write``; this adapter adds no second claim
-    protocol.
+    ``coordination_state.holding_write`` still performs the actual ledger read,
+    conflict decision, commit construction and fast-forward push.  We give it
+    one push attempt per call and, after a non-fast-forward loss, invoke it again
+    from the new branch tip.  Runtime calls take a fresh clock sample for every
+    retry; an explicitly supplied ``now`` stays fixed for deterministic tests.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -50,18 +61,30 @@ def write_pr_holding(
         raise ValueError("holder must be non-empty text")
     if type(ttl_s) is not int or not 1 <= ttl_s <= 7200:
         raise ValueError("ttl must be between 1 and 7200 seconds")
-    result = cs.holding_write(
-        git,
-        pr_key(pr),
-        holder.strip(),
-        action,
-        ttl_s=ttl_s,
-        note=note,
-        now=now,
-        remote=remote,
-        push=push,
-    )
-    return {"pr": pr, "action": action, **result}
+
+    holder = holder.strip()
+    key = pr_key(pr)
+    fixed_now = now
+    result = None
+    for _ in range(_RETRY_ATTEMPTS):
+        attempt_now = fixed_now if fixed_now is not None else cs._now()
+        result = cs.holding_write(
+            git,
+            key,
+            holder,
+            action,
+            ttl_s=ttl_s,
+            note=note,
+            now=attempt_now,
+            remote=remote,
+            push=push,
+            attempts=1,
+        )
+        if result.get("reason") != _RETRY_REASON:
+            return {"pr": pr, "action": action, **result}
+    return {"pr": pr, "action": action, **(result or {
+        "ok": False, "key": key, "reason": _RETRY_REASON,
+    })}
 
 
 def _positive_pr(text: str) -> int:
