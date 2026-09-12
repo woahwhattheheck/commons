@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -40,7 +40,7 @@ jobs:
           if data is not None and digest(data) == pinned:
               chosen = data
           if chosen is None:
-              subprocess.run(['git','fetch','--no-tags','--filter=blob:none','origin','main'], check=True)
+              subprocess.run(['git','fetch','--no-tags','--filter=blob:none','--depth=1','origin','main'], check=True)
               main = subprocess.check_output(['git','rev-parse','FETCH_HEAD'], text=True).strip()
               for data in (cat(main, historical), cat(main, str(archive))):
                   if data is not None and digest(data) == pinned:
