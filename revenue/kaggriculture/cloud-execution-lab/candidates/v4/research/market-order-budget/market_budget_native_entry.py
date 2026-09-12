@@ -3,7 +3,8 @@
 
 It returns the parent's action *unchanged*. Telemetry describes only raw market
 queue pressure against the engine cap; telemetry failures are swallowed so this
-fixture cannot alter gameplay through its reporting path.
+fixture cannot alter gameplay through its reporting path. Evidence consumers
+must require every attempted callback to have one successful telemetry record.
 """
 from __future__ import annotations
 
@@ -18,7 +19,9 @@ TELEMETRY_PATH = os.environ.get("ORDERBUDGET_TELEMETRY_PATH")
 _parent = None
 _budget = None
 stats = {
+    "callback_attempts": 0,
     "callbacks": 0,
+    "telemetry_errors": 0,
     "max_raw_rows": 0,
     "max_active_slot": None,
     "structural_overflow_callbacks": 0,
@@ -65,6 +68,10 @@ def _bump(hist: dict, value: int) -> None:
 
 
 def _record(step, action, configuration) -> None:
+    # Count the attempt before any telemetry operation that can fail. The
+    # wrapper remains gameplay-inert on telemetry failure, while the census
+    # can now fail closed instead of silently publishing incomplete evidence.
+    stats["callback_attempts"] += 1
     try:
         raw_cap = _get(configuration, "maxMarketOrdersPerTurn", 10)
         cap = max(1, int(raw_cap))
@@ -96,7 +103,7 @@ def _record(step, action, configuration) -> None:
                 "dropped_nonempty": row["dropped_nonempty"],
             })
     except Exception:
-        pass
+        stats["telemetry_errors"] += 1
 
 
 def _write() -> None:
