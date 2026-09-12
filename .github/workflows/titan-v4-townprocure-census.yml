@@ -1,0 +1,59 @@
+name: TITAN V4 TOWNPROCURE census
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/current_wheat_buy_census.py'
+      - '.github/workflows/titan-v4-townprocure-census.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v4-townprocure-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify exact checkout
+        shell: bash
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          test -z "$(git status --porcelain)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Decode current authored WHEAT purchases
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          CENSUS=candidates/v4/research/market-baseline/current_wheat_buy_census.py
+          python -m py_compile "$CENSUS"
+          python "$CENSUS" --pretty > /tmp/townprocure-normal.json
+          PYTHONOPTIMIZE=1 python "$CENSUS" --pretty > /tmp/townprocure-opt.json
+          cmp /tmp/townprocure-normal.json /tmp/townprocure-opt.json
+          cat /tmp/townprocure-normal.json
+
+      - name: Upload exact census
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v4-townprocure-${{ github.event.pull_request.head.sha }}
+          path: /tmp/townprocure-normal.json
+          if-no-files-found: error
+          retention-days: 14
