@@ -26,7 +26,11 @@ class LandUnlockOverlay(LandUnlockOverlaySupport):
         report = {"changed": False, "reason": "no_change", "mode": self.mode,
                   "step": now, "pending": deepcopy(self.pending)}
 
-        if self.last_step is None or now == 0 or now < self.last_step:
+        # A repeated callback at step zero is still the same engine step.  A
+        # true new match is observable here as either first use or a backward
+        # step transition; resetting on every ``now == 0`` would erase the
+        # pending receipt before the same-step replay path below can use it.
+        if self.last_step is None or now < self.last_step:
             had_state = self.pending is not None or self.last_step is not None
             self.pending = None
             self.events = []
