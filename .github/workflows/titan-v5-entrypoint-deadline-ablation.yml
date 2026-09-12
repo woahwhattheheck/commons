@@ -58,8 +58,16 @@ jobs:
           RECEIPT="$RUNNER_TEMP/entrypoint-deadline-ablation-receipt.json"
           INTRO_COMMIT=4be7772ab850e50f42d0eb0fe715fecadb19ee10
           EXPECTED_INTRO_PARENT=784194262d1f448e5012c16503e8c2811e551c97
+          EXPECTED_INTRO_BLOB=2e70a9e730eebab94ab16420ae601f3c46663af8
+
+          INTRO_RESOLVED="$(git rev-parse "$INTRO_COMMIT")"
+          test "$INTRO_RESOLVED" = "$INTRO_COMMIT"
+          INTRO_PARENT_ROW="$(git rev-list --parents -n1 "$INTRO_COMMIT")"
+          test "$INTRO_PARENT_ROW" = "$INTRO_COMMIT $EXPECTED_INTRO_PARENT"
           INTRO_PARENT="$(git rev-parse "${INTRO_COMMIT}^")"
           test "$INTRO_PARENT" = "$EXPECTED_INTRO_PARENT"
+          INTRO_BLOB="$(git rev-parse "$INTRO_COMMIT:revenue/kaggriculture/cloud-execution-lab/main.py")"
+          test "$INTRO_BLOB" = "$EXPECTED_INTRO_BLOB"
 
           git show a90d888f03987ef0b35cfd20ec3519c6144db08a:revenue/kaggriculture/cloud-execution-lab/main.py > "$V31"
           git show 4af1113154e78c662780e6658cd920daac7902e3:revenue/kaggriculture/cloud-execution-lab/main.py > "$V4"
@@ -68,10 +76,12 @@ jobs:
 
           python -B entrypoint_deadline_ablation.py verify \
             --v31 "$V31" --v4 "$V4" --pre-guard "$PRE" \
-            --intro "$INTRO" --intro-parent "$INTRO_PARENT"
+            --intro "$INTRO" --intro-commit "$INTRO_RESOLVED" \
+            --intro-parent "$INTRO_PARENT"
           python -B entrypoint_deadline_ablation.py materialize \
             --v31 "$V31" --v4 "$V4" --pre-guard "$PRE" \
-            --intro "$INTRO" --intro-parent "$INTRO_PARENT" \
+            --intro "$INTRO" --intro-commit "$INTRO_RESOLVED" \
+            --intro-parent "$INTRO_PARENT" \
             --out "$OUT" --receipt "$RECEIPT"
 
           python -B -m py_compile "$OUT"

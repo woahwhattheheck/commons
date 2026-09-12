@@ -67,8 +67,11 @@ def _require_blob(data: bytes, expected: str, label: str) -> None:
 
 def verify_guard_intro_authority(
     intro: bytes,
+    intro_commit: str,
     intro_parent_commit: str,
 ) -> dict[str, str]:
+    if intro_commit != INTRO_COMMIT:
+        raise SourceMismatch(f"guard-intro commit {intro_commit} != {INTRO_COMMIT}")
     if intro_parent_commit != INTRO_PARENT_COMMIT:
         raise SourceMismatch(
             f"guard-intro parent {intro_parent_commit} != {INTRO_PARENT_COMMIT}"
@@ -102,12 +105,17 @@ def verify_authorities(
     v4: bytes,
     pre_guard: bytes,
     intro: bytes,
+    intro_commit: str,
     intro_parent_commit: str,
 ) -> dict[str, Any]:
     _require_blob(v31, V31_MAIN_GIT_BLOB, "submitted V3.1 main.py")
     _require_blob(v4, V4_MAIN_GIT_BLOB, "submitted V4 main.py")
     _require_blob(pre_guard, PRE_GUARD_MAIN_GIT_BLOB, "pre-guard main.py")
-    intro_authority = verify_guard_intro_authority(intro, intro_parent_commit)
+    intro_authority = verify_guard_intro_authority(
+        intro,
+        intro_commit,
+        intro_parent_commit,
+    )
 
     v31_text = _decode(v31, "submitted V3.1 main.py")
     v4_text = _decode(v4, "submitted V4 main.py")
@@ -240,6 +248,7 @@ def _add_authority_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--v4", required=True)
     parser.add_argument("--pre-guard", required=True)
     parser.add_argument("--intro", required=True)
+    parser.add_argument("--intro-commit", required=True)
     parser.add_argument("--intro-parent", required=True)
 
 
@@ -265,6 +274,7 @@ def main(argv: list[str] | None = None) -> int:
         v4,
         pre_guard,
         intro,
+        args.intro_commit,
         args.intro_parent,
     )
 
