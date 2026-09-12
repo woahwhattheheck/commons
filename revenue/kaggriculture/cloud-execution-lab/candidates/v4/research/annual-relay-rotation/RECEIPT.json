@@ -1,0 +1,27 @@
+{
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "lane": "ASTRA-RELAYROTATE",
+  "local_validation": {
+    "engine_witness_executed_locally": false,
+    "engine_witness_reason": "authoring container had no Commons checkout; script fail-closes on exact engine Git blob before import",
+    "py_compile": "PASS",
+    "python_unittest_normal": {
+      "failed": 0,
+      "passed": 14
+    },
+    "python_unittest_optimized": {
+      "failed": 0,
+      "passed": 14
+    }
+  },
+  "production_activation": false,
+  "promotion_decision": "NOT_ASSESSED",
+  "schema": "titan-v4-annual-relay-rotation-receipt/v1",
+  "sha256": {
+    "README.md": "09cf5704ecd5ec3ad3efe78e05890cae6d9e54d4826d28c526ff8570d58f9f63",
+    "annual_relay_rotation.py": "701a58d04ec27fa7bb0684768f2b7b3b45e0bcb1523ce0bcf12044df723248c6",
+    "engine_witness.py": "9b01689301afec71771414ed79fb5f9b3113c46bc66130e87068eee6af89c8f2",
+    "test_annual_relay_rotation.py": "c1c9c50c86093e51cc15f1b2c6afbb23cfac766b2eb81d26c44bc192a716308a"
+  },
+  "source_status": "SOURCE_THEOREM_CERTIFIER_DEFAULT_INERT"
+}
