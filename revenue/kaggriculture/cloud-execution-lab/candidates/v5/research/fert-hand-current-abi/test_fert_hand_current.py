@@ -285,6 +285,7 @@ class FertHandCurrentABITests(unittest.TestCase):
         self.assertIsInstance(result, dict)
 
     def test_complete_route_tail_is_required_for_new_hire(self):
+        adapter = FertHandCurrentABI()
         obs = observation()
         for tail in (None, [], route_tail(obs["step"])[:-1]):
             with self.subTest(tail=tail):
@@ -295,6 +296,17 @@ class FertHandCurrentABITests(unittest.TestCase):
                 self.assertFalse(report["changed"])
                 self.assertEqual(report["reason"], "missing_complete_route_tail")
                 self.assertEqual(result, selected())
+
+    def test_malformed_route_tail_fails_closed_before_scanning(self):
+        obs = observation()
+        malformed = route_tail(obs["step"])
+        malformed[0]["hands"] = 17
+        result, report = FertHandCurrentABI().transform_selected(
+            obs, {}, selected(), future_actions=malformed
+        )
+        self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "missing_complete_route_tail")
+        self.assertEqual(result, selected())
 
     def test_market_capacity_and_parent_hire_fail_closed(self):
         obs = observation()
@@ -323,6 +335,7 @@ class FertHandCurrentABITests(unittest.TestCase):
             ({"maxMarketOrdersPerTurn": 9}, observation(), "outside_standard_config"),
             ({"turnsPerDay": 12}, observation(), "outside_standard_config"),
             ({"episodeSteps": 721}, observation(), "outside_standard_config"),
+            ({"farmHandCostMult": 2}, observation(), "outside_standard_config"),
         ]
         for cfg, obs, reason in cases:
             with self.subTest(cfg=cfg):
