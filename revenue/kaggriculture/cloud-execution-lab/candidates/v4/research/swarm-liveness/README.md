@@ -69,14 +69,18 @@ wins" behavior.
 - Any `writes_repo=true` event is authoritative only when `canonical_root`
   exactly equals the audited root. A missing binding emits
   `repo_write_without_root` and is quarantined.
-- A quarantined foreign-root or unbound repo-write event does not reserve its
-  `event_id`, so it cannot shadow a later valid canonical event carrying the
-  same provider ID.
-- If two or more otherwise-authoritative rows carry the same provider
-  `event_id`, the **entire conflicting ID group is quarantined**. Raw export
-  line order therefore cannot choose which duplicate CLAIM, HEARTBEAT, or
-  terminal row gets lease authority. Duplicate diagnostics remain visible.
-- Read-only rootless events remain authoritative for backwards compatibility;
+- A repo-writing CLAIM binds the active ownership epoch to its opening
+  `canonical_root`. HEARTBEAT and terminal follow-ups must carry that exact
+  root to refresh or close the epoch even when the follow-up itself has
+  `writes_repo=false`.
+- A quarantined foreign-root, unbound repo-write, or writer-epoch follow-up does
+  not reserve its `event_id`, so it cannot shadow a later valid canonical row
+  carrying the same provider ID.
+- If two or more otherwise-authoritative, epoch-eligible rows carry the same
+  provider `event_id`, the **entire conflicting ID group is quarantined**. Raw
+  export line order therefore cannot choose which duplicate CLAIM, HEARTBEAT,
+  or terminal row gets lease authority. Duplicate diagnostics remain visible.
+- Read-only rootless epochs remain authoritative for backwards compatibility;
   this exception is explicit in the report policy.
 - Heartbeats without a live claim and terminal events without a claim are
   anomalies rather than silently repaired history.
