@@ -10,6 +10,7 @@ The package must contain fourth_quadrant.py. No network access is used.
 from __future__ import annotations
 
 import argparse
+import copy
 import importlib.util
 from pathlib import Path
 
@@ -140,18 +141,22 @@ def main() -> None:
     _assert_owned_contract(five, "A", Q.economic_program(five, "A", base_route))
     _assert_owned_contract(four, "A", Q.economic_program(four, "A", base_route))
 
-    poisoned = {
-        **four,
-        "variants": {key: {**value, "patches": {t: dict(row) for t, row in value["patches"].items()}}
-                     for key, value in four["variants"].items()},
-    }
-    variant = poisoned["variants"]["A"]
+    seed_poisoned = copy.deepcopy(four)
+    variant = seed_poisoned["variants"]["A"]
     land = variant["bundle"]["land"]
-    row = dict(variant["patches"][land["step"]])
-    row["market"] = [list(order) for order in row["market"]]
+    row = variant["patches"][land["step"]]
     row["market"][land["slot"] + 1] = ["BUY_SEED", "MELON", 5]
-    variant["patches"][land["step"]] = row
-    assert M.executable_melon_plants(poisoned) is None
+    assert M.executable_melon_plants(seed_poisoned) is None
+
+    plant_poisoned = copy.deepcopy(four)
+    patches = plant_poisoned["variants"]["A"]["patches"]
+    extra_step = next(step for step in range(720) if step not in patches)
+    patches[extra_step] = {
+        "farmer": ["PLANT", "MELON", "ignored"],
+        "hands": [],
+        "market": [],
+    }
+    assert M.executable_melon_plants(plant_poisoned) is None
 
     filtered = M.filter_proposals([five, four], obs)
     assert filtered == [four]
@@ -174,7 +179,7 @@ def main() -> None:
     assert quadrant.pending is chosen
     assert M.executable_melon_plants(chosen) == 4
     assert chosen in raw or len(chosen["tiles"]) == 4
-    print("OK: real producer -> lot+seed custody -> atomic filter -> FourthQuadrant.install selected 4-plant original proposal")
+    print("OK: real producer -> lot+seed+full-plant custody -> atomic filter -> FourthQuadrant.install selected 4-plant original proposal")
 
 
 if __name__ == "__main__":
