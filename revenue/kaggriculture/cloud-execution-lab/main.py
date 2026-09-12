@@ -162,7 +162,13 @@ def agent(observation, configuration=None):
     if step is None:
         step = int(observation['day'])*int(cfg.get('turnsPerDay', 24))+int(observation['hour'])
     step = int(step)
-    replace = _INSTANCE is None or step == 0
+    # Step zero is both a match boundary and a legal same-step retry.  Reuse an
+    # instance that already completed/observed step zero; only a later-step -> 0
+    # transition proves that the retained instance belongs to an older match.
+    previous_step = (None if _INSTANCE is None else
+                     getattr(_INSTANCE, '_entrypoint_last_step', None))
+    replace = (_INSTANCE is None
+               or (step == 0 and previous_step not in (None, 0)))
     instance = None if replace else _INSTANCE
     feature_data = (json.loads((root/'TITAN-CONFIG.json').read_text())
                     if replace else None)
@@ -204,6 +210,7 @@ def agent(observation, configuration=None):
         instance.selected = None
         instance.post = None
         instance._remember_seller_fallback(obs)
+        instance._entrypoint_last_step = step
         instance.diagnostics = {
             'consumer': instance.features.consumer,
             'parent_calls': 0,
@@ -224,6 +231,9 @@ def agent(observation, configuration=None):
                 _INSTANCE = instance
             stage = 'entrypoint_runtime'
             output = instance.act(observation, cfg, entry_started=entry_started)
+            # Publish only after a complete inner return.  A foreign exception or
+            # outer cancellation keeps the prior marker or discards the instance.
+            instance._entrypoint_last_step = step
     except deadline.DeadlineExceeded as error:
         if error is not timer.expired:
             raise
