@@ -256,10 +256,13 @@ class ReleaseTransactionTests(unittest.TestCase):
         bad_new = dict(self.new)
         bad_new["sha256"] = sha(bad_archive)
         bad_new["bytes"] = len(bad_archive)
+        bad_economics = json.loads(json.dumps(self.economics))
+        bad_economics["candidate_archive_sha256"] = bad_new["sha256"]
         with self.assertRaisesRegex(rt.TransactionError, "archive member disagrees"):
             self.build(
                 approved_new_pointer_raw=canon(bad_new),
                 approved_archive_raw=bad_archive,
+                economics_raw=canon(bad_economics),
             )
 
     def test_promotion_receipt_must_be_exact_replay(self):
