@@ -84,6 +84,50 @@ class PairedHelpersTest(unittest.TestCase):
                 paired.write_private_runtime_bytes(b"VALUE = 24\n", private, expected)
             self.assertFalse(private.exists())
 
+    def test_execution_leaf_rejects_public_output_origin(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            output = root / "output"
+            private.mkdir()
+            output.mkdir()
+            public_adapter = output / "opponents" / "apex" / "adapter.py"
+            public_adapter.parent.mkdir(parents=True)
+            public_adapter.write_text("PUBLIC = True\n")
+            with self.assertRaisesRegex(ValueError, "escaped private runtime"):
+                paired.require_private_execution_path(public_adapter, private, output)
+
+    def test_private_opponent_leaf_survives_public_swap_and_delete(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            output = root / "output"
+            private_adapter = private / "execution-leaves" / "opponents" / "apex" / "adapter.py"
+            public_adapter = output / "opponents" / "apex" / "adapter.py"
+            private_adapter.parent.mkdir(parents=True)
+            public_adapter.parent.mkdir(parents=True)
+            private_adapter.write_bytes(b"PRIVATE-GOOD\n")
+            public_adapter.write_bytes(b"PUBLIC-OLD\n")
+            selected = paired.require_private_execution_path(private_adapter, private, output)
+            public_adapter.write_bytes(b"PUBLIC-POISON\n")
+            public_adapter.unlink()
+            self.assertEqual(selected.read_bytes(), b"PRIVATE-GOOD\n")
+            self.assertFalse(public_adapter.exists())
+
+    def test_private_candidate_leaf_rejects_public_symlink_poison(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            output = root / "output"
+            private.mkdir()
+            output.mkdir()
+            poison = output / "candidate.py"
+            poison.write_text("POISON = True\n")
+            link = private / "candidate.py"
+            link.symlink_to(poison)
+            with self.assertRaisesRegex(ValueError, "escaped private runtime"):
+                paired.require_private_execution_path(link, private, output)
+
     def test_margin_requires_complete_719(self):
         self.assertEqual(paired.margin({"status": "complete", "steps": 719, "scores": [10, 4]}, 0), 6)
         self.assertIsNone(paired.margin({"status": "complete", "steps": 718, "scores": [10, 4]}, 0))
