@@ -19,20 +19,35 @@ This is the same raw-index fact that makes generic compaction unsafe. The new ce
 
 The raw market list must retain the same length. Every other raw slot and every non-market field must remain exact under type-preserving canonical JSON. Both source and destination slots must stay inside `max(1, maxMarketOrdersPerTurn)`. Non-adjacent motion, cap crossing, queue compaction, extra BUY tokens, other market verbs, unsupported products, malformed quantities, type-poisoned caps, nonfinite evidence, and unrelated field drift fail closed.
 
-A passing certificate remains `conditional_only=True` and `activation_authority=False`. It does **not** prove a rival row, fill, funding, shed capacity, future need, or episode value. Full-interpreter paired controls and current-policy reachability remain separate obligations.
+A passing certificate remains `conditional_only=True` and `activation_authority=False`. It does **not** prove a rival row, requested-quantity completion, fill, funding, shed capacity, future need, or episode value. Those are downstream full-interpreter/economic obligations.
 
-## Exact authored receipt
+## Authored-route census boundary
 
-Branch base: `main@9d3f32a60e97f7b69f583944fa3ecd450ad5cf54`.
+`raw_phase_census.py` authenticates the canonical R01 tape bank `a43289b9cc5e34a2481fddf652762a7d92f427ef` and router `35541da59f23a161105245c98841acda4bb376f9`. Tape bytes are captured/authenticated once and those same bytes are compiled only to call the data-only `load_tapes()`; router bytes are captured/authenticated once and structurally parsed for literal route constants without executing router policy.
 
-- source Git blob `45df2f3eb2dc53720f2bdcaa795f04dddd88aa17`; SHA-256 `5141d4f289e8ecd59f71df81e8ecbef1c694bff8c5631a3ee45bbc98ba7533f5`; 6810 bytes
-- test Git blob `0aaa560eb0a3dff8af93730f741660349ad858de`; SHA-256 `6f0f7dfeaec501151085ee1746e5259b1c008c73c2b08bbab8c47c1f105e40c4`; 7455 bytes
-- `19/19` tests PASS under normal Python
-- `19/19` tests PASS under `python -O`
-- `py_compile` PASS
+The census models the authored R01 splice: plan 0 before step 144, the selected reachable plan through step 647, forced plan 2 from step 648 through step 717, and no tape authority at step 718 because router `liquidate()` replaces the tape action.
 
-The focused suite covers WHEAT delay, FERTILIZER advance, literal PASS/empty slots, unsupported product domain, malformed/zero/type-poisoned quantities, extra tokens, wrong market verbs, truthy pseudo-noops, non-adjacent movement, raw-length drift, non-market drift, both executable-prefix boundary directions, minimum-one cap semantics, cap type poison, multi-slot changes, JSON scalar-type drift, nonfinite evidence, and input immutability.
+**This is not current-native reachability.** Every report states `current_native_reach_authority=false` and `candidate_surface="authored_r01_tape_pre_transforms"`. A positive coordinate means only that the authenticated authored R01 tape surface contains the certified adjacent BUY/no-op shape before later current-native transforms. Zero coordinates is a valid falsifier. Any live-engagement claim requires a separate final-return/current-native census.
+
+## Equal-horizon full-interpreter controls
+
+`raw_phase_engine_controls.py` consumes the existing lockstep full-interpreter harness by exact Git blob `eedbb09261c0bc3a11d33a34e0d50b81139ddb98` and its pinned official engine `3c202c7ee921da239356789e266b694635103fc4`.
+
+The controls compare one official callback against one official callback only: delay an existing WHEAT buy behind a rival same-callback WHEAT sell; advance an existing WHEAT buy into the rival WHEAT-buy phase; and a no-rival-market-order phase-shift control. There is deliberately no synthetic wait or next-callback baseline. They remain constructed research controls, not opponent prediction, current-native reach, or activation authority.
+
+## Exact authored-byte gate
+
+Current focused surface:
+
+- `raw_phase_contract.py` Git blob `45df2f3eb2dc53720f2bdcaa795f04dddd88aa17`
+- `test_raw_phase_contract.py` Git blob `0aaa560eb0a3dff8af93730f741660349ad858de`
+- `raw_phase_census.py` Git blob `1a87a1c971735810deac5062f8e34e6b9f7f0600`
+- `test_raw_phase_census.py` Git blob `0634a052d561a8a1b8f4ae906b046f5057a5cd20`
+- `raw_phase_engine_controls.py` Git blob `d8b75ccbac0c7657aab8946a9116ba8b22726537`
+- `test_raw_phase_engine_controls.py` Git blob `1a131193641bd5462c38e98e69f154ffdde37389`
+
+Exact connector-authored/fetched bytes pass `32/32` tests under normal Python, `32/32` under `python -O`, and `py_compile`. This is a source/shape receipt only; it is **not** the outstanding repo-mounted R01 census or full-interpreter execution receipt.
 
 ## Next evidence
 
-Use the existing full-interpreter lockstep harness to add paired same-callback controls that differ only by this certified adjacent swap, then census the current authored/native returned-action surface for natural WHEAT/FERT rows with adjacent literal no-ops. A source certificate with zero natural reach remains a research result, not a reason to mint another scheduler.
+Run the source-pinned authored R01 census. If it yields candidates, separately census the final current-native returned actions before considering any gameplay seam. Independently execute the equal-horizon official-interpreter controls in both seats. A source certificate with zero authored reach, zero final-return reach, or failed constructed controls is a research result, not a reason to mint another scheduler.
