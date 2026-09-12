@@ -2,9 +2,10 @@
 """Run source-pinned, config-only current-native TITAN ablations.
 
 Research only: uses the existing process-isolated official-engine evaluator.
-The package is read-only; a wrapper changes one constructor flag in a fresh
-agent process. The unchanged literal package entrypoint is always the rival.
-No external network, hosted runs, production changes, or learned policy.
+Each job captures the complete authenticated package once, materializes those
+bytes into a private frozen tree, and executes only that tree. The unchanged
+literal package entrypoint is always the rival. No external network, hosted
+runs, production changes, or learned policy.
 """
 from __future__ import annotations
 
@@ -16,7 +17,7 @@ import hashlib
 import importlib.util
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import statistics
 import subprocess
 import sys
@@ -41,41 +42,79 @@ def write_json(path: Path, value: Any) -> None:
     path.write_bytes(encoded(value) + b'\n')
 
 
-def verify_package(root: Path) -> dict[str, Any]:
+def _safe_runtime_member(relative: Any) -> str:
+    if not isinstance(relative, str) or not relative or '\\' in relative:
+        raise ValueError(f'Unsafe package member: {relative!r}')
+    path = PurePosixPath(relative)
+    if path.is_absolute() or path.as_posix() != relative or any(
+            part in ('', '.', '..') for part in path.parts):
+        raise ValueError(f'Unsafe package member: {relative!r}')
+    return relative
+
+
+def capture_package(root: Path) -> tuple[dict[str, Any], dict[str, bytes]]:
+    """Authenticate and capture SOURCE plus every declared runtime byte once."""
     root = root.resolve(strict=True)
     raw = (root / 'SOURCE.json').read_bytes()
     if digest(raw) != SOURCE_SHA256:
         raise ValueError('Wrong current-native source manifest; do not label a partial artifact current')
     manifest = json.loads(raw)
-    allowed = set(manifest['runtime']) | {'SOURCE.json'}
+    runtime = manifest.get('runtime')
+    if type(runtime) is not dict or len(runtime) != 109:
+        raise ValueError('Incomplete declared runtime closure')
+    declared = {_safe_runtime_member(relative) for relative in runtime}
+    allowed = declared | {'SOURCE.json'}
     extras = [str(p.relative_to(root)) for p in root.rglob('*')
               if p.is_file() and '__pycache__' not in p.parts
               and str(p.relative_to(root)) not in allowed]
     if extras:
         raise ValueError(f'Undeclared package files: {extras[:5]}')
-    if len(manifest['runtime']) != 109:
-        raise ValueError('Incomplete declared runtime closure')
-    for relative, pin in manifest['runtime'].items():
+
+    captured: dict[str, bytes] = {'SOURCE.json': raw}
+    for relative, pin in runtime.items():
+        relative = _safe_runtime_member(relative)
+        if type(pin) is not dict or set(pin) < {'bytes', 'sha256'}:
+            raise ValueError(f'Incomplete package pin: {relative}')
         path = root / relative
         if path.is_symlink() or not path.resolve(strict=True).is_relative_to(root):
             raise ValueError(f'Unsafe package member: {relative}')
         data = path.read_bytes()
         if len(data) != pin['bytes'] or digest(data) != pin['sha256']:
             raise ValueError(f'Package mismatch: {relative}')
-    # A changed config is not a baseline. All experiments happen in wrappers.
-    config = json.loads((root / 'TITAN-CONFIG.json').read_bytes())
+        captured[relative] = data
+
+    config_raw = captured.get('TITAN-CONFIG.json')
+    if config_raw is None:
+        raise ValueError('Authenticated runtime is missing TITAN-CONFIG.json')
+    config = json.loads(config_raw)
     if any(config.get(feature) is not True for feature in FEATURES):
         raise ValueError('Requested ablation is not enabled in the authenticated baseline')
-    return {'source_manifest_sha256': SOURCE_SHA256,
+    pins = {'source_manifest_sha256': SOURCE_SHA256,
             'archive_sha256': ARCHIVE_SHA256, 'runtime_files': 109,
-            'default_config': config}
+            'default_config': config,
+            'capture_sha256': digest(encoded({name: digest(data)
+                                               for name, data in sorted(captured.items())}))}
+    return pins, captured
+
+
+def verify_package(root: Path) -> dict[str, Any]:
+    """Compatibility verifier; execution callers should retain capture_package bytes."""
+    return capture_package(root)[0]
+
+
+def materialize_capture(destination: Path, captured: dict[str, bytes]) -> None:
+    """Write only previously authenticated buffers into a new private tree."""
+    destination.mkdir(parents=True, exist_ok=False)
+    for relative, data in captured.items():
+        relative = 'SOURCE.json' if relative == 'SOURCE.json' else _safe_runtime_member(relative)
+        target = destination / PurePosixPath(relative)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
 
 
 def wrapper_text(root: Path, feature: str | None) -> str:
     if feature is not None and feature not in FEATURES:
         raise ValueError(f'Unsupported one-feature intervention: {feature!r}')
-    # repr quotes the local path and controlled feature literal. This wrapper
-    # intercepts only constructor data; original entrypoint/deadlines remain.
     overrides = {} if feature is None else {feature: False}
     return f'''# Generated diagnostic wrapper; not a production entrypoint.
 from pathlib import Path
@@ -102,7 +141,6 @@ def make_plan(seeds: list[int], features: list[str]) -> list[dict[str, Any]]:
     if not features or len(set(features)) != len(features) or any(f not in FEATURES for f in features):
         raise ValueError('Use distinct supported feature names')
     rows = []
-    # Literal base is first; sham reproduces base without a flag change.
     for variant in ['base', 'sham', *features]:
         for seed in seeds:
             for seat in (0, 1):
@@ -121,58 +159,74 @@ class TraceEngine:
         return getattr(self.engine, name)
 
     def interpreter(self, state: Any, env: Any) -> Any:
-        # Initialized callbacks have player and complete farms. Record raw
-        # actions before the engine can mutate state; JSON matches worker IPC.
         if state and state[0].observation.get('farms'):
             self.actions.append(json.loads(encoded([row.action for row in state])))
         return self.engine.interpreter(state, env)
 
 
 def run_job(job: dict[str, Any]) -> dict[str, Any]:
-    root = Path(job['root']).resolve(strict=True)
-    verify_package(root)
-    evaluator = root / 'checks/reference/evaluator/evaluate.py'
-    loader = root / 'checks/reference/evaluator/loader.py'
-    cache = root / 'checks/reference/engine'
-    spec = importlib.util.spec_from_file_location('_ablation_evaluator', evaluator)
-    if spec is None or spec.loader is None:
-        raise ValueError('Evaluator cannot be imported')
-    ev = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = ev
-    spec.loader.exec_module(ev)
-    engine, hashes = ev.get_engine(cache, loader)
-    proxy = TraceEngine(engine)
-    candidate, rival = job['candidate'], str(root / 'main.py')
-    seat = job['candidate_seat']
-    specs = [candidate, rival] if seat == 0 else [rival, candidate]
-    result = ev.play(proxy, specs, cache, loader, job['seed'], seat,
-                     rng_seed=20260907, action_timeout=1.0,
-                     startup_timeout=10.0, game_timeout=120.0)
-    result.update(id=job['id'], variant=job['variant'], opponent='literal-current-native',
-                  evaluator_sha256=digest(evaluator.read_bytes()), engine_sha256=hashes,
-                  source_manifest_sha256=SOURCE_SHA256,
-                  candidate_entry_sha256=digest(Path(candidate).read_bytes()))
-    result['action_sha256'] = digest(encoded(proxy.actions))
-    result['recorded_action_callbacks'] = len(proxy.actions)
-    result['unit_verbs'] = []
-    result['market_verbs'] = []
-    for player in (0, 1):
-        units, market = Counter(), Counter()
-        for pair in proxy.actions:
-            action = pair[player]
-            for row in [action.get('farmer', []), *action.get('hands', [])]:
-                if isinstance(row, list) and row:
-                    units[str(row[0])] += 1
-            for row in action.get('market', []):
-                if isinstance(row, list) and row:
-                    market[str(row[0])] += 1
-        result['unit_verbs'].append(dict(units))
-        result['market_verbs'].append(dict(market))
-    tape = Path(job['tape'])
-    tape.write_bytes(gzip.compress(encoded(proxy.actions), mtime=0))
-    result['tape_sha256'] = digest(tape.read_bytes())
-    result['tape_file'] = tape.name
-    return result
+    source_root = Path(job['root']).resolve(strict=True)
+    pins, captured = capture_package(source_root)
+    with tempfile.TemporaryDirectory(prefix='titan-native-ablation-') as td:
+        private = Path(td)
+        root = private / 'package'
+        materialize_capture(root, captured)
+        evaluator = root / 'checks/reference/evaluator/evaluate.py'
+        loader = root / 'checks/reference/evaluator/loader.py'
+        cache = root / 'checks/reference/engine'
+        spec = importlib.util.spec_from_file_location('_ablation_evaluator', evaluator)
+        if spec is None or spec.loader is None:
+            raise ValueError('Evaluator cannot be imported')
+        ev = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = ev
+        spec.loader.exec_module(ev)
+        engine, hashes = ev.get_engine(cache, loader)
+        proxy = TraceEngine(engine)
+
+        variant = job['variant']
+        if variant == 'base':
+            candidate = root / 'main.py'
+            candidate_bytes = captured['main.py']
+        else:
+            feature = None if variant == 'sham' else variant
+            candidate = private / f'{variant}.py'
+            candidate_bytes = wrapper_text(root, feature).encode()
+            candidate.write_bytes(candidate_bytes)
+        rival = str(root / 'main.py')
+        seat = job['candidate_seat']
+        specs = [str(candidate), rival] if seat == 0 else [rival, str(candidate)]
+        result = ev.play(proxy, specs, cache, loader, job['seed'], seat,
+                         rng_seed=20260907, action_timeout=1.0,
+                         startup_timeout=10.0, game_timeout=120.0)
+        result.update(id=job['id'], variant=variant,
+                      seed=job['seed'], candidate_seat=seat,
+                      opponent='literal-current-native',
+                      evaluator_sha256=digest(captured['checks/reference/evaluator/evaluate.py']),
+                      engine_sha256=hashes,
+                      source_manifest_sha256=SOURCE_SHA256,
+                      package_capture_sha256=pins['capture_sha256'],
+                      candidate_entry_sha256=digest(candidate_bytes))
+        result['action_sha256'] = digest(encoded(proxy.actions))
+        result['recorded_action_callbacks'] = len(proxy.actions)
+        result['unit_verbs'] = []
+        result['market_verbs'] = []
+        for player in (0, 1):
+            units, market = Counter(), Counter()
+            for pair in proxy.actions:
+                action = pair[player]
+                for row in [action.get('farmer', []), *action.get('hands', [])]:
+                    if isinstance(row, list) and row:
+                        units[str(row[0])] += 1
+                for row in action.get('market', []):
+                    if isinstance(row, list) and row:
+                        market[str(row[0])] += 1
+            result['unit_verbs'].append(dict(units))
+            result['market_verbs'].append(dict(market))
+        tape = Path(job['tape'])
+        tape.write_bytes(gzip.compress(encoded(proxy.actions), mtime=0))
+        result['tape_sha256'] = digest(tape.read_bytes())
+        result['tape_file'] = tape.name
+        return result
 
 
 def run_child(job: dict[str, Any], directory: Path) -> dict[str, Any]:
@@ -191,11 +245,27 @@ def run_child(job: dict[str, Any], directory: Path) -> dict[str, Any]:
     return json.loads(result_path.read_bytes())
 
 
-def paired_report(plan: list[dict[str, Any]], results: list[dict[str, Any]], tapes: Path) -> dict[str, Any]:
-    expected = {row['id'] for row in plan}
-    by_id = {row['id']: row for row in results}
-    if len(by_id) != len(results) or set(by_id) != expected:
+def _bind_results_to_plan(plan: list[dict[str, Any]], results: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    expected = {row['id']: row for row in plan}
+    by_id = {row.get('id'): row for row in results}
+    if len(expected) != len(plan):
+        raise ValueError('Duplicate planned game ids')
+    if len(by_id) != len(results) or set(by_id) != set(expected):
         raise ValueError('Missing, duplicate or unplanned game results')
+    for result_id, result in by_id.items():
+        planned = expected[result_id]
+        for field in ('variant', 'seed', 'candidate_seat'):
+            actual = result.get(field)
+            wanted = planned[field]
+            if type(actual) is not type(wanted) or actual != wanted:
+                raise ValueError(
+                    f'Result coordinates disagree with PLAN for {result_id}: {field}'
+                )
+    return by_id
+
+
+def paired_report(plan: list[dict[str, Any]], results: list[dict[str, Any]], tapes: Path) -> dict[str, Any]:
+    _bind_results_to_plan(plan, results)
     baseline = {(r['seed'], r['candidate_seat']): r for r in results if r['variant'] == 'base'}
     sham, pairs, failures = [], [], []
     for row in results:
@@ -282,14 +352,8 @@ def main() -> int:
     write_json(directory / 'PLAN.json', {'plan': plan, 'pins': pins, 'rng_seed': 20260907,
         'limits': {'rpc_seconds': 1.0, 'game_seconds': 120.0},
         'runner_sha256': digest(Path(__file__).read_bytes()), 'python': sys.version})
-    wrappers = directory / 'wrappers'; wrappers.mkdir()
-    for name in ['sham', *args.features.split(',')]:
-        (wrappers / f'{name}.py').write_text(wrapper_text(root, None if name == 'sham' else name))
-    jobs = []
-    for row in plan:
-        candidate = root / 'main.py' if row['variant'] == 'base' else wrappers / (row['variant'] + '.py')
-        jobs.append(dict(row, root=str(root), candidate=str(candidate),
-                         tape=str(directory / (row['id'] + '.actions.json.gz'))))
+    jobs = [dict(row, root=str(root), tape=str(directory / (row['id'] + '.actions.json.gz')))
+            for row in plan]
     results = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = {pool.submit(run_child, job, directory): job for job in jobs}
@@ -302,11 +366,11 @@ def main() -> int:
                 write_json(directory / (job['id'] + '.json'), result)
             results.append(result)
             print(json.dumps({k: result.get(k) for k in ('id','status','scores','failure')}, allow_nan=False), flush=True)
-    results.sort(key=lambda r: [p['id'] for p in plan].index(r['id']))
+    order = {row['id']: index for index, row in enumerate(plan)}
+    results.sort(key=lambda r: order[r['id']])
     report = paired_report(plan, results, directory)
     write_json(directory / 'RESULTS.json', results)
     write_json(directory / 'REPORT.json', report)
-    # Ensure no experiment changed the read-only reference package.
     verify_package(root)
     print(json.dumps({'summary': report['summary'], 'sham_control_gate': report['sham_control_gate']}, indent=2), flush=True)
     return int(bool(report['failed_or_unpaired_ids']) or not report['sham_control_gate'])
