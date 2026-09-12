@@ -56,6 +56,12 @@ def _minimal_files() -> dict[str, bytes]:
     }
 
 
+def _capture_synthetic(package: Path):
+    return census._capture_native_runtime(
+        package, required_git_blobs={}, required_source_sha256=None
+    )
+
+
 class NativeCensusImmutableCustodyTests(unittest.TestCase):
     def test_admission_helper_executes_captured_bytes_after_path_replacement(self):
         canonical = (census.HERE / "unit_pipeline_admission.py").read_bytes()
@@ -72,6 +78,21 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             self.assertFalse(report["changed"])
             self.assertEqual(report["refusals"], {"disabled": 1})
 
+    def test_source_identity_blocks_self_consistent_runtime_rebinding(self):
+        with tempfile.TemporaryDirectory() as td:
+            package = Path(td) / "native"
+            package.mkdir()
+            files = _minimal_files()
+            files["scheduler.py"] = b"ORIGINAL = True\n"
+            _write_package(package, files)
+            # Attacker changes a non-core runtime member and honestly rebinds its
+            # manifest row. Row-level custody is self-consistent; canonical
+            # SOURCE identity must reject the forged artifact before row use.
+            files["scheduler.py"] = b"ATTACKER = True\n"
+            _write_package(package, files)
+            with self.assertRaisesRegex(ValueError, "SOURCE.json SHA-256 mismatch"):
+                census._capture_native_runtime(package, required_git_blobs={})
+
     def test_runtime_capture_survives_source_path_replacement(self):
         with tempfile.TemporaryDirectory() as td:
             package = Path(td) / "native"
@@ -79,7 +100,7 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             files = _minimal_files()
             files["declared.txt"] = b"declared-original\n"
             _write_package(package, files)
-            capture = census._capture_native_runtime(package, required_git_blobs={})
+            capture = _capture_synthetic(package)
             for member in files:
                 (package / member).write_bytes(b"attacker-replacement\n")
             frozen = census._materialize_frozen_runtime(capture)
@@ -92,7 +113,7 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             package.mkdir()
             files = _minimal_files()
             _write_package(package, files)
-            capture = census._capture_native_runtime(package, required_git_blobs={})
+            capture = _capture_synthetic(package)
             (package / "main.py").write_text("raise RuntimeError('live main reopened')\n", encoding="utf-8")
             (package / "checks/test_engine_semantics.py").write_text(
                 "raise RuntimeError('live fixture reopened')\n", encoding="utf-8"
@@ -116,7 +137,7 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             files = _minimal_files()
             _write_package(package, files)
             (package / "rogue.py").write_text("raise RuntimeError('undeclared authority')\n", encoding="utf-8")
-            capture = census._capture_native_runtime(package, required_git_blobs={})
+            capture = _capture_synthetic(package)
             frozen = census._materialize_frozen_runtime(capture)
             self.assertFalse((frozen / "rogue.py").exists())
             self.assertNotIn("rogue.py", capture["runtime"])
@@ -131,7 +152,9 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             runtime["main.py"]["sha256"] = "0" * 64
             _write_package(package, files, runtime_override=runtime)
             with self.assertRaisesRegex(ValueError, "SHA-256 mismatch"):
-                census._capture_native_runtime(package, required_git_blobs={})
+                census._capture_native_runtime(
+                    package, required_git_blobs={}, required_source_sha256=None
+                )
 
     def test_runtime_member_symlink_fails_closed(self):
         if not hasattr(os, "symlink"):
@@ -147,7 +170,9 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             (package / "main.py").unlink()
             (package / "main.py").symlink_to(target)
             with self.assertRaises((OSError, ValueError)):
-                census._capture_native_runtime(package, required_git_blobs={})
+                census._capture_native_runtime(
+                    package, required_git_blobs={}, required_source_sha256=None
+                )
 
     def test_unsafe_runtime_member_path_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
@@ -158,7 +183,9 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             runtime["../escape.py"] = _runtime_row("../escape.py", b"escape\n")
             _write_package(package, files, runtime_override=runtime)
             with self.assertRaisesRegex(ValueError, "unsafe runtime member path"):
-                census._capture_native_runtime(package, required_git_blobs={})
+                census._capture_native_runtime(
+                    package, required_git_blobs={}, required_source_sha256=None
+                )
 
     def test_duplicate_source_json_key_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
@@ -172,7 +199,9 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "duplicate JSON object key"):
-                census._capture_native_runtime(package, required_git_blobs={})
+                census._capture_native_runtime(
+                    package, required_git_blobs={}, required_source_sha256=None
+                )
 
     def test_runtime_row_extra_authority_field_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
@@ -183,7 +212,9 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             runtime["main.py"] = {**runtime["main.py"], "authority": True}
             _write_package(package, files, runtime_override=runtime)
             with self.assertRaisesRegex(ValueError, "unexpected shape"):
-                census._capture_native_runtime(package, required_git_blobs={})
+                census._capture_native_runtime(
+                    package, required_git_blobs={}, required_source_sha256=None
+                )
 
 
 if __name__ == "__main__":
