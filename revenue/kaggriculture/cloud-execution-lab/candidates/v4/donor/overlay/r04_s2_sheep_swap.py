@@ -89,6 +89,82 @@ def _valid_observation(obs: Any) -> bool:
     return True
 
 
+def _literal_nonnegative_int(value: Any) -> bool:
+    return type(value) is int and value >= 0
+
+
+def _safe_numeric_observation(obs: Any) -> bool:
+    """Reject numeric poison before S2 can mutate state or coerce it with int()."""
+    try:
+        player = obs["player"]
+        farm = obs["farms"][player]
+        private = obs["private"]
+        shed = private["shed"]
+        inventories = private["inventories"]
+        prices = obs["market"]["prices"]
+        shops = obs["town"]["unlocked_shops"]
+        tiles = farm["tiles"]
+    except (KeyError, IndexError, TypeError):
+        return False
+
+    if not isinstance(shed, dict) or not isinstance(prices, dict) or not isinstance(shops, list):
+        return False
+    if any(type(item) is not str for item in shops):
+        return False
+    if not _literal_nonnegative_int(farm.get("money", 0)):
+        return False
+    if any(type(item) is not str or not _literal_nonnegative_int(count)
+           for item, count in shed.items()):
+        return False
+    for inventory in inventories:
+        if not isinstance(inventory, dict):
+            return False
+        if any(type(item) is not str or not _literal_nonnegative_int(count)
+               for item, count in inventory.items()):
+            return False
+    for item in ("WOOL", "MILK"):
+        if item in prices and not _literal_nonnegative_int(prices[item]):
+            return False
+    for row in tiles:
+        for tile in row:
+            if isinstance(tile, dict) and "yield_units" in tile:
+                if not _literal_nonnegative_int(tile["yield_units"]):
+                    return False
+    return True
+
+
+def _safe_parent_numerics(parent_action: Any) -> bool:
+    """Validate only parent fields S2 later feeds through int()."""
+    if not isinstance(parent_action, dict):
+        return False
+    market = parent_action.get("market")
+    if not isinstance(market, list):
+        return False
+    farmer = parent_action.get("farmer")
+    hands = parent_action.get("hands")
+    if farmer is not None and not isinstance(farmer, list):
+        return False
+    if hands is not None and not isinstance(hands, list):
+        return False
+    commands = []
+    if isinstance(farmer, list):
+        commands.append(farmer)
+    if isinstance(hands, list):
+        commands.extend(hands)
+    for command in commands:
+        if not isinstance(command, list) or not command:
+            continue
+        if command[0] in ("PICKUP", "PLACE") and len(command) >= 3:
+            if not _literal_nonnegative_int(command[2]):
+                return False
+    for order in market[:MAX_ORDERS]:
+        if (isinstance(order, list) and len(order) >= 3
+                and order[:2] == ["SELL", "WOOL"]
+                and not _literal_nonnegative_int(order[2])):
+            return False
+    return True
+
+
 def _beside_shed(position: Any, board_size: int = 10) -> bool:
     if not (isinstance(position, (list, tuple)) and len(position) == 2):
         return False
@@ -206,12 +282,10 @@ def apply_s2_swap(
     native_tape: Any,
 ) -> dict[str, Any]:
     """Apply one S2 callback; return exact parent object whenever the theorem is not proven."""
-    if not enabled or not _exact_standard(configuration) or not _valid_observation(observation):
-        return parent_action
-
-    # Reject an unusable parent before consuming any pending transaction.
-    if (not isinstance(parent_action, dict)
-            or not isinstance(parent_action.get("market"), list)):
+    if (enabled is not True or not _exact_standard(configuration)
+            or not _valid_observation(observation)
+            or not _safe_numeric_observation(observation)
+            or not _safe_parent_numerics(parent_action)):
         return parent_action
 
     step = observation.get("step")
