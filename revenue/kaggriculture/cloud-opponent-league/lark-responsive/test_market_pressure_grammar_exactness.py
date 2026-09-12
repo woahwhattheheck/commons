@@ -1,4 +1,5 @@
-"""Exact SELL-row grammar shared by sell-priority and pressure-priority."""
+"""Official engine SELL grammar shared by sell-priority and pressure-priority."""
+import copy
 import unittest
 
 from pressure_priority import transform as pressure_transform
@@ -25,8 +26,72 @@ def curve(item, stock, params=None):
 
 
 class MarketPressureGrammarExactnessTests(unittest.TestCase):
-    def test_malformed_quantity_aliases_are_barriers_in_both_transforms(self):
-        for quantity in (True, 2.0, "2"):
+    def test_engine_accepted_quantity_coercions_remain_eligible_and_byte_exact(self):
+        for quantity in (True, 2.0, 2.9, "2"):
+            with self.subTest(quantity=quantity):
+                milk = ["SELL", "MILK", quantity]
+                sell_action = {
+                    "market": [
+                        ["SELL", "WHEAT", 1],
+                        list(milk),
+                        ["SELL", "WOOL", 1],
+                    ]
+                }
+                sell_before = copy.deepcopy(sell_action)
+                self.assertEqual(
+                    sell_transform(sell_action, observation())["market"],
+                    [["SELL", "WOOL", 1], milk, ["SELL", "WHEAT", 1]],
+                )
+                self.assertEqual(sell_action, sell_before)
+
+                pressure_action = {
+                    "market": [
+                        ["SELL", "WOOL", 1],
+                        list(milk),
+                        ["SELL", "WHEAT", 1],
+                    ]
+                }
+                pressure_before = copy.deepcopy(pressure_action)
+                self.assertEqual(
+                    pressure_transform(
+                        pressure_action, observation(), {}, quote=curve
+                    )["market"],
+                    [milk, ["SELL", "WHEAT", 1], ["SELL", "WOOL", 1]],
+                )
+                self.assertEqual(pressure_action, pressure_before)
+
+    def test_engine_accepted_trailing_fields_remain_eligible_and_byte_exact(self):
+        milk = ["SELL", "MILK", 2, "ignored-by-engine", {"metadata": True}]
+        sell_action = {
+            "market": [
+                ["SELL", "WHEAT", 1],
+                copy.deepcopy(milk),
+                ["SELL", "WOOL", 1],
+            ]
+        }
+        sell_before = copy.deepcopy(sell_action)
+        self.assertEqual(
+            sell_transform(sell_action, observation())["market"],
+            [["SELL", "WOOL", 1], milk, ["SELL", "WHEAT", 1]],
+        )
+        self.assertEqual(sell_action, sell_before)
+
+        pressure_action = {
+            "market": [
+                ["SELL", "WOOL", 1],
+                copy.deepcopy(milk),
+                ["SELL", "WHEAT", 1],
+            ]
+        }
+        pressure_before = copy.deepcopy(pressure_action)
+        self.assertEqual(
+            pressure_transform(pressure_action, observation(), {}, quote=curve)["market"],
+            [milk, ["SELL", "WHEAT", 1], ["SELL", "WOOL", 1]],
+        )
+        self.assertEqual(pressure_action, pressure_before)
+
+    def test_engine_rejected_nonpositive_or_uncoercible_quantities_are_barriers(self):
+        for quantity in (False, 0, -1, 0.5, "0", "2.5", None, []):
             with self.subTest(quantity=quantity):
                 sell_action = {
                     "market": [
@@ -35,9 +100,7 @@ class MarketPressureGrammarExactnessTests(unittest.TestCase):
                         ["SELL", "WOOL", 1],
                     ]
                 }
-                self.assertEqual(
-                    sell_transform(sell_action, observation()), sell_action
-                )
+                self.assertEqual(sell_transform(sell_action, observation()), sell_action)
 
                 pressure_action = {
                     "market": [
@@ -52,29 +115,6 @@ class MarketPressureGrammarExactnessTests(unittest.TestCase):
                     ),
                     pressure_action,
                 )
-
-    def test_extra_sell_fields_are_a_barrier_in_both_transforms(self):
-        malformed = ["SELL", "MILK", 2, "unexpected"]
-        sell_action = {
-            "market": [
-                ["SELL", "WHEAT", 1],
-                list(malformed),
-                ["SELL", "WOOL", 1],
-            ]
-        }
-        self.assertEqual(sell_transform(sell_action, observation()), sell_action)
-
-        pressure_action = {
-            "market": [
-                ["SELL", "WOOL", 1],
-                list(malformed),
-                ["SELL", "WHEAT", 1],
-            ]
-        }
-        self.assertEqual(
-            pressure_transform(pressure_action, observation(), {}, quote=curve),
-            pressure_action,
-        )
 
     def test_valid_plain_integer_rows_keep_existing_behavior(self):
         sell_action = {
