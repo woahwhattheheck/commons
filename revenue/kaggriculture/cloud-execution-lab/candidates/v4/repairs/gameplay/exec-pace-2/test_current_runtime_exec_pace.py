@@ -247,8 +247,9 @@ class ComposerTests(unittest.TestCase):
         self.assertIs(parsed["exec_pace"], False)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
         self.assertEqual(titan.count("_exec_pace_fallback_observations"), 4)
-        self.assertEqual(frozen.count("exec_pace_apply"), 3)
-        self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
+        self.assertEqual(
+            frozen.count("exec_pace_apply(exec_pace_state,item,reference,plan,info)"), 1)
+        self.assertEqual(frozen.count("getattr(self,'exec_pace_apply',None)"), 1)
         self.assertNotIn("gate_plan(reference.get", frozen)
 
 
