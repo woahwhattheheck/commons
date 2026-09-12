@@ -36,6 +36,12 @@ V4_CONFIG = b'''{
 '''
 
 
+class CapturedArchiveHelper:
+    @staticmethod
+    def archive_members(path):
+        return {"captured.tar.gz": Path(path).read_bytes()}
+
+
 class FactorialTests(unittest.TestCase):
     def baseline(self):
         return {
@@ -64,6 +70,58 @@ class FactorialTests(unittest.TestCase):
             loaded = MODULE.load_captured(captured, path, "factorial_captured_helper_test")
         self.assertEqual(loaded.VALUE, "trusted")
         self.assertEqual(captured, trusted)
+
+    def test_authenticated_helper_uses_captured_bytes_after_path_deletion(self):
+        trusted = b"VALUE = 'trusted'\n"
+        expected = MODULE.git_blob_bytes(trusted)
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "helper.py"
+            path.write_bytes(trusted)
+            captured = MODULE.capture_authenticated(path, expected)
+            path.unlink()
+            loaded = MODULE.load_captured(captured, path, "factorial_deleted_helper_test")
+        self.assertEqual(loaded.VALUE, "trusted")
+        self.assertEqual(captured, trusted)
+
+    def test_captured_baseline_ignores_live_path_mutation(self):
+        trusted = b"trusted exact submitted archive bytes"
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "submitted-v4.tar.gz"
+            path.write_bytes(trusted)
+            captured = MODULE.capture_sha256(
+                path, MODULE.sha256_bytes(trusted), "Baseline archive"
+            )
+            path.write_bytes(b"tampered after authentication")
+            members = MODULE.archive_members_captured(CapturedArchiveHelper, captured)
+        self.assertEqual(members, {"captured.tar.gz": trusted})
+
+    def test_captured_baseline_ignores_live_path_deletion(self):
+        trusted = b"trusted exact submitted archive bytes"
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "submitted-v4.tar.gz"
+            path.write_bytes(trusted)
+            captured = MODULE.capture_sha256(
+                path, MODULE.sha256_bytes(trusted), "Baseline archive"
+            )
+            path.unlink()
+            members = MODULE.archive_members_captured(CapturedArchiveHelper, captured)
+        self.assertEqual(members, {"captured.tar.gz": trusted})
+
+    def test_capture_sha256_rejects_drift_and_symlink(self):
+        trusted = b"trusted"
+        expected = MODULE.sha256_bytes(trusted)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            path = root / "baseline.tar.gz"
+            path.write_bytes(b"wrong")
+            with self.assertRaises(ValueError):
+                MODULE.capture_sha256(path, expected, "Baseline archive")
+            target = root / "target.tar.gz"
+            target.write_bytes(trusted)
+            link = root / "link.tar.gz"
+            link.symlink_to(target)
+            with self.assertRaises(ValueError):
+                MODULE.capture_sha256(link, expected, "Baseline archive")
 
     def test_screen_is_v4_v31_like_plus_each_single_off(self):
         self.assertEqual(tuple(MODULE.design_arms("screen")), MODULE.SCREEN_ARMS)
