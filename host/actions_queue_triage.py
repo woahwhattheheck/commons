@@ -206,8 +206,9 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
         return finish("LIVE_PR_HEAD_KEEP", f"exact SHA is current head of open PR(s) {sorted(nums)}")
 
     # Exact branch tip is also a keep proof. For fork PRs, base-repo branch
-    # inventory does not establish absence, so only compare same-repo branches.
-    same_repo = not head_repo or head_repo == repo
+    # inventory does not establish absence, so only compare positively identified
+    # same-repo branches. Missing repository provenance must fail closed.
+    same_repo = head_repo == repo
     if same_repo and isinstance(branch, str) and snapshot.branch_tips.get(branch) == sha_norm:
         return finish("LIVE_BRANCH_HEAD_KEEP", f"exact SHA is current tip of branch {branch}")
 
