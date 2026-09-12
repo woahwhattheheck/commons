@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 """Bind shipped history and terminal consumers to TITAN's selected-action path."""
-from copy import deepcopy
+from copy import copy,deepcopy
 from pathlib import Path
 import random
 import sys
@@ -51,11 +51,19 @@ class TerminalHistoryJoin:
             weighted.make_selector,utility.build_table,full.solve_full_table,
             full.verify_certificate,rng=random.Random(0),tie_break=self.tie_break)
 
+    def _observation_working_bridge(self):
+        """Fork only mutable history state; keep injected code dependencies shared."""
+        working=copy(self.bridge)
+        working.ledger=deepcopy(self.bridge.ledger)
+        working.history=deepcopy(self.bridge.history)
+        working.pending=deepcopy(self.bridge.pending)
+        return working
+
     def observe(self, obs):
-        """Bind the ACTUALLY returned prior action, then reconcile once."""
-        self.diagnostics={}
-        self.fill_result=None
-        if self.pending is None:return
+        """Bind the ACTUALLY returned prior action, then reconcile atomically."""
+        if self.pending is None:
+            self.diagnostics={};self.fill_result=None
+            return
         before,cfg,final,post=self.pending
         now=int(obs['step']);prior=int(before['step'])
         if now<prior:
@@ -63,13 +71,24 @@ class TerminalHistoryJoin:
             # pending action across it; a later step could otherwise cross-link
             # the prior episode into the new history. Exact retries stay pending.
             self.pending=None
+            self.diagnostics={};self.fill_result=None
             return
-        if now==prior:return
+        if now==prior:
+            self.diagnostics={};self.fill_result=None
+            return
+        # record()/observe() mutate the fill ledger, bridge cursor and FlowHistory.
+        # Run that whole transition on private mutable state. A hard deadline may
+        # interrupt at any bytecode boundary; no live receipt/history state is
+        # published until every reconciliation step and its result copy finish.
+        working=self._observation_working_bridge()
+        working.record(before,cfg,final,post_unit_shed=post['private']['shed'],
+                       post_unit_inventories=post['private']['inventories'])
+        observed=working.observe(obs)
+        fill_result=deepcopy(working.ledger.last_result)
+        self.bridge=working
         self.pending=None
-        self.bridge.record(before,cfg,final,post_unit_shed=post['private']['shed'],
-                           post_unit_inventories=post['private']['inventories'])
-        self.diagnostics['observed_fills']=self.bridge.observe(obs)
-        self.fill_result=deepcopy(self.bridge.ledger.last_result)
+        self.diagnostics={'observed_fills':observed}
+        self.fill_result=fill_result
 
     def remember(self, obs, cfg, final, post):
         # A canceled unit stage has no final snapshot. Do not record a requested
