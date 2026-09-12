@@ -164,11 +164,32 @@ def _path(a: tuple[int, int], b: tuple[int, int]) -> list[tuple]:
     return out
 
 
-def _position(mechanics: Any, farm: Mapping, worker: int) -> tuple[int, int]:
+def _position(mechanics: Any, farm: Mapping, worker: int, board: int) -> tuple[int, int]:
     pos = mechanics._farmer_position(farm, worker)
-    if pos is None or len(pos) < 2:
-        raise JointAssignmentError(f"worker {worker} has no position")
-    return int(pos[0]), int(pos[1])
+    if (
+        not isinstance(pos, Sequence)
+        or isinstance(pos, (str, bytes))
+        or len(pos) != 2
+        or type(pos[0]) is not int
+        or type(pos[1]) is not int
+    ):
+        raise JointAssignmentError(f"worker {worker} has no exact integer position")
+    point = (pos[0], pos[1])
+    if not (0 <= point[0] < board and 0 <= point[1] < board):
+        raise JointAssignmentError(f"worker {worker} position is out of bounds")
+    return point
+
+
+def _pickup_request(action: Sequence) -> Optional[int]:
+    if len(action) not in (2, 3):
+        return None
+    item = action[1]
+    if not isinstance(item, str) or not item:
+        return None
+    requested = action[2] if len(action) == 3 else 1
+    if type(requested) is not int or requested <= 0:
+        return None
+    return requested
 
 
 def _extract_bundle(
@@ -180,7 +201,7 @@ def _extract_bundle(
     end_step: int,
     board: int,
 ) -> tuple[Optional[Bundle], str]:
-    pos = _position(mechanics, farm, worker)
+    pos = _position(mechanics, farm, worker, board)
     start = pos
     actions: list[tuple] = []
     events: list[BundleEvent] = []
@@ -198,6 +219,8 @@ def _extract_bundle(
         elif op == "PASS":
             continue
         elif op in EVENTS:
+            if op == "PICKUP" and _pickup_request(action) is None:
+                return None, "malformed_pickup"
             events.append(BundleEvent(offset, step, pos, action))
         else:
             return None, "unsupported_bundle_action"
@@ -262,12 +285,10 @@ def _event_effect(
 
 
 def _pickup_full(before_private: Mapping, after_private: Mapping, worker: int, action: Sequence) -> bool:
-    if len(action) < 2:
+    requested = _pickup_request(action)
+    if requested is None:
         return False
     item = action[1]
-    requested = int(action[2]) if len(action) >= 3 else 1
-    if requested <= 0:
-        return False
     before = before_private["inventories"][worker].get(item, 0)
     after = after_private["inventories"][worker].get(item, 0)
     return after - before == requested
