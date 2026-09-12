@@ -27,8 +27,7 @@ SUBMITTED_V31_ARCHIVE_SHA256 = (
 REQUIRED_SLOTS = (
     "sale_window_h8_l3",
     "h4_strawberry_topup",
-    "row_order",
-    "row_shed",
+    "row_order_shed",
     "evening_flush",
     "b5_carrot_jit",
     "fert_hand_boundary",
@@ -42,8 +41,7 @@ SUBMITTED_TOPOLOGY = {
     "inner_return_pipeline": [
         "sale_window_h8_l3",
         "h4_strawberry_topup",
-        "row_order",
-        "row_shed",
+        "row_order_shed",
         "evening_flush",
         "b5_carrot_jit",
     ],
@@ -58,8 +56,7 @@ SUBMITTED_TOPOLOGY = {
 CURRENT_RUNTIME_STAGES = {
     "sale_window_h8_l3": "selected_action",
     "h4_strawberry_topup": "selected_action",
-    "row_order": "selected_action",
-    "row_shed": "final_market_order",
+    "row_order_shed": "final_market_order",
     "evening_flush": "selected_action",
     "b5_carrot_jit": "selected_action",
     "fert_hand_boundary": "selected_action_boundary",
