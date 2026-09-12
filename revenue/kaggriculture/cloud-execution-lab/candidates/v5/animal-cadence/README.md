@@ -2,7 +2,7 @@
 
 Status: **default OFF / evaluation only**. This package is additive to canonical V5 and does not change `main.py`, `titan_runtime.py`, `TITAN-CONFIG.json`, the release archive, or Kaggle submission bytes.
 
-Promotion status: **BLOCKED pending matched current-line simulation evidence.** `certificate_builder.py` now provides one source-pinned certificate authority, but only for the narrow day-close/reset loop described below. The transform and builder remain uninstalled production candidates.
+Promotion status: **BLOCKED pending matched current-line simulation evidence.** `certificate_builder.py` provides one source-pinned certificate authority, but only for the narrow completed day-close/reset loop described below. The transform and builder remain uninstalled production candidates.
 
 ## Pinned engine theorem
 
@@ -32,26 +32,32 @@ The transform preserves market rows, other unit actions, action-slot topology, a
 
 ## Source-pinned day-close certificate authority
 
-`certificate_builder.py::build_next_feed_certificate(...)` admits only the mechanically closed reset case. Its source custody pins the extracted engine mechanics, Arlene producer, landed operating-stock theorem, canonical cadence candidate, SpatialTempo, and crop-release modules by Git blob.
+`certificate_builder.py::build_next_feed_certificate(..., completed=True)` admits only the mechanically closed reset case from a fully completed runtime action. Deadline/fallback actions are rejected before source loading or controller access.
 
-The authority requires the current step to be exact day close under the pinned 24-turn calendar. It first authenticates the current frozen-V5 feature profile: terminal route, fourth quadrant, spatial pathing and spatial tempo remain disabled, while operating-stock protection is installed. Current idle-fertilizer and crop-release flags must be exact booleans; their pinned source is part of the custody boundary.
+The authority pins the full official engine, extracted mechanics, Arlene producer, landed operating-stock theorem, canonical cadence candidate, canonical entrypoint and runtime, canonical config, FrozenSelected, seed funding/budget, redundant-hire, SpatialTempo, crop release, early capital, market-pressure/sell-priority, and town-procurement sources by exact Git blob. Source drift in any of those files invalidates the authority instead of inheriting the theorem implicitly.
 
-That feature profile matters because the currently enabled dynamic unit producers do not overwrite a legal future FEED: idle fertilizer can patch only literal PASS space, weed continuation stops before a FEED, the generic spatial/tempo rewrite is disabled, and crop release's unit substitution is an exact PLANT-WHEAT to PLANT-CARROT replacement. A future source or feature-profile change invalidates this authority instead of inheriting the theorem implicitly.
+The supplied feature profile must exactly match the current production composition: frozen consumer; seed/funding/committed/redundant-hire/market-pressure/operating-stock/idle-fertilizer/crop-release/early-capital/town-procurement enabled; terminal history/route, fourth quadrant, spatial pathing/tempo, and committed-seed-retry disabled. The caller must include the entrypoint-owned `town_procurement` flag rather than passing only `TitanAgent.Features`.
+
+That exact custody matters because current V5 has several late wrappers. Under the pinned profile, seed/funding, pressure, early-capital, and town-procurement operate on market rows; generic spatial/tempo rewriting is disabled; idle fertilizer owns literal PASS space; weed continuation stops before FEED; crop release's unit substitution is source-bound PLANT-WHEAT to PLANT-CARROT. Redundant-hire is the exceptional enabled wrapper that may change worker topology and mutate future route rows. The authority therefore rejects any raw next-day route containing a HIRE before certifying the window.
+
+The authority also binds canonical public clock semantics. After exact `turnsPerDay=24` resolution, redundant `day`/`hour` must either both be absent or both be plain bounded integers satisfying `step == day*turnsPerDay + hour`; partial, malformed, or contradictory clocks fail closed before dynamic module loading.
 
 For one deterministic current animal tile at a time, the builder:
 
+- requires the caller to attest a fully completed runtime action, never a deadline fallback;
 - authenticates the live controller route id against pinned Arlene and requires its completed prefix to retain pinned-source lineage;
 - hashes the exact live route tail with canonical JSON and binds that SHA256 into `route_identity`;
 - rejects a next-day window crossing any pinned producer decision checkpoint;
+- rejects any next-day raw HIRE surface under the enabled redundant-hire wrapper;
 - asks the canonical #13331 transform to produce a hypothetical current FEED-to-PASS postimage, then computes the exact completed current unit stage including aggregate PLANT atomicity;
 - reuses the landed operating-stock `_feed_window` and room bounds with no future sale or requested-purchase credit;
 - proves the saved carried WHEAT cannot be discarded by end-of-day capacity;
 - requires the main farmer to PICKUP protected WHEAT on the **first unit stage of the next day** at shed access; and
 - requires that same carried input to reach a later FEED on the exact skipped animal tile before next day close.
 
-The first-next-day pickup is the key market-ordering boundary. Unit actions run before market processing, so once the saved EOD WHEAT is recovered into the main farmer's inventory on that first next-day unit stage, a later dynamic WHEAT sale cannot consume that carried unit. The landed feed-window theorem separately rejects uncertified transfers, uncovered feeds, intervening route WHEAT sales before protected pickup, unfunded hires, unresolved animal replacement, and route checkpoints.
+The first-next-day pickup is the key market-ordering boundary. Unit actions run before market processing, so once the saved EOD WHEAT is recovered into the main farmer's inventory on that first next-day unit stage, the pinned market-row transforms cannot consume that carried unit. The landed feed-window theorem separately rejects uncertified transfers, uncovered feeds, intervening route WHEAT sales before protected pickup, unresolved animal replacement, and route checkpoints. The explicit HIRE rejection removes the current wrapper surface that could otherwise change next-day worker topology outside that raw-route model.
 
-This is deliberately narrower than “feed every other day.” It does not certify mid-day skips, late next-day pickups, unpinned route mutations, alternate feature profiles, or deadline/fallback execution. Those cases stay unchanged.
+This is deliberately narrower than “feed every other day.” It does not certify mid-day skips, late next-day pickups, next-day HIRE surfaces, unpinned route mutations, alternate feature profiles, or deadline/fallback execution. Those cases stay unchanged.
 
 ## Focused checks
 
@@ -68,10 +74,10 @@ python -m py_compile \
   candidates/v5/animal-cadence/test_certificate_builder.py
 ```
 
-The candidate tests call preserved engine predecessors for starvation, base production, CARE loss, duplicate-FEED spend, fertilizer refresh, and the FERTILIZE negative theorem. The authority suite adds exact source custody, route-tail binding, first-next-day pickup, checkpoint crossing, feature-profile drift, reset capacity, source-lineage drift, and canonical candidate round-trip cases.
+The candidate tests call preserved engine predecessors for starvation, base production, CARE loss, duplicate-FEED spend, fertilizer refresh, and the FERTILIZE negative theorem. The authority suite adds full wrapper/source custody, runtime-completion custody, public-clock identity, route-tail binding, next-day HIRE rejection, first-next-day pickup, checkpoint crossing, feature-profile drift, reset capacity, source-lineage drift, and canonical candidate round-trip cases.
 
 ## Evaluation handoff
 
-The merged donor research artifact `candidates/v5/research/animal-feed-cadence/` pins the official engine and Arlene producer and emits a route census. The certificate authority converts the subset of live day-close observations satisfying the physical reset theorem into exact certificates consumable by `alternate_feed.py`.
+The merged donor research artifact `candidates/v5/research/animal-feed-cadence/` pins the official engine and Arlene producer and emits a route census. The certificate authority converts the subset of **completed** live day-close observations satisfying the physical reset and exact current-wrapper theorem into certificates consumable by `alternate_feed.py`.
 
-Matched evaluation should run current canonical V5 twice on identical opponent/seed/seat cells: unchanged baseline versus baseline plus the authority and candidate wrapper. Record builder source pins, route identity/tail hash, authority engagement count, candidate engagement count, actor FEED actions suppressed, unique-tile WHEAT saved, paired own-score and margin deltas, loss flips/new losses, animal escapes, CARE-bonus divergence, and any authority decline reason. Promotion remains blocked until that matched evidence is current-line green; this package itself makes no activation claim.
+Matched evaluation should run current canonical V5 twice on identical opponent/seed/seat cells: unchanged baseline versus baseline plus the authority and candidate wrapper. The evaluation adapter must pass the exact current entrypoint feature profile (including `town_procurement`) and `completed=True` only when the canonical runtime reports a fully completed action. Record builder source pins, route identity/tail hash, authority engagement count, candidate engagement count, actor FEED actions suppressed, unique-tile WHEAT saved, paired own-score and margin deltas, loss flips/new losses, animal escapes, CARE-bonus divergence, and every authority decline reason. Promotion remains blocked until that matched evidence is current-line green; this package itself makes no activation claim.
