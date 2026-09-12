@@ -21,7 +21,11 @@ def load(name, path, *, cache=False):
     import sys
     key = (name, str(Path(path).resolve()))
     if cache and key in _MODULE_CACHE:
-        return _MODULE_CACHE[key]
+        # A different relocated package may have rebound this public name.
+        # Restore this completed module before a sibling imports the name.
+        module = _MODULE_CACHE[key]
+        sys.modules[name] = module
+        return module
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     missing = object()
