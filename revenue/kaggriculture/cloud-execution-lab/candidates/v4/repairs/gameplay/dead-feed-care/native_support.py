@@ -10,6 +10,8 @@ import sys
 MANIFEST_SHA = 'e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2'
 BASE_CONFIG_SEMANTIC_SHA = '9b1d49a6da7ab7706bd0c749aebfa5f1b715b461c792a167e4fbb16f5d592788'
 HELPER_SHA = '55f4ea7da32abd05af7958081a9cb278cb01629c9203105812ccbeb3165cd058'
+STARVATION_HELPER_SHA = 'a03938c7b1064f24aac52fb5a7e97a63083b1c8ffe8fa420c0fbfe5f95f9d73e'
+FAST_HELPER_SHA = '80f6c82b735199227c7caabea10107867a3cb3ca7f0af7a6af7073dfa79b22c0'
 BASE_RUNTIME_SHA = 'da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8'
 
 
@@ -18,8 +20,10 @@ def sha(path):
 
 
 def authenticate(package, manifest, *, runtime_sha=BASE_RUNTIME_SHA, enabled=False,
-                 composed=False):
+                 composed=False, starvation=False, fast_tape=False):
     package, manifest = Path(package), Path(manifest)
+    if starvation and not composed:
+        raise ValueError('starvation activation requires the existing W2 composition')
     if sha(manifest) != MANIFEST_SHA:
         raise ValueError('wrong checked-release manifest')
     data = json.loads(manifest.read_text())['runtime']
@@ -36,8 +40,6 @@ def authenticate(package, manifest, *, runtime_sha=BASE_RUNTIME_SHA, enabled=Fal
         if name == 'titan_runtime.py':
             expected = runtime_sha
         if name == 'TITAN-CONFIG.json' and enabled:
-            # The release config's formatting is immutable; compare its parsed
-            # values to the manifest-embedded exact configuration instead.
             if hashlib.sha256(json.dumps(baseline_config, sort_keys=True, separators=(',', ':')).encode()).hexdigest() != BASE_CONFIG_SEMANTIC_SHA:
                 raise ValueError('configuration changed beyond W2')
         elif sha(path) != expected:
@@ -45,17 +47,27 @@ def authenticate(package, manifest, *, runtime_sha=BASE_RUNTIME_SHA, enabled=Fal
     if sha(package/'SOURCE.json') != MANIFEST_SHA:
         raise ValueError('archive SOURCE manifest differs')
     expected_names = set(data) | {'SOURCE.json'}
+    if fast_tape:
+        if sha(package/'r04_fast_tape_clone.py') != FAST_HELPER_SHA:
+            raise ValueError('fast-tape helper differs from authenticated source')
+        expected_names.add('r04_fast_tape_clone.py')
     if composed:
         if sha(package/'r04_dead_feed_care.py') != HELPER_SHA:
             raise ValueError('W2 source differs from SECONDHELP blob51c17ea3')
         expected_names.add('r04_dead_feed_care.py')
+    if starvation:
+        if sha(package/'r04_uncared_eod_feed_skip.py') != STARVATION_HELPER_SHA:
+            raise ValueError('guarded starvation helper differs from authenticated source')
+        expected_names.add('r04_uncared_eod_feed_skip.py')
     actual_names = {p.relative_to(package).as_posix() for p in package.rglob('*')
                     if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc'}
     if actual_names != expected_names:
         raise ValueError('package member set differs: '+str(sorted(actual_names ^ expected_names)))
     return {'authenticated_release_members': len(data), 'runtime_sha256': runtime_sha,
             'manifest_sha256': MANIFEST_SHA, 'helper_sha256': HELPER_SHA if composed else None,
-            'enabled': enabled, 'composed': composed}
+            'starvation_helper_sha256': STARVATION_HELPER_SHA if starvation else None,
+            'fast_tape_helper_sha256': FAST_HELPER_SHA if fast_tape else None,
+            'enabled': enabled, 'composed': composed, 'starvation': starvation, 'fast_tape': fast_tape}
 
 
 def load_file(name, path):
