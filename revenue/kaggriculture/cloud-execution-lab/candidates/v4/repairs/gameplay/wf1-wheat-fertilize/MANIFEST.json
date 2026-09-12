@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "lane": "WF1_S1_WHEAT_FERTILIZE",
-  "status": "EXTERNAL_EXACT_BYTES_AVAILABLE_DEFAULT_OFF",
+  "status": "ORIGINAL_MODULE_AND_SPEC_LANDED_DEFAULT_OFF",
   "canonical_workspace": "main:candidates/v4",
   "origin": {
     "slack_channel": "#titan-v25-sim-runs",
@@ -15,7 +15,8 @@
     "r04_wheat_fert.py": {
       "bytes": 17061,
       "sha256": "30a646d56bff72758c9ff4f98b4353c9e89b0ada211214add56d773dcee2bda0",
-      "git_blob": "b35a30431f64c1d6b40d1d599190338a9d50b555"
+      "git_blob": "b35a30431f64c1d6b40d1d599190338a9d50b555",
+      "materialized_path": "repairs/gameplay/wheat-fertilize/r04_wheat_fert.py"
     },
     "patch_v4_seam.py": {
       "bytes": 3056,
@@ -35,7 +36,8 @@
     "wf1_spec.json": {
       "bytes": 410,
       "sha256": "38bd76e424fbcd1d187f8bf506c1a0e45f043515a5ebdab81c5f0f0dc78cebee",
-      "git_blob": "39c929904b30d833ab17dfdf44d3354cb2b9493b"
+      "git_blob": "39c929904b30d833ab17dfdf44d3354cb2b9493b",
+      "materialized_path": "repairs/gameplay/wf1-wheat-fertilize/wf1_spec.json"
     },
     "results/v2b_live.jsonl": {
       "bytes": 34677,
@@ -61,6 +63,31 @@
     "swap_units_total": 708,
     "source": "exact results/v2b_live.jsonl from the pinned Slack archive; independently recomputed 2026-09-11"
   },
+  "custody_reconciliation": {
+    "scope": "one original source, two complementary storage paths; not two implementations",
+    "source_git_blob_verified_against_archive": "b35a30431f64c1d6b40d1d599190338a9d50b555",
+    "source_tree_readback": "6f9830e4c5e43889c93bfafb3009dba2199bb7df",
+    "manifest_and_spec_tree_readback": "eeb3139b8b33004a62fcf31f61e1bb9acccb5589",
+    "instruction": "Use the existing materialized_path entries; do not copy the same original module into another V4 directory. Members without materialized_path remain archive provenance, not proof of Git tree custody.",
+    "independent_arithmetic_audit": "88 distinct tape-seat records; own, rival and margin fields all equal differences recomputed from player-ordered base/arm scores. This was an archived-result audit, not a current-main game rerun."
+  },
+  "original_source_limitations": [
+    "CROPS includes CARROT; a day-1 carrot fixture returns positive swap_gain although this lane is described as wheat-only.",
+    "The original _collect_credit credits two planned units from an observed yield of four without subtracting a parent yield counterfactual.",
+    "The original _window rejects TOMATO and STRAWBERRY, so ALT_GATE cannot reserve fertilizer for those ongoing crops.",
+    "The source-preservation result does not establish safe current-runtime integration or economic promotion."
+  ],
+  "hardened_successor": {
+    "status": "REPORTED_LOCAL_ONLY_EXACT_SOURCE_AND_TEST_BYTES_NOT_RECOVERED_BY_THIS_PASS",
+    "slack_channel_id": "C0C0Z8AHGP2",
+    "slack_message_ts": "1789167070.897079",
+    "reported_bundle_sha256": "357328b3051721027bd9fc2a81bd475aad98ce417b57e05123482bf55964a95c",
+    "reported_module_hash_prefix": "906e8dd6",
+    "reported_test_hash_prefix": "9cd408a4",
+    "reported_tests_passed": 17,
+    "tests_independently_executed_by_this_pass": false,
+    "boundary": "The original b35a3043 source is not this hardened successor. Recover its exact bytes and tests, or explicitly develop and test a new repair; do not relabel the original or reconstruct purported historical bytes from prose."
+  },
   "boundaries": {
     "distinct_from": "r04_s1_fert_sweep",
     "runtime_enabled": false,
@@ -69,6 +96,6 @@
     "legacy_seam_patch_authorized_on_current_runtime": false,
     "legacy_materializer_authorized": false,
     "promotion_claim": false,
-    "next_gate": "materialize exact donor source and focused evidence under this existing canonical path, then build a current-ABI port and rerun a current-main paired panel"
+    "next_gate": "Use the existing original source custody path without duplication; recover the reported hardened successor source/tests or develop a separately reviewed repair. A current-ABI port and current-main paired panel remain required before activation."
   }
 }
