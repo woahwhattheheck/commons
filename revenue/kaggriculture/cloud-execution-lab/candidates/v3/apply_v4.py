@@ -171,9 +171,9 @@ def apply(src):
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None, h3b_sheep_clip=None, h3e_cow_feed_recycle=None,\n"
-        "            v233_eod_service=None, b10_public_supply_order=None, dead_sell_slot=None,\n"
-        "            advance_slot_value=None, eod_capacity_rescue=None, m1_wheat_trade=None,\n"
+        "            place_delivery=None, goose_pass_rescue=None, b10_public_supply_order=None,\n"
+        "            h3b_sheep_clip=None, h3e_cow_feed_recycle=None, v233_eod_service=None,\n"
+        "            dead_sell_slot=None, advance_slot_value=None, eod_capacity_rescue=None, m1_wheat_trade=None,\n"
         "            c5_wheat_demand=None, s4_route12_seed_reserve=None):\n",
         "R04 V4 install parameters",
     )
@@ -247,10 +247,10 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
         "    r04_goose_pass_rescue: bool = False\n"
+        "    r04_b10_public_supply_order: bool = False\n"
         "    r04_h3b_sheep_clip: bool = False\n"
         "    r04_h3e_cow_feed_recycle: bool = False\n"
         "    r04_v233_eod_service: bool = False\n"
-        "    r04_b10_public_supply_order: bool = False\n"
         "    r04_dead_sell_slot: bool = False\n"
         "    r04_advance_slot_value: bool = False\n"
         "    r04_eod_capacity_rescue: bool = False\n"
