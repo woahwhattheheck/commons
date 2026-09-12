@@ -35,13 +35,16 @@ class LandReachability:
 
 @dataclass(frozen=True)
 class CursorReachability:
-    """Exact robust certificate for the represented final tick.
+    """Opponent-robust certificate for the represented final tick.
 
-    `reachable_counts` is exhaustive for cursor-changing unit actions plus an
-    optional BUY_LAND whose financing is provably opponent-independent from
-    current cash/current shed. The helper raises instead of returning an
-    incomplete certificate when same-tick carried-inventory DROP could change
-    that BUY_LAND conclusion.
+    `unit_only_counts` is exhaustive for cursor-changing BUILD/DIG choices at
+    the represented unit positions. `reachable_counts` contains those exact
+    unit-only counts plus the BUY_LAND branch only when current cash/current
+    shed proves that branch reachable at the engine's universal SELL floor,
+    independent of opponent market behavior. It intentionally does not claim to
+    enumerate price-contingent BUY_LAND outcomes that require a stronger quote.
+    The helper raises instead of underclaiming when same-tick carried-inventory
+    DROP could change that floor-guaranteed BUY_LAND conclusion.
     """
 
     base_empty_count: int
@@ -144,9 +147,11 @@ def _has_cursor_relevant_drop_ambiguity(
     inventories = private.get("inventories", [])
     if not isinstance(inventories, list):
         raise ValueError("private.inventories must be a list")
+    if len(inventories) < len(positions):
+        raise ValueError("private.inventories must cover every unit position")
     access = _shed_access_tiles(board_size)
     for index, position in enumerate(positions):
-        if index >= len(inventories) or position not in access:
+        if position not in access:
             continue
         inv = inventories[index]
         if not isinstance(inv, Mapping):
@@ -180,9 +185,11 @@ def certified_pre_eod_empty_counts(
       so enough current-shed stock can finance a later BUY_LAND independently
       of the opponent.
 
-    If carried inventory at a shed-access unit could alter the land-financing
-    conclusion through DROP->SELL, this helper fails closed rather than claiming
-    an exhaustive set.
+    Unit-only counts are exhaustive. BUY_LAND counts are included only when the
+    floor proof makes that branch reachable under every opponent market path;
+    quote-dependent BUY_LAND possibilities are deliberately not represented.
+    If carried inventory at a shed-access unit could change the floor proof via
+    DROP->SELL, this helper fails closed rather than underclaiming it.
     """
 
     if not isinstance(farm, Mapping) or not isinstance(private, Mapping):
@@ -215,21 +222,14 @@ def certified_pre_eod_empty_counts(
     for x, y in distinct_positions:
         tile = tiles[y][x]
         if tile is None:
-            # BUILD_* is always legal on an owned empty tile, so this does not
-            # depend on seed inventory or the atomic PLANT demand barrier.
             fill_positions.append((x, y))
         elif tile == "LOCKED":
             continue
         elif isinstance(tile, dict) and "animal" in tile:
             continue
         else:
-            # DIG removes weeds, plants, and empty structures. It is blocked
-            # only for None, LOCKED, or a placed animal.
             clear_positions.append((x, y))
 
-    # Each distinct occupied tile is independently left alone or toggled. Thus
-    # every integer in this closed interval is reachable; duplicate units on the
-    # same tile contribute only once.
     unit_only_counts = tuple(
         range(base_empty - len(fill_positions), base_empty + len(clear_positions) + 1)
     )
@@ -320,7 +320,7 @@ def robust_shop_options_from_state(
     configuration: Mapping[str, object],
     target_shops=(),
 ) -> Tuple[CursorReachability, Tuple[RobustOption, ...]]:
-    """Compose exact cursor reachability with the #13248 shop-outcome solver."""
+    """Compose guaranteed own cursor counts with the #13248 shop solver."""
 
     certificate = certified_pre_eod_empty_counts(
         farm, private, step=step, configuration=configuration
