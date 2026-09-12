@@ -140,10 +140,12 @@ def _shed_tiles(board: int):
 
 
 def _rest_of_day(tape: Any, step: int):
-    if not isinstance(tape, list):
+    if not isinstance(tape, list) or not _plain_int(step, minimum=0):
         return None
-    end = min((step // TURNS_PER_DAY + 1) * TURNS_PER_DAY, len(tape))
-    if not 0 <= step < len(tape):
+    end = (step // TURNS_PER_DAY + 1) * TURNS_PER_DAY
+    # Missing future evidence is not proof that parent cash is unclaimed.
+    # Only this day must be complete; later episode days are irrelevant here.
+    if end > len(tape):
         return None
     return tape[step + 1:end]
 
