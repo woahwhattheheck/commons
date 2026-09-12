@@ -8,11 +8,11 @@ semantics at shed access:
 * PLACE <item> <qty> deposits only the fitting requested amount and leaves the
   rest of that item in the worker pocket.
 
-For one unambiguous marketable-product pocket, rewriting a selected DROP to a
-partial PLACE (or PASS when the shed is already full) preserves the same current
-shed post-unit state while retaining stock that DROP would destroy.  This helper
-is research-only: it does not activate itself in Titan and makes no full-game
-profitability claim.
+For one unambiguous marketable-product pocket containing exactly one inventory
+key, rewriting a selected DROP to a partial PLACE (or PASS when the shed is
+already full) preserves the same current shed post-unit state while retaining
+stock that DROP would destroy.  This helper is research-only: it does not
+activate itself in Titan and makes no full-game profitability claim.
 """
 from __future__ import annotations
 
@@ -54,11 +54,12 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
 
     Admission is intentionally narrow.  The current selected action must contain
     exactly one shed-affecting unit action and that action must be DROP.  The
-    actor must carry exactly one positive non-operating sale good, the shed must
-    have less room than that stack, and the executable market prefix must already
-    contain a positive SELL for the same item with baseline same-item shed stock
-    available after DROP.  Market rows and all other unit actions are byte-for-
-    byte preserved.
+    actor inventory must contain exactly one key, a positive non-operating sale
+    good; this is stricter than merely having one positive stack because engine
+    DROP deletes zero-valued keys too.  The shed must have less room than that
+    stack, and the executable market prefix must already contain a positive SELL
+    for the same item with baseline same-item shed stock available after DROP.
+    Market rows and all other unit actions are byte-for-byte preserved.
     """
     cfg = {} if configuration is None else configuration
     if not isinstance(selected, dict) or not isinstance(observation, Mapping) or not isinstance(cfg, Mapping):
@@ -125,6 +126,11 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
     inventory = inventories[actor]
     if not isinstance(inventory, Mapping):
         return _identity(selected, "malformed_worker_inventory")
+    # Engine DROP deletes every carried key, including zero-valued keys.  PLACE
+    # or PASS would preserve any unrelated zero-valued key, so exact immediate
+    # private-state equivalence requires the mapping itself to contain one key.
+    if len(inventory) != 1:
+        return _identity(selected, "ambiguous_worker_inventory")
     positive = []
     for item, quantity in inventory.items():
         if not isinstance(item, str) or not _plain_nonnegative(quantity):

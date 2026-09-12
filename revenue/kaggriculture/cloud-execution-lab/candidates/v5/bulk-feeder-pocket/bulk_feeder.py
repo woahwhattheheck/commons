@@ -165,7 +165,7 @@ def scan_route(route: list[dict[str, Any]], route_id: str = "") -> list[dict[str
                     "pickup_steps": pickup_steps,
                     "feed_steps": used_feeds,
                     "bulk_quantity": total_q,
-                    "recovered_pickup_turns": len(pickup_steps) - 1,
+                    "reclaimable_pickup_action_slots": len(pickup_steps) - 1,
                     "travel_savings_lower_bound": 0,
                     "requires_observed_unit_witness": True,
                 })
@@ -199,9 +199,9 @@ def _validate_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> N
         raise WitnessError("witness requires a FEED after its final pickup")
     if start // 24 != end // 24:
         raise WitnessError("witness crosses a day boundary")
-    expected_recovered = len(pickups) - 1
-    if witness.get("recovered_pickup_turns") != expected_recovered:
-        raise WitnessError("recovered pickup count does not match source pickups")
+    expected_reclaimable = len(pickups) - 1
+    if witness.get("reclaimable_pickup_action_slots") != expected_reclaimable:
+        raise WitnessError("reclaimable pickup action slots do not match source pickups")
     if witness.get("travel_savings_lower_bound", 0) != 0:
         raise WitnessError("movement savings are not proved by this carrier")
     for s in range(start, end + 1):
@@ -283,6 +283,8 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
     _validate_observation_start(observation, start)
     if type(turns_per_day) is not int or turns_per_day <= 0:
         raise WitnessError("turns_per_day must be a positive plain int")
+    if turns_per_day != 24:
+        raise WitnessError("turns_per_day must match the canonical 24-turn route calendar")
     if type(shed_capacity) is not int or shed_capacity <= 0:
         raise WitnessError("shed_capacity must be a positive plain int")
     if mechanics is None:
@@ -300,7 +302,7 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
         "actor": witness["actor"],
         "start_step": start,
         "end_step": end,
-        "recovered_pickup_turns": len(witness["pickup_steps"]) - 1 if equivalent else 0,
+        "reclaimable_pickup_action_slots": len(witness["pickup_steps"]) - 1 if equivalent else 0,
         "travel_savings_lower_bound": 0,
         "candidate": candidate if equivalent else None,
     }
@@ -336,10 +338,12 @@ def main(argv=None) -> int:
     else:
         result = scan_canonical_routes()
     print(json.dumps({
-        "schema": "titan-v5-bulk-feeder-pocket-audit/v1",
+        "schema": "titan-v5-bulk-feeder-pocket-audit/v2",
         "default_enabled": False,
         "witness_count": len(result),
-        "recovered_pickup_turns_upper_bound": sum(w["recovered_pickup_turns"] for w in result),
+        "reclaimable_pickup_action_slots_upper_bound": sum(
+            w["reclaimable_pickup_action_slots"] for w in result
+        ),
         "travel_savings_lower_bound": 0,
         "witnesses": result,
     }, sort_keys=True, separators=(",", ":")))
