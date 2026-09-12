@@ -14,7 +14,7 @@ from pathlib import Path
 
 HELPERS = {
     '_units': '924270bf03d7299c6ad2e8e42696957be25ddbd78d9dbe56edfda07aa6028f23',
-    '_action': '90e5709b28e8a7b2db15b15ef0fb880a56a56a592d329ae13980643571d1be6954a',
+    '_action': '90e5709b28e8a7b2db15b15ef0fb880a56a592d329ae13980643571d1be6954a',
 }
 TARGETS = {'_feed_window': 12, '_bonus_water_service': 12, 'protect_operating_stock': 8}
 INLINE = """_fp_farmer = row.get('farmer') or ['PASS']
