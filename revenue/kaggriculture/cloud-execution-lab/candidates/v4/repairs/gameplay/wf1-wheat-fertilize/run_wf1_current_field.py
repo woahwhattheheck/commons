@@ -21,6 +21,7 @@ import sys
 HERE = Path(__file__).resolve().parent
 S8_RUNNER = HERE.parent / "s8-egg-care" / "run_s8_field.py"
 DEFAULT_SEEDS = (2026091201, 2026091207, 2026091213, 2026091219)
+TELEMETRY_NAME = ".wf1-field-telemetry.json"
 
 
 def load(path: Path, name: str):
@@ -62,11 +63,16 @@ def main():
     seeds = tuple(int(x) for x in args.seeds.split(",") if x.strip())
     runner = load(S8_RUNNER, "wf1_shared_native_runner")
     candidate_entry = runtime / "wf1_native_entry.py"
+    telemetry_path = runtime / TELEMETRY_NAME
     required = [runtime / "main.py", runtime / "r04_wheat_fert.py",
                 runtime / "wf1_current_adapter.py", candidate_entry]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
         raise FileNotFoundError("missing runtime field files: " + ", ".join(missing))
+
+    # Force the fixture to use its deterministic evaluator-visible fallback,
+    # rather than accepting a caller environment that Actor will later strip.
+    os.environ.pop("WF1_TELEMETRY_PATH", None)
 
     cells = []
     for seed in seeds:
@@ -74,16 +80,15 @@ def main():
             key = f"seed-{seed}-seat-{seat}"
             base_dir = output / key / "base"
             cand_dir = output / key / "wf1"
-            os.environ.pop("WF1_TELEMETRY_PATH", None)
+            telemetry_path.unlink(missing_ok=True)
             base = runner.play(runtime, seed, seat, base_dir,
                                opponent=runtime, passive=False)
-            telemetry_path = cand_dir / "wf1-telemetry.json"
-            os.environ["WF1_TELEMETRY_PATH"] = str(telemetry_path)
+            telemetry_path.unlink(missing_ok=True)
             candidate = runner.play(runtime, seed, seat, cand_dir,
                                     opponent=runtime, passive=False,
                                     entry=str(candidate_entry) + "::agent")
-            os.environ.pop("WF1_TELEMETRY_PATH", None)
             telemetry = read_json(telemetry_path) if telemetry_path.is_file() else None
+            telemetry_path.unlink(missing_ok=True)
             complete = base["status"] == "complete" and candidate["status"] == "complete"
             delta = None
             if complete:
