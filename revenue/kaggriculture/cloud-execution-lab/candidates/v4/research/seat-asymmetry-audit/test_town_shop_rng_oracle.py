@@ -1,7 +1,8 @@
 import json
+import tempfile
 import unittest
 from pathlib import Path
-import tempfile
+from unittest import mock
 
 import town_shop_rng_oracle as oracle
 
@@ -29,6 +30,54 @@ class ShopStreamTests(unittest.TestCase):
             path.with_suffix(".json").write_text("{}\n", encoding="utf-8")
             with self.assertRaisesRegex(RuntimeError, "official engine metadata SHA256 drift"):
                 oracle.authenticate_engine(path)
+
+    def test_python_path_swap_after_capture_cannot_change_executed_bytes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "kaggriculture.py"
+            metadata_path = path.with_suffix(".json")
+            path.write_bytes(oracle.ENGINE_PATH.read_bytes())
+            metadata_path.write_bytes(oracle.ENGINE_PATH.with_suffix(".json").read_bytes())
+            captured = oracle._capture_authenticated_engine(path)
+
+            def capture_then_swap(_path):
+                path.write_text("raise RuntimeError('mutable engine path reopened')\n", encoding="utf-8")
+                return captured
+
+            with mock.patch.object(
+                oracle,
+                "_capture_authenticated_engine",
+                side_effect=capture_then_swap,
+            ):
+                engine = oracle.load_authenticated_engine(path)
+
+            self.assertEqual(engine.MARKET_I0, 10000)
+            self.assertEqual(
+                engine.__shopstream_source_identity__["git_blob"],
+                oracle.ENGINE_GIT_BLOB,
+            )
+
+    def test_metadata_path_swap_after_capture_cannot_change_executed_spec(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "kaggriculture.py"
+            metadata_path = path.with_suffix(".json")
+            path.write_bytes(oracle.ENGINE_PATH.read_bytes())
+            metadata_path.write_bytes(oracle.ENGINE_PATH.with_suffix(".json").read_bytes())
+            captured = oracle._capture_authenticated_engine(path)
+            expected_specification = json.loads(captured[1])
+
+            def capture_then_swap(_path):
+                metadata_path.write_text("{}\n", encoding="utf-8")
+                return captured
+
+            with mock.patch.object(
+                oracle,
+                "_capture_authenticated_engine",
+                side_effect=capture_then_swap,
+            ):
+                engine = oracle.load_authenticated_engine(path)
+
+            self.assertEqual(engine.specification, expected_specification)
+            self.assertNotIn("open", engine.__dict__)
 
     def test_model_seed5_one_tile_shift_changes_shop(self):
         self.assertEqual(
@@ -88,6 +137,11 @@ class ShopStreamTests(unittest.TestCase):
                 "all_empty": "PIZZA_SHOP",
                 "one_static_tile": "BRUNCH_SPOT",
             },
+        )
+        self.assertEqual(report["engine"]["git_blob"], oracle.ENGINE_GIT_BLOB)
+        self.assertEqual(
+            report["engine"]["metadata"]["git_blob"],
+            oracle.ENGINE_METADATA_GIT_BLOB,
         )
 
     def test_strict_integer_contract_rejects_bool_and_negative(self):
