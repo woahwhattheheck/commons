@@ -16,5 +16,6 @@
   "crop_release": true,
   "early_capital": true,
   "town_procurement": true,
-  "exec_pace": false
+  "exec_pace": false,
+  "row_shed": false
 }

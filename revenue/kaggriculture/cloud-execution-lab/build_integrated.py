@@ -43,7 +43,8 @@ def source_files():
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
               'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py',
-              'exec_pace_runtime.py','town_procurement.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+              'exec_pace_runtime.py','row_shed_sell_order.py','town_procurement.py',
+              'TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
