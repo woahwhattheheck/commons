@@ -1,0 +1,30 @@
+{
+  "kind": "titan-v4-current-engine-oracle-receipt",
+  "mechanism": "b7-shed-overflow",
+  "status": "runner_pending",
+  "canonical_branch": "main",
+  "oracle_blob": "109bf70a385b211eede790f00a2de05a979b4e02",
+  "oracle_commit": "f5d6da7d82a45d30400c29ef6e1bf88df6bdd30a",
+  "pins": {
+    "legacy_guard": "a27da659884c0f9a9594cbd9332b5edb4d7f3307",
+    "official_engine": "3c202c7ee921da239356789e266b694635103fc4",
+    "current_titan_runtime": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+  },
+  "planned_execution": [
+    "python current_engine_oracle.py --pretty",
+    "python -O current_engine_oracle.py --pretty"
+  ],
+  "coverage": {
+    "base_matrix_cells": 128,
+    "dimensions": ["player seat 0/1", "actor 0/1", "shed room 0/1/2/5", "cargo 1/2/3/6", "MILK/WOOL"],
+    "boundaries": ["prior product PLACE", "prior DROP", "prior PICKUP fail-closed", "ambiguous animal PLACE fail-closed", "disabled exact identity"]
+  },
+  "intended_theorem": "For admitted single-product overflowing DROP rows, transformed and parent engine outcomes have identical farm state and shed contents; only the cargo units destroyed by DROP overflow remain in the transformed actor inventory.",
+  "runtime_note": "No hook is installed. The pinned current ABI admits a future final selected unit-action guard only after _feed_stock_selected and _early_capital_selected and before finish bookkeeping.",
+  "prohibitions": [
+    "do not treat this runner-pending receipt as a PASS",
+    "do not wire or enable B7 from source preservation alone",
+    "do not run the stale legacy evaluator as current authority",
+    "do not change production/Kaggle/defaults/ref ancestry"
+  ]
+}
