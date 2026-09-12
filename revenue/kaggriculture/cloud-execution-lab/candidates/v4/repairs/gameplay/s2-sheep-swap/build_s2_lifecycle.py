@@ -6,7 +6,7 @@ import ast
 import hashlib
 from pathlib import Path
 
-PARENT_BLOB = "1e6771644ad897ec30c7420304f21c919414666a"
+PARENT_BLOB = "d7edf035207e2ffd03c938ac43d47ce493bc7f8b"
 MECHANICS_BLOB = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
 MARKER = "# S2_NATIVE_UNIT_CUSTODY_V1\n"
 
