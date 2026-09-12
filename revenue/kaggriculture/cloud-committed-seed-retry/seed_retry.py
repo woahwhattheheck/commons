@@ -84,7 +84,7 @@ def _prefix_cash_reserve(runtime: Any, obs: Mapping[str, Any], cfg: Mapping[str,
         for order in _active_market(queue, maximum):
             spend, hires = _order_spend(order, farm, inventory, params, hires, cfg)
             cost += spend
-            if (order and order[0] == 'BUY_LAND'
+            if (isinstance(order, list) and order and order[0] == 'BUY_LAND'
                     and len(farm['unlocked_quadrants']) <= len(m.LAND_ORDER)):
                 farm['unlocked_quadrants'].append(
                     m.LAND_ORDER[len(farm['unlocked_quadrants']) - 1])
