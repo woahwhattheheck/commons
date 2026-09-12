@@ -97,6 +97,8 @@ class ReleaseTransactionTests(unittest.TestCase):
         self.new_raw = canon(self.new)
         self.manifest = {
             "candidate_id": "v5c:" + "a" * 64,
+            "engine_id": "engine:test-pinned",
+            "opponent_pack_id": "opponent:test-pack",
             "components": [
                 {
                     "name": "feature",
@@ -149,6 +151,10 @@ class ReleaseTransactionTests(unittest.TestCase):
             "schema": econ.SCHEMA,
             "control_id": self.promotion["control_id"],
             "candidate_id": self.promotion["candidate_id"],
+            "engine_id": self.manifest["engine_id"],
+            "opponent_pack_id": self.manifest["opponent_pack_id"],
+            "control_archive_sha256": self.old["sha256"],
+            "candidate_archive_sha256": self.new["sha256"],
             "cells": cells,
         }
         self.economics_raw = canon(self.economics)
@@ -206,6 +212,10 @@ class ReleaseTransactionTests(unittest.TestCase):
         )
         self.assertEqual(first["promotion"]["control_id"], self.promotion["control_id"])
         self.assertEqual(first["economics"]["report_sha256"], sha(self.economics_raw))
+        self.assertEqual(first["economics"]["engine_id"], self.manifest["engine_id"])
+        self.assertEqual(first["economics"]["opponent_pack_id"], self.manifest["opponent_pack_id"])
+        self.assertEqual(first["economics"]["control_archive_sha256"], self.old["sha256"])
+        self.assertEqual(first["economics"]["candidate_archive_sha256"], self.new["sha256"])
         self.assertEqual(first["economics"]["cell_count"], 8)
         self.assertEqual(first["economics"]["sum_margin_delta"], 80)
 
@@ -272,6 +282,20 @@ class ReleaseTransactionTests(unittest.TestCase):
         bad["candidate_id"] = "v5c:" + "c" * 64
         with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
             self.build(economics_raw=canon(bad))
+
+    def test_stale_execution_closure_cannot_release(self):
+        mutations = [
+            ("engine_id", "engine:stale"),
+            ("opponent_pack_id", "opponent:stale"),
+            ("control_archive_sha256", "c" * 64),
+            ("candidate_archive_sha256", "d" * 64),
+        ]
+        for key, value in mutations:
+            with self.subTest(key=key):
+                bad = json.loads(json.dumps(self.economics))
+                bad[key] = value
+                with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+                    self.build(economics_raw=canon(bad))
 
     def test_economics_bytes_change_transition_identity(self):
         first = self.build()
