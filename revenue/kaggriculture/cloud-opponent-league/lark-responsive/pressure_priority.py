@@ -4,6 +4,8 @@ The same-sized rival lot is an explicit proxy, never observed hidden inventory.
 The injected quote function must be the pinned engine's pure public price curve.
 Contiguous SELL blocks may reorder. A wholly sale-only executable prefix may
 also compact known empty slots; parent quantities and production remain intact.
+At the final actionable step, sale-only rows just beyond the market-order cap
+may additionally move into otherwise dead empty executable slots.
 """
 from __future__ import annotations
 
@@ -20,6 +22,70 @@ MAX_SCORING_UNITS = 256
 MAX_SCORING_ORDERS = 64
 SALE_ONLY_GOODS = frozenset(("CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG", "MILK", "WOOL"))
 _UNSET_RIVAL_QUANTITY = object()
+
+
+def _sale_only_terminal_row(order: Any) -> int | None:
+    """Classify a row for terminal compaction: positive=1, empty=0, barrier=None."""
+    if order == []:
+        return 0
+    if not isinstance(order, list) or len(order) != 3 or order[0] != 'SELL':
+        return None
+    item, quantity = order[1:]
+    if (not isinstance(item, str) or item not in SALE_ONLY_GOODS
+            or isinstance(quantity, bool) or not isinstance(quantity, int) or quantity < 0):
+        return None
+    return int(quantity > 0)
+
+
+def promote_terminal_sale_only_suffix(orders: list, end: int, observation: Mapping,
+                                      configuration: Mapping) -> list:
+    """Fill dead final-turn executable holes from a contiguous sale-only suffix.
+
+    Kaggriculture's runtime defines ``episodeSteps - 2`` as the final actionable
+    step and its deadline fallback liquidates visible shed stock there.  A SELL
+    row beyond ``maxMarketOrdersPerTurn`` can therefore never execute if it stays
+    in the suffix.  On that one step only, compact a contiguous sale-only region
+    across the executable boundary so positive sales occupy known empty/zero
+    slots first.
+
+    This deliberately declines every economic, input, malformed or unknown row;
+    it never crosses HIRE/BUY orders or operating-input sales, preserves relative
+    positive-sale order and list length, and is an identity at every other step.
+    """
+    if (not isinstance(orders, list) or not isinstance(observation, Mapping)
+            or not isinstance(configuration, Mapping) or end <= 0 or end >= len(orders)):
+        return orders
+    step = observation.get('step')
+    episode_steps = configuration.get('episodeSteps', 720)
+    if (isinstance(step, bool) or not isinstance(step, int)
+            or isinstance(episode_steps, bool) or not isinstance(episode_steps, int)
+            or episode_steps < 2 or step != episode_steps - 2):
+        return orders
+
+    prefix_kinds = [_sale_only_terminal_row(order) for order in orders[:end]]
+    if any(kind is None for kind in prefix_kinds):
+        return orders
+    holes = sum(kind == 0 for kind in prefix_kinds)
+    if holes == 0:
+        return orders
+
+    scan = end
+    promoted = 0
+    while scan < len(orders) and promoted < holes:
+        kind = _sale_only_terminal_row(orders[scan])
+        if kind is None:
+            break
+        promoted += int(kind == 1)
+        scan += 1
+    if promoted == 0:
+        return orders
+
+    region = orders[:scan]
+    kinds = [_sale_only_terminal_row(order) for order in region]
+    positive = [order for order, kind in zip(region, kinds) if kind == 1]
+    empty = [order for order, kind in zip(region, kinds) if kind == 0]
+    candidate = positive + empty + orders[scan:]
+    return candidate if candidate != orders else orders
 
 
 def compact_sale_only_prefix(orders: list, end: int, market: Mapping,
@@ -157,8 +223,10 @@ def transform(action: dict, observation: Mapping,
 
     Preserve all orders, quantities, duplicate lots, economic barriers,
     executable-prefix boundaries and unit instructions. Known empty slots can
-    move only inside a wholly eligible sale-only prefix. Economic feedback can
-    still change later parent choices; this is not a global optimality claim.
+    move only inside a wholly eligible sale-only prefix, except that the final
+    actionable step may pull sale-only rows across the executable boundary into
+    otherwise dead holes. Economic feedback can still change later parent
+    choices; this is not a global optimality claim.
     """
     if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
         raise ValueError('parent policy must return an object with a market list')
@@ -177,6 +245,8 @@ def transform(action: dict, observation: Mapping,
     end = min(len(orders), limit)
     if end > MAX_SCORING_ORDERS:
         return result
+    orders = promote_terminal_sale_only_suffix(orders, end, observation, cfg)
+    result['market'] = orders
 
     def supplied_quantity(order: Any) -> Any:
         if rival_supply is None or not isinstance(order, list) or len(order) != 3:
