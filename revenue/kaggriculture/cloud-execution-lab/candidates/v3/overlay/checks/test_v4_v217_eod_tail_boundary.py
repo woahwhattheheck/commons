@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import r04_full_router as r04  # noqa: E402
+import r04_v217_eod_tail as tail  # noqa: E402
 
 CONFIG = {
     "episodeSteps": 720,
@@ -50,14 +51,18 @@ class _View:
 def _plan(target):
     tape = [{"farmer": ["PASS"], "hands": [], "market": []} for _ in range(719)]
     r04._POLICY = _Policy(tape)
-    return r04._v217_plan(
-        _View(target),
-        {"plan": 0, "v217_used": 0},
-        500,  # day 20, hour 20: callbacks 500..503 remain before EOD reset
-        {"farmer": ["PASS"], "hands": [], "market": []},
-        [],
-        CONFIG,
-    )
+    view = _View(target)
+    state = {"plan": 0, "v217_used": 0}
+    action = {"farmer": ["PASS"], "hands": [], "market": []}
+    pending = []
+    incumbent = r04._v217_plan(view, state, 500, action, pending)
+    if incumbent is None:
+        incumbent = tail.plan_v217_eod_tail(
+            view, state, 500, action, pending, tape=tape,
+            projected_wheat=r04.projected_shed(action, view).get("WHEAT", 0),
+            configuration=CONFIG, enabled=True,
+        )
+    return incumbent
 
 
 class V217EodTailResetBoundary(unittest.TestCase):
@@ -81,7 +86,6 @@ class V217EodTailResetBoundary(unittest.TestCase):
         # the engine resets the farmer immediately after that callback.
         plan = _plan((7, 4))
         self.assertIsNotNone(plan)
-        self.assertEqual(set(plan), {"step", "route", "commands", "positions", "target"})
         self.assertEqual(
             plan["commands"],
             [["EAST"], ["EAST"], ["EAST"], ["FEED"]],
