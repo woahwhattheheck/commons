@@ -1,0 +1,24 @@
+{
+  "lane": "defensive guard pack",
+  "status": "awaiting_raw_payload",
+  "integration_workspace": "main/revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "local_donor_commit": "7a64dc3d26453c0429d071074c849ed01c6d8ec0",
+  "default": "OFF",
+  "recovered_scope": [
+    "non-finite numeric sanitizer",
+    "PLANT overdemand cap",
+    "EOD shed-overflow rescue",
+    "optional PICKUP/PLACE quantity sanitizer extension that preserves valid tape byte-for-byte"
+  ],
+  "explicitly_omitted": [
+    "rejected CARE-strip behavior"
+  ],
+  "payload_state": "Latest coordination refresh still described this donor as local-only. The exact raw source/test payload has not been recovered into server-backed V4 custody; current Slack transport is rate-limited and default-branch code search found no defensive-guard implementation.",
+  "required_next_step": "Recover exact router/helper/test blob IDs and hashes from the local holder, compare against current main/candidates/v4 semantics, attach only the non-conflicting reviewed guard set, and rerun focused plus key-OFF identity tests before activation consideration.",
+  "prohibitions": [
+    "do not reconstruct missing source from prose",
+    "do not reintroduce CARE-strip behavior",
+    "do not enable any guard solely because this custody blocker exists",
+    "do not create a successor V4 branch; resolve into main/candidates/v4"
+  ]
+}

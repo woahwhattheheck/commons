@@ -2,7 +2,7 @@
 
 Canonical home: `main`, under `candidates/v4`, as declared by `CANONICAL.json`.
 This is one measurement-tooling recovery, not an alternate V4 or a gameplay key.
-The temporary old-line carrier #12646 is provenance only once this pack lands.
+PR #12646 was retargeted to this canonical workspace after its initial old-line target was retired.
 
 ## Contents and provenance
 
@@ -42,7 +42,7 @@ The V4 recovery retains all nine original tests and adds fifteen regressions for
 The repaired bad-data paths return CLI status 2, emit no report and do not
 replace an existing output file. Extremely large intermediate sums are rejected
 conservatively even when a different arithmetic implementation could represent
-the final mean. This is not a claim to reject every possible malformed JSON input.
+the final mean. Other malformed JSON inputs are outside the tested coverage.
 
 ## Executed checks
 
@@ -60,6 +60,12 @@ passed 9/9 in normal and optimized Python. The recovered suite passed **24/24
 normal and 24/24 optimized** in the local execution environment; both published
 Git blob IDs equal the tested local bytes. These are local source-level receipts,
 not hosted CI, complete-game benchmarks, runtime integration or promotion claims.
+
+A deterministic local differential run (random seed 12646) compared 2,000 valid
+evidence documents across both seats, both root layouts, varied opponents and
+activation strata. All 2,000 normalized reports exactly matched the donor.
+The fifteen added boundary tests are red against the unmodified donor
+(unittest reported 8 failures and 5 errors), and green against the repaired source.
 
 Source SHA-256: `8d674f10f420b43a0723c33eb7b125559c23e6306b9aa0153c24912dde3665b7`.
 Test SHA-256: `7ab4c8636c8f4aa041582ddd973405437a7e824b4eadf788d03e383fa0fc25b9`.
