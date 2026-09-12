@@ -87,6 +87,16 @@ _INSTANCE = None
 
 def agent(obs, configuration=None):
     global _INSTANCE
-    if _INSTANCE is None or int(obs.get('step', 0)) == 0:
+    step = int(obs.get('step', 0))
+    # Step zero is both a match boundary and a legal same-step replay. Preserve
+    # a wrapper that already completed step zero; only a later-step -> 0
+    # transition proves the retained scheduler belongs to the previous match.
+    previous_step = (None if _INSTANCE is None else
+                     getattr(_INSTANCE, '_regime_entrypoint_last_step', None))
+    if _INSTANCE is None or (step == 0 and previous_step not in (None, 0)):
         _INSTANCE = RegimeSellScheduler()
-    return _INSTANCE.act(obs, configuration)
+    output = _INSTANCE.act(obs, configuration)
+    # Publish the marker only after a complete return so an interrupted call
+    # cannot make an uncompleted step look certified on replay.
+    _INSTANCE._regime_entrypoint_last_step = step
+    return output
