@@ -14,6 +14,7 @@ This is **not** a V3.1 reconstruction. Control is the exact submitted V4 archive
 - Shared `joint-liquidity-bench/paired.py` is read once, authenticated against Git blob `fbc5e320b8a2ee63af11dc9856c956a679823409`, then compiled/executed from the captured bytes. The live path is never imported.
 - Evaluator, loader, packer, opponent registry and opponent support are executed only from the helper's authenticated harness snapshot.
 - Treatment construction fails closed if the exact V4 E05 import, pair-admission call, pair gate, or metrics provider drifts.
+- The synthetic discriminator proves the intact pair gate selects a reachable joint candidate while the ablated gate leaves the already-selected single-product incumbent unchanged.
 
 ## Source gates
 
@@ -23,7 +24,7 @@ python -O -B -m unittest -v test_ablation test_paired
 python -m py_compile ablation.py paired.py test_ablation.py test_paired.py
 ```
 
-Local authoring receipt: 12/12 PASS normal, 12/12 PASS under `-O`, py_compile PASS before publication; exact-head CI is authoritative after publication.
+Local authoring receipt: 13/13 PASS normal, 13/13 PASS under `-O`, py_compile PASS. Exact-head CI remains authoritative after publication.
 
 ## Matched screen
 
