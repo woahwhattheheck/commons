@@ -310,6 +310,41 @@ class DeadWaterHarvestTest(unittest.TestCase):
         self.assertIs(_apply(observation, action), action)
         self.assertEqual(lane.get_report()["capacity_block"], 1)
 
+    def test_market_rows_are_strict_before_water_to_harvest_mutation(self):
+        observation = _obs(_tile())
+        malformed = (
+            [[]],
+            [["SELL"]],
+            [["SELL", "WHEAT"]],
+            [["SELL", "WHEAT", 0]],
+            [["SELL", "WHEAT", True]],
+            [["SELL", "UNKNOWN", 1]],
+            [["BUY_SEED"]],
+            [["BUY_SEED", "TOMATO", -1]],
+            [["BUY_SEED", "EGG", 1]],
+            [["HIRE", "junk"]],
+            [["BUY_LAND", 1]],
+        )
+        for market in malformed:
+            with self.subTest(market=market):
+                action = _action()
+                action["market"] = copy.deepcopy(market)
+                self.assertIs(_apply(observation, action), action)
+
+        safe = (
+            [["SELL", "WHEAT", 1]],
+            [["HIRE"]],
+            [["BUY_LAND"]],
+            [["BUY_SEED", "TOMATO", 1]],
+        )
+        for market in safe:
+            with self.subTest(market=market):
+                action = _action()
+                action["market"] = copy.deepcopy(market)
+                out = _apply(observation, action)
+                self.assertEqual(out["farmer"], ["HARVEST"])
+                self.assertEqual(out["market"], action["market"])
+
 
 if __name__ == "__main__":
     unittest.main()

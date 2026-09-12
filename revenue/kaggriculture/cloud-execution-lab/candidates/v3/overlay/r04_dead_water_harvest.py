@@ -204,18 +204,40 @@ def _market_preserves_capacity(action):
     market = action.get("market", _UNKNOWN)
     if not isinstance(market, list):
         return False
+    products = {
+        "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
+        "EGG", "MILK", "WOOL", "FERTILIZER",
+    }
+    seeds = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"}
     for order in market:
-        if not isinstance(order, list):
-            return False
-        if not order:
-            continue
-        if not isinstance(order[0], str):
+        if not isinstance(order, list) or not order or not isinstance(order[0], str):
             return False
         op = order[0]
         if op in _MARKET_SHED_INFLOW:
             return False
-        if op not in _MARKET_KNOWN_SAFE:
-            return False
+        if op == "SELL":
+            if (
+                len(order) != 3
+                or order[1] not in products
+                or not _plain_int(order[2])
+                or order[2] <= 0
+            ):
+                return False
+            continue
+        if op == "BUY_SEED":
+            if (
+                len(order) != 3
+                or order[1] not in seeds
+                or not _plain_int(order[2])
+                or order[2] <= 0
+            ):
+                return False
+            continue
+        if op in {"HIRE", "BUY_LAND"}:
+            if len(order) != 1:
+                return False
+            continue
+        return False
     return True
 
 
