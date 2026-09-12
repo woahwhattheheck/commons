@@ -101,6 +101,14 @@ class GeminiConvergenceTests(unittest.TestCase):
         entry["activation"] = "DEFAULT_OFF"
         self.assertRejected(doc, "must use BLOCKED activation")
 
+    def test_melon_claim_is_field_blocked_until_executable_admission_lands(self):
+        entry = next(e for e in self.doc["entries"] if e["id"] == "gemini.melon-lifetime-cap")
+        self.assertEqual(entry["disposition"], "FIELD_BLOCKED")
+        self.assertEqual(entry["activation"], "BLOCKED")
+        self.assertIs(entry.get("do_not_repeat_without_new_evidence"), True)
+        self.assertIn("whole-proposal", entry["next_gate"])
+        self.assertIn("executable", entry["next_gate"])
+
     def test_pr_provenance_must_be_sorted_unique_plain_ints(self):
         doc = copy.deepcopy(self.doc)
         doc["entries"][0]["provenance_pull_numbers"] = [12837, 12819, 12819]
@@ -114,6 +122,14 @@ class GeminiConvergenceTests(unittest.TestCase):
         path.write_text('{"x": NaN}', encoding="utf-8")
         with self.assertRaises(C.ConvergenceError):
             C.load_strict_json(path)
+
+    def test_duplicate_json_key_rejected_at_any_depth(self):
+        path = self.root / "duplicate.json"
+        path.write_text('{"outer":{"claim":"a","claim":"b"}}', encoding="utf-8")
+        with self.assertRaises(C.ConvergenceError) as ctx:
+            C.load_strict_json(path)
+        self.assertIn("duplicate JSON object key", str(ctx.exception))
+        self.assertIn("claim", str(ctx.exception))
 
     def test_source_buckets_are_exact(self):
         doc = copy.deepcopy(self.doc)

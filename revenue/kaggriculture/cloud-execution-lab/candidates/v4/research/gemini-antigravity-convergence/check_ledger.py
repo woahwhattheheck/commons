@@ -66,9 +66,22 @@ def _reject_constant(token: str) -> None:
     raise ConvergenceError(f"non-finite JSON token: {token}")
 
 
+def _object_no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise ConvergenceError(f"duplicate JSON object key: {key!r}")
+        out[key] = value
+    return out
+
+
 def load_strict_json(path: Path) -> dict[str, Any]:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"), parse_constant=_reject_constant)
+        data = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=_object_no_duplicates,
+            parse_constant=_reject_constant,
+        )
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise ConvergenceError(f"cannot load strict JSON {path}: {exc}") from exc
     if not isinstance(data, dict):

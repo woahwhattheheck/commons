@@ -271,18 +271,22 @@
         "claim_board"
       ],
       "literal_claim": "Because MELON has no ordinary town-center demand, cap total MELON production with a hard lifetime counter.",
-      "disposition": "CORRECTED_DESCENDANT",
-      "best_form": "Do not use the harmful crude sold-only cap. The repaired source component reserves sold MELON, held MELON, and maximum future yield of every live MELON tile, then consumes one aggregate proposal budget. It remains default-OFF pending current-native economics.",
-      "activation": "DEFAULT_OFF",
+      "disposition": "FIELD_BLOCKED",
+      "best_form": "The useful committed-production custody theorem survives, but the current registered source family is not consumer-safe: shallow outer metadata shrink can leave variants[*].patches executable, and mutually exclusive proposals must not decrement one shared realization budget. Preserve MELON cap work only as blocked evidence until whole-proposal executable-cardinality admission lands.",
+      "activation": "BLOCKED",
       "canonical_evidence": [
-        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/INTEGRATION-SPEC.md",
-        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/MANIFEST.json"
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/melon_cap.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/liquidation_bound.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/antigravity-melon-cap/INTEGRATION-SPEC.md"
       ],
       "provenance_pull_numbers": [
         12987,
-        12996
+        12996,
+        13013,
+        13032
       ],
-      "next_gate": "Run exact current-native engagement and matched both-seat economics for the committed-production form; reject if the earlier cap pathology reappears."
+      "next_gate": "Land one same-authority successor that authenticates executable MELON PLANT cardinality from canonical variants, admits each mutually exclusive proposal unchanged only when that whole proposal fits certified remaining realization, and drops it otherwise; then rebind coverage/custody and run current-native economics. No partial outer shrink or cross-alternative budget decrement.",
+      "do_not_repeat_without_new_evidence": true
     },
     {
       "id": "gemini.npc-market-baseline",
