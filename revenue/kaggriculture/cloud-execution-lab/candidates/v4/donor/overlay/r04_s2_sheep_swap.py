@@ -106,7 +106,11 @@ def _future_purchase_conflict(native_tape: Any, step: int) -> bool:
     """
     if not isinstance(native_tape, list) or type(step) is not int or not (0 <= step < len(native_tape)):
         return True
-    end = min(len(native_tape), ((step // 24) + 1) * 24)
+    end = ((step // 24) + 1) * 24
+    # Missing same-day rows are unknown cash commitments, not empty market turns.
+    # This proof is requested only for new swaps in the bounded step 72..360 window.
+    if len(native_tape) < end:
+        return True
     for future in native_tape[step + 1:end]:
         if not isinstance(future, dict):
             return True
