@@ -13,6 +13,7 @@ import argparse
 import ast
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 
@@ -45,6 +46,94 @@ FORECAST_NEW = """            market_action=base if t==now else (route[t] if t<l
 
 def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+
+
+def _lexical(path: Path) -> Path:
+    return Path(os.path.abspath(os.fspath(path)))
+
+
+def _inside(path: Path, root: Path) -> bool:
+    return path == root or root in path.parents
+
+
+def _repo_root() -> Path:
+    for candidate in Path(__file__).resolve().parents:
+        if (candidate / ".git").exists():
+            return candidate.resolve()
+    raise ValueError("repository root unavailable; refuse materialization")
+
+
+def _validate_external_target(path: Path, repo_root: Path, *, fresh: bool) -> Path:
+    """Bind a publication target outside the checkout and reject symlink aliases."""
+    target = _lexical(path)
+    root = _lexical(repo_root)
+    if _inside(target, root):
+        raise ValueError(f"publication target is inside repository: {target}")
+    for ancestor in (target, *target.parents):
+        if ancestor.is_symlink():
+            raise ValueError(f"publication target has symlink ancestry: {ancestor}")
+    resolved_root = root.resolve()
+    resolved_target = target.resolve(strict=False)
+    if _inside(resolved_target, resolved_root):
+        raise ValueError(f"publication target resolves inside repository: {target}")
+    if fresh and (target.exists() or target.is_symlink()):
+        raise ValueError(f"publication target must be fresh: {target}")
+    return target
+
+
+def _validate_publish_layout(
+    output: Path,
+    receipt: Path | None,
+    repo_root: Path,
+    inputs: tuple[Path, ...],
+) -> tuple[Path, Path | None]:
+    output = _validate_external_target(output, repo_root, fresh=True)
+    if not output.parent.is_dir():
+        raise ValueError("output parent must already exist")
+    receipt_out = None
+    if receipt is not None:
+        receipt_out = _validate_external_target(receipt, repo_root, fresh=True)
+        if not receipt_out.parent.is_dir():
+            raise ValueError("receipt parent must already exist")
+        if _inside(receipt_out, output):
+            raise ValueError("explicit receipt may not live inside output tree")
+        receipt_resolved = receipt_out.resolve(strict=False)
+        for source in inputs:
+            source_lexical = _lexical(source)
+            source_resolved = source_lexical.resolve(strict=False)
+            if receipt_out == source_lexical or receipt_resolved == source_resolved:
+                raise ValueError("receipt may not alias an input source")
+    return output, receipt_out
+
+
+def _publish_fresh(path: Path, data: bytes, repo_root: Path) -> None:
+    """Publish one fresh external file without ever replacing an existing target."""
+    target = _validate_external_target(path, repo_root, fresh=True)
+    parent = target.parent
+    if not parent.is_dir():
+        raise ValueError("publication parent must already exist")
+    _validate_external_target(parent, repo_root, fresh=False)
+    sidecar = target.with_name(f".{target.name}.prefix.tmp")
+    _validate_external_target(sidecar, repo_root, fresh=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(sidecar, flags, 0o600)
+    try:
+        with os.fdopen(fd, "wb") as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        # Recheck immediately before publication. hard-link creation is
+        # exclusive: a raced final target is rejected rather than replaced.
+        _validate_external_target(target, repo_root, fresh=True)
+        os.link(sidecar, target, follow_symlinks=False)
+        if target.read_bytes() != data:
+            target.unlink(missing_ok=True)
+            raise ValueError(f"publication readback mismatch: {target}")
+    finally:
+        if sidecar.exists() or sidecar.is_symlink():
+            sidecar.unlink()
 
 
 def _once(text: str, old: str, new: str, label: str) -> str:
@@ -328,7 +417,7 @@ def compose_pair(scheduler: bytes, frozen: bytes) -> tuple[bytes, bytes, dict]:
     if scheduler_git not in SCHEDULER_INPUTS:
         raise ValueError("scheduler.py is not the authenticated post-SPINDLE preimage")
     if frozen_git not in FROZEN_INPUTS:
-        raise ValueError("frozen_selected.py is not an authenticated LIVEPATH/H3 preimage")
+        raise ValueError("frozen_selected.py is not the authenticated LIVEPATH/H3 preimage")
     scheduler_out = _rewrite_scheduler(scheduler.decode("utf-8")).encode("utf-8")
     frozen_out = _rewrite_frozen(frozen.decode("utf-8")).encode("utf-8")
     receipt = {
@@ -359,19 +448,28 @@ def main() -> int:
     p.add_argument("--output", required=True, type=Path)
     p.add_argument("--receipt", type=Path)
     args = p.parse_args()
-    if args.output.exists():
-        p.error("output must be a fresh directory")
+    try:
+        repo_root = _repo_root()
+        output, receipt_path = _validate_publish_layout(
+            args.output, args.receipt, repo_root, (args.scheduler, args.frozen)
+        )
+    except ValueError as exc:
+        p.error(str(exc))
     sb = args.scheduler.read_bytes()
     fb = args.frozen.read_bytes()
     so, fo, receipt = compose_pair(sb, fb)
-    args.output.mkdir(parents=True, exist_ok=False)
-    (args.output / "scheduler.py").write_bytes(so)
-    (args.output / "frozen_selected.py").write_bytes(fo)
-    if args.receipt:
-        args.receipt.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
-    else:
-        (args.output / "CURRENT-PREFIX.json").write_text(
-            json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+    output.mkdir(exist_ok=False)
+    try:
+        _validate_external_target(output, repo_root, fresh=False)
+        _publish_fresh(output / "scheduler.py", so, repo_root)
+        _publish_fresh(output / "frozen_selected.py", fo, repo_root)
+        receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
+        if receipt_path is not None:
+            _publish_fresh(receipt_path, receipt_bytes, repo_root)
+        else:
+            _publish_fresh(output / "CURRENT-PREFIX.json", receipt_bytes, repo_root)
+    except ValueError as exc:
+        p.error(str(exc))
     print(json.dumps(receipt, sort_keys=True))
     return 0
 
