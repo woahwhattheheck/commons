@@ -30,10 +30,10 @@ test, and the caps. When the flag is off the router's seam short-circuits
 before calling cap_for(); note_prices() only records history -- the action
 path is byte-identical to the unkeyed route.
 
-State is per-game: a step <= the last recorded step (new game in a reused
-worker process) resets the histories first, fixing the cross-game state leak
-that caused a catastrophic failure in the drain-candidate gate. Every entry
-point fails closed and never raises. Python standard library only.
+State is per-game: a strictly backward step means a new/reordered game and
+resets histories first. An exact same-step call is an idempotent retry and
+leaves the previously recorded sample/history untouched. Every entry point
+fails closed and never raises. Python standard library only.
 """
 
 from __future__ import annotations
@@ -56,16 +56,19 @@ def reset():
 def note_prices(observation):
     """Record this step's observed market prices. Never raises.
 
-    Idempotent per step; a step <= the last recorded step means a new game in
-    a reused process, so histories are reset first. Malformed input is a no-op.
+    Exact same-step retries are idempotent and do not double-count or erase the
+    trailing window. A strictly backward step means a new/reordered game, so
+    histories reset before recording the new sample. Malformed input is a no-op.
     """
     try:
         try:
             step = int(observation["step"])
         except Exception:
             return
-        if step <= _last_step[0]:
+        if step < _last_step[0]:
             _phist.clear()
+        elif step == _last_step[0]:
+            return
         _last_step[0] = step
         prices = (observation.get("market") or {}).get("prices") or {}
         for good in CAPS:
