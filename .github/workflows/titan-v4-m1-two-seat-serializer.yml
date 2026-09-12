@@ -1,3 +1,4 @@
+# Support-only serializer: creates detached Git objects; never moves TITAN gameplay refs.
 name: TITAN V4 M1 two-seat detached serializer
 
 on:
