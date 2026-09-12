@@ -18,6 +18,7 @@ Candidate/research composer only. It never edits production files in place.
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 from pathlib import Path
 
@@ -42,8 +43,10 @@ _IMPORT_MARKER = (
 _BLOCK_START = "        budget=self.cash_reserve(obs,config,base,end)\n"
 _BLOCK_END = "        out=copy.deepcopy(base)\n"
 
+
 def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
 
 def authenticate_git_blobs(source_git: str, scheduler_git: str) -> tuple[str, str]:
     if source_git not in FROZEN_SELECTED_INPUTS:
@@ -52,11 +55,59 @@ def authenticate_git_blobs(source_git: str, scheduler_git: str) -> tuple[str, st
         raise ValueError("scheduler.py source drift; explicit rebase required")
     return FROZEN_SELECTED_INPUTS[source_git], SCHEDULER_INPUTS[scheduler_git]
 
+
+def _method_span(source: str, class_name: str, method_name: str) -> tuple[int, int]:
+    """Return one undecorated class-method byte span in the original source."""
+    lines = source.splitlines(keepends=True)
+    offsets = [0]
+    for line in lines:
+        offsets.append(offsets[-1] + len(line))
+    classes = [
+        node for node in ast.parse(source).body
+        if isinstance(node, ast.ClassDef) and node.name == class_name
+    ]
+    if len(classes) != 1:
+        raise ValueError(f"{class_name}: missing or ambiguous source boundary")
+    methods = [
+        node for node in classes[0].body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        and node.name == method_name
+    ]
+    if len(methods) != 1 or methods[0].decorator_list:
+        raise ValueError(f"{class_name}.{method_name}: missing, ambiguous or decorated")
+    node = methods[0]
+    return offsets[node.lineno - 1], offsets[node.end_lineno]
+
+
 def _rewrite_source(source: str) -> str:
     if source.count(_IMPORT_MARKER) != 1:
         raise ValueError("selected-sell import marker drift")
-    if source.count(_BLOCK_START) != 1 or source.count(_BLOCK_END) != 1:
-        raise ValueError("FrozenSelected transform marker drift")
+
+    method_start, method_end = _method_span(source, "FrozenSelected", "transform")
+    method = source[method_start:method_end]
+    if method.count(_BLOCK_START) != 1:
+        raise ValueError("FrozenSelected transform start marker drift")
+    relative_start = method.index(_BLOCK_START)
+    post_start = method[relative_start:]
+    if post_start.count(_BLOCK_END) != 1:
+        raise ValueError("FrozenSelected transform end marker drift")
+    relative_end = method.index(_BLOCK_END, relative_start)
+
+    block = method[relative_start:relative_end]
+    indented = "".join(
+        ("    " + line) if line.strip() else line for line in block.splitlines(True)
+    )
+    guard = (
+        "        self.diagnostics['h3s420']={\n"
+        "            'baseline_horizon':H3S420_BASELINE_HORIZON,\n"
+        "            'suppress_new_plans_after':H3S420_SUPPRESS_NEW_PLANS_AFTER,\n"
+        "            'new_plan_suppressed':now>=H3S420_SUPPRESS_NEW_PLANS_AFTER}\n"
+        "        if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:\n"
+        + indented
+    )
+    method = method[:relative_start] + guard + method[relative_end:]
+    out = source[:method_start] + method + source[method_end:]
+
     constants = (
         _IMPORT_MARKER + "\n"
         + "# H3/S420 current-ABI experiment: source-pinned and default-off at composition.\n"
@@ -66,22 +117,10 @@ def _rewrite_source(source: str) -> str:
         + "# only in this generated FrozenSelected module.\n"
         + "HORIZON = H3S420_BASELINE_HORIZON\n"
     )
-    out = source.replace(_IMPORT_MARKER, constants, 1)
-    start = out.index(_BLOCK_START)
-    end = out.index(_BLOCK_END, start)
-    block = out[start:end]
-    indented = "".join(("    " + line) if line.strip() else line for line in block.splitlines(True))
-    guard = (
-        "        self.diagnostics['h3s420']={\n"
-        "            'baseline_horizon':H3S420_BASELINE_HORIZON,\n"
-        "            'suppress_new_plans_after':H3S420_SUPPRESS_NEW_PLANS_AFTER,\n"
-        "            'new_plan_suppressed':now>=H3S420_SUPPRESS_NEW_PLANS_AFTER}\n"
-        "        if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:\n"
-        + indented
-    )
-    out = out[:start] + guard + out[end:]
+    out = out.replace(_IMPORT_MARKER, constants, 1)
     compile(out, "<h3s420-frozen-selected>", "exec")
     return out
+
 
 def compose(source: bytes, *, enabled: bool) -> bytes:
     if not enabled:
@@ -90,6 +129,7 @@ def compose(source: bytes, *, enabled: bool) -> bytes:
     if source_git not in FROZEN_SELECTED_INPUTS:
         raise ValueError("frozen_selected.py source drift; explicit rebase required")
     return _rewrite_source(source.decode("utf-8")).encode("utf-8")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -110,7 +150,7 @@ def main() -> int:
     if args.receipt is not None:
         import json
         payload = {
-            "schema": "titan.v4.h3s420-current-source/v2",
+            "schema": "titan.v4.h3s420-current-source/v3",
             "enabled": bool(args.enable_current_h3s420),
             "source_git_blob": source_git,
             "source_profile": source_profile,
@@ -129,6 +169,7 @@ def main() -> int:
         }
         args.receipt.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
