@@ -50,13 +50,22 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
         }
         self.features = {
             "consumer": "frozen",
+            "seed": True,
+            "funding": True,
+            "redundant_hire": True,
             "terminal_route": False,
-            "fourth_quadrant": False,
+            "committed": True,
+            "terminal_history": False,
             "spatial_pathing": False,
             "spatial_tempo": False,
+            "fourth_quadrant": False,
+            "market_pressure": True,
+            "committed_seed_retry": False,
             "operating_stock": True,
             "idle_fertilizer": True,
             "crop_release": True,
+            "early_capital": True,
+            "town_procurement": True,
         }
         x, y = self.spawn
         tiles = [[None for _ in range(10)] for _ in range(10)]
@@ -106,9 +115,10 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
         for step in range(start, start + 24):
             self.route[step] = {"farmer": ["PASS"], "hands": [], "market": []}
 
-    def build(self):
+    def build(self, *, completed=True):
         return builder.build_next_feed_certificate(
-            self.obs, self.selected, self.cfg, self.controller, self.features)
+            self.obs, self.selected, self.cfg, self.controller, self.features,
+            completed=completed)
 
     def test_day_close_saved_wheat_round_trip_is_certified(self):
         route_identity, certificate, report = self.build()
@@ -140,6 +150,58 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
             report["source_pins"]["reference/engine/kaggriculture.py"],
             builder.OFFICIAL_ENGINE_GIT_BLOB,
         )
+        self.assertEqual(
+            report["source_pins"]["titan_runtime.py"], builder.RUNTIME_GIT_BLOB)
+        self.assertEqual(
+            report["source_pins"]["TITAN-CONFIG.json"], builder.CONFIG_GIT_BLOB)
+        self.assertEqual(
+            report["source_pins"]["reference/titan-current/redundant_hire.py"],
+            builder.REDUNDANT_HIRE_GIT_BLOB,
+        )
+
+    def test_deadline_or_other_noncompleted_action_is_never_certified(self):
+        original = builder._lab_root
+
+        def forbidden_root():
+            raise AssertionError("noncompleted action reached source loading")
+
+        builder._lab_root = forbidden_root
+        try:
+            route_identity, certificate, report = self.build(completed=False)
+        finally:
+            builder._lab_root = original
+        self.assertIsNone(route_identity)
+        self.assertIsNone(certificate)
+        self.assertEqual(report["reason"], "runtime_action_not_completed")
+
+    def test_exact_current_wrapper_profile_is_required(self):
+        cases = (
+            ("seed", False),
+            ("funding", False),
+            ("redundant_hire", False),
+            ("market_pressure", False),
+            ("early_capital", False),
+            ("town_procurement", False),
+            ("committed_seed_retry", True),
+        )
+        for field, value in cases:
+            with self.subTest(field=field, value=value):
+                original = self.features[field]
+                self.features[field] = value
+                try:
+                    route_identity, certificate, report = self.build()
+                finally:
+                    self.features[field] = original
+                self.assertIsNone(route_identity)
+                self.assertIsNone(certificate)
+                self.assertEqual(report["reason"], f"unsupported_feature_profile:{field}")
+
+    def test_next_day_hire_surface_is_rejected_before_feed_proof(self):
+        self.route[24]["market"] = [["HIRE"]]
+        route_identity, certificate, report = self.build()
+        self.assertIsNone(route_identity)
+        self.assertIsNone(certificate)
+        self.assertEqual(report["reason"], "next_day_has_dynamic_hire_surface")
 
     def test_route_identity_binds_entire_live_tail(self):
         first_identity, _, first = self.build()
