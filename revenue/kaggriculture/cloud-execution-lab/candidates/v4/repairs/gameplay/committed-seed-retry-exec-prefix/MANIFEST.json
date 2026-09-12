@@ -1,0 +1,41 @@
+{
+  "schema": "titan-v4-repair-manifest/v1",
+  "lane": "committed-seed retry executable-prefix reserve",
+  "status": "current_abi_donor_tested_not_runtime_promoted",
+  "repair_path": "repairs/gameplay/committed-seed-retry-exec-prefix",
+  "production_seam": "cloud-committed-seed-retry/seed_retry.py::apply_committed_seed_retry",
+  "source": {
+    "path": "exec_prefix.py",
+    "git_blob": "dc8a4e0e268b0e488946fcb0fc5282c9a0f3442d",
+    "bytes": 3003,
+    "sha256": "47bb4a12d9a1761c5719cff363f0c480d9628057382ac7ed6ded4f7bd181db89",
+    "commit": "6478b3413fdd8446357023f95d0054fb78398bb1"
+  },
+  "test": {
+    "path": "test_exec_prefix.py",
+    "git_blob": "bb9fea12b215f0e7404d3ccbc12f7390d95ffa79",
+    "bytes": 5371,
+    "sha256": "5843b5bb4081c4f83e9970bea65583e49c1f359a197ac140b88f7d3fb882d238",
+    "commit": "94eafbdeb6cbf4da380888fa669c362ee4efaba8",
+    "normal": "22/22 PASS",
+    "optimized": "22/22 PASS",
+    "py_compile": "PASS"
+  },
+  "receipt_commit": "fd7196971d12b6da94801ed31181ae718bcbbd3a",
+  "problem": "Committed seed retry scans raw future market suffix rows for BUY_PRODUCT and inherited cash reserve scans raw suffix spend, although engine execution and FrozenSelected funding trace use maxMarketOrdersPerTurn executable prefixes.",
+  "semantics": [
+    "dead suffix BUY_PRODUCT rows do not veto committed seed retry",
+    "dead suffix fixed-cost rows do not create phantom reserve",
+    "identical rows inside the configured executable prefix preserve the existing veto/reserve semantics",
+    "non-default market limits are honored exactly",
+    "selected and route market tapes are not mutated"
+  ],
+  "integration": "Transplant only the feature-local prefix helpers into apply_committed_seed_retry; leave shared SellScheduler.cash_reserve unchanged.",
+  "prohibitions": [
+    "do not enable or change committed_seed_retry default from this custody receipt",
+    "do not edit shared SellScheduler.cash_reserve as part of this lane",
+    "do not mutate selected or route suffix rows",
+    "do not move production or Kaggle refs without current-head package and economics gates",
+    "do not create a sibling V4 integration root"
+  ]
+}
