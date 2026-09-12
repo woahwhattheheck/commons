@@ -168,12 +168,19 @@ def main() -> int:
     source_bytes = args.source.read_bytes()
     engine_bytes = args.engine.read_bytes()
     candidate = materialize(source_bytes, engine_bytes)
-    if args.source.resolve(strict=False) == args.output.resolve(strict=False):
-        raise MaterializationError("output must not alias source")
-    args.output.write_bytes(candidate)
-    if args.source.read_bytes() != source_bytes:
-        args.output.unlink(missing_ok=True)
-        raise MaterializationError("source mutated during materialization")
+    if args.output.resolve(strict=False) in {
+        args.source.resolve(strict=False), args.engine.resolve(strict=False)
+    }:
+        raise MaterializationError("output must not alias a bound input")
+    # Exclusive creation also rejects hard links, symlinks and unrelated files.
+    # Never overwrite a shared engine or a previous validation artifact.
+    with args.output.open("xb") as stream:
+        stream.write(candidate)
+    if (args.source.read_bytes() != source_bytes
+            or args.engine.read_bytes() != engine_bytes):
+        raise MaterializationError("bound input changed during materialization")
+    if args.output.read_bytes() != candidate:
+        raise MaterializationError("output readback mismatch")
     return 0
 
 
