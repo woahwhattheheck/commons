@@ -10,14 +10,19 @@ reports cannot identify the first causal action difference.
 
 `action_divergence_witness.py` imports the exact evaluator supplied on the
 command line, verifies its SHA256 plus the loader and both candidate archives,
-and temporarily subclasses that evaluator's `Actor`. The subclass records the
-same action response that the evaluator passes to the official interpreter;
-there is no second policy call and no evaluator source edit. Two exact runs are
-made for each requested seat. Candidate and opponent observation/action hashes
-are compared step by step. The report retains four complete compact hash vectors
-(left/right candidate and left/right opponent), binds each complete trace with
-the historical trace digest, and publishes a bounded per-step hash/full-action
-window around the first action divergence.
+and temporarily subclasses that evaluator's `Actor`. Before any games or arms
+are executed, expected SHA256 hashes are bound for all agent spec entry files
+and their statically referenced local dependencies (discovered via AST analysis).
+At every actor startup boundary (`RecordingActor.__init__`), file custody is
+verified against these bound commitments before the actor subprocess can spawn,
+failing closed immediately if on-disk code drifted or mutated between arms.
+The subclass records the same action response that the evaluator passes to the
+official interpreter; there is no second policy call and no evaluator source edit.
+Two exact runs are made for each requested seat. Candidate and opponent
+observation/action hashes are compared step by step. The report retains four
+complete compact hash vectors (left/right candidate and left/right opponent),
+binds each complete trace with the historical trace digest, and publishes a
+bounded per-step hash/full-action window around the first action divergence.
 
 A candidate action is labeled the first observed divergence only when its action
 changes before the opponent's and both candidate/opponent observation streams
@@ -78,11 +83,14 @@ python -O -B -m unittest -v \
   test_action_divergence_witness.py test_validate_native_9901_action_witness.py
 ```
 
-The recorder suite has 10 tests and the exact-target authority validator has 18.
+The test suite contains 34 tests (16 recorder and custody tests, 18 exact-target
+authority validator tests).
 Together they cover candidate-first, opponent-first, same-step observation
 divergence, identical traces, bounded witness windows, complete compact vector
-publication, topology rejection, seat parsing, SHA validation, executed-entry
-drift, engine drift, terminal-score drift, duplicate seats, timeout drift,
+publication, topology rejection, seat parsing, SHA validation, actor startup-boundary
+custody enforcement, hostile spec mutation between arms, hostile mutation-and-restore
+TOCTOU attacks, hostile underlying dependency mutation, hostile mid-game mutation,
+executed-entry drift, engine drift, terminal-score drift, duplicate seats, timeout drift,
 report tampering, a claimed run with no actual action divergence, a missing
 causal label, old summary-only evidence, vector/trace-digest tampering, a
 re-signed forged causal summary, a re-signed inconsistent first-action summary,

@@ -141,7 +141,10 @@ class ImmutableActionWitnessTests(unittest.TestCase):
             entry, candidate, _contract, _archive_path, members = self._fixture(root)
             target = candidate / "helper.py"
             target.unlink()
-            target.symlink_to(candidate / "main.py")
+            try:
+                target.symlink_to(candidate / "main.py")
+            except OSError as exc:
+                self.skipTest(f"Symlink creation not permitted: {exc}")
             with self.assertRaisesRegex(immutable.SnapshotError, "symlink"):
                 immutable._capture_agent(
                     f"{entry}::agent", root / "snapshot", archive_members=members

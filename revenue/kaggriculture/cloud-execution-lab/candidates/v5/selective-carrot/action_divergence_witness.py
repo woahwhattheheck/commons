@@ -9,6 +9,7 @@ used by the official interpreter is also hashed for causal comparison.
 from __future__ import annotations
 
 import argparse
+import ast
 import copy
 import hashlib
 import importlib.util
@@ -94,6 +95,73 @@ def _spec_path(spec: str) -> Path:
     path = Path(path_text).resolve(strict=True)
     _read_regular(path)
     return path
+
+
+def _inspect_spec_dependencies(spec: str) -> dict[str, str]:
+    spec_path = _spec_path(spec)
+    resolved_spec = spec_path.resolve()
+    deps: dict[str, str] = {str(resolved_spec): _sha_file(resolved_spec)}
+    try:
+        content = spec_path.read_text(encoding="utf-8", errors="replace")
+        tree = ast.parse(content, filename=str(spec_path))
+    except Exception:
+        return deps
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            val = node.value.strip()
+            if val and ("/" in val or "\\" in val) and not val.startswith("http"):
+                try:
+                    candidate = Path(val).resolve()
+                    if candidate.is_file():
+                        deps[str(candidate)] = _sha_file(candidate)
+                        for sibling in candidate.parent.glob("*"):
+                            if sibling.is_file() and sibling.suffix in (
+                                ".py",
+                                ".so",
+                                ".json",
+                                ".hpp",
+                                ".cpp",
+                            ):
+                                deps[str(sibling.resolve())] = _sha_file(sibling)
+                except Exception:
+                    pass
+    try:
+        py_siblings = [p for p in spec_path.parent.glob("*.py") if p.is_file()]
+        if len(py_siblings) <= 50:
+            for sib in py_siblings:
+                deps[str(sib.resolve())] = _sha_file(sib)
+    except Exception:
+        pass
+    return deps
+
+
+def _verify_actor_custody(spec: str, expected_deps: dict[str, dict[str, str]]) -> None:
+    deps = expected_deps.get(spec)
+    if deps is None:
+        try:
+            resolved_str = str(_spec_path(spec).resolve())
+            for d in expected_deps.values():
+                if resolved_str in d:
+                    deps = d
+                    break
+        except Exception:
+            pass
+    if deps is None:
+        raise WitnessError(f"Actor execution-custody failed: unknown spec {spec}")
+    for path_str, expected_sha in deps.items():
+        p = Path(path_str)
+        if not p.is_file():
+            raise WitnessError(
+                f"Actor execution-custody violation for {spec}: dependency {p} missing"
+            )
+        actual_sha = _sha_file(p)
+        if actual_sha != expected_sha:
+            raise WitnessError(
+                f"Actor execution-custody violation for {spec}: "
+                f"file {p} drifted (actual {actual_sha} != expected {expected_sha})"
+            )
+
 
 
 def _load_module(path: Path):
@@ -312,15 +380,27 @@ def _run_arm(
     action_timeout: float,
     startup_timeout: float,
     game_timeout: float,
+    expected_deps: dict[str, dict[str, str]],
 ) -> tuple[dict[str, Any], dict[str, list[dict[str, Any]]]]:
     base_actor = evaluator.Actor
     records: dict[str, list[dict[str, Any]]] = {}
 
     class RecordingActor(base_actor):
+        def __init__(self, spec, cache, loader, rng_seed, startup_timeout=10.0):
+            _verify_actor_custody(spec, expected_deps)
+            super().__init__(spec, cache, loader, rng_seed, startup_timeout)
+            _verify_actor_custody(spec, expected_deps)
+
         def act(self, observation, configuration, timeout):
             response = base_actor.act(self, observation, configuration, timeout)
             _record_step(records, self.spec, observation, response)
             return response
+
+        def close(self):
+            try:
+                _verify_actor_custody(self.spec, expected_deps)
+            finally:
+                super().close()
 
     evaluator.Actor = RecordingActor
     try:
@@ -385,6 +465,18 @@ def run_witness(args: argparse.Namespace) -> dict[str, Any]:
     right_spec_path = _spec_path(args.right_candidate)
     opponent_spec_path = _spec_path(args.opponent)
 
+    # Bind expected entry SHAs and complete runtime dependency commitments before execution:
+    expected_deps: dict[str, dict[str, str]] = {
+        args.left_candidate: _inspect_spec_dependencies(args.left_candidate),
+        args.right_candidate: _inspect_spec_dependencies(args.right_candidate),
+        args.opponent: _inspect_spec_dependencies(args.opponent),
+    }
+    expected_entry_shas = {
+        "left": expected_deps[args.left_candidate][str(left_spec_path.resolve())],
+        "right": expected_deps[args.right_candidate][str(right_spec_path.resolve())],
+        "opponent": expected_deps[args.opponent][str(opponent_spec_path.resolve())],
+    }
+
     evaluator = _load_module(evaluator_path)
     engine, engine_sha256 = evaluator.get_engine(engine_dir, loader_path)
     if type(engine_sha256) is not dict or not engine_sha256:
@@ -414,6 +506,7 @@ def run_witness(args: argparse.Namespace) -> dict[str, Any]:
             action_timeout=action_timeout,
             startup_timeout=startup_timeout,
             game_timeout=game_timeout,
+            expected_deps=expected_deps,
         )
         right_result, right_records = _run_arm(
             evaluator,
@@ -428,6 +521,7 @@ def run_witness(args: argparse.Namespace) -> dict[str, Any]:
             action_timeout=action_timeout,
             startup_timeout=startup_timeout,
             game_timeout=game_timeout,
+            expected_deps=expected_deps,
         )
         if left_result.get("status") != "complete" or right_result.get("status") != "complete":
             raise WitnessError(
@@ -455,15 +549,19 @@ def run_witness(args: argparse.Namespace) -> dict[str, Any]:
             "comparison": comparison,
         })
 
+    # Re-verify all specs and dependencies before certifying authority:
+    for spec in (args.left_candidate, args.right_candidate, args.opponent):
+        _verify_actor_custody(spec, expected_deps)
+
     authority = {
         "evaluator": evaluator_authority,
         "loader": loader_authority,
         "engine_sha256": engine_sha256,
         "left_archive": left_archive_authority,
         "right_archive": right_archive_authority,
-        "left_entry_sha256": _sha_file(left_spec_path),
-        "right_entry_sha256": _sha_file(right_spec_path),
-        "opponent_entry_sha256": _sha_file(opponent_spec_path),
+        "left_entry_sha256": expected_entry_shas["left"],
+        "right_entry_sha256": expected_entry_shas["right"],
+        "opponent_entry_sha256": expected_entry_shas["opponent"],
         "left_label": args.left_label,
         "right_label": args.right_label,
         "opponent_label": args.opponent_label,
