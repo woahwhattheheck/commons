@@ -27,5 +27,5 @@
   "final_observer_donor_blob": "ef6ab6e795375cf84c5dc7d0bcd43f979bbd0af8",
   "completed_service": false,
   "replication_note": "Final observer is rebound to reviewed ef6 donor with completed_service=False, which retains original HARVEST-only treatment. Same predeclared eight seed/seat cells; first 3f observer run remains preliminary, separate from final normal/-O replication.",
-  "currentness_limit": "main runtime advanced to b567 during evaluation; this b952 pinned payload is NOT relabeled as latest-main or gauntlet-overlay evidence."
+  "currentness_limit": "b567942e is the peer current-package archive SHA256, NOT a replacement runtime blob: it also contains b952 runtime. This 65-file pinned payload is not relabeled as that verified 109-member current archive or composed V4-overlay evidence."
 }
