@@ -1,33 +1,42 @@
 # SPDX-License-Identifier: Apache-2.0
 """Offline native-entrypoint parity and alternating timing, one game per process.
 
-Authenticates the complete checked native package from bytes captured exactly once
-before cloning. Child game processes execute the already-authenticated captured
-runner bytes through a tiny parent-owned stdin bootstrap; they never reopen a
-repository or scratch runner pathname. Child interpreter startup is isolated from
-ambient Python startup hooks before that bootstrap runs. No repository control
-helper is imported before capture/authentication; the composer is compiled and
-executed only from already-authenticated captured bytes. Runner provenance is
-supplied from external exact-head authority rather than inferred from the mutable
-checkout. Changes only mechanics.py in an explicit scratch tree; no config, route,
-archive or release mutation. No observation filtering, actor/market truncation or
-synthetic fill.
+Authenticates the complete checked native package from bytes captured exactly once.
+Child game processes execute the already-authenticated captured runner bytes through
+a tiny parent-owned stdin bootstrap; they never reopen a repository or scratch
+runner pathname. After each child authenticates its native-root manifest, runtime
+Python and captured data reads execute from in-memory buffers through a memory
+importer/file view rather than from materialized runtime paths. Child interpreter
+startup is isolated from ambient Python startup hooks before the bootstrap runs.
+No repository control helper is imported before capture/authentication; the
+composer is compiled and executed only from already-authenticated captured bytes.
+Runner provenance is supplied from external exact-head authority rather than
+inferred from the mutable checkout. No config, route, archive or release mutation.
+No observation filtering, actor/market truncation or synthetic fill.
 """
 from __future__ import annotations
 import argparse
+import ast
+import builtins
 import collections
 import copy
+from contextlib import contextmanager
 import hashlib
+import importlib.abc
+import importlib.machinery
 import importlib.util
+import io
 import json
 import os
 from pathlib import Path, PurePosixPath
+import random
 import statistics
 import subprocess
 import sys
 import tempfile
 import time
 import types
+from typing import Any, Callable
 
 SOURCE_SHA256 = 'e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2'
 BASE_MECHANICS_BLOB = '044a4f9c0a4a44dde10ada57563238bcaf82075d'
@@ -41,6 +50,7 @@ CONTROL_GIT_BLOBS = {
     'compose_kinetic.py': 'd34362e98277c930b7b28519f2892bea758b3878',
     'check_kinetic.py': 'a8bf67cca8f34492dc28286da62168da5d59c146',
 }
+VIRTUAL_RUNTIME_ROOT = '/__titan_kinetic_captured_runtime__'
 CAPTURED_RUNNER_BOOTSTRAP = r'''import hashlib
 import sys
 expected = sys.argv.pop(1)
@@ -56,6 +66,18 @@ namespace = {
 }
 exec(compile(raw, namespace["__file__"], "exec"), namespace, namespace)
 '''
+
+
+class Struct(dict):
+    """Exact tiny attribute-dict shape used by the pinned reference loader."""
+    def __getattr__(self, key):
+        try:
+            return self[key]
+        except KeyError:
+            raise AttributeError(key) from None
+
+    def __setattr__(self, key, value):
+        self[key] = value
 
 
 def sha(path):
@@ -89,23 +111,18 @@ def encoded(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
 
 
-def imported(name, path):
-    """Load a module from an already-custodied path without checker dependency."""
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ImportError(f'Cannot load module: {path}')
-    result = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(result)
-    return result
-
-
 def _safe_relative(name):
     if not isinstance(name, str) or not name or '\\' in name:
         raise ValueError(f'Unsafe runtime member: {name!r}')
     rel = PurePosixPath(name)
     if rel.is_absolute() or '..' in rel.parts or '.' in rel.parts:
         raise ValueError(f'Unsafe runtime member: {name!r}')
-    return Path(*rel.parts)
+    return rel
+
+
+def _virtual_runtime_path(name):
+    rel = _safe_relative(name)
+    return str(PurePosixPath(VIRTUAL_RUNTIME_ROOT, *rel.parts))
 
 
 def control_bundle_digest(captured):
@@ -126,13 +143,7 @@ def control_bundle_digest(captured):
 
 
 def capture_control_bundle(root, expected_runner_git_blob):
-    """Capture runner plus pinned helpers exactly once under external runner identity.
-
-    ``expected_runner_git_blob`` MUST come from external exact-head authority
-    (GitHub/executor/workflow), never by re-reading the mutable checkout being
-    authenticated. No helper from this bundle is imported or executed before this
-    routine. Helper pins are verified with runner-owned ``git_blob`` code.
-    """
+    """Capture runner plus pinned helpers exactly once under external runner identity."""
     expected_runner_git_blob = _git_blob_pin(expected_runner_git_blob)
     root = Path(root).resolve(strict=True)
     captured = {}
@@ -172,15 +183,7 @@ def load_captured_composer(raw):
 
 
 def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, optimized=False, timeout=90):
-    """Start isolated child Python from authenticated runner bytes, never a path.
-
-    The parent rechecks the captured bytes and supplies them on stdin. Child
-    startup is fixed to ``-I -S -B`` with only a controlled ``-O`` option, and
-    all inherited ``PYTHON*`` variables are removed before process creation. This
-    prevents PYTHONPATH/sitecustomize and earlier interpreter-option injection
-    from running before the constant bootstrap. The bootstrap then hashes stdin
-    against the externally sourced runner Git blob before compile/exec.
-    """
+    """Start isolated child Python from authenticated runner bytes, never a path."""
     expected_runner_git_blob = _git_blob_pin(expected_runner_git_blob)
     if not isinstance(runner_bytes, bytes):
         raise TypeError('runner_bytes must be bytes')
@@ -218,9 +221,9 @@ def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, 
 def capture_runtime(root, expected_mechanics_sha256=None):
     """Capture and authenticate every declared runtime byte exactly once.
 
-    The returned byte buffers are the sole source for later materialization and
-    execution. ``expected_mechanics_sha256`` is permitted only for the composed
-    candidate; every other runtime member remains bound to SOURCE.json.
+    The returned buffers are the sole authority for later runtime execution.
+    ``expected_mechanics_sha256`` is permitted only for the composed candidate;
+    every other member remains bound to the pinned SOURCE manifest.
     """
     root = Path(root).resolve(strict=True)
     manifest_raw = (root / 'SOURCE.json').read_bytes()
@@ -235,7 +238,7 @@ def capture_runtime(root, expected_mechanics_sha256=None):
         rel = _safe_relative(name)
         if not isinstance(pin, dict) or not isinstance(pin.get('sha256'), str):
             raise ValueError(f'Invalid runtime pin: {name}')
-        path = root / rel
+        path = root.joinpath(*rel.parts)
         if path.is_symlink() or not path.is_file() or not path.resolve(strict=True).is_relative_to(root):
             raise ValueError(f'Unsafe runtime input: {name}')
         raw = path.read_bytes()
@@ -254,65 +257,248 @@ def capture_runtime(root, expected_mechanics_sha256=None):
 
 
 def materialize_runtime(root, manifest_raw, captured):
-    """Write an authenticated runtime capture into a fresh execution tree."""
+    """Write a captured runtime only as child input transport, never execution authority."""
     root = Path(root)
     root.mkdir(parents=True, exist_ok=False)
     (root / 'SOURCE.json').write_bytes(manifest_raw)
     for name, raw in captured.items():
-        path = root / _safe_relative(name)
+        rel = _safe_relative(name)
+        path = root.joinpath(*rel.parts)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(raw)
 
 
-def play(root, seed, seat, instrument=False):
-    sys.path.insert(0, str(root))
-    loader = imported('kinetic_game_loader', root/'checks/reference/evaluator/loader.py')
-    engine, _ = loader.get_engine(root/'checks/reference/engine')
-    main = imported('kinetic_native_entrypoint', root/'main.py')
-    histogram = collections.Counter()
-    if instrument:
-        import mechanics
-        original = mechanics._apply_unit_action
-        def counted(*args, **kwargs):
-            a = args[3]
-            op = str(a[0]) if isinstance(a, list) and a else '<invalid>'
-            histogram[op] += 1
-            return original(*args, **kwargs)
-        mechanics._apply_unit_action = counted
-    cfg = loader.Struct({k: v.get('default') if isinstance(v, dict) else v
-                         for k, v in engine.specification['configuration'].items()})
-    cfg.seed = seed
-    env = loader.Struct(configuration=cfg, done=False, info={})
-    state = [loader.Struct(observation=loader.Struct(), action={}, status='ACTIVE', reward=0)
-             for _ in range(2)]
-    engine.interpreter(state, env)
-    actions, states = hashlib.sha256(), hashlib.sha256()
-    wall, cpu, statuses, daily = [], [], collections.Counter(), []
-    for step in range(int(cfg.episodeSteps)):
-        for s in state:
-            s.observation.step = step
-        observation = copy.deepcopy(state[seat].observation)
-        started_wall, started_cpu = time.perf_counter(), time.process_time()
-        action = main.agent(observation, cfg)
-        cpu.append(time.process_time()-started_cpu)
-        wall.append(time.perf_counter()-started_wall)
-        instance = main._INSTANCE
-        statuses['no-instance' if instance is None else instance.diagnostics.get('status', 'missing')] += 1
-        state[seat].action = action
-        state[1-seat].action = engine.starter_agent(copy.deepcopy(state[1-seat].observation))
-        actions.update(encoded([s.action for s in state])+b'\n')
+class _CapturedRuntimeFinder(importlib.abc.MetaPathFinder, importlib.abc.Loader):
+    """Import runtime Python modules directly from the authenticated byte capture."""
+    def __init__(self, captured):
+        self.modules = {}
+        self.namespaces = set()
+        for name, raw in captured.items():
+            rel = _safe_relative(name)
+            if rel.suffix != '.py':
+                continue
+            parts = list(rel.parts)
+            is_package = parts[-1] == '__init__.py'
+            if is_package:
+                module_parts = parts[:-1]
+            else:
+                module_parts = parts[:-1] + [PurePosixPath(parts[-1]).stem]
+            if not module_parts or any(not part.isidentifier() for part in module_parts):
+                continue
+            fullname = '.'.join(module_parts)
+            self.modules[fullname] = (name, raw, is_package)
+            for index in range(1, len(module_parts)):
+                self.namespaces.add('.'.join(module_parts[:index]))
+
+    def find_spec(self, fullname, path=None, target=None):
+        record = self.modules.get(fullname)
+        if record is not None:
+            name, _raw, is_package = record
+            spec = importlib.util.spec_from_loader(fullname, self, is_package=is_package)
+            spec.origin = _virtual_runtime_path(name)
+            if is_package:
+                spec.submodule_search_locations = [
+                    str(PurePosixPath(VIRTUAL_RUNTIME_ROOT, *PurePosixPath(name).parts[:-1]))
+                ]
+            return spec
+        if fullname in self.namespaces:
+            spec = importlib.machinery.ModuleSpec(fullname, loader=None, is_package=True)
+            spec.submodule_search_locations = [
+                str(PurePosixPath(VIRTUAL_RUNTIME_ROOT, *fullname.split('.')))
+            ]
+            return spec
+        return None
+
+    def create_module(self, spec):
+        return None
+
+    def exec_module(self, module):
+        name, raw, is_package = self.modules[module.__name__]
+        virtual = _virtual_runtime_path(name)
+        module.__file__ = virtual
+        module.__package__ = module.__name__ if is_package else module.__name__.rpartition('.')[0]
+        if is_package:
+            module.__path__ = [str(PurePosixPath(virtual).parent)]
+        exec(compile(raw, virtual, 'exec'), module.__dict__)
+
+
+@contextmanager
+def _captured_runtime_authority(captured):
+    """Serve captured Python imports and captured file reads without filesystem reopen."""
+    by_virtual_path = {
+        os.path.abspath(_virtual_runtime_path(name)): raw
+        for name, raw in captured.items()
+    }
+    real_builtin_open = builtins.open
+    real_io_open = io.open
+
+    def captured_open(file, mode='r', buffering=-1, encoding=None, errors=None,
+                      newline=None, closefd=True, opener=None):
+        if isinstance(file, (str, bytes, os.PathLike)):
+            try:
+                key = os.path.abspath(os.fsdecode(os.fspath(file)))
+            except (TypeError, ValueError, OSError):
+                key = None
+            if key in by_virtual_path:
+                if any(flag in mode for flag in ('w', 'a', 'x', '+')):
+                    raise ValueError(f'Captured runtime member is immutable: {file}')
+                raw = by_virtual_path[key]
+                if 'b' in mode:
+                    return io.BytesIO(raw)
+                codec = encoding or 'utf-8'
+                text = raw.decode(codec, errors or 'strict')
+                return io.StringIO(text, newline=newline)
+        return real_builtin_open(
+            file, mode, buffering, encoding, errors, newline, closefd, opener
+        )
+
+    finder = _CapturedRuntimeFinder(captured)
+    builtins.open = captured_open
+    io.open = captured_open
+    sys.meta_path.insert(0, finder)
+    try:
+        yield finder
+    finally:
+        if finder in sys.meta_path:
+            sys.meta_path.remove(finder)
+        builtins.open = real_builtin_open
+        io.open = real_io_open
+
+
+def _load_captured_module(name, runtime_name, captured):
+    if runtime_name not in captured:
+        raise ValueError(f'Missing captured runtime member: {runtime_name}')
+    raw = captured[runtime_name]
+    virtual = _virtual_runtime_path(runtime_name)
+    module = types.ModuleType(name)
+    module.__file__ = virtual
+    module.__package__ = name.rpartition('.')[0]
+    sys.modules[name] = module
+    try:
+        exec(compile(raw, virtual, 'exec'), module.__dict__)
+    except Exception:
+        sys.modules.pop(name, None)
+        raise
+    return module
+
+
+def _load_captured_engine(captured):
+    """Load the exact engine Python/JSON/utils from captured buffers only."""
+    utils_name = 'checks/reference/engine/utils.py'
+    engine_name = 'checks/reference/engine/kaggriculture.py'
+    json_name = 'checks/reference/engine/kaggriculture.json'
+    for name in (utils_name, engine_name, json_name):
+        if name not in captured:
+            raise ValueError(f'Missing captured engine member: {name}')
+
+    utils_virtual = _virtual_runtime_path(utils_name)
+    parsed = ast.parse(captured[utils_name].decode('utf-8'), filename=utils_virtual)
+    helper = next(
+        (node for node in parsed.body
+         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+         and node.name == 'resolve_episode_seed'),
+        None,
+    )
+    if helper is None or isinstance(helper, ast.AsyncFunctionDef):
+        raise ValueError('Captured engine utils missing synchronous resolve_episode_seed')
+    namespace = {'Any': Any, 'Callable': Callable, 'random': random}
+    exec(
+        compile(ast.Module(body=[helper], type_ignores=[]), utils_virtual, 'exec'),
+        namespace,
+    )
+    package = types.ModuleType('kaggle_environments')
+    package.__path__ = []
+    utils = types.ModuleType('kaggle_environments.utils')
+    utils.resolve_episode_seed = namespace['resolve_episode_seed']
+    package.utils = utils
+    sys.modules['kaggle_environments'] = package
+    sys.modules['kaggle_environments.utils'] = utils
+    return _load_captured_module('official_kaggriculture', engine_name, captured)
+
+
+def play(captured, seed, seat, instrument=False):
+    """Execute one game using only authenticated captured runtime bytes."""
+    with _captured_runtime_authority(captured):
+        # Execute the checked loader itself from captured bytes for reference
+        # Struct semantics, but never call its filesystem/network get_engine().
+        loader = _load_captured_module(
+            'kinetic_game_loader',
+            'checks/reference/evaluator/loader.py',
+            captured,
+        )
+        if not hasattr(loader, 'Struct'):
+            raise ValueError('Captured reference loader missing Struct')
+        engine = _load_captured_engine(captured)
+        main = _load_captured_module('kinetic_native_entrypoint', 'main.py', captured)
+        histogram = collections.Counter()
+        if instrument:
+            mechanics = sys.modules.get('mechanics')
+            if mechanics is None:
+                mechanics = importlib.import_module('mechanics')
+            original = mechanics._apply_unit_action
+
+            def counted(*args, **kwargs):
+                action = args[3]
+                op = str(action[0]) if isinstance(action, list) and action else '<invalid>'
+                histogram[op] += 1
+                return original(*args, **kwargs)
+
+            mechanics._apply_unit_action = counted
+        cfg = loader.Struct({
+            key: value.get('default') if isinstance(value, dict) else value
+            for key, value in engine.specification['configuration'].items()
+        })
+        cfg.seed = seed
+        env = loader.Struct(configuration=cfg, done=False, info={})
+        state = [
+            loader.Struct(observation=loader.Struct(), action={}, status='ACTIVE', reward=0)
+            for _ in range(2)
+        ]
         engine.interpreter(state, env)
-        states.update(encoded([dict(s) for s in state])+b'\n')
-        if (step+1) % int(cfg.turnsPerDay) == 0 or all(s.status == 'DONE' for s in state):
-            daily.append({'step': step, 'bank': [s.observation.farms[i]['money'] for i, s in enumerate(state)]})
-        if all(s.status == 'DONE' for s in state):
-            break
-    return {'seed': seed, 'seat': seat, 'steps': step+1, 'scores': [s.reward for s in state],
-            'terminal_status': [s.status for s in state], 'statuses': dict(statuses),
-            'action_sha256': actions.hexdigest(), 'state_sha256': states.hexdigest(),
-            'wall_seconds': sum(wall), 'cpu_seconds': sum(cpu), 'max_call_seconds': max(wall),
-            'median_call_seconds': statistics.median(wall), 'per_call_wall_seconds': wall,
-            'daily_bank': daily, 'instrumented': instrument, 'unit_histogram': dict(histogram)}
+        actions, states = hashlib.sha256(), hashlib.sha256()
+        wall, cpu, statuses, daily = [], [], collections.Counter(), []
+        for step in range(int(cfg.episodeSteps)):
+            for state_row in state:
+                state_row.observation.step = step
+            observation = copy.deepcopy(state[seat].observation)
+            started_wall, started_cpu = time.perf_counter(), time.process_time()
+            action = main.agent(observation, cfg)
+            cpu.append(time.process_time() - started_cpu)
+            wall.append(time.perf_counter() - started_wall)
+            instance = main._INSTANCE
+            statuses[
+                'no-instance' if instance is None else instance.diagnostics.get('status', 'missing')
+            ] += 1
+            state[seat].action = action
+            state[1-seat].action = engine.starter_agent(copy.deepcopy(state[1-seat].observation))
+            actions.update(encoded([row.action for row in state]) + b'\n')
+            engine.interpreter(state, env)
+            states.update(encoded([dict(row) for row in state]) + b'\n')
+            if (step + 1) % int(cfg.turnsPerDay) == 0 or all(row.status == 'DONE' for row in state):
+                daily.append({
+                    'step': step,
+                    'bank': [row.observation.farms[i]['money'] for i, row in enumerate(state)],
+                })
+            if all(row.status == 'DONE' for row in state):
+                break
+    return {
+        'seed': seed,
+        'seat': seat,
+        'steps': step + 1,
+        'scores': [row.reward for row in state],
+        'terminal_status': [row.status for row in state],
+        'statuses': dict(statuses),
+        'action_sha256': actions.hexdigest(),
+        'state_sha256': states.hexdigest(),
+        'wall_seconds': sum(wall),
+        'cpu_seconds': sum(cpu),
+        'max_call_seconds': max(wall),
+        'median_call_seconds': statistics.median(wall),
+        'per_call_wall_seconds': wall,
+        'daily_bank': daily,
+        'instrumented': instrument,
+        'unit_histogram': dict(histogram),
+    }
 
 
 def _require_captured_child_identity(expected_runner_git_blob):
@@ -352,7 +538,7 @@ def main():
             'authenticated_parent_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
             'authenticated_parent_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
             'runner_executed_from_captured_bytes': True,
-        }, sort_keys=True, indent=2)+'\n')
+        }, sort_keys=True, indent=2) + '\n')
         return 0
 
     if args.child_seat is not None:
@@ -365,10 +551,7 @@ def main():
             args.expected_control_bundle_sha256, 'expected control bundle SHA-256'
         )
         manifest_raw, captured = capture_runtime(args.native_root, args.expected_mechanics_sha256)
-        with tempfile.TemporaryDirectory(prefix='kinetic-child-snapshot-') as tmp:
-            frozen = Path(tmp) / 'runtime'
-            materialize_runtime(frozen, manifest_raw, captured)
-            result = play(frozen, args.child_seed, args.child_seat, args.instrument)
+        result = play(captured, args.child_seed, args.child_seat, args.instrument)
         result['executed_source_manifest_sha256'] = sha_bytes(manifest_raw)
         result['executed_mechanics_sha256'] = sha_bytes(captured['mechanics.py'])
         result['executed_control_bundle_sha256'] = control_digest
@@ -376,7 +559,9 @@ def main():
         result['authenticated_parent_control_compose_blob'] = CONTROL_GIT_BLOBS['compose_kinetic.py']
         result['authenticated_parent_control_check_blob'] = CONTROL_GIT_BLOBS['check_kinetic.py']
         result['runner_executed_from_captured_bytes'] = True
-        args.output.write_text(json.dumps(result, sort_keys=True, indent=2)+'\n')
+        result['runtime_executed_from_captured_bytes'] = True
+        result['captured_runtime_members'] = len(captured)
+        args.output.write_text(json.dumps(result, sort_keys=True, indent=2) + '\n')
         return 0
     if args.repetitions < 1:
         parser.error('At least one repetition is required')
@@ -393,7 +578,7 @@ def main():
         raise ValueError('Parent control runner identity mismatch')
     manifest_raw, baseline_files = capture_runtime(args.native_root)
     count = len(baseline_files)
-    seeds = [int(v) for v in args.seeds.split(',')]
+    seeds = [int(value) for value in args.seeds.split(',')]
     parent_bytes = baseline_files['mechanics.py']
     parent_source = parent_bytes.decode()
     candidate_source = composer.compose(parent_source)
@@ -403,8 +588,10 @@ def main():
     results, pairs = [], []
     with tempfile.TemporaryDirectory(prefix='kinetic-native-') as scratch:
         scratch = Path(scratch)
-        baseline = scratch/'baseline'
-        candidate = scratch/'candidate'
+        baseline = scratch / 'baseline'
+        candidate = scratch / 'candidate'
+        # These trees are transport only. Each child re-authenticates them once,
+        # captures all declared bytes, then executes solely from that capture.
         materialize_runtime(baseline, manifest_raw, baseline_files)
         candidate_files = dict(baseline_files)
         candidate_files['mechanics.py'] = candidate_bytes
@@ -413,15 +600,24 @@ def main():
             for seed in seeds:
                 for seat in [0, 1]:
                     row_pair = {}
-                    order = ['baseline', 'candidate'] if (rep+seat+args.order_offset) % 2 == 0 else ['candidate', 'baseline']
+                    order = (
+                        ['baseline', 'candidate']
+                        if (rep + seat + args.order_offset) % 2 == 0
+                        else ['candidate', 'baseline']
+                    )
                     for arm in order:
                         root = baseline if arm == 'baseline' else candidate
-                        expected_mechanics = baseline_mechanics_sha256 if arm == 'baseline' else candidate_mechanics_sha256
-                        result_file = scratch/'one-game.json'
+                        expected_mechanics = (
+                            baseline_mechanics_sha256 if arm == 'baseline'
+                            else candidate_mechanics_sha256
+                        )
+                        result_file = scratch / 'one-game.json'
                         runner_args = [
-                            '--native-root', str(root), '--output', str(result_file),
+                            '--native-root', str(root),
+                            '--output', str(result_file),
                             '--expected-runner-git-blob', expected_runner_git_blob,
-                            '--child-seat', str(seat), '--child-seed', str(seed),
+                            '--child-seat', str(seat),
+                            '--child-seed', str(seed),
                             '--expected-mechanics-sha256', expected_mechanics,
                             '--expected-control-bundle-sha256', control_digest,
                         ]
@@ -449,6 +645,10 @@ def main():
                             raise ValueError(f'{arm} child executed unexpected runner bytes')
                         if row.get('runner_executed_from_captured_bytes') is not True:
                             raise ValueError(f'{arm} child lacks captured-runner execution receipt')
+                        if row.get('runtime_executed_from_captured_bytes') is not True:
+                            raise ValueError(f'{arm} child lacks captured-runtime execution receipt')
+                        if row.get('captured_runtime_members') != count:
+                            raise ValueError(f'{arm} child captured unexpected runtime member count')
                         if row.get('authenticated_parent_control_compose_blob') != CONTROL_GIT_BLOBS['compose_kinetic.py']:
                             raise ValueError(f'{arm} child lacks parent-authenticated composer identity')
                         if row.get('authenticated_parent_control_check_blob') != CONTROL_GIT_BLOBS['check_kinetic.py']:
@@ -456,41 +656,69 @@ def main():
                         row.update(arm=arm, repetition=rep)
                         row_pair[arm] = row
                         results.append(row)
-                        print(json.dumps({k: row[k] for k in ['arm', 'seed', 'seat', 'repetition', 'steps', 'scores',
-                                                                  'statuses', 'wall_seconds', 'cpu_seconds']}, sort_keys=True), flush=True)
-                    a, b = row_pair['baseline'], row_pair['candidate']
-                    equal = all(a[k] == b[k] for k in ['action_sha256', 'state_sha256', 'scores', 'steps', 'terminal_status'])
-                    complete = all(r['steps'] == 719 and r['terminal_status'] == ['DONE', 'DONE']
-                                   and r['statuses'] == {'completed': 719} for r in [a, b])
-                    pairs.append({'seed': seed, 'seat': seat, 'repetition': rep, 'parity': equal,
-                                  'complete': complete, 'wall_ratio': b['wall_seconds']/a['wall_seconds'],
-                                  'cpu_ratio': b['cpu_seconds']/a['cpu_seconds']})
-    report = {'scope': 'b567 checked archive plus exactly one mechanics span; NOT current whole-V4 or field strength',
-              'mode': 'optimized' if sys.flags.optimize else 'normal', 'instrumented': args.instrument,
-              'order_offset': args.order_offset, 'authenticated_runtime_members': count,
-              'source_manifest_sha256': sha_bytes(manifest_raw),
-              'source_mechanics_blob': git_blob(parent_bytes),
-              'candidate_mechanics_blob': git_blob(candidate_bytes),
-              'source_mechanics_sha256': baseline_mechanics_sha256,
-              'candidate_mechanics_sha256': candidate_mechanics_sha256,
-              'control_bundle_sha256': control_digest,
-              'control_runner_git_blob': control_runner_blob,
-              'control_runner_external_pin': expected_runner_git_blob,
-              'authenticated_parent_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
-              'authenticated_parent_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
-              'immutable_execution_snapshot': True,
-              'immutable_control_snapshot': True,
-              'child_runner_execution': 'isolated_captured_bytes_stdin_bootstrap',
-              'child_python_startup': 'fixed_-I_-S_-B_plus_controlled_-O_no_inherited_PYTHON_env',
-              'games': results, 'pairs': pairs,
-              'summary': {'games': len(results), 'pairs': len(pairs),
-                          'all_parity': all(p['parity'] for p in pairs),
-                          'all_complete': all(p['complete'] for p in pairs),
-                          'median_paired_wall_ratio': statistics.median(p['wall_ratio'] for p in pairs),
-                          'median_paired_cpu_ratio': statistics.median(p['cpu_ratio'] for p in pairs)}}
-    args.output.write_text(json.dumps(report, sort_keys=True, indent=2)+'\n')
+                        print(json.dumps({
+                            key: row[key]
+                            for key in [
+                                'arm', 'seed', 'seat', 'repetition', 'steps', 'scores',
+                                'statuses', 'wall_seconds', 'cpu_seconds',
+                            ]
+                        }, sort_keys=True), flush=True)
+                    baseline_row, candidate_row = row_pair['baseline'], row_pair['candidate']
+                    equal = all(
+                        baseline_row[key] == candidate_row[key]
+                        for key in ['action_sha256', 'state_sha256', 'scores', 'steps', 'terminal_status']
+                    )
+                    complete = all(
+                        row['steps'] == 719
+                        and row['terminal_status'] == ['DONE', 'DONE']
+                        and row['statuses'] == {'completed': 719}
+                        for row in [baseline_row, candidate_row]
+                    )
+                    pairs.append({
+                        'seed': seed,
+                        'seat': seat,
+                        'repetition': rep,
+                        'parity': equal,
+                        'complete': complete,
+                        'wall_ratio': candidate_row['wall_seconds'] / baseline_row['wall_seconds'],
+                        'cpu_ratio': candidate_row['cpu_seconds'] / baseline_row['cpu_seconds'],
+                    })
+    report = {
+        'scope': 'b567 checked archive plus exactly one mechanics span; NOT current whole-V4 or field strength',
+        'mode': 'optimized' if sys.flags.optimize else 'normal',
+        'instrumented': args.instrument,
+        'order_offset': args.order_offset,
+        'authenticated_runtime_members': count,
+        'source_manifest_sha256': sha_bytes(manifest_raw),
+        'source_mechanics_blob': git_blob(parent_bytes),
+        'candidate_mechanics_blob': git_blob(candidate_bytes),
+        'source_mechanics_sha256': baseline_mechanics_sha256,
+        'candidate_mechanics_sha256': candidate_mechanics_sha256,
+        'control_bundle_sha256': control_digest,
+        'control_runner_git_blob': control_runner_blob,
+        'control_runner_external_pin': expected_runner_git_blob,
+        'authenticated_parent_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
+        'authenticated_parent_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
+        'immutable_execution_snapshot': True,
+        'immutable_control_snapshot': True,
+        'child_runner_execution': 'isolated_captured_bytes_stdin_bootstrap',
+        'child_runtime_execution': 'captured_bytes_memory_import_and_file_view',
+        'child_python_startup': 'fixed_-I_-S_-B_plus_controlled_-O_no_inherited_PYTHON_env',
+        'games': results,
+        'pairs': pairs,
+        'summary': {
+            'games': len(results),
+            'pairs': len(pairs),
+            'all_parity': all(pair['parity'] for pair in pairs),
+            'all_complete': all(pair['complete'] for pair in pairs),
+            'median_paired_wall_ratio': statistics.median(pair['wall_ratio'] for pair in pairs),
+            'median_paired_cpu_ratio': statistics.median(pair['cpu_ratio'] for pair in pairs),
+        },
+    }
+    args.output.write_text(json.dumps(report, sort_keys=True, indent=2) + '\n')
     print(json.dumps(report['summary'], sort_keys=True), flush=True)
     return 0 if report['summary']['all_parity'] and report['summary']['all_complete'] else 1
+
 
 if __name__ == '__main__':
     raise SystemExit(main())
