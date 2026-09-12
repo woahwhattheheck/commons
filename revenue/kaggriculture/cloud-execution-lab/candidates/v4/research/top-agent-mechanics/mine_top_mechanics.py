@@ -21,6 +21,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
+from sequence_contract import sequence_windows
+
 ALIASES = {
     "match": ("match_id", "episode_id", "episode", "game_id", "match", "replay_id"),
     "team": ("team", "team_id", "team_name", "submission_id", "agent", "agent_id", "submission"),
@@ -29,6 +31,8 @@ ALIASES = {
     "verb": ("action_verb", "verb", "action", "action_type", "order_type", "command"),
     "target": ("target", "item", "product", "crop", "animal", "building", "resource"),
     "qty": ("qty", "quantity", "amount", "units", "count"),
+    "actor": ("actor", "actor_id", "farmer_id", "hand_id", "unit_id", "worker_id"),
+    "slot": ("raw_slot", "market_index", "order_index", "order_slot"),
 }
 
 PHASES = ((0, 239, "early"), (240, 479, "mid"), (480, 719, "late"), (720, 10**9, "post"))
@@ -47,6 +51,8 @@ class Event:
     target: str
     qty: float | None
     ordinal: int
+    actor: str | None = None
+    slot: int | None = None
 
 
 def _norm_name(s: str) -> str:
@@ -96,6 +102,8 @@ def read_events(path: Path, source: str) -> list[Event]:
             "verb": _column(reader.fieldnames, "verb", required=True),
             "target": _column(reader.fieldnames, "target", required=False),
             "qty": _column(reader.fieldnames, "qty", required=False),
+            "actor": _column(reader.fieldnames, "actor", required=False),
+            "slot": _column(reader.fieldnames, "slot", required=False),
         }
         out: list[Event] = []
         for ordinal, row in enumerate(reader):
@@ -107,6 +115,9 @@ def read_events(path: Path, source: str) -> list[Event]:
                 raise DataError(f"{path}:{row_no}: empty match/team/verb")
             player = (row.get(cols["player"]) or "?").strip() if cols["player"] else "?"
             target = (row.get(cols["target"]) or "").strip().upper() if cols["target"] else ""
+            actor = (row.get(cols["actor"]) or "").strip() if cols["actor"] else ""
+            raw_slot = (row.get(cols["slot"]) or "").strip() if cols["slot"] else ""
+            slot = _strict_step(raw_slot, path=path, row_no=row_no) if raw_slot else None
             out.append(Event(
                 match=match,
                 team=team,
@@ -117,6 +128,8 @@ def read_events(path: Path, source: str) -> list[Event]:
                 target=target,
                 qty=_qty(row.get(cols["qty"])) if cols["qty"] else None,
                 ordinal=ordinal,
+                actor=actor or None,
+                slot=slot,
             ))
     return out
 
@@ -151,29 +164,30 @@ def _bucket_qty(value: float) -> str:
 
 
 def features_by_team(events: Iterable[Event]) -> tuple[dict[str, set[str]], dict[str, int]]:
-    by_team_match: dict[tuple[str, str], list[Event]] = defaultdict(list)
+    by_team_match: dict[tuple[str, str, str], list[Event]] = defaultdict(list)
     for event in events:
-        by_team_match[(event.team, event.match)].append(event)
+        by_team_match[(event.team, event.match, event.player)].append(event)
     if not by_team_match:
         raise DataError("no events")
 
     team_features: dict[str, set[str]] = defaultdict(set)
     team_matches: dict[str, int] = defaultdict(int)
-    for (team, _match), rows in by_team_match.items():
-        team_matches[team] += 1
+    match_ids: dict[str, set[str]] = defaultdict(set)
+    for (team, _match, _player), rows in by_team_match.items():
+        match_ids[team].add(_match)
+        team_matches[team] = len(match_ids[team])
         rows.sort(key=lambda e: (e.step, e.source, e.player, e.ordinal))
         feats: set[str] = set()
         per_verb: dict[str, int] = defaultdict(int)
-        per_step: dict[int, set[str]] = defaultdict(set)
+        per_step: dict[tuple[str, int], set[str]] = defaultdict(set)
         per_day: dict[tuple[int, str], int] = defaultdict(int)
         seen_first: set[str] = set()
-        streams: dict[tuple[str, str], list[str]] = defaultdict(list)
         for event in rows:
             p = phase(event.step)
             tok = token(event)
-            streams[(event.source, event.player)].append(tok)
             per_verb[tok] += 1
-            per_step[event.step].add(tok)
+            if event.player and event.player != "?":
+                per_step[(event.player, event.step)].add(tok)
             per_day[(event.step // 24, tok)] += 1
             feats.add(f"event|{tok}")
             feats.add(f"phase|{p}|{tok}")
@@ -197,13 +211,9 @@ def features_by_team(events: Iterable[Event]) -> tuple[dict[str, set[str]], dict
             for i in range(len(ordered)):
                 for j in range(i + 1, len(ordered)):
                     feats.add(f"same_step|{ordered[i]}+{ordered[j]}")
-        # Ordering across separate CSV sources or simultaneous actors is not
-        # observable from row order. Sequence only within one source+player
-        # stream; use same_step features for cross-source/actor coincidence.
-        for seq in streams.values():
-            for n in (2, 3):
-                for i in range(len(seq) - n + 1):
-                    feats.add(f"seq{n}|" + ">".join(seq[i:i+n]))
+        # Record chronology only when the observed ordering is unambiguous.
+        # actor_seq additionally proves same-actor identity; neither means fills.
+        feats.update(feature for feature, _ in sequence_windows(rows, token))
         team_features[team].update(feats)
     return dict(team_features), dict(team_matches)
 
@@ -248,7 +258,14 @@ def rank_features(events: Iterable[Event], top_teams: set[str], *, min_top_teams
         })
     rows.sort(key=lambda r: (-r["support_delta"], -r["log_odds"], -r["top_support"], r["feature"]))
     return {
-        "schema": "titan-v4-top-agent-mechanics/v1",
+        "schema": "titan-v4-top-agent-mechanics/v2",
+        "sequence_contract": {
+            "seq": "recorded same-player/source chronology; not necessarily same actor",
+            "actor_seq": "recorded chronology of one explicitly identified unit actor",
+            "ambiguity": "same-step rows without known order break sequences; no skip-through",
+            "market": "equal-step order requires explicit unique raw slots",
+            "scope": "observed intent, not successful execution, causal proof, or consecutive callbacks",
+        },
         "top_teams": top,
         "field_team_count": len(field),
         "team_match_counts": {t: team_matches[t] for t in sorted(known)},
