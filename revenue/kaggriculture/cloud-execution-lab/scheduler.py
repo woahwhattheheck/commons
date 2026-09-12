@@ -321,6 +321,7 @@ class SellScheduler:
 
     def act(self, obs, config=None):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
+        max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
         self.observe(obs)
         base=self.controller.act(obs)
         farm,private=post_units(obs,base,config)
@@ -340,9 +341,10 @@ class SellScheduler:
         if dates[-1]!=end:dates.append(end)
         dates=sorted(set(dates))
         baseline_q={}
-        for o in base['market']:
-            if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
-                baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
+        for o in base['market'][:max_orders]:
+            parsed=_parse_market_order(o)
+            if parsed is not None and parsed[0]=='SELL' and parsed[1] in PRODUCTS:
+                baseline_q[parsed[1]]=baseline_q.get(parsed[1],0)+parsed[2]
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
         budget=self.cash_reserve(obs,config,base,end)
@@ -357,9 +359,11 @@ class SellScheduler:
                 if q>0:reference.append((min(t,end),q));rem-=q
             route=self.controller.R[self.controller.cur]
             for t in range(now+1,end+1):
-                for order in route[t].get('market',[]) if t<len(route) else []:
-                    if order and order[0]=='SELL' and order[1]==item and rem>0:
-                        q=min(rem,max(0,int(order[2])));reference.append((t,q));rem-=q
+                future_market=route[t].get('market',[]) if t<len(route) else []
+                for order in future_market[:max_orders]:
+                    parsed=_parse_market_order(order)
+                    if parsed is not None and parsed[0]=='SELL' and parsed[1]==item and rem>0:
+                        q=min(rem,parsed[2]);reference.append((t,q));rem-=q
             # Remaining stock keeps a continuation value; no artificial liquidation.
             reference=tuple((t,sum(q for d,q in reference if d==t)) for t in sorted({t for t,_ in reference}))
             if self.mode=='naive':
@@ -377,8 +381,12 @@ class SellScheduler:
                 for t,q in plan:
                     if q<=0:continue
                     orders=base['market'] if t==now else route[t].get('market',[]) if t<len(route) else []
-                    if len(orders)>=int(config.get('maxMarketOrdersPerTurn',10)):
-                        offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==item)
+                    if len(orders)>=max_orders:
+                        offered=0
+                        for o in orders[:max_orders]:
+                            parsed=_parse_market_order(o)
+                            if parsed is not None and parsed[0]=='SELL' and parsed[1]==item:
+                                offered+=parsed[2]
                         if q>offered:return False
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
@@ -395,21 +403,29 @@ class SellScheduler:
         # Preserve every original order index, including withheld SELL positions.
         # Extra stock is offered only after inherited orders: never consolidate a
         # later SELL ahead of a cash-dependent purchase or shift its rival pairing.
-        for raw in out['market']:
+        for index,raw in enumerate(out['market']):
+            if index>=max_orders:
+                market.append(raw)
+                continue
             o=list(raw)
-            if o and o[0]=='SELL' and len(o)>2 and o[1] in targets:
-                item=o[1]
-                q=min(max(0,int(o[2])),remaining.get(item,0),max(0,available.get(item,0)))
+            parsed=_parse_market_order(o)
+            if parsed is not None and parsed[0]=='SELL' and parsed[1] in targets:
+                item=parsed[1]
+                q=min(parsed[2],remaining.get(item,0),max(0,available.get(item,0)))
                 remaining[item]=remaining.get(item,0)-q;available[item]=available.get(item,0)-q
                 market.append(['SELL',item,q] if q else [])
             else:market.append(o)
         for item in sorted(targets):
             q=min(remaining.get(item,0),max(0,available.get(item,0)))
-            if q>0 and len(market)<int(config.get('maxMarketOrdersPerTurn',10)):
+            if q>0 and len(market)<max_orders:
                 market.append(['SELL',item,q]);available[item]=available.get(item,0)-q
         out['market']=market
         for item,q in targets.items():
-            sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
+            sold=0
+            for o in out['market'][:max_orders]:
+                parsed=_parse_market_order(o)
+                if parsed is not None and parsed[0]=='SELL' and parsed[1]==item:
+                    sold+=parsed[2]
             self.pending[item]=max(0,q-sold)
             if not self.pending[item]:self.planned.pop(item,None)
         self.previous=copy.deepcopy(obs)

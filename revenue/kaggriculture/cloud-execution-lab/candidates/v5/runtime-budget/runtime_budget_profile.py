@@ -57,7 +57,12 @@ def _positive_number(value: Any, name: str) -> float:
     return result
 
 
-def _identity(row: Mapping[str, Any], *, row_number: int | None = None) -> tuple[str, int, int, int]:
+def _identity(
+    row: Mapping[str, Any],
+    *,
+    row_number: int | None = None,
+    total_steps: int | None = None,
+) -> tuple[str, int, int, int]:
     where = f"row {row_number}: " if row_number is not None else ""
     candidate = row.get("candidate")
     if type(candidate) is not str or not candidate:
@@ -65,14 +70,20 @@ def _identity(row: Mapping[str, Any], *, row_number: int | None = None) -> tuple
     try:
         seed = _plain_int(row.get("seed"), "seed")
         seat = _plain_int(row.get("seat"), "seat")
+        if seat not in (0, 1):
+            raise BudgetProfileError("seat must be 0 or 1")
         step = _plain_int(row.get("step"), "step")
+        if total_steps is not None and step >= total_steps:
+            raise BudgetProfileError(f"step must be < total_steps ({total_steps})")
     except BudgetProfileError as exc:
         raise BudgetProfileError(where + str(exc)) from exc
     return candidate, seed, seat, step
 
 
-def _receipt(row: Mapping[str, Any], *, row_number: int) -> dict[str, Any]:
-    key = _identity(row, row_number=row_number)
+def _receipt(
+    row: Mapping[str, Any], *, row_number: int, total_steps: int
+) -> dict[str, Any]:
+    key = _identity(row, row_number=row_number, total_steps=total_steps)
     diagnostics = row.get("diagnostics", row)
     if not isinstance(diagnostics, Mapping):
         raise BudgetProfileError(f"row {row_number}: diagnostics must be an object")
@@ -158,6 +169,8 @@ def _phase(step: int, *, total_steps: int) -> str:
 
 def _normalize_expected(
     rows: Iterable[Mapping[str, Any]] | None,
+    *,
+    total_steps: int,
 ) -> set[tuple[str, int, int, int]] | None:
     if rows is None:
         return None
@@ -165,7 +178,7 @@ def _normalize_expected(
     for row_number, row in enumerate(rows, start=1):
         if not isinstance(row, Mapping):
             raise BudgetProfileError(f"expected row {row_number} is not an object")
-        key = _identity(row, row_number=row_number)
+        key = _identity(row, row_number=row_number, total_steps=total_steps)
         if key in result:
             raise BudgetProfileError(f"duplicate expected callback identity: {key!r}")
         result.add(key)
@@ -195,13 +208,13 @@ def profile_rows(
         raise BudgetProfileError("max_fallback_rate must be <= 1")
     total = _plain_int(total_steps, "total_steps", minimum=1)
 
-    expected = _normalize_expected(expected_rows)
+    expected = _normalize_expected(expected_rows, total_steps=total)
     receipts: list[dict[str, Any]] = []
     seen: set[tuple[str, int, int, int]] = set()
     for row_number, row in enumerate(rows, start=1):
         if not isinstance(row, Mapping):
             raise BudgetProfileError(f"row {row_number} is not an object")
-        receipt = _receipt(row, row_number=row_number)
+        receipt = _receipt(row, row_number=row_number, total_steps=total)
         key = receipt["key"]
         if key in seen:
             raise BudgetProfileError(f"duplicate callback identity: {key!r}")
@@ -293,16 +306,37 @@ def profile_rows(
     }
 
 
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise BudgetProfileError(f"duplicate JSON object member: {key!r}")
+        result[key] = value
+    return result
+
+
+def _reject_nonstandard_constant(value: str) -> Any:
+    raise BudgetProfileError(f"non-standard JSON constant is not allowed: {value}")
+
+
 def _read_jsonl(path: Path) -> Iterable[Mapping[str, Any]]:
     with path.open("r", encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, start=1):
             if not line.strip():
                 continue
             try:
-                row = json.loads(line)
+                row = json.loads(
+                    line,
+                    object_pairs_hook=_strict_object,
+                    parse_constant=_reject_nonstandard_constant,
+                )
             except json.JSONDecodeError as exc:
                 raise BudgetProfileError(
                     f"{path}:{line_number}: invalid JSON: {exc.msg}"
+                ) from exc
+            except BudgetProfileError as exc:
+                raise BudgetProfileError(
+                    f"{path}:{line_number}: invalid JSON: {exc}"
                 ) from exc
             if not isinstance(row, Mapping):
                 raise BudgetProfileError(f"{path}:{line_number}: row is not an object")

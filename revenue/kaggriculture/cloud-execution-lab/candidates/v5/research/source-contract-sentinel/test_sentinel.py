@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
+from contextlib import redirect_stdout
+import io
+import json
 from pathlib import Path
 import tempfile
 
 from sentinel import (
     RULE_EXACT_ROW_LEN3,
+    RULE_INPUT_ERROR,
     RULE_PUBLIC_OBS_COERCION,
     RULE_RAW_OPCODE_INDEX,
     RULE_TRUTHY_CONFIG_COERCION,
+    main as sentinel_main,
     scan_paths,
     scan_source,
 )
@@ -86,7 +91,55 @@ def f(observation, configuration):
             "deterministic path/rule ordering",
         )
 
-    print("source-contract-sentinel: 9/9 OK")
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        findings = scan_paths([root / "missing.py"], display_root=root)
+        check(
+            [(f.path, f.rule, f.message) for f in findings]
+            == [("missing.py", RULE_INPUT_ERROR, "scan root does not exist")],
+            "missing root was silently treated as clean",
+        )
+
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        note = root / "notes.txt"
+        note.write_text("def f(order): return order[0]\n", encoding="utf-8")
+        findings = scan_paths([note], display_root=root)
+        check(
+            [(f.path, f.rule) for f in findings] == [("notes.txt", RULE_INPUT_ERROR)],
+            "non-Python file root was silently ignored",
+        )
+
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        bad = root / "bad.py"
+        bad.write_bytes(b"\xff\xfe\x00")
+        findings = scan_paths([bad], display_root=root)
+        check(
+            [(f.path, f.rule, f.message) for f in findings]
+            == [("bad.py", RULE_INPUT_ERROR, "cannot read Python source as UTF-8")],
+            "invalid UTF-8 source was silently ignored",
+        )
+
+    with tempfile.TemporaryDirectory() as tmp:
+        missing = Path(tmp, "missing.py")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            rc = sentinel_main([str(missing), "--json", "--repo-root", tmp])
+        payload = json.loads(output.getvalue())
+        check(rc == 2, "input custody error did not fail closed at CLI")
+        check(
+            payload == [{
+                "column": 0,
+                "line": 1,
+                "message": "scan root does not exist",
+                "path": "missing.py",
+                "rule": RULE_INPUT_ERROR,
+            }],
+            "CLI input-error receipt is not deterministic",
+        )
+
+    print("source-contract-sentinel: 13/13 OK")
 
 
 if __name__ == "__main__":

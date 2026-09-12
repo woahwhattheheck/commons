@@ -187,9 +187,29 @@ def validate_manifest(
     return expected
 
 
+def _strict_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise IdentityError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_json_constant(value: str) -> None:
+    raise IdentityError(f"non-standard JSON number: {value}")
+
+
 def _load_json(path: str | Path) -> Any:
     try:
-        return json.loads(Path(path).read_text(encoding="utf-8"))
+        text = Path(path).read_text(encoding="utf-8")
+        return json.loads(
+            text,
+            object_pairs_hook=_strict_json_object,
+            parse_constant=_reject_json_constant,
+        )
+    except IdentityError:
+        raise
     except (OSError, json.JSONDecodeError) as exc:
         raise IdentityError(f"cannot load JSON: {path}") from exc
 

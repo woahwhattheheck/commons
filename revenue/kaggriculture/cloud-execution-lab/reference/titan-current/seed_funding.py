@@ -30,14 +30,42 @@ def _cash(value: Any) -> int:
 
 
 def _quantity(order: Any) -> int:
+    """Parse an edited seed row conservatively for the reduction proof."""
     if not isinstance(order, list) or len(order) < 3:
         raise ValueError("quantity order must be a list with three fields")
-    # Demand proposals emitted by SeedBudget use integers. Do not reinterpret
-    # malformed, fractional, or extremely long orders as certified proposals.
+    # Demand proposals emitted by SeedBudget use integers. Keep the edit proof
+    # stricter than inherited engine parsing: malformed/fractional/string edits
+    # are not silently promoted into certified seed reductions.
     n = _whole(order[2], "quantity")
     if n > 99_998:
         raise ValueError("quantity reaches the interpreter's unit-loop boundary")
     return n
+
+
+def _engine_quantity(order: Any, *, op: str | None = None,
+                     items: set[str] | frozenset[str] | None = None) -> int | None:
+    """Return a positive quantity for an engine-executable inherited row.
+
+    The pinned market parser accepts list rows with at least three fields,
+    int()-coerces quantity, ignores trailing metadata, and treats malformed or
+    non-positive rows as inert.  Keep the historical unit-loop safety bound:
+    an otherwise executable pathological quantity is unknown to this proof.
+    """
+    if not isinstance(order, list) or len(order) < 3:
+        return None
+    if op is not None and order[0] != op:
+        return None
+    if items is not None and order[1] not in items:
+        return None
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError):
+        return None
+    if quantity <= 0:
+        return None
+    if quantity > 99_998:
+        raise ValueError("quantity reaches the interpreter's unit-loop boundary")
+    return quantity
 
 
 def _public_product_costs(mechanics, observation, orders, config, maximum):
@@ -55,14 +83,10 @@ def _public_product_costs(mechanics, observation, orders, config, maximum):
     bounds = {}
     shapes = {"linear", "sq", "sqrt", "log", "log10", "hinge"}
     for slot, order in enumerate(orders[:maximum]):
-        if not isinstance(order, list) or not order or order[0] != "BUY_PRODUCT":
-            continue
-        quantity = _quantity(order)
-        if not quantity:
+        quantity = _engine_quantity(order, op="BUY_PRODUCT", items=set(own))
+        if quantity is None:
             continue
         item = order[1]
-        if item not in own:
-            raise ValueError("unsupported product purchase")
         inventory = market["inventory"][item]
         if isinstance(inventory, bool) or not isinstance(inventory, int):
             raise ValueError("market inventory must be an integer (may be negative)")
@@ -127,7 +151,7 @@ def certify_seed_funding(
     }
     try:
         config = dict(configuration or {})
-        maximum = max(1, _whole(config.get("maxMarketOrdersPerTurn", 10), "order limit"))
+        maximum = max(1, int(config.get("maxMarketOrdersPerTurn", 10)))
         mult = _whole(config.get("farmHandCostMult", 1), "hire multiplier")
         seat = _whole(post_unit_observation["player"], "player")
         farm = post_unit_observation["farms"][seat]
@@ -173,16 +197,18 @@ def certify_seed_funding(
             report.update(status="no_seed_edit", reason="identical_actions")
             return report
         product_bounds = {}
-        if public_product_bounds and any(isinstance(o, list) and len(o) >= 3
-                and o[0] == "BUY_PRODUCT" and o[2] != 0 for o in original[:maximum]):
+        if public_product_bounds and any(
+            _engine_quantity(o, op="BUY_PRODUCT", items={"WHEAT", "FERTILIZER"}) is not None
+            for o in original[:maximum]
+        ):
             product_bounds = _public_product_costs(mechanics, post_unit_observation,
                                                   original, config, maximum)
         costs, total, product_total = [], 0, 0
         for slot, order in enumerate(original[:maximum]):
-            if order == []:
+            if not isinstance(order, list) or not order:
+                # The engine ignores malformed inherited market rows. They do
+                # not invalidate a proof about the rows that can actually run.
                 continue
-            if not isinstance(order, list) or not order or not isinstance(order[0], str):
-                raise ValueError("unsupported order shape")
             op, cost = order[0], 0
             if op == "HIRE":
                 cost = _whole(mechanics._hire_cost(hires, mult), "hire cost")
@@ -192,26 +218,35 @@ def certify_seed_funding(
                     cost = _whole(mechanics.LAND_PRICES[land_index], "land price")
                     land_index += 1
             elif op in ("BUY_SEED", "BUY_ANIMAL", "SELL", "BUY_PRODUCT"):
-                quantity = _quantity(order)
-                if quantity == 0:
+                quantity = _engine_quantity(order, op=op)
+                if quantity is None:
                     continue
+                item = order[1]
                 if op == "BUY_PRODUCT":
+                    if item not in ("WHEAT", "FERTILIZER"):
+                        continue
                     if not public_product_bounds:
                         raise ValueError("product purchase requires paired-flow cash evidence")
                     cost = product_bounds[slot]["cost_upper_bound"]
                     product_total += cost
                 elif op == "BUY_SEED":
-                    cost = quantity * _whole(mechanics.CROPS[order[1]]["seed"], "seed price")
+                    if item not in mechanics.CROPS:
+                        continue
+                    cost = quantity * _whole(mechanics.CROPS[item]["seed"], "seed price")
                 elif op == "BUY_ANIMAL":
+                    if item not in mechanics.ANIMALS:
+                        continue
                     # Requested cost bounds actual cost even when shed admission
                     # clips the purchase. Both arms have identical non-seed stock.
-                    cost = quantity * _whole(mechanics.ANIMALS[order[1]]["cost"], "animal price")
-                elif order[1] not in mechanics.PRODUCTS:
-                    raise ValueError("unknown sale product")
+                    cost = quantity * _whole(mechanics.ANIMALS[item]["cost"], "animal price")
+                elif item not in mechanics.PRODUCTS:
+                    continue
             elif op == "PASS":
                 continue
             else:
-                raise ValueError("unresolved order cost")
+                # Unknown inherited opcodes are engine-inert just like malformed
+                # quantity rows; edited rows above still fail closed.
+                continue
             total += cost
             costs.append({"slot": slot, "operation": op, "cost_upper_bound": cost,
                           "cash_floor_without_sales": money - total})

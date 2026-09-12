@@ -52,8 +52,9 @@ def source_files():
         for p in (ROOT/directory).rglob('*'):
             if p.is_file() and '__pycache__' not in p.parts:
                 name=str(p.relative_to(ROOT));mapping[name]=name
-    for name in ('integrated_selected.py','selected_action_sell.py','selected_sell_core.py','ordered_selected_sell.py'):
-        mapping[name]='reference/titan-current/latest/'+name
+    # The root selected stack is the live runtime authority. Historical/current
+    # snapshots remain available only at their explicit reference paths above.
+    # This prevents a landed root correctness fix from being shadowed at release.
     # The optional terminal owner pins the original frozen SELL source. Runtime
     # optimizations must not silently replace that dependency with new bytes.
     mapping['reference/titan-current/vendor/sell/scheduler.py']='reference/titan-current/vendor/sell/scheduler.py'
@@ -87,9 +88,20 @@ def source_files():
     return mapping
 
 
+def _resolved_source(source):
+    """Resolve one mapped source and confine it to the Kaggriculture tree."""
+    path=(ROOT/source).resolve(strict=True)
+    source_root=ROOT.parent.resolve()
+    try:
+        path.relative_to(source_root)
+    except ValueError as exc:
+        raise ValueError(f'Release source escapes Kaggriculture tree: {source}') from exc
+    return path
+
+
 def render():
     mapping=source_files()
-    blobs={p:(ROOT/source).read_bytes() for p,source in mapping.items()}
+    blobs={p:_resolved_source(source).read_bytes() for p,source in mapping.items()}
     manifest=json.loads((ROOT/(RECORD+'RELEASE.json')).read_text())
     manifest.update(entrypoint='main.py::agent',config='TITAN-CONFIG.json',
         default=json.loads(blobs['TITAN-CONFIG.json']),

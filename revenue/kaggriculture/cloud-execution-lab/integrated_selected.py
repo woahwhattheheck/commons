@@ -70,7 +70,7 @@ class IntegratedSelectedAgent:
         """
         now = absolute_step(obs, cfg)
         tpd = int(cfg.get('turnsPerDay', 24)); board = int(cfg.get('boardSize', 10))
-        cap = int(cfg.get('shedCapacity', 100)); maximum = int(cfg.get('maxMarketOrdersPerTurn', 10))
+        cap = int(cfg.get('shedCapacity', 100)); maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
         last = int(cfg.get('episodeSteps', 720))-2
         end = min(now+self.execution.seller.horizon, last, (now//tpd+1)*tpd-1)
         route = self.controller.R[self.controller.cur]

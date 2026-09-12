@@ -35,6 +35,14 @@ def path(a,b):
 
 def distance(a,b):return abs(a[0]-b[0])+abs(a[1]-b[1])
 
+def _public_identity(observation):
+    """Return the canonical public seat/clock pair without coercion."""
+    if not isinstance(observation,dict):return None
+    player=observation.get('player');step=observation.get('step')
+    if type(player) is not int or player not in (0,1):return None
+    if type(step) is not int or step<0:return None
+    return player,step
+
 class SpatialTempo:
     def __init__(self,mechanics,pathing=True,tempo=True,seed_reserve=None,idle_fertilizer=False,
                  crop_release=False):
@@ -66,24 +74,30 @@ class SpatialTempo:
 
     def observe_crop_receipts(self,obs,fill_result,current):
         if not self.crop_release:return
-        from crop_release import observe_crop,observe_crop_sale,observe_input_repair
+        from crop_release import (_public_identity,observe_crop,observe_crop_sale,
+                                  observe_input_repair)
+        identity=_public_identity(obs)
+        if identity is None:return
+        player,now=identity
         p=self.crop_intent
-        if p is not None and (int(obs['player'])!=p['player']
-                or int(obs['step'])<p.get('last_observed_step',p['prepared_step'])):
+        if p is not None and (player!=p['player']
+                or now<p.get('last_observed_step',p['prepared_step'])):
             self.crop_intent=None;return
         p=observe_input_repair(p,obs,fill_result)
         p=observe_crop_sale(p,obs,fill_result)
         self.crop_intent=observe_crop(p,obs,current)
         if (self.crop_intent is not None
                 and self.crop_intent['status']=='awaiting_seed_and_site_observation'
-                and int(obs['step'])>self.crop_intent['plant_step']):
+                and now>self.crop_intent['plant_step']):
             self.crop_intent=None  # No final PLANT was committed.
 
     def crop_market(self,obs,selected,post,controller):
         """Use the same selected snapshot and final market composition."""
         if not self.crop_release or not self.supported:return selected
-        from crop_release import prepare_release,propose_input_repair
-        now=int(obs['step'])
+        from crop_release import _public_identity,prepare_release,propose_input_repair
+        identity=_public_identity(obs)
+        if identity is None:return selected
+        _,now=identity
         if now==372 and self.crop_intent is None and not self.plans:
             selected,self._crop_preparation,self.crop_report=prepare_release(
                 self.m,obs,self.configuration,selected,post,self._crop_routes,controller.cur,
@@ -97,9 +111,11 @@ class SpatialTempo:
     def finish_crop(self,obs,returned,post,current,*,seller_completed=False):
         """A site intent persists across resets; only final returns commit it."""
         if not self.crop_release:return
-        from crop_release import (commit_preparation,commit_plant,commit_harvest,
-            commit_deposit,commit_crop_sale,commit_input_repair)
-        now=int(obs['step']);p=self.crop_intent
+        from crop_release import (_public_identity,commit_preparation,commit_plant,
+            commit_harvest,commit_deposit,commit_crop_sale,commit_input_repair)
+        identity=_public_identity(obs)
+        if identity is None:return
+        _,now=identity;p=self.crop_intent
         if self._crop_preparation is not None:
             p=commit_preparation(self._crop_preparation,obs,returned)
         if p is not None and now==p['plant_step']:
@@ -116,10 +132,10 @@ class SpatialTempo:
         """Cancel the appended input buy if another final guard changed units."""
         p=self._crop_repair
         if p is None:return returned
-        from crop_release import units
-        bound=(int(obs['step'])==p['step'] and int(obs['player'])==p['player']
-               and units(returned)==p['unit_binding'] and post is not None
-               and int(post['step'])==p['step'] and int(post['player'])==p['player']
+        from crop_release import _public_identity,units
+        bound=(_public_identity(obs)==(p['player'],p['step'])
+               and units(returned)==p['unit_binding']
+               and _public_identity(post)==(p['player'],p['step'])
                and returned.get('market',[])==p['expected_market'])
         market=returned.get('market',[])
         if (not bound and p['kind']=='buy' and p['slot']==len(market)-1
@@ -141,8 +157,10 @@ class SpatialTempo:
         replacement controller. A cancelled producer never commits a proposal.
         Market-only fallback changes do not invalidate completed unit actions.
         """
-        count=1+len(observation['farms'][observation['player']]['hands'])
-        now=int(observation['step'])
+        identity=_public_identity(observation)
+        if identity is None:return
+        player,now=identity
+        count=1+len(observation['farms'][player]['hands'])
         self.observe_owned_stock(observation)
         proposal=self._sale_proposal
         if (proposal is not None and proposal['step']==now
@@ -150,8 +168,7 @@ class SpatialTempo:
                     ==[['SELL','FERTILIZER',1]]
                 and (proposal.get('worker') is None
                      or unit(returned_action,proposal['worker'])==['DROP'])):
-            self.sale_obligation=dict(proposal,status='awaiting_observed_fill',
-                                      player=int(observation['player']))
+            self.sale_obligation=dict(proposal,status='awaiting_observed_fill',player=player)
         p=self.sale_obligation
         if p is not None and p['status']=='observed_deposit':
             # This retained unit is fungible. Bind potential consumption to the
@@ -168,7 +185,7 @@ class SpatialTempo:
             # Give no credit to sales when certifying that every carry fits.
             if post is None and all(unit(returned_action,i)==['PASS'] for i in range(count)):
                 post=observation
-            if post is not None:
+            if post is not None and _public_identity(post)==(player,now):
                 inv=post['private']['inventories'];shed=post['private']['shed']
                 buys=sum(max(0,int(a[2])) for a in returned_action.get('market',[])[:10]
                          if a and len(a)>2 and a[0] in ('BUY_PRODUCT','BUY_ANIMAL'))
@@ -186,7 +203,7 @@ class SpatialTempo:
                 if (plan is not None and i<count
                         and (plan['end']>now or plan.get('kind')=='idle_fertilizer')):
                     if plan.get('kind')=='idle_fertilizer':
-                        farm=observation['farms'][observation['player']]
+                        farm=observation['farms'][player]
                         plan=dict(plan,last_returned_step=now,
                                   last_returned_action=list(unit(returned_action,i)),
                                   last_position=tuple(self.m._farmer_position(farm,i)),
@@ -217,9 +234,12 @@ class SpatialTempo:
 
     def guard_returned(self, observation, returned, *, repair_fallback=False):
         """A consumer cannot keep the optional deposit while removing its sale."""
+        identity=_public_identity(observation)
+        if identity is None:return returned
+        player,now=identity
         self.observe_owned_stock(observation)
         stock=self.sale_obligation
-        now=int(observation['step']);farm=observation['farms'][observation['player']]
+        farm=observation['farms'][player]
         if (repair_fallback and stock is not None and stock['status']=='carried'
                 and now//24==stock['step']//24 and stock['worker']<=len(farm['hands'])
                 and not returned.get('market')
@@ -254,7 +274,9 @@ class SpatialTempo:
 
     def observe_owned_stock(self, obs):
         """Retain the observed collection even if delivery never returns."""
-        now=int(obs['step']);player=int(obs['player'])
+        identity=_public_identity(obs)
+        if identity is None:return
+        player,now=identity
         p=self.sale_obligation
         if p is not None:
             if player!=p['player'] or now<p['step']:
@@ -287,6 +309,9 @@ class SpatialTempo:
         another sale of the same unit. A proven zero fill can retry in an empty
         producer market row; a new match discards the old intent.
         """
+        identity=_public_identity(obs)
+        if identity is None:return
+        player,now=identity
         p=self.sale_obligation
         if p is None:return
         if p['status'] in ('carried','stock_unknown'):return
@@ -299,7 +324,6 @@ class SpatialTempo:
                             and (o.get('fill_max') or 0)>0 for o in (result or {}).get('orders',[]))):
                 self.sale_obligation=dict(p,status='stock_unknown')
             return
-        now=int(obs['step']);player=int(obs['player'])
         if player!=p['player'] or now<=p['step']:
             if player!=p['player'] or now<p['step']:self.sale_obligation=None
             return
@@ -326,7 +350,9 @@ class SpatialTempo:
         self.receipt_events=self.receipt_events[-8:]
 
     def _begin(self, controller, pristine, obs):
-        now=int(obs['step']);state=self._committed
+        identity=_public_identity(obs)
+        if identity is None:return False
+        player,now=identity;state=self._committed
         self._crop_preparation=None;self._crop_repair=None;self._crop_offered=False
         self.observe_owned_stock(obs)
         self._sale_proposal=None
@@ -338,7 +364,7 @@ class SpatialTempo:
                                         if (p['end']>now or p.get('kind')=='idle_fertilizer')
                                         and p['route']==controller.cur}
         self.events=[] if not state else list(state['events'])
-        farm=obs['farms'][obs['player']]
+        farm=obs['farms'][player]
         positions=[tuple(farm['farmer']),*[tuple(p) for p in farm['hands']]]
         for i,plan in list(self.plans.items()):
             if plan.get('kind')!='idle_fertilizer' or i>=len(positions):continue
@@ -415,6 +441,7 @@ class SpatialTempo:
         self.day=now//24
         self.reserved=set() if not state or state['day']!=self.day else set(state['reserved'])
         self._repair_positions(obs,controller)
+        return True
 
     def _repair_positions(self, obs, controller):
         """Rejoin a committed route after a missed move using actual own position.
@@ -482,7 +509,8 @@ class SpatialTempo:
         self._crop_routes=pristine
         original=controller.act
         def act(obs):
-            self._begin(controller,pristine,obs)
+            if not self._begin(controller,pristine,obs):
+                return original(obs)
             selected=original(obs)
             result=self.transform(obs,selected,controller)
             if self.crop_release:
@@ -840,7 +868,9 @@ class SpatialTempo:
         return out
 
     def transform(self,obs,selected,controller):
-        now=int(obs['step']);board=len(obs['farms'][obs['player']]['tiles'])
+        identity=_public_identity(obs)
+        if identity is None:return selected
+        player,now=identity;board=len(obs['farms'][player]['tiles'])
         if board!=10 or not self.supported:return selected
         if self.crop_release:
             from crop_release import observed_plant,WORKER
@@ -851,7 +881,7 @@ class SpatialTempo:
         if delivery is not None:return delivery
         end=min((now//24+1)*24,719,*[x for x in CHECKPOINTS if x>now]) if any(x>now for x in CHECKPOINTS) else min((now//24+1)*24,719)
         if end-now<3:return selected
-        route=controller.R[controller.cur];farm=obs['farms'][obs['player']];private=obs['private']
+        route=controller.R[controller.cur];farm=obs['farms'][player];private=obs['private']
         # HIRE happens after unit moves. Existing positions choose the spawn
         # corner, so every worker must rejoin before the next hiring turn.
         if any(a and a[0]=='HIRE' for a in selected.get('market',[])):return selected
