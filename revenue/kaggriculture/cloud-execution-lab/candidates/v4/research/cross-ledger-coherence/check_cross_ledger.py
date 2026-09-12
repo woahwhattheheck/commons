@@ -127,7 +127,7 @@ def _landed_index(integration: dict[str, Any], errors: list[dict[str, Any]]) -> 
 
         repair_path = raw.get("repair_path")
         if repair_path is None:
-            if "composition_state" in raw or "composition_intake_pr" in raw:
+            if "composition_state" in raw or "composition_intake_pr" in raw or "component_id" in raw:
                 errors.append(_issue("composition_marked_landed_row_without_repair_path", lane=lane))
             continue
         if not _safe_relpath(repair_path):
@@ -318,7 +318,7 @@ def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: d
         })
 
     for package, row in sorted(landed_by_path.items()):
-        explicit = "composition_state" in row or "composition_intake_pr" in row
+        explicit = "composition_state" in row or "composition_intake_pr" in row or "component_id" in row
         if not explicit:
             continue
         lane = str(row.get("lane"))
@@ -326,6 +326,23 @@ def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: d
         if comp is None:
             errors.append(_issue("landed_composition_link_missing_component", lane=lane, package=package))
             continue
+        # V1 has legitimate legacy explicit composition rows without a
+        # component_id, so presence remains optional. Once supplied, however,
+        # it is a bilateral identity assertion and must match the exact
+        # package-resolved COMPOSITION component id; package/state agreement
+        # cannot launder a wrong or empty identity.
+        if "component_id" in row:
+            declared_component_id = row.get("component_id")
+            if not isinstance(declared_component_id, str) or not declared_component_id.strip():
+                errors.append(_issue("bad_landed_component_id", lane=lane, package=package, actual=declared_component_id))
+            elif declared_component_id != comp.get("id"):
+                errors.append(_issue(
+                    "component_id_split_brain",
+                    lane=lane,
+                    package=package,
+                    integration_component=declared_component_id,
+                    composition_component=comp.get("id"),
+                ))
         declared_state = row.get("composition_state")
         if declared_state is None:
             errors.append(_issue("composition_intake_without_state", lane=lane, package=package))
