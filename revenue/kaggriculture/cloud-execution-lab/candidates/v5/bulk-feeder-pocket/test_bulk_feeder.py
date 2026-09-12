@@ -153,6 +153,34 @@ class BulkFeederTests(unittest.TestCase):
                 with self.assertRaises(bf.WitnessError):
                     bf.verify_unit_window(obs, route, witness, mechanics=self.mechanics)
 
+    def test_noncanonical_calendar_is_rejected_before_replay(self):
+        route = [row(["PASS"]) for _ in range(14)]
+        route[11]["farmer"] = ["PICKUP", "WHEAT", 1]
+        route[12]["farmer"] = ["PICKUP", "WHEAT", 1]
+        route[13]["farmer"] = ["FEED"]
+        witness = {
+            "route_id": "fixture",
+            "actor": 0,
+            "start_step": 11,
+            "end_step": 13,
+            "pickup_steps": [11, 12],
+            "feed_steps": [13],
+            "bulk_quantity": 2,
+            "recovered_pickup_turns": 1,
+            "travel_savings_lower_bound": 0,
+        }
+
+        class ReplayMustNotRun:
+            @staticmethod
+            def _apply_unit_action(*args, **kwargs):
+                raise AssertionError("calendar mismatch reached unit replay")
+
+        with self.assertRaisesRegex(bf.WitnessError, "canonical 24-turn route calendar"):
+            bf.verify_unit_window(
+                observation(step=11), route, witness,
+                mechanics=ReplayMustNotRun(), turns_per_day=12,
+            )
+
     def test_day_crossing_witness_is_rejected(self):
         route = [row(["PASS"]) for _ in range(26)]
         route[23]["farmer"] = ["PICKUP", "WHEAT", 1]
