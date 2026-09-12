@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import stat
@@ -26,6 +27,7 @@ CORE_PATHS = (
 )
 MAX_ARCHIVE_BYTES = 32 * 1024 * 1024
 MAX_CORE_MEMBER_BYTES = 4 * 1024 * 1024
+MAX_TAR_MEMBERS = 4096
 _HEX = frozenset("0123456789abcdef")
 
 
@@ -132,9 +134,10 @@ def _read_archive_core(archive: Path, expected_sha256: str) -> tuple[str, dict[s
     found: dict[str, bytes] = {}
     counts = {name: 0 for name in CORE_PATHS}
     try:
-        import io
         with tarfile.open(fileobj=io.BytesIO(raw), mode="r:*") as tf:
-            for member in tf.getmembers():
+            for index, member in enumerate(tf, start=1):
+                if index > MAX_TAR_MEMBERS:
+                    raise InvalidEvidence("archive member count exceeds accepted bound")
                 name = member.name
                 if name not in wanted:
                     continue
