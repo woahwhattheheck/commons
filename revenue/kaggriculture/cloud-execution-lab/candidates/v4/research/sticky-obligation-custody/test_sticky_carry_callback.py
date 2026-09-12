@@ -17,7 +17,14 @@ def carry(*, quantity: int = 1):
 
 
 def row(step: int, actor: str, op: str):
-    return {"step": step, "actor": actor, "op": op}
+    payload = {"step": step, "actor": actor, "op": op}
+    if op.upper() == "FEED":
+        payload.update(
+            consumption_authenticated=True,
+            consumed_item="WHEAT",
+            consumed_units=1,
+        )
+    return payload
 
 
 class CarryCallbackCustodyTests(unittest.TestCase):
