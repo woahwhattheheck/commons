@@ -1,0 +1,15 @@
+{
+  "current_native_economics": "NOT_ASSESSED",
+  "local_authored_tests": {
+    "normal": "8/8 PASS",
+    "optimized": "8/8 PASS"
+  },
+  "production_activation": false,
+  "schema": "titan-v4-h3s420-validation/v1",
+  "source_pins": {
+    "frozen_selected_git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "scheduler_git_blob": "a483b24dd72b580d7d8811636b54d2d44f391575"
+  },
+  "source_pins_verified_on_main": true,
+  "verified_main": "adad95015f3f2688c77e6ddf258e6dcf2b35b5e3"
+}
