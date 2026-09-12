@@ -333,14 +333,22 @@ class SelectedActionSell:
         return min(100, max(visible, recent))
 
     def _observe(self, obs, now):
+        player = int(obs['player'])
+        current = obs['farms'][1 - player]['tiles']
         previous = self.previous
-        if previous is not None and now > previous[0] and previous[1] == int(obs['player']):
-            old = previous[2]; new = obs['farms'][1 - int(obs['player'])]['tiles']
+        if previous is not None and previous[1] == player and now == previous[0]:
+            # Same-step engine retries replace the public snapshot but cannot
+            # create or erase a harvest. Preserve bounded history so replaying
+            # an unchanged observation leaves rival-pressure inputs identical.
+            self.previous = (now, player, copy.deepcopy(current))
+            return
+        if previous is not None and now > previous[0] and previous[1] == player:
+            old = previous[2]
             for y, row in enumerate(old):
                 for x, tile in enumerate(row):
                     if not isinstance(tile, dict): continue
                     product = tile.get('crop') if tile.get('kind') == 'PLANT' else m.ANIMALS.get(tile.get('animal'), {}).get('product')
-                    later = new[y][x]
+                    later = current[y][x]
                     a = max(0, int(tile.get('yield_units', 0)))
                     b = max(0, int(later.get('yield_units', 0))) if isinstance(later, dict) else 0
                     if product in PRODUCTS and a > b:
@@ -349,7 +357,7 @@ class SelectedActionSell:
             self.observed_harvests = {}
         for product in self.observed_harvests:
             self.observed_harvests[product] = [(t, q) for t, q in self.observed_harvests[product] if now - t <= 8]
-        self.previous = (now, int(obs['player']), copy.deepcopy(obs['farms'][1 - int(obs['player'])]['tiles']))
+        self.previous = (now, player, copy.deepcopy(current))
 
     def transform(self, observation, configuration, selected_action, *, post_unit_shed=None,
                   projection=None, arrival_contract=None, reservations=None, fallback_action=None):
