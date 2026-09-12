@@ -21,13 +21,49 @@ def payload(
     market=None,
     tail=None,
     hash_suffix=None,
+    turns_per_day=24,
+    tail_callbacks=96,
+    resolved_override=None,
 ):
     hashes = dict(HASHES)
     if hash_suffix is not None:
         hashes["market_orders"] = hash_suffix * 64
+    resolved = {
+        "farmer_actions": {
+            "episode": "episode_id",
+            "player": "player",
+            "step": "step",
+            "verb": "action_verb",
+            "target": "target",
+            "qty": "qty",
+        },
+        "market_orders": {
+            "episode": "episode_id",
+            "player": "player",
+            "step": "step",
+            "verb": "order_verb",
+            "item": "item",
+            "qty": "qty",
+        },
+        "matches_meta": {
+            "episode": "episode_id",
+            "all_columns": ["episode_id", "team0", "team1"],
+        },
+    }
+    if resolved_override is not None:
+        resolved = resolved_override
+    start_step = (
+        None
+        if max_step is None
+        else max(0, max_step - tail_callbacks + 1)
+    )
     return {
         "schema": mod.INPUT_SCHEMA,
         "episode": str(episode),
+        "parameters": {
+            "tail_callbacks": tail_callbacks,
+            "turns_per_day": turns_per_day,
+        },
         "inputs": {
             name: {
                 "path": f"/data/{name}.csv",
@@ -36,12 +72,13 @@ def payload(
             }
             for i, name in enumerate(mod.SOURCE_NAMES)
         },
+        "resolved_columns": resolved,
         "coverage": {"max_step": max_step},
         "farmer_summary": farmer or [],
         "market_summary": market or [],
         "tail": {
-            "requested_callbacks": 96,
-            "start_step": max_step - 95 if max_step is not None else None,
+            "requested_callbacks": tail_callbacks,
+            "start_step": start_step,
             "events": tail or [],
         },
     }
@@ -73,14 +110,24 @@ class CompareTests(unittest.TestCase):
                 "kind": "market_order", "row_index": 99, "step": 718,
                 "player_raw": "0", "verb": "SELL", "item": "WOOL",
                 "qty": 5, "qty_raw": "5",
-            }
+            },
+            {
+                "kind": "farmer_action", "row_index": 100, "step": 719,
+                "player_raw": "0", "verb": "CARE", "target": "SHEEP",
+                "qty": None, "qty_raw": None,
+            },
         ]
         tail_b = [
             {
                 "kind": "market_order", "row_index": 11, "step": 598,
                 "player_raw": "0", "verb": "SELL", "item": "WOOL",
                 "qty": 5, "qty_raw": "5",
-            }
+            },
+            {
+                "kind": "farmer_action", "row_index": 12, "step": 599,
+                "player_raw": "0", "verb": "FEED", "target": "GOOSE",
+                "qty": None, "qty_raw": None,
+            },
         ]
 
         report = mod.compare_extracts(
@@ -92,6 +139,10 @@ class CompareTests(unittest.TestCase):
 
         self.assertEqual(report["schema"], mod.OUTPUT_SCHEMA)
         self.assertEqual(report["episodes"], ["a", "b"])
+        self.assertEqual(
+            report["extraction_parameters"],
+            {"tail_callbacks": 96, "turns_per_day": 24},
+        )
         self.assertEqual(len(report["repeated_farmer_summary"]), 1)
         self.assertEqual(
             [row["rows"] for row in report["repeated_farmer_summary"][0]["episodes"]],
@@ -122,9 +173,32 @@ class CompareTests(unittest.TestCase):
         with self.assertRaisesRegex(mod.CompareError, "source snapshot mismatch"):
             mod.compare_extracts([payload("1"), payload("2", hash_suffix="4")])
 
+    def test_extraction_parameter_mismatch_fails_closed(self):
+        with self.assertRaisesRegex(mod.CompareError, "extraction parameter mismatch"):
+            mod.compare_extracts([payload("1"), payload("2", turns_per_day=12)])
+
+    def test_resolved_column_mismatch_fails_closed(self):
+        altered = payload("2")["resolved_columns"]
+        altered = json.loads(json.dumps(altered))
+        altered["farmer_actions"]["verb"] = "operation"
+        with self.assertRaisesRegex(mod.CompareError, "resolved-column mismatch"):
+            mod.compare_extracts([payload("1"), payload("2", resolved_override=altered)])
+
+    def test_missing_parameters_requires_reextract(self):
+        bad = payload("1")
+        del bad["parameters"]
+        with self.assertRaisesRegex(mod.CompareError, "re-extract"):
+            mod.compare_extracts([bad, payload("2")])
+
     def test_duplicate_episode_ids_fail_closed(self):
         with self.assertRaisesRegex(mod.CompareError, "unique"):
             mod.compare_extracts([payload("1"), payload("1")])
+
+    def test_duplicate_farmer_semantic_key_fails_closed(self):
+        row = {"player": "0", "day": 0, "verb": "FEED", "target": "COW", "rows": 1}
+        bad = payload("1", farmer=[row, dict(row)])
+        with self.assertRaisesRegex(mod.CompareError, "duplicate semantic key"):
+            mod.compare_extracts([bad, payload("2")])
 
     def test_malformed_sha_fails_closed(self):
         bad = payload("1")
@@ -142,16 +216,30 @@ class CompareTests(unittest.TestCase):
         with self.assertRaisesRegex(mod.CompareError, "plain integer"):
             mod.compare_extracts([bad, payload("2")])
 
-    def test_tail_without_numeric_max_step_not_claimed_recurrent(self):
+    def test_tail_without_numeric_max_step_fails_closed(self):
         event = {
             "kind": "farmer_action", "row_index": 1, "step": 10,
             "player_raw": "0", "verb": "PASS", "target": None,
             "qty": None, "qty_raw": None,
         }
-        report = mod.compare_extracts(
-            [payload("1", max_step=None, tail=[event]), payload("2", max_step=None, tail=[event])]
-        )
-        self.assertEqual(report["repeated_tail_events"], [])
+        with self.assertRaisesRegex(mod.CompareError, "exceeds coverage.max_step"):
+            mod.compare_extracts(
+                [
+                    payload("1", max_step=None, tail=[event]),
+                    payload("2", max_step=None, tail=[event]),
+                ]
+            )
+
+    def test_tail_must_reach_reported_max_step(self):
+        event = {
+            "kind": "farmer_action", "row_index": 1, "step": 718,
+            "player_raw": "0", "verb": "PASS", "target": None,
+            "qty": None, "qty_raw": None,
+        }
+        with self.assertRaisesRegex(mod.CompareError, "do not reach coverage.max_step"):
+            mod.compare_extracts(
+                [payload("1", max_step=719, tail=[event]), payload("2")]
+            )
 
     def test_duplicate_json_key_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
@@ -175,7 +263,6 @@ class CompareTests(unittest.TestCase):
             first = out.read_bytes()
             self.assertEqual(mod.main([str(one), str(two), "--output", str(out)]), 0)
             self.assertEqual(out.read_bytes(), first)
-
 
 if __name__ == "__main__":
     unittest.main()
