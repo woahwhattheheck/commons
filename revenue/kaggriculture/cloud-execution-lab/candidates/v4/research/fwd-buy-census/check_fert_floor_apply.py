@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Focused full-interpreter checks for the Gemini FERT floor-buy/apply witness."""
+"""Focused full-interpreter checks for the Gemini FERT floor-buy/apply witnesses."""
 from __future__ import annotations
 
 import argparse
@@ -29,9 +29,9 @@ class FertFloorApply(unittest.TestCase):
         t = self.threshold
         self.assertGreater(e.market_price("FERTILIZER", t - 2), e.PRICE_FLOOR)
         self.assertEqual(e.market_price("FERTILIZER", t - 1), e.PRICE_FLOOR)
-        self.assertEqual(subject.run_pair(e, fert_inventory=t - 1)["certificate"]["at_price_floor"], False)
-        self.assertEqual(subject.run_pair(e, fert_inventory=t)["certificate"]["at_price_floor"], True)
-        self.assertEqual(subject.run_pair(e, fert_inventory=t + 100)["certificate"]["at_price_floor"], True)
+        self.assertFalse(subject.run_pair(e, fert_inventory=t - 1)["certificate"]["at_price_floor"])
+        self.assertTrue(subject.run_pair(e, fert_inventory=t)["certificate"]["at_price_floor"])
+        self.assertTrue(subject.run_pair(e, fert_inventory=t + 100)["certificate"]["at_price_floor"])
 
     def test_both_seats_real_floor_path_buys_custodies_applies_and_yields(self):
         for seat in (0, 1):
@@ -40,6 +40,7 @@ class FertFloorApply(unittest.TestCase):
                 cert = pair["certificate"]
                 candidate = pair["floor_apply"]
                 control = pair["control"]
+                self.assertEqual(cert["witness"], "MINIMAL_ONE_WATER_CARROT")
                 self.assertTrue(cert["at_price_floor"])
                 self.assertEqual(cert["fert_one_unit_postbuy_quote"], self.engine.PRICE_FLOOR)
                 self.assertEqual(candidate["trace"][0]["cash_delta"], -self.engine.PRICE_FLOOR)
@@ -59,35 +60,75 @@ class FertFloorApply(unittest.TestCase):
                 self.assertFalse(cert["activation_claim"])
                 self.assertEqual(candidate["physical"], control["physical"])
 
-    def test_unfunded_buy_is_a_no_effect_control(self):
-        pair = subject.run_pair(self.engine, fert_inventory=self.threshold, cash=0)
-        cert = pair["certificate"]
-        self.assertEqual(pair["floor_apply"]["trace"][0]["cash_delta"], 0)
-        self.assertEqual(cert["incremental_harvest_units"], 0)
-        self.assertEqual(cert["own_cash_delta"], 0)
-        self.assertTrue(cert["same_final_physical"])
+    def test_full_three_day_melon_window_amortizes_same_two_callbacks(self):
+        self.assertEqual(self.engine.CROPS["MELON"]["max_yield"], 6)
+        for seat in (0, 1):
+            with self.subTest(seat=seat):
+                pair = subject.run_amortized_pair(
+                    self.engine, seat=seat, fert_inventory=self.threshold)
+                cert = pair["certificate"]
+                candidate = pair["floor_apply"]
+                control = pair["control"]
+                self.assertEqual(cert["witness"], "AMORTIZED_THREE_DAY_MELON")
+                self.assertTrue(cert["at_price_floor"])
+                self.assertEqual(cert["fertilizer_active_water_days_used"], 3)
+                self.assertEqual(cert["common_water_steps"], [243, 264, 288])
+                self.assertEqual(subject._trace_at(candidate, 240)["cash_delta"], -1)
+                self.assertEqual(subject._trace_at(candidate, 240)["shed"]["FERTILIZER"], 1)
+                self.assertEqual(subject._trace_at(candidate, 241)["inventories"][0].get("FERTILIZER"), 1)
+                self.assertNotIn("FERTILIZER", subject._trace_at(candidate, 242)["inventories"][0])
+                self.assertEqual(subject._trace_at(candidate, 242)["tile"]["fertilized_until_day"], 12)
+                for step, candidate_yield, control_yield in (
+                    (243, 2, 1), (264, 4, 2), (288, 6, 3)
+                ):
+                    self.assertEqual(subject._trace_at(candidate, step)["tile"]["yield_units"], candidate_yield)
+                    self.assertEqual(subject._trace_at(control, step)["tile"]["yield_units"], control_yield)
+                self.assertEqual(cert["candidate_harvest_units"], 6)
+                self.assertEqual(cert["control_harvest_units"], 3)
+                self.assertEqual(cert["incremental_harvest_units"], 3)
+                self.assertAlmostEqual(cert["extra_unit_callbacks_per_incremental_unit"], 2 / 3)
+                self.assertEqual(cert["extra_unit_callback_count"], 2)
+                self.assertGreater(cert["own_cash_delta"], 0)
+                self.assertEqual(cert["rival_cash_delta"], 0)
+                self.assertTrue(cert["same_final_physical"])
+                self.assertEqual(candidate["physical"], control["physical"])
+
+    def test_unfunded_buy_is_a_no_effect_control_in_both_witnesses(self):
+        for runner in (subject.run_pair, subject.run_amortized_pair):
+            with self.subTest(runner=runner.__name__):
+                pair = runner(self.engine, fert_inventory=self.threshold, cash=0)
+                cert = pair["certificate"]
+                self.assertEqual(pair["floor_apply"]["trace"][0]["cash_delta"], 0)
+                self.assertEqual(cert["incremental_harvest_units"], 0)
+                self.assertEqual(cert["own_cash_delta"], 0)
+                self.assertTrue(cert["same_final_physical"])
 
     def test_panel_is_complete_declared_boundary_and_both_seats(self):
         before = oc.CALLBACKS
         report = subject.run_panel(self.engine)
         self.assertEqual(report["floor_prebuy_inventory_threshold"], self.threshold)
-        self.assertEqual(len(report["cells"]), 6)
-        keys = {(r["seat"], r["fert_inventory_before"]) for r in report["cells"]}
+        self.assertEqual(len(report["minimal_cells"]), 6)
+        keys = {(r["seat"], r["fert_inventory_before"]) for r in report["minimal_cells"]}
         self.assertEqual(keys, {
             (0, self.threshold - 1), (0, self.threshold), (0, self.threshold + 100),
             (1, self.threshold - 1), (1, self.threshold), (1, self.threshold + 100),
         })
-        self.assertEqual(oc.CALLBACKS - before, 84)
-        for row in report["cells"]:
+        self.assertEqual(len(report["amortized_floor_cells"]), 2)
+        self.assertEqual({r["seat"] for r in report["amortized_floor_cells"]}, {0, 1})
+        # 6 minimal cells * 2 arms * 7 ticks = 84;
+        # 2 amortized cells * 2 arms * 51 ticks = 204.
+        self.assertEqual(oc.CALLBACKS - before, 288)
+        for row in report["minimal_cells"] + report["amortized_floor_cells"]:
             self.assertTrue(row["same_final_physical"])
             self.assertEqual(row["rival_cash_delta"], 0)
             self.assertFalse(row["policy_claim"])
 
     def test_invalid_inputs_fail_closed_instead_of_bool_coercion(self):
-        for kwargs in ({"seat": True}, {"seat": 2}, {"fert_inventory": True},
-                       {"fert_inventory": -1}, {"cash": True}, {"cash": -1}):
-            with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
-                subject.run_pair(self.engine, **kwargs)
+        for runner in (subject.run_pair, subject.run_amortized_pair):
+            for kwargs in ({"seat": True}, {"seat": 2}, {"fert_inventory": True},
+                           {"fert_inventory": -1}, {"cash": True}, {"cash": -1}):
+                with self.subTest(runner=runner.__name__, kwargs=kwargs), self.assertRaises(ValueError):
+                    runner(self.engine, **kwargs)
         for row in ([], [1], "PASS", None):
             with self.subTest(row=row), self.assertRaises(ValueError):
                 subject.unit_action(row)
