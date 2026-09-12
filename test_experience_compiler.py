@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import host.experience_compiler as compiler
 
@@ -68,6 +69,24 @@ class ExperienceCompilerTests(unittest.TestCase):
         pattern_path = compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
         self.assertEqual(index_path.read_text(encoding="utf-8"), outputs[index_path])
         self.assertEqual(pattern_path.read_text(encoding="utf-8"), outputs[pattern_path])
+
+    def test_compile_removes_only_stale_generated_pattern_pages(self):
+        with tempfile.TemporaryDirectory() as directory:
+            pattern_dir = Path(directory) / "patterns"
+            pattern_dir.mkdir()
+            stale = pattern_dir / "stale.md"
+            keep = pattern_dir / "keep.md"
+            unrelated = pattern_dir / "notes.txt"
+            stale.write_text("obsolete\n", encoding="utf-8")
+            unrelated.write_text("manual\n", encoding="utf-8")
+            outputs = {keep: "fresh\n"}
+
+            with mock.patch.object(compiler, "PATTERN_DIR", pattern_dir):
+                compiler.compile_to_disk(outputs)
+
+            self.assertEqual("fresh\n", keep.read_text(encoding="utf-8"))
+            self.assertFalse(stale.exists())
+            self.assertEqual("manual\n", unrelated.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

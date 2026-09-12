@@ -229,6 +229,49 @@ class ExportContractTests(unittest.TestCase):
                         component_id="winner",
                     )
 
+    def test_failed_publication_empty_scaffold_can_retry_same_output(self):
+        baseline = packed([("a", b"A")])
+        candidate = packed([("a", b"B")])
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            bp = td / "b.tgz"
+            cp = td / "c.tgz"
+            out = td / "out"
+            bp.write_bytes(baseline)
+            cp.write_bytes(candidate)
+            real_publish = exp.publish_exclusive
+            first = True
+
+            def fail_once(requested):
+                nonlocal first
+                if first:
+                    first = False
+                    requested[1][0].parent.mkdir(parents=True, exist_ok=True)
+                    raise OSError("injected publication failure")
+                return real_publish(requested)
+
+            with self.baseline_contract(baseline), mock.patch.object(
+                exp, "publish_exclusive", side_effect=fail_once
+            ):
+                with self.assertRaisesRegex(exp.ExportError, "injected publication failure"):
+                    exp.export_component(
+                        baseline_path=bp,
+                        candidate_path=cp,
+                        candidate_sha256=exp.digest(candidate),
+                        out_dir=out,
+                        component_id="x",
+                    )
+                self.assertTrue((out / "files").is_dir())
+                self.assertEqual([], list((out / "files").iterdir()))
+                exp.export_component(
+                    baseline_path=bp,
+                    candidate_path=cp,
+                    candidate_sha256=exp.digest(candidate),
+                    out_dir=out,
+                    component_id="x",
+                )
+            self.assertTrue((out / "COMPONENT.json").is_file())
+
     def test_empty_existing_output_directory_can_recover(self):
         baseline = packed([("a", b"A")])
         candidate = packed([("a", b"B")])
