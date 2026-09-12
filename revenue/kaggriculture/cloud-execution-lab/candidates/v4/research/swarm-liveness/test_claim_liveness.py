@@ -49,6 +49,51 @@ class ClaimLivenessTests(unittest.TestCase):
         self.assertEqual("COLLISION", self.row(r)["status"])
         self.assertEqual(1, r["summary"]["collisions"])
 
+    def test_repeat_active_claim_cannot_reset_epoch_precedence(self):
+        r = self.audit([
+            e(1910, session="A", event_id="a-open"),
+            e(1920, session="B", event_id="b-open"),
+            e(1990, session="A", event_id="a-repeat"),
+        ])
+        row = self.row(r)
+        owners = {owner["session"]: owner for owner in row["owners"]}
+        self.assertEqual("COLLISION", row["status"])
+        self.assertEqual("A", row["arbitration"]["preferred_owner"])
+        self.assertEqual(1910.0, owners["A"]["claim_ts"])
+        self.assertEqual(1910.0, owners["A"]["last_ts"])
+        self.assertIn("repeat_claim_while_active", {a["kind"] for a in r["anomalies"]})
+        self.assertFalse(r["policy"]["repeat_active_claims_authoritative"])
+
+    def test_repeat_active_claim_contract_drift_is_anomaly_not_mutation(self):
+        r = self.audit([
+            e(1950, scope_key="scope-a", requires_artifact=True, artifact="pr#1"),
+            e(1960, scope_key="scope-b", requires_artifact=False, artifact="pr#2"),
+        ])
+        row = self.row(r)
+        owner = row["owners"][0]
+        kinds = {a["kind"] for a in r["anomalies"]}
+        self.assertIn("repeat_claim_while_active", kinds)
+        self.assertIn("scope_key_drift", kinds)
+        self.assertIn("active_claim_contract_drift", kinds)
+        self.assertEqual(1950.0, owner["claim_ts"])
+        self.assertEqual(1950.0, owner["last_ts"])
+        self.assertEqual("scope-a", owner["scope_key"])
+        self.assertEqual("pr#1", owner["artifact"])
+
+    def test_terminal_then_fresh_claim_starts_new_epoch(self):
+        r = self.audit([
+            e(1800, event_id="open-1"),
+            e(1850, event="COMPLETE", event_id="done-1", artifact="pr#1"),
+            e(1950, event_id="open-2", scope_key="new-scope"),
+        ])
+        row = self.row(r)
+        owner = row["owners"][0]
+        self.assertEqual("ACTIVE", row["status"])
+        self.assertEqual(1950.0, owner["claim_ts"])
+        self.assertEqual(1950.0, owner["last_ts"])
+        self.assertEqual("new-scope", owner["scope_key"])
+        self.assertNotIn("repeat_claim_while_active", {a["kind"] for a in r["anomalies"]})
+
     def test_heartbeat_extends_claim(self):
         r = self.audit([e(1800), e(1990, event="HEARTBEAT")])
         self.assertEqual("ACTIVE", self.row(r)["status"])
@@ -74,17 +119,105 @@ class ClaimLivenessTests(unittest.TestCase):
         r = self.audit([e(1950, event="RELEASED")])
         self.assertIn("terminal_without_claim", {a["kind"] for a in r["anomalies"]})
 
-    def test_noncanonical_root_is_anomaly(self):
+    def test_noncanonical_root_is_anomaly_and_claim_is_quarantined(self):
         r = self.audit([e(1950, canonical_root="main:other/v4")])
         self.assertIn("noncanonical_root", {a["kind"] for a in r["anomalies"]})
+        self.assertEqual([], r["lanes"])
+        self.assertFalse(r["policy"]["noncanonical_root_events_authoritative"])
 
-    def test_repo_write_requires_root_binding(self):
+    def test_noncanonical_heartbeat_cannot_refresh_canonical_claim(self):
+        r = self.audit([
+            e(1800, canonical_root=DEFAULT_CANONICAL_ROOT, event_id="claim"),
+            e(1990, event="HEARTBEAT", canonical_root="main:other/v4", event_id="beat"),
+        ])
+        row = self.row(r)
+        self.assertEqual("STALE_CLAIM", row["status"])
+        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+        self.assertIn("noncanonical_root", {a["kind"] for a in r["anomalies"]})
+
+    def test_noncanonical_terminal_cannot_close_canonical_claim(self):
+        r = self.audit([
+            e(1950, canonical_root=DEFAULT_CANONICAL_ROOT, event_id="claim"),
+            e(1960, event="COMPLETE", canonical_root="main:other/v4", event_id="done"),
+        ])
+        row = self.row(r)
+        self.assertEqual("ACTIVE", row["status"])
+        self.assertEqual({}, row["terminal_owners"])
+        self.assertEqual(1950.0, row["owners"][0]["last_ts"])
+
+    def test_noncanonical_event_id_cannot_shadow_later_canonical_event(self):
+        r = self.audit([
+            e(1900, canonical_root="main:other/v4", event_id="x"),
+            e(1950, canonical_root=DEFAULT_CANONICAL_ROOT, event_id="x"),
+        ])
+        self.assertEqual("ACTIVE", self.row(r)["status"])
+        kinds = [a["kind"] for a in r["anomalies"]]
+        self.assertIn("noncanonical_root", kinds)
+        self.assertNotIn("duplicate_event_id", kinds)
+
+    def test_repo_write_requires_exact_root_binding(self):
         r = self.audit([e(1950, writes_repo=True)])
         self.assertIn("repo_write_without_root", {a["kind"] for a in r["anomalies"]})
+        self.assertEqual([], r["lanes"])
+        self.assertTrue(r["policy"]["repo_writes_require_exact_canonical_root"])
+        self.assertFalse(r["policy"]["repo_write_without_canonical_root_authoritative"])
+
+    def test_rootless_repo_write_heartbeat_cannot_refresh(self):
+        r = self.audit([
+            e(1800, canonical_root=DEFAULT_CANONICAL_ROOT),
+            e(1990, event="HEARTBEAT", writes_repo=True),
+        ])
+        row = self.row(r)
+        self.assertEqual("STALE_CLAIM", row["status"])
+        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+
+    def test_rootless_repo_write_terminal_cannot_close(self):
+        r = self.audit([
+            e(1950, canonical_root=DEFAULT_CANONICAL_ROOT),
+            e(1960, event="COMPLETE", writes_repo=True),
+        ])
+        row = self.row(r)
+        self.assertEqual("ACTIVE", row["status"])
+        self.assertEqual({}, row["terminal_owners"])
+
+    def test_repo_write_exact_canonical_root_remains_authoritative(self):
+        r = self.audit([
+            e(1950, writes_repo=True, canonical_root=DEFAULT_CANONICAL_ROOT),
+        ])
+        self.assertEqual("ACTIVE", self.row(r)["status"])
+
+    def test_read_only_rootless_event_remains_compatible(self):
+        r = self.audit([e(1950, writes_repo=False)])
+        self.assertEqual("ACTIVE", self.row(r)["status"])
+        self.assertTrue(r["policy"]["read_only_missing_root_authoritative"])
 
     def test_duplicate_event_id_is_anomaly(self):
         r = self.audit([e(1900, event_id="x"), e(1950, event="HEARTBEAT", event_id="x")])
         self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
+
+    def test_duplicate_heartbeat_cannot_refresh_stale_claim(self):
+        r = self.audit([
+            e(1700, event_id="claim"),
+            e(1800, event="HEARTBEAT", event_id="beat"),
+            e(1980, event="HEARTBEAT", event_id="beat"),
+        ])
+        row = self.row(r)
+        self.assertEqual("STALE_CLAIM", row["status"])
+        self.assertEqual(["A"], row["recovery_candidates"])
+        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+        self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
+        self.assertFalse(r["policy"]["duplicate_event_id_replays_authoritative"])
+
+    def test_duplicate_claim_cannot_reopen_terminal_epoch(self):
+        r = self.audit([
+            e(1700, event_id="claim"),
+            e(1800, event="COMPLETE", event_id="done", artifact="pr#1"),
+            e(1950, event_id="claim"),
+        ])
+        row = self.row(r)
+        self.assertEqual("CLOSED", row["status"])
+        self.assertEqual({"A": "COMPLETE"}, row["terminal_owners"])
+        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
 
     def test_timezone_aware_iso_timestamp(self):
         r = audit_events(
@@ -101,6 +234,30 @@ class ClaimLivenessTests(unittest.TestCase):
     def test_future_event_is_anomaly(self):
         r = self.audit([e(2100)])
         self.assertIn("future_event", {a["kind"] for a in r["anomalies"]})
+
+    def test_future_heartbeat_cannot_refresh_stale_claim(self):
+        r = self.audit([e(1800), e(2100, event="HEARTBEAT")])
+        row = self.row(r)
+        self.assertEqual("STALE_CLAIM", row["status"])
+        self.assertEqual(["A"], row["recovery_candidates"])
+        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+        self.assertFalse(r["policy"]["future_events_authoritative"])
+
+    def test_future_claim_does_not_create_owner_or_lane(self):
+        r = self.audit([e(2100, lane="FUTURE")])
+        self.assertEqual([], r["lanes"])
+        self.assertEqual(0, r["summary"]["lanes"])
+        self.assertIn("future_event", {a["kind"] for a in r["anomalies"]})
+
+    def test_future_duplicate_does_not_reserve_event_id(self):
+        r = self.audit([
+            e(2100, event_id="x"),
+            e(1950, event_id="x"),
+        ])
+        self.assertEqual("ACTIVE", self.row(r)["status"])
+        kinds = [a["kind"] for a in r["anomalies"]]
+        self.assertEqual(1, kinds.count("future_event"))
+        self.assertNotIn("duplicate_event_id", kinds)
 
     def test_jsonl_comments_and_blank_lines(self):
         rows = load_jsonl(io.StringIO('\n# comment\n{"ts":1,"lane":"L","session":"A","event":"CLAIM"}\n'))
