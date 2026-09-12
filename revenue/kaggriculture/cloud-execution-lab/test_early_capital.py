@@ -138,6 +138,8 @@ class EarlyCapitalContracts(unittest.TestCase):
             bad = obs(1, money=1000, shed={'MILK': 1})
             bad['step'] = value
             bad_clocks.append(('step', value, bad))
+        bad = obs(1, money=1000, shed={'MILK': 1}); bad['step'] = None
+        bad_clocks.append(('step_none', None, bad))
         bad = obs(1, money=1000, shed={'MILK': 1}); bad['day'] = 1
         bad_clocks.append(('day_mismatch', 1, bad))
         bad = obs(1, money=1000, shed={'MILK': 1}); bad['hour'] = 2
