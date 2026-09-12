@@ -78,6 +78,41 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertTrue(successor["ok"])
         self.assertEqual("ASTRA-A", successor["record"]["previous_holder"])
 
+    def test_nff_loser_fails_closed_instead_of_overwriting_newer_winner(self):
+        seed = claim_pr.write_pr_holding(
+            self.a, 13000, "SEED", "take", ttl_s=600, now=self.t0
+        )
+        self.assertTrue(seed["ok"])
+        stale_tip = seed["commit"]
+        won = claim_pr.write_pr_holding(
+            self.a, 13492, "ASTRA-A", "take", ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=5),
+        )
+        self.assertTrue(won["ok"])
+
+        real_remote_tip = cs._remote_tip
+        calls = {"n": 0}
+
+        def stale_then_real(git, branch, remote="origin"):
+            calls["n"] += 1
+            return stale_tip if calls["n"] == 1 else real_remote_tip(git, branch, remote)
+
+        cs._remote_tip = stale_then_real
+        try:
+            lost = claim_pr.write_pr_holding(
+                self.b, 13492, "ASTRA-B", "take", ttl_s=600,
+                now=self.t0 + dt.timedelta(seconds=1),
+            )
+        finally:
+            cs._remote_tip = real_remote_tip
+
+        self.assertFalse(lost["ok"])
+        self.assertEqual("branch kept moving; retry", lost["reason"])
+        listing = cs.holdings_list(self.a, now=self.t0 + dt.timedelta(seconds=6))
+        row = [r for r in listing["holdings"] if r["key"] == "pr-13492"][0]
+        self.assertEqual("ASTRA-A", row["holder"])
+        self.assertTrue(row["live"])
+
     def test_invalid_action_holder_and_ttl_fail_before_git_write(self):
         bad = [
             {"action": "steal", "holder": "ASTRA", "ttl_s": 600},
