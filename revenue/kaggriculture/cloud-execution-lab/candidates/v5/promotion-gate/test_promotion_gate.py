@@ -30,7 +30,13 @@ def _manifest():
                 "name": "candidate",
                 "source": "candidate.py",
                 "source_sha256": "b" * 64,
-                "activation": {"mode": "config", "equals": {"t": "dict", "v": []}},
+                "activation": {
+                    "mode": "config",
+                    "equals": {
+                        "t": "dict",
+                        "v": [["feature", {"t": "bool", "v": True}]],
+                    },
+                },
             }
         ],
     }
@@ -268,6 +274,33 @@ class PromotionGateTest(unittest.TestCase):
         }
         _rehash_manifest(manifest)
         with self.assertRaises(gate.PromotionError):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_self_hashed_empty_or_reserved_config_activation_is_rejected(self):
+        manifest = _manifest()
+        manifest["components"][0]["activation"]["equals"] = {
+            "t": "dict",
+            "v": [],
+        }
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "must be non-empty"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+        manifest = _manifest()
+        manifest["components"][0]["activation"]["equals"] = {
+            "t": "dict",
+            "v": [["_meta", {"t": "bool", "v": True}]],
+        }
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "reserved metadata keys"):
             gate.build_receipt(
                 manifest,
                 _engagement(manifest["candidate_id"]),
