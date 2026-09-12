@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 import copy
+import importlib.util
 import sys
+import types
 import unittest
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-OVERLAY = HERE.parent / "overlay"
-for path in (HERE, OVERLAY):
-    if str(path) not in sys.path:
-        sys.path.insert(0, str(path))
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
 
-from e7_post_tick_evening_flush import PostTickEveningFlush, install  # noqa: E402
+from e7_post_tick_evening_flush import (  # noqa: E402
+    PostTickEveningFlush,
+    ROUTER_BLOB_SHA,
+    ROUTER_PATH,
+    _git_blob_sha,
+    install,
+    r04,
+)
 
 
 class Parent:
@@ -89,6 +96,31 @@ class E7FailClosedTests(unittest.TestCase):
         self.assertEqual([["SELL", "MILK", 0]], released["market"])
         self.assertEqual(1, agent.telemetry["release_malformed_sell"])
         self.assertEqual(0, agent.telemetry["released_units"])
+
+    def test_router_binding_is_canonical_v4_donor(self):
+        self.assertEqual(ROUTER_PATH.name, "r04_full_router.py")
+        self.assertEqual(Path(r04.__file__).resolve(), ROUTER_PATH.resolve())
+        self.assertEqual(ROUTER_BLOB_SHA, _git_blob_sha(ROUTER_PATH))
+
+    def test_ambient_r04_shadow_is_refused(self):
+        canonical = sys.modules.get("r04_full_router")
+        shadow = types.ModuleType("r04_full_router")
+        shadow.__file__ = "/tmp/e7-shadow/r04_full_router.py"
+        sys.modules["r04_full_router"] = shadow
+        try:
+            spec = importlib.util.spec_from_file_location(
+                "_e7_shadow_probe", HERE / "e7_post_tick_evening_flush.py"
+            )
+            self.assertIsNotNone(spec)
+            self.assertIsNotNone(spec.loader)
+            probe = importlib.util.module_from_spec(spec)
+            with self.assertRaisesRegex(ImportError, "shadowed"):
+                spec.loader.exec_module(probe)
+        finally:
+            if canonical is None:
+                sys.modules.pop("r04_full_router", None)
+            else:
+                sys.modules["r04_full_router"] = canonical
 
 
 if __name__ == "__main__":
