@@ -379,6 +379,70 @@ class TestV231LateCurrent(unittest.TestCase):
         self.assertEqual(state["extra_milk_sale_requests"], 3)
         self.assertEqual(state["milk_credit"], 0)
 
+    def test_changed_selected_retry_retires_abandoned_buy(self):
+        arm = V231LateCurrentABI(enabled=True)
+        obs = observation(step=216)
+        buy = selected([["BUY_ANIMAL", "SHEEP", 1]])
+        no_buy = selected()
+        self.assertEqual(
+            arm.transform(obs, buy)["market"],
+            [["BUY_ANIMAL", "COW", 1]],
+        )
+        self.assertIsNotNone(arm._states[0]["pending_buy"])
+        self.assertEqual(arm.transform(copy.deepcopy(obs), no_buy), no_buy)
+        self.assertIsNone(arm._states[0]["pending_buy"])
+        self.assertEqual(arm._states[0]["requested"], 0)
+
+        out217 = arm.transform(
+            observation(
+                step=217,
+                shed={"COW": 1, "SHEEP": 1, "GOOSE": 0, "MILK": 0},
+                farmer=(4, 4),
+                inventories=[{}],
+            ),
+            selected(farmer=["PICKUP", "SHEEP", 1]),
+        )
+        self.assertEqual(out217["farmer"], ["PICKUP", "SHEEP", 1])
+        self.assertEqual(arm._states[0]["confirmed"], 0)
+
+    def test_changed_harvest_retry_reverts_first_attempt_poststate(self):
+        arm = self._credit_arm()
+        tiles = blank_tiles()
+        tiles[4][4] = {
+            "kind": "PASTURE",
+            "animal": "COW",
+            "placed_day": 9,
+            "yield_units": 3,
+        }
+        obs = observation(
+            step=220,
+            shed={"COW": 0, "SHEEP": 0, "GOOSE": 0, "MILK": 10},
+            farmer=(4, 4),
+            inventories=[{}],
+            tiles=tiles,
+        )
+        harvest = selected(
+            market=[["SELL", "MILK", 2]],
+            farmer=["HARVEST"],
+        )
+        refreshed = selected(
+            market=[["SELL", "MILK", 2]],
+            farmer=["PASS"],
+        )
+        self.assertEqual(
+            arm.transform(obs, harvest)["market"],
+            [["SELL", "MILK", 5]],
+        )
+        self.assertEqual(
+            arm.transform(copy.deepcopy(obs), refreshed),
+            refreshed,
+        )
+        state = arm._states[0]
+        self.assertEqual(state["extra_milk_harvested"], 0)
+        self.assertEqual(state["extra_milk_sale_requests"], 0)
+        self.assertEqual(state["milk_credit"], 0)
+        self.assertEqual(state["sites"], {(4, 4): 9})
+
     def test_rewind_resets_episode_ownership(self):
         arm = V231LateCurrentABI(enabled=True)
         arm.transform(
