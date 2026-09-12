@@ -22,6 +22,10 @@ SUPPORTED_ACTIONS = MOVES | frozenset((
     "PASS", "WATER", "CARE", "FEED", "HARVEST", "COLLECT_FERTILIZER",
     "DROP", "PICKUP", "PLANT", "FERTILIZE", "DIG",
 ))
+# Only actions whose successful returned execution can directly materialize the
+# certified output in the worker's inventory.  This stays intentionally narrow:
+# FEED/CARE can create future opportunity but are not themselves sale provenance.
+OUTPUT_PRODUCERS = frozenset(("HARVEST", "COLLECT_FERTILIZER"))
 
 
 def _integer(value: Any, name: str, *, minimum: int = 0) -> int:
@@ -110,13 +114,16 @@ def _requirements(requirements: Sequence[Mapping[str, Any]], *, kind: str,
         else:
             produced = _integer(raw.get("produced_step"), "output produced_step")
             ready = _integer(raw.get("sale_ready_step"), "output sale_ready_step")
+            producer = _item(raw.get("producer", "HARVEST"), "output producer")
             if not start_step <= produced <= end_step or not produced <= ready <= end_step:
                 raise ValueError("output production/deposit lies outside worker action stream")
-            if ops[produced-start_step] != "HARVEST":
-                raise ValueError("output produced_step is not a HARVEST action")
+            if producer not in OUTPUT_PRODUCERS:
+                raise ValueError("output producer is not a certified materializing action")
+            if ops[produced-start_step] != producer:
+                raise ValueError("output producer does not match worker action stream")
             if ops[ready-start_step] != "DROP":
                 raise ValueError("output sale_ready_step is not an explicit DROP action")
-            result.append({"item": item, "quantity": quantity,
+            result.append({"item": item, "quantity": quantity, "producer": producer,
                            "produced_step": produced, "sale_ready_step": ready})
     return result
 
@@ -135,9 +142,10 @@ def evaluate_worker_job(*, start_step: int, actions: Sequence[Sequence[Any]],
 
     Input purchases are credited only when they execute *before* their consuming
     unit action because Kaggriculture unit actions precede the market queue.
-    Output receipts are credited only when the job's harvest has been explicitly
-    deposited by a DROP and a provenance-attributed sale occurs at/after that
-    deposit.  Market events must use caller-certified free slots.
+    Output receipts are credited only when a certified materializing action
+    (HARVEST by default, or explicit COLLECT_FERTILIZER) is followed by a DROP
+    and a provenance-attributed sale at/after that deposit.  Market events must
+    use caller-certified free slots.
 
     ``receipt_floor`` and ``cost_upper`` are deliberately caller-provided bounds;
     this helper never predicts a future quote or fill.  ``value_per_step`` is strict net
