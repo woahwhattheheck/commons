@@ -7,12 +7,19 @@ A caller must instead provide an exact certificate for the number of MELON units
 that the selected current route can still realize from the current observation
 through terminal play (for example by legal SELL/town-consumption custody).
 
-The certificate is a proof input, not a forecast.  Missing, malformed, or
-negative proof leaves the proposal batch exactly unchanged.  When proof is
+The certificate is a proof input, not a forecast. Missing, malformed, or
+negative proof leaves the proposal batch exactly unchanged. When proof is
 valid, already-held MELON plus the maximum remaining yield of every live MELON
 plant consumes the certificate before any new planting is admitted.
 
-Default OFF / source-only.  This module creates no feature key and does not
+FourthQuadrant proposal entries are mutually exclusive alternatives. Each MELON
+alternative is therefore authenticated independently from its executable
+``variants[*].patches`` program using the canonical legacy source helper and is
+kept as the exact original object only when its whole commitment fits the
+remaining realization certificate. Alternatives are never shallow-shrunk and
+inspecting one option never spends capacity for another.
+
+Default OFF / source-only. This module creates no feature key and does not
 authorize runtime activation.
 """
 from __future__ import annotations
@@ -63,51 +70,17 @@ def max_new_melon_plants(
     return budget // MELON_UNITS_PER_PLANT
 
 
-def _proposal_shape(proposal: dict[str, Any]) -> tuple[int, list[Any] | None, int | None] | None:
-    """Return exact (plant count, tiles copy, seed-units-per-plant) or fail."""
-    tiles_value = proposal.get("tiles")
-    tiles: list[Any] | None = None
-    size_from_tiles: int | None = None
-    if tiles_value is not None:
-        if not isinstance(tiles_value, (list, tuple)):
-            return None
-        tiles = list(tiles_value)
-        size_from_tiles = len(tiles)
-
-    explicit_size = proposal.get("size")
-    if explicit_size is not None:
-        explicit_size = _plain_nonnegative_int(explicit_size)
-        if explicit_size is None:
-            return None
-
-    if size_from_tiles is None and explicit_size is None:
-        return None
-    if size_from_tiles is not None and explicit_size is not None and size_from_tiles != explicit_size:
-        return None
-
-    size = size_from_tiles if size_from_tiles is not None else explicit_size
-    assert size is not None
-    if size <= 0:
-        return None
-
-    seed_per_plant: int | None = None
-    if "seed_units" in proposal:
-        seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
-        if seed_units is None or seed_units % size:
-            return None
-        seed_per_plant = seed_units // size
-    return size, tiles, seed_per_plant
-
-
 def filter_proposals_with_realization_bound(
     proposals: Any,
     observation: Any,
     certified_remaining_realization_units: Any,
 ):
-    """Trim aggregate MELON proposals only when a complete realization proof exists.
+    """Keep whole executable MELON alternatives that individually fit proof.
 
-    Proof failure is deliberately an exact no-op: the original ``proposals``
-    object is returned, rather than interpreting uncertainty as a fixed cap.
+    Certificate/custody failure remains an exact no-op because the caller has
+    not supplied enough proof to replace the legacy policy. With a valid proof,
+    malformed or oversized MELON alternatives fail closed individually while
+    unrelated alternatives retain value, order, and object identity.
     """
     if not isinstance(proposals, (list, tuple)):
         return proposals
@@ -118,42 +91,18 @@ def filter_proposals_with_realization_bound(
     if plants_left is None:
         return proposals
 
-    parsed: list[tuple[int, list[Any] | None, int | None] | None] = []
-    for proposal in proposals:
-        if isinstance(proposal, dict) and proposal.get("crop") == "MELON":
-            shape = _proposal_shape(proposal)
-            if shape is None:
-                return proposals
-            parsed.append(shape)
-        else:
-            parsed.append(None)
-
     out: list[Any] = []
     changed = False
-    for proposal, shape in zip(proposals, parsed):
-        if shape is None:
+    for proposal in proposals:
+        if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
             out.append(proposal)
             continue
 
-        size, tiles, seed_per_plant = shape
-        allowed = min(size, plants_left)
-        plants_left -= allowed
-
-        if allowed == size:
+        plants = legacy.executable_melon_plants(proposal)
+        if plants is not None and plants <= plants_left:
             out.append(proposal)
             continue
 
         changed = True
-        if allowed == 0:
-            continue
-
-        shrunk = dict(proposal)
-        if tiles is not None:
-            shrunk["tiles"] = tiles[:allowed]
-        if "size" in shrunk:
-            shrunk["size"] = allowed
-        if seed_per_plant is not None:
-            shrunk["seed_units"] = seed_per_plant * allowed
-        out.append(shrunk)
 
     return out if changed else proposals
