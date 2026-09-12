@@ -12,8 +12,21 @@ returned and normalises it, so it is stdlib-only, testable offline, and cannot
 invent a number it did not receive.
 
  python3 -m host.github_state --write \
- --pulls pulls.json --open-prs 106 --open-issues 3 \
- --runs-queued 2284 --runs-in-progress 18 --observed-at 2026-09-10T21:00:00Z
+ --pulls pulls.json --closed closed.json --open-prs 106 --open-issues 3 \
+ --counts-source graphql --runs-queued 2284 --runs-in-progress 18 \
+ --observed-at 2026-09-10T21:00:00Z
+
+What a session gets from one read, besides the counts:
+
+* Every listed pull carries `head_sha`, `updated_at` and `base`. A session that
+  reviewed, claimed or composed a head can tell whether it has moved without a
+  GitHub call of its own. `updated_at` is GitHub's clock for that pull, not the
+  moment this file was built.
+* `open_heads` maps every listed open pull to its head SHA. When
+  `pulls_listing` is COMPLETE, a number missing from it is not open.
+* `recently_closed` names the newest closures, MERGED or CLOSED, with the head
+  that closed. It comes from the most recently updated page of closed pulls, so
+  it shows recent transitions. It is not a history.
 
 Honesty rules, the same ones the delta shards keep:
 
@@ -26,9 +39,18 @@ Honesty rules, the same ones the delta shards keep:
   complete listing: the oldest row of a newest-first page is not the oldest
   open pull request, so a partial listing names itself in `degraded` and leaves
   that section out instead of mislabelling it.
+* The open count and the listing are separate observations. When the listing
+  holds more unique open pulls than the count supplied, the count is the stale
+  one, and `degraded` says `open-count-below-listing`. The count is still
+  published exactly as given, and `counts_source` names the road it came from
+  (`graphql` is the repository's own count; `search` is an index that can
+  lag).
 * `unchanged_since` is the moment the content last actually moved. A rebuild
   that observed the same state leaves the file completely alone, so a quiet
-  cycle produces no diff and the timestamp keeps meaning something.
+  cycle produces no diff and the timestamp keeps meaning something. The file
+  carries no observation time of its own, because one would change on every
+  bake and put a commit on main every cycle. When the bake last ran is the
+  newest run of `.github/workflows/commons-board.yml` in the Actions API.
 * The file is replaced atomically. An interrupted or failed write leaves the
   previous bytes exactly as they were, so a masked producer failure in the
   workflow can never stage half a file.
@@ -50,8 +72,11 @@ OUT = "feed/github.json"
 # Enough to act on without turning the file into a listing of everything.
 NEWEST_N = 10
 OLDEST_N = 5
+CLOSED_N = 15
 
 UNKNOWN = "UNKNOWN"
+
+_HEX = frozenset("0123456789abcdef")
 
 
 def _parse_ts(text):
@@ -77,6 +102,26 @@ def _count(value):
         return UNKNOWN
 
 
+def _text(value):
+    return value.strip() if isinstance(value, str) else ""
+
+
+def _sha(value):
+    """A full commit id as GitHub sent it, or UNKNOWN.
+
+    Only a complete hexadecimal object id is kept (40 characters, or 64 for a
+    SHA-256 repository). Anything shorter would let two heads look equal.
+    """
+    text = _text(value).lower()
+    if len(text) in (40, 64) and set(text) <= _HEX:
+        return text
+    return UNKNOWN
+
+
+def _ref(side):
+    return (_text((side or {}).get("ref")) if isinstance(side, dict) else "") or UNKNOWN
+
+
 def _pull(row):
     """One pull request, carrying only durable facts.
 
@@ -84,18 +129,63 @@ def _pull(row):
     observation, so carrying one would make this file differ on every rebuild
     and commit a fresh diff every five minutes forever. The viewer has a clock;
     `created_at` plus that clock is a better age than a stamped one anyway.
+
+    `head_sha` and `updated_at` are the pull's own facts, not observation
+    times. They move when the pull moves, which is what a session holding a
+    reviewed or claimed head needs to see.
     """
     user = row.get("user") or {}
-    created = (row.get("created_at") or "").strip()
+    head = row.get("head") if isinstance(row.get("head"), dict) else {}
     return {
         "number": row.get("number"),
-        "title": (row.get("title") or "").strip()[:120],
-        "author": (user.get("login") or "").strip() or UNKNOWN,
+        "title": _text(row.get("title"))[:120],
+        "author": _text(user.get("login") if isinstance(user, dict) else "") or UNKNOWN,
         "draft": bool(row.get("draft")),
         # Kept verbatim when present, and only ordered when it truly parses.
-        "created_at": created or UNKNOWN,
-        "branch": ((row.get("head") or {}).get("ref") or "").strip() or UNKNOWN,
+        "created_at": _text(row.get("created_at")) or UNKNOWN,
+        "updated_at": _text(row.get("updated_at")) or UNKNOWN,
+        "branch": _ref(head),
+        "head_sha": _sha(head.get("sha")),
+        "base": _ref(row.get("base")),
     }
+
+
+def _closed(row):
+    """One closed pull request: whether it merged, when, and at which head."""
+    pull = _pull(row)
+    merged_at = _text(row.get("merged_at"))
+    merged = _parse_ts(merged_at) is not None
+    return {
+        "number": pull["number"],
+        "title": pull["title"],
+        "author": pull["author"],
+        "state": "MERGED" if merged else "CLOSED",
+        "closed_at": _text(row.get("closed_at")) or UNKNOWN,
+        "merged_at": merged_at if merged else None,
+        "branch": pull["branch"],
+        "head_sha": pull["head_sha"],
+        "base": pull["base"],
+    }
+
+
+def _recently_closed(closed):
+    """Newest closures first, each pull once, ordered only on a real closed_at."""
+    rows, seen = [], set()
+    for row in closed:
+        if not isinstance(row, dict):
+            continue
+        item = _closed(row)
+        key = item["number"]
+        if key is None or key in seen:
+            continue
+        seen.add(key)
+        if _parse_ts(item["closed_at"]) is None:
+            continue
+        rows.append(item)
+    rows.sort(key=lambda r: (_parse_ts(r["closed_at"]),
+                             r["number"] if isinstance(r["number"], int) else -1),
+              reverse=True)
+    return rows[:CLOSED_N]
 
 
 def _listing_state(rows, open_prs, complete):
@@ -117,13 +207,17 @@ def _listing_state(rows, open_prs, complete):
     return UNKNOWN
 
 
-def build(pulls, counts, now=None, degraded=None, complete=None):
+def build(pulls, counts, now=None, degraded=None, complete=None, closed=None):
     """Normalise a pulls listing plus supplied counts into the payload.
 
     `now` is accepted and deliberately unused. Nothing observation-relative is
     allowed into the payload, so two builds of the same state at different
     clocks are byte-identical and a quiet rebuild produces no diff. The
     parameter stays so callers do not have to know that.
+
+    `closed` is the closed-pull listing, or None when it was not read. Only a
+    listing that was read produces `recently_closed`; the caller names an
+    unreadable one in `degraded`.
     """
     payload = {
         "schema": SCHEMA,
@@ -134,8 +228,11 @@ def build(pulls, counts, now=None, degraded=None, complete=None):
             "runs_queued": _count(counts.get("runs_queued")),
             "runs_in_progress": _count(counts.get("runs_in_progress")),
         },
+        "counts_source": _text(counts.get("source")) or UNKNOWN,
         "degraded": list(degraded or []),
     }
+    if closed is not None:
+        payload["recently_closed"] = _recently_closed(closed)
 
     queued = payload["counts"]["runs_queued"]
     running = payload["counts"]["runs_in_progress"]
@@ -170,12 +267,23 @@ def build(pulls, counts, now=None, degraded=None, complete=None):
     # real ISO date, which would put the one broken row at the top of the page.
     dated = [r for r in rows if _parse_ts(r["created_at"])]
     dated.sort(key=lambda r: r["created_at"], reverse=True)
-    listing = _listing_state(rows, payload["counts"]["open_pull_requests"],
-                             complete)
+    open_count = payload["counts"]["open_pull_requests"]
+    listing = _listing_state(rows, open_count, complete)
+    if isinstance(open_count, int) and len(rows) > open_count:
+        # More unique open pulls were listed than the count says exist. The
+        # listing is a direct read, so the count is the stale observation;
+        # publish it as given and say that it disagrees.
+        payload["degraded"].append("open-count-below-listing")
     payload["pulls_listed"] = len(rows)
     payload["pulls_listing"] = listing
     payload["undatable_pulls"] = sorted(
         r["number"] for r in rows if r not in dated and r["number"] is not None)
+    # Every listed open pull and its head, one line each, so "has the head I
+    # hold moved, and is the pull still open?" is a single read.
+    payload["open_heads"] = {
+        str(r["number"]): r["head_sha"] for r in rows
+        if isinstance(r["number"], int) and not isinstance(r["number"], bool)
+    }
     payload["newest_pulls"] = dated[:NEWEST_N]
     if listing == "COMPLETE":
         payload["longest_open"] = list(reversed(dated[-OLDEST_N:])) if dated else []
@@ -280,6 +388,23 @@ def _read_pulls(path):
     return rows
 
 
+def _read_closed(path):
+    """The closed-pull listing, [] for a successful read of nothing, or None.
+
+    The workflow deletes the file when its API call fails, so a missing file
+    means unread. An empty file is a call that succeeded with no closed pulls.
+    """
+    try:
+        if not os.path.isfile(path):
+            return None
+        with open(path, encoding="utf-8") as fh:
+            if not fh.read().strip():
+                return []
+        return _read_pulls(path)
+    except Exception:
+        return None
+
+
 def self_test():
     now = "2026-09-10T21:00:00Z"
     pulls = [
@@ -341,6 +466,41 @@ def self_test():
     named = build(None, {}, now, degraded=["pulls"])
     assert named["degraded"] == ["pulls"]
 
+    # Heads, bases and GitHub's own update clock ride on every listed pull, and
+    # only a complete object id is kept.
+    headed = [dict(pulls[0], updated_at="2026-09-10T20:30:00Z",
+                   head={"ref": "b3", "sha": "A" * 40}, base={"ref": "main"}),
+              dict(pulls[1], head={"ref": "b1", "sha": "abc"})]
+    heads = build(headed, {"open_prs": 2}, now, complete=True)
+    assert heads["newest_pulls"][0]["head_sha"] == "a" * 40, heads["newest_pulls"]
+    assert heads["newest_pulls"][0]["updated_at"] == "2026-09-10T20:30:00Z"
+    assert heads["newest_pulls"][0]["base"] == "main"
+    assert heads["open_heads"] == {"3": "a" * 40, "1": UNKNOWN}, heads["open_heads"]
+
+    # A listing longer than the count: the count is the stale observation. It
+    # is published as given, with the road it came from and a named mismatch.
+    low = build(pulls, dict(counts, open_prs=2, source="search"), now, complete=True)
+    assert "open-count-below-listing" in low["degraded"], low["degraded"]
+    assert low["counts"]["open_pull_requests"] == 2
+    assert low["counts_source"] == "search"
+    assert "longest_open" in low
+    assert out["counts_source"] == UNKNOWN
+
+    # Closures: newest first, a merge named as a merge, an undated row left out.
+    closed = [
+        {"number": 7, "closed_at": "2026-09-10T19:00:00Z", "merged_at": None,
+         "head": {"sha": "b" * 40}},
+        {"number": 8, "closed_at": "2026-09-10T20:00:00Z",
+         "merged_at": "2026-09-10T20:00:00Z", "head": {"sha": "c" * 40}},
+        {"number": 9, "closed_at": ""},
+    ]
+    shut = build(pulls, complete_counts, now, complete=True, closed=closed)
+    assert [(r["number"], r["state"]) for r in shut["recently_closed"]] == \
+        [(8, "MERGED"), (7, "CLOSED")], shut["recently_closed"]
+    assert shut["recently_closed"][1]["merged_at"] is None
+    assert shut["recently_closed"][0]["head_sha"] == "c" * 40
+    assert "recently_closed" not in out
+
     assert _dump(build(pulls, complete_counts, now, complete=True)) == _dump(out)
     print("github_state self-test: PASS")
     return 0
@@ -354,6 +514,11 @@ def main(argv=None):
     ap.add_argument("--pulls-complete", action="store_true",
                     help="pagination reached its end; a contradictory numeric "
                     "--open-prs count still downgrades coverage")
+    ap.add_argument("--closed", help="recently updated closed pull requests, "
+                    "in the same shapes as --pulls; a missing or unreadable "
+                    "file is named in degraded as closed-pulls")
+    ap.add_argument("--counts-source", default="",
+                    help="the road the open counts came from, e.g. graphql or search")
     ap.add_argument("--repository", default="")
     ap.add_argument("--open-prs")
     ap.add_argument("--open-issues")
@@ -381,13 +546,21 @@ def main(argv=None):
     else:
         degraded = ["pulls"]
 
+    closed = None
+    if args.closed:
+        closed = _read_closed(args.closed)
+        if closed is None:
+            degraded.append("closed-pulls")
+
     payload = build(pulls, {
         "repository": args.repository,
         "open_prs": args.open_prs,
         "open_issues": args.open_issues,
         "runs_queued": args.runs_queued,
         "runs_in_progress": args.runs_in_progress,
-    }, now, degraded, complete=True if args.pulls_complete else None)
+        "source": args.counts_source,
+    }, now, degraded, complete=True if args.pulls_complete else None,
+        closed=closed)
 
     if args.write:
         changed = write(args.root, payload, now)

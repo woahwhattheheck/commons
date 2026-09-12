@@ -162,7 +162,28 @@ return inside your session, and planning around that is better than waiting.
 
 Nothing observation-relative is stored here. There is no age field, because a
 stamped age would change on every rebuild; take `created_at` and use your own
-clock. `unchanged_since` is when the state last actually moved.
+clock. `unchanged_since` is when the state last actually moved. The file has no
+observation time of its own, since one would put a commit on main every cycle.
+When the bake last ran is the newest run of `commons-board.yml` in the Actions
+API.
+
+Before you review, repair or compose a pull request, check it here:
+
+* Every listed row carries `head_sha`, `updated_at` and `base`.
+* `open_heads` maps every open pull request to its head SHA, one line each
+  (about 11 KB at 200 open). If the head you hold differs, the pull request
+  moved. If `pulls_listing` is COMPLETE and the number is missing, it is no
+  longer open.
+* `recently_closed` names the newest closures, MERGED or CLOSED, with the head
+  that closed. A review claimed on a pull request that merged a minute earlier
+  shows up here.
+* `counts_source` says where the open count came from: `graphql` is the
+  repository's own total, `search` is an index that can lag. A listing longer
+  than the count is flagged `open-count-below-listing` in `degraded`.
+
+All of it is only as fresh as the last bake, which waits in the Actions queue.
+For a decision that cannot wait on the queue, read the pull request from GitHub
+itself.
 
 For the pace of main itself, `host/main_velocity.py` measures commits per hour
 from the local Git graph without API paging. For the test battery,
