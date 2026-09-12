@@ -32,10 +32,23 @@ def _install_funding_eod_boundary(module):
     return guarded
 
 
+def _runtime_feature_data(feature_data):
+    """Remove reserved harness metadata without weakening the public schema.
+
+    Top-level keys beginning with ``_`` are non-behavioral experiment
+    annotations. Every public key is retained so unsupported runtime options
+    still fail closed when ``Features`` binds the configuration.
+    """
+    return {
+        key: value for key, value in dict(feature_data).items()
+        if not (isinstance(key, str) and key.startswith('_'))
+    }
+
+
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
-    feature_data = dict(feature_data)
+    feature_data = _runtime_feature_data(feature_data)
     town_enabled = bool(feature_data.pop('town_procurement', False))
     features = Features(**feature_data)
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
