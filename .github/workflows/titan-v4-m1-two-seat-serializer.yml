@@ -40,28 +40,29 @@ jobs:
           HELPER="$helper" python - <<'PY'
           import os
           from pathlib import Path
+
           p = Path(os.environ['HELPER'])
           text = p.read_text(encoding='utf-8')
-          old = '''    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):
-              return action
-          [0m    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):
-              return action
-          '''.replace('\u001b[0m', '')
-          new = '''    if (
-              not isinstance(market_obs, dict)
-              or not isinstance(private, dict)
-              or not isinstance(farms, list)
-              or len(farms) != 2
-          ):
-              return action
-              if player not in (0, 1) or not isinstance(farms[player], dict):
-              return action
-          '''
-          # Build anchors without YAML indentation artifacts.
-          old = "    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):\n        return action\n    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):\n        return action\n"
-          new = "    if (\n        not isinstance(market_obs, dict)\n        or not isinstance(private, dict)\n        or not isinstance(farms, list)\n        or len(farms) != 2\n    ):\n        return action\n    if player not in (0, 1) or not isinstance(farms[player], dict):\n        return action\n"
-          if text.count(old) != 1:
-              raise SystemExit(f'exact two-seat anchor count={text.count(old)}')
+          old = (
+              "    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):\n"
+              "        return action\n"
+              "    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):\n"
+              "        return action\n"
+          )
+          new = (
+              "    if (\n"
+              "        not isinstance(market_obs, dict)\n"
+              "        or not isinstance(private, dict)\n"
+              "        or not isinstance(farms, list)\n"
+              "        or len(farms) != 2\n"
+              "    ):\n"
+              "        return action\n"
+              "    if player not in (0, 1) or not isinstance(farms[player], dict):\n"
+              "        return action\n"
+          )
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'exact two-seat anchor count={count}')
           p.write_text(text.replace(old, new), encoding='utf-8', newline='')
           PY
 
