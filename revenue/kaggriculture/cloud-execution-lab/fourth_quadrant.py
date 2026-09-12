@@ -233,7 +233,7 @@ def proposals(mechanics, observation, routes, current, configuration):
                             if 'harvest' in kind:
                                 delivery = step+len(sequence)
                                 quantity = len(group)*{'TOMATO': 4, 'CARROT': 3, 'MELON': 5}[crop]
-                                row = deepcopy(patch[delivery]); market = row.get('market', [])
+                                row = deepcopy(patch[delivery]); market = row.setdefault('market', [])
                                 if not isinstance(market, list) or len(market) >= limit:
                                     feasible = False; break
                                 slot = len(market); market.append(['SELL', crop, quantity]); patch[delivery] = row
