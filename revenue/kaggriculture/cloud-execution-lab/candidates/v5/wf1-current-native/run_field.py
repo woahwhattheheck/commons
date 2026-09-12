@@ -14,6 +14,16 @@ HERE = Path(__file__).resolve().parent
 SOURCE_ROOT = HERE.parents[2]
 COMPONENT_REL = Path('candidates/v5/wf1-current-native')
 RUNNER_REL = Path('candidates/v4/repairs/gameplay/s8-egg-care/run_s8_field.py')
+WF1_REL = Path('candidates/v4/repairs/gameplay/wf1-wheat-fertilize')
+SOURCE_FILES = (
+    COMPONENT_REL / 'run_field.py',
+    COMPONENT_REL / 'materialize.py',
+    COMPONENT_REL / 'entry.py',
+    RUNNER_REL,
+    WF1_REL / 'r04_wheat_fert.py',
+    WF1_REL / 'wf1_current_adapter.py',
+    WF1_REL / 'WF1-CURRENT-NATIVE-FIELD-RECEIPT.json',
+)
 DEFAULT_SEEDS = (2026091201, 2026091207, 2026091213, 2026091219)
 
 
@@ -75,25 +85,35 @@ def snapshot_runtime(runtime: Path, snapshot: Path) -> str:
     return before
 
 
-def bind_frozen_harness(control_runtime: Path) -> tuple[dict, Path, Path]:
-    """Require this executable harness to be the exact one present in control."""
-    frozen_here = Path(control_runtime).resolve() / COMPONENT_REL
-    hashes = {}
-    for name in ('run_field.py', 'materialize.py', 'entry.py'):
-        live = HERE / name
-        frozen = frozen_here / name
-        if not live.is_file() or not frozen.is_file():
-            raise ValueError(f'missing WF1 harness source: {name}')
-        live_hash = _sha256(live)
-        frozen_hash = _sha256(frozen)
-        if live_hash != frozen_hash:
-            raise ValueError(f'WF1 harness source differs from control snapshot: {name}')
-        hashes[name] = frozen_hash
-    runner = Path(control_runtime).resolve() / RUNNER_REL
-    if not runner.is_file():
-        raise ValueError('control snapshot is missing native field runner')
-    hashes['native_runner.py'] = _sha256(runner)
-    return hashes, frozen_here / 'materialize.py', runner
+def snapshot_harness_source(snapshot_root: Path) -> dict[str, str]:
+    """Freeze every repo-source byte used by the WF1 field harness."""
+    snapshot_root = Path(snapshot_root).resolve()
+    if snapshot_root.exists():
+        raise FileExistsError(snapshot_root)
+    before = {}
+    for rel in SOURCE_FILES:
+        source = SOURCE_ROOT / rel
+        if not source.is_file():
+            raise FileNotFoundError(source)
+        before[rel.as_posix()] = _sha256(source)
+    try:
+        for rel in SOURCE_FILES:
+            source = SOURCE_ROOT / rel
+            target = snapshot_root / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+    except Exception:
+        shutil.rmtree(snapshot_root, ignore_errors=True)
+        raise
+    after = {rel.as_posix(): _sha256(SOURCE_ROOT / rel) for rel in SOURCE_FILES}
+    copied = {rel.as_posix(): _sha256(snapshot_root / rel) for rel in SOURCE_FILES}
+    if before != after:
+        shutil.rmtree(snapshot_root, ignore_errors=True)
+        raise RuntimeError('WF1 harness source changed while snapshotting')
+    if before != copied:
+        shutil.rmtree(snapshot_root, ignore_errors=True)
+        raise RuntimeError('frozen WF1 harness source differs from authenticated source')
+    return copied
 
 
 def parse_seed_set(raw: str) -> tuple[int, ...]:
@@ -204,9 +224,11 @@ def main() -> int:
 
     control_runtime = output / 'materialized-base'
     control_digest = snapshot_runtime(runtime, control_runtime)
-    harness_hashes, frozen_materializer, frozen_runner = bind_frozen_harness(control_runtime)
+    source_snapshot = output / 'frozen-source'
+    source_hashes = snapshot_harness_source(source_snapshot)
 
     candidate_runtime = output / 'materialized-wf1'
+    frozen_materializer = source_snapshot / COMPONENT_REL / 'materialize.py'
     materializer = load(frozen_materializer, 'wf1_v5_materializer')
     materialization = materializer.materialize(
         control_runtime, candidate_runtime,
@@ -217,6 +239,7 @@ def main() -> int:
         raise RuntimeError('control package drifted after materialization')
     candidate_digest = package_digest(candidate_runtime)
 
+    frozen_runner = source_snapshot / RUNNER_REL
     runner = load(frozen_runner, 'wf1_v5_native_runner')
     entry = candidate_runtime / 'wf1_v5_entry.py'
     seeds = parse_seed_set(args.seeds)
@@ -282,7 +305,7 @@ def main() -> int:
         'materialization': materialization,
         'control_package_sha256': control_digest,
         'candidate_package_sha256': candidate_digest,
-        'harness_sha256': harness_hashes,
+        'source_snapshot_sha256': source_hashes,
         'seeds': list(seeds),
         'cells': cells,
         'validation': validation,

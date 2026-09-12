@@ -150,24 +150,21 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                 field.snapshot_runtime(runtime, runtime / 'snapshot')
             self.assertFalse((runtime / 'snapshot').exists())
 
-    def test_field_harness_must_match_control_snapshot(self):
+    def test_field_source_snapshot_is_complete_and_immutable(self):
         with tempfile.TemporaryDirectory() as tmp:
-            control = Path(tmp) / 'control'
-            frozen = control / field.COMPONENT_REL
-            runner = control / field.RUNNER_REL
-            frozen.mkdir(parents=True)
-            runner.parent.mkdir(parents=True)
-            for name in ('run_field.py', 'materialize.py', 'entry.py'):
-                shutil.copy2(HERE / name, frozen / name)
-            runner.write_text('# frozen runner\n')
-            hashes, materializer_path, runner_path = field.bind_frozen_harness(control)
-            self.assertEqual(materializer_path, frozen / 'materialize.py')
-            self.assertEqual(runner_path, runner)
-            self.assertEqual(hashes['entry.py'], field._sha256(HERE / 'entry.py'))
-            self.assertEqual(hashes['native_runner.py'], field._sha256(runner))
-            (frozen / 'entry.py').write_text('# drift\n')
-            with self.assertRaisesRegex(ValueError, 'differs from control snapshot: entry.py'):
-                field.bind_frozen_harness(control)
+            frozen = Path(tmp) / 'frozen-source'
+            hashes = field.snapshot_harness_source(frozen)
+            self.assertEqual(set(hashes), {rel.as_posix() for rel in field.SOURCE_FILES})
+            for rel in field.SOURCE_FILES:
+                source = field.SOURCE_ROOT / rel
+                copied = frozen / rel
+                self.assertTrue(copied.is_file(), rel)
+                self.assertEqual(field._sha256(source), hashes[rel.as_posix()])
+                self.assertEqual(field._sha256(copied), hashes[rel.as_posix()])
+            copied_entry = frozen / field.COMPONENT_REL / 'entry.py'
+            before = field._sha256(field.HERE / 'entry.py')
+            copied_entry.write_text('# frozen copy changed\n')
+            self.assertEqual(field._sha256(field.HERE / 'entry.py'), before)
 
     def test_field_seed_design_is_unique_and_canonical(self):
         self.assertEqual(field.parse_seed_set('9,3,7'), (3, 7, 9))
