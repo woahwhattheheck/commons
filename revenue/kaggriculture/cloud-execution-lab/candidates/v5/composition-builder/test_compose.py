@@ -177,6 +177,30 @@ class CompositionTests(unittest.TestCase):
                 output=self.root / "out",
             )
 
+    def test_source_symlink_escape_fails_closed_even_with_matching_hash(self):
+        outside = self.root / "outside-seller.py"
+        outside.write_bytes(b"outside-but-hash-matches\n")
+        link = self.src / "linked-seller.py"
+        try:
+            link.symlink_to(outside)
+        except OSError as exc:
+            self.skipTest(f"symlink unavailable: {exc}")
+
+        data = json.loads(self.manifest().read_text())
+        entry = data["components"]["joint"]["files"][0]
+        entry["source_path"] = "linked-seller.py"
+        entry["sha256"] = h(b"outside-but-hash-matches\n")
+        path = self.root / "symlink-escape.json"
+        path.write_text(json.dumps(data))
+
+        with self.assertRaisesRegex(compose.CompositionError, "source escapes source root"):
+            compose.build(
+                baseline=self.base,
+                source_root=self.src,
+                manifest_path=path,
+                output=self.root / "out",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
