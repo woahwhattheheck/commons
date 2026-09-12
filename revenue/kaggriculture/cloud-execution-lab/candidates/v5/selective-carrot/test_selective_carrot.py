@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
 """Discriminating mechanics/strategy cases, independent of the runtime hooks."""
 import unittest
+from pathlib import Path
+from build import entry_bytes
 from selective_carrot import CropChoice, absorption, crop_lot
 
 
@@ -28,6 +30,14 @@ def observation():
 
 
 class StrategyCases(unittest.TestCase):
+    def test_capacity_profile_changes_only_constructor_argument(self):
+        original = (Path(__file__).parent/'choice_entry.py').read_bytes()
+        self.assertEqual(entry_bytes(4), original)
+        for capacity in (8,12):
+            transformed = entry_bytes(capacity)
+            self.assertEqual(transformed.replace(f'CropChoice(market_price, max_active={capacity})'.encode(),
+                                                b'CropChoice(market_price)'), original)
+
     def test_age_three_equal_output_and_early_drop(self):
         p = crop_lot(timeline(drop=80), 0, 0, (2,2))
         self.assertEqual((p['quantity'], p['harvest_step'], p['sale_step']), (3,74,80))
