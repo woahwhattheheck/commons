@@ -95,7 +95,9 @@ def compose_config(text: str) -> str:
 
 
 def compose_build(text: str) -> str:
-    if "'eod_capacity_rescue.py'" in text or "checks/test_eod_capacity_rescue.py" in text:
+    if ("'eod_capacity_rescue.py'" in text
+            or "checks/test_eod_capacity_rescue.py" in text
+            or "checks/test_eod_capacity_rescue_runtime.py" in text):
         raise ValueError('build_integrated.py already maps EOD rescue')
     text = _replace_once(
         text,
@@ -107,8 +109,9 @@ def compose_build(text: str) -> str:
         text,
         "    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'\n",
         "    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'\n"
-        "    mapping['checks/test_eod_capacity_rescue.py']='test_eod_capacity_rescue.py'\n",
-        'build post-overflow focused check map',
+        "    mapping['checks/test_eod_capacity_rescue.py']='test_eod_capacity_rescue.py'\n"
+        "    mapping['checks/test_eod_capacity_rescue_runtime.py']='test_eod_capacity_rescue_runtime.py'\n",
+        'build post-overflow focused/runtime check map',
     )
     return text
 
@@ -116,9 +119,10 @@ def compose_build(text: str) -> str:
 def materialize(root: Path, output: Path) -> dict[str, Path]:
     root = root.resolve(strict=True)
     helper = root / 'eod_capacity_rescue.py'
-    test = root / 'test_eod_capacity_rescue.py'
-    if not helper.is_file() or not test.is_file():
-        raise FileNotFoundError('carrier helper and focused test must already exist at root')
+    focused_test = root / 'test_eod_capacity_rescue.py'
+    runtime_test = root / 'test_eod_capacity_rescue_runtime.py'
+    if not helper.is_file() or not focused_test.is_file() or not runtime_test.is_file():
+        raise FileNotFoundError('carrier helper plus focused/runtime tests must already exist at root')
     if output.exists():
         raise FileExistsError(f'output already exists: {output}')
     output.mkdir(parents=True)

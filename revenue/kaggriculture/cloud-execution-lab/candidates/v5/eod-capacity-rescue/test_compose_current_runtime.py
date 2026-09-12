@@ -45,8 +45,6 @@ class ComposeEODCapacityRescue(unittest.TestCase):
         self.assertIn('if features.eod_capacity_rescue and completed:', rendered)
         self.assertIn("self.diagnostics['eod_capacity_rescue'] = report", rendered)
         self.assertIn("_checkpoint_finalizer(obs, returned, 'eod_capacity_rescue')", rendered)
-        # The EOD call consumes the current `returned` variable after overflow;
-        # there is no second overflow invocation after the EOD stage.
         eod = rendered.index('features.eod_capacity_rescue')
         self.assertNotIn('overflow_safe_drop.transform', rendered[eod:])
         with self.assertRaises(ValueError):
@@ -66,7 +64,7 @@ class ComposeEODCapacityRescue(unittest.TestCase):
         with self.assertRaises(ValueError):
             compose_config(json.dumps({'overflow_safe_drop': True}))
 
-    def test_build_maps_runtime_and_check_after_overflow_sources_exist(self):
+    def test_build_maps_runtime_and_both_eod_checks_after_overflow_sources(self):
         source = """              'exec_pace_runtime.py','town_procurement.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
     mapping['overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
     mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'
@@ -74,6 +72,7 @@ class ComposeEODCapacityRescue(unittest.TestCase):
         rendered = compose_build(source)
         self.assertIn("'eod_capacity_rescue.py'", rendered)
         self.assertIn("checks/test_eod_capacity_rescue.py", rendered)
+        self.assertIn("checks/test_eod_capacity_rescue_runtime.py", rendered)
         self.assertIn("overflow_safe_drop.py", rendered)
         with self.assertRaises(ValueError):
             compose_build(rendered)
