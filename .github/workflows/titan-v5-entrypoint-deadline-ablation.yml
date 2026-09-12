@@ -1,0 +1,89 @@
+name: titan-v5-entrypoint-deadline-ablation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v5-entrypoint-deadline-ablation.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/entrypoint-deadline-ablation/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-entrypoint-deadline-ablation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-contract:
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Assert exact authored head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit contracts normal and optimized
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/entrypoint-deadline-ablation
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m py_compile entrypoint_deadline_ablation.py test_entrypoint_deadline_ablation.py
+          python -B -m unittest -v test_entrypoint_deadline_ablation.py
+          python -O -B -m unittest -v test_entrypoint_deadline_ablation.py
+      - name: Verify exact submitted lineage and materialize treatment
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/entrypoint-deadline-ablation
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        shell: bash
+        run: |
+          set -euo pipefail
+          V31="$RUNNER_TEMP/v31-main.py"
+          V4="$RUNNER_TEMP/v4-main.py"
+          PRE="$RUNNER_TEMP/pre-guard-main.py"
+          OUT="$RUNNER_TEMP/v4-no-entrypoint-guard-main.py"
+          RECEIPT="$RUNNER_TEMP/entrypoint-deadline-ablation-receipt.json"
+
+          git show a90d888f03987ef0b35cfd20ec3519c6144db08a:revenue/kaggriculture/cloud-execution-lab/main.py > "$V31"
+          git show 4af1113154e78c662780e6658cd920daac7902e3:revenue/kaggriculture/cloud-execution-lab/main.py > "$V4"
+          git show 784194262d1f448e5012c16503e8c2811e551c97:revenue/kaggriculture/cloud-execution-lab/main.py > "$PRE"
+
+          python -B entrypoint_deadline_ablation.py verify \
+            --v31 "$V31" --v4 "$V4" --pre-guard "$PRE"
+          python -B entrypoint_deadline_ablation.py materialize \
+            --v31 "$V31" --v4 "$V4" --pre-guard "$PRE" \
+            --out "$OUT" --receipt "$RECEIPT"
+
+          python -B -m py_compile "$OUT"
+          grep -Fq 'class FinalPressureAgent' "$OUT"
+          grep -Fq 'town_procurement.observe(receipt_obs)' "$OUT"
+          grep -Fq 'return instance.act(observation, cfg, entry_started=entry_started)' "$OUT"
+          ! grep -Fq 'timer = deadline._DeadlineTimer(remaining)' "$OUT"
+          ! grep -Fq 'except deadline.DeadlineExceeded as error:' "$OUT"
+          python - "$RECEIPT" <<'PY'
+          import json, pathlib, sys
+          receipt = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert receipt["schema"] == "titan-v5-v31-v4-entrypoint-deadline-ablation-v1"
+          assert receipt["production_activation"] is False
+          assert receipt["input_source_commit"] == "4af1113154e78c662780e6658cd920daac7902e3"
+          assert receipt["authority"]["v31_source_commit"] == "a90d888f03987ef0b35cfd20ec3519c6144db08a"
+          assert receipt["authority"]["pre_guard_commit"] == "784194262d1f448e5012c16503e8c2811e551c97"
+          PY
+      - name: Assert repository stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          find revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/entrypoint-deadline-ablation -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --porcelain)"
