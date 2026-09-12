@@ -130,6 +130,26 @@ class OverflowSafeDropTests(unittest.TestCase):
         self.assertIs(result, action)
         self.assertEqual(report["reason"], "ambiguous_worker_inventory")
 
+    def test_zero_valued_extra_inventory_key_is_identity(self):
+        observation = obs(shed={"MELON": 99}, inventories=[{"MELON": 4, "WOOL": 0}])
+        action = selected(farmer=["DROP"], market=[["SELL", "MELON", 2]])
+        result, report = transform(action, observation, {})
+        self.assertIs(result, action)
+        self.assertEqual(report["reason"], "ambiguous_worker_inventory")
+
+        # Predecessor killer: engine DROP deletes even the zero-valued WOOL key,
+        # while the previously admitted partial PLACE would have preserved it.
+        base_farm = deepcopy(observation["farms"][0])
+        base_private = deepcopy(observation["private"])
+        unsafe_farm = deepcopy(base_farm)
+        unsafe_private = deepcopy(base_private)
+        m._apply_unit_action(base_farm, base_private, 0, ["DROP"], 10, 20, 24, 100)
+        m._apply_unit_action(unsafe_farm, unsafe_private, 0, ["PLACE", "MELON", 1], 10, 20, 24, 100)
+        self.assertEqual(base_private["shed"], unsafe_private["shed"])
+        self.assertEqual(base_private["inventories"][0], {})
+        self.assertEqual(unsafe_private["inventories"][0], {"MELON": 3, "WOOL": 0})
+        self.assertNotEqual(base_private, unsafe_private)
+
     def test_operating_inputs_are_out_of_scope(self):
         for item in ("WHEAT", "FERTILIZER"):
             with self.subTest(item=item):
@@ -187,6 +207,9 @@ class OverflowSafeDropTests(unittest.TestCase):
 
         action = selected(farmer=["DROP"], market=[["SELL", "MELON", 2]])
         for cfg, reason in (([], "malformed_input"),
+                            ("", "malformed_input"),
+                            (0, "malformed_input"),
+                            (False, "malformed_input"),
                             ({"shedCapacity": 99}, "outside_standard_config"),
                             ({"boardSize": 8}, "outside_standard_config"),
                             ({"maxMarketOrdersPerTurn": 9}, "outside_standard_config")):
