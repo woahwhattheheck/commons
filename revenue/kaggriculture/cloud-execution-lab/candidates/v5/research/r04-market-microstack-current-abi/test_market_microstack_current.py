@@ -308,32 +308,22 @@ class MarketMicrostackTests(unittest.TestCase):
         self.assertTrue(report["on_tape"])
         self.assertFalse(report["l3_suppressed"])
 
-    def test_prior_debt_settles_even_when_l3_suppresses_new_reservation(self):
+    def test_existing_shared_debt_settles_when_l3_suppresses_new_reservation(self):
         component = R04MarketMicrostackCurrentABI(
             sale_window=True, no_late_sale_advance=True
         )
         self._drive_opening(component, same_rival=False)
-        future = future_range(
-            648, 655, market_by_step={648: [["SELL", "CARROT", 3]]}
-        )
-        first, report = component.sale_window_transform(
-            observation(647, same_rival=False),
-            None,
-            action(),
-            post_unit_shed=shed(CARROT=3),
-            future_actions=future,
-            queued_commands=[],
-        )
-        self.assertEqual(first["market"], [["SELL", "CARROT", 3]])
-        self.assertEqual(report["debts_after"], {648: {"CARROT": 3}})
-
-        second, report = component.sale_window_transform(
+        # 648 is itself a 72-step route boundary, so H8 cannot naturally create
+        # a 647->648 reservation. Inject an authenticated shared-ledger debt to
+        # test the actual invariant: L3 suppresses *new* work, never settlement.
+        component.replace_reservation_debts(0, {648: {"CARROT": 3}})
+        result, report = component.sale_window_transform(
             observation(648, same_rival=False),
             None,
             action(market=[["SELL", "CARROT", 3]]),
             post_unit_shed=shed(CARROT=3),
         )
-        self.assertEqual(second["market"], [])
+        self.assertEqual(result["market"], [])
         self.assertTrue(report["l3_suppressed"])
         self.assertEqual(component.reservation_debts(0), {})
 
