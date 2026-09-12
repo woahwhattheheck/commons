@@ -1,29 +1,48 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Evidence-only current-ABI H3/S420 sale-timing experiment for TITAN V5.
+"""Evidence-only current-ABI H3/S420 source composer for TITAN V5.
 
-This module does not define a second seller. It temporarily narrows the
-already-selected ``frozen_selected`` seller's baseline lookahead from the
-current inherited horizon to three turns and, for the combined H3+S420 arm,
-vetoes only optional temporal sale advances at/after an absolute step.
+This module deliberately reuses the already-landed canonical H3/S420 source
+transform instead of defining a second sale-timing theorem.
 
-The adapter deliberately preserves the current seller's:
-* producer route, public event extensions and feasibility checks;
-* inherited/reference sale schedule;
-* minimum-now funding floor;
-* forced-feasibility rescue;
-* sale materializer and every non-sale action.
+Arms:
+* control: current ``frozen_selected.py`` bytes unchanged;
+* h3: current source with only the inherited baseline HORIZON shadowed to 3;
+* h3_s420: exact canonical ``compose_current_h3s420.py`` rewrite semantics
+  applied to the current pinned ``frozen_selected.py`` postimage.
+
+Canonical S420 semantics are strict: at step >= 420 the entire *new plan
+selection* block is skipped. Inherited/base SELL rows and already-planned due
+quantities still flow through the untouched materialization tail. There is no
+equal-total-only exception and no forced-feasibility bypass.
 
 Production defaults/configuration are never changed by this research helper.
 """
 
 from __future__ import annotations
 
-import copy
-from collections.abc import Sequence
-from typing import Any
+import hashlib
+from pathlib import Path
+import types
+from typing import Any, Callable
 
 BASELINE_HORIZON = 3
-SUPPRESS_AFTER_STEP = 420
+SUPPRESS_NEW_PLANS_AFTER = 420
+
+CURRENT_FROZEN_SELECTED_GIT_BLOB = "6a95505388ea1b5eba38bd1f927a2a2bf084490c"
+CANONICAL_COMPOSER_GIT_BLOB = "7c5778b4d6d7c47f8feca7e800fc8093267b66f8"
+CANONICAL_COMPOSER_RELATIVE = Path(
+    "candidates/v4/research/sale-window-engagement/compose_current_h3s420.py"
+)
+
+_IMPORT_MARKER = (
+    "from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger\n"
+)
+
+
+def git_blob(data: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()
 
 
 def _plain_int(value: Any) -> int | None:
@@ -32,169 +51,77 @@ def _plain_int(value: Any) -> int | None:
     return value
 
 
-def _normalized_plan(plan: Any) -> tuple[tuple[int, int], ...]:
-    """Normalize one exact dated quantity schedule or raise ValueError."""
-    if not isinstance(plan, Sequence) or isinstance(plan, (str, bytes, bytearray)):
-        raise ValueError("plan must be a sequence")
-    merged: dict[int, int] = {}
-    for row in plan:
-        if (not isinstance(row, Sequence)
-                or isinstance(row, (str, bytes, bytearray))
-                or len(row) != 2):
-            raise ValueError("plan row must be (step, quantity)")
-        step, quantity = row
-        if (_plain_int(step) is None or _plain_int(quantity) is None
-                or step < 0 or quantity < 0):
-            raise ValueError("plan values must be nonnegative plain integers")
-        merged[step] = merged.get(step, 0) + quantity
-    return tuple((step, merged[step]) for step in sorted(merged) if merged[step])
+def _load_canonical_rewrite(composer_path: Path) -> Callable[[str], str]:
+    """Authenticate and load the canonical H3/S420 source rewrite once."""
+    data = composer_path.read_bytes()
+    actual = git_blob(data)
+    if actual != CANONICAL_COMPOSER_GIT_BLOB:
+        raise ValueError(
+            "canonical H3/S420 composer drift; explicit source review required"
+        )
+    module = types.ModuleType("_titan_canonical_h3s420")
+    module.__file__ = str(composer_path)
+    exec(compile(data, str(composer_path), "exec"), module.__dict__)
+    rewrite = module.__dict__.get("_rewrite_source")
+    if not callable(rewrite):
+        raise ValueError("canonical H3/S420 composer lost _rewrite_source")
+    return rewrite
 
 
-def cumulative_advance(reference: Any, candidate: Any) -> dict[str, int] | None:
-    """Return the first prefix where candidate moves equal total units earlier.
-
-    A total-quantity mismatch is deliberately non-comparable (``None``): this
-    experiment must not redefine the current seller's quantity/feasibility
-    semantics. This is the same cumulative-prefix notion used by EXEC-PACE,
-    but without EXEC-PACE's price-trend predicate.
-    """
-    ref = _normalized_plan(reference)
-    cand = _normalized_plan(candidate)
-    if sum(q for _t, q in ref) != sum(q for _t, q in cand):
-        return None
-    ref_map = dict(ref)
-    cand_map = dict(cand)
-    ref_seen = 0
-    cand_seen = 0
-    for step in sorted(set(ref_map) | set(cand_map)):
-        ref_seen += ref_map.get(step, 0)
-        cand_seen += cand_map.get(step, 0)
-        if cand_seen > ref_seen:
-            return {
-                "step": step,
-                "candidate_cumulative": cand_seen,
-                "reference_cumulative": ref_seen,
-                "delta": cand_seen - ref_seen,
-            }
-    return None
-
-
-def suppress_optional_late_advance(
-    step: Any,
-    reference: Any,
-    candidate: Any,
-    info: Any,
-    *,
-    threshold: int = SUPPRESS_AFTER_STEP,
-) -> tuple[Any, dict]:
-    """Veto one optional current-seller temporal advance at/after ``threshold``.
-
-    Forced-feasibility is never touched. Malformed/non-comparable schedules
-    fail open to the current seller. On a veto the exact reference schedule is
-    returned and ``accepted=False`` makes the existing ``seller_choice_rank``
-    path ineligible instead of creating a no-op winning candidate.
-    """
-    current_info = copy.deepcopy(info) if isinstance(info, dict) else {}
-    report = {
-        "enabled": True,
-        "threshold": threshold,
-        "blocked": False,
-        "reason": "before-threshold",
-        "advance": None,
-    }
-    current_info["microstack_s420"] = report
-
-    plain_step = _plain_int(step)
-    plain_threshold = _plain_int(threshold)
-    if plain_step is None or plain_threshold is None or plain_threshold < 0:
-        report["reason"] = "invalid-clock-or-threshold"
-        return candidate, current_info
-    if plain_step < plain_threshold:
-        return candidate, current_info
-    if current_info.get("forced_feasibility") is True:
-        report["reason"] = "forced-feasibility-bypass"
-        return candidate, current_info
-    try:
-        advance = cumulative_advance(reference, candidate)
-    except (TypeError, ValueError, OverflowError):
-        report["reason"] = "noncomparable-plan"
-        return candidate, current_info
-    report["advance"] = advance
-    if advance is None:
-        report["reason"] = "no-temporal-advance"
-        return candidate, current_info
-
-    report["blocked"] = True
-    report["reason"] = "late-optional-temporal-advance"
-    current_info["accepted"] = False
-    current_info["acceptance_score"] = 0.0
-    current_info["acceptance_rule"] = "microstack_s420_block"
-    return copy.deepcopy(reference), current_info
-
-
-class _Installation:
-    def __init__(self, module: Any, original_horizon: Any, original_optimize_lot: Any):
-        self.module = module
-        self.original_horizon = original_horizon
-        self.original_optimize_lot = original_optimize_lot
-        self.active = True
-
-    def restore(self) -> None:
-        if not self.active:
-            return
-        self.module.HORIZON = self.original_horizon
-        self.module.optimize_lot = self.original_optimize_lot
-        self.active = False
-
-
-def install(
-    frozen_selected_module: Any,
-    *,
-    baseline_horizon: int = BASELINE_HORIZON,
-    suppress_after_step: int | None = None,
-) -> _Installation:
-    """Install one isolated experiment arm into the current seller module.
-
-    ``suppress_after_step=None`` is the H3-only arm. Supplying literal ``420``
-    is the H3+S420 arm used by the recovered MICROSTACK re-gate.
-
-    The caller owns process isolation and must call ``restore()`` before using
-    another arm in the same interpreter.
-    """
-    horizon = _plain_int(baseline_horizon)
-    if horizon is None or not 1 <= horizon <= 8:
-        raise ValueError("baseline_horizon must be a plain integer in 1..8")
-    if not hasattr(frozen_selected_module, "HORIZON"):
-        raise ValueError("current frozen_selected module has no HORIZON seam")
-    original_optimize = getattr(frozen_selected_module, "optimize_lot", None)
-    if not callable(original_optimize):
-        raise ValueError("current frozen_selected module has no optimize_lot seam")
-
-    if suppress_after_step is not None:
-        threshold = _plain_int(suppress_after_step)
-        if threshold is None or threshold < 0:
-            raise ValueError("suppress_after_step must be a nonnegative plain integer")
-    else:
-        threshold = None
-
-    installation = _Installation(
-        module=frozen_selected_module,
-        original_horizon=frozen_selected_module.HORIZON,
-        original_optimize_lot=original_optimize,
+def _compose_h3(source: bytes) -> bytes:
+    text = source.decode("utf-8")
+    if text.count(_IMPORT_MARKER) != 1:
+        raise ValueError("selected-sell import marker drift")
+    constants = (
+        _IMPORT_MARKER
+        + "\n# H3 current-ABI experiment; evidence-only and default-off.\n"
+        + f"HORIZON = {BASELINE_HORIZON}\n"
     )
-    frozen_selected_module.HORIZON = horizon
+    result = text.replace(_IMPORT_MARKER, constants, 1)
+    compile(result, "<h3-current-frozen-selected>", "exec")
+    return result.encode("utf-8")
 
-    if threshold is not None:
-        def wrapped_optimize_lot(*args: Any, **kwargs: Any):
-            plan, info = original_optimize(*args, **kwargs)
-            return suppress_optional_late_advance(
-                kwargs.get("now"),
-                kwargs.get("reference"),
-                plan,
-                info,
-                threshold=threshold,
-            )
 
-        frozen_selected_module.optimize_lot = wrapped_optimize_lot
+def compose_current_frozen(
+    source: bytes,
+    *,
+    arm: str,
+    canonical_composer_path: Path,
+) -> bytes:
+    """Return one source-pinned control/H3/H3+S420 current experiment arm.
 
-    return installation
+    The current source must be the exact reviewed postimage. ``h3_s420`` then
+    applies the exact canonical source rewriter by authenticated composer blob,
+    so this carrier cannot silently evolve a second S420 interpretation.
+    """
+    if git_blob(source) != CURRENT_FROZEN_SELECTED_GIT_BLOB:
+        raise ValueError("current frozen_selected.py source drift; explicit rebase required")
+    if arm == "control":
+        return source
+    if arm == "h3":
+        return _compose_h3(source)
+    if arm == "h3_s420":
+        rewrite = _load_canonical_rewrite(canonical_composer_path)
+        result = rewrite(source.decode("utf-8")).encode("utf-8")
+        compile(result, "<h3s420-current-frozen-selected>", "exec")
+        return result
+    raise ValueError("arm must be one of: control, h3, h3_s420")
+
+
+def default_canonical_composer_path(lab_root: Path) -> Path:
+    """Resolve the one canonical composer from a cloud-execution-lab root."""
+    return lab_root / CANONICAL_COMPOSER_RELATIVE
+
+
+def canonical_semantics_receipt() -> dict[str, Any]:
+    """Small immutable receipt for runners and evidence manifests."""
+    return {
+        "baseline_horizon": BASELINE_HORIZON,
+        "suppress_new_plans_after": SUPPRESS_NEW_PLANS_AFTER,
+        "canonical_composer_git_blob": CANONICAL_COMPOSER_GIT_BLOB,
+        "current_frozen_selected_git_blob": CURRENT_FROZEN_SELECTED_GIT_BLOB,
+        "semantics": (
+            "all new plan selection suppressed at/after threshold; "
+            "inherited/base SELL rows and already-planned due quantities remain materialized"
+        ),
+    }
