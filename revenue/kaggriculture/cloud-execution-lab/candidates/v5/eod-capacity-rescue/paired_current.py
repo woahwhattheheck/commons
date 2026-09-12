@@ -5,6 +5,10 @@
 The candidate arm changes exactly one archive member: TITAN-CONFIG.json,
 `eod_capacity_rescue: false -> true`.  Runtime/helper bytes stay identical.
 Trace hashes provide an engagement screen before any promotion decision.
+
+The shared paired-evaluator helper is evidence authority, not an ambient import.
+This runner therefore authenticates its exact Git blob from one captured read,
+executes only those captured bytes, and does so before creating the output tree.
 """
 from __future__ import annotations
 
@@ -17,6 +21,10 @@ import math
 from pathlib import Path
 import sys
 import tempfile
+import types
+
+PINNED_SHARED_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+SHARED_REL = Path('cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py')
 
 
 def load(path: Path, name: str):
@@ -31,6 +39,59 @@ def load(path: Path, name: str):
 
 def digest_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def git_blob_bytes(data: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()
+
+
+def _regular_bytes(path: Path, label: str) -> bytes:
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f'{label} must be a regular file')
+    try:
+        return path.read_bytes()
+    except OSError as exc:
+        raise ValueError(f'cannot read {label}: {path}') from exc
+
+
+def load_pinned_shared(path: Path, name: str = 'eod_rescue_shared'):
+    """Load the shared evaluator from one authenticated byte snapshot only."""
+    raw = _regular_bytes(path, 'joint-liquidity paired helper')
+    blob = git_blob_bytes(raw)
+    if blob != PINNED_SHARED_BLOB:
+        raise ValueError(
+            f'joint-liquidity paired helper identity drift: expected '
+            f'{PINNED_SHARED_BLOB}, got {blob}'
+        )
+    try:
+        source = raw.decode('utf-8')
+    except UnicodeDecodeError as exc:
+        raise ValueError('joint-liquidity paired helper is not UTF-8') from exc
+    module = types.ModuleType(name)
+    module.__file__ = str(path)
+    sys.modules[name] = module
+    try:
+        code = compile(source, str(path), 'exec')
+        exec(code, module.__dict__)
+    except Exception:
+        sys.modules.pop(name, None)
+        raise
+    return module, {
+        'git_blob': blob,
+        'sha256': digest_bytes(raw),
+        'bytes': len(raw),
+        'path': SHARED_REL.as_posix(),
+        'load_mode': 'single-read-authenticated-compile-exec',
+    }
+
+
+def prepare_shared_authority(root: Path, output: Path):
+    """Authenticate evidence helper before any evidence/output publication."""
+    if output.exists():
+        raise FileExistsError(output)
+    return load_pinned_shared(root / SHARED_REL)
 
 
 def treatment_members(members: dict[str, bytes]) -> tuple[dict[str, bytes], dict]:
@@ -96,11 +157,11 @@ def main() -> int:
     engine_dir = args.engine_dir.resolve(strict=True)
     baseline = args.baseline.resolve(strict=True)
     output = args.output.resolve()
-    if output.exists():
-        raise FileExistsError(output)
 
-    shared_path = root / 'cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py'
-    shared = load(shared_path, 'eod_rescue_shared')
+    # Evidence authority must be pinned before output creation. Stable tampering
+    # therefore cannot leave a partial directory or plausible-looking receipt.
+    shared, shared_authority = prepare_shared_authority(root, output)
+
     if shared.digest(baseline) != args.baseline_sha256:
         raise ValueError('Baseline archive differs from declared current package')
     baseline_members = shared.archive_members(baseline)
@@ -197,6 +258,7 @@ def main() -> int:
         'baseline_member_sha256': baseline_member_identity,
         'candidate_identity': candidate_identity,
         'changed_members': ['TITAN-CONFIG.json'],
+        'shared_source_authority': shared_authority,
         'engine_sha256': engine_hashes,
         'harness': harness,
         'opponent_receipts': opponent_receipts,
