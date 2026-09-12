@@ -85,7 +85,7 @@ blob from an **external exact-head authority** (for example the GitHub contents
 or tree entry for the commit being tested) and independently confirm the
 checkout file matches it. Do not create the expected value by hashing the same
 mutable file and then treating that self-derived value as provenance. For this
-reviewed runner, `RUNNER_BLOB=0370b579978996daf2852a0cac12ee88e3595506`.
+reviewed runner, `RUNNER_BLOB=1d9526ad8357dfd5c3f1a8b133592565b0bf3d3a`.
 Launch the trusted parent with isolated Python startup (`-I -S`) as shown below;
 this prevents ambient `PYTHONPATH`/`sitecustomize` hooks from gaining authority
 before the externally authenticated source starts.
@@ -96,7 +96,7 @@ python check_kinetic.py --native-root "$B" --report /tmp/kinetic-check.json
 python -O check_kinetic.py --native-root "$B" --report /tmp/kinetic-check-O.json
 python run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants.json
 python -O run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants-O.json
-RUNNER_BLOB=0370b579978996daf2852a0cac12ee88e3595506
+RUNNER_BLOB=1d9526ad8357dfd5c3f1a8b133592565b0bf3d3a
 python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --output /tmp/kinetic-games.json
 python -I -S -O -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --order-offset 1 --output /tmp/kinetic-games-O.json
 python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17 --repetitions 1 --instrument --output /tmp/kinetic-engagement.json
@@ -120,13 +120,14 @@ It authenticates the pinned SOURCE manifest and every declared runtime member
 once, captures those bytes, and then stops using that tree as execution authority.
 Python modules are imported from a captured-byte meta-path loader under a
 non-filesystem virtual `__file__` root. Captured runtime file reads—including the
-reference engine JSON—are served from the same in-memory byte map, and the
-reference loader, engine, agent, mechanics and other local modules execute from
-that capture. Thus a same-UID process replacing runtime source/data paths after
-capture cannot change the bytes executed or read by the game. The filesystem
-transport can still be mutated before/during capture, but such mutations must
-match the pinned manifest (or the exact candidate mechanics SHA) or the child
-fails before runtime authority is established.
+reference engine JSON—are served from the same in-memory byte map, with normal
+text-mode locale encoding semantics preserved, and the reference loader, engine,
+agent, mechanics and other local modules execute from that capture. Thus a
+same-UID process replacing runtime source/data paths after capture cannot change
+the bytes executed or read by the game. The filesystem transport can still be
+mutated before/during capture, but such mutations must match the pinned manifest
+(or the exact candidate mechanics SHA) or the child fails before runtime
+authority is established.
 
 The game runner starts a fresh process per game from captured control bytes,
 preserves all raw market and unit rows, records full stream hashes and per-call
