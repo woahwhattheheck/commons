@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from pathlib import Path
+import sys
+import tempfile
 import unittest
+from unittest import mock
 
 import outer_wrappers_current as current
 
@@ -68,6 +72,45 @@ class B9H3CCurrentABITests(unittest.TestCase):
         self.assertEqual(current.git_blob_id(current.H3C_PATH), current.H3C_GIT_BLOB)
         self.assertEqual(current.B9_GIT_BLOB, "ed8d6923541e700c3a0ae4b93695bbd56455a3b6")
         self.assertEqual(current.H3C_GIT_BLOB, "2044d6cf1e0c51f95027229863f910aa43ac7008")
+        self.assertTrue(current.B9_PATH.is_file())
+        self.assertTrue(current.H3C_PATH.is_file())
+
+    def test_authenticated_bytes_execute_even_if_path_disappears_after_read(self):
+        module_name = "_titan_v5_self_deleting_donor_test"
+        raw = b"VALUE = 73\n"
+        expected = current._git_blob_id_bytes(raw)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "donor.py"
+            path.write_bytes(raw)
+            real_read_bytes = Path.read_bytes
+            reads = []
+
+            def read_then_delete(candidate):
+                data = real_read_bytes(candidate)
+                reads.append(Path(candidate))
+                Path(candidate).unlink()
+                return data
+
+            try:
+                with mock.patch.object(Path, "read_bytes", read_then_delete):
+                    module = current._load_pinned(module_name, path, expected)
+                self.assertEqual(module.VALUE, 73)
+                self.assertEqual(reads, [path])
+                self.assertFalse(path.exists())
+            finally:
+                sys.modules.pop(module_name, None)
+
+    def test_drifted_donor_bytes_fail_before_execution(self):
+        module_name = "_titan_v5_drifted_donor_test"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "donor.py"
+            path.write_text("raise AssertionError('must not execute')\n")
+            try:
+                with self.assertRaisesRegex(RuntimeError, "submitted donor drift"):
+                    current._load_pinned(module_name, path, "0" * 40)
+                self.assertNotIn(module_name, sys.modules)
+            finally:
+                sys.modules.pop(module_name, None)
 
     def test_flags_are_exact_bool_and_default_off_identity(self):
         adapter = current.B9H3CCurrentABI()
@@ -144,7 +187,6 @@ class B9H3CCurrentABITests(unittest.TestCase):
         collect = {"farmer": ["PASS"], "hands": [], "market": []}
         first, _ = adapter.transform(self.b9_observation(716), self.config(), collect)
         self.assertEqual(first["farmer"], ["COLLECT_FERTILIZER"])
-        # Same public step resets the donor episode state before processing again.
         identity = {"farmer": ["WATER"], "hands": [], "market": []}
         second, report = adapter.transform(self.b9_observation(716), self.config(), identity)
         self.assertIs(second, identity)
