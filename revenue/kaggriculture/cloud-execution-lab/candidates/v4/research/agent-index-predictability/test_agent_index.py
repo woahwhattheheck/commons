@@ -52,6 +52,27 @@ class AgentIndexPredictability(unittest.TestCase):
         with self.assertRaises(mod.DataError):
             mod.analyze([row(1, "A", 0, 1), row(1, "A", 0, 2), row(1, "A", 1, 3)])
 
+    def test_seed_identifier_type_collision_fails_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze(
+                [row(1, "A", 0, 10), row("1", "A", 1, 20)],
+                require_complete=True,
+            )
+
+    def test_opponent_identifier_type_collision_fails_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze(
+                [row(1, 7, 0, 10), row(1, "7", 1, 20)],
+                require_complete=True,
+            )
+
+    def test_mixed_identifier_primitive_types_fail_even_without_text_collision(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze(
+                [row(1, "A", 0, 10), row(1, "A", 1, 20),
+                 row("2", "A", 0, 30), row("2", "A", 1, 40)]
+            )
+
     def test_rewards_are_target_relative_by_seat(self):
         records = [
             {"seed": 1, "opponent": "A", "seat": 0, "rewards": [120, 20]},
@@ -71,6 +92,21 @@ class AgentIndexPredictability(unittest.TestCase):
     def test_huge_integer_overflow_fails_closed(self):
         with self.assertRaises(mod.DataError):
             mod.normalize_record(row(1, "A", 0, 10**1000), 0)
+
+    def test_derived_float_overflow_fails_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "rewards": [1e308, -1e308]}, 0)
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "score": 1e308, "opponent_score": -1e308}, 0)
+
+    def test_paired_delta_overflow_fails_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze(
+                [row(1, "A", 0, -1e308), row(1, "A", 1, 1e308)],
+                require_complete=True,
+            )
 
     def test_conflicting_margin_cannot_override_rewards(self):
         with self.assertRaises(mod.DataError):
@@ -105,6 +141,64 @@ class AgentIndexPredictability(unittest.TestCase):
         normalized = mod.normalize_record({"seed": 9922023, "opponent": "starter",
                                            "seat": 0, "rewards": [168572, 3550]}, 0)
         self.assertEqual(normalized["margin"], 165022)
+
+    def test_no_universal_65000_cap_is_smuggled_in(self):
+        normalized = mod.normalize_record({"seed": 9922023, "opponent": "starter",
+                                           "seat": 0, "rewards": [168572, 3550]}, 0,
+                                          authenticated_max_abs_margin=200000)
+        self.assertEqual(normalized["margin"], 165022)
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({"seed": 9922023, "opponent": "starter",
+                                  "seat": 0, "rewards": [168572, 3550]}, 0,
+                                 authenticated_max_abs_margin=65000)
+
+    def test_authenticated_margin_bound_rejects_never_clips(self):
+        accepted = mod.normalize_record(row(1, "A", 0, 999), 0,
+                                        authenticated_max_abs_margin=1000)
+        self.assertEqual(accepted["margin"], 999)
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record(row(1, "A", 0, 1001), 0,
+                                 authenticated_max_abs_margin=1000)
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record(row(1, "A", 0, 0), 0,
+                                 authenticated_max_abs_margin=True)
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record(row(1, "A", 0, 0), 0,
+                                 authenticated_max_abs_margin=0)
+
+    def test_structured_outcome_guard_rejects_margin_only(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record(row(1, "A", 0, 10), 0, require_structured_outcome=True)
+        normalized = mod.normalize_record(
+            {"seed": 1, "opponent": "A", "seat": 0, "rewards": [120, 20]},
+            0,
+            require_structured_outcome=True,
+        )
+        self.assertEqual(normalized["margin"], 100)
+
+    def test_analyze_reports_non_clipping_input_guard(self):
+        records = [
+            {"seed": 1, "opponent": "A", "seat": 0, "rewards": [120, 20]},
+            {"seed": 1, "opponent": "A", "seat": 1, "rewards": [20, 120]},
+        ]
+        report = mod.analyze(
+            records,
+            require_complete=True,
+            require_structured_outcome=True,
+            authenticated_max_abs_margin=1000,
+        )
+        self.assertEqual(
+            report["input_guard"],
+            {
+                "require_structured_outcome": True,
+                "authenticated_max_abs_margin": 1000,
+                "margin_bound_policy": "reject_not_clip",
+            },
+        )
+
+    def test_default_remains_no_guessed_magnitude_bound(self):
+        normalized = mod.normalize_record(row(1, "A", 0, 1e300), 0)
+        self.assertEqual(normalized["margin"], 1e300)
 
     def test_equal_opponent_weighting_blocks_frequency_domination(self):
         rows = []

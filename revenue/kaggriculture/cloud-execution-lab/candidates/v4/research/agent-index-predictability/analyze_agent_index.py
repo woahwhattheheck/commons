@@ -52,6 +52,22 @@ def _finite_number(value: Any, label: str) -> int | float:
     return value
 
 
+def _authenticated_margin_bound(value: Any) -> int | float | None:
+    """Validate an optional caller-authenticated absolute margin bound.
+
+    There is deliberately no built-in game-score ceiling.  A bound is useful
+    only when the caller can authenticate it from the producing engine or
+    dataset contract.  Values outside the bound are rejected, never clipped,
+    so the guard cannot manufacture a plausible-looking in-range outcome.
+    """
+    if value is None:
+        return None
+    result = _finite_number(value, "authenticated_max_abs_margin")
+    if result <= 0:
+        raise DataError("authenticated_max_abs_margin must be positive")
+    return result
+
+
 def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> int | float:
     """Return one target-relative margin, rejecting contradictory encodings.
 
@@ -72,12 +88,15 @@ def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> int | floa
             raise DataError(f"record {index}: rewards must be a two-item list")
         left = _finite_number(rewards[seat], f"record {index} target reward")
         right = _finite_number(rewards[1 - seat], f"record {index} opponent reward")
-        outcomes["rewards"] = left - right
+        outcomes["rewards"] = _finite_number(
+            left - right, f"record {index} rewards-derived margin"
+        )
 
     if "score" in record and "opponent_score" in record:
-        outcomes["score+opponent_score"] = (
+        outcomes["score+opponent_score"] = _finite_number(
             _finite_number(record["score"], f"record {index} score")
-            - _finite_number(record["opponent_score"], f"record {index} opponent_score")
+            - _finite_number(record["opponent_score"], f"record {index} opponent_score"),
+            f"record {index} score-derived margin",
         )
 
     if not outcomes:
@@ -102,7 +121,13 @@ def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> int | floa
     raise AssertionError("unreachable outcome representation state")
 
 
-def normalize_record(record: Any, index: int) -> dict[str, Any]:
+def normalize_record(
+    record: Any,
+    index: int,
+    *,
+    require_structured_outcome: bool = False,
+    authenticated_max_abs_margin: int | float | None = None,
+) -> dict[str, Any]:
     if not isinstance(record, dict):
         raise DataError(f"record {index}: expected object")
 
@@ -118,17 +143,35 @@ def normalize_record(record: Any, index: int) -> dict[str, Any]:
     if isinstance(seat, bool) or type(seat) is not int or seat not in (0, 1):
         raise DataError(f"record {index}: target seat must be literal 0 or 1")
 
-    margin = _outcome_margin(record, index, seat)
+    if require_structured_outcome:
+        has_rewards = "rewards" in record
+        has_score_pair = "score" in record and "opponent_score" in record
+        if not (has_rewards or has_score_pair):
+            raise DataError(
+                f"record {index}: structured outcome required; margin-only input is not accepted"
+            )
 
+    margin = _outcome_margin(record, index, seat)
+    bound = _authenticated_margin_bound(authenticated_max_abs_margin)
+    if bound is not None and abs(margin) > bound:
+        raise DataError(
+            f"record {index}: absolute margin {margin!r} exceeds authenticated bound {bound!r}"
+        )
+
+    # Keep the historical string report/key representation, but retain the
+    # primitive provenance type until the dataset-level admission check below.
+    # Without this custody, int 1 and str "1" silently collapse into one cell.
     return {
         "seed": str(seed),
+        "seed_type": "int" if type(seed) is int else "str",
         "opponent": str(opponent),
+        "opponent_type": "int" if type(opponent) is int else "str",
         "seat": seat,
         "margin": margin,
     }
 
 
-def _sign_test_two_sided(diffs: list[float]) -> tuple[int, int, int, float]:
+def _sign_test_two_sided(diffs: list[int | float]) -> tuple[int, int, int, float]:
     positives = sum(x > 0 for x in diffs)
     negatives = sum(x < 0 for x in diffs)
     ties = len(diffs) - positives - negatives
@@ -140,7 +183,7 @@ def _sign_test_two_sided(diffs: list[float]) -> tuple[int, int, int, float]:
     return positives, negatives, ties, min(1.0, 2.0 * lower_tail)
 
 
-def _cohen_dz(diffs: list[float]) -> float | None:
+def _cohen_dz(diffs: list[int | float]) -> float | None:
     if len(diffs) < 2:
         return None
     mean = statistics.mean(diffs)
@@ -150,7 +193,8 @@ def _cohen_dz(diffs: list[float]) -> float | None:
         # Preserve strict JSON output by reporting that degenerate effect as null;
         # the paired mean and sign test still carry the directional evidence.
         return 0.0 if mean == 0.0 else None
-    return mean / sd
+    result = mean / sd
+    return result if math.isfinite(result) else None
 
 
 def _assignment_tv(records: list[dict[str, Any]]) -> float | None:
@@ -165,12 +209,37 @@ def _assignment_tv(records: list[dict[str, Any]]) -> float | None:
     return 0.5 * sum(abs(by_seat[0][o] / n0 - by_seat[1][o] / n1) for o in opponents)
 
 
-def analyze(records: Iterable[Any], *, require_complete: bool = False) -> dict[str, Any]:
-    rows = [normalize_record(record, index) for index, record in enumerate(records)]
+def analyze(
+    records: Iterable[Any],
+    *,
+    require_complete: bool = False,
+    require_structured_outcome: bool = False,
+    authenticated_max_abs_margin: int | float | None = None,
+) -> dict[str, Any]:
+    bound = _authenticated_margin_bound(authenticated_max_abs_margin)
+    rows = [
+        normalize_record(
+            record,
+            index,
+            require_structured_outcome=require_structured_outcome,
+            authenticated_max_abs_margin=bound,
+        )
+        for index, record in enumerate(records)
+    ]
     if not rows:
         raise DataError("no records")
 
-    cells: dict[tuple[str, str, int], float] = {}
+    # Stringification is a report convenience, not an identity function.  A
+    # dataset must use one primitive identifier type per provenance domain so
+    # int 1 can never be paired with str "1" after normalization.
+    seed_types = {row["seed_type"] for row in rows}
+    opponent_types = {row["opponent_type"] for row in rows}
+    if len(seed_types) != 1:
+        raise DataError("mixed seed identifier primitive types are ambiguous")
+    if len(opponent_types) != 1:
+        raise DataError("mixed opponent identifier primitive types are ambiguous")
+
+    cells: dict[tuple[str, str, int], int | float] = {}
     for row in rows:
         key = (row["seed"], row["opponent"], row["seat"])
         if key in cells:
@@ -178,7 +247,7 @@ def analyze(records: Iterable[Any], *, require_complete: bool = False) -> dict[s
         cells[key] = row["margin"]
 
     pair_keys = sorted({(seed, opponent) for seed, opponent, _seat in cells})
-    complete: list[tuple[str, str, float, float]] = []
+    complete: list[tuple[str, str, int | float, int | float]] = []
     missing: list[dict[str, Any]] = []
     for seed, opponent in pair_keys:
         present = [seat for seat in (0, 1) if (seed, opponent, seat) in cells]
@@ -194,10 +263,17 @@ def analyze(records: Iterable[Any], *, require_complete: bool = False) -> dict[s
     if not complete:
         raise DataError("no exact seed+opponent pairs contain both seats")
 
-    diffs = [seat1 - seat0 for _seed, _opponent, seat0, seat1 in complete]
-    by_opponent: dict[str, list[float]] = defaultdict(list)
-    for _seed, opponent, seat0, seat1 in complete:
-        by_opponent[opponent].append(seat1 - seat0)
+    # Individual margins were finite at ingestion, but subtraction can still
+    # overflow (e.g. -1e308 -> +1e308).  Authenticate the derived estimand too.
+    diffs: list[int | float] = []
+    by_opponent: dict[str, list[int | float]] = defaultdict(list)
+    for seed, opponent, seat0, seat1 in complete:
+        delta = _finite_number(
+            seat1 - seat0,
+            f"paired margin delta seed={seed!r} opponent={opponent!r}",
+        )
+        diffs.append(delta)
+        by_opponent[opponent].append(delta)
 
     opponent_means = {opponent: statistics.mean(values)
                       for opponent, values in sorted(by_opponent.items())}
@@ -214,6 +290,11 @@ def analyze(records: Iterable[Any], *, require_complete: bool = False) -> dict[s
         "matched_pairs": len(complete),
         "missing_pair_groups": len(missing),
         "matched_pair_coverage": len(complete) / total_pair_slots,
+        "input_guard": {
+            "require_structured_outcome": require_structured_outcome,
+            "authenticated_max_abs_margin": bound,
+            "margin_bound_policy": "reject_not_clip" if bound is not None else "none",
+        },
         "seat0_mean_margin_matched": statistics.mean(x[2] for x in complete),
         "seat1_mean_margin_matched": statistics.mean(x[3] for x in complete),
         "paired_seat1_minus_seat0_mean": statistics.mean(diffs),
@@ -267,11 +348,30 @@ def main() -> int:
     parser.add_argument("input", type=Path, help="JSON array or JSONL game records")
     parser.add_argument("--require-complete", action="store_true",
                         help="reject any seed/opponent pair missing one target seat")
+    parser.add_argument(
+        "--require-structured-outcome",
+        action="store_true",
+        help="reject margin-only records; require rewards or score+opponent_score",
+    )
+    parser.add_argument(
+        "--authenticated-max-abs-margin",
+        type=json.loads,
+        default=None,
+        help=(
+            "caller-authenticated positive finite absolute margin bound; out-of-bound "
+            "records are rejected, never clipped; there is no built-in game-score ceiling"
+        ),
+    )
     parser.add_argument("--output", type=Path,
                         help="write report JSON here instead of stdout")
     args = parser.parse_args()
     try:
-        report = analyze(load_records(args.input), require_complete=args.require_complete)
+        report = analyze(
+            load_records(args.input),
+            require_complete=args.require_complete,
+            require_structured_outcome=args.require_structured_outcome,
+            authenticated_max_abs_margin=args.authenticated_max_abs_margin,
+        )
     except (DataError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
     payload = json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n"
