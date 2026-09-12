@@ -150,7 +150,6 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(report["reason"], "deferral_disabled")
         self.assertEqual(result, route[95])
 
-
     def test_insertion_preserves_existing_market_prefix_and_uses_trailing_slack(self):
         route = [row() for _ in range(110)]
         route[100] = row([["BUY_LAND"]])
@@ -200,6 +199,31 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(result, row())
         self.assertIsNone(overlay.pending)
         self.assertIn(report["reason"], {"no_nearby_land_purchase", "none"})
+
+    def test_zero_market_cap_matches_engine_effective_one_slot_for_advance(self):
+        route = [row() for _ in range(110)]
+        route[100] = row([["BUY_LAND"]])
+        overlay = LandUnlockOverlay(analyzer=Analyzer([Cert(100, 99)]), mechanics=object(), decision_steps=())
+        result, report = overlay.apply(
+            agent(route), obs(99), {"maxMarketOrdersPerTurn": 0}, row())
+        self.assertEqual(report["reason"], "advance_inserted")
+        self.assertEqual(result["market"], [["BUY_LAND"]])
+
+    def test_negative_market_cap_does_not_treat_tail_land_as_executable(self):
+        route = [row() for _ in range(110)]
+        route[95] = row([
+            ["SELL", "WHEAT", 1],
+            ["BUY_LAND"],
+            ["SELL", "CARROT", 1],
+        ])
+        overlay = LandUnlockOverlay(
+            analyzer=Analyzer([Cert(95, 99, slot=1)]), mechanics=object(), decision_steps=())
+        original = deepcopy(route[95])
+        result, report = overlay.apply(
+            agent(route), obs(95), {"maxMarketOrdersPerTurn": -3}, original)
+        self.assertEqual(report["reason"], "no_nearby_land_purchase")
+        self.assertEqual(result, original)
+        self.assertIsNone(overlay.pending)
 
 
 if __name__ == "__main__":
