@@ -1,9 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import math
+import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location("seed_identifiability", HERE / "seed_identifiability.py")
@@ -18,6 +21,34 @@ class FakeEngine:
         half = board_size // 2
         return {"tiles": [[None if x < half and y < half else "LOCKED"
                             for x in range(board_size)] for y in range(board_size)]}
+
+
+def test_authenticated_engine_buffer_survives_post_read_path_swap():
+    original = (
+        "MARKER = 'authenticated'\n"
+        "state = None\n"
+        "# state[i].observation.farms = farms\n"
+        "# rng = random.Random((seed * 1_000_003) ^ day)\n"
+        "# if farm[\"tiles\"][y][x] is None and rng.random() < weed_chance:\n"
+    ).encode()
+    attacker = "raise RuntimeError('attacker engine executed')\n"
+    expected = hashlib.sha256(original).hexdigest()
+    original_read_bytes = Path.read_bytes
+    with tempfile.TemporaryDirectory() as tmp:
+        engine_path = Path(tmp) / "engine.py"
+        engine_path.write_bytes(original)
+
+        def read_then_swap(path):
+            raw = original_read_bytes(path)
+            if path == engine_path:
+                path.write_text(attacker, encoding="utf-8")
+            return raw
+
+        with patch.object(MOD, "ENGINE_SHA256", expected), \
+             patch.object(Path, "read_bytes", new=read_then_swap):
+            module = MOD._load_engine(engine_path)
+        assert module.MARKER == "authenticated"
+        assert engine_path.read_text(encoding="utf-8") == attacker
 
 
 def test_initial_empty_count_and_order():
