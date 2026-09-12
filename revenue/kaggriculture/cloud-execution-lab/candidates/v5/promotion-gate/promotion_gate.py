@@ -233,9 +233,18 @@ def _validate_component(component: Any, index: int) -> str:
     elif mode == "config":
         if set(activation) != {"mode", "equals"}:
             raise PromotionError(f"{field}.activation config record is not canonical")
-        _validate_typed(activation["equals"], f"{field}.activation.equals")
-        if activation["equals"].get("t") != "dict":
+        equals = activation["equals"]
+        _validate_typed(equals, f"{field}.activation.equals")
+        if equals.get("t") != "dict":
             raise PromotionError(f"{field}.activation.equals must encode a config mapping")
+        pairs = equals["v"]
+        if not pairs:
+            raise PromotionError(f"{field}.activation config mapping must be non-empty")
+        reserved = [pair[0] for pair in pairs if pair[0].startswith("_")]
+        if reserved:
+            raise PromotionError(
+                f"{field}.activation cannot use reserved metadata keys: {reserved!r}"
+            )
     else:
         raise PromotionError(f"{field}.activation mode is not canonical")
     return name
