@@ -123,10 +123,20 @@ class FactorialTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 MODULE.capture_sha256(link, expected, "Baseline archive")
 
-    def test_screen_is_v4_v31_like_plus_each_single_off(self):
+    def test_screen_is_v4_all_four_off_plus_each_single_off(self):
         self.assertEqual(tuple(MODULE.design_arms("screen")), MODULE.SCREEN_ARMS)
+        self.assertIn("all_four_off", MODULE.SCREEN_ARMS)
+        self.assertNotIn("v31_flags", MODULE.SCREEN_ARMS)
         self.assertEqual(MODULE.feature_vector("v4"), {name: True for name in MODULE.FEATURES})
-        self.assertEqual(MODULE.feature_vector("v31_flags"), {name: False for name in MODULE.FEATURES})
+        self.assertEqual(
+            MODULE.feature_vector("all_four_off"),
+            {name: False for name in MODULE.FEATURES},
+        )
+        self.assertEqual(
+            MODULE.feature_vector("v31_flags"),
+            MODULE.feature_vector("all_four_off"),
+        )
+        self.assertEqual(MODULE.canonical_arm("v31_flags"), "all_four_off")
         for name in MODULE.FEATURES:
             vector = MODULE.feature_vector("off_" + name)
             self.assertFalse(vector[name])
@@ -167,9 +177,11 @@ class FactorialTests(unittest.TestCase):
             if key not in MODULE.FEATURES:
                 self.assertEqual(parsed[key], original[key])
 
-    def test_v31_flags_changes_exactly_four_values(self):
+    def test_all_four_off_changes_exactly_four_values_and_alias_matches_bytes(self):
         baseline = self.baseline()
-        candidate = MODULE.arm_members(baseline, "v31_flags")
+        candidate = MODULE.arm_members(baseline, "all_four_off")
+        alias = MODULE.arm_members(baseline, "v31_flags")
+        self.assertEqual(candidate, alias)
         original = json.loads(V4_CONFIG)
         changed = json.loads(candidate["TITAN-CONFIG.json"])
         differing = {key for key in original if original[key] != changed[key]}
@@ -190,11 +202,15 @@ class FactorialTests(unittest.TestCase):
             with self.assertRaises(ValueError, msg=bad):
                 MODULE.feature_vector(bad)
 
-    def test_summary_uses_v4_baseline_delta_contract(self):
-        cells = [{"opponent": "apex_v7", "margin_delta": {"v4": 0, "v31_flags": 11}}]
-        summary = MODULE.summarize(cells, ["v4", "v31_flags"])
+    def test_summary_uses_v4_baseline_and_canonical_off_identity(self):
+        cells = [{"opponent": "apex_v7", "margin_delta": {"v4": 0, "all_four_off": 11}}]
+        summary = MODULE.summarize(cells, ["v4", "all_four_off"])
         self.assertTrue(summary["v4"]["baseline_equivalent"])
-        self.assertEqual(summary["v31_flags"]["opponents"]["apex_v7"]["mean_margin_delta"], 11)
+        self.assertEqual(
+            summary["all_four_off"]["opponents"]["apex_v7"]["mean_margin_delta"],
+            11,
+        )
+        self.assertNotIn("v31_flags", summary)
 
 
 if __name__ == "__main__":
