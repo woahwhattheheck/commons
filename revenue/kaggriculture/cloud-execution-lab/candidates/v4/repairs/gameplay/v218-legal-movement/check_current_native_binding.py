@@ -242,18 +242,24 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
     if not isinstance(source_identities, dict):
         return {"registered": False, "reason": "semantic_source_identities_missing"}
     expected = {}
-    for key in ("arlene", "spatial"):
-        row = semantic.get("sources", {}).get(key)
-        if not isinstance(row, dict):
+    semantic_sources = semantic.get("sources")
+    if not isinstance(semantic_sources, dict):
+        return {"registered": False, "reason": "semantic_sources_missing"}
+    for key in ("main", "runtime", "frozen", "scheduler", "arlene", "spatial"):
+        row = semantic_sources.get(key)
+        if not isinstance(row, dict) or type(row.get("path")) is not str or type(row.get("git_blob")) is not str:
             return {"registered": False, "reason": "semantic_source_receipt_missing", "source": key}
         expected[row["path"]] = row["git_blob"]
-    actual = {path: source_identities.get(path) for path in expected}
-    if actual != expected:
+    config_path = root / "TITAN-CONFIG.json"
+    if not config_path.is_file():
+        return {"registered": False, "reason": "semantic_config_missing"}
+    expected["TITAN-CONFIG.json"] = git_blob(config_path.read_bytes())
+    if source_identities != expected:
         return {
             "registered": False,
             "reason": "semantic_source_identity_mismatch",
             "expected": expected,
-            "actual": actual,
+            "actual": source_identities,
         }
     semantic_evidence = receipt.get("semantic_evidence")
     if not isinstance(semantic_evidence, dict) or semantic_evidence.get("frozen_nonterminal_config") is not True:
