@@ -1,17 +1,17 @@
 # SPDX-License-Identifier: Apache-2.0
 """Current selected-action adapter for submitted V3.1 B9 -> H3c wrappers.
 
-No gameplay theorem is copied here. The exact submitted donor files are Git-blob
-authenticated at load time and their own helpers perform every gameplay decision.
-This adapter removes only the old parent-call shell so current V5 can pass an
-already-selected action through the submitted outer-wrapper order.
+No gameplay theorem is copied here. Exact submitted donor blobs are vendored by
+Git object identity, authenticated once, and executed from the same captured
+byte buffers. The adapter removes only the old parent-call shell so current V5
+can pass an already-selected action through the submitted outer-wrapper order.
 """
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 from pathlib import Path
 import sys
+import types
 from typing import Any
 
 DONOR_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
@@ -19,30 +19,42 @@ B9_GIT_BLOB = "ed8d6923541e700c3a0ae4b93695bbd56455a3b6"
 H3C_GIT_BLOB = "2044d6cf1e0c51f95027229863f910aa43ac7008"
 
 HERE = Path(__file__).resolve().parent
-LAB_ROOT = HERE.parents[3]
-B9_PATH = LAB_ROOT / "candidates/v3/overlay/b9_terminal_fertilizer.py"
-H3C_PATH = LAB_ROOT / "candidates/v3/overlay/h3c_goose_eod_cap_rescue.py"
+B9_PATH = HERE / "vendor/b9_terminal_fertilizer.py"
+H3C_PATH = HERE / "vendor/h3c_goose_eod_cap_rescue.py"
 
 
-def git_blob_id(path: Path) -> str:
-    data = Path(path).read_bytes()
+def _git_blob_id_bytes(data: bytes) -> str:
+    if type(data) is not bytes:
+        raise TypeError("Git blob source must be exact bytes")
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
+def git_blob_id(path: Path) -> str:
+    return _git_blob_id_bytes(Path(path).read_bytes())
+
+
 def _load_pinned(name: str, path: Path, expected_blob: str):
-    actual = git_blob_id(path)
+    """Authenticate and execute one immutable donor snapshot.
+
+    The path is read exactly once.  We intentionally do not ask an import loader
+    to reopen it after authentication: the bytes whose Git blob is checked are
+    the exact bytes compiled and executed, closing the auth/exec TOCTOU boundary.
+    """
+    path = Path(path)
+    raw = path.read_bytes()
+    actual = _git_blob_id_bytes(raw)
     if actual != expected_blob:
         raise RuntimeError(
             f"submitted donor drift: {path.name} expected {expected_blob}, got {actual}"
         )
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ImportError(str(path))
-    module = importlib.util.module_from_spec(spec)
+    module = types.ModuleType(name)
+    module.__file__ = str(path)
+    module.__package__ = ""
     previous = sys.modules.get(name)
     try:
         sys.modules[name] = module
-        spec.loader.exec_module(module)
+        code = compile(raw, str(path), "exec")
+        exec(code, module.__dict__, module.__dict__)
     except BaseException:
         if previous is None:
             sys.modules.pop(name, None)
