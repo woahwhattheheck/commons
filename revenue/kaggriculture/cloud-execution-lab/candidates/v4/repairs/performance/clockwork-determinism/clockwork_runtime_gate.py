@@ -50,14 +50,14 @@ def normalize_row(raw: Any, *, source: str, line: int) -> dict[str, Any]:
         raise GateError(f"{source}:{line}: row must be an object")
     allowed = {
         "candidate_sha256", "runtime_sha256", "engine_sha256", "opponent_id",
-        "seed", "seat", "step", "status", "fallback_stage", "action_sha256",
-        "state_sha256", "elapsed_seconds", "act_cpu_seconds",
+        "seed", "seat", "step", "status", "fallback_stage", "observation_sha256",
+        "input_state_sha256", "action_sha256", "state_sha256", "elapsed_seconds", "act_cpu_seconds",
     }
     extra = sorted(set(raw) - allowed)
     missing = sorted({
         "candidate_sha256", "runtime_sha256", "engine_sha256", "opponent_id",
-        "seed", "seat", "step", "status", "fallback_stage", "action_sha256",
-        "state_sha256",
+        "seed", "seat", "step", "status", "fallback_stage", "observation_sha256",
+        "input_state_sha256", "action_sha256", "state_sha256",
     } - set(raw))
     if missing:
         raise GateError(f"{source}:{line}: missing fields: {', '.join(missing)}")
@@ -86,6 +86,8 @@ def normalize_row(raw: Any, *, source: str, line: int) -> dict[str, Any]:
         "step": _integer(raw["step"], "step"),
         "status": status,
         "fallback_stage": stage,
+        "observation_sha256": _sha256(raw["observation_sha256"], "observation_sha256"),
+        "input_state_sha256": _sha256(raw["input_state_sha256"], "input_state_sha256"),
         "action_sha256": _sha256(raw["action_sha256"], "action_sha256"),
         "state_sha256": _sha256(raw["state_sha256"], "state_sha256"),
         "elapsed_seconds": _finite_optional(raw.get("elapsed_seconds"), "elapsed_seconds"),
@@ -159,6 +161,8 @@ def compare_panels(
     if q_identity != l_identity:
         raise GateError("quiet/loaded candidate/runtime/engine identity mismatch")
 
+    observation_mismatch = []
+    input_state_mismatch = []
     action_mismatch = []
     state_mismatch = []
     status_mismatch = []
@@ -167,6 +171,10 @@ def compare_panels(
     loaded_fallbacks = Counter()
     for key in keys:
         q, l = quiet[key], loaded[key]
+        if q["observation_sha256"] != l["observation_sha256"]:
+            observation_mismatch.append(key)
+        if q["input_state_sha256"] != l["input_state_sha256"]:
+            input_state_mismatch.append(key)
         if q["action_sha256"] != l["action_sha256"]:
             action_mismatch.append(key)
         if q["state_sha256"] != l["state_sha256"]:
@@ -181,6 +189,10 @@ def compare_panels(
             loaded_fallbacks[l["fallback_stage"]] += 1
 
     reasons = []
+    if observation_mismatch:
+        reasons.append(f"observation_mismatch={len(observation_mismatch)}")
+    if input_state_mismatch:
+        reasons.append(f"input_state_mismatch={len(input_state_mismatch)}")
     if action_mismatch:
         reasons.append(f"action_mismatch={len(action_mismatch)}")
     if state_mismatch:
@@ -206,10 +218,14 @@ def compare_panels(
         },
         "quiet_fallbacks_by_stage": dict(sorted(quiet_fallbacks.items())),
         "loaded_fallbacks_by_stage": dict(sorted(loaded_fallbacks.items())),
+        "observation_mismatch_count": len(observation_mismatch),
+        "input_state_mismatch_count": len(input_state_mismatch),
         "action_mismatch_count": len(action_mismatch),
         "state_mismatch_count": len(state_mismatch),
         "status_mismatch_count": len(status_mismatch),
         "fallback_stage_mismatch_count": len(stage_mismatch),
+        "first_observation_mismatches": [list(x) for x in observation_mismatch[:5]],
+        "first_input_state_mismatches": [list(x) for x in input_state_mismatch[:5]],
         "first_action_mismatches": [list(x) for x in action_mismatch[:5]],
         "first_state_mismatches": [list(x) for x in state_mismatch[:5]],
         "first_status_mismatches": [list(x) for x in status_mismatch[:5]],
