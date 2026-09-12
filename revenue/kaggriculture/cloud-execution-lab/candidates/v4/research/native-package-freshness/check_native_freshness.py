@@ -207,7 +207,11 @@ def verify_freshness(
             repo_rel = live_rel / name
             live = _read_live_file(repo_root, repo_rel)
             live_blob = _git_blob(live)
-            tracked_blob = _git(repo_root, "rev-parse", f"HEAD:{repo_rel.as_posix()}")
+            tracked_blob = _git(
+                repo_root,
+                "rev-parse",
+                f"{expected_commit}:{repo_rel.as_posix()}",
+            )
             if not _is_hex(tracked_blob, 40) or tracked_blob != live_blob:
                 raise InvalidEvidence(f"live file is not byte-identical to HEAD: {repo_rel.as_posix()}")
             packed = package[name]
@@ -231,6 +235,13 @@ def verify_freshness(
                     },
                 }
             )
+
+        final_head = _git(repo_root, "rev-parse", "HEAD")
+        if final_head != expected_commit:
+            raise InvalidEvidence(
+                f"checkout HEAD changed during verification: expected {expected_commit}, got {final_head}"
+            )
+
         base["files"] = records
         base["stale_paths"] = stale
         base["verdict"] = "STALE" if stale else "CURRENT"

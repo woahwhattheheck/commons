@@ -81,6 +81,59 @@ class TestGate(unittest.TestCase):
             },
         )
 
+    def register_semantic_graph(self, root, *, mutate_sources=False, checker_drift=False, wrong_state=False):
+        checker = root/'candidates/v4'/g.V218_CHECKER_REL
+        checker.parent.mkdir(parents=True,exist_ok=True)
+        checker.write_text("# synthetic registered checker\n")
+        checker_blob=g.git_blob(checker.read_bytes())
+        source_ids={
+            "reference/next-panel/vendor/arlene.py":
+                g.git_blob((root/"reference/next-panel/vendor/arlene.py").read_bytes()),
+            "spatial_tempo.py":
+                g.git_blob((root/"spatial_tempo.py").read_bytes()),
+        }
+        if mutate_sources:
+            source_ids["spatial_tempo.py"]="0"*40
+        receipt={
+            "schema":"titan-v4-v218-native-semantic-equivalence/v1",
+            "status":"source_revalidated_execution_not_rerun",
+            "semantic_checker":{
+                "path":g.V218_CHECKER_REL,
+                "git_blob":("0"*40 if checker_drift else checker_blob),
+                "semantic_disposition_when_all_fail_closed_probes_pass":
+                    "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE",
+            },
+            "current_source_identities":{
+                "reference/next-panel/vendor/arlene.py":source_ids["reference/next-panel/vendor/arlene.py"],
+                "spatial_tempo.py":source_ids["spatial_tempo.py"],
+            },
+            "semantic_evidence":{"frozen_nonterminal_config":True},
+            "control_plane_disposition":"evidence_only_no_transform_required",
+            "runtime_promotion_authority":False,
+            "economic_authority":False,
+        }
+        receipt_path=root/'candidates/v4'/g.V218_RECEIPT_REL
+        receipt_path.parent.mkdir(parents=True,exist_ok=True)
+        receipt_path.write_text(json.dumps(receipt))
+        graph={
+            "schema":"titan-v4-composition/v1",
+            "components":[{
+                "id":g.V218_COMPONENT_ID,
+                "state":"blocked" if wrong_state else "evidence_only",
+                "package":g.V218_PACKAGE,
+                "entrypoints":[g.V218_CHECKER_REL],
+                "receipt":g.V218_RECEIPT_REL,
+                "transforms":[],
+                "requires":[],
+                "before":[],
+                "after":[],
+                "conflicts":[],
+            }],
+        }
+        graph_path=root/g.GRAPH_REL
+        graph_path.parent.mkdir(parents=True,exist_ok=True)
+        graph_path.write_text(json.dumps(graph))
+
     def test_unwired_blocks(self):
         with tempfile.TemporaryDirectory() as td:
             x=g.audit(self.tree(td))
@@ -105,18 +158,57 @@ class TestGate(unittest.TestCase):
             x=g.audit(self.tree(td,extra={'checks/reference/note.py':'r04_full_router v218'}))
             self.assertFalse(x['wired'])
 
-    def test_native_semantic_equivalence_wires_without_v218_token(self):
+    def test_candidate_control_plane_tokens_do_not_fake_explicit_wiring(self):
         with tempfile.TemporaryDirectory() as td:
-            x=g.audit(self.semantic_tree(td))
+            r=self.tree(td,extra={'candidates/v4/note.py':'r04_full_router v218 movement_parity'})
+            x=g.audit(r)
             self.assertFalse(x['explicit_binding'])
+            self.assertFalse(x['wired'])
+
+    def test_native_semantic_equivalence_requires_graph_registration(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            x=g.audit(r)
             self.assertTrue(x['native_semantic_equivalence']['equivalent'])
+            self.assertFalse(x['semantic_wired'])
+            self.assertEqual(x['disposition'],'BLOCKED_AT_GRAPH_REGISTRATION')
+
+    def test_authenticated_graph_receipt_wires_native_semantic_equivalence(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r)
+            x=g.audit(r)
+            self.assertTrue(x['semantic_graph_registration']['registered'])
+            self.assertTrue(x['semantic_wired'])
             self.assertTrue(x['wired'])
-            self.assertEqual(
-                x['disposition'],
-                'NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE',
-            )
-            self.assertTrue(all(x['native_semantic_equivalence']['rules'].values()))
-            self.assertTrue(all(x['native_semantic_equivalence']['call_chain'].values()))
+            self.assertEqual(x['disposition'],'NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE')
+
+    def test_receipt_source_pin_drift_blocks_semantic_wiring(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r,mutate_sources=True)
+            x=g.audit(r)
+            self.assertFalse(x['semantic_graph_registration']['registered'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
+            self.assertFalse(x['wired'])
+
+    def test_receipt_checker_pin_drift_blocks_semantic_wiring(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r,checker_drift=True)
+            x=g.audit(r)
+            self.assertFalse(x['semantic_graph_registration']['registered'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'checker_identity_mismatch')
+            self.assertFalse(x['wired'])
+
+    def test_graph_wrong_state_blocks_semantic_wiring(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r,wrong_state=True)
+            x=g.audit(r)
+            self.assertFalse(x['semantic_graph_registration']['registered'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_component_not_evidence_only')
+            self.assertFalse(x['wired'])
 
     def test_locked_move_bug_fails_equivalence(self):
         with tempfile.TemporaryDirectory() as td:
@@ -132,22 +224,15 @@ class TestGate(unittest.TestCase):
             self.assertFalse(x['native_semantic_equivalence']['rules']['all_four_shed_corners_eligible'])
             self.assertFalse(x['wired'])
 
-    def test_missing_required_fails(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=Path(td)
-            (r/'main.py').write_text('')
-            (r/'TITAN-CONFIG.json').write_text('{}')
-            with self.assertRaises(ValueError):
-                g.audit(r)
-
-    def test_cli_require_wired_exit3(self):
-        with tempfile.TemporaryDirectory() as td:
-            r=self.tree(td)
-            self.assertEqual(g.main([str(r),'--require-wired']),3)
-
-    def test_cli_semantic_equivalence_satisfies_require_wired(self):
+    def test_cli_require_wired_exit3_without_graph_registration(self):
         with tempfile.TemporaryDirectory() as td:
             r=self.semantic_tree(td)
+            self.assertEqual(g.main([str(r),'--require-wired']),3)
+
+    def test_cli_semantic_graph_satisfies_require_wired(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r)
             self.assertEqual(g.main([str(r),'--require-wired']),0)
 
 

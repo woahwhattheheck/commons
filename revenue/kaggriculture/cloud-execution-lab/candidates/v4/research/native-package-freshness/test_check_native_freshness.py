@@ -105,6 +105,62 @@ class FreshnessTests(unittest.TestCase):
         self.assertEqual("INVALID", report["verdict"])
         self.assertIn("checkout HEAD drift", report["problems"][0])
 
+    def test_midrun_head_move_with_changed_core_cannot_rebind_expected_commit(self):
+        moved_core = dict(CORE)
+        moved_core["titan_runtime.py"] = b"RUNTIME = 2\n"
+        archive, digest = self.archive(moved_core)
+        (self.live / "titan_runtime.py").write_bytes(moved_core["titan_runtime.py"])
+        run(
+            "git",
+            "add",
+            "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+            cwd=self.root,
+        )
+        run("git", "commit", "-qm", "moved core", cwd=self.root)
+        moved_commit = run("git", "rev-parse", "HEAD", cwd=self.root)
+        run("git", "reset", "--hard", self.commit, cwd=self.root)
+
+        original = fresh._read_archive_core
+
+        def move_head_after_archive(*args, **kwargs):
+            result = original(*args, **kwargs)
+            run("git", "reset", "--hard", moved_commit, cwd=self.root)
+            return result
+
+        fresh._read_archive_core = move_head_after_archive
+        try:
+            report = self.verify(archive, digest)
+        finally:
+            fresh._read_archive_core = original
+
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("not byte-identical to HEAD", report["problems"][0])
+
+    def test_midrun_head_move_with_identical_core_invalid(self):
+        archive, digest = self.archive()
+        marker = self.root / "UNRELATED.txt"
+        marker.write_text("different commit, same production core\n", encoding="utf-8")
+        run("git", "add", "UNRELATED.txt", cwd=self.root)
+        run("git", "commit", "-qm", "unrelated commit", cwd=self.root)
+        moved_commit = run("git", "rev-parse", "HEAD", cwd=self.root)
+        run("git", "reset", "--hard", self.commit, cwd=self.root)
+
+        original = fresh._read_archive_core
+
+        def move_head_after_archive(*args, **kwargs):
+            result = original(*args, **kwargs)
+            run("git", "reset", "--hard", moved_commit, cwd=self.root)
+            return result
+
+        fresh._read_archive_core = move_head_after_archive
+        try:
+            report = self.verify(archive, digest)
+        finally:
+            fresh._read_archive_core = original
+
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("HEAD changed during verification", report["problems"][0])
+
     def test_dirty_live_file_invalid(self):
         archive, digest = self.archive()
         (self.live / "scheduler.py").write_bytes(b"DIRTY\n")
