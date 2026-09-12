@@ -8,6 +8,7 @@ import json
 import re
 import sys
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,9 @@ PATTERN_DIR = WIKI_DIR / "patterns"
 SCHEMA = "commons-experience/v1"
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+RECORDED_AT_RE = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$"
+)
 
 
 class ExperienceError(ValueError):
@@ -27,6 +31,16 @@ class ExperienceError(ValueError):
 
 def _json(value: Any) -> str:
     return json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+
+
+def _recorded_at(value: Any, rel: Any = "experience record") -> datetime:
+    """Parse the canonical UTC packet timestamp used for retrieval ordering."""
+    if not isinstance(value, str) or not RECORDED_AT_RE.fullmatch(value):
+        raise ExperienceError(f"{rel}: recorded_at must be an ISO-8601 UTC timestamp ending in Z")
+    try:
+        return datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise ExperienceError(f"{rel}: invalid recorded_at timestamp") from exc
 
 
 def live_cash_markdown(path: Path) -> str:
@@ -81,6 +95,8 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         rel = path.relative_to(ROOT)
     except ValueError:
         rel = path
+    if not isinstance(record, dict):
+        raise ExperienceError(f"{rel}: experience packet must be an object")
     required = {
         "schema",
         "id",
@@ -101,7 +117,9 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         raise ExperienceError(f"{rel}: invalid id")
     if path.stem != record_id:
         raise ExperienceError(f"{rel}: filename must match id")
-    if record["outcome"] not in {"passed", "failed"}:
+    _recorded_at(record["recorded_at"], rel)
+    outcome = record["outcome"]
+    if not isinstance(outcome, str) or outcome not in {"passed", "failed"}:
         raise ExperienceError(f"{rel}: outcome must be passed or failed")
     if not isinstance(record["task"], str) or not record["task"].strip():
         raise ExperienceError(f"{rel}: task must be non-empty")
@@ -109,28 +127,50 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
     if not isinstance(evidence, list) or not evidence:
         raise ExperienceError(f"{rel}: evidence must be non-empty")
     for item in evidence:
-        if not isinstance(item, dict) or not item.get("kind") or not item.get("value"):
+        if not isinstance(item, dict):
             raise ExperienceError(f"{rel}: malformed evidence")
-        if item["kind"] == "commit" and not SHA_RE.fullmatch(item["value"]):
+        kind, value = item.get("kind"), item.get("value")
+        if not isinstance(kind, str) or not kind or not isinstance(value, str) or not value:
+            raise ExperienceError(f"{rel}: malformed evidence")
+        if kind == "commit" and not SHA_RE.fullmatch(value):
             raise ExperienceError(f"{rel}: commit evidence must be a full SHA")
     patterns = record["patterns"]
     if not isinstance(patterns, list) or not patterns:
         raise ExperienceError(f"{rel}: patterns must be non-empty")
+    seen_patterns: set[str] = set()
     for pattern in patterns:
         needed = {"id", "kind", "summary", "procedure", "applies_to"}
         if not isinstance(pattern, dict) or needed - pattern.keys():
             raise ExperienceError(f"{rel}: malformed pattern")
-        if not ID_RE.fullmatch(pattern["id"]):
+        pattern_id = pattern["id"]
+        if not isinstance(pattern_id, str) or not ID_RE.fullmatch(pattern_id):
             raise ExperienceError(f"{rel}: invalid pattern id")
-        if pattern["kind"] not in {"success", "failure"}:
+        if pattern_id in seen_patterns:
+            raise ExperienceError(f"{rel}: duplicate pattern id: {pattern_id}")
+        seen_patterns.add(pattern_id)
+        kind = pattern["kind"]
+        if not isinstance(kind, str) or kind not in {"success", "failure"}:
             raise ExperienceError(f"{rel}: pattern kind must be success or failure")
-        if not isinstance(pattern["applies_to"], list) or not pattern["applies_to"]:
+        if not isinstance(pattern["summary"], str) or not pattern["summary"].strip():
+            raise ExperienceError(f"{rel}: pattern summary must be non-empty text")
+        if not isinstance(pattern["procedure"], str) or not pattern["procedure"].strip():
+            raise ExperienceError(f"{rel}: pattern procedure must be non-empty text")
+        applies_to = pattern["applies_to"]
+        if not isinstance(applies_to, list) or not applies_to:
             raise ExperienceError(f"{rel}: pattern applies_to must be non-empty")
-    for impact in record["skill_impacts"]:
+        if any(not isinstance(tag, str) or not ID_RE.fullmatch(tag) for tag in applies_to):
+            raise ExperienceError(f"{rel}: pattern applies_to tags must be canonical ids")
+        if len(applies_to) != len(set(applies_to)):
+            raise ExperienceError(f"{rel}: pattern applies_to tags must be unique")
+    skill_impacts = record["skill_impacts"]
+    if not isinstance(skill_impacts, list):
+        raise ExperienceError(f"{rel}: skill_impacts must be a list")
+    for impact in skill_impacts:
         needed = {"skill", "change", "decision", "validation"}
         if not isinstance(impact, dict) or needed - impact.keys():
             raise ExperienceError(f"{rel}: malformed skill impact")
-        if impact["decision"] not in {"adopted", "rejected", "observed"}:
+        decision = impact["decision"]
+        if not isinstance(decision, str) or decision not in {"adopted", "rejected", "observed"}:
             raise ExperienceError(f"{rel}: invalid skill decision")
         validation = impact["validation"]
         if not isinstance(validation, dict) or "result" not in validation:
@@ -258,6 +298,10 @@ def compile_to_disk(outputs: dict[Path, str]) -> None:
     for path, content in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
+    expected_pattern_paths = {path for path in outputs if path.parent == PATTERN_DIR}
+    for path in PATTERN_DIR.glob("*.md"):
+        if path not in expected_pattern_paths:
+            path.unlink()
 
 
 def check_outputs(outputs: dict[Path, str]) -> list[str]:
@@ -313,7 +357,8 @@ def retrieve_experience(
         if terms and not matched_terms:
             continue
         ordered = sorted(sources, key=lambda s: (
-            s["record"]["recorded_at"], s["record"]["id"]
+            _recorded_at(s["record"]["recorded_at"], s["record"]["id"]),
+            s["record"]["id"],
         ), reverse=True)
         selected = []
         for kind in ("failure", "success"):

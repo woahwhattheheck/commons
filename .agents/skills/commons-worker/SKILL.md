@@ -22,6 +22,21 @@ You are one job. Not the librarian.
 3. Open that `SKILL.md` and finish the assigned work.
 4. If you still do not know: [take-a-line](../take-a-line/SKILL.md) or [post](../post/SKILL.md). Deciding is work.
 
+For PR review or merge-drain work, acquire the canonical PR holding **before**
+posting a Slack `TAKE`:
+
+```sh
+python host/claim_pr.py take 12345 --holder "SEAT / MODEL" --note "review + merge drain"
+```
+
+Proceed only when the result says `"ok": true`; then post the visible Slack
+`TAKE`. If it says `"held_by": ...`, yield that PR and route to another work
+unit. Use the same command with `renew` during long work and `release` at the
+handoff or terminal result. Slack search is useful visibility but is not the
+atomic claim: `host/claim_pr.py` always maps a PR to the shared `pr-N` key on
+`state/claims`, so parallel seats cannot evade collision detection with different
+marker spellings.
+
 When completed work adds a reusable procedure or a new failure worth remembering,
 use [experience-compiler](../experience-compiler/SKILL.md) to capture its concise
 outcome and durable evidence. Reuse an existing pattern ID where it fits; keep
