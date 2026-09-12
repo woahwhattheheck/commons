@@ -2,17 +2,14 @@ name: titan-v4-trust-root
 
 on:
   pull_request_target:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
     branches:
       - titan/v4-20260911
-    paths:
-      - '.github/workflows/titan-v4-plumbing.yml'
-      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/**'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
-      - 'revenue/kaggriculture/cloud-execution-lab/exports/historical/**'
 
 # This job is the external trust root for the candidate-controlled pull_request
 # workflow. It must never execute, source, import, or checkout PR HEAD code.
+# Deliberately do not use a paths filter: workflow relevance is a trust decision,
+# and GitHub may cap pull-request path-diff evaluation on very large changes.
 permissions:
   contents: read
 
