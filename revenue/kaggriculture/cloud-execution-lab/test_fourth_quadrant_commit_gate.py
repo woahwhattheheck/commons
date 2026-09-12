@@ -93,13 +93,14 @@ class FourthQuadrantCommitGateTests(unittest.TestCase):
 
     def test_seed_commitment_matches_engine_int_coercion_and_inert_rows(self):
         selected = [
-            ['BUY_SEED', 'CARROT', '2.9', 'receipt-tag'],
+            ['BUY_SEED', 'CARROT', 2.9, 'float-tag'],
+            ['BUY_SEED', 'CARROT', '2', 'string-tag'],
             ['BUY_SEED', 'CARROT', True],
             ['BUY_SEED', 'POTATO', 9],
             ['BUY_SEED', 'CARROT', 0],
             {'type': 'BUY_SEED'},
         ]
-        returned = [['BUY_SEED', 'CARROT', 3]]
+        returned = [['BUY_SEED', 'CARROT', 5]]
         gate, pending = self.finish(selected, returned)
         self.assertIs(gate.plan, pending)
 
