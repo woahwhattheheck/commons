@@ -26,6 +26,51 @@
       "note": "Current-ABI adapter is authenticated and component-tested, feature default-OFF; composable does not mean production-promoted."
     },
     {
+      "id": "funding-capacity-stack",
+      "state": "compose",
+      "package": "repairs/performance/funding-replay",
+      "entrypoints": [
+        "repairs/performance/funding-replay/apply_town_funding.py",
+        "repairs/runtime/joint-unit-projection/compose.py",
+        "repairs/performance/funding-replay/apply_funding_replay.py",
+        "repairs/performance/funding-replay/compose_funding_capacity.py"
+      ],
+      "source_order": [
+        "repairs/performance/funding-replay/apply_town_funding.py",
+        "repairs/runtime/joint-unit-projection/compose.py",
+        "repairs/performance/funding-replay/apply_funding_replay.py",
+        "repairs/performance/funding-replay/compose_funding_capacity.py"
+      ],
+      "members": [
+        "TOWNPATH",
+        "UNITFLOW",
+        "FUNDING-PERF",
+        "CAPTRACE"
+      ],
+      "foundation": {
+        "artifact_id": 10175943272,
+        "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+      },
+      "receipt": "repairs/performance/funding-replay/CAPACITY-VALIDATION.json",
+      "transforms": [
+        {
+          "surface": "scheduler.py",
+          "input_identity": "git-blob:a483b24dd72b580d7d8811636b54d2d44f391575",
+          "output_identity": "git-blob:eb289f87adebb7dc7e90046bfbec31a307cb5aaa"
+        },
+        {
+          "surface": "frozen_selected.py",
+          "input_identity": "git-blob:fc7baf5c179818a55037f6a61d92984d81d1a21c",
+          "output_identity": "git-blob:ef090f6731c2d1ee648e2caaf3e215641b006518"
+        }
+      ],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Exact aggregate edge for the receipt-proved TOWNPATH -> UNITFLOW -> FUNDING-PERF -> CAPTRACE chain. The full-peer frozen preimage immediately before CAPTRACE is git-blob:3115465b57d79100106cf061655d0110383e271a; this aggregate remains foundation-bound and does not certify newer source HEAD or production promotion."
+    },
+    {
       "id": "d4-strawberry-timing",
       "state": "blocked",
       "reason": "Package manifest is HOLD_REACHABILITY_CENSUS_REQUIRED; stale legacy apply_v4 wiring is explicitly prohibited.",
@@ -64,7 +109,11 @@
     "patterns": [
       "port_current_runtime.py",
       "build_native_d4.py",
-      "row_shed_sell_order.py"
+      "row_shed_sell_order.py",
+      "repairs/performance/funding-replay/apply_town_funding.py",
+      "repairs/runtime/joint-unit-projection/compose.py",
+      "repairs/performance/funding-replay/apply_funding_replay.py",
+      "repairs/performance/funding-replay/compose_funding_capacity.py"
     ],
     "strict": true,
     "ignore": []
