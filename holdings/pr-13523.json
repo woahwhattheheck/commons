@@ -3,8 +3,8 @@
  "key": "pr-13523",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-12T23:57:20Z",
- "heartbeat_at": "2026-09-12T23:57:20Z",
+ "heartbeat_at": "2026-09-12T23:58:02Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Independent exact-head source/composition review + merge drain for #13523 Actions triage repository-provenance fail-close corrective. Review-only unless concrete source RED requires return to author."
+ "state": "RELEASED",
+ "note": "PR #13523 merged independently at 2026-09-12T23:57:42Z as 08e617258a92125134ed9572e44127b40d8f0de0 before this review drain began. No Astra review or source mutation performed."
 }
