@@ -274,14 +274,18 @@ def _purchase_quantity(observation, action, configuration, r04):
 
     market_state = observation.get("market")
     prices = market_state.get("prices") if isinstance(market_state, dict) else None
+    inventory = market_state.get("inventory") if isinstance(market_state, dict) else None
     farms = observation.get("farms")
     player = observation.get("player")
-    if not isinstance(prices, dict) or not isinstance(farms, list):
+    if not isinstance(prices, dict) or not isinstance(inventory, dict) or not isinstance(farms, list):
         return None
     if type(player) is not int or not 0 <= player < len(farms):
         return None
     wheat_price = prices.get("WHEAT")
     if type(wheat_price) is not int or wheat_price <= 0:
+        return None
+    wheat_stock = inventory.get("WHEAT")
+    if type(wheat_stock) is not int or wheat_stock < quantity:
         return None
 
     # The V217 planner normally returns an in-bounds board coordinate, but F2's
