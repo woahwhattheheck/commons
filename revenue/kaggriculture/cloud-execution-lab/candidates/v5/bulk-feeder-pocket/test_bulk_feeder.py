@@ -88,7 +88,7 @@ class BulkFeederTests(unittest.TestCase):
         self.assertEqual(witness["pickup_steps"], [0, 4])
         self.assertEqual(witness["feed_steps"], [2, 6])
         self.assertEqual(witness["bulk_quantity"], 2)
-        self.assertEqual(witness["recovered_pickup_turns"], 1)
+        self.assertEqual(witness["reclaimable_pickup_action_slots"], 1)
         self.assertEqual(witness["travel_savings_lower_bound"], 0)
 
     def test_rewrite_only_consolidates_pickup_cells(self):
@@ -107,7 +107,7 @@ class BulkFeederTests(unittest.TestCase):
             observation(), route, witness, mechanics=self.mechanics,
         )
         self.assertTrue(result["equivalent"])
-        self.assertEqual(result["recovered_pickup_turns"], 1)
+        self.assertEqual(result["reclaimable_pickup_action_slots"], 1)
         self.assertIsNotNone(result["candidate"])
 
     def test_shared_shed_timing_interference_is_rejected(self):
@@ -121,7 +121,7 @@ class BulkFeederTests(unittest.TestCase):
         witness = bf.scan_route(route, "fixture")[0]
         result = bf.verify_unit_window(obs, route, witness, mechanics=self.mechanics)
         self.assertFalse(result["equivalent"])
-        self.assertEqual(result["recovered_pickup_turns"], 0)
+        self.assertEqual(result["reclaimable_pickup_action_slots"], 0)
         with self.assertRaises(bf.WitnessError):
             bf.materialize_verified(obs, route, witness, mechanics=self.mechanics)
 
@@ -133,7 +133,7 @@ class BulkFeederTests(unittest.TestCase):
     def test_forged_gain_metadata_is_rejected(self):
         route = simple_route()
         witness = bf.scan_route(route, "fixture")[0]
-        witness["recovered_pickup_turns"] = 99
+        witness["reclaimable_pickup_action_slots"] = 99
         with self.assertRaises(bf.WitnessError):
             bf.apply_witness(route, witness)
         witness = bf.scan_route(route, "fixture")[0]
@@ -153,6 +153,34 @@ class BulkFeederTests(unittest.TestCase):
                 with self.assertRaises(bf.WitnessError):
                     bf.verify_unit_window(obs, route, witness, mechanics=self.mechanics)
 
+    def test_noncanonical_calendar_is_rejected_before_replay(self):
+        route = [row(["PASS"]) for _ in range(14)]
+        route[11]["farmer"] = ["PICKUP", "WHEAT", 1]
+        route[12]["farmer"] = ["PICKUP", "WHEAT", 1]
+        route[13]["farmer"] = ["FEED"]
+        witness = {
+            "route_id": "fixture",
+            "actor": 0,
+            "start_step": 11,
+            "end_step": 13,
+            "pickup_steps": [11, 12],
+            "feed_steps": [13],
+            "bulk_quantity": 2,
+            "reclaimable_pickup_action_slots": 1,
+            "travel_savings_lower_bound": 0,
+        }
+
+        class ReplayMustNotRun:
+            @staticmethod
+            def _apply_unit_action(*args, **kwargs):
+                raise AssertionError("calendar mismatch reached unit replay")
+
+        with self.assertRaisesRegex(bf.WitnessError, "canonical 24-turn route calendar"):
+            bf.verify_unit_window(
+                observation(step=11), route, witness,
+                mechanics=ReplayMustNotRun(), turns_per_day=12,
+            )
+
     def test_day_crossing_witness_is_rejected(self):
         route = [row(["PASS"]) for _ in range(26)]
         route[23]["farmer"] = ["PICKUP", "WHEAT", 1]
@@ -166,7 +194,7 @@ class BulkFeederTests(unittest.TestCase):
             "pickup_steps": [23, 24],
             "feed_steps": [25],
             "bulk_quantity": 2,
-            "recovered_pickup_turns": 1,
+            "reclaimable_pickup_action_slots": 1,
             "travel_savings_lower_bound": 0,
         }
         with self.assertRaises(bf.WitnessError):

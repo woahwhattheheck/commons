@@ -23,18 +23,23 @@ WHEAT pickup/FEED windows. It can consolidate every pickup in one window into
 the first pickup and replace only the later pickup actions with `PASS`.
 
 The scan is intentionally only a proposal. A candidate is materialized only
-after `verify_unit_window()` binds an exact observed `(player, step)`, replays
-**all actors** from that observed state with the pinned deterministic unit
-mechanics, and proves exact final `farm` and `private` equality. This catches
-shared-shed timing conflicts such as another worker depositing WHEAT after the
-first pickup. Witness-reported gains are recomputed and movement savings are
-hard-pinned to zero.
+after `verify_unit_window()` binds an exact observed `(player, step)`, requires
+the canonical 24-turn route calendar, replays **all actors** from that observed
+state with the pinned deterministic unit mechanics, and proves exact final
+`farm` and `private` equality. This catches shared-shed timing conflicts such as
+another worker depositing WHEAT after the first pickup. Witness-reported
+action-slot opportunities are recomputed and movement savings are hard-pinned
+to zero.
 
-Market-bearing windows and day boundaries are rejected. Movement is not changed
-by this first carrier, so its travel-savings lower bound is deliberately `0`;
-the proved gain is reclaimed pickup turns. Those free turns and the reported
-return loops are the safe substrate for a later path compactor only after that
-movement rewrite gets its own exact-state proof and evaluation evidence.
+Market-bearing windows and day boundaries are rejected. The verifier fails
+closed for noncanonical day lengths because the route scanner/validator is
+24-turn-calendar-specific and does not simulate EOD lifecycle. Movement and
+route length are not changed by this carrier, so elapsed-turn and travel-savings
+claims remain deliberately `0`. The proved opportunity is only the number of
+later pickup actions replaced by `PASS`, reported as
+`reclaimable_pickup_action_slots`. Those PASS slots are substrate for a later
+path compactor only after that movement rewrite gets its own exact-state proof
+and evaluation evidence.
 
 ## Usage
 
@@ -45,11 +50,12 @@ python -B candidates/v5/bulk-feeder-pocket/test_bulk_feeder.py
 ```
 
 The CLI emits deterministic JSON under
-`titan-v5-bulk-feeder-pocket-audit/v1`.
+`titan-v5-bulk-feeder-pocket-audit/v2`.
 
 ## Non-goals
 
 This package does not edit `spatial_tempo.py`, root runtime code, defaults,
 configuration, the canonical archive, or Kaggle activation. It does not claim
 that a static opportunity is safe without an observed equality witness, and it
-does not claim travel savings until movement itself is separately proved.
+does not claim elapsed-turn or travel savings until movement itself is
+separately proved.
