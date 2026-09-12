@@ -162,7 +162,9 @@ def _schedule(native,start,target,current_hire_ordinal):
 
 
 def _eggs(start):
-    first=start+3
+    # Engine GOOSE.first_yield_day == 4. PLACE stores placed_day=current day,
+    # and end-of-day refresh creates the first harvestable yield for start+4.
+    first=start+4
     return 0 if first>LAST_DAY else 4+2*(LAST_DAY-first)
 
 
