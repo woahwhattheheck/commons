@@ -1,0 +1,52 @@
+name: TITAN V5 S2 milk-gated sheep swap
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/s2-milk-shop-gated/**"
+      - "revenue/kaggriculture/cloud-execution-lab/test_v5_s2_sheep_swap.py"
+      - ".github/workflows/titan-v5-s2-milk-gated.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile S2 recovery
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: >-
+          python -B -m py_compile
+          candidates/v5/s2-milk-shop-gated/r04_s2_sheep_swap.py
+          candidates/v5/s2-milk-shop-gated/v5_s2_adapter.py
+          candidates/v5/s2-milk-shop-gated/test_r04_s2_sheep_swap.py
+          test_v5_s2_sheep_swap.py
+      - name: Recovered donor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/s2-milk-shop-gated
+        run: python -B -m unittest -v test_r04_s2_sheep_swap.py
+      - name: Optimized recovered donor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/s2-milk-shop-gated
+        run: python -O -B -m unittest -v test_r04_s2_sheep_swap.py
+      - name: Current V5 adapter contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -B -m unittest -v test_v5_s2_sheep_swap.py
+      - name: Optimized current V5 adapter contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: python -O -B -m unittest -v test_v5_s2_sheep_swap.py
