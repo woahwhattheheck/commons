@@ -1,17 +1,8 @@
 #!/usr/bin/env python3
 """Fail-closed 719-step authored COBUY collision atlas.
 
-Research/evidence only.  This extends the existing COBUY family without retiming
+Research/evidence only. This extends the existing COBUY family without retiming
 orders or claiming current-rival private-action visibility.
-
-Authority is intentionally narrow:
-* own (Arlene) BUY_PRODUCT pulses must be identical across every route and have
-  no earlier authored SELL that Arlene's clamp_sells may delete;
-* rival (Apex) BUY_PRODUCT pulses must be identical across both tape routes;
-* Apex six-day budget boundaries are non-authoritative because sales_first may
-  prepend/reorder SELLs, except step 0 which has an independent post-guard
-  native-entrypoint receipt;
-* only official executable-prefix rows are considered.
 """
 from __future__ import annotations
 
@@ -67,27 +58,23 @@ def _load_module(path: Path, name: str) -> ModuleType:
     return module
 
 
-def _plain_positive(value: Any) -> int | None:
-    return value if type(value) is int and value > 0 else None
-
-
 def _buy_row(raw: Any) -> tuple[str, int] | None:
     if not isinstance(raw, list) or len(raw) < 3:
         return None
     if raw[0] != "BUY_PRODUCT" or raw[1] not in BUYABLE:
         return None
-    qty = _plain_positive(raw[2])
-    if qty is None:
+    qty = raw[2]
+    if type(qty) is not int or qty <= 0:
         return None
     return str(raw[1]), qty
 
 
 def _arlene_row_stable(market: list[Any], row: int) -> bool:
-    """Fail closed when clamp_sells could delete an earlier row and shift BUY."""
-    for raw in market[:row]:
-        if isinstance(raw, list) and raw and raw[0] == "SELL":
-            return False
-    return True
+    """clamp_sells may delete an earlier SELL and shift every later row."""
+    return not any(
+        isinstance(raw, list) and raw and raw[0] == "SELL"
+        for raw in market[:row]
+    )
 
 
 def load_arlene(path: Path) -> ModuleType:
@@ -127,36 +114,31 @@ def arlene_route_pulses(module: ModuleType) -> dict[str, list[dict[str, Any]]]:
                 if parsed is None:
                     continue
                 item, qty = parsed
-                pulses.append(
-                    {
-                        "route": str(route_id),
-                        "step": step,
-                        "row": row,
-                        "item": item,
-                        "qty": qty,
-                        "raw_index_stable": _arlene_row_stable(capped, row),
-                    }
-                )
+                pulses.append({
+                    "route": str(route_id),
+                    "step": step,
+                    "row": row,
+                    "item": item,
+                    "qty": qty,
+                    "raw_index_stable": _arlene_row_stable(capped, row),
+                })
         out[str(route_id)] = pulses
     return out
 
 
-def _invariant_pulses(
-    per_route: dict[str, list[dict[str, Any]]],
-) -> list[dict[str, Any]]:
-    """Exact (step,row,item,qty) intersection across every route, stable only."""
+def _invariant_pulses(per_route: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Exact stable (step,row,item,qty) intersection across every route."""
     route_ids = sorted(per_route)
     if not route_ids:
         return []
-    key_sets: list[set[tuple[int, int, str, int]]] = []
-    for route_id in route_ids:
-        key_sets.append(
-            {
-                (p["step"], p["row"], p["item"], p["qty"])
-                for p in per_route[route_id]
-                if p["raw_index_stable"]
-            }
-        )
+    key_sets = [
+        {
+            (p["step"], p["row"], p["item"], p["qty"])
+            for p in per_route[route_id]
+            if p["raw_index_stable"]
+        }
+        for route_id in route_ids
+    ]
     shared = set.intersection(*key_sets)
     return [
         {"step": step, "row": row, "item": item, "qty": qty}
@@ -165,94 +147,119 @@ def _invariant_pulses(
 
 
 def _decode_apex_market(encoded: str) -> list[list[Any]]:
+    """Mirror Apex _unpack_action before its final Python market[:10] cap.
+
+    PASS rows disappear during unpack, so the executable 10-row prefix must be
+    capped only *after* that compression. Keeping all encoded rows here prevents
+    a BUY at encoded index >=10 from being incorrectly lost when earlier PASS
+    rows make it executable.
+    """
     decoded = decode_apex_action(encoded)
     out: list[list[Any]] = []
-    for op_idx, item_idx, qty in decoded["orders"][:MAX_ORDERS]:
+    for op_idx, item_idx, qty in decoded["orders"]:
         if not (0 <= op_idx < len(MARKET_OPS)):
             continue
         op = MARKET_OPS[op_idx]
+        if op == "PASS":
+            continue
         if op in ("HIRE", "BUY_LAND"):
             out.append([op])
             continue
-        if op == "PASS":
-            continue
         if not (0 <= item_idx < len(PRODUCTS)):
-            # PRODUCTS covers only product indices; non-product BUY_* rows are
-            # irrelevant to COBUY and are represented as opaque placeholders so
-            # raw indices remain exact.
+            # Preserve the executable row position for non-product orders.
             out.append(["OTHER", item_idx, qty])
             continue
         out.append([op, PRODUCTS[item_idx], qty])
     return out
 
 
-def apex_route_pulses(
-    tape_text: str,
-    *,
-    native_verified_opening: bool,
-) -> dict[str, list[dict[str, Any]]]:
+def apex_route_pulses(tape_text: str, *, native_verified_opening: bool) -> dict[str, list[dict[str, Any]]]:
     tapes = parse_apex_tapes(tape_text)
     out: dict[str, list[dict[str, Any]]] = {}
     for route_index, route in enumerate(tapes):
         pulses: list[dict[str, Any]] = []
         for step, encoded in enumerate(route):
-            market = _decode_apex_market(encoded)
-            for row, raw in enumerate(market[:MAX_ORDERS]):
+            market = _decode_apex_market(encoded)[:MAX_ORDERS]
+            for row, raw in enumerate(market):
                 parsed = _buy_row(raw)
                 if parsed is None:
                     continue
                 item, qty = parsed
-                terminal_stripped = step == APEX_TERMINAL_STRIP_STEP
                 guard_boundary = step % APEX_GUARD_INTERVAL == 0
-                independently_stable_opening = step == 0 and native_verified_opening
-                stable = (
-                    not terminal_stripped
-                    and (not guard_boundary or independently_stable_opening)
-                )
-                pulses.append(
-                    {
-                        "route": str(route_index),
-                        "step": step,
-                        "row": row,
-                        "item": item,
-                        "qty": qty,
-                        "raw_index_stable": stable,
-                        "guard_boundary": guard_boundary,
-                        "terminal_stripped": terminal_stripped,
-                    }
-                )
+                terminal_stripped = step == APEX_TERMINAL_STRIP_STEP
+                opening_exception = step == 0 and native_verified_opening
+                pulses.append({
+                    "route": str(route_index),
+                    "step": step,
+                    "row": row,
+                    "item": item,
+                    "qty": qty,
+                    "raw_index_stable": (
+                        not terminal_stripped
+                        and (not guard_boundary or opening_exception)
+                    ),
+                    "guard_boundary": guard_boundary,
+                    "terminal_stripped": terminal_stripped,
+                })
         out[str(route_index)] = pulses
     return out
 
 
+def _pair_collisions(
+    own_pulses: list[dict[str, Any]],
+    rival_pulses: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Return every same-step/item pair; never collapse repeated same-item buys."""
+    own_by_key: dict[tuple[int, str], list[dict[str, Any]]] = {}
+    rival_by_key: dict[tuple[int, str], list[dict[str, Any]]] = {}
+    for pulse in own_pulses:
+        own_by_key.setdefault((pulse["step"], pulse["item"]), []).append(pulse)
+    for pulse in rival_pulses:
+        rival_by_key.setdefault((pulse["step"], pulse["item"]), []).append(pulse)
+
+    collisions: list[dict[str, Any]] = []
+    for key in sorted(set(own_by_key) & set(rival_by_key)):
+        owns = sorted(own_by_key[key], key=lambda p: (p["row"], p["qty"]))
+        rivals = sorted(rival_by_key[key], key=lambda p: (p["row"], p["qty"]))
+        for own in owns:
+            for rival in rivals:
+                collisions.append({
+                    "step": own["step"],
+                    "item": own["item"],
+                    "own_row": own["row"],
+                    "own_qty": own["qty"],
+                    "rival_row": rival["row"],
+                    "rival_qty": rival["qty"],
+                    "same_raw_index": own["row"] == rival["row"],
+                    "row_delta_own_minus_rival": own["row"] - rival["row"],
+                })
+    return collisions
+
+
 def _load_opening_receipt(path: Path) -> dict[str, Any]:
-    data = _require_blob(path, OPENING_RECEIPT_BLOB, "COBUY opening receipt")
-    receipt = json.loads(data)
+    receipt = json.loads(_require_blob(path, OPENING_RECEIPT_BLOB, "COBUY opening receipt"))
     if receipt.get("schema") != "titan-v4-cobuy-current-native-opening-v1":
         raise ValueError("unexpected COBUY opening receipt schema")
     native = receipt.get("native_entrypoint_verification") or {}
-    verified = (
+    receipt["_native_opening_verified"] = (
         native.get("apex_agent_step0_post_guard")
         == "VERIFIED_WHEAT13_RAW_ROW0_BOTH_SEATS"
     )
-    receipt["_native_opening_verified"] = bool(verified)
     return receipt
 
 
 def _assert_apex_source_contracts(main_text: str, guard_text: str, policy_text: str) -> None:
-    required_main = (
+    for marker in (
         "action['market'] = market[:10]",
         "market = [o for o in market if o[0] == 'SELL']",
-    )
-    for marker in required_main:
+    ):
         if marker not in main_text:
             raise ValueError(f"Apex main source contract missing: {marker}")
-    required_guard = (
+    for marker in (
         "inline void budget_sales_first(Action& action)",
         "if (added > 0 && settings.sales_first) budget_sales_first(result);",
         "action.orders[action.n_orders++]",
-    )
-    for marker in required_guard:
+    ):
         if marker not in guard_text:
             raise ValueError(f"Apex guard source contract missing: {marker}")
     if "if (state.step == 0) selected_route = 0;" not in policy_text:
@@ -268,8 +275,7 @@ def build_atlas(
     apex_guard_path: Path,
     opening_receipt_path: Path,
 ) -> dict[str, Any]:
-    arlene = load_arlene(arlene_path)
-    arlene_routes = arlene_route_pulses(arlene)
+    arlene_routes = arlene_route_pulses(load_arlene(arlene_path))
     own_invariant = _invariant_pulses(arlene_routes)
 
     tape_text = checked_text(apex_tape_path, APEX_TAPE_BLOB)
@@ -284,56 +290,19 @@ def build_atlas(
         native_verified_opening=opening_receipt["_native_opening_verified"],
     )
     rival_invariant = _invariant_pulses(apex_routes)
-
-    own_by_step_item = {(p["step"], p["item"]): p for p in own_invariant}
-    rival_by_step_item = {(p["step"], p["item"]): p for p in rival_invariant}
-
-    collisions: list[dict[str, Any]] = []
-    for key in sorted(set(own_by_step_item) & set(rival_by_step_item)):
-        own = own_by_step_item[key]
-        rival = rival_by_step_item[key]
-        collisions.append(
-            {
-                "step": own["step"],
-                "item": own["item"],
-                "own_row": own["row"],
-                "own_qty": own["qty"],
-                "rival_row": rival["row"],
-                "rival_qty": rival["qty"],
-                "same_raw_index": own["row"] == rival["row"],
-                "row_delta_own_minus_rival": own["row"] - rival["row"],
-            }
-        )
+    collisions = _pair_collisions(own_invariant, rival_invariant)
 
     route_pair_candidates: list[dict[str, Any]] = []
     for own_route, own_pulses in sorted(arlene_routes.items()):
-        own_map = {
-            (p["step"], p["item"]): p
-            for p in own_pulses
-            if p["raw_index_stable"]
-        }
+        own_stable = [p for p in own_pulses if p["raw_index_stable"]]
         for rival_route, rival_pulses in sorted(apex_routes.items()):
-            rival_map = {
-                (p["step"], p["item"]): p
-                for p in rival_pulses
-                if p["raw_index_stable"]
-            }
-            for key in sorted(set(own_map) & set(rival_map)):
-                own = own_map[key]
-                rival = rival_map[key]
-                route_pair_candidates.append(
-                    {
-                        "own_route": own_route,
-                        "rival_route": rival_route,
-                        "step": own["step"],
-                        "item": own["item"],
-                        "own_row": own["row"],
-                        "own_qty": own["qty"],
-                        "rival_row": rival["row"],
-                        "rival_qty": rival["qty"],
-                        "same_raw_index": own["row"] == rival["row"],
-                    }
-                )
+            rival_stable = [p for p in rival_pulses if p["raw_index_stable"]]
+            for pair in _pair_collisions(own_stable, rival_stable):
+                route_pair_candidates.append({
+                    "own_route": own_route,
+                    "rival_route": rival_route,
+                    **pair,
+                })
 
     opening = [c for c in collisions if c["step"] == 0 and c["item"] == "WHEAT"]
     return {
@@ -363,9 +332,7 @@ def build_atlas(
             "private_current_rival_action_used": False,
             "field_economics_claimed": False,
             "guard_boundaries_excluded_without_native_receipt": [
-                step
-                for step in range(0, TURNS, APEX_GUARD_INTERVAL)
-                if step != 0
+                step for step in range(0, TURNS, APEX_GUARD_INTERVAL) if step != 0
             ],
             "terminal_non_sell_strip_step": APEX_TERMINAL_STRIP_STEP,
         },
@@ -382,20 +349,19 @@ def build_atlas(
             "own_stable_route_invariant_pulses": len(own_invariant),
             "rival_stable_route_invariant_pulses": len(rival_invariant),
             "authoritative_collisions": len(collisions),
-            "authoritative_same_row_collisions": sum(
-                c["same_raw_index"] for c in collisions
-            ),
+            "authoritative_same_row_collisions": sum(c["same_raw_index"] for c in collisions),
             "route_pair_candidates": len(route_pair_candidates),
         },
         "controls": {
             "step0_wheat_collision_present": bool(opening),
-            "step0_wheat_same_row": bool(opening and opening[0]["same_raw_index"]),
+            "step0_wheat_same_row": any(c["same_raw_index"] for c in opening),
         },
         "limits": [
             "This is an authored-source atlas, not a replay of hidden rival current actions.",
             "Apex six-day guard boundaries fail closed because budget sales may be moved ahead of buys.",
             "Arlene rows after an authored SELL fail closed because clamp_sells may delete that SELL and shift the buy.",
             "Route-pair candidates are research narrowing only; only route-invariant collisions are authoritative.",
+            "Repeated same-item buys are retained as distinct raw-row pairs rather than collapsed.",
             "No price/EV claim is made for later-game collisions without realized public market state.",
             "No runtime/default/config/archive/Kaggle activation is authorized by this atlas.",
         ],
