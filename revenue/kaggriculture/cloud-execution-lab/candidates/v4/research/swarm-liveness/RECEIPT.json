@@ -1,19 +1,28 @@
 {
   "canonical_root": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
   "files_sha256": {
-    "README.md": "7b2be5acf65cf2dbb0895bf70b6fef68d4b6836ba748a42f76293a8c4f0fde22",
+    "README.md": "99f4368d9a52b38860a64566d517946fd70ca71ea01be88bda6d28ffe965b3c5",
     "adversarial-events.jsonl": "88f23c681bc1f343423a8d15d3cd96fbc806814444cbe7818b28ffc47ee8960f",
-    "claim_liveness.py": "eaef5883a2c39f18a9bd75be31dd83bcf1809d07947aabd79a4038c85915adfc",
+    "claim_liveness.py": "ba42ae1d25b809f89c435ea76d27cb20c4953a8e08d40726b60b5244689a2fff",
     "test_claim_arbitration.py": "4a6431414d33e6eb8052c445cb79b379e257dca25a04ad0d7f68f2c893815a9d",
-    "test_claim_liveness.py": "27a7b92f130c08a6d79810a64e32fddfad7165e7f705af86cf5f9d4d0e08f7ac",
+    "test_claim_liveness.py": "a314ee9874d079bcfd1bc90c78e1703fca9e6cd249c543c692b4b7556a5d4db6",
     "test_scope_keys.py": "5106c9304c4c44d78018f831949dcce83f36b2e68d23956e815781f64f802d8e"
+  },
+  "git_blobs": {
+    "README.md": "25e0f441c531cb7319125e8582a13b5153fa183a",
+    "claim_liveness.py": "3b1b0177d57b7896b3b47f0e84c9f7d75f434d34",
+    "test_claim_liveness.py": "1321a753481fc8d517093abf61966cd296d10f71"
   },
   "safety": {
     "arbitration_is_overwrite_authority": false,
     "earliest_fresh_claim_precedence_is_advisory": true,
     "equal_earliest_claim_tie_fails_closed": true,
     "fresh_owner_blocks_recovery": true,
+    "noncanonical_root_events_authoritative": false,
     "noncanonical_root_is_anomaly": true,
+    "read_only_missing_root_authoritative": true,
+    "repo_write_without_canonical_root_authoritative": false,
+    "repo_writes_require_exact_canonical_root": true,
     "scope_keys_are_explicit_only": true,
     "scope_keys_infer_semantic_equivalence": false,
     "stale_is_overwrite_authority": false
@@ -35,16 +44,16 @@
         ]
       },
       "command": "python -B claim_liveness.py adversarial-events.jsonl --as-of 2000 --ttl-seconds 100",
-      "report_sha256": "8cc10fe2e7cde4e3c885ff5851c4be0fa86353cbcce0db2bac3faccc9f347bbb",
+      "report_sha256": "254bc8c9c23506d919d165582420246551bc7b28dd2557ac9a7fc0a9ed06489e",
       "scope_groups": [],
       "summary": {
-        "active": 1,
+        "active": 0,
         "active_with_stale_owner": 0,
         "anomalies": 1,
         "closed": 1,
         "collisions": 1,
         "cross_lane_scoped_collisions": 0,
-        "lanes": 4,
+        "lanes": 3,
         "scoped_active_groups": 0,
         "scoped_collisions": 0,
         "stale_claims": 1
@@ -53,12 +62,12 @@
     "normal": {
       "command": "python -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 30
+      "passed": 45
     },
     "optimized": {
       "command": "python -O -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 30
+      "passed": 45
     }
   }
 }
