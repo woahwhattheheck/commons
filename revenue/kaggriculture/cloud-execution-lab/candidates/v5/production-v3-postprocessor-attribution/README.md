@@ -19,7 +19,7 @@ The aggregate comparison therefore justifies localization, but the strict champi
 - `TITAN-CONFIG.json` SHA256: `ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af`
 - repaired v3 `main.py` SHA256: `b98aec64f83ea9a216def7ab1fef320a6498ae37816f506af1f891c934027035`
 
-The materializer reuses the already-reviewed R04/FrozenSelected semantic pins from the aggregate-survivorship carrier and rotates only the `main.py` identity to production-v3. It authenticates the whole archive before emitting anything. Every treatment changes only `TITAN-CONFIG.json`; the other 91 members remain byte-identical.
+The materializer reuses the already-reviewed R04/FrozenSelected semantic pins from the aggregate-survivorship carrier and rotates only the `main.py` identity to production-v3. It authenticates the whole archive before emitting anything. Every treatment changes only `TITAN-CONFIG.json`; the other 91 members remain byte-identical. The machine receipt records the complete 92-member SHA256 map for the baseline and for every arm, and the exact-head workflow independently reconstructs those maps from the reproduced package before accepting the screen.
 
 ## Three valid knockout arms
 
