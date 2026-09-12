@@ -1,18 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """Internal V4 B10/M1 composition helper with no public feature key.
 
-The predecessor ``r04_b10_public_supply_order.py`` stays byte-exact.  The router may call
+The predecessor ``r04_b10_public_supply_order.py`` stays byte-exact. The router may call
 this helper only from the existing post-EOD B10 slot when both predecessor features
-``M1_WHEAT_TRADE`` and ``B10_PUBLIC_SUPPLY_ORDER`` are already enabled.  If the final
-market row is the narrow independently-funded WHEAT purchase shape proved by M1, the
-helper removes only that row, calls canonical B10 exactly once on the copied prefix, then
-restores the exact BUY tail.  Otherwise it calls canonical B10 once on the untouched
-parent action.
+``M1_WHEAT_TRADE`` and ``B10_PUBLIC_SUPPLY_ORDER`` are already enabled.
 
-There is deliberately no ``r04_b10_m1_bridge`` config key, Features field, install
-parameter, router flag, or independent enable bit.  This module resolves only the
-intersection of two existing features, so either predecessor feature alone retains its
-pre-composition behavior and public API.
+Crucially, a WHEAT BUY is hidden from B10 only when the caller supplies the exact action
+that entered M1 and the post-EOD action is provably that exact market prefix plus one
+safe final M1-shaped WHEAT BUY. Shape/funding alone is not provenance: another shipped
+controller can already own a final WHEAT BUY, in which case M1 returns its parent
+unchanged and canonical B10's cash-spend veto must remain in force.
 """
 from __future__ import annotations
 
@@ -28,7 +25,7 @@ def _get(value: Any, key: str, default: Any = None) -> Any:
 
 
 def _finite_nonnegative_money(value: Any) -> bool:
-    """Engine money is numeric; hostile JSON ints must fail closed, never overflow."""
+    """Engine money is numeric; hostile huge ints must fail closed, never overflow."""
     if type(value) not in (int, float) or value < 0:
         return False
     try:
@@ -37,17 +34,28 @@ def _finite_nonnegative_money(value: Any) -> bool:
         return False
 
 
-def _safe_prefunded_tail(observation: Any, action: Any, configuration: Any):
-    """Return the exact removable M1 WHEAT BUY row, else ``None``.
+def _m1_append_provenance(parent_action: Any, final_action: Any) -> bool:
+    """Prove final market == exact pre-M1 market + exactly one row."""
+    if not isinstance(parent_action, dict) or not isinstance(final_action, dict):
+        return False
+    before = parent_action.get("market")
+    after = final_action.get("market")
+    if not isinstance(before, list) or not isinstance(after, list):
+        return False
+    if len(after) != len(before) + 1:
+        return False
+    # Equality is intentionally structural rather than identity: M1 deep-copies
+    # its output, while EOD may conservatively return that copied action unchanged.
+    return after[:-1] == before
 
-    The proof is intentionally no broader than current M1: standard config/default
-    market, executable literal rows, one final q<=MAX_BUY WHEAT BUY, no earlier
-    purchase/WHEAT row, enough public WHEAT stock and shed room, and cash that remains
-    sufficient even at M1's same-turn +25 WHEAT surcharge bound.  Reordering
-    non-WHEAT SELL rows therefore cannot fund or defund this BUY.
-    """
+
+def _safe_prefunded_tail(observation: Any, action: Any, configuration: Any,
+                         m1_parent_action: Any):
+    """Return exact removable M1-authored WHEAT BUY row, else ``None``."""
     import r04_m1_wheat_trade as m1
 
+    if not _m1_append_provenance(m1_parent_action, action):
+        return None
     if not m1._standard_configuration(configuration):
         return None
     if not isinstance(action, dict):
@@ -116,16 +124,14 @@ def _safe_prefunded_tail(observation: Any, action: Any, configuration: Any):
     return tail
 
 
-def apply_b10_m1_bridge(observation: Any, parent_action: Any, configuration: Any = None):
-    """Call canonical B10 exactly once, optionally hiding one certified M1 BUY tail.
-
-    Caller contract: this function is entered only when both existing predecessor
-    feature flags are true.  Keeping that gate in the router avoids inventing a third
-    independently-configurable feature whose semantics depend on the other two.
-    """
+def apply_b10_m1_bridge(observation: Any, parent_action: Any, configuration: Any = None,
+                        *, m1_parent_action: Any = None):
+    """Call canonical B10 once; hide one BUY only with exact M1 append provenance."""
     import r04_b10_public_supply_order as b10
 
-    tail = _safe_prefunded_tail(observation, parent_action, configuration)
+    tail = _safe_prefunded_tail(
+        observation, parent_action, configuration, m1_parent_action,
+    )
     if tail is None:
         return b10.apply_public_supply_order(
             observation, parent_action, configuration, enabled=True,
@@ -137,9 +143,6 @@ def apply_b10_m1_bridge(observation: Any, parent_action: Any, configuration: Any
         observation, stripped, configuration, enabled=True,
     )
 
-    # Canonical B10 returning the exact stripped object means it changed no action
-    # bytes. Its evidence record intentionally ignores BUY rows, so the original
-    # parent action is the exact final result.
     if result is stripped:
         return parent_action
 

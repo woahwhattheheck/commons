@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Router-level regression for B10/M1 authorship provenance.
+"""Router-level regression for B10/M1 authorship + captured-parent provenance.
 
 A final WHEAT BUY may already belong to a predecessor controller. The keyless
 B10/M1 bridge is legal only when the current M1 helper actually authored a new
 action object; an inherited parent BUY must stay on canonical B10's cash-spend
-veto path.
+veto path. When M1 does author, the exact pre-M1 parent must be forwarded to the
+prefix-provenance helper.
 """
 from __future__ import annotations
 
@@ -109,7 +110,7 @@ class B10M1AuthorshipTests(unittest.TestCase):
             mock.ANY, parent, CONFIG, enabled=True,
         )
 
-    def test_actual_m1_new_object_may_use_bridge(self):
+    def test_actual_m1_new_object_forwards_exact_parent_to_bridge(self):
         parent = {
             "farmer": ["PASS"],
             "hands": [],
@@ -119,7 +120,9 @@ class B10M1AuthorshipTests(unittest.TestCase):
         authored["market"].append(["BUY_PRODUCT", "WHEAT", 4])
         result, bridge_call, b10_call = self._router(parent, authored)
         self.assertIs(result, authored)
-        bridge_call.assert_called_once_with(mock.ANY, authored, CONFIG)
+        bridge_call.assert_called_once_with(
+            mock.ANY, authored, CONFIG, m1_parent_action=parent,
+        )
         b10_call.assert_not_called()
 
 
