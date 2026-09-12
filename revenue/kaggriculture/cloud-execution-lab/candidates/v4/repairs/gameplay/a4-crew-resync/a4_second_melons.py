@@ -284,10 +284,10 @@ def apply_a4(observation, action, *, enabled=False, count=DEFAULT_COUNT,
              plant_day=DEFAULT_PLANT_DAY):
     """Second-wave melon lane as a v3_agent() post-processing layer.
 
-    Returns the (possibly modified) action. With enabled=False the input action
-    object is returned untouched.
+    Returns the (possibly modified) action. Only literal enabled=True activates;
+    every other token preserves the input action object untouched.
     """
-    if not enabled:
+    if enabled is not True:
         return action
     REPORT["enabled"] = True
     count = max(0, int(count))
