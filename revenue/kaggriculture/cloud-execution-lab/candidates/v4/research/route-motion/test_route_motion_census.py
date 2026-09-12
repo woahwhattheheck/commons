@@ -49,26 +49,31 @@ def fake_tapes():
 
 
 class MotionCensusTests(unittest.TestCase):
-    def test_two_step_loop_is_admitted(self):
+    def test_two_step_loop_is_replay_candidate_not_rewrite_authority(self):
         report = mod.census_route(
             [action(["EAST"]), action(["WEST"])],
             plan=0,
         )
-        self.assertEqual(report["closed_loop_count"], 1)
+        self.assertEqual(report["open_loop_candidate_count"], 1)
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [])
-        self.assertEqual(report["jointly_pass_equivalent_loop_movement_rows"], [0, 1])
+        self.assertEqual(report["open_loop_candidate_movement_rows"], [0, 1])
         self.assertEqual(
-            report["closed_hire_free_motion_loops"][0]["movement_rows"], [0, 1]
+            report["open_loop_closed_motion_candidates"][0]["movement_rows"], [0, 1]
         )
+        self.assertEqual(
+            report["open_loop_closed_motion_candidates"][0]["classification"],
+            "OPEN_LOOP_REPLAY_REQUIRED",
+        )
+        self.assertNotIn("jointly_pass_equivalent_loop_movement_rows", report)
 
-    def test_closed_loop_rows_are_not_individual_authorizations(self):
+    def test_closed_loop_intermediate_positions_are_observable_candidates(self):
         report = mod.census_route(
             [action(["EAST"]), action(["WEST"])],
             plan=0,
         )
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [])
         self.assertEqual(
-            report["closed_hire_free_motion_loops"][0]["movement_rows"], [0, 1]
+            report["open_loop_closed_motion_candidates"][0]["movement_rows"], [0, 1]
         )
         start = mod._default_spawn()
         after_east, _ = mod._move(start, "EAST", mod.BOARD_SIZE)
@@ -84,9 +89,9 @@ class MotionCensusTests(unittest.TestCase):
             ],
             plan=0,
         )
-        self.assertEqual(report["closed_loop_count"], 0)
+        self.assertEqual(report["open_loop_candidate_count"], 0)
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [])
-        self.assertEqual(report["jointly_pass_equivalent_loop_movement_rows"], [])
+        self.assertEqual(report["open_loop_candidate_movement_rows"], [])
 
     def test_substantive_unit_action_is_a_barrier(self):
         report = mod.census_route(
@@ -97,9 +102,9 @@ class MotionCensusTests(unittest.TestCase):
             ],
             plan=0,
         )
-        self.assertEqual(report["closed_loop_count"], 0)
+        self.assertEqual(report["open_loop_candidate_count"], 0)
 
-    def test_pass_inside_loop_does_not_break_proof(self):
+    def test_pass_inside_loop_preserves_open_loop_candidate(self):
         report = mod.census_route(
             [
                 action(["EAST"]),
@@ -108,9 +113,9 @@ class MotionCensusTests(unittest.TestCase):
             ],
             plan=0,
         )
-        self.assertEqual(report["closed_loop_count"], 1)
+        self.assertEqual(report["open_loop_candidate_count"], 1)
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [])
-        self.assertEqual(report["jointly_pass_equivalent_loop_movement_rows"], [0, 2])
+        self.assertEqual(report["open_loop_candidate_movement_rows"], [0, 2])
 
     def test_boundary_move_is_already_pass_equivalent(self):
         report = mod.census_route(
@@ -120,16 +125,16 @@ class MotionCensusTests(unittest.TestCase):
         )
         self.assertEqual(report["boundary_noop_rows"], [0])
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [0])
-        self.assertEqual(report["jointly_pass_equivalent_loop_movement_rows"], [])
+        self.assertEqual(report["open_loop_candidate_movement_rows"], [])
 
     def test_day_boundary_resets_loop_state(self):
         route = [action(["PASS"]) for _ in range(25)]
         route[23] = action(["EAST"])
         route[24] = action(["WEST"])
         report = mod.census_route(route, plan=0)
-        self.assertEqual(report["closed_loop_count"], 0)
+        self.assertEqual(report["open_loop_candidate_count"], 0)
 
-    def test_disjoint_loops_are_not_nested_spam(self):
+    def test_disjoint_candidates_are_not_nested_spam(self):
         report = mod.census_route(
             [
                 action(["EAST"]),
@@ -139,13 +144,11 @@ class MotionCensusTests(unittest.TestCase):
             ],
             plan=0,
         )
-        self.assertEqual(report["closed_loop_count"], 2)
+        self.assertEqual(report["open_loop_candidate_count"], 2)
         self.assertEqual(report["individually_pass_equivalent_movement_rows"], [])
+        self.assertEqual(report["open_loop_candidate_movement_rows"], [0, 1, 2, 3])
         self.assertEqual(
-            report["jointly_pass_equivalent_loop_movement_rows"], [0, 1, 2, 3]
-        )
-        self.assertEqual(
-            [g["movement_rows"] for g in report["closed_hire_free_motion_loops"]],
+            [g["movement_rows"] for g in report["open_loop_closed_motion_candidates"]],
             [[0, 1], [2, 3]],
         )
 
@@ -271,7 +274,7 @@ class MotionCensusTests(unittest.TestCase):
         sources = mod.verify_sources()
         tapes = mod.load_tapes(snapshot=sources.tapes_snapshot)
         report = mod.build_report(tapes, sources)
-        self.assertEqual(report["schema"], "titan.v4.route-motion-census.v2")
+        self.assertEqual(report["schema"], "titan.v4.route-motion-census.v3")
         self.assertEqual(
             report["standard_configuration"],
             {"boardSize": 10, "turnsPerDay": 24},
@@ -280,6 +283,7 @@ class MotionCensusTests(unittest.TestCase):
             report["sources"]["engine_spec_blob"],
             mod.EXPECTED_ENGINE_SPEC_BLOB,
         )
+        self.assertIn("shared public observations", report["theorem"]["closed_loop_status"])
         self.assertEqual(len(report["routes"]), 13)
         self.assertEqual(
             report["totals"]["individually_pass_equivalent_count"],
@@ -289,9 +293,9 @@ class MotionCensusTests(unittest.TestCase):
             ),
         )
         self.assertEqual(
-            report["totals"]["jointly_pass_equivalent_loop_movement_count"],
+            report["totals"]["open_loop_candidate_movement_count"],
             sum(
-                route["jointly_pass_equivalent_loop_movement_count"]
+                route["open_loop_candidate_movement_count"]
                 for route in report["routes"]
             ),
         )
