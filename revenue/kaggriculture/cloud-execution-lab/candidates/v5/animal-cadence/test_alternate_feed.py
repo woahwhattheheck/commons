@@ -46,6 +46,7 @@ class AlternateFeedCandidateTests(unittest.TestCase):
             "hands": [["FEED"]],
             "market": [["SELL", "EGG", 1]],
         }
+        self.turns_per_day = 24
         self.route_identity = {
             "route_id": "test-route",
             "route_source_git_blob": "a" * 40,
@@ -54,18 +55,21 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.certificate = {
             "schema": "titan-v5/animal-cadence/next-feed-certificate/v1",
             "observation_step": 100,
+            "turns_per_day": 24,
             **self.route_identity,
             "feeds": [{"position": [4, 4], "next_feed_step": 120}],
         }
 
-    def apply(self, certificate=_DEFAULT, route_identity=_DEFAULT):
+    def apply(self, certificate=_DEFAULT, route_identity=_DEFAULT, turns_per_day=_DEFAULT):
         cert = deepcopy(self.certificate) if certificate is _DEFAULT else certificate
         route = deepcopy(self.route_identity) if route_identity is _DEFAULT else route_identity
+        calendar = self.turns_per_day if turns_per_day is _DEFAULT else turns_per_day
         return candidate.apply_alternate_feed(
             self.obs,
             self.selected,
             next_feed_certificate=cert,
             route_identity=route,
+            turns_per_day=calendar,
         )
 
     def test_safe_zero_strike_feed_becomes_pass_without_other_edits(self):
@@ -80,6 +84,9 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.assertEqual(report["edits"][0]["animal"], "COW")
         self.assertEqual(report["edits"][0]["certified_next_feed_step"], 120)
         self.assertEqual(report["certificate_provenance"]["observation_step"], 100)
+        self.assertEqual(report["certificate_provenance"]["turns_per_day"], 24)
+        self.assertEqual(report["certificate_provenance"]["next_day_start_step"], 120)
+        self.assertEqual(report["certificate_provenance"]["next_day_end_step"], 143)
         self.assertEqual((self.obs, self.selected), before)
 
     def test_uncertified_next_feed_keeps_selected(self):
@@ -94,9 +101,23 @@ class AlternateFeedCandidateTests(unittest.TestCase):
                 self.assertIs(result, self.selected)
                 self.assertEqual(report["reason"], "malformed_route_identity")
 
+    def test_turns_per_day_must_be_exact_positive_plain_int(self):
+        for value in (None, True, 0, -1, 24.0, "24"):
+            with self.subTest(value=value):
+                result, report = self.apply(turns_per_day=value)
+                self.assertIs(result, self.selected)
+                self.assertEqual(report["reason"], "malformed_turns_per_day")
+
     def test_certificate_must_bind_exact_public_step(self):
         certificate = deepcopy(self.certificate)
         certificate["observation_step"] = 99
+        result, report = self.apply(certificate=certificate)
+        self.assertIs(result, self.selected)
+        self.assertEqual(report["reason"], "next_feed_certificate_mismatch")
+
+    def test_certificate_must_bind_exact_calendar(self):
+        certificate = deepcopy(self.certificate)
+        certificate["turns_per_day"] = 25
         result, report = self.apply(certificate=certificate)
         self.assertIs(result, self.selected)
         self.assertEqual(report["reason"], "next_feed_certificate_mismatch")
@@ -115,18 +136,19 @@ class AlternateFeedCandidateTests(unittest.TestCase):
                 self.assertIs(result, self.selected)
                 self.assertEqual(report["reason"], "next_feed_certificate_mismatch")
 
-    def test_certificate_rejects_bad_hashes_and_nonfuture_feed(self):
-        bad = []
+    def test_certificate_rejects_bad_hashes_duplicate_tiles_and_wrong_day(self):
+        cases = []
         route = deepcopy(self.route_identity)
         route["route_source_git_blob"] = "A" * 40
-        bad.append((deepcopy(self.certificate), route, "malformed_route_identity"))
-        certificate = deepcopy(self.certificate)
-        certificate["feeds"][0]["next_feed_step"] = 100
-        bad.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
+        cases.append((deepcopy(self.certificate), route, "malformed_route_identity"))
+        for next_step in (119, 144):
+            certificate = deepcopy(self.certificate)
+            certificate["feeds"][0]["next_feed_step"] = next_step
+            cases.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
         certificate = deepcopy(self.certificate)
         certificate["feeds"].append({"position": [4, 4], "next_feed_step": 121})
-        bad.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
-        for certificate, route_identity, reason in bad:
+        cases.append((certificate, deepcopy(self.route_identity), "malformed_next_feed_certificate"))
+        for certificate, route_identity, reason in cases:
             with self.subTest(reason=reason):
                 result, report = self.apply(certificate=certificate, route_identity=route_identity)
                 self.assertIs(result, self.selected)
@@ -170,6 +192,12 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         result, report = self.apply()
         self.assertIs(result, self.selected)
         self.assertFalse(report["changed"])
+
+    def test_malformed_inventory_fails_closed(self):
+        self.obs["private"]["inventories"][0] = []
+        result, report = self.apply()
+        self.assertIs(result, self.selected)
+        self.assertEqual(report["reason"], "malformed_inventories")
 
     def test_no_actual_wheat_spend_keeps_feed(self):
         self.obs["private"]["inventories"][1].clear()
