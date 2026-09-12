@@ -8,6 +8,7 @@ import json
 import re
 import sys
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,9 @@ PATTERN_DIR = WIKI_DIR / "patterns"
 SCHEMA = "commons-experience/v1"
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+RECORDED_AT_RE = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$"
+)
 
 
 class ExperienceError(ValueError):
@@ -27,6 +31,16 @@ class ExperienceError(ValueError):
 
 def _json(value: Any) -> str:
     return json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+
+
+def _recorded_at(value: Any, rel: Any = "experience record") -> datetime:
+    """Parse the canonical UTC packet timestamp used for retrieval ordering."""
+    if not isinstance(value, str) or not RECORDED_AT_RE.fullmatch(value):
+        raise ExperienceError(f"{rel}: recorded_at must be an ISO-8601 UTC timestamp ending in Z")
+    try:
+        return datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise ExperienceError(f"{rel}: invalid recorded_at timestamp") from exc
 
 
 def live_cash_markdown(path: Path) -> str:
@@ -101,6 +115,7 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
         raise ExperienceError(f"{rel}: invalid id")
     if path.stem != record_id:
         raise ExperienceError(f"{rel}: filename must match id")
+    _recorded_at(record["recorded_at"], rel)
     if record["outcome"] not in {"passed", "failed"}:
         raise ExperienceError(f"{rel}: outcome must be passed or failed")
     if not isinstance(record["task"], str) or not record["task"].strip():
@@ -116,17 +131,34 @@ def validate_record(record: dict[str, Any], path: Path) -> None:
     patterns = record["patterns"]
     if not isinstance(patterns, list) or not patterns:
         raise ExperienceError(f"{rel}: patterns must be non-empty")
+    seen_patterns: set[str] = set()
     for pattern in patterns:
         needed = {"id", "kind", "summary", "procedure", "applies_to"}
         if not isinstance(pattern, dict) or needed - pattern.keys():
             raise ExperienceError(f"{rel}: malformed pattern")
-        if not ID_RE.fullmatch(pattern["id"]):
+        pattern_id = pattern["id"]
+        if not isinstance(pattern_id, str) or not ID_RE.fullmatch(pattern_id):
             raise ExperienceError(f"{rel}: invalid pattern id")
+        if pattern_id in seen_patterns:
+            raise ExperienceError(f"{rel}: duplicate pattern id: {pattern_id}")
+        seen_patterns.add(pattern_id)
         if pattern["kind"] not in {"success", "failure"}:
             raise ExperienceError(f"{rel}: pattern kind must be success or failure")
-        if not isinstance(pattern["applies_to"], list) or not pattern["applies_to"]:
+        if not isinstance(pattern["summary"], str) or not pattern["summary"].strip():
+            raise ExperienceError(f"{rel}: pattern summary must be non-empty text")
+        if not isinstance(pattern["procedure"], str) or not pattern["procedure"].strip():
+            raise ExperienceError(f"{rel}: pattern procedure must be non-empty text")
+        applies_to = pattern["applies_to"]
+        if not isinstance(applies_to, list) or not applies_to:
             raise ExperienceError(f"{rel}: pattern applies_to must be non-empty")
-    for impact in record["skill_impacts"]:
+        if any(not isinstance(tag, str) or not ID_RE.fullmatch(tag) for tag in applies_to):
+            raise ExperienceError(f"{rel}: pattern applies_to tags must be canonical ids")
+        if len(applies_to) != len(set(applies_to)):
+            raise ExperienceError(f"{rel}: pattern applies_to tags must be unique")
+    skill_impacts = record["skill_impacts"]
+    if not isinstance(skill_impacts, list):
+        raise ExperienceError(f"{rel}: skill_impacts must be a list")
+    for impact in skill_impacts:
         needed = {"skill", "change", "decision", "validation"}
         if not isinstance(impact, dict) or needed - impact.keys():
             raise ExperienceError(f"{rel}: malformed skill impact")
@@ -313,7 +345,8 @@ def retrieve_experience(
         if terms and not matched_terms:
             continue
         ordered = sorted(sources, key=lambda s: (
-            s["record"]["recorded_at"], s["record"]["id"]
+            _recorded_at(s["record"]["recorded_at"], s["record"]["id"]),
+            s["record"]["id"],
         ), reverse=True)
         selected = []
         for kind in ("failure", "success"):
