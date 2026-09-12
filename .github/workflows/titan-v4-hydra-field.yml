@@ -76,6 +76,22 @@ jobs:
             --output "$HYDRA_RESULTS" \
             --seeds 2026091201,2026091207,2026091213,2026091219 \
             | tee "$HYDRA_RESULTS/summary.log"
+      - name: Assert pinned HYDRA field conclusion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads((Path(os.environ["HYDRA_RESULTS"]) / "HYDRA-CURRENT-FIELD-RESULT.json").read_text())
+          summary = result["summary"]
+          assert summary["classification"] == "SAFETY_BLOCKED", summary
+          assert summary["complete_cells"] == summary["requested_cells"], summary
+          assert summary["off_exact_identity_cells"] == summary["requested_cells"], summary
+          assert summary["engaged_cells"] > 0, summary
+          assert summary["weed_after_rewrite"] > 0, summary
+          print(json.dumps(summary, sort_keys=True))
+          PY
       - name: Pin checkout and source hashes
         if: always()
         shell: bash
