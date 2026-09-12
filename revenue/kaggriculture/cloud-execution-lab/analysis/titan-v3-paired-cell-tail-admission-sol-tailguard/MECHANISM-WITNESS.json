@@ -1,0 +1,47 @@
+{
+  "aggregate_masked_tail": {
+    "hidden_cell": {
+      "candidate_seat": 1,
+      "margin_delta": 40.0,
+      "opponent": "arlene",
+      "own_cash_delta": -50.0,
+      "seed": 4
+    },
+    "legacy_aggregate_snapshot": {
+      "all_conditions_pass": true,
+      "conditions": {
+        "candidate_action_activation": true,
+        "nonnegative_cell_balance": true,
+        "nonnegative_median_own_cash": true,
+        "positive_mean_margin": true,
+        "positive_mean_own_cash": true,
+        "zero_lost_wins": true,
+        "zero_new_losses": true
+      }
+    },
+    "lost_wins": 0,
+    "mean_margin_delta": 13.75,
+    "mean_own_cash_delta": 2.5,
+    "median_own_cash_delta": 10.0,
+    "new_losses": 0,
+    "tail_gate_verdict": "REJECT"
+  },
+  "claim": "aggregate-positive evidence cannot conceal one matched-cell TITAN own-cash regression",
+  "content_sha256": "1a951af71b1a40195b25b79a83de0eeb6c8c6b5c2e775ea21546fcbde61b64a7",
+  "operation": "TITAN-V3-PAIRED-CELL-TAIL-ADMISSION-20260910-01",
+  "pareto_safe_frontier": {
+    "gates": {
+      "candidate_action_activation": true,
+      "nonnegative_margin_every_changed_cell": true,
+      "nonnegative_own_every_changed_cell": true,
+      "strict_positive_own_some_changed_cell": true,
+      "zero_lost_wins": true,
+      "zero_new_losses": true
+    },
+    "tail_gate_verdict": "ADMIT"
+  },
+  "promotion_authority": false,
+  "provider_action_authorized": false,
+  "schema_version": 1,
+  "upstream_source_custody_required": true
+}
