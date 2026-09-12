@@ -66,6 +66,29 @@ class EarlyCapitalContracts(unittest.TestCase):
         self.assertLess(ops.index('HIRE'), ops.index('BUY_ANIMAL'))
         self.assertEqual(result['market'][1][1], 'MELON')
 
+    def test_current_tick_plant_does_not_reserve_too_late_seed_order(self):
+        selected = {'farmer': ['PLANT', 'MELON'], 'hands': [],
+                    'market': [['BUY_SEED', 'MELON', 1], ['BUY_LAND']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        result, report = order_early_capital(
+            m, obs(150, money=1500, unlocked=['NW'], seeds={}), CFG, selected, route)
+        self.assertTrue(report['changed'])
+        self.assertEqual(result['market'][0], ['BUY_LAND'])
+        self.assertEqual(result['market'][1], ['BUY_SEED', 'MELON', 1])
+        self.assertEqual(result['farmer'], selected['farmer'])
+
+    def test_next_tick_plant_still_reserves_seed_before_capital(self):
+        selected = {'farmer': ['PASS'], 'hands': [],
+                    'market': [['BUY_SEED', 'MELON', 1], ['BUY_LAND']]}
+        route = [{'farmer': ['PASS'], 'hands': [], 'market': []} for _ in range(720)]
+        route[151] = {'farmer': ['PLANT', 'MELON'], 'hands': [], 'market': []}
+        result, report = order_early_capital(
+            m, obs(150, money=1500, unlocked=['NW'], seeds={}), CFG, selected, route)
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'already_ordered')
+        self.assertEqual(result['market'][0], ['BUY_SEED', 'MELON', 1])
+        self.assertEqual(result['market'][1], ['BUY_LAND'])
+
     def test_cross_turn_land_does_not_drop_today_seeds(self):
         selected = {'farmer': ['WEST'], 'hands': [],
                     'market': [['SELL', 'MELON', 12], ['BUY_SEED', 'CARROT', 9],
