@@ -1,17 +1,26 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fail-closed admission for row-shed SELL ordering that survives pressure.
+"""Fail-closed final-action novelty admission for STRATUM row-shed ordering.
 
-The canonical V4 stack applies its market-pressure transform after the row-shed
-seam. A row-shed rank can therefore differ from the incumbent rank yet still be
-fully erased downstream. This helper admits a row-shed candidate only when the
-*same injected downstream pressure transform*, run with the same public
-observation/configuration/quote evidence, produces a different final action
-from the incumbent path.
+STRATUM is injected inside ``FrozenSelected.transform``. After that seam the
+existing seller may resize, blank, append or reorder market rows before TITAN
+applies canonical market pressure. Therefore neither an intermediate rank
+comparison nor a direct pressure replay from the STRATUM seam proves that
+STRATUM changes the action ultimately returned to the engine.
 
-The helper does not implement or approximate pressure policy. Callers retain
-custody of the exact canonical transform and its source identity. Missing,
-throwing, malformed, or structurally non-preserving downstream evidence fails
-closed to parent identity. Inputs are never mutated.
+This module deliberately does not replay that stateful suffix. Its caller must
+supply the two already-produced final returned actions from an authenticated,
+isolated dual-arm execution of the complete canonical suffix. Admission then
+requires both of these independent facts:
+
+* the STRATUM candidate changed only a leading executable positive-quantity
+  SELL block inside the official market prefix; and
+* the two final returned actions still differ inside that engine-executable
+  market prefix after all remaining seller economics and pressure.
+
+Suffix-only differences never establish novelty. Missing, malformed or
+non-comparable evidence fails closed to exact parent identity. This is an
+evidence/admission primitive, not a controller and not a second seller/pressure
+implementation.
 """
 from __future__ import annotations
 
@@ -19,7 +28,20 @@ from copy import deepcopy
 
 
 class NoveltyEvidenceError(ValueError):
-    """Supplied row-shed or downstream-pressure evidence is not auditable."""
+    """Supplied STRATUM/final-action evidence is not auditable."""
+
+
+def _market_prefix_limit(configuration):
+    if configuration is None:
+        return 10
+    if not isinstance(configuration, dict):
+        raise NoveltyEvidenceError("configuration must be a dict or None")
+    raw = configuration.get("maxMarketOrdersPerTurn", 10)
+    # Deliberately stricter than int(...): ambiguous/coercible public evidence
+    # cannot authorize this admission helper.
+    if type(raw) is not int:
+        raise NoveltyEvidenceError("maxMarketOrdersPerTurn must be a plain int")
+    return max(1, raw)
 
 
 def _truthy_malformed_market_row(rows):
@@ -40,7 +62,15 @@ def _same_rows_with_duplicates(left, right):
     return True
 
 
-def _parent_shape(action):
+def _same_non_market_surface(left, right):
+    if not isinstance(left, dict) or not isinstance(right, dict):
+        return False
+    if set(left) != set(right):
+        return False
+    return all(left[key] == right[key] for key in left if key != "market")
+
+
+def _parent_shape(action, limit):
     if not isinstance(action, dict):
         raise NoveltyEvidenceError("action must be a dict")
     rows = action.get("market")
@@ -50,22 +80,22 @@ def _parent_shape(action):
         raise NoveltyEvidenceError("truthy market row must be a list")
 
     lead = 0
-    while lead < len(rows):
-        row = rows[lead]
+    for row in rows[:limit]:
         if not row:
             break
         if not isinstance(row, list) or row[0] != "SELL":
             break
         if len(row) < 3:
             raise NoveltyEvidenceError("leading SELL row is missing item or quantity")
+        item, requested = row[1], row[2]
+        if not isinstance(item, str) or not item:
+            raise NoveltyEvidenceError("leading SELL item must be a non-empty string")
+        # Official order parsing treats n <= 0 as a dead row. It is a barrier,
+        # not a sortable SELL, because crossing it changes lockstep timing.
+        if type(requested) is not int or requested <= 0:
+            break
         lead += 1
     return rows, lead
-
-
-def _same_non_market_surface(source, candidate):
-    if set(candidate) != set(source):
-        return False
-    return all(candidate[key] == source[key] for key in source if key != "market")
 
 
 def _validate_row_shed_candidate(parent, candidate, lead):
@@ -80,43 +110,46 @@ def _validate_row_shed_candidate(parent, candidate, lead):
         raise NoveltyEvidenceError("row-shed market cardinality differs from parent")
     if _truthy_malformed_market_row(rows):
         raise NoveltyEvidenceError("truthy row-shed market row must be a list")
+
+    # Protect both the first hard barrier and every engine-inert suffix row.
+    # STRATUM may only permute the authenticated executable SELL block.
     if rows[lead:] != parent_rows[lead:]:
-        raise NoveltyEvidenceError("row-shed changed a market suffix or barrier")
+        raise NoveltyEvidenceError(
+            "row-shed changed a barrier or row outside executable SELL block"
+        )
 
     block = rows[:lead]
     if any(
-        not row or not isinstance(row, list) or row[0] != "SELL" or len(row) < 3
+        not row
+        or not isinstance(row, list)
+        or len(row) < 3
+        or row[0] != "SELL"
+        or not isinstance(row[1], str)
+        or not row[1]
+        or type(row[2]) is not int
+        or row[2] <= 0
         for row in block
     ):
-        raise NoveltyEvidenceError("row-shed leading block is not all SELL rows")
+        raise NoveltyEvidenceError("row-shed executable block is not valid SELL rows")
     if not _same_rows_with_duplicates(block, parent_rows[:lead]):
         raise NoveltyEvidenceError(
-            "row-shed did not preserve the leading SELL multiset"
+            "row-shed did not preserve executable SELL rows with multiplicity"
         )
 
 
-def _validate_pressure_output(source_action, output):
-    if not isinstance(output, dict):
-        raise NoveltyEvidenceError("pressure output must be a dict")
-    if not _same_non_market_surface(source_action, output):
-        raise NoveltyEvidenceError("pressure changed a non-market action surface")
-
-    source_rows = source_action.get("market")
-    rows = output.get("market")
-    if not isinstance(source_rows, list) or not isinstance(rows, list):
-        raise NoveltyEvidenceError("pressure market evidence must be a list")
-    if len(rows) != len(source_rows):
-        raise NoveltyEvidenceError("pressure changed market cardinality")
+def _final_executable_prefix(action, limit):
+    if not isinstance(action, dict):
+        raise NoveltyEvidenceError("final action must be a dict")
+    rows = action.get("market")
+    if not isinstance(rows, list):
+        raise NoveltyEvidenceError("final action market must be a list")
     if _truthy_malformed_market_row(rows):
-        raise NoveltyEvidenceError("truthy pressure market row must be a list")
-    if not _same_rows_with_duplicates(rows, source_rows):
-        raise NoveltyEvidenceError(
-            "pressure changed market rows, quantities, or duplicate multiplicity"
-        )
+        raise NoveltyEvidenceError("truthy final market row must be a list")
+    return deepcopy(rows[:limit])
 
 
-class PressureNoveltyGuard:
-    """Keep row-shed only when its distinction survives downstream pressure."""
+class FinalActionNoveltyGuard:
+    """Admit STRATUM only when complete-pipeline returned actions stay novel."""
 
     def __init__(self):
         self.diagnostics = {}
@@ -125,27 +158,28 @@ class PressureNoveltyGuard:
         self,
         parent_action,
         row_shed_action,
-        pressure_transform,
-        observation,
+        incumbent_final_action,
+        row_shed_final_action,
         configuration,
-        *,
-        quote,
     ):
         self.diagnostics = {
             "status": "identity",
             "reason": None,
+            "market_prefix_limit": None,
             "leading_sell_count": 0,
-            "parent_pressure_market": [],
-            "row_shed_pressure_market": [],
+            "incumbent_final_prefix": [],
+            "row_shed_final_prefix": [],
         }
         try:
-            parent_rows, lead = _parent_shape(parent_action)
+            limit = _market_prefix_limit(configuration)
+            self.diagnostics["market_prefix_limit"] = limit
+            parent_rows, lead = _parent_shape(parent_action, limit)
             parent = deepcopy(parent_action)
             parent["market"] = deepcopy(parent_rows)
             self.diagnostics["leading_sell_count"] = lead
 
             if lead < 2:
-                self.diagnostics["reason"] = "leading_sell_block_lt_2"
+                self.diagnostics["reason"] = "executable_leading_sell_block_lt_2"
                 return deepcopy(parent_action)
 
             _validate_row_shed_candidate(parent, row_shed_action, lead)
@@ -153,63 +187,57 @@ class PressureNoveltyGuard:
                 self.diagnostics["reason"] = "row_shed_identity"
                 return deepcopy(parent_action)
 
-            if not callable(pressure_transform):
-                raise NoveltyEvidenceError("downstream pressure transform is missing")
-            if not callable(quote):
-                raise NoveltyEvidenceError("pressure quote evidence is missing")
+            if not _same_non_market_surface(
+                incumbent_final_action, row_shed_final_action
+            ):
+                raise NoveltyEvidenceError(
+                    "final arms differ on non-market action surface"
+                )
 
-            incumbent_final = pressure_transform(
-                deepcopy(parent),
-                deepcopy(observation),
-                deepcopy(configuration),
-                quote=quote,
+            incumbent_prefix = _final_executable_prefix(
+                incumbent_final_action, limit
             )
-            row_shed_final = pressure_transform(
-                deepcopy(row_shed_action),
-                deepcopy(observation),
-                deepcopy(configuration),
-                quote=quote,
+            row_shed_prefix = _final_executable_prefix(
+                row_shed_final_action, limit
             )
-
-            _validate_pressure_output(parent, incumbent_final)
-            _validate_pressure_output(row_shed_action, row_shed_final)
             self.diagnostics.update(
-                parent_pressure_market=deepcopy(incumbent_final["market"]),
-                row_shed_pressure_market=deepcopy(row_shed_final["market"]),
+                incumbent_final_prefix=incumbent_prefix,
+                row_shed_final_prefix=row_shed_prefix,
             )
 
-            if incumbent_final == row_shed_final:
-                self.diagnostics["reason"] = "collapsed_by_downstream_pressure"
+            if incumbent_prefix == row_shed_prefix:
+                self.diagnostics["reason"] = "collapsed_before_engine_execution"
                 return deepcopy(parent_action)
 
             self.diagnostics.update(
                 status="applied",
-                reason="survives_downstream_pressure",
+                reason="survives_complete_suffix_in_executable_prefix",
             )
             return deepcopy(row_shed_action)
-        except Exception as error:  # fail closed at the external-evidence boundary
+        except (NoveltyEvidenceError, KeyError, TypeError, IndexError) as error:
             self.diagnostics["reason"] = str(error)
             return deepcopy(parent_action)
 
 
-NovelRankGuard = PressureNoveltyGuard
+# Compatibility aliases for the earlier rank-only/direct-pressure carrier. The
+# semantics are intentionally stricter now: callers must supply final returned
+# actions from the complete remaining canonical pipeline.
+PressureNoveltyGuard = FinalActionNoveltyGuard
+NovelRankGuard = FinalActionNoveltyGuard
 
 
 def choose(
     parent_action,
     row_shed_action,
-    pressure_transform,
-    observation,
+    incumbent_final_action,
+    row_shed_final_action,
     configuration,
-    *,
-    quote,
 ):
     """Stateless convenience wrapper."""
-    return PressureNoveltyGuard().choose(
+    return FinalActionNoveltyGuard().choose(
         parent_action,
         row_shed_action,
-        pressure_transform,
-        observation,
+        incumbent_final_action,
+        row_shed_final_action,
         configuration,
-        quote=quote,
     )
