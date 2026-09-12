@@ -191,6 +191,18 @@ class AtGrokCmdpEvidenceTests(unittest.TestCase):
         self.assertEqual(payload["official_binary"], "python3 at_grok_cmdp_evidence.py")
         self.assertEqual(payload["cash_usd"], 0)
         self.assertEqual(payload["state"], gate.STATE)
+        readme = (ROOT / "revenue" / "at_grok_cmdp_evidence" / "README.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("## Live cash", readme)
+        self.assertIn("## Contest product (titanmcp)", readme)
+        self.assertIn("../../dealer-service-lead-rescue.html", readme)
+        self.assertNotIn("buy.stripe.com", readme)
+        schema = (ROOT / "revenue" / "at_grok_cmdp_evidence" / "SCHEMA_MATRIX.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("https://webmcp-pad.vercel.app/", schema)
+        self.assertIn("1.4.5", schema)
 
 
 if __name__ == "__main__":

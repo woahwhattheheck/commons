@@ -37,7 +37,7 @@ AUTHORIZED_OPPONENT_IDS = ("apex_v7", "arlene_v14")
 REFERENCE_POLICIES_GIT_BLOB = "6bce02dad705ccc57656ff2e2139db215f9fcc57"
 ECONOMICS_RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v4"
 CHAMPION_RECEIPT_SCHEMA = "titan-v5-champion-ratchet-receipt/v2"
-CHAMPION_GATE_GIT_BLOB = "a288e4394b2bcffdaba203ef82bcfbcacb30d5a4"
+CHAMPION_GATE_GIT_BLOB = "3c3bc75b69143475692b6af5ea1b6cad086a7bbb"
 V31_SOURCE_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
 V31_SUBMISSION_ID = 56172377
 V31_ARCHIVE_SHA256 = "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361"
@@ -689,6 +689,10 @@ def commit_pointer(
     receipt: Mapping[str, Any],
 ) -> None:
     """Commit a previously authenticated pointer under a cooperating-writer lock."""
+    raise TransactionError(
+        "release pointer commit disabled: champion raw score roots lack "
+        "non-self-asserted origin authority"
+    )
     lock_path = current_pointer.with_name(f".{current_pointer.name}.transaction.lock")
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a+b") as lock:

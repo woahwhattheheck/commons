@@ -9,7 +9,8 @@ from build_delivery import archive_bytes, digest, members
 
 V31_SHA = '5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361'
 DELIVERY_SHA = '0d42ee5fabb089745fa0064207654bfdf5df9466ba6499d91b6e685d4880cab1'
-CANDIDATE_SHA = '0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02'
+LEGACY_SHA = '0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02'
+CANDIDATE_SHA = '20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239'
 VENDOR = 'reference/next-panel/vendor/arlene.py'
 DEPENDENCIES = (
     'b11_mirror_horizon.py', 'b5_fertilize.py', 'b9_terminal_fertilizer.py',
@@ -40,7 +41,7 @@ def dependency_closure(v31):
     return seen
 
 
-def compose(v31, delivery, overlay):
+def compose(v31, delivery, overlay, version='v3'):
     dependency_closure(v31)
     files = dict(delivery)
     for name in DEPENDENCIES:
@@ -62,8 +63,21 @@ def compose(v31, delivery, overlay):
     files['main.py'] = entry.replace(needle,
         b'    import full_production_context\n'
         b'    full_production_context.configuration = dict(configuration or {})\n' + needle)
-    if digest(archive_bytes(files)) != CANDIDATE_SHA:
+    if digest(archive_bytes(files)) != LEGACY_SHA:
         raise ValueError('Composition differs from the tested production archive')
+    if version == 'v3':
+        # The pinned raw-file loader exposes the payload root only while exec
+        # loads this entry. Capture the shipped context then; its first use in
+        # agent() precedes baseline.agent() restoring the root on sys.path.
+        anchor = b'import baseline_main as baseline\n'
+        if files['main.py'].count(anchor) != 1:
+            raise ValueError('Expected one entry import seam')
+        files['main.py'] = files['main.py'].replace(
+            anchor, anchor + b'import full_production_context\n', 1)
+        if digest(archive_bytes(files)) != CANDIDATE_SHA:
+            raise ValueError('Composition differs from the tested import-safe archive')
+    elif version != 'v2':
+        raise ValueError('Expected v2 or v3')
     return files
 
 
@@ -73,6 +87,7 @@ def main():
     parser.add_argument('--delivery', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--tar', type=Path, required=True)
+    parser.add_argument('--version', choices=('v2', 'v3'), default='v3')
     args = parser.parse_args()
     receipt_path = args.out.parent / (args.out.name + '-manifest.json')
     if any(p.exists() for p in (args.out, args.tar, receipt_path)):
@@ -80,7 +95,7 @@ def main():
     v31 = members(args.v31, V31_SHA)
     delivery = members(args.delivery, DELIVERY_SHA)
     overlay = Path(__file__).with_name('production_recovery_overlay.txt').read_bytes()
-    files = compose(v31, delivery, overlay)
+    files = compose(v31, delivery, overlay, args.version)
     packed = archive_bytes(files)
     args.out.mkdir(parents=True)
     for name, body in files.items():
@@ -90,14 +105,14 @@ def main():
     args.tar.parent.mkdir(parents=True, exist_ok=True)
     with args.tar.open('xb') as stream:
         stream.write(packed)
-    receipt = {'schema': 'titan-production-recovery-build/v2',
+    receipt = {'schema': 'titan-production-recovery-build/v3', 'version': args.version,
         'v31_archive_sha256': V31_SHA, 'delivery_archive_sha256': DELIVERY_SHA,
-        'candidate_archive_sha256': CANDIDATE_SHA, 'donor_dependencies': list(DEPENDENCIES),
+        'candidate_archive_sha256': digest(packed), 'donor_dependencies': list(DEPENDENCIES),
         'files': {name: digest(body) for name, body in sorted(files.items())},
         'kaggle_submission_hold': True}
     receipt_path.write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'out': str(args.out), 'members': len(files),
-                      'candidate_archive_sha256': CANDIDATE_SHA}))
+                      'candidate_archive_sha256': digest(packed)}))
 
 
 if __name__ == '__main__':

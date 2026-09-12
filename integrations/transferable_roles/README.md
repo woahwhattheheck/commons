@@ -259,7 +259,7 @@ SYNTHETIC fixture
 plant) for seat-to-seat handoff: open obligations `ob-intake` → `ob-diagnose` →
 `ob-deadline` → `ob-sla` → `ob-settle` (deliver **or** refund per miss-remedy).
 Knowledge and `payment_capability` point at the four live product-page
-`buy.stripe.com` CTAs already on main — **do not invent plink**, do not remint
+CTAs already on main — **do not invent checkout links**, do not remint
 pages. After reply→cash + tip-shelf land, knowledge also points at
 `revenue/reply_to_revenue/{README.md,funnel.json,handoffs/*}` and `commerce.html`
 — **point only; do not remint** handoffs or tip-shelf. Knowledge also points at

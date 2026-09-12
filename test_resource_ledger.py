@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789239687.431159")
+        self.assertEqual(catalog["slack_ts"], "1789250892.547929")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
+            "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
+        )
+        self.assertIn(
+            "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
@@ -323,7 +327,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01.json",
+            "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -333,28 +337,31 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-v5-v31-v4-submitted-archive-bridge",
+            "titan-v5-submitted-package-regression-authority",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 92)
-        self.assertEqual(current_activation["projection"]["producing"], 64)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 54)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13401)
+        self.assertEqual(current_activation["projection"]["resources"], 93)
+        self.assertEqual(current_activation["projection"]["producing"], 65)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 55)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13454)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "2d74602bd77ba1f7b3357fdb4f874fb38a770cc5",
+            "40a263ea26f2e40a13379ca7e1148e7c76e997a3",
+        )
+        self.assertEqual(current_activation["production_truth"]["repair_pr"], 13467)
+        self.assertEqual(
+            current_activation["production_truth"]["repair_merge_sha"],
+            "dbfccb9aa5c8c29f9092a978ad00e36e8db840d0",
         )
         self.assertEqual(
             current_activation["production_truth"]["source_validation"]["normal_passed"],
-            8,
+            19,
         )
         self.assertEqual(
             current_activation["production_truth"]["source_validation"]["optimized_passed"],
-            8,
+            19,
         )
-        self.assertEqual(
-            current_activation["production_truth"]["expected_callbacks_per_game"],
-            719,
-        )
+        self.assertEqual(current_activation["production_truth"]["submitted_archive_authorities"]["v31_regular_members"], 148)
+        self.assertEqual(current_activation["production_truth"]["submitted_archive_authorities"]["v4_regular_members"], 75)
         self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
         self.assertEqual(current_activation["production_truth"]["candidate_promotions"], 0)
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
@@ -461,6 +468,10 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["titan-v5-v31-v4-submitted-archive-bridge"]["condition"], "CONSTRAINED")
         self.assertIn("719_CALLBACK", rows["titan-v5-v31-v4-submitted-archive-bridge"]["authority"])
         self.assertIn("6701662a397566cf7be3468ada284e5964404612", rows["titan-v5-v31-v4-submitted-archive-bridge"]["exact_safe_probe"])
+        self.assertEqual(rows["titan-v5-submitted-package-regression-authority"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v5-submitted-package-regression-authority"]["condition"], "CONSTRAINED")
+        self.assertIn("SINGLE_READ_ORDINARY_FILE", rows["titan-v5-submitted-package-regression-authority"]["authority"])
+        self.assertIn("2a14dfd0d0bf7d8d3d30d9f30a24224156307d95", rows["titan-v5-submitted-package-regression-authority"]["exact_safe_probe"])
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
