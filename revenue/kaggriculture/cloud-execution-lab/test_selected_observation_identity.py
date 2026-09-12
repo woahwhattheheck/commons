@@ -16,7 +16,7 @@ class SelectedObservationIdentityTests(unittest.TestCase):
         self.assertEqual(absolute_step({'step': 25}, cfg), 25)
         self.assertEqual(absolute_step({'day': 1, 'hour': 1}, cfg), 25)
         self.assertEqual(absolute_step({'step': 25, 'day': 1, 'hour': 1}, cfg), 25)
-        for value in (True, '25', 25.0, -1):
+        for value in (None, True, '25', 25.0, -1):
             with self.subTest(step=value), self.assertRaises(ValueError):
                 absolute_step({'step': value}, cfg)
         for row in ({'step': 25, 'day': 0, 'hour': 1},
