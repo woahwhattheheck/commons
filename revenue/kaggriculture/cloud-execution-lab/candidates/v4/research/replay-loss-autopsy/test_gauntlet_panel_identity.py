@@ -37,11 +37,14 @@ class PanelIdentityTests(unittest.TestCase):
 
     def test_family_balance_removes_label_multiplicity(self):
         r = g.audit(panel())
+        # Label means: -100,-100,0,+200 => 0. Family balance:
+        # sheep unique-source means (-100 + 0)/2 = -50; wheat=+200 => +75.
         self.assertEqual(r["views"]["raw_label_mean"]["mean_margin"], "0")
         self.assertEqual(r["views"]["family_balanced_mean"]["mean_margin"], "75")
 
     def test_source_balance_collapses_exact_aliases(self):
         r = g.audit(panel())
+        # Unique source means are -100, 0, +200.
         self.assertEqual(r["views"]["source_balanced_mean"]["mean_margin"], "33.333333333333333333333333333333333333333333333333")
 
     def test_raw_counts_remain_visible(self):
