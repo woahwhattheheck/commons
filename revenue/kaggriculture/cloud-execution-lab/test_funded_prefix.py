@@ -4,6 +4,7 @@ import copy
 import sys
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 _LAB = Path(__file__).resolve().parent
 for _extra in (_LAB.parent / 'cloud-runtime-pulse', _LAB.parent / 'cloud-quickstep'):
@@ -12,6 +13,7 @@ for _extra in (_LAB.parent / 'cloud-runtime-pulse', _LAB.parent / 'cloud-quickst
         sys.path.append(_path)
 
 import frozen_selected as fs
+import titan_runtime as tr
 
 
 class FundedPrefixTests(unittest.TestCase):
@@ -135,6 +137,88 @@ class FundedPrefixTests(unittest.TestCase):
         self.assertEqual(certificate['funding_turn'], self.now + 3)
         self.assertEqual(certificate['prefix_end'], self.now + 2)
         self.assertFalse(certificate['fallback'])
+
+
+class SeedRuntimePrefixTests(unittest.TestCase):
+    class ReducingBudget:
+        def __init__(self):
+            self.calls = 0
+
+        def apply(self, selected, seeds, step, current, maximum, *, extra_requests=None):
+            self.calls += 1
+            result = copy.deepcopy(selected)
+            result['market'][0] = ['BUY_SEED', 'WHEAT', 1]
+            return result
+
+    class PassthroughBudget:
+        def __init__(self):
+            self.calls = 0
+
+        def apply(self, selected, seeds, step, current, maximum, *, extra_requests=None):
+            self.calls += 1
+            return copy.deepcopy(selected)
+
+    class RejectingFunding:
+        def __init__(self):
+            self.calls = 0
+
+        def select_seed_queue(self, mechanics, post, original, proposed, config):
+            self.calls += 1
+            return copy.deepcopy(original), {'applied': False, 'reason': 'test_rejection'}
+
+    def make_agent(self, budget):
+        agent = object.__new__(tr.TitanAgent)
+        agent.features = tr.Features(seed=True, funding=True)
+        agent.consumer = SimpleNamespace(selected_post_units=(
+            {'money': 0}, {'seeds': {'WHEAT': 0}}
+        ))
+        agent.seed_budget = budget
+        agent.controller = SimpleNamespace(cur='route')
+        agent.spatial = None
+        agent.funding_module = self.RejectingFunding()
+        agent.diagnostics = {}
+        return agent
+
+    @staticmethod
+    def observation():
+        return {'step': 0, 'player': 0, 'farms': [{}, {}], 'private': {}}
+
+    def test_inert_raw_tail_dependency_cannot_flip_seed_acceptance(self):
+        cfg = {'maxMarketOrdersPerTurn': 1}
+        head = {'market': [['BUY_SEED', 'WHEAT', 2]]}
+        head_tail = {'market': [['BUY_SEED', 'WHEAT', 2], ['HIRE']]}
+
+        plain = self.make_agent(self.ReducingBudget())
+        plain_result = plain._seed_selected(self.observation(), cfg, copy.deepcopy(head))
+        self.assertEqual(plain_result['market'], [['BUY_SEED', 'WHEAT', 1]])
+        self.assertEqual(plain.funding_module.calls, 0)
+
+        tailed = self.make_agent(self.ReducingBudget())
+        tailed_result = tailed._seed_selected(self.observation(), cfg, copy.deepcopy(head_tail))
+        self.assertEqual(tailed_result['market'], [['BUY_SEED', 'WHEAT', 1], ['HIRE']])
+        self.assertEqual(tailed.funding_module.calls, 0)
+
+    def test_tail_only_seed_never_enters_seed_budget(self):
+        cfg = {'maxMarketOrdersPerTurn': 1}
+        budget = self.PassthroughBudget()
+        agent = self.make_agent(budget)
+        selected = {'market': [['SELL', 'MILK', 1], ['BUY_SEED', 'WHEAT', 2]]}
+        result = agent._seed_selected(self.observation(), cfg, copy.deepcopy(selected))
+        self.assertEqual(result, selected)
+        self.assertEqual(budget.calls, 0)
+        self.assertEqual(agent.funding_module.calls, 0)
+
+    def test_seed_feature_off_does_not_parse_market_cap(self):
+        budget = self.ReducingBudget()
+        agent = self.make_agent(budget)
+        agent.features = tr.Features(seed=False, funding=True)
+        selected = {'market': [['BUY_SEED', 'WHEAT', 2]]}
+        result = agent._seed_selected(
+            self.observation(), {'maxMarketOrdersPerTurn': 'not-an-int'},
+            copy.deepcopy(selected))
+        self.assertEqual(result, selected)
+        self.assertEqual(budget.calls, 0)
+        self.assertEqual(agent.funding_module.calls, 0)
 
 
 if __name__ == '__main__':
