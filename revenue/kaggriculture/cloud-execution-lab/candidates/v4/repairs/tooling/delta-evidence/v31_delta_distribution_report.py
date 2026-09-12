@@ -518,9 +518,30 @@ def policy_failures(
 
 
 def _read_json(path: Path) -> Any:
+    # Validate raw evidence before dictionaries can erase duplicate members.
+    # Distinct aliases remain the semantic analyzer's responsibility.
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise DataError(f"duplicate JSON member: {key!r}")
+            result[key] = value
+        return result
+
+    def reject_constant(token: str) -> Any:
+        raise DataError(f"nonfinite JSON constant: {token}")
+
+    def finite_float(token: str) -> float:
+        return _number(float(token), "JSON number")
+
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        return json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=unique_object,
+            parse_constant=reject_constant,
+            parse_float=finite_float,
+        )
+    except (OSError, UnicodeError, ValueError, RecursionError) as exc:
         raise DataError(f"cannot read JSON evidence {path}: {exc}") from exc
 
 
