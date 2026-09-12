@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Corrected Gemini EGG scarcity-timing frontier for canonical TITAN V4.
 
-This is research/admission infrastructure, not a seller.  It deliberately does
-*not* implement the falsified "buy EGG out of the market" short squeeze.  The
-official engine only permits BUY_PRODUCT for WHEAT/FERTILIZER.  Instead, this
+This is research/admission infrastructure, not a seller. It deliberately does
+*not* implement the falsified "buy EGG out of the market" short squeeze. The
+official engine only permits BUY_PRODUCT for WHEAT/FERTILIZER. Instead, this
 module searches a narrow corrected descendant: move an already-planned literal
 EGG SELL to a later market slot and let the existing full-interpreter
 sale-window harness measure the realized open-loop result.
@@ -14,11 +14,13 @@ The search is intentionally conservative:
 * only later PASS/append destinations inside the live market-order cap are used;
 * opponent actions and all non-market actions remain byte-for-byte unchanged;
 * rankings require an actually realized retiming, not merely changed syntax;
-* positive open-loop cash is evidence, never a promotion/optimality claim.
+* positive scarcity evidence requires equal positive filled units and strictly
+  greater cash earned by the moved EGG sale itself;
+* total cash/margin deltas remain consequences, never mechanism identity.
 
-The engine executes player market orders before town consumption.  Therefore a
+The engine executes player market orders before town consumption. Therefore a
 sale on a town-consumption tick does not capture that tick's scarcity; moving to
-a later turn can.  `sale_window.compare` remains the sole transition/economic
+a later turn can. `sale_window.compare` remains the sole transition/economic
 measurement authority here.
 """
 from __future__ import annotations
@@ -117,16 +119,39 @@ def candidate_destinations(
     return out
 
 
-def _filled_units(result: dict, branch: str, turn: int, seat: int, row: int) -> int:
+def _row_sale_metrics(
+    result: dict, branch: str, turn: int, seat: int, row: int
+) -> tuple[int, int]:
+    """Return authenticated `(sold_units, sale_cash)` for one observed row.
+
+    `sale_window.observed_step` records both values at the successful SELL
+    commit itself. Binding mechanism identity to these fields prevents unrelated
+    downstream cash changes (for example a HIRE that stops filling after the
+    sale moves) from masquerading as a scarcity-price improvement.
+    """
     try:
         rows = result[branch]["reports"][turn]["rows"]
     except (KeyError, IndexError, TypeError):
-        return 0
+        return 0, 0
+    if not isinstance(rows, list):
+        return 0, 0
     for record in rows:
+        if not isinstance(record, dict):
+            continue
         if record.get("seat") == seat and record.get("row") == row:
             sold = record.get("sold", 0)
-            return sold if type(sold) is int and sold >= 0 else 0
-    return 0
+            cash = record.get("sale_cash", 0)
+            if type(sold) is not int or sold < 0:
+                sold = 0
+            if type(cash) is not int or cash < 0:
+                cash = 0
+            return sold, cash
+    return 0, 0
+
+
+def _filled_units(result: dict, branch: str, turn: int, seat: int, row: int) -> int:
+    """Compatibility helper retained for focused callers/tests."""
+    return _row_sale_metrics(result, branch, turn, seat, row)[0]
 
 
 def _load_sale_window():
@@ -151,9 +176,10 @@ def search(
     """Measure all legal later EGG-sale placements under one fixed action tape.
 
     Every candidate is evaluated by the canonical full-interpreter sale-window
-    counterfactual.  The opponent remains fixed/open-loop exactly as required by
-    that harness.  `best_positive` is only the best measured candidate in this
-    bounded tape; it is explicitly not a live-policy recommendation.
+    counterfactual. The opponent remains fixed/open-loop exactly as required by
+    that harness. `best_positive` requires a strictly better cash realization
+    from the moved EGG sale row itself; it is explicitly not a live-policy
+    recommendation.
     """
     _exact_int(start_step, minimum=0, label="start_step")
     src = source_row(tape, seat, source_turn, source_row_index)
@@ -168,11 +194,15 @@ def search(
             tape, seat, source_turn, source_row_index, target_turn, target_row
         )
         result = sw.compare(engine, state, env, tape, moved, start_step, seat)
-        source_filled = _filled_units(
+        source_filled, source_sale_cash = _row_sale_metrics(
             result, "baseline", source_turn, seat, source_row_index
         )
-        target_filled = _filled_units(result, "candidate", target_turn, seat, target_row)
+        target_filled, target_sale_cash = _row_sale_metrics(
+            result, "candidate", target_turn, seat, target_row
+        )
         realized = source_filled > 0 and target_filled == source_filled
+        sale_cash_delta = target_sale_cash - source_sale_cash
+        scarcity_positive = realized and sale_cash_delta > 0
         own_delta = result["window_cash_delta"][seat]
         margin_delta = result["window_margin_delta"]
         row = {
@@ -183,7 +213,11 @@ def search(
             "engagement": result["engagement"],
             "source_filled_units": source_filled,
             "target_filled_units": target_filled,
+            "source_sale_cash": source_sale_cash,
+            "target_sale_cash": target_sale_cash,
+            "sale_cash_delta": sale_cash_delta,
             "realized_retiming": realized,
+            "scarcity_positive": scarcity_positive,
             "own_cash_delta": own_delta,
             "window_margin_delta": margin_delta,
             "terminal_margin_delta": result["terminal_margin_delta"],
@@ -193,6 +227,8 @@ def search(
     ranked = sorted(
         candidates,
         key=lambda row: (
+            not row["scarcity_positive"],
+            -row["sale_cash_delta"],
             not row["realized_retiming"],
             -row["own_cash_delta"],
             -row["window_margin_delta"],
@@ -200,9 +236,7 @@ def search(
             row["target_turn"],
         ),
     )
-    positive = [
-        row for row in ranked if row["realized_retiming"] and row["own_cash_delta"] > 0
-    ]
+    positive = [row for row in ranked if row["scarcity_positive"]]
     return {
         "schema": SCHEMA,
         "item": ITEM,
@@ -221,6 +255,7 @@ def search(
         "literal_direct_egg_short_squeeze_supported": False,
         "interpretation": (
             "bounded full-interpreter open-loop search over later placements of one existing EGG SELL; "
-            "positive cash is evidence for town/rival timing follow-up, not activation"
+            "positive scarcity evidence requires equal realized units and strictly greater cash from "
+            "the moved EGG sale row itself; total cash/margin deltas remain consequences, not activation"
         ),
     }
