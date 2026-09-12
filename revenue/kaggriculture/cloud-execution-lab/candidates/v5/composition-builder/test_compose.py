@@ -8,6 +8,7 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest import mock
 
 import compose
 
@@ -162,6 +163,33 @@ class CompositionTests(unittest.TestCase):
                 output=out,
             )
         self.assertFalse(out.exists())
+
+    def test_baseline_path_mutation_after_auth_cannot_change_parsed_archive(self):
+        out = self.root / "out-captured-baseline"
+        tampered = dict(self.base_files)
+        tampered["TITAN-CONFIG.json"] = (
+            json.dumps({"consumer": "attacker", "funding": False, "worker": False}, indent=2) + "\n"
+        ).encode()
+        real_reader = compose._read_archive_bytes
+
+        def mutate_live_path_after_capture(data: bytes):
+            # Simulate a checkout/path swap after the authenticated bytes are captured.
+            write_tar(self.base, tampered)
+            return real_reader(data)
+
+        with mock.patch.object(compose, "_read_archive_bytes", side_effect=mutate_live_path_after_capture):
+            compose.build(
+                baseline=self.base,
+                source_root=self.src,
+                manifest_path=self.manifest(),
+                output=out,
+            )
+
+        # Execution/materialization must come from the captured authenticated archive,
+        # not from the path that was swapped immediately before tar parsing.
+        control = read_tar(out / "control.tar.gz")
+        self.assertEqual(control, self.base_files)
+        self.assertNotEqual(read_tar(self.base), self.base_files)
 
     def test_drifted_baseline_member_is_rejected_even_when_archive_sha_matches(self):
         drifted = self.root / "drifted.tar.gz"
