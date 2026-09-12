@@ -32,8 +32,13 @@ jobs:
       - name: Compile and run normal contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/runtime-prefix-ablation
         run: |
-          python -B -m py_compile ablate_runtime_prefix.py test_ablate_runtime_prefix.py
-          python -B -m unittest -v test_ablate_runtime_prefix.py
+          python -B -m py_compile ablate_runtime_prefix.py engagement_gate.py test_ablate_runtime_prefix.py test_engagement_gate.py
+          python -B -m unittest -v test_ablate_runtime_prefix.py test_engagement_gate.py
       - name: Run optimized contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/runtime-prefix-ablation
-        run: python -O -B -m unittest -v test_ablate_runtime_prefix.py
+        run: python -O -B -m unittest -v test_ablate_runtime_prefix.py test_engagement_gate.py
+      - name: Repository remains source-clean
+        run: |
+          git diff --check
+          test -z "$(git status --porcelain)"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
