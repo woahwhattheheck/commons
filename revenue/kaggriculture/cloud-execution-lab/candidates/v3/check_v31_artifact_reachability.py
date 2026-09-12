@@ -4,7 +4,8 @@
 This complements ``build_v3.py --check``.  The builder already proves byte-for-byte
 reproducibility; this preflight proves that every manifest key with a declared module
 is present in the generated config, ships byte-identical to its overlay source, and
-is import-reachable from the package entrypoint.
+is import-reachable from the package entrypoint. Manifest-declared params must also
+match the generated config and have an executable reference on that reachable graph.
 
 Usage:
     python check_v31_artifact_reachability.py
@@ -27,6 +28,7 @@ import build_v3  # noqa: E402
 
 
 _MODULE_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\.py")
+_MAPPING_KEY_METHODS = {"get", "pop", "setdefault"}
 
 
 def declared_modules(spec):
@@ -42,6 +44,14 @@ def keyed_specs(manifest):
     for key, spec in (manifest.get("keys") or {}).items():
         if isinstance(spec, dict) and "default" in spec and "module" in spec:
             yield key, spec
+
+
+def parameter_specs(manifest):
+    """Yield deterministic (key, value) pairs from manifest keys.params."""
+    params = (manifest.get("keys") or {}).get("params") or {}
+    if not isinstance(params, dict):
+        return ()
+    return tuple((key, params[key]) for key in sorted(params))
 
 
 def local_import_graph(files):
@@ -84,6 +94,58 @@ def reachable_paths(files, root="main.py"):
     return seen
 
 
+def _string_literal(node):
+    return node.value if isinstance(node, ast.Constant) and isinstance(node.value, str) else None
+
+
+def executable_references(files, paths):
+    """Return config-like names used by executable AST operations in reachable files.
+
+    Comments and docstrings do not qualify. Neither do inert string literals. A name
+    qualifies when code reads it as an attribute, mapping key, or getattr/hasattr name.
+    """
+    references = set()
+    for path in sorted(paths):
+        if not path.endswith(".py"):
+            continue
+        try:
+            tree = ast.parse(files[path].decode("utf-8"), filename=path)
+        except (SyntaxError, UnicodeDecodeError) as error:
+            raise AssertionError("cannot parse packed Python file %s: %s" % (path, error))
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Attribute):
+                references.add(node.attr)
+            elif isinstance(node, ast.Subscript):
+                key = _string_literal(node.slice)
+                if key is not None:
+                    references.add(key)
+            elif isinstance(node, ast.Call):
+                if isinstance(node.func, ast.Attribute) and node.func.attr in _MAPPING_KEY_METHODS and node.args:
+                    key = _string_literal(node.args[0])
+                    if key is not None:
+                        references.add(key)
+                elif isinstance(node.func, ast.Name) and node.func.id in {"getattr", "hasattr"} and len(node.args) >= 2:
+                    key = _string_literal(node.args[1])
+                    if key is not None:
+                        references.add(key)
+            elif isinstance(node, ast.Compare):
+                for operand in (node.left, *node.comparators):
+                    key = _string_literal(operand)
+                    if key is not None:
+                        references.add(key)
+    return references
+
+
+def _check_config_value(errors, config, key, expected):
+    if key not in config:
+        errors.append("%s: missing from TITAN-CONFIG.json" % key)
+    elif type(config[key]) is not type(expected) or config[key] != expected:
+        errors.append(
+            "%s: config value %r != manifest %r"
+            % (key, config[key], expected)
+        )
+
+
 def validate_reachability(manifest, files, overlay):
     """Return deterministic human-readable contract failures for one built package."""
     errors = []
@@ -101,23 +163,13 @@ def validate_reachability(manifest, files, overlay):
         config = {}
         errors.append("invalid or missing TITAN-CONFIG.json: %s" % type(error).__name__)
 
-    reachable_source = "\n".join(
-        files[path].decode("utf-8", errors="replace")
-        for path in sorted(reachable)
-        if path.endswith(".py")
-    )
+    references = executable_references(files, reachable)
 
     for key, spec in keyed_specs(manifest):
-        if key not in config:
-            errors.append("%s: missing from TITAN-CONFIG.json" % key)
-        elif config[key] != spec["default"]:
-            errors.append(
-                "%s: config default %r != manifest %r"
-                % (key, config[key], spec["default"])
-            )
+        _check_config_value(errors, config, key, spec["default"])
 
-        if not re.search(r"\b%s\b" % re.escape(key), reachable_source):
-            errors.append("%s: not referenced by code reachable from main.py" % key)
+        if key not in references:
+            errors.append("%s: not referenced by executable code reachable from main.py" % key)
 
         modules = declared_modules(spec)
         if not modules:
@@ -133,6 +185,11 @@ def validate_reachability(manifest, files, overlay):
                 errors.append("%s: built %s differs from overlay source" % (key, module))
             if module not in reachable:
                 errors.append("%s: %s not import-reachable from main.py" % (key, module))
+
+    for key, expected in parameter_specs(manifest):
+        _check_config_value(errors, config, key, expected)
+        if key not in references:
+            errors.append("%s: not referenced by executable code reachable from main.py" % key)
 
     return errors
 
@@ -152,11 +209,14 @@ def main(argv=None):
         return 1
 
     specs = list(keyed_specs(manifest))
+    params = list(parameter_specs(manifest))
     modules = sorted({module for _, spec in specs for module in declared_modules(spec)})
     print(
         "V31 REACHABILITY OK",
         len(specs),
         "keys",
+        len(params),
+        "params",
         len(modules),
         "declared modules",
         len(files),
