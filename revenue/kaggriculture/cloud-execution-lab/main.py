@@ -6,9 +6,17 @@ _INSTANCE = None
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
+    feature_data = dict(feature_data)
+    town_enabled = bool(feature_data.pop('town_procurement', False))
     features = Features(**feature_data)
+    if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
+        raise ValueError('town_procurement is the tested nonterminal frozen composition')
 
     class FinalPressureAgent(TitanAgent):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.town_procurement_enabled = town_enabled
+
         """Keep public-curve pressure at the returned-action boundary.
 
         Pressure was originally the final SELL transform. Later stock, crop,
@@ -26,13 +34,18 @@ def _new_instance(root, feature_data):
             # guard and before every receipt/history commit. Reuse that stable
             # boundary instead of copying the finalizer or mutating afterward.
             returned = super()._early_capital_selected(obs, cfg, selected)
-            if self.diagnostics.get('status') != 'completed':
-                return returned
-            self._final_pressure_boundary = True
-            try:
-                return super()._market_pressure_selected(obs, cfg, returned)
-            finally:
-                self._final_pressure_boundary = False
+            completed = self.diagnostics.get('status') == 'completed'
+            if completed:
+                self._final_pressure_boundary = True
+                try:
+                    returned = super()._market_pressure_selected(obs, cfg, returned)
+                finally:
+                    self._final_pressure_boundary = False
+            if self.town_procurement_enabled:
+                from town_procurement import apply
+                returned, report = apply(obs, returned, cfg, completed=completed)
+                self.diagnostics['town_procurement'] = report
+            return returned
 
     admission = None
     if features.fourth_quadrant:
@@ -54,7 +67,17 @@ def _entrypoint_fallback(instance, observation, configuration, deadline):
     from copy import deepcopy
     selected = None if instance is None else getattr(instance, 'selected', None)
     if selected is not None:
-        return deepcopy(selected)
+        action = deepcopy(selected)
+        if bool(getattr(instance, 'town_procurement_enabled', False)):
+            obs = dict(observation)
+            cfg = dict(configuration or {})
+            step = obs.get('step')
+            if step is None:
+                step = int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
+            obs['step'] = int(step)
+            from town_procurement import suppress_confirmed
+            action, _ = suppress_confirmed(obs, action, cfg)
+        return action
     cfg = dict(configuration or {})
     obs = dict(observation)
     step = obs.get('step')
@@ -104,6 +127,13 @@ def agent(observation, configuration=None):
     instance = None if replace else _INSTANCE
     feature_data = (json.loads((root/'TITAN-CONFIG.json').read_text())
                     if replace else None)
+    town_enabled = (bool(feature_data.get('town_procurement', False)) if replace
+                    else bool(getattr(instance, 'town_procurement_enabled', False)))
+    if town_enabled:
+        receipt_obs = dict(observation)
+        receipt_obs['step'] = step
+        import town_procurement
+        town_procurement.observe(receipt_obs)
     from titan_runtime import deadline
     budget = (float(instance.features.budget_seconds) if instance is not None
               else float(feature_data.get('budget_seconds', 1.0)))
