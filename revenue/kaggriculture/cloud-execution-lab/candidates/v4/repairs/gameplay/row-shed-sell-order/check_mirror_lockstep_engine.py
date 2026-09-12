@@ -2,23 +2,28 @@
 # SPDX-License-Identifier: Apache-2.0
 """Exact-engine differential for ROWSHED mirror lockstep assignment evidence.
 
-The checker captures and authenticates the official engine and ROWSHED helper
-bytes before either module is executed.  All subsequent proof work runs from
-those captured buffers; the repository paths are never reopened as controls.
+The checker captures and authenticates the official engine, adjacent engine
+configuration, and ROWSHED helper bytes before either module is executed.
+All subsequent proof work runs from those captured buffers; repository paths
+are never reopened as controls.
 """
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 from pathlib import Path
 import sys
 from types import ModuleType, SimpleNamespace
+from typing import Mapping
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
+ENGINE_CONFIG = ENGINE.with_name("kaggriculture.json")
 HELPER = HERE / "mirror_collision_value.py"
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+ENGINE_CONFIG_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
 HELPER_BLOB = "90052d735316461c7b3320a7e968dcddbb2c364e"
 
 
@@ -44,12 +49,59 @@ def capture(path: Path, expected_blob: str, label: str) -> tuple[bytes, str]:
     return data, actual
 
 
-def load_captured(name: str, path: Path, data: bytes) -> ModuleType:
-    """Compile/exec an already-authenticated buffer without reopening its path."""
+def _captured_text_open(captures: Mapping[Path, bytes]):
+    normalized = {path.resolve(): data for path, data in captures.items()}
+
+    def captured_open(target, mode="r", *args, **kwargs):
+        try:
+            resolved = Path(target).resolve()
+        except (OSError, TypeError, ValueError) as error:
+            raise CheckError(f"invalid captured-open target: {target!r}") from error
+        if resolved not in normalized:
+            raise CheckError(f"unexpected file open during captured exec: {resolved}")
+        if mode not in {"r", "rt"}:
+            raise CheckError(f"unsupported captured-open mode: {mode!r}")
+        if args:
+            raise CheckError("captured-open rejects positional open options")
+        encoding = kwargs.pop("encoding", None)
+        errors = kwargs.pop("errors", None)
+        newline = kwargs.pop("newline", None)
+        closefd = kwargs.pop("closefd", True)
+        opener = kwargs.pop("opener", None)
+        buffering = kwargs.pop("buffering", -1)
+        if kwargs:
+            raise CheckError(f"unsupported captured-open options: {sorted(kwargs)}")
+        if encoding not in {None, "utf-8", "UTF-8"}:
+            raise CheckError(f"unsupported captured-open encoding: {encoding!r}")
+        if errors not in {None, "strict"}:
+            raise CheckError(f"unsupported captured-open errors: {errors!r}")
+        if newline not in {None, ""}:
+            raise CheckError(f"unsupported captured-open newline: {newline!r}")
+        if closefd is not True or opener is not None or buffering != -1:
+            raise CheckError("unsupported captured-open file descriptor options")
+        try:
+            text = normalized[resolved].decode("utf-8", errors="strict")
+        except UnicodeDecodeError as error:
+            raise CheckError(f"captured text is not UTF-8: {resolved}") from error
+        return io.StringIO(text, newline=newline)
+
+    return captured_open
+
+
+def load_captured(
+    name: str,
+    path: Path,
+    data: bytes,
+    *,
+    text_captures: Mapping[Path, bytes] | None = None,
+) -> ModuleType:
+    """Compile/exec authenticated bytes, serving declared text dependencies in-memory."""
     module = ModuleType(name)
     module.__file__ = str(path)
     module.__package__ = ""
     module.__loader__ = None
+    if text_captures:
+        module.__dict__["open"] = _captured_text_open(text_captures)
     previous = sys.modules.get(name)
     had_previous = name in sys.modules
     sys.modules[name] = module
@@ -132,11 +184,18 @@ def run_cell(engine, helper, *, item: str, inventory: int, quantity: int) -> dic
 
 
 def run() -> dict:
-    # Capture and authenticate BOTH controls before either one executes.  The
-    # buffers below are the sole control authority for the rest of this run.
+    # Capture and authenticate EVERY control before either module executes.
     engine_bytes, actual_engine = capture(ENGINE, ENGINE_BLOB, "engine")
+    config_bytes, actual_config = capture(
+        ENGINE_CONFIG, ENGINE_CONFIG_BLOB, "engine config"
+    )
     helper_bytes, actual_helper = capture(HELPER, HELPER_BLOB, "helper")
-    engine = load_captured("_rowshed_lockstep_engine", ENGINE, engine_bytes)
+    engine = load_captured(
+        "_rowshed_lockstep_engine",
+        ENGINE,
+        engine_bytes,
+        text_captures={ENGINE_CONFIG: config_bytes},
+    )
     helper = load_captured("_rowshed_lockstep_helper", HELPER, helper_bytes)
     if helper.ENGINE_GIT_BLOB != ENGINE_BLOB:
         raise CheckError("helper engine pin drift")
@@ -164,6 +223,7 @@ def run() -> dict:
         "status": "PASS",
         "scope": "official _process_market identical-row lockstep baseline",
         "engine_git_blob": actual_engine,
+        "engine_config_git_blob": actual_config,
         "helper_git_blob": actual_helper,
         "controls_executed_from_captured_bytes": True,
         "cells": cells,
