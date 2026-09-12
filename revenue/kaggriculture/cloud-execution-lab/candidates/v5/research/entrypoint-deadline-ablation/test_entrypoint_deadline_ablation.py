@@ -93,6 +93,28 @@ class EntrypointDeadlineAblationTests(unittest.TestCase):
                 ab._write_new(str(target), b"replacement")
             self.assertEqual(target.read_bytes(), b"sentinel")
 
+    def test_existing_receipt_blocks_treatment_before_publication(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "treated-main.py"
+            receipt = Path(directory) / "receipt.json"
+            receipt.write_bytes(b"sentinel")
+            with self.assertRaises(FileExistsError):
+                ab._write_materialization(
+                    str(output),
+                    b"treated",
+                    str(receipt),
+                    b"receipt",
+                )
+            self.assertFalse(output.exists())
+            self.assertEqual(receipt.read_bytes(), b"sentinel")
+
+    def test_materialization_outputs_must_be_distinct(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "same"
+            with self.assertRaises(ValueError):
+                ab._write_materialization(str(target), b"a", str(target), b"b")
+            self.assertFalse(target.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

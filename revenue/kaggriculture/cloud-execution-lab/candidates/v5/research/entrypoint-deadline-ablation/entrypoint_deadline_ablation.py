@@ -167,10 +167,29 @@ def _read(path: str) -> bytes:
 
 def _write_new(path: str, data: bytes) -> None:
     target = Path(path)
-    if target.exists():
-        raise FileExistsError(f"refusing to replace existing output: {target}")
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(data)
+    with target.open("xb") as stream:
+        stream.write(data)
+
+
+def _write_materialization(
+    out_path: str,
+    out_data: bytes,
+    receipt_path: str,
+    receipt_data: bytes,
+) -> None:
+    """Publish the treatment pair only after both destinations are known-free."""
+    out = Path(out_path)
+    receipt = Path(receipt_path)
+    if out == receipt:
+        raise ValueError("treatment and receipt outputs must be distinct")
+    # Preflight both destinations before the first publication. ``is_symlink``
+    # catches dangling links that ``exists`` intentionally does not.
+    for target in (out, receipt):
+        if target.exists() or target.is_symlink():
+            raise FileExistsError(f"refusing to replace existing output: {target}")
+    _write_new(str(out), out_data)
+    _write_new(str(receipt), receipt_data)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -201,11 +220,8 @@ def main(argv: list[str] | None = None) -> int:
 
     treated, receipt = ablate_v4_main(v4)
     receipt["authority"] = authority
-    _write_new(args.out, treated)
-    _write_new(
-        args.receipt,
-        (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8"),
-    )
+    receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    _write_materialization(args.out, treated, args.receipt, receipt_bytes)
     print(json.dumps(receipt, sort_keys=True, separators=(",", ":")))
     return 0
 
