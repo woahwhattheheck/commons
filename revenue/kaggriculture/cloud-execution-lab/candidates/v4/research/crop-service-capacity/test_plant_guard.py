@@ -15,7 +15,11 @@ sys.modules[SPEC.name] = mod
 SPEC.loader.exec_module(mod)
 
 
-def observation(*, hour=23, farmer=(1, 1), hands=(), seeds=None, occupied=()):
+def observation(
+    *, hour=23, step=None, farmer=(1, 1), hands=(), seeds=None, occupied=()
+):
+    if step is None:
+        step = hour
     size = 4
     tiles = [[None for _ in range(size)] for _ in range(size)]
     for x, y in occupied:
@@ -31,6 +35,7 @@ def observation(*, hour=23, farmer=(1, 1), hands=(), seeds=None, occupied=()):
     return {
         "player": 0,
         "hour": hour,
+        "step": step,
         "farms": [farm],
         "private": {"seeds": seed_map},
     }
@@ -202,6 +207,43 @@ class PlantGuardTests(unittest.TestCase):
         self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
         self.assertEqual(result["watered_actor_indices"], [0])
         self.assertEqual(result["doomed_actor_indices"], [1])
+
+    def test_build_coop_before_colocated_plant_fails_closed(self):
+        obs = observation(hands=((1, 1),))
+        selected = action(("BUILD_COOP",), hands=(("PLANT", "WHEAT"),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "current_stage_tile_effect_ambiguity")
+        self.assertEqual(result["doomed_actor_indices"], [])
+
+    def test_build_pasture_before_colocated_plant_fails_closed(self):
+        obs = observation(hands=((1, 1),))
+        selected = action(("BUILD_PASTURE",), hands=(("PLANT", "WHEAT"),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "current_stage_tile_effect_ambiguity")
+        self.assertEqual(result["doomed_actor_indices"], [])
+
+    def test_build_on_other_tile_does_not_hide_executable_plant(self):
+        obs = observation(farmer=(0, 0), hands=((1, 1),))
+        selected = action(("BUILD_COOP",), hands=(("PLANT", "WHEAT"),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [1])
+
+    def test_hour_step_mismatch_fails_closed(self):
+        result = assess(
+            observation(hour=23, step=22), action(("PLANT", "WHEAT"))
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "hour_step_mismatch")
+
+    def test_step_type_poison_fails_closed(self):
+        result = assess(
+            observation(hour=23, step=True), action(("PLANT", "WHEAT"))
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertIn("step_must_be_int", result["reason"])
 
     def test_inputs_are_not_mutated(self):
         obs = observation(hour=22, hands=((0, 1),))
