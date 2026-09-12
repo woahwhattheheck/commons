@@ -99,6 +99,61 @@ def _id_list(values: Iterable[str], field: str) -> list[str]:
     return out
 
 
+def _current_last_writers(
+    receipt_raw: bytes,
+    current: dict[str, bytes],
+    current_sha256: str,
+) -> dict[str, str]:
+    """Authenticate a canonical composer receipt and recover exact member ownership."""
+    try:
+        receipt = json.loads(receipt_raw)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ExportError(f"current receipt is not valid JSON: {exc}") from exc
+    if not isinstance(receipt, dict):
+        raise ExportError("current receipt must be a JSON object")
+    if receipt.get("schema") != staging_composer.RECEIPT_SCHEMA:
+        raise ExportError("current receipt schema mismatch")
+    if receipt.get("baseline_archive_sha256") != BASELINE_SHA256:
+        raise ExportError("current receipt baseline mismatch")
+    if receipt.get("candidate_archive_sha256") != current_sha256:
+        raise ExportError("current receipt archive SHA256 mismatch")
+    if receipt.get("member_count") != len(current):
+        raise ExportError("current receipt member count mismatch")
+    expected_files = {name: digest(body) for name, body in sorted(current.items())}
+    if receipt.get("files") != expected_files:
+        raise ExportError("current receipt file map does not match current archive")
+
+    components = receipt.get("components")
+    if not isinstance(components, list):
+        raise ExportError("current receipt components must be an array")
+    writers: dict[str, str] = {}
+    seen_components: set[str] = set()
+    for entry in components:
+        if not isinstance(entry, dict):
+            raise ExportError("current receipt component entry must be an object")
+        cid = _component_id(entry.get("component_id"), "receipt component_id")
+        if cid in seen_components:
+            raise ExportError(f"current receipt repeats component_id: {cid}")
+        seen_components.add(cid)
+        replacements = entry.get("replacements")
+        additions = entry.get("additions")
+        if not isinstance(replacements, dict) or not isinstance(additions, dict):
+            raise ExportError(f"current receipt component {cid} has invalid member maps")
+        overlap = set(replacements) & set(additions)
+        if overlap:
+            raise ExportError(
+                f"current receipt component {cid} repeats member as replacement/addition: {sorted(overlap)[0]}"
+            )
+        for member in list(replacements) + list(additions):
+            member = canonical_member(member)
+            if member not in current:
+                raise ExportError(
+                    f"current receipt component {cid} owns missing current member: {member}"
+                )
+            writers[member] = cid
+    return writers
+
+
 def _parse_overlap(values: Iterable[str]) -> dict[str, str]:
     result: dict[str, str] = {}
     for raw in values:
@@ -120,6 +175,7 @@ def derive_component(
     candidate_raw: bytes,
     candidate_sha256: str,
     current_sha256: str | None,
+    current_receipt_raw: bytes | None = None,
     component_id: str,
     depends_on: Iterable[str] = (),
     conflicts_with: Iterable[str] = (),
@@ -132,28 +188,43 @@ def derive_component(
     if digest(candidate_raw) != expected_candidate:
         raise ExportError("candidate archive SHA256 mismatch")
 
+    baseline = archive_members(baseline_raw, "baseline")
+    current = archive_members(current_raw, "current")
+    candidate = archive_members(candidate_raw, "candidate")
+
     if current_sha256 is None:
         if current_raw != baseline_raw:
             raise ExportError("non-baseline current archive requires current_sha256")
+        if current_receipt_raw is not None:
+            raise ExportError("current receipt requires explicit current archive authority")
+        current_writers: dict[str, str] = {}
     else:
         expected_current = _sha(current_sha256, "current_sha256")
         if digest(current_raw) != expected_current:
             raise ExportError("current archive SHA256 mismatch")
+        if current_receipt_raw is None:
+            raise ExportError("explicit current archive requires current composer receipt")
+        current_writers = _current_last_writers(
+            current_receipt_raw,
+            current,
+            expected_current,
+        )
 
     cid = _component_id(component_id)
     depends = _id_list(depends_on, "depends_on")
     conflicts = _id_list(conflicts_with, "conflicts_with")
     if cid in depends or cid in conflicts:
         raise ExportError("component cannot depend on or conflict with itself")
+    contradictory = sorted(set(depends) & set(conflicts))
+    if contradictory:
+        raise ExportError(
+            f"component cannot both depend on and conflict with {contradictory[0]}"
+        )
 
     overlap = dict(overlap_after or {})
     for member, prior in overlap.items():
         canonical_member(member)
         _component_id(prior, "overlap predecessor")
-
-    baseline = archive_members(baseline_raw, "baseline")
-    current = archive_members(current_raw, "current")
-    candidate = archive_members(candidate_raw, "candidate")
 
     missing_baseline = sorted(set(baseline) - set(current))
     if missing_baseline:
@@ -174,9 +245,21 @@ def derive_component(
             if after == before:
                 continue
             changed_members.add(member)
-            current_differs_from_baseline = member not in baseline or current[member] != baseline[member]
-            if current_differs_from_baseline and member not in overlap:
-                raise ExportError(f"replacement overlaps prior component without declaration: {member}")
+            prior = current_writers.get(member)
+            declared = overlap.get(member)
+            if prior is None:
+                if declared is not None:
+                    raise ExportError(
+                        f"overlap declared on current member without prior composer writer: {member}"
+                    )
+            elif declared != prior:
+                if declared is None:
+                    raise ExportError(
+                        f"replacement overlaps prior component without declaration: {member}"
+                    )
+                raise ExportError(
+                    f"replacement overlap predecessor mismatch for {member}: expected {prior}"
+                )
             source = source_name(member)
             replacements[member] = {
                 "source": source,
@@ -196,11 +279,6 @@ def derive_component(
     extra_overlap = sorted(set(overlap) - set(replacements))
     if extra_overlap:
         raise ExportError(f"overlap names non-replacement member: {extra_overlap[0]}")
-    unnecessary_overlap = sorted(
-        member for member in overlap if member in baseline and current[member] == baseline[member]
-    )
-    if unnecessary_overlap:
-        raise ExportError(f"overlap declared on baseline-owned member: {unnecessary_overlap[0]}")
 
     manifest = {
         "schema": COMPONENT_SCHEMA,
@@ -242,6 +320,45 @@ def preflight_component(manifest: dict, payloads: dict[str, bytes]) -> None:
             raise ExportError("composer preflight addition surface mismatch")
 
 
+def _prepare_publication_directories(paths: Iterable[Path]) -> list[tuple[Path, int, int]]:
+    """Create missing publication parents and retain exact identities for rollback."""
+    owned: list[tuple[Path, int, int]] = []
+    targets = sorted({Path(path).parent for path in paths}, key=lambda p: (len(p.parts), str(p)))
+    for target in targets:
+        missing: list[Path] = []
+        cursor = target
+        while not cursor.exists():
+            missing.append(cursor)
+            parent = cursor.parent
+            if parent == cursor:
+                raise ExportError(f"cannot resolve publication parent for {target}")
+            cursor = parent
+        for directory in reversed(missing):
+            directory.mkdir()
+            st = os.lstat(directory)
+            if not stat.S_ISDIR(st.st_mode) or stat.S_ISLNK(st.st_mode):
+                raise ExportError(f"created publication parent is not an ordinary directory: {directory}")
+            owned.append((directory, st.st_dev, st.st_ino))
+    return owned
+
+
+def _rollback_publication_directories(owned: Iterable[tuple[Path, int, int]]) -> None:
+    """Best-effort remove only still-owned empty directories, deepest first."""
+    for directory, dev, ino in reversed(list(owned)):
+        try:
+            st = os.lstat(directory)
+        except FileNotFoundError:
+            continue
+        if not stat.S_ISDIR(st.st_mode) or stat.S_ISLNK(st.st_mode):
+            continue
+        if (st.st_dev, st.st_ino) != (dev, ino):
+            continue
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
+
+
 def publish_component(out_dir: Path, manifest: dict, payloads: dict[str, bytes]) -> None:
     out_dir = Path(out_dir)
     if out_dir.exists():
@@ -262,9 +379,13 @@ def publish_component(out_dir: Path, manifest: dict, payloads: dict[str, bytes])
         requested.append((out_dir.joinpath(*rel.parts), raw))
     if len(requested) < 2:
         raise ExportError("component publication requires manifest plus source payload")
+
+    owned_directories: list[tuple[Path, int, int]] = []
     try:
+        owned_directories = _prepare_publication_directories(path for path, _ in requested)
         publish_exclusive(requested)
     except Exception as exc:
+        _rollback_publication_directories(owned_directories)
         raise ExportError(f"component publication failed: {exc}") from exc
 
 
@@ -277,12 +398,16 @@ def export_component(
     component_id: str,
     current_path: Path | None = None,
     current_sha256: str | None = None,
+    current_receipt_path: Path | None = None,
     depends_on: Iterable[str] = (),
     conflicts_with: Iterable[str] = (),
     overlap_values: Iterable[str] = (),
 ) -> dict:
     baseline_raw = read_regular(baseline_path)
     current_raw = baseline_raw if current_path is None else read_regular(current_path)
+    current_receipt_raw = (
+        None if current_receipt_path is None else read_regular(current_receipt_path)
+    )
     candidate_raw = read_regular(candidate_path)
     overlap = _parse_overlap(overlap_values)
     manifest, payloads = derive_component(
@@ -291,6 +416,7 @@ def export_component(
         candidate_raw=candidate_raw,
         candidate_sha256=candidate_sha256,
         current_sha256=current_sha256,
+        current_receipt_raw=current_receipt_raw,
         component_id=component_id,
         depends_on=depends_on,
         conflicts_with=conflicts_with,
@@ -309,12 +435,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--component-id", required=True)
     parser.add_argument("--current", type=Path)
     parser.add_argument("--current-sha256")
+    parser.add_argument("--current-receipt", type=Path)
     parser.add_argument("--depends-on", action="append", default=[])
     parser.add_argument("--conflicts-with", action="append", default=[])
     parser.add_argument("--overlap-after", action="append", default=[], metavar="MEMBER=COMPONENT")
     args = parser.parse_args(argv)
-    if (args.current is None) != (args.current_sha256 is None):
-        parser.error("--current and --current-sha256 must be supplied together")
+    current_args = (args.current, args.current_sha256, args.current_receipt)
+    if any(value is not None for value in current_args) and not all(
+        value is not None for value in current_args
+    ):
+        parser.error("--current, --current-sha256 and --current-receipt must be supplied together")
     manifest = export_component(
         baseline_path=args.baseline,
         candidate_path=args.candidate,
@@ -323,6 +453,7 @@ def main(argv: list[str] | None = None) -> int:
         component_id=args.component_id,
         current_path=args.current,
         current_sha256=args.current_sha256,
+        current_receipt_path=args.current_receipt,
         depends_on=args.depends_on,
         conflicts_with=args.conflicts_with,
         overlap_values=args.overlap_after,
