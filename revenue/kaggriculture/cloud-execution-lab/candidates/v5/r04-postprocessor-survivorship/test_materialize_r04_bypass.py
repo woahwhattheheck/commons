@@ -140,7 +140,7 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
             self.assertEqual(out.read_bytes(), packed)
             self.assertEqual(receipt_path.read_bytes(), m._receipt_bytes(receipt))
 
-    def test_receipt_collision_never_publishes_archive(self):
+    def test_second_destination_collision_rolls_back_first_reservation(self):
         packed = b"complete archive bytes"
         receipt = {"schema": "test"}
         with tempfile.TemporaryDirectory() as td:
@@ -152,16 +152,50 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
             self.assertFalse(out.exists())
             self.assertEqual(receipt_path.read_bytes(), b"hostile")
 
-    def test_archive_collision_rolls_back_owned_receipt(self):
+    def test_injected_receipt_write_failure_rolls_back_both_owned_outputs(self):
         packed = b"complete archive bytes"
         receipt = {"schema": "test"}
+        calls = 0
+
+        def fail_second(fd, raw):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError("injected receipt write failure")
+            m._write_all(fd, raw)
+
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "treatment.tar.gz"
             receipt_path = Path(td) / "treatment.json"
-            out.write_bytes(b"hostile")
-            with self.assertRaises(FileExistsError):
-                m.publish_pair(out, receipt_path, packed, receipt)
-            self.assertEqual(out.read_bytes(), b"hostile")
+            with self.assertRaisesRegex(OSError, "injected receipt write failure"):
+                m.publish_pair(out, receipt_path, packed, receipt, writer=fail_second)
+            self.assertFalse(out.exists())
+            self.assertFalse(receipt_path.exists())
+
+    def test_cleanup_never_deletes_hostile_replacement(self):
+        packed = b"complete archive bytes"
+        receipt = {"schema": "test"}
+        calls = 0
+        out_holder = {}
+
+        def replace_then_fail(fd, raw):
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                m._write_all(fd, raw)
+                return
+            out = out_holder["out"]
+            out.unlink()
+            out.write_bytes(b"hostile replacement")
+            raise OSError("injected receipt failure after hostile swap")
+
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "treatment.tar.gz"
+            receipt_path = Path(td) / "treatment.json"
+            out_holder["out"] = out
+            with self.assertRaisesRegex(OSError, "hostile swap"):
+                m.publish_pair(out, receipt_path, packed, receipt, writer=replace_then_fail)
+            self.assertEqual(out.read_bytes(), b"hostile replacement")
             self.assertFalse(receipt_path.exists())
 
 
