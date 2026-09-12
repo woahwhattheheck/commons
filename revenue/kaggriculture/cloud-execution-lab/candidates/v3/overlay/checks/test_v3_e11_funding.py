@@ -91,6 +91,17 @@ class E11FundingEquivalenceTests(unittest.TestCase):
         self.assertFalse(report["changed"])
         self.assertEqual(report["reason"], "PRICE_DROP_NO_MATCHING_SELL")
 
+    def test_zero_and_negative_limits_match_official_minimum_one(self):
+        market = [["SELL", "WHEAT", 1], ["SELL", "WHEAT", 1]]
+        for limit in (0, -3):
+            with self.subTest(limit=limit):
+                out, report = self.apply(
+                    obs(), market, maxMarketOrdersPerTurn=limit)
+                self.assertEqual(out["market"], [[], ["SELL", "WHEAT", 1]])
+                self.assertTrue(report["changed"])
+                self.assertEqual(report["executable_prefix_length"], 1)
+                self.assertEqual(report["deferred"], ["WHEAT"])
+
     def test_later_hire_can_remain_when_public_cash_proves_independent(self):
         market = [["SELL", "WHEAT", 4], ["HIRE"]]
         out, report = self.apply(obs(money=3000), market)
