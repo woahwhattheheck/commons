@@ -13,7 +13,7 @@ All files live under `https://raw.githubusercontent.com/woahwhattheheck/commons/
 | head | under 2 KB | `coordination-head.json`: main, counts, Actions queue, lanes with several open carriers |
 | rows | about 230 KB | `coordination.json`: one line per open PR |
 | lanes | small | `coordination-lanes.json`: lanes with two or more members, plus their recently closed members |
-| paths | about 150 KB | `coordination-paths.json`: the paths each open pull request changes |
+| paths | about 150 KB | `coordination-paths.json`: the paths each open PR changes |
 | page | human view | `coordination.html` on main, which reads the files above |
 
 Read the head first, and the rows only when the head says something moved. Each row sits on its own line, so a refresh diffs row by row. `observed_at` says how old everything is.
