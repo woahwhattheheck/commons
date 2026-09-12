@@ -84,6 +84,7 @@ jobs:
           test -z "$(git status --porcelain)"
 
   integrate-and-publish-current:
+    needs: source-and-evidence-contracts
     if: github.event_name == 'push' && github.ref_name == 'astra/titan-v5-eod-capacity-rescue-20260912'
     runs-on: ubuntu-24.04
     permissions:
