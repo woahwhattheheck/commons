@@ -29,6 +29,16 @@ HORIZON = 8
 MAX_PLANS = 700
 
 
+def _market_order_limit(config):
+    """Pinned engine raw market-slot cap, including the nonpositive floor."""
+    return max(1, int(config.get('maxMarketOrdersPerTurn', 10)))
+
+
+def _market_prefix(orders, config):
+    """Raw executable prefix; malformed rows still consume their engine slot."""
+    return orders[:_market_order_limit(config)]
+
+
 def post_units(obs, action, config, *, shed_capacity=None):
     """Exact deterministic engine unit stage on the player's observed farm."""
     farm = detached_json_value(obs['farms'][obs['player']])
@@ -235,7 +245,7 @@ class SellScheduler:
         for t in range(now,end+1):
             if t>now and t%24==0:hires=0
             orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
-            for order in orders:
+            for order in _market_prefix(orders,config):
                 n,hires=_order_spend(order,farm,obs['market']['inventory'],obs['market'].get('params'),hires,config);cost+=n
                 if order and order[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
                     farm['unlocked_quadrants'].append(m.LAND_ORDER[len(farm['unlocked_quadrants'])-1])
@@ -265,7 +275,7 @@ class SellScheduler:
             # Before market: arrivals cannot be rescued by this turn's sale.
             profile.append((t,'before',sum(p['shed'].values())))
             orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
-            for o in orders:
+            for o in _market_prefix(orders,config):
                 if not o:continue
                 if o[0]=='SELL' and o[1]!=item:
                     p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
@@ -310,7 +320,7 @@ class SellScheduler:
         if dates[-1]!=end:dates.append(end)
         dates=sorted(set(dates))
         baseline_q={}
-        for o in base['market']:
+        for o in _market_prefix(base['market'],config):
             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
@@ -327,7 +337,8 @@ class SellScheduler:
                 if q>0:reference.append((min(t,end),q));rem-=q
             route=self.controller.R[self.controller.cur]
             for t in range(now+1,end+1):
-                for order in route[t].get('market',[]) if t<len(route) else []:
+                future_market=route[t].get('market',[]) if t<len(route) else []
+                for order in _market_prefix(future_market,config):
                     if order and order[0]=='SELL' and order[1]==item and rem>0:
                         q=min(rem,max(0,int(order[2])));reference.append((t,q));rem-=q
             # Remaining stock keeps a continuation value; no artificial liquidation.
@@ -344,11 +355,12 @@ class SellScheduler:
             receipt_feasible=self.receipt_profile(obs,base,farm,private,end,item,config)
             route=self.controller.R[self.controller.cur]
             def feasible(plan):
+                limit=_market_order_limit(config)
                 for t,q in plan:
                     if q<=0:continue
                     orders=base['market'] if t==now else route[t].get('market',[]) if t<len(route) else []
-                    if len(orders)>=int(config.get('maxMarketOrdersPerTurn',10)):
-                        offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==item)
+                    if len(orders)>=limit:
+                        offered=sum(max(0,int(o[2])) for o in _market_prefix(orders,config) if o and o[0]=='SELL' and o[1]==item)
                         if q>offered:return False
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
@@ -361,11 +373,16 @@ class SellScheduler:
             self.planned[item]=[(t,q) for t,q in plan if t>now and q>0]
             self.diagnostics['chosen']=info
         out=copy.deepcopy(base);market=[];remaining=dict(current)
-        available=dict(shed)
+        available=dict(shed);limit=_market_order_limit(config)
         # Preserve every original order index, including withheld SELL positions.
         # Extra stock is offered only after inherited orders: never consolidate a
         # later SELL ahead of a cash-dependent purchase or shift its rival pairing.
-        for raw in out['market']:
+        for index,raw in enumerate(out['market']):
+            if index>=limit:
+                # Engine-inert suffix rows remain byte/topology-equivalent. They
+                # neither consume executable stock nor satisfy scheduler pending.
+                market.append(raw)
+                continue
             o=list(raw)
             if o and o[0]=='SELL' and len(o)>2 and o[1] in targets:
                 item=o[1]
@@ -375,11 +392,11 @@ class SellScheduler:
             else:market.append(o)
         for item in sorted(targets):
             q=min(remaining.get(item,0),max(0,available.get(item,0)))
-            if q>0 and len(market)<int(config.get('maxMarketOrdersPerTurn',10)):
+            if q>0 and len(market)<limit:
                 market.append(['SELL',item,q]);available[item]=available.get(item,0)-q
         out['market']=market
         for item,q in targets.items():
-            sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
+            sold=sum(o[2] for o in _market_prefix(out['market'],config) if o and o[0]=='SELL' and o[1]==item)
             self.pending[item]=max(0,q-sold)
             if not self.pending[item]:self.planned.pop(item,None)
         self.previous=copy.deepcopy(obs)
