@@ -8,6 +8,15 @@
   "additive_bridge_appendix_blob": "6c3c13e92380b77a39054a1e54668fa7b10672a3",
   "transplant_spec_blob": "bb6b3c6441180786a094198247d3d5f0418f41e2",
   "synthetic_bridge_test_blob": "167fd9e376e614226d5acd9e9a0a139cbf4bfb77",
+  "full_preservation_commit": "3d167e8bf6f52d11280bb5137c3827e30fcc9139",
+  "full_preservation_tree": "bc9910b66b80f92453450c347d64ae423d27acc8",
+  "full_preservation_paths": [
+    "r04_s6_fert_roi.source.py",
+    "bridge_append.py",
+    "TRANSPLANT.txt",
+    "test_s6_bridge_synthetic.py",
+    "test_v4_s6_fert_roi.source.py"
+  ],
   "policy_contract": [
     "S6 never creates a fertilizer hand; the incumbent CARROT hire gate must already qualify",
     "reserve at most one additional fertilizer unit after the unchanged baseline gate",
