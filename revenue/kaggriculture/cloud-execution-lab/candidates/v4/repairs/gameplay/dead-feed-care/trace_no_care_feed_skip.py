@@ -1,23 +1,25 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fixed-tape earlier-day frontier for the Gemini/Antigravity STARVE_SKIP seam.
+"""Caller-tape earlier-day frontier for the Gemini/Antigravity STARVE_SKIP seam.
 
 The canonical FASTING helper deliberately admits FEED suppression only at hour
 23, where it is source-certain that no later same-day CARE can be authored.  A
 current-native census found that surface cold.  This research-only successor
-asks a narrower question: if the *complete already-materialized remainder of the
-same day* proves that no later FEED or CARE targets the animal, can the same
-source theorem be evaluated earlier in the day?
+asks a narrower question: if a *complete supplied remainder of the same day*
+contains no later FEED or CARE at the animal, can the same source theorem be
+evaluated earlier in the day?
 
-This module never predicts a future action.  It consumes an explicit fixed tape
-of later observation/action pairs through hour 23.  The existing FASTING helper
-remains the mechanical eligibility authority: a synthetic hour-23 view of the
-same current state is used only to reuse its animal, pending-CARE, escape,
-physical-WHEAT, duplicate-FEED, and malformed-state guards.  The successor then
-proves the one guard that hour 23 supplied implicitly: no remaining authored
-FEED or CARE at the site.
+This module never predicts a future action and never authenticates a trace.  It
+shape-validates an explicit caller-supplied sequence of later observation/action
+pairs through hour 23.  The existing FASTING helper remains the mechanical
+eligibility authority: a synthetic hour-23 view of the same current state is used
+only to reuse its animal, pending-CARE, escape, physical-WHEAT and malformed-state
+guards.  A local semantic-FEED occupancy check additionally rejects a current
+same-site extended FEED that the older exact-row FASTING helper could miss.
 
-Research/counterfactual only.  No runtime/default/feature key or activation
-claim is created, and the native hour-23 helper remains authoritative.
+The output proves only "no blocker in this supplied tape."  It is not current-
+native reachability evidence until an external replay/receipt owner binds the
+current state, suffix bytes and interpreter/source identity.  Research/
+counterfactual only; no runtime/default/feature key or activation claim.
 """
 from __future__ import annotations
 
@@ -68,6 +70,20 @@ def _positions_rows(action: Any, observation: Any):
     return out
 
 
+def _one_current_semantic_feed(action: Any, observation: Any, site: tuple[int, int]) -> bool:
+    """Require exactly one engine-semantic FEED at the candidate site now.
+
+    Official unit dispatch uses ``row[0]``.  This local guard prevents an older
+    exact-row FASTING helper from treating ``['FEED','extra']`` as inert while a
+    second exact FEED at the same site is selected for suppression.
+    """
+    pairs = _positions_rows(action, observation)
+    if pairs is None:
+        return False
+    feeds = [row for position, row in pairs if position == site and row[0] == "FEED"]
+    return len(feeds) == 1 and feeds[0] == ["FEED"]
+
+
 def _remaining_day_certificate(
     *,
     current_step: int,
@@ -75,7 +91,7 @@ def _remaining_day_certificate(
     site: tuple[int, int],
     suffix: Any,
 ) -> dict | None:
-    """Authenticate a gapless fixed action suffix through the current day's EOD."""
+    """Shape-validate a gapless supplied action suffix through this day's EOD."""
     eod_step = (current_step // 24) * 24 + 23
     if not isinstance(suffix, list) or len(suffix) != eod_step - current_step:
         return None
@@ -103,6 +119,8 @@ def _remaining_day_certificate(
         "suffix_rows": len(suffix),
         "same_site_future_feed_rows": 0,
         "same_site_future_care_rows": 0,
+        "provenance": "CALLER_SUPPLIED_UNVERIFIED_TAPE",
+        "authenticated_trace_claim": False,
     }
 
 
@@ -112,10 +130,10 @@ def plan_trace_no_care_feed_skip(
     configuration: Any,
     remaining_day_suffix: Any,
 ) -> list[dict]:
-    """Return earlier-day FEED candidates certified by a complete fixed suffix.
+    """Return earlier-day candidates conditional on a complete supplied suffix.
 
     Hour 23 intentionally returns no candidates: the existing FASTING helper owns
-    that surface directly.  For earlier hours, we reuse FASTING's exact current
+    that surface directly.  For earlier hours, we reuse FASTING's current
     mechanical guards by changing only the *step label* of a deep-copied current
     observation to this day's hour 23.  No state field used by those guards is
     changed, and the day number is preserved.
@@ -140,6 +158,8 @@ def plan_trace_no_care_feed_skip(
                 or any(type(v) is not int for v in site_value)):
             continue
         site = (site_value[0], site_value[1])
+        if not _one_current_semantic_feed(current_action, current_observation, site):
+            continue
         suffix_cert = _remaining_day_certificate(
             current_step=current_step,
             player=player,
@@ -156,6 +176,9 @@ def plan_trace_no_care_feed_skip(
             "synthetic_fast_gate_step": synthetic_step,
             "remaining_day_certificate": suffix_cert,
             "fixed_tape_only": True,
+            "caller_supplied_tape_only": True,
+            "authenticated_trace_claim": False,
+            "current_native_reachability_claim": False,
             "runtime_prediction": False,
             "policy_claim": False,
             "activation_claim": False,
@@ -173,7 +196,7 @@ def build_single_counterfactual(
     candidate_index: int = 0,
     enabled: bool = False,
 ):
-    """Rewrite exactly one certified current FEED to PASS for interpreter replay."""
+    """Rewrite one conditional current FEED to PASS for external replay only."""
     if not enabled:
         return current_action
     if type(candidate_index) is not int or candidate_index < 0:
