@@ -24,23 +24,26 @@ The transform fails closed to the caller action on missing/incomplete/type-poiso
 
 Current ABI market parameters are passed through to the current quote function. The historical donor-parity fuzz gate is restricted to the complete-projection/default-market domain where V3.1 and the current component are intended to be semantically identical.
 
-## Pressure-novel admission
+## Downstream-pressure novelty admission
 
-`novel_rank_guard.py` is an additive admission layer for the current V4 stack, where the already-enabled LARK market-pressure transform can independently choose a leading-SELL order. It does not construct either ranking and does not change the historical `RowShedSellOrder.transform(...)` donor semantics.
+`novel_rank_guard.py` is an additive admission primitive for the current V4 stack. Row-shed is inserted inside `FrozenSelected` before the existing selected-action SELL economics, while canonical market pressure is applied later by the outer runtime. A raw row-shed rank that differs from `pressure(parent)` is therefore not sufficient novelty evidence: the intervening SELL logic and final pressure sort can erase the difference completely.
 
-Given one shared parent action, one row-shed candidate, and one pressure candidate, the guard admits row-shed only when both candidates are exact permutations of the same leading contiguous SELL block, preserve duplicate multiplicity, preserve every suffix/barrier index and all non-market action surfaces, and produce different ranks. If the two ranks are identical, the row-shed candidate is redundant and the guard returns exact parent identity. Missing/malformed pressure evidence, cardinality drift, row/quantity changes, suffix movement, or non-market mutation also fail closed to parent identity.
+The guard now requires evidence from the real downstream pressure seam for both paths: the action that reaches canonical pressure after the incumbent path, its pressure postimage, the action that reaches pressure after the row-shed path, and its pressure postimage. It first authenticates the raw row-shed candidate as an exact leading-SELL permutation of the parent. It then requires each supplied pressure postimage to preserve its own pressure input's top-level/non-market surfaces, market cardinality, complete row multiset, quantities, and duplicate multiplicity. The two pressure-path inputs must agree on non-market action surfaces. Identical pressure inputs may not produce different postimages.
 
-This is deliberately an admission primitive rather than a new controller or a new pressure implementation. The canonical pressure transform remains the rank authority; later composition may pass its already-produced candidate into this guard without importing a second policy family.
+Row-shed is admitted only when the two final pressure postimages differ. If downstream SELL economics and pressure collapse both paths to the same final action, the guard returns exact parent identity. Missing/incomplete evidence, row/multiset drift, non-market mutation, or inconsistent pressure evidence also fail closed to parent identity.
+
+The guard does **not** construct either downstream path or implement pressure policy. The caller must produce both pressure input/postimage pairs from the same authenticated current stack, observation, configuration, quote function, and public rival-supply evidence. This keeps canonical LARK pressure as the sole rank authority and prevents this source-only helper from becoming a second policy implementation.
 
 ## Composition
 
-Intended seam:
+Intended evidence seam:
 
 1. caller-owned current selected-action unit projection;
 2. `RowShedSellOrder` using that packet's `post_unit_shed`;
-3. optional pressure-novel admission against the canonical market-pressure candidate;
-4. current `SelectedActionSell` / `OrderedSelectedSell` economics;
-5. existing composer/materializer.
+3. existing `FrozenSelected` SELL economics on incumbent and row-shed paths;
+4. canonical outer market-pressure transform on each resulting action under identical public evidence;
+5. `NovelRankGuard` admits the raw row-shed choice only if the authenticated final pressure postimages differ;
+6. existing graph/postimage field carrier measures the resulting current-stack effect.
 
 LOOM PR #12777 registered this package as `row-shed-sell-order` in the canonical composition graph. PR #12998 subsequently added the sole authenticated graph-postimage field carrier: it materializes the exact graph predecessor, overlays only the existing row-shed source bytes, and measures natural both-seat official-engine engagement with action-transparent diagnostics. That carrier is evidence-only and does not activate row-shed in production.
 
@@ -61,6 +64,6 @@ Do not fork the scheduler, producer, market engine, evaluator, canonical pressur
 - explicit V3.1-vs-V4 incomplete-projection divergence witness;
 - current-ABI market-parameter passthrough.
 
-`test_novel_rank_guard.py` adds 11 focused contracts, passing under normal Python and `python -O` in the authoring runtime. They cover redundant-rank identity, distinct-rank admission, pressure identity as valid comparison evidence, missing pressure fail-closed behavior, suffix/non-market/multiset mutation rejection, duplicate-row multiplicity, falsey barriers, malformed parent rows, and input immutability.
+`test_novel_rank_guard.py` contains 13 focused contracts for the downstream novelty boundary: the predecessor case where raw ranks differ but final pressure postimages are equal, the pressure-tie survivor where the final postimages remain different, intervening SELL-economics changes before pressure, incomplete legacy rank evidence, deterministic same-input pressure evidence, postimage multiset/non-market drift, pressure-path non-market disagreement, raw row-shed multiset drift, duplicate-row multiplicity, falsey barriers, malformed parent rows, and input immutability.
 
-A current official-engine/full-game both-seat economic gate remains required before any production/default activation. Pressure-novel admission likewise requires current-stack field evidence before it can become an active composition edge.
+A current official-engine/full-game both-seat economic gate remains required before any production/default activation. This helper is source admission only; it does not itself authenticate the caller's pressure execution or authorize composition/runtime/default changes.
