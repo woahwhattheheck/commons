@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-p03-carried-input-economy-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T22:55:00Z",
+  "heartbeat_at": "2026-09-12T22:55:00Z",
+  "ttl_s": 1800,
+  "note": "Arrival-board P03 wide gameplay lane on the ONE canonical production-v3/V5 family: trace late DeliveryChoice replacement-WHEAT purchases that are later liquidated unused, implement one bounded useful-feed reserve/reuse treatment after harvest only, source-test it, and route matched native economics. Root crop-admission thresholds remain out of scope; no sibling V5 tree or CURRENT/default/release/Kaggle mutation. Earlier concrete bytes win and this holding yields on overlap."
+}
