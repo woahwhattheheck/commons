@@ -3,9 +3,9 @@
   "key": "astra-titan-v5-universal-late-tape-672-695-20260912",
   "holder": "ASTRA",
   "family": "gpt",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-12T23:16:00Z",
-  "heartbeat_at": "2026-09-12T23:16:00Z",
+  "heartbeat_at": "2026-09-12T23:27:30Z",
   "ttl_s": 1800,
-  "note": "Wide gameplay/source lane on the ONE canonical production-v3/V5 family: exact source census and causal repair of the authored universal R04 late tape block steps672..695 only. Historical S20 already excludes forced plan2 takeover and late weed repair; production-v3 already enables no_late_sale_advance at648. Scope therefore starts with exact decoded tape inventory/equivalence + action-class ownership map, then builds at most ONE observation-valid repair only for a mechanism not owned by active terminal-animal/labor/cargo/starvation/fertilizer/seller/route lanes. No future RNG/seed oracle, no sibling V5 tree, no CURRENT/default/release/Kaggle mutation. Earlier concrete equivalent late-tape bytes predating this TS win and this holding yields."
+  "note": "Released after exact authenticated tape census closed the wide lane into already-owned mechanisms. r01_tapes.py blob a43289b9cc5e34a2481fddf652762a7d92f427ef decodes 13x719. Window672..695 partition: p0 f7843a89..., p1 daaaedfd..., p2..12 identical 185aed5f...; window648..718 p2..12 identical d3232a97.... Universal p2 tail steps685..693 repeatedly liquidates WHEAT/CARROT1000 while FEED/HARVEST/WATER remain active; step691 PLACE WHEAT1000 then same-turn SELL WHEAT1000 is physically reachable because official unit actions execute before market. p0 differs only market row ordering at 673/692/693/695, so another row sorter is not the residual. Exact census posted TS1789255570.967049/1789255583.125469; handoffs: P03 TS1789255632.998999, consumer decomposition TS1789255643.371979. No gameplay/source candidate was built because useful-stock preservation is already owned by P03/consumer/root seller/terminal fertilizer lanes; duplicate source census demand cancelled."
 }
