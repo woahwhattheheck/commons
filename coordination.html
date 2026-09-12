@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commons Coordination State</title>
+<style>
+:root{--bg:#f7f6f2;--panel:#fff;--ink:#1d1f23;--muted:#5d636d;--line:#e3e1da;--accent:#2f5d8a;--soft:#e8eff6;
+--ok:#1f6b43;--ok-bg:#e2f2e8;--warn:#7a4b00;--warn-bg:#fbeed5;--bad:#8a1f1f;--bad-bg:#f8e1e1;--idle:#4f5663;--idle-bg:#eceef1}
+@media (prefers-color-scheme: dark){:root{--bg:#16181c;--panel:#1e2126;--ink:#e6e6e3;--muted:#a3a8b0;--line:#2e3239;--accent:#8db6e0;--soft:#1f2a36;
+--ok:#8fd4ac;--ok-bg:#17301f;--warn:#f0c77a;--warn-bg:#35290f;--bad:#f1a1a1;--bad-bg:#3a1b1b;--idle:#b8bec8;--idle-bg:#2a2e35}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:17px;margin:26px 0 8px}
+.sub{color:var(--muted);margin:0 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.stat b{display:block;font-size:19px;color:var(--accent)}
+.stat span{color:var(--muted);font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:999px;white-space:nowrap}
+.b-ok{background:var(--ok-bg);color:var(--ok)}.b-warn{background:var(--warn-bg);color:var(--warn)}
+.b-bad{background:var(--bad-bg);color:var(--bad)}.b-idle{background:var(--idle-bg);color:var(--idle)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:980px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13px}
+th{background:var(--soft);position:sticky;top:0;font-size:12px}
+tr:last-child td{border-bottom:none}
+a{color:var(--accent)}
+input,select,button{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+button{cursor:pointer}
+.muted{color:var(--muted)}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;font-size:12px}
+.lane{margin:6px 0}
+.fields span{margin-right:4px}
+#err{color:var(--bad)}
+</style>
+</head>
+<body>
+<main>
+<h1>Commons coordination state</h1>
+<p class="sub">Computed from GitHub by <span class="mono">host/coordination_state.py</span> and published to the <span class="mono">state/coordination</span> branch, never to main. First draft: any peer may fix it. To refresh from any seat, run <span class="mono">python host/coordination_state.py publish</span>.</p>
+
+<div class="bar">
+  <a href="./index.html">home</a>
+  <button id="reload">Reload</button>
+  <span id="age" class="muted"></span>
+  <span id="err"></span>
+</div>
+
+<div class="grid" id="stats"></div>
+
+<h2>Lanes with more than one open carrier</h2>
+<p class="muted">One reviewed change, several open pull requests. Lanes are joined by identical changed-path/blob sets (content key) and by supersession text.</p>
+<div id="several" class="card"></div>
+
+<h2>Open pull requests</h2>
+<div class="bar">
+  <input id="q" placeholder="filter: number, title, marker" size="32">
+  <select id="drift"><option value="">any drift</option><option>current</option><option>disjoint</option><option>overlap</option><option>contained</option><option>unknown</option></select>
+  <select id="base"><option value="">any base</option></select>
+  <select id="hosted"><option value="">any hosted state</option></select>
+  <span id="shown" class="muted"></span>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Title</th><th>Base</th><th>Drift</th><th>Verdict fields (current head)</th><th>Hosted</th><th>Lane</th><th>Updated</th></tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
+
+<h2>Reading the drift column</h2>
+<div class="card">
+<p><span class="badge b-ok">current</span> The merge-base is the base branch tip.</p>
+<p><span class="badge b-ok">disjoint</span> The tip moved, but never touched this change's paths. The reviewed bytes compose onto the tip exactly, so no new carrier is needed for custody.</p>
+<p><span class="badge b-warn">overlap</span> The tip changed paths this change carries. Those paths are listed.</p>
+<p><span class="badge b-idle">contained</span> The head adds nothing beyond its merge-base with the tip.</p>
+<p><span class="badge b-idle">unknown</span> The producer held no merge-base.</p>
+<p class="muted">Verdict fields are parsed from review text (first draft parser). They report what reviewers wrote; this page adds no verdict of its own.</p>
+</div>
+</main>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var SRC = params.get("src") ||
+    "https://raw.githubusercontent.com/woahwhattheheck/commons/state/coordination/coordination.json";
+  var LANES = params.get("lanes") || SRC.replace(/coordination\.json(\?.*)?$/, "coordination-lanes.json");
+  var data = null;
+
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+  function ago(iso) {
+    var t = Date.parse(iso);
+    if (!t) return "unknown";
+    var s = Math.max(0, Math.round((Date.now() - t) / 1000));
+    if (s < 90) return s + "s ago";
+    if (s < 5400) return Math.round(s / 60) + "m ago";
+    if (s < 172800) return Math.round(s / 3600) + "h ago";
+    return Math.round(s / 86400) + "d ago";
+  }
+  function secs(n) {
+    if (typeof n !== "number") return "unknown";
+    if (n < 5400) return Math.round(n / 60) + " min";
+    return (n / 3600).toFixed(1) + " h";
+  }
+  function badge(text, kind) { return el("span", "badge b-" + kind, text); }
+  function driftKind(s) { return s === "overlap" ? "warn" : (s === "current" || s === "disjoint") ? "ok" : "idle"; }
+  function verdictKind(v) { return v === "PASS" ? "ok" : (v === "HOLD" || v === "PENDING") ? "warn" : v === "FAIL" ? "bad" : "idle"; }
+  function hostedKind(v) { return v === "SUCCESS" ? "ok" : v === "FAILED" ? "bad" : v === "NONE" ? "idle" : "warn"; }
+
+  function stat(label, value) {
+    var box = el("div", "card stat");
+    box.appendChild(el("b", "", String(value)));
+    box.appendChild(el("span", "", label));
+    return box;
+  }
+
+  function renderStats() {
+    var stats = document.getElementById("stats");
+    stats.textContent = "";
+    var c = data.counts || {}, d = c.drift || {}, q = data.queue || {};
+    stats.appendChild(stat("open pull requests", c.open_prs));
+    stats.appendChild(stat("drift: current / disjoint", (d.current || 0) + " / " + (d.disjoint || 0)));
+    stats.appendChild(stat("drift: overlap", d.overlap || 0));
+    stats.appendChild(stat("lanes open", c.lanes_open));
+    stats.appendChild(stat("lanes with several open", c.lanes_with_several_open));
+    stats.appendChild(stat("Actions queued", q.queued));
+    stats.appendChild(stat("Actions running", q.in_progress));
+    stats.appendChild(stat("oldest queued run" + (q.oldest_is_lower_bound ? " (at least)" : ""), secs(q.oldest_queued_age_s)));
+    var main = data.main || {};
+    stats.appendChild(stat("main " + String(main.sha || "").slice(0, 10), "moved " + ago(main.committed_at)));
+  }
+
+  function laneOf(number) {
+    var lanes = data.lanes || [];
+    for (var i = 0; i < lanes.length; i++) if (lanes[i].chain.indexOf(number) >= 0) return lanes[i];
+    return null;
+  }
+
+  function prLink(n) {
+    var a = el("a", "", "#" + n);
+    a.href = "https://github.com/" + (data.repo || "woahwhattheheck/commons") + "/pull/" + n;
+    a.target = "_blank"; a.rel = "noopener";
+    return a;
+  }
+
+  function renderSeveral() {
+    var box = document.getElementById("several");
+    box.textContent = "";
+    var lanes = (data.lanes || []).filter(function (l) { return l.state === "OPEN" && l.open.length > 1; });
+    if (!lanes.length) { box.appendChild(el("span", "muted", "None right now.")); return; }
+    lanes.forEach(function (l) {
+      var row = el("div", "lane");
+      row.appendChild(el("b", "", l.title + " "));
+      row.appendChild(el("span", "muted", "open: "));
+      l.open.forEach(function (n) { row.appendChild(prLink(n)); row.appendChild(document.createTextNode(" ")); });
+      row.appendChild(el("span", "muted", " · newest open " ));
+      row.appendChild(prLink(l.canonical));
+      row.appendChild(el("span", "muted", " · chain " + l.chain.map(function (n) { return "#" + n; }).join(" → ")));
+      box.appendChild(row);
+    });
+  }
+
+  function fillSelect(id, values) {
+    var sel = document.getElementById(id);
+    var keep = sel.value;
+    while (sel.options.length > 1) sel.remove(1);
+    values.forEach(function (v) { var o = el("option", "", v); o.value = v; sel.appendChild(o); });
+    sel.value = keep;
+  }
+
+  function renderRows() {
+    var q = document.getElementById("q").value.toLowerCase();
+    var drift = document.getElementById("drift").value;
+    var base = document.getElementById("base").value;
+    var hosted = document.getElementById("hosted").value;
+    var body = document.getElementById("rows");
+    body.textContent = "";
+    var shown = 0;
+    (data.prs || []).forEach(function (p) {
+      var d = p.drift || {};
+      var hay = (p.number + " " + p.title + " " + (p.markers || []).join(" ")).toLowerCase();
+      if (q && hay.indexOf(q) < 0) return;
+      if (drift && d.status !== drift) return;
+      if (base && (d.base_ref || p.base_ref) !== base) return;
+      if (hosted && (p.hosted || {}).rollup !== hosted) return;
+      shown++;
+      var tr = el("tr");
+      var num = el("td"); num.appendChild(prLink(p.number)); if (p.draft) num.appendChild(el("div", "muted", "draft"));
+      tr.appendChild(num);
+      var title = el("td", "", p.title);
+      tr.appendChild(title);
+      tr.appendChild(el("td", "mono", d.base_ref || p.base_ref || ""));
+      var dt = el("td");
+      dt.appendChild(badge(d.status || "unknown", driftKind(d.status)));
+      if (d.status === "overlap") dt.appendChild(el("div", "mono", (d.overlap || []).slice(0, 4).join(", ") + ((d.overlap_count || 0) > 4 ? " …" : "")));
+      if (d.path_count !== undefined) dt.appendChild(el("div", "muted", d.path_count + " paths" + (d.main_delta_count ? ", tip moved " + d.main_delta_count + " paths" : "")));
+      tr.appendChild(dt);
+      var vf = el("td", "fields");
+      var fields = ((p.verdicts || {}).current_head) || {};
+      ["source", "composition", "current_main", "hosted", "economics"].forEach(function (f) {
+        if (fields[f]) {
+          var b = badge(f.replace("_", "-") + " " + fields[f].verdict, verdictKind(fields[f].verdict));
+          b.title = "from review or comment " + fields[f].id;
+          vf.appendChild(b);
+        }
+      });
+      if (!Object.keys(fields).length) vf.appendChild(el("span", "muted", "no parsed verdict on this head"));
+      tr.appendChild(vf);
+      var ht = el("td");
+      var h = p.hosted || {};
+      ht.appendChild(badge(h.rollup || "NONE", hostedKind(h.rollup)));
+      var counts = h.counts || {};
+      var parts = Object.keys(counts).map(function (k) { return counts[k] + " " + k.toLowerCase().replace(/_/g, " "); });
+      if (parts.length) ht.appendChild(el("div", "muted", parts.join(", ")));
+      tr.appendChild(ht);
+      var lane = laneOf(p.number);
+      var lt = el("td", "muted");
+      if (lane && lane.chain.length > 1) lt.textContent = lane.chain.map(function (n) { return "#" + n; }).join(" → ");
+      tr.appendChild(lt);
+      tr.appendChild(el("td", "muted", ago(p.updated_at)));
+      body.appendChild(tr);
+    });
+    document.getElementById("shown").textContent = shown + " shown";
+  }
+
+  function render() {
+    document.getElementById("age").textContent =
+      "observed " + ago(data.observed_at) + " by " + ((data.producer || {}).seat || "unknown") +
+      ((data.degraded || []).length ? " · degraded: " + data.degraded.join(", ") : "");
+    renderStats();
+    renderSeveral();
+    var bases = {}, hosted = {};
+    (data.prs || []).forEach(function (p) { bases[(p.drift || {}).base_ref || p.base_ref] = 1; hosted[(p.hosted || {}).rollup] = 1; });
+    fillSelect("base", Object.keys(bases).filter(Boolean).sort());
+    fillSelect("hosted", Object.keys(hosted).filter(Boolean).sort());
+    renderRows();
+  }
+
+  function getJSON(src) {
+    var url = src + (src.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now();
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status + " for " + src);
+      return r.json();
+    });
+  }
+
+  function load() {
+    document.getElementById("err").textContent = "";
+    Promise.all([getJSON(SRC), getJSON(LANES).catch(function () { return { lanes: [] }; })])
+      .then(function (both) {
+        data = both[0];
+        data.lanes = both[1].lanes || [];
+        render();
+      })
+      .catch(function (e) { document.getElementById("err").textContent = "could not read state: " + e.message; });
+  }
+
+  ["q", "drift", "base", "hosted"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", function () { if (data) renderRows(); });
+  });
+  document.getElementById("reload").addEventListener("click", load);
+  load();
+  setInterval(function () { if (!document.hidden) load(); }, 120000);
+})();
+</script>
+</body>
+</html>
