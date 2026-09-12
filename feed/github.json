@@ -2,11 +2,11 @@
   "counts": {
     "open_issues": 6,
     "open_pull_requests": 6,
-    "runs_in_progress": 18,
-    "runs_queued": 2655
+    "runs_in_progress": 19,
+    "runs_queued": 3285
   },
   "degraded": [],
-  "drafts": 205,
+  "drafts": 203,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -18,14 +18,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "owner/titan-v3-regression-recovery-20260910-01",
-      "created_at": "2026-09-10T18:53:43Z",
-      "draft": false,
-      "number": 11961,
-      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
       "created_at": "2026-09-10T18:55:16Z",
       "draft": true,
@@ -34,108 +26,116 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
-      "created_at": "2026-09-10T18:59:26Z",
-      "draft": false,
-      "number": 11965,
-      "title": "titan-v3: run own-value objective on bound current archive"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
       "created_at": "2026-09-10T19:00:36Z",
       "draft": true,
       "number": 11968,
       "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-cambium/titan-v3-capillary-panel-20260910-01",
+      "created_at": "2026-09-10T19:01:00Z",
+      "draft": true,
+      "number": 11969,
+      "title": "TITAN V3: action-bound full-game verdict for Capillary seed staging"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-recovery/titan-v3-l01-evidence-recovery-20260910-01",
+      "created_at": "2026-09-10T19:05:32Z",
+      "draft": false,
+      "number": 11971,
+      "title": "TITAN V3: bind and execute the L01 exact-current holdout"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "astra/e7-posttick-failclosed-20260912",
-      "created_at": "2026-09-12T06:13:46Z",
-      "draft": true,
-      "number": 13073,
-      "title": "TITAN V4 E7: fail closed activation and zero-SELL release"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol/weed-assist-exact-enable-20260912",
-      "created_at": "2026-09-12T06:13:44Z",
-      "draft": true,
-      "number": 13072,
-      "title": "TITAN V4 WEED assist: require exact enable token"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/execpace2-lifecycle-regate-20260912",
-      "created_at": "2026-09-12T06:12:07Z",
+      "branch": "astra/plantguard-survival-20260912",
+      "created_at": "2026-09-12T06:30:23Z",
       "draft": false,
-      "number": 13071,
-      "title": "TITAN V4 EXEC-PACE-2: preserve trend state across reconstruction"
+      "number": 13107,
+      "title": "HOLD \u00b7 TITAN V4 PLANTGUARD: postmerge custom-config custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/kinetic-bootstrap-custody-postmerge-20260912",
+      "created_at": "2026-09-12T06:30:20Z",
+      "draft": true,
+      "number": 13106,
+      "title": "TITAN V4 KINETIC: authenticate control helpers before execution"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/carebank-strict-enable-postmerge-20260912",
+      "created_at": "2026-09-12T06:30:03Z",
+      "draft": true,
+      "number": 13105,
+      "title": "TITAN V4 CAREBANK: collapse strict-enable test custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/gemini-fert-floor-apply-followup-20260912",
+      "created_at": "2026-09-12T06:29:55Z",
+      "draft": true,
+      "number": 13104,
+      "title": "TITAN V4 GEMINI: correct merged FERT floor witness semantics"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/tailpressure-state-custody-postmerge-20260912",
+      "created_at": "2026-09-12T06:29:47Z",
+      "draft": true,
+      "number": 13103,
+      "title": "TITAN V4 tail pressure: bind unwind budget to current shop state"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/rowshed-lockstep-assignment-hotfix-20260912",
+      "created_at": "2026-09-12T06:29:22Z",
+      "draft": true,
+      "number": 13102,
+      "title": "TITAN V4 ROWSHED: repair queue assignment to lockstep baseline"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol/w1-strict-default-off-20260912",
+      "created_at": "2026-09-12T06:28:40Z",
+      "draft": false,
+      "number": 13101,
+      "title": "TITAN V4 W1: enforce default-OFF activation custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/execpace2-fallback-lifecycle-postmerge-20260912",
+      "created_at": "2026-09-12T06:28:20Z",
+      "draft": true,
+      "number": 13099,
+      "title": "TITAN V4 EXEC-PACE-2: preserve price history through deadline fallback"
     },
     {
       "author": "woahwhattheheck",
       "branch": "astra/v4-residual-authority-e13-20260912",
-      "created_at": "2026-09-12T06:11:38Z",
+      "created_at": "2026-09-12T06:28:19Z",
       "draft": true,
-      "number": 13070,
-      "title": "TITAN V4 E13: fail closed on scalar type poison"
+      "number": 13098,
+      "title": "TITAN V4 SpatialTempo: fail closed HIRE-prefix cap authority"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/b9-strict-enable-20260912",
-      "created_at": "2026-09-12T06:10:46Z",
-      "draft": false,
-      "number": 13069,
-      "title": "TITAN V4 B9: require literal True activation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/demandvel-comeback-tailpressure",
-      "created_at": "2026-09-12T06:10:26Z",
+      "branch": "astra/rowshed-lockstep-baseline-postmerge-20260912",
+      "created_at": "2026-09-12T06:27:57Z",
       "draft": true,
-      "number": 13068,
-      "title": "TITAN V4 market: compose COMEBACK with remaining demand tail"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/rowshed-mirror-collision-value-20260912",
-      "created_at": "2026-09-12T06:08:49Z",
-      "draft": true,
-      "number": 13067,
-      "title": "TITAN V4 ROWSHED: add exact mirror SELL collision-value evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/gander-apex-radar-composite",
-      "created_at": "2026-09-12T06:06:50Z",
-      "draft": true,
-      "number": 13066,
-      "title": "TITAN V4: GANDER \u00d7 Apex clone-radar composite"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/h3b-current-abi-failclosed-20260912",
-      "created_at": "2026-09-12T06:05:53Z",
-      "draft": true,
-      "number": 13065,
-      "title": "HOLD \u00b7 TITAN V4 H3b: fold fail-closed current-ABI semantics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/rngreach-authored-callback-20260912",
-      "created_at": "2026-09-12T06:04:08Z",
-      "draft": true,
-      "number": 13064,
-      "title": "TITAN V4 RNGREACH: authored callback reachability"
+      "number": 13097,
+      "title": "TITAN V4 ROWSHED: repair lockstep mirror baseline"
     }
   ],
-  "pulls_listed": 280,
+  "pulls_listed": 248,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 147.5,
+  "queue_depth_per_runner": 172.9,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T06:14:22Z",
+  "unchanged_since": "2026-09-12T06:30:36Z",
   "undatable_pulls": []
 }

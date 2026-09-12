@@ -159,6 +159,7 @@ def assess_same_eod_plant_survival(
     configuration: Mapping[str, Any] | None = None,
     *,
     suffix_authenticated: bool = False,
+    configuration_authenticated: bool = False,
 ) -> dict[str, Any]:
     """Return one-sided evidence about current PLANT actions.
 
@@ -166,6 +167,10 @@ def assess_same_eod_plant_survival(
     callback after the current one and before same-day EOD. It is evidence, not
     a forecast: callers may set `suffix_authenticated=True` only when those unit
     commands are the exact authored suffix whose custody they are evaluating.
+    When `configuration` is supplied explicitly, callers must likewise set
+    `configuration_authenticated=True` only after binding those values to the
+    interpreter instance whose action custody is being evaluated. Omitting
+    `configuration` uses the pinned official defaults.
 
     Result semantics:
     - `DOOMED_AUTHORED_SUFFIX`: at least one executable current PLANT has no
@@ -175,6 +180,8 @@ def assess_same_eod_plant_survival(
       helper intentionally never labels a plant SAFE or profitable.
     """
     try:
+        if configuration is not None and configuration_authenticated is not True:
+            return _not_certified("configuration_not_authenticated")
         if suffix_authenticated is not True:
             return _not_certified("suffix_not_authenticated")
         turns_per_day = _config_int(

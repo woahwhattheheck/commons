@@ -56,6 +56,7 @@ class FertFloorApply(unittest.TestCase):
                 self.assertTrue(cert["same_final_physical"])
                 self.assertEqual(cert["extra_unit_callback_count"], 2)
                 self.assertEqual(cert["extra_unit_callbacks"], ["PICKUP FERTILIZER", "FERTILIZE"])
+                self.assertEqual(cert["market_buy_step"], 90)
                 self.assertFalse(cert["current_native_engagement_claim"])
                 self.assertFalse(cert["activation_claim"])
                 self.assertEqual(candidate["physical"], control["physical"])
@@ -69,10 +70,25 @@ class FertFloorApply(unittest.TestCase):
                 cert = pair["certificate"]
                 candidate = pair["floor_apply"]
                 control = pair["control"]
+                self.assertEqual(cert["schema"], subject.SCHEMA)
                 self.assertEqual(cert["witness"], "AMORTIZED_THREE_DAY_MELON")
                 self.assertTrue(cert["at_price_floor"])
+                self.assertEqual(cert["plant_day"], 4)
                 self.assertEqual(cert["fertilizer_active_water_days_used"], 3)
+                self.assertEqual(cert["shared_survival_water_steps"], [96, 144, 192])
                 self.assertEqual(cert["common_water_steps"], [243, 264, 288])
+                self.assertEqual(cert["prefert_snapshot_step"], 239)
+                self.assertEqual(cert["market_buy_step"], 240)
+                for arm in (candidate, control):
+                    prefert = subject._trace_at(arm, 239)["tile"]
+                    self.assertEqual(prefert["kind"], "PLANT")
+                    self.assertEqual(prefert["crop"], "MELON")
+                    self.assertEqual(prefert["planted_day"], 4)
+                    self.assertEqual(prefert["yield_units"], 0)
+                    self.assertEqual(prefert["consecutive_unwatered"], 1)
+                    self.assertFalse(prefert["watered_today"])
+                self.assertEqual(cert["prefert_candidate_tile"], cert["prefert_control_tile"])
+                self.assertEqual(cert["prefert_candidate_tile"]["yield_units"], 0)
                 self.assertEqual(subject._trace_at(candidate, 240)["cash_delta"], -1)
                 self.assertEqual(subject._trace_at(candidate, 240)["shed"]["FERTILIZER"], 1)
                 self.assertEqual(subject._trace_at(candidate, 241)["inventories"][0].get("FERTILIZER"), 1)
@@ -98,7 +114,8 @@ class FertFloorApply(unittest.TestCase):
             with self.subTest(runner=runner.__name__):
                 pair = runner(self.engine, fert_inventory=self.threshold, cash=0)
                 cert = pair["certificate"]
-                self.assertEqual(pair["floor_apply"]["trace"][0]["cash_delta"], 0)
+                buy_row = subject._trace_at(pair["floor_apply"], cert["market_buy_step"])
+                self.assertEqual(buy_row["cash_delta"], 0)
                 self.assertEqual(cert["incremental_harvest_units"], 0)
                 self.assertEqual(cert["own_cash_delta"], 0)
                 self.assertTrue(cert["same_final_physical"])
@@ -106,6 +123,7 @@ class FertFloorApply(unittest.TestCase):
     def test_panel_is_complete_declared_boundary_and_both_seats(self):
         before = oc.CALLBACKS
         report = subject.run_panel(self.engine)
+        self.assertEqual(report["schema"], subject.SCHEMA)
         self.assertEqual(report["floor_prebuy_inventory_threshold"], self.threshold)
         self.assertEqual(len(report["minimal_cells"]), 6)
         keys = {(r["seat"], r["fert_inventory_before"]) for r in report["minimal_cells"]}
@@ -116,8 +134,8 @@ class FertFloorApply(unittest.TestCase):
         self.assertEqual(len(report["amortized_floor_cells"]), 2)
         self.assertEqual({r["seat"] for r in report["amortized_floor_cells"]}, {0, 1})
         # 6 minimal cells * 2 arms * 7 ticks = 84;
-        # 2 amortized cells * 2 arms * 51 ticks = 204.
-        self.assertEqual(oc.CALLBACKS - before, 288)
+        # 2 amortized cells * 2 arms * (290-96+1=195) ticks = 780.
+        self.assertEqual(oc.CALLBACKS - before, 864)
         for row in report["minimal_cells"] + report["amortized_floor_cells"]:
             self.assertTrue(row["same_final_physical"])
             self.assertEqual(row["rival_cash_delta"], 0)
@@ -132,6 +150,13 @@ class FertFloorApply(unittest.TestCase):
         for row in ([], [1], "PASS", None):
             with self.subTest(row=row), self.assertRaises(ValueError):
                 subject.unit_action(row)
+        with self.assertRaises(ValueError):
+            subject._fixture(self.engine, 0, fert_inventory=self.threshold, plant_day=True)
+        with self.assertRaises(ValueError):
+            subject._fixture(
+                self.engine, 0, fert_inventory=self.threshold,
+                consecutive_unwatered=True,
+            )
 
 
 def main():
