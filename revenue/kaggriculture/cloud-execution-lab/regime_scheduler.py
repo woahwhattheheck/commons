@@ -83,10 +83,14 @@ class RegimeSellScheduler(base.SellScheduler):
 
 
 _INSTANCE = None
+_LAST_STEP = None
 
 
 def agent(obs, configuration=None):
-    global _INSTANCE
-    if _INSTANCE is None or int(obs.get('step', 0)) == 0:
+    global _INSTANCE, _LAST_STEP
+    step = int(obs.get('step', 0))
+    if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
         _INSTANCE = RegimeSellScheduler()
-    return _INSTANCE.act(obs, configuration)
+    output = _INSTANCE.act(obs, configuration)
+    _LAST_STEP = step
+    return output
