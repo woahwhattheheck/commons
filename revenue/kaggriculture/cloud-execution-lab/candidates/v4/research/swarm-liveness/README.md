@@ -36,6 +36,11 @@ different lane names. The auditor never derives or guesses a scope key from
 names or prose. Legacy events without one keep exact-lane behavior and do not
 enter cross-lane scope groups.
 
+JSONL is parsed fail closed: duplicate object keys are rejected recursively
+before event normalization. A line cannot smuggle competing `event_id`,
+`canonical_root`, or nested provenance values and rely on parser "last key
+wins" behavior.
+
 ## Safety semantics
 
 - `STALE_CLAIM` is **routing evidence only**, never overwrite/merge authority.
