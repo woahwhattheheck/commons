@@ -36,5 +36,13 @@
   },
   "lane": "EXEC-PACE-2 current-runtime integration and economic closure",
   "legacy_materializer_executed": false,
-  "required_in_repo_gate": "test_current_repository_sources_are_composable_when_present must run, not skip, in Commons tree"
+  "required_in_repo_gate": "test_current_repository_sources_are_composable_when_present must run, not skip, in Commons tree",
+  "authenticated_live_main": {
+    "commit": "c69b5ef9e816a7354611caa557f4cfbfc56a4cd1",
+    "frozen_selected_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "titan_runtime_blob": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
+    "titan_config_blob": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "exec_pace_key_present_in_config": false,
+    "composer_anchors_present": true
+  }
 }
