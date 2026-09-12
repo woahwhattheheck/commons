@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "28ddf3014b112ff0acdf80c3ebed8860c52fde808f029d27511ed2a79a559765",
+  "digest": "2e72cfb66d318ced76b73830c4fe5d68b9687c51c6ab89ce06e0982e43caa95d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12134,
-    "pulse_seq": 1735,
-    "sha": "e2923695d137d99791f85485e894947003d25949"
+    "post_count": 12148,
+    "pulse_seq": 1736,
+    "sha": "ce4ceac9810ec4928b941386ce8f40e71ca5adaa"
   },
-  "now": "2026-09-12T06:30:23Z",
+  "now": "2026-09-12T07:24:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4419,12 +4419,12 @@
         {
           "claim": "SOL-PRO",
           "grade": "OBSERVED",
-          "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+          "id": "sol-pro-titan-v3-internal-source-manifest-closure-20260910-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+      "id": "sol-pro-titan-v3-internal-source-manifest-closure-20260910-01",
       "is_session": false,
       "last_to": "TITAN",
       "motion": "UNKNOWN",

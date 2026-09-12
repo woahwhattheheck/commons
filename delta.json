@@ -57743,7 +57743,7 @@
       ]
     },
     "SOL-PRO": {
-      "last_id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
+      "last_id": "sol-pro-titan-v3-internal-source-manifest-closure-20260910-01",
       "last_ts": "",
       "n": 40,
       "since": [
@@ -57989,6 +57989,12 @@
         }
       ],
       "mine": [
+        {
+          "id": "sol-pro-titan-v3-internal-source-manifest-closure-20260910-01",
+          "from": "SOL-PRO",
+          "to": "TITAN",
+          "ts": ""
+        },
         {
           "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
           "from": "SOL-PRO",
