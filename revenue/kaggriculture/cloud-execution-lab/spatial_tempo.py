@@ -7,6 +7,7 @@ The bounded annual crop release owns its fresh seed, input replacement and
 observed product receipts within this same producer.
 """
 from copy import deepcopy
+from fractions import Fraction
 from itertools import permutations
 
 MOVES={'NORTH':(0,-1),'SOUTH':(0,1),'EAST':(1,0),'WEST':(-1,0)}
@@ -454,6 +455,13 @@ class SpatialTempo:
             offset=now-plan['step'];expected=tuple(plan['origin'])
             for a in plan['replacement'][:offset]:expected=move(expected,a,10)
             if positions[i]==expected:continue
+            extra=plan.get('extra')
+            if extra is not None and extra.get('sale_step') is not None:
+                extra=dict(extra)
+                extra.pop('sale_step',None)
+                extra['sale_invalidated_at']=now
+                plan=dict(plan,extra=extra)
+                self.plans[i]=plan
             cursor=expected;tasks=[]
             for a in plan['replacement'][offset:]:
                 if a[0] not in MOVES and a[0]!='PASS':tasks.append((cursor,a))
@@ -725,6 +733,29 @@ class SpatialTempo:
                 'basis':'same_return_deposit_and_one_unit_sale','future_sale_credit':0,
                 'terminal_reuse':terminal}
 
+    def _deliver_job_sale(self,obs,selected,controller):
+        """Sell a completed tempo harvest only on its observed DROP turn."""
+        now=int(obs['step']);farm=obs['farms'][obs['player']];private=obs['private']
+        maximum=max(1,int(self.configuration.get('maxMarketOrdersPerTurn',10)))
+        sheds={(4,4),(5,4),(4,5),(5,5)}
+        for i,plan in self.plans.items():
+            extra=plan.get('extra') or {}
+            if extra.get('sale_step')!=now or i>=len(private['inventories']):continue
+            item=extra.get('item');quantity=extra.get('quantity')
+            if (item not in self.m.PRODUCTS or type(quantity) is not int or quantity<=0
+                    or unit(selected,i)!=['DROP']):continue
+            position=tuple(self.m._farmer_position(farm,i))
+            if position not in sheds or private['inventories'][i].get(item,0)<quantity:continue
+            market=selected.get('market',[])
+            if len(market)>=maximum:continue
+            prefix=market[:maximum]
+            if any(a and (len(a)!=3 or a[0]!='SELL' or a[1] not in self.m.PRODUCTS
+                          or type(a[2]) is not int or a[2]<0) for a in prefix):continue
+            if any(a and len(a)>1 and a[1]==item for a in prefix):continue
+            out=deepcopy(selected);out.setdefault('market',[]).append(['SELL',item,quantity])
+            return out
+        return None
+
     def _deliver_idle_fertilizer(self,obs,selected,controller):
         """Bind a proved one-unit pickup to a same-return DROP and surplus sale."""
         now=int(obs['step']);route=controller.R[controller.cur]
@@ -849,6 +880,8 @@ class SpatialTempo:
             if changed:return planted
         delivery=self._deliver_idle_fertilizer(obs,selected,controller)
         if delivery is not None:return delivery
+        delivery=self._deliver_job_sale(obs,selected,controller)
+        if delivery is not None:return delivery
         end=min((now//24+1)*24,719,*[x for x in CHECKPOINTS if x>now]) if any(x>now for x in CHECKPOINTS) else min((now//24+1)*24,719)
         if end-now<3:return selected
         route=controller.R[controller.cur];farm=obs['farms'][obs['player']];private=obs['private']
@@ -926,6 +959,13 @@ class SpatialTempo:
                             trial=path(start,pos)+[['HARVEST']]+path(pos,shed)+[['DROP']]+path(shed,goal)
                             if len(trial)>available:continue
                             deposit=now+last+1+distance(start,pos)+1+distance(pos,shed)
+                            maximum=max(1,int(self.configuration.get('maxMarketOrdersPerTurn',10)))
+                            orders=route[deposit].get('market',[])
+                            if len(orders)>=maximum:continue
+                            prefix=orders[:maximum]
+                            if any(a and (len(a)!=3 or a[0]!='SELL' or a[1] not in self.m.PRODUCTS
+                                          or type(a[2]) is not int or a[2]<0) for a in prefix):continue
+                            if any(a and len(a)>1 and a[1]==item for a in prefix):continue
                             # Conservative visible-stock reservation through arrival; no sale credit.
                             pending=0
                             for cell,when in harvests.items():
@@ -937,14 +977,22 @@ class SpatialTempo:
                             stock=sum(private['shed'].values())+sum(sum(v.values()) for v in private['inventories'])+pending+reserved+quantity
                             if stock>100:continue
                             value=sum(self.m.market_price(item,inv+q,market.get('params')) for q in range(quantity))
-                            candidates.append((value,-len(trial),-distance(pos,shed),pos,item,quantity,trial,deposit))
+                            candidates.append((Fraction(value,len(trial)),value,-len(trial),-distance(pos,shed),
+                                               pos,item,quantity,trial,deposit))
                 if candidates:
-                    extra=max(candidates,key=lambda z:z[:3]);trial=best[:last+1]+extra[6]
-                    best=trial+[['PASS']]*(length-len(trial));self.reserved.add(extra[3])
+                    extra=max(candidates,key=lambda z:z[:4]);trial=best[:last+1]+extra[7]
+                    best=trial+[['PASS']]*(length-len(trial));self.reserved.add(extra[4])
             if saved<=0 and extra is None:continue
             for offset,a in enumerate(best):
                 step=now+offset;old=route[step];new=deepcopy(old);set_unit(new,i,list(a));route[step]=new;self.edits.append((controller.cur,step,old))
             set_unit(out,i,list(best[0]));self.active[i]=t;planned+=1
-            event={'step':now,'worker':i,'end':t,'route':controller.cur,'origin':origin,'goal':goal,'saved_travel':saved,'extra':None if extra is None else {'tile':extra[3],'item':extra[4],'quantity':extra[5],'deposit_step':extra[7]},'original':sequence,'replacement':best}
+            event={'step':now,'worker':i,'end':t,'route':controller.cur,'origin':origin,'goal':goal,
+                   'saved_travel':saved,
+                   'extra':None if extra is None else {
+                       'tile':extra[4],'item':extra[5],'quantity':extra[6],
+                       'deposit_step':extra[8],'sale_step':extra[8],
+                       'projected_sale_value':extra[1],'worker_turns':len(extra[7]),
+                       'valuation':'current_quote_cash_per_worker_turn'},
+                   'original':sequence,'replacement':best}
             self.plans[i]=event;self.events.append(event)
         return out
