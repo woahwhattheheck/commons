@@ -1,0 +1,87 @@
+{
+  "component": "native-unit-geometry",
+  "status": "SOURCE_COMPONENT_READY_NOT_INSTALLED",
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181505021099",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "source_files": {
+    "compose_geometry.py": {
+      "git_blob": "9ee1f63beec4fd39d71c1c798975857ff1709f2c",
+      "sha256": "8b00511eeea831ca974ae6b1bac8cc12d60ac8fdd6480547a46b4e92524904d8"
+    },
+    "check_geometry.py": {
+      "git_blob": "4740bc216acd194357728b39b99d177fdca63e18",
+      "sha256": "bbe14cc7532ff24a8bc80fc48f161a634af10904bde21fb684ac4549310a2f00"
+    },
+    "run_controls.py": {
+      "git_blob": "98e11585e17cba4c30546f0ef3edecc519e02a15",
+      "sha256": "2c198170c68c549c21399442cb8456a52637073fd250d31ba2965eeaaeb400d7"
+    },
+    "README.md": {
+      "git_blob": "ca34143b5231b77ed49b4e3c0e433247690ae8f2",
+      "sha256": "cc23cd319109a6ee50107c07bd1d34363bc9397eb6f06ab5446d6b4437288c0a"
+    }
+  },
+  "mechanics_before": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+  "mechanics_after": "4a0cb3d01682a0cc9544ac176928ba02b16ea7fb",
+  "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+  "artifact_id": 10175943272,
+  "checks": {
+    "normal": {
+      "membership_cases": 50540,
+      "unit_cases": 5000,
+      "interpreter_pairs": 216,
+      "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+      "candidate_blob": "4a0cb3d01682a0cc9544ac176928ba02b16ea7fb",
+      "executed_candidate_blob": "4a0cb3d01682a0cc9544ac176928ba02b16ea7fb",
+      "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "optimized": false,
+      "mutant": null
+    },
+    "optimized": {
+      "membership_cases": 50540,
+      "unit_cases": 5000,
+      "interpreter_pairs": 216,
+      "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+      "candidate_blob": "4a0cb3d01682a0cc9544ac176928ba02b16ea7fb",
+      "executed_candidate_blob": "4a0cb3d01682a0cc9544ac176928ba02b16ea7fb",
+      "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "optimized": true,
+      "mutant": null
+    }
+  },
+  "mutant_mode_runs": 12,
+  "mutant_mode_runs_rejected": 12,
+  "game_pairs": 8,
+  "full_games": 16,
+  "paired_trace_frames": 5752,
+  "completed_titan_callbacks": 11504,
+  "native_worker_optimization": 0,
+  "driver_modes": [
+    "normal",
+    "optimized"
+  ],
+  "native_repeat_note": "-O applies to driver/engine; existing sanitized worker launcher does not propagate -O. Both native arms use ordinary workers.",
+  "microbenchmark_candidate_over_parent": {
+    "normal": {
+      "membership": 0.39167177078250004,
+      "unit_roundtrip": 0.7202493261989436
+    },
+    "optimized": {
+      "membership": 0.3934426127883263,
+      "unit_roundtrip": 0.7387849930597759
+    }
+  },
+  "scope": "Local microbenchmarks and exact b567 archive parity, not end-to-end speed, EV, latest-composed-stack or shipping proof.",
+  "raw_evidence": {
+    "path": "RAW-EVIDENCE.json.gz.b64",
+    "decoded_json_sha256": "5b9fa0f2b513352f451091512748083f0a48f84f784a4a65206478cd00d0c1a4",
+    "gzip_sha256": "9cdca02972a6b1e3649cc64bb91d4988ff0cb6e9a1e31f28524ff98a195faa07",
+    "text_git_blob": "a6e00f5522f018379bc99b4d5a9c182b61044103"
+  }
+}
