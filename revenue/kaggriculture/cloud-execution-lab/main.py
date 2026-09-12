@@ -409,6 +409,26 @@ def agent(observation, configuration=None):
     replace = (_INSTANCE is None or match_reset)
     instance = None if replace else _INSTANCE
 
+    # A live instance can carry a route committed by the preceding callback.
+    # Snapshot that provenance before the current callback clears or mutates any
+    # publication fields.  Never infer provenance from controller.cur, which can
+    # contain an interrupted current proposal.
+    prior_live_route = None
+    if instance is not None:
+        prior_route = getattr(instance, '_completed_route', None)
+        prior_step = getattr(instance, '_entrypoint_last_step', None)
+        prior_player = getattr(instance, '_entrypoint_last_player', observation['player'])
+        if (type(prior_route) is str
+                and type(prior_step) is int and prior_step >= 0
+                and prior_player == observation['player']
+                and step in (prior_step, prior_step + 1)):
+            prior_live_route = {
+                'route_step': prior_step,
+                'observed_step': prior_step,
+                'player': observation['player'],
+                'route': prior_route,
+            }
+
     # Snapshot only state certified before this call mutates the live instance.
     # If a prior outer timeout already discarded the instance, carry its saved
     # journal through another construction/prelude cancellation unchanged.
@@ -466,6 +486,7 @@ def agent(observation, configuration=None):
         instance.post = None
         instance._remember_seller_fallback(obs)
         instance._entrypoint_last_step = step
+        instance._entrypoint_last_player = observation['player']
         instance.diagnostics = {
             'consumer': instance.features.consumer,
             'parent_calls': 0,
@@ -498,6 +519,7 @@ def agent(observation, configuration=None):
             # Publish only after a complete inner return. A foreign exception or
             # outer cancellation keeps the prior marker or discards the instance.
             instance._entrypoint_last_step = step
+            instance._entrypoint_last_player = observation['player']
     except deadline.DeadlineExceeded as error:
         if error is not timer.expired:
             raise
@@ -513,9 +535,9 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # A newly completed current action may publish a new route authority.
-        # Construction/runtime cancellation otherwise carries only the previous
-        # route while advancing its observed-callback watermark.
+        # A current selected action may publish a new route authority. Earlier
+        # construction/runtime cancellation carries only authenticated prior
+        # route provenance while advancing the observed-callback watermark.
         route = None if instance is None else getattr(instance, '_completed_route', None)
         if stage == 'entrypoint_finalization' and type(route) is str:
             _ROUTE_RECOVERY = {
@@ -525,7 +547,8 @@ def agent(observation, configuration=None):
                 'route': route,
             }
         else:
-            _ROUTE_RECOVERY = _route_recovery_advance(route_journal, step)
+            prior = route_journal if route_journal is not None else prior_live_route
+            _ROUTE_RECOVERY = _route_recovery_advance(prior, step)
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
