@@ -102,7 +102,7 @@ def _tests(value: Any) -> list[dict[str, str]]:
     return sorted(out, key=lambda row: row["name"])
 
 
-def _hosted(value: Any) -> dict[str, Any]:
+def _hosted(value: Any, expected_head: str) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ReceiptError("hosted must be an object")
     unknown = set(value) - {"state", "runs"}
@@ -156,6 +156,10 @@ def _hosted(value: Any) -> dict[str, Any]:
         run_head_sha = _sha(
             item["run_head_sha"], f"hosted.runs[{idx}].run_head_sha"
         )
+        if run_head_sha != expected_head:
+            raise ReceiptError(
+                f"hosted.runs[{idx}].run_head_sha does not match receipt head"
+            )
         executed = item["executed_checkout_sha"]
         if executed is not None:
             executed = _sha(
@@ -167,6 +171,26 @@ def _hosted(value: Any) -> dict[str, Any]:
         if mode not in _CHECKOUT_MODES:
             raise ReceiptError(
                 f"hosted.runs[{idx}].checkout_mode invalid: {mode}"
+            )
+        if mode == "PR_MERGE_REF" and event != "pull_request":
+            raise ReceiptError(
+                f"hosted.runs[{idx}] PR_MERGE_REF requires pull_request event"
+            )
+        if mode == "PR_HEAD_EXPLICIT" and event not in {"pull_request", "pull_request_target"}:
+            raise ReceiptError(
+                f"hosted.runs[{idx}] PR_HEAD_EXPLICIT requires a pull-request event"
+            )
+        if mode == "PUSH_DISPATCH_SHA" and event not in {"push", "workflow_dispatch"}:
+            raise ReceiptError(
+                f"hosted.runs[{idx}] PUSH_DISPATCH_SHA requires push or workflow_dispatch event"
+            )
+        if (
+            executed is not None
+            and mode in {"PR_HEAD_EXPLICIT", "PUSH_DISPATCH_SHA"}
+            and executed != run_head_sha
+        ):
+            raise ReceiptError(
+                f"hosted.runs[{idx}] direct-SHA checkout does not match run_head_sha"
             )
 
         normalized.append(
@@ -213,7 +237,7 @@ def normalize_receipt(payload: Any) -> dict[str, Any]:
         "head": head,
         "paths": sorted(paths),
         "tests": _tests(payload["tests"]),
-        "hosted": _hosted(payload["hosted"]),
+        "hosted": _hosted(payload["hosted"], head),
         "provider_nonclaims": _string_list(
             payload["provider_nonclaims"], "provider_nonclaims"
         ),
