@@ -41,19 +41,8 @@ def apply(src):
     router = _replace_once(
         router,
         "def _v217_plan(view, st, step, action, pending):\n",
-        "def _v217_standard_configuration(configuration):\n"
-        "    def read(name):\n"
-        "        if isinstance(configuration, dict):\n"
-        "            return configuration.get(name)\n"
-        "        return getattr(configuration, name, None) if configuration is not None else None\n"
-        "    for name, expected in (('episodeSteps',720),('turnsPerDay',24),('boardSize',10),\n"
-        "                           ('shedCapacity',100),('maxMarketOrdersPerTurn',10)):\n"
-        "        value=read(name)\n"
-        "        if type(value) is not int or value!=expected:return False\n"
-        "    return True\n"
-        "\n"
         "def _v217_plan(view, st, step, action, pending, configuration=None):\n",
-        "V217 EOD tail standard configuration",
+        "V217 EOD tail configuration parameter",
     )
     router = _replace_once(
         router,
@@ -74,17 +63,15 @@ def apply(src):
         "        opposite = {'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}\n"
         "        forward = ([['PICKUP','WHEAT']] if need_pickup else []) + [[m] for m in moves] + [['FEED']]\n"
         "        roundtrip = forward + [[opposite[m]] for m in reversed(moves)]\n"
-        "        # The official engine resets the farmer at the nightly boundary.\n"
-        "        # Use that reset only when FEED itself occupies tonight's final\n"
-        "        # callback: otherwise the displaced farmer would be observable\n"
-        "        # for another parent callback before reset. Existing round-trip\n"
-        "        # rescues are never shortened; day 29 has no later reset.\n"
-        "        eod_tail = (V217_EOD_TAIL and _v217_standard_configuration(configuration)\n"
-        "                    and len(targets) == 1 and end < 719\n"
-        "                    and len(forward) == end-step < len(roundtrip)\n"
-        "                    and all(_v217_farmer(tape, future_step) == ['PASS']\n"
-        "                            for future_step in range(step, end)))\n"
-        "        commands = forward if eod_tail else roundtrip\n"
+        "        commands = roundtrip\n"
+        "        eod_tail = False\n"
+        "        if V217_EOD_TAIL:\n"
+        "            import r04_v217_eod_tail\n"
+        "            commands, eod_tail = r04_v217_eod_tail.apply_v217_eod_tail(\n"
+        "                forward, roundtrip, targets=targets, step=step, end=end,\n"
+        "                farmer_rows=[_v217_farmer(tape, future_step)\n"
+        "                             for future_step in range(step, end)],\n"
+        "                configuration=configuration, enabled=True)\n"
         "        if len(commands) > end-step or any(_v217_farmer(tape, step+i) != ['PASS'] for i in range(len(commands))):\n"
         "            continue\n"
         "        positions = []\n"
@@ -100,7 +87,7 @@ def apply(src):
         "            assert pos == start\n"
         "        return {'step':step, 'route':st.get('plan'), 'commands':commands,\n"
         "                'positions':positions, 'target':(x,y), 'eod_tail':eod_tail}\n",
-        "V217 EOD tail planner",
+        "V217 EOD tail matching-module seam",
     )
     router = _replace_once(
         router,
