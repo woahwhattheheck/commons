@@ -1,0 +1,47 @@
+{
+  "schema": "titan-v4-f2-f3-composition-receipt/v1",
+  "canonical_branch": "main",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "status": "default_off_donor_composition_not_production_activation",
+  "owner": "ASTRA/F2-F3",
+  "source_pr": 12609,
+  "original_repair_commit": "e80ce27df7efb18a151f48632b0475d7d4730f1b",
+  "subsequent_source_head_reviewed": "fdad33a2b2209a4e49472719b423dc5106329171",
+  "original_repair_helper_blob": "58f43d2ed6bbc9f8b430a074b0b00e9ffdf0e7bd",
+  "stock_independent_successor_blob": "46f9073289a2eb3a204d069ccd5143a71dd31bc7",
+  "main_helper_preimage": "6ba6c79e4e930a0187c9b8809b177b698034e914",
+  "main_helper_postimage": "c3d07ad5e257ec315808a00bff9446741aec9dde",
+  "main_helper_bytes": 13056,
+  "main_helper_sha256": "db2c8043c9796abaff1c4402655f218e178738f5831ca40e3f9ab7099fc38069",
+  "test_blobs": {
+    "test_v4_feed_prebuy_future_cash.py": "a0527dc4c0e81f15a6da521b2d786c582d285c2e",
+    "test_v4_feed_prebuy_day_coverage.py": "5e7c713f108e624fcbf1fa9122deb1f9f2d03287"
+  },
+  "preserved_main_semantics": [
+    "exact integer seat in (0, 1)",
+    "public market inventory is not a BUY_PRODUCT availability limit",
+    "complete current actionable-day cash evidence",
+    "strict finite own money, shared shed capacity, and plus-25 purchase padding",
+    "all existing default-OFF and parent-identity barriers"
+  ],
+  "composition": "Native _v217_plan keeps its five-argument ABI and wins whenever it returns a task. Only when the F3 flag is exactly true and native returns None, both baseline and funded F2 probes invoke matching F3 plan_v217_eod_tail with the same runtime configuration, selected tape and actual next-action projected WHEAT.",
+  "f3_helper_blob_used": "1348e796acba28b22d85fac8a57e080f0504ddff",
+  "canonical_native_router_blob_used_for_component_functions": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d",
+  "verification": {
+    "scope": "Exact F2/F3 modules with literal native FarmView, projected_shed and V217 functions in a local component harness; not the full exported package or official interpreter",
+    "normal_tests_passed": 33,
+    "optimized_tests_passed": 33,
+    "skipped_tests_in_component_run": 0,
+    "deliberate_mutants_rejected": 6,
+    "additional_cash_stock_seat_matrix_passed": 64,
+    "additional_invalid_seat_guards_passed": 7,
+    "original_helper_positive_failures": ["zero-to-two wheat F3 rescue", "one-to-one wheat F3 rescue", "attribute-configuration F3 rescue"],
+    "witness": "At step 39, farmer (4,4), one starving GOOSE (9,5), empty WHEAT: prebuy two units enables step-40 pickup, six moves and FEED on step 47. Native 14-callback roundtrip cannot fit the eight remaining callbacks; F3 outbound rescue can."
+  },
+  "retired_integration_advice": [
+    "Do not pass configuration= into the unchanged native five-argument _v217_plan; old 88845fe9 donor advice predates the current F3 wrapper contract.",
+    "Do not restore the removed public-stock gate. Official Kaggle engine blob 3c202c7ee921da239356789e266b694635103fc4 _commit_unit BUY_PRODUCT checks cash and shed capacity, then decrements market inventory without a zero floor."
+  ],
+  "not_claimed": ["current-production ABI port", "full exported-package acceptance", "official whole-game rollout", "economic improvement", "default-ON promotion", "Kaggle submission"],
+  "integration_rule": "Preserve this same-path donor composition on canonical main. Do not execute legacy r04 materializers against the newer production titan_runtime ABI. Package and economic gates remain separate prerequisites to production promotion."
+}
