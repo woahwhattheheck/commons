@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 6,
     "open_pull_requests": 6,
-    "runs_in_progress": 18,
-    "runs_queued": 2655
+    "runs_in_progress": 19,
+    "runs_queued": 3022
   },
   "degraded": [],
   "drafts": 205,
@@ -18,14 +18,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "owner/titan-v3-regression-recovery-20260910-01",
-      "created_at": "2026-09-10T18:53:43Z",
-      "draft": false,
-      "number": 11961,
-      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
       "created_at": "2026-09-10T18:55:16Z",
       "draft": true,
@@ -34,22 +26,78 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
-      "created_at": "2026-09-10T18:59:26Z",
-      "draft": false,
-      "number": 11965,
-      "title": "titan-v3: run own-value objective on bound current archive"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
       "created_at": "2026-09-10T19:00:36Z",
       "draft": true,
       "number": 11968,
       "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-cambium/titan-v3-capillary-panel-20260910-01",
+      "created_at": "2026-09-10T19:01:00Z",
+      "draft": true,
+      "number": 11969,
+      "title": "TITAN V3: action-bound full-game verdict for Capillary seed staging"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-recovery/titan-v3-l01-evidence-recovery-20260910-01",
+      "created_at": "2026-09-10T19:05:32Z",
+      "draft": false,
+      "number": 11971,
+      "title": "TITAN V3: bind and execute the L01 exact-current holdout"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/carebank-strict-enable-postmerge-20260912",
+      "created_at": "2026-09-12T06:21:53Z",
+      "draft": true,
+      "number": 13086,
+      "title": "TITAN V4 CAREBANK: require literal-True activation"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/gemini-labeled-history-convergence-20260912",
+      "created_at": "2026-09-12T06:21:11Z",
+      "draft": true,
+      "number": 13085,
+      "title": "TITAN V4 Gemini: converge older labeled lineages into the 37-family lock"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol/represented-physical-transition-20260912",
+      "created_at": "2026-09-12T06:20:53Z",
+      "draft": false,
+      "number": 13084,
+      "title": "TITAN V4: close represented market physical executability"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-same-turn-funding-pareto-rank-20260912",
+      "created_at": "2026-09-12T06:19:10Z",
+      "draft": true,
+      "number": 13081,
+      "title": "TITAN V4 funding: maximize certified cash on equal-movement frontier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol/lockstep-raw-phase-20260912",
+      "created_at": "2026-09-12T06:16:29Z",
+      "draft": false,
+      "number": 13075,
+      "title": "TITAN V4 LOCKSTEP: certify adjacent raw BUY phasing"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/b7-multicargo-drop-custody-20260912",
+      "created_at": "2026-09-12T06:15:37Z",
+      "draft": true,
+      "number": 13074,
+      "title": "TITAN V4 B7: preserve multi-cargo DROP overflow custody"
+    },
     {
       "author": "woahwhattheheck",
       "branch": "astra/e7-posttick-failclosed-20260912",
@@ -57,14 +105,6 @@
       "draft": true,
       "number": 13073,
       "title": "TITAN V4 E7: fail closed activation and zero-SELL release"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol/weed-assist-exact-enable-20260912",
-      "created_at": "2026-09-12T06:13:44Z",
-      "draft": true,
-      "number": 13072,
-      "title": "TITAN V4 WEED assist: require exact enable token"
     },
     {
       "author": "woahwhattheheck",
@@ -76,22 +116,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-residual-authority-e13-20260912",
-      "created_at": "2026-09-12T06:11:38Z",
-      "draft": true,
-      "number": 13070,
-      "title": "TITAN V4 E13: fail closed on scalar type poison"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/b9-strict-enable-20260912",
-      "created_at": "2026-09-12T06:10:46Z",
-      "draft": false,
-      "number": 13069,
-      "title": "TITAN V4 B9: require literal True activation"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "astra/demandvel-comeback-tailpressure",
       "created_at": "2026-09-12T06:10:26Z",
       "draft": true,
@@ -100,42 +124,18 @@
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/rowshed-mirror-collision-value-20260912",
-      "created_at": "2026-09-12T06:08:49Z",
-      "draft": true,
-      "number": 13067,
-      "title": "TITAN V4 ROWSHED: add exact mirror SELL collision-value evidence"
-    },
-    {
-      "author": "woahwhattheheck",
       "branch": "astra/gander-apex-radar-composite",
       "created_at": "2026-09-12T06:06:50Z",
       "draft": true,
       "number": 13066,
       "title": "TITAN V4: GANDER \u00d7 Apex clone-radar composite"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/h3b-current-abi-failclosed-20260912",
-      "created_at": "2026-09-12T06:05:53Z",
-      "draft": true,
-      "number": 13065,
-      "title": "HOLD \u00b7 TITAN V4 H3b: fold fail-closed current-ABI semantics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/rngreach-authored-callback-20260912",
-      "created_at": "2026-09-12T06:04:08Z",
-      "draft": true,
-      "number": 13064,
-      "title": "TITAN V4 RNGREACH: authored callback reachability"
     }
   ],
-  "pulls_listed": 280,
+  "pulls_listed": 255,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 147.5,
+  "queue_depth_per_runner": 159.1,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T06:14:22Z",
+  "unchanged_since": "2026-09-12T06:22:50Z",
   "undatable_pulls": []
 }
