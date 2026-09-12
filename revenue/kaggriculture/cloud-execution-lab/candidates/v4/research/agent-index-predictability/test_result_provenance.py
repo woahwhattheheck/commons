@@ -91,6 +91,32 @@ class ResultProvenanceTests(unittest.TestCase):
         with self.assertRaises(mod.ProvenanceError):
             self.bind(change)
 
+    def test_relative_tolerance_cannot_authenticate_large_absolute_conflict(self):
+        def change(root, candidate, engine, opponents, rows):
+            rows[0]["rewards"] = [1e20, 0]
+            rows[0]["candidate_score"] = 1e20 + 50_000_000
+            rows[1]["rewards"] = [0, 1e20]
+
+        with self.assertRaises(mod.ProvenanceError):
+            self.bind(change)
+
+    def test_large_integer_alias_cannot_collapse_through_float(self):
+        def change(root, candidate, engine, opponents, rows):
+            rows[0]["rewards"] = [10**20, 0]
+            rows[0]["candidate_score"] = 10**20 + 1
+            rows[1]["rewards"] = [0, 10**20]
+
+        with self.assertRaises(mod.ProvenanceError):
+            self.bind(change)
+
+    def test_derived_margin_overflow_fails_closed(self):
+        def change(root, candidate, engine, opponents, rows):
+            rows[0]["rewards"] = [1e308, -1e308]
+            rows[1]["rewards"] = [-1e308, 1e308]
+
+        with self.assertRaises(mod.ProvenanceError):
+            self.bind(change)
+
     def test_nonfinite_and_overflow_rewards_are_rejected(self):
         def inf(root, candidate, engine, opponents, rows):
             rows[0]["rewards"][0] = float("inf")

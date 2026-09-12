@@ -1,6 +1,8 @@
 # W2 native selected-action integration
 
-ASTRA-SECONDCARE complements SECONDHELP's **one** `r04_dead_feed_care.py` and AFTERCARE's independent production/economic oracle in this same canonical V4 package. This is not a second CARE policy, controller, or V4 root.
+ASTRA-SECONDCARE complements SECONDHELP's **one** `dead_feed_care.py` and AFTERCARE's independent production/economic oracle in this same canonical V4 package. This is not a second CARE policy, controller, or V4 root.
+
+The canonical candidate source is `dead_feed_care.py`. The native composer copies its authenticated bytes to the scratch runtime ABI filename `r04_dead_feed_care.py`; that runtime filename is not a second candidate source. The temporary duplicate candidate copy added by #12773 is removed after reconciling #12770's canonical filename. Source blob51c17ea3 and native output SHA f16fb10b remain unchanged. Re-materialization from the canonical filename and the complete 12-test native suite passed again, including all 112 fixture calls and 91 cancellations.
 
 ## What is implemented
 
@@ -41,8 +43,8 @@ D=/tmp/w2-native-off
 BASE=da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8
 ON=f16fb10b7c201525996aca32e54fc5135fa02b585b45abf8c7c7b1b5c6fbea76
 HELPER=55f4ea7da32abd05af7958081a9cb278cb01629c9203105812ccbeb3165cd058
-python -B compose_native.py --package "$B" --helper r04_dead_feed_care.py --runtime-sha256 "$BASE" --helper-sha256 "$HELPER" --output "$C" --enable
-python -B compose_native.py --package "$B" --helper r04_dead_feed_care.py --runtime-sha256 "$BASE" --helper-sha256 "$HELPER" --output "$D"
+python -B compose_native.py --package "$B" --helper dead_feed_care.py --runtime-sha256 "$BASE" --helper-sha256 "$HELPER" --output "$C" --enable
+python -B compose_native.py --package "$B" --helper dead_feed_care.py --runtime-sha256 "$BASE" --helper-sha256 "$HELPER" --output "$D"
 python -B check_native.py --package "$C" --baseline "$B" --manifest "$B/SOURCE.json" --runtime-sha256 "$ON" --output check-normal.json
 python -O -B check_native.py --package "$C" --baseline "$B" --manifest "$B/SOURCE.json" --runtime-sha256 "$ON" --output check-optimized.json
 python -B run_native_faults.py --package "$C" --baseline "$B" --manifest "$B/SOURCE.json" --output fault-normal

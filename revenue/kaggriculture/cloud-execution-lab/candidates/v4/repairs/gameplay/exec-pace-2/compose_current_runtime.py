@@ -18,7 +18,7 @@ CONSUMER_INSERT = CONSUMER_ANCHOR + (
     "            if f.exec_pace:\n"
     "                pace = load('_titan_exec_pace_runtime', HERE/'exec_pace_runtime.py')\n"
     "                self.consumer.exec_pace_state = pace.PriceTrendState()\n"
-    "                self.consumer.exec_pace_gate = pace.gate_plan\n"
+    "                self.consumer.exec_pace_apply = pace.apply_candidate\n"
 )
 
 TRANSFORM_ANCHOR = (
@@ -39,14 +39,9 @@ PLAN_ANCHOR = (
 )
 PLAN_INSERT = (
     "            info['baseline_horizon_end']=horizon['baseline_end'];info['horizon_end']=item_end\n"
-    "            exec_pace_gate=getattr(self,'exec_pace_gate',None)\n"
-    "            if exec_pace_gate is not None and not info.get('forced_feasibility',False):\n"
-    "                plan,exec_pace_report=exec_pace_gate(exec_pace_state,item,reference,plan)\n"
-    "                info=dict(info);info['exec_pace']=exec_pace_report\n"
-    "                if exec_pace_report.get('blocked'):\n"
-    "                    info['plan']=list(reference)\n"
-    "                    self.diagnostics['evaluations'].append(info)\n"
-    "                    continue\n"
+    "            exec_pace_apply=getattr(self,'exec_pace_apply',None)\n"
+    "            if exec_pace_apply is not None:\n"
+    "                plan,info=exec_pace_apply(exec_pace_state,item,reference,plan,info)\n"
     "            self.diagnostics['evaluations'].append(info)\n"
     "            eligible,rank=seller_choice_rank(info)\n"
 )
