@@ -280,6 +280,20 @@ def audit_events(
     seen_ids: dict[str, Event] = {}
     authoritative_events: list[Event] = []
 
+    # Provider event ids are replay-deduplication keys, not an ordering oracle.
+    # Count only events that could otherwise affect this canonical workspace.
+    # If more than one eligible row carries the same id, quarantine the whole
+    # conflicting group so raw exporter line order cannot choose the winner.
+    eligible_id_counts: dict[str, int] = defaultdict(int)
+    for ev in events:
+        future = ev.ts > now
+        root_mismatch = (
+            ev.canonical_root is not None and ev.canonical_root != canonical_root
+        )
+        repo_write_unbound = ev.writes_repo and ev.canonical_root != canonical_root
+        if ev.event_id and not future and not root_mismatch and not repo_write_unbound:
+            eligible_id_counts[ev.event_id] += 1
+
     for ev in events:
         future = ev.ts > now
         if future:
@@ -321,10 +335,18 @@ def audit_events(
                 # cannot shadow a later valid export row with the same id.
                 seen_ids[ev.event_id] = ev
 
+        duplicate_group = bool(
+            ev.event_id
+            and not future
+            and not root_quarantined
+            and eligible_id_counts[ev.event_id] > 1
+        )
+
         # Timeline/root anomalies remain visible evidence, but future/replayed
-        # rows, explicit foreign-root rows, and unbound repo writers cannot
-        # mint, extend, close, or reopen a lease in this canonical workspace.
-        if not future and not duplicate and not root_quarantined:
+        # rows, explicit foreign-root rows, unbound repo writers, and every row
+        # in a conflicting provider-id group cannot mint, extend, close, or
+        # reopen a lease in this canonical workspace.
+        if not future and not duplicate and not duplicate_group and not root_quarantined:
             authoritative_events.append(ev)
 
     grouped: dict[str, list[Event]] = defaultdict(list)
