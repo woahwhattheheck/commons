@@ -113,7 +113,7 @@ class EodFloorReplacementTest(unittest.TestCase):
 
         # A non-default capacity is valid only when it is explicitly observed.
         custom = {"turnsPerDay": 24, "shedCapacity": 101, "maxMarketOrdersPerTurn": 10}
-        decision = B7.analyze(obs(), act(), custom, market_price_fn=price_fn)
+        decision = B7.analyze(obs(), act(empty=True), custom, market_price_fn=price_fn)
         self.assertTrue(decision["admit"], decision)
         self.assertEqual(decision["proposal"], ["SELL", "MILK", 4])
         self.assertEqual(decision["baseline_final_shed"], decision["candidate_final_shed"])
