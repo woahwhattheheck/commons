@@ -56,13 +56,56 @@ jobs:
         run: |
           set -euo pipefail
           python3 -B build_integrated.py --check
-      - name: Prove cross-episode reset invariance
+      - name: Prove live-source cross-episode reset invariance
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab"
+          OUT="$RUNNER_TEMP/titan-reset-invariance"
+          LIVE="$RUNNER_TEMP/titan-reset-live-root"
+          mkdir -p "$OUT"
+          cp -a "$LAB" "$LIVE"
+          ln -s . "$LIVE/checks"
+          python3 -I "$LAB/test_worker_reset.py" --worker "$LIVE" --order A B --output "$OUT/live-ab.json"
+          python3 -I "$LAB/test_worker_reset.py" --worker "$LIVE" --order B A --output "$OUT/live-ba.json"
+          python3 - "$OUT/live-ab.json" "$OUT/live-ba.json" "$OUT/live-summary.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          ab = json.loads(Path(sys.argv[1]).read_text())
+          ba = json.loads(Path(sys.argv[2]).read_text())
+          keys = ('seed','seat','calls','last_step','action_sha256','status','rewards','singleton_replaced')
+          mismatches = {}
+          for name in ('A','B'):
+              left = {key: ab['results'][name][key] for key in keys}
+              right = {key: ba['results'][name][key] for key in keys}
+              if left != right:
+                  mismatches[name] = {'AB': left, 'BA': right}
+          if ab['module_cache_keys'] != ba['module_cache_keys']:
+              mismatches['module_cache_keys'] = {'AB': ab['module_cache_keys'], 'BA': ba['module_cache_keys']}
+          if mismatches:
+              raise SystemExit(json.dumps(mismatches, indent=2, sort_keys=True))
+          summary = {
+              'schema': 'titan-v4-reset-invariance-live-source/v1',
+              'result': 'PASS',
+              'orders': [ab['order'], ba['order']],
+              'results': ab['results'],
+              'module_cache_keys': ab['module_cache_keys'],
+              'engine_sha256': ab['engine_sha256'],
+              'raw_loader_sha256': ab['raw_loader_sha256'],
+              'source_manifest_sha256': ab['source_manifest_sha256'],
+          }
+          Path(sys.argv[3]).write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')
+          print(json.dumps(summary, indent=2, sort_keys=True))
+          PY
+      - name: Prove packaged-archive cross-episode reset invariance
+        if: ${{ !cancelled() }}
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/titan-reset-invariance"
           python3 -B revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py \
-            | tee "$RUNNER_TEMP/titan-reset-invariance/result.json"
+            | tee "$RUNNER_TEMP/titan-reset-invariance/archive-summary.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
