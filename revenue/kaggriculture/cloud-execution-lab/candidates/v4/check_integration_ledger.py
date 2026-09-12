@@ -61,7 +61,10 @@ def _rows(ledger: dict[str, Any], key: str) -> list[dict[str, Any]]:
         lane = row.get("lane")
         if not isinstance(lane, str) or not lane.strip():
             raise LedgerError(f"INTEGRATION.json {key}[{index}] has invalid lane")
-        lane = lane.strip()
+        if lane != lane.strip():
+            raise LedgerError(
+                f"INTEGRATION.json {key}[{index}] lane must not have leading/trailing whitespace"
+            )
         if lane in seen:
             raise LedgerError(
                 f"INTEGRATION.json {key!r} duplicates lane {lane!r} "
@@ -69,7 +72,6 @@ def _rows(ledger: dict[str, Any], key: str) -> list[dict[str, Any]]:
             )
         seen[lane] = index
         row = dict(row)
-        row["lane"] = lane
         out.append(row)
     return out
 
