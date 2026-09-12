@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "mechanism": "M1 complete-day funding coverage",
+  "scope": "isolated source verification, not game-strength or production certification",
+  "canonical_branch": "main",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "source_provenance": {
+    "two_seat_money_preimage_blob": "d4d068d62ffc8fcd25842193bc7031f764630262",
+    "complete_day_transformer_blob": "1014d235909bcf694dad1c620195e11981adb07f",
+    "original_three_test_donor_blob": "db0cc52f70be6908816f5dc52c1eed5e0eae691d",
+    "executed_postimage_blob": "87eb8ccbee13b33ef656ba0a5ba0114ac30f4658",
+    "executed_postimage_sha256": "f48adc060c3d1de42d89ddfbdcc5bb48bc8dc6a50f5b4cd07a0cbddc9eadb279",
+    "executed_postimage_bytes": 15897
+  },
+  "test_provenance": {
+    "extended_boundary_test_blob": "71e1c92337bb36463bb65f43f70f8e7ffc6158ee",
+    "extended_boundary_test_count": 21,
+    "extended_boundary_test_bytes": 7332,
+    "extended_boundary_test_sha256": "326b7dc5e869378b8f715d09eb07ea3cacb1b9aa6547b7e07738860606f218b2",
+    "unchanged_money_seat_test_blob": "5695a41e8baca3da1b0b730ebcb3c27e6fa0bc8d",
+    "unchanged_money_seat_test_count": 5,
+    "validator_blob": "05f890e7c4ba261c3f6b27b1fd278668ff820a5e"
+  },
+  "execution": {
+    "py_compile": "PASS",
+    "normal": {"tests": 26, "result": "PASS"},
+    "optimized": {"tests": 26, "result": "PASS"},
+    "timing_subcases_per_run": 2660,
+    "timing_domain": "step 24..695, pickup offset 2..6, pickup before literal hour-23 day end",
+    "predecessor": {
+      "blob": "d4d068d62ffc8fcd25842193bc7031f764630262",
+      "tests_run": 26,
+      "failed_assertions_or_subtests": 21,
+      "witness": "At step 101 a frozen tape ending with PICKUP WHEAT 3 at step 104 authorized BUY_PRODUCT WHEAT 3 for either public seat despite omitting same-day steps 105..119. Repaired source returns the exact parent action for this tape."
+    },
+    "second_transform_application": "REJECTED, nonzero exit",
+    "mutation_controls": [
+      {"name": "remove_complete_day_guard", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 21},
+      {"name": "allow_missing_last_day_step", "normal": "REJECTED", "optimized": "REJECTED", "kind": "runtime_exception", "errors_per_mode": 3},
+      {"name": "ignore_final_same_day_purchase", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 8},
+      {"name": "scan_dead_eleventh_market_row", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 2},
+      {"name": "charge_next_day_cash_owner", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 1},
+      {"name": "disable_eligible_m1_buys", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 4},
+      {"name": "remove_price_surcharge", "normal": "REJECTED", "optimized": "REJECTED", "kind": "assertion", "failures_per_mode": 1}
+    ],
+    "mutation_runs_rejected": 14,
+    "syntax_or_import_failure_counted_as_mutation_rejection": false,
+    "isolated_runner_reexecution": "Both baselines PASS; all 14 mutation runs rejected using fresh temporary modules and isolated Python imports."
+  },
+  "canonical_inputs_for_runner": {
+    "source": "donor/overlay/r04_m1_wheat_trade.py",
+    "boundary_test": "donor/overlay/checks/test_v4_m1_complete_day_boundaries.py",
+    "money_seat_test": "repairs/gameplay/m1-two-seat/test_v4_m1_money_overflow.py"
+  },
+  "reproduce_from_repo_root": "python revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/m1-two-seat/run_complete_day_validation.py",
+  "integration_note": "The runner fails closed until canonical input files match the three exact executed blobs. This receipt alone does not assert those source/test paths are integrated into a particular main tip. Coordinate with the existing source writer in the linked thread; do not create a second source branch.",
+  "source_writer_thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789177827904429",
+  "extended_test_handoff": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789178175006739?thread_ts=1789177827.904429&cid=C0C0Z8AHGP2",
+  "production_activation": false,
+  "economic_gate_run": false,
+  "legacy_materializer_executed": false,
+  "new_v4_branch_created": false
+}
