@@ -7,10 +7,24 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 from typing import Any
 
 SCHEMA = "titan-v5-production-action-divergence/v1"
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+TRACE_NAMES = (
+    "left_candidate",
+    "right_candidate",
+    "left_opponent",
+    "right_opponent",
+)
+TRACE_DIGEST_FIELDS = {
+    "left_candidate": "left_candidate_trace_sha256",
+    "right_candidate": "right_candidate_trace_sha256",
+    "left_opponent": "left_opponent_trace_sha256",
+    "right_opponent": "right_opponent_trace_sha256",
+}
 EXPECTED = {
     "evaluator": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
     "loader": "61093af280494f95d0f3e5137f716c980ebaf7a2bb53fb333b03566810808e6e",
@@ -77,25 +91,96 @@ def _optional_step(value: Any, field: str) -> int | None:
     return value
 
 
-def _validate_comparison(comparison: dict[str, Any], seat: int) -> tuple[int | None, bool]:
-    """Recompute recorder ordering instead of trusting its causal summary bit."""
-    candidate_action = _optional_step(
-        comparison.get("first_candidate_action_divergence_step"),
-        f"seat {seat} first_candidate_action_divergence_step",
+def _validate_vector(value: Any, name: str, seat: int) -> list[dict[str, Any]]:
+    _require(type(value) is list, f"seat {seat} {name} trace vector missing")
+    _require(
+        len(value) == EXPECTED["steps"],
+        f"seat {seat} {name} trace vector length mismatch",
     )
-    candidate_observation = _optional_step(
-        comparison.get("first_candidate_observation_divergence_step"),
-        f"seat {seat} first_candidate_observation_divergence_step",
-    )
-    opponent_action = _optional_step(
-        comparison.get("first_opponent_action_divergence_step"),
-        f"seat {seat} first_opponent_action_divergence_step",
-    )
-    opponent_observation = _optional_step(
-        comparison.get("first_opponent_observation_divergence_step"),
-        f"seat {seat} first_opponent_observation_divergence_step",
-    )
+    for step, row in enumerate(value):
+        _require(type(row) is dict, f"seat {seat} {name} trace row invalid")
+        _require(
+            set(row) == {"step", "observation_sha256", "action_sha256"},
+            f"seat {seat} {name} trace row shape invalid",
+        )
+        _require(row.get("step") == step, f"seat {seat} {name} trace steps not contiguous")
+        for field in ("observation_sha256", "action_sha256"):
+            sha = row.get(field)
+            _require(
+                isinstance(sha, str) and _SHA256_RE.fullmatch(sha) is not None,
+                f"seat {seat} {name} {field} invalid",
+            )
+    return value
 
+
+def _trace_digest(rows: list[dict[str, Any]]) -> str:
+    # Recorder v1 digests the full trace row after dropping only the full action.
+    # Every completed vector row therefore reconstructs response_kind='action'.
+    return _digest([
+        {
+            "step": row["step"],
+            "observation_sha256": row["observation_sha256"],
+            "response_kind": "action",
+            "action_sha256": row["action_sha256"],
+        }
+        for row in rows
+    ])
+
+
+def _first_diff(
+    left: list[dict[str, Any]],
+    right: list[dict[str, Any]],
+    field: str,
+) -> int | None:
+    _require(len(left) == len(right), "trace vector lengths differ")
+    for lrow, rrow in zip(left, right):
+        _require(lrow["step"] == rrow["step"], "trace vector topology differs")
+        if lrow[field] != rrow[field]:
+            return lrow["step"]
+    return None
+
+
+def _validate_comparison(comparison: dict[str, Any], seat: int) -> tuple[int | None, bool]:
+    """Derive divergence ordering from complete trace vectors, never summaries."""
+    vectors_obj = comparison.get("trace_vectors")
+    _require(type(vectors_obj) is dict, f"seat {seat} trace_vectors missing")
+    _require(set(vectors_obj) == set(TRACE_NAMES), f"seat {seat} trace_vectors shape invalid")
+    vectors = {
+        name: _validate_vector(vectors_obj.get(name), name, seat)
+        for name in TRACE_NAMES
+    }
+    for name in TRACE_NAMES:
+        field = TRACE_DIGEST_FIELDS[name]
+        _require(
+            comparison.get(field) == _trace_digest(vectors[name]),
+            f"seat {seat} {field} mismatch",
+        )
+
+    derived = {
+        "first_candidate_action_divergence_step": _first_diff(
+            vectors["left_candidate"], vectors["right_candidate"], "action_sha256"
+        ),
+        "first_candidate_observation_divergence_step": _first_diff(
+            vectors["left_candidate"], vectors["right_candidate"], "observation_sha256"
+        ),
+        "first_opponent_action_divergence_step": _first_diff(
+            vectors["left_opponent"], vectors["right_opponent"], "action_sha256"
+        ),
+        "first_opponent_observation_divergence_step": _first_diff(
+            vectors["left_opponent"], vectors["right_opponent"], "observation_sha256"
+        ),
+    }
+    for field, expected in derived.items():
+        reported = _optional_step(comparison.get(field), f"seat {seat} {field}")
+        _require(
+            reported == expected,
+            f"seat {seat} {field} inconsistent with trace vectors",
+        )
+
+    candidate_action = derived["first_candidate_action_divergence_step"]
+    candidate_observation = derived["first_candidate_observation_divergence_step"]
+    opponent_action = derived["first_opponent_action_divergence_step"]
+    opponent_observation = derived["first_opponent_observation_divergence_step"]
     action_points = [
         step for step in (candidate_action, opponent_action) if step is not None
     ]
