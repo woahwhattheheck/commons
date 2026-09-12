@@ -15,7 +15,11 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parent
-TELEMETRY_PATH = os.environ.get("WF1_TELEMETRY_PATH")
+# The official evaluator deliberately sanitizes actor environments, so an env-
+# only telemetry sink is not authoritative.  Keep the override for direct
+# diagnostics, but fall back to a deterministic test-only file beside this
+# copied runtime entry.  The field runner unlinks it before and after each cell.
+TELEMETRY_PATH = Path(os.environ.get("WF1_TELEMETRY_PATH") or (ROOT / ".wf1-field-telemetry.json"))
 _parent = None
 _adapter = None
 stats = {
@@ -56,7 +60,7 @@ def _cfg(configuration, name: str, default=None):
 
 
 def _write_telemetry(configuration) -> None:
-    if not TELEMETRY_PATH or _adapter is None:
+    if _adapter is None:
         return
     try:
         payload = dict(stats)
@@ -64,9 +68,11 @@ def _write_telemetry(configuration) -> None:
         report = getattr(donor, "REPORT", None)
         if isinstance(report, dict):
             payload["donor_report"] = dict(report)
-        path = Path(TELEMETRY_PATH)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(payload, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
+        TELEMETRY_PATH.parent.mkdir(parents=True, exist_ok=True)
+        TELEMETRY_PATH.write_text(
+            json.dumps(payload, sort_keys=True, allow_nan=False) + "\n",
+            encoding="utf-8",
+        )
     except Exception:
         # Telemetry must never affect the returned action.
         pass
