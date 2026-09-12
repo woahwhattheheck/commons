@@ -159,3 +159,192 @@ def load_manifest(path: Path, *, expected_sha256=CORPUS_MANIFEST_SHA256,
             fixtures.append({"id":fid,"submission_id":sub,"seed":seed,
                              "candidate_seat_for_recorded_orientation":1-recorded_seat})
     return {"sha256":sha,"fixtures":fixtures,"target_count":len(targets)}
+
+def _scan_policy(label: str, roots: Iterable[Path], archive_sha: str, fixtures: list[dict[str,Any]],
+                 harness: dict[str,Any]):
+    roots=list(roots)
+    by_id={f["id"]:f for f in fixtures}; ordered=[f["id"] for f in fixtures]
+    seen_roots=set(); runs={}; cells={}; roots_by_shard={}; source_hashes={}
+    evaluator_rel="cloud-execution-lab/reference/evaluator/evaluate.py"
+    loader_rel="20260907-offline-agent/evaluate.py"
+    evaluator_sha=harness["repo"][evaluator_rel]["sha256"]
+    loader_sha=harness["repo"][loader_rel]["sha256"]
+    for raw_root in roots:
+        root=Path(raw_root).resolve(strict=True)
+        if root in seen_roots: raise ChampionError(f"duplicate {label} root")
+        seen_roots.add(root)
+        run, run_sha=_read_json(root/"run.json")
+        if type(run) is not dict: raise ChampionError(f"{root}/run.json must be object")
+        if run.get("candidate_sha256")!=archive_sha: raise ChampionError(f"{label} archive/run mismatch")
+        if run.get("group")!="all": raise ChampionError(f"{label} run must use group=all")
+        if run.get("submission_hold") is not True: raise ChampionError(f"{label} run missing submission_hold")
+        shard=_plain_int(run.get("shard"), f"{label}.shard")
+        shards=_plain_int(run.get("shards"), f"{label}.shards",1)
+        if shard>=shards or shard in runs: raise ChampionError(f"invalid/duplicate {label} shard")
+        if run.get("evaluator_sha256")!=evaluator_sha: raise ChampionError(f"{label} evaluator mismatch")
+        if run.get("loader_sha256")!=loader_sha: raise ChampionError(f"{label} loader mismatch")
+        if run.get("engine")!=harness["engine"]: raise ChampionError(f"{label} engine mismatch")
+        index_sha=run.get("index_sha256")
+        if type(index_sha) is not str or _HEX64.fullmatch(index_sha) is None:
+            raise ChampionError(f"{label} index_sha256 malformed")
+        runs[shard]={"shards":shards,"index_sha256":index_sha,"run_sha256":run_sha,
+                     "selected_fixtures":_plain_int(run.get("selected_fixtures"),"selected_fixtures")}
+        roots_by_shard[shard]=root
+        source_hashes[f"run/{shard}.json"]=run_sha
+    if not runs: raise ChampionError(f"no {label} roots")
+    shard_counts={r["shards"] for r in runs.values()}
+    if len(shard_counts)!=1: raise ChampionError(f"{label} roots disagree on shard count")
+    shards=next(iter(shard_counts))
+    if set(runs)!=set(range(shards)): raise ChampionError(f"{label} incomplete shard set")
+    for shard in range(shards):
+        expected_ids={fid for i,fid in enumerate(ordered) if i%shards==shard}
+        if runs[shard]["selected_fixtures"]!=len(expected_ids):
+            raise ChampionError(f"{label} shard {shard} selected_fixtures mismatch; --limit is non-authorizing")
+        root=roots_by_shard[shard]
+        expected_names={f"{fid}-p{seat}.json" for fid in expected_ids for seat in (0,1)}
+        actual_names={p.name for p in root.glob("*.json") if p.name!="run.json"}
+        if actual_names!=expected_names:
+            raise ChampionError(f"{label} shard {shard} cell set differs from canonical full roster")
+        for name in sorted(expected_names):
+            p=root/name; record, sha=_read_json(p)
+            m=re.match(r"^(.*)-p([01])\.json$",name); assert m
+            fid=m.group(1); seat=int(m.group(2)); fixture=by_id[fid]
+            if type(record) is not dict: raise ChampionError(f"{p} must be object")
+            checks={
+                "opponent":fid, "submission_id":fixture["submission_id"], "seed":fixture["seed"],
+                "candidate_seat":seat, "candidate_sha256":archive_sha, "kind":"recorded_trace",
+                "adaptive":False, "status":"complete", "steps":EXPECTED_CALLBACKS,
+            }
+            for key,expected in checks.items():
+                if record.get(key)!=expected: raise ChampionError(f"{label} {name} {key} mismatch")
+            if record.get("recorded_orientation") != (seat==fixture["candidate_seat_for_recorded_orientation"]):
+                raise ChampionError(f"{label} {name} recorded_orientation mismatch")
+            if record.get("family") != f"recorded-submission:{fixture['submission_id']}":
+                raise ChampionError(f"{label} {name} family mismatch")
+            scores=record.get("scores")
+            if type(scores) is not list or len(scores)!=2: raise ChampionError(f"{label} {name} scores malformed")
+            scores=[_score(v,f"{label}.{name}.scores") for v in scores]
+            key=(fid,seat)
+            cells[key]={"fixture":fid,"submission_id":fixture["submission_id"],"seed":fixture["seed"],
+                        "seat":seat,"own":scores[seat],"rival":scores[1-seat]}
+            source_hashes[f"{shard}/{name}"]=sha
+    run_authority=[{"shard":i, **runs[i]} for i in range(shards)]
+    return {"cells":cells,"runs":runs,"run_authority":run_authority,
+            "source_digest":_digest(source_hashes),"shards":shards}
+
+def _strata_and_score(inc, champ, cand):
+    keys=sorted(cand)
+    totals={k:0 for k in ("inc_own","champ_own","cand_own","inc_margin","champ_margin","cand_margin")}
+    new_inc=new_champ=0; strata={}; panel=[]
+    for key in keys:
+        a,b,c=inc[key],champ[key],cand[key]
+        for field in ("fixture","submission_id","seed","seat"):
+            if a[field]!=b[field] or a[field]!=c[field]: raise ChampionError(f"cross-policy metadata mismatch: {key}")
+        im=a["own"]-a["rival"]; hm=b["own"]-b["rival"]; cm=c["own"]-c["rival"]
+        totals["inc_own"]+=a["own"]; totals["champ_own"]+=b["own"]; totals["cand_own"]+=c["own"]
+        totals["inc_margin"]+=im; totals["champ_margin"]+=hm; totals["cand_margin"]+=cm
+        if im>=0 and cm<0: new_inc+=1
+        if hm>=0 and cm<0: new_champ+=1
+        sk=(c["submission_id"],c["seat"]); bucket=strata.setdefault(sk,{"inc":0,"champ":0,"cand":0,"n":0})
+        bucket["inc"]+=a["own"]; bucket["champ"]+=b["own"]; bucket["cand"]+=c["own"]; bucket["n"]+=1
+        panel.append({"fixture":c["fixture"],"submission_id":c["submission_id"],"seed":c["seed"],"seat":c["seat"],
+                      "incumbent":[a["own"],a["rival"]],"v31":[b["own"],b["rival"]],
+                      "candidate":[c["own"],c["rival"]]})
+    own_inc=totals["cand_own"]-totals["inc_own"]; own_v31=totals["cand_own"]-totals["champ_own"]
+    mar_inc=totals["cand_margin"]-totals["inc_margin"]; mar_v31=totals["cand_margin"]-totals["champ_margin"]
+    if own_inc<0: raise ChampionError(f"candidate regresses incumbent own score: {own_inc}")
+    if own_v31<=0: raise ChampionError(f"candidate does not strictly beat V3.1 own score: {own_v31}")
+    if mar_inc<0: raise ChampionError(f"candidate regresses incumbent margin: {mar_inc}")
+    if mar_v31<0: raise ChampionError(f"candidate regresses V3.1 margin: {mar_v31}")
+    if new_inc or new_champ: raise ChampionError(f"candidate creates new losses: incumbent={new_inc} v31={new_champ}")
+    out=[]
+    for (sub,seat),v in sorted(strata.items()):
+        di=v["cand"]-v["inc"]; dv=v["cand"]-v["champ"]
+        if di<0 or dv<0: raise ChampionError(f"negative own-score stratum submission={sub} seat={seat}")
+        out.append({"submission_id":sub,"seat":seat,"cells":v["n"],
+                    "own_delta_vs_incumbent":di,"own_delta_vs_v31":dv})
+    return {"own_sum_delta_vs_incumbent":own_inc,"own_sum_delta_vs_v31":own_v31,
+            "margin_sum_delta_vs_incumbent":mar_inc,"margin_sum_delta_vs_v31":mar_v31,
+            "new_losses_vs_incumbent":new_inc,"new_losses_vs_v31":new_champ,
+            "strata":out,"panel_digest":_digest(panel)}
+
+def evaluate(*, kg_root:Path, engine_dir:Path, manifest_path:Path,
+             v31_archive:Path, incumbent_archive:Path, candidate_archive:Path,
+             v31_roots, incumbent_roots, candidate_roots,
+             expected_manifest_sha=CORPUS_MANIFEST_SHA256, expected_targets=EXPECTED_TARGETS,
+             repo_pins=REPO_GIT_BLOBS, engine_pins=ENGINE_GIT_BLOBS,
+             claimed_v31_source_commit=None, claimed_v31_submission_id=None):
+    identity=authenticate_v31_identity(
+        source_commit=claimed_v31_source_commit,
+        submission_id=claimed_v31_submission_id,
+        archive_sha256=None,
+    )
+    harness=authenticate_harness(kg_root,engine_dir,repo_pins=repo_pins,engine_pins=engine_pins)
+    manifest=load_manifest(manifest_path,expected_sha256=expected_manifest_sha,expected_targets=expected_targets)
+    v31_sha=_sha_file(v31_archive); inc_sha=_sha_file(incumbent_archive); cand_sha=_sha_file(candidate_archive)
+    if v31_sha!=V31_ARCHIVE_SHA256: raise ChampionError("V3.1 archive bytes do not match exact submitted V3.1")
+    if len({v31_sha,inc_sha,cand_sha})!=3: raise ChampionError("V3.1, incumbent, candidate archives must be distinct")
+    v31=_scan_policy("v31",v31_roots,v31_sha,manifest["fixtures"],harness)
+    inc=_scan_policy("incumbent",incumbent_roots,inc_sha,manifest["fixtures"],harness)
+    cand=_scan_policy("candidate",candidate_roots,cand_sha,manifest["fixtures"],harness)
+    if not (v31["shards"]==inc["shards"]==cand["shards"]): raise ChampionError("cross-policy shard counts differ")
+    for shard in range(v31["shards"]):
+        if len({v31["runs"][shard]["index_sha256"],inc["runs"][shard]["index_sha256"],cand["runs"][shard]["index_sha256"]})!=1:
+            raise ChampionError(f"cross-policy index authority differs on shard {shard}")
+    if not (set(v31["cells"])==set(inc["cells"])==set(cand["cells"])):
+        raise ChampionError("cross-policy cell topology differs")
+    expected_cells=len(manifest["fixtures"])*2
+    if len(cand["cells"])!=expected_cells: raise ChampionError("panel cardinality mismatch")
+    score=_strata_and_score(inc["cells"],v31["cells"],cand["cells"])
+    return {
+        "schema":SCHEMA,"classification":"PASS","champion_ready":True,"release_authority":False,
+        "release_requirement":"same v5tx must authenticate and consume this exact receipt before pointer write",
+        "manifest_sha256":manifest["sha256"],"target_count":manifest["target_count"],
+        "fixture_count":len(manifest["fixtures"]),"cell_count":expected_cells,
+        "v31_source_commit":identity["v31_source_commit"],
+        "v31_submission_id":identity["v31_submission_id"],
+        "v31_archive_sha256":v31_sha,"incumbent_archive_sha256":inc_sha,"candidate_archive_sha256":cand_sha,
+        "harness":harness,"shards":cand["shards"],
+        "source_digests":{"v31":v31["source_digest"],"incumbent":inc["source_digest"],"candidate":cand["source_digest"]},
+        "run_authority":{"v31":v31["run_authority"],"incumbent":inc["run_authority"],"candidate":cand["run_authority"]},
+        **score,
+    }
+
+def _atomic(path:Path, value):
+    payload=_canon(value)+b"\n"; path=Path(path)
+    if path.exists(): raise FileExistsError(path)
+    tmp=path.with_name(f".{path.name}.{uuid.uuid4().hex}.tmp")
+    try:
+        with tmp.open("xb") as f: f.write(payload); f.flush(); os.fsync(f.fileno())
+        os.replace(tmp,path)
+    finally:
+        try: tmp.unlink(missing_ok=True)
+        except OSError: pass
+
+def main(argv=None):
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--kg-root",type=Path,required=True); p.add_argument("--engine-dir",type=Path,required=True)
+    p.add_argument("--manifest",type=Path); p.add_argument("--v31-archive",type=Path,required=True)
+    p.add_argument("--incumbent-archive",type=Path,required=True); p.add_argument("--candidate-archive",type=Path,required=True)
+    p.add_argument("--v31-root",type=Path,action="append",required=True)
+    p.add_argument("--incumbent-root",type=Path,action="append",required=True)
+    p.add_argument("--candidate-root",type=Path,action="append",required=True)
+    p.add_argument("--v31-source-commit",type=str,default=None)
+    p.add_argument("--v31-submission-id",type=int,default=None)
+    p.add_argument("--output",type=Path,required=True); a=p.parse_args(argv)
+    manifest=a.manifest or a.kg_root/CORPUS_REL
+    try:
+        receipt=evaluate(kg_root=a.kg_root,engine_dir=a.engine_dir,manifest_path=manifest,
+                         v31_archive=a.v31_archive,incumbent_archive=a.incumbent_archive,candidate_archive=a.candidate_archive,
+                         v31_roots=a.v31_root,incumbent_roots=a.incumbent_root,candidate_roots=a.candidate_root,
+                         claimed_v31_source_commit=a.v31_source_commit,
+                         claimed_v31_submission_id=a.v31_submission_id)
+        _atomic(a.output,receipt)
+    except (ChampionError,OSError,TypeError,ValueError) as exc:
+        print(f"champion_gate: {exc}",file=sys.stderr); return 2
+    print(json.dumps({"classification":"PASS","cell_count":receipt["cell_count"],
+                      "own_sum_delta_vs_v31":receipt["own_sum_delta_vs_v31"],
+                      "release_authority":receipt["release_authority"]},sort_keys=True))
+    return 0
+
+if __name__=="__main__": raise SystemExit(main())
