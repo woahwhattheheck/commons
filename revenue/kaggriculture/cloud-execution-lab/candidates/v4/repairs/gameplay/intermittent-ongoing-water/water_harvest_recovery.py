@@ -6,14 +6,16 @@ can survive one unwatered EOD.  The literal WATER->PASS rewrite is deliberately
 *not* promoted here.  This module admits only a narrower two-day research pair:
 
     current eligible WATER -> HARVEST
-    next day, same live plant -> exactly one WATER
+    next day, same live plant -> exactly one semantic WATER
 
 HARVEST is accepted only when the current source observation proves positive
 stored yield, so the reclaimed row is productive rather than a syntactic PASS.
 The next-day observation must prove that the same crop survived with the expected
 one-day missed-water streak and the supplied recovery action must actually WATER
-that site without another same-callback actor DIGging the plant.  No forecast or
-scheduler promise is treated as execution proof.
+that site without another same-callback actor DIGging the plant.  Unit-action
+semantics are keyed by row[0], so extended WATER rows count as WATER and duplicate
+semantic WATER rows fail closed.  No forecast or scheduler promise is treated as
+execution proof.
 
 Research/candidate-only.  No runtime/default/config key is created.
 """
@@ -89,11 +91,14 @@ def _positions_and_rows(action: Any, observation: Any):
 
 
 def _recovery_water_actor(action: Any, observation: Any, site: list[int]) -> int | None:
-    """Authenticate one same-site WATER and absence of plant-destroying DIG.
+    """Authenticate one semantic same-site WATER and absence of destructive DIG.
 
-    Unit rows execute in actor order.  A DIG either before the WATER removes the
-    target before recovery, or after the WATER destroys the supposedly recovered
-    plant before callback end.  Both invalidate same-live-plant custody.
+    Unit rows execute in actor order and dispatch by ``row[0]``.  A DIG either
+    before the WATER removes the target before recovery, or after the WATER
+    destroys the supposedly recovered plant before callback end.  Both invalidate
+    same-live-plant custody.  Multiple semantic WATER rows are also rejected:
+    later WATER can be a no-op after the first, so selecting one exact row would
+    not prove which actor performed the recovery.
     """
     parsed = _positions_and_rows(action, observation)
     if parsed is None:
@@ -101,7 +106,7 @@ def _recovery_water_actor(action: Any, observation: Any, site: list[int]) -> int
     same_site = [(actor, row) for actor, position, row in parsed if position == site]
     if any(row[0] == "DIG" for _actor, row in same_site):
         return None
-    matches = [actor for actor, row in same_site if row == ["WATER"]]
+    matches = [actor for actor, row in same_site if row[0] == "WATER"]
     return matches[0] if len(matches) == 1 else None
 
 
@@ -169,8 +174,9 @@ def plan_water_harvest_recovery(
             "recovery_step": next_step,
             "recovery_day": next_day,
             "recovery_actor": recovery_actor,
-            "recovery_row": ["WATER"],
+            "recovery_op": "WATER",
             "productive_current_row_proved": True,
+            "same_callback_semantic_water_count": 1,
             "same_callback_destructive_dig_absent": True,
             "same_live_plant_recovery_proved": True,
             "runtime_promise": False,
