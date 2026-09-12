@@ -2,6 +2,7 @@
   "schema": "titan-v4-plantguard-validation/v1",
   "status": "source_derived_research_no_activation",
   "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "configuration_git_blob": "b354d06b742fe48402513792253f1a5c29366b20",
   "gemini_seam": "PLANTGUARD / last-hour planting guard",
   "theorem": [
     "new PLANT starts consecutive_unwatered=1 and watered_today=false",
@@ -11,6 +12,7 @@
     "movement changes later WATER location and is tracked across the complete authored suffix",
     "observation hour must equal step modulo turnsPerDay under strict integer custody",
     "same-EOD rejection requires that the current day's hour-23 callback is itself executable at or before episodeSteps-2; authored rows beyond the terminal horizon cannot satisfy suffix custody",
+    "terminal semantics are pinned by the official engine blob and standard episodeSteps/turnsPerDay defaults are pinned by the official configuration blob; returned evidence names both sources",
     "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
   ],
   "result_contract": {
@@ -21,11 +23,11 @@
   },
   "executed": {
     "normal_tests": {
-      "count": 29,
+      "count": 30,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 29,
+      "count": 30,
       "status": "pass"
     },
     "py_compile": {
@@ -36,12 +38,12 @@
   },
   "files": {
     "plant_guard.py": {
-      "bytes": 14846,
-      "sha256": "80d4b977a0a4512da16b0e65b809884a5753dcfd190ad671c0af47f82e29b03f"
+      "bytes": 15072,
+      "sha256": "016b5a90ea75fd2b5e112b91ed356b1c376f224c5eab70ad89f15be598b60534"
     },
     "test_plant_guard.py": {
-      "bytes": 12176,
-      "sha256": "24d0e78fcdf216382cad71f9d91c44045472989936c32734326d3f314b605247"
+      "bytes": 12578,
+      "sha256": "3180383471f12da62958acb088d68e1be05ef15fa96fd57122f91b526afeafcc"
     }
   },
   "covered_edges": [
@@ -72,6 +74,7 @@
     "post-terminal step719 fails closed",
     "custom episodeSteps controls EOD reachability",
     "episodeSteps type-poison fails closed",
+    "returned evidence pins engine and configuration Git blobs",
     "input immutability"
   ],
   "limits": [
