@@ -52,13 +52,42 @@ class GeminiEggTimingTests(unittest.TestCase):
             source_turn=0, source_row_index=0, max_delay=5,
         )
         self.assertIsNotNone(report["best_positive"])
-        self.assertGreater(report["best_positive"]["own_cash_delta"], 0)
-        self.assertTrue(report["best_positive"]["realized_retiming"])
+        best = report["best_positive"]
+        self.assertGreater(best["target_sale_cash"], best["source_sale_cash"])
+        self.assertGreater(best["sale_cash_delta"], 0)
+        self.assertTrue(best["scarcity_positive"])
+        self.assertTrue(best["realized_retiming"])
         # Step 8 consumes after market; step 9 is the first placement that can
         # capture both the step-4 and step-8 BAKERY depletion pulses.
-        self.assertEqual(report["best_positive"]["target_step"], 9)
+        self.assertEqual(best["target_step"], 9)
         self.assertFalse(report["policy_claim"])
         self.assertFalse(report["literal_direct_egg_short_squeeze_supported"])
+
+    def test_total_cash_gain_from_skipped_hire_is_not_scarcity_evidence(self):
+        state, env = self.fixture(stock=1, shops=())
+        # Baseline: the source EGG SELL funds the following $1 first HIRE.
+        # Candidate: moving the SELL to turn 1 makes the inherited HIRE miss for
+        # lack of cash. The same single EGG still sells for the same cash later,
+        # so candidate terminal cash is +$1 solely because it did not pay wage.
+        # That consequence must never be labelled an EGG scarcity-price win.
+        own = [
+            action(["SELL", "EGG", 1], ["HIRE"]),
+            action(),
+        ]
+        report = gt.search(
+            self.engine, state, env, self.tape(own), start_step=4, seat=0,
+            source_turn=0, source_row_index=0, max_delay=1,
+        )
+        self.assertEqual(report["candidate_count"], 1)
+        row = report["candidates"][0]
+        self.assertTrue(row["realized_retiming"])
+        self.assertEqual(row["source_filled_units"], 1)
+        self.assertEqual(row["target_filled_units"], 1)
+        self.assertEqual(row["source_sale_cash"], row["target_sale_cash"])
+        self.assertEqual(row["sale_cash_delta"], 0)
+        self.assertEqual(row["own_cash_delta"], 1)
+        self.assertFalse(row["scarcity_positive"])
+        self.assertIsNone(report["best_positive"])
 
     def test_fixed_rival_supply_can_destroy_waiting_edge(self):
         state, env = self.fixture(rival_stock=200)
@@ -73,6 +102,7 @@ class GeminiEggTimingTests(unittest.TestCase):
         )
         self.assertIsNone(report["best_positive"])
         self.assertTrue(any(row["realized_retiming"] for row in report["candidates"]))
+        self.assertFalse(any(row["scarcity_positive"] for row in report["candidates"]))
 
     def test_refuses_non_egg_or_nonpositive_source(self):
         state, env = self.fixture()
@@ -88,7 +118,7 @@ class GeminiEggTimingTests(unittest.TestCase):
     def test_destination_never_displaces_live_economics(self):
         full = self.tape([
             action(["SELL", "EGG", 1]),
-            action(*([ ["HIRE"] ] * 10)),
+            action(*([["HIRE"]] * 10)),
             action(["PASS"], ["HIRE"]),
         ])
         self.assertEqual(
@@ -116,6 +146,7 @@ class GeminiEggTimingTests(unittest.TestCase):
         self.assertIsNone(report["best_positive"])
         self.assertEqual(report["candidates"][0]["source_filled_units"], 0)
         self.assertFalse(report["candidates"][0]["realized_retiming"])
+        self.assertFalse(report["candidates"][0]["scarcity_positive"])
 
 
 if __name__ == "__main__":
