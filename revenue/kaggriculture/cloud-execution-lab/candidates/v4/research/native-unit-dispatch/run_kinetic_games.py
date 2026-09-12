@@ -8,9 +8,10 @@ executed. Child control code is likewise captured once into an immutable scratch
 bundle, so a later repository-file replacement cannot alter verifier/play logic.
 No repository control helper is imported before capture/authentication; the
 composer is compiled and executed only from the already-authenticated captured
-bytes. Changes only mechanics.py in an explicit scratch tree; no config, route,
-archive or release mutation. No observation filtering, actor/market truncation or
-synthetic fill.
+bytes. Runner provenance is supplied from external exact-head authority rather
+than inferred from the mutable checkout. Changes only mechanics.py in an explicit
+scratch tree; no config, route, archive or release mutation. No observation
+filtering, actor/market truncation or synthetic fill.
 """
 from __future__ import annotations
 import argparse
@@ -56,6 +57,12 @@ def git_blob(raw):
     return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
 
 
+def _git_blob_pin(value, name='expected runner Git blob'):
+    if not isinstance(value, str) or len(value) != 40 or any(c not in '0123456789abcdef' for c in value):
+        raise ValueError(f'Invalid {name}')
+    return value
+
+
 def encoded(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
 
@@ -96,24 +103,30 @@ def control_bundle_digest(captured):
     return digest.hexdigest()
 
 
-def capture_control_bundle(root=None):
-    """Capture child runner plus pinned helper modules exactly once.
+def capture_control_bundle(root, expected_runner_git_blob):
+    """Capture runner plus pinned helpers exactly once under external runner identity.
 
-    No helper from this bundle is imported or executed before this routine. The
-    helper pins are verified with the runner-owned ``git_blob`` primitive. The
-    runner itself is captured as bytes and bound by the returned bundle digest.
-    Children are launched only from a materialization of this capture.
+    ``expected_runner_git_blob`` MUST come from external exact-head authority
+    (GitHub/executor/workflow), never by re-reading the mutable checkout being
+    authenticated. No helper from this bundle is imported or executed before this
+    routine. Helper pins are verified with runner-owned ``git_blob`` code.
     """
-    root = Path(__file__).resolve().parent if root is None else Path(root).resolve(strict=True)
+    expected_runner_git_blob = _git_blob_pin(expected_runner_git_blob)
+    root = Path(root).resolve(strict=True)
     captured = {}
     for name in CONTROL_FILES:
         path = root / name
         if path.is_symlink() or not path.is_file() or path.resolve(strict=True).parent != root:
             raise ValueError(f'Unsafe control input: {name}')
         raw = path.read_bytes()
-        expected_blob = CONTROL_GIT_BLOBS.get(name)
-        if expected_blob is not None and git_blob(raw) != expected_blob:
-            raise ValueError(f'Unverified control input: {name}')
+        actual_blob = git_blob(raw)
+        if name == 'run_kinetic_games.py':
+            if actual_blob != expected_runner_git_blob:
+                raise ValueError('Unverified control runner')
+        else:
+            expected_blob = CONTROL_GIT_BLOBS[name]
+            if actual_blob != expected_blob:
+                raise ValueError(f'Unverified control input: {name}')
         captured[name] = raw
     return captured, control_bundle_digest(captured)
 
@@ -250,6 +263,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native-root', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--expected-runner-git-blob', required=True,
+                        help='external exact-head Git blob for run_kinetic_games.py')
     parser.add_argument('--seeds', default='17,101')
     parser.add_argument('--repetitions', type=int, default=2)
     parser.add_argument('--instrument', action='store_true')
@@ -260,11 +275,12 @@ def main():
     parser.add_argument('--expected-control-bundle-sha256')
     parser.add_argument('--control-probe', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
+    expected_runner_git_blob = _git_blob_pin(args.expected_runner_git_blob)
 
     if args.control_probe:
         if not args.expected_control_bundle_sha256:
             parser.error('Control bundle identity is required')
-        control_files, control_digest = capture_control_bundle()
+        control_files, control_digest = capture_control_bundle(Path(__file__).resolve().parent, expected_runner_git_blob)
         if control_digest != args.expected_control_bundle_sha256:
             raise ValueError('Child control bundle identity mismatch')
         args.output.write_text(json.dumps({
@@ -280,7 +296,7 @@ def main():
             parser.error('Child mechanics identity is required')
         if not args.expected_control_bundle_sha256:
             parser.error('Child control bundle identity is required')
-        control_files, control_digest = capture_control_bundle()
+        control_files, control_digest = capture_control_bundle(Path(__file__).resolve().parent, expected_runner_git_blob)
         if control_digest != args.expected_control_bundle_sha256:
             raise ValueError('Child control bundle identity mismatch')
         manifest_raw, captured = capture_runtime(args.native_root, args.expected_mechanics_sha256)
@@ -299,9 +315,11 @@ def main():
     if args.repetitions < 1:
         parser.error('At least one repetition is required')
 
-    control_files, control_digest = capture_control_bundle()
+    control_files, control_digest = capture_control_bundle(Path(__file__).resolve().parent, expected_runner_git_blob)
     composer = load_captured_composer(control_files['compose_kinetic.py'])
     control_runner_blob = git_blob(control_files['run_kinetic_games.py'])
+    if control_runner_blob != expected_runner_git_blob:
+        raise ValueError('Parent control runner identity mismatch')
     manifest_raw, baseline_files = capture_runtime(args.native_root)
     count = len(baseline_files)
     seeds = [int(v) for v in args.seeds.split(',')]
@@ -337,6 +355,7 @@ def main():
                             python_flags.insert(0, '-O')
                         command = [sys.executable, *python_flags, str(frozen_runner),
                             '--native-root', str(root), '--output', str(result_file),
+                            '--expected-runner-git-blob', expected_runner_git_blob,
                             '--child-seat', str(seat), '--child-seed', str(seed),
                             '--expected-mechanics-sha256', expected_mechanics,
                             '--expected-control-bundle-sha256', control_digest]
@@ -352,7 +371,7 @@ def main():
                             raise ValueError(f'{arm} child executed under unexpected source manifest')
                         if row.get('executed_control_bundle_sha256') != control_digest:
                             raise ValueError(f'{arm} child executed unexpected control bundle')
-                        if row.get('executed_control_runner_blob') != control_runner_blob:
+                        if row.get('executed_control_runner_blob') != expected_runner_git_blob:
                             raise ValueError(f'{arm} child executed unexpected runner bytes')
                         if row.get('executed_control_compose_blob') != CONTROL_GIT_BLOBS['compose_kinetic.py']:
                             raise ValueError(f'{arm} child executed unexpected composer bytes')
@@ -380,6 +399,7 @@ def main():
               'candidate_mechanics_sha256': candidate_mechanics_sha256,
               'control_bundle_sha256': control_digest,
               'control_runner_git_blob': control_runner_blob,
+              'control_runner_external_pin': expected_runner_git_blob,
               'control_compose_git_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
               'control_check_git_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
               'immutable_execution_snapshot': True,
