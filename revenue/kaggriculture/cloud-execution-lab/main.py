@@ -5,6 +5,33 @@ _SPATIAL_RECOVERY = None
 _SPATIAL_RECOVERY_FIELDS = ('_committed', 'sale_obligation', 'receipt_events', 'crop_intent')
 
 
+def _install_funding_eod_boundary(module):
+    """Fail closed before a represented funding replay crosses official EOD."""
+    from functools import wraps
+
+    current = None if module is None else getattr(module, '_funding_trace', None)
+    if not callable(current):
+        raise RuntimeError('loaded frozen seller has no funding trace')
+    if getattr(current, '_titan_funding_eod_boundary', False):
+        return current
+
+    @wraps(current)
+    def guarded(obs, config, farm, private, route, now, end, current_market,
+                stress_units=0):
+        turns = config.get('turnsPerDay')
+        if type(turns) is not int or turns != 24:
+            raise ValueError('funding replay requires plain-int turnsPerDay == 24')
+        if now // turns != end // turns:
+            raise ValueError('funding replay cannot cross end-of-day lifecycle')
+        return current(obs, config, farm, private, route, now, end,
+                       current_market, stress_units=stress_units)
+
+    guarded._titan_funding_eod_boundary = True
+    guarded._titan_funding_eod_original = current
+    module._funding_trace = guarded
+    return guarded
+
+
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
@@ -62,9 +89,14 @@ def _new_instance(root, feature_data):
 
         def _initialize(self):
             # Keep TitanAgent's normal lazy construction and controller install.
+            # Install the lifecycle guard only after the exact relocated seller
+            # module is loaded, but before any represented funding trace runs.
+            super()._initialize()
+            import sys
+            selected_module = sys.modules.get(self.consumer.__class__.__module__)
+            _install_funding_eod_boundary(selected_module)
             # Restore the bounded journal only after a fresh SpatialTempo exists,
             # but before production consumes the new public observation.
-            super()._initialize()
             self._restore_spatial_recovery()
 
         def _checkpoint_finalizer(self, obs, selected, stage):
