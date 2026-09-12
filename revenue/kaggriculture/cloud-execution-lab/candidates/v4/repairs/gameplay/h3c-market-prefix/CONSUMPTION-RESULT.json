@@ -1,52 +1,61 @@
 {
-  "helper_blob": "79c3fd029054a2db5931609db06f6b9aa4d4be3c",
-  "negative_controls": [
-    {
-      "errors": 0,
-      "exit_code": 1,
-      "expected_failures": 0,
-      "failures": 24,
-      "optimized": false,
-      "skipped": 0,
-      "tests": 15,
-      "unexpected_successes": 0
-    },
-    {
-      "errors": 0,
-      "exit_code": 1,
-      "expected_failures": 0,
-      "failures": 24,
-      "optimized": true,
-      "skipped": 0,
-      "tests": 15,
-      "unexpected_successes": 0
-    }
-  ],
-  "positive_controls": [
-    {
-      "errors": 0,
-      "exit_code": 0,
-      "expected_failures": 0,
-      "failures": 0,
-      "optimized": false,
-      "skipped": 0,
-      "tests": 15,
-      "unexpected_successes": 0
-    },
-    {
-      "errors": 0,
-      "exit_code": 0,
-      "expected_failures": 0,
-      "failures": 0,
-      "optimized": true,
-      "skipped": 0,
-      "tests": 15,
-      "unexpected_successes": 0
-    }
-  ],
-  "preimage_blob": "2044d6cf1e0c51f95027229863f910aa43ac7008",
-  "production_archive_changed": false,
-  "schema_version": 1,
+  "schema_version": 2,
+  "status": "PREDECESSOR_EVIDENCE_ONLY_CURRENT_HEAD_PENDING",
   "scope": "SOURCE_ONLY_NOT_PRODUCTION_PROMOTION",
-  "test_blob": "c24bd784a43267f84071d2c293c10fe57f30a1da"
+  "current_helper_blob": "7b886fd19c3b6d729a26cdbbf61cb56bc788d8eb",
+  "current_dead_inflow_test_blob": "562981dd9628d9397fc42eb25e8033652529976f",
+  "current_execution": {
+    "status": "PENDING_EXACT_HEAD_REPO_MOUNTED_EXECUTION",
+    "green_claim": false
+  },
+  "predecessor_receipt": {
+    "helper_blob": "79c3fd029054a2db5931609db06f6b9aa4d4be3c",
+    "test_blob": "c24bd784a43267f84071d2c293c10fe57f30a1da",
+    "preimage_blob": "2044d6cf1e0c51f95027229863f910aa43ac7008",
+    "positive_controls": [
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "optimized": false,
+        "skipped": 0,
+        "tests": 15,
+        "unexpected_successes": 0
+      },
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "optimized": true,
+        "skipped": 0,
+        "tests": 15,
+        "unexpected_successes": 0
+      }
+    ],
+    "negative_controls": [
+      {
+        "errors": 0,
+        "exit_code": 1,
+        "expected_failures": 0,
+        "failures": 24,
+        "optimized": false,
+        "skipped": 0,
+        "tests": 15,
+        "unexpected_successes": 0
+      },
+      {
+        "errors": 0,
+        "exit_code": 1,
+        "expected_failures": 0,
+        "failures": 24,
+        "optimized": true,
+        "skipped": 0,
+        "tests": 15,
+        "unexpected_successes": 0
+      }
+    ]
+  },
+  "production_archive_changed": false
 }

@@ -123,6 +123,18 @@ def _harvest_upper_bound(tile: Any) -> int | None:
     return units
 
 
+def _proven_dead_market_inflow(order: Any) -> bool:
+    """Recognize only BUY rows the official parser certainly rejects.
+
+    Keep H3c conservative for malformed/coerced/unknown rows.  A literal plain-int
+    quantity <= 0 is unambiguous because the official parser rejects n <= 0 before
+    any BUY_PRODUCT/BUY_ANIMAL unit can commit or add shed stock.
+    """
+    return (isinstance(order, list) and len(order) >= 3
+            and order[0] in ("BUY_PRODUCT", "BUY_ANIMAL")
+            and type(order[2]) is int and order[2] <= 0)
+
+
 def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any, *, enabled=False):
     """Return the candidate action; no-match and malformed paths preserve identity."""
     if not enabled or not _standard_configuration(configuration):
@@ -166,7 +178,8 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
             return action
         if order and not isinstance(order[0], str):
             return action
-        if order and order[0] in ("BUY_PRODUCT", "BUY_ANIMAL"):
+        if (order and order[0] in ("BUY_PRODUCT", "BUY_ANIMAL")
+                and not _proven_dead_market_inflow(order)):
             telemetry["market_inflow_block"] += 1
             return action
 

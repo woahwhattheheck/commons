@@ -1,9 +1,11 @@
 # H3c raw-market executable-prefix repair
 
-This package preserves the reviewed post-baseline H3c correction in the canonical `candidates/v4` workspace.
+This package preserves the reviewed H3c market-executability corrections in the canonical `candidates/v4` workspace.
 
-The baseline donor `donor/overlay/h3c_goose_eod_cap_rescue.py` (`2044d6cf1e0c51f95027229863f910aa43ac7008`) scans every authored market row even though the pinned engine executes only `q[:max_orders]`. H3c already requires standard `maxOrders == 10`, so inert rows at raw index 10+ must not veto an otherwise-valid goose EOD capacity rescue.
+The original donor `donor/overlay/h3c_goose_eod_cap_rescue.py` (`2044d6cf1e0c51f95027229863f910aa43ac7008`) scanned every authored market row even though the pinned engine executes only `q[:max_orders]`. H3c already requires standard `maxOrders == 10`, so inert rows at raw index 10+ must not veto an otherwise-valid goose EOD capacity rescue. That first repair produced helper blob `79c3fd029054a2db5931609db06f6b9aa4d4be3c` and focused regression blob `c24bd784a43267f84071d2c293c10fe57f30a1da`; its retained receipt records 38/38 normal and 38/38 optimized tests passing, with the original donor failing 24 added-suite subcases.
 
-Final released source blob: `79c3fd029054a2db5931609db06f6b9aa4d4be3c`. Focused regression blob: `c24bd784a43267f84071d2c293c10fe57f30a1da`. The release receipt reports 38/38 normal and 38/38 optimized tests passing, including a 25-case executable-prefix equivalence matrix; the baseline donor fails 24 subcases of the added suite.
+A later executable-row audit found a second conservative false-negative inside the admitted raw prefix. The official market parser rejects parsed quantities `n <= 0` before any unit can commit, but H3c vetoed every in-prefix `BUY_PRODUCT` / `BUY_ANIMAL` opcode without inspecting quantity. The current source therefore exempts only an unambiguous literal plain-integer quantity `<= 0` from the shed-inflow veto. Positive buys still veto. Malformed rows and bool/float/string quantities remain fail-closed even where Python coercion might classify them more precisely; this repair deliberately does not turn H3c into a second full market parser.
 
-This is source/semantic-port custody only. It does not enable H3c, move legacy V4 refs, change defaults, or authorize production promotion/economics.
+Current repair source blob: `7b886fd19c3b6d729a26cdbbf61cb56bc788d8eb`. The additive dead-inflow regression blob is `562981dd9628d9397fc42eb25e8033652529976f`; the original executable-prefix suite remains byte-exact. `verify_source.py` authenticates both suites and reconstructs the literal pre-H3c predecessor so the current helper must kill both generations of regressions under normal and optimized Python.
+
+Current-head repo-mounted execution is still required. The earlier 38/38 receipt is predecessor evidence only and must not be presented as validation of the new helper. This remains source/semantic-port custody only: no H3c enablement, default/config change, runtime ordering change, composition/integration mutation, archive/provider/Kaggle action, or economics/promotion authority.
