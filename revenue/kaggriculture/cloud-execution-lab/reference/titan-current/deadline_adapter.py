@@ -39,9 +39,60 @@ def _alarm(_signum, _frame):
     raise DeadlineExceeded("action deadline exhausted")
 
 
+def _public_player(observation):
+    """Bind emergency fallback state to one exact public farm index."""
+    if not isinstance(observation, dict):
+        raise ValueError("public observation must be a mapping")
+    player = observation.get("player")
+    farms = observation.get("farms")
+    if type(player) is not int or player < 0:
+        raise ValueError("public player must be a nonnegative plain integer")
+    if not isinstance(farms, (list, tuple)) or player >= len(farms):
+        raise ValueError("public player is outside observed farms")
+    if not isinstance(farms[player], dict):
+        raise ValueError("selected public farm must be a mapping")
+    return player
+
+
+def _public_step(observation, configuration):
+    """Bind deadline behavior to one exact public clock representation."""
+    try:
+        turns_per_day = int(configuration.get("turnsPerDay", 24))
+    except (TypeError, ValueError):
+        raise ValueError("turnsPerDay must resolve to a positive integer") from None
+    if turns_per_day <= 0:
+        raise ValueError("turnsPerDay must resolve to a positive integer")
+    has_step = "step" in observation
+    has_day = "day" in observation
+    has_hour = "hour" in observation
+    if has_day != has_hour:
+        raise ValueError("public day/hour must appear together")
+    derived = None
+    if has_day:
+        day = observation["day"]
+        hour = observation["hour"]
+        if type(day) is not int or day < 0:
+            raise ValueError("public day must be a nonnegative plain integer")
+        if type(hour) is not int or not 0 <= hour < turns_per_day:
+            raise ValueError("public hour must be a plain integer within the day")
+        derived = day * turns_per_day + hour
+    if not has_step:
+        if derived is None:
+            raise ValueError("public clock is absent")
+        return derived
+    step = observation.get("step")
+    if type(step) is not int or step < 0:
+        raise ValueError("public step must be a nonnegative plain integer")
+    if derived is not None and step != derived:
+        raise ValueError("public clock fields disagree")
+    return step
+
+
 def legal_pass(observation):
-    seat = int(observation["player"])
+    seat = _public_player(observation)
     hands = observation["farms"][seat].get("hands", [])
+    if not isinstance(hands, list):
+        raise ValueError("public hands must be a list")
     return {"farmer": ["PASS"], "hands": [["PASS"] for _ in hands], "market": []}
 
 
@@ -53,7 +104,7 @@ def terminal_liquidation_fallback(observation, configuration=None):
     already on a shed-access tile PASS; there is no speculative movement.
     """
     obs = observation; cfg = dict(configuration or {})
-    seat = int(obs["player"]); farm = obs["farms"][seat]; private = obs["private"]
+    seat = _public_player(obs); farm = obs["farms"][seat]; private = obs["private"]
     board = int(cfg.get("boardSize", len(farm["tiles"])))
     half = board // 2
     access = {(half-1, half-1), (half, half-1), (half-1, half), (half, half)}
@@ -78,6 +129,93 @@ def terminal_liquidation_fallback(observation, configuration=None):
               if product in MARKET_PRODUCTS and quantity > 0]
     maximum = max(1, int(cfg.get("maxMarketOrdersPerTurn", 10)))
     return {"farmer": units[0], "hands": units[1:], "market": market[:maximum]}
+
+
+def _terminal_carry_cashout(action, observation, configuration, step):
+    """Convert already-adjacent terminal cargo only when every carrier fits.
+
+    The engine's DROP deletes any inventory that exceeds shed capacity.  This
+    optional final-step rewrite is therefore atomic across all adjacent cargo
+    carriers: either every positive carried unit fits, or the selected action is
+    returned unchanged.  Existing market rows are never created or reordered.
+    """
+    if not isinstance(action, dict) or type(step) is not int:
+        return action
+    episode_steps = configuration.get("episodeSteps", 720)
+    capacity = configuration.get("shedCapacity", 100)
+    if type(episode_steps) is not int or episode_steps < 2 or step != episode_steps - 2:
+        return action
+    if type(capacity) is not int or capacity < 0:
+        return action
+    try:
+        seat = _public_player(observation)
+        farm = observation["farms"][seat]
+        private = observation.get("private")
+        if not isinstance(private, dict):
+            return action
+        hands = farm.get("hands", [])
+        if not isinstance(hands, list):
+            return action
+        farmer_action = action.get("farmer")
+        hand_actions = action.get("hands")
+        if not isinstance(farmer_action, list) or not isinstance(hand_actions, list):
+            return action
+        if len(hand_actions) != len(hands) or any(not isinstance(row, list) for row in hand_actions):
+            return action
+        tiles = farm.get("tiles")
+        if not isinstance(tiles, list):
+            return action
+        board = configuration.get("boardSize", len(tiles))
+        if type(board) is not int or board < 2:
+            return action
+        shed = private.get("shed")
+        inventories = private.get("inventories")
+        if not isinstance(shed, dict) or not isinstance(inventories, list):
+            return action
+        positions = [farm.get("farmer"), *hands]
+        if len(inventories) != len(positions):
+            return action
+        used = 0
+        for quantity in shed.values():
+            if type(quantity) is not int or quantity < 0:
+                return action
+            used += quantity
+        if used > capacity:
+            return action
+        half = board // 2
+        access = {(half-1, half-1), (half, half-1), (half-1, half), (half, half)}
+        eligible = []
+        carried = 0
+        for index, (position, inventory) in enumerate(zip(positions, inventories)):
+            if (not isinstance(position, (list, tuple)) or len(position) != 2
+                    or any(type(value) is not int for value in position)):
+                return action
+            if not isinstance(inventory, dict):
+                return action
+            cargo = 0
+            for quantity in inventory.values():
+                if type(quantity) is not int or quantity < 0:
+                    return action
+                cargo += quantity
+            if tuple(position) in access and cargo > 0:
+                eligible.append(index)
+                carried += cargo
+        if not eligible or carried > capacity - used:
+            return action
+        changed = False
+        result = copy.deepcopy(action)
+        for index in eligible:
+            if index == 0:
+                if result["farmer"] != ["DROP"]:
+                    result["farmer"] = ["DROP"]
+                    changed = True
+            else:
+                if result["hands"][index - 1] != ["DROP"]:
+                    result["hands"][index - 1] = ["DROP"]
+                    changed = True
+        return result if changed else action
+    except (AttributeError, IndexError, KeyError, TypeError, ValueError):
+        return action
 
 
 class _DeadlineTimer:
@@ -305,10 +443,8 @@ class DeadlineFallbackAgent:
 
     def act(self, observation, configuration=None):
         obs = copy.deepcopy(dict(observation)); cfg = dict(configuration or {})
-        step = obs.get("step")
-        if step is None:
-            step = int(obs["day"])*int(cfg.get("turnsPerDay", 24)) + int(obs["hour"])
-        step = int(step)
+        _public_player(obs)
+        step = _public_step(obs, cfg)
         obs["step"] = step
         last = int(cfg.get("episodeSteps", 720)) - 2
         fallback = (terminal_liquidation_fallback(obs, cfg)
@@ -320,10 +456,14 @@ class DeadlineFallbackAgent:
             with timer:
                 selected = self.integrated.production.act(obs)
                 fallback = copy.deepcopy(selected)
+                if step == last:
+                    fallback = _terminal_carry_cashout(fallback, obs, cfg, step)
                 stage = "transform"
                 if self.before_transform is not None:
                     self.before_transform(obs, cfg, selected)
                 output = self.integrated.transform(obs, cfg, selected, fallback_action=selected)
+                if step == last:
+                    output = _terminal_carry_cashout(output, obs, cfg, step)
                 self.diagnostics = {
                     "status": "completed", "fallback_stage": None,
                     "elapsed_seconds": time.perf_counter() - started,
