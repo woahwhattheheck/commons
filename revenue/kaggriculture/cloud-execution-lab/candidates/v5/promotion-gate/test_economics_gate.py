@@ -18,6 +18,10 @@ SPEC.loader.exec_module(gate)
 
 CONTROL = "v5c:" + "1" * 64
 CANDIDATE = "v5c:" + "2" * 64
+ENGINE = "engine:official-pinned"
+OPPONENT = "frontier:top30-union"
+CONTROL_ARCHIVE = "a" * 64
+CANDIDATE_ARCHIVE = "b" * 64
 
 
 def report(*, delta: int = 10):
@@ -42,15 +46,30 @@ def report(*, delta: int = 10):
         "schema": gate.SCHEMA,
         "control_id": CONTROL,
         "candidate_id": CANDIDATE,
+        "engine_id": ENGINE,
+        "opponent_pack_id": OPPONENT,
+        "control_archive_sha256": CONTROL_ARCHIVE,
+        "candidate_archive_sha256": CANDIDATE_ARCHIVE,
         "cells": cells,
     }
 
 
+def validate(value=None, **overrides):
+    expected = dict(
+        candidate_id=CANDIDATE,
+        control_id=CONTROL,
+        engine_id=ENGINE,
+        opponent_pack_id=OPPONENT,
+        control_archive_sha256=CONTROL_ARCHIVE,
+        candidate_archive_sha256=CANDIDATE_ARCHIVE,
+    )
+    expected.update(overrides)
+    return gate.validate_report(report() if value is None else value, **expected)
+
+
 class EconomicsGateTests(unittest.TestCase):
     def test_positive_panel_passes_and_recomputes_raw_margins(self):
-        receipt = gate.validate_report(
-            report(delta=10), candidate_id=CANDIDATE, control_id=CONTROL
-        )
+        receipt = validate(report(delta=10))
         self.assertEqual("PASS", receipt["classification"])
         self.assertTrue(receipt["promotion_ready"])
         self.assertEqual(8, receipt["cell_count"])
@@ -59,38 +78,34 @@ class EconomicsGateTests(unittest.TestCase):
         self.assertEqual(10.0, receipt["mean_margin_delta"])
         self.assertEqual(8, receipt["positive_cells"])
         self.assertEqual(0, receipt["negative_cells"])
+        self.assertEqual(ENGINE, receipt["engine_id"])
+        self.assertEqual(OPPONENT, receipt["opponent_pack_id"])
+        self.assertEqual(CONTROL_ARCHIVE, receipt["control_archive_sha256"])
+        self.assertEqual(CANDIDATE_ARCHIVE, receipt["candidate_archive_sha256"])
         self.assertRegex(receipt["panel_sha256"], r"^[0-9a-f]{64}$")
 
     def test_exact_zero_mean_is_no_regression_pass(self):
-        receipt = gate.validate_report(
-            report(delta=0), candidate_id=CANDIDATE, control_id=CONTROL
-        )
+        receipt = validate(report(delta=0))
         self.assertEqual(0, receipt["sum_margin_delta"])
         self.assertEqual(8, receipt["tied_cells"])
 
     def test_negative_mean_is_rejected(self):
         with self.assertRaisesRegex(gate.EconomicsError, "mean margin regresses"):
-            gate.validate_report(
-                report(delta=-1), candidate_id=CANDIDATE, control_id=CONTROL
-            )
+            validate(report(delta=-1))
 
     def test_reported_summary_cannot_be_smuggled(self):
         value = report()
         value["mean_margin_delta"] = 999999
         with self.assertRaisesRegex(gate.EconomicsError, "keys mismatch"):
-            gate.validate_report(value, candidate_id=CANDIDATE, control_id=CONTROL)
+            validate(value)
 
     def test_cross_build_candidate_is_rejected(self):
         with self.assertRaisesRegex(gate.EconomicsError, "does not match promotion candidate"):
-            gate.validate_report(
-                report(), candidate_id="v5c:" + "3" * 64, control_id=CONTROL
-            )
+            validate(candidate_id="v5c:" + "3" * 64)
 
     def test_cross_build_control_is_rejected(self):
         with self.assertRaisesRegex(gate.EconomicsError, "does not match promotion control"):
-            gate.validate_report(
-                report(), candidate_id=CANDIDATE, control_id="v5c:" + "4" * 64
-            )
+            validate(control_id="v5c:" + "4" * 64)
 
     def test_same_control_and_candidate_is_rejected(self):
         value = report()
@@ -98,16 +113,60 @@ class EconomicsGateTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.EconomicsError, "must differ"):
             gate.validate_report(value)
 
+    def test_execution_authority_must_match(self):
+        cases = [
+            ("engine", {"engine_id": "engine:other"}, "engine_id does not match"),
+            (
+                "opponent",
+                {"opponent_pack_id": "frontier:other"},
+                "opponent_pack_id does not match",
+            ),
+            (
+                "control-archive",
+                {"control_archive_sha256": "c" * 64},
+                "control archive does not match",
+            ),
+            (
+                "candidate-archive",
+                {"candidate_archive_sha256": "d" * 64},
+                "candidate archive does not match",
+            ),
+        ]
+        for label, expected, message in cases:
+            with self.subTest(label=label):
+                with self.assertRaisesRegex(gate.EconomicsError, message):
+                    validate(**expected)
+
+    def test_none_opponent_pack_can_be_bound_exactly(self):
+        value = report()
+        value["opponent_pack_id"] = None
+        receipt = gate.validate_report(
+            value,
+            candidate_id=CANDIDATE,
+            control_id=CONTROL,
+            engine_id=ENGINE,
+            opponent_pack_id=None,
+            control_archive_sha256=CONTROL_ARCHIVE,
+            candidate_archive_sha256=CANDIDATE_ARCHIVE,
+        )
+        self.assertIsNone(receipt["opponent_pack_id"])
+
+    def test_control_and_candidate_archives_must_differ(self):
+        value = report()
+        value["candidate_archive_sha256"] = value["control_archive_sha256"]
+        with self.assertRaisesRegex(gate.EconomicsError, "archive hashes must differ"):
+            gate.validate_report(value)
+
     def test_duplicate_seed_seat_is_rejected(self):
         value = report()
         value["cells"][1] = copy.deepcopy(value["cells"][0])
         with self.assertRaisesRegex(gate.EconomicsError, "must be unique"):
-            gate.validate_report(value)
+            validate(value)
 
     def test_unbalanced_seat_panel_is_rejected(self):
         value = report()
         # Keep eight unique cells but replace the final seat-1 cell by a new
-        # seed that has only seat 0.  Both affected seeds are incomplete.
+        # seed that has only seat 0. Both affected seeds are incomplete.
         value["cells"][-1] = {
             **value["cells"][-1],
             "seed": 104,
@@ -115,19 +174,19 @@ class EconomicsGateTests(unittest.TestCase):
         }
         value["cells"] = sorted(value["cells"], key=lambda cell: (cell["seed"], cell["seat"]))
         with self.assertRaisesRegex(gate.EconomicsError, "exactly both seats"):
-            gate.validate_report(value)
+            validate(value)
 
     def test_too_small_panel_is_rejected(self):
         value = report()
         value["cells"] = value["cells"][:6]
         with self.assertRaisesRegex(gate.EconomicsError, "at least 8 cells"):
-            gate.validate_report(value)
+            validate(value)
 
     def test_noncanonical_cell_order_is_rejected(self):
         value = report()
         value["cells"][0], value["cells"][1] = value["cells"][1], value["cells"][0]
         with self.assertRaisesRegex(gate.EconomicsError, "canonically sorted"):
-            gate.validate_report(value)
+            validate(value)
 
     def test_bool_and_noninteger_scores_are_rejected(self):
         for bad in (True, 10.0, "10"):
@@ -135,20 +194,20 @@ class EconomicsGateTests(unittest.TestCase):
                 value = report()
                 value["cells"][0]["candidate_own"] = bad
                 with self.assertRaisesRegex(gate.EconomicsError, "plain int"):
-                    gate.validate_report(value)
+                    validate(value)
 
     def test_cell_shape_is_closed(self):
         value = report()
         value["cells"][0]["claimed_delta"] = 1000000
         with self.assertRaisesRegex(gate.EconomicsError, "exact raw score keys"):
-            gate.validate_report(value)
+            validate(value)
 
     def test_mixed_sign_panel_uses_recomputed_aggregate(self):
         value = report(delta=0)
         adjustments = (100, -20, -20, -20, -20, -20, -20, 20)
         for cell, adjustment in zip(value["cells"], adjustments):
             cell["candidate_own"] += adjustment
-        receipt = gate.validate_report(value)
+        receipt = validate(value)
         self.assertEqual(0, receipt["sum_margin_delta"])
         self.assertEqual(2, receipt["positive_cells"])
         self.assertEqual(6, receipt["negative_cells"])
