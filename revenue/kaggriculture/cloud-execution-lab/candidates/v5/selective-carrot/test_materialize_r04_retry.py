@@ -51,6 +51,18 @@ class _State:
         self.sale_window_debts = {}
 
 
+class DeadlineExceeded(Exception):
+    """Canonical outer timer exception only."""
+
+
+def public_agent(instance, obs):
+    """Mirror cloud-execution-lab/main.py::agent(): catch only DeadlineExceeded."""
+    try:
+        return instance.act(obs)
+    except DeadlineExceeded:
+        return {"farmer": ["PASS"], "hands": [], "market": []}
+
+
 class RetrySafeR04(unittest.TestCase):
     def fixture(self):
         r04 = types.ModuleType("r04_full_router")
@@ -94,6 +106,10 @@ class RetrySafeR04(unittest.TestCase):
         exec(compile(patched, "fixture_arlene.py", "exec"), namespace)
         agent = namespace["Agent"]()
         return agent, r04, context, calls
+
+    def test_adapter_does_not_raise_runtimeerror_on_changed_evidence(self):
+        self.assertNotIn(b"RuntimeError", retry._ACT_REPLACEMENT)
+        self.assertIn(b"return deepcopy(PASS)", retry._ACT_REPLACEMENT)
 
     def test_transform_changes_only_vendor(self):
         raw = PASS_SOURCE + b"prefix\n" + OVERLAY + b"suffix\n"
@@ -149,6 +165,28 @@ class RetrySafeR04(unittest.TestCase):
         self.assertEqual(state.plan, 7)
         self.assertEqual(state.last_step, 146)
         self.assertEqual(state.queue[-1], (146, "c"))
+        self.assertEqual(continued["market"], [["SELL", "WOOL", 7]])
+
+    def test_outer_public_entry_changed_same_step_is_legal_action(self):
+        instance, r04, context, calls = self.fixture()
+        public_agent(instance, {"player": 0, "step": 144})
+        public_agent(instance, {"player": 0, "step": 145, "tag": "a"})
+        state = r04._POLICY.players[0]
+        before = deepcopy(state.__dict__)
+        escaped = []
+        try:
+            returned = public_agent(instance, {"player": 0, "step": 145, "tag": "b"})
+        except Exception as error:
+            escaped.append(error)
+            raise
+        self.assertEqual(escaped, [])
+        self.assertEqual(returned, {"farmer": ["PASS"], "hands": [], "market": []})
+        self.assertEqual(state.__dict__, before)
+        self.assertEqual(len(calls), 2)
+        continued = public_agent(instance, {"player": 0, "step": 146, "tag": "c"})
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(state.plan, 7)
+        self.assertEqual(state.last_step, 146)
         self.assertEqual(continued["market"], [["SELL", "WOOL", 7]])
 
     def test_configuration_change_same_step_returns_legal_pass(self):
