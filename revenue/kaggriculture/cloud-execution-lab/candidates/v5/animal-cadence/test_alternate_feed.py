@@ -93,6 +93,12 @@ class AlternateFeedCandidateTests(unittest.TestCase):
                 self.assertIs(result, self.selected)
                 self.assertFalse(report["changed"])
 
+    def test_missing_pending_care_state_fails_closed(self):
+        del self.tile["pending_care_bonus"]
+        result, report = self.apply()
+        self.assertIs(result, self.selected)
+        self.assertFalse(report["changed"])
+
     def test_no_actual_wheat_spend_keeps_feed(self):
         self.obs["private"]["inventories"][1].clear()
         result, report = self.apply()
@@ -142,6 +148,20 @@ class PinnedEngineAnimalCadenceTests(unittest.TestCase):
         self.assertIs(farm["tiles"][0][0], tile)
         self.assertEqual(tile["consecutive_unfed"], 1)
         self.assertEqual(tile["yield_units"], 1)
+
+    def test_pending_care_bonus_is_lost_on_first_unfed_production_refresh(self):
+        unfed_farm, unfed = self.goose()
+        unfed["pending_care_bonus"] = 1
+        self.engine._daily_refresh_animals(unfed_farm, 3)
+        self.assertEqual(unfed["yield_units"], 1)
+        self.assertEqual(unfed["pending_care_bonus"], 0)
+
+        fed_farm, fed = self.goose()
+        fed["pending_care_bonus"] = 1
+        fed["fed_today"] = True
+        self.engine._daily_refresh_animals(fed_farm, 3)
+        self.assertEqual(fed["yield_units"], 2)
+        self.assertEqual(fed["pending_care_bonus"], 0)
 
     def test_second_consecutive_unfed_day_is_the_escape_boundary(self):
         farm, tile = self.goose()
