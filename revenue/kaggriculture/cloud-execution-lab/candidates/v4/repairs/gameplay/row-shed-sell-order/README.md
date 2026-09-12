@@ -24,20 +24,31 @@ The transform fails closed to the caller action on missing/incomplete/type-poiso
 
 Current ABI market parameters are passed through to the current quote function. The historical donor-parity fuzz gate is restricted to the complete-projection/default-market domain where V3.1 and the current component are intended to be semantically identical.
 
+## Pressure-novel admission
+
+`novel_rank_guard.py` is an additive admission layer for the current V4 stack, where the already-enabled LARK market-pressure transform can independently choose a leading-SELL order. It does not construct either ranking and does not change the historical `RowShedSellOrder.transform(...)` donor semantics.
+
+Given one shared parent action, one row-shed candidate, and one pressure candidate, the guard admits row-shed only when both candidates are exact permutations of the same leading contiguous SELL block, preserve duplicate multiplicity, preserve every suffix/barrier index and all non-market action surfaces, and produce different ranks. If the two ranks are identical, the row-shed candidate is redundant and the guard returns exact parent identity. Missing/malformed pressure evidence, cardinality drift, row/quantity changes, suffix movement, or non-market mutation also fail closed to parent identity.
+
+This is deliberately an admission primitive rather than a new controller or a new pressure implementation. The canonical pressure transform remains the rank authority; later composition may pass its already-produced candidate into this guard without importing a second policy family.
+
 ## Composition
 
 Intended seam:
 
 1. caller-owned current selected-action unit projection;
 2. `RowShedSellOrder` using that packet's `post_unit_shed`;
-3. current `SelectedActionSell` / `OrderedSelectedSell` economics;
-4. existing composer/materializer.
+3. optional pressure-novel admission against the canonical market-pressure candidate;
+4. current `SelectedActionSell` / `OrderedSelectedSell` economics;
+5. existing composer/materializer.
 
-LOOM PR #12777 registers this package as `row-shed-sell-order` in the canonical composition graph but keeps it **blocked** until an authenticated materialized runtime postimage exists. Do not fork the scheduler, producer, market engine, evaluator, or canonical V4 tree to consume this repair.
+LOOM PR #12777 registered this package as `row-shed-sell-order` in the canonical composition graph. PR #12998 subsequently added the sole authenticated graph-postimage field carrier: it materializes the exact graph predecessor, overlays only the existing row-shed source bytes, and measures natural both-seat official-engine engagement with action-transparent diagnostics. That carrier is evidence-only and does not activate row-shed in production.
+
+Do not fork the scheduler, producer, market engine, evaluator, canonical pressure family, or canonical V4 tree to consume this repair.
 
 ## Validation
 
-`test_row_shed_sell_order.py` now covers the original current-ABI boundary contract plus a literal independent V3.1 reference implementation:
+`test_row_shed_sell_order.py` covers the original current-ABI boundary contract plus a literal independent V3.1 reference implementation:
 
 - 14/14 focused tests under normal Python;
 - 14/14 focused tests under `python -O`;
@@ -50,4 +61,6 @@ LOOM PR #12777 registers this package as `row-shed-sell-order` in the canonical 
 - explicit V3.1-vs-V4 incomplete-projection divergence witness;
 - current-ABI market-parameter passthrough.
 
-The component source itself is unchanged by this consolidation. A current official-engine/full-game both-seat economic gate is still required before any production/default activation, and the composition graph still requires an authenticated materialized runtime postimage before this becomes an active edge.
+`test_novel_rank_guard.py` adds 11 focused contracts, passing under normal Python and `python -O` in the authoring runtime. They cover redundant-rank identity, distinct-rank admission, pressure identity as valid comparison evidence, missing pressure fail-closed behavior, suffix/non-market/multiset mutation rejection, duplicate-row multiplicity, falsey barriers, malformed parent rows, and input immutability.
+
+A current official-engine/full-game both-seat economic gate remains required before any production/default activation. Pressure-novel admission likewise requires current-stack field evidence before it can become an active composition edge.
