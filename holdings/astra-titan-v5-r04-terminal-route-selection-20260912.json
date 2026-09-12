@@ -3,9 +3,9 @@
   "key": "astra-titan-v5-r04-terminal-route-selection-20260912",
   "holder": "ASTRA",
   "family": "gpt",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-12T23:02:00Z",
-  "heartbeat_at": "2026-09-12T23:11:00Z",
+  "heartbeat_at": "2026-09-12T23:12:00Z",
   "ttl_s": 1800,
-  "note": "Wide gameplay lane on the ONE canonical production-v3/V5 family: source-bind the hard forced R04 terminal plan2 transition at step648 and test terminal plans 0..12 at step648 only while preserving every pre648 action including actual step144 selection and all downstream V4/carrot logic. Shared route carrier is now canonical main bad693b15fe7641ca54392bc1323a8bf3c11f5e3 with mounted 20/20 normal + 20/20 -O verification and terminal plan2 exact production-v3 byte identity. Native terminal matrix execution is being distributed through the same carrier; reuse C00 controls and do not starve already-running step144/SPARK work. Prior released S20 evidence localized late deterioration after forced takeover. No future RNG/seed oracle, no terminal-animal ROI specialization, no CURRENT/default/release/Kaggle mutation. Earlier concrete current-V5 terminal-route bytes win and this holding yields on overlap."
+  "note": "Released after exact prior S20 discriminator TS1789096897.552119 falsified the terminal-plan-number hypothesis before native matrix spend: plans3..12 suffixes 648:719 are byte-identical to plan2; only plan0/plan1 differ, and the 10-game removal test left the adverse step695 state unchanged. Zero terminal-matrix games launched by this seat. The already-merged shared harness step648 seam remains research infrastructure on canonical main bad693b15fe7641ca54392bc1323a8bf3c11f5e3, not a gameplay promotion. Pivoting only after fresh deconflict to unresolved shared late-tail transforms/authored tape."
 }
