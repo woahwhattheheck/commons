@@ -1,4 +1,7 @@
+from pathlib import Path
+import tempfile
 import unittest
+from unittest import mock
 
 import gander_apex_radar as R
 
@@ -57,6 +60,14 @@ class GanderApexRadarTests(unittest.TestCase):
         self.assertEqual(sources["engine_git_blob"], R.PINNED_ENGINE_GIT_BLOB)
         self.assertEqual(sources["apex_main_sha256"], R.PINNED_APEX_SHA256)
         self.assertEqual(
+            sources["gander_helper_git_blob"],
+            R.PINNED_GANDER_HELPER_GIT_BLOB,
+        )
+        self.assertEqual(
+            sources["apex_oracle_helper_git_blob"],
+            R.PINNED_APEX_ORACLE_GIT_BLOB,
+        )
+        self.assertEqual(
             sources["gander_engine"]["engine_blob"],
             R.PINNED_ENGINE_GIT_BLOB,
         )
@@ -64,6 +75,56 @@ class GanderApexRadarTests(unittest.TestCase):
             sources["apex_sources"]["apex_main_sha256"],
             R.PINNED_APEX_SHA256,
         )
+
+    def test_gander_helper_mutant_is_rejected_before_execution(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            marker = root / "gander-executed"
+            mutant = root / "goose_printer_oracle.py"
+            mutant.write_text(
+                "from pathlib import Path\n"
+                f"Path({str(marker)!r}).write_text('executed', encoding='utf-8')\n"
+                f"EXPECTED_ENGINE_BLOB = {R.PINNED_ENGINE_GIT_BLOB!r}\n"
+                "def day0_frontier():\n"
+                "    return [{'geese': 9, 'hires': 0, 'feasible': True}]\n"
+                "def verify_engine_source(path):\n"
+                "    return {'engine_blob': EXPECTED_ENGINE_BLOB}\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(R, "GANDER_PATH", mutant):
+                with self.assertRaisesRegex(
+                    R.RadarCompositionError,
+                    "GANDER helper identity drift",
+                ):
+                    R.build_report(verify_sources=False)
+            self.assertFalse(marker.exists())
+
+    def test_apex_helper_mutant_is_rejected_before_execution(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            marker = root / "apex-executed"
+            mutant = root / "apex_counter_ambush.py"
+            mutant.write_text(
+                "from pathlib import Path\n"
+                f"Path({str(marker)!r}).write_text('executed', encoding='utf-8')\n"
+                f"EXPECTED_ENGINE_GIT_BLOB = {R.PINNED_ENGINE_GIT_BLOB!r}\n"
+                f"EXPECTED_APEX_SHA256 = {R.PINNED_APEX_SHA256!r}\n"
+                "APEX_ANTI_CLONE = {\n"
+                "    'clone_window': [2, 10],\n"
+                "    'clone_min_opponent_hands': 99,\n"
+                "    'clone_min_opponent_structures': 1,\n"
+                "}\n"
+                "def verify_sources(repo_root):\n"
+                "    return {'apex_main_sha256': EXPECTED_APEX_SHA256}\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(R, "APEX_ORACLE_PATH", mutant):
+                with self.assertRaisesRegex(
+                    R.RadarCompositionError,
+                    "Apex oracle helper identity drift",
+                ):
+                    R.build_report(verify_sources=False)
+            self.assertFalse(marker.exists())
 
 
 if __name__ == "__main__":
