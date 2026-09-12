@@ -12,7 +12,9 @@ V219's appended HIREs to equal-or-higher Fibonacci indices.
 
 The decision is deliberately one-sided. It rejects only when a source-valid
 optimistic gross-revenue upper bound is already below the unavoidable cost
-lower bound. Otherwise ``decision=None`` preserves the exact parent.
+lower bound. The gross ceiling includes worst-case future town-driven TOMATO
+scarcity through the end of day 29. Otherwise ``decision=None`` preserves the
+exact parent.
 """
 
 FIXED_LAND_AND_SEED = 4500
@@ -20,6 +22,11 @@ MODELED_FERTILIZER_RESERVE = 700  # telemetry only; not guaranteed spend.
 MAX_OWN_UNITS = 80
 START_DAY = 18
 TERMINAL_DAY = 29
+TURNS_PER_DAY = 24
+# Fail-safe per-step TOMATO drain bound from the pinned engine: at most eight
+# shop instances * at most two units each + one town-center unit. TOMATO shops
+# actually consume less, but 17 avoids depending on shop composition.
+MAX_TOMATO_TOWN_DRAIN_PER_STEP = 17
 
 
 def _extra_workers(day):
@@ -55,7 +62,7 @@ def route_labor_cost_floor(observation, native, native_day, fib):
     if not isinstance(farm, dict):
         raise ValueError("candidate farm must be an object")
     step = observation.get("step")
-    if type(step) is not int or step < 0 or step // 24 != START_DAY:
+    if type(step) is not int or step < 0 or step // TURNS_PER_DAY != START_DAY:
         raise ValueError("V219 payback gate requires the day-18 admission boundary")
     current_hires = farm.get("hires_today")
     if type(current_hires) is not int or current_hires < 0:
@@ -97,7 +104,7 @@ def rival_tomato_field_projection(observation):
     step = observation.get("step")
     if type(step) is not int or step < 0:
         return 0
-    day = step // 24
+    day = step // TURNS_PER_DAY
     units = 0
     for row in rival.get("tiles", []):
         if not isinstance(row, list):
@@ -123,6 +130,11 @@ def evaluate(observation, native, native_day, fib, market_price):
     inventory = market.get("inventory") or {}
     if "TOMATO" not in prices or "TOMATO" not in inventory:
         return {"decision": None, "reason": "missing_market"}
+    # The pinned engine publishes resolved market params only when configuration
+    # overrides are active. The proof below relies on the exact default monotone
+    # `_ro_price` source carried by the authenticated R04 router.
+    if "params" in market:
+        return {"decision": None, "reason": "custom_market_params"}
     try:
         current_inventory = int(inventory["TOMATO"])
         observed_quote = int(prices["TOMATO"])
@@ -131,14 +143,21 @@ def evaluate(observation, native, native_day, fib, market_price):
     if current_inventory < 0 or observed_quote < 0:
         return {"decision": None, "reason": "invalid_market"}
 
+    step = observation.get("step")
+    if type(step) is not int or step < 0:
+        return {"decision": None, "reason": "unsupported_route_state"}
+    remaining_steps = max(0, (TERMINAL_DAY + 1) * TURNS_PER_DAY - step)
+    future_inventory_floor = (
+        current_inventory - MAX_TOMATO_TOWN_DRAIN_PER_STEP * remaining_steps
+    )
     try:
         current_curve_quote = int(market_price("TOMATO", current_inventory))
-        zero_inventory_quote = int(market_price("TOMATO", 0))
+        future_quote_ceiling = int(market_price("TOMATO", future_inventory_floor))
     except (TypeError, ValueError, OverflowError):
         return {"decision": None, "reason": "unsupported_market_curve"}
     if current_curve_quote != observed_quote:
         return {"decision": None, "reason": "custom_market_curve"}
-    if zero_inventory_quote < observed_quote or zero_inventory_quote < 0:
+    if future_quote_ceiling < observed_quote or future_quote_ceiling < 0:
         return {"decision": None, "reason": "unsupported_market_curve"}
 
     try:
@@ -149,7 +168,7 @@ def evaluate(observation, native, native_day, fib, market_price):
         return {"decision": None, "reason": "unsupported_route_state"}
 
     unavoidable_cost_floor = FIXED_LAND_AND_SEED + labor_floor
-    gross_upper_bound = MAX_OWN_UNITS * zero_inventory_quote
+    gross_upper_bound = MAX_OWN_UNITS * future_quote_ceiling
 
     visible_field = rival_tomato_field_projection(observation)
     modeled_start_inventory = current_inventory + visible_field
@@ -176,7 +195,8 @@ def evaluate(observation, native, native_day, fib, market_price):
         "unavoidable_cost_floor": unavoidable_cost_floor,
         "max_own_units": MAX_OWN_UNITS,
         "gross_revenue_upper_bound": gross_upper_bound,
-        "zero_inventory_tomato_quote": zero_inventory_quote,
+        "future_inventory_floor": future_inventory_floor,
+        "future_tomato_quote_ceiling": future_quote_ceiling,
         "observed_tomato_quote": observed_quote,
         "starting_market_inventory": current_inventory,
         "visible_rival_field_projection": visible_field,
