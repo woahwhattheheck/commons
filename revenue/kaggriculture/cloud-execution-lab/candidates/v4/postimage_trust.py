@@ -20,9 +20,9 @@ CHECKER_NAME = "check_composition_graph.py"
 RUNNER_NAME = "build_composed_postimage.py"
 
 PINNED_CONTROL_BLOBS: dict[str, str] = {
-    MANIFEST_NAME: "925221c32f4af05765d35113a2a5498ba80a0c04",
-    CHECKER_NAME: "192dc792b80be44b61d7f9d2f407b37f39d88519",
-    RUNNER_NAME: "e99068258744382609a4e0eddbcbdbac6c852ac7",
+    MANIFEST_NAME: "e44cade4d3b05a2c06e4aa73481b65f5d6b8ff89",
+    CHECKER_NAME: "97a5ff513ecf44a064fd284b2cee5b8c299cd81d",
+    RUNNER_NAME: "41b467d665f6e1497bc6de697a06712f404fbcfd",
 }
 
 

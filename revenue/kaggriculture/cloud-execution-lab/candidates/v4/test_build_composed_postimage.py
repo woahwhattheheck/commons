@@ -140,7 +140,6 @@ class PipelineShapeTests(unittest.TestCase):
             with self.assertRaisesRegex(m.MaterializationError, "owns only titan_runtime"):
                 m._run_fast_tape(comp, root, root, {}, {})
 
-
     def test_scoped_adapter_rejects_wrong_surface(self):
         ep = "repairs/performance/compose_scoped_constructor.py"
         comp = {"id": "scoped-construction", "entrypoints": [ep],
@@ -160,6 +159,34 @@ class PipelineShapeTests(unittest.TestCase):
             root = Path(td)
             with self.assertRaisesRegex(m.MaterializationError, "owns only frozen_selected"):
                 m._run_projection_clone(comp, root, root, {}, {})
+
+    def test_h3_adapter_rejects_wrong_surface(self):
+        ep = "research/sale-window-engagement/compose_current_h3s420.py"
+        comp = {"id": "h3s420-sale-window", "entrypoints": [ep],
+                "transforms": [{"surface": "wrong.py", "input_identity": "git-blob:"+"a"*40,
+                                "output_identity": "git-blob:"+"b"*40}]}
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            with self.assertRaisesRegex(m.MaterializationError, "owns only frozen_selected"):
+                m._run_h3s420(comp, root, root, {}, {})
+
+    def test_h3_adapter_materializes_declared_bytes(self):
+        ep = "research/sale-window-engagement/compose_current_h3s420.py"
+        before = b"value = 'before'\n"
+        after = b"value = 'after'\n"
+        comp = {"id": "h3s420-sale-window", "entrypoints": [ep],
+                "transforms": [{"surface": "frozen_selected.py",
+                                "input_identity": "git-blob:" + m.git_blob(before),
+                                "output_identity": "git-blob:" + m.git_blob(after)}]}
+        module = type("H3", (), {"compose": staticmethod(
+            lambda source, *, enabled: after if enabled else source)})
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "frozen_selected.py").write_bytes(before)
+            rows = m._run_h3s420(comp, root, root, {ep: module}, {})
+            self.assertEqual((root / "frozen_selected.py").read_bytes(), after)
+            self.assertEqual(rows[0]["before_git_blob"], m.git_blob(before))
+            self.assertEqual(rows[0]["after_git_blob"], m.git_blob(after))
 
     def test_support_output_refuses_drift(self):
         with tempfile.TemporaryDirectory() as td:
