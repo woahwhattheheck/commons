@@ -23,12 +23,12 @@ def _is_order(row: Any, *head: str) -> bool:
 def _market_parts(action: Mapping[str, Any], cfg: Mapping[str, Any]):
     market = action.get("market")
     if not isinstance(market, list):
-        return None, None, None, "market_not_list"
+        return None, None, None, None, "market_not_list"
     try:
         cap = max(1, int(cfg.get("maxMarketOrdersPerTurn", 10)))
     except (TypeError, ValueError, OverflowError):
-        return None, None, None, "invalid_market_cap"
-    return market, market[:cap], market[cap:], None
+        return None, None, None, None, "invalid_market_cap"
+    return market, market[:cap], market[cap:], cap, None
 
 
 def classify_wrapper_input(
@@ -43,7 +43,7 @@ def classify_wrapper_input(
     """
     if stage not in STAGES:
         raise ValueError(f"unknown runtime-prefix stage: {stage}")
-    market, prefix, suffix, error = _market_parts(action, cfg)
+    market, prefix, suffix, cap, error = _market_parts(action, cfg)
     if error is not None:
         return {
             "stage": stage,
@@ -53,14 +53,14 @@ def classify_wrapper_input(
             "authorizes_global_cold": False,
         }
 
-    assert market is not None and prefix is not None and suffix is not None
+    assert market is not None and prefix is not None and suffix is not None and cap is not None
     nonempty_suffix = any(bool(row) for row in suffix)
     report: dict[str, Any] = {
         "stage": stage,
         "surface": WRAPPER_INPUT_SURFACE,
         "candidate": False,
         "reason": "no_scope_or_gate_delta",
-        "cap": len(prefix) if len(market) >= len(prefix) else len(market),
+        "cap": cap,
         "market_rows": len(market),
         "suffix_rows": len(suffix),
         "nonempty_suffix": nonempty_suffix,
@@ -99,11 +99,16 @@ def classify_final_action_hint(
 ) -> dict[str, Any]:
     """Positive-only steering hint from a final returned action.
 
-    The same structural predicates are evaluated for convenience, but the
-    provenance is explicitly non-authoritative for COLD because the action is
-    downstream of the wrappers under test.
+    The same structural predicates are evaluated for convenience, but every
+    nested receipt is relabeled with final-action provenance.  Nothing produced
+    here may be confused with an exact wrapper-input witness.
     """
-    stage_reports = [classify_wrapper_input(stage, action, cfg) for stage in STAGES]
+    stage_reports = []
+    for stage in STAGES:
+        report = dict(classify_wrapper_input(stage, action, cfg))
+        report["surface"] = FINAL_ACTION_SURFACE
+        report["authorizes_global_cold"] = False
+        stage_reports.append(report)
     candidate = any(report["candidate"] for report in stage_reports)
     return {
         "surface": FINAL_ACTION_SURFACE,
