@@ -22,10 +22,15 @@ from pathlib import Path
 
 V31_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
 V4_COMMIT = "4af1113154e78c662780e6658cd920daac7902e3"
+# Git source authority lives at the repository path below.  build_integrated.py
+# strips the cloud-execution-lab prefix when packaging and retains the reference
+# subtree name as the archive member.  Keep both identities explicit so a
+# synthetic package test cannot accidentally validate the wrong namespace.
 HELPER_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/"
     "redundant_hire.py"
 )
+HELPER_ARCHIVE_MEMBER = "reference/titan-current/redundant_hire.py"
 V31_HELPER_GIT_BLOB = "4a0bf316290277607f520461442fa2d990a16780"
 V4_HELPER_GIT_BLOB = "9ded2a9b636793df0511103da802bd3f26dbbb94"
 
@@ -68,6 +73,8 @@ def authority_receipt(v4_source: bytes, v31_source: bytes, output: bytes) -> dic
         "submitted_v4_helper_git_blob": git_blob(v4_source),
         "submitted_v31_commit": V31_COMMIT,
         "submitted_v31_helper_git_blob": git_blob(v31_source),
+        "helper_repository_path": HELPER_PATH,
+        "helper_archive_member": HELPER_ARCHIVE_MEMBER,
         "ablation_helper_git_blob": git_blob(output),
         "changed_semantics": (
             "disable productive-detour hire protection and future-route rewrite; "
