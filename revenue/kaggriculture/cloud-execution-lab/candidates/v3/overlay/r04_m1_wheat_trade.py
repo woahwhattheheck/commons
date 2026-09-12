@@ -338,9 +338,14 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
     market_obs = observation.get("market")
     private = observation.get("private")
     farms = observation.get("farms")
-    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):
+    if (
+        not isinstance(market_obs, dict)
+        or not isinstance(private, dict)
+        or not isinstance(farms, list)
+        or len(farms) != 2
+    ):
         return action
-    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):
+    if player not in (0, 1) or not isinstance(farms[player], dict):
         return action
     farm = farms[player]
     inventory = market_obs.get("inventory")
