@@ -121,6 +121,22 @@ class CompositionTests(unittest.TestCase):
         self.assertEqual(seller_identity["preimage_sha256"], h(b"seller-base\n"))
         self.assertEqual(seller_identity["sha256"], h(b"seller-a\n"))
 
+    def test_component_names_cannot_collide_with_variant_namespace(self):
+        valid = json.loads(self.manifest().read_text())["components"]
+        for bad_name in ("control", "a+b", "Upper", "a" * 65):
+            with self.subTest(name=bad_name):
+                components = {bad_name: valid["joint"], "worker": valid["worker"]}
+                path = self.manifest(components=components)
+                out = self.root / ("out-name-" + hashlib.sha256(bad_name.encode()).hexdigest()[:8])
+                with self.assertRaisesRegex(compose.CompositionError, "invalid component name"):
+                    compose.build(
+                        baseline=self.base,
+                        source_root=self.src,
+                        manifest_path=path,
+                        output=out,
+                    )
+                self.assertFalse(out.exists())
+
     def test_stale_source_hash_fails_closed(self):
         data = json.loads(self.manifest().read_text())
         data["components"]["joint"]["files"][0]["sha256"] = "0" * 64
