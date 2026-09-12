@@ -169,6 +169,13 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'differs from control snapshot: entry.py'):
                 field.bind_frozen_harness(control)
 
+    def test_field_seed_design_is_unique_and_canonical(self):
+        self.assertEqual(field.parse_seed_set('9,3,7'), (3, 7, 9))
+        with self.assertRaisesRegex(ValueError, 'duplicate'):
+            field.parse_seed_set('7,3,7')
+        with self.assertRaisesRegex(ValueError, 'at least one'):
+            field.parse_seed_set(' , ')
+
     def test_field_cell_custody_binds_both_arms_and_opponents(self):
         base = {
             'seed': 7, 'seat': 1, 'package_sha256': 'control',

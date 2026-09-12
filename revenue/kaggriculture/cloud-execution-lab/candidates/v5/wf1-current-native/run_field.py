@@ -96,6 +96,15 @@ def bind_frozen_harness(control_runtime: Path) -> tuple[dict, Path, Path]:
     return hashes, frozen_here / 'materialize.py', runner
 
 
+def parse_seed_set(raw: str) -> tuple[int, ...]:
+    values = tuple(int(value) for value in raw.split(',') if value.strip())
+    if not values:
+        raise ValueError('at least one seed is required')
+    if len(set(values)) != len(values):
+        raise ValueError('duplicate field seeds are not allowed')
+    return tuple(sorted(values))
+
+
 def validate_cell_custody(baseline: dict, candidate: dict, *, seed: int, seat: int,
                           control_digest: str, candidate_digest: str) -> None:
     """Bind both arms and both opponents to the exact paired package closures."""
@@ -210,9 +219,7 @@ def main() -> int:
 
     runner = load(frozen_runner, 'wf1_v5_native_runner')
     entry = candidate_runtime / 'wf1_v5_entry.py'
-    seeds = tuple(int(value) for value in args.seeds.split(',') if value.strip())
-    if not seeds:
-        raise ValueError('at least one seed is required')
+    seeds = parse_seed_set(args.seeds)
     cells = []
 
     for seed in seeds:
