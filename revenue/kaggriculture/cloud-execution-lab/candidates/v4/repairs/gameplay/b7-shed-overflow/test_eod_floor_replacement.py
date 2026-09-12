@@ -96,6 +96,14 @@ class EodFloorReplacementTest(unittest.TestCase):
         self.assertIs(B7.transform(obs(), parent, CFG, enabled=True), parent)
 
     def test_requires_observed_theorem_configuration(self):
+        class ExplodingConfig:
+            shedCapacity = 100
+            maxMarketOrdersPerTurn = 10
+
+            @property
+            def turnsPerDay(self):
+                raise RuntimeError("no configuration authority")
+
         for bad_cfg in (
             None,
             {},
@@ -105,6 +113,7 @@ class EodFloorReplacementTest(unittest.TestCase):
             {"turnsPerDay": True, "shedCapacity": 100, "maxMarketOrdersPerTurn": 10},
             {"turnsPerDay": 24, "shedCapacity": 100.0, "maxMarketOrdersPerTurn": 10},
             {"turnsPerDay": 24, "shedCapacity": 100, "maxMarketOrdersPerTurn": "10"},
+            ExplodingConfig(),
         ):
             with self.subTest(cfg=bad_cfg):
                 decision = B7.analyze(obs(), act(), bad_cfg, market_price_fn=price_fn)
