@@ -13,7 +13,7 @@ The current official engine blob `3c202c7ee921da239356789e266b694635103fc4` prov
 3. At end of day, an unwatered plant increments `consecutive_unwatered`.
 4. At `>= 2`, the plant becomes a weed.
 
-So a new crop site that still exists after the same EOD needs at least **two unit actions before EOD: PLANT + WATER**. Movement, seed collateral, fertilizer, harvest, animal service, shed work, and every other action only consume additional capacity.
+So a new crop site that still exists after a same-day EOD needs at least **two unit actions before that boundary: PLANT + WATER**. The terminal horizon matters: if the episode ends before that EOD executes, the weed transition never happens and the hard action-budget lower bound is only the PLANT action. Movement, seed collateral, fertilizer, harvest, animal service, shed work, and every other action only consume additional capacity.
 
 ## Land-bound correction
 
@@ -25,10 +25,12 @@ The first CROPSCALE revision capped both impossibility ceilings by **currently e
 
 `capacity_envelope(observation, configuration=None, *, configuration_authenticated=False)` returns two ceilings:
 
-- `current_labor_ceiling`: conditional only on taking **no future HIRE credit**. It uses farmer + currently present hands across callbacks remaining, and caps by total observed board cells. It does not assume the current empty-owned set is frozen.
-- `absolute_action_ceiling`: a deliberately loose hard upper bound. It grants the full `maxMarketOrdersPerTurn` as successful HIRE rows after every remaining callback, gives every new hand every later unit-action slot, ignores cash and all competing market/LAND work, and caps only by total observed board cells.
+- `current_labor_ceiling`: conditional only on taking **no future HIRE credit**. It uses farmer + currently present hands across executable callbacks remaining before the earlier of same-day EOD and terminal, and caps by total observed board cells. It does not assume the current empty-owned set is frozen.
+- `absolute_action_ceiling`: a deliberately loose hard upper bound. It grants the full `maxMarketOrdersPerTurn` as successful HIRE rows after every executable remaining callback, gives every new hand every later unit-action slot, ignores cash and all competing market/LAND work, and caps only by total observed board cells.
 
-The envelope also reports both `empty_owned_tiles` and `board_tiles` so downstream planners can apply stronger separately-proved land/reclamation constraints without weakening CROPSCALE's one-sided theorem.
+The envelope also reports `step`, `episode_steps`, `callbacks_remaining`, `eod_reachable_before_terminal`, `unit_actions_per_surviving_new_plant`, `empty_owned_tiles`, and `board_tiles` so downstream planners can see exactly which one-sided theorem produced the ceiling.
+
+Terminal handling is part of the proof. The pinned official engine makes `episodeSteps - 2` the final executable callback. CROPSCALE therefore binds observation `hour` to `step % turnsPerDay`, refuses observations after that final callback, and caps callback credit at the terminal horizon. If the same day's hour-23 EOD callback is reachable, each surviving new plant is charged two unit actions. If terminal arrives first, it is charged only one PLANT action because no same-day weed transition can execute. Under the standard `episodeSteps=720` / `turnsPerDay=24` defaults, step696/hour0 has 23 executable callbacks through step718 but no hour-23 EOD; one actor therefore has a 23-plant action-count ceiling, not the stale 12-plant PLANT+WATER ceiling.
 
 `assess_proposed_expansion(...)` returns only:
 - `IMPOSSIBLE_ACTION_BUDGET`, or
@@ -36,7 +38,7 @@ The envelope also reports both `empty_owned_tiles` and `board_tiles` so downstre
 
 It never returns SAFE. Passing the action-count bound does not prove movement, seed availability, target assignment, land acquisition, tile reclamation, watering route, market execution, or economic value.
 
-Configuration is part of this one-sided proof. Omitting `configuration` uses the pinned official defaults from configuration blob `b354d06b742fe48402513792253f1a5c29366b20`. Any explicit configuration map can change `turnsPerDay` or `maxMarketOrdersPerTurn` and therefore the computed impossibility ceiling, so it is rejected unless the caller has bound those values to the interpreter instance and sets `configuration_authenticated=True` literally. Direct `capacity_envelope(...)` use raises `CapacityInputError("configuration_not_authenticated")`; `assess_proposed_expansion(...)` fails closed as `NOT_CERTIFIED` with no trusted ceiling or envelope. Authenticated overrides remain caller-custodied rather than being falsely attributed to the default configuration blob.
+Configuration is part of this one-sided proof. Omitting `configuration` uses the pinned official defaults from configuration blob `b354d06b742fe48402513792253f1a5c29366b20`. Any explicit configuration map can change `turnsPerDay`, `episodeSteps`, or `maxMarketOrdersPerTurn` and therefore the computed impossibility ceiling, so it is rejected unless the caller has bound those values to the interpreter instance and sets `configuration_authenticated=True` literally. Direct `capacity_envelope(...)` use raises `CapacityInputError("configuration_not_authenticated")`; `assess_proposed_expansion(...)` fails closed as `NOT_CERTIFIED` with no trusted ceiling or envelope. Authenticated overrides remain caller-custodied rather than being falsely attributed to the default configuration blob.
 
 ## PLANTGUARD — authenticated same-EOD survival
 
@@ -86,8 +88,8 @@ python -O -B test_plant_guard.py
 python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **23 CROPSCALE tests** and **37 PLANTGUARD tests** pass in each mode.
+Expected: **27 CROPSCALE tests** and **37 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
-The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot or unauthenticated configuration, false survival claims from an unauthenticated planting route or custom configuration, false same-EOD rejection when the episode terminates before that EOD can execute, and false weed-doom claims for a plant that authored actions remove before EOD.
+The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot, an unauthenticated configuration, or a terminal partial day with no EOD; false survival claims from an unauthenticated planting route or custom configuration; false same-EOD rejection when the episode terminates before that EOD can execute; and false weed-doom claims for a plant that authored actions remove before EOD.
