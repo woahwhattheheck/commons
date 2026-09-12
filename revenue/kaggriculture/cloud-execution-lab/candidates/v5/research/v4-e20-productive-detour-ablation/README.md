@@ -68,15 +68,35 @@ Exact-head CI runs normal and `-O` under Python 3.11/3.12 and covers:
 - deterministic archive build, source-manifest rebinding and source/member
   namespace separation;
 - returned-action trace hashing/divergence/restoration and terminal score logic;
-- paired-runner archive safety and summary contracts;
+- paired-runner archive safety, summary and executable-leaf custody contracts;
 - pycompile and clean worktree.
 
-## One-command matched-game evidence
+## Execution custody
 
-`paired.py` authenticates the retained control, builds treatment in memory,
-authenticates the existing joint-liquidity evaluator/opponent harness by Git
-blob, snapshots it, and runs both arms while observing returned candidate
-actions without modifying evaluator/agent bytes.
+Candidate and opponent execution must not come from the public evidence tree.
+`paired.py` therefore creates one private panel-lifetime temporary root and:
+
+- snapshots the authenticated evaluator/opponent harness into that private root;
+- prepares opponent adapters under a private `opponents/` subtree;
+- builds every per-game candidate payload and adapter under the same private
+  execution root;
+- executes only those private candidate/opponent/harness paths;
+- copies the harness snapshot to public output only as evidence after capture;
+  that public copy is never an execution source.
+
+The official-engine root has a separate shared custody fix in PR #13457. Until
+that loader lands and this carrier rejoins the resulting main, the caller
+`--engine-dir` remains an external verified path rather than ingestion-only
+private execution authority. **Natural E20 games are therefore HOLD**, even if
+this PR's focused source tests are green. Do not clone the engine fix here.
+
+## One-command matched-game evidence after #13457
+
+After shared engine custody is canonical and this branch is fresh-main rejoined,
+`paired.py` will authenticate the retained control, build treatment in memory,
+authenticate the existing joint-liquidity evaluator/opponent harness by Git
+blob, and run both arms while observing returned candidate actions without
+modifying evaluator/agent bytes.
 
 Default screen: 16 distinct seeds × both seats × `apex_v7,arlene_v14`.
 
@@ -90,8 +110,9 @@ python paired.py \
 
 The runner refuses a baseline whose SHA256 is not exactly `4d960155...` and
 records the generated treatment SHA, package-diff receipt, authenticated harness
-receipt, engine hashes, per-game scores, returned-action trace hashes, first
-control/treatment divergence, and aggregate all/opponent deltas.
+receipt, engine hashes, execution-custody declaration, per-game scores,
+returned-action trace hashes, first control/treatment divergence, and aggregate
+all/opponent deltas.
 
 First returned-action divergence is the natural E20 engagement witness because
 the treatment's only gameplay semantic change is the productive-detour
