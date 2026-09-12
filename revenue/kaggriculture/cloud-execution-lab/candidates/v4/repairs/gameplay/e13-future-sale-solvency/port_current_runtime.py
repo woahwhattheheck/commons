@@ -138,6 +138,16 @@ REPLACEMENT_FUNCTION = r'''def funded_minimum_now(obs, config, base, farm, priva
         'funding_turn': None, 'stress_units': stress_units,
         'fallback': False,
     }
+    # Official _process_market uses max(1, int(maxMarketOrdersPerTurn)).  E13's
+    # helpers consume the raw config independently, so a literal 0 cannot be
+    # modeled as an empty prefix.  Refuse authority before either helper runs;
+    # preserving the inherited sale is safer than certifying against a market
+    # state the interpreter can never execute.
+    if max_orders < 1:
+        certificate['fallback'] = True
+        certificate['minimum_now'] = baseline
+        certificate['reason'] = 'unsupported-market-order-cap'
+        return baseline, certificate
     try:
         reference_market = materialize_sales(
             base['market'], current, private['shed'], targets, max_orders)
