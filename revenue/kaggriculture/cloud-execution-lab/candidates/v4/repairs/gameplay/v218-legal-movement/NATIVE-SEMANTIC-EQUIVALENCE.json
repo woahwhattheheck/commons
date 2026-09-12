@@ -4,7 +4,7 @@
   "canonical_main_observed": "c7c00fec97edc0bc5ce3a2577f81601c9ad1091e",
   "semantic_checker": {
     "path": "repairs/gameplay/v218-legal-movement/check_current_native_binding.py",
-    "git_blob": "2ac6d0e16af9aaf7076b9b649ce626b58b531785",
+    "git_blob": "fd8345d9ef94823bf071eae3f3a9a3a455736470",
     "semantic_proof_commit": "ccc31474cf01f14e76cf60c1bf2ff24bdb60d387",
     "graph_registration_commit": "c7c00fec97edc0bc5ce3a2577f81601c9ad1091e",
     "semantic_disposition_when_all_fail_closed_probes_pass": "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE"
@@ -37,5 +37,5 @@
   "control_plane_disposition": "evidence_only_no_transform_required",
   "runtime_promotion_authority": false,
   "economic_authority": false,
-  "execution_note": "#12923 registered the zero-transform evidence-only graph edge. This receipt now pins the evolved fail-closed checker that requires that graph edge plus this receipt before native semantic equivalence can satisfy --require-wired. Runtime/field gates must still execute the checker against the exact mounted current package before any promotion claim."
+  "execution_note": "#12923 registered the zero-transform evidence-only graph edge. This receipt pins the fail-closed checker that requires executable source-visible explicit binding or the authenticated graph/receipt path, validates the exact six-source semantic chain plus the initial TITAN-CONFIG identity, and rechecks every proof input before semantic wiring can satisfy --require-wired. Runtime/field gates must still execute the checker against the exact mounted current package before any promotion claim."
 }

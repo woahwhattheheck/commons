@@ -1,5 +1,6 @@
 import json, tempfile, unittest
 from pathlib import Path
+from unittest import mock
 import check_current_native_binding as g
 
 
@@ -152,11 +153,25 @@ class TestGate(unittest.TestCase):
             self.assertTrue(x['explicit_binding'])
             self.assertEqual(x['disposition'],'WIRED_REQUIRES_RUNTIME_GATE')
 
-    def test_v218_config_wires(self):
+    def test_v218_config_is_diagnostic_not_wiring(self):
         with tempfile.TemporaryDirectory() as td:
             x=g.audit(self.tree(td,cfg={'r04_v218_movement_parity':False}))
-            self.assertTrue(x['wired'])
+            self.assertFalse(x['wired'])
+            self.assertFalse(x['explicit_binding'])
             self.assertEqual(x['config']['v218_keys'],['r04_v218_movement_parity'])
+
+    def test_inert_comment_and_string_tokens_do_not_wire(self):
+        with tempfile.TemporaryDirectory() as td:
+            runtime=(
+                "class X: pass\n"
+                "# r04_full_router v218 movement_parity documentation only\n"
+                "DOC='r04_full_router v218 movement_parity'\n"
+            )
+            x=g.audit(self.tree(td,runtime=runtime))
+            self.assertFalse(x['wired'])
+            self.assertFalse(x['explicit_binding'])
+            self.assertGreater(len(x['binding_refs']),0)
+            self.assertEqual(x['source_binding_refs'],[])
 
     def test_reference_checks_do_not_fake_wiring(self):
         with tempfile.TemporaryDirectory() as td:
@@ -212,7 +227,7 @@ class TestGate(unittest.TestCase):
             self.register_semantic_graph(r,omit_source="scheduler.py")
             x=g.audit(r)
             self.assertFalse(x['semantic_graph_registration']['registered'])
-            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_set_mismatch')
             self.assertFalse(x['wired'])
 
     def test_receipt_checker_pin_drift_blocks_semantic_wiring(self):
@@ -223,6 +238,64 @@ class TestGate(unittest.TestCase):
             self.assertFalse(x['semantic_graph_registration']['registered'])
             self.assertEqual(x['semantic_graph_registration']['reason'],'checker_identity_mismatch')
             self.assertFalse(x['wired'])
+
+    def test_malformed_semantic_source_row_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r)
+            original=g._native_semantic_equivalence
+            def malformed(root,config):
+                result=original(root,config)
+                result['sources']['main'].pop('path')
+                return result
+            with mock.patch.object(g,'_native_semantic_equivalence',side_effect=malformed):
+                x=g.audit(r)
+            self.assertFalse(x['wired'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_receipt_missing')
+            self.assertEqual(x['semantic_graph_registration']['source'],'main')
+
+    def test_each_semantic_source_swap_after_proof_is_rejected(self):
+        paths=(
+            'main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
+            'reference/next-panel/vendor/arlene.py','spatial_tempo.py',
+        )
+        for rel in paths:
+            with self.subTest(rel=rel):
+                with tempfile.TemporaryDirectory() as td:
+                    r=self.semantic_tree(td)
+                    self.register_semantic_graph(r)
+                    original=g._native_semantic_equivalence
+                    def swapped(root,config,rel=rel):
+                        result=original(root,config)
+                        p=root/rel
+                        p.write_text(p.read_text()+'\n# post-proof drift\n')
+                        return result
+                    with mock.patch.object(g,'_native_semantic_equivalence',side_effect=swapped):
+                        x=g.audit(r)
+                    self.assertFalse(x['semantic_wired'])
+                    self.assertFalse(x['wired'])
+                    self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_changed_after_proof')
+                    self.assertEqual(x['semantic_graph_registration']['source'],rel)
+
+    def test_config_swap_after_proof_cannot_rebind_receipt(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r)
+            original=g._native_semantic_equivalence
+            receipt_path=r/'candidates/v4'/g.V218_RECEIPT_REL
+            def swapped(root,config):
+                result=original(root,config)
+                config_path=root/'TITAN-CONFIG.json'
+                config_path.write_text(json.dumps({'consumer':'other','terminal_route':True}))
+                receipt=json.loads(receipt_path.read_text())
+                receipt['current_source_identities']['TITAN-CONFIG.json']=g.git_blob(config_path.read_bytes())
+                receipt_path.write_text(json.dumps(receipt))
+                return result
+            with mock.patch.object(g,'_native_semantic_equivalence',side_effect=swapped):
+                x=g.audit(r)
+            self.assertFalse(x['semantic_wired'])
+            self.assertFalse(x['wired'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
 
     def test_graph_wrong_state_blocks_semantic_wiring(self):
         with tempfile.TemporaryDirectory() as td:
