@@ -92,6 +92,13 @@ jobs:
           )
           PY
 
+      - name: Collapse late preimage scaffold into canonical authority
+        shell: bash
+        run: |
+          rm -rf revenue/kaggriculture/cloud-execution-lab/candidates/v5/overflow-safe-drop
+          rm -f revenue/kaggriculture/cloud-execution-lab/overflow_safe_drop.py
+          rm -f .github/workflows/titan-v5-overflow-safe-drop.yml
+
       - name: Compile and focused contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
