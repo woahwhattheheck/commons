@@ -6,7 +6,14 @@ import v217_engagement_probe as probe
 MOVES = "_V217_MOVES={'EAST':(1,0),'WEST':(-1,0),'NORTH':(0,-1),'SOUTH':(0,1)}\n"
 SYNTH = (MOVES + "\n"
          "def _v217_farmer(tape, step):\n    return list(tape[step].get('farmer') or ['PASS'])\n\n"
-         "def _v217_plan(view, st, step, action, pending):\n    return 'OLD'\n\n"
+         "def _v217_plan(view, st, step, action, pending):\n"
+         "    tape = _POLICY.tapes[st['plan']]\n"
+         "    end = min(step + 24 - step % 24, 719)\n"
+         "    for planned in tape[step:end]:\n"
+         "        for cmd in [planned.get('farmer') or []] + list(planned.get('hands') or []):\n"
+         "            if cmd and cmd[0] == 'FEED':\n"
+         "                return None\n"
+         "    return 'OLD'\n\n"
          "def agent(observation, configuration=None):\n    return {}\n")
 HERE = Path(__file__).resolve().parent
 
@@ -90,6 +97,24 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(report['global_feed_veto'], 1)
         self.assertEqual(report['coverage_certified'], 0)
         self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_non_veto_path_remains_original(self):
+        ns, policy = loaded_module()
+        policy.tapes = [[{'farmer': ['PASS'], 'hands': [['PASS']], 'market': []} for _ in range(719)]]
+        view = View([[2, 2], [3, 3]], [[None for _ in range(5)] for _ in range(5)])
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertEqual(ns['_v217_plan'](view, {'plan': 0}, 40, action, []), 'OLD')
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['global_feed_veto'], 0)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_probe_failure_is_swallowed_and_veto_still_returns_none(self):
+        ns, policy = loaded_module()
+        policy.tapes = [tape_with_future_feed()]
+        ns['_v217_probe_observe'] = lambda *args: (_ for _ in ()).throw(RuntimeError('probe boom'))
+        view = View([[2, 2], [3, 3]], [[None for _ in range(5)] for _ in range(5)])
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
 
     def test_router_transform_rejects_duplicate_or_missing_seam(self):
         with self.assertRaisesRegex(ValueError, 'moves'):
