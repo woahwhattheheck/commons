@@ -3,12 +3,16 @@
 This is an additive experiment over the exact `production-v3` V5 archive, not a
 sibling policy tree and not a CURRENT/default/release mutation.
 
-## Source custody
+## Source custody and convergence shape
 
 - parent archive SHA256: `20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239`
 - exact parent `main.py` SHA256: `381b50f858212727a9d95d11ae8ff5ba4ab830b35e1d5cd6d1e6a1d375d2e83`
 - exact submitted V3.1 R04 source remains inside that parent unchanged.
-- the enabled treatment changes only `main.py` and adds `terminal_animal_roi.py`.
+- `terminal_animal_roi.py` is build-time/reference source only; its marked runtime
+  region is SHA-bound and inlined into `main.py`.
+- the enabled archive changes **only the existing `main.py` member**. No archive
+  member is added or deleted, making a winner compatible with the one V5 staging
+  composer even while that composer remains replacement-only.
 - the disabled materialization must reproduce the parent archive byte-for-byte.
 
 The filter is deliberately post-policy: route choice, worker positions, shop
