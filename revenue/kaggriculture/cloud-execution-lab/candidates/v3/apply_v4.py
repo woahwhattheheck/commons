@@ -1,14 +1,24 @@
-"""Apply V4 key plumbing after the frozen V3.1 integration.
+"""Apply the converged V4 market/S4 plumbing as one declarative patch layer.
 
-V3.1 source is the submitted baseline.  V4 lanes add exact-string edits in this
-small follow-on layer so the V3.1 integration recipe remains an immutable receipt.
-Every edit is asserted to match exactly once.
+This is the static-materializer-compatible form of the c199 market assembly: no
+dynamic import, sidecar execution, or top-level candidate behavior.  Every source
+edit is a once-only literal replacement and every new key ships literal False.
 """
 import io
 import json
 import os
 
-KEYS = ("r04_place_delivery", "r04_goose_pass_rescue", "r04_b10_public_supply_order")
+KEYS = (
+    "r04_place_delivery",
+    "r04_goose_pass_rescue",
+    "r04_b10_public_supply_order",
+    "r04_dead_sell_slot",
+    "r04_advance_slot_value",
+    "r04_eod_capacity_rescue",
+    "r04_m1_wheat_trade",
+    "r04_c5_wheat_demand",
+    "r04_s4_route12_seed_reserve",
+)
 
 
 def _replace_once(text, old, new, label):
@@ -33,8 +43,39 @@ def apply(src):
         "PLACE_DELIVERY = False\n"
         "GOOSE_PASS_RESCUE = False\n"
         "B10_PUBLIC_SUPPLY_ORDER = False\n"
+        "DEAD_SELL_SLOT = False\n"
+        "ADVANCE_SLOT_VALUE = False\n"
+        "EOD_CAPACITY_RESCUE = False\n"
+        "M1_WHEAT_TRADE = False\n"
+        "C5_WHEAT_DEMAND = False\n"
+        "S4_ROUTE12_SEED_RESERVE = False\n"
         "_TERMINAL_FERTILIZER_AGENT = None\n",
         "R04 V4 flags",
+    )
+    router = _replace_once(
+        router,
+        "    stock = projected_shed(action, view)\n"
+        "    for item in PRODUCTS:\n",
+        "    stock = projected_shed(action, view)\n"
+        "    if ADVANCE_SLOT_VALUE:\n"
+        "        import r04_advance_slot_value\n"
+        "        r04_advance_slot_value.apply_advance_slot_value(\n"
+        "            action, view, state, stock, planned, already_selling, PRODUCTS,\n"
+        "            MAX_ORDERS, next_step, enabled=True)\n"
+        "        return\n"
+        "    for item in PRODUCTS:\n",
+        "R04 V4 advance-slot matching-module seam",
+    )
+    router = _replace_once(
+        router,
+        "        subtract_advanced_sales(action, state, step)\n"
+        "        advance_sales(action, view, state, tape, step)\n",
+        "        subtract_advanced_sales(action, state, step)\n"
+        "        if DEAD_SELL_SLOT:\n"
+        "            import r04_dead_sell_slot\n"
+        "            action = r04_dead_sell_slot.prune_trailing_dead_sells(action, view, enabled=True)\n"
+        "        advance_sales(action, view, state, tape, step)\n",
+        "R04 dead SELL slot seam",
     )
     router = _replace_once(
         router,
@@ -60,7 +101,7 @@ def apply(src):
         "        return _v3_core(observation, configuration)\n",
         "def v3_agent(observation, configuration=None):\n"
         "    global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT\n"
-        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or PLACE_DELIVERY or GOOSE_PASS_RESCUE or B10_PUBLIC_SUPPLY_ORDER):\n"
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or PLACE_DELIVERY or GOOSE_PASS_RESCUE or B10_PUBLIC_SUPPLY_ORDER or DEAD_SELL_SLOT or EOD_CAPACITY_RESCUE or M1_WHEAT_TRADE or C5_WHEAT_DEMAND or S4_ROUTE12_SEED_RESERVE):\n"
         "        return _v3_core(observation, configuration)\n",
         "R04 V4 outer-wrapper dispatch",
     )
@@ -75,6 +116,21 @@ def apply(src):
         "        import h3c_goose_eod_cap_rescue\n"
         "        action = h3c_goose_eod_cap_rescue.apply_goose_eod_cap_rescue(action, observation, configuration,\n"
         "                                                                     enabled=True)\n"
+        "    if M1_WHEAT_TRADE:\n"
+        "        import r04_m1_wheat_trade\n"
+        "        try:\n"
+        "            player = observation.get('player') if isinstance(observation, dict) else None\n"
+        "            if type(player) is int:\n"
+        "                state = _POLICY.players.get(player)\n"
+        "                tape = _policy_tape(observation)\n"
+        "                action = r04_m1_wheat_trade.apply_m1_wheat_trade(\n"
+        "                    observation, action, tape, state, configuration, enabled=True)\n"
+        "        except (AttributeError, KeyError, TypeError, IndexError, ValueError):\n"
+        "            pass\n"
+        "    if EOD_CAPACITY_RESCUE:\n"
+        "        import r04_eod_capacity_rescue\n"
+        "        action = r04_eod_capacity_rescue.apply_eod_capacity_rescue(\n"
+        "            action, observation, configuration, enabled=True)\n"
         "    if B10_PUBLIC_SUPPLY_ORDER:\n"
         "        import r04_b10_public_supply_order\n"
         "        if configuration is None:\n"
@@ -82,14 +138,24 @@ def apply(src):
         "        else:\n"
         "            action = r04_b10_public_supply_order.apply_public_supply_order(\n"
         "                observation, action, configuration, enabled=True)\n"
+        "    if C5_WHEAT_DEMAND:\n"
+        "        import r04_c5_wheat_demand\n"
+        "        action = r04_c5_wheat_demand.apply_c5_wheat_demand(\n"
+        "            observation, action, configuration, enabled=True)\n"
+        "    if S4_ROUTE12_SEED_RESERVE:\n"
+        "        import r04_s4_route12_seed_reserve\n"
+        "        action = r04_s4_route12_seed_reserve.apply_route12_seed_reserve(\n"
+        "            observation, action, configuration, enabled=True)\n"
         "    return action\n",
-        "R04 B10 outermost seam",
+        "R04 M1, EOD, B10, C5 then S4 outer seams",
     )
     router = _replace_once(
         router,
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None):\n",
         "            dribble_dump=None, mirror_horizon=None, terminal_fertilizer=None, goose_rescue=None,\n"
-        "            place_delivery=None, goose_pass_rescue=None, b10_public_supply_order=None):\n",
+        "            place_delivery=None, goose_pass_rescue=None, b10_public_supply_order=None,\n"
+        "            dead_sell_slot=None, advance_slot_value=None, eod_capacity_rescue=None,\n"
+        "            m1_wheat_trade=None, c5_wheat_demand=None, s4_route12_seed_reserve=None):\n",
         "R04 V4 install parameters",
     )
     router = _replace_once(
@@ -100,14 +166,21 @@ def apply(src):
         "    applied around the whole agent in v3_agent(). place_delivery converts terminal DROP cargo\n"
         "    deliveries to capacity-bounded PLACE actions so overflow remains on the worker.\n"
         "    goose_pass_rescue banks clipping hour-23 GOOSE eggs when the authored unit action is PASS.\n"
-        "    b10_public_supply_order is the outermost V4 market-order transform: it reorders only\n"
-        "    existing leading non-WHEAT SELL rows after proved prior-step public rival supply.\n",
+        "    dead_sell_slot frees only saturated trailing nonbuyable dead SELL slots immediately before\n"
+        "    advance_sales; advance_slot_value selects the highest public-value eligible advanced sales\n"
+        "    for those scarce slots while emitting the selected set in incumbent product order.\n"
+        "    m1_wheat_trade runs first in the outer market tail so any bounded future WHEAT buy is visible\n"
+        "    to eod_capacity_rescue, which then fails closed on shed-changing market work. B10 runs after\n"
+        "    EOD so its cross-callback own-sell record includes any rescue SELL. c5_wheat_demand runs last\n"
+        "    so its transition record observes the M1 self-buy while preserving B10 own-sell attribution.\n"
+        "    s4_route12_seed_reserve runs after C5 and appends only the measured route-12 WHEAT\n"
+        "    seed reserve after validating the final market prefix and conservative funding.\n",
         "R04 V4 install docs",
     )
     router = _replace_once(
         router,
         "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE\n",
-        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, B10_PUBLIC_SUPPLY_ORDER\n",
+        "    global MIRROR_HORIZON, TERMINAL_FERTILIZER, GOOSE_RESCUE, PLACE_DELIVERY, GOOSE_PASS_RESCUE, B10_PUBLIC_SUPPLY_ORDER, DEAD_SELL_SLOT, ADVANCE_SLOT_VALUE, EOD_CAPACITY_RESCUE, M1_WHEAT_TRADE, C5_WHEAT_DEMAND, S4_ROUTE12_SEED_RESERVE\n",
         "R04 V4 globals",
     )
     router = _replace_once(
@@ -123,6 +196,18 @@ def apply(src):
         "        GOOSE_PASS_RESCUE = bool(goose_pass_rescue)\n"
         "    if b10_public_supply_order is not None:\n"
         "        B10_PUBLIC_SUPPLY_ORDER = bool(b10_public_supply_order)\n"
+        "    if dead_sell_slot is not None:\n"
+        "        DEAD_SELL_SLOT = bool(dead_sell_slot)\n"
+        "    if advance_slot_value is not None:\n"
+        "        ADVANCE_SLOT_VALUE = bool(advance_slot_value)\n"
+        "    if eod_capacity_rescue is not None:\n"
+        "        EOD_CAPACITY_RESCUE = bool(eod_capacity_rescue)\n"
+        "    if m1_wheat_trade is not None:\n"
+        "        M1_WHEAT_TRADE = bool(m1_wheat_trade)\n"
+        "    if c5_wheat_demand is not None:\n"
+        "        C5_WHEAT_DEMAND = bool(c5_wheat_demand)\n"
+        "    if s4_route12_seed_reserve is not None:\n"
+        "        S4_ROUTE12_SEED_RESERVE = bool(s4_route12_seed_reserve)\n"
         "    return v3_agent\n",
         "R04 V4 install setters",
     )
@@ -135,7 +220,13 @@ def apply(src):
         "    r04_goose_rescue: bool = True\n"
         "    r04_place_delivery: bool = False\n"
         "    r04_goose_pass_rescue: bool = False\n"
-        "    r04_b10_public_supply_order: bool = False\n\n    def __post_init__(self):",
+        "    r04_b10_public_supply_order: bool = False\n"
+        "    r04_dead_sell_slot: bool = False\n"
+        "    r04_advance_slot_value: bool = False\n"
+        "    r04_eod_capacity_rescue: bool = False\n"
+        "    r04_m1_wheat_trade: bool = False\n"
+        "    r04_c5_wheat_demand: bool = False\n"
+        "    r04_s4_route12_seed_reserve: bool = False\n\n    def __post_init__(self):",
         "Features V4 fields",
     )
     runtime = _replace_once(
@@ -146,7 +237,13 @@ def apply(src):
         "                                 goose_rescue=bool(self.features.r04_goose_rescue),\n"
         "                                 place_delivery=bool(self.features.r04_place_delivery),\n"
         "                                 goose_pass_rescue=bool(self.features.r04_goose_pass_rescue),\n"
-        "                                 b10_public_supply_order=bool(self.features.r04_b10_public_supply_order))(observation, configuration)\n",
+        "                                 b10_public_supply_order=bool(self.features.r04_b10_public_supply_order),\n"
+        "                                 dead_sell_slot=bool(self.features.r04_dead_sell_slot),\n"
+        "                                 advance_slot_value=bool(self.features.r04_advance_slot_value),\n"
+        "                                 eod_capacity_rescue=bool(self.features.r04_eod_capacity_rescue),\n"
+        "                                 m1_wheat_trade=bool(self.features.r04_m1_wheat_trade),\n"
+        "                                 c5_wheat_demand=bool(self.features.r04_c5_wheat_demand),\n"
+        "                                 s4_route12_seed_reserve=bool(self.features.r04_s4_route12_seed_reserve))(observation, configuration)\n",
         "TitanAgent V4 install arguments",
     )
     runtime = _replace_once(
@@ -155,7 +252,13 @@ def apply(src):
         "                self.diagnostics['goose_rescue'] = bool(self.features.r04_goose_rescue)\n"
         "                self.diagnostics['place_delivery'] = bool(self.features.r04_place_delivery)\n"
         "                self.diagnostics['goose_pass_rescue'] = bool(self.features.r04_goose_pass_rescue)\n"
-        "                self.diagnostics['b10_public_supply_order'] = bool(self.features.r04_b10_public_supply_order)\n",
+        "                self.diagnostics['b10_public_supply_order'] = bool(self.features.r04_b10_public_supply_order)\n"
+        "                self.diagnostics['dead_sell_slot'] = bool(self.features.r04_dead_sell_slot)\n"
+        "                self.diagnostics['advance_slot_value'] = bool(self.features.r04_advance_slot_value)\n"
+        "                self.diagnostics['eod_capacity_rescue'] = bool(self.features.r04_eod_capacity_rescue)\n"
+        "                self.diagnostics['m1_wheat_trade'] = bool(self.features.r04_m1_wheat_trade)\n"
+        "                self.diagnostics['c5_wheat_demand'] = bool(self.features.r04_c5_wheat_demand)\n"
+        "                self.diagnostics['s4_route12_seed_reserve'] = bool(self.features.r04_s4_route12_seed_reserve)\n",
         "TitanAgent V4 diagnostics",
     )
     write("titan_runtime.py", runtime)
