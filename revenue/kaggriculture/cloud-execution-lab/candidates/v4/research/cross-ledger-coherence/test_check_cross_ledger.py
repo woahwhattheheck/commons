@@ -187,7 +187,7 @@ class CrossLedgerTests(unittest.TestCase):
         canonical, integration, composition = fixture()
         integration["landed"][0]["component_id"] = "fast-tape-clone-current-runtime"
         result = cross.audit(canonical, integration, composition)
-        self.assertFalse(result["ok"], result)
+        self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "composition_intake_without_state" for e in result["errors"]), result)
 
     def test_component_id_without_repair_path_fails(self):
@@ -301,6 +301,28 @@ class CrossLedgerTests(unittest.TestCase):
         result = cross.audit(canonical, integration, composition, binding)
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "semantic_binding_component_package_split_brain" for e in result["errors"]))
+
+    def test_semantic_binding_component_id_whitespace_alias_fails(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        composition["components"][-1]["id"] = " d4-strawberry-timing "
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(
+            e["code"] == "semantic_binding_component_package_split_brain"
+            for e in result["errors"]
+        ), result)
+
+    def test_semantic_binding_exact_whitespace_component_id_passes(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        literal = " d4-strawberry-timing "
+        composition["components"][-1]["id"] = literal
+        binding = d4_binding()
+        binding["bindings"][0]["component"] = literal
+        result = cross.audit(canonical, integration, composition, binding)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(literal, result["semantic_mappings"][0]["component"])
 
     def test_semantic_binding_happy_path_is_visible(self):
         canonical, integration, composition = fixture()
