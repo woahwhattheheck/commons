@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""GANDER x STARVEORACLE: route-feasible alternating-feed goose cadence.
+"""GANDER x STARVEORACLE: safe alternating-feed goose service.
 
 Research-only composition inside the existing opening-expansion authority.
-This does not install a controller or claim economics.  It starts from the
-canonical nine-goose GANDER post-EOD0 frontier and executes the exact pinned
-interpreter for days 1..29 with one hired hand per day.
+The constructed nine-goose GANDER frontier is executed with the exact pinned
+official interpreter through the official final executable callback, step 718.
 
-After the mandatory day-1 feed, odd days feed and even days skip.  Every day
-collects fertilizer.  From day 4 onward, skip-feed days spend the freed FEED
-slot on HARVEST, so the same two-worker geometry realizes base EGG output while
-never allowing two consecutive unfed refreshes.  CARE is deliberately absent;
-STARVEORACLE proves blanket alternation is not safe for CARE value.
+After the mandatory day-1 feed, odd days feed and even days skip through the
+last real EOD (day 28). Every day collects fertilizer. From day 4 onward,
+skip-feed days spend the freed FEED slot on HARVEST, so the same two-worker
+geometry realizes base EGG output without two consecutive unfed refreshes.
+Day 29 has no EOD refresh, so feeding there is terminal dead work; the terminal
+route instead extracts FERT+EGG. CARE is deliberately absent.
 """
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 import json
 from pathlib import Path
 import sys
@@ -28,17 +27,23 @@ V4_ROOT = HERE.parents[1]
 ENGINE_PATH = HERE.parents[3] / "reference" / "engine" / "kaggriculture.py"
 GANDER_PATH = HERE / "goose_printer_oracle.py"
 STARVE_PATH = V4_ROOT / "repairs" / "gameplay" / "dead-feed-care" / "starvation_cadence.py"
+# Preserve the canonical auxiliary-resource location even when tests replace
+# ENGINE_PATH with a byte-equivalent temporary source snapshot. The code bytes
+# themselves are still captured/authenticated exactly once before execution.
+_ENGINE_EXEC_FILE = str(ENGINE_PATH)
 
 PINNED_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 PINNED_ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
 PINNED_GANDER_GIT_BLOB = "38ae7715c233c74f24aacd5fe09f4d0d7a630037"
 PINNED_STARVE_GIT_BLOB = "8831ff953faf033cc6d3892c6f32ccd1ee1af06c"
 GOOSE_COUNT = 9
-SEASON_DAYS = 30
 FIRST_SERVICE_DAY = 1
 LAST_SERVICE_DAY = 29
+LAST_EOD_DAY = 28
+FINAL_EXECUTABLE_STEP = 718
+REGULAR_POST_HIRE_UNIT_SLOTS = 23
+TERMINAL_POST_HIRE_UNIT_SLOTS = 22
 INITIAL_WHEAT = 1000
-POST_HIRE_UNIT_SLOTS = 23
 
 
 class GanderStarveError(RuntimeError):
@@ -101,11 +106,11 @@ def _load_engine_bytes(data: bytes) -> ModuleType:
 
     name = f"titan_gander_starve_engine_{hashlib.sha256(data).hexdigest()[:12]}"
     module = ModuleType(name)
-    module.__file__ = str(ENGINE_PATH)
+    module.__file__ = _ENGINE_EXEC_FILE
     module.__package__ = None
     sys.modules[name] = module
     try:
-        exec(compile(data, str(ENGINE_PATH), "exec"), module.__dict__)
+        exec(compile(data, _ENGINE_EXEC_FILE, "exec"), module.__dict__)
     except Exception:
         sys.modules.pop(name, None)
         raise
@@ -246,20 +251,16 @@ def _route_contract(gander: ModuleType) -> dict[str, Any]:
         raise GanderStarveError(f"GANDER service contract drift: {authored_counts}")
     if max((action.step for action in authored), default=0) > 45:
         raise GanderStarveError("GANDER day-1 route no longer fits")
-    if max(len(feed_main), len(feed_hand), len(skip_main), len(skip_hand)) > POST_HIRE_UNIT_SLOTS:
-        raise GanderStarveError("composed route exceeds post-HIRE daily unit window")
-    if max(len(full_main), len(full_hand)) <= POST_HIRE_UNIT_SLOTS:
+    if max(len(feed_main), len(feed_hand), len(skip_main), len(skip_hand)) > REGULAR_POST_HIRE_UNIT_SLOTS:
+        raise GanderStarveError("composed route exceeds regular post-HIRE unit window")
+    if max(len(skip_main), len(skip_hand)) > TERMINAL_POST_HIRE_UNIT_SLOTS:
+        raise GanderStarveError("terminal extraction route exceeds final post-HIRE unit window")
+    if max(len(full_main), len(full_hand)) <= REGULAR_POST_HIRE_UNIT_SLOTS:
         raise GanderStarveError("all-nine FEED+FERT+HARVEST unexpectedly fits two-worker window")
 
     return {
         "main_sites": main_sites,
         "hand_sites": hand_sites,
-        "feed_main": feed_main,
-        "feed_hand": feed_hand,
-        "skip_main": skip_main,
-        "skip_hand": skip_hand,
-        "full_main": full_main,
-        "full_hand": full_hand,
         "authored_counts": authored_counts,
         "route_lengths": {
             "feed_fert": [len(feed_main), len(feed_hand)],
@@ -275,12 +276,15 @@ def _inventory_total(private: Any, item: str) -> int:
     return int(shed + carried)
 
 
-def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
-    """Execute the exact interpreter from the canonical post-EOD0 GANDER state.
+def default_feed_days() -> set[int]:
+    # Feeding is required only before a real future EOD starvation refresh.
+    # Official execution ends at callback 718 (day 29 hour 22), so day 29 has
+    # no EOD and feeding there is pure terminal dead work.
+    return set(range(FIRST_SERVICE_DAY, LAST_EOD_DAY + 1, 2))
 
-    ``feed_days=None`` selects the safe odd-day cadence 1,3,...,29. Supplying a
-    set is primarily for predecessor/boundary tests; no automatic repair occurs.
-    """
+
+def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
+    """Execute exact interpreter state through official final callback step 718."""
     gander, starve, engine, source_ids = _canonical_sources()
     contract = _route_contract(gander)
     state, env = starve._make_state_env(engine)
@@ -303,10 +307,7 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     farm["money"] = 299.0
     private["shed"]["WHEAT"] = INITIAL_WHEAT
 
-    selected_feed_days = (
-        set(range(FIRST_SERVICE_DAY, LAST_SERVICE_DAY + 1, 2))
-        if feed_days is None else set(feed_days)
-    )
+    selected_feed_days = default_feed_days() if feed_days is None else set(feed_days)
     counts = {
         "hire_orders": 0,
         "feed_attempts": 0,
@@ -318,11 +319,10 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     max_consecutive_unfed = 1
     max_route_actions = 0
     escaped_day: int | None = None
+    last_step_executed: int | None = None
 
     for day in range(FIRST_SERVICE_DAY, LAST_SERVICE_DAY + 1):
         feed = day in selected_feed_days
-        # Product exists beginning after EOD3; spend the freed FEED slot on EGG
-        # collection only when it can realize product.
         harvest = (not feed) and day >= 4
         main_route = worker_route(
             start=(4, 4), sites=contract["main_sites"], feed=feed, harvest=harvest
@@ -330,9 +330,15 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
         hand_route = worker_route(
             start=(5, 4), sites=contract["hand_sites"], feed=feed, harvest=harvest
         )
+        allowed_slots = (
+            TERMINAL_POST_HIRE_UNIT_SLOTS if day == LAST_SERVICE_DAY
+            else REGULAR_POST_HIRE_UNIT_SLOTS
+        )
         max_route_actions = max(max_route_actions, len(main_route), len(hand_route))
-        if max_route_actions > POST_HIRE_UNIT_SLOTS:
-            raise GanderStarveError("daily route exceeds post-HIRE action window")
+        if max(len(main_route), len(hand_route)) > allowed_slots:
+            raise GanderStarveError(
+                f"day {day} route exceeds post-HIRE action window {allowed_slots}"
+            )
 
         counts["hire_orders"] += 1
         counts["feed_attempts"] += GOOSE_COUNT if feed else 0
@@ -341,6 +347,9 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
 
         for hour in range(24):
             step = day * 24 + hour
+            if step > FINAL_EXECUTABLE_STEP:
+                break
+            last_step_executed = step
             state[0].observation.step = step
             farmer_action = ["PASS"] if hour == 0 else (
                 main_route[hour - 1] if hour - 1 < len(main_route) else ["PASS"]
@@ -387,25 +396,31 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     wheat_remaining = _inventory_total(private, "WHEAT")
     wheat_consumed = INITIAL_WHEAT - wheat_remaining
 
-    full_daily_feed_units = (LAST_SERVICE_DAY - FIRST_SERVICE_DAY + 1) * GOOSE_COUNT
+    # Fair baseline: feed every day followed by an actual EOD refresh. Feeding
+    # day 29 would itself be terminal dead work and is excluded from baseline.
+    full_obligation_feed_units = LAST_EOD_DAY * GOOSE_COUNT
     return {
-        "schema": "titan.v4.gander-starve-composite/v2",
+        "schema": "titan.v4.gander-starve-composite/v3",
         "engine_git_blob": source_ids["engine_git_blob"],
         "engine_sha256": source_ids["engine_sha256"],
+        "final_executable_step": FINAL_EXECUTABLE_STEP,
+        "last_step_executed": last_step_executed,
         "days": [FIRST_SERVICE_DAY, LAST_SERVICE_DAY],
+        "last_eod_day": LAST_EOD_DAY,
         "feed_days": sorted(selected_feed_days),
         "skip_days": [
             day for day in range(FIRST_SERVICE_DAY, LAST_SERVICE_DAY + 1)
             if day not in selected_feed_days
         ],
+        "terminal_day_feed_is_dead_work": LAST_SERVICE_DAY not in selected_feed_days,
         "survived": escaped_day is None and len(living_tiles) == GOOSE_COUNT,
         "escaped_day": escaped_day,
         "living_geese": len(living_tiles),
         "egg_total": egg_total,
         "fertilizer_total": fertilizer_total,
         "wheat_consumed": wheat_consumed,
-        "wheat_saved_vs_feed_daily_days_1_29": full_daily_feed_units - wheat_consumed,
-        "feed_actions_saved_vs_feed_daily_days_1_29": full_daily_feed_units - counts["feed_attempts"],
+        "wheat_saved_vs_feed_every_real_eod_obligation": full_obligation_feed_units - wheat_consumed,
+        "feed_actions_saved_vs_feed_every_real_eod_obligation": full_obligation_feed_units - counts["feed_attempts"],
         "max_goose_yield_units_seen": max_yield_units,
         "max_consecutive_unfed_seen": max_consecutive_unfed,
         "final_held_egg": final_held_egg,
@@ -420,11 +435,16 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
             "starve_engine_git_blob": getattr(starve, "ENGINE_GIT_BLOB"),
             "immutable_source_snapshots": True,
             "engine_executed_from_authenticated_snapshot": True,
-            "post_hire_unit_slots": POST_HIRE_UNIT_SLOTS,
+            "regular_post_hire_unit_slots": REGULAR_POST_HIRE_UNIT_SLOTS,
+            "terminal_post_hire_unit_slots": TERMINAL_POST_HIRE_UNIT_SLOTS,
             "route_lengths": contract["route_lengths"],
             "all_nine_feed_fert_harvest_fits_two_workers": (
                 max(contract["route_lengths"]["feed_fert_harvest"])
-                <= POST_HIRE_UNIT_SLOTS
+                <= REGULAR_POST_HIRE_UNIT_SLOTS
+            ),
+            "terminal_skip_feed_fert_harvest_fits_two_workers": (
+                max(contract["route_lengths"]["skip_feed_fert_harvest"])
+                <= TERMINAL_POST_HIRE_UNIT_SLOTS
             ),
             "care_used": False,
             "economics_claim": False,
@@ -438,14 +458,16 @@ def build_report() -> dict[str, Any]:
     safe = run_composite()
     # Historical literal mistake killer: post-EOD0 geese already carry one miss,
     # so skipping day 1 causes the second miss and immediate escape.
-    unsafe_feed_days = set(range(3, LAST_SERVICE_DAY + 1, 2))
+    unsafe_feed_days = set(range(3, LAST_EOD_DAY + 1, 2))
     unsafe = run_composite(feed_days=unsafe_feed_days)
     if not safe["survived"]:
         raise GanderStarveError("safe composite cadence did not survive")
+    if safe["last_step_executed"] != FINAL_EXECUTABLE_STEP:
+        raise GanderStarveError("episode boundary drift")
     if unsafe["escaped_day"] != 1:
         raise GanderStarveError("day-1 mandatory-feed boundary disappeared")
     return {
-        "schema": "titan.v4.gander-starve-report/v2",
+        "schema": "titan.v4.gander-starve-report/v3",
         "safe_composite": safe,
         "mandatory_day1_feed_predecessor": {
             "escaped_day": unsafe["escaped_day"],
@@ -453,13 +475,14 @@ def build_report() -> dict[str, Any]:
         },
         "interpretation": {
             "mechanism": (
-                "after mandatory day-1 feed, alternate feed/skip; on mature skip "
-                "days replace FEED with HARVEST while retaining daily fertilizer collection"
+                "after mandatory day-1 feed, alternate feed/skip through the last real EOD; "
+                "on mature skip days replace FEED with HARVEST while retaining daily FERT; "
+                "skip terminal day-29 feed because no EOD starvation check follows callback 718"
             ),
             "capacity_theorem": (
                 "canonical two-worker all-nine FEED+FERT+HARVEST requires 25 actions "
-                "per worker and exceeds the 23 post-HIRE slots; skip-feed FERT+HARVEST "
-                "uses 19/20 and fits"
+                "per worker and exceeds 23 regular post-HIRE slots; skip-feed FERT+HARVEST "
+                "uses 19/20 and also fits the 22-slot terminal day"
             ),
             "wheat_savings_are_units_not_cash": True,
             "care_value_modeled": False,
@@ -469,8 +492,8 @@ def build_report() -> dict[str, Any]:
         },
         "next_gate": (
             "Consume this cadence only through the existing opener/native scheduler. "
-            "Run both seats versus current opponents with exact WHEAT acquisition, "
-            "CARE opportunity cost, shed capacity, EGG/FERT sale timing and fallback."
+            "Run both seats versus current opponents with exact WHEAT acquisition, CARE "
+            "opportunity cost, shed capacity, EGG/FERT sale timing and feed-deadline fallback."
         ),
     }
 
