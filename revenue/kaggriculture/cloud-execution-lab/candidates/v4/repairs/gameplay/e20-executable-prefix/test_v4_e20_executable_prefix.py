@@ -8,7 +8,11 @@ from pathlib import Path
 import unittest
 
 
-OVERLAY = Path(__file__).resolve().parents[1]
+# Canonical recovery keeps helper and tests as siblings. Legacy packaging
+# places this test under overlay/checks; support that layout without a rewrite.
+OVERLAY = Path(__file__).resolve().parent
+if not (OVERLAY / "e20_hire_guard.py").is_file():
+    OVERLAY = OVERLAY.parent
 SPEC = importlib.util.spec_from_file_location(
     "e20_hire_guard",
     OVERLAY / "e20_hire_guard.py",
