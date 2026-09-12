@@ -1,21 +1,22 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Canonical route/queue provenance for recovered V3.1 R04 market stages.
+"""Committed-route and queue provenance for recovered V3.1 R04 market stages.
 
-The current V5 controller already has one shared provenance seam:
-``current-route-witness/CurrentRouteWindow``. R04 market recovery consumes that
-object instead of accepting caller-authored future actions.
+R04 market recovery consumes the shared ``CurrentRouteWindow`` from current V5.
+The future route is authorized only by the immutable entrypoint receipt published
+for the selected action: ``{route_step,last_step,player,route}``. Raw
+``controller.cur`` is deliberately never a trust root.
 
 The submitted R04 router also consulted a deferred worker-command queue. The
 installed current Arlene controller has no such queue: its complete mutable
-instance state is exactly ``R, cur, _fs, _fs_for``. This adapter makes that
-absence an explicit, fail-closed authority claim. If the installed controller
-ever grows any additional per-instance state, binding fails until a canonical
-queue authority is defined rather than silently assuming an empty queue.
+instance state is exactly ``R, cur, _fs, _fs_for``. That exact state shape is a
+fail-closed no-queue proof. If the controller grows any additional instance state,
+market binding stops until a canonical queue authority exists.
 
-This adapter also independently re-verifies strict JSON bytes for the *entire*
-installed route and every published window row. That keeps this consumer safe
-across older/current-route-witness revisions whose own canonicalization may be
-weaker than the market carrier requires.
+This consumer independently re-verifies strict JSON bytes for the *entire*
+authorized ``R[receipt.route]`` plus every published future row. The market
+authority digest binds the complete shared-window receipt, the immutable producer
+receipt, and the no-queue proof. This intentionally remains safe if an older
+shared-window revision has a weaker internal digest preimage.
 """
 from __future__ import annotations
 
@@ -27,19 +28,20 @@ from pathlib import Path
 import sys
 from typing import Any
 
-AUTHORITY_SCHEMA = "titan-v5-r04-market-route-authority-v1"
-WINDOW_SCHEMA = "titan-v5-current-route-window-v1"
-ROUTE_SOURCE = "installed_controller.R[cur]"
+AUTHORITY_SCHEMA = "titan-v5-r04-market-route-authority-v2"
+WINDOW_SCHEMA = "titan-v5-current-route-window-v2"
+ROUTE_SOURCE = "committed_producer_route.R[route_id]"
 NO_QUEUE_MODEL = "installed-intact-arlene:no-separate-deferred-command-queue:v1"
 EXPECTED_CONTROLLER_TYPE = "intact_arlene.Agent"
 EXPECTED_CONTROLLER_STATE_KEYS = ("R", "_fs", "_fs_for", "cur")
+ROUTE_RECEIPT_KEYS = frozenset({"route_step", "last_step", "player", "route"})
 
-CURRENT_ROUTE_AUTHORITY_COMMIT = "d61e0333efe5697b56a867ed84a23e909195d3f4"
+CURRENT_ROUTE_AUTHORITY_COMMIT = "a2eee7eecbfb2605147645d3de3b1c2c0ceb0bf0"
 CURRENT_ROUTE_AUTHORITY_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/"
     "current-route-witness/current_route_witness.py"
 )
-CURRENT_ROUTE_AUTHORITY_BLOB = "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39"
+CURRENT_ROUTE_AUTHORITY_BLOB = "b84768c7560e746f6c9144fea672554e0dad39f7"
 CURRENT_CONTROLLER_AUTHORITY_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
 )
@@ -96,9 +98,47 @@ def _controller_state_keys(controller: Any) -> tuple[str, ...] | None:
     if not isinstance(namespace, dict):
         return None
     keys = tuple(sorted(namespace))
-    if keys != EXPECTED_CONTROLLER_STATE_KEYS:
+    return keys if keys == EXPECTED_CONTROLLER_STATE_KEYS else None
+
+
+def _normalize_route_receipt(value: Any, observation: Any = None) -> dict[str, Any] | None:
+    if not isinstance(value, dict) or set(value) != ROUTE_RECEIPT_KEYS:
         return None
-    return keys
+    route_step = value.get("route_step")
+    last_step = value.get("last_step")
+    player = value.get("player")
+    route = value.get("route")
+    if type(route_step) is not int or route_step < 0:
+        return None
+    if type(last_step) is not int or last_step < route_step:
+        return None
+    if type(player) is not int or player not in (0, 1):
+        return None
+    if type(route) is not str or not route:
+        return None
+    normalized = {
+        "route_step": route_step,
+        "last_step": last_step,
+        "player": player,
+        "route": route,
+    }
+    if observation is not None:
+        if not isinstance(observation, dict):
+            return None
+        step = observation.get("step")
+        obs_player = observation.get("player")
+        # Market transforms authorize only a route committed for THIS returned
+        # selected-action boundary. A carried older route is continuity evidence,
+        # not authority to mutate the current selected action.
+        if (
+            type(step) is not int
+            or step < 0
+            or obs_player != player
+            or route_step != step
+            or last_step != step
+        ):
+            return None
+    return normalized
 
 
 def _action_worker_cardinality(action: Any) -> int | None:
@@ -132,18 +172,23 @@ def _window_receipt(window: Any) -> dict[str, Any] | None:
         return None
     if receipt.get("controller_type") != EXPECTED_CONTROLLER_TYPE:
         return None
-    if _canonical_json(receipt) is None:
-        return None
-    return receipt
+    return receipt if _canonical_json(receipt) is not None else None
 
 
-def _strict_reverify_window(controller: Any, window: Any) -> bool:
-    """Rebind strict whole-route bytes and every row against the live controller."""
+def _strict_reverify_window(
+    controller: Any,
+    window: Any,
+    route_receipt: dict[str, Any],
+) -> bool:
+    """Rebind strict bytes against only ``R[receipt.route]``; never ``cur``."""
     route_id = getattr(window, "route_id", None)
     routes = getattr(controller, "R", None)
-    if not isinstance(route_id, str) or not isinstance(routes, dict):
-        return False
-    if getattr(controller, "cur", None) != route_id or route_id not in routes:
+    if (
+        not isinstance(route_id, str)
+        or route_id != route_receipt["route"]
+        or not isinstance(routes, dict)
+        or route_id not in routes
+    ):
         return False
     route_ref = routes[route_id]
     if not isinstance(route_ref, (list, tuple)):
@@ -156,9 +201,8 @@ def _strict_reverify_window(controller: Any, window: Any) -> bool:
     if getattr(window, "route_sha256", None) != strict_route_sha:
         return False
 
-    # Rebind after serialization: no route switch, replacement, or in-place drift.
-    if getattr(controller, "cur", None) != route_id:
-        return False
+    # Rebind the explicit route authority after serialization. controller.cur is
+    # intentionally irrelevant and may already name an uncommitted proposal.
     if getattr(controller, "R", None) is not routes or routes.get(route_id) is not route_ref:
         return False
     if _canonical_json(list(route_ref)) != strict_route_json:
@@ -196,10 +240,15 @@ def _strict_reverify_window(controller: Any, window: Any) -> bool:
     return True
 
 
-def _authority_material(window_receipt: dict[str, Any], state_keys: tuple[str, ...]):
+def _authority_material(
+    window_receipt: dict[str, Any],
+    route_receipt: dict[str, Any],
+    state_keys: tuple[str, ...],
+):
     return {
         "schema": AUTHORITY_SCHEMA,
         "window": window_receipt,
+        "completed_route_receipt": route_receipt,
         "queue_model": NO_QUEUE_MODEL,
         "controller_state_keys": list(state_keys),
     }
@@ -207,18 +256,29 @@ def _authority_material(window_receipt: dict[str, Any], state_keys: tuple[str, .
 
 @dataclass(frozen=True)
 class MarketRouteAuthority:
-    """One immutable canonical route window plus explicit no-queue proof."""
+    """One immutable committed-route window plus explicit no-queue proof."""
 
     window: Any
+    completed_route_receipt_json: str
     queue_model: str
     controller_state_keys: tuple[str, ...]
     authority_sha256: str
 
+    def completed_route_receipt(self) -> dict[str, Any]:
+        value = json.loads(self.completed_route_receipt_json)
+        normalized = _normalize_route_receipt(value)
+        if normalized is None:
+            raise ValueError("invalid completed-route receipt")
+        return normalized
+
     def receipt(self) -> dict[str, Any]:
         window_receipt = _window_receipt(self.window)
+        route_receipt = self.completed_route_receipt()
         if window_receipt is None:
             raise ValueError("invalid canonical route-window receipt")
-        material = _authority_material(window_receipt, self.controller_state_keys)
+        material = _authority_material(
+            window_receipt, route_receipt, self.controller_state_keys
+        )
         return {**material, "authority_sha256": self.authority_sha256}
 
     def future_actions(self) -> dict[int, dict[str, Any]]:
@@ -244,13 +304,17 @@ def bind_market_route_authority(
     controller: Any,
     observation: Any,
     *,
+    completed_route_receipt: Any,
     lookahead: int = 8,
 ) -> MarketRouteAuthority | None:
-    """Bind installed controller -> canonical window -> strict market authority."""
+    """Bind committed producer receipt -> shared window -> market authority."""
     if f"{type(controller).__module__}.{type(controller).__qualname__}" != EXPECTED_CONTROLLER_TYPE:
         return None
     state_keys = _controller_state_keys(controller)
     if state_keys is None:
+        return None
+    route_receipt = _normalize_route_receipt(completed_route_receipt, observation)
+    if route_receipt is None:
         return None
     module = _load_window_module()
     if module is None:
@@ -259,21 +323,29 @@ def bind_market_route_authority(
     if not callable(binder):
         return None
     try:
-        window = binder(controller, observation, lookahead=lookahead)
+        window = binder(
+            controller,
+            observation,
+            completed_route_id=route_receipt["route"],
+            lookahead=lookahead,
+        )
     except Exception:
         return None
-    if window is None or _window_receipt(window) is None:
+    window_receipt = None if window is None else _window_receipt(window)
+    if window_receipt is None:
         return None
-    if not _strict_reverify_window(controller, window):
+    if not _strict_reverify_window(controller, window, route_receipt):
         return None
 
-    material = _authority_material(_window_receipt(window), state_keys)
+    material = _authority_material(window_receipt, route_receipt, state_keys)
     rendered = _canonical_json(material)
-    if rendered is None:
+    route_receipt_json = _canonical_json(route_receipt)
+    if rendered is None or route_receipt_json is None:
         return None
     digest = hashlib.sha256(rendered.encode("ascii")).hexdigest()
     return MarketRouteAuthority(
         window=window,
+        completed_route_receipt_json=route_receipt_json,
         queue_model=NO_QUEUE_MODEL,
         controller_state_keys=state_keys,
         authority_sha256=digest,
@@ -293,6 +365,11 @@ def validate_market_route_authority(
         return None
     if authority.controller_state_keys != EXPECTED_CONTROLLER_STATE_KEYS:
         return None
+    route_receipt = _normalize_route_receipt(
+        authority.completed_route_receipt(), observation
+    )
+    if route_receipt is None:
+        return None
     if not isinstance(observation, dict):
         return None
     step = observation.get("step")
@@ -303,7 +380,11 @@ def validate_market_route_authority(
     receipt = _window_receipt(authority.window)
     if receipt is None:
         return None
-    if receipt.get("current_step") != step or receipt.get("current_index") != step:
+    if (
+        receipt.get("current_step") != step
+        or receipt.get("current_index") != step
+        or receipt.get("route_id") != route_receipt["route"]
+    ):
         return None
 
     farms = observation.get("farms")
@@ -323,7 +404,9 @@ def validate_market_route_authority(
     if receipt.get("current_worker_cardinality") != workers:
         return None
 
-    material = _authority_material(receipt, authority.controller_state_keys)
+    material = _authority_material(
+        receipt, route_receipt, authority.controller_state_keys
+    )
     rendered = _canonical_json(material)
     if rendered is None:
         return None
