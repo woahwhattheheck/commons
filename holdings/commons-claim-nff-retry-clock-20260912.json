@@ -3,8 +3,8 @@
  "key": "commons-claim-nff-retry-clock-20260912",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-12T23:51:11Z",
- "heartbeat_at": "2026-09-12T23:51:11Z",
+ "heartbeat_at": "2026-09-12T23:56:48Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Narrow winner-preserving NFF retry-clock fix in shared coordination_state.holding_write + hostile offline regression. Transferred RED from closed #13505; preserve #13509 as single canonical PR claim road."
+ "state": "RELEASED",
+ "note": "Superseded by merged PR #13519 (merge 57e514a245f97bd3eae740f40f443489077942d6), which landed the same canonical PR retry-clock repair with stronger focused validation. Astra #13522 closed unmerged; no unique source bytes carried forward."
 }
