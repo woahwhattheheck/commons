@@ -100,6 +100,66 @@ class IntegratedWrapperReplayTest(unittest.TestCase):
         self.assertEqual(module._LAST_STEP, 0)
         self.assertEqual(len(created), 2)
 
+    def _exercise_public_clock_exactness(self, filename):
+        module = _load(filename)
+        created = []
+        failures = set()
+
+        def make_agent():
+            instance = _FakeAgent(len(created) + 1, failures)
+            created.append(instance)
+            return instance
+
+        module.make_agent = make_agent
+        cfg = {'turnsPerDay': 24}
+
+        # Redundant canonical fields agree and publish one committed wrapper.
+        self.assertEqual(
+            module.agent({'step': 25, 'day': 1, 'hour': 1}, cfg),
+            {'instance': 1, 'step': 25},
+        )
+        committed = module._INSTANCE
+        self.assertEqual(module._LAST_STEP, 25)
+        self.assertEqual(len(committed.calls), 1)
+
+        rejected = [
+            ({}, cfg),
+            ({'step': None}, cfg),
+            ({'step': True}, cfg),
+            ({'step': '25'}, cfg),
+            ({'step': 25.0}, cfg),
+            ({'step': -1}, cfg),
+            ({'day': 1}, cfg),
+            ({'hour': 1}, cfg),
+            ({'day': True, 'hour': 1}, cfg),
+            ({'day': 1, 'hour': '1'}, cfg),
+            ({'day': -1, 'hour': 1}, cfg),
+            ({'day': 1, 'hour': -1}, cfg),
+            ({'day': 1, 'hour': 24}, cfg),
+            ({'day': 1, 'hour': 1}, {'turnsPerDay': True}),
+            ({'day': 1, 'hour': 1}, {'turnsPerDay': '24'}),
+            ({'day': 1, 'hour': 1}, {'turnsPerDay': 0}),
+            ({'step': 25, 'day': 1, 'hour': 2}, cfg),
+            ({'step': 25, 'day': 1}, cfg),
+        ]
+        for obs, bad_cfg in rejected:
+            with self.subTest(filename=filename, obs=obs, cfg=bad_cfg):
+                with self.assertRaises((TypeError, ValueError)):
+                    module.agent(obs, bad_cfg)
+                self.assertIs(module._INSTANCE, committed)
+                self.assertEqual(module._LAST_STEP, 25)
+                self.assertEqual(len(created), 1)
+                self.assertEqual(len(committed.calls), 1)
+
+        # The historical day/hour fallback remains exact and uses the same live
+        # wrapper when the derived step moves forward.
+        self.assertEqual(
+            module.agent({'day': 1, 'hour': 2}, cfg),
+            {'instance': 1, 'step': 26},
+        )
+        self.assertIs(module._INSTANCE, committed)
+        self.assertEqual(module._LAST_STEP, 26)
+
     def test_integrated_main_replay_and_reset(self):
         self._exercise('integrated_main.py')
 
@@ -110,6 +170,11 @@ class IntegratedWrapperReplayTest(unittest.TestCase):
         for filename in ('integrated_main.py', 'integrated_parent.py'):
             with self.subTest(filename=filename):
                 self._exercise_cold_start_failure(filename)
+
+    def test_public_clock_is_exact_before_wrapper_state_changes(self):
+        for filename in ('integrated_main.py', 'integrated_parent.py'):
+            with self.subTest(filename=filename):
+                self._exercise_public_clock_exactness(filename)
 
 
 if __name__ == '__main__':
