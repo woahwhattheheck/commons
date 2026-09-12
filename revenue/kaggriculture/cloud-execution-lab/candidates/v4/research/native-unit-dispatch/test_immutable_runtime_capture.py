@@ -55,8 +55,11 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             ENGINE_GIT_BLOBS=engine_pins,
         ), patch.object(k, 'BASE_MECHANICS_BLOB', k.git_blob(files['mechanics.py']))
 
-    def probe_control(self, root: Path, expected_digest: str = '0' * 64):
+    def probe_control(self, root: Path, expected_digest: str = '0' * 64,
+                      expected_runner_git_blob: str | None = None):
         output = root / 'probe.json'
+        if expected_runner_git_blob is None:
+            expected_runner_git_blob = k.git_blob((root / 'run_kinetic_games.py').read_bytes())
         proc = subprocess.run(
             [
                 sys.executable,
@@ -66,6 +69,8 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                 str(root / 'unused-native-root'),
                 '--output',
                 str(output),
+                '--expected-runner-git-blob',
+                expected_runner_git_blob,
                 '--control-probe',
                 '--expected-control-bundle-sha256',
                 expected_digest,
@@ -142,7 +147,8 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             base = Path(d)
             mutable = base / 'mutable-control'; mutable.mkdir()
             original = self.control_fixture(mutable)
-            captured, digest = k.capture_control_bundle(mutable)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
+            captured, digest = k.capture_control_bundle(mutable, expected_runner)
             self.assertEqual(original, captured)
 
             # After parent capture, replace the repository runner. Children must
@@ -162,6 +168,8 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                     str(base / 'unused-native-root'),
                     '--output',
                     str(output),
+                    '--expected-runner-git-blob',
+                    expected_runner,
                     '--control-probe',
                     '--expected-control-bundle-sha256',
                     digest,
@@ -173,28 +181,40 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
             receipt = json.loads(output.read_text())
             self.assertEqual(receipt['executed_control_bundle_sha256'], digest)
-            self.assertEqual(
-                receipt['executed_control_runner_blob'],
-                k.git_blob(original['run_kinetic_games.py']),
-            )
+            self.assertEqual(receipt['executed_control_runner_blob'], expected_runner)
             self.assertEqual(
                 (frozen / 'run_kinetic_games.py').read_bytes(),
                 original['run_kinetic_games.py'],
             )
 
+    def test_external_runner_pin_rejects_pre_capture_repo_runner_replacement(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            original = self.control_fixture(root)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
+            (root / 'run_kinetic_games.py').write_text(
+                '# valid but poisoned replacement\nraise SystemExit("POISONED")\n'
+            )
+            with self.assertRaisesRegex(ValueError, 'Unverified control runner'):
+                k.capture_control_bundle(root, expected_runner)
+            with self.assertRaisesRegex(ValueError, 'Invalid expected runner Git blob'):
+                k.capture_control_bundle(root, 'not-an-external-pin')
+
     def test_control_helper_drift_fails_closed_before_child_launch(self):
         for name in ('compose_kinetic.py', 'check_kinetic.py'):
             with self.subTest(name=name), tempfile.TemporaryDirectory() as d:
                 root = Path(d)
-                self.control_fixture(root)
+                original = self.control_fixture(root)
+                expected_runner = k.git_blob(original['run_kinetic_games.py'])
                 (root / name).write_bytes(b'DRIFT = True\n')
                 with self.assertRaisesRegex(ValueError, f'Unverified control input: {name}'):
-                    k.capture_control_bundle(root)
+                    k.capture_control_bundle(root, expected_runner)
 
     def test_unverified_composer_cannot_execute_before_authentication(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            self.control_fixture(root)
+            original = self.control_fixture(root)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
             marker = root / 'composer-executed'
             (root / 'compose_kinetic.py').write_text(
                 'from pathlib import Path\n'
@@ -203,7 +223,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                 'def git_blob(raw): return "d34362e98277c930b7b28519f2892bea758b3878"\n'
                 'def compose(source): return source\n'
             )
-            proc, _ = self.probe_control(root)
+            proc, _ = self.probe_control(root, expected_runner_git_blob=expected_runner)
             self.assertNotEqual(proc.returncode, 0)
             self.assertIn('Unverified control input: compose_kinetic.py', proc.stderr)
             self.assertFalse(marker.exists(), proc.stdout + proc.stderr)
@@ -211,14 +231,15 @@ class ImmutableRuntimeCapture(unittest.TestCase):
     def test_unverified_checker_cannot_execute_before_authentication(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            self.control_fixture(root)
+            original = self.control_fixture(root)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
             marker = root / 'checker-executed'
             (root / 'check_kinetic.py').write_text(
                 'from pathlib import Path\n'
                 f'Path({str(marker)!r}).write_text("EXECUTED")\n'
                 'def imported(*args): raise RuntimeError("attacker checker executed")\n'
             )
-            proc, _ = self.probe_control(root)
+            proc, _ = self.probe_control(root, expected_runner_git_blob=expected_runner)
             self.assertNotEqual(proc.returncode, 0)
             self.assertIn('Unverified control input: check_kinetic.py', proc.stderr)
             self.assertFalse(marker.exists(), proc.stdout + proc.stderr)
@@ -226,8 +247,9 @@ class ImmutableRuntimeCapture(unittest.TestCase):
     def test_captured_composer_is_executed_from_authenticated_bytes_not_reopened_path(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            self.control_fixture(root)
-            captured, _ = k.capture_control_bundle(root)
+            original = self.control_fixture(root)
+            expected_runner = k.git_blob(original['run_kinetic_games.py'])
+            captured, _ = k.capture_control_bundle(root, expected_runner)
             marker = root / 'reopened-composer-executed'
             (root / 'compose_kinetic.py').write_text(
                 'from pathlib import Path\n'
