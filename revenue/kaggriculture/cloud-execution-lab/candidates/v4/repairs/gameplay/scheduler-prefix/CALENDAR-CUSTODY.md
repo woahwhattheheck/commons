@@ -1,20 +1,34 @@
-# TITAN V4 scheduler calendar custody
+# TITAN V4 scheduler source custody
 
 Status: **SOURCE-BOUND CANDIDATE / DEFAULT-OFF / NO PRODUCTION MUTATION**
 
-This is a second-stage source repair in the existing `scheduler-prefix` authority. It consumes the exact scratch output of `materialize_scheduler_prefix.py`; it is not a sibling scheduler/controller and does not edit `scheduler.py` in place.
+This is the same second-stage repair already landed in the existing `scheduler-prefix`
+authority by #13091. The successor widens that one materializer instead of creating
+another scheduler/controller layer. It still consumes the exact scratch output of
+`materialize_scheduler_prefix.py` and never edits `scheduler.py` in place.
 
-## Defect
+## Closed source seams
 
-Current `SellScheduler` accepted `config`, but five scheduler-calendar decisions were still hard-coded to 24 callbacks:
+Calendar custody remains unchanged: HIRE-day reset, represented future unit day/turn
+arguments, represented EOD drop, planning-horizon day end, and naive EOD handling all
+derive from the configured `turnsPerDay`; canonical 24 behavior is preserved and
+malformed calendar evidence fails closed.
 
-- `cash_reserve()` reset `hires_today` when `t % 24 == 0`;
-- `receipt_profile()` passed `t // 24, 24` to future `_apply_unit_action()` calls;
-- `receipt_profile()` performed represented EOD drop/termination when `t % 24 == 23`;
-- `act()` clipped its planning horizon to `(now // 24 + 1) * 24 - 1`;
-- the naive `act()` path treated only `now % 24 == 23` as EOD.
+The same source also contained a separate executable-market inconsistency. The
+canonical prefix projection already models the official interpreter's
+`max(1, int(maxMarketOrdersPerTurn))`, but two later `SellScheduler.act()` guards used
+the raw configured integer:
 
-The official interpreter derives `turns_per_day` from configuration and uses it for day indexing, unit dispatch, and `(step + 1) % turns_per_day == 0` EOD. The standard configuration remains 24, so this closure is behavior-preserving there. On nonstandard calendars the predecessor can reset Fibonacci HIRE spend on the wrong callback, simulate unit actions under the wrong day index, drop represented inventories at the wrong boundary, and plan across a real EOD. The closure also rejects malformed calendar evidence instead of authenticating it through Python coercion.
+- feasibility rejected a planned sale whenever `len(orders) >= raw_cap`;
+- append admission required `len(market) < raw_cap`.
+
+At raw cap `0` or any negative cap those guards treated the market as having zero
+rows, while the official interpreter executes at least row zero. The successor
+extracts one `_engine_market_limit(config)` from the already-authenticated prefix
+rule, uses it in `_engine_market_prefix()`, binds it once in `act()`, and routes both
+guards through that same value. Existing int-coercion behavior is intentionally
+preserved; this patch fixes minimum-one parity rather than inventing a new config
+typing policy.
 
 ## Bound composition
 
@@ -22,22 +36,27 @@ The official interpreter derives `turns_per_day` from configuration and uses it 
 2. canonical prefix materializer Git blob `f36e9120ea07c861a7eca5821a5306c6dbfa4613`;
 3. exact prefix scratch output Git blob `1da9934ec45f485a16244bcbc78af26d9109b97e`;
 4. official engine Git blob `3c202c7ee921da239356789e266b694635103fc4`;
-5. then `materialize_scheduler_calendar.py` applies only the calendar closure.
-
-The new helper accepts only a positive plain `int` `turnsPerDay` (default 24 when the key is absent). `bool`, float, string, null, containers, zero, and negative values fail closed. `SellScheduler.act()` binds that value before any represented unit projection; the two independently callable projection helpers bind it again at their own source boundaries.
+5. `materialize_scheduler_calendar.py` applies calendar custody plus shared
+   minimum-one market-limit custody.
 
 ## Validation receipt
 
 Exact authored candidate against the bound prefix/engine bytes:
 
-- focused suite: **15/15 PASS** normal;
-- focused suite: **15/15 PASS** under `python -O`;
+- focused suite: **18/18 PASS** normal;
+- focused suite: **18/18 PASS** under `python -O`;
 - `py_compile`: **PASS**;
 - exact CLI scratch materialization: **PASS**;
-- candidate scheduler Git blob: `b435de06c291186ae5895e2db7667fb1fc1c149f`.
+- candidate scheduler Git blob: `2fb6908282cfcd99d3745ff0ca96bc7c1361ae0a`.
 
-The focused contracts cover the exact raw→prefix→calendar chain, engine source anchors, canonical 24 parity, 12-turn predecessor killers for HIRE reset, future unit-day arguments, represented EOD, horizon clipping and naive EOD handling, plus type poison, source/engine drift, double apply, ambiguous/missing anchors and exclusive-output custody.
+New cap regressions prove cap `0` and negative caps retain one executable row, cap
+`1` is identical, both `act()` guards use the shared effective limit, and the prefix,
+scheduler guards, and exact engine source are bound to one minimum-one theorem. The
+prior calendar/source-drift/double-apply/exclusive-output contracts remain green.
 
 ## Boundaries
 
-No runtime/default/config/COMPOSITION/INTEGRATION/archive/Kaggle change. No gameplay or economics promotion claim. The existing executable-prefix lane retains market-prefix authority, and the separately claimed represented physical-transition lane retains purchase/HIRE execution authority. This artifact owns only calendar semantics across `SellScheduler.cash_reserve()`, `receipt_profile()` and `act()` after canonical executable-prefix composition.
+No runtime/default/config/COMPOSITION/INTEGRATION/archive/Kaggle change and no gameplay
+or economics promotion claim. The separately claimed represented physical-transition
+lane retains purchase/HIRE execution authority. This artifact owns scheduler calendar
+and executable market-cap source parity after canonical executable-prefix composition.

@@ -1,0 +1,104 @@
+{
+  "schema": "titan.s12b.top5-candidate-key-specs.v1",
+  "basis": {"top5_episodes": 12, "top5_seats": 24, "top5_decisions": 17256, "submitted_baseline_episode": 107130860},
+  "ranked": [
+    {
+      "rank": 1,
+      "key": "p07_realized_actor_binding",
+      "status": "highest-priority handoff; implementation owned elsewhere",
+      "mechanism": "Bind returned hand-command cardinality to the workers present in the immediately preceding observation. After a partial HIRE, preserve all existing lanes and either prove an exact-equivalent reassignment of missing-lane work to realized actors or omit the unreachable suffix.",
+      "seam": "main.py::agent, after all policy/market transforms and before returned-action receipt/history commit",
+      "activation": "len(planned_action.hands) > len(previous_observation.farms[player].hands)",
+      "off_identity": "Feature disabled returns the producer's action bytes unchanged.",
+      "fail_closed": [
+        "Never invent a worker or market funding.",
+        "Never move farmer or market commands.",
+        "Reject reassignment across day, route, checkpoint, inventory, or spatial-precondition boundaries.",
+        "On ambiguity, retain only commands addressable to observed workers; record the rejected suffix."
+      ],
+      "predecessor_killers": [
+        "Audit action[k] against observation[k-1], never post-state observation[k].",
+        "A partial HIRE followed by an adapted one-worker action must remain zero-overage.",
+        "A partial HIRE followed by a stale extra lane must activate on the first stale action.",
+        "Full-game top-five panel must retain zero cardinality overages."
+      ],
+      "evidence": {
+        "top5_decisions": 17256,
+        "top5_overage_rows": 0,
+        "top5_rejected_hires": 5,
+        "baseline_bryce_overage_rows": 45,
+        "baseline_bryce_unreachable_commands": 45,
+        "baseline_bryce_nonpass_unreachable_commands": 26,
+        "baseline_blocks": [[26,48],[123,144]]
+      },
+      "admission": "Must produce candidate-action activation, preserve all reachable command effects, close the cardinality invariant over every full game, and pass both-seat matched official panels without a negative opponent-by-seat own-cash stratum."
+    },
+    {
+      "rank": 2,
+      "key": "opening_committed_liquidity",
+      "status": "strong causal handoff to the existing Capillary/opening owners",
+      "mechanism": "Stage already-planned expensive day-zero seed purchases at the latest executable pre-plant slots when an earlier bulk purchase would make a represented fixed commitment unaffordable.",
+      "seam": "route compilation immediately before frozen SELL materialization; existing isolated carrier is titan_capillary.py::CapillaryTitanAgent",
+      "activation": "A paid seed unit is not consumed before a later represented plant, and current cash minus that premature purchase is below the exact cost of a represented HIRE/land/animal commitment before the seed is needed.",
+      "off_identity": "Feature disabled leaves route topology, active and inactive market rows, actor commands, and total seed quantity byte-identical.",
+      "fail_closed": [
+        "Do not forecast rival receipts or future market fills.",
+        "Do not invent, drop, or change total seed quantity.",
+        "Do not stage across day, checkpoint, owner, crop, or route-prefix disagreement.",
+        "Do not consume an active market slot unless the exact route already contains an executable replacement slot."
+      ],
+      "predecessor_killers": [
+        "Same day-zero output bundle must remain exact: five hands, nineteen plants, four animals on episode 107130860.",
+        "MELON peak paid inventory must fall below twelve and no MELON plant may be missed.",
+        "The next-day four-HIRE row must execute all four or the feature must report why it did not activate.",
+        "Action-bound full-game evidence is required; a fixed-tape liquidity reconvergence is insufficient."
+      ],
+      "evidence": {
+        "bryce_cash_after_step_2": 52,
+        "apa_cash_after_step_2": 984,
+        "bryce_cash_end_day_0": 6,
+        "apa_cash_end_day_0": 42,
+        "bryce_day1_hands_after_first_action": 3,
+        "apa_day1_hands_after_first_action": 4,
+        "bryce_melon_seed_peak": 12,
+        "apa_melon_seed_peak": 2,
+        "bryce_melon_seed_auc": 125,
+        "apa_melon_seed_auc": 12,
+        "same_day0_outputs": {"hands":5,"plants":19,"animals":4}
+      },
+      "admission": "Require nonzero returned-action activation, exact plant feasibility, positive mean and nonnegative median own cash, no negative opponent-by-seat stratum, and no new worker-cardinality overage."
+    },
+    {
+      "rank": 3,
+      "key": "opening_state_bound_mode",
+      "status": "experiment only; do not clone a leader tape",
+      "mechanism": "Select among bounded opening templates only from current public state and exact executable commitments, with permanent handoff to incumbent TITAN on the first mismatch.",
+      "seam": "main.py::agent opening-window arbitration before the incumbent action is returned",
+      "activation": "Only during a fixed early-step window while source fingerprint, public-state continuity, action shape, and controller health all match the selected template.",
+      "off_identity": "Disabled or mismatched state returns incumbent TITAN action bytes unchanged and permanently closes the opening controller for that episode.",
+      "observed_families": [
+        {"name":"immediate_worker_asset","seats":8,"representative":"Otter Vibe","step1_hands":5,"step2_hands":5,"day0_plants_mean":20.0,"day0_animals_mean":5.0},
+        {"name":"two_step_worker_expansion","seats":5,"representative":"SpaTaro","step1_hands_mean":4.4,"step2_hands_mean":6.0,"day0_max_hands_mean":6.2,"day0_plants_mean":15.8},
+        {"name":"turn1_market_stage_turn2_workers","seats":11,"representatives":["Himanshu Kumar","Terry Luo","pensukesan"],"step1_hands":0,"step2_hands":5,"day0_plants_mean":18.636,"day0_animals_mean":4.0,"melon_seed_peak_mean":3.0,"melon_seed_auc_mean":12.0}
+      ],
+      "warning": "Winner comparisons reject a monotone opening heuristic: winners had more/equal/fewer day-zero hands in 3/7/2 games. A template is a panel candidate, not a dominance theorem.",
+      "admission": "Each mode needs an all-off identity proof, bounded activation, first-mismatch failover, and separate both-seat matched official panels."
+    },
+    {
+      "rank": 4,
+      "key": "land_unlock_timing_probe",
+      "status": "lower-priority one-factor screen",
+      "mechanism": "Retain the exact BUY_LAND count and target quadrant, but test whether the first unlock can move to the last safe slot before represented work begins.",
+      "seam": "route-bank BUY_LAND timing transform before action materialization",
+      "activation": "An existing BUY_LAND is earlier than first represented target-quadrant work, and every intervening action remains executable without the land.",
+      "off_identity": "Disabled or ambiguous routes are byte-identical.",
+      "evidence": {"otter_first_unlock_step":121,"other_top5_first_unlock_step":151,"submitted_baseline_first_unlock_step":151,"winner_earlier_same_later_counts":[6,4,2]},
+      "warning": "Earlier unlock is not universal and current TITAN already matches four of five top-team schedules; treat as a low-priority one-factor test, not regression root cause."
+    }
+  ],
+  "rejected_direct_ports": [
+    {"mechanism":"raw_turn1_wheat_roundtrip_clone","reason":"Observed in three leaders, but same-turn common-market pricing makes the cash effect opponent-contingent. The replay corpus is not an all-rival-action dominance proof."},
+    {"mechanism":"raw_terminal_sell_quantity_clone","reason":"Recorded SELL quantities are requested actions and frequently exceed stock; they are not realized-sale receipts."},
+    {"mechanism":"maximize_day0_hands","reason":"All top-five seats reached at least five, but winners had more/equal/fewer hands in 3/7/2 matched games. Preserve feasibility; do not maximize blindly."}
+  ]
+}
