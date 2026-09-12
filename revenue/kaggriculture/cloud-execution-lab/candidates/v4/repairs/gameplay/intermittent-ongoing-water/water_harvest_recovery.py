@@ -12,7 +12,8 @@ HARVEST is accepted only when the current source observation proves positive
 stored yield, so the reclaimed row is productive rather than a syntactic PASS.
 The next-day observation must prove that the same crop survived with the expected
 one-day missed-water streak and the supplied recovery action must actually WATER
-that site.  No forecast or scheduler promise is treated as execution proof.
+that site without another same-callback actor DIGging the plant.  No forecast or
+scheduler promise is treated as execution proof.
 
 Research/candidate-only.  No runtime/default/config key is created.
 """
@@ -24,13 +25,14 @@ from typing import Any
 import ongoing_water_skip as hydra
 
 SCHEMA = "titan.v4.altwater-harvest-recovery/v1"
+LAST_EXECUTABLE_STEP = 718
 
 
 def _plain_step(observation: Any) -> int | None:
     if not isinstance(observation, dict):
         return None
     step = observation.get("step")
-    return step if type(step) is int and 0 <= step <= 719 else None
+    return step if type(step) is int and 0 <= step <= LAST_EXECUTABLE_STEP else None
 
 
 def _player(observation: Any) -> int | None:
@@ -87,10 +89,19 @@ def _positions_and_rows(action: Any, observation: Any):
 
 
 def _recovery_water_actor(action: Any, observation: Any, site: list[int]) -> int | None:
+    """Authenticate one same-site WATER and absence of plant-destroying DIG.
+
+    Unit rows execute in actor order.  A DIG either before the WATER removes the
+    target before recovery, or after the WATER destroys the supposedly recovered
+    plant before callback end.  Both invalidate same-live-plant custody.
+    """
     parsed = _positions_and_rows(action, observation)
     if parsed is None:
         return None
-    matches = [actor for actor, position, row in parsed if position == site and row == ["WATER"]]
+    same_site = [(actor, row) for actor, position, row in parsed if position == site]
+    if any(row[0] == "DIG" for _actor, row in same_site):
+        return None
+    matches = [actor for actor, row in same_site if row == ["WATER"]]
     return matches[0] if len(matches) == 1 else None
 
 
@@ -160,6 +171,7 @@ def plan_water_harvest_recovery(
             "recovery_actor": recovery_actor,
             "recovery_row": ["WATER"],
             "productive_current_row_proved": True,
+            "same_callback_destructive_dig_absent": True,
             "same_live_plant_recovery_proved": True,
             "runtime_promise": False,
         })
