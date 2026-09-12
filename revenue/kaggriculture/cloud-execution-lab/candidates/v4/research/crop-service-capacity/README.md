@@ -51,12 +51,13 @@ The verifier accounts for the mechanics that make the raw slogan unsafe to apply
 - actor positions are carried through NORTH/SOUTH/EAST/WEST commands, including out-of-bounds movement no-ops, so later WATER or DIG must physically occur on the candidate tile;
 - observation `hour` is strict-integer bound to `step % turnsPerDay`; a caller-inconsistent or type-poisoned clock cannot mint an EOD certificate;
 - terminal horizon is part of the proof: the pinned official engine blob `3c202c7ee921da239356789e266b694635103fc4` marks the callback at `episodeSteps - 2` as the last executable callback. The pinned official configuration blob `b354d06b742fe48402513792253f1a5c29366b20` supplies the standard `episodeSteps=720` and `turnsPerDay=24` defaults. PLANTGUARD therefore proves that this day's hour-23/EOD callback lies at or before that boundary. Under those standard defaults, step718/hour22 cannot be rejected using a nominal authored step719 because step719 and that EOD never execute; the last real EOD callback is step695/hour23;
-- returned evidence names both `engine_git_blob` and `configuration_git_blob`, and resolved reports expose `removed_actor_indices` alongside watered/doomed actors, so the source theorem, standard defaults, and candidate disposition remain auditable rather than drifting silently;
+- omitted `configuration` uses those pinned official defaults. Any explicit configuration map is proof-critical and is rejected unless `configuration_authenticated=True` literally; callers may set that flag only after binding the supplied `episodeSteps`, `turnsPerDay`, and related values to the exact interpreter instance whose authored actions are being evaluated;
+- returned evidence names both `engine_git_blob` and `configuration_git_blob`, and resolved reports expose `removed_actor_indices` alongside watered/doomed actors. The configuration blob identifies the source of the **default** values; authenticated explicit overrides remain caller-custodied rather than being falsely attributed to that blob;
 - the suffix must be complete through a **reachable** EOD and preserve existing actor cardinality;
 - an executable HIRE before the final callback destroys one-sided rejection because a new actor could create an unrepresented watering path; HIRE beyond the market row cap is inert, and a final-hour HIRE cannot act before that EOD;
-- malformed, incomplete, terminal-unreachable, type-poisoned, unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
+- malformed, incomplete, terminal-unreachable, type-poisoned, suffix-unauthenticated, configuration-unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
 
-The only rejection verdict is `DOOMED_AUTHORED_SUFFIX`. A found WATER or removal of every candidate returns `NOT_CERTIFIED`, **not SAFE**. The helper changes no action itself and has no runtime/default/config authority. A scheduler may consume the certificate only after proving custody of the suffix and exact `episodeSteps`/`turnsPerDay` interpreter configuration; current-native engagement and both-seat economics remain mandatory before suppressing any PLANT in production.
+The only rejection verdict is `DOOMED_AUTHORED_SUFFIX`. A found WATER or removal of every candidate returns `NOT_CERTIFIED`, **not SAFE**. The helper changes no action itself and has no runtime/default/config authority. A scheduler may consume the certificate only after proving custody of the authored suffix; omitted configuration is bound to the pinned official defaults, while any explicit custom configuration additionally requires literal `configuration_authenticated=True` after the caller proves interpreter custody. Current-native engagement and both-seat economics remain mandatory before suppressing any PLANT in production.
 
 ## Ownership boundaries
 
@@ -67,7 +68,7 @@ CROPSCALE does not:
 - allocate workers or invent movement routes;
 - credit same-callback BUY_SEED or HIRE before unit execution;
 - prove BUY_LAND/DIG/HARVEST feasibility merely because the envelope over-credits their possible cells;
-- treat an authored suffix as authenticated on its own;
+- treat an authored suffix or caller-supplied configuration as authenticated on its own;
 - modify returned actions, config defaults, runtime, archive, or Kaggle state.
 
 It is intended as an input to the existing single V4 planner/composition path.
@@ -83,8 +84,8 @@ python -O -B test_plant_guard.py
 python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **20 CROPSCALE tests** and **35 PLANTGUARD tests** pass in each mode.
+Expected: **20 CROPSCALE tests** and **37 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
-The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot, false survival claims from an unauthenticated planting route, false same-EOD rejection when the episode terminates before that EOD can execute, and false weed-doom claims for a plant that authored actions remove before EOD.
+The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot, false survival claims from an unauthenticated planting route or custom configuration, false same-EOD rejection when the episode terminates before that EOD can execute, and false weed-doom claims for a plant that authored actions remove before EOD.

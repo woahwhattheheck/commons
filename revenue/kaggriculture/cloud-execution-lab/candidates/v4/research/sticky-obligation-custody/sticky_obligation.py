@@ -373,8 +373,25 @@ def prove_carry_consumption(
     burden = _nonnegative_int(current_inventory_units, "current_inventory_units")
     sinks = 0
     sink_op = CARRY_SINK[ob.item]
+    rows = _rows(projected_rows)
 
-    for row in _rows(projected_rows):
+    # A projected callback can contain at most one unit action for a given actor.
+    # Validate the complete relevant window before sink accounting so an early
+    # successful FEED/FERTILIZE cannot hide a later impossible duplicate row.
+    seen_actor_steps: set[int] = set()
+    for row in rows:
+        step = _nonnegative_int(row.get("step"), "projected row step")
+        if step <= ob.created_step:
+            continue
+        if step > ob.due_end:
+            break
+        if _actor(row.get("actor"), "projected row actor") != ob.actor:
+            continue
+        if step in seen_actor_steps:
+            raise UnsupportedObligation("duplicate obligated actor row in callback")
+        seen_actor_steps.add(step)
+
+    for row in rows:
         step = _nonnegative_int(row.get("step"), "projected row step")
         if step <= ob.created_step:
             continue
