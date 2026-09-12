@@ -505,7 +505,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
                 if action[0] == 'DROP':
                     report['reason'] = 'unbounded_intervening_drop'
                     return selected, report
-                if action[0] == 'PLACE' and len(action) > 1 and action[1] not in mechanics.ANIMALS:
+                if action[0] == 'PLACE' and len(action) > 1 and mechanics.ANIMALS.get(action[1]) is None:
                     deposits += max(0, int(action[2]) if len(action) > 2 else 1)
                 if action[:2] == ['PICKUP', 'FERTILIZER']:
                     pickups.append((step, actor, pos, max(0, int(action[2]) if len(action) > 2 else 1)))
