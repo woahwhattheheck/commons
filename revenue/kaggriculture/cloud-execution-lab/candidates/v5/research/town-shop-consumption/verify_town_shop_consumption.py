@@ -8,6 +8,7 @@ important rates explicit: shop *unlock* cadence and shop *consumption* cadence.
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,11 @@ LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
 CONFIG = LAB / "reference" / "engine" / "kaggriculture.json"
 EXPECTED_ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+
+
+def _git_blob_sha1(data: bytes) -> str:
+    header = f"blob {len(data)}\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
 
 
 def _literal_assignment(tree: ast.Module, name: str) -> Any:
@@ -39,7 +45,13 @@ def _function_source(source: str, tree: ast.Module, name: str) -> str:
 
 
 def derive() -> dict[str, Any]:
-    source = ENGINE.read_text(encoding="utf-8")
+    engine_bytes = ENGINE.read_bytes()
+    actual_engine_blob = _git_blob_sha1(engine_bytes)
+    assert actual_engine_blob == EXPECTED_ENGINE_BLOB, (
+        actual_engine_blob,
+        EXPECTED_ENGINE_BLOB,
+    )
+    source = engine_bytes.decode("utf-8")
     tree = ast.parse(source)
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     cfg = config["configuration"]
@@ -125,7 +137,7 @@ def derive() -> dict[str, Any]:
     egg_day8_upper_bound = max_daily_demand("EGG", 2)
 
     return {
-        "engine_blob": EXPECTED_ENGINE_BLOB,
+        "engine_blob": actual_engine_blob,
         "defaults": {
             "turns_per_day": turns_per_day,
             "shop_unlock_interval_days": shop_unlock_interval,
