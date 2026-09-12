@@ -21,7 +21,11 @@ def _interval(value):
             raise ValueError('non-finite economic value')
         return (x, x)
     if isinstance(value, (list, tuple)) and len(value) == 2:
-        lo, hi = map(float, value)
+        lo, hi = value
+        if any(isinstance(endpoint, bool) or not isinstance(endpoint, (int, float))
+               for endpoint in (lo, hi)):
+            raise ValueError('invalid value interval')
+        lo, hi = float(lo), float(hi)
         if not math.isfinite(lo) or not math.isfinite(hi) or lo > hi:
             raise ValueError('invalid value interval')
         return (lo, hi)
