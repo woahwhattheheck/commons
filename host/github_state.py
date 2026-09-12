@@ -101,15 +101,19 @@ def _pull(row):
 def _listing_state(rows, open_prs, complete):
     """COMPLETE, PARTIAL or UNKNOWN for a listing of `rows` open pull requests.
 
-    `complete` is the caller's own knowledge: True when every page was fetched
-    (the workflow passes --pulls-complete only after a paginated read
-    succeeded). Without it the listing is compared with the separately counted
-    total; a listing shorter than the total is PARTIAL.
+    `complete` means the pagination command reached its end successfully, not
+    that a moving API represented one atomic snapshot. When an independently
+    measured numeric open count says there are more open PRs than the unique
+    rows we retained, that contradiction wins and coverage is PARTIAL. This is
+    the page-shift race: a PR opening/closing between pages can duplicate a row
+    even though `gh api --paginate` exits successfully.
     """
+    if isinstance(open_prs, int) and len(rows) < open_prs:
+        return "PARTIAL"
     if complete is True:
         return "COMPLETE"
     if isinstance(open_prs, int):
-        return "COMPLETE" if len(rows) >= open_prs else "PARTIAL"
+        return "COMPLETE"
     return UNKNOWN
 
 
@@ -289,9 +293,10 @@ def self_test():
     ]
     counts = {"repository": "o/r", "open_prs": 106, "open_issues": 3,
               "runs_queued": 2284, "runs_in_progress": 18}
-    out = build(pulls, counts, now, complete=True)
+    complete_counts = dict(counts, open_prs=len(pulls))
+    out = build(pulls, complete_counts, now, complete=True)
 
-    assert out["counts"]["open_pull_requests"] == 106
+    assert out["counts"]["open_pull_requests"] == len(pulls)
     assert out["counts"]["runs_queued"] == 2284
     assert out["queue_depth_per_runner"] == round(2284 / 18, 1)
     assert [p["number"] for p in out["newest_pulls"]] == [3, 2, 1], out["newest_pulls"]
@@ -301,18 +306,25 @@ def self_test():
     assert out["undatable_pulls"] == [4], out["undatable_pulls"]
     assert out["drafts"] == 1
     assert out["newest_pulls"][0]["branch"] == "b3"
-    assert _dump(build(pulls, counts, "2026-09-11T09:00:00Z", complete=True)) == _dump(out)
+    assert _dump(build(pulls, complete_counts, "2026-09-11T09:00:00Z", complete=True)) == _dump(out)
 
-    # Four rows against 106 counted open: a subset, so no longest-open claim.
-    partial = build(pulls, counts, now)
+    # Four rows against 106 counted open: a subset, so no longest-open claim,
+    # even if the pagination command itself reached its end successfully.
+    partial = build(pulls, counts, now, complete=True)
     assert partial["pulls_listing"] == "PARTIAL", partial["pulls_listing"]
     assert "longest_open" not in partial
     assert partial["degraded"] == ["pulls-partial"], partial["degraded"]
     assert [p["number"] for p in partial["newest_pulls"]] == [3, 2, 1]
 
-    # A row repeated across a page boundary is counted once.
-    twice = build(pulls + pulls[:2], counts, now, complete=True)
+    # A row repeated across a page boundary is counted once. If the independent
+    # count says the unique listing is short, successful pagination still does
+    # not authorize longest_open.
+    twice = build(pulls + pulls[:2], complete_counts, now, complete=True)
     assert twice["pulls_listed"] == 4, twice["pulls_listed"]
+    shifted = build(pulls[:3] + pulls[1:2], complete_counts, now, complete=True)
+    assert shifted["pulls_listing"] == "PARTIAL", shifted["pulls_listing"]
+    assert shifted["pulls_listed"] == 3, shifted["pulls_listed"]
+    assert "longest_open" not in shifted
 
     sparse = build(None, {"repository": "o/r"}, now)
     assert sparse["counts"]["open_pull_requests"] == UNKNOWN
@@ -329,7 +341,7 @@ def self_test():
     named = build(None, {}, now, degraded=["pulls"])
     assert named["degraded"] == ["pulls"]
 
-    assert _dump(build(pulls, counts, now, complete=True)) == _dump(out)
+    assert _dump(build(pulls, complete_counts, now, complete=True)) == _dump(out)
     print("github_state self-test: PASS")
     return 0
 
@@ -340,8 +352,8 @@ def main(argv=None):
     ap.add_argument("--pulls", help="open pull requests: a JSON array, or JSON "
                     "Lines as `gh api --paginate --jq '.[]|...'` writes them")
     ap.add_argument("--pulls-complete", action="store_true",
-                    help="every page of the listing was read; without this the "
-                    "listing is compared with --open-prs")
+                    help="pagination reached its end; a contradictory numeric "
+                    "--open-prs count still downgrades coverage")
     ap.add_argument("--repository", default="")
     ap.add_argument("--open-prs")
     ap.add_argument("--open-issues")
