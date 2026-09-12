@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 import shutil
+import tarfile
 import tempfile
 import unittest
 
@@ -12,6 +14,12 @@ import build_current as build
 
 HERE = Path(__file__).resolve().parent
 LAB_ROOT = HERE.parents[2]
+
+
+def git_blob_bytes(data: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()
 
 
 class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
@@ -25,6 +33,25 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
         )
         self.assertEqual(
             build.git_blob(HERE / "current_entry.py"), build.EXPECTED_ENTRY_BLOB
+        )
+
+    def test_current_archive_packages_the_pinned_parent_main(self):
+        pointer_path = LAB_ROOT / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+        pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
+        self.assertEqual(pointer["path"], "exports/titan-current.tar.gz")
+        archive = LAB_ROOT / pointer["path"]
+        self.assertEqual(archive.stat().st_size, pointer["bytes"])
+        self.assertEqual(
+            hashlib.sha256(archive.read_bytes()).hexdigest(), pointer["sha256"]
+        )
+        with tarfile.open(archive, "r:*") as package:
+            member = package.getmember("main.py")
+            self.assertTrue(member.isfile())
+            stream = package.extractfile(member)
+            self.assertIsNotNone(stream)
+            main_bytes = stream.read()
+        self.assertEqual(
+            git_blob_bytes(main_bytes), build.EXPECTED_PARENT_MAIN_BLOB
         )
 
     def test_materializes_cap4_and_cap12_from_one_implementation(self):
