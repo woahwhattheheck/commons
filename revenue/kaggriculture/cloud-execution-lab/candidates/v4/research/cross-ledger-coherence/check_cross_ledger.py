@@ -181,7 +181,6 @@ def _component_index(composition: dict[str, Any], errors: list[dict[str, Any]]) 
         if not isinstance(cid, str) or not cid.strip():
             errors.append(_issue("bad_component_id", index=index, actual=cid))
             continue
-        cid = cid.strip()
         if cid in by_id:
             errors.append(_issue("duplicate_component_id", component=cid))
         else:

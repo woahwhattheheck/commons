@@ -149,11 +149,28 @@ class RivalRoutePressureTests(unittest.TestCase):
         with self.assertRaises(R.UnsupportedEvidence):
             R.known_town_absorption("MILK", 0, 1, observation(shops=["FUTURE_UNKNOWN"]), CFG)
 
-    def test_bool_market_limit_fails_closed(self):
+    def test_minimum_one_market_limit_matches_engine(self):
+        routes = {
+            "A": route({0: action()}),
+            "B": route({0: action(["SELL", "WOOL", 3], ["SELL", "MILK", 99])}),
+        }
+        for raw in (0, -1, -99):
+            with self.subTest(maxMarketOrdersPerTurn=raw):
+                cfg = dict(CFG, maxMarketOrdersPerTurn=raw)
+                report = R.route_pressure_report(
+                    routes, "A", "B", observation(), cfg, start=0, horizon=1)
+                self.assertEqual(report["max_market_orders_per_turn"], 1)
+                self.assertEqual(report["sell_delta"], {"WOOL": 3})
+                self.assertNotIn("MILK", report["sell_delta"])
+
+    def test_non_int_market_limit_fails_closed(self):
         routes = {"A": route({}), "B": route({})}
-        cfg = dict(CFG, maxMarketOrdersPerTurn=True)
-        with self.assertRaises(R.UnsupportedEvidence):
-            R.route_pressure_report(routes, "A", "B", observation(), cfg, start=0, horizon=1)
+        for raw in (True, 1.0, "1", None):
+            with self.subTest(maxMarketOrdersPerTurn=raw):
+                cfg = dict(CFG, maxMarketOrdersPerTurn=raw)
+                with self.assertRaises(R.UnsupportedEvidence):
+                    R.route_pressure_report(
+                        routes, "A", "B", observation(), cfg, start=0, horizon=1)
 
 
 if __name__ == "__main__":
