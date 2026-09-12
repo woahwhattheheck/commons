@@ -135,8 +135,16 @@ class CosellOracleTests(unittest.TestCase):
         self.assertEqual(engine._cosell_source_identity["json_git_blob"], m.ENGINE_JSON_BLOB)
         r = m.compare(engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10)
         self.assertEqual(r["terminal_market_inventory"], 10020)
+        self.assertEqual(r["simultaneous_self_revenue"], 1934)
+        self.assertEqual(r["misaligned_same_callback_self_revenue"], 1873)
+        self.assertEqual(r["wait_behind_self_revenue"], 1873)
+        self.assertEqual(r["simultaneous_gain_vs_wait"], 61)
         self.assertEqual(r["misaligned_gain_vs_wait"], 0)
-        self.assertGreater(r["simultaneous_gain_vs_wait"], 0)
+        # Official SELLs quoted at the $1 floor do not add market inventory.
+        # Around the WOOL floor this makes aligned and delayed terminals differ;
+        # the oracle must reject that as a non-comparable cash counterfactual.
+        with self.assertRaises(AssertionError):
+            m.compare(engine, item="WOOL", inventory=10058, self_qty=1, rival_qty=1)
 
 
 if __name__ == "__main__":
