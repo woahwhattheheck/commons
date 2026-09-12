@@ -6,6 +6,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi/**"
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/**"
       - "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
+      - "revenue/kaggriculture/cloud-execution-lab/main.py"
       - ".github/workflows/titan-v5-r04-market-microstack-current-abi.yml"
 
 permissions:
