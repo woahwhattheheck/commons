@@ -19,16 +19,12 @@ PRODUCTS = frozenset(("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
 def _quote(order: Any, prices: Mapping) -> float | None:
     # Match the official positive-integer order grammar without changing bytes.
     # Malformed/unknown orders are barriers, not silently repaired or removed.
-    if not isinstance(order, list) or len(order) < 3 or order[0] != "SELL":
+    if not isinstance(order, list) or len(order) != 3 or order[0] != "SELL":
         return None
-    item = order[1]
-    if not isinstance(item, str) or item not in PRODUCTS:
-        return None
-    try:
-        quantity = int(order[2])
-    except (TypeError, ValueError, OverflowError):
-        return None
-    if quantity <= 0:
+    item, quantity = order[1:]
+    if (not isinstance(item, str) or item not in PRODUCTS
+            or isinstance(quantity, bool) or not isinstance(quantity, int)
+            or quantity <= 0):
         return None
     price = prices.get(item)
     if isinstance(price, bool) or not isinstance(price, (int, float)):
