@@ -125,6 +125,26 @@ class AtlasUnitTests(unittest.TestCase):
             {(0, 0), (0, 2), (3, 0), (3, 2)},
         )
 
+    def test_opening_only_does_not_mint_novel_positive_status(self):
+        opening = {
+            "step": 0,
+            "item": "WHEAT",
+            "own_row": 0,
+            "own_qty": 13,
+            "rival_row": 0,
+            "rival_qty": 13,
+            "same_raw_index": True,
+            "row_delta_own_minus_rival": 0,
+        }
+        status, novel = atlas._classify_collisions([opening])
+        self.assertEqual(status, "OPENING_ONLY_GUARDRAIL_NO_NEW_COLLISIONS")
+        self.assertEqual(novel, [])
+
+        later = {**opening, "step": 11, "own_qty": 2, "rival_qty": 5}
+        status, novel = atlas._classify_collisions([opening, later])
+        self.assertEqual(status, "NOVEL_AUTHORITATIVE_COLLISIONS_FOUND")
+        self.assertEqual(novel, [later])
+
     def test_source_contracts_fail_closed(self):
         with self.assertRaises(ValueError):
             atlas._assert_apex_source_contracts("", "", "")
@@ -155,7 +175,7 @@ class ExactCheckoutTests(unittest.TestCase):
         self.assertTrue(first["controls"]["step0_wheat_same_row"])
         opening = [
             c for c in first["authoritative_collisions"]
-            if c["step"] == 0 and c["item"] == "WHEAT"
+            if atlas._is_known_opening_guardrail(c)
         ]
         self.assertEqual(len(opening), 1)
         self.assertEqual(
@@ -164,6 +184,10 @@ class ExactCheckoutTests(unittest.TestCase):
                 opening[0]["rival_row"], opening[0]["rival_qty"],
             ),
             (0, 13, 0, 13),
+        )
+        self.assertEqual(
+            first["counts"]["novel_authoritative_collisions"],
+            len(first["novel_authoritative_collisions"]),
         )
         excluded = set(first["scope"]["guard_boundaries_excluded_without_native_receipt"])
         for collision in first["authoritative_collisions"]:
