@@ -135,18 +135,20 @@ class ReleaseTransactionTests(unittest.TestCase):
         }
         self.promotion_raw = canon(self.promotion)
         cells = []
-        for seed in range(10, 14):
-            for seat in (0, 1):
-                cells.append(
-                    {
-                        "seed": seed,
-                        "seat": seat,
-                        "control_own": 1000 + seed,
-                        "control_rival": 900 + seed,
-                        "candidate_own": 1010 + seed,
-                        "candidate_rival": 900 + seed,
-                    }
-                )
+        for opponent_id in ("opponent:test-a", "opponent:test-b"):
+            for seed in range(10, 14):
+                for seat in (0, 1):
+                    cells.append(
+                        {
+                            "opponent_id": opponent_id,
+                            "seed": seed,
+                            "seat": seat,
+                            "control_own": 1000 + seed,
+                            "control_rival": 900 + seed,
+                            "candidate_own": 1010 + seed,
+                            "candidate_rival": 900 + seed,
+                        }
+                    )
         self.economics = {
             "schema": econ.SCHEMA,
             "control_id": self.promotion["control_id"],
@@ -203,7 +205,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         second = self.build()
         self.assertEqual(first, second)
         self.assertEqual(first["classification"], "PASS")
-        self.assertEqual("titan-v5-release-transaction/v2", first["schema"])
+        self.assertEqual("titan-v5-release-transaction/v3", first["schema"])
         self.assertRegex(first["transition_id"], r"^v5tx:[0-9a-f]{64}$")
         self.assertEqual(first["expected_old"]["archive_sha256"], self.old["sha256"])
         self.assertEqual(first["approved_new"]["archive_sha256"], self.new["sha256"])
@@ -214,10 +216,15 @@ class ReleaseTransactionTests(unittest.TestCase):
         self.assertEqual(first["economics"]["report_sha256"], sha(self.economics_raw))
         self.assertEqual(first["economics"]["engine_id"], self.manifest["engine_id"])
         self.assertEqual(first["economics"]["opponent_pack_id"], self.manifest["opponent_pack_id"])
+        self.assertEqual(first["economics"]["opponent_count"], 2)
+        self.assertEqual(
+            first["economics"]["opponent_ids"],
+            ["opponent:test-a", "opponent:test-b"],
+        )
         self.assertEqual(first["economics"]["control_archive_sha256"], self.old["sha256"])
         self.assertEqual(first["economics"]["candidate_archive_sha256"], self.new["sha256"])
-        self.assertEqual(first["economics"]["cell_count"], 8)
-        self.assertEqual(first["economics"]["sum_margin_delta"], 80)
+        self.assertEqual(first["economics"]["cell_count"], 16)
+        self.assertEqual(first["economics"]["sum_margin_delta"], 160)
 
     def test_stale_live_pointer_fails_closed(self):
         with self.assertRaisesRegex(rt.TransactionError, "stale"):
@@ -286,6 +293,26 @@ class ReleaseTransactionTests(unittest.TestCase):
         with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
             self.build(economics_raw=canon(bad))
 
+    def test_single_opponent_economics_cannot_release(self):
+        bad = json.loads(json.dumps(self.economics))
+        cells = []
+        for seed in range(10, 18):
+            for seat in (0, 1):
+                cells.append(
+                    {
+                        "opponent_id": "opponent:test-a",
+                        "seed": seed,
+                        "seat": seat,
+                        "control_own": 1000 + seed,
+                        "control_rival": 900 + seed,
+                        "candidate_own": 1010 + seed,
+                        "candidate_rival": 900 + seed,
+                    }
+                )
+        bad["cells"] = cells
+        with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+            self.build(economics_raw=canon(bad))
+
     def test_stale_execution_closure_cannot_release(self):
         mutations = [
             ("engine_id", "engine:stale"),
@@ -306,6 +333,24 @@ class ReleaseTransactionTests(unittest.TestCase):
         better["cells"][0]["candidate_own"] += 1
         second = self.build(economics_raw=canon(better))
         self.assertNotEqual(first["economics"]["report_sha256"], second["economics"]["report_sha256"])
+        self.assertNotEqual(first["transition_id"], second["transition_id"])
+
+    def test_opponent_membership_changes_transition_identity(self):
+        first = self.build()
+        changed = json.loads(json.dumps(self.economics))
+        for cell in changed["cells"]:
+            if cell["opponent_id"] == "opponent:test-b":
+                cell["opponent_id"] = "opponent:test-c"
+        changed["cells"].sort(
+            key=lambda cell: (cell["opponent_id"], cell["seed"], cell["seat"])
+        )
+        second = self.build(economics_raw=canon(changed))
+        self.assertEqual(second["economics"]["opponent_count"], 2)
+        self.assertEqual(
+            second["economics"]["opponent_ids"],
+            ["opponent:test-a", "opponent:test-c"],
+        )
+        self.assertNotEqual(first["economics"]["panel_sha256"], second["economics"]["panel_sha256"])
         self.assertNotEqual(first["transition_id"], second["transition_id"])
 
     def test_trusted_base_gate_must_pass(self):
