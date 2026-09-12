@@ -1,6 +1,6 @@
 # ASTRA-DEADCAP — terminal acquisition cash-path oracle
 
-Status: **donor defect proven; current-native engagement COLD; evidence-only.**
+Status: **donor defect proven; one authenticated current-native cell is negative; global current-native engagement remains unmeasured; evidence-only.**
 
 This package lives inside the one canonical TITAN V4 research tree. It does not add a controller, feature key, runtime hook, default, archive, or Kaggle change.
 
@@ -17,11 +17,11 @@ HIRE is explicitly out of scope. Product/animal/land rows are counted for the br
 - donor `r01_tapes.py`: 32,955 bytes, Git blob `a43289b9cc5e34a2481fddf652762a7d92f427ef`, SHA256 `4a60e775e52905048257aff4871a11c5ba49de6ba464177ed6ae4d9bd3120e18`
 - official engine: Git blob `3c202c7ee921da239356789e266b694635103fc4`
 - authenticated foundation artifact: `10175943272`, archive SHA256 `b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9`
-- current production pins during the audit: `main.py` `4a8cf7bc...`, `titan_runtime.py` `6d9720f4...`, config `3a3bef83...`
+- current production pins used by the native probe: `main.py` `4a8cf7bcda1f0fea231a144692cb84a779a9e73e`, `titan_runtime.py` `6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0`, config `3a3bef83899d3010fad623b628d9e95d9978111b`
 
-The foundation runtime preimage is `b952c9c2...`. Current `titan_runtime.py` differs by commit `682ad628...`, whose reviewed repair only rebinds cache hits into `sys.modules`; that commit explicitly leaves gameplay selection/defaults unchanged.
+Post-merge custody repair #12943 makes the current-native regression call `authenticate_current()` and assert all three exact Git blobs before invoking `current_native_probe()`. A moving checkout therefore fails closed on production-source drift.
 
-## Census
+## Donor census
 
 Across the exact 13 × 719 donor tapes:
 
@@ -37,7 +37,7 @@ The seed cash-path oracle returns exactly one candidate:
 
 There is **no later `PLANT MELON` at all** in tape 12, so the purchased seed cannot enter a crop/cash path.
 
-## Exact-engine witness
+## Exact-engine donor witness
 
 Tape 12 vs tape 0, seed 0, seat 0:
 
@@ -50,13 +50,19 @@ Tape 12 vs tape 0, seed 0, seat 0:
 - own delta: **+$80**
 - rival delta: **$0**
 
-A broader fixed-route differential ran 104 cells: all 13 donor opponents × seeds 0..3 × both seats. Every cell is exactly `+$80` own and `$0` rival.
+A broader fixed-route donor differential ran 104 cells: all 13 donor opponents × seeds 0..3 × both seats. Every cell is exactly `+$80` own and `$0` rival.
 
-## Current-native disposition
+## Current-native truth scope
 
-The production agent on authenticated artifact `10175943272`, replayed to the same boundary against tape 0 seed 0, does **not** emit the donor row. At step 284 its returned market is `SELL WHEAT 9`; MELON seed stock remains zero. The current runtime's only post-foundation byte change is the loader-cache namespace repair above, not gameplay.
+The authenticated production replay measures exactly **one current-native cell**: seat 0, seed 0, rival tape 0, through step 284. In that cell the returned market is `SELL WHEAT 9`, not the exact historical witness `BUY_SEED MELON 1`; MELON seed stock remains zero.
 
-Therefore: **COLD / NO RUNTIME GUARD.** Landing a DELETE/PASS transform would duplicate behavior current native already achieves and would add unnecessary policy surface. This package instead keeps the historical defect and exact cash-path regression executable so a future route/controller change cannot silently reintroduce it.
+That is valid negative evidence for this exact donor witness, but it is **not a global COLD census**. The probe does not search both seats, a multi-seed/opponent panel, or arbitrary current-native dead-seed acquisitions at other callbacks.
+
+Therefore the authoritative disposition is:
+
+**ONE-CELL DONOR WITNESS ABSENT / GENERAL CURRENT-NATIVE DEAD-SEED ENGAGEMENT UNMEASURED.**
+
+No runtime guard is authorized from this package. A global COLD statement requires a separately declared authenticated current-native panel whose returned actions are scanned with the generic dead-seed cash-path theorem rather than exact equality with one historical row.
 
 ## Reproduce
 
@@ -67,6 +73,6 @@ python -B -m unittest -v test_deadcap_oracle.py
 python -O -B -m unittest -v test_deadcap_oracle.py
 ```
 
-For the full 104-cell matrix, call `deadcap_oracle.result_bundle(..., full_matrix=True)` against the pinned donor tape and official engine.
+For the full 104-cell donor matrix, call `deadcap_oracle.result_bundle(..., full_matrix=True)` against the pinned donor tape and official engine.
 
-Scope limit: this proves one seed dead-capex witness and the current COLD engagement state. It is not a general proof that all late purchases are dead and it does not authorize removing buys without the cash-path certificate.
+Scope limit: this proves one historical seed dead-capex defect, its exact fixed-route economics, and one authenticated negative current-native cell. It does **not** prove global current-native COLD and does not authorize removing buys without a current returned-action cash-path certificate.
