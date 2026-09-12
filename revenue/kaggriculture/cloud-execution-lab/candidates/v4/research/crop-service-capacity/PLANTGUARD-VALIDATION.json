@@ -1,0 +1,70 @@
+{
+  "schema": "titan-v4-plantguard-validation/v1",
+  "status": "source_derived_research_no_activation",
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "gemini_seam": "PLANTGUARD / last-hour planting guard",
+  "theorem": [
+    "new PLANT starts consecutive_unwatered=1 and watered_today=false",
+    "same-EOD survival therefore requires WATER after the PLANT unit action and before EOD",
+    "current actor order matters: WATER before PLANT on the same callback does not discharge the new plant",
+    "movement changes later WATER location and is tracked across the complete authored suffix",
+    "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
+  ],
+  "result_contract": {
+    "reject_only": "DOOMED_AUTHORED_SUFFIX",
+    "otherwise": "NOT_CERTIFIED",
+    "safe_verdict_exists": false,
+    "decision_authority": false
+  },
+  "executed": {
+    "normal_tests": {
+      "count": 19,
+      "status": "pass"
+    },
+    "optimized_tests": {
+      "count": 19,
+      "status": "pass"
+    },
+    "py_compile": {
+      "status": "pass"
+    },
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41"
+  },
+  "files": {
+    "plant_guard.py": {
+      "bytes": 12745,
+      "sha256": "d84c4f6eaa6641adeb3a58d92addca3327d248645f0ea97fee0e616adbf6f7f4"
+    },
+    "test_plant_guard.py": {
+      "bytes": 8392,
+      "sha256": "44fd7651b5ac4da14dfbad69af4718db2e4722537c5037cfdc37b0e4a9525286"
+    }
+  },
+  "covered_edges": [
+    "last-hour single-actor doom",
+    "same-callback later-actor WATER rescue",
+    "same-callback WATER-before-PLANT non-rescue",
+    "later-callback same-actor WATER",
+    "movement away from target",
+    "another actor move-then-WATER rescue",
+    "out-of-bounds move no-op",
+    "incomplete suffix fail-closed",
+    "current/future HIRE actor ambiguity",
+    "final-hour HIRE irrelevance",
+    "market-cap-inert HIRE",
+    "same-crop seed overshoot",
+    "colocated duplicate PLANT order",
+    "nonempty target",
+    "suffix authentication requirement",
+    "actor-cardinality drift",
+    "mixed rescued/doomed plants",
+    "input immutability"
+  ],
+  "limits": [
+    "authored suffix custody must be established by the caller",
+    "NOT_CERTIFIED is not SAFE or profitable",
+    "no controller/scheduler/runtime/default/config/COMPOSITION/evaluator/archive/Kaggle mutation",
+    "current-native engagement and both-seat economics are required before any action suppression is promoted"
+  ]
+}
