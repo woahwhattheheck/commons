@@ -216,10 +216,11 @@ def suppress_confirmed(observation: Any, action: Any, configuration: Any = None)
     if use <= 0:
         return action, report
     out = deepcopy(action)
-    if use == qty:
-        del out["market"][index]
-    else:
-        out["market"][index][2] = qty - use
+    # Preserve row topology even when every source unit is suppressed.  The
+    # engine slices the market list to its order cap before parsing; deleting
+    # this row could promote an unrelated suffix order into execution.  A
+    # zero-quantity BUY_PRODUCT parses as inert, so it safely occupies the slot.
+    out["market"][index][2] = qty - use
     report.update(
         status="source_suppressed",
         target=expected_target,

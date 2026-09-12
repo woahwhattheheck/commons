@@ -71,6 +71,38 @@ class WorkerJobValueByproductTests(unittest.TestCase):
         self.assertFalse(report['admitted'])
         self.assertEqual(report['reason'], 'invalid_input')
 
+    def test_collection_certificate_binds_exact_engine_item(self):
+        kwargs = self.livestock_job()
+        fertilizer = kwargs['expected_outputs'][1]
+        fertilizer['item'] = 'MILK'
+        kwargs['market_events'][2]['item'] = 'MILK'
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertFalse(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'invalid_input')
+
+    def test_collection_certificate_binds_exact_one_unit_quantity(self):
+        kwargs = self.livestock_job()
+        fertilizer = kwargs['expected_outputs'][1]
+        fertilizer['quantity'] = 2
+        kwargs['market_events'][2]['quantity'] = 2
+        kwargs['market_events'][2]['receipt_floor'] = 10
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertFalse(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'invalid_input')
+
+    def test_collection_step_cannot_back_multiple_output_certificates(self):
+        kwargs = self.livestock_job()
+        fertilizer = kwargs['expected_outputs'][1]
+        kwargs['expected_outputs'].append(copy.deepcopy(fertilizer))
+        kwargs['market_events'][2]['quantity'] = 2
+        kwargs['market_events'][2]['receipt_floor'] = 10
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertFalse(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'invalid_input')
+
     def test_non_materializing_service_cannot_claim_sale_provenance(self):
         kwargs = self.livestock_job()
         fertilizer = kwargs['expected_outputs'][1]

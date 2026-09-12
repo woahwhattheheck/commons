@@ -96,6 +96,7 @@ def _requirements(requirements: Sequence[Mapping[str, Any]], *, kind: str,
     if isinstance(requirements, (str, bytes)) or not isinstance(requirements, Sequence):
         raise ValueError(f"{kind} requirements must be a sequence")
     result = []
+    collected_steps = set()
     end_step = start_step + len(ops) - 1
     for raw in requirements:
         if not isinstance(raw, Mapping):
@@ -121,6 +122,16 @@ def _requirements(requirements: Sequence[Mapping[str, Any]], *, kind: str,
                 raise ValueError("output producer is not a certified materializing action")
             if ops[produced-start_step] != producer:
                 raise ValueError("output producer does not match worker action stream")
+            if producer == "COLLECT_FERTILIZER":
+                # The official engine has an exact postimage: one successful
+                # collection flips fertilizer_available and materializes exactly
+                # one FERTILIZER in this worker's inventory.  Do not let the
+                # certificate relabel, multiply, or reuse that physical unit.
+                if item != "FERTILIZER" or quantity != 1:
+                    raise ValueError("COLLECT_FERTILIZER certifies one FERTILIZER")
+                if produced in collected_steps:
+                    raise ValueError("COLLECT_FERTILIZER produced_step reused")
+                collected_steps.add(produced)
             if ops[ready-start_step] != "DROP":
                 raise ValueError("output sale_ready_step is not an explicit DROP action")
             result.append({"item": item, "quantity": quantity, "producer": producer,
@@ -144,9 +155,10 @@ def evaluate_worker_job(*, start_step: int, actions: Sequence[Sequence[Any]],
     unit action because Kaggriculture unit actions precede the market queue.
     Output receipts are credited only when a certified materializing action
     (HARVEST by default, or explicit COLLECT_FERTILIZER) is followed by a DROP
-    and a provenance-attributed sale at/after that deposit.  Each physical input
-    or sale unit can satisfy at most one certified requirement/output.  Market
-    events must use caller-certified free slots.
+    and a provenance-attributed sale at/after that deposit.  A collection can
+    certify only the engine's exact one-unit FERTILIZER postimage and only once.
+    Each physical input or sale unit can satisfy at most one certified
+    requirement/output.  Market events must use caller-certified free slots.
 
     ``receipt_floor`` and ``cost_upper`` are deliberately caller-provided bounds;
     this helper never predicts a future quote or fill.  ``value_per_step`` is strict net
