@@ -65,7 +65,7 @@ def apply(src):
         "        return _v3_core(observation, configuration)\n",
         "def v3_agent(observation, configuration=None):\n"
         "    global SALE_HORIZON, _TERMINAL_FERTILIZER_AGENT\n"
-        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or PLACE_DELIVERY or GOOSE_PASS_RESCUE or B10_PUBLIC_SUPPLY_ORDER or FEED_PREBUY):\n"
+        "    if not (MIRROR_HORIZON or TERMINAL_FERTILIZER or GOOSE_RESCUE or PLACE_DELIVERY or GOOSE_PASS_RESCUE or B10_PUBLIC_SUPPLY_ORDER):\n"
         "        return _v3_core(observation, configuration)\n",
         "R04 V4 outer-wrapper dispatch",
     )
