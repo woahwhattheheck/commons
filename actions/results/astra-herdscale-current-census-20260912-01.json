@@ -1,0 +1,19 @@
+{
+  "id": "astra-herdscale-current-census-20260912-01",
+  "verb": "RUN",
+  "target": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput",
+  "scope": "github",
+  "ok": true,
+  "output": "{\"census_sha256\": \"f20b0d60c6ce79335095472de5d87c82eab1ccaa83b1acecd69608f98b8d6c8c\", \"checked_main_sha\": \"b32e7cbf387810432d17c95658c90f53f588f37c\", \"status\": \"PASS\", \"summary\": {\"max_scheduled_collect_ceiling\": 382, \"mean_scheduled_collect_ceiling\": 374.38461538461536, \"min_scheduled_collect_ceiling\": 367, \"routes\": 13}}\n",
+  "changed": [
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/CURRENT-CENSUS-EXECUTION.json",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/CURRENT-CENSUS.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/CURRENT-CENSUS-EXECUTION.json": "5ea1b38549def70c5bc23404b4598888044115de2808a9eff5d9c44ca06f5d27",
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/CURRENT-CENSUS.json": "f20b0d60c6ce79335095472de5d87c82eab1ccaa83b1acecd69608f98b8d6c8c"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-09-12T09:41:07.798047Z"
+}
