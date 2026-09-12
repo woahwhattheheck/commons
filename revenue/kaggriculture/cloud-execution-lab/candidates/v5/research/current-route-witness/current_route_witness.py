@@ -14,7 +14,7 @@ import hashlib
 import json
 from typing import Any
 
-SCHEMA = "titan-v5-current-route-window-v2"
+SCHEMA = "titan-v5-current-route-window-v3"
 ROUTE_SOURCE = "committed_producer_route.R[route_id]"
 MAX_LOOKAHEAD = 72
 
@@ -296,13 +296,23 @@ def bind_current_route_window(
             )
         )
 
+    # This digest is the portable receipt authority for the bounded window. It
+    # therefore binds every field that changes what a consumer may infer, not
+    # merely the route bytes and row hashes. In particular, the same authored
+    # rows cannot be replayed under a different current worker envelope,
+    # controller identity, route extent, or requested lookahead.
     window_material = json.dumps(
         {
             "schema": SCHEMA,
             "route_source": ROUTE_SOURCE,
-            "route_sha256": route_sha256,
+            "controller_type": controller_type,
             "route_id": route_id,
             "current_step": step,
+            "current_index": step,
+            "current_worker_cardinality": count,
+            "route_length": len(route),
+            "route_sha256": route_sha256,
+            "lookahead": lookahead,
             "rows": [row.receipt() for row in rows],
         },
         sort_keys=True,
