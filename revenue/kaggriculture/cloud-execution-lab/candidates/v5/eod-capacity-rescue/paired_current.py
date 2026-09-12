@@ -23,7 +23,7 @@ import sys
 import tempfile
 import types
 
-PINNED_SHARED_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+PINNED_SHARED_BLOB = "719e3514d72bc7ea4c3e505836d16fcddae11019"
 SHARED_REL = Path('cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py')
 
 
