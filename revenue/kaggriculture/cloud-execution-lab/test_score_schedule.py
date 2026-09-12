@@ -158,5 +158,84 @@ class ScoreScheduleTests(unittest.TestCase):
         args=model_args();args['config']['townShopSellInterval']=0
         with self.assertRaises(ZeroDivisionError):core.MarketPath(**args).score((),2,0,'paired')
 
+    def test_shared_projection_cache_reuses_equal_value_context(self):
+        core.clear_shared_market_path_cache()
+        args=model_args()
+        first=core.shared_market_path(**args)
+        second=core.shared_market_path(**deepcopy(args))
+        self.assertIs(first,second)
+        info=core.shared_market_path_cache_info()
+        self.assertEqual(info.misses,1)
+        self.assertEqual(info.hits,1)
+        plan=((242,1),(249,1));rival=((242,3),)
+        direct=core.MarketPath(**deepcopy(args))
+        self.assertEqual(first.score(plan,2,rival,'after'),
+                         direct.score(plan,2,rival,'after'))
+
+    def test_shared_projection_cache_invalidates_relevant_values_only(self):
+        core.clear_shared_market_path_cache()
+        args=model_args();args['params']=deepcopy(core.m.MARKET_PARAMS)
+        first=core.shared_market_path(**args)
+        changed=deepcopy(args);changed['params']['EGG']['base']+=1
+        second=core.shared_market_path(**changed)
+        self.assertIsNot(first,second)
+        changed_interval=deepcopy(changed);changed_interval['config']['townShopSellInterval']=5
+        third=core.shared_market_path(**changed_interval)
+        self.assertIsNot(second,third)
+        policy_only=deepcopy(changed_interval);policy_only['config']['sellAcceptanceRule']='expected_downside'
+        policy_only['config']['sellDownsideBound']=500.0
+        fourth=core.shared_market_path(**policy_only)
+        self.assertIs(third,fourth)
+        self.assertEqual(core.shared_market_path_cache_info().misses,3)
+
+    def test_shared_projection_cache_tracks_relevant_shop_products_only(self):
+        core.clear_shared_market_path_cache()
+        args=model_args()
+        bakery=deepcopy(core.m.SHOPS['BAKERY'])
+        yarn=deepcopy(core.m.SHOPS['YARN_STORE'])
+        try:
+            first=core.shared_market_path(**args)
+            core.m.SHOPS['YARN_STORE'].append('EGG')
+            unrelated=core.shared_market_path(**deepcopy(args))
+            self.assertIs(first,unrelated)
+            core.m.SHOPS['BAKERY']=['WOOL']
+            changed=core.shared_market_path(**deepcopy(args))
+            self.assertIsNot(first,changed)
+            direct=core.MarketPath(**deepcopy(args))
+            plan=((242,1),(249,1));rival=((242,3),)
+            self.assertEqual(changed.score(plan,2,rival,'after'),
+                             direct.score(plan,2,rival,'after'))
+            again=core.shared_market_path(**deepcopy(args))
+            self.assertIs(changed,again)
+            info=core.shared_market_path_cache_info()
+            self.assertEqual(info.misses,2)
+            self.assertEqual(info.hits,2)
+        finally:
+            core.m.SHOPS['BAKERY']=bakery
+            core.m.SHOPS['YARN_STORE']=yarn
+            core.clear_shared_market_path_cache()
+
+    def test_shared_projection_cache_preserves_optimizer_result(self):
+        core.clear_shared_market_path_cache()
+        args=dict(item='EGG',quantity=12,inventory=10000,params=deepcopy(core.m.MARKET_PARAMS),
+            shops=['BAKERY','YARN_STORE'],config={'townShopSellInterval':4,'townCenterSellInterval':24},
+            now=100,dates=(100,104,108),reference=((100,4),(104,4),(108,4)),rival_quantity=3)
+        first=core.optimize_lot(**args)
+        after_first=core.shared_market_path_cache_info()
+        second=core.optimize_lot(**deepcopy(args))
+        after_second=core.shared_market_path_cache_info()
+        self.assertEqual(first,second)
+        self.assertEqual(after_first.misses,1)
+        self.assertEqual(after_second.misses,1)
+        self.assertGreater(after_second.hits,after_first.hits)
+
+    def test_shared_projection_cache_exotic_params_use_uncached_path(self):
+        core.clear_shared_market_path_cache()
+        args=model_args();args['params']=deepcopy(core.m.MARKET_PARAMS)
+        args['params']['EGG']['sentinel']=object()
+        first=core.shared_market_path(**args);second=core.shared_market_path(**args)
+        self.assertIsNot(first,second)
+        self.assertEqual(core.shared_market_path_cache_info().misses,0)
+
 
 if __name__=='__main__':unittest.main()
