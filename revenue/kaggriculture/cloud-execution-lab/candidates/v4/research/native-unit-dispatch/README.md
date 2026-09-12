@@ -70,9 +70,9 @@ result, not proof of a statistically significant slowdown either.
 Preserve the source and tests as research. Do not multiply the microbenchmark
 with WEAVE/PORTAGE/PHENOLOGY timings or force this into their active stack.
 Their methods remain separate; no combined-stack execution is claimed here.
-In-place function `__code__` mutation, arbitrary concurrent monkeypatch races,
-forced-deadline cancellation and Python 3.11 were not validated. Helper rebinding
-and ordinary mutable input/alias behavior are explicitly tested.
+In-place function `__code__` mutation, arbitrary concurrent in-process monkeypatch
+races, forced-deadline cancellation and Python 3.11 were not validated. Helper
+rebinding and ordinary mutable input/alias behavior are explicitly tested.
 
 ## Reproduce offline
 
@@ -85,7 +85,7 @@ blob from an **external exact-head authority** (for example the GitHub contents
 or tree entry for the commit being tested) and independently confirm the
 checkout file matches it. Do not create the expected value by hashing the same
 mutable file and then treating that self-derived value as provenance. For this
-reviewed runner, `RUNNER_BLOB=cdb601851d94d798c78c7c749a3e3d2d14331aa9`.
+reviewed runner, `RUNNER_BLOB=0370b579978996daf2852a0cac12ee88e3595506`.
 Launch the trusted parent with isolated Python startup (`-I -S`) as shown below;
 this prevents ambient `PYTHONPATH`/`sitecustomize` hooks from gaining authority
 before the externally authenticated source starts.
@@ -96,7 +96,7 @@ python check_kinetic.py --native-root "$B" --report /tmp/kinetic-check.json
 python -O check_kinetic.py --native-root "$B" --report /tmp/kinetic-check-O.json
 python run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants.json
 python -O run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants-O.json
-RUNNER_BLOB=cdb601851d94d798c78c7c749a3e3d2d14331aa9
+RUNNER_BLOB=0370b579978996daf2852a0cac12ee88e3595506
 python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --output /tmp/kinetic-games.json
 python -I -S -O -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --order-offset 1 --output /tmp/kinetic-games-O.json
 python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17 --repetitions 1 --instrument --output /tmp/kinetic-engagement.json
@@ -111,24 +111,34 @@ captures and authenticates its control bundle, child processes do **not** execut
 a materialized runner pathname. The parent feeds captured runner bytes to a
 constant `python -c` bootstrap over stdin; child startup is fixed to `-I -S -B`
 plus only a controlled `-O`, inherited `PYTHON*` variables are stripped, and no
-caller-supplied interpreter flags are accepted. The bootstrap then recomputes the
-Git blob against the external pin before compile/exec. Child-only modes require
-the injected attested runner identity. Replacing the repository runner, a scratch
-runner, or injecting `PYTHONPATH/sitecustomize` after parent trust therefore does
-not change child control source.
+caller-supplied interpreter flags are accepted. The bootstrap recomputes the Git
+blob against the external pin before compile/exec. Child-only modes require the
+injected attested runner identity.
 
-The game runner changes only mechanics in a temporary runtime copy, starts a
-fresh process per game from captured control bytes, preserves all raw market and
-unit rows, records full stream hashes and per-call timing, and rejects incomplete
-games or mismatched traces. Child receipts state the runner actually executed
-from captured bytes; composer/checker fields describe the parent-authenticated
-control identities, not child execution of those helpers. The committed
-historical receipt normalizes repeated identities while retaining all 20 game
-outcomes and aggregate timing, all 42 benchmark timing samples, both test
-receipts, and every fault-control result. It does not contain every per-call
-sample; those are regenerated in the runner's output. Historical evidence
-predating the custody hardening remains historical; new custody claims require
-an exact-head gate.
+Each child treats its physical baseline/candidate tree as input transport only.
+It authenticates the pinned SOURCE manifest and every declared runtime member
+once, captures those bytes, and then stops using that tree as execution authority.
+Python modules are imported from a captured-byte meta-path loader under a
+non-filesystem virtual `__file__` root. Captured runtime file reads—including the
+reference engine JSON—are served from the same in-memory byte map, and the
+reference loader, engine, agent, mechanics and other local modules execute from
+that capture. Thus a same-UID process replacing runtime source/data paths after
+capture cannot change the bytes executed or read by the game. The filesystem
+transport can still be mutated before/during capture, but such mutations must
+match the pinned manifest (or the exact candidate mechanics SHA) or the child
+fails before runtime authority is established.
+
+The game runner starts a fresh process per game from captured control bytes,
+preserves all raw market and unit rows, records full stream hashes and per-call
+timing, and rejects incomplete games or mismatched traces. Child receipts state
+both the runner and runtime executed from captured bytes; composer/checker fields
+describe the parent-authenticated control identities, not child execution of
+those helpers. The committed historical receipt normalizes repeated identities
+while retaining all 20 game outcomes and aggregate timing, all 42 benchmark
+timing samples, both test receipts, and every fault-control result. It does not
+contain every per-call sample; those are regenerated in the runner's output.
+Historical evidence predating the custody hardening remains historical; new
+custody claims require an exact-head gate.
 
 No production source, config, release archive, workflow definition or Kaggle
 submission is changed. This completed research lane creates no production wiring
