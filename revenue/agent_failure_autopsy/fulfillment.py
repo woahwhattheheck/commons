@@ -1407,6 +1407,32 @@ def validate_bundle(
     return validate_report(report, intake, context)
 
 
+def _load_offer_deadline_cash() -> dict[str, Any]:
+    """Landed offer.json refund + price.amount for the deadline CLI card.
+
+    Read-only; do not surface Stripe product/price/plink ids. Parity with R4
+    autopsy_fulfill.run_deadline cash stamps (wedge-autopsy-deadline-amount-usd).
+    """
+    offer_path = Path(__file__).resolve().parent / "offer.json"
+    data = load_json(offer_path)
+    refund = data.get("refund")
+    if not isinstance(refund, str) or not refund.strip():
+        raise AutopsyValidationError("offer.refund must be a nonempty string")
+    text = refund.strip()
+    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+        if forbidden in text:
+            raise AutopsyValidationError(
+                f"offer.refund leaked forbidden token prefix {forbidden}"
+            )
+    price = data.get("price")
+    if not isinstance(price, dict):
+        raise AutopsyValidationError("offer.price must be an object")
+    amount = price.get("amount")
+    if not isinstance(amount, (int, float)) or isinstance(amount, bool):
+        raise AutopsyValidationError("offer.price.amount must be a number")
+    return {"refund": text, "amount_usd": int(amount)}
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1423,10 +1449,19 @@ def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
         if args.command == "deadline":
+            cash = _load_offer_deadline_cash()
             result = {
                 "usable_evidence_at": args.usable_evidence_at,
                 "delivery_due_at": next_business_day(args.usable_evidence_at),
+                "amount_usd": cash["amount_usd"],
+                "refund": cash["refund"],
             }
+            blob = json.dumps(result)
+            for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+                if forbidden in blob:
+                    raise AutopsyValidationError(
+                        f"deadline card leaked forbidden token prefix {forbidden}"
+                    )
         else:
             intake = load_json(args.intake)
             report = load_json(args.report)
