@@ -3,15 +3,17 @@
 
 The public ``route_matrix_row_receipt.py`` facade dispatches here. The older
 row/snapshot helpers live in ``_route_matrix_row_receipt_core.py``; this layer
-adds the missing proof that the route manifest, materialized payload and bytes
-actually executed by the pinned evaluator are the same candidate.
+adds proof that the route manifest, materialized payload and bytes actually
+executed by the pinned evaluator are the same candidate.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
+import sys
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -19,6 +21,7 @@ from typing import Any
 import _route_matrix_row_receipt_core as core
 
 OFFICIAL_FILE_LOADER_SHA256 = "65fe4058deeaa5fb983a0ec9c6e7e53fdd8368ec"
+PUBLICATION_CUSTODY_SHA256 = "547e733b53380983f219bb894e0586822e386bb6"
 
 
 def _safe_member(name: Any) -> str:
@@ -142,6 +145,23 @@ def verify_snapshot(root: Path, captured: dict[str, bytes]) -> None:
             raise ValueError(f"private candidate snapshot changed during game: {name}")
 
 
+def shared_publication():
+    path = Path(__file__).resolve().parents[2] / "selective-carrot" / "publication_custody.py"
+    if core.sha256_file(path) != PUBLICATION_CUSTODY_SHA256:
+        raise ValueError("shared publication custody identity drift")
+    spec = importlib.util.spec_from_file_location("titan_v5_publication_custody", path)
+    if spec is None or spec.loader is None:
+        raise ValueError("cannot import shared publication custody")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(spec.name, None)
+        raise
+    return module.publish_exclusive
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--evaluator", type=Path, required=True)
@@ -220,7 +240,9 @@ def main() -> int:
             json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
         ).hexdigest(),
     }
-    core._publish_pair(args.row_out, args.receipt_out, row, receipt)
+    row_bytes = (json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode()
+    receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
+    shared_publication()(((args.row_out, row_bytes), (args.receipt_out, receipt_bytes)))
     print(json.dumps({
         "seed": args.seed, "opponent": args.opponent_label, "seat": args.seat,
         "forced_plan": args.plan_index, "snapshot_sha256": row["snapshot_sha256"],

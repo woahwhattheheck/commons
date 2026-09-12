@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 
 from build_delivery import archive_bytes, digest, members
@@ -117,6 +118,64 @@ def compose(
     return files
 
 
+def _same_destination(left: Path, right: Path) -> bool:
+    return Path(left).resolve(strict=False) == Path(right).resolve(strict=False)
+
+
+def _unlink_if_owned(path: Path, identity: tuple[int, int] | None) -> None:
+    if identity is None:
+        return
+    try:
+        stat = os.lstat(path)
+    except FileNotFoundError:
+        return
+    if (stat.st_dev, stat.st_ino) == identity:
+        os.unlink(path)
+
+
+def _publish_pair(tar_path: Path, packed: bytes, receipt_path: Path, receipt: dict) -> None:
+    """Reserve tar+receipt create-exclusively before publishing either payload."""
+    tar_path = Path(tar_path)
+    receipt_path = Path(receipt_path)
+    if _same_destination(tar_path, receipt_path):
+        raise ValueError("candidate tar and receipt paths must be different")
+
+    tar_path.parent.mkdir(parents=True, exist_ok=True)
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    tar_fd = receipt_fd = None
+    tar_identity = receipt_identity = None
+    try:
+        tar_fd = os.open(tar_path, flags, 0o666)
+        tar_stat = os.fstat(tar_fd)
+        tar_identity = (tar_stat.st_dev, tar_stat.st_ino)
+
+        receipt_fd = os.open(receipt_path, flags, 0o666)
+        receipt_stat = os.fstat(receipt_fd)
+        receipt_identity = (receipt_stat.st_dev, receipt_stat.st_ino)
+
+        with os.fdopen(tar_fd, "wb") as stream:
+            tar_fd = None
+            stream.write(packed)
+            stream.flush()
+            os.fsync(stream.fileno())
+
+        with os.fdopen(receipt_fd, "w", encoding="utf-8") as stream:
+            receipt_fd = None
+            json.dump(receipt, stream, indent=2)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+    except BaseException:
+        if tar_fd is not None:
+            os.close(tar_fd)
+        if receipt_fd is not None:
+            os.close(receipt_fd)
+        _unlink_if_owned(tar_path, tar_identity)
+        _unlink_if_owned(receipt_path, receipt_identity)
+        raise
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--production-v3", type=Path, required=True)
@@ -128,6 +187,8 @@ def main() -> None:
     )
     args = parser.parse_args()
     receipt_path = args.out.parent / (args.out.name + "-manifest.json")
+    if _same_destination(args.tar, receipt_path):
+        parser.error("candidate tar and manifest paths must be different")
     if any(path.exists() for path in (args.out, args.tar, receipt_path)):
         parser.error("use new output directory, archive and manifest paths")
 
@@ -144,9 +205,6 @@ def main() -> None:
         path = args.out / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(body)
-    args.tar.parent.mkdir(parents=True, exist_ok=True)
-    with args.tar.open("xb") as stream:
-        stream.write(packed)
 
     receipt = {
         "schema": "titan-v5-mirror-sell-queue-build/v2",
@@ -164,8 +222,11 @@ def main() -> None:
         "files": {name: digest(body) for name, body in sorted(files.items())},
         "kaggle_submission_hold": True,
     }
-    with receipt_path.open("x", encoding="utf-8") as stream:
-        stream.write(json.dumps(receipt, indent=2) + "\n")
+    try:
+        _publish_pair(args.tar, packed, receipt_path, receipt)
+    except FileExistsError:
+        parser.error("use new output directory, archive and manifest paths")
+
     print(json.dumps({
         "out": str(args.out),
         "members": len(files),
