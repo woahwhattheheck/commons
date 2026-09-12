@@ -5,7 +5,8 @@ This is not a second assembler. It verifies the exact canonical manifest,
 checker, existing runner generation, and every runner adapter/support source,
 then executes immutable authenticated byte snapshots through the existing
 ``build_composed_postimage.py`` semantics. There is no alternate-manifest
-option and no post-verification source reopen for executable bytes.
+option and no post-verification source reopen for executable bytes or checker
+receipt attestation.
 """
 from __future__ import annotations
 
@@ -17,6 +18,16 @@ from pathlib import Path
 from typing import Any
 
 import postimage_trust as trust
+
+
+class _FrozenSourcePath:
+    """Minimal read-only path surface for a source already captured by identity."""
+
+    def __init__(self, data: bytes):
+        self._data = bytes(data)
+
+    def read_bytes(self) -> bytes:
+        return self._data
 
 
 def _module_from_bytes(
@@ -132,6 +143,10 @@ def _bind_snapshot_loaders(
     frozen_checker_bytes = bytes(checker_bytes)
     frozen_entrypoints = {key: bytes(value) for key, value in entrypoint_bytes.items()}
     frozen_sources = {key: bytes(value) for key, value in support_source_bytes.items()}
+    original_under = getattr(runner, "_under", None)
+    if not callable(original_under):
+        raise error_type("authenticated runner missing _under() path resolver")
+    frozen_checker_path = _FrozenSourcePath(frozen_checker_bytes)
 
     def snapshot_load_json(path: Path):
         if Path(path) != canonical_manifest:
@@ -186,10 +201,27 @@ def _bind_snapshot_loaders(
             raise error_type("authenticated support snapshot identity mismatch: " + key)
         return data
 
+    def snapshot_under(root: Path, rel: str, *, must_exist: bool = True):
+        # The pinned runner's receipt path reopens CHECKER_NAME after graph
+        # validation. Return the already-authenticated bytes for that exact
+        # source so both receipt hashes attest the checker that actually ran.
+        try:
+            root_resolved = Path(root).resolve(strict=True)
+        except (OSError, RuntimeError, TypeError, ValueError):
+            return original_under(root, rel, must_exist=must_exist)
+        if (
+            must_exist is True
+            and root_resolved == workspace
+            and rel == trust.CHECKER_NAME
+        ):
+            return frozen_checker_path
+        return original_under(root, rel, must_exist=must_exist)
+
     runner.load_json = snapshot_load_json
     runner._load_checker = snapshot_load_checker
     runner._load_module = snapshot_load_module
     runner._load_support_source = snapshot_load_support_source
+    runner._under = snapshot_under
 
 
 def main() -> int:
