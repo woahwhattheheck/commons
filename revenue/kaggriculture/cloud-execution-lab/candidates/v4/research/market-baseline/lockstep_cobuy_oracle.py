@@ -191,7 +191,7 @@ def compare(engine, *, item: str, self_qty: int, rival_qty: int) -> dict[str, An
 
 
 def default_engine_path() -> Path:
-    return Path(__file__).resolve().parents[3] / "reference" / "engine" / "kaggriculture.py"
+    return Path(__file__).resolve().parents[4] / "reference" / "engine" / "kaggriculture.py"
 
 
 def main(argv=None) -> int:
