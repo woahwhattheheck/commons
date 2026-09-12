@@ -1,141 +1,283 @@
 {
   "counts": {
     "open_issues": 6,
-    "open_pull_requests": 6,
-    "runs_in_progress": 19,
-    "runs_queued": 3285
+    "open_pull_requests": 4,
+    "runs_in_progress": 20,
+    "runs_queued": 4229
   },
+  "counts_source": "graphql",
   "degraded": [],
-  "drafts": 203,
+  "drafts": 0,
   "longest_open": [
     {
       "author": "woahwhattheheck",
-      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
-      "created_at": "2026-09-10T18:42:48Z",
+      "base": "v3/rebase-14dbbc49-20260910-01",
+      "branch": "astra/titan-v3-l01-zero-slice-20260910-01",
+      "created_at": "2026-09-11T01:05:25Z",
       "draft": false,
-      "number": 11959,
-      "title": "TITAN: reconcile canonical package with current source and name drift"
+      "head_sha": "35c036dd33545a98237c3e56a9f8744a20660e5f",
+      "number": 12141,
+      "title": "fix(titan): preserve LEANPLANT routes at or below cap",
+      "updated_at": "2026-09-12T07:21:25Z"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
-      "created_at": "2026-09-10T18:55:16Z",
-      "draft": true,
-      "number": 11963,
-      "title": "TITAN V3: admit all-shed intent-first SELL priority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
-      "created_at": "2026-09-10T19:00:36Z",
-      "draft": true,
-      "number": 11968,
-      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-cambium/titan-v3-capillary-panel-20260910-01",
-      "created_at": "2026-09-10T19:01:00Z",
-      "draft": true,
-      "number": 11969,
-      "title": "TITAN V3: action-bound full-game verdict for Capillary seed staging"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol-recovery/titan-v3-l01-evidence-recovery-20260910-01",
-      "created_at": "2026-09-10T19:05:32Z",
+      "base": "v3/rebase-14dbbc49-20260910-01",
+      "branch": "astra/titan-v3-e11-prefix-funding-20260910-01",
+      "created_at": "2026-09-11T01:14:12Z",
       "draft": false,
-      "number": 11971,
-      "title": "TITAN V3: bind and execute the L01 exact-current holdout"
+      "head_sha": "80089fb0486bd86ee859deff8d169b5080ab5785",
+      "number": 12152,
+      "title": "fix(titan): protect E11 executable market dependencies",
+      "updated_at": "2026-09-12T07:21:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/h3s420-graph-convergence-20260912-0044",
+      "created_at": "2026-09-12T05:08:42Z",
+      "draft": false,
+      "head_sha": "c4d2aba9f2f623f0d87e759e5f2c9a78d0716017",
+      "number": 13008,
+      "title": "TITAN V4 H3S420: converge graph, executor, custody and trust",
+      "updated_at": "2026-09-12T07:16:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v4-row-shed-novel-rank-20260912",
+      "created_at": "2026-09-12T05:19:17Z",
+      "draft": false,
+      "head_sha": "a13edc99f4acf8a168e6061dac0daef0c5add5a5",
+      "number": 13035,
+      "title": "TITAN V4 ROWSHED: complete-pipeline executable novelty",
+      "updated_at": "2026-09-12T07:23:39Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "branch": "astra/plantguard-survival-20260912",
-      "created_at": "2026-09-12T06:30:23Z",
+      "base": "main",
+      "branch": "astra/v4-row-shed-novel-rank-20260912",
+      "created_at": "2026-09-12T05:19:17Z",
       "draft": false,
-      "number": 13107,
-      "title": "HOLD \u00b7 TITAN V4 PLANTGUARD: postmerge custom-config custody"
+      "head_sha": "a13edc99f4acf8a168e6061dac0daef0c5add5a5",
+      "number": 13035,
+      "title": "TITAN V4 ROWSHED: complete-pipeline executable novelty",
+      "updated_at": "2026-09-12T07:23:39Z"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/kinetic-bootstrap-custody-postmerge-20260912",
-      "created_at": "2026-09-12T06:30:20Z",
-      "draft": true,
-      "number": 13106,
-      "title": "TITAN V4 KINETIC: authenticate control helpers before execution"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/carebank-strict-enable-postmerge-20260912",
-      "created_at": "2026-09-12T06:30:03Z",
-      "draft": true,
-      "number": 13105,
-      "title": "TITAN V4 CAREBANK: collapse strict-enable test custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/gemini-fert-floor-apply-followup-20260912",
-      "created_at": "2026-09-12T06:29:55Z",
-      "draft": true,
-      "number": 13104,
-      "title": "TITAN V4 GEMINI: correct merged FERT floor witness semantics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/tailpressure-state-custody-postmerge-20260912",
-      "created_at": "2026-09-12T06:29:47Z",
-      "draft": true,
-      "number": 13103,
-      "title": "TITAN V4 tail pressure: bind unwind budget to current shop state"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/rowshed-lockstep-assignment-hotfix-20260912",
-      "created_at": "2026-09-12T06:29:22Z",
-      "draft": true,
-      "number": 13102,
-      "title": "TITAN V4 ROWSHED: repair queue assignment to lockstep baseline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "sol/w1-strict-default-off-20260912",
-      "created_at": "2026-09-12T06:28:40Z",
+      "base": "main",
+      "branch": "astra/h3s420-graph-convergence-20260912-0044",
+      "created_at": "2026-09-12T05:08:42Z",
       "draft": false,
-      "number": 13101,
-      "title": "TITAN V4 W1: enforce default-OFF activation custody"
+      "head_sha": "c4d2aba9f2f623f0d87e759e5f2c9a78d0716017",
+      "number": 13008,
+      "title": "TITAN V4 H3S420: converge graph, executor, custody and trust",
+      "updated_at": "2026-09-12T07:16:58Z"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/execpace2-fallback-lifecycle-postmerge-20260912",
-      "created_at": "2026-09-12T06:28:20Z",
-      "draft": true,
-      "number": 13099,
-      "title": "TITAN V4 EXEC-PACE-2: preserve price history through deadline fallback"
+      "base": "v3/rebase-14dbbc49-20260910-01",
+      "branch": "astra/titan-v3-e11-prefix-funding-20260910-01",
+      "created_at": "2026-09-11T01:14:12Z",
+      "draft": false,
+      "head_sha": "80089fb0486bd86ee859deff8d169b5080ab5785",
+      "number": 12152,
+      "title": "fix(titan): protect E11 executable market dependencies",
+      "updated_at": "2026-09-12T07:21:24Z"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-residual-authority-e13-20260912",
-      "created_at": "2026-09-12T06:28:19Z",
-      "draft": true,
-      "number": 13098,
-      "title": "TITAN V4 SpatialTempo: fail closed HIRE-prefix cap authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/rowshed-lockstep-baseline-postmerge-20260912",
-      "created_at": "2026-09-12T06:27:57Z",
-      "draft": true,
-      "number": 13097,
-      "title": "TITAN V4 ROWSHED: repair lockstep mirror baseline"
+      "base": "v3/rebase-14dbbc49-20260910-01",
+      "branch": "astra/titan-v3-l01-zero-slice-20260910-01",
+      "created_at": "2026-09-11T01:05:25Z",
+      "draft": false,
+      "head_sha": "35c036dd33545a98237c3e56a9f8744a20660e5f",
+      "number": 12141,
+      "title": "fix(titan): preserve LEANPLANT routes at or below cap",
+      "updated_at": "2026-09-12T07:21:25Z"
     }
   ],
-  "pulls_listed": 248,
+  "open_heads": {
+    "12141": "35c036dd33545a98237c3e56a9f8744a20660e5f",
+    "12152": "80089fb0486bd86ee859deff8d169b5080ab5785",
+    "13008": "c4d2aba9f2f623f0d87e759e5f2c9a78d0716017",
+    "13035": "a13edc99f4acf8a168e6061dac0daef0c5add5a5"
+  },
+  "pulls_listed": 4,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 172.9,
+  "queue_depth_per_runner": 211.4,
+  "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "marlow/denton-bacteriology-reconcile-20260910",
+      "closed_at": "2026-09-12T07:21:30Z",
+      "head_sha": "55b8aa38e86e22b38a2420b2527a7b639d4ac11b",
+      "merged_at": "2026-09-12T07:21:30Z",
+      "number": 12242,
+      "state": "MERGED",
+      "title": "feat: reconcile Denton bacteriology acceptance LIMS"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "riot/mechanics-interface",
+      "closed_at": "2026-09-12T07:21:28Z",
+      "head_sha": "86fc6e17e63ef9288b378cb87ddf639fb7b9b3b0",
+      "merged_at": "2026-09-12T07:21:28Z",
+      "number": 12073,
+      "state": "MERGED",
+      "title": "Game-agnostic mechanics provider interface"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-astra-auto/open-model-reviewed-source-stack-safe-20260910",
+      "closed_at": "2026-09-12T07:21:19Z",
+      "head_sha": "66a3df73057388934219e3c2887ad7f480b37f09",
+      "merged_at": "2026-09-12T07:21:19Z",
+      "number": 12203,
+      "state": "MERGED",
+      "title": "Compose reviewed Open Model source truth on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/github-state-main-b95-refresh-20260911-01",
+      "closed_at": "2026-09-12T07:21:16Z",
+      "head_sha": "5724df2f881413bab3333764902d8c56c8be3416",
+      "merged_at": "2026-09-12T07:21:16Z",
+      "number": 12336,
+      "state": "MERGED",
+      "title": "github_state: refresh reviewed heads/closures/count custody on mainb95"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "opus/obs-ghstate-main828-compose-20260911-01",
+      "closed_at": "2026-09-12T07:21:13Z",
+      "head_sha": "d7c71cc7249c6154dcb266ba32e15b307044c9c6",
+      "merged_at": "2026-09-12T07:21:13Z",
+      "number": 12546,
+      "state": "MERGED",
+      "title": "observability + github_state: compose reviewed command road and heads custody on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-astra/checkout-browser-canonical-rail-crossbind-20260910",
+      "closed_at": "2026-09-12T07:21:11Z",
+      "head_sha": "1d224c2e6257a853f8a5c8f382b621c21afe5a2c",
+      "merged_at": "2026-09-12T07:21:11Z",
+      "number": 12176,
+      "state": "MERGED",
+      "title": "Fail closed browser checkout on canonical rail mismatch"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-astra/outcome-commerce-pr12478-main35794-refresh-20260911",
+      "closed_at": "2026-09-12T07:21:09Z",
+      "head_sha": "25fddc5b10c2ded00436e64a44aaceaec540fda3",
+      "merged_at": "2026-09-12T07:21:09Z",
+      "number": 12567,
+      "state": "MERGED",
+      "title": "fix(commerce): refresh two source authority pins on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-astra-sol/c37-root-test-tracked-clean-20260910-01",
+      "closed_at": "2026-09-12T07:21:07Z",
+      "head_sha": "a6b230294ecca58c8d3e5b1737c78c0f4b43eec7",
+      "merged_at": "2026-09-12T07:21:07Z",
+      "number": 12185,
+      "state": "MERGED",
+      "title": "ci: fail root battery on tracked checkout mutation"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/vis-f3-f4-needs-queues-20260911",
+      "closed_at": "2026-09-12T07:21:05Z",
+      "head_sha": "4e37c228d857cd8e480e4370808418a9bc1cfb61",
+      "merged_at": "2026-09-12T07:21:05Z",
+      "number": 12582,
+      "state": "MERGED",
+      "title": "visibility F3/F4: strict needs-runner and needs-owner queues"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "v3/rebase-14dbbc49-20260910-01",
+      "branch": "sol-pro/titan-v3-s17-optimization-safe-tree-20260910-01",
+      "closed_at": "2026-09-12T07:21:03Z",
+      "head_sha": "b4a81f3f40a4ee36e947d1987751ff521fde25bb",
+      "merged_at": "2026-09-12T07:21:03Z",
+      "number": 12132,
+      "state": "MERGED",
+      "title": "[HOLD / V3 S17] Make integrity checks optimization-safe and --tree exact"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/vis-a2-review-holding-check-20260911-01",
+      "closed_at": "2026-09-12T07:21:01Z",
+      "head_sha": "8d9e905b664d9cf9bd4e7542b10caafd011f16e4",
+      "merged_at": "2026-09-12T07:21:01Z",
+      "number": 12589,
+      "state": "MERGED",
+      "title": "visibility A2: exact-head review holding check"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-cashline/titan-v3-executable-spend-reserve-20260910-01",
+      "closed_at": "2026-09-12T07:20:58Z",
+      "head_sha": "7b898292e9e4b9bf573cfbc37e6303d86a31096d",
+      "merged_at": "2026-09-12T07:20:57Z",
+      "number": 12005,
+      "state": "MERGED",
+      "title": "TITAN V3: close executable-prefix spend-reserve false deficits"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-atomic/titan-v3-apply-transactional-closure-20260910-01",
+      "closed_at": "2026-09-12T07:20:54Z",
+      "head_sha": "2855c1a5464b2c64ecce4cee6c49fca6cae9b236",
+      "merged_at": "2026-09-12T07:20:54Z",
+      "number": 12011,
+      "state": "MERGED",
+      "title": "TITAN V3: make apply integration rollback-safe"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-pro/titan-v3-exact-current-base-closure-20260910-01",
+      "closed_at": "2026-09-12T07:20:49Z",
+      "head_sha": "c4b4fc8890ace99e20b4b9db34b4be05753df82f",
+      "merged_at": "2026-09-12T07:20:49Z",
+      "number": 12012,
+      "state": "MERGED",
+      "title": "TITAN V3: fail closed on stale \u201cexact-current\u201d panel ancestry"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol/sticky-source-bound-sink-20260912",
+      "closed_at": "2026-09-12T07:20:46Z",
+      "head_sha": "2f36b62c6e10345c6ff11d59fca6746abb99cd1c",
+      "merged_at": "2026-09-12T07:20:46Z",
+      "number": 13148,
+      "state": "MERGED",
+      "title": "TITAN V4 STICKY: document projected-prestate replay binding"
+    }
+  ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T06:30:36Z",
+  "unchanged_since": "2026-09-12T07:25:23Z",
   "undatable_pulls": []
 }
