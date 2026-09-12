@@ -212,6 +212,13 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
         return finish("LIVE_BRANCH_HEAD_KEEP", f"exact SHA is current tip of branch {branch}")
 
     open_referenced = [number for number in prs if number in snapshot.open_pr_heads]
+    missing_referenced = [number for number in prs if number not in snapshot.open_pr_heads]
+    if open_referenced and missing_referenced and not snapshot.complete_open_prs:
+        return finish(
+            "UNKNOWN_KEEP",
+            "open-PR inventory incomplete; cannot prove omitted referenced PR(s) "
+            f"{missing_referenced} are closed or moved",
+        )
     if open_referenced:
         current = {number: snapshot.open_pr_heads[number] for number in open_referenced}
         return finish(
