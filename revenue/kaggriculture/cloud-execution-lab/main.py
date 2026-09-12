@@ -119,10 +119,18 @@ def _new_instance(root, feature_data):
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
         raise ValueError('town_procurement is the tested nonterminal frozen composition')
 
+    overflow_safe_drop = None
+    if getattr(features, 'overflow_safe_drop', False):
+        source = root/'overflow_safe_drop.py'
+        if not source.is_file():
+            source = root/'candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
+        overflow_safe_drop = load('_titan_overflow_safe_drop', source, cache=True)
+
     class FinalPressureAgent(TitanAgent):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
+            self.overflow_safe_drop = overflow_safe_drop
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
             self._history_checkpoint = None
@@ -271,6 +279,17 @@ def _new_instance(root, feature_data):
                 returned, report = apply(obs, returned, cfg, completed=completed)
                 self.diagnostics['town_procurement'] = report
                 self._checkpoint_finalizer(obs, returned, 'town_procurement')
+            # Overflow preservation is an optional final-return transform only.
+            # Do not run it on an incomplete producer result or on the terminal
+            # settlement step, where liquidation semantics own the returned bytes.
+            if self.overflow_safe_drop is not None and completed:
+                episode_steps = cfg.get('episodeSteps', 720)
+                nonterminal = (type(episode_steps) is int and episode_steps >= 2
+                               and obs.get('step') != episode_steps - 2)
+                if nonterminal:
+                    returned, report = self.overflow_safe_drop.transform(returned, obs, cfg)
+                    self.diagnostics['overflow_safe_drop'] = report
+                    self._checkpoint_finalizer(obs, returned, 'overflow_safe_drop')
             return returned
 
     admission = None
