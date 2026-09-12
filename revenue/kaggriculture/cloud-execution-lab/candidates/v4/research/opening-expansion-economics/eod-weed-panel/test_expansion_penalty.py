@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import tempfile
@@ -18,6 +19,25 @@ SPEC.loader.exec_module(mod)
 
 ENGINE_PATH = os.environ.get("TITAN_ENGINE_PATH")
 CONFIG_PATH = os.environ.get("TITAN_CONFIG_PATH")
+
+
+class PairedSummaryContractTests(unittest.TestCase):
+    def test_canonical_hundred_sample_panel_uses_df99_t_interval(self):
+        values = [i % 7 for i in range(100)]
+        result = mod._paired_summary(values)
+        mean = float(result["mean"])
+        se = float(result["standard_error"])
+        self.assertAlmostEqual(mean - mod.T_CRIT_DF99_95 * se, result["t95_low"])
+        self.assertAlmostEqual(mean + mod.T_CRIT_DF99_95 * se, result["t95_high"])
+
+    def test_non_hundred_sample_panels_do_not_emit_df99_t_interval(self):
+        for values in ([1], [1, 2], list(range(10)), list(range(101))):
+            with self.subTest(n=len(values)):
+                result = mod._paired_summary(values)
+                self.assertIsNone(result["t95_low"])
+                self.assertIsNone(result["t95_high"])
+                self.assertTrue(math.isfinite(float(result["mean"])))
+                self.assertTrue(math.isfinite(float(result["standard_error"])))
 
 
 @unittest.skipUnless(ENGINE_PATH and CONFIG_PATH, "set TITAN_ENGINE_PATH and TITAN_CONFIG_PATH")
@@ -54,6 +74,8 @@ class ExpansionPenaltyTests(unittest.TestCase):
         self.assertEqual(0, clear["incremental_q4_minus_q1"]["negative_pairs"])
         self.assertEqual(0, clear["incremental_q4_minus_q1"]["zero_pairs"])
         self.assertEqual(100, clear["incremental_q4_minus_q1"]["positive_pairs"])
+        self.assertAlmostEqual(10.669406310738124, clear["incremental_q4_minus_q1"]["t95_low"])
+        self.assertAlmostEqual(12.030593689261876, clear["incremental_q4_minus_q1"]["t95_high"])
         persistent = summary["persistent_no_clear_final_weeds"]
         self.assertAlmostEqual(3.48, persistent["q1"]["mean"])
         self.assertAlmostEqual(14.08, persistent["q4"]["mean"])
@@ -68,6 +90,8 @@ class ExpansionPenaltyTests(unittest.TestCase):
         self.assertEqual(7000, summary["break_even"]["extra_land_cash_cost"])
         self.assertAlmostEqual(93.33333333333333, summary["break_even"]["average_upfront_cash_per_extra_tile"])
         self.assertEqual(0.15, summary["break_even"]["expected_random_digs_per_extra_empty_tile_over_30d"])
+        self.assertIsNone(summary["perfect_clear_spawn_events"]["incremental_q4_minus_q1"]["t95_low"])
+        self.assertIsNone(summary["persistent_no_clear_final_weeds"]["incremental_q4_minus_q1"]["t95_high"])
 
     def test_persistent_analytic_expectation_matches_formula(self):
         _, summary = mod.run_panel(self.engine, self.config, [1], days=30)
