@@ -36,8 +36,9 @@ permissions:
   contents: read
 
 concurrency:
+  # Let one publisher finish; GitHub coalesces churn behind it to the newest pending run.
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   snapshot:
