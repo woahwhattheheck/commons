@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import statistics
 import sys
@@ -18,6 +19,8 @@ ARMS = ("control", "cap4", "cap12")
 
 def load(path: Path, name: str):
     spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(str(path))
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
     spec.loader.exec_module(module)
@@ -49,7 +52,8 @@ def main(argv=None) -> int:
     p.add_argument("--engine-dir", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument(
-        "--seeds", required=True,
+        "--seeds",
+        required=True,
         help="comma-separated fresh seeds reserved for this lane",
     )
     p.add_argument("--seats", default="0,1")
@@ -59,7 +63,24 @@ def main(argv=None) -> int:
     if sys.platform != "linux":
         p.error("Use a Linux VM for this process-isolated benchmark")
 
+    seeds = [int(value) for value in args.seeds.split(",") if value]
+    seats = [int(value) for value in args.seats.split(",") if value]
+    opponents = [value for value in args.opponents.split(",") if value]
+    if not seeds or len(seeds) != len(set(seeds)):
+        p.error("at least one distinct fresh seed is required")
+    if not seats or len(seats) != len(set(seats)) or not set(seats) <= {0, 1}:
+        p.error("use distinct supported seats 0 and/or 1")
+    if (
+        not opponents
+        or len(opponents) != len(set(opponents))
+        or not set(opponents) <= {"apex_v7", "arlene_v14"}
+    ):
+        p.error("use distinct supported opponents apex_v7 and/or arlene_v14")
+
     root = args.kg_root.resolve(strict=True)
+    args.engine_dir = args.engine_dir.resolve(strict=True)
+    args.output = args.output.resolve()
+    output_parent = args.output.parent.resolve(strict=True)
     lab = root / "cloud-execution-lab"
     here = Path(__file__).resolve().parent
     helper_path = (
@@ -68,9 +89,8 @@ def main(argv=None) -> int:
     h = load(helper_path, "carrot_current_bench_helpers")
     builder = load(here / "build_current.py", "carrot_current_builder")
 
-    current = read_json(
-        lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
-    )
+    current_path = lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+    current = read_json(current_path)
     if current.get("path") != "exports/titan-current.tar.gz":
         raise ValueError("unexpected current V5 archive path")
     archive = lab / current["path"]
@@ -83,25 +103,29 @@ def main(argv=None) -> int:
         raise ValueError(
             "CURRENT-ARCHIVE byte count does not match titan-current.tar.gz"
         )
+    # Freeze the exact control bytes in memory before any long-running work.
     baseline = h.archive_members(archive)
 
-    seeds = [int(value) for value in args.seeds.split(",") if value]
-    seats = [int(value) for value in args.seats.split(",") if value]
-    opponents = [value for value in args.opponents.split(",") if value]
-    if not seeds:
-        p.error("at least one fresh seed is required")
-    if not set(seats) <= {0, 1}:
-        p.error("supported seats are 0 and 1")
-    if not set(opponents) <= {"apex_v7", "arlene_v14"}:
-        p.error("supported opponents are apex_v7 and arlene_v14")
+    # Acquire the mutable repository harness once, authenticate that closure,
+    # then execute evaluator/packer/bridge/opponent support from the snapshot only.
+    if args.output.exists():
+        raise FileExistsError(args.output)
+    with tempfile.TemporaryDirectory(
+        prefix="titan-v5-current-carrot-snapshot-", dir=output_parent
+    ) as temp:
+        staged_snapshot = Path(temp) / "kg"
+        harness = h.snapshot_harness(root, staged_snapshot, opponents)
+        args.output.mkdir(parents=False, exist_ok=False)
+        snapshot_root = args.output / ".harness-snapshot"
+        os.replace(staged_snapshot, snapshot_root)
 
-    args.output.mkdir(parents=True, exist_ok=False)
-    evaluator = load(root / h.EVALUATOR, "carrot_current_evaluator")
-    pack = load(root / "cloud-pack/pack.py", "carrot_current_pack")
+    evaluator_path = snapshot_root / h.EVALUATOR
+    evaluator = load(evaluator_path, "carrot_current_evaluator")
+    pack = load(snapshot_root / "cloud-pack/pack.py", "carrot_current_pack")
     bridge = load(
-        root / h.BANK / "reference_policies.py", "carrot_current_bank"
+        snapshot_root / h.BANK / "reference_policies.py", "carrot_current_bank"
     )
-    loader = root / "20260907-offline-agent/evaluate.py"
+    loader = snapshot_root / "20260907-offline-agent/evaluate.py"
     engine_hashes = evaluator.verify_sources(args.engine_dir)
 
     arm_members = {"control": baseline}
@@ -112,37 +136,62 @@ def main(argv=None) -> int:
         temp_root = Path(temp)
         control_root = temp_root / "control"
         h.extract_members(baseline, control_root)
+        control_package_sha256 = builder.package_digest(control_root)
         for cap in (4, 12):
             out = temp_root / f"cap{cap}"
             receipt = builder.build_candidate(control_root, out, cap)
             label = f"cap{cap}"
             build_receipts[label] = receipt
             arm_members[label] = members(out)
-            if (
-                receipt["control_package_sha256"]
-                != builder.package_digest(control_root)
-            ):
+            if receipt["control_package_sha256"] != control_package_sha256:
                 raise ValueError("candidate receipt control identity mismatch")
 
     runtime = {}
     opponent_receipts = {}
+    expected_bridge = harness["repository_files"][
+        h.BANK + "/reference_policies.py"
+    ]["sha256"]
+    expected_registry = harness["repository_files"][
+        h.BANK + "/REFERENCE-POLICIES.json"
+    ]["sha256"]
     for opponent in opponents:
         runtime[opponent] = args.output / "opponents" / opponent
-        opponent_receipts[opponent] = bridge.prepare(
-            opponent, root, runtime[opponent]
-        )
+        receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
+        if (
+            receipt.get("bridge_sha256") != expected_bridge
+            or receipt.get("source_registry_sha256") != expected_registry
+            or receipt.get("support_files") != harness["opponent_support_sha256"]
+        ):
+            raise ValueError(
+                f"opponent preparation escaped authenticated harness: {opponent}"
+            )
+        support_root = Path(receipt.get("support_root", "")).resolve(strict=True)
+        if support_root != snapshot_root.resolve(strict=True):
+            raise ValueError(
+                f"opponent preparation did not bind snapshot root: {opponent}"
+            )
+        opponent_receipts[opponent] = receipt
 
     run = {
-        "schema": "astra.v5.selective-carrot.current-paired.v1",
+        "schema": "astra.v5.selective-carrot.current-paired.v2",
         "method": (
-            "Fresh full official-interpreter games from the live CURRENT archive; "
-            "same seed/seat/opponent across control, cap4 and cap12; deterministic "
-            "rotating arm order. Linux 1.25s IPC action limit; canonical policy "
-            "retains its own 1s deadline. Not hosted Kaggle rating."
+            "Fresh full official-interpreter games from the exact CURRENT archive "
+            "captured before execution. The mutable repository is acquisition-only "
+            "for the evaluator/packer/bridge/opponent closure; the copied harness is "
+            "authenticated against its Git/manifest/registry pins and all game support "
+            "then executes from that snapshot. Same seed/seat/opponent across control, "
+            "cap4 and cap12; deterministic rotating arm order. Linux 1.25s IPC action "
+            "limit; canonical policy retains its own 1s deadline. Not hosted Kaggle rating."
         ),
         "current_archive": current,
+        "current_archive_manifest_sha256": h.digest(current_path),
         "archive_sha256": archive_digest,
+        "control_package_sha256": control_package_sha256,
         "engine": engine_hashes,
+        "harness": harness,
+        "helper_sha256": h.digest(helper_path),
+        "builder_sha256": h.digest(here / "build_current.py"),
+        "launcher_sha256": h.digest(__file__),
         "build_receipts": build_receipts,
         "candidate_members": {
             arm: {
@@ -178,6 +227,7 @@ def main(argv=None) -> int:
                     "games": {},
                 }
                 order = rotations[cell_index % len(rotations)]
+                cell["execution_order"] = list(order)
                 cell_index += 1
                 for arm in order:
                     with tempfile.TemporaryDirectory(
@@ -194,7 +244,9 @@ def main(argv=None) -> int:
                             if seat == 0
                             else [str(rival), str(adapter)]
                         )
-                        engine, _ = evaluator.get_engine(args.engine_dir, loader)
+                        engine, _ = evaluator.get_engine(
+                            args.engine_dir, loader
+                        )
                         interpret = engine.interpreter
                         plant_events = []
 
@@ -290,11 +342,24 @@ def main(argv=None) -> int:
                     if margins["cap12"] is None or margins["cap4"] is None
                     else margins["cap12"] - margins["cap4"]
                 )
+                control_events = cell["games"]["control"].get(
+                    "actual_carrot_plant_events", []
+                )
                 cell["plant_events"] = {
                     arm: len(
                         cell["games"][arm].get("actual_carrot_plant_events", [])
                     )
                     for arm in ARMS
+                }
+                cell["engaged"] = {
+                    "cap4": cell["games"]["cap4"].get(
+                        "actual_carrot_plant_events", []
+                    )
+                    != control_events,
+                    "cap12": cell["games"]["cap12"].get(
+                        "actual_carrot_plant_events", []
+                    )
+                    != control_events,
                 }
                 cells.append(cell)
 
@@ -314,13 +379,14 @@ def main(argv=None) -> int:
                         item["delta_cap12_cap4"] for item in cells
                     ),
                     "engaged_cells_cap4": sum(
-                        item["plant_events"]["cap4"]
-                        != item["plant_events"]["control"]
-                        for item in cells
+                        item["engaged"]["cap4"] for item in cells
                     ),
                     "engaged_cells_cap12": sum(
-                        item["plant_events"]["cap12"]
-                        != item["plant_events"]["control"]
+                        item["engaged"]["cap12"] for item in cells
+                    ),
+                    "regressed_cells_cap12_control": sum(
+                        item["delta_cap12_control"] is not None
+                        and item["delta_cap12_control"] < 0
                         for item in cells
                     ),
                 }
@@ -341,7 +407,12 @@ def main(argv=None) -> int:
                 )
 
     print("SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
-    return 0
+    return int(
+        any(
+            any(cell["margins"][arm] is None for arm in ARMS)
+            for cell in cells
+        )
+    )
 
 
 if __name__ == "__main__":
