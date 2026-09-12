@@ -119,7 +119,7 @@ class StickyObligation:
 def _seal(**fields: Any) -> StickyObligation:
     draft = StickyObligation(schema=SCHEMA, obligation_id="", **fields)
     digest = _obligation_id(draft.payload_without_id())
-    return StickyObligation(**draft.payload_without_id(), obligation_id=digest)
+    return StickyObligation(schema=SCHEMA, obligation_id=digest, **fields)
 
 
 def validate_obligation(value: Any) -> StickyObligation:
