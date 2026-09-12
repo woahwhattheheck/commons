@@ -1,17 +1,17 @@
 {
   "canonical_root": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
   "files_sha256": {
-    "README.md": "99f4368d9a52b38860a64566d517946fd70ca71ea01be88bda6d28ffe965b3c5",
+    "README.md": "1a2efc95380c27617cfeabb9ba2fcb384512a1da603d953b12dea8ae7409e7a2",
     "adversarial-events.jsonl": "88f23c681bc1f343423a8d15d3cd96fbc806814444cbe7818b28ffc47ee8960f",
-    "claim_liveness.py": "ba42ae1d25b809f89c435ea76d27cb20c4953a8e08d40726b60b5244689a2fff",
+    "claim_liveness.py": "b8481f87fc35e9696f573ee71405c5da4e3bafa95a6d5e9ea558ff9c4011e7e5",
     "test_claim_arbitration.py": "4a6431414d33e6eb8052c445cb79b379e257dca25a04ad0d7f68f2c893815a9d",
-    "test_claim_liveness.py": "a314ee9874d079bcfd1bc90c78e1703fca9e6cd249c543c692b4b7556a5d4db6",
+    "test_claim_liveness.py": "7e2a65a26d25576b6e363628b071c353b3220539356ec3cc97b226bc2a1e67ad",
     "test_scope_keys.py": "5106c9304c4c44d78018f831949dcce83f36b2e68d23956e815781f64f802d8e"
   },
   "git_blobs": {
-    "README.md": "25e0f441c531cb7319125e8582a13b5153fa183a",
-    "claim_liveness.py": "3b1b0177d57b7896b3b47f0e84c9f7d75f434d34",
-    "test_claim_liveness.py": "1321a753481fc8d517093abf61966cd296d10f71"
+    "README.md": "ee88c2018516057bdf7637d9f5153f343f2fd8ec",
+    "claim_liveness.py": "0aace43e645a807f558cbcc33b5c18c9a3151c14",
+    "test_claim_liveness.py": "e9c5d3eeef599a6c3d0127f6603e7f3c80c41385"
   },
   "safety": {
     "arbitration_is_overwrite_authority": false,
@@ -20,15 +20,18 @@
     "fresh_owner_blocks_recovery": true,
     "noncanonical_root_events_authoritative": false,
     "noncanonical_root_is_anomaly": true,
+    "quarantined_events_reserve_provider_ids": false,
     "read_only_missing_root_authoritative": true,
     "repo_write_without_canonical_root_authoritative": false,
     "repo_writes_require_exact_canonical_root": true,
     "scope_keys_are_explicit_only": true,
     "scope_keys_infer_semantic_equivalence": false,
-    "stale_is_overwrite_authority": false
+    "stale_is_overwrite_authority": false,
+    "writer_epoch_followups_require_claim_root": true
   },
   "schema": "titan-v4-swarm-liveness-receipt/v1",
   "scope": "research/control-plane only; no gameplay/default/archive/Kaggle mutation",
+  "validation_custody": "connector-authenticated exact Git blob bytes reconstructed locally; not a repo-mounted checkout",
   "tests": {
     "compile": {
       "command": "python -B -m py_compile claim_liveness.py test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
@@ -44,7 +47,7 @@
         ]
       },
       "command": "python -B claim_liveness.py adversarial-events.jsonl --as-of 2000 --ttl-seconds 100",
-      "report_sha256": "254bc8c9c23506d919d165582420246551bc7b28dd2557ac9a7fc0a9ed06489e",
+      "report_sha256": "cb3541aea2a2d83a325426db0b5a7f65469f5b6a8801e8111948984ef8487b7c",
       "scope_groups": [],
       "summary": {
         "active": 0,
@@ -62,12 +65,12 @@
     "normal": {
       "command": "python -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 45
+      "passed": 49
     },
     "optimized": {
       "command": "python -O -B -m unittest -v test_claim_liveness.py test_claim_arbitration.py test_scope_keys.py",
       "failed": 0,
-      "passed": 45
+      "passed": 49
     }
   }
 }
