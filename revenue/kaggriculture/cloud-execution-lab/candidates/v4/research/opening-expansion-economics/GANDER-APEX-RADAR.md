@@ -23,12 +23,16 @@ The result should therefore be consumed as an opponent-conditioned economics fea
 
 ## Source custody
 
-The executable oracle `gander_apex_radar.py` refuses drift across the two existing canonical source contracts:
+The executable oracle `gander_apex_radar.py` refuses drift across all executable authorities consumed by the theorem:
 
 - official engine Git blob `3c202c7ee921da239356789e266b694635103fc4`;
-- authenticated Apex V7 `main.py` SHA-256 `1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a`.
+- authenticated Apex V7 `main.py` SHA-256 `1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a`;
+- canonical GANDER helper Git blob `38ae7715c233c74f24aacd5fe09f4d0d7a630037`;
+- canonical Apex counter-ambush helper Git blob `afdabf68fd262259a29b80d9dd6dad34eb7cae0e`.
 
-It loads the canonical GANDER frontier constructor and canonical Apex counter-ambush contract, checks their pinned identities agree, then evaluates every callback in the authenticated clone window. No copied threshold becomes an independent source of truth.
+Both local helper files are captured exactly once and Git-blob authenticated **before either helper executes**. The oracle then compiles and executes only those authenticated byte snapshots; helper pathnames are never reopened for execution after authentication. The report serializes both helper identities alongside the official-engine and Apex-main identities.
+
+The mutation regressions preserve the old public pin constants while changing the executable GANDER frontier or Apex clone threshold and attempting an import-time side effect. Those mutants must be rejected on helper-blob mismatch before the marker side effect can execute. This prevents a locally modified helper from forging a green composite proof while still advertising the reviewed external-source pins.
 
 ## Next gate
 
@@ -43,7 +47,8 @@ From this directory:
 ```bash
 python test_gander_apex_radar.py
 python -O test_gander_apex_radar.py
+python -m py_compile gander_apex_radar.py test_gander_apex_radar.py
 python gander_apex_radar.py
 ```
 
-The focused tests pin the exact threshold boundary, reject bool/type-poison state, prove the one-hire frontier remains invisible even with nine assumed visible structures, preserve the independent-Apex-action scope fence, and authenticate the current engine/Apex source identities.
+The focused tests pin the exact threshold boundary, reject bool/type-poison state, prove the one-hire frontier remains invisible even with nine assumed visible structures, preserve the independent-Apex-action scope fence, authenticate the current engine/Apex/helper source identities, and prove constant-preserving helper mutants are rejected before their code executes.
