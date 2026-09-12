@@ -200,6 +200,43 @@ class CoverageHelpersTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "direct active R03/R04 guard"):
             target.derive_reachability(v31, v4)
 
+    def test_v31_requires_initializer_in_method_scope(self):
+        definitions = (
+            b"def never_called():\n                self._initialize()",
+            b"async def never_called():\n                self._initialize()",
+            b"class Helper:\n                def never_called(self):\n                    self._initialize()",
+            b"never_called = lambda: self._initialize()",
+        )
+        for definition in definitions:
+            with self.subTest(definition=definition):
+                v31, v4 = fixture(GOOD_V31_RUNTIME.replace(
+                    b"            self._initialize()", b"            " + definition, 1))
+                with self.assertRaisesRegex(ValueError, "V3.1 canonical initialization path missing"):
+                    target.derive_reachability(v31, v4)
+
+    def test_v4_requires_initializer_in_method_scope(self):
+        definitions = (
+            b"def never_called():\n                self._initialize()",
+            b"async def never_called():\n                self._initialize()",
+            b"class Helper:\n                def never_called(self):\n                    self._initialize()",
+            b"never_called = lambda: self._initialize()",
+        )
+        for definition in definitions:
+            with self.subTest(definition=definition):
+                v31, v4 = fixture()
+                v4["titan_runtime.py"] = GOOD_V4_RUNTIME.replace(
+                    b"            self._initialize()", b"            " + definition, 1)
+                with self.assertRaisesRegex(ValueError, "V4 canonical initialization path missing"):
+                    target.derive_reachability(v31, v4)
+
+    def test_dead_helper_before_guard_does_not_move_initialization(self):
+        original = b"        invoked = time.perf_counter()"
+        helper = (b"        def never_called():\n"
+                  b"            self._initialize()\n" + original)
+        v31, v4 = fixture(GOOD_V31_RUNTIME.replace(original, helper, 1))
+        expected = target.derive_reachability(*fixture())
+        self.assertEqual(target.derive_reachability(v31, v4), expected)
+
     def test_reachability_rejects_wrong_delegate_arguments(self):
         bad = GOOD_V31_RUNTIME.replace(
             b"return self._v3_r03_act(observation, configuration, invoked, entry_started)",

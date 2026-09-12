@@ -209,14 +209,20 @@ def _r04_delegate_return(node: ast.stmt) -> bool:
 
 
 def _contains_initialize(node: ast.AST) -> bool:
-    return any(
-        isinstance(child, ast.Call)
-        and isinstance(child.func, ast.Attribute)
-        and child.func.attr == "_initialize"
-        and isinstance(child.func.value, ast.Name)
-        and child.func.value.id == "self"
-        for child in ast.walk(node)
-    )
+    # Definitions belong to another scope. A method merely declaring a helper
+    # does not establish that the helper's initializer is called by that method.
+    # Continue through ordinary control-flow children (if/try/with/etc.).
+    if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Lambda)):
+        return False
+    if (
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "_initialize"
+        and isinstance(node.func.value, ast.Name)
+        and node.func.value.id == "self"
+    ):
+        return True
+    return any(_contains_initialize(child) for child in ast.iter_child_nodes(node))
 
 
 def _route_assignment(node: ast.stmt) -> bool:
