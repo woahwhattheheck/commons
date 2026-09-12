@@ -18,9 +18,9 @@ from pathlib import Path
 # not commit IDs.  Any later source movement fails closed until deliberately
 # reviewed/rebound rather than silently composing against a different runtime.
 MAIN_BLOB = "cbc1fbdfaaaa0dfc99b450dc6269170c360854d2"
-RUNTIME_BLOB = "40f335f0192cc7e8161437d83da647d6c1f28eea"
-FROZEN_BLOB = "14e2be357b1a704a14a94f6cf4d264bde29acb69"
-SCHEDULER_BLOB = "60aae53695e42bc9f864435257251f7623d94bc5"
+RUNTIME_BLOB = "da8d5fe86543e1732b0c3ff4675f661bdd2c8d71"
+FROZEN_BLOB = "0f65045c137412d6bfa5c22950e6fff6a1275c7d"
+SCHEDULER_BLOB = "fcfed4d59e17f211e6744e246e86167ea82a0b87"
 CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
 FLOW_BLOB = "e24dd03a88a71ba4cf6f8d5da1082b89490b5a94"
 QUEUE_BLOB = "ac91d3c65deeabadaa60ee83c4a7a84286849150"

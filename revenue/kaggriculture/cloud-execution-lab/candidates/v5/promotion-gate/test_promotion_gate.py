@@ -1,0 +1,154 @@
+# SPDX-License-Identifier: Apache-2.0
+from __future__ import annotations
+
+import hashlib
+import json
+import unittest
+
+import promotion_gate as gate
+
+
+def _manifest():
+    body = {
+        "schema": gate.IDENTITY_SCHEMA,
+        "base_id": "titan-v5-main",
+        "engine_id": "engine:abc",
+        "opponent_pack_id": "frontier:1",
+        "config_sha256": "a" * 64,
+        "components": [
+            {
+                "name": "candidate",
+                "source": "candidate.py",
+                "source_sha256": "b" * 64,
+                "activation": {"mode": "config", "equals": {"t": "dict", "v": []}},
+            }
+        ],
+    }
+    candidate_id = "v5c:" + hashlib.sha256(
+        json.dumps(
+            body, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        ).encode()
+    ).hexdigest()
+    return {**body, "candidate_id": candidate_id}
+
+
+def _engagement(candidate_id):
+    return {
+        "classification": "ENGAGED",
+        "observations": 8,
+        "noop_threshold": 8,
+        "divergence_count": 2,
+        "engagement_rate": 0.25,
+        "first_divergence": {"observation": 2},
+        "control_id": "v5c:" + "1" * 64,
+        "candidate_id": candidate_id,
+    }
+
+
+def _runtime(candidate_id):
+    return {
+        "classification": "PASS",
+        "promotion_ready": True,
+        "receipt_count": 8,
+        "candidate_count": 1,
+        "max_fallback_rate": 0.0,
+        "deadline_fallback_count": 0,
+        "deadline_fallback_rate": 0.0,
+        "expected_design_declared": True,
+        "expected_callback_count": 8,
+        "expected_complete": True,
+        "missing_expected": [],
+        "unexpected_extra": [],
+        "p99_headroom_seconds": 0.1,
+        "overall": {"count": 8},
+        "by_candidate": {
+            candidate_id: {"count": 8, "deadline_fallback_count": 0}
+        },
+    }
+
+
+class PromotionGateTest(unittest.TestCase):
+    def test_valid_cross_evidence_receipt(self):
+        manifest = _manifest()
+        engagement = _engagement(manifest["candidate_id"])
+        runtime = _runtime(manifest["candidate_id"])
+        receipt = gate.build_receipt(manifest, engagement, runtime)
+        self.assertEqual("PASS", receipt["classification"])
+        self.assertTrue(receipt["promotion_ready"])
+        self.assertEqual(manifest["candidate_id"], receipt["candidate_id"])
+        self.assertEqual(engagement["control_id"], receipt["control_id"])
+        self.assertEqual(8, receipt["runtime"]["receipt_count"])
+        self.assertEqual(
+            {"candidate_manifest", "engagement_report", "runtime_report"},
+            set(receipt["evidence_sha256"]),
+        )
+
+    def test_cross_build_engagement_is_rejected(self):
+        manifest = _manifest()
+        engagement = _engagement("v5c:" + "2" * 64)
+        with self.assertRaisesRegex(gate.PromotionError, "does not match candidate manifest"):
+            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+
+    def test_noop_engagement_is_not_promotable(self):
+        manifest = _manifest()
+        engagement = _engagement(manifest["candidate_id"])
+        engagement["classification"] = "NO_OP_OBSERVED"
+        engagement["divergence_count"] = 0
+        engagement["first_divergence"] = None
+        with self.assertRaisesRegex(gate.PromotionError, "must be ENGAGED"):
+            gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+
+    def test_stale_runtime_pass_with_extra_callback_is_rejected(self):
+        manifest = _manifest()
+        runtime = _runtime(manifest["candidate_id"])
+        runtime["unexpected_extra"] = [
+            {"candidate": manifest["candidate_id"], "seed": 9, "seat": 0, "step": 1}
+        ]
+        with self.assertRaisesRegex(gate.PromotionError, "unexpected callbacks"):
+            gate.build_receipt(
+                manifest, _engagement(manifest["candidate_id"]), runtime
+            )
+
+    def test_runtime_must_be_candidate_pure(self):
+        manifest = _manifest()
+        runtime = _runtime(manifest["candidate_id"])
+        runtime["candidate_count"] = 2
+        runtime["by_candidate"]["v5c:" + "3" * 64] = {
+            "count": 1,
+            "deadline_fallback_count": 0,
+        }
+        with self.assertRaisesRegex(gate.PromotionError, "exactly one candidate"):
+            gate.build_receipt(
+                manifest, _engagement(manifest["candidate_id"]), runtime
+            )
+
+    def test_manifest_id_tamper_is_rejected(self):
+        manifest = _manifest()
+        manifest["base_id"] = "other-base"
+        with self.assertRaisesRegex(gate.PromotionError, "does not match manifest body"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_runtime_summary_inconsistency_is_rejected(self):
+        manifest = _manifest()
+        runtime = _runtime(manifest["candidate_id"])
+        runtime["deadline_fallback_count"] = 1
+        with self.assertRaisesRegex(gate.PromotionError, "fallback count disagrees"):
+            gate.build_receipt(
+                manifest, _engagement(manifest["candidate_id"]), runtime
+            )
+
+    def test_strict_json_rejects_duplicate_keys_and_nonfinite_constants(self):
+        with self.assertRaisesRegex(gate.PromotionError, "duplicate JSON object key"):
+            gate._loads_strict('{"candidate_id":"a","candidate_id":"b"}')
+        for token in ("NaN", "Infinity", "-Infinity"):
+            with self.subTest(token=token):
+                with self.assertRaisesRegex(gate.PromotionError, "non-finite"):
+                    gate._loads_strict('{"x":' + token + "}")
+
+
+if __name__ == "__main__":
+    unittest.main()

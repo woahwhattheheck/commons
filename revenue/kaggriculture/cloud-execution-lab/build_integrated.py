@@ -52,8 +52,9 @@ def source_files():
         for p in (ROOT/directory).rglob('*'):
             if p.is_file() and '__pycache__' not in p.parts:
                 name=str(p.relative_to(ROOT));mapping[name]=name
-    for name in ('integrated_selected.py','selected_action_sell.py','selected_sell_core.py','ordered_selected_sell.py'):
-        mapping[name]='reference/titan-current/latest/'+name
+    # The root selected stack is the live runtime authority. Historical/current
+    # snapshots remain available only at their explicit reference paths above.
+    # This prevents a landed root correctness fix from being shadowed at release.
     # The optional terminal owner pins the original frozen SELL source. Runtime
     # optimizations must not silently replace that dependency with new bytes.
     mapping['reference/titan-current/vendor/sell/scheduler.py']='reference/titan-current/vendor/sell/scheduler.py'

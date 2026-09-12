@@ -392,10 +392,18 @@ class TitanAgent:
                 or self.features.terminal_route):
             return selected
         maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
-        market = selected.get('market') or []
+        market = selected.get('market')
+        if not isinstance(market, list):
+            self.diagnostics['operating_stock'] = {
+                'changed': False, 'reason': 'malformed_market'}
+            return selected
         prefix = market[:maximum]
-        if not any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
-                   for o in prefix):
+        if any(o and not isinstance(o, list) for o in prefix):
+            self.diagnostics['operating_stock'] = {
+                'changed': False, 'reason': 'malformed_market_row'}
+            return selected
+        if not any(isinstance(o, list) and len(o) > 2
+                   and o[:2] == ['SELL', 'FERTILIZER'] for o in prefix):
             return selected
         snapshot = getattr(self.consumer, 'selected_post_units', None)
         if (snapshot is None or self.selected is None
@@ -428,8 +436,18 @@ class TitanAgent:
                 or self.features.terminal_route):
             return selected
         maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
-        if not any(o and o[:2] == ['SELL', 'WHEAT']
-                   for o in (selected.get('market') or [])[:maximum]):
+        market = selected.get('market')
+        if not isinstance(market, list):
+            self.diagnostics['feed_stock'] = {
+                'changed': False, 'certified': False, 'reason': 'malformed_market'}
+            return selected
+        prefix = market[:maximum]
+        if any(o and not isinstance(o, list) for o in prefix):
+            self.diagnostics['feed_stock'] = {
+                'changed': False, 'certified': False, 'reason': 'malformed_market_row'}
+            return selected
+        if not any(isinstance(o, list) and o and o[:2] == ['SELL', 'WHEAT']
+                   for o in prefix):
             return selected
         if self.spatial is not None and self.spatial._crop_repair is not None:
             self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,

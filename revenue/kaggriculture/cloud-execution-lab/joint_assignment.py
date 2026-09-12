@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import dataclass
-from typing import Any, Mapping, Optional, Sequence
+from typing import Any, Iterable, Mapping, Optional, Sequence
 
 MOVES = {"NORTH": (0, -1), "SOUTH": (0, 1), "EAST": (1, 0), "WEST": (-1, 0)}
 SERVICE = {
@@ -221,6 +221,26 @@ def _public_observation_binding(obs: Mapping, start_step: int, turns_per_day: in
     return player
 
 
+def _positive_plain_int(value: Any, name: str) -> int:
+    if type(value) is not int or value <= 0:
+        raise JointAssignmentError(f"{name} must be a plain positive integer")
+    return value
+
+
+def _normalize_checkpoints(checkpoints: Iterable[int]) -> frozenset[int]:
+    """Materialize a checkpoint iterable exactly once and reject lossy aliases."""
+    try:
+        iterator = iter(checkpoints)
+    except TypeError:
+        raise JointAssignmentError("checkpoints must be iterable") from None
+    normalized = set()
+    for step in iterator:
+        if type(step) is not int or step < 0:
+            raise JointAssignmentError("checkpoints must contain plain nonnegative integers")
+        normalized.add(step)
+    return frozenset(normalized)
+
+
 def _extract_bundle(
     mechanics: Any,
     farm: Mapping,
@@ -390,7 +410,7 @@ def propose_pair_swap(
     start_step: int,
     end_step: int,
     configuration: Optional[Mapping] = None,
-    checkpoints: Sequence[int] = CHECKPOINTS,
+    checkpoints: Iterable[int] = CHECKPOINTS,
 ) -> JointSwapResult:
     """Certify one travel-reducing atomic pairwise bundle swap.
 
@@ -407,15 +427,15 @@ def propose_pair_swap(
         raise JointAssignmentError("observation must contain farms/private")
 
     cfg = dict(configuration or {})
-    turns_per_day = int(cfg.get("turnsPerDay", 24))
-    if turns_per_day <= 0:
-        raise JointAssignmentError("turnsPerDay must be positive")
+    turns_per_day = _positive_plain_int(cfg.get("turnsPerDay", 24), "turnsPerDay")
+    shed_capacity = _positive_plain_int(cfg.get("shedCapacity", 100), "shedCapacity")
+    checkpoint_set = _normalize_checkpoints(checkpoints)
     player = _public_observation_binding(obs, start_step, turns_per_day)
     if start_step // turns_per_day != end_step // turns_per_day:
         return JointSwapResult(False, "day_boundary")
     if any(step % turns_per_day == turns_per_day - 1 for step in range(start_step, end_step + 1)):
         return JointSwapResult(False, "end_of_day_boundary")
-    if any(step in set(checkpoints) for step in range(start_step, end_step + 1)):
+    if any(step in checkpoint_set for step in range(start_step, end_step + 1)):
         return JointSwapResult(False, "checkpoint_boundary")
 
     for step in range(start_step, end_step + 1):
@@ -437,7 +457,6 @@ def propose_pair_swap(
     board = len(farm.get("tiles", []))
     if board <= 0:
         raise JointAssignmentError("farm tiles must be non-empty")
-    shed_capacity = int(cfg.get("shedCapacity", 100))
     horizon = end_step - start_step + 1
 
     bundle_a, reason = _extract_bundle(mechanics, farm, route, worker_a, start_step, end_step, board)
