@@ -31,6 +31,10 @@ class TownWheatTimingTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             timing.town_demand_units(self.engine, 100, ["NOT_A_SHOP"])
 
+    def test_engine_impossible_shop_count_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "official cap"):
+            timing.town_demand_units(self.engine, 100, ["BAKERY"] * (self.engine.MAX_SHOP_INSTANCES + 1))
+
     def test_constructed_five_shop_witness_is_42_dollars(self):
         e = self.engine
         shops = ["BAKERY", "PIZZA_SHOP", "BRUNCH_SPOT", "ICE_CREAM_SHOP", "FARMERS_MARKET"]

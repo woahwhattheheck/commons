@@ -48,6 +48,8 @@ def town_demand_units(engine, step: int, unlocked_shops, config=None, item: str 
     shop_interval = _positive_int(cfg["townShopSellInterval"], "townShopSellInterval")
     center_interval = _positive_int(cfg["townCenterSellInterval"], "townCenterSellInterval")
     shops = list(unlocked_shops or [])
+    if len(shops) > int(engine.MAX_SHOP_INSTANCES):
+        raise ValueError(f"shop count exceeds official cap: {len(shops)} > {engine.MAX_SHOP_INSTANCES}")
     unknown = [name for name in shops if name not in engine.SHOPS]
     if unknown:
         raise ValueError(f"unknown shops: {unknown}")
