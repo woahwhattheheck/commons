@@ -116,6 +116,17 @@ class SeedFundingEngineGrammarTests(unittest.TestCase):
             [(0, "BUY_SEED"), (8, "HIRE")],
         )
 
+    def test_inherited_quantity_overflow_matches_engine_failure(self):
+        for quantity in (float("inf"), float("-inf")):
+            with self.subTest(quantity=quantity):
+                rows = [
+                    ["BUY_SEED", "WHEAT", 2],
+                    ["BUY_ANIMAL", "COW", quantity],
+                ]
+                report = self.certify(rows, [[], rows[1]], money=100)
+                self.assertEqual(report["status"], "not_certified", report)
+                self.assertIn("infinity", report["reason"].lower())
+
     def test_valid_product_row_still_requires_product_cash_evidence(self):
         for quantity in (2, 2.9, "2"):
             with self.subTest(quantity=quantity):

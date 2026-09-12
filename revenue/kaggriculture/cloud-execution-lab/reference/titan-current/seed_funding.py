@@ -59,7 +59,7 @@ def _engine_quantity(order: Any, *, op: str | None = None,
         return None
     try:
         quantity = int(order[2])
-    except (TypeError, ValueError, OverflowError):
+    except (TypeError, ValueError):
         return None
     if quantity <= 0:
         return None
