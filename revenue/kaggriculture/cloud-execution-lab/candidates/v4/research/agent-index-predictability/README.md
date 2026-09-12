@@ -20,7 +20,9 @@ JSON array or JSONL. Each record needs:
   - two-item `rewards` list (the analyzer picks target/opponent by seat), or
   - `score` + `opponent_score`.
 
-If a record contains more than one outcome representation, all supplied representations must agree exactly after numeric validation or the record fails closed. There is deliberately no relative-tolerance comparison here: without an authenticated magnitude bound, a tiny relative difference can still be an enormous absolute contradiction. Integer values are retained exactly after finite-range validation so disagreements above the IEEE-754 exact-integer range cannot collapse through float conversion. When representations agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. Derived reward/score subtraction is also revalidated for finiteness, so individually finite operands cannot overflow into an infinite analyzed margin.
+Seed and opponent identifiers may each be strings or integers, but **one dataset must use one primitive type per identifier domain**. The report retains its historical string representation only after that dataset-level custody check. This prevents integer `1` and string `"1"` from collapsing into the same matched provenance cell or false duplicate.
+
+If a record contains more than one outcome representation, all supplied representations must agree exactly after numeric validation or the record fails closed. There is deliberately no relative-tolerance comparison here: without an authenticated magnitude bound, a tiny relative difference can still be an enormous absolute contradiction. Integer values are retained exactly after finite-range validation so disagreements above the IEEE-754 exact-integer range cannot collapse through float conversion. When representations agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. Derived reward/score subtraction is also revalidated for finiteness, so individually finite operands cannot overflow into an infinite analyzed margin. The primary paired estimand `seat1 - seat0` is independently revalidated after matching for the same reason: two finite margins such as `-1e308` and `+1e308` must not manufacture an infinite seat effect.
 
 There is deliberately **no built-in reward ceiling**. A historical Antigravity proposal suggested clipping final margins to +/-65,000, but a measured pinned-engine control produced a legitimate `168572 - 3550 = 165022` margin. Clipping would silently falsify that record.
 
@@ -55,15 +57,15 @@ Do not substitute `65000` (or any other guessed constant) merely because it soun
 
 The JSON report includes exact matched-pair coverage; matched seat-0 / seat-1 mean target margins; paired mean and median `seat1 - seat0` delta; equal-opponent-weighted mean delta; paired sign-test counts and exact two-sided p-value; Cohen's paired standardized effect where finite/defined; per-opponent pair counts and mean deltas; raw opponent-assignment total-variation distance; missing-cell examples; and an `input_guard` receipt recording whether structured outcomes and an authenticated reject-only margin bound were enabled.
 
-A constant nonzero paired delta has zero variance and therefore no finite Cohen `d_z`; the tool emits JSON `null` for that degenerate statistic while preserving the raw paired mean and sign test.
+A constant nonzero paired delta has zero variance and therefore no finite Cohen `d_z`; the tool emits JSON `null` for that degenerate statistic while preserving the raw paired mean and sign test. Any non-finite standardized effect also degrades to `null`; the primary paired deltas themselves must always be finite or the dataset is rejected.
 
 ## Verification boundary
 
-Current successor analyzer Git blob: `1c9133a8ab8f4edd27bde436c157a44a0a5efc67`.
+Current successor analyzer Git blob: `531a0d6b14a9084bd768672cc0b88c03c9b5b61e`.
 
-Current successor regression Git blob: `6dedeaea75598e8cdd8e528bde5888410ce34ca1`.
+Current successor regression Git blob: `d4db9300e6f979106004f2d95a5c49ba3aa7715f`.
 
-The focused suite contains 20 methods, including the original matched-pair/statistical contracts plus: derived finite-operand overflow rejection; the legitimate 165,022-margin control; a killer showing why a universal 65,000 bound is invalid; authenticated reject-not-clip behavior; structured-outcome enforcement; explicit no-bound default compatibility; and input-guard receipt coverage.
+The focused suite contains 25 methods, including the original matched-pair/statistical contracts plus: derived finite-operand overflow rejection; paired-delta overflow rejection; integer/string seed and opponent identity-collision killers; mixed identifier-domain rejection; the legitimate 165,022-margin control; a killer showing why a universal 65,000 bound is invalid; authenticated reject-not-clip behavior; structured-outcome enforcement; explicit no-bound default compatibility; and input-guard receipt coverage.
 
 Repository workflow `TITAN V4 Gemini convergence addenda` is the exact-head execution authority. It runs the analyzer regressions plus both omitted-proposition convergence addenda (analyzer clipping and terminal mass-HIRE) under normal Python and `python -O`, plus `py_compile` and the canonical master-ledger checker. A queued or pending workflow is not green.
 
