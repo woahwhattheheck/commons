@@ -5,16 +5,53 @@ from __future__ import annotations
 import unittest
 
 from gemini_market_certificate import (
+    executable_own_sell_requested_upper,
     public_supply_certificate,
     rival_net_supply_lower_bound,
     sell_deferral_replay_certificate,
+    source_bound_public_supply_certificate,
 )
+
+
+class FakeEngine:
+    PRODUCTS = ["WHEAT", "WOOL", "MILK"]
+    SHOPS = {
+        "YARN_STORE": ["WOOL"],
+        "PIZZA_SHOP": ["MILK", "WHEAT"],
+    }
+    TOWN_CENTER_PRODUCTS = list(PRODUCTS)
+    MAX_SHOP_INSTANCES = 8
+
+    @staticmethod
+    def _parse_order(order):
+        if not isinstance(order, list) or not order:
+            return None
+        op = order[0]
+        if op in ("HIRE", "BUY_LAND"):
+            return {"type": op}
+        if op in ("BUY_SEED", "BUY_PRODUCT", "BUY_ANIMAL", "SELL"):
+            if len(order) < 3:
+                return None
+            try:
+                n = int(order[2])
+            except (TypeError, ValueError):
+                return None
+            if n <= 0:
+                return None
+            return {"type": op, "item": order[1], "remaining": n}
+        return None
+
+
+def observation(step, item="WOOL", inventory=100, shops=()):
+    return {
+        "step": step,
+        "market": {"inventory": {item: inventory}},
+        "town": {"unlocked_shops": list(shops)},
+    }
 
 
 class RivalSupplyCertificateTests(unittest.TestCase):
     def test_positive_lower_bound_proves_prior_rival_supply(self):
-        # delta inventory +15, known town drain +5, our requested SELL upper +10
-        # => rival SELL - rival BUY >= +10.
         self.assertEqual(
             rival_net_supply_lower_bound(
                 previous_inventory=100,
@@ -57,6 +94,95 @@ class RivalSupplyCertificateTests(unittest.TestCase):
                 current_inventory=100,
                 previous_town_consume=0,
                 previous_own_sell_requested_upper=0,
+            )
+
+
+class SourceBoundTransitionTests(unittest.TestCase):
+    engine = FakeEngine()
+
+    def test_adjacent_public_transition_derives_town_and_own_sell(self):
+        previous = observation(4, inventory=100, shops=("YARN_STORE",))
+        current = observation(5, inventory=115, shops=("YARN_STORE",))
+        cert = source_bound_public_supply_certificate(
+            self.engine,
+            item="WOOL",
+            previous_observation=previous,
+            current_observation=current,
+            previous_own_action={"market": [["SELL", "WOOL", 10]]},
+        )
+        # step4 YARN_STORE consumes 2 WOOL after market. 15 + 2 - 10 = 7.
+        self.assertEqual(cert["derived_town_consume"], 2)
+        self.assertEqual(cert["derived_own_sell_requested_upper"], 10)
+        self.assertEqual(cert["rival_net_supply_lower_bound"], 7)
+        self.assertTrue(cert["proved_prior_rival_net_supply"])
+        self.assertEqual(
+            cert["input_custody"],
+            "ADJACENT_PUBLIC_STATE_PLUS_OFFICIAL_MARKET_PREFIX",
+        )
+
+    def test_nonadjacent_observations_fail_closed(self):
+        with self.assertRaisesRegex(ValueError, "adjacent"):
+            source_bound_public_supply_certificate(
+                self.engine,
+                item="WOOL",
+                previous_observation=observation(4),
+                current_observation=observation(6),
+                previous_own_action={},
+            )
+
+    def test_sell_outside_executable_market_cap_is_not_charged_to_us(self):
+        action = {"market": [["SELL", "WOOL", 2], ["SELL", "WOOL", 999]]}
+        self.assertEqual(
+            executable_own_sell_requested_upper(
+                self.engine,
+                action,
+                item="WOOL",
+                config={"maxMarketOrdersPerTurn": 1},
+            ),
+            2,
+        )
+
+    def test_official_parser_coercible_in_prefix_sell_is_counted(self):
+        action = {"market": [["SELL", "WOOL", "7"]]}
+        self.assertEqual(
+            executable_own_sell_requested_upper(self.engine, action, item="WOOL"),
+            7,
+        )
+
+    def test_zero_config_cap_still_exposes_row_zero_like_engine(self):
+        action = {"market": [["SELL", "WOOL", 3], ["SELL", "WOOL", 9]]}
+        self.assertEqual(
+            executable_own_sell_requested_upper(
+                self.engine,
+                action,
+                item="WOOL",
+                config={"maxMarketOrdersPerTurn": 0},
+            ),
+            3,
+        )
+
+    def test_day_boundary_uses_previous_town_not_newly_unlocked_shop(self):
+        previous = observation(71, inventory=100, shops=())
+        current = observation(72, inventory=100, shops=("YARN_STORE",))
+        cert = source_bound_public_supply_certificate(
+            self.engine,
+            item="WOOL",
+            previous_observation=previous,
+            current_observation=current,
+            previous_own_action={},
+        )
+        self.assertEqual(cert["derived_town_consume"], 0)
+        self.assertEqual(cert["rival_net_supply_lower_bound"], 0)
+        self.assertFalse(cert["proved_prior_rival_net_supply"])
+
+    def test_unknown_product_rejected_before_evidence(self):
+        with self.assertRaises(ValueError):
+            source_bound_public_supply_certificate(
+                self.engine,
+                item="BOGUS",
+                previous_observation=observation(4),
+                current_observation=observation(5),
+                previous_own_action={},
             )
 
 
