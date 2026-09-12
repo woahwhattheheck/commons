@@ -126,8 +126,143 @@ def authenticate_harness(root):
     }
 
 
+def _copy_snapshot_file(source_root, snapshot_root, relative):
+    """Copy one safe live-tree file; later authentication makes the copy authoritative."""
+    source = checked_repo_file(source_root, relative)
+    target = Path(snapshot_root).joinpath(*PurePosixPath(relative).parts)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    data = source.read_bytes()
+    if target.exists():
+        if target.read_bytes() != data:
+            raise ValueError(f"Snapshot path collision: {relative}")
+    else:
+        target.write_bytes(data)
+    return target
+
+
+def _policy_snapshot_paths(snapshot_root, opponents):
+    """Return and verify the registry-declared policy/notices in a completed snapshot."""
+    registry_path = checked_repo_file(snapshot_root, BANK + "/REFERENCE-POLICIES.json")
+    registry = json.loads(registry_path.read_text())
+    policies = registry.get("policies")
+    if not isinstance(policies, dict):
+        raise ValueError("Pinned reference-policy registry has no policies")
+    verified = {}
+    for key in opponents:
+        record = policies.get(key)
+        if not isinstance(record, dict):
+            raise ValueError(f"Unknown reference policy: {key}")
+        root_text = record.get("root")
+        files = record.get("files")
+        if not isinstance(root_text, str) or not isinstance(files, dict) or not files:
+            raise ValueError(f"Malformed reference policy record: {key}")
+        root_rel = PurePosixPath(root_text)
+        if ("\\" in root_text or root_rel.is_absolute() or ".." in root_rel.parts
+                or str(root_rel) != root_text):
+            raise ValueError(f"Unsafe reference policy root: {root_text!r}")
+        rows = {}
+        for name, expected in files.items():
+            if (not isinstance(name, str) or not isinstance(expected, str)
+                    or len(expected) != 64):
+                raise ValueError(f"Malformed reference policy file: {key}:{name!r}")
+            relative = (root_rel / PurePosixPath(name)).as_posix()
+            path = checked_repo_file(snapshot_root, relative)
+            actual = digest(path)
+            if actual != expected:
+                raise ValueError(f"Reference policy snapshot mismatch: {key}:{name}")
+            rows[relative] = actual
+        notices = record.get("notices", {})
+        if not isinstance(notices, dict):
+            raise ValueError(f"Malformed reference policy notices: {key}")
+        for relative, expected in notices.items():
+            if (not isinstance(relative, str) or not isinstance(expected, str)
+                    or len(expected) != 64):
+                raise ValueError(f"Malformed reference policy notice: {key}:{relative!r}")
+            path = checked_repo_file(snapshot_root, relative)
+            actual = digest(path)
+            if actual != expected:
+                raise ValueError(f"Reference policy notice mismatch: {key}:{relative}")
+            rows[relative] = actual
+        verified[key] = rows
+    return verified
+
+
+def snapshot_harness(source_root, snapshot_root, opponents):
+    """Copy once, authenticate the copy, and make it the sole execution authority.
+
+    The live repository is only an acquisition source. Git pins authenticate the core
+    and loader manifest before either manifest is trusted for further path discovery.
+    Registry-declared opponent files are then copied and verified against the pinned
+    registry. All later import/preparation/runtime work must use this snapshot root.
+    """
+    source_root = Path(source_root).resolve(strict=True)
+    snapshot_root = Path(snapshot_root)
+    if snapshot_root.exists():
+        raise FileExistsError(snapshot_root)
+    snapshot_root.mkdir(parents=True)
+    try:
+        for relative in HARNESS_GIT_BLOBS:
+            _copy_snapshot_file(source_root, snapshot_root, relative)
+
+        # Authenticate the registry + upstream manifest before trusting paths they name.
+        verify_git_blobs(snapshot_root, HARNESS_GIT_BLOBS)
+
+        manifest = json.loads(checked_repo_file(snapshot_root, UPSTREAM_MANIFEST).read_text())
+        upstream_files = manifest.get("files")
+        if not isinstance(upstream_files, dict) or not upstream_files:
+            raise ValueError("Pinned upstream manifest has no files")
+        for name in upstream_files:
+            if not isinstance(name, str):
+                raise ValueError(f"Malformed upstream manifest path: {name!r}")
+            _copy_snapshot_file(
+                source_root, snapshot_root, "cloud-pack/upstream/" + name
+            )
+
+        registry = json.loads(
+            checked_repo_file(snapshot_root, BANK + "/REFERENCE-POLICIES.json").read_text()
+        )
+        policies = registry.get("policies")
+        if not isinstance(policies, dict):
+            raise ValueError("Pinned reference-policy registry has no policies")
+        for key in opponents:
+            record = policies.get(key)
+            if not isinstance(record, dict):
+                raise ValueError(f"Unknown reference policy: {key}")
+            root_text = record.get("root")
+            files = record.get("files")
+            if not isinstance(root_text, str) or not isinstance(files, dict) or not files:
+                raise ValueError(f"Malformed reference policy record: {key}")
+            root_rel = PurePosixPath(root_text)
+            if ("\\" in root_text or root_rel.is_absolute() or ".." in root_rel.parts
+                    or str(root_rel) != root_text):
+                raise ValueError(f"Unsafe reference policy root: {root_text!r}")
+            for name in files:
+                if not isinstance(name, str):
+                    raise ValueError(f"Malformed reference policy path: {key}:{name!r}")
+                relative = (root_rel / PurePosixPath(name)).as_posix()
+                _copy_snapshot_file(source_root, snapshot_root, relative)
+            notices = record.get("notices", {})
+            if not isinstance(notices, dict):
+                raise ValueError(f"Malformed reference policy notices: {key}")
+            for relative in notices:
+                _copy_snapshot_file(source_root, snapshot_root, relative)
+
+        harness = authenticate_harness(snapshot_root)
+        harness["opponent_policy_sha256"] = _policy_snapshot_paths(snapshot_root, opponents)
+        harness["snapshot"] = {
+            "mode": "copy_then_authenticate_execute_snapshot_only",
+            "root": ".harness-snapshot",
+        }
+        return harness
+    except BaseException:
+        shutil.rmtree(snapshot_root, ignore_errors=True)
+        raise
+
+
 def load(path, name):
     spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(str(path))
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
     spec.loader.exec_module(module)
@@ -220,13 +355,18 @@ def summarize(cells):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--kg-root", type=Path, required=True, help="Existing revenue/kaggriculture directory")
-    parser.add_argument("--engine-dir", type=Path, required=True, help="Existing exact three-file official engine cache")
+    parser.add_argument("--kg-root", type=Path, required=True,
+                        help="Existing revenue/kaggriculture directory")
+    parser.add_argument("--engine-dir", type=Path, required=True,
+                        help="Existing exact three-file official engine cache")
     parser.add_argument("--baseline", type=Path, required=True)
     candidate = parser.add_mutually_exclusive_group(required=True)
-    candidate.add_argument("--overlay", type=Path, help="Exact published frozen_selected.py; replaces only that member")
-    candidate.add_argument("--candidate", type=Path, help="Already rebuilt candidate archive")
-    parser.add_argument("--overlay-sha256", required=True, help="Expected SHA256 of the published frozen_selected.py")
+    candidate.add_argument("--overlay", type=Path,
+                           help="Exact published frozen_selected.py; replaces only that member")
+    candidate.add_argument("--candidate", type=Path,
+                           help="Already rebuilt candidate archive")
+    parser.add_argument("--overlay-sha256", required=True,
+                        help="Expected SHA256 of the published frozen_selected.py")
     parser.add_argument("--output", type=Path, required=True, help="New result directory")
     parser.add_argument("--seeds", default="1209120226,1209120711")
     parser.add_argument("--opponents", default="apex_v7,arlene_v14")
@@ -236,6 +376,7 @@ def main():
     parser.add_argument("--startup-timeout", type=float, default=10.0)
     parser.add_argument("--game-timeout", type=float, default=900.0)
     args = parser.parse_args()
+
     expected_overlay_sha256 = published_overlay_sha256(args.overlay_sha256)
     if sys.platform != "linux":
         parser.error("Run games on a Linux fleet VM; no Windows timeout shim is used")
@@ -250,15 +391,27 @@ def main():
     if any(not math.isfinite(value) or value <= 0 for value in
            (args.action_timeout, args.startup_timeout, args.game_timeout)):
         parser.error("Timeouts must be finite and positive")
+
     args.kg_root = args.kg_root.resolve(strict=True)
     args.engine_dir = args.engine_dir.resolve(strict=True)
     args.baseline = args.baseline.resolve(strict=True)
     if digest(args.baseline) != BASELINE_SHA256:
         raise ValueError("Baseline is not the accepted V4 archive SHA256")
     baseline_files = archive_members(args.baseline)
-    harness = authenticate_harness(args.kg_root)
+
     args.output = args.output.resolve()
-    args.output.mkdir(parents=True, exist_ok=False)
+    if args.output.exists():
+        raise FileExistsError(args.output)
+    output_parent = args.output.parent.resolve(strict=True)
+    # Acquire from the mutable tree only into a private sibling; verify the copy,
+    # then atomically move that authenticated closure into the evidence directory.
+    with tempfile.TemporaryDirectory(prefix="joint-liquidity-snapshot-", dir=output_parent) as temp:
+        staged_snapshot = Path(temp) / "kg"
+        harness = snapshot_harness(args.kg_root, staged_snapshot, opponents)
+        args.output.mkdir(parents=False, exist_ok=False)
+        snapshot_root = args.output / ".harness-snapshot"
+        os.replace(staged_snapshot, snapshot_root)
+
     if args.overlay:
         if digest(args.overlay) != expected_overlay_sha256:
             raise ValueError("Overlay file differs from published frozen_selected.py")
@@ -273,80 +426,141 @@ def main():
         raise ValueError(f"Expected only frozen_selected.py to change; got {changed}")
     if hashlib.sha256(candidate_files["frozen_selected.py"]).hexdigest() != expected_overlay_sha256:
         raise ValueError("Archived frozen_selected.py differs from published source")
-    evaluator_path = args.kg_root / EVALUATOR
-    loader = args.kg_root / "20260907-offline-agent/evaluate.py"
+
+    evaluator_path = snapshot_root / EVALUATOR
+    loader = snapshot_root / "20260907-offline-agent/evaluate.py"
     evaluator = load(evaluator_path, "astra_existing_evaluator")
-    pack = load(args.kg_root / "cloud-pack/pack.py", "astra_existing_pack")
-    bridge = load(args.kg_root / BANK / "reference_policies.py", "astra_existing_bank")
+    pack = load(snapshot_root / "cloud-pack/pack.py", "astra_existing_pack")
+    bridge = load(snapshot_root / BANK / "reference_policies.py", "astra_existing_bank")
     engine_hashes = evaluator.verify_sources(args.engine_dir)
+
     runtime = {}
     opponent_receipts = {}
     expected_bridge = harness["repository_files"][BANK + "/reference_policies.py"]["sha256"]
     expected_registry = harness["repository_files"][BANK + "/REFERENCE-POLICIES.json"]["sha256"]
     for opponent in opponents:
         runtime[opponent] = args.output / "opponents" / opponent
-        receipt = bridge.prepare(opponent, args.kg_root, runtime[opponent])
+        receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
         if (receipt.get("bridge_sha256") != expected_bridge
                 or receipt.get("source_registry_sha256") != expected_registry
                 or receipt.get("support_files") != harness["opponent_support_sha256"]):
             raise ValueError(f"Opponent preparation escaped authenticated harness: {opponent}")
+        support_root = Path(receipt.get("support_root", "")).resolve(strict=True)
+        if support_root != snapshot_root.resolve(strict=True):
+            raise ValueError(f"Opponent preparation did not bind snapshot root: {opponent}")
         opponent_receipts[opponent] = receipt
+
     metadata = {
-        "schema": SCHEMA, "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "schema": SCHEMA,
+        "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "candidate_source_commit": OVERLAY_COMMIT,
-        "baseline_sha256": digest(args.baseline), "candidate_sha256": digest(args.candidate),
-        "changed_members": changed, "overlay_sha256": expected_overlay_sha256,
-        "engine_ref": evaluator.ENGINE_REF, "engine_sha256": engine_hashes,
+        "baseline_sha256": digest(args.baseline),
+        "candidate_sha256": digest(args.candidate),
+        "changed_members": changed,
+        "overlay_sha256": expected_overlay_sha256,
+        "engine_ref": evaluator.ENGINE_REF,
+        "engine_sha256": engine_hashes,
         "harness": harness,
-        "evaluator_sha256": digest(evaluator_path), "loader_sha256": digest(loader),
-        "launcher_sha256": digest(__file__), "python": sys.version, "platform": platform.platform(),
-        "limits": {"action_rpc_seconds": args.action_timeout, "startup_seconds": args.startup_timeout,
-                   "game_seconds": args.game_timeout, "remaining_overage_time": 0},
-        "seeds": seeds, "seats": seats, "opponents": opponents, "agent_rng_seed": args.rng_seed,
+        "evaluator_sha256": digest(evaluator_path),
+        "loader_sha256": digest(loader),
+        "launcher_sha256": digest(__file__),
+        "python": sys.version,
+        "platform": platform.platform(),
+        "limits": {
+            "action_rpc_seconds": args.action_timeout,
+            "startup_seconds": args.startup_timeout,
+            "game_seconds": args.game_timeout,
+            "remaining_overage_time": 0,
+        },
+        "seeds": seeds,
+        "seats": seats,
+        "opponents": opponents,
+        "agent_rng_seed": args.rng_seed,
         "opponent_receipts": opponent_receipts,
-        "method": "Full pinned official interpreter. Each game freshly extracts the selected archive and uses fresh persistent agent processes and private working directories. Existing pinned raw-file loader initializes in first timed call. Baseline and candidate share seed, seat, opponent source, VM and role RNG; game order alternates. 1.25s RPC default includes IPC headroom; this is not hosted Kaggle timing or scoring.",
+        "method": (
+            "Full pinned official interpreter. The mutable --kg-root is used only to acquire "
+            "the declared harness/policy closure; the copied .harness-snapshot is authenticated "
+            "against immutable Git/manifest/registry hashes before output publication, and all "
+            "evaluator/packer/bridge/opponent preparation/runtime support then executes solely "
+            "from that snapshot. Each game freshly extracts the selected archive and uses fresh "
+            "persistent agent processes and private working directories. Existing pinned raw-file "
+            "loader initializes in first timed call. Baseline and candidate share seed, seat, "
+            "opponent source, VM and role RNG; game order alternates. 1.25s RPC default includes "
+            "IPC headroom; this is not hosted Kaggle timing or scoring."
+        ),
     }
     write_json(args.output / "run.json", metadata)
+
     cells = []
     for opponent in opponents:
         for seed in seeds:
             for seat in seats:
                 cell_id = f"{opponent}-s{seed}-p{seat}"
-                cell = {"schema": SCHEMA, "cell_id": cell_id, "opponent": opponent,
-                        "seed": seed, "seat": seat, "baseline_sha256": metadata["baseline_sha256"],
-                        "candidate_sha256": metadata["candidate_sha256"], "games": {}}
-                order = ["baseline", "candidate"] if len(cells) % 2 == 0 else ["candidate", "baseline"]
+                cell = {
+                    "schema": SCHEMA,
+                    "cell_id": cell_id,
+                    "opponent": opponent,
+                    "seed": seed,
+                    "seat": seat,
+                    "baseline_sha256": metadata["baseline_sha256"],
+                    "candidate_sha256": metadata["candidate_sha256"],
+                    "games": {},
+                }
+                order = ["baseline", "candidate"] if len(cells) % 2 == 0 else [
+                    "candidate", "baseline"
+                ]
                 cell["execution_order"] = order
                 for label in order:
-                    with tempfile.TemporaryDirectory(prefix=cell_id + "-" + label + "-", dir=args.output) as temp:
+                    with tempfile.TemporaryDirectory(
+                        prefix=cell_id + "-" + label + "-", dir=args.output
+                    ) as temp:
                         directory = Path(temp)
                         payload = directory / "payload"
-                        extract_members(baseline_files if label == "baseline" else candidate_files, payload)
+                        extract_members(
+                            baseline_files if label == "baseline" else candidate_files,
+                            payload,
+                        )
                         adapter = directory / "adapter.py"
                         pack.write_adapter(adapter, payload / "main.py")
                         rival = str(runtime[opponent] / "adapter.py")
                         specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
                         engine, _ = evaluator.get_engine(args.engine_dir, loader)
-                        game = evaluator.play(engine, specs, args.engine_dir, loader, seed, seat,
-                                              args.rng_seed, args.action_timeout, args.startup_timeout,
-                                              args.game_timeout)
+                        game = evaluator.play(
+                            engine, specs, args.engine_dir, loader, seed, seat,
+                            args.rng_seed, args.action_timeout, args.startup_timeout,
+                            args.game_timeout,
+                        )
                         game["variant"] = label
                         game["opponent"] = opponent
                         cell["games"][label] = game
                         write_json(args.output / (cell_id + "-" + label + ".json"), game)
-                        print(json.dumps({"cell_id": cell_id, "variant": label, "status": game["status"],
-                                          "steps": game["steps"], "scores": game["scores"],
-                                          "failure": game["failure"], "wall_seconds": game["wall_seconds"]}), flush=True)
+                        print(json.dumps({
+                            "cell_id": cell_id,
+                            "variant": label,
+                            "status": game["status"],
+                            "steps": game["steps"],
+                            "scores": game["scores"],
+                            "failure": game["failure"],
+                            "wall_seconds": game["wall_seconds"],
+                        }), flush=True)
                 cell["baseline_margin"] = margin(cell["games"]["baseline"], seat)
                 cell["candidate_margin"] = margin(cell["games"]["candidate"], seat)
-                valid = cell["baseline_margin"] is not None and cell["candidate_margin"] is not None
+                valid = (
+                    cell["baseline_margin"] is not None
+                    and cell["candidate_margin"] is not None
+                )
                 cell["status"] = "complete_pair" if valid else "incomplete_pair"
-                cell["margin_delta"] = cell["candidate_margin"] - cell["baseline_margin"] if valid else None
+                cell["margin_delta"] = (
+                    cell["candidate_margin"] - cell["baseline_margin"] if valid else None
+                )
                 write_json(args.output / (cell_id + ".json"), cell)
                 cells.append(cell)
                 report = {"run": metadata, "summary": summarize(cells), "cells": cells}
                 write_json(args.output / "report.json", report)
-                print("PAIR " + json.dumps({key: value for key, value in cell.items() if key != "games"}), flush=True)
+                print("PAIR " + json.dumps({
+                    key: value for key, value in cell.items() if key != "games"
+                }), flush=True)
+
     print("SUMMARY " + json.dumps(summarize(cells)), flush=True)
     return int(any(cell["status"] != "complete_pair" for cell in cells))
 
