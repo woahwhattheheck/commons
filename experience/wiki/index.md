@@ -3,13 +3,15 @@
 This is compiled knowledge, not raw history and not an executable skill.
 It is rebuilt deterministically from evidence packets in `experience/raw/`.
 
-- Verified experience packets: 1
-- Compiled patterns: 1
-- Skill-impact entries: 1
+- Verified experience packets: 4
+- Compiled patterns: 3
+- Skill-impact entries: 3
 
 ## Pattern catalog
 
+- [change-generator-with-generated-output](patterns/change-generator-with-generated-output.md) — 1 success / 1 failure observations
 - [publish-discovery-before-interaction](patterns/publish-discovery-before-interaction.md) — 1 success / 0 failure observations
+- [share-operation-identity-across-carriers](patterns/share-operation-identity-across-carriers.md) — 1 success / 0 failure observations
 
 The runtime agent reads active skills, not this wiki. Maintainers and skill
 proposers use the wiki to make one evidence-backed procedural change at a time.
