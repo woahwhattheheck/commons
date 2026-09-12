@@ -1,0 +1,37 @@
+{
+  "schema": "titan-v4-rowshed-mirror-collision-research-v1",
+  "base_main_commit": "9d3f32a60e97f7b69f583944fa3ecd450ad5cf54",
+  "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+  "source_blob": "ac01d567abb2479070b5d7f7d013caa6165898a9",
+  "test_blob": "b28ad12d8afff758b1812ad6e01313acfe406415",
+  "doc_blob": "31f5ae46f27749ad5d871c79afd95916dd243d5a",
+  "authored_scratch_gate": {
+    "normal": "16/16 PASS",
+    "optimized": "16/16 PASS",
+    "py_compile": "PASS",
+    "repo_mounted": false
+  },
+  "official_curve_inversion": {
+    "inventory": 10050,
+    "fillable_units": 25,
+    "incumbent_endpoint": {
+      "WOOL": 1350,
+      "MELON": 775,
+      "rank_first": "WOOL"
+    },
+    "exact_mirror_delay": {
+      "WOOL": 264,
+      "MELON": 931,
+      "rank_first": "MELON"
+    },
+    "wool_floor": {
+      "early_cash": 289,
+      "delayed_cash": 25,
+      "inventory_freezes_at": 10059
+    }
+  },
+  "semantic_boundary": "equal-size same-item mirror counterfactual sensitivity from public market plus own executable fill; no rival live-action read or prediction",
+  "activation_authority": false,
+  "promotion_blocker": "requires canonical ROWSHED returned-action witness plus current-native/field economic gate"
+}
