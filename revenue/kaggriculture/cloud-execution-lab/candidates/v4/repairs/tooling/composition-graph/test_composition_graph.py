@@ -108,6 +108,26 @@ class CompositionGraphTests(unittest.TestCase):
         self.assertIn("unregistered_entrypoint", self.codes(result))
         self.assertEqual(result["unregistered"], ["pkg/port_b.py"])
 
+    def test_reasoned_ignore_cannot_suppress_unregistered_entrypoint(self):
+        rogue = self.root / "research" / "rogue.py"
+        rogue.write_text("# rogue executable\n", encoding="utf-8")
+        manifest = self.manifest([], patterns=["rogue.py"])
+        manifest["discovery"]["ignore"] = [
+            {"path": "research/rogue.py", "reason": "temporarily ignore it"}
+        ]
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertFalse(result["ok"], result)
+        self.assertIn("discovery_ignore_not_empty", self.codes(result))
+        self.assertIn("unregistered_entrypoint", self.codes(result))
+        self.assertEqual(result["unregistered"], ["research/rogue.py"])
+
+    def test_empty_discovery_ignore_remains_valid(self):
+        a = self.comp("a", "pkg/port_a.py", "base", "a-out")
+        manifest = self.manifest([a], patterns=["port_a.py"])
+        self.assertEqual(manifest["discovery"]["ignore"], [])
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertTrue(result["ok"], result)
+
     def test_discovery_strict_false_cannot_downgrade_unregistered_to_warning(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out")
         result = cg.validate_manifest(self.manifest([a], patterns=["port_*.py"], strict=False), self.root)
@@ -160,7 +180,6 @@ class CompositionGraphTests(unittest.TestCase):
         rows = [e for e in result["errors"] if e["code"] == "unsafe_entrypoint_resolution"]
         self.assertTrue(rows, result)
         self.assertEqual(rows[0].get("reason"), "not_file")
-
 
     def test_discovery_roots_cannot_narrow_away_canonical_research(self):
         manifest = self.manifest([], patterns=["port_a.py"])
