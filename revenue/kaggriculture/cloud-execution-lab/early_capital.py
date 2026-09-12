@@ -37,6 +37,7 @@ def _turns_per_day(config):
 
 def _public_step(observation, turns_per_day):
     """Bind the optional reorder to one exact public clock representation."""
+    has_step = 'step' in observation
     raw_step = observation.get('step')
     has_day = 'day' in observation
     has_hour = 'hour' in observation
@@ -51,7 +52,7 @@ def _public_step(observation, turns_per_day):
         if type(hour) is not int or not 0 <= hour < turns_per_day:
             raise ValueError('public hour must be a plain integer within the day')
         derived = day * turns_per_day + hour
-    if raw_step is None:
+    if not has_step:
         if derived is None:
             raise ValueError('public clock is absent')
         return derived
