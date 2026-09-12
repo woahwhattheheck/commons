@@ -22,7 +22,7 @@
       "left": {"ref": "741e7262", "blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"},
       "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"},
       "classification": "NO_CAUSAL_DELTA",
-      "note": "V3.1 assembled-base seller witness and V4 seller are byte-identical; E05/E08/funding experiments are V4-active self-ablations, not seller-byte restoration."
+      "note": "V3.1 assembled-base seller witness and V4 seller are byte-identical; E05/funding experiments are V4-active self-ablations, while E08 is package-identical and therefore disproven for submitted V3.1->V4 causality."
     },
     {
       "id": "raw-v31-frozen-seller-source-trap",
@@ -83,7 +83,7 @@
       "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "a10ad66f990c430dc27299f518b04ea3fde9e39b"},
       "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "998bf5da08f61f82eafaf5750c8a86fc3adad7fb"},
       "classification": "DECOMPOSITION_OWNED",
-      "note": "Method-level checker below must account for every changed symbol before this ledger can go green."
+      "note": "Exact post-V3.1 runtime history contains only the module-cache binding commit and executable-prefix closure; the symbol-level checker must still prove that no sixth changed symbol exists."
     },
     {
       "id": "root-scheduler",
@@ -91,7 +91,7 @@
       "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "da1b6fb571e79ba7dab54c8d816e45afb934e4d2"},
       "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "a483b24dd72b580d7d8811636b54d2d44f391575"},
       "classification": "DECOMPOSITION_OWNED",
-      "note": "E14 is one known scheduler delta, not permission to call the full V3.1->V4 scheduler diff covered."
+      "note": "Exact source history isolates E14 receipt/projection timing plus the independently disproven strict-dominance prune; the symbol checker must match exactly those three units."
     },
     {
       "id": "root-config-four-flags",
@@ -119,14 +119,48 @@
       "path": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
       "left_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
       "right_ref": "4af1113154e78c662780e6658cd920daac7902e3",
-      "semantic_units": {}
+      "semantic_units": {
+        "load": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13453, "lane": "module-cache namespace-binding V4 self-ablation"}
+        },
+        "TitanAgent._seed_selected": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13444, "lane": "executable market-prefix closure"}
+        },
+        "TitanAgent._operating_stock_selected": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13444, "lane": "executable market-prefix closure"}
+        },
+        "TitanAgent._feed_stock_selected": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13448, "lane": "feed-stock V4 self-ablation with corrected private execution custody; source treatment inherited from merged #13441"}
+        },
+        "TitanAgent._redundant_hire_selected": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13444, "lane": "executable market-prefix closure"}
+        }
+      }
     },
     {
       "id": "scheduler-symbol-coverage",
       "path": "revenue/kaggriculture/cloud-execution-lab/scheduler.py",
       "left_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
       "right_ref": "4af1113154e78c662780e6658cd920daac7902e3",
-      "semantic_units": {}
+      "semantic_units": {
+        "optimize_lot": {
+          "status": "DISPROVEN_NONCAUSAL",
+          "evidence_reason": "The V4 early no-rival prune only skips a candidate when its first strict scenario delta is <=0; such a candidate cannot satisfy the preexisting strict all-scenarios acceptance rule. Forced-feasibility ordering remains unchanged."
+        },
+        "post_units": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13447, "lane": "E14 shed projection and receipt timing"}
+        },
+        "SellScheduler.receipt_profile": {
+          "status": "ACTIVE_CAUSAL_LANE",
+          "primary_carrier": {"pr": 13447, "lane": "E14 shed projection and receipt timing"}
+        }
+      }
     }
   ]
 }
