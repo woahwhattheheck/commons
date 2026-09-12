@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import copy
-import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -12,7 +11,7 @@ LEDGER = HERE / "GEMINI-ANTIGRAVITY.json"
 
 
 def load_doc():
-    return json.loads(LEDGER.read_text(encoding="utf-8"))
+    return C.load_strict_json(LEDGER)
 
 
 def materialize_evidence(root: Path, doc):
@@ -66,7 +65,7 @@ class GeminiConvergenceTests(unittest.TestCase):
         doc["entries"][0]["canonical_evidence"][0] = "README.md"
         self.assertRejected(doc, "outside canonical V4")
 
-    def test_legacy_evidence_rejected(self):
+    def test_literal_legacy_evidence_rejected(self):
         doc = copy.deepcopy(self.doc)
         rel = C.V4_PREFIX + "legacy/stale.md"
         path = self.root / rel
@@ -74,6 +73,32 @@ class GeminiConvergenceTests(unittest.TestCase):
         path.write_text("stale\n", encoding="utf-8")
         doc["entries"][0]["canonical_evidence"][0] = rel
         self.assertRejected(doc, "noncanonical ancestry")
+
+    def test_symlink_ancestor_alias_rejected(self):
+        doc = copy.deepcopy(self.doc)
+        legacy = self.root / C.V4_PREFIX / "research" / "legacy"
+        legacy.mkdir(parents=True, exist_ok=True)
+        (legacy / "stale.md").write_text("stale\n", encoding="utf-8")
+        alias = self.root / C.V4_PREFIX / "research" / "current-alias"
+        try:
+            alias.symlink_to("legacy", target_is_directory=True)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symlinks unavailable: {exc}")
+        rel = C.V4_PREFIX + "research/current-alias/stale.md"
+        doc["entries"][0]["canonical_evidence"][0] = rel
+        self.assertRejected(doc, "symlink path component")
+
+    def test_leaf_symlink_rejected(self):
+        doc = copy.deepcopy(self.doc)
+        rel = doc["entries"][0]["canonical_evidence"][0]
+        path = self.root / rel
+        backing = path.with_name(path.name + ".real")
+        path.replace(backing)
+        try:
+            path.symlink_to(backing.name)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symlinks unavailable: {exc}")
+        self.assertRejected(doc, "symlink path component")
 
     def test_missing_evidence_rejected(self):
         doc = copy.deepcopy(self.doc)
@@ -101,6 +126,14 @@ class GeminiConvergenceTests(unittest.TestCase):
         entry["activation"] = "DEFAULT_OFF"
         self.assertRejected(doc, "must use BLOCKED activation")
 
+    def test_melon_debt_cannot_be_promoted_without_checker_update(self):
+        doc = copy.deepcopy(self.doc)
+        entry = next(e for e in doc["entries"] if e["id"] == "gemini.melon-lifetime-cap")
+        entry["disposition"] = "CORRECTED_DESCENDANT"
+        entry["activation"] = "DEFAULT_OFF"
+        entry.pop("do_not_repeat_without_new_evidence", None)
+        self.assertRejected(doc, "must remain FIELD_BLOCKED")
+
     def test_pr_provenance_must_be_sorted_unique_plain_ints(self):
         doc = copy.deepcopy(self.doc)
         doc["entries"][0]["provenance_pull_numbers"] = [12837, 12819, 12819]
@@ -115,9 +148,24 @@ class GeminiConvergenceTests(unittest.TestCase):
         with self.assertRaises(C.ConvergenceError):
             C.load_strict_json(path)
 
-    def test_source_buckets_are_exact(self):
+    def test_duplicate_root_json_key_rejected(self):
+        path = self.root / "dup.json"
+        path.write_text('{"schema":"a","schema":"b"}', encoding="utf-8")
+        with self.assertRaisesRegex(C.ConvergenceError, "duplicate JSON key: schema"):
+            C.load_strict_json(path)
+
+    def test_duplicate_nested_json_key_rejected(self):
+        path = self.root / "dup-nested.json"
+        path.write_text('{"x":{"id":"first","id":"second"}}', encoding="utf-8")
+        with self.assertRaisesRegex(C.ConvergenceError, "duplicate JSON key: id"):
+            C.load_strict_json(path)
+
+    def test_source_buckets_are_exact_and_unique(self):
         doc = copy.deepcopy(self.doc)
         doc["source_stream"]["included_buckets"] = ["master_manifest"]
+        self.assertRejected(doc, "included_buckets")
+        doc = copy.deepcopy(self.doc)
+        doc["source_stream"]["included_buckets"].append("master_manifest")
         self.assertRejected(doc, "included_buckets")
 
 
