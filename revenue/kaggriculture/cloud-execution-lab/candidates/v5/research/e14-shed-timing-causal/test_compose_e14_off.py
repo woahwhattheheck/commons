@@ -71,7 +71,6 @@ class HistoricalIdentityTests(unittest.TestCase):
 class ArchiveCustodyTests(unittest.TestCase):
     def test_git_blob_helper_matches_git_object(self):
         data = b"scheduler causal fixture\n"
-        expected = c._run_git(REPO_ROOT, "hash-object", "--stdin", input=data) if False else None
         # Independent literal construction of Git's loose-object identity.
         import hashlib
         literal = hashlib.sha1(b"blob 25\0" + data).hexdigest()
@@ -138,6 +137,14 @@ class ArchiveCustodyTests(unittest.TestCase):
                 treatment_scheduler_blob="0" * 40,
                 arlene_blob=c.git_blob_sha1(arlene),
             )
+
+    def test_writer_rejects_receipt_path_collision_before_output(self):
+        files = {c.RECEIPT_NAME: c.ArchiveFile(b"baseline member\n", 0o644)}
+        with tempfile.TemporaryDirectory() as td:
+            output = Path(td) / "treatment"
+            with self.assertRaisesRegex(ValueError, "collides with receipt path"):
+                c._write_tree(output, files, {"schema": "fixture"})
+            self.assertFalse(output.exists())
 
     def test_writer_is_fresh_only_and_receipt_is_additive(self):
         files = {"pkg/file.py": c.ArchiveFile(b"x\n", 0o644)}
