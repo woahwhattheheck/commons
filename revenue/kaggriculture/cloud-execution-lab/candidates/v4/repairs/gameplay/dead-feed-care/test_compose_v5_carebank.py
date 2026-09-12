@@ -19,6 +19,7 @@ from compose_v5_carebank import (
     CONFIG_BLOB,
     HELPER_BLOB,
     HELPER_RELATIVE,
+    MAIN_BLOB,
     RUNTIME_BLOB,
     git_blob_id,
     materialize,
@@ -38,9 +39,16 @@ def _features_class(source: str):
     return namespace["Features"]
 
 
+def _copy_current_package(package: Path) -> None:
+    package.mkdir()
+    for relative in ("main.py", "titan_runtime.py", "TITAN-CONFIG.json"):
+        shutil.copyfile(LAB / relative, package / relative)
+
+
 class V5CarebankComposerTests(unittest.TestCase):
     def test_source_pins_match_current_v5_and_existing_w2_authority(self):
         expected = {
+            LAB / "main.py": MAIN_BLOB,
             LAB / "titan_runtime.py": RUNTIME_BLOB,
             LAB / "TITAN-CONFIG.json": CONFIG_BLOB,
             LAB / HELPER_RELATIVE: HELPER_BLOB,
@@ -49,10 +57,11 @@ class V5CarebankComposerTests(unittest.TestCase):
             with self.subTest(path=str(path)):
                 self.assertEqual(git_blob_id(path.read_bytes()), blob)
 
-    def test_runtime_hook_preserves_parent_fallback_then_replaces_checkpoint(self):
+    def test_runtime_hook_preserves_exec_era_and_parent_fallback_order(self):
         out = patch_runtime((LAB / "titan_runtime.py").read_text(encoding="utf-8"))
+        self.assertEqual(out.count("exec_pace: bool = False"), 1)
         self.assertEqual(out.count("r04_dead_feed_care: bool = False"), 1)
-        self.assertEqual(out.count("'r04_dead_feed_care',"), 1)
+        self.assertEqual(out.count("'exec_pace', 'r04_dead_feed_care'"), 1)
         producer = out.index("selected = self.production.act(obs)")
         parent = out.index("parent_checkpoint = (deepcopy(selected), self.controller.cur)", producer)
         fallback = out.index("fallback = parent_checkpoint[0]", parent)
@@ -74,6 +83,8 @@ class V5CarebankComposerTests(unittest.TestCase):
 
     def test_feature_is_exact_bool_and_only_nonterminal_frozen_can_enable(self):
         Features = _features_class(patch_runtime((LAB / "titan_runtime.py").read_text(encoding="utf-8")))
+        self.assertIs(Features().exec_pace, False)
+        self.assertIs(Features(exec_pace=True).exec_pace, True)
         self.assertIs(Features().r04_dead_feed_care, False)
         self.assertIs(Features(r04_dead_feed_care=True).r04_dead_feed_care, True)
         for bad in (0, 1, "false", [], None):
@@ -89,24 +100,29 @@ class V5CarebankComposerTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     Features(**kwargs)
 
-    def test_config_is_default_off_and_enable_is_scratch_explicit(self):
+    def test_config_preserves_current_town_and_exec_fields(self):
         text = (LAB / "TITAN-CONFIG.json").read_text(encoding="utf-8")
-        self.assertIs(json.loads(patch_config(text, enabled=False))["r04_dead_feed_care"], False)
-        self.assertIs(json.loads(patch_config(text, enabled=True))["r04_dead_feed_care"], True)
+        before = json.loads(text)
+        self.assertIs(before["town_procurement"], True)
+        self.assertIs(before["exec_pace"], False)
+        for enabled in (False, True):
+            with self.subTest(enabled=enabled):
+                after = json.loads(patch_config(text, enabled=enabled))
+                for key, value in before.items():
+                    self.assertEqual(after[key], value)
+                self.assertIs(after["r04_dead_feed_care"], enabled)
         with self.assertRaises(TypeError):
             patch_config(text, enabled=1)
         with self.assertRaises(ValueError):
             patch_config(patch_config(text, enabled=False), enabled=False)
 
-    def test_materialize_authenticates_sources_and_never_changes_input(self):
+    def test_materialize_closes_stale_town_procurement_predecessor(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             package = root / "package"
-            package.mkdir()
-            for relative in ("titan_runtime.py", "TITAN-CONFIG.json"):
-                shutil.copyfile(LAB / relative, package / relative)
-            before_runtime = (package / "titan_runtime.py").read_bytes()
-            before_config = (package / "TITAN-CONFIG.json").read_bytes()
+            _copy_current_package(package)
+            before = {name: (package / name).read_bytes()
+                      for name in ("main.py", "titan_runtime.py", "TITAN-CONFIG.json")}
 
             control = root / "control"
             receipt = materialize(LAB, package, control, enabled=False)
@@ -114,29 +130,56 @@ class V5CarebankComposerTests(unittest.TestCase):
             self.assertIs(receipt["enabled_in_scratch_only"], False)
             self.assertIs(receipt["production_default_changed"], False)
             self.assertEqual(receipt["consumer_contract"], "frozen_nonterminal_only")
+            self.assertEqual(
+                receipt["entrypoint_contract"],
+                "current_main_strips_town_procurement_before_Features",
+            )
             self.assertEqual(receipt["deadline_fallback"], "completed_parent_selected_action")
             self.assertEqual(
                 receipt["selected_pipeline"],
                 ["apply_dead_feed_care", "apply_carebank_feed_swap"],
             )
-            self.assertIs(json.loads((control / "TITAN-CONFIG.json").read_text())["r04_dead_feed_care"], False)
+            self.assertEqual(receipt["source_blobs"]["main.py"], MAIN_BLOB)
+            self.assertEqual(receipt["outputs"]["main.py"]["git_blob"], MAIN_BLOB)
             self.assertEqual(git_blob_id((control / "r04_dead_feed_care.py").read_bytes()), HELPER_BLOB)
-            self.assertIn("apply_carebank_feed_swap", (control / "titan_runtime.py").read_text())
+
+            config = json.loads((control / "TITAN-CONFIG.json").read_text())
+            self.assertIs(config["town_procurement"], True)
+            self.assertIs(config["exec_pace"], False)
+            self.assertIs(config["r04_dead_feed_care"], False)
+            Features = _features_class((control / "titan_runtime.py").read_text(encoding="utf-8"))
+            # This is the exact old-package failure shape: town_procurement is
+            # entrypoint-owned and therefore must not be passed raw to Features.
+            with self.assertRaises(TypeError):
+                Features(**config)
+            runtime_config = dict(config)
+            self.assertIs(runtime_config.pop("town_procurement"), True)
+            features = Features(**runtime_config)
+            self.assertIs(features.exec_pace, False)
+            self.assertIs(features.r04_dead_feed_care, False)
+
+            entrypoint = (control / "main.py").read_text(encoding="utf-8")
+            town = entrypoint.index("town_enabled = _town_procurement_enabled(feature_data)")
+            strip = entrypoint.index("feature_data.pop('town_procurement', None)", town)
+            bind = entrypoint.index("features = Features(**feature_data)", strip)
+            self.assertLess(town, strip)
+            self.assertLess(strip, bind)
 
             treatment = root / "treatment"
             enabled = materialize(LAB, package, treatment, enabled=True)
             self.assertIs(enabled["enabled_in_scratch_only"], True)
-            self.assertIs(json.loads((treatment / "TITAN-CONFIG.json").read_text())["r04_dead_feed_care"], True)
-            self.assertEqual((package / "titan_runtime.py").read_bytes(), before_runtime)
-            self.assertEqual((package / "TITAN-CONFIG.json").read_bytes(), before_config)
+            treatment_config = json.loads((treatment / "TITAN-CONFIG.json").read_text())
+            self.assertIs(treatment_config["town_procurement"], True)
+            self.assertIs(treatment_config["exec_pace"], False)
+            self.assertIs(treatment_config["r04_dead_feed_care"], True)
+            for name, payload in before.items():
+                self.assertEqual((package / name).read_bytes(), payload)
 
     def test_source_drift_fails_before_output_is_published(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             package = root / "package"
-            package.mkdir()
-            shutil.copyfile(LAB / "titan_runtime.py", package / "titan_runtime.py")
-            shutil.copyfile(LAB / "TITAN-CONFIG.json", package / "TITAN-CONFIG.json")
+            _copy_current_package(package)
             (package / "titan_runtime.py").write_text(
                 (package / "titan_runtime.py").read_text() + "\n# drift\n",
                 encoding="utf-8",
@@ -144,6 +187,20 @@ class V5CarebankComposerTests(unittest.TestCase):
             output = root / "output"
             with self.assertRaises(ValueError):
                 materialize(LAB, package, output, enabled=True)
+            self.assertFalse(output.exists())
+
+    def test_entrypoint_drift_fails_before_output_is_published(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            package = root / "package"
+            _copy_current_package(package)
+            (package / "main.py").write_text(
+                (package / "main.py").read_text() + "\n# drift\n",
+                encoding="utf-8",
+            )
+            output = root / "output"
+            with self.assertRaises(ValueError):
+                materialize(LAB, package, output, enabled=False)
             self.assertFalse(output.exists())
 
 
