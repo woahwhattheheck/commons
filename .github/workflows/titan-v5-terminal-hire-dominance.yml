@@ -1,0 +1,46 @@
+name: TITAN V5 terminal HIRE dominance
+
+on:
+  push:
+    branches:
+      - astra/v5-terminal-hire-dominance-20260912
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/terminal-hire-dominance/**'
+      - '.github/workflows/titan-v5-terminal-hire-dominance.yml'
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/terminal-hire-dominance/**'
+      - '.github/workflows/titan-v5-terminal-hire-dominance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Assert exact event head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile and run exact contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/terminal-hire-dominance
+        run: |
+          python -m py_compile terminal_hire_neutralizer.py test_terminal_hire_neutralizer.py test_engine_authority.py
+          python -B -m unittest -v test_terminal_hire_neutralizer.py test_engine_authority.py
+          python -O -B -m unittest -v test_terminal_hire_neutralizer.py test_engine_authority.py
