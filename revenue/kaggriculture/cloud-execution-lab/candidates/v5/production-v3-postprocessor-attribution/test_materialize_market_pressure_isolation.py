@@ -120,6 +120,15 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(one, two)
 
 
+class LoaderTests(unittest.TestCase):
+    def test_loader_supports_dataclass_modules(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "fixture.py"
+            source.write_text("from dataclasses import dataclass\n@dataclass\nclass Row:\n    value: int\n")
+            module = mp._load_module("_mp_dataclass_fixture", source)
+            self.assertEqual(module.Row(7).value, 7)
+
+
 class PublicationTests(unittest.TestCase):
     def test_publish_uses_exact_four_files_in_sorted_order(self):
         artifacts = {
