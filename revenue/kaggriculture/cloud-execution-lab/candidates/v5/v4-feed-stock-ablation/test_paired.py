@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import inspect
 from pathlib import Path
 import tempfile
 import unittest
@@ -78,6 +79,13 @@ class PairedCustodyTest(unittest.TestCase):
             ):
                 paired.write_private_runtime_bytes(b"VALUE = 30\n", private, expected)
             self.assertFalse(private.exists())
+
+    def test_main_keeps_generated_executable_paths_out_of_public_output(self):
+        source = inspect.getsource(paired.main)
+        self.assertIn('runtime[opponent] = private_root / "opponents" / opponent', source)
+        self.assertIn('prefix=f"{cell_id}-{arm}-", dir=private_root', source)
+        self.assertNotIn('runtime[opponent] = output / "opponents" / opponent', source)
+        self.assertNotIn('prefix=f"{cell_id}-{arm}-", dir=output', source)
 
     def test_summary_keeps_opponents_and_engagement_separate(self):
         cells = [
