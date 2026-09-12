@@ -1777,17 +1777,40 @@ def render_matrix_md(matrix: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _write_text_preserving_keep_tail(path: Path, body: str) -> None:
+    """Leave titanmcp / live-cash KEEP tails on disk. Official CLI rewrite is idempotent."""
+    if not body.endswith("\n"):
+        body += "\n"
+    existing = path.read_text(encoding="utf-8") if path.is_file() else ""
+    if existing.startswith(body):
+        return
+    keep = ""
+    idx = None
+    for marker in ("## Contest product (titanmcp)", "## Live cash"):
+        at = existing.find(marker)
+        if at != -1:
+            idx = at if idx is None else min(idx, at)
+    if idx is not None:
+        keep = existing[idx:]
+        if idx > 0 and existing[idx - 1] == "\n":
+            keep = existing[idx - 1 :]
+        if keep and not keep.startswith("\n"):
+            keep = "\n" + keep
+    path.write_text(body.rstrip("\n") + keep, encoding="utf-8")
+
+
 def write_pack(matrix: dict[str, Any], fixtures: list[dict[str, Any]]) -> None:
     HERE.mkdir(parents=True, exist_ok=True)
     FIXTURE_DIR.mkdir(parents=True, exist_ok=True)
     (HERE / "schema_matrix.json").write_text(_canonical(matrix) + "\n", encoding="utf-8")
-    (HERE / "SCHEMA_MATRIX.md").write_text(render_matrix_md(matrix), encoding="utf-8")
+    _write_text_preserving_keep_tail(HERE / "SCHEMA_MATRIX.md", render_matrix_md(matrix))
     (HERE / "sources.json").write_text(_canonical(matrix["sources"]) + "\n", encoding="utf-8")
     (HERE / "unknowns.json").write_text(_canonical(matrix["unknowns"]) + "\n", encoding="utf-8")
     (HERE / "fixtures.json").write_text(_canonical(fixtures) + "\n", encoding="utf-8")
     for row in fixtures:
         (FIXTURE_DIR / ("%s.json" % row["fixture_id"])).write_text(_canonical(row) + "\n", encoding="utf-8")
-    (HERE / "README.md").write_text(
+    _write_text_preserving_keep_tail(
+        HERE / "README.md",
         "\n".join(
             [
                 "# AT-GROK-CMDP-EVIDENCE-01",
@@ -1805,7 +1828,6 @@ def write_pack(matrix: dict[str, Any], fixtures: list[dict[str, Any]]) -> None:
                 "",
             ]
         ),
-        encoding="utf-8",
     )
     (HERE / "contract.json").write_text(
         _canonical(
