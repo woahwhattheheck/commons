@@ -13,6 +13,7 @@ from types import SimpleNamespace
 import unittest
 
 import build_current as build
+import paired_current as paired
 
 
 HERE = Path(__file__).resolve().parent
@@ -119,8 +120,11 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
         pointer, archive = current_pointer_and_archive()
         self.assertEqual(pointer["path"], "exports/titan-current.tar.gz")
         self.assertEqual(archive.stat().st_size, pointer["bytes"])
+        raw = archive.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), pointer["sha256"])
+        memory_members = paired.archive_members_bytes(raw)
         self.assertEqual(
-            hashlib.sha256(archive.read_bytes()).hexdigest(), pointer["sha256"]
+            git_blob_bytes(memory_members["main.py"]), build.EXPECTED_PARENT_MAIN_BLOB
         )
         with tarfile.open(archive, "r:*") as package:
             member = package.getmember("main.py")
@@ -128,8 +132,25 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
             stream = package.extractfile(member)
             self.assertIsNotNone(stream)
             main_bytes = stream.read()
+        self.assertEqual(main_bytes, memory_members["main.py"])
+
+    def test_runner_first_action_divergence_is_exact(self):
+        control = [{"market": []}, {"market": [{"action": "SELL", "qty": 1}]}]
+        same = [dict(row) for row in control]
+        changed = [control[0], {"market": [{"action": "SELL", "qty": 2}]}]
+        shorter = [control[0]]
+        self.assertIsNone(paired.first_action_divergence(control, same))
         self.assertEqual(
-            git_blob_bytes(main_bytes), build.EXPECTED_PARENT_MAIN_BLOB
+            paired.first_action_divergence(control, changed),
+            {"step": 1, "control": control[1], "treatment": changed[1]},
+        )
+        self.assertEqual(
+            paired.first_action_divergence(control, shorter),
+            {
+                "step": 1,
+                "control": control[1],
+                "treatment": {"_stream_end": True},
+            },
         )
 
     def test_real_current_package_materializes_both_profiles(self):
