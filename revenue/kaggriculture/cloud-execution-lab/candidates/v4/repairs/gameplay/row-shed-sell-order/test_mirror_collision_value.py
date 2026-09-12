@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import importlib.util
+import itertools
 from pathlib import Path
+import random
 import unittest
 
 import mirror_collision_value as C
@@ -49,6 +51,7 @@ class MirrorCollisionValueTests(unittest.TestCase):
         self.assertEqual(report["incumbent_rank_indices"], [0, 1])
         self.assertEqual(report["mirror_rank_indices"], [1, 0])
         self.assertTrue(report["rank_diverges"])
+        self.assertTrue(report["mirror_assignment"]["certified"])
 
     def test_loss_forensics_melon_wool_inversion(self):
         report = C.analyze_rows(
@@ -70,7 +73,52 @@ class MirrorCollisionValueTests(unittest.TestCase):
             3012,
         )
 
-    def test_stable_ties_preserve_input_order(self):
+    def test_loss_forensics_incumbent_baseline_has_3012_assignment_edge(self):
+        report = C.analyze_rows(
+            [
+                {"item": "WOOL", "public_inventory": 10_025, "fillable": 30},
+                {"item": "MELON", "public_inventory": 10_025, "fillable": 60},
+            ],
+            price_fn=M.market_price,
+        )
+        assignment = report["mirror_assignment"]
+        self.assertTrue(assignment["certified"])
+        self.assertEqual(assignment["costs"], [3071, 6083])
+        self.assertEqual(assignment["optimal_permutation_indices"], [1, 0])
+        self.assertEqual(assignment["predicted_mirror_edge"], 3012)
+        self.assertEqual(assignment["descending_score_permutation_indices"], [1, 0])
+        self.assertEqual(assignment["descending_score_predicted_edge"], 3012)
+
+    def test_exact_assignment_is_not_descending_score_sort(self):
+        costs = [1, 5, 10]
+        permutation, edge = C.optimal_mirror_assignment(costs)
+        self.assertEqual(permutation, [1, 2, 0])
+        self.assertEqual(edge, 14)
+        self.assertEqual(C.mirror_edge_for_permutation(costs, [2, 1, 0]), 9)
+        self.assertGreater(edge, C.mirror_edge_for_permutation(costs, [2, 1, 0]))
+
+    def test_exact_assignment_matches_bruteforce(self):
+        rng = random.Random(13067)
+        for n in range(2, 7):
+            for _ in range(25):
+                costs = [rng.randrange(0, 500) for _ in range(n)]
+                permutation, edge = C.optimal_mirror_assignment(costs)
+                brute = max(
+                    C.mirror_edge_for_permutation(costs, candidate)
+                    for candidate in itertools.permutations(range(n))
+                )
+                self.assertEqual(edge, max(0, brute))
+                self.assertEqual(C.mirror_edge_for_permutation(costs, permutation), edge)
+
+    def test_assignment_horizon_and_index_poison_fail_closed(self):
+        with self.assertRaises(C.MirrorCollisionInputError):
+            C.optimal_mirror_assignment([1] * 11)
+        with self.assertRaises(C.MirrorCollisionInputError):
+            C.mirror_edge_for_permutation([1, 2], [True, 0])
+        with self.assertRaises(C.MirrorCollisionInputError):
+            C.mirror_edge_for_permutation([1, 2], [0, 0])
+
+    def test_duplicate_product_keeps_scores_but_assignment_is_uncertified(self):
         rows = [
             {"item": "WHEAT", "public_inventory": 10_000, "fillable": 3},
             {"item": "WHEAT", "public_inventory": 10_000, "fillable": 3},
@@ -79,6 +127,11 @@ class MirrorCollisionValueTests(unittest.TestCase):
         self.assertEqual(report["incumbent_rank_indices"], [0, 1])
         self.assertEqual(report["mirror_rank_indices"], [0, 1])
         self.assertFalse(report["rank_diverges"])
+        assignment = report["mirror_assignment"]
+        self.assertFalse(assignment["certified"])
+        self.assertEqual(assignment["reason"], "duplicate_product_rows_outside_assignment_theorem")
+        self.assertIsNone(assignment["optimal_permutation_indices"])
+        self.assertIsNone(assignment["predicted_mirror_edge"])
 
     def test_price_floor_sales_do_not_advance_inventory(self):
         def floor_price(_item, inventory):
@@ -153,7 +206,12 @@ class MirrorCollisionValueTests(unittest.TestCase):
         self.assertFalse(report["decision_authority"])
         self.assertFalse(report["action_mutation_authority"])
         self.assertFalse(report["rival_action_prediction"])
+        self.assertEqual(
+            report["mirror_rank_semantics"],
+            "descending per-row evidence only; not queue-optimal assignment",
+        )
         self.assertNotIn("action", report)
+        self.assertNotIn("action", report["mirror_assignment"])
 
 
 if __name__ == "__main__":
