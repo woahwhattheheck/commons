@@ -11,7 +11,7 @@ The identity binds:
 - each claimed component's exact source bytes; and
 - the exact activation evidence for every claimed component.
 
-A component is admitted only when its relative source path resolves inside the chosen root and exists. Config activation is type-exact (`true` is not `1`). Components without a config predicate must explicitly declare `"unconditional": true`; source presence alone is never silently treated as activation. Any source drift, config drift, activation mismatch, manifest edit, path escape, missing file, duplicate component name, unsupported config type, or non-finite float fails closed.
+A component is admitted only when its relative source path resolves inside the chosen root and exists. The manifest records the resolved source as one canonical root-relative path, so lexical aliases such as `dir/../module.py` and in-root symlink aliases cannot mint a second `v5c:` identity for the same component bytes. Config activation is type-exact (`true` is not `1`). Components without a config predicate must explicitly declare `"unconditional": true`; source presence alone is never silently treated as activation. Any source drift, config drift, activation mismatch, manifest edit, path escape, missing file, duplicate component name, unsupported config type, or non-finite float fails closed.
 
 ## Spec example
 
