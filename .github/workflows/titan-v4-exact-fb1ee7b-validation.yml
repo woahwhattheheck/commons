@@ -1,0 +1,171 @@
+name: titan-v4-exact-fb1ee7b-validation
+
+"on":
+  push:
+    branches: [astra/v4-exact-fb1ee7b-validation-20260911]
+    paths: [.github/workflows/titan-v4-exact-fb1ee7b-validation.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v4-exact-fb1ee7b-validation
+  cancel-in-progress: false
+
+jobs:
+  exact-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fb1ee7b081613cdd13009d9529de89929a3f88d8
+          path: source
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Snapshot exact source, build package, and execute focused tests
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import re
+          import shutil
+          import subprocess
+          import sys
+          import tarfile
+
+          expected_head = 'fb1ee7b081613cdd13009d9529de89929a3f88d8'
+          source = Path('source').resolve()
+          candidate_rel = 'revenue/kaggriculture/cloud-execution-lab/candidates/v3'
+          candidate = source / candidate_rel
+          archive_rel = 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+          out = Path(os.environ['RUNNER_TEMP']) / 'titan-v4-exact-fb1ee7b'
+          out.mkdir(parents=True, exist_ok=True)
+          receipt = {
+              'scope': 'exact-source package build and focused runtime tests; not a plumbing admission gate or economic approval',
+              'expected_head': expected_head,
+              'full_games': 0,
+              'python': sys.version,
+              'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'tests': {},
+          }
+          failed = False
+
+          def git(*args):
+              return subprocess.check_output(['git', '-C', str(source), *args], text=True).strip()
+
+          def require(condition, message):
+              if not condition:
+                  raise RuntimeError(message)
+
+          def run_logged(name, argv, cwd, timeout=240):
+              try:
+                  proc = subprocess.run(argv, cwd=cwd, text=True, capture_output=True, timeout=timeout)
+                  output = proc.stdout + proc.stderr
+                  code = proc.returncode
+              except subprocess.TimeoutExpired as exc:
+                  output = str(exc)
+                  code = 124
+              (out / (name + '.log')).write_text(output, encoding='utf-8')
+              counts = re.findall(r'Ran (\d+) tests?', output)
+              result = {'exit_code': code, 'tests_run': int(counts[-1]) if counts else None,
+                        'log': name + '.log'}
+              print(name, json.dumps(result), flush=True)
+              return result
+
+          try:
+              head = git('rev-parse', 'HEAD')
+              receipt['head'] = head
+              require(head == expected_head, 'checkout is not the exact shared staging target')
+              pinned = {
+                  'apply_v4.py': '5408696adc49eac7548c0489aa85c0db53155583',
+                  'overlay/r04_b10_m1_bridge.py': '3a9ef36bf1c3b24fb9597001cc91888d2079ae65',
+                  'overlay/r04_m1_wheat_trade.py': 'd4d068d62ffc8fcd25842193bc7031f764630262',
+                  'overlay/checks/test_v4_m1_money_overflow.py': '5695a41e8baca3da1b0b730ebcb3c27e6fa0bc8d',
+              }
+              receipt['pinned_files'] = {}
+              for rel, expected in pinned.items():
+                  data = (candidate / rel).read_bytes()
+                  actual = hashlib.sha1(('blob %d\0' % len(data)).encode() + data).hexdigest()
+                  require(actual == expected, 'pinned source mismatch: ' + rel)
+                  require(git('rev-parse', 'HEAD:' + candidate_rel + '/' + rel) == expected,
+                          'Git source mismatch: ' + rel)
+                  receipt['pinned_files'][rel] = {'git_blob': actual, 'bytes': len(data),
+                                                'sha256': hashlib.sha256(data).hexdigest()}
+
+              archive = source / archive_rel
+              archive_data = archive.read_bytes()
+              manifest = json.loads((candidate / 'V3-MANIFEST.json').read_text())
+              digest = hashlib.sha256(archive_data).hexdigest()
+              require(digest == manifest['base']['sha256'], 'canonical base digest mismatch')
+              receipt['canonical_base_sha256'] = digest
+              with tarfile.open(archive, 'r:gz') as tar:
+                  seen = set()
+                  for member in tar.getmembers():
+                      name = PurePosixPath(member.name)
+                      require(not name.is_absolute() and '..' not in name.parts,
+                              'unsafe canonical archive path')
+                      require(member.isfile() or member.isdir(), 'nonregular canonical archive member')
+                      require(member.name not in seen, 'duplicate canonical archive member')
+                      seen.add(member.name)
+
+              source_copy = out / 'source' / candidate_rel
+              source_copy.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copytree(candidate, source_copy,
+                              ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'dist'))
+              archive_copy = out / 'source' / archive_rel
+              archive_copy.parent.mkdir(parents=True, exist_ok=True)
+              archive_copy.write_bytes(archive_data)
+              (out / 'SOURCE-TREE.txt').write_text(
+                  git('ls-tree', '-r', 'HEAD', '--', candidate_rel, archive_rel) + '\n')
+
+              package = out / 'package'
+              build = run_logged('build', [sys.executable, '-B', str(candidate / 'build_v3.py'),
+                                          '--tree', str(package)], candidate)
+              receipt['build'] = build
+              require(build['exit_code'] == 0, 'exact package build failed; see build.log')
+              package_manifest = {}
+              for path in sorted(package.rglob('*')):
+                  if path.is_file():
+                      data = path.read_bytes()
+                      package_manifest[path.relative_to(package).as_posix()] = {
+                          'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+              (out / 'PACKAGE-FILES.json').write_text(json.dumps(package_manifest, indent=2) + '\n')
+              names = sorted('checks.' + path.stem for path in (package / 'checks').glob('test*.py')
+                             if any(tag in path.stem.lower() for tag in ('m1', 'b10', 'positional', 'abi')))
+              require(names, 'no focused test modules selected')
+              receipt['test_modules'] = names
+              for name, options in [('normal', []), ('optimized', ['-O'])]:
+                  result = run_logged(name, [sys.executable, *options, '-B', '-m', 'unittest', '-v', *names], package)
+                  receipt['tests'][name] = result
+                  if result['exit_code'] != 0 or not result['tests_run']:
+                      failed = True
+          except Exception as exc:
+              failed = True
+              receipt['error'] = type(exc).__name__ + ': ' + str(exc)
+              print(receipt['error'], flush=True)
+          finally:
+              receipt['success'] = not failed
+              receipt['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+              (out / 'VALIDATION-RECEIPT.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Upload exact source, materialized package, and execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: titan-v4-exact-fb1ee7b-${{ github.run_id }}
+          path: ${{ runner.temp }}/titan-v4-exact-fb1ee7b/
+          if-no-files-found: error
+          retention-days: 1
