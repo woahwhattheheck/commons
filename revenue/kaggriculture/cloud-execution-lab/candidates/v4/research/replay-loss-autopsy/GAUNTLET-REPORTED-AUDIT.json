@@ -1,0 +1,229 @@
+{
+  "by_kind": {
+    "archetype": [
+      {
+        "approximate": false,
+        "draws": 0,
+        "games": 6,
+        "id": "milk-frontrun",
+        "interpreted_total_margin": "-53",
+        "kind": "archetype",
+        "losses": 5,
+        "mean_reported_margin": "-8.833333333333333333333333333",
+        "net_losing": true,
+        "reported_total_margin": "-53",
+        "wins": 1
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "wheat-pump",
+        "interpreted_total_margin": "4800.0",
+        "kind": "archetype",
+        "losses": 0,
+        "mean_reported_margin": "800.0",
+        "net_losing": false,
+        "reported_total_margin": "+4.8k",
+        "wins": 6
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "dairy-exit",
+        "interpreted_total_margin": "16000",
+        "kind": "archetype",
+        "losses": 1,
+        "mean_reported_margin": "2666.666666666666666666666667",
+        "net_losing": false,
+        "reported_total_margin": "+16k",
+        "wins": 5
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "sheep-shift",
+        "interpreted_total_margin": "59000",
+        "kind": "archetype",
+        "losses": 0,
+        "mean_reported_margin": "9833.333333333333333333333333",
+        "net_losing": false,
+        "reported_total_margin": "+59k",
+        "wins": 6
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "dairy-heavy",
+        "interpreted_total_margin": "111000",
+        "kind": "archetype",
+        "losses": 0,
+        "mean_reported_margin": "18500",
+        "net_losing": false,
+        "reported_total_margin": "+111k",
+        "wins": 6
+      }
+    ],
+    "live_agent": [],
+    "recorded_trace": [
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "kaggriculture-agent",
+        "interpreted_total_margin": "-20000",
+        "kind": "recorded_trace",
+        "losses": 4,
+        "mean_reported_margin": "-3333.333333333333333333333333",
+        "net_losing": true,
+        "reported_total_margin": "-20k",
+        "wins": 2
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "hello-san-francisco",
+        "interpreted_total_margin": "44000",
+        "kind": "recorded_trace",
+        "losses": 1,
+        "mean_reported_margin": "7333.333333333333333333333333",
+        "net_losing": false,
+        "reported_total_margin": "+44k",
+        "wins": 5
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "brainpick",
+        "interpreted_total_margin": "77000",
+        "kind": "recorded_trace",
+        "losses": 0,
+        "mean_reported_margin": "12833.33333333333333333333333",
+        "net_losing": false,
+        "reported_total_margin": "+77k",
+        "wins": 6
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "pengshy",
+        "interpreted_total_margin": "147000",
+        "kind": "recorded_trace",
+        "losses": 0,
+        "mean_reported_margin": "24500",
+        "net_losing": false,
+        "reported_total_margin": "+147k",
+        "wins": 6
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "hepialidae",
+        "interpreted_total_margin": "160000",
+        "kind": "recorded_trace",
+        "losses": 0,
+        "mean_reported_margin": "26666.66666666666666666666667",
+        "net_losing": false,
+        "reported_total_margin": "+160k",
+        "wins": 6
+      },
+      {
+        "approximate": true,
+        "draws": 0,
+        "games": 6,
+        "id": "aryuemaan-chowdhury",
+        "interpreted_total_margin": "164000",
+        "kind": "recorded_trace",
+        "losses": 0,
+        "mean_reported_margin": "27333.33333333333333333333333",
+        "net_losing": false,
+        "reported_total_margin": "+164k",
+        "wins": 6
+      }
+    ]
+  },
+  "candidate_label": "tree-v4base (reported label; source digest unavailable)",
+  "input_bytes": 2911,
+  "input_sha256": "1146c13d359b50ff9b6fe80c50fc6c1de7a890ad461a6f1f3ea78f5d7a5ac45c",
+  "limitations": [
+    "Transcribed reported aggregates, not executed games.",
+    "Abbreviated totals are approximate; game-level variance is unavailable.",
+    "No seed/seat/source/fallback custody or variant-effect evidence.",
+    "Recorded action traces and archetypes are not adaptive leaderboard agents.",
+    "Third-lowest positive margin is not a third losing matchup."
+  ],
+  "mirror_controls": [
+    {
+      "approximate": false,
+      "draws": 4,
+      "games": 6,
+      "id": "mirror",
+      "interpreted_total_margin": "0",
+      "kind": "mirror",
+      "losses": 1,
+      "mean_reported_margin": "0",
+      "net_losing": false,
+      "reported_total_margin": "0",
+      "wins": 1
+    }
+  ],
+  "mode": "reported_summary",
+  "paired_evidence_available": false,
+  "promotion_decision": "NOT_ASSESSED",
+  "schema": "titan.gauntlet.audit.v1",
+  "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789179643958529",
+  "totals": {
+    "draws": 4,
+    "games": 72,
+    "losses": 12,
+    "wins": 56
+  },
+  "weakest_nonmirror": [
+    {
+      "approximate": true,
+      "draws": 0,
+      "games": 6,
+      "id": "kaggriculture-agent",
+      "interpreted_total_margin": "-20000",
+      "kind": "recorded_trace",
+      "losses": 4,
+      "mean_reported_margin": "-3333.333333333333333333333333",
+      "net_losing": true,
+      "reported_total_margin": "-20k",
+      "wins": 2
+    },
+    {
+      "approximate": false,
+      "draws": 0,
+      "games": 6,
+      "id": "milk-frontrun",
+      "interpreted_total_margin": "-53",
+      "kind": "archetype",
+      "losses": 5,
+      "mean_reported_margin": "-8.833333333333333333333333333",
+      "net_losing": true,
+      "reported_total_margin": "-53",
+      "wins": 1
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "games": 6,
+      "id": "wheat-pump",
+      "interpreted_total_margin": "4800.0",
+      "kind": "archetype",
+      "losses": 0,
+      "mean_reported_margin": "800.0",
+      "net_losing": false,
+      "reported_total_margin": "+4.8k",
+      "wins": 6
+    }
+  ]
+}
