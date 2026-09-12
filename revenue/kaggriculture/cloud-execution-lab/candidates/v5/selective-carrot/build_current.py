@@ -17,6 +17,7 @@ ENTRY_SOURCE = HERE / "current_entry.py"
 # across main commits that leave these exact implementation bytes unchanged.
 EXPECTED_PARENT_MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
 EXPECTED_SELECTIVE_BLOB = "6af9a832dec058b7824fd7dd080f00ee50bb1d2f"
+EXPECTED_ENTRY_BLOB = "02c50e8eb6eecb5c06d610d421e0ff3bf007fb0e"
 
 
 def git_blob(path: Path) -> str:
@@ -56,6 +57,8 @@ def _capacity(value: int) -> int:
 def _require_source_identity() -> None:
     if git_blob(SELECTIVE_SOURCE) != EXPECTED_SELECTIVE_BLOB:
         raise ValueError("canonical selective-carrot source drift")
+    if git_blob(ENTRY_SOURCE) != EXPECTED_ENTRY_BLOB:
+        raise ValueError("canonical selective-carrot current entry drift")
     if git_blob(LAB_ROOT / "main.py") != EXPECTED_PARENT_MAIN_BLOB:
         raise ValueError("canonical current-V5 parent main.py drift")
 
@@ -88,7 +91,6 @@ def build_candidate(
 
     _require_source_identity()
     control_before = package_digest(baseline_root)
-    entry_blob = git_blob(ENTRY_SOURCE)
     try:
         shutil.copytree(
             baseline_root,
@@ -110,7 +112,7 @@ def build_candidate(
             "control_package_sha256": control_before,
             "parent_main_git_blob": EXPECTED_PARENT_MAIN_BLOB,
             "selective_carrot_git_blob": EXPECTED_SELECTIVE_BLOB,
-            "entry_git_blob": entry_blob,
+            "entry_git_blob": EXPECTED_ENTRY_BLOB,
         }
         (out / "CARROT-CAPACITY.json").write_text(
             json.dumps(profile, indent=2, sort_keys=True) + "\n",
@@ -129,7 +131,7 @@ def build_candidate(
         "candidate_package_sha256": candidate_digest,
         "parent_main_git_blob": EXPECTED_PARENT_MAIN_BLOB,
         "selective_carrot_git_blob": EXPECTED_SELECTIVE_BLOB,
-        "entry_git_blob": entry_blob,
+        "entry_git_blob": EXPECTED_ENTRY_BLOB,
     }
 
 
