@@ -108,6 +108,15 @@ class TerminalHistoryJoin:
         }
         return self._publish_observation_commit()
 
+    def _drop_forward_gap(self, prior, observed):
+        """Fail closed when no adjacent public observation can receipt pending."""
+        self.pending=None
+        self.deferred_observation=None
+        self.diagnostics={'observed_fills':{
+            'status':'skipped','reason':'forward_gap',
+            'prior_step':prior,'observed_step':observed}}
+        self.fill_result=None
+
     def observe(self, obs):
         """Bind the ACTUALLY returned prior action, then reconcile atomically."""
         now=self._observation_step(obs)
@@ -138,6 +147,13 @@ class TerminalHistoryJoin:
                 self.diagnostics={};self.fill_result=None
                 return
             else:
+                prior=int(self.pending[0]['step'])
+                if deferred_step!=prior+1:
+                    # A stored pointer is useful only when it is the exact
+                    # adjacency witness. Never promote an arbitrary old gap into
+                    # a replay merely because it survived a cancelled callback.
+                    self._drop_forward_gap(prior,deferred_step)
+                    return
                 self._reconcile_observation(deferred)
                 if now>deferred_step:
                     observed=self.diagnostics.get('observed_fills')
@@ -161,6 +177,11 @@ class TerminalHistoryJoin:
             return
         if now==prior:
             self.diagnostics={};self.fill_result=None
+            return
+        if now!=prior+1:
+            # Only the immediately following public decision can receipt the
+            # returned action. Missing turns make fill/flow attribution unknown.
+            self._drop_forward_gap(prior,now)
             return
 
         # Journal the exact adjacency witness before any mutable history work.

@@ -81,6 +81,36 @@ class Joined(unittest.TestCase):
   self.assertEqual(out,selected);self.assertEqual(obj.history.pending[2],selected)
   self.assertEqual(obj.diagnostics['fallback_stage'],'terminal_history');self.assertLess(elapsed,1)
   RESULTS.append({'case':'deadline_records_actual_fallback','seconds':elapsed})
+ def test_forward_gap_drops_stale_pending_without_reconciling(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
+  retry=copy.deepcopy(obs)
+  with patch.object(obj.history,'defer_observation',side_effect=AssertionError('same-step retry journal')),patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('same-step retry reconcile')):
+   obj.history.observe(retry)
+  self.assertIsNotNone(obj.history.pending)
+  after=copy.deepcopy(obs);after['step']=102
+  with patch.object(obj.history,'defer_observation',side_effect=AssertionError('stale forward-gap journal')),patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('stale forward-gap reconcile')):
+   obj.history.observe(after)
+  self.assertIsNone(obj.history.pending);self.assertIsNone(obj.history.deferred_observation)
+  self.assertIsNone(obj.history.fill_result)
+  self.assertEqual(obj.history.diagnostics['observed_fills'],{
+      'status':'skipped','reason':'forward_gap','prior_step':100,'observed_step':102})
+  RESULTS.append({'case':'forward_gap_drops_stale_pending','passed':True})
+ def test_deferred_forward_gap_is_not_promoted_to_adjacency_witness(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'WHEAT':2})
+  final=action(hands=[['PASS']],market=[['SELL','WHEAT',1]])
+  obj.history.remember(obs,cfg,final,copy.deepcopy(obs))
+  deferred=copy.deepcopy(obs);deferred['step']=102
+  obj.history.deferred_observation=copy.deepcopy(deferred)
+  current=copy.deepcopy(obs);current['step']=103
+  with patch.object(obj.history,'_reconcile_observation',side_effect=AssertionError('stale deferred-gap reconcile')):
+   obj.history.observe(current)
+  self.assertIsNone(obj.history.pending);self.assertIsNone(obj.history.deferred_observation)
+  self.assertIsNone(obj.history.fill_result)
+  self.assertEqual(obj.history.diagnostics['observed_fills'],{
+      'status':'skipped','reason':'forward_gap','prior_step':100,'observed_step':102})
+  RESULTS.append({'case':'deferred_forward_gap_drops_stale_pending','passed':True})
  def test_seed_funding_and_history_share_the_selected_unit_snapshot(self):
   obj=self.actor();obs,cfg,state,env=self.h.fixture(100)
   selected=action(['PLANT','WHEAT'],hands=[['PASS']],market=[['BUY_SEED','WHEAT',17],['HIRE']])
