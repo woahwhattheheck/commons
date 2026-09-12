@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import shutil
 import tarfile
 import tempfile
@@ -22,6 +22,41 @@ def git_blob_bytes(data: bytes) -> str:
     ).hexdigest()
 
 
+def current_pointer_and_archive():
+    pointer_path = LAB_ROOT / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+    pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
+    return pointer, LAB_ROOT / pointer["path"]
+
+
+def extract_regular_members(archive: Path, destination: Path) -> None:
+    destination.mkdir()
+    with tarfile.open(archive, "r:*") as package:
+        for member in package:
+            rel = PurePosixPath(member.name)
+            if (
+                not member.name
+                or "\\" in member.name
+                or rel.is_absolute()
+                or ".." in rel.parts
+                or str(rel) != member.name.rstrip("/")
+            ):
+                raise AssertionError(f"unsafe CURRENT archive member: {member.name!r}")
+            if member.isdir():
+                continue
+            if not member.isfile():
+                raise AssertionError(
+                    f"non-file CURRENT archive member: {member.name!r}"
+                )
+            stream = package.extractfile(member)
+            if stream is None:
+                raise AssertionError(f"unreadable CURRENT member: {member.name!r}")
+            target = destination.joinpath(*rel.parts)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if target.exists():
+                raise AssertionError(f"duplicate CURRENT member: {member.name!r}")
+            target.write_bytes(stream.read())
+
+
 class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
     def test_source_pins_match_canonical_tree(self):
         self.assertEqual(
@@ -36,10 +71,8 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
         )
 
     def test_current_archive_packages_the_pinned_parent_main(self):
-        pointer_path = LAB_ROOT / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
-        pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
+        pointer, archive = current_pointer_and_archive()
         self.assertEqual(pointer["path"], "exports/titan-current.tar.gz")
-        archive = LAB_ROOT / pointer["path"]
         self.assertEqual(archive.stat().st_size, pointer["bytes"])
         self.assertEqual(
             hashlib.sha256(archive.read_bytes()).hexdigest(), pointer["sha256"]
@@ -53,6 +86,33 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
         self.assertEqual(
             git_blob_bytes(main_bytes), build.EXPECTED_PARENT_MAIN_BLOB
         )
+
+    def test_real_current_package_materializes_both_profiles(self):
+        pointer, archive = current_pointer_and_archive()
+        self.assertEqual(
+            hashlib.sha256(archive.read_bytes()).hexdigest(), pointer["sha256"]
+        )
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            baseline = root / "current"
+            extract_regular_members(archive, baseline)
+            control_digest = build.package_digest(baseline)
+            for cap in (4, 12):
+                out = root / f"cap{cap}"
+                receipt = build.build_candidate(baseline, out, cap)
+                self.assertEqual(receipt["max_active"], cap)
+                self.assertEqual(receipt["control_package_sha256"], control_digest)
+                self.assertEqual(
+                    build.git_blob(out / "baseline_main.py"),
+                    build.EXPECTED_PARENT_MAIN_BLOB,
+                )
+                profile = json.loads(
+                    (out / "CARROT-CAPACITY.json").read_text(encoding="utf-8")
+                )
+                self.assertEqual(profile["max_active"], cap)
+                self.assertEqual(
+                    profile["control_package_sha256"], control_digest
+                )
 
     def test_materializes_cap4_and_cap12_from_one_implementation(self):
         with tempfile.TemporaryDirectory() as folder:
