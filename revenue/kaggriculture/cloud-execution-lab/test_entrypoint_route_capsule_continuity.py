@@ -53,6 +53,14 @@ class Instance:
         return deepcopy(PASS)
 
 
+class InterruptedBeforeProducer(Instance):
+    """Fresh runtime that never publishes a current-callback selection."""
+
+    def act(self, _observation, _configuration=None, *, entry_started=None):
+        self.controller.cur = 'UNRETURNED_NEW_ROUTE'
+        raise ControlledTimer.active.expired
+
+
 class EntrypointRouteCapsuleContinuityTests(unittest.TestCase):
     def setUp(self):
         spec = importlib.util.spec_from_file_location(
@@ -149,6 +157,37 @@ class EntrypointRouteCapsuleContinuityTests(unittest.TestCase):
             },
         )
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
+
+    def test_interrupted_fresh_callback_does_not_restamp_prior_route(self):
+        self.cancel(Instance('YARN'), 227)
+        fresh = InterruptedBeforeProducer()
+        with patch.object(self.entry, '_new_instance', return_value=fresh), \
+                patch('json.loads', return_value={'town_procurement': False}):
+            self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
+        self.assertEqual(fresh._completed_route, 'YARN')
+        self.assertEqual(fresh.controller.cur, 'UNRETURNED_NEW_ROUTE')
+        self.assertEqual(
+            self.entry._ROUTE_RECOVERY,
+            {
+                'route_step': 227,
+                'last_step': 228,
+                'player': 0,
+                'route': 'YARN',
+            },
+        )
+        self.assertEqual(self.resume(229)._completed_route, 'YARN')
+
+    def test_malformed_capsule_retires_before_restore(self):
+        self.entry._ROUTE_RECOVERY = {
+            'route_step': 227,
+            'last_step': 227,
+            'player': 0,
+            'route': 'YARN',
+            'extra': True,
+        }
+        fresh = self.resume(228)
+        self.assertIsNone(fresh._completed_route)
+        self.assertIsNone(self.entry._ROUTE_RECOVERY)
 
 
 if __name__ == '__main__':
