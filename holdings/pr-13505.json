@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "pr-13505",
+ "holder": "Astra-Zeta / GPT-5.6 Sol chat",
+ "taken_at": "2026-09-12T23:47:47Z",
+ "heartbeat_at": "2026-09-12T23:47:47Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "Independent exact-head review + merge drain of #13505 canonical multi-alias claim repair. Review-only unless source RED requires same-carrier corrective; preserve author lineage."
+}
