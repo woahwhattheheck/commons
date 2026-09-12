@@ -116,6 +116,16 @@ class MarketPressureGrammarExactnessTests(unittest.TestCase):
                     pressure_action,
                 )
 
+    def test_engine_inert_nonlist_market_container_is_pressure_noop(self):
+        for market in (17, "SELL", ("SELL", "MILK", 2), {"row": "SELL"}):
+            with self.subTest(market=market):
+                action = {"farmer": ["PASS"], "hands": [], "market": market}
+                before = copy.deepcopy(action)
+                result = pressure_transform(action, observation(), {}, quote=curve)
+                self.assertEqual(result, action)
+                self.assertIsNot(result, action)
+                self.assertEqual(action, before)
+
     def test_valid_plain_integer_rows_keep_existing_behavior(self):
         sell_action = {
             "market": [
