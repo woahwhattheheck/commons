@@ -109,7 +109,8 @@ class ObserverParityTests(unittest.TestCase):
     def test_larger_decline_keeps_non_decay_remainder(self):
         control, candidate = self.compare(plant(4), plant(2))
         self.assertEqual(control, {"MELON": [(101, 2)]})
-        # Larger drops are deliberately ambiguous and not partially rewritten.
+        # With no actor custody in this legacy fixture, the new reachability
+        # layer fails closed and preserves the parent candidate's behavior.
         self.assertEqual(candidate, control)
 
     def test_incumbent_parity_outside_exact_domain(self):
@@ -161,12 +162,14 @@ class OfficialEngineWitnessTests(unittest.TestCase):
         engine = self.load_engine()
         control = bare(scheduler.SellScheduler)
         candidate = bare(Patched)
-        rival_farm = {"tiles": [[plant(4)]]}
-        initial = observation(100, rival_farm["tiles"][0][0])
+        # Metadata-valid CARROT lifespan:
+        # (planted_day 0 + max_yield_day 3 + 1) * 24 == 96.
+        rival_farm = {"tiles": [[plant(4, crop="CARROT", lifespan=96)]]}
+        initial = observation(96, rival_farm["tiles"][0][0])
         control.previous = copy.deepcopy(initial)
         candidate.previous = copy.deepcopy(initial)
 
-        for transition in range(100, 105):
+        for transition in range(96, 101):
             engine._decay_plants(rival_farm, transition)
             current = observation(transition + 1, rival_farm["tiles"][0][0])
             scheduler.SellScheduler.observe(control, copy.deepcopy(current))
@@ -176,33 +179,37 @@ class OfficialEngineWitnessTests(unittest.TestCase):
 
         self.assertEqual(rival_farm["tiles"][0][0]["yield_units"], 1)
         self.assertEqual(control.observed_harvests, {
-            "MELON": [(101, 1), (103, 1), (105, 1)]
+            "CARROT": [(97, 1), (99, 1), (101, 1)]
         })
         self.assertEqual(candidate.observed_harvests, {})
-        final = observation(105, rival_farm["tiles"][0][0])
-        self.assertEqual(scheduler.SellScheduler.rival_supply(control, final, "MELON"), 3)
-        self.assertEqual(Patched.rival_supply(candidate, final, "MELON"), 1)
+        final = observation(101, rival_farm["tiles"][0][0])
+        self.assertEqual(scheduler.SellScheduler.rival_supply(control, final, "CARROT"), 3)
+        self.assertEqual(Patched.rival_supply(candidate, final, "CARROT"), 1)
 
-    def test_supply_change_flips_concrete_optimizer_decision(self):
+    def test_caller_reachable_stress_change_flips_optimizer_decision(self):
+        # now=101 and dates 105/109 are inside the caller's current-day horizon.
+        # PET_CAFE consumes two CARROT at steps 104 and 108, so carrying stock
+        # has a strict no-rival benefit while stress 3 still blocks the replan.
         common = dict(
-            item="MELON",
-            quantity=2,
-            inventory=80,
+            item="CARROT",
+            quantity=5,
+            inventory=10002,
             params=None,
-            shops=[],
-            config={"townShopSellInterval": 4, "townCenterSellInterval": 24},
-            now=100,
-            dates=(100, 104, 108),
-            reference=((100, 2),),
+            shops=["PET_CAFE"],
+            config={},
+            now=101,
+            dates=(101, 105, 109),
+            reference=((101, 5),),
             minimum_now=0,
             capacity_ok=lambda _plan: True,
             last=718,
         )
         clean_plan, clean = scheduler.optimize_lot(rival_quantity=1, **common)
         polluted_plan, polluted = scheduler.optimize_lot(rival_quantity=3, **common)
-        self.assertEqual(clean_plan, ((108, 2),))
-        self.assertGreater(clean["worst_relative_gain"], 100.0)
-        self.assertEqual(polluted_plan, ((100, 2),))
+        self.assertEqual(clean_plan, ((101, 0), (105, 1), (109, 4)))
+        self.assertEqual(clean["worst_relative_gain"], 5.0)
+        self.assertEqual([row["relative_value"] - row["reference_relative_value"] for row in clean["scenarios"].values()], [9, 7, 5, 5, 5])
+        self.assertEqual(polluted_plan, ((101, 5),))
         self.assertEqual(polluted["worst_relative_gain"], 0.0)
 
 

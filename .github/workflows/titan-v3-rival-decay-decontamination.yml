@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sol-sentinel/titan-v3-rival-decay-decontamination-20260910-01
+      - sol-pro/titan-v3-rival-harvest-actor-reachability-20260910-01
   pull_request:
     paths:
       - ".github/workflows/titan-v3-rival-decay-decontamination.yml"
@@ -23,10 +24,18 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: "1"
       LANE: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ env.EXPECTED_HEAD }}
           persist-credentials: false
+
+      - name: Bind exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
 
       - uses: actions/setup-python@v5
         with:
@@ -37,18 +46,26 @@ jobs:
           python -B -m py_compile
           "$LANE/candidate.py"
           "$LANE/decay_observer.py"
+          "$LANE/legal_trace.py"
           "$LANE/test_candidate.py"
           "$LANE/test_decay_observer.py"
+          "$LANE/test_actor_reachability.py"
+          "$LANE/test_legal_trace.py"
           "$LANE/witness.py"
 
-      - name: Run observer, engine and optimizer contracts
+      - name: Run observer, reachability, legal-engine, optimizer, and caller contracts
         shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
         run: |
           set -euo pipefail
-          python -B -m unittest -v test_decay_observer test_candidate 2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
+          python -B -m unittest -v \
+            test_decay_observer \
+            test_actor_reachability \
+            test_candidate \
+            test_legal_trace \
+            2>&1 | tee "$RUNNER_TEMP/TESTS.txt"
 
-      - name: Emit source-bound predecessor witness
+      - name: Emit source-bound legal predecessor witness
         shell: bash
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/rival_decay_decontamination
         run: |
@@ -63,8 +80,11 @@ jobs:
           sha256sum \
             "$LANE/candidate.py" \
             "$LANE/decay_observer.py" \
+            "$LANE/legal_trace.py" \
             "$LANE/test_candidate.py" \
             "$LANE/test_decay_observer.py" \
+            "$LANE/test_actor_reachability.py" \
+            "$LANE/test_legal_trace.py" \
             "$LANE/witness.py" \
             "$RUNNER_TEMP/TESTS.txt" \
             "$RUNNER_TEMP/WITNESS.json" \
@@ -73,7 +93,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: titan-v3-rival-decay-${{ github.sha }}
+          name: titan-v3-rival-decay-${{ env.EXPECTED_HEAD }}
           path: |
             ${{ runner.temp }}/TESTS.txt
             ${{ runner.temp }}/WITNESS.json
