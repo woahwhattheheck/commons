@@ -12,7 +12,7 @@ import hashlib
 from pathlib import Path
 
 BEFORE = 'd9ca4d0737b5ab3344c0df588014a83a5c634464327fdd175b8ec862c2d7beb9'
-AFTER = 'a2d4d8e98491fc2fcb081f48ca3d334951fda54c61bedb3e56fcd2c3fc765eaf'
+AFTER = '88d315a8e16a7a3f1aa2e88d65e53bad827ce2cee4b7fbef65fe4d192cdfdff6'
 INIT_ANCHOR = '    acquisitions = []\n    executed_sales = []\n'
 INIT = '''    # Only observed shop instances are evidence. Native SELL horizons are
     # same-day; do not certify a future dawn's unknown new shop or farm reset.
