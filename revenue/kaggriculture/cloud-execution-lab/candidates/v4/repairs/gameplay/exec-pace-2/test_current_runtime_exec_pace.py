@@ -272,8 +272,8 @@ class ComposerTests(unittest.TestCase):
         self.assertTrue(info["exec_pace"]["blocked"])
         self.assertEqual(holder.diagnostics["evaluations"][-1]["plan"], list(reference))
 
-    def test_current_repository_sources_are_composable_when_present(self):
-        # In the repository this is a mandatory live-source anchor test.  The
+    def test_current_repository_sources_are_composable_or_installed_when_present(self):
+        # In the repository this is a mandatory live-source anchor test. The
         # standalone development copy under /mnt/data has no production tree.
         package_here = Path(__file__).resolve().parent
         root = package_here.parents[4] if len(package_here.parents) > 4 else None
@@ -282,11 +282,15 @@ class ComposerTests(unittest.TestCase):
         titan_source = (root / "titan_runtime.py").read_text()
         frozen_source = (root / "frozen_selected.py").read_text()
         config_source = (root / "TITAN-CONFIG.json").read_text()
-        titan, frozen = composer.compose_sources(titan_source, frozen_source)
-        config = composer.compose_config(config_source)
+        parsed_source = json.loads(config_source)
+        installed = "exec_pace: bool = False" in titan_source or "exec_pace" in parsed_source
+        if installed:
+            titan, frozen, parsed = titan_source, frozen_source, parsed_source
+        else:
+            titan, frozen = composer.compose_sources(titan_source, frozen_source)
+            parsed = json.loads(composer.compose_config(config_source))
         compile(titan, "titan_runtime.py", "exec")
         compile(frozen, "frozen_selected.py", "exec")
-        parsed = json.loads(config)
         self.assertIn("exec_pace", parsed)
         self.assertIs(parsed["exec_pace"], False)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
