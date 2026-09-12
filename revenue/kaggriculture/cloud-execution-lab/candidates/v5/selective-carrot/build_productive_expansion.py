@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import stat
 
 BASE_SHA = '20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239'
 V31_SHA = '5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361'
@@ -57,10 +59,11 @@ def _validate_publication_paths(out, tar_path, receipt_path):
 def _rmtree_if_owned(path, identity):
     path = Path(path)
     try:
-        stat = path.stat(follow_symlinks=False)
+        stat_result = os.lstat(path)
     except FileNotFoundError:
         return
-    if (stat.st_dev, stat.st_ino) == identity and path.is_dir():
+    if ((stat_result.st_dev, stat_result.st_ino) == identity
+            and stat.S_ISDIR(stat_result.st_mode)):
         shutil.rmtree(path)
 
 
@@ -73,10 +76,15 @@ def _publish(files, packed, receipt, out, tar_path, receipt_path):
     if out.exists():
         raise FileExistsError('output directory already exists')
 
+    out_fd = None
     out_identity = None
     try:
         out.mkdir(parents=True)
-        out_stat = out.stat(follow_symlinks=False)
+        flags = os.O_RDONLY | getattr(os, 'O_DIRECTORY', 0) | getattr(os, 'O_NOFOLLOW', 0)
+        out_fd = os.open(out, flags)
+        out_stat = os.fstat(out_fd)
+        if not stat.S_ISDIR(out_stat.st_mode):
+            raise OSError('output path is not a directory')
         out_identity = (out_stat.st_dev, out_stat.st_ino)
         for name, body in files.items():
             path = out / name
@@ -92,6 +100,9 @@ def _publish(files, packed, receipt, out, tar_path, receipt_path):
         if out_identity is not None:
             _rmtree_if_owned(out, out_identity)
         raise
+    finally:
+        if out_fd is not None:
+            os.close(out_fd)
 
 
 def main():
@@ -121,7 +132,7 @@ def main():
         'delivery_archive_sha256': DELIVERY_SHA,
         'changed_members': [ROUTER, GATE],
         'decision_contract': 'reject-only-unavoidable-cost-floor-vs-default-curve-gross-upper-bound',
-        'labor_model': 'same-day-guaranteed-hires-lower-bound',
+        'labor_model': 'day18-commitment-hires-only-lower-bound',
         'rival_supply_scope': 'visible-field-telemetry-only',
         'default_activation': False,
         'kaggle_submission_hold': True,
