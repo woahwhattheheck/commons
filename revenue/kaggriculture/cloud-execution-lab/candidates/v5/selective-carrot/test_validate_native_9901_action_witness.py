@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
 import copy
@@ -34,6 +34,7 @@ def signed_report():
     }
     rows = []
     for seat in (0, 1):
+        candidate = 360 + seat
         rows.append({
             "candidate_seat": seat,
             "left_result": {
@@ -50,7 +51,11 @@ def signed_report():
             },
             "comparison": {
                 "steps": v.EXPECTED["steps"],
-                "first_any_action_divergence_step": 360 + seat,
+                "first_candidate_action_divergence_step": candidate,
+                "first_candidate_observation_divergence_step": candidate + 1,
+                "first_opponent_action_divergence_step": candidate + 2,
+                "first_opponent_observation_divergence_step": candidate + 3,
+                "first_any_action_divergence_step": candidate,
                 "all_actions_identical": False,
                 "candidate_action_is_first_observed_divergence": True,
             },
@@ -86,12 +91,38 @@ class Native9901AuthorityTests(unittest.TestCase):
 
     def test_opponent_first_still_passes_custody_but_is_not_causal_positive(self):
         report = signed_report()
-        report["rows"][1]["comparison"]["candidate_action_is_first_observed_divergence"] = False
+        comparison = report["rows"][1]["comparison"]
+        comparison["first_candidate_action_divergence_step"] = 365
+        comparison["first_candidate_observation_divergence_step"] = 366
+        comparison["first_opponent_action_divergence_step"] = 361
+        comparison["first_opponent_observation_divergence_step"] = 362
+        comparison["first_any_action_divergence_step"] = 361
+        comparison["candidate_action_is_first_observed_divergence"] = False
         resign(report)
         result = v.validate(report)
         self.assertEqual(result["status"], "PASS")
         self.assertFalse(result["candidate_action_is_first_observed_divergence"]["1"])
         self.assertFalse(result["causal_candidate_first_both_seats"])
+
+    def test_resigned_forged_causal_label_rejects(self):
+        report = signed_report()
+        comparison = report["rows"][1]["comparison"]
+        comparison["first_candidate_action_divergence_step"] = 365
+        comparison["first_candidate_observation_divergence_step"] = 366
+        comparison["first_opponent_action_divergence_step"] = 361
+        comparison["first_opponent_observation_divergence_step"] = 362
+        comparison["first_any_action_divergence_step"] = 361
+        comparison["candidate_action_is_first_observed_divergence"] = True
+        resign(report)
+        with self.assertRaisesRegex(v.ValidationError, "causal divergence label inconsistent"):
+            v.validate(report)
+
+    def test_resigned_inconsistent_first_action_summary_rejects(self):
+        report = signed_report()
+        report["rows"][0]["comparison"]["first_any_action_divergence_step"] = 100
+        resign(report)
+        with self.assertRaisesRegex(v.ValidationError, "first action divergence summary inconsistent"):
+            v.validate(report)
 
     def test_missing_causal_label_rejects_ambiguous_receipt(self):
         report = signed_report()
@@ -130,8 +161,12 @@ class Native9901AuthorityTests(unittest.TestCase):
 
     def test_no_action_divergence_rejects(self):
         report = signed_report()
-        report["rows"][1]["comparison"]["first_any_action_divergence_step"] = None
-        report["rows"][1]["comparison"]["all_actions_identical"] = True
+        comparison = report["rows"][1]["comparison"]
+        comparison["first_candidate_action_divergence_step"] = None
+        comparison["first_opponent_action_divergence_step"] = None
+        comparison["first_any_action_divergence_step"] = None
+        comparison["all_actions_identical"] = True
+        comparison["candidate_action_is_first_observed_divergence"] = False
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "lacks a real action divergence"):
             v.validate(report)
