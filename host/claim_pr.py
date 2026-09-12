@@ -41,8 +41,11 @@ def write_pr_holding(
     """Take, renew, or release the canonical ``pr-N`` holding.
 
     The underlying fast-forward-only write and collision reconciliation stay in
-    ``coordination_state.holding_write``; this adapter adds no second claim
-    protocol.
+    ``coordination_state.holding_write``.  This canonical PR road intentionally
+    gives that primitive one CAS attempt per invocation: if another peer wins a
+    non-fast-forward race, we return the retry result instead of letting an old
+    observation clock be reused against the winner on an internal retry.  A
+    caller can invoke the command again, which takes a fresh observation.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -60,6 +63,7 @@ def write_pr_holding(
         now=now,
         remote=remote,
         push=push,
+        attempts=1,
     )
     return {"pr": pr, "action": action, **result}
 
