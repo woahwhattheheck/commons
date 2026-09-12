@@ -1,0 +1,54 @@
+name: TITAN V5 canonical release publication
+
+on:
+  push:
+    branches:
+      - astra-v5-canonical-release-publication
+
+permissions:
+  contents: write
+
+concurrency:
+  group: titan-v5-canonical-release-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and verify deterministic release
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          set -euxo pipefail
+          python -B build_integrated.py
+          python -B build_integrated.py --check
+          python -B test_build_integrated_archive.py
+          python -B test_package_dependency_closure.py
+          python -B test_release_consistency.py
+          python -O -B test_release_consistency.py
+      - name: Commit generated release bytes only
+        run: |
+          set -euxo pipefail
+          git config user.name 'titan-v5-release-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A -- \
+            revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz \
+            revenue/kaggriculture/cloud-execution-lab/exports/historical \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json \
+            revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json
+          if git diff --cached --quiet; then
+            echo 'Canonical release already matches source map.'
+            exit 0
+          fi
+          bad="$(git diff --cached --name-only | grep -Ev '^(revenue/kaggriculture/cloud-execution-lab/exports/titan-current\.tar\.gz|revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-[0-9a-f]+\.tar\.gz|revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-(SOURCE|ARCHIVE)\.json)$' || true)"
+          test -z "$bad" || { echo "unexpected generated paths:"; echo "$bad"; exit 1; }
+          git diff --cached --name-only
+          git commit -m 'TITAN V5: publish canonical integrated release'
+          git push origin HEAD:astra-v5-canonical-release-publication
