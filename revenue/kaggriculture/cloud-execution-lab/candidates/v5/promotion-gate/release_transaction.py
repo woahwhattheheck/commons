@@ -689,6 +689,10 @@ def commit_pointer(
     receipt: Mapping[str, Any],
 ) -> None:
     """Commit a previously authenticated pointer under a cooperating-writer lock."""
+    raise TransactionError(
+        "release pointer commit disabled: champion raw score roots lack "
+        "non-self-asserted origin authority"
+    )
     lock_path = current_pointer.with_name(f".{current_pointer.name}.transaction.lock")
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a+b") as lock:
