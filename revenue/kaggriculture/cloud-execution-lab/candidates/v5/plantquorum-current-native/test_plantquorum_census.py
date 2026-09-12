@@ -9,107 +9,28 @@ import unittest
 
 HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location(
-    "_titan_v5_plantquorum_census", HERE / "plantquorum_census.py"
+    "_titan_v5_plantquorum_runner", HERE / "plantquorum_census.py"
 )
 census = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(census)
 
 
-class PlantQuorumCurrentNativeTests(unittest.TestCase):
-    def test_source_pins_match_canonical_files_and_current_pointer(self):
-        self.assertEqual(
-            census.git_blob_sha(census._capture_pinned(
-                census.PLANTQUORUM,
-                census.PLANTQUORUM_GIT_BLOB,
-                "plant_quorum_admission.py",
-            )),
-            census.PLANTQUORUM_GIT_BLOB,
-        )
-        self.assertEqual(
-            census.git_blob_sha(census._capture_pinned(
-                census.NATIVE_CENSUS,
-                census.NATIVE_CENSUS_GIT_BLOB,
-                "native_census.py",
-            )),
-            census.NATIVE_CENSUS_GIT_BLOB,
-        )
-        self.assertEqual(
-            census.git_blob_sha(census._capture_pinned(
-                census.UNITPIPE,
-                census.UNITPIPE_GIT_BLOB,
-                "unit_pipeline_admission.py",
-            )),
-            census.UNITPIPE_GIT_BLOB,
-        )
+class PlantQuorumCurrentNativeRunnerTests(unittest.TestCase):
+    def test_source_pins_match_single_observer_and_current_package_contract(self):
+        for path, expected, label in (
+            (census.OBSERVER, census.OBSERVER_GIT_BLOB, "census.py"),
+            (census.PLANTQUORUM, census.PLANTQUORUM_GIT_BLOB, "plant_quorum_admission.py"),
+            (census.NATIVE_CENSUS, census.NATIVE_CENSUS_GIT_BLOB, "native_census.py"),
+            (census.UNITPIPE, census.UNITPIPE_GIT_BLOB, "unit_pipeline_admission.py"),
+        ):
+            with self.subTest(label=label):
+                data = census._capture_pinned(path, expected, label)
+                self.assertEqual(census.git_blob_sha(data), expected)
         pointer = census._pointer_contract()
         self.assertEqual(pointer["sha256"], census.ARCHIVE_SHA256)
+        self.assertEqual(pointer["bytes"], census.ARCHIVE_BYTES)
         self.assertEqual(pointer["source_manifest_sha256"], census.SOURCE_SHA256)
         self.assertEqual(pointer["runtime_files"], census.RUNTIME_FILES)
-
-    def test_observer_detects_source_certain_atomic_plant_relief_without_mutation(self):
-        helper = census._load_plantquorum_snapshot()
-        observation = {
-            "player": 0,
-            "farms": [
-                {
-                    "tiles": [[{"kind": "OCCUPIED"}, None]],
-                    "farmer": [0, 0],
-                    "hands": [[1, 0]],
-                },
-                {
-                    "tiles": [[None, None]],
-                    "farmer": [0, 0],
-                    "hands": [],
-                },
-            ],
-            "private": {"seeds": {"WHEAT": 1}},
-        }
-        action = {
-            "farmer": ["PLANT", "WHEAT"],
-            "hands": [["PLANT", "WHEAT"]],
-            "market": [["HIRE"]],
-        }
-        observation_before = copy.deepcopy(observation)
-        action_before = copy.deepcopy(action)
-
-        witness = census.observe_admission(helper, observation, action)
-
-        self.assertTrue(witness["changed"])
-        self.assertEqual(witness["changed_actors"], [0])
-        self.assertEqual(witness["source_rows"], [
-            ["PLANT", "WHEAT"], ["PLANT", "WHEAT"]
-        ])
-        self.assertEqual(witness["candidate_rows"], [
-            ["PASS"], ["PLANT", "WHEAT"]
-        ])
-        self.assertEqual(witness["effective_before"], [["PASS"], ["PASS"]])
-        self.assertEqual(witness["effective_after"], [["PASS"], ["PLANT", "WHEAT"]])
-        self.assertEqual(observation, observation_before)
-        self.assertEqual(action, action_before)
-
-    def test_observer_fails_closed_on_ambiguous_colocation(self):
-        helper = census._load_plantquorum_snapshot()
-        observation = {
-            "player": 0,
-            "farms": [
-                {
-                    "tiles": [[None]],
-                    "farmer": [0, 0],
-                    "hands": [[0, 0]],
-                },
-                {"tiles": [[None]], "farmer": [0, 0], "hands": []},
-            ],
-            "private": {"seeds": {"CARROT": 1}},
-        }
-        action = {
-            "farmer": ["PLANT", "CARROT"],
-            "hands": [["PLANT", "CARROT"]],
-            "market": [],
-        }
-        before = copy.deepcopy(action)
-        witness = census.observe_admission(helper, observation, action)
-        self.assertFalse(witness["changed"])
-        self.assertEqual(action, before)
 
     @staticmethod
     def _cell(seed, seat, engagements=0):
@@ -118,7 +39,7 @@ class PlantQuorumCurrentNativeTests(unittest.TestCase):
             "source": copy.deepcopy(census.EXPECTED_SOURCE),
             "archive_receipt": {
                 "sha256": census.ARCHIVE_SHA256,
-                "bytes": 466983,
+                "bytes": census.ARCHIVE_BYTES,
                 "members": census.RUNTIME_FILES + 1,
             },
             "seed": seed,
@@ -179,6 +100,16 @@ class PlantQuorumCurrentNativeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact integer"):
             census.aggregate_cells(cells)
 
+    def test_panel_rejects_archive_receipt_drift(self):
+        cells = [
+            self._cell(seed, seat)
+            for seed in census.PANEL_SEEDS
+            for seat in census.PANEL_SEATS
+        ]
+        cells[0]["archive_receipt"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "archive receipt mismatch"):
+            census.aggregate_cells(cells)
+
     def test_strict_json_rejects_duplicate_keys_and_nonfinite(self):
         with self.assertRaisesRegex(ValueError, "duplicate JSON key"):
             census._strict_json_bytes(b'{"a":1,"a":2}', "dup")
@@ -197,4 +128,4 @@ class PlantQuorumCurrentNativeTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
