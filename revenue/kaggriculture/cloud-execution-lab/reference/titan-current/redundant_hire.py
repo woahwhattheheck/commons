@@ -178,6 +178,12 @@ def propose_redundant_hires(
               "useful_worker_actions": 0, "completed_jobs": 0, "wage_payback": 0,
               "productive_detours": [], "terminal_gain": None,
               "scope": "conditional same-day route certificate; current quote only, not future cash or win proof"}
+    farms = observation.get("farms")
+    player = observation.get("player")
+    if (not isinstance(farms, list) or len(farms) != 2
+            or type(player) is not int or player not in (0, 1)):
+        report["reason"] = "unsupported_public_seat_schema"
+        return out, report
     cfg = dict(configuration or {})
     board = _uint(cfg.get("boardSize", 10), "boardSize", 1)
     day_len = _uint(cfg.get("turnsPerDay", 24), "turnsPerDay", 1)
