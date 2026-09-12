@@ -69,6 +69,24 @@ class Joined(unittest.TestCase):
   self.assertFalse(obj.history.diagnostics['family']['ready'])
   self.assertEqual(out,selected)
   RESULTS.append({'case':'unready_family_retains_complete_selected_action','passed':True})
+ def test_unwitnessed_forward_gap_drops_pending_without_cross_attribution(self):
+  obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'CARROT':3})
+  before=copy.deepcopy(obs)
+  final=action(hands=[['PASS']],market=[['SELL','CARROT',1]])
+  obj.history.remember(before,cfg,final,copy.deepcopy(before))
+  original_bridge=obj.history.bridge
+  original_last=obj.history.bridge.last_consumed_step
+  obj.history.diagnostics={'stale':True};obj.history.fill_result={'stale':True}
+  gap=copy.deepcopy(before);gap['step']=102
+  obj.history.observe(gap)
+  self.assertIs(obj.history.bridge,original_bridge)
+  self.assertEqual(obj.history.bridge.last_consumed_step,original_last)
+  self.assertIsNone(obj.history.pending)
+  self.assertIsNone(obj.history.deferred_observation)
+  self.assertIsNone(obj.history._observation_commit)
+  self.assertIsNone(obj.history.fill_result)
+  self.assertEqual(obj.history.diagnostics,{})
+  RESULTS.append({'case':'unwitnessed_forward_gap_drops_pending','prior':100,'observed':102})
  def test_timeout_records_returned_queue_with_completed_snapshot(self):
   obj=self.actor();obs,cfg,_,_=self.h.fixture(100,{'CARROT':1})
   selected=action(hands=[['PASS']],market=[['SELL','CARROT',1]])
