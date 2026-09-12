@@ -1,0 +1,78 @@
+{
+  "schema": "titan-v5-rng-replay-reachability-receipt-v1",
+  "source": {
+    "slack_file_id": "F0C177NN30T",
+    "slack_file_sha256": "88c2bf577676ae91dcf4196ff4f6cb1426821a8361ee7dba08521b2e6ecd1a46",
+    "engine_sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "alignment": "Replay rows are PRE-ACTION observations. Engine EOD occurs after unit and market execution when (step+1)%turnsPerDay==0."
+  },
+  "cases": [
+    {
+      "episode_id": 108138386,
+      "replay_sha256_gzip": "2db74db0e18027cf99d2ce8dafab1de7684d349a3b42bb86555a0e0dd5bd4d8f",
+      "seed": 2051966578,
+      "step": 143,
+      "day": 5,
+      "hour": 23,
+      "turns_per_day": 24,
+      "pre_action_none_counts": [0, 0],
+      "our_money": 219,
+      "our_unlocked_quadrants": ["NW"],
+      "unit_topology": {"base_empty": 0, "distinct_fillable_empty_positions": 0, "distinct_clearable_nonempty_positions": 3, "unit_only_interval": [0, 3]},
+      "next_land": {"quadrant": "NE", "cost": 1000, "locked_tiles": 25, "cash_alone_covers": false},
+      "actual_unit_none_delta": 0,
+      "actual_rival_unit_none_delta": 0,
+      "recorded_added_shop": "PET_CAFE"
+    },
+    {
+      "episode_id": 108138386,
+      "replay_sha256_gzip": "2db74db0e18027cf99d2ce8dafab1de7684d349a3b42bb86555a0e0dd5bd4d8f",
+      "seed": 2051966578,
+      "step": 287,
+      "day": 11,
+      "hour": 23,
+      "turns_per_day": 24,
+      "pre_action_none_counts": [4, 7],
+      "our_money": 12136,
+      "our_unlocked_quadrants": ["NW", "NE", "SW"],
+      "unit_topology": {"base_empty": 4, "distinct_fillable_empty_positions": 1, "distinct_clearable_nonempty_positions": 9, "unit_only_interval": [3, 13]},
+      "next_land": {"quadrant": "SE", "cost": 4000, "locked_tiles": 25, "cash_alone_covers": true},
+      "actual_unit_none_delta": 0,
+      "actual_rival_unit_none_delta": 0,
+      "recorded_added_shop": "PET_CAFE",
+      "fixed_replay_action_counterfactual": {
+        "change": "append BUY_LAND to our empty market list; preserve both players' recorded unit actions and rival market action",
+        "our_pre_eod_none": 29,
+        "rival_pre_eod_none": 7,
+        "total_pre_eod_none": 36,
+        "predicted_added_shop": "BAKERY",
+        "stable_total_none_window": [33, 37]
+      }
+    },
+    {
+      "episode_id": 108139400,
+      "replay_sha256_gzip": "b828849e3bad01a9ceb8bf4729ba04ef73b3c70f9d780af9327ebface9975288",
+      "seed": 1378040481,
+      "step": 359,
+      "day": 14,
+      "hour": 23,
+      "turns_per_day": 24,
+      "pre_action_none_counts": [0, 2],
+      "our_money": 25837,
+      "our_unlocked_quadrants": ["NW", "NE", "SW"],
+      "unit_topology": {"base_empty": 0, "distinct_fillable_empty_positions": 0, "distinct_clearable_nonempty_positions": 8, "unit_only_interval": [0, 8]},
+      "next_land": {"quadrant": "SE", "cost": 4000, "locked_tiles": 25, "cash_alone_covers": true},
+      "actual_unit_none_delta": 0,
+      "actual_rival_unit_none_delta": 0,
+      "recorded_added_shop": "PIZZA_SHOP",
+      "fixed_replay_action_counterfactual": {
+        "change": "append BUY_LAND to our empty market list; preserve both players' recorded unit actions and rival market action",
+        "our_pre_eod_none": 25,
+        "rival_pre_eod_none": 2,
+        "total_pre_eod_none": 27,
+        "predicted_added_shop": "BAKERY",
+        "stable_total_none_window": [27, 29]
+      }
+    }
+  ]
+}
