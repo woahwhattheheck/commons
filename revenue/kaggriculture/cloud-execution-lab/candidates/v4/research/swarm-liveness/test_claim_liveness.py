@@ -285,6 +285,31 @@ class ClaimLivenessTests(unittest.TestCase):
         rows = load_jsonl(io.StringIO('\n# comment\n{"ts":1,"lane":"L","session":"A","event":"CLAIM"}\n'))
         self.assertEqual(1, len(rows))
 
+    def test_jsonl_duplicate_event_id_key_rejected(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"event_id":"first","event_id":"second"}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'event_id'"):
+            load_jsonl(io.StringIO(payload))
+
+    def test_jsonl_duplicate_canonical_root_key_rejected(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"canonical_root":"main:other/v4",'
+            '"canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4"}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'canonical_root'"):
+            load_jsonl(io.StringIO(payload))
+
+    def test_jsonl_nested_duplicate_key_rejected_recursively(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"metadata":{"source":"slack","source":"github"}}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'source'"):
+            load_jsonl(io.StringIO(payload))
+
     def test_output_is_deterministic_under_lane_input_permutation(self):
         a = self.audit([e(1950, lane="Z"), e(1940, lane="A")])
         b = self.audit([e(1940, lane="A"), e(1950, lane="Z")])
@@ -305,6 +330,21 @@ class ClaimLivenessTests(unittest.TestCase):
         parsed = json.loads(proc.stdout)
         self.assertEqual("titan-v4-claim-liveness/v1", parsed["schema"])
         self.assertEqual("ACTIVE", parsed["lanes"][0]["status"])
+
+    def test_cli_rejects_duplicate_json_object_keys(self):
+        here = os.path.dirname(__file__)
+        payload = (
+            '{"ts":1950,"lane":"L","session":"A","event":"CLAIM",'
+            '"event_id":"first","event_id":"second"}\n'
+        )
+        proc = subprocess.run(
+            [sys.executable, os.path.join(here, "claim_liveness.py"),
+             "--as-of", str(NOW), "--ttl-seconds", "100"],
+            input=payload, text=True, capture_output=True, check=False,
+        )
+        self.assertEqual(2, proc.returncode)
+        self.assertEqual("", proc.stdout)
+        self.assertIn("duplicate JSON object key 'event_id'", proc.stderr)
 
 
 if __name__ == "__main__":
