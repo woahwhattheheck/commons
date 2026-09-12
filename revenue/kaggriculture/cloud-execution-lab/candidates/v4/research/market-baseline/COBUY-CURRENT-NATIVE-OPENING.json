@@ -67,8 +67,18 @@
     }
   ],
   "native_entrypoint_verification": {
-    "apex_agent_step0_post_guard": "PENDING_INDEPENDENT_EXECUTION",
-    "raw_tape_collision_proven": true
+    "apex_actions_artifact": 10030763484,
+    "apex_agent_step0_post_guard": "VERIFIED_WHEAT13_RAW_ROW0_BOTH_SEATS",
+    "official_engine_artifact": 10175943272,
+    "raw_tape_collision_proven": true,
+    "seat0_market_prefix": [
+      ["BUY_PRODUCT", "WHEAT", 13]
+    ],
+    "seat0_row0_exact": true,
+    "seat1_market_prefix": [
+      ["BUY_PRODUCT", "WHEAT", 13]
+    ],
+    "seat1_row0_exact": true
   },
   "schema": "titan-v4-cobuy-current-native-opening-v1",
   "scope": "deterministic step-0 opening only; not a 719-step collision census",
