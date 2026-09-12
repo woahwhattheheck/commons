@@ -33,19 +33,26 @@ def _first(record: dict[str, Any], names: tuple[str, ...]) -> Any:
     raise DataError(f"missing any of fields {names!r}")
 
 
-def _finite_number(value: Any, label: str) -> float:
+def _finite_number(value: Any, label: str) -> int | float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise DataError(f"{label} must be a finite number")
-    try:
-        result = float(value)
-    except (OverflowError, ValueError):
+    if isinstance(value, int):
+        # Preserve exact integer identity for redundant-outcome checks.  The
+        # float conversion is validation only: integers too large for the
+        # analyzer's downstream floating statistics still fail closed.
+        try:
+            finite_probe = float(value)
+        except (OverflowError, ValueError):
+            raise DataError(f"{label} must be finite")
+        if not math.isfinite(finite_probe):
+            raise DataError(f"{label} must be finite")
+        return value
+    if not math.isfinite(value):
         raise DataError(f"{label} must be finite")
-    if not math.isfinite(result):
-        raise DataError(f"{label} must be finite")
-    return result
+    return value
 
 
-def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> float:
+def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> int | float:
     """Return one target-relative margin, rejecting contradictory encodings.
 
     Inputs sometimes carry more than one outcome representation.  A direct
@@ -54,7 +61,7 @@ def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> float:
     prefer the more structured representation without imposing a guessed
     magnitude ceiling on legitimate engine rewards.
     """
-    outcomes: dict[str, float] = {}
+    outcomes: dict[str, int | float] = {}
 
     if "margin" in record:
         outcomes["margin"] = _finite_number(record["margin"], f"record {index} margin")
@@ -80,7 +87,10 @@ def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> float:
 
     first_name, first_value = next(iter(outcomes.items()))
     for name, value in list(outcomes.items())[1:]:
-        if not math.isclose(first_value, value, rel_tol=1e-12, abs_tol=1e-9):
+        # This is a consistency/authentication check, not a numerical model.
+        # A relative tolerance is unsafe without a magnitude bound: at 1e20,
+        # rel_tol=1e-12 would silently accept tens of millions of disagreement.
+        if first_value != value:
             raise DataError(
                 f"record {index}: conflicting outcome representations "
                 f"({first_name}={first_value!r}, {name}={value!r})"
