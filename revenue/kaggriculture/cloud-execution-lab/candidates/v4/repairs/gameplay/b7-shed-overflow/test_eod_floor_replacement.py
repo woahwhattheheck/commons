@@ -22,7 +22,7 @@ def price_fn(item, stock, params=None):
     return quotes.get(item, 2)
 
 
-def obs(*, item="MILK", carry=5, x_shed=10, prefix_item="CARROT", prefix_qty=1, step=23, hands=0):
+def obs(*, item="MILK", carry=5, x_shed=10, step=23, hands=0):
     shed = {key: 0 for key in sorted(B7.CARRYABLE)}
     shed[item] = x_shed
     fill_item = "CARROT" if item != "CARROT" else "TOMATO"
@@ -41,12 +41,9 @@ def obs(*, item="MILK", carry=5, x_shed=10, prefix_item="CARROT", prefix_qty=1, 
     }
 
 
-def act(*, prefix_item="CARROT", prefix_qty=1, hands=0):
-    return {
-        "farmer": ["PASS"],
-        "hands": [["PASS"] for _ in range(hands)],
-        "market": [["SELL", prefix_item, prefix_qty]],
-    }
+def act(*, prefix_item="CARROT", prefix_qty=1, hands=0, empty=False):
+    market = [] if empty else [["SELL", prefix_item, prefix_qty]]
+    return {"farmer": ["PASS"], "hands": [["PASS"] for _ in range(hands)], "market": market}
 
 
 class EodFloorReplacementTest(unittest.TestCase):
@@ -59,6 +56,12 @@ class EodFloorReplacementTest(unittest.TestCase):
         self.assertEqual(decision["cash_gain"], 4)
         self.assertEqual(decision["baseline_final_shed"], decision["candidate_final_shed"])
         self.assertFalse(decision["full_callback_promotion"])
+
+    def test_empty_prefix_is_safe_under_full_price_map_custody(self):
+        decision = B7.analyze(obs(), act(empty=True), CFG, market_price_fn=price_fn)
+        self.assertTrue(decision["admit"], decision)
+        self.assertEqual(decision["proposal"], ["SELL", "MILK", 5])
+        self.assertEqual(decision["prefix_sold"], {})
 
     def test_transform_appends_without_mutating_parent(self):
         observation = obs()
@@ -76,11 +79,12 @@ class EodFloorReplacementTest(unittest.TestCase):
                 self.assertIs(B7.transform(object(), parent, object(), enabled=poison, market_price_fn=price_fn), parent)
         self.assertIs(B7.transform(obs(), parent, CFG, enabled=False, market_price_fn=price_fn), parent)
 
-    def test_install_marker_literal_true_only(self):
+    def test_install_marker_requires_literal_true_and_price_abi(self):
         parent_action = act()
         def parent(_obs, _cfg=None):
             return parent_action
         self.assertTrue(B7.install(parent, market_price_fn=price_fn, enabled=True).b7_eod_floor_replacement_enabled)
+        self.assertFalse(B7.install(parent, market_price_fn=None, enabled=True).b7_eod_floor_replacement_enabled)
         for poison in (False, None, 1, "true", [True]):
             self.assertFalse(B7.install(parent, market_price_fn=price_fn, enabled=poison).b7_eod_floor_replacement_enabled)
 
@@ -100,19 +104,18 @@ class EodFloorReplacementTest(unittest.TestCase):
         parent["farmer"] = ["NORTH"]
         self.assertEqual(B7.analyze(obs(), parent, CFG, market_price_fn=price_fn)["reason"], "unit_mutation")
 
-    def test_rejects_non_sell_or_empty_prefix(self):
+    def test_rejects_non_sell_prefix(self):
         parent = act()
         parent["market"] = [["BUY_SEED", "WHEAT", 1]]
         self.assertEqual(B7.analyze(obs(), parent, CFG, market_price_fn=price_fn)["reason"], "market_prefix_or_slot")
-        parent["market"] = []
-        self.assertEqual(B7.analyze(obs(), parent, CFG, market_price_fn=price_fn)["reason"], "market_prefix_or_slot")
 
-    def test_effective_market_cap_minimum_one_and_full_slot(self):
+    def test_effective_market_cap_minimum_one(self):
         cfg = dict(CFG)
         cfg["maxMarketOrdersPerTurn"] = 1
         self.assertEqual(B7.analyze(obs(), act(), cfg, market_price_fn=price_fn)["reason"], "market_prefix_or_slot")
         cfg["maxMarketOrdersPerTurn"] = 0
-        self.assertEqual(B7.analyze(obs(), act(), cfg, market_price_fn=price_fn)["reason"], "market_prefix_or_slot")
+        empty_decision = B7.analyze(obs(), act(empty=True), cfg, market_price_fn=price_fn)
+        self.assertTrue(empty_decision["admit"], empty_decision)
 
     def test_rejects_mixed_discard(self):
         observation = obs(carry=5, hands=1)
@@ -135,9 +138,7 @@ class EodFloorReplacementTest(unittest.TestCase):
 
     def test_rejects_insufficient_same_product_stock(self):
         observation = obs(x_shed=3, carry=5)
-        # Keep total shed full after reducing MILK stock.
-        fill = "CARROT"
-        observation["private"]["shed"][fill] = 97
+        observation["private"]["shed"]["CARROT"] = 97
         decision = B7.analyze(observation, act(), CFG, market_price_fn=price_fn)
         self.assertEqual(decision["reason"], "insufficient_same_product_shed_stock")
 
@@ -164,14 +165,13 @@ class EodFloorReplacementTest(unittest.TestCase):
         parent = act(prefix_item="MILK", prefix_qty=1)
         decision = B7.analyze(observation, parent, CFG, market_price_fn=price_fn)
         self.assertTrue(decision["admit"], decision)
-        # Prefix frees one slot and removes one MILK; four carried MILK are still discarded.
         self.assertEqual(decision["proposal"], ["SELL", "MILK", 4])
 
     def test_price_abi_exception_fails_closed(self):
         def broken(*_args, **_kwargs):
             raise RuntimeError("nope")
         decision = B7.analyze(obs(), act(), CFG, market_price_fn=broken)
-        self.assertEqual(decision["reason"], "market_price_abi")
+        self.assertEqual(decision["reason"], "market_price_map_drift")
 
 
 if __name__ == "__main__":
