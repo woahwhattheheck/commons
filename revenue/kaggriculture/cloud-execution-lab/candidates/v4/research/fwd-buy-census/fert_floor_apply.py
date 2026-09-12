@@ -13,15 +13,13 @@ core of the historical claim:
 Two constructed witnesses are retained deliberately:
 
 * ``run_pair`` is the minimal one-water CARROT proof (+1 possible unit).
-* ``run_amortized_pair`` executes a source-reachable MELON survival prefix from
-  day 4 through the day-10 fertilizer window, then holds that crop through all
-  three fertilizer-active days. One FERT plus the same two custody/application
-  callbacks can therefore boost three common WATER callbacks while every
-  intervening EOD transition is executed by the pinned interpreter.
+* ``run_amortized_pair`` executes the pinned fixture continuously from step 90,
+  then source-executes MELON planting, survival, fertilizer and first legal
+  harvest through the official interpreter.
 
 Both deliberately charge the real market buy and use the real interpreter for
-every custody/action transition. Positive constructed cash is mechanism evidence,
-never field reachability or activation authority.
+every transition claimed by the certificate. Positive constructed cash is
+mechanism evidence, never field reachability or activation authority.
 """
 from __future__ import annotations
 
@@ -33,7 +31,7 @@ from typing import Any
 
 import opportunity_cost as oc
 
-SCHEMA = "titan.v4.gemini-fert-floor-apply/v3"
+SCHEMA = "titan.v4.gemini-fert-floor-apply/v4"
 ITEM = "FERTILIZER"
 CROP = "CARROT"
 AMORTIZED_CROP = "MELON"
@@ -50,9 +48,6 @@ def floor_buy_threshold(engine: Any) -> int:
     """Lowest *pre-buy* FERT inventory whose one-unit post-buy quote is $1."""
     params = engine.MARKET_PARAMS[ITEM]
     start = int(params["I0"])
-    # The current source is monotone linear above I0. Keep a bounded search so a
-    # future source drift fails visibly instead of silently importing an algebraic
-    # assumption about shape/rounding.
     for inventory in range(start, start + 100000):
         quote = engine.market_price(ITEM, inventory - 1)
         if quote == engine.PRICE_FLOOR:
@@ -61,8 +56,8 @@ def floor_buy_threshold(engine: Any) -> int:
 
 
 def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
-             crop: str = CROP, yield_units: int = 1, plant_day: int = 0,
-             consecutive_unwatered: int = 0):
+             crop: str = CROP, yield_units: int = 1):
+    """Short constructed crop fixture used only by the minimal witness."""
     if type(fert_inventory) is not int or fert_inventory < 0:
         raise ValueError("fert_inventory must be a nonnegative exact int")
     if type(cash) is not int or cash < 0:
@@ -71,21 +66,36 @@ def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
         raise ValueError("unknown crop")
     if type(yield_units) is not int or yield_units < 0:
         raise ValueError("yield_units must be a nonnegative exact int")
-    if type(plant_day) is not int or plant_day < 0:
-        raise ValueError("plant_day must be a nonnegative exact int")
-    if type(consecutive_unwatered) is not int or consecutive_unwatered < 0:
-        raise ValueError("consecutive_unwatered must be a nonnegative exact int")
     state, env = oc.fixture(engine, seat, cash=cash, wheat_inventory=10000, shops=0)
     obs = state[seat].observation
     obs.market["inventory"][ITEM] = fert_inventory
     engine._refresh_prices(obs.market)
-
     farm = obs.farms[seat]
     x, y = farm["farmer"]
-    tile = engine._new_plant(crop, plant_day, env.configuration.turnsPerDay)
-    tile.update(yield_units=yield_units, consecutive_unwatered=consecutive_unwatered,
+    tile = engine._new_plant(crop, 0, env.configuration.turnsPerDay)
+    tile.update(yield_units=yield_units, consecutive_unwatered=0,
                 watered_today=False, fertilized_until_day=-1)
     farm["tiles"][y][x] = tile
+    return state, env
+
+
+def _unplanted_fixture(engine: Any, seat: int, *, fert_inventory: int,
+                       cash: int = 3000, crop: str = AMORTIZED_CROP):
+    """Legal empty-tile + one-seed prestate at pinned fixture step 90."""
+    if type(fert_inventory) is not int or fert_inventory < 0:
+        raise ValueError("fert_inventory must be a nonnegative exact int")
+    if type(cash) is not int or cash < 0:
+        raise ValueError("cash must be a nonnegative exact int")
+    if crop not in engine.CROPS:
+        raise ValueError("unknown crop")
+    state, env = oc.fixture(engine, seat, cash=cash, wheat_inventory=10000, shops=0)
+    obs = state[seat].observation
+    obs.market["inventory"][ITEM] = fert_inventory
+    engine._refresh_prices(obs.market)
+    farm = obs.farms[seat]
+    x, y = farm["farmer"]
+    farm["tiles"][y][x] = None
+    obs.private["seeds"][crop] = 1
     return state, env
 
 
@@ -102,6 +112,7 @@ def _tick(engine, state, env, seat, step, own_action):
     row["fert_market_inventory"] = obs.market["inventory"][ITEM]
     row["fert_market_price"] = obs.market["prices"][ITEM]
     row["tile"] = _tile_snapshot(state, seat)
+    row["seeds"] = copy.deepcopy(obs.private["seeds"])
     return row
 
 
@@ -196,41 +207,43 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
 def run_amortized_pair(engine: Any, *, seat: int = 0,
                        fert_inventory: int | None = None,
                        cash: int = 3000) -> dict:
-    """Use one FERT across a reachable three-day MELON WATER window.
+    """Use one FERT across a continuous source-executed MELON trajectory.
 
-    The fixture begins with a newly planted day-4 MELON, then executes the
-    shared survival prefix through the official interpreter: WATER on days 4,
-    6 and 8 keeps the crop live while all three calls remain before MELON's
-    yield window (age < 6), so the pre-FERT yield at the end of day 9 is still
-    zero. One FERTILIZE on day 10 is then active through day 12 inclusive.
-    Candidate and control share all survival and production WATER callbacks;
-    only BUY/PICKUP/FERTILIZE differ.
+    The pinned fixture itself starts at step 90/day 3/hour 18. Both arms execute
+    PASS at steps 90..95, including EOD95, before source-executing PLANT on day 4.
+    Shared WATER callbacks on days 4, 6 and 8 keep the crop live. MELON is
+    non-ongoing, so the source constructor contributes its real initial yield
+    unit. Candidate then adds BUY/PICKUP/FERTILIZE; both arms share all three
+    day-10..12 production WATER callbacks and wait to the first legal HARVEST on
+    day 14.
     """
     if type(seat) is not int or seat not in (0, 1):
         raise ValueError("seat must be 0 or 1")
     if fert_inventory is None:
         fert_inventory = floor_buy_threshold(engine)
+    fixture_step = 90
     plant_day = 4
-    start_step = plant_day * 24
+    plant_step = plant_day * 24
     prefert_step = 10 * 24 - 1
-    world = _fixture(
+    world = _unplanted_fixture(
         engine, seat, fert_inventory=fert_inventory, cash=cash,
-        crop=AMORTIZED_CROP, yield_units=0, plant_day=plant_day,
-        consecutive_unwatered=1,
+        crop=AMORTIZED_CROP,
     )
     result = {}
-    survival_water_steps = {4 * 24, 6 * 24, 8 * 24}
+    survival_water_steps = {plant_step + 1, 6 * 24, 8 * 24}
     water_steps = {10 * 24 + 3, 11 * 24, 12 * 24}
-    harvest_step = 12 * 24 + 1
-    liquidation_step = 12 * 24 + 2
+    harvest_step = (plant_day + engine.CROPS[AMORTIZED_CROP]["first_yield_day"]) * 24
+    liquidation_step = harvest_step + 1
     for arm in ("control", "floor_apply"):
         state, env = copy.deepcopy(world)
         trace = []
-        for step in range(start_step, liquidation_step + 1):
+        for step in range(fixture_step, liquidation_step + 1):
             market = []
             if arm == "floor_apply" and step == 10 * 24:
                 market = [["BUY_PRODUCT", ITEM, 1]]
-            if arm == "floor_apply" and step == 10 * 24 + 1:
+            if step == plant_step:
+                row = ["PLANT", AMORTIZED_CROP]
+            elif arm == "floor_apply" and step == 10 * 24 + 1:
                 row = ["PICKUP", ITEM]
             elif arm == "floor_apply" and step == 10 * 24 + 2:
                 row = ["FERTILIZE"]
@@ -262,7 +275,10 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
     cert.update({
         "witness": "AMORTIZED_THREE_DAY_MELON",
         "crop": AMORTIZED_CROP,
+        "fixture_step": fixture_step,
         "plant_day": plant_day,
+        "plant_step": plant_step,
+        "source_initial_yield_units": 1,
         "candidate_harvest_units": candidate_harvest,
         "control_harvest_units": control_harvest,
         "incremental_harvest_units": candidate_harvest - control_harvest,
@@ -273,6 +289,8 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
         "prefert_candidate_tile": prefert_candidate,
         "prefert_control_tile": prefert_control,
         "market_buy_step": 10 * 24,
+        "harvest_step": harvest_step,
+        "liquidation_step": liquidation_step,
         "extra_unit_callbacks_per_incremental_unit": (
             2 / (candidate_harvest - control_harvest)
             if candidate_harvest > control_harvest else None
@@ -299,9 +317,9 @@ def run_panel(engine: Any) -> dict:
         "minimal_cells": rows,
         "amortized_floor_cells": amortized,
         "limits": [
-            "Constructed idle-callback fixtures; no natural/current-native reachability claim",
-            "Two extra unit callbacks are real opportunity cost and are not assigned zero field value",
-            "The amortized witness executes its shared survival prefix and reuses the same PICKUP/FERTILIZE cost across three common WATER days",
+            "Constructed idle-callback economics; no natural/current-native engagement claim",
+            "The amortized witness executes continuously from pinned fixture step 90 through legal harvest/liquidation",
+            "Two candidate-only unit callbacks are real opportunity cost and are not assigned zero field value",
             "Rival is PASS; no opponent-robustness claim",
             "Positive cash in these fixtures is mechanism evidence only, not promotion authority",
         ],
