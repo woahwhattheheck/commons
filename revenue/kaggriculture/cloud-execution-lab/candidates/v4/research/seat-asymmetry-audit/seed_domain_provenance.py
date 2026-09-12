@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
+import types
 import json
 from pathlib import Path
 from typing import Any, Iterable, Sequence
@@ -26,6 +26,7 @@ FALLBACK_STOP_EXCLUSIVE = 2**31
 HERE = Path(__file__).resolve()
 LAB_ROOT = HERE.parents[4] if len(HERE.parents) > 4 else HERE.parent
 DEFAULT_UTILS = LAB_ROOT / "reference" / "evaluator" / "upstream" / "utils.py"
+DEFAULT_ENGINE = LAB_ROOT / "reference" / "engine" / "kaggriculture.py"
 DEFAULT_ENGINE_CONFIG = LAB_ROOT / "reference" / "engine" / "kaggriculture.json"
 DEFAULT_EVALUATOR = LAB_ROOT / "reference" / "evaluator" / "evaluate.py"
 DEFAULT_SEEDSTREAM = HERE.with_name("seed_stream_identifiability.py")
@@ -66,12 +67,14 @@ def _strict_json(raw: bytes, label: str) -> Any:
 def authenticate_source_contract(
     *,
     utils_path: Path = DEFAULT_UTILS,
+    engine_path: Path = DEFAULT_ENGINE,
     engine_config_path: Path = DEFAULT_ENGINE_CONFIG,
     evaluator_path: Path = DEFAULT_EVALUATOR,
     seedstream_path: Path = DEFAULT_SEEDSTREAM,
 ) -> dict:
     """Authenticate the exact pinned provenance closure and derive its theorem."""
     utils_raw, utils_blob = _read_bound(Path(utils_path), UTILS_GIT_BLOB, "upstream utils")
+    _, engine_blob = _read_bound(Path(engine_path), ENGINE_GIT_BLOB, "official engine")
     cfg_raw, cfg_blob = _read_bound(Path(engine_config_path), ENGINE_CONFIG_GIT_BLOB, "engine config")
     evaluator_raw, evaluator_blob = _read_bound(Path(evaluator_path), EVALUATOR_GIT_BLOB, "offline evaluator")
     _, seedstream_blob = _read_bound(Path(seedstream_path), SEEDSTREAM_GIT_BLOB, "merged SEEDSTREAM")
@@ -116,7 +119,7 @@ def authenticate_source_contract(
             "utils": utils_blob,
             "engine_config": cfg_blob,
             "evaluator": evaluator_blob,
-            "engine": ENGINE_GIT_BLOB,
+            "engine": engine_blob,
             "seedstream": seedstream_blob,
         },
         "precedence": ["preserved_env_info", "explicit_config", "fallback"],
@@ -208,12 +211,14 @@ def bind_panel_manifest(path: Path, expected_sha256: str) -> dict:
 
 
 def _load_seedstream(path: Path):
-    _read_bound(Path(path), SEEDSTREAM_GIT_BLOB, "merged SEEDSTREAM")
-    spec = importlib.util.spec_from_file_location("titan_v4_seedstream_bound", path)
-    if spec is None or spec.loader is None:
-        raise ProvenanceError("cannot load authenticated SEEDSTREAM")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    raw, _ = _read_bound(Path(path), SEEDSTREAM_GIT_BLOB, "merged SEEDSTREAM")
+    module = types.ModuleType("titan_v4_seedstream_bound")
+    module.__file__ = str(path)
+    try:
+        code = compile(raw, str(path), "exec")
+        exec(code, module.__dict__)
+    except Exception as exc:
+        raise ProvenanceError(f"cannot execute captured SEEDSTREAM bytes: {exc}") from exc
     return module
 
 
@@ -337,6 +342,7 @@ def write_manifest(path: Path, seeds: Iterable[int]) -> str:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--utils", type=Path, default=DEFAULT_UTILS)
+    parser.add_argument("--engine", type=Path, default=DEFAULT_ENGINE)
     parser.add_argument("--engine-config", type=Path, default=DEFAULT_ENGINE_CONFIG)
     parser.add_argument("--evaluator", type=Path, default=DEFAULT_EVALUATOR)
     parser.add_argument("--seedstream", type=Path, default=DEFAULT_SEEDSTREAM)
@@ -345,6 +351,7 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
     report = authenticate_source_contract(
         utils_path=args.utils,
+        engine_path=args.engine,
         engine_config_path=args.engine_config,
         evaluator_path=args.evaluator,
         seedstream_path=args.seedstream,
