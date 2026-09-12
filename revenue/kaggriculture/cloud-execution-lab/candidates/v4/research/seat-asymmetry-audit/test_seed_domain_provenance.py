@@ -175,10 +175,42 @@ def test_panel_consensus_exact_after_unique():
     finally: td.cleanup()
 
 
+def test_seedstream_exec_uses_captured_bytes_without_reopen():
+    td = tempfile.TemporaryDirectory()
+    path = Path(td.name) / "seedstream.py"
+    path.write_bytes((HERE / "seed_stream_identifiability.py").read_bytes())
+    original = MOD._read_bound
+    try:
+        def capture_then_poison(target, expected, label):
+            raw, blob = original(target, expected, label)
+            Path(target).write_text("raise RuntimeError('reopened poisoned path')\n")
+            return raw, blob
+        MOD._read_bound = capture_then_poison
+        loaded = MOD._load_seedstream(path)
+        check(callable(loaded.signature))
+        check(callable(loaded.consensus_forecast))
+    finally:
+        MOD._read_bound = original
+        td.cleanup()
+
+
+def test_source_contract_rejects_mutated_engine_if_checkout_present():
+    paths = [MOD.DEFAULT_UTILS, MOD.DEFAULT_ENGINE, MOD.DEFAULT_ENGINE_CONFIG, MOD.DEFAULT_EVALUATOR, MOD.DEFAULT_SEEDSTREAM]
+    if all(path.exists() for path in paths):
+        td = tempfile.TemporaryDirectory()
+        bad = Path(td.name) / "kaggriculture.py"
+        try:
+            bad.write_bytes(MOD.DEFAULT_ENGINE.read_bytes() + b"\n# drift\n")
+            raises("official engine git blob mismatch", MOD.authenticate_source_contract, engine_path=bad)
+        finally:
+            td.cleanup()
+
+
 def test_source_contract_if_checkout_present():
-    paths = [MOD.DEFAULT_UTILS, MOD.DEFAULT_ENGINE_CONFIG, MOD.DEFAULT_EVALUATOR, MOD.DEFAULT_SEEDSTREAM]
+    paths = [MOD.DEFAULT_UTILS, MOD.DEFAULT_ENGINE, MOD.DEFAULT_ENGINE_CONFIG, MOD.DEFAULT_EVALUATOR, MOD.DEFAULT_SEEDSTREAM]
     if all(path.exists() for path in paths):
         report = MOD.authenticate_source_contract()
+        check(report["source_blobs"]["engine"] == MOD.ENGINE_GIT_BLOB)
         check(report["implicit_fallback"]["start"] == 0)
         check(report["implicit_fallback"]["stop_exclusive"] == 2**31)
         check(report["explicit_config"]["complete_by_pinned_source"] is False)
