@@ -1,0 +1,310 @@
+--- a/own_value_objective.py
++++ b/own_value_objective.py
+@@ -9,7 +9,11 @@
+ 
+ * strictly improves TITAN's own value over both the authored reference and the
+   incumbent-selected plan; and
+-* remains non-regressive in true relative value versus the authored reference.
++* remains non-regressive in true relative value versus the incumbent and
++  strictly improves true relative value versus the authored reference.
++
++Every admitted report is rebuilt in the incumbent true-relative score domain
++before it can reach cross-product ranking or joint-plan composition.
+ 
+ All other calls return the first incumbent result object unchanged.  The
+ canonical source file is never rewritten.  ``MarketPath.score`` is contextually
+@@ -28,7 +32,7 @@
+ from pathlib import Path
+ from typing import Any, Mapping, Sequence
+ 
+-VERSION = "titan-v3-state-conditioned-safe-own-v1"
++VERSION = "titan-v3-state-conditioned-safe-own-v2-score-domain"
+ EXPECTED_SELECTED_SELL_CORE_BLOB = "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3"
+ EXPECTED_SCORE_SIGNATURE = "(self, plan, quantity, rival, alignment, terminal=False)"
+ EXPECTED_OPTIMIZE_SIGNATURE = (
+@@ -148,7 +152,7 @@
+     original_score: Any,
+     arguments: Mapping[str, Any],
+     plan: tuple[tuple[int, int], ...],
+-) -> dict[str, dict[str, float]]:
++) -> dict[str, dict[str, Any]]:
+     dates = arguments["dates"]
+     if not isinstance(dates, Sequence) or isinstance(dates, (str, bytes)) or not dates:
+         raise ObjectiveScoreError("dates must be a nonempty sequence")
+@@ -165,7 +169,7 @@
+         now,
+         end,
+     )
+-    result: dict[str, dict[str, float]] = {}
++    result: dict[str, dict[str, Any]] = {}
+     for name, rival, alignment in _scenario_definitions(
+         now=now, end=end, rival_quantity=arguments["rival_quantity"]
+     ):
+@@ -177,12 +181,17 @@
+             alignment,
+             end == arguments["last"],
+         )
+-        relative, own_cash, rival_cash, _remaining = _score_fields(raw, name)
++        relative, own_cash, rival_cash, remaining = _score_fields(raw, name)
++        if type(remaining) is not int or remaining < 0:
++            raise ObjectiveScoreError(f"{name}.carry_units must be a nonnegative integer")
+         result[name] = {
+-            "relative_value": relative,
++            # Preserve the scorer's validated numeric representation for outward
++            # compatibility; use the float projections only for comparisons.
++            "relative_value": raw[0],
+             "own_value": relative + rival_cash,
+-            "own_receipts": own_cash,
+-            "rival_receipts": rival_cash,
++            "own_receipts": raw[1],
++            "rival_receipts": raw[2],
++            "carry_units": remaining,
+         }
+     return result
+ 
+@@ -215,22 +224,22 @@
+     reference: Mapping[str, Mapping[str, float]],
+     control: Mapping[str, Mapping[str, float]],
+     candidate: Mapping[str, Mapping[str, float]],
+-) -> tuple[bool, str, dict[str, dict[str, float]]]:
++) -> tuple[bool, str, dict[str, dict[str, Any]]]:
+     names = tuple(reference)
+     if not names or tuple(control) != names or tuple(candidate) != names:
+         raise ObjectiveScoreError("scenario grids differ")
+-    metrics: dict[str, dict[str, float]] = {}
++    metrics: dict[str, dict[str, Any]] = {}
+     for name in names:
+         ref = reference[name]
+         ctl = control[name]
+         cand = candidate[name]
+         values = (
+-            float(ref["own_value"]),
+-            float(ref["relative_value"]),
+-            float(ctl["own_value"]),
+-            float(ctl["relative_value"]),
+-            float(cand["own_value"]),
+-            float(cand["relative_value"]),
++            _finite_real(ref["own_value"], f"{name}.reference.own_value"),
++            _finite_real(ref["relative_value"], f"{name}.reference.relative_value"),
++            _finite_real(ctl["own_value"], f"{name}.control.own_value"),
++            _finite_real(ctl["relative_value"], f"{name}.control.relative_value"),
++            _finite_real(cand["own_value"], f"{name}.candidate.own_value"),
++            _finite_real(cand["relative_value"], f"{name}.candidate.relative_value"),
+         )
+         if not all(math.isfinite(value) for value in values):
+             raise ObjectiveScoreError(f"scenario {name!r} contains non-finite values")
+@@ -246,9 +255,161 @@
+             return False, f"{name}:own_not_strictly_above_reference", metrics
+         if row["own_gain_vs_control"] <= tolerance:
+             return False, f"{name}:own_not_strictly_above_control", metrics
+-        if row["relative_gain_vs_reference"] < -tolerance:
+-            return False, f"{name}:relative_below_reference", metrics
+-    return True, "safe_own_frontier_dominates", metrics
++        if row["relative_gain_vs_reference"] <= tolerance:
++            return False, f"{name}:relative_not_strictly_above_reference", metrics
++        if row["relative_gain_vs_control"] < -tolerance:
++            return False, f"{name}:relative_below_control", metrics
++        def outcome(value: float) -> int:
++            if value > tolerance:
++                return 1
++            if value < -tolerance:
++                return -1
++            return 0
++        row["control_outcome"] = outcome(values[3])
++        row["candidate_outcome"] = outcome(values[5])
++        if row["candidate_outcome"] < row["control_outcome"]:
++            return False, f"{name}:modeled_outcome_regression", metrics
++    return True, "safe_own_pareto_dominates_incumbent", metrics
++
++
++EXPECTED_INFO_KEYS = frozenset({
++    "item", "quantity", "rival_scenario_quantity", "reference", "plan",
++    "minimum_now", "scenarios", "worst_relative_gain", "forced_feasibility",
++    "feasible", "plans_evaluated", "acceptance_rule", "accepted",
++    "acceptance_score", "scenario_weights", "weighted_expected_gain",
++    "downside_bound", "reference_max_regret", "max_regret", "scenario_regrets",
++})
++
++
++def _normalized_weights(info: Mapping[str, Any], names: tuple[str, ...]) -> dict[str, float]:
++    raw = info.get("scenario_weights")
++    if not isinstance(raw, Mapping) or tuple(raw) != names:
++        raise ObjectiveScoreError("incumbent scenario_weights do not match scenario grid")
++    weights = {name: _finite_real(raw[name], f"scenario_weights.{name}") for name in names}
++    if any(weight < 0.0 for weight in weights.values()):
++        raise ObjectiveScoreError("scenario weights must be nonnegative")
++    total = sum(weights.values())
++    if total <= 0.0:
++        raise ObjectiveScoreError("scenario weights must have positive mass")
++    tolerance = _tolerance(total, 1.0)
++    if abs(total - 1.0) > tolerance:
++        raise ObjectiveScoreError("scenario weights must already be normalized")
++    return weights
++
++
++def _normalize_selected_info(
++    *,
++    control_info: Mapping[str, Any],
++    candidate_info: Mapping[str, Any],
++    reference_plan: tuple[tuple[int, int], ...],
++    control_plan: tuple[tuple[int, int], ...],
++    candidate_plan: tuple[tuple[int, int], ...],
++    reference: Mapping[str, Mapping[str, Any]],
++    control: Mapping[str, Mapping[str, Any]],
++    candidate: Mapping[str, Mapping[str, Any]],
++) -> dict[str, Any]:
++    """Rebuild an admitted candidate report entirely in the incumbent score domain.
++
++    The λ=0 optimizer's report is intentionally not used as the outward base: its
++    score-derived fields are own-value numbers.  Starting from the λ=1 incumbent
++    preserves every unrelated schema field while each score-bearing field is
++    recomputed from the original scorer for the selected candidate plan.
++    """
++    if set(control_info) != EXPECTED_INFO_KEYS or set(candidate_info) != EXPECTED_INFO_KEYS:
++        raise ObjectiveScoreError("optimizer info schema drift")
++    if _canonical_plan(control_info.get("reference"), "control.info.reference") != reference_plan:
++        raise ObjectiveScoreError("control info reference does not match authored reference")
++    if _canonical_plan(candidate_info.get("reference"), "candidate.info.reference") != reference_plan:
++        raise ObjectiveScoreError("candidate info reference does not match authored reference")
++    if _canonical_plan(control_info.get("plan"), "control.info.plan") != control_plan:
++        raise ObjectiveScoreError("control info plan does not match returned plan")
++    if _canonical_plan(candidate_info.get("plan"), "candidate.info.plan") != candidate_plan:
++        raise ObjectiveScoreError("candidate info plan does not match returned plan")
++    for field in (
++        "item", "quantity", "rival_scenario_quantity", "minimum_now",
++        "plans_evaluated", "acceptance_rule",
++    ):
++        if control_info.get(field) != candidate_info.get(field):
++            raise ObjectiveScoreError(f"optimizer metadata drift at {field}")
++    for field in ("downside_bound", "reference_max_regret", "max_regret", "scenario_regrets"):
++        if control_info.get(field) is not None or candidate_info.get(field) is not None:
++            raise ObjectiveScoreError(f"strict optimizer emitted unexpected {field}")
++    names = tuple(reference)
++    if not names or tuple(control) != names or tuple(candidate) != names:
++        raise ObjectiveScoreError("scenario grids differ during normalization")
++    for label, info in (("control", control_info), ("candidate", candidate_info)):
++        scenarios = info.get("scenarios")
++        if not isinstance(scenarios, Mapping) or tuple(scenarios) != names:
++            raise ObjectiveScoreError(f"{label}.scenarios grid drift")
++    weights = _normalized_weights(control_info, names)
++    candidate_weights = _normalized_weights(candidate_info, names)
++    for name in names:
++        tolerance = _tolerance(weights[name], candidate_weights[name])
++        if abs(weights[name] - candidate_weights[name]) > tolerance:
++            raise ObjectiveScoreError(f"candidate scenario weight drift at {name}")
++    normalized = copy.deepcopy(dict(control_info))
++    normalized["plan"] = list(candidate_plan)
++    normalized_scenarios: dict[str, dict[str, Any]] = {}
++    deltas: list[float] = []
++    for name in names:
++        ref = reference[name]
++        ctl = control[name]
++        cand = candidate[name]
++        # Revalidate the Pareto relation at the schema boundary.  This makes the
++        # normalizer independently fail closed even if a caller bypasses admission.
++        admitted, reason, _metrics = _admit_candidate(
++            reference={name: ref}, control={name: ctl}, candidate={name: cand}
++        )
++        if not admitted:
++            raise ObjectiveScoreError(f"normalization admission mismatch: {reason}")
++        reference_relative_raw = ref["relative_value"]
++        relative_raw = cand["relative_value"]
++        own_receipts_raw = cand["own_receipts"]
++        rival_receipts_raw = cand["rival_receipts"]
++        reference_relative = _finite_real(
++            reference_relative_raw, f"{name}.reference_relative_value"
++        )
++        relative = _finite_real(relative_raw, f"{name}.relative_value")
++        _finite_real(own_receipts_raw, f"{name}.own_receipts")
++        rival_receipts = _finite_real(rival_receipts_raw, f"{name}.rival_receipts")
++        carry_units = cand.get("carry_units")
++        if type(carry_units) is not int or carry_units < 0:
++            raise ObjectiveScoreError(f"{name}.carry_units must be a nonnegative integer")
++        own_value = _finite_real(cand["own_value"], f"{name}.own_value")
++        tolerance = _tolerance(relative, rival_receipts, own_value)
++        if abs((relative + rival_receipts) - own_value) > tolerance:
++            raise ObjectiveScoreError(f"{name}.own/relative/rival identity drift")
++        normalized_scenarios[name] = {
++            "reference_relative_value": reference_relative_raw,
++            "relative_value": relative_raw,
++            "own_receipts": own_receipts_raw,
++            "rival_receipts": rival_receipts_raw,
++            "carry_units": carry_units,
++        }
++        deltas.append(relative - reference_relative)
++    worst = round(min(deltas), 8)
++    tolerance = _tolerance(*deltas)
++    if worst <= tolerance:
++        raise ObjectiveScoreError("normalized strict acceptance is not positive")
++    normalized.update({
++        "scenarios": normalized_scenarios,
++        "worst_relative_gain": worst,
++        "forced_feasibility": False,
++        "feasible": True,
++        "acceptance_rule": "strict",
++        "accepted": True,
++        "acceptance_score": worst,
++        "scenario_weights": weights,
++        "weighted_expected_gain": sum(
++            delta * weights[name] for name, delta in zip(names, deltas)
++        ),
++        "downside_bound": None,
++        "reference_max_regret": None,
++        "max_regret": None,
++        "scenario_regrets": None,
++        "safe_own_score_domain": "true_relative_value",
++    })
++    return normalized
+ 
+ 
+ def _validate_binding(
+@@ -413,6 +574,22 @@
+                 setattr(module, "__titan_safe_own_last_decision__", decision)
+                 return control
+ 
++            selected_info: dict[str, Any] | None = None
++            if admitted:
++                try:
++                    selected_info = _normalize_selected_info(
++                        control_info=control_info,
++                        candidate_info=candidate_info,
++                        reference_plan=reference_plan,
++                        control_plan=control_plan,
++                        candidate_plan=candidate_plan,
++                        reference=reference_scores,
++                        control=control_scores,
++                        candidate=candidate_scores,
++                    )
++                except (ObjectiveScoreError, KeyError, TypeError, ValueError) as exc:
++                    admitted = False
++                    reason = f"normalization_invalid:{type(exc).__name__}:{exc}"
+             decision = {
+                 "version": VERSION,
+                 "selected": admitted,
+@@ -422,13 +599,13 @@
+                 "candidate_plan": [list(row) for row in candidate_plan],
+                 "scenarios": metrics,
+                 "candidate_objective": "own_value",
+-                "safety_constraint": "true_relative_value >= authored_reference",
++                "outward_score_domain": "true_relative_value",
++                "safety_constraint": "true_relative_value >= incumbent and modeled outcome nonregression",
+                 "own_constraint": "candidate_own_value > control_and_reference",
+             }
+             setattr(module, "__titan_safe_own_last_decision__", copy.deepcopy(decision))
+-            if not admitted:
++            if not admitted or selected_info is None:
+                 return control
+-            selected_info = copy.deepcopy(candidate_info)
+             selected_info["safe_own_selector"] = decision
+             return candidate_plan, selected_info
+         finally:
+@@ -451,7 +628,8 @@
+         "orchestration_field": "selected_sell_core.optimize_lot",
+         "incumbent_objective": "own_value - rival_receipts",
+         "candidate_objective": "own_value",
+-        "selection": "candidate iff own dominates control/reference and true relative is nonnegative vs reference in every canonical scenario",
++        "selection": "candidate iff own dominates control/reference and true relative is nonregressive vs incumbent with strict reference gain in every canonical scenario",
++        "outward_score_domain": "true_relative_value",
+         "candidate_family_changed": False,
+         "scenario_model_changed": False,
+         "canonical_files_modified": False,

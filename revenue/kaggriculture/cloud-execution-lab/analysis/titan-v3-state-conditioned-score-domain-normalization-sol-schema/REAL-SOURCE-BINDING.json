@@ -1,0 +1,16 @@
+{
+  "binding_result": "PASS",
+  "canonical_files_modified": false,
+  "operation": "TITAN-V3-STATE-CONDITIONED-SCORE-DOMAIN-NORMALIZATION-20260910-01",
+  "optimize_signature": "(*, item, quantity, inventory, params, shops, config, now, dates, reference, rival_quantity, minimum_now=0, capacity_ok=None, last=718)",
+  "outward_score_domain": "true_relative_value",
+  "overlay_sha256": "b0674f21b8d0db25f461db413eeaffeb6046f3aec61b356e45d7e0bbda0dd94d",
+  "overlay_version": "titan-v3-state-conditioned-safe-own-v2-score-domain",
+  "schema_version": 1,
+  "score_signature": "(self, plan, quantity, rival, alignment, terminal=False)",
+  "selected_sell_core_git_blob_actual": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+  "selected_sell_core_git_blob_expected": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+  "selected_sell_core_sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846",
+  "source_artifact_id": 10171987290,
+  "source_artifact_zip_sha256": "d6269c6d5f7b974e5b22f01486e99973fa9a73285306dcb964ed617bc476b2ae"
+}
