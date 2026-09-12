@@ -30,6 +30,11 @@ SOURCES = {
     **{name: name for name in STATIC if name != "seed_retry.py"},
     "seed_retry.py": "../cloud-committed-seed-retry/seed_retry.py",
 }
+RELEASE = {
+    "release": "TITAN",
+    "upstream_snapshot": "fixture-upstream",
+    "components": [],
+}
 INJECTED = "reference/titan-current/injected.py"
 INJECTED_BYTES = b"INJECTED=1\n"
 
@@ -59,6 +64,12 @@ class UntrackedAdditionFreshnessTest(unittest.TestCase):
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
 
+        release_path = self.live / fresh.RELEASE_METADATA
+        release_path.parent.mkdir(parents=True, exist_ok=True)
+        release_path.write_text(
+            json.dumps(RELEASE, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
         (self.live / "build_integrated.py").write_text(
             "from pathlib import Path\n"
             "ROOT=Path(__file__).resolve().parent\n"
@@ -111,7 +122,14 @@ class UntrackedAdditionFreshnessTest(unittest.TestCase):
             }
             for name, data in package.items()
         }
-        source = (json.dumps({"runtime": runtime}, sort_keys=True) + "\n").encode()
+        manifest = dict(RELEASE)
+        manifest.update(
+            entrypoint="main.py::agent",
+            config="TITAN-CONFIG.json",
+            default=json.loads(CORE["TITAN-CONFIG.json"].decode("utf-8")),
+            runtime=runtime,
+        )
+        source = (json.dumps(manifest, sort_keys=True) + "\n").encode()
         path = self.root / ("with-injected.tar.gz" if include_injected else "without-injected.tar.gz")
         with tarfile.open(path, "w:gz") as tf:
             for name, data in package.items():
