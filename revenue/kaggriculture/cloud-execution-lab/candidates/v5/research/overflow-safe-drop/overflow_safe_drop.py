@@ -32,10 +32,6 @@ def _plain_nonnegative(value: Any) -> bool:
     return type(value) is int and value >= 0
 
 
-def _plain_positive(value: Any) -> bool:
-    return type(value) is int and value > 0
-
-
 def _shed_access(board_size: int) -> set[tuple[int, int]]:
     half = board_size // 2
     return {(half - 1, half - 1), (half, half - 1),
@@ -43,7 +39,7 @@ def _shed_access(board_size: int) -> set[tuple[int, int]]:
 
 
 def _valid_same_item_sell(row: Any, item: str) -> bool:
-    """Recognize only a definitely executable positive SELL for this research seam."""
+    """Recognize only a definitely executable positive SELL grammar row."""
     if not isinstance(row, list) or len(row) < 3 or row[0] != "SELL" or row[1] != item:
         return False
     try:
@@ -60,10 +56,11 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
     exactly one shed-affecting unit action and that action must be DROP.  The
     actor must carry exactly one positive non-operating sale good, the shed must
     have less room than that stack, and the executable market prefix must already
-    contain a positive SELL for the same item.  Market rows and all other unit
-    actions are byte-for-byte preserved.
+    contain a positive SELL for the same item with baseline same-item shed stock
+    available after DROP.  Market rows and all other unit actions are byte-for-
+    byte preserved.
     """
-    cfg = configuration or {}
+    cfg = {} if configuration is None else configuration
     if not isinstance(selected, dict) or not isinstance(observation, Mapping) or not isinstance(cfg, Mapping):
         return _identity(selected, "malformed_input")
 
@@ -154,7 +151,12 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
     prefix = market[:maximum]
     if any(row and not isinstance(row, list) for row in prefix):
         return _identity(selected, "malformed_market_prefix")
-    if not any(_valid_same_item_sell(row, item) for row in prefix):
+    # Requiring a positive same-item grammar row is not enough: at room=0 a
+    # full shed containing only other goods would still have no same-item unit to
+    # sell this tick. Bind the handoff to stock the baseline DROP actually makes
+    # sellable before market execution.
+    baseline_same_item_stock = int(shed.get(item, 0)) + min(room, carried)
+    if baseline_same_item_stock <= 0 or not any(_valid_same_item_sell(row, item) for row in prefix):
         return _identity(selected, "no_same_item_executable_sell")
 
     result = deepcopy(selected)
@@ -170,6 +172,7 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
         "item": item,
         "carried_before": carried,
         "shed_room": room,
+        "baseline_same_item_stock": baseline_same_item_stock,
         "preserved_in_pocket_lower_bound": carried - room,
         "replacement": replacement,
         "market_unchanged": True,
