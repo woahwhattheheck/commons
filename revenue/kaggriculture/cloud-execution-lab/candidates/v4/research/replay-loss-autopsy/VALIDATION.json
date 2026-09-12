@@ -1,0 +1,39 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2529,
+      "git_blob_sha1": "df254e8fe1e1e6fffd59f37395251448c4bd435a",
+      "sha256": "db11f26a4f0f5066de8381444196bc3575fedd2e950ea1b1bc5b8bea3d2a5f1f"
+    },
+    "extract_episode.py": {
+      "bytes": 13803,
+      "git_blob_sha1": "9d04ccc42d88921414ac80ab429eb86f2d8559fa",
+      "sha256": "75f4349cf495c9c3e3e670a646f51d83e6fedc0c629d931fb2589331945edcc0"
+    },
+    "test_extract_episode.py": {
+      "bytes": 7072,
+      "git_blob_sha1": "557cb9edc83310d5c101af98b957158b360be532",
+      "sha256": "1a9dc15e8c9939013da689e9455facb9d23e93026a19dd84551788c0a3a02cf2"
+    }
+  },
+  "limits": [
+    "No real corpus was available in this runtime.",
+    "This receipt proves tool contracts on synthetic fixtures, not game-strength or replay conclusions."
+  ],
+  "python": "3.13.5",
+  "schema": "titan.v4.replay-loss-autopsy-validation.v1",
+  "scope": "research_tooling_only",
+  "validation": {
+    "py_compile": "PASS",
+    "real_replay_episode_executed": false,
+    "synthetic_only": true,
+    "unittest_normal": {
+      "status": "PASS",
+      "tests": 7
+    },
+    "unittest_optimized": {
+      "status": "PASS",
+      "tests": 7
+    }
+  }
+}
