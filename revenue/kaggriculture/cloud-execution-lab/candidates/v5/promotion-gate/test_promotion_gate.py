@@ -64,7 +64,22 @@ def _engagement(candidate_id):
     }
 
 
+def _timing(count, *, wall, cpu):
+    return {
+        "count": count,
+        "wall_seconds": dict(zip(("p50", "p95", "p99", "max"), wall)),
+        "cpu_seconds": dict(zip(("p50", "p95", "p99", "max"), cpu)),
+    }
+
+
 def _runtime(candidate_id):
+    overall = _timing(
+        8,
+        wall=(0.03, 0.06, 0.06, 0.06),
+        cpu=(0.02, 0.05, 0.05, 0.05),
+    )
+    candidate = json.loads(json.dumps(overall))
+    candidate["deadline_fallback_count"] = 0
     return {
         "classification": "PASS",
         "promotion_ready": True,
@@ -73,18 +88,40 @@ def _runtime(candidate_id):
         "budget_seconds": 0.1,
         "reserve_seconds": 0.02,
         "usable_budget_seconds": 0.08,
+        "p99_headroom_seconds": 0.02,
         "max_fallback_rate": 0.0,
         "deadline_fallback_count": 0,
         "deadline_fallback_rate": 0.0,
+        "fallback_stage_counts": {},
         "expected_design_declared": True,
         "expected_callback_count": 8,
         "expected_complete": True,
         "missing_expected": [],
         "unexpected_extra": [],
-        "p99_headroom_seconds": 0.02,
-        "overall": {"count": 8, "wall_seconds": {"p99": 0.06}},
-        "by_candidate": {
-            candidate_id: {"count": 8, "deadline_fallback_count": 0}
+        "overall": overall,
+        "by_phase": {
+            "early": _timing(
+                2,
+                wall=(0.01, 0.02, 0.02, 0.02),
+                cpu=(0.01, 0.015, 0.015, 0.015),
+            ),
+            "mid": _timing(
+                3,
+                wall=(0.03, 0.04, 0.04, 0.04),
+                cpu=(0.02, 0.03, 0.03, 0.03),
+            ),
+            "late": _timing(
+                3,
+                wall=(0.05, 0.06, 0.06, 0.06),
+                cpu=(0.04, 0.05, 0.05, 0.05),
+            ),
+        },
+        "by_candidate": {candidate_id: candidate},
+        "phase_contract": {
+            "total_steps": 720,
+            "early": [0, 240],
+            "mid": [240, 480],
+            "late": [480, 720],
         },
     }
 
@@ -203,7 +240,7 @@ class PromotionGateTest(unittest.TestCase):
         runtime = _runtime(manifest["candidate_id"])
         runtime["candidate_count"] = 2
         runtime["by_candidate"]["v5c:" + "3" * 64] = {
-            "count": 1,
+            **json.loads(json.dumps(runtime["overall"])),
             "deadline_fallback_count": 0,
         }
         with self.assertRaisesRegex(gate.PromotionError, "exactly one candidate"):
@@ -324,6 +361,11 @@ class PromotionGateTest(unittest.TestCase):
         manifest = _manifest()
         runtime = _runtime(manifest["candidate_id"])
         runtime["overall"]["wall_seconds"]["p99"] = 0.09
+        runtime["overall"]["wall_seconds"]["max"] = 0.09
+        runtime["by_candidate"][manifest["candidate_id"]]["wall_seconds"]["p99"] = 0.09
+        runtime["by_candidate"][manifest["candidate_id"]]["wall_seconds"]["max"] = 0.09
+        runtime["by_phase"]["late"]["wall_seconds"]["p99"] = 0.09
+        runtime["by_phase"]["late"]["wall_seconds"]["max"] = 0.09
         with self.assertRaisesRegex(gate.PromotionError, "p99 headroom disagrees"):
             gate.build_receipt(
                 manifest, _engagement(manifest["candidate_id"]), runtime
@@ -337,6 +379,110 @@ class PromotionGateTest(unittest.TestCase):
             gate.build_receipt(
                 manifest, _engagement(manifest["candidate_id"]), runtime
             )
+
+    def test_runtime_report_shape_is_exact(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        for label, mutate in (
+            ("missing", lambda report: report.pop("fallback_stage_counts")),
+            ("extra", lambda report: report.__setitem__("invented", True)),
+        ):
+            with self.subTest(label=label):
+                runtime = _runtime(candidate_id)
+                mutate(runtime)
+                with self.assertRaisesRegex(gate.PromotionError, "runtime report keys mismatch"):
+                    gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+    def test_runtime_timing_summaries_are_producer_shaped(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        cases = [
+            (
+                "missing-cpu",
+                lambda report: report["overall"].pop("cpu_seconds"),
+                "exact timing-summary keys",
+            ),
+            (
+                "nonmonotonic",
+                lambda report: report["overall"]["wall_seconds"].__setitem__("p50", 0.07),
+                "percentiles must be monotonic",
+            ),
+            (
+                "candidate-drift",
+                lambda report: report["by_candidate"][candidate_id]["wall_seconds"].__setitem__(
+                    "p50", 0.031
+                ),
+                "candidate timing summary must equal overall",
+            ),
+        ]
+        for label, mutate, message in cases:
+            with self.subTest(label=label):
+                runtime = _runtime(candidate_id)
+                mutate(runtime)
+                with self.assertRaisesRegex(gate.PromotionError, message):
+                    gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+    def test_runtime_phase_partition_and_contract_are_exact(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+
+        runtime = _runtime(candidate_id)
+        runtime["by_phase"]["early"]["count"] = 1
+        with self.assertRaisesRegex(gate.PromotionError, "counts must sum"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+        runtime = _runtime(candidate_id)
+        runtime["phase_contract"]["mid"] = [241, 480]
+        with self.assertRaisesRegex(gate.PromotionError, "boundary is noncanonical"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+        runtime = _runtime(candidate_id)
+        runtime["by_phase"]["late"]["wall_seconds"] = {
+            "p50": 0.05,
+            "p95": 0.05,
+            "p99": 0.05,
+            "max": 0.05,
+        }
+        with self.assertRaisesRegex(gate.PromotionError, "max disagrees with overall"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+    def test_runtime_fallback_stage_counts_close_fallback_evidence(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        runtime = _runtime(candidate_id)
+        runtime["deadline_fallback_count"] = 1
+        runtime["deadline_fallback_rate"] = 0.125
+        runtime["max_fallback_rate"] = 0.2
+        runtime["by_candidate"][candidate_id]["deadline_fallback_count"] = 1
+        with self.assertRaisesRegex(gate.PromotionError, "must sum to fallback count"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+
+        runtime["fallback_stage_counts"] = {"selected_transform": 1}
+        receipt = gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+        self.assertTrue(receipt["promotion_ready"])
+
+    def test_runtime_empty_phase_requires_null_stats(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        runtime = _runtime(candidate_id)
+        runtime["by_phase"]["early"] = {
+            "count": 0,
+            "wall_seconds": {"p50": None, "p95": None, "p99": None, "max": None},
+            "cpu_seconds": {"p50": None, "p95": None, "p99": None, "max": None},
+        }
+        runtime["by_phase"]["mid"]["count"] = 5
+        receipt = gate.build_receipt(manifest, _engagement(candidate_id), runtime)
+        self.assertTrue(receipt["promotion_ready"])
+
+        runtime = _runtime(candidate_id)
+        runtime["by_phase"]["early"] = {
+            "count": 0,
+            "wall_seconds": {"p50": 0.0, "p95": None, "p99": None, "max": None},
+            "cpu_seconds": {"p50": None, "p95": None, "p99": None, "max": None},
+        }
+        runtime["by_phase"]["mid"]["count"] = 5
+        with self.assertRaisesRegex(gate.PromotionError, "only null stats"):
+            gate.build_receipt(manifest, _engagement(candidate_id), runtime)
 
     def test_strict_json_rejects_duplicate_keys_and_nonfinite_constants(self):
         with self.assertRaisesRegex(gate.PromotionError, "duplicate JSON object key"):
