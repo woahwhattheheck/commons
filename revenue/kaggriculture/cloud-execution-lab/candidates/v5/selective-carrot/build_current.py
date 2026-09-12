@@ -17,14 +17,30 @@ ENTRY_SOURCE = HERE / "current_entry.py"
 # across main commits that leave these exact implementation bytes unchanged.
 EXPECTED_PARENT_MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
 EXPECTED_SELECTIVE_BLOB = "6af9a832dec058b7824fd7dd080f00ee50bb1d2f"
-EXPECTED_ENTRY_BLOB = "a5151ad56e5fb904e54795aaddcc822196ad3162"
+EXPECTED_ENTRY_BLOB = "f9cc0cecdb99d2711d33f9cec80c2f82d8f9dc89"
 
 
-def git_blob(path: Path) -> str:
-    data = path.read_bytes()
+def git_blob_bytes(data: bytes) -> str:
     return hashlib.sha1(
         b"blob " + str(len(data)).encode("ascii") + b"\0" + data
     ).hexdigest()
+
+
+def git_blob(path: Path) -> str:
+    return git_blob_bytes(path.read_bytes())
+
+
+def _regular_bytes(path: Path, label: str) -> bytes:
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"{label} must be a regular file")
+    return path.read_bytes()
+
+
+def _pinned_bytes(path: Path, expected: str, label: str) -> bytes:
+    data = _regular_bytes(path, label)
+    if git_blob_bytes(data) != expected:
+        raise ValueError(f"{label} identity drift")
+    return data
 
 
 def package_digest(root: Path) -> str:
@@ -54,13 +70,25 @@ def _capacity(value: int) -> int:
     return value
 
 
-def _require_source_identity() -> None:
-    if git_blob(SELECTIVE_SOURCE) != EXPECTED_SELECTIVE_BLOB:
-        raise ValueError("canonical selective-carrot source drift")
-    if git_blob(ENTRY_SOURCE) != EXPECTED_ENTRY_BLOB:
-        raise ValueError("canonical selective-carrot current entry drift")
-    if git_blob(LAB_ROOT / "main.py") != EXPECTED_PARENT_MAIN_BLOB:
-        raise ValueError("canonical current-V5 parent main.py drift")
+def _source_snapshots() -> dict[str, bytes]:
+    """Authenticate each mutable source once and return those exact bytes."""
+    return {
+        "selective": _pinned_bytes(
+            SELECTIVE_SOURCE,
+            EXPECTED_SELECTIVE_BLOB,
+            "canonical selective-carrot source",
+        ),
+        "entry": _pinned_bytes(
+            ENTRY_SOURCE,
+            EXPECTED_ENTRY_BLOB,
+            "canonical selective-carrot current entry",
+        ),
+        "parent": _pinned_bytes(
+            LAB_ROOT / "main.py",
+            EXPECTED_PARENT_MAIN_BLOB,
+            "canonical current-V5 parent main.py",
+        ),
+    }
 
 
 def build_candidate(
@@ -77,9 +105,8 @@ def build_candidate(
         raise ValueError("output directory must be outside baseline root")
 
     parent_main = baseline_root / "main.py"
-    if not parent_main.is_file() or parent_main.is_symlink():
-        raise ValueError("baseline main.py must be a regular file")
-    if git_blob(parent_main) != EXPECTED_PARENT_MAIN_BLOB:
+    parent_main_bytes = _regular_bytes(parent_main, "baseline main.py")
+    if git_blob_bytes(parent_main_bytes) != EXPECTED_PARENT_MAIN_BLOB:
         raise ValueError("expected exact current-V5 parent main.py")
     for collision in (
         "baseline_main.py",
@@ -89,7 +116,9 @@ def build_candidate(
         if (baseline_root / collision).exists():
             raise ValueError(f"baseline already contains {collision}")
 
-    _require_source_identity()
+    sources = _source_snapshots()
+    if parent_main_bytes != sources["parent"]:
+        raise ValueError("CURRENT package parent differs from canonical source bytes")
     control_before = package_digest(baseline_root)
     try:
         shutil.copytree(
@@ -98,14 +127,17 @@ def build_candidate(
             symlinks=False,
             ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo"),
         )
+        copied_parent = _regular_bytes(out / "main.py", "copied baseline main.py")
         copied_control = package_digest(out)
         control_after = package_digest(baseline_root)
+        if copied_parent != parent_main_bytes:
+            raise ValueError("baseline main.py moved during materialization")
         if not control_before == copied_control == control_after:
             raise ValueError("baseline package moved during materialization")
 
         (out / "main.py").rename(out / "baseline_main.py")
-        shutil.copyfile(ENTRY_SOURCE, out / "main.py")
-        shutil.copyfile(SELECTIVE_SOURCE, out / "selective_carrot.py")
+        (out / "main.py").write_bytes(sources["entry"])
+        (out / "selective_carrot.py").write_bytes(sources["selective"])
         profile = {
             "schema": "titan-v5-selective-carrot-current/v1",
             "max_active": max_active,
