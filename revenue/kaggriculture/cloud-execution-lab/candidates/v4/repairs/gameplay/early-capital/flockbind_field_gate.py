@@ -77,7 +77,8 @@ def validate_panel(panel, *, expected_source=EXPECTED_B567, required_seeds=REQUI
             reasons.append(f"{prefix}:not_object")
             continue
         seed, seat = cell.get("seed"), cell.get("seat")
-        if isinstance(seed, bool) or not isinstance(seed, int) or seat not in REQUIRED_SEATS:
+        if (isinstance(seed, bool) or not isinstance(seed, int)
+                or type(seat) is not int or seat not in REQUIRED_SEATS):
             reasons.append(f"{prefix}:bad_coordinate")
             continue
         coord = (seed, seat)
