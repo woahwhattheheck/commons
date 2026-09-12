@@ -44,32 +44,42 @@ python candidates/v5/promotion-gate/promotion_gate.py \
 identifiable, engaged, and fast is not necessarily competitive. The economics
 gate accepts only raw paired cells and recomputes each margin itself.
 
-The v3 economics report is execution-bound. It carries exact control and
+The v4 economics report is execution-bound. It carries exact control and
 candidate `v5c:` identities, the candidate manifest's engine/opponent-pack
 identity, and the exact old/new release archive SHA-256 values. Each raw cell
 also names the opponent actually played. The release transaction supplies the
 build/execution authorities independently and rejects stale or cross-wired
 evidence.
 
+The release roster is no longer inferred from an opaque pack label. It is
+explicitly fixed to:
+
+- `apex_v7`
+- `arlene_v14`
+
+and the receipt binds the reviewed `REFERENCE-POLICIES.json` Git blob
+`6bce02dad705ccc57656ff2e2139db215f9fcc57`. The registry contains other
+recovered names, so using every registry key would be wrong; the two-name roster
+is an explicit release authority, not a registry enumeration.
+
 A paired-economics PASS requires:
 
-- at least 2 distinct opponents and 4 distinct seeds per opponent;
+- the played opponent IDs equal the exact authorized roster (no favorable
+  subset, superset, or invented replacement);
+- at least 4 distinct seeds per authorized opponent;
 - every opponent covers the exact same seed set;
 - exactly one seat-0 and one seat-1 cell for every `(opponent, seed)` pair;
 - unique cells in canonical `(opponent_id, seed, seat)` order;
 - exact bounded nonnegative integer own/rival scores for control and candidate;
 - no caller-supplied aggregate or claimed delta fields;
 - execution authority equal to the promotion manifest and release archive pair;
-  and
-- nonnegative aggregate paired margin delta.
+- nonnegative aggregate paired margin delta; and
+- nonnegative paired margin delta **for each authorized opponent separately**.
 
-The receipt records the actual sorted opponent IDs/count, execution identity,
-recomputed cell/seed counts, sign counts, margin sums, mean delta, and canonical
-panel digest. This proves balanced coverage across the opponents explicitly
-present in the evidence. The current candidate identity's `opponent_pack_id` is
-opaque, so this gate does **not** independently claim that those opponent IDs are
-an exhaustive decode of every member of that opaque pack; it makes the played
-membership explicit and transition-bound instead of hiding it behind the label.
+The opponent-local floor prevents one favorable opponent from laundering a
+regression against another. The receipt serializes each authorized opponent's
+cell count, control/candidate margin sums, and delta, plus the global sign/count
+metrics and canonical panel digest.
 
 ```bash
 python candidates/v5/promotion-gate/economics_gate.py economics-report.json \
@@ -79,18 +89,30 @@ python candidates/v5/promotion-gate/economics_gate.py economics-report.json \
 ## Release transaction
 
 `release_transaction.py` is the pointer-transition authority in this directory.
-Version 3 keeps the existing promotion replay, V4 trusted-base replay,
+Version 4 keeps the existing promotion replay, V4 trusted-base replay,
 source/archive binding, expected-old transaction, and atomic commit semantics,
 and requires `--economics-report`.
 
 The release transaction replays `economics_gate.validate_report()` against the
 same candidate/control, engine/opponent-pack, and old/new archive authorities
-already authenticated by the transition. It redundantly validates the economics
-receipt's sorted unique opponent list/count and serializes both, the raw report
-SHA-256, and the canonical panel digest into the `v5tx:` transition identity.
-Negative-mean, single-opponent, uneven-seed, missing-seat, duplicate, stale-
-archive, wrong-pack, or cross-build panels fail before a release pointer can
-move.
+already authenticated by the transition. It redundantly requires the exact
+Apex+Arlene roster and registry blob, checks the opponent-local arithmetic and
+nonregression floors, and binds the roster, registry authority, per-opponent
+aggregates, raw report SHA-256, and canonical panel digest into the `v5tx:`
+transition identity.
+
+Module custody is source-real: `_load_module()` reads each Python authority once
+and executes the **captured authenticated byte buffer** via `compile`/`exec`.
+It never authenticates one read and then asks `exec_module(path)` to perform a
+second path read. Tests cover both a path swap and deletion after the first read.
+
+Negative-global, negative-per-opponent, unauthorized-roster, uneven-seed,
+missing-seat, duplicate, stale-archive, wrong-pack, cross-build, or source-path
+race cases fail before a release pointer can move.
+
+This generic firewall is intentionally only the incumbent/control economics
+subgate. The separate V3.1 champion-ratchet owns the final champion objective;
+no V3.1 floor semantics are duplicated here.
 
 Exit status is `0` only for a PASS receipt. Invalid, ambiguous, incomplete,
 cross-wired, or economically regressive evidence exits `2`.
