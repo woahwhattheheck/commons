@@ -122,6 +122,54 @@ def main():
     out = transform(barrier, observation(), config("cash_max"), quote=quote)
     check("barrier topology", out == barrier)
 
+    # The pinned engine accepts SELL rows with trailing fields and positive
+    # int()-coercible quantities.  The close-game objective must classify the
+    # same executable rows while preserving the inherited row bytes exactly.
+    metadata = {
+        "farmer": ["PASS"],
+        "hands": [],
+        "market": [
+            ["SELL", "WOOL", "2", {"tag": "wool"}],
+            ["SELL", "MILK", 2.9, "milk-tail"],
+        ],
+    }
+    metadata_original = deepcopy(metadata)
+    out = transform(metadata, observation(), config("cash_max"), quote=quote)
+    check("engine grammar trailing/coercible reorder",
+          out["market"] == [metadata_original["market"][1], metadata_original["market"][0]])
+    check("engine grammar raw rows preserved",
+          out["market"][0][2:] == [2.9, "milk-tail"]
+          and out["market"][1][2:] == ["2", {"tag": "wool"}]
+          and metadata == metadata_original)
+
+    # bool and fractional quantities are also int()-coercible in the pinned
+    # parser.  Classification follows that parser; no normalization is written.
+    coercible = {
+        "farmer": ["PASS"],
+        "hands": [],
+        "market": [["SELL", "WOOL", True], ["SELL", "MILK", 1.9]],
+    }
+    coercible_original = deepcopy(coercible)
+    out = transform(coercible, observation(), config("cash_max"), quote=quote)
+    check("engine grammar bool/float coercion",
+          out["market"] == [coercible_original["market"][1], coercible_original["market"][0]])
+
+    # Engine-inert/nonpositive rows and the deliberate bounded-scoring ceiling
+    # remain hard barriers: convergence must not broaden those policy semantics.
+    for blocker in (
+        ["SELL", "WOOL", "0", "tail"],
+        ["SELL", "WOOL", -1],
+        ["SELL", "WOOL", "not-an-int"],
+        ["SELL", "WOOL", 257],
+    ):
+        blocked = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "WOOL", 2], blocker, ["SELL", "MILK", 2]],
+        }
+        check("nonpositive/malformed/bounded barrier",
+              transform(blocked, observation(), config("cash_max"), quote=quote) == blocked)
+
     # Row quantities and multiset are invariant whenever a reorder engages.
     before = sorted(map(tuple, base["market"]))
     after = transform(base, observation(), config("cash_max"), quote=quote)
