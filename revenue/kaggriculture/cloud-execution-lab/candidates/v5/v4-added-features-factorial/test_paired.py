@@ -5,6 +5,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -51,6 +52,18 @@ class FactorialTests(unittest.TestCase):
         bad = V4_CONFIG.replace(b'"town_procurement": true', b'"town_procurement": false')
         with self.assertRaises(ValueError):
             MODULE.exact_v4_config(bad)
+
+    def test_authenticated_helper_uses_captured_bytes_after_path_mutation(self):
+        trusted = b"VALUE = 'trusted'\n"
+        expected = MODULE.git_blob_bytes(trusted)
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "helper.py"
+            path.write_bytes(trusted)
+            captured = MODULE.capture_authenticated(path, expected)
+            path.write_text("VALUE = 'tampered'\n")
+            loaded = MODULE.load_captured(captured, path, "factorial_captured_helper_test")
+        self.assertEqual(loaded.VALUE, "trusted")
+        self.assertEqual(captured, trusted)
 
     def test_screen_is_v4_v31_like_plus_each_single_off(self):
         self.assertEqual(tuple(MODULE.design_arms("screen")), MODULE.SCREEN_ARMS)
