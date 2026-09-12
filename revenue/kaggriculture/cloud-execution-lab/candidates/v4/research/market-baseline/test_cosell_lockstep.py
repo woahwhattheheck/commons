@@ -83,27 +83,40 @@ class FakeEngine:
 
 
 class CosellOracleTests(unittest.TestCase):
-    def test_aligned_cosell_beats_wait_on_falling_price(self):
+    def test_aligned_cosell_beats_sequential_market_only_on_falling_price(self):
         r = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=10)
-        self.assertGreater(r["simultaneous_gain_vs_wait"], 0)
-        self.assertEqual(r["misaligned_gain_vs_wait"], 0)
+        self.assertGreater(r["simultaneous_gain_vs_sequential_market_only"], 0)
+        self.assertEqual(r["misaligned_gain_vs_sequential_market_only"], 0)
         self.assertTrue(r["same_terminal_state"])
         self.assertEqual(r["terminal_market_inventory"], 920)
 
     def test_zero_rival_is_no_effect(self):
         r = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=0)
-        self.assertEqual(r["simultaneous_gain_vs_wait"], 0)
-        self.assertEqual(r["misaligned_gain_vs_wait"], 0)
+        self.assertEqual(r["simultaneous_gain_vs_sequential_market_only"], 0)
+        self.assertEqual(r["misaligned_gain_vs_sequential_market_only"], 0)
 
     def test_partial_overlap_only_shields_shared_units(self):
         short = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=3)
         full = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=10)
-        self.assertGreater(short["simultaneous_gain_vs_wait"], 0)
-        self.assertLess(short["simultaneous_gain_vs_wait"], full["simultaneous_gain_vs_wait"])
+        self.assertGreater(short["simultaneous_gain_vs_sequential_market_only"], 0)
+        self.assertLess(
+            short["simultaneous_gain_vs_sequential_market_only"],
+            full["simultaneous_gain_vs_sequential_market_only"],
+        )
 
-    def test_same_callback_misalignment_equals_wait(self):
+    def test_same_callback_misalignment_equals_sequential_market_only(self):
         r = m.compare(FakeEngine, item="WHEAT", inventory=910, self_qty=7, rival_qty=5)
-        self.assertEqual(r["misaligned_same_callback_self_revenue"], r["wait_behind_self_revenue"])
+        self.assertEqual(
+            r["misaligned_same_callback_self_revenue"],
+            r["sequential_market_only_self_revenue"],
+        )
+
+    def test_report_explicitly_disclaims_next_callback_semantics(self):
+        r = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=2, rival_qty=2)
+        self.assertTrue(any("not a next-callback simulation" in x for x in r["limits"]))
+        self.assertNotIn("wait_behind_self_revenue", r)
+        self.assertNotIn("simultaneous_gain_vs_wait", r)
+        self.assertNotIn("misaligned_gain_vs_wait", r)
 
     def test_quantity_type_poison_fails_closed(self):
         for bad in (True, 1.0, "1", -1):
@@ -117,12 +130,13 @@ class CosellOracleTests(unittest.TestCase):
     def test_curve_preserves_requested_inventory_points(self):
         rows = m.collision_curve(FakeEngine, item="WOOL", inventories=[900, 910, 920], quantity=2)
         self.assertEqual([x["inventory"] for x in rows], [900, 910, 920])
-        self.assertTrue(all(x["simultaneous_gain_vs_wait"] > 0 for x in rows))
+        self.assertTrue(all(x["simultaneous_gain_vs_sequential_market_only"] > 0 for x in rows))
 
     def test_floor_transition_refuses_unequal_terminal_counterfactual(self):
         # At inventory 998 the aligned pair is quoted $2/$2 and both units add
-        # supply, while wait-behind quotes $2 then $1 and the floor sale does
-        # not add supply. The oracle must refuse to call that a pure cash delta.
+        # supply, while sequential-market-only quotes $2 then $1 and the floor
+        # sale does not add supply. The oracle must refuse to call that a pure
+        # cash delta because physical terminals differ.
         with self.assertRaises(AssertionError):
             m.compare(FakeEngine, item="WOOL", inventory=998, self_qty=1, rival_qty=1)
 
@@ -137,14 +151,39 @@ class CosellOracleTests(unittest.TestCase):
         self.assertEqual(r["terminal_market_inventory"], 10020)
         self.assertEqual(r["simultaneous_self_revenue"], 1934)
         self.assertEqual(r["misaligned_same_callback_self_revenue"], 1873)
-        self.assertEqual(r["wait_behind_self_revenue"], 1873)
-        self.assertEqual(r["simultaneous_gain_vs_wait"], 61)
-        self.assertEqual(r["misaligned_gain_vs_wait"], 0)
+        self.assertEqual(r["sequential_market_only_self_revenue"], 1873)
+        self.assertEqual(r["simultaneous_gain_vs_sequential_market_only"], 61)
+        self.assertEqual(r["misaligned_gain_vs_sequential_market_only"], 0)
         # Official SELLs quoted at the $1 floor do not add market inventory.
-        # Around the WOOL floor this makes aligned and delayed terminals differ;
-        # the oracle must reject that as a non-comparable cash counterfactual.
+        # Around the WOOL floor this makes aligned and delayed market-only
+        # terminals differ; the oracle must reject that counterfactual.
         with self.assertRaises(AssertionError):
             m.compare(engine, item="WOOL", inventory=10058, self_qty=1, rival_qty=1)
+
+    def test_repository_engine_town_phase_breaks_market_only_equivalence(self):
+        path = m.default_engine_path()
+        if not path.is_file():
+            self.skipTest("repository engine not mounted in this execution seat")
+        engine = m.load_engine(path)
+        sequential = m.simulate_sequential_market_only(
+            engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10
+        )
+
+        states, env = m._world(engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10)
+        town = engine._new_town()
+        for state in states:
+            state.observation.town = town
+
+        m._market_call(engine, states, env, [m._sell("WOOL", 10)], [])
+        self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10010)
+        engine._town_consume(env, states, 0)
+        self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10009)
+        m._market_call(engine, states, env, [], [m._sell("WOOL", 10)])
+
+        intercallback_revenue = m._money(states, 1) - m.STARTING_MONEY
+        self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10019)
+        self.assertGreater(intercallback_revenue, sequential["self_revenue"])
+        self.assertNotEqual(intercallback_revenue, sequential["self_revenue"])
 
 
 if __name__ == "__main__":
