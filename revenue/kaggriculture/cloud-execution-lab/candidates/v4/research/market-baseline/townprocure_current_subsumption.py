@@ -11,18 +11,21 @@ authored BUY_PRODUCT WHEAT row and (b) the exact enabled selected-action chain p
 that the annual-crop input repair is the only live dynamic WHEAT-buy constructor. That
 repair already retries every callback from its first lawful due point and reconciles
 the previous receipt before the next proposal.
+
+All theorem inputs are single-read snapshots: Git object identity, JSON parsing, and
+source-anchor analysis are derived from the same captured bytes. Pathnames are never
+reopened after authentication.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
-import subprocess
 from pathlib import Path
 
 import current_wheat_buy_census
 
-SCHEMA = "titan.v4.market-baseline.townprocure-current-subsumption.v2"
+SCHEMA = "titan.v4.market-baseline.townprocure-current-subsumption.v3"
 PINS = {
     "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "titan_runtime.py": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
@@ -71,10 +74,47 @@ def _lab_root() -> Path:
     return Path(__file__).resolve().parents[4]
 
 
-def _git_blob(path: Path, cwd: Path) -> str:
-    return subprocess.check_output(
-        ["git", "hash-object", str(path)], cwd=cwd, text=True
-    ).strip()
+def _git_blob_bytes(data: bytes) -> str:
+    if not isinstance(data, bytes):
+        raise TypeError("Git blob input must be bytes")
+    header = b"blob " + str(len(data)).encode("ascii") + b"\0"
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def _read_snapshot(path: Path) -> bytes:
+    """Read a theorem input exactly once."""
+    return path.read_bytes()
+
+
+def _capture_pinned_sources(paths: dict[str, Path]) -> tuple[dict[str, bytes], dict[str, str]]:
+    snapshots: dict[str, bytes] = {}
+    observed: dict[str, str] = {}
+    for name, path in paths.items():
+        data = _read_snapshot(path)
+        snapshots[name] = data
+        observed[name] = _git_blob_bytes(data)
+    drift = {
+        name: {"expected": PINS[name], "observed": blob}
+        for name, blob in observed.items()
+        if blob != PINS[name]
+    }
+    if drift:
+        raise AuditError(f"current source drift: {drift}")
+    return snapshots, observed
+
+
+def _snapshot_text(snapshot: bytes, label: str) -> str:
+    try:
+        return snapshot.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise AuditError(f"{label}: authenticated bytes are not UTF-8") from exc
+
+
+def _snapshot_json(snapshot: bytes, label: str):
+    try:
+        return json.loads(_snapshot_text(snapshot, label))
+    except json.JSONDecodeError as exc:
+        raise AuditError(f"{label}: authenticated bytes are not valid JSON: {exc}") from exc
 
 
 def _require(source: str, needles: tuple[str, ...], label: str) -> None:
@@ -112,16 +152,10 @@ def audit() -> dict:
         "town_wheat_timing.py": market_baseline / "town_wheat_timing.py",
         "TOWN-WHEAT-TIMING.json": market_baseline / "TOWN-WHEAT-TIMING.json",
     }
-    observed = {name: _git_blob(path, lab) for name, path in paths.items()}
-    drift = {
-        name: {"expected": PINS[name], "observed": blob}
-        for name, blob in observed.items()
-        if blob != PINS[name]
-    }
-    if drift:
-        raise AuditError(f"current source drift: {drift}")
+    snapshots, observed = _capture_pinned_sources(paths)
 
-    cfg = json.loads(paths["TITAN-CONFIG.json"].read_text(encoding="utf-8"))
+    # Every semantic read below comes from the immutable authenticated snapshots.
+    cfg = _snapshot_json(snapshots["TITAN-CONFIG.json"], "TITAN-CONFIG.json")
     feature_drift = {
         key: {"expected": value, "observed": cfg.get(key)}
         for key, value in EXPECTED_FEATURES.items()
@@ -130,28 +164,25 @@ def audit() -> dict:
     if feature_drift:
         raise AuditError(f"enabled-feature surface drift: {feature_drift}")
 
-    main = paths["main.py"].read_text(encoding="utf-8")
-    runtime = paths["titan_runtime.py"].read_text(encoding="utf-8")
-    frozen = paths["frozen_selected.py"].read_text(encoding="utf-8")
-    scheduler = paths["scheduler.py"].read_text(encoding="utf-8")
-    history = paths["terminal_history_join.py"].read_text(encoding="utf-8")
-    redundant = paths["redundant_hire.py"].read_text(encoding="utf-8")
-    seed_budget = paths["seed_budget.py"].read_text(encoding="utf-8")
-    pressure = paths["pressure_priority.py"].read_text(encoding="utf-8")
-    operating = paths["operating_stock.py"].read_text(encoding="utf-8")
-    early = paths["early_capital.py"].read_text(encoding="utf-8")
-    spatial = paths["spatial_tempo.py"].read_text(encoding="utf-8")
-    crop = paths["crop_release.py"].read_text(encoding="utf-8")
-    oracle = paths["town_wheat_timing.py"].read_text(encoding="utf-8")
-    oracle_receipt = json.loads(
-        paths["TOWN-WHEAT-TIMING.json"].read_text(encoding="utf-8")
+    main = _snapshot_text(snapshots["main.py"], "main.py")
+    runtime = _snapshot_text(snapshots["titan_runtime.py"], "titan_runtime.py")
+    frozen = _snapshot_text(snapshots["frozen_selected.py"], "frozen_selected.py")
+    scheduler = _snapshot_text(snapshots["scheduler.py"], "scheduler.py")
+    history = _snapshot_text(snapshots["terminal_history_join.py"], "terminal_history_join.py")
+    redundant = _snapshot_text(snapshots["redundant_hire.py"], "redundant_hire.py")
+    seed_budget = _snapshot_text(snapshots["seed_budget.py"], "seed_budget.py")
+    pressure = _snapshot_text(snapshots["pressure_priority.py"], "pressure_priority.py")
+    operating = _snapshot_text(snapshots["operating_stock.py"], "operating_stock.py")
+    early = _snapshot_text(snapshots["early_capital.py"], "early_capital.py")
+    spatial = _snapshot_text(snapshots["spatial_tempo.py"], "spatial_tempo.py")
+    crop = _snapshot_text(snapshots["crop_release.py"], "crop_release.py")
+    oracle = _snapshot_text(snapshots["town_wheat_timing.py"], "town_wheat_timing.py")
+    oracle_receipt = _snapshot_json(
+        snapshots["TOWN-WHEAT-TIMING.json"], "TOWN-WHEAT-TIMING.json"
     )
     if oracle_receipt.get("engine_git_blob") != ENGINE_BLOB:
         raise AuditError("TOWNFLASH engine pin drifted")
 
-    # Bind the exact enabled dispatch chain.  Disabled/general families cannot be
-    # silently reclassified as live evidence because the complete config blob and
-    # these operation-class anchors are both authenticated above.
     _require(
         main,
         (
@@ -187,16 +218,8 @@ def audit() -> dict:
         ),
         "frozen_selected",
     )
-    _require(
-        scheduler,
-        ("if p not in ('WHEAT','FERTILIZER')",),
-        "scheduler",
-    )
-    _require(
-        history,
-        ("if not self.terminal_enabled:return selected",),
-        "terminal_history_join",
-    )
+    _require(scheduler, ("if p not in ('WHEAT','FERTILIZER')",), "scheduler")
+    _require(history, ("if not self.terminal_enabled:return selected",), "terminal_history_join")
     _require(
         redundant,
         (
@@ -205,11 +228,7 @@ def audit() -> dict:
         ),
         "redundant_hire",
     )
-    _require(
-        seed_budget,
-        ("if len(order) < 3 or order[0] != 'BUY_SEED':",),
-        "seed_budget",
-    )
+    _require(seed_budget, ("if len(order) < 3 or order[0] != 'BUY_SEED':",), "seed_budget")
     _require(
         pressure,
         (
@@ -229,10 +248,7 @@ def audit() -> dict:
     )
     _require(
         early,
-        (
-            "Purchases are never dropped or invented.",
-            "Every original purchase stays on the tape.",
-        ),
+        ("Purchases are never dropped or invented.", "Every original purchase stays on the tape."),
         "early_capital",
     )
     _require(
@@ -262,9 +278,6 @@ def audit() -> dict:
         "spatial_tempo",
     )
 
-    # Receipt reconciliation in the normal act path must precede the next crop
-    # proposal. Otherwise a partially-filled prior request could force a one-turn
-    # lag and create a real timing opportunity at a town boundary.
     _require(
         runtime,
         (
@@ -347,9 +360,7 @@ def audit() -> dict:
 
     if route_rows:
         decision = "ROUTE_WHEAT_BUYS_REQUIRE_SEPARATE_TIMING_GATE"
-        reason = (
-            "authenticated Arlene tape contains WHEAT purchases outside crop-repair ownership"
-        )
+        reason = "authenticated Arlene tape contains WHEAT purchases outside crop-repair ownership"
     else:
         decision = "SUBSUMED_NO_LAWFUL_RETIME"
         reason = (
@@ -374,14 +385,13 @@ def audit() -> dict:
         "dynamic_crop_repair": dynamic,
         "limits": [
             "source/subsumption proof only; no gameplay action is mutated",
+            "all source identity and semantic analysis derives from one immutable captured byte snapshot per path",
             "does not claim a repair naturally engages in a sampled game",
             "does not relax crop input receipt, funding, capacity, row or feed-stock ownership",
             "any future source/config/blob drift invalidates this disposition",
         ],
     }
-    canonical = json.dumps(
-        result, sort_keys=True, separators=(",", ":"), ensure_ascii=True
-    )
+    canonical = json.dumps(result, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
     result["result_sha256"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
     return result
 
@@ -392,17 +402,8 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     try:
         result = audit()
-    except (
-        AuditError,
-        OSError,
-        subprocess.CalledProcessError,
-        ValueError,
-        json.JSONDecodeError,
-    ) as exc:
-        print(
-            f"townprocure-current-subsumption: {exc}",
-            file=__import__("sys").stderr,
-        )
+    except (AuditError, OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"townprocure-current-subsumption: {exc}", file=__import__("sys").stderr)
         return 2
     print(json.dumps(result, sort_keys=True, indent=2 if args.pretty else None))
     return 0
