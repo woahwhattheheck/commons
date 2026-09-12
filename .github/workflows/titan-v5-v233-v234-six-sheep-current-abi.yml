@@ -1,0 +1,49 @@
+name: TITAN V5 V233 V234 six-sheep current ABI
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_full_snapshot.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/test_current_route_full_snapshot.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v233-v234-six-sheep-current-abi/**"
+      - ".github/workflows/titan-v5-v233-v234-six-sheep-current-abi.yml"
+  push:
+    branches: ["astra/v5-v31-v233-v234-six-sheep-current-abi-20260912"]
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_full_snapshot.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/test_current_route_full_snapshot.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v233-v234-six-sheep-current-abi/**"
+      - ".github/workflows/titan-v5-v233-v234-six-sheep-current-abi.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Assert exact event head
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and focused contracts
+        env:
+          ROUTE_DIR: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness
+          CANDIDATE_DIR: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v233-v234-six-sheep-current-abi
+        run: |
+          set -euo pipefail
+          python -B -m py_compile "$ROUTE_DIR/current_route_witness.py" "$ROUTE_DIR/current_route_full_snapshot.py" "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/v233_v234_current.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -B -m unittest -v "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -O -B -m unittest -v "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          find "$ROUTE_DIR" "$CANDIDATE_DIR" -type d -name __pycache__ -prune -exec rm -rf {} +
+          test -z "$(git status --porcelain)"
