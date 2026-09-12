@@ -125,6 +125,13 @@ class NativeCensusPanelIntegrityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exceeds callbacks"):
             aggregate(cells)
 
+    def test_colocated_callbacks_cannot_exceed_colocated_groups(self):
+        cells = exact_panel()
+        cells[-1]["colocated_callbacks"] = 2
+        cells[-1]["colocated_groups"] = 1
+        with self.assertRaisesRegex(ValueError, "colocated_callbacks exceeds colocated_groups"):
+            aggregate(cells)
+
     def test_nonfinite_scores_are_rejected(self):
         for value in (float("nan"), float("inf"), float("-inf")):
             with self.subTest(value=value):
@@ -132,6 +139,19 @@ class NativeCensusPanelIntegrityTests(unittest.TestCase):
                 cells[-1]["scores"][0] = value
                 with self.assertRaisesRegex(ValueError, "finite exact numeric values"):
                     aggregate(cells)
+
+    def test_changed_groups_cannot_exceed_eligible_groups(self):
+        cells = exact_panel()
+        cells[-1]["colocated_groups"] = 2
+        cells[-1]["admission"] = {"eligible_groups": 1, "changed_groups": 2}
+        with self.assertRaisesRegex(ValueError, "changed_groups exceeds eligible_groups"):
+            aggregate(cells)
+
+    def test_eligible_groups_cannot_exceed_colocated_groups(self):
+        cells = exact_panel()
+        cells[-1]["admission"] = {"eligible_groups": 2, "changed_groups": 1}
+        with self.assertRaisesRegex(ValueError, "eligible_groups exceeds colocated_groups"):
+            aggregate(cells)
 
     def test_valid_engagement_still_produces_engaged(self):
         cells = exact_panel()
