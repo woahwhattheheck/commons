@@ -236,6 +236,15 @@ def verify_freshness(
                 }
             )
 
+        recorded_live_blobs = {row["path"]: row["live"]["git_blob"] for row in records}
+        for name in CORE_PATHS:
+            repo_rel = live_rel / name
+            final_live_blob = _git_blob(_read_live_file(repo_root, repo_rel))
+            if final_live_blob != recorded_live_blobs[name]:
+                raise InvalidEvidence(
+                    f"live file changed after verification read: {repo_rel.as_posix()}"
+                )
+
         final_head = _git(repo_root, "rev-parse", "HEAD")
         if final_head != expected_commit:
             raise InvalidEvidence(
