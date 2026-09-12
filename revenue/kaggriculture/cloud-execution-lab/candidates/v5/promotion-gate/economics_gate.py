@@ -4,8 +4,8 @@
 
 The release pointer must not advance merely because a candidate is identifiable,
 engaged, and fast. This module authenticates a raw paired panel and recomputes
-the only economic policy asserted here: the candidate's mean paired margin must
-not regress versus the exact control build.
+the economic policy asserted here: the candidate's paired margin must not
+regress versus the exact control build globally or on any authorized opponent.
 
 The evidence also names the exact execution authority: engine, opponent pack,
 control archive, and candidate archive. The release transaction supplies those
@@ -15,10 +15,10 @@ from another build or evaluation closure cannot be replayed into a transition.
 Rows are intentionally primitive. Each row carries the exact opponent, seed,
 seat, and raw own/rival scores for control and candidate. The validator derives
 both margins and their delta itself; callers cannot smuggle a favorable summary.
-Every opponent must cover the same seed set and both seats for every seed, so a
-single favorable opponent or asymmetric seed/seat coverage cannot masquerade as
-a balanced release panel. Report and cell order are canonical for reproducible
-evidence bytes.
+Every authorized opponent must cover the same seed set and both seats for every
+seed. Release admission additionally binds the exact Apex+Arlene roster to the
+reviewed REFERENCE-POLICIES.json Git blob, so a favorable subset or invented
+opponent ID cannot masquerade behind an opaque opponent-pack label.
 """
 from __future__ import annotations
 
@@ -33,14 +33,17 @@ import sys
 import uuid
 from typing import Any, Mapping
 
-SCHEMA = "titan-v5-paired-economics/v3"
-RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v3"
-MIN_OPPONENTS = 2
+SCHEMA = "titan-v5-paired-economics/v4"
+RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v4"
+AUTHORIZED_OPPONENT_IDS = ("apex_v7", "arlene_v14")
+REFERENCE_POLICIES_GIT_BLOB = "6bce02dad705ccc57656ff2e2139db215f9fcc57"
+MIN_OPPONENTS = len(AUTHORIZED_OPPONENT_IDS)
 MIN_SEEDS = 4
 MIN_CELLS = MIN_OPPONENTS * MIN_SEEDS * 2
 MAX_INT = (1 << 63) - 1
 _V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
 _HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
+_HEX40_RE = re.compile(r"^[0-9a-f]{40}$")
 _UNSET = object()
 _REPORT_KEYS = frozenset(
     (
@@ -116,6 +119,12 @@ def _v5c(value: Any, field: str) -> str:
 def _hex64(value: Any, field: str) -> str:
     if type(value) is not str or _HEX64_RE.fullmatch(value) is None:
         raise EconomicsError(f"{field} must be 64 lowercase hex characters")
+    return value
+
+
+def _git_blob(value: Any, field: str) -> str:
+    if type(value) is not str or _HEX40_RE.fullmatch(value) is None:
+        raise EconomicsError(f"{field} must be a 40-character lowercase Git object id")
     return value
 
 
@@ -231,6 +240,9 @@ def validate_report(
     candidate_margins: list[int] = []
     seats_by_opponent_seed: dict[tuple[str, int], set[int]] = {}
     seeds_by_opponent: dict[str, set[int]] = {}
+    deltas_by_opponent: dict[str, list[int]] = {}
+    control_margins_by_opponent: dict[str, list[int]] = {}
+    candidate_margins_by_opponent: dict[str, list[int]] = {}
 
     for index, cell in enumerate(cells):
         field = f"economics cells[{index}]"
@@ -252,9 +264,13 @@ def validate_report(
         candidate_rival = _plain_int(cell["candidate_rival"], f"{field}.candidate_rival")
         control_margin = control_own - control_rival
         candidate_margin = candidate_own - candidate_rival
+        delta = candidate_margin - control_margin
         control_margins.append(control_margin)
         candidate_margins.append(candidate_margin)
-        deltas.append(candidate_margin - control_margin)
+        deltas.append(delta)
+        deltas_by_opponent.setdefault(opponent_id, []).append(delta)
+        control_margins_by_opponent.setdefault(opponent_id, []).append(control_margin)
+        candidate_margins_by_opponent.setdefault(opponent_id, []).append(candidate_margin)
 
     if len(keys) != len(set(keys)):
         raise EconomicsError("economics opponent/seed/seat cells must be unique")
@@ -264,9 +280,11 @@ def validate_report(
         )
 
     opponents = sorted(seeds_by_opponent)
-    if len(opponents) < MIN_OPPONENTS:
+    authorized = list(AUTHORIZED_OPPONENT_IDS)
+    if opponents != authorized:
         raise EconomicsError(
-            f"economics panel requires at least {MIN_OPPONENTS} distinct opponents"
+            "economics opponent roster must exactly equal authorized release roster; "
+            f"expected={authorized!r} observed={opponents!r}"
         )
     reference_seeds = seeds_by_opponent[opponents[0]]
     if len(reference_seeds) < MIN_SEEDS:
@@ -299,6 +317,22 @@ def validate_report(
     if len(cells) != expected_cells:
         raise EconomicsError("economics panel contains non-balanced opponent/seed/seat topology")
 
+    per_opponent: dict[str, dict[str, int]] = {}
+    for opponent in opponents:
+        opponent_delta = sum(deltas_by_opponent[opponent])
+        if opponent_delta < 0:
+            raise EconomicsError(
+                "economics opponent margin regresses: "
+                f"opponent={opponent!r} sum_delta={opponent_delta} "
+                f"cells={len(deltas_by_opponent[opponent])}"
+            )
+        per_opponent[opponent] = {
+            "cell_count": len(deltas_by_opponent[opponent]),
+            "control_margin_sum": sum(control_margins_by_opponent[opponent]),
+            "candidate_margin_sum": sum(candidate_margins_by_opponent[opponent]),
+            "sum_margin_delta": opponent_delta,
+        }
+
     sum_delta = sum(deltas)
     if sum_delta < 0:
         raise EconomicsError(
@@ -312,6 +346,10 @@ def validate_report(
     if not math.isfinite(mean_delta):
         raise EconomicsError("economics mean margin delta is non-finite")
 
+    registry_blob = _git_blob(
+        REFERENCE_POLICIES_GIT_BLOB,
+        "authorized REFERENCE-POLICIES.json Git blob",
+    )
     return {
         "schema": RECEIPT_SCHEMA,
         "classification": "PASS",
@@ -322,6 +360,8 @@ def validate_report(
         "opponent_pack_id": report_opponent_pack,
         "opponent_count": len(opponents),
         "opponent_ids": opponents,
+        "authorized_opponent_ids": authorized,
+        "opponent_registry_git_blob": registry_blob,
         "control_archive_sha256": report_control_archive,
         "candidate_archive_sha256": report_candidate_archive,
         "cell_count": len(cells),
@@ -333,6 +373,7 @@ def validate_report(
         "tied_cells": tied,
         "control_margin_sum": sum(control_margins),
         "candidate_margin_sum": sum(candidate_margins),
+        "per_opponent": per_opponent,
         "panel_sha256": hashlib.sha256(_canonical_bytes(cells)).hexdigest(),
     }
 
