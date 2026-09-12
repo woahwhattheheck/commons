@@ -39,7 +39,7 @@ def sha256(raw: bytes) -> str:
 
 _E08_HORIZON_BLOCK = """        route=self.controller.R[self.controller.cur]\n        shops=obs.get('town',{}).get('unlocked_shops',[])\n        end,horizon=event_aware_horizon(now,last,route,targets,shops,config)\n        unit_event=(represented_shed_event(\n            now,horizon['baseline_end'],horizon['hard_end'],route,farm,private,config,\n            base.get('market',[]))\n                    if targets else None)\n        if unit_event is not None:\n            end=max(end,unit_event)\n        horizon['unit_event']=unit_event\n        horizon['extended']=end>horizon['baseline_end']\n        self.diagnostics['horizon']=horizon\n"""
 
-_V31_FIXED_HORIZON_BLOCK = """        route=self.controller.R[self.controller.cur]\n        shops=obs.get('town',{}).get('unlocked_shops',[])\n        end=min(now+HORIZON,last,(now//24+1)*24-1)\n        # Future controller branch changes are not predicted.\n        for checkpoint,*_ in parent.DECISIONS:\n            if now<checkpoint<=end:end=checkpoint-1\n        dates=[now]+[t for t in range(now+1,end+1) if any(absorption(p,t-1,shops,config) for p in PRODUCTS)]\n        if len(dates)>3:dates=dates[:2]+dates[-1:]\n        if dates[-1]!=end:dates.append(end)\n        dates=sorted(set(dates))\n        horizon={'baseline_end':end,'hard_end':end,'service_dates':{},\n                 'unit_event':None,'extended':False,'ablation':'submitted-v31-fixed'}\n        self.diagnostics['horizon']=horizon\n"""
+_V31_FIXED_HORIZON_BLOCK = """        route=self.controller.R[self.controller.cur]\n        shops=obs.get('town',{}).get('unlocked_shops',[])\n        end=min(now+HORIZON,last,(now//24+1)*24-1)\n        # Future controller branch changes are not predicted.\n        for checkpoint,*_ in parent.DECISIONS:\n            if now<checkpoint<=end:end=checkpoint-1\n        dates=[now]+[t for t in range(now+1,end+1) if any(absorption(p,t-1,shops,config) for p in PRODUCTS)]\n        if len(dates)>3:dates=dates[:2]+dates[-1:]\n        if dates[-1]!=end:dates.append(end)\n        dates=sorted(set(dates))\n        horizon={'baseline_end':end,'hard_end':end,'service_dates':{},\n                 'unit_event':None,'extended':False}\n        self.diagnostics['horizon']=horizon\n"""
 
 _E08_ITEM_WINDOW_BLOCK = """            item_end=max(horizon['baseline_end'],\n                         horizon['service_dates'].get(item,horizon['baseline_end']),\n                         horizon['unit_event'] or horizon['baseline_end'])\n            dates=product_event_dates(item,now,item_end,shops,config)\n"""
 
@@ -118,7 +118,8 @@ def legacy_horizon_and_dates(
     for checkpoint in decisions:
         if now < checkpoint <= end:
             end = checkpoint - 1
-    dates = [now] + [t for t in range(now + 1, end + 1) if t in set(absorption_dates)]
+    absorption_dates = set(absorption_dates)
+    dates = [now] + [t for t in range(now + 1, end + 1) if t in absorption_dates]
     if len(dates) > 3:
         dates = dates[:2] + dates[-1:]
     if dates[-1] != end:
