@@ -44,9 +44,11 @@ Gemini/Antigravity's PLANTGUARD observation is stronger than a generic action-co
 
 The verifier accounts for the mechanics that make the raw slogan unsafe to apply directly:
 
-- only a current PLANT that can actually create a crop is considered: the tile must be empty, the crop must be known, same-crop aggregate seed demand must not exceed private seed custody, and only the first colocated PLANT can own a target;
+- only a current PLANT that can actually be certified as creating a crop is considered: the tile must initially be empty, the crop must be known, same-crop aggregate seed demand must not exceed private seed custody, and only the first executable colocated PLANT can own a target;
+- current unit rows execute farmer then hands: an earlier same-site `BUILD_COOP` or `BUILD_PASTURE` can occupy an initially empty tile before a later PLANT, so unresolved build success returns `NOT_CERTIFIED` rather than falsely labeling that later PLANT doomed; earlier DIG/HARVEST reclamation of an initially occupied tile remains conservative and is not promoted into a candidate;
 - same-callback actor order is exact: WATER by an actor **before** the PLANT does not help; WATER by a later actor on the same tile does;
 - actor positions are carried through NORTH/SOUTH/EAST/WEST commands, including out-of-bounds movement no-ops, so later WATER must physically occur on the planted tile;
+- observation `hour` is strict-integer bound to `step % turnsPerDay`; a caller-inconsistent or type-poisoned clock cannot mint an EOD certificate;
 - the suffix must be complete through EOD and preserve existing actor cardinality;
 - an executable HIRE before the final callback destroys one-sided rejection because a new actor could create an unrepresented watering path; HIRE beyond the market row cap is inert, and a final-hour HIRE cannot act before that EOD;
 - malformed, incomplete, type-poisoned, unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
@@ -78,7 +80,7 @@ python -O -B test_plant_guard.py
 python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **20 CROPSCALE tests** and **19 PLANTGUARD tests** pass in each mode.
+Expected: **20 CROPSCALE tests** and **24 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
