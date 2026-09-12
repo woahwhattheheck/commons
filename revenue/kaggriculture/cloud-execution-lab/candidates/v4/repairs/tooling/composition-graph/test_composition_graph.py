@@ -24,6 +24,8 @@ class CompositionGraphTests(unittest.TestCase):
         return {
             "schema": "titan-v4-composition/v1",
             "mode": "fail_closed",
+            "canonical_branch": "main",
+            "canonical_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
             "components": components,
             "discovery": {
                 "roots": ["pkg"],
@@ -112,6 +114,24 @@ class CompositionGraphTests(unittest.TestCase):
         manifest["discovery"]["ignore"] = ["pkg/port_a.py"]
         result = cg.validate_manifest(manifest, self.root)
         self.assertIn("ignore_without_reason", self.codes(result))
+
+    def test_wrong_canonical_root_fails(self):
+        manifest = self.manifest([])
+        manifest["canonical_root"] = "revenue/kaggriculture/cloud-execution-lab/candidates/v4-copy"
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("wrong_canonical_root", self.codes(result))
+
+    def test_symlink_entrypoint_fails_closed(self):
+        target = self.root / "outside.py"
+        target.write_text("# outside\n", encoding="utf-8")
+        link = self.root / "pkg" / "linked.py"
+        try:
+            link.symlink_to(target)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlinks unavailable")
+        a = self.comp("a", "pkg/linked.py", "base", "a-out")
+        result = cg.validate_manifest(self.manifest([a]), self.root)
+        self.assertIn("unsafe_entrypoint_resolution", self.codes(result))
 
 
 if __name__ == "__main__":
