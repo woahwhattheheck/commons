@@ -38,8 +38,8 @@ jobs:
           PYTHONDONTWRITEBYTECODE: "1"
         run: |
           set -euo pipefail
-          python -B -m py_compile outer_wrappers_current.py test_outer_wrappers_current.py
-          python -B -m unittest -v test_outer_wrappers_current.py
-          python -O -B -m unittest -v test_outer_wrappers_current.py
+          python -B -m py_compile outer_wrappers_current.py staged_runtime.py test_outer_wrappers_current.py test_staged_runtime.py
+          python -B -m unittest -v test_outer_wrappers_current.py test_staged_runtime.py
+          python -O -B -m unittest -v test_outer_wrappers_current.py test_staged_runtime.py
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           test -z "$(git status --porcelain)"
