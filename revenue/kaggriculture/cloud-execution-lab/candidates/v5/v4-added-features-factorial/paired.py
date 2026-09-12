@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Factorial ablation of the four production features added between submitted V3.1 and V4.
+"""Factorial self-ablation of four selected production features in submitted V4.
 
 Every experimental arm is derived from the exact submitted V4 archive and may change
 only TITAN-CONFIG.json. Runtime, policy, engine, opponent, and evaluator bytes are
-otherwise shared and authenticated.
+otherwise shared and authenticated. This experiment does not reconstruct V3.1.
 """
 from __future__ import annotations
 
@@ -24,16 +24,15 @@ import types
 
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 V4_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
-V31_SOURCE = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
 V4_SOURCE = "4af1113154e78c662780e6658cd920daac7902e3"
 HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 FEATURES = ("idle_fertilizer", "crop_release", "early_capital", "town_procurement")
-SCHEMA = "astra.v5.v4-added-features-factorial.v1"
+SCHEMA = "astra.v5.v4-added-features-factorial.v2"
 
 SCREEN_ARMS = (
     "v4",
-    "v31_flags",
+    "all_four_off",
     "off_idle_fertilizer",
     "off_crop_release",
     "off_early_capital",
@@ -134,10 +133,16 @@ def exact_v4_config(raw: bytes) -> dict:
     return value
 
 
+def canonical_arm(name: str) -> str:
+    """Map deprecated input spellings to the canonical experiment identity."""
+    return "all_four_off" if name == "v31_flags" else name
+
+
 def feature_vector(name: str) -> dict[str, bool]:
+    name = canonical_arm(name)
     if name == "v4":
         return {feature: True for feature in FEATURES}
-    if name == "v31_flags":
+    if name == "all_four_off":
         return {feature: False for feature in FEATURES}
     if name.startswith("off_"):
         target = name[4:]
@@ -255,8 +260,9 @@ def main() -> int:
     seeds = [int(value) for value in args.seeds.split(",") if value]
     seats = [int(value) for value in args.seats.split(",") if value]
     opponents = [value for value in args.opponents.split(",") if value]
-    arms = ([value for value in args.arms.split(",") if value]
-            if args.arms else design_arms(args.design))
+    raw_arms = ([value for value in args.arms.split(",") if value]
+                if args.arms else design_arms(args.design))
+    arms = [canonical_arm(value) for value in raw_arms]
     if (not seeds or len(seeds) != len(set(seeds))
             or not seats or len(seats) != len(set(seats)) or not set(seats) <= {0, 1}
             or not opponents or len(opponents) != len(set(opponents))
@@ -328,7 +334,6 @@ def main() -> int:
     run = {
         "schema": SCHEMA,
         "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "v31_source": V31_SOURCE,
         "v4_source": V4_SOURCE,
         "baseline_archive_sha256": BASELINE_SHA256,
         "baseline_config_sha256": V4_CONFIG_SHA256,
@@ -352,13 +357,14 @@ def main() -> int:
         "method": (
             "Every arm is extracted from one single-read SHA256-authenticated capture of "
             "the exact submitted V4 archive, parsed through a private snapshot. Only "
-            "TITAN-CONFIG.json may differ, and only the four booleans added/enabled in V4 "
-            "versus submitted V3.1 may change; v31_flags is a four-flag ablation, not a "
-            "behavioral reconstruction of V3.1. The shared helper executes from its single "
-            "authenticated captured byte snapshot; evaluator, loader, packer, reference "
-            "bank and opponent support execute from the authenticated snapshot inherited "
-            "from joint-liquidity-bench. Each arm gets a fresh persistent agent process and "
-            "private payload; arm order rotates by cell."
+            "TITAN-CONFIG.json may differ, and only four selected submitted-V4 boolean "
+            "mechanisms may change. all_four_off is a V4 self-ablation and is NOT a "
+            "behavioral reconstruction or approximation of submitted V3.1; exact V3.1 "
+            "comparison belongs to archive-version-bridge/gauntlet and R04 recovery evidence. "
+            "The shared helper executes from its single authenticated captured byte snapshot; "
+            "evaluator, loader, packer, reference bank and opponent support execute from the "
+            "authenticated snapshot inherited from joint-liquidity-bench. Each arm gets a "
+            "fresh persistent agent process and private payload; arm order rotates by cell."
         ),
     }
     helper.write_json(output / "run.json", run)
