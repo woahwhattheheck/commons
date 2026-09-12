@@ -1,0 +1,64 @@
+name: astra-native-freshness-13006-build-v2
+
+on:
+  push:
+    branches:
+      - astra/native-freshness-13006-build-20260912
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-push:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout transport
+        uses: actions/checkout@v4
+        with:
+          ref: astra/native-freshness-13006-build-20260912
+          path: transport
+          persist-credentials: false
+
+      - name: Checkout exact target
+        uses: actions/checkout@v4
+        with:
+          ref: 8498c80186868a4e3e8943d16baaea1e4b67515c
+          path: work
+          fetch-depth: 0
+
+      - name: Apply scoped patch
+        run: python ../transport/tools/astra_native_freshness_13006_patch.py .
+        working-directory: work
+
+      - name: Run exact focused gate
+        working-directory: work
+        run: |
+          set -euo pipefail
+          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness
+          python -B "$DIR/test_check_native_freshness.py" -v
+          python -O -B "$DIR/test_check_native_freshness.py" -v
+          python -m py_compile "$DIR/check_native_freshness.py" "$DIR/test_check_native_freshness.py"
+          git diff --check
+
+      - name: Push only if exact target head is unchanged
+        working-directory: work
+        run: |
+          set -euo pipefail
+          TARGET=sol/native-freshness-full-map-20260912
+          EXPECTED=8498c80186868a4e3e8943d16baaea1e4b67515c
+          REMOTE="$(git ls-remote origin "refs/heads/$TARGET" | awk '{print $1}')"
+          test "$REMOTE" = "$EXPECTED" || { echo "TARGET_DRIFT expected=$EXPECTED observed=$REMOTE"; exit 97; }
+          git config user.name "Astra V4 executor"
+          git config user.email "astra-v4@users.noreply.github.com"
+          git add \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/check_native_freshness.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/test_check_native_freshness.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/README.md
+          git commit -m "TITAN V4 freshness: close evaluator and topology trust"
+          NEW_HEAD="$(git rev-parse HEAD)"
+          git push --force-with-lease="refs/heads/$TARGET:$EXPECTED" origin "HEAD:refs/heads/$TARGET"
+          echo "NATIVE_FRESHNESS_NEW_HEAD=$NEW_HEAD"
+          printf 'checker_blob='; git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/check_native_freshness.py
+          printf 'test_blob='; git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/test_check_native_freshness.py
+          printf 'readme_blob='; git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/README.md
