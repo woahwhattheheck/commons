@@ -175,7 +175,10 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
     branch = run.get("head_branch")
     event = run.get("event")
     prs = _run_pr_numbers(run)
-    head_repo = ((run.get("head_repository") or {}).get("full_name"))
+    head_repository = run.get("head_repository")
+    head_repo = head_repository.get("full_name") if isinstance(head_repository, dict) else None
+    repo_known = isinstance(head_repo, str) and bool(head_repo)
+    same_repo = repo_known and head_repo == repo
 
     base = {
         "run_id": run_id if type(run_id) is int else None,
@@ -205,10 +208,11 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
         nums = [number for number, head in snapshot.open_pr_heads.items() if head == sha_norm]
         return finish("LIVE_PR_HEAD_KEEP", f"exact SHA is current head of open PR(s) {sorted(nums)}")
 
-    # Exact branch tip is also a keep proof. For fork PRs, base-repo branch
-    # inventory does not establish absence, so only compare same-repo branches.
-    same_repo = not head_repo or head_repo == repo
-    if same_repo and isinstance(branch, str) and snapshot.branch_tips.get(branch) == sha_norm:
+    # Exact branch identity is a conservative keep proof even when GitHub did
+    # not supply head_repository. Negative branch inference below requires an
+    # explicit same-repo identity; absence of repo identity never proves that a
+    # base-repo branch moved or disappeared.
+    if (same_repo or not repo_known) and isinstance(branch, str) and snapshot.branch_tips.get(branch) == sha_norm:
         return finish("LIVE_BRANCH_HEAD_KEEP", f"exact SHA is current tip of branch {branch}")
 
     # Every cancel-candidate below depends on the exact SHA not being a live
@@ -238,6 +242,12 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
             "CLOSED_PR_HEAD_CANDIDATE",
             f"run references PR(s) {prs}, none present in complete open-PR inventory",
             candidate=True,
+        )
+
+    if not repo_known and isinstance(branch, str):
+        return finish(
+            "UNKNOWN_KEEP",
+            "head repository identity unknown; base-repo branch inventory cannot prove staleness",
         )
 
     if isinstance(branch, str) and same_repo:
