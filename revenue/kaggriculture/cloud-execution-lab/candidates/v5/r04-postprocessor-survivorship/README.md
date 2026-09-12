@@ -26,7 +26,13 @@ This treatment changes only `TITAN-CONFIG.json` and suppresses the canonical con
 
 Treatment config SHA256 is `f32890231e5ea0b082ffdb6e2e9dbf65450172488e023f51314fc1aff059ff2f`. Every other archive member must remain byte-identical, including the authenticated R04 donor closure and carrot/delivery code.
 
-`consumer=parent` is intentional: simply turning individual feature flags off would still execute FrozenSelected sale scheduling, which submitted V3.1's R04 fast-return bypassed. `seed`, `funding`, and `redundant_hire` are explicitly disabled as well because TitanRuntime can still call those selected-action transforms in parent mode.
+`consumer=parent` is intentional. In the authenticated `0aded...` topology, `FrozenSelected` inherits `SellScheduler`; that constructor creates `controller = parent.Agent()`, and `TitanAgent._initialize()` assigns that controller to `production`. The #13455 overlay makes `parent.Agent` the embedded R04 agent. Production therefore already calls R04 directly. The frozen scheduler runs later through `consumer.transform(...)`; parent mode makes `transform_selected()` take the selected-action deepcopy path instead. `seed`, `funding`, and `redundant_hire` are explicitly disabled because TitanRuntime can still apply those selected-action transforms in parent mode; the remaining false flags suppress the retained pressure/stock/spatial/capital/town stages. The deliberate carrot/delivery shell remains unchanged and continues to read the R04 controller tape.
+
+That interpretation is machine-bound, not documentary only. Receipt schema v2 pins the exact baseline SHA256 of `main.py`, `titan_runtime.py`, `frozen_selected.py`, `scheduler.py`, and `r04_full_router.py`, and requires unique source anchors for the controller/production and parent-mode transform topology before any treatment is emitted. A later package cannot inherit this interpretation merely by updating the top-level archive constant.
+
+## Publication custody
+
+The treatment is staged and fsynced completely on the destination filesystem before publication. The complete receipt is then created with exclusive/create-only semantics. Only after that receipt exists does the final archive path appear, via a create-only hard link to the complete staged inode. A receipt-path race therefore publishes no archive; an archive-path race removes the exact receipt published by this invocation. A crash may leave evidence-only residue or a harmless staging link, but must not leave a runnable final treatment archive without its complete receipt.
 
 ## Decision rule
 
