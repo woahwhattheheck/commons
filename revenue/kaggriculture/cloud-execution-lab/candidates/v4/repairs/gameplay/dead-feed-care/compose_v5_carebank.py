@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Source-bound scratch composer for the existing W2 CAREBANK service lane.
 
-This does not create a second policy authority or change production defaults.  It
+This does not create a second policy authority or change production defaults. It
 materializes the already-reviewed ``dead_feed_care.py`` helper into an exact
 current-V5 package, behind the existing ``r04_dead_feed_care`` feature key, so
 matched official-engine engagement/economics can be measured before promotion.
@@ -15,37 +15,38 @@ import json
 from pathlib import Path
 import shutil
 
-RUNTIME_BLOB = "da8d5fe86543e1732b0c3ff4675f661bdd2c8d71"
-CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
+MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
+RUNTIME_BLOB = "922c99a571e4ba49726a753739f95afe86e72290"
+CONFIG_BLOB = "ef0bfb1dfa1ce65103a0b178647fc16bc9c7e791"
 HELPER_BLOB = "a93f7fbc3054aaeb2d04878dc620aec66d8a3377"
 HELPER_RELATIVE = Path("candidates/v4/repairs/gameplay/dead-feed-care/dead_feed_care.py")
 
-FEATURE_BEFORE = "    early_capital: bool = False\n\n    def __post_init__(self):"
+FEATURE_BEFORE = (
+    "    early_capital: bool = False\n"
+    "    exec_pace: bool = False\n\n"
+    "    def __post_init__(self):"
+)
 FEATURE_AFTER = (
     "    early_capital: bool = False\n"
+    "    exec_pace: bool = False\n"
     "    r04_dead_feed_care: bool = False\n\n"
     "    def __post_init__(self):"
 )
-BOOL_BEFORE = (
-    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
-    "        )"
-)
-BOOL_AFTER = (
-    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
-    "            'r04_dead_feed_care',\n"
-    "        )"
-)
+BOOL_BEFORE = "        bool_fields = (*bool_fields, 'exec_pace')"
+BOOL_AFTER = "        bool_fields = (*bool_fields, 'exec_pace', 'r04_dead_feed_care')"
 COMPAT_BEFORE = (
+    "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
     "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
-    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
-    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')"
 )
 COMPAT_AFTER = (
-    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
-    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
+    "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
     "        if self.r04_dead_feed_care and (self.consumer != 'frozen' or self.terminal_route):\n"
     "            raise ValueError('r04_dead_feed_care requires nonterminal frozen SELL')\n"
-    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')"
 )
 SELECT_BEFORE = (
     "                selected = self.production.act(obs)\n"
@@ -117,6 +118,17 @@ def _helper_functions(path: Path) -> set[str]:
     }
 
 
+def _current_entrypoint_shape(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    town = "town_enabled = _town_procurement_enabled(feature_data)"
+    strip = "feature_data.pop('town_procurement', None)"
+    bind = "features = Features(**feature_data)"
+    if text.count(town) != 1 or text.count(strip) != 1 or text.count(bind) != 1:
+        raise ValueError("current entrypoint town/runtime feature seam drifted")
+    if not text.index(town) < text.index(strip) < text.index(bind):
+        raise ValueError("town_procurement must be consumed before Features binding")
+
+
 def materialize(source_root: Path, package_root: Path, output: Path, *, enabled: bool = False) -> dict:
     """Create an isolated authenticated V5 control/treatment package."""
     source_root = source_root.resolve()
@@ -125,10 +137,12 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
     if output.exists() or output == package_root or package_root in output.parents:
         raise ValueError("output must be a new path outside the input package")
 
+    main = package_root / "main.py"
     runtime = package_root / "titan_runtime.py"
     config = package_root / "TITAN-CONFIG.json"
     helper = source_root / HELPER_RELATIVE
     expected = {
+        "main.py": (main, MAIN_BLOB),
         "titan_runtime.py": (runtime, RUNTIME_BLOB),
         "TITAN-CONFIG.json": (config, CONFIG_BLOB),
         str(HELPER_RELATIVE): (helper, HELPER_BLOB),
@@ -141,6 +155,14 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         actual[label] = blob
         if blob != expected_blob:
             raise ValueError(f"source authentication failed for {label}: {blob}")
+
+    _current_entrypoint_shape(main)
+    base_config = json.loads(config.read_text(encoding="utf-8"))
+    if type(base_config) is not dict:
+        raise ValueError("TITAN-CONFIG.json must be an object")
+    for key in ("town_procurement", "exec_pace"):
+        if type(base_config.get(key)) is not bool:
+            raise ValueError(f"current package requires exact-bool {key}")
 
     funcs = _helper_functions(helper)
     required = {"apply_dead_feed_care", "apply_carebank_feed_swap"}
@@ -162,6 +184,10 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         "authority": "candidates/v4/repairs/gameplay/dead-feed-care",
         "source_blobs": actual,
         "outputs": {
+            "main.py": {
+                "git_blob": git_blob_id((output / "main.py").read_bytes()),
+                "sha256": sha256((output / "main.py").read_bytes()),
+            },
             "titan_runtime.py": {
                 "git_blob": git_blob_id((output / "titan_runtime.py").read_bytes()),
                 "sha256": sha256((output / "titan_runtime.py").read_bytes()),
@@ -180,6 +206,7 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         "production_default_changed": False,
         "strict_feature_types": True,
         "consumer_contract": "frozen_nonterminal_only",
+        "entrypoint_contract": "current_main_strips_town_procurement_before_Features",
         "selected_pipeline": ["apply_dead_feed_care", "apply_carebank_feed_swap"],
         "deadline_fallback": "completed_parent_selected_action",
     }
