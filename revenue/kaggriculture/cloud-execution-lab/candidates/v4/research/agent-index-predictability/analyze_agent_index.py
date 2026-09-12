@@ -100,12 +100,14 @@ def _sign_test_two_sided(diffs: list[float]) -> tuple[int, int, int, float]:
 def _cohen_dz(diffs: list[float]) -> float | None:
     if len(diffs) < 2:
         return None
+    mean = statistics.mean(diffs)
     sd = statistics.stdev(diffs)
     if sd == 0.0:
-        if statistics.mean(diffs) == 0.0:
-            return 0.0
-        return math.copysign(float("inf"), statistics.mean(diffs))
-    return statistics.mean(diffs) / sd
+        # Constant nonzero paired deltas imply an unbounded standardized effect.
+        # Preserve strict JSON output by reporting that degenerate effect as null;
+        # the paired mean and sign test still carry the directional evidence.
+        return 0.0 if mean == 0.0 else None
+    return mean / sd
 
 
 def _assignment_tv(records: list[dict[str, Any]]) -> float | None:
