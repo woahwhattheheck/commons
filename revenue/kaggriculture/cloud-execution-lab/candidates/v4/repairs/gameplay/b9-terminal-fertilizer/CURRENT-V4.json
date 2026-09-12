@@ -1,0 +1,51 @@
+{
+  "schema": "titan.v4.recovered_semantic_bridge.v1",
+  "mechanism": "b9-terminal-fertilizer",
+  "status": "source_bridge_default_off_not_runtime_wired",
+  "base_commit": "da894be40f396475dc71cf0907a87a068b71e494",
+  "source_pins": {
+    "recovered_donor_blob": "ed8d6923541e700c3a0ae4b93695bbd56455a3b6",
+    "recovered_readme_blob": "033d4415c087b1bf7acc99ca79bcc6e5365beb11",
+    "recovered_tests_blob": "850f439c764b5b4dfb631d40a04ccc7f1dce2093",
+    "titan_runtime_blob": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
+    "main_blob": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "titan_config_blob": "3a3bef83899d3010fad623b628d9e95d9978111b"
+  },
+  "scope": {
+    "collect_steps": [716, 717],
+    "terminal_step": 718,
+    "standard_episode_steps": 720,
+    "standard_turns_per_day": 24,
+    "requires_completed_action": true,
+    "general_idle_fertilizer_owner": "ASTRA-FERTDEADLINE"
+  },
+  "composition_contract": {
+    "after": [
+      "existing current market/funding/final-pressure returned-action guards"
+    ],
+    "before": [
+      "SpatialTempo/history/receipt state commit"
+    ],
+    "does_not_own": [
+      "generic idle-fertilizer collection",
+      "generic market-pressure lockstep",
+      "sale-horizon policy"
+    ]
+  },
+  "verification": {
+    "test_count": 11,
+    "normal": "pass",
+    "optimized_python": "pass",
+    "py_compile": "pass"
+  },
+  "activation": {
+    "default_on": false,
+    "runtime_wired": false,
+    "requires_current_native_engagement_census": true,
+    "requires_both_seat_economics": true
+  },
+  "coordination": {
+    "claim_url": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789186233600729",
+    "collision_note": "ASTRA-FERTDEADLINE owns the general ongoing idle-fertilizer collector; this bridge is terminal-only."
+  }
+}
