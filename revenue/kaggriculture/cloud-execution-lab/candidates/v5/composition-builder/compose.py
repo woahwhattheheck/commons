@@ -22,6 +22,8 @@ from typing import Any
 SCHEMA = "titan-v5-composition-v2"
 CONFIG_MEMBER = "TITAN-CONFIG.json"
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_COMPONENT_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+_RESERVED_VARIANT_NAMES = frozenset({"control"})
 
 
 class CompositionError(RuntimeError):
@@ -117,7 +119,11 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
 
     result: dict[str, dict[str, Any]] = {}
     for name, raw in manifest["components"].items():
-        if not isinstance(name, str) or not name or "/" in name or "\\" in name:
+        if (
+            not isinstance(name, str)
+            or _COMPONENT_RE.fullmatch(name) is None
+            or name in _RESERVED_VARIANT_NAMES
+        ):
             raise CompositionError(f"invalid component name: {name!r}")
         if not isinstance(raw, dict):
             raise CompositionError(f"component {name} must be an object")
