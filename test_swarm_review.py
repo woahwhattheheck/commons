@@ -32,13 +32,15 @@ class ReviewGit(unittest.TestCase):
         self.work = {"seat": "MUSE", "family": "muse", "operation": "one-operation",
                      "read_paths": ["dep.py"],
                      "evidence": [{"result": "PASS", "reference": "actual check fixture"}]}
+        self.exec_evidence = [{"result": "PASS", "kind": "execution", "head": self.head,
+                               "reference": "exact-head unit fixture"}]
         self.pull = {"number": 1, "headRefOid": self.head, "baseRefName": "main",
                      "body": "```commons-work\n" + json.dumps(self.work) + "\n```"}
         self.subject = sr.change(self.git, self.base, self.pull)
         self.receipt = sr.review_template(self.subject)
         self.receipt.update(decision="PASS", reviewer={"seat": "ASTRA", "family": "gpt",
                             "session_ref": "test-session"}, summary="read actual diff",
-                            evidence=self.work["evidence"])
+                            evidence=self.exec_evidence)
 
     def write(self, name, value):
         p = self.root / name; p.parent.mkdir(parents=True, exist_ok=True); p.write_text(value)
@@ -55,6 +57,26 @@ class ReviewGit(unittest.TestCase):
     def test_non_gpt_needs_gpt(self):
         self.assertEqual("WAIT_GPT", sr.decision(self.git, self.subject, [])["state"])
         self.assertEqual("READY", sr.decision(self.git, self.subject, [self.review()])["state"])
+
+    def test_source_only_pass_cannot_authorize_code_merge(self):
+        value = copy.deepcopy(self.receipt)
+        value["evidence"] = [{"result": "PASS", "reference": "semantic source clean"}]
+        verdict = sr.decision(self.git, self.subject, [self.review(value)])
+        self.assertEqual("HOLD", verdict["state"])
+        self.assertIn("exact-head execution", verdict["reason"])
+
+    def test_execution_pass_is_bound_to_exact_head(self):
+        value = copy.deepcopy(self.receipt)
+        value["evidence"][0]["head"] = "0" * 40
+        verdict = sr.decision(self.git, self.subject, [self.review(value)])
+        self.assertEqual("HOLD", verdict["state"])
+        self.assertIn("exact-head execution", verdict["reason"])
+
+    def test_execution_requirement_is_path_derived(self):
+        self.assertTrue(sr.execution_required(["module.py"]))
+        self.assertTrue(sr.execution_required(["config/policy.json"]))
+        self.assertTrue(sr.execution_required(["web/control.html"]))
+        self.assertFalse(sr.execution_required(["README.md", "docs/guide.rst", "notes.txt"]))
 
     def test_unrelated_main_advance_reuses_review(self):
         self.write("unrelated.py", "another builder"); new = self.commit("unrelated")
@@ -99,8 +121,12 @@ class ReviewGit(unittest.TestCase):
         current = self.commit("record observed defect")
         subject = sr.change(self.git, current, self.pull)
         self.assertEqual("HOLD", sr.decision(self.git, subject, [self.review()])["state"])
-        reviewed = dict(self.receipt, preflight={"seat": "OTHER", "evidence": self.work["evidence"]})
+        reviewed = copy.deepcopy(self.receipt)
+        reviewed["preflight"] = {"seat": "OTHER", "evidence": copy.deepcopy(self.exec_evidence)}
         self.assertEqual("READY", sr.decision(self.git, subject, [self.review(reviewed)])["state"])
+        source_only = copy.deepcopy(reviewed)
+        source_only["preflight"]["evidence"] = [{"result": "PASS", "reference": "source-only preflight"}]
+        self.assertEqual("HOLD", sr.decision(self.git, subject, [self.review(source_only)])["state"])
         value = dict(self.receipt, evidence=[])
         self.assertEqual("HOLD", sr.decision(self.git, self.subject, [self.review(value)])["state"])
 
