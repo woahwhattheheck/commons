@@ -1,0 +1,37 @@
+name: TITAN V4 UNITPIPE source gate
+on:
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/unit-pipeline/**
+      - .github/workflows/titan-v4-unitpipe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: titan-v4-unitpipe-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Verify official engine source identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          ENGINE=revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py
+          test "$(git hash-object "$ENGINE")" = 3c202c7ee921da239356789e266b694635103fc4
+      - name: UNITPIPE normal and optimized source witnesses
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/unit-pipeline
+          pushd "$SRC"
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_unit_pipeline.py
+          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_unit_pipeline.py
+          python -B -m py_compile unit_pipeline.py test_unit_pipeline.py
+          popd
