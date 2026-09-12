@@ -9,13 +9,13 @@ can survive one unwatered EOD.  The literal WATER->PASS rewrite is deliberately
     next day, same live plant -> exactly one semantic WATER
 
 HARVEST is accepted only when the current source observation proves positive
-stored yield, so the reclaimed row is productive rather than a syntactic PASS.
-The next-day observation must prove that the same crop survived with the expected
-one-day missed-water streak and the supplied recovery action must actually WATER
-that site without another same-callback actor DIGging the plant.  Unit-action
-semantics are keyed by row[0], so extended WATER rows count as WATER and duplicate
-semantic WATER rows fail closed.  No forecast or scheduler promise is treated as
-execution proof.
+stored yield and actor order proves that no earlier same-site actor consumes or
+destroys that yield before the rewritten row executes.  The next-day observation
+must prove that the same crop survived with the expected one-day missed-water
+streak and the supplied recovery action must actually WATER that site without
+another same-callback actor DIGging the plant.  Unit-action semantics are keyed by
+row[0], so extended WATER rows count as WATER and duplicate semantic WATER rows
+fail closed.  No forecast or scheduler promise is treated as execution proof.
 
 Research/candidate-only.  No runtime/default/config key is created.
 """
@@ -90,6 +90,36 @@ def _positions_and_rows(action: Any, observation: Any):
     return parsed
 
 
+def _current_harvest_is_productive(
+    action: Any,
+    observation: Any,
+    site: list[int],
+    actor: Any,
+) -> bool:
+    """Prove the replacement HARVEST still has yield when this actor executes.
+
+    The official engine executes actor 0 (main farmer) before hands in ascending
+    actor order.  HYDRA intentionally reasons only about the unique exact WATER
+    row, so another earlier same-site actor can still HARVEST the plant (zeroing
+    ``yield_units``) or DIG it before the rewritten actor reaches the tile.
+    Those cases make a pre-state positive-yield proof stale at execution time.
+    """
+    parsed = _positions_and_rows(action, observation)
+    if (parsed is None or type(actor) is not int
+            or actor < 0 or actor >= len(parsed)):
+        return False
+    candidate_actor, candidate_position, candidate_row = parsed[actor]
+    if (candidate_actor != actor or candidate_position != site
+            or candidate_row != ["WATER"]):
+        return False
+    for prior_actor, position, row in parsed:
+        if prior_actor >= actor:
+            break
+        if position == site and row[0] in {"HARVEST", "DIG"}:
+            return False
+    return True
+
+
 def _recovery_water_actor(action: Any, observation: Any, site: list[int]) -> int | None:
     """Authenticate one semantic same-site WATER and absence of destructive DIG.
 
@@ -141,6 +171,10 @@ def plan_water_harvest_recovery(
         site = plan.get("site")
         crop = plan.get("crop")
         actor = plan.get("actor")
+        if not _current_harvest_is_productive(
+            current_action, current_observation, site, actor
+        ):
+            continue
         current_tile = _tile(current_observation, site)
         if not isinstance(current_tile, dict) or current_tile.get("kind") != "PLANT":
             continue
