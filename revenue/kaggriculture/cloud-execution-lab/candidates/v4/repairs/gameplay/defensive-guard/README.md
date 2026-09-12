@@ -11,6 +11,33 @@ explicitly excluded by the donor). The three guard bodies in
 `r04_defensive_guards.py` are byte-identical to the donor tree's inline
 versions (verified via `inspect.getsource` comparison at carrier build time).
 
+## Custody convergence — blocker resolved
+
+The historical `INTEGRATION.json` row saying `awaiting_raw_payload` is stale.
+Merged PR #13159 landed the requested ancestry-neutral raw payload at this
+pre-existing ledger-owned path, merge
+`86363108927b9e946732daa35e91430a78fd3323`. Current exact identities are:
+
+- source `r04_defensive_guards.py` Git blob
+  `b1fc775ecaf608ca40d01945ec82ae8372ee988b`;
+- focused test `checks/test_v3_r04_defensive_guards.py` Git blob
+  `07785fa53d56444f764af9af4d7cb906bd39ba7d`.
+
+Merged PR #13162 subsequently created the parallel path
+`repairs/gameplay/r04-defensive-guards` and registered that spelling in
+COMPOSITION. Its source and test are byte-identical to the blobs above, so it
+is a race duplicate, not a second semantic donor. That duplicate path is now
+explicitly quarantined as superseded/evidence-only; this `defensive-guard`
+path remains the sole source-custody authority under the one-tree rule. The
+unique duplicate README remains recoverable from PR #13162 / blob
+`2e9ec8631b26e5ca51dc5c4ebc1cd4ce16810675`.
+
+Raw-payload custody is therefore **CLOSED**. Runtime composition/promotion is
+still **BLOCKED** and is a separate gate. The machine integration ledger and
+COMPOSITION path should be normalized to this canonical path when the next
+metadata-only registry reconciliation is admitted; until then, do not infer a
+second authority from the stale rows.
+
 ## Guards
 
 1. `_sanitize_numeric_args` — inf/nan/non-coercible numeric-arg clamp
