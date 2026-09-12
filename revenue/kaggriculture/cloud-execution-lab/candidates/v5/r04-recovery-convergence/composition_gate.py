@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 """Fail-closed convergence gate for recovered submitted-V3.1 R04 behavior.
 
-This module does not implement gameplay.  It validates that independently
+This module does not implement gameplay. It validates that independently
 recovered current-V5 component carriers converge through one declared topology,
-with current-source custody and paired-economics authority, before they may be
-treated as a composition-ready default-OFF V5 stack.
+with current-source custody, leaf economics, and a final combined-composition
+economics receipt before they may be treated as composition-ready default-OFF
+V5 evidence.
 """
 
 from __future__ import annotations
@@ -52,7 +53,7 @@ SUBMITTED_TOPOLOGY = {
 }
 
 # These existed in historical source but were OFF/identity in the exact submitted
-# winner.  Their mere existence is not recovery authority.
+# winner. Their mere existence is not recovery authority.
 FORBIDDEN_ACTIVE_SLOTS = frozenset(
     {
         "cattle_early",
@@ -157,7 +158,7 @@ def _string_list(value: Any, field: str) -> list[str]:
     return out
 
 
-def _canonical_sha256(value: Mapping[str, Any]) -> str:
+def _canonical_sha256(value: Any) -> str:
     raw = json.dumps(
         value,
         sort_keys=True,
@@ -203,6 +204,88 @@ def _validate_lineage(manifest: Mapping[str, Any]) -> None:
     _validate_topology(manifest.get("submitted_topology"))
 
 
+def _validate_economics(
+    economics: Any,
+    prefix: str,
+    *,
+    expected_component_source_sha256: str | None = None,
+) -> dict[str, Any]:
+    if type(economics) is not dict:
+        raise GateError(f"{prefix} must be an object")
+
+    status = _string(economics.get("status"), f"{prefix}.status")
+    if status == "PENDING":
+        if set(economics) != {"status"}:
+            raise GateError(f"{prefix} PENDING economics may contain only status")
+        return {"status": "PENDING"}
+    if status != ECONOMICS_PASS:
+        raise GateError(f"{prefix}.status must be PENDING or {ECONOMICS_PASS}")
+
+    report_sha256 = _sha(economics.get("report_sha256"), f"{prefix}.report_sha256", 64)
+    panel_digest = _sha(economics.get("panel_digest"), f"{prefix}.panel_digest", 64)
+    control_id = _string(economics.get("control_id"), f"{prefix}.control_id")
+    candidate_id = _string(economics.get("candidate_id"), f"{prefix}.candidate_id")
+    if not control_id.startswith("v5c:") or not candidate_id.startswith("v5c:"):
+        raise GateError(f"{prefix} identities must be v5c-bound")
+    if control_id == candidate_id:
+        raise GateError(f"{prefix} control and candidate identities must differ")
+
+    opponents = _string_list(economics.get("opponents"), f"{prefix}.opponents")
+    seeds_per_opponent = _integer(
+        economics.get("seeds_per_opponent"),
+        f"{prefix}.seeds_per_opponent",
+    )
+    both_seats = _exact_bool(economics.get("both_seats"), f"{prefix}.both_seats")
+    paired_cells = _integer(economics.get("paired_cells"), f"{prefix}.paired_cells")
+    mean_margin_delta = _number(
+        economics.get("mean_margin_delta"),
+        f"{prefix}.mean_margin_delta",
+    )
+
+    per_opponent = economics.get("per_opponent_margin_delta")
+    if type(per_opponent) is not dict:
+        raise GateError(f"{prefix}.per_opponent_margin_delta must be an object")
+    if set(per_opponent) != set(opponents):
+        raise GateError(
+            f"{prefix}.per_opponent_margin_delta keys must exactly match opponents"
+        )
+    normalized_per_opponent = {
+        opponent: _number(
+            per_opponent[opponent],
+            f"{prefix}.per_opponent_margin_delta[{opponent!r}]",
+        )
+        for opponent in sorted(opponents)
+    }
+
+    normalized: dict[str, Any] = {
+        "status": status,
+        "report_sha256": report_sha256,
+        "panel_digest": panel_digest,
+        "control_id": control_id,
+        "candidate_id": candidate_id,
+        "opponents": opponents,
+        "seeds_per_opponent": seeds_per_opponent,
+        "both_seats": both_seats,
+        "paired_cells": paired_cells,
+        "mean_margin_delta": mean_margin_delta,
+        "per_opponent_margin_delta": normalized_per_opponent,
+    }
+
+    if expected_component_source_sha256 is not None:
+        supplied = _sha(
+            economics.get("component_source_sha256"),
+            f"{prefix}.component_source_sha256",
+            64,
+        )
+        if supplied != expected_component_source_sha256:
+            raise GateError(
+                f"{prefix}.component_source_sha256 does not match exact component source set"
+            )
+        normalized["component_source_sha256"] = supplied
+
+    return normalized
+
+
 def _validate_component_shape(component: Any, index: int) -> tuple[str, dict[str, Any]]:
     prefix = f"components[{index}]"
     if type(component) is not dict:
@@ -243,52 +326,6 @@ def _validate_component_shape(component: Any, index: int) -> tuple[str, dict[str
         64,
     )
 
-    economics = component.get("economics")
-    if type(economics) is not dict:
-        raise GateError(f"{prefix}.economics must be an object")
-    status = _string(economics.get("status"), f"{prefix}.economics.status")
-    if status == "PENDING":
-        if set(economics) != {"status"}:
-            raise GateError(f"{slot} PENDING economics may contain only status")
-        normalized_economics: dict[str, Any] = {"status": "PENDING"}
-    elif status == ECONOMICS_PASS:
-        report_sha256 = _sha(
-            economics.get("report_sha256"),
-            f"{prefix}.economics.report_sha256",
-            64,
-        )
-        control_id = _string(economics.get("control_id"), f"{prefix}.economics.control_id")
-        candidate_id = _string(economics.get("candidate_id"), f"{prefix}.economics.candidate_id")
-        if not control_id.startswith("v5c:") or not candidate_id.startswith("v5c:"):
-            raise GateError(f"{slot} economics identities must be v5c-bound")
-        if control_id == candidate_id:
-            raise GateError(f"{slot} control and candidate identities must differ")
-
-        opponents = _string_list(economics.get("opponents"), f"{prefix}.economics.opponents")
-        seeds_per_opponent = _integer(
-            economics.get("seeds_per_opponent"),
-            f"{prefix}.economics.seeds_per_opponent",
-        )
-        both_seats = _exact_bool(economics.get("both_seats"), f"{prefix}.economics.both_seats")
-        paired_cells = _integer(economics.get("paired_cells"), f"{prefix}.economics.paired_cells")
-        mean_margin_delta = _number(
-            economics.get("mean_margin_delta"),
-            f"{prefix}.economics.mean_margin_delta",
-        )
-        normalized_economics = {
-            "status": status,
-            "report_sha256": report_sha256,
-            "control_id": control_id,
-            "candidate_id": candidate_id,
-            "opponents": opponents,
-            "seeds_per_opponent": seeds_per_opponent,
-            "both_seats": both_seats,
-            "paired_cells": paired_cells,
-            "mean_margin_delta": mean_margin_delta,
-        }
-    else:
-        raise GateError(f"{slot} economics.status must be PENDING or {ECONOMICS_PASS}")
-
     normalized = {
         "slot": slot,
         "current_abi": True,
@@ -299,16 +336,53 @@ def _validate_component_shape(component: Any, index: int) -> tuple[str, dict[str
             "head_sha": head_sha,
             "source_receipt_sha256": source_receipt_sha256,
         },
-        "economics": normalized_economics,
+        "economics": _validate_economics(
+            component.get("economics"),
+            f"{prefix}.economics",
+        ),
     }
     return slot, normalized
+
+
+def _component_source_view(components: Mapping[str, Mapping[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "slot": slot,
+            "current_abi": components[slot]["current_abi"],
+            "producer_ownership": components[slot]["producer_ownership"],
+            "source_paths": components[slot]["source_paths"],
+            "carrier": components[slot]["carrier"],
+        }
+        for slot in REQUIRED_SLOTS
+        if slot in components
+    ]
+
+
+def _economics_blockers(prefix: str, economics: Mapping[str, Any]) -> list[str]:
+    blockers: list[str] = []
+    if economics["status"] != ECONOMICS_PASS:
+        return [f"economics_not_pass:{prefix}"]
+    if len(economics["opponents"]) < 2:
+        blockers.append(f"opponent_diversity:{prefix}")
+    if economics["seeds_per_opponent"] < 4:
+        blockers.append(f"seed_depth:{prefix}")
+    if economics["both_seats"] is not True:
+        blockers.append(f"both_seats_required:{prefix}")
+    if economics["paired_cells"] < 16:
+        blockers.append(f"paired_cell_floor:{prefix}")
+    if economics["mean_margin_delta"] < 0:
+        blockers.append(f"negative_mean_margin:{prefix}")
+    for opponent, delta in economics["per_opponent_margin_delta"].items():
+        if delta < 0:
+            blockers.append(f"negative_opponent_margin:{prefix}:{opponent}")
+    return blockers
 
 
 def evaluate_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
     """Validate one convergence manifest and return a deterministic receipt.
 
-    Hard semantic/custody violations raise GateError.  Legitimate incomplete or
-    non-promotable component evidence returns BLOCKED with explicit blockers.
+    Hard semantic/custody violations raise GateError. Legitimate incomplete or
+    non-promotable evidence returns BLOCKED with explicit blockers.
     """
     _validate_lineage(manifest)
 
@@ -329,36 +403,41 @@ def evaluate_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
         if component is None:
             blockers.append(f"missing_component:{slot}")
             continue
-
-        economics = component["economics"]
-        if economics["status"] != ECONOMICS_PASS:
-            blockers.append(f"economics_not_pass:{slot}")
-            continue
-        if len(economics["opponents"]) < 2:
-            blockers.append(f"opponent_diversity:{slot}")
-        if economics["seeds_per_opponent"] < 4:
-            blockers.append(f"seed_depth:{slot}")
-        if economics["both_seats"] is not True:
-            blockers.append(f"both_seats_required:{slot}")
-        if economics["paired_cells"] < 16:
-            blockers.append(f"paired_cell_floor:{slot}")
-        if economics["mean_margin_delta"] < 0:
-            blockers.append(f"negative_mean_margin:{slot}")
+        blockers.extend(_economics_blockers(slot, component["economics"]))
 
     extra = sorted(set(components) - set(REQUIRED_SLOTS))
     if extra:
         # Normally unreachable because shape validation rejects unknown slots.
         raise GateError(f"unexpected component slots: {extra}")
 
+    component_source_view = _component_source_view(components)
+    component_source_sha256 = _canonical_sha256(
+        {
+            "submitted_v31_source": SUBMITTED_V31_SOURCE,
+            "submitted_v31_archive_sha256": SUBMITTED_V31_ARCHIVE_SHA256,
+            "submitted_topology": SUBMITTED_TOPOLOGY,
+            "components": component_source_view,
+        }
+    )
+
+    composition_economics = _validate_economics(
+        manifest.get("composition_economics"),
+        "composition_economics",
+        expected_component_source_sha256=component_source_sha256,
+    )
+    blockers.extend(_economics_blockers("combined_composition", composition_economics))
+
     normalized_components = [components[slot] for slot in REQUIRED_SLOTS if slot in components]
     evidence = {
         "submitted_v31_source": SUBMITTED_V31_SOURCE,
         "submitted_v31_archive_sha256": SUBMITTED_V31_ARCHIVE_SHA256,
         "submitted_topology": SUBMITTED_TOPOLOGY,
+        "component_source_sha256": component_source_sha256,
         "components": normalized_components,
+        "composition_economics": composition_economics,
     }
 
-    ready = not blockers and tuple(components) != () and set(components) == set(REQUIRED_SLOTS)
+    ready = not blockers and set(components) == set(REQUIRED_SLOTS)
     return {
         "schema": RECEIPT_SCHEMA,
         "status": (
@@ -370,12 +449,18 @@ def evaluate_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
         "component_count": len(components),
         "required_component_count": len(REQUIRED_SLOTS),
         "blockers": blockers,
+        "component_source_sha256": component_source_sha256,
         "evidence_sha256": _canonical_sha256(evidence),
         "component_heads": {
             slot: components[slot]["carrier"]["head_sha"]
             for slot in REQUIRED_SLOTS
             if slot in components
         },
+        "combined_candidate_id": (
+            composition_economics.get("candidate_id")
+            if composition_economics["status"] == ECONOMICS_PASS
+            else None
+        ),
         # Composition-ready is intentionally not release/default/submission authority.
         "default_flip_authority": False,
         "release_authority": False,
