@@ -1,1 +1,329 @@
-{"schema":"titan-v4-gemini-convergence/v1","canonical_root":"revenue/kaggriculture/cloud-execution-lab/candidates/v4","policy":{"one_v4":true,"new_controller":false,"runtime_activation_implied":false,"rule":"Preserve each mechanism in its strongest source-correct V4 form; consume duplicates into existing owners; keep falsified or economically negative forms as explicit do-not-resurrect evidence rather than silently dropping them."},"gemini_seams":[{"id":"melon_cap","status":"UPGRADED_SOURCE_ONLY","canonical_surface":"repairs/gameplay/antigravity-melon-cap","evidence_prs":[12987,12996],"best_form":"Committed-supply custody plus caller-certified remaining-realization admission. A blind fixed-28 cap is not production authority.","this_change":"repairs/gameplay/antigravity-melon-cap/liquidation_bound.py","promotion_gate":"Authenticated current-route realization certificate plus both-seat current-native economics.","do_not_resurrect":["sold-only cap","blind fixed-28 runtime gate"]},{"id":"fert_warehouse","status":"CONSUMED_DUPLICATE_REMOVED","canonical_surface":"research/floor-capacity-relief + existing B7 overflow authority","evidence_prs":[12863,12989,12996],"best_form":"Use source-real floor-capacity relief only when overflow retention value is proved; B7 owns the overlapping shed-overflow theorem.","promotion_gate":"Current-native natural overflow census and economics.","do_not_resurrect":["$1 market warehouse","Antigravity duplicate FERT warehouse"]},{"id":"goose_printer","status":"CONVERGED","canonical_surface":"research/opening-expansion-economics","evidence_prs":[12829,12841],"best_form":"Certified 9-goose frontier consumed into HOMESTEAD/opening authority; literal 10-goose premise is not retained as truth.","promotion_gate":"Opening/expansion owner economics only.","do_not_resurrect":["literal 10-goose theorem","parallel goose-printer root"]},{"id":"hoist","status":"CONVERGED_RESEARCH","canonical_surface":"research/intraday-carrybank","evidence_prs":[12834],"best_form":"Only capacity-useful WHEAT/FERTILIZER PICKUP with proved same-day actor-local consumption; generic backpacking is unsafe.","promotion_gate":"Sticky consumption obligation or preserved actor continuation plus paired economics.","do_not_resurrect":["generic inventory backpack","lossy DROP/EOD return assumption"]},{"id":"weedbank","status":"FALSIFIED_GENERIC_CONSUMED","canonical_surface":"research/opening-expansion-economics","evidence_prs":[12827,12833],"best_form":"HOMESTEAD keeps exact empty-land weed pressure and expansion economics; blanket empty-structure action banking is rejected.","promotion_gate":"Only incremental expansion economics with real productive occupancy.","do_not_resurrect":["blanket empty COOP/PASTURE weed banking"]},{"id":"altwater","status":"SAFETY_BLOCKED","canonical_surface":"repairs/gameplay/intermittent-ongoing-water","evidence_prs":[12819,12837],"best_form":"Source theorem retained, but final-action WATER->PASS is blocked. Successor must substitute productive work and bind executable next-day recovery WATER.","promotion_gate":"Scheduler/LOOM obligation-aware successor with zero weed regressions and positive paired economics.","do_not_resurrect":["bare WATER->PASS final-action rewrite"]},{"id":"plantguard","status":"CONVERGED_RESEARCH","canonical_surface":"research/unit-phase-chaining","evidence_prs":[12894,12946,12954],"best_form":"UNITPIPE/TILEPIPE retain source-real ordered unit chaining; PLANTQUORUM removes only source-certain dead PLANT poison that restores seed collateral.","promotion_gate":"Natural current-native engagement and authenticated returned-action postimage.","do_not_resurrect":["invented plant rows","same-callback BUY_SEED credit"]},{"id":"demandvel","status":"CONVERGED_RESEARCH","canonical_surface":"research/market-baseline","evidence_prs":[12803,12846],"best_form":"Exact source-bound market/town timing and demand curves replace heuristic velocity multipliers.","promotion_gate":"Use exact public shop/town state and real row/cash/capacity constraints before policy action.","do_not_resurrect":["fractional heuristic demand multiplier as transition truth"]},{"id":"expandtax","status":"CONVERGED_RESEARCH","canonical_surface":"research/opening-expansion-economics + research/crop-service-capacity","evidence_prs":[12822,12833,12861],"best_form":"Expansion is charged exact land cost, empty-tile weed exposure, DIG/travel opportunity cost, and source-derived PLANT+WATER service capacity bounds.","promotion_gate":"Incremental unlock economics on current routes.","do_not_resurrect":["quadrant-count-only expansion heuristic"]},{"id":"dynfloor","status":"CONVERGED_RESEARCH","canonical_surface":"research/floor-capacity-relief + B7","evidence_prs":[12863,12996],"best_form":"Floor sales are capacity-relief actions only when source-real overflow and positive declared retention value are proved.","promotion_gate":"Natural overflow cells and both-seat economics.","do_not_resurrect":["floor sale as recoverable public warehouse"]},{"id":"ambush","status":"CONVERGED_RESEARCH","canonical_surface":"research/market-pressure + research/market-baseline","evidence_prs":[12889,12908,13024],"best_form":"Source-authenticated opponent timing/counter-ambush witnesses with town-tick attenuation; no unauthenticated giant-sponge premise.","promotion_gate":"Authenticated opponent schedule, current-route reachability, and paired economics.","do_not_resurrect":["unauthenticated schedule metadata","giant FERT sponge overclaim"]},{"id":"starve_skip","status":"PARKED_SOURCE_THEOREM","canonical_surface":"repairs/gameplay/dead-feed-care + research/mechanism-claims","evidence_prs":[12832],"best_form":"Only narrow no-CARE one-day feed skipping is source-confirmed; blanket CARE-preserving starvation is falsified.","promotion_gate":"Natural engagement with zero escape/CARE regressions and positive economics.","do_not_resurrect":["blanket feed skipping"]},{"id":"legacy_g01_e11","status":"RUNTIME_POLICY_REJECTED_LESSONS_CONSUMED","canonical_surface":"research/market-pressure + research/market-baseline","evidence_prs":[11371,11460,12368,12403,13024],"best_form":"Keep prefix/custody/town-absorption lessons; do not revive the economically rejected unconditional rival-dump SELL deferral.","promotion_gate":"Any successor must be a new current-V4 market admission with current paired evidence.","do_not_resurrect":["legacy unconditional E11 horizon deferral"]},{"id":"legacy_g01_o01","status":"QUARANTINED_LEGACY","canonical_surface":"research/opening-expansion-economics + current capital/funding authorities","evidence_prs":[11371,11460,12349,13024],"best_form":"Public structural signals may inform analysis, but acquisition rows must pass current funding/execution custody; no post-hoc BUY_LAND prepend.","promotion_gate":"Execution-safe proposal-to-confirmed-unlock path plus field economics.","do_not_resurrect":["post-hoc BUY_LAND prepend","private opponent inference"]},{"id":"legacy_g01_e20","status":"V4_LINEAGE_RETAINED_DEFAULT_OFF","canonical_surface":"current V4 hire/laborflow authority","evidence_prs":[11371,11460,12643,13024],"best_form":"Only executable-prefix HIRE suppression semantics are admissible; engine-inert suffix rows cannot consume allowance. Default semantics stay OFF absent economics.","promotion_gate":"Current composed postimage and current-native two-seat economics.","do_not_resurrect":["full-vector HIRE scan","post-hoc capital edit"]},{"id":"legacy_g01_shop","status":"HEURISTIC_REJECTED_EXACT_MODEL_CONSUMED","canonical_surface":"research/market-baseline","evidence_prs":[11371,11460,12803,12846],"best_form":"Exact integer shop/town transitions and timing replace fractional SHOP absorption weighting.","promotion_gate":"Current source-bound public demand only.","do_not_resurrect":["fractional transition math"]}],"apex_handoff_motifs":[{"id":"weed_auto_dig_shield","v4_sink":"research/unit-phase-chaining","disposition":"Use source-certain PLANT poison removal / ordered chaining; persistent retry requires explicit obligation custody."},{"id":"clone_radar_front_run","v4_sink":"research/market-pressure","disposition":"Retain public structural/timing witnesses; no hidden identity assumption."},{"id":"protected_fert_monetization","v4_sink":"research/floor-capacity-relief + existing fertilizer reserve/seller authority","disposition":"Reserve/service custody first, liquidation second."},{"id":"early_cash_emergency","v4_sink":"current capital/funding authority","disposition":"Use source/cash/capacity-safe sale admission; no standalone emergency seller."},{"id":"shed_guard","v4_sink":"B7/CAPTRACE + research/floor-capacity-relief","disposition":"Capacity projection and value-aware relief, not a second shed controller."},{"id":"town_shop_microbatch","v4_sink":"research/market-baseline + research/market-pressure","disposition":"Exact shop timing/demand and market-row limits before microbatch policy."},{"id":"predator_market_ambush","v4_sink":"research/market-pressure","disposition":"Authenticated rival public production/timing only."},{"id":"late_carrot_seed_guarantee","v4_sink":"current seed-funding / route authority","disposition":"Treat as route funding obligation, not a same-callback market-credit shortcut."},{"id":"endgame_liquidation","v4_sink":"existing terminal seller / floor-capacity authorities","disposition":"Preserve executable market prefix and reserve/capacity custody; do not create a second terminal seller."}],"recent_convergence":[{"pr":13024,"canonical_surface":"research/rival-route-pressure","best_form":"PARALLAX public-only rival route pressure expanded into bounded partial-quantity sale-horizon stress; no rival-action prediction or policy authority."}]}
+{
+  "schema": "titan-v4-gemini-convergence/v1",
+  "canonical_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "policy": {
+    "one_v4": true,
+    "new_controller": false,
+    "runtime_activation_implied": false,
+    "rule": "Preserve each mechanism in its strongest source-correct V4 form; consume duplicates into existing owners; keep falsified or economically negative forms as explicit do-not-resurrect evidence rather than silently dropping them."
+  },
+  "gemini_seams": [
+    {
+      "id": "melon_cap",
+      "status": "UPGRADED_SOURCE_ONLY",
+      "canonical_surface": "repairs/gameplay/antigravity-melon-cap",
+      "evidence_prs": [12987, 12996, 13013, 13032],
+      "best_form": "Committed-supply custody plus caller-certified remaining-realization admission. A blind fixed-28 cap is not production authority.",
+      "this_change": "repairs/gameplay/antigravity-melon-cap/liquidation_bound.py",
+      "promotion_gate": "Authenticated current-route realization certificate plus both-seat current-native economics.",
+      "do_not_resurrect": ["sold-only cap", "blind fixed-28 runtime gate"]
+    },
+    {
+      "id": "fert_warehouse",
+      "status": "CONSUMED_DUPLICATE_REMOVED",
+      "canonical_surface": "research/floor-capacity-relief + existing B7 overflow authority",
+      "evidence_prs": [12863, 12989, 12996],
+      "best_form": "Use source-real floor-capacity relief only when overflow retention value is proved; B7 owns the overlapping shed-overflow theorem.",
+      "promotion_gate": "Current-native natural overflow census and economics.",
+      "do_not_resurrect": ["$1 market warehouse", "Antigravity duplicate FERT warehouse"]
+    },
+    {
+      "id": "goose_printer",
+      "status": "CONVERGED",
+      "canonical_surface": "research/opening-expansion-economics",
+      "evidence_prs": [12829, 12841],
+      "best_form": "Certified 9-goose plus one-HIRE frontier consumed into HOMESTEAD/opening authority; literal no-hire 10-goose and Day-1 cash-printer premises are not retained as truth.",
+      "promotion_gate": "Opening/expansion owner long-horizon EGG/FERT/cash economics only.",
+      "do_not_resurrect": ["literal no-hire 10-goose theorem", "Day-1 cash printer theorem", "parallel goose-printer root"]
+    },
+    {
+      "id": "hoist",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/intraday-carrybank",
+      "evidence_prs": [12834, 12890],
+      "best_form": "Only capacity-useful carried inventory with proved same-day actor-local consumption/continuation and EOD custody; generic backpacking is unsafe.",
+      "promotion_gate": "Sticky consumption obligation or preserved actor continuation plus paired economics.",
+      "do_not_resurrect": ["generic inventory backpack", "lossy DROP/EOD return assumption"]
+    },
+    {
+      "id": "structure_carpet",
+      "status": "FALSIFIED_GENERIC_CONSUMED",
+      "canonical_surface": "research/opening-expansion-economics",
+      "evidence_prs": [12822, 12827],
+      "best_form": "Blanket zero-cost COOP/PASTURE carpeting is negative expected-action banking: protected tiles guarantee a later DIG while untouched empty tiles weed only probabilistically.",
+      "promotion_gate": "None for blanket carpet; any productive occupancy must be justified by its own economics.",
+      "do_not_resurrect": ["blanket zero-cost structure carpet as free future-action bank"]
+    },
+    {
+      "id": "weedbank",
+      "status": "SPLIT_GENERIC_FALSE_RNG_REAL",
+      "canonical_surface": "research/opening-expansion-economics + research/seat-asymmetry-audit/TOWNRNG",
+      "evidence_prs": [12822, 12892, 12910],
+      "best_form": "Blanket empty-structure weed banking stays rejected, but source-real empty-tile RNG consumption can shift later public shop choice. Treat that only as TOWNRNG/SHOPSTREAM research, not free weed elimination.",
+      "promotion_gate": "Reachable pre-EOD occupancy control plus authenticated shop divergence and positive current-native economics.",
+      "do_not_resurrect": ["blanket empty COOP/PASTURE weed banking", "shop control without reachable occupancy proof"]
+    },
+    {
+      "id": "altwater",
+      "status": "SAFETY_BLOCKED",
+      "canonical_surface": "repairs/gameplay/intermittent-ongoing-water",
+      "evidence_prs": [12819, 12837],
+      "best_form": "Source theorem retained, but final-action WATER->PASS is blocked. Successor must substitute productive work, preserve planting-day WATER, refuse an already-missed prior EOD, protect fertilized yield boundaries, and bind executable next-day recovery WATER.",
+      "promotion_gate": "Scheduler/LOOM obligation-aware successor with zero weed regressions and positive paired economics.",
+      "do_not_resurrect": ["bare WATER->PASS final-action rewrite"]
+    },
+    {
+      "id": "plantguard",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/unit-phase-chaining + SEEDGHOST",
+      "evidence_prs": [12795, 12862, 12894, 12946, 12954],
+      "best_form": "Whole-vector seed oversubscription is atomic: source-certain dead suffix/ghost PLANT poison may be removed to restore collateral, while ordered PLANT->WATER chaining stays with UNITPIPE/TILEPIPE. Same-callback market buys cannot fund the earlier unit phase.",
+      "promotion_gate": "Natural current-native engagement and authenticated returned-action postimage.",
+      "do_not_resurrect": ["per-unit graceful seed depletion", "invented plant rows", "same-callback BUY_SEED credit"]
+    },
+    {
+      "id": "demandvel",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/market-baseline",
+      "evidence_prs": [12803, 12846, 13018],
+      "best_form": "Keep exact per-shop drain ratios but upgrade static demand tiers to source-bound absorption headroom that includes unlock days, replacement-shop variance, town-center demand, and exact-RNG lower tails. It has no decision or timing authority and excludes opponent supply.",
+      "promotion_gate": "Use exact public shop/town state and real row/cash/capacity constraints before policy action.",
+      "do_not_resurrect": ["fractional heuristic demand multiplier as transition truth", "static demand tier as safe production cap"]
+    },
+    {
+      "id": "expandtax",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/opening-expansion-economics + research/crop-service-capacity",
+      "evidence_prs": [12822, 12833, 12861],
+      "best_form": "Expansion is charged exact land cost, linear currently-empty-tile weed exposure, DIG/travel opportunity cost, and source-derived PLANT+WATER service capacity bounds.",
+      "promotion_gate": "Incremental unlock economics on current routes.",
+      "do_not_resurrect": ["quadrant-count-only expansion heuristic", "blanket anti-expansion rule"]
+    },
+    {
+      "id": "dynfloor",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "current seller timing + research/market-pressure + research/market-baseline",
+      "evidence_prs": [12863, 12962, 12996, 13024],
+      "best_form": "Do not hardcode opponent dump steps. Sale timing must use public price, town drain, rival-flow/collision evidence, executable queue, reserve/capacity custody, and horizon state.",
+      "promotion_gate": "Current-native returned-action activity and both-seat economics.",
+      "do_not_resurrect": ["static Apex/Gemini step-number dump schedule", "floor sale as recoverable public warehouse"]
+    },
+    {
+      "id": "ambush",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/market-pressure + research/market-baseline",
+      "evidence_prs": [12889, 12908, 13024, 13027],
+      "best_form": "Source-authenticated opponent timing/counter-ambush witnesses with town-tick attenuation and current public market state; no unauthenticated giant-sponge premise or hardcoded external schedule.",
+      "promotion_gate": "Authenticated opponent schedule, current-route reachability, cash/ROI custody, and paired economics.",
+      "do_not_resurrect": ["unauthenticated schedule metadata", "giant FERT sponge overclaim"]
+    },
+    {
+      "id": "starve_skip",
+      "status": "PARKED_SOURCE_THEOREM",
+      "canonical_surface": "repairs/gameplay/dead-feed-care + research/mechanism-claims",
+      "evidence_prs": [12812, 12832, 12884, 12920, 13015],
+      "best_form": "Only narrow one-day no-CARE feed skipping or source-safe service swaps are admissible; two consecutive misses, CARE-output loss, saved-WHEAT custody and route reuse must fail closed.",
+      "promotion_gate": "Natural engagement with zero escape/CARE/custody regressions and positive economics.",
+      "do_not_resurrect": ["blanket feed skipping", "CARE-preserving starvation overclaim"]
+    },
+    {
+      "id": "decay_trap",
+      "status": "SOURCE_THEOREM_REALIZATION_BLOCKED",
+      "canonical_surface": "H1 first-decay annual harvest theorem",
+      "evidence_prs": [12416, 12621],
+      "best_form": "At exact annual first-decay equality, authored WATER is beyond the annual yield window while same-tile HARVEST can collect mature units before decay. Later-decay or generic late-WATER suppression is not implied.",
+      "promotion_gate": "Current-main owner must prove natural activation plus cargo -> shed/deposit -> sale money realization before any re-consumption.",
+      "do_not_resurrect": ["generic late-WATER kill", "source-safe HARVEST treated as money without custody/sale proof"]
+    },
+    {
+      "id": "npc_market_baseline",
+      "status": "CANONICAL_RESEARCH",
+      "canonical_surface": "research/market-baseline",
+      "evidence_prs": [12803, 13018],
+      "best_form": "Use deterministic town-center demand plus exact RNG shop unlock/replacement demand and source price curves as the no-op baseline. NPC-driven market drift must not be misclassified as opponent supply.",
+      "promotion_gate": "Research baseline only; policy consumers must add current public opponent/queue/cash/capacity evidence.",
+      "do_not_resurrect": ["opponent attribution from NPC-only inventory drift"]
+    },
+    {
+      "id": "legacy_g01_e11",
+      "status": "RUNTIME_POLICY_REJECTED_LESSONS_CONSUMED",
+      "canonical_surface": "research/market-pressure + research/market-baseline",
+      "evidence_prs": [11371, 11460, 12368, 12403, 12466, 12597, 12962, 13024],
+      "best_form": "Keep the rejection of unconditional rival-dump SELL deferral. A successor may only classify replay candidates from deterministic town-drain premium, conservative public rival net-supply evidence, and explicit queue/custody/funding/row-budget/horizon guards; it never mutates an action by itself.",
+      "this_change": "research/market-baseline/gemini_market_certificate.py",
+      "promotion_gate": "Current-native TOWNSELL owner replay of candidate/veto census before any runtime proposal.",
+      "do_not_resurrect": ["legacy unconditional E11 horizon deferral", "archetype-only deferral"]
+    },
+    {
+      "id": "legacy_g01_o01",
+      "status": "QUARANTINED_LEGACY",
+      "canonical_surface": "research/market-baseline + current capital/funding authorities",
+      "evidence_prs": [11371, 11460, 12466, 12597, 12965, 13024],
+      "best_form": "Replace rival identity/archetype labels with one-way public evidence: proved prior net supply, same-row collision/crossflow, town drain and current public structure. Acquisition rows still require current funding/execution custody; no private inference or post-hoc BUY_LAND prepend.",
+      "this_change": "research/market-baseline/gemini_market_certificate.py",
+      "promotion_gate": "Observable-evidence replay plus execution-safe owner path and field economics.",
+      "do_not_resurrect": ["opponent-ID/static archetype classifier", "post-hoc BUY_LAND prepend", "private opponent inference"]
+    },
+    {
+      "id": "legacy_g01_e20",
+      "status": "V4_LINEAGE_RETAINED_DEFAULT_OFF",
+      "canonical_surface": "current V4 hire/laborflow authority",
+      "evidence_prs": [11371, 11460, 12643, 13024],
+      "best_form": "Only executable-prefix HIRE suppression semantics are admissible; engine-inert suffix rows cannot consume allowance. Exact wage/cash and current labor/service frontier replace crude unserved-tile counts. Default semantics stay OFF absent economics.",
+      "promotion_gate": "Current composed postimage and current-native two-seat economics.",
+      "do_not_resurrect": ["full-vector HIRE scan", "post-hoc capital edit", "unserved-tile-count-only hire deletion"]
+    },
+    {
+      "id": "legacy_g01_shop",
+      "status": "HEURISTIC_REJECTED_EXACT_MODEL_CONSUMED",
+      "canonical_surface": "research/market-baseline + TOWNRNG/SHOPSTREAM",
+      "evidence_prs": [11371, 11460, 12803, 12846, 12892, 12910, 13018],
+      "best_form": "Exact integer shop/town transitions, unlock/replacement timing, shared RNG coupling and conservative absorption headroom replace fractional SHOP absorption weighting.",
+      "promotion_gate": "Current source-bound public demand and reachable timing evidence only.",
+      "do_not_resurrect": ["fractional transition math", "fixed 1.5x shop absorption weight"]
+    },
+    {
+      "id": "legacy_s33_stratum",
+      "status": "RETURNED_ACTION_HARDENING",
+      "canonical_surface": "repairs/gameplay/row-shed-sell-order",
+      "evidence_prs": [12551, 12801, 12998],
+      "best_form": "Projected-shed ordering survives only when it changes the output after the exact downstream canonical market-pressure transform. A distinct pre-pressure rank that collapses to the incumbent final action is identity.",
+      "promotion_gate": "Bind the claimed reorder to the exact action returned to the engine, not only internal diagnostics; then run current-native both-seat economics.",
+      "do_not_resurrect": ["unconditional STRATUM ranker", "pre-pressure rank-difference-only novelty", "internal-diagnostic-only reorder witness"]
+    },
+    {
+      "id": "gemini_pro_capital",
+      "status": "CONVERGED_TO_EXISTING_AUTHORITY",
+      "canonical_surface": "repairs/gameplay/early-capital",
+      "evidence_prs": [12967],
+      "best_form": "Earlier capital/service acquisition is admissible only through current KESTREL-style lockstep, executable-prefix, funding and custody proofs.",
+      "promotion_gate": "Exact current-route capital realization and paired economics.",
+      "do_not_resurrect": ["post-hoc capital prepend", "unfunded acquisition assumption"]
+    },
+    {
+      "id": "gemini_flash_market",
+      "status": "CONVERGED_RESEARCH",
+      "canonical_surface": "research/market-baseline + existing prefix/order-budget owners",
+      "evidence_prs": [12846, 12883, 12962, 12965],
+      "best_form": "Joint market-slot/timing ideas route through exact executable-prefix, order-budget, same-precommit-quote, crossflow and TOWNSELL evidence; no monolithic GOOP market controller.",
+      "promotion_gate": "Current-native owner replay with row/cash/custody effects.",
+      "do_not_resurrect": ["parallel GOOP market controller", "non-executable suffix accounting"]
+    },
+    {
+      "id": "gemini_idle_service",
+      "status": "CONVERGED_TO_EXISTING_AUTHORITY",
+      "canonical_surface": "repairs/gameplay/dead-feed-care + existing service-recycle owners",
+      "evidence_prs": [12618, 12812, 12884, 12920, 13015],
+      "best_form": "Recycle only provably dead/idle service into a source-real productive route with animal need, CARE value, actor inventory, custody and EOD timing proved. Generic idle-action substitution is not authority.",
+      "promotion_gate": "Natural engagement and positive current-native economics with zero service/custody regressions.",
+      "do_not_resurrect": ["generic idle service rewrite", "service without custody/need proof"]
+    }
+  ],
+  "apex_handoff_motifs": [
+    {
+      "id": "weed_auto_dig_shield",
+      "v4_sink": "research/unit-phase-chaining",
+      "disposition": "Use source-certain PLANT poison removal / ordered chaining; persistent retry requires explicit obligation custody."
+    },
+    {
+      "id": "clone_radar_front_run",
+      "v4_sink": "research/market-pressure",
+      "disposition": "Retain public structural/timing witnesses; no hidden identity assumption."
+    },
+    {
+      "id": "protected_fert_monetization",
+      "v4_sink": "research/floor-capacity-relief + existing fertilizer reserve/seller authority",
+      "disposition": "Reserve/service custody first, liquidation second."
+    },
+    {
+      "id": "early_cash_emergency",
+      "v4_sink": "current capital/funding authority",
+      "disposition": "Use source/cash/capacity-safe sale admission; no standalone emergency seller."
+    },
+    {
+      "id": "shed_guard",
+      "v4_sink": "B7/CAPTRACE + research/floor-capacity-relief",
+      "disposition": "Capacity projection and value-aware relief, not a second shed controller."
+    },
+    {
+      "id": "town_shop_microbatch",
+      "v4_sink": "research/market-baseline + research/market-pressure",
+      "disposition": "Exact shop timing/demand and market-row limits before microbatch policy."
+    },
+    {
+      "id": "predator_market_ambush",
+      "v4_sink": "research/market-pressure",
+      "disposition": "Authenticated rival public production/timing only."
+    },
+    {
+      "id": "late_carrot_seed_guarantee",
+      "v4_sink": "current seed-funding / route authority",
+      "disposition": "Treat as route funding obligation, not a same-callback market-credit shortcut."
+    },
+    {
+      "id": "endgame_liquidation",
+      "v4_sink": "existing terminal seller / floor-capacity authorities",
+      "disposition": "Preserve executable market prefix and reserve/capacity custody; do not create a second terminal seller."
+    }
+  ],
+  "metagame_posts": [
+    {
+      "id": "direct_crop_short_squeeze",
+      "status": "FALSIFIED_LITERAL",
+      "canonical_surface": "research/intraday-carrybank + mechanism-claims",
+      "evidence_prs": [12817, 12834, 12909],
+      "best_form": "Direct TOMATO/EGG/CARROT short squeezing via BUY_PRODUCT cannot execute because official BUY_PRODUCT is restricted to WHEAT/FERTILIZER. Preserve only safe CARRYBANK hoisting and separately-gated WHEAT/FERT buy-side economics.",
+      "promotion_gate": "None for the literal crop-cornering claim.",
+      "do_not_resurrect": ["BUY_PRODUCT TOMATO squeeze", "BUY_PRODUCT EGG squeeze", "BUY_PRODUCT CARROT squeeze", "zero-sum dark-pool unwind theorem"]
+    },
+    {
+      "id": "seed_crack_frame_advance",
+      "status": "SPLIT_OMNISCIENCE_FALSE_RNG_REAL",
+      "canonical_surface": "research/seat-asymmetry-audit/TOWNRNG + SHOPSTREAM",
+      "evidence_prs": [12892, 12898, 12910],
+      "best_form": "Turn-1 hidden-seed omniscience from the first weed pattern is not supported: bounded observations commonly match many seeds. The shared weed-draw -> public-shop RNG coupling is source-real and may be studied through reachable occupancy interventions without seed recovery.",
+      "promotion_gate": "Reachable occupancy control, authenticated shop divergence and current-native economics; no hidden-seed assumption.",
+      "do_not_resurrect": ["weed pattern implies globally unique seed", "production seed cracker without authenticated domain", "shop selection from unproved hidden seed"]
+    },
+    {
+      "id": "egg_singularity",
+      "status": "FALSIFIED_OVERCLAIM_SIGNAL_REAL",
+      "canonical_surface": "research/market-baseline/EGGBOUNDS",
+      "evidence_prs": [12909],
+      "best_form": "EGG glut elasticity is unusually resilient but finite; the source has a literal price floor, direct EGG BUY_PRODUCT is impossible, and holding self-produced EGG does not remove public inventory. Use the finite elasticity bound only as production/risk evidence.",
+      "promotion_gate": "Long-horizon goose production economics under current market/town state.",
+      "do_not_resurrect": ["infinite EGG floor", "infinite EGG ceiling", "direct EGG short squeeze", "goose-only endgame theorem"]
+    },
+    {
+      "id": "goose_radar_invisibility",
+      "status": "OPPONENT_SPECIFIC_HYPOTHESIS",
+      "canonical_surface": "opening-expansion research + authenticated Apex/COMEBACK interpretation",
+      "evidence_prs": [12829, 13027],
+      "best_form": "The posted Apex clone-radar condition may leave the one-HIRE corrected goose frontier outside that specific clone flag, but this is an external opponent-wrapper property, not an engine exploit. Separate plant-age/predator behavior remains independently relevant.",
+      "promotion_gate": "Authenticate the exact Apex wrapper bytes and replay behavior before using the hypothesis in opponent-specific evaluation.",
+      "do_not_resurrect": ["engine-level goose policy justified by opponent radar alone", "claim that all Apex ambush logic is dormant"]
+    }
+  ],
+  "recent_convergence": [
+    {
+      "pr": 13018,
+      "canonical_surface": "research/market-baseline",
+      "best_form": "DEMANDVEL upgraded from static tiers to conservative source-bound absorption headroom with explicit no-decision/no-timing authority."
+    },
+    {
+      "pr": 13024,
+      "canonical_surface": "research/rival-route-pressure",
+      "best_form": "PARALLAX public-only rival route pressure expanded into bounded partial-quantity sale-horizon stress; no rival-action prediction or policy authority."
+    },
+    {
+      "pr": 13027,
+      "canonical_surface": "authenticated Apex/COMEBACK interpretation",
+      "best_form": "Opponent-wrapper motifs are treated as authenticated external behavior where proved, never as engine source truth."
+    },
+    {
+      "pr": 13032,
+      "canonical_surface": "research/mechanism-claims + antigravity-melon-cap",
+      "best_form": "Single-V4 Gemini convergence atlas plus source-only MELON remaining-realization admission."
+    }
+  ]
+}
