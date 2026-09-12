@@ -156,11 +156,26 @@ def _commons_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-def _role_amount_usd(role: dict[str, Any]) -> int | None:
-    """USD unit price for cash open-obligation rows when tools resolve it.
+_REFUND_FORBIDDEN_PREFIXES = ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_")
 
-    autopsy_fulfillment → offer.json price.amount (same source as autopsy SLA).
-    diagnostic_contract / diagnostic_fulfill → commercial.diagnostic_usd.
+
+def _forbid_refund_secrets(refund: str) -> str:
+    text = str(refund or "").strip()
+    if not text:
+        raise RoleError("refund must be a nonempty string")
+    for forbidden in _REFUND_FORBIDDEN_PREFIXES:
+        if forbidden in text:
+            raise RoleError(f"refund leaked forbidden token prefix {forbidden}")
+    return text
+
+
+def _role_cash_fields(role: dict[str, Any]) -> dict[str, Any] | None:
+    """amount_usd + refund for cash open-obligation rows when tools resolve them.
+
+    autopsy_fulfillment → offer.json price.amount + refund (forbid sk_/rk_/whsec_/
+    prod_/price_/plink_ in refund).
+    diagnostic_contract / diagnostic_fulfill → commercial.diagnostic_usd +
+    commercial.refund (same forbid).
     Else None. If a matching tool is present but the landed source is unreadable,
     raise RoleError (fail-closed so bugs surface).
     """
@@ -173,24 +188,37 @@ def _role_amount_usd(role: dict[str, Any]) -> int | None:
         path = root / "revenue" / "agent_failure_autopsy" / "offer.json"
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
-            amount = data["price"]["amount"]
-            return int(amount)
+            amount = int(data["price"]["amount"])
+            refund = _forbid_refund_secrets(data["refund"])
+            return {"amount_usd": amount, "refund": refund}
+        except RoleError:
+            raise
         except Exception as exc:  # noqa: BLE001 — surface offer bugs fail-closed
             raise RoleError(
-                f"autopsy_fulfillment present but offer amount unreadable: {exc}"
+                f"autopsy_fulfillment present but offer cash fields unreadable: {exc}"
             ) from exc
     if "diagnostic_contract" in names or "diagnostic_fulfill" in names:
         path = root / "revenue" / "dealer_service_lead_rescue" / "contract.json"
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
-            amount = data["commercial"]["diagnostic_usd"]
-            return int(amount)
+            commercial = data["commercial"]
+            amount = int(commercial["diagnostic_usd"])
+            refund = _forbid_refund_secrets(commercial["refund"])
+            return {"amount_usd": amount, "refund": refund}
+        except RoleError:
+            raise
         except Exception as exc:  # noqa: BLE001 — surface contract bugs fail-closed
             raise RoleError(
-                "diagnostic tools present but commercial.diagnostic_usd "
+                "diagnostic tools present but commercial cash fields "
                 f"unreadable: {exc}"
             ) from exc
     return None
+
+
+def _role_amount_usd(role: dict[str, Any]) -> int | None:
+    """USD unit price wrapper over _role_cash_fields (compat for callers)."""
+    cash = _role_cash_fields(role)
+    return None if cash is None else cash["amount_usd"]
 
 
 def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[str, Any]:
@@ -309,8 +337,9 @@ class RoleStore:
 
         Rows for roles that route `payment_capability` stamp
         `payment_capability: true` so mixed CRM + paid stores separate cash work.
-        When tools resolve a unit price, cash rows also stamp `amount_usd`
-        (autopsy offer price.amount / diagnostic commercial.diagnostic_usd).
+        When tools resolve cash fields, cash rows also stamp `amount_usd` and
+        `refund` (autopsy offer price.amount+refund / diagnostic
+        commercial.diagnostic_usd+refund).
         When cash_only is True, keep only rows with payment_capability is True.
         This marker does not establish that payment has occurred.
         """
@@ -336,9 +365,10 @@ class RoleStore:
                     row["synthetic"] = True
                 if cash:
                     row["payment_capability"] = True
-                    amount = _role_amount_usd(role)
-                    if amount is not None:
-                        row["amount_usd"] = amount
+                    cash_fields = _role_cash_fields(role)
+                    if cash_fields is not None:
+                        row["amount_usd"] = cash_fields["amount_usd"]
+                        row["refund"] = cash_fields["refund"]
                 rows.append(row)
         rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
         if cash_only:
