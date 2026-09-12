@@ -33,9 +33,25 @@ def _absolute_import_roots(source):
     return roots
 
 
-def test_packaged_root_modules_are_closed_over_local_imports():
-    """A packaged root module cannot depend on an omitted local root module."""
-    mapping = build_integrated.source_files()
+def _local_root_exists(source_path, name):
+    """Whether an absolute import root resolves to repository-local source."""
+    source = (build_integrated.ROOT / source_path).resolve()
+    for base in (source.parent, build_integrated.ROOT):
+        target = base / name
+        if target.with_suffix(".py").is_file() or (target / "__init__.py").is_file():
+            return True
+    return False
+
+
+def _archive_provides_root(mapping, name):
+    """Whether the standalone archive contains a module/package for one root."""
+    if f"{name}.py" in mapping or f"{name}/__init__.py" in mapping:
+        return True
+    prefix = f"{name}/"
+    return any(path.startswith(prefix) and path.endswith(".py") for path in mapping)
+
+
+def _missing_local_root_imports(mapping):
     missing = {}
     for member, source_path in mapping.items():
         if "/" in member or not member.endswith(".py"):
@@ -43,10 +59,26 @@ def test_packaged_root_modules_are_closed_over_local_imports():
         source = (build_integrated.ROOT / source_path).read_text()
         omitted = sorted(
             name for name in _absolute_import_roots(source)
-            if (build_integrated.ROOT / f"{name}.py").is_file()
-            and f"{name}.py" not in mapping
+            if _local_root_exists(source_path, name)
+            and not _archive_provides_root(mapping, name)
         )
         if omitted:
             missing[member] = omitted
+    return missing
 
+
+def test_packaged_root_modules_are_closed_over_local_imports():
+    """A packaged root module cannot depend on an omitted local import root."""
+    missing = _missing_local_root_imports(build_integrated.source_files())
     assert not missing, f"standalone local-import closure holes: {missing}"
+
+
+def test_relocated_root_source_imports_are_part_of_closure():
+    """Mapped sibling-tree sources must not hide their local root dependencies."""
+    mapping = dict(build_integrated.source_files())
+    pressure_source = mapping["pressure_priority.py"]
+    assert pressure_source == "../cloud-opponent-league/lark-responsive/pressure_priority.py"
+    assert mapping.pop("sell_priority.py") == "../cloud-opponent-league/lark-responsive/sell_priority.py"
+
+    missing = _missing_local_root_imports(mapping)
+    assert missing.get("pressure_priority.py") == ["sell_priority"]
