@@ -45,10 +45,12 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
         for key, value in m.SCREEN_PREIMAGE.items():
             self.assertEqual(config[key], value)
 
-    def test_three_knockouts_are_disjoint_and_leave_town_frozen(self):
-        self.assertEqual(set(m.ARMS), {"seed_hire_off", "inventory_spatial_off", "late_market_off"})
+    def test_three_stage_groups_remain_disjoint_and_consumer_boundary_is_explicit(self):
+        stage_arms = {"seed_hire_off", "inventory_spatial_off", "late_market_off"}
+        self.assertEqual(set(m.ARMS), stage_arms | {"consumer_parent_boundary"})
         seen = set()
-        for name, changes in m.ARMS.items():
+        for name in sorted(stage_arms):
+            changes = m.ARMS[name]
             self.assertTrue(seen.isdisjoint(changes), name)
             seen.update(changes)
         self.assertEqual(
@@ -59,7 +61,15 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
                 "market_pressure", "early_capital",
             },
         )
-        self.assertNotIn("consumer", seen)
+        self.assertEqual(
+            m.ARMS["consumer_parent_boundary"],
+            {
+                "consumer": "parent",
+                "redundant_hire": False,
+                "idle_fertilizer": False,
+                "crop_release": False,
+            },
+        )
         self.assertNotIn("town_procurement", seen)
 
     def test_each_arm_changes_only_config_and_preserves_valid_dependencies(self):
@@ -71,8 +81,11 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
                 ["TITAN-CONFIG.json"],
             )
             cfg = json.loads(treatment["TITAN-CONFIG.json"])
-            self.assertEqual(cfg["consumer"], "frozen")
             self.assertIs(cfg["town_procurement"], True)
+            if cfg["consumer"] != "frozen":
+                self.assertFalse(cfg["redundant_hire"])
+                self.assertFalse(cfg["idle_fertilizer"])
+                self.assertFalse(cfg["crop_release"])
             for key, before in m.SCREEN_PREIMAGE.items():
                 expected = changes.get(key, before)
                 self.assertEqual(cfg[key], expected, (arm, key))
@@ -106,6 +119,19 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
         self.assertTrue(cfg["crop_release"])
         self.assertTrue(cfg["seed"])
 
+    def test_consumer_boundary_is_dependency_valid_without_turning_off_other_groups(self):
+        cfg = json.loads(m.arm_members(self.baseline(), "consumer_parent_boundary")["TITAN-CONFIG.json"])
+        self.assertEqual(cfg["consumer"], "parent")
+        self.assertFalse(cfg["redundant_hire"])
+        self.assertFalse(cfg["idle_fertilizer"])
+        self.assertFalse(cfg["crop_release"])
+        self.assertTrue(cfg["seed"])
+        self.assertTrue(cfg["funding"])
+        self.assertTrue(cfg["operating_stock"])
+        self.assertTrue(cfg["market_pressure"])
+        self.assertTrue(cfg["early_capital"])
+        self.assertTrue(cfg["town_procurement"])
+
     def test_wrong_preimage_rejects_before_treatment(self):
         baseline = self.baseline()
         baseline["TITAN-CONFIG.json"] = EXACT_CONFIG.replace(
@@ -128,6 +154,7 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
         self.assertEqual(first_receipt["bundle_sha256"], m.digest(first_bundle))
         self.assertEqual(first_receipt["baseline_members"], baseline_members)
         self.assertEqual(set(first_receipt["arms"]), set(m.ARMS))
+        self.assertEqual(first_receipt["schema"], "titan-v5-production-v3-postprocessor-attribution/v2")
         self.assertEqual(first_receipt["native_economics_status"], "PENDING_MATCHED_NATIVE_9901")
         self.assertTrue(first_receipt["kaggle_submission_hold"])
         for arm, record in first_receipt["arms"].items():
@@ -143,19 +170,14 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
                 if name != "TITAN-CONFIG.json":
                     self.assertEqual(record["members"][name], member_sha, (arm, name))
 
-    def test_bundle_contains_screen_and_three_nested_archives(self):
+    def test_bundle_contains_screen_and_four_nested_archives(self):
         baseline = self.baseline()
         baseline_members = {name: m.digest(body) for name, body in sorted(baseline.items())}
         bundle, receipt = m.build_screen(baseline)
         members = m.support.parse_archive_bytes(bundle, receipt["bundle_sha256"])
         self.assertEqual(
             set(members),
-            {
-                "SCREEN.json",
-                "arms/seed_hire_off.tar.gz",
-                "arms/inventory_spatial_off.tar.gz",
-                "arms/late_market_off.tar.gz",
-            },
+            {"SCREEN.json"} | {f"arms/{arm}.tar.gz" for arm in m.ARMS},
         )
         screen = json.loads(members["SCREEN.json"])
         self.assertEqual(screen["schema"], m.SCHEMA)
@@ -169,6 +191,15 @@ class ProductionV3PostprocessorAttributionTest(unittest.TestCase):
             self.assertEqual(set(nested), set(baseline))
             self.assertEqual(nested_members, screen["arms"][arm]["members"])
             self.assertEqual(nested["main.py"], baseline["main.py"])
+            cfg = json.loads(nested["TITAN-CONFIG.json"])
+            if arm == "consumer_parent_boundary":
+                self.assertEqual(cfg["consumer"], "parent")
+                self.assertFalse(cfg["redundant_hire"])
+                self.assertFalse(cfg["idle_fertilizer"])
+                self.assertFalse(cfg["crop_release"])
+            else:
+                self.assertEqual(cfg["consumer"], "frozen")
+            self.assertIs(cfg["town_procurement"], True)
             for name, member_sha in baseline_members.items():
                 if name != "TITAN-CONFIG.json":
                     self.assertEqual(nested_members[name], member_sha, (arm, name))
