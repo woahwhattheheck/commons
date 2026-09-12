@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 import build_productive_expansion as builder
 import p01_productive_expansion_gate as gate
+import publication_custody
 
 
 def fib(n):
@@ -187,27 +188,24 @@ class ProductiveExpansionPublication(unittest.TestCase):
             self.assertFalse(shared.exists())
             self.assertFalse(out.exists())
 
-    def test_receipt_write_failure_rolls_back_owned_pair_and_output_tree(self):
+    def test_shared_publication_failure_rolls_back_output_tree(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
-            original = builder._write_reserved
-            calls = {'n': 0}
-            def fail_second(fd, payload):
-                calls['n'] += 1
-                if calls['n'] == 2:
-                    raise OSError('injected receipt write failure')
-                return original(fd, payload)
-            with patch.object(builder, '_write_reserved', fail_second):
-                with self.assertRaisesRegex(OSError, 'injected receipt'):
+            with patch.object(publication_custody, 'publish_exclusive', side_effect=OSError('injected shared publication failure')) as shared:
+                with self.assertRaisesRegex(OSError, 'injected shared publication failure'):
                     builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            shared.assert_called_once()
             self.assertFalse(tar.exists())
             self.assertFalse(receipt.exists())
             self.assertFalse(out.exists())
 
-    def test_success_publishes_both_final_files(self):
+    def test_success_delegates_pair_to_shared_publication_custody(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
-            builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            original = publication_custody.publish_exclusive
+            with patch.object(publication_custody, 'publish_exclusive', wraps=original) as shared:
+                builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            shared.assert_called_once()
             self.assertEqual(tar.read_bytes(), b'archive')
             self.assertEqual((out/'main.py').read_bytes(), b'x')
             self.assertEqual(json_load(receipt)['schema'], 'test')
