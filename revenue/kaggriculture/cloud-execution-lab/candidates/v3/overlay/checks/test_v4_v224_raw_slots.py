@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import copy
 import json
+import itertools
 import sys
 import unittest
 from pathlib import Path
@@ -183,7 +184,7 @@ class V224RawSlots(unittest.TestCase):
         self.assertEqual(out["market"][2], [])
         self.assertEqual(out["market"],
                          [["SELL", "WOOL", 2], ["HIRE"], [],
-                          ["SELL", "MILK", 3], ["BUY_SEED", "WHEAT", 1]])
+                          [["SELL", "MILK", 3]][0], ["BUY_SEED", "WHEAT", 1]])
 
     def test_over_cap_frozen_change_keeps_only_raw_executable_prefix(self):
         parent = action([[], *[["HIRE"] for _ in range(9)], ["SELL", "WOOL", 1]])
@@ -302,6 +303,152 @@ class V224RawSlots(unittest.TestCase):
         agent.act(observation(), dict(CONFIG))
         self.assertIs(r04.V224_RAW_SLOTS, True)
         self.assertIs(agent.diagnostics["v224_raw_slots"], True)
+
+
+# Additional bounded structural properties; no router/strength verdict.
+# Literal, independently declared alphabets; never derived from helper predicates.
+VALID_ROWS = (
+    ['HIRE'], ['BUY_LAND'], ['BUY_SEED', 'WHEAT', 1],
+    ['BUY_PRODUCT', 'WHEAT', 1], ['BUY_PRODUCT', 'FERTILIZER', 2],
+    ['BUY_ANIMAL', 'COW', 1], ['SELL', 'MILK', 1],
+    ['SELL', 'WHEAT', 1], ['SELL', 'FERTILIZER', 2],
+)
+BARRIER_ROWS = (
+    [], None, 'bad', 0, False, {}, ['BOGUS', 'MILK', 1],
+    ['BUY_PRODUCT', 'MILK', 1], ['SELL', 'MILK', 0],
+    ['BUY_SEED', 'WHEAT', True], ['BUY_ANIMAL', 'BOGUS', 1],
+)
+COUNTS = {}
+
+
+def _case(rows):
+    return {'farmer': ['PASS'], 'hands': [], 'market': copy.deepcopy(rows)}
+
+
+def _positive_segment_oracle(rows):
+    """Insertion-form oracle only for the declared all-positive alphabet.
+
+    Unlike the implementation's swaps, insert each new SELL after the nearest
+    prior SELL or same-product purchase; all other rows retain their order.
+    It deliberately does not call any helper predicate or frozen projection.
+    """
+    result = []
+    for row in rows:
+        insertion = len(result)
+        if row[0] == 'SELL':
+            for earlier in range(len(result) - 1, -1, -1):
+                prior = result[earlier]
+                if (prior[0] == 'SELL'
+                        or (prior[0] in ('BUY_PRODUCT', 'BUY_ANIMAL')
+                            and prior[1] == row[1])):
+                    insertion = earlier + 1
+                    break
+            else:
+                insertion = 0
+        result.insert(insertion, copy.deepcopy(row))
+    return result
+
+
+class V224RawSlotProperties(unittest.TestCase):
+    def _check_preservation(self, parent, before, out, expected):
+        self.assertEqual(out['market'], expected)
+        self.assertEqual(parent, before)
+        self.assertIs(out['farmer'], parent['farmer'])
+        self.assertIs(out['hands'], parent['hands'])
+        if expected == before['market']:
+            self.assertIs(out, parent)
+        self.assertIs(lane.sales_first_raw_slots(out), out)
+
+    def test_all_positive_short_queues_match_independent_oracle(self):
+        count = 0
+        for length in range(5):
+            for sequence in itertools.product(VALID_ROWS, repeat=length):
+                parent = _case(list(sequence))
+                before = copy.deepcopy(parent)
+                out = lane.sales_first_raw_slots(parent)
+                self._check_preservation(
+                    parent, before, out, _positive_segment_oracle(sequence))
+                count += 1
+        self.assertEqual(count, 7381)
+        COUNTS['positive_queue_parity'] = count
+
+    def test_barriers_separate_independent_ordering_segments(self):
+        segments = [sequence for length in range(3)
+                    for sequence in itertools.product(VALID_ROWS, repeat=length)]
+        count = 0
+        for barrier, left, right in itertools.product(BARRIER_ROWS, segments, segments):
+            parent = _case(list(left) + [barrier] + list(right))
+            before = copy.deepcopy(parent)
+            out = lane.sales_first_raw_slots(parent)
+            expected = (_positive_segment_oracle(left) + [barrier]
+                        + _positive_segment_oracle(right))
+            self._check_preservation(parent, before, out, expected)
+            # Absolute raw barrier index is invariant, even when both sides move.
+            self.assertEqual(out['market'][len(left)], barrier)
+            count += 1
+        self.assertEqual(count, 91091)
+        COUNTS['barrier_segment_cases'] = count
+
+    def test_capped_suffix_never_becomes_executable(self):
+        tails = ([['SELL', 'MILK', 999]], [None, ['HIRE']], ['bad', {'tail': 1}])
+        count = 0
+        for length in range(4):
+            for sequence in itertools.product(VALID_ROWS, repeat=length):
+                prefix = list(sequence) + [None] * (10 - length)
+                expected = _positive_segment_oracle(sequence) + [None] * (10 - length)
+                for tail in tails:
+                    parent = _case(prefix + tail)
+                    before = copy.deepcopy(parent)
+                    out = lane.sales_first_raw_slots(parent)
+                    self._check_preservation(parent, before, out, expected)
+                    self.assertEqual(len(out['market']), 10)
+                    count += 1
+        self.assertEqual(count, 2460)
+        COUNTS['capped_suffix_cases'] = count
+
+    def test_unchanged_frozen_prefix_keeps_original_tail_and_identity(self):
+        # The lane must not unconditionally truncate: frozen V224 leaves this
+        # prefix unchanged, so its downstream visibility must also be preserved.
+        parent = _case([['HIRE']] * 10 + [['SELL', 'MILK', 999]])
+        self.assertIs(lane.sales_first_raw_slots(parent), parent)
+        self.assertEqual(len(parent['market']), 11)
+
+    def test_argument_free_atomic_orders_remain_crossable(self):
+        # Pinned _parse_order accepts both verbs with no second argument;
+        # requiring a quadrant for BUY_LAND would be an incorrect new barrier.
+        for atomic in (['HIRE'], ['BUY_LAND'], ['BUY_LAND', 'ignored']):
+            parent = _case([atomic, ['SELL', 'MILK', 1]])
+            self.assertEqual(lane.sales_first_raw_slots(parent)['market'],
+                             [['SELL', 'MILK', 1], atomic])
+
+    def test_same_product_funding_dependency_is_not_crossed(self):
+        for product in ('WHEAT', 'FERTILIZER'):
+            parent = _case([['HIRE'], ['BUY_PRODUCT', product, 1],
+                            ['SELL', product, 2]])
+            self.assertIs(lane.sales_first_raw_slots(parent), parent)
+
+    def test_malformed_quantities_remain_absolute_barriers(self):
+        for quantity in (False, True, 0, -1, 1.0, '1', None, [], {}):
+            parent = _case([['HIRE'], ['BUY_SEED', 'WHEAT', quantity],
+                            ['SELL', 'MILK', 1]])
+            self.assertIs(lane.sales_first_raw_slots(parent), parent)
+
+    def test_unavailable_overflow_projection_keeps_parent(self):
+        for quantity in (float('inf'), -float('inf')):
+            parent = _case([['SELL', 'MILK', quantity]] + [['HIRE']] * 9
+                           + [['SELL', 'WOOL', 1]])
+            self.assertIs(lane.sales_first_raw_slots(parent), parent)
+
+    def test_invalid_helper_cap_is_exact_identity(self):
+        # The generated router's stricter exact-10 guard has separate coverage.
+        # Here only the helper's public parameter boundary is under test.
+        for cap in (None, False, True, 0, -1, 10.0, '10', [], {}):
+            parent = _case([['HIRE'], ['SELL', 'MILK', 1]])
+            self.assertIs(lane.sales_first_raw_slots(parent, max_orders=cap), parent)
+
+    def test_non_market_surfaces_are_not_rewritten(self):
+        for parent in (None, [], 'bad', {}, {'market': None}, {'market': ()}):
+            self.assertIs(lane.sales_first_raw_slots(parent), parent)
 
 
 if __name__ == "__main__":
