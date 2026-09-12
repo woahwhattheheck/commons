@@ -81,25 +81,52 @@ class Agent:
 Agent.__module__ = "intact_arlene"
 
 
-def controller_with_route(*, future_actions=None, route_length=720):
+def controller_with_route(
+    *,
+    future_actions=None,
+    route_length=720,
+    route_id="test-route",
+    cur=None,
+):
     route = [action() for _ in range(route_length)]
     for step, authored in (future_actions or {}).items():
         if 0 <= step < route_length:
             route[step] = copy.deepcopy(authored)
     controller = Agent()
-    controller.R = {"test-route": route}
-    controller.cur = "test-route"
+    controller.R = {route_id: route}
+    controller.cur = route_id if cur is None else cur
     controller._fs = None
     controller._fs_for = None
     return controller
 
 
-def authority(obs, future_actions=None, *, lookahead=8, controller=None):
+def completed_route_receipt(obs, *, route="test-route", **updates):
+    receipt = {
+        "route_step": obs["step"],
+        "last_step": obs["step"],
+        "player": obs["player"],
+        "route": route,
+    }
+    receipt.update(updates)
+    return receipt
+
+
+def authority(
+    obs,
+    future_actions=None,
+    *,
+    lookahead=8,
+    controller=None,
+    route_receipt=None,
+):
     if controller is None:
         controller = controller_with_route(future_actions=future_actions)
+    if route_receipt is None:
+        route_receipt = completed_route_receipt(obs)
     result = bind_market_route_authority(
         controller,
         obs,
+        completed_route_receipt=route_receipt,
         lookahead=lookahead,
     )
     if result is None:
