@@ -45,8 +45,9 @@ class AlternateFeedCandidateTests(unittest.TestCase):
             "market": [["SELL", "EGG", 1]],
         }
 
-    def apply(self):
-        return candidate.apply_alternate_feed(self.obs, self.selected)
+    def apply(self, certificate=((4, 4),)):
+        return candidate.apply_alternate_feed(
+            self.obs, self.selected, next_day_feed_positions=certificate)
 
     def test_safe_zero_strike_feed_becomes_pass_without_other_edits(self):
         before = deepcopy((self.obs, self.selected))
@@ -59,11 +60,38 @@ class AlternateFeedCandidateTests(unittest.TestCase):
         self.assertEqual(report["edits"][0]["animal"], "COW")
         self.assertEqual((self.obs, self.selected), before)
 
+    def test_uncertified_next_day_feed_keeps_selected(self):
+        result, report = candidate.apply_alternate_feed(self.obs, self.selected)
+        self.assertIs(result, self.selected)
+        self.assertEqual(report["reason"], "next_day_feed_uncertified")
+
+    def test_certificate_must_be_exact_positions(self):
+        for certificate in (None, [True], [(4.0, 4)], [(4, "4")]):
+            with self.subTest(certificate=certificate):
+                result, report = self.apply(certificate)
+                self.assertIs(result, self.selected)
+                self.assertEqual(report["reason"], "malformed_next_day_feed_certificate")
+
+    def test_certificate_for_another_tile_does_not_authorize_edit(self):
+        result, report = self.apply(((3, 4),))
+        self.assertIs(result, self.selected)
+        self.assertFalse(report["changed"])
+
     def test_one_strike_leg_keeps_feed(self):
         self.tile["consecutive_unfed"] = 1
         result, report = self.apply()
         self.assertIs(result, self.selected)
         self.assertFalse(report["changed"])
+
+    def test_noncanonical_animal_state_fails_closed(self):
+        for field, value in (("consecutive_unfed", False), ("pending_care_bonus", False)):
+            with self.subTest(field=field):
+                self.tile["consecutive_unfed"] = 0
+                self.tile["pending_care_bonus"] = 0
+                self.tile[field] = value
+                result, report = self.apply()
+                self.assertIs(result, self.selected)
+                self.assertFalse(report["changed"])
 
     def test_no_actual_wheat_spend_keeps_feed(self):
         self.obs["private"]["inventories"][1].clear()
