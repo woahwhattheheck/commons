@@ -25,7 +25,7 @@ import ablate_e20_productive_detour as ablation
 SUBMITTED_V4_ARCHIVE_SHA256 = (
     "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 )
-TARGET_MEMBER = ablation.HELPER_PATH
+TARGET_MEMBER = ablation.HELPER_ARCHIVE_MEMBER
 SOURCE_MEMBER = "SOURCE.json"
 
 
@@ -80,6 +80,8 @@ def _rewrite_source_manifest(
         "source_authority": {
             "submitted_v4_commit": ablation.V4_COMMIT,
             "submitted_v31_commit": ablation.V31_COMMIT,
+            "repository_path": ablation.HELPER_PATH,
+            "archive_member": ablation.HELPER_ARCHIVE_MEMBER,
         },
     }
     return (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode("utf-8")
@@ -92,8 +94,6 @@ def _pack(rows: list[tuple[tarfile.TarInfo, bytes]]) -> bytes:
             for original, data in rows:
                 info = copy.copy(original)
                 info.size = len(data)
-                # Avoid host-specific pax side effects while retaining the
-                # control member's ordinary permission/ownership metadata.
                 info.pax_headers = dict(original.pax_headers or {})
                 archive.addfile(info, io.BytesIO(data))
     return output.getvalue()
@@ -157,6 +157,8 @@ def build_treatment_archive(
         "control_helper_git_blob": ablation.git_blob(control_helper),
         "treatment_helper_git_blob": ablation.git_blob(treatment_helper),
         "v31_deletion_tail_authority_git_blob": ablation.V31_HELPER_GIT_BLOB,
+        "helper_repository_path": ablation.HELPER_PATH,
+        "helper_archive_member": ablation.HELPER_ARCHIVE_MEMBER,
     }
     return treatment_archive, receipt
 
