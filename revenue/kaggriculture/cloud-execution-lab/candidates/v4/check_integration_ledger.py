@@ -50,6 +50,19 @@ def _lane_set(rows: list[dict[str, Any]]) -> set[str]:
     return {str(row["lane"]) for row in rows}
 
 
+def _require_nonempty_text(
+    row: dict[str, Any],
+    lane: str,
+    field: str,
+    errors: list[str],
+    *,
+    label: str,
+) -> None:
+    value = row.get(field)
+    if not isinstance(value, str) or not value.strip():
+        errors.append(f"{label} lane {lane!r} lacks {field}")
+
+
 def validate(root: Path = HERE) -> list[str]:
     canonical = _load(root / "CANONICAL.json")
     ledger = _load(root / "INTEGRATION.json")
@@ -90,22 +103,46 @@ def validate(root: Path = HERE) -> list[str]:
         if not isinstance(disposition, str) or not disposition:
             errors.append(f"negative/parked lane {row['lane']!r} lacks disposition")
 
-    # Raw-payload blockers are deliberately stricter: the blocker directory and
-    # manifest must already exist and must agree that exact bytes are still owed.
+    # Custody rows have two deliberately distinct contracts:
+    #
+    # * awaiting_raw_payload is a live source blocker.  The blocker directory and
+    #   MANIFEST must exist and independently say that exact raw bytes are owed.
+    # * historical_evidence_gap_not_source_blocker records missing archival
+    #   receipts for a component whose exact current source/test custody already
+    #   exists.  It must name what is available, what is missing, and what may be
+    #   done if the history resurfaces, but it must NOT require an "awaiting"
+    #   manifest or masquerade as a live source blocker.
+    #
+    # Any other status is rejected rather than being silently treated as either.
     for row in blocked:
         lane = str(row["lane"])
         custody_path = row.get("custody_path")
         status = row.get("status")
-        if status != "awaiting_raw_payload":
-            errors.append(f"blocked lane {lane!r} has non-blocked status {status!r}")
-        if not isinstance(custody_path, str) or not custody_path:
-            errors.append(f"blocked lane {lane!r} lacks custody_path")
+
+        if not isinstance(custody_path, str) or not custody_path.strip():
+            errors.append(f"custody lane {lane!r} lacks custody_path")
             continue
         path = root / custody_path
-        manifest_path = path / "MANIFEST.json"
         if not path.is_dir():
-            errors.append(f"blocked lane {lane!r} missing custody directory {custody_path!r}")
+            errors.append(f"custody lane {lane!r} missing custody directory {custody_path!r}")
             continue
+
+        if status == "historical_evidence_gap_not_source_blocker":
+            for field in ("available", "missing", "required"):
+                _require_nonempty_text(
+                    row,
+                    lane,
+                    field,
+                    errors,
+                    label="historical evidence gap",
+                )
+            continue
+
+        if status != "awaiting_raw_payload":
+            errors.append(f"custody lane {lane!r} has unsupported status {status!r}")
+            continue
+
+        manifest_path = path / "MANIFEST.json"
         try:
             manifest = _load(manifest_path)
         except LedgerError as exc:
