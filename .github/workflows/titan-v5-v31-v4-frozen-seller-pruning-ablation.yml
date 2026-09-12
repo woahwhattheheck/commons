@@ -1,0 +1,68 @@
+name: TITAN V5 V3.1-V4 frozen seller pruning ablation
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/v31-v4-frozen-seller-pruning-ablation/**'
+      - '.github/workflows/titan-v5-v31-v4-frozen-seller-pruning-ablation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-gate:
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Assert exact pull-request head
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Focused source contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/v31-v4-frozen-seller-pruning-ablation
+        run: |
+          python -B -m unittest -v test_pruning_ablation
+          python -O -B -m unittest -v test_pruning_ablation
+          python -m py_compile pruning_ablation.py test_pruning_ablation.py
+      - name: Exact submitted V3.1 and V4 source audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='revenue/kaggriculture/cloud-execution-lab'
+          v31='a90d888f03987ef0b35cfd20ec3519c6144db08a'
+          v4='4af1113154e78c662780e6658cd920daac7902e3'
+          git show "$v31:$root/selected_sell_core.py" > /tmp/v31-selected-sell-core.py
+          git show "$v4:$root/selected_sell_core.py" > /tmp/v4-selected-sell-core.py
+          PYTHONPATH="$root/candidates/v5/v31-v4-frozen-seller-pruning-ablation" python - <<'PY'
+          import ast
+          from pathlib import Path
+          import pruning_ablation as a
+
+          v31 = Path('/tmp/v31-selected-sell-core.py').read_bytes()
+          v4 = Path('/tmp/v4-selected-sell-core.py').read_bytes()
+          assert a.git_blob_bytes(v4) == a.V4_SELECTED_SELL_CORE_GIT_BLOB
+          assert v4.count(a._PRUNED_BLOCK) == 1
+          treatment = a.rewrite_early_pruning_off(v4)
+          ast.parse(treatment.decode('utf-8'))
+          marker = b"    elif not reference_feasible:\n"
+          assert v4.split(marker, 1)[1] == treatment.split(marker, 1)[1]
+
+          old_capacity = b"        if capacity_ok and not capacity_ok(plan):continue\n"
+          old_scores = b"        scores=[model.score(plan,quantity,r,a,end==last) for _,r,a in scenarios]\n"
+          assert old_capacity in v31 and old_scores in v31
+          assert v31.index(old_capacity) < v31.index(old_scores)
+          assert b"first_score=model.score(plan,quantity,0,'paired',end==last)" not in v31
+          assert b"first_score=model.score(plan,quantity,0,'paired',end==last)" in v4
+          PY
