@@ -1,0 +1,101 @@
+name: TITAN V4 ROWSHED returned-action gate
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/titan-v4-row-shed-returned-action-gate.yml
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/field_receipt.py
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/test_field_receipt.py
+  workflow_run:
+    workflows:
+      - TITAN V4 ROWSHED graph-postimage field
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate returned-action reducer
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROW=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order
+          pushd "$ROW"
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_field_receipt.py
+          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_field_receipt.py
+          python -B -m py_compile field_receipt.py test_field_receipt.py
+          popd
+
+  postprocess:
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event != 'pull_request' &&
+      github.event.workflow_run.head_branch == 'main'
+    needs: source
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      UPSTREAM_RUN_ID: ${{ github.event.workflow_run.id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download canonical row-shed field artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          RAW="$RUNNER_TEMP/row-shed-upstream"
+          OUT="$RUNNER_TEMP/row-shed-returned-action"
+          mkdir -p "$RAW" "$OUT"
+          NAME="titan-v4-row-shed-postimage-field-${UPSTREAM_RUN_ID}"
+          gh run download "$UPSTREAM_RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --name "$NAME" \
+            --dir "$RAW"
+          FIELD="$(find "$RAW" -type f -name FIELD-RECEIPT.json -print -quit)"
+          test -n "$FIELD"
+          TELE="$(dirname "$FIELD")/row-shed-telemetry.jsonl"
+          test -f "$TELE"
+          printf 'ROW_SHED_UPSTREAM=%s\n' "$(dirname "$FIELD")" >> "$GITHUB_ENV"
+          printf 'ROW_SHED_RETURNED_OUT=%s\n' "$OUT" >> "$GITHUB_ENV"
+
+      - name: Rebind natural reorder to final returned market
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROW=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order
+          python -B "$ROW/field_receipt.py" \
+            --telemetry "$ROW_SHED_UPSTREAM/row-shed-telemetry.jsonl" \
+            --field-receipt "$ROW_SHED_UPSTREAM/FIELD-RECEIPT.json" \
+            --output "$ROW_SHED_RETURNED_OUT/FIELD-RECEIPT-RETURNED-ACTION.json"
+          cp "$ROW_SHED_UPSTREAM/FIELD-RECEIPT.json" \
+            "$ROW_SHED_RETURNED_OUT/FIELD-RECEIPT-V1-UNBOUND.json"
+          sha256sum \
+            "$ROW/field_receipt.py" \
+            "$ROW/row_shed_sell_order.py" \
+            "$ROW_SHED_UPSTREAM/FIELD-RECEIPT.json" \
+            "$ROW_SHED_UPSTREAM/row-shed-telemetry.jsonl" \
+            > "$ROW_SHED_RETURNED_OUT/source-sha256.txt"
+          {
+            printf 'upstream_run_id=%s\n' "$UPSTREAM_RUN_ID"
+            printf 'upstream_head_sha=%s\n' "${{ github.event.workflow_run.head_sha }}"
+            printf 'upstream_event=%s\n' "${{ github.event.workflow_run.event }}"
+          } > "$ROW_SHED_RETURNED_OUT/UPSTREAM.txt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-v4-row-shed-returned-action-${{ github.event.workflow_run.id }}
+          path: ${{ env.ROW_SHED_RETURNED_OUT }}
+          retention-days: 14
+          if-no-files-found: error
