@@ -68,7 +68,32 @@ class TerminalCompositionReplayTests(unittest.TestCase):
         self.assertEqual([len(instance.calls) for instance in created], [4, 1])
         self.assertEqual(terminal_composition._LAST_STEP, 3)
 
-    def test_failed_rewind_keeps_old_marker_so_retry_rebuilds_again(self):
+    def test_failed_cold_start_publishes_nothing_and_retry_builds_fresh(self):
+        failed = _FailingTerminalSell("failed-cold-start")
+        retry = _StubTerminalSell("retry-cold-start")
+        created = []
+
+        def make_cold_start():
+            instance = failed if not created else retry
+            created.append(instance)
+            return instance
+
+        with patch.object(terminal_composition, "TerminalSell", side_effect=make_cold_start) as factory:
+            with self.assertRaisesRegex(RuntimeError, "injected reset failure"):
+                terminal_composition.agent({"step": 0}, {})
+            self.assertIsNone(terminal_composition._INSTANCE)
+            self.assertIsNone(terminal_composition._LAST_STEP)
+
+            recovered = terminal_composition.agent({"step": 0}, {})
+
+        self.assertEqual(factory.call_count, 2)
+        self.assertIs(terminal_composition._INSTANCE, retry)
+        self.assertEqual(terminal_composition._LAST_STEP, 0)
+        self.assertEqual(recovered["token"], "retry-cold-start")
+        self.assertEqual(len(failed.calls), 1)
+        self.assertEqual(len(retry.calls), 1)
+
+    def test_failed_rewind_keeps_committed_instance_and_retry_rebuilds_again(self):
         old = _StubTerminalSell("old")
         failed = _FailingTerminalSell("failed-reset")
         retry = _StubTerminalSell("retry-reset")
@@ -84,7 +109,7 @@ class TerminalCompositionReplayTests(unittest.TestCase):
         with patch.object(terminal_composition, "TerminalSell", side_effect=make_reset) as factory:
             with self.assertRaisesRegex(RuntimeError, "injected reset failure"):
                 terminal_composition.agent({"step": 0}, {})
-            self.assertIs(terminal_composition._INSTANCE, failed)
+            self.assertIs(terminal_composition._INSTANCE, old)
             self.assertEqual(terminal_composition._LAST_STEP, 5)
 
             recovered = terminal_composition.agent({"step": 0}, {})
