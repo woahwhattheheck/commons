@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "purpose": "Evidence-only current-ABI recovery of the submitted V3.1 baseline ROW_ORDER theorem, distinct from r04_row_shed.",
+  "branch_base": "d61e0333efe5697b56a867ed84a23e909195d3f4",
+  "submitted_v31": {
+    "source_commit": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+    "archive_sha256": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+    "r04_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py",
+    "r04_git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+  },
+  "theorem": {
+    "enabled_flag": "ROW_ORDER",
+    "quantity_basis": "requested SELL quantity",
+    "score": "(price_before - price_after) * requested_quantity",
+    "scope": "contiguous leading executable SELL block only",
+    "stable_ties": true,
+    "market_params_override_identity": true,
+    "producer_calls": 0
+  },
+  "submitted_order": [
+    "h8_l3_sale_window",
+    "h4_strawberry_topup",
+    "row_order",
+    "row_shed",
+    "evening_flush",
+    "b5_carrot_jit"
+  ],
+  "current_tightening": [
+    "falsey and nonpositive executable rows are hard barriers",
+    "malformed executable rows fail closed",
+    "known-product market inventory must be explicit plain nonnegative ints",
+    "engine-inert suffix beyond maxMarketOrdersPerTurn is preserved"
+  ],
+  "forbidden": [
+    "shed projection or fillable-quantity scoring in this component",
+    "producer or controller invocation",
+    "runtime/default/config/archive/release/Kaggle mutation"
+  ]
+}
