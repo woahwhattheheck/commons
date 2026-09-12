@@ -12,6 +12,14 @@ from pathlib import Path
 
 FEATURE_ANCHOR = "    early_capital: bool = False\n"
 FEATURE_INSERT = FEATURE_ANCHOR + "    exec_pace: bool = False\n"
+BOOL_GUARD_ANCHOR = (
+    "        for name in bool_fields:\n"
+    "            if type(getattr(self, name)) is not bool:\n"
+)
+BOOL_GUARD_INSERT = (
+    "        bool_fields = (*bool_fields, 'exec_pace')\n"
+    + BOOL_GUARD_ANCHOR
+)
 
 FALLBACK_STATE_ANCHOR = (
     "        self._completed_seller_state = None\n"
@@ -91,6 +99,8 @@ def _replace_once(source, anchor, replacement, label):
 
 def compose_sources(titan_runtime_source, frozen_selected_source):
     titan = _replace_once(titan_runtime_source, FEATURE_ANCHOR, FEATURE_INSERT, "Features")
+    titan = _replace_once(titan, BOOL_GUARD_ANCHOR, BOOL_GUARD_INSERT,
+                          "Features exact-bool guard")
     titan = _replace_once(titan, FALLBACK_STATE_ANCHOR, FALLBACK_STATE_INSERT,
                           "EXEC-PACE fallback state")
     titan = _replace_once(titan, FALLBACK_OBSERVER_ANCHOR, FALLBACK_OBSERVER_INSERT,
