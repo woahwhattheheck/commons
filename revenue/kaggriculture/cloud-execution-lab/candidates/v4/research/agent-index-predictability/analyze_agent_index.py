@@ -36,10 +36,60 @@ def _first(record: dict[str, Any], names: tuple[str, ...]) -> Any:
 def _finite_number(value: Any, label: str) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise DataError(f"{label} must be a finite number")
-    result = float(value)
+    try:
+        result = float(value)
+    except (OverflowError, ValueError):
+        raise DataError(f"{label} must be finite")
     if not math.isfinite(result):
         raise DataError(f"{label} must be finite")
     return result
+
+
+def _outcome_margin(record: dict[str, Any], index: int, seat: int) -> float:
+    """Return one target-relative margin, rejecting contradictory encodings.
+
+    Inputs sometimes carry more than one outcome representation.  A direct
+    ``margin`` must never silently override contradictory engine-style
+    ``rewards`` or ``score`` fields.  When redundant representations agree,
+    prefer the more structured representation without imposing a guessed
+    magnitude ceiling on legitimate engine rewards.
+    """
+    outcomes: dict[str, float] = {}
+
+    if "margin" in record:
+        outcomes["margin"] = _finite_number(record["margin"], f"record {index} margin")
+
+    if "rewards" in record:
+        rewards = record["rewards"]
+        if not isinstance(rewards, list) or len(rewards) != 2:
+            raise DataError(f"record {index}: rewards must be a two-item list")
+        left = _finite_number(rewards[seat], f"record {index} target reward")
+        right = _finite_number(rewards[1 - seat], f"record {index} opponent reward")
+        outcomes["rewards"] = left - right
+
+    if "score" in record and "opponent_score" in record:
+        outcomes["score+opponent_score"] = (
+            _finite_number(record["score"], f"record {index} score")
+            - _finite_number(record["opponent_score"], f"record {index} opponent_score")
+        )
+
+    if not outcomes:
+        raise DataError(
+            f"record {index}: need margin, rewards[2], or score+opponent_score"
+        )
+
+    first_name, first_value = next(iter(outcomes.items()))
+    for name, value in list(outcomes.items())[1:]:
+        if not math.isclose(first_value, value, rel_tol=1e-12, abs_tol=1e-9):
+            raise DataError(
+                f"record {index}: conflicting outcome representations "
+                f"({first_name}={first_value!r}, {name}={value!r})"
+            )
+
+    for preferred in ("rewards", "score+opponent_score", "margin"):
+        if preferred in outcomes:
+            return outcomes[preferred]
+    raise AssertionError("unreachable outcome representation state")
 
 
 def normalize_record(record: Any, index: int) -> dict[str, Any]:
@@ -58,24 +108,7 @@ def normalize_record(record: Any, index: int) -> dict[str, Any]:
     if isinstance(seat, bool) or type(seat) is not int or seat not in (0, 1):
         raise DataError(f"record {index}: target seat must be literal 0 or 1")
 
-    if "margin" in record:
-        margin = _finite_number(record["margin"], f"record {index} margin")
-    elif "rewards" in record:
-        rewards = record["rewards"]
-        if not isinstance(rewards, list) or len(rewards) != 2:
-            raise DataError(f"record {index}: rewards must be a two-item list")
-        left = _finite_number(rewards[seat], f"record {index} target reward")
-        right = _finite_number(rewards[1 - seat], f"record {index} opponent reward")
-        margin = left - right
-    elif "score" in record and "opponent_score" in record:
-        margin = (
-            _finite_number(record["score"], f"record {index} score")
-            - _finite_number(record["opponent_score"], f"record {index} opponent_score")
-        )
-    else:
-        raise DataError(
-            f"record {index}: need margin, rewards[2], or score+opponent_score"
-        )
+    margin = _outcome_margin(record, index, seat)
 
     return {
         "seed": str(seed),
