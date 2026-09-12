@@ -20,6 +20,8 @@ python3 -B paired.py \
   --output astra-joint-liquidity-01
 ```
 
+`--overlay-sha256` is retained for compatibility with the published fleet command, but the launcher now binds it to the immutable SHA below before resolving inputs or creating the result directory. Both `--overlay` and prebuilt `--candidate` modes therefore reject a caller-chosen self-consistent hash instead of attributing arbitrary bytes to commit `3447b9f1`.
+
 The full matrix is 8 pairs / 16 games. For a first 4-pair receipt, use only seed `1209120226`; the second seed can run on another VM with a distinct output directory. To allocate four smaller jobs, split by one seed and one opponent. Keep each V4/candidate pair on the same VM. Each game is sequential within that job, freshly extracts its own archive, and starts new persistent agent processes with private working directories. It runs the complete episode with 719 callbacks; it does not shorten episodes or reuse agent state between games. Initialization through the pinned raw-file loading contract is included in the first timed call.
 
 The default callback RPC deadline is 1.25 seconds, including IPC headroom, and the whole-game bound is 900 seconds. V4's own native deadline remains unchanged. This offline process driver does not reproduce hosted Kaggle resource enforcement. Any callback, opponent-loading, timeout, or interpreter failure is retained in the game JSON and prevents a paired score delta; failures never become zero-score wins. The two variants use the same independent policy RNG seed, game seed, seat, and opponent source. Run order alternates between pairs.
@@ -29,7 +31,7 @@ Each finished game writes `<cell>-baseline.json` or `<cell>-candidate.json`; eac
 Source identities:
 
 - V4 archive SHA256: `4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b` (75 members).
-- Candidate overlay: [commit 3447b9f1](https://github.com/woahwhattheheck/commons/blob/3447b9f1f157aab8a98c0b3a283a7058e477482b/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py), SHA256 `340149a3d9e68b14440825943a5f98067401c913af42727ac9a3ba5b3d829cc6`.
+- Candidate overlay: [commit 3447b9f1](https://github.com/woahwhattheheck/commons/blob/3447b9f1f157aab8a98c0b3a283a7058e477482b/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py), SHA256 `340149a3d9e68b14440825943a5f98067401c913af42727ac9a3ba5b3d829cc6`. This commit↔SHA pair is enforced by the launcher, not merely documented by the caller.
 - Official Kaggle source ref: `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`; interpreter blob `3c202c7ee921da239356789e266b694635103fc4`.
 - Existing evaluator: `cloud-execution-lab/reference/evaluator/evaluate.py`; loader: `20260907-offline-agent/evaluate.py`; bank bridge: `reference_policies.py` alongside its `REFERENCE-POLICIES.json`.
 
