@@ -115,7 +115,9 @@ class MarketPath:
         for k in range(max(own,rival)):
             price=self.quote(inv)
             a=k<own;b=k<rival
-            cash+=price*a;other+=price*b
+            cash+=price*a;other_cash=0
+            other_cash+=price*b
+            other=other_cash
             if price>1:inv+=int(a)+int(b)
         return cash,other,inv
 
@@ -201,15 +203,41 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
         'feasible':found_feasible,'plans_evaluated':len(candidates)}
 
 
-def _order_spend(order, farm, inventory, params, hires, config):
-    if not order:return 0,hires
+def _parse_market_order(order):
+    """Classify one row exactly as the pinned engine's market parser."""
+    if not isinstance(order,list) or not order:
+        return None
     op=order[0]
+    if op in ('HIRE','BUY_LAND'):
+        return op,None,1
+    if len(order)<3:
+        return None
+    try:
+        n=int(order[2])
+    except (TypeError,ValueError):
+        return None
+    if n<=0:
+        return None
+    item=order[1]
+    if op=='BUY_SEED' and item in m.CROPS:
+        return op,item,n
+    if op=='BUY_ANIMAL' and item in m.ANIMALS:
+        return op,item,n
+    if op=='BUY_PRODUCT' and item in ('WHEAT','FERTILIZER'):
+        return op,item,n
+    if op=='SELL' and item in m.PRODUCTS:
+        return op,item,n
+    return None
+
+
+def _order_spend(order, farm, inventory, params, hires, config):
+    parsed=_parse_market_order(order)
+    if parsed is None:return 0,hires
+    op,item,n=parsed
     if op=='HIRE':return m._hire_cost(hires,int(config.get('farmHandCostMult',1))),hires+1
     if op=='BUY_LAND':
         i=len(farm['unlocked_quadrants'])-1
         return (m.LAND_PRICES[i] if i<len(m.LAND_PRICES) else 0),hires
-    if len(order)<3:return 0,hires
-    item,n=order[1],max(0,int(order[2]))
     if op=='BUY_SEED':return m.CROPS[item]['seed']*n,hires
     if op=='BUY_ANIMAL':return m.ANIMALS[item]['cost']*n,hires
     if op=='BUY_PRODUCT':
@@ -265,8 +293,10 @@ class SellScheduler:
             market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
             orders=_engine_market_prefix(market_action,config)
             for order in orders:
+                parsed=_parse_market_order(order)
+                if parsed is None:continue
                 n,hires=_order_spend(order,farm,obs['market']['inventory'],obs['market'].get('params'),hires,config);cost+=n
-                if order and order[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
+                if parsed[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
                     farm['unlocked_quadrants'].append(m.LAND_ORDER[len(farm['unlocked_quadrants'])-1])
         return cost
 
@@ -297,12 +327,14 @@ class SellScheduler:
             market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
             orders=_engine_market_prefix(market_action,config)
             for o in orders:
-                if not o:continue
-                if o[0]=='SELL' and o[1]!=item:
-                    p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
-                elif o[0] in ('BUY_PRODUCT','BUY_ANIMAL') and len(o)>2:
-                    p['shed'][o[1]]=p['shed'].get(o[1],0)+int(o[2])
-                elif o[0]=='HIRE':
+                parsed=_parse_market_order(o)
+                if parsed is None:continue
+                op,product,n=parsed
+                if op=='SELL' and product!=item:
+                    p['shed'][product]=max(0,p['shed'].get(product,0)-n)
+                elif op in ('BUY_PRODUCT','BUY_ANIMAL'):
+                    p['shed'][product]=p['shed'].get(product,0)+n
+                elif op=='HIRE':
                     f['hands'].append(m._spawn_hand(f,len(f['tiles'])));p['inventories'].append({})
             if t%turns_per_day==turns_per_day-1:
                 m._drop_inventories_to_shed(p,10**6)
@@ -343,9 +375,12 @@ class SellScheduler:
         if dates[-1]!=end:dates.append(end)
         dates=sorted(set(dates))
         baseline_q={}
-        for o in _engine_market_prefix(base,config):
-            if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
-                baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
+        for raw in _engine_market_prefix(base,config):
+            parsed=_parse_market_order(raw)
+            if parsed is None:continue
+            op,product,n=parsed
+            if op=='SELL' and product in PRODUCTS:
+                baseline_q[product]=baseline_q.get(product,0)+n
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
         budget=self.cash_reserve(obs,config,base,end)
@@ -361,9 +396,12 @@ class SellScheduler:
             route=self.controller.R[self.controller.cur]
             for t in range(now+1,end+1):
                 future_action=route[t] if t<len(route) else parent.PASS
-                for order in _engine_market_prefix(future_action,config):
-                    if order and order[0]=='SELL' and order[1]==item and rem>0:
-                        q=min(rem,max(0,int(order[2])));reference.append((t,q));rem-=q
+                for raw in _engine_market_prefix(future_action,config):
+                    parsed=_parse_market_order(raw)
+                    if parsed is None:continue
+                    op,product,n=parsed
+                    if op=='SELL' and product==item and rem>0:
+                        q=min(rem,n);reference.append((t,q));rem-=q
             # Remaining stock keeps a continuation value; no artificial liquidation.
             reference=tuple((t,sum(q for d,q in reference if d==t)) for t in sorted({t for t,_ in reference}))
             if self.mode=='naive':
@@ -383,7 +421,12 @@ class SellScheduler:
                     market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
                     orders=_engine_market_prefix(market_action,config)
                     if len(orders)>=market_limit:
-                        offered=sum(max(0,int(o[2])) for o in orders if o and o[0]=='SELL' and o[1]==item)
+                        offered=0
+                        for raw in orders:
+                            parsed=_parse_market_order(raw)
+                            if parsed is None:continue
+                            op,product,n=parsed
+                            if op=='SELL' and product==item:offered+=n
                         if q>offered:return False
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
@@ -397,27 +440,30 @@ class SellScheduler:
             self.diagnostics['chosen']=info
         out=copy.deepcopy(base);market=[];remaining=dict(current)
         available=dict(shed)
-        # Preserve every original order index, including withheld SELL positions.
-        # Extra stock is offered only after inherited orders: never consolidate a
-        # later SELL ahead of a cash-dependent purchase or shift its rival pairing.
+        # Preserve every raw slot and every engine-inert row. Rewrite only
+        # executable prefix SELLs that this scheduler owns.
         for slot,raw in enumerate(out['market']):
             if slot>=market_limit:
                 market.append(raw)  # Engine-inert suffix stays opaque.
                 continue
-            o=list(raw)
-            if o and o[0]=='SELL' and len(o)>2 and o[1] in targets:
-                item=o[1]
-                q=min(max(0,int(o[2])),remaining.get(item,0),max(0,available.get(item,0)))
+            parsed=_parse_market_order(raw)
+            if parsed is not None and parsed[0]=='SELL' and parsed[1] in targets:
+                _,item,n=parsed
+                q=min(n,remaining.get(item,0),max(0,available.get(item,0)))
                 remaining[item]=remaining.get(item,0)-q;available[item]=available.get(item,0)-q
                 market.append(['SELL',item,q] if q else [])
-            else:market.append(o)
+            else:market.append(raw)
         for item in sorted(targets):
             q=min(remaining.get(item,0),max(0,available.get(item,0)))
             if q>0 and len(market)<market_limit:
                 market.append(['SELL',item,q]);available[item]=available.get(item,0)-q
         out['market']=market
         for item,q in targets.items():
-            sold=sum(o[2] for o in _engine_market_prefix(out,config) if o and o[0]=='SELL' and o[1]==item)
+            sold=0
+            for raw in _engine_market_prefix(out,config):
+                parsed=_parse_market_order(raw)
+                if parsed is not None and parsed[0]=='SELL' and parsed[1]==item:
+                    sold+=parsed[2]
             self.pending[item]=max(0,q-sold)
             if not self.pending[item]:self.planned.pop(item,None)
         self.previous=copy.deepcopy(obs)
