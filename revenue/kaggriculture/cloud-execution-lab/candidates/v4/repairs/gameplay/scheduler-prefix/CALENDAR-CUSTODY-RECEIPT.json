@@ -1,0 +1,60 @@
+{
+  "admission": "SOURCE_ONLY_MERGEABLE_ACTIVATION_STILL_GATED",
+  "authored_files": {
+    "CALENDAR-CUSTODY.md": {
+      "bytes": 3344,
+      "git_blob": "0546d048655241d3c7d10fbe38786d7a96ac6503",
+      "sha256": "882c0b8ef83024619567892346a228a0baabd8e33bb28b47f785774a33dfb2d8"
+    },
+    "materialize_scheduler_calendar.py": {
+      "bytes": 10390,
+      "git_blob": "d9702760b249fe4e99f75ce51309d2d323ff5cad",
+      "sha256": "127563197ec924f54e68aeb59110e584d39ac2f8469bbf01ad2d6d112f582796"
+    },
+    "test_scheduler_calendar.py": {
+      "bytes": 10135,
+      "git_blob": "a934ebd62e9658945f4ccde3ae5e53e9b92f8e37",
+      "sha256": "2a407fefb85bf4fcc245af7e1d06df9bed611aef712ce55d516c5b54ff049dc6"
+    }
+  },
+  "candidate_scheduler_git_blob": "b435de06c291186ae5895e2db7667fb1fc1c149f",
+  "default_changed": false,
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "mutations": [
+    "cash_reserve hire-day reset uses strict configured turnsPerDay",
+    "receipt_profile future unit day/turn arguments use strict configured turnsPerDay",
+    "receipt_profile EOD/drop boundary uses strict configured turnsPerDay",
+    "act horizon clipping uses strict configured turnsPerDay",
+    "act naive EOD guard uses strict configured turnsPerDay"
+  ],
+  "operation": "SOL-SCHEDULER-CALENDAR-CUSTODY-WIDE",
+  "prefix_materializer_git_blob": "f36e9120ea07c861a7eca5821a5306c6dbfa4613",
+  "prefixed_scheduler_git_blob": "1da9934ec45f485a16244bcbc78af26d9109b97e",
+  "production_activation": false,
+  "publication_base": "280751d2f833fb2ff544e3743e33826a7304db9a",
+  "raw_scheduler_git_blob": "a483b24dd72b580d7d8811636b54d2d44f391575",
+  "runtime_file_mutated": false,
+  "source_artifact": {
+    "note": "exact scheduler/engine bytes reconstructed from canonical retained runtime artifact",
+    "workflow_artifact_id": 10175943272
+  },
+  "validation": {
+    "canonical_24_behavior": "PRESERVED_BY_FOCUSED_CONTRACT",
+    "exact_cli_materialization": "PASS",
+    "focused_normal": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 15,
+      "skipped": 0
+    },
+    "focused_optimized": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 15,
+      "skipped": 0
+    },
+    "nonstandard_12_predecessor_killers": 5,
+    "py_compile": "PASS",
+    "python": "3.13.5"
+  }
+}
