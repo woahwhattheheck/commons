@@ -221,6 +221,23 @@
       "after": [],
       "conflicts": [],
       "note": "SEEDGHOST remains default-OFF/COLD. Registration makes the merged package visible to the sole composition/custody control plane without authorizing runtime wiring. Reopen only after current natural engagement and a sanctioned returned-action boundary prove a materializable edge."
+    },
+    {
+      "id": "redundant-hire-two-seat-laborflow",
+      "state": "blocked",
+      "reason": "The two-seat fail-close repair and LABORFLOW source composer are landed, but no authenticated current-runtime postimage/production-source edge or current-native two-seat economics are pinned.",
+      "package": "repairs/gameplay/redundant-hire-two-seat",
+      "entrypoints": [
+        "repairs/gameplay/redundant-hire-two-seat/repair_redundant_hire_two_seat.py",
+        "repairs/gameplay/redundant-hire-two-seat/compose_laborflow_multi_detour.py"
+      ],
+      "receipt": "repairs/gameplay/redundant-hire-two-seat/MANIFEST.json",
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Custody only: preserve the converged redundant-HIRE family and its contiguous-prefix productive-detour extension without authorizing runtime application. Current-native two-seat economics and a sanctioned postimage remain separate gates."
     }
   ],
   "discovery": {
