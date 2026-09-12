@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Regression for engine-order seed consumption in early-capital projection."""
+"""Regression for pinned-engine atomic same-crop PLANT seed admission."""
 import unittest
 from copy import deepcopy
 
@@ -59,8 +59,8 @@ def route():
     return rows
 
 
-class EarlyCapitalSequentialSeedParity(unittest.TestCase):
-    def test_unit_projection_consumes_available_seed_in_actor_order(self):
+class EarlyCapitalAtomicSeedParity(unittest.TestCase):
+    def test_unit_projection_blocks_all_same_crop_plants_when_seed_short(self):
         public = observation()
         selected = selected_action()
         before_public = deepcopy(public)
@@ -69,11 +69,13 @@ class EarlyCapitalSequentialSeedParity(unittest.TestCase):
         post = _project_post_unit_private(m, public, CFG, selected, 1)
 
         self.assertIsNotNone(post)
-        self.assertEqual(post['seeds']['CARROT'], 0)
+        # Pinned interpreter performs one pre-unit PLANT-demand pass. Two
+        # CARROT requests with one tick-start seed are both replaced by PASS.
+        self.assertEqual(post['seeds']['CARROT'], 1)
         self.assertEqual(public, before_public)
         self.assertEqual(selected, before_selected)
 
-    def test_next_turn_seed_need_stays_ahead_of_land_after_partial_plant(self):
+    def test_preserved_seed_satisfies_next_turn_demand_without_reordering_land(self):
         public = observation()
         selected = selected_action()
         planned = route()
@@ -85,12 +87,11 @@ class EarlyCapitalSequentialSeedParity(unittest.TestCase):
             m, public, CFG, selected, planned,
         )
 
-        self.assertTrue(report['changed'])
-        self.assertEqual(report['reason'], 'ordered')
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'already_ordered')
+        self.assertEqual(result, selected)
         self.assertEqual(result['market'],
-                         [['BUY_SEED', 'CARROT', 1], ['BUY_LAND']])
-        self.assertEqual(result['farmer'], selected['farmer'])
-        self.assertEqual(result['hands'], selected['hands'])
+                         [['BUY_LAND'], ['BUY_SEED', 'CARROT', 1]])
         self.assertEqual(public, before_public)
         self.assertEqual(selected, before_selected)
         self.assertEqual(planned, before_route)
