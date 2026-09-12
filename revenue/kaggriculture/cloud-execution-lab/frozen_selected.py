@@ -379,14 +379,17 @@ def funded_minimum_now(obs, config, base, farm, private, route, end,
     return baseline, certificate
 
 
-def joint_resource_bound(obs, config, base, farm, private, route, end):
-    """Prepaid capital and a same-day stock upper bound without sale credit.
+def joint_resource_bound(obs, config, base, farm, private, route, end,
+                         current_market=None, rival_quantity=None):
+    """Bound fixed capital and same-day stock, optionally using current sales.
 
     With no DROP or day close, only literal PLACE quantities and animal buys
     can add shed stock. Count all such requests, even unreachable ones; carried
     harvest is not in the shed. No unit transitions or future fills are assumed.
     The extra capital boundary includes the next turn's hires. Variable-price
-    purchases remain outside this initial joint admission.
+    purchases remain outside joint admission. An explicit current market may
+    fund the window with conservative physical SELL receipts, provided every
+    current acquisition executes in order. Requested future sales earn no cash.
     """
     now=int(obs['step']);size=len(farm['tiles']);cap=int(config.get('shedCapacity',100))
     if (int(config.get('turnsPerDay',24))!=24 or size!=10
@@ -396,8 +399,10 @@ def joint_resource_bound(obs, config, base, farm, private, route, end):
     capital_end=min(last,end+1)
     if capital_end%24==23:return None
     if any(now<checkpoint<=capital_end for checkpoint,*_ in parent.DECISIONS):return None
+    if (current_market is not None
+            and len(current_market)>int(config.get('maxMarketOrdersPerTurn',10))):return None
     def orders_at(t):
-        return base['market'] if t==now else route[t].get('market',[]) if t<len(route) else []
+        return (base['market'] if current_market is None else current_market) if t==now else route[t].get('market',[]) if t<len(route) else []
     budget_farm={'unlocked_quadrants':list(farm['unlocked_quadrants'])}
     hires=int(farm['hires_today']);cost=0;arrivals={}
     for t in range(now,capital_end+1):
@@ -417,7 +422,25 @@ def joint_resource_bound(obs, config, base, farm, private, route, end):
             cost+=amount
             if op=='BUY_LAND' and len(budget_farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
                 budget_farm['unlocked_quadrants'].append(m.LAND_ORDER[len(budget_farm['unlocked_quadrants'])-1])
-    if farm['money']<cost:return None
+    funding=None
+    if farm['money']<cost:
+        if current_market is None:return None
+        state=_market_prefix_state(
+            current_market,farm,private,obs['market'],
+            obs.get('town',{}).get('unlocked_shops',[]),config,now,
+            rival_quantity,len(current_market)-1)
+        if (state['unsupported_index'] is not None
+                or any(row['completed']<row['required']
+                       for row in state['outcomes'].values())):return None
+        spent=sum(row['completed']*row['cost_per_unit']
+                  for row in state['outcomes'].values())
+        # Every current purchase must execute in order. Only current physical
+        # sales can fund the remaining fixed spend; future SELLs earn no credit.
+        future_cost=cost-spent
+        if state['money']<future_cost:return None
+        funding={'current_sale_receipt':state['money']-int(farm['money'])+spent,
+                 'current_fixed_spend':spent,'remaining_cash':state['money'],
+                 'future_fixed_cost':future_cost,'sale_stress':state['sale_stress']}
     upper={p:max(0,int(n)) for p,n in private['shed'].items()}
     # A boundary unit-stage deposit runs before the next chance to sell.
     for t in range(now+1,capital_end+1):
@@ -430,8 +453,10 @@ def joint_resource_bound(obs, config, base, farm, private, route, end):
                 upper[a[1]]=upper.get(a[1],0)+n
     for item,n in arrivals.items():upper[item]=upper.get(item,0)+n
     if sum(upper.values())>cap:return None
-    return {'fixed_cost':cost,'capital_end':capital_end,'stock_upper':upper,
-            'stock_total_upper':sum(upper.values()),'capacity':cap}
+    bound={'fixed_cost':cost,'capital_end':capital_end,'stock_upper':upper,
+           'stock_total_upper':sum(upper.values()),'capacity':cap}
+    if funding is not None:bound['current_sale_funding']=funding
+    return bound
 
 
 def joint_queue_ledger(plans, current, planned, shed, bound, orders_at, now, end, max_orders):
@@ -653,22 +678,39 @@ class FrozenSelected(SellScheduler):
             if eligible:
                 options.append((item,plan,info,reference))
                 if best is None or rank>seller_choice_rank(best[2])[1]:best=(item,plan,info)
-        # Compose the peer's ordinary per-product plans only inside a prepaid,
-        # shared-capacity bound. A failed pair never changes the legacy single.
-        if (farm['money']>=budget and len(options)>1
+        # Compose ordinary per-product plans inside a shared resource bound.
+        # A pair can use its executable current sales to fund fixed purchases;
+        # a failed pair never changes the legacy single-product choice.
+        if (len(options)>1
                 and not getattr(self,'joint_producer_busy',False)
                 and not (best and best[2].get('forced_feasibility',False))):
             ranked=sorted(options,key=lambda x:seller_choice_rank(x[2])[1],reverse=True)[:4]
             route=self.controller.R[self.controller.cur]
-            bound=joint_resource_bound(obs,config,base,farm,private,route,end)
+            prepaid_bound=(joint_resource_bound(obs,config,base,farm,private,route,end)
+                           if farm['money']>=budget else None)
             def orders_at(step):
                 return base['market'] if step==now else route[step].get('market',[]) if step<len(route) else []
             for left in range(len(ranked)):
                 for right in range(left+1,len(ranked)):
-                    if bound is None:continue
                     pair=(ranked[left],ranked[right])
                     if any(entry[2].get('forced_feasibility',False) for entry in pair):continue
                     plans={entry[0]:entry[1] for entry in pair}
+                    bound=prepaid_bound
+                    if bound is None:
+                        pair_current=dict(current)
+                        for item,plan in plans.items():
+                            pair_current[item]=dict(plan).get(now,0)
+                        pair_market=materialize_sales(
+                            base['market'],pair_current,shed,targets,
+                            int(config.get('maxMarketOrdersPerTurn',10)))
+                        pair_market,_=fund_same_turn_acquisition(
+                            pair_market,farm,private,obs['market'],shops,config,now,
+                            targets,lambda product:self.rival_supply(obs,product))
+                        bound=joint_resource_bound(
+                            obs,config,base,farm,private,route,end,
+                            current_market=pair_market,
+                            rival_quantity=lambda product:self.rival_supply(obs,product))
+                    if bound is None:continue
                     # A future carried-goods commitment cannot be consumed by
                     # this new joint sale. Ordinary inputs remain producer-owned.
                     if any(a and len(a)>1 and a[0]=='PICKUP' and a[1] in plans
