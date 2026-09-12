@@ -99,8 +99,14 @@ class VerifierInputContract(unittest.TestCase):
                               GRAPH + ': expected ' + FIXTURE_PINS[GRAPH])
 
     def test_graph_pin_applies_before_default_or_legacy_fixture_reads(self):
-        choices = ([], ['--legacy-port', '--parent-apply', 'absent-parent.py',
-                        '--archived-router', 'absent-router.py'])
+        choices = (
+            [],
+            ['--legacy-port', '--parent-apply', 'absent-parent.py',
+             '--archived-router', 'absent-router.py'],
+            ['--slack-package', 'absent-package.tar.gz'],
+            ['--slack-package', 'absent-package.tar.gz', '--legacy-port',
+             '--parent-apply', 'absent-parent.py', '--archived-router', 'absent-router.py'],
+        )
         for arguments in choices:
             with self.subTest(arguments=arguments):
                 self.rejected(self.invoke(arguments, {GRAPH: self.inputs[GRAPH] + b'\n'}),
@@ -123,6 +129,10 @@ class VerifierInputContract(unittest.TestCase):
             (['--parent-apply', 'absent.py'], 'historical inputs require'),
             (['--archived-router', 'absent.py'], 'historical inputs require'),
             (['--generated-only', '--tapes', 'absent.py'], '--generated-only does not consume --tapes'),
+            (['--generated-only', '--slack-package', 'absent.tar.gz'],
+             '--generated-only does not consume --tapes or --slack-package'),
+            (['--tapes', 'absent.py', '--slack-package', 'absent.tar.gz'],
+             'not allowed with argument'),
         )
         for arguments, error in cases:
             with self.subTest(arguments=arguments):
