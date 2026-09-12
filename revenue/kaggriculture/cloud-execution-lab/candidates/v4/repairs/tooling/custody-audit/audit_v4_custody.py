@@ -123,11 +123,12 @@ class Snapshot:
     entries: dict[str, Entry]
     canonical: bytes
     ledger: bytes
+    blobs: dict[str, bytes]
 
 
 def git(repo: Path, *args: str) -> bytes:
     env = dict(os.environ, GIT_NO_REPLACE_OBJECTS="1", GIT_OPTIONAL_LOCKS="0",
-               GIT_TERMINAL_PROMPT="0")
+               GIT_TERMINAL_PROMPT="0", GIT_NO_LAZY_FETCH="1")
     try:
         run = subprocess.run(["git", "-C", str(repo), *args], env=env,
                              capture_output=True, check=True, timeout=60)
@@ -155,7 +156,31 @@ def read_snapshot(repo: Path, ref: str = "main") -> Snapshot:
         raw = git(repo, "cat-file", "blob", entry.sha)
         require(object_id("blob", raw) == entry.sha, "metadata blob drift: " + path)
         metadata.append(raw)
-    return Snapshot(commit, tree, entries, *metadata)
+    # A tree reference alone does not prove readable source/test byte custody.
+    declared: set[str] = set()
+
+    def collect(value: Any) -> None:
+        if type(value) is dict:
+            for key, child in value.items():
+                if key.endswith("_blob"):
+                    declared.add(oid(child))
+                elif key.endswith("_blobs"):
+                    require(type(child) is list and bool(child), "invalid blob list")
+                    declared.update(oid(item) for item in child)
+                else:
+                    collect(child)
+        elif type(value) is list:
+            for child in value:
+                collect(child)
+
+    collect(strict_json(metadata[1]))
+    present = {entry.sha for entry in entries.values() if entry.mode in REGULAR}
+    blobs = {}
+    for sha in sorted(declared & present):
+        raw = git(repo, "cat-file", "blob", sha)
+        require(object_id("blob", raw) == sha, "referenced blob byte mismatch: " + sha)
+        blobs[sha] = raw
+    return Snapshot(commit, tree, entries, *metadata, blobs)
 
 
 def census(snapshot: Snapshot) -> dict[str, Any]:
@@ -193,6 +218,10 @@ def census(snapshot: Snapshot) -> dict[str, Any]:
     def add(value: Any, pointer: str, lane: str | None) -> None:
         sha = oid(value)
         paths = sorted(regular.get(sha, []))
+        if paths:
+            require(sha in snapshot.blobs, "unreadable/unverified in-tree blob: " + sha)
+            require(object_id("blob", snapshot.blobs[sha]) == sha,
+                    "referenced blob byte mismatch: " + sha)
         references.append({"pointer": pointer, "lane": lane, "blob": sha,
                            "status": "exact_bytes_present" if paths else "missing_exact_bytes",
                            "paths": paths,
@@ -230,7 +259,8 @@ def census(snapshot: Snapshot) -> dict[str, Any]:
             "workspace_tree": snapshot.tree, "workspace": WORKSPACE,
             "ledger_blob": snapshot.entries["INTEGRATION.json"].sha,
             "canonical_blob": snapshot.entries["CANONICAL.json"].sha,
-            "complete_tree_verified": True, "pin_references": len(references),
+            "complete_tree_verified": True, "referenced_blobs_verified": len(snapshot.blobs),
+            "pin_references": len(references),
             "missing_pin_references": missing, "lane_reference_gaps": gaps,
             "custody_complete": missing == 0 and not gaps,
             "composition_proven": False, "production_activation_proven": False,
