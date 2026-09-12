@@ -118,12 +118,24 @@ REPLACEMENT_FUNCTION = r'''def funded_minimum_now(obs, config, base, farm, priva
     exactly instead of treating any positive receipt as a full capital reset.
     Same-turn acquisitions remain outside this repair (SOL-ESCROW boundary).
     """
-    now = int(obs['step'])
-    baseline = max(0, int(current.get(item, 0)))
-    max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+    def _strict_nonnegative_int(value, label):
+        if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+            raise ValueError(f'{label} must be a plain nonnegative integer')
+        return value
+
+    now = _strict_nonnegative_int(obs.get('step'), 'step')
+    end = _strict_nonnegative_int(end, 'end')
+    if end < now:
+        raise ValueError('end must not precede step')
+    baseline = _strict_nonnegative_int(current.get(item, 0), f'current[{item!r}]')
+    max_orders = _strict_nonnegative_int(
+        config.get('maxMarketOrdersPerTurn', 10),
+        'maxMarketOrdersPerTurn',
+    )
+    stress_units = _strict_nonnegative_int(stress_units, 'stress_units')
     certificate = {
         'item': item, 'baseline_now': baseline, 'prefix_end': end,
-        'funding_turn': None, 'stress_units': int(stress_units),
+        'funding_turn': None, 'stress_units': stress_units,
         'fallback': False,
     }
     try:
