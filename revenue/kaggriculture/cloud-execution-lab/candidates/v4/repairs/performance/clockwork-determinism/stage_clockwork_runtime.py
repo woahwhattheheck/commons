@@ -42,6 +42,7 @@ def _tree_snapshot(root: Path) -> dict[str, tuple[str, str]]:
 def stage_runtime(
     *, input_runtime: Path, output_runtime: Path, composer: Path,
     expected_input_blob: str, expected_output_blob: str,
+    required_unchanged_blobs: dict[str, str] | None = None,
 ) -> dict:
     src = input_runtime.resolve()
     dst = output_runtime.resolve()
@@ -56,6 +57,13 @@ def stage_runtime(
     if input_blob != expected_input_blob:
         raise StageError(f"selected_sell_core.py predecessor mismatch: {input_blob}")
     before = _tree_snapshot(src)
+    required_unchanged_blobs = dict(required_unchanged_blobs or {})
+    for rel, expected in sorted(required_unchanged_blobs.items()):
+        observed = before.get(rel)
+        if observed is None:
+            raise StageError(f"required runtime member missing: {rel}")
+        if observed[1] != expected:
+            raise StageError(f"required runtime member drift: {rel}={observed[1]}")
     if not composer.is_file() or composer.is_symlink():
         raise StageError("composer is missing or not regular")
 
@@ -99,7 +107,7 @@ def stage_runtime(
         "output_selected_git_blob": expected_output_blob,
         "changed_members": ["selected_sell_core.py"],
         "member_count": len(before),
-        "deadline_files_unchanged": ["main.py", "titan_runtime.py"],
+        "deadline_files_unchanged": sorted(required_unchanged_blobs),
     }
 
 
@@ -123,6 +131,10 @@ def main(argv: list[str] | None = None) -> int:
             composer=composer,
             expected_input_blob=pins["git_blobs"]["selected_sell_core.py"],
             expected_output_blob=pins["weave_output_git_blob"],
+            required_unchanged_blobs={
+                "main.py": pins["git_blobs"]["main.py"],
+                "titan_runtime.py": pins["git_blobs"]["titan_runtime.py"],
+            },
         )
         receipt["source_audit"] = audit
     except (OSError, json.JSONDecodeError, AuditError, StageError) as exc:
