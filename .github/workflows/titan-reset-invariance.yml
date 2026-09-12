@@ -1,0 +1,72 @@
+name: titan-reset-invariance
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-reset-invariance.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/main.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/SOURCE.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/checks/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/titan-reset-invariance.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/main.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/SOURCE.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/checks/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reset-invariance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/titan-reset-invariance.yml
+            /revenue/kaggriculture/cloud-execution-lab/
+      - name: Verify current canonical package
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B build_integrated.py --check
+      - name: Prove cross-episode reset invariance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/titan-reset-invariance"
+          python3 -B revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py \
+            | tee "$RUNNER_TEMP/titan-reset-invariance/result.json"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: titan-reset-invariance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/titan-reset-invariance/
+          if-no-files-found: warn
+          retention-days: 7
