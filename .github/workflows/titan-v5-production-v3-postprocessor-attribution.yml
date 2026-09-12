@@ -92,7 +92,7 @@ jobs:
             --out "$work/production" \
             --tar "$work/production.tar.gz"
           printf '%s  %s\n' "$PRODUCTION_SHA" "$work/production.tar.gz" | sha256sum -c -
-          grep -Fq "town_procurement is the tested nonterminal frozen composition" "$work/production/main.py"
+          grep -Fq "town_procurement is the tested nonterminal frozen composition" "$work/production/baseline_main.py"
 
       - name: Materialize screen twice and verify matched consumer pair
         shell: bash

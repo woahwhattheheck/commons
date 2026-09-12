@@ -65,7 +65,7 @@ STAGE_ARMS = {
     },
 }
 
-# The canonical entrypoint rejects town_procurement for consumer != frozen,
+# The packaged baseline_main.py rejects town_procurement for consumer != frozen,
 # while Features rejects these three dependent leaves on a non-frozen consumer.
 # Therefore the consumer boundary is a MATCHED CONDITIONAL PAIR: both archives
 # carry the same required-off leaves and differ in config by consumer only.
@@ -91,10 +91,10 @@ ARMS = {**STAGE_ARMS, **BOUNDARY_PAIR}
 # values in both conditional archives. Publish them so nobody mistakes this for
 # a pure FrozenSelected-only effect.
 EFFECTIVE_PARENT_GATES = {
-    "frozen_selected": "consumer=parent selects the parent consumer instead of FrozenSelected",
+    "frozen_selected": "consumer=parent bypasses FrozenSelected.transform while retaining controller construction",
     "spatial": "SpatialTempo is installed only when consumer=frozen",
     "operating_stock": "operating-stock finalization returns unchanged when consumer!=frozen",
-    "feed_stock": "feed-stock finalization is called only when operating_stock and consumer=frozen",
+    "feed_stock": "feed-stock finalization returns unchanged when operating_stock is false or consumer!=frozen",
     "early_capital": "early-capital finalization returns unchanged when consumer!=frozen",
 }
 
