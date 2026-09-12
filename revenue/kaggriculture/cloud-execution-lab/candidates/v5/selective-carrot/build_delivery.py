@@ -85,7 +85,7 @@ def main():
         parser.error('Use new output directory, archive and manifest paths')
     cap12 = members(args.cap12, CAP12_SHA)
     recovery = members(args.route_recovery, RECOVERY_SHA)
-    delivery = Path(__file__).with_name('delivery_choice.py').read_bytes()
+    delivery = Path(__file__).with_name('delivery_choice.py').read_bytes().replace(b'\r\n', b'\n')
     files = compose(cap12, recovery, delivery)
     packed = archive_bytes(files)
     if digest(packed) != CANDIDATE_SHA:
