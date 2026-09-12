@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
+import types
 from pathlib import Path
 from typing import Any
 
@@ -21,8 +21,31 @@ TAPE_STEPS = LAST_STEP + 1
 BOARD_SIZE = 10
 
 EXPECTED_ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+EXPECTED_ENGINE_SPEC_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
 EXPECTED_TAPES_BLOB = "a43289b9cc5e34a2481fddf652762a7d92f427ef"
 EXPECTED_ROUTER_BLOB = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+
+ENGINE_MARKERS = (
+    'FARMER_MOVES = {',
+    'if op in FARMER_MOVES:',
+    '_set_farmer_position(farm, idx, (nx, ny))',
+    'if op == "HIRE":',
+    '_do_hire(farms[player_id], privates[player_id], board_size, hire_mult)',
+    'farm["hands"].append(_spawn_hand(farm, board_size))',
+    'farm["farmer"] = list(_default_spawn(board_size))',
+    'farm["hands"] = []',
+    '_apply_unit_action(obs0.farms[i], s.observation.private, 0, _allowed(farmer_action),',
+    '_process_market(state, env)',
+)
+ROUTER_MARKERS = (
+    "ROUTE_STEP = 144",
+    "FINAL_PLAN_STEP = 648",
+    "LAST_STEP = 718",
+    "state.plan = SHOP_PLANS.get(tuple(shops[:2]), 0)",
+    "state.plan = 2",
+    "tape = self.tapes[state.plan]",
+    "action = copy.deepcopy(tape[step])",
+)
 
 MOVES = {
     "NORTH": (0, -1),
@@ -37,15 +60,49 @@ V4_ROOT = HERE.parents[2]
 TAPES_PATH = V4_ROOT / "donor" / "overlay" / "r01_tapes.py"
 ROUTER_PATH = V4_ROOT / "donor" / "overlay" / "r04_full_router.py"
 ENGINE_PATH = V4_ROOT.parent.parent / "reference" / "engine" / "kaggriculture.py"
+ENGINE_SPEC_PATH = V4_ROOT.parent.parent / "reference" / "engine" / "kaggriculture.json"
 
 
 class MotionCensusError(RuntimeError):
     pass
 
 
-def git_blob(path: Path) -> str:
-    data = path.read_bytes()
+class VerifiedSources:
+    __slots__ = ("source_blobs", "standard_configuration", "tapes_snapshot")
+
+    def __init__(
+        self,
+        *,
+        source_blobs: dict[str, str],
+        standard_configuration: dict[str, int],
+        tapes_snapshot: bytes,
+    ) -> None:
+        self.source_blobs = dict(source_blobs)
+        self.standard_configuration = dict(standard_configuration)
+        self.tapes_snapshot = tapes_snapshot
+
+
+def _read_snapshot(path: Path) -> bytes:
+    """Capture one immutable authority snapshot; callers must not reopen *path*."""
+    return path.read_bytes()
+
+
+def _git_blob_bytes(data: bytes) -> str:
+    if not isinstance(data, bytes):
+        raise TypeError("Git blob input must be bytes")
     return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+
+def git_blob(path: Path) -> str:
+    """Compatibility helper for diagnostics; source verification uses captured bytes."""
+    return _git_blob_bytes(_read_snapshot(path))
+
+
+def _decode_utf8(data: bytes, label: str) -> str:
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise MotionCensusError(f"{label} is not UTF-8") from exc
 
 
 def _require_markers(text: str, markers: tuple[str, ...], label: str) -> None:
@@ -54,19 +111,53 @@ def _require_markers(text: str, markers: tuple[str, ...], label: str) -> None:
         raise MotionCensusError(f"{label} semantics drifted; missing {missing!r}")
 
 
+def _standard_configuration(spec_snapshot: bytes) -> dict[str, int]:
+    try:
+        doc = json.loads(_decode_utf8(spec_snapshot, "engine spec"))
+    except json.JSONDecodeError as exc:
+        raise MotionCensusError(f"engine spec is invalid JSON: {exc}") from exc
+    if not isinstance(doc, dict) or not isinstance(doc.get("configuration"), dict):
+        raise MotionCensusError("engine spec configuration missing")
+    cfg = doc["configuration"]
+    expected = {"boardSize": BOARD_SIZE, "turnsPerDay": TURNS_PER_DAY}
+    observed: dict[str, int] = {}
+    for name, want in expected.items():
+        entry = cfg.get(name)
+        if not isinstance(entry, dict):
+            raise MotionCensusError(f"engine spec {name} contract missing")
+        value = entry.get("default")
+        if type(value) is not int or value != want:
+            raise MotionCensusError(
+                f"engine spec {name} default drift: expected {want}, got {value!r}"
+            )
+        if entry.get("type") != "integer":
+            raise MotionCensusError(f"engine spec {name} type drift")
+        minimum = entry.get("minimum")
+        if type(minimum) is not int or minimum <= 0:
+            raise MotionCensusError(f"engine spec {name} minimum contract drift")
+        observed[name] = value
+    return observed
+
+
 def verify_sources(
     *,
     engine_path: Path = ENGINE_PATH,
+    engine_spec_path: Path = ENGINE_SPEC_PATH,
     tapes_path: Path = TAPES_PATH,
     router_path: Path = ROUTER_PATH,
-) -> dict[str, str]:
-    actual = {
-        "engine_blob": git_blob(engine_path),
-        "r01_tapes_blob": git_blob(tapes_path),
-        "r04_full_router_blob": git_blob(router_path),
+) -> VerifiedSources:
+    # Capture every authority once. All identity and semantic checks below are
+    # derived from these exact bytes, never from a second pathname read.
+    snapshots = {
+        "engine_blob": _read_snapshot(engine_path),
+        "engine_spec_blob": _read_snapshot(engine_spec_path),
+        "r01_tapes_blob": _read_snapshot(tapes_path),
+        "r04_full_router_blob": _read_snapshot(router_path),
     }
+    actual = {key: _git_blob_bytes(data) for key, data in snapshots.items()}
     expected = {
         "engine_blob": EXPECTED_ENGINE_BLOB,
+        "engine_spec_blob": EXPECTED_ENGINE_SPEC_BLOB,
         "r01_tapes_blob": EXPECTED_TAPES_BLOB,
         "r04_full_router_blob": EXPECTED_ROUTER_BLOB,
     }
@@ -76,51 +167,44 @@ def verify_sources(
                 f"{key} drift: expected {want}, got {actual[key]}"
             )
 
-    engine = engine_path.read_text(encoding="utf-8")
     _require_markers(
-        engine,
-        (
-            'FARMER_MOVES = {',
-            'if op in FARMER_MOVES:',
-            '_set_farmer_position(farm, idx, (nx, ny))',
-            'if op == "HIRE":',
-            '_do_hire(farms[player_id], privates[player_id], board_size, hire_mult)',
-            'farm["hands"].append(_spawn_hand(farm, board_size))',
-            'farm["farmer"] = list(_default_spawn(board_size))',
-            'farm["hands"] = []',
-            '_apply_unit_action(obs0.farms[i], s.observation.private, 0, _allowed(farmer_action),',
-            '_process_market(state, env)',
-        ),
+        _decode_utf8(snapshots["engine_blob"], "engine"),
+        ENGINE_MARKERS,
         "engine",
     )
-    router = router_path.read_text(encoding="utf-8")
     _require_markers(
-        router,
-        (
-            "ROUTE_STEP = 144",
-            "FINAL_PLAN_STEP = 648",
-            "LAST_STEP = 718",
-            "state.plan = SHOP_PLANS.get(tuple(shops[:2]), 0)",
-            "state.plan = 2",
-            "tape = self.tapes[state.plan]",
-            "action = copy.deepcopy(tape[step])",
-        ),
+        _decode_utf8(snapshots["r04_full_router_blob"], "router"),
+        ROUTER_MARKERS,
         "router",
     )
-    return actual
+    standard = _standard_configuration(snapshots["engine_spec_blob"])
+    return VerifiedSources(
+        source_blobs=actual,
+        standard_configuration=standard,
+        tapes_snapshot=snapshots["r01_tapes_blob"],
+    )
 
 
-def _load_module(path: Path):
-    spec = importlib.util.spec_from_file_location("_titan_v4_motion_tapes", path)
-    if spec is None or spec.loader is None:
-        raise MotionCensusError(f"cannot import {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+def _load_module_snapshot(source: bytes, source_path: Path):
+    if not isinstance(source, bytes):
+        raise TypeError("module snapshot must be bytes")
+    module = types.ModuleType("_titan_v4_motion_tapes")
+    module.__file__ = str(source_path)
+    module.__package__ = None
+    code = compile(source, str(source_path), "exec")
+    exec(code, module.__dict__)
     return module
 
 
-def load_tapes(path: Path = TAPES_PATH) -> list[list[dict[str, Any]]]:
-    tapes = _load_module(path).load_tapes()
+def load_tapes(
+    path: Path = TAPES_PATH,
+    *,
+    snapshot: bytes | None = None,
+) -> list[list[dict[str, Any]]]:
+    # Authoritative callers pass verify_sources().tapes_snapshot so path drift
+    # after authentication cannot change the executed tape bank.
+    source = _read_snapshot(path) if snapshot is None else snapshot
+    tapes = _load_module_snapshot(source, path).load_tapes()
     if len(tapes) != TAPE_COUNT or any(len(tape) != TAPE_STEPS for tape in tapes):
         raise MotionCensusError(
             f"expected {TAPE_COUNT}x{TAPE_STEPS} tapes, got "
@@ -206,6 +290,8 @@ def census_route(
     no-ops are individually PASS-equivalent. Excluding HIRE removes the one market
     operation whose spawn result consumes farmer/hand positions.
     """
+    if type(board_size) is not int or type(turns_per_day) is not int:
+        raise MotionCensusError("plain-integer board_size/turns_per_day required")
     if board_size <= 0 or turns_per_day <= 0:
         raise MotionCensusError("positive board_size/turns_per_day required")
 
@@ -283,15 +369,26 @@ def census_route(
     }
 
 
-def build_report(tapes: list[list[dict[str, Any]]], sources: dict[str, str]) -> dict[str, Any]:
+def build_report(
+    tapes: list[list[dict[str, Any]]],
+    sources: VerifiedSources,
+) -> dict[str, Any]:
+    board_size = sources.standard_configuration["boardSize"]
+    turns_per_day = sources.standard_configuration["turnsPerDay"]
     routes = [
-        census_route(effective_route(tapes, plan), plan=plan)
+        census_route(
+            effective_route(tapes, plan),
+            plan=plan,
+            board_size=board_size,
+            turns_per_day=turns_per_day,
+        )
         for plan in range(TAPE_COUNT)
     ]
     return {
         "schema": "titan.v4.route-motion-census.v2",
         "status": "SOURCE_BOUND_RESEARCH_ONLY",
-        "sources": sources,
+        "sources": sources.source_blobs,
+        "standard_configuration": dict(sources.standard_configuration),
         "theorem": {
             "scope": "main farmer actor 0 only; fixed effective routes",
             "safe_rewrite": (
@@ -300,6 +397,7 @@ def build_report(tapes: list[list[dict[str, Any]]], sources: dict[str, str]) -> 
                 "movement row in that listed closed interval is rewritten together"
             ),
             "guards": [
+                "authenticated standard boardSize=10 and turnsPerDay=24",
                 "same day only",
                 "no substantive main-farmer unit action inside closed loop",
                 "no HIRE market row inside closed loop",
@@ -347,7 +445,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     sources = verify_sources()
-    report = build_report(load_tapes(), sources)
+    tapes = load_tapes(snapshot=sources.tapes_snapshot)
+    report = build_report(tapes, sources)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
