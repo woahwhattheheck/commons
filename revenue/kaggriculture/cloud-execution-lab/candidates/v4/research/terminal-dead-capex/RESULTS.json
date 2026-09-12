@@ -24,9 +24,11 @@
     "tapes": 13
   },
   "current_native_probe": {
-    "basis": "artifact 10175943272 production gameplay bytes; current titan_runtime differs only by commit 682ad loader cache namespace repair",
+    "basis": "exact production main/runtime/config Git blobs authenticated by test_deadcap_oracle.py before current_native_probe via post-merge custody repair #12943",
     "deadcap_config_key_present": false,
+    "detection": "exact historical donor row equality at one callback",
     "emits_deadcap_witness": false,
+    "general_dead_seed_engagement_cold_proven": false,
     "post_melon_seeds": 0,
     "returned_market": [
       [
@@ -50,7 +52,7 @@
       0.0
     ]
   },
-  "disposition": "LAND_EVIDENCE_ONLY_NO_RUNTIME_GUARD",
+  "disposition": "LAND_DONOR_EVIDENCE_CURRENT_NATIVE_GENERAL_ENGAGEMENT_UNMEASURED",
   "foundation": {
     "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
     "artifact_id": 10175943272
@@ -68,10 +70,10 @@
     "runtime_only_post_foundation_change_commit": "682ad62823842910ec01f4452b4b30802b322d85",
     "runtime_only_post_foundation_change_scope": "module-cache namespace binding only; no gameplay/default/archive/Kaggle change"
   },
-  "status": "DONOR_BUG_CURRENT_NATIVE_COLD",
+  "status": "DONOR_BUG_PROVEN_CURRENT_NATIVE_SINGLE_CELL_NEGATIVE",
   "tests": {
-    "normal": "7/7 PASS",
-    "optimized": "7/7 PASS"
+    "normal": "7/7 PASS reported by original donor-evidence carrier; #12943 separately hardens native source authentication",
+    "optimized": "7/7 PASS reported by original donor-evidence carrier; #12943 separately hardens native source authentication"
   },
   "witness": {
     "baseline_reward": 52429.0,
