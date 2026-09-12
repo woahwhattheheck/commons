@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-12T23:24:00Z",
+ "holder": "ASTRA-VM-e67ff728c8fb",
+ "key": "titan-v5-route-matrix-block-b-20260912",
+ "note": "Native BLOCK B R05-R08. Exact shared builder13475, existing13468 engine/evaluator/opponents,32 candidate-only games. C00 reused. Slack TAKE1789255381.827109. Per-row PID before launch; skip live peer rows. Source72/38 merged.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-12T23:24:00Z",
+ "ttl_s": 1800
+}
