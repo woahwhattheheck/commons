@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-v31-v4-semantic-delta-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T22:53:00Z",
+  "heartbeat_at": "2026-09-12T22:53:00Z",
+  "ttl_s": 1800,
+  "note": "Wide single-V5 frontier lane: compare exact submitted V3.1 active R04 closure against submitted V4 and canonical production-v3, emit current-source semantic delta evidence, then land at most one non-overlapping repair into the existing production-v3 family. No sibling policy tree; yield on concrete earlier ownership."
+}
