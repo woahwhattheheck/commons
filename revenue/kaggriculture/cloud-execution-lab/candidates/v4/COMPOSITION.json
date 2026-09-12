@@ -177,6 +177,21 @@
       "note": "LOOM-4 combined materialization reproduced the exact CAPTRACE frozen postimage first, then LIVEPATH accepted the authenticated UNITFLOW method preimage and produced exact whole-file before/after identities. Combined focused runtime gate passed 50/50 normal and 50/50 optimized. Source-only composition; not production promotion."
     },
     {
+      "id": "v218-native-movement-equivalence",
+      "state": "evidence_only",
+      "package": "repairs/gameplay/v218-legal-movement",
+      "entrypoints": [
+        "repairs/gameplay/v218-legal-movement/check_current_native_binding.py"
+      ],
+      "receipt": "repairs/gameplay/v218-legal-movement/NATIVE-SEMANTIC-EQUIVALENCE.json",
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Current native already carries the V218 LOCKED-transit and all-four-shed-corners semantics on the actually-called frozen/Arlene/SpatialTempo path. This is authenticated semantic evidence, not a transform: no donor router, identity postimage, feature key, or runtime promotion is implied. Runtime gates must still execute the merged checker against the exact mounted current package."
+    },
+    {
       "id": "d4-strawberry-timing",
       "state": "blocked",
       "reason": "Merged closure #12852 proves natural D4 engagement on the authenticated b567 baseline but complete returned-action/state hashes and terminal outcomes remain exact identity; there is no output-changing current one-stack postimage to compose.",

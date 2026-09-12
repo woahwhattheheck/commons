@@ -61,6 +61,24 @@ class CompositionGraphTests(unittest.TestCase):
         self.assertEqual(result["plan"], ["a", "b"])
         self.assertEqual(result["unregistered"], [])
 
+    def test_evidence_only_zero_transform_is_not_composition_plan(self):
+        evidence = {
+            "id": "native-equivalence",
+            "state": "evidence_only",
+            "package": "pkg",
+            "entrypoints": ["pkg/port_a.py"],
+            "receipt": "pkg/receipt.json",
+            "transforms": [],
+            "requires": [],
+            "before": [],
+            "after": [],
+            "conflicts": [],
+        }
+        result = cg.validate_manifest(self.manifest([evidence]), self.root)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["plan"], [])
+        self.assertEqual(result["evidence_only"], ["native-equivalence"])
+
     def test_unordered_overlap_fails(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out")
         b = self.comp("b", "pkg/port_b.py", "base", "b-out")
