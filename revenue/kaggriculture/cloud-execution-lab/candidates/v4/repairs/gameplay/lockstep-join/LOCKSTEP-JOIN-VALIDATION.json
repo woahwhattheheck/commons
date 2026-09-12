@@ -1,14 +1,14 @@
 {
   "authored_files": {
     "LOCKSTEP-JOIN.md": {
-      "bytes": 4393,
-      "git_blob": "dd662b1cf7b5212dd33453fe6f7464e5e689bad1",
-      "sha256": "46545b82d9481bdc13497f87fb9fac14b14b4dce4516ff712c6c4e05ef82304a"
+      "bytes": 5074,
+      "git_blob": "8c895dfa44e03ce0395e09aab0ebb5ac88d954e0",
+      "sha256": "d43d918ba4eda363c2546d995bb45b54cca00a6936a4b146bc50cf0463a19267"
     },
     "compose_native_return_bridge.py": {
       "bytes": 8055,
-      "git_blob": "253b8b61ab11ef6c3ebc0971d02feeb524f2f493",
-      "sha256": "eaeeabf292c0bcc15d79eb59c58b5064ad2743de3892b20d3580a49365b1c7ce"
+      "git_blob": "22b8d526ee8d7939760682afaed97f132b5dd2fc",
+      "sha256": "56b43ad9106dffe417a11a7665aa7fddf6d28946ed0e156ea6d47e6dc4d0c266"
     },
     "native_return_bridge.py": {
       "bytes": 18408,
@@ -24,6 +24,11 @@
       "bytes": 8636,
       "git_blob": "4917cfb7ec2c3482a68867dde88903eef90b25a8",
       "sha256": "d4c37f18f2d7c968a6922d6eb4f4446043ed2715e472461dcc9a37df468df959"
+    },
+    "test_wheat_boundary.py": {
+      "bytes": 1180,
+      "git_blob": "e142997e504d8995db6d26e7719eb99b27d61a16",
+      "sha256": "fddebb2fea4a501946a88f5a0b571dba9e328d6aa425396238e323175bf87cd1"
     }
   },
   "authority_git_blobs": {
@@ -35,22 +40,26 @@
     "frozen_selected.py": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
     "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "scheduler.py": "a483b24dd72b580d7d8811636b54d2d44f391575",
-    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+    "titan_runtime.py": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0"
   },
   "normal": {
     "errors": 0,
     "failed": 0,
-    "passed": 21,
+    "passed": 22,
     "skipped": 0,
-    "tests": 21
+    "tests": 22
   },
   "optimized": {
     "errors": 0,
     "failed": 0,
-    "passed": 21,
+    "passed": 22,
     "skipped": 0,
-    "tests": 21
+    "tests": 22
   },
-  "schema": "titan-v4-lockstep-return-bridge-validation/v1",
-  "scope": "source/semantic integration; no strength or promotion claim"
+  "runtime_rebind": {
+    "commit": "682ad62823842910ec01f4452b4b30802b322d85",
+    "scope": "module-cache hit namespace binding only; bridge feature anchors unchanged"
+  },
+  "schema": "titan-v4-lockstep-return-bridge-validation/v2",
+  "scope": "source/semantic integration; native seven-product seller only; WHEAT/FERTILIZER rejected; no strength or promotion claim"
 }
