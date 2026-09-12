@@ -31,7 +31,9 @@ Proof reserves FEED/FERTILIZE capacity only after debiting:
 - later same-item PICKUPs;
 - `COLLECT_FERTILIZER` for fertilizer custody.
 
-A same-actor `DROP` before discharge invalidates proof. A same-actor WHEAT `HARVEST` makes future WHEAT acquisition unknown and therefore invalidates proof unless a future projection owner supplies exact item-level yield. Sinks belonging to another actor do not discharge the obligation.
+Projected sink opcodes are **not** consumption proof. A FEED can no-op when the actor is not on an animal, the animal is already fed, or WHEAT is unavailable; analogous projected state can invalidate a FERTILIZE. STICKY therefore counts a FEED/FERTILIZE sink only when its normalized row carries strict `effectful=True` from the caller's separately authenticated engine/postimage projection. Missing evidence counts as zero sink capacity, and truthy non-bool values fail closed. The flag is not self-authenticating: any future runtime consumer must pin the producer/postimage that derives it from exact state.
+
+A same-actor `DROP` before discharge invalidates proof. A same-actor WHEAT `HARVEST` makes future WHEAT acquisition unknown and therefore invalidates proof unless a future projection owner supplies exact item-level yield. Sinks belonging to another actor do not discharge the obligation. A projected callback may contain at most one unit action for a given actor; duplicate `(step, actor)` evidence fails closed before any sink-success return.
 
 The existing CARRYBANK owner still owns SHED adjacency, PICKUP legality, projected capacity pressure and its source semantics. STICKY only adds cross-replan sink custody.
 
@@ -47,7 +49,7 @@ This branch intentionally does **not** write a scheduler postimage. Source-only 
 
 ## Tests / predecessor killers
 
-`test_sticky_obligation.py` covers the unsafe predecessor families and custody edges, including:
+`test_sticky_obligation.py` plus the focused carry-callback custody suite cover the unsafe predecessor families and custody edges, including:
 
 - PASS/WATER/unauthenticated replacements cannot mint WATER obligations;
 - exact next-day site recovery, wrong-site and late recovery rejection;
@@ -58,7 +60,11 @@ This branch intentionally does **not** write a scheduler postimage. Source-only 
 - actor-local sinks;
 - DROP and unknown WHEAT-HARVEST invalidation;
 - fertilizer collection burden;
-- bool poison, malformed key sets and unsorted projection rejection;
+- duplicate same-actor callback rows before sink success;
+- bare FEED/FERTILIZE rows cannot discharge custody;
+- a later same-animal/day FEED no-op cannot mint a second sink unit;
+- distinct caller-proved effectful sinks remain admissible;
+- bool/truthy poison, malformed key sets and unsorted projection rejection;
 - explicit `research_only=True`, `decision_authority=False`, `runtime_mutation_authority=False` proof reports.
 
 ## Promotion gates
@@ -68,7 +74,7 @@ A future production consumer must, at minimum:
 1. authenticate the current scheduler/LOOM preimage and publish an exact reversible postimage;
 2. show an obligation survives every relevant branch/replan rather than only a static suffix;
 3. for HYDRA, substitute real productive work and recover WATER with zero WEED/plant-loss regressions;
-4. for CARRYBANK, prove the same actor consumes the hoisted inventory before DROP/EOD after all intervening acquisitions;
+4. for CARRYBANK, prove the same actor consumes the hoisted inventory before DROP/EOD after all intervening acquisitions, with each counted sink bound to an authenticated effectful projection;
 5. preserve exact OFF identity;
 6. pass current-native both-seat economic gates.
 
