@@ -26,6 +26,16 @@ class SourcePinsTest(unittest.TestCase):
                 self.assertTrue(path.is_file(), path)
                 self.assertEqual(git_blob(path.read_bytes()), entry["git_blob"])
 
+    def test_canonical_h3s420_composer_is_exact(self):
+        repo_root = LAB.parents[2]
+        entry = PINS["canonical_authority"]
+        path = repo_root / entry["path"]
+        self.assertTrue(path.is_file(), path)
+        self.assertEqual(git_blob(path.read_bytes()), entry["git_blob"])
+        text = path.read_text()
+        self.assertIn("if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:", text)
+        self.assertIn("new plan selection suppressed at/after threshold", entry["semantics"])
+
     def test_current_native_horizon_and_optimizer_seams_are_present(self):
         scheduler = (LAB / "scheduler.py").read_text()
         frozen = (LAB / "frozen_selected.py").read_text()
@@ -46,6 +56,15 @@ class SourcePinsTest(unittest.TestCase):
         ):
             self.assertNotIn(legacy_key, runtime)
             self.assertNotIn(legacy_key, config)
+
+    def test_forbidden_alternate_s420_semantics_stay_declared(self):
+        forbidden = PINS["forbidden"]
+        self.assertIn(
+            "equal-total-only or noncomparable-plan S420 reinterpretation", forbidden
+        )
+        self.assertIn(
+            "forced-feasibility bypass of the canonical S420 cutoff", forbidden
+        )
 
 
 if __name__ == "__main__":
