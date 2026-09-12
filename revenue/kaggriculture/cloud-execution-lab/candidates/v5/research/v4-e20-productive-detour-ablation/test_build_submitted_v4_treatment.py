@@ -55,10 +55,11 @@ class SubmittedV4TreatmentArchiveTests(unittest.TestCase):
     def setUpClass(cls):
         cls.v4_helper = git_show(ablation.V4_COMMIT)
         cls.v31_helper = git_show(ablation.V31_COMMIT)
+        member = ablation.HELPER_ARCHIVE_MEMBER
         cls.manifest = {
             "runtime": {
-                ablation.HELPER_PATH: {
-                    "source_path": ablation.HELPER_PATH,
+                member: {
+                    "source_path": member,
                     "sha256": hashlib.sha256(cls.v4_helper).hexdigest(),
                     "bytes": len(cls.v4_helper),
                 },
@@ -73,12 +74,24 @@ class SubmittedV4TreatmentArchiveTests(unittest.TestCase):
         cls.control = pack(
             {
                 "main.py": b"print('control')\n",
-                ablation.HELPER_PATH: cls.v4_helper,
+                member: cls.v4_helper,
                 "SOURCE.json": (json.dumps(cls.manifest, indent=2, sort_keys=True) + "\n").encode(),
                 "TITAN-CONFIG.json": b'{"redundant_hire":true}\n',
             }
         )
         cls.control_sha = builder.sha256(cls.control)
+
+    def test_repository_path_and_archive_member_are_distinct_authorities(self):
+        self.assertEqual(
+            ablation.HELPER_PATH,
+            "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/redundant_hire.py",
+        )
+        self.assertEqual(
+            ablation.HELPER_ARCHIVE_MEMBER,
+            "reference/titan-current/redundant_hire.py",
+        )
+        self.assertNotEqual(ablation.HELPER_PATH, ablation.HELPER_ARCHIVE_MEMBER)
+        self.assertEqual(builder.TARGET_MEMBER, ablation.HELPER_ARCHIVE_MEMBER)
 
     def test_builder_changes_only_helper_semantics_and_source_metadata(self):
         treatment, receipt = builder.build_treatment_archive(
@@ -88,28 +101,36 @@ class SubmittedV4TreatmentArchiveTests(unittest.TestCase):
         )
         control = unpack(self.control)
         changed = unpack(treatment)
+        member = ablation.HELPER_ARCHIVE_MEMBER
         self.assertEqual(set(control), set(changed))
-        self.assertEqual(
-            receipt["changed_members"],
-            ["SOURCE.json", ablation.HELPER_PATH],
-        )
-        self.assertEqual(receipt["semantic_changed_members"], [ablation.HELPER_PATH])
+        self.assertEqual(receipt["changed_members"], ["SOURCE.json", member])
+        self.assertEqual(receipt["semantic_changed_members"], [member])
         self.assertEqual(receipt["metadata_changed_members"], ["SOURCE.json"])
+        self.assertEqual(receipt["helper_repository_path"], ablation.HELPER_PATH)
+        self.assertEqual(receipt["helper_archive_member"], member)
         self.assertEqual(changed["main.py"], control["main.py"])
         self.assertEqual(changed["TITAN-CONFIG.json"], control["TITAN-CONFIG.json"])
         self.assertEqual(
-            ablation.git_blob(changed[ablation.HELPER_PATH]),
+            ablation.git_blob(changed[member]),
             receipt["treatment_helper_git_blob"],
         )
-        self.assertNotEqual(changed[ablation.HELPER_PATH], control[ablation.HELPER_PATH])
+        self.assertNotEqual(changed[member], control[member])
 
         manifest = json.loads(changed["SOURCE.json"])
-        entry = manifest["runtime"][ablation.HELPER_PATH]
-        self.assertEqual(entry["sha256"], hashlib.sha256(changed[ablation.HELPER_PATH]).hexdigest())
-        self.assertEqual(entry["bytes"], len(changed[ablation.HELPER_PATH]))
+        entry = manifest["runtime"][member]
+        self.assertEqual(entry["sha256"], hashlib.sha256(changed[member]).hexdigest())
+        self.assertEqual(entry["bytes"], len(changed[member]))
         self.assertEqual(
             manifest["experiment"]["control_archive_sha256"],
             self.control_sha,
+        )
+        self.assertEqual(
+            manifest["experiment"]["source_authority"]["repository_path"],
+            ablation.HELPER_PATH,
+        )
+        self.assertEqual(
+            manifest["experiment"]["source_authority"]["archive_member"],
+            member,
         )
         self.assertTrue(manifest["default"]["redundant_hire"])
 
@@ -142,12 +163,13 @@ class SubmittedV4TreatmentArchiveTests(unittest.TestCase):
             )
 
     def test_source_manifest_identity_must_match_helper_member(self):
+        member = ablation.HELPER_ARCHIVE_MEMBER
         bad_manifest = json.loads(json.dumps(self.manifest))
-        bad_manifest["runtime"][ablation.HELPER_PATH]["sha256"] = "0" * 64
+        bad_manifest["runtime"][member]["sha256"] = "0" * 64
         bad = pack(
             {
                 "main.py": b"print('control')\n",
-                ablation.HELPER_PATH: self.v4_helper,
+                member: self.v4_helper,
                 "SOURCE.json": (json.dumps(bad_manifest, indent=2, sort_keys=True) + "\n").encode(),
             }
         )
@@ -156,6 +178,29 @@ class SubmittedV4TreatmentArchiveTests(unittest.TestCase):
                 bad,
                 self.v31_helper,
                 expected_control_sha256=builder.sha256(bad),
+            )
+
+    def test_repo_path_member_in_archive_is_rejected(self):
+        wrong_manifest = {
+            "runtime": {
+                ablation.HELPER_PATH: {
+                    "source_path": ablation.HELPER_PATH,
+                    "sha256": hashlib.sha256(self.v4_helper).hexdigest(),
+                    "bytes": len(self.v4_helper),
+                }
+            }
+        }
+        wrong = pack(
+            {
+                ablation.HELPER_PATH: self.v4_helper,
+                "SOURCE.json": (json.dumps(wrong_manifest) + "\n").encode(),
+            }
+        )
+        with self.assertRaisesRegex(ValueError, "missing redundant-hire helper"):
+            builder.build_treatment_archive(
+                wrong,
+                self.v31_helper,
+                expected_control_sha256=builder.sha256(wrong),
             )
 
     def test_real_cli_constant_is_exact_retained_submission_digest(self):
