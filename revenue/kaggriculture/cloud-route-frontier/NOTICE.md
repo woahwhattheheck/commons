@@ -19,3 +19,7 @@ keys; it does not change the kernel's default behavior for existing consumers.
 
 Engine traces are synthetic evaluator fixtures and contain no user account
 credentials, private hosted games, or new public competition submissions.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

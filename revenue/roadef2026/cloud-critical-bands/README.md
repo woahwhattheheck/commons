@@ -126,3 +126,7 @@ about 446,116 KiB, excluding page cache and possible between-sample peaks. The
 native `seconds` measure includes model preparation but precedes final output/
 statistics writing. Full outer wall/user/system measures are retained separately.
 This is not the official resource environment, Docker validation, or hosted timing.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

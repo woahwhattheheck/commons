@@ -71,6 +71,14 @@ class BoundedBakeReplayTests(unittest.TestCase):
     def test_stale_projection_without_source_bound_receipt_stays_failure(self):
         self.assertEqual(self.classify(existing=set()), "push-fail")
 
+    def test_durable_record_without_projection_receipt_keeps_success(self):
+        # Run 34399022514: record landed, bake reset twice, missing receipt
+        # used to fail the job and stamp a lie. Derived bake loss is deferred.
+        self.assertEqual(
+            self.classify(recorded="pushed", existing=set()),
+            "pushed",
+        )
+
     def test_receipt_lookup_is_bound_to_current_source_digest(self):
         subject = self.subject
         seen = []

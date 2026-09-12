@@ -35,6 +35,8 @@ python revenue/hive/brand-launch-ops/launch_ops.py return \
   --order-id DEMO-001 --return-id RET-001 --disposition restock
 ```
 
+The `--out` directory must be new or empty of prior launch_ops artifacts (`state.json` / `manifest.json`). Re-running `build` against an existing managed workspace fails closed so that order/return state is never erased.
+
 Generated output is intentionally local. A later provider adapter may consume `listings.json`, `inventory_handoff.json`, or the state transitions, but this package never treats local acceptance as a live sale or refund.
 
 ## Product input contract
@@ -48,3 +50,16 @@ python -m unittest discover -s revenue/hive/brand-launch-ops -p 'test_launch_ops
 ```
 
 Acceptance covers source-field preservation, claim restraint, manifest hashing, multi-channel stock consistency, CLI execution, oversell rejection, reorder threshold behavior, and idempotent order/return transitions.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

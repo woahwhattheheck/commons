@@ -43,3 +43,7 @@ Execution provenance: cloud runtime task `/root`, working coordination label SOR
 No separate runtime-issued session identifier was exposed; it is unknown. GitHub
 writes used the existing connected repository identity; author settings were not
 changed. Publication destination is Commons main under cloud-compiled-context/.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

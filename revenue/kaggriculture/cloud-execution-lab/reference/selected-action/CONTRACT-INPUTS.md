@@ -105,3 +105,7 @@ Apache license is retained as `t08/LICENSE-ROOT`; full MIT text is present in
 `claude/LICENSE-MIT.txt`. Claude's source handoff retains its own `LICENSE`
 attribution and MIT OR CC-BY-4.0 grant; these reference copies use the MIT option.
 Existing standalone scheduler attribution and license remain in the lab.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

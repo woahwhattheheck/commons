@@ -284,3 +284,13 @@ conversion + warm-start spend.
 - LiteRT-LM runtime + issues (multimodal 3n status): https://github.com/google-ai-edge/LiteRT-LM
 - `litert-torch` generative examples + export issues: https://github.com/google-ai-edge/litert-torch
 - Base model card: https://huggingface.co/google/gemma-3n-E2B
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

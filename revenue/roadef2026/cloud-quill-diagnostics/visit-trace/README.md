@@ -15,3 +15,7 @@ This distinguishes a represented neighborhood from a scheduling problem. In `run
 The outer command wrapper timed out after the solver had already written complete stats/output and its own `Completed ... elapsed 30.0039s` line. `RESULT.json` explicitly records that boundary; the run is classified from the solver's completed artifacts, not the wrapper status.
 
 The published tests verify the exact source pin, telemetry contract and compact result. The complete raw run is retained separately; no S139 qualification artifact or submission state changes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

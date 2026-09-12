@@ -84,3 +84,7 @@ Raw scan/engine reports are compressed as reproducible `.json.gz` files.
 Engine source: Kaggle/kaggle-environments28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c,
 Python SHA256bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e.
 DEPENDENCIES.json records all reused code bytes. Source licensing is in NOTICE.md.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

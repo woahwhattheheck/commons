@@ -100,3 +100,7 @@ sources, source context and licenses, all original process/checker reports,
 per-arm wall/CPU samples and a verification/rebuild command. `EVIDENCE.json`
 binds the complete reports and separates pilot, final tests and timing evidence.
 No completed peer proof suite was rerun to establish the individual methods.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

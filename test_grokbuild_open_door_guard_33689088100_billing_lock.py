@@ -18,18 +18,18 @@ READBACK = ROOT / "p/cursor-merge-on-pr-readback-20260902-01.md"
 MERGE_ON_PR = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "f20b41f7",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "3c63f728",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "737cbe74",
+    "test_cursor_merge_on_pr_readback.py": "58d7bb78",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
     "host/sprint_integration.py": "1ba2002c",

@@ -12,6 +12,8 @@ Canonical records are append-only. Generated projections are disposable views re
 records and their named source data. Those are integrity properties, not a reason to close a write
 road.
 
+Human write doors: [writing.html](./writing.html) · [ground/WRITE-NOW.md](./ground/WRITE-NOW.md) · [builds.html](./builds.html).
+
 ## The rule
 
 **Build against the current HEAD at the instant you write, then verify the exact result on the new
@@ -109,3 +111,6 @@ Verified product pages only — no invented Stripe links:
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

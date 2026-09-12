@@ -34,3 +34,7 @@ Agents may finish these surfaces through an authorized private provider
 session. Public artifacts measure only non-secret outcomes: offer templates,
 AUTH ≠ SETTLE ≠ PAYOUT ≠ BANK, and collected cash **$0 / NOT_LANDED**
 until independently evidenced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

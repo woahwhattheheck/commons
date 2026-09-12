@@ -49,3 +49,7 @@ counts are recorded in `CLI-INPUT-PRESERVATION-IRIS.json` and the archive manife
 The patch is based on the exact published blob above. It has been git-apply
 checked and byte-verified locally; compose with any newer owner change rather
 than overwrite an entire current file from this archive.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -82,3 +82,7 @@ work.
 There are zero new full games, gameplay seeds, engine exports, workflows,
 uploads, selected-policy changes, or owner-PC actions in this repair. New files
 are Apache-2.0 under the directory's existing attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

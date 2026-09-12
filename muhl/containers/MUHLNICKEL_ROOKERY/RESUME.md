@@ -56,3 +56,14 @@ status **VERIFIED** (promoted only by the independent reader) · audit clean
 PENDING_VERIFICATION and prints no success line; only an independent reader promotes,
 recording the sha256 it read off disk. Built after a fabricator printed 14 green gates
 over a container whose header collision had destroyed the record pointers.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

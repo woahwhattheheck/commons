@@ -11,3 +11,7 @@ We are sharing an Apache-2.0 derivative of Kaito Fukami's public v43 SparseShopH
 The frozen variant won16 development and16 reserved local official-interpreter games against those two public sources, both seats. This is not a hosted leaderboard score or a claim against the current leader. The source/export complete-game checks and cold-loader timings are included.
 
 Source: https://github.com/woahwhattheheck/commons/tree/main/revenue/kaggriculture/cloud-frontier-policy
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

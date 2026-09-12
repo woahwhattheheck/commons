@@ -69,3 +69,13 @@ These are model owners and on-device or private-deployment companies where a rev
 ## Outreach order
 
 Begin with Nomic AI, LM Studio, Nous Research, Arcee AI, Hugging Face, and Liquid AI. They are close enough to local model artifacts to understand the offer quickly and small enough for a technical buyer to authorize a $30,000 pilot. Use the second wave for private-deployment and secure-edge buyers after the pilot package has a concise, customer-safe proof story.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

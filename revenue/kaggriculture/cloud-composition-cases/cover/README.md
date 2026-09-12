@@ -25,3 +25,7 @@ The same `projection-validation/` artifact gains:
 Commands retain `set -euo pipefail`; additional suites run after an earlier failure unless cancelled, and the existing artifact upload retains available logs on failure. The peer suites and all pre-existing runtime files are unchanged by this contribution. Component counts describe their published suite revisions, not new full-game or leaderboard evidence.
 
 Coordination: [T08 scoped execution handoff](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788829113994349?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

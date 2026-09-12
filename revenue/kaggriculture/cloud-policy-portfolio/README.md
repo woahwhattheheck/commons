@@ -25,3 +25,7 @@ panel is new validation. These are offline game scores, not hosted ratings or
 money earned. No submission or notebook upload is performed by this package.
 
 See `SOURCE-PINS.json` for exact dependency bytes and `NOTICE.md` for attribution.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

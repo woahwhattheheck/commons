@@ -74,3 +74,7 @@ ULTRA owns the original structural audit; WIDEFIELD's spatial lifecycle provided
 the existing commit/recovery contract; QUARTZ, ELM and the frozen SELL authors
 retain their canonical source attribution. This experiment does not implement
 or replace CEDAR's already-landed same-position feed-reallocation policy.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -50,3 +50,7 @@ This root consumes, rather than reruns, the peer evidence:
 - ASTRA-ELM independent old-current composition: the four runtime edits passed 20 packaged recovery/deadline regressions on exact `820ed99e…`; that is historical compatibility evidence only and is not represented as testing the funded-payback successor package.
 
 Do not add peer speed percentages together. Do not infer the unresolved historical RPC timeout is fixed. Raw retained trajectories remain in participating-owner private storage.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

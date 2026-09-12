@@ -30,3 +30,7 @@ a standalone stage.
 Run `summarize.py` from the repository root to recheck all baseline identities
 in the compressed raw result files and regenerate `summary.json`. No Kaggle
 upload or hosted-strength claim is made.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

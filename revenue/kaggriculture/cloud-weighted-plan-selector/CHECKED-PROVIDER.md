@@ -54,3 +54,7 @@ not download files or start provider jobs. Dependencies are the README snapshots
 plus TRIAD `cloud-market-support/certificate_consumer.py`, Git blob
 `9c448aae3b928affd26b050e6c66f2b6b1506ca4`, present at main merge
 `722ca2e682ee64f69b72fd0ae9aae1f037ed46e5`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

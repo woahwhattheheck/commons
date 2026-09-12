@@ -97,3 +97,7 @@ or from successful activation alone.
 Native mechanics pin: `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`.
 Upstream mechanics and parent license notices remain in the pinned source
 closure; this module neither vendors them nor downloads dependencies.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

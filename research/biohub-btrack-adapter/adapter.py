@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import argparse
 import csv
+import ctypes
 import importlib
 import math
+import tempfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -20,6 +22,7 @@ from typing import Any, Callable, Iterable, Mapping, Protocol, Sequence
 
 PINNED_BTRACK_VERSION = "0.7.0"
 PINNED_BTRACK_COMMIT = "a3bd947915efe6837936f9db6db88417f0b51b45"
+BTRACK_UINT32_MAX = (1 << 32) - 1
 RESERVED_ADAPTER_PROPERTIES = frozenset({"commons_detection_id"})
 INPUT_COLUMNS = ("dataset", "detection_id", "t", "z", "y", "x")
 BOUNDS_COLUMNS = ("dataset", "zlo", "zhi", "ylo", "yhi", "xlo", "xhi")
@@ -39,6 +42,25 @@ SUBMISSION_COLUMNS = (
 
 class AdapterError(ValueError):
     """Raised when input, tracker output, or runtime provenance is unsafe."""
+
+
+def _positive_btrack_float(value: object, label: str) -> float:
+    """Narrow one positive physical distance through BTrack's c_float ABI."""
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"{label} must be a finite physical distance > 0") from exc
+    if not math.isfinite(numeric) or numeric <= 0:
+        raise AdapterError(f"{label} must be a finite physical distance > 0")
+    try:
+        narrowed = ctypes.c_float(numeric).value
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise AdapterError(f"{label} must fit the pinned BTrack float32 ABI") from exc
+    if not math.isfinite(narrowed) or narrowed <= 0:
+        raise AdapterError(
+            f"{label} must remain finite and > 0 after pinned BTrack float32 conversion"
+        )
+    return float(narrowed)
 
 
 @dataclass(frozen=True, order=True)
@@ -64,6 +86,17 @@ class Scale:
             if not math.isfinite(value) or value <= 0:
                 raise AdapterError(f"scale {name} must be finite and > 0")
         return self
+
+
+def _physical_value(value: int | float, spacing: float, label: str) -> float:
+    """Scale one BTrack coordinate and fail closed if the native double is non-finite."""
+    try:
+        result = float(value * spacing)
+    except (OverflowError, ValueError) as exc:
+        raise AdapterError(f"{label} exceeds finite BTrack coordinate range") from exc
+    if not math.isfinite(result):
+        raise AdapterError(f"{label} exceeds finite BTrack coordinate range")
+    return result
 
 
 @dataclass(frozen=True)
@@ -92,9 +125,18 @@ class VoxelBounds:
         self.validate()
         scale.validate()
         return (
-            (self.xlo * scale.x, self.xhi * scale.x),
-            (self.ylo * scale.y, self.yhi * scale.y),
-            (self.zlo * scale.z, self.zhi * scale.z),
+            (
+                _physical_value(self.xlo, scale.x, "volume xlo"),
+                _physical_value(self.xhi, scale.x, "volume xhi"),
+            ),
+            (
+                _physical_value(self.ylo, scale.y, "volume ylo"),
+                _physical_value(self.yhi, scale.y, "volume yhi"),
+            ),
+            (
+                _physical_value(self.zlo, scale.z, "volume zlo"),
+                _physical_value(self.zhi, scale.z, "volume zhi"),
+            ),
         )
 
     def contains(self, item: Detection) -> bool:
@@ -253,6 +295,10 @@ def build_btrack_payload(
         raise AdapterError("build_btrack_payload accepts exactly one dataset")
     ordered = sorted(detections)
     for item in ordered:
+        if item.t > BTRACK_UINT32_MAX:
+            raise AdapterError(
+                f"detection {item.detection_id} time {item.t} exceeds pinned BTrack uint32 range"
+            )
         if not bounds.contains(item):
             raise AdapterError(f"detection {item.detection_id} lies outside configured voxel volume")
     # btrack.io.localizations_to_objects replaces caller IDs with np.arange(n).
@@ -260,9 +306,18 @@ def build_btrack_payload(
     ref_map = {index: item for index, item in enumerate(ordered)}
     payload: dict[str, list[Any]] = {
         "t": [item.t for item in ordered],
-        "x": [item.x * scale.x for item in ordered],
-        "y": [item.y * scale.y for item in ordered],
-        "z": [item.z * scale.z for item in ordered],
+        "x": [
+            _physical_value(item.x, scale.x, f"detection {item.detection_id} x")
+            for item in ordered
+        ],
+        "y": [
+            _physical_value(item.y, scale.y, f"detection {item.detection_id} y")
+            for item in ordered
+        ],
+        "z": [
+            _physical_value(item.z, scale.z, f"detection {item.detection_id} z")
+            for item in ordered
+        ],
         # Extra properties survive PyTrackObject.from_dict and provide an independent
         # identity check if a later operation mutates object IDs/Tracklet.refs.
         "commons_detection_id": [item.detection_id for item in ordered],
@@ -342,27 +397,13 @@ def tracks_to_rows(
     tracks: Sequence[TrackLike],
     ref_map: Mapping[int, Detection],
     scale: Scale,
+    *,
+    require_full_coverage: bool = True,
 ) -> list[dict[str, object]]:
     """Convert BTrack tracklets immediately, before any list-mode HDF export."""
     if any(item.dataset != dataset for item in detections):
         raise AdapterError("tracks_to_rows accepts exactly one dataset")
     ordered = sorted(detections)
-    node_ids = {item.detection_id: index for index, item in enumerate(ordered)}
-    detection_by_id = {item.detection_id: item for item in ordered}
-    rows: list[dict[str, object]] = [
-        {
-            "dataset": dataset,
-            "row_type": "node",
-            "node_id": node_ids[item.detection_id],
-            "t": item.t,
-            "z": item.z,
-            "y": item.y,
-            "x": item.x,
-            "source_id": -1,
-            "target_id": -1,
-        }
-        for item in ordered
-    ]
 
     track_by_id: dict[int, TrackLike] = {}
     real_by_id: dict[int, list[tuple[int, Detection]]] = {}
@@ -393,8 +434,30 @@ def tracks_to_rows(
             edges.add((source.detection_id, target.detection_id))
 
     missing_real_refs = sorted(set(ref_map) - set(seen_real_refs))
-    if missing_real_refs:
+    if missing_real_refs and require_full_coverage:
         raise AdapterError(f"tracker output omitted real object ID {missing_real_refs[0]}")
+
+    if require_full_coverage:
+        emitted = ordered
+    else:
+        retained_detection_ids = {ref_map[ref].detection_id for ref in seen_real_refs}
+        emitted = [item for item in ordered if item.detection_id in retained_detection_ids]
+    node_ids = {item.detection_id: index for index, item in enumerate(emitted)}
+    detection_by_id = {item.detection_id: item for item in emitted}
+    rows: list[dict[str, object]] = [
+        {
+            "dataset": dataset,
+            "row_type": "node",
+            "node_id": node_ids[item.detection_id],
+            "t": item.t,
+            "z": item.z,
+            "y": item.y,
+            "x": item.x,
+            "source_id": -1,
+            "target_id": -1,
+        }
+        for item in emitted
+    ]
 
     # Validate declared lineage and add one parent-last -> child-first edge.
     for track_id, track in track_by_id.items():
@@ -512,8 +575,7 @@ def solve_dataset(
         raise AdapterError("cannot solve an empty dataset")
     if len({item.dataset for item in detections}) != 1:
         raise AdapterError("solve_dataset accepts exactly one dataset")
-    if not math.isfinite(max_search_radius) or max_search_radius <= 0:
-        raise AdapterError("max_search_radius must be a finite physical distance > 0")
+    btrack_search_radius = _positive_btrack_float(max_search_radius, "max_search_radius")
     if optimise and optimizer_distance_units != "physical":
         raise AdapterError(
             "optimise=True requires explicit optimizer_distance_units='physical'; "
@@ -536,7 +598,7 @@ def solve_dataset(
                 "reserved adapter-only BTrack feature(s) are not allowed: "
                 + ", ".join(reserved_features)
             )
-        tracker.max_search_radius = float(max_search_radius)
+        tracker.max_search_radius = btrack_search_radius
         tracker.volume = bounds.physical_btrack(scale)
         tracker.append(payload)
         tracker.track()
@@ -545,7 +607,17 @@ def solve_dataset(
         tracks = list(tracker.tracks)
         # Critical ordering: convert while refs/properties still reflect the live run.
         # Do not call HDF5FileHandler.write_tracks(list[Tracklet]) before this point.
-        return tracks_to_rows(detections[0].dataset, detections, tracks, ref_map, scale)
+        rows = tracks_to_rows(
+            detections[0].dataset,
+            detections,
+            tracks,
+            ref_map,
+            scale,
+            require_full_coverage=not optimise,
+        )
+        if optimise and not any(row["row_type"] == "node" for row in rows):
+            raise AdapterError("optimisation retained no real observations for non-empty dataset")
+        return rows
 
 
 def solve_all(
@@ -559,6 +631,8 @@ def solve_all(
     optimizer_distance_units: str | None = None,
     tracker_factory: Callable[[], TrackerLike] | None = None,
 ) -> list[dict[str, object]]:
+    if not detections:
+        raise AdapterError("cannot solve an empty detection collection")
     rows: list[dict[str, object]] = []
     groups = group_detections(detections)
     if isinstance(bounds, Mapping):
@@ -593,15 +667,33 @@ def solve_all(
 
 
 def write_submission(path: Path, rows: Sequence[Mapping[str, object]]) -> None:
+    staging_path: Path | None = None
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("w", encoding="utf-8", newline="") as handle:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            newline="",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            staging_path = Path(handle.name)
             writer = csv.DictWriter(handle, fieldnames=SUBMISSION_COLUMNS)
             writer.writeheader()
             for row in rows:
                 writer.writerow({key: row[key] for key in SUBMISSION_COLUMNS})
-    except (KeyError, OSError) as exc:
+        staging_path.replace(path)
+        staging_path = None
+    except (csv.Error, KeyError, OSError) as exc:
         raise AdapterError(f"cannot write {path}: {exc}") from exc
+    finally:
+        if staging_path is not None:
+            try:
+                staging_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
 
 def main(argv: Sequence[str] | None = None) -> int:

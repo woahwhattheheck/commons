@@ -132,3 +132,7 @@ license text as `LICENSE-APACHE-2.0.txt`, both at the archive root beside
 This notice preserves the provenance and license scope of attributed
 third-party portions. It does not relicense public episode data or claim
 ownership of the attributed source artifacts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../../../titanmcp.html). Cite Latch Pad KEEP.

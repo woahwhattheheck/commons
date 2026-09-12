@@ -125,10 +125,41 @@
     {
       "component": "Observed operating-stock obligations",
       "source_pin": "Current source manifest operating_stock.py",
-      "callsite": "TitanAgent._operating_stock_selected after market_pressure; completed FrozenSelected unit snapshot",
+      "callsite": "TitanAgent._operating_stock_selected and final _feed_stock_selected; matching completed FrozenSelected unit snapshot",
       "enabled": true,
-      "consumed_result": "29 focused source contracts, including production-day WATER and funded post-reset worker availability. At most two withheld units, incremental product valuation, full same-day funding and a 100-times-input cash cushion. No new game panel or measured score effect.",
-      "role": "active bounded operating-stock reservation; canonical operating_stock=true"
+      "consumed_result": "53 stock contracts: 29 existing fertilizer plus 24 feed-stock. At most two owned WHEAT units for reachable existing-animal feeds, actual carry/shared pickup prefixes, prepaid boundary capital, physical room and producer receipt ownership. Six independent original own-unit observations unchanged. No new game panel or measured score effect.",
+      "role": "active bounded operating-stock reservation; canonical operating_stock=true",
+      "wheat_scope": "Same-day service window, or next-day service only from current day close. No requested wheat receipt or future sale cash credit; prior pickups must fully consume their requested input. Empty/duplicate slots and all worker actions preserved."
+    },
+    {
+      "component": "Owned idle fertilizer recovery",
+      "source_pin": "Current manifest spatial_tempo.py and titan_runtime.py",
+      "callsite": "SpatialTempo -> selected producer -> common returned-action commit -> existing ObservedFillLedger",
+      "enabled": true,
+      "consumed_result": "27 source/primitive/runtime contracts; real initialized Arlene/FrozenSelected direct and delayed terminal deliveries retain one DROP, unique existing FERT1 sale and observed receipt. Preexisting/competing fertilizer declines before departure; actual terminal purchases/inputs and larger or duplicate lots decline delivery. No full-game gain claim."
+    },
+    {
+      "component": "Active frozen seller early pruning",
+      "source_pin": "scheduler main 7d8e27296313bdbfbad255a4d6b5e1d85fa31737 ported to reference/titan-current/latest/selected_sell_core.py",
+      "callsite": "FrozenSelected.transform -> optimize_lot",
+      "enabled": true,
+      "consumed_result": "4 focused arithmetic methods compare exact optimizer plans/reports against preserved loop; no game runs"
+    },
+    {
+      "component": "Funded annual crop release",
+      "source_pin": "Current manifest crop_release.py, spatial_tempo.py and titan_runtime.py",
+      "callsite": "Existing SpatialTempo producer -> FrozenSelected completed snapshot -> crop_market -> final emitted-action commit -> shared observed-fill ledger",
+      "enabled": true,
+      "consumed_result": "22 focused contracts plus recorded step372 admission probe; public-inventory funding bound, complete source-family services, later seed stock, exclusive observed crop/carrier/deposit/sale, late wheat replacement and executable-sale reservation, duplicate lots, EOD, boundary capital and final-guard/deadline cancellation. No new game panel or measured strength gain.",
+      "role": "active bounded production adaptation; canonical crop_release=true"
+    },
+    {
+      "component": "Bounded joint SELL composition",
+      "source_pin": "E05 PR11053/d7445804acb9e5aea39ac51e9a98ef20a4e38f6d; integrated current source",
+      "callsite": "FrozenSelected.transform -> joint_resource_bound / joint_queue_ledger -> existing emitter",
+      "enabled": true,
+      "consumed_result": "28 focused joint contracts, including actual per-item optimizer composition. Fixed cash and capacity through next boundary; all retained plans and actual stock share the emitted queue. Zero new games or measured playing-strength gain.",
+      "limits": "No variable-price purchases, DROP/EOD or branch boundary; active producer continuations and terminal windows retain the existing single-product choice."
     }
   ],
   "next_increments": [
@@ -311,16 +342,18 @@
   },
   "game_evidence_for_this_archive": {
     "new_full_games": 0,
-    "scope": "Disabled operating-stock integration and package/source checks. Prior native weed evidence belongs to db34; no new game evidence.",
-    "evidence": "runtime/integrated-selected/OPERATING-STOCK-TESTS.json",
+    "scope": "Bounded feed-stock preservation composed with enabled joint seller, crop release, idle fertilizer, operating stock and market pressure. Earlier games remain separately attributed.",
+    "evidence": "runtime/integrated-selected/CURRENT-TESTS.json",
     "historical_results_apply": false
   },
   "checkpoint": {
-    "operation": "titan-v2-operating-stock-water-service-20260909",
+    "operation": "titan-v25-feed-stock-20260909",
     "runtime_entrypoint": "main.py::agent",
-    "owner_authorization": "Activate warranted bounded operating-stock behavior in the single canonical TITAN using focused correctness, funding and capacity checks; no new game panels or Kaggle submission.",
-    "submission_status": "not_submitted",
-    "stage": "bounded_behavior_enabled_due_day_water_and_funding_checked",
+    "owner_authorization": "Integrate warranted observed-game and source improvements in one canonical TITAN; focused correctness/funding/shared-capacity checks; no new game panels or Kaggle submission in this task.",
+    "submission_status": "current_v25_not_submitted",
+    "stage": "bounded_feed_stock_joint_sales_and_crop_release_enabled",
     "playing_strength": "not_measured_for_changed_bytes"
-  }
+  },
+  "frozen_v2_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+  "development_version": "V2.5"
 }

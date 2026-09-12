@@ -111,3 +111,7 @@ Original COK source is not copied or relicensed here. Its complete T07-carried
 third-party notice retains the distinction between independently written
 controller code, attributed routes and public-behavior reconstruction. The
 existing cloud-pack loader retains its original license and upstream manifest.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

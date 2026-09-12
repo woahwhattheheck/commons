@@ -58,3 +58,7 @@ Replay of the entire 180-order corpus changes zero records and reprints the same
 - `../../test_pcl_scope_sla_routing.py` — proves the program
 - `../../pcl-scope-sla-routing-lims.html` — login-free door
 - `../../p/pcl-scope-sla-routing-lims-01.md` — first leftover receipt (do not remint)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -50,3 +50,7 @@ Engine semantics inspected directly at [Kaggle/kaggle-environments 28b6d8af](htt
 ## Price-floor mechanics repair
 
 SELL always pays its quoted price, but only a quote above 1 adds a unit to market inventory. Regression: with quote `max(1, 3-inventory)`, four sales at initial inventory 0 pay 3+2+1+1 and admit two units. After town consumes two, the next sale pays 3: total 10, not the old erroneous 8. The actual engine quotes both seats from the SAME pre-commit inventory per unit and then commits both; the selector's single-stream exogenous callback is not a model of one seat front-running the other.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -154,3 +154,7 @@ New integration source: MIT OR CC-BY-4.0; full texts included. Decoder bundles
 select the MIT option to avoid redundant license payload. Vendored codec source
 and its Apache-2.0 license remain unchanged, and each input's supplied notices
 and license are included. No model assets are relicensed or redistributed here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

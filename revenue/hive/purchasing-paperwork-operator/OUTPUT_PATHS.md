@@ -21,3 +21,16 @@ PYTHONWARNINGS=error::ResourceWarning python -B -m unittest -v test_purchasing_o
 ```
 
 Sixteen methods use actual temporary files, hardlinks, symbolic links and a CLI subprocess. They exercise all three output names against all three input roles, every output hardlink pair, source/output symlinks, directory aliases, clean CLI failure, preserved previous bytes, and compatible successful runs. Symlink-specific methods skip only when the platform does not provide the needed capability; the measured cloud run had no skips.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

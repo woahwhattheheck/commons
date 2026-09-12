@@ -32,3 +32,7 @@ Consumers require `PACKAGE-TRANSFER.json` with `successful=true`, verify its thr
 The original PR10202 artifacts remain diagnostics-only historical evidence: its final run34189408085 checked a8af2b83 and280 files with no changes, with355 component methods plus14 separate release/CI methods. The new retention step fulfills the existing ORBIT/COORD-RECOVERY copy request; it does not relabel those old artifacts or WIDEFIELD's predecessor-package games.
 
 BIRCH/ATLAS component suites and report contracts remain separate. BROOK owns publication I/O in the existing builder; the canonical builder owns release advancement and root owns submission. No new workflow identity, source exporter, policy variant, game or seed is introduced. Package consistency and successful byte transport are not game strength, a runtime guarantee, submission completion or a whole-repository CI pass.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

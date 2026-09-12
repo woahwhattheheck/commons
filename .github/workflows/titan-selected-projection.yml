@@ -81,6 +81,7 @@ jobs:
             /revenue/kaggriculture/cloud-economic-stress/test_caller_handler.py
             /revenue/kaggriculture/cloud-economic-stress/cancellation/
             /revenue/kaggriculture/cloud-runtime-pulse/
+            /revenue/kaggriculture/cloud-opponent-league/lark-responsive/
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/runtime.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/test_capture_binding.py
             /revenue/kaggriculture/cloud-market-game-theory/adaptive/context_cases/test_market_context.py
@@ -124,7 +125,8 @@ jobs:
                    'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent',
                    'cloud-integration-differentials', 'cloud-composition-cases/cypress',
                    'cloud-market-game-theory/adaptive', 'cloud-composition-cases/cover',
-                   'cloud-economic-stress', 'cloud-runtime-pulse', 'cloud-full-support',
+                   'cloud-economic-stress', 'cloud-runtime-pulse',
+                   'cloud-opponent-league/lark-responsive', 'cloud-full-support',
                    'cloud-weighted-plan-selector',
                    'cloud-plan-continuation', 'cloud-observed-fills')
           paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
@@ -446,6 +448,28 @@ jobs:
           set -euo pipefail
           python3 -B -m unittest -v test_release_consistency \
             2>&1 | tee "$RUNNER_TEMP/canonical-validation/release-consistency-tests.log"
+      - name: Final pre-ledger market-pressure entrypoint tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_final_market_pressure_entrypoint \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/final-pressure-entrypoint-tests.log"
+          RUNTIME="$RUNNER_TEMP/canonical-validation/final-pressure-runtime"
+          mkdir -p "$RUNTIME"
+          tar -xzf exports/titan-current.tar.gz -C "$RUNTIME"
+          (cd "$RUNTIME" && PYTHONPATH="$RUNTIME" \
+            python3 -B -m unittest -v checks.test_final_market_pressure_entrypoint) \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/final-pressure-archive-tests.log"
+      - name: Whole-entrypoint deadline containment tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest -v test_entrypoint_deadline \
+            2>&1 | tee "$RUNNER_TEMP/canonical-validation/entrypoint-deadline-tests.log"
       - name: Committed seed retry source and canonical boundary tests
         if: ${{ !cancelled() }}
         shell: bash

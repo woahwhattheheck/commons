@@ -418,3 +418,7 @@ $n$ even, $L_1$ **not** cocircular, and $m(L_1)=n/2$ (one more distance than Alt
   arXiv:2505.04283v1, 7 May 2025.
 * H. Hopf & E. Pannwitz (1934); E. Altman (1963); P. Fishburn; K. Vesztergombi (1985–87) — as cited
   in [CDL].
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

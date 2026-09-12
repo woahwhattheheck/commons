@@ -71,3 +71,7 @@ python3 -m unittest test_ordered_selected_sell -v
 No full-game panel or new seed was consumed. T08 owns the assembled arm and seed registry; this VM can execute its published composed-versus-parent development job when assigned. The currently published T08 reservations were already consumed, so they remain untouched.
 
 Runtime needs `ordered_selected_sell.py`, `selected_action_sell.py`, `selected_sell_core.py`, existing `mechanics.py`, pinned `reference/decision/decision.py`, and the exact ATLAS `projection.py` at the relative path above. These use the standard library. Preserve ATLAS attribution, the original seller/engine notices, and the lab Apache license. No accepted archive was rebuilt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

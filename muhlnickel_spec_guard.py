@@ -220,6 +220,7 @@ def module_names(path: Path) -> set[str]:
 def load_module_facts() -> tuple[dict[str, Facts], dict[str, Facts]]:
     by_module: dict[str, Facts] = {}
     by_path: dict[str, Facts] = {}
+    basename_hits: dict[str, list[Facts]] = {}
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
             continue
@@ -233,7 +234,17 @@ def load_module_facts() -> tuple[dict[str, Facts], dict[str, Facts]]:
         facts = analyze_python(rel, data)
         by_path[rel] = facts
         for name in module_names(path):
-            by_module[name] = facts
+            if "." in name:
+                by_module[name] = facts
+            else:
+                basename_hits.setdefault(name, []).append(facts)
+    # Basename aliases are last-writer-wins and rglob-order dependent when two
+    # files share a stem (`core.py`). Only register an unambiguous basename so
+    # `integrations/shared_equipment/services.py` cannot inherit titan+submit
+    # from `integrations/command_center/core.py`.
+    for name, hits in basename_hits.items():
+        if len(hits) == 1:
+            by_module[name] = hits[0]
     return by_module, by_path
 
 

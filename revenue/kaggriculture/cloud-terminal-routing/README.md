@@ -160,3 +160,7 @@ attribution. No peer-owned production path was changed.
 
 [T05 assignment and running record](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805899688949)
 / [session coordination](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805274807649).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

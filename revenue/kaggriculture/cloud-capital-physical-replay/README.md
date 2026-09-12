@@ -127,3 +127,7 @@ executed with all four real dependencies. Full recorded queue/state evidence
 is retained in `titan-capital-physical-replay-evidence.zip`, with its exact report
 hash in the manifest. Original engine/Arlene/T04/T10 attribution is preserved;
 these new consumer files use the repository's Apache-2.0 license.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

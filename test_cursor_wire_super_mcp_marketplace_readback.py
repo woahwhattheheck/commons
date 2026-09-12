@@ -21,10 +21,10 @@ KEEP = {
     ".agents/plugins/marketplace.json": "97875086",
     "integrations/commons_network_plugin/.codex-plugin/plugin.json": "0bc6fd84",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "7fd9bc0a",
+    "super-mcp.html": "d72c7828",
     "host/super_mcp.py": "defaf19f",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
@@ -32,9 +32,9 @@ KEEP = {
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
-    "hub_pages.py": "97004993",
-    "door.js": "5bc431b1",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "hub_pages.py": "44bbd2ec",
+    "door.js": "de1d570b",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

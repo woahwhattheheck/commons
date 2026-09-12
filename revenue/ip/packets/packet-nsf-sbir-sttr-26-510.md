@@ -44,7 +44,7 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751` (2406 bytes)
+- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
 - `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
 - `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
 - `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
@@ -53,11 +53,11 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 
 - `ground/FEATURES.md` sha256 `bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085` (1344 bytes)
 - `ground/FEATURE_TRACKER.md` sha256 `0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7` (4615 bytes)
-- `host/feature_tracker.py` sha256 `030c6bf040e6cf875e621c25d718324a37c5f6590dbb10f5e0d3cdda90842f8c` (37260 bytes)
+- `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad` (12738 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
+- `resources.html` sha256 `d96d98607d38418658a07c29b60fe07b1d4d7a44b46108f200211667cfe0bdb1` (13024 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5` (161041 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ## Stated funding (not expected value)
@@ -91,3 +91,16 @@ Map already-public product and commercialization evidence to the Project Pitch k
 `PACKET_READY_NOT_SUBMITTED` — not a numeric forecast.
 
 submission_status: `NOT_SUBMITTED`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

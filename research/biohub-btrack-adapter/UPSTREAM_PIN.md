@@ -13,3 +13,17 @@ Exact source identities used by this adapter review:
 Additional routed runtime boundary: BTrack's optimiser imports `cvxopt.glpk.ilp`. A successful `import btrack` is not sufficient evidence that optimizer-backed division inference is runnable offline. The dependency owner must separately prove native BTrack construction and a tiny GLPK-reaching optimisation smoke in the target ABI.
 
 This pin is source evidence only; it is not a claim that the target Kaggle runtime, native shared library, GLPK backend, competition entry, or scored submission has been verified.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

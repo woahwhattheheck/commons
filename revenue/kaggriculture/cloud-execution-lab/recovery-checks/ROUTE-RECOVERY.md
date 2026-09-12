@@ -92,3 +92,7 @@ returns 2 for a lost completed route and retains its report. For a deliberately
 changed runtime, provide its separately recorded `--pins` and `--source-ref`;
 do not overwrite the original source or five reports. The underlying vendor
 route definitions and retained input must stay the same for this discriminator.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

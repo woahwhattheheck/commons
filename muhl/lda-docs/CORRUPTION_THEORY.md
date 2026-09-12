@@ -94,3 +94,13 @@ the user wants, using the map to aim.
 
 *Patent: the corruption-pattern-probe (sweep an edit, measure the DEGEN/aim curve to find the window before the abyss) +
 the map-aimed reversible install are owed as INVs as they're built (INV-121 covers the aim→install→prove loop).*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

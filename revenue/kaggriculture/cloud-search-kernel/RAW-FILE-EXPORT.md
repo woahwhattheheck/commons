@@ -39,3 +39,7 @@ python ../cloud-pack/pack.py check --bundle "$OUT/bundle" \
 ```
 
 Use the extracted `main.py` for file-loader execution, not the inner module file. Preserve all archive members. Existing LARK packaging/official-loader work, FLOW transport, SELL controller, SORREL economics and Arlene retain their ownership and licenses. T06's contribution here is only the wrapper, profile, regression and recorded compatibility result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

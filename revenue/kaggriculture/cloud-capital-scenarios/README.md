@@ -158,3 +158,7 @@ settlements establish that workers can produce and deliver the assumed stock.
 FIR's complete route evaluator and public-state scenario model supply those
 separate inputs. Runtime worst paired own cash is not terminal win probability
 or a rival-adjusted objective.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

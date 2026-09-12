@@ -3,6 +3,7 @@
 # Run ONE Commons tool job, publish a receipt, die.
 # Not a poller. Not a tunnel. HTTP is not the computer.
 # Does not smash commons.mno. Does not fire dests. Does not start CUT ports.
+# DIGIT cite (clan/grokbot): seat hygiene for TOOLS one-shot button — see p/digit-clan-mark-20260902-01.md. Not a gate.
 from __future__ import annotations
 
 import json

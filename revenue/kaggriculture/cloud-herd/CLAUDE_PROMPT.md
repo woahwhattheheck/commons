@@ -154,3 +154,7 @@ Juggernaut through its established route and the original Kaggriculture thread.
 Sanskrit Juggernaut should pass any warranted replacement candidate to the
 existing account/root session. Game coins, Kaggle submission success, leaderboard
 standing and prize payment are distinct outcomes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

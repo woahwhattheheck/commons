@@ -85,3 +85,7 @@ python -B compare.py --model <path>/gemma-4-E4B-it.litertlm \
 
 Measured results are in `results/` and in `RESULTS.md`. Nothing is claimed here
 ahead of a recorded measurement.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

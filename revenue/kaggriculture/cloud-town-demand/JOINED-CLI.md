@@ -35,3 +35,7 @@ python -B test_joined_cli.py --source-root "$CAPTURED_SOURCE_ROOT" \
 Full logs, exact old/new source, reference report and the changed reader are preserved in the companion Library delivery; the existing PR10239 archive supplies the shared original input/engine/dependency closure. No full enumeration or earlier game panel is repeated.
 
 Owning-thread claim: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788845832036599
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

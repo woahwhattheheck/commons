@@ -124,3 +124,7 @@ admission of the opponent's sales can change too. Simply subtracting own sale
 counts, or holding all previously admitted opponent supply fixed, is not an exact
 joint counterfactual. Scenario supply remains conditional on the existing
 transport, care and capacity assumptions; no future hidden orders are introduced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

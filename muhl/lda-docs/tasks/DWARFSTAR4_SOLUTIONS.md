@@ -84,3 +84,13 @@ Standing rules: branch `claude/github-repo-cleanup-obfuscate-o3sw8f`; no model-i
 - `pradeep-stellar.github.io/ds4`
 - `deepwiki.com` — DS4 single-node engine
 - `github.com/Entrpi/ds4-on-spark` (roofline / MTP analysis)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

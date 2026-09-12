@@ -15,7 +15,7 @@ CATALOG = ROOT / "ground/LANDED_WORK_FEED.json"
 DOOR = ROOT / "landed-work.html"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
@@ -26,8 +26,8 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "autogtm.html": "fab1d536",
-    "hub_pages.py": "97004993",
+    "autogtm.html": "2fe108f4",
+    "hub_pages.py": "44bbd2ec",
     "repo_pulse.py": "298716e9",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }

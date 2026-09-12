@@ -50,10 +50,10 @@ OBSERVED_AT_LAND = {
     "packs/sidewalk-signal-web-desk-20260902-01/rating.md": "absent",
     "packs/lotribbon-greetings-20260902-01/rating.md": "absent",
 }
-DOOR_BLOB = "d3d6fcc7"
-SIDECAR_BLOB = "2fbc987b"
-MAP_POINTER_BLOB = "1eb80c83"
-MAP_HELPER_POINTER_BLOB = "df4f81b3"
+DOOR_BLOB = "cd2be48f"
+SIDECAR_BLOB = "a87636bd"
+MAP_POINTER_BLOB = "c8b02d6f"
+MAP_HELPER_POINTER_BLOB = "1e40006d"
 PACK_MAP_BLOB = "a7a49b77"
 PIN_LIFT_RECEIPT_BLOB = "8fe8a002"
 POINTER_RECEIPT_BLOB = "7a8987b5"

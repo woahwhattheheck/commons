@@ -69,3 +69,7 @@ real prospect catalog. Current truth is four external prospects and one eligible
 Composio draft. The need signal comes from Composio's first-party changelog and
 the route from its first-party support page. The draft remains `STAGED_NOT_SENT`;
 no booking or cash is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

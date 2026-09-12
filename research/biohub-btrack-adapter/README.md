@@ -14,6 +14,7 @@ Upstream is pinned to `quantumjot/btrack` **v0.7.0**, source commit `a3bd947915e
 * Each Commons `dataset` gets a fresh `BayesianTracker`, fresh ref map, fresh volume and output accumulator. Multiple dataset values are never appended into one native engine.
 * Multi-dataset CLI runs require an exact dataset -> voxel-bounds CSV manifest. The manifest must contain one and only one row for every dataset in the detections CSV; missing or extra datasets fail closed. The six scalar bound flags remain available only for single-dataset CLI runs, so one shared volume cannot be silently reused across differently shaped datasets.
 * Voxel `(z,y,x)` positions are scaled into physical BTrack `(x,y,z)`. Configured volume is reordered/scaled into the same units and `max_search_radius` is explicitly a physical distance. `optimise=True` additionally requires an explicit `optimizer_distance_units="physical"` attestation for the external BTrack configuration.
+* Adapter input is preflighted against the pinned native ABI: `t` must fit BTrack's unsigned 32-bit timestamp field, and scaled coordinates/volume endpoints must remain finite before anything reaches the tracker engine.
 * Dummy/negative refs never become Commons nodes or edges. A track that would bridge nonconsecutive real observations fails closed; emitted edges are strictly `t -> t+1`.
 * Parent/child Tracklet lineage is converted as parent-last-real -> child-first-real. The adapter rejects unknown refs/tracks, duplicate track IDs, >1 parent, >2 children, and non-adjacent lineage.
 
@@ -57,4 +58,18 @@ Add `--optimise --optimizer-distance-units physical` only after the configuratio
 
 ## Data-free acceptance
 
-`test_adapter.py` covers deterministic sorting/CSV bytes, anisotropic physical-coordinate equivalence, physical volume/radius propagation, one-engine-per-dataset isolation, exact two-child lineage conversion, dummy/gap rejection, unknown refs, the HDF-style valid-ref permutation guard, optimizer-unit fail-closed behavior, and original voxel-coordinate preservation. `test_bounds_manifest.py` covers exact manifest parsing, multi-dataset fail-closed behavior without a manifest, exact dataset-set matching, and distinct expected physical volumes on separate injected tracker instances.
+`test_adapter.py` covers deterministic sorting/CSV bytes, anisotropic physical-coordinate equivalence, physical volume/radius propagation, one-engine-per-dataset isolation, exact two-child lineage conversion, dummy/gap rejection, unknown refs, the HDF-style valid-ref permutation guard, optimizer-unit fail-closed behavior, and original voxel-coordinate preservation. `test_bounds_manifest.py` covers exact manifest parsing, multi-dataset fail-closed behavior without a manifest, exact dataset-set matching, and distinct expected physical volumes on separate injected tracker instances. `test_output_alias.py` covers resolved-path and hard-link output aliases so detections/config inputs are preserved. `test_track_membership.py` covers global real-ref membership/coverage and fail-closed Tracklet/lineage invariants, including all-dummy output. `test_contract_parity.py` feeds fake-tracker output through LINEAGE's canonical `submission_contract.py`, asserts the exact submission schema, and proves adapter/canonical repeat-write byte determinism. `test_abi_ranges.py` covers the pinned unsigned-32-bit timestamp limit and finite physical-coordinate/volume preflight. These are data-free fake-engine/contract tests; native BTrack/GLPK execution remains a separate offline-dependency gate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

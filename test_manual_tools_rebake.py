@@ -82,7 +82,7 @@ class ManualToolsRebakeTests(unittest.TestCase):
     def test_tools_rebuild_retains_static_hooks_form_jobs_and_cash_splice(self):
         first = self.bake_tools()
         self.assertEqual(self.bake_tools(), first)
-        for identity in ("job-hook", "super-mcp-hook", "cash-doors", "job", "feed"):
+        for identity in ("job-hook", "super-mcp-hook", "cash-doors", "cash-hook", "digit-door", "job", "feed"):
             self.assertEqual(first.count('id="%s"' % identity), 1, identity)
         self.assertIn('href="./job.html">Job door</a>', first)
         self.assertIn('href="./wire.html"', first)

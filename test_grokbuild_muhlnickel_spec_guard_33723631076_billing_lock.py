@@ -17,26 +17,26 @@ OLDER = ROOT / "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "742c8fcf",
+    "muhlnickel_spec_guard.py": "8bd147aa",
+    "test_muhlnickel_spec_guard.py": "c023622f",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "b7a90a70",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "984bb3ae",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "fc7f6f09",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "e2f22626",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "c6fd995b",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "66609d47",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "10a046b3",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "dd329a6a",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "ecaea6b5",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "0f70dbd3",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "b437fa14",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "905a7922",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
 }
 
 
@@ -78,7 +78,7 @@ class TestGrokbuildMuhlnickelSpecGuard33723631076BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

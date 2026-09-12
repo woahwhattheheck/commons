@@ -43,3 +43,7 @@ Excluded by design: Claude's 384 games, WIDEFIELD's public-opponent bank, T15
 adaptive panels, Kaggle upload/notebook changes, and any new VM or paid service.
 Arlene was not rerun: the strongest internal comparison directly answers this
 incremental question, while the hosted Arlene byte identity remains conditional.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

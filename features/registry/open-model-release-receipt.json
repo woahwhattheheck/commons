@@ -15,7 +15,8 @@
   "boundaries": [
     "local or HTTP artifacts only",
     "exactly eight artifacts and at most 10 MiB",
-    "no model training or quality claim",
-    "no production deployment"
+    "manifest-declared loader side effects are outside the completeness receipt's assurance",
+    "no training-quality or loader-side-effect-safety claim",
+    "receipt does not itself deploy or publish the release"
   ]
 }

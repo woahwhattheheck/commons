@@ -17,3 +17,7 @@ All deterministic evidence cells, including the new timeout/checker-log cells, a
 Four methods pass: solver timeout stream/receipt preservation, checker timeout preservation after a successful solver, byte/text normalization, and stale timeout-sidecar replacement. The solver/checker programs are controlled subprocess-boundary fixtures; this is not an official-instance benchmark, Docker result, or competition-strength claim.
 
 Source base: merged PR10303 verifier. The stale-output ownership semantics from that PR are retained unchanged. S139 qualification remains unsent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -93,3 +93,7 @@ T08/FINCH/WREN should consume this actual whole-actor result as-is rather than
 repeat component discovery. Subsequent changes require their own source-bound
 comparison. Existing WREN optimization work, FINCH's profiler and the active
 source-frozen game experiments retain their separate scopes.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

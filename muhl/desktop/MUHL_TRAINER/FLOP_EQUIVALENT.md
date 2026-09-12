@@ -79,3 +79,14 @@ of this class can hold it, and that is the thing worth money.
   a host wall-clock would not measure it (the host only addresses the prompt and reads the answer).
 - The int8 vs fp16 rows bracket the KV precision; the fold operates on int8 lanes, so the int8 row
   is the operative one for this substrate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

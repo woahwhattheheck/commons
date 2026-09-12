@@ -110,3 +110,7 @@ Apache-2.0. Existing Arlene controller/routes, frozen SELL scheduler, official
 engine and DOCK T10 mechanism remain attributed to their original authors.
 The new work is the bounded selected-action proposal and its source-specific
 component/full-game evaluation. Licenses accompany the retained input closure.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

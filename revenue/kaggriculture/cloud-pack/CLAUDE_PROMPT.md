@@ -43,3 +43,7 @@ adapter setup. These controls and this seed are packaging regressions, not
 new competitive validation. Preserve the original PR9766 report's separate
 51/52 published-suite result and its /proc test limitation; no claim that the
 old published suite was rerun or repaired by this increment.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

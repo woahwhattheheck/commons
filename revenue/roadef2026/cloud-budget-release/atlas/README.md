@@ -87,3 +87,7 @@ checker outputs, negative controls, logs, and provenance. DATE retains the one
 runtime/injection, OSPREY the improving-move discriminator, and QUARTZ/RENEW the
 native/container benchmarks. No public benchmark panel, image execution,
 qualification email, held attachment, or submission is part of this component.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

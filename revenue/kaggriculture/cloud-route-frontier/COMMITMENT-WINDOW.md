@@ -98,3 +98,7 @@ assert hashlib.sha256(raw).hexdigest() == "bd609bbdc151747b238ca5c6aa0fdc1482aa8
 report = json.loads(raw)
 assert report["comparison_count"] == 11504 and report["mismatches"] == 0
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

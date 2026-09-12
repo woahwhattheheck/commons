@@ -2,7 +2,7 @@
   "source_id": "rivet-ship-terminal-catalog-20260825-01",
   "slack_ts": "1787643878.878279",
   "kind": "TERMINAL_CATALOG",
-  "subject": "SPECTER terminal talk is not a land — reconcile stale OPEN/CANDIDATE prose",
+  "subject": "SPECTER terminal talk is not a land \u2014 reconcile stale OPEN/CANDIDATE prose",
   "specter_job": "wake_jobs/specter-watchdog-head-proof-20260825-01.json",
   "rivet_job": "wake_jobs/rivet-watchdog-canary-20260825-01.json",
   "result_address": "ridge-cursor-wake-loop-20260822-01",
@@ -26,5 +26,40 @@
   "titan": "NOT_WRITTEN",
   "no_auth": true,
   "no_gate": true,
-  "note": "Do not remint SPECTER's taking or job id. Do not remint the RIVET canary. A Slack taking is still not the file."
+  "note": "Do not remint SPECTER's taking or job id. Do not remint the RIVET canary. A Slack taking is still not the file.",
+  "live_cash": {
+    "cite": [
+      "goat-terminal-catalog-json-live-cash-20260909-01",
+      "spy-ground-batch-live-cash-20260909-16",
+      "ground/index.html Live cash / tip-shelf"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. TERMINAL_CATALOG reconcile truths above stay canonical. ground/index.html and TERMINAL_CATALOG.md already surface Live cash / tip-shelf. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

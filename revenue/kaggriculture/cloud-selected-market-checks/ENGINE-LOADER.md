@@ -43,3 +43,7 @@ The local evaluator came from existing artifact `10030763484`, source `7f92f6c0f
 - `utils.py`: `91c8822ee6201ba4a5a8416c7dbe34f95dd61c87`
 
 These binding results are separate from the previously completed [51-method combined seller run](https://github.com/woahwhattheheck/commons/actions/runs/34164813999), which tested its own pinned checkout before this loader option. That accepted result and its original/projection/market outputs are retained in the [projection validation receipt](../cloud-selected-projection/HOSTED-VALIDATION.json). Neither result establishes gameplay improvement, hosted rating, or whole-repository CI success.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

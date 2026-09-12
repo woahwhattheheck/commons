@@ -108,3 +108,17 @@ Gate, so fruitful is measured: a tier earns a second channel only after its door
 ## 8. What every channel forbids that our copy must never do
 
 Meta, TikTok, Google and Reddit each have income-claims or "get rich quick" prohibitions comparable to X's Deceptive & Fraudulent policy; Meta and Google both restrict "business opportunity" and "make money" categories and require pre-approval or certification for financial-adjacent claims `(secondary; policies change)`. The single rule that satisfies all of them and the FTC: **describe the product and its price; never describe the buyer's future income.**
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -1,5 +1,59 @@
 [
   {
+    "id": "grokbuild-pr12435-tests-battery-repair-20260911-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-11T20:13:07Z",
+    "body": ""
+  },
+  {
+    "id": "grokbuild-pr12435-tests-battery-repair-20260911-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-11T22:00:48Z",
+    "body": ""
+  },
+  {
+    "id": "__noop__",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-11T23:56:21Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "DO-NOT-CREATE",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-11T22:04:41Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "DELETE-ME-noop",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-11T10:37:15Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "TITAN-V3.1-integration-ledger---converge-fleet-work-onto-frozen-508b",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-11T09:23:42Z",
+    "body": ""
+  },
+  {
     "id": "discord-1545953866506305548",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",

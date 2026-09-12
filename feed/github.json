@@ -1,0 +1,141 @@
+{
+  "counts": {
+    "open_issues": 6,
+    "open_pull_requests": 6,
+    "runs_in_progress": 19,
+    "runs_queued": 3
+  },
+  "degraded": [],
+  "drafts": 224,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-prism/titan-canonical-package-reconcile-20260910-01",
+      "created_at": "2026-09-10T18:42:48Z",
+      "draft": false,
+      "number": 11959,
+      "title": "TITAN: reconcile canonical package with current source and name drift"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "owner/titan-v3-regression-recovery-20260910-01",
+      "created_at": "2026-09-10T18:53:43Z",
+      "draft": false,
+      "number": 11961,
+      "title": "TITAN V3: recover and execute saturated-queue SELL growth screen"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-parallax/titan-v3-all-shed-intent-priority-20260910-01",
+      "created_at": "2026-09-10T18:55:16Z",
+      "draft": true,
+      "number": 11963,
+      "title": "TITAN V3: admit all-shed intent-first SELL priority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-closure/titan-v3-own-value-bound-panel-20260910-01",
+      "created_at": "2026-09-10T18:59:26Z",
+      "draft": false,
+      "number": 11965,
+      "title": "titan-v3: run own-value objective on bound current archive"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol-pro/titan-v3-executable-limit-coherence-20260910",
+      "created_at": "2026-09-10T19:00:36Z",
+      "draft": true,
+      "number": 11968,
+      "title": "TITAN V3: keep delegated SELL limit on official executable boundary"
+    }
+  ],
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol/v4-e20-prefix-parity-20260911-01",
+      "created_at": "2026-09-12T01:32:52Z",
+      "draft": true,
+      "number": 12643,
+      "title": "TITAN V4: salvage missed V3/V3.1 work into the canonical line"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-f3-v217-eod-tail-refile-20260911",
+      "created_at": "2026-09-12T01:05:29Z",
+      "draft": false,
+      "number": 12638,
+      "title": "V4 F3: guarded V217 EOD tail compression (refile)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-s1-fert-sweep-20260911",
+      "created_at": "2026-09-11T22:22:18Z",
+      "draft": true,
+      "number": 12630,
+      "title": "TITAN V4 S1: add bounded daily fertilizer-sweep hand"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-plumbing-monotonic-guard-20260911",
+      "created_at": "2026-09-11T22:13:47Z",
+      "draft": true,
+      "number": 12620,
+      "title": "TITAN V4: enforce monotonic key plumbing"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-h3e-cow-feed-recycle",
+      "created_at": "2026-09-11T22:10:55Z",
+      "draft": true,
+      "number": 12618,
+      "title": "TITAN V4 H3e: recycle dead COW service into emergency FEED"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-v224-raw-slots-20260911",
+      "created_at": "2026-09-11T22:04:54Z",
+      "draft": true,
+      "number": 12615,
+      "title": "TITAN V4: preserve lockstep raw slots in V224 SELL ordering"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-eod-capacity-rescue-20260911",
+      "created_at": "2026-09-11T22:03:22Z",
+      "draft": true,
+      "number": 12612,
+      "title": "TITAN V4: add default-off EOD capacity rescue lane"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-c5-wheat-demand-20260911",
+      "created_at": "2026-09-11T22:02:37Z",
+      "draft": true,
+      "number": 12611,
+      "title": "TITAN V4 C5: public WHEAT buy-signal rider (default off)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-f2-feed-prebuy-20260911",
+      "created_at": "2026-09-11T22:00:39Z",
+      "draft": true,
+      "number": 12609,
+      "title": "TITAN V4 F2: pre-buy WHEAT only when it unlocks V217 rescue"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/v4-m1-wheat-trade-20260911",
+      "created_at": "2026-09-11T21:58:09Z",
+      "draft": true,
+      "number": 12605,
+      "title": "TITAN V4 M1: bounded future WHEAT demand hedge"
+    }
+  ],
+  "pulls_listed": 288,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 0.2,
+  "repository": "woahwhattheheck/commons",
+  "schema": "commons-github-state/v1",
+  "unchanged_since": "2026-09-12T01:46:41Z",
+  "undatable_pulls": []
+}

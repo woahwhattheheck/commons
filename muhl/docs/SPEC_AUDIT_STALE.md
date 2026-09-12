@@ -53,3 +53,13 @@ Locked restatement in the header: a couple-MB file already beat the $300 laptop.
 ## Score this note does not change
 
 Leave `SPEC_AUDIT_20260814.md` as written. Its Never GitHub / Law 6 finding is still the live cop hit. Its datacenter-absence line is the stale part.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

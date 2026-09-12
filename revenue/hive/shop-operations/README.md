@@ -103,7 +103,9 @@ Command keys are durable in SQLite. **Retry the identical key and payload after
 an uncertain response.** It returns the original result even after a restart;
 reusing a key with different data is a conflict. Successful receipt references,
 order IDs and return IDs cannot be inserted again under a new key. Repeated
-fulfill/cancel of an already-matching state does not move stock again. The UI
+fulfill/cancel of an already-matching state does not move stock again. A later
+fulfill under a new key still requires the exact nonempty `shipment_ref`; a
+mismatch or blank reference is a conflict and does not mutate. The UI
 keeps an uncertain request and its key in the current tab for exact retry; it
 does not persist that pending browser request across tab closure. Use the state
 view and the integration's retained request key to reconcile after closure.
@@ -246,3 +248,16 @@ that refresh does not silently rebase a stale observation and a changed SKU
 clears its version. The same native-browser-network limitation described above
 still applies; these results do not claim an external installation or full-suite
 hosted acceptance.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

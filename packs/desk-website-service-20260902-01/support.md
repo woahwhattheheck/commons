@@ -15,3 +15,7 @@ What this pack will not do:
 - paste secrets into Slack or git
 
 Contact path for paid support: owner-paste. Until pasted, use `mailto:tokenjunkielabs@gmail.com` with no secrets in the body.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

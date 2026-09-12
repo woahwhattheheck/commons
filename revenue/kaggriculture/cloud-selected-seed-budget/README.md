@@ -112,3 +112,7 @@ Input keys: `observation`, `configuration`, `selected_action`, `post_unit_seeds`
 `continuations`, `complete`, and optional `reserves`. Output includes the action,
 reason, slot-level changes and compiled contract. Runtime source is a single
 file; there are no external services, credentials or hidden controller state.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

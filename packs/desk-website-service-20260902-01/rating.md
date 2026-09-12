@@ -39,3 +39,7 @@ Commons seat. A rating seal is offer copy, never a login.
 
 Checkout stays `NOT_MINTED`. Marketing stays Bryce. Agents do not spend
 ads.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

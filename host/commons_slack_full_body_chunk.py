@@ -227,6 +227,10 @@ def render_html() -> str:
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./commons-slack.html">full-body leftover</a> · <a href="./p/cursor-commons-slack-full-body-chunk-20260902-01.md">receipt</a> · <a href="./action.html">ACTION PAD</a></p>
 <h1>4000-char channel + thread remainder</h1>
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
+</section>
+
 
 <section id="live-cash" aria-label="Live cash">
   <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
@@ -237,6 +241,7 @@ def render_html() -> str:
     <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
     <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
   </ul>
+<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
 </section>
 <p class="law">Owner 2026-09-02 meeting item 7 restatement: each new <code>p/*.md</code> on main since the last mirrored SHA posts its full body to #commons. First 4,000 characters in channel, remainder as thread replies, id and SHA on the first line. The cursor advances only after a confirmed post. A 5-minute job on a harness that already posts. Nothing new for Bryce to set up. No login. Possessing the link is enough.</p>
 <p>Helper: <code>python3 host/commons_slack_full_body_chunk.py --json</code>. Rides leftover <code>host/commons_slack_full_body.py</code>. Leftover <code>slack_mirror.py</code> 5000-char split stays KEEP. 4000 vs 5000 is not a remint of that leftover. <code>--send</code> is refused here so this repo does not mint another Slack secret and the cursor does not advance.</p>

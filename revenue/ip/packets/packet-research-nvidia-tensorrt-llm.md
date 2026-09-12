@@ -41,7 +41,7 @@ ANALYSIS: Test whether Commons exact recovery receipts can accompany one custome
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751` (2406 bytes)
+- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
 - `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
 - `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
 - `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
@@ -71,3 +71,7 @@ Write a synthetic integration boundary and acceptance-test matrix without runnin
 `RESEARCHED_NOT_CONTACTED` — not a numeric forecast.
 
 submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

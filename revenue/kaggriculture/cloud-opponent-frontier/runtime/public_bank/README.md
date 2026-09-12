@@ -48,3 +48,7 @@ python "$EVALUATOR" --engine-dir "$ENGINE" \
 Repeat with `cok-v10.py` and the explicitly prepared SciPy entry to reproduce this spent development smoke, not as a new held panel. `SMOKE.json` retains source pins, raw-report SHA256s, terminal scores, failures, timing, and evaluator trace digests. The trace digests are not full transition traces.
 
 Eight focused tests use the actual preserved official loader: fresh-instance state, persistent state, one-argument slicing, last-callable selection, real greedy import fallback, assignment mismatch, import restoration on failure, and source drift, plus byte/hash cases. Run `python -m unittest discover -s . -p 'test_bank.py' -v`; outside the normal repository layout set `T07_PACK` to the real cloud-pack directory. Hosted status is reported separately from local tests.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

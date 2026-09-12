@@ -17,8 +17,8 @@ DISCORD = ROOT / "p/grok-build-discord-cloud-billing-lock-20260902-01.md"
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "742c8fcf",
+    "muhlnickel_spec_guard.py": "8bd147aa",
+    "test_muhlnickel_spec_guard.py": "c023622f",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
@@ -71,7 +71,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689347386BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

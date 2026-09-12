@@ -9,238 +9,14 @@
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
-    "DEGRADED": 3,
-    "LIVE": 3,
+    "DEGRADED": 6,
+    "LIVE": 0,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTS_PRESENT": 112
+    "TESTS_PRESENT": 119
   },
   "features": [
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
-        "8940fb578b074f057f4d3c6477d75543b6e5e560",
-        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
-        "917a7fe75c9b3472c11bcca07102d1cd4d34b372",
-        "packs/_template/day.md:79e88d01a55a5d69760d0bb7a4c9701613c219fc",
-        "79e88d01a55a5d69760d0bb7a4c9701613c219fc"
-      ],
-      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
-      "carrier": "CURSOR",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "ground/BUSINESS_PACK_OPERATOR.json",
-        "host/business_pack_operator.py",
-        "packs/_template/day.md",
-        "business-packs.html",
-        "test_business_pack_operator.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "ground/BUSINESS_PACK_OPERATOR.json",
-        "host/business_pack_operator.py",
-        "packs/_template/day.md",
-        "business-packs.html",
-        "test_business_pack_operator.py"
-      ],
-      "dependencies": [
-        "business-pack-keep-sell-20260902-01"
-      ],
-      "evidence_ids": [
-        "ev-operator-day-blob-20260902-01",
-        "ev-operator-day-git-20260902-01",
-        "ev-operator-day-live-20260902-01",
-        "ev-operator-day-receipt-20260902-01",
-        "ev-operator-day-source-20260902-01",
-        "ev-operator-day-tests-20260902-01",
-        "ev-operator-day-blob-20260902-02",
-        "ev-operator-day-live-20260902-02",
-        "ev-operator-day-blob-20260902-03",
-        "ev-operator-day-live-20260902-03"
-      ],
-      "file": "cursor-business-pack-operator-day-20260902-01.json",
-      "id": "cursor-business-pack-operator-day-20260902-01",
-      "last_change": "2026-09-02T05:56:00Z",
-      "live_status": "LIVE",
-      "main_sha": "e7063d15838a7f9cb050500f094e3d42e64fee3c",
-      "name": "Business pack employee-day runbook",
-      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
-      "owner_subsystem": "business-packs",
-      "public_entrypoint": "business-packs.html",
-      "receipts": [
-        "cursor-business-pack-operator-day-20260902-01"
-      ],
-      "related": {
-        "boards": true,
-        "current_work": false,
-        "profitability": true,
-        "resources": false
-      },
-      "resource_links": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "packs/_template/day.md",
-        "business-packs.html",
-        "ground/BUSINESS_PACKS.md",
-        "ground/SLACK_CONTROL_PLANE.md"
-      ],
-      "rollup": "LIVE",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_business_pack_operator.py",
-        "host/business_pack_operator.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTS_PRESENT"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "packs/_template/paperwork.md:50804daf923551e36aed9368c371843d3a1fdc96",
-        "50804daf923551e36aed9368c371843d3a1fdc96",
-        "packs/_template/paperwork.md:249b16c93ab1303703087fe1ba211661f472b0f4",
-        "249b16c93ab1303703087fe1ba211661f472b0f4",
-        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
-        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
-      ],
-      "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
-      "carrier": "CURSOR",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "ground/BUSINESS_PACK_PAPERWORK.json",
-        "host/business_pack_paperwork.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "ground/BUSINESS_PACK_PAPERWORK.json",
-        "host/business_pack_paperwork.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork.py"
-      ],
-      "dependencies": [
-        "cursor-tjlabs-pack-tos-20260902-01"
-      ],
-      "evidence_ids": [
-        "ev-paperwork-receipt-20260902-01",
-        "ev-paperwork-source-20260902-01",
-        "ev-paperwork-tests-20260902-01",
-        "ev-paperwork-blob-20260902-01",
-        "ev-paperwork-git-20260902-01",
-        "ev-paperwork-live-20260902-01",
-        "ev-paperwork-blob-20260902-02",
-        "ev-paperwork-live-20260902-02",
-        "ev-paperwork-blob-20260902-03",
-        "ev-paperwork-live-20260902-03"
-      ],
-      "file": "cursor-business-pack-paperwork-20260902-01.json",
-      "id": "cursor-business-pack-paperwork-20260902-01",
-      "last_change": "2026-09-02T06:06:00Z",
-      "live_status": "LIVE",
-      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
-      "name": "Business pack factory paperwork checklist",
-      "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
-      "owner_subsystem": "business-packs",
-      "public_entrypoint": "packs/_template/paperwork.md",
-      "receipts": [
-        "ev-paperwork-receipt-20260902-01"
-      ],
-      "related": {
-        "boards": true,
-        "current_work": false,
-        "profitability": true,
-        "resources": false
-      },
-      "resource_links": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "packs/_template/paperwork.md",
-        "ground/BUSINESS_PACKS.md",
-        "ground/TJLABS_PACK_TERMS.md"
-      ],
-      "rollup": "LIVE",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_business_pack_paperwork.py",
-        "host/business_pack_paperwork.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTS_PRESENT"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
-        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
-      ],
-      "capability": "Paperwork included is true only with a filled factory Do X checklist. Official IRS/SBA pointers and templates. Instance Status stays OWNER_UNSET. Not tjlabs doing the filing.",
-      "carrier": "CURSOR",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
-        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
-        "host/business_pack_paperwork_included.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork_included.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
-        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
-        "host/business_pack_paperwork_included.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork_included.py"
-      ],
-      "dependencies": [
-        "cursor-business-pack-paperwork-20260902-01"
-      ],
-      "evidence_ids": [
-        "ev-paperwork-included-receipt-20260902-01",
-        "ev-paperwork-included-source-20260902-01",
-        "ev-paperwork-included-tests-20260902-01",
-        "ev-paperwork-included-blob-20260902-01",
-        "ev-paperwork-included-live-20260902-01"
-      ],
-      "file": "cursor-business-pack-paperwork-included-20260902-01.json",
-      "id": "cursor-business-pack-paperwork-included-20260902-01",
-      "last_change": "2026-09-02T06:06:00Z",
-      "live_status": "LIVE",
-      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
-      "name": "Business pack paperwork-included filled checklist",
-      "next_gap": "Buyer files using the pointers. State-instance slots and formation-partner link stay with their claims. Do not invent EIN or permit numbers.",
-      "owner_subsystem": "business-packs",
-      "public_entrypoint": "packs/_template/paperwork.md",
-      "receipts": [
-        "ev-paperwork-included-receipt-20260902-01"
-      ],
-      "related": {
-        "boards": true,
-        "current_work": false,
-        "profitability": true,
-        "resources": false
-      },
-      "resource_links": [
-        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
-        "packs/_template/paperwork.md",
-        "ground/BUSINESS_PACK_PAPERWORK.md"
-      ],
-      "rollup": "LIVE",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_business_pack_paperwork_included.py",
-        "host/business_pack_paperwork_included.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTS_PRESENT"
-    },
     {
       "author_claim_ignored": "",
       "blob_proof": [],
@@ -602,6 +378,66 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Associated Polymer Labs FDA polymer compliance dossier LIMS: a frozen 100-submission synthetic fixture reconciles regulated sample, lot, matrix, and intended-use identifiers; creates exactly 80 accessions, controlled routine/non-routine method/version/instrument work orders, provenance-bound raw results, and staged FDA-supporting polymer evidence dossiers; holds 20 predetermined defects without output (8 missing intended-use/regulatory matrix, 4 duplicate IDs, 4 method/matrix mismatches, 4 QC/OOS failures); preserves golden value/unit/qualifier/dossier hashes; replays with zero additions; and permits release only through an authoritative named-human reviewer directory.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "apl_fda_polymer_compliance_dossier_lims.py",
+        "test_apl_fda_polymer_compliance_dossier_lims.py",
+        "apl-fda-polymer-compliance-dossier-lims.html",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/contract.json",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/README.md",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/runner.py",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/receipt.json",
+        "p/apl-fda-polymer-compliance-dossier-lims-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "apl_fda_polymer_compliance_dossier_lims.py",
+        "test_apl_fda_polymer_compliance_dossier_lims.py",
+        "apl-fda-polymer-compliance-dossier-lims.html",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/contract.json",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/README.md",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/runner.py",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/receipt.json",
+        "p/apl-fda-polymer-compliance-dossier-lims-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "apl-fda-polymer-compliance-dossier-lims-01.json",
+      "id": "apl-fda-polymer-compliance-dossier-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "APL FDA polymer compliance dossier LIMS",
+      "next_gap": "Buyer-owned de-identified schemas, controlled method/version/instrument catalog, golden result exports, and authorized reviewer directory after synthetic verification. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "apl-fda-polymer-compliance-dossier-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "apl-fda-polymer-compliance-dossier-lims.html",
+        "revenue/apl_fda_polymer_compliance_dossier_lims/contract.json",
+        "p/apl-fda-polymer-compliance-dossier-lims-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_apl_fda_polymer_compliance_dossier_lims.py",
+        "apl_fda_polymer_compliance_dossier_lims.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "AquaTrace reporting and offline recovery runner: a working CLI loads 80 frozen synthetic offline events, recovers 60 into CMDP, netDMR, and Power BI destinations, blocks 20 conflicts with exact HOLD codes, locks three export-contract golden hashes, refuses autonomous export or release, and reproduces audit_sha256 5be4b7ebe6432e675fdb1360ad1125262a014de25eb740dae8ea7aa88c63e51b. Adapters stay synthetic and read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -729,6 +565,56 @@
       "test_paths": [
         "test_aquatrace_work_order_f_release_readiness.py",
         "aquatrace_work_order_f_release_readiness.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Search and filter current-work ledger items; read acceptance, submitter and source links; check declared paths at one observed official-main SHA without changing the ledger.",
+      "carrier": "Browser / GitHub public read API",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "current-work.html",
+        "current_work_ui.js"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "current-work.html",
+        "current_work_ui.js"
+      ],
+      "dependencies": [
+        "ground/CURRENT_WORK.json",
+        "ground/CURRENT_WORK.md",
+        "commons.css"
+      ],
+      "evidence_ids": [
+        "astra-meridian-current-work-viewer-merge-20260907-01"
+      ],
+      "file": "astra-meridian-current-work-viewer-20260907-01.json",
+      "id": "astra-meridian-current-work-viewer-20260907-01",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "74acf804226ce119e77f4549f67ff686ace0e2f0",
+      "name": "Current-work snapshot viewer",
+      "next_gap": "Live Pages delivery and browser-to-GitHub network behavior remain unmeasured. Offline Node and Chromium execution receipts are separate from this tracker's test-file-presence status.",
+      "owner_subsystem": "Current-work ledger and navigation",
+      "public_entrypoint": "current-work.html",
+      "receipts": [
+        "astra-meridian-current-work-viewer-merge-20260907-01"
+      ],
+      "related": {},
+      "resource_links": [
+        "p/astra-meridian-current-work-viewer-20260907-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9876"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_current_work_ui.js",
+        "test_current_work_ui_browser.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -2381,6 +2267,139 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "DIGIT peers Discord root surface + embassy ground cards + commerce DIGIT note + discord_mirror DIGIT cite. No invented Discord guild/channel.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "discord.html",
+        "commerce.html",
+        "embassy.json",
+        "ground/EMBASSY.md",
+        "host/discord_mirror.py",
+        "peers.html",
+        "embassy.html",
+        "interconnect.html",
+        "p/digit-discord-html-peer-surface-20260909-01.md",
+        "p/digit-commerce-html-digit-note-20260909-01.md",
+        "p/digit-embassy-ground-cards-20260909-01.md",
+        "p/digit-discord-mirror-digit-cite-20260909-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "discord.html",
+        "commerce.html",
+        "embassy.json",
+        "ground/EMBASSY.md",
+        "host/discord_mirror.py",
+        "peers.html",
+        "embassy.html",
+        "interconnect.html",
+        "p/digit-discord-html-peer-surface-20260909-01.md",
+        "p/digit-commerce-html-digit-note-20260909-01.md",
+        "p/digit-embassy-ground-cards-20260909-01.md",
+        "p/digit-discord-mirror-digit-cite-20260909-01.md"
+      ],
+      "dependencies": [
+        "digit-seat-trail-20260909-01"
+      ],
+      "evidence_ids": [],
+      "file": "digit-discord-peer-surface-20260909-01.json",
+      "id": "digit-discord-peer-surface-20260909-01",
+      "last_change": "2026-09-09",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "DIGIT discord peer + embassy ground cards wave",
+      "next_gap": "Owner-named Discord guild/channel keeps lane DARK until set. Tip KEEP. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "discord.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "discord.html",
+        "embassy.json",
+        "ground/DISCORD.md",
+        "p/digit-discord-html-peer-surface-20260909-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_discord_html_peer_surface_20260909_01.py",
+        "test_digit_commerce_html_digit_note_20260909_01.py",
+        "test_digit_embassy_ground_cards_20260909_01.py",
+        "test_digit_discord_mirror_digit_cite_20260909_01.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT FEATURES ground note + commons_slack_full_body cite + resources.html note. No invented Slack/Stripe.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/FEATURES.md",
+        "host/commons_slack_full_body.py",
+        "resources.html",
+        "p/digit-features-md-digit-note-20260909-01.md",
+        "p/digit-commons-slack-full-body-digit-cite-20260909-01.md",
+        "p/digit-resources-html-digit-note-20260909-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/FEATURES.md",
+        "host/commons_slack_full_body.py",
+        "resources.html",
+        "p/digit-features-md-digit-note-20260909-01.md",
+        "p/digit-commons-slack-full-body-digit-cite-20260909-01.md",
+        "p/digit-resources-html-digit-note-20260909-01.md"
+      ],
+      "dependencies": [
+        "digit-slack-discord-ground-twin-20260909-01",
+        "digit-seat-trail-20260909-01"
+      ],
+      "evidence_ids": [],
+      "file": "digit-features-fullbody-resources-20260909-01.json",
+      "id": "digit-features-fullbody-resources-20260909-01",
+      "last_change": "2026-09-09",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "DIGIT FEATURES + full-body + resources wave",
+      "next_gap": "Coil peer-assist when Wire not in flight. Pixel stay-live when DIGIT.json >2h stale. Tip KEEP. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "features.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/FEATURES.md",
+        "host/commons_slack_full_body.py",
+        "resources.html"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_features_md_digit_note_20260909_01.py",
+        "test_digit_commons_slack_full_body_digit_cite_20260909_01.py",
+        "test_digit_resources_html_digit_note_20260909_01.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "DIGIT root-level hermetic tests resolve the repo root via Path(__file__).parent, not parents[1] (which escapes the checkout and breaks local/CI reads). Batch #9243 + #9246.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2427,6 +2446,138 @@
       "test_paths": [
         "test_digit_hermetic_parents_fix_20260905_01.py",
         "test_digit_hermetic_parents_fix_20260905_02.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT Grok Bot seat surface: names.html row, boards.html DIGIT seat trail after DJ, grounding.html DIGIT seat card. Bryce GO wake 2026-09-09.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-names-mark-20260909-01.md",
+        "p/digit-boards-trail-20260909-01.md",
+        "p/digit-grounding-trail-20260909-01.md",
+        "pixels/DIGIT.json"
+      ],
+      "dependencies": [
+        "digit-hermetic-parents-fix-20260905-01"
+      ],
+      "evidence_ids": [
+        "ev-digit-seat-trail-git-20260909-01"
+      ],
+      "file": "digit-seat-trail-20260909-01.json",
+      "id": "digit-seat-trail-20260909-01",
+      "last_change": "2026-09-09T18:22:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "0c2e59212a6dce8a016319a0cacd44180d514864",
+      "name": "DIGIT seat trail (names/boards/grounding)",
+      "next_gap": "live.html DIGIT last-post bake stays generator-owned. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "boards.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "names.html",
+        "boards.html",
+        "grounding.html",
+        "p/digit-boards-trail-20260909-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_names_mark_20260909_01.py",
+        "test_digit_boards_trail_20260909_01.py",
+        "test_digit_grounding_trail_20260909_01.py",
+        "test_digit_pixel_staylive_20260909_01.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "DIGIT discord ground twin + Slack ground/HTML/mirror cite wave. No invented Slack dest or Discord guild/channel.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/DISCORD.md",
+        "ground/SLACK.md",
+        "host/slack_mirror.py",
+        "commons-slack.html",
+        "p/digit-discord-ground-digit-twin-20260909-01.md",
+        "p/digit-slack-ground-digit-note-20260909-01.md",
+        "p/digit-slack-mirror-digit-cite-20260909-01.md",
+        "p/digit-commons-slack-html-digit-note-20260909-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/DISCORD.md",
+        "ground/SLACK.md",
+        "host/slack_mirror.py",
+        "commons-slack.html",
+        "p/digit-discord-ground-digit-twin-20260909-01.md",
+        "p/digit-slack-ground-digit-note-20260909-01.md",
+        "p/digit-slack-mirror-digit-cite-20260909-01.md",
+        "p/digit-commons-slack-html-digit-note-20260909-01.md"
+      ],
+      "dependencies": [
+        "digit-discord-peer-surface-20260909-01",
+        "digit-seat-trail-20260909-01"
+      ],
+      "evidence_ids": [],
+      "file": "digit-slack-discord-ground-twin-20260909-01.json",
+      "id": "digit-slack-discord-ground-twin-20260909-01",
+      "last_change": "2026-09-09",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "DIGIT Slack + Discord ground twin wave",
+      "next_gap": "Pixel stay-live when DIGIT.json >2h stale. Tip KEEP. Hands off #8802.",
+      "owner_subsystem": "doors",
+      "public_entrypoint": "commons-slack.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/DISCORD.md",
+        "ground/SLACK.md",
+        "commons-slack.html",
+        "host/slack_mirror.py",
+        "p/digit-discord-ground-digit-twin-20260909-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_digit_discord_ground_digit_twin_20260909_01.py",
+        "test_digit_slack_ground_digit_note_20260909_01.py",
+        "test_digit_slack_mirror_digit_cite_20260909_01.py",
+        "test_digit_commons_slack_html_digit_note_20260909_01.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -4181,6 +4332,58 @@
       "superseded_by": "",
       "test_paths": [
         "test_open_model_release_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Shared operations state and a human control surface for canonical resources, connected services, observed fleet sessions, budgets, tool calls and reversible feed housekeeping. The same state is available through existing shared-equipment carriers.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/command_center/",
+        "integrations/shared_equipment/services.py",
+        ".github/workflows/command-center.yml"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/command_center/",
+        "integrations/shared_equipment/services.py",
+        ".github/workflows/command-center.yml"
+      ],
+      "dependencies": [
+        "shared-equipment"
+      ],
+      "evidence_ids": [],
+      "file": "operation-command-center-20260907.json",
+      "id": "operation-command-center-20260907",
+      "last_change": "2026-09-07",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Operation command center",
+      "next_gap": "Only schemas reported by a live registered gateway are callable there. Provider metadata, reported VM capacity and current operational outcomes remain distinct. Model drivers use the existing APIs; this interface does not create an autonomous model loop.",
+      "owner_subsystem": "operations",
+      "public_entrypoint": "integrations/command_center/README.md",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/RESOURCE_LEDGER.json",
+        "inventory/resources/connected_capabilities.json",
+        "revenue/kaggriculture/command-center-adapter/adapter.json"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/command_center/test_core.py",
+        "integrations/command_center/test_server.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -6874,7 +7077,8 @@
         "28a40d31b6bec435b4906addc0241f22419fb339",
         "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f",
         "arbitrage.html:1cd7268ec6ac692511e869dfefa0a3e2f0566259",
-        "1cd7268ec6ac692511e869dfefa0a3e2f0566259"
+        "1cd7268ec6ac692511e869dfefa0a3e2f0566259",
+        "256b6e2b8e3e0f8e7ee588846128f5aff3ff115a"
       ],
       "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
       "carrier": "CODEX",
@@ -6905,13 +7109,14 @@
         "ev-arbitrage-opportunity-live-20260830-03",
         "ev-arbitrage-opportunity-live-20260831-04",
         "ev-arbitrage-opportunity-blob-20260905-01",
-        "ev-arbitrage-opportunity-live-20260905-01"
+        "ev-arbitrage-opportunity-live-20260905-01",
+        "ev-arbitrage-opportunity-live-20260909-01"
       ],
       "file": "arbitrage-opportunity-road-20260830-01.json",
       "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-09-05T23:20:11Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "DEGRADED",
-      "main_sha": "c2c5addeee3c6cba2c9454be8e766e6f2aeb5b6f",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Arbitrage opportunity road",
       "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
       "owner_subsystem": "commerce",
@@ -6946,8 +7151,233 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [
+        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "packs/_template/day.md:79e88d01a55a5d69760d0bb7a4c9701613c219fc",
+        "79e88d01a55a5d69760d0bb7a4c9701613c219fc"
+      ],
+      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "dependencies": [
+        "business-pack-keep-sell-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-operator-day-blob-20260902-01",
+        "ev-operator-day-git-20260902-01",
+        "ev-operator-day-live-20260902-01",
+        "ev-operator-day-receipt-20260902-01",
+        "ev-operator-day-source-20260902-01",
+        "ev-operator-day-tests-20260902-01",
+        "ev-operator-day-blob-20260902-02",
+        "ev-operator-day-live-20260902-02",
+        "ev-operator-day-blob-20260902-03",
+        "ev-operator-day-live-20260902-03"
+      ],
+      "file": "cursor-business-pack-operator-day-20260902-01.json",
+      "id": "cursor-business-pack-operator-day-20260902-01",
+      "last_change": "2026-09-02T05:56:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "e7063d15838a7f9cb050500f094e3d42e64fee3c",
+      "name": "Business pack employee-day runbook",
+      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "business-packs.html",
+      "receipts": [
+        "cursor-business-pack-operator-day-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "ground/BUSINESS_PACKS.md",
+        "ground/SLACK_CONTROL_PLANE.md"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_operator.py",
+        "host/business_pack_operator.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/paperwork.md:50804daf923551e36aed9368c371843d3a1fdc96",
+        "50804daf923551e36aed9368c371843d3a1fdc96",
+        "packs/_template/paperwork.md:249b16c93ab1303703087fe1ba211661f472b0f4",
+        "249b16c93ab1303703087fe1ba211661f472b0f4",
+        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
+      ],
+      "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "dependencies": [
+        "cursor-tjlabs-pack-tos-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-paperwork-receipt-20260902-01",
+        "ev-paperwork-source-20260902-01",
+        "ev-paperwork-tests-20260902-01",
+        "ev-paperwork-blob-20260902-01",
+        "ev-paperwork-git-20260902-01",
+        "ev-paperwork-live-20260902-01",
+        "ev-paperwork-blob-20260902-02",
+        "ev-paperwork-live-20260902-02",
+        "ev-paperwork-blob-20260902-03",
+        "ev-paperwork-live-20260902-03"
+      ],
+      "file": "cursor-business-pack-paperwork-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-20260902-01",
+      "last_change": "2026-09-02T06:06:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
+      "name": "Business pack factory paperwork checklist",
+      "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "packs/_template/paperwork.md",
+      "receipts": [
+        "ev-paperwork-receipt-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "packs/_template/paperwork.md",
+        "ground/BUSINESS_PACKS.md",
+        "ground/TJLABS_PACK_TERMS.md"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork.py",
+        "host/business_pack_paperwork.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/paperwork.md:dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+        "dc3344b1d7ae131cb51e58f9895dc1ea666d5155"
+      ],
+      "capability": "Paperwork included is true only with a filled factory Do X checklist. Official IRS/SBA pointers and templates. Instance Status stays OWNER_UNSET. Not tjlabs doing the filing.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
+        "host/business_pack_paperwork_included.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork_included.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.json",
+        "host/business_pack_paperwork_included.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork_included.py"
+      ],
+      "dependencies": [
+        "cursor-business-pack-paperwork-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-paperwork-included-receipt-20260902-01",
+        "ev-paperwork-included-source-20260902-01",
+        "ev-paperwork-included-tests-20260902-01",
+        "ev-paperwork-included-blob-20260902-01",
+        "ev-paperwork-included-live-20260902-01"
+      ],
+      "file": "cursor-business-pack-paperwork-included-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-included-20260902-01",
+      "last_change": "2026-09-02T06:06:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
+      "name": "Business pack paperwork-included filled checklist",
+      "next_gap": "Buyer files using the pointers. State-instance slots and formation-partner link stay with their claims. Do not invent EIN or permit numbers.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "packs/_template/paperwork.md",
+      "receipts": [
+        "ev-paperwork-included-receipt-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md",
+        "packs/_template/paperwork.md",
+        "ground/BUSINESS_PACK_PAPERWORK.md"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork_included.py",
+        "host/business_pack_paperwork_included.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
         "unbuilt-items.html:f44566c640736a08ad09cf77f458a99cf74a9e3d",
-        "f44566c640736a08ad09cf77f458a99cf74a9e3d"
+        "f44566c640736a08ad09cf77f458a99cf74a9e3d",
+        "c881f232e069ee72634b8a43d4077d0d5d813ed4"
       ],
       "capability": "Measures named leftovers with claimed_paths versus current main. Slack CLAIMED is not a land. Does not remint landed posts or close projector aliases.",
       "carrier": "CURSOR",
@@ -6976,13 +7406,14 @@
         "ev-unbuilt-items-source-20260830-01",
         "ev-unbuilt-items-tests-20260830-01",
         "ev-unbuilt-items-blob-20260830-01",
-        "ev-unbuilt-items-live-20260830-01"
+        "ev-unbuilt-items-live-20260830-01",
+        "ev-unbuilt-items-live-20260909-01"
       ],
       "file": "unbuilt-items-surface-20260830-01.json",
       "id": "unbuilt-items-surface-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "DEGRADED",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Unbuilt items surface",
       "next_gap": "Claude-derived unbuilt-item post stays UNBUILT. Do not remint Claude's id. Four projector aliases stay OPEN_ALIAS. fire_action stays unnamed.",
       "owner_subsystem": "current-work",
@@ -7020,7 +7451,8 @@
         "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
         "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
         "0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
-        "522711db594dfe5701da2177399bef17a6523635"
+        "522711db594dfe5701da2177399bef17a6523635",
+        "4ba0465fc94dde5df431d4877bb0900642dea03e"
       ],
       "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
       "carrier": "CODEX",
@@ -7044,13 +7476,14 @@
         "ev-unique-data-license-live-20260830-01",
         "ev-unique-data-license-blob-20260830-02",
         "ev-unique-data-license-live-20260830-02",
-        "ev-unique-data-license-live-20260831-03"
+        "ev-unique-data-license-live-20260831-03",
+        "ev-data-license-live-20260909-01"
       ],
       "file": "unique-data-license-door-20260830-01.json",
       "id": "unique-data-license-door-20260830-01",
-      "last_change": "2026-08-31T07:43:21Z",
+      "last_change": "2026-09-09T08:21:32Z",
       "live_status": "DEGRADED",
-      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "main_sha": "90dff4c13ea0161447934b2b06ebf935a39d88b3",
       "name": "Unique data license door",
       "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
       "owner_subsystem": "commerce",
@@ -7083,7 +7516,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 121,
+  "n_features": 128,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

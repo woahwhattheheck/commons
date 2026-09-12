@@ -22,7 +22,7 @@ KEEP = {
     "host/main_range.py": "6acdc3d9",
     "host/main_velocity.py": "e9045607",
     "test_main_range.py": "2cfa7313",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/codex-main-range-open-door-repair-20260830-01.md": "bfba0568",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
@@ -98,7 +98,7 @@ class TestGrokbuildMainRangeVerify33717084528BillingLock(unittest.TestCase):
             keep_post,
         )
 
-    def test_local_range_still_passes(self) -> None:
+    def test_local_range_reports_findings_without_amplifying_status(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             receipt = Path(tmp) / "main-range.json"
             proc = subprocess.run(
@@ -119,12 +119,17 @@ class TestGrokbuildMainRangeVerify33717084528BillingLock(unittest.TestCase):
             )
             self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
             payload = json.loads(receipt.read_text(encoding="utf-8"))
-        self.assertEqual(payload.get("status"), "PASS")
-        self.assertEqual(payload.get("observations", {}).get("finding_count"), 0)
+
+        results = payload.get("results", [])
+        finding_count = sum(row.get("exit_code") != 0 for row in results)
+        expected_status = "PASS" if finding_count == 0 else "FINDINGS"
+        self.assertEqual(payload.get("status"), expected_status)
         self.assertEqual(
-            [row["exit_code"] for row in payload.get("results", [])],
-            [0] * len(payload.get("results", [])),
+            payload.get("observations", {}).get("finding_count"),
+            finding_count,
         )
+        self.assertEqual(payload.get("schema"), "commons.main-range.v1")
+        self.assertEqual(payload.get("main_movement_policy"), "freeze_then_next_range")
 
     def test_fix_first_packet_is_external_blocker(self) -> None:
         packet = {

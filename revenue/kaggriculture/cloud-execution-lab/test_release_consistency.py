@@ -25,6 +25,8 @@ class ReleaseTests(unittest.TestCase):
     self.assertIn('terminal_history_join.py',t.getnames())
     self.assertIn('funded_payback.py',t.getnames())
     self.assertIn('seed_retry.py',t.getnames())
+    self.assertIn('early_capital.py',t.getnames())
+    self.assertIn('checks/test_early_capital.py',t.getnames())
     self.assertEqual(manifest['runtime']['seed_retry.py']['source_path'],
                      '../cloud-committed-seed-retry/seed_retry.py')
     self.assertTrue(any(p.startswith('reference/titan-history/') for p in t.getnames()))
@@ -40,5 +42,58 @@ class ReleaseTests(unittest.TestCase):
    self.assertEqual(call('--check').returncode,0)
    for flag in ['--history-v2','--entry-clock-v3','--version']:
     self.assertNotEqual(call(flag).returncode,0)
+
+ def test_live_current_includes_early_capital(self):
+  receipt=b.verify_current()
+  self.assertEqual(receipt['path'],b.ARCHIVE)
+  with tarfile.open(b.ROOT/b.ARCHIVE) as t:
+   regular=[m.name for m in t.getmembers() if m.isfile()]
+   names=t.getnames()
+   runtime=[name for name in regular if name != 'SOURCE.json']
+   self.assertEqual(receipt['runtime_files'], len(runtime))
+   self.assertIn('SOURCE.json', regular)
+   self.assertEqual(len(regular), receipt['runtime_files'] + 1)
+   self.assertIn('early_capital.py',names)
+   self.assertIn('checks/test_early_capital.py',names)
+   self.assertIn('checks/test_final_market_pressure_entrypoint.py',names)
+   self.assertIn('checks/test_entrypoint_deadline.py',names)
+   packaged_early=t.extractfile('early_capital.py').read()
+   self.assertEqual(packaged_early,(b.ROOT/'early_capital.py').read_bytes())
+   self.assertIn(b'def _market_limit',packaged_early)
+   self.assertIn(b"'revision': 'v4-executable-funding'",packaged_early)
+   self.assertIn(b'def _certified_funding',packaged_early)
+   self.assertIn(b'def _project_post_unit_private',packaged_early)
+   self.assertNotIn(b"'revision': 'v2-order-only'",packaged_early)
+   predecessor=b.ROOT/'exports/historical'/'titan-5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1.tar.gz'
+   self.assertEqual(hashlib.sha256(predecessor.read_bytes()).hexdigest(),
+                    '5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1')
+   with tarfile.open(predecessor) as old:
+    old_early=old.extractfile('early_capital.py').read()
+   self.assertNotEqual(old_early,packaged_early)
+   self.assertIn(b"'revision': 'v2-order-only'",old_early)
+   config=json.load(t.extractfile('TITAN-CONFIG.json'))
+   self.assertTrue(config.get('early_capital'))
+   self.assertIn(b'def _early_capital_selected',t.extractfile('titan_runtime.py').read())
+   main=t.extractfile('main.py').read()
+   self.assertEqual(main,(b.ROOT/'main.py').read_bytes())
+   self.assertIn(b'class FinalPressureAgent',main)
+   self.assertIn(b'_final_pressure_boundary',main)
+   self.assertIn(b'def _entrypoint_fallback',main)
+   self.assertIn(b'entrypoint_guard',main)
+
+ def test_live_package_matches_documentation_and_keeps_predecessor(self):
+  receipt=b.verify_current()
+  self.assertEqual(receipt['path'],b.ARCHIVE)
+  historical=b.ROOT/'exports/historical'/'titan-17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86.tar.gz'
+  self.assertEqual(hashlib.sha256(historical.read_bytes()).hexdigest(),
+                   '17f536087b3a6baf4ae1222a051285766a3ea8c2ca5af6edc190d4f527e12b86')
+  with tarfile.open(historical) as old, tarfile.open(b.ROOT/b.ARCHIVE) as cur:
+   for name in ('TITAN-RELEASE.md','reference/decision/README.md'):
+    current_bytes=(b.ROOT/name).read_bytes()
+    packaged=cur.extractfile(name).read()
+    self.assertEqual(packaged, current_bytes)
+    predecessor=old.extractfile(name).read()
+    self.assertNotEqual(predecessor, current_bytes)
+    self.assertFalse(name.endswith('.py'))
 
 if __name__=='__main__':unittest.main()

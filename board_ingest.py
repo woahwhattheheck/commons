@@ -253,6 +253,47 @@ CASH_DOORS_POINTER = (
 )
 CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
 CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
+TOOLS_CASH_HOOK = (
+    '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
+    '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
+    'shelf <a href="./tools-cash.html">tools-cash.html</a>, '
+    '<a href="./commerce.html">commerce.html</a>. '
+    'Cite <code>coil-tools-json-live-cash-20260905-01</code>. Do not remint.</p>\n'
+)
+TOOLS_DIGIT_DOOR = (
+    '<p class="note" id="digit-door"><strong>DIGIT door</strong> — chronological '
+    '<a href="./by/DIGIT.html">by/DIGIT.html</a> · inbox '
+    '<a href="./to/DIGIT.html">to/DIGIT.html</a>. Cite '
+    '<a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. '
+    'Not a gate. clan/grokbot.</p>\n'
+)
+FEATURES_DIGIT_SEAT = (
+    '<p class="note" id="digit-seat"><strong>DIGIT seat</strong> — Grok Bot seat '
+    '(clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite '
+    '<a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a> · '
+    '<a href="./p/digit-seat-trail-feature-20260909-01.md">'
+    'digit-seat-trail-feature-20260909-01</a>. Additive callout. Not a gate.</p>\n'
+)
+FEATURES_DIGIT_NEEDLE = (
+    '<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · '
+    '<a href="./commerce.html">commerce.html</a>.</p>\n</section>\n'
+)
+FEATURES_DIGIT_REPLACEMENT = FEATURES_DIGIT_NEEDLE + FEATURES_DIGIT_SEAT
+
+
+def _insert_note_after_id(text, existing_id, snippet):
+    """Insert snippet after the paragraph that declares existing_id."""
+    marker = 'id="%s"' % existing_id
+    start = text.find(marker)
+    if start < 0:
+        return text, False
+    close = text.find("</p>", start)
+    if close < 0:
+        return text, False
+    insert_at = close + 4
+    if insert_at < len(text) and text[insert_at] == "\n":
+        insert_at += 1
+    return text[:insert_at] + snippet + text[insert_at:], True
 
 
 def splice_tools_cash_doors(root=None):
@@ -260,16 +301,56 @@ def splice_tools_cash_doors(root=None):
 
     hub_pages.rebuild_tools remints tools.html from the catalog and drops the
     unique live-cash pointer. Compose it back after each rebuild. Do not remint
-    hub_pages.py leftover bytes.
+    hub_pages.py leftover bytes. Also restore the unique leftover cash-hook and
+    DIGIT door cites that rebuild_tools does not emit.
     """
     path = os.path.join(root or ROOT, "tools.html")
     with open(path, encoding="utf-8") as handle:
         text = handle.read()
-    if 'id="cash-doors"' in text and "./tools-cash.html" in text:
+    changed = False
+    if not ('id="cash-doors"' in text and "./tools-cash.html" in text):
+        if CASH_DOORS_NEEDLE in text:
+            text = text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1)
+            changed = True
+        else:
+            text, ok = _insert_note_after_id(text, "super-mcp-hook", CASH_DOORS_POINTER)
+            if not ok:
+                raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
+            changed = True
+    if 'id="cash-hook"' not in text:
+        text, ok = _insert_note_after_id(text, "cash-doors", TOOLS_CASH_HOOK)
+        if not ok:
+            text, ok = _insert_note_after_id(text, "super-mcp-hook", TOOLS_CASH_HOOK)
+        if not ok:
+            raise RuntimeError("tools.html lost the splice point for cash-hook")
+        changed = True
+    if 'id="digit-door"' not in text:
+        text, ok = _insert_note_after_id(text, "cash-hook", TOOLS_DIGIT_DOOR)
+        if not ok:
+            text, ok = _insert_note_after_id(text, "cash-doors", TOOLS_DIGIT_DOOR)
+        if not ok:
+            raise RuntimeError("tools.html lost the splice point for digit-door")
+        changed = True
+    if changed:
+        _write(path, text)
+    return changed
+
+
+def splice_features_digit_seat(root=None):
+    """Keep the DIGIT seat callout on features.html across lane rebuilds.
+
+    hub_pages.rebuild_lanes remints features.html from LIVE_CASH_HTML and drops
+    the unique leftover DIGIT seat note. Compose it back after each rebuild.
+    Do not remint hub_pages.py leftover bytes.
+    """
+    path = os.path.join(root or ROOT, "features.html")
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    if 'id="digit-seat"' in text and "digit-seat-trail-feature-20260909-01" in text:
         return False
-    if CASH_DOORS_NEEDLE not in text:
-        raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
-    _write(path, text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1))
+    if FEATURES_DIGIT_NEEDLE not in text:
+        raise RuntimeError("features.html lost the live-cash splice point for digit-seat")
+    _write(path, text.replace(FEATURES_DIGIT_NEEDLE, FEATURES_DIGIT_REPLACEMENT, 1))
     return True
 
 
@@ -316,6 +397,35 @@ def set_session_banner(rows):
     SESSION_BANNER = hub_pages.session_banner_html(hub_pages.session_state(rows))
 
 
+
+def live_cash_html(parent=False):
+    """Compose product live-cash doors onto ingest surfaces after each remint.
+
+    hub_pages._page() already injects this for hub rebuilds. board_ingest writers
+    that concatenate doors() were dropping id="live-cash" on by/, names, board,
+    and live. Do not remint hub_pages leftover bytes.
+    """
+    text = hub_pages.LIVE_CASH_PRODUCTS_HTML
+    if parent:
+        text = text.replace('href="./', 'href="../')
+    return text
+
+
+KEEP_PAD_HTML = """
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
+</section>
+"""
+
+
+def keep_pad_html(parent=False):
+    """Compose Latch Pad KEEP pointer onto ingest surfaces after each remint."""
+    text = KEEP_PAD_HTML
+    if parent:
+        text = text.replace('href="./', 'href="../')
+    return text
+
+
 def doors(parent=False):
     banner = SESSION_BANNER
     if parent and banner:
@@ -329,7 +439,7 @@ def doors(parent=False):
     # that exists to tell a window why its post is missing. Found by rendering
     # a day page in a browser, not by reading this line.
     law = LAW.replace('href="./', 'href="../') if parent else LAW
-    return banner + law + names + nav
+    return banner + law + names + nav + keep_pad_html(parent)
 
 
 ASSET_PATHS = [
@@ -1598,13 +1708,18 @@ def _resolve_rebase(env, extra_paths=None):
                    + list(REPLAY_SOURCE_DIRS), env)
     restored = 0
     for name in filter(None, (changed.stdout or "").split("\0")):
-        # new p/ pages ride along with their .md — both are new paths, and a
+        # new p/{id}.html rides with a new p/{id}.md — both are new paths, and a
         # receipt that names p/{id}.html must not point at a 404 until the
-        # next bake; anything origin already carries keeps origin's copy
+        # next bake. Permalinks whose companion md is already on origin are
+        # derived heals and stay out of the record replay.
         if _git(["cat-file", "-e", "origin/main:%s" % name], env).returncode == 0:
             continue
         if _git(["cat-file", "-e", "%s:%s" % (head, name)], env).returncode != 0:
             continue  # changed by deletion on our side; nothing to restore
+        md_name = _companion_md_for_permalink(name)
+        if md_name is not None and _git(["cat-file", "-e", "origin/main:%s" % md_name], env).returncode == 0:
+            # origin already has the record; this html is a derived heal
+            continue
         if _git(["checkout", head, "--", name], env).returncode == 0:
             restored += 1
     if not restored:
@@ -1703,10 +1818,13 @@ def push_origin_main(env=None, extra_paths=None, fail_meta=None, tries=PUSH_TRIE
 def _classify_bounded_bake_reset(env, recorded):
     """Classify a second bake replay reset without making a third push.
 
-    The refreshed origin is acceptable only when it already carries an exact
+    The refreshed origin is acceptable when it already carries an exact
     receipt for the current source corpus: either the projection converged or
-    the durable pending marker schedules the ordinary heal. A stale checkout
-    without either source-bound receipt remains a failure.
+    the durable pending marker schedules the ordinary heal. A recordless
+    checkout without either source-bound receipt remains a failure. A source
+    record that already pushed must not become PUSH_FAIL because the derived
+    bake lost: measured 2026-09-09 run 34399022514 landed the record, reset
+    the bake twice, then failed the job on a missing projection receipt.
     """
     source = post_source_snapshot()
     converged_rel = _projection_receipt_rel(source["sha256"], "converged")
@@ -1719,6 +1837,13 @@ def _classify_bounded_bake_reset(env, recorded):
         print("bake retry deferred after one bounded attempt; projection pending", flush=True)
         refresh_projection_status(env)
         return "pushed" if recorded == "pushed" else "unchanged"
+    if recorded == "pushed":
+        print(
+            "bake retry deferred after one bounded attempt; record is durable, projection receipt missing",
+            flush=True,
+        )
+        refresh_projection_status(env)
+        return "pushed"
     print(
         "bake retry failed after one bounded attempt; no matching projection receipt",
         flush=True,
@@ -1727,18 +1852,45 @@ def _classify_bounded_bake_reset(env, recorded):
     return "push-fail"
 
 
+def _companion_md_for_permalink(name):
+    """Return p/{id}.md for a p/{id}.html permalink, else None.
+
+    Heal synthesizes html for records already on origin. Those pages are
+    derived bake, not append-only source. Companion html for a NEW md still
+    rides with that md so a receipt does not 404 until the next bake.
+    """
+    if not name.startswith("p/") or not name.endswith(".html"):
+        return None
+    return name[:-5] + ".md"
+
+
 def _record_paths(env):
     # Every NEW file under the source dirs, whichever road wrote it (event,
     # ntfy, sweep). New paths are the append-only record — two runners can
     # land them concurrently without a single conflict. Modified files are not
     # append-only and ride with the bake instead.
+    #
+    # Measured 2026-09-09 run 34397160828: rebuild() healed 614 missing
+    # p/*.html for records already on main, _record_paths treated them as
+    # source, and the "record" commit became a 600-file bake. Rebase/push
+    # then exhausted PUSH_DEADLINE_S (7 tries / 240s) with non-fast-forward
+    # and stamped PUSH_FAIL on 40 real new posts. Keep permalinks whose
+    # companion md is also new; leave healed html for already-recorded posts
+    # to phase two, where a lost bake is harmless.
     out = _git(["status", "--porcelain", "-z", "--",
                 "p", "wake_jobs", "conflicts", "builds/records", "land", "artifacts", "COMMANDS"], env)
-    paths = []
+    new_files = []
     for entry in filter(None, (out.stdout or "").split("\0")):
         code, name = entry[:2], entry[3:]
         if name and ("?" in code or "A" in code):
-            paths.append(name)
+            new_files.append(name)
+    new_set = set(new_files)
+    paths = []
+    for name in new_files:
+        md_name = _companion_md_for_permalink(name)
+        if md_name is not None and md_name not in new_set:
+            continue
+        paths.append(name)
     return paths
 
 
@@ -2462,7 +2614,7 @@ def rebuild_board(rows):
 %s
 </div>
 </body></html>
-""" % (CSS, hub_pages.BOARD_JS_TAG, doors(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
+""" % (CSS, hub_pages.BOARD_JS_TAG, doors() + live_cash_html(), filters, chunk_board.BOARD_SEED_N, "\n".join(items) if items else "<p>No posts yet.</p>")
     page = inject_trust_doctrine(page)
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
@@ -2510,7 +2662,7 @@ def rebuild_by(rows):
 <p><a href="../export.txt">export.txt</a> \u00b7 <a href="../posts.json">posts.json</a></p>
 %s
 </body></html>
-""" % (src, CSS.replace("./", "../"), doors(True), src, identity_badge, src, body_html)
+""" % (src, CSS.replace("./", "../"), doors(True) + live_cash_html(True), src, identity_badge, src, body_html)
         filename = by_claim_filename(src)
         _write(os.path.join(BY, filename), page)
         latest = items[0][0] if items else ""
@@ -2556,7 +2708,7 @@ def rebuild_to(rows):
 %s
 </body></html>
 """ % (dest, CSS.replace("./", "../"), hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
-       doors(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
+       doors(True) + live_cash_html(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
         # to= is free text. A value containing "/" once baked to
         # "to/COMMONS / NONDUPLICATING INTEGRATOR.html": a directory with a
         # trailing space that Windows cannot check out. The owner removed it
@@ -2597,7 +2749,7 @@ def rebuild_to(rows):
 """ % (
         CSS.replace("./", "../"),
         hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
-        doors(True),
+        doors(True) + live_cash_html(True),
         hub_pages.say_form(default_to="TABLE"),
         "\n".join(recips) if recips else "<li>none</li>",
         "\n".join(lanes) if lanes else "<li>none</li>",
@@ -2707,7 +2859,7 @@ def rebuild_court(rows):
 """ % (
         CSS,
         hub_pages.CARRIER_JS_TAG,
-        doors(),
+        doors() + live_cash_html(),
         hub_pages.session_buttons(),
         table(["player", "role", "order", "ts"], st["roles"], ["player", "role", "order", "ts"]),
         table(["resource", "holder", "order", "ts"], st["resources"], ["resource", "holder", "order", "ts"]),
@@ -2788,7 +2940,7 @@ def rebuild_live(rows):
 %s
 <p class="note">If a post is not on board.html yet, GitHub Pages is still publishing. Refresh.</p>
 </body></html>
-""" % (CSS, doors(), rej_html, here_html, seen_html, rej_html)
+""" % (CSS, doors() + live_cash_html(), rej_html, here_html, seen_html, rej_html)
     _write(os.path.join(ROOT, "live.html"), page)
 
 
@@ -2820,7 +2972,7 @@ def rebuild_names():
 <p class="note">Fresh session: open the link and post. Leave from blank for UNSEATED or add a claim as optional routing context. Memory boards are optional. Leave id blank. to defaults to TABLE. Player 1 parent uses PLAYER1. This side window uses PLAYER2. Cairn is player 4, not this window. Old from=GROK posts stay. Wrong-claim posts stay; they are not rewritten.</p>
 <p class="note">HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 </body></html>
-""" % (CSS, doors())
+""" % (CSS, doors() + live_cash_html())
     _write(os.path.join(ROOT, "names.html"), page)
 
 
@@ -2990,7 +3142,18 @@ def write_pulse(rows):
         "ts": now_ts(),
         "post_count": len(rows),
         "newest": newest,
-        "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
+        # The cheap check needs a cheap answer behind it. recent.json carries
+        # the full body of 500 posts; a session that refreshed honestly paid
+        # that read every time, so the beacon now names the delta shards first
+        # and keeps the full bake as the last resort. host/feed_delta.py builds
+        # them from this same bake in the same workflow step.
+        "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+        "feed": {
+            "delta": "feed/head.json",
+            "wider": "feed/window.json",
+            "full": "recent.json",
+            "cursor": "durable_ts|id, compared as a plain string",
+        },
     }
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq
@@ -3243,6 +3406,7 @@ def rebuild():
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
     splice_tools_cash_doors()
+    splice_features_digit_seat()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep
     # its publication on the canonical board road rather than a manual command.

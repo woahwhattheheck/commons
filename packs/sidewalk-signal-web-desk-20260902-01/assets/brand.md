@@ -29,3 +29,7 @@ This instance's name. One buyer gets it. The next sale gets a different name.
 ## Renaming
 
 If the buyer prefers another name, they change this file, `index.html`, the outreach scripts and the invoice line, then re-run `host/business_pack_desk_instance.py --write` from the repository root so the manifest fingerprint follows the new brand.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

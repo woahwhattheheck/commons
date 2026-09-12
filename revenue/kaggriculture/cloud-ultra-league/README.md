@@ -49,3 +49,7 @@ python test_run_league.py
 
 The existing engine and evaluator retain their upstream licenses. No competitor
 source, recorded match data, or generated job configuration is included here.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

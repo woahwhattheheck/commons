@@ -36,3 +36,7 @@ opponent failures. Deterministic replay passed in all four reports. The results
 support a composition improvement over its two internal components on this
 small split; they do not establish public-opponent parity, hosted rank, a valid
 Kaggle submission, acceptance, award, or payment.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

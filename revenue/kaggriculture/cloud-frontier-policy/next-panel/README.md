@@ -20,3 +20,7 @@ python revenue/kaggriculture/cloud-frontier-policy/next-panel/measure.py --engin
 Preparation verifies/extracts the exact 79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b archive through the accepted pack verifier, compiles reviewed Apex source using its published command and builds official-loader adapters. No downloads or notebook execution occur. Each existing evaluator actor starts in a fresh temporary directory with a minimal environment and installs a fail-closed seccomp network/exec filter before loading policy code. The native shared library is built before the game; runtime compilation is blocked. This is an offline benchmark, not a hosted-runtime certification or a hostile-code filesystem sandbox.
 
 The existing pinned interpreter and evaluator own all game transitions. Additional hooks only record actual transactions, ineffective unit actions, daily observations and terminal state. Seed values are driver-only inputs; policies receive ordinary private/public observations. All games use both seats; native first-call overhead is included. New seeds are development evidence and do not reopen the previous 16 reserved games.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

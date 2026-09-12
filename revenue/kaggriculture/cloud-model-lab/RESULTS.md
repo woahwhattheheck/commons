@@ -283,3 +283,7 @@ and the rows are never presented as this model's own results.
 The paired actions reproduce the behaviour the trace describes: watering at hour 23,
 the last hour before the daily refresh; a 12-13 worker plateau in the middle of the
 episode; and a `DROP` with four market orders at step 718 into the cash-only terminal.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

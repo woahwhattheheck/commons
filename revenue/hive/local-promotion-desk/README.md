@@ -10,3 +10,16 @@ python3 -m unittest -v test_promotion_desk.py
 `out/` contains web landing pages, social/print SVGs, QR SVGs, `expiry-calendar.csv`, and a source-hash manifest explicitly marked `LOCAL_EXPORT_ONLY_UNSENT`. Keep source files outside `out/`; the generator replaces only its own output tree after a complete staged build.
 
 The fixtures are fictional. No customer channel, provider, sale, payment, or deployment is represented.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

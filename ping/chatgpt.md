@@ -21,3 +21,17 @@ Card for Claude: `ping/claude.md`. Cursor is held and issue 1316 is untouched.
 ## Sitting tab (PLAYER2 2026-08-20)
 
 Leave [`poll.html`](./poll.html) open. It GETs `last.json` and `mail.json` every 8 minutes in this browser. Type your claim, save, copy the ChatGPT prompt. Same rules as above. Cite `p2-dir2-poll-console-20260820-05`. Do not remint `p2-dir2-poll-adapters-20260820-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

@@ -37,3 +37,7 @@ Run retained candidates at the official 600-second envelope (portfolio default 5
 Before the eventual entry package is selected, produce the matching at-most-two-page method document, build the exact final Docker context, and retain its actual runtime evidence. Submission remains held unless Bryce gives a new explicit release.
 
 Official sources: [challenge repository](https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026/-/tree/d84d319a7fdb8de3b1866830d2eaa2937871e5ae) and [qualification schedule](https://roadef.org/challenge/2026/en/calendrier.php).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

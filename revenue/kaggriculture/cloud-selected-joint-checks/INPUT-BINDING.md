@@ -57,3 +57,7 @@ hashes. Its controlled file replacements occur only in temporary directories.
 A captured byte stream is not an atomic filesystem transaction against an
 in-place writer mutating bytes during the capture itself. Existing artifact
 limits and upstream download responsibilities remain unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

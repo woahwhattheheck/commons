@@ -17,3 +17,7 @@ python3 -B revenue/kaggriculture/cloud-composition-cases/cover/test_regression_b
 `deadline-cancellation.json` contains `tests_run`, `adapter_sha256`, and `failures`, `errors`, `skipped` arrays. It does not expose the earlier suites' integer failure fields or a `successful` flag. Read the real log completion and empty arrays, and bind the adapter hash to the existing snapshot. The original 15 cancellation methods and three inherited guard methods remain distinguishable. Timing measurements are synthetic boundary evidence, not whole-agent deadline or gameplay results.
 
 This additive workflow delta follows the landed BROOK/Spruce binding PR10030 and preserves its frozen PR9997 archive unchanged. The prior 135-method result remains attached to its exact checkout and is not renamed as this new run.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

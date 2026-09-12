@@ -75,3 +75,16 @@ python test_hive_office_workspace.py
 Twenty-five tests use real temporary SQLite databases, concurrent workers, and a live loopback HTTP server. Coverage includes persistence, duplicate and conflicting imports, rollback, task history, current-source citations, no-answer behavior, client isolation, stale edits, CSV safety, unsent EML export, durable request replay, sixteen-way concurrent draft creation, conflicting retry payloads, and additive database migration. No mocked storage or provider calls are used.
 
 The implementation session also checked JavaScript syntax with Node. An interactive Chromium walkthrough was attempted, but local navigation returned `net::ERR_BLOCKED_BY_ADMINISTRATOR`; browser interactions and responsive rendering are therefore **not verified** by this delivery. HTTP workflow tests passed independently. No whole-repository or hosted-CI pass is claimed.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

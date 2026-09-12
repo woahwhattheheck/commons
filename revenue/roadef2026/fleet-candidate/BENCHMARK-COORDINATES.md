@@ -101,3 +101,7 @@ For a bounded negative control, pass a copy of the pre-change benchmark with
 `--benchmark` and select the 24 CLI methods recorded in the results file. The
 historical false-win witness and all local test logs are retained outside the source
 tree in the durable evidence archive referenced by the merge receipt.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

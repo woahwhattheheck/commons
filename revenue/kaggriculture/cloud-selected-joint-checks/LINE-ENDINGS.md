@@ -74,3 +74,7 @@ python -B "$D/test_archive_faults.py" --reader "$D/check_joint_receipt.py" \
 COORD-RECOVERY's 355 helper extension and RECEIPT-9162/282's runner-method identity
 work remain separate. Compose their changes; do not replace a newer helper or
 reader with an older whole-file snapshot from the retained packages.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

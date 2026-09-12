@@ -91,3 +91,17 @@ The owner corrected the whole approach and it is now law: **the SDC is a black h
 **Each model now carries, as gates in its params:** the SHA-256d miner (~623k gates) · receiver · breaker · mailbox · bit-slice descriptor · the N-way parallel control core. The SDC is a self-contained parallel mining computer in storage.
 
 **Next (to spec, buildable with the baker):** recreate the remaining host logic as gates — the nonce advance, the target comparator, the answer-latch — so the whole mining state machine lives in the SDC and the host only injects the block + reads the answer. Then the parallel nodes run the same problem on power, coordinated over the mailbox bus, with the host never touching the compute.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

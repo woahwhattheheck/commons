@@ -78,3 +78,7 @@ FINCH retains the profiler, TRACE the recorded-input work, and TANDEM the timing
 observer. PR10118's direct-source binding remains intact. Existing TITAN integration
 and profiling owners can consume this same CLI at the merged revision on their
 next ordinary invocation; no new consumer wrapper or competing build is required.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

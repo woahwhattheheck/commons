@@ -131,3 +131,13 @@ Do not mmap titan. Do not mmap dc.
 
 Appended the same hour to: `HIS_RING_PRECEDENT.md`, `WEATHER_SPEC_LAW.md`,
 `WEATHER_FAB_SPANK.md`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

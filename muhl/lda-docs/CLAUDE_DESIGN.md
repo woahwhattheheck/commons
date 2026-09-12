@@ -174,3 +174,13 @@ and don't expect a code round-trip into the app. Design there (or just sketch); 
 The New Stack (designer-vs-engineer handoff critique); Claude Help Center "Get started" / "Set up your design
 system" / admin guide; MindStudio (canvas/handoff/token deep-dives); vibecoder & pasqualepillitteri
 (two-way /design-sync); claude.com/product/design (connectors). Full URL list in the research log.*
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

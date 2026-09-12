@@ -154,3 +154,13 @@ recorded byte-exactly in the Genome log so it can be reverted. Keep a copy of an
 write side. Exports and archives are written to `out_dir`/`archive_dir` and never into your models folder.
 
 Both servers bind to `127.0.0.1` only.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

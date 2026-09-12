@@ -54,3 +54,7 @@ no sweep deletes another writer's files. There is no cross-process writer lock
 or claimed power-loss durability. The existing single release owner remains the
 writer. Historical archives, runtime decisions, deadlines, games and upload
 ownership are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

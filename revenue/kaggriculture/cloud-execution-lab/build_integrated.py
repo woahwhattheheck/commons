@@ -41,7 +41,7 @@ def source_files():
     mapping['seed_retry.py']='../cloud-committed-seed-retry/seed_retry.py'
     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
-              'funded_payback_runtime.py','operating_stock.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+              'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
@@ -60,13 +60,20 @@ def source_files():
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
     # Controls and experimental configuration are reproduction inputs only.
     for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
-                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
+                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_entrypoint_deadline.py','test_final_market_pressure_entrypoint.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
     mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
     mapping['checks/test_operating_stock.py']='test_operating_stock.py'
+    mapping['checks/test_feed_stock.py']='test_feed_stock.py'
+    mapping['checks/test_idle_fertilizer.py']='test_idle_fertilizer.py'
+    mapping['checks/test_crop_release.py']='test_crop_release.py'
+    mapping['checks/test_early_capital.py']='test_early_capital.py'
+    mapping['checks/test_selected_pruning.py']='test_selected_pruning.py'
+    mapping['checks/test_joint_market_slots.py']='test_joint_market_slots.py'
+    mapping['checks/test_funded_prefix.py']='test_funded_prefix.py'
     mapping['checks/reference/weed-continuation/delta-native.json.gz']='reference/weed-continuation/delta-native.json.gz'
     mapping['checks/reference/weed-continuation/ash-native.json.gz']='reference/weed-continuation/ash-native.json.gz'
     mapping['checks/reference/weed-continuation/spruce-native.json.gz']='reference/weed-continuation/spruce-native.json.gz'

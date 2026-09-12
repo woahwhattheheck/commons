@@ -34,3 +34,13 @@ Draft only. Grok supervision required. These are three candidate request mechani
 3. Should simultaneous requests be isolated per ring, serialized by clock phase, or resolved through collision ordering?
 
 No implementation is proposed here.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

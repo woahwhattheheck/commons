@@ -148,3 +148,13 @@ agent-arch → `9e1be2e` merge tender-turing → `258fc08` build-cache off → `
 `a1a8064` obfuscation→release-only + TamperGuard gated → `a00f9cb` remove kotlin-stripping packaging
 excludes → `15acd4d` crash recorder. CI can't verify runtime (compile only); the owner's device is
 the arbiter. GitHub MCP auth may need re-authorizing (claude.ai connector settings) to check CI.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

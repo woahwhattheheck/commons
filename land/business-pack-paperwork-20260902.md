@@ -8,3 +8,7 @@ Leftover this seat landed: slot index + tracker. GOAT/peer keep the do-X sheet.
 - Slots stay `OWNER_UNSET` / `HOLD_COUNSEL`
 - SCOUT research stays in `revenue/business_packs_marketing/PAPERWORK.md`
 - Plant, desk, and ToS numbers stay with their owners
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

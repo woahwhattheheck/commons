@@ -22,3 +22,7 @@ Marketing is owner-owned. Heavy advertising for $10k is later and not bundled he
 Terms of service: `terms.md` (TokenJunkie Labs profit-share percent and partial-ownership fraction, both `OWNER_UNSET`; `counsel_cleared: false`; not saleable under `ground/TJLABS_PACK_TERMS.md` until both are set and cleared).
 
 Owner decisions still open (Bryce): KEEP or SELL; paste the two terms slots and get counsel clearance; refund policy for the door; whether this instance is a nuts mix-in.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

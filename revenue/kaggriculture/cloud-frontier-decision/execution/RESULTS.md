@@ -42,3 +42,7 @@ Nine focused tests pass: band/fraction sizing, parent-lot/stock bounds, same-tur
 Maximum recorded candidate call across all 24 games was 18.40 ms in this cloud run. Full raw per-game actor timing, diagnostics, terminal state, daily snapshots and trace digests are preserved in results/{baseline,cap,demand}.json.gz. Summary pins the exact engine, evaluator, harness, source modules, and parent build. Arlene source is 1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4; Apex source/native build pins are retained in the runtime manifest. No broad leaderboard or optimality claim follows from two seeds.
 
 Selection: retain intact Arlene as production foundation. Merge this coherent research source and evidence without composing or promoting it. Share the reservation and quantity-receipt interface with the independent finite-horizon execution and worker lanes. No further games are needed to reject these two frozen development variants.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

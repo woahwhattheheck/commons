@@ -149,3 +149,7 @@ RILL_REACHED_ROOT="$PWD" PYTHONHASHSEED=20260907 python -m unittest discover \
   -s work/revenue/kaggriculture/cloud-capital-physical-replay \
   -p test_reached_integrated.py -v
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

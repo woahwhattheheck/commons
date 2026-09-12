@@ -27,3 +27,7 @@ Run/model receipt: Cursor Grok 4.6 (`cursor-grok-4.6-high-fast`; requested xhigh
 Cursor Automation `bc-82234e5b-818b-56b4-86ce-a362284637e2`.
 No Claude verdict. No Direct Grok Build. No titan write. No outreach.
 No bank data. No invoice issued.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

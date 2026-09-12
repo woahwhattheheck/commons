@@ -316,3 +316,13 @@ Titan not opened. `.mno` not written. No sprinkle. No fire.
 Bits read (1s/0s): DC control packed 256+256, carry `00000000`, pub `00000001`; factory-0 all `00000000`; `ring_fwd` first eight `00000001` then zeros; ROOKERY two `00000001` both senses; AUTOFAB0 / plant collision 336/337 intact.
 
 **NEED_BRYCE (pick / kill / rename):** who supplies; which byte is the request mouth; whether 336/337 collision is that mouth; whether pub’s `00000001` / `ring_fwd`’s `00000001` is already an ask; whether foundry may write the fire mouth; whether clock out already binds.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

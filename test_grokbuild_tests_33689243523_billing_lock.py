@@ -25,15 +25,15 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     ".github/workflows/tests.yml": "fd94b65c",
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7ced9bb7",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "5ccbaadc",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "fd867afa",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
 }
 
 

@@ -165,7 +165,7 @@ test('Native tasks project all matches separately with exact links, unknown reta
   filter.value='all';const search=h.document.getElementById('native-task-search');search.value='Same title';await search.fire('input');assert.equal(h.document.getElementById('native-task-rows').children.length,81,'Same-title tasks retain distinct IDs and all matches');
   search.value='native-80';await search.fire('input');assert.match(content(h.document.getElementById('native-task-count')),/1 returned \/ 81 total/);
   await button(h.document.getElementById('native-task-rows'),'Inspect task').fire('click');const detail=h.document.getElementById('work-detail');assert.match(content(detail),/Conversation metadata updated/);assert.match(content(detail),/Unknown read time/);assert.match(content(detail),/Unknown activity time/);
-  await button(detail,'Copy bounded job packet').fire('click');const packet=h.copies.at(-1);assert.equal(packet.work_id,'native-80');assert.equal(packet.source_id,'codex-native-fleet');assert.equal(packet.priority,'0');assert.equal(packet.prepared_job.id,'stable/job');assert.equal(packet.prepared_job.dispatch_status,'not_dispatched');assert.equal(packet.activity_observed_at,undefined);
+  await button(detail,'Copy bounded job packet').fire('click');const packet=h.copies.at(-1);assert.equal(packet.work_id,'native-80');assert.equal(packet.source_id,'codex-native-fleet');assert.equal(packet.priority,'0');assert.equal(packet.prepared_job.id,'stable/job');assert.equal(packet.prepared_job.dispatch_status,'not_dispatched');assert.equal(packet.activity_observed_at,null);
   assert.equal(h.updates.length,0);assert.equal(JSON.stringify({registered,rows,sourceRows}),before);
 });
 

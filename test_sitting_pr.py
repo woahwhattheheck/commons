@@ -18,6 +18,7 @@ from sitting_pr import (
     SEARCH_SPACE,
     SLACK_TS,
     classify,
+    is_2207_superseded,
     load_catalog,
     measure_from_rows,
     measure_root,
@@ -59,6 +60,40 @@ class TestSittingPr(unittest.TestCase):
         catalog = load_catalog('{"sitting_remints": 1}')
         self.assertEqual(catalog["sitting_remints"], [])
         self.assertEqual(catalog["error"], "sitting_remints is not a list")
+
+    def test_validator_source_is_not_phrase_evidence(self):
+        self.assertNotIn(os.path.join("host", "sitting_pr.py"), SEARCH_SPACE)
+
+    def test_open_door_flags_default_true_but_reject_non_booleans(self):
+        defaults = load_catalog('{"sitting_remints": []}')
+        self.assertIs(defaults["no_auth"], True)
+        self.assertIs(defaults["no_gate"], True)
+        explicit = load_catalog(
+            '{"sitting_remints": [], "no_auth": true, "no_gate": true}'
+        )
+        self.assertIs(explicit["no_auth"], True)
+        self.assertIs(explicit["no_gate"], True)
+        for literal in ('false', '"true"', '"false"', "1", "0", "[]", "{}", "null"):
+            with self.subTest(literal=literal):
+                catalog = load_catalog(
+                    '{"sitting_remints": [], "no_auth": %s, "no_gate": %s}'
+                    % (literal, literal)
+                )
+                self.assertIs(catalog["no_auth"], False)
+                self.assertIs(catalog["no_gate"], False)
+
+    def test_superseded_requires_open_dirty_pr(self):
+        sitting = {
+            "number": "2207",
+            "pr_state": "OPEN_DIRTY",
+            "land_state": "SUPERSEDED",
+        }
+        self.assertTrue(is_2207_superseded(sitting))
+        for state in ("OPEN", "CLOSED", "MERGED", ""):
+            with self.subTest(state=state):
+                invalid = dict(sitting)
+                invalid["pr_state"] = state
+                self.assertFalse(is_2207_superseded(invalid))
 
     def test_claiming_2207_integrated_is_not_landed(self):
         measured = measure_from_rows(

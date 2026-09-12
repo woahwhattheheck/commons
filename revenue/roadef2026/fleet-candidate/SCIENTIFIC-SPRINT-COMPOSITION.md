@@ -56,3 +56,7 @@ No solver or checker is rerun by this publication. No public benchmark,
 qualification package, S139 draft, attachment, submission, workflow, or payment
 state changes. PORT retains the implementation and native execution; BRIDGE
 retains the current sprint-reader composition.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

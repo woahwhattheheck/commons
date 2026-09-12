@@ -39,14 +39,24 @@ assert.strictEqual(inactiveCheckout.chargeable, false);
 assert.strictEqual(inactiveCheckout.url, "");
 assert.strictEqual(inactiveCheckout.fallbackUrl, "mailto:sales@example.com");
 
-const activeCheckout = ops.checkoutState({
-  provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: true },
-  offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } }
-}, "operator");
+const readyProvider = {
+  name: "stripe",
+  livemode: true,
+  account_charges_enabled: true,
+  account_payouts_enabled: true,
+  currently_due: [],
+  card_payments: "active",
+  transfers: "active"
+};
+const activeOffer = { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } };
+const activeCheckout = ops.checkoutState({ provider: readyProvider, offers: activeOffer }, "operator");
 assert.strictEqual(activeCheckout.chargeable, true);
 assert.strictEqual(activeCheckout.url, "https://buy.stripe.com/AbC123");
-assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: true }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
-assert.strictEqual(ops.checkoutState({ provider: { name: "stripe", livemode: true, account_charges_enabled: true, account_payouts_enabled: false }, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://buy.stripe.com/AbC123" } } } }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: readyProvider, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { account_payouts_enabled: false }), offers: activeOffer }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { currently_due: ["business_profile.url"] }), offers: activeOffer }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { card_payments: "inactive" }), offers: activeOffer }, "operator").chargeable, false);
+assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { transfers: "inactive" }), offers: activeOffer }, "operator").chargeable, false);
 
 assert.strictEqual(ops.sender("Meridian / 3.1"), "MERIDIAN31");
 const packet = ops.buildOperation({ from: "meridian", target: "TESSERA", verb: "comment", payload: "Keep looking." }, NOW, 0.25);
@@ -87,13 +97,50 @@ assert(html.includes('href="./index.html">Commons home</a>'));
 assert(!/maxlength/.test(html));
 
 const checkout = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops-checkout.json"), "utf8"));
+const providerReadback = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "checkout_capability", "offer-shelf-links-20260910.json"), "utf8"));
+const capabilitySnapshot = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "checkout_capability", "snapshot.json"), "utf8"));
+const contract = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "agent_ops", "contract.json"), "utf8"));
 assert.strictEqual(checkout.provider.connection_state, "LIVEMODE_CONNECTED");
-assert.strictEqual(checkout.provider.account_charges_enabled, true);
-assert.strictEqual(checkout.provider.account_payouts_enabled, true);
-assert.strictEqual(checkout.provider.livemode, true);
-assert.strictEqual(checkout.offers.operator.link.status, "NOT_MINTED");
-assert.strictEqual(checkout.offers.foundry.link.url, null);
+assert.strictEqual(checkout.provider.account_charges_enabled, capabilitySnapshot.provider.charges_enabled);
+assert.strictEqual(checkout.provider.account_payouts_enabled, capabilitySnapshot.provider.payouts_enabled);
+assert.deepStrictEqual(checkout.provider.currently_due, capabilitySnapshot.provider.currently_due);
+assert.strictEqual(checkout.provider.card_payments, capabilitySnapshot.provider.card_payments);
+assert.strictEqual(checkout.provider.transfers, capabilitySnapshot.provider.transfers);
+assert.strictEqual(checkout.provider.livemode, capabilitySnapshot.provider.livemode);
+assert.strictEqual(checkout.measured_at, capabilitySnapshot.observed_at);
+assert.strictEqual(checkout.link_measured_at, providerReadback.read_timestamp_utc);
+
+for (const [offerName, receiptName, cents] of [
+  ["operator", "commons-agent-ops-operator", 4900],
+  ["foundry", "commons-agent-ops-foundry", 250000]
+]) {
+  const offer = checkout.offers[offerName];
+  const recorded = providerReadback.links[receiptName];
+  const terms = contract.offers[offerName];
+  assert(recorded, receiptName);
+  assert.strictEqual(recorded.active, true);
+  assert.strictEqual(recorded.livemode, true);
+  assert.strictEqual(recorded.currency, "usd");
+  assert.strictEqual(recorded.unit_amount, cents);
+  assert.strictEqual(offer.link.status, "ACTIVE");
+  assert.strictEqual(offer.link.active, true);
+  assert.strictEqual(offer.link.url, recorded.url);
+  assert.strictEqual(offer.link.payment_link_id, recorded.payment_link_id);
+  assert.strictEqual(offer.link.price_id, recorded.price_id);
+  assert.strictEqual(offer.link.product_id, recorded.product_id);
+  assert.strictEqual(offer.sku, terms.sku);
+  assert.strictEqual(Number(offer.price_usd), terms.price_usd);
+  const state = ops.checkoutState(checkout, offerName);
+  assert.strictEqual(state.chargeable, true);
+  assert.strictEqual(state.url, recorded.url);
+}
+assert.strictEqual(contract.commercial.refund, "All sales are final; no refunds.");
+assert.strictEqual(checkout.economic_truth.buyer_claimed, false);
+assert.strictEqual(checkout.economic_truth.processor_payment_claimed, false);
 assert.strictEqual(checkout.economic_truth.collected_cash_usd, "0.00");
+assert(checkout.source_refs.includes("revenue/checkout_capability/snapshot.json"));
+assert(checkout.source_refs.includes("revenue/checkout_capability/offer-shelf-links-20260910.json"));
+assert(checkout.source_refs.includes("revenue/agent_ops/contract.json"));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops.webmanifest"), "utf8"));
 assert.strictEqual(manifest.display, "standalone");

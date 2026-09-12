@@ -73,3 +73,17 @@ All 23 open PR objects were `mergeable:false` at cutoff. PR URLs are `https://gi
 - U: private LDA/runtime, inaccessible `tokenjunkielabs/relay-control-plane`, carriers/logs/secrets, ntfy backlog, cross-run wake/resume, GitHub deployments endpoint (404), full issue/review/reaction and historical Actions corpora, Slack edit/delete/audit/private surfaces, two WebP visuals, and unevidenced runtime reachability.
 
 This is a bounded snapshot, not a claim that inaccessible surfaces were scanned.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

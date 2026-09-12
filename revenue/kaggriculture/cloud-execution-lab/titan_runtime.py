@@ -64,6 +64,9 @@ class Features:
     market_pressure: bool = False
     committed_seed_retry: bool = False
     operating_stock: bool = False
+    idle_fertilizer: bool = False
+    crop_release: bool = False
+    early_capital: bool = False
 
     def __post_init__(self):
         if self.consumer not in ('frozen', 'ordered', 'parent'):
@@ -72,7 +75,7 @@ class Features:
             raise ValueError('terminal_route is the tested frozen SELL composition')
         if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
-        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant) and (self.consumer != 'frozen' or self.terminal_route):
+        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('spatial routes require nonterminal frozen SELL')
         if self.terminal_history and (self.consumer == 'parent' or self.history_hypotheses is None):
             raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
@@ -220,10 +223,11 @@ class TitanAgent:
                       HERE.parent/'cloud-committed-seed-retry/seed_retry.py')
             self.committed_seed_retry_module = load(
                 '_titan_committed_seed_retry', source, cache=True)
-        if f.terminal_history and self.history is None:
+        if (f.terminal_history or f.idle_fertilizer or f.crop_release) and self.history is None:
             from terminal_history_join import TerminalHistoryJoin
             self.history = TerminalHistoryJoin(hypotheses=f.history_hypotheses,
-                                               tie_break=f.terminal_tie_break)
+                                               tie_break=f.terminal_tie_break,
+                                               terminal_enabled=f.terminal_history)
         if self._completed_route is not None:
             self.controller.cur = self._completed_route
         if f.fourth_quadrant:
@@ -241,7 +245,9 @@ class TitanAgent:
             from spatial_tempo import SpatialTempo
             from scheduler import m
             if self.spatial is None:
-                self.spatial = SpatialTempo(m, pathing=f.spatial_pathing, tempo=f.spatial_tempo)
+                self.spatial = SpatialTempo(m, pathing=f.spatial_pathing, tempo=f.spatial_tempo,
+                                            idle_fertilizer=f.idle_fertilizer,
+                                            crop_release=f.crop_release)
                 transform = self.spatial.transform
                 def compatible_transform(obs, selected, controller):
                     if self.quadrant is not None and (self.quadrant.plan is not None or self.quadrant.pending is not None):
@@ -253,7 +259,21 @@ class TitanAgent:
         self._restore_seller_state()
         self.ready = True
 
-    def _finish_production(self, obs, returned):
+    def _finish_production(self, obs, returned, cfg=None):
+        if self.spatial is not None:
+            self.spatial.observe_crop_receipts(obs,
+                None if self.history is None else self.history.fill_result,self.controller.cur)
+        if self.spatial is not None:
+            returned = self.spatial.guard_returned(obs, returned,
+                repair_fallback=self.diagnostics.get('status')=='deadline_fallback')
+        post = self._selected_snapshot(obs, returned) if self.history is not None else None
+        if self.spatial is not None:
+            returned=self.spatial.guard_crop_returned(obs,returned,post)
+        # This small stock/position calculation is the final market guard, so
+        # crop/idle composition and a completed selected fallback cannot undo
+        # its same-slot reservation. It never executes a producer or game.
+        returned = self._feed_stock_selected(obs, cfg or {}, returned)
+        returned = self._early_capital_selected(obs, cfg or {}, returned)
         if self.quadrant is not None:
             self.quadrant.finish(obs, returned)
             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
@@ -261,8 +281,23 @@ class TitanAgent:
                 self.diagnostics['fourth_quadrant_admission'] = deepcopy(
                     self._quadrant_admission.last_report)
         if self.spatial is not None:
-            self.spatial.finish(obs, returned)
+            self.spatial.finish(obs, returned, post)
+            self.spatial.finish_crop(obs,returned,post,self.controller.cur,
+                                     seller_completed=self.diagnostics.get('status')=='completed')
             self.diagnostics['route_events'] = list(self.spatial.events)
+            self.diagnostics['idle_fertilizer_receipts'] = list(self.spatial.receipt_events)
+            self.diagnostics['idle_fertilizer_obligation'] = deepcopy(self.spatial.sale_obligation)
+            if self.features.crop_release:
+                self.diagnostics['crop_release']=deepcopy(self.spatial.crop_intent)
+                self.diagnostics['crop_release_action']=deepcopy(self.spatial.crop_report)
+        if self.history is not None:
+            needed = (self.features.terminal_history or
+                      (self.spatial is not None and (self.spatial.sale_obligation is not None
+                                                     or self.spatial.crop_intent is not None)))
+            self.history.remember(obs,cfg or {},returned,
+                                  post if needed else None)
+            self.diagnostics['history'] = self.history.diagnostics
+        return returned
 
     def _seed_selected(self, obs, cfg, selected):
         if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
@@ -310,6 +345,43 @@ class TitanAgent:
             m, obs, cfg, selected, farm, private, self.controller.R[self.controller.cur],
             [item[0] for item in parent.DECISIONS])
         self.diagnostics['operating_stock'] = report
+        return result
+
+    def _feed_stock_selected(self, obs, cfg, selected):
+        if (not self.features.operating_stock or self.features.consumer != 'frozen'
+                or self.features.terminal_route or not any(
+                    o and o[:2] == ['SELL', 'WHEAT'] for o in selected.get('market', [])[:10])):
+            return selected
+        if self.spatial is not None and self.spatial._crop_repair is not None:
+            self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,
+                                              'reason': 'crop_input_repair_owns_current_queue'}
+            return selected
+        post = self._selected_snapshot(obs, selected)
+        if post is None:
+            self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,
+                                              'reason': 'no_matching_completed_unit_snapshot'}
+            return selected
+        from operating_stock import protect_feed_stock
+        from scheduler import m, parent
+        result, report = protect_feed_stock(
+            m, obs, cfg, selected, post['farms'][int(obs['player'])], post['private'],
+            self.controller.R[self.controller.cur], [item[0] for item in parent.DECISIONS])
+        self.diagnostics['feed_stock'] = report
+        return result
+
+    def _early_capital_selected(self, obs, cfg, selected):
+        """Reorder current-queue capital after feed-stock; no new producer."""
+        if (not getattr(self.features, 'early_capital', False)
+                or self.features.consumer != 'frozen'
+                or self.features.terminal_route):
+            return selected
+        import mechanics as mechanics_mod
+        from early_capital import order_early_capital
+        from scheduler import parent
+        result, report = order_early_capital(
+            mechanics_mod, obs, cfg, selected,
+            self.controller.R[self.controller.cur], parent.DECISIONS)
+        self.diagnostics['early_capital'] = report
         return result
 
     def _redundant_hire_selected(self, obs, cfg, selected):
@@ -376,12 +448,21 @@ class TitanAgent:
         }
         return result
 
-    def _selected_snapshot(self, obs):
+    def _selected_snapshot(self, obs, returned=None):
         if self.features.consumer == 'ordered':
             packet = self.consumer.last_packet
             return None if packet is None else packet['post_unit_observation']
         pair = getattr(self.consumer, 'selected_post_units', None)
-        if pair is None:return None
+        if pair is None:
+            if (returned is not None and returned['farmer']==['PASS']
+                    and all(a==['PASS'] for a in returned.get('hands',[]))):
+                return obs  # PASS has no unit-stage stock mutation; EOD is later.
+            return None
+        binding = getattr(self.consumer, 'selected_post_units_binding', None)
+        if binding is None or binding[:2] != (int(obs['step']),int(obs['player'])):
+            return None
+        if returned is not None and binding[2:] != (returned['farmer'],returned.get('hands',[])):
+            return None
         post = deepcopy(obs)
         post['farms'][int(obs['player'])], post['private'] = pair
         return post
@@ -400,6 +481,11 @@ class TitanAgent:
                     else deadline.legal_pass(obs))
         self.selected = None
         self.post = None
+        # Clear before the prelude deadline as well. A prior turn's post-unit
+        # snapshot must never be rebound to the current returned action.
+        if getattr(self,'consumer',None) is not None:
+            self.consumer.selected_post_units = None
+            self.consumer.selected_post_units_binding = None
         self.diagnostics = {'consumer': self.features.consumer, 'parent_calls': 0,
                             'entrypoint_prelude_seconds': invoked-started}
         selected_checkpoint = None
@@ -415,7 +501,9 @@ class TitanAgent:
             self._remember_seller_fallback(obs)
             self.diagnostics.update(status='deadline_fallback',fallback_stage='entrypoint_prelude',
                 elapsed_seconds=time.perf_counter()-started,act_cpu_seconds=time.process_time()-cpu_started)
-            self._finish_production(obs, fallback)
+            # The lazy controller does not exist yet, and the budget is already
+            # exhausted. The queued public observation is sufficient for the
+            # next reconstruction; no post-controller finalizer is safe here.
             return fallback
         timer = deadline._DeadlineTimer(seconds)
         try:
@@ -425,6 +513,11 @@ class TitanAgent:
                 if self.history is not None:
                     stage = 'history_observation'
                     self.history.observe(obs)
+                if self.spatial is not None:
+                    self.spatial.observe_market_receipt(obs,
+                        None if self.history is None else self.history.fill_result)
+                    self.spatial.observe_crop_receipts(obs,
+                        None if self.history is None else self.history.fill_result,self.controller.cur)
                 if self.features.consumer == 'ordered':
                     self.consumer.last_packet = None
                 else:
@@ -453,6 +546,22 @@ class TitanAgent:
                         self.seed_budget = budget.SeedBudget(self.controller.R)
                         self._seed_plan = plan
                 stage = 'selected_transform'
+                if self.features.consumer == 'frozen':
+                    self.consumer.capture_post_units = (self.features.terminal_history or
+                        (self.spatial is not None and (self.spatial.sale_obligation is not None
+                            or (self.features.crop_release and
+                                (int(obs['step'])==372 or self.spatial.crop_intent is not None)))))
+                    # Joint market admission follows the unchanged future tape.
+                    # Keep producer-owned continuations outside that new path.
+                    pending={} if self.spatial is None else (self.spatial._pending or {})
+                    self.consumer.joint_producer_busy=bool(
+                        self.features.terminal_route or self.features.fourth_quadrant
+                        or self.features.spatial_pathing or self.features.spatial_tempo
+                        or (self.spatial is not None and
+                            (self.spatial.plans or pending.get('plans')
+                             or self.spatial.crop_intent is not None
+                             or self.spatial.sale_obligation is not None))
+                        or (self.features.crop_release and int(obs['step'])==372))
                 output = self.transform_selected(obs, cfg, selected)
                 if self.history is not None:
                     self.post = self._selected_snapshot(obs)
@@ -463,9 +572,10 @@ class TitanAgent:
                 output = self._market_pressure_selected(obs, cfg, output)
                 stage = 'operating_stock'
                 output = self._operating_stock_selected(obs, cfg, output)
-                if self.history is not None:
-                    self.history.remember(obs,cfg,output,self.post)
-                    self.diagnostics['history'] = self.history.diagnostics
+                if self.spatial is not None and self.features.crop_release:
+                    stage='crop_release'
+                    output=self.spatial.crop_market(obs,output,self._selected_snapshot(obs,output),
+                                                    self.controller)
                 # Build the checkpoint while the deadline is still active, but
                 # publish it only after the context exits without cancellation.
                 if self.features.consumer == 'frozen':
@@ -484,15 +594,14 @@ class TitanAgent:
             if self.history is not None:
                 if stage in ('cold_start','history_observation'):
                     self.history = None
-                else:
-                    # Bind only the exact returned fallback and a completed
-                    # current unit snapshot. Reserve time covers this copy.
-                    self.history.remember(obs,cfg,fallback,self._selected_snapshot(obs))
             output = deepcopy(fallback)
             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
                                     elapsed_seconds=time.perf_counter()-started,
                                     act_cpu_seconds=time.process_time()-cpu_started)
-            self._finish_production(obs, output)
+            output = self._finish_production(obs, output, cfg)
+            # Include the reserved fallback/finalizer window in the receipt.
+            self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                    act_cpu_seconds=time.process_time()-cpu_started)
             return output
         # The deadline context has exited successfully.  Commit mutable state
         # only now, so a final trace/signal cancellation cannot bind planning for
@@ -501,7 +610,11 @@ class TitanAgent:
         self._commit_seller_state(seller_checkpoint)
         self.diagnostics.update(status='completed', elapsed_seconds=time.perf_counter()-started,
                                 act_cpu_seconds=time.process_time()-cpu_started)
-        self._finish_production(obs, output)
+        output = self._finish_production(obs, output, cfg)
+        # A completed action receipt covers the exact bytes returned, including
+        # late market guards and their state commits.
+        self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                act_cpu_seconds=time.process_time()-cpu_started)
         return output
 
     __call__ = act

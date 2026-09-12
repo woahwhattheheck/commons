@@ -133,3 +133,7 @@ See `RESULTS.md` and `RESULTS.json` for source identities, counters, official-ch
 ## Limits
 
 This is one public B12 incumbent in one cloud environment. It establishes a concrete mechanism and a reproducible official-vector improvement, not hidden-instance generalization, a qualification score, a portfolio promotion or a submission decision. Wall-time outcomes remain machine-sensitive. Accepted-move counts and diagnostic transition cost are not the competition ranking. Any canonical integration must be composed with later main.cpp optimizations and revalidated on their exact source; this directory intentionally leaves current fleet bytes unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

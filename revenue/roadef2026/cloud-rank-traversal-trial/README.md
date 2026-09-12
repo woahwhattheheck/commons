@@ -89,3 +89,7 @@ The operation ID appears in the run name, `RUN.json`, summary and retained
 artifact name `roadef-rank-traversal-OPERATION_ID-RUN_ID`. Record the provider run
 ID after dispatch. This preparation performs no publication, dispatch or
 qualification action.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -48,3 +48,7 @@ This isolated diagnostic did not reproduce the original parent-side timeout. The
 ## Attribution
 
 Apache-2.0, consistent with the surrounding runtime. The snapshot projection is factored from the existing `TitanAgent` recovery implementation; cached valuation is reused unchanged from the existing selected-sell core. Existing producer, economic, and runtime contributions retain their attribution and ownership.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

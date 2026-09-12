@@ -113,6 +113,22 @@ class GitHubPageEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(SourceFailure, "github_response_shape"):
             self.pages([{"items": {}, "total_count": 0}])
 
+    def test_overlapping_page_id_does_not_fake_total_completion(self):
+        (rows, complete), _ = self.pages([
+            {"items": [{"id": 1}, {"id": 2}, {"id": 3}], "total_count": 4},
+            {"items": [{"id": 3}], "total_count": 4},
+        ])
+        self.assertEqual([row["id"] for row in rows], [1, 2, 3])
+        self.assertFalse(complete)
+
+    def test_overlapping_page_id_is_emitted_once_when_total_is_met(self):
+        (rows, complete), _ = self.pages([
+            {"items": [{"id": 1}, {"id": 2}, {"id": 3}], "total_count": 4},
+            {"items": [{"id": 3}, {"id": 4}], "total_count": 4},
+        ])
+        self.assertEqual([row["id"] for row in rows], [1, 2, 3, 4])
+        self.assertTrue(complete)
+
     def test_truncated_pr_search_retains_real_store_records_and_owner_work(self):
         with tempfile.TemporaryDirectory() as directory:
             store = WorkstreamStore(directory)

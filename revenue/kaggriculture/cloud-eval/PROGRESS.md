@@ -141,3 +141,7 @@ concurrent-writer protection, or hosted-CI result is implied. This CLI-only
 increment leaves TANDEM's separate failed-request capture work untouched.
 Operation: `astra-coord-finalize-20260908-01`. Exact checks and source identities:
 `finalization-evidence.json`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

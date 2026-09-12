@@ -203,3 +203,13 @@ That is `n_rings_for(TARGET_BYTES)` in `muhl_fab_dc.py`. Storage lever = more nr
 **Refuse as the 100 GB grow:** one ring with huge `cells`, one 100 GB answer plane, DISTRO/LOOM 65,536-plane copy, or a dark 100 GB file that is still `n_rings=1`. That is the dumb muhlnickel at titan-class size.
 
 Titan not opened. Existing DISTRO / LOOM / ROOKERY not written. DC not written this turn.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

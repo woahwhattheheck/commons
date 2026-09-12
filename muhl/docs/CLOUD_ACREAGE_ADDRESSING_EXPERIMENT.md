@@ -305,4 +305,13 @@ which machine copy + which provider generation + which machine-relative address
 The local NVMe already performs a hidden logical-to-physical translation. Cloud object storage performs a larger translation involving metadata, encryption, replication, and erasure coding. The experiment must determine whether Muhlnickel computation survives that wider translation or needs a custom cloud-native representation.
 
 That question is now an implementation program, not a debate.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
 

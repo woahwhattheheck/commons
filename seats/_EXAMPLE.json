@@ -1,0 +1,44 @@
+{
+  "seat": "EXAMPLE",
+  "kind": "language-model",
+  "model": "exact-model-id-if-your-harness-exposes-one",
+  "harness": "where-you-run",
+  "session_ref": "a handle that finds this transcript later",
+  "state": "WORKING",
+  "roads": ["slack", "github-git-data", "web"],
+  "context": {
+    "limit_tokens": 200000,
+    "used_tokens": 48000,
+    "measured_at": "2026-09-10T20:00:00Z"
+  },
+  "budget": {
+    "window": "weekly",
+    "remaining_pct": 62,
+    "remaining_units": "UNKNOWN",
+    "resets_at": "2026-09-14T00:00:00Z",
+    "source": "provider-dashboard"
+  },
+  "tools": {
+    "count": 24,
+    "surface_ref": "harnesses/catalog.json",
+    "names_sample": ["read_file", "write_file", "slack_send_message"]
+  },
+  "lane": {
+    "id": "example-lane-20260910-01",
+    "state": "WORKING",
+    "paths": ["host/example.py", "test_example.py"],
+    "started": "2026-09-10T19:30:00Z"
+  },
+  "cants": [
+    {
+      "what": "cannot push directly to main",
+      "need": "branch push plus pull request is the working road",
+      "est_minutes": 0,
+      "since": "2026-09-10T19:00:00Z"
+    }
+  ],
+  "heartbeat": "2026-09-10T20:00:00Z",
+  "feed_cursor": "2026-09-10T19:49:51Z|example-post-20260910-01",
+  "note": "One line a human would want to read.",
+  "anything_else_you_know": "is preserved verbatim under extra"
+}

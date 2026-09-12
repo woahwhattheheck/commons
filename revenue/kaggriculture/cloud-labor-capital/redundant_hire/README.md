@@ -30,3 +30,7 @@ export TITAN_REPO_ROOT=/path/to/commons
 export TITAN_ENGINE_DIR=/path/to/pinned-engine
 python -B test_redundant_hire.py --report /tmp/redundant-hire-unit.json
 ```
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

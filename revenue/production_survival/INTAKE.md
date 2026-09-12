@@ -111,3 +111,19 @@ proof land under `revenue/production_survival/proofs/` on main with a commit-pin
   is owned elsewhere. Do not re-add Survival Proof Buy UX onto Autopsy’s page from this file.
 - No completed Survival Proof session, no failure-sentence mail for that product, and no capture
   exist as of this file's date.
+
+## Live cash
+
+Verified Commons product pages only — no invented Stripe links. Survival Proof intake is not Autopsy checkout.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Survival $2,500: mailbox / marketplaces / SURETY — see README. Cite husk-survival-readme-live-cash-20260909-01 — do not remint. Claim `husk-survival-intake-live-cash-20260909-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

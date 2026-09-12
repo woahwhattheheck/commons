@@ -42,3 +42,7 @@ Exact compact evidence is in `results/development.json`.
 The correctness-hardening replay is in
 `results/development-exact-reserves.json`; it used the same already-spent
 development seeds and preserved every terminal score.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

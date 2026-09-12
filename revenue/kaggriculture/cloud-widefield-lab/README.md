@@ -46,3 +46,7 @@ budget, and product-route decision—not another SELL or integration overlay.
 The complete local result bundle is
 `results/full-results-9921001-9921032.tar.gz` (sha256
 `2859491973c51d21a95ec80135ac7385ce889c335ff619012f9f86dabce55a11`).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

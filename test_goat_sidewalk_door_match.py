@@ -44,7 +44,15 @@ class GoatSidewalkDoorMatchTests(unittest.TestCase):
     def test_door_blob_and_checkout_not_minted(self) -> None:
         self.assertEqual(self.result["door_blob"], match.git_blob(match.DOOR_REL))
         self.assertEqual(self.result["door_baseline_blob"], "638e60b4")
-        self.assertEqual(self.result["door_successors"], ["live-cash-v1"])
+        self.assertEqual(
+            self.result["door_successors"],
+            [
+                "sold-once-css-v1",
+                "sold-once-copy-v1",
+                "live-cash-v1",
+                "titanmcp-pad-pointer-v1",
+            ],
+        )
         self.assertGreater(self.result["door_size"], 6893)
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertTrue(self.result["match_ok"])
@@ -91,7 +99,7 @@ class GoatSidewalkDoorMatchTests(unittest.TestCase):
         self.assertEqual(self.result["pages_workflow_baseline_blob"], "d3b298c2")
         self.assertEqual(self.result["pages_workflow_successors"], ["pages-cron-offset-v1"])
         self.assertEqual(match.git_blob("pages-deploy.json"), "475d5f24")
-        self.assertEqual(match.git_blob("host/business_pack_desk_instance.py"), "a550ae1b")
+        self.assertEqual(match.git_blob("host/business_pack_desk_instance.py"), "1029faad")
         self.assertNotIn("authentication required", self.receipt.lower())
         self.assertNotIn("permission denied", self.receipt.lower())
         self.assertIs(self.result["gate"], False)

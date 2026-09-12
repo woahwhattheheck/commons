@@ -26,3 +26,7 @@ The validation JSON stores complete logs as zlib-compressed base64 containing a 
 ## Consumer and timing boundary
 
 Use the existing `execute_arm.py` invocation on the next normal source-pinned job; no new wrapper, flags or runner are needed. Compilation still occurs within factory initialization measured by the existing `TimedFactory`. This changes initialization work compared with accepting a `.pyc`, so no speed or hosted deadline claim is made. Policy calls, first-action timing, checkpoint order/schema and current game panels are unchanged. Do not restart a running experiment or relabel older results as this source.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

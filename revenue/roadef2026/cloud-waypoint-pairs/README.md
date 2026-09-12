@@ -152,3 +152,7 @@ Root can compile this generated candidate as an additional isolated experiment
 or deliberately compose its small method/hook with the current candidate. Keep
 QUARTZ's frozen existing baseline screen separate; a later equal-resource
 comparison is needed before selecting this neighborhood for a submitted program.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

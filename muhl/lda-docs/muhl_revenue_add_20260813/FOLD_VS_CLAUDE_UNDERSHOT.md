@@ -23,3 +23,13 @@ Puzzle organs exist (`prob_*`, `muhl_collider_*` walks→DLP). No live `ecdlp` /
 
 **Do not pulse the fake as the 2^262144 machine:** `nring2_1023.recv` without Bryce saying that lane **is** the address fold; packed `receiver`; all-ones `input_window`.  
 **Coverage corpse:** `winner_only_max` / `fold` / nonce-as-address list. Bryce picks. This pack does not fire.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

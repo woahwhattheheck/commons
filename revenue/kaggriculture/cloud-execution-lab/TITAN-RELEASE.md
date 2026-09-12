@@ -1,5 +1,141 @@
 # Current TITAN release
 
+The active operating-stock consumer now also preserves up to two owned WHEAT
+units for reachable feeds of animals already on the farm. This uses the final
+selected action and its matching completed unit snapshot. It changes only
+WHEAT sale quantities, preserves empty and duplicate market slots, and leaves
+every worker action and other order in place. The existing `operating_stock`
+setting remains enabled; there is no second producer or new feature selector.
+
+The bounded service window uses actual carried inputs, the full shared pickup
+prefix, actual worker positions and prepaid hires and purchases. It crosses a
+daily reset only from the current day-close observation. Requested purchases
+supply no wheat, future sales supply no cash, and unresolved branch boundaries
+retain the inherited action. Earlier competing pickups must consume their full
+requests in useful feeds, so retained stock cannot return later as unused wheat
+and displace another delivery. Current market prefixes, all current EOD carry
+and future physical arrivals keep their shared capacity. Active crop-repair
+receipt ownership takes priority at the final action boundary.
+
+Twenty-four feed-stock contracts and the existing affected stock, crop, idle,
+joint seller, pressure and route contracts pass:168 source methods. Six
+independent original own-unit observations produce unchanged actions. These
+checks establish the bounded mechanism and compatibility, not a game score
+gain. The missing-sheep acquisition/route repair remains separate unfinished
+work; retaining existing feed is not a claim that this loss has been repaired.
+
+The existing frozen seller can now compose two ordinary per-product plans among
+its four strongest eligible lots. This integrates E05 PR11053 into the current
+package with additional funding, shared-capacity and full-queue admission.
+Each component must improve every existing named scenario; ranking uses the sum
+of the separate worst gains rather than assuming the products' rival scenarios
+move together. Forced-feasibility and single-product decisions stay on the
+existing path. No new optimizer, controller or feature selector is introduced.
+
+Actual cash prepays every fixed commitment through the next turn after the
+planning horizon. Variable-price purchases and unresolved branch boundaries
+decline a pair. With no DROP or EOD, the shed upper bound counts every literal
+PLACE quantity and animal acquisition through that same boundary; it gives no
+credit for sales or pickups. Carried harvest remains carried until a deposit.
+Pairs preserve future pickup commitments and every inherited market index.
+The real emitter checks current quantities against one physical stock budget,
+while future slot bounds include all retained products and possibly unfilled
+earlier plans. Active crop, idle or spatial continuations keep their producer
+ownership and the existing single-product seller. Unknown future sales are
+neither cash nor released capacity. The same completed seller checkpoint owns
+the chosen plans; cancellation and fallback reuse the existing recovery path.
+
+Twenty-eight focused joint contracts include the shared-purchase ordering gap,
+boundary HIRE/deposit, duplicate lots, retained future slots, actual optimizer
+composition and unchanged floor/terminal cases. Together with affected crop,
+stock, route and market contracts,144 source methods pass. Isolated historical
+observations436/437 pass the physical bound but have only one economically
+eligible lot, so their action remains unchanged. No new full games or measured
+score gain accompany this seller change.
+
+This V2.5 increment enables a bounded annual crop release in the same producer.
+The frozen V2 archive is retained unchanged as
+`e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58`.
+At an observed mature-wheat harvest on step372, the complete compatible MAIN
+and MILK route prefixes, actual worker/site, exclusive carrot source, shared
+seeds and current demand/cash screen can admit one fresh CARROT seed. The next
+observation must show that additional seed above all preexisting carrot stock
+before the same worker replaces PLANT WHEAT with PLANT CARROT on373. All other
+actors and source rows remain intact. Existing WATER/harvest services are reused;
+the ordinary wheat replant on445 remains in place.
+
+The service funding bound charges every scheduled hire and purchase through456
+without future sale income. Physical-input price bounds include negative market
+inventory, bounded rival net purchases and duplicate town-shop demand. This is
+a source feasibility calculation; future requests are not observed receipts.
+The current marginal price screen, including a100-unit rival-supply stress, is
+a policy assumption rather than a prediction of later profit.
+
+An owned site intent survives daily worker resets. Harvest, carried product,
+EOD455 shed arrival and final sales require successive actual observations.
+The three replaced wheat units remain carried until455 in the admitted recipe.
+Starting at that delivery date, the owner can append only the remaining wheat
+deficit after existing market rows, or withhold it from actually executable
+wheat sales. Shared capacity counts physical purchases and all EOD carry with
+no sale credit; actual cash must also cover boundary hires and purchases.
+Mandatory pickups and feeds are unchanged. Duplicate sale lots share one stock
+budget. The existing fill ledger retires only observed purchases/reservations;
+unknown receipts block another repair. Any final guard that invalidates the
+snapshot also cancels the added buy or restores the owned sale reductions.
+
+The observed carrot lot is offered to the existing selected seller after the
+full456 hiring row, preserving all inherited slots. That seller may defer it.
+Lost/replaced stock, mismatched final actions, unsupported branches and gaps
+block attribution; no requested sale is counted as cash. The producer, completed
+unit snapshot, emitted-action commit and fill ledger are shared with the other
+active components. `crop_release` is enabled in the canonical configuration.
+Focused source/native contracts and recorded-observation admission checks cover
+these boundaries. No new full games or measured playing-strength gain accompany
+this increment; the separate V2 submission is not a score for these later bytes.
+
+The same producer now uses a bounded idle interval to collect otherwise unclaimed
+fertilizer from an animal that is about to escape. `idle_fertilizer` is enabled.
+There is one outstanding job at most: collect, return to the shed, deposit with
+one surplus sale in the same emitted action, and rejoin the original position.
+The worker's original rows must be idle through reset; the trip fits six actions
+and ends before a hire, branch or EOD. Same-day input obligations and other
+collectors decline the job. A physical stock bound counts carried goods,
+standing yield, possible annual WATER bonuses and requested purchases without
+crediting future sales. Ordinary delivery uses an empty producer market row.
+At final turn 718, delivery instead reuses the real producer's existing unique
+`SELL FERTILIZER 1`. Admission requires no preexisting physical fertilizer,
+no other remaining collection or fertilizer purchase, and a product-only final
+market. Delivery rechecks the exclusively owned carried unit and preserves the
+existing sale; it cannot relabel a larger lot or append a duplicate. This fixes
+the producer/consumer boundary that otherwise replaced the owned DROP with PASS
+when the producer had already included it in terminal settlement.
+
+The actual final fertilizer-sale slot is bound after existing SELL ordering.
+Cancelled deposits cancel the added sale as well. Already collected stock stays
+owned through cancellation, rejoin and EOD; a missed deadline may finish that
+owned return, but cannot start another job. The existing own-fill ledger verifies
+the returned lot. An unknown receipt or unaccounted later fertilizer transfer
+cannot authorize a duplicate sale of replacement stock. This collection-only
+use does not enable or load the optional terminal optimizer.
+
+Twenty-seven focused idle/runtime contracts cover these boundaries, including a
+four-step primitive fixture through the real initialized Arlene and frozen
+consumer with one unit projection per turn and one observed final receipt.
+A delayed earlier collection can use the same final outlet after revalidating
+its current exclusive stock; an original planned date is not a receipt. An original
+recording was also checked privately using the existing unit and market
+primitives. Its earning receipt concerns one bounded action window, with no
+full-game score estimate or measured win gain. Originals and tactical analysis
+remain outside the release.
+
+The active frozen `selected_sell_core` also receives the scheduler's reviewed
+early pruning. With a feasible reference it rejects nonpositive no-rival
+improvement before the physical-capacity callback, then stops at the first
+nonpositive remaining scenario. The forced-feasibility path and result ordering
+are unchanged. Focused comparisons against the preserved loop retain exact
+plans/reports and reduce capacity calls in the floor-tie case. No game-speed or
+playing-strength improvement is inferred from those arithmetic checks.
+
 The current working v2 includes bounded recovery of a PLANT or BUILD displaced by
 the existing weed DIG. `SpatialTempo` remains the route owner inside the single
 `main.py::agent` production path. A same-day PASS absorbs the inserted operation;
@@ -11,7 +147,8 @@ only against its actually returned action.
 
 This is source/native validation of an unsubmitted v2 iteration. Its exact
 DELTA, ASH and SPRUCE fixtures and regression tests are in `checks/`. New full-game
-panels are paused for the owner's mechanism-review pass. Historical A candidate
+panels are not launched by this integration pass. Other executors retain their
+frozen artifacts and separate evidence labels. Historical A candidate
 tests and games do not validate these newly authored bytes, and no new playing
 strength or leaderboard claim is made. Optional spatial pathing/tempo, terminal
 features, fourth-quadrant investment and committed seed retry remain disabled.
@@ -81,3 +218,7 @@ Worker-thread calls use a per-thread Python trace deadline, chaining and restori
 ## Redundant-hire certificate enabled
 
 The packaged T10 physical certificate is enabled in this release. It changes only a HIRE order proven to add no productive state before the next refresh, replacing that slot with a zero-quantity sale. Exact current-package and multi-opponent development checks retained positive own-cash deltas with no verdict regression; it remains independent of optional feed, terminal-route, terminal-history and spatial experiments. Root retains provider upload.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

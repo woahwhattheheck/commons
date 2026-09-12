@@ -70,3 +70,7 @@ development-only traces, pinned public configuration and `RUN.json`. The
 verifier can consume `inputs/` offline; no repository checkout or installed
 Kaggle package is needed for that replay. The published selected-package claim
 is bounded to these traces and bytes, not a guarantee about all future states.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

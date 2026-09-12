@@ -124,3 +124,7 @@ state-copy evidence archive; compact source-bound results are in `RESULTS.json`.
 Python3.13.5 was measured. Standard-library-only component; original dependencies
 retain their existing Apache-2.0 notices. No source exporter, new game/seed,
 provider workflow, owner-PC operation, or default-policy change is added.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

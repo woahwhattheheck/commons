@@ -25,3 +25,7 @@ Owner law includes asking for the sale when the offer and payment road are verif
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Collected cash remains USD 0 until independently evidenced. Cite ground/EXECUTE.md Live cash — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

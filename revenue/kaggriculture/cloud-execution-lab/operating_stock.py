@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Reserve useful fertilizer already owned by the active producer.
+"""Reserve useful operating inputs already owned by the active producer.
 
 This is a bounded market proposal, not another production controller. It keeps
 the emitted unit stream and every market slot. All obligations are rebuilt from
@@ -7,8 +7,248 @@ the current observation; no requested purchase is treated as a receipt.
 """
 from collections import Counter
 from copy import deepcopy
+import math
 
 MOVES = {'NORTH': (0, -1), 'SOUTH': (0, 1), 'EAST': (1, 0), 'WEST': (-1, 0)}
+SHED_ACCESS = {(4, 4), (5, 4), (4, 5), (5, 5)}
+
+
+def _whole(value):
+    if type(value) is not int or value < 0:
+        raise ValueError('expected a nonnegative integer')
+    return value
+
+
+def _order_quantity(order):
+    if not isinstance(order, list) or len(order) != 3:
+        raise ValueError('expected a quantity order')
+    return _whole(order[2])
+
+
+def _feed_window(mechanics, observation, configuration, selected, farm, private,
+                 route, checkpoints):
+    """A position/input requirement, without executing future game states.
+
+    Start from completed own units. Only a day-close observation may cross its
+    reset. Future hires are prepaid from actual cash; sales earn no cash here.
+    Future harvests, deposits and requested purchases never supply wheat.
+    """
+    now = _whole(observation['step']); day = now // 24
+    reset = now % 24 == 23
+    end = min((day + 1 + int(reset)) * 24 - 1, 695, len(route) - 1)
+    if end <= now or any(now < int(t) <= end for t in checkpoints):
+        raise ValueError('unresolved_feed_window')
+    positions = [tuple(farm['farmer']), *map(tuple, farm['hands'])]
+    initial = [_whole(v.get('WHEAT', 0)) for v in private['inventories']]
+    if len(initial) != len(positions):
+        raise ValueError('missing_worker_inventory')
+    animals = { (x, y): dict(tile) for y, row in enumerate(farm['tiles'])
+               for x, tile in enumerate(row)
+               if isinstance(tile, dict) and tile.get('animal') in mechanics.ANIMALS }
+    cash = float(farm['money']); spent = 0
+    if not math.isfinite(cash) or cash < 0:raise ValueError('invalid_observed_cash')
+    hires = _whole(farm.get('hires_today', len(farm['hands'])))
+    land = len(farm.get('unlocked_quadrants', ['NW'])) - 1
+    mult = _whole(configuration.get('farmHandCostMult', 1))
+    pickups = []; feeds = []; transfers = set(); prior_requests = 0
+    arrivals = []; unit_deposits = []; uncovered = []; wheat_sales = []
+    requests_by_actor = Counter(); feed_count = Counter(); before_pickup = Counter()
+    fertilizer_requests = 0
+    for step in range(now, end + 1):
+        row = selected if step == now else route[step]
+        if step > now:
+            for actor, pos in enumerate(positions):
+                action = _action(row, actor)
+                if not isinstance(action, list) or not action:
+                    raise ValueError('malformed_future_unit')
+                op = action[0]
+                tile = animals.get(pos)
+                if (op == 'PLACE' and len(action) > 1 and action[1] in mechanics.ANIMALS
+                        and tile is None):
+                    raise ValueError('uncertified_future_animal_placement')
+                if op in ('DIG', 'PLANT', 'BUILD_PASTURE', 'BUILD_COOP') and tile:
+                    raise ValueError('feed_target_has_other_asset_intent')
+                if op == 'DROP' or action[:2] == ['PLACE', 'WHEAT']:
+                    transfers.add(actor)
+                # A failed animal placement at shed access can also fall
+                # through to the engine's deposit path.
+                if op in ('DROP', 'PLACE'):
+                    unit_deposits.append(step)
+                if action[:2] == ['PICKUP', 'WHEAT'] and pos in SHED_ACCESS:
+                    q = _whole(action[2] if len(action) > 2 else 1)
+                    pickups.append({'step': step, 'actor': actor, 'quantity': q,
+                                    'prior_requests': prior_requests})
+                    requests_by_actor[actor] += q; prior_requests += q
+                if op == 'FEED' and tile and not tile.get('fed_today'):
+                    if actor in transfers:
+                        raise ValueError('feed_after_uncertified_input_transfer')
+                    if initial[actor] + requests_by_actor[actor] <= feed_count[actor]:
+                        uncovered.append({'step': step, 'actor': actor, 'position': pos})
+                        continue
+                    tile['fed_today'] = True
+                    feed_count[actor] += 1
+                    if not requests_by_actor[actor]:before_pickup[actor] += 1
+                    feeds.append({'step': step, 'actor': actor, 'position': pos,
+                                  'animal': tile['animal']})
+                if op in MOVES:
+                    dx, dy = MOVES[op]; q = (pos[0] + dx, pos[1] + dy)
+                    if 0 <= q[0] < 10 and 0 <= q[1] < 10:positions[actor] = q
+        for slot, order in enumerate((row.get('market') or [])[:10]):
+            if not order:continue
+            if not isinstance(order, list):raise ValueError('malformed_future_order')
+            op = order[0]; cost = 0
+            if op == 'SELL':
+                q = _order_quantity(order)
+                if order[1] not in mechanics.PRODUCTS:raise ValueError('invalid_sale_product')
+                if step > now and order[1] == 'WHEAT' and q:wheat_sales.append(step)
+                continue
+            if op == 'HIRE':
+                cost = mechanics._hire_cost(hires, mult)
+            elif op == 'BUY_LAND':
+                if land < len(mechanics.LAND_PRICES):cost = mechanics.LAND_PRICES[land]
+            elif op in ('BUY_SEED', 'BUY_ANIMAL'):
+                table = mechanics.CROPS if op == 'BUY_SEED' else mechanics.ANIMALS
+                cost = _order_quantity(order) * table[order[1]]['seed' if op == 'BUY_SEED' else 'cost']
+                if op == 'BUY_ANIMAL' and step > now:arrivals.append((step, _order_quantity(order)))
+            elif op == 'BUY_PRODUCT':
+                q = _order_quantity(order)
+                if q and order[1] != 'FERTILIZER':
+                    raise ValueError('unresolved_wheat_replenishment')
+                if q:
+                    if step > now:arrivals.append((step, q))
+                    market = observation['market']; params = market.get('params') or mechanics.MARKET_PARAMS
+                    if params['FERTILIZER'] != mechanics.MARKET_PARAMS['FERTILIZER']:
+                        raise ValueError('unsupported_fertilizer_cost_curve')
+                    fertilizer_requests += min(q, 100)
+                    # FERTILIZER has no town absorption. At most100 rival units
+                    # can be bought per slot, even if earlier purchases failed.
+                    lower = (market['inventory']['FERTILIZER'] - fertilizer_requests
+                             - ((step - now) * 10 + slot + 1) * 100)
+                    cost = min(q, 100) * mechanics.market_price('FERTILIZER', lower, params)
+            else:raise ValueError('unsupported_market_operation')
+            if cash < cost:raise ValueError('feed_window_not_prepaid')
+            cash -= cost; spent += cost
+            if op == 'HIRE':
+                shape = {'farmer': positions[0], 'hands': positions[1:]}
+                positions.append(tuple(mechanics._spawn_hand(shape, 10)))
+                initial.append(0); hires += 1
+            elif op == 'BUY_LAND' and land < len(mechanics.LAND_PRICES):land += 1
+        if step == now and reset:
+            animals = {pos: dict(tile, fed_today=False) for pos, tile in animals.items()
+                       if tile.get('fed_today') or int(tile.get('consecutive_unfed', 0)) < 1}
+            positions = [tuple(mechanics._default_spawn(10))]; initial = [0]; hires = 0
+    if uncovered:raise ValueError('scheduled_feed_has_uncovered_carried_input')
+    obligations = []; required = 0
+    for actor, count in feed_count.items():
+        deficit = max(0, count - initial[actor])
+        if not deficit:continue
+        choices = [p for p in pickups if p['actor'] == actor and p['quantity'] > 0]
+        if len(choices) != 1 or actor in transfers:
+            raise ValueError('ambiguous_protected_worker_transfers')
+        pickup = choices[0]
+        if before_pickup[actor] > initial[actor] or deficit > pickup['quantity']:
+            raise ValueError('pickup_does_not_cover_feed_suffix')
+        required = max(required, pickup['prior_requests'] + deficit)
+        obligations.append(dict(pickup, required_acquisition=deficit,
+                                feeds=[f for f in feeds if f['actor'] == actor]))
+    last_pickup = max((p['step'] for p in obligations), default=now)
+    if any(t <= last_pickup for t in unit_deposits):
+        raise ValueError('uncertified_deposit_before_protected_pickup')
+    if any(t < last_pickup for t in wheat_sales):
+        raise ValueError('intervening_wheat_sale_before_protected_pickup')
+    if obligations:
+        last = max(obligations, key=lambda p: (p['step'], p['actor']))
+        needs = {p['actor']: p['required_acquisition'] for p in obligations}
+        # A changed sale leaves exactly required_wheat. Every earlier pickup
+        # must use its full request in reachable feeds; the last pickup receives
+        # only its useful remainder. Thus none of the retained stock can return
+        # through a later DROP or the automatic EOD deposit as unused surplus.
+        for pickup in pickups:
+            if ((pickup['step'], pickup['actor']) >= (last['step'], last['actor'])
+                    or not pickup['quantity']):continue
+            if (pickup['quantity'] != needs.get(pickup['actor'], 0)
+                    or pickup['actor'] in transfers):
+                raise ValueError('competing_pickup_has_uncertified_wheat_return')
+    return {'through_step': end, 'crosses_reset': reset, 'required_wheat': required,
+            'obligations': obligations, 'cash_spending_upper': spent,
+            'cash_lower_after_requests': cash, 'future_sale_cash_credit': 0,
+            'future_wheat_receipt_credit': 0,
+            'arrival_upper_before_last_pickup': sum(q for t, q in arrivals if t < last_pickup)}
+
+
+def _current_room_bound(mechanics, private, orders, reset):
+    """Credit each initial physical unit once; buys never enlarge sale credit."""
+    stock = {k: _whole(n) for k, n in private['shed'].items()}
+    upper = sum(stock.values()); peak = upper
+    for order in orders[:10]:
+        if not order:continue
+        op = order[0]
+        if op == 'SELL':
+            if order[1] not in mechanics.PRODUCTS:raise ValueError('invalid_sale_product')
+            q = min(_order_quantity(order), stock.get(order[1], 0))
+            stock[order[1]] = stock.get(order[1], 0) - q; upper -= q
+        elif op in ('BUY_PRODUCT', 'BUY_ANIMAL'):upper += _order_quantity(order)
+        peak = max(peak, upper)
+        if upper > 100:raise ValueError('withholding_conflicts_with_current_arrival_room')
+    carry = sum(_whole(n) for v in private['inventories'] for n in v.values()) if reset else 0
+    if upper + carry > 100:raise ValueError('withholding_conflicts_with_reset_delivery')
+    return {'market_stock_upper': upper, 'market_peak_upper': peak,
+            'eod_carry_upper': carry, 'after_delivery_upper': upper + carry}
+
+
+def protect_feed_stock(mechanics, observation, configuration, selected,
+                       post_farm, post_private, route, checkpoints=()):
+    """Preserve up to two owned wheat units for the producer's reachable feeds.
+
+    This repairs an input/sale contradiction in the existing service plan. It
+    does not decide which new animals to acquire or estimate a game cash gain.
+    The caller must use this at the final returned-action boundary, including
+    any selected-action fallback with a completed matching unit snapshot.
+    """
+    report = {'changed': False, 'reason': 'no_wheat_sale', 'certified': False,
+              'future_cash_gain_measured': False}
+    orders = selected.get('market') or []
+    if not any(o and o[:2] == ['SELL', 'WHEAT'] for o in orders[:10]):return selected, report
+    try:
+        cfg = configuration or {}; now = _whole(observation['step'])
+        if (len(post_farm['tiles']) != 10 or int(cfg.get('turnsPerDay', 24)) != 24
+                or int(cfg.get('episodeSteps', 720)) != 720
+                or int(cfg.get('shedCapacity', 100)) != 100
+                or int(cfg.get('maxMarketOrdersPerTurn', 10)) != 10 or now >= 695):
+            raise ValueError('outside_supported_feed_window')
+        window = _feed_window(mechanics, observation, cfg, selected, post_farm,
+                              post_private, route, checkpoints)
+        report['window'] = window
+        required = window['required_wheat']; reset = window['crosses_reset']
+        stock = _whole(post_private['shed'].get('WHEAT', 0))
+        returned_wheat = sum(_whole(v.get('WHEAT', 0)) for v in post_private['inventories']) if reset else 0
+        if required > stock + returned_wheat:raise ValueError('observed_wheat_cannot_cover_feed_prefix')
+        offered = sum(_order_quantity(o) for o in orders[:10] if o and o[:2] == ['SELL', 'WHEAT'])
+        permitted = min(stock, max(0, stock + returned_wheat - required))
+        withheld = max(0, min(stock, offered) - permitted)
+        if withheld > 2:raise ValueError('feed_reservation_exceeds_two_units')
+        result = deepcopy(selected) if withheld else selected
+        if withheld:
+            remaining = permitted
+            for slot, order in enumerate(result['market'][:10]):
+                if order and order[:2] == ['SELL', 'WHEAT']:
+                    take = min(_order_quantity(order), remaining); remaining -= take
+                    result['market'][slot] = ['SELL', 'WHEAT', take] if take else []
+        room = _current_room_bound(mechanics, post_private, result.get('market', []), reset)
+        # No credit for future sales or requested pickups when reserving room.
+        # This intentionally declines busy arrival windows instead of trading
+        # another producer's delivered goods for the protected wheat.
+        if room['after_delivery_upper'] + window['arrival_upper_before_last_pickup'] > 100:
+            raise ValueError('withholding_conflicts_with_future_arrival_room')
+        report.update(changed=bool(withheld), certified=True,
+                      reason='reserve_reachable_feed' if withheld else 'feed_prefix_already_covered',
+                      withheld_units=withheld, required_wheat=required,
+                      observed_shed_wheat=stock, eod_wheat_credit=returned_wheat,
+                      room=room)
+        return result, report
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
 
 
 def _units(row):
@@ -117,14 +357,57 @@ def _bonus_water_service(mechanics, observation, configuration, selected,
             'variable_purchase_cash_credit': 0}, None
 
 
+def _operating_stock_commitments(mechanics, configuration, post_farm, rows):
+    """Price fixed market commitments from observed cash with zero sale credit."""
+    cfg = configuration or {}
+    cash = float(post_farm['money'])
+    if not math.isfinite(cash) or cash < 0:
+        raise ValueError('invalid_observed_cash')
+    hires = max(0, int(post_farm.get('hires_today', len(post_farm.get('hands', [])))))
+    land = max(0, len(post_farm.get('unlocked_quadrants', ['NW'])) - 1)
+    max_orders = int(cfg.get('maxMarketOrdersPerTurn', 10))
+    mult = float(cfg.get('farmHandCostMult', 1))
+    required = 0.0; commitments = []
+    for step, row in rows:
+        for slot, order in enumerate((row.get('market') or [])[:max_orders]):
+            if not order:
+                continue
+            op = order[0]; cost = 0.0
+            if op == 'SELL':
+                continue
+            if op == 'HIRE':
+                cost = float(mechanics._hire_cost(hires, mult)); hires += 1
+            elif op == 'BUY_LAND':
+                if land < len(mechanics.LAND_PRICES):
+                    cost = float(mechanics.LAND_PRICES[land]); land += 1
+            elif op in ('BUY_SEED', 'BUY_ANIMAL'):
+                q = _order_quantity(order)
+                table = mechanics.CROPS if op == 'BUY_SEED' else mechanics.ANIMALS
+                cost = float(q * table[order[1]]['seed' if op == 'BUY_SEED' else 'cost'])
+            elif op == 'BUY_PRODUCT':
+                q = _order_quantity(order)
+                if q:
+                    raise ValueError('intervening_variable_price_purchase')
+                continue
+            else:
+                continue
+            required += cost
+            commitments.append({'step': step, 'slot': slot, 'op': op, 'cost': cost})
+    return {'required_cash': required, 'observed_cash': cash,
+            'cash_after_commitments': cash - required,
+            'shortfall': max(0.0, required - cash),
+            'future_sale_cash_credit': 0, 'commitments': commitments}
+
+
 def protect_operating_stock(mechanics, observation, configuration, selected,
                             post_farm, post_private, route, checkpoints=()):
     """Return a same-slot fertilizer-sale proposal and its explicit limits.
 
     The supported case contains one actual worker, one upcoming shed pickup, existing
     productive targets, no intervening hiring/branch/reset or input replenishment,
-    and room for known deposits without crediting future sales. The price screen
-    is a named stress scenario, not a measured or guaranteed future cash gain.
+    and room for known deposits without crediting future sales. Economic admission
+    uses exact observed marginal curves and fixed committed costs; it does not add
+    fabricated future sale cash or a constant input-value cash cushion.
     """
     report = {'changed': False, 'reason': 'no_fertilizer_sale'}
     orders = selected.get('market') or []
@@ -185,7 +468,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         report['reason'] = 'requires_one_unambiguous_pickup'
         return selected, report
     pickup_step, actor, pickup_pos, quantity = pickups[0]
-    if pickup_pos not in ((4, 4), (5, 4), (4, 5), (5, 5)) or quantity <= 0:
+    if pickup_pos not in SHED_ACCESS or quantity <= 0:
         report['reason'] = 'pickup_not_reachable_from_shed'
         return selected, report
     carried = max(0, int(post_private['inventories'][actor].get('FERTILIZER', 0)))
@@ -240,8 +523,9 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if not withheld:
         report['reason'] = 'sale_already_leaves_required_stock'
         return selected, report
-    if withheld > 2:
-        report['reason'] = 'reservation_exceeds_bounded_units'
+    reservation_bound = min(len(obligations), max(0, int(cfg.get('maxMarketOrdersPerTurn', 10))))
+    if withheld > reservation_bound:
+        report['reason'] = 'reservation_exceeds_obligation_bound'
         return selected, report
     # Includes all current stock and requested arrivals; no future purchase is
     # credited as fertilizer and no future sale is credited as capacity relief.
@@ -260,35 +544,36 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     # Existing carried and unsold stock already funds the earlier services.
     # Only the final otherwise-unfunded uses are incremental to this sale edit.
     extra = Counter(o['crop'] for o in obligations[-withheld:])
-    product_value = sum(mechanics.market_price(crop, market['inventory'][crop] + own_yield[crop] + 100 + j, params)
-                        for crop, amount in extra.items() for j in range(amount))
-    # The 100-unit rival buffer is a stress scenario, not a bound on multi-day
-    # supply. Existing service/harvest actions add no new hiring or route actions.
-    if product_value <= 2 * input_value:
+    observed_product_value = sum(
+        mechanics.market_price(crop, market['inventory'][crop] + own_yield[crop] + j, params)
+        for crop, amount in extra.items() for j in range(amount))
+    # Keep a named one-full-slot stress diagnostic, but do not manufacture that
+    # unobserved rival lot into the admission rule. The decision uses public state.
+    one_slot_stress_value = sum(
+        mechanics.market_price(crop, market['inventory'][crop] + own_yield[crop] + 100 + j, params)
+        for crop, amount in extra.items() for j in range(amount))
+    value_scenarios = {
+        'observed_public': {'rival_extra_units': 0, 'marginal_product_value': observed_product_value},
+        'one_full_slot_stress_diagnostic': {
+            'rival_extra_units': 100, 'marginal_product_value': one_slot_stress_value,
+            'admission_weight': 0,
+        },
+    }
+    if observed_product_value <= input_value:
         report['reason'] = 'marginal_product_screen_not_favorable'
+        report['value_scenarios'] = value_scenarios
+        report['input_opportunity_cost'] = input_value
         return selected, report
-    # Use actual saved cash. Reserve current requested spending and a liquidity
-    # cushion; neither withheld nor future sale proceeds fund this proposal.
-    spending = 0
-    # Funding extends through today's reset, even when the useful input segment
-    # rejoins before a later capital order. Never hide that order by truncating
-    # the service window at its hiring boundary.
-    for row in [selected, *route[now + 1:day_end]]:
-        for order in row.get('market', []):
-            if not order:
-                continue
-            op = order[0]
-            if op in ('HIRE', 'BUY_LAND'):
-                report['reason'] = 'intervening_capital_commitment'
-                return selected, report
-            if len(order) > 2 and op in ('BUY_SEED', 'BUY_ANIMAL'):
-                table = mechanics.CROPS if op == 'BUY_SEED' else mechanics.ANIMALS
-                spending += max(0, int(order[2])) * table[order[1]]['seed' if op == 'BUY_SEED' else 'cost']
-            elif op == 'BUY_PRODUCT':
-                report['reason'] = 'intervening_variable_price_purchase'
-                return selected, report
-    if float(post_farm['money']) < spending + 100 * input_value:
-        report['reason'] = 'actual_cash_cushion_insufficient'
+    try:
+        liquidity = _operating_stock_commitments(
+            mechanics, cfg, post_farm,
+            [(now, selected), *[(step, route[step]) for step in range(now + 1, day_end)]])
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
+    if liquidity['shortfall'] > 0:
+        report['reason'] = 'committed_liquidity_shortfall'
+        report['commitment_liquidity'] = liquidity
         return selected, report
     water_service, reason = _bonus_water_service(
         mechanics, observation, cfg, selected, post_farm, route, obligations, checkpoints)
@@ -304,10 +589,14 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
             remaining -= take
     report.update(changed=True, reason='reserve_reachable_fertilizer', actor=actor,
                   pickup_step=pickup_step, end=end, required_stock=required,
-                  withheld_units=withheld, obligations=obligations,
-                  input_value_scenario=input_value, product_value_scenario=product_value,
-                  rival_supply_scenario_units=100, cash_spending_reserve=spending,
-                  funding_through_step=day_end - 1, cash_input_cushion_multiple=100,
+                  withheld_units=withheld, reservation_bound=reservation_bound,
+                  reservation_basis='distinct_productive_obligations_and_market_slots',
+                  obligations=obligations, input_opportunity_cost=input_value,
+                  product_value_scenario=observed_product_value,
+                  value_scenarios=value_scenarios,
+                  commitment_liquidity=liquidity,
+                  cash_spending_reserve=liquidity['required_cash'],
+                  funding_through_step=day_end - 1, cash_input_cushion_multiple=0,
                   bonus_day_water_service=water_service,
                   future_cash_gain_measured=False)
     return out, report

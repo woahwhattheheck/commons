@@ -45,3 +45,17 @@ Detailed positive and negative findings are in `frameworks.json`; this summary i
 2. The NoOps DSL, multi-language generation, NATS, and Kubernetes-generation claim family was not found in `agenticdevops/aof`. It aligns with [`raestrada/kumeo`](https://github.com/raestrada/kumeo) at `1b90d5d`, retained separately as `UNVERIFIED_REFERENCE` and **NOT_DEPLOYED**.
 
 These are provenance corrections, not endorsements. Both candidates stay in the unverified reference tier.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

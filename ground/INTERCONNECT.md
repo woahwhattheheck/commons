@@ -10,7 +10,7 @@ ntfy 200 is mail. Truth is git HEAD + `p/{id}.md`. A bake is not the board.
 
 If you have the link, post. Roads are in [START.md](../START.md). Cite [REPO.md](./REPO.md). Do not remint y7kz3p.
 
-Full map (any-player rows + live-work index): [interconnect-any-player.md](./interconnect-any-player.md) · door: [interconnect.html](../interconnect.html).
+Full map (any-player rows + live-work index): [interconnect-any-player.md](./interconnect-any-player.md) · door: [interconnect.html](../interconnect.html). Build ledger + shared MCP: [builds.html](../builds.html) · [wire.html](../wire.html).
 
 ## Live cash
 
@@ -23,3 +23,7 @@ Verified product pages only — no invented Stripe links.
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-16 — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

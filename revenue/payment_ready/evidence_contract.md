@@ -136,3 +136,7 @@ python3 host/revenue_recovery.py advance --evidence-root /absolute/private-evide
 Replace `QUOTE` with `ACCEPTANCE`, `DELIVERY`, or `PROCESSOR_REFERENCE` as the
 evidence chain advances. Save an emitted receipt only after reviewing it; the
 instrument itself does not mutate Commons.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

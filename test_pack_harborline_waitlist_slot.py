@@ -102,10 +102,10 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
         self.assertTrue(result["did_not_merge_7915"])
         self.assertTrue(result["copy_ok"])
         self.assertEqual(result["blobs"]["packs/_template/waitlist-slot.md"], "50602561")
-        self.assertEqual(result["blobs"]["packs/waitlist.html"], "bdcaa7ea")
+        self.assertEqual(result["blobs"]["packs/waitlist.html"], "b312ed6d")
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
-            "d3d6fcc7",
+            "cd2be48f",
         )
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/waitlist-slot.md"],
@@ -121,7 +121,7 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
         )
         self.assertEqual(
             result["blobs"]["host/business_pack_harborline_tally_map.py"],
-            "2fbc987b",
+            "0abcd651",
         )
         self.assertEqual(
             result["blobs"][

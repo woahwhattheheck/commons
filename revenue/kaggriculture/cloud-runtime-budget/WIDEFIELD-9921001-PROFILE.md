@@ -93,3 +93,7 @@ field, current-candidate strength, hosted runtime, or future deadline behavior.
 TRACE owns recovery; DELTA owns profiler repairs; runtime optimizations and the
 canonical checkpoint stay with their owners. No source or workflow change is
 included in this result delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

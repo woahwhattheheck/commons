@@ -103,3 +103,7 @@ Executed joint-adapter Git blob: `3d03475fb422fa0aab998b3f537a1b9532ff6e90`.
 Exact output tables, logs and the negative-control source/output are retained in
 the separate private CEDAR history-terminal-join packet. Original dependency and
 input packages are referenced, not republished.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

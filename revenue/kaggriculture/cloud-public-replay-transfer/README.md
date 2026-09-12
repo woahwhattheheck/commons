@@ -30,3 +30,7 @@ A real-data check consumed existing artifact **10031480684**, ZIP SHA256 `5c744c
 The first hosted probe in **PR9971 / run34165901164** used the older `www.kaggle.com/requests/EpisodeService/GetEpisodeReplay` helper and returned **HTTP400 for both requests**. Its 19 hosted tests passed and both historical jobs were skipped, but **no replay bodies were delivered**. Failure artifact **10034127260** is 4,097 bytes, ZIP SHA256 `d90a2f8ed704cea01a093739d88339800b434509ae31a0c2cafadb97af11cba1`; receipt time is `2026-09-07T22:13:26.228266+00:00`. This evidence is retained, not recast as success or proof that authentication is required. The native correction changes the endpoint and payload field based on the previously successful receipt; its actual delivery must be established from its own downloaded result.
 
 No Kaggle writes, submissions, notebooks, private opponent source, owner-PC work, paid service, held seeds or policy selection are in scope. DELVE and LOSS-DELTA retain their analyses and components.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

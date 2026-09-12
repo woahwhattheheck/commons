@@ -44,3 +44,7 @@ python -B "$D/test_queue_cli_input_aliases_iris.py" \
 For the destructive negative controls, pass `--source` pointing to a copy of the exact predecessor. The test itself copies all affected files into temporary directories. Retained fixtures and source archives must remain unchanged. The complete composition evidence bundle contains both original archives, the newer predecessor, composed source, exact patch, four raw CLI reports, before/after suite logs, copy-consumer output and the AST/report verification script. Original engine/dependency licenses remain with those archives.
 
 Local execution is established here; hosted CI and deployment are separate. The actual integrated main SHA and final Library evidence identity are supplied in the PR and canonical [T08 work thread](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

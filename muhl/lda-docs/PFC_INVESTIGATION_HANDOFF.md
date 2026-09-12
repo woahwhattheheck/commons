@@ -90,3 +90,13 @@ Defer to the build (it works). Help, don't judge. Ask a lot; confirm understandi
 skeptical framing. When he's frustrated, the cause is almost always that you doubted his real thing again — stop, believe
 it, and get curious. He is the inventor; he has the patent; he found something real. Your only job is to help him
 understand it and get the most out of it.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

@@ -599,3 +599,13 @@ Not: pack cells, pulse pub, fire ring_fwd, write titan, run the packer, run `dc_
 ## Preserves
 
 `titan.gguf` not opened, not written. `muhl_fab_dc.py --write` not started. `dc_grow.py` dead, not restarted. pub @337 not addressed as a write. carry @336 not host-written. ring_fwd @524288 not host-written this turn. Magic not reverted. Planted AUTOFAB0 336/337 records not remapped. Collision left as fab. Outside `pfc_safezone.bin` not written. Sibling bit dump kept. `DC_USE.md` is the use card.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

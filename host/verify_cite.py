@@ -24,8 +24,25 @@ import os
 import subprocess
 import sys
 
+if __package__:
+    from .finder_zero import (
+        FINDER_UNVERIFIED,
+        calibrate,
+        report_find,
+        search_space,
+    )
+else:
+    from finder_zero import (
+        FINDER_UNVERIFIED,
+        calibrate,
+        report_find,
+        search_space,
+    )
+
 
 DEFAULT_CATALOG = os.path.join("ground", "VERIFY_CITE.json")
+CALIBRATION_PATH = os.path.join("host", "verify_cite.py")
+TREE_PATTERN = "<tree-root>/<cited-path> regular-file probe"
 
 
 def load_catalog(text):
@@ -110,6 +127,12 @@ def probe_git_sha(sha, cwd=None):
 def classify(row):
     """Turn a measured cite census into a land-desk state."""
     row = row or {}
+    if row.get("finder_state") == FINDER_UNVERIFIED:
+        return {
+            "state": FINDER_UNVERIFIED,
+            "note": row.get("finder_note")
+            or "tree finder failed execution or calibration. Absence is unverified.",
+        }
     if not row.get("measured"):
         return {
             "state": "UNMEASURED",
@@ -160,15 +183,29 @@ def classify(row):
             ),
         }
     if paths and missing and not present:
-        return {
-            "state": "NOT_LANDED",
-            "note": (
+        if row.get("find_state") == FINDER_UNVERIFIED:
+            note = (
+                "FINDER UNVERIFIED: none of the %s cited paths are on this "
+                "calibrated Commons tree. query=%r path=%r pattern=%r. "
+                "Independent-verification / first-numbers talk is CLAIMED. "
+                "Do not remint. Leave the titan audit to the taking."
+                % (
+                    len(paths),
+                    (row.get("search_space") or {}).get("query") or "",
+                    (row.get("search_space") or {}).get("path") or "",
+                    (row.get("search_space") or {}).get("pattern") or "",
+                )
+            )
+        else:
+            note = (
                 "0/%s cited paths are on this Commons tree. Independent-"
                 "verification / first-numbers talk is CLAIMED. Do not "
                 "remint. Leave the titan audit to the taking."
                 % len(paths)
             )
-            + sha_note,
+        return {
+            "state": "NOT_LANDED",
+            "note": note + sha_note,
         }
     if paths and missing:
         return {
@@ -235,6 +272,40 @@ def listing_from_root(root, paths):
     return names
 
 
+def cite_search_space(paths, tree_root):
+    """Name the exact public-tree search space for this cite finder."""
+    named = [
+        str(item or "").strip().replace("\\", "/")
+        for item in (paths or [])
+        if str(item or "").strip()
+    ]
+    return search_space(
+        query="verify-cite cited_paths %s plus known-present %s"
+        % (" ".join(named) if named else "(empty catalog)", CALIBRATION_PATH),
+        path=str(tree_root or ""),
+        pattern=TREE_PATTERN,
+    )
+
+
+def _finder_failure(catalog_path, root, space, note, calibration=None):
+    calibration = calibration or {}
+    return {
+        "measured": False,
+        "catalog": catalog_path,
+        "tree_root": root,
+        "finder_state": FINDER_UNVERIFIED,
+        "finder_note": str(note or "tree finder failed"),
+        "search_space": space,
+        "calibrated": False,
+        "calibration_id": CALIBRATION_PATH,
+        "calibration_state": calibration.get("state") or FINDER_UNVERIFIED,
+        "calibration_missed": list(calibration.get("missed") or []),
+        "observed": None,
+        "miss_behavior": FINDER_UNVERIFIED,
+        "titan": "NOT_WRITTEN",
+    }
+
+
 def measure_paths(catalog_path, tree_root=None, git_cwd=None):
     path = os.path.abspath(catalog_path)
     if not os.path.isfile(path):
@@ -246,17 +317,64 @@ def measure_paths(catalog_path, tree_root=None, git_cwd=None):
     with open(path, "r", encoding="utf-8") as handle:
         catalog_text = handle.read()
     catalog = load_catalog(catalog_text)
-    listing = []
     root = os.path.abspath(tree_root) if tree_root else ""
-    if root and os.path.isdir(root):
-        listing = listing_from_root(root, catalog.get("cited_paths") or [])
+    space = cite_search_space(catalog.get("cited_paths") or [], root)
+    if not root:
+        return _finder_failure(
+            path,
+            root,
+            space,
+            "tree root not supplied; absence is FINDER UNVERIFIED, never 0",
+        )
+    if not os.path.isdir(root):
+        return _finder_failure(
+            path,
+            root,
+            space,
+            "tree root unavailable: %s; absence is FINDER UNVERIFIED, never 0"
+            % root,
+        )
+
+    calibration_hits = listing_from_root(root, [CALIBRATION_PATH])
+    calibration = calibrate(calibration_hits, [CALIBRATION_PATH])
+    if not calibration.get("calibrated"):
+        return _finder_failure(
+            path,
+            root,
+            space,
+            calibration.get("note") or "known-present tree calibration failed",
+            calibration,
+        )
+
+    listing = listing_from_root(root, catalog.get("cited_paths") or [])
+    find = report_find(listing, space, True)
     sha_known = None
     if catalog.get("cited_sha"):
-        sha_known = probe_git_sha(catalog["cited_sha"], cwd=git_cwd or root or None)
+        sha_known = probe_git_sha(catalog["cited_sha"], cwd=git_cwd or root)
     row = measure_from_parts(catalog_text, listing, sha_known=sha_known)
-    row["catalog"] = path
-    if root:
-        row["tree_root"] = root
+    row.update(
+        catalog=path,
+        tree_root=root,
+        finder_state="CALIBRATED",
+        search_space=space,
+        calibrated=True,
+        calibration_id=CALIBRATION_PATH,
+        calibration_state=calibration.get("state") or "CALIBRATED",
+        calibration_missed=[],
+        find_state=find.get("state"),
+        find_count=find.get("count"),
+        find_note=find.get("note"),
+        observed={
+            "calibration_hits": list(calibration_hits),
+            "cited_path_hits": len(listing),
+            "cited_path_count": len(catalog.get("cited_paths") or []),
+        },
+        miss_behavior=(
+            "CALIBRATED_ABSENCE"
+            if (catalog.get("cited_paths") and not listing)
+            else ("CALIBRATED_PARTIAL" if row["missing_count"] else "FOUND")
+        ),
+    )
     return row
 
 

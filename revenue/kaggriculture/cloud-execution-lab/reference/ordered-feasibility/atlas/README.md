@@ -152,3 +152,7 @@ Official unit, harvest, construction, hiring and daily mechanics are injected
 from Kaggle's Apache-2.0 source; the standalone extraction remains in its
 existing file. Preserve its `reference/engine/LICENSE`, the lab's notices, and
 all original source attribution when packaging this helper with those modules.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../../titanmcp.html). Cite Latch Pad KEEP.

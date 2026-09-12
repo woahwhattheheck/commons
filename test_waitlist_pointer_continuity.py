@@ -60,7 +60,7 @@ class WaitlistPointerContinuityTest(unittest.TestCase):
                 self.assertTrue(result["pointer_ok"])
                 self.assertTrue(result["receipt_blobs_match"])
                 self.assertFalse(result.get("blobs_match", result.get("waitlist_blob_ok")))
-                self.assertNotEqual(result["blobs"][WAITLIST], "bdcaa7ea")
+                self.assertNotEqual(result["blobs"][WAITLIST], "b312ed6d")
 
     def test_operational_helper_changes_remain_observations(self):
         target = self.root / helper.LEFTOVER_HELPER

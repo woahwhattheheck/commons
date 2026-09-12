@@ -219,3 +219,7 @@ The present hard blockers are:
 7. No final response, cover letter, signed Attachment C, addenda log, 20-page QA, or submission authorization/receipt.
 
 No City/prospect contact, question, proposal, form, price, payment, or bid submission was made by this compliance-matrix lane. No capability, customer, reference, insurance, certification, instrument compatibility, security compliance, or pricing claim was invented.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

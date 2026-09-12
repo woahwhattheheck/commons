@@ -76,3 +76,7 @@ All29 members are hash-verified. Two fresh constructed initial-seat observations
 match direct source, source official loader and archive official loader;
 maximum archive first call26.32ms. No extra full game or held replay was used
 for packaging. EVIDENCE.json records every retained compressed report's hash.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -139,3 +139,7 @@ raw output/log, generated input, complete final solution and all native results.
 in the accompanying Library evidence package. No public instance or game was
 rerun, no extra benchmark framework or workflow created, and no S139 draft,
 attachment or submission action was performed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

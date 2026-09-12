@@ -35,7 +35,7 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe` (2460 bytes)
+- `ground/RINGDELTA.md` sha256 `fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441` (3016 bytes)
 - `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
 - `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
 - `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
@@ -52,7 +52,7 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
 - `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a` (3641 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8` (4197 bytes)
 
 ### Agent swarm datacenter prep and swarm-mail (`agent-swarm`, `SHIPPED_ON_MAIN`)
 
@@ -87,3 +87,16 @@ Re-read the official pages after 2026-09-03 and compare already-public Commons a
 `PACKET_READY_NOT_SUBMITTED` — not a numeric forecast.
 
 submission_status: `NOT_SUBMITTED`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

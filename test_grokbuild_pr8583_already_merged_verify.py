@@ -14,8 +14,8 @@ ORIGINAL_TEST = ROOT / "test_grokbuild_main_range_verify_33717084528_billing_loc
 
 KEEP = {
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
-    "open_door_guard.py": "7b9a2318",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
+    "open_door_guard.py": "877e148d",
 }
 
 

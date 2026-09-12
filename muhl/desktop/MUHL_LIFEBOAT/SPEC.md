@@ -34,3 +34,14 @@ grave-player1-lifeboat0-spec-20260818-001. Player 1 spec. Player 2 fabricates on
 - optional use lighter than the play it preserves
 
 **Not this spec:** phone actuation, rookery fire, World System relaunch, titan pulse, idle wake loop.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

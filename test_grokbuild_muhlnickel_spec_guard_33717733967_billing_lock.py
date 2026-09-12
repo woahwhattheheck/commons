@@ -17,24 +17,24 @@ PARENT = ROOT / "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "742c8fcf",
+    "muhlnickel_spec_guard.py": "8bd147aa",
+    "test_muhlnickel_spec_guard.py": "c023622f",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "c6fd995b",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "66609d47",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "10a046b3",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "dd329a6a",
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
-    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "3f026bfd",
+    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9111f850",
     "p/grokbuild-muhlnickel-spec-guard-33689088442-billing-lock-20260902-01.md": "61a98ddd",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "47e90c71",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "ecaea6b5",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "0f70dbd3",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
 }
 
@@ -77,7 +77,7 @@ class TestGrokbuildMuhlnickelSpecGuard33717733967BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
 
     def test_receipt_cites_run_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")

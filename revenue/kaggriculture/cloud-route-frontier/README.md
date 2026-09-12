@@ -179,3 +179,7 @@ assert len(traces) == 34
 See `validation.json` for commands, counts, and file hashes. Existing engine,
 search, producer, seller, and policy source remains under its original ownership
 and license; see `NOTICE.md`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -45,3 +45,13 @@ last pub from `LIVE_MOUTHS.md` — **MISSING**. Not invented.
 size **99999999783** / 337 **00000001** / 7913 **00000000** / fired_337 **NO**
 
 path: `C:\Users\lucys\Desktop\MUHL_GO\DC_SURFACE.md`
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

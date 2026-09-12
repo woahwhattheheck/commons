@@ -66,3 +66,6 @@ used; child decision/RPC maxima, completion status and RSS remain recorded raw.
 This panel establishes only the stated source-conditioned head-to-head result.
 It does not establish leaderboard score or rank.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

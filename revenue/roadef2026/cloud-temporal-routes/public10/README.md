@@ -60,3 +60,7 @@ resource output, command records, source/input identities, and full checker
 reports. No network, registration, submission, paid runner, or owner-PC
 operation occurs in this driver. Original SEDGE/FLORA/fleet and QUARTZ source
 and execution credit remain intact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

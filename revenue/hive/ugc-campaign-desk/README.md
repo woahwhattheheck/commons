@@ -23,3 +23,16 @@ Input schema is `ugc-campaign-desk/v1`. The fixture is intentionally bounded to 
 `shipping-plan.csv` is a logistics plan, not shipment evidence. `rights-disclosures.csv` records proposed terms, not rights grants. `delivery-tracker.csv` starts revision count at zero and retains each video's revision limit. `campaign-packet.json` records creator-contact, shipment, granted-rights, customer-acceptance, and cash fields as false/zero.
 
 No browser deployment, external API, customer data, creator outreach, sample shipment, rights execution, customer acceptance, payment, or spend is claimed.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -71,3 +71,7 @@ Interruptions are deliberately injected, not naturally observed timeouts. Contin
 Only the tested actor's current observation is supplied. Other-seat private observations stay in the untouched input archive and are not supplied to the actor. Future observations are not decision inputs; retained seed metadata is withheld by setting configuration `seed` to `None`.
 
 This directory contains only reusable source, its license and documentation. Publication does not modify canonical runtime, builder, CURRENT pointers, competition accounts or submissions. Preparation-time publication notes inside the original private bundle describe the earlier snapshot; actual GitHub and Slack action receipts identify subsequent delivery. Peer consumption is separate from source publication. Original upstream licenses/notices remain in the unchanged input package.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

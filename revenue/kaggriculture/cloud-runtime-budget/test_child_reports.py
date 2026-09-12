@@ -40,10 +40,12 @@ class ChildReportTests(unittest.TestCase):
             max_decisions=3, classification='constructed-child-output', process_timeout=10, output=output)
         real_run = subprocess.run
         calls = []
-        payload = 'missing' if raw is None else base64.b64encode(raw).decode('ascii')
         def child(command, **kwargs):
             child_output = command[command.index('--output')+1]
             calls.append(command)
+            mode = command[command.index('--worker-mode')+1]
+            data = raw(mode) if callable(raw) else raw
+            payload = 'missing' if data is None else base64.b64encode(data).decode('ascii')
             return real_run([sys.executable, '-c', CHILD, child_output, payload, str(exit_code)], **kwargs)
         with patch.object(p.subprocess, 'run', child):
             code = p.supervise(args)
@@ -117,11 +119,18 @@ class ChildReportTests(unittest.TestCase):
 
     def test_structured_complete_child_report_remains_accepted(self):
         # This is a transport-only fixture, not evidence of actor/game execution.
-        report = {'status':'complete','calls':[{'step':0,'wall_s':.01}],
-            'action_sequence_sha256':'fixture','runtime_sources':{'main.py':'fixture'},
-            'input':{'fixture':True},'loaded_sources':{'target':'fixture'},
+        digest = 'a' * 64
+        report = {'schema':'titan.saved-runtime-pass.v1', 'status':'complete',
+            'calls':[{'step':0,'wall_s':.01,'action_sha256':digest}],
+            'action_sequence_sha256':digest,'profiler_sha256':digest,
+            'timing_source_sha256':digest,'runtime_sources':{'main.py':digest},
+            'input':{'records':1,'transport_sha256':digest,'decoded_sha256':digest},
+            'loaded_sources':{
+                'finch_existing_timing':{'path':'/fixture/timing.py','sha256':digest},
+                'finch_profile_target':{'path':'/fixture/main.py','sha256':digest}},
             'loaded_sources_unchanged':True,'sources_unchanged':True}
-        code, result, output = self.run_case(json.dumps(report).encode(), 0)
+        code, result, output = self.run_case(
+            lambda mode: json.dumps(dict(report, mode=mode)).encode(), 0)
         self.assertEqual(code, 0)
         self.assertTrue(result['instrumentation_action_parity'])
         self.assertEqual(result['ordinary']['calls'], report['calls'])

@@ -16,17 +16,17 @@ HELPER = ROOT / "host/owner_now_revenue.py"
 
 KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "9b1c59fb",
-    "land/owner-now-revenue-20260902.md": "db81f250",
+    "owner-now-revenue.html": "7c98199a",
+    "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "65a960f2",
-    "ground/OWNER_NOW.md": "0a574d94",
+    "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "2fe108f4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

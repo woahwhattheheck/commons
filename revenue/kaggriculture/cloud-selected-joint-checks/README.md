@@ -54,3 +54,7 @@ python3 -m unittest test_joint_receipt -v
 Twenty self-contained reader regressions pass. Their generated ZIP fixtures are explicitly synthetic receipt-parser tests, not game results. The real 37-method and 51-method artifacts were separately processed by the published reader; exact source pins and outcomes are in `VALIDATION.json`.
 
 Source contracts and existing execution: [projection PR9951](https://github.com/woahwhattheheck/commons/pull/9951), [terminal-stock PR9949](https://github.com/woahwhattheheck/commons/pull/9949), and [combined workflow PR9954](https://github.com/woahwhattheheck/commons/pull/9954). New files are Apache-2.0, as indicated by their SPDX headers.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

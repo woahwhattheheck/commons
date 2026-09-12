@@ -18,14 +18,14 @@ import stealable_lanes as sl  # noqa: E402
 RECEIPT = ROOT / "p/cursor-stealable-lanes-roles-20260902-01.md"
 
 KEEP = {
-    "lanes.json": "b06c5923",
+    "lanes.json": "3ac25ce9",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "0a574d94",
-    "autogtm.html": "fab1d536",
-    "hub_pages.py": "97004993",
-    "door.js": "5bc431b1",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
+    "hub_pages.py": "44bbd2ec",
+    "door.js": "de1d570b",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
@@ -72,19 +72,31 @@ class TestStealableLanes(unittest.TestCase):
         self.assertGreaterEqual(len(open_rows), 1)
 
     def test_door_has_no_login_and_cites_hub(self) -> None:
-        sl.write_cards()
-        sl.write_html()
-        text = (ROOT / "stealable-lanes.html").read_text(encoding="utf-8")
-        self.assertIn("1788381748.979959", text)
-        self.assertIn("No login", text)
-        self.assertNotIn("Authorization", text)
-        self.assertNotIn("api key", text.lower())
-        self.assertIn("bc-847e1c9a", text)
-        self.assertIn("bc-31c8ef9a", text)
-        receipt = RECEIPT.read_text(encoding="utf-8")
-        self.assertIn("cursor-stealable-lanes-roles-20260902-01", receipt)
-        self.assertIn("Did not remint", receipt)
-        self.assertIn("1788381921.814949", receipt)
+        html_path = ROOT / "stealable-lanes.html"
+        lanes_card = ROOT / "ground" / "STEALABLE_LANES.md"
+        roles_card = ROOT / "ground" / "STEALABLE_ROLES.md"
+        originals = {
+            path: path.read_bytes()
+            for path in (html_path, lanes_card, roles_card)
+            if path.is_file()
+        }
+        try:
+            sl.write_cards()
+            sl.write_html()
+            text = html_path.read_text(encoding="utf-8")
+            self.assertIn("1788381748.979959", text)
+            self.assertIn("No login", text)
+            self.assertNotIn("Authorization", text)
+            self.assertNotIn("api key", text.lower())
+            self.assertIn("bc-847e1c9a", text)
+            self.assertIn("bc-31c8ef9a", text)
+            receipt = RECEIPT.read_text(encoding="utf-8")
+            self.assertIn("cursor-stealable-lanes-roles-20260902-01", receipt)
+            self.assertIn("Did not remint", receipt)
+            self.assertIn("1788381921.814949", receipt)
+        finally:
+            for path, data in originals.items():
+                path.write_bytes(data)
 
 
 if __name__ == "__main__":

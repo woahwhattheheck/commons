@@ -40,3 +40,7 @@ Raw64-game records are retained in the originating Chat attachment `osprey-termi
 Each original record contains final scores, failures, source/engine hashes, actor timings, full-game trace hash, pre698 observation/action hash, final-day visible observations and both executed actions, per-unit market receipts, and terminal state. The actor never reads opponent-private evaluator evidence. The first16 control records retain the earlier measure.py hash: only the later comparison helper changed to reject missing-prefix false parity; game execution did not change. The paired accounting joins seed/opponent/seat, retains missing or failed rows as unresolved, and rejects duplicate keys.
 
 An outer-shell40-second limit cut off display of the end of the combined baseline/T05 held batch. All16 output files were immediately inspected and contained complete719-decision games, including both final T05 Apex cases; no game was rerun or scored from a partial result. An incorrectly transcribed fixture blob was detected by its mismatched Git hash before any commit; only the corrected matching1903-byte fixture blob is referenced in the source tree.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

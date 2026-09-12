@@ -17,3 +17,7 @@ Do these in order. Log the date each row is done or skipped, and why.
 11. After-payment redirect on any Payment Link you later paste: `packs/thanks.html`. Pixel IDs stay empty until the owner pastes them.
 
 TokenJunkie Labs residual interest on this sold pack stays OWNER_UNSET on terms.md. Do not write a percent in these filings.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

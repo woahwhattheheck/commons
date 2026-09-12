@@ -69,3 +69,7 @@ correspondence evidence. The 14-method result above used the actual TRACE
 builder/header without source substitution.
 
 Coordination: https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788845686855649
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

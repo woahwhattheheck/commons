@@ -143,3 +143,7 @@ Runtime SHA256:
 `ff7abe56cff0fe68de8652bcee4c67997eae0666a12ba953eb48ae3e5f8f0d9b`.
 Suite SHA256:
 `66f903e509a0869f0ec47c07038157399a4c6f1682f23dc3e9ba5847b38d661c`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

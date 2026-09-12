@@ -54,3 +54,7 @@ Opponent WATER→WATER groups at136 and188 both fail because neither request cha
 **Condition:** reserve mutable effects (watered/fed/cared/collected/held yield, carried resources and seed counts) in actual farmer-then-hand order, allowing distinct complementary effects at the same coordinate. Update virtual state after each accepted task. LARK can use the original public frames at193,453,478 and their expected changed flags as offline regression inputs; candidate decision quality still requires new games owned by the active policy/model lanes.
 
 The decision cases contain raw before/after frame observations and actions for exact witness steps. They are public replay data, never competitor executable code. All source hashes and original compressed bytes remain in the previous manifest. No account/submission action, universal-policy claim or hidden-intent claim is made.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

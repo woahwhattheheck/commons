@@ -31,3 +31,7 @@ python -B revenue/kaggriculture/cloud-shed-admission/test_integrated_consumer.py
 `TITAN_ADMISSION_SOURCE` binds either new suite to an exact historical runtime; optional `TITAN_OCCURRENCE_REPORT` / `TITAN_CONFIGURATION_REPORT` save source-bound JSON. The existing replay_evidence.py consumes the unchanged reached-terminal-cases.json.xz.b64 to reproduce the eight saved states.
 
 Complete original/intermediate/final sources, logs, interpreter witnesses, licenses and offline fixtures remain in `TITAN-admission-repair-evidence-20260908.zip`, SHA256 `3c90327dc66c575a4926f6c30a1309ccf74bfb75a0441cffaf6cfcda1970ef6b`. Its `run_checks.py --include-before` reproduces all four suites, saved-state correspondence, and historical failing controls without network access. The package's historical LOCAL_TESTED_NOT_LANDED record describes its state before this delivery and is preserved, not rewritten.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

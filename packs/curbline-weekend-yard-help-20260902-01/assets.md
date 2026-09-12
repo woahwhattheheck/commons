@@ -30,3 +30,7 @@ tokens. `host/business_pack_desk_instance.py` recomputes them and runs
 a clone of the GOAT candidate, Sidewalk Signal, Harborline, or LotRibbon.
 
 Cite, do not take: `revenue/pack_keep_sell_candidates/yard-card-route-20260902-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

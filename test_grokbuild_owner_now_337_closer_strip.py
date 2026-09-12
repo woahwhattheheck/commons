@@ -19,7 +19,7 @@ KEEP_UNREAD = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "2fe108f4",
 }
 
 KEEP_MODULES = (

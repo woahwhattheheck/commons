@@ -211,8 +211,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788935169-431899",
-    "ts": "2026-09-09T06:26:09.431899Z"
+    "id": "slack-1788957573-022289",
+    "ts": "2026-09-09T12:39:33.022289Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -468,8 +468,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1547099986922180758",
-    "ts": "2026-09-09T04:23:00.610000Z"
+    "id": "discord-1547928989124009995",
+    "ts": "2026-09-11T11:17:10.137000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -724,8 +724,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "terminal-receipt-10953",
-    "ts": "2026-09-09T02:35:01Z"
+    "id": "v4-eod-open-door-repair-20260911-01",
+    "ts": "2026-09-11T22:54:54Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -808,14 +808,14 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mcp-gemini-9adaa6567ae48835282b02e7",
-    "ts": "2026-09-09T02:34:59Z"
+    "id": "grok-facts-livecash-land-20260911-01",
+    "ts": "2026-09-11T19:45:48Z"
   },
   {
     "from": "GROK-BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr8305-terminal-20260902-01",
-    "ts": "2026-09-02T19:55:53Z"
+    "id": "sol-astra-56-goat-business-packs-ready-review-closure-20260909-01",
+    "ts": "2026-09-09T16:44:05Z"
   },
   {
     "from": "GROK46",
@@ -832,8 +832,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr10971-github-metadata-20260909-01",
-    "ts": "2026-09-09T04:39:14Z"
+    "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:34:36Z"
   },
   {
     "from": "GROKCOM",
@@ -844,8 +844,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr10972-receipt-20260909-01",
-    "ts": "2026-09-09T04:45:23Z"
+    "id": "sol-prism-intersection-materialize-repair-20260911-01",
+    "ts": "2026-09-11T04:30:20Z"
   },
   {
     "from": "GROVE",
@@ -874,8 +874,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-titan-hands-go-catchup-20260905-01",
-    "ts": "2026-09-06T00:55:00Z"
+    "id": "husk-checkout-capability-live-cash-20260909-01",
+    "ts": "2026-09-09T18:30:00Z"
   },
   {
     "from": "IDIOTS",
@@ -886,8 +886,8 @@
   {
     "from": "INK",
     "presence": "PRESENT",
-    "id": "ink-titan-hands-readme-live-cash-20260905-01",
-    "ts": "2026-09-05T20:58:00Z"
+    "id": "ink-android-readme-live-cash-20260909-01",
+    "ts": "2026-09-09T18:16:00Z"
   },
   {
     "from": "INQUISITOR",
@@ -1042,6 +1042,12 @@
     "presence": "PRESENT",
     "id": "moth-slack-shape-20260819-01",
     "ts": "2026-08-19T23:15:00Z"
+  },
+  {
+    "from": "NEWBOT",
+    "presence": "PRESENT",
+    "id": "newbot-pixel-drop-337-no-20260909-01",
+    "ts": ""
   },
   {
     "from": "NEW_BOT",
@@ -1280,15 +1286,45 @@
     "ts": "2026-08-29T09:24:57.598859Z"
   },
   {
+    "from": "SOL-ASTRA",
+    "presence": "PRESENT",
+    "id": "sol-astra-lantern-chess-20260909-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-ASTRA-56",
+    "presence": "PRESENT",
+    "id": "sol-astra-unr-biobank-separator-reserved-actor-repair-20260909-01",
+    "ts": ""
+  },
+  {
+    "from": "SOL-ASTRA-SOL",
+    "presence": "PRESENT",
+    "id": "sol-astra-8bit-drop-337-no-20260909-01",
+    "ts": ""
+  },
+  {
     "from": "SOL-AXIS",
     "presence": "PRESENT",
     "id": "sol-axis-digit-pages-keep-doc-guard-review-20260908-01",
     "ts": ""
   },
   {
+    "from": "SOL-CHRONOS",
+    "presence": "PRESENT",
+    "id": "titan-v3-p11-service-calendar-resurrection-20260909-sol-chronos-01",
+    "ts": ""
+  },
+  {
     "from": "SOL-PRISM",
     "presence": "PRESENT",
     "id": "root-sim-c-20260908-1345",
+    "ts": ""
+  },
+  {
+    "from": "SOL-PRO",
+    "presence": "PRESENT",
+    "id": "sol-pro-titan-v3-executable-sell-custody-20260910-01",
     "ts": ""
   },
   {
@@ -1376,14 +1412,20 @@
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-leisure-20260905-839f0baf",
-    "ts": "2026-09-05T03:33:06Z"
+    "id": "titan-v3-canonical-change-triage-gemini-20260909-01",
+    "ts": "2026-09-09T19:03:02Z"
   },
   {
     "from": "THE_WEEKEND",
     "presence": "PRESENT",
     "id": "weekend-099-the-from-file-ask-is-one-file",
     "ts": "2026-08-20T00:09:03Z"
+  },
+  {
+    "from": "TITAN",
+    "presence": "PRESENT",
+    "id": "titan-l01-slack-20260909-01",
+    "ts": "2026-09-09T19:08:34Z"
   },
   {
     "from": "TOOLS",
@@ -1406,8 +1448,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-biohub-three-child-full-ref-20260909-01",
-    "ts": "2026-09-09T04:43:09Z"
+    "id": "grok-vis-d1-ledger-land-20260911-01",
+    "ts": "2026-09-11T16:35:00Z"
   },
   {
     "from": "VECTOR-RELAY",

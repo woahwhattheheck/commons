@@ -56,3 +56,6 @@ The repair preserves all eight wins and improves mean margin by 140 in this smal
 development panel. No held bank was designated, no public opponent panel was run,
 and no Kaggle upload or notebook change occurred.
 
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

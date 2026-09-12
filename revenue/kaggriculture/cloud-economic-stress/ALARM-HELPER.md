@@ -21,3 +21,7 @@ python3 -B revenue/kaggriculture/cloud-economic-stress/test_alarm_helper.py \
 All options also support the existing repository layout defaults. The same frozen archive and engine inputs listed in `CALLER-TIMER.md` were reused, not regenerated. No games, new evaluation seeds, workflow changes or policy selection.
 
 Adapter Git blob `1c777790cf74cd528461466765c2a48ef49cf191`, SHA256 `c3bef158763cb4f5f8b8436800f442b1acc94be2c407c5db1e740edd3a0d68f0`. Helper-test blob `815cc4afdecd7cbbdeea310c64093a936e72724f`, SHA256 `bd751468706d74ce9383cc4be9b9b84f5389cd6f17011e8ea185f05bdb89f624`. Original caller-test blob `38e226a67bf671b578e63d50cda6120970d1bde3` is retained.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

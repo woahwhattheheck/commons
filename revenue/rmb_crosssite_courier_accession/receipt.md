@@ -26,3 +26,7 @@ CLI: `python3 rmb_crosssite_courier_accession.py` → ok true, failures []
 | manifest_sha256 | a0afb5a53305442d6ccee32dc66831a0a09987486aa4e1db53afb2d8590e984c |
 
 Read-only shadow. Existing LIMS remains authoritative. No autonomous certification or release. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

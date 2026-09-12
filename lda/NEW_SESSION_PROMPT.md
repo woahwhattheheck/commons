@@ -227,3 +227,14 @@ Everything is already installed on this laptop; a new session on THIS machine ca
 ### Design / UI
 - **`docs/DESIGN.md`** — the app's look/design system (built in Kotlin via `Ui.kt`, no XML).
   **`docs/CLAUDE_DESIGN.md`** — notes on the external design tooling (reference; tangential).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

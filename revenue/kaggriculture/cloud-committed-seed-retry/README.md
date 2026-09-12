@@ -91,3 +91,7 @@ with identical prior histories. These are dependent development comparisons,
 not sixteen independent seeds or a default-promotion decision. Complete cash
 changes, original traces, source closure and failures from setup/test attempts
 remain in the private project handoff; no original match data are in this folder.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -134,3 +134,13 @@ generating coherently.
 named expert/tower sections from multiple source models plus baked operator sections, with the in-context operator
 layer as the MoE gate over the hand-picked experts, and a trained seam-adapter for cross-family grafts.* (Extends
 INV-110 structural bake + INV-61 RAM operator + the capability stack INV-95.)
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

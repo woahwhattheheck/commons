@@ -18,27 +18,27 @@ OLDER = ROOT / "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    "muhlnickel_spec_guard.py": "74423d71",
-    "test_muhlnickel_spec_guard.py": "742c8fcf",
+    "muhlnickel_spec_guard.py": "8bd147aa",
+    "test_muhlnickel_spec_guard.py": "c023622f",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "cf0fb153",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "b7a90a70",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "984bb3ae",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "fc7f6f09",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "e2f22626",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "leftover-census.md": "9a27014b",
+    "leftover-census.md": "35ae0e97",
     "leftover-census.json": "32d3ee6b",
     ".github/workflows/leftover-id-census.yml": "cd2ac955",
     "host/leftover_id_census.py": "1cfba147",
     "test_work_becomes_automation.py": "2a0c4e51",
     "p/work-becomes-automation-20260830-01.md": "c0ab7d78",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "b437fa14",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "905a7922",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
 }
 
 
@@ -80,7 +80,7 @@ class TestGrokbuildMuhlnickelSpecGuard33723902283BillingLock(unittest.TestCase):
             check=False,
         )
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
-        self.assertIn("Ran 19 tests", tests.stderr + tests.stdout)
+        self.assertIn("Ran 23 tests", tests.stderr + tests.stdout)
         added = [
             guard.AddedLine(
                 "test_grokbuild_muhlnickel_spec_guard_33723902283_billing_lock.py",

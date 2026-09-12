@@ -856,7 +856,7 @@
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
         ],
-        "message": "10 million generated tokens for $1 on Muhlnickel — 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
         "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
         "cta": "Send the capacity ask"
       },
@@ -1246,6 +1246,461 @@
       "gaps": [
         "A checkout click is not authorization, settlement, payout, or BANK_AVAILABLE cash",
         "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
+    },
+    "salesforce-contact-preflight": {
+      "priority": 22,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A Salesforce operations or executive-reporting owner whose contact creates, updates, and merges must resolve each person to exactly one canonical contact.",
+      "trigger": "A retried or duplicated contact event creates a second contact or a conflicting update, and dashboard totals drift from real people.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Salesforce Contact Exactly-Once Preflight Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of contact create, update, merge, replay, and conflict behavior, with receipts.",
+        "route": "commerce.html#salesforce-contact-preflight",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "salesforce-contact-preflight.html",
+        "required": [
+          "Twenty synthetic contact create, update, and merge events",
+          "Synthetic data only; no Salesforce credentials, live org write, production records, or approval decisions"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "A canonical match-key map",
+          "An automation receipt ledger",
+          "A duplicate and conflict ledger",
+          "Dashboard-field lineage totals"
+        ],
+        "acceptance": [
+          "Each unique person resolves to exactly one active canonical contact",
+          "Exact event replay produces no second mutation",
+          "The same event_id with different bytes is rejected"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "permit-intake-receipt": {
+      "priority": 23,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A permitting director or government CIO whose intake must send one missing-item notice and one review-queue route per application.",
+      "trigger": "A resubmitted or replayed permit application creates a second notice or route, or an incomplete packet reaches review.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Permit Intake Receipt Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day diagnostic of permit intake completeness, missing-item notices, queue routing, replay, and conflict behavior, with receipts.",
+        "route": "commerce.html#permit-intake-receipt",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "permit-intake-receipt.html",
+        "required": [
+          "One actual intake workflow with agreed synthetic or de-identified application packets",
+          "Browser-local input only; intake only, never an approval or denial; no resident records, credentials, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "An exact permit-type rule map",
+          "Replay proof for the contract completeness, notice, and routing fixtures",
+          "An auditable applicant receipt tied to the contract revision"
+        ],
+        "acceptance": [
+          "Every checklist item comes from the permit-type matrix",
+          "Incomplete input creates exactly one missing-item notice",
+          "Every recognized type routes exactly once to its review queue"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "catering-deposit-rescue": {
+      "priority": 24,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A restaurant-group catering sales director whose inquiries must produce one rules-valid quote, one follow-up, and at most one deposit intent.",
+      "trigger": "A duplicated or replayed catering inquiry produces a second follow-up or deposit request, or an invalid quote reaches a customer.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Catering Deposit Rescue Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day diagnostic of catering quote rules, follow-up, deposit-intent, replay, and conflict behavior, with receipts.",
+        "route": "commerce.html#catering-deposit-rescue",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "catering-deposit-rescue.html",
+        "required": [
+          "One real quoting workflow with agreed de-identified fixtures",
+          "Browser-local synthetic or de-identified input only; no customer records, credentials, or payment-processor access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "A rules-valid quote packet trace for the contract fixtures",
+          "One local follow-up record and one inert deposit intent or staff exception per inquiry",
+          "A durable JSON receipt tied to the contract revision"
+        ],
+        "acceptance": [
+          "Accepted prices resolve to the fixed rule table",
+          "Identical replay creates at most one follow-up and one deposit intent",
+          "The same event id with different bytes returns EVENT_CONFLICT"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "invoice-exception-pack": {
+      "priority": 25,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A controller, CFO, or AP owner of a multi-location operator whose invoice and purchase-order matching must produce one decision and at most one approval request.",
+      "trigger": "A retried, duplicated, or restarted invoice event creates a second approval request, or a mismatch reaches approval unflagged.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Invoice Exception Pack Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day diagnostic of invoice/PO match, exception, missing-data, replay, crash, and rollback behavior, with receipts.",
+        "route": "commerce.html#invoice-exception-pack",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "invoice-exception-pack.html",
+        "required": [
+          "One workflow with non-confidential or synthetic invoice and PO details",
+          "Synthetic values only; no payment execution, bank connection, credentials, vendor master change, tax advice, or approval authority"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "A one-workflow field and matching contract",
+          "Ten synthetic replay cases",
+          "An exception and approval packet schema",
+          "A crash, retry, and rollback receipt",
+          "A binary pass/fail report in Markdown and JSON"
+        ],
+        "acceptance": [
+          "The same input produces the same decision",
+          "A duplicate replay creates no second approval request",
+          "A crash after durable intent can retry to exactly one approval request"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "open-model-release-receipt": {
+      "priority": 26,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "An open-model release maintainer or release engineer whose release manifest must be verified artifact by artifact before publication.",
+      "trigger": "A published model release is missing a declared artifact, carries a changed byte, or fails to load, and nobody can say at which stage.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Open Model Release Receipt Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day independent completeness diagnostic of one release manifest: eight artifacts, recomputed SHA-256, one manifest-declared loader, JSON and HTML receipts.",
+        "route": "commerce.html#open-model-release-receipt",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "open-model-release-receipt.html",
+        "required": [
+          "One real release manifest declaring exactly eight artifacts, local or HTTP, at most 10 MiB",
+          "Completeness receipt only: no training-quality or loader-side-effect-safety claim, and the receipt does not itself deploy or publish the release"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "An independent completeness verdict for one release manifest",
+          "A JSON receipt",
+          "A static HTML receipt"
+        ],
+        "acceptance": [
+          "PASS only at 8/8 matching artifacts and loader exit 0",
+          "Any missing path, changed byte, timeout, or loader error is FAIL with the exact stage",
+          "Inputs are capped at 10 MiB and 60 seconds",
+          "Loader exit is the loader-behavior assertion; filesystem, network, database, training, and publication side effects of the manifest-declared loader are outside this receipt's assurance"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "fleet-work-order-exactly-once": {
+      "priority": 27,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A fleet maintenance or operations owner whose inspection and fault events must produce exactly one work order and one escalation, even across a crash.",
+      "trigger": "A duplicated inspection event or a worker crash produces a second work order or escalation, or loses one.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Fleet Work Order Exactly-Once Diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate, replay, or conflict failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash-after-prepare, crash-after-effects, resume, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#fleet-work-order-exactly-once",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "fleet-work-order.html",
+        "required": [
+          "One inspection or fault event shape for one approved workflow",
+          "Synthetic inputs only; no vehicle credentials, production fleet connection, or technician dispatch"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "A field contract",
+          "Replay fixtures",
+          "An exception taxonomy",
+          "A run receipt",
+          "A fit verdict for one approved workflow"
+        ],
+        "acceptance": [
+          "A duplicate event plus crash/resume produces one work order, one escalation, and one receipt",
+          "Crash after effects resumes without duplication",
+          "A reused id with different bytes is rejected"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "mcp-conformance-receipt-run": {
+      "priority": 28,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "Anyone shipping, buying, or debugging an MCP server or carrier integration.",
+      "trigger": "Someone needs to know what an MCP server actually does: its negotiated protocol, tools, resources, prompts and parity gaps.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public MCP Conformance page",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Commons carrier catalog product card"
+        ],
+        "message": "$49 for one same-session MCP endpoint run with a shareable exact-evidence JSON receipt.",
+        "route": "commerce.html#mcp-conformance-receipt-run",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "mcp-conformance.html",
+        "required": [
+          "A reachable public MCP endpoint",
+          "Required tool names, if any",
+          "Credentials, tokens, private repository URLs and buyer records stay off Commons"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 49 checkout, then supply the public endpoint for the same-session run. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 49 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Initialize and protocol-negotiation evidence",
+          "Tools, resources, and prompts discovery",
+          "Required-tool parity with exact missing set",
+          "Request, response, input, and final receipt SHA-256 values",
+          "Public-safe endpoint label with URL credentials omitted"
+        ],
+        "acceptance": [
+          "Receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
+          "Endpoint label omits URL userinfo, query, and fragment",
+          "Transport and discovery outcomes are explicit",
+          "Successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
+          "The final receipt SHA-256 recomputes from canonical unsigned JSON"
+        ],
+        "refund": "All sales are final; no refunds."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "mcp-conformance-same-day-repair": {
+      "priority": 29,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "Anyone shipping, buying, or debugging an MCP server or carrier integration.",
+      "trigger": "An MCP server has a reproducible conformance failure that needs one focused repair and a fresh receipt the same day.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public MCP Conformance page",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Commons carrier catalog product card"
+        ],
+        "message": "$250 for one focused same-day MCP implementation repair with regression coverage and a fresh conformance receipt.",
+        "route": "commerce.html#mcp-conformance-same-day-repair",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "mcp-conformance.html",
+        "required": [
+          "A reachable public MCP endpoint with a reproducible failure",
+          "A writable public repository URL",
+          "Credentials, tokens, private repository URLs and buyer records stay off Commons"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 250 checkout, then supply the reproducible failure and writable repository for the same-day repair. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 250 line item readback on 2026-09-10; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Everything in receipt-run",
+          "One focused implementation repair",
+          "Focused regression coverage",
+          "Fresh conformance receipt after repair"
+        ],
+        "acceptance": [
+          "Receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
+          "Endpoint label omits URL userinfo, query, and fragment",
+          "Transport and discovery outcomes are explicit",
+          "Successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
+          "The final receipt SHA-256 recomputes from canonical unsigned JSON"
+        ],
+        "refund": "All sales are final; no refunds."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
       ]
     }
   },
@@ -2062,6 +2517,377 @@
           "observed_at": "2026-09-05T09:13:12.9504913+00:00"
         }
       }
+    },
+    {
+      "id": "salesforce-contact-preflight",
+      "name": "Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/salesforce_contact_preflight/contract.json",
+        "blob_sha": "818a957e49730e02f4427e088e1da8207547de70",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic Salesforce contact preflight diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/salesforce_contact_preflight/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "salesforce-contact-preflight.html",
+        "machine": "revenue/salesforce_contact_preflight/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/4gM8wO4SxbnrdKV9h043S0m",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "permit-intake-receipt",
+      "name": "Permit Intake Receipt Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/permit_intake_receipt/contract.json",
+        "blob_sha": "55a805b7b18afd1b8ea57b862a4becad93689626",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one permit intake receipt diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/permit_intake_receipt/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "permit-intake-receipt.html",
+        "machine": "revenue/permit_intake_receipt/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/8x2cN42Kp8bf8qBgJs43S0n",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "catering-deposit-rescue",
+      "name": "Catering Deposit Rescue Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/catering_deposit_rescue/contract.json",
+        "blob_sha": "cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one catering deposit rescue diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/catering_deposit_rescue/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "catering-deposit-rescue.html",
+        "machine": "revenue/catering_deposit_rescue/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/dRmdR8acR4Z36it2SC43S0q",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "invoice-exception-pack",
+      "name": "Invoice Exception Pack Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/invoice_exception_pack/contract.json",
+        "blob_sha": "faa5742a4b045f55073fa2386aee9f4e17eab76a",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one invoice exception diagnostic for one workflow in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/invoice_exception_pack/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "invoice-exception-pack.html",
+        "machine": "revenue/invoice_exception_pack/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "open-model-release-receipt",
+      "name": "Open Model Release Receipt Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/open_model_release_receipt/contract.json",
+        "blob_sha": "7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one open-model release manifest completeness diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/open_model_release_receipt/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "open-model-release-receipt.html",
+        "machine": "revenue/open_model_release_receipt/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "fleet-work-order-exactly-once",
+      "name": "Fleet Work Order Exactly-Once Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/fleet_work_order/contract.json",
+        "blob_sha": "44a8a71434b7d616cdb3f304b46b51166201011e",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic fleet work-order diagnostic for one approved workflow in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/fleet_work_order/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "fleet-work-order.html",
+        "machine": "revenue/fleet_work_order/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "mcp-conformance-receipt-run",
+      "name": "MCP Conformance Receipt Run",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/mcp_conformance/contract.json",
+        "blob_sha": "f77ed9d042212b4af7a1b062d01d7819ee4461e2",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "receipt_run_fee",
+            "kind": "fixed",
+            "amount": "49.00",
+            "basis": "one MCP endpoint conformance run with a JSON receipt, same session"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/mcp_conformance/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "mcp-conformance.html",
+        "machine": "revenue/mcp_conformance/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
+    },
+    {
+      "id": "mcp-conformance-same-day-repair",
+      "name": "MCP Conformance Same-Day Repair",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/mcp_conformance/contract.json",
+        "blob_sha": "f77ed9d042212b4af7a1b062d01d7819ee4461e2",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "same_day_repair_fee",
+            "kind": "fixed",
+            "amount": "250.00",
+            "basis": "one focused MCP implementation repair with regression coverage and a fresh receipt, same day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/mcp_conformance/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "mcp-conformance.html",
+        "machine": "revenue/mcp_conformance/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:24c88e28d2b025e55506ae46c377b9720bf9350c213cc4f888ec3924f4ce47ad+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-10T23:05:24.713000+00:00"
+        }
+      }
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-outcome-commerce-catalog-json-live-cash-20260909-01",
+      "goat-right-now-catalog-json-live-cash-20260909-01",
+      "commerce.html Live cash"
+    ],
+    "note": "Optional tip-shelf product paths with live checkout. Existing outcome_commerce listings above stay canonical. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

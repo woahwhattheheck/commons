@@ -10,9 +10,10 @@ HERE=Path(__file__).resolve().parent/'reference/titan-history'
 
 
 class TerminalHistoryJoin:
-    def __init__(self, *, period=24, hypotheses, tie_break='baseline'):
+    def __init__(self, *, period=24, hypotheses=None, tie_break='baseline', terminal_enabled=True):
         def dependency(name):
-            return load('_titan_history_'+name,HERE/(name+'.py'))
+            return load('_titan_history_'+name,HERE/(name+'.py'),cache=True)
+        self.dependency=dependency
         self.m=dependency('terminal_mechanics')
         bridge=dependency('selected_action_history')
         fills=dependency('observed_fills');flow=dependency('flow')
@@ -20,6 +21,19 @@ class TerminalHistoryJoin:
         self.bridge=bridge.SelectedActionHistory(ledger=fills.ObservedFillLedger(),
             history=flow.FlowHistory(period=period), interval_type=flow.FlowInterval,
             infer=scenario.infer_rival_flow, mechanics=self.m)
+        self.hypotheses=deepcopy(hypotheses)
+        self.terminal_enabled=terminal_enabled
+        self.tie_break=tie_break
+        self.selector=None
+        self.pending=None
+        self.fill_result=None
+        self.diagnostics={}
+        if terminal_enabled:self._initialize_terminal()
+
+    def _initialize_terminal(self):
+        # Receipt collection is useful in season. It does not authorize or load
+        # the optional final-action optimizer and its solver dependencies.
+        dependency=self.dependency
         self.joint=dependency('joint_terminal_history')
         self.inputs=dependency('terminal_inputs')
         score=dependency('score_endgame');utility=dependency('terminal_utility')
@@ -35,14 +49,12 @@ class TerminalHistoryJoin:
             else:sys.modules['solver']=previous
         self.selector=score.make_score_selector(selector.WholePlanSelector,
             weighted.make_selector,utility.build_table,full.solve_full_table,
-            full.verify_certificate,rng=random.Random(0),tie_break=tie_break)
-        self.hypotheses=deepcopy(hypotheses)
-        self.pending=None
-        self.diagnostics={}
+            full.verify_certificate,rng=random.Random(0),tie_break=self.tie_break)
 
     def observe(self, obs):
         """Bind the ACTUALLY returned prior action, then reconcile once."""
         self.diagnostics={}
+        self.fill_result=None
         if self.pending is None:return
         before,cfg,final,post=self.pending
         if int(obs['step'])<=int(before['step']):return
@@ -50,6 +62,7 @@ class TerminalHistoryJoin:
         self.bridge.record(before,cfg,final,post_unit_shed=post['private']['shed'],
                            post_unit_inventories=post['private']['inventories'])
         self.diagnostics['observed_fills']=self.bridge.observe(obs)
+        self.fill_result=deepcopy(self.bridge.ledger.last_result)
 
     def remember(self, obs, cfg, final, post):
         # A canceled unit stage has no final snapshot. Do not record a requested
@@ -57,7 +70,9 @@ class TerminalHistoryJoin:
         self.pending=None if post is None else deepcopy((obs,cfg,final,post))
 
     def transform(self, obs, cfg, selected, post, *, deadline):
+        if not self.terminal_enabled:return selected
         if int(obs['step'])!=int(cfg.get('episodeSteps',720))-2:return selected
+        if self.selector is None:self._initialize_terminal()
         family=self.joint.build_joint_terminal_scenarios(self.bridge.history,self.m.PRODUCTS,
             int(obs['step']),capacity=int(cfg.get('shedCapacity',100)),
             max_orders=int(cfg.get('maxMarketOrdersPerTurn',10)),**self.hypotheses)

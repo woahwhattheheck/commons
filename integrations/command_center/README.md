@@ -54,4 +54,22 @@ Direct GitHub/Slack readers use workstreams.config.json in the shared private st
 
 GET /api/work?refresh=1 or command_center_refresh_work starts one bounded read and returns observations with progress. An OS-held lock prevents duplicate collectors across UI/gateway processes. No scheduler is installed. Connector-fed sources refresh through their actual connector-equipped peers and the same ingest API; direct refresh does not impersonate those connectors.
 
+A plain read refreshes itself. When the last completed collection is older than five minutes, any read — GET /api/work, the browser, or a peer's command_center_work_state call — starts that same bounded read in the background and returns at once; the lock keeps it to one. Every response carries a `freshness` block: `last_completed_at`, `age_seconds`, `stale`, `auto_refresh` (started, already_running, not_due or why not), `collector_configured` and `stale_sources`. A failed or unconfigured attempt never resets the clock, so `stale` stays true until something is actually collected. A reader that sees `auto_refresh: started` can read again once it finishes. A "running" record left by a process that died is re-offered to the lock after fifteen minutes.
+
+GET /api/observability composes the board bakes — pulse.json, feed/head.json, seats.json, feed/github.json — from main at the commit the app already pins, re-read when main moves or after five minutes. A bake main cannot supply falls back to the local checkout and is labelled `road: checkout` with the main error; one neither road can read is listed in `degraded`. Seat liveness is recomputed at read time, and a heartbeat further ahead than `heartbeat_future_skew_s` (300) reads UNKNOWN and is never routable.
+
 POST /api/work/item or command_center_work_item sets priority, next_action or a prepared job for an exact source_id/item_id. Provider evidence is preserved and prepared packets record not_dispatched. Fleet also exposes actual Gemini submit/inspect/follow-up/cancel routes from the live shared catalog, retaining provider receipts. Native task actions use their actual harness routes.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

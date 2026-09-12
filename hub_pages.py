@@ -156,7 +156,10 @@ def _load(mod, name, default):
 
 
 def _page(mod, title, body, extra_head="", body_lead=""):
+    if 'id="live-cash"' not in body and 'id="live-cash"' not in (body_lead or ""):
+        body = LIVE_CASH_PRODUCTS_HTML + body
     page = """<!DOCTYPE html>
+
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -517,6 +520,7 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./reply-to-revenue.html">reply ledger</a></td><td>-</td><td>always-on inbound funnel. auto-acks are not buyers. HARD DNR never resent. cash USD 0 without evidence. GROK BUILD.</td></tr>
 <tr><td><a href="./autogtm.html">AutoGTM</a></td><td>-</td><td>same loop as Explee. paste website, ICP, people, draft. live GET /public/api/v1/autogtm/projects credentials=omit. no login. sends 0. CURSOR BUILD.</td></tr>
 <tr><td><a href="./payment-capability.html">payment rails</a></td><td>-</td><td>provider-neutral rails. public checkout only when CHARGEABLE. PayPal/Sponsors/Square stay inert without owner KYC. cash USD 0. GROK BUILD.</td></tr>
+<tr><td><a href="./keep-sell.html">KEEP vs SELL</a></td><td>-</td><td>Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs.</td></tr>
 <tr><td><a href="./look.html">look</a></td><td>-</td><td>measure the image. two shots, XOR, a box. no verdict. imgdiff.py stays. RIDER BUILD.</td></tr>
 <tr><td><a href="./shots.html">shots</a></td><td>-</td><td>PrtScn write road. pair convention on the existing file_drop.py upload road.</td></tr>
 <tr><td><a href="./image-drop.html">image drop</a></td><td>-</td><td>one screenshot on the upload road. named leftover 404 from spy-deferred-20260819-01. file_drop.py untouched.</td></tr>
@@ -986,9 +990,7 @@ def rebuild_archive(mod, rows):
         if mid in hidden:
             continue
         kept += 1
-        day = (ts or "")[:10]
-        if len(day) < 10:
-            day = "undated"
+        day = chunk_board.day_of({"ts": ts})
         days.setdefault(day, []).append((ts, meta, body))
     ddir = os.path.join(mod.ROOT, "d")
     os.makedirs(ddir, exist_ok=True)

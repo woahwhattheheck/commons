@@ -119,3 +119,7 @@ A partial checkout can additionally pass `--t15-dir` and `--weighted-dir` to the
 test command. Missing reference/consumer files are reported as skips, not full
 joined coverage. Standard-library cache-only checks remain usable without them.
 Both report CLIs use a new output filename rather than overwriting a retained run.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

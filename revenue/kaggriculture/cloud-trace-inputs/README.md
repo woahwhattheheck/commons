@@ -111,3 +111,7 @@ TRACE-9042 was asked to consume it for original-record materialization and
 independent correspondence. FINCH retains profiling and WIDEFIELD retains its
 original results. No profiler, workflow, source-export job, seed reservation,
 policy/default change, Kaggle upload or new spend is introduced.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

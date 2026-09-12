@@ -137,3 +137,7 @@ Next empirical work needs a separately frozen, observation-selected bank where
 this model actually evaluates both tails and can choose differently. The eight
 inactive cases are useful compatibility evidence, not grounds for another held
 claim or default promotion. Original controller state must remain intact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

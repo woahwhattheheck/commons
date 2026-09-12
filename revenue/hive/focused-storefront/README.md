@@ -47,3 +47,16 @@ That is a planning value, not realized profit. Taxes, overhead, ad spend, charge
 ## Real acceptance still open
 
 Before any real storefront/customer use: document the supplier and shipping/return terms, receive and inspect an authorized physical sample against listing/media, reconcile real landed costs/fees, execute a controlled test order and return through the chosen supplier workflow, and record the observed results. Those gates are deliberately not marked complete by this repository build.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

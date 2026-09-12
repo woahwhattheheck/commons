@@ -98,3 +98,17 @@ operator language over a shared storage fabric.** That is what AOS is building u
 *(Patent: the composed system — a model-processor with σ-configured device peripherals, silicon output codecs, a
 self-scheduling model-kernel, and a storage-first networked pool — is the umbrella the component INVs (95/109/115/117/
 118/119/120) sit under. Add the networked-fabric claim when parallel nodes + the text IPC pipeline are measured.)*
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

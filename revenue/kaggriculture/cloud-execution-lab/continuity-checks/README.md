@@ -80,3 +80,7 @@ Only public/own observations and configuration are passed to the actors;
 recorded expected actions are comparator labels, not actor arguments. Detailed
 per-action hashes/logs remain in the private evidence package; this directory
 publishes only source and the compact source-bound result.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

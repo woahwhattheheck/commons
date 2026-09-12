@@ -26,3 +26,7 @@ python -m py_compile prepare_context.py test_prepare_context_transaction.py
 ```
 
 This is local source-specific execution, not a hosted-CI, Docker, benchmark-score, or submission claim. The source, dedicated tests and corresponding public-manifest entries are delivered together. Original authorship and other fleet scopes remain intact.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

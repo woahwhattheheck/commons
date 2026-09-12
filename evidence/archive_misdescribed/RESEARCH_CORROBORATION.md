@@ -110,3 +110,17 @@ method; finetuning beat prompting** → our operator-then-bake ladder is the mea
 already-QUANTIZED model is essentially unstudied" → our int4 on-device operator install IS that; "no accepted convergence metric for
 behavior targeting without logits" → our MVG/cue-length + graded σ-off residency is a candidate; "no on-device planning benchmark" →
 the lab suite + the single-step sandbox veto is a start. Corroboration that we're on unbroken ground, not behind it.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

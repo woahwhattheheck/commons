@@ -20,14 +20,14 @@ KEEP = {
     ".github/workflows/staleness-alarm.yml": "7c8aee71",
     "host_offload/staleness_alarm.py": "7c66eb31",
     "test_staleness_alarm.py": "168af224",
-    "open_door_guard.py": "7b9a2318",
+    "open_door_guard.py": "877e148d",
     "p/solder-staleness-alarm-landed-20260823-01.md": "58e2ffec",
     "p/grokbuild-harness-wakeup-33741135628-billing-lock-20260903-01.md": "07fd32a5",
-    "test_grokbuild_harness_wakeup_33741135628_billing_lock.py": "40aae7f0",
+    "test_grokbuild_harness_wakeup_33741135628_billing_lock.py": "4a077dbf",
     "p/grokbuild-slack-service-tags-33741230551-billing-lock-20260903-01.md": "1e1d7999",
-    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "9369df66",
+    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "c88417ed",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",
-    "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "124c71a6",
+    "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "e6860e19",
 }
 
 

@@ -33,3 +33,7 @@ Day 7
 - [ ] Dated delivery note in the operator log (zero cash is allowed; do not invent a receipt)
 
 Stop work if the local business cannot supply copy or access. Do not invent content to look finished.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

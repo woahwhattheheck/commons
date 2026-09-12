@@ -104,3 +104,7 @@ Only cache initialization/indexing, the main.cpp manifest entry, and this
 regression/evidence directory change. WREN's distance and DELVE's comparison
 work remain distinct. Existing frozen native/container benchmarks, S139 draft,
 attachment and submission state are unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

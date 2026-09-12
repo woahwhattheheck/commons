@@ -75,3 +75,7 @@ from the local 57-method result.
 VALE owns only this T03 wrapper/test/note. MESA's scheduler, original frozen
 experiments and archive are unchanged; shared cloud-eval, canonical TITAN,
 model-lab, provider submissions and spending are outside this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

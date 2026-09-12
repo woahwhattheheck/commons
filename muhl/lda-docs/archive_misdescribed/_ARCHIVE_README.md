@@ -19,3 +19,13 @@ tools, no process.
 
 **How to treat this folder:** historical record. A new session should read FINALREADME first, keep the *evidence* here
 (the byte-exact circuits, the ~0-RAM measurements, the reproduced genesis hash), and ignore the retracted name/framing.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

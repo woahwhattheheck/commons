@@ -42,3 +42,7 @@ python3.11 run_worker_episode.py \
 This is one continuity episode, not a new strength panel or hosted-runtime
 receipt.  The trace identity demonstrates unchanged decisions and economics
 for this retained episode; it does not prove every hosted execution boundary.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

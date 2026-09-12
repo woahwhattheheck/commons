@@ -44,3 +44,7 @@ The executed VM exposed an 8-CPU cgroup quota and 20 GiB memory limit. Exact
 1.6-CPU throttling was not available, so no result is labelled as measured in
 that CPU envelope. The one-second deadline itself is enforced by Linux
 `ITIMER_REAL`; the reusable adapter documents its main-thread/Linux contract.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

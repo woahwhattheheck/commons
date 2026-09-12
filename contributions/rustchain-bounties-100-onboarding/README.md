@@ -53,3 +53,17 @@ git hash-object CONTRIBUTING.md
 A full clone was unavailable in the Chat runtime: its attempted GitHub clone failed at DNS resolution. No upstream fork was created. Source reads used the connected GitHub integration; patch application and the documented test command were actually executed locally. The clone/checkout steps above are reviewer reproduction instructions, not claimed execution results.
 
 Supply-chain proof: no dependency changes, installations, blind shell downloads, new runtime code, or external executables are introduced by the upstream patch. Source revision and artifact checksum are pinned above. The target upstream repository's licensing terms continue to apply to the patch.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

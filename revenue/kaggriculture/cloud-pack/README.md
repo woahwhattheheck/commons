@@ -121,3 +121,7 @@ reports lean20 losing all 20 games against Kaito v43 and Igor MultiRoute. That
 accepted result remains the competitive context: use the package checker for
 the integration Sanskrit actually selects after stronger-opponent development.
 Preserve the existing accepted v2 submission until the existing owner acts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

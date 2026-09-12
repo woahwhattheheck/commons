@@ -38,3 +38,7 @@ The same test can exercise the saved predecessor by passing the package's `sourc
 ## Integration scope
 
 Only the component's `score_endgame.py`, this directory's unchanged test and two source/evidence notes are delivered. No canonical reference, build manifest, current archive, policy configuration, workflow or submission changes are included. The canonical builder owns any later intake of this component; the presently frozen checkpoint remains its own source identity. This repair does not assert that terminal-history mode is enabled or that a normal single-call game was affected.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

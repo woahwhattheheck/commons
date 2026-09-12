@@ -46,3 +46,19 @@ noun.
 The market numbers in `offer.json` come from primary publisher pages.
 Commons itself is the live demonstration; it is not represented as
 customer proof or collected revenue.
+
+## Live cash
+
+Verified Commons product pages only — no invented Stripe links. Survival Proof ($2,500) has **no** dedicated HTML sell page; do not send buyers to Autopsy for that SKU.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Survival entry: store mailbox / marketplaces / SURETY dashboard (see above). Cite coil MANUAL / husk START — do not remint. Claim `husk-survival-readme-live-cash-20260909-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

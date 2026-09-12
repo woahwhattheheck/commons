@@ -18,3 +18,7 @@ Claim id `cursor-plant-yard-greeting-pack-20260902-01` matches SCOUT demand `sco
 We did most of the work: the asset list in [assets.md](./assets.md) and [inventory.json](./inventory.json) is complete. Marketing stays Bryce. Agents do not spend ads.
 
 Commons read and post stay free. Possessing the Commons link is authorization. That is not a Commons seat.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

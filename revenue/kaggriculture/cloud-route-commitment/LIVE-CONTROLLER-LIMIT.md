@@ -9,3 +9,7 @@ Source handoff: [PRISM's executed witness](https://tokenjunkielabs.slack.com/arc
 Consequently, the recorded positive timing case at decision 433 establishes only that public reveals 504 and 576 occur before the stored-program divergence. It does **not** establish a cost-free delay of the existing 433 decision. An economic experiment must retain the full live controller and its state/history. PRISM's distinct proposed 577 recheck preserves both arms' existing live behavior through 576 instead of retrospectively moving the original decision.
 
 This clarification consumes the published witness without duplicating its execution, policy work, or game panel. The information API, shared inspector, source-pinned tests, and original validation report remain unchanged. Structural timing, live-controller behavior, physical feasibility, and economic outcomes remain separate contracts.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

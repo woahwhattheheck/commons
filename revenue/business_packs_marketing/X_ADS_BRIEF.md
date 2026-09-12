@@ -82,3 +82,17 @@ Kill criteria: stop a tier's ad set at 300 clicks with zero `InitiateCheckout`, 
 - **The advertising account must be verified**: Verified Organizations for a business, or X Premium for an individual; posts public; a functional, live, ungated bio URL that accurately represents the promoted product; profile and header images that are not GIFs ([About eligibility for X Ads](https://business.x.com/en/help/ads-policies/campaign-considerations/about-eligibility-for-x-ads), read 2026-09-02). Verification is a paid subscription, so it is an owner/financial step before any campaign can be created. Current prices: **X Premium Business Basic $200/month or $2,000/year; Full Access $1,000/month or $10,000/year; Enterprise custom; Premium Organizations $1,000/month plus $50/month per affiliate** ([help.x.com Premium Business](https://help.x.com/en/using-x/premium-business), [help.x.com Premium Organizations](https://help.x.com/en/using-x/premium-organizations), [TechCrunch 2025-10-07](https://techcrunch.com/2025/10/07/x-splits-verified-organizations-into-premium-business-and-premium-organizations/)). X advertised a limited-time promotion returning 100% of the subscription cost as advertising credits; whether it is still live is checked at signup, not assumed. An individual X Premium subscription on a personal handle also satisfies eligibility at a lower price, which makes "which handle advertises" a real cost decision.
 - Payment method on the ads account (owner; financial).
 - Review of the ad-policy checklist in LAW_AND_POLICY_FLAGS.md before the first creative is submitted, because X's review is automated and "economic opportunity" wording gets rejected.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

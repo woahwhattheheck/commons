@@ -15,11 +15,11 @@ RECEIPT = ROOT / "p/grokbuild-pr8367-verify-20260902-01.md"
 LIVE = ROOT / "test_pr7915_closed_unmerged.py"
 
 KEEP = {
-    "test_pr7915_closed_unmerged.py": "7f7f9b50",
-    "test_pr7915_harborline_readbacks_ack.py": "678e364b",
+    "test_pr7915_closed_unmerged.py": "b0fa2ef2",
+    "test_pr7915_harborline_readbacks_ack.py": "d0135dea",
     "p/grok-repair-tests-battery-c57e501-pr7915-20260902-01.md": "2e73859d",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "autogtm.html": "fab1d536",
+    "autogtm.html": "2fe108f4",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 

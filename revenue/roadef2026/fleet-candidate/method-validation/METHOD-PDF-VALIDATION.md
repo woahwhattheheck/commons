@@ -26,3 +26,7 @@ The package contains the exact reviewed source and generator, final PDF, both 20
 ## Scope
 
 This is documentation generation and validation only. The existing S139 Gmail draft and attachment were not opened, changed, replaced, or sent. No solver, checker, benchmark, Docker runtime, organizer contact, or qualification submission occurred. The PDF remains held until a later explicit release.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -50,3 +50,7 @@ Labels on the door: **STRUCTURAL** vs **OWNER-PC-ONLY** vs **RUNTIME-MISSING**.
 Path cards 3–4 and 6–14 stay as written. Do not paste them into this sample.
 
 Contact for paid follow-up: `tokenjunkielabs@gmail.com`. Ask for the sale only after the offer and delivery path are the existing public SKUs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.

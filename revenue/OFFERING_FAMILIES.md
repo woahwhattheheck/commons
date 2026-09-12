@@ -48,3 +48,17 @@ A single engagement may include all four families:
 Catalog and outreach work should name the family or families explicitly. Do not treat a zero measurement as permission to remove an offer. Record traffic, reply, acceptance, delivery, transfer, and cash separately.
 
 The accepted-scope-to-delivery composer (`revenue/scope_to_delivery/`, `scope-to-delivery.html`) turns a written agreement in any family into those measured artifacts without inventing the sale.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+

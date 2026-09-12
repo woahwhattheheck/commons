@@ -44,3 +44,7 @@ python -B check_event_prefix_tree.py \
 ## Scope
 
 No game was initialized, no seed was consumed, and no policy or route was selected. The six worlds are explicit conditional own-state models, not calibrated probabilities or paired rival trading. The optimization assumes the supplied actor fork includes its local random state and the injected simulator is the unchanged deterministic T04 consumer. External/global stochastic callbacks remain outside the opt-in contract.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

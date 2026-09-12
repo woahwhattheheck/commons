@@ -34,3 +34,7 @@ Provide the exact base and delivered SHAs, complete changed-file list, patch or 
 Explain reversal using the delivered source commit or patch through the client's normal workflow, followed by regeneration with the original inputs and the same tests. Do not delete client data or force-push shared branches. State whether merge/deployment has actually happened and which external event remains; a submitted PR is not an upstream acceptance receipt.
 
 Request the named client's explicit acceptance against the map. A consolidated in-scope review received within five business days is included. New scope is separately quoted before additional work. Keep private repository contents and client inputs in their existing private facilities; this public checklist stores no client data.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

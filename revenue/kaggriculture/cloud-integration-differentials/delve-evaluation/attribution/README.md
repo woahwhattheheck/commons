@@ -151,3 +151,7 @@ Repository source is Apache-2.0; retain the original component and engine notice
 from the input package. No rival-private state is used by the live actor; full
 paired private states are used only by the offline evidence replay. No Kaggle
 write, new spend, owner-PC work or selected-default change is part of this work.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

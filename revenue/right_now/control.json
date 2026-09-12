@@ -191,7 +191,7 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "14a71031b7dd502f7daa466e3b8d0a10bed448b7fcfc85a65b6ee9362a208abe"
+      "sha256": "699f40fbf9d95720e6469c886e133dbf1b58a65bd01947511117a581d1c27b4d"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",

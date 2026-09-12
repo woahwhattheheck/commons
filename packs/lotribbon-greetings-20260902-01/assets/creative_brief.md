@@ -82,3 +82,7 @@ or “yours outright” on the live door while ToS is HOLD_COUNSEL.
 
 `{channel}` is `tiktok`, `meta`, `pinterest`, or `instagram`. Empty pixel slots
 still load nothing. Sends stay 0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

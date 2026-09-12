@@ -12,3 +12,19 @@ A public rail is chargeable **and** payout-capable only when livemode,
 `charges_enabled`, `payouts_enabled`, link `active=true`, and the
 canonical recorded URL all match. Duplicate Payment Links on the same
 SKU metadata stay inert.
+
+## Live cash
+
+Verified Commons product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Cite husk-survival-marketplaces-live-cash-20260909-01 — do not remint. Claim `husk-checkout-capability-live-cash-20260909-01`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

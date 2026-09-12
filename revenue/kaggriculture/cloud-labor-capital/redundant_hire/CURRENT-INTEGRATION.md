@@ -37,3 +37,7 @@ Set `TITAN_CURRENT_DIR` to exercise another extracted runtime tree. The test con
 ## Scope
 
 No canonical archive, CURRENT pointer, submitted package, upload, game seed reservation, terminal/history mode, ordered consumer, opponent source, or default configuration changes here. The single canonical builder can consume this source and set the feature in a later package after the owner chooses the next checkpoint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

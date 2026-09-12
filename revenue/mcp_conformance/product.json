@@ -68,7 +68,7 @@
     "private_values": "Keep credentials, tokens, private repositories, buyer records, and provider data outside public Commons receipts."
   },
   "payment": {
-    "state": "NOT_CONNECTED",
+    "state": "ACTIVE_CHARGEABLE",
     "claim": "A posted intent, quote, recorded URL, or report is not payment, settlement, payout, bank availability, or cash.",
     "external_requirement": "A chargeable hosted-provider checkout for this exact SKU must be created and verified in the provider before the page may call it active."
   },
@@ -76,7 +76,7 @@
     "receipt JSON parses and carries schema commons-mcp-conformance-receipt-v1",
     "endpoint label omits URL userinfo, query, and fragment",
     "transport and discovery outcomes are explicit",
-    "every response body is represented by exact byte length and SHA-256",
+    "successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
     "the final receipt SHA-256 recomputes from canonical unsigned JSON"
   ],
   "source_paths": [

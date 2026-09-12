@@ -313,6 +313,49 @@ def read_child_report(path: Path, mode: str):
             wall = row.get("wall_s")
             if type(wall) not in (int, float) or wall < 0 or (type(wall) is float and not math.isfinite(wall)):
                 raise ValueError("child report wall time is missing or invalid")
+        if report["status"] == "complete":
+            # Missing identities must not compare equal as None in the supervisor.
+            def require_digest(value, field):
+                if (not isinstance(value, str) or len(value) != 64
+                        or any(char not in "0123456789abcdef" for char in value)):
+                    raise ValueError("child report %s is not a SHA-256 digest" % field)
+
+            if report.get("schema") != "titan.saved-runtime-pass.v1":
+                raise ValueError("complete child report schema is missing or invalid")
+            if report.get("mode") != mode:
+                raise ValueError("complete child report mode differs from requested pass")
+            if report.get("error"):
+                raise ValueError("complete child report also contains an error")
+            for field in ("action_sequence_sha256", "profiler_sha256", "timing_source_sha256"):
+                require_digest(report.get(field), field)
+            inputs = report.get("input")
+            if not isinstance(inputs, dict):
+                raise ValueError("complete child report input identity is missing")
+            if type(inputs.get("records")) is not int or inputs["records"] != len(calls):
+                raise ValueError("complete child report input count differs from calls")
+            for field in ("transport_sha256", "decoded_sha256"):
+                require_digest(inputs.get(field), "input." + field)
+            runtime_sources = report.get("runtime_sources")
+            if not isinstance(runtime_sources, dict):
+                raise ValueError("complete child report runtime source identities are missing")
+            for name, value in runtime_sources.items():
+                if not isinstance(name, str) or not name:
+                    raise ValueError("complete child report runtime source name is invalid")
+                require_digest(value, "runtime_sources." + name)
+            loaded_sources = report.get("loaded_sources")
+            if not isinstance(loaded_sources, dict):
+                raise ValueError("complete child report loaded source identities are missing")
+            for name in ("finch_existing_timing", "finch_profile_target"):
+                value = loaded_sources.get(name)
+                if not isinstance(value, dict) or not isinstance(value.get("path"), str) or not value["path"]:
+                    raise ValueError("complete child report loaded source is missing: " + name)
+                require_digest(value.get("sha256"), "loaded_sources." + name)
+            if report["timing_source_sha256"] != loaded_sources["finch_existing_timing"]["sha256"]:
+                raise ValueError("complete child report timing source identities disagree")
+            for index, row in enumerate(calls):
+                if row["step"] != index:
+                    raise ValueError("complete child report calls are not a zero-based uninterrupted prefix")
+                require_digest(row.get("action_sha256"), "calls[%d].action_sha256" % index)
         json.dumps(report, allow_nan=False)  # validate the eventual receipt encoding too
     except (ValueError, UnicodeError, RecursionError) as exc:
         retained = path.with_name(path.stem + ".invalid.bin")
@@ -389,6 +432,8 @@ def supervise(args):
     matching = (normal.get("status") == profiled.get("status") == "complete" and
                 normal.get("action_sequence_sha256") == profiled.get("action_sequence_sha256") and
                 len(normal["calls"]) == len(profiled["calls"]) and
+                [(row["step"], row["action_sha256"]) for row in normal["calls"]] ==
+                [(row["step"], row["action_sha256"]) for row in profiled["calls"]] and
                 normal.get("runtime_sources") == profiled.get("runtime_sources") and
                 normal.get("input") == profiled.get("input") and
                 normal.get("loaded_sources") == profiled.get("loaded_sources") and

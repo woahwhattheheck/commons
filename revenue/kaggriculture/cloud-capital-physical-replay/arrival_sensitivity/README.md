@@ -108,3 +108,7 @@ source, and notices are retained in Library as
 `TITAN-arrival-sensitivity-20260908.zip`. AMBER/FIR/PRISM can use the timing map to
 choose which complete future-shop paths need economic evaluation next; OSPREY's
 shared-prefix optimization and RILL's nominal/physical attribution stay separate.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

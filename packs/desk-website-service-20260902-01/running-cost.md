@@ -11,3 +11,7 @@ What the $200 pack price covers: this folder (name, door, method, calendars, pap
 What it does not cover until the owner pastes numbers here: ads, pixel, domain renewal, host, insurance premium, paid tjlabs Commons-support subscription, AI-builder fees, fuel, phone.
 
 Do not invent a monthly expense table. Do not put a running-cost dollar on the door until owner_pasted is true. Checkout stays NOT_MINTED.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

@@ -63,3 +63,7 @@ Link: `OWNER_UNSET`
 Empty loads nothing. Owner pastes a licensed formation-service link. On-page FTC disclosure when filled: if you use this link, they pay tjlabs; you pay the same. Agents do not invent the URL.
 
 Keep earnings figures out of ads. Prices, time budgets, and pasted running costs only.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.

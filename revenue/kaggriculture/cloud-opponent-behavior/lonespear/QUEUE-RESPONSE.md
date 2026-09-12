@@ -92,3 +92,7 @@ The companion `TITAN-IRIS-Lonespear-Queue-Consumer-20260907.zip` contains this
 consumer, exact required dependencies/licenses, those six existing cases and the
 complete comparison reports. Its separate `QUEUE-DELIVERY.json` identifies the
 saved Library copy. No new source export, game, seed or policy freeze was needed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

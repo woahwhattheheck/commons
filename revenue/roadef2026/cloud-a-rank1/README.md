@@ -77,3 +77,7 @@ six-decimal worsening.
 
 No Gmail draft, attachment, organizer communication, competition upload, or S139
 submission is performed. The standing submission hold remains unchanged.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

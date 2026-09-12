@@ -61,3 +61,17 @@ With the default strict-lineage policy it additionally rejects exact duplicate e
 ## Deliberate exclusions
 
 No competition images, GEFF labels, hidden-test names, derived features, trained weights, Kaggle credentials, leaderboard scores, ranks, entry acceptance, submission receipt, award, or payment are contained or claimed here. This scaffold does not replace the organizer's scorer or a competitive detector/tracker.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

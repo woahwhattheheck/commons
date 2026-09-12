@@ -76,10 +76,10 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         )
         self.assertTrue(
             pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
-                "d3d6fcc7"
+                "cd2be48f"
             )
         )
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("b312ed6d"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"

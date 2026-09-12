@@ -31,3 +31,7 @@ First8 delivery PR10151 initially mislabeled child execution as RPC; first8/repo
 Full originals, logs, isolated replays, resolved cells, runtime-resolution records and both aggregate summaries are in the487414-byte full32-results.tar.gz bundle, SHA256 `76f5c6fbefe9025017d1e35bd6ae0d8b025e3eafad3c8f54d882bc34c56ccff7`. Reconstruct the five binary parts using full32-bundle.json. Direct compact reports preserve W/T/L, exact paired deltas, mirror counts and error records; raw prior controls remain in PR10009's accepted bundle. Reproduction scripts and configs are in the owned lab.
 
 Next source consumer: T08 integration builder consumes the packaged-default economic result and boundary evidence. Root drives release; no Kaggle submission, public notebook edit, new VM or laptop compute occurred.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -19,23 +19,23 @@ OCCUPANCY = ROOT / "p/cursor-stealable-lanes-occupancy-20260902-01.md"
 READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "7b9a2318",
-    "test_open_door_guard.py": "b9a4acde",
+    "open_door_guard.py": "877e148d",
+    "test_open_door_guard.py": "7ced9bb7",
     ".github/workflows/open-door-guard.yml": "e7321d35",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "f20b41f7",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "3c63f728",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "5ccbaadc",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "fd867afa",
     "p/grokbuild-open-door-guard-33689088100-billing-lock-20260902-01.md": "2d8ebb0c",
-    "test_grokbuild_open_door_guard_33689088100_billing_lock.py": "e36c9ae7",
+    "test_grokbuild_open_door_guard_33689088100_billing_lock.py": "3dda79ea",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "5d2d0ce7",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "404a0206",
     "p/grokbuild-open-door-guard-33689281182-billing-lock-20260902-01.md": "41bcb27d",
-    "test_grokbuild_open_door_guard_33689281182_billing_lock.py": "3de16ab6",
+    "test_grokbuild_open_door_guard_33689281182_billing_lock.py": "b717f459",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "0e0ede06",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "e24deef3",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "1988f75b",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "329ca247",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "host/stealable_lanes.py": "c90284fb",
@@ -68,26 +68,6 @@ class TestGrokbuildOpenDoorGuard33689083255BillingLock(unittest.TestCase):
         )
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("Ran 5 tests", proc.stderr + proc.stdout)
-
-    def test_occupancy_keep_lift_leftover_and_readback_still_pass(self) -> None:
-        leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_occupancy_landed_work_keep_lift"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
-        self.assertIn("Ran 4 tests", leftover.stderr + leftover.stdout)
-        readback = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_occupancy_landed_work_keep_lift_readback"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(readback.returncode, 0, msg=readback.stdout + readback.stderr)
-        self.assertIn("Ran 5 tests", readback.stderr + readback.stdout)
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(

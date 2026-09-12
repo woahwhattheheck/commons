@@ -21,7 +21,7 @@ DOOR = ROOT / "commons-slack.html"
 # Reviewed current composition: owner publication policy and added product doors.
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/slack_mirror.py": "c94f6fa5",
+    "host/slack_mirror.py": "95d6aff3",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "5a5e5804",
@@ -32,9 +32,9 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "autogtm.html": "fab1d536",
-    "hub_pages.py": "97004993",
-    "door.js": "5bc431b1",
+    "autogtm.html": "2fe108f4",
+    "hub_pages.py": "44bbd2ec",
+    "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }

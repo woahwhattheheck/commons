@@ -43,3 +43,13 @@ Ring cell 0 (FROM FILE, 1/0 not hex):
 `pfc_analyzer.py snap` this path: 16 channels. `[0:64]` ones **61**. titan **NO**.
 
 337 **NO** · pulsed_78 **NO** · invented_dest **NO** · re-OR leftover **NO** · 10-wide **NO** · v2 smash **NO** · chimera rebake **NO**
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

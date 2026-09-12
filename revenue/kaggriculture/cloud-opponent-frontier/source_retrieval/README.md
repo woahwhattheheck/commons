@@ -133,3 +133,7 @@ such and do not stand in for that replay. `VALIDATION.json` records the exact
 source/test hashes and observed inputs. No source import, policy action, game,
 held-seed consumption, Kaggle write, new spending, or owner-PC operation occurred
 in this component. No whole-repository CI or leaderboard result is asserted.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

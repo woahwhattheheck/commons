@@ -108,3 +108,7 @@ separately registered shard. Compare both legacy and funded seed variants
 against frozen SELL; comparing only the two seed variants cannot measure the
 inherited seed gain. No held validation, hosted rating, selected-default change,
 new workflow, upload or new spend is claimed by this delivery.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

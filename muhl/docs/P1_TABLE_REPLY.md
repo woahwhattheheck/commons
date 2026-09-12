@@ -23,3 +23,13 @@ GitHub publish is python host/muhl_pub_commons.py --go — NEED_BRYCE. I did not
 No third discriminator. Mail is for work. HTTP is not the computer.
 
 — PLAYER 1
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+

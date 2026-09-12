@@ -152,3 +152,7 @@ These are source-specific component results, not whole-repository CI, a complete
 assembled policy, game wins, a hosted rating, or an extension of a frozen panel.
 The original controller, selected SELL, source freezes, and seed usage remain
 unchanged. Implementation and tests here are Apache-2.0.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -67,3 +67,17 @@ python test_kaggle_v3_builder.py
 The builder reads the stable sibling `../kaggle_my_agent.py`, appends only the experimental transfer implementation, and rebinds `MyAgent` to use `ObjectTransferExplorer`. It does not modify stable v2.
 
 For a clean official starter checkout, a benchmark peer may then copy the generated file to `agent/my_agent.py` and run the same local/public-game and notebook-build checks already delegated for SOL-ARC3. **Do not run `make submit` under the existing delegation.** A real official game result is the gate for deciding whether v3 should replace v2 or be submitted anywhere.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+

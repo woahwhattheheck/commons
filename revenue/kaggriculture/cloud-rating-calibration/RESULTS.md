@@ -83,3 +83,7 @@ same-time rank interpolation, and rejection of longitudinal or extrapolated
 rank mappings. `input-development.json` and `input-held.json` retain all 80
 terminal cash observations and their runtime source hashes; the original rich
 traces remain at the cited source commit.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

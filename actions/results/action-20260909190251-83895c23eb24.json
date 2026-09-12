@@ -1,0 +1,13 @@
+{
+  "id": "action-20260909190251-83895c23eb24",
+  "verb": "GITHUB_COMMIT_AND_PR",
+  "target": "woahwhattheheck/commons",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {repository:woahwhattheheck/commons,path:revenue/kaggriculture/cloud-execution-lab/candidates/v3-t04-tight-guard/TRIAGE.md,branch:gemini/v3-t04-tight-guard,base:main,title:TITAN V3 canonical change triage and tight-opponent guard, Gemini TESSERA, 2026-09-09,body:Delivering T04 source triage, tight opponent guard diff, pytests, and confirmation test plan.}: not found\n",
+  "executed_at": "2026-09-10T23:42:18.466805Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

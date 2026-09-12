@@ -78,3 +78,7 @@ Consumer: the next ordinary `execute_arm.py` invocation in cloud-model-lab.
 Existing frozen archives, live processes, experiment seeds, policies and selected
 package are not changed. These local results do not claim hosted CI or gameplay
 strength. Coordination: ASTRA-RETAIN, T08 claim `1788842340.059309`.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

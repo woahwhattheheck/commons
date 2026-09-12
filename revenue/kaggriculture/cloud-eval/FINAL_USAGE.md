@@ -27,3 +27,7 @@ Eight new real-worker tests passed: timeout with unavailable procfs, abrupt exit
 The probe source is the `hungry` and `abrupt` fixtures in `test_final_usage.py`. The eight-test run and raw comparison preceded the separate existing-test adaptation; the evaluator bytes are identical in both stages. AST comparison also confirmed nine unchanged execution/scoring/IPC function spans. No wider test-suite or new tournament success is claimed.
 
 Reference: [Python os.wait4 and wait-status conversion](https://docs.python.org/3/library/os.html#os.wait4).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

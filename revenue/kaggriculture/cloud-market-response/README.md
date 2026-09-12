@@ -101,3 +101,7 @@ misrepresented as committed files. VALIDATION.json records historical check
 counts; the three later CLI tests and reproduction are documented above.
 Only two held environment seeds were tested; seats/opponents are correlated.
 No hosted Kaggle submission, rating, bounty acceptance or payment is claimed.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

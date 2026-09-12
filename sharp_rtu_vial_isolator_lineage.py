@@ -656,6 +656,7 @@ def empty_journal() -> dict[str, Any]:
         "jobs": {},
         "holds": [],
         "events": [],
+        "row_payload_hashes": {},
         "component_batches": set(),
         "isolator_slots": set(),
         "lyo_shelves": set(),
@@ -816,11 +817,17 @@ def _hold(journal: dict[str, Any], row: dict[str, Any], code: str, *, scheduled:
 
 def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     row_id = _text(row.get("row_id"))
+    row_payload_hash = sha256_hex(row)
+    known_row_payload_hash = journal["row_payload_hashes"].get(row_id)
+    if known_row_payload_hash is not None and known_row_payload_hash != row_payload_hash:
+        raise ValueError("ROW_ID_PAYLOAD_MISMATCH")
     existing_job = next(
         (item for item in journal["jobs"].values() if item["row_id"] == row_id),
         None,
     )
     if existing_job is not None:
+        if existing_job["row_payload_hash"] != row_payload_hash:
+            raise ValueError("ROW_ID_PAYLOAD_MISMATCH")
         _event(
             journal,
             "REPLAY_NOOP",
@@ -833,10 +840,12 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         }
     verdict = classify_record(row, journal)
     if not verdict["ok"]:
+        journal["row_payload_hashes"].setdefault(row_id, row_payload_hash)
         return _hold(journal, row, verdict["code"], scheduled=False)
 
     acc_id = verdict["accession_id"]
     if acc_id in journal["jobs"]:
+        journal["row_payload_hashes"].setdefault(row_id, row_payload_hash)
         _event(journal, "REPLAY_NOOP", {"accession_id": acc_id, "submission_id": verdict["submission_id"]})
         return {"kind": "REPLAY_NOOP", "accession_id": acc_id, "submission_id": verdict["submission_id"]}
 
@@ -856,6 +865,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "accession_id": acc_id,
         "submission_id": verdict["submission_id"],
         "row_id": row_id,
+        "row_payload_hash": row_payload_hash,
         "sponsor_id": verdict["sponsor_id"],
         "tech_transfer_id": verdict["tech_transfer_id"],
         "material_id": verdict["material_id"],
@@ -905,6 +915,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
     record["evidence_pack"] = rendered_pack(record)
     record["evidence_digest"] = sha256_hex(record["evidence_pack"]) if record["evidence_pack"] is not None else None
     record["pack_status"] = pack_status(record)
+    journal["row_payload_hashes"].setdefault(row_id, row_payload_hash)
     journal["jobs"][acc_id] = record
     journal["component_batches"].add((verdict["component_id"], verdict["batch_id"]))
     if verdict["isolator_slot"]:

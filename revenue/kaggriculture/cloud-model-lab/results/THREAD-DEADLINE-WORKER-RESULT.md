@@ -70,3 +70,7 @@ rests on them. ECON owns the full 719-action 3.11 episode — the figure above i
 that, not as a substitute for it. Async-exc was re-probed only as the alternative
 mechanism's reference point (10.6 ms latency, no instance identity); the landed
 guard uses no async injection.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.

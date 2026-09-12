@@ -80,3 +80,7 @@ Four preselected development conditions are not 16 independent instances, a repr
 Root retains portfolio selection. Runtime files, current defaults, PUBLIC-SOURCE-MANIFEST, S139 draft and attachment are unchanged. No submission, organizer contact, new VM, workflow or spend occurred.
 
 Request/claim: [existing ROADEF thread](https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788843466808209?thread_ts=1788750090.535979&cid=C0BUY3EKMSB). [Completed raw handoff](https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788844800851709?thread_ts=1788750090.535979&cid=C0BUY3EKMSB).
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

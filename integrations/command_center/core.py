@@ -89,6 +89,20 @@ def _public_tool(tool, runtime_id):
 class CommandCenter:
     SOURCE_TTL = 300
     RUNTIME_TTL = 60
+    # A read of connected work older than this starts one bounded refresh in
+    # the background, whoever reads it: the browser, an HTTP caller, or a peer
+    # through the command_center_work_state tool. There is still no scheduler;
+    # a refresh only ever follows a read, and the cross-process lock keeps it to
+    # one at a time. The browser's own visible-tab cadence uses the same bound.
+    WORK_REFRESH_TTL = 300
+    # A "running" record older than this is re-offered to the lock, which is
+    # held by the OS for as long as a collector really is running; a process
+    # that died mid-read no longer blocks every later read from refreshing.
+    WORK_RUNNING_GRACE = 900
+    # The observability bakes (pulse.json, feed/head.json, seats.json,
+    # feed/github.json) are read from main at the pinned commit, re-read when
+    # main moves or after this long, whichever is first.
+    BAKE_TTL = 300
     SOURCE_PATHS = (
         ("resource-ledger", "ground/RESOURCE_LEDGER.json", False),
         ("connected-capabilities", "inventory/resources/connected_capabilities.json", False),
@@ -105,6 +119,11 @@ class CommandCenter:
         self._work_store = None
         self._work_store_lock = threading.Lock()
         self._work_refresh_thread = None
+        # Process-local and deliberately not the sources table: the bakes move
+        # every few minutes, and a persisted observation per move would flood
+        # the derived feed with source events.
+        self._bakes = {}
+        self._bakes_lock = threading.Lock()
         self.repo = repo
         self.gateway_url = _url(gateway_url, gateway=True)
         self.fetcher = fetcher or self._fetch_http
@@ -838,7 +857,8 @@ class CommandCenter:
             row = db.execute("SELECT data FROM work_refresh WHERE id=1").fetchone()
         return json.loads(row["data"]) if row else {
             "status": "idle", "started_at": None, "finished_at": None,
-            "note": "Refresh runs only when requested; no scheduled producer."}
+            "note": ("Refresh runs when requested or when a read finds the last "
+                     "one older than the TTL; no scheduled producer.")}
 
     def _save_work_refresh(self, status):
         with self._db() as db:
@@ -887,10 +907,85 @@ class CommandCenter:
 
     def work_state(self, refresh=False):
         if refresh:
-            self.refresh_work()
+            started = self.refresh_work()
+            trigger = "requested"
+        else:
+            started, trigger = self._refresh_work_if_due()
         state = self._work_store_instance().state()
         state["refresh"] = self._work_refresh_status()
+        state["freshness"] = self._work_freshness(state, started, trigger)
         return state
+
+    def _work_refresh_due(self, status):
+        """(due, why) from the last refresh record, without taking the lock."""
+        current = status.get("status")
+        if current == "running":
+            age = _age(status.get("started_at"))
+            if age < self.WORK_RUNNING_GRACE:
+                return False, "running"
+            return True, "running_record_expired"
+        last = status.get("finished_at") or status.get("started_at")
+        if not last:
+            return True, "never_refreshed"
+        if _age(last) >= self.WORK_REFRESH_TTL:
+            return True, "older_than_ttl"
+        return False, "fresh"
+
+    def _refresh_work_if_due(self):
+        due, why = self._work_refresh_due(self._work_refresh_status())
+        if not due:
+            return None, why
+        try:
+            return self.refresh_work(), why
+        except CoreError:
+            # A read must never fail because a background refresh could not
+            # start; the freshness block says what happened.
+            return {"ok": False, "started": False, "already_running": False,
+                    "error": "work_refresh_unavailable"}, why
+
+    def _work_freshness(self, state, started, trigger):
+        """What a reader needs to judge this read, in one place.
+
+        `age_seconds` is measured from the last refresh that actually
+        collected (completed or completed_with_errors). `stale` is true when
+        that is older than the TTL or nothing has been collected yet; per-source
+        ages stay on each source. `auto_refresh` says whether this read started
+        one, so a caller knows a re-read in a few seconds may be newer.
+        """
+        status = self._work_refresh_status()
+        # Freshness counts only a refresh that actually collected. An attempt
+        # that failed or found no collector configured does not make the data
+        # any newer, so it does not reset the clock.
+        completed = status.get("last_completed_at")
+        age = _age(completed)
+        age_seconds = None if age == float("inf") else max(0, int(age))
+        if started is None:
+            outcome = "not_due" if trigger == "fresh" else trigger
+        elif started.get("started"):
+            outcome = "started"
+        elif started.get("already_running"):
+            outcome = "already_running"
+        else:
+            outcome = started.get("error") or "not_started"
+        stale_sources = sorted(
+            source.get("id") for source in state.get("sources", [])
+            if source.get("stale") or source.get("data_stale"))
+        return {
+            "ttl_seconds": self.WORK_REFRESH_TTL,
+            "last_refresh_status": status.get("status"),
+            "last_refresh_finished_at": status.get("finished_at"),
+            "last_completed_at": completed,
+            "age_seconds": age_seconds,
+            "stale": age_seconds is None or age_seconds >= self.WORK_REFRESH_TTL,
+            "collector_configured": status.get("status") != "not_configured",
+            "trigger": trigger,
+            "auto_refresh": outcome,
+            "stale_sources": stale_sources,
+            "note": ("Any read starts one bounded refresh when the last one is "
+                     "older than ttl_seconds and returns at once; read again "
+                     "after the refresh finishes for newer observations. "
+                     "Connector-fed sources refresh only when their peers ingest."),
+        }
 
     def ingest_work(self, payload):
         return self._work_store_instance().ingest(payload)
@@ -904,10 +999,14 @@ class CommandCenter:
         if handle is None:
             return {"ok": True, "started": False, "already_running": True,
                     "refresh": self._work_refresh_status()}
+        prior = self._work_refresh_status()
         started = {"id": "work-refresh-" + uuid.uuid4().hex, "status": "running",
                    "started_at": _now(), "finished_at": None, "owner_pid": os.getpid(),
                    "config_path": str(self.state_dir / "workstreams.config.json"),
-                   "read_only": True, "scheduled_producer": False}
+                   "read_only": True, "scheduled_producer": False,
+                   # Carried forward so a failed attempt does not erase when the
+                   # data last came from a real collection.
+                   "last_completed_at": prior.get("last_completed_at")}
         try:
             self._save_work_refresh(started)
             worker = threading.Thread(target=self._run_work_refresh,
@@ -960,10 +1059,66 @@ class CommandCenter:
             final.update(status="failed", error="work_refresh_" + type(exc).__name__)
         finally:
             final["finished_at"] = _now()
+            if final.get("status") in ("completed", "completed_with_errors"):
+                final["last_completed_at"] = final["finished_at"]
             try:
                 self._save_work_refresh(final)
             finally:
                 self._release_work_refresh_lock(handle)
+
+    def observability(self, limit=20, repo_root=None, refresh=False):
+        """The observability snapshot, composed from main at the current commit.
+
+        A checkout on the owner's host is only as current as its last pull, so
+        the panel reads the bakes the board workflow commits, at the commit the
+        rest of this app already pins. If main cannot be read, each bake falls
+        back to the checkout and says so (road=checkout, plus the main error);
+        a bake neither road can read is named as degraded, never drawn empty.
+        """
+        from . import observability as obs
+        self._refresh_sources(force=refresh)
+        head = self._source("github-main")
+        sha = head.get("sha") if head and head.get("status") == "live" else None
+        reads = {}
+        for name, rel in obs.SOURCES:
+            main = self._bake(rel, sha, force=refresh) if sha else None
+            if main and main.get("ok"):
+                reads[name] = main
+                continue
+            local = obs._read(repo_root, rel) if repo_root else {
+                "path": rel, "ok": False, "error": "no_checkout", "value": None}
+            local["road"] = "checkout"
+            local["main_error"] = (main or {}).get("error") or (
+                "main unavailable: " + (head.get("error") or "not read")
+                if head else "main not read")
+            reads[name] = local
+        payload = obs.compose(reads, limit)
+        payload["main"] = {"sha": sha, "status": head.get("status") if head else None,
+                           "observed_at": head.get("observed_at") if head else None,
+                           "bake_ttl_seconds": self.BAKE_TTL}
+        return payload
+
+    def _bake(self, rel, sha, force=False):
+        """One bake from main at `sha`, cached until main moves or BAKE_TTL."""
+        with self._bakes_lock:
+            cached = self._bakes.get(rel)
+            if (cached and not force and cached["sha"] == sha
+                    and time.time() - cached["fetched"] < self.BAKE_TTL):
+                return dict(cached["read"])
+        url = ("https://raw.githubusercontent.com/" + self.repo + "/" + sha +
+               "/" + rel)
+        try:
+            value = self.fetcher("GET", url)
+            if not isinstance(value, (dict, list)):
+                raise CoreError(502, "Bake must be a JSON object or array.")
+            read = {"path": rel, "ok": True, "value": value, "road": "main",
+                    "sha": sha, "observed_at": _now()}
+        except Exception as exc:
+            read = {"path": rel, "ok": False, "value": None, "road": "main",
+                    "sha": sha, "error": self._failure(exc)}
+        with self._bakes_lock:
+            self._bakes[rel] = {"sha": sha, "fetched": time.time(), "read": read}
+        return dict(read)
 
     def state(self, refresh=False):
         self._refresh_sources(force=refresh)

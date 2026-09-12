@@ -73,3 +73,16 @@ python browser_check.py --browser /path/to/chromium --document data/demo/transcr
 **Browser validation boundary:** development Chromium returned `ERR_BLOCKED_BY_ADMINISTRATOR` on localhost navigation. The full browser script has therefore NOT passed here. Separate offline, network-disabled DOM rendering checks passed at 1440px and 390px, including draft tabs, source-review invalidation and no horizontal overflow. Those rendering checks are not substitutes for a browser/HTTP end-to-end receipt. The actual HTTP tests passed separately.
 
 Before deploying customer work, exercise that complete browser workflow in the intended environment, use an appropriate shared-workspace access boundary, and keep the SQLite database/WAL/SHM files together when making a stopped-service backup. Keep runtime data and recordings out of source control. Export a working folder before deleting an episode or moving the workspace.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -41,3 +41,16 @@ python -m py_compile app.py test_app.py
 The focused suite uses real temporary SQLite databases and an actual `ThreadingHTTPServer` bound to loopback. It covers subscribe → welcome → preferences → issue export → unsubscribe suppression, revision history/source preservation, reopening, export determinism at the semantic level, idempotent publish/unsubscribe retries, malformed input, and the three-demo-issue archive.
 
 No claim is made that a subscriber was contacted, a provider accepted an import, a scheduled issue was delivered, or the proposed commercial offer was sold.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

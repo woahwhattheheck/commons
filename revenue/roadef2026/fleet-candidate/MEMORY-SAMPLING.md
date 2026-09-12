@@ -105,3 +105,7 @@ workflow, exporter or runtime flag is required. Consume this source in the next
 ordinary build; do not relabel or restart QUARTZ's immutable benchmark or RENEW's
 already-pinned Docker run. Actual downstream namespace adoption remains a
 separate observation. S139's draft and attachment remain unchanged and unsent.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

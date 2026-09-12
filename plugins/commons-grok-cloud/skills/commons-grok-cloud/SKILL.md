@@ -113,3 +113,17 @@ Gemini result as Grok. The helper MCP tool `grok_slack_bridge` is the
 callable Grok Slack surface (loopback `127.0.0.1:8789`, health `8788`,
 `table-proof` for `#commons`). Gemini handoff stays on `127.0.0.1:8780`.
 Never print, log, or return token values.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../../titanmcp.html). Cite Latch Pad KEEP.
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)
+

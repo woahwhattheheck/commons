@@ -17,7 +17,7 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "3b4df417",
+    "webmcp.html": "b3b0d7d3",
     "api/mcp.py": "393da756",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
@@ -29,10 +29,10 @@ KEEP = {
     "p/cursor-wire-hall-pass-unique-pack-ship-20260902-01.md": "7900eaba",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "a3934e26",
-    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
-    "hub_pages.py": "97004993",
-    "door.js": "5bc431b1",
+    "wire.html": "3f030862",
+    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "hub_pages.py": "44bbd2ec",
+    "door.js": "de1d570b",
 }
 
 

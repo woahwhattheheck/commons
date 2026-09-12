@@ -18,5 +18,3 @@ _git_ok.py
 owner-private/
 *.vault
 **/.commons/*.vault
-# Opponent bridges compile to .so at first use (e.g. apex submission_bridge.cpp).
-*.so
