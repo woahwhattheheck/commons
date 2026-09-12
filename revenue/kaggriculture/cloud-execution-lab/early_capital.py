@@ -190,12 +190,22 @@ def _project_post_unit_private(mechanics, observation, configuration, selected, 
             hands_actions = []
         unit_actions = [farmer_action, *hands_actions]
 
+        plant_demand = {}
+        for action in unit_actions:
+            if isinstance(action, list) and len(action) >= 2 and action[0] == 'PLANT':
+                crop = action[1]
+                plant_demand[crop] = plant_demand.get(crop, 0) + 1
+        blocked = {crop for crop, count in plant_demand.items()
+                   if count > seeds.get(crop, 0)}
+
         turns_per_day = max(1, int(configuration.get('turnsPerDay', 24)))
         board_size = int(configuration.get('boardSize', 10))
         shed_capacity = int(configuration.get('shedCapacity', 100))
         day = now // turns_per_day
         for index, action in enumerate(unit_actions):
-            apply_unit(farm, private, index, action, board_size, day,
+            allowed = (['PASS'] if isinstance(action, list) and len(action) >= 2
+                       and action[0] == 'PLANT' and action[1] in blocked else action)
+            apply_unit(farm, private, index, allowed, board_size, day,
                        turns_per_day, shed_capacity)
 
         post_shed = private.get('shed')
