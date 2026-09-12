@@ -17,11 +17,11 @@ The convergence atlas correctly marks a bare final-action `WATER -> PASS` rewrit
 1. the current WATER is HYDRA-eligible;
 2. the same plant has positive stored `yield_units`, so `["HARVEST"]` is productive at that site under the official engine;
 3. the next supplied observation is the next calendar day and shows the same crop/planted-day identity alive with `consecutive_unwatered == 1` and not yet watered;
-4. the supplied next-day action contains exactly one `["WATER"]` actor at that site;
-5. no actor at that same site executes `["DIG"]` in the recovery callback, so actor order cannot remove the plant before WATER or destroy it after WATER;
+4. the supplied next-day action contains exactly one semantic WATER actor at that site (`row[0] == "WATER"`; trailing tokens do not hide another engine-live WATER);
+5. no actor at that same site executes semantic DIG in the recovery callback, so actor order cannot remove the plant before WATER or destroy it after WATER;
 6. both observations are executable callbacks (`step <= 718` for the standard 720-step episode); step 719 is not accepted as recovery evidence.
 
-Only when all six are true may the research candidate replace the current WATER row with HARVEST. The next-day action is evidence, not edited state. Missing/ambiguous recovery, same-site destructive DIG, terminal step 719, zero stored yield, identity drift, weed transition, wrong day, fertilizer-bonus exposure, malformed action shape, or any existing HYDRA blocker leaves the current action unchanged.
+Only when all six are true may the research candidate replace the current WATER row with HARVEST. The next-day action is evidence, not edited state. Missing/ambiguous recovery, duplicate semantic WATER, same-site destructive DIG, terminal step 719, zero stored yield, identity drift, weed transition, wrong day, fertilizer-bonus exposure, malformed action shape, or any existing HYDRA blocker leaves the current action unchanged.
 
 This is deliberately narrower than a generic "find some useful action" scheduler. It converts the blocked PASS into one source-provable productive operation without inventing route/movement feasibility.
 
@@ -34,4 +34,4 @@ This is deliberately narrower than a generic "find some useful action" scheduler
 
 ## Next gate
 
-Use current-native/replay traces to census HYDRA-eligible WATER rows that also carry stored yield, then ask how often the native next-day route already returns a non-destructive WATER callback to that site. Only after both-seat paired economics and zero plant-loss regressions should the shared sticky-obligation scheduler owner consider turning the two-day certificate into an obligation-aware live proposal.
+Use current-native/replay traces to census HYDRA-eligible WATER rows that also carry stored yield, then ask how often the native next-day route already returns exactly one non-destructive semantic WATER callback to that site. Only after both-seat paired economics and zero plant-loss regressions should the shared sticky-obligation scheduler owner consider turning the two-day certificate into an obligation-aware live proposal.
