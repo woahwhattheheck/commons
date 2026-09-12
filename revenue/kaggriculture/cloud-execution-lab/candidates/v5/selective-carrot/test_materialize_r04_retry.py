@@ -6,9 +6,12 @@ from pathlib import Path
 import sys
 import types
 import unittest
+import tempfile
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import materialize_r04_retry as retry
+
 
 OVERLAY = b"""
 _ArleneAgent = Agent
@@ -76,6 +79,11 @@ class RetrySafeR04(unittest.TestCase):
         tapes.load_tapes = lambda: [[{"route": i}] for i in range(13)]
         context = types.ModuleType("full_production_context")
         context.configuration = {"turnsPerDay": 24}
+
+        class Base:
+            def __init__(self):
+                self.base_initialized = True
+
         raw = b"class Agent:\n    def __init__(self):\n        pass\n" + OVERLAY
         patched = retry.patch_vendor(raw)
         namespace = {}
@@ -151,6 +159,45 @@ class RetrySafeR04(unittest.TestCase):
         self.assertEqual(returned["market"], [["SELL", "WOOL", 0]])
         self.assertEqual(r04._POLICY.players[0].plan, 0)
         self.assertEqual(r04._POLICY.players[0].last_step, 140)
+
+    def test_pair_publication_is_create_exclusive_and_alias_safe(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            out, receipt = root / "candidate.tar.gz", root / "receipt.json"
+            retry._publish_pair(out, receipt, b"tar-bytes", b"{}\n")
+            self.assertEqual(out.read_bytes(), b"tar-bytes")
+            self.assertEqual(receipt.read_bytes(), b"{}\n")
+            alias = root / "alias"
+            with self.assertRaisesRegex(ValueError, "distinct paths"):
+                retry._publish_pair(alias, alias, b"x", b"y")
+            self.assertFalse(alias.exists())
+
+    def test_preexisting_receipt_rolls_back_owned_tar(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            out, receipt = root / "candidate.tar.gz", root / "receipt.json"
+            receipt.write_bytes(b"sentinel")
+            with self.assertRaises(FileExistsError):
+                retry._publish_pair(out, receipt, b"tar-bytes", b"{}\n")
+            self.assertFalse(out.exists())
+            self.assertEqual(receipt.read_bytes(), b"sentinel")
+
+    def test_receipt_write_failure_rolls_back_owned_pair(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            out, receipt = root / "candidate.tar.gz", root / "receipt.json"
+            real = retry._write_fd
+            calls = []
+            def fail_second(fd, body):
+                calls.append(body)
+                if len(calls) == 2:
+                    raise OSError("injected receipt write failure")
+                return real(fd, body)
+            with patch.object(retry, "_write_fd", side_effect=fail_second):
+                with self.assertRaisesRegex(OSError, "receipt write failure"):
+                    retry._publish_pair(out, receipt, b"tar-bytes", b"{}\n")
+            self.assertFalse(out.exists())
+            self.assertFalse(receipt.exists())
 
     def test_players_are_independent_and_forced_plan2_retries(self):
         agent, r04, context, calls = self.fixture()
