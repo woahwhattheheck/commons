@@ -1,7 +1,10 @@
 import hashlib
 import json
+from pathlib import Path
 import sys
+import tempfile
 import types
+from unittest import mock
 
 stub = types.ModuleType("build_delivery")
 stub.archive_bytes = lambda files: b""
@@ -122,3 +125,57 @@ def test_compose_off_vs_on_diff_is_config_only_after_shared_code_patch():
     assert json.loads(on["TITAN-CONFIG.json"])["_r04_mirror_sell_queue"] is True
     assert b"mirror_sell_queue_enabled" in off["main.py"]
     assert b"mirror_sell_queue_enabled" in off["frozen_selected.py"]
+
+
+def test_pair_publication_rolls_back_tar_if_receipt_is_taken():
+    with tempfile.TemporaryDirectory() as temp:
+        tar = Path(temp) / "candidate.tar.gz"
+        receipt = Path(temp) / "candidate-manifest.json"
+        receipt.write_bytes(b"sentinel")
+        try:
+            builder._publish_pair(tar, b"candidate", receipt, {"schema": "test"})
+        except FileExistsError:
+            pass
+        else:
+            raise AssertionError("expected create-exclusive receipt collision")
+        assert not tar.exists()
+        assert receipt.read_bytes() == b"sentinel"
+
+
+def test_pair_publication_rolls_back_both_on_receipt_write_failure():
+    with tempfile.TemporaryDirectory() as temp:
+        tar = Path(temp) / "candidate.tar.gz"
+        receipt = Path(temp) / "candidate-manifest.json"
+        with mock.patch.object(builder.json, "dump", side_effect=OSError("receipt write failed")):
+            try:
+                builder._publish_pair(tar, b"candidate", receipt, {"schema": "test"})
+            except OSError as error:
+                assert "receipt write failed" in str(error)
+            else:
+                raise AssertionError("expected injected receipt write failure")
+        assert not tar.exists()
+        assert not receipt.exists()
+
+
+def test_pair_publication_rejects_alias_before_creation():
+    with tempfile.TemporaryDirectory() as temp:
+        target = Path(temp) / "candidate"
+        try:
+            builder._publish_pair(target, b"candidate", target.parent / "." / target.name,
+                                  {"schema": "test"})
+        except ValueError as error:
+            assert "must be different" in str(error)
+        else:
+            raise AssertionError("expected tar/receipt alias rejection")
+        assert not target.exists()
+
+
+def test_pair_publication_writes_exact_deterministic_bytes():
+    with tempfile.TemporaryDirectory() as temp:
+        tar = Path(temp) / "candidate.tar.gz"
+        receipt = Path(temp) / "candidate-manifest.json"
+        payload = b"candidate"
+        document = {"schema": "test", "archive_sha256": hashlib.sha256(payload).hexdigest()}
+        builder._publish_pair(tar, payload, receipt, document)
+        assert tar.read_bytes() == payload
+        assert receipt.read_text(encoding="utf-8") == json.dumps(document, indent=2) + "\n"
