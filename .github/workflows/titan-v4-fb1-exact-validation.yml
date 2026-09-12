@@ -1,0 +1,68 @@
+name: TITAN V4 fb1 exact validation
+
+on:
+  push:
+    branches:
+      - astra/v4-fb1-validation-20260911-01
+
+permissions:
+  contents: read
+
+jobs:
+  exact-fb1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact gameplay validation target
+        uses: actions/checkout@v4
+        with:
+          ref: fb1ee7b081613cdd13009d9529de89929a3f88d8
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Verify exact Git payload identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay'
+          test "$(git rev-parse HEAD)" = 'fb1ee7b081613cdd13009d9529de89929a3f88d8'
+          test "$(git hash-object "$ROOT/r04_m1_wheat_trade.py")" = 'd4d068d62ffc8fcd25842193bc7031f764630262'
+          test "$(git hash-object "$ROOT/checks/test_v4_m1_money_overflow.py")" = '5695a41e8baca3da1b0b730ebcb3c27e6fa0bc8d'
+          test "$(git hash-object "$ROOT/checks/test_v4_b10_m1_authorship.py")" = '9d52c8f37bf983a902db6fc1ec06581de2358bc4'
+
+      - name: Compile focused M1/B10 modules
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        run: |
+          python -m py_compile \
+            r04_m1_wheat_trade.py \
+            r04_b10_m1_bridge.py \
+            r04_b10_public_supply_order.py \
+            r04_full_router.py
+
+      - name: Focused validation - normal interpreter
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m unittest -v \
+            checks.test_v4_m1_money_overflow \
+            checks.test_v4_m1_wheat_trade \
+            checks.test_v4_b10_m1_authorship \
+            checks.test_v4_b10_public_supply_order \
+            checks.test_v4_b10_custom_market_params \
+            checks.test_v4_predecessor_positional_abi
+
+      - name: Focused validation - optimized interpreter
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay
+        env:
+          PYTHONPATH: .
+        run: |
+          python -O -B -m unittest -v \
+            checks.test_v4_m1_money_overflow \
+            checks.test_v4_m1_wheat_trade \
+            checks.test_v4_b10_m1_authorship \
+            checks.test_v4_b10_public_supply_order \
+            checks.test_v4_b10_custom_market_params \
+            checks.test_v4_predecessor_positional_abi
