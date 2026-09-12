@@ -19,6 +19,7 @@ from typing import Any, Mapping, Sequence
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 DEFAULT_TURNS_PER_DAY = 24
+DEFAULT_EPISODE_STEPS = 720
 DEFAULT_MAX_MARKET_ORDERS = 10
 CROPS = frozenset(("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON"))
 MOVES = {
@@ -46,12 +47,16 @@ def _mapping(value: Any, name: str) -> Mapping[str, Any]:
 
 
 def _config_int(
-    configuration: Mapping[str, Any] | None, key: str, default: int
+    configuration: Mapping[str, Any] | None,
+    key: str,
+    default: int,
+    *,
+    minimum: int = 1,
 ) -> int:
     if configuration is None:
         return default
     cfg = _mapping(configuration, "configuration")
-    return _strict_int(cfg.get(key, default), key, minimum=1)
+    return _strict_int(cfg.get(key, default), key, minimum=minimum)
 
 
 def _action_rows(action: Mapping[str, Any], actor_count: int) -> list[list[Any]]:
@@ -172,6 +177,9 @@ def assess_same_eod_plant_survival(
         turns_per_day = _config_int(
             configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY
         )
+        episode_steps = _config_int(
+            configuration, "episodeSteps", DEFAULT_EPISODE_STEPS, minimum=2
+        )
         max_orders = _config_int(
             configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_MARKET_ORDERS
         )
@@ -181,6 +189,20 @@ def assess_same_eod_plant_survival(
             raise PlantGuardInputError("hour_out_of_day")
         if hour != step % turns_per_day:
             raise PlantGuardInputError("hour_step_mismatch")
+
+        # The official interpreter marks the episode done at
+        # step >= episodeSteps - 2. The callback at episodeSteps - 2 is the
+        # final executable callback; later nominal clock rows are never
+        # executed. A same-EOD doom certificate therefore requires not merely
+        # an authored suffix shaped through hour 23, but proof that this day's
+        # hour-23 callback actually occurs inside the executable horizon.
+        final_executable_step = episode_steps - 2
+        if step > final_executable_step:
+            raise PlantGuardInputError("step_after_final_executable_callback")
+        eod_step = step + (turns_per_day - hour - 1)
+        if eod_step > final_executable_step:
+            return _not_certified("eod_not_reachable_before_terminal")
+
         farm, private, positions, board_size = _farm_and_private(observation)
         actor_count = len(positions)
         current_commands = _action_rows(selected_action, actor_count)
