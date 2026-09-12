@@ -1,22 +1,26 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Source-pinned full-interpreter witness for Gemini's FERT floor-buy/apply seam.
+"""Source-pinned full-interpreter witnesses for Gemini's FERT floor-buy/apply seam.
 
-This is an experiment, not a policy.  It tests the strongest mechanically valid
+This is an experiment, not a policy. It tests the strongest mechanically valid
 core of the historical claim:
 
     BUY_PRODUCT FERTILIZER at the public $1 floor
       -> shed custody
       -> PICKUP into a farmer inventory
       -> FERTILIZE a live crop
-      -> realize one extra crop unit under an otherwise idle unit schedule.
+      -> realize incremental crop yield under otherwise idle unit capacity.
 
-The experiment deliberately charges the real market buy and uses the real
-interpreter for every custody/action transition.  It also records that the
-path consumes two unit callbacks (PICKUP and FERTILIZE) before the common WATER,
-so a positive constructed cash delta is not field or activation evidence.
+Two constructed witnesses are retained deliberately:
 
-The authenticated engine loader and primitive fixture/tick helpers come from the
-existing fwd-buy-census source authority rather than a second engine model.
+* ``run_pair`` is the minimal one-water CARROT proof (+1 possible unit).
+* ``run_amortized_pair`` holds a MELON through all three fertilizer-active days
+  and tests the stronger source consequence: one FERT plus the same two custody/
+  application callbacks can boost three common WATER callbacks, so the action
+  cost is amortized across the whole inclusive three-day fertilizer window.
+
+Both deliberately charge the real market buy and use the real interpreter for
+every custody/action transition. Positive constructed cash is mechanism evidence,
+never field reachability or activation authority.
 """
 from __future__ import annotations
 
@@ -28,9 +32,10 @@ from typing import Any
 
 import opportunity_cost as oc
 
-SCHEMA = "titan.v4.gemini-fert-floor-apply/v1"
+SCHEMA = "titan.v4.gemini-fert-floor-apply/v2"
 ITEM = "FERTILIZER"
 CROP = "CARROT"
+AMORTIZED_CROP = "MELON"
 
 
 def unit_action(row, *, market=()):
@@ -54,11 +59,16 @@ def floor_buy_threshold(engine: Any) -> int:
     raise RuntimeError("FERTILIZER floor not reached in bounded source search")
 
 
-def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000):
+def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
+             crop: str = CROP, yield_units: int = 1):
     if type(fert_inventory) is not int or fert_inventory < 0:
         raise ValueError("fert_inventory must be a nonnegative exact int")
     if type(cash) is not int or cash < 0:
         raise ValueError("cash must be a nonnegative exact int")
+    if crop not in engine.CROPS:
+        raise ValueError("unknown crop")
+    if type(yield_units) is not int or yield_units < 0:
+        raise ValueError("yield_units must be a nonnegative exact int")
     state, env = oc.fixture(engine, seat, cash=cash, wheat_inventory=10000, shops=0)
     obs = state[seat].observation
     obs.market["inventory"][ITEM] = fert_inventory
@@ -66,8 +76,8 @@ def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000):
 
     farm = obs.farms[seat]
     x, y = farm["farmer"]
-    tile = engine._new_plant(CROP, 0, env.configuration.turnsPerDay)
-    tile.update(yield_units=1, consecutive_unwatered=0,
+    tile = engine._new_plant(crop, 0, env.configuration.turnsPerDay)
+    tile.update(yield_units=yield_units, consecutive_unwatered=0,
                 watered_today=False, fertilized_until_day=-1)
     farm["tiles"][y][x] = tile
     return state, env
@@ -89,15 +99,41 @@ def _tick(engine, state, env, seat, step, own_action):
     return row
 
 
+def _trace_at(arm: dict, step: int) -> dict:
+    for row in arm["trace"]:
+        if row["step"] == step:
+            return row
+    raise KeyError(step)
+
+
+def _base_certificate(engine: Any, *, seat: int, fert_inventory: int,
+                      control: dict, candidate: dict) -> dict:
+    quote = engine.market_price(ITEM, fert_inventory - 1)
+    return {
+        "schema": SCHEMA,
+        "seat": seat,
+        "fert_inventory_before": fert_inventory,
+        "fert_one_unit_postbuy_quote": quote,
+        "source_price_floor": engine.PRICE_FLOOR,
+        "at_price_floor": quote == engine.PRICE_FLOOR,
+        "candidate_cash": candidate["cash"],
+        "control_cash": control["cash"],
+        "own_cash_delta": candidate["cash"] - control["cash"],
+        "rival_cash_delta": candidate["rival_cash"] - control["rival_cash"],
+        "same_final_physical": candidate["physical"] == control["physical"],
+        "extra_unit_callbacks": ["PICKUP FERTILIZER", "FERTILIZE"],
+        "extra_unit_callback_count": 2,
+        "market_buy_rows": 1,
+        "constructed_idle_capacity_only": True,
+        "current_native_engagement_claim": False,
+        "policy_claim": False,
+        "activation_claim": False,
+    }
+
+
 def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
              cash: int = 3000) -> dict:
-    """Run a fixed idle-capacity control against the real floor-buy/apply path.
-
-    The common path WATERs on day 3, HARVESTs, DROPs at the shed and liquidates
-    all CARROT, then DIGs the expired annual tile.  The candidate uses otherwise
-    idle callbacks 91 and 92 for PICKUP/FERTILIZE after buying one FERT at 90.
-    Rival actions are PASS throughout.
-    """
+    """Minimal one-WATER CARROT control against the real floor-buy/apply path."""
     if type(seat) is not int or seat not in (0, 1):
         raise ValueError("seat must be 0 or 1")
     if fert_inventory is None:
@@ -132,32 +168,94 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
 
     control = result["control"]
     candidate = result["floor_apply"]
-    prebuy_quote = engine.market_price(ITEM, fert_inventory - 1)
-    candidate_harvest = candidate["trace"][4]["inventories"][0].get(CROP, 0)
-    control_harvest = control["trace"][4]["inventories"][0].get(CROP, 0)
-    result["certificate"] = {
-        "schema": SCHEMA,
-        "seat": seat,
-        "fert_inventory_before": fert_inventory,
-        "fert_one_unit_postbuy_quote": prebuy_quote,
-        "source_price_floor": engine.PRICE_FLOOR,
-        "at_price_floor": prebuy_quote == engine.PRICE_FLOOR,
+    candidate_harvest = _trace_at(candidate, 94)["inventories"][0].get(CROP, 0)
+    control_harvest = _trace_at(control, 94)["inventories"][0].get(CROP, 0)
+    cert = _base_certificate(
+        engine, seat=seat, fert_inventory=fert_inventory,
+        control=control, candidate=candidate,
+    )
+    cert.update({
+        "witness": "MINIMAL_ONE_WATER_CARROT",
+        "crop": CROP,
         "candidate_harvest_units": candidate_harvest,
         "control_harvest_units": control_harvest,
         "incremental_harvest_units": candidate_harvest - control_harvest,
-        "candidate_cash": candidate["cash"],
-        "control_cash": control["cash"],
-        "own_cash_delta": candidate["cash"] - control["cash"],
-        "rival_cash_delta": candidate["rival_cash"] - control["rival_cash"],
-        "same_final_physical": candidate["physical"] == control["physical"],
-        "extra_unit_callbacks": ["PICKUP FERTILIZER", "FERTILIZE"],
-        "extra_unit_callback_count": 2,
-        "market_buy_rows": 1,
-        "constructed_idle_capacity_only": True,
-        "current_native_engagement_claim": False,
-        "policy_claim": False,
-        "activation_claim": False,
-    }
+        "fertilizer_active_water_days_used": 1,
+    })
+    result["certificate"] = cert
+    return result
+
+
+def run_amortized_pair(engine: Any, *, seat: int = 0,
+                       fert_inventory: int | None = None,
+                       cash: int = 3000) -> dict:
+    """Use one FERT across the complete three-day MELON WATER window.
+
+    MELON planted day 0 can be watered on days 10, 11 and 12. One FERTILIZE on
+    day 10 is active through day 12 inclusive. The candidate and control share
+    the same three WATER callbacks; only BUY/PICKUP/FERTILIZE differ. EOD ticks
+    are executed normally so ``watered_today`` and plant aging are source-real.
+    """
+    if type(seat) is not int or seat not in (0, 1):
+        raise ValueError("seat must be 0 or 1")
+    if fert_inventory is None:
+        fert_inventory = floor_buy_threshold(engine)
+    world = _fixture(
+        engine, seat, fert_inventory=fert_inventory, cash=cash,
+        crop=AMORTIZED_CROP, yield_units=0,
+    )
+    result = {}
+    water_steps = {10 * 24 + 3, 11 * 24, 12 * 24}
+    harvest_step = 12 * 24 + 1
+    liquidation_step = 12 * 24 + 2
+    for arm in ("control", "floor_apply"):
+        state, env = copy.deepcopy(world)
+        trace = []
+        for step in range(10 * 24, liquidation_step + 1):
+            market = []
+            if arm == "floor_apply" and step == 10 * 24:
+                market = [["BUY_PRODUCT", ITEM, 1]]
+            if arm == "floor_apply" and step == 10 * 24 + 1:
+                row = ["PICKUP", ITEM]
+            elif arm == "floor_apply" and step == 10 * 24 + 2:
+                row = ["FERTILIZE"]
+            elif step in water_steps:
+                row = ["WATER"]
+            elif step == harvest_step:
+                row = ["HARVEST"]
+            elif step == liquidation_step:
+                row = ["DROP"]
+                market = [["SELL", AMORTIZED_CROP, 100]]
+            else:
+                row = ["PASS"]
+            trace.append(_tick(engine, state, env, seat, step,
+                               unit_action(row, market=market)))
+        result[arm] = oc.finish(state, seat, trace)
+
+    control = result["control"]
+    candidate = result["floor_apply"]
+    candidate_harvest = _trace_at(candidate, harvest_step)["inventories"][0].get(
+        AMORTIZED_CROP, 0)
+    control_harvest = _trace_at(control, harvest_step)["inventories"][0].get(
+        AMORTIZED_CROP, 0)
+    cert = _base_certificate(
+        engine, seat=seat, fert_inventory=fert_inventory,
+        control=control, candidate=candidate,
+    )
+    cert.update({
+        "witness": "AMORTIZED_THREE_DAY_MELON",
+        "crop": AMORTIZED_CROP,
+        "candidate_harvest_units": candidate_harvest,
+        "control_harvest_units": control_harvest,
+        "incremental_harvest_units": candidate_harvest - control_harvest,
+        "fertilizer_active_water_days_used": 3,
+        "common_water_steps": sorted(water_steps),
+        "extra_unit_callbacks_per_incremental_unit": (
+            2 / (candidate_harvest - control_harvest)
+            if candidate_harvest > control_harvest else None
+        ),
+    })
+    result["certificate"] = cert
     return result
 
 
@@ -168,15 +266,21 @@ def run_panel(engine: Any) -> dict:
         for inventory in (threshold - 1, threshold, threshold + 100):
             pair = run_pair(engine, seat=seat, fert_inventory=inventory)
             rows.append(pair["certificate"])
+    amortized = [
+        run_amortized_pair(engine, seat=seat, fert_inventory=threshold)["certificate"]
+        for seat in (0, 1)
+    ]
     return {
         "schema": SCHEMA,
         "floor_prebuy_inventory_threshold": threshold,
-        "cells": rows,
+        "minimal_cells": rows,
+        "amortized_floor_cells": amortized,
         "limits": [
-            "Constructed idle-callback fixture; no natural/current-native reachability claim",
+            "Constructed idle-callback fixtures; no natural/current-native reachability claim",
             "Two extra unit callbacks are real opportunity cost and are not assigned zero field value",
+            "The amortized witness reuses the same PICKUP/FERTILIZE cost across three common WATER days",
             "Rival is PASS; no opponent-robustness claim",
-            "Positive cash in this fixture is mechanism evidence only, not promotion authority",
+            "Positive cash in these fixtures is mechanism evidence only, not promotion authority",
         ],
     }
 
@@ -196,7 +300,8 @@ def main():
         parser.exit(2, str(exc) + "\n")
     print(json.dumps({
         "floor_prebuy_inventory_threshold": report["floor_prebuy_inventory_threshold"],
-        "cells": len(report["cells"]),
+        "minimal_cells": len(report["minimal_cells"]),
+        "amortized_floor_cells": len(report["amortized_floor_cells"]),
         "full_interpreter_callbacks": report["full_interpreter_callbacks"],
     }, sort_keys=True))
 
