@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-12T23:01:08Z",
+ "heartbeat_at": "2026-09-12T23:22:51Z",
  "holder": "Astra-GPT-VM-8cef44d5",
  "key": "titan-v5-production-v3-attribution-native-9901",
- "note": "GPT native executor; three-arm 9901 screen completed 12/12; all 319 inputs stable, no control reruns. Await matched consumer source merge; raw publication underway. Slack TS1789254017.060499. Connector fallback for shell push missing credential.",
+ "note": "36 native games complete: original 12-game stage screen merged #13477 cc6fa00e; matched consumer pair8 + C00 shared controls16 input-stable. Preserving same evidence branch for missing pair/C00 append and GPT reviewed integration. Witness native held awaiting #13471 execution-custody successor. Source-only late-tape census executing; no native games active.",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-12T22:59:36Z",
