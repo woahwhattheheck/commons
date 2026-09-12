@@ -1,30 +1,42 @@
-# V3.1 -> V4 regression coverage ledger
+# V3.1 → V4 package-first regression coverage
 
-This is a convergence artifact for the single TITAN V5 line. It does not add a gameplay policy and does not authorize a rollback. Its job is to stop the swarm from repeatedly rediscovering the same V3.1/V4 differences while leaving other score-facing differences unexamined.
+This lane treats the **exact submitted archives** as execution authority. Raw Git refs, nearby commits, and `SOURCE.json` are provenance only unless their bytes match an authenticated archive member.
 
-## What it proves
+Authoritative submissions:
 
-`coverage.py` reads historical Git objects directly and fails closed when a pinned blob drifts, a changed row has no status, an active row has anything other than one primary carrier, or a decomposed Python file contains a changed symbol not named in `COVERAGE.json`.
+- V3.1 / submission `56172377`: `titan-v3.1-56172377-5db3921f.tar.gz`, SHA256 `5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361`, 148 files.
+- V4 / submission `56182437`: `titan-v4-56182437-4d960155.tar.gz`, SHA256 `4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b`, 75 files.
 
-The first high-value distinction is **source ref versus submitted-package authority**. The historical V3.1 source ref `a90d888f...` has a different `frozen_selected.py`, but the V3.1 assembled-base witness `741e7262` and submitted V4 source `4af11131...` both resolve that seller to Git blob `fc7baf5c179818a55037f6a61d92984d81d1a21c`. Therefore E05/E08/same-turn-funding experiments remain useful V4-active self-ablations, but copying the raw `a90d.../frozen_selected.py` and calling it “restore V3.1” would be a provenance error.
+CI downloads the public release assets, verifies the exact whole-archive digest/size, rejects unsafe or non-regular members, recomputes every member digest/size, and checks an immutable canonical inventory-root digest plus the expected cross-version closure. The whole-archive SHA256 is the root authority, so no raw source checkout is trusted as a substitute for submission bytes.
 
-Other exact identities already closed here:
+The package delta is much smaller and materially different from the earlier raw-source story:
 
-- active Arlene producer is identical in the two submitted refs (`bdb9cf58...`), so the strong 13-tape donor is a new V5 producer treatment rather than a V3.1 producer restoration;
-- `seed_funding.py`, `deadline_adapter.py`, `terminal.py`, and `terminal_composition.py` are byte-identical;
-- `reference/titan-current/redundant_hire.py` is a real changed member and is already owned by the authenticated #13442 E20 treatment;
-- `selected_sell_core.py` changed, but under the submitted strict acceptance rule the added no-rival early prune cannot remove any candidate that the older strict min-all-scenarios rule would accept;
-- `TITAN-CONFIG.json` differs by exactly four added true flags: `idle_fertilizer`, `crop_release`, `early_capital`, and `town_procurement`, owned by the existing #13426 factorial screen.
+- 74 common paths; 63 byte-identical; 11 changed common paths.
+- 74 V3.1-only paths.
+- exactly one V4-only path: `town_procurement.py`.
+- the 11 changed common paths are pinned in `COVERAGE.json`.
+- Python AST symbol deltas are recomputed from the authenticated tar members, not from raw source refs.
 
-The root `titan_runtime.py` and `scheduler.py` are intentionally decomposed at symbol granularity. CI must stay red until every changed symbol is assigned to an existing causal lane or carries a concrete noncausal proof. This makes residual V3.1->V4 behavior an explicit queue instead of a verbal assumption.
+## Active topology
 
-## Run
+The exact V3.1 package config has `r04_sale_window=true`. Its package `TitanAgent.act()` returns through `_v3_r03_act()` before canonical controller initialization; that delegate imports `r04_full_router.install()`, whose factory returns standalone `v3_agent`. V4 removes that package/config surface and runs the canonical runtime.
+
+That makes **route topology** the causal center. Canonical helper definitions that happen to differ between archived files are not automatically executed V3.1 semantics. They may still be useful as V4 self-ablations, but they do not satisfy V3.1 rollback coverage without separate reachability evidence.
+
+The exact config delta is also authoritative: all 16 common keys have identical values; V3.1 has its V3/R04-only keys; V4 adds exactly `town_procurement=true`. V3.1 already has `crop_release`, `idle_fertilizer`, and `early_capital` enabled, so a four-off V4 factorial is a V4 self-ablation, not an exact V3.1 config restore.
+
+## Verify
 
 ```bash
-cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/regression-coverage
-python -B coverage.py
+python -B -m py_compile coverage.py test_coverage.py
 python -B -m unittest -v test_coverage.py
 python -O -B -m unittest -v test_coverage.py
+python -B coverage.py \
+  --v31-archive /path/to/titan-v3.1-56172377-5db3921f.tar.gz \
+  --v4-archive /path/to/titan-v4-56182437-4d960155.tar.gz
+python -O -B coverage.py \
+  --v31-archive /path/to/titan-v3.1-56172377-5db3921f.tar.gz \
+  --v4-archive /path/to/titan-v4-56182437-4d960155.tar.gz
 ```
 
-A green ledger is evidence that the named historical surface has no **unknown classification**. It is not evidence that every active causal lane improves score, and it does not promote any treatment into runtime. Promotion still requires the existing matched-game and single-V5 composition gates.
+This is evidence/control-plane code only. It does not mutate gameplay, defaults, config, CURRENT, archives, release state, or Kaggle state.

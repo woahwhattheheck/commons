@@ -1,35 +1,71 @@
-# SPDX-License-Identifier: Apache-2.0
-from __future__ import annotations
-
+import io
 import json
-from pathlib import Path
+import tarfile
+import tempfile
 import unittest
+from pathlib import Path
 
-import coverage as c
-
-
-class SymbolScannerTests(unittest.TestCase):
-    def test_method_module_and_class_changes_are_distinguished(self):
-        before = b"X = 1\nclass A:\n    Y = 2\n    def f(self):\n        return 1\n\ndef g():\n    return 3\n"
-        after = b"X = 2\nclass A:\n    Y = 4\n    def f(self):\n        return 2\n\ndef g():\n    return 3\n"
-        self.assertEqual(c.changed_symbols(before, after), {"__module__", "A.__class__", "A.f"})
-
-    def test_added_method_is_a_changed_symbol(self):
-        before = b"class A:\n    def f(self):\n        return 1\n"
-        after = b"class A:\n    def f(self):\n        return 1\n    def g(self):\n        return 2\n"
-        self.assertEqual(c.changed_symbols(before, after), {"A.g"})
+import coverage as target
 
 
-class HistoricalCoverageTests(unittest.TestCase):
-    def test_full_historical_ledger_has_zero_unknowns(self):
-        ledger = json.loads((Path(__file__).resolve().parent / "COVERAGE.json").read_text(encoding="utf-8"))
-        report = c.verify(ledger)
-        self.assertEqual(report["unknown_rows"], 0)
-        self.assertEqual(
-            report["config_added"],
-            {"crop_release": True, "early_capital": True, "idle_fertilizer": True, "town_procurement": True},
-        )
+class CoverageHelpersTest(unittest.TestCase):
+    def _tar(self, members, *, symlink=None):
+        tmp = tempfile.NamedTemporaryFile(suffix=".tar.gz", delete=False)
+        tmp.close()
+        path = Path(tmp.name)
+        with tarfile.open(path, "w:gz") as tf:
+            for name, raw in members:
+                info = tarfile.TarInfo(name)
+                info.size = len(raw)
+                tf.addfile(info, io.BytesIO(raw))
+            if symlink is not None:
+                info = tarfile.TarInfo(symlink)
+                info.type = tarfile.SYMTYPE
+                info.linkname = "target"
+                tf.addfile(info)
+        self.addCleanup(path.unlink, missing_ok=True)
+        return path
+
+    def test_normalize_rejects_escape_absolute_and_backslash(self):
+        for value in ("../x", "/x", "a/../../b", "a\\b", ""):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                target.normalize_member_path(value)
+        self.assertEqual(target.normalize_member_path("./a/b"), "a/b")
+
+    def test_archive_inventory_rejects_duplicate(self):
+        path = self._tar([("./a", b"one"), ("a", b"two")])
+        with self.assertRaisesRegex(ValueError, "duplicate"):
+            target.archive_inventory(path)
+
+    def test_archive_inventory_rejects_symlink(self):
+        path = self._tar([("a", b"one")], symlink="link")
+        with self.assertRaisesRegex(ValueError, "non-regular"):
+            target.archive_inventory(path)
+
+    def test_pair_summary(self):
+        left = {"members": {"a": {"sha256":"1","size":1}, "b":{"sha256":"2","size":1}}}
+        right = {"members": {"a": {"sha256":"1","size":1}, "b":{"sha256":"3","size":1}, "c":{"sha256":"4","size":1}}}
+        self.assertEqual(target.pair_summary(left, right), {
+            "common_count":2,"identical_common_count":1,"changed_common_count":1,
+            "v31_only_count":0,"v4_only_count":1,"changed_common_paths":["b"],"v4_only_paths":["c"]})
+
+    def test_config_delta(self):
+        got = target.config_delta(json.dumps({"same":1,"old":2}).encode(), json.dumps({"same":1,"new":3}).encode())
+        self.assertEqual(got["common_equal_count"], 1)
+        self.assertEqual(got["changed_common"], {})
+        self.assertEqual(got["v31_only"], {"old":2})
+        self.assertEqual(got["v4_only"], {"new":3})
+
+    def test_changed_symbols(self):
+        left = b"x=1\ndef f():\n return 1\nclass C:\n def m(self):\n  return 1\n"
+        right = b"x=2\ndef f():\n return 2\nclass C:\n def m(self):\n  return 1\n"
+        self.assertEqual(target.changed_symbols(left, right), ["f", "__module__"])
+
+    def test_manifest_digest_is_canonical(self):
+        a = {"b":1,"a":2}
+        b = {"a":2,"b":1}
+        self.assertEqual(target.sha256_bytes(target.canonical_json(a)), target.sha256_bytes(target.canonical_json(b)))
 
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()
