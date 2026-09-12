@@ -144,6 +144,21 @@ class FreshnessTests(unittest.TestCase):
         self.assertEqual("INVALID", report["verdict"])
         self.assertIn("symlink live path forbidden", report["problems"][0])
 
+    def test_archive_member_count_bound_invalid(self):
+        path = self.root / "candidate.tar.gz"
+        with tarfile.open(path, "w:gz") as tf:
+            for index in range(fresh.MAX_TAR_MEMBERS + 1):
+                info = tarfile.TarInfo(f"junk/{index}")
+                info.size = 0
+                tf.addfile(info, io.BytesIO(b""))
+            for name, data in CORE.items():
+                info = tarfile.TarInfo(name)
+                info.size = len(data)
+                tf.addfile(info, io.BytesIO(data))
+        report = self.verify(path, sha256(path.read_bytes()))
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("member count", report["problems"][0])
+
     def test_type_poisoned_digest_and_commit_invalid(self):
         archive, digest = self.archive()
         r1 = self.verify(archive, "ABC")
