@@ -101,13 +101,19 @@ def observe(observation: Any) -> dict[str, Any]:
     state = _state(player)
     last = state["last_step"]
     if last is not None and step < int(last):
+        # Episode/replay rewind: stale receipts have no authority.
         reset(player=player)
         state = _state(player)
+
+    # A suppression is useful only on its exact authored source callback.  Once
+    # that callback is in the past, drop it.  Keep current-step entries so both
+    # normal finalization and an outer fallback can apply the same idempotent cut.
     state["confirmed"] = {
         int(source): int(qty)
         for source, qty in state["confirmed"].items()
         if int(source) >= step and int(qty) > 0
     }
+
     report = {
         "schema": SCHEMA,
         "step": step,
@@ -138,10 +144,14 @@ def observe(observation: Any) -> dict[str, Any]:
             )
             state["pending"] = None
         elif step > pending.target + 1:
+            # The authoritative next observation was missed.  Do not infer a
+            # fill from a later state that may contain unrelated WHEAT changes.
             report.update(status="receipt_window_missed", source=pending.source, target=pending.target)
             state["pending"] = None
         elif step <= pending.target:
+            # Same-step re-entry is harmless; retain the pending target.
             report.update(status="receipt_pending", source=pending.source, target=pending.target)
+
     state["last_step"] = step
     return report
 
@@ -194,6 +204,8 @@ def suppress_confirmed(observation: Any, action: Any, configuration: Any = None)
         return action, report
     index, qty = hit
     if index >= _prefix_limit(action, configuration):
+        # The later authored row is not executable under the current engine cap,
+        # so there is no duplicate economic buy to suppress.
         report["status"] = "source_row_inert_suffix"
         return action, report
     expected_target, expected_qty = SOURCE_TO_TARGET[step]
@@ -244,18 +256,27 @@ def _target_pre_market_wheat(observation: Any, action: Any) -> int | None:
 
 
 def apply(observation: Any, action: Any, configuration: Any = None, *, completed: bool) -> tuple[Any, dict[str, Any]]:
-    """Apply source suppression or initiate one exact target advance."""
+    """Apply source suppression or initiate one exact target advance.
+
+    Source suppression is receipt-owned and may run on completed or fallback
+    actions.  A new target advance starts only from a completed current action
+    whose unit stage cannot change shed WHEAT and whose market already contains
+    the source-bound WHEAT buy row.
+    """
     step = _step(observation)
     player = _player(observation)
+
     suppressed, report = suppress_confirmed(observation, action, configuration)
     if report["changed"] or step in SOURCE_TO_TARGET:
         return suppressed, report
+
     if step not in MOVES:
         report["status"] = "not_townprocure_step"
         return action, report
     if not completed:
         report["status"] = "target_requires_completed_action"
         return action, report
+
     hit = _unique_wheat_buy(action)
     if hit is None:
         report["status"] = "target_shape_drift"
@@ -270,17 +291,28 @@ def apply(observation: Any, action: Any, configuration: Any = None, *, completed
             report["status"] = "target_wheat_sale_conflict"
             return action, report
     source, move_qty = MOVES[step]
+    # The source-authenticated route bank binds these target purchases to the
+    # same quantity as the source.  Refuse any runtime shape drift rather than
+    # changing a different purchase intent.
     if baseline_qty != move_qty:
-        report.update(status="target_quantity_drift", baseline_qty=baseline_qty, expected_qty=move_qty)
+        report.update(
+            status="target_quantity_drift",
+            baseline_qty=baseline_qty,
+            expected_qty=move_qty,
+        )
         return action, report
+
     post_wheat = _target_pre_market_wheat(observation, action)
     if post_wheat is None:
         report["status"] = "target_unit_wheat_ambiguous"
         return action, report
+
     state = _state(player)
-    if state.get("pending") is not None:
+    pending = state.get("pending")
+    if pending is not None:
         report["status"] = "target_pending_receipt_conflict"
         return action, report
+
     out = deepcopy(action)
     out["market"][index][2] = baseline_qty + move_qty
     state["pending"] = _Pending(
