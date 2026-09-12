@@ -168,6 +168,21 @@ class H3bSheepClip(unittest.TestCase):
                 self.assertIs(self.run_case(action, observation, state,
                                             configuration=configuration), action)
 
+    def test_missing_standard_configuration_evidence_fails_closed(self):
+        cases = [("none", None)]
+        for missing in lane.STANDARD_CONFIG:
+            configuration = dict(CONFIG)
+            del configuration[missing]
+            cases.append((missing, configuration))
+        for label, configuration in cases:
+            with self.subTest(missing=label):
+                action, observation, state = fixture()
+                r04._V233_STATES[0] = state
+                result = lane.apply_h3b_sheep_clip(
+                    action, observation, configuration, enabled=True)
+                self.assertIs(result, action)
+                self.assertEqual(state["work"][1]["command"], ["HARVEST"])
+
     def test_out_of_range_player_fails_closed_even_with_third_farm_and_state(self):
         action, observation, state = fixture()
         observation["farms"].append(copy.deepcopy(observation["farms"][0]))

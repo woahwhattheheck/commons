@@ -48,14 +48,15 @@ def _cfg(configuration: Any, name: str, default: Any) -> Any:
 
 def _standard_configuration(configuration: Any) -> bool:
     for name, expected in STANDARD_CONFIG.items():
-        actual = _cfg(configuration, name, expected)
+        actual = _cfg(configuration, name, _MISSING)
         if actual is _MISSING or type(actual) is not type(expected) or actual != expected:
             return False
     return True
 
 
 def _strict_sheep(tile: Any):
-    if not isinstance(tile, dict) or tile.get("animal") != "SHEEP":
+    if (not isinstance(tile, dict) or tile.get("kind") != "PASTURE"
+            or tile.get("animal") != "SHEEP"):
         return None
     placed = tile.get("placed_day", _MISSING)
     units = tile.get("yield_units", _MISSING)
