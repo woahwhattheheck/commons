@@ -1,0 +1,46 @@
+name: titan-v5-v31-v4-regression-coverage
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v5-v31-v4-regression-coverage.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/regression-coverage/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-v31-v4-regression-coverage-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coverage-contracts:
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Assert exact triggering head
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and verify exact historical coverage
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/regression-coverage
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile coverage.py test_coverage.py
+          python -B coverage.py
+          python -B -m unittest -v test_coverage.py
+          python -O -B -m unittest -v test_coverage.py
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git -C "$GITHUB_WORKSPACE" diff --check
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
