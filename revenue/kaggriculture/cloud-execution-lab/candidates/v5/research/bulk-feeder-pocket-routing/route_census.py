@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Find source-real pocket-preload opportunities in the frozen route bank.
 
-This is a census, not a gameplay transform.  A witness means an authored worker
+This is a census, not a gameplay transform. A witness means an authored worker
 returns to the shed for WHEAT/FERTILIZER between two same-day consumers even
 though the earlier pickup could, in principle, carry the later refill too.
 Runtime promotion still requires observed shed stock and an end-of-day capacity
@@ -55,8 +55,10 @@ def _units(row: dict) -> list:
         return [["PASS"]]
     farmer = row.get("farmer")
     hands = row.get("hands")
-    return [farmer if isinstance(farmer, list) and farmer else ["PASS"],
-            *(hands if isinstance(hands, list) else [])]
+    return [
+        farmer if isinstance(farmer, list) and farmer else ["PASS"],
+        *(hands if isinstance(hands, list) else []),
+    ]
 
 
 def _unit_action(route: list, turn: int, worker: int) -> list:
@@ -104,31 +106,36 @@ def _movement_summary(actions: Iterable[list]) -> dict:
             raw += 1
             names.append(action[0])
     direct = abs(dx) + abs(dy)
-    direct_moves = []
+    direct_path = []
     if dx:
-        direct_moves.extend((["EAST"] if dx > 0 else ["WEST"]) * abs(dx))
+        direct_path.extend((["EAST"] if dx > 0 else ["WEST"]) * abs(dx))
     if dy:
-        direct_moves.extend((["SOUTH"] if dy > 0 else ["NORTH"]) * abs(dy))
+        direct_path.extend((["SOUTH"] if dy > 0 else ["NORTH"]) * abs(dy))
     return {
         "raw_moves": raw,
         "direct_moves": direct,
         "backtrack_moves": raw - direct,
         "net": [dx, dy],
         "raw_path": names,
-        "direct_path": [row[0] for row in direct_moves],
+        "direct_path": direct_path,
     }
 
 
 def _worker_count(route: list, start: int, end: int) -> int:
-    return max((len(_units(route[t])) for t in range(start, min(end, len(route)))), default=1)
+    return max(
+        (len(_units(route[t])) for t in range(start, min(end, len(route)))),
+        default=1,
+    )
 
 
-def find_opportunities(route: list, *, route_name: str = "route", turns_per_day: int = 24) -> list[dict]:
+def find_opportunities(
+    route: list, *, route_name: str = "route", turns_per_day: int = 24
+) -> list[dict]:
     """Return refill segments whose second pickup can be prepaid at the first.
 
-    Static certification is intentionally strict.  Between the consumer before
+    Static certification is intentionally strict. Between the consumer before
     refill and the consumer after refill, the worker may only PASS, move, and do
-    that one matching PICKUP.  That makes the measured movement excess a pure
+    that one matching PICKUP. That makes the measured movement excess a pure
     shed-service detour rather than a hidden HARVEST/CARE/etc dependency.
     """
     if type(turns_per_day) is not int or turns_per_day <= 0:
@@ -150,7 +157,8 @@ def find_opportunities(route: list, *, route_name: str = "route", turns_per_day:
                     continue
 
                 before = [
-                    turn for turn in range(preload_turn + 1, refill_turn)
+                    turn
+                    for turn in range(preload_turn + 1, refill_turn)
                     if _consumer(_unit_action(route, turn, worker), product)
                 ]
                 if not before:
@@ -162,7 +170,8 @@ def find_opportunities(route: list, *, route_name: str = "route", turns_per_day:
                     next_same_pickup = pickups[index + 2][0]
                 service_after = next(
                     (
-                        turn for turn in range(refill_turn + 1, next_same_pickup)
+                        turn
+                        for turn in range(refill_turn + 1, next_same_pickup)
                         if _consumer(_unit_action(route, turn, worker), product)
                     ),
                     None,
@@ -171,9 +180,12 @@ def find_opportunities(route: list, *, route_name: str = "route", turns_per_day:
                     continue
 
                 segment_turns = list(range(service_before + 1, service_after))
-                segment_actions = [_unit_action(route, turn, worker) for turn in segment_turns]
+                segment_actions = [
+                    _unit_action(route, turn, worker) for turn in segment_turns
+                ]
                 matching_pickups = [
-                    turn for turn, action in zip(segment_turns, segment_actions)
+                    turn
+                    for turn, action in zip(segment_turns, segment_actions)
                     if _pickup(action) and _pickup(action)[0] == product
                 ]
                 if matching_pickups != [refill_turn]:
@@ -192,27 +204,26 @@ def find_opportunities(route: list, *, route_name: str = "route", turns_per_day:
                     continue
 
                 movement = _movement_summary(segment_actions)
-                # Preloading removes the refill callback itself.  Any movement
-                # backtracking is additional theoretical slack that a later
-                # runtime rewrite may harvest by shortening the path.
                 saved_slots_upper = 1 + movement["backtrack_moves"]
-                out.append({
-                    "route": route_name,
-                    "day": day_start // turns_per_day,
-                    "worker": worker,
-                    "product": product,
-                    "preload_turn": preload_turn,
-                    "preload_quantity_authored": preload_qty,
-                    "refill_turn": refill_turn,
-                    "refill_quantity_to_preload": refill_qty,
-                    "service_before": service_before,
-                    "service_after": service_after,
-                    "segment_start": service_before + 1,
-                    "segment_end": service_after - 1,
-                    "same_day": True,
-                    "saved_slots_upper": saved_slots_upper,
-                    **movement,
-                })
+                out.append(
+                    {
+                        "route": route_name,
+                        "day": day_start // turns_per_day,
+                        "worker": worker,
+                        "product": product,
+                        "preload_turn": preload_turn,
+                        "preload_quantity_authored": preload_qty,
+                        "refill_turn": refill_turn,
+                        "refill_quantity_to_preload": refill_qty,
+                        "service_before": service_before,
+                        "service_after": service_after,
+                        "segment_start": service_before + 1,
+                        "segment_end": service_after - 1,
+                        "same_day": True,
+                        "saved_slots_upper": saved_slots_upper,
+                        **movement,
+                    }
+                )
     return out
 
 
@@ -220,10 +231,17 @@ def scan_routes(routes: dict[str, list], *, turns_per_day: int = 24) -> dict:
     opportunities = []
     for route_name, route in sorted(routes.items()):
         opportunities.extend(
-            find_opportunities(route, route_name=route_name, turns_per_day=turns_per_day)
+            find_opportunities(
+                route, route_name=route_name, turns_per_day=turns_per_day
+            )
         )
     opportunities.sort(
-        key=lambda row: (-row["saved_slots_upper"], row["route"], row["refill_turn"], row["worker"])
+        key=lambda row: (
+            -row["saved_slots_upper"],
+            row["route"],
+            row["refill_turn"],
+            row["worker"],
+        )
     )
     by_product = {}
     for row in opportunities:
