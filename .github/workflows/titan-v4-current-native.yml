@@ -24,7 +24,10 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/run_current_native_field.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/animal_headroom_harvest.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/check_loader_binding.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/repair_loader_binding.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement/sale_window.py'
       - 'revenue/kaggriculture/cloud-quickstep/seller_snapshot.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/plant_suffix.py'
@@ -107,11 +110,17 @@ jobs:
                   raise SystemExit(f'package source escapes checkout: {source_path}') from exc
               sources.add(relative)
 
-          direct_validation_dependencies = {
+          validation_dependencies = {
               'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/run_current_native_field.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/animal_headroom_harvest.py',
               'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/check_loader_binding.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/repair_loader_binding.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement/sale_window.py',
           }
-          sources.update(direct_validation_dependencies)
+          for dependency in sorted(validation_dependencies):
+              if not (repo / dependency).is_file():
+                  raise SystemExit(f'current-native validation dependency is missing: {dependency}')
+          sources.update(validation_dependencies)
 
           uncovered = sorted(
               source for source in sources
@@ -122,7 +131,7 @@ jobs:
                   'current-native publisher push.paths misses package sources:\n' +
                   '\n'.join(uncovered)
               )
-          print(f'publisher trigger covers {len(sources)} package source paths')
+          print(f'publisher trigger covers {len(sources)} package/validation source paths')
 
       - name: Authenticate checkout and committed current publication
         shell: bash
