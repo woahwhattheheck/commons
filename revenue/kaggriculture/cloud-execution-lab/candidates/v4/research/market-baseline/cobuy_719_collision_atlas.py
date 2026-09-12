@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from types import ModuleType
 from typing import Any
@@ -16,7 +17,7 @@ from typing import Any
 COBUY_HELPER_BLOB = "c965ec1411aa5f6cff790be771504e2d43a2fd7d"
 SCHEMA = "titan-v4-cobuy-719-authored-collision-atlas/v1"
 BUYABLE = ("WHEAT", "FERTILIZER")
-APEX_GUARD_INTERVAL = 144
+EXPECTED_APEX_GUARD_INTERVAL = 72
 APEX_TERMINAL_STRIP_STEP = 718
 OPENING_RECEIPT_BLOB = "b85fff2dd56dc319fc3b915bcd2a3d04b39186a2"
 
@@ -26,12 +27,7 @@ def git_blob(data: bytes) -> str:
 
 
 def _load_verified_source_module(path: Path, expected_blob: str, name: str) -> ModuleType:
-    """Read, authenticate, compile, and execute one immutable byte snapshot.
-
-    The pathname is read exactly once. `compile()` consumes the authenticated
-    in-memory bytes, so replacing the file after that read cannot change what
-    executes while retaining the reviewed Git-blob identity.
-    """
+    """Read, authenticate, compile, and execute one immutable byte snapshot."""
     data = path.read_bytes()
     actual = git_blob(data)
     if actual != expected_blob:
@@ -48,8 +44,8 @@ def _load_verified_source_module(path: Path, expected_blob: str, name: str) -> M
 
 
 # The sibling helper defines the reviewed tape codec/source identities used by
-# the opening COBUY theorem. Importing it normally would make those executable
-# bytes an unauthenticated dependency, so execute one exact reviewed snapshot.
+# the opening COBUY theorem. Execute one exact reviewed snapshot rather than a
+# normal import so decoder/constants cannot drift behind the evidence receipt.
 _HELPER = _load_verified_source_module(
     Path(__file__).with_name("cobuy_opening_collision.py"),
     COBUY_HELPER_BLOB,
@@ -98,7 +94,6 @@ def _arlene_row_stable(market: list[Any], row: int) -> bool:
 
 
 def load_arlene(path: Path) -> ModuleType:
-    # Single-read verified snapshot: never authenticate then reopen this path.
     module = _load_verified_source_module(path, ARLENE_BLOB, "_cobuy_719_arlene")
     for name in ("routes", "MAX_ORDERS", "FINAL_EXECUTABLE_STEP"):
         if not hasattr(module, name):
@@ -167,13 +162,7 @@ def _invariant_pulses(per_route: dict[str, list[dict[str, Any]]]) -> list[dict[s
 
 
 def _decode_apex_market(encoded: str) -> list[list[Any]]:
-    """Mirror Apex _unpack_action before its final Python market[:10] cap.
-
-    PASS rows disappear during unpack, so the executable 10-row prefix must be
-    capped only *after* that compression. Keeping all encoded rows here prevents
-    a BUY at encoded index >=10 from being incorrectly lost when earlier PASS
-    rows make it executable.
-    """
+    """Mirror Apex _unpack_action before its final Python market[:10] cap."""
     decoded = decode_apex_action(encoded)
     out: list[list[Any]] = []
     for op_idx, item_idx, qty in decoded["orders"]:
@@ -192,7 +181,14 @@ def _decode_apex_market(encoded: str) -> list[list[Any]]:
     return out
 
 
-def apex_route_pulses(tape_text: str, *, native_verified_opening: bool) -> dict[str, list[dict[str, Any]]]:
+def apex_route_pulses(
+    tape_text: str,
+    *,
+    native_verified_opening: bool,
+    guard_interval: int = EXPECTED_APEX_GUARD_INTERVAL,
+) -> dict[str, list[dict[str, Any]]]:
+    if type(guard_interval) is not int or guard_interval <= 0:
+        raise ValueError("Apex guard interval must be a positive plain int")
     tapes = parse_apex_tapes(tape_text)
     out: dict[str, list[dict[str, Any]]] = {}
     for route_index, route in enumerate(tapes):
@@ -204,7 +200,7 @@ def apex_route_pulses(tape_text: str, *, native_verified_opening: bool) -> dict[
                 if parsed is None:
                     continue
                 item, qty = parsed
-                guard_boundary = step % APEX_GUARD_INTERVAL == 0
+                guard_boundary = step % guard_interval == 0
                 terminal_stripped = step == APEX_TERMINAL_STRIP_STEP
                 opening_exception = step == 0 and native_verified_opening
                 pulses.append({
@@ -235,7 +231,6 @@ def _pair_collisions(
         own_by_key.setdefault((pulse["step"], pulse["item"]), []).append(pulse)
     for pulse in rival_pulses:
         rival_by_key.setdefault((pulse["step"], pulse["item"]), []).append(pulse)
-
     collisions: list[dict[str, Any]] = []
     for key in sorted(set(own_by_key) & set(rival_by_key)):
         owns = sorted(own_by_key[key], key=lambda p: (p["row"], p["qty"]))
@@ -256,7 +251,6 @@ def _pair_collisions(
 
 
 def _is_known_opening_guardrail(collision: dict[str, Any]) -> bool:
-    """The one collision already closed by the merged both-seat native receipt."""
     return (
         collision.get("step") == 0
         and collision.get("item") == "WHEAT"
@@ -290,7 +284,11 @@ def _load_opening_receipt(path: Path) -> dict[str, Any]:
     return receipt
 
 
-def _assert_apex_source_contracts(main_text: str, guard_text: str, policy_text: str) -> None:
+def _assert_apex_source_contracts(
+    main_text: str,
+    guard_text: str,
+    policy_text: str,
+) -> int:
     for marker in (
         "action['market'] = market[:10]",
         "market = [o for o in market if o[0] == 'SELL']",
@@ -304,8 +302,23 @@ def _assert_apex_source_contracts(main_text: str, guard_text: str, policy_text: 
     ):
         if marker not in guard_text:
             raise ValueError(f"Apex guard source contract missing: {marker}")
-    if "if (state.step == 0) selected_route = 0;" not in policy_text:
-        raise ValueError("Apex step-0 route selection contract missing")
+    for marker in (
+        "if (state.step == 0) selected_route = 0;",
+        "if (state.step % kSegmentTurns != 0) return input;",
+        "settings.interval_turns = kSegmentTurns;",
+    ):
+        if marker not in policy_text:
+            raise ValueError(f"Apex policy source contract missing: {marker}")
+    match = re.search(r"constexpr int kSegmentTurns\s*=\s*(\d+)\s*;", policy_text)
+    if not match:
+        raise ValueError("Apex policy kSegmentTurns contract missing")
+    interval = int(match.group(1))
+    if interval != EXPECTED_APEX_GUARD_INTERVAL:
+        raise ValueError(
+            f"Apex effective guard cadence drift: {interval} != "
+            f"{EXPECTED_APEX_GUARD_INTERVAL}"
+        )
+    return interval
 
 
 def build_atlas(
@@ -318,10 +331,7 @@ def build_atlas(
     apex_guard_path: Path,
     opening_receipt_path: Path,
 ) -> dict[str, Any]:
-    # Engine bytes are theorem authority even though this census does not execute
-    # the engine; never emit an engine identity that was not authenticated here.
     checked_text(engine_path, ENGINE_BLOB)
-
     arlene_routes = arlene_route_pulses(load_arlene(arlene_path))
     own_invariant = _invariant_pulses(arlene_routes)
 
@@ -329,12 +339,13 @@ def build_atlas(
     policy_text = checked_text(apex_policy_path, APEX_POLICY_BLOB)
     main_text = checked_text(apex_main_path, APEX_MAIN_BLOB)
     guard_text = checked_text(apex_guard_path, APEX_GUARD_BLOB)
-    _assert_apex_source_contracts(main_text, guard_text, policy_text)
+    guard_interval = _assert_apex_source_contracts(main_text, guard_text, policy_text)
 
     opening_receipt = _load_opening_receipt(opening_receipt_path)
     apex_routes = apex_route_pulses(
         tape_text,
         native_verified_opening=opening_receipt["_native_opening_verified"],
+        guard_interval=guard_interval,
     )
     rival_invariant = _invariant_pulses(apex_routes)
     collisions = _pair_collisions(own_invariant, rival_invariant)
@@ -353,6 +364,10 @@ def build_atlas(
                 })
 
     opening = [c for c in collisions if _is_known_opening_guardrail(c)]
+    excluded = [
+        step for step in range(0, TURNS, guard_interval)
+        if step != 0
+    ]
     return {
         "schema": SCHEMA,
         "status": status,
@@ -371,14 +386,13 @@ def build_atlas(
             "steps": [0, TURNS - 1],
             "max_market_rows": MAX_ORDERS,
             "buyable_items": list(BUYABLE),
+            "apex_effective_guard_interval": guard_interval,
             "own_authority": "exact stable route-invariant Arlene BUY_PRODUCT only",
             "rival_authority": "exact stable route-invariant Apex tape BUY_PRODUCT only",
             "route_conditional_is_authority": False,
             "private_current_rival_action_used": False,
             "field_economics_claimed": False,
-            "guard_boundaries_excluded_without_native_receipt": [
-                step for step in range(0, TURNS, APEX_GUARD_INTERVAL) if step != 0
-            ],
+            "guard_boundaries_excluded_without_native_receipt": excluded,
             "terminal_non_sell_strip_step": APEX_TERMINAL_STRIP_STEP,
         },
         "opening_native_receipt_verified": opening_receipt["_native_opening_verified"],
@@ -410,7 +424,7 @@ def build_atlas(
             "The already-closed step-0 WHEAT13 guardrail is separated from novel frontier collisions.",
             "The official engine identity is authenticated as theorem authority before any atlas is emitted.",
             "Arlene and the shared COBUY helper execute only from authenticated in-memory source snapshots.",
-            "Apex six-day guard boundaries fail closed because budget sales may be moved ahead of buys.",
+            "Apex guard cadence is bound from authenticated policy.cpp; every nonzero 72-turn boundary fails closed.",
             "Arlene rows after an authored SELL fail closed because clamp_sells may delete that SELL and shift the buy.",
             "Route-pair candidates are research narrowing only; only route-invariant collisions are authoritative.",
             "Repeated same-item buys are retained as distinct raw-row pairs rather than collapsed.",
