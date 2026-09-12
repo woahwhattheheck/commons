@@ -53,14 +53,16 @@ The composite closes that gap. GANDER supplies the route and post-EOD0 state; ST
 
 ## Source custody
 
-The composite authenticates every executable helper **before importing it**, then consumes the exact official engine:
+The composite captures every executable authority file **once**, authenticates those captured bytes, and then executes those exact same byte snapshots. It never authenticates one pathname read and later reopens the mutable pathname for execution:
 
 - official engine Git blob `3c202c7ee921da239356789e266b694635103fc4`;
 - official engine SHA-256 `bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e`;
 - GANDER helper `goose_printer_oracle.py` Git blob `38ae7715c233c74f24aacd5fe09f4d0d7a630037`;
 - STARVEORACLE helper `starvation_cadence.py` Git blob `8831ff953faf033cc6d3892c6f32ccd1ee1af06c`.
 
-Only after both helper blobs match does the composite execute them. GANDER supplies site geometry and authored Day-1 route counts; STARVEORACLE supplies exact-engine loading and intermittent-feed semantics. The simulator then starts at the exact semantic post-EOD0 GANDER boundary and runs the official interpreter for every callback from Day 1 through Day 29.
+The GANDER helper, STARVEORACLE helper, and official engine are compiled from the authenticated snapshots in memory. Reported source identities are derived from those same snapshots. A focused swap-after-capture regression replaces all three backing pathnames with poison immediately after their one allowed read and proves the authenticated helper/engine snapshots still execute; any second pathname read is a hard test failure.
+
+GANDER supplies site geometry and authored Day-1 route counts; STARVEORACLE supplies state/environment construction and intermittent-feed semantics. The simulator then starts at the exact semantic post-EOD0 GANDER boundary and runs the captured official interpreter for every callback from Day 1 through Day 29.
 
 ## Next gate
 
@@ -75,7 +77,8 @@ From this directory:
 ```bash
 python test_gander_starve_cadence.py
 python -O test_gander_starve_cadence.py
+python -m py_compile gander_starve_cadence.py test_gander_starve_cadence.py
 python gander_starve_cadence.py
 ```
 
-The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit and full-service overflow, pre-import helper custody, explicit CARE exclusion and exact engine identities.
+The focused suite exercises the exact interpreter, the mandatory Day-1 feed predecessor, full nine-goose survival/output, held-cap safety, two-worker route fit and full-service overflow, immutable helper/engine source custody with swap-after-capture killers, explicit CARE exclusion and exact engine identities.
