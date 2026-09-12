@@ -32,11 +32,9 @@ class AgentIndexPredictability(unittest.TestCase):
 
     def test_simpsons_paradox_opponent_mix_does_not_fake_paired_effect(self):
         rows = []
-        # Complete matched cells: no seat effect for either opponent.
         for seed in range(4):
             rows += [row(f"A{seed}", "easy", 0, 1000), row(f"A{seed}", "easy", 1, 1000)]
             rows += [row(f"B{seed}", "hard", 0, -1000), row(f"B{seed}", "hard", 1, -1000)]
-        # Unmatched records strongly bias raw assignment by opponent.
         for seed in range(20):
             rows.append(row(f"Ue{seed}", "easy", 1, 1000))
             rows.append(row(f"Uh{seed}", "hard", 0, -1000))
@@ -52,9 +50,7 @@ class AgentIndexPredictability(unittest.TestCase):
 
     def test_duplicate_exact_cell_rejected(self):
         with self.assertRaises(mod.DataError):
-            mod.analyze([
-                row(1, "A", 0, 1), row(1, "A", 0, 2), row(1, "A", 1, 3)
-            ])
+            mod.analyze([row(1, "A", 0, 1), row(1, "A", 0, 2), row(1, "A", 1, 3)])
 
     def test_rewards_are_target_relative_by_seat(self):
         records = [
@@ -70,10 +66,7 @@ class AgentIndexPredictability(unittest.TestCase):
         with self.assertRaises(mod.DataError):
             mod.analyze([{"seed": 1, "opponent": "A", "seat": True, "margin": 1}])
         with self.assertRaises(mod.DataError):
-            mod.analyze([
-                row(1, "A", 0, float("inf")),
-                row(1, "A", 1, 0),
-            ])
+            mod.analyze([row(1, "A", 0, float("inf")), row(1, "A", 1, 0)])
 
     def test_huge_integer_overflow_fails_closed(self):
         with self.assertRaises(mod.DataError):
@@ -81,70 +74,40 @@ class AgentIndexPredictability(unittest.TestCase):
 
     def test_conflicting_margin_cannot_override_rewards(self):
         with self.assertRaises(mod.DataError):
-            mod.normalize_record({
-                "seed": 1,
-                "opponent": "A",
-                "seat": 0,
-                "margin": 1e300,
-                "rewards": [168572, 3550],
-            }, 0)
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "margin": 1e300, "rewards": [168572, 3550]}, 0)
 
     def test_conflicting_score_pair_cannot_override_rewards(self):
         with self.assertRaises(mod.DataError):
-            mod.normalize_record({
-                "seed": 1,
-                "opponent": "A",
-                "seat": 0,
-                "rewards": [120, 20],
-                "score": 121,
-                "opponent_score": 20,
-            }, 0)
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "rewards": [120, 20], "score": 121,
+                                  "opponent_score": 20}, 0)
 
     def test_relative_tolerance_cannot_hide_large_absolute_conflict(self):
         with self.assertRaises(mod.DataError):
-            mod.normalize_record({
-                "seed": 1,
-                "opponent": "A",
-                "seat": 0,
-                "margin": 1e20,
-                "rewards": [1e20 + 50_000_000, 0],
-            }, 0)
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "margin": 1e20,
+                                  "rewards": [1e20 + 50_000_000, 0]}, 0)
 
     def test_large_integer_consistency_is_not_collapsed_through_float(self):
         with self.assertRaises(mod.DataError):
-            mod.normalize_record({
-                "seed": 1,
-                "opponent": "A",
-                "seat": 0,
-                "margin": 10**20,
-                "rewards": [10**20 + 1, 0],
-            }, 0)
+            mod.normalize_record({"seed": 1, "opponent": "A", "seat": 0,
+                                  "margin": 10**20,
+                                  "rewards": [10**20 + 1, 0]}, 0)
 
     def test_redundant_consistent_outcomes_are_accepted(self):
-        normalized = mod.normalize_record({
-            "seed": 1,
-            "opponent": "A",
-            "seat": 1,
-            "margin": 100,
-            "rewards": [20, 120],
-            "score": 120,
-            "opponent_score": 20,
-        }, 0)
+        normalized = mod.normalize_record({"seed": 1, "opponent": "A", "seat": 1,
+                                           "margin": 100, "rewards": [20, 120],
+                                           "score": 120, "opponent_score": 20}, 0)
         self.assertEqual(normalized["margin"], 100)
 
     def test_legitimate_large_reward_margin_is_preserved(self):
-        normalized = mod.normalize_record({
-            "seed": 9922023,
-            "opponent": "starter",
-            "seat": 0,
-            "rewards": [168572, 3550],
-        }, 0)
+        normalized = mod.normalize_record({"seed": 9922023, "opponent": "starter",
+                                           "seat": 0, "rewards": [168572, 3550]}, 0)
         self.assertEqual(normalized["margin"], 165022)
 
     def test_equal_opponent_weighting_blocks_frequency_domination(self):
         rows = []
-        # Many A pairs show +10; one B pair shows -100. Pooled is positive,
-        # equal-opponent effect is negative.
         for seed in range(20):
             rows += [row(f"A{seed}", "A", 0, 0), row(f"A{seed}", "A", 1, 10)]
         rows += [row("B0", "B", 0, 0), row("B0", "B", 1, -100)]
