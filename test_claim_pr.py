@@ -78,13 +78,61 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertTrue(successor["ok"])
         self.assertEqual("ASTRA-A", successor["record"]["previous_holder"])
 
-    def test_invalid_action_holder_and_ttl_fail_before_git_write(self):
+    def test_runtime_nff_retry_refreshes_clock_and_preserves_later_winner(self):
+        seed = claim_pr.write_pr_holding(
+            self.a, 13491, "ASTRA-A", "take", ttl_s=600, now=self.t0
+        )
+        self.assertTrue(seed["ok"])
+        stale_tip = seed["commit"]
+        winner = claim_pr.write_pr_holding(
+            self.a, 13492, "ASTRA-A", "take", ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=1),
+        )
+        self.assertTrue(winner["ok"])
+
+        real_tip = cs._remote_tip
+        real_now = cs._now
+        calls = {"tip": 0, "now": 0}
+        ticks = [self.t0, self.t0 + dt.timedelta(seconds=2)]
+
+        def stale_then_real(git, branch, remote="origin"):
+            calls["tip"] += 1
+            return stale_tip if calls["tip"] == 1 else real_tip(git, branch, remote)
+
+        def ticking_now():
+            index = min(calls["now"], len(ticks) - 1)
+            calls["now"] += 1
+            return ticks[index]
+
+        cs._remote_tip = stale_then_real
+        cs._now = ticking_now
+        try:
+            lost = claim_pr.write_pr_holding(
+                self.b, 13492, "ASTRA-B", "take", ttl_s=600
+            )
+        finally:
+            cs._remote_tip = real_tip
+            cs._now = real_now
+
+        self.assertFalse(lost["ok"])
+        self.assertEqual("ASTRA-A", lost["held_by"])
+        self.assertGreaterEqual(calls["tip"], 2)
+        self.assertGreaterEqual(calls["now"], 2)
+        listing = cs.holdings_list(self.b, now=self.t0 + dt.timedelta(seconds=3))
+        row = [r for r in listing["holdings"] if r["key"] == "pr-13492"][0]
+        self.assertEqual("ASTRA-A", row["holder"])
+        self.assertTrue(row["live"])
+
+    def test_invalid_action_holder_ttl_and_attempts_fail_before_git_write(self):
         bad = [
             {"action": "steal", "holder": "ASTRA", "ttl_s": 600},
             {"action": "take", "holder": "", "ttl_s": 600},
             {"action": "take", "holder": "ASTRA", "ttl_s": 0},
             {"action": "take", "holder": "ASTRA", "ttl_s": 7201},
             {"action": "take", "holder": "ASTRA", "ttl_s": True},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 0},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 11},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": True},
         ]
         for kwargs in bad:
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
