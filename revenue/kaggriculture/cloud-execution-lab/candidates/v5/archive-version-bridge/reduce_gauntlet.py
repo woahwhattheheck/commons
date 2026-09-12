@@ -125,6 +125,14 @@ def _scan_roots(
                 f"{root}.selected_fixtures",
             ),
             "index_sha256": index_sha256,
+            "evaluator_sha256": _sha256(
+                run.get("evaluator_sha256"),
+                f"{root}.evaluator_sha256",
+            ),
+            "loader_sha256": _sha256(
+                run.get("loader_sha256"),
+                f"{root}.loader_sha256",
+            ),
             "engine": engine,
         })
         for path in sorted(root.glob("*.json")):
@@ -199,9 +207,15 @@ def _panel_topology(
         declared = next(iter(shard_totals))
         by_shard: dict[int, dict[str, Any]] = {}
         index_values = {row["index_sha256"] for row in runs}
+        evaluator_values = {row["evaluator_sha256"] for row in runs}
+        loader_values = {row["loader_sha256"] for row in runs}
         engine_values = {_digest(row["engine"]) for row in runs}
         if len(index_values) != 1:
             raise ReductionError(f"{label} roots disagree on corpus index identity")
+        if len(evaluator_values) != 1:
+            raise ReductionError(f"{label} roots disagree on evaluator identity")
+        if len(loader_values) != 1:
+            raise ReductionError(f"{label} roots disagree on loader identity")
         if len(engine_values) != 1:
             raise ReductionError(f"{label} roots disagree on engine identity")
         for row in runs:
@@ -219,6 +233,8 @@ def _panel_topology(
                 row["selected_fixtures"] for row in runs
             ),
             "index_sha256": next(iter(index_values)),
+            "evaluator_sha256": next(iter(evaluator_values)),
+            "loader_sha256": next(iter(loader_values)),
             "engine_digest": next(iter(engine_values)),
             "by_shard": by_shard,
         }
@@ -229,6 +245,10 @@ def _panel_topology(
         raise ReductionError("V3.1/V4 declared shard counts differ")
     if left["index_sha256"] != right["index_sha256"]:
         raise ReductionError("V3.1/V4 corpus index identities differ")
+    if left["evaluator_sha256"] != right["evaluator_sha256"]:
+        raise ReductionError("V3.1/V4 evaluator identities differ")
+    if left["loader_sha256"] != right["loader_sha256"]:
+        raise ReductionError("V3.1/V4 loader identities differ")
     if left["engine_digest"] != right["engine_digest"]:
         raise ReductionError("V3.1/V4 engine identities differ")
     shared_shards = set(left["by_shard"]) & set(right["by_shard"])
