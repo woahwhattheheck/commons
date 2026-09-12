@@ -32,9 +32,8 @@ def _clock_part(value, name):
 
 def absolute_step(obs, config):
     """Read one exact public clock, rejecting aliases and contradictions."""
-    value = obs.get('step')
-    if value is not None:
-        step = _clock_part(value, 'step')
+    if 'step' in obs:
+        step = _clock_part(obs['step'], 'step')
         has_day, has_hour = 'day' in obs, 'hour' in obs
         if has_day != has_hour:
             raise ValueError('day and hour must be supplied together')
