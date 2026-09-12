@@ -148,7 +148,8 @@ class FeedPrebuyDayCoverageTests(unittest.TestCase):
     def test_full_coverage_still_reaches_existing_purchase_decision(self):
         obs, action, router = _observation(), _pass_action(), _router(length=48)
         before = copy.deepcopy((obs, action))
-        def task(observation, parent, quantity, module):
+        def task(observation, parent, quantity, module, configuration=None):
+            self.assertIs(configuration, CONFIG)
             return {"target": [6, 4]} if quantity == 2 else None
         with patch.object(lane, "_next_v217_task", side_effect=task) as planner:
             self.assertEqual(lane._purchase_quantity(obs, action, CONFIG, router), 2)

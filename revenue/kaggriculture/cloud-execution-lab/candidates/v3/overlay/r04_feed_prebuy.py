@@ -114,7 +114,7 @@ def _proxy_view(observation, quantity, r04):
         return None
 
 
-def _next_v217_task(observation, action, quantity, r04):
+def _next_v217_task(observation, action, quantity, r04, configuration=None):
     """Return V217's next-step task under an exact WHEAT shed increment."""
     step = observation.get("step")
     player = observation.get("player")
@@ -170,7 +170,20 @@ def _next_v217_task(observation, action, quantity, r04):
             return None
     if view is None:
         return None
-    return r04._v217_plan(view, st, next_step, next_action, pending)
+    # F3 is an additive wrapper; the native planner keeps its five-argument
+    # ABI. Mirror production's native-first/fallback decision for BOTH the
+    # baseline and funded probes, rather than passing config to the native ABI.
+    task = r04._v217_plan(view, st, next_step, next_action, pending)
+    if task is not None or getattr(r04, "V217_EOD_TAIL", False) is not True:
+        return task
+    try:
+        import r04_v217_eod_tail
+    except ImportError:
+        return None
+    return r04_v217_eod_tail.plan_v217_eod_tail(
+        view, st, next_step, next_action, pending, tape=tape,
+        projected_wheat=r04.projected_shed(next_action, view).get("WHEAT", 0),
+        configuration=configuration, enabled=True)
 
 
 def _remaining_day_cash_spend_free(observation, r04):
@@ -254,7 +267,7 @@ def _purchase_quantity(observation, action, configuration, r04):
     if used >= r04.SHED_CAPACITY:
         return None
 
-    baseline = _next_v217_task(observation, action, 0, r04)
+    baseline = _next_v217_task(observation, action, 0, r04, configuration=configuration)
     if baseline is not None:
         REPORT["baseline_rescue"] += 1
         return None
@@ -264,7 +277,7 @@ def _purchase_quantity(observation, action, configuration, r04):
     for candidate in range(1, _MAX_PREBUY + 1):
         if used + candidate > r04.SHED_CAPACITY:
             break
-        task = _next_v217_task(observation, action, candidate, r04)
+        task = _next_v217_task(observation, action, candidate, r04, configuration=configuration)
         if task is not None:
             quantity = candidate
             break
