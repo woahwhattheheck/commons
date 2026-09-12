@@ -9,7 +9,7 @@ literal ``COLLECT_FERTILIZER`` on the GOOSE the actor is already standing on to
 
 The guard is deliberately narrow: the goose is already fed+cared, fertilizer is
 actually collectible, the harvest is legal, the production tick is due, no stacked
-worker has another non-PASS command on the same animal, and a whole-farm upper bound
+worker has another non-PASS command on that same animal, and a whole-farm upper bound
 proves every item that can be added by this turn's unit work still fits in the EOD
 shed.  Same-turn BUY_PRODUCT/BUY_ANIMAL rows are vetoed because their lockstep
 realization is rival-dependent.  Any ambiguity returns the exact parent action object.
@@ -159,7 +159,9 @@ def apply_goose_eod_cap_rescue(action: Any, observation: Any, configuration: Any
     market = action.get("market", _MISSING)
     if not isinstance(market, list):
         return action
-    for order in market:
+    # The standard engine executes ten raw slots, not ten nonempty rows.
+    # A capped suffix cannot add shed inflow; keep it untouched in the action.
+    for order in market[:STANDARD_CONFIG["maxMarketOrdersPerTurn"]]:
         if not isinstance(order, list):
             return action
         if order and not isinstance(order[0], str):
