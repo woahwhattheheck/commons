@@ -1,0 +1,31 @@
+{
+  "lane": "EOD capacity rescue mixed-cargo extension",
+  "status": "donor_only_default_off",
+  "source_pr": 12612,
+  "source_base_head": "a4606969e9317d6a5bd6f1ccf4a7fd2704bc38ed",
+  "source_tree": "5417b19a8d1cac89bd6d5dfc0ac97dada072f42b",
+  "helper_blob": "9ad4092453e2332b0914f90ca89791b18f2229c2",
+  "helper_sha256": "8ac197063fadf684b357f08a4c6cd47f2bf0a30684ac2eaad1e8cabbded2c420",
+  "mixed_capacity_test_blob": "7037f33522e85406c675d4d3ef8f0e80d6bdd6c1",
+  "mixed_capacity_test_sha256": "e65ef12fb8103945331fa3990cdbbf21a94218ffc594ea328584d847efa67ebc",
+  "official_engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "validation": {
+    "isolated_mechanism_normal": "20/20 PASS",
+    "isolated_mechanism_python_O": "20/20 PASS",
+    "two_actor_dictionary_order_oracle": 8192,
+    "single_product_contract_cases": 1575,
+    "deterministic_nine_product_mixed_worlds": 400,
+    "old_helper_positive_witnesses": "3 expected assertion failures, 0 harness errors",
+    "source_parse_compile": "PASS"
+  },
+  "theorem": "Replay the official EOD drop order to compute the per-product discard vector D; require already-held shed stock and executable slots for every SELL in D; sell exactly D before EOD so final private shed S-D+Q equals baseline S+A. Fully admitted/discarded actors are order-independent; partial mixed-product actors fail closed.",
+  "dependency_order": ["M1", "EOD", "B10", "C5"],
+  "excluded": [
+    "legacy shared apply_v4.py wiring",
+    "feature activation or default-ON",
+    "production/Kaggle promotion",
+    "full generated-package or Python-3.11 hosted acceptance",
+    "paired economics claim"
+  ],
+  "notes": "Original source donor reached server-backed blobs/tree but its create_commit was blocked before any ref moved. This manifest preserves exact tested custody in the sole main/candidates-v4 workspace without reviving the legacy PR lineage."
+}
