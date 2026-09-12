@@ -168,6 +168,88 @@ class FeedPrebuyTests(unittest.TestCase):
                     parent,
                 )
 
+    def test_public_inventory_is_not_a_purchase_availability_limit(self):
+        # Official engine blob 3c202c7e: BUY_PRODUCT checks cash and own shed
+        # capacity, then decrements public inventory without a zero floor.
+        # At the helper boundary this unused field must not gate the policy;
+        # malformed/missing variants here are NOT claims of valid engine state.
+        inventories = (
+            {"WHEAT": -100}, {"WHEAT": -1}, {"WHEAT": 0},
+            {"WHEAT": 1}, {"WHEAT": 2}, {"WHEAT": 10000},
+            {"WHEAT": True}, {"WHEAT": 2.0}, {"WHEAT": "2"},
+            {"WHEAT": None}, {}, None, [], False,
+        )
+        for held, quantity in ((0, 2), (1, 1)):
+            for inventory in inventories:
+                obs = _observation(wheat=held)
+                obs["market"]["inventory"] = inventory
+                parent = _action()
+                before_obs = copy.deepcopy(obs)
+                before_state = copy.deepcopy(vars(r04._POLICY.players[0]))
+                with self.subTest(held=held, inventory=inventory):
+                    out = _apply(obs, parent)
+                    self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", quantity]])
+                    self.assertEqual(obs, before_obs)
+                    self.assertEqual(parent, _action())
+                    self.assertEqual(vars(r04._POLICY.players[0]), before_state)
+
+            obs = _observation(wheat=held)
+            del obs["market"]["inventory"]
+            self.assertEqual(_apply(obs, _action())["market"],
+                             [["BUY_PRODUCT", "WHEAT", quantity]])
+
+    def test_low_public_inventory_preserves_exact_cash_floor_for_both_seats(self):
+        original_players = r04._POLICY.players
+        try:
+            for player in (0, 1):
+                r04._POLICY.players = {player: copy.deepcopy(original_players[0])}
+                for held, quantity in ((0, 2), (1, 1)):
+                    boundary = 1000 + quantity * (30 + 25)
+                    for stock in (-2, 0, 1):
+                        for money in (boundary - 1, boundary):
+                            obs = _observation(wheat=held, money=float(money))
+                            obs["farms"].append(copy.deepcopy(obs["farms"][0]))
+                            obs["player"] = player
+                            obs["market"]["inventory"]["WHEAT"] = stock
+                            parent = _action()
+                            with self.subTest(player=player, held=held, stock=stock, money=money):
+                                out = _apply(obs, parent)
+                                if money < boundary:
+                                    self.assertIs(out, parent)
+                                else:
+                                    self.assertEqual(out["market"],
+                                                     [["BUY_PRODUCT", "WHEAT", quantity]])
+        finally:
+            r04._POLICY.players = original_players
+
+    def test_unused_inventory_does_not_relax_price_validation(self):
+        for price in (None, 0, -1, True, 30.0, "30"):
+            obs = _observation(wheat_price=price)
+            obs["market"].pop("inventory")
+            parent = _action()
+            with self.subTest(price=price):
+                self.assertIs(_apply(obs, parent), parent)
+
+    def test_low_public_inventory_does_not_relax_capacity_or_tape_custody(self):
+        obs = _observation()
+        obs["market"]["inventory"]["WHEAT"] = -1
+        obs["private"]["shed"]["CARROT"] = 99
+        parent = _action()
+        self.assertIs(_apply(obs, parent), parent)
+        obs["private"]["shed"]["CARROT"] = 0
+        r04._POLICY.tapes[0] = r04._POLICY.tapes[0][:47]
+        self.assertFalse(lane._remaining_day_cash_spend_free(obs, r04))
+        parent = _action()
+        self.assertIs(_apply(obs, parent), parent)
+
+    def test_low_public_inventory_preserves_default_off_identity(self):
+        obs = _observation()
+        obs["market"]["inventory"]["WHEAT"] = -1
+        parent = _action()
+        before_report = dict(lane.REPORT)
+        self.assertIs(_apply(obs, parent, enabled=False), parent)
+        self.assertEqual(lane.REPORT, before_report)
+
     def test_one_wheat_prebuy_is_minimal_when_one_is_already_stored(self):
         out = _apply(_observation(wheat=1), _action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 1]])
