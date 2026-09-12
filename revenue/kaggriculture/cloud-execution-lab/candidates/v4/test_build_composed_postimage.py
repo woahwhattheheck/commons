@@ -141,6 +141,53 @@ class PipelineShapeTests(unittest.TestCase):
                 m._run_fast_tape(comp, root, root, {}, {})
 
 
+
+    def test_dead_feed_adapter_rejects_wrong_surface(self):
+        ep = "repairs/gameplay/dead-feed-care/compose_native.py"
+        comp = {"id": "dead-feed-care-guarded-starvation", "entrypoints": [ep],
+                "transforms": [{"surface": "wrong.py", "input_identity": "git-blob:"+"a"*40,
+                                "output_identity": "git-blob:"+"b"*40}]}
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            with self.assertRaisesRegex(m.MaterializationError, "owns only titan_runtime"):
+                m._run_dead_feed_guarded_starvation(comp, root, root, {}, {})
+
+    def test_dead_feed_adapter_materializes_both_helpers(self):
+        ep = "repairs/gameplay/dead-feed-care/compose_native.py"
+        care_key = "workspace:repairs/gameplay/dead-feed-care/dead_feed_care.py"
+        starvation_key = "workspace:repairs/gameplay/dead-feed-care/uncared_eod_feed_skip.py"
+        before = b"x = 1\n"
+        after = b"x = 2\n"
+        class Composer:
+            @staticmethod
+            def compose_runtime(text, starvation=False):
+                self.assertEqual(text, before.decode("utf-8"))
+                self.assertTrue(starvation)
+                return after.decode("utf-8")
+        comp = {
+            "id": "dead-feed-care-guarded-starvation",
+            "entrypoints": [ep],
+            "transforms": [{
+                "surface": "titan_runtime.py::Features+TitanAgent.act",
+                "input_identity": "git-blob:" + m.git_blob(before),
+                "output_identity": "git-blob:" + m.git_blob(after),
+            }],
+        }
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "titan_runtime.py").write_bytes(before)
+            rows = m._run_dead_feed_guarded_starvation(
+                comp, root, root, {ep: Composer()},
+                {care_key: b"care\n", starvation_key: b"starve\n"},
+            )
+            self.assertEqual((root / "titan_runtime.py").read_bytes(), after)
+            self.assertEqual((root / "r04_dead_feed_care.py").read_bytes(), b"care\n")
+            self.assertEqual((root / "r04_uncared_eod_feed_skip.py").read_bytes(), b"starve\n")
+            self.assertEqual(
+                [row["path"] for row in rows],
+                ["titan_runtime.py", "r04_dead_feed_care.py", "r04_uncared_eod_feed_skip.py"],
+            )
+
     def test_scoped_adapter_rejects_wrong_surface(self):
         ep = "repairs/performance/compose_scoped_constructor.py"
         comp = {"id": "scoped-construction", "entrypoints": [ep],

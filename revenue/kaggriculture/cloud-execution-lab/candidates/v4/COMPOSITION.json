@@ -26,6 +26,37 @@
       "note": "Current-ABI adapter is authenticated and component-tested, feature default-OFF; composable does not mean production-promoted."
     },
     {
+      "id": "dead-feed-care-guarded-starvation",
+      "state": "compose",
+      "package": "repairs/gameplay/dead-feed-care",
+      "entrypoints": [
+        "repairs/gameplay/dead-feed-care/compose_native.py"
+      ],
+      "receipt": "repairs/gameplay/dead-feed-care/STARVATION-ACTIVATION.json",
+      "foundation": {
+        "artifact_id": 10175943272,
+        "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
+      },
+      "members": [
+        "W2",
+        "STARVATION"
+      ],
+      "transforms": [
+        {
+          "surface": "titan_runtime.py::Features+TitanAgent.act:r04_dead_feed_care",
+          "input_identity": "git-blob:2b2bd80e3fa76c61139bdbfeaa58dc8a8987339a",
+          "output_identity": "git-blob:7f58e8f8e84d1c5cfab3e78f04f0590cfe52e156"
+        }
+      ],
+      "requires": [
+        "fast-tape-clone-current-runtime"
+      ],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Canonical W2 guarded-starvation composition on top of fast-tape. The composer preserves the existing r04_dead_feed_care key, applies CARE first and guarded starvation second, and #12920 further narrows saved-WHEAT re-DROP custody. Exact source/runtime edge is registered for composition only; prior current-native activation remained COLD with zero eligible/admitted rewrites, so this does not authorize defaults, production promotion, or an economic-strength claim."
+    },
+    {
       "id": "funding-capacity-stack",
       "state": "compose",
       "package": "repairs/performance/funding-replay",
@@ -269,7 +300,8 @@
       "repairs/performance/funding-replay/apply_funding_replay.py",
       "repairs/performance/funding-replay/compose_funding_capacity.py",
       "repairs/performance/compose_scoped_constructor.py",
-      "repairs/performance/projection-state-clone/compose.py"
+      "repairs/performance/projection-state-clone/compose.py",
+      "repairs/gameplay/dead-feed-care/compose_native.py"
     ],
     "strict": true,
     "ignore": []

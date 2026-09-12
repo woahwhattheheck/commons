@@ -427,6 +427,45 @@ def _run_projection_clone(component: dict[str, Any], workspace: Path, worktree: 
     return rows
 
 
+def _run_dead_feed_guarded_starvation(
+    component: dict[str, Any],
+    workspace: Path,
+    worktree: Path,
+    modules: dict[str, Any],
+    sources: dict[str, bytes],
+) -> list[dict[str, Any]]:
+    ep = "repairs/gameplay/dead-feed-care/compose_native.py"
+    care_key = "workspace:repairs/gameplay/dead-feed-care/dead_feed_care.py"
+    starvation_key = "workspace:repairs/gameplay/dead-feed-care/uncared_eod_feed_skip.py"
+    _require_entrypoints(component, (ep,))
+    transforms = _component_transforms(component)
+    if set(transforms) != {"titan_runtime.py"}:
+        raise MaterializationError("dead-feed-care adapter owns only titan_runtime.py")
+    before = _assert_before(worktree, transforms)["titan_runtime.py"]
+    module = modules[ep]
+    compose = getattr(module, "compose_runtime", None)
+    if not callable(compose):
+        raise MaterializationError("dead-feed-care adapter missing compose_runtime()")
+    care = sources.get(care_key)
+    starvation = sources.get(starvation_key)
+    if not isinstance(care, bytes) or not isinstance(starvation, bytes):
+        raise MaterializationError("dead-feed-care pinned runtime helpers missing")
+    result = compose(before.decode("utf-8"), starvation=True)
+    if not isinstance(result, str):
+        raise MaterializationError("dead-feed-care compose_runtime() did not return text")
+    result_b = result.encode("utf-8")
+    compile(result_b, "titan_runtime.py", "exec")
+    if git_blob(result_b) != transforms["titan_runtime.py"]["after"]:
+        raise MaterializationError(
+            "dead-feed-care runtime postimage disagrees with COMPOSITION.json"
+        )
+    _under(worktree, "titan_runtime.py").write_bytes(result_b)
+    rows = _assert_after(worktree, transforms)
+    rows.append(_write_support(worktree, "r04_dead_feed_care.py", care))
+    rows.append(_write_support(worktree, "r04_uncared_eod_feed_skip.py", starvation))
+    return rows
+
+
 # Adapter source blobs are content identities from canonical main at authoring.
 # Any composer edit must be explicitly reviewed/rebound here before execution.
 ADAPTERS: dict[str, dict[str, Any]] = {
@@ -436,6 +475,23 @@ ADAPTERS: dict[str, dict[str, Any]] = {
                 "4c7474062292feb25638ae0af5161e9d5382e6f5",
         },
         "runner": _run_fast_tape,
+    },
+    "dead-feed-care-guarded-starvation": {
+        "entrypoints": {
+            "repairs/gameplay/dead-feed-care/compose_native.py":
+                "a73fd5a355426f2be42277ac526b6998c9baf055",
+        },
+        "sources": {
+            "workspace:repairs/gameplay/dead-feed-care/dead_feed_care.py":
+                "51c17ea3245755673ffead8e86d4b04e7766c949",
+            "workspace:repairs/gameplay/dead-feed-care/uncared_eod_feed_skip.py":
+                "848efb49be1eea6cb86d8a4d3ac14b7efe1deb90",
+        },
+        "support_outputs": [
+            "r04_dead_feed_care.py",
+            "r04_uncared_eod_feed_skip.py",
+        ],
+        "runner": _run_dead_feed_guarded_starvation,
     },
     "funding-capacity-stack": {
         "entrypoints": {
