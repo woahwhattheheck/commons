@@ -1,0 +1,37 @@
+name: TITAN V5 shop-first live canary
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/shop_first.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_shop_first.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/main.py'
+      - '.github/workflows/titan-shop-first-live-canary.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/shop_first.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_shop_first.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/main.py'
+      - '.github/workflows/titan-shop-first-live-canary.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile canary and entrypoint
+        run: python -m py_compile shop_first.py main.py test_shop_first.py
+      - name: Focused invariants
+        run: python test_shop_first.py
+      - name: Focused invariants under optimization
+        run: python -O test_shop_first.py
