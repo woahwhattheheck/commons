@@ -32,6 +32,7 @@ STRICT_HEAD_NEW = """\
         cap_value=config.get('shedCapacity',100)
         turns_value=config.get('turnsPerDay',24)
         mult_value=config.get('farmHandCostMult',1)
+        market_cap_value=config.get('maxMarketOrdersPerTurn',10)
         if type(now_value) is not int or now_value<0:
             return lambda _plan: False
         if type(cap_value) is not int or cap_value<0:
@@ -39,6 +40,8 @@ STRICT_HEAD_NEW = """\
         if type(turns_value) is not int or turns_value<=0:
             return lambda _plan: False
         if type(mult_value) is not int or mult_value<0:
+            return lambda _plan: False
+        if type(market_cap_value) is not int:
             return lambda _plan: False
         now=now_value;cap=cap_value
         # Re-run the current unit stage without a shed cap only for feasibility.
