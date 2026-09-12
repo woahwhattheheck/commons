@@ -23,6 +23,9 @@ from typing import Any, Callable
 DEFAULT_TURNS_PER_DAY = 24
 DEFAULT_SHED_CAPACITY = 100
 DEFAULT_MAX_MARKET_ORDERS = 10
+# Official _process_market increments idx_esc before checking >= 100_000,
+# therefore a single row can commit at most 99,999 units.
+MAX_MARKET_UNITS_PER_ROW = 99_999
 PRODUCTS = frozenset((
     "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
     "EGG", "MILK", "WOOL", "FERTILIZER",
@@ -92,6 +95,7 @@ def _sell_prefix(shed: dict[str, int], rows: Any, cap: int) -> tuple[dict[str, i
             or row[1] not in PRODUCTS
             or type(row[2]) is not int
             or row[2] <= 0
+            or row[2] > MAX_MARKET_UNITS_PER_ROW
         ):
             return None
         item, requested = row[1], row[2]
@@ -256,6 +260,9 @@ def analyze(
         result["reason"] = "mixed_discard"
         return result
     item, units = next(iter(discarded.items()))
+    if units > MAX_MARKET_UNITS_PER_ROW:
+        result["reason"] = "market_unit_loop_guard"
+        return result
     if item not in NONBUYABLE_PRODUCTS:
         result["reason"] = "buyable_discard_product"
         return result
