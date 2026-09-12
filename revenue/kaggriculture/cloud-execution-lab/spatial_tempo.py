@@ -66,24 +66,30 @@ class SpatialTempo:
 
     def observe_crop_receipts(self,obs,fill_result,current):
         if not self.crop_release:return
-        from crop_release import observe_crop,observe_crop_sale,observe_input_repair
+        from crop_release import (_public_identity,observe_crop,observe_crop_sale,
+                                  observe_input_repair)
+        identity=_public_identity(obs)
+        if identity is None:return
+        player,now=identity
         p=self.crop_intent
-        if p is not None and (int(obs['player'])!=p['player']
-                or int(obs['step'])<p.get('last_observed_step',p['prepared_step'])):
+        if p is not None and (player!=p['player']
+                or now<p.get('last_observed_step',p['prepared_step'])):
             self.crop_intent=None;return
         p=observe_input_repair(p,obs,fill_result)
         p=observe_crop_sale(p,obs,fill_result)
         self.crop_intent=observe_crop(p,obs,current)
         if (self.crop_intent is not None
                 and self.crop_intent['status']=='awaiting_seed_and_site_observation'
-                and int(obs['step'])>self.crop_intent['plant_step']):
+                and now>self.crop_intent['plant_step']):
             self.crop_intent=None  # No final PLANT was committed.
 
     def crop_market(self,obs,selected,post,controller):
         """Use the same selected snapshot and final market composition."""
         if not self.crop_release or not self.supported:return selected
-        from crop_release import prepare_release,propose_input_repair
-        now=int(obs['step'])
+        from crop_release import _public_identity,prepare_release,propose_input_repair
+        identity=_public_identity(obs)
+        if identity is None:return selected
+        _,now=identity
         if now==372 and self.crop_intent is None and not self.plans:
             selected,self._crop_preparation,self.crop_report=prepare_release(
                 self.m,obs,self.configuration,selected,post,self._crop_routes,controller.cur,
@@ -97,9 +103,11 @@ class SpatialTempo:
     def finish_crop(self,obs,returned,post,current,*,seller_completed=False):
         """A site intent persists across resets; only final returns commit it."""
         if not self.crop_release:return
-        from crop_release import (commit_preparation,commit_plant,commit_harvest,
-            commit_deposit,commit_crop_sale,commit_input_repair)
-        now=int(obs['step']);p=self.crop_intent
+        from crop_release import (_public_identity,commit_preparation,commit_plant,
+            commit_harvest,commit_deposit,commit_crop_sale,commit_input_repair)
+        identity=_public_identity(obs)
+        if identity is None:return
+        _,now=identity;p=self.crop_intent
         if self._crop_preparation is not None:
             p=commit_preparation(self._crop_preparation,obs,returned)
         if p is not None and now==p['plant_step']:
@@ -116,10 +124,10 @@ class SpatialTempo:
         """Cancel the appended input buy if another final guard changed units."""
         p=self._crop_repair
         if p is None:return returned
-        from crop_release import units
-        bound=(int(obs['step'])==p['step'] and int(obs['player'])==p['player']
-               and units(returned)==p['unit_binding'] and post is not None
-               and int(post['step'])==p['step'] and int(post['player'])==p['player']
+        from crop_release import _public_identity,units
+        bound=(_public_identity(obs)==(p['player'],p['step'])
+               and units(returned)==p['unit_binding']
+               and _public_identity(post)==(p['player'],p['step'])
                and returned.get('market',[])==p['expected_market'])
         market=returned.get('market',[])
         if (not bound and p['kind']=='buy' and p['slot']==len(market)-1
