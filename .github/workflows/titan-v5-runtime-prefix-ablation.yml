@@ -1,0 +1,39 @@
+name: TITAN V5 runtime-prefix ablation
+
+on:
+  push:
+    branches:
+      - astra/v5-v31-v4-runtime-prefix-ablation-20260912
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-runtime-prefix-ablation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Assert exact pushed head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and run normal contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/runtime-prefix-ablation
+        run: |
+          python -B -m py_compile ablate_runtime_prefix.py test_ablate_runtime_prefix.py
+          python -B -m unittest -v test_ablate_runtime_prefix.py
+      - name: Run optimized contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/runtime-prefix-ablation
+        run: python -O -B -m unittest -v test_ablate_runtime_prefix.py
