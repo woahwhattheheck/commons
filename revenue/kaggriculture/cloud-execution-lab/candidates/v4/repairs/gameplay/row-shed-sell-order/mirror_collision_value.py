@@ -17,6 +17,8 @@ from typing import Any, Callable, Mapping, Sequence
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 SCHEMA = "titan.v4.rowshed.mirror-collision-value.v1"
+# Official _process_market aborts a unit loop before iteration 100_000.
+MAX_EXECUTABLE_UNITS_PER_MARKET_ORDER = 99_999
 
 
 class MirrorCollisionInputError(ValueError):
@@ -87,6 +89,8 @@ def mirror_collision_score(
     name = _item(item)
     level = _plain_nonnegative_int(public_inventory, "public_inventory")
     qty = _plain_positive_int(fillable, "fillable")
+    if qty > MAX_EXECUTABLE_UNITS_PER_MARKET_ORDER:
+        raise MirrorCollisionInputError("fillable exceeds official per-order unit-loop horizon")
     if not callable(price_fn):
         raise MirrorCollisionInputError("price_fn must be callable")
 
