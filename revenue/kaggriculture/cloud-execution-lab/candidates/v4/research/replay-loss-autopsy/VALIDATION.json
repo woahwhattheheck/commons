@@ -1,39 +1,54 @@
 {
   "files": {
     "README.md": {
-      "bytes": 2529,
-      "git_blob_sha1": "df254e8fe1e1e6fffd59f37395251448c4bd435a",
-      "sha256": "db11f26a4f0f5066de8381444196bc3575fedd2e950ea1b1bc5b8bea3d2a5f1f"
+      "bytes": 4654,
+      "git_blob_sha1": "2bef5ce2689630c73e5fce57f45795a8eff152f7",
+      "sha256": "a4cfc7927abb12be953f2ff5805142e1c552c3f8b9916150cb2280919c654d4a"
+    },
+    "compare_episode_extracts.py": {
+      "bytes": 16869,
+      "git_blob_sha1": "6b4cded3703e6e522c9a48ccf4262760e45706a4",
+      "sha256": "07e8be78c188ea22f53fdd97d84949db4154087087dfa4e87b9a4f35d23a62de"
     },
     "extract_episode.py": {
-      "bytes": 13803,
-      "git_blob_sha1": "9d04ccc42d88921414ac80ab429eb86f2d8559fa",
-      "sha256": "75f4349cf495c9c3e3e670a646f51d83e6fedc0c629d931fb2589331945edcc0"
+      "bytes": 13943,
+      "git_blob_sha1": "79fcd1b57c01b961856eafaea4aebed01a2edbc1",
+      "sha256": "e04b9be113b8089d7d0bcc858908f4aa766c3a52b6b1f41e5e10af59ca15b694"
+    },
+    "test_compare_episode_extracts.py": {
+      "bytes": 9918,
+      "git_blob_sha1": "63b91d34a49582b8a42c5d16b0ed6985ade314de",
+      "sha256": "e3ee145f7db63441cf6509727dee001bbc6d6d8798969ebd0a3b3af0654b6b8b"
     },
     "test_extract_episode.py": {
-      "bytes": 7072,
-      "git_blob_sha1": "557cb9edc83310d5c101af98b957158b360be532",
-      "sha256": "1a9dc15e8c9939013da689e9455facb9d23e93026a19dd84551788c0a3a02cf2"
+      "bytes": 7951,
+      "git_blob_sha1": "c8869c4fb40f7ab953b9ba304038d86588454647",
+      "sha256": "d03e1def7f4aa66c18ade7b5dcd83d8b77ed677befd9634044328661eccd158a"
     }
   },
   "limits": [
     "No real corpus was available in this runtime.",
-    "This receipt proves tool contracts on synthetic fixtures, not game-strength or replay conclusions."
+    "This receipt proves source-bound tooling contracts on synthetic fixtures, not game-strength, mechanism causality, or replay conclusions.",
+    "Hosted GitHub checks are a separate merge gate and are not represented by this local focused receipt."
   ],
   "python": "3.13.5",
-  "schema": "titan.v4.replay-loss-autopsy-validation.v1",
+  "schema": "titan.v4.replay-loss-autopsy-validation.v2",
   "scope": "research_tooling_only",
   "validation": {
     "py_compile": "PASS",
     "real_replay_episode_executed": false,
     "synthetic_only": true,
     "unittest_normal": {
+      "comparator_tests": 14,
+      "extractor_tests": 8,
       "status": "PASS",
-      "tests": 7
+      "tests": 22
     },
     "unittest_optimized": {
+      "comparator_tests": 14,
+      "extractor_tests": 8,
       "status": "PASS",
-      "tests": 7
+      "tests": 22
     }
   }
 }
