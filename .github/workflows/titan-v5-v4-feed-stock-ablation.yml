@@ -3,7 +3,7 @@ name: TITAN V5 V4 feed-stock ablation
 on:
   push:
     branches:
-      - astra/v5-v4-feed-stock-ablation-20260912
+      - astra/v5-feed-stock-postmerge-custody-20260912
 
 permissions:
   contents: read
@@ -32,8 +32,15 @@ jobs:
       - name: Compile and run normal contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/v4-feed-stock-ablation
         run: |
-          python -B -m py_compile feed_stock_ablation.py paired.py test_feed_stock_ablation.py
-          python -B -m unittest -v test_feed_stock_ablation.py
+          python -B -m py_compile feed_stock_ablation.py paired.py test_feed_stock_ablation.py test_paired.py
+          python -B -m unittest -v test_feed_stock_ablation.py test_paired.py
       - name: Run optimized contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/v4-feed-stock-ablation
-        run: python -O -B -m unittest -v test_feed_stock_ablation.py
+        run: python -O -B -m unittest -v test_feed_stock_ablation.py test_paired.py
+      - name: Require clean exact head
+        shell: bash
+        run: |
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --check
+          test -z "$(git status --porcelain)"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
