@@ -35,6 +35,7 @@ SCHEMA = "titan-v5-paired-economics/v2"
 RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v2"
 MIN_CELLS = 8
 MIN_SEEDS = 4
+MAX_INT = (1 << 63) - 1
 _V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
 _HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 _UNSET = object()
@@ -126,9 +127,17 @@ def _opponent(value: Any, field: str) -> str | None:
     return _nonempty_text(value, field)
 
 
-def _plain_int(value: Any, field: str, *, minimum: int = 0) -> int:
-    if type(value) is not int or value < minimum:
-        raise EconomicsError(f"{field} must be a plain int >= {minimum}")
+def _plain_int(
+    value: Any,
+    field: str,
+    *,
+    minimum: int = 0,
+    maximum: int = MAX_INT,
+) -> int:
+    if type(value) is not int or value < minimum or value > maximum:
+        raise EconomicsError(
+            f"{field} must be a plain int in [{minimum}, {maximum}]"
+        )
     return value
 
 
