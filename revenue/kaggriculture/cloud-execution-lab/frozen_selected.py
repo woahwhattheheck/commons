@@ -163,31 +163,59 @@ def fund_same_turn_acquisition(orders, farm, private, market, shops, config, now
         if same:destination=max(same)
         elif empty:destination=max(empty)
         else:continue
-        for moved in range(1,available+1):
+        def probe(moved):
             candidate=copy.deepcopy(original)
             if candidate[destination]:
                 candidate[destination][2]=int(candidate[destination][2])+moved
             else:candidate[destination]=['SELL',item,moved]
             remaining=available-moved
             candidate[source]=['SELL',item,remaining] if remaining else []
-            if sale_quantities(candidate)!=sale_quantities(original):continue
+            if sale_quantities(candidate)!=sale_quantities(original):return None
             state=_market_prefix_state(
                 candidate,farm,private,market,shops,config,now,rival_quantity,target)
             outcome=state['outcomes'].get(target,{})
-            if outcome.get('completed',0)<before['required']:continue
-            candidates.append((
-                (moved,-int(state['money']),source-target,target-destination,item),
-                candidate,
-                {'applied':True,'target_index':target,
-                 'target_order':copy.deepcopy(original[target]),
-                 'baseline_completed':before['completed'],
-                 'funded_completed':outcome['completed'],
-                 'source_index':source,'destination_index':destination,
-                 'item':item,'moved_quantity':moved,
-                 'remaining_cash_after_target':int(state['money']),
-                 'sale_stress':state['sale_stress'],
-                 'sale_quantities_preserved':True}))
-            break
+            if outcome.get('completed',0)<before['required']:return None
+            return candidate,state
+        selected=None
+        if callable(rival_quantity):
+            # Preserve predecessor callback count/order for external or stateful
+            # callback users. V5 production passes an immutable rival snapshot.
+            for moved in range(1,available+1):
+                result=probe(moved)
+                if result is not None:
+                    selected=(moved,*result);break
+        else:
+            # The target is the first failing fixed acquisition, so every earlier
+            # fixed acquisition already fully completes in the baseline. More
+            # early physical sale units can only add nonnegative cash/free shed
+            # capacity; BUY_PRODUCT remains a hard barrier. Completion is thus a
+            # false-prefix/true-suffix predicate over moved quantity.
+            high=probe(available)
+            if high is not None:
+                low_moved=1;high_moved=available;best=high
+                while low_moved<high_moved:
+                    mid=(low_moved+high_moved)//2
+                    result=probe(mid)
+                    if result is None:
+                        low_moved=mid+1
+                    else:
+                        high_moved=mid;best=result
+                selected=(low_moved,*best)
+        if selected is None:continue
+        moved,candidate,state=selected
+        outcome=state['outcomes'].get(target,{})
+        candidates.append((
+            (moved,-int(state['money']),source-target,target-destination,item),
+            candidate,
+            {'applied':True,'target_index':target,
+             'target_order':copy.deepcopy(original[target]),
+             'baseline_completed':before['completed'],
+             'funded_completed':outcome['completed'],
+             'source_index':source,'destination_index':destination,
+             'item':item,'moved_quantity':moved,
+             'remaining_cash_after_target':int(state['money']),
+             'sale_stress':state['sale_stress'],
+             'sale_quantities_preserved':True}))
     if not candidates:
         return original,{'applied':False,'reason':'no-safe-prefix-sale',
                          'target_index':target,
@@ -613,6 +641,7 @@ class FrozenSelected(SellScheduler):
             if o and o[0]=='SELL' and len(o)>2 and o[1] in PRODUCTS:
                 baseline_q[o[1]]=baseline_q.get(o[1],0)+max(0,int(o[2]))
         targets={p:max(0,int(shed.get(p,0))) for p in PRODUCTS if shed.get(p,0)>0}
+        rival_by_product={product:self.rival_supply(obs,product) for product in targets}
         current={p:min(targets[p],baseline_q.get(p,0)+sum(q for t,q in self.planned.get(p,[]) if t<=now)) for p in targets}
         route=self.controller.R[self.controller.cur]
         shops=obs.get('town',{}).get('unlocked_shops',[])
@@ -705,11 +734,11 @@ class FrozenSelected(SellScheduler):
                             int(config.get('maxMarketOrdersPerTurn',10)))
                         pair_market,_=fund_same_turn_acquisition(
                             pair_market,farm,private,obs['market'],shops,config,now,
-                            targets,lambda product:self.rival_supply(obs,product))
+                            targets,rival_by_product)
                         bound=joint_resource_bound(
                             obs,config,base,farm,private,route,end,
                             current_market=pair_market,
-                            rival_quantity=lambda product:self.rival_supply(obs,product))
+                            rival_quantity=rival_by_product)
                     if bound is None:continue
                     # A future carried-goods commitment cannot be consumed by
                     # this new joint sale. Ordinary inputs remain producer-owned.
@@ -750,7 +779,7 @@ class FrozenSelected(SellScheduler):
                                         int(config.get('maxMarketOrdersPerTurn',10)))
         out['market'],funding=fund_same_turn_acquisition(
             out['market'],farm,private,obs['market'],shops,config,now,targets,
-            lambda product:self.rival_supply(obs,product))
+            rival_by_product)
         if funding is not None:self.diagnostics['same_turn_funding']=funding
         for item,q in targets.items():
             sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
