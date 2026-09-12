@@ -1,0 +1,24 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_dead_water_harvest.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_dead_water_harvest.py
+@@
+     def test_mature_but_premax_annual_preserves_future_yield(self):
+         tile = _tile(crop="WHEAT", planted_day=26, yield_units=3,
+                      watered_today=True, max_lifespan_step=744)
+         action = _action()
+         out = _apply(_obs(tile), action)
+         self.assertIs(out, action)
+         self.assertEqual(lane.get_report()["future_yield_block"], 1)
++
++    def test_carrot_age2_harvestable_but_premax_preserves_future_yield(self):
++        # Live replay ep 107941268 proves CARROT is already harvestable at age 2
++        # yet can still gain at age 3 (2 units -> 4 after age-2 fertilizer +
++        # age-3 water).  W1 must therefore treat harvestability as insufficient
++        # while CARROT is still before its official max-yield day.
++        tile = _tile(crop="CARROT", planted_day=26, yield_units=2,
++                     watered_today=True, max_lifespan_step=744)
++        action = _action()
++        out = _apply(_obs(tile, step=695, day=28), action)
++        self.assertIs(out, action)
++        self.assertEqual(lane.get_report()["future_yield_block"], 1)
+ 
+     def test_already_watered_ongoing_crop_can_harvest_when_capacity_proven(self):
