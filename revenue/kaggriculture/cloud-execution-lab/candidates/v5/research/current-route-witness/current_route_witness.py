@@ -13,7 +13,7 @@ import hashlib
 import json
 from typing import Any
 
-SCHEMA = "titan-v5-current-route-window-v1"
+SCHEMA = "titan-v5-current-route-window-v2"
 ROUTE_SOURCE = "installed_controller.R[cur]"
 MAX_LOOKAHEAD = 72
 
@@ -291,11 +291,22 @@ def bind_current_route_window(
             )
         )
 
+    # The digest is the portable authority for the window receipt. Bind every
+    # field that changes what a consumer is allowed to infer, not just the route
+    # bytes. This prevents a valid route/row digest from being replayed under a
+    # different current worker envelope, controller identity, or requested span.
     window_material = json.dumps(
         {
-            "route_sha256": route_sha256,
+            "schema": SCHEMA,
+            "route_source": ROUTE_SOURCE,
+            "controller_type": controller_type,
             "route_id": route_id,
             "current_step": step,
+            "current_index": step,
+            "current_worker_cardinality": count,
+            "route_length": len(route),
+            "route_sha256": route_sha256,
+            "lookahead": lookahead,
             "rows": [row.receipt() for row in rows],
         },
         sort_keys=True,
