@@ -52,6 +52,7 @@ def signed_report():
                 "steps": v.EXPECTED["steps"],
                 "first_any_action_divergence_step": 360 + seat,
                 "all_actions_identical": False,
+                "candidate_action_is_first_observed_divergence": True,
             },
         })
     report = {
@@ -72,11 +73,32 @@ def resign(report):
 
 
 class Native9901AuthorityTests(unittest.TestCase):
-    def test_exact_retained_authority_passes(self):
+    def test_exact_retained_authority_passes_and_surfaces_causal_labels(self):
         result = v.validate(signed_report())
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(result["retained_terminal_scores_reproduced"])
         self.assertEqual(result["first_any_action_divergence_step"], {"0": 360, "1": 361})
+        self.assertEqual(
+            result["candidate_action_is_first_observed_divergence"],
+            {"0": True, "1": True},
+        )
+        self.assertTrue(result["causal_candidate_first_both_seats"])
+
+    def test_opponent_first_still_passes_custody_but_is_not_causal_positive(self):
+        report = signed_report()
+        report["rows"][1]["comparison"]["candidate_action_is_first_observed_divergence"] = False
+        resign(report)
+        result = v.validate(report)
+        self.assertEqual(result["status"], "PASS")
+        self.assertFalse(result["candidate_action_is_first_observed_divergence"]["1"])
+        self.assertFalse(result["causal_candidate_first_both_seats"])
+
+    def test_missing_causal_label_rejects_ambiguous_receipt(self):
+        report = signed_report()
+        report["rows"][0]["comparison"].pop("candidate_action_is_first_observed_divergence")
+        resign(report)
+        with self.assertRaisesRegex(v.ValidationError, "causal divergence label missing"):
+            v.validate(report)
 
     def test_wrong_executed_entry_rejects_even_with_exact_archive(self):
         report = signed_report()
