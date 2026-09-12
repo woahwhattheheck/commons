@@ -44,10 +44,25 @@ must agree with those independently derived values. An opponent-first witness
 can therefore PASS exact experiment custody while remaining explicitly
 causal-false; validator PASS alone never authorizes a repair.
 
-The complete vectors are now part of the admission proof. Older summary-only
-witness reports are inadmissible and cannot be upgraded by re-signing or by
-running only the newer validator: a fresh witness run with the current recorder
-is required.
+The complete vectors are part of the admission proof, but they are not by
+themselves a tamper-proof attestation because they and their digests live inside
+the same JSON report. A coordinated editor could otherwise rewrite complete
+vectors, recompute all trace digests and summaries, and refresh `report_sha256`.
+For that reason validation also requires an **out-of-band frozen report
+commitment**. The trusted repo-mounted executor must publish the recorder-emitted
+`report_sha256` to the existing `#build-demand` thread immediately after the run
+and before interpretation or editing. That published value is then supplied to
+the validator with `--expected-report-sha256`.
+
+The expected report SHA must come from that earlier external publication; it
+must not be copied from the report being validated at validation time. This
+boundary prevents post-publication report re-signing. It intentionally does not
+claim to prove that a malicious trusted executor could not fabricate its own
+run—the executor is the trust boundary.
+
+Older summary-only witness reports are inadmissible and cannot be upgraded by
+re-signing or by running only the newer validator: a fresh witness run with the
+current recorder is required.
 
 ## Source contract
 
@@ -63,7 +78,7 @@ python -O -B -m unittest -v \
   test_action_divergence_witness.py test_validate_native_9901_action_witness.py
 ```
 
-The recorder suite has 10 tests and the exact-target authority validator has 15.
+The recorder suite has 10 tests and the exact-target authority validator has 18.
 Together they cover candidate-first, opponent-first, same-step observation
 divergence, identical traces, bounded witness windows, complete compact vector
 publication, topology rejection, seat parsing, SHA validation, executed-entry
@@ -71,8 +86,11 @@ drift, engine drift, terminal-score drift, duplicate seats, timeout drift,
 report tampering, a claimed run with no actual action divergence, a missing
 causal label, old summary-only evidence, vector/trace-digest tampering, a
 re-signed forged causal summary, a re-signed inconsistent first-action summary,
-and a coordinated re-signed forgery of all four primitive divergence summaries
-plus derived summaries while the complete vectors remain opponent-first.
+a coordinated re-signed forgery of all four primitive divergence summaries
+while the vectors remain opponent-first, a full-history forgery that rewrites
+vectors plus all four digests plus every summary and self-hash while a frozen
+external commitment remains unchanged, external-commitment mismatch, and the
+Python bool/int trace-step alias.
 
 ## Exact native-9901 target
 
@@ -116,18 +134,23 @@ python -B action_divergence_witness.py \
   --action-timeout 1.25 --startup-timeout 10 --game-timeout 900 \
   --window-radius 2 --output "$RUN/action-divergence-witness.json"
 
+# Immediately publish the recorder-emitted report_sha256 to the existing
+# #build-demand thread before inspecting or modifying the report. Then use that
+# earlier published value here, rather than deriving it from the report now.
 python -B validate_native_9901_action_witness.py \
-  "$RUN/action-divergence-witness.json"
+  "$RUN/action-divergence-witness.json" \
+  --expected-report-sha256 "$PUBLISHED_REPORT_SHA256"
 ```
 
 The validator requires the retained terminals exactly before returning PASS:
 V3.1 seat 0 `[74143, 64333]`, production-v3 seat 0 `[73906, 63838]`, and the
 same scores reversed for seat 1. It also requires 719 completed actions per arm,
 four complete 719-row trace vectors whose reconstructed digests match the
-recorder receipt, and at least one real action divergence in each seat. A repair
-may be proposed from this receipt only if `causal_candidate_first_both_seats` is
-true; otherwise the report is exact custody/evidence but not a candidate-first
-causal witness.
+recorder receipt, a matching external report commitment, and at least one real
+action divergence in each seat. A PASS receipt sets
+`external_report_commitment_verified=true`. A repair may be proposed only if
+`causal_candidate_first_both_seats` is also true; otherwise the report is exact
+custody/evidence but not a candidate-first causal witness.
 
 This tool is evidence-only. A witness does not authorize a gameplay change,
 CURRENT/release movement, or Kaggle submission. If both seats identify the same
