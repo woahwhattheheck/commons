@@ -113,6 +113,14 @@ class SpatialOuterRecoveryTests(unittest.TestCase):
             'crop_intent': {'kind': 'annual_crop_release', 'status': 'planted'},
         }
 
+    @staticmethod
+    def feature_data():
+        return {
+            'budget_seconds': 0.04,
+            'reserve_seconds': 0.01,
+            'town_procurement': False,
+        }
+
     def test_export_restore_filters_current_call_transients(self):
         agent = self.main._new_instance(ROOT, {})
         agent.spatial = SimpleNamespace(
@@ -164,6 +172,7 @@ class SpatialOuterRecoveryTests(unittest.TestCase):
 
     def test_outer_timeout_hands_pre_call_journal_to_fresh_instance(self):
         old = _HangingInstance(self.action, self.recovery)
+        old._entrypoint_last_step = 99
         self.main._INSTANCE = old
         started = time.perf_counter()
         output = self.main.agent(self.observation, self.configuration)
@@ -173,20 +182,19 @@ class SpatialOuterRecoveryTests(unittest.TestCase):
         self.assertLess(elapsed, 0.5)
         self.assertEqual(old.exported, 1)
         self.assertIsNone(self.main._INSTANCE)
-        self.assertEqual(self.main._SPATIAL_RECOVERY, self.recovery)
+        self.assertEqual(
+            self.main._SPATIAL_RECOVERY,
+            {'last_step': 100, 'state': self.recovery},
+        )
 
         # Mutating the discarded object cannot change the saved journal.
         old.recovery['_committed']['step'] = 888
-        self.assertEqual(self.main._SPATIAL_RECOVERY['_committed']['step'], 99)
+        self.assertEqual(
+            self.main._SPATIAL_RECOVERY['state']['_committed']['step'], 99)
 
         fresh = _FreshInstance(self.action, self.recovery)
         next_observation = dict(self.observation, step=101)
-        feature_data = {
-            'budget_seconds': 0.04,
-            'reserve_seconds': 0.01,
-            'town_procurement': False,
-        }
-        with patch('json.loads', return_value=feature_data), \
+        with patch('json.loads', return_value=self.feature_data()), \
                 patch.object(self.main, '_new_instance', return_value=fresh):
             output = self.main.agent(next_observation, self.configuration)
 
@@ -196,20 +204,34 @@ class SpatialOuterRecoveryTests(unittest.TestCase):
         self.assertIsNone(self.main._SPATIAL_RECOVERY)
 
     def test_step_zero_clears_prior_match_journal(self):
-        self.main._SPATIAL_RECOVERY = deepcopy(self.recovery)
+        self.main._SPATIAL_RECOVERY = {
+            'last_step': 99,
+            'state': deepcopy(self.recovery),
+        }
         fresh = _FreshInstance(self.action, None)
         observation = dict(self.observation, step=0)
-        feature_data = {
-            'budget_seconds': 0.04,
-            'reserve_seconds': 0.01,
-            'town_procurement': False,
-        }
-        with patch('json.loads', return_value=feature_data), \
+        with patch('json.loads', return_value=self.feature_data()), \
                 patch.object(self.main, '_new_instance', return_value=fresh):
             output = self.main.agent(observation, self.configuration)
 
         self.assertEqual(output, self.action)
         self.assertIsNone(fresh.staged)
+        self.assertIsNone(self.main._SPATIAL_RECOVERY)
+
+    def test_step_zero_retry_keeps_step_zero_journal(self):
+        self.main._SPATIAL_RECOVERY = {
+            'last_step': 0,
+            'state': deepcopy(self.recovery),
+        }
+        fresh = _FreshInstance(self.action, self.recovery)
+        observation = dict(self.observation, step=0)
+        with patch('json.loads', return_value=self.feature_data()), \
+                patch.object(self.main, '_new_instance', return_value=fresh):
+            output = self.main.agent(observation, self.configuration)
+
+        self.assertEqual(output, self.action)
+        self.assertEqual(fresh.staged, self.recovery)
+        self.assertIs(self.main._INSTANCE, fresh)
         self.assertIsNone(self.main._SPATIAL_RECOVERY)
 
 
