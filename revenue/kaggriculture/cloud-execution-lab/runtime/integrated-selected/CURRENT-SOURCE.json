@@ -494,6 +494,11 @@
       "sha256": "ee5690f10db8a92932d04ebd195d1e3a5a11f8c3f8c9d590446fb4c69e1cda5d",
       "source_path": "test_entrypoint_deadline.py"
     },
+    "checks/test_entrypoint_route_capsule.py": {
+      "bytes": 8606,
+      "sha256": "e25dd96933e58d7c74202e994fb2b78616074aa4e3ea4d9bea2a480325985b3c",
+      "source_path": "test_entrypoint_route_capsule.py"
+    },
     "checks/test_feed_stock.py": {
       "bytes": 13727,
       "sha256": "cfedaeb49e9de72dcae1d49bdf4b88b1bc8d0ba5172ada12f1868bf4b0efcf6f",
@@ -650,8 +655,8 @@
       "source_path": "integrated_selected.py"
     },
     "main.py": {
-      "bytes": 25753,
-      "sha256": "f21868e6bb165cf9c786c0aee538953d92eb5d3f7a4361235c97caccda6955e1",
+      "bytes": 29751,
+      "sha256": "d1333acdfad8b8762f398e154b3d1d96ab5a29f6c0f7e660694e0ee186803dee",
       "source_path": "main.py"
     },
     "mechanics.py": {
