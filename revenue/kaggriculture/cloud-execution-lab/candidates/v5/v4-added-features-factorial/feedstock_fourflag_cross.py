@@ -15,7 +15,7 @@ import types
 
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 FACTORIAL_REL = "cloud-execution-lab/candidates/v5/v4-added-features-factorial/paired.py"
-FACTORIAL_GIT_BLOB = "05db6fe6a5b464558fad7aef94f689ea40303ad1"
+FACTORIAL_GIT_BLOB = "198006f24936fe1ec8a6ac6d6d6cae015adf91cc"
 FEED_STOCK_REL = "cloud-execution-lab/candidates/v5/v4-feed-stock-ablation/feed_stock_ablation.py"
 FEED_STOCK_GIT_BLOB = "5dc273dcbfaf07d69b2ded7de672bfd003d7454d"
 ARMS = ("v4", "feed_stock_off", "all_four_off", "both_off")
