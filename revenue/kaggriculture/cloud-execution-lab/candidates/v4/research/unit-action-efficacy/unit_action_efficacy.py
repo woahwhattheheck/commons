@@ -125,18 +125,60 @@ def _imported(name: str, path: Path):
     return module
 
 
+def _is_under(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+        return True
+    except ValueError:
+        return False
+
+
+def _system_import_paths(paths: list[str]) -> list[str]:
+    roots = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
+    result = []
+    for value in paths:
+        if not value:
+            continue
+        try:
+            resolved = Path(value).resolve()
+        except OSError:
+            continue
+        if any(_is_under(resolved, root) for root in roots):
+            result.append(value)
+    return result
+
+
+def _reject_preloaded_runtime_modules(captured: dict[str, bytes]) -> None:
+    """Reject ambient top-level modules that could override captured runtime files."""
+    names = {
+        PurePosixPath(member).stem
+        for member in captured
+        if "/" not in member and member.endswith(".py")
+    }
+    system_roots = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
+    for name in sorted(names):
+        module = sys.modules.get(name)
+        if module is None:
+            continue
+        origin = getattr(module, "__file__", None)
+        if not origin:
+            raise ValueError(f"preloaded runtime module has no auditable origin: {name}")
+        try:
+            path = Path(origin).resolve()
+        except OSError as exc:
+            raise ValueError(f"preloaded runtime module origin is unreadable: {name}") from exc
+        if not any(_is_under(path, root) for root in system_roots):
+            raise ValueError(f"preloaded runtime module escapes frozen custody: {name} -> {path}")
+
+
 class _FixtureCustody:
-    def __init__(self, scratch, sys_paths, source):
+    def __init__(self, scratch, prior_path, source):
         self.scratch = scratch
-        self.sys_paths = tuple(sys_paths)
+        self.prior_path = list(prior_path)
         self.source = source
 
     def close(self):
-        for value in self.sys_paths:
-            try:
-                sys.path.remove(value)
-            except ValueError:
-                pass
+        sys.path[:] = self.prior_path
         self.scratch.cleanup()
 
 
@@ -226,16 +268,17 @@ def _load_fixture(package: Path):
     scratch = tempfile.TemporaryDirectory(prefix="unitwaste-runtime-")
     frozen = Path(scratch.name) / "runtime"
     materialize_runtime(frozen, manifest_raw, captured)
-    sys_paths = [str(frozen), str(frozen / "checks")]
-    sys.path[0:0] = sys_paths
+    prior_path = list(sys.path)
+    _reject_preloaded_runtime_modules(captured)
+    sys.path[:] = [
+        str(frozen),
+        str(frozen / "checks"),
+        *_system_import_paths(prior_path),
+    ]
     try:
         engine, ev, main = _load_captured_fixture(frozen)
     except Exception:
-        for value in sys_paths:
-            try:
-                sys.path.remove(value)
-            except ValueError:
-                pass
+        sys.path[:] = prior_path
         scratch.cleanup()
         raise
     source = {
@@ -247,7 +290,7 @@ def _load_fixture(package: Path):
         "main_git_blob": git_blob_sha(captured[MAIN_REL.as_posix()]),
         "immutable_execution_snapshot": True,
     }
-    return engine, ev, main, _FixtureCustody(scratch, sys_paths, source)
+    return engine, ev, main, _FixtureCustody(scratch, prior_path, source)
 
 
 def run_cell(package: Path, seed: int, seat: int):
