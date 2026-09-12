@@ -8,7 +8,7 @@ preserve literal-bool activation semantics.
 
 The contract is deliberately narrow and mechanical. A callable whose parameter
 is literally named ``enabled`` and defaults to the bool ``False`` may not rely on
-Python truthiness, bool equality/membership, or identity-to-False to decide
+Python truthiness, value/equality comparisons, or identity-to-False to decide
 activation. Only literal ``enabled is True`` is a safe positive identity test.
 A top-level fail-closed guard that rejects every non-bool (or everything except
 literal True) before the first truthiness use also makes later truthiness safe.
@@ -107,15 +107,6 @@ def _enabled_bool_identity(node: ast.AST) -> tuple[type[ast.cmpop], bool] | None
     return None
 
 
-def _literal_bool_container(node: ast.AST) -> bool:
-    if not isinstance(node, (ast.Tuple, ast.List, ast.Set)):
-        return False
-    return bool(node.elts) and all(
-        _literal_bool(item, True) or _literal_bool(item, False)
-        for item in node.elts
-    )
-
-
 def _unsafe_boolean_nodes(node: ast.AST) -> list[ast.AST]:
     """Return direct fail-open boolean/coercion uses of ``enabled``."""
     if _name(node, "enabled"):
@@ -147,26 +138,16 @@ def _unsafe_boolean_nodes(node: ast.AST) -> list[ast.AST]:
             return [next(value for value in values if _name(value, "enabled"))]
 
         values = [node.left, *node.comparators]
-        has_enabled = any(_name(value, "enabled") for value in values)
-        has_bool = any(
-            _literal_bool(value, True) or _literal_bool(value, False)
-            for value in values
+        direct_enabled = next(
+            (value for value in values if _name(value, "enabled")),
+            None,
         )
-        if (
-            has_enabled
-            and has_bool
-            and any(isinstance(op, (ast.Eq, ast.NotEq)) for op in node.ops)
-        ):
-            return [next(value for value in values if _name(value, "enabled"))]
-
-        if (
-            len(node.ops) == 1
-            and isinstance(node.ops[0], (ast.In, ast.NotIn))
-            and _name(node.left, "enabled")
-            and len(node.comparators) == 1
-            and _literal_bool_container(node.comparators[0])
-        ):
-            return [node.left]
+        if direct_enabled is not None:
+            # Any other direct comparison computes activation from value/equality
+            # semantics rather than literal-bool identity. This includes numeric
+            # equality/order and membership such as ``enabled == 1`` or
+            # ``enabled in (1,)``; truthy non-bools may satisfy those forms.
+            return [direct_enabled]
         return []
 
     if _call(node, "bool", 1) and _name(node.args[0], "enabled"):
@@ -178,10 +159,28 @@ def _unsafe_boolean_nodes(node: ast.AST) -> list[ast.AST]:
         and node.func.id in {"any", "all"}
         and len(node.args) == 1
         and not node.keywords
-        and isinstance(node.args[0], (ast.Tuple, ast.List, ast.Set))
-        and any(_name(item, "enabled") for item in node.args[0].elts)
     ):
-        return [next(item for item in node.args[0].elts if _name(item, "enabled"))]
+        iterable = node.args[0]
+        if isinstance(iterable, (ast.Tuple, ast.List, ast.Set)):
+            for item in iterable.elts:
+                hits = _unsafe_boolean_nodes(item)
+                if hits:
+                    return hits
+        elif isinstance(iterable, ast.Dict):
+            for item in iterable.keys:
+                if item is None:
+                    continue
+                hits = _unsafe_boolean_nodes(item)
+                if hits:
+                    return hits
+        elif isinstance(iterable, (ast.GeneratorExp, ast.ListComp, ast.SetComp)):
+            hits = _unsafe_boolean_nodes(iterable.elt)
+            if hits:
+                return hits
+        elif isinstance(iterable, ast.DictComp):
+            hits = _unsafe_boolean_nodes(iterable.key)
+            if hits:
+                return hits
 
     # Deliberately do not guess about arbitrary helper(enabled) calls. This
     # guard targets Python boolean activation, not semantic review of helpers.
