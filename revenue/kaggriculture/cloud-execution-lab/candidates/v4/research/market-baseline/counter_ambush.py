@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""TITAN V4 COMEBACK: source-bound adversarial market counterfactuals.
+"""TITAN V4 COMEBACK: authenticated adversarial market counterfactuals.
 
-Research only. No runtime action chooser. The Apex schedule below is externally
-reported and MUST NOT be treated as authenticated opponent source until a byte
-identity is supplied by the metagame owner.
+Research only. No runtime action chooser. The Apex schedule is source-bound to
+the exact public Apex V7 wrapper and reference-policy-bank identity used by the
+canonical market-pressure source-custody packet.
 """
 from __future__ import annotations
 
@@ -15,13 +15,33 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+APEX_MAIN_SHA256 = "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a"
 PRICE_FLOOR = 1
-REPORTED_APEX_SELL_STEPS = {
+
+AUTHENTICATED_APEX_SELL_STEPS = {
     "MELON": (249,),
-    "STRAWBERRY": (381, 403, 499),
+    "STRAWBERRY": (381, 403, 499, 500, 501),
     "FERTILIZER": (522,),
 }
-SCHEDULE_AUTHENTICATED = False
+APEX_ANTI_CLONE = {
+    "clone_window": (2, 10),
+    "clone_min_opponent_hands": 3,
+    "clone_min_opponent_structures": 1,
+    "events": (
+        {"steps": (249,), "item": "MELON", "min_shed": 6, "max_sell": 12},
+        {"steps": (381,), "item": "STRAWBERRY", "min_shed": 6, "max_sell": 8},
+        {"steps": (403,), "item": "STRAWBERRY", "min_shed": 6, "max_sell": 8},
+        {"steps": (499, 500, 501), "item": "STRAWBERRY", "min_shed": 8, "max_sell": 8},
+        {
+            "steps": (522,),
+            "item": "FERTILIZER",
+            "min_shed": 18,
+            "max_sell": 4,
+            "quantity_rule": "min(fert - 16, 4)",
+        },
+    ),
+}
+SCHEDULE_AUTHENTICATED = True
 
 MARKET = {
     "WHEAT": dict(base=25, I0=10000, T=400, below_func="sqrt", below_target=.80, above_func="log", above_target=.20),
@@ -44,6 +64,23 @@ TOWN_CENTER_PRODUCTS = {"WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON", "EGG
 
 def _git_blob(data: bytes) -> str:
     return hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
+
+
+def _sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _no_dupes(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise RuntimeError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
+def _reject_constant(value: str) -> None:
+    raise RuntimeError(f"non-finite JSON constant: {value}")
 
 
 def verify_engine(path: Path) -> dict[str, Any]:
@@ -71,7 +108,30 @@ def verify_engine(path: Path) -> dict[str, Any]:
     t = text.find("_town_consume(env, state, step)")
     if min(u, m, t) < 0 or not (u < m < t):
         raise RuntimeError("UNIT -> MARKET -> TOWN ordering drift")
-    return {"engine_blob": actual, "unit_market_town_order": True, "schedule_authenticated": False}
+    return {"engine_blob": actual, "unit_market_town_order": True}
+
+
+def verify_apex_source(apex_path: Path, reference_manifest_path: Path) -> dict[str, str]:
+    apex = apex_path.read_bytes()
+    apex_sha = _sha256(apex)
+    if apex_sha != APEX_MAIN_SHA256:
+        raise RuntimeError(f"Apex source drift: expected {APEX_MAIN_SHA256}, got {apex_sha}")
+    manifest = json.loads(
+        reference_manifest_path.read_text(encoding="utf-8"),
+        object_pairs_hook=_no_dupes,
+        parse_constant=_reject_constant,
+    )
+    declared = (
+        manifest.get("policies", {})
+        .get("apex_v7", {})
+        .get("files", {})
+        .get("main.py")
+    )
+    if declared != APEX_MAIN_SHA256:
+        raise RuntimeError(
+            f"reference-policy-bank Apex declaration drift: expected {APEX_MAIN_SHA256}, got {declared!r}"
+        )
+    return {"apex_main_sha256": apex_sha, "reference_declared_apex_sha256": declared}
 
 
 def _shape(name: str, x: float, T: float) -> float:
@@ -174,7 +234,6 @@ def source_bonus_ceiling_per_fertilizer(crop: str) -> int:
 def earliest_fertilize_step(buy_step: int, movement_distance: int = 0) -> int:
     if buy_step < 0 or movement_distance < 0:
         raise ValueError("negative step/distance")
-    # BUY lands in shed after unit phase. Earliest next callback PICKUP, then FERTILIZE.
     return buy_step + 2 + movement_distance
 
 
@@ -190,6 +249,7 @@ def fertilizer_sponge(*, starting_inventory: int, rival_sell_units: int,
     threshold = math.ceil(avg_cost / ceiling)
     out = {
         "rival_dump_gross": dump["gross"],
+        "rival_market_units_added": dump["ending_inventory"] - starting_inventory,
         "our_buy_cost_after_dump": after["cost"],
         "our_buy_cost_without_dump": baseline["cost"],
         "opponent_created_purchase_discount": baseline["cost"] - after["cost"],
@@ -210,18 +270,24 @@ def fertilizer_sponge(*, starting_inventory: int, rival_sell_units: int,
 def sample_report() -> dict[str, Any]:
     strawberry_shops = ("BRUNCH_SPOT", "ICE_CREAM_SHOP", "SMOOTHIE_SHOP", "FARMERS_MARKET") * 2
     return {
-        "schema": "titan-v4-comeback-counter-ambush/v1",
-        "reported_external_schedule": REPORTED_APEX_SELL_STEPS,
+        "schema": "titan-v4-comeback-counter-ambush/v2",
+        "authenticated_apex_schedule": AUTHENTICATED_APEX_SELL_STEPS,
+        "apex_source_sha256": APEX_MAIN_SHA256,
         "schedule_authenticated": SCHEDULE_AUTHENTICATED,
-        "strawberry_380_max_shop_drain": predump_counterfactual(
-            item="STRAWBERRY", starting_inventory=10000, own_units=10, rival_units=10,
+        "apex_contract": APEX_ANTI_CLONE,
+        "strawberry_380_source_real_max_shop_drain": predump_counterfactual(
+            item="STRAWBERRY", starting_inventory=10000, own_units=8, rival_units=8,
             pre_step=380, unlocked_shops=strawberry_shops),
-        "strawberry_402_no_shop_drain": predump_counterfactual(
-            item="STRAWBERRY", starting_inventory=10000, own_units=10, rival_units=10,
+        "strawberry_402_source_real_no_shop_drain": predump_counterfactual(
+            item="STRAWBERRY", starting_inventory=10000, own_units=8, rival_units=8,
             pre_step=402, unlocked_shops=()),
-        "fert40_buy10_wheat_base": fertilizer_sponge(
-            starting_inventory=10000, rival_sell_units=40, our_buy_units=10,
+        "fert4_buy4_wheat_base": fertilizer_sponge(
+            starting_inventory=10000, rival_sell_units=4, our_buy_units=4,
             target_crop="WHEAT", observed_crop_price=25),
+        "fert_floor_control": fertilizer_sponge(
+            starting_inventory=10493, rival_sell_units=4, our_buy_units=4,
+            target_crop="WHEAT", observed_crop_price=25),
+        "decision_authority": False,
     }
 
 
