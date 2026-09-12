@@ -54,7 +54,8 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         self.assertEqual(cert["site"], [1, 1])
         self.assertEqual(cert["stored_yield_units"], 2)
         self.assertEqual(cert["replacement_row"], ["HARVEST"])
-        self.assertEqual(cert["recovery_row"], ["WATER"])
+        self.assertEqual(cert["recovery_op"], "WATER")
+        self.assertEqual(cert["same_callback_semantic_water_count"], 1)
         self.assertEqual(cert["recovery_day"], cert["current_day"] + 1)
         self.assertTrue(cert["same_callback_destructive_dig_absent"])
         candidate = R.apply_water_harvest_recovery(
@@ -104,6 +105,26 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         future["farms"][0]["hands"] = [[1, 1]]
         recovery = action(["WATER"], [["WATER"]])
         self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_semantic_water_extra_before_exact_water_is_rejected(self):
+        now, current, future, _ = self.pair()
+        future["farms"][0]["hands"] = [[1, 1]]
+        recovery = action(["WATER", "extra"], [["WATER"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_exact_water_before_semantic_water_extra_is_rejected(self):
+        now, current, future, _ = self.pair()
+        future["farms"][0]["hands"] = [[1, 1]]
+        recovery = action(["WATER"], [["WATER", "extra"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_single_semantic_water_extra_is_accepted(self):
+        now, current, future, _ = self.pair()
+        recovery = action(["WATER", "extra"])
+        certs = R.plan_water_harvest_recovery(current, now, recovery, future, CFG)
+        self.assertEqual(len(certs), 1)
+        self.assertEqual(certs[0]["recovery_actor"], 0)
+        self.assertEqual(certs[0]["recovery_op"], "WATER")
 
     def test_same_site_dig_before_water_is_rejected(self):
         now, current, future, _ = self.pair()
