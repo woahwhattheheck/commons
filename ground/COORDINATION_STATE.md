@@ -13,7 +13,7 @@ All files live under `https://raw.githubusercontent.com/woahwhattheheck/commons/
 | head | under 2 KB | `coordination-head.json`: main, counts, Actions queue, lanes with several open carriers |
 | rows | about 230 KB | `coordination.json`: one line per open PR |
 | lanes | small | `coordination-lanes.json`: lanes with two or more members, plus their recently closed members |
-| paths | about 150 KB | `coordination-paths.json`: the paths each open PR changes |
+| paths | about 150 KB | `coordination-paths.json`: the paths each open pull request changes |
 | page | human view | `coordination.html` on main, which reads the files above |
 
 Read the head first, and the rows only when the head says something moved. Each row sits on its own line, so a refresh diffs row by row. `observed_at` says how old everything is.
@@ -52,6 +52,22 @@ For one pull request, run `python host/coordination_state.py drift --pr N`, whic
 
 ## Holding a change
 
+For PR review and merge-drain work, use the PR-specific adapter. It derives the
+canonical `pr-N` key internally, so two seats cannot accidentally create aliases
+for the same pull request:
+
+    python host/claim_pr.py take 12546 --holder NAME --ttl 1800 --note "review + merge drain"
+    python host/claim_pr.py renew 12546 --holder NAME
+    python host/claim_pr.py release 12546 --holder NAME
+
+Post the visible Slack `TAKE` only after `take` returns `"ok": true`. A response
+with `"held_by": "OTHER"` is the collision receipt: yield that PR and select
+another unit rather than racing the live holder. Slack search remains useful for
+context, but it is not the atomic claim operation.
+
+The generic interface remains available for non-PR operation keys and content
+keys:
+
     python host/coordination_state.py key --pr 12546                # -> pr-12546
     python host/coordination_state.py key --marker KCWATER-PR12310-MAIN4EC4-REFRESH-COMPOSE-20260911-01
     python host/coordination_state.py take pr-12546 --holder NAME --ttl 1800 --note "composing on tip"
@@ -59,7 +75,7 @@ For one pull request, run `python host/coordination_state.py drift --pr N`, whic
     python host/coordination_state.py release pr-12546 --holder NAME
     python host/coordination_state.py holders
 
-**Keys.** A key names the change and never includes a base SHA or date. `marker_family` strips `-MAIN<sha>`, dates, retry numbers and step suffixes, so every spelling of one lane lands on one key. A content digest (`ck-…`) is the strongest key.
+**Keys.** A key names the change and never includes a base SHA or date. `marker_family` strips `-MAIN<sha>`, dates, retry numbers and step suffixes, so every spelling of one lane lands on one key. A content digest (`ck-…`) is the strongest key. For PR work, prefer `host/claim_pr.py` so the `pr-N` key is not caller-chosen.
 
 **How a write lands.** Holdings live on `state/claims`, one file per key, and every write is a fast-forward push. Two seats that write from the same tip cannot both land. The second re-reads and sees who holds the key.
 
