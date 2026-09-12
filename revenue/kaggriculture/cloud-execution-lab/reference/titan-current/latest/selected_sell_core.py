@@ -6,6 +6,7 @@ The selected standalone scheduler is preserved separately.
 from functools import lru_cache
 from pathlib import Path
 import importlib.util
+import json
 import mechanics as m
 
 _spec = importlib.util.spec_from_file_location("selected_sell_receipts", Path(__file__).resolve().parent / "reference/decision/decision.py")
@@ -91,6 +92,58 @@ class MarketPath:
             carry=float(self.single(inv,remaining)[0])
         return own_cash+carry-other_cash, own_cash,other_cash,remaining
 
+
+def _market_path_key(item, inventory, params, shops, config, now, end):
+    """Return an immutable projection identity, or None when inputs are exotic.
+
+    The cache is intentionally scoped to values MarketPath actually observes.
+    JSON-like market parameters and the relevant global shop/product membership
+    are snapshotted so caller or mechanics mutation cannot reuse stale work.
+    Unsupported/custom objects simply take the original uncached path.
+    """
+    try:
+        params_blob=json.dumps(params,sort_keys=True,separators=(',',':'),allow_nan=False)
+        shops_key=tuple(shops)
+        shop_products=tuple((shop,tuple(m.SHOPS.get(shop,()))) for shop in shops_key)
+        hash((shops_key,shop_products))
+        shop_interval=int(config.get('townShopSellInterval',4))
+        center_interval=int(config.get('townCenterSellInterval',24))
+        return (item,int(inventory),params_blob,shops_key,shop_products,shop_interval,
+                center_interval,int(now),int(end))
+    except (TypeError,ValueError,OverflowError):
+        return None
+
+
+@lru_cache(maxsize=32)
+def _cached_market_path(key):
+    item,inventory,params_blob,shops,_shop_products,shop_interval,center_interval,now,end=key
+    # Reconstruct from the canonical key instead of retaining mutable caller
+    # dictionaries/lists.  The shop signature is identity-only: score() reads
+    # the same current mechanics mapping that produced this key.
+    params=json.loads(params_blob)
+    config={'townShopSellInterval':shop_interval,
+            'townCenterSellInterval':center_interval}
+    return MarketPath(item,inventory,params,shops,config,now,end)
+
+
+def shared_market_path(item, inventory, params, shops, config, now, end):
+    """Reuse exact market projections across optimizer calls when inputs match."""
+    key=_market_path_key(item,inventory,params,shops,config,now,end)
+    if key is None:
+        return MarketPath(item,inventory,params,shops,config,now,end)
+    return _cached_market_path(key)
+
+
+def clear_shared_market_path_cache():
+    """Clear bounded shared projections (primarily for deterministic tests)."""
+    _cached_market_path.cache_clear()
+
+
+def shared_market_path_cache_info():
+    """Expose cache counters without exposing mutable cached objects."""
+    return _cached_market_path.cache_info()
+
+
 def joint_plan_metrics(infos):
     """Sum comparable per-product scenario deltas without double-counting slots."""
     if not infos:
@@ -152,7 +205,7 @@ def _weighted_gain(deltas, names, weights):
 def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
                  reference,rival_quantity,minimum_now=0,capacity_ok=None,last=718):
     end=dates[-1]
-    model=MarketPath(item,inventory,params,shops,config,now,end)
+    model=shared_market_path(item,inventory,params,shops,config,now,end)
     scenarios=[('no_rival',0,'paired'),('observed_paired',rival_quantity,'paired'),('observed_later_order',rival_quantity,'after')]
     if end>now:
         scenarios.append(('observed_next_turn',((now+1,rival_quantity),),'paired'))
