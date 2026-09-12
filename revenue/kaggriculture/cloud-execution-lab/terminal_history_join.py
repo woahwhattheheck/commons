@@ -65,7 +65,15 @@ class TerminalHistoryJoin:
             self.diagnostics={};self.fill_result=None
             return
         before,cfg,final,post=self.pending
-        if int(obs['step'])<=int(before['step']):
+        now=int(obs['step']);prior=int(before['step'])
+        if now<prior:
+            # A strict backstep is a new episode/reset boundary. Never carry a
+            # pending action across it; a later step could otherwise cross-link
+            # the prior episode into the new history. Exact retries stay pending.
+            self.pending=None
+            self.diagnostics={};self.fill_result=None
+            return
+        if now==prior:
             self.diagnostics={};self.fill_result=None
             return
         # record()/observe() mutate the fill ledger, bridge cursor and FlowHistory.
