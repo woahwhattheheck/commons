@@ -64,7 +64,8 @@ class SellerReplayCompactionTests(unittest.TestCase):
             [(1, 'a'), (2, 'b'), (3, 'c')],
         )
         self.assertEqual(agent.consumer.observe_calls, 3)
-        self.assertEqual(agent._completed_seller_state['_fallback_through_step'], 2)
+        self.assertTrue(agent._completed_seller_state['_fallback_prefix_checkpoint'])
+        self.assertEqual(agent._completed_seller_state['previous']['step'], 2)
         self.assertEqual(
             agent._completed_seller_state['observed_harvests']['CROP'],
             [(1, 'a'), (2, 'b')],
@@ -97,7 +98,8 @@ class SellerReplayCompactionTests(unittest.TestCase):
         before = agent.consumer.observe_calls
         agent._restore_seller_state()
         self.assertEqual(agent.consumer.observe_calls - before, 2)
-        self.assertEqual(agent._completed_seller_state['_fallback_through_step'], 3)
+        self.assertTrue(agent._completed_seller_state['_fallback_prefix_checkpoint'])
+        self.assertEqual(agent._completed_seller_state['previous']['step'], 3)
         self.assertEqual(len(agent._seller_fallback_observations), 1)
         self.assertEqual(
             agent.consumer.observed_harvests['CROP'],
@@ -125,8 +127,8 @@ class SellerReplayCompactionTests(unittest.TestCase):
         agent._restore_seller_state()
 
         # Model interruption after publishing the compacted checkpoint but
-        # before shrinking the old pending list. The replay-through marker must
-        # discard the stale prefix on the next reconstruction.
+        # before shrinking the old pending list. The checkpoint's exact prior
+        # observation must discard the stale prefix on reconstruction.
         agent._seller_fallback_observations = [
             agent._seller_public_observation(observation(step, marker))
             for step, marker in rows
