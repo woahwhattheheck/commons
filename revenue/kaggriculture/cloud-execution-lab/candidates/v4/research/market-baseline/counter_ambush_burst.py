@@ -22,6 +22,17 @@ from typing import Any, Iterable, Sequence
 BASE_COUNTER_AMBUSH_BLOB = "041b47d3741bdb1f4bd676325fb9949c36ffe51e"
 APEX_STRAWBERRY_MAX_ENVELOPE = ((499, 8), (500, 8), (501, 8))
 
+ENGINE_REL = Path(
+    "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+)
+APEX_REL = Path(
+    "revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/apex/main.py"
+)
+REFERENCE_REL = Path(
+    "revenue/kaggriculture/cloud-execution-lab/candidates/v4/"
+    "research/reference-policy-bank/REFERENCE-POLICIES.json"
+)
+
 
 class BurstError(ValueError):
     pass
@@ -51,6 +62,8 @@ def load_pinned_base(path: Path):
         "predump_counterfactual",
         "APEX_ANTI_CLONE",
         "APEX_MAIN_SHA256",
+        "verify_apex_source",
+        "verify_engine",
     )
     missing = [name for name in required if not hasattr(module, name)]
     if missing:
@@ -72,6 +85,28 @@ def load_pinned_base(path: Path):
             "Apex 499/500/501 STRAWBERRY <=8 source rule"
         )
     return module
+
+
+def default_repo_root() -> Path:
+    here = Path(__file__).resolve().parent
+    return here.parents[6]
+
+
+def verify_report_sources(base, repo_root: Path) -> dict[str, Any]:
+    """Authenticate the actual Apex, reference manifest, and official engine."""
+    try:
+        root = repo_root.resolve(strict=True)
+        apex = root / APEX_REL
+        reference = root / REFERENCE_REL
+        engine = root / ENGINE_REL
+        apex_identity = base.verify_apex_source(apex, reference)
+        engine_identity = base.verify_engine(engine)
+    except (OSError, UnicodeError, json.JSONDecodeError, RuntimeError) as exc:
+        raise BurstError(f"COMEBACK provenance verification failed: {exc}") from exc
+    return {
+        "apex_and_reference": dict(apex_identity),
+        "official_engine": dict(engine_identity),
+    }
 
 
 def _positive_int(value: Any, label: str) -> int:
@@ -213,9 +248,14 @@ def envelope_counterfactual(
     }
 
 
-def authenticated_apex_envelope_report(base_path: Path) -> dict[str, Any]:
-    """Return source-authenticated rule custody plus a non-authoritative max scenario."""
+def authenticated_apex_envelope_report(
+    base_path: Path, repo_root: Path | None = None
+) -> dict[str, Any]:
+    """Return verified source-rule custody plus a non-authoritative max scenario."""
     base = load_pinned_base(base_path)
+    verified_sources = verify_report_sources(
+        base, default_repo_root() if repo_root is None else repo_root
+    )
     shops = (
         "BRUNCH_SPOT",
         "ICE_CREAM_SHOP",
@@ -240,10 +280,12 @@ def authenticated_apex_envelope_report(base_path: Path) -> dict[str, Any]:
         unlocked_shops=shops,
     )
     isolated = first_only["gross_relative_margin_swing"]
+    apex_identity = verified_sources["apex_and_reference"]
     return {
-        "schema": "titan-v4-comeback-apex-max-envelope/v2",
+        "schema": "titan-v4-comeback-apex-max-envelope/v3",
         "base_counter_ambush_git_blob": BASE_COUNTER_AMBUSH_BLOB,
-        "apex_main_sha256": base.APEX_MAIN_SHA256,
+        "verified_sources": verified_sources,
+        "apex_main_sha256": apex_identity["apex_main_sha256"],
         "source_rule_authenticated": True,
         "realized_events_authenticated": False,
         "source_rule": {
