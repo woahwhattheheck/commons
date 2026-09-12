@@ -5,6 +5,7 @@ import tempfile
 from sentinel import (
     RULE_EXACT_ROW_LEN3,
     RULE_PUBLIC_OBS_COERCION,
+    RULE_PUBLIC_OBS_MISSING_NULL_ALIAS,
     RULE_RAW_OPCODE_INDEX,
     RULE_TRUTHY_CONFIG_COERCION,
     scan_paths,
@@ -42,6 +43,30 @@ def main():
         ),
         "truthy config coercion",
     )
+    check(
+        RULE_PUBLIC_OBS_MISSING_NULL_ALIAS in rules(
+            "def f(obs):\n    step = obs.get('step')\n    if step is None:\n        return obs.get('day')\n    return step\n"
+        ),
+        "assigned public get null fallback",
+    )
+    check(
+        RULE_PUBLIC_OBS_MISSING_NULL_ALIAS in rules(
+            "def f(observation):\n    if observation.get('player') is None:\n        return 0\n    return observation['player']\n"
+        ),
+        "direct public get null fallback",
+    )
+    check(
+        RULE_PUBLIC_OBS_MISSING_NULL_ALIAS not in rules(
+            "def f(obs):\n    step = obs.get('step', -1)\n    if step is None:\n        return 0\n    return step\n"
+        ),
+        "non-null get default distinguishes absence",
+    )
+    check(
+        RULE_PUBLIC_OBS_MISSING_NULL_ALIAS not in rules(
+            "def f(obs):\n    step = obs.get('step')\n    return step is not None\n"
+        ),
+        "is-not-none does not imply absence fallback",
+    )
 
     guarded = """\
 def f(order):
@@ -61,8 +86,23 @@ def f(order):
 """
     check(rules(multi) == [], "multiple suppressions")
 
+    missing_null_suppressed = """\
+def f(obs):
+    value = obs.get('step')
+    # contract-sentinel: ignore=PUBLIC_OBS_MISSING_NULL_ALIAS
+    if value is None:
+        return obs.get('day')
+    return value
+"""
+    check(
+        RULE_PUBLIC_OBS_MISSING_NULL_ALIAS not in rules(missing_null_suppressed),
+        "missing-null suppression",
+    )
+
     safe = """\
 def f(observation, configuration):
+    if 'step' not in observation:
+        return None
     step = observation['step']
     if isinstance(step, bool) or not isinstance(step, int):
         return None
@@ -86,7 +126,7 @@ def f(observation, configuration):
             "deterministic path/rule ordering",
         )
 
-    print("source-contract-sentinel: 9/9 OK")
+    print("source-contract-sentinel: 14/14 OK")
 
 
 if __name__ == "__main__":
