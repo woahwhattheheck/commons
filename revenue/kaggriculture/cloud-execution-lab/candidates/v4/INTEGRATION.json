@@ -44,7 +44,8 @@
     {"lane":"S8 egg care","owner_pr":12600,"disposition":"NO_BUILD_economic_ceiling_negative_do_not_port_or_activate"},
     {"lane":"S3 SE land","owner_pr":12592,"disposition":"NO_BUILD_measured_negative_0_of_23_positive_do_not_port"},
     {"lane":"F1 fertilizer mix","owner_pr":12596,"disposition":"retired_duplicate_allocator_surface; constraints transferred_to_S6"},
-    {"lane":"D4 strawberry timing","owner_pr":12606,"owner_head":"90907e443bb858c6b5880c9a49620c027ad8d3c9","disposition":"parked_rule5_reachability_kill_gate_pending; preserve dormant PR only; no source custody or activation until literal_V4_residual_census_authorizes"}
+    {"lane":"D4 strawberry timing","owner_pr":12606,"owner_head":"90907e443bb858c6b5880c9a49620c027ad8d3c9","disposition":"parked_rule5_reachability_kill_gate_pending; preserve dormant PR only; no source custody or activation until literal_V4_residual_census_authorizes"},
+    {"lane":"B5 tomato fertilizer redirect","disposition":"KILL_hardened_gate_no_positive_edge_do_not_stack_or_activate","evidence":"hardened gate: 16 cells, 15 stable, control n=4 mean +2 stdev 1, candidate dM mean +0 stdev 2 SE 0 range -3..+3, trace engagement 9/16; no positive edge","wiring_note":"r04_full_router B5_TOMATO_FERTILIZER module constant is overwritten by TITAN-CONFIG.json r04_b5_tomato_fertilizer; hardened gate candidate used the config key=true"}
   ],
   "rules": [
     "main is the sole integration line; old refs are donor/evidence only",
