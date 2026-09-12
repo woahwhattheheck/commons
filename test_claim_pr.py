@@ -78,17 +78,75 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertTrue(successor["ok"])
         self.assertEqual("ASTRA-A", successor["record"]["previous_holder"])
 
-    def test_invalid_action_holder_and_ttl_fail_before_git_write(self):
+    def test_invalid_action_holder_ttl_and_attempts_fail_before_git_write(self):
         bad = [
             {"action": "steal", "holder": "ASTRA", "ttl_s": 600},
             {"action": "take", "holder": "", "ttl_s": 600},
             {"action": "take", "holder": "ASTRA", "ttl_s": 0},
             {"action": "take", "holder": "ASTRA", "ttl_s": 7201},
             {"action": "take", "holder": "ASTRA", "ttl_s": True},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 0},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": True},
         ]
         for kwargs in bad:
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 claim_pr.write_pr_holding(self.a, 13492, now=self.t0, **kwargs)
+
+    def test_runtime_retry_refreshes_clock_before_reread(self):
+        seed = cs.holding_write(self.a, "seed", "SEED", "take", now=self.t0)
+        self.assertTrue(seed["ok"])
+        stale_tip = seed["commit"]
+        winner_time = self.t0 + dt.timedelta(seconds=1)
+        winner = cs.holding_write(
+            self.a, "pr-13492", "ASTRA-A", "take", ttl_s=600, now=winner_time
+        )
+        self.assertTrue(winner["ok"])
+
+        real_tip = cs._remote_tip
+        real_now = cs._now
+        tip_calls = {"n": 0}
+        clock = iter((self.t0, self.t0 + dt.timedelta(seconds=2)))
+
+        def stale_then_real(git, branch, remote="origin"):
+            tip_calls["n"] += 1
+            if tip_calls["n"] == 1:
+                return stale_tip
+            return real_tip(git, branch, remote)
+
+        cs._remote_tip = stale_then_real
+        cs._now = lambda: next(clock)
+        try:
+            lost = claim_pr.write_pr_holding(
+                self.b, 13492, "ASTRA-B", "take", ttl_s=600
+            )
+        finally:
+            cs._remote_tip = real_tip
+            cs._now = real_now
+
+        self.assertFalse(lost["ok"])
+        self.assertEqual("ASTRA-A", lost["held_by"])
+        self.assertGreaterEqual(tip_calls["n"], 2)
+
+    def test_explicit_time_stays_deterministic_across_wrapper_retries(self):
+        real = cs.holding_write
+        seen = []
+
+        def fake(*args, **kwargs):
+            seen.append(kwargs["now"])
+            if len(seen) == 1:
+                return {"ok": False, "key": "pr-13492", "reason": "branch kept moving; retry"}
+            return {"ok": True, "key": "pr-13492", "record": {}}
+
+        cs.holding_write = fake
+        try:
+            result = claim_pr.write_pr_holding(
+                self.a, 13492, "ASTRA-A", "take", now=self.t0
+            )
+        finally:
+            cs.holding_write = real
+
+        self.assertTrue(result["ok"])
+        self.assertEqual([self.t0, self.t0], seen)
 
 
 if __name__ == "__main__":
