@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Build a three-arm postprocessor knockout screen from exact production-v3."""
+"""Build a four-arm postprocessor attribution screen from exact production-v3."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ _spec.loader.exec_module(support)
 BASELINE_ARCHIVE_SHA256 = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 BASELINE_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
 CONFIG_PATH = "TITAN-CONFIG.json"
-SCHEMA = "titan-v5-production-v3-postprocessor-attribution/v1"
+SCHEMA = "titan-v5-production-v3-postprocessor-attribution/v2"
 
 # Production-v3 changes only main.py versus historical production-v2. Keep the
 # already-reviewed runtime/controller/R04 topology pins and rotate main.py to
@@ -47,10 +47,12 @@ SCREEN_PREIMAGE = {
     "town_procurement": True,
 }
 
-# Valid knockouts from the FULL composition. Keeping consumer=frozen is
-# deliberate: Features rejects redundant_hire/idle_fertilizer/crop_release on
-# parent consumers. Town is not duplicated here because native-9901 already
-# measured the full-context town-off singleton.
+# Three stage knockouts from the FULL composition plus one dependency-valid
+# boundary arm. Features rejects redundant_hire/idle_fertilizer/crop_release
+# whenever consumer != frozen, so the consumer arm switches those dependents
+# off while deliberately retaining seed/funding/market_pressure/operating_stock/
+# early_capital/town at the authenticated production-v3 preimage. Town is not
+# duplicated because native-9901 already measured its full-context singleton.
 ARMS = {
     "seed_hire_off": {
         "seed": False,
@@ -65,6 +67,12 @@ ARMS = {
     "late_market_off": {
         "market_pressure": False,
         "early_capital": False,
+    },
+    "consumer_parent_boundary": {
+        "consumer": "parent",
+        "redundant_hire": False,
+        "idle_fertilizer": False,
+        "crop_release": False,
     },
 }
 
@@ -96,8 +104,9 @@ def arm_members(baseline: dict[str, bytes], arm: str) -> dict[str, bytes]:
     for key, value in ARMS[arm].items():
         config[key] = value
 
-    # Dependency fence copied from live Features semantics. The screen never
-    # emits a parent+spatial/redundant arm just to make a factorial square.
+    # Dependency fence copied from live Features semantics. Any non-frozen arm
+    # must disable the spatial/redundant dependents; this is why consumer is a
+    # conditional boundary treatment rather than a fake one-bit singleton.
     if config["consumer"] != "frozen" and (
         config["redundant_hire"] or config["idle_fertilizer"] or config["crop_release"]
     ):
@@ -161,9 +170,10 @@ def build_screen(baseline: dict[str, bytes]) -> tuple[bytes, dict]:
         },
         "native_economics_status": "PENDING_MATCHED_NATIVE_9901",
         "decision_rule": (
-            "Run only these three knockouts against reused seed1209129901 controls. "
-            "Prefer a knockout that restores Apex own score without erasing the V3.1 margin gain; "
-            "if none does, stop and attribute the residual to FrozenSelected/cross-group interaction."
+            "Run these four treatments against reused seed1209129901 controls. "
+            "Prefer an arm that restores Apex own score without erasing the V3.1 margin gain; "
+            "if all four miss, the residual is localized beyond the screened stage groups and "
+            "consumer boundary to finer FrozenSelected/cross-group interaction."
         ),
         "kaggle_submission_hold": True,
     }
