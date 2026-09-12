@@ -101,7 +101,8 @@ class ComposerTests(unittest.TestCase):
 
     def test_overlap_declared_on_untouched_member_fails(self):
         a = self.manifest(
-            "a", {"main.py": (b"base-main\n", b"main-a\n")}, overlap={"main.py": "old"},
+            "a", {"main.py": (b"base-main\n", b"main-a\n")},
+            overlap={"main.py": "old"},
         )
         with self.assertRaisesRegex(sc.ComposerError, "untouched member"):
             sc.compose_files(self.base, self.load(a))
@@ -187,6 +188,31 @@ class ComposerTests(unittest.TestCase):
             sc.publish_pair(out, receipt, b"archive", b"receipt")
         self.assertFalse(out.exists())
         self.assertEqual(receipt.read_bytes(), b"sentinel")
+
+    def test_publish_pair_write_failure_rolls_back_both_owned_outputs(self):
+        out = self.root / "candidate.tar.gz"
+        receipt = self.root / "receipt.json"
+        original = sc._write_all
+        calls = 0
+
+        def fail_second(fd, raw):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError("injected receipt write failure")
+            return original(fd, raw)
+
+        with patch.object(sc, "_write_all", side_effect=fail_second):
+            with self.assertRaisesRegex(OSError, "injected receipt write failure"):
+                sc.publish_pair(out, receipt, b"archive", b"receipt")
+        self.assertFalse(out.exists())
+        self.assertFalse(receipt.exists())
+
+    def test_publish_pair_alias_rejected_before_creation(self):
+        out = self.root / "same-output"
+        with self.assertRaisesRegex(sc.ComposerError, "must differ"):
+            sc.publish_pair(out, out, b"archive", b"receipt")
+        self.assertFalse(out.exists())
 
     def test_no_components_fails(self):
         with self.assertRaisesRegex(sc.ComposerError, "at least one component"):
