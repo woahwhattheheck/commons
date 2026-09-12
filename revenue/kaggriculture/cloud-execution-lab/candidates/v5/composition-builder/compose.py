@@ -14,6 +14,7 @@ import gzip
 import hashlib
 import io
 import json
+import math
 from pathlib import Path, PurePosixPath
 import tarfile
 from typing import Any
@@ -43,6 +44,35 @@ def _safe_rel(value: str, *, label: str) -> str:
     if path.is_absolute() or not path.parts or any(part in ("", ".", "..") for part in path.parts):
         raise CompositionError(f"unsafe {label}: {value!r}")
     return str(path)
+
+
+def _strict_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise CompositionError(f"duplicate JSON object member: {key!r}")
+        result[key] = value
+    return result
+
+
+def _strict_json_constant(value: str) -> Any:
+    raise CompositionError(f"non-finite JSON constant: {value}")
+
+
+def _strict_json_float(value: str) -> float:
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        raise CompositionError(f"non-finite JSON number: {value}")
+    return parsed
+
+
+def _strict_json_loads(text: str) -> Any:
+    return json.loads(
+        text,
+        object_pairs_hook=_strict_json_object,
+        parse_constant=_strict_json_constant,
+        parse_float=_strict_json_float,
+    )
 
 
 def _read_archive(path: Path) -> tuple[list[tarfile.TarInfo], dict[str, bytes]]:
@@ -85,7 +115,7 @@ def _write_archive(path: Path, infos: list[tarfile.TarInfo], payloads: dict[str,
 
 def _load_manifest(path: Path) -> dict[str, Any]:
     try:
-        manifest = json.loads(path.read_text())
+        manifest = _strict_json_loads(path.read_text())
     except (OSError, json.JSONDecodeError) as exc:
         raise CompositionError(f"cannot read manifest: {exc}") from exc
     if not isinstance(manifest, dict) or manifest.get("schema") != SCHEMA:
