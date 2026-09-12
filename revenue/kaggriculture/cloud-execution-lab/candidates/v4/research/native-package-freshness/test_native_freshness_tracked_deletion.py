@@ -29,6 +29,11 @@ SOURCES = {
     **{name: name for name in PACKAGE if name != "seed_retry.py"},
     "seed_retry.py": "../cloud-committed-seed-retry/seed_retry.py",
 }
+RELEASE = {
+    "release": "TITAN",
+    "upstream_snapshot": "fixture-upstream",
+    "components": [],
+}
 
 
 def sha256(data):
@@ -59,6 +64,12 @@ class TrackedDeletionFreshnessTest(unittest.TestCase):
         dynamic = self.live / "reference/titan-current/vanish.py"
         dynamic.parent.mkdir(parents=True, exist_ok=True)
         dynamic.write_bytes(b"VANISH=1\n")
+        release_path = self.live / fresh.RELEASE_METADATA
+        release_path.parent.mkdir(parents=True, exist_ok=True)
+        release_path.write_text(
+            json.dumps(RELEASE, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
         (self.live / "build_integrated.py").write_text(
             "from pathlib import Path\n"
             "ROOT=Path(__file__).resolve().parent\n"
@@ -91,7 +102,14 @@ class TrackedDeletionFreshnessTest(unittest.TestCase):
             }
             for name, data in PACKAGE.items()
         }
-        source = (json.dumps({"runtime": runtime}, sort_keys=True) + "\n").encode()
+        manifest = dict(RELEASE)
+        manifest.update(
+            entrypoint="main.py::agent",
+            config="TITAN-CONFIG.json",
+            default=json.loads(CORE["TITAN-CONFIG.json"].decode("utf-8")),
+            runtime=runtime,
+        )
+        source = (json.dumps(manifest, sort_keys=True) + "\n").encode()
         path = self.root / "candidate.tar.gz"
         with tarfile.open(path, "w:gz") as tf:
             for name, data in PACKAGE.items():
