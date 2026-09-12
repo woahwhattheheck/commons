@@ -1,0 +1,187 @@
+{
+  "schema": "titan-v4-exec-pace-observation-proof/v1",
+  "canonical_branch": "main",
+  "package": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/exec-pace-2",
+  "owner": "ASTRA-TREND",
+  "source_claim": {
+    "pr": 12643,
+    "comment_id": 5642886232,
+    "slack_channel": "C0C0Z8AHGP2",
+    "slack_ts": "1789180388.604359"
+  },
+  "disposition": "COMPONENT_TESTED_NOT_RUNTIME_PROMOTED",
+  "donor_git_blob": "0ef551145dbcac9884e7d1710bcf11238dafc504",
+  "donor_sha256": "637fe1810f2f937f13ce0407e15d5118e4b5db301cd3395f72654574d5189b83",
+  "files": {
+    "r04_exec_adaptive.py": {
+      "bytes": 3352,
+      "git_blob": "f67c93ec9b295575b73a242e5acbedffc796415d",
+      "sha256": "2bb2221f516a7a15fd6a1fd3bcea8d0519c2e7c4feff9bf9e0eb6efda5e2be37"
+    },
+    "test_observation_state.py": {
+      "bytes": 10177,
+      "git_blob": "d08ae45d15d58bdefc40b9d030ad9e73fb5eb556",
+      "sha256": "98647a5af8eeb9367a2e90f2e560db43c4afffb6f65af591ffa76dd96316412c"
+    },
+    "test_observation_engine.py": {
+      "bytes": 7996,
+      "git_blob": "6b6bdb6c8dc4cfdf32b04abfbbad9cb200e6ab43",
+      "sha256": "95f3d19adcefec6b20d07809c572a00c92bba85c8a5a76af509b9ee356d43b2c"
+    },
+    "check_observation_mutations.py": {
+      "bytes": 3860,
+      "git_blob": "9b69e6ba98b0b554ac5b23ac2124ef62588a6745",
+      "sha256": "18f29addbd7ea45c8cf6618b35db7fd609c94e6c796b500d861e1a634f35b650"
+    },
+    "OBSERVATION-STATE.md": {
+      "bytes": 5172,
+      "git_blob": "8395d428f58d30fc039c34bebb122d096c266618",
+      "sha256": "f8e73cf30932a3645e56badbc8060c35c4d9b84a35b4c62568f858e8773428a0"
+    }
+  },
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "checks": {
+    "normal": {
+      "state_tests": 24,
+      "engine_tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "optimized": {
+      "state_tests": 24,
+      "engine_tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "predecessor_negative_controls_each_mode": {
+      "state_assertion_failures_including_subcases": 38,
+      "engine_assertion_failures": 6
+    },
+    "mutation_normal": {
+      "ignore_gap": 3,
+      "duplicate_resets": 1,
+      "invalid_time_retains_stale": 20,
+      "invent_zero_quote": 15,
+      "accept_float_quote": 2,
+      "short_warmup": 336,
+      "invalid_good_keeps_history": 14,
+      "flat_is_rising": 3
+    },
+    "mutation_optimized": {
+      "ignore_gap": 3,
+      "duplicate_resets": 1,
+      "invalid_time_retains_stale": 20,
+      "invent_zero_quote": 15,
+      "accept_float_quote": 2,
+      "short_warmup": 336,
+      "invalid_good_keeps_history": 14,
+      "flat_is_rising": 3
+    },
+    "py_compile": "PASS normal and optimized"
+  },
+  "fixture_transport": {
+    "artifact_id": 10123395668,
+    "run_id": 34400824037,
+    "used": "exact engine and loader only",
+    "current_runtime_or_archive_claim": false
+  },
+  "logs": {
+    "normal.log": {
+      "bytes": 3419,
+      "sha256": "bf22c30148a5f84e081b6947dc683204d8438aeef15e89907fc37d8fb14c31dc"
+    },
+    "optimized.log": {
+      "bytes": 3419,
+      "sha256": "87b273821f29daa8adc4489b221326564c5412eb72cb41411c13fe0c0ff211b0"
+    },
+    "donor-normal.log": {
+      "bytes": 29610,
+      "sha256": "8bab92dec96e449bccadaf00122539dff55e9c203c11fbde6b481f5164989ad3"
+    },
+    "donor-optimized.log": {
+      "bytes": 29610,
+      "sha256": "8e5d769f5036dbd46ff92fa59e1300e82fc4e4cebe33451acd7ccfce87b8849d"
+    },
+    "engine-normal.log": {
+      "bytes": 2460,
+      "sha256": "52a53bbf34ff4f95aca9085a330f33533a33c46cfd9e81cf58d4f29428f97767"
+    },
+    "engine-optimized.log": {
+      "bytes": 2459,
+      "sha256": "afdcedb27142b63b7de703c243bf35c8079fc144f9f0fc2d07a0374c1e3bd2e6"
+    },
+    "engine-donor-normal.log": {
+      "bytes": 5908,
+      "sha256": "253ac408b19de00c52e6ca57574375c1c5786d477f69b983532400c862f4fb20"
+    },
+    "engine-donor-optimized.log": {
+      "bytes": 5907,
+      "sha256": "c039ee4d51daf22a6e9eaced13c804248897612d25dcad30772a71a69784b17c"
+    },
+    "mutations-normal.json": {
+      "bytes": 738,
+      "sha256": "38d88a416c6a3cdbb0591c664e46e7f35e471e94768441a1e642a3f932eaba98"
+    },
+    "mutations-optimized.json": {
+      "bytes": 737,
+      "sha256": "465c56cfcc5d134ed552da0cbe28e3e430ca1004b28b01abc0ede871a1fa1d6d"
+    }
+  },
+  "boundaries": {
+    "raw_donor_unchanged": true,
+    "current_runtime_wiring_tested": false,
+    "key_off_returned_action_identity_tested": false,
+    "titan_full_games_run": 0,
+    "production_or_default_changed": false,
+    "archive_changed": false,
+    "kaggle_submission_changed": false,
+    "economics_measured": false
+  },
+  "known_limits": [
+    "Public state cannot identify every new episode; explicit reset and runtime-owned per-game lifecycle still required.",
+    "Positive observed price slope is not proof that deferring a sale improves own cash or competitive margin.",
+    "Reported original donor 15-test and economic receipts were not independently rerun."
+  ],
+  "official_engine": {
+    "complete_stream_comparisons": 20132,
+    "complete_stream_mismatches": 0,
+    "donor_blob": "0ef551145dbcac9884e7d1710bcf11238dafc504",
+    "engine_blobs": {
+      "kaggriculture.json": "b354d06b742fe48402513792253f1a5c29366b20",
+      "kaggriculture.py": "3c202c7ee921da239356789e266b694635103fc4",
+      "utils.py": "91c8822ee6201ba4a5a8416c7dbe34f95dd61c87"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "episodes": [
+      {
+        "callbacks_per_seat": 719,
+        "seed": 2611151001,
+        "status": [
+          "DONE",
+          "DONE"
+        ]
+      },
+      {
+        "callbacks_per_seat": 719,
+        "seed": 2611151002,
+        "status": [
+          "DONE",
+          "DONE"
+        ]
+      }
+    ],
+    "loader_blob": "23948e10cfc3d32f46c9abb1321b0d8fc8db21d5",
+    "observed_callbacks": 2876,
+    "rising_decisions": 13484,
+    "scope": "Official starter/starter public-price observations, not TITAN gameplay economics",
+    "subject_blob": "f67c93ec9b295575b73a242e5acbedffc796415d",
+    "trace_sha256": "9b653df6379bc862e53b4b68702351286ac7b50089c306a6dbd710cfe21848e1",
+    "optimized_trace_matches_normal": true
+  }
+}
