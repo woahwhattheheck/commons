@@ -15,6 +15,7 @@ import copy
 import hashlib
 import importlib
 import json
+import math
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -345,9 +346,13 @@ def _validate_panel_cells(cells: list[dict[str, Any]]) -> dict[str, Any]:
         if (
             not isinstance(scores, list)
             or len(scores) != 2
-            or any(type(value) not in (int, float) for value in scores)
+            or any(
+                type(value) not in (int, float)
+                or (type(value) is float and not math.isfinite(value))
+                for value in scores
+            )
         ):
-            raise ValueError(f"cell {index} scores must be two exact numeric values")
+            raise ValueError(f"cell {index} scores must be two finite exact numeric values")
 
     if seen != expected_coords:
         missing = sorted(expected_coords - seen)
