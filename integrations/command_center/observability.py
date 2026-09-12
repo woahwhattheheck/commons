@@ -15,6 +15,11 @@ read a checkout. Either way every source says which road it came from:
     seats.json        the seat census, built by host/seat_census.py
     feed/github.json  repository state, built by host/github_state.py
 
+The command center also attaches `coordination`: the coordination head
+(drift, lanes, hosted states, queue) that host/coordination_state.py publishes
+to the state/coordination branch rather than main. It is optional and travels
+beside `sources`, never inside it, so its absence never degrades the panel.
+
 Every source keeps its own read status. A source that cannot be read is
 reported as an error with its path, never as an empty section — a panel showing
 "0 live seats" because a file was missing would be worse than a panel showing
@@ -327,6 +332,9 @@ def compose(reads, feed_limit=20, now=None):
 
     repo = ok.get("repo")
     payload["repository"] = repo if isinstance(repo, dict) else None
+    # Filled by the command center from the state/coordination branch; a
+    # checkout road has no such branch, so the key reads None there.
+    payload["coordination"] = None
 
     if payload["seats"] and payload["board"]:
         live = payload["seats"]["by_liveness"].get("LIVE", 0)

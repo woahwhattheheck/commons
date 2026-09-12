@@ -1,10 +1,13 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location("seat_symmetry_oracle", HERE / "seat_symmetry_oracle.py")
@@ -18,6 +21,28 @@ class SeatSymmetryOracleTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.engine = oracle._load_engine(oracle.DEFAULT_ENGINE)
+
+    def test_authenticated_engine_buffer_survives_post_read_path_swap(self):
+        original = b"MARKER = 'authenticated'\n"
+        attacker = "MARKER = 'attacker'\n"
+        expected = hashlib.sha256(original).hexdigest()
+        original_read_bytes = Path.read_bytes
+        with tempfile.TemporaryDirectory() as tmp:
+            engine_path = Path(tmp) / "engine.py"
+            engine_path.write_bytes(original)
+
+            def read_then_swap(path):
+                raw = original_read_bytes(path)
+                if path == engine_path:
+                    path.write_text(attacker, encoding="utf-8")
+                return raw
+
+            with patch.object(oracle, "ENGINE_SHA256", expected), \
+                 patch.object(Path, "read_bytes", new=read_then_swap):
+                module = oracle._load_engine(engine_path)
+
+            self.assertEqual(module.MARKER, "authenticated")
+            self.assertEqual(engine_path.read_text(encoding="utf-8"), attacker)
 
     def test_known_mixed_market_queue_commutes_under_seat_swap(self):
         q_a = [["SELL", "MILK", 3], ["BUY_PRODUCT", "WHEAT", 2], ["HIRE"],

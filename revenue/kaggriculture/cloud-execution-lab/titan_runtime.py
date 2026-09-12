@@ -304,18 +304,23 @@ class TitanAgent:
         return returned
 
     def _seed_selected(self, obs, cfg, selected):
-        if not self.features.seed or not any(o and o[0] == 'BUY_SEED' for o in selected['market']):
+        if not self.features.seed:
+            return selected
+        maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+        market = selected['market']
+        prefix = market[:maximum]
+        if not any(o and o[0] == 'BUY_SEED' for o in prefix):
             return selected
         from scheduler import post_units, m
         snapshot = getattr(self.consumer, 'selected_post_units', None)
         farm, private = snapshot if snapshot is not None else post_units(obs, selected, cfg)
         proposed = self.seed_budget.apply(selected, private['seeds'], int(obs['step']),
-                                         self.controller.cur, int(cfg.get('maxMarketOrdersPerTurn', 10)),
+                                         self.controller.cur, maximum,
                                          extra_requests={} if self.spatial is None else
                                              self.spatial.future_seed_requests(int(obs['step'])))
-        edits = [i for i, (a, b) in enumerate(zip(selected['market'], proposed['market'])) if a != b]
+        edits = [i for i, (a, b) in enumerate(zip(prefix, proposed['market'][:maximum])) if a != b]
         dependent = any(o and o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
-                        for i in edits for o in selected['market'][i+1:])
+                        for i in edits for o in prefix[i+1:])
         if not dependent:
             return proposed
         if not self.features.funding:
@@ -333,8 +338,11 @@ class TitanAgent:
         if (not self.features.operating_stock or self.features.consumer != 'frozen'
                 or self.features.terminal_route):
             return selected
+        maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+        market = selected.get('market') or []
+        prefix = market[:maximum]
         if not any(o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER']
-                   for o in selected.get('market', [])):
+                   for o in prefix):
             return selected
         snapshot = getattr(self.consumer, 'selected_post_units', None)
         if (snapshot is None or self.selected is None
@@ -345,16 +353,30 @@ class TitanAgent:
         from operating_stock import protect_operating_stock
         from scheduler import m, parent
         farm, private = snapshot
+        prefix_selected = deepcopy(selected)
+        prefix_selected['market'] = deepcopy(prefix)
         result, report = protect_operating_stock(
-            m, obs, cfg, selected, farm, private, self.controller.R[self.controller.cur],
+            m, obs, cfg, prefix_selected, farm, private, self.controller.R[self.controller.cur],
             [item[0] for item in parent.DECISIONS])
         self.diagnostics['operating_stock'] = report
-        return result
+        if result == prefix_selected:
+            return selected
+        if (not isinstance(result, dict) or not isinstance(result.get('market'), list)
+                or len(result['market']) != len(prefix)):
+            self.diagnostics['operating_stock'] = {
+                'changed': False, 'reason': 'prefix_helper_changed_market_shape'}
+            return selected
+        returned = deepcopy(result)
+        returned['market'] = list(returned['market']) + deepcopy(market[maximum:])
+        return returned
 
     def _feed_stock_selected(self, obs, cfg, selected):
         if (not self.features.operating_stock or self.features.consumer != 'frozen'
-                or self.features.terminal_route or not any(
-                    o and o[:2] == ['SELL', 'WHEAT'] for o in selected.get('market', [])[:10])):
+                or self.features.terminal_route):
+            return selected
+        maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+        if not any(o and o[:2] == ['SELL', 'WHEAT']
+                   for o in (selected.get('market') or [])[:maximum]):
             return selected
         if self.spatial is not None and self.spatial._crop_repair is not None:
             self.diagnostics['feed_stock'] = {'changed': False, 'certified': False,
@@ -392,8 +414,9 @@ class TitanAgent:
         """Apply the landed T10 physical certificate to the final frozen-SELL queue."""
         if not self.features.redundant_hire:
             return selected
+        maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
         if not any(isinstance(o, list) and o and o[0] == 'HIRE'
-                   for o in selected.get('market', [])):
+                   for o in (selected.get('market') or [])[:maximum]):
             return selected
         from scheduler import m, parent
         result, report = self.redundant_hire_module.propose_redundant_hires(

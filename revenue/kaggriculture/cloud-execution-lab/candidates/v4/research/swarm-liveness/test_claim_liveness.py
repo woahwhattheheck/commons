@@ -186,6 +186,77 @@ class ClaimLivenessTests(unittest.TestCase):
         ])
         self.assertEqual("ACTIVE", self.row(r)["status"])
 
+    def test_writer_epoch_rootless_readonly_heartbeat_is_quarantined_without_id_shadow(self):
+        r = self.audit([
+            e(1800, writes_repo=True, canonical_root=DEFAULT_CANONICAL_ROOT,
+              scope_key="writer-scope", event_id="claim"),
+            e(1990, event="HEARTBEAT", writes_repo=False, event_id="x",
+              artifact="bad", scope_key="foreign-scope"),
+            e(1995, event="HEARTBEAT", writes_repo=False,
+              canonical_root=DEFAULT_CANONICAL_ROOT, event_id="x",
+              artifact="good", scope_key="writer-scope"),
+        ])
+        row = self.row(r)
+        owner = row["owners"][0]
+        kinds = [a["kind"] for a in r["anomalies"]]
+        self.assertEqual("ACTIVE", row["status"])
+        self.assertEqual(1995.0, owner["last_ts"])
+        self.assertEqual("good", owner["artifact"])
+        self.assertEqual("writer-scope", owner["scope_key"])
+        self.assertTrue(owner["claim_writes_repo"])
+        self.assertEqual(DEFAULT_CANONICAL_ROOT, owner["claim_canonical_root"])
+        self.assertIn("writer_epoch_followup_root_unbound", kinds)
+        self.assertNotIn("duplicate_event_id", kinds)
+        self.assertTrue(r["policy"]["writer_epoch_followups_require_claim_root"])
+        self.assertFalse(r["policy"]["quarantined_events_reserve_provider_ids"])
+
+    def test_writer_epoch_rootless_terminal_is_quarantined_without_id_shadow(self):
+        r = self.audit([
+            e(1950, writes_repo=True, canonical_root=DEFAULT_CANONICAL_ROOT,
+              requires_artifact=True, event_id="claim"),
+            e(1960, event="COMPLETE", writes_repo=False, event_id="done",
+              artifact="bad"),
+            e(1970, event="COMPLETE", writes_repo=False,
+              canonical_root=DEFAULT_CANONICAL_ROOT, event_id="done",
+              artifact="good"),
+        ])
+        row = self.row(r)
+        owner = row["owners"][0]
+        kinds = [a["kind"] for a in r["anomalies"]]
+        self.assertEqual("CLOSED", row["status"])
+        self.assertEqual({"A": "COMPLETE"}, row["terminal_owners"])
+        self.assertEqual(1970.0, owner["last_ts"])
+        self.assertEqual("good", owner["artifact"])
+        self.assertIn("writer_epoch_followup_root_unbound", kinds)
+        self.assertNotIn("duplicate_event_id", kinds)
+
+    def test_writer_epoch_exact_root_readonly_followup_remains_authoritative(self):
+        r = self.audit([
+            e(1950, writes_repo=True, canonical_root=DEFAULT_CANONICAL_ROOT),
+            e(1990, event="HEARTBEAT", writes_repo=False,
+              canonical_root=DEFAULT_CANONICAL_ROOT),
+        ])
+        row = self.row(r)
+        owner = row["owners"][0]
+        self.assertEqual("ACTIVE", row["status"])
+        self.assertEqual(1990.0, owner["last_ts"])
+        self.assertTrue(owner["claim_writes_repo"])
+        self.assertEqual(DEFAULT_CANONICAL_ROOT, owner["claim_canonical_root"])
+
+    def test_read_only_epoch_rootless_followups_remain_compatible(self):
+        r = self.audit([
+            e(1950, writes_repo=False, event_id="claim"),
+            e(1960, event="HEARTBEAT", writes_repo=False, event_id="beat"),
+            e(1970, event="COMPLETE", writes_repo=False, event_id="done"),
+        ])
+        row = self.row(r)
+        self.assertEqual("CLOSED", row["status"])
+        self.assertEqual({"A": "COMPLETE"}, row["terminal_owners"])
+        self.assertNotIn(
+            "writer_epoch_followup_root_unbound",
+            {a["kind"] for a in r["anomalies"]},
+        )
+
     def test_read_only_rootless_event_remains_compatible(self):
         r = self.audit([e(1950, writes_repo=False)])
         self.assertEqual("ACTIVE", self.row(r)["status"])
@@ -194,6 +265,16 @@ class ClaimLivenessTests(unittest.TestCase):
     def test_duplicate_event_id_is_anomaly(self):
         r = self.audit([e(1900, event_id="x"), e(1950, event="HEARTBEAT", event_id="x")])
         self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
+
+    def test_conflicting_duplicate_claim_complete_is_quarantined_in_both_orders(self):
+        claim = e(1950, event_id="x")
+        complete = e(1960, event="COMPLETE", event_id="x")
+        for events in ([claim, complete], [complete, claim]):
+            with self.subTest(order=[row["event"] for row in events]):
+                r = self.audit(events)
+                self.assertEqual([], r["lanes"])
+                self.assertEqual(0, r["summary"]["lanes"])
+                self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
 
     def test_duplicate_heartbeat_cannot_refresh_stale_claim(self):
         r = self.audit([
@@ -204,9 +285,21 @@ class ClaimLivenessTests(unittest.TestCase):
         row = self.row(r)
         self.assertEqual("STALE_CLAIM", row["status"])
         self.assertEqual(["A"], row["recovery_candidates"])
-        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+        self.assertEqual(1700.0, row["owners"][0]["last_ts"])
         self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
         self.assertFalse(r["policy"]["duplicate_event_id_replays_authoritative"])
+
+    def test_conflicting_duplicate_heartbeats_are_permutation_invariant(self):
+        claim = e(1700, event_id="claim")
+        old = e(1800, event="HEARTBEAT", event_id="beat")
+        fresh = e(1980, event="HEARTBEAT", event_id="beat")
+        for events in ([claim, old, fresh], [claim, fresh, old]):
+            with self.subTest(order=[row["ts"] for row in events]):
+                r = self.audit(events)
+                row = self.row(r)
+                self.assertEqual("STALE_CLAIM", row["status"])
+                self.assertEqual(1700.0, row["owners"][0]["last_ts"])
+                self.assertEqual(["A"], row["recovery_candidates"])
 
     def test_duplicate_claim_cannot_reopen_terminal_epoch(self):
         r = self.audit([
@@ -263,6 +356,31 @@ class ClaimLivenessTests(unittest.TestCase):
         rows = load_jsonl(io.StringIO('\n# comment\n{"ts":1,"lane":"L","session":"A","event":"CLAIM"}\n'))
         self.assertEqual(1, len(rows))
 
+    def test_jsonl_duplicate_event_id_key_rejected(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"event_id":"first","event_id":"second"}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'event_id'"):
+            load_jsonl(io.StringIO(payload))
+
+    def test_jsonl_duplicate_canonical_root_key_rejected(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"canonical_root":"main:other/v4",'
+            '"canonical_root":"main:revenue/kaggriculture/cloud-execution-lab/candidates/v4"}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'canonical_root'"):
+            load_jsonl(io.StringIO(payload))
+
+    def test_jsonl_nested_duplicate_key_rejected_recursively(self):
+        payload = (
+            '{"ts":1,"lane":"L","session":"A","event":"CLAIM",'
+            '"metadata":{"source":"slack","source":"github"}}\n'
+        )
+        with self.assertRaisesRegex(AuditError, "duplicate JSON object key 'source'"):
+            load_jsonl(io.StringIO(payload))
+
     def test_output_is_deterministic_under_lane_input_permutation(self):
         a = self.audit([e(1950, lane="Z"), e(1940, lane="A")])
         b = self.audit([e(1940, lane="A"), e(1950, lane="Z")])
@@ -283,6 +401,21 @@ class ClaimLivenessTests(unittest.TestCase):
         parsed = json.loads(proc.stdout)
         self.assertEqual("titan-v4-claim-liveness/v1", parsed["schema"])
         self.assertEqual("ACTIVE", parsed["lanes"][0]["status"])
+
+    def test_cli_rejects_duplicate_json_object_keys(self):
+        here = os.path.dirname(__file__)
+        payload = (
+            '{"ts":1950,"lane":"L","session":"A","event":"CLAIM",'
+            '"event_id":"first","event_id":"second"}\n'
+        )
+        proc = subprocess.run(
+            [sys.executable, os.path.join(here, "claim_liveness.py"),
+             "--as-of", str(NOW), "--ttl-seconds", "100"],
+            input=payload, text=True, capture_output=True, check=False,
+        )
+        self.assertEqual(2, proc.returncode)
+        self.assertEqual("", proc.stdout)
+        self.assertIn("duplicate JSON object key 'event_id'", proc.stderr)
 
 
 if __name__ == "__main__":

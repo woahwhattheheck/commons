@@ -105,6 +105,7 @@ class TestCompleteSnapshot(Repo):
 
     def test_every_source_reads_and_nothing_is_degraded(self):
         self.assertEqual(self.snap["degraded"], [])
+        self.assertIsNone(self.snap["coordination"], "a checkout has no state branch")
         self.assertTrue(all(s["ok"] for s in self.snap["sources"]))
         self.assertEqual([s["path"] for s in self.snap["sources"]],
                          ["feed/github.json", "feed/head.json", "pulse.json",
@@ -306,6 +307,7 @@ class BakeFetcher:
         self.calls = []
         self.fail_head = False
         self.missing = set()
+        self.coordination = None
 
     def __call__(self, method, url, payload=None):
         self.calls.append(url)
@@ -313,6 +315,10 @@ class BakeFetcher:
             if self.fail_head:
                 raise OSError("network down")
             return {"sha": self.sha}
+        if url.endswith("/state/coordination/coordination-head.json"):
+            if self.coordination is None:
+                raise OSError("no state branch yet")
+            return json.loads(json.dumps(self.coordination))
         if "raw.githubusercontent.com" in url:
             for rel, value in self.bakes.items():
                 if url.endswith("/" + self.sha + "/" + rel):
@@ -363,6 +369,24 @@ class TestPinnedMainReads(Repo):
             self.assertEqual(source["road"], "main")
             self.assertEqual(source["sha"], "a" * 40)
             self.assertNotIn("value", source)
+
+    def test_coordination_head_comes_from_the_state_branch_beside_sources(self):
+        self.fetcher.coordination = {"schema": "commons-coordination-head/v1",
+                                     "counts": {"open_prs": 264,
+                                                "drift": {"disjoint": 40, "overlap": 3}}}
+        snap = self.center.observability(20, self.root)
+        self.assertEqual(snap["coordination"]["counts"]["open_prs"], 264)
+        self.assertEqual(snap["coordination_source"]["road"], "state-branch")
+        self.assertEqual(snap["coordination_source"]["branch"], "state/coordination")
+        self.assertNotIn("coordination-head.json", [s["path"] for s in snap["sources"]])
+        self.assertEqual(snap["degraded"], [])
+
+    def test_a_missing_state_branch_is_absent_not_degraded(self):
+        snap = self.center.observability(20, self.root)
+        self.assertIsNone(snap["coordination"])
+        self.assertFalse(snap["coordination_source"]["ok"])
+        self.assertIn("error", snap["coordination_source"])
+        self.assertEqual(snap["degraded"], [])
 
     def test_bakes_are_cached_until_main_moves_or_the_ttl(self):
         self.center.observability(20, self.root)

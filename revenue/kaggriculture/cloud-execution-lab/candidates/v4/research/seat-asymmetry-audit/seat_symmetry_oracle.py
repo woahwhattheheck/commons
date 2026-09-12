@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
-import importlib.util
 import json
 import random
 import sys
@@ -31,6 +30,7 @@ class Struct(dict):
 
 
 def _load_engine(path: Path):
+    """Authenticate one engine byte buffer and execute that exact buffer."""
     raw = path.read_bytes()
     actual = hashlib.sha256(raw).hexdigest()
     if actual != ENGINE_SHA256:
@@ -47,10 +47,11 @@ def _load_engine(path: Path):
     sys.modules["kaggle_environments"] = package
     sys.modules["kaggle_environments.utils"] = utils
     try:
-        spec = importlib.util.spec_from_file_location("_seat_symmetry_engine", path)
-        module = importlib.util.module_from_spec(spec)
-        assert spec.loader is not None
-        spec.loader.exec_module(module)
+        module = types.ModuleType("_seat_symmetry_engine")
+        module.__file__ = str(path)
+        module.__package__ = ""
+        code = compile(raw, str(path), "exec", dont_inherit=True)
+        exec(code, module.__dict__, module.__dict__)
         return module
     finally:
         if old_pkg is None:

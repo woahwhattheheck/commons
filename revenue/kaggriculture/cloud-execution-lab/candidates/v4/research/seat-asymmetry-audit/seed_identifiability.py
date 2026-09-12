@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 import math
 import random
@@ -50,11 +49,11 @@ def _load_engine(path: Path):
     sys.modules["kaggle_environments"] = package
     sys.modules["kaggle_environments.utils"] = utils
     try:
-        spec = importlib.util.spec_from_file_location("_seedident_engine", path)
-        module = importlib.util.module_from_spec(spec)
-        if spec.loader is None:
-            raise RuntimeError("unable to load authenticated engine")
-        spec.loader.exec_module(module)
+        module = types.ModuleType("_seedident_engine")
+        module.__file__ = str(path)
+        module.__package__ = ""
+        code = compile(raw, str(path), "exec", dont_inherit=True)
+        exec(code, module.__dict__, module.__dict__)
         return module
     finally:
         if old_pkg is None:

@@ -292,6 +292,7 @@ def _bonus_water_service(mechanics, observation, configuration, selected,
     still move and water for free. Resets discard workers and recompute spawns.
     """
     now = int(observation['step']); cfg = configuration or {}
+    maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
     finish = (max(o['bonus_day'] for o in obligations) + 1) * 24 - 1
     if finish >= len(route) or any(now < int(t) <= finish for t in checkpoints):
         return None, 'bonus_day_crosses_unresolved_route_boundary'
@@ -320,7 +321,7 @@ def _bonus_water_service(mechanics, observation, configuration, selected,
                     dx, dy = MOVES[op]; q = (pos[0] + dx, pos[1] + dy)
                     if 0 <= q[0] < 10 and 0 <= q[1] < 10:
                         positions[actor] = q
-        for order in (row.get('market') or [])[:int(cfg.get('maxMarketOrdersPerTurn', 10))]:
+        for order in (row.get('market') or [])[:maximum]:
             if not order:
                 continue
             op = order[0]
@@ -365,7 +366,7 @@ def _operating_stock_commitments(mechanics, configuration, post_farm, rows):
         raise ValueError('invalid_observed_cash')
     hires = max(0, int(post_farm.get('hires_today', len(post_farm.get('hands', [])))))
     land = max(0, len(post_farm.get('unlocked_quadrants', ['NW'])) - 1)
-    max_orders = int(cfg.get('maxMarketOrdersPerTurn', 10))
+    max_orders = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
     mult = float(cfg.get('farmHandCostMult', 1))
     required = 0.0; commitments = []
     for step, row in rows:
@@ -410,13 +411,14 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     fabricated future sale cash or a constant input-value cash cushion.
     """
     report = {'changed': False, 'reason': 'no_fertilizer_sale'}
-    orders = selected.get('market') or []
+    cfg = configuration or {}
+    maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+    orders = (selected.get('market') or [])[:maximum]
     offered = sum(max(0, int(o[2])) for o in orders
                   if o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER'])
     if not offered:
         return selected, report
     now = int(observation['step']); day = now // 24
-    cfg = configuration or {}
     board = len(post_farm['tiles'])
     if (board != 10 or int(cfg.get('turnsPerDay', 24)) != 24
             or int(cfg.get('episodeSteps', 720)) != 720 or day >= 29):
@@ -433,7 +435,8 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         report['reason'] = 'current_hiring_boundary'
         return selected, report
     for step in range(now + 1, min(end, len(route))):
-        if any(o and o[0] == 'HIRE' for o in route[step].get('market', [])):
+        if any(o and o[0] == 'HIRE'
+               for o in (route[step].get('market') or [])[:maximum]):
             end = step
             break
     schedule = []
@@ -442,7 +445,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
                    if o and len(o) > 2 and o[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'))
     for step in range(now + 1, min(end, len(route))):
         row = route[step]
-        for order in row.get('market', []):
+        for order in (row.get('market') or [])[:maximum]:
             if order and order[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'):
                 if len(order) > 2:
                     deposits += max(0, int(order[2]))
@@ -523,7 +526,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     if not withheld:
         report['reason'] = 'sale_already_leaves_required_stock'
         return selected, report
-    reservation_bound = min(len(obligations), max(0, int(cfg.get('maxMarketOrdersPerTurn', 10))))
+    reservation_bound = min(len(obligations), maximum)
     if withheld > reservation_bound:
         report['reason'] = 'reservation_exceeds_obligation_bound'
         return selected, report
@@ -582,7 +585,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         return selected, report
     out = deepcopy(selected)
     remaining = limit
-    for index, order in enumerate(out['market']):
+    for index, order in enumerate(out['market'][:maximum]):
         if order and len(order) > 2 and order[:2] == ['SELL', 'FERTILIZER']:
             take = min(max(0, int(order[2])), remaining)
             out['market'][index] = ['SELL', 'FERTILIZER', take] if take else []

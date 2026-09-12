@@ -13,7 +13,9 @@ sys.modules[SPEC.name] = mod
 SPEC.loader.exec_module(mod)
 
 
-def obs(*, hour=0, hands=0, empty=25, player=0):
+def obs(*, hour=0, step=None, hands=0, empty=25, player=0):
+    if step is None:
+        step = hour
     side = 5
     cells = [None] * empty + ["LOCKED"] * (side * side - empty)
     rows = [cells[i:i + side] for i in range(0, len(cells), side)]
@@ -22,7 +24,7 @@ def obs(*, hour=0, hands=0, empty=25, player=0):
         "hands": [[2, 2] for _ in range(hands)],
         "tiles": rows,
     }
-    return {"player": player, "hour": hour, "farms": [farm]}
+    return {"player": player, "hour": hour, "step": step, "farms": [farm]}
 
 
 class CapacityTests(unittest.TestCase):
@@ -140,6 +142,43 @@ class CapacityTests(unittest.TestCase):
     def test_out_of_day_hour_refused(self):
         with self.assertRaises(mod.CapacityInputError):
             mod.capacity_envelope(obs(hour=24))
+
+    def test_terminal_partial_day_does_not_require_phantom_water(self):
+        # Standard episodeSteps=720 makes step 718 the final executable callback.
+        # Starting the final day at step 696 leaves 23 executable callbacks but
+        # no hour-23 EOD. Thirteen one-action PLANTs are therefore not impossible
+        # by action count even though the old PLANT+WATER theorem capped at 12.
+        result = mod.assess_proposed_expansion(
+            obs(hour=0, step=696, hands=0), 13, no_future_hires=True
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["ceiling"], 23)
+        self.assertEqual(result["envelope"]["callbacks_remaining"], 23)
+        self.assertFalse(result["envelope"]["eod_reachable_before_terminal"])
+        self.assertEqual(
+            result["envelope"]["unit_actions_per_surviving_new_plant"], 1
+        )
+
+    def test_last_real_eod_keeps_two_action_charge(self):
+        result = mod.assess_proposed_expansion(
+            obs(hour=23, step=695, hands=0), 1, no_future_hires=True
+        )
+        self.assertEqual(result["verdict"], "IMPOSSIBLE_ACTION_BUDGET")
+        self.assertEqual(result["ceiling"], 0)
+        self.assertTrue(result["envelope"]["eod_reachable_before_terminal"])
+        self.assertEqual(
+            result["envelope"]["unit_actions_per_surviving_new_plant"], 2
+        )
+
+    def test_after_final_executable_callback_refused(self):
+        with self.assertRaisesRegex(
+            mod.CapacityInputError, "^step_after_final_executable_callback$"
+        ):
+            mod.capacity_envelope(obs(hour=23, step=719))
+
+    def test_hour_step_mismatch_refused(self):
+        with self.assertRaisesRegex(mod.CapacityInputError, "^hour_step_mismatch$"):
+            mod.capacity_envelope(obs(hour=23, step=22))
 
     def test_inputs_not_mutated(self):
         o = obs(hour=7, hands=2)

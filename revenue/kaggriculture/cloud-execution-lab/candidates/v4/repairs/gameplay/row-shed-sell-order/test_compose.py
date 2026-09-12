@@ -74,7 +74,7 @@ class ComposeTests(unittest.TestCase):
             self.assertFalse(out.exists())
             self.assertIn(compose.GRAPH_PREDECESSOR_FROZEN_BLOB, proc.stderr+proc.stdout)
 
-    def test_cli_explicit_reproduction_outputs_verbatim_donor_and_receipt(self):
+    def test_cli_explicit_reproduction_binds_actual_noncanonical_input(self):
         with tempfile.TemporaryDirectory() as td:
             out=Path(td)/'out'
             subprocess.run([
@@ -84,10 +84,19 @@ class ComposeTests(unittest.TestCase):
             self.assertEqual((out/'row_shed_sell_order.py').read_bytes(),
                              (HERE/'row_shed_sell_order.py').read_bytes())
             receipt=json.loads((out/'ROW-SHED-COMPOSITION.json').read_text())
+            base_bytes=BASE.read_bytes()
             self.assertFalse(receipt['release_authorized'])
             self.assertFalse(receipt['production_activated'])
             self.assertTrue(receipt['source_copied_verbatim'])
+            self.assertEqual(receipt['graph_predecessor']['git_blob'], BASE_BLOB)
+            self.assertEqual(receipt['graph_predecessor']['sha256'],
+                             hashlib.sha256(base_bytes).hexdigest())
             self.assertEqual(receipt['materialization']['input_git_blob'], BASE_BLOB)
+            self.assertEqual(receipt['canonical_graph_predecessor']['git_blob'],
+                             compose.GRAPH_PREDECESSOR_FROZEN_BLOB)
+            self.assertEqual(receipt['canonical_graph_predecessor']['sha256'],
+                             compose.GRAPH_PREDECESSOR_FROZEN_SHA256)
+            self.assertFalse(receipt['canonical_graph_predecessor']['matches_input'])
             self.assertEqual(receipt['materialization']['method_after_sha256'],
                              compose.METHOD_AFTER_SHA256)
             self.assertEqual(blob((out/'frozen_selected.py').read_bytes()),

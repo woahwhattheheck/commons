@@ -5,8 +5,10 @@ This module ports only the V3.1 S33/S34 ordering theorem. It does not construct
 or invoke a production controller and it never mutates the selected action.
 
 The caller must supply the *post-unit* shed projection already owned by the
-current selected-action stack. Only the leading contiguous SELL block may be
-reordered. Falsey rows and the first non-SELL row are hard barriers.
+current selected-action stack. Only the executable leading contiguous SELL
+block may be reordered; engine-inert market suffix rows are byte-preserved.
+Falsey rows, zero-quantity engine-dead SELL rows, and the first non-SELL row are
+hard barriers.
 """
 from __future__ import annotations
 
@@ -18,12 +20,30 @@ def _plain_nonnegative_int(value):
     return type(value) is int and value >= 0
 
 
+def _plain_positive_int(value):
+    return type(value) is int and value > 0
+
+
+def _market_prefix_limit(configuration):
+    """Return the official minimum-one executable market prefix length.
+
+    Missing configuration keeps the engine default of 10. Type-poison fails
+    closed instead of inheriting Python ``int(...)`` coercions.
+    """
+    if configuration is None:
+        return 10
+    value = configuration.get("maxMarketOrdersPerTurn", 10)
+    if type(value) is not int:
+        raise ValueError("maxMarketOrdersPerTurn must be a plain int")
+    return max(1, value)
+
+
 def _fallback_copy(selected_action, fallback_action):
     return deepcopy(selected_action if fallback_action is None else fallback_action)
 
 
 class RowShedSellOrder:
-    """Rank leading SELL rows by the price drop of units they can actually fill.
+    """Rank executable leading SELL rows by the price drop they can fill.
 
     This is deliberately a transform, not a controller. It is intended to sit
     after the caller-owned unit projection and before the current SELL optimizer.
@@ -41,6 +61,7 @@ class RowShedSellOrder:
             "status": "fallback",
             "reason": None,
             "leading_sell_count": 0,
+            "market_prefix_limit": None,
             "scores": [],
         }
 
@@ -57,10 +78,19 @@ class RowShedSellOrder:
             rows = selected_action.get("market", [])
             if not isinstance(rows, list):
                 raise ValueError("market orders must be a list")
-            # V3.1 donor envelope: a truthy malformed row anywhere makes the
-            # transform ambiguous, so preserve the parent action exactly.
-            if any(row and not isinstance(row, list) for row in rows):
-                raise ValueError("truthy market row must be a list")
+
+            market_prefix_limit = _market_prefix_limit(configuration)
+            self.diagnostics["market_prefix_limit"] = market_prefix_limit
+
+            # The official interpreter truncates each player's market queue to
+            # the executable prefix *before* parsing rows. Truthy malformed
+            # suffix values are therefore engine-inert evidence and cannot veto
+            # a valid reorder inside the prefix; preserve them byte-for-byte.
+            if any(
+                row and not isinstance(row, list)
+                for row in rows[:market_prefix_limit]
+            ):
+                raise ValueError("truthy executable market row must be a list")
 
             market = observation.get("market")
             if not isinstance(market, dict):
@@ -73,11 +103,18 @@ class RowShedSellOrder:
                 raise ValueError("market params must be a dict or None")
 
             lead = 0
-            while lead < len(rows):
+            executable_stop = min(len(rows), market_prefix_limit)
+            while lead < executable_stop:
                 row = rows[lead]
                 if not row:
                     break
                 if row[0] != "SELL":
+                    break
+                # The official interpreter rejects every SELL quantity <= 0.
+                # A plain non-positive quantity therefore occupies an
+                # engine-dead row and is a hard ordering barrier: never move a
+                # live SELL across it.
+                if len(row) >= 3 and type(row[2]) is int and row[2] <= 0:
                     break
                 lead += 1
             self.diagnostics["leading_sell_count"] = lead
@@ -93,15 +130,16 @@ class RowShedSellOrder:
                 item, requested = row[1], row[2]
                 if not isinstance(item, str) or not item:
                     raise ValueError("SELL item must be a non-empty string")
-                if not _plain_nonnegative_int(requested):
-                    raise ValueError("SELL quantity must be a plain non-negative int")
+                if not _plain_positive_int(requested):
+                    raise ValueError("SELL quantity must be a plain positive int")
                 if item not in post_unit_shed:
                     raise ValueError("projected shed is incomplete for leading SELL block")
                 stock = post_unit_shed[item]
                 if not _plain_nonnegative_int(stock):
                     raise ValueError("projected shed count must be a plain non-negative int")
-
-                level = inventory.get(item, getattr(mechanics, "MARKET_I0", 10000))
+                if item not in inventory:
+                    raise ValueError("market inventory is incomplete for leading SELL block")
+                level = inventory[item]
                 if not _plain_nonnegative_int(level):
                     raise ValueError("market inventory count must be a plain non-negative int")
                 fill = min(requested, stock)

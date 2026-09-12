@@ -14,7 +14,7 @@ The pinned Kaggle seed utility (`utils.py` Git blob `91c8822ee6201ba4a5a8416c7db
 
 It then clears the seed from configuration and persists the resolved value in `env.info`.
 
-The pinned Kaggriculture config (`kaggriculture.json` blob `b354d06b742fe48402513792253f1a5c29366b20`) declares `seed` only as `integer | null`, default `null`; it contains **no `minimum` or `maximum`**. Therefore the pinned engine schema itself supplies no finite complete domain for an explicitly provided seed (nor for a seed already preserved in `env.info`).
+The source contract byte-authenticates the official interpreter (`kaggriculture.py` blob `3c202c7ee921da239356789e266b694635103fc4`) as well as the pinned Kaggriculture config (`kaggriculture.json` blob `b354d06b742fe48402513792253f1a5c29366b20`). The config declares `seed` only as `integer | null`, default `null`; it contains **no `minimum` or `maximum`**. Therefore the pinned engine schema itself supplies no finite complete domain for an explicitly provided seed (nor for a seed already preserved in `env.info`).
 
 The fallback path is different: when it is genuinely taken and no custom fallback is supplied, source gives the complete finite interval:
 
@@ -32,7 +32,7 @@ engine.interpreter(...)
 assert cfg.seed was scrubbed
 ```
 
-so an offline experiment may legitimately define a smaller finite candidate domain when it first byte-binds the exact precommitted seed panel. The candidate agent still never receives the seed itself.
+so an offline experiment can use a smaller finite candidate domain only when an external runner/provenance authority independently proves that exact seed panel was precommitted; this helper can then byte-bind those declared bytes. Byte binding itself does not prove precommit. The candidate agent still never receives the seed itself.
 
 ## Why this changes SEEDSTREAM's boundary
 
@@ -67,7 +67,7 @@ A byte-bound panel is labeled only `BYTE_BOUND_DECLARED_OFFLINE_PANEL_SET_ONLY`.
 
 ## Public-evidence filtering and consensus
 
-SEEDDOMAIN does **not** reimplement the RNG. It authenticates and loads merged `seed_stream_identifiability.py@c02ab05...`, then applies the same public-only EOD evidence to just the declared finite seed set.
+SEEDDOMAIN does **not** reimplement the RNG. It captures merged `seed_stream_identifiability.py@c02ab05...` once, Git-blob authenticates those exact bytes, and compile/executes only that captured buffer (no verify→reopen path). It then applies the same public-only EOD evidence to just the declared finite seed set.
 
 Possible results are:
 
@@ -102,8 +102,8 @@ A later RNG-sensitive gameplay experiment may consume this only as offline evide
 Authored-byte gate before publication:
 
 ```text
-PASS 13/13 seed-domain-provenance tests
-PASS 13/13 under python -O
+PASS 15/15 seed-domain-provenance tests
+PASS 15/15 under python -O
 py_compile PASS
 ```
 

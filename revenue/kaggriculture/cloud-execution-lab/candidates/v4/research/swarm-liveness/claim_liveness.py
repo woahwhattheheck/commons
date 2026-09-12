@@ -137,8 +137,19 @@ def load_jsonl(lines: Iterable[str]) -> list[dict[str, Any]]:
         text = line.strip()
         if not text or text.startswith("#"):
             continue
+
+        def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+            obj: dict[str, Any] = {}
+            for key, value in pairs:
+                if key in obj:
+                    raise AuditError(
+                        f"line {line_no}: duplicate JSON object key {key!r}"
+                    )
+                obj[key] = value
+            return obj
+
         try:
-            value = json.loads(text)
+            value = json.loads(text, object_pairs_hook=reject_duplicate_keys)
         except json.JSONDecodeError as exc:
             raise AuditError(f"line {line_no}: invalid JSON: {exc.msg}") from exc
         if not isinstance(value, dict):
@@ -261,6 +272,75 @@ def _scope_rows(
     return rows
 
 
+def _epoch_eligibility(
+    events: list[Event],
+    *,
+    now: float,
+    canonical_root: str,
+    conflicted_event_ids: set[str],
+) -> tuple[list[bool], list[bool]]:
+    """Classify canonical epoch membership before provider-id authority.
+
+    Provider-id conflicts are excluded from the mirrored epoch state. This lets
+    duplicate groups fail closed without allowing a quarantined duplicate CLAIM
+    or terminal to open/close an epoch used to classify later rows. Epoch state
+    is replayed in the same chronological `(ts,index)` order used by ownership
+    application, while masks remain aligned to the caller's original row order.
+    """
+    epoch_contracts: dict[tuple[str, str], dict[str, Any]] = {}
+    eligible: list[bool] = [False] * len(events)
+    epoch_root_quarantined: list[bool] = [False] * len(events)
+
+    for position in sorted(
+        range(len(events)), key=lambda index: (events[index].ts, events[index].index)
+    ):
+        ev = events[position]
+        future = ev.ts > now
+        root_mismatch = (
+            ev.canonical_root is not None and ev.canonical_root != canonical_root
+        )
+        repo_write_unbound = ev.writes_repo and ev.canonical_root != canonical_root
+        root_quarantined = root_mismatch or repo_write_unbound
+
+        epoch_key = (ev.lane, ev.session)
+        epoch = epoch_contracts.get(epoch_key)
+        epoch_quarantined = False
+        if (
+            not future
+            and not root_quarantined
+            and ev.event in ({HEARTBEAT} | TERMINAL)
+            and epoch is not None
+            and bool(epoch.get("active"))
+            and bool(epoch.get("writes_repo"))
+            and ev.canonical_root != epoch.get("canonical_root")
+        ):
+            epoch_quarantined = True
+
+        authoritative = (
+            not future
+            and not root_quarantined
+            and not epoch_quarantined
+            and ev.event_id not in conflicted_event_ids
+        )
+        eligible[position] = authoritative
+        epoch_root_quarantined[position] = epoch_quarantined
+        if not authoritative:
+            continue
+
+        if ev.event == CLAIM:
+            if epoch is None or not bool(epoch.get("active")):
+                epoch_contracts[epoch_key] = {
+                    "active": True,
+                    "writes_repo": ev.writes_repo,
+                    "canonical_root": ev.canonical_root,
+                }
+        elif ev.event in TERMINAL:
+            if epoch is not None and bool(epoch.get("active")):
+                epoch["active"] = False
+
+    return eligible, epoch_root_quarantined
+
+
 def audit_events(
     raw_events: Iterable[dict[str, Any]],
     *,
@@ -277,10 +357,43 @@ def audit_events(
 
     events = [Event.parse(raw, i) for i, raw in enumerate(raw_events)]
     anomalies: list[dict[str, Any]] = []
-    seen_ids: dict[str, Event] = {}
-    authoritative_events: list[Event] = []
 
-    for ev in events:
+    # Find provider ids that conflict among rows actually eligible to affect the
+    # canonical ownership epoch. Conflict discovery is monotone: once an id is
+    # seen twice in an eligible state, its whole group stays quarantined. Each
+    # newly quarantined group is removed from mirrored epoch state before the
+    # next pass, so duplicate rows cannot manufacture later eligibility.
+    conflicted_event_ids: set[str] = set()
+    duplicate_evidence: dict[str, list[int]] = {}
+    while True:
+        candidate, _ = _epoch_eligibility(
+            events,
+            now=now,
+            canonical_root=canonical_root,
+            conflicted_event_ids=conflicted_event_ids,
+        )
+        indexes_by_id: dict[str, list[int]] = defaultdict(list)
+        for ev, authoritative in zip(events, candidate):
+            if authoritative and ev.event_id:
+                indexes_by_id[ev.event_id].append(ev.index)
+        newly_conflicted = {
+            event_id: indexes
+            for event_id, indexes in indexes_by_id.items()
+            if len(indexes) > 1 and event_id not in conflicted_event_ids
+        }
+        if not newly_conflicted:
+            break
+        duplicate_evidence.update(newly_conflicted)
+        conflicted_event_ids.update(newly_conflicted)
+
+    authoritative_mask, epoch_root_quarantined = _epoch_eligibility(
+        events,
+        now=now,
+        canonical_root=canonical_root,
+        conflicted_event_ids=conflicted_event_ids,
+    )
+
+    for ev, epoch_quarantined in zip(events, epoch_root_quarantined):
         future = ev.ts > now
         if future:
             anomalies.append(
@@ -291,9 +404,6 @@ def audit_events(
         root_mismatch = (
             ev.canonical_root is not None and ev.canonical_root != canonical_root
         )
-        repo_write_unbound = ev.writes_repo and ev.canonical_root != canonical_root
-        root_quarantined = root_mismatch or repo_write_unbound
-
         if root_mismatch:
             anomalies.append(
                 {"kind": "noncanonical_root", "lane": ev.lane,
@@ -305,27 +415,40 @@ def audit_events(
                 {"kind": "repo_write_without_root", "lane": ev.lane,
                  "session": ev.session, "event_id": ev.event_id}
             )
+        if epoch_quarantined:
+            epoch = None
+            # Reconstruct the expected root from the active writer epoch using
+            # the same classifier semantics for diagnostic evidence only.
+            # It is always the audited canonical root because writer CLAIMs are
+            # structurally authoritative only when exactly bound to it.
+            anomalies.append(
+                {
+                    "kind": "writer_epoch_followup_root_unbound",
+                    "lane": ev.lane,
+                    "session": ev.session,
+                    "event": ev.event,
+                    "event_id": ev.event_id,
+                    "observed": ev.canonical_root,
+                    "expected": canonical_root,
+                }
+            )
 
-        duplicate = False
-        if ev.event_id:
-            old = seen_ids.get(ev.event_id)
-            if old is not None:
-                anomalies.append(
-                    {"kind": "duplicate_event_id", "event_id": ev.event_id,
-                     "first_index": old.index, "duplicate_index": ev.index}
-                )
-                duplicate = True
-            elif not future and not root_quarantined:
-                # Only an event eligible to affect this canonical workspace may
-                # reserve a provider id. A quarantined foreign/unbound record
-                # cannot shadow a later valid export row with the same id.
-                seen_ids[ev.event_id] = ev
+    for event_id in sorted(duplicate_evidence):
+        indexes = duplicate_evidence[event_id]
+        first_index = indexes[0]
+        for duplicate_index in indexes[1:]:
+            anomalies.append(
+                {
+                    "kind": "duplicate_event_id",
+                    "event_id": event_id,
+                    "first_index": first_index,
+                    "duplicate_index": duplicate_index,
+                }
+            )
 
-        # Timeline/root anomalies remain visible evidence, but future/replayed
-        # rows, explicit foreign-root rows, and unbound repo writers cannot
-        # mint, extend, close, or reopen a lease in this canonical workspace.
-        if not future and not duplicate and not root_quarantined:
-            authoritative_events.append(ev)
+    authoritative_events = [
+        ev for ev, authoritative in zip(events, authoritative_mask) if authoritative
+    ]
 
     grouped: dict[str, list[Event]] = defaultdict(list)
     for ev in authoritative_events:
@@ -380,6 +503,8 @@ def audit_events(
                     "artifact": ev.artifact,
                     "last_event_id": ev.event_id,
                     "scope_key": ev.scope_key,
+                    "claim_writes_repo": ev.writes_repo,
+                    "claim_canonical_root": ev.canonical_root,
                 }
             elif ev.event == HEARTBEAT:
                 if state is None or state["state"] != "ACTIVE":
@@ -417,6 +542,8 @@ def audit_events(
                         "artifact": ev.artifact,
                         "last_event_id": ev.event_id,
                         "scope_key": ev.scope_key,
+                        "claim_writes_repo": None,
+                        "claim_canonical_root": None,
                     }
                     continue
                 if ev.scope_key is not None and ev.scope_key != state.get("scope_key"):
@@ -463,6 +590,8 @@ def audit_events(
                     "last_ts": state["last_ts"],
                     "artifact": state.get("artifact"),
                     "scope_key": state.get("scope_key"),
+                    "claim_writes_repo": state.get("claim_writes_repo"),
+                    "claim_canonical_root": state.get("claim_canonical_root"),
                 }
             )
 
@@ -518,6 +647,8 @@ def audit_events(
             "repo_writes_require_exact_canonical_root": True,
             "repo_write_without_canonical_root_authoritative": False,
             "read_only_missing_root_authoritative": True,
+            "writer_epoch_followups_require_claim_root": True,
+            "quarantined_events_reserve_provider_ids": False,
             "future_events_authoritative": False,
             "duplicate_event_id_replays_authoritative": False,
             "repeat_active_claims_authoritative": False,
