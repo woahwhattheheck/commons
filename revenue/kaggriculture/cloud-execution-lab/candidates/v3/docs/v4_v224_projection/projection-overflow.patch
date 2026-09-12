@@ -1,0 +1,11 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_v224_raw_slots.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_v224_raw_slots.py
+@@ -84,7 +84,7 @@
+                 orders[cursor - 1], orders[cursor] = orders[cursor], orders[cursor - 1]
+                 cursor -= 1
+         return orders
+-    except (IndexError, KeyError, TypeError, ValueError):
++    except (IndexError, KeyError, OverflowError, TypeError, ValueError):
+         return None
+ 
+ 

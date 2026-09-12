@@ -1,0 +1,23 @@
+{
+  "operation": "KEEL-V4-V224-PROJECTION-OVERFLOW-20260911",
+  "source_commit": "d88eda76d18c0caabb23126ef397ab04e6cbdaac",
+  "source_blob": "7401ab7616cff5be313c3746d75db536c8dac23d",
+  "python": "3.13.5",
+  "normal_tests": 9,
+  "optimized_tests": 9,
+  "finite_differential_cases": 16384,
+  "promotion": false,
+  "materialized_runtime_tested": false,
+  "files": {
+    "r04_v224_raw_slots.py": {
+      "bytes": 4687,
+      "sha256": "4c0d46748d625ae6ed8f2c641c6ea2c048a7f53e689faadbcd80ed646ee55c01",
+      "git_blob": "43afebae35560e54dde645cff656c8be8031851f"
+    },
+    "test_v4_v224_projection_errors.py": {
+      "bytes": 3968,
+      "sha256": "f0da0720dc307e4f96ddce8d623c44ca93e4ff4f9622ec4cf9911c10856efd1e",
+      "git_blob": "29da24599149bf5a16e75bf701b8953b408d7399"
+    }
+  }
+}
