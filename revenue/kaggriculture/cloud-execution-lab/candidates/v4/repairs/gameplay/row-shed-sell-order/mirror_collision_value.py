@@ -1,35 +1,33 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Exact mirror SELL queue-index value evidence for canonical ROWSHED.
+"""Lockstep-correct mirror SELL queue evidence for canonical ROWSHED.
 
-Research only.  The incumbent ROWSHED donor ranks executable SELL rows with an
-endpoint price-drop heuristic.  Against a mirror/copy opponent that sells the
-same product and quantity, the official per-unit lockstep interpreter gives a
-sharper quantity: the cash advantage of selling that lot before, rather than
-after, the rival's identical lot.
+Research only.  For one product, a mirror baseline does *not* serialize our
+whole lot before or after the rival's.  The official market interpreter quotes
+both players from the same pre-commit inventory for each aligned unit, then
+commits both quoted units.  Queue movement must therefore compare our serial
+cash to that aligned baseline, not use the full early-minus-late span as a
+symmetric assignment cost.
 
-This module computes that quantity and, for a unique-product executable SELL
-block, the exact permutation that maximizes the conditional mirror edge.  It
-does not choose, mutate, or authorize an action.  Callers must provide the
-authenticated official ``market_price`` function (the focused tests use the
-source-bound V4 market baseline).
+This module exposes that distinction and, for a unique-product SELL block,
+solves the exact conditional permutation edge against a rival that keeps the
+input baseline order.  It never chooses, mutates, or authorizes an action.
 """
 from __future__ import annotations
 
 from typing import Any, Callable, Mapping, Sequence
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
-SCHEMA = "titan.v4.rowshed.mirror-collision-value.v1"
-ASSIGNMENT_SCHEMA = "titan.v4.rowshed.mirror-assignment.v1"
-# Official _process_market aborts a unit loop before iteration 100_000.
+SCHEMA = "titan.v4.rowshed.mirror-collision-value.v2"
+ASSIGNMENT_SCHEMA = "titan.v4.rowshed.mirror-assignment.v2"
 MAX_EXECUTABLE_UNITS_PER_MARKET_ORDER = 99_999
-# maxMarketOrdersPerTurn defaults to 10 but custom configs may be larger.  The
-# exact DP deliberately certifies only <=10 rows as a conservative research
-# safety bound; larger executable prefixes remain score-only / uncertified.
+# Research certification bound only. maxMarketOrdersPerTurn defaults to 10 but
+# custom configurations may be larger, so larger caller blocks remain score-
+# only rather than being described as an engine horizon.
 MAX_ASSIGNMENT_ROWS = 10
 
 
 class MirrorCollisionInputError(ValueError):
-    """Evidence is malformed or cannot support a mirror-collision score."""
+    """Evidence is malformed or outside the certified mirror theorem."""
 
 
 def _plain_nonnegative_int(value: Any, label: str) -> int:
@@ -61,14 +59,13 @@ def _quote(price_fn: Callable[[str, int], Any], item: str, inventory: int) -> in
     return price
 
 
-def _sell_lot(
+def _serial_sell_lot(
     price_fn: Callable[[str, int], Any], item: str, inventory: int, quantity: int
 ) -> tuple[int, int]:
-    """Return (cash, ending inventory) for one SELL lot.
+    """Return cash and ending inventory when one player sells alone.
 
-    Official ``_commit_unit`` does not add market supply for a $1 sale.  Keeping
-    that detail here matters in deep-glut tails and avoids pretending every sale
-    advances inventory by one.
+    Official commit semantics do not add public supply for a quote of exactly
+    one coin, so floor-priced units leave inventory unchanged.
     """
     cash = 0
     level = inventory
@@ -80,6 +77,25 @@ def _sell_lot(
     return cash, level
 
 
+def _aligned_mirror_lot(
+    price_fn: Callable[[str, int], Any], item: str, inventory: int, quantity: int
+) -> tuple[int, int]:
+    """Return our cash and ending inventory for an aligned identical mirror row.
+
+    In each official unit-loop iteration both players are quoted from the same
+    pre-commit public inventory.  If the shared quote exceeds $1, both commits
+    add one unit of supply; at the $1 floor neither commit advances inventory.
+    """
+    cash = 0
+    level = inventory
+    for _ in range(quantity):
+        price = _quote(price_fn, item, level)
+        cash += price
+        if price != 1:
+            level += 2
+    return cash, level
+
+
 def mirror_collision_score(
     *,
     item: str,
@@ -87,11 +103,12 @@ def mirror_collision_score(
     fillable: int,
     price_fn: Callable[[str, int], Any],
 ) -> dict[str, Any]:
-    """Compare our cash when an identical rival lot is later vs earlier.
+    """Return early/aligned/late cash and asymmetric queue-movement deltas.
 
-    This is a conditional mirror-race value, not a rival-action prediction.  It
-    assumes the rival sells the same item and executable quantity once in the
-    competing queue slot; it says nothing about whether that event will occur.
+    ``promote_gain`` is our gain from moving this unique-product row earlier
+    than the rival's fixed baseline row. ``demote_loss`` is our loss from moving
+    it later. ``serial_displacement_span`` is the old early-minus-late quantity
+    retained only as a diagnostic; it is not a queue-assignment cost.
     """
     name = _item(item)
     level = _plain_nonnegative_int(public_inventory, "public_inventory")
@@ -101,84 +118,93 @@ def mirror_collision_score(
     if not callable(price_fn):
         raise MirrorCollisionInputError("price_fn must be callable")
 
-    early_cash, after_ours = _sell_lot(price_fn, name, level, qty)
-    _rival_cash, after_rival = _sell_lot(price_fn, name, level, qty)
-    late_cash, _after_both = _sell_lot(price_fn, name, after_rival, qty)
+    early_cash, after_ours = _serial_sell_lot(price_fn, name, level, qty)
+    aligned_cash, after_aligned = _aligned_mirror_lot(price_fn, name, level, qty)
+    _rival_cash, after_rival = _serial_sell_lot(price_fn, name, level, qty)
+    late_cash, after_both_serial = _serial_sell_lot(
+        price_fn, name, after_rival, qty
+    )
+
+    promote_gain = early_cash - aligned_cash
+    demote_loss = aligned_cash - late_cash
+    serial_span = early_cash - late_cash
+    if min(promote_gain, demote_loss, serial_span) < 0:
+        raise MirrorCollisionInputError("mirror price path is not monotone nonincreasing")
+    if promote_gain + demote_loss != serial_span:
+        raise MirrorCollisionInputError("mirror cash decomposition is inconsistent")
 
     before = _quote(price_fn, name, level)
     endpoint_after = _quote(price_fn, name, level + qty)
     incumbent_endpoint_score = (before - endpoint_after) * qty
-    exact_collision_value = early_cash - late_cash
-    if exact_collision_value < 0:
-        raise MirrorCollisionInputError("monotone mirror collision value became negative")
-
     return {
         "item": name,
         "public_inventory": level,
         "fillable": qty,
         "early_cash": early_cash,
+        "aligned_mirror_cash": aligned_cash,
         "late_cash": late_cash,
-        "exact_mirror_collision_value": exact_collision_value,
+        "promote_gain": promote_gain,
+        "demote_loss": demote_loss,
+        "serial_displacement_span": serial_span,
+        "serial_displacement_is_assignment_cost": False,
         "incumbent_endpoint_score": incumbent_endpoint_score,
         "after_our_lot_inventory": after_ours,
+        "after_aligned_mirror_inventory": after_aligned,
+        "after_both_serial_inventory": after_both_serial,
     }
 
 
-def _assignment_costs(costs: Sequence[Any]) -> list[int]:
-    if not isinstance(costs, Sequence) or isinstance(costs, (str, bytes)):
-        raise MirrorCollisionInputError("assignment costs must be a sequence")
-    if len(costs) > MAX_ASSIGNMENT_ROWS:
+def _assignment_deltas(rows: Sequence[Any]) -> list[tuple[int, int]]:
+    if not isinstance(rows, Sequence) or isinstance(rows, (str, bytes)):
+        raise MirrorCollisionInputError("assignment rows must be a sequence")
+    if len(rows) > MAX_ASSIGNMENT_ROWS:
         raise MirrorCollisionInputError("assignment row count exceeds research safety bound")
-    return [
-        _plain_nonnegative_int(value, f"assignment cost {index}")
-        for index, value in enumerate(costs)
-    ]
+    out: list[tuple[int, int]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, Mapping):
+            raise MirrorCollisionInputError(f"assignment row {index} must be a mapping")
+        promote = _plain_nonnegative_int(row.get("promote_gain"), f"promote gain {index}")
+        demote = _plain_nonnegative_int(row.get("demote_loss"), f"demote loss {index}")
+        out.append((promote, demote))
+    return out
 
 
 def mirror_edge_for_permutation(
-    costs: Sequence[Any], permutation: Sequence[Any]
+    rows: Sequence[Any], permutation: Sequence[Any]
 ) -> int:
-    """Return the exact conditional mirror edge of one row permutation.
-
-    `costs[i]` is row i's exact mirror collision value.  For unique products,
-    moving row i before the rival mirror's baseline position earns +cost; moving
-    it after pays -cost; staying at the same raw index contributes zero.
-    """
-    values = _assignment_costs(costs)
+    """Exact conditional cash delta vs a rival retaining original row order."""
+    deltas = _assignment_deltas(rows)
     if not isinstance(permutation, Sequence) or isinstance(permutation, (str, bytes)):
         raise MirrorCollisionInputError("permutation must be a sequence")
-    order = []
+    order: list[int] = []
     for index, value in enumerate(permutation):
         if type(value) is not int:
             raise MirrorCollisionInputError(f"permutation index {index} must be a plain int")
         order.append(value)
-    if sorted(order) != list(range(len(values))):
+    if sorted(order) != list(range(len(deltas))):
         raise MirrorCollisionInputError("permutation must contain each row index exactly once")
-    candidate_position = [0] * len(values)
+
+    candidate_position = [0] * len(deltas)
     for position, original_index in enumerate(order):
         candidate_position[original_index] = position
+
     total = 0
-    for original_index, cost in enumerate(values):
+    for original_index, (promote_gain, demote_loss) in enumerate(deltas):
         position = candidate_position[original_index]
         if position < original_index:
-            total += cost
+            total += promote_gain
         elif position > original_index:
-            total -= cost
+            total -= demote_loss
     return total
 
 
-def optimal_mirror_assignment(costs: Sequence[Any]) -> tuple[list[int], int]:
-    """Exact O(n*2^n) assignment for the <=10-row unique-product theorem.
-
-    Ties prefer fewer moved rows, then lexicographically smaller original-index
-    permutations, so identity is retained when no positive edge exists.
-    """
-    values = _assignment_costs(costs)
-    n = len(values)
+def optimal_mirror_assignment(rows: Sequence[Any]) -> tuple[list[int], int]:
+    """Exact O(n*2^n) assignment for the <=10 unique-product theorem."""
+    deltas = _assignment_deltas(rows)
+    n = len(deltas)
     if n < 2:
         return list(range(n)), 0
 
-    # mask -> (score, moved_count, original-index permutation prefix)
     states: dict[int, tuple[int, int, tuple[int, ...]]] = {0: (0, 0, ())}
     for mask in range(1 << n):
         state = states.get(mask)
@@ -186,15 +212,15 @@ def optimal_mirror_assignment(costs: Sequence[Any]) -> tuple[list[int], int]:
             continue
         score, moved, prefix = state
         position = len(prefix)
-        for original_index in range(n):
+        for original_index, (promote_gain, demote_loss) in enumerate(deltas):
             bit = 1 << original_index
             if mask & bit:
                 continue
             delta = 0
             if position < original_index:
-                delta = values[original_index]
+                delta = promote_gain
             elif position > original_index:
-                delta = -values[original_index]
+                delta = -demote_loss
             candidate = (
                 score + delta,
                 moved + (position != original_index),
@@ -221,9 +247,11 @@ def _assignment_report(scored: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         "schema": ASSIGNMENT_SCHEMA,
         "certified": False,
         "conditional_assumption": (
-            "rival submits the same unique-product SELL rows at the input baseline indices"
+            "rival retains the same unique-product SELL rows at the input baseline indices"
         ),
-        "objective": "+collision value when earlier, -collision value when later, 0 when same",
+        "objective": (
+            "+promote_gain when earlier, -demote_loss when later, 0 when aligned"
+        ),
         "optimal_permutation_indices": None,
         "predicted_mirror_edge": None,
     }
@@ -231,14 +259,21 @@ def _assignment_report(scored: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         report["reason"] = "row_count_exceeds_assignment_safety_bound"
         return report
     if len(set(items)) != len(items):
-        report["reason"] = "duplicate_product_rows_outside_assignment_theorem"
+        report["reason"] = "duplicate_product_rows_require_full_market_simulation"
         return report
-    costs = [row["exact_mirror_collision_value"] for row in scored]
-    permutation, edge = optimal_mirror_assignment(costs)
+
+    permutation, edge = optimal_mirror_assignment(scored)
     report.update(
         certified=True,
-        reason="unique_product_exact_assignment",
-        costs=costs,
+        reason="unique_product_lockstep_baseline_assignment",
+        movement_deltas=[
+            {
+                "original_index": row["original_index"],
+                "promote_gain": row["promote_gain"],
+                "demote_loss": row["demote_loss"],
+            }
+            for row in scored
+        ],
         optimal_permutation_indices=permutation,
         predicted_mirror_edge=edge,
     )
@@ -250,14 +285,7 @@ def analyze_rows(
     *,
     price_fn: Callable[[str, int], Any],
 ) -> dict[str, Any]:
-    """Score caller-authenticated executable SELL evidence under both metrics.
-
-    Each row must contain exactly ``item``, ``public_inventory`` and ``fillable``.
-    Stable score ties preserve caller order.  ``mirror_rank_indices`` remains a
-    descending score view for compatibility; it is explicitly NOT a queue
-    optimum.  Unique-product blocks additionally receive an exact assignment
-    certificate.  The report is evidence only and never returns an action.
-    """
+    """Score executable SELL evidence and certify a unique-product assignment."""
     if not isinstance(rows, Sequence) or isinstance(rows, (str, bytes)):
         raise MirrorCollisionInputError("rows must be a sequence")
     if len(rows) < 2:
@@ -285,22 +313,21 @@ def analyze_rows(
             key=lambda row: (-row["incumbent_endpoint_score"], row["original_index"]),
         )
     ]
-    mirror_rank = [
+    serial_span_rank = [
         row["original_index"]
         for row in sorted(
             scored,
-            key=lambda row: (-row["exact_mirror_collision_value"], row["original_index"]),
+            key=lambda row: (-row["serial_displacement_span"], row["original_index"]),
         )
     ]
     assignment = _assignment_report(scored)
     if assignment["certified"]:
-        costs = assignment["costs"]
-        assignment["descending_score_permutation_indices"] = mirror_rank
-        assignment["descending_score_predicted_edge"] = mirror_edge_for_permutation(
-            costs, mirror_rank
+        assignment["serial_span_rank_indices"] = serial_span_rank
+        assignment["serial_span_rank_predicted_edge"] = mirror_edge_for_permutation(
+            scored, serial_span_rank
         )
-        assignment["descending_score_is_optimal"] = (
-            mirror_rank == assignment["optimal_permutation_indices"]
+        assignment["serial_span_rank_is_optimal"] = (
+            serial_span_rank == assignment["optimal_permutation_indices"]
         )
 
     return {
@@ -310,11 +337,15 @@ def analyze_rows(
         "decision_authority": False,
         "action_mutation_authority": False,
         "rival_action_prediction": False,
-        "conditional_assumption": "rival sells identical item+quantity in competing queue slot",
+        "conditional_assumption": (
+            "rival retains identical unique-product item+quantity rows at baseline indices"
+        ),
         "scores": scored,
         "incumbent_rank_indices": incumbent_rank,
-        "mirror_rank_indices": mirror_rank,
-        "mirror_rank_semantics": "descending per-row evidence only; not queue-optimal assignment",
-        "rank_diverges": incumbent_rank != mirror_rank,
+        "serial_span_rank_indices": serial_span_rank,
+        "serial_span_rank_semantics": (
+            "descending early-minus-late diagnostic only; not an assignment objective"
+        ),
+        "rank_diverges": incumbent_rank != serial_span_rank,
         "mirror_assignment": assignment,
     }
