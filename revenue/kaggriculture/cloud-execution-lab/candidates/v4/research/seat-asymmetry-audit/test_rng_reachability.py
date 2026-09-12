@@ -31,10 +31,13 @@ class RNGReachabilityTests(unittest.TestCase):
             farm=farm(None),
             own_seeds={},
             authored_action={"farmer": ["BUILD_COOP"], "hands": []},
+            market_prefix_limit=10,
         )
         self.assertEqual(result["delta"], -1)
         self.assertTrue(result["natural_engagement"])
         self.assertEqual(result["effects"][0]["op"], "BUILD_COOP")
+        self.assertEqual(result["market_prefix_limit"], 10)
+        self.assertTrue(result["market_vacancy_resolved"])
 
     def test_atomic_plant_oversubscription_blocks_all_same_crop(self):
         result = authored_vacancy_projection(
@@ -44,6 +47,7 @@ class RNGReachabilityTests(unittest.TestCase):
                 "farmer": ["PLANT", "WHEAT"],
                 "hands": [["PLANT", "WHEAT"]],
             },
+            market_prefix_limit=10,
         )
         self.assertEqual(result["blocked_plant_crops"], ["WHEAT"])
         self.assertEqual(result["delta"], 0)
@@ -58,6 +62,7 @@ class RNGReachabilityTests(unittest.TestCase):
                 "farmer": ["PLANT", "WHEAT"],
                 "hands": [["PLANT", "WHEAT"]],
             },
+            market_prefix_limit=10,
         )
         self.assertEqual(result["blocked_plant_crops"], ["WHEAT"])
         self.assertEqual(result["delta"], 0)
@@ -70,6 +75,7 @@ class RNGReachabilityTests(unittest.TestCase):
                         farm=farm(None, hands=[]),
                         own_seeds={"WHEAT": 1},
                         authored_action={"farmer": ["PLANT", crop]},
+                        market_prefix_limit=10,
                     )
 
     def test_exact_seed_plant_changes_vacancy(self):
@@ -77,6 +83,7 @@ class RNGReachabilityTests(unittest.TestCase):
             farm=farm(None, hands=[]),
             own_seeds={"WHEAT": 1},
             authored_action={"farmer": ["PLANT", "WHEAT"]},
+            market_prefix_limit=10,
         )
         self.assertEqual(result["delta"], -1)
 
@@ -89,6 +96,7 @@ class RNGReachabilityTests(unittest.TestCase):
                 "farmer": ["BUILD_COOP"],
                 "hands": [["DIG"]],
             },
+            market_prefix_limit=10,
         )
         self.assertEqual([e["delta"] for e in result["effects"]], [-1, 1])
         self.assertEqual(result["delta"], 0)
@@ -99,12 +107,14 @@ class RNGReachabilityTests(unittest.TestCase):
             farm=farm({"kind": "WEED"}, hands=[]),
             own_seeds={},
             authored_action={"farmer": ["DIG"]},
+            market_prefix_limit=10,
         )
         self.assertEqual(weed["delta"], 1)
         animal = authored_vacancy_projection(
             farm=farm({"kind": "COOP", "animal": "GOOSE"}, hands=[]),
             own_seeds={},
             authored_action={"farmer": ["DIG"]},
+            market_prefix_limit=10,
         )
         self.assertEqual(animal["delta"], 0)
 
@@ -115,8 +125,70 @@ class RNGReachabilityTests(unittest.TestCase):
                     farm=farm(None, hands=[]),
                     own_seeds={},
                     authored_action={"farmer": row},
+                    market_prefix_limit=10,
                 )
                 self.assertEqual(result["delta"], 0)
+
+    def test_executable_prefix_buy_land_fails_closed(self):
+        with self.assertRaisesRegex(Refusal, "BUY_LAND requires exact market replay"):
+            authored_vacancy_projection(
+                farm=farm(None, hands=[]),
+                own_seeds={},
+                authored_action={"farmer": ["PASS"], "market": [["BUY_LAND"]]},
+                market_prefix_limit=10,
+            )
+
+    def test_buy_land_beyond_executable_prefix_is_inert(self):
+        result = authored_vacancy_projection(
+            farm=farm(None, hands=[]),
+            own_seeds={},
+            authored_action={
+                "farmer": ["BUILD_COOP"],
+                "market": [["BUY_SEED", "WHEAT", 1], ["BUY_LAND"]],
+            },
+            market_prefix_limit=1,
+        )
+        self.assertEqual(result["delta"], -1)
+        self.assertEqual(result["market_prefix_limit"], 1)
+
+    def test_engine_min_one_prefix_keeps_row_zero_buy_land(self):
+        for limit in (0, -1, -99):
+            with self.subTest(limit=limit):
+                with self.assertRaisesRegex(Refusal, "BUY_LAND requires exact market replay"):
+                    authored_vacancy_projection(
+                        farm=farm(None, hands=[]),
+                        own_seeds={},
+                        authored_action={
+                            "farmer": ["PASS"],
+                            "market": [["BUY_LAND"], ["BUY_SEED", "WHEAT", 1]],
+                        },
+                        market_prefix_limit=limit,
+                    )
+
+    def test_market_prefix_type_poison_fails_closed(self):
+        for limit in (True, 1.0, "1", None, [], {}):
+            with self.subTest(limit=limit):
+                with self.assertRaisesRegex(Refusal, "market_prefix_limit must be a plain int"):
+                    authored_vacancy_projection(
+                        farm=farm(None, hands=[]),
+                        own_seeds={},
+                        authored_action={"farmer": ["PASS"], "market": []},
+                        market_prefix_limit=limit,
+                    )
+
+    def test_visible_cash_does_not_guess_buy_land_execution(self):
+        f = farm(None, hands=[])
+        f["money"] = 0
+        with self.assertRaisesRegex(Refusal, "BUY_LAND requires exact market replay"):
+            authored_vacancy_projection(
+                farm=f,
+                own_seeds={},
+                authored_action={
+                    "farmer": ["PASS"],
+                    "market": [["SELL", "MELON", 100], ["BUY_LAND"]],
+                },
+                market_prefix_limit=2,
+            )
 
     def test_unlock_schedule_matches_next_day_boundary_and_cap(self):
         self.assertTrue(shop_unlock_due(day=2, shop_interval=3, unlocked_shop_count=0))
@@ -146,6 +218,7 @@ class RNGReachabilityTests(unittest.TestCase):
             day=2,
             shop_interval=3,
             unlocked_shop_count=0,
+            market_prefix_limit=10,
             seed_start=1,
             seed_stop=512,
         )
@@ -170,6 +243,7 @@ class RNGReachabilityTests(unittest.TestCase):
             day=1,
             shop_interval=3,
             unlocked_shop_count=0,
+            market_prefix_limit=10,
         )
         self.assertFalse(report["unlock_due"])
         self.assertIsNone(report["offline_shop_sensitivity"])
