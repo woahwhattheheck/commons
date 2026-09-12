@@ -23,10 +23,26 @@ class LedgerError(RuntimeError):
     pass
 
 
+class DuplicateJsonKey(ValueError):
+    pass
+
+
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise DuplicateJsonKey(f"duplicate JSON object key {key!r}")
+        out[key] = value
+    return out
+
+
 def _load(path: Path) -> dict[str, Any]:
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        value = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=_strict_object,
+        )
+    except (OSError, json.JSONDecodeError, DuplicateJsonKey) as exc:
         raise LedgerError(f"cannot load {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise LedgerError(f"{path} must contain a JSON object")
@@ -126,6 +142,7 @@ def validate(root: Path = HERE) -> list[str]:
 
     for label, overlap in (
         ("landed/recovered", landed_lanes & recovered_lanes),
+        ("landed/blocked", landed_lanes & blocked_lanes),
         ("recovered/blocked", recovered_lanes & blocked_lanes),
         ("recovered/negative", recovered_lanes & negative_lanes),
         ("blocked/negative", blocked_lanes & negative_lanes),
