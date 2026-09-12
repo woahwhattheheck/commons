@@ -108,6 +108,7 @@ def _config(configuration: Mapping[str, Any] | None) -> dict[str, Any] | None:
         "maxMarketOrdersPerTurn": MAX_ORDERS,
         "turnsPerDay": TURNS_PER_DAY,
         "episodeSteps": EPISODE_STEPS,
+        "farmHandCostMult": 1,
     }
     for key, default in expected.items():
         value = cfg.get(key, default)
@@ -213,6 +214,17 @@ def _validated_rest_of_day(
     rows = []
     for action in future_actions:
         if not isinstance(action, Mapping):
+            return None
+        farmer = action.get("farmer")
+        hands = action.get("hands")
+        market = action.get("market")
+        if (
+            not isinstance(farmer, list)
+            or not isinstance(hands, list)
+            or not isinstance(market, list)
+            or any(not isinstance(command, list) for command in hands)
+            or any(order and not isinstance(order, list) for order in market)
+        ):
             return None
         rows.append(action)
     return rows
