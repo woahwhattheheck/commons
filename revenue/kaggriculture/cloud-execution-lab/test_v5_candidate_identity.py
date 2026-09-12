@@ -64,6 +64,48 @@ def test_activation_is_type_exact_and_fail_closed():
         expect_error(lambda: build_manifest(root, spec), "activation key missing")
 
 
+def test_reserved_metadata_cannot_certify_activation_and_remains_hashed():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec["config"]["_ablation"] = "joint-off"
+        spec["components"][0]["activation"] = {"_ablation": "joint-off"}
+        expect_error(lambda: build_manifest(root, spec), "reserved metadata")
+
+        first = fixture(root)
+        second = fixture(root)
+        first["config"]["_run_note"] = "one"
+        second["config"]["_run_note"] = "two"
+        left = build_manifest(root, first)
+        right = build_manifest(root, second)
+        check(
+            left["candidate_id"] != right["candidate_id"],
+            "full config metadata stopped contributing to candidate identity",
+        )
+
+
+def test_source_aliases_canonicalize_to_same_identity():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        base = build_manifest(root, spec)
+
+        Path(root, "sub").mkdir()
+        lexical = fixture(root)
+        lexical["components"][0]["source"] = "sub/../a.py"
+        lexical_manifest = build_manifest(root, lexical)
+        check(lexical_manifest == base, "lexical source alias minted a second identity")
+        check(
+            lexical_manifest["components"][0]["source"] == "a.py",
+            "manifest did not record resolved root-relative source",
+        )
+
+        link = Path(root, "a-link.py")
+        link.symlink_to("a.py")
+        symlinked = fixture(root)
+        symlinked["components"][0]["source"] = "a-link.py"
+        symlinked_manifest = build_manifest(root, symlinked)
+        check(symlinked_manifest == base, "in-root source symlink minted a second identity")
+
+
 def test_unconditional_requires_explicit_exact_bool():
     with tempfile.TemporaryDirectory() as root:
         spec = fixture(root)
