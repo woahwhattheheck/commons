@@ -142,6 +142,59 @@ class ActivationContractTests(unittest.TestCase):
             "    return all((enabled, True))\n"
         )
 
+
+    def test_nonbool_direct_comparisons_are_fail_open(self):
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    if enabled == 1:\n"
+            "        return 1\n"
+            "    return 0\n"
+        )
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    if enabled != 0:\n"
+            "        return 1\n"
+            "    return 0\n"
+        )
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    if enabled in (1,):\n"
+            "        return 1\n"
+            "    return 0\n"
+        )
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    if 0 < enabled:\n"
+            "        return 1\n"
+            "    return 0\n"
+        )
+
+    def test_any_all_comprehension_truthiness_is_caught(self):
+        self.assert_fails(
+            "def apply(rows, enabled=False):\n"
+            "    return any(enabled for _ in rows)\n"
+        )
+        self.assert_fails(
+            "def apply(rows, enabled=False):\n"
+            "    return all([enabled for _ in rows])\n"
+        )
+        self.assert_fails(
+            "def apply(rows, enabled=False):\n"
+            "    return any({enabled for _ in rows})\n"
+        )
+        self.assert_fails(
+            "def apply(rows, enabled=False):\n"
+            "    return all({enabled: 1 for _ in rows})\n"
+        )
+
+    def test_strict_type_guard_allows_nonbool_comparison_and_comprehension(self):
+        self.assert_clean(
+            "def apply(rows, enabled=False):\n"
+            "    if type(enabled) is not bool:\n"
+            "        return False\n"
+            "    return enabled == 1 or any(enabled for _ in rows)\n"
+        )
+
     def test_literal_true_reject_guard_allows_later_truthiness(self):
         self.assert_clean(
             "def apply(action, enabled=False):\n"
