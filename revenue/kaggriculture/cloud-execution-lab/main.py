@@ -7,6 +7,13 @@ def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
     feature_data = dict(feature_data)
+    # Experiment runners may annotate a copied TITAN-CONFIG with private
+    # metadata (for example ``_ablation`` or ``_run_id``). Those keys are not
+    # runtime features and must never reach the strict Features constructor.
+    # Keep public unknown keys untouched so typos still fail closed there.
+    for key in tuple(feature_data):
+        if key.startswith('_'):
+            feature_data.pop(key)
     town_enabled = bool(feature_data.pop('town_procurement', False))
     features = Features(**feature_data)
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
