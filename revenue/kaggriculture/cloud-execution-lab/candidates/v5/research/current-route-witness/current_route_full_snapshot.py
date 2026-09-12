@@ -1,9 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Superset committed-route capture for consumers that need the full native tape.
+"""Full committed-route capture derived from the canonical receipt-bound authority.
 
-The underlying trust primitive is the canonical current-route witness `_capture_route`.
-This helper performs one capture and can derive ordinary `CurrentRouteWindow` objects
-from those same detached bytes without reopening the controller route.
+Consumers that need more than MAX_LOOKAHEAD may capture the committed route once,
+then derive ordinary ``CurrentRouteWindow`` objects from the detached bytes. The
+trust root is exactly the same immutable entrypoint receipt used by
+``bind_current_route_window``; raw ``controller.cur`` is never authoritative.
 """
 from __future__ import annotations
 
@@ -21,12 +22,11 @@ from current_route_witness import (
     _action_worker_cardinality,
     _canonical_json,
     _capture_route,
-    _plain_nonnegative_int,
-    _route_id,
+    _current_route_receipt,
     _worker_count,
 )
 
-FULL_SCHEMA = "titan-v5-current-full-route-snapshot-v1"
+FULL_SCHEMA = "titan-v5-current-full-route-snapshot-v2"
 
 
 @dataclass(frozen=True)
@@ -35,6 +35,9 @@ class CurrentFullRouteSnapshot:
     route_source: str
     controller_type: str
     route_id: str
+    route_step: int
+    last_step: int
+    player: int
     current_step: int
     current_index: int
     current_worker_cardinality: int
@@ -54,6 +57,9 @@ class CurrentFullRouteSnapshot:
             "route_source": self.route_source,
             "controller_type": self.controller_type,
             "route_id": self.route_id,
+            "route_step": self.route_step,
+            "last_step": self.last_step,
+            "player": self.player,
             "current_step": self.current_step,
             "current_index": self.current_index,
             "current_worker_cardinality": self.current_worker_cardinality,
@@ -62,39 +68,59 @@ class CurrentFullRouteSnapshot:
         }
 
     def window(self, lookahead: int) -> CurrentRouteWindow | None:
+        """Derive the byte-identical canonical v3 bounded-window receipt."""
         if type(lookahead) is not int or not 1 <= lookahead <= MAX_LOOKAHEAD:
             return None
         route = self.route_actions()
         end = min(len(route), self.current_step + 1 + lookahead)
         if end <= self.current_step + 1:
             return None
-        rows = []
+        rows: list[RouteActionWitness] = []
         for authored_step in range(self.current_step + 1, end):
             authored = route[authored_step]
             cardinality = _action_worker_cardinality(authored)
             action_json = _canonical_json(authored)
             if cardinality is None or action_json is None:
                 return None
-            rows.append(RouteActionWitness(
-                step=authored_step,
-                worker_cardinality=cardinality,
-                action_json=action_json,
-                action_sha256=hashlib.sha256(action_json.encode("ascii")).hexdigest(),
-            ))
-        material = json.dumps({
-            "schema": SCHEMA,
-            "route_source": ROUTE_SOURCE,
-            "route_sha256": self.route_sha256,
-            "route_id": self.route_id,
-            "current_step": self.current_step,
-            "rows": [row.receipt() for row in rows],
-        }, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+            rows.append(
+                RouteActionWitness(
+                    step=authored_step,
+                    worker_cardinality=cardinality,
+                    action_json=action_json,
+                    action_sha256=hashlib.sha256(action_json.encode("ascii")).hexdigest(),
+                )
+            )
+        material = json.dumps(
+            {
+                "schema": SCHEMA,
+                "route_source": ROUTE_SOURCE,
+                "controller_type": self.controller_type,
+                "route_id": self.route_id,
+                "route_step": self.route_step,
+                "last_step": self.last_step,
+                "player": self.player,
+                "current_step": self.current_step,
+                "current_index": self.current_index,
+                "current_worker_cardinality": self.current_worker_cardinality,
+                "route_length": self.route_length,
+                "route_sha256": self.route_sha256,
+                "lookahead": lookahead,
+                "rows": [row.receipt() for row in rows],
+            },
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        )
         window_sha256 = hashlib.sha256(material.encode("ascii")).hexdigest()
         return CurrentRouteWindow(
             schema=SCHEMA,
             route_source=ROUTE_SOURCE,
             controller_type=self.controller_type,
             route_id=self.route_id,
+            route_step=self.route_step,
+            last_step=self.last_step,
+            player=self.player,
             current_step=self.current_step,
             current_index=self.current_index,
             current_worker_cardinality=self.current_worker_cardinality,
@@ -106,19 +132,24 @@ class CurrentFullRouteSnapshot:
         )
 
 
-def bind_current_full_route(controller: Any, observation: Any, *, completed_route_id: Any = None) -> CurrentFullRouteSnapshot | None:
-    if _route_id(completed_route_id) is None or not isinstance(observation, dict):
-        return None
-    step = observation.get("step")
-    if not _plain_nonnegative_int(step):
+def bind_current_full_route(
+    controller: Any,
+    observation: Any,
+    *,
+    completed_route_receipt: Any = None,
+) -> CurrentFullRouteSnapshot | None:
+    """Capture one full route only from the canonical current producer receipt."""
+    receipt = _current_route_receipt(completed_route_receipt, observation)
+    if receipt is None:
         return None
     count = _worker_count(observation)
     if count is None:
         return None
-    captured = _capture_route(controller, completed_route_id)
+    captured = _capture_route(controller, receipt["route"])
     if captured is None:
         return None
     route_id, controller_type, route, route_sha256 = captured
+    step = receipt["route_step"]
     if step >= len(route):
         return None
     route_json = _canonical_json(route)
@@ -129,6 +160,9 @@ def bind_current_full_route(controller: Any, observation: Any, *, completed_rout
         route_source=ROUTE_SOURCE,
         controller_type=controller_type,
         route_id=route_id,
+        route_step=receipt["route_step"],
+        last_step=receipt["last_step"],
+        player=receipt["player"],
         current_step=step,
         current_index=step,
         current_worker_cardinality=count,
