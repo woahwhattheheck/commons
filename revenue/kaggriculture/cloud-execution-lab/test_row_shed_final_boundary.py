@@ -125,6 +125,61 @@ class RowShedFinalBoundaryTests(unittest.TestCase):
         self.assertEqual(instance._finalizer_checkpoint["stage"], "row_shed")
         self.assertEqual(instance._finalizer_checkpoint["action"], returned)
 
+    def test_terminal_step_real_donor_reorders_executable_sell_prefix(self):
+        import titan_runtime
+
+        instance = main._new_instance(HERE, {"row_shed": True})
+        instance.diagnostics = {"status": "completed"}
+        selected = {
+            "farmer": ["PASS"],
+            "hands": [["PASS"]],
+            "market": [
+                ["SELL", "WOOL", 1000],
+                ["SELL", "MILK", 6],
+                ["HIRE"],
+            ],
+        }
+        before = deepcopy(selected)
+        obs = {
+            "step": 718,
+            "player": 0,
+            "market": {"inventory": {"WOOL": 10000, "MILK": 10000}},
+        }
+        cfg = {"episodeSteps": 720}
+
+        def capital(_self, _obs, _cfg, action):
+            self.assertEqual(_obs["step"], 718)
+            self.assertIs(action, selected)
+            return action
+
+        def pressure(_self, _obs, _cfg, action):
+            return action
+
+        scheduler = types.ModuleType("scheduler")
+        def post_units(_obs, action, _cfg):
+            self.assertEqual(_obs["step"], 718)
+            self.assertEqual(action, before)
+            return {}, {"shed": {"WOOL": 1, "MILK": 6}}
+        scheduler.post_units = post_units
+
+        with mock.patch.object(titan_runtime.TitanAgent, "_early_capital_selected", capital), \
+                mock.patch.object(titan_runtime.TitanAgent, "_market_pressure_selected", pressure), \
+                mock.patch.dict(sys.modules, {"scheduler": scheduler}):
+            returned = instance._early_capital_selected(obs, cfg, selected)
+
+        self.assertEqual(selected, before)
+        self.assertEqual(
+            returned["market"],
+            [["SELL", "MILK", 6], ["SELL", "WOOL", 1000], ["HIRE"]],
+        )
+        self.assertEqual(returned["farmer"], before["farmer"])
+        self.assertEqual(returned["hands"], before["hands"])
+        self.assertEqual(returned["market"][2:], before["market"][2:])
+        self.assertEqual(sorted(row[2] for row in returned["market"][:2]), [6, 1000])
+        self.assertTrue(instance.diagnostics["row_shed"]["returned_action_bound"])
+        self.assertEqual(instance._finalizer_checkpoint["stage"], "row_shed")
+        self.assertEqual(instance._finalizer_checkpoint["action"], returned)
+
     def test_deadline_fallback_does_not_start_row_shed(self):
         import titan_runtime
 
