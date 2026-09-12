@@ -256,8 +256,11 @@ class TerminalHistoryJoin:
             # in EVERY included scenario. Other economic fills lack a receipt
             # witness here, so changed mixed queues retain their selected action.
             if action==selected:return True
-            if any(o and o[0] in ('BUY_PRODUCT','BUY_ANIMAL','BUY_LAND')
-                   for o in selected.get('market',[])):return False
+            market=selected.get('market',[])
+            if not isinstance(market,list):return False
+            if any(isinstance(o,list) and o and
+                   o[0] in ('BUY_PRODUCT','BUY_ANIMAL','BUY_LAND')
+                   for o in market):return False
             identity=next((p['id'] for p in packet['plans'] if p['action']==action),None)
             rows=[r for r in receipts if r['plan']==identity]
             return bool(rows) and all(r['done'] and all(r[k]==baseline[r['scenario']][k]
