@@ -181,11 +181,21 @@ def _mapping_total(mapping: Any) -> int | None:
     return total
 
 
-def _private_goods_total(private: Any) -> int | None:
+def _private_goods_total(
+    private: Any, *, expected_inventory_count: int | None = None
+) -> int | None:
     shed_total = _mapping_total(_get(private, "shed"))
     inventories = _get(private, "inventories")
     if shed_total is None or not isinstance(inventories, list):
         return None
+    if expected_inventory_count is not None:
+        if (
+            isinstance(expected_inventory_count, bool)
+            or not isinstance(expected_inventory_count, int)
+            or expected_inventory_count < 1
+            or len(inventories) != expected_inventory_count
+        ):
+            return None
     total = shed_total
     for inv in inventories:
         subtotal = _mapping_total(inv)
@@ -367,7 +377,13 @@ def plan_animal_headroom_harvest(
         return {**base_report, "reason": "co_located_actor_order_ambiguous"}
 
     shed_capacity = _strict_int(_get(configuration, "shedCapacity", 100), minimum=1)
-    current_goods = _private_goods_total(private)
+    # Official engine custody invariant: inventories is exactly
+    # [main_farmer, *hands]. HIRE appends hand+inventory together and EOD resets
+    # hands + inventories together, so any cardinality drift is malformed state.
+    # Refuse it before using inventory totals for a capacity proof.
+    current_goods = _private_goods_total(
+        private, expected_inventory_count=len(positions)
+    )
     market_add = _market_worst_case_new_shed_units(action)
     if shed_capacity is None or current_goods is None or market_add is None:
         return {**base_report, "reason": "malformed_capacity_state"}

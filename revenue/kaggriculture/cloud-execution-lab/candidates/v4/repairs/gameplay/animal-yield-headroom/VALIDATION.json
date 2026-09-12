@@ -7,19 +7,23 @@
     "runtime_change": false,
     "strength_promotion": false
   },
-  "disposition": "SOURCE_BOUND_DEFAULT_OFF_NO_STRENGTH_CLAIM",
+  "disposition": "SOURCE_BOUND_DEFAULT_OFF_TRUST_HARDENED_NO_STRENGTH_CLAIM",
   "files": {
     "README.md": {
       "bytes": 3749,
       "sha256": "33788ce6da22b39fd9966643107a16edaf6f7cf3ed8876792829384d0bd505b3"
     },
     "animal_headroom_harvest.py": {
-      "bytes": 15686,
-      "sha256": "4faa2efe0ee0d2d82e4c18af963101747ed2f320286c205eedaa0ea1d1a261ae"
+      "bytes": 16402,
+      "sha256": "a9db4d8a33bfbe29b0bfc4685ae9e3dc772b81c69643953b3d774de179b7addb"
     },
     "test_animal_headroom_harvest.py": {
       "bytes": 12709,
       "sha256": "4c2ae8933b30e637799eb84d69ff2437643473f38d3e084b616e7912fbe146a1"
+    },
+    "test_animal_headroom_trust_boundary.py": {
+      "bytes": 3228,
+      "sha256": "154cc205eac47dab49504d00e1d847faa24511a628259c0883265971b86f89b5"
     }
   },
   "mechanism": {
@@ -31,17 +35,23 @@
   "official_engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
   "schema": "titan-v4-animal-headroom-validation-v1",
   "slack_claim_ts": "1789186330.185989",
+  "trust_boundary_hardening": {
+    "claim_ts": "1789187367.967539",
+    "engine_invariant": "private.inventories is exactly [main_farmer, *hands]; HIRE appends the hand and inventory row together and EOD clears hands while resetting inventories to one farmer row.",
+    "guard": "capacity proof refuses any private inventory cardinality different from current actor cardinality",
+    "regression": "a two-actor truncated inventory vector that would undercount carried goods and falsely fit a 4-unit HARVEST now returns malformed_capacity_state"
+  },
   "validation": {
     "current_native_games": 0,
     "hosted_ci_green": false,
     "normal": {
-      "passed": 21,
-      "run": 21
+      "passed": 26,
+      "run": 26
     },
     "official_engine_games": 0,
     "optimized": {
-      "passed": 21,
-      "run": 21
+      "passed": 26,
+      "run": 26
     },
     "py_compile": "PASS"
   }
