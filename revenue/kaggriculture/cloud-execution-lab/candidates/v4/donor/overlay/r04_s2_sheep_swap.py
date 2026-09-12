@@ -70,16 +70,27 @@ def _valid_observation(obs: Any) -> bool:
         player = obs["player"]
         farms = obs["farms"]
         private = obs["private"]
+        if type(player) is not int or player not in (0, 1):
+            return False
+        if not isinstance(farms, list) or len(farms) != 2:
+            return False
+        if not isinstance(private, dict):
+            return False
         farm = farms[player]
+        if not isinstance(farm, dict):
+            return False
         tiles = farm["tiles"]
         inventories = private["inventories"]
     except (KeyError, IndexError, TypeError):
         return False
-    if type(player) is not int or player not in (0, 1) or len(farms) != 2:
+    if not isinstance(tiles, list) or len(tiles) != 10:
         return False
-    if len(tiles) != 10 or any(not isinstance(row, list) or len(row) != 10 for row in tiles):
+    if any(not isinstance(row, list) or len(row) != 10 for row in tiles):
         return False
-    positions = [farm.get("farmer"), *(farm.get("hands") or [])]
+    hands = farm.get("hands")
+    if not isinstance(hands, list) or not isinstance(inventories, list):
+        return False
+    positions = [farm.get("farmer"), *hands]
     if len(inventories) != len(positions):
         return False
     for position in positions:
