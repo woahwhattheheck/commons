@@ -279,30 +279,53 @@ class T(unittest.TestCase):
                 a = make_agent(parent)
                 self.assertEqual(a(obs(step=716), STANDARD)["farmer"], ["COLLECT_FERTILIZER"])
                 self.assertEqual(a(observation, STANDARD), neutral)
-                self.assertEqual(a(obs(step=718), STANDARD)["market"], [["SELL", "WHEAT", 1], ["SELL", "FERTILIZER", 1]])
+                self.assertEqual(
+                    a(obs(step=718), STANDARD)["market"],
+                    [["SELL", "WHEAT", 1], ["SELL", "FERTILIZER", 1]],
+                )
 
     def test_trails_only_after_collection(self):
         terminal = {
             "farmer": ["PASS"],
             "hands": [],
-            "market": [["SELL", "FERTILIZER", 2], ["SELL", "WOOL", 4], ["SELL", "WHEAT", 2]],
+            "market": [
+                ["SELL", "FERTILIZER", 2],
+                ["SELL", "WOOL", 4],
+                ["SELL", "WHEAT", 2],
+            ],
         }
         a = make_agent(parent_with(terminal))
         self.assertEqual(a(obs(step=718), STANDARD)["market"], terminal["market"])
-        calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: terminal}
+        calls = {
+            716: {"farmer": ["PASS"], "hands": [], "market": []},
+            718: terminal,
+        }
 
         def parent(o, _cfg=None):
             return copy.deepcopy(calls[o["step"]])
 
         a = make_agent(parent)
         a(obs(step=716), STANDARD)
-        self.assertEqual(a(obs(step=718), STANDARD)["market"], [["SELL", "WOOL", 4], ["SELL", "WHEAT", 2], ["SELL", "FERTILIZER", 2]])
+        self.assertEqual(
+            a(obs(step=718), STANDARD)["market"],
+            [
+                ["SELL", "WOOL", 4],
+                ["SELL", "WHEAT", 2],
+                ["SELL", "FERTILIZER", 2],
+            ],
+        )
 
     def test_terminal_reorder_stays_inside_executable_prefix(self):
         terminal = {
             "farmer": ["PASS"],
             "hands": [],
-            "market": [["SELL", "FERTILIZER", 1], ["SELL", "WOOL", 2], ["SELL", "WHEAT", 3], ["SELL", "FERTILIZER", 99], ["SELL", "MILK", 4]],
+            "market": [
+                ["SELL", "FERTILIZER", 1],
+                ["SELL", "WOOL", 2],
+                ["SELL", "WHEAT", 3],
+                ["SELL", "FERTILIZER", 99],
+                ["SELL", "MILK", 4],
+            ],
         }
         calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: terminal}
 
@@ -313,10 +336,23 @@ class T(unittest.TestCase):
         config["maxMarketOrdersPerTurn"] = 3
         a = make_agent(parent)
         a(obs(step=716), config)
-        self.assertEqual(a(obs(step=718), config)["market"], [["SELL", "WOOL", 2], ["SELL", "WHEAT", 3], ["SELL", "FERTILIZER", 1], ["SELL", "FERTILIZER", 99], ["SELL", "MILK", 4]])
+        self.assertEqual(
+            a(obs(step=718), config)["market"],
+            [
+                ["SELL", "WOOL", 2],
+                ["SELL", "WHEAT", 3],
+                ["SELL", "FERTILIZER", 1],
+                ["SELL", "FERTILIZER", 99],
+                ["SELL", "MILK", 4],
+            ],
+        )
 
     def test_cap_one_and_clamped_caps_preserve_executable_row(self):
-        terminal = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]]}
+        terminal = {
+            "farmer": ["PASS"],
+            "hands": [],
+            "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+        }
         calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: terminal}
 
         def parent(o, _cfg=None):
@@ -331,7 +367,15 @@ class T(unittest.TestCase):
                 self.assertEqual(a(obs(step=718), config)["market"], terminal["market"])
 
     def test_rewind_resets_collection_provenance(self):
-        calls = {716: {"farmer": ["PASS"], "hands": [], "market": []}, 718: {"farmer": ["PASS"], "hands": [], "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]]}, 0: {"farmer": ["PASS"], "hands": [], "market": []}}
+        calls = {
+            716: {"farmer": ["PASS"], "hands": [], "market": []},
+            718: {
+                "farmer": ["PASS"],
+                "hands": [],
+                "market": [["SELL", "FERTILIZER", 1], ["SELL", "WHEAT", 1]],
+            },
+            0: {"farmer": ["PASS"], "hands": [], "market": []},
+        }
 
         def parent(o, _cfg=None):
             return copy.deepcopy(calls[o["step"]])
