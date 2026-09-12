@@ -21,6 +21,7 @@ import time
 
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 OVERLAY_COMMIT = "3447b9f1f157aab8a98c0b3a283a7058e477482b"
+OVERLAY_SHA256 = "340149a3d9e68b14440825943a5f98067401c913af42727ac9a3ba5b3d829cc6"
 BANK = "cloud-execution-lab/candidates/v4/research/reference-policy-bank"
 EVALUATOR = "cloud-execution-lab/reference/evaluator/evaluate.py"
 SCHEMA = "astra.v5.joint-liquidity.paired.v1"
@@ -43,6 +44,15 @@ def write_json(path, value):
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     os.replace(temporary, path)
+
+
+def published_overlay_sha256(value):
+    """Bind the accepted overlay bytes to the immutable published source commit."""
+    if type(value) is not str or value != OVERLAY_SHA256:
+        raise ValueError(
+            f"Overlay SHA256 must match published {OVERLAY_COMMIT}: {OVERLAY_SHA256}"
+        )
+    return value
 
 
 def archive_members(path):
@@ -131,6 +141,7 @@ def main():
     parser.add_argument("--startup-timeout", type=float, default=10.0)
     parser.add_argument("--game-timeout", type=float, default=900.0)
     args = parser.parse_args()
+    expected_overlay_sha256 = published_overlay_sha256(args.overlay_sha256)
     if sys.platform != "linux":
         parser.error("Run games on a Linux fleet VM; no Windows timeout shim is used")
     seeds = [int(value) for value in args.seeds.split(",")]
@@ -153,7 +164,7 @@ def main():
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=False)
     if args.overlay:
-        if digest(args.overlay) != args.overlay_sha256:
+        if digest(args.overlay) != expected_overlay_sha256:
             raise ValueError("Overlay file differs from published frozen_selected.py")
         args.candidate = args.output / "joint-liquidity-candidate.tar.gz"
         make_overlay(args.baseline, args.overlay, args.candidate)
@@ -164,7 +175,7 @@ def main():
     changed = [name for name in baseline_files if baseline_files[name] != candidate_files[name]]
     if changed != ["frozen_selected.py"]:
         raise ValueError(f"Expected only frozen_selected.py to change; got {changed}")
-    if hashlib.sha256(candidate_files["frozen_selected.py"]).hexdigest() != args.overlay_sha256:
+    if hashlib.sha256(candidate_files["frozen_selected.py"]).hexdigest() != expected_overlay_sha256:
         raise ValueError("Archived frozen_selected.py differs from published source")
     evaluator_path = args.kg_root / EVALUATOR
     loader = args.kg_root / "20260907-offline-agent/evaluate.py"
@@ -181,7 +192,7 @@ def main():
         "schema": SCHEMA, "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "candidate_source_commit": OVERLAY_COMMIT,
         "baseline_sha256": digest(args.baseline), "candidate_sha256": digest(args.candidate),
-        "changed_members": changed, "overlay_sha256": args.overlay_sha256,
+        "changed_members": changed, "overlay_sha256": expected_overlay_sha256,
         "engine_ref": evaluator.ENGINE_REF, "engine_sha256": engine_hashes,
         "evaluator_sha256": digest(evaluator_path), "loader_sha256": digest(loader),
         "launcher_sha256": digest(__file__), "python": sys.version, "platform": platform.platform(),
