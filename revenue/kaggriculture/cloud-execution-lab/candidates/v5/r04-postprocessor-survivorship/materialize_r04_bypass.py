@@ -12,12 +12,39 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import tarfile
+import tempfile
 
 BASELINE_ARCHIVE_SHA256 = "0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02"
 BASELINE_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
 TREATMENT_CONFIG_SHA256 = "f32890231e5ea0b082ffdb6e2e9dbf65450172488e023f51314fc1aff059ff2f"
 CONFIG_PATH = "TITAN-CONFIG.json"
-SCHEMA = "titan-v5-production-recovery-r04-bypass-survivorship/v1"
+SCHEMA = "titan-v5-production-recovery-r04-bypass-survivorship/v2"
+
+# Bind the semantic interpretation to the exact executable members of 0aded.
+# The whole-archive SHA already authenticates these bytes; this explicit map
+# makes the topology theorem reviewable and fail-closed if a later baseline is
+# substituted without re-proving the call graph.
+SEMANTIC_MEMBER_SHA256 = {
+    "main.py": "85c13e55696a702ab1e292386dc16af118ae4f916000f935c9bc46a18aea34fa",
+    "titan_runtime.py": "7fefc550cf2b1ee73995616321bf4824755f075125221a03bdc5d83db1ee22ab",
+    "frozen_selected.py": "5ca1bc39efed756de71207f46926744ea69f9d2f300dd7b9c1a8cc4dbefeb9ef",
+    "scheduler.py": "00d72a5c6b511e73ed1923ea402c4a36e0f9490f3b4c177490ddc72440f4a64a",
+    "r04_full_router.py": "41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a",
+}
+SEMANTIC_ANCHORS = {
+    "titan_runtime.py": (
+        b"self.consumer = FrozenSelected()",
+        b"self.controller = self.consumer.controller",
+        b"self.production = self.controller",
+        b"if self.features.consumer == 'frozen' else deepcopy(selected)",
+    ),
+    "frozen_selected.py": (
+        b"class FrozenSelected(SellScheduler):",
+    ),
+    "scheduler.py": (
+        b"self.controller=parent.Agent()",
+    ),
+}
 
 # Submitted V3.1 carried these values, but its active R04 fast-return bypassed
 # the canonical consumer/postprocessor path. Production recovery restores R04
@@ -105,6 +132,28 @@ def archive_bytes(files: dict[str, bytes]) -> bytes:
     return packed.getvalue()
 
 
+def verify_semantic_topology(
+    baseline: dict[str, bytes],
+    expected_hashes: dict[str, str] | None = None,
+    anchors: dict[str, tuple[bytes, ...]] | None = None,
+) -> None:
+    expected_hashes = SEMANTIC_MEMBER_SHA256 if expected_hashes is None else expected_hashes
+    anchors = SEMANTIC_ANCHORS if anchors is None else anchors
+    for name, expected in expected_hashes.items():
+        body = baseline.get(name)
+        if body is None:
+            raise ValueError(f"Baseline is missing semantic member {name}")
+        if digest(body) != expected:
+            raise ValueError(f"Semantic member identity mismatch: {name}")
+    for name, required in anchors.items():
+        body = baseline.get(name)
+        if body is None:
+            raise ValueError(f"Baseline is missing semantic member {name}")
+        for anchor in required:
+            if body.count(anchor) != 1:
+                raise ValueError(f"Semantic topology anchor mismatch: {name}: {anchor!r}")
+
+
 def treatment_members(baseline: dict[str, bytes]) -> dict[str, bytes]:
     if CONFIG_PATH not in baseline:
         raise ValueError("Baseline archive is missing TITAN-CONFIG.json")
@@ -148,6 +197,10 @@ def receipt_for(baseline: dict[str, bytes], treatment: dict[str, bytes], packed:
         "schema": SCHEMA,
         "baseline_archive_sha256": BASELINE_ARCHIVE_SHA256,
         "baseline_config_sha256": BASELINE_CONFIG_SHA256,
+        "semantic_topology": {
+            "status": "AUTHENTICATED",
+            "members": dict(sorted(SEMANTIC_MEMBER_SHA256.items())),
+        },
         "treatment": {
             "name": "r04_semantic_bypass",
             "config_changes": {
@@ -170,6 +223,64 @@ def receipt_for(baseline: dict[str, bytes], treatment: dict[str, bytes], packed:
     }
 
 
+def _receipt_bytes(receipt: dict) -> bytes:
+    return (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
+
+
+def publish_pair(out: Path, receipt_path: Path, packed: bytes, receipt: dict) -> None:
+    """Publish receipt first, then atomically link a fully-written archive.
+
+    A path race can therefore leave at worst a receipt without an archive, never
+    a runnable treatment archive without its complete receipt. The archive is
+    staged on the destination filesystem and linked create-only.
+    """
+    out = Path(out)
+    receipt_path = Path(receipt_path)
+    if out == receipt_path:
+        raise ValueError("archive and receipt paths must differ")
+    if out.exists() or out.is_symlink() or receipt_path.exists() or receipt_path.is_symlink():
+        raise FileExistsError("Use fresh archive and receipt paths")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    receipt_raw = _receipt_bytes(receipt)
+
+    fd, temp_name = tempfile.mkstemp(prefix=out.name + ".stage.", dir=out.parent)
+    temp_path = Path(temp_name)
+    receipt_published = False
+    try:
+        with os.fdopen(fd, "wb") as stream:
+            stream.write(packed)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.chmod(temp_path, 0o644)
+
+        with receipt_path.open("xb") as stream:
+            stream.write(receipt_raw)
+            stream.flush()
+            os.fsync(stream.fileno())
+        receipt_published = True
+
+        try:
+            os.link(temp_path, out)
+        except BaseException:
+            # Remove only the exact receipt bytes this invocation published.
+            try:
+                if receipt_path.read_bytes() == receipt_raw:
+                    receipt_path.unlink()
+                    receipt_published = False
+            except OSError:
+                pass
+            raise
+    finally:
+        try:
+            temp_path.unlink()
+        except FileNotFoundError:
+            pass
+
+    if not receipt_published or not out.is_file() or out.is_symlink():
+        raise RuntimeError("Treatment pair publication did not complete")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", type=Path, required=True)
@@ -183,21 +294,12 @@ def main() -> None:
         parser.error("Use fresh --out and --receipt paths")
 
     baseline = archive_members(args.baseline)
+    verify_semantic_topology(baseline)
     treatment = treatment_members(baseline)
     packed = archive_bytes(treatment)
     receipt = receipt_for(baseline, treatment, packed)
 
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.receipt.parent.mkdir(parents=True, exist_ok=True)
-    with args.out.open("xb") as stream:
-        stream.write(packed)
-        stream.flush()
-        os.fsync(stream.fileno())
-    with args.receipt.open("x", encoding="utf-8") as stream:
-        json.dump(receipt, stream, indent=2, sort_keys=True)
-        stream.write("\n")
-        stream.flush()
-        os.fsync(stream.fileno())
+    publish_pair(args.out, args.receipt, packed, receipt)
 
     print(json.dumps({
         "baseline_archive_sha256": BASELINE_ARCHIVE_SHA256,
