@@ -145,15 +145,15 @@ class ExactSubmittedV4E20AblationTests(unittest.TestCase):
         self.assertEqual(v4_route[19]["hands"][0], ["HARVEST"])
         self.assertEqual(v4_route[20]["hands"][0], ["DROP"])
 
-        # Counterfactual keeps the V4 physical redundancy proof and report
-        # schema, but does not invent the productive detour or mutate the route.
+        # Counterfactual keeps every V4 report field created before the E20
+        # tail, but does not add E20-tail-only fields or mutate future route.
         self.assertEqual(off_action["market"], [["SELL", "WHEAT", 0]])
         self.assertEqual(off_route, route)
         self.assertTrue(off_report["changed"])
         self.assertFalse(off_report["route_changed"])
         self.assertEqual(off_report["productive_detours"], [])
         self.assertEqual(off_report["completed_jobs"], 0)
-        self.assertEqual(off_report["protected_workers"], 0)
+        self.assertNotIn("protected_workers", off_report)
         self.assertEqual(off_report["reason"], "redundant_watering_or_empty_tail")
 
     def test_no_productive_opportunity_matches_v4_action_and_route(self):
