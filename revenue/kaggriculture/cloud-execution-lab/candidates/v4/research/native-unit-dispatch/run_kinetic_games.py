@@ -4,12 +4,14 @@
 Authenticates the complete checked native package from bytes captured exactly once
 before cloning. Child game processes execute the already-authenticated captured
 runner bytes through a tiny parent-owned stdin bootstrap; they never reopen a
-repository or scratch runner pathname. No repository control helper is imported
-before capture/authentication; the composer is compiled and executed only from
-already-authenticated captured bytes. Runner provenance is supplied from external
-exact-head authority rather than inferred from the mutable checkout. Changes only
-mechanics.py in an explicit scratch tree; no config, route, archive or release
-mutation. No observation filtering, actor/market truncation or synthetic fill.
+repository or scratch runner pathname. Child interpreter startup is isolated from
+ambient Python startup hooks before that bootstrap runs. No repository control
+helper is imported before capture/authentication; the composer is compiled and
+executed only from already-authenticated captured bytes. Runner provenance is
+supplied from external exact-head authority rather than inferred from the mutable
+checkout. Changes only mechanics.py in an explicit scratch tree; no config, route,
+archive or release mutation. No observation filtering, actor/market truncation or
+synthetic fill.
 """
 from __future__ import annotations
 import argparse
@@ -18,6 +20,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path, PurePosixPath
 import statistics
 import subprocess
@@ -168,14 +171,15 @@ def load_captured_composer(raw):
     return module
 
 
-def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, python_flags=(), timeout=90):
-    """Start a fresh Python process from authenticated runner bytes, never a path.
+def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, optimized=False, timeout=90):
+    """Start isolated child Python from authenticated runner bytes, never a path.
 
-    The parent rechecks the captured bytes, supplies them on stdin, and executes a
-    constant bootstrap with ``python -c``. The bootstrap hashes stdin against the
-    externally sourced runner Git blob before compiling/executing it and injects
-    the attested identity into the runner globals. No materialized runner pathname
-    exists for an attacker to swap between parent validation and child launch.
+    The parent rechecks the captured bytes and supplies them on stdin. Child
+    startup is fixed to ``-I -S -B`` with only a controlled ``-O`` option, and
+    all inherited ``PYTHON*`` variables are removed before process creation. This
+    prevents PYTHONPATH/sitecustomize and earlier interpreter-option injection
+    from running before the constant bootstrap. The bootstrap then hashes stdin
+    against the externally sourced runner Git blob before compile/exec.
     """
     expected_runner_git_blob = _git_blob_pin(expected_runner_git_blob)
     if not isinstance(runner_bytes, bytes):
@@ -184,16 +188,22 @@ def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, 
         raise ValueError('Captured runner bytes do not match external identity')
     if not isinstance(runner_args, (list, tuple)) or any(not isinstance(v, str) for v in runner_args):
         raise ValueError('runner_args must be strings')
-    if not isinstance(python_flags, (list, tuple)) or any(not isinstance(v, str) for v in python_flags):
-        raise ValueError('python_flags must be strings')
-    command = [
-        sys.executable,
-        *python_flags,
+    if type(optimized) is not bool:
+        raise ValueError('optimized must be a bool')
+    child_env = {
+        key: value for key, value in os.environ.items()
+        if not key.upper().startswith('PYTHON')
+    }
+    command = [sys.executable, '-I', '-S']
+    if optimized:
+        command.append('-O')
+    command.extend([
+        '-B',
         '-c',
         CAPTURED_RUNNER_BOOTSTRAP,
         expected_runner_git_blob,
         *runner_args,
-    ]
+    ])
     return subprocess.run(
         command,
         input=runner_bytes,
@@ -201,6 +211,7 @@ def run_captured_runner(runner_bytes, expected_runner_git_blob, runner_args, *, 
         stderr=subprocess.PIPE,
         timeout=timeout,
         check=False,
+        env=child_env,
     )
 
 
@@ -338,8 +349,8 @@ def main():
         args.output.write_text(json.dumps({
             'executed_control_bundle_sha256': control_digest,
             'executed_control_runner_blob': expected_runner_git_blob,
-            'executed_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
-            'executed_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
+            'authenticated_parent_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
+            'authenticated_parent_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
             'runner_executed_from_captured_bytes': True,
         }, sort_keys=True, indent=2)+'\n')
         return 0
@@ -362,13 +373,15 @@ def main():
         result['executed_mechanics_sha256'] = sha_bytes(captured['mechanics.py'])
         result['executed_control_bundle_sha256'] = control_digest
         result['executed_control_runner_blob'] = expected_runner_git_blob
-        result['executed_control_compose_blob'] = CONTROL_GIT_BLOBS['compose_kinetic.py']
-        result['executed_control_check_blob'] = CONTROL_GIT_BLOBS['check_kinetic.py']
+        result['authenticated_parent_control_compose_blob'] = CONTROL_GIT_BLOBS['compose_kinetic.py']
+        result['authenticated_parent_control_check_blob'] = CONTROL_GIT_BLOBS['check_kinetic.py']
         result['runner_executed_from_captured_bytes'] = True
         args.output.write_text(json.dumps(result, sort_keys=True, indent=2)+'\n')
         return 0
     if args.repetitions < 1:
         parser.error('At least one repetition is required')
+    if sys.flags.optimize not in (0, 1):
+        raise ValueError('Only normal and -O parent modes are supported')
 
     control_files, control_digest = capture_control_bundle(
         Path(__file__).resolve().parent, expected_runner_git_blob
@@ -405,9 +418,6 @@ def main():
                         root = baseline if arm == 'baseline' else candidate
                         expected_mechanics = baseline_mechanics_sha256 if arm == 'baseline' else candidate_mechanics_sha256
                         result_file = scratch/'one-game.json'
-                        python_flags = ['-B']
-                        if sys.flags.optimize:
-                            python_flags.insert(0, '-O')
                         runner_args = [
                             '--native-root', str(root), '--output', str(result_file),
                             '--expected-runner-git-blob', expected_runner_git_blob,
@@ -421,7 +431,7 @@ def main():
                             control_runner_bytes,
                             expected_runner_git_blob,
                             runner_args,
-                            python_flags=python_flags,
+                            optimized=(sys.flags.optimize == 1),
                             timeout=90,
                         )
                         if proc.returncode:
@@ -439,10 +449,10 @@ def main():
                             raise ValueError(f'{arm} child executed unexpected runner bytes')
                         if row.get('runner_executed_from_captured_bytes') is not True:
                             raise ValueError(f'{arm} child lacks captured-runner execution receipt')
-                        if row.get('executed_control_compose_blob') != CONTROL_GIT_BLOBS['compose_kinetic.py']:
-                            raise ValueError(f'{arm} child executed unexpected composer bytes')
-                        if row.get('executed_control_check_blob') != CONTROL_GIT_BLOBS['check_kinetic.py']:
-                            raise ValueError(f'{arm} child executed unexpected checker bytes')
+                        if row.get('authenticated_parent_control_compose_blob') != CONTROL_GIT_BLOBS['compose_kinetic.py']:
+                            raise ValueError(f'{arm} child lacks parent-authenticated composer identity')
+                        if row.get('authenticated_parent_control_check_blob') != CONTROL_GIT_BLOBS['check_kinetic.py']:
+                            raise ValueError(f'{arm} child lacks parent-authenticated checker identity')
                         row.update(arm=arm, repetition=rep)
                         row_pair[arm] = row
                         results.append(row)
@@ -466,11 +476,12 @@ def main():
               'control_bundle_sha256': control_digest,
               'control_runner_git_blob': control_runner_blob,
               'control_runner_external_pin': expected_runner_git_blob,
-              'control_compose_git_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
-              'control_check_git_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
+              'authenticated_parent_control_compose_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
+              'authenticated_parent_control_check_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
               'immutable_execution_snapshot': True,
               'immutable_control_snapshot': True,
-              'child_runner_execution': 'captured_bytes_stdin_bootstrap',
+              'child_runner_execution': 'isolated_captured_bytes_stdin_bootstrap',
+              'child_python_startup': 'fixed_-I_-S_-B_plus_controlled_-O_no_inherited_PYTHON_env',
               'games': results, 'pairs': pairs,
               'summary': {'games': len(results), 'pairs': len(pairs),
                           'all_parity': all(p['parity'] for p in pairs),
