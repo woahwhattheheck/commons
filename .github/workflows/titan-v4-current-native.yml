@@ -15,6 +15,9 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
       - 'revenue/kaggriculture/cloud-execution-lab/*.py'
       - 'revenue/kaggriculture/cloud-execution-lab/*.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/LICENSE'
+      - 'revenue/kaggriculture/cloud-execution-lab/NOTICE'
+      - 'revenue/kaggriculture/cloud-execution-lab/TITAN-RELEASE.md'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/RELEASE.json'
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json'
@@ -26,6 +29,7 @@ on:
       - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/sell_priority.py'
       - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'
       - 'revenue/kaggriculture/cloud-committed-seed-retry/seed_retry.py'
+      - 'revenue/kaggriculture/cloud-committed-seed-retry/test_seed_retry.py'
       - 'revenue/kaggriculture/cloud-economic-stress/funded_payback/funded_payback.py'
 
 permissions:
@@ -44,6 +48,86 @@ jobs:
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
+
+      - name: Audit current-native source trigger coverage
+        shell: python
+        run: |
+          import importlib.util
+          from pathlib import Path
+
+          repo = Path.cwd().resolve()
+          lab = repo / 'revenue/kaggriculture/cloud-execution-lab'
+          workflow = repo / '.github/workflows/titan-v4-current-native.yml'
+          builder = lab / 'build_integrated.py'
+
+          spec = importlib.util.spec_from_file_location('titan_current_trigger_builder', builder)
+          if spec is None or spec.loader is None:
+              raise SystemExit('cannot load canonical builder for trigger audit')
+          build = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(build)
+
+          patterns = []
+          in_push = False
+          in_paths = False
+          for raw in workflow.read_text(encoding='utf-8').splitlines():
+              stripped = raw.strip()
+              indent = len(raw) - len(raw.lstrip(' '))
+              if indent == 2 and stripped == 'push:':
+                  in_push = True
+                  in_paths = False
+                  continue
+              if in_push and indent <= 2 and stripped:
+                  break
+              if in_push and indent == 4 and stripped == 'paths:':
+                  in_paths = True
+                  continue
+              if in_paths:
+                  if indent <= 4 and stripped:
+                      break
+                  if indent == 6 and stripped.startswith('- '):
+                      value = stripped[2:].strip()
+                      if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+                          value = value[1:-1]
+                      patterns.append(value)
+
+          if not patterns:
+              raise SystemExit('could not parse push.paths from current-native workflow')
+
+          def covered(path: str, pattern: str) -> bool:
+              if pattern.endswith('/**'):
+                  root = pattern[:-3].rstrip('/')
+                  return path == root or path.startswith(root + '/')
+              if pattern.endswith('/*.py'):
+                  root = pattern[:-5]
+                  return path.startswith(root + '/') and '/' not in path[len(root) + 1:] and path.endswith('.py')
+              if pattern.endswith('/*.json'):
+                  root = pattern[:-7]
+                  return path.startswith(root + '/') and '/' not in path[len(root) + 1:] and path.endswith('.json')
+              if '*' in pattern or '?' in pattern or '[' in pattern:
+                  raise SystemExit(f'unsupported trigger glob in audit: {pattern}')
+              return path == pattern
+
+          dependencies = set()
+          for source in build.source_files().values():
+              absolute = (lab / source).resolve(strict=True)
+              try:
+                  dependencies.add(absolute.relative_to(repo).as_posix())
+              except ValueError as error:
+                  raise SystemExit(f'package source escapes repository: {source}') from error
+
+          dependencies.update({
+              'revenue/kaggriculture/cloud-execution-lab/build_integrated.py',
+              'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/RELEASE.json',
+              'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json',
+              'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz',
+          })
+          missing = sorted(
+              path for path in dependencies
+              if not any(covered(path, pattern) for pattern in patterns)
+          )
+          if missing:
+              raise SystemExit('current-native package inputs missing push triggers:\n' + '\n'.join(missing))
+          print(f'current-native trigger coverage PASS: {len(dependencies)} dependencies / {len(patterns)} patterns')
 
       - name: Authenticate checkout and committed current publication
         shell: bash
