@@ -255,6 +255,49 @@ class ProductiveExpansionPublication(unittest.TestCase):
             self.assertFalse(tar.exists())
             self.assertFalse(receipt.exists())
 
+    def test_foreign_archive_replacement_during_failed_pair_write_is_preserved(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
+            original = publication_custody._write_all
+            writes = 0
+            def replace_archive_then_fail(fd, payload):
+                nonlocal writes
+                writes += 1
+                if writes == 2:
+                    tar.unlink()
+                    tar.write_bytes(b'foreign')
+                    raise OSError('injected second write failure')
+                return original(fd, payload)
+            with patch.object(publication_custody, '_write_all', side_effect=replace_archive_then_fail):
+                with self.assertRaisesRegex(OSError, 'injected second write failure'):
+                    builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            self.assertEqual(tar.read_bytes(), b'foreign')
+            self.assertFalse(receipt.exists())
+            self.assertFalse(out.exists())
+
+    def test_same_inode_payload_mutation_before_verify_rejects_and_rolls_back(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
+            original = publication_custody._verify_final
+            verifies = 0
+            def mutate_archive_before_verify(item):
+                nonlocal verifies
+                verifies += 1
+                if verifies == 1:
+                    inode = item.path.stat().st_ino
+                    with item.path.open('r+b') as handle:
+                        handle.seek(0)
+                        handle.write(b'foreign')
+                        handle.flush()
+                    self.assertEqual(item.path.stat().st_ino, inode)
+                return original(item)
+            with patch.object(publication_custody, '_verify_final', side_effect=mutate_archive_before_verify):
+                with self.assertRaisesRegex(OSError, 'digest mismatch'):
+                    builder._publish({'main.py': b'x'}, b'archive', self._receipt(), out, tar, receipt)
+            self.assertFalse(tar.exists())
+            self.assertFalse(receipt.exists())
+            self.assertFalse(out.exists())
+
     def test_success_delegates_pair_to_shared_publication_custody(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out=root/'out'; tar=root/'candidate.tar.gz'; receipt=root/'out-manifest.json'
