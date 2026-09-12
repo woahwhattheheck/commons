@@ -4,7 +4,7 @@ import sys
 import os
 import unittest
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import expandtax
 from expandtax import (TrailingBooks, filter_market_orders, next_unlock_price,
                        should_expand)
