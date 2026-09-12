@@ -64,8 +64,13 @@ def _plain_nonnegative_int(value):
 
 
 def _plain_nonnegative_money(value):
-    """Engine money is float; reject bool/non-numeric/non-finite poison."""
-    return type(value) in (int, float) and math.isfinite(value) and value >= 0
+    """Engine money is numeric; reject non-finite/overflowing poison safely."""
+    if type(value) not in (int, float) or value < 0:
+        return False
+    try:
+        return math.isfinite(value)
+    except (OverflowError, ValueError):
+        return False
 
 
 def _cfg(configuration, name):
@@ -211,7 +216,12 @@ def _future_literal_pickup(tape, step, actor_positions, current_commands, board_
     if not isinstance(tape, (list, tuple)) or len(tape) <= step + LOOKAHEAD_MIN:
         return None, 0
 
-    day_end = min(len(tape) - 1, (step // 24 + 1) * 24 - 1)
+    # Funding custody extends through the rest of this day.  A truncated frozen
+    # tape cannot prove that omitted same-day steps contain no HIRE/BUY cash owner.
+    expected_day_end = (step // 24 + 1) * 24 - 1
+    if len(tape) <= expected_day_end:
+        return None, 0
+    day_end = expected_day_end
     candidate_end = min(day_end, step + LOOKAHEAD_MAX)
     candidate_due = None
     candidate_demand = 0
@@ -333,9 +343,14 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
     market_obs = observation.get("market")
     private = observation.get("private")
     farms = observation.get("farms")
-    if not isinstance(market_obs, dict) or not isinstance(private, dict) or not isinstance(farms, list):
+    if (
+        not isinstance(market_obs, dict)
+        or not isinstance(private, dict)
+        or not isinstance(farms, list)
+        or len(farms) != 2
+    ):
         return action
-    if not (0 <= player < len(farms)) or not isinstance(farms[player], dict):
+    if player not in (0, 1) or not isinstance(farms[player], dict):
         return action
     farm = farms[player]
     inventory = market_obs.get("inventory")
