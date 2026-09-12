@@ -36,31 +36,64 @@ certificate, then replaces only the E20 productive-detour tail with the exact
 submitted-V3.1 deletion tail. Dormant V4 detour helper definitions remain in the
 module; only their call/protection/route-mutation path is removed.
 
+The competition artifact is also pinned independently. Submitted V4 control is
+the retained archive SHA256
+`4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b`.
+That is deliberately **not** substituted with the repository's contemporaneous
+`CURRENT-ARCHIVE.json` object; they are different artifacts.
+
+`build_submitted_v4_treatment.py` accepts only that exact retained archive and
+the exact submitted-V3.1 helper. It emits a deterministic treatment archive and
+receipt. Member-set and byte comparison must prove:
+
+- exactly one semantic member changes:
+  `reference/titan-current/redundant_hire.py`;
+- exactly one metadata member changes: `SOURCE.json`, regenerated so its runtime
+  hash/byte record truthfully binds the treatment helper and records the
+  experiment authority;
+- every other package member, including `main.py`, config and opponent/runtime
+  dependencies, remains byte-identical to submitted V4 control.
+
 So the intended paired comparison is:
 
-- **control:** exact submitted V4 `4af1113154e78c662780e6658cd920daac7902e3`;
-- **E20-detour-OFF:** identical V4 package except the materialized
-  `redundant_hire.py` output from this carrier.
+- **control:** exact retained submitted-V4 archive `4d960155...`;
+- **E20-detour-OFF:** output of `build_submitted_v4_treatment.py` from that
+  control archive.
 
 Do not compare against V3.1 as the treatment: the point is to ask whether this
 one V4-added behavior explains any of the V4 regression while holding every
-other V4 byte fixed.
+other V4 gameplay byte fixed.
 
-## Source contracts
+## Source and package contracts
 
-The focused suite:
+The focused suites:
 
-- resolves the two exact historical helper objects with `git show` and verifies
+- resolve the two exact historical helper objects with `git show` and verify
   their Git blobs;
-- proves the ablation preserves the entire V4 prefix byte-for-byte and appends
+- prove the ablation preserves the entire V4 prefix byte-for-byte and appends
   the exact V3.1 deletion tail;
-- executes a direct productive witness where submitted V4 keeps the HIRE and
+- execute a direct productive witness where submitted V4 keeps the HIRE and
   rewrites future route rows to HARVEST/DROP while the ablation deletes the HIRE
   and leaves the route byte-identical;
-- proves a no-productive-opportunity predecessor returns identical actions and
+- prove a no-productive-opportunity predecessor returns identical actions and
   route under control and ablation;
-- fails closed on either source drift;
-- runs under normal Python and `-O`.
+- build a synthetic control package using the exact V4 helper and verify the
+  archive builder changes only helper semantics + `SOURCE.json` metadata;
+- prove deterministic treatment bytes and fail closed on archive, source or
+  manifest-identity drift;
+- run under normal Python and `-O`.
+
+For a real execution:
+
+```bash
+python build_submitted_v4_treatment.py \
+  --control-archive /path/to/exact-submitted-v4.tar.gz \
+  --v31-helper /path/to/a90d-redundant_hire.py \
+  --output /tmp/v4-e20-detour-off.tar.gz \
+  --receipt /tmp/v4-e20-detour-off.json
+```
+
+The command refuses a control archive whose SHA256 is not exactly `4d960155...`.
 
 ## Economics gate
 
