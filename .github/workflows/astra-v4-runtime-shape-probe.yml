@@ -1,0 +1,73 @@
+name: astra-v4-runtime-shape-probe
+
+on:
+  push:
+    branches:
+      - astra/v4-runtime-shape-probe-20260911
+    paths:
+      - '.github/workflows/astra-v4-runtime-shape-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Materialize and print exact decorator AST
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          OUT="$RUNNER_TEMP/titan-v3-tree"
+          python3 "$LAB/build_v3.py" --tree "$OUT"
+          python3 - "$OUT/titan_runtime.py" <<'PY'
+          import ast, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          text = path.read_text(encoding='utf-8')
+          tree = ast.parse(text, filename=str(path))
+          agent = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'TitanAgent')
+          target = next(n for n in agent.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.name == '_seller_state')
+          print('SELLER_STATE_DECORATORS', ast.dump(target.decorator_list, include_attributes=False))
+          print('SELLER_STATE_SIGNATURE', ast.unparse(target.args))
+          lines = text.splitlines()
+          lo = max(0, target.lineno - 4)
+          hi = min(len(lines), (getattr(target, 'end_lineno', target.lineno) or target.lineno) + 2)
+          for i in range(lo, hi):
+              if i + 1 > target.lineno + 6:
+                  break
+              print(f'SELLER_STATE_SOURCE {i+1}: {lines[i]}')
+          class_bound = set()
+          module_bound = set()
+          def bound_name(node):
+              if isinstance(node, ast.Name): return {node.id}
+              if isinstance(node, (ast.Tuple, ast.List)):
+                  out=set()
+                  for e in node.elts: out |= bound_name(e)
+                  return out
+              return set()
+          for n in tree.body:
+              if isinstance(n, ast.Assign):
+                  for t in n.targets: module_bound |= bound_name(t)
+              elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                  module_bound.add(n.name)
+              elif isinstance(n, (ast.Import, ast.ImportFrom)):
+                  for a in n.names: module_bound.add(a.asname or a.name.split('.',1)[0])
+          for n in agent.body:
+              if isinstance(n, ast.Assign):
+                  for t in n.targets: class_bound |= bound_name(t)
+              elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                  class_bound.add(n.name)
+              elif isinstance(n, (ast.Import, ast.ImportFrom)):
+                  for a in n.names: class_bound.add(a.asname or a.name.split('.',1)[0])
+          names = sorted({d.id for d in target.decorator_list if isinstance(d, ast.Name)})
+          print('DECORATOR_NAMES', names)
+          print('DECORATOR_MODULE_BOUND', sorted(set(names) & module_bound))
+          print('DECORATOR_CLASS_BOUND', sorted(set(names) & class_bound))
+          PY
