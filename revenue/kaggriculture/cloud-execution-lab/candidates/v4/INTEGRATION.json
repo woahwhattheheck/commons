@@ -35,7 +35,7 @@
   "duplicate_resolution": {
     "PLACE":{"owner_pr":12622,"owner_head":"d1a55af2112b92df6e266fd34c2f9392562710a9","source_blob":"987b06d54b1b8fd6d08cf78be0b4b3a398969ac7","status":"already_exact_in_baseline; duplicates excluded"},
     "D4":{"owner_pr":12606,"duplicate_prs_excluded":[12607,12608,12610]},
-    "F1":{"owner_pr":12596,"canonical_owner_pr":12598,"status":"retired_overlap_into_S6; preserve review_constraints_only"}
+    "F1":{"owner_pr":12596,"canonical_owner_pr":12598,"status":"retired_overlap_into_S6; preserve review constraints only"}
   },
   "negative_or_parked": [
     {"lane":"W2 dead-feed care","owner_pr":12616,"disposition":"NO_BUILD_negative_receipt_do_not_activate"},
