@@ -59,21 +59,13 @@ def _is_within(path: Path, root: Path) -> bool:
 
 
 def _reject_symlink_prefix(path: Path, label: str) -> None:
-    """Reject any existing symlink component, including the final path.
-
-    ``Path.resolve`` alone is not a custody check: a path such as
-    ``$TMP/link/candidate.py`` can resolve somewhere harmless while still
-    granting a mutable symlink ancestor authority over the write.  Inspect the
-    lexical path first and fail closed on every existing symlink component.
-    """
+    """Reject any existing symlink component, including the final path."""
     absolute = Path(os.path.abspath(os.fspath(path)))
     current = Path(absolute.anchor)
     for part in absolute.parts[1:]:
         current = current / part
         if current.is_symlink():
             raise PortError(f"{label} path has symlink component: {current}")
-        # Once an ordinary component does not exist, no deeper component can
-        # exist yet; materialize() will create the missing directory chain.
         if not current.exists():
             break
 
@@ -81,8 +73,8 @@ def _reject_symlink_prefix(path: Path, label: str) -> None:
 def _scratch_destination(root: Path, path: Path, label: str) -> Path:
     """Return a resolved external scratch path or fail closed.
 
-    E13 is a candidate materializer, not a repository writer.  Both candidate
-    and receipt must live completely outside the checked-out repository.  We
+    E13 is a candidate materializer, not a repository writer. Both candidate
+    and receipt must live completely outside the checked-out repository. We
     check lexical containment, symlink ancestry, and resolved containment so a
     caller cannot redirect writes onto any runtime/repo file.
     """
@@ -90,11 +82,11 @@ def _scratch_destination(root: Path, path: Path, label: str) -> Path:
     lexical = Path(os.path.abspath(os.fspath(path)))
     root_lexical = Path(os.path.abspath(os.fspath(root)))
     if _is_within(lexical, root_lexical):
-        raise PortError(f"{label} must be outside repository root: {lexical}")
+        raise PortError(f"refusing to overwrite repository path for {label}: {lexical}")
     _reject_symlink_prefix(lexical, label)
     resolved = lexical.resolve(strict=False)
     if _is_within(resolved, root):
-        raise PortError(f"{label} resolves inside repository root: {resolved}")
+        raise PortError(f"refusing to overwrite repository path for {label}: {resolved}")
     return resolved
 
 
@@ -296,8 +288,6 @@ def materialize(root: Path, output: Path, receipt: Path) -> dict[str, object]:
     receipt_bytes = (json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n").encode()
     output.parent.mkdir(parents=True, exist_ok=True)
     receipt.parent.mkdir(parents=True, exist_ok=True)
-    # Recheck after directory creation, then protect the temporary sidecars as
-    # well: an existing ``candidate.py.tmp`` symlink must never be followed.
     output = _scratch_destination(root, output, "candidate output")
     receipt = _scratch_destination(root, receipt, "receipt output")
     out_tmp = _scratch_destination(root, output.with_name(output.name + ".tmp"), "candidate temp")
