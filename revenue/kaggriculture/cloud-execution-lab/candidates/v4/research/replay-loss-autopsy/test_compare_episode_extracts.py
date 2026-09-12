@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 import compare_episode_extracts as mod
+import extract_episode as extractor
 
 
 HASHES = {
@@ -176,6 +177,45 @@ class CompareTests(unittest.TestCase):
     def test_extraction_parameter_mismatch_fails_closed(self):
         with self.assertRaisesRegex(mod.CompareError, "extraction parameter mismatch"):
             mod.compare_extracts([payload("1"), payload("2", turns_per_day=12)])
+
+    def test_tail_parameter_mismatch_fails_closed(self):
+        with self.assertRaisesRegex(mod.CompareError, "extraction parameter mismatch"):
+            mod.compare_extracts([payload("1"), payload("2", tail_callbacks=24)])
+
+    def test_canonical_extractor_outputs_interoperate(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            actions = root / "farmer_actions.csv"
+            markets = root / "market_orders.csv"
+            meta = root / "matches_meta.csv"
+            actions.write_text(
+                "episode_id,player,step,action_verb,target,qty\n"
+                "E1,0,2,WATER,WHEAT,\n"
+                "E2,0,14,WATER,WHEAT,\n",
+                encoding="utf-8",
+            )
+            markets.write_text(
+                "episode_id,player,step,order_verb,item,qty\n"
+                "E1,0,2,SELL,WHEAT,1\n"
+                "E2,0,14,SELL,WHEAT,1\n",
+                encoding="utf-8",
+            )
+            meta.write_text(
+                "episode_id,score0,score1\nE1,1,0\nE2,1,0\n",
+                encoding="utf-8",
+            )
+            one = extractor.extract(actions, markets, meta, "E1")
+            two = extractor.extract(actions, markets, meta, "E2")
+            report = mod.compare_extracts([one, two])
+            self.assertEqual(report["episodes"], ["E1", "E2"])
+
+            two_different_day = extractor.extract(
+                actions, markets, meta, "E2", turns_per_day=12
+            )
+            with self.assertRaisesRegex(
+                mod.CompareError, "extraction parameter mismatch"
+            ):
+                mod.compare_extracts([one, two_different_day])
 
     def test_resolved_column_mismatch_fails_closed(self):
         altered = payload("2")["resolved_columns"]
