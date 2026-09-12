@@ -10,11 +10,13 @@ The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
 engine town-center consumption is handled only by the sold-count fallback.
 
-FourthQuadrant proposals are atomic executable alternatives. This module never
-partially shrinks outer proposal metadata: it authenticates the MELON PLANT
-cardinality from every route variant's executable ``patches`` payload, requires
-all variants and producer metadata to agree, and admits the original proposal
-object only when that whole commitment fits the remaining real-world budget.
+FourthQuadrant proposals are atomic executable alternatives. Canonical producer
+custody lives in each route variant's bundle + patches: bundle lots bind the
+selected tile, plant step and 1-based worker to an exact ``PLANT MELON`` patch,
+and bundle.land binds the appended ``BUY_LAND`` / ``BUY_SEED MELON`` pair. Outer
+metadata is only a cross-check. A MELON alternative is therefore admitted whole
+and unchanged only when every route authenticates the same executable tile set
+and seed quantity and that whole commitment fits the remaining real-world cap.
 
 Default OFF. The runtime must not call this module unless the existing
 ``r04_melon_cap`` flag is exactly ``True``.
@@ -144,78 +146,130 @@ def max_melon_plants(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> in
     return remaining_melon_budget(observation, cap) // MELON_UNITS_PER_PLANT
 
 
-def _melon_plant_actions(row: Any) -> int | None:
-    """Count executable MELON PLANT actions in one canonical route row."""
-    if not isinstance(row, dict):
+def _tile_key(tile: Any) -> tuple[int, int] | None:
+    if not isinstance(tile, (list, tuple)) or len(tile) != 2:
         return None
-    actions: list[Any] = []
-    if "farmer" in row:
-        actions.append(row["farmer"])
-    hands = row.get("hands", [])
-    if not isinstance(hands, (list, tuple)):
+    x, y = tile
+    if type(x) is not int or type(y) is not int:
         return None
-    actions.extend(hands)
+    return x, y
 
-    count = 0
-    for action in actions:
-        if not isinstance(action, (list, tuple)):
-            return None
-        if action and action[0] == "PLANT":
-            if len(action) < 2:
-                return None
-            if action[1] == "MELON":
-                count += 1
-    return count
+
+def _worker_action(row: Any, worker: int) -> Any:
+    """Return FourthQuadrant's 1-based hired-hand action from one patch row."""
+    if not isinstance(row, dict) or type(worker) is not int or worker <= 0:
+        return None
+    hands = row.get("hands")
+    if not isinstance(hands, (list, tuple)) or worker > len(hands):
+        return None
+    return hands[worker - 1]
+
+
+def _owned_seed_units(variant: Any) -> int | None:
+    """Authenticate FourthQuadrant's proposal-owned seed purchase.
+
+    ``bundle.land.slot`` is the producer-recorded insertion point immediately
+    after inherited market rows. Canonical producer order at that point is
+    BUY_LAND, BUY_SEED, then HIREs. Binding this position avoids mistaking an
+    inherited BUY_SEED elsewhere in the authored route for proposal spending.
+    """
+    if not isinstance(variant, dict):
+        return None
+    patches = variant.get("patches")
+    bundle = variant.get("bundle")
+    land = bundle.get("land") if isinstance(bundle, dict) else None
+    if not isinstance(patches, dict) or not isinstance(land, dict):
+        return None
+    step = _plain_nonnegative_int(land.get("step"))
+    slot = _plain_nonnegative_int(land.get("slot"))
+    if step is None or slot is None:
+        return None
+    row = patches.get(step)
+    market = row.get("market") if isinstance(row, dict) else None
+    if not isinstance(market, (list, tuple)) or slot + 1 >= len(market):
+        return None
+    land_order = market[slot]
+    seed_order = market[slot + 1]
+    if not isinstance(land_order, (list, tuple)) or list(land_order) != ["BUY_LAND"]:
+        return None
+    if not isinstance(seed_order, (list, tuple)) or len(seed_order) != 3:
+        return None
+    if seed_order[0] != "BUY_SEED" or seed_order[1] != "MELON":
+        return None
+    qty = seed_order[2]
+    if type(qty) is not int or qty <= 0:
+        return None
+    return qty
 
 
 def executable_melon_plants(proposal: Any) -> int | None:
-    """Authenticate the atomic MELON commitment from FourthQuadrant patches.
+    """Authenticate one canonical FourthQuadrant MELON alternative.
 
-    Canonical FourthQuadrant.install() applies ``variants[*].patches`` directly.
-    Outer ``tiles``/``seed_units`` are therefore cross-checks, never authority.
-    Any malformed route, route-to-route disagreement, or metadata mismatch fails
-    closed so a cap cannot understate the executable proposal.
+    Each route's harvested lot contract must cover the exact outer tile set.
+    Every lot must point to the precise ``plant_step`` and 1-based worker patch
+    that executes ``PLANT MELON``. The proposal-owned BUY_SEED quantity at the
+    bundle land insertion point must equal that same commitment. Route variants
+    and outer metadata must all agree or the proposal fails closed.
     """
     if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
         return None
+
+    tiles = proposal.get("tiles")
+    if not isinstance(tiles, (list, tuple)) or not tiles:
+        return None
+    outer_tiles = [_tile_key(tile) for tile in tiles]
+    if any(tile is None for tile in outer_tiles) or len(set(outer_tiles)) != len(outer_tiles):
+        return None
+    expected = len(outer_tiles)
+    expected_tiles = set(outer_tiles)
+
+    if "size" in proposal:
+        size = _plain_nonnegative_int(proposal.get("size"))
+        if size != expected:
+            return None
+    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
+    if seed_units != expected:
+        return None
+
     variants = proposal.get("variants")
     if not isinstance(variants, dict) or not variants:
         return None
 
-    counts: list[int] = []
-    for variant in variants.values():
-        if not isinstance(variant, dict):
+    for route_id, variant in variants.items():
+        if not isinstance(route_id, str) or not route_id or not isinstance(variant, dict):
             return None
         patches = variant.get("patches")
-        if not isinstance(patches, dict) or not patches:
+        bundle = variant.get("bundle")
+        lots = bundle.get("lots") if isinstance(bundle, dict) else None
+        if not isinstance(patches, dict) or not isinstance(lots, list):
             return None
-        route_count = 0
-        for step, row in patches.items():
-            if type(step) is not int or step < 0:
-                return None
-            row_count = _melon_plant_actions(row)
-            if row_count is None:
-                return None
-            route_count += row_count
-        if route_count <= 0:
+        if _owned_seed_units(variant) != expected:
             return None
-        counts.append(route_count)
 
-    commitment = counts[0]
-    if any(count != commitment for count in counts[1:]):
-        return None
+        owned: list[tuple[tuple[int, int], int, int]] = []
+        for lot in lots:
+            if not isinstance(lot, dict) or lot.get("crop") != "MELON":
+                return None
+            tile = _tile_key(lot.get("tile"))
+            plant_step = _plain_nonnegative_int(lot.get("plant_step"))
+            worker = _plain_nonnegative_int(lot.get("worker"))
+            if tile is None or plant_step is None or worker is None or worker <= 0:
+                return None
+            action = _worker_action(patches.get(plant_step), worker)
+            if not isinstance(action, (list, tuple)) or list(action) != ["PLANT", "MELON"]:
+                return None
+            owned.append((tile, plant_step, worker))
 
-    tiles = proposal.get("tiles")
-    if not isinstance(tiles, (list, tuple)) or len(tiles) != commitment:
-        return None
-    if "size" in proposal:
-        size = _plain_nonnegative_int(proposal["size"])
-        if size != commitment:
+        if len(owned) != expected:
             return None
-    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
-    if seed_units != commitment:  # MELON has one PLANT cycle in canonical producer.
-        return None
-    return commitment
+        lot_tiles = [item[0] for item in owned]
+        plant_slots = [(item[1], item[2]) for item in owned]
+        if len(set(lot_tiles)) != expected or set(lot_tiles) != expected_tiles:
+            return None
+        if len(set(plant_slots)) != expected:
+            return None
+
+    return expected
 
 
 def filter_proposals(proposals: Any, observation: Any,
@@ -236,7 +290,6 @@ def filter_proposals(proposals: Any, observation: Any,
         if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
             out.append(proposal)
             continue
-
         commitment = executable_melon_plants(proposal)
         if commitment is None or commitment > plants_left:
             continue
