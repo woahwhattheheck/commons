@@ -1,0 +1,31 @@
+{
+  "claims": [
+    "analysis-only; no game execution",
+    "duplicate JSON keys fail closed",
+    "source identity cannot cross family/kind",
+    "raw-label, source-balanced, and family-balanced views are all retained",
+    "promotion_decision is always NOT_ASSESSED"
+  ],
+  "lane": "ASTRA-SPECTRUM",
+  "python": "3.13.5",
+  "schema": "titan.gauntlet.panel_identity.validation.v1",
+  "source_sha256": {
+    "GAUNTLET-PANEL-IDENTITY.md": "75d311f6b68fda3ba00c575fabaa9fee75078db0e7d624c09f1db8a1fed941d4",
+    "gauntlet_panel_identity.py": "8149e9df2ba09df47ee323e06c73c02ad8af174701ffc4cd21701eb1ad72cd98",
+    "test_gauntlet_panel_identity.py": "fc6323a789dd6656a10793bd78845da7b224adee11abf324effc35deb021ba73"
+  },
+  "tests": {
+    "normal": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 21,
+      "skipped": 0
+    },
+    "optimized": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 21,
+      "skipped": 0
+    }
+  }
+}
