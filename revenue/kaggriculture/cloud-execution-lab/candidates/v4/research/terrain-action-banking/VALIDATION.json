@@ -1,0 +1,60 @@
+{
+  "default_weed_chance": 0.005,
+  "development_validation": {
+    "normal": "8 discovered; 7 pass, 1 skip (official engine absent from standalone copy)",
+    "optimized": "8 discovered; 7 pass, 1 skip (official engine absent from standalone copy)",
+    "py_compile": "pass"
+  },
+  "disposition": "FALSIFIED_AS_ACTION_BANK",
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "horizons": [
+    {
+      "baseline_future_dig_expected": 0.0050000000000000044,
+      "chance": 0.005,
+      "critical_day_action_penalty": 0.995,
+      "days": 1,
+      "shield_future_dig_expected": 1.0,
+      "total_tile_local_action_penalty": 1.995
+    },
+    {
+      "baseline_future_dig_expected": 0.02475124687812502,
+      "chance": 0.005,
+      "critical_day_action_penalty": 0.975248753121875,
+      "days": 5,
+      "shield_future_dig_expected": 1.0,
+      "total_tile_local_action_penalty": 1.975248753121875
+    },
+    {
+      "baseline_future_dig_expected": 0.048889869534228136,
+      "chance": 0.005,
+      "critical_day_action_penalty": 0.9511101304657719,
+      "days": 10,
+      "shield_future_dig_expected": 1.0,
+      "total_tile_local_action_penalty": 1.9511101304657719
+    },
+    {
+      "baseline_future_dig_expected": 0.09538951972538245,
+      "chance": 0.005,
+      "critical_day_action_penalty": 0.9046104802746175,
+      "days": 20,
+      "shield_future_dig_expected": 1.0,
+      "total_tile_local_action_penalty": 1.9046104802746175
+    },
+    {
+      "baseline_future_dig_expected": 0.13961580808530394,
+      "chance": 0.005,
+      "critical_day_action_penalty": 0.8603841919146961,
+      "days": 30,
+      "shield_future_dig_expected": 1.0,
+      "total_tile_local_action_penalty": 1.8603841919146961
+    }
+  ],
+  "limits": [
+    "Does not assess productive animal use of COOP/PASTURE.",
+    "Movement costs omitted in shield's favor.",
+    "Shared RNG consumption means per-seed other-tile weed paths shift when tiles are shielded."
+  ],
+  "official_in_repo_gate": "test_current_official_engine_when_present must run, not skip, in Commons tree",
+  "promotion": "NOT_APPLICABLE_MECHANISM_FALSIFIED",
+  "schema": "titan.terrain-bank.validation.v1"
+}
