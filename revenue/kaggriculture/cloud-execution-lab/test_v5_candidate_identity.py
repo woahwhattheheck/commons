@@ -126,6 +126,29 @@ def test_cli_build_and_validate():
         check(rc == 0, "validate CLI failed")
 
 
+def test_cli_output_does_not_reuse_foreign_temp_path():
+    with tempfile.TemporaryDirectory() as root:
+        spec = fixture(root)
+        spec_path = Path(root, "spec.json")
+        manifest_path = Path(root, "manifest.json")
+        foreign_temp = manifest_path.with_name(manifest_path.name + ".tmp")
+        spec_path.write_text(json.dumps(spec), encoding="utf-8")
+        foreign_temp.write_text("foreign-writer\n", encoding="utf-8")
+
+        rc = main(
+            ["--root", root, "build", str(spec_path), "--output", str(manifest_path)]
+        )
+        check(rc == 0, "build CLI failed with foreign temp present")
+        check(
+            foreign_temp.read_text(encoding="utf-8") == "foreign-writer\n",
+            "publisher reused or removed another writer's temp path",
+        )
+        saved = json.loads(manifest_path.read_text(encoding="utf-8"))
+        check(saved == build_manifest(root, spec), "collision-safe manifest differs")
+        leftovers = list(Path(root).glob(f".{manifest_path.name}.*.tmp"))
+        check(not leftovers, f"publisher leaked private temp files: {leftovers}")
+
+
 def run():
     tests = [
         value

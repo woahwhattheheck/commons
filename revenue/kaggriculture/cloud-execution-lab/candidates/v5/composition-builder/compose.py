@@ -100,6 +100,13 @@ def _load_manifest(path: Path) -> dict[str, Any]:
 
 
 def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, dict[str, Any]]:
+    try:
+        resolved_root = source_root.resolve(strict=True)
+    except OSError as exc:
+        raise CompositionError(f"cannot resolve source root: {exc}") from exc
+    if not resolved_root.is_dir():
+        raise CompositionError("source root must resolve to a directory")
+
     result: dict[str, dict[str, Any]] = {}
     for name, raw in manifest["components"].items():
         if not isinstance(name, str) or not name or "/" in name or "\\" in name:
@@ -121,7 +128,19 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
             expected = entry.get("sha256")
             if not isinstance(expected, str) or len(expected) != 64:
                 raise CompositionError(f"component {name} file {archive_path} needs sha256")
-            source = source_root.joinpath(*PurePosixPath(source_path).parts)
+            lexical_source = resolved_root.joinpath(*PurePosixPath(source_path).parts)
+            try:
+                source = lexical_source.resolve(strict=True)
+            except OSError as exc:
+                raise CompositionError(f"component {name} cannot resolve {source_path}: {exc}") from exc
+            try:
+                source.relative_to(resolved_root)
+            except ValueError as exc:
+                raise CompositionError(
+                    f"component {name} source escapes source root: {source_path}"
+                ) from exc
+            if not source.is_file():
+                raise CompositionError(f"component {name} source is not a file: {source_path}")
             try:
                 data = source.read_bytes()
             except OSError as exc:

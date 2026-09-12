@@ -7,6 +7,8 @@ import argparse
 import hashlib
 import json
 import math
+import os
+import uuid
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -193,9 +195,20 @@ def _emit(manifest: Mapping[str, Any], output: str | None) -> None:
         print(text, end="")
         return
     destination = Path(output)
-    tmp = destination.with_name(destination.name + ".tmp")
-    tmp.write_text(text, encoding="utf-8")
-    tmp.replace(destination)
+    temporary = destination.with_name(
+        f".{destination.name}.{uuid.uuid4().hex}.tmp"
+    )
+    try:
+        with temporary.open("x", encoding="utf-8") as handle:
+            handle.write(text)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, destination)
+    finally:
+        try:
+            temporary.unlink(missing_ok=True)
+        except OSError:
+            pass
 
 
 def main(argv: list[str] | None = None) -> int:
