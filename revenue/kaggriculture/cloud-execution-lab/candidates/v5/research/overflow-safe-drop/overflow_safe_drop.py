@@ -125,6 +125,11 @@ def transform(selected: Any, observation: Mapping[str, Any], configuration: Mapp
     inventory = inventories[actor]
     if not isinstance(inventory, Mapping):
         return _identity(selected, "malformed_worker_inventory")
+    # Engine DROP deletes every carried key, including zero-valued keys. PLACE
+    # or PASS only mutates the targeted stack, so exact immediate-state
+    # equivalence is provable only for a one-key pocket.
+    if len(inventory) != 1:
+        return _identity(selected, "ambiguous_worker_inventory")
     positive = []
     for item, quantity in inventory.items():
         if not isinstance(item, str) or not _plain_nonnegative(quantity):
