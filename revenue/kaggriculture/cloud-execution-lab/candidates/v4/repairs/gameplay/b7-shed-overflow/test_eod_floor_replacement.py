@@ -95,6 +95,29 @@ class EodFloorReplacementTest(unittest.TestCase):
         self.assertEqual(decision["reason"], "missing_market_price_abi")
         self.assertIs(B7.transform(obs(), parent, CFG, enabled=True), parent)
 
+    def test_requires_observed_theorem_configuration(self):
+        for bad_cfg in (
+            None,
+            {},
+            {"shedCapacity": 100, "maxMarketOrdersPerTurn": 10},
+            {"turnsPerDay": 24, "maxMarketOrdersPerTurn": 10},
+            {"turnsPerDay": 24, "shedCapacity": 100},
+            {"turnsPerDay": True, "shedCapacity": 100, "maxMarketOrdersPerTurn": 10},
+            {"turnsPerDay": 24, "shedCapacity": 100.0, "maxMarketOrdersPerTurn": 10},
+            {"turnsPerDay": 24, "shedCapacity": 100, "maxMarketOrdersPerTurn": "10"},
+        ):
+            with self.subTest(cfg=bad_cfg):
+                decision = B7.analyze(obs(), act(), bad_cfg, market_price_fn=price_fn)
+                self.assertFalse(decision["admit"], decision)
+                self.assertEqual(decision["reason"], "clock_or_configuration")
+
+        # A non-default capacity is valid only when it is explicitly observed.
+        custom = {"turnsPerDay": 24, "shedCapacity": 101, "maxMarketOrdersPerTurn": 10}
+        decision = B7.analyze(obs(), act(), custom, market_price_fn=price_fn)
+        self.assertTrue(decision["admit"], decision)
+        self.assertEqual(decision["proposal"], ["SELL", "MILK", 4])
+        self.assertEqual(decision["baseline_final_shed"], decision["candidate_final_shed"])
+
     def test_rejects_non_eod(self):
         decision = B7.analyze(obs(step=22), act(), CFG, market_price_fn=price_fn)
         self.assertEqual(decision["reason"], "not_eod")
