@@ -25,6 +25,7 @@ RULE_RAW_OPCODE_INDEX = "RAW_OPCODE_INDEX"
 RULE_EXACT_ROW_LEN3 = "EXACT_ROW_LEN3"
 RULE_PUBLIC_OBS_COERCION = "PUBLIC_OBS_COERCION"
 RULE_TRUTHY_CONFIG_COERCION = "TRUTHY_CONFIG_COERCION"
+RULE_INPUT_ERROR = "INPUT_ERROR"
 
 RULES = (
     RULE_RAW_OPCODE_INDEX,
@@ -203,23 +204,55 @@ def iter_python_files(roots: Iterable[Path]) -> Iterator[Path]:
             yield resolved
 
 
+def _display_path(path: Path, display_root: Path | None) -> str:
+    if display_root is not None:
+        try:
+            return path.relative_to(display_root).as_posix()
+        except ValueError:
+            pass
+    return path.as_posix()
+
+
 def scan_paths(roots: Iterable[Path], *, display_root: Path | None = None) -> list[Finding]:
     display_root = display_root.resolve() if display_root is not None else None
     findings: list[Finding] = []
-    for path in iter_python_files(roots):
-        if path.name in {"sentinel.py", "test_sentinel.py"}:
+    valid_roots: list[Path] = []
+    for requested in roots:
+        try:
+            root = requested.resolve()
+        except OSError:
+            findings.append(
+                Finding(requested.as_posix(), 1, 0, RULE_INPUT_ERROR, "cannot resolve scan root")
+            )
             continue
+        label = _display_path(root, display_root)
+        if not root.exists():
+            findings.append(Finding(label, 1, 0, RULE_INPUT_ERROR, "scan root does not exist"))
+            continue
+        if root.is_file() and root.suffix != ".py":
+            findings.append(
+                Finding(label, 1, 0, RULE_INPUT_ERROR, "scan root is not a Python file")
+            )
+            continue
+        if not root.is_file() and not root.is_dir():
+            findings.append(
+                Finding(label, 1, 0, RULE_INPUT_ERROR, "scan root is not a regular file or directory")
+            )
+            continue
+        valid_roots.append(root)
+
+    for path in iter_python_files(valid_roots):
+        label = _display_path(path, display_root)
         try:
             source = path.read_text(encoding="utf-8")
-        except (OSError, UnicodeError):
+        except UnicodeError:
+            findings.append(
+                Finding(label, 1, 0, RULE_INPUT_ERROR, "cannot read Python source as UTF-8")
+            )
             continue
-        if display_root is not None:
-            try:
-                label = path.relative_to(display_root).as_posix()
-            except ValueError:
-                label = path.as_posix()
-        else:
-            label = path.as_posix()
+        except OSError:
+            findings.append(Finding(label, 1, 0, RULE_INPUT_ERROR, "cannot read Python source"))
+            continue
         findings.extend(scan_source(source, label))
     return sorted(findings)
 
@@ -244,7 +277,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument(
         "--fail-on",
         action="append",
-        choices=RULES + ("SYNTAX_ERROR",),
+        choices=RULES + ("SYNTAX_ERROR", RULE_INPUT_ERROR),
         default=[],
         help="return 1 when this rule is present (repeatable)",
     )
@@ -269,6 +302,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         print(f"source-contract-sentinel: {len(findings)} finding(s)")
 
+    if any(finding.rule == RULE_INPUT_ERROR for finding in findings):
+        return 2
     fail_rules = set(args.fail_on)
     return int(any(finding.rule in fail_rules for finding in findings))
 
