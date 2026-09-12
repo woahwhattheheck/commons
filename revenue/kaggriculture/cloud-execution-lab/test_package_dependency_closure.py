@@ -94,11 +94,21 @@ print('source-tree dependency closure PASS')
             '../cloud-quickstep/seller_snapshot.py',
         )
         self.assertEqual(mapping.get('town_procurement.py'), 'town_procurement.py')
+        selected_stack = (
+            'integrated_selected.py',
+            'ordered_selected_sell.py',
+            'selected_action_sell.py',
+            'selected_sell_core.py',
+        )
+        for name in selected_stack:
+            self.assertEqual(mapping.get(name), name)
 
         data, source_bytes, receipt = builder.render()
         self.assertEqual(receipt['runtime_files'], len(mapping))
         manifest = json.loads(source_bytes)
         self.assertEqual(set(manifest['runtime']), set(mapping))
+        for name in selected_stack:
+            self.assertEqual(manifest['runtime'][name]['source_path'], name)
 
         with tempfile.TemporaryDirectory(prefix='titan-package-closure-') as raw:
             runtime = Path(raw)
@@ -123,6 +133,7 @@ import frozen_selected
 import observed_clone
 import seller_snapshot
 import town_procurement
+import selected_action_sell
 configuration = json.loads((root / 'TITAN-CONFIG.json').read_text(encoding='utf-8'))
 instance = main._new_instance(root, configuration)
 assert callable(instance.act)
@@ -133,6 +144,21 @@ for module in (observed_clone, seller_snapshot, town_procurement):
     assert path.parent == root, (module.__name__, path, root)
 assert not hasattr(observed_clone, '__source_path__')
 assert not hasattr(seller_snapshot, '__source_path__')
+try:
+    selected_action_sell.observation_player({{'player': True}})
+except ValueError:
+    pass
+else:
+    raise AssertionError('packaged selected-action identity accepted bool player')
+try:
+    selected_action_sell.absolute_step(
+        {{'step': None, 'day': 0, 'hour': 0}},
+        {{'turnsPerDay': 24}},
+    )
+except ValueError:
+    pass
+else:
+    raise AssertionError('packaged selected-action clock accepted explicit null step')
 print('rendered package dependency closure PASS')
 """
             result = _run_isolated(code, cwd=runtime)
