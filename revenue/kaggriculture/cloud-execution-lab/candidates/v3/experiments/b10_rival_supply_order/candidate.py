@@ -47,7 +47,7 @@ PRODUCTS = (
     "EGG", "MILK", "WOOL", "FERTILIZER",
 )
 WHEAT = "WHEAT"
-MAX_ORDERS = 10
+STANDARD_MAX_ORDERS = 10
 BUY_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL"}
 SHOPS = {
     "BAKERY": ("EGG", "WHEAT"),
@@ -84,9 +84,18 @@ def _positive_int(value: Any, label: str) -> int:
 def _step_player(observation: Mapping[str, Any]) -> tuple[int, int]:
     step = _strict_int(_get(observation, "step", None), "step")
     player = _strict_int(_get(observation, "player", None), "player")
-    if step < 0 or player < 0:
-        raise ValueError("negative step/player")
+    if step < 0 or player not in (0, 1):
+        raise ValueError("invalid step/player")
     return step, player
+
+
+def _require_standard_market_cap(configuration: Any = None) -> int:
+    """B10 is proved only for the frozen V3.1 executable market prefix of ten rows."""
+    value = _get(configuration, "maxMarketOrdersPerTurn", STANDARD_MAX_ORDERS) if configuration is not None else STANDARD_MAX_ORDERS
+    cap = _strict_int(value, "maxMarketOrdersPerTurn")
+    if cap != STANDARD_MAX_ORDERS:
+        raise ValueError("B10 supports only standard maxMarketOrdersPerTurn=10")
+    return cap
 
 
 def _inventory(observation: Mapping[str, Any]) -> dict[str, int]:
@@ -133,10 +142,10 @@ def _market_rows(action: Mapping[str, Any]) -> list[Any]:
     rows = _get(action, "market", None)
     if not isinstance(rows, list):
         raise ValueError("action.market must be a list")
-    if len(rows) > MAX_ORDERS:
-        # The official engine truncates after ten. Treat an oversized parent as
-        # ambiguous rather than pretending rows beyond the prefix do not matter.
-        raise ValueError("parent market exceeds executable prefix")
+    if len(rows) > STANDARD_MAX_ORDERS:
+        # Under the frozen standard cap, rows beyond ten are non-executable and
+        # therefore ambiguous for an ordering-only theorem.
+        raise ValueError("parent market exceeds standard executable prefix")
     return rows
 
 
@@ -244,6 +253,13 @@ class RivalSupplyOrder:
             "last_after": [],
         }
 
+    def _drop_player(self, observation: Any) -> None:
+        try:
+            _, player = _step_player(observation)
+        except (KeyError, TypeError, ValueError):
+            return
+        self.players.pop(player, None)
+
     def _begin(self, observation: Mapping[str, Any]) -> tuple[int, int, dict[str, int]]:
         step, player = _step_player(observation)
         current = _inventory(observation)
@@ -275,9 +291,19 @@ class RivalSupplyOrder:
         parent_action: Mapping[str, Any],
         configuration: Any = None,
     ) -> Mapping[str, Any]:
+        # This experiment's ordering theorem is deliberately bound to the exact
+        # standard executable prefix. Nonstandard/type-ambiguous caps cannot seed
+        # evidence that becomes active after a later config change.
+        try:
+            _require_standard_market_cap(configuration)
+        except (KeyError, TypeError, ValueError):
+            self._drop_player(observation)
+            return parent_action
+
         try:
             _, _, evidence = self._begin(observation)
         except (KeyError, TypeError, ValueError):
+            self._drop_player(observation)
             return parent_action
 
         result: Mapping[str, Any] = parent_action
@@ -302,11 +328,7 @@ class RivalSupplyOrder:
             # actually emit so the next transition stays bound to our output.
             self._finish(observation, result, configuration)
         except (KeyError, TypeError, ValueError):
-            try:
-                _, player = _step_player(observation)
-                self.players.pop(player, None)
-            except (KeyError, TypeError, ValueError):
-                pass
+            self._drop_player(observation)
         return result
 
 
