@@ -34,11 +34,24 @@ class ExportContractTests(unittest.TestCase):
         stack.enter_context(mock.patch.object(exp.staging_composer, "BASELINE_SHA256", exp.digest(raw)))
         return stack
 
+    def receipt(self, current_raw, components):
+        current = exp.archive_members(current_raw, "current")
+        return (json.dumps({
+            "schema": exp.staging_composer.RECEIPT_SCHEMA,
+            "baseline_archive_sha256": exp.BASELINE_SHA256,
+            "candidate_archive_sha256": exp.digest(current_raw),
+            "member_count": len(current),
+            "components": components,
+            "files": {name: exp.digest(body) for name, body in sorted(current.items())},
+            "kaggle_submission_hold": True,
+        }, sort_keys=True) + "\n").encode("utf-8")
+
     def derive(self, baseline_files, candidate_files, **kwargs):
         baseline = packed(baseline_files)
         candidate = packed(candidate_files)
         current = kwargs.pop("current_raw", baseline)
         current_sha = kwargs.pop("current_sha256", None)
+        current_receipt = kwargs.pop("current_receipt_raw", None)
         with self.baseline_contract(baseline):
             return exp.derive_component(
                 baseline_raw=baseline,
@@ -46,6 +59,7 @@ class ExportContractTests(unittest.TestCase):
                 candidate_raw=candidate,
                 candidate_sha256=exp.digest(candidate),
                 current_sha256=current_sha,
+                current_receipt_raw=current_receipt,
                 component_id=kwargs.pop("component_id", "lane-a"),
                 **kwargs,
             )
@@ -93,11 +107,16 @@ class ExportContractTests(unittest.TestCase):
         with self.assertRaisesRegex(exp.ExportError, "no delta"):
             self.derive([("a", b"A")], [("a", b"A")])
 
-    def test_overlap_required_for_prior_modified_member(self):
+    def test_overlap_required_from_exact_current_receipt(self):
         baseline = packed([("a", b"A"), ("b", b"B")])
         current = packed([("a", b"X"), ("b", b"B")])
         candidate = packed([("a", b"Y"), ("b", b"B")])
         with self.baseline_contract(baseline):
+            receipt = self.receipt(current, [{
+                "component_id": "first",
+                "replacements": {"a": {}},
+                "additions": {},
+            }])
             with self.assertRaisesRegex(exp.ExportError, "overlaps prior component"):
                 exp.derive_component(
                     baseline_raw=baseline,
@@ -105,6 +124,7 @@ class ExportContractTests(unittest.TestCase):
                     candidate_raw=candidate,
                     candidate_sha256=exp.digest(candidate),
                     current_sha256=exp.digest(current),
+                    current_receipt_raw=receipt,
                     component_id="second",
                 )
             manifest, _ = exp.derive_component(
@@ -113,6 +133,7 @@ class ExportContractTests(unittest.TestCase):
                 candidate_raw=candidate,
                 candidate_sha256=exp.digest(candidate),
                 current_sha256=exp.digest(current),
+                current_receipt_raw=receipt,
                 component_id="second",
                 depends_on=["first"],
                 overlap_after={"a": "first"},
@@ -120,8 +141,62 @@ class ExportContractTests(unittest.TestCase):
         self.assertEqual(manifest["overlap_after"], {"a": "first"})
         self.assertEqual(manifest["replacements"]["a"]["preimage_sha256"], exp.digest(b"X"))
 
-    def test_overlap_on_baseline_owned_member_rejects(self):
-        with self.assertRaisesRegex(exp.ExportError, "baseline-owned"):
+    def test_receipt_preserves_baseline_identical_prior_writer(self):
+        baseline = packed([("a", b"A")])
+        current = packed([("a", b"A")])
+        candidate = packed([("a", b"B")])
+        with self.baseline_contract(baseline):
+            receipt = self.receipt(current, [{
+                "component_id": "first",
+                "replacements": {"a": {}},
+                "additions": {},
+            }])
+            with self.assertRaisesRegex(exp.ExportError, "overlaps prior component"):
+                exp.derive_component(
+                    baseline_raw=baseline,
+                    current_raw=current,
+                    candidate_raw=candidate,
+                    candidate_sha256=exp.digest(candidate),
+                    current_sha256=exp.digest(current),
+                    current_receipt_raw=receipt,
+                    component_id="second",
+                )
+            manifest, _ = exp.derive_component(
+                baseline_raw=baseline,
+                current_raw=current,
+                candidate_raw=candidate,
+                candidate_sha256=exp.digest(candidate),
+                current_sha256=exp.digest(current),
+                current_receipt_raw=receipt,
+                component_id="second",
+                overlap_after={"a": "first"},
+            )
+        self.assertEqual(manifest["overlap_after"], {"a": "first"})
+
+    def test_false_overlap_predecessor_rejects_from_receipt(self):
+        baseline = packed([("a", b"A")])
+        current = packed([("a", b"X")])
+        candidate = packed([("a", b"Y")])
+        with self.baseline_contract(baseline):
+            receipt = self.receipt(current, [{
+                "component_id": "first",
+                "replacements": {"a": {}},
+                "additions": {},
+            }])
+            with self.assertRaisesRegex(exp.ExportError, "predecessor mismatch"):
+                exp.derive_component(
+                    baseline_raw=baseline,
+                    current_raw=current,
+                    candidate_raw=candidate,
+                    candidate_sha256=exp.digest(candidate),
+                    current_sha256=exp.digest(current),
+                    current_receipt_raw=receipt,
+                    component_id="second",
+                    overlap_after={"a": "wrong"},
+                )
+
+    def test_overlap_on_unowned_current_member_rejects(self):
+        with self.assertRaisesRegex(exp.ExportError, "without prior composer writer"):
             self.derive(
                 [("a", b"A")],
                 [("a", b"B")],
@@ -152,6 +227,49 @@ class ExportContractTests(unittest.TestCase):
                     current_sha256=None,
                     component_id="x",
                 )
+
+    def test_explicit_current_requires_composer_receipt(self):
+        baseline = packed([("a", b"A")])
+        current = packed([("a", b"X")])
+        candidate = packed([("a", b"Y")])
+        with self.baseline_contract(baseline):
+            with self.assertRaisesRegex(exp.ExportError, "requires current composer receipt"):
+                exp.derive_component(
+                    baseline_raw=baseline,
+                    current_raw=current,
+                    candidate_raw=candidate,
+                    candidate_sha256=exp.digest(candidate),
+                    current_sha256=exp.digest(current),
+                    component_id="x",
+                )
+
+    def test_current_receipt_file_map_mismatch_rejects(self):
+        baseline = packed([("a", b"A")])
+        current = packed([("a", b"X")])
+        candidate = packed([("a", b"Y")])
+        with self.baseline_contract(baseline):
+            receipt = json.loads(self.receipt(current, []).decode("utf-8"))
+            receipt["files"]["a"] = "0" * 64
+            raw = (json.dumps(receipt, sort_keys=True) + "\n").encode("utf-8")
+            with self.assertRaisesRegex(exp.ExportError, "file map"):
+                exp.derive_component(
+                    baseline_raw=baseline,
+                    current_raw=current,
+                    candidate_raw=candidate,
+                    candidate_sha256=exp.digest(candidate),
+                    current_sha256=exp.digest(current),
+                    current_receipt_raw=raw,
+                    component_id="x",
+                )
+
+    def test_dependency_conflict_intersection_rejects(self):
+        with self.assertRaisesRegex(exp.ExportError, "both depend on and conflict"):
+            self.derive(
+                [("a", b"A")],
+                [("a", b"B")],
+                depends_on=["prior"],
+                conflicts_with=["prior"],
+            )
 
     def test_duplicate_tar_member_rejects(self):
         baseline = packed([("a", b"A")])
@@ -249,6 +367,58 @@ class ExportContractTests(unittest.TestCase):
                     component_id="x",
                 )
             self.assertTrue((out / "COMPONENT.json").is_file())
+
+    def test_failed_publication_removes_invocation_created_directories_for_retry(self):
+        baseline = packed([("a", b"A")])
+        candidate = packed([("a", b"B")])
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            bp = td / "b.tgz"
+            cp = td / "c.tgz"
+            out = td / "new" / "component"
+            bp.write_bytes(baseline)
+            cp.write_bytes(candidate)
+            with self.baseline_contract(baseline):
+                with mock.patch.object(exp, "publish_exclusive", side_effect=OSError("injected write failure")):
+                    with self.assertRaisesRegex(exp.ExportError, "injected write failure"):
+                        exp.export_component(
+                            baseline_path=bp,
+                            candidate_path=cp,
+                            candidate_sha256=exp.digest(candidate),
+                            out_dir=out,
+                            component_id="x",
+                        )
+                self.assertFalse(out.exists())
+                exp.export_component(
+                    baseline_path=bp,
+                    candidate_path=cp,
+                    candidate_sha256=exp.digest(candidate),
+                    out_dir=out,
+                    component_id="x",
+                )
+            self.assertTrue((out / "COMPONENT.json").is_file())
+
+    def test_failed_publication_preserves_preexisting_empty_output_directory(self):
+        baseline = packed([("a", b"A")])
+        candidate = packed([("a", b"B")])
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            out = td / "out"
+            out.mkdir()
+            with self.baseline_contract(baseline):
+                manifest, payloads = exp.derive_component(
+                    baseline_raw=baseline,
+                    current_raw=baseline,
+                    candidate_raw=candidate,
+                    candidate_sha256=exp.digest(candidate),
+                    current_sha256=None,
+                    component_id="x",
+                )
+                with mock.patch.object(exp, "publish_exclusive", side_effect=OSError("injected write failure")):
+                    with self.assertRaisesRegex(exp.ExportError, "injected write failure"):
+                        exp.publish_component(out, manifest, payloads)
+            self.assertTrue(out.is_dir())
+            self.assertEqual(list(out.iterdir()), [])
 
 
 if __name__ == "__main__":
