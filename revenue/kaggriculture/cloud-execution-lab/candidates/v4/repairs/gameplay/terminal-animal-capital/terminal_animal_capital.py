@@ -1,10 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """TITAN V4: terminal animal-capital guard.
 
-Source-bound, default-off component.  It may blank only BUY_ANIMAL rows whose
-earliest possible first production lies beyond the last executable action,
-and only when doing so cannot fund a later protected market order in the same
-queue.  It never rewrites unit actions, SELL rows, or market row indices.
+Source-bound, default-off component. It may blank only BUY_ANIMAL rows when
+official callback ordering proves the purchase cannot complete the minimum
+PICKUP -> PLACE route before the last executable action, and only when doing so
+cannot fund a later protected market order in the same queue.
+
+Species-product maturity is deliberately NOT an eligibility proof: the official
+engine makes fertilizer available on every surviving placed animal at EOD,
+independent of EGG/MILK/WOOL maturity. It never rewrites unit actions, SELL rows,
+or market row indices.
 """
 from __future__ import annotations
 
@@ -17,7 +22,8 @@ EPISODE_STEPS = 720
 FINAL_PLAN_STEP = 648
 LAST_ACTION_STEP = EPISODE_STEPS - 2
 DEFAULT_MAX_MARKET_ORDERS = 10
-FIRST_YIELD_DAYS = {"GOOSE": 4, "SHEEP": 6, "COW": 8}
+STANDARD_ANIMALS = frozenset({"GOOSE", "SHEEP", "COW"})
+UNIT_ACTIONS_TO_PLACE_PURCHASED_ANIMAL = 2
 _MISSING = object()
 
 
@@ -68,17 +74,16 @@ def _step(observation: Any) -> int | None:
     return value if type(value) is int else None
 
 
-def _earliest_first_yield_step(step: int, first_yield_days: int) -> int:
-    """Conservative lower bound on the refresh that can create first yield.
+def _future_unit_callbacks(step: int) -> int:
+    """Number of later callbacks that can still carry a unit action.
 
-    Market BUY_ANIMAL executes after unit actions, so the animal cannot be
-    placed before a later callback.  Granting same-day placement anyway makes
-    this bound earlier (therefore conservative).  An animal placed on day d
-    first produces at the end-of-day refresh whose next_day is
-    d + first_yield_days.
+    BUY_ANIMAL executes after this callback's unit phase, so the purchased animal
+    cannot be PICKUP'd until a later callback. The official unit interpreter
+    requires a PICKUP into one actor's inventory and then a separate PLACE action
+    on a matching structure. Fewer than two later callbacks therefore proves the
+    purchased animal cannot become a placed animal before terminal.
     """
-    day = step // TURNS_PER_DAY
-    return (day + first_yield_days) * TURNS_PER_DAY - 1
+    return max(0, LAST_ACTION_STEP - step)
 
 
 def plan_terminal_animal_capital(
@@ -124,6 +129,7 @@ def plan_terminal_animal_capital(
     # Raw suffix rows are intentionally opaque/preserved because the engine
     # silently drops them before parsing or committing any market operation.
     executable_market = market[:max_orders]
+    future_callbacks = _future_unit_callbacks(step)
 
     parsed_ops: list[str | None] = []
     dead: dict[int, tuple[str, int, int]] = {}
@@ -145,12 +151,15 @@ def plan_terminal_animal_capital(
         if quantity <= 0:
             report["reason"] = "BAD_BUY_ANIMAL_ROW"
             return report
-        days = FIRST_YIELD_DAYS.get(animal)
-        if days is None:
+        if animal not in STANDARD_ANIMALS:
             continue
-        first_yield_step = _earliest_first_yield_step(step, days)
-        if first_yield_step > LAST_ACTION_STEP:
-            dead[index] = (animal, quantity, first_yield_step)
+
+        # Historical H5's "first species yield is after terminal" theorem was
+        # false because every placed animal can create fertilizer at EOD before
+        # its EGG/MILK/WOOL maturity. Suppress only when callback count itself
+        # proves the purchased unit cannot even complete PICKUP -> PLACE.
+        if future_callbacks < UNIT_ACTIONS_TO_PLACE_PURCHASED_ANIMAL:
+            dead[index] = (animal, quantity, future_callbacks)
 
     if not dead:
         report["reason"] = "NO_PROVABLY_DEAD_ANIMAL_CAPITAL"
@@ -173,19 +182,21 @@ def plan_terminal_animal_capital(
     units: dict[str, int] = {}
     witnesses: list[dict[str, int | str]] = []
     for index in drop:
-        animal, quantity, first_yield_step = dead[index]
+        animal, quantity, remaining_callbacks = dead[index]
         units[animal] = units.get(animal, 0) + quantity
         witnesses.append(
             {
                 "index": index,
                 "animal": animal,
                 "quantity": quantity,
-                "earliest_first_yield_step": first_yield_step,
+                "future_unit_callbacks": remaining_callbacks,
+                "required_unit_actions_to_place": UNIT_ACTIONS_TO_PLACE_PURCHASED_ANIMAL,
             }
         )
     report.update(
         eligible=True,
         reason="DROP_PROVABLY_DEAD_ANIMAL_CAPITAL_SUFFIX",
+        proof="INSUFFICIENT_FUTURE_UNIT_CALLBACKS_TO_PLACE",
         step=step,
         max_market_orders=max_orders,
         drop_indices=drop,
@@ -203,7 +214,7 @@ def apply_terminal_animal_capital(
     *,
     enabled: bool = False,
 ) -> Any:
-    """Apply the guard.  Every OFF/nonmatch path preserves object identity."""
+    """Apply the guard. Every OFF/nonmatch path preserves object identity."""
     if enabled is not True:
         return action
     plan = plan_terminal_animal_capital(action, observation, configuration)
