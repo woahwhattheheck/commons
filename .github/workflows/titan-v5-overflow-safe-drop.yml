@@ -1,0 +1,64 @@
+name: TITAN V5 overflow-safe DROP
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/overflow_safe_drop.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/overflow-safe-drop/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/overflow-safe-drop/**"
+      - ".github/workflows/titan-v5-overflow-safe-drop.yml"
+  push:
+    branches:
+      - "sol/titan-v5-overflow-safe-drop-convergence-20260912-01"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/overflow_safe_drop.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/overflow-safe-drop/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/overflow-safe-drop/**"
+      - ".github/workflows/titan-v5-overflow-safe-drop.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Canonical theorem contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/overflow-safe-drop
+        run: |
+          python -B -m unittest -v test_overflow_safe_drop.py
+          python -O -B -m unittest -v test_overflow_safe_drop.py
+      - name: Composer contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/overflow-safe-drop
+        run: |
+          python -B -m unittest -v test_compose_current_runtime.py
+          python -O -B -m unittest -v test_compose_current_runtime.py
+      - name: Compile source and scratch postimages
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          python -B -m py_compile overflow_safe_drop.py candidates/v5/overflow-safe-drop/compose_current_runtime.py candidates/v5/overflow-safe-drop/test_compose_current_runtime.py
+          out="$(mktemp -d)/postimage"
+          python -B candidates/v5/overflow-safe-drop/compose_current_runtime.py --root . --out "$out"
+          python -B -m py_compile "$out/main.py" "$out/titan_runtime.py" "$out/build_integrated.py"
+          python - <<'PY' "$out/TITAN-CONFIG.json"
+          import json, pathlib, sys
+          value=json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert value['overflow_safe_drop'] is False
+          PY
