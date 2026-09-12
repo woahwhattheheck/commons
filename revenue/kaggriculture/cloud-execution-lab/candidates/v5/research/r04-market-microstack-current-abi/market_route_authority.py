@@ -14,9 +14,8 @@ market binding stops until a canonical queue authority exists.
 
 This consumer independently re-verifies strict JSON bytes for the *entire*
 authorized ``R[receipt.route]`` plus every published future row. The market
-authority digest binds the complete shared-window receipt, the immutable producer
-receipt, and the no-queue proof. This intentionally remains safe if an older
-shared-window revision has a weaker internal digest preimage.
+authority digest binds the complete canonical v3 shared-window receipt, the
+immutable producer receipt, and the no-queue proof.
 """
 from __future__ import annotations
 
@@ -28,20 +27,20 @@ from pathlib import Path
 import sys
 from typing import Any
 
-AUTHORITY_SCHEMA = "titan-v5-r04-market-route-authority-v2"
-WINDOW_SCHEMA = "titan-v5-current-route-window-v2"
-ROUTE_SOURCE = "committed_producer_route.R[route_id]"
+AUTHORITY_SCHEMA = "titan-v5-r04-market-route-authority-v3"
+WINDOW_SCHEMA = "titan-v5-current-route-window-v3"
+ROUTE_SOURCE = "entrypoint_route_receipt->controller.R[route]"
 NO_QUEUE_MODEL = "installed-intact-arlene:no-separate-deferred-command-queue:v1"
 EXPECTED_CONTROLLER_TYPE = "intact_arlene.Agent"
 EXPECTED_CONTROLLER_STATE_KEYS = ("R", "_fs", "_fs_for", "cur")
 ROUTE_RECEIPT_KEYS = frozenset({"route_step", "last_step", "player", "route"})
 
-CURRENT_ROUTE_AUTHORITY_COMMIT = "a2eee7eecbfb2605147645d3de3b1c2c0ceb0bf0"
+CURRENT_ROUTE_AUTHORITY_COMMIT = "a451fb14ed5ff517ecf1a3a999ac75d03b8ec37b"
 CURRENT_ROUTE_AUTHORITY_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/"
     "current-route-witness/current_route_witness.py"
 )
-CURRENT_ROUTE_AUTHORITY_BLOB = "b84768c7560e746f6c9144fea672554e0dad39f7"
+CURRENT_ROUTE_AUTHORITY_BLOB = "1c4ec677034f757b4e24f874d643a3b322cdb3c1"
 CURRENT_CONTROLLER_AUTHORITY_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py"
 )
@@ -175,6 +174,20 @@ def _window_receipt(window: Any) -> dict[str, Any] | None:
     return receipt if _canonical_json(receipt) is not None else None
 
 
+def _receipt_matches_window(
+    window_receipt: dict[str, Any],
+    route_receipt: dict[str, Any],
+) -> bool:
+    return (
+        window_receipt.get("route_step") == route_receipt["route_step"]
+        and window_receipt.get("last_step") == route_receipt["last_step"]
+        and window_receipt.get("player") == route_receipt["player"]
+        and window_receipt.get("route_id") == route_receipt["route"]
+        and window_receipt.get("current_step") == route_receipt["route_step"]
+        and window_receipt.get("current_index") == route_receipt["route_step"]
+    )
+
+
 def _strict_reverify_window(
     controller: Any,
     window: Any,
@@ -274,7 +287,7 @@ class MarketRouteAuthority:
     def receipt(self) -> dict[str, Any]:
         window_receipt = _window_receipt(self.window)
         route_receipt = self.completed_route_receipt()
-        if window_receipt is None:
+        if window_receipt is None or not _receipt_matches_window(window_receipt, route_receipt):
             raise ValueError("invalid canonical route-window receipt")
         material = _authority_material(
             window_receipt, route_receipt, self.controller_state_keys
@@ -307,7 +320,7 @@ def bind_market_route_authority(
     completed_route_receipt: Any,
     lookahead: int = 8,
 ) -> MarketRouteAuthority | None:
-    """Bind committed producer receipt -> shared window -> market authority."""
+    """Bind committed producer receipt -> canonical v3 window -> market authority."""
     if f"{type(controller).__module__}.{type(controller).__qualname__}" != EXPECTED_CONTROLLER_TYPE:
         return None
     state_keys = _controller_state_keys(controller)
@@ -326,13 +339,13 @@ def bind_market_route_authority(
         window = binder(
             controller,
             observation,
-            completed_route_id=route_receipt["route"],
+            completed_route_receipt=route_receipt,
             lookahead=lookahead,
         )
     except Exception:
         return None
     window_receipt = None if window is None else _window_receipt(window)
-    if window_receipt is None:
+    if window_receipt is None or not _receipt_matches_window(window_receipt, route_receipt):
         return None
     if not _strict_reverify_window(controller, window, route_receipt):
         return None
@@ -378,11 +391,12 @@ def validate_market_route_authority(
         return None
 
     receipt = _window_receipt(authority.window)
-    if receipt is None:
+    if receipt is None or not _receipt_matches_window(receipt, route_receipt):
         return None
     if (
         receipt.get("current_step") != step
         or receipt.get("current_index") != step
+        or receipt.get("player") != player
         or receipt.get("route_id") != route_receipt["route"]
     ):
         return None
