@@ -10,13 +10,22 @@ from unittest import mock
 import ablation
 
 
-FROZEN = b"""from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger\n\ndef f(pair, ledger):\n    metrics=joint_plan_metrics([entry[2] for entry in pair])\n    if ledger is None or metrics is None or metrics['worst_relative_gain']<=0:continue\n"""
+FROZEN = b"""from selected_sell_core import optimize_lot, joint_plan_metrics, shared_slot_ledger\n\ndef f(best, pairs, ledger):\n    for pair in pairs:\n        metrics=joint_plan_metrics([entry[2] for entry in pair])\n        if ledger is None or metrics is None or metrics['worst_relative_gain']<=0:continue\n        best=('joint', pair)\n    return best\n"""
 CORE = b"def joint_plan_metrics(infos):\n    return {'worst_relative_gain': 1}\n"
 
 
 def members():
     return {"main.py": b"def agent(*a): return None\n", "frozen_selected.py": FROZEN,
             "selected_sell_core.py": CORE, "other.py": b"unchanged\n"}
+
+
+def execute_synthetic_function(raw: bytes, metric_value=9):
+    """Execute only the tiny pair-selection function, not its synthetic imports."""
+    text = raw.decode("utf-8")
+    body = text[text.index("def f"):]
+    namespace = {"joint_plan_metrics": lambda _infos: {"worst_relative_gain": metric_value}}
+    exec(compile(body, "<synthetic-e05-witness>", "exec"), namespace)
+    return namespace["f"]
 
 
 class AblationTest(unittest.TestCase):
@@ -32,6 +41,16 @@ class AblationTest(unittest.TestCase):
         self.assertIn(b"metrics=None  # evidence-only E05 joint-pair ablation", cand["frozen_selected.py"])
         self.assertIn(b"if ledger is None or metrics is None", cand["frozen_selected.py"])
         self.assertEqual(receipt["changed_members"], ["frozen_selected.py"])
+
+    def test_reachable_joint_candidate_falls_back_to_incumbent_single_plan(self):
+        base = members()
+        cand, _receipt = ablation.ablate_joint_sell(base)
+        pair = (("p1", "plan1", {"gain": 4}), ("p2", "plan2", {"gain": 5}))
+        incumbent = ("single", "p1")
+        self.assertEqual(execute_synthetic_function(base["frozen_selected.py"])(incumbent, [pair], object()),
+                         ("joint", pair))
+        self.assertEqual(execute_synthetic_function(cand["frozen_selected.py"])(incumbent, [pair], object()),
+                         incumbent)
 
     def test_source_drift_fails_closed(self):
         base = members()
