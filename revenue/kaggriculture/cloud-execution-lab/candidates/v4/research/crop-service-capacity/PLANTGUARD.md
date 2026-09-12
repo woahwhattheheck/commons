@@ -27,13 +27,14 @@ For every proposed site, the projection contains:
 1. PLANT on that site;
 2. then WATER on that same site later in execution order;
 3. before the current EOD;
-4. without an unrecognized same-site action between PLANT and WATER.
+4. without an unrecognized same-site action between PLANT and WATER; and
+5. without a later unrecognized same-site action after WATER through the remainder of the projected current day.
 
-FERTILIZE is the only explicitly tolerated same-site intermediate operation. Everything else fails closed rather than guessing whether a new engine/action variant preserves the plant.
+FERTILIZE and repeated WATER are the only explicitly tolerated same-site service operations once PLANT has occurred. Everything else fails closed rather than guessing whether a new engine/action variant preserves the plant. In particular, WATER is not an early-return authorization: `PLANT -> WATER -> DIG` cannot certify same-EOD establishment merely because the WATER happened first.
 
 The proposal must also remain within CROPSCALE's selected aggregate action-count ceiling. Exceeding that ceiling returns `IMPOSSIBLE_ACTION_BUDGET` before any service-sequence claim.
 
-A fully paired projection returns `ESTABLISHMENT_SERVICE_PROVED`. That name is intentionally narrower than SAFE or ALLOW.
+A fully paired and post-WATER-preserved projection returns `ESTABLISHMENT_SERVICE_PROVED`. That name is intentionally narrower than SAFE or ALLOW.
 
 ## What it does not prove
 
@@ -59,7 +60,7 @@ A hard rule like "never PLANT after hour 20" is mechanically wrong because labor
 The robust V4 form is therefore:
 
 - CROPSCALE: one-sided aggregate impossibility envelope;
-- PLANTGUARD: exact projected PLANT->same-EOD-WATER pairing;
+- PLANTGUARD: exact projected PLANT->same-EOD-WATER pairing plus conservative same-site custody through EOD;
 - existing scheduler/LOOM owners: movement, actor assignment, funding, source postimage and economics.
 
 No second scheduler or crop policy is introduced.
@@ -72,13 +73,18 @@ No second scheduler or crop policy is introduced.
 - last-hour two-actor ordered PLANT/WATER success;
 - WATER-before-PLANT and wrong-site failures;
 - later-callback same-day recovery;
-- conservative same-site invalidation with FERTILIZE as the only allowed intermediate;
+- conservative same-site invalidation before WATER;
+- same-callback and later-callback post-WATER mutation killers;
+- unrelated-site post-WATER mutation positive control;
+- FERTILIZE/repeated-WATER service allowance;
 - all-sites-must-pair behavior;
 - strict execution ordering and day-window custody;
 - custom `turnsPerDay` boundaries;
 - duplicate/out-of-board site rejection;
 - bool poison and input nonmutation;
 - explicit non-authority flags.
+
+Exact connector-authenticated branch bytes after the post-WATER custody repair pass **21/21** normal and **21/21** under `python -O`; `py_compile` passes for `crop_service_capacity.py`, `plantguard_service.py`, and `test_plantguard_service.py`. Hosted exact-head checks remain the merge authority.
 
 ## Promotion gate
 
