@@ -2,18 +2,18 @@
 """Fail closed on truthy activation of changed default-OFF TITAN V4 seams.
 
 This validator is intentionally incremental: callers provide the files changed by
-one pull request.  Existing untouched research debt therefore cannot block an
-unrelated repair, while any newly added or edited ``enabled=False`` boundary must
+one pull request. Existing untouched research debt therefore cannot block an
+unrelated repair, while newly added or edited ``enabled=False`` boundaries must
 preserve literal-bool activation semantics.
 
-The contract is narrow on purpose.  A callable whose parameter is literally
-named ``enabled`` and defaults to the bool ``False`` may not activate through
-Python truthiness (``if enabled``, ``if not enabled``, ``enabled and value``,
-``enabled or value``, ``not enabled``, ``bool(enabled)``, or ``enabled == True``).
-Those forms accept values such as ``1`` or non-empty containers.  Exact identity
-tests (``enabled is True`` / ``is not True``) are safe.  A top-level fail-closed
-guard that rejects every non-bool before the first truthiness use is also safe.
+The contract is deliberately narrow and mechanical. A callable whose parameter
+is literally named ``enabled`` and defaults to the bool ``False`` may not rely on
+Python truthiness, bool equality/membership, or identity-to-False to decide
+activation. Only literal ``enabled is True`` is a safe positive identity test.
+A top-level fail-closed guard that rejects every non-bool (or everything except
+literal True) before the first truthiness use also makes later truthiness safe.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -39,13 +39,18 @@ class Finding:
 
 
 MESSAGE = (
-    "default-OFF enabled=False is used through truthiness; require "
-    "enabled is True / enabled is not True, or reject non-bools first"
+    "default-OFF enabled=False has a fail-open boolean use; require "
+    "enabled is True / an earlier enabled is not True exit guard, "
+    "or reject non-bools first"
 )
 
 
 def _literal_bool(node: ast.AST, value: bool) -> bool:
-    return isinstance(node, ast.Constant) and type(node.value) is bool and node.value is value
+    return (
+        isinstance(node, ast.Constant)
+        and type(node.value) is bool
+        and node.value is value
+    )
 
 
 def _name(node: ast.AST, value: str) -> bool:
@@ -70,50 +75,116 @@ def _enabled_default_false(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> bool:
             if arg.arg == "enabled" and _literal_bool(default, False):
                 return True
     for arg, default in zip(fn.args.kwonlyargs, fn.args.kw_defaults):
-        if arg.arg == "enabled" and default is not None and _literal_bool(default, False):
+        if (
+            arg.arg == "enabled"
+            and default is not None
+            and _literal_bool(default, False)
+        ):
             return True
     return False
 
 
-def _exact_bool_identity(node: ast.AST) -> bool:
-    """Whether *node* is an exact identity comparison for ``enabled``."""
-    if not isinstance(node, ast.Compare) or len(node.ops) != 1 or len(node.comparators) != 1:
-        return False
-    if not isinstance(node.ops[0], (ast.Is, ast.IsNot)):
-        return False
+def _enabled_bool_identity(node: ast.AST) -> tuple[type[ast.cmpop], bool] | None:
+    """Return (operator type, literal bool) for a direct enabled identity test."""
+    if (
+        not isinstance(node, ast.Compare)
+        or len(node.ops) != 1
+        or len(node.comparators) != 1
+        or not isinstance(node.ops[0], (ast.Is, ast.IsNot))
+    ):
+        return None
     left, right = node.left, node.comparators[0]
-    return (
-        (_name(left, "enabled") and (_literal_bool(right, True) or _literal_bool(right, False)))
-        or (_name(right, "enabled") and (_literal_bool(left, True) or _literal_bool(left, False)))
+    if _name(left, "enabled"):
+        if _literal_bool(right, True):
+            return type(node.ops[0]), True
+        if _literal_bool(right, False):
+            return type(node.ops[0]), False
+    if _name(right, "enabled"):
+        if _literal_bool(left, True):
+            return type(node.ops[0]), True
+        if _literal_bool(left, False):
+            return type(node.ops[0]), False
+    return None
+
+
+def _literal_bool_container(node: ast.AST) -> bool:
+    if not isinstance(node, (ast.Tuple, ast.List, ast.Set)):
+        return False
+    return bool(node.elts) and all(
+        _literal_bool(item, True) or _literal_bool(item, False)
+        for item in node.elts
     )
 
 
 def _unsafe_boolean_nodes(node: ast.AST) -> list[ast.AST]:
-    """Return direct truthiness/coercion uses of ``enabled`` inside a test."""
+    """Return direct fail-open boolean/coercion uses of ``enabled``."""
     if _name(node, "enabled"):
         return [node]
+
     if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
         return _unsafe_boolean_nodes(node.operand)
+
     if isinstance(node, ast.BoolOp):
         out: list[ast.AST] = []
         for value in node.values:
             out.extend(_unsafe_boolean_nodes(value))
         return out
+
     if isinstance(node, ast.NamedExpr):
         return _unsafe_boolean_nodes(node.value)
+
     if isinstance(node, ast.Compare):
-        if _exact_bool_identity(node):
-            return []
+        identity = _enabled_bool_identity(node)
+        if identity is not None:
+            op_type, literal = identity
+            # Only a positive literal-True test is intrinsically safe.
+            # "is not True" is safe only when recognized separately as an
+            # exiting fail-closed guard. Identity to False lets non-bools
+            # bypass default-OFF semantics and is therefore unsafe here.
+            if op_type is ast.Is and literal is True:
+                return []
+            values = [node.left, *node.comparators]
+            return [next(value for value in values if _name(value, "enabled"))]
+
         values = [node.left, *node.comparators]
         has_enabled = any(_name(value, "enabled") for value in values)
-        has_bool = any(_literal_bool(value, True) or _literal_bool(value, False) for value in values)
-        if has_enabled and has_bool and any(isinstance(op, (ast.Eq, ast.NotEq)) for op in node.ops):
+        has_bool = any(
+            _literal_bool(value, True) or _literal_bool(value, False)
+            for value in values
+        )
+        if (
+            has_enabled
+            and has_bool
+            and any(isinstance(op, (ast.Eq, ast.NotEq)) for op in node.ops)
+        ):
             return [next(value for value in values if _name(value, "enabled"))]
+
+        if (
+            len(node.ops) == 1
+            and isinstance(node.ops[0], (ast.In, ast.NotIn))
+            and _name(node.left, "enabled")
+            and len(node.comparators) == 1
+            and _literal_bool_container(node.comparators[0])
+        ):
+            return [node.left]
         return []
+
     if _call(node, "bool", 1) and _name(node.args[0], "enabled"):
         return [node.args[0]]
-    # Deliberately do not guess about arbitrary helper(enabled) calls.  This
-    # guard targets Python truthiness, not semantic review of helper contracts.
+
+    if (
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id in {"any", "all"}
+        and len(node.args) == 1
+        and not node.keywords
+        and isinstance(node.args[0], (ast.Tuple, ast.List, ast.Set))
+        and any(_name(item, "enabled") for item in node.args[0].elts)
+    ):
+        return [next(item for item in node.args[0].elts if _name(item, "enabled"))]
+
+    # Deliberately do not guess about arbitrary helper(enabled) calls. This
+    # guard targets Python boolean activation, not semantic review of helpers.
     return []
 
 
@@ -124,26 +195,37 @@ def _suite_always_exits(body: Sequence[ast.stmt]) -> bool:
     if isinstance(tail, (ast.Return, ast.Raise)):
         return True
     if isinstance(tail, ast.If):
-        return bool(tail.orelse) and _suite_always_exits(tail.body) and _suite_always_exits(tail.orelse)
+        return (
+            bool(tail.orelse)
+            and _suite_always_exits(tail.body)
+            and _suite_always_exits(tail.orelse)
+        )
     return False
 
 
 def _is_nonbool_reject_test(node: ast.AST) -> bool:
-    # enabled is not True is the strongest/default contract: only literal True
-    # can proceed.
+    # "enabled is not True" is the strongest/default contract: only literal
+    # True can proceed after an exiting top-level guard.
+    identity = _enabled_bool_identity(node)
+    if identity == (ast.IsNot, True):
+        return True
+
     if isinstance(node, ast.Compare) and len(node.ops) == 1 and len(node.comparators) == 1:
         left, right = node.left, node.comparators[0]
         if isinstance(node.ops[0], ast.IsNot):
-            if (_name(left, "enabled") and _literal_bool(right, True)) or (
-                _literal_bool(left, True) and _name(right, "enabled")
+            if (
+                _call(left, "type", 1)
+                and _name(left.args[0], "enabled")
+                and _name(right, "bool")
             ):
                 return True
-        # A strict type rejection also makes later boolean use safe.
-        if isinstance(node.ops[0], ast.IsNot):
-            if _call(left, "type", 1) and _name(left.args[0], "enabled") and _name(right, "bool"):
+            if (
+                _name(left, "bool")
+                and _call(right, "type", 1)
+                and _name(right.args[0], "enabled")
+            ):
                 return True
-            if _name(left, "bool") and _call(right, "type", 1) and _name(right.args[0], "enabled"):
-                return True
+
     # if not isinstance(enabled, bool): return/raise
     if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
         call = node.operand
@@ -152,15 +234,16 @@ def _is_nonbool_reject_test(node: ast.AST) -> bool:
     return False
 
 
+def _is_strict_guard(stmt: ast.stmt) -> bool:
+    return (
+        isinstance(stmt, ast.If)
+        and _is_nonbool_reject_test(stmt.test)
+        and _suite_always_exits(stmt.body)
+    )
+
+
 def _strict_guard_line(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> int | None:
-    lines: list[int] = []
-    for stmt in fn.body:
-        if (
-            isinstance(stmt, ast.If)
-            and _is_nonbool_reject_test(stmt.test)
-            and _suite_always_exits(stmt.body)
-        ):
-            lines.append(stmt.lineno)
+    lines = [stmt.lineno for stmt in fn.body if _is_strict_guard(stmt)]
     return min(lines) if lines else None
 
 
@@ -169,7 +252,7 @@ class _TruthinessVisitor(ast.NodeVisitor):
         self.root = root
         self.hits: list[ast.AST] = []
 
-    def _test(self, node: ast.AST) -> None:
+    def _record(self, node: ast.AST) -> None:
         self.hits.extend(_unsafe_boolean_nodes(node))
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:  # noqa: N802
@@ -190,46 +273,61 @@ class _TruthinessVisitor(ast.NodeVisitor):
         return
 
     def visit_If(self, node: ast.If) -> None:  # noqa: N802
-        self._test(node.test)
+        if not _is_strict_guard(node):
+            self._record(node.test)
         for stmt in [*node.body, *node.orelse]:
             self.visit(stmt)
 
     def visit_While(self, node: ast.While) -> None:  # noqa: N802
-        self._test(node.test)
+        self._record(node.test)
         for stmt in [*node.body, *node.orelse]:
             self.visit(stmt)
 
     def visit_Assert(self, node: ast.Assert) -> None:  # noqa: N802
-        self._test(node.test)
+        self._record(node.test)
         if node.msg is not None:
             self.visit(node.msg)
 
     def visit_IfExp(self, node: ast.IfExp) -> None:  # noqa: N802
-        self._test(node.test)
+        self._record(node.test)
         self.visit(node.body)
         self.visit(node.orelse)
 
-    def visit_BoolOp(self, node: ast.BoolOp) -> None:  # noqa: N802
-        # BoolOp coerces operands through Python truthiness even when the whole
-        # expression is returned, assigned, or passed as a call argument.
-        self._test(node)
+    def visit_Call(self, node: ast.Call) -> None:  # noqa: N802
+        hits = _unsafe_boolean_nodes(node)
+        if hits:
+            self.hits.extend(hits)
+            # Do not descend into the same direct coercion and double count it.
+            return
         self.generic_visit(node)
 
     def visit_UnaryOp(self, node: ast.UnaryOp) -> None:  # noqa: N802
         if isinstance(node.op, ast.Not):
-            self._test(node)
+            hits = _unsafe_boolean_nodes(node)
+            if hits:
+                self.hits.extend(hits)
+                return
         self.generic_visit(node)
 
-    def visit_Call(self, node: ast.Call) -> None:  # noqa: N802
-        if _call(node, "bool", 1) and _name(node.args[0], "enabled"):
-            self.hits.append(node.args[0])
+    def visit_BoolOp(self, node: ast.BoolOp) -> None:  # noqa: N802
+        hits = _unsafe_boolean_nodes(node)
+        if hits:
+            self.hits.extend(hits)
+            # Still inspect child calls/comparisons that may produce a distinct
+            # finding on another enabled use.
+        self.generic_visit(node)
+
+    def visit_Compare(self, node: ast.Compare) -> None:  # noqa: N802
+        hits = _unsafe_boolean_nodes(node)
+        if hits:
+            self.hits.extend(hits)
             return
         self.generic_visit(node)
 
     def visit_comprehension(self, node: ast.comprehension) -> None:  # noqa: N802
         self.visit(node.iter)
         for item in node.ifs:
-            self._test(item)
+            self._record(item)
 
 
 def analyze_source(source: str, *, path: str = "<memory>") -> list[Finding]:
@@ -252,14 +350,24 @@ def analyze_source(source: str, *, path: str = "<memory>") -> list[Finding]:
             continue
         if not _enabled_default_false(node):
             continue
+
         visitor = _TruthinessVisitor(node)
         visitor.visit(node)
-        hits = sorted(visitor.hits, key=lambda hit: (getattr(hit, "lineno", 0), getattr(hit, "col_offset", 0)))
+        hits = sorted(
+            set(visitor.hits),
+            key=lambda hit: (
+                getattr(hit, "lineno", 0),
+                getattr(hit, "col_offset", 0),
+            ),
+        )
         if not hits:
             continue
+
         guard_line = _strict_guard_line(node)
-        if guard_line is not None and guard_line < getattr(hits[0], "lineno", 0):
+        first_hit_line = getattr(hits[0], "lineno", 0)
+        if guard_line is not None and guard_line < first_hit_line:
             continue
+
         for hit in hits:
             findings.append(
                 Finding(
@@ -292,6 +400,7 @@ def scan_paths(
     root = root.resolve()
     selected: set[PurePosixPath] = set()
     errors: list[str] = []
+
     for raw in paths:
         rel = _safe_relative(raw)
         if rel is None:
@@ -321,6 +430,7 @@ def scan_paths(
             errors.append(f"{rel}: cannot read UTF-8 source: {exc}")
             continue
         findings.extend(analyze_source(source, path=rel.as_posix()))
+
     return sorted(findings), sorted(errors)
 
 
@@ -342,6 +452,7 @@ def main() -> int:
 
     findings, errors = scan_paths(Path(args.root), raw_paths, scope=scope)
     ok = not findings and not errors
+
     if args.json:
         print(
             json.dumps(
@@ -366,14 +477,15 @@ def main() -> int:
             {
                 p
                 for p in (_safe_relative(item) for item in raw_paths)
-                if p is not None and p.suffix == ".py" and (
-                    p == scope or scope in p.parents
-                )
+                if p is not None
+                and p.suffix == ".py"
+                and (p == scope or scope in p.parents)
             }
         )
         print(
             f"TITAN V4 activation contract: {'PASS' if ok else 'FAIL'} "
-            f"({checked} changed Python path(s), {len(findings)} finding(s), {len(errors)} error(s))"
+            f"({checked} changed Python path(s), {len(findings)} finding(s), "
+            f"{len(errors)} error(s))"
         )
     return 0 if ok else 1
 
