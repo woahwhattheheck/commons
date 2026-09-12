@@ -8,6 +8,7 @@ import sys
 import tarfile
 import tempfile
 import unittest
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import materialize_town_off as m
@@ -117,6 +118,16 @@ class TownSurvivorshipTest(unittest.TestCase):
             m._publish_pair(out, payload, receipt, document)
             self.assertEqual(out.read_bytes(), payload)
             self.assertEqual(json.loads(receipt.read_text()), document)
+
+    def test_pair_publication_rolls_back_both_on_receipt_write_failure(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / "town-off.tar.gz"
+            receipt = Path(temp) / "town-off.json"
+            with mock.patch.object(m.json, "dump", side_effect=OSError("receipt write failed")):
+                with self.assertRaisesRegex(OSError, "receipt write failed"):
+                    m._publish_pair(out, b"candidate", receipt, {"schema": "test"})
+            self.assertFalse(out.exists())
+            self.assertFalse(receipt.exists())
 
 
 if __name__ == "__main__":
