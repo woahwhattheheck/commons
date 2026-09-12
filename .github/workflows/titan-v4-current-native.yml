@@ -15,6 +15,9 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
       - 'revenue/kaggriculture/cloud-execution-lab/*.py'
       - 'revenue/kaggriculture/cloud-execution-lab/*.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/LICENSE'
+      - 'revenue/kaggriculture/cloud-execution-lab/NOTICE'
+      - 'revenue/kaggriculture/cloud-execution-lab/TITAN-RELEASE.md'
       - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/RELEASE.json'
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json'
@@ -26,6 +29,7 @@ on:
       - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/sell_priority.py'
       - 'revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py'
       - 'revenue/kaggriculture/cloud-committed-seed-retry/seed_retry.py'
+      - 'revenue/kaggriculture/cloud-committed-seed-retry/test_seed_retry.py'
       - 'revenue/kaggriculture/cloud-economic-stress/funded_payback/funded_payback.py'
 
 permissions:
@@ -44,6 +48,72 @@ jobs:
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
+
+      - name: Prove publisher trigger covers package source map
+        shell: python
+        run: |
+          import importlib.util
+          import re
+          from pathlib import Path
+
+          repo = Path.cwd().resolve()
+          workflow_path = repo / '.github/workflows/titan-v4-current-native.yml'
+          lab = repo / 'revenue/kaggriculture/cloud-execution-lab'
+          builder_path = lab / 'build_integrated.py'
+
+          spec = importlib.util.spec_from_file_location('titan_trigger_builder', builder_path)
+          if spec is None or spec.loader is None:
+              raise SystemExit('cannot load canonical builder for trigger-coverage proof')
+          build = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(build)
+
+          text = workflow_path.read_text(encoding='utf-8')
+          marker = '\n  push:\n'
+          if marker not in text or '\n\npermissions:' not in text:
+              raise SystemExit('cannot isolate push trigger block')
+          push_block = text.split(marker, 1)[1].split('\n\npermissions:', 1)[0]
+          patterns = re.findall(r"^\s+- '([^']+)'\s*$", push_block, flags=re.MULTILINE)
+          if not patterns:
+              raise SystemExit('push trigger has no path patterns')
+
+          def compile_glob(pattern: str):
+              out = []
+              i = 0
+              while i < len(pattern):
+                  if pattern.startswith('**', i):
+                      out.append('.*')
+                      i += 2
+                      continue
+                  char = pattern[i]
+                  if char == '*':
+                      out.append('[^/]*')
+                  elif char == '?':
+                      out.append('[^/]')
+                  else:
+                      out.append(re.escape(char))
+                  i += 1
+              return re.compile('^' + ''.join(out) + '$')
+
+          matchers = [(pattern, compile_glob(pattern)) for pattern in patterns]
+          sources = set()
+          for source_path in build.source_files().values():
+              absolute = (lab / source_path).resolve()
+              try:
+                  relative = absolute.relative_to(repo).as_posix()
+              except ValueError as exc:
+                  raise SystemExit(f'package source escapes checkout: {source_path}') from exc
+              sources.add(relative)
+
+          uncovered = sorted(
+              source for source in sources
+              if not any(regex.fullmatch(source) for _, regex in matchers)
+          )
+          if uncovered:
+              raise SystemExit(
+                  'current-native publisher push.paths misses package sources:\n' +
+                  '\n'.join(uncovered)
+              )
+          print(f'publisher trigger covers {len(sources)} package source paths')
 
       - name: Authenticate checkout and committed current publication
         shell: bash
@@ -97,6 +167,8 @@ jobs:
         env:
           OUTPUT: ${{ runner.temp }}/titan-v4-current-native
           CHECKOUT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          SOURCE_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           import hashlib
           import importlib.util
@@ -217,6 +289,8 @@ jobs:
           manifest = {
               'schema': 'titan.v4.current-native-actions-snapshot/v1',
               'checkout_sha': os.environ['CHECKOUT_SHA'],
+              'event_name': os.environ['EVENT_NAME'],
+              'source_head_sha': os.environ['SOURCE_HEAD_SHA'],
               'builder_git_blob': git_blob(builder_path.read_bytes()),
               'committed_current': {
                   'sha256': old_sha,
