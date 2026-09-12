@@ -15,9 +15,13 @@ FEATURE_INSERT = FEATURE_ANCHOR + "    exec_pace: bool = False\n"
 
 CONSUMER_ANCHOR = "            self.consumer = FrozenSelected()\n"
 CONSUMER_INSERT = CONSUMER_ANCHOR + (
-    "            if f.exec_pace:\n"
+    "            if f.exec_pace is True:\n"
     "                pace = load('_titan_exec_pace_runtime', HERE/'exec_pace_runtime.py')\n"
-    "                self.consumer.exec_pace_state = pace.PriceTrendState()\n"
+    "                exec_pace_state = getattr(self, '_exec_pace_state', None)\n"
+    "                if exec_pace_state is None:\n"
+    "                    exec_pace_state = pace.PriceTrendState()\n"
+    "                    self._exec_pace_state = exec_pace_state\n"
+    "                self.consumer.exec_pace_state = exec_pace_state\n"
     "                self.consumer.exec_pace_apply = pace.apply_candidate\n"
 )
 
