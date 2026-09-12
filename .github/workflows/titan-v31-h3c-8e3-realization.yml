@@ -1,0 +1,185 @@
+name: TITAN V3.1 H3c 8e3 realization gate
+
+on:
+  pull_request:
+    branches:
+      - titan/v3.1-20260911
+    paths:
+      - '.github/workflows/titan-v31-h3c-8e3-realization.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  exact-current-root-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout literal PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Bind shipped root, scope, and reviewed bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec'
+          R04='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          test "$(git rev-parse HEAD)" = '${{ github.event.pull_request.head.sha }}'
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          test "$(git hash-object "$DIR/baseline.py")" = '724b93dddd3b53a5aa0340adeeddbbcd8b731fbc'
+          test "$(git hash-object "$DIR/candidate.py")" = '3074f9f6a7be15c440b8f492a36d0c3d602c717c'
+          test "$(git hash-object "$DIR/h3c_goose_eod_cap_rescue.py")" = '2044d6cf1e0c51f95027229863f910aa43ac7008'
+          test "$(git hash-object "$DIR/realization_report.py")" = '4f5662ab67c439257c475c05de7d17c640d310e1'
+          test "$(git hash-object "$DIR/test_realization_report.py")" = 'd728fa4a2d2d63215985cb88e245abc3f8eb122d'
+          test "$(git hash-object "$R04")" = '7edacbfb4916b8f241b689ded6643240ca02a9ec'
+          test "$(git hash-object "$EVAL")" = '1fb6b655bb4ca1e1684be165a8ef513e2e6c2325'
+          grep -q '"r04_b5_carrot_fertilizer": True' "$DIR/baseline.py"
+          grep -q '"r04_b5_jit_fertilize": True' "$DIR/baseline.py"
+          grep -q '"r04_b5_carrot_fertilizer": True' "$DIR/candidate.py"
+          grep -q '"r04_b5_jit_fertilize": True' "$DIR/candidate.py"
+          git diff --name-only "$BASE"..HEAD > /tmp/h3c-8e3-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          actual = set(Path('/tmp/h3c-8e3-paths.txt').read_text().splitlines())
+          expected = {
+              '.github/workflows/titan-v31-h3c-8e3-realization.yml',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/baseline.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/candidate.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/h3c_goose_eod_cap_rescue.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/realization_report.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec/test_realization_report.py',
+          }
+          if actual != expected:
+              raise SystemExit(f'wrong H3c 8e3 execution scope: {sorted(actual)!r}')
+          print('H3C_8E3_SCOPE_OK', len(actual))
+          PY
+
+      - name: Compile and test evidence carrier without dirtying checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec')
+          for path in sorted(root.glob('*.py')):
+              compile(path.read_text(encoding='utf-8'), str(path), 'exec')
+          PY
+          (
+            cd revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec
+            python3 -B -m unittest -q test_realization_report.py
+          )
+          test -z "$(git status --porcelain)"
+
+      - name: Prepare pinned official interpreter cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py --prepare-engine /tmp/kag-engine
+
+      - name: Require shipped root is still live before evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          git fetch --no-tags origin 'refs/heads/titan/v3.1-20260911'
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+
+      - name: Run exact shipped 8e3 self-play control
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$DIR/baseline.py" \
+            --opponent "v31_8e3=$DIR/baseline.py" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h3c-8e3-control.json
+
+      - name: Run exact reviewed H3c on the same cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec'
+          python3 -B "$EVAL" \
+            --engine-dir /tmp/kag-engine \
+            --candidate "$DIR/candidate.py" \
+            --opponent "v31_8e3=$DIR/baseline.py" \
+            --seeds 2611151001,2611151002,2611151003,2611151004 \
+            --rng-seed 20260911 \
+            --recheck-first \
+            --output /tmp/h3c-8e3-candidate.json
+
+      - name: Derive paired current-root verdict with actual-byte custody
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR='revenue/kaggriculture/cloud-execution-lab/candidates/v3/experiments/h3c_goose_8e3_exec'
+          EVAL='revenue/kaggriculture/cloud-execution-lab/reference/evaluator/evaluate.py'
+          BASELINE_SHA="$(sha256sum "$DIR/baseline.py" | awk '{print $1}')"
+          CANDIDATE_SHA="$(sha256sum "$DIR/candidate.py" | awk '{print $1}')"
+          EVALUATOR_SHA="$(sha256sum "$EVAL" | awk '{print $1}')"
+          python3 -B "$DIR/realization_report.py" \
+            /tmp/h3c-8e3-control.json /tmp/h3c-8e3-candidate.json \
+            --expected-baseline-sha256 "$BASELINE_SHA" \
+            --expected-candidate-sha256 "$CANDIDATE_SHA" \
+            --expected-evaluator-sha256 "$EVALUATOR_SHA" \
+            --json-out /tmp/h3c-8e3-realization.json \
+            --markdown-out /tmp/h3c-8e3-realization.md
+          cat /tmp/h3c-8e3-realization.md
+          cat /tmp/h3c-8e3-realization.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Recheck canonical before publishing any receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          git fetch --no-tags origin 'refs/heads/titan/v3.1-20260911'
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+
+      - name: Retain exact receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: h3c-8e3-realization-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/h3c-8e3-control.json
+            /tmp/h3c-8e3-candidate.json
+            /tmp/h3c-8e3-realization.json
+            /tmp/h3c-8e3-realization.md
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish durable PR receipt
+        if: success() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='8e3d92a286806f9f9525973ee7d359b629a11487'
+          git fetch --no-tags origin 'refs/heads/titan/v3.1-20260911'
+          test "$(git rev-parse FETCH_HEAD)" = "$BASE"
+          {
+            printf 'Execution head: `%s`\n\n' '${{ github.event.pull_request.head.sha }}'
+            cat /tmp/h3c-8e3-realization.md
+            printf '\nEvidence-only current-root screen. Reviewed H3c donor is byte-exact blob `2044d6cf1e0c51f95027229863f910aa43ac7008`; gameplay parent is literal shipped V3.1 `8e3d92a286806f9f9525973ee7d359b629a11487` with B5 CARROT + JIT retained true in both arms. Reducer binds the reported control/opponent fingerprints to literal checked-out `baseline.py` SHA256, the treatment fingerprint to literal `candidate.py` SHA256, and both reports to the literal checked-out official evaluator SHA256, in addition to exact RNG/reproducibility, entrypoint identity, shared engine metadata, and strict 8-cell custody.\n'
+          } > /tmp/h3c-8e3-comment.md
+          gh pr comment '${{ github.event.pull_request.number }}' --body-file /tmp/h3c-8e3-comment.md
+
+      - name: Prove checkout stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
