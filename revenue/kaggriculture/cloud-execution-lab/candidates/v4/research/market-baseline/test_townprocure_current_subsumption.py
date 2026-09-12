@@ -2,8 +2,13 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import hashlib
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
 
+import current_wheat_buy_census
 import townprocure_current_subsumption as sut
 
 
@@ -27,6 +32,63 @@ class TimingMathTests(unittest.TestCase):
             with self.subTest(value=value):
                 with self.assertRaises(ValueError):
                     sut._first_multiple_at_or_after(value, 24)
+
+
+class SnapshotCustodyTests(unittest.TestCase):
+    def test_theorem_source_semantics_stay_bound_after_path_swap(self):
+        original = b"AUTHENTICATED_ANCHOR = True\n"
+        swapped = b"ATTACKER_BYTES = True\n"
+        with tempfile.TemporaryDirectory() as td:
+            source = Path(td) / "main.py"
+            source.write_bytes(original)
+            pin = sut._git_blob_bytes(original)
+            with mock.patch.dict(sut.PINS, {"main.py": pin}, clear=True):
+                snapshots, observed = sut._capture_pinned_sources({"main.py": source})
+            self.assertEqual(observed, {"main.py": pin})
+
+            # Deterministic predecessor: mutate the pathname *after* identity auth.
+            source.write_bytes(swapped)
+            semantic_source = sut._snapshot_text(snapshots["main.py"], "main.py")
+            self.assertIn("AUTHENTICATED_ANCHOR", semantic_source)
+            self.assertNotIn("ATTACKER_BYTES", semantic_source)
+            self.assertEqual(sut._git_blob_bytes(snapshots["main.py"]), pin)
+
+    def test_vendor_exec_uses_authenticated_snapshot_after_path_swap(self):
+        original = (
+            b"def routes():\n"
+            b"    return {'auth': [{'market': [['BUY_PRODUCT', 'WHEAT', 2]]}]}\n"
+        )
+        swapped = b"def routes():\n    return {'attacker': []}\n"
+        expected_blob = current_wheat_buy_census._git_blob_bytes(original)
+        original_loader = current_wheat_buy_census._load_vendor_snapshot
+
+        with tempfile.TemporaryDirectory() as td:
+            lab = Path(td) / "lab"
+            vendor = lab / "reference" / "next-panel" / "vendor" / "arlene.py"
+            vendor.parent.mkdir(parents=True)
+            vendor.write_bytes(original)
+
+            def swap_then_execute(snapshot, source_path):
+                # This hook runs after census authenticated `snapshot` and before
+                # its semantic execution. Reopening source_path would execute poison.
+                source_path.write_bytes(swapped)
+                return original_loader(snapshot, source_path)
+
+            with mock.patch.object(current_wheat_buy_census, "_lab_root", return_value=lab), mock.patch.object(
+                current_wheat_buy_census,
+                "_load_vendor_snapshot",
+                side_effect=swap_then_execute,
+            ):
+                result = current_wheat_buy_census.census(
+                    expected_vendor_blob=expected_blob
+                )
+
+        self.assertEqual(result["vendor_git_blob"], expected_blob)
+        self.assertEqual(result["vendor_sha256"], hashlib.sha256(original).hexdigest())
+        self.assertEqual(result["route_count"], 1)
+        self.assertEqual(result["routes_with_wheat_buys"], ["auth"])
+        self.assertEqual(result["wheat_buy_row_count"], 1)
+        self.assertEqual(result["wheat_buy_quantities"], [2])
 
 
 class CurrentSourceAuditTests(unittest.TestCase):
