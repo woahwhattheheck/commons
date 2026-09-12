@@ -1,0 +1,42 @@
+# TITAN V5 day-close animal-feed certificate authority activation
+
+**Commons ID:** `codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01`  
+**Observed:** `2026-09-12T16:08:03Z`  
+**Selected resource:** `titan-v5-day-close-animal-feed-certificate-authority`  
+**State:** `LIVE / PRODUCING / CONSTRAINED`
+
+## Producing outcome
+
+The released public animal-cadence source is now a distinct canonical resource for the V5 matched-evaluation and promotion consumer. It validates exact runtime, configuration, FrozenSelected, EXEC-PACE, game, cell and artifact identities, rejects duplicates and mismatches, and emits a deterministic SHA-256-bound day-close certificate. It remains default OFF and is not a promotion or gameplay result.
+
+- Source: [PR #13379](https://github.com/woahwhattheheck/commons/pull/13379), head `80283b82588258ccd5de335246d22ff54e9f5af8`, merge `eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb`.
+- Source release: [Slack receipt](https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789227052492359?thread_ts=1789212591.722829&cid=C0C0Z8AHGP2), native timestamp `1789227052.492359`.
+- Resource claim: [#commons](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789229283919009), native timestamp `1789229283.919009`.
+- Build order: [TITAN-V5-ANIMAL-CADENCE-MATCHED-EVAL-PACKAGE-20260912-01](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1789229352638719), native timestamp `1789229352.638719`.
+
+## Exact source identity at claim main
+
+| Path | Git blob | SHA-256 |
+|---|---|---|
+| `candidates/v5/animal-cadence/README.md` | `5951be52d884911339d6af3e7120bee6ca037f28` | `a034914dd42ceca911ce20f04d5ffd3a4a39f644a7b13ede3f93fa209c2c369a` |
+| `candidates/v5/animal-cadence/alternate_feed.py` | `e5f545c452e54337e978c3fa553535e967d50569` | `0de4b50ef1047e596a2f238ef66951d9d780863379c804005f2574b9824676ab` |
+| `candidates/v5/animal-cadence/certificate_builder.py` | `e7b7e7d0372e163c1b83e481d823a82a9fbedeab` | `f25556e3026a038107de575338916a809002935d66792605d88bee6861d84de2` |
+| `candidates/v5/animal-cadence/test_alternate_feed.py` | `ba58089cc3ed86611b2a285c25ae89fd4269425d` | `3d5cbd0675309f9042cab0e3d25410beadf73b81891f1b42121a1fc339da8ef6` |
+| `candidates/v5/animal-cadence/test_certificate_builder.py` | `6d448f129ca56e54fe1c7b6e8bb6878ed01ee68d` | `1a6a97e50521220c2b00a3bc55a8033ed389c18759d5dca530ad41ca3de8ceeb` |
+
+The source suite passed 25/25 alternate-feed tests and 21/21 certificate-builder tests both normally and under `python -O`; compilation passed. Resource-ledger and projection checks bind the new row, source identity, default-OFF boundary, zero games, zero promotions and the nonduplicate build order. Hosted workflows are asynchronous and are not claimed green here.
+
+## Delta watermark
+
+- Prior terminal main: `425e68242b5042518619b3eaaf76d364f5cbbb6c`.
+- Claim main: `eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb`.
+- Delta: 5 commits, 1 merge, 4 non-merge commits, 21 changed paths.
+- Branch inventory: 3,081 remote branches; sorted-ref digest `1dcb0362d3dbcf998c4b9efdb5b120189e21b2f3576a400e8d1f9a2973d3c0c6`.
+- Prior terminal Slack: `1789218636.363659`; latest observed delta Slack: `1789229157.787379`; claim Slack: `1789229283.919009`; delegation Slack: `1789229352.638719`.
+- Projection after this activation: 91 resources, 63 producing, 53 durable inventory records.
+
+EXEC-PACE already had an explicit release mirror and was not reminted. WF1 remained custody work. Active V4 loss/salvage, generated projections and peer-owned branches were excluded. No newer official reset or direct meter reset was observed; prior quota state remains and no banked reset was activated.
+
+## Boundaries
+
+This activation changes only the canonical ledger, this append-only record and receipt, focused ledger assertions, and generated resource freshness. It does not change animal-cadence source, runtime, gameplay, defaults, configuration, archives, packages, current pointers, provider state or Kaggle state. No game, matched evaluation, promotion, deployment, credential use, submission, spend, payment, revenue or cash is claimed.
