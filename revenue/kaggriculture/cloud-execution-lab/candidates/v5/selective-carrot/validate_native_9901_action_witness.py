@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+"""Fail-closed validator for the exact native-9901 Apex action witness."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+from typing import Any
+
+SCHEMA = "titan-v5-production-action-divergence/v1"
+EXPECTED = {
+    "evaluator": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "loader": "61093af280494f95d0f3e5137f716c980ebaf7a2bb53fb333b03566810808e6e",
+    "engine": {
+        "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+        "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+        "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b",
+    },
+    "left_archive": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+    "right_archive": "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239",
+    "left_entry": "87df8bf2088b0650042350590d9486b6541b6ac2cd7ac1cb51fc1eaf43e8b7d0",
+    "right_entry": "e40be452f16050f8ad1a67e0124b2df6983b93869b679d82860ca11c1bec34b3",
+    "opponent_entry": "e7b78d4b9e2fc7a68528e45f876a68b50d364103ebd5bf5f2dbbf68770bf54f5",
+    "seed": 1209129901,
+    "rng_seed": 20260912,
+    "seats": [0, 1],
+    "timeouts": {"action": 1.25, "startup": 10.0, "game": 900.0},
+    "steps": 719,
+}
+EXPECTED_SCORES = {
+    0: {"left": [74143.0, 64333.0], "right": [73906.0, 63838.0]},
+    1: {"left": [64333.0, 74143.0], "right": [63838.0, 73906.0]},
+}
+
+
+class ValidationError(ValueError):
+    pass
+
+
+def _encoded(value: Any) -> bytes:
+    return json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+
+
+def _digest(value: Any) -> str:
+    return hashlib.sha256(_encoded(value)).hexdigest()
+
+
+def _require(condition: bool, message: str) -> None:
+    if not condition:
+        raise ValidationError(message)
+
+
+def _sha_from_authority(authority: dict[str, Any], key: str) -> str:
+    value = authority.get(key)
+    _require(isinstance(value, dict), f"authority.{key} must be an object")
+    sha = value.get("sha256")
+    _require(isinstance(sha, str), f"authority.{key}.sha256 missing")
+    return sha
+
+
+def validate(report: dict[str, Any]) -> dict[str, Any]:
+    _require(type(report) is dict, "report must be a JSON object")
+    _require(report.get("schema") == SCHEMA, "unexpected report schema")
+
+    claimed_report_sha = report.get("report_sha256")
+    _require(isinstance(claimed_report_sha, str), "report_sha256 missing")
+    unsigned = dict(report)
+    unsigned.pop("report_sha256", None)
+    _require(_digest(unsigned) == claimed_report_sha, "report_sha256 mismatch")
+
+    authority = report.get("authority")
+    _require(type(authority) is dict, "authority must be an object")
+    _require(report.get("authority_sha256") == _digest(authority), "authority_sha256 mismatch")
+    _require(_sha_from_authority(authority, "evaluator") == EXPECTED["evaluator"], "wrong evaluator")
+    _require(_sha_from_authority(authority, "loader") == EXPECTED["loader"], "wrong loader")
+    _require(authority.get("engine_sha256") == EXPECTED["engine"], "wrong engine authority")
+    _require(_sha_from_authority(authority, "left_archive") == EXPECTED["left_archive"], "wrong V3.1 archive")
+    _require(_sha_from_authority(authority, "right_archive") == EXPECTED["right_archive"], "wrong production-v3 archive")
+    _require(authority.get("left_entry_sha256") == EXPECTED["left_entry"], "wrong V3.1 entry")
+    _require(authority.get("right_entry_sha256") == EXPECTED["right_entry"], "wrong production-v3 entry")
+    _require(authority.get("opponent_entry_sha256") == EXPECTED["opponent_entry"], "wrong Apex entry")
+    _require(authority.get("seed") == EXPECTED["seed"], "wrong seed")
+    _require(authority.get("rng_seed") == EXPECTED["rng_seed"], "wrong RNG seed")
+    _require(authority.get("seats") == EXPECTED["seats"], "wrong seat panel")
+    _require(authority.get("timeouts") == EXPECTED["timeouts"], "wrong timeout authority")
+
+    rows = report.get("rows")
+    _require(type(rows) is list and len(rows) == 2, "expected exactly two seat rows")
+    by_seat: dict[int, dict[str, Any]] = {}
+    for row in rows:
+        _require(type(row) is dict, "row must be an object")
+        seat = row.get("candidate_seat")
+        _require(type(seat) is int and seat in (0, 1) and seat not in by_seat, "invalid/duplicate candidate seat")
+        by_seat[seat] = row
+    _require(set(by_seat) == {0, 1}, "both candidate seats are required")
+
+    first_steps: dict[str, int] = {}
+    for seat in (0, 1):
+        row = by_seat[seat]
+        expected = EXPECTED_SCORES[seat]
+        for side in ("left", "right"):
+            result = row.get(f"{side}_result")
+            _require(type(result) is dict, f"seat {seat} {side}_result missing")
+            _require(result.get("status") == "complete", f"seat {seat} {side} incomplete")
+            _require(result.get("candidate_seat") == seat, f"seat {seat} {side} candidate_seat mismatch")
+            _require(result.get("scores") == expected[side], f"seat {seat} {side} terminal score mismatch")
+            _require(result.get("steps") == EXPECTED["steps"], f"seat {seat} {side} step count mismatch")
+
+        comparison = row.get("comparison")
+        _require(type(comparison) is dict, f"seat {seat} comparison missing")
+        _require(comparison.get("steps") == EXPECTED["steps"], f"seat {seat} comparison step count mismatch")
+        first = comparison.get("first_any_action_divergence_step")
+        _require(type(first) is int and 0 <= first < EXPECTED["steps"], f"seat {seat} lacks a real action divergence")
+        _require(comparison.get("all_actions_identical") is False, f"seat {seat} claims identical actions")
+        first_steps[str(seat)] = first
+
+    return {
+        "schema": "titan-v5-production-action-divergence-native-9901-validation/v1",
+        "status": "PASS",
+        "report_sha256": claimed_report_sha,
+        "authority_sha256": report["authority_sha256"],
+        "first_any_action_divergence_step": first_steps,
+        "retained_terminal_scores_reproduced": True,
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("report", type=Path)
+    args = parser.parse_args(argv)
+    try:
+        raw = args.report.read_text(encoding="utf-8")
+        report = json.loads(raw)
+        result = validate(report)
+    except (OSError, json.JSONDecodeError, ValidationError, TypeError, ValueError) as exc:
+        print(f"validate_native_9901_action_witness: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps(result, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
