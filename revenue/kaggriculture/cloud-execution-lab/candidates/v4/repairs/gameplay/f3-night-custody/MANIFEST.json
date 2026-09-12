@@ -17,6 +17,8 @@
   "engine_reference_path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
   "engine_reference_blob": "3c202c7ee921da239356789e266b694635103fc4",
   "engine_rules": ["nightly reset iff (step + 1) % 24 == 0", "episode terminal at step >= 720 - 2"],
+  "engine_validation_receipt": "ENGINE-RECEIPT.json",
+  "engine_validation_commit": "3052e926e7a066d44d5221cde197ae5bc04b66c7",
   "repair": [
     "Reject non-integer, negative and post-terminal step values before pending-action or view work",
     "Preserve the incumbent hours 16 through 21 admission window",
@@ -36,7 +38,7 @@
     "py_compile": "PASS",
     "local_git_identity_equals_published_source_and_test_blob": true
   },
-  "evidence_boundary": "Local helper tests only. The 34,800-case differential covers 29 real-reset days, six eligible hours, all 100 target tiles and held-WHEAT 0/1. It is not hosted CI, official paired games, current-ABI activation or a leaderboard gain. Outer routers may reject malformed observations earlier.",
+  "evidence_boundary": "The validation object records the initial helper suite. The 34,800-case differential covers 29 real-reset days, six eligible hours, all 100 target tiles and held-WHEAT 0/1. ENGINE-RECEIPT.json adds 108 real interpreter rescue timelines plus controls and edge timelines, with a combined 15 normal/15 optimized tests. Neither receipt is hosted CI, a full-router or full-match test, current-ABI activation, or a leaderboard gain. Outer routers may reject malformed observations earlier.",
   "preservation": "Exact predecessor bytes remain in the existing main ancestry as Git blob 1348e796acba28b22d85fac8a57e080f0504ddff; no competing helper copy or V4 branch was created.",
   "run_from_repo_root": [
     "python revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/overlay/checks/test_v4_f3_night_custody.py",
