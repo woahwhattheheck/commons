@@ -90,7 +90,7 @@ def _source_record(
     resolved_root = root.resolve()
     resolved_source = (resolved_root / raw_source).resolve()
     try:
-        resolved_source.relative_to(resolved_root)
+        canonical_source = resolved_source.relative_to(resolved_root).as_posix()
     except ValueError as exc:
         raise IdentityError(f"{name}: source escapes root") from exc
     if not resolved_source.is_file():
@@ -111,6 +111,11 @@ def _source_record(
             raise IdentityError(f"{name}: a non-empty activation mapping is required")
         if not all(type(key) is str for key in activation):
             raise IdentityError(f"{name}: activation keys must be strings")
+        reserved = sorted(key for key in activation if key.startswith("_"))
+        if reserved:
+            raise IdentityError(
+                f"{name}: activation cannot depend on reserved metadata keys: {reserved}"
+            )
         for key, expected in activation.items():
             if key not in config:
                 raise IdentityError(f"{name}: activation key missing from config: {key}")
@@ -124,7 +129,7 @@ def _source_record(
     digest = hashlib.sha256(resolved_source.read_bytes()).hexdigest()
     return {
         "name": name,
-        "source": raw_source.as_posix(),
+        "source": canonical_source,
         "source_sha256": digest,
         "activation": activation_record,
     }
