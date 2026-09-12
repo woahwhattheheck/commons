@@ -28,6 +28,7 @@ CONFIG = {
     "farmHandCostMult": 1,
 }
 STEP = 12 * 24 + 23
+_DEFAULT_CONFIG = object()
 
 
 def sheep(*, fed=False, cared=False):
@@ -116,13 +117,14 @@ class V233EodService(unittest.TestCase):
         state,
         *,
         enabled=True,
-        configuration=None,
+        configuration=_DEFAULT_CONFIG,
     ):
         r04._V233_STATES[0] = state
+        resolved = dict(CONFIG) if configuration is _DEFAULT_CONFIG else configuration
         return lane.apply_v233_eod_service(
             action,
             observation,
-            dict(CONFIG) if configuration is None else configuration,
+            resolved,
             enabled=enabled,
         )
 
@@ -231,6 +233,7 @@ class V233EodService(unittest.TestCase):
             ("animal", "COW"),
             ("placed_day", "10"),
             ("yield_units", 0.0),
+            ("yield_units", 7),
             ("consecutive_unfed", True),
             ("fed_today", 0),
             ("cared_today", 1),
