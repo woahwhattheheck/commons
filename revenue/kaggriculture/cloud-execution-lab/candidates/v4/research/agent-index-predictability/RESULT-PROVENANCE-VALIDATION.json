@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "operation": "ASTRA-CHAINLOCK-CURRENT-V4-RESULT-PROVENANCE",
+  "scope": "analysis/evidence tooling only",
+  "published_git_blobs": {
+    "bind_result_provenance.py": "1d5211e39af26f06f49e050ae127fde9fc8a7873",
+    "test_result_provenance.py": "9b9f9ea7447f4a0bdc9e9df3db2cd051d934c4b3"
+  },
+  "authored_validation": {
+    "normal": {"passed": 13, "failed": 0},
+    "python_optimized": {"passed": 13, "failed": 0},
+    "py_compile": "PASS"
+  },
+  "measured_large_margin_control": {
+    "rewards_seat0": [168572, 3550],
+    "candidate_margin": 165022,
+    "preserved": true,
+    "score_ceiling_applied": false
+  },
+  "contracts": [
+    "candidate engine and opponent identities are computed from local artifact bytes",
+    "symlinks traversal and mutable file identity fail closed",
+    "margin and score aliases cannot contradict rewards",
+    "non-finite and float-overflow numeric inputs fail closed",
+    "duplicate unfinished timeout error and partial-seat cells fail closed",
+    "replicates are disambiguated without changing the legacy four-field pair key"
+  ],
+  "donor": {
+    "pull_request": 11727,
+    "theorem": "exact candidate/engine/seed/opponent/seat provenance before score comparison"
+  },
+  "complementary_current_gate": {
+    "name": "QUIETBOX",
+    "purpose": "wall-clock contention trust",
+    "relationship": "separate oracle; not duplicated here"
+  },
+  "side_effects": {
+    "gameplay_changed": false,
+    "defaults_changed": false,
+    "games_launched": 0,
+    "kaggle_submission": false
+  }
+}
