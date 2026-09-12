@@ -296,6 +296,11 @@ def derive_component(
     conflicts = _id_list(conflicts_with, "conflicts_with")
     if cid in depends or cid in conflicts:
         raise ExportError("component cannot depend on or conflict with itself")
+    impossible = sorted(set(depends) & set(conflicts))
+    if impossible:
+        raise ExportError(
+            f"component cannot both depend on and conflict with: {impossible[0]}"
+        )
 
     overlap = dict(overlap_after or {})
     for member, prior in overlap.items():
