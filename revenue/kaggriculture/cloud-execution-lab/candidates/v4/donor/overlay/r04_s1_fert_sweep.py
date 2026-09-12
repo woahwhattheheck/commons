@@ -468,7 +468,12 @@ def _consider_hire(observation: dict, action: Any, st: _Day, tape: Any, configur
         return action
     units = min(reachable, REACH)
     cost = _fib(hires_today)
-    quoted = units * price * PRICE_KEEP
+    try:
+        quoted = units * price * PRICE_KEEP
+    except (OverflowError, ValueError):
+        return action
+    if not math.isfinite(quoted):
+        return action
     cash_reserve = _effective_cash_reserve()
     if quoted - cost < MIN_GAIN or quoted < GAIN_RATIO * cost or money < cost + cash_reserve:
         REPORT["value_declines"] += 1
@@ -523,10 +528,6 @@ def wrap(parent, tape_of=None):
             except Exception:
                 return parent(observation, configuration)
             action = parent(parent_observation, configuration)
-            try:
-                command = _hand_command(observation, st)
-            except Exception:
-                command = ["PASS"]
             if not isinstance(action, dict):
                 return action
             inner = action.get("hands")
@@ -536,6 +537,10 @@ def wrap(parent, tape_of=None):
                 or any(not isinstance(item, list) for item in inner)
             ):
                 return action
+            try:
+                command = _hand_command(observation, st)
+            except Exception:
+                command = ["PASS"]
             result = copy.deepcopy(action)
             inner = list(result["hands"])
             inner.insert(st.index, command)
