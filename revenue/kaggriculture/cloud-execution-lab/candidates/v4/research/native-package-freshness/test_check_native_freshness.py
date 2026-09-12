@@ -161,6 +161,29 @@ class FreshnessTests(unittest.TestCase):
         self.assertEqual("INVALID", report["verdict"])
         self.assertIn("HEAD changed during verification", report["problems"][0])
 
+    def test_midrun_worktree_mutation_after_first_pass_invalid(self):
+        archive, digest = self.archive()
+        original = fresh._read_live_file
+        mutated = False
+
+        def mutate_after_first_snapshot(repo_root, relative):
+            nonlocal mutated
+            data = original(repo_root, relative)
+            if not mutated and relative.name == "TITAN-CONFIG.json":
+                (self.live / "scheduler.py").write_bytes(b"DIRTY AFTER SNAPSHOT\n")
+                mutated = True
+            return data
+
+        fresh._read_live_file = mutate_after_first_snapshot
+        try:
+            report = self.verify(archive, digest)
+        finally:
+            fresh._read_live_file = original
+
+        self.assertTrue(mutated)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("live file changed after verification read", report["problems"][0])
+
     def test_dirty_live_file_invalid(self):
         archive, digest = self.archive()
         (self.live / "scheduler.py").write_bytes(b"DIRTY\n")
