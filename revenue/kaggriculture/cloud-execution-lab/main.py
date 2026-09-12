@@ -2,6 +2,7 @@
 """Canonical TITAN entrypoint. Feature choices are deterministic package data."""
 _INSTANCE = None
 _SPATIAL_RECOVERY = None
+_ROUTE_RECOVERY = None
 _SPATIAL_RECOVERY_FIELDS = ('_committed', 'sale_obligation', 'receipt_events', 'crop_intent')
 
 
@@ -118,10 +119,18 @@ def _new_instance(root, feature_data):
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
         raise ValueError('town_procurement is the tested nonterminal frozen composition')
 
+    overflow_safe_drop = None
+    if getattr(features, 'overflow_safe_drop', False):
+        source = root/'overflow_safe_drop.py'
+        if not source.is_file():
+            source = root/'candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
+        overflow_safe_drop = load('_titan_overflow_safe_drop', source, cache=True)
+
     class FinalPressureAgent(TitanAgent):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
+            self.overflow_safe_drop = overflow_safe_drop
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
             self._history_checkpoint = None
@@ -270,6 +279,17 @@ def _new_instance(root, feature_data):
                 returned, report = apply(obs, returned, cfg, completed=completed)
                 self.diagnostics['town_procurement'] = report
                 self._checkpoint_finalizer(obs, returned, 'town_procurement')
+            # Overflow preservation is an optional final-return transform only.
+            # Do not run it on an incomplete producer result or on the terminal
+            # settlement step, where liquidation semantics own the returned bytes.
+            if self.overflow_safe_drop is not None and completed:
+                episode_steps = cfg.get('episodeSteps', 720)
+                nonterminal = (type(episode_steps) is int and episode_steps >= 2
+                               and obs.get('step') != episode_steps - 2)
+                if nonterminal:
+                    returned, report = self.overflow_safe_drop.transform(returned, obs, cfg)
+                    self.diagnostics['overflow_safe_drop'] = report
+                    self._checkpoint_finalizer(obs, returned, 'overflow_safe_drop')
             return returned
 
     admission = None
@@ -345,7 +365,7 @@ def _spatial_recovery_journal(snapshot, step):
 
 
 def agent(observation, configuration=None):
-    global _INSTANCE, _SPATIAL_RECOVERY
+    global _INSTANCE, _SPATIAL_RECOVERY, _ROUTE_RECOVERY
     import time
     entry_started = time.perf_counter()
     from pathlib import Path
@@ -363,6 +383,9 @@ def agent(observation, configuration=None):
 
     journal = _SPATIAL_RECOVERY if isinstance(_SPATIAL_RECOVERY, dict) else None
     journal_step = None if journal is None else journal.get('last_step')
+    route_journal = _ROUTE_RECOVERY if isinstance(_ROUTE_RECOVERY, dict) else None
+    if journal_step is None and route_journal is not None:
+        journal_step = route_journal.get('last_step')
     # Step zero is both a match boundary and a legal same-step retry. Reuse an
     # instance (or a recovery journal) that already returned step zero; only a
     # later-step -> 0 transition proves that retained state belongs to old play.
@@ -371,7 +394,9 @@ def agent(observation, configuration=None):
     match_reset = step == 0 and previous_step not in (None, 0)
     if match_reset:
         _SPATIAL_RECOVERY = None
+        _ROUTE_RECOVERY = None
         journal = None
+        route_journal = None
     replace = (_INSTANCE is None or match_reset)
     instance = None if replace else _INSTANCE
 
@@ -448,6 +473,14 @@ def agent(observation, configuration=None):
         with timer:
             if replace:
                 instance = _new_instance(root, feature_data)
+                # Preserve only the immutable route ID associated with a fully
+                # completed producer action. Never restore current controller
+                # mutations, seller plans, or a discarded finalizer object.
+                if (route_journal is not None
+                        and route_journal.get('player') == observation['player']
+                        and type(route_journal.get('route')) is str
+                        and step >= route_journal.get('last_step', step + 1)):
+                    instance._completed_route = route_journal['route']
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
                     stager(spatial_recovery)
@@ -472,7 +505,16 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
+        # TitanAgent publishes _completed_route only with a complete selected
+        # action; controller.cur may already contain an interrupted proposal.
+        # A construction cancellation has no new route and keeps the old capsule.
+        if instance is not None:
+            route = getattr(instance, '_completed_route', None)
+            if type(route) is str:
+                _ROUTE_RECOVERY = {'last_step': step, 'player': observation['player'],
+                                   'route': route}
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
+    _ROUTE_RECOVERY = None
     return output

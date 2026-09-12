@@ -350,16 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
+ "n_open_prs": 7,
  "open_prs": [
   {
-   "number": 13369,
+   "number": 13397,
    "author": "woahwhattheheck",
-   "title": "TITAN V5: bind WF1 field evidence to immutable package closures",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13369",
+   "title": "TITAN V5: port milk-shop-gated S2 sheep swap candidate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13397",
    "base_freshness": {
-    "base_sha": "2451733b8e5288dd768a4adbe0365ce5a499836d",
-    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
+    "base_sha": "2d74602bd77ba1f7b3357fdb4f874fb38a770cc5",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,34 +369,98 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13378,
+   "number": 13400,
    "author": "woahwhattheheck",
-   "title": "TITAN V5: recover animal yield-cap candidate carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13378",
+   "title": "TITAN V5: converge EOD shed-capacity rescue",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
-    "base_sha": "f3408fd1cb841e6c1a451458292087c729b3fff7",
-    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
+    "base_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13379,
+   "number": 13398,
    "author": "woahwhattheheck",
-   "title": "TITAN V5: add source-pinned day-close animal feed certificate authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13379",
+   "title": "TITAN V5: recover V3.1 fertilizer-hand current ABI",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13398",
    "base_freshness": {
-    "base_sha": "f3408fd1cb841e6c1a451458292087c729b3fff7",
-    "main_sha": "7d743f0171b9aaf7e8942fb5567a810243929fd4",
+    "base_sha": "91489edff80538dac463f905be566466b4e54fea",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13403,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: rebind CAREBANK scratch composer to current package",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13403",
+   "base_freshness": {
+    "base_sha": "91489edff80538dac463f905be566466b4e54fea",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13395,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: move selective-carrot evaluation onto current lineage",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13395",
+   "base_freshness": {
+    "base_sha": "91489edff80538dac463f905be566466b4e54fea",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13402,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: require paired economics before release-pointer promotion",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13402",
+   "base_freshness": {
+    "base_sha": "2d74602bd77ba1f7b3357fdb4f874fb38a770cc5",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13399,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: restore V3.1 row-shed at final returned market",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13399",
+   "base_freshness": {
+    "base_sha": "91489edff80538dac463f905be566466b4e54fea",
+    "main_sha": "b073318ff3d8dff3c23e87e785a02e14f1c430c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }

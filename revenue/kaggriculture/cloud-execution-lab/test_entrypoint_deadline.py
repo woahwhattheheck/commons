@@ -31,6 +31,8 @@ class _Features:
 
 
 class _FakeInstance:
+    town_procurement_enabled = False
+
     def __init__(self, action, *, returned=None, publish_selected=True,
                  diagnostics=None, duration=0.08, error=None):
         self.features = _Features()

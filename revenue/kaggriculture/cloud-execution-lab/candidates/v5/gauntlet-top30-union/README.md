@@ -29,8 +29,19 @@ python -B corpus.py --corpus /path/to/corpus --out /path/to/new-runtime \
 
 The legacy registry must have an `opponents` array with unique `id` fields.
 `extended-gauntlet.json` retains all legacy rows, fields and order, and appends
-the new fixtures. Colliding IDs raise an error; nothing is overwritten. The
-materializer authenticates every replay digest and generates runnable adapters.
+the new fixtures. Colliding IDs raise an error; nothing is overwritten. A legacy
+registry that already owns the reserved `additive_intake` field is rejected
+rather than silently overwritten.
+
+The materializer now hard-pins this corpus closure to 41 unique submission IDs
+and 123 fixtures (three per submission), authenticates every replay digest, and
+stamps every generated trace with `provenance=public_recorded_actions`,
+`adaptive=false`, and `executable=false`. When `--legacy-registry` is supplied it
+also emits `GAUNTLET-UNION-RECEIPT.json`, binding the legacy file SHA256 and source
+manifest SHA256 while re-checking the exact legacy prefix and untouched top-level
+fields. A receipt PASS establishes additive/provenance closure only; recorded
+traces remain non-responsive diagnostic opponents.
+
 Re-run materialization on each VM because entry paths are local to that VM.
 
 The preserved published old-family table records 30 ranked slots plus mirror;
@@ -56,5 +67,7 @@ jobs alongside these additions. Numerical receipts belong in `#sim-data`.
 
 The launcher uses the existing Commons evaluator, pack adapter and pinned engine;
 each game gets fresh persistent policy processes. It contains no submission API.
-Three focused tests cover replay offset/seat identity, legacy preservation including
-mirror, and collision rejection. Materialization checks every real fixture.
+Eight focused importer tests cover replay offset/seat identity, legacy and mirror
+preservation, collision rejection, reserved-field safety, explicit non-executable
+provenance, and receipt mutation/count closure. Materialization checks every real
+fixture.
