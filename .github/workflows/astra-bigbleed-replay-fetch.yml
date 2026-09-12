@@ -1,0 +1,97 @@
+name: ASTRA BIGBLEED replay fetch
+
+on:
+  push:
+    branches:
+      - astra/bigbleed-replays-20260912
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch public Kaggle replay evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/bigbleed-replays
+          python - <<'PY'
+          import json
+          import pathlib
+          import time
+          import urllib.error
+          import urllib.request
+
+          endpoint = "https://www.kaggle.com/requests/EpisodeService/GetEpisodeReplay"
+          episode_ids = [108047207, 108051873, 108053957]
+          out = pathlib.Path("/tmp/bigbleed-replays")
+
+          for episode_id in episode_ids:
+              body = json.dumps({"EpisodeId": episode_id}).encode("utf-8")
+              req = urllib.request.Request(
+                  endpoint,
+                  data=body,
+                  headers={
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "User-Agent": "commons-titan-v4-public-replay-audit/1.0",
+                  },
+                  method="POST",
+              )
+              raw = None
+              last = None
+              for attempt in range(6):
+                  try:
+                      with urllib.request.urlopen(req, timeout=45) as response:
+                          raw = response.read()
+                          status = response.status
+                      if status != 200:
+                          raise RuntimeError(f"episode {episode_id}: HTTP {status}")
+                      break
+                  except urllib.error.HTTPError as exc:
+                      last = exc
+                      if exc.code not in (429, 500, 502, 503, 504) or attempt == 5:
+                          raise
+                      time.sleep(min(30, 2 ** attempt))
+                  except Exception as exc:
+                      last = exc
+                      if attempt == 5:
+                          raise
+                      time.sleep(min(30, 2 ** attempt))
+              if raw is None:
+                  raise RuntimeError(f"episode {episode_id}: no response: {last}")
+
+              (out / f"episode-{episode_id}.response.json").write_bytes(raw)
+              payload = json.loads(raw)
+              result = payload.get("result", payload)
+              replay = None
+              if isinstance(result, dict):
+                  replay = result.get("replay")
+                  if replay is None:
+                      replay = result.get("Replay")
+              if replay is None and isinstance(payload, dict):
+                  replay = payload.get("replay")
+              if replay is None:
+                  raise RuntimeError(
+                      f"episode {episode_id}: replay field absent; top keys={sorted(payload) if isinstance(payload, dict) else type(payload).__name__}"
+                  )
+              if isinstance(replay, str):
+                  replay_obj = json.loads(replay)
+              else:
+                  replay_obj = replay
+              encoded = (json.dumps(replay_obj, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+              (out / f"episode-{episode_id}.replay.json").write_bytes(encoded)
+              print(json.dumps({"episode_id": episode_id, "response_bytes": len(raw), "replay_bytes": len(encoded)}, sort_keys=True))
+          PY
+          sha256sum /tmp/bigbleed-replays/* | sort > /tmp/bigbleed-replays/SHA256SUMS.txt
+          cat /tmp/bigbleed-replays/SHA256SUMS.txt
+      - name: Upload exact raw replay evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-bigbleed-replays
+          path: /tmp/bigbleed-replays/
+          if-no-files-found: error
+          retention-days: 1
