@@ -39,6 +39,7 @@ def _observation():
             "inventories": [{}],
         },
         "market": {
+            "inventory": {"WHEAT": 10000},
             "prices": {
                 "WHEAT": 30,
                 "EGG": 100,
@@ -125,10 +126,13 @@ class FeedPrebuyFutureCashTests(unittest.TestCase):
         out = self._apply(_action())
         self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
 
-    def test_malformed_future_market_row_fails_closed(self):
-        self.tape[40]["market"] = [{"verb": "BUY_LAND"}]
-        parent = _action()
-        self.assertIs(self._apply(parent), parent)
+    def test_malformed_future_market_rows_fail_closed(self):
+        for row in ({"verb": "BUY_LAND"}, [], None, "", 0, False):
+            with self.subTest(row=row):
+                self.tape[40]["market"] = [row]
+                parent = _action()
+                self.assertIs(self._apply(parent), parent)
+                self.tape[40]["market"] = []
 
 
 if __name__ == "__main__":
