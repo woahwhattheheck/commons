@@ -1,0 +1,53 @@
+{
+  "lane": "ASTRA-H3S420",
+  "status": "current_source_bridge_tested_default_off_native_economics_pending",
+  "home": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement",
+  "current_authorities": {
+    "scheduler_git_blob": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "frozen_selected_git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "historical_r04_donor_git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+  },
+  "published_bytes": {
+    "composer": {
+      "path": "compose_current_h3s420.py",
+      "git_blob": "01d8f4600fc0947b025ddd3e05a8f5c78162127b",
+      "sha256": "2fb55bf47595e749943a81b956c4cbc77cb23aebc6cf56b1f4d163303737b416",
+      "bytes": 4996
+    },
+    "tests": {
+      "path": "test_compose_current_h3s420.py",
+      "git_blob": "63d0e0918a2f2e4f43b4ae2b5724ba5c18b65704",
+      "sha256": "34f2af2c4199df58f3b7fd43ebb7ea9dcc3d7cc4babeaa24bdbe243be8bb7070",
+      "bytes": 4663
+    }
+  },
+  "authored_validation": {
+    "normal": "10/10 PASS",
+    "optimized": "10/10 PASS",
+    "py_compile": "PASS"
+  },
+  "semantics": {
+    "baseline_horizon": 3,
+    "suppress_new_plans_after_step": 420,
+    "preserve_inherited_base_sell": true,
+    "preserve_already_planned_due_quantities": true,
+    "erase_future_commitments": false,
+    "disable_terminal_settlement": false,
+    "modify_scheduler_source": false,
+    "modify_production_config": false,
+    "production_activation": false
+  },
+  "donor_evidence_boundary": {
+    "coordination_receipt": "released MICROSTACK reported +441 mean margin and 16/16 positive on its tested materialization",
+    "transfer_claim": false,
+    "reason": "old carrier keys are not current Features ABI; current-native ON economics still required"
+  },
+  "next_gate": [
+    "materialize exact generated frozen_selected.py into the then-current one-stack postimage",
+    "OFF byte/trace identity",
+    "ON natural engagement with separate horizon/suppression diagnostics",
+    "both-seat no-fallback current-native execution",
+    "realized fill/cash and terminal-margin economics against current opponents",
+    "preserve row-shed and existing sale-window receipt authorities"
+  ]
+}
