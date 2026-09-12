@@ -1,0 +1,31 @@
+name: TITAN V5 V219 current ABI
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v219-tomato-current-abi/**"
+      - ".github/workflows/titan-v5-v219-current-abi.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v219-current-abi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Normal contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v219-tomato-current-abi
+        run: python -m unittest -v test_v219_current.py test_v219_retry_safe.py
+      - name: Optimized contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v219-tomato-current-abi
+        run: python -O -m unittest -v test_v219_current.py test_v219_retry_safe.py
+      - name: Compile contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v219-tomato-current-abi
+        run: |
+          python -m py_compile v219_current.py v219_current_safe.py test_v219_current.py test_v219_retry_safe.py
+          python -O -m py_compile v219_current.py v219_current_safe.py test_v219_current.py test_v219_retry_safe.py
