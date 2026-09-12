@@ -1,0 +1,348 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+"""Fresh matched current-V5 control vs selective-carrot cap4/cap12 games."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import statistics
+import sys
+import tempfile
+
+
+ARMS = ("control", "cap4", "cap12")
+
+
+def load(path: Path, name: str):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def read_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def members(root: Path) -> dict[str, bytes]:
+    return {
+        str(path.relative_to(root)).replace("\\", "/"): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+        and "__pycache__" not in path.parts
+        and path.suffix not in {".pyc", ".pyo"}
+    }
+
+
+def mean(values):
+    rows = [value for value in values if value is not None]
+    return None if not rows else statistics.fmean(rows)
+
+
+def main(argv=None) -> int:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--kg-root", type=Path, required=True)
+    p.add_argument("--engine-dir", type=Path, required=True)
+    p.add_argument("--output", type=Path, required=True)
+    p.add_argument(
+        "--seeds", required=True,
+        help="comma-separated fresh seeds reserved for this lane",
+    )
+    p.add_argument("--seats", default="0,1")
+    p.add_argument("--opponents", default="apex_v7,arlene_v14")
+    args = p.parse_args(argv)
+
+    if sys.platform != "linux":
+        p.error("Use a Linux VM for this process-isolated benchmark")
+
+    root = args.kg_root.resolve(strict=True)
+    lab = root / "cloud-execution-lab"
+    here = Path(__file__).resolve().parent
+    helper_path = (
+        root / "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
+    )
+    h = load(helper_path, "carrot_current_bench_helpers")
+    builder = load(here / "build_current.py", "carrot_current_builder")
+
+    current = read_json(
+        lab / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+    )
+    if current.get("path") != "exports/titan-current.tar.gz":
+        raise ValueError("unexpected current V5 archive path")
+    archive = lab / current["path"]
+    archive_digest = h.digest(archive)
+    if archive_digest != current.get("sha256"):
+        raise ValueError(
+            "CURRENT-ARCHIVE sha256 does not match titan-current.tar.gz"
+        )
+    if archive.stat().st_size != current.get("bytes"):
+        raise ValueError(
+            "CURRENT-ARCHIVE byte count does not match titan-current.tar.gz"
+        )
+    baseline = h.archive_members(archive)
+
+    seeds = [int(value) for value in args.seeds.split(",") if value]
+    seats = [int(value) for value in args.seats.split(",") if value]
+    opponents = [value for value in args.opponents.split(",") if value]
+    if not seeds:
+        p.error("at least one fresh seed is required")
+    if not set(seats) <= {0, 1}:
+        p.error("supported seats are 0 and 1")
+    if not set(opponents) <= {"apex_v7", "arlene_v14"}:
+        p.error("supported opponents are apex_v7 and arlene_v14")
+
+    args.output.mkdir(parents=True, exist_ok=False)
+    evaluator = load(root / h.EVALUATOR, "carrot_current_evaluator")
+    pack = load(root / "cloud-pack/pack.py", "carrot_current_pack")
+    bridge = load(
+        root / h.BANK / "reference_policies.py", "carrot_current_bank"
+    )
+    loader = root / "20260907-offline-agent/evaluate.py"
+    engine_hashes = evaluator.verify_sources(args.engine_dir)
+
+    arm_members = {"control": baseline}
+    build_receipts = {}
+    with tempfile.TemporaryDirectory(
+        prefix="titan-v5-current-carrot-build-", dir=args.output
+    ) as temp:
+        temp_root = Path(temp)
+        control_root = temp_root / "control"
+        h.extract_members(baseline, control_root)
+        for cap in (4, 12):
+            out = temp_root / f"cap{cap}"
+            receipt = builder.build_candidate(control_root, out, cap)
+            label = f"cap{cap}"
+            build_receipts[label] = receipt
+            arm_members[label] = members(out)
+            if (
+                receipt["control_package_sha256"]
+                != builder.package_digest(control_root)
+            ):
+                raise ValueError("candidate receipt control identity mismatch")
+
+    runtime = {}
+    opponent_receipts = {}
+    for opponent in opponents:
+        runtime[opponent] = args.output / "opponents" / opponent
+        opponent_receipts[opponent] = bridge.prepare(
+            opponent, root, runtime[opponent]
+        )
+
+    run = {
+        "schema": "astra.v5.selective-carrot.current-paired.v1",
+        "method": (
+            "Fresh full official-interpreter games from the live CURRENT archive; "
+            "same seed/seat/opponent across control, cap4 and cap12; deterministic "
+            "rotating arm order. Linux 1.25s IPC action limit; canonical policy "
+            "retains its own 1s deadline. Not hosted Kaggle rating."
+        ),
+        "current_archive": current,
+        "archive_sha256": archive_digest,
+        "engine": engine_hashes,
+        "build_receipts": build_receipts,
+        "candidate_members": {
+            arm: {
+                name: hashlib.sha256(data).hexdigest()
+                for name, data in sorted(payload.items())
+            }
+            for arm, payload in arm_members.items()
+            if arm != "control"
+        },
+        "opponents": opponent_receipts,
+        "seeds": seeds,
+        "seats": seats,
+    }
+    h.write_json(args.output / "run.json", run)
+
+    rotations = (
+        ("control", "cap4", "cap12"),
+        ("cap12", "control", "cap4"),
+        ("cap4", "cap12", "control"),
+    )
+    cells = []
+    cell_index = 0
+    summary = {}
+    for opponent in opponents:
+        for seed in seeds:
+            for seat in seats:
+                cell_id = f"{opponent}-s{seed}-p{seat}"
+                cell = {
+                    "cell_id": cell_id,
+                    "opponent": opponent,
+                    "seed": seed,
+                    "seat": seat,
+                    "games": {},
+                }
+                order = rotations[cell_index % len(rotations)]
+                cell_index += 1
+                for arm in order:
+                    with tempfile.TemporaryDirectory(
+                        prefix=f"{cell_id}-{arm}-", dir=args.output
+                    ) as temp:
+                        directory = Path(temp)
+                        payload = directory / "payload"
+                        h.extract_members(arm_members[arm], payload)
+                        adapter = directory / "adapter.py"
+                        pack.write_adapter(adapter, payload / "main.py")
+                        rival = runtime[opponent] / "adapter.py"
+                        specs = (
+                            [str(adapter), str(rival)]
+                            if seat == 0
+                            else [str(rival), str(adapter)]
+                        )
+                        engine, _ = evaluator.get_engine(args.engine_dir, loader)
+                        interpret = engine.interpreter
+                        plant_events = []
+
+                        def counted_interpreter(state, env):
+                            obs = state[0].observation
+                            farms = obs.get("farms") or []
+                            before = (
+                                {
+                                    (x, y): (
+                                        tile.get("crop"),
+                                        tile.get("planted_day"),
+                                    )
+                                    for y, row in enumerate(farms[seat]["tiles"])
+                                    for x, tile in enumerate(row)
+                                    if isinstance(tile, dict)
+                                }
+                                if farms
+                                else {}
+                            )
+                            result = interpret(state, env)
+                            after_farms = state[0].observation.get("farms") or []
+                            if farms and after_farms:
+                                for y, row in enumerate(
+                                    after_farms[seat]["tiles"]
+                                ):
+                                    for x, tile in enumerate(row):
+                                        if (
+                                            isinstance(tile, dict)
+                                            and tile.get("crop") == "CARROT"
+                                            and before.get((x, y))
+                                            != (
+                                                "CARROT",
+                                                tile.get("planted_day"),
+                                            )
+                                        ):
+                                            plant_events.append(
+                                                {
+                                                    "step": obs.get("step"),
+                                                    "site": [x, y],
+                                                    "planted_day": tile.get(
+                                                        "planted_day"
+                                                    ),
+                                                }
+                                            )
+                            return result
+
+                        engine.interpreter = counted_interpreter
+                        game = evaluator.play(
+                            engine,
+                            specs,
+                            args.engine_dir,
+                            loader,
+                            seed,
+                            seat,
+                            20260912,
+                            1.25,
+                            10.0,
+                            900.0,
+                        )
+                        game["actual_carrot_plant_events"] = plant_events
+                    cell["games"][arm] = game
+                    h.write_json(args.output / f"{cell_id}-{arm}.json", game)
+                    print(
+                        json.dumps(
+                            {
+                                "cell_id": cell_id,
+                                "arm": arm,
+                                "status": game["status"],
+                                "steps": game["steps"],
+                                "scores": game["scores"],
+                                "carrot_plant_events": len(plant_events),
+                            }
+                        ),
+                        flush=True,
+                    )
+
+                margins = {
+                    arm: h.margin(cell["games"][arm], seat) for arm in ARMS
+                }
+                cell["margins"] = margins
+                cell["delta_cap4_control"] = (
+                    None
+                    if margins["cap4"] is None or margins["control"] is None
+                    else margins["cap4"] - margins["control"]
+                )
+                cell["delta_cap12_control"] = (
+                    None
+                    if margins["cap12"] is None or margins["control"] is None
+                    else margins["cap12"] - margins["control"]
+                )
+                cell["delta_cap12_cap4"] = (
+                    None
+                    if margins["cap12"] is None or margins["cap4"] is None
+                    else margins["cap12"] - margins["cap4"]
+                )
+                cell["plant_events"] = {
+                    arm: len(
+                        cell["games"][arm].get("actual_carrot_plant_events", [])
+                    )
+                    for arm in ARMS
+                }
+                cells.append(cell)
+
+                summary = {
+                    "cells": len(cells),
+                    "complete_cells": sum(
+                        all(item["margins"][arm] is not None for arm in ARMS)
+                        for item in cells
+                    ),
+                    "mean_delta_cap4_control": mean(
+                        item["delta_cap4_control"] for item in cells
+                    ),
+                    "mean_delta_cap12_control": mean(
+                        item["delta_cap12_control"] for item in cells
+                    ),
+                    "mean_delta_cap12_cap4": mean(
+                        item["delta_cap12_cap4"] for item in cells
+                    ),
+                    "engaged_cells_cap4": sum(
+                        item["plant_events"]["cap4"]
+                        != item["plant_events"]["control"]
+                        for item in cells
+                    ),
+                    "engaged_cells_cap12": sum(
+                        item["plant_events"]["cap12"]
+                        != item["plant_events"]["control"]
+                        for item in cells
+                    ),
+                }
+                h.write_json(
+                    args.output / "report.json",
+                    {"run": run, "cells": cells, "summary": summary},
+                )
+                print(
+                    "PAIR "
+                    + json.dumps(
+                        {
+                            key: value
+                            for key, value in cell.items()
+                            if key != "games"
+                        }
+                    ),
+                    flush=True,
+                )
+
+    print("SUMMARY " + json.dumps(summary, sort_keys=True), flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
