@@ -21,6 +21,12 @@ SCHEMA = "titan-v4-gemini-public-pressure-v1"
 DEFAULT_EARLY_STEP_MAX = 144
 DEFAULT_DUMP_THRESHOLD = 15.0
 DEFAULT_HORIZON = 24
+REACHABLE_QUADRANT_PREFIXES = (
+    ("NW",),
+    ("NW", "NE"),
+    ("NW", "NE", "SW"),
+    ("NW", "NE", "SW", "SE"),
+)
 
 
 def _nonnegative_int(value: Any, label: str) -> int:
@@ -66,9 +72,12 @@ def _quadrants(farm: Mapping[str, Any], label: str) -> tuple[str, ...] | None:
         return None
     if not isinstance(raw, (list, tuple)) or not all(isinstance(q, str) and q for q in raw):
         raise R.UnsupportedEvidence(f"{label}.unlocked_quadrants must be a string sequence")
-    if len(set(raw)) != len(raw):
-        raise R.UnsupportedEvidence(f"{label}.unlocked_quadrants contains duplicates")
-    return tuple(raw)
+    quadrants = tuple(raw)
+    if quadrants not in REACHABLE_QUADRANT_PREFIXES:
+        raise R.UnsupportedEvidence(
+            f"{label}.unlocked_quadrants must be a reachable NW/NE/SW/SE unlock prefix"
+        )
+    return quadrants
 
 
 def _price_map(observation: Mapping[str, Any]) -> dict[str, float]:
