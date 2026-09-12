@@ -15,10 +15,14 @@ PORT = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(PORT)
 
 
-def load_candidate_function():
+def load_candidate_function(*, materialize_sales=None, funding_trace=None):
     namespace = {
-        "materialize_sales": lambda market, current, shed, targets, max_orders: [],
-        "_funding_trace": lambda *args, **kwargs: {"acquisitions": [], "cash": 0},
+        "materialize_sales": materialize_sales or (
+            lambda market, current, shed, targets, max_orders: []
+        ),
+        "_funding_trace": funding_trace or (
+            lambda *args, **kwargs: {"acquisitions": [], "cash": 0}
+        ),
         "_funding_prefix_end": lambda scout, now, end: (end, None),
     }
     exec(PORT.REPLACEMENT_FUNCTION, namespace)
@@ -34,8 +38,8 @@ class StrictScalarCustodyTests(unittest.TestCase):
         self.config = {"maxMarketOrdersPerTurn": 10}
         self.obs = {"step": 100}
 
-    def call(self, *, obs=None, config=None, current=None, end=110, stress_units=32):
-        return self.fn(
+    def call(self, *, obs=None, config=None, current=None, end=110, stress_units=32, fn=None):
+        return (fn or self.fn)(
             self.obs if obs is None else obs,
             self.config if config is None else config,
             self.base,
@@ -55,6 +59,36 @@ class StrictScalarCustodyTests(unittest.TestCase):
         self.assertFalse(certificate["fallback"])
         self.assertEqual(certificate["baseline_now"], 3)
         self.assertEqual(certificate["stress_units"], 32)
+
+    def test_market_limit_one_preserves_positive_control(self):
+        minimum, certificate = self.call(config={"maxMarketOrdersPerTurn": 1})
+        self.assertEqual(minimum, 0)
+        self.assertFalse(certificate["fallback"])
+
+    def test_market_limit_zero_fails_closed_before_helpers(self):
+        helper_calls = []
+
+        def forbidden_materialize(*args, **kwargs):
+            helper_calls.append("materialize")
+            raise AssertionError("cap-zero must fail closed before materialize_sales")
+
+        def forbidden_trace(*args, **kwargs):
+            helper_calls.append("trace")
+            raise AssertionError("cap-zero must fail closed before _funding_trace")
+
+        fn = load_candidate_function(
+            materialize_sales=forbidden_materialize,
+            funding_trace=forbidden_trace,
+        )
+        minimum, certificate = self.call(
+            config={"maxMarketOrdersPerTurn": 0},
+            fn=fn,
+        )
+        self.assertEqual(minimum, 3)
+        self.assertTrue(certificate["fallback"])
+        self.assertEqual(certificate["minimum_now"], 3)
+        self.assertEqual(certificate["reason"], "unsupported-market-order-cap")
+        self.assertEqual(helper_calls, [])
 
     def test_step_bool_rejected(self):
         with self.assertRaises(ValueError):
