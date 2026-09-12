@@ -92,6 +92,29 @@ SPEC = {
     },
 }
 
+# This universe was publicly fixed by the route-matrix board before any R00-R12
+# result existed. It is deliberately separate from the rule SPEC above: the
+# post-review hardening binds the fitter to the already-timestamped experiment
+# universe without changing the preregistered rule grammar or qualification.
+DISCOVERY_UNIVERSE = {
+    "schema": "titan-v5-p04-discovery-universe/v1",
+    "source": {
+        "kind": "slack_preoutcome_route_board",
+        "channel_id": "C0C0Z8AHGP2",
+        "message_ts": "1789253666.394169",
+    },
+    "group_keys": [
+        {"seed": 1209131101, "opponent": "apex_v7", "seat": 0},
+        {"seed": 1209131101, "opponent": "apex_v7", "seat": 1},
+        {"seed": 1209131101, "opponent": "arlene_v14", "seat": 0},
+        {"seed": 1209131101, "opponent": "arlene_v14", "seat": 1},
+        {"seed": 1209131102, "opponent": "apex_v7", "seat": 0},
+        {"seed": 1209131102, "opponent": "apex_v7", "seat": 1},
+        {"seed": 1209131102, "opponent": "arlene_v14", "seat": 0},
+        {"seed": 1209131102, "opponent": "arlene_v14", "seat": 1},
+    ],
+}
+
 
 def _canonical_bytes(value: Any) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
@@ -106,9 +129,18 @@ if _sha256(SPEC) != PREREGISTERED_SPEC_SHA256:
     raise RuntimeError("preregistered selector SPEC drift")
 SPEC_SHA256 = PREREGISTERED_SPEC_SHA256
 
+DISCOVERY_UNIVERSE_SHA256 = "3c393d57c4caae9c5ee3b4e6c1110220efbb556b48230ca209061b57a4119a66"
+if _sha256(DISCOVERY_UNIVERSE) != DISCOVERY_UNIVERSE_SHA256:
+    raise RuntimeError("pre-outcome discovery universe commitment drift")
+
 
 def preregistration() -> dict[str, Any]:
-    return {"spec": SPEC, "spec_sha256": SPEC_SHA256}
+    return {
+        "spec": SPEC,
+        "spec_sha256": SPEC_SHA256,
+        "discovery_universe": DISCOVERY_UNIVERSE,
+        "discovery_universe_sha256": DISCOVERY_UNIVERSE_SHA256,
+    }
 
 
 def _finite(value: Any, label: str) -> float:
@@ -205,6 +237,13 @@ def _normalize_group(group: Any) -> dict[str, Any]:
     }
 
 
+def _expected_discovery_keys() -> set[tuple[int, str, int]]:
+    return {
+        (row["seed"], row["opponent"], row["seat"])
+        for row in DISCOVERY_UNIVERSE["group_keys"]
+    }
+
+
 def validate_discovery_report(report: Any) -> list[dict[str, Any]]:
     if not isinstance(report, dict):
         raise ValueError("discovery report must be an object")
@@ -216,8 +255,16 @@ def validate_discovery_report(report: Any) -> list[dict[str, Any]]:
     keys = [(g["seed"], g["opponent"], g["seat"]) for g in groups]
     if len(keys) != len(set(keys)):
         raise ValueError("duplicate seed/opponent/seat discovery group")
+    expected_keys = _expected_discovery_keys()
+    actual_keys = set(keys)
+    if actual_keys != expected_keys:
+        missing = sorted(expected_keys - actual_keys)
+        extra = sorted(actual_keys - expected_keys)
+        raise ValueError(f"discovery universe mismatch: missing={missing} extra={extra}")
     if report.get("complete_snapshot_groups") != len(groups):
         raise ValueError("complete_snapshot_groups mismatch")
+    if len(groups) != len(expected_keys):
+        raise ValueError("complete_snapshot_groups does not match pre-outcome discovery universe")
     return groups
 
 
@@ -348,6 +395,7 @@ def fit_selector(report: Any) -> dict[str, Any]:
     result = {
         "schema": SCHEMA,
         "preregistration_spec_sha256": SPEC_SHA256,
+        "discovery_universe_sha256": DISCOVERY_UNIVERSE_SHA256,
         "discovery_report_sha256": _sha256(report),
         "authority": SPEC["input"],
         "discovery_groups": len(groups),
