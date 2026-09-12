@@ -1,0 +1,278 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Receipt-safe retiming of six already-authored WHEAT purchases.
+
+TOWNPROCURE never creates a new market row.  On six source-bound callbacks it
+moves part of the *next* authored WHEAT buy two callbacks earlier by increasing
+an already-existing WHEAT buy at the target callback.  The later authored buy
+is reduced only by the extra units actually observed in the private shed on the
+next callback.  Partial fills therefore suppress only partial source quantity.
+
+The state is module-global on purpose: the canonical entrypoint reconstructs a
+TitanAgent after a deadline cancellation, while the Python actor process and
+this completed module remain alive.  Public next-observation receipt evidence,
+not an in-flight controller object, owns the suppression decision.
+"""
+from __future__ import annotations
+
+from copy import deepcopy
+from dataclasses import dataclass
+from typing import Any
+
+SCHEMA = "titan.v4.town-procurement/v1"
+
+# target_step -> (source_step, quantity_to_advance)
+# Every target is a default town-shop callback (step % 4 == 0), every source is
+# exactly two callbacks later, and both callbacks already carry the same WHEAT
+# purchase in every authenticated retained Arlene route.  The opening WHEAT13
+# collision and the crop input repair (>455) are intentionally outside scope.
+MOVES = {
+    200: (202, 3),
+    204: (206, 3),
+    220: (222, 3),
+    252: (254, 5),
+    272: (274, 3),
+    276: (278, 3),
+}
+SOURCE_TO_TARGET = {source: (target, qty) for target, (source, qty) in MOVES.items()}
+
+
+def is_target_step(step: Any) -> bool:
+    return type(step) is int and step in MOVES
+
+
+@dataclass
+class _Pending:
+    target: int
+    source: int
+    move_qty: int
+    baseline_qty: int
+    post_unit_wheat: int
+
+
+_STATE: dict[int, dict[str, Any]] = {}
+
+
+def _player(observation: Any) -> int:
+    value = observation.get("player", 0) if isinstance(observation, dict) else getattr(observation, "player", 0)
+    return int(value)
+
+
+def _step(observation: Any) -> int:
+    value = observation.get("step") if isinstance(observation, dict) else getattr(observation, "step", None)
+    if value is None:
+        raise ValueError("town procurement requires normalized observation.step")
+    return int(value)
+
+
+def _shed_wheat(observation: Any) -> int:
+    private = observation.get("private", {}) if isinstance(observation, dict) else getattr(observation, "private", {})
+    private = private or {}
+    shed = private.get("shed", {}) if isinstance(private, dict) else getattr(private, "shed", {})
+    shed = shed or {}
+    value = shed.get("WHEAT", 0) if isinstance(shed, dict) else getattr(shed, "WHEAT", 0)
+    if type(value) is not int or value < 0:
+        raise ValueError("invalid private WHEAT inventory")
+    return value
+
+
+def _state(player: int) -> dict[str, Any]:
+    return _STATE.setdefault(player, {"last_step": None, "pending": None, "confirmed": {}})
+
+
+def reset(*, player: int | None = None) -> None:
+    if player is None:
+        _STATE.clear()
+    else:
+        _STATE.pop(int(player), None)
+
+
+def observe(observation: Any) -> dict[str, Any]:
+    """Reconcile the immediately previous target from public private-shed state."""
+    player = _player(observation)
+    step = _step(observation)
+    if step == 0:
+        reset(player=player)
+    state = _state(player)
+    last = state["last_step"]
+    if last is not None and step < int(last):
+        reset(player=player)
+        state = _state(player)
+    state["confirmed"] = {
+        int(source): int(qty)
+        for source, qty in state["confirmed"].items()
+        if int(source) >= step and int(qty) > 0
+    }
+    report = {
+        "schema": SCHEMA,
+        "step": step,
+        "player": player,
+        "status": "no_pending_receipt",
+        "confirmed_source": None,
+        "confirmed_qty": 0,
+    }
+    pending = state.get("pending")
+    if isinstance(pending, _Pending):
+        if step == pending.target + 1:
+            current = _shed_wheat(observation)
+            filled_total = max(0, current - pending.post_unit_wheat)
+            extra = max(0, min(pending.move_qty, filled_total - pending.baseline_qty))
+            if extra:
+                state["confirmed"][pending.source] = max(
+                    int(state["confirmed"].get(pending.source, 0)), extra
+                )
+            report.update(
+                status="receipt_reconciled",
+                source=pending.source,
+                target=pending.target,
+                requested_extra=pending.move_qty,
+                baseline_qty=pending.baseline_qty,
+                observed_total_fill=filled_total,
+                confirmed_source=pending.source if extra else None,
+                confirmed_qty=extra,
+            )
+            state["pending"] = None
+        elif step > pending.target + 1:
+            report.update(status="receipt_window_missed", source=pending.source, target=pending.target)
+            state["pending"] = None
+        elif step <= pending.target:
+            report.update(status="receipt_pending", source=pending.source, target=pending.target)
+    state["last_step"] = step
+    return report
+
+
+def _unique_wheat_buy(action: Any) -> tuple[int, int] | None:
+    if not isinstance(action, dict):
+        return None
+    market = action.get("market")
+    if not isinstance(market, list):
+        return None
+    hits: list[tuple[int, int]] = []
+    for index, row in enumerate(market):
+        if not (isinstance(row, list) and len(row) >= 3 and row[0] == "BUY_PRODUCT" and row[1] == "WHEAT"):
+            continue
+        qty = row[2]
+        if type(qty) is not int or qty <= 0:
+            return None
+        hits.append((index, qty))
+    return hits[0] if len(hits) == 1 else None
+
+
+def _prefix_limit(action: Any, configuration: Any = None) -> int:
+    cfg = configuration or {}
+    value = cfg.get("maxMarketOrdersPerTurn", 10) if isinstance(cfg, dict) else getattr(cfg, "maxMarketOrdersPerTurn", 10)
+    if type(value) is not int:
+        return 1
+    return max(1, value)
+
+
+def suppress_confirmed(observation: Any, action: Any, configuration: Any = None) -> tuple[Any, dict[str, Any]]:
+    """Idempotently reduce the exact current source buy by confirmed moved fill."""
+    step = _step(observation)
+    player = _player(observation)
+    state = _state(player)
+    confirmed = int(state["confirmed"].get(step, 0))
+    report = {
+        "schema": SCHEMA,
+        "step": step,
+        "player": player,
+        "status": "no_confirmed_source",
+        "confirmed_qty": confirmed,
+        "suppressed_qty": 0,
+        "changed": False,
+    }
+    if step not in SOURCE_TO_TARGET or confirmed <= 0:
+        return action, report
+    hit = _unique_wheat_buy(action)
+    if hit is None:
+        report["status"] = "source_shape_drift"
+        return action, report
+    index, qty = hit
+    if index >= _prefix_limit(action, configuration):
+        report["status"] = "source_row_inert_suffix"
+        return action, report
+    expected_target, expected_qty = SOURCE_TO_TARGET[step]
+    if confirmed > expected_qty:
+        report["status"] = "confirmed_qty_out_of_contract"
+        return action, report
+    use = min(qty, confirmed)
+    if use <= 0:
+        return action, report
+    out = deepcopy(action)
+    if use == qty:
+        del out["market"][index]
+    else:
+        out["market"][index][2] = qty - use
+    report.update(
+        status="source_suppressed",
+        target=expected_target,
+        source=step,
+        source_qty_before=qty,
+        suppressed_qty=use,
+        source_qty_after=qty - use,
+        changed=True,
+    )
+    return out, report
+
+
+def apply(observation: Any, action: Any, post_unit_observation: Any, configuration: Any = None, *, completed: bool) -> tuple[Any, dict[str, Any]]:
+    """Apply source suppression or initiate one exact target advance."""
+    step = _step(observation)
+    player = _player(observation)
+    suppressed, report = suppress_confirmed(observation, action, configuration)
+    if report["changed"] or step in SOURCE_TO_TARGET:
+        return suppressed, report
+    if step not in MOVES:
+        report["status"] = "not_townprocure_step"
+        return action, report
+    if not completed:
+        report["status"] = "target_requires_completed_action"
+        return action, report
+    if post_unit_observation is None:
+        report["status"] = "target_missing_post_unit_snapshot"
+        return action, report
+    hit = _unique_wheat_buy(action)
+    if hit is None:
+        report["status"] = "target_shape_drift"
+        return action, report
+    index, baseline_qty = hit
+    prefix_limit = _prefix_limit(action, configuration)
+    if index >= prefix_limit:
+        report.update(status="target_wheat_inert_suffix", row_index=index, prefix_limit=prefix_limit)
+        return action, report
+    for row in action.get("market", [])[:prefix_limit]:
+        if isinstance(row, list) and len(row) >= 2 and row[:2] == ["SELL", "WHEAT"]:
+            report["status"] = "target_wheat_sale_conflict"
+            return action, report
+    source, move_qty = MOVES[step]
+    if baseline_qty != move_qty:
+        report.update(status="target_quantity_drift", baseline_qty=baseline_qty, expected_qty=move_qty)
+        return action, report
+    try:
+        post_wheat = _shed_wheat(post_unit_observation)
+    except ValueError:
+        report["status"] = "target_invalid_post_unit_snapshot"
+        return action, report
+    state = _state(player)
+    if state.get("pending") is not None:
+        report["status"] = "target_pending_receipt_conflict"
+        return action, report
+    out = deepcopy(action)
+    out["market"][index][2] = baseline_qty + move_qty
+    state["pending"] = _Pending(
+        target=step,
+        source=source,
+        move_qty=move_qty,
+        baseline_qty=baseline_qty,
+        post_unit_wheat=post_wheat,
+    )
+    report.update(
+        status="target_advanced",
+        changed=True,
+        target=step,
+        source=source,
+        baseline_qty=baseline_qty,
+        advanced_qty=move_qty,
+        requested_qty=baseline_qty + move_qty,
+        post_unit_wheat=post_wheat,
+    )
+    return out, report
