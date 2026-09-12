@@ -75,6 +75,38 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         now["farms"][0]["tiles"][1][1]["yield_units"] = 0
         self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
 
+    def test_earlier_same_site_harvest_blocks_later_replacement(self):
+        now = observation(step=240, tile=plant(streak=0, units=2), positions=[[1, 1]])
+        future = observation(step=264, tile=plant(streak=1, units=3), positions=[[1, 1]])
+        current = action(["HARVEST", "extra"], [["WATER"]])
+        recovery = action(["WATER"], [["PASS"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+        self.assertIs(
+            R.apply_water_harvest_recovery(
+                current, now, recovery, future, CFG, enabled=True),
+            current,
+        )
+
+    def test_earlier_same_site_dig_blocks_later_replacement(self):
+        now = observation(step=240, tile=plant(streak=0, units=2), positions=[[1, 1]])
+        future = observation(step=264, tile=plant(streak=1, units=3), positions=[[1, 1]])
+        current = action(["DIG", "extra"], [["WATER"]])
+        recovery = action(["WATER"], [["PASS"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_later_same_site_harvest_does_not_block_actor_zero_replacement(self):
+        now = observation(step=240, tile=plant(streak=0, units=2), positions=[[1, 1]])
+        future = observation(step=264, tile=plant(streak=1, units=3), positions=[[1, 1]])
+        current = action(["WATER"], [["HARVEST", "extra"]])
+        recovery = action(["WATER"], [["PASS"]])
+        certs = R.plan_water_harvest_recovery(current, now, recovery, future, CFG)
+        self.assertEqual(len(certs), 1)
+        self.assertEqual(certs[0]["current_actor"], 0)
+        candidate = R.apply_water_harvest_recovery(
+            current, now, recovery, future, CFG, enabled=True)
+        self.assertEqual(candidate["farmer"], ["HARVEST"])
+        self.assertEqual(candidate["hands"], [["HARVEST", "extra"]])
+
     def test_missing_recovery_water_fails_closed(self):
         now, current, future, _ = self.pair()
         recovery = action(["PASS"])
