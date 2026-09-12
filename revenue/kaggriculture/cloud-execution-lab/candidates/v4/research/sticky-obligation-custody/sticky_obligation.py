@@ -312,23 +312,39 @@ def _report(obligation: StickyObligation, proven: bool, reason: str, **extra: An
 
 
 def prove_recovery_water(obligation: Any, projected_rows: Any) -> dict[str, Any]:
-    """Prove exact-site WATER in the due window with no prior site replacement."""
+    """Prove exact-site WATER only after its complete callback remains non-destructive."""
     ob = validate_obligation(obligation)
     if ob.kind != WATER_KIND or ob.site is None:
         raise UnsupportedObligation("expected recovery-WATER obligation")
+
+    candidate_step: int | None = None
     for row in _rows(projected_rows):
         step = _nonnegative_int(row.get("step"), "projected row step")
         if step <= ob.created_step:
             continue
+        if candidate_step is not None and step > candidate_step:
+            return _report(ob, True, "site_recovery_water_proved", sink_step=candidate_step)
         if step > ob.due_end:
             break
+
         op = _op(row)
         row_site_raw = row.get("site")
         row_site = _site(row_site_raw, "projected row site") if row_site_raw is not None else None
-        if row_site == ob.site and op in SITE_INVALIDATORS:
-            return _report(ob, False, "site_invalidated_before_recovery", invalidating_step=step, invalidating_op=op)
-        if row_site == ob.site and op == "WATER" and step >= ob.due_start:
-            return _report(ob, True, "site_recovery_water_proved", sink_step=step)
+        if row_site != ob.site:
+            continue
+        if op in SITE_INVALIDATORS:
+            return _report(
+                ob,
+                False,
+                "site_invalidated_before_recovery",
+                invalidating_step=step,
+                invalidating_op=op,
+            )
+        if op == "WATER" and step >= ob.due_start:
+            candidate_step = step
+
+    if candidate_step is not None:
+        return _report(ob, True, "site_recovery_water_proved", sink_step=candidate_step)
     return _report(ob, False, "missing_due_window_recovery_water")
 
 
