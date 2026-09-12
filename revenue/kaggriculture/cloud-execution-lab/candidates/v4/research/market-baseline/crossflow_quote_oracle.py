@@ -68,7 +68,7 @@ def _plain_qty(value: Any, name: str, *, allow_zero: bool = False) -> int:
 
 def _plain_inventory(value: Any) -> int:
     if type(value) is not int or value < 0:
-        raise ValueError&¢inventory must be a plain nonnegative int")
+        raise ValueError("inventory must be a plain nonnegative int")
     return value
 
 
