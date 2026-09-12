@@ -166,6 +166,18 @@ def _first_diff(
     return None
 
 
+def _compact_trace(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Retain the complete hash-bearing trace without duplicating full actions."""
+    return [
+        {
+            "step": row["step"],
+            "observation_sha256": row["observation_sha256"],
+            "action_sha256": row["action_sha256"],
+        }
+        for row in rows
+    ]
+
+
 def _window(
     left_candidate: list[dict[str, Any]],
     right_candidate: list[dict[str, Any]],
@@ -242,6 +254,12 @@ def compare_traces(
         )
     )
     center = first_any_action
+    trace_vectors = {
+        "left_candidate": _compact_trace(left_candidate),
+        "right_candidate": _compact_trace(right_candidate),
+        "left_opponent": _compact_trace(left_opponent),
+        "right_opponent": _compact_trace(right_opponent),
+    }
     return {
         "steps": next(iter(lengths)),
         "first_candidate_action_divergence_step": candidate_action,
@@ -260,6 +278,7 @@ def compare_traces(
             center,
             radius,
         ),
+        "trace_vectors": trace_vectors,
         "left_candidate_trace_sha256": _digest([
             {k: v for k, v in row.items() if k != "action"}
             for row in left_candidate
