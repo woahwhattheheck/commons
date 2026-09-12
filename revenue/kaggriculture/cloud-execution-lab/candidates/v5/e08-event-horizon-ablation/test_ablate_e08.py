@@ -56,6 +56,12 @@ class E08SubmittedV4AblationTests(unittest.TestCase):
         self.assertIn("if now<checkpoint<=end:end=checkpoint-1", transform)
         self.assertIn("item_end=end", transform)
 
+    def test_treatment_does_not_stamp_trace_only_ablation_marker(self):
+        transform = self.patched_text.split("class FrozenSelected", 1)[1]
+        self.assertNotIn("submitted-v31-fixed", transform)
+        self.assertNotIn("'ablation'", transform)
+        self.assertIn("'unit_event':None,'extended':False", transform)
+
     def test_submitted_v31_contains_same_fixed_horizon_boundary(self):
         text = self.v31.decode("utf-8")
         self.assertIn("end=min(now+HORIZON,last,(now//24+1)*24-1)", text)
@@ -113,10 +119,18 @@ class E08SubmittedV4AblationTests(unittest.TestCase):
         )
         self.assertEqual(end, 718)
 
+    def test_generator_absorption_dates_are_stable(self):
+        end, dates = e08.legacy_horizon_and_dates(
+            now=10, last=718, decisions=(), absorption_dates=(d for d in (13, 17))
+        )
+        self.assertEqual(end, 18)
+        self.assertEqual(dates, (10, 13, 17, 18))
+
     def test_helper_replacement_is_exact_once(self):
         text = e08._E08_HORIZON_BLOCK + "middle\n" + e08._E08_ITEM_WINDOW_BLOCK
         out = e08.rewrite_e08_text(text)
-        self.assertEqual(out.count("ablation':'submitted-v31-fixed'"), 1)
+        self.assertEqual(out.count("'unit_event':None,'extended':False"), 1)
+        self.assertNotIn("submitted-v31-fixed", out)
         self.assertEqual(out.count("item_end=end"), 1)
         with self.assertRaises(e08.SourceAuthorityError):
             e08.rewrite_e08_text(text + e08._E08_HORIZON_BLOCK)
