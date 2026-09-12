@@ -144,11 +144,22 @@ def resign(report):
     return report
 
 
+def validate_report(report, expected=None):
+    if expected is None:
+        expected = report["report_sha256"]
+    return v.validate(report, expected)
+
+
 class Native9901AuthorityTests(unittest.TestCase):
     def test_exact_retained_authority_passes_and_surfaces_causal_labels(self):
-        result = v.validate(signed_report())
+        report = signed_report()
+        result = validate_report(report)
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(result["retained_terminal_scores_reproduced"])
+        self.assertTrue(result["external_report_commitment_verified"])
+        self.assertEqual(
+            result["external_report_commitment_sha256"], report["report_sha256"]
+        )
         self.assertEqual(result["first_any_action_divergence_step"], {"0": 360, "1": 361})
         self.assertEqual(
             result["candidate_action_is_first_observed_divergence"],
@@ -161,7 +172,7 @@ class Native9901AuthorityTests(unittest.TestCase):
         comparison = report["rows"][1]["comparison"]
         set_divergences(comparison, 365, 366, 361, 362)
         resign(report)
-        result = v.validate(report)
+        result = validate_report(report)
         self.assertEqual(result["status"], "PASS")
         self.assertFalse(result["candidate_action_is_first_observed_divergence"]["1"])
         self.assertFalse(result["causal_candidate_first_both_seats"])
@@ -170,8 +181,6 @@ class Native9901AuthorityTests(unittest.TestCase):
         report = signed_report()
         comparison = report["rows"][1]["comparison"]
         set_divergences(comparison, 365, 366, 361, 362)
-        # Leave the complete opponent-first vectors and their trace digests intact,
-        # but forge every primitive and summary into a self-consistent candidate-first story.
         comparison["first_candidate_action_divergence_step"] = 360
         comparison["first_candidate_observation_divergence_step"] = 363
         comparison["first_opponent_action_divergence_step"] = 364
@@ -181,7 +190,26 @@ class Native9901AuthorityTests(unittest.TestCase):
         comparison["candidate_action_is_first_observed_divergence"] = True
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "inconsistent with trace vectors"):
-            v.validate(report)
+            validate_report(report)
+
+    def test_full_vector_digest_summary_resign_rejects_frozen_external_commitment(self):
+        report = signed_report()
+        comparison = report["rows"][1]["comparison"]
+        set_divergences(comparison, 365, 366, 361, 362)
+        resign(report)
+        external_commitment = report["report_sha256"]
+
+        # Rewrite the complete history, all four trace digests, primitive summaries,
+        # derived summaries, causal bit, and the report's own self-hash consistently.
+        set_divergences(comparison, 360, 363, 364, 365)
+        resign(report)
+        with self.assertRaisesRegex(v.ValidationError, "external report commitment mismatch"):
+            validate_report(report, external_commitment)
+
+    def test_external_commitment_mismatch_rejects(self):
+        report = signed_report()
+        with self.assertRaisesRegex(v.ValidationError, "external report commitment mismatch"):
+            validate_report(report, "0" * 64)
 
     def test_resigned_forged_causal_label_rejects(self):
         report = signed_report()
@@ -190,14 +218,14 @@ class Native9901AuthorityTests(unittest.TestCase):
         comparison["candidate_action_is_first_observed_divergence"] = True
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "causal divergence label inconsistent"):
-            v.validate(report)
+            validate_report(report)
 
     def test_resigned_inconsistent_first_action_summary_rejects(self):
         report = signed_report()
         report["rows"][0]["comparison"]["first_any_action_divergence_step"] = 100
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "first action divergence summary inconsistent"):
-            v.validate(report)
+            validate_report(report)
 
     def test_trace_digest_mismatch_rejects_after_vector_tamper(self):
         report = signed_report()
@@ -205,49 +233,49 @@ class Native9901AuthorityTests(unittest.TestCase):
         vector[400]["action_sha256"] = "f" * 64
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "trace_sha256 mismatch"):
-            v.validate(report)
+            validate_report(report)
 
     def test_missing_trace_vectors_rejects_old_summary_only_report(self):
         report = signed_report()
         report["rows"][0]["comparison"].pop("trace_vectors")
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "trace_vectors missing"):
-            v.validate(report)
+            validate_report(report)
 
     def test_missing_causal_label_rejects_ambiguous_receipt(self):
         report = signed_report()
         report["rows"][0]["comparison"].pop("candidate_action_is_first_observed_divergence")
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "causal divergence label missing"):
-            v.validate(report)
+            validate_report(report)
 
     def test_wrong_executed_entry_rejects_even_with_exact_archive(self):
         report = signed_report()
         report["authority"]["right_entry_sha256"] = "0" * 64
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "wrong production-v3 entry"):
-            v.validate(report)
+            validate_report(report)
 
     def test_terminal_score_mismatch_rejects(self):
         report = signed_report()
         report["rows"][0]["right_result"]["scores"][0] -= 1.0
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "terminal score mismatch"):
-            v.validate(report)
+            validate_report(report)
 
     def test_wrong_engine_member_rejects(self):
         report = signed_report()
         report["authority"]["engine_sha256"]["utils.py"] = "f" * 64
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "wrong engine authority"):
-            v.validate(report)
+            validate_report(report)
 
     def test_wrong_or_duplicate_seat_panel_rejects(self):
         report = signed_report()
         report["rows"][1]["candidate_seat"] = 0
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "invalid/duplicate candidate seat"):
-            v.validate(report)
+            validate_report(report)
 
     def test_no_action_divergence_rejects(self):
         report = signed_report()
@@ -255,20 +283,31 @@ class Native9901AuthorityTests(unittest.TestCase):
         set_divergences(comparison, None, 366, None, 362)
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "lacks a real action divergence"):
-            v.validate(report)
+            validate_report(report)
 
     def test_report_tamper_without_resign_rejects(self):
         report = signed_report()
         report["rows"][0]["comparison"]["first_any_action_divergence_step"] = 99
         with self.assertRaisesRegex(v.ValidationError, "report_sha256 mismatch"):
-            v.validate(report)
+            validate_report(report)
 
     def test_wrong_timeout_rejects(self):
         report = signed_report()
         report["authority"]["timeouts"]["action"] = 2.0
         resign(report)
         with self.assertRaisesRegex(v.ValidationError, "wrong timeout authority"):
-            v.validate(report)
+            validate_report(report)
+
+    def test_boolean_trace_step_rejects_integer_alias(self):
+        report = signed_report()
+        report["rows"][0]["comparison"]["trace_vectors"]["left_candidate"][1]["step"] = True
+        comparison = report["rows"][0]["comparison"]
+        comparison["left_candidate_trace_sha256"] = v._trace_digest(
+            comparison["trace_vectors"]["left_candidate"]
+        )
+        resign(report)
+        with self.assertRaisesRegex(v.ValidationError, "trace steps not contiguous"):
+            validate_report(report)
 
 
 if __name__ == "__main__":
