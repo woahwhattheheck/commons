@@ -650,6 +650,47 @@ def main():
     v4_place_violations = guard.scan_added(v4_place_lines)
     assert v4_place_violations == [], v4_place_violations
 
+    # Run 34689798237 / SHA 0869436d: wrapping operating-stock market-shape
+    # fail-closed re-indented an existing PLACE/shed-deposit membership test
+    # so `action` sat next to `not in` on one added line. That trips
+    # unlisted-action even though the line classifies game-engine shed
+    # arrivals, not Action Pad verbs. Membership via ANIMALS.get keeps the
+    # same deposit bound. The forbidden collocation must still fail.
+    operating_stock_path = (
+        "revenue/kaggriculture/cloud-execution-lab/operating_stock.py"
+    )
+    operating_stock_blocked = diff(
+        operating_stock_path,
+        [
+            "                if action[0] == 'PLACE' and len(action) > 1 and action[1] not in mechanics.ANIMALS:",
+        ],
+    )
+    assert rules(operating_stock_blocked) == {"unlisted-action"}, rules(
+        operating_stock_blocked
+    )
+    operating_stock_allowed = diff(
+        operating_stock_path,
+        [
+            "                if action[0] == 'PLACE' and len(action) > 1 and mechanics.ANIMALS.get(action[1]) is None:",
+            "                    deposits += max(0, int(action[2]) if len(action) > 2 else 1)",
+        ],
+    )
+    assert guard.scan_diff(operating_stock_allowed) == [], guard.scan_diff(
+        operating_stock_allowed
+    )
+    operating_stock_live = Path(operating_stock_path)
+    operating_stock_lines = [
+        guard.AddedLine(operating_stock_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            operating_stock_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    operating_stock_violations = [
+        item for item in guard.scan_added(operating_stock_lines)
+        if item.rule == "unlisted-action"
+    ]
+    assert operating_stock_violations == [], operating_stock_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.

@@ -138,6 +138,13 @@ class OperatingStockTests(unittest.TestCase):
         self.route[462]['market'] = [['SELL', 'WOOL', 90]]
         self.unchanged('retained_stock_conflicts_with_arrival_room')
 
+    def test_future_animal_placement_is_not_shed_arrival(self):
+        self.private['shed']['WOOL'] = 90
+        self.route[462]['farmer'] = ['PLACE', 'COW', 9]
+        result, report = self.propose()
+        self.assertTrue(report['changed'])
+        self.assertEqual(result['market'], [['SELL', 'FERTILIZER', 7]])
+
     def test_current_animal_purchase_is_in_arrival_bound(self):
         self.selected['market'].append(['BUY_ANIMAL', 'COW', 100])
         self.unchanged('retained_stock_conflicts_with_arrival_room')
