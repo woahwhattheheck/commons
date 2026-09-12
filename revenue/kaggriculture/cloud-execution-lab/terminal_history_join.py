@@ -57,7 +57,14 @@ class TerminalHistoryJoin:
         self.fill_result=None
         if self.pending is None:return
         before,cfg,final,post=self.pending
-        if int(obs['step'])<=int(before['step']):return
+        now=int(obs['step']);prior=int(before['step'])
+        if now<prior:
+            # A strict backstep is a new episode/reset boundary. Never carry a
+            # pending action across it; a later step could otherwise cross-link
+            # the prior episode into the new history. Exact retries stay pending.
+            self.pending=None
+            return
+        if now==prior:return
         self.pending=None
         self.bridge.record(before,cfg,final,post_unit_shed=post['private']['shed'],
                            post_unit_inventories=post['private']['inventories'])
