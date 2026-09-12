@@ -10,6 +10,12 @@ The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
 engine town-center consumption is handled only by the sold-count fallback.
 
+FourthQuadrant proposals are atomic executable alternatives. This module never
+partially shrinks outer proposal metadata: it authenticates the MELON PLANT
+cardinality from every route variant's executable ``patches`` payload, requires
+all variants and producer metadata to agree, and admits the original proposal
+object only when that whole commitment fits the remaining real-world budget.
+
 Default OFF. The runtime must not call this module unless the existing
 ``r04_melon_cap`` flag is exactly ``True``.
 """
@@ -138,17 +144,90 @@ def max_melon_plants(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> in
     return remaining_melon_budget(observation, cap) // MELON_UNITS_PER_PLANT
 
 
-def _proposal_size(proposal: dict[str, Any]) -> tuple[int | None, list[Any] | None]:
+def _melon_plant_actions(row: Any) -> int | None:
+    """Count executable MELON PLANT actions in one canonical route row."""
+    if not isinstance(row, dict):
+        return None
+    actions: list[Any] = []
+    if "farmer" in row:
+        actions.append(row["farmer"])
+    hands = row.get("hands", [])
+    if not isinstance(hands, (list, tuple)):
+        return None
+    actions.extend(hands)
+
+    count = 0
+    for action in actions:
+        if not isinstance(action, (list, tuple)):
+            return None
+        if action and action[0] == "PLANT":
+            if len(action) < 2:
+                return None
+            if action[1] == "MELON":
+                count += 1
+    return count
+
+
+def executable_melon_plants(proposal: Any) -> int | None:
+    """Authenticate the atomic MELON commitment from FourthQuadrant patches.
+
+    Canonical FourthQuadrant.install() applies ``variants[*].patches`` directly.
+    Outer ``tiles``/``seed_units`` are therefore cross-checks, never authority.
+    Any malformed route, route-to-route disagreement, or metadata mismatch fails
+    closed so a cap cannot understate the executable proposal.
+    """
+    if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
+        return None
+    variants = proposal.get("variants")
+    if not isinstance(variants, dict) or not variants:
+        return None
+
+    counts: list[int] = []
+    for variant in variants.values():
+        if not isinstance(variant, dict):
+            return None
+        patches = variant.get("patches")
+        if not isinstance(patches, dict) or not patches:
+            return None
+        route_count = 0
+        for step, row in patches.items():
+            if type(step) is not int or step < 0:
+                return None
+            row_count = _melon_plant_actions(row)
+            if row_count is None:
+                return None
+            route_count += row_count
+        if route_count <= 0:
+            return None
+        counts.append(route_count)
+
+    commitment = counts[0]
+    if any(count != commitment for count in counts[1:]):
+        return None
+
     tiles = proposal.get("tiles")
-    if isinstance(tiles, (list, tuple)):
-        return len(tiles), list(tiles)
-    size = _plain_nonnegative_int(proposal.get("size"))
-    return size, None
+    if not isinstance(tiles, (list, tuple)) or len(tiles) != commitment:
+        return None
+    if "size" in proposal:
+        size = _plain_nonnegative_int(proposal["size"])
+        if size != commitment:
+            return None
+    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
+    if seed_units != commitment:  # MELON has one PLANT cycle in canonical producer.
+        return None
+    return commitment
 
 
 def filter_proposals(proposals: Any, observation: Any,
                      cap: int = MELON_LIFETIME_UNIT_CAP) -> list[Any]:
-    """Bound the *aggregate* new MELON commitment across one proposal batch."""
+    """Keep every whole executable MELON alternative that fits the budget.
+
+    FourthQuadrant proposals are mutually exclusive: its admission callback
+    returns exactly one supplied proposal. Candidate alternatives therefore do
+    not consume one another's budget. Non-MELON proposals are outside this
+    repair and pass through unchanged. Oversized or malformed MELON proposals
+    are skipped, never truncated.
+    """
     if not isinstance(proposals, (list, tuple)):
         return []
     plants_left = max_melon_plants(observation, cap)
@@ -158,27 +237,10 @@ def filter_proposals(proposals: Any, observation: Any,
             out.append(proposal)
             continue
 
-        size, tiles = _proposal_size(proposal)
-        if size is None or size <= 0 or plants_left <= 0:
+        commitment = executable_melon_plants(proposal)
+        if commitment is None or commitment > plants_left:
             continue
-        allowed = min(size, plants_left)
-        plants_left -= allowed
-
-        if allowed == size:
-            out.append(proposal)
-            continue
-
-        shrunk = dict(proposal)
-        if tiles is not None:
-            shrunk["tiles"] = tiles[:allowed]
-        if "size" in shrunk:
-            shrunk["size"] = allowed
-        if "seed_units" in shrunk:
-            seed_units = _plain_nonnegative_int(shrunk["seed_units"])
-            if seed_units is None:
-                continue
-            shrunk["seed_units"] = seed_units * allowed // size
-        out.append(shrunk)
+        out.append(proposal)
     return out
 
 
