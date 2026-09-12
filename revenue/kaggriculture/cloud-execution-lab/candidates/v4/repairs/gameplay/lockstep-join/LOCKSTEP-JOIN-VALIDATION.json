@@ -1,0 +1,56 @@
+{
+  "authored_files": {
+    "LOCKSTEP-JOIN.md": {
+      "bytes": 4393,
+      "git_blob": "dd662b1cf7b5212dd33453fe6f7464e5e689bad1",
+      "sha256": "46545b82d9481bdc13497f87fb9fac14b14b4dce4516ff712c6c4e05ef82304a"
+    },
+    "compose_native_return_bridge.py": {
+      "bytes": 8055,
+      "git_blob": "253b8b61ab11ef6c3ebc0971d02feeb524f2f493",
+      "sha256": "eaeeabf292c0bcc15d79eb59c58b5064ad2743de3892b20d3580a49365b1c7ce"
+    },
+    "native_return_bridge.py": {
+      "bytes": 18408,
+      "git_blob": "38f16c792177e3ff1f72d235632b2e2ea2da3285",
+      "sha256": "9eb1a2614f375ca5c75f448b0ed7c68c07795c6a66ef4e23886b190ffce5c4ec"
+    },
+    "test_compose_native_return_bridge.py": {
+      "bytes": 2218,
+      "git_blob": "13e2b3f30b466defa2232c2072a303ffc899d05b",
+      "sha256": "2b98e62d30af98b6b1fe96447470fffdc413f9ba221731e765ee146471d83ab0"
+    },
+    "test_native_return_bridge.py": {
+      "bytes": 8636,
+      "git_blob": "4917cfb7ec2c3482a68867dde88903eef90b25a8",
+      "sha256": "d4c37f18f2d7c968a6922d6eb4f4446043ed2715e472461dcc9a37df468df959"
+    }
+  },
+  "authority_git_blobs": {
+    "effective_flow_bounds.py": "e24dd03a88a71ba4cf6f8d5da1082b89490b5a94",
+    "join_queue_contract.py": "ac91d3c65deeabadaa60ee83c4a7a84286849150"
+  },
+  "native_input_git_blobs": {
+    "TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "frozen_selected.py": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "scheduler.py": "a483b24dd72b580d7d8811636b54d2d44f391575",
+    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24"
+  },
+  "normal": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 21,
+    "skipped": 0,
+    "tests": 21
+  },
+  "optimized": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 21,
+    "skipped": 0,
+    "tests": 21
+  },
+  "schema": "titan-v4-lockstep-return-bridge-validation/v1",
+  "scope": "source/semantic integration; no strength or promotion claim"
+}
