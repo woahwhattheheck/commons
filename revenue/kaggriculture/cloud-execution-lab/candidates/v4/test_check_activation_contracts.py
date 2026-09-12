@@ -42,6 +42,46 @@ class ActivationContractTests(unittest.TestCase):
             "    return active\n"
         )
 
+    def test_return_and_truthiness_is_fail_open(self):
+        findings = self.assert_fails(
+            "def install(wrapped, enabled=False):\n"
+            "    return enabled and wrapped\n"
+        )
+        self.assertEqual(2, findings[0].line)
+
+    def test_assignment_or_truthiness_is_fail_open(self):
+        self.assert_fails(
+            "def apply(parent, enabled=False):\n"
+            "    result = enabled or parent\n"
+            "    return result\n"
+        )
+
+    def test_return_not_truthiness_is_fail_open(self):
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    return not enabled\n"
+        )
+
+    def test_nested_call_argument_boolop_truthiness_is_fail_open(self):
+        self.assert_fails(
+            "def apply(emit, candidate, enabled=False):\n"
+            "    return emit(enabled and candidate)\n"
+        )
+
+    def test_strict_guards_allow_expression_truthiness(self):
+        self.assert_clean(
+            "def apply(action, wrapped, enabled=False):\n"
+            "    if enabled is not True:\n"
+            "        return action\n"
+            "    return enabled and wrapped\n"
+        )
+        self.assert_clean(
+            "def apply(action, enabled=False):\n"
+            "    if type(enabled) is not bool:\n"
+            "        return action\n"
+            "    return not enabled\n"
+        )
+
     def test_equality_with_true_is_not_literal_bool_identity(self):
         self.assert_fails(
             "def apply(enabled=False):\n"
