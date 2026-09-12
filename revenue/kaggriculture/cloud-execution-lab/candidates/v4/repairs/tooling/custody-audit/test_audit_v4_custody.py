@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import contextlib
-import copy
 import io
 import json
 import os
@@ -327,6 +326,19 @@ class CustodyTests(unittest.TestCase):
         self.assertEqual(result["ref_at_end"], new)
         self.assertTrue(result["custody_complete"])
         self.assertTrue(result["ref_moved"])
+
+    def test_missing_in_tree_blob_object_is_error_not_custody(self):
+        path = self.repo / ".git" / "objects" / self.source_id[:2] / self.source_id[2:]
+        path.unlink()
+        code, result = self.cli()
+        self.assertEqual(code, 2)
+        self.assertFalse(result["custody_complete"])
+
+    def test_forged_or_unverified_blob_bytes_rejected(self):
+        snap = self.snapshot()
+        for blobs in ({}, {**snap.blobs, self.source_id: b"wrong bytes"}):
+            with self.subTest(blobs=bool(blobs)), self.assertRaises(audit.EvidenceError):
+                audit.census(replace(snap, blobs=blobs))
 
     def test_no_candidate_python_is_executed(self):
         marker = self.repo / "MUST_NOT_EXIST"

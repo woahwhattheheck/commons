@@ -16,7 +16,8 @@
       "bytes": 17061,
       "sha256": "30a646d56bff72758c9ff4f98b4353c9e89b0ada211214add56d773dcee2bda0",
       "git_blob": "b35a30431f64c1d6b40d1d599190338a9d50b555",
-      "materialized_path": "repairs/gameplay/wheat-fertilize/r04_wheat_fert.py"
+      "materialized_path": "repairs/gameplay/wf1-wheat-fertilize/r04_wheat_fert.py",
+      "materialized_commit": "f79cd4d8cf6f7fa25afb7dec77af3fa65443bdf6"
     },
     "patch_v4_seam.py": {
       "bytes": 3056,
@@ -66,7 +67,7 @@
   "custody_reconciliation": {
     "scope": "one original source, two complementary storage paths; not two implementations",
     "source_git_blob_verified_against_archive": "b35a30431f64c1d6b40d1d599190338a9d50b555",
-    "source_tree_readback": "6f9830e4c5e43889c93bfafb3009dba2199bb7df",
+    "source_tree_readback": "main path readback exact Git blob b35a30431f64c1d6b40d1d599190338a9d50b555 at commit f79cd4d8cf6f7fa25afb7dec77af3fa65443bdf6",
     "manifest_and_spec_tree_readback": "eeb3139b8b33004a62fcf31f61e1bb9acccb5589",
     "instruction": "Use the existing materialized_path entries; do not copy the same original module into another V4 directory. Members without materialized_path remain archive provenance, not proof of Git tree custody.",
     "independent_arithmetic_audit": "88 distinct tape-seat records; own, rival and margin fields all equal differences recomputed from player-ordered base/arm scores. This was an archived-result audit, not a current-main game rerun."

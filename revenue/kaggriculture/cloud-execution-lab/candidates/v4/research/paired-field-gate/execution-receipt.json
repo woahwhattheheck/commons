@@ -1,0 +1,60 @@
+{
+  "commands": [
+    {
+      "command": "python -m unittest -v test_paired_field_gate",
+      "result": "PASS",
+      "tests": 41
+    },
+    {
+      "command": "python -O -m unittest -v test_paired_field_gate",
+      "result": "PASS",
+      "tests": 41
+    },
+    {
+      "command": "python -m py_compile paired_field_gate.py test_paired_field_gate.py",
+      "result": "PASS"
+    }
+  ],
+  "evidence_kind": "LOCAL_EXECUTION_AND_SYNTHETIC_DISCRIMINATION_ONLY",
+  "files": {
+    "README.md": {
+      "bytes": 5612,
+      "git_blob": "9566555edceff849b41fc2497e3299e14b54e4a6",
+      "sha256": "5b801b1c409ba2909c057f21fd34a98020d6753b870c22697b48c91e58253100"
+    },
+    "paired_field_gate.py": {
+      "bytes": 13777,
+      "git_blob": "b1ccebfc4126765b21c3792d9a210acd479e334e",
+      "sha256": "e3d20345fa40ac72d0a744766a1f097844a5bb88d643121dab4c6bbdb69f6ed1"
+    },
+    "test_paired_field_gate.py": {
+      "bytes": 15543,
+      "git_blob": "908ec58aadb824fdc7571d65a9eb9581a3f8bb68",
+      "sha256": "ebce9e83da86963b04f194fcd2e34adfae29d2e870c49f552fb6936cece76daf"
+    }
+  },
+  "lane": "ASTRA-FIELD-PAIRED-FIELD-SCREEN",
+  "not_claimed": [
+    "real game evaluation",
+    "economic improvement",
+    "hosted CI",
+    "feature activation",
+    "production promotion"
+  ],
+  "predecessor_pooled_policy_failures": [],
+  "python": "3.13.5",
+  "reporter_git_blob": "a37f0be3eb7db79d6e7162cee3b7e472e2afab6a",
+  "schema_version": 1,
+  "synthetic_witness": {
+    "failures": [
+      "dairy: mean delta -30 < 0",
+      "dairy/seat0: mean delta -30 < 0",
+      "dairy/seat1: mean delta -30 < 0",
+      "balanced mean delta -10 < 0"
+    ],
+    "opponent_balanced_mean_delta_m": -10.0,
+    "pooled_mean_delta_m": 2.0,
+    "verdict": "FAIL",
+    "worst_opponent_mean_delta_m": -30.0
+  }
+}
