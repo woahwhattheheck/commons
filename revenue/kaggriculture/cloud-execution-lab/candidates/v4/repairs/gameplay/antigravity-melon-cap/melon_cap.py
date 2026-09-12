@@ -10,6 +10,12 @@ The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
 engine town-center consumption is handled only by the sold-count fallback.
 
+MELON proposal admission is intentionally whole-proposal and fail closed.
+FourthQuadrant executes ``variants[*].patches``; trimming only outer ``tiles``
+metadata does not trim that executable work. A proposal therefore counts only
+when its producer-owned MELON PLANT actions can be authenticated from the
+bundle lots back to the corresponding patch rows.
+
 Default OFF. The runtime must not call this module unless the existing
 ``r04_melon_cap`` flag is exactly ``True``.
 """
@@ -138,17 +144,94 @@ def max_melon_plants(observation: Any, cap: int = MELON_LIFETIME_UNIT_CAP) -> in
     return remaining_melon_budget(observation, cap) // MELON_UNITS_PER_PLANT
 
 
-def _proposal_size(proposal: dict[str, Any]) -> tuple[int | None, list[Any] | None]:
+def _tile_key(tile: Any) -> tuple[int, int] | None:
+    if not isinstance(tile, (list, tuple)) or len(tile) != 2:
+        return None
+    x, y = tile
+    if type(x) is not int or type(y) is not int:
+        return None
+    return x, y
+
+
+def _worker_action(row: Any, worker: int) -> Any:
+    """Return FourthQuadrant's 1-based hired-hand action from a patch row."""
+    if not isinstance(row, dict) or type(worker) is not int or worker <= 0:
+        return None
+    hands = row.get("hands")
+    if not isinstance(hands, list) or worker > len(hands):
+        return None
+    return hands[worker - 1]
+
+
+def executable_melon_plants(proposal: Any) -> int | None:
+    """Authenticate proposal-owned MELON PLANT cardinality.
+
+    FourthQuadrant records one harvested lot for each selected MELON tile.
+    Each lot carries the tile, plant step and 1-based worker slot that wrote the
+    proposal-owned ``PLANT MELON`` action into ``variant['patches']``. Requiring
+    those three views to agree avoids treating outer proposal metadata as the
+    executable contract and avoids counting unrelated incumbent route actions.
+    """
+    if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
+        return None
+
     tiles = proposal.get("tiles")
-    if isinstance(tiles, (list, tuple)):
-        return len(tiles), list(tiles)
-    size = _plain_nonnegative_int(proposal.get("size"))
-    return size, None
+    if not isinstance(tiles, (list, tuple)) or not tiles:
+        return None
+    outer_tiles = [_tile_key(tile) for tile in tiles]
+    if any(tile is None for tile in outer_tiles) or len(set(outer_tiles)) != len(outer_tiles):
+        return None
+    expected = len(outer_tiles)
+
+    seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
+    if seed_units != expected:
+        return None
+
+    variants = proposal.get("variants")
+    if not isinstance(variants, dict) or not variants:
+        return None
+
+    expected_tiles = set(outer_tiles)
+    for variant in variants.values():
+        if not isinstance(variant, dict):
+            return None
+        patches = variant.get("patches")
+        bundle = variant.get("bundle")
+        lots = bundle.get("lots") if isinstance(bundle, dict) else None
+        if not isinstance(patches, dict) or not isinstance(lots, list):
+            return None
+
+        melon_lots = []
+        for lot in lots:
+            if not isinstance(lot, dict) or lot.get("crop") != "MELON":
+                return None
+            tile = _tile_key(lot.get("tile"))
+            plant_step = _plain_nonnegative_int(lot.get("plant_step"))
+            worker = _plain_nonnegative_int(lot.get("worker"))
+            if tile is None or plant_step is None or worker is None or worker <= 0:
+                return None
+            row = patches.get(plant_step)
+            if _worker_action(row, worker) != ["PLANT", "MELON"]:
+                return None
+            melon_lots.append((tile, plant_step, worker))
+
+        if len(melon_lots) != expected:
+            return None
+        lot_tiles = [item[0] for item in melon_lots]
+        if len(set(lot_tiles)) != expected or set(lot_tiles) != expected_tiles:
+            return None
+
+    return expected
 
 
 def filter_proposals(proposals: Any, observation: Any,
                      cap: int = MELON_LIFETIME_UNIT_CAP) -> list[Any]:
-    """Bound the *aggregate* new MELON commitment across one proposal batch."""
+    """Admit only whole, authenticated MELON proposals under the shared cap.
+
+    Partial metadata shrinkage is forbidden: FourthQuadrant executes variant
+    patches, so a partially trimmed wrapper could still execute every original
+    MELON PLANT. Malformed or mismatched MELON proposals therefore fail closed.
+    """
     if not isinstance(proposals, (list, tuple)):
         return []
     plants_left = max_melon_plants(observation, cap)
@@ -158,27 +241,11 @@ def filter_proposals(proposals: Any, observation: Any,
             out.append(proposal)
             continue
 
-        size, tiles = _proposal_size(proposal)
-        if size is None or size <= 0 or plants_left <= 0:
+        requested = executable_melon_plants(proposal)
+        if requested is None or requested <= 0 or requested > plants_left:
             continue
-        allowed = min(size, plants_left)
-        plants_left -= allowed
-
-        if allowed == size:
-            out.append(proposal)
-            continue
-
-        shrunk = dict(proposal)
-        if tiles is not None:
-            shrunk["tiles"] = tiles[:allowed]
-        if "size" in shrunk:
-            shrunk["size"] = allowed
-        if "seed_units" in shrunk:
-            seed_units = _plain_nonnegative_int(shrunk["seed_units"])
-            if seed_units is None:
-                continue
-            shrunk["seed_units"] = seed_units * allowed // size
-        out.append(shrunk)
+        plants_left -= requested
+        out.append(proposal)
     return out
 
 
