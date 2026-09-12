@@ -1,260 +1,275 @@
 {
   "counts": {
     "open_issues": 6,
-    "open_pull_requests": 3,
-    "runs_in_progress": 18,
-    "runs_queued": 4510
+    "open_pull_requests": 8,
+    "runs_in_progress": 20,
+    "runs_queued": 531
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 1,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-wf1-field-custody-r2-20260912",
-      "created_at": "2026-09-12T11:25:22Z",
-      "draft": false,
-      "head_sha": "4bb0b719e5f802047fe6c5f7fcb2a05ce06557c9",
-      "number": 13369,
-      "title": "TITAN V5: bind WF1 field evidence to immutable package closures",
-      "updated_at": "2026-09-12T11:37:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-animal-yield-cap-recovery-20260912",
-      "created_at": "2026-09-12T11:37:53Z",
-      "draft": true,
-      "head_sha": "bb4f22673de5f5410cc163ed68c090b958c67706",
-      "number": 13378,
-      "title": "TITAN V5: recover animal yield-cap candidate carrier",
-      "updated_at": "2026-09-12T11:46:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-animal-cadence-cert-20260912",
-      "created_at": "2026-09-12T11:38:07Z",
-      "draft": false,
-      "head_sha": "a9a2f338ae776f0ea97bab9c43461ef74a64a088",
-      "number": 13379,
-      "title": "TITAN V5: add source-pinned day-close animal feed certificate authority",
-      "updated_at": "2026-09-12T11:54:01Z"
-    }
+  "degraded": [
+    "pulls-partial"
   ],
+  "drafts": 2,
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-animal-cadence-cert-20260912",
-      "created_at": "2026-09-12T11:38:07Z",
+      "branch": "sol/titan-v5-carebank-package-drift-20260912-01",
+      "created_at": "2026-09-12T18:49:02Z",
       "draft": false,
-      "head_sha": "a9a2f338ae776f0ea97bab9c43461ef74a64a088",
-      "number": 13379,
-      "title": "TITAN V5: add source-pinned day-close animal feed certificate authority",
-      "updated_at": "2026-09-12T11:54:01Z"
+      "head_sha": "85fa8f85429e9d6fa135891b92316be6cc9ecc66",
+      "number": 13403,
+      "title": "TITAN V5: rebind CAREBANK scratch composer to current package",
+      "updated_at": "2026-09-12T18:49:02Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-animal-yield-cap-recovery-20260912",
-      "created_at": "2026-09-12T11:37:53Z",
+      "branch": "sol/v5-paired-economics-release-firewall-20260912",
+      "created_at": "2026-09-12T18:44:44Z",
+      "draft": false,
+      "head_sha": "711a69c8a53c33f211cb5b5bdbf30a2cc58f7650",
+      "number": 13402,
+      "title": "TITAN V5: require paired economics before release-pointer promotion",
+      "updated_at": "2026-09-12T18:52:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-eod-capacity-rescue-20260912",
+      "created_at": "2026-09-12T18:39:38Z",
       "draft": true,
-      "head_sha": "bb4f22673de5f5410cc163ed68c090b958c67706",
-      "number": 13378,
-      "title": "TITAN V5: recover animal yield-cap candidate carrier",
-      "updated_at": "2026-09-12T11:46:15Z"
+      "head_sha": "1d3969ad2d8fe8cdf977314fb95b899a3ced8ba2",
+      "number": 13400,
+      "title": "TITAN V5: converge EOD shed-capacity rescue",
+      "updated_at": "2026-09-12T18:52:30Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-wf1-field-custody-r2-20260912",
-      "created_at": "2026-09-12T11:25:22Z",
+      "branch": "astra/v5-row-shed-final-boundary-20260912",
+      "created_at": "2026-09-12T18:38:31Z",
+      "draft": true,
+      "head_sha": "da82deb64f5d126a2d11ee8745b5e6ecee00352c",
+      "number": 13399,
+      "title": "TITAN V5: restore V3.1 row-shed at final returned market",
+      "updated_at": "2026-09-12T18:52:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-v31-fert-hand-current-abi",
+      "created_at": "2026-09-12T18:38:30Z",
       "draft": false,
-      "head_sha": "4bb0b719e5f802047fe6c5f7fcb2a05ce06557c9",
-      "number": 13369,
-      "title": "TITAN V5: bind WF1 field evidence to immutable package closures",
-      "updated_at": "2026-09-12T11:37:24Z"
+      "head_sha": "4ce47d347bf3c9d062a1b23d4b7520ced9710453",
+      "number": 13398,
+      "title": "TITAN V5: recover V3.1 fertilizer-hand current ABI",
+      "updated_at": "2026-09-12T18:48:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol/titan-v5-s2-milk-gate-20260912-01",
+      "created_at": "2026-09-12T18:37:11Z",
+      "draft": false,
+      "head_sha": "efcbf762ae027cd3e2548cf6bbc6602836f71b62",
+      "number": 13397,
+      "title": "TITAN V5: port milk-shop-gated S2 sheep swap candidate",
+      "updated_at": "2026-09-12T18:44:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol/titan-v5-current-carrot-capacity-20260912-01",
+      "created_at": "2026-09-12T18:35:20Z",
+      "draft": false,
+      "head_sha": "b0418bb74359e8d1acbf0dc9f4f9884615db5a37",
+      "number": 13395,
+      "title": "TITAN V5: move selective-carrot evaluation onto current lineage",
+      "updated_at": "2026-09-12T18:52:50Z"
     }
   ],
   "open_heads": {
-    "13369": "4bb0b719e5f802047fe6c5f7fcb2a05ce06557c9",
-    "13378": "bb4f22673de5f5410cc163ed68c090b958c67706",
-    "13379": "a9a2f338ae776f0ea97bab9c43461ef74a64a088"
+    "13395": "b0418bb74359e8d1acbf0dc9f4f9884615db5a37",
+    "13397": "efcbf762ae027cd3e2548cf6bbc6602836f71b62",
+    "13398": "4ce47d347bf3c9d062a1b23d4b7520ced9710453",
+    "13399": "da82deb64f5d126a2d11ee8745b5e6ecee00352c",
+    "13400": "1d3969ad2d8fe8cdf977314fb95b899a3ced8ba2",
+    "13402": "711a69c8a53c33f211cb5b5bdbf30a2cc58f7650",
+    "13403": "85fa8f85429e9d6fa135891b92316be6cc9ecc66"
   },
-  "pulls_listed": 3,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 250.6,
+  "pulls_listed": 7,
+  "pulls_listing": "PARTIAL",
+  "queue_depth_per_runner": 26.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-joint-liquidity-harness-closure-20260912",
-      "closed_at": "2026-09-12T11:53:02Z",
-      "head_sha": "5c058441906938f28e98b659b576932c3200b98f",
-      "merged_at": "2026-09-12T11:53:02Z",
-      "number": 13381,
+      "branch": "astra/v5-gauntlet-union-integration-20260912",
+      "closed_at": "2026-09-12T18:44:58Z",
+      "head_sha": "8ea40e47637e4e3fe18a71a40360898d5b308039",
+      "merged_at": "2026-09-12T18:44:58Z",
+      "number": 13396,
       "state": "MERGED",
-      "title": "TITAN V5: bind joint-liquidity evidence to exact harness closure"
+      "title": "TITAN V5: close gauntlet union provenance and preservation gaps"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-carrot-capacity-20260912",
-      "closed_at": "2026-09-12T11:50:22Z",
-      "head_sha": "0df12a3f6c35dfb004d184dc82be31d47f7d5647",
-      "merged_at": "2026-09-12T11:50:22Z",
-      "number": 13382,
+      "branch": "astra/v5-v31-v4-authenticated-archive-bridge-20260912",
+      "closed_at": "2026-09-12T18:42:36Z",
+      "head_sha": "4d188f310180cb69257639a4ea6288cdb4304b21",
+      "merged_at": "2026-09-12T18:42:36Z",
+      "number": 13401,
       "state": "MERGED",
-      "title": "TITAN V5: add carrot capacity profiles and measured scaling results"
+      "title": "TITAN V5: add authenticated exact V3.1 vs V4 archive bridge"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-promotion-runtime-producer-closure-20260912",
-      "closed_at": "2026-09-12T11:47:38Z",
-      "head_sha": "f8535b329f7929bc3fff1d1e216fbce64e0b0819",
-      "merged_at": "2026-09-12T11:47:38Z",
-      "number": 13380,
+      "branch": "astra/v5-top30-union-20260912",
+      "closed_at": "2026-09-12T18:34:58Z",
+      "head_sha": "edea5aba6ad41859295b0dc56d5c4338b5aed592",
+      "merged_at": "2026-09-12T18:34:58Z",
+      "number": 13394,
       "state": "MERGED",
-      "title": "V5: close promotion runtime producer contract"
+      "title": "TITAN V5: extend opponent corpus with current and previous top30"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-league-variants-market-topology-20260912",
-      "closed_at": "2026-09-12T11:37:04Z",
-      "head_sha": "2b5db887a70e04a15d3373d688177dbe3d8cae3e",
-      "merged_at": "2026-09-12T11:37:04Z",
-      "number": 13366,
+      "branch": "astra/quartz-v5-returnbridge-postmerge-repair-20260912",
+      "closed_at": "2026-09-12T11:28:31Z",
+      "head_sha": "f402bb74b7a6bc85a0c546347e7d0658c0574123",
+      "merged_at": "2026-09-12T11:28:31Z",
+      "number": 13372,
       "state": "MERGED",
-      "title": "TITAN V5: preserve legacy league variant market topology"
+      "title": "TITAN V5: repair ReturnBridge postmerge source custody"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-joint-liquidity-evidence-custody-20260912",
-      "closed_at": "2026-09-12T11:34:05Z",
-      "head_sha": "f85ce25e52f406220639887381ef673948d0e067",
-      "merged_at": "2026-09-12T11:34:04Z",
-      "number": 13370,
+      "branch": "astra/v5-unit-market-inventory-order-bridge-20260912",
+      "closed_at": "2026-09-12T11:27:23Z",
+      "head_sha": "c212ce495889d73f0004d29548b7b653dfb9eb3d",
+      "merged_at": "2026-09-12T11:27:23Z",
+      "number": 13363,
       "state": "MERGED",
-      "title": "TITAN V5: bind joint-liquidity evidence to published overlay"
+      "title": "TITAN V5 research: reconcile unit-before-market inventory ordering"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-engagement-jsonl-input-custody-20260912",
-      "closed_at": "2026-09-12T11:32:25Z",
-      "head_sha": "720344328898de4470f6431fde475c3288ad315f",
-      "merged_at": "2026-09-12T11:32:25Z",
-      "number": 13371,
+      "branch": "astra/v5-promotion-gate-contract-authenticity-20260912",
+      "closed_at": "2026-09-12T11:27:02Z",
+      "head_sha": "cde647c64f7c4ea6bda069c70f44c9268de37c07",
+      "merged_at": "2026-09-12T11:27:02Z",
+      "number": 13356,
       "state": "MERGED",
-      "title": "TITAN V5: fail engagement JSONL closed on ambiguous input"
+      "title": "V5: authenticate promotion-gate input contracts"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt-v5-deadcap-seed-20260912",
-      "closed_at": "2026-09-12T11:32:16Z",
-      "head_sha": "333973aade05de094f37394250d8e70d44d14338",
+      "branch": "astra/v5-early-capital-sequential-seed-parity-20260912",
+      "closed_at": "2026-09-12T11:26:41Z",
+      "head_sha": "d6268e4750b0cdee43a3f8a3123ecf6ad6a8aa4e",
+      "merged_at": "2026-09-12T11:26:41Z",
+      "number": 13368,
+      "state": "MERGED",
+      "title": "TITAN V5: replay early-capital seed consumption sequentially"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-deadline-observation-contract-20260912",
+      "closed_at": "2026-09-12T11:26:36Z",
+      "head_sha": "a41f72956bddd287568012127b2ac0051ad3dc3e",
+      "merged_at": "2026-09-12T11:26:36Z",
+      "number": 13348,
+      "state": "MERGED",
+      "title": "V5: bind deadline fallbacks to exact public identity"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-animal-cadence-20260912",
+      "closed_at": "2026-09-12T11:25:08Z",
+      "head_sha": "dac4aa97026415f4b144333877d46abb4146195d",
+      "merged_at": "2026-09-12T11:25:08Z",
+      "number": 13331,
+      "state": "MERGED",
+      "title": "TITAN V5: add source-backed alternate-feed candidate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra-v5-scheduler-effective-config-r2",
+      "closed_at": "2026-09-12T11:24:35Z",
+      "head_sha": "f77d2b6226309be96521b8c058879308cbea5a47",
+      "merged_at": "2026-09-12T11:24:35Z",
+      "number": 13333,
+      "state": "MERGED",
+      "title": "TITAN V5: converge scheduler engine-contract custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra-v5-bulk-feeder-calendar-binding-20260912",
+      "closed_at": "2026-09-12T11:24:24Z",
+      "head_sha": "513a7700048a3bc9e7c7bfb86701e3389bd7f3d9",
+      "merged_at": "2026-09-12T11:24:24Z",
+      "number": 13362,
+      "state": "MERGED",
+      "title": "TITAN V5: fail bulk-feeder verifier closed off canonical day calendar"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-town-overflow-parity-repair-20260912",
+      "closed_at": "2026-09-12T11:23:05Z",
+      "head_sha": "8690067de3bfe27005cc57ec923bc9d4f9c2263f",
+      "merged_at": "2026-09-12T11:23:05Z",
+      "number": 13364,
+      "state": "MERGED",
+      "title": "TITAN V5: restore town market overflow parity"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt-v5-spatial-tempo-identity-20260912",
+      "closed_at": "2026-09-12T11:21:35Z",
+      "head_sha": "9f9c9653fd3a71615a52e003df3c0e245847e605",
+      "merged_at": "2026-09-12T11:21:34Z",
+      "number": 13358,
+      "state": "MERGED",
+      "title": "TITAN V5: bind SpatialTempo public identity atomically"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-builder-realpath-custody",
+      "closed_at": "2026-09-12T11:21:28Z",
+      "head_sha": "47a3da17f37a3d7b0c0cdaa5a962bfd73c49ce84",
+      "merged_at": "2026-09-12T11:21:28Z",
+      "number": 13355,
+      "state": "MERGED",
+      "title": "TITAN V5: confine canonical builder sources by realpath"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-town-feature-type-exactness-exec",
+      "closed_at": "2026-09-12T11:20:39Z",
+      "head_sha": "1e4971f904721a32a0a411de07b5eee34cc6e021",
       "merged_at": null,
-      "number": 13308,
+      "number": 13324,
       "state": "CLOSED",
-      "title": "V5 research: certify route-dead seed purchases"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-selective-carrot-20260912",
-      "closed_at": "2026-09-12T11:31:42Z",
-      "head_sha": "897a6174c822d3a55b1fc19ce7e83ba1c095c76e",
-      "merged_at": "2026-09-12T11:31:42Z",
-      "number": 13377,
-      "state": "MERGED",
-      "title": "TITAN V5: add town-priced age-three carrot candidate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/quartz-v5-returnbridge-root-rebind-20260912",
-      "closed_at": "2026-09-12T11:31:18Z",
-      "head_sha": "8a125c49518ba19c190461e9d796195cd364f491",
-      "merged_at": "2026-09-12T11:31:18Z",
-      "number": 13376,
-      "state": "MERGED",
-      "title": "TITAN V5: rebind ReturnBridge after root identity merge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/plantguard-survival-20260912",
-      "closed_at": "2026-09-12T07:16:18Z",
-      "head_sha": "141ee296d36c0533b280cf04be232bb454784343",
-      "merged_at": "2026-09-12T07:16:18Z",
-      "number": 13138,
-      "state": "MERGED",
-      "title": "TITAN V4 CROPSCALE: scale crop harvest through authenticated path"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/carebank-strict-enable-postmerge-20260912",
-      "closed_at": "2026-09-12T06:40:02Z",
-      "head_sha": "d1327fc97c63cca8b59132bbfa2e8d505ad63125",
-      "merged_at": "2026-09-12T06:40:02Z",
-      "number": 13105,
-      "state": "MERGED",
-      "title": "TITAN V4 CAREBANK: collapse strict-enable test custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-pro/titan-v2-disabled-spatial-identity-20260910",
-      "closed_at": "2026-09-12T06:26:37Z",
-      "head_sha": "651e3ebe391b3e8afa17fb1e055b06b01dc05126",
-      "merged_at": null,
-      "number": 12083,
-      "state": "CLOSED",
-      "title": "TITAN: make disabled SpatialTempo installation a strict identity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol/scheduler-calendar-custody-20260912",
-      "closed_at": "2026-09-12T06:26:08Z",
-      "head_sha": "37d75f755c487ee6825cd07159a04119fd350b46",
-      "merged_at": "2026-09-12T06:26:08Z",
-      "number": 13091,
-      "state": "MERGED",
-      "title": "TITAN V4 scheduler: close configured calendar custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/seedstream-multiday-public-inference-20260912",
-      "closed_at": "2026-09-12T06:25:47Z",
-      "head_sha": "5cdcdeaace00e11d7abc19f8a7d7355ae6390b78",
-      "merged_at": "2026-09-12T06:25:47Z",
-      "number": 13090,
-      "state": "MERGED",
-      "title": "TITAN V4 SEEDSTREAM: infer bounded RNG candidates from multi-day public evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/kinetic-control-bundle-custody-20260912",
-      "closed_at": "2026-09-12T06:24:39Z",
-      "head_sha": "88daf78eaa58173769e211c014934ada4207a929",
-      "merged_at": "2026-09-12T06:24:39Z",
-      "number": 13089,
-      "state": "MERGED",
-      "title": "TITAN V4 KINETIC: freeze child control program"
+      "title": "V5: enforce exact town procurement feature type [superseded by #13361]"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T11:54:37Z",
+  "unchanged_since": "2026-09-12T18:53:55Z",
   "undatable_pulls": []
 }
