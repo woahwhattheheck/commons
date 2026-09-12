@@ -16,10 +16,43 @@ PRODUCTS = tuple(p for p in m.PRODUCTS if p not in ('WHEAT', 'FERTILIZER'))
 PHASES = {'before_market': 0, 'after_market': 1}
 
 
+def observation_player(obs):
+    """Return the exact two-seat public identity without Python coercion."""
+    value = obs['player']
+    if type(value) is not int or value not in (0, 1):
+        raise ValueError('player must be the plain integer 0 or 1')
+    return value
+
+
+def _clock_part(value, name):
+    if type(value) is not int or value < 0:
+        raise ValueError('%s must be a nonnegative plain integer' % name)
+    return value
+
+
 def absolute_step(obs, config):
+    """Read one exact public clock, rejecting aliases and contradictions."""
     value = obs.get('step')
-    return int(value if value is not None else
-               int(obs['day']) * int(config.get('turnsPerDay', 24)) + int(obs['hour']))
+    if value is not None:
+        step = _clock_part(value, 'step')
+        has_day, has_hour = 'day' in obs, 'hour' in obs
+        if has_day != has_hour:
+            raise ValueError('day and hour must be supplied together')
+        if has_day:
+            day = _clock_part(obs['day'], 'day')
+            hour = _clock_part(obs['hour'], 'hour')
+            turns = int(config.get('turnsPerDay', 24))
+            if turns <= 0 or hour >= turns:
+                raise ValueError('hour is outside turnsPerDay')
+            if step != day * turns + hour:
+                raise ValueError('step contradicts day/hour')
+        return step
+    day = _clock_part(obs['day'], 'day')
+    hour = _clock_part(obs['hour'], 'hour')
+    turns = int(config.get('turnsPerDay', 24))
+    if turns <= 0 or hour >= turns:
+        raise ValueError('hour is outside turnsPerDay')
+    return day * turns + hour
 
 
 def _count(value):
@@ -125,6 +158,7 @@ class ProjectionLedger:
     """
     def __init__(self, obs, config, base, shed, projection, contract, reservations, horizon):
         self.obs, self.config, self.base = obs, config, base
+        self.player = observation_player(obs)
         self.now = absolute_step(obs, config)
         self.last = int(config.get('episodeSteps', 720)) - 2
         self.end = _count(projection['end_step'])
@@ -208,7 +242,7 @@ class ProjectionLedger:
 
     def feasible(self, item, plan):
         stock = dict(self.shed)
-        farm = self.obs['farms'][int(self.obs['player'])]
+        farm = self.obs['farms'][self.player]
         cash = int(farm['money'])
         hires = int(farm.get('hires_today', 0))
         land = len(farm.get('unlocked_quadrants', ['NW'])) - 1
@@ -325,7 +359,7 @@ class SelectedActionSell:
         self.diagnostics = {}
 
     def _rival(self, obs, item, now):
-        rival = obs['farms'][1 - int(obs['player'])]
+        rival = obs['farms'][1 - observation_player(obs)]
         visible = 0
         for row in rival['tiles']:
             for tile in row:
@@ -336,7 +370,7 @@ class SelectedActionSell:
         return min(100, max(visible, recent))
 
     def _observe(self, obs, now):
-        player = int(obs['player'])
+        player = observation_player(obs)
         current = obs['farms'][1 - player]['tiles']
         previous = self.previous
         if previous is not None and previous[1] == player and now == previous[0]:
