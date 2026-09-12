@@ -7,10 +7,23 @@ This is the **pre-declared consumer** of the merged #13478 route-matrix reducer.
 - production-v3 archive: `20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239`
 - active R04 source: `41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a`
 - #13478 reducer schema: `titan-v5-p04-route-ranker/v1`
-- pre-registration spec SHA256: `c0d57d3b20aba4ce8ecca7cc07ac3cf56bd7f7aeb9260efe1f6519d62aa8719e`
+- pre-registration rule-spec SHA256: `c0d57d3b20aba4ce8ecca7cc07ac3cf56bd7f7aeb9260efe1f6519d62aa8719e`
+- pre-outcome discovery-universe SHA256: `3c393d57c4caae9c5ee3b4e6c1110220efbb556b48230ca209061b57a4119a66`
+- discovery-universe source: #titan-kaggriculture `C0C0Z8AHGP2` message TS `1789253666.394169`, published before any R00–R12 terminal outcomes
 - selection boundary: step 144; existing forced terminal plan2 at step 648 remains unchanged.
 
-`p04_preregistered_selector.py --print-preregistration` emits the exact frozen fitting contract. Import fails if the spec object drifts from the hash above.
+`p04_preregistered_selector.py --print-preregistration` emits both the exact frozen fitting contract and the pre-outcome experiment-universe commitment. Import fails if either commitment object drifts from its recorded hash.
+
+## Pre-outcome universe binding
+
+Independent review found that the first draft could accept a cherry-picked subset because its coverage floor was derived from whatever groups a caller supplied. The repair does **not** change the rule grammar, scoring thresholds, tie-breaking, or promotion boundary. Instead it binds discovery input to the route board that already existed before outcomes:
+
+- seeds `1209131101` and `1209131102`;
+- opponents `apex_v7` and `arlene_v14`;
+- seats `0` and `1`;
+- exact Cartesian product = eight `(seed, opponent, seat)` groups.
+
+`validate_discovery_report()` now requires exact set equality with those eight keys after duplicate rejection. Missing groups, extra groups, substituted seeds/opponents/seats, or a two-positive-cell cherry-pick fail closed before any rule is enumerated or scored. This closes the subset-selection attack while preserving the original preregistered rule-spec SHA.
 
 ## Rule class
 
@@ -29,15 +42,15 @@ A non-identity rule is eligible for nomination only when every engaged discovery
 - `delta_margin_vs_incumbent >= 0`; and
 - `delta_own_vs_incumbent >= 0`.
 
-It must also have strictly positive total margin delta and engage at least two groups, two distinct seeds when two are available, two distinct opponents when two are available, and both seats when both are available. Selection is deterministic and worst-cell-first: maximize minimum margin delta, then minimum own delta, then mean margin, mean own, engagement count, simplicity, lexical predicate, and lowest plan id.
+It must also have strictly positive total margin delta and engage at least two groups, two distinct seeds, two distinct opponents, and both seats. Selection is deterministic and worst-cell-first: maximize minimum margin delta, then minimum own delta, then mean margin, mean own, engagement count, simplicity, lexical predicate, and lowest plan id.
 
 This is deliberately stricter than picking the best mean route from the discovery matrix. The matrix may nominate a frozen rule; it cannot make that rule `policy_ready`.
 
 ## Held-out / convergence contract
 
-Any nomination remains `policy_ready=false`, `composer_ready=false`, and default-OFF. A separate native owner must run **fresh held-out** cells using the exact nominated rule bytes/spec hash. The rule, feature set, thresholds, tie-breaking, and fallback may not be changed after discovery results are observed; changing them creates a new experiment, not a reinterpretation of this one.
+Any nomination remains `policy_ready=false`, `composer_ready=false`, and default-OFF. A separate native owner must run **fresh held-out** cells using the exact nominated rule bytes/spec hash/universe hash. The rule, feature set, thresholds, tie-breaking, and fallback may not be changed after discovery results are observed; changing them creates a new experiment, not a reinterpretation of this one.
 
-Only a held-out winner may be converted into a #13482 component against the single production-v3/V5 line. No CURRENT/default/release/Kaggle mutation is authorized here.
+Only a held-out winner may be converted into a staging component against the single production-v3/V5 line. No CURRENT/default/release/Kaggle mutation is authorized here.
 
 ## Source gate
 
@@ -50,4 +63,4 @@ python -O -B -m unittest -v test_p04_preregistered_selector.py
 python -B p04_preregistered_selector.py --print-preregistration
 ```
 
-Author-side reconstructed gate before publication: 13/13 normal, 13/13 optimized, plus `py_compile` clean. The test harness uses only the documented #13478 public API surface; exact-head review should rerun against the real merged reducer before merge.
+Author-side reconstructed exact-API gate after the universe hardening: 15/15 normal, 15/15 optimized, plus `py_compile` clean. Hostiles include both the reviewer's two-positive-group subset attack and an unexpected extra-group substitution. Independent exact-head repo review remains the merge authority.
