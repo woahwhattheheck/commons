@@ -96,8 +96,11 @@ def _parent_shape(action, limit):
     rows = action.get("market")
     if not isinstance(rows, list):
         raise NoveltyEvidenceError("action market must be a list")
-    if _truthy_malformed_market_row(rows):
-        raise NoveltyEvidenceError("truthy market row must be a list")
+    # The official engine truncates the market queue before parsing rows.
+    # Malformed values beyond the executable prefix are inert evidence and may
+    # be preserved raw, but malformed values inside the prefix fail closed.
+    if _truthy_malformed_market_row(rows[:limit]):
+        raise NoveltyEvidenceError("truthy executable market row must be a list")
 
     lead = 0
     for row in rows[:limit]:
@@ -118,7 +121,7 @@ def _parent_shape(action, limit):
     return rows, lead
 
 
-def _validate_row_shed_candidate(parent, candidate, lead):
+def _validate_row_shed_candidate(parent, candidate, lead, limit):
     if not isinstance(candidate, dict):
         raise NoveltyEvidenceError("row-shed candidate must be a dict")
     if not _same_non_market_surface(parent, candidate):
@@ -128,11 +131,12 @@ def _validate_row_shed_candidate(parent, candidate, lead):
     rows = candidate.get("market")
     if not isinstance(rows, list) or len(rows) != len(parent_rows):
         raise NoveltyEvidenceError("row-shed market cardinality differs from parent")
-    if _truthy_malformed_market_row(rows):
-        raise NoveltyEvidenceError("truthy row-shed market row must be a list")
+    if _truthy_malformed_market_row(rows[:limit]):
+        raise NoveltyEvidenceError("truthy executable row-shed market row must be a list")
 
     # Protect both the first hard barrier and every engine-inert suffix row.
-    # STRATUM may only permute the authenticated executable SELL block.
+    # STRATUM may only permute the authenticated executable SELL block. Raw
+    # suffix bytes remain exact even when the engine will never parse them.
     if rows[lead:] != parent_rows[lead:]:
         raise NoveltyEvidenceError(
             "row-shed changed a barrier or row outside executable SELL block"
@@ -214,8 +218,8 @@ def _final_executable_prefix(action, limit):
     rows = action.get("market")
     if not isinstance(rows, list):
         raise NoveltyEvidenceError("final action market must be a list")
-    if _truthy_malformed_market_row(rows):
-        raise NoveltyEvidenceError("truthy final market row must be a list")
+    if _truthy_malformed_market_row(rows[:limit]):
+        raise NoveltyEvidenceError("truthy executable final market row must be a list")
 
     # Keep interior inert slots: market orders execute in row-index lockstep and
     # moving a later live order across an inert row can change relative timing.
@@ -260,7 +264,7 @@ class FinalActionNoveltyGuard:
                 self.diagnostics["reason"] = "executable_leading_sell_block_lt_2"
                 return deepcopy(parent_action)
 
-            _validate_row_shed_candidate(parent, row_shed_action, lead)
+            _validate_row_shed_candidate(parent, row_shed_action, lead, limit)
             if row_shed_action == parent_action:
                 self.diagnostics["reason"] = "row_shed_identity"
                 return deepcopy(parent_action)
@@ -299,7 +303,7 @@ class FinalActionNoveltyGuard:
 
 # Compatibility aliases for the earlier rank-only/direct-pressure carrier. The
 # semantics are intentionally stricter now: callers must supply final returned
-# actions from the complete remaining canonical pipeline.
+actions from the complete remaining canonical pipeline.
 PressureNoveltyGuard = FinalActionNoveltyGuard
 NovelRankGuard = FinalActionNoveltyGuard
 
