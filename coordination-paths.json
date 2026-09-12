@@ -1,8 +1,7 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-12T23:27:33Z",
+ "observed_at": "2026-09-12T23:29:56.518Z",
  "prs": [
-  {"number":13489,"path_count":null,"paths":[]},
   {"number":13486,"path_count":null,"paths":[]},
   {"number":13485,"path_count":null,"paths":[]},
   {"number":13482,"path_count":null,"paths":[]},

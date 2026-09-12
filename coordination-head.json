@@ -1,16 +1,16 @@
 {
  "counts": {
   "drift": {
-   "unknown": 7
+   "unknown": 6
   },
   "hosted": {
-   "UNKNOWN": 7
+   "UNKNOWN": 6
   },
-  "lanes_open": 7,
+  "lanes_open": 6,
   "lanes_with_several_open": "UNKNOWN",
-  "listed_open": 7,
+  "listed_open": 6,
   "listed_recent_closed": 0,
-  "open_prs": 7
+  "open_prs": 6
  },
  "degraded": [
   "git-tree-drift-not-read",
@@ -23,14 +23,14 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": null,
-  "sha": "f620d3a4159c344f50464669b1d5e8ce30ec5b14"
+  "committed_at": "2026-09-12T23:29:11Z",
+  "sha": "0f715dcbb767d1b68574789123c020c0b4fbc8d7"
  },
- "observed_at": "2026-09-12T23:27:33Z",
+ "observed_at": "2026-09-12T23:29:56.518Z",
  "queue": {
-  "in_progress": 18,
+  "in_progress": 16,
   "oldest_queued_age_s": "UNKNOWN",
-  "queued": 822
+  "queued": 819
  },
  "schema": "commons-coordination-head/v1",
  "several_open": [],
@@ -38,7 +38,7 @@
   "batches": 0,
   "capacity": null,
   "counts": {
-   "NEEDS_PACKET": 7
+   "NEEDS_PACKET": 6
   }
  }
 }

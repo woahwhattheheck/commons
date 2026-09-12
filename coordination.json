@@ -1,16 +1,16 @@
 {
  "counts": {
   "drift": {
-   "unknown": 7
+   "unknown": 6
   },
   "hosted": {
-   "UNKNOWN": 7
+   "UNKNOWN": 6
   },
-  "lanes_open": 7,
+  "lanes_open": 6,
   "lanes_with_several_open": "UNKNOWN",
-  "listed_open": 7,
+  "listed_open": 6,
   "listed_recent_closed": 0,
-  "open_prs": 7
+  "open_prs": 6
  },
  "degraded": [
   "git-tree-drift-not-read",
@@ -24,56 +24,113 @@
   "paths": "coordination-paths.json"
  },
  "main": {
-  "committed_at": null,
-  "sha": "f620d3a4159c344f50464669b1d5e8ce30ec5b14"
+  "committed_at": "2026-09-12T23:29:11Z",
+  "sha": "0f715dcbb767d1b68574789123c020c0b4fbc8d7"
  },
  "notes": [
   "Live open PR listing and Actions totals read through the connected GitHub app. Missing evidence is UNKNOWN. No approval is inferred. Use host/coordination_state.py publish for full tree/review recomputation; publication does not move main."
  ],
- "observed_at": "2026-09-12T23:27:33Z",
+ "observed_at": "2026-09-12T23:29:56.518Z",
  "producer": {
   "family": "gpt",
   "road": "connected GitHub REST; explicitly partial derived evidence",
-  "seat": "ASTRA"
+  "seat": "ASTRA-GPT-5.6-Sol-chat"
  },
  "prs": [
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T23:23:32Z","draft":false,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"8671faab5dc4fa5f1bcb13b3e436108bccfd2bd0","head_ref":"astra/v5-production-v3-attribution-native-9901-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13489,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: land completed consumer pair and shared C00 controls","updated_at":"2026-09-12T23:27:33Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T23:15:34Z","draft":false,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"2e635aca67c59f43301a04fcace8fa958a17bb51","head_ref":"gpt/titan-v5-route-matrix-row-receipt-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13486,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: bind route-matrix native rows to public step-144 snapshots","updated_at":"2026-09-12T23:27:32Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T23:14:59Z","draft":false,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"9c62c5176bf4c847174566ffa1dc1280f67b07b5","head_ref":"gpt/titan-v5-p02-goose-capacity-economy-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13485,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5 P02: bounded extra-goose capacity/economy carrier","updated_at":"2026-09-12T23:25:51Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T23:08:58Z","draft":false,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"063050f98119b2e650b2ac454fa2c710425ee1f1","head_ref":"astra/v5-single-staging-composer-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13482,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: converge proven components through one staging composer","updated_at":"2026-09-12T23:26:56Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T22:29:12Z","draft":true,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"1f2d817555c9cb3f38ae6c31954785449abf03ad","head_ref":"astra/v5-production-v3-action-witness-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13471,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: witness first production-v3 action divergence","updated_at":"2026-09-12T23:27:28Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T19:46:29Z","draft":true,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"813c9d49d5a423561c6db35fdca5bdfe44418d14","head_ref":"astra/v5-v31-v4-gauntlet-reducer-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13415,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots","updated_at":"2026-09-12T23:27:20Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}},
-  {"base_ref":"main","content_key":"UNKNOWN","created_at":"2026-09-12T18:39:38Z","draft":true,"drift":{"path_count":null,"reason":"Git tree drift not read on this connector road","status":"unknown"},"head":"f3546b096dc2e353568833cb1935326b1d83b825","head_ref":"astra/titan-v5-eod-capacity-rescue-20260912","hosted":{"counts":{},"not_success":[],"rollup":"UNKNOWN"},"number":13400,"swarm":{"review":{"reason":"Supply structured author/evidence metadata and run the current exact-change check","state":"NEEDS_PACKET"},"risk":"unknown","work":{"family":null,"operation":null,"seat":null}},"title":"TITAN V5: converge EOD shed-capacity rescue","updated_at":"2026-09-12T23:26:01Z","verdicts":{"current_head":{},"reviews_read":0,"superseded":[]}}
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T23:15:34Z",
+   "draft": false,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "2e635aca67c59f43301a04fcace8fa958a17bb51",
+   "head_ref": "gpt/titan-v5-route-matrix-row-receipt-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13486,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5: bind route-matrix native rows to public step-144 snapshots",
+   "updated_at": "2026-09-12T23:27:52Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  },
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T23:14:59Z",
+   "draft": false,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "9c62c5176bf4c847174566ffa1dc1280f67b07b5",
+   "head_ref": "gpt/titan-v5-p02-goose-capacity-economy-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13485,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5 P02: bounded extra-goose capacity/economy carrier",
+   "updated_at": "2026-09-12T23:25:51Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  },
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T23:08:58Z",
+   "draft": false,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "c4563767d3369b59c31cb9e0a049f526dd11f3f4",
+   "head_ref": "astra/v5-single-staging-composer-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13482,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5: converge proven components through one staging composer",
+   "updated_at": "2026-09-12T23:28:51Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  },
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T22:29:12Z",
+   "draft": true,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "1f2d817555c9cb3f38ae6c31954785449abf03ad",
+   "head_ref": "astra/v5-production-v3-action-witness-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13471,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5: witness first production-v3 action divergence",
+   "updated_at": "2026-09-12T23:27:28Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  },
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T19:46:29Z",
+   "draft": true,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
+   "head_ref": "astra/v5-v31-v4-gauntlet-reducer-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13415,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
+   "updated_at": "2026-09-12T23:27:20Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  },
+  {
+   "base_ref": "main",
+   "content_key": "UNKNOWN",
+   "created_at": "2026-09-12T18:39:38Z",
+   "draft": true,
+   "drift": {"path_count": null,"reason": "Git tree drift not read on this connector road","status": "unknown"},
+   "head": "f3546b096dc2e353568833cb1935326b1d83b825",
+   "head_ref": "astra/titan-v5-eod-capacity-rescue-20260912",
+   "hosted": {"counts": {},"not_success": [],"rollup": "UNKNOWN"},
+   "number": 13400,
+   "swarm": {"review": {"reason": "Supply structured author/evidence metadata and run the current exact-change check","state": "NEEDS_PACKET"},"risk": "unknown","work": {"family": null,"operation": null,"seat": null}},
+   "title": "TITAN V5: converge EOD shed-capacity rescue",
+   "updated_at": "2026-09-12T23:26:01Z",
+   "verdicts": {"current_head": {},"reviews_read": 0,"superseded": []}
+  }
  ],
- "queue": {
-  "in_progress": 18,
-  "oldest_queued_age_s": "UNKNOWN",
-  "queued": 822
- },
+ "queue": {"in_progress": 16,"oldest_queued_age_s": "UNKNOWN","queued": 819},
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-state/v1",
- "swarm": {
-  "batches": [],
-  "capacity": null,
-  "counts": {
-   "NEEDS_PACKET": 7
-  },
-  "last_completed_operation": {
-   "actual_use": "https://github.com/woahwhattheheck/commons/blob/main/ground/SWARM_COMMAND_CENTER_USE.json",
-   "merge": "1f947f809df669fbc40dd095e8bf4d806157b448",
-   "operation": "astra-swarm-order-20260912",
-   "owner": "ASTRA / GPT",
-   "pr": 13473,
-   "review": 5188413300
-  },
-  "policy": "ground/SWARM_ORDER.md",
-  "schema": "commons-swarm-queue/v1",
-  "titan_recovery": {
-   "reason": "not recomputed on connector refresh; use live Slack/GitHub and state/claims for current ownership",
-   "state": "UNKNOWN"
-  }
- },
- "tips": {
-  "main": "f620d3a4159c344f50464669b1d5e8ce30ec5b14"
- }
+ "swarm": {"batches": [],"capacity": null,"counts": {"NEEDS_PACKET": 6},"policy": "ground/SWARM_ORDER.md","schema": "commons-swarm-queue/v1"},
+ "tips": {"main": "0f715dcbb767d1b68574789123c020c0b4fbc8d7"}
 }
