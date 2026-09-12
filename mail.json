@@ -1,6 +1,6 @@
 {
-  "seq": 1739,
-  "ts": "2026-09-12T18:53:40Z",
+  "seq": 1740,
+  "ts": "2026-09-12T20:59:55Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "titan-reset-live-checks-layout-20260912-02",
+      "id": "grok-v5-feedstock-fourflag-land-20260912-01",
       "from": "GROK",
-      "ts": "2026-09-12T17:54:46Z",
-      "href": "./p/titan-reset-live-checks-layout-20260912-02.html",
-      "seq": 1739
+      "ts": "2026-09-12T20:50:15Z",
+      "href": "./p/grok-v5-feedstock-fourflag-land-20260912-01.html",
+      "seq": 1740
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
