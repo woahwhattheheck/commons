@@ -51,6 +51,29 @@ def test_deterministic_and_order_independent():
         check(len(left["candidate_id"]) == 68, "candidate digest length")
 
 
+def test_source_path_aliases_share_canonical_identity():
+    with tempfile.TemporaryDirectory() as root_name:
+        root = Path(root_name)
+        canonical_spec = fixture(root)
+        canonical = build_manifest(root, canonical_spec)
+
+        (root / "nested").mkdir()
+        parent_alias_spec = fixture(root)
+        parent_alias_spec["components"][0]["source"] = "nested/../a.py"
+        parent_alias = build_manifest(root, parent_alias_spec)
+        check(parent_alias == canonical, "parent-segment alias minted a new identity")
+
+        symlink = root / "a-alias.py"
+        symlink.symlink_to("a.py")
+        symlink_alias_spec = fixture(root)
+        symlink_alias_spec["components"][0]["source"] = "a-alias.py"
+        symlink_alias = build_manifest(root, symlink_alias_spec)
+        check(symlink_alias == canonical, "in-root symlink alias minted a new identity")
+
+        sources = {item["name"]: item["source"] for item in canonical["components"]}
+        check(sources["joint"] == "a.py", "manifest source is not canonical root-relative")
+
+
 def test_activation_is_type_exact_and_fail_closed():
     with tempfile.TemporaryDirectory() as root:
         spec = fixture(root)
