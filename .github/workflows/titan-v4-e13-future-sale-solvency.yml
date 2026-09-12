@@ -40,6 +40,12 @@ jobs:
       - name: Run current-ABI E13 contracts under optimized Python
         run: >-
           python -O -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/e13-future-sale-solvency/test_future_sale_solvency.py
+      - name: Run output-custody killers
+        run: >-
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/e13-future-sale-solvency/test_output_custody.py
+      - name: Run output-custody killers under optimized Python
+        run: >-
+          python -O -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/e13-future-sale-solvency/test_output_custody.py
       - name: Preserve inherited funded-prefix contracts
         run: >-
           python -B revenue/kaggriculture/cloud-execution-lab/test_funded_prefix.py
