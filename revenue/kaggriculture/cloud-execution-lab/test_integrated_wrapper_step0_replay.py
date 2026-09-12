@@ -77,11 +77,39 @@ class IntegratedWrapperReplayTest(unittest.TestCase):
         self.assertEqual(module.agent({'step': 0}), {'instance': 4, 'step': 0})
         self.assertEqual(len(created), 4)
 
+    def _exercise_cold_start_failure(self, filename):
+        module = _load(filename)
+        created = []
+        failures = {0}
+
+        def make_agent():
+            instance = _FakeAgent(len(created) + 1, failures)
+            created.append(instance)
+            return instance
+
+        module.make_agent = make_agent
+
+        with self.assertRaisesRegex(RuntimeError, 'synthetic act failure'):
+            module.agent({'step': 0})
+        self.assertIsNone(module._INSTANCE)
+        self.assertIsNone(module._LAST_STEP)
+        self.assertEqual(len(created), 1)
+
+        self.assertEqual(module.agent({'step': 0}), {'instance': 2, 'step': 0})
+        self.assertIs(module._INSTANCE, created[1])
+        self.assertEqual(module._LAST_STEP, 0)
+        self.assertEqual(len(created), 2)
+
     def test_integrated_main_replay_and_reset(self):
         self._exercise('integrated_main.py')
 
     def test_integrated_parent_replay_and_reset(self):
         self._exercise('integrated_parent.py')
+
+    def test_cold_start_failure_does_not_publish_partial_instance(self):
+        for filename in ('integrated_main.py', 'integrated_parent.py'):
+            with self.subTest(filename=filename):
+                self._exercise_cold_start_failure(filename)
 
 
 if __name__ == '__main__':

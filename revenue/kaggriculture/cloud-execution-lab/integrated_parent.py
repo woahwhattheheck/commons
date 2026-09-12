@@ -16,10 +16,12 @@ def agent(obs, cfg=None):
     step = obs.get('step')
     if step is None: step = int(obs['day'])*int((cfg or {}).get('turnsPerDay',24))+int(obs['hour'])
     step = int(step)
-    if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
-        _INSTANCE = make_agent()
-    output = _INSTANCE.act(obs, cfg)
-    # Publish the replay/reset boundary only after a complete agent return. If a
-    # rebuilt instance raises, the prior completed step keeps forcing a rebuild.
+    rebuild = _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP)
+    instance = make_agent() if rebuild else _INSTANCE
+    output = instance.act(obs, cfg)
+    # Publish the instance and replay/reset boundary together only after a
+    # complete return.  A failed cold start therefore leaves no partial runtime
+    # reusable, while a failed rewind retains the last completed instance/step.
+    _INSTANCE = instance
     _LAST_STEP = step
     return output
