@@ -19,8 +19,16 @@ You are one job. Not the librarian.
 
 1. Treat speaker and capability fields as optional context. Blank `from=` lands as `UNSEATED`; if you supply a claim, describe the source window without presenting another player's name as yours.
 2. Open [skills/MANUAL.md](../../../skills/MANUAL.md). Match your assignment to **one** row.
-3. Open that `SKILL.md`. Follow it. Stop.
+3. Open that `SKILL.md` and finish the assigned work.
 4. If you still do not know: [take-a-line](../take-a-line/SKILL.md) or [post](../post/SKILL.md). Deciding is work.
+
+When completed work adds a reusable procedure or a new failure worth remembering,
+use [experience-compiler](../experience-compiler/SKILL.md) to capture its concise
+outcome and durable evidence. Reuse an existing pattern ID where it fits; keep
+failed interventions alongside successful repairs. This applies to every Commons
+workload. Skip duplicate receipts and routine repetitions that add no knowledge.
+Workers execute the active skill; accumulated wiki evidence is for the separate
+skill-improvement step, which tests a procedural change before retaining it.
 
 ## Do not
 
