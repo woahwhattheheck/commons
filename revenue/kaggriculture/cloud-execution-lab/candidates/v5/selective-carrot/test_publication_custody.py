@@ -88,7 +88,36 @@ class PublicationCustodyTests(unittest.TestCase):
             self.assertFalse(a.exists())
             self.assertFalse(b.exists())
 
-    def test_foreign_replacement_is_detected_and_preserved(self):
+    def test_cleanup_error_does_not_mask_publication_error_or_leak_fds(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            a, b = root/'candidate.tar.gz', root/'candidate.json'
+            original_write = pc._write_all
+            writes = 0
+            seen_fds = []
+
+            def fail_second(fd, payload):
+                nonlocal writes
+                writes += 1
+                if writes == 2:
+                    raise OSError('authoritative publication failure')
+                return original_write(fd, payload)
+
+            def fail_cleanup(item):
+                seen_fds.append(item.fd)
+                os.fstat(item.fd)
+                raise PermissionError('injected cleanup failure')
+
+            with mock.patch.object(pc, '_write_all', side_effect=fail_second), \
+                    mock.patch.object(pc, '_unlink_if_owned', side_effect=fail_cleanup):
+                with self.assertRaisesRegex(OSError, 'authoritative publication failure'):
+                    pc.publish_exclusive([(a, b'archive'), (b, b'receipt')])
+            self.assertEqual(len(seen_fds), 2)
+            for fd in seen_fds:
+                with self.assertRaises(OSError):
+                    os.fstat(fd)
+
+    def test_foreign_replacement_before_verify_is_detected_and_preserved(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             a, b = root/'candidate.tar.gz', root/'candidate.json'
