@@ -4,7 +4,7 @@
   "canonical_main_observed": "c7c00fec97edc0bc5ce3a2577f81601c9ad1091e",
   "semantic_checker": {
     "path": "repairs/gameplay/v218-legal-movement/check_current_native_binding.py",
-    "git_blob": "203fbadc6fd8fd1dba768d6ce566b4cd68272748",
+    "git_blob": "2ac6d0e16af9aaf7076b9b649ce626b58b531785",
     "semantic_proof_commit": "ccc31474cf01f14e76cf60c1bf2ff24bdb60d387",
     "graph_registration_commit": "c7c00fec97edc0bc5ce3a2577f81601c9ad1091e",
     "semantic_disposition_when_all_fail_closed_probes_pass": "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE"
@@ -16,7 +16,7 @@
     "transforms": []
   },
   "current_source_identities": {
-    "main.py": "4a8cf7bcda1c1e753b0eab2fe02e48c3bf1ba25d",
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
     "titan_runtime.py": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
     "TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b",
     "frozen_selected.py": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
