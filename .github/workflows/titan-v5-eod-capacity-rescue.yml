@@ -1,0 +1,48 @@
+name: TITAN V5 EOD capacity rescue
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/eod-capacity-rescue/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
+      - ".github/workflows/titan-v5-eod-capacity-rescue.yml"
+  push:
+    branches:
+      - "astra/titan-v5-eod-capacity-rescue-20260912"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/eod-capacity-rescue/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
+      - ".github/workflows/titan-v5-eod-capacity-rescue.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-evidence-contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: EOD source and evidence contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/eod-capacity-rescue
+        run: |
+          python -B -m unittest -v test_compose_current_runtime.py test_paired_current.py test_paired_current_custody.py
+          python -O -B -m unittest -v test_compose_current_runtime.py test_paired_current.py test_paired_current_custody.py
+      - name: Compile candidate source
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -B -m py_compile candidates/v5/eod-capacity-rescue/compose_current_runtime.py candidates/v5/eod-capacity-rescue/paired_current.py candidates/v5/eod-capacity-rescue/test_compose_current_runtime.py candidates/v5/eod-capacity-rescue/test_paired_current.py candidates/v5/eod-capacity-rescue/test_paired_current_custody.py
