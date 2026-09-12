@@ -30,7 +30,7 @@ REQUIRED_DISCOVERY_PATTERNS = frozenset({
     "repairs/gameplay/ghost-plant-admission/ghost_plant_admission.py",
     "repairs/gameplay/redundant-hire-two-seat/repair_redundant_hire_two_seat.py",
     "repairs/gameplay/redundant-hire-two-seat/compose_laborflow_multi_detour.py",
-    "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py",
+    "repairs/gameplay/defensive-guard/r04_defensive_guards.py",
     "repairs/gameplay/exec-pace/r04_exec_pace.py",
 })
 
