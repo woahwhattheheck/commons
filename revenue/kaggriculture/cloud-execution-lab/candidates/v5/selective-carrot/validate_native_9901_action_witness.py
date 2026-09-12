@@ -67,6 +67,79 @@ def _sha_from_authority(authority: dict[str, Any], key: str) -> str:
     return sha
 
 
+def _optional_step(value: Any, field: str) -> int | None:
+    if value is None:
+        return None
+    _require(
+        type(value) is int and 0 <= value < EXPECTED["steps"],
+        f"{field} invalid",
+    )
+    return value
+
+
+def _validate_comparison(comparison: dict[str, Any], seat: int) -> tuple[int | None, bool]:
+    """Recompute recorder ordering instead of trusting its causal summary bit."""
+    candidate_action = _optional_step(
+        comparison.get("first_candidate_action_divergence_step"),
+        f"seat {seat} first_candidate_action_divergence_step",
+    )
+    candidate_observation = _optional_step(
+        comparison.get("first_candidate_observation_divergence_step"),
+        f"seat {seat} first_candidate_observation_divergence_step",
+    )
+    opponent_action = _optional_step(
+        comparison.get("first_opponent_action_divergence_step"),
+        f"seat {seat} first_opponent_action_divergence_step",
+    )
+    opponent_observation = _optional_step(
+        comparison.get("first_opponent_observation_divergence_step"),
+        f"seat {seat} first_opponent_observation_divergence_step",
+    )
+
+    action_points = [
+        step for step in (candidate_action, opponent_action) if step is not None
+    ]
+    expected_first = min(action_points) if action_points else None
+    reported_first = comparison.get("first_any_action_divergence_step")
+    if reported_first is not None:
+        _optional_step(reported_first, f"seat {seat} first_any_action_divergence_step")
+    _require(
+        reported_first == expected_first,
+        f"seat {seat} first action divergence summary inconsistent",
+    )
+    _require(
+        type(comparison.get("all_actions_identical")) is bool,
+        f"seat {seat} all_actions_identical missing",
+    )
+    _require(
+        comparison["all_actions_identical"] is (expected_first is None),
+        f"seat {seat} all_actions_identical inconsistent",
+    )
+
+    expected_causal = (
+        candidate_action is not None
+        and (opponent_action is None or candidate_action < opponent_action)
+        and (
+            candidate_observation is None
+            or candidate_observation > candidate_action
+        )
+        and (
+            opponent_observation is None
+            or opponent_observation > candidate_action
+        )
+    )
+    reported_causal = comparison.get("candidate_action_is_first_observed_divergence")
+    _require(
+        type(reported_causal) is bool,
+        f"seat {seat} causal divergence label missing",
+    )
+    _require(
+        reported_causal is expected_causal,
+        f"seat {seat} causal divergence label inconsistent",
+    )
+    return expected_first, expected_causal
+
+
 def validate(report: dict[str, Any]) -> dict[str, Any]:
     _require(type(report) is dict, "report must be a JSON object")
     _require(report.get("schema") == SCHEMA, "unexpected report schema")
@@ -119,11 +192,8 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
         comparison = row.get("comparison")
         _require(type(comparison) is dict, f"seat {seat} comparison missing")
         _require(comparison.get("steps") == EXPECTED["steps"], f"seat {seat} comparison step count mismatch")
-        first = comparison.get("first_any_action_divergence_step")
-        _require(type(first) is int and 0 <= first < EXPECTED["steps"], f"seat {seat} lacks a real action divergence")
-        _require(comparison.get("all_actions_identical") is False, f"seat {seat} claims identical actions")
-        causal = comparison.get("candidate_action_is_first_observed_divergence")
-        _require(type(causal) is bool, f"seat {seat} causal divergence label missing")
+        first, causal = _validate_comparison(comparison, seat)
+        _require(first is not None, f"seat {seat} lacks a real action divergence")
         first_steps[str(seat)] = first
         causal_by_seat[str(seat)] = causal
 
