@@ -140,6 +140,31 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
                 paired.load_authenticated_shared_helper(tampered)
             self.assertEqual(list(root.iterdir()), [tampered])
 
+            kg_root = root / "kg"
+            caller_helper = (
+                kg_root
+                / "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
+            )
+            caller_helper.parent.mkdir(parents=True)
+            caller_helper.write_bytes(raw + b"\n# caller-selected stable drift\n")
+            engine_dir = root / "engine"
+            engine_dir.mkdir()
+            evidence = root / "evidence"
+            with self.assertRaisesRegex(ValueError, "shared harness helper Git blob drift"):
+                paired.main(
+                    [
+                        "--kg-root",
+                        str(kg_root),
+                        "--engine-dir",
+                        str(engine_dir),
+                        "--output",
+                        str(evidence),
+                        "--seeds",
+                        "1909129999",
+                    ]
+                )
+            self.assertFalse(evidence.exists())
+
     def test_current_archive_packages_the_pinned_parent_main(self):
         pointer, archive = current_pointer_and_archive()
         self.assertEqual(pointer["path"], "exports/titan-current.tar.gz")
