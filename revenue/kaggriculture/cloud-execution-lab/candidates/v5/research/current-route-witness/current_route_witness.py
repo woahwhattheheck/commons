@@ -103,7 +103,13 @@ def _action_worker_cardinality(action: Any) -> int | None:
 
 def _canonical_json(value: Any) -> str | None:
     try:
-        rendered = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        rendered = json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        )
         recovered = json.loads(rendered)
     except (TypeError, ValueError, json.JSONDecodeError):
         return None
@@ -366,6 +372,7 @@ def bind_current_route_window(
         sort_keys=True,
         separators=(",", ":"),
         ensure_ascii=True,
+        allow_nan=False,
     )
     window_sha256 = hashlib.sha256(window_material.encode("ascii")).hexdigest()
 
