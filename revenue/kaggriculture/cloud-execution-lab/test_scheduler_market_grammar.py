@@ -97,6 +97,19 @@ class SchedulerMarketGrammarContracts(TestCase):
                     expected,
                 )
 
+        land_obs = _cash_observation()
+        land_obs['farms'][0]['unlocked_quadrants'] = ['NW']
+        one_land = {'market': [['BUY_LAND']]}
+        self.assertEqual(
+            actor.cash_reserve(land_obs, {'maxMarketOrdersPerTurn': 1}, one_land, 0),
+            m.LAND_PRICES[0],
+        )
+        two_lands = {'market': [['BUY_LAND'], ['BUY_LAND']]}
+        self.assertEqual(
+            actor.cash_reserve(land_obs, {'maxMarketOrdersPerTurn': 2}, two_lands, 0),
+            m.LAND_PRICES[0] + m.LAND_PRICES[1],
+        )
+
     def test_receipt_profile_only_applies_parsed_executable_prefix(self):
         actor = _scheduler()
         obs = {'step': 0, 'player': 0}

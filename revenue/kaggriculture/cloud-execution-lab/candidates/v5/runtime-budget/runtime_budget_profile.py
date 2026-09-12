@@ -237,7 +237,7 @@ def profile_rows(
     if expected is not None:
         missing = sorted(expected - seen)
         extras = sorted(seen - expected)
-    expected_complete = expected is not None and not missing
+    expected_complete = expected is not None and not missing and not extras
     promotion_ready = bool(
         expected_complete
         and fallback_rate <= fallback_ceiling
