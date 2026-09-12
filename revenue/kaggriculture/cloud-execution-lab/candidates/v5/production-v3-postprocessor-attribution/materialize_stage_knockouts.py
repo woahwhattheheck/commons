@@ -118,12 +118,14 @@ def arm_members(baseline: dict[str, bytes], arm: str) -> dict[str, bytes]:
 
 def build_screen(baseline: dict[str, bytes]) -> tuple[bytes, dict]:
     _baseline_config(baseline)
+    baseline_members = {name: digest(body) for name, body in sorted(baseline.items())}
     arm_records = {}
     bundle_members: dict[str, bytes] = {}
     for arm in sorted(ARMS):
         treatment = arm_members(baseline, arm)
         packed = support.archive_bytes(treatment)
         cfg_raw = treatment[CONFIG_PATH]
+        treatment_members = {name: digest(body) for name, body in sorted(treatment.items())}
         record = {
             "archive_sha256": digest(packed),
             "config_sha256": digest(cfg_raw),
@@ -133,7 +135,11 @@ def build_screen(baseline: dict[str, bytes]) -> tuple[bytes, dict]:
             },
             "member_count": len(treatment),
             "changed_members": [CONFIG_PATH],
+            "members": treatment_members,
         }
+        for name, member_sha in baseline_members.items():
+            if name != CONFIG_PATH and treatment_members[name] != member_sha:
+                raise AssertionError(f"treatment changed retained member identity: {arm}: {name}")
         arm_records[arm] = record
         bundle_members[f"arms/{arm}.tar.gz"] = packed
 
@@ -141,6 +147,7 @@ def build_screen(baseline: dict[str, bytes]) -> tuple[bytes, dict]:
         "schema": SCHEMA,
         "baseline_archive_sha256": BASELINE_ARCHIVE_SHA256,
         "baseline_config_sha256": BASELINE_CONFIG_SHA256,
+        "baseline_members": baseline_members,
         "semantic_topology": {
             "status": "AUTHENTICATED",
             "members": dict(sorted(SEMANTIC_MEMBER_SHA256.items())),
