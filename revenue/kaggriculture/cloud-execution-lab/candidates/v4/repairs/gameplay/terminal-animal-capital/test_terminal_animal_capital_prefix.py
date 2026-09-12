@@ -58,7 +58,7 @@ class H5ExecutablePrefixTests(unittest.TestCase):
 
     def test_explicit_bad_market_limit_fails_closed(self):
         a = action(["BUY_ANIMAL", "GOOSE", 1])
-        for value in (True, 1.0, "10", 0, -1):
+        for value in (None, True, 1.0, "10", 0, -1):
             with self.subTest(value=value):
                 cfg = {**BASE, "maxMarketOrdersPerTurn": value}
                 self.assertIs(apply_terminal_animal_capital(a, {"step": 648}, cfg, enabled=True), a)
