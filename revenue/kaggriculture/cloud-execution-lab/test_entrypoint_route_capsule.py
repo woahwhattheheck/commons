@@ -87,7 +87,7 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         old._entrypoint_last_step = 226
         self.cancel(old)
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {'route_step': 227, 'observed_step': 227,
+                         {'route_step': 227, 'last_step': 227,
                           'player': 0, 'route': 'YARN'})
         fresh = self.resume()
         self.assertEqual(fresh._completed_route, 'YARN')
@@ -102,6 +102,14 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
     def test_runtime_cancellation_before_selection_keeps_prior_route_provenance(self):
         old = Instance('YARN', proposed='UNRETURNED_BRANCH')
         old._entrypoint_last_step = 227
+        old._entrypoint_last_player = 0
+        old._completed_route_step = 227
+        old._entrypoint_route_receipt = {
+            'route_step': 227,
+            'last_step': 227,
+            'player': 0,
+            'route': 'YARN',
+        }
 
         def interrupted_before_selection(*_args, **_kwargs):
             raise ControlledTimer.active.expired
@@ -111,7 +119,7 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
         self.assertIsNone(self.entry._INSTANCE)
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {'route_step': 227, 'observed_step': 228,
+                         {'route_step': 227, 'last_step': 228,
                           'player': 0, 'route': 'YARN'})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
 
@@ -121,14 +129,18 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         live._remember_seller_fallback = lambda _obs: None
         self.entry._INSTANCE = live
         self.assertEqual(self.entry.agent(self.obs(227), self.config), PASS)
+        self.assertEqual(getattr(live, '_completed_route_step', None), 227)
 
         # A live-instance prelude fallback observes callback 228 but completes no
-        # new producer route.  It may advance the observation watermark, never
+        # new producer route. It may advance the observation watermark, never
         # the immutable origin of YARN.
         with patch('time.perf_counter', side_effect=[0.0, 2.0, 2.0, 2.0]):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
         self.assertIs(self.entry._INSTANCE, live)
         self.assertEqual(live._completed_route, 'YARN')
+        self.assertEqual(live._entrypoint_route_receipt,
+                         {'route_step': 227, 'last_step': 228,
+                          'player': 0, 'route': 'YARN'})
 
         def interrupted_before_selection(*_args, **_kwargs):
             live.controller.cur = 'UNRETURNED_BRANCH'
@@ -138,7 +150,7 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.assertEqual(self.entry.agent(self.obs(229), self.config), PASS)
         self.assertIsNone(self.entry._INSTANCE)
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {'route_step': 227, 'observed_step': 229,
+                         {'route_step': 227, 'last_step': 229,
                           'player': 0, 'route': 'YARN'})
         self.assertEqual(self.resume(230)._completed_route, 'YARN')
 
@@ -153,7 +165,7 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
                 patch('json.loads', return_value={'town_procurement': False}):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {**saved, 'observed_step': 228})
+                         {**saved, 'last_step': 228})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
 
     def test_prelude_budget_fallback_advances_observed_watermark(self):
@@ -165,7 +177,7 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
         constructor.assert_not_called()
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {**saved, 'observed_step': 228})
+                         {**saved, 'last_step': 228})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
 
     def test_skipped_callback_refuses_stale_route(self):
