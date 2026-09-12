@@ -174,15 +174,39 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
         'feasible':found_feasible,'plans_evaluated':len(candidates)}
 
 
-def _order_spend(order, farm, inventory, params, hires, config):
-    if not order:return 0,hires
+def _parse_market_order(order):
+    """Classify one row exactly as the pinned engine's market parser."""
+    if not isinstance(order,list) or len(order)<2:
+        return None
     op=order[0]
+    if op in ('HIRE','BUY_LAND'):
+        return op,None,1
+    if len(order)<3:
+        return None
+    try:
+        n=int(order[2])
+    except (TypeError,ValueError):
+        return None
+    if n<=0:
+        return None
+    item=order[1]
+    if op=='BUY_SEED' and item in m.CROPS:
+        return op,item,n
+    if op=='BUY_ANIMAL' and item in m.ANIMALS:
+        return op,item,n
+    if op in ('BUY_PRODUCT','SELL') and item in m.PRODUCTS:
+        return op,item,n
+    return None
+
+
+def _order_spend(order, farm, inventory, params, hires, config):
+    parsed=_parse_market_order(order)
+    if parsed is None:return 0,hires
+    op,item,n=parsed
     if op=='HIRE':return m._hire_cost(hires,int(config.get('farmHandCostMult',1))),hires+1
     if op=='BUY_LAND':
         i=len(farm['unlocked_quadrants'])-1
         return (m.LAND_PRICES[i] if i<len(m.LAND_PRICES) else 0),hires
-    if len(order)<3:return 0,hires
-    item,n=order[1],max(0,int(order[2]))
     if op=='BUY_SEED':return m.CROPS[item]['seed']*n,hires
     if op=='BUY_ANIMAL':return m.ANIMALS[item]['cost']*n,hires
     if op=='BUY_PRODUCT':
@@ -232,12 +256,15 @@ class SellScheduler:
         farm['unlocked_quadrants']=list(farm['unlocked_quadrants'])
         hires=int(farm['hires_today']);cost=0
         route=self.controller.R[self.controller.cur]
+        max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
         for t in range(now,end+1):
             if t>now and t%24==0:hires=0
             orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
-            for order in orders:
+            for order in orders[:max_orders]:
+                parsed=_parse_market_order(order)
+                if parsed is None:continue
                 n,hires=_order_spend(order,farm,obs['market']['inventory'],obs['market'].get('params'),hires,config);cost+=n
-                if order and order[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
+                if parsed[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
                     farm['unlocked_quadrants'].append(m.LAND_ORDER[len(farm['unlocked_quadrants'])-1])
         return cost
 
@@ -256,6 +283,7 @@ class SellScheduler:
         f,p=post_units(obs,base,config,shed_capacity=10**6)
         profile=[]
         route=self.controller.R[self.controller.cur]
+        max_orders=max(1,int(config.get('maxMarketOrdersPerTurn',10)))
         for t in range(now,end+1):
             if t>now:
                 act=route[t] if t<len(route) else parent.PASS
@@ -265,13 +293,15 @@ class SellScheduler:
             # Before market: arrivals cannot be rescued by this turn's sale.
             profile.append((t,'before',sum(p['shed'].values())))
             orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
-            for o in orders:
-                if not o:continue
-                if o[0]=='SELL' and o[1]!=item:
-                    p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
-                elif o[0] in ('BUY_PRODUCT','BUY_ANIMAL') and len(o)>2:
-                    p['shed'][o[1]]=p['shed'].get(o[1],0)+int(o[2])
-                elif o[0]=='HIRE':
+            for o in orders[:max_orders]:
+                parsed=_parse_market_order(o)
+                if parsed is None:continue
+                op,product,n=parsed
+                if op=='SELL' and product!=item:
+                    p['shed'][product]=max(0,p['shed'].get(product,0)-n)
+                elif op in ('BUY_PRODUCT','BUY_ANIMAL'):
+                    p['shed'][product]=p['shed'].get(product,0)+n
+                elif op=='HIRE':
                     f['hands'].append(m._spawn_hand(f,len(f['tiles'])));p['inventories'].append({})
             if t%24==23:
                 m._drop_inventories_to_shed(p,10**6)
