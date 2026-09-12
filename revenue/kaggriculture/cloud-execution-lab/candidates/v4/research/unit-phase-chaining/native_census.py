@@ -35,6 +35,7 @@ ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 MAIN_GIT_BLOB = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
 CONFIG_GIT_BLOB = "3a3bef83899d3010fad623b628d9e95d9978111b"
 ADMISSION_GIT_BLOB = "f02448806f66e524fdc317c23b620fde45a926c9"
+SOURCE_SHA256 = "e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2"
 ARTIFACT_ID = 10175943272
 INNER_TAR_SHA256 = "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
 PANEL_SEEDS = (17, 101, 6607, 9922999, 2026091201, 2026091207, 2026091213, 2026091219)
@@ -166,6 +167,7 @@ def _capture_native_runtime(
     package: Path,
     *,
     required_git_blobs: dict[str, str] | None = None,
+    required_source_sha256: str | None = SOURCE_SHA256,
 ) -> dict[str, Any]:
     package = Path(package)
     root_fd = _open_root_fd(package)
@@ -173,6 +175,13 @@ def _capture_native_runtime(
         source_bytes = _read_root_member(
             root_fd, PurePosixPath("SOURCE.json"), max_bytes=_MAX_RUNTIME_FILE_BYTES
         )
+        if required_source_sha256 is not None:
+            source_digest = hashlib.sha256(source_bytes).hexdigest()
+            if source_digest != required_source_sha256:
+                raise ValueError(
+                    "SOURCE.json SHA-256 mismatch: "
+                    f"expected {required_source_sha256}, got {source_digest}"
+                )
         manifest = _strict_json(source_bytes, "SOURCE.json")
         if type(manifest) is not dict:
             raise ValueError("SOURCE.json must be an object")
