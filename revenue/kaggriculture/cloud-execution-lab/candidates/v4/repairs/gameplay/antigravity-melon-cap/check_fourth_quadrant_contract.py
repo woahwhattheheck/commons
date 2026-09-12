@@ -89,6 +89,40 @@ class Controller:
         return {"farmer": ["PASS"], "market": []}
 
 
+def _assert_owned_contract(proposal, route_id, route):
+    commitment = M.executable_melon_plants(proposal)
+    assert commitment == len(proposal["tiles"])
+    variant = proposal["variants"][route_id]
+    bundle = variant["bundle"]
+    land = bundle["land"]
+    step = land["step"]
+    slot = land["slot"]
+    patch_market = variant["patches"][step]["market"]
+    assert patch_market[slot] == ["BUY_LAND"]
+    assert patch_market[slot + 1] == ["BUY_SEED", "MELON", commitment]
+
+    candidate, installed_bundle = route
+    assert installed_bundle["land"] == land
+    installed_market = candidate[step]["market"]
+    assert installed_market[slot] == ["BUY_LAND"]
+    assert installed_market[slot + 1] == ["BUY_SEED", "MELON", commitment]
+
+    lots = bundle["lots"]
+    assert len(lots) == commitment
+    slots = set()
+    tiles = set()
+    for lot in lots:
+        assert lot["crop"] == "MELON"
+        tile = tuple(lot["tile"])
+        plant_step = lot["plant_step"]
+        worker = lot["worker"]
+        assert candidate[plant_step]["hands"][worker - 1] == ["PLANT", "MELON"]
+        slots.add((plant_step, worker))
+        tiles.add(tile)
+    assert len(slots) == commitment
+    assert tiles == {tuple(tile) for tile in proposal["tiles"]}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--package", type=Path, required=True)
@@ -96,12 +130,29 @@ def main() -> None:
     Q = _load(args.package / "fourth_quadrant.py")
 
     obs = observation()
-    raw = Q.proposals(Mechanics(), obs, {"A": [{} for _ in range(720)]}, "A", configuration())
+    base_route = [{} for _ in range(720)]
+    raw = Q.proposals(Mechanics(), obs, {"A": base_route}, "A", configuration())
     melon = [p for p in raw if p.get("crop") == "MELON"]
     five = next(p for p in melon if len(p["tiles"]) == 5)
     four = next(p for p in melon if len(p["tiles"]) == 4)
     assert M.executable_melon_plants(five) == 5
     assert M.executable_melon_plants(four) == 4
+    _assert_owned_contract(five, "A", Q.economic_program(five, "A", base_route))
+    _assert_owned_contract(four, "A", Q.economic_program(four, "A", base_route))
+
+    poisoned = {
+        **four,
+        "variants": {key: {**value, "patches": {t: dict(row) for t, row in value["patches"].items()}}
+                     for key, value in four["variants"].items()},
+    }
+    variant = poisoned["variants"]["A"]
+    land = variant["bundle"]["land"]
+    row = dict(variant["patches"][land["step"]])
+    row["market"] = [list(order) for order in row["market"]]
+    row["market"][land["slot"] + 1] = ["BUY_SEED", "MELON", 5]
+    variant["patches"][land["step"]] = row
+    assert M.executable_melon_plants(poisoned) is None
+
     filtered = M.filter_proposals([five, four], obs)
     assert filtered == [four]
     assert filtered[0] is four
@@ -123,7 +174,7 @@ def main() -> None:
     assert quadrant.pending is chosen
     assert M.executable_melon_plants(chosen) == 4
     assert chosen in raw or len(chosen["tiles"]) == 4
-    print("OK: real producer -> atomic filter -> FourthQuadrant.install selected 4-plant original proposal")
+    print("OK: real producer -> lot+seed custody -> atomic filter -> FourthQuadrant.install selected 4-plant original proposal")
 
 
 if __name__ == "__main__":
