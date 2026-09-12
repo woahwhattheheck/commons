@@ -86,7 +86,7 @@ def apply(src):
         "        else:\n"
         "            assert pos == start\n"
         "        return {'step':step, 'route':st.get('plan'), 'commands':commands,\n"
-        "                'positions':positions, 'target':(x,y), 'eod_tail':eod_tail}\n",
+        "                'positions':positions, 'target':(x,y)}\n",
         "V217 EOD tail matching-module seam",
     )
     router = _replace_once(
