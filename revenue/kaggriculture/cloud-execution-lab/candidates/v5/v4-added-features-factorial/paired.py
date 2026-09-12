@@ -20,6 +20,7 @@ import statistics
 import sys
 import tempfile
 import time
+import types
 
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 V4_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
@@ -40,7 +41,8 @@ SCREEN_ARMS = (
 )
 
 
-def load(path: Path, name: str):
+def load_path(path: Path, name: str):
+    """Load a file that is already inside an authenticated immutable snapshot."""
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ImportError(str(path))
@@ -50,12 +52,43 @@ def load(path: Path, name: str):
     return module
 
 
+def load_captured(raw: bytes, origin: Path, name: str):
+    """Execute exactly the bytes already authenticated by the caller.
+
+    This deliberately never reopens ``origin``. A moving checkout therefore cannot
+    pass the helper blob check and then substitute different helper bytes at import.
+    """
+    if type(raw) is not bytes:
+        raise TypeError("captured module source must be bytes")
+    module = types.ModuleType(name)
+    module.__file__ = str(origin)
+    module.__package__ = ""
+    sys.modules[name] = module
+    code = compile(raw, str(origin), "exec", dont_inherit=True)
+    exec(code, module.__dict__)
+    return module
+
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
 def git_blob_bytes(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+
+def capture_authenticated(path: Path, expected_git_blob: str) -> bytes:
+    """Single-read Git-blob authentication for executable helper source."""
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"Authenticated helper must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = git_blob_bytes(raw)
+    if actual != expected_git_blob:
+        raise ValueError(
+            f"Authenticated helper moved; expected Git blob {expected_git_blob}, got {actual}"
+        )
+    return raw
 
 
 def exact_v4_config(raw: bytes) -> dict:
@@ -217,10 +250,8 @@ def main() -> int:
         raise ValueError("Baseline is not exact submitted V4 archive")
 
     helper_path = root / HELPER
-    helper_raw = helper_path.read_bytes()
-    if git_blob_bytes(helper_raw) != HELPER_GIT_BLOB:
-        raise ValueError("Authenticated joint-liquidity helper moved")
-    helper = load(helper_path, "v4_factorial_authenticated_helper")
+    helper_raw = capture_authenticated(helper_path, HELPER_GIT_BLOB)
+    helper = load_captured(helper_raw, helper_path, "v4_factorial_authenticated_helper")
     if helper.BASELINE_SHA256 != BASELINE_SHA256:
         raise ValueError("Helper baseline authority disagrees with this harness")
 
@@ -240,10 +271,10 @@ def main() -> int:
         snapshot_root = output / ".harness-snapshot"
         os.replace(staged, snapshot_root)
 
-    evaluator = load(snapshot_root / helper.EVALUATOR, "v4_factorial_evaluator")
-    pack = load(snapshot_root / "cloud-pack/pack.py", "v4_factorial_pack")
-    bridge = load(snapshot_root / helper.BANK / "reference_policies.py",
-                  "v4_factorial_reference_bank")
+    evaluator = load_path(snapshot_root / helper.EVALUATOR, "v4_factorial_evaluator")
+    pack = load_path(snapshot_root / "cloud-pack/pack.py", "v4_factorial_pack")
+    bridge = load_path(snapshot_root / helper.BANK / "reference_policies.py",
+                       "v4_factorial_reference_bank")
     loader = snapshot_root / "20260907-offline-agent/evaluate.py"
     engine_hashes = evaluator.verify_sources(engine_dir)
 
@@ -281,6 +312,8 @@ def main() -> int:
         "opponents": opponents,
         "engine": engine_hashes,
         "helper_git_blob": HELPER_GIT_BLOB,
+        "helper_sha256": sha256_bytes(helper_raw),
+        "helper_execution": "single-read authenticated captured bytes",
         "harness": harness,
         "opponent_receipts": opponent_receipts,
         "python": sys.version,
@@ -288,10 +321,11 @@ def main() -> int:
         "method": (
             "Every arm is extracted fresh from the exact submitted V4 archive. "
             "Only TITAN-CONFIG.json may differ, and only the four booleans that were "
-            "added/enabled in V4 versus submitted V3.1 may change. Evaluator, loader, "
-            "packer, reference bank and opponent support execute from the authenticated "
-            "snapshot inherited from joint-liquidity-bench. Each arm gets a fresh "
-            "persistent agent process and private payload; arm order rotates by cell."
+            "added/enabled in V4 versus submitted V3.1 may change. The shared helper "
+            "executes from its single authenticated captured byte snapshot; evaluator, "
+            "loader, packer, reference bank and opponent support execute from the "
+            "authenticated snapshot inherited from joint-liquidity-bench. Each arm gets "
+            "a fresh persistent agent process and private payload; arm order rotates by cell."
         ),
     }
     helper.write_json(output / "run.json", run)
@@ -300,8 +334,7 @@ def main() -> int:
     for opponent in opponents:
         for seed in seeds:
             for seat in seats:
-                cell_index = len(cells)
-                rotate = cell_index % len(arms)
+                rotate = len(cells) % len(arms)
                 order = arms[rotate:] + arms[:rotate]
                 cell_id = f"{opponent}-s{seed}-p{seat}"
                 cell = {
