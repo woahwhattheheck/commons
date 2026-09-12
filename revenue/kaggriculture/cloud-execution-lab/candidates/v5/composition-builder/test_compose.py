@@ -56,23 +56,23 @@ class CompositionTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def file_entry(self, archive_path: str, source_path: str, postimage: bytes):
+        return {
+            "archive_path": archive_path,
+            "source_path": source_path,
+            "preimage_sha256": h(self.base_files[archive_path]),
+            "sha256": h(postimage),
+        }
+
     def manifest(self, *, components=None):
         if components is None:
             components = {
                 "joint": {
-                    "files": [{
-                        "archive_path": "seller.py",
-                        "source_path": "seller.py",
-                        "sha256": h(b"seller-a\n"),
-                    }],
+                    "files": [self.file_entry("seller.py", "seller.py", b"seller-a\n")],
                     "config": {"funding": True},
                 },
                 "worker": {
-                    "files": [{
-                        "archive_path": "worker.py",
-                        "source_path": "worker.py",
-                        "sha256": h(b"worker-b\n"),
-                    }],
+                    "files": [self.file_entry("worker.py", "worker.py", b"worker-b\n")],
                     "config": {"worker": True},
                 },
             }
@@ -103,14 +103,63 @@ class CompositionTests(unittest.TestCase):
         self.assertEqual(joint["worker.py"], b"worker-base\n")
         self.assertEqual(worker["seller.py"], b"seller-base\n")
         self.assertEqual(worker["worker.py"], b"worker-b\n")
-        self.assertEqual(pair["seller.py"], b"seller-a\n")
-        self.assertEqual(pair["worker.py"], b"worker-b\n")
         self.assertTrue(json.loads(pair["TITAN-CONFIG.json"])["funding"])
         self.assertTrue(json.loads(pair["TITAN-CONFIG.json"])["worker"])
         self.assertEqual(
             receipt["variants"]["joint+worker"]["changed_members"],
             ["TITAN-CONFIG.json", "seller.py", "worker.py"],
         )
+        self.assertEqual(
+            receipt["components"]["joint"]["files"][0]["preimage_sha256"],
+            h(b"seller-base\n"),
+        )
+
+    def test_missing_preimage_hash_fails_closed(self):
+        data = json.loads(self.manifest().read_text())
+        del data["components"]["joint"]["files"][0]["preimage_sha256"]
+        path = self.root / "missing-preimage.json"
+        path.write_text(json.dumps(data))
+        with self.assertRaisesRegex(compose.CompositionError, "needs preimage_sha256"):
+            compose.build(
+                baseline=self.base,
+                source_root=self.src,
+                manifest_path=path,
+                output=self.root / "out",
+            )
+
+    def test_wrong_baseline_member_preimage_fails_before_output(self):
+        data = json.loads(self.manifest().read_text())
+        data["components"]["joint"]["files"][0]["preimage_sha256"] = h(b"different-baseline\n")
+        path = self.root / "wrong-preimage.json"
+        path.write_text(json.dumps(data))
+        out = self.root / "out"
+        with self.assertRaisesRegex(compose.CompositionError, "baseline preimage mismatch for seller.py"):
+            compose.build(
+                baseline=self.base,
+                source_root=self.src,
+                manifest_path=path,
+                output=out,
+            )
+        self.assertFalse(out.exists(), "preimage rejection must precede variant publication")
+
+    def test_valid_postimage_cannot_transplant_to_different_authenticated_baseline(self):
+        transplant = self.root / "transplant.tar.gz"
+        transplant_files = dict(self.base_files)
+        transplant_files["seller.py"] = b"other-seller-base\n"
+        write_tar(transplant, transplant_files)
+
+        data = json.loads(self.manifest().read_text())
+        data["baseline"]["sha256"] = compose.sha256_file(transplant)
+        path = self.root / "transplant.json"
+        path.write_text(json.dumps(data))
+
+        with self.assertRaisesRegex(compose.CompositionError, "baseline preimage mismatch for seller.py"):
+            compose.build(
+                baseline=transplant,
+                source_root=self.src,
+                manifest_path=path,
+                output=self.root / "out",
+            )
 
     def test_stale_source_hash_fails_closed(self):
         data = json.loads(self.manifest().read_text())
@@ -129,11 +178,11 @@ class CompositionTests(unittest.TestCase):
         (self.src / "seller-b.py").write_bytes(b"seller-b\n")
         components = {
             "a": {
-                "files": [{"archive_path": "seller.py", "source_path": "seller.py", "sha256": h(b"seller-a\n")}],
+                "files": [self.file_entry("seller.py", "seller.py", b"seller-a\n")],
                 "config": {},
             },
             "b": {
-                "files": [{"archive_path": "seller.py", "source_path": "seller-b.py", "sha256": h(b"seller-b\n")}],
+                "files": [self.file_entry("seller.py", "seller-b.py", b"seller-b\n")],
                 "config": {},
             },
         }
@@ -148,11 +197,11 @@ class CompositionTests(unittest.TestCase):
     def test_config_conflict_fails_closed(self):
         components = {
             "a": {
-                "files": [{"archive_path": "seller.py", "source_path": "seller.py", "sha256": h(b"seller-a\n")}],
+                "files": [self.file_entry("seller.py", "seller.py", b"seller-a\n")],
                 "config": {"funding": True},
             },
             "b": {
-                "files": [{"archive_path": "worker.py", "source_path": "worker.py", "sha256": h(b"worker-b\n")}],
+                "files": [self.file_entry("worker.py", "worker.py", b"worker-b\n")],
                 "config": {"funding": False},
             },
         }
