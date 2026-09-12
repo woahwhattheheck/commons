@@ -5,7 +5,8 @@ This is not a second assembler. It verifies the exact canonical manifest,
 checker, existing runner generation, and every runner adapter/support source,
 then executes immutable authenticated byte snapshots through the existing
 ``build_composed_postimage.py`` semantics. There is no alternate-manifest
-option and no post-verification source reopen for executable bytes.
+option and no post-verification source reopen for executable/control receipt
+bytes.
 """
 from __future__ import annotations
 
@@ -17,6 +18,28 @@ from pathlib import Path
 from typing import Any
 
 import postimage_trust as trust
+
+
+class _SnapshotReadPath:
+    """Path proxy whose byte reads are pinned to one authenticated snapshot."""
+
+    __slots__ = ("_path", "_data")
+
+    def __init__(self, path: Path, data: bytes):
+        self._path = Path(path)
+        self._data = bytes(data)
+
+    def read_bytes(self) -> bytes:
+        return self._data
+
+    def __fspath__(self) -> str:
+        return str(self._path)
+
+    def __str__(self) -> str:
+        return str(self._path)
+
+    def __getattr__(self, name: str):
+        return getattr(self._path, name)
 
 
 def _module_from_bytes(
@@ -125,6 +148,9 @@ def _bind_snapshot_loaders(
 ) -> None:
     """Make the pinned runner consume captured bytes instead of reopening sources."""
     error_type = runner.MaterializationError
+    original_under = getattr(runner, "_under", None)
+    if not callable(original_under):
+        raise trust.TrustError("authenticated graph postimage runner missing _under()")
     workspace = workspace.resolve(strict=True)
     canonical_manifest = canonical_manifest.resolve(strict=True)
     frozen_manifest = copy.deepcopy(manifest)
@@ -152,6 +178,16 @@ def _bind_snapshot_loaders(
         if not callable(validate):
             raise error_type("composition checker missing validate_manifest()")
         return module
+
+    def snapshot_under(root: Path, rel: str, *, must_exist: bool = True):
+        path = original_under(root, rel, must_exist=must_exist)
+        try:
+            canonical_root = Path(root).resolve(strict=True)
+        except (FileNotFoundError, RuntimeError, OSError) as exc:
+            raise error_type("cannot resolve authenticated path root") from exc
+        if canonical_root == workspace and rel == trust.CHECKER_NAME and must_exist:
+            return _SnapshotReadPath(Path(path), frozen_checker_bytes)
+        return path
 
     def snapshot_load_module(path: Path, expected_blob: str, label: str):
         try:
@@ -188,6 +224,7 @@ def _bind_snapshot_loaders(
 
     runner.load_json = snapshot_load_json
     runner._load_checker = snapshot_load_checker
+    runner._under = snapshot_under
     runner._load_module = snapshot_load_module
     runner._load_support_source = snapshot_load_support_source
 
