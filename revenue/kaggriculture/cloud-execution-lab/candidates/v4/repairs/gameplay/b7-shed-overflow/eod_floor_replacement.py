@@ -8,9 +8,10 @@ appended floor-price SELL of X can replace shed X with the otherwise-discarded
 carried X. At the official $1 floor that sale credits cash without adding public
 supply.
 
-The transform intentionally requires an authenticated ``market_price_fn`` ABI;
-it does not duplicate pricing semantics. It is research/default-OFF evidence and
-has no runtime wiring or activation authority.
+The transform intentionally requires observed theorem-critical configuration and
+an authenticated ``market_price_fn`` ABI. Missing configuration never falls back
+to guessed defaults. This is research/default-OFF evidence and has no runtime
+wiring or activation authority.
 """
 from __future__ import annotations
 
@@ -31,23 +32,28 @@ CARRYABLE = PRODUCTS | ANIMALS
 BUYABLE_PRODUCTS = frozenset(("WHEAT", "FERTILIZER"))
 NONBUYABLE_PRODUCTS = PRODUCTS - BUYABLE_PRODUCTS
 telemetry = Counter()
+_MISSING = object()
 
 
-def _cfg(configuration: Any, name: str, default: Any) -> Any:
+def _required_cfg(configuration: Any, name: str) -> Any:
+    """Return an observed configuration field; never synthesize a default."""
     if configuration is None:
-        return default
+        return _MISSING
     if isinstance(configuration, dict):
-        return configuration.get(name, default)
-    return getattr(configuration, name, default)
+        return configuration[name] if name in configuration else _MISSING
+    try:
+        return getattr(configuration, name)
+    except (AttributeError, TypeError):
+        return _MISSING
 
 
-def _positive_int_cfg(configuration: Any, name: str, default: int) -> int | None:
-    value = _cfg(configuration, name, default)
+def _positive_int_cfg(configuration: Any, name: str) -> int | None:
+    value = _required_cfg(configuration, name)
     return value if type(value) is int and value > 0 else None
 
 
 def _market_cap(configuration: Any) -> int | None:
-    raw = _cfg(configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_MARKET_ORDERS)
+    raw = _required_cfg(configuration, "maxMarketOrdersPerTurn")
     if type(raw) is not int:
         return None
     return max(1, raw)
@@ -167,8 +173,8 @@ def analyze(
         result["reason"] = "missing_market_price_abi"
         return result
 
-    turns = _positive_int_cfg(configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY)
-    capacity = _positive_int_cfg(configuration, "shedCapacity", DEFAULT_SHED_CAPACITY)
+    turns = _positive_int_cfg(configuration, "turnsPerDay")
+    capacity = _positive_int_cfg(configuration, "shedCapacity")
     cap = _market_cap(configuration)
     step = observation.get("step")
     if turns is None or capacity is None or cap is None or type(step) is not int or step < 0:
