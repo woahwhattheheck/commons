@@ -141,6 +141,29 @@ class MelonCapTests(unittest.TestCase):
         proposal["variants"]["A"]["bundle"]["land"]["slot"] = 1
         self.assertIsNone(M.executable_melon_plants(proposal))
 
+    def test_extra_unbound_hand_melon_plant_fails_closed(self):
+        proposal = melon_proposal(4)
+        proposal["variants"]["A"]["patches"][150] = {"hands": [["PLANT", "MELON"]]}
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_extra_unbound_farmer_melon_plant_with_trailing_tokens_fails_closed(self):
+        proposal = melon_proposal(4)
+        proposal["variants"]["A"]["patches"][150] = {
+            "farmer": ["PLANT", "MELON", "ignored"],
+            "hands": [],
+        }
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_extra_non_melon_plant_does_not_inflate_melon_commitment(self):
+        proposal = melon_proposal(4)
+        proposal["variants"]["A"]["patches"][150] = {
+            "farmer": ["PLANT", "CARROT"],
+            "hands": [],
+        }
+        self.assertEqual(M.executable_melon_plants(proposal), 4)
+
     def test_route_variant_disagreement_fails_closed(self):
         proposal = melon_proposal(4)
         proposal["variants"]["B"]["bundle"]["lots"].pop()
