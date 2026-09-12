@@ -158,10 +158,14 @@ def _safe_parent_numerics(parent_action: Any) -> bool:
             if not _literal_nonnegative_int(command[2]):
                 return False
     for order in market[:MAX_ORDERS]:
-        if (isinstance(order, list) and len(order) >= 3
-                and order[:2] == ["SELL", "WOOL"]
-                and not _literal_nonnegative_int(order[2])):
-            return False
+        if not (isinstance(order, list) and len(order) >= 3):
+            continue
+        if order[0] == "SELL":
+            if type(order[1]) is not str or not _literal_nonnegative_int(order[2]):
+                return False
+        elif order[:2] == ["BUY_ANIMAL", "COW"]:
+            if not _literal_nonnegative_int(order[2]):
+                return False
     return True
 
 
