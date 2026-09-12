@@ -25,30 +25,33 @@ class GanderStarveCompositeTests(unittest.TestCase):
         self.assertEqual(self.safe["feed_days"][0], 1)
         self.assertEqual(self.safe["skip_days"][0], 2)
 
-    def test_official_terminal_boundary_is_step_718_without_eod29(self):
+    def test_official_terminal_boundary_is_interpreter_enforced(self):
+        self.assertEqual(self.safe["episode_steps"], 720)
         self.assertEqual(self.safe["final_executable_step"], 718)
         self.assertEqual(self.safe["last_step_executed"], 718)
+        self.assertEqual(self.safe["terminal_statuses"], ["DONE", "DONE"])
         self.assertEqual(self.safe["last_eod_day"], 28)
         self.assertTrue(self.safe["terminal_day_feed_is_dead_work"])
         self.assertNotIn(29, self.safe["feed_days"])
         self.assertIn(29, self.safe["skip_days"])
+        self.assertTrue(self.safe["source_contract"]["official_episode_horizon_bound"])
 
-    def test_alternation_halves_real_feed_obligations_without_output_loss(self):
+    def test_alternation_halves_daily_feed_through_last_real_eod(self):
         self.assertEqual(len(self.safe["feed_days"]), 14)
         self.assertEqual(len(self.safe["skip_days"]), 15)
         self.assertEqual(self.safe["feed_days"][-1], 27)
         self.assertEqual(self.safe["wheat_consumed"], 126)
         self.assertEqual(
-            self.safe["wheat_saved_vs_feed_every_real_eod_obligation"], 126
+            self.safe["wheat_saved_vs_feed_daily_through_last_eod"], 126
         )
         self.assertEqual(self.safe["action_attempts"]["feed_attempts"], 126)
         self.assertEqual(
-            self.safe["feed_actions_saved_vs_feed_every_real_eod_obligation"], 126
+            self.safe["feed_actions_saved_vs_feed_daily_through_last_eod"], 126
         )
         self.assertEqual(self.safe["egg_total"], 9 * 26)
         self.assertEqual(self.safe["fertilizer_total"], 9 * 29)
 
-    def test_skip_feed_slots_realize_egg_without_held_cap_clipping(self):
+    def test_terminal_extraction_avoids_held_cap_clipping(self):
         # Mature EGG is harvested on even skip-feed days plus terminal day 29.
         # At most two production refreshes accumulate between harvest visits.
         self.assertEqual(self.safe["action_attempts"]["harvest_attempts"], 14 * 9)
@@ -90,33 +93,51 @@ class GanderStarveCompositeTests(unittest.TestCase):
         )
         self.assertFalse(self.report["interpretation"]["market_prices_modeled"])
 
-    def test_helpers_are_authenticated_before_execution(self):
+    def test_helpers_engine_and_metadata_are_authenticated_before_execution(self):
+        contract = self.safe["source_contract"]
         self.assertEqual(
-            self.safe["source_contract"]["gander_helper_git_blob"],
-            G.PINNED_GANDER_GIT_BLOB,
+            contract["gander_helper_git_blob"], G.PINNED_GANDER_GIT_BLOB
         )
         self.assertEqual(
-            self.safe["source_contract"]["starve_helper_git_blob"],
-            G.PINNED_STARVE_GIT_BLOB,
+            contract["starve_helper_git_blob"], G.PINNED_STARVE_GIT_BLOB
         )
-        self.assertTrue(self.safe["source_contract"]["immutable_source_snapshots"])
-        self.assertTrue(
-            self.safe["source_contract"]["engine_executed_from_authenticated_snapshot"]
+        self.assertEqual(
+            contract["engine_metadata_git_blob"],
+            G.PINNED_ENGINE_METADATA_GIT_BLOB,
         )
+        self.assertEqual(
+            contract["engine_metadata_sha256"],
+            G.PINNED_ENGINE_METADATA_SHA256,
+        )
+        self.assertEqual(
+            contract["engine_metadata_bytes"], G.PINNED_ENGINE_METADATA_BYTES
+        )
+        self.assertTrue(contract["immutable_source_snapshots"])
+        self.assertTrue(contract["engine_executed_from_authenticated_snapshot"])
+        self.assertTrue(contract["engine_metadata_served_from_authenticated_snapshot"])
 
     def test_current_engine_identity_is_exact(self):
         self.assertEqual(self.safe["engine_git_blob"], G.PINNED_ENGINE_GIT_BLOB)
         self.assertEqual(self.safe["engine_sha256"], G.PINNED_ENGINE_SHA256)
         self.assertEqual(
+            self.safe["engine_metadata_git_blob"],
+            G.PINNED_ENGINE_METADATA_GIT_BLOB,
+        )
+        self.assertEqual(
+            self.safe["engine_metadata_sha256"],
+            G.PINNED_ENGINE_METADATA_SHA256,
+        )
+        self.assertEqual(
             self.safe["source_contract"]["starve_engine_git_blob"],
             G.PINNED_ENGINE_GIT_BLOB,
         )
 
-    def test_authenticated_sources_cannot_be_swapped_before_execution(self):
+    def test_authenticated_sources_and_metadata_cannot_be_swapped_before_execution(self):
         originals = {
             "gander": G.GANDER_PATH.read_bytes(),
             "starve": G.STARVE_PATH.read_bytes(),
             "engine": G.ENGINE_PATH.read_bytes(),
+            "metadata": G.ENGINE_PATH.with_suffix(".json").read_bytes(),
         }
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
@@ -124,6 +145,7 @@ class GanderStarveCompositeTests(unittest.TestCase):
                 "gander": root / "goose_printer_oracle.py",
                 "starve": root / "starvation_cadence.py",
                 "engine": root / "kaggriculture.py",
+                "metadata": root / "kaggriculture.json",
             }
             for key, path in paths.items():
                 path.write_bytes(originals[key])
@@ -138,9 +160,12 @@ class GanderStarveCompositeTests(unittest.TestCase):
                     reads[resolved] += 1
                     if reads[resolved] > 1:
                         raise AssertionError(f"authenticated source reopened: {resolved}")
-                    path.write_bytes(
-                        b"raise RuntimeError('swapped pathname executed')\n"
-                    )
+                    if resolved == paths["metadata"].resolve():
+                        path.write_bytes(b'{"poisoned":true}\n')
+                    else:
+                        path.write_bytes(
+                            b"raise RuntimeError('swapped pathname executed')\n"
+                        )
                 return data
 
             with (
@@ -155,13 +180,30 @@ class GanderStarveCompositeTests(unittest.TestCase):
                 reads,
                 {path.resolve(): 1 for path in paths.values()},
             )
-            self.assertEqual(identities["gander_helper_git_blob"], G.PINNED_GANDER_GIT_BLOB)
-            self.assertEqual(identities["starve_helper_git_blob"], G.PINNED_STARVE_GIT_BLOB)
+            self.assertEqual(
+                identities["gander_helper_git_blob"], G.PINNED_GANDER_GIT_BLOB
+            )
+            self.assertEqual(
+                identities["starve_helper_git_blob"], G.PINNED_STARVE_GIT_BLOB
+            )
             self.assertEqual(identities["engine_git_blob"], G.PINNED_ENGINE_GIT_BLOB)
             self.assertEqual(identities["engine_sha256"], G.PINNED_ENGINE_SHA256)
+            self.assertEqual(
+                identities["engine_metadata_git_blob"],
+                G.PINNED_ENGINE_METADATA_GIT_BLOB,
+            )
+            self.assertEqual(
+                identities["engine_metadata_sha256"],
+                G.PINNED_ENGINE_METADATA_SHA256,
+            )
+            self.assertEqual(
+                identities["engine_metadata_bytes"], G.PINNED_ENGINE_METADATA_BYTES
+            )
             self.assertEqual(gander.EXPECTED_ENGINE_BLOB, G.PINNED_ENGINE_GIT_BLOB)
             self.assertEqual(starve.ENGINE_GIT_BLOB, G.PINNED_ENGINE_GIT_BLOB)
             self.assertTrue(callable(engine.interpreter))
+            self.assertEqual(engine.specification["name"], "kaggriculture")
+            self.assertEqual(engine.specification["configuration"]["episodeSteps"], 720)
 
 
 if __name__ == "__main__":
