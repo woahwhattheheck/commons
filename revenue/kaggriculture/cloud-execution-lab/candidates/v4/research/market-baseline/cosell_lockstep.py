@@ -7,13 +7,11 @@ predict rival actions and does not authorize policy/runtime activation.
 from __future__ import annotations
 
 import argparse
-import builtins
 import hashlib
 import io
 import json
 import sys
 import types
-from contextlib import contextmanager
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -33,31 +31,82 @@ def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
-@contextmanager
-def _captured_spec_open(spec_path: Path, spec_bytes: bytes):
-    """Serve the already-authenticated adjacent engine JSON during exec."""
-    real_open = builtins.open
+def _captured_spec_reader(spec_path: Path, spec_bytes: bytes):
+    """Return a fail-closed text reader for the authenticated engine JSON only."""
     wanted = spec_path.resolve()
 
     def guarded_open(file, mode="r", *args, **kwargs):
         try:
             candidate = Path(file).resolve()
-        except (TypeError, ValueError, OSError):
-            candidate = None
-        if candidate == wanted:
-            if any(flag in mode for flag in ("w", "a", "+", "x")):
-                raise ValueError("engine specification opened for mutation")
-            if "b" in mode:
-                return io.BytesIO(spec_bytes)
-            encoding = kwargs.get("encoding") or "utf-8"
-            return io.StringIO(spec_bytes.decode(encoding))
-        return real_open(file, mode, *args, **kwargs)
+        except (TypeError, ValueError, OSError) as error:
+            raise ValueError(f"invalid engine-side open target: {file!r}") from error
+        if candidate != wanted:
+            raise ValueError(f"undeclared engine-side open: {candidate}")
+        if mode not in {"r", "rt"}:
+            raise ValueError(f"engine specification opened with unsupported mode: {mode!r}")
+        if args:
+            raise ValueError("engine specification open rejects positional options")
+        encoding = kwargs.pop("encoding", None)
+        errors = kwargs.pop("errors", None)
+        newline = kwargs.pop("newline", None)
+        closefd = kwargs.pop("closefd", True)
+        opener = kwargs.pop("opener", None)
+        buffering = kwargs.pop("buffering", -1)
+        if kwargs:
+            raise ValueError(f"unsupported engine specification open options: {sorted(kwargs)}")
+        if encoding not in {None, "utf-8", "UTF-8"}:
+            raise ValueError(f"unsupported engine specification encoding: {encoding!r}")
+        if errors not in {None, "strict"}:
+            raise ValueError(f"unsupported engine specification errors: {errors!r}")
+        if newline not in {None, ""}:
+            raise ValueError(f"unsupported engine specification newline: {newline!r}")
+        if closefd is not True or opener is not None or buffering != -1:
+            raise ValueError("unsupported engine specification descriptor options")
+        return io.StringIO(spec_bytes.decode("utf-8", errors="strict"), newline=newline)
 
-    builtins.open = guarded_open
+    return guarded_open
+
+
+def _unavailable_episode_seed(*_args, **_kwargs):
+    raise ValueError("resolve_episode_seed is outside COSELL market-proof scope")
+
+
+def _exec_captured_engine(path: Path, source: bytes, spec_path: Path, spec_bytes: bytes):
+    """Execute authenticated engine bytes with only declared proof dependencies."""
+    package_name = "kaggle_environments"
+    utils_name = "kaggle_environments.utils"
+    previous_package = sys.modules.get(package_name)
+    previous_utils = sys.modules.get(utils_name)
+    had_package = package_name in sys.modules
+    had_utils = utils_name in sys.modules
+
+    package = types.ModuleType(package_name)
+    package.__path__ = []
+    util = types.ModuleType(utils_name)
+    util.resolve_episode_seed = _unavailable_episode_seed
+    package.utils = util
+    sys.modules[package_name] = package
+    sys.modules[utils_name] = util
+
+    module = types.ModuleType("titan_cosell_lockstep_engine")
+    module.__file__ = str(path)
+    module.__package__ = ""
+    # The exact pinned engine uses bare open() only for its adjacent JSON spec.
+    # Providing a module-global reader leaves standard-library import machinery
+    # untouched while making any other engine-side file open fail closed.
+    module.__dict__["open"] = _captured_spec_reader(spec_path, spec_bytes)
     try:
-        yield
+        exec(compile(source, str(path), "exec"), module.__dict__)
     finally:
-        builtins.open = real_open
+        if had_utils:
+            sys.modules[utils_name] = previous_utils
+        else:
+            sys.modules.pop(utils_name, None)
+        if had_package:
+            sys.modules[package_name] = previous_package
+        else:
+            sys.modules.pop(package_name, None)
+    return module
 
 
 def load_engine(path: str | Path):
@@ -73,20 +122,7 @@ def load_engine(path: str | Path):
     if actual_spec != ENGINE_JSON_BLOB:
         raise ValueError(f"engine JSON Git blob mismatch: {actual_spec}")
 
-    try:
-        import kaggle_environments.utils  # noqa: F401
-    except ModuleNotFoundError:
-        pkg = sys.modules.setdefault("kaggle_environments", types.ModuleType("kaggle_environments"))
-        util = types.ModuleType("kaggle_environments.utils")
-        util.resolve_episode_seed = lambda env: int(getattr(env, "info", {}).get("seed", 0))
-        pkg.utils = util
-        sys.modules["kaggle_environments.utils"] = util
-
-    module = types.ModuleType("titan_cosell_lockstep_engine")
-    module.__file__ = str(path)
-    module.__package__ = ""
-    with _captured_spec_open(spec_path, spec_bytes):
-        exec(compile(source, str(path), "exec"), module.__dict__)
+    module = _exec_captured_engine(path, source, spec_path, spec_bytes)
     required = ("PRODUCTS", "_new_farm", "_new_private", "_new_market", "_new_town",
                 "_process_market", "_town_consume", "_refresh_prices")
     missing = [name for name in required if not hasattr(module, name)]

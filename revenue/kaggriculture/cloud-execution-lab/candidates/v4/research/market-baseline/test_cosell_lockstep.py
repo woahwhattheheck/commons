@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+from pathlib import Path
+import sys
+import tempfile
+import types
 import unittest
 
 import cosell_lockstep as m
@@ -25,9 +29,6 @@ class FakeEngine:
 
     @staticmethod
     def _refresh_prices(market):
-        # Deterministic monotone SELL curve sufficient to exercise the oracle's
-        # alignment/terminal-state logic. Exact official-engine coverage is a
-        # separate test below when the repository engine is present.
         for item in FakeEngine.PRODUCTS:
             market["prices"][item] = max(1, 1000 - market["inventory"][item])
 
@@ -71,8 +72,6 @@ class FakeEngine:
                         continue
                     private["shed"][item] -= 1
                     states[0].observation.farms[player]["money"] += price
-                    # Official engine: a SELL quoted at the $1 floor does not
-                    # increase public supply. Mirror that edge exactly.
                     if price > 1:
                         states[0].observation.market["inventory"][item] += 1
                     orders[player]["remaining"] -= 1
@@ -99,17 +98,11 @@ class CosellOracleTests(unittest.TestCase):
         short = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=3)
         full = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=10, rival_qty=10)
         self.assertGreater(short["simultaneous_gain_vs_sequential_market_only"], 0)
-        self.assertLess(
-            short["simultaneous_gain_vs_sequential_market_only"],
-            full["simultaneous_gain_vs_sequential_market_only"],
-        )
+        self.assertLess(short["simultaneous_gain_vs_sequential_market_only"], full["simultaneous_gain_vs_sequential_market_only"])
 
     def test_same_callback_misalignment_equals_sequential_market_only(self):
         r = m.compare(FakeEngine, item="WHEAT", inventory=910, self_qty=7, rival_qty=5)
-        self.assertEqual(
-            r["misaligned_same_callback_self_revenue"],
-            r["sequential_market_only_self_revenue"],
-        )
+        self.assertEqual(r["misaligned_same_callback_self_revenue"], r["sequential_market_only_self_revenue"])
 
     def test_report_explicitly_disclaims_next_callback_semantics(self):
         r = m.compare(FakeEngine, item="WOOL", inventory=900, self_qty=2, rival_qty=2)
@@ -133,12 +126,78 @@ class CosellOracleTests(unittest.TestCase):
         self.assertTrue(all(x["simultaneous_gain_vs_sequential_market_only"] > 0 for x in rows))
 
     def test_floor_transition_refuses_unequal_terminal_counterfactual(self):
-        # At inventory 998 the aligned pair is quoted $2/$2 and both units add
-        # supply, while sequential-market-only quotes $2 then $1 and the floor
-        # sale does not add supply. The oracle must refuse to call that a pure
-        # cash delta because physical terminals differ.
         with self.assertRaises(AssertionError):
             m.compare(FakeEngine, item="WOOL", inventory=998, self_qty=1, rival_qty=1)
+
+    def test_engine_snapshot_uses_captured_json_after_path_replacement(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            engine_path = root / "kaggriculture.py"
+            spec_path = root / "kaggriculture.json"
+            source = (
+                "from pathlib import Path\n"
+                "with open(Path(__file__).with_suffix('.json')) as f:\n"
+                "    SPEC = f.read()\n"
+            ).encode()
+            spec_path.write_text("captured", encoding="utf-8")
+            captured = spec_path.read_bytes()
+            spec_path.write_text("replacement", encoding="utf-8")
+            module = m._exec_captured_engine(engine_path, source, spec_path, captured)
+            self.assertEqual(module.SPEC, "captured")
+            self.assertEqual(spec_path.read_text(encoding="utf-8"), "replacement")
+
+    def test_engine_snapshot_rejects_undeclared_file_open(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            engine_path = root / "kaggriculture.py"
+            spec_path = root / "kaggriculture.json"
+            other = root / "other.json"
+            spec_path.write_text("captured", encoding="utf-8")
+            other.write_text("ambient", encoding="utf-8")
+            source = (
+                "from pathlib import Path\n"
+                "with open(Path(__file__).with_name('other.json')) as f:\n"
+                "    VALUE = f.read()\n"
+            ).encode()
+            with self.assertRaises(ValueError):
+                m._exec_captured_engine(engine_path, source, spec_path, spec_path.read_bytes())
+
+    def test_engine_snapshot_fences_ambient_kaggle_seed_import_and_restores_modules(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            engine_path = root / "kaggriculture.py"
+            spec_path = root / "kaggriculture.json"
+            spec_path.write_text("captured", encoding="utf-8")
+            source = (
+                "from kaggle_environments.utils import resolve_episode_seed\n"
+                "RESOLVER = resolve_episode_seed\n"
+            ).encode()
+            previous_package = sys.modules.get("kaggle_environments")
+            previous_utils = sys.modules.get("kaggle_environments.utils")
+            had_package = "kaggle_environments" in sys.modules
+            had_utils = "kaggle_environments.utils" in sys.modules
+            package = types.ModuleType("kaggle_environments")
+            package.__path__ = []
+            util = types.ModuleType("kaggle_environments.utils")
+            util.resolve_episode_seed = lambda *_a, **_k: "ambient"
+            package.utils = util
+            sys.modules["kaggle_environments"] = package
+            sys.modules["kaggle_environments.utils"] = util
+            try:
+                module = m._exec_captured_engine(engine_path, source, spec_path, spec_path.read_bytes())
+                with self.assertRaises(ValueError):
+                    module.RESOLVER(None)
+                self.assertIs(sys.modules["kaggle_environments"], package)
+                self.assertIs(sys.modules["kaggle_environments.utils"], util)
+            finally:
+                if had_utils:
+                    sys.modules["kaggle_environments.utils"] = previous_utils
+                else:
+                    sys.modules.pop("kaggle_environments.utils", None)
+                if had_package:
+                    sys.modules["kaggle_environments"] = previous_package
+                else:
+                    sys.modules.pop("kaggle_environments", None)
 
     def test_repository_engine_exact_when_present(self):
         path = m.default_engine_path()
@@ -154,9 +213,6 @@ class CosellOracleTests(unittest.TestCase):
         self.assertEqual(r["sequential_market_only_self_revenue"], 1873)
         self.assertEqual(r["simultaneous_gain_vs_sequential_market_only"], 61)
         self.assertEqual(r["misaligned_gain_vs_sequential_market_only"], 0)
-        # Official SELLs quoted at the $1 floor do not add market inventory.
-        # Around the WOOL floor this makes aligned and delayed market-only
-        # terminals differ; the oracle must reject that counterfactual.
         with self.assertRaises(AssertionError):
             m.compare(engine, item="WOOL", inventory=10058, self_qty=1, rival_qty=1)
 
@@ -165,21 +221,16 @@ class CosellOracleTests(unittest.TestCase):
         if not path.is_file():
             self.skipTest("repository engine not mounted in this execution seat")
         engine = m.load_engine(path)
-        sequential = m.simulate_sequential_market_only(
-            engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10
-        )
-
+        sequential = m.simulate_sequential_market_only(engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10)
         states, env = m._world(engine, item="WOOL", inventory=10000, self_qty=10, rival_qty=10)
         town = engine._new_town()
         for state in states:
             state.observation.town = town
-
         m._market_call(engine, states, env, [m._sell("WOOL", 10)], [])
         self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10010)
         engine._town_consume(env, states, 0)
         self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10009)
         m._market_call(engine, states, env, [], [m._sell("WOOL", 10)])
-
         intercallback_revenue = m._money(states, 1) - m.STARTING_MONEY
         self.assertEqual(states[0].observation.market["inventory"]["WOOL"], 10019)
         self.assertGreater(intercallback_revenue, sequential["self_revenue"])
