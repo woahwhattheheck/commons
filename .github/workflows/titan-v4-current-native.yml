@@ -2,6 +2,11 @@ name: titan-v4-current-native
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/titan-v4-current-native.yml'
   push:
     branches:
       - main
@@ -27,7 +32,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: titan-v4-current-native-main
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -45,7 +50,6 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
-          LAB=revenue/kaggriculture/cloud-execution-lab
           python3 - <<'PY'
           import hashlib
           import json
