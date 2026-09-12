@@ -280,6 +280,11 @@ def audit_events(
     seen_ids: dict[str, Event] = {}
     authoritative_events: list[Event] = []
 
+    # Minimal state retained only to decide whether a follow-up can belong to
+    # the active ownership epoch before it gets to reserve a provider event_id.
+    # The full ownership machine below remains the sole source of report state.
+    epoch_contracts: dict[tuple[str, str], dict[str, Any]] = {}
+
     for ev in events:
         future = ev.ts > now
         if future:
@@ -306,6 +311,31 @@ def audit_events(
                  "session": ev.session, "event_id": ev.event_id}
             )
 
+        epoch_key = (ev.lane, ev.session)
+        epoch = epoch_contracts.get(epoch_key)
+        epoch_root_quarantined = False
+        if (
+            not future
+            and not root_quarantined
+            and ev.event in ({HEARTBEAT} | TERMINAL)
+            and epoch is not None
+            and bool(epoch.get("active"))
+            and bool(epoch.get("writes_repo"))
+            and ev.canonical_root != epoch.get("canonical_root")
+        ):
+            epoch_root_quarantined = True
+            anomalies.append(
+                {
+                    "kind": "writer_epoch_followup_root_unbound",
+                    "lane": ev.lane,
+                    "session": ev.session,
+                    "event": ev.event,
+                    "event_id": ev.event_id,
+                    "observed": ev.canonical_root,
+                    "expected": epoch.get("canonical_root"),
+                }
+            )
+
         duplicate = False
         if ev.event_id:
             old = seen_ids.get(ev.event_id)
@@ -315,17 +345,39 @@ def audit_events(
                      "first_index": old.index, "duplicate_index": ev.index}
                 )
                 duplicate = True
-            elif not future and not root_quarantined:
-                # Only an event eligible to affect this canonical workspace may
-                # reserve a provider id. A quarantined foreign/unbound record
-                # cannot shadow a later valid export row with the same id.
+            elif (
+                not future
+                and not root_quarantined
+                and not epoch_root_quarantined
+            ):
+                # Only an event eligible to affect this canonical workspace and
+                # active epoch may reserve a provider id. Quarantined rows must
+                # not shadow a later correctly-rooted export row with the id.
                 seen_ids[ev.event_id] = ev
 
-        # Timeline/root anomalies remain visible evidence, but future/replayed
-        # rows, explicit foreign-root rows, and unbound repo writers cannot
-        # mint, extend, close, or reopen a lease in this canonical workspace.
-        if not future and not duplicate and not root_quarantined:
-            authoritative_events.append(ev)
+        authoritative = (
+            not future
+            and not duplicate
+            and not root_quarantined
+            and not epoch_root_quarantined
+        )
+        if not authoritative:
+            continue
+
+        authoritative_events.append(ev)
+
+        # Mirror only the opening/closing epoch contract needed by the
+        # pre-reservation gate. Repeat CLAIM does not mutate an active epoch.
+        if ev.event == CLAIM:
+            if epoch is None or not bool(epoch.get("active")):
+                epoch_contracts[epoch_key] = {
+                    "active": True,
+                    "writes_repo": ev.writes_repo,
+                    "canonical_root": ev.canonical_root,
+                }
+        elif ev.event in TERMINAL:
+            if epoch is not None and bool(epoch.get("active")):
+                epoch["active"] = False
 
     grouped: dict[str, list[Event]] = defaultdict(list)
     for ev in authoritative_events:
@@ -380,6 +432,8 @@ def audit_events(
                     "artifact": ev.artifact,
                     "last_event_id": ev.event_id,
                     "scope_key": ev.scope_key,
+                    "claim_writes_repo": ev.writes_repo,
+                    "claim_canonical_root": ev.canonical_root,
                 }
             elif ev.event == HEARTBEAT:
                 if state is None or state["state"] != "ACTIVE":
@@ -417,6 +471,8 @@ def audit_events(
                         "artifact": ev.artifact,
                         "last_event_id": ev.event_id,
                         "scope_key": ev.scope_key,
+                        "claim_writes_repo": None,
+                        "claim_canonical_root": None,
                     }
                     continue
                 if ev.scope_key is not None and ev.scope_key != state.get("scope_key"):
@@ -463,6 +519,8 @@ def audit_events(
                     "last_ts": state["last_ts"],
                     "artifact": state.get("artifact"),
                     "scope_key": state.get("scope_key"),
+                    "claim_writes_repo": state.get("claim_writes_repo"),
+                    "claim_canonical_root": state.get("claim_canonical_root"),
                 }
             )
 
@@ -518,6 +576,8 @@ def audit_events(
             "repo_writes_require_exact_canonical_root": True,
             "repo_write_without_canonical_root_authoritative": False,
             "read_only_missing_root_authoritative": True,
+            "writer_epoch_followups_require_claim_root": True,
+            "quarantined_events_reserve_provider_ids": False,
             "future_events_authoritative": False,
             "duplicate_event_id_replays_authoritative": False,
             "repeat_active_claims_authoritative": False,
