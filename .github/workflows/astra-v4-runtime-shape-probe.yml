@@ -29,6 +29,33 @@ jobs:
           sparse-checkout: |
             /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
             /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      - name: Recover manifest-pinned canonical archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          lab = pathlib.Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3')
+          archive = pathlib.Path('revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz')
+          pin = json.loads((lab/'V3-MANIFEST.json').read_text())['base']['sha256']
+          historical = f'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-{pin}.tar.gz'
+          def digest(data): return hashlib.sha256(data).hexdigest()
+          def cat(ref, path):
+              p = subprocess.run(['git','cat-file','-e',f'{ref}:{path}'], capture_output=True)
+              if p.returncode: return None
+              return subprocess.check_output(['git','cat-file','blob',f'{ref}:{path}'])
+          data = archive.read_bytes() if archive.exists() else None
+          if data is None or digest(data) != pin:
+              subprocess.run(['git','fetch','--no-tags','--filter=blob:none','origin','main'], check=True)
+              main = subprocess.check_output(['git','rev-parse','FETCH_HEAD'], text=True).strip()
+              candidates = [cat(main, historical), cat(main, str(archive))]
+              data = next((x for x in candidates if x is not None and digest(x) == pin), None)
+          if data is None:
+              raise SystemExit(f'could not recover pinned canonical archive {pin}')
+          archive.parent.mkdir(parents=True, exist_ok=True)
+          archive.write_bytes(data)
+          print('PINNED_ARCHIVE', digest(data), len(data))
+          PY
       - name: Materialize and print exact decorator AST
         shell: bash
         run: |
