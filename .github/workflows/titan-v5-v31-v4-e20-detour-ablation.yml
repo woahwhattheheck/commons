@@ -42,12 +42,20 @@ jobs:
           python -m py_compile \
             ablate_e20_productive_detour.py \
             build_submitted_v4_treatment.py \
+            trace_capture.py \
+            paired.py \
             test_ablate_e20_productive_detour.py \
-            test_build_submitted_v4_treatment.py
+            test_build_submitted_v4_treatment.py \
+            test_trace_capture.py \
+            test_paired.py
           python -B -m unittest -v \
             test_ablate_e20_productive_detour.py \
-            test_build_submitted_v4_treatment.py
+            test_build_submitted_v4_treatment.py \
+            test_trace_capture.py \
+            test_paired.py
           python -O -B -m unittest -v \
             test_ablate_e20_productive_detour.py \
-            test_build_submitted_v4_treatment.py
+            test_build_submitted_v4_treatment.py \
+            test_trace_capture.py \
+            test_paired.py
           git diff --exit-code
