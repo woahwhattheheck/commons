@@ -16,6 +16,23 @@ def _new_instance(root, feature_data):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
+            self._finalizer_checkpoint = None
+
+        def _checkpoint_finalizer(self, obs, selected, stage):
+            """Publish only a fully returned current-turn action stage.
+
+            The outer entrypoint timer can interrupt later finalizers.  Keeping
+            this private action-only checkpoint lets that guard return the last
+            completed bytes without trusting any partially mutated runtime state;
+            the instance is still discarded after whole-call cancellation.
+            """
+            from copy import deepcopy
+            self._finalizer_checkpoint = {
+                'step': int(obs['step']),
+                'player': int(obs['player']),
+                'stage': str(stage),
+                'action': deepcopy(selected),
+            }
 
         """Keep public-curve pressure at the returned-action boundary.
 
@@ -29,11 +46,23 @@ def _new_instance(root, feature_data):
                 return selected
             return super()._market_pressure_selected(obs, cfg, selected)
 
+        def _feed_stock_selected(self, obs, cfg, selected):
+            # Enter the first late market finalizer with a current-turn action
+            # already checkpointed. If this helper is cancelled, the outer guard
+            # can keep all earlier completed crop/stock work instead of dropping
+            # back to the raw producer selection.
+            self._checkpoint_finalizer(obs, selected, 'pre_feed_stock')
+            returned = super()._feed_stock_selected(obs, cfg, selected)
+            self._checkpoint_finalizer(obs, returned, 'feed_stock')
+            return returned
+
         def _early_capital_selected(self, obs, cfg, selected):
             # TitanAgent._finish_production calls this after every stock/crop
             # guard and before every receipt/history commit. Reuse that stable
             # boundary instead of copying the finalizer or mutating afterward.
+            self._checkpoint_finalizer(obs, selected, 'pre_early_capital')
             returned = super()._early_capital_selected(obs, cfg, selected)
+            self._checkpoint_finalizer(obs, returned, 'early_capital')
             completed = self.diagnostics.get('status') == 'completed'
             if completed:
                 self._final_pressure_boundary = True
@@ -41,10 +70,12 @@ def _new_instance(root, feature_data):
                     returned = super()._market_pressure_selected(obs, cfg, returned)
                 finally:
                     self._final_pressure_boundary = False
+                self._checkpoint_finalizer(obs, returned, 'market_pressure')
             if self.town_procurement_enabled:
                 from town_procurement import apply
                 returned, report = apply(obs, returned, cfg, completed=completed)
                 self.diagnostics['town_procurement'] = report
+                self._checkpoint_finalizer(obs, returned, 'town_procurement')
             return returned
 
     admission = None
@@ -63,27 +94,32 @@ def _new_instance(root, feature_data):
 
 
 def _entrypoint_fallback(instance, observation, configuration, deadline):
-    """Return a completed current action, otherwise the visible-state fallback."""
+    """Return the latest completed current action, else visible-state fallback."""
     from copy import deepcopy
-    selected = None if instance is None else getattr(instance, 'selected', None)
-    if selected is not None:
-        action = deepcopy(selected)
-        if bool(getattr(instance, 'town_procurement_enabled', False)):
-            obs = dict(observation)
-            cfg = dict(configuration or {})
-            step = obs.get('step')
-            if step is None:
-                step = int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
-            obs['step'] = int(step)
-            from town_procurement import suppress_confirmed
-            action, _ = suppress_confirmed(obs, action, cfg)
-        return action
     cfg = dict(configuration or {})
     obs = dict(observation)
     step = obs.get('step')
     if step is None:
         step = int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
     obs['step'] = int(step)
+
+    action = None
+    checkpoint = None if instance is None else getattr(instance, '_finalizer_checkpoint', None)
+    if (isinstance(checkpoint, dict)
+            and checkpoint.get('step') == obs['step']
+            and checkpoint.get('player') == int(obs['player'])
+            and checkpoint.get('action') is not None):
+        action = deepcopy(checkpoint['action'])
+    if action is None:
+        selected = None if instance is None else getattr(instance, 'selected', None)
+        if selected is not None:
+            action = deepcopy(selected)
+    if action is not None:
+        if bool(getattr(instance, 'town_procurement_enabled', False)):
+            from town_procurement import suppress_confirmed
+            action, _ = suppress_confirmed(obs, action, cfg)
+        return action
+
     last = int(cfg.get('episodeSteps', 720))-2
     return (deadline.terminal_liquidation_fallback(obs, cfg)
             if obs['step'] == last else deadline.legal_pass(obs))
@@ -99,6 +135,9 @@ def _record_entrypoint_deadline(instance, stage, started):
         diagnostics['inner_fallback_stage'] = diagnostics['fallback_stage']
     if diagnostics.get('elapsed_seconds') is not None:
         diagnostics['inner_elapsed_seconds'] = diagnostics['elapsed_seconds']
+    checkpoint = getattr(instance, '_finalizer_checkpoint', None)
+    if isinstance(checkpoint, dict) and checkpoint.get('stage') is not None:
+        diagnostics['entrypoint_checkpoint_stage'] = checkpoint['stage']
     diagnostics.update(status='deadline_fallback', fallback_stage=stage,
                        entrypoint_guard=True,
                        elapsed_seconds=time.perf_counter()-started)
@@ -141,10 +180,13 @@ def agent(observation, configuration=None):
                else float(feature_data.get('reserve_seconds', 0.01)))
     if not 0 <= reserve < budget <= 1:
         raise ValueError('invalid action deadline')
-    # TitanAgent clears this itself, but clear it before arming the outer timer
-    # so an immediate whole-call cancellation cannot reuse the prior step.
+    # TitanAgent clears this itself, but clear both current-action publications
+    # before arming the outer timer so an immediate cancellation cannot reuse a
+    # prior step (or an earlier retry of this same public step).
     if instance is not None:
         instance.selected = None
+        if hasattr(instance, '_finalizer_checkpoint'):
+            instance._finalizer_checkpoint = None
     fallback = _entrypoint_fallback(None, observation, cfg, deadline)
     remaining = budget-(time.perf_counter()-entry_started)
     if remaining <= 0:

@@ -86,6 +86,23 @@ class _NestedFinalizer(_FakeInstance):
             pass
 
 
+class _CheckpointFinalizer(_FakeInstance):
+    """Publish one completed finalizer stage, then hang in the next stage."""
+    def act(self, observation, _configuration=None, *, entry_started=None):
+        self.selected = deepcopy(self.action)
+        improved = deepcopy(self.action)
+        improved['market'][0][2] = 7
+        self._finalizer_checkpoint = {
+            'step': int(observation['step']),
+            'player': int(observation['player']),
+            'stage': 'feed_stock',
+            'action': deepcopy(improved),
+        }
+        self.diagnostics = {'status': 'completed'}
+        while True:
+            pass
+
+
 class EntrypointDeadlineTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -172,6 +189,21 @@ class EntrypointDeadlineTests(unittest.TestCase):
         output, elapsed = self.run_agent()
         self.assert_outer_fallback(fake, output, elapsed)
 
+    def test_outer_deadline_keeps_last_completed_finalizer_checkpoint(self):
+        fake = _CheckpointFinalizer(self.selected)
+        self.main._INSTANCE = fake
+        output, elapsed = self.run_agent()
+        expected = deepcopy(self.selected)
+        expected['market'][0][2] = 7
+        self.assertEqual(output, expected)
+        self.assertIsNone(self.main._INSTANCE)
+        self.assertFalse(fake.ready)
+        self.assertLess(elapsed, 0.5)
+        self.assertEqual(fake.diagnostics['status'], 'deadline_fallback')
+        self.assertEqual(fake.diagnostics['fallback_stage'], 'entrypoint_finalization')
+        self.assertEqual(fake.diagnostics['entrypoint_checkpoint_stage'], 'feed_stock')
+        self.assertTrue(fake.diagnostics['entrypoint_guard'])
+
     def test_nested_main_thread_timer_reserves_finalization_window(self):
         fake = _NestedFinalizer(self.selected)
         self.main._INSTANCE = fake
@@ -193,6 +225,25 @@ class EntrypointDeadlineTests(unittest.TestCase):
         stale['market'] = [['SELL', 'MILK', 99]]
         fake = _FakeInstance(self.selected, publish_selected=False)
         fake.selected = stale
+        self.main._INSTANCE = fake
+        output, _elapsed = self.run_agent()
+        self.assertEqual(
+            output,
+            {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []},
+        )
+        self.assertNotEqual(output, stale)
+        self.assertIsNone(self.main._INSTANCE)
+
+    def test_prior_attempt_checkpoint_is_never_reused(self):
+        stale = deepcopy(self.selected)
+        stale['market'] = [['SELL', 'MILK', 99]]
+        fake = _FakeInstance(self.selected, publish_selected=False)
+        fake._finalizer_checkpoint = {
+            'step': self.observation['step'],
+            'player': self.observation['player'],
+            'stage': 'town_procurement',
+            'action': stale,
+        }
         self.main._INSTANCE = fake
         output, _elapsed = self.run_agent()
         self.assertEqual(
