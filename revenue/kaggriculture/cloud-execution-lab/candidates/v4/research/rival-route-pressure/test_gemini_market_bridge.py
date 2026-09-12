@@ -11,13 +11,26 @@ from gemini_market_bridge import (
 )
 
 
-def pressure_report(*, product="WOOL", standing=2, added=3, absorption=1, pressure=4):
+def pressure_report(
+    *,
+    product="WOOL",
+    standing=2,
+    added=3,
+    absorption=1,
+    pressure=None,
+    start=0,
+    end=15,
+):
+    if pressure is None:
+        pressure = max(0, added + standing - absorption)
     return {
         "schema": "titan-v4-public-rival-route-pressure-v1",
         "research_only": True,
         "decision_authority": False,
         "incumbent": "MAIN",
         "target": "YARN",
+        "start": start,
+        "end": end,
         "incremental_sell_rows": [
             {
                 "product": product,
@@ -32,7 +45,7 @@ def pressure_report(*, product="WOOL", standing=2, added=3, absorption=1, pressu
 
 class GeminiMarketBridgeTests(unittest.TestCase):
     def test_partial_quantity_cross_product(self):
-        result = build_public_partial_timing_envelope(pressure_report(standing=2), now=7, end=8)
+        result = build_public_partial_timing_envelope(pressure_report(), now=7, end=8)
         self.assertEqual(result["schema"], BRIDGE_SCHEMA)
         self.assertEqual(result["scenario_count"], 12)
         self.assertEqual({r["quantity"] for r in result["scenarios"]}, {1, 2})
@@ -82,7 +95,7 @@ class GeminiMarketBridgeTests(unittest.TestCase):
 
     def test_rejects_overlong_timing_window(self):
         with self.assertRaises(UnsupportedBridgeEvidence):
-            build_public_partial_timing_envelope(pressure_report(), now=0, end=16)
+            build_public_partial_timing_envelope(pressure_report(end=16), now=0, end=16)
 
     def test_rejects_inverted_window(self):
         with self.assertRaises(UnsupportedBridgeEvidence):
@@ -104,7 +117,7 @@ class GeminiMarketBridgeTests(unittest.TestCase):
 
     def test_product_evidence_is_carried_not_reinterpreted(self):
         result = build_public_partial_timing_envelope(
-            pressure_report(product="MILK", standing=3, added=9, absorption=5, pressure=7),
+            pressure_report(product="MILK", standing=3, added=9, absorption=5),
             now=4,
             end=4,
         )
@@ -134,6 +147,55 @@ class GeminiMarketBridgeTests(unittest.TestCase):
         envelope = build_public_partial_timing_envelope(pressure_report(standing=1), now=0, end=0)
         envelope["scenarios"].append(copy.deepcopy(envelope["scenarios"][0]))
         envelope["scenario_count"] += 1
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            sale_horizon_scenarios(envelope)
+
+    def test_rejects_window_outside_upstream_pressure_custody(self):
+        report = pressure_report(start=7, end=12)
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            build_public_partial_timing_envelope(report, now=6, end=8)
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            build_public_partial_timing_envelope(report, now=8, end=13)
+
+    def test_rejects_unknown_product(self):
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            build_public_partial_timing_envelope(
+                pressure_report(product="NOT_A_PRODUCT"), now=0, end=0
+            )
+
+    def test_rejects_pressure_algebra_drift(self):
+        report = pressure_report(standing=2, added=3, absorption=1, pressure=99)
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            build_public_partial_timing_envelope(report, now=0, end=0)
+
+    def test_rejects_duplicate_pressure_product_rows(self):
+        report = pressure_report()
+        report["incremental_sell_rows"].append(copy.deepcopy(report["incremental_sell_rows"][0]))
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            build_public_partial_timing_envelope(report, now=0, end=0)
+
+    def test_upstream_timing_custody_is_carried(self):
+        result = build_public_partial_timing_envelope(
+            pressure_report(start=5, end=12), now=7, end=8
+        )
+        self.assertEqual(result["upstream"]["start"], 5)
+        self.assertEqual(result["upstream"]["end"], 12)
+
+    def test_compiler_rejects_scenario_step_outside_envelope(self):
+        envelope = build_public_partial_timing_envelope(pressure_report(), now=7, end=7)
+        envelope["scenarios"][0]["step"] = 8
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            sale_horizon_scenarios(envelope)
+
+    def test_compiler_rejects_upstream_custody_tamper(self):
+        envelope = build_public_partial_timing_envelope(pressure_report(), now=7, end=7)
+        envelope["upstream"]["end"] = 6
+        with self.assertRaises(UnsupportedBridgeEvidence):
+            sale_horizon_scenarios(envelope)
+
+    def test_compiler_rejects_bool_scenario_count(self):
+        envelope = build_public_partial_timing_envelope(pressure_report(), now=0, end=0)
+        envelope["scenario_count"] = True
         with self.assertRaises(UnsupportedBridgeEvidence):
             sale_horizon_scenarios(envelope)
 
