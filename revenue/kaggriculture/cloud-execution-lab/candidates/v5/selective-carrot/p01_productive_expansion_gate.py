@@ -5,10 +5,13 @@ This module never prices HIREs from standing hand count. The authenticated R04
 parent prices HIREs from the same-day ``hires_today`` ordinal, with parent
 same-action HIREs shifting later appended HIREs. At the day-18 admission point
 future same-day ordinals are not observable yet, so the rejection theorem uses
-only mechanically guaranteed incremental HIRE cost: the current observed
-``hires_today`` is honored exactly and later days reset to zero. Unknown parent
-HIREs are zero in the lower bound because successful parent HIREs can only move
-V219's appended HIREs to equal-or-higher Fibonacci indices.
+only mechanically unavoidable commitment cost: if V219 ever produces revenue,
+its day-18 commitment must first buy land+seed and request two appended HIREs.
+The already-observed ``hires_today`` is a lower bound on the ordinal at any
+later same-day commitment; unknown same-action parent HIREs are zero in the
+lower bound because successful parent HIREs can only increase appended HIRE
+cost. Later-day V219 HIREs are conditional and therefore contribute zero to
+reject authority.
 
 The decision is deliberately one-sided. It rejects only when a source-valid
 optimistic gross-revenue upper bound is already below the unavoidable cost
@@ -53,7 +56,14 @@ def incremental_hire_cost(hires_today, parent_hires, count, fib):
 
 
 def route_labor_cost_floor(observation, native, native_day, fib):
-    """Lower bound V219 incremental HIRE spend under exact same-day pricing."""
+    """Unavoidable V219 commitment HIRE cost under exact same-day pricing.
+
+    Reject authority intentionally includes only the two day-18 commitment
+    HIREs. Every later V219 request can be skipped by runtime guards, so those
+    future HIREs are conditional route spend rather than a lower bound.
+    ``native_day`` is consulted only at day 18 as a fail-closed source-shape
+    check; the exact parent qualification already owns the full route scan.
+    """
     player = observation.get("player")
     farms = observation.get("farms") or []
     if type(player) is not int or player < 0 or player >= len(farms):
@@ -67,18 +77,13 @@ def route_labor_cost_floor(observation, native, native_day, fib):
     current_hires = farm.get("hires_today")
     if type(current_hires) is not int or current_hires < 0:
         raise ValueError("candidate hires_today must be a nonnegative integer")
+    planned = native_day(native, START_DAY)
+    if not planned:
+        raise ValueError("V219 payback gate requires a day-18 parent route")
 
-    total = 0
-    by_day = {}
-    for day in range(START_DAY, TERMINAL_DAY + 1):
-        planned = native_day(native, day)
-        if not planned:
-            raise ValueError("V219 payback gate requires a complete day 18..29 route")
-        start_ordinal = current_hires if day == START_DAY else 0
-        cost = incremental_hire_cost(start_ordinal, 0, _extra_workers(day), fib)
-        by_day[day] = cost
-        total += cost
-    return total, by_day
+    count = _extra_workers(START_DAY)
+    cost = incremental_hire_cost(current_hires, 0, count, fib)
+    return cost, {START_DAY: cost}
 
 
 def rival_tomato_field_projection(observation):
