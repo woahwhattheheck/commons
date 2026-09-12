@@ -1,0 +1,38 @@
+{
+  "authored_validation": {
+    "normal": "13/13 PASS",
+    "optimized": "13/13 PASS",
+    "py_compile": "PASS",
+    "cli_positive_source_pin": "NOT_RUN_LOCALLY_CONTAINER_LACKED_REPO_SOURCE",
+    "engine_blob_server_readback": "3c202c7ee921da239356789e266b694635103fc4"
+  },
+  "controls": {
+    "decoupled_rng_same_shop": "BRUNCH_SPOT",
+    "equal_total_seat_swap_shop": "SMOOTHIE_SHOP",
+    "equal_total_seat_swap": true,
+    "weed_spawn_chance_zero_removes_cursor_coupling": false
+  },
+  "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "fixed_witness": {
+    "baseline_empty_counts": [20, 20],
+    "baseline_shop": "SMOOTHIE_SHOP",
+    "candidate_empty_counts": [20, 21],
+    "candidate_shop": "BAKERY",
+    "day": 2,
+    "seed": 1
+  },
+  "home": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/seat-asymmetry-audit",
+  "lane": "ASTRA-TOWNRNG",
+  "schema": "titan.v4.town-rng-validation/v1",
+  "semantics": {
+    "economic_claim": false,
+    "engine_patch": false,
+    "live_seed_targeting_claim": false,
+    "policy_claim": false,
+    "public_environment_path_can_diverge": true,
+    "research_causal_gate_only": true,
+    "shop_rng_after_both_weed_scans": true,
+    "weed_rng_draws_equal_total_empty_tiles": true
+  },
+  "status": "source_confirmed_oracle_tested"
+}
