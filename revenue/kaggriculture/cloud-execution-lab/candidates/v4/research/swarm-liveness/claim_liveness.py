@@ -85,6 +85,7 @@ class Event:
     artifact: str | None
     channel: str | None
     thread_ts: str | None
+    scope_key: str | None
 
     @classmethod
     def parse(cls, raw: Any, index: int) -> "Event":
@@ -126,6 +127,7 @@ class Event:
             artifact=opt_str("artifact"),
             channel=opt_str("channel"),
             thread_ts=opt_str("thread_ts"),
+            scope_key=opt_str("scope_key"),
         )
 
 
@@ -148,7 +150,7 @@ def load_jsonl(lines: Iterable[str]) -> list[dict[str, Any]]:
 def _arbitrate_fresh_owners(
     fresh: list[str], owners: dict[str, dict[str, Any]]
 ) -> dict[str, Any]:
-    """Return advisory claim precedence for already-normalized exact lanes.
+    """Return advisory claim precedence for already-normalized ownership groups.
 
     Heartbeats never change precedence: the relevant timestamp is the CLAIM
     that opened the currently-active ownership epoch. A later re-CLAIM after a
@@ -181,6 +183,82 @@ def _arbitrate_fresh_owners(
         "tied_earliest_claimants": tied if len(tied) > 1 else [],
         "yield_candidates": yield_candidates,
     }
+
+
+def _active_status(fresh: list[str], stale: list[str]) -> str:
+    if len(fresh) > 1:
+        return "COLLISION"
+    if fresh and stale:
+        return "ACTIVE_WITH_STALE_OWNER"
+    if fresh:
+        return "ACTIVE"
+    if stale:
+        return "STALE_CLAIM"
+    return "CLOSED"
+
+
+def _scope_rows(
+    lane_rows: list[dict[str, Any]], *, now: float, ttl_seconds: int
+) -> list[dict[str, Any]]:
+    """Collapse explicitly declared claim scopes across differently named lanes.
+
+    scope_key is operator-supplied normalization only. This function never
+    infers semantic equivalence from lane names or free text.
+    """
+    grouped: dict[str, dict[str, list[dict[str, Any]]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    for lane_row in lane_rows:
+        lane = lane_row["lane"]
+        for owner in lane_row["owners"]:
+            if owner["state"] != "ACTIVE" or owner.get("scope_key") is None:
+                continue
+            grouped[str(owner["scope_key"])][owner["session"]].append(
+                {
+                    "lane": lane,
+                    "claim_ts": owner["claim_ts"],
+                    "last_ts": owner["last_ts"],
+                }
+            )
+
+    rows: list[dict[str, Any]] = []
+    for scope_key in sorted(grouped):
+        owners: dict[str, dict[str, Any]] = {}
+        owner_rows: list[dict[str, Any]] = []
+        fresh: list[str] = []
+        stale: list[str] = []
+        all_lanes: set[str] = set()
+        for session in sorted(grouped[scope_key]):
+            claims = grouped[scope_key][session]
+            claim_ts = min(float(row["claim_ts"]) for row in claims)
+            last_ts = max(float(row["last_ts"]) for row in claims)
+            age = max(0.0, now - last_ts)
+            lanes = sorted({str(row["lane"]) for row in claims})
+            all_lanes.update(lanes)
+            owners[session] = {"claim_ts": claim_ts}
+            (stale if age > ttl_seconds else fresh).append(session)
+            owner_rows.append(
+                {
+                    "session": session,
+                    "claim_ts": claim_ts,
+                    "last_ts": last_ts,
+                    "age_seconds": round(age, 6),
+                    "lanes": lanes,
+                }
+            )
+        rows.append(
+            {
+                "scope_key": scope_key,
+                "status": _active_status(fresh, stale),
+                "lanes": sorted(all_lanes),
+                "fresh_active_owners": fresh,
+                "stale_active_owners": stale,
+                "recovery_candidates": stale if not fresh else [],
+                "arbitration": _arbitrate_fresh_owners(fresh, owners),
+                "owners": owner_rows,
+            }
+        )
+    return rows
 
 
 def audit_events(
@@ -250,6 +328,7 @@ def audit_events(
                     "requires_artifact": ev.requires_artifact,
                     "artifact": ev.artifact,
                     "last_event_id": ev.event_id,
+                    "scope_key": ev.scope_key,
                 }
             elif ev.event == HEARTBEAT:
                 if state is None or state["state"] != "ACTIVE":
@@ -258,6 +337,14 @@ def audit_events(
                          "session": ev.session, "event_id": ev.event_id}
                     )
                     continue
+                if ev.scope_key is not None and ev.scope_key != state.get("scope_key"):
+                    anomalies.append(
+                        {"kind": "scope_key_drift", "lane": lane,
+                         "session": ev.session, "event": ev.event,
+                         "claimed_scope_key": state.get("scope_key"),
+                         "observed_scope_key": ev.scope_key,
+                         "event_id": ev.event_id}
+                    )
                 state["last_ts"] = ev.ts
                 state["last_event"] = HEARTBEAT
                 state["last_event_id"] = ev.event_id
@@ -278,8 +365,17 @@ def audit_events(
                         "requires_artifact": ev.requires_artifact,
                         "artifact": ev.artifact,
                         "last_event_id": ev.event_id,
+                        "scope_key": ev.scope_key,
                     }
                     continue
+                if ev.scope_key is not None and ev.scope_key != state.get("scope_key"):
+                    anomalies.append(
+                        {"kind": "scope_key_drift", "lane": lane,
+                         "session": ev.session, "event": ev.event,
+                         "claimed_scope_key": state.get("scope_key"),
+                         "observed_scope_key": ev.scope_key,
+                         "event_id": ev.event_id}
+                    )
                 required = bool(state.get("requires_artifact")) or ev.requires_artifact
                 artifact = ev.artifact or state.get("artifact")
                 if ev.event == "COMPLETE" and required and not artifact:
@@ -315,24 +411,14 @@ def audit_events(
                     "last_event": state["last_event"],
                     "last_ts": state["last_ts"],
                     "artifact": state.get("artifact"),
+                    "scope_key": state.get("scope_key"),
                 }
             )
-
-        if len(fresh) > 1:
-            status = "COLLISION"
-        elif fresh and stale:
-            status = "ACTIVE_WITH_STALE_OWNER"
-        elif fresh:
-            status = "ACTIVE"
-        elif stale:
-            status = "STALE_CLAIM"
-        else:
-            status = "CLOSED"
 
         lane_rows.append(
             {
                 "lane": lane,
-                "status": status,
+                "status": _active_status(fresh, stale),
                 "fresh_active_owners": fresh,
                 "stale_active_owners": stale,
                 "recovery_candidates": stale if not fresh else [],
@@ -342,6 +428,7 @@ def audit_events(
             }
         )
 
+    scope_rows = _scope_rows(lane_rows, now=now, ttl_seconds=ttl_seconds)
     summary = {
         "lanes": len(lane_rows),
         "active": sum(r["status"] == "ACTIVE" for r in lane_rows),
@@ -351,6 +438,11 @@ def audit_events(
         "collisions": sum(r["status"] == "COLLISION" for r in lane_rows),
         "stale_claims": sum(r["status"] == "STALE_CLAIM" for r in lane_rows),
         "closed": sum(r["status"] == "CLOSED" for r in lane_rows),
+        "scoped_active_groups": len(scope_rows),
+        "scoped_collisions": sum(r["status"] == "COLLISION" for r in scope_rows),
+        "cross_lane_scoped_collisions": sum(
+            r["status"] == "COLLISION" and len(r["lanes"]) > 1 for r in scope_rows
+        ),
         "anomalies": len(anomalies),
     }
     anomalies.sort(
@@ -373,10 +465,13 @@ def audit_events(
             "noncanonical_root_is_anomaly": True,
             "earliest_fresh_claim_precedence_is_advisory": True,
             "equal_earliest_claim_tie_fails_closed": True,
+            "scope_keys_are_explicit_only": True,
+            "scope_keys_infer_semantic_equivalence": False,
             "arbitration_is_overwrite_authority": False,
         },
         "summary": summary,
         "lanes": lane_rows,
+        "scope_groups": scope_rows,
         "anomalies": anomalies,
     }
 
