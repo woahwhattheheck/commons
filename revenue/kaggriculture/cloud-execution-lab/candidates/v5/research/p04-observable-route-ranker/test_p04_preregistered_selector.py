@@ -23,9 +23,9 @@ def group(seed, opponent, seat, *, incumbent=7, feature_overrides=None, plan3=(1
     features = {
         "shop_pair": "PIZZA_SHOP|YARN_STORE",
         "first_two_yarn_count": 1,
-        "wool_vs_milk_price": "GT",
-        "wool_vs_milk_inventory": "LT",
-        "wheat_vs_carrot_price": "LT",
+        "wool_vs_milk_price": "WOOL>MILK",
+        "wool_vs_milk_inventory": "WOOL<MILK",
+        "wheat_vs_carrot_price": "WHEAT<CARROT",
         "rival_livestock_leader": "SHEEP",
         "rival_crop_leader": "WHEAT",
     }
@@ -99,9 +99,9 @@ class TestPreregisteredSelector(unittest.TestCase):
     def test_conditional_rule_must_span_two_seeds_opponents_and_both_seats(self):
         groups = full_groups(plan3=(-5, -5))
         for g in groups:
-            value = "GT" if (g["seed"] + g["seat"] + (0 if g["opponent"] == "apex" else 1)) % 2 == 0 else "LT"
+            value = "WOOL>MILK" if (g["seed"] + g["seat"] + (0 if g["opponent"] == "apex" else 1)) % 2 == 0 else "WOOL<MILK"
             g["features"]["wool_vs_milk_price"] = value
-            if value == "GT":
+            if value == "WOOL>MILK":
                 g["plans"][4]["delta_margin_vs_incumbent"] = 8
                 g["plans"][4]["delta_own_vs_incumbent"] = 3
             else:
@@ -109,7 +109,7 @@ class TestPreregisteredSelector(unittest.TestCase):
                 g["plans"][4]["delta_own_vs_incumbent"] = -1
         out = s.fit_selector(report(groups))
         self.assertEqual(out["selected"]["rule"], {
-            "predicate": {"feature": "wool_vs_milk_price", "value": "GT"},
+            "predicate": {"feature": "wool_vs_milk_price", "value": "WOOL>MILK"},
             "override_plan": 4,
         })
         self.assertEqual(out["selected"]["engaged_distinct_seeds"], 2)
@@ -119,7 +119,7 @@ class TestPreregisteredSelector(unittest.TestCase):
     def test_single_seed_conditional_is_rejected(self):
         groups = full_groups(plan3=(-5, -5))
         for g in groups:
-            g["features"]["wool_vs_milk_price"] = "GT" if g["seed"] == 1101 else "LT"
+            g["features"]["wool_vs_milk_price"] = "WOOL>MILK" if g["seed"] == 1101 else "WOOL<MILK"
             if g["seed"] == 1101:
                 g["plans"][4]["delta_margin_vs_incumbent"] = 8
                 g["plans"][4]["delta_own_vs_incumbent"] = 3
@@ -155,7 +155,7 @@ class TestPreregisteredSelector(unittest.TestCase):
 
     def test_select_plan_rejects_noncanonical_snapshot_and_uses_public_features(self):
         snap = snapshot()
-        rule = {"predicate": {"feature": "wool_vs_milk_price", "value": "GT"}, "override_plan": 3}
+        rule = {"predicate": {"feature": "wool_vs_milk_price", "value": "WOOL>MILK"}, "override_plan": 3}
         self.assertEqual(s.select_plan(snap, rule), 3)
         bad = dict(snap, rival_private_inventory={"WOOL": 99})
         with self.assertRaises(ValueError):
