@@ -22,7 +22,8 @@ def _cfg(on=True):
 def _books(rev, act):
     b = TrailingBooks()
     b.note_day(3000.0, 20, 100)
-    b.note_day(3000.0 + rev * 20, 20, 100 + int(rev / max(act, 1e-9) * 20) if act else 100)
+    b.note_day(3000.0 + rev * 20, 20,
+               100 + int(rev / max(act, 1e-9) * 20) if act else 100)
     return b
 
 
@@ -32,7 +33,7 @@ class TestShouldExpand(unittest.TestCase):
         self.assertFalse(should_expand(1000, 0.0, 5.0, 20))
 
     def test_allows_when_weed_tax_cleared(self):
-        # E=50 $/tile/day, A=5, W=0.012 -> tax=0.06; amortized 1000/(25*20)=2.
+        # E=50 $/tile/day, A=5, W=.013 -> tax=.065; amortized=2.
         self.assertTrue(should_expand(1000, 50.0, 5.0, 20))
 
     def test_blocks_on_high_price_short_horizon(self):
@@ -53,7 +54,8 @@ class TestShouldExpand(unittest.TestCase):
 class TestFilter(unittest.TestCase):
     def test_off_flag_returns_identical_object(self):
         action = {"farmer": ["PASS"], "hands": [],
-                  "market": [["BUY_LAND"], ["SELL", "CARROT", 3]]}
+                  "market": [["BUY_LAND"], ["SELL", "CARROT", 3],
+                             ["BUY_LAND"]]}
         out = filter_market_orders(action, _obs(), {"r04_expandtax": False}, None)
         self.assertIs(out, action)
 
@@ -61,6 +63,14 @@ class TestFilter(unittest.TestCase):
         action = {"farmer": ["PASS"], "hands": [], "market": [["BUY_LAND"]]}
         out = filter_market_orders(action, _obs(), {}, None)
         self.assertIs(out, action)
+
+    def test_truthy_nonbool_flag_returns_identical_object(self):
+        action = {"farmer": ["PASS"], "hands": [],
+                  "market": [["BUY_LAND"], ["BUY_LAND"]]}
+        for poison in (1, "true", [True], {"enabled": True}):
+            with self.subTest(poison=poison):
+                self.assertIs(filter_market_orders(action, _obs(),
+                                                   _cfg(poison), None), action)
 
     def test_no_buy_land_returns_identical_object(self):
         action = {"farmer": ["PASS"], "hands": [],
@@ -74,10 +84,56 @@ class TestFilter(unittest.TestCase):
         out = filter_market_orders(action, _obs(day=28), _cfg(), _books(1.0, 5))
         self.assertEqual(out["market"], [["SELL", "CARROT", 3]])
 
-    def test_gate_allow_keeps_action(self):
+    def test_gate_reject_strips_every_land_and_preserves_other_rows(self):
+        action = {"farmer": ["PASS"], "hands": [],
+                  "market": [["BUY_LAND"], ["SELL", "CARROT", 3],
+                             ["BUY_LAND"], ["HIRE"], ["BUY_LAND"]]}
+        out = filter_market_orders(action, _obs(day=28), _cfg(), _books(1.0, 5))
+        self.assertEqual(out["market"],
+                         [["SELL", "CARROT", 3], ["HIRE"]])
+
+    def test_gate_allow_keeps_single_land_action_identity(self):
         action = {"farmer": ["PASS"], "hands": [], "market": [["BUY_LAND"]]}
         out = filter_market_orders(action, _obs(day=5), _cfg(), _books(60, 5))
         self.assertIs(out, action)
+
+    def test_first_1000_pass_second_2000_fail_keeps_only_first_land(self):
+        # day10 => D=20. With E=3 and A=1: $1k threshold ~2.013 passes,
+        # $2k threshold ~4.013 fails. The pre-callback verdict may authorize
+        # only the first sequential BUY_LAND; unrelated rows retain order.
+        self.assertTrue(should_expand(1000, 3.0, 1.0, 20))
+        self.assertFalse(should_expand(2000, 3.0, 1.0, 20))
+        action = {"farmer": ["PASS"], "hands": [],
+                  "market": [["BUY_LAND"], ["SELL", "CARROT", 3],
+                             ["BUY_LAND"], ["HIRE"]]}
+        out = filter_market_orders(action, _obs(day=10), _cfg(), _books(3.0, 1.0))
+        self.assertIsNot(out, action)
+        self.assertEqual(out["market"],
+                         [["BUY_LAND"], ["SELL", "CARROT", 3], ["HIRE"]])
+        self.assertEqual(action["market"],
+                         [["BUY_LAND"], ["SELL", "CARROT", 3],
+                          ["BUY_LAND"], ["HIRE"]])
+
+    def test_even_high_edge_never_authorizes_second_land_from_one_verdict(self):
+        action = {"farmer": ["PASS"], "hands": [],
+                  "market": [["BUY_LAND"], ["BUY_LAND"],
+                             ["SELL", "CARROT", 3]]}
+        out = filter_market_orders(action, _obs(day=5), _cfg(), _books(60, 5))
+        self.assertEqual(out["market"],
+                         [["BUY_LAND"], ["SELL", "CARROT", 3]])
+
+    def test_all_unlocked_strips_every_noop_land_only(self):
+        action = {"farmer": ["PASS"], "hands": [],
+                  "market": [["SELL", "CARROT", 3], ["BUY_LAND"],
+                             ["HIRE"], ["BUY_LAND"]]}
+        out = filter_market_orders(
+            action,
+            _obs(quadrants=("NW", "NE", "SW", "SE")),
+            _cfg(),
+            _books(60, 5),
+        )
+        self.assertEqual(out["market"],
+                         [["SELL", "CARROT", 3], ["HIRE"]])
 
     def test_malformed_action_fails_closed(self):
         self.assertIsNone(filter_market_orders(None, _obs(), _cfg(), None))
