@@ -157,10 +157,26 @@ class StageTests(unittest.TestCase):
             receipt = stage_runtime(
                 input_runtime=src, output_runtime=out, composer=composer,
                 expected_input_blob=git_blob_sha1(selected), expected_output_blob=expected_out,
+                required_unchanged_blobs={
+                    "main.py": git_blob_sha1((src / "main.py").read_bytes()),
+                    "titan_runtime.py": git_blob_sha1((src / "titan_runtime.py").read_bytes()),
+                },
             )
             self.assertTrue(receipt["passed"])
             self.assertEqual((out / "main.py").read_bytes(), (src / "main.py").read_bytes())
             self.assertEqual((out / "selected_sell_core.py").read_bytes(), selected + b"optimized\n")
+
+
+    def test_stage_refuses_deadline_runtime_drift(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); src = root / "runtime"; src.mkdir()
+            data = b"x"; (src / "selected_sell_core.py").write_bytes(data)
+            (src / "main.py").write_text("stale", encoding="utf-8")
+            with self.assertRaises(StageError):
+                stage_runtime(input_runtime=src, output_runtime=root / "out",
+                              composer=self._fake_composer(root), expected_input_blob=git_blob_sha1(data),
+                              expected_output_blob="1"*40,
+                              required_unchanged_blobs={"main.py": "0"*40})
 
     def test_stage_refuses_predecessor_drift(self):
         with tempfile.TemporaryDirectory() as td:
