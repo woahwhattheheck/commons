@@ -2,9 +2,10 @@
 """Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It accepts an explicit V218/router binding directly. Native semantic equivalence counts as
+It accepts an explicit V218/router source binding directly. Config-key presence remains
+visible diagnostics but cannot mint wiring by itself. Native semantic equivalence counts as
 wired only when the sole canonical V4 composition graph carries an authenticated evidence-only
-registration for the same semantic sources and this checker.
+registration for the full live semantic source chain and this checker.
 """
 from __future__ import annotations
 import argparse, ast, hashlib, json
@@ -22,6 +23,8 @@ SEMANTIC_RULES = (
     "all_four_shed_corners_eligible",
     "spatial_routes_are_tile_agnostic",
 )
+SEMANTIC_SOURCE_KEYS = ("main", "runtime", "frozen", "scheduler", "arlene", "spatial")
+CONFIG_REL = "TITAN-CONFIG.json"
 
 
 def git_blob(data: bytes) -> str:
@@ -173,7 +176,7 @@ def _pairs_no_dupes(pairs):
 
 
 def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
-    """Authenticate #12923's canonical evidence-only graph edge and its receipt."""
+    """Authenticate #12923's canonical evidence-only graph edge and exact semantic receipt."""
     graph_path = root / GRAPH_REL
     if not graph_path.is_file():
         return {"registered": False, "reason": "missing_canonical_composition_graph", "path": str(GRAPH_REL)}
@@ -242,18 +245,30 @@ def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
     if not isinstance(source_identities, dict):
         return {"registered": False, "reason": "semantic_source_identities_missing"}
     expected = {}
-    for key in ("arlene", "spatial"):
-        row = semantic.get("sources", {}).get(key)
+    semantic_sources = semantic.get("sources", {})
+    for key in SEMANTIC_SOURCE_KEYS:
+        row = semantic_sources.get(key)
         if not isinstance(row, dict):
             return {"registered": False, "reason": "semantic_source_receipt_missing", "source": key}
         expected[row["path"]] = row["git_blob"]
-    actual = {path: source_identities.get(path) for path in expected}
-    if actual != expected:
+    config_path = root / CONFIG_REL
+    if not config_path.is_file():
+        return {"registered": False, "reason": "semantic_config_source_missing"}
+    expected[CONFIG_REL] = git_blob(config_path.read_bytes())
+
+    if set(source_identities) != set(expected):
+        return {
+            "registered": False,
+            "reason": "semantic_source_identity_set_mismatch",
+            "expected_paths": sorted(expected),
+            "actual_paths": sorted(source_identities),
+        }
+    if source_identities != expected:
         return {
             "registered": False,
             "reason": "semantic_source_identity_mismatch",
             "expected": expected,
-            "actual": actual,
+            "actual": source_identities,
         }
     semantic_evidence = receipt.get("semantic_evidence")
     if not isinstance(semantic_evidence, dict) or semantic_evidence.get("frozen_nonterminal_config") is not True:
@@ -301,9 +316,10 @@ def audit(root: Path) -> dict:
     config_v218_keys = sorted(
         k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower()
     )
-    router_refs = sum(row["hits"]["r04_full_router"] for row in refs)
-    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in refs)
-    explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
+    source_refs = [row for row in refs if Path(row["path"]).suffix == ".py"]
+    router_refs = sum(row["hits"]["r04_full_router"] for row in source_refs)
+    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in source_refs)
+    explicit_binding = bool(router_refs or v218_refs)
     semantic = _native_semantic_equivalence(root, config)
     equivalent = bool(semantic.get("equivalent"))
     registration = (
@@ -334,6 +350,7 @@ def audit(root: Path) -> dict:
         },
         "package_text_files_scanned": scanned,
         "binding_refs": refs,
+        "source_binding_refs": source_refs,
         "router_ref_count": router_refs,
         "v218_ref_count": v218_refs,
         "explicit_binding": explicit_binding,
