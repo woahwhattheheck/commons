@@ -141,15 +141,18 @@ def apply_current_v5(
         configuration=configuration,
         native_tape=route,
     )
-    if returned is selected:
+    # The donor deep-copies a valid selected action before proving its narrow
+    # mutation. Canonical V5 no-ops must still preserve the exact selected
+    # object/bytes rather than publishing an equal-but-new copy.
+    if returned == selected:
         return selected, {"applied": False, "reason": "donor-noop", "state": copy.deepcopy(state)}
     if not _delta_allowed(selected, returned):
         state.clear()
         state.update(checkpoint)
         return selected, {"applied": False, "reason": "adapter-delta-rejected"}
     return returned, {
-        "applied": returned != selected,
-        "reason": "accepted" if returned != selected else "donor-equivalent",
+        "applied": True,
+        "reason": "accepted",
         "state": copy.deepcopy(state),
         "donor_blob_sha1": DONOR_BLOB_SHA1,
     }
