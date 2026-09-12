@@ -1,0 +1,124 @@
+{
+  "candidate_label": "tree-v4base (reported label; source digest unavailable)",
+  "declared_totals": {
+    "draws": 4,
+    "games": 72,
+    "losses": 12,
+    "wins": 56
+  },
+  "evidence_scope": "Manual transcription of the complete published aggregate table. Raw games, exact agent/engine hashes, seed list and GAUNTLET.md not supplied to this session.",
+  "opponents": [
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "aryuemaan-chowdhury",
+      "kind": "recorded_trace",
+      "losses": 0,
+      "reported_total_margin": "+164k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "hepialidae",
+      "kind": "recorded_trace",
+      "losses": 0,
+      "reported_total_margin": "+160k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "pengshy",
+      "kind": "recorded_trace",
+      "losses": 0,
+      "reported_total_margin": "+147k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "dairy-heavy",
+      "kind": "archetype",
+      "losses": 0,
+      "reported_total_margin": "+111k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "brainpick",
+      "kind": "recorded_trace",
+      "losses": 0,
+      "reported_total_margin": "+77k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "sheep-shift",
+      "kind": "archetype",
+      "losses": 0,
+      "reported_total_margin": "+59k",
+      "wins": 6
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "hello-san-francisco",
+      "kind": "recorded_trace",
+      "losses": 1,
+      "reported_total_margin": "+44k",
+      "wins": 5
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "dairy-exit",
+      "kind": "archetype",
+      "losses": 1,
+      "reported_total_margin": "+16k",
+      "wins": 5
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "wheat-pump",
+      "kind": "archetype",
+      "losses": 0,
+      "reported_total_margin": "+4.8k",
+      "wins": 6
+    },
+    {
+      "approximate": false,
+      "draws": 4,
+      "id": "mirror",
+      "kind": "mirror",
+      "losses": 1,
+      "reported_total_margin": "0",
+      "wins": 1
+    },
+    {
+      "approximate": false,
+      "draws": 0,
+      "id": "milk-frontrun",
+      "kind": "archetype",
+      "losses": 5,
+      "reported_total_margin": "-53",
+      "wins": 1
+    },
+    {
+      "approximate": true,
+      "draws": 0,
+      "id": "kaggriculture-agent",
+      "kind": "recorded_trace",
+      "losses": 4,
+      "reported_total_margin": "-20k",
+      "wins": 2
+    }
+  ],
+  "reported_at": "2026-09-11T22:20:43-04:00",
+  "reported_design": "both seats x 3 seeds;72 games. Not independently verified.",
+  "schema": "titan.gauntlet.summary.v1",
+  "source": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789179643958529"
+}
