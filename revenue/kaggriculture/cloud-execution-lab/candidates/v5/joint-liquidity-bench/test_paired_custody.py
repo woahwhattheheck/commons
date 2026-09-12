@@ -166,6 +166,81 @@ class JointLiquidityCustodyTests(unittest.TestCase):
                     paired.main()
             self.assertFalse(output.exists())
 
+    def test_snapshot_freezes_authenticated_policy_and_support_bytes(self):
+        with tempfile.TemporaryDirectory(prefix="joint-liquidity-snapshot-") as raw:
+            root = Path(raw)
+            kg = root / "kg"
+            snapshot = root / "snapshot"
+            kg.mkdir()
+            policy = b"policy trusted\n"
+            support = b"support trusted\n"
+            upstream = b"upstream trusted\n"
+            notice = b"notice trusted\n"
+            bridge = _write_file(
+                kg, paired.BANK + "/reference_policies.py", b"bridge trusted\n"
+            )
+            registry = {
+                "policies": {
+                    "demo": {
+                        "root": "vendor/demo",
+                        "entry": "policy.py",
+                        "files": {
+                            "policy.py": hashlib.sha256(policy).hexdigest(),
+                        },
+                        "notices": {
+                            "NOTICE": hashlib.sha256(notice).hexdigest(),
+                        },
+                    }
+                }
+            }
+            registry_path = _write_file(
+                kg,
+                paired.BANK + "/REFERENCE-POLICIES.json",
+                (json.dumps(registry) + "\n").encode(),
+            )
+            support_path = _write_file(kg, "support.py", support)
+            manifest = {
+                "files": {
+                    "agent.py": {"sha256": hashlib.sha256(upstream).hexdigest()}
+                }
+            }
+            manifest_path = _write_file(
+                kg,
+                "cloud-pack/upstream/manifest.json",
+                (json.dumps(manifest) + "\n").encode(),
+            )
+            _write_file(kg, "cloud-pack/upstream/agent.py", upstream)
+            _write_file(kg, "vendor/demo/policy.py", policy)
+            _write_file(kg, "NOTICE", notice)
+            pins = {
+                paired.BANK + "/reference_policies.py": paired.git_blob_id(bridge),
+                paired.BANK + "/REFERENCE-POLICIES.json": paired.git_blob_id(registry_path),
+                "support.py": paired.git_blob_id(support_path),
+                paired.UPSTREAM_MANIFEST: paired.git_blob_id(manifest_path),
+            }
+            with (
+                patch.object(paired, "HARNESS_GIT_BLOBS", pins),
+                patch.object(
+                    paired,
+                    "BRIDGE_SUPPORT_CORE",
+                    ("support.py", paired.UPSTREAM_MANIFEST),
+                ),
+            ):
+                receipt = paired.snapshot_harness(kg, snapshot, ["demo"])
+                (kg / "support.py").write_bytes(b"attacker support\n")
+                (kg / "vendor/demo/policy.py").write_bytes(b"attacker policy\n")
+                self.assertEqual((snapshot / "support.py").read_bytes(), support)
+                self.assertEqual((snapshot / "vendor/demo/policy.py").read_bytes(), policy)
+                self.assertEqual(
+                    receipt["opponent_policy_sha256"]["demo"]["vendor/demo/policy.py"],
+                    hashlib.sha256(policy).hexdigest(),
+                )
+                authenticated = paired.authenticate_harness(snapshot)
+                self.assertEqual(
+                    authenticated["repository_files"]["support.py"]["git_blob"],
+                    pins["support.py"],
+                )
+
     def test_live_repository_harness_matches_published_pins_when_available(self):
         kg_root = HERE.parents[3]
         if not (kg_root / "cloud-pack").is_dir():
