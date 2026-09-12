@@ -1,0 +1,114 @@
+name: titan-v4-routemotion-exec-recovery
+
+on:
+  push:
+    branches:
+      - astra/routemotion-execgate-20260912
+    paths:
+      - .github/workflows/titan-v4-routemotion-exec-recovery.yml
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  EXPECTED_HEAD: 386171138eb401fbdcb5468b4c424f89dd4979c9
+  ROUTE_DIR: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion
+
+jobs:
+  exact-head-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact ROUTEMOTION head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify exact identity and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain --untracked-files=no)"
+
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile exact census sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            "$ROUTE_DIR/route_motion_census.py" \
+            "$ROUTE_DIR/test_route_motion_census.py"
+
+      - name: Run normal focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$ROUTE_DIR/test_route_motion_census.py" 2>&1 | tee "$RUNNER_TEMP/normal-tests.log"
+
+      - name: Run optimized focused suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -O -B "$ROUTE_DIR/test_route_motion_census.py" 2>&1 | tee "$RUNNER_TEMP/optimized-tests.log"
+
+      - name: Run full source-bound 13-route census
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B "$ROUTE_DIR/route_motion_census.py" --output "$RUNNER_TEMP/route-motion-census.json"
+          python - "$RUNNER_TEMP/route-motion-census.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          path = Path(sys.argv[1])
+          report = json.loads(path.read_text(encoding="utf-8"))
+          if report.get("schema") != "titan.v4.route-motion-census.v1":
+              raise SystemExit("unexpected census schema")
+          routes = report.get("routes")
+          if not isinstance(routes, list) or len(routes) != 13:
+              raise SystemExit(f"expected exactly 13 routes, got {len(routes) if isinstance(routes, list) else type(routes).__name__}")
+          sources = report.get("sources", {})
+          expected = {
+              "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+              "r01_tapes_blob": "a43289b9cc5e34a2481fddf652762a7d92f427ef",
+              "r04_full_router_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d",
+          }
+          if sources != expected:
+              raise SystemExit(f"source identity mismatch: {sources!r}")
+          totals = report.get("totals")
+          if not isinstance(totals, dict):
+              raise SystemExit("missing totals")
+          summary = {
+              "tested_head": "386171138eb401fbdcb5468b4c424f89dd4979c9",
+              "routes": len(routes),
+              "totals": totals,
+              "sources": sources,
+          }
+          (path.parent / "route-motion-summary.json").write_text(
+              json.dumps(summary, sort_keys=True, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(summary, sort_keys=True))
+          PY
+
+      - name: Upload exact-head execution receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: routemotion-exact-head-38617113
+          path: |
+            ${{ runner.temp }}/route-motion-census.json
+            ${{ runner.temp }}/route-motion-summary.json
+            ${{ runner.temp }}/normal-tests.log
+            ${{ runner.temp }}/optimized-tests.log
+          if-no-files-found: error
+          retention-days: 7
