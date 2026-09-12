@@ -258,6 +258,10 @@ def compile_to_disk(outputs: dict[Path, str]) -> None:
     for path, content in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
+    expected_pattern_paths = {path for path in outputs if path.parent == PATTERN_DIR}
+    for path in PATTERN_DIR.glob("*.md"):
+        if path not in expected_pattern_paths:
+            path.unlink()
 
 
 def check_outputs(outputs: dict[Path, str]) -> list[str]:
