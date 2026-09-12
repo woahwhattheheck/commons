@@ -19,6 +19,11 @@ from typing import Iterable, Sequence
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+ENGINE_METADATA_GIT_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
+ENGINE_METADATA_SHA256 = "a82c89c106c84f00ec9842f49cb253b1a2f82a3d57ad205659ae9e45ceb3cc0d"
+ENGINE_METADATA_BYTES = 6002
+
+
 def _default_engine_path() -> Path:
     here = Path(__file__).resolve()
     for parent in (here.parent, *here.parents):
@@ -55,14 +60,47 @@ def _plain_nonnegative_int(value: object, name: str) -> int:
     return value
 
 
-def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, str]:
-    """Fail closed unless the exact reviewed official engine bytes are present."""
+def _git_blob(data: bytes) -> str:
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+
+def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, object]:
+    """Fail closed unless the exact reviewed official engine closure is present."""
     data = path.read_bytes()
     sha256 = hashlib.sha256(data).hexdigest()
+    git_blob = _git_blob(data)
     if sha256 != ENGINE_SHA256:
         raise RuntimeError(
             f"official engine SHA256 drift: expected {ENGINE_SHA256}, got {sha256}"
         )
+    if git_blob != ENGINE_GIT_BLOB:
+        raise RuntimeError(
+            f"official engine Git blob drift: expected {ENGINE_GIT_BLOB}, got {git_blob}"
+        )
+
+    metadata_path = path.with_suffix(".json")
+    try:
+        metadata = metadata_path.read_bytes()
+    except FileNotFoundError as exc:
+        raise RuntimeError(f"official engine metadata missing: {metadata_path}") from exc
+    metadata_sha256 = hashlib.sha256(metadata).hexdigest()
+    metadata_git_blob = _git_blob(metadata)
+    if metadata_sha256 != ENGINE_METADATA_SHA256:
+        raise RuntimeError(
+            "official engine metadata SHA256 drift: "
+            f"expected {ENGINE_METADATA_SHA256}, got {metadata_sha256}"
+        )
+    if metadata_git_blob != ENGINE_METADATA_GIT_BLOB:
+        raise RuntimeError(
+            "official engine metadata Git blob drift: "
+            f"expected {ENGINE_METADATA_GIT_BLOB}, got {metadata_git_blob}"
+        )
+    if len(metadata) != ENGINE_METADATA_BYTES:
+        raise RuntimeError(
+            "official engine metadata size drift: "
+            f"expected {ENGINE_METADATA_BYTES}, got {len(metadata)}"
+        )
+
     text = data.decode("utf-8")
     weed_i = text.find(_WEED_ANCHOR)
     if weed_i < 0:
@@ -77,7 +115,15 @@ def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, str]:
         raise RuntimeError("official _end_of_day RNG/shop anchors missing")
     if positions != sorted(positions):
         raise RuntimeError("official _end_of_day RNG/shop order drift")
-    return {"git_blob": ENGINE_GIT_BLOB, "sha256": sha256}
+    return {
+        "git_blob": git_blob,
+        "sha256": sha256,
+        "metadata": {
+            "git_blob": metadata_git_blob,
+            "sha256": metadata_sha256,
+            "bytes": len(metadata),
+        },
+    }
 
 
 def shop_after_vacancy_draws(
