@@ -9,7 +9,7 @@ import sys
 
 MANIFEST_SHA = 'e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2'
 BASE_CONFIG_SEMANTIC_SHA = '9b1d49a6da7ab7706bd0c749aebfa5f1b715b461c792a167e4fbb16f5d592788'
-HELPER_SHA = '55f4ea7da32abd05af7958081a9cb278cb01629c9203105812ccbeb3165cd058'
+HELPER_SHA = 'cf03a048688fd615aa40e4c0b5b018f4f630888f65e909faa8eadafff2cf9f75'
 STARVATION_HELPER_SHA = 'a03938c7b1064f24aac52fb5a7e97a63083b1c8ffe8fa420c0fbfe5f95f9d73e'
 FAST_HELPER_SHA = '80f6c82b735199227c7caabea10107867a3cb3ca7f0af7a6af7073dfa79b22c0'
 BASE_RUNTIME_SHA = 'da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8'
@@ -53,7 +53,7 @@ def authenticate(package, manifest, *, runtime_sha=BASE_RUNTIME_SHA, enabled=Fal
         expected_names.add('r04_fast_tape_clone.py')
     if composed:
         if sha(package/'r04_dead_feed_care.py') != HELPER_SHA:
-            raise ValueError('W2 source differs from SECONDHELP blob51c17ea3')
+            raise ValueError('W2 source differs from authenticated dead-feed-care helper')
         expected_names.add('r04_dead_feed_care.py')
     if starvation:
         if sha(package/'r04_uncared_eod_feed_skip.py') != STARVATION_HELPER_SHA:
