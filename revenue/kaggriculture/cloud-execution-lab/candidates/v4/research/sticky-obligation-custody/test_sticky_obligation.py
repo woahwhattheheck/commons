@@ -70,6 +70,43 @@ class StickyObligationTests(unittest.TestCase):
         self.assertTrue(got["proven"])
         self.assertEqual(got["sink_step"], 24)
 
+    def test_water_recovery_waits_for_complete_callback_before_proof(self):
+        got = S.prove_recovery_water(
+            water(),
+            [
+                row(24, actor="hand-0", op="WATER", site=[3, 4]),
+                row(24, actor="hand-1", op="DIG", site=[3, 4]),
+            ],
+        )
+        self.assertFalse(got["proven"])
+        self.assertEqual(got["reason"], "site_invalidated_before_recovery")
+        self.assertEqual(got["invalidating_step"], 24)
+        self.assertEqual(got["invalidating_op"], "DIG")
+
+    def test_water_recovery_same_callback_invalidator_then_water_is_not_proof(self):
+        got = S.prove_recovery_water(
+            water(),
+            [
+                row(24, actor="hand-0", op="DIG", site=[3, 4]),
+                row(24, actor="hand-1", op="WATER", site=[3, 4]),
+            ],
+        )
+        self.assertFalse(got["proven"])
+        self.assertEqual(got["reason"], "site_invalidated_before_recovery")
+        self.assertEqual(got["invalidating_step"], 24)
+
+    def test_water_recovery_same_callback_unrelated_site_after_water_stays_proven(self):
+        got = S.prove_recovery_water(
+            water(),
+            [
+                row(24, actor="hand-0", op="WATER", site=[3, 4]),
+                row(24, actor="hand-1", op="DIG", site=[9, 9]),
+                row(25, actor="hand-0", op="PASS"),
+            ],
+        )
+        self.assertTrue(got["proven"])
+        self.assertEqual(got["sink_step"], 24)
+
     def test_water_recovery_wrong_site_is_not_proof(self):
         got = S.prove_recovery_water(
             water(),
