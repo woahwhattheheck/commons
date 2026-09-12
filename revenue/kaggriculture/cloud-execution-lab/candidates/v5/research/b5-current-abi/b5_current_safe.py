@@ -98,7 +98,14 @@ class B5CurrentABI:
                     next_authored=next_authored,
                     next_authored_step=next_authored_step,
                 )
-                report["jit_activations"] = jit_report["jit_activations"]
+                # The submitted JIT donor attributes every activation to the
+                # exact public step. b5_current keeps donor action semantics
+                # stateless, so restore that evidence field at the current-ABI
+                # boundary rather than weakening the durable receipt.
+                report["jit_activations"] = tuple(
+                    {"step": step, **activation}
+                    for activation in jit_report["jit_activations"]
+                )
             else:
                 report["reason"] = "jit_route_envelope_unbound"
 
