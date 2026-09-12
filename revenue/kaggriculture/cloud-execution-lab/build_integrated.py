@@ -63,7 +63,11 @@ def source_files():
     mapping['reference/titan-current/vendor/terminal.py']='reference/titan-current/terminal.py'
     # Controls and experimental configuration are reproduction inputs only.
     for name in ('TITAN-HISTORY-CONFIG.json','test_terminal_history_join.py',
-                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py','test_entrypoint_deadline.py','test_final_market_pressure_entrypoint.py','test_config_metadata_boundary.py','test_module_recovery.py','test_seed_derived.py','test_route_recovery.py','test_ordered_selected_sell.py','test_engine_semantics.py'):
+                 'test_worker_deadline.py','test_worker_episode.py','test_entrypoint_clock.py',
+                 'test_entrypoint_deadline.py','test_entrypoint_route_capsule.py',
+                 'test_final_market_pressure_entrypoint.py','test_config_metadata_boundary.py',
+                 'test_module_recovery.py','test_seed_derived.py','test_route_recovery.py',
+                 'test_ordered_selected_sell.py','test_engine_semantics.py'):
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
@@ -116,7 +120,7 @@ def render():
                 info=tarfile.TarInfo(path);info.size=len(data);info.mode=0o644;info.mtime=0
                 archive.addfile(info,io.BytesIO(data))
     data=output.getvalue()
-    receipt={'path':ARCHIVE,'entrypoint':'main.py::agent','config':'TITAN-CONFIG.json',
+    receipt={'path':ARCHIVE,'entrypoint':'main.py::agent',config='TITAN-CONFIG.json',
              'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),
              'runtime_files':len(mapping),'source_manifest':RECORD+'CURRENT-SOURCE.json',
              'source_manifest_sha256':hashlib.sha256(encoded).hexdigest()}
