@@ -63,7 +63,9 @@ def load_helper():
 
 def load_opponent(engine, name: str, challenger_path: Path | None) -> Callable[[Any, Any], dict]:
     if name == "starter":
-        return engine.starter_agent
+        def starter(observation: Any, _configuration: Any) -> dict:
+            return engine.starter_agent(observation)
+        return starter
     if name != "orchard":
         raise ValueError(f"unsupported opponent: {name}")
     if challenger_path is None:
