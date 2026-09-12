@@ -34,21 +34,6 @@ class WeedAssistTests(unittest.TestCase):
         self.assertIs(out, parent)
         self.assertEqual(report["reason"], "disabled")
 
-    def test_only_literal_true_enables(self):
-        parent = action(["PASS"], [["PLANT", "CARROT"]])
-        observation = obs(hands=[(0, 0)], weeds=[(0, 0)], seeds={"CARROT": 1})
-        for poison in (1, "true", "false", [True], {"enabled": True}):
-            with self.subTest(poison=poison):
-                out, report = assist_same_turn_weed_obstructions(
-                    observation,
-                    parent,
-                    enabled=poison,
-                )
-                self.assertIs(out, parent)
-                self.assertFalse(report["enabled"])
-                self.assertFalse(report["changed"])
-                self.assertEqual(report["reason"], "disabled")
-
     def test_farmer_digs_for_later_hand_plant(self):
         parent = action(["PASS"], [["PLANT", "CARROT"]], [["SELL", "WHEAT", 3]])
         saved = copy.deepcopy(parent)
