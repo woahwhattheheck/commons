@@ -28,6 +28,7 @@ ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 CONFIG_GIT_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
 HISTORICAL_DONOR_PR = 9806
 DEFAULT_TURNS_PER_DAY = 24
+DEFAULT_EPISODE_STEPS = 720
 DEFAULT_MAX_MARKET_ORDERS = 10
 
 
@@ -39,8 +40,12 @@ class CapacityInputError(ValueError):
 class CapacityEnvelope:
     player: int
     hour: int
+    step: int
     turns_per_day: int
+    episode_steps: int
     callbacks_remaining: int
+    eod_reachable_before_terminal: bool
+    unit_actions_per_surviving_new_plant: int
     current_actors: int
     empty_owned_tiles: int
     board_tiles: int
@@ -53,8 +58,12 @@ class CapacityEnvelope:
         return {
             "player": self.player,
             "hour": self.hour,
+            "step": self.step,
             "turns_per_day": self.turns_per_day,
+            "episode_steps": self.episode_steps,
             "callbacks_remaining": self.callbacks_remaining,
+            "eod_reachable_before_terminal": self.eod_reachable_before_terminal,
+            "unit_actions_per_surviving_new_plant": self.unit_actions_per_surviving_new_plant,
             "current_actors": self.current_actors,
             "empty_owned_tiles": self.empty_owned_tiles,
             "board_tiles": self.board_tiles,
@@ -139,9 +148,14 @@ def capacity_envelope(
         every later callback, ignores all HIRE/LAND cost and competing work,
         and caps only by total observed board cells.
 
-    Each surviving new plant is charged two unit actions (PLANT + WATER).
-    Passing either bound proves nothing about feasibility; exceeding the chosen
-    bound is the only certified conclusion.
+    When the same-day EOD callback is executable, each surviving new plant is
+    charged two unit actions (PLANT + WATER). If the episode terminal horizon
+    cuts the day off before EOD, the weed transition cannot occur, so the hard
+    action-budget lower bound drops to one PLANT action per new surviving plant.
+    Callback count is capped by the earlier of same-day EOD and the final
+    executable callback (``episodeSteps - 2``). Passing either bound proves
+    nothing about feasibility; exceeding the chosen bound is the only certified
+    conclusion.
 
     Omitted configuration uses pinned official defaults. Any explicit
     configuration is proof-critical and is accepted only when the caller has
@@ -153,15 +167,29 @@ def capacity_envelope(
 
     player, farm, board_tiles = _farm_from_observation(observation)
     turns_per_day = _config_int(configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY)
+    episode_steps = _config_int(configuration, "episodeSteps", DEFAULT_EPISODE_STEPS)
+    if episode_steps < 2:
+        raise CapacityInputError("episodeSteps_must_be_int_ge_2")
     max_market_orders = _config_int(
         configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_MARKET_ORDERS
     )
 
     hour = _strict_int(observation.get("hour"), "hour")
+    step = _strict_int(observation.get("step"), "step")
     if hour >= turns_per_day:
         raise CapacityInputError("hour_out_of_day")
+    if hour != step % turns_per_day:
+        raise CapacityInputError("hour_step_mismatch")
 
-    callbacks_remaining = turns_per_day - hour
+    final_executable_step = episode_steps - 2
+    if step > final_executable_step:
+        raise CapacityInputError("step_after_final_executable_callback")
+    callbacks_to_eod = turns_per_day - hour
+    executable_callbacks_to_terminal = final_executable_step - step + 1
+    callbacks_remaining = min(callbacks_to_eod, executable_callbacks_to_terminal)
+    eod_step = step + callbacks_to_eod - 1
+    eod_reachable_before_terminal = eod_step <= final_executable_step
+    unit_actions_per_new_plant = 2 if eod_reachable_before_terminal else 1
     current_actors = 1 + len(farm["hands"])
     empty_owned = _empty_owned_tiles(farm)
 
@@ -180,14 +208,18 @@ def capacity_envelope(
     # can unlock cells in market phase for later callbacks, while DIG/HARVEST can
     # reclaim occupied cells. Counting every observed board cell as potentially
     # plantable is deliberately loose but preserves one-sided impossibility.
-    current_ceiling = min(board_tiles, current_slots // 2)
-    absolute_ceiling = min(board_tiles, absolute_slots // 2)
+    current_ceiling = min(board_tiles, current_slots // unit_actions_per_new_plant)
+    absolute_ceiling = min(board_tiles, absolute_slots // unit_actions_per_new_plant)
 
     return CapacityEnvelope(
         player=player,
         hour=hour,
+        step=step,
         turns_per_day=turns_per_day,
+        episode_steps=episode_steps,
         callbacks_remaining=callbacks_remaining,
+        eod_reachable_before_terminal=eod_reachable_before_terminal,
+        unit_actions_per_surviving_new_plant=unit_actions_per_new_plant,
         current_actors=current_actors,
         empty_owned_tiles=empty_owned,
         board_tiles=board_tiles,
