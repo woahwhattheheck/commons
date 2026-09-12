@@ -41,6 +41,7 @@ class LabeledHistoryTests(unittest.TestCase):
         self.assertEqual(result["entry_count"], 12)
         self.assertEqual(result["blocked_count"], 6)
         self.assertEqual(result["corrected_count"], 6)
+        self.assertEqual(result["provenance_locked_count"], 12)
 
     def test_missing_or_duplicate_id_rejected(self):
         doc = copy.deepcopy(self.doc)
@@ -49,7 +50,7 @@ class LabeledHistoryTests(unittest.TestCase):
         self.assertRejected(doc, "coverage mismatch")
         doc = copy.deepcopy(self.doc)
         doc["entries"][1]["id"] = doc["entries"][0]["id"]
-        self.assertRejected(doc, "duplicate entry id")
+        self.assertRejected(doc, "source-lineage provenance drift")
 
     def test_entries_must_stay_sorted(self):
         doc = copy.deepcopy(self.doc)
@@ -68,6 +69,24 @@ class LabeledHistoryTests(unittest.TestCase):
         entry = next(e for e in doc["entries"] if e["id"] == "gemini.pro-capital")
         entry.pop("do_not_repeat_without_new_evidence")
         self.assertRejected(doc, "durably fenced")
+
+    def test_source_lineage_provenance_is_locked_per_id(self):
+        for source in self.doc["entries"]:
+            with self.subTest(entry_id=source["id"]):
+                doc = copy.deepcopy(self.doc)
+                entry = next(e for e in doc["entries"] if e["id"] == source["id"])
+                entry["source_lineage"] += " tampered"
+                self.assertRejected(doc, "source-lineage provenance drift")
+
+    def test_pr_provenance_is_locked_per_id(self):
+        for source in self.doc["entries"]:
+            with self.subTest(entry_id=source["id"]):
+                doc = copy.deepcopy(self.doc)
+                entry = next(e for e in doc["entries"] if e["id"] == source["id"])
+                entry["provenance_pull_numbers"] = [
+                    value + 100000 for value in entry["provenance_pull_numbers"]
+                ]
+                self.assertRejected(doc, "PR provenance drift")
 
     def test_stale_g01_donor_certificate_is_rejected(self):
         doc = copy.deepcopy(self.doc)
