@@ -49,6 +49,49 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertEqual("pr-13492", second["key"])
         self.assertEqual("ASTRA-A", second["held_by"])
 
+    def test_runtime_nff_retry_refreshes_clock_and_keeps_later_winner(self):
+        base = cs.holding_write(self.a, "seed", "SEED", "take", now=self.t0)
+        self.assertTrue(base["ok"])
+        stale_tip = base["commit"]
+        winner = claim_pr.write_pr_holding(
+            self.a, 13509, "ASTRA-WINNER", "take", ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=1),
+        )
+        self.assertTrue(winner["ok"])
+
+        real_tip = cs._remote_tip
+        real_now = cs._now
+        tip_calls = {"n": 0}
+        moments = iter((self.t0, self.t0 + dt.timedelta(seconds=2)))
+
+        def stale_then_real(git, branch, remote="origin"):
+            tip_calls["n"] += 1
+            return stale_tip if tip_calls["n"] == 1 else real_tip(git, branch, remote)
+
+        def advancing_now():
+            try:
+                return next(moments)
+            except StopIteration:
+                return self.t0 + dt.timedelta(seconds=2)
+
+        cs._remote_tip = stale_then_real
+        cs._now = advancing_now
+        try:
+            loser = claim_pr.write_pr_holding(
+                self.b, 13509, "ASTRA-LOSER", "take", ttl_s=600
+            )
+        finally:
+            cs._remote_tip = real_tip
+            cs._now = real_now
+
+        self.assertFalse(loser["ok"])
+        self.assertEqual("ASTRA-WINNER", loser["held_by"])
+        self.assertGreaterEqual(tip_calls["n"], 2)
+        listing = cs.holdings_list(self.b, now=self.t0 + dt.timedelta(seconds=2))
+        row = [r for r in listing["holdings"] if r["key"] == "pr-13509"][0]
+        self.assertEqual("ASTRA-WINNER", row["holder"])
+        self.assertTrue(row["live"])
+
     def test_different_prs_do_not_collide(self):
         one = claim_pr.write_pr_holding(
             self.a, 13492, "ASTRA-A", "take", ttl_s=600, now=self.t0
