@@ -67,6 +67,15 @@ class DeadcapOracleTests(unittest.TestCase):
         self.assertEqual(receipt["rival_delta"], 0.0)
 
     def test_current_native_does_not_emit_donor_witness(self):
+        # Bind the COLD claim to the exact production bytes advertised by this
+        # package. A moving checkout must fail closed before the native probe;
+        # donor-only theorem tests above remain independently reproducible.
+        current = d.authenticate_current(CLOUD)
+        self.assertEqual(current, {
+            "main_blob": d.CURRENT_MAIN_BLOB,
+            "runtime_blob": d.CURRENT_RUNTIME_BLOB,
+            "config_blob": d.CURRENT_CONFIG_BLOB,
+        })
         receipt = d.current_native_probe(CLOUD, self.engine, self.tapes, seed=0, rival_tape=0)
         self.assertFalse(receipt["emits_witness"])
         self.assertEqual(receipt["post_melon_seeds"], 0)
