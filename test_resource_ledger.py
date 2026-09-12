@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789218169.077389")
+        self.assertEqual(catalog["slack_ts"], "1789229283.919009")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
+            "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
+        )
+        self.assertIn(
+            "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
@@ -315,7 +319,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.json",
+            "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -325,33 +329,40 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-v5-cross-evidence-promotion-gate",
+            "titan-v5-day-close-animal-feed-certificate-authority",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 90)
-        self.assertEqual(current_activation["projection"]["producing"], 62)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13330)
+        self.assertEqual(current_activation["projection"]["resources"], 91)
+        self.assertEqual(current_activation["projection"]["producing"], 63)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 53)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13379)
         self.assertEqual(
-            current_activation["production_truth"]["runtime_producer_refinement_pr"],
-            13380,
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["percentile_identity_refinement_pr"],
-            13383,
+            current_activation["production_truth"]["source_merge_sha"],
+            "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_validation"]["normal_passed"],
+            current_activation["production_truth"]["source_validation"]["alternate_feed_normal_passed"],
+            25,
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["source_validation"]["alternate_feed_optimized_passed"],
+            25,
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["source_validation"]["certificate_builder_normal_passed"],
             21,
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_validation"]["optimized_passed"],
+            current_activation["production_truth"]["source_validation"]["certificate_builder_optimized_passed"],
             21,
         )
-        self.assertEqual(
-            current_activation["production_truth"]["canonical_runtime_consumption"],
-            "AVAILABLE_TO_CURRENT_CONSUMERS_NOT_PROVEN_IN_THIS_ACTIVATION",
-        )
+        self.assertTrue(current_activation["production_truth"]["default_off"])
         self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
         self.assertEqual(current_activation["production_truth"]["candidate_promotions"], 0)
+        self.assertEqual(
+            current_activation["build_orders"][0]["commons_id"],
+            "TITAN-V5-ANIMAL-CADENCE-MATCHED-EVAL-PACKAGE-20260912-01",
+        )
+        self.assertIn("p1789229352638719", current_activation["build_orders"][0]["permalink"])
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -446,6 +457,10 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["titan-v5-cross-evidence-promotion-gate"]["condition"], "CONSTRAINED")
         self.assertIn("EXACT_MANIFEST_ENGAGEMENT_RUNTIME_IDENTITY", rows["titan-v5-cross-evidence-promotion-gate"]["authority"])
         self.assertIn("ea1e6419511bacad4560f88e77bbdafb300c7b4a", rows["titan-v5-cross-evidence-promotion-gate"]["exact_safe_probe"])
+        self.assertEqual(rows["titan-v5-day-close-animal-feed-certificate-authority"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v5-day-close-animal-feed-certificate-authority"]["condition"], "CONSTRAINED")
+        self.assertIn("DEFAULT_OFF", rows["titan-v5-day-close-animal-feed-certificate-authority"]["authority"])
+        self.assertIn("e7b7e7d0372e163c1b83e481d823a82a9fbedeab", rows["titan-v5-day-close-animal-feed-certificate-authority"]["exact_safe_probe"])
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")

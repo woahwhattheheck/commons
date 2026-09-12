@@ -84,20 +84,21 @@
     "inventory/resources/records/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json",
     "inventory/resources/records/codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
     "inventory/resources/records/codex-titan-v5-worker-job-payback-resource-activation-20260912-01.json",
-    "inventory/resources/records/codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.json"
+    "inventory/resources/records/codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.json",
+    "inventory/resources/records/codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789218169.077389",
+  "slack_ts": "1789229283.919009",
   "snapshot": {
-    "base_main_sha": "09ab528832da409dcbcbbc16053bbc5fe10f7214",
-    "observed_at": "2026-09-12T13:02:58Z",
+    "base_main_sha": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+    "observed_at": "2026-09-12T16:08:03Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
+  "source_id": "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -106,8 +107,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — cross-evidence promotion gate producing for the canonical TITAN V5 promotion consumer",
+  "subject": "MASTER RESOURCE LEDGER — source-pinned day-close animal-feed certificate authority producing for the canonical TITAN V5 matched-evaluation consumer",
   "supersedes_source_ids": [
+    "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
     "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
     "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
     "codex-titan-v25-joint-sell-resource-activation-20260909-01",
@@ -2116,6 +2118,28 @@
       "last_receipt": "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
       "last_used_at": "2026-09-12T13:02:58Z",
       "stale_after": "next promotion-gate source, manifest/engagement/runtime schema, producer contract, consumer, workflow, game-result or provider-state change",
+      "priority": 97
+    },
+    {
+      "name": "titan-v5-day-close-animal-feed-certificate-authority",
+      "kind": "SOURCE_PINNED_DAY_CLOSE_ANIMAL_FEED_CERTIFICATE_AUTHORITY",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / canonical TITAN V5 animal-cadence matched-evaluation consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_RUNTIME_CONFIG_FROZEN_SELECTED_EXEC_PACE_GAME_CELL_AND_SHA256_BINDING_REQUIRED; DEFAULT_OFF; NO_GAMEPLAY_RUNTIME_DEFAULT_CONFIG_ARCHIVE_PROVIDER_OR_KAGGLE_MUTATION",
+      "consumer": "The canonical TITAN V5 animal-cadence matched baseline-versus-wrapper evaluation and promotion process that needs one deterministic day-close certificate bound to exact current runtime, configuration, FrozenSelected, EXEC-PACE, game and cell identities.",
+      "value": "One released public certificate authority validates and composes alternate-feed evidence without silently changing scheduling, runtime, defaults or policy; duplicate operation identities and mismatched source evidence fail closed.",
+      "next_action": "Use build order TITAN-V5-ANIMAL-CADENCE-MATCHED-EVAL-PACKAGE-20260912-01 to land the source-pinned matched evaluation runner and immutable evidence package, then route its outputs through this certificate authority and the existing promotion gate. Keep the candidate default OFF until policy promotion receives complete matched evidence.",
+      "source": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence; source PR #13379 head 80283b82588258ccd5de335246d22ff54e9f5af8 merge eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+      "evidence_ts": "2026-09-12T16:08:03Z",
+      "auth_surface": "public current-main source and explicitly supplied strict JSON evidence files; no provider session, credential, live game or owner-only action is required",
+      "exact_safe_probe": "Current README blob 5951be52d884911339d6af3e7120bee6ca037f28; alternate-feed blob e5f545c452e54337e978c3fa553535e967d50569; certificate-builder blob e7b7e7d0372e163c1b83e481d823a82a9fbedeab; alternate-feed-test blob ba58089cc3ed86611b2a285c25ae89fd4269425d; certificate-builder-test blob 6d448f129ca56e54fe1c7b6e8bb6878ed01ee68d. Current focused suites pass 25/25 and 21/21 normally and under python -O.",
+      "rate_plan_boundary": "A valid certificate proves only exact source/evidence identity and declared day-close invariants. It does not prove candidate quality, a new game, playing strength, policy promotion, default activation, hosted score, rank, submission, prize, provider quota, payment, revenue or cash.",
+      "assigned_backlog": "matched baseline-versus-wrapper evaluation package delegated at Slack 1789229352.638719; later policy promotion remains with the existing canonical promotion consumers",
+      "last_receipt": "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
+      "last_used_at": "2026-09-12T16:08:03Z",
+      "stale_after": "next animal-cadence source, runtime/config/FrozenSelected/EXEC-PACE identity, matched-evaluation contract, game-result, policy-promotion or provider-state change",
       "priority": 97
     }
   ],
