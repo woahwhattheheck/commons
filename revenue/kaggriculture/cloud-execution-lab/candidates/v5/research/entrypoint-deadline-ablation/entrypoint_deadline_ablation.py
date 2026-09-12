@@ -22,6 +22,8 @@ V4_MAIN_GIT_BLOB = "a015fef88d855d6d9c50f9d36e2551abd8829996"
 PRE_GUARD_COMMIT = "784194262d1f448e5012c16503e8c2811e551c97"
 PRE_GUARD_MAIN_GIT_BLOB = "06d7d7d3508403ce5e0eb53e673dede74055eae3"
 INTRO_COMMIT = "4be7772ab850e50f42d0eb0fe715fecadb19ee10"
+INTRO_PARENT_COMMIT = PRE_GUARD_COMMIT
+INTRO_MAIN_GIT_BLOB = "2e70a9e730eebab94ab16420ae601f3c46663af8"
 SCHEMA = "titan-v5-v31-v4-entrypoint-deadline-ablation-v1"
 
 _GUARD_START = "    from titan_runtime import deadline\n"
@@ -63,10 +65,49 @@ def _require_blob(data: bytes, expected: str, label: str) -> None:
         raise SourceMismatch(f"{label}: Git blob {actual} != {expected}")
 
 
-def verify_authorities(v31: bytes, v4: bytes, pre_guard: bytes) -> dict[str, Any]:
+def verify_guard_intro_authority(
+    intro: bytes,
+    intro_parent_commit: str,
+) -> dict[str, str]:
+    if intro_parent_commit != INTRO_PARENT_COMMIT:
+        raise SourceMismatch(
+            f"guard-intro parent {intro_parent_commit} != {INTRO_PARENT_COMMIT}"
+        )
+    _require_blob(intro, INTRO_MAIN_GIT_BLOB, "guard-intro main.py")
+    intro_text = _decode(intro, "guard-intro main.py")
+    for anchor in (
+        "class FinalPressureAgent",
+        "def _entrypoint_fallback",
+        "timer = deadline._DeadlineTimer(remaining)",
+        "except deadline.DeadlineExceeded as error:",
+        _GUARD_START.rstrip("\n"),
+        _GUARD_END.rstrip("\n"),
+    ):
+        if anchor not in intro_text:
+            raise SourceMismatch(f"guard-intro anchor missing: {anchor}")
+    if intro_text.count(_GUARD_START) != 1 or intro_text.count(_GUARD_END) != 1:
+        raise SourceMismatch("guard-intro splice anchors are not unique")
+    if intro_text.index(_GUARD_START) < intro_text.index("def agent("):
+        raise SourceMismatch("guard-intro start is outside agent()")
+    return {
+        "guard_intro_commit": INTRO_COMMIT,
+        "guard_intro_parent_commit": INTRO_PARENT_COMMIT,
+        "guard_intro_main_git_blob": INTRO_MAIN_GIT_BLOB,
+        "guard_intro_main_sha256": sha256(intro),
+    }
+
+
+def verify_authorities(
+    v31: bytes,
+    v4: bytes,
+    pre_guard: bytes,
+    intro: bytes,
+    intro_parent_commit: str,
+) -> dict[str, Any]:
     _require_blob(v31, V31_MAIN_GIT_BLOB, "submitted V3.1 main.py")
     _require_blob(v4, V4_MAIN_GIT_BLOB, "submitted V4 main.py")
     _require_blob(pre_guard, PRE_GUARD_MAIN_GIT_BLOB, "pre-guard main.py")
+    intro_authority = verify_guard_intro_authority(intro, intro_parent_commit)
 
     v31_text = _decode(v31, "submitted V3.1 main.py")
     v4_text = _decode(v4, "submitted V4 main.py")
@@ -107,7 +148,7 @@ def verify_authorities(v31: bytes, v4: bytes, pre_guard: bytes) -> dict[str, Any
         "v4_main_git_blob": V4_MAIN_GIT_BLOB,
         "pre_guard_commit": PRE_GUARD_COMMIT,
         "pre_guard_main_git_blob": PRE_GUARD_MAIN_GIT_BLOB,
-        "guard_intro_commit": INTRO_COMMIT,
+        **intro_authority,
         "v31_main_sha256": sha256(v31),
         "v4_main_sha256": sha256(v4),
         "pre_guard_main_sha256": sha256(pre_guard),
@@ -155,6 +196,8 @@ def ablate_v4_main(v4: bytes, *, expected_blob: str = V4_MAIN_GIT_BLOB) -> tuple
         "removed_guard_sha256": sha256(removed.encode("utf-8")),
         "replacement_tail_sha256": sha256(_DIRECT_TAIL.encode("utf-8")),
         "guard_intro_commit": INTRO_COMMIT,
+        "guard_intro_parent_commit": INTRO_PARENT_COMMIT,
+        "guard_intro_main_git_blob": INTRO_MAIN_GIT_BLOB,
         "pre_guard_commit": PRE_GUARD_COMMIT,
         "production_activation": False,
     }
@@ -192,19 +235,23 @@ def _write_materialization(
     _write_new(str(receipt), receipt_data)
 
 
+def _add_authority_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--v31", required=True)
+    parser.add_argument("--v4", required=True)
+    parser.add_argument("--pre-guard", required=True)
+    parser.add_argument("--intro", required=True)
+    parser.add_argument("--intro-parent", required=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
 
     verify = sub.add_parser("verify")
-    verify.add_argument("--v31", required=True)
-    verify.add_argument("--v4", required=True)
-    verify.add_argument("--pre-guard", required=True)
+    _add_authority_args(verify)
 
     materialize = sub.add_parser("materialize")
-    materialize.add_argument("--v31", required=True)
-    materialize.add_argument("--v4", required=True)
-    materialize.add_argument("--pre-guard", required=True)
+    _add_authority_args(materialize)
     materialize.add_argument("--out", required=True)
     materialize.add_argument("--receipt", required=True)
 
@@ -212,7 +259,14 @@ def main(argv: list[str] | None = None) -> int:
     v31 = _read(args.v31)
     v4 = _read(args.v4)
     pre_guard = _read(args.pre_guard)
-    authority = verify_authorities(v31, v4, pre_guard)
+    intro = _read(args.intro)
+    authority = verify_authorities(
+        v31,
+        v4,
+        pre_guard,
+        intro,
+        args.intro_parent,
+    )
 
     if args.command == "verify":
         print(json.dumps(authority, sort_keys=True, separators=(",", ":")))

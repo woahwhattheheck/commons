@@ -72,6 +72,9 @@ class EntrypointDeadlineAblationTests(unittest.TestCase):
         self.assertFalse(receipt["production_activation"])
         self.assertEqual(receipt["input_main_git_blob"], expected)
         self.assertEqual(receipt["output_main_git_blob"], ab.git_blob_sha1(treated))
+        self.assertEqual(receipt["guard_intro_commit"], ab.INTRO_COMMIT)
+        self.assertEqual(receipt["guard_intro_parent_commit"], ab.INTRO_PARENT_COMMIT)
+        self.assertEqual(receipt["guard_intro_main_git_blob"], ab.INTRO_MAIN_GIT_BLOB)
 
     def test_wrong_input_blob_fails_closed(self):
         with self.assertRaises(ab.SourceMismatch):
@@ -84,6 +87,14 @@ class EntrypointDeadlineAblationTests(unittest.TestCase):
         )
         with self.assertRaises(ab.SourceMismatch):
             ab.ablate_v4_main(poisoned, expected_blob=ab.git_blob_sha1(poisoned))
+
+    def test_false_intro_parent_fails_closed_before_blob_use(self):
+        with self.assertRaisesRegex(ab.SourceMismatch, "guard-intro parent"):
+            ab.verify_guard_intro_authority(b"not-the-intro", "0" * 40)
+
+    def test_false_intro_blob_fails_closed(self):
+        with self.assertRaisesRegex(ab.SourceMismatch, "guard-intro main.py: Git blob"):
+            ab.verify_guard_intro_authority(b"not-the-intro", ab.INTRO_PARENT_COMMIT)
 
     def test_existing_output_is_never_replaced(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -53,17 +53,25 @@ jobs:
           V31="$RUNNER_TEMP/v31-main.py"
           V4="$RUNNER_TEMP/v4-main.py"
           PRE="$RUNNER_TEMP/pre-guard-main.py"
+          INTRO="$RUNNER_TEMP/guard-intro-main.py"
           OUT="$RUNNER_TEMP/v4-no-entrypoint-guard-main.py"
           RECEIPT="$RUNNER_TEMP/entrypoint-deadline-ablation-receipt.json"
+          INTRO_COMMIT=4be7772ab850e50f42d0eb0fe715fecadb19ee10
+          EXPECTED_INTRO_PARENT=784194262d1f448e5012c16503e8c2811e551c97
+          INTRO_PARENT="$(git rev-parse "${INTRO_COMMIT}^")"
+          test "$INTRO_PARENT" = "$EXPECTED_INTRO_PARENT"
 
           git show a90d888f03987ef0b35cfd20ec3519c6144db08a:revenue/kaggriculture/cloud-execution-lab/main.py > "$V31"
           git show 4af1113154e78c662780e6658cd920daac7902e3:revenue/kaggriculture/cloud-execution-lab/main.py > "$V4"
-          git show 784194262d1f448e5012c16503e8c2811e551c97:revenue/kaggriculture/cloud-execution-lab/main.py > "$PRE"
+          git show "$EXPECTED_INTRO_PARENT":revenue/kaggriculture/cloud-execution-lab/main.py > "$PRE"
+          git show "$INTRO_COMMIT":revenue/kaggriculture/cloud-execution-lab/main.py > "$INTRO"
 
           python -B entrypoint_deadline_ablation.py verify \
-            --v31 "$V31" --v4 "$V4" --pre-guard "$PRE"
+            --v31 "$V31" --v4 "$V4" --pre-guard "$PRE" \
+            --intro "$INTRO" --intro-parent "$INTRO_PARENT"
           python -B entrypoint_deadline_ablation.py materialize \
             --v31 "$V31" --v4 "$V4" --pre-guard "$PRE" \
+            --intro "$INTRO" --intro-parent "$INTRO_PARENT" \
             --out "$OUT" --receipt "$RECEIPT"
 
           python -B -m py_compile "$OUT"
@@ -78,8 +86,16 @@ jobs:
           assert receipt["schema"] == "titan-v5-v31-v4-entrypoint-deadline-ablation-v1"
           assert receipt["production_activation"] is False
           assert receipt["input_source_commit"] == "4af1113154e78c662780e6658cd920daac7902e3"
-          assert receipt["authority"]["v31_source_commit"] == "a90d888f03987ef0b35cfd20ec3519c6144db08a"
-          assert receipt["authority"]["pre_guard_commit"] == "784194262d1f448e5012c16503e8c2811e551c97"
+          assert receipt["guard_intro_commit"] == "4be7772ab850e50f42d0eb0fe715fecadb19ee10"
+          assert receipt["guard_intro_parent_commit"] == "784194262d1f448e5012c16503e8c2811e551c97"
+          assert receipt["guard_intro_main_git_blob"] == "2e70a9e730eebab94ab16420ae601f3c46663af8"
+          authority = receipt["authority"]
+          assert authority["v31_source_commit"] == "a90d888f03987ef0b35cfd20ec3519c6144db08a"
+          assert authority["pre_guard_commit"] == "784194262d1f448e5012c16503e8c2811e551c97"
+          assert authority["guard_intro_commit"] == "4be7772ab850e50f42d0eb0fe715fecadb19ee10"
+          assert authority["guard_intro_parent_commit"] == "784194262d1f448e5012c16503e8c2811e551c97"
+          assert authority["guard_intro_main_git_blob"] == "2e70a9e730eebab94ab16420ae601f3c46663af8"
+          assert len(authority["guard_intro_main_sha256"]) == 64
           PY
       - name: Assert repository stayed clean
         shell: bash
