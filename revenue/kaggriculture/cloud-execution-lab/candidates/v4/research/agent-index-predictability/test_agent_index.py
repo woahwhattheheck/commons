@@ -75,6 +75,52 @@ class AgentIndexPredictability(unittest.TestCase):
                 row(1, "A", 1, 0),
             ])
 
+    def test_huge_integer_overflow_fails_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record(row(1, "A", 0, 10**1000), 0)
+
+    def test_conflicting_margin_cannot_override_rewards(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({
+                "seed": 1,
+                "opponent": "A",
+                "seat": 0,
+                "margin": 1e300,
+                "rewards": [168572, 3550],
+            }, 0)
+
+    def test_conflicting_score_pair_cannot_override_rewards(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({
+                "seed": 1,
+                "opponent": "A",
+                "seat": 0,
+                "rewards": [120, 20],
+                "score": 121,
+                "opponent_score": 20,
+            }, 0)
+
+    def test_redundant_consistent_outcomes_are_accepted(self):
+        normalized = mod.normalize_record({
+            "seed": 1,
+            "opponent": "A",
+            "seat": 1,
+            "margin": 100,
+            "rewards": [20, 120],
+            "score": 120,
+            "opponent_score": 20,
+        }, 0)
+        self.assertEqual(normalized["margin"], 100)
+
+    def test_legitimate_large_reward_margin_is_preserved(self):
+        normalized = mod.normalize_record({
+            "seed": 9922023,
+            "opponent": "starter",
+            "seat": 0,
+            "rewards": [168572, 3550],
+        }, 0)
+        self.assertEqual(normalized["margin"], 165022)
+
     def test_equal_opponent_weighting_blocks_frequency_domination(self):
         rows = []
         # Many A pairs show +10; one B pair shows -100. Pooled is positive,
