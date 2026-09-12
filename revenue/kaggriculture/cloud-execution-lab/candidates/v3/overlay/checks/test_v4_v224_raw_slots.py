@@ -184,7 +184,7 @@ class V224RawSlots(unittest.TestCase):
         self.assertEqual(out["market"][2], [])
         self.assertEqual(out["market"],
                          [["SELL", "WOOL", 2], ["HIRE"], [],
-                          [["SELL", "MILK", 3]][0], ["BUY_SEED", "WHEAT", 1]])
+                          ["SELL", "MILK", 3], ["BUY_SEED", "WHEAT", 1]])
 
     def test_over_cap_frozen_change_keeps_only_raw_executable_prefix(self):
         parent = action([[], *[["HIRE"] for _ in range(9)], ["SELL", "WOOL", 1]])
