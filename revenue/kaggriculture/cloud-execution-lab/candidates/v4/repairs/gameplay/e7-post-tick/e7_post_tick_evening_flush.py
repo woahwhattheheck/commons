@@ -29,16 +29,40 @@ unsafe capacity/market shape preserves incumbent behavior.
 from __future__ import annotations
 
 from collections import Counter
+import hashlib
 from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-V3 = HERE.parent
-OVERLAY = V3 / "overlay"
+V4 = HERE.parents[2]
+OVERLAY = V4 / "donor" / "overlay"
+ROUTER_PATH = OVERLAY / "r04_full_router.py"
+ROUTER_BLOB_SHA = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+
+
+def _git_blob_sha(path):
+    data = path.read_bytes()
+    header = f"blob {len(data)}\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+if not ROUTER_PATH.is_file():
+    raise ImportError(f"canonical V4 R04 donor missing: {ROUTER_PATH}")
+if _git_blob_sha(ROUTER_PATH) != ROUTER_BLOB_SHA:
+    raise ImportError("canonical V4 R04 donor drifted from the authenticated E7 dependency")
 if str(OVERLAY) not in sys.path:
     sys.path.insert(0, str(OVERLAY))
 
 import r04_full_router as r04  # noqa: E402
+
+try:
+    _R04_LOADED_FROM = Path(r04.__file__).resolve()
+except (AttributeError, TypeError):
+    raise ImportError("r04_full_router resolved without a canonical source path") from None
+if _R04_LOADED_FROM != ROUTER_PATH.resolve():
+    raise ImportError(
+        f"r04_full_router shadowed: expected {ROUTER_PATH}, got {_R04_LOADED_FROM}"
+    )
 
 TURNS_PER_DAY = 24
 SHED_CAPACITY = 100
