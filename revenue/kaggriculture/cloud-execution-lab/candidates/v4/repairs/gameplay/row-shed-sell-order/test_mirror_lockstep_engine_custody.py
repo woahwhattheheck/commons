@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 import tempfile
 import unittest
+from types import ModuleType
 
 import check_mirror_lockstep_engine as C
 
@@ -36,6 +38,54 @@ class MirrorLockstepEngineCustodyTests(unittest.TestCase):
             )
             self.assertEqual(module.CONFIG, "captured")
             self.assertEqual(config_path.read_text(encoding="utf-8"), "attacker")
+
+    def test_engine_exec_fences_ambient_kaggle_seed_import(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            module_path = root / "kaggriculture.py"
+            config_path = root / "kaggriculture.json"
+            source = (
+                "from kaggle_environments.utils import resolve_episode_seed\n"
+                "RESOLVER = resolve_episode_seed\n"
+                "with open(__file__.replace('.py', '.json')) as f:\n"
+                "    SPEC = f.read()\n"
+            ).encode("utf-8")
+            config_path.write_text("captured", encoding="utf-8")
+
+            previous_package = sys.modules.get("kaggle_environments")
+            previous_utils = sys.modules.get("kaggle_environments.utils")
+            had_package = "kaggle_environments" in sys.modules
+            had_utils = "kaggle_environments.utils" in sys.modules
+            attacker_package = ModuleType("kaggle_environments")
+            attacker_package.__path__ = []
+            attacker_utils = ModuleType("kaggle_environments.utils")
+            attacker_utils.resolve_episode_seed = lambda *_a, **_k: "attacker"
+            attacker_package.utils = attacker_utils
+            sys.modules["kaggle_environments"] = attacker_package
+            sys.modules["kaggle_environments.utils"] = attacker_utils
+            old_config = C.ENGINE_CONFIG
+            try:
+                C.ENGINE_CONFIG = config_path
+                module = C.load_engine_captured(
+                    module_path,
+                    source,
+                    config_path.read_bytes(),
+                )
+                with self.assertRaises(C.CheckError):
+                    module.RESOLVER(None)
+                self.assertEqual(module.SPEC, "captured")
+                self.assertIs(sys.modules["kaggle_environments"], attacker_package)
+                self.assertIs(sys.modules["kaggle_environments.utils"], attacker_utils)
+            finally:
+                C.ENGINE_CONFIG = old_config
+                if had_utils:
+                    sys.modules["kaggle_environments.utils"] = previous_utils
+                else:
+                    sys.modules.pop("kaggle_environments.utils", None)
+                if had_package:
+                    sys.modules["kaggle_environments"] = previous_package
+                else:
+                    sys.modules.pop("kaggle_environments", None)
 
     def test_undeclared_engine_file_open_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:

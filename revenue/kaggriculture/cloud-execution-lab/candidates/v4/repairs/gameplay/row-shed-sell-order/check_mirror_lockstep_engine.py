@@ -5,7 +5,7 @@
 The checker captures and authenticates the official engine, adjacent engine
 configuration, and ROWSHED helper bytes before either module is executed.
 All subsequent proof work runs from those captured buffers; repository paths
-are never reopened as controls.
+are never reopened as controls, and the unused Kaggle seed import is fenced.
 """
 from __future__ import annotations
 
@@ -117,6 +117,44 @@ def load_captured(
     return module
 
 
+def _unavailable_episode_seed(*_args, **_kwargs):
+    raise CheckError("resolve_episode_seed is outside ROWSHED market-proof scope")
+
+
+def load_engine_captured(path: Path, data: bytes, config_bytes: bytes) -> ModuleType:
+    """Execute captured engine bytes without importing ambient Kaggle package code."""
+    package_name = "kaggle_environments"
+    utils_name = "kaggle_environments.utils"
+    previous_package = sys.modules.get(package_name)
+    previous_utils = sys.modules.get(utils_name)
+    had_package = package_name in sys.modules
+    had_utils = utils_name in sys.modules
+
+    package = ModuleType(package_name)
+    package.__path__ = []
+    utils = ModuleType(utils_name)
+    utils.resolve_episode_seed = _unavailable_episode_seed
+    package.utils = utils
+    sys.modules[package_name] = package
+    sys.modules[utils_name] = utils
+    try:
+        return load_captured(
+            "_rowshed_lockstep_engine",
+            path,
+            data,
+            text_captures={ENGINE_CONFIG: config_bytes},
+        )
+    finally:
+        if had_utils:
+            sys.modules[utils_name] = previous_utils
+        else:
+            sys.modules.pop(utils_name, None)
+        if had_package:
+            sys.modules[package_name] = previous_package
+        else:
+            sys.modules.pop(package_name, None)
+
+
 def run_cell(engine, helper, *, item: str, inventory: int, quantity: int) -> dict:
     market = engine._new_market()
     market["inventory"][item] = inventory
@@ -190,12 +228,7 @@ def run() -> dict:
         ENGINE_CONFIG, ENGINE_CONFIG_BLOB, "engine config"
     )
     helper_bytes, actual_helper = capture(HELPER, HELPER_BLOB, "helper")
-    engine = load_captured(
-        "_rowshed_lockstep_engine",
-        ENGINE,
-        engine_bytes,
-        text_captures={ENGINE_CONFIG: config_bytes},
-    )
+    engine = load_engine_captured(ENGINE, engine_bytes, config_bytes)
     helper = load_captured("_rowshed_lockstep_helper", HELPER, helper_bytes)
     if helper.ENGINE_GIT_BLOB != ENGINE_BLOB:
         raise CheckError("helper engine pin drift")
