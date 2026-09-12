@@ -150,13 +150,46 @@ class ScoreScheduleTests(unittest.TestCase):
             self.assertEqual(actual,expected);self.assertEqual((args,plans,streams),before)
 
     def test_fertilizer_does_not_consume_center_interval(self):
-        args=model_args('FERTILIZER');args['config']['townCenterSellInterval']=0
-        model=core.MarketPath(**args)
-        self.assertEqual(model.score(((249,2),),2,2,'paired'),reference_score(model,((249,2),),2,2,'paired'))
+        for interval in (0,-2,-9,1):
+            args=model_args('FERTILIZER');args['config']['townCenterSellInterval']=interval
+            model=core.MarketPath(**args)
+            self.assertEqual(model.score(((249,2),),2,2,'paired'),
+                             reference_score(model,((249,2),),2,2,'paired'))
+            self.assertEqual(core.absorption('FERTILIZER',1,[],args['config']),0)
 
-    def test_invalid_shop_interval_still_raises(self):
-        args=model_args();args['config']['townShopSellInterval']=0
-        with self.assertRaises(ZeroDivisionError):core.MarketPath(**args).score((),2,0,'paired')
+    def test_nonpositive_intervals_match_engine_clamp(self):
+        shop,products=next((name,products) for name,products in core.m.SHOPS.items() if products)
+        shop_item=products[0]
+        center_item=next(item for item in core.m.PRODUCTS if item!='FERTILIZER')
+        for interval in (0,-2,-9):
+            raw={'townShopSellInterval':interval,'townCenterSellInterval':99}
+            clamped={'townShopSellInterval':1,'townCenterSellInterval':99}
+            self.assertEqual(core.absorption(shop_item,1,[shop],raw),
+                             core.absorption(shop_item,1,[shop],clamped))
+            raw={'townShopSellInterval':99,'townCenterSellInterval':interval}
+            clamped={'townShopSellInterval':99,'townCenterSellInterval':1}
+            self.assertEqual(core.absorption(center_item,1,[],raw),
+                             core.absorption(center_item,1,[],clamped))
+
+            for key in ('townShopSellInterval','townCenterSellInterval'):
+                args=model_args();args['config'][key]=interval
+                expected=deepcopy(args);expected['config'][key]=1
+                plan=((242,1),(249,1));rival=((242,3),)
+                self.assertEqual(core.MarketPath(**args).score(plan,2,rival,'after'),
+                                 core.MarketPath(**expected).score(plan,2,rival,'after'))
+
+    def test_nonpositive_intervals_share_effective_cache_identity(self):
+        for key in ('townShopSellInterval','townCenterSellInterval'):
+            for interval in (0,-2,-9):
+                core.clear_shared_market_path_cache()
+                args=model_args();args['config'][key]=interval
+                expected=deepcopy(args);expected['config'][key]=1
+                first=core.shared_market_path(**args)
+                second=core.shared_market_path(**expected)
+                self.assertIs(first,second)
+                info=core.shared_market_path_cache_info()
+                self.assertEqual(info.misses,1)
+                self.assertEqual(info.hits,1)
 
     def test_shared_projection_cache_reuses_equal_value_context(self):
         core.clear_shared_market_path_cache()
