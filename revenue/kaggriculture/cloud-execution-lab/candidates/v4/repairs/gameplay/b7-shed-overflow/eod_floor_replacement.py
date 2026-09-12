@@ -39,11 +39,11 @@ def _required_cfg(configuration: Any, name: str) -> Any:
     """Return an observed configuration field; never synthesize a default."""
     if configuration is None:
         return _MISSING
-    if isinstance(configuration, dict):
-        return configuration[name] if name in configuration else _MISSING
     try:
+        if isinstance(configuration, dict):
+            return configuration[name] if name in configuration else _MISSING
         return getattr(configuration, name)
-    except (AttributeError, TypeError):
+    except Exception:
         return _MISSING
 
 
