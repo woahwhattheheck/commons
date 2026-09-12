@@ -4,13 +4,13 @@ from copy import deepcopy
 import unittest
 
 from b5_current import (
-    B5CurrentABI,
     B5_CARROT_GIT_BLOB,
     B5_CARROT_SOURCE_SHA256,
     B5_JIT_GIT_BLOB,
     B5_JIT_SOURCE_SHA256,
     DONOR_COMMIT,
 )
+from b5_current_safe import B5CurrentABI
 
 
 class B5CurrentABITests(unittest.TestCase):
@@ -85,7 +85,6 @@ class B5CurrentABITests(unittest.TestCase):
         self.assertEqual(next_authored, before_next)
 
     def test_carrot_port_replaces_only_literal_pass_and_preserves_market(self):
-        # day=2; coverage=2 is less than day+2=4, so the submitted CARROT guard fires.
         obs = self.observation(step=50, fertilized_until_day=2)
         selected = self.action(farmer=["PASS"], hand=["WATER"])
         market = deepcopy(selected["market"])
@@ -105,7 +104,6 @@ class B5CurrentABITests(unittest.TestCase):
         self.assertEqual(report["carrot_activations"], ())
 
     def test_jit_requires_exact_authenticated_next_step(self):
-        # day=2, CARROT age=2, yield=0, uncovered: next same-worker WATER is valuable.
         obs = self.observation(step=50, planted_day=0, yield_units=0,
                                fertilized_until_day=1)
         selected = self.action(farmer=["PASS"], hand=["DIG"])
@@ -162,8 +160,6 @@ class B5CurrentABITests(unittest.TestCase):
         self.assertEqual(report["jit_activations"], ())
 
     def test_jit_shared_tile_matches_fail_closed_for_duplicate_fertilization(self):
-        # Disable CARROT so both workers reach JIT. Two qualifying workers share one tile;
-        # the submitted donor drops both matches rather than spend duplicate fertilizer.
         obs = self.observation(step=50, crop="WHEAT", planted_day=0,
                                yield_units=0, fertilized_until_day=0, same_tile=True)
         selected = self.action()
@@ -174,7 +170,7 @@ class B5CurrentABITests(unittest.TestCase):
         self.assertIs(result, selected)
         self.assertEqual(report["jit_activations"], ())
 
-    def test_malformed_cardinality_fails_closed_without_market_edit(self):
+    def test_malformed_selected_cardinality_fails_closed_without_market_edit(self):
         obs = self.observation(step=50, fertilized_until_day=0)
         selected = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "MILK", 2]]}
         result, report = B5CurrentABI(carrot=True, jit=True).transform(
@@ -185,6 +181,21 @@ class B5CurrentABITests(unittest.TestCase):
         self.assertIs(result, selected)
         self.assertEqual(result["market"], [["SELL", "MILK", 2]])
         self.assertFalse(report["changed"])
+        self.assertEqual(report["reason"], "selected_worker_envelope_invalid")
+
+    def test_malformed_next_route_cardinality_disables_jit_but_not_carrot(self):
+        obs = self.observation(step=50, planted_day=0, yield_units=0,
+                               fertilized_until_day=1)
+        selected = self.action()
+        result, report = B5CurrentABI(carrot=True, jit=True).transform(
+            obs, selected,
+            next_authored={"farmer": ["WATER"], "hands": []},
+            next_authored_step=51,
+        )
+        self.assertEqual(result["farmer"], ["FERTILIZE"])
+        self.assertEqual(len(report["carrot_activations"]), 1)
+        self.assertFalse(report["jit_route_bound"])
+        self.assertEqual(report["jit_activations"], ())
 
 
 if __name__ == "__main__":
