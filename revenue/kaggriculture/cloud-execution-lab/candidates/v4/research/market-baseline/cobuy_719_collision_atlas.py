@@ -166,7 +166,6 @@ def _decode_apex_market(encoded: str) -> list[list[Any]]:
             out.append([op])
             continue
         if not (0 <= item_idx < len(PRODUCTS)):
-            # Preserve the executable row position for non-product orders.
             out.append(["OTHER", item_idx, qty])
             continue
         out.append([op, PRODUCTS[item_idx], qty])
@@ -236,6 +235,29 @@ def _pair_collisions(
     return collisions
 
 
+def _is_known_opening_guardrail(collision: dict[str, Any]) -> bool:
+    """The one collision already closed by the merged both-seat native receipt."""
+    return (
+        collision.get("step") == 0
+        and collision.get("item") == "WHEAT"
+        and collision.get("own_row") == 0
+        and collision.get("own_qty") == 13
+        and collision.get("rival_row") == 0
+        and collision.get("rival_qty") == 13
+    )
+
+
+def _classify_collisions(
+    collisions: list[dict[str, Any]],
+) -> tuple[str, list[dict[str, Any]]]:
+    novel = [c for c in collisions if not _is_known_opening_guardrail(c)]
+    if novel:
+        return "NOVEL_AUTHORITATIVE_COLLISIONS_FOUND", novel
+    if any(_is_known_opening_guardrail(c) for c in collisions):
+        return "OPENING_ONLY_GUARDRAIL_NO_NEW_COLLISIONS", []
+    return "COLD_NO_ROUTE_INVARIANT_AUTHORED_COLLISIONS", []
+
+
 def _load_opening_receipt(path: Path) -> dict[str, Any]:
     receipt = json.loads(_require_blob(path, OPENING_RECEIPT_BLOB, "COBUY opening receipt"))
     if receipt.get("schema") != "titan-v4-cobuy-current-native-opening-v1":
@@ -291,6 +313,7 @@ def build_atlas(
     )
     rival_invariant = _invariant_pulses(apex_routes)
     collisions = _pair_collisions(own_invariant, rival_invariant)
+    status, novel_collisions = _classify_collisions(collisions)
 
     route_pair_candidates: list[dict[str, Any]] = []
     for own_route, own_pulses in sorted(arlene_routes.items()):
@@ -304,14 +327,10 @@ def build_atlas(
                     **pair,
                 })
 
-    opening = [c for c in collisions if c["step"] == 0 and c["item"] == "WHEAT"]
+    opening = [c for c in collisions if _is_known_opening_guardrail(c)]
     return {
         "schema": SCHEMA,
-        "status": (
-            "AUTHORITATIVE_COLLISIONS_FOUND"
-            if collisions
-            else "COLD_NO_ROUTE_INVARIANT_AUTHORED_COLLISIONS"
-        ),
+        "status": status,
         "decision_authority": False,
         "source_blobs": {
             "official_engine": ENGINE_BLOB,
@@ -342,6 +361,7 @@ def build_atlas(
         "own_invariant_pulses": own_invariant,
         "rival_invariant_pulses": rival_invariant,
         "authoritative_collisions": collisions,
+        "novel_authoritative_collisions": novel_collisions,
         "route_pair_candidates": route_pair_candidates,
         "counts": {
             "own_routes": len(arlene_routes),
@@ -349,7 +369,10 @@ def build_atlas(
             "own_stable_route_invariant_pulses": len(own_invariant),
             "rival_stable_route_invariant_pulses": len(rival_invariant),
             "authoritative_collisions": len(collisions),
+            "known_opening_guardrails": len(opening),
+            "novel_authoritative_collisions": len(novel_collisions),
             "authoritative_same_row_collisions": sum(c["same_raw_index"] for c in collisions),
+            "novel_same_row_collisions": sum(c["same_raw_index"] for c in novel_collisions),
             "route_pair_candidates": len(route_pair_candidates),
         },
         "controls": {
@@ -358,6 +381,7 @@ def build_atlas(
         },
         "limits": [
             "This is an authored-source atlas, not a replay of hidden rival current actions.",
+            "The already-closed step-0 WHEAT13 guardrail is separated from novel frontier collisions.",
             "Apex six-day guard boundaries fail closed because budget sales may be moved ahead of buys.",
             "Arlene rows after an authored SELL fail closed because clamp_sells may delete that SELL and shift the buy.",
             "Route-pair candidates are research narrowing only; only route-invariant collisions are authoritative.",
