@@ -21,10 +21,39 @@ from typing import Any, Mapping, Sequence
 NO_ORDER = ["SELL", "WHEAT", 0]
 MOVES = {"NORTH": (0, -1), "SOUTH": (0, 1), "WEST": (-1, 0), "EAST": (1, 0)}
 
+
 def _uint(value: Any, name: str, minimum: int = 0) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
         raise ValueError(f"{name} must be an integer >= {minimum}")
     return value
+
+
+def _public_clock(observation: Mapping[str, Any], day_len: int) -> tuple[int, int]:
+    """Bind one exact public step/day under the configured calendar."""
+    has_step = "step" in observation
+    has_day = "day" in observation
+    has_hour = "hour" in observation
+    if has_day != has_hour:
+        raise ValueError("day/hour must be supplied together")
+
+    step = _uint(observation["step"], "step") if has_step else None
+    day = None
+    if has_day:
+        day = _uint(observation["day"], "day")
+        hour = _uint(observation["hour"], "hour")
+        if hour >= day_len:
+            raise ValueError("hour must be within the configured day")
+        clock_step = day * day_len + hour
+        if step is not None and step != clock_step:
+            raise ValueError("step and day/hour must agree")
+        if step is None:
+            step = clock_step
+
+    if step is None:
+        raise ValueError("step or day/hour is required")
+    if day is None:
+        day = step // day_len
+    return step, day
 
 
 def _units(action: Mapping[str, Any]) -> list:
@@ -75,7 +104,8 @@ def _productive_detour(
     mechanics: Any, observation: Mapping[str, Any], post_farm: Mapping[str, Any],
     post_private: Mapping[str, Any], route: Sequence[Mapping[str, Any]], events: list[tuple],
     final_positions: list[list[int]], worker: int, wage: int,
-    step: int, end: int, board: int, cap: int, limit: int, reserved: set[tuple[int, int]],
+    step: int, day: int, end: int, board: int, cap: int, limit: int,
+    reserved: set[tuple[int, int]],
 ) -> dict | None:
     """Return one producer-route harvest/deposit/rejoin witness, or None.
 
@@ -100,8 +130,6 @@ def _productive_detour(
     market = observation.get("market", {})
     inventory = market.get("inventory", {})
     params = market.get("params")
-    day = step // max(1, int(observation.get("turnsPerDay", 24)))
-    day = int(observation.get("day", day))
     touched = {(e[3], e[4]) for e in events
                if e[1] != worker and e[2] not in (*MOVES, "PASS")}
     candidates = []
@@ -192,10 +220,11 @@ def propose_redundant_hires(
     limit = max(1, _uint(cfg.get("maxMarketOrdersPerTurn", 10), "maxMarketOrdersPerTurn"))
     mult = _uint(cfg.get("farmHandCostMult", 1), "farmHandCostMult")
     _uint(max_route_steps, "max_route_steps", 1)
-    step = observation.get("step")
-    if step is None:
-        step = _uint(observation["day"], "day") * day_len + _uint(observation["hour"], "hour")
-    step = _uint(step, "step")
+    try:
+        step, day = _public_clock(observation, day_len)
+    except (KeyError, TypeError, ValueError):
+        report["reason"] = "unsupported_public_clock"
+        return out, report
     end = min((step // day_len + 1) * day_len - 1, episode - 2)
     report.update(step=step, end_step=end)
     if step > end or end - step > max_route_steps:
@@ -300,7 +329,7 @@ def propose_redundant_hires(
     for offset in range(best):
         worker = first_removed + offset
         witness = _productive_detour(mechanics, observation, farm, private, route, events, positions,
-                                      worker, costs[cost_start + offset], step, end,
+                                      worker, costs[cost_start + offset], step, day, end,
                                       board, cap, limit, reserved)
         if witness is None:
             break
