@@ -163,10 +163,14 @@ class TerminalSell:
 
 
 _INSTANCE = None
+_LAST_STEP = None
 
 
 def agent(observation, configuration=None):
-    global _INSTANCE
-    if _INSTANCE is None or int(observation.get('step', 0)) == 0:
+    global _INSTANCE, _LAST_STEP
+    step = int(observation.get('step', 0))
+    if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
         _INSTANCE = TerminalSell()
-    return _INSTANCE.act(observation, configuration)
+    out = _INSTANCE.act(observation, configuration)
+    _LAST_STEP = step
+    return out
