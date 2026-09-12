@@ -29,6 +29,11 @@ SOURCES = {
     **{name: name for name in PACKAGE if name != "seed_retry.py"},
     "seed_retry.py": "../cloud-committed-seed-retry/seed_retry.py",
 }
+RELEASE = {
+    "release": "TITAN",
+    "upstream_snapshot": "fixture-upstream",
+    "components": [],
+}
 
 
 def sha256(data):
@@ -55,6 +60,12 @@ class FreshnessTests(unittest.TestCase):
                 path = self.live / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
+        self.release_path = self.live / fresh.RELEASE_METADATA
+        self.release_path.parent.mkdir(parents=True, exist_ok=True)
+        self.release_path.write_text(
+            json.dumps(RELEASE, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
         self.write_publisher(SOURCES)
         run("git", "add", ".", cwd=self.root)
         run("git", "commit", "-qm", "base", cwd=self.root)
@@ -85,6 +96,8 @@ class FreshnessTests(unittest.TestCase):
         source_paths=None,
         declared_members=None,
         extra_unmapped=None,
+        metadata_overrides=None,
+        runtime_row_extra=None,
     ):
         members = dict(PACKAGE if members is None else members)
         source_paths = dict(SOURCES if source_paths is None else source_paths)
@@ -97,7 +110,19 @@ class FreshnessTests(unittest.TestCase):
             }
             for name, data in declared.items()
         }
-        source = (json.dumps({"runtime": runtime}, sort_keys=True) + "\n").encode()
+        if runtime_row_extra:
+            first = next(iter(runtime))
+            runtime[first].update(runtime_row_extra)
+        manifest = dict(RELEASE)
+        manifest.update(
+            entrypoint="main.py::agent",
+            config="TITAN-CONFIG.json",
+            default=json.loads(members["TITAN-CONFIG.json"].decode("utf-8")),
+        )
+        if metadata_overrides:
+            manifest.update(metadata_overrides)
+        manifest["runtime"] = runtime
+        source = (json.dumps(manifest, sort_keys=True) + "\n").encode()
         path = self.root / "candidate.tar.gz"
         with tarfile.open(path, "w:gz") as tf:
             for name, data in members.items():
@@ -143,6 +168,68 @@ class FreshnessTests(unittest.TestCase):
         self.assertTrue(all(row["same"] for row in report["files"]))
         seed = next(row for row in report["files"] if row["path"] == "seed_retry.py")
         self.assertEqual("../cloud-committed-seed-retry/seed_retry.py", seed["source_path"])
+
+    def test_source_entrypoint_drift_invalid(self):
+        archive, digest = self.archive(metadata_overrides={"entrypoint": "other.py::agent"})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("non-runtime metadata", report["problems"][0])
+
+    def test_source_config_drift_invalid(self):
+        archive, digest = self.archive(metadata_overrides={"config": "OTHER.json"})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("non-runtime metadata", report["problems"][0])
+
+    def test_source_default_drift_invalid(self):
+        archive, digest = self.archive(metadata_overrides={"default": {"consumer": "ordered"}})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("non-runtime metadata", report["problems"][0])
+
+    def test_source_inherited_release_key_drift_invalid(self):
+        archive, digest = self.archive(metadata_overrides={"upstream_snapshot": "wrong"})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("non-runtime metadata", report["problems"][0])
+
+    def test_source_extra_nonruntime_key_invalid(self):
+        archive, digest = self.archive(metadata_overrides={"rogue": "extra"})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("non-runtime metadata", report["problems"][0])
+
+    def test_runtime_row_extra_key_invalid(self):
+        archive, digest = self.archive(runtime_row_extra={"extra": "poison"})
+        report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("must contain exactly source_path, sha256, bytes", report["problems"][0])
+
+    def test_release_metadata_terminal_reread_detects_mutation(self):
+        archive, digest = self.archive()
+        original = fresh._read_release_metadata
+        calls = 0
+
+        def mutate_before_terminal_reread(*args, **kwargs):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                mutated = dict(RELEASE)
+                mutated["upstream_snapshot"] = "mutated-after-snapshot"
+                self.release_path.write_text(
+                    json.dumps(mutated, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+            return original(*args, **kwargs)
+
+        fresh._read_release_metadata = mutate_before_terminal_reread
+        try:
+            report = self.verify(archive, digest)
+        finally:
+            fresh._read_release_metadata = original
+        self.assertEqual(2, calls)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("release metadata", report["problems"][0])
 
     def test_stale_runtime_only(self):
         old = dict(PACKAGE)
