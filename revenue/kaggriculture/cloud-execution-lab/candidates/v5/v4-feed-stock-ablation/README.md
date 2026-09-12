@@ -17,7 +17,11 @@ The fertilizer operating-stock method remains active and `operating_stock.py` mu
 
 ## Evidence custody
 
-`paired.py` single-reads the caller-supplied V4 archive, authenticates that exact buffer, and parses members only from those captured bytes. It never authenticates one baseline read and then reopens the caller path. The existing joint-liquidity evaluator/opponent helper is also single-read, Git-blob authenticated, and executed from captured bytes; its copied harness is authenticated before games begin.
+`paired.py` single-reads the caller-supplied V4 archive, authenticates that exact buffer, and parses members only from those captured bytes. It never authenticates one baseline read and then reopens the caller path. The joint-liquidity helper is likewise single-read, Git-blob authenticated, and compiled from the captured bytes.
+
+The full game harness now follows one private-execution law. `snapshot_harness()` materializes into a private temporary runtime that stays alive through opponent preparation and the entire matched panel. Evaluator, packer, reference-policy bridge, and candidate loader bytes are each SHA256-authenticated against that snapshot receipt. Evaluator/packer/bridge execute directly from captured buffers; the loader is republished from its captured bytes to a separate private runtime-only path. Opponent adapters and candidate payloads also execute only below the private runtime. The caller-visible `.harness-snapshot` and `opponents/` trees are evidence copies only and are never execution origins.
+
+The focused custody suite proves source swap and deletion after authentication do not alter captured execution, public evidence poisoning does not alter the loaded module, and a wrong loader capture is rejected before publication. The run receipt binds evaluator/packer/bridge/loader SHA256 values and records the private-execution/evidence-copy mode.
 
 For engagement, the runner temporarily wraps the authenticated evaluator module's in-process `Actor.act` method only to observe candidate return values. It restores the exact method after each game. Agent, engine, evaluator, opponent, and archive bytes are unchanged by observation. Each cell records candidate-action trace digests and the exact first returned-action divergence between control and treatment.
 
@@ -25,12 +29,12 @@ For engagement, the runner temporarily wraps the authenticated evaluator module'
 
 ```bash
 cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/v4-feed-stock-ablation
-python -B -m py_compile feed_stock_ablation.py paired.py test_feed_stock_ablation.py
-python -B -m unittest -v test_feed_stock_ablation.py
-python -O -B -m unittest -v test_feed_stock_ablation.py
+python -B -m py_compile feed_stock_ablation.py paired.py test_feed_stock_ablation.py test_paired.py
+python -B -m unittest -v test_feed_stock_ablation.py test_paired.py
+python -O -B -m unittest -v test_feed_stock_ablation.py test_paired.py
 ```
 
-The dedicated workflow repeats these on Python 3.11 and 3.12 after asserting exact pushed HEAD.
+The dedicated workflow repeats these on Python 3.11 and 3.12 after asserting exact pushed HEAD and requires a clean tree.
 
 ## Engagement-first game gate
 
