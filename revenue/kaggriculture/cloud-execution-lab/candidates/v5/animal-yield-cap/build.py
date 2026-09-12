@@ -71,20 +71,31 @@ def build_candidate(baseline_root: Path, out: Path) -> dict[str, str]:
         raise ValueError("baseline already contains animal_headroom_harvest.py")
 
     _require_source_identity()
-    control_digest = package_digest(baseline_root)
-    shutil.copytree(
-        baseline_root,
-        out,
-        symlinks=False,
-        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo"),
-    )
-    (out / "main.py").rename(out / "baseline_main.py")
-    shutil.copyfile(ENTRY_SOURCE, out / "main.py")
-    shutil.copyfile(HELPER_SOURCE, out / "animal_headroom_harvest.py")
-    candidate_digest = package_digest(out)
+    control_before = package_digest(baseline_root)
+    try:
+        shutil.copytree(
+            baseline_root,
+            out,
+            symlinks=False,
+            ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo"),
+        )
+        copied_control = package_digest(out)
+        control_after = package_digest(baseline_root)
+        if not control_before == copied_control == control_after:
+            raise ValueError("baseline package moved during materialization")
+
+        (out / "main.py").rename(out / "baseline_main.py")
+        shutil.copyfile(ENTRY_SOURCE, out / "main.py")
+        shutil.copyfile(HELPER_SOURCE, out / "animal_headroom_harvest.py")
+        candidate_digest = package_digest(out)
+    except Exception:
+        if out.exists():
+            shutil.rmtree(out)
+        raise
+
     return {
         "schema": "titan-v5-animal-yield-cap-candidate/v1",
-        "control_package_sha256": control_digest,
+        "control_package_sha256": control_before,
         "candidate_package_sha256": candidate_digest,
         "parent_main_git_blob": EXPECTED_PARENT_MAIN_BLOB,
         "helper_git_blob": EXPECTED_HELPER_BLOB,
