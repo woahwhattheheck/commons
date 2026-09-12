@@ -29,8 +29,11 @@ def _calls_in_live_statement(stmt: ast.stmt, wanted: frozenset[str]) -> tuple[as
     * child statement bodies are never traversed here; the incumbent live/outcome
       iterator owns those control-flow decisions and will yield admitted children;
     * nested function/class bodies and lambda bodies are lexical-scope barriers;
-    * expression trees attached directly to the live statement are traversed,
-      including comprehension expressions, because they execute when evaluated.
+    * expression trees attached directly to the live statement are traversed;
+      eager comprehensions are visited normally, while generator expressions
+      expose only their outermost iterable at construction time. Their element,
+      filters, and later iterators are deferred until iteration and cannot prove
+      an E184 bridge edge merely because the generator object is constructed.
 
     Treating a nested def/class statement itself as a bridge source would let a
     dead lexical decoy certify `_v3_core -> _v3_stack`, `Policy.act ->
@@ -67,6 +70,15 @@ def _calls_in_live_statement(stmt: ast.stmt, wanted: frozenset[str]) -> tuple[as
             return
 
         def visit_Lambda(self, node: ast.Lambda) -> None:
+            return
+
+        def visit_GeneratorExp(self, node: ast.GeneratorExp) -> None:
+            # Python evaluates only the outermost iterable when constructing a
+            # generator expression. The element, filters, and later generator
+            # clauses are deferred until iteration, which this collector does
+            # not prove. Preserve calls in the eager outer iterable only.
+            if node.generators:
+                self.visit(node.generators[0].iter)
             return
 
         def visit_Call(self, node: ast.Call) -> None:
@@ -180,6 +192,34 @@ def f(xs):
     check(len(scope_pruned_calls(comprehension, "target", _flat_live)) == 1,
           "executed comprehension bridge call was pruned")
 
+    generator_element = _fixture_fn("""
+def f(xs):
+    return (target(x) for x in xs)
+""")
+    check(not scope_pruned_calls(generator_element, "target", _flat_live),
+          "deferred generator element forged bridge edge")
+
+    generator_filter = _fixture_fn("""
+def f(xs):
+    return (x for x in xs if target(x))
+""")
+    check(not scope_pruned_calls(generator_filter, "target", _flat_live),
+          "deferred generator filter forged bridge edge")
+
+    generator_later_iter = _fixture_fn("""
+def f(xs):
+    return (y for x in xs for y in target(x))
+""")
+    check(not scope_pruned_calls(generator_later_iter, "target", _flat_live),
+          "deferred later generator iterable forged bridge edge")
+
+    generator_outer_iter = _fixture_fn("""
+def f(xs):
+    return (x for x in target(xs))
+""")
+    check(len(scope_pruned_calls(generator_outer_iter, "target", _flat_live)) == 1,
+          "eager generator outer iterable bridge call was pruned")
+
     # Parent-edge selection must ignore nested decoys while retaining the direct edge.
     parent = _fixture_fn("""
 def f(x):
@@ -217,10 +257,10 @@ def f(x):
         check(not scope_pruned_calls(fn, callee, _flat_live),
               f"{caller}->{callee} nested-def poison false-passed")
 
-    if checks[0] != 12:
-        raise ScopeBridgeError(f"self-test vector count mismatch: {checks[0]} != 12")
+    if checks[0] != 16:
+        raise ScopeBridgeError(f"self-test vector count mismatch: {checks[0]} != 16")
 
 
 if __name__ == "__main__":
     self_test()
-    print("#12620 E184 SCOPE-PRUNED BRIDGE DONOR SELF-TEST OK (12 explicit checks)")
+    print("#12620 E184 SCOPE-PRUNED BRIDGE DONOR SELF-TEST OK (16 explicit checks)")
