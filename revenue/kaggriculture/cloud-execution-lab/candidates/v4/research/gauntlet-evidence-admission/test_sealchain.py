@@ -236,6 +236,13 @@ class SealchainTests(unittest.TestCase):
         with self.assertRaisesRegex(sc.SealError,'duplicate JSON key'):
             sc.loads_strict('{"a":1,"a":2}','x')
 
+    def test_spectrum_aggregate_preserves_large_exact_integer(self):
+        rows=[{'environment_seed':1,'opponent_artifact':'a.py','seat':0,'status':'DONE',
+               'rewards':[9007199254740993,0]}]
+        grouped=sc._aggregate_spectrum_results(type('C',(),{'_derived_outcome':staticmethod(lambda row,index:(0,row['rewards'][0],0,row['rewards'][0]))}), rows)
+        self.assertEqual(9007199254740993, grouped['rows'][0]['margin_sum'])
+        self.assertIs(type(grouped['rows'][0]['margin_sum']), int)
+
     def test_bool_seat_rejected_by_chainlock(self):
         rows=[json.loads(x) for x in self.quiet.read_text().splitlines()]; rows[0]['seat']=True; self.write_jsonl(self.quiet,rows)
         with self.assertRaisesRegex(sc.SealError,'CHAINLOCK rejected'): self.certify()
