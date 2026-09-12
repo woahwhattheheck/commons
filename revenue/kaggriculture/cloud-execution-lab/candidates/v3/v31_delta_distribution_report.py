@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 """Summarize paired TITAN evaluator cells without trusting headline averages.
 
-Input may be either:
-  * a list (or {"cells"|"results"|"games"|"matches": [...]}) of paired records
-    containing baseline and candidate scores, or
-  * {"baseline": [...], "candidate": [...]} with one row per arm.
-
-Each logical cell is keyed by opponent, seed, and seat. Competitive margin is
+Generic ``scores`` arrays are evaluator/seat ordered: ``[seat0, seat1]``.
+Explicit ``own``/``rival`` fields remain actor ordered. Each logical cell is
+keyed by opponent, seed, and the candidate/our seat. Competitive margin is
 always recomputed as (candidate_own - candidate_rival) -
 (baseline_own - baseline_rival). A supplied delta_m is diagnostic only.
 """
@@ -28,6 +25,7 @@ class DataError(ValueError):
 
 _MISSING = object()
 _EPS = 1e-9
+_SEAT_KEYS = ("candidate_seat", "seat", "our_seat")
 
 
 def _first(mapping: Mapping[str, Any], keys: Iterable[str], default: Any = _MISSING) -> Any:
@@ -56,6 +54,17 @@ def _seat(value: Any) -> int:
     return value
 
 
+def _resolved_seat(mapping: Mapping[str, Any], label: str = "record") -> int:
+    present = [(key, _seat(mapping[key])) for key in _SEAT_KEYS if key in mapping]
+    if not present:
+        raise DataError(f"{label} missing seat; expected one of: " + ", ".join(_SEAT_KEYS))
+    values = {value for _, value in present}
+    if len(values) != 1:
+        rendered = ", ".join(f"{key}={value}" for key, value in present)
+        raise DataError(f"{label} has contradictory seat aliases: {rendered}")
+    return present[0][1]
+
+
 def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
     opponent = _first(record, ("opponent", "opponent_name", "rival_name"))
     if not isinstance(opponent, str) or not opponent.strip():
@@ -63,29 +72,38 @@ def _cell_key(record: Mapping[str, Any]) -> tuple[str, str, int]:
     seed = _first(record, ("seed", "game_seed"))
     if isinstance(seed, bool) or not isinstance(seed, (int, str)):
         raise DataError("seed must be an integer or string")
-    return opponent.strip(), str(seed), _seat(_first(record, ("seat", "our_seat")))
+    return opponent.strip(), str(seed), _resolved_seat(record)
 
 
-def _pair_from_mapping(mapping: Mapping[str, Any], label: str) -> tuple[float, float]:
+def _score_sequence(value: Any, label: str) -> Sequence[Any]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes)) or len(value) != 2:
+        raise DataError(f"{label} must contain [seat0, seat1]")
+    return value
+
+
+def _seat_ordered_scores(scores: Any, seat: int, label: str) -> tuple[float, float]:
+    row = _score_sequence(scores, label)
+    seat0 = _number(row[0], f"{label}[0]")
+    seat1 = _number(row[1], f"{label}[1]")
+    return (seat0, seat1) if seat == 0 else (seat1, seat0)
+
+
+def _pair_from_mapping(mapping: Mapping[str, Any], label: str, seat: int) -> tuple[float, float]:
     scores = mapping.get("scores", _MISSING)
     if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{label}.scores must contain [own, rival]")
-        return _number(scores[0], f"{label}.scores[0]"), _number(scores[1], f"{label}.scores[1]")
+        return _seat_ordered_scores(scores, seat, f"{label}.scores")
     own = _first(mapping, ("own", "ours", "own_score", "our_score", "score"))
     rival = _first(mapping, ("rival", "rival_score", "opponent_score", "their_score"))
     return _number(own, f"{label}.own"), _number(rival, f"{label}.rival")
 
 
-def _arm_scores(record: Mapping[str, Any], arm: str) -> tuple[float, float]:
+def _arm_scores(record: Mapping[str, Any], arm: str, seat: int) -> tuple[float, float]:
     nested = record.get(arm, _MISSING)
     if isinstance(nested, Mapping):
-        return _pair_from_mapping(nested, arm)
+        return _pair_from_mapping(nested, arm, seat)
     scores = record.get(f"{arm}_scores", _MISSING)
     if scores is not _MISSING:
-        if not isinstance(scores, Sequence) or isinstance(scores, (str, bytes)) or len(scores) != 2:
-            raise DataError(f"{arm}_scores must contain [own, rival]")
-        return _number(scores[0], f"{arm}_scores[0]"), _number(scores[1], f"{arm}_scores[1]")
+        return _seat_ordered_scores(scores, seat, f"{arm}_scores")
     own = _first(record, (f"{arm}_own", f"{arm}_ours", f"{arm}_own_score", f"{arm}_our_score", f"{arm}_score"))
     rival = _first(record, (f"{arm}_rival", f"{arm}_rival_score", f"{arm}_opponent_score", f"{arm}_their_score"))
     return _number(own, f"{arm}_own"), _number(rival, f"{arm}_rival")
@@ -167,8 +185,8 @@ def _pair_separate_arms(document: Mapping[str, Any]) -> list[dict[str, Any]] | N
     for key in sorted(baseline_keys):
         base = indexed["baseline"][key]
         cand = indexed["candidate"][key]
-        bo, br = _pair_from_mapping(base, "baseline")
-        co, cr = _pair_from_mapping(cand, "candidate")
+        bo, br = _pair_from_mapping(base, "baseline", key[2])
+        co, cr = _pair_from_mapping(cand, "candidate", key[2])
         synthesized: dict[str, Any] = {
             "opponent": key[0], "seed": key[1], "seat": key[2],
             "baseline": {"own": bo, "rival": br},
@@ -236,8 +254,8 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         if key in seen:
             raise DataError(f"duplicate logical cell: {key}")
         seen.add(key)
-        baseline_own, baseline_rival = _arm_scores(record, "baseline")
-        candidate_own, candidate_rival = _arm_scores(record, "candidate")
+        baseline_own, baseline_rival = _arm_scores(record, "baseline", key[2])
+        candidate_own, candidate_rival = _arm_scores(record, "candidate", key[2])
         baseline_margin = baseline_own - baseline_rival
         candidate_margin = candidate_own - candidate_rival
         delta_m = candidate_margin - baseline_margin
@@ -294,7 +312,8 @@ def analyze(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             "unknown_count": len(unknown),
         }
     return {
-        "schema_version": 1,
+        "schema_version": 2,
+        "score_array_semantics": "seat_ordered_[seat0,seat1]",
         "cells": len(ordered),
         "delta_m": {
             "mean": statistics.fmean(deltas), "median": statistics.median(deltas),
