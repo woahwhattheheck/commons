@@ -1,0 +1,56 @@
+{
+  "schema": "titan-v4-composition/v1",
+  "mode": "fail_closed",
+  "canonical_branch": "main",
+  "canonical_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "purpose": "Order authenticated current-ABI transforms for the sole V4 workspace; never infer runtime promotion from custody.",
+  "components": [
+    {
+      "id": "fast-tape-clone-current-runtime",
+      "state": "compose",
+      "package": "repairs/performance/fast-tape-clone",
+      "entrypoints": [
+        "repairs/performance/fast-tape-clone/port_current_runtime.py"
+      ],
+      "transforms": [
+        {
+          "surface": "titan_runtime.py::TitanAgent.act:selected-action-checkpoint",
+          "input_identity": "git-blob:b952c9c228ecbde592bf3d2df01638677abb0d24",
+          "output_identity": "git-blob:2b2bd80e3fa76c61139bdbfeaa58dc8a8987339a"
+        }
+      ],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Current-ABI adapter is authenticated and component-tested, feature default-OFF; composable does not mean production-promoted."
+    },
+    {
+      "id": "d4-strawberry-timing",
+      "state": "blocked",
+      "reason": "Package manifest is HOLD_REACHABILITY_CENSUS_REQUIRED; stale legacy apply_v4 wiring is explicitly prohibited.",
+      "package": "research/d4-strawberry-timing",
+      "entrypoints": [
+        "research/d4-strawberry-timing/build_native_d4.py"
+      ],
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Blocked until literal-current-main reachability census and fresh exact-cell economic gate authorize recomposition."
+    }
+  ],
+  "discovery": {
+    "roots": [
+      "repairs",
+      "research"
+    ],
+    "patterns": [
+      "port_current_runtime.py",
+      "build_native_d4.py"
+    ],
+    "strict": true,
+    "ignore": []
+  }
+}
