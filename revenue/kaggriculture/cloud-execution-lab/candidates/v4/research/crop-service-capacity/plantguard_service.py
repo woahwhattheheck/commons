@@ -5,10 +5,11 @@ module adds the missing per-site service-sequence witness for Gemini/Antigravity
 PLANTGUARD without turning a clock cutoff into policy.
 
 A positive result means only that caller-supplied normalized projected unit rows
-contain a PLANT followed by WATER on every proposed site before the current EOD,
-and that the proposal does not exceed CROPSCALE's selected action-count ceiling.
-It does not prove movement, seed inventory, cash, tile legality, crop choice,
-future service, market execution, profitability, or runtime reachability.
+contain a PLANT followed by WATER on every proposed site before a reachable
+current EOD, and that the proposal does not exceed CROPSCALE's selected
+action-count ceiling. It does not prove movement, seed inventory, cash, tile
+legality, crop choice, future service, market execution, profitability, or
+runtime reachability.
 """
 from __future__ import annotations
 
@@ -17,6 +18,8 @@ from typing import Any, Mapping, Sequence
 import crop_service_capacity as C
 
 SCHEMA = "titan-v4-plantguard-service-proof/v1"
+DEFAULT_TURNS_PER_DAY = 24
+DEFAULT_EPISODE_STEPS = 720
 SAFE_SAME_SITE_SERVICE_OPS = frozenset({"FERTILIZE", "WATER"})
 
 
@@ -28,6 +31,20 @@ def _int(value: Any, label: str, *, minimum: int = 0) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
         raise PlantguardEvidenceError(f"{label}_must_be_int_ge_{minimum}")
     return value
+
+
+def _config_int(
+    configuration: Mapping[str, Any] | None,
+    key: str,
+    default: int,
+    *,
+    minimum: int = 1,
+) -> int:
+    if configuration is None:
+        return default
+    if not isinstance(configuration, Mapping):
+        raise PlantguardEvidenceError("configuration_must_be_mapping")
+    return _int(configuration.get(key, default), key, minimum=minimum)
 
 
 def _site(value: Any, label: str = "site") -> tuple[int, int]:
@@ -99,6 +116,20 @@ def _projected_rows(
     return normalized
 
 
+def _terminal_unproved(site_count: int, reason: str) -> dict[str, Any]:
+    return {
+        "schema": SCHEMA,
+        "verdict": "SERVICE_SEQUENCE_UNPROVED",
+        "proposed_site_count": site_count,
+        "proved_pair_count": 0,
+        "pairs": [],
+        "failures": [{"reason": reason}],
+        "research_only": True,
+        "decision_authority": False,
+        "runtime_mutation_authority": False,
+    }
+
+
 def prove_same_eod_establishment(
     observation: Mapping[str, Any],
     proposed_sites: Sequence[Sequence[int]],
@@ -115,10 +146,14 @@ def prove_same_eod_establishment(
     in that callback without pretending all same-hour actions are simultaneous.
 
     A positive witness also requires the projected same-site service history to
-    remain unambiguous through the rest of the current-day projection.  In
-    particular, WATER is not an early-return authorization: a later same-site
-    DIG/HARVEST/PLANT/BUILD (or any unmodelled same-site op) fails closed rather
-    than certifying a plant that may no longer exist at EOD.
+    remain unambiguous through the rest of the current-day projection. WATER is
+    not an early-return authorization: a later same-site DIG/HARVEST/PLANT/BUILD
+    (or any unmodelled same-site op) fails closed rather than certifying a plant
+    that may no longer exist at EOD.
+
+    The current EOD itself must be reachable inside the official episode
+    horizon. The interpreter's final executable callback is ``episodeSteps-2``;
+    nominal clock rows after that boundary cannot provide phantom WATER labor.
     """
     if not isinstance(no_future_hires, bool):
         raise PlantguardEvidenceError("no_future_hires_must_be_bool")
@@ -133,6 +168,25 @@ def prove_same_eod_establishment(
             "decision_authority": False,
             "runtime_mutation_authority": False,
         }
+
+    turns_per_day = _config_int(
+        configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY
+    )
+    episode_steps = _config_int(
+        configuration, "episodeSteps", DEFAULT_EPISODE_STEPS, minimum=2
+    )
+    hour = _int(observation.get("hour"), "observation_hour")
+    step = _int(observation.get("step"), "observation_step")
+    if hour >= turns_per_day:
+        raise PlantguardEvidenceError("observation_hour_out_of_day")
+    if hour != step % turns_per_day:
+        raise PlantguardEvidenceError("observation_hour_step_mismatch")
+    final_executable_step = episode_steps - 2
+    if step > final_executable_step:
+        raise PlantguardEvidenceError("observation_step_after_final_executable_callback")
+    eod_step = step + (turns_per_day - hour - 1)
+    if eod_step > final_executable_step:
+        return _terminal_unproved(len(sites), "eod_not_reachable_before_terminal")
 
     capacity = C.assess_proposed_expansion(
         observation,
@@ -152,7 +206,6 @@ def prove_same_eod_establishment(
             "runtime_mutation_authority": False,
         }
 
-    turns_per_day = capacity["envelope"]["turns_per_day"]
     rows = _projected_rows(observation, projected_rows, turns_per_day)
     pairs: list[dict[str, Any]] = []
     failures: list[dict[str, Any]] = []
@@ -229,7 +282,7 @@ def prove_same_eod_establishment(
         "limitations": [
             "service proof is not a route or movement proof",
             "service proof does not prove BUY_SEED, cash, crop choice, or tile legality",
-            "service proof ends at the current EOD and does not guarantee later WATER/HARVEST",
+            "service proof ends at a reachable current EOD and does not guarantee later WATER/HARVEST",
             "runtime admission requires a separately authenticated scheduler/LOOM consumer",
         ],
     }
