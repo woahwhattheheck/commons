@@ -11,9 +11,11 @@ work lives in ``proposal['variants'][route_id]['patches']`` and each harvested
 bundle lot binds the planted tile, plant step, and 1-based worker slot back to
 that program. Outer ``tiles`` and ``seed_units`` are metadata only. MELON
 alternatives are therefore admitted whole and unchanged only after every route
-variant authenticates the same executable MELON PLANT set. An oversized or
-malformed MELON alternative is dropped; inspecting one alternative never spends
-budget for another.
+variant authenticates the same executable MELON PLANT set and the producer's
+first-day BUY_LAND/BUY_SEED/HIRE append block. Any extra executable MELON PLANT
+not represented by a lot, or any mismatched producer seed purchase, fails
+closed. An oversized or malformed MELON alternative is dropped; inspecting one
+alternative never spends budget for another.
 
 The default cap remains 28 units as a deliberately conservative policy knob;
 it is *not* claimed to equal exact full-season town consumption. Official
@@ -166,14 +168,82 @@ def _worker_action(row: Any, worker: int) -> Any:
     return hands[worker - 1]
 
 
+def _is_semantic_melon_plant(action: Any) -> bool:
+    """Official unit dispatch is prefix based; extended PLANT rows still execute."""
+    return (
+        isinstance(action, list)
+        and len(action) >= 2
+        and action[0] == "PLANT"
+        and action[1] == "MELON"
+    )
+
+
+def _executable_melon_plant_identities(patches: Any) -> set[tuple[int, int]] | None:
+    """Return every patched MELON PLANT as ``(step, actor)``; actor 0 is farmer."""
+    if not isinstance(patches, dict):
+        return None
+    identities: set[tuple[int, int]] = set()
+    for step, row in patches.items():
+        if type(step) is not int or step < 0 or not isinstance(row, dict):
+            return None
+        farmer = row.get("farmer", ["PASS"])
+        hands = row.get("hands", [])
+        if not isinstance(hands, list):
+            return None
+        if _is_semantic_melon_plant(farmer):
+            identities.add((step, 0))
+        for actor, action in enumerate(hands, 1):
+            if _is_semantic_melon_plant(action):
+                identities.add((step, actor))
+    return identities
+
+
+def _producer_first_day_orders_ok(
+    patches: Any,
+    bundle: Any,
+    expected_seed_units: int,
+    workers: int,
+) -> bool:
+    """Bind FourthQuadrant's complete first-day appended market suffix.
+
+    ``bundle.land.slot`` is the length of the inherited market row before the
+    producer appends BUY_LAND, BUY_SEED, then exactly ``workers`` HIRE rows.
+    Comparing the whole suffix prevents an extra unbound seed/spend row from
+    hiding behind otherwise valid proposal metadata.
+    """
+    if not isinstance(patches, dict) or not isinstance(bundle, dict):
+        return False
+    land = bundle.get("land")
+    if not isinstance(land, dict):
+        return False
+    step = _plain_nonnegative_int(land.get("step"))
+    slot = _plain_nonnegative_int(land.get("slot"))
+    if step is None or slot is None:
+        return False
+    row = patches.get(step)
+    if not isinstance(row, dict):
+        return False
+    market = row.get("market")
+    if not isinstance(market, list) or slot > len(market):
+        return False
+    expected_suffix = [
+        ["BUY_LAND"],
+        ["BUY_SEED", "MELON", expected_seed_units],
+        *([[["HIRE"]][0]] * workers),
+    ]
+    return market[slot:] == expected_suffix
+
+
 def executable_melon_plants(proposal: Any) -> int | None:
     """Authenticate one canonical FourthQuadrant MELON alternative.
 
     Each bundle lot must bind a unique outer tile to the exact ``plant_step``
-    and 1-based worker slot whose patch action is ``PLANT MELON``. Every route
-    variant must cover the same outer tile set. This prevents shallow metadata
-    from understating executable work while avoiding unrelated incumbent route
-    actions.
+    and 1-based worker slot whose patch action is exactly ``PLANT MELON``. Every
+    route variant must cover the same outer tile set. In addition, the complete
+    patched executable MELON-PLANT identity set must equal the lot identity set,
+    so an extra farmer/hand PLANT cannot hide behind valid metadata. The
+    producer's full first-day market suffix is authenticated from the recorded
+    land coordinates.
     """
     if not isinstance(proposal, dict) or proposal.get("crop") != "MELON":
         return None
@@ -186,8 +256,13 @@ def executable_melon_plants(proposal: Any) -> int | None:
         return None
     expected = len(outer_tiles)
 
+    # Canonical FourthQuadrant MELON has exactly one planting cycle. Therefore
+    # its seed requirement is exactly one seed per selected tile.
     seed_units = _plain_nonnegative_int(proposal.get("seed_units"))
     if seed_units != expected:
+        return None
+    workers = _plain_nonnegative_int(proposal.get("workers"))
+    if workers is None or workers <= 0:
         return None
 
     variants = proposal.get("variants")
@@ -202,6 +277,8 @@ def executable_melon_plants(proposal: Any) -> int | None:
         bundle = variant.get("bundle")
         lots = bundle.get("lots") if isinstance(bundle, dict) else None
         if not isinstance(patches, dict) or not isinstance(lots, list):
+            return None
+        if not _producer_first_day_orders_ok(patches, bundle, seed_units, workers):
             return None
 
         melon_lots: list[tuple[tuple[int, int], int, int]] = []
@@ -222,6 +299,13 @@ def executable_melon_plants(proposal: Any) -> int | None:
             return None
         lot_tiles = [item[0] for item in melon_lots]
         if len(set(lot_tiles)) != expected or set(lot_tiles) != expected_tiles:
+            return None
+
+        lot_identities = [(item[1], item[2]) for item in melon_lots]
+        if len(set(lot_identities)) != expected:
+            return None
+        executable_identities = _executable_melon_plant_identities(patches)
+        if executable_identities is None or executable_identities != set(lot_identities):
             return None
 
     return expected

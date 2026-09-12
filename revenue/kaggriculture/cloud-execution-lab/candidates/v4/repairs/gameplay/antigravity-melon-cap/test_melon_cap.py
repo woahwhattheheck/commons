@@ -31,19 +31,27 @@ def base_observation():
     }
 
 
-def producer_proposal(tiles, route_ids=("r0", "r1"), start_step=300):
-    """Minimal faithful FourthQuadrant MELON proposal shape."""
+def producer_proposal(tiles, route_ids=("r0", "r1"), start_step=300, workers=2):
+    """Minimal producer-faithful FourthQuadrant MELON proposal shape."""
     tiles = [tuple(tile) for tile in tiles]
     variants = {}
     for route_index, route_id in enumerate(route_ids):
+        land_step = start_step + route_index * 100
         patches = {}
         lots = []
         for index, tile in enumerate(tiles):
-            step = start_step + route_index * 100 + index
-            worker = 1 + (index % 2)
+            step = land_step + index
+            worker = 1 + (index % workers)
             hands = [["PASS"] for _ in range(worker)]
             hands[worker - 1] = ["PLANT", "MELON"]
-            patches[step] = {"farmer": ["PASS"], "hands": hands, "market": []}
+            market = []
+            if step == land_step:
+                market = [
+                    ["BUY_LAND"],
+                    ["BUY_SEED", "MELON", len(tiles)],
+                    *([ ["HIRE"] ] * workers),
+                ]
+            patches[step] = {"farmer": ["PASS"], "hands": hands, "market": market}
             lots.append({
                 "tile": list(tile),
                 "crop": "MELON",
@@ -64,7 +72,7 @@ def producer_proposal(tiles, route_ids=("r0", "r1"), start_step=300):
                 "route_id": route_id,
                 "base_route_id": route_id,
                 "target_quadrant": "SE",
-                "land": {"step": start_step, "slot": 0},
+                "land": {"step": land_step, "slot": 0},
                 "rejoin_step": 600,
                 "lots": lots,
             },
@@ -72,7 +80,7 @@ def producer_proposal(tiles, route_ids=("r0", "r1"), start_step=300):
     return {
         "crop": "MELON",
         "tiles": tiles,
-        "workers": 2,
+        "workers": workers,
         "start": start_step,
         "variants": variants,
         "seed_units": len(tiles),
@@ -85,8 +93,9 @@ def executable_patch_plants(proposal):
     for variant in proposal["variants"].values():
         count = 0
         for row in variant["patches"].values():
-            for action in row.get("hands", []):
-                if action == ["PLANT", "MELON"]:
+            actions = [row.get("farmer", ["PASS"]), *row.get("hands", [])]
+            for action in actions:
+                if isinstance(action, list) and action[:2] == ["PLANT", "MELON"]:
                     count += 1
         counts.append(count)
     return counts
@@ -129,8 +138,51 @@ class MelonCapTests(unittest.TestCase):
         self.assertEqual(executable_patch_plants(proposal), [6, 6])
         proposal["tiles"] = proposal["tiles"][:4]
         proposal["seed_units"] = 4
+        for variant in proposal["variants"].values():
+            step = variant["bundle"]["land"]["step"]
+            variant["patches"][step]["market"][1][2] = 4
         self.assertIsNone(M.executable_melon_plants(proposal))
         self.assertEqual(M.filter_proposals([proposal], obs), [])
+
+    def test_hidden_fifth_farmer_plant_is_rejected(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6), (6, 6)])
+        variant = proposal["variants"]["r0"]
+        step = variant["bundle"]["lots"][0]["plant_step"]
+        variant["patches"][step]["farmer"] = ["PLANT", "MELON"]
+        self.assertEqual(executable_patch_plants(proposal)[0], 5)
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_hidden_extended_hand_plant_is_semantically_rejected(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6), (6, 6)])
+        variant = proposal["variants"]["r0"]
+        step = variant["bundle"]["lots"][0]["plant_step"]
+        variant["patches"][step]["hands"].append(["PLANT", "MELON", "extra"])
+        self.assertEqual(executable_patch_plants(proposal)[0], 5)
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_buy_seed_quantity_mismatch_is_rejected(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
+        for variant in proposal["variants"].values():
+            step = variant["bundle"]["land"]["step"]
+            variant["patches"][step]["market"][1] = ["BUY_SEED", "MELON", 999]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_seed_metadata_and_matching_overspend_cannot_smuggle(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
+        proposal["seed_units"] = 999
+        for variant in proposal["variants"].values():
+            step = variant["bundle"]["land"]["step"]
+            variant["patches"][step]["market"][1] = ["BUY_SEED", "MELON", 999]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_first_day_suffix_must_be_exact(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
+        variant = proposal["variants"]["r0"]
+        step = variant["bundle"]["land"]["step"]
+        variant["patches"][step]["market"].append(["BUY_SEED", "MELON", 1])
+        self.assertIsNone(M.executable_melon_plants(proposal))
 
     def test_outer_metadata_and_executable_lots_must_agree(self):
         proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
@@ -150,6 +202,13 @@ class MelonCapTests(unittest.TestCase):
         proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
         lot = proposal["variants"]["r1"]["bundle"]["lots"][0]
         lot["worker"] += 1
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_duplicate_lot_identity_is_rejected(self):
+        proposal = producer_proposal([(5, 5), (6, 5), (5, 6)])
+        lots = proposal["variants"]["r0"]["bundle"]["lots"]
+        lots[1]["plant_step"] = lots[0]["plant_step"]
+        lots[1]["worker"] = lots[0]["worker"]
         self.assertIsNone(M.executable_melon_plants(proposal))
 
     def test_every_route_variant_must_cover_same_tiles(self):
@@ -230,22 +289,45 @@ class MelonCapTests(unittest.TestCase):
         options = FQ.proposals(Mechanics(), obs, {"r": route}, "r",
                                {"maxMarketOrdersPerTurn": 10, "farmHandCostMult": 1})
         melons = [p for p in options if p.get("crop") == "MELON"]
+        self.assertTrue(any(len(p["tiles"]) == 3 for p in melons))
         self.assertTrue(any(len(p["tiles"]) == 4 for p in melons))
         self.assertTrue(any(len(p["tiles"]) == 5 for p in melons))
 
         filtered = M.filter_proposals(melons, obs)
         sizes = {len(p["tiles"]) for p in filtered}
+        self.assertIn(3, sizes)
         self.assertIn(4, sizes)
         self.assertNotIn(5, sizes)
         for proposal in filtered:
+            self.assertEqual(proposal["seed_units"], len(proposal["tiles"]))
             self.assertEqual(M.executable_melon_plants(proposal), len(proposal["tiles"]))
+            variant = proposal["variants"]["r"]
+            land = variant["bundle"]["land"]
+            source_market = variant["patches"][land["step"]]["market"]
+            self.assertEqual(source_market[land["slot"]], ["BUY_LAND"])
+            self.assertEqual(
+                source_market[land["slot"] + 1],
+                ["BUY_SEED", "MELON", proposal["seed_units"]],
+            )
+            self.assertEqual(
+                source_market[land["slot"] + 2:],
+                [["HIRE"]] * proposal["workers"],
+            )
+
             candidate, _bundle = FQ.economic_program(proposal, "r", route)
             executed = sum(
-                1 for row in candidate for action in row.get("hands", [])
-                if isinstance(action, (list, tuple)) and action[:2] == ["PLANT", "MELON"]
+                1
+                for row in candidate
+                for action in [row.get("farmer", ["PASS"]), *row.get("hands", [])]
+                if isinstance(action, list) and action[:2] == ["PLANT", "MELON"]
             )
             self.assertEqual(executed, len(proposal["tiles"]))
             self.assertLessEqual(executed, 4)
+            candidate_market = candidate[land["step"]]["market"]
+            self.assertEqual(
+                candidate_market[land["slot"] + 1],
+                ["BUY_SEED", "MELON", proposal["seed_units"]],
+            )
 
 
 if __name__ == "__main__":
