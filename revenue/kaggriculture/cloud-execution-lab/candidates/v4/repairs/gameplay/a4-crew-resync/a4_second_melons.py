@@ -287,7 +287,7 @@ def apply_a4(observation, action, *, enabled=False, count=DEFAULT_COUNT,
     Returns the (possibly modified) action. With enabled=False the input action
     object is returned untouched.
     """
-    if not enabled:
+    if enabled is not True:
         return action
     REPORT["enabled"] = True
     count = max(0, int(count))
