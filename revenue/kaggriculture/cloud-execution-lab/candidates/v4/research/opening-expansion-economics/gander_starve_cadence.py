@@ -38,6 +38,7 @@ SEASON_DAYS = 30
 FIRST_SERVICE_DAY = 1
 LAST_SERVICE_DAY = 29
 INITIAL_WHEAT = 1000
+POST_HIRE_UNIT_SLOTS = 23
 
 
 class GanderStarveError(RuntimeError):
@@ -122,7 +123,7 @@ def worker_route(
 
 
 def _canonical_sources() -> tuple[ModuleType, ModuleType]:
-    # Authenticate helper bytes before import/exec.  These helpers are part of
+    # Authenticate helper bytes before import/exec. These helpers are part of
     # the proof surface, not merely references to semantic constants.
     gander_blob = _git_blob(GANDER_PATH)
     starve_blob = _git_blob(STARVE_PATH)
@@ -158,6 +159,8 @@ def _route_contract(gander: ModuleType) -> dict[str, Any]:
     feed_hand = worker_route(start=(5, 4), sites=hand_sites, feed=True, harvest=False)
     skip_main = worker_route(start=(4, 4), sites=main_sites, feed=False, harvest=True)
     skip_hand = worker_route(start=(5, 4), sites=hand_sites, feed=False, harvest=True)
+    full_main = worker_route(start=(4, 4), sites=main_sites, feed=True, harvest=True)
+    full_hand = worker_route(start=(5, 4), sites=hand_sites, feed=True, harvest=True)
 
     authored = gander.day1_keepalive_schedule()
     authored_counts = {
@@ -173,8 +176,10 @@ def _route_contract(gander: ModuleType) -> dict[str, Any]:
         raise GanderStarveError(f"GANDER service contract drift: {authored_counts}")
     if max((action.step for action in authored), default=0) > 45:
         raise GanderStarveError("GANDER day-1 route no longer fits")
-    if max(len(feed_main), len(feed_hand), len(skip_main), len(skip_hand)) > 23:
+    if max(len(feed_main), len(feed_hand), len(skip_main), len(skip_hand)) > POST_HIRE_UNIT_SLOTS:
         raise GanderStarveError("composed route exceeds post-HIRE daily unit window")
+    if max(len(full_main), len(full_hand)) <= POST_HIRE_UNIT_SLOTS:
+        raise GanderStarveError("all-nine FEED+FERT+HARVEST unexpectedly fits two-worker window")
 
     return {
         "main_sites": main_sites,
@@ -183,7 +188,14 @@ def _route_contract(gander: ModuleType) -> dict[str, Any]:
         "feed_hand": feed_hand,
         "skip_main": skip_main,
         "skip_hand": skip_hand,
+        "full_main": full_main,
+        "full_hand": full_hand,
         "authored_counts": authored_counts,
+        "route_lengths": {
+            "feed_fert": [len(feed_main), len(feed_hand)],
+            "skip_feed_fert_harvest": [len(skip_main), len(skip_hand)],
+            "feed_fert_harvest": [len(full_main), len(full_hand)],
+        },
     }
 
 
@@ -196,7 +208,7 @@ def _inventory_total(private: Any, item: str) -> int:
 def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     """Execute the exact interpreter from the canonical post-EOD0 GANDER state.
 
-    ``feed_days=None`` selects the safe odd-day cadence 1,3,...,29.  Supplying a
+    ``feed_days=None`` selects the safe odd-day cadence 1,3,...,29. Supplying a
     set is primarily for predecessor/boundary tests; no automatic repair occurs.
     """
     gander, starve = _canonical_sources()
@@ -250,7 +262,7 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
             start=(5, 4), sites=contract["hand_sites"], feed=feed, harvest=harvest
         )
         max_route_actions = max(max_route_actions, len(main_route), len(hand_route))
-        if max_route_actions > 23:
+        if max_route_actions > POST_HIRE_UNIT_SLOTS:
             raise GanderStarveError("daily route exceeds post-HIRE action window")
 
         counts["hire_orders"] += 1
@@ -308,7 +320,7 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
 
     full_daily_feed_units = (LAST_SERVICE_DAY - FIRST_SERVICE_DAY + 1) * GOOSE_COUNT
     return {
-        "schema": "titan.v4.gander-starve-composite/v1",
+        "schema": "titan.v4.gander-starve-composite/v2",
         "engine_git_blob": PINNED_ENGINE_GIT_BLOB,
         "engine_sha256": _sha256(ENGINE_PATH),
         "days": [FIRST_SERVICE_DAY, LAST_SERVICE_DAY],
@@ -337,6 +349,12 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
             "starve_helper_git_blob": _git_blob(STARVE_PATH),
             "gander_day1_service_counts": contract["authored_counts"],
             "starve_engine_git_blob": getattr(starve, "ENGINE_GIT_BLOB"),
+            "post_hire_unit_slots": POST_HIRE_UNIT_SLOTS,
+            "route_lengths": contract["route_lengths"],
+            "all_nine_feed_fert_harvest_fits_two_workers": (
+                max(contract["route_lengths"]["feed_fert_harvest"])
+                <= POST_HIRE_UNIT_SLOTS
+            ),
             "care_used": False,
             "economics_claim": False,
             "runtime_change": False,
@@ -356,7 +374,7 @@ def build_report() -> dict[str, Any]:
     if unsafe["escaped_day"] != 1:
         raise GanderStarveError("day-1 mandatory-feed boundary disappeared")
     return {
-        "schema": "titan.v4.gander-starve-report/v1",
+        "schema": "titan.v4.gander-starve-report/v2",
         "safe_composite": safe,
         "mandatory_day1_feed_predecessor": {
             "escaped_day": unsafe["escaped_day"],
@@ -366,6 +384,11 @@ def build_report() -> dict[str, Any]:
             "mechanism": (
                 "after mandatory day-1 feed, alternate feed/skip; on mature skip "
                 "days replace FEED with HARVEST while retaining daily fertilizer collection"
+            ),
+            "capacity_theorem": (
+                "canonical two-worker all-nine FEED+FERT+HARVEST requires 25 actions "
+                "per worker and exceeds the 23 post-HIRE slots; skip-feed FERT+HARVEST "
+                "uses 19/20 and fits"
             ),
             "wheat_savings_are_units_not_cash": True,
             "care_value_modeled": False,
