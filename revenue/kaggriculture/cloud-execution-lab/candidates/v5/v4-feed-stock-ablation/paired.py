@@ -4,11 +4,12 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
+import hashlib
 import json
 import math
 import os
 from pathlib import Path
+import shutil
 import statistics
 import sys
 import tempfile
@@ -31,7 +32,7 @@ from feed_stock_ablation import (
 
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
-SCHEMA = "astra.v5.v4-feed-stock-ablation.v1"
+SCHEMA = "astra.v5.v4-feed-stock-ablation.v2"
 ARMS = ("control", "feed_stock_off")
 
 
@@ -54,14 +55,30 @@ def load_captured(raw: bytes, origin: Path, name: str):
     return module
 
 
-def load_path(path: Path, name: str):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ImportError(str(path))
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
+def capture_sha256(path: Path, expected: str) -> bytes:
+    """Capture one ordinary snapshot member once and authenticate captured bytes."""
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"authenticated snapshot member must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
+    if actual != expected:
+        raise ValueError(f"snapshot member SHA256 mismatch; expected {expected}, got {actual}")
+    return raw
+
+
+def write_private_runtime_bytes(raw: bytes, path: Path, expected: str) -> Path:
+    """Write already-authenticated bytes into a private runtime-only location."""
+    if type(raw) is not bytes or hashlib.sha256(raw).hexdigest() != expected:
+        raise ValueError("private runtime bytes do not match authenticated SHA256")
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() or path.is_symlink():
+        raise FileExistsError(path)
+    path.write_bytes(raw)
+    if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+        raise ValueError("private runtime publication changed authenticated bytes")
+    return path
 
 
 def write_json(path: Path, value) -> None:
@@ -149,21 +166,49 @@ def main() -> int:
     if getattr(helper, "BASELINE_SHA256", None) != BASELINE_SHA256:
         raise ValueError("helper baseline authority disagrees with this experiment")
 
-    with tempfile.TemporaryDirectory(prefix="feed-stock-snapshot-", dir=output_parent) as temp:
-        staged = Path(temp) / "kg"
-        harness = helper.snapshot_harness(root, staged, opponents)
-        output.mkdir(parents=False, exist_ok=False)
-        snapshot_root = output / ".harness-snapshot"
-        os.replace(staged, snapshot_root)
+    # Keep the authenticated execution tree private for the complete prep+panel
+    # lifetime. Caller-visible evidence is only a copy and is never imported.
+    private_runtime = tempfile.TemporaryDirectory(
+        prefix="feed-stock-private-runtime-", dir=output_parent
+    )
+    private_root = Path(private_runtime.name)
+    runtime_snapshot = private_root / "kg"
+    harness = helper.snapshot_harness(root, runtime_snapshot, opponents)
 
-    evaluator_path = snapshot_root / helper.EVALUATOR
-    loader = snapshot_root / "20260907-offline-agent/evaluate.py"
-    evaluator = load_path(evaluator_path, "feed_stock_evaluator")
-    pack = load_path(snapshot_root / "cloud-pack/pack.py", "feed_stock_pack")
-    bridge = load_path(
-        snapshot_root / helper.BANK / "reference_policies.py", "feed_stock_reference_bank"
+    evaluator_rel = helper.EVALUATOR
+    pack_rel = "cloud-pack/pack.py"
+    bridge_rel = helper.BANK + "/reference_policies.py"
+    loader_rel = "20260907-offline-agent/evaluate.py"
+    evaluator_raw = capture_sha256(
+        runtime_snapshot / evaluator_rel,
+        harness["repository_files"][evaluator_rel]["sha256"],
+    )
+    pack_raw = capture_sha256(
+        runtime_snapshot / pack_rel,
+        harness["repository_files"][pack_rel]["sha256"],
+    )
+    bridge_raw = capture_sha256(
+        runtime_snapshot / bridge_rel,
+        harness["repository_files"][bridge_rel]["sha256"],
+    )
+    loader_expected = harness["repository_files"][loader_rel]["sha256"]
+    loader_raw = capture_sha256(runtime_snapshot / loader_rel, loader_expected)
+    loader = write_private_runtime_bytes(
+        loader_raw, private_root / "candidate-loader" / "evaluate.py", loader_expected
+    )
+
+    evaluator = load_captured(
+        evaluator_raw, runtime_snapshot / evaluator_rel, "feed_stock_evaluator"
+    )
+    pack = load_captured(pack_raw, runtime_snapshot / pack_rel, "feed_stock_pack")
+    bridge = load_captured(
+        bridge_raw, runtime_snapshot / bridge_rel, "feed_stock_reference_bank"
     )
     engine_hashes = evaluator.verify_sources(engine_dir)
+
+    output.mkdir(parents=False, exist_ok=False)
+    snapshot_root = output / ".harness-snapshot"
+    shutil.copytree(runtime_snapshot, snapshot_root)
 
     runtime = {}
     opponent_receipts = {}
@@ -173,13 +218,13 @@ def main() -> int:
         helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
     for opponent in opponents:
         runtime[opponent] = output / "opponents" / opponent
-        receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
+        receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
         if (receipt.get("bridge_sha256") != expected_bridge
                 or receipt.get("source_registry_sha256") != expected_registry
                 or receipt.get("support_files") != harness["opponent_support_sha256"]):
             raise ValueError(f"opponent escaped authenticated harness: {opponent}")
-        if Path(receipt.get("support_root", "")).resolve(strict=True) != snapshot_root:
-            raise ValueError(f"opponent did not bind snapshot root: {opponent}")
+        if Path(receipt.get("support_root", "")).resolve(strict=True) != runtime_snapshot:
+            raise ValueError(f"opponent did not bind private runtime snapshot: {opponent}")
         opponent_receipts[opponent] = receipt
 
     identities = {
@@ -202,6 +247,14 @@ def main() -> int:
         "helper_git_blob": HELPER_GIT_BLOB,
         "helper_sha256": sha256_bytes(helper_raw),
         "helper_execution": "single-read authenticated captured bytes",
+        "harness_execution": {
+            "mode": "captured core modules + private authenticated runtime snapshot",
+            "evaluator_sha256": hashlib.sha256(evaluator_raw).hexdigest(),
+            "pack_sha256": hashlib.sha256(pack_raw).hexdigest(),
+            "bridge_sha256": hashlib.sha256(bridge_raw).hexdigest(),
+            "loader_sha256": hashlib.sha256(loader_raw).hexdigest(),
+            "public_snapshot": ".harness-snapshot (evidence only; never executed)",
+        },
         "harness": harness,
         "engine": engine_hashes,
         "opponent_receipts": opponent_receipts,
@@ -220,10 +273,12 @@ def main() -> int:
             "that captured buffer. The treatment is fail-closed on the exact V4 runtime Git "
             "blob and replaces only TitanAgent._feed_stock_selected with `return selected`; "
             "operating_stock.py and all other archive members remain byte-identical. The "
-            "authenticated existing evaluator/opponent harness executes from a private snapshot. "
-            "Candidate returned actions are observed by a temporary in-process wrapper around "
-            "the evaluator's Actor.act and the original method is restored after each game; "
-            "agent/evaluator/engine bytes are not modified."
+            "authenticated existing evaluator/opponent harness executes from captured core "
+            "module bytes plus a private authenticated runtime snapshot retained for the full "
+            "panel; the caller-visible .harness-snapshot is evidence only and is never an "
+            "execution origin. Candidate returned actions are observed by a temporary "
+            "in-process wrapper around the evaluator's Actor.act and the original method is "
+            "restored after each game; agent/evaluator/engine bytes are not modified."
         ),
     }
     write_json(output / "run.json", run)
@@ -317,7 +372,9 @@ def main() -> int:
     summary = summarize(cells)
     write_json(output / "report.json", {"run": run, "summary": summary, "cells": cells})
     print("SUMMARY " + json.dumps(summary, allow_nan=False), flush=True)
-    return int(any(cell["status"] != "complete_pair" for cell in cells))
+    rc = int(any(cell["status"] != "complete_pair" for cell in cells))
+    private_runtime.cleanup()
+    return rc
 
 
 if __name__ == "__main__":
