@@ -31,7 +31,7 @@ Focused source contracts cover:
 - missing/duplicate transform seams fail closed;
 - transform changes only the vendored Arlene member.
 
-Local author gate: Python 3.13, `7/7` normal and `7/7` under `python -O -B`, plus `py_compile`.
+Local author gate: Python 3.13, `10/10` normal and `10/10` under `python -O -B`, plus `py_compile`. The publisher reserves archive+receipt create-exclusively as one owned pair, rejects path aliasing, fsyncs both payloads, and rolls back its owned paths on publication failure.
 
 ## Hold
 
