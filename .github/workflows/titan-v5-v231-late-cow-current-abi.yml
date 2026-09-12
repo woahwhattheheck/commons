@@ -39,13 +39,17 @@ jobs:
           set -euo pipefail
           python -m py_compile \
             v231_late_current.py \
+            v231_late_current_safe.py \
             test_v231_late_current.py \
+            test_v231_late_retry_safe.py \
             test_v231_retry_boundary.py
           python -B -m unittest -v \
             test_v231_late_current.py \
+            test_v231_late_retry_safe.py \
             test_v231_retry_boundary.py
           python -O -B -m unittest -v \
             test_v231_late_current.py \
+            test_v231_late_retry_safe.py \
             test_v231_retry_boundary.py
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           test -z "$(git status --porcelain)"
