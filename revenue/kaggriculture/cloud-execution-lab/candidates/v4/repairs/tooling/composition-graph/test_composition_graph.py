@@ -282,8 +282,45 @@ class CompositionGraphTests(unittest.TestCase):
             "repairs/gameplay/e13-future-sale-solvency/port_current_runtime.py",
             owned,
         )
+        self.assertIn(
+            "repairs/gameplay/defensive-guard/r04_defensive_guards.py",
+            owned,
+        )
+        self.assertNotIn(
+            "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py",
+            owned,
+        )
         self.assertTrue(
             set(cg.REQUIRED_DISCOVERY_PATTERNS).issubset(set(manifest["discovery"]["patterns"]))
+        )
+
+    def test_required_discovery_pins_canonical_defensive_guard_not_superseded_mirror(self):
+        canonical = "repairs/gameplay/defensive-guard/r04_defensive_guards.py"
+        superseded = "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py"
+        self.assertIn(canonical, cg.REQUIRED_DISCOVERY_PATTERNS)
+        self.assertNotIn(superseded, cg.REQUIRED_DISCOVERY_PATTERNS)
+        manifest = json.loads((V4 / "COMPOSITION.json").read_text(encoding="utf-8"))
+        self.assertIn(canonical, manifest["discovery"]["patterns"])
+        self.assertNotIn(superseded, manifest["discovery"]["patterns"])
+        result = cg.validate_manifest(manifest, V4)
+        self.assertTrue(result["ok"], result)
+        self.assertIn("r04-defensive-guards", result["blocked"])
+
+    def test_live_dropping_canonical_defensive_guard_pattern_fails_closed(self):
+        canonical = "repairs/gameplay/defensive-guard/r04_defensive_guards.py"
+        manifest = json.loads((V4 / "COMPOSITION.json").read_text(encoding="utf-8"))
+        patterns = list(manifest["discovery"]["patterns"])
+        patterns.remove(canonical)
+        manifest["discovery"]["patterns"] = patterns
+        result = cg.validate_manifest(manifest, V4)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(
+            any(
+                item.get("code") == "missing_required_discovery_pattern"
+                and item.get("pattern") == canonical
+                for item in result["errors"]
+            ),
+            result,
         )
 
     def test_live_dropping_e13_registration_fails_unregistered_entrypoint(self):
@@ -317,6 +354,10 @@ class CompositionGraphTests(unittest.TestCase):
         result = cg.validate_manifest(manifest, V4)
         self.assertFalse(result["ok"], result)
         self.assertIn(
+            "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py",
+            result["unregistered"],
+        )
+        self.assertNotIn(
             "repairs/gameplay/defensive-guard/r04_defensive_guards.py",
             result["unregistered"],
         )
