@@ -8,6 +8,7 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/test_cobuy_719_collision_atlas.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/cobuy_opening_collision.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/COBUY-CURRENT-NATIVE-OPENING.json'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
 
 permissions:
   contents: read
