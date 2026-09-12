@@ -21,14 +21,14 @@ The bridge:
   and checks every SHA against `manifest.files`.
 - Decodes the candidate tar through the exact SHA-pinned `build_delivery.members`
   parser used by the canonical route builder (`build_delivery.py` SHA256
-  `29b9584e...`). That parser authenticates the archive SHA and rejects
+  `8f578d09...`). That parser authenticates the archive SHA and rejects
   non-files, duplicate/noncanonical paths, traversal and backslashes. The bridge
   then requires the archive member SHA map to equal `manifest.files` **and** the
   decoded archive bytes to equal the captured executable root byte-for-byte.
   An archive-A/root-B pair therefore cannot authorize a row.
 - Publishes those authenticated captured bytes into a private snapshot and
   executes that snapshot through the pinned Kaggle file-agent contract
-  `cloud-pack/official.py` (SHA256 `65fe4058...`). This prevents a row from being
+  `cloud-pack/official.py` (SHA256 `83e53481...`). This prevents a row from being
   mislabeled with one plan manifest while the evaluator actually executes a
   different extracted candidate tree.
 - Imports the pinned evaluator unchanged and calls its original `play()` exactly
@@ -46,7 +46,7 @@ The bridge:
   after the game, runs the produced row through `p04_route_ranker.normalize_row()`,
   and SHA256-binds its canonical public snapshot.
 - Publishes the JSONL row and sidecar receipt through the ONE merged V5 shared
-  `selective-carrot/publication_custody.py` primitive (SHA256 `547e733b...`).
+  `selective-carrot/publication_custody.py` primitive (SHA256 `d1594489...`).
   Final paths are create-exclusive, all are reserved before payload writes,
   success re-authenticates pathname/payload identity, and rollback only removes
   this invocation's still-owned finals while reservation FDs remain live.
