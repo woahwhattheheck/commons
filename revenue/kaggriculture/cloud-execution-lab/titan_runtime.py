@@ -3,6 +3,7 @@
 from copy import deepcopy
 from dataclasses import dataclass
 import importlib.util
+import math
 from pathlib import Path
 import time
 
@@ -73,6 +74,24 @@ class Features:
     early_capital: bool = False
 
     def __post_init__(self):
+        bool_fields = (
+            'seed', 'funding', 'redundant_hire', 'terminal_route', 'committed',
+            'terminal_history', 'spatial_pathing', 'spatial_tempo',
+            'fourth_quadrant', 'market_pressure', 'committed_seed_retry',
+            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',
+        )
+        for name in bool_fields:
+            if type(getattr(self, name)) is not bool:
+                raise TypeError(f'{name} must be an exact bool')
+        for name in ('budget_seconds', 'reserve_seconds'):
+            value = getattr(self, name)
+            if (isinstance(value, bool) or not isinstance(value, (int, float))
+                    or not math.isfinite(float(value))):
+                raise TypeError(f'{name} must be a finite real number, not bool')
+        if self.history_hypotheses is not None and not isinstance(self.history_hypotheses, dict):
+            raise TypeError('history_hypotheses must be dict or None')
+        if not isinstance(self.terminal_tie_break, str):
+            raise TypeError('terminal_tie_break must be a string')
         if self.consumer not in ('frozen', 'ordered', 'parent'):
             raise ValueError('consumer must be frozen, ordered or parent')
         if self.terminal_route and self.consumer != 'frozen':
