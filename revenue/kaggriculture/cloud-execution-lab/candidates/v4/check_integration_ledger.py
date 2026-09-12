@@ -180,7 +180,11 @@ def validate(root: Path = HERE) -> list[str]:
         if not isinstance(custody_path, str) or not custody_path.strip():
             errors.append(f"custody lane {lane!r} lacks custody_path")
             continue
-        custody_path = custody_path.strip()
+        if custody_path != custody_path.strip():
+            errors.append(
+                f"custody lane {lane!r} custody_path must not have leading/trailing whitespace"
+            )
+            continue
         try:
             path = _resolve_within_root(
                 root,
