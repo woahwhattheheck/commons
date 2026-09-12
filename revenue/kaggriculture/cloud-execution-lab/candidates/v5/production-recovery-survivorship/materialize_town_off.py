@@ -143,6 +143,60 @@ def receipt_for(baseline: dict[str, bytes], treatment: dict[str, bytes], packed:
     }
 
 
+def _unlink_if_owned(path: Path, identity: tuple[int, int] | None) -> None:
+    if identity is None:
+        return
+    try:
+        stat = os.lstat(path)
+    except FileNotFoundError:
+        return
+    if (stat.st_dev, stat.st_ino) == identity:
+        os.unlink(path)
+
+
+def _publish_pair(out_path: Path, packed: bytes, receipt_path: Path, receipt: dict) -> None:
+    """Reserve both create-only destinations before publishing either payload."""
+    out_path = Path(out_path)
+    receipt_path = Path(receipt_path)
+    if out_path == receipt_path:
+        raise ValueError("Treatment and receipt paths must be different")
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    out_fd = receipt_fd = None
+    out_identity = receipt_identity = None
+    try:
+        out_fd = os.open(out_path, flags, 0o666)
+        out_stat = os.fstat(out_fd)
+        out_identity = (out_stat.st_dev, out_stat.st_ino)
+
+        receipt_fd = os.open(receipt_path, flags, 0o666)
+        receipt_stat = os.fstat(receipt_fd)
+        receipt_identity = (receipt_stat.st_dev, receipt_stat.st_ino)
+
+        with os.fdopen(out_fd, "wb") as stream:
+            out_fd = None
+            stream.write(packed)
+            stream.flush()
+            os.fsync(stream.fileno())
+
+        with os.fdopen(receipt_fd, "w", encoding="utf-8") as stream:
+            receipt_fd = None
+            json.dump(receipt, stream, indent=2, sort_keys=True)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+    except BaseException:
+        if out_fd is not None:
+            os.close(out_fd)
+        if receipt_fd is not None:
+            os.close(receipt_fd)
+        _unlink_if_owned(out_path, out_identity)
+        _unlink_if_owned(receipt_path, receipt_identity)
+        raise
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", type=Path, required=True)
@@ -160,17 +214,10 @@ def main() -> None:
     packed = archive_bytes(treatment)
     receipt = receipt_for(baseline, treatment, packed)
 
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.receipt.parent.mkdir(parents=True, exist_ok=True)
-    with args.out.open("xb") as stream:
-        stream.write(packed)
-        stream.flush()
-        os.fsync(stream.fileno())
-    with args.receipt.open("x", encoding="utf-8") as stream:
-        json.dump(receipt, stream, indent=2, sort_keys=True)
-        stream.write("\n")
-        stream.flush()
-        os.fsync(stream.fileno())
+    try:
+        _publish_pair(args.out, packed, args.receipt, receipt)
+    except FileExistsError:
+        parser.error("Use fresh --out and --receipt paths")
 
     print(json.dumps({
         "baseline_archive_sha256": BASELINE_ARCHIVE_SHA256,

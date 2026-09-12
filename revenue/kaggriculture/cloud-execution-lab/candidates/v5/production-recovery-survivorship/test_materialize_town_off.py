@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import sys
 import tarfile
+import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -96,6 +97,26 @@ class TownSurvivorshipTest(unittest.TestCase):
         payload = m.archive_bytes(self.baseline())
         with self.assertRaisesRegex(ValueError, "Archive identity mismatch"):
             m.parse_archive_bytes(payload, "0" * 64)
+
+    def test_pair_publication_rolls_back_first_reservation_if_receipt_is_taken(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / "town-off.tar.gz"
+            receipt = Path(temp) / "town-off.json"
+            receipt.write_bytes(b"sentinel")
+            with self.assertRaises(FileExistsError):
+                m._publish_pair(out, b"candidate", receipt, {"schema": "test"})
+            self.assertFalse(out.exists())
+            self.assertEqual(receipt.read_bytes(), b"sentinel")
+
+    def test_pair_publication_writes_both_reserved_outputs(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / "town-off.tar.gz"
+            receipt = Path(temp) / "town-off.json"
+            payload = b"candidate"
+            document = {"schema": "test", "archive_sha256": m.digest(payload)}
+            m._publish_pair(out, payload, receipt, document)
+            self.assertEqual(out.read_bytes(), payload)
+            self.assertEqual(json.loads(receipt.read_text()), document)
 
 
 if __name__ == "__main__":
