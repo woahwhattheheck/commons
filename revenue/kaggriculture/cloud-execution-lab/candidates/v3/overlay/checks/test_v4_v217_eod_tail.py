@@ -32,6 +32,11 @@ class _StructConfig:
             setattr(self, key, value)
 
 
+class _ExplodingConfig:
+    def __getattr__(self, _name):
+        raise RuntimeError("poison config access")
+
+
 class _Policy:
     def __init__(self, tape):
         self.tapes = [tape]
@@ -157,6 +162,30 @@ class V217EodTail(unittest.TestCase):
         bad = dict(CONFIG)
         bad["turnsPerDay"] = True
         self.assertIsNone(_plan(target=(7, 4), config=bad))
+
+    def test_hostile_configuration_access_fails_closed_to_exact_roundtrip(self):
+        forward = [["EAST"], ["EAST"], ["EAST"], ["FEED"]]
+        roundtrip = forward + [["WEST"], ["WEST"], ["WEST"]]
+        commands, eod_tail = tail.apply_v217_eod_tail(
+            forward, roundtrip, targets=[(3, 4, 7)], step=500, end=504,
+            farmer_rows=[["PASS"]] * 4,
+            configuration=_ExplodingConfig(), enabled=True,
+        )
+        self.assertIs(commands, roundtrip)
+        self.assertIs(eod_tail, False)
+
+    def test_malformed_worker_wheat_fails_closed_in_additive_planner(self):
+        tape = _tape()
+        state = {"plan": 0, "v217_used": 0}
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        for bad_wheat in ("bad", True, 1.0, -1, None):
+            view = _View(target=(7, 4), wheat=1)
+            view.inventories = [{"WHEAT": bad_wheat}]
+            with self.subTest(wheat=bad_wheat):
+                self.assertIsNone(tail.plan_v217_eod_tail(
+                    view, state, 500, action, [], tape=tape,
+                    projected_wheat=8, configuration=CONFIG, enabled=True,
+                ))
 
     def test_struct_standard_configuration_is_live_compatible(self):
         r04.V217_EOD_TAIL = True
