@@ -11,6 +11,7 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest import mock
 
 
 HERE = Path(__file__).resolve().parent
@@ -135,7 +136,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         }
         self.promotion_raw = canon(self.promotion)
         cells = []
-        for opponent_id in ("opponent:test-a", "opponent:test-b"):
+        for opponent_id in econ.AUTHORIZED_OPPONENT_IDS:
             for seed in range(10, 14):
                 for seat in (0, 1):
                     cells.append(
@@ -205,7 +206,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         second = self.build()
         self.assertEqual(first, second)
         self.assertEqual(first["classification"], "PASS")
-        self.assertEqual("titan-v5-release-transaction/v3", first["schema"])
+        self.assertEqual("titan-v5-release-transaction/v4", first["schema"])
         self.assertRegex(first["transition_id"], r"^v5tx:[0-9a-f]{64}$")
         self.assertEqual(first["expected_old"]["archive_sha256"], self.old["sha256"])
         self.assertEqual(first["approved_new"]["archive_sha256"], self.new["sha256"])
@@ -217,14 +218,31 @@ class ReleaseTransactionTests(unittest.TestCase):
         self.assertEqual(first["economics"]["engine_id"], self.manifest["engine_id"])
         self.assertEqual(first["economics"]["opponent_pack_id"], self.manifest["opponent_pack_id"])
         self.assertEqual(first["economics"]["opponent_count"], 2)
+        self.assertEqual(first["economics"]["opponent_ids"], list(econ.AUTHORIZED_OPPONENT_IDS))
         self.assertEqual(
-            first["economics"]["opponent_ids"],
-            ["opponent:test-a", "opponent:test-b"],
+            first["economics"]["authorized_opponent_ids"],
+            list(econ.AUTHORIZED_OPPONENT_IDS),
+        )
+        self.assertEqual(
+            first["economics"]["opponent_registry_git_blob"],
+            econ.REFERENCE_POLICIES_GIT_BLOB,
         )
         self.assertEqual(first["economics"]["control_archive_sha256"], self.old["sha256"])
         self.assertEqual(first["economics"]["candidate_archive_sha256"], self.new["sha256"])
         self.assertEqual(first["economics"]["cell_count"], 16)
         self.assertEqual(first["economics"]["sum_margin_delta"], 160)
+        self.assertEqual(
+            first["economics"]["per_opponent"],
+            {
+                opponent: {
+                    "cell_count": 8,
+                    "control_margin_sum": 800,
+                    "candidate_margin_sum": 880,
+                    "sum_margin_delta": 80,
+                }
+                for opponent in econ.AUTHORIZED_OPPONENT_IDS
+            },
+        )
 
     def test_stale_live_pointer_fails_closed(self):
         with self.assertRaisesRegex(rt.TransactionError, "stale"):
@@ -287,6 +305,15 @@ class ReleaseTransactionTests(unittest.TestCase):
         with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
             self.build(economics_raw=canon(bad))
 
+    def test_positive_global_cannot_mask_authorized_opponent_regression(self):
+        bad = json.loads(json.dumps(self.economics))
+        for cell in bad["cells"]:
+            adjustment = -10 if cell["opponent_id"] == "apex_v7" else 20
+            cell["candidate_own"] = cell["control_own"] + adjustment
+            cell["candidate_rival"] = cell["control_rival"]
+        with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+            self.build(economics_raw=canon(bad))
+
     def test_cross_build_economics_cannot_release(self):
         bad = json.loads(json.dumps(self.economics))
         bad["candidate_id"] = "v5c:" + "c" * 64
@@ -300,7 +327,7 @@ class ReleaseTransactionTests(unittest.TestCase):
             for seat in (0, 1):
                 cells.append(
                     {
-                        "opponent_id": "opponent:test-a",
+                        "opponent_id": "apex_v7",
                         "seed": seed,
                         "seat": seat,
                         "control_own": 1000 + seed,
@@ -312,6 +339,19 @@ class ReleaseTransactionTests(unittest.TestCase):
         bad["cells"] = cells
         with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
             self.build(economics_raw=canon(bad))
+
+    def test_fake_or_recovered_extra_opponent_cannot_release(self):
+        for replacement in ("favorable_fake", "kaito_v43"):
+            with self.subTest(replacement=replacement):
+                bad = json.loads(json.dumps(self.economics))
+                for cell in bad["cells"]:
+                    if cell["opponent_id"] == "arlene_v14":
+                        cell["opponent_id"] = replacement
+                bad["cells"].sort(
+                    key=lambda cell: (cell["opponent_id"], cell["seed"], cell["seat"])
+                )
+                with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+                    self.build(economics_raw=canon(bad))
 
     def test_stale_execution_closure_cannot_release(self):
         mutations = [
@@ -335,23 +375,31 @@ class ReleaseTransactionTests(unittest.TestCase):
         self.assertNotEqual(first["economics"]["report_sha256"], second["economics"]["report_sha256"])
         self.assertNotEqual(first["transition_id"], second["transition_id"])
 
-    def test_opponent_membership_changes_transition_identity(self):
-        first = self.build()
-        changed = json.loads(json.dumps(self.economics))
-        for cell in changed["cells"]:
-            if cell["opponent_id"] == "opponent:test-b":
-                cell["opponent_id"] = "opponent:test-c"
-        changed["cells"].sort(
-            key=lambda cell: (cell["opponent_id"], cell["seed"], cell["seat"])
-        )
-        second = self.build(economics_raw=canon(changed))
-        self.assertEqual(second["economics"]["opponent_count"], 2)
-        self.assertEqual(
-            second["economics"]["opponent_ids"],
-            ["opponent:test-a", "opponent:test-c"],
-        )
-        self.assertNotEqual(first["economics"]["panel_sha256"], second["economics"]["panel_sha256"])
-        self.assertNotEqual(first["transition_id"], second["transition_id"])
+    def test_release_replay_rejects_forged_roster_receipt(self):
+        def forged_builder(*args, **kwargs):
+            receipt = econ.validate_report(*args, **kwargs)
+            receipt["authorized_opponent_ids"] = ["apex_v7", "favorable_fake"]
+            return receipt
+
+        with self.assertRaisesRegex(rt.TransactionError, "authorized_opponent_ids"):
+            self.build(economics_builder=forged_builder)
+
+    def test_release_replay_rejects_forged_registry_or_per_opponent_receipt(self):
+        def forged_registry(*args, **kwargs):
+            receipt = econ.validate_report(*args, **kwargs)
+            receipt["opponent_registry_git_blob"] = "0" * 40
+            return receipt
+
+        with self.assertRaisesRegex(rt.TransactionError, "registry blob"):
+            self.build(economics_builder=forged_registry)
+
+        def forged_per_opponent(*args, **kwargs):
+            receipt = econ.validate_report(*args, **kwargs)
+            receipt["per_opponent"]["apex_v7"]["sum_margin_delta"] = -1
+            return receipt
+
+        with self.assertRaisesRegex(rt.TransactionError, "margin arithmetic|margin regresses"):
+            self.build(economics_builder=forged_per_opponent)
 
     def test_trusted_base_gate_must_pass(self):
         with self.assertRaisesRegex(rt.TransactionError, "trusted-base gate"):
@@ -361,6 +409,50 @@ class ReleaseTransactionTests(unittest.TestCase):
         duplicate = b'{"path":"exports/titan-current.tar.gz","path":"x"}'
         with self.assertRaisesRegex(rt.TransactionError, "duplicate JSON key"):
             self.build(approved_new_pointer_raw=duplicate)
+
+    def test_load_module_executes_first_captured_bytes_after_path_swap(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "gate.py"
+            authenticated = b"VALUE = 'authenticated'\n"
+            path.write_bytes(authenticated)
+            original = rt.importlib.util.spec_from_file_location
+
+            def swap_after_read(name, location):
+                spec = original(name, location)
+                path.write_text("VALUE = 'poison'\n", encoding="utf-8")
+                return spec
+
+            with mock.patch.object(
+                rt.importlib.util,
+                "spec_from_file_location",
+                side_effect=swap_after_read,
+            ):
+                module, captured = rt._load_module(path, "_captured_swap_test")
+            self.assertEqual(authenticated, captured)
+            self.assertEqual("authenticated", module.VALUE)
+            self.assertEqual("VALUE = 'poison'\n", path.read_text(encoding="utf-8"))
+
+    def test_load_module_executes_captured_bytes_even_if_path_deleted_after_read(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "gate.py"
+            authenticated = b"VALUE = 'authenticated'\n"
+            path.write_bytes(authenticated)
+            original = rt.importlib.util.spec_from_file_location
+
+            def delete_after_read(name, location):
+                spec = original(name, location)
+                path.unlink()
+                return spec
+
+            with mock.patch.object(
+                rt.importlib.util,
+                "spec_from_file_location",
+                side_effect=delete_after_read,
+            ):
+                module, captured = rt._load_module(path, "_captured_delete_test")
+            self.assertEqual(authenticated, captured)
+            self.assertEqual("authenticated", module.VALUE)
+            self.assertFalse(path.exists())
 
     def test_commit_rechecks_expected_old_and_publishes_receipt_after_pointer(self):
         receipt = self.build()
