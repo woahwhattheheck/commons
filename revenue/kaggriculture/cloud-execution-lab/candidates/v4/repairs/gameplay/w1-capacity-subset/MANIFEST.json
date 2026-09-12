@@ -16,9 +16,9 @@
   },
   "postimage": {
     "file": "r04_dead_water_harvest.py",
-    "git_blob": "f56a453234edaf3e214d61247f761a7cd2e92bb9",
-    "bytes": 14551,
-    "sha256": "f107f33131a36170be30f290723ca5e26bf0a372a7d5e953f634187bc9d88a99"
+    "git_blob": "2be707cac86940728e75100447a354a10e2422a2",
+    "bytes": 15054,
+    "sha256": "b349e8f6a83e3d2ee87a117568b03c482c15cb80c6919d56806673a654f56406"
   },
   "regression": {
     "file": "test_v4_w1_capacity_subset.py",
@@ -28,21 +28,28 @@
   },
   "executed": {
     "environment": "cloud session CPython 3.13.5",
-    "donor_git_blob_identity": "PASS for helper and original tests",
-    "original_tests_on_donor": 27,
-    "predecessor_red_test_methods": 5,
-    "predecessor_failing_subcases": 6,
-    "normal_passed": 52,
-    "optimized_passed": 52,
-    "original_test_methods": 27,
-    "new_test_methods": 25,
+    "normal_passed": 40,
+    "optimized_passed": 40,
+    "existing_subset_test_methods": 25,
+    "new_raw_prefix_test_methods": 15,
+    "per_mode_official_interpreter_calls": 1350,
+    "per_mode_constructed_paired_worlds": 448,
+    "per_mode_suffix_equivalence_worlds": 448,
+    "per_mode_prefix_contract_cases": 112,
     "exhaustive_subset_oracle_comparisons": 17745,
     "returned_action_capacity_nonmutation_cases": 832,
+    "unchanged_predecessor_functions": 16,
+    "modified_predecessor_functions": [
+      "_market_preserves_capacity",
+      "apply_dead_water_harvest"
+    ],
+    "predecessor_failing_subcases_each_mode": 565,
+    "deliberate_mutations_killed_each_mode": 6,
+    "input_gate_negative_checks_each_mode": 4,
+    "legacy_27_test_donor_suite": "NOT_RERUN in raw-prefix continuation",
     "py_compile": "PASS",
-    "unchanged_original_functions": 15,
-    "modified_original_functions": ["apply_dead_water_harvest"],
-    "new_functions": ["_max_recovered_subset", "_capacity_subset"],
-    "server_created_source_and_test_blobs_match_executed_bytes": true
+    "source_and_test_server_blob_identity": "PASS",
+    "receipt": "RAW_PREFIX_VERIFICATION.json"
   },
   "scope": {
     "objective": "maximum whole harvested units within residual certified capacity; lexicographic actor-index tie",
@@ -56,5 +63,53 @@
     "kaggle_submitted": false,
     "new_full_games": 0,
     "price_optimality_or_economic_gain_claimed": false
+  },
+  "historical_subset_stage": {
+    "manifest_git_blob": "3124f885b149a9841c50e0dc211e464dd67d9a47",
+    "postimage": {
+      "file": "r04_dead_water_harvest.py",
+      "git_blob": "f56a453234edaf3e214d61247f761a7cd2e92bb9",
+      "bytes": 14551,
+      "sha256": "f107f33131a36170be30f290723ca5e26bf0a372a7d5e953f634187bc9d88a99"
+    },
+    "executed": {
+      "environment": "cloud session CPython 3.13.5",
+      "donor_git_blob_identity": "PASS for helper and original tests",
+      "original_tests_on_donor": 27,
+      "predecessor_red_test_methods": 5,
+      "predecessor_failing_subcases": 6,
+      "normal_passed": 52,
+      "optimized_passed": 52,
+      "original_test_methods": 27,
+      "new_test_methods": 25,
+      "exhaustive_subset_oracle_comparisons": 17745,
+      "returned_action_capacity_nonmutation_cases": 832,
+      "py_compile": "PASS",
+      "unchanged_original_functions": 15,
+      "modified_original_functions": [
+        "apply_dead_water_harvest"
+      ],
+      "new_functions": [
+        "_max_recovered_subset",
+        "_capacity_subset"
+      ],
+      "server_created_source_and_test_blobs_match_executed_bytes": true
+    }
+  },
+  "raw_prefix_regression": {
+    "file": "test_v4_w1_raw_prefix.py",
+    "git_blob": "3db76e9b254c08dd117ecee68d351291bd4e9826",
+    "bytes": 14503,
+    "sha256": "c34f9e16ba19f14355ed0af7add838cc414fdfe787b167b1a2780328542632f4"
+  },
+  "raw_prefix_contract": {
+    "owner": "ASTRA-W1-RAW-PREFIX",
+    "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789179308960689",
+    "same_source_file": true,
+    "cap": "raw market[:max(1, cap)], absent cap defaults10; explicit cap must be plain int",
+    "prefix_rules": "Original active malformed/inflow row vetoes retained; never filter raw slots",
+    "final_capacity_authority": "Unchanged _capacity_safe plus unchanged subset solver",
+    "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "no_game_strength_claim": true
   }
 }
