@@ -8,18 +8,19 @@ official engine actually consumed WHEAT/FERTILIZER.  This module authenticates
 one exact official engine/spec snapshot, derives the transition from normalized
 pre-state under those source semantics, and returns an opaque in-process
 capability.  Positive CARRY sink accounting accepts only capabilities issued by
-this producer.
+this producer and bound to the upstream-authenticated projected pre-state.
 
 The producer does not authenticate the caller's projection itself.  It binds the
 supplied pre-state, actor, callback and action into the evidence and removes the
 strictly weaker "caller asserts the effect" seam.  Upstream projection custody
-remains a separate prerequisite exactly as in the existing research contract.
+must hand the consumer the exact projected-prestate SHA256 that the evidence
+bound; missing or mismatched handoff data contributes zero sink capacity.
 """
 from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 import sys
 import types
 from typing import Any, Mapping, Sequence
@@ -226,8 +227,6 @@ def _canonical_tile(tile: Any) -> dict[str, Any] | None:
     if not isinstance(tile, Mapping):
         raise SourceBoundSinkError("tile must be a mapping or null")
     raw = dict(tile)
-    # Round-trip creates an immutable-by-convention detached snapshot and rejects
-    # opaque caller objects/non-finite values before transition derivation.
     return json.loads(_canonical_bytes(raw).decode("ascii"))
 
 
@@ -241,13 +240,7 @@ def derive_sink_transition(
     engine_path: Path = ENGINE_PATH,
     spec_path: Path = ENGINE_SPEC_PATH,
 ) -> SinkTransitionEvidence:
-    """Derive one official FEED/FERTILIZE inventory transition from pre-state.
-
-    ``inventory_units`` is the obligated actor's carried quantity for the sink
-    item immediately before this callback.  ``tile`` is the tile under that
-    actor immediately before the callback.  The caller cannot assert the result:
-    consumption is derived here from the authenticated official source rules.
-    """
+    """Derive one official FEED/FERTILIZE inventory transition from pre-state."""
     engine, spec = _read_authenticated_sources(
         engine_path=engine_path, spec_path=spec_path
     )
@@ -348,6 +341,7 @@ def _sink_units(
     step: int,
     op: str,
     item: str,
+    projected_prestate_sha256: Any,
 ) -> int:
     if transition is None:
         return 0
@@ -370,6 +364,21 @@ def _sink_units(
     consumed = receipt["consumed_units"]
     if type(consumed) is not int or consumed not in (0, 1):
         raise SourceBoundSinkError("sink transition consumption must be 0/1")
+
+    # Upstream projection custody must hand over the exact authenticated digest
+    # of the pre-state whose transition was derived.  Missing/malformed/mismatched
+    # bindings are ordinary non-authorizing rows: they contribute zero sink.
+    before_sha256 = receipt.get("before_sha256")
+    if (
+        type(before_sha256) is not str
+        or len(before_sha256) != 64
+        or any(c not in "0123456789abcdef" for c in before_sha256)
+    ):
+        raise SourceBoundSinkError("producer prestate digest is malformed")
+    if type(projected_prestate_sha256) is not str:
+        return 0
+    if projected_prestate_sha256 != before_sha256:
+        return 0
     return consumed
 
 
@@ -379,12 +388,13 @@ def prove_carry_consumption_source_bound(
     *,
     current_inventory_units: int,
 ) -> dict[str, Any]:
-    """Existing CARRY accounting with source-derived sink effects only.
+    """Existing CARRY accounting with source-derived, prestate-bound effects.
 
     Old row fields ``consumption_authenticated``, ``consumed_item`` and
     ``consumed_units`` are intentionally ignored.  A FEED/FERTILIZE contributes
-    one sink unit only when ``row['sink_transition']`` is an opaque capability
-    issued by :func:`derive_sink_transition` for that exact actor/step/op/item.
+    one sink unit only when ``row['sink_transition']`` is producer-issued for
+    that exact actor/step/op/item *and* ``row['projected_prestate_sha256']`` is
+    the upstream-authenticated digest of the same pre-state bound by evidence.
     """
     sticky = _load_sticky_snapshot()
     _read_authenticated_sources()
@@ -431,7 +441,7 @@ def prove_carry_consumption_source_bound(
                 sink_units=sinks,
                 competing_units=burden,
                 boundary_step=step,
-                sink_evidence_authority="source_bound_transition",
+                sink_evidence_authority="source_bound_transition+projected_prestate",
             )
         if ob.item == "WHEAT" and operation == "HARVEST":
             return sticky._report(
@@ -441,7 +451,7 @@ def prove_carry_consumption_source_bound(
                 sink_units=sinks,
                 competing_units=burden,
                 boundary_step=step,
-                sink_evidence_authority="source_bound_transition",
+                sink_evidence_authority="source_bound_transition+projected_prestate",
             )
         if operation == "PICKUP":
             burden += sticky._pickup_quantity(row, ob.item)
@@ -456,6 +466,7 @@ def prove_carry_consumption_source_bound(
                 step=step,
                 op=sink_op,
                 item=ob.item,
+                projected_prestate_sha256=row.get("projected_prestate_sha256"),
             )
             if consumed == 0:
                 continue
@@ -469,7 +480,7 @@ def prove_carry_consumption_source_bound(
                     sink_units=sinks,
                     competing_units=burden,
                     reserved_units=ob.quantity,
-                    sink_evidence_authority="source_bound_transition",
+                    sink_evidence_authority="source_bound_transition+projected_prestate",
                     engine_git_blob=EXPECTED_ENGINE_BLOB,
                 )
 
@@ -480,6 +491,6 @@ def prove_carry_consumption_source_bound(
         sink_units=sinks,
         competing_units=burden,
         reserved_units=ob.quantity,
-        sink_evidence_authority="source_bound_transition",
+        sink_evidence_authority="source_bound_transition+projected_prestate",
         engine_git_blob=EXPECTED_ENGINE_BLOB,
     )
