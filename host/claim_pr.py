@@ -40,9 +40,12 @@ def write_pr_holding(
 ) -> dict:
     """Take, renew, or release the canonical ``pr-N`` holding.
 
-    The underlying fast-forward-only write and collision reconciliation stay in
-    ``coordination_state.holding_write``; this adapter adds no second claim
-    protocol.
+    Each underlying write gets one fast-forward attempt.  If another writer
+    wins that attempt, the adapter starts a new attempt and, for normal runtime
+    calls, takes a fresh wall-clock observation before re-reading the winning
+    tip.  This prevents a loser that started earlier from reusing its old clock
+    value and treating the later winner's heartbeat as a future/non-live hold.
+    Explicit ``now`` remains fixed for deterministic/offline callers.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -50,17 +53,26 @@ def write_pr_holding(
         raise ValueError("holder must be non-empty text")
     if type(ttl_s) is not int or not 1 <= ttl_s <= 7200:
         raise ValueError("ttl must be between 1 and 7200 seconds")
-    result = cs.holding_write(
-        git,
-        pr_key(pr),
-        holder.strip(),
-        action,
-        ttl_s=ttl_s,
-        note=note,
-        now=now,
-        remote=remote,
-        push=push,
-    )
+
+    key = pr_key(pr)
+    result = None
+    for _ in range(3):
+        observed_now = now if now is not None else cs._now()
+        result = cs.holding_write(
+            git,
+            key,
+            holder.strip(),
+            action,
+            ttl_s=ttl_s,
+            note=note,
+            now=observed_now,
+            remote=remote,
+            push=push,
+            attempts=1,
+        )
+        if result.get("reason") != "branch kept moving; retry":
+            break
+    assert result is not None
     return {"pr": pr, "action": action, **result}
 
 
