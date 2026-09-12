@@ -3,9 +3,9 @@
   "key": "astra-titan-v5-p03-carried-input-economy-20260912",
   "holder": "ASTRA",
   "family": "gpt",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-12T22:55:00Z",
-  "heartbeat_at": "2026-09-12T22:55:00Z",
+  "heartbeat_at": "2026-09-12T23:00:29Z",
   "ttl_s": 1800,
-  "note": "Arrival-board P03 wide gameplay lane on the ONE canonical production-v3/V5 family: trace late DeliveryChoice replacement-WHEAT purchases that are later liquidated unused, implement one bounded useful-feed reserve/reuse treatment after harvest only, source-test it, and route matched native economics. Root crop-admission thresholds remain out of scope; no sibling V5 tree or CURRENT/default/release/Kaggle mutation. Earlier concrete bytes win and this holding yields on overlap."
+  "note": "Released on fresh deconflict: earlier P03 Slack claimant TS 1789253728.336999 predates this seat. Zero P03 source/ref/package/game bytes written. Useful source handoff posted at TS 1789254029.515199: confirmed replacement purchase currently retires debt before later generic WHEAT SELL, so bounded future-FEED reserve should preserve row indices and trim only WHEAT sale quantity."
 }
