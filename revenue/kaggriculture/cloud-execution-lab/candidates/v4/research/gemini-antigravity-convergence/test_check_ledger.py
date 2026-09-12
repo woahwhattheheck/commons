@@ -73,6 +73,19 @@ class GeminiConvergenceTests(unittest.TestCase):
             doc["entry_count"] -= 1
             self.assertRejected(doc, "coverage mismatch")
 
+    def test_extra_id_cannot_replace_required_id_at_constant_count(self):
+        for victim, replacement in (
+            ("gemini.apex-clone-radar", "gemini.zzz-unlisted"),
+            ("gemini.analyzer-margin-clipping", "gemini.zzz-extension-impostor"),
+        ):
+            doc = copy.deepcopy(self.doc)
+            entry = next(e for e in doc["entries"] if e["id"] == victim)
+            entry["id"] = replacement
+            doc["entries"].sort(key=lambda e: e["id"])
+            self.assertEqual(doc["entry_count"], 34)
+            self.assertEqual(len(doc["entries"]), 34)
+            self.assertRejected(doc, "coverage mismatch")
+
     def test_provenance_quarantine_ids_are_not_minted(self):
         ids = {entry["id"] for entry in self.doc["entries"]}
         self.assertFalse(any("meridian" in entry_id for entry_id in ids))
