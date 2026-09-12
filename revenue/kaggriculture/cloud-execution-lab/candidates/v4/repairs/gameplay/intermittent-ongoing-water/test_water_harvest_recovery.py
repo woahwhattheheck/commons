@@ -56,6 +56,7 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         self.assertEqual(cert["replacement_row"], ["HARVEST"])
         self.assertEqual(cert["recovery_row"], ["WATER"])
         self.assertEqual(cert["recovery_day"], cert["current_day"] + 1)
+        self.assertTrue(cert["same_callback_destructive_dig_absent"])
         candidate = R.apply_water_harvest_recovery(
             current, now, recovery, future, CFG, enabled=True)
         self.assertEqual(candidate["farmer"], ["HARVEST"])
@@ -87,6 +88,10 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         future["step"] = 263
         self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
 
+    def test_step_719_is_not_executable_recovery_evidence(self):
+        self.assertEqual(R._plain_step({"step": 718}), 718)
+        self.assertIsNone(R._plain_step({"step": 719}))
+
     def test_future_plant_must_show_expected_one_day_streak(self):
         now, current, future, recovery = self.pair()
         future["farms"][0]["tiles"][1][1]["consecutive_unwatered"] = 0
@@ -99,6 +104,26 @@ class WaterHarvestRecoveryTests(unittest.TestCase):
         future["farms"][0]["hands"] = [[1, 1]]
         recovery = action(["WATER"], [["WATER"]])
         self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_same_site_dig_before_water_is_rejected(self):
+        now, current, future, _ = self.pair()
+        future["farms"][0]["hands"] = [[1, 1]]
+        recovery = action(["DIG"], [["WATER"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_same_site_dig_after_water_is_rejected(self):
+        now, current, future, _ = self.pair()
+        future["farms"][0]["hands"] = [[1, 1]]
+        recovery = action(["WATER"], [["DIG"]])
+        self.assertEqual(R.plan_water_harvest_recovery(current, now, recovery, future, CFG), [])
+
+    def test_benign_same_site_harvest_then_water_is_allowed(self):
+        now, current, future, _ = self.pair()
+        future["farms"][0]["hands"] = [[1, 1]]
+        recovery = action(["HARVEST"], [["WATER"]])
+        certs = R.plan_water_harvest_recovery(current, now, recovery, future, CFG)
+        self.assertEqual(len(certs), 1)
+        self.assertEqual(certs[0]["recovery_actor"], 1)
 
     def test_hydra_fertilizer_bonus_block_is_inherited(self):
         now, current, future, recovery = self.pair()
