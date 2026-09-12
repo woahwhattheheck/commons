@@ -23,6 +23,8 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json'
       - 'revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-SOURCE.json'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/run_current_native_field.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/check_loader_binding.py'
       - 'revenue/kaggriculture/cloud-quickstep/seller_snapshot.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/plant_suffix.py'
@@ -104,6 +106,12 @@ jobs:
               except ValueError as exc:
                   raise SystemExit(f'package source escapes checkout: {source_path}') from exc
               sources.add(relative)
+
+          direct_validation_dependencies = {
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/animal-yield-headroom/run_current_native_field.py',
+              'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/check_loader_binding.py',
+          }
+          sources.update(direct_validation_dependencies)
 
           uncovered = sorted(
               source for source in sources
