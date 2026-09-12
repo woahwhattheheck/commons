@@ -85,6 +85,26 @@ class GuardTests(unittest.TestCase):
         changes,_=skip.plan_guarded_starvation_skip(act,obs,CFG,r)
         self.assertEqual(changes,[])
 
+    def test_saved_wheat_redrop_fails_closed(self):
+        obs,act=world(); r=route(feed=False)
+        r[24]["farmer"]=["PICKUP","WHEAT",1]
+        r[25]["farmer"]=["DROP"]
+        r[26]["farmer"]=["PICKUP","WHEAT",1]
+        r[27]["farmer"]=["WEST"]; r[28]["farmer"]=["FEED"]
+        changes,rep=skip.plan_guarded_starvation_skip(act,obs,CFG,r)
+        self.assertEqual(changes,[])
+        self.assertEqual(rep["blocked"].get("next_feed_route_not_certified"),1)
+
+    def test_same_callback_drop_then_sell_cannot_reuse_saved_wheat(self):
+        obs,act=world(); r=route(feed=False)
+        r[24]["farmer"]=["PICKUP","WHEAT",1]
+        r[25]["farmer"]=["DROP"]; r[25]["market"]=[["SELL","WHEAT",1]]
+        r[26]["farmer"]=["PICKUP","WHEAT",1]
+        r[27]["farmer"]=["WEST"]; r[28]["farmer"]=["FEED"]
+        changes,rep=skip.plan_guarded_starvation_skip(act,obs,CFG,r)
+        self.assertEqual(changes,[])
+        self.assertEqual(rep["blocked"].get("next_feed_route_not_certified"),1)
+
     def test_eod_capacity_includes_all_shed_and_carried_stock(self):
         obs,act=world(shed={"EGG":99},wheat=1)
         self.assertEqual(len(skip.plan_guarded_starvation_skip(act,obs,CFG,route())[0]),1)
