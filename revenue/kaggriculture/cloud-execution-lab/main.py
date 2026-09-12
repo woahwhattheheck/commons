@@ -364,6 +364,68 @@ def _spatial_recovery_journal(snapshot, step):
     return {'last_step': step, 'state': deepcopy(snapshot)}
 
 
+def _route_recovery_capsule(value):
+    """Validate route provenance separately from its latest observed callback."""
+    if (not isinstance(value, dict)
+            or set(value) != {'route_step', 'last_step', 'player', 'route'}):
+        return None
+    route_step = value['route_step']
+    last_step = value['last_step']
+    player = value['player']
+    route = value['route']
+    if type(route_step) is not int or route_step < 0:
+        return None
+    if type(last_step) is not int or last_step < route_step:
+        return None
+    if type(player) is not int or player not in (0, 1):
+        return None
+    if type(route) is not str or not route:
+        return None
+    return {
+        'route_step': route_step,
+        'last_step': last_step,
+        'player': player,
+        'route': route,
+    }
+
+
+def _route_recovery_matches(capsule, step, player):
+    """Admit only a same-step retry or the next observed public callback."""
+    return (capsule is not None
+            and capsule['player'] == player
+            and step in (capsule['last_step'], capsule['last_step'] + 1))
+
+
+def _advance_route_recovery(capsule, step, player):
+    """Carry prior route provenance while advancing only observation custody."""
+    if not _route_recovery_matches(capsule, step, player):
+        return None
+    advanced = dict(capsule)
+    advanced['last_step'] = step
+    return advanced
+
+
+def _instance_route_recovery(instance):
+    """Read only the immutable route receipt published by a complete callback."""
+    if instance is None:
+        return None
+    return _route_recovery_capsule(
+        getattr(instance, '_entrypoint_route_receipt', None))
+
+
+def _store_instance_route_recovery(instance, capsule):
+    """Publish route provenance on the retained runtime without trusting live state."""
+    normalized = _route_recovery_capsule(capsule)
+    if instance is not None:
+        instance._entrypoint_route_receipt = (
+            None if normalized is None else dict(normalized))
+        # Keep the completed-route origin explicit for review/tests and never
+        # reinterpret the latest observed callback as a producer commit.
+        instance._completed_route_step = (
+            None if normalized is None else normalized['route_step'])
+    return normalized
+
+
 def agent(observation, configuration=None):
     global _INSTANCE, _SPATIAL_RECOVERY, _ROUTE_RECOVERY
     import time
@@ -380,12 +442,16 @@ def agent(observation, configuration=None):
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
     step = observation['step']
+    player = observation['player']
 
     journal = _SPATIAL_RECOVERY if isinstance(_SPATIAL_RECOVERY, dict) else None
     journal_step = None if journal is None else journal.get('last_step')
-    route_journal = _ROUTE_RECOVERY if isinstance(_ROUTE_RECOVERY, dict) else None
+    raw_route_journal = _ROUTE_RECOVERY
+    route_journal = _route_recovery_capsule(raw_route_journal)
+    if raw_route_journal is not None and route_journal is None:
+        _ROUTE_RECOVERY = None
     if journal_step is None and route_journal is not None:
-        journal_step = route_journal.get('last_step')
+        journal_step = route_journal['last_step']
     # Step zero is both a match boundary and a legal same-step retry. Reuse an
     # instance (or a recovery journal) that already returned step zero; only a
     # later-step -> 0 transition proves that retained state belongs to old play.
@@ -396,6 +462,11 @@ def agent(observation, configuration=None):
         _SPATIAL_RECOVERY = None
         _ROUTE_RECOVERY = None
         journal = None
+        route_journal = None
+    elif route_journal is not None and not _route_recovery_matches(
+            route_journal, step, player):
+        # A skipped callback, rewind, or player change breaks route provenance.
+        _ROUTE_RECOVERY = None
         route_journal = None
     replace = (_INSTANCE is None or match_reset)
     instance = None if replace else _INSTANCE
@@ -446,6 +517,7 @@ def agent(observation, configuration=None):
         # the next visible observation can initialize it normally.
         if replace:
             _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
+            _ROUTE_RECOVERY = _advance_route_recovery(route_journal, step, player)
             _INSTANCE = None
             return fallback
         obs = dict(observation)
@@ -456,6 +528,10 @@ def agent(observation, configuration=None):
         instance.post = None
         instance._remember_seller_fallback(obs)
         instance._entrypoint_last_step = step
+        _store_instance_route_recovery(
+            instance,
+            _advance_route_recovery(
+                _instance_route_recovery(instance), step, player))
         instance.diagnostics = {
             'consumer': instance.features.consumer,
             'parent_calls': 0,
@@ -473,14 +549,11 @@ def agent(observation, configuration=None):
         with timer:
             if replace:
                 instance = _new_instance(root, feature_data)
-                # Preserve only the immutable route ID associated with a fully
-                # completed producer action. Never restore current controller
-                # mutations, seller plans, or a discarded finalizer object.
-                if (route_journal is not None
-                        and route_journal.get('player') == observation['player']
-                        and type(route_journal.get('route')) is str
-                        and step >= route_journal.get('last_step', step + 1)):
+                # Restore only the route's immutable identity. Provenance was
+                # already validated against this exact public callback above.
+                if route_journal is not None:
                     instance._completed_route = route_journal['route']
+                    _store_instance_route_recovery(instance, route_journal)
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
                     stager(spatial_recovery)
@@ -490,14 +563,36 @@ def agent(observation, configuration=None):
             # Publish only after a complete inner return. A foreign exception or
             # outer cancellation keeps the prior marker or discards the instance.
             instance._entrypoint_last_step = step
+            inner = getattr(instance, 'diagnostics', {}) or {}
+            selected = getattr(instance, 'selected', None)
+            route = getattr(instance, '_completed_route', None)
+            if (selected is not None
+                    and inner.get('status') in ('completed', 'deadline_fallback')
+                    and type(route) is str
+                    and route):
+                _store_instance_route_recovery(
+                    instance,
+                    {
+                        'route_step': step,
+                        'last_step': step,
+                        'player': player,
+                        'route': route,
+                    })
+            else:
+                _store_instance_route_recovery(
+                    instance,
+                    _advance_route_recovery(
+                        _instance_route_recovery(instance), step, player))
     except deadline.DeadlineExceeded as error:
         if error is not timer.expired:
             raise
         inner = getattr(instance, 'diagnostics', {}) if instance is not None else {}
-        if (getattr(instance, 'selected', None) is not None
+        selected = getattr(instance, 'selected', None) if instance is not None else None
+        if (selected is not None
                 and inner.get('status') in ('completed', 'deadline_fallback')):
             stage = 'entrypoint_finalization'
         fallback = _entrypoint_fallback(instance, observation, cfg, deadline)
+        prior_route = _instance_route_recovery(instance) or route_journal
         _record_entrypoint_deadline(instance, stage, entry_started)
         if instance is not None:
             instance.ready = False
@@ -505,14 +600,22 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # TitanAgent publishes _completed_route only with a complete selected
-        # action; controller.cur may already contain an interrupted proposal.
-        # A construction cancellation has no new route and keeps the old capsule.
-        if instance is not None:
-            route = getattr(instance, '_completed_route', None)
-            if type(route) is str:
-                _ROUTE_RECOVERY = {'last_step': step, 'player': observation['player'],
-                                   'route': route}
+        # Only a producer action committed on THIS callback may move route_step.
+        # Otherwise carry the immutable prior receipt and advance last_step only;
+        # never read a possibly half-mutated live route to invent provenance.
+        route = getattr(instance, '_completed_route', None) if instance is not None else None
+        if (selected is not None
+                and inner.get('status') in ('completed', 'deadline_fallback')
+                and type(route) is str
+                and route):
+            _ROUTE_RECOVERY = {
+                'route_step': step,
+                'last_step': step,
+                'player': player,
+                'route': route,
+            }
+        else:
+            _ROUTE_RECOVERY = _advance_route_recovery(prior_route, step, player)
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
