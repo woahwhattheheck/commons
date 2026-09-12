@@ -232,12 +232,14 @@ def issue_carry_consumption(
     created_step: int,
     due_end: int,
     capacity_pressure_units: int,
+    turns_per_day: int = 24,
 ) -> StickyObligation:
-    """Issue actor-local sink custody for a capacity-useful proactive pickup.
+    """Issue same-day actor-local sink custody for a capacity-useful pickup.
 
     The existing CARRYBANK owner remains responsible for proving SHED adjacency
     and legal PICKUP syntax.  This contract only refuses to mint more sticky
-    inventory than the caller's exact capacity-pressure witness can justify.
+    inventory than exact capacity pressure can justify, and it never permits the
+    obligation to cross the lossy end-of-day carried-inventory boundary.
     """
     actor_id = _actor(actor)
     if item not in CARRY_ITEMS:
@@ -246,8 +248,12 @@ def issue_carry_consumption(
     created = _nonnegative_int(created_step, "created_step")
     end = _nonnegative_int(due_end, "due_end")
     pressure = _nonnegative_int(capacity_pressure_units, "capacity_pressure_units")
+    tpd = _positive_int(turns_per_day, "turns_per_day")
+    day_end = ((created // tpd) + 1) * tpd - 1
     if end <= created:
         raise UnsupportedObligation("carry sink must occur after pickup")
+    if end > day_end:
+        raise UnsupportedObligation("carry obligation cannot cross end-of-day")
     if pressure < qty:
         raise UnsupportedObligation("pickup exceeds proved shed-capacity pressure")
     return _seal(
