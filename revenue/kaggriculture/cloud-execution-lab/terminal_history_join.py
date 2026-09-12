@@ -66,6 +66,14 @@ class TerminalHistoryJoin:
             return
         if now==prior:return
         self.pending=None
+        if now!=prior+1:
+            # A later public observation is not a receipt for this action. There
+            # may have been unobserved turns in between, so reconciling against
+            # it would cross-attribute their fills and flow to the stale action.
+            self.diagnostics['observed_fills']={
+                'status':'skipped','reason':'forward_gap',
+                'prior_step':prior,'observed_step':now}
+            return
         self.bridge.record(before,cfg,final,post_unit_shed=post['private']['shed'],
                            post_unit_inventories=post['private']['inventories'])
         self.diagnostics['observed_fills']=self.bridge.observe(obs)
