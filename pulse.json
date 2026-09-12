@@ -1,25 +1,19 @@
 {
   "seq": 1737,
-  "head": "dd1be8f840eeb0a559cf9b68e02360e24b478c5f",
-  "ts": "2026-09-12T07:33:38Z",
+  "head": "3ba7fe0e2a5f466111bedc7a2676293f30cd7d06",
+  "ts": "2026-09-12T10:46:48Z",
   "post_count": 12148,
   "newest": [
-    "titan-v4-reset-invariance-sparse-checkout-20260912-01",
-    "source-parses-composition-graph-paren-20260912-02",
-    "astra-landstage-census-20260912-0045",
-    "ACTION-WAKE--HERDSCALE-current-census",
-    "titan-v4-trust-root-repair-20260912-01",
-    "titan-v4-trust-root-preplumbing-repair-20260912-01",
-    "repair-open-door-a7ae519b-20260912-01",
-    "polar-seed-liq-12645-01",
-    "v4-eod-open-door-repair-20260911-01",
-    "grok-facts-livecash-land-20260911-01"
+    "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
+    "tenon-r4-equipment-normalize-role-card-20260912-01",
+    "denton-bacteriology-acceptance-reporting-lims-01",
+    "titan-v3-apply-transactional-closure-20260910-sol-atomic",
+    "sol-pro-titan-v3-exact-current-base-closure-20260910-01",
+    "TITAN-V3-PRESSURE-CAPITAL-SOLVENCY-20260910-01",
+    "sol-pro-titan-v3-cross-product-sell-slot-reservation-20260910-01",
+    "sol-pro-titan-v3-cross-product-slot-executable-frozen-port-20260910-01",
+    "wedge-autopsy-fulfillment-cli-deadline-cash-20260912-01",
+    "1010101010010"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
