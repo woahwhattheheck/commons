@@ -281,6 +281,10 @@ def extract(
     return {
         "schema": "titan.v4.replay-loss-autopsy.v1",
         "episode": episode,
+        "parameters": {
+            "tail_callbacks": tail_callbacks,
+            "turns_per_day": turns_per_day,
+        },
         "inputs": {
             "farmer_actions": _source_info(actions_path),
             "market_orders": _source_info(markets_path),
