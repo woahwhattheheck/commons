@@ -40,6 +40,28 @@ def _sell(order, item=None):
                 and (item is None or order[1] == item))
 
 
+def _copy_market_orders(orders):
+    """Copy flat built-in queues; retain deepcopy for nested/custom values."""
+    if type(orders) is not list:
+        return copy.deepcopy(orders)
+    for order in orders:
+        if type(order) is not list:
+            return copy.deepcopy(orders)
+        for value in order:
+            kind = type(value)
+            if (kind is not str and kind is not int and kind is not float
+                    and kind is not bool and value is not None):
+                return copy.deepcopy(orders)
+    memo = {}
+    result = []
+    for order in orders:
+        identity = id(order)
+        if identity not in memo:
+            memo[identity] = order.copy()
+        result.append(memo[identity])
+    return result
+
+
 def replace_sales(orders, item, quantity, available, max_orders, reserved=()):
     """Keep economic prefixes and all original positions; append only at end.
 
@@ -47,7 +69,7 @@ def replace_sales(orders, item, quantity, available, max_orders, reserved=()):
     its actual funding and space contribution to inherited purchases/hiring.
     A reserved SELL position is left to the caller's selected action.
     """
-    out = copy.deepcopy(orders)
+    out = _copy_market_orders(orders)
     last_economic = max((i for i, o in enumerate(orders)
                          if o and not _sell(o)), default=-1)
     if any(i in reserved and _sell(o, item) for i, o in enumerate(orders)):
@@ -211,7 +233,7 @@ class ProjectionLedger:
                 hires = 0
             if not phase_ok(t, 'before_market'):
                 return False
-            market = (copy.deepcopy(self.future.get(t, [])) if item is None else
+            market = (_copy_market_orders(self.future.get(t, [])) if item is None else
                       self.market(t, item, orders.get(t, 0), stock.get(item, 0)))
             if market is None:
                 return False
@@ -311,14 +333,22 @@ class SelectedActionSell:
         return min(100, max(visible, recent))
 
     def _observe(self, obs, now):
+        player = int(obs['player'])
+        current = obs['farms'][1 - player]['tiles']
         previous = self.previous
-        if previous is not None and now > previous[0] and previous[1] == int(obs['player']):
-            old = previous[2]; new = obs['farms'][1 - int(obs['player'])]['tiles']
+        if previous is not None and previous[1] == player and now == previous[0]:
+            # Same-step engine retries replace the public snapshot but cannot
+            # create or erase a harvest. Preserve bounded history so replaying
+            # an unchanged observation leaves rival-pressure inputs identical.
+            self.previous = (now, player, copy.deepcopy(current))
+            return
+        if previous is not None and now > previous[0] and previous[1] == player:
+            old = previous[2]
             for y, row in enumerate(old):
                 for x, tile in enumerate(row):
                     if not isinstance(tile, dict): continue
                     product = tile.get('crop') if tile.get('kind') == 'PLANT' else m.ANIMALS.get(tile.get('animal'), {}).get('product')
-                    later = new[y][x]
+                    later = current[y][x]
                     a = max(0, int(tile.get('yield_units', 0)))
                     b = max(0, int(later.get('yield_units', 0))) if isinstance(later, dict) else 0
                     if product in PRODUCTS and a > b:
@@ -327,7 +357,7 @@ class SelectedActionSell:
             self.observed_harvests = {}
         for product in self.observed_harvests:
             self.observed_harvests[product] = [(t, q) for t, q in self.observed_harvests[product] if now - t <= 8]
-        self.previous = (now, int(obs['player']), copy.deepcopy(obs['farms'][1 - int(obs['player'])]['tiles']))
+        self.previous = (now, player, copy.deepcopy(current))
 
     def transform(self, observation, configuration, selected_action, *, post_unit_shed=None,
                   projection=None, arrival_contract=None, reservations=None, fallback_action=None):
