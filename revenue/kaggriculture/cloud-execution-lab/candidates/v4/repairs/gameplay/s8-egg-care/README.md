@@ -1,18 +1,20 @@
-# S8 EGG-care reallocation donor
+# S8 EGG-care — NO_BUILD evidence receipt
 
-Canonical custody of the reviewed default-OFF S8 lane from closed PR #12600. This package preserves exact source/test bytes for later semantic composition against the current production ABI; it does not execute the legacy `apply_v4.py` materializer or enable the key.
+Canonical custody of the reviewed S8 lane from closed PR #12600. The exact historical source/test bytes are preserved here for auditability only.
 
-## Exact authorities
+## Canonical disposition
+
+**NO_BUILD. Do not port or activate.** Current `candidates/v4/INTEGRATION.json` records S8 as `NO_BUILD_economic_ceiling_negative_do_not_port_or_activate` and explicitly forbids reopening S8 as a new key without new evidence that overturns that disposition. The key historically shipped OFF and remains OFF.
+
+This directory is therefore a negative/evidence receipt, not an active repair candidate. Its presence must not be interpreted as authorization to execute the legacy `apply_v4.py` materializer, wire the current production ABI, enable the key, change a production archive/submission/Kaggle ref, or create a successor V4 line.
+
+## Exact historical authorities
 
 - owner PR: `#12600`
 - historical head: `a07518e2de3af73fdefc80f633af1674137f1386`
 - helper/source blob: `30a0e05c0cd7a435a59316d9d070da59eb2bb865`
 - focused test blob: `66fada01bf161d7b5cf76f99fec9f8d3ff7a4e30`
 
-## Mechanism
+## Historical mechanism
 
-At hour 23, replace a surviving authored `COLLECT_FERTILIZER` with `CARE` only on an already-fed, uncared GOOSE when the public price/buffer and no-clipping proofs hold. H3c harvest rescue retains priority. The original lane shipped false/default-OFF and made no production/economics promotion claim.
-
-## Canonical status
-
-Source/evidence custody only. No shared runtime wiring, feature/default activation, production archive, submission, workflow, or successor V4 ref is changed by this package.
+At hour 23, the lane replaced a surviving authored `COLLECT_FERTILIZER` with `CARE` only on an already-fed, uncared GOOSE when its public price/buffer and no-clipping proofs held, with H3c harvest rescue retaining priority. Those bytes are retained solely so the rejected lane remains reproducible and inspectable.
