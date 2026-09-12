@@ -32,8 +32,9 @@ from feed_stock_ablation import (
 
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
-SCHEMA = "astra.v5.v4-feed-stock-ablation.v1"
+SCHEMA = "astra.v5.v4-feed-stock-ablation.v2"
 ARMS = ("control", "feed_stock_off")
+ENGINE_FILES = ("kaggriculture.py", "kaggriculture.json", "utils.py")
 
 
 def capture_regular(path: Path) -> bytes:
@@ -76,6 +77,36 @@ def write_private_runtime_bytes(raw: bytes, path: Path, expected: str) -> Path:
     if sha256_bytes(path.read_bytes()) != expected:
         raise ValueError("private runtime publication changed authenticated bytes")
     return path
+
+
+def capture_private_engine(engine_dir: Path, evaluator, private_root: Path) -> tuple[Path, dict]:
+    """Capture the exact official engine once and execute only its private copy."""
+    engine_dir = Path(engine_dir)
+    expected = getattr(evaluator, "ENGINE_BLOBS", None)
+    if not isinstance(expected, dict) or set(expected) != set(ENGINE_FILES):
+        raise ValueError("evaluator engine manifest changed")
+    captured = {}
+    receipt = {}
+    for name in ENGINE_FILES:
+        raw = capture_regular(engine_dir / name)
+        actual_blob = git_blob_bytes(raw)
+        if actual_blob != expected[name]:
+            raise ValueError(
+                f"Official source mismatch: {name}; expected blob {expected[name]}, got {actual_blob}"
+            )
+        captured[name] = raw
+        receipt[name] = {
+            "git_blob": actual_blob,
+            "sha256": sha256_bytes(raw),
+        }
+
+    private_engine = Path(private_root) / "engine"
+    private_engine.mkdir(parents=True, exist_ok=False)
+    for name in ENGINE_FILES:
+        write_private_runtime_bytes(
+            captured[name], private_engine / name, receipt[name]["sha256"]
+        )
+    return private_engine, receipt
 
 
 def write_json(path: Path, value) -> None:
@@ -201,7 +232,19 @@ def main() -> int:
         bridge = load_captured(
             bridge_raw, runtime_snapshot / bridge_rel, "feed_stock_reference_bank"
         )
-        engine_hashes = evaluator.verify_sources(engine_dir)
+
+        # The caller-owned engine cache is ingestion-only. Capture and authenticate
+        # the exact three pinned official sources before public output exists, then
+        # execute only the private copy for the evaluator and all child workers.
+        private_engine, engine_capture = capture_private_engine(
+            engine_dir, evaluator, private_root
+        )
+        engine_hashes = evaluator.verify_sources(private_engine)
+        expected_engine_hashes = {
+            name: engine_capture[name]["sha256"] for name in ENGINE_FILES
+        }
+        if engine_hashes != expected_engine_hashes:
+            raise ValueError("private engine verification disagrees with captured bytes")
 
         output.mkdir(parents=False, exist_ok=False)
         snapshot_root = output / ".harness-snapshot"
@@ -253,6 +296,8 @@ def main() -> int:
                 "pack_sha256": sha256_bytes(pack_raw),
                 "bridge_sha256": sha256_bytes(bridge_raw),
                 "loader_sha256": sha256_bytes(loader_raw),
+                "engine_runtime": "captured official source bytes in private engine cache only",
+                "engine_files": engine_capture,
                 "opponent_runtime": "private authenticated runtime only",
                 "candidate_runtime": "private per-cell runtime only",
                 "public_snapshot": ".harness-snapshot (evidence only; never executed)",
@@ -278,9 +323,10 @@ def main() -> int:
                 "blob and replaces only TitanAgent._feed_stock_selected with `return selected`; "
                 "operating_stock.py and all other archive members remain byte-identical. The "
                 "authenticated evaluator/packer/reference bridge execute from captured bytes; "
-                "the candidate loader, generated opponent adapters/policies, candidate arm "
-                "adapters/payloads, and opponent support root remain in a private authenticated "
-                "runtime for the full panel. The public harness snapshot is evidence-only. "
+                "the candidate loader, exact official engine sources, generated opponent "
+                "adapters/policies, candidate arm adapters/payloads, and opponent support root "
+                "remain in private authenticated runtime custody for the full panel. The caller "
+                "engine cache is ingestion-only and the public harness snapshot is evidence-only. "
                 "Candidate returned actions are observed by a temporary in-process wrapper around "
                 "the evaluator's Actor.act and the original method is restored after each game; "
                 "agent/evaluator/engine bytes are not modified."
@@ -320,12 +366,12 @@ def main() -> int:
                             rival_spec = str(runtime[opponent] / "adapter.py")
                             specs = ([candidate_spec, rival_spec] if seat == 0
                                      else [rival_spec, candidate_spec])
-                            engine, _ = evaluator.get_engine(engine_dir, loader)
+                            engine, _ = evaluator.get_engine(private_engine, loader)
                             game, actions = play_with_candidate_trace(
                                 evaluator,
                                 engine,
                                 specs,
-                                engine_dir,
+                                private_engine,
                                 loader,
                                 seed,
                                 seat,
