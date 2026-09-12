@@ -1,0 +1,38 @@
+{
+  "schema": "titan.v4.gemini-salvage.v1",
+  "policy_authority": false,
+  "required_ids": [
+    "AG01", "AG02", "AG03", "AG04", "AG05", "AG06", "AG07", "AG08", "AG09", "AG10", "AG11", "AG12", "AG13", "AG14", "AG15",
+    "APEX-DUMP", "FLASH-MKT", "G01-E11", "G01-E20", "G01-O01", "G01-SHOP", "IDLE-SVC", "META01", "META02", "META03", "META04", "PRO-CAP", "S33"
+  ],
+  "entries": [
+    {"id":"AG01","origin":"FERT warehouse","status":"SPLIT","authority":"b7-shed-overflow / mechanism-claims","next_gate":"keep recoverable warehouse premise falsified; capacity disposal only through existing FERT authority"},
+    {"id":"AG02","origin":"MELON cap","status":"FIELD_BLOCKED","authority":"antigravity-melon-cap","next_gate":"whole-proposal shared budget plus real nested producer-consumer cardinality"},
+    {"id":"AG03","origin":"intermittent starvation arbitrage","status":"CORRECTED_DESCENDANT","authority":"dead-feed-care / W2","next_gate":"current-native engagement and CARE/custody economics"},
+    {"id":"AG04","origin":"_decay_plants timing trap","status":"FIELD_BLOCKED","authority":"H1 first-decay theorem","next_gate":"current-main owner plus activation-to-cargo-to-deposit-to-sale realization"},
+    {"id":"AG05","origin":"zero-cost structure carpet","status":"FALSIFIED","authority":"HOMESTEAD","next_gate":"no blanket action banking; occupancy RNG effects route separately to TOWNRNG"},
+    {"id":"AG06","origin":"NPC market baseline","status":"CANONICAL","authority":"research/market-baseline","next_gate":"reuse as demand baseline; never attribute NPC drift to opponent behavior"},
+    {"id":"AG07","origin":"Goose Printer","status":"CORRECTED_DESCENDANT","authority":"HOMESTEAD / GANDER","next_gate":"long-horizon EGG/FERT/cash current-native economics"},
+    {"id":"AG08","origin":"intraday HOIST","status":"CORRECTED_DESCENDANT","authority":"CARRYBANK / B7 custody","next_gate":"same-day sink and continuation certificate plus economics"},
+    {"id":"AG09","origin":"WEEDBANK","status":"SPLIT","authority":"HOMESTEAD / TOWNRNG / SHOPSTREAM","next_gate":"blanket weed bank remains falsified; test only reachable RNG-shop steering"},
+    {"id":"AG10","origin":"ALTWATER","status":"FIELD_BLOCKED","authority":"HYDRA","next_gate":"current-native engagement and economics under exact hydration boundaries"},
+    {"id":"AG11","origin":"PLANTGUARD","status":"CORRECTED_DESCENDANT","authority":"SEEDGHOST / UNITPIPE","next_gate":"preserve atomic seed collateral; plant-water route evidence only through existing owners"},
+    {"id":"AG12","origin":"DEMANDVEL","status":"CANONICAL","authority":"market-baseline demand_velocity / PR13018","next_gate":"use conservative headroom only; decision and timing authority remain false"},
+    {"id":"AG13","origin":"EXPANDTAX","status":"CORRECTED_DESCENDANT","authority":"HOMESTEAD opening-expansion economics","next_gate":"combine linear empty-tile weed tax with marginal land/service value"},
+    {"id":"AG14","origin":"DYNFLOOR","status":"CORRECTED_DESCENDANT","authority":"seller timing / market-pressure / TOWNSELL","next_gate":"public-state dynamic admission; no opponent step-number schedule"},
+    {"id":"AG15","origin":"AMBUSH","status":"FIELD_BLOCKED","authority":"COUNTER_AMBUSH / existing seller-buyer owners","next_gate":"current public-state replay and cash/ROI gates"},
+    {"id":"APEX-DUMP","origin":"Apex strategy dump to Gemini","status":"SPLIT","authority":"COUNTER_AMBUSH / TOWNSELL / row-shed / reserve-endgame owners","next_gate":"authenticate opponent wrapper claims separately from engine mechanics"},
+    {"id":"FLASH-MKT","origin":"Gemini Flash / GOOP market timing","status":"CORRECTED_DESCENDANT","authority":"market-baseline plus prefix-order-budget owners","next_gate":"current-native owner replay"},
+    {"id":"G01-E11","origin":"G01 rival-aware SELL deferral","status":"CORRECTED_DESCENDANT","authority":"market-baseline TOWNSELL plus gemini_market_certificate","next_gate":"census replay candidates and vetoes; no generic retimer"},
+    {"id":"G01-E20","origin":"G01 late HIRE guard","status":"CORRECTED_DESCENDANT","authority":"E20 executable-prefix lineage plus labor-service owners","next_gate":"exact prefix/wage/cash/service evidence"},
+    {"id":"G01-O01","origin":"G01 rival archetype model","status":"CORRECTED_DESCENDANT","authority":"public-supply / COBUY / CROSSFLOW evidence","next_gate":"observable behavior certificates only; no opponent-ID classifier"},
+    {"id":"G01-SHOP","origin":"G01 SHOP_ARB weight","status":"CORRECTED_DESCENDANT","authority":"TOWN-WHEAT / TOWNSELL / TOWNRNG / SHOPSTREAM","next_gate":"source-bound shop timing and current-native economics"},
+    {"id":"IDLE-SVC","origin":"Gemini idle-hands service","status":"CORRECTED_DESCENDANT","authority":"dead-feed-care and existing service-recycle owners","next_gate":"productive-route and custody evidence"},
+    {"id":"META01","origin":"dark-pool crop short squeeze","status":"FALSIFIED","authority":"mechanism claims plus CARRYBANK for safe hoist only","next_gate":"do not revive direct TOMATO/EGG/CARROT BUY_PRODUCT squeeze"},
+    {"id":"META02","origin":"seed cracking / frame advance","status":"SPLIT","authority":"SEEDIDENT / TOWNRNG / SHOPSTREAM","next_gate":"no hidden-seed omniscience; prove reachable occupancy steering economics"},
+    {"id":"META03","origin":"EGG singularity","status":"SPLIT","authority":"EGGBOUNDS","next_gate":"use finite elasticity only as evidence; no direct EGG squeeze or goose-only theorem"},
+    {"id":"META04","origin":"Goose Printer invisible to Apex radar","status":"OPPONENT_SPECIFIC","authority":"Apex wrapper/replay research only","next_gate":"authenticate exact Apex bytes and replay behavior before using the hypothesis"},
+    {"id":"PRO-CAP","origin":"Gemini Pro capital/service","status":"CORRECTED_DESCENDANT","authority":"early-capital / KESTREL","next_gate":"exact lockstep/custody/capital evidence"},
+    {"id":"S33","origin":"Gemini S33 / STRATUM row-shed","status":"FIELD_BLOCKED","authority":"row-shed-sell-order existing owner","next_gate":"final downstream-pressure novelty plus returned-action witness"}
+  ]
+}
