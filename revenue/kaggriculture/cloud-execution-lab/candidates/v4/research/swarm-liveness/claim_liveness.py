@@ -283,13 +283,18 @@ def _epoch_eligibility(
 
     Provider-id conflicts are excluded from the mirrored epoch state. This lets
     duplicate groups fail closed without allowing a quarantined duplicate CLAIM
-    or terminal to open/close an epoch used to classify later rows.
+    or terminal to open/close an epoch used to classify later rows. Epoch state
+    is replayed in the same chronological `(ts,index)` order used by ownership
+    application, while masks remain aligned to the caller's original row order.
     """
     epoch_contracts: dict[tuple[str, str], dict[str, Any]] = {}
-    eligible: list[bool] = []
-    epoch_root_quarantined: list[bool] = []
+    eligible: list[bool] = [False] * len(events)
+    epoch_root_quarantined: list[bool] = [False] * len(events)
 
-    for ev in events:
+    for position in sorted(
+        range(len(events)), key=lambda index: (events[index].ts, events[index].index)
+    ):
+        ev = events[position]
         future = ev.ts > now
         root_mismatch = (
             ev.canonical_root is not None and ev.canonical_root != canonical_root
@@ -317,8 +322,8 @@ def _epoch_eligibility(
             and not epoch_quarantined
             and ev.event_id not in conflicted_event_ids
         )
-        eligible.append(authoritative)
-        epoch_root_quarantined.append(epoch_quarantined)
+        eligible[position] = authoritative
+        epoch_root_quarantined[position] = epoch_quarantined
         if not authoritative:
             continue
 
