@@ -137,6 +137,14 @@ class TownRngTests(unittest.TestCase):
             )
         with self.assertRaises(ValueError):
             mod.find_coupling_witness(delta=0)
+        with self.assertRaises(ValueError):
+            mod.tail_fill_counterfactual(
+                seed=1, day=2, empty_counts=[25, 0], seat=1
+            )
+        with self.assertRaises(ValueError):
+            mod.stream_snapshot(
+                seed=1, day=2, empty_counts=[25, 25], weed_chance=1.1
+            )
 
     def test_engine_verifier_rejects_drift(self):
         with tempfile.TemporaryDirectory() as td:
@@ -152,6 +160,73 @@ class TownRngTests(unittest.TestCase):
         self.assertFalse(got["weed_spawn_chance_zero_removes_coupling"])
         self.assertFalse(got["policy_claim"])
         self.assertFalse(got["economic_claim"])
+        self.assertEqual(got["fixed_tail_fill_panel"]["shop_flips"], 1336)
+
+    def test_tail_fill_clean_seat1_witness(self):
+        got = mod.tail_fill_counterfactual(
+            seed=5, day=2, empty_counts=[25, 25], seat=1
+        )
+        self.assertEqual(got["baseline"]["shop"], "PIZZA_SHOP")
+        self.assertEqual(got["variant"]["shop"], "BRUNCH_SPOT")
+        self.assertTrue(got["shop_changed"])
+        self.assertTrue(got["prior_seat_weeds_preserved"])
+        self.assertTrue(got["own_remaining_weeds_preserved"])
+        self.assertEqual(got["later_seats_changed"], [])
+
+    def test_seat0_tail_fill_shifts_later_seat_stream(self):
+        got = mod.tail_fill_counterfactual(
+            seed=5, day=2, empty_counts=[25, 25], seat=0
+        )
+        self.assertTrue(got["prior_seat_weeds_preserved"])
+        self.assertTrue(got["own_remaining_weeds_preserved"])
+        self.assertEqual(got["later_seats_changed"], [1])
+        self.assertTrue(got["shop_changed"])
+
+    def test_zero_weed_chance_still_shifts_shop(self):
+        got = mod.tail_fill_counterfactual(
+            seed=5, day=2, empty_counts=[25, 25], seat=1, weed_chance=0.0
+        )
+        self.assertTrue(got["shop_changed"])
+        self.assertEqual(got["baseline"]["shop"], "PIZZA_SHOP")
+        self.assertEqual(got["variant"]["shop"], "BRUNCH_SPOT")
+        self.assertTrue(all(
+            not hit
+            for seat_hits in got["baseline"]["weed_hits"]
+            for hit in seat_hits
+        ))
+
+    def test_same_total_shop_projection_ignores_seat_partition(self):
+        left = mod.stream_snapshot(
+            seed=5, day=2, empty_counts=[24, 25]
+        )
+        right = mod.stream_snapshot(
+            seed=5, day=2, empty_counts=[25, 24]
+        )
+        self.assertEqual(left["rng_draws_before_shop"], 49)
+        self.assertEqual(right["rng_draws_before_shop"], 49)
+        self.assertEqual(left["shop"], right["shop"])
+
+    def test_shop_demand_vector_matches_engine_shop_rules(self):
+        self.assertEqual(mod.shop_demand_vector("YARN_STORE"), {"WOOL": 2})
+        self.assertEqual(
+            mod.shop_demand_vector("PIZZA_SHOP"),
+            {"MILK": 1, "TOMATO": 1, "WHEAT": 1},
+        )
+        with self.assertRaises(ValueError):
+            mod.shop_demand_vector("NOT_A_SHOP")
+
+    def test_fixed_tail_fill_panel_receipt(self):
+        got = mod.fixed_tail_fill_panel()
+        self.assertEqual(got["cells"], 2048)
+        self.assertEqual(got["shop_flips"], 1336)
+        self.assertEqual(got["shop_unchanged"], 712)
+        self.assertEqual(got["per_day"]["2"]["shop_flips"], 164)
+        witness = got["first_shop_flip_witness"]
+        self.assertEqual((witness["seed"], witness["day"]), (5, 2))
+        self.assertEqual(witness["baseline_shop"], "PIZZA_SHOP")
+        self.assertEqual(witness["variant_shop"], "BRUNCH_SPOT")
+        self.assertTrue(witness["prior_seat_weeds_preserved"])
+        self.assertTrue(witness["own_remaining_weeds_preserved"])
 
 
 if __name__ == "__main__":
