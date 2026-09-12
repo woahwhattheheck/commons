@@ -11,8 +11,8 @@ import io
 import json
 import os
 from pathlib import Path, PurePosixPath
+import stat
 import tarfile
-import tempfile
 
 BASELINE_ARCHIVE_SHA256 = "0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02"
 BASELINE_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
@@ -227,57 +227,89 @@ def _receipt_bytes(receipt: dict) -> bytes:
     return (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
-def publish_pair(out: Path, receipt_path: Path, packed: bytes, receipt: dict) -> None:
-    """Publish receipt first, then atomically link a fully-written archive.
+def _open_owned(path: Path) -> tuple[int, tuple[int, int]]:
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags, 0o644)
+    info = os.fstat(fd)
+    if not stat.S_ISREG(info.st_mode):
+        os.close(fd)
+        raise ValueError(f"Reserved destination is not a regular file: {path}")
+    return fd, (info.st_dev, info.st_ino)
 
-    A path race can therefore leave at worst a receipt without an archive, never
-    a runnable treatment archive without its complete receipt. The archive is
-    staged on the destination filesystem and linked create-only.
+
+def _unlink_if_owned(path: Path, identity: tuple[int, int]) -> bool:
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return False
+    if not stat.S_ISREG(info.st_mode) or (info.st_dev, info.st_ino) != identity:
+        return False
+    path.unlink()
+    return True
+
+
+def _write_all(fd: int, raw: bytes) -> None:
+    view = memoryview(raw)
+    while view:
+        written = os.write(fd, view)
+        if written <= 0:
+            raise OSError("short destination write")
+        view = view[written:]
+    os.fsync(fd)
+
+
+def publish_pair(
+    out: Path,
+    receipt_path: Path,
+    packed: bytes,
+    receipt: dict,
+    *,
+    writer=None,
+) -> None:
+    """Reserve both final destinations before writing either payload.
+
+    Cleanup is bound to the device/inode identity returned by each owned fd.
+    A second-path collision or later write/fsync failure therefore rolls back
+    only files this invocation still owns and never removes a hostile replacement.
     """
     out = Path(out)
     receipt_path = Path(receipt_path)
     if out == receipt_path:
         raise ValueError("archive and receipt paths must differ")
-    if out.exists() or out.is_symlink() or receipt_path.exists() or receipt_path.is_symlink():
-        raise FileExistsError("Use fresh archive and receipt paths")
     out.parent.mkdir(parents=True, exist_ok=True)
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt_raw = _receipt_bytes(receipt)
+    write_payload = _write_all if writer is None else writer
 
-    fd, temp_name = tempfile.mkstemp(prefix=out.name + ".stage.", dir=out.parent)
-    temp_path = Path(temp_name)
-    receipt_published = False
+    out_fd = receipt_fd = None
+    out_identity = receipt_identity = None
+    committed = False
     try:
-        with os.fdopen(fd, "wb") as stream:
-            stream.write(packed)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.chmod(temp_path, 0o644)
-
-        with receipt_path.open("xb") as stream:
-            stream.write(receipt_raw)
-            stream.flush()
-            os.fsync(stream.fileno())
-        receipt_published = True
-
-        try:
-            os.link(temp_path, out)
-        except BaseException:
-            # Remove only the exact receipt bytes this invocation published.
+        out_fd, out_identity = _open_owned(out)
+        receipt_fd, receipt_identity = _open_owned(receipt_path)
+        write_payload(out_fd, packed)
+        write_payload(receipt_fd, receipt_raw)
+        committed = True
+    finally:
+        if out_fd is not None:
             try:
-                if receipt_path.read_bytes() == receipt_raw:
-                    receipt_path.unlink()
-                    receipt_published = False
+                os.close(out_fd)
             except OSError:
                 pass
-            raise
-    finally:
-        try:
-            temp_path.unlink()
-        except FileNotFoundError:
-            pass
+        if receipt_fd is not None:
+            try:
+                os.close(receipt_fd)
+            except OSError:
+                pass
+        if not committed:
+            if receipt_identity is not None:
+                _unlink_if_owned(receipt_path, receipt_identity)
+            if out_identity is not None:
+                _unlink_if_owned(out, out_identity)
 
-    if not receipt_published or not out.is_file() or out.is_symlink():
+    if not out.is_file() or out.is_symlink() or not receipt_path.is_file() or receipt_path.is_symlink():
         raise RuntimeError("Treatment pair publication did not complete")
 
 
