@@ -37,20 +37,35 @@ class Controller:
         raise AssertionError("route witness must not call producer")
 
 
-def observation(step=0):
+def observation(step=0, player=0, hands=1):
+    farms = [
+        {"farmer": [0, 0], "hands": []},
+        {"farmer": [9, 9], "hands": []},
+    ]
+    farms[player]["hands"] = [[1, 0] for _ in range(hands)]
     return {
         "step": step,
-        "player": 0,
-        "farms": [
-            {"farmer": [0, 0], "hands": [[1, 0]]},
-            {"farmer": [9, 9], "hands": []},
-        ],
-        "private": {"inventories": [{}, {}]},
+        "player": player,
+        "farms": farms,
+        "private": {"inventories": [{} for _ in range(1 + hands)]},
+    }
+
+
+def route_receipt(step=0, player=0, route="main"):
+    return {
+        "route_step": step,
+        "last_step": step,
+        "player": player,
+        "route": route,
     }
 
 
 def bind(controller, step=0):
-    return bind_current_route(controller, observation(step), completed_route_id="main")
+    return bind_current_route(
+        controller,
+        observation(step),
+        completed_route_receipt=route_receipt(step),
+    )
 
 
 class CurrentRouteWitnessTests(unittest.TestCase):
@@ -62,6 +77,9 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         self.assertEqual(witness.schema, SCHEMA)
         self.assertEqual(witness.route_source, ROUTE_SOURCE)
         self.assertEqual(witness.route_id, "main")
+        self.assertEqual(witness.route_step, 0)
+        self.assertEqual(witness.last_step, 0)
+        self.assertEqual(witness.player, 0)
         self.assertEqual(witness.current_step, 0)
         self.assertEqual(witness.current_index, 0)
         self.assertEqual(witness.next_step, 1)
@@ -87,35 +105,63 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         witness = bind_current_route(
             controller,
             observation(0),
-            completed_route_id="main",
+            completed_route_receipt=route_receipt(0, route="main"),
         )
         self.assertIsNotNone(witness)
         self.assertEqual(witness.route_id, "main")
         self.assertEqual(witness.next_authored_action()["farmer"], ["MOVE", "EAST"])
         self.assertNotEqual(witness.next_authored_action(), controller.R["alt"][1])
 
-    def test_raw_cur_may_be_missing_when_committed_route_is_valid(self):
+    def test_raw_cur_may_be_missing_when_receipt_is_valid(self):
         controller = Controller()
         controller.cur = "uncommitted-missing"
         witness = bind(controller)
         self.assertIsNotNone(witness)
         self.assertEqual(witness.route_id, "main")
 
-    def test_explicit_alt_authority_binds_alt_even_when_cur_is_main(self):
+    def test_explicit_alt_receipt_binds_alt_even_when_cur_is_main(self):
         controller = Controller()
         witness = bind_current_route(
             controller,
             observation(0),
-            completed_route_id="alt",
+            completed_route_receipt=route_receipt(0, route="alt"),
         )
         self.assertIsNotNone(witness)
         self.assertEqual(witness.route_id, "alt")
         self.assertEqual(witness.next_authored_action()["farmer"], ["MOVE", "WEST"])
 
+    def test_receipt_must_be_current_exact_player_boundary(self):
+        controller = Controller()
+        obs = observation(2)
+        bad = (
+            {"route_step": 1, "last_step": 2, "player": 0, "route": "main"},
+            {"route_step": 1, "last_step": 1, "player": 0, "route": "main"},
+            {"route_step": 2, "last_step": 3, "player": 0, "route": "main"},
+            {"route_step": 2, "last_step": 2, "player": 1, "route": "main"},
+            {"route_step": True, "last_step": 2, "player": 0, "route": "main"},
+            {"route_step": 2, "last_step": 2, "player": True, "route": "main"},
+            {"route_step": 2, "last_step": 2, "player": 0, "route": True},
+            {"route_step": 2, "last_step": 2, "player": 0, "route": "main", "extra": 1},
+            {"route_step": 2, "last_step": 2, "route": "main"},
+        )
+        for receipt in bad:
+            with self.subTest(receipt=receipt):
+                self.assertIsNone(
+                    bind_current_route_window(
+                        controller,
+                        obs,
+                        completed_route_receipt=receipt,
+                        lookahead=1,
+                    )
+                )
+
     def test_window_captures_ordered_rows_from_one_snapshot(self):
         controller = Controller()
         window = bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=3
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=3,
         )
         self.assertIsNotNone(window)
         self.assertEqual(controller.calls, 0)
@@ -133,7 +179,10 @@ class CurrentRouteWitnessTests(unittest.TestCase):
             "market": [],
         }
         window = bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=2,
         )
         self.assertIsNotNone(window)
         self.assertEqual([row.worker_cardinality for row in window.rows], [2, 3])
@@ -143,7 +192,10 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         controller = Controller()
         controller.R["main"][1]["hands"] = []
         window = bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=2,
         )
         self.assertIsNotNone(window)
         self.assertEqual(window.rows[0].worker_cardinality, 1)
@@ -153,7 +205,10 @@ class CurrentRouteWitnessTests(unittest.TestCase):
     def test_capture_is_detached_from_later_route_mutation(self):
         controller = Controller()
         window = bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=2,
         )
         self.assertIsNotNone(window)
         before_digest = window.route_sha256
@@ -174,14 +229,19 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         controller = Controller()
         before = copy.deepcopy(controller.R)
         bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=3
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=3,
         )
         self.assertEqual(controller.R, before)
 
     def test_b5_adapter_is_exact(self):
         controller = Controller()
         kwargs = bind_b5_kwargs(
-            controller, observation(0), completed_route_id="main"
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
         )
         self.assertEqual(
             kwargs,
@@ -195,8 +255,12 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         a = Controller()
         b = Controller()
         b.R["main"][3]["farmer"] = ["MOVE", "WEST"]
-        wa = bind_current_route_window(a, observation(0), completed_route_id="main", lookahead=1)
-        wb = bind_current_route_window(b, observation(0), completed_route_id="main", lookahead=1)
+        wa = bind_current_route_window(
+            a, observation(0), completed_route_receipt=route_receipt(0), lookahead=1
+        )
+        wb = bind_current_route_window(
+            b, observation(0), completed_route_receipt=route_receipt(0), lookahead=1
+        )
         self.assertIsNotNone(wa)
         self.assertIsNotNone(wb)
         self.assertNotEqual(wa.route_sha256, wb.route_sha256)
@@ -205,7 +269,7 @@ class CurrentRouteWitnessTests(unittest.TestCase):
 
     def test_lookahead_is_exact_and_bounded(self):
         controller = Controller()
-        kwargs = {"completed_route_id": "main"}
+        kwargs = {"completed_route_receipt": route_receipt(0)}
         self.assertIsNone(bind_current_route_window(controller, observation(0), lookahead=True, **kwargs))
         self.assertIsNone(bind_current_route_window(controller, observation(0), lookahead=0, **kwargs))
         self.assertIsNone(bind_current_route_window(controller, observation(0), lookahead=MAX_LOOKAHEAD + 1, **kwargs))
@@ -218,24 +282,36 @@ class CurrentRouteWitnessTests(unittest.TestCase):
         controller = Controller()
         obs = observation(0)
         obs["step"] = IntLike(0)
-        self.assertIsNone(bind_current_route(controller, obs, completed_route_id="main"))
+        self.assertIsNone(
+            bind_current_route(controller, obs, completed_route_receipt=route_receipt(0))
+        )
         obs["step"] = True
-        self.assertIsNone(bind_current_route(controller, obs, completed_route_id="main"))
+        self.assertIsNone(
+            bind_current_route(controller, obs, completed_route_receipt=route_receipt(0))
+        )
 
     def test_rejects_bad_player_and_private_cardinality(self):
         controller = Controller()
         obs = observation(0)
         obs["player"] = True
-        self.assertIsNone(bind_current_route(controller, obs, completed_route_id="main"))
+        self.assertIsNone(
+            bind_current_route(controller, obs, completed_route_receipt=route_receipt(0))
+        )
         obs = observation(0)
         obs["private"]["inventories"] = [{}]
-        self.assertIsNone(bind_current_route(controller, obs, completed_route_id="main"))
+        self.assertIsNone(
+            bind_current_route(controller, obs, completed_route_receipt=route_receipt(0))
+        )
 
     def test_rejects_unknown_or_malformed_authorized_route(self):
         controller = Controller()
-        for route_id in (None, "", True, "missing"):
+        for route in (None, "", True, "missing"):
             self.assertIsNone(
-                bind_current_route(controller, observation(0), completed_route_id=route_id)
+                bind_current_route(
+                    controller,
+                    observation(0),
+                    completed_route_receipt=route_receipt(0, route=route),
+                )
             )
         controller.R["main"] = {"not": "a route"}
         self.assertIsNone(bind(controller))
@@ -243,45 +319,71 @@ class CurrentRouteWitnessTests(unittest.TestCase):
     def test_rejects_malformed_window_row(self):
         controller = Controller()
         controller.R["main"][2]["farmer"] = []
-        self.assertIsNone(bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
-        ))
+        self.assertIsNone(
+            bind_current_route_window(
+                controller,
+                observation(0),
+                completed_route_receipt=route_receipt(0),
+                lookahead=2,
+            )
+        )
         controller = Controller()
         controller.R["main"][2]["market"] = None
-        self.assertIsNone(bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
-        ))
+        self.assertIsNone(
+            bind_current_route_window(
+                controller,
+                observation(0),
+                completed_route_receipt=route_receipt(0),
+                lookahead=2,
+            )
+        )
 
     def test_rejects_end_of_route(self):
         controller = Controller()
         self.assertIsNone(bind(controller, 3))
-        self.assertIsNone(bind_current_route_window(
-            controller, observation(3), completed_route_id="main", lookahead=1
-        ))
+        self.assertIsNone(
+            bind_current_route_window(
+                controller,
+                observation(3),
+                completed_route_receipt=route_receipt(3),
+                lookahead=1,
+            )
+        )
 
     def test_rejects_non_json_route_anywhere_in_snapshot(self):
         controller = Controller()
         controller.R["main"][3]["market"] = [{"bad": object()}]
-        self.assertIsNone(bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=1
-        ))
+        self.assertIsNone(
+            bind_current_route_window(
+                controller,
+                observation(0),
+                completed_route_receipt=route_receipt(0),
+                lookahead=1,
+            )
+        )
 
     def test_receipts_exclude_action_bytes_but_bind_digests(self):
         controller = Controller()
         window = bind_current_route_window(
-            controller, observation(0), completed_route_id="main", lookahead=2
+            controller,
+            observation(0),
+            completed_route_receipt=route_receipt(0),
+            lookahead=2,
         )
         self.assertIsNotNone(window)
         receipt = window.receipt()
         self.assertNotIn("action_json", repr(receipt))
         self.assertEqual(receipt["route_sha256"], window.route_sha256)
         self.assertEqual(receipt["window_sha256"], window.window_sha256)
+        self.assertEqual(receipt["route_step"], 0)
+        self.assertEqual(receipt["last_step"], 0)
+        self.assertEqual(receipt["player"], 0)
         self.assertEqual(receipt["rows"][0]["action_sha256"], window.rows[0].action_sha256)
         witness = window.b5_witness()
         self.assertIsNotNone(witness)
         self.assertNotIn("next_authored", witness.receipt())
         self.assertEqual(witness.receipt()["route_sha256"], window.route_sha256)
-        self.assertEqual(witness.schema, "titan-v5-current-route-window-v2")
+        self.assertEqual(witness.schema, "titan-v5-current-route-window-v3")
 
 
 if __name__ == "__main__":

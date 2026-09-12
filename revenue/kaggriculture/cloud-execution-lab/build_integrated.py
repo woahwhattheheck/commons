@@ -45,6 +45,7 @@ def source_files():
               'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py',
               'exec_pace_runtime.py','town_procurement.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
         mapping[p]=p
+    mapping['overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
     # Package ECON's landed callback from its attributed source rather than
     # maintaining a second implementation in the canonical runtime tree.
     mapping['funded_payback.py']='../cloud-economic-stress/funded_payback/funded_payback.py'
@@ -67,6 +68,8 @@ def source_files():
         mapping['checks/'+name]=name
     mapping['checks/test_funded_payback_runtime.py']='test_funded_payback_runtime.py'
     mapping['checks/test_market_pressure_runtime.py']='test_market_pressure_runtime.py'
+    mapping['checks/test_overflow_safe_drop_runtime.py']='test_overflow_safe_drop_runtime.py'
+    mapping['checks/test_overflow_safe_drop.py']='candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'
     mapping['checks/test_committed_seed_retry_runtime.py']='test_committed_seed_retry_runtime.py'
     mapping['checks/test_weed_continuation.py']='test_weed_continuation.py'
     mapping['checks/test_operating_stock.py']='test_operating_stock.py'
