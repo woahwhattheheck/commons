@@ -109,6 +109,71 @@ class DeadlineObservationContractTests(unittest.TestCase):
                 self.assertEqual(integrated.production.calls, 0)
                 self.assertEqual(agent.diagnostics, {})
 
+    def test_day_hour_clock_rejects_noncanonical_calendar_before_production(self):
+        for turns in (True, 24.0, "24", 0, -1, None):
+            with self.subTest(turnsPerDay=turns):
+                integrated = RecordingIntegrated()
+                agent = DEADLINE.DeadlineFallbackAgent(integrated)
+                obs = observation(player=0, step=...)
+                obs.update({"day": 29, "hour": 22})
+                with self.assertRaises(ValueError):
+                    agent.act(obs, {"turnsPerDay": turns, "episodeSteps": 720})
+                self.assertEqual(integrated.production.calls, 0)
+                self.assertEqual(agent.diagnostics, {})
+
+        for hour in (24, 25, 718):
+            with self.subTest(hour=hour):
+                integrated = RecordingIntegrated()
+                agent = DEADLINE.DeadlineFallbackAgent(integrated)
+                obs = observation(player=0, step=...)
+                obs.update({"day": 29, "hour": hour})
+                with self.assertRaises(ValueError):
+                    agent.act(obs, {"turnsPerDay": 24, "episodeSteps": 720})
+                self.assertEqual(integrated.production.calls, 0)
+                self.assertEqual(agent.diagnostics, {})
+
+    def test_explicit_step_redundant_clock_must_be_complete_exact_and_agree(self):
+        bad_observations = (
+            {"day": 29},
+            {"hour": 22},
+            {"day": True, "hour": 22},
+            {"day": 29, "hour": True},
+            {"day": 29, "hour": 24},
+            {"day": 29, "hour": 21},
+            {"day": 30, "hour": 22},
+        )
+        for redundant in bad_observations:
+            with self.subTest(redundant=redundant):
+                integrated = RecordingIntegrated()
+                agent = DEADLINE.DeadlineFallbackAgent(integrated)
+                obs = observation(player=0, step=718)
+                obs.update(redundant)
+                with self.assertRaises(ValueError):
+                    agent.act(obs, {"turnsPerDay": 24, "episodeSteps": 720})
+                self.assertEqual(integrated.production.calls, 0)
+                self.assertEqual(agent.diagnostics, {})
+
+        for turns in (True, 24.0, "24", 0, -1, None):
+            with self.subTest(redundant_turns=turns):
+                integrated = RecordingIntegrated()
+                agent = DEADLINE.DeadlineFallbackAgent(integrated)
+                obs = observation(player=0, step=718)
+                obs.update({"day": 29, "hour": 22})
+                with self.assertRaises(ValueError):
+                    agent.act(obs, {"turnsPerDay": turns, "episodeSteps": 720})
+                self.assertEqual(integrated.production.calls, 0)
+                self.assertEqual(agent.diagnostics, {})
+
+    def test_explicit_step_accepts_matching_redundant_clock(self):
+        integrated = RecordingIntegrated()
+        agent = DEADLINE.DeadlineFallbackAgent(integrated)
+        obs = observation(player=0, step=718)
+        obs.update({"day": 29, "hour": 22})
+        output = agent.act(obs, {"turnsPerDay": 24, "episodeSteps": 720})
+        self.assertEqual(output, {"farmer": ["PASS"], "hands": [], "market": []})
+        self.assertEqual(integrated.production.calls, 1)
+        self.assertEqual(integrated.production.seen["step"], 718)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
