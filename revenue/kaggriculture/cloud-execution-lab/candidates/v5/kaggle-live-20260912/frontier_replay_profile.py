@@ -48,6 +48,33 @@ def _plain_int(value: object, *, field: str, minimum: int = 0) -> int:
     return value
 
 
+def _aliased_plain_int(
+    mapping: Mapping[str, Any],
+    keys: Sequence[str],
+    *,
+    field: str,
+    minimum: int = 0,
+    required: bool,
+) -> int | None:
+    """Bind redundant public identity spellings to one exact integer value."""
+    values: list[tuple[str, int]] = []
+    for key in keys:
+        if key not in mapping:
+            continue
+        values.append(
+            (key, _plain_int(mapping[key], field=f"{field}.{key}", minimum=minimum))
+        )
+    if not values:
+        if required:
+            raise ReplayProfileError(f"{field} is missing")
+        return None
+    first = values[0][1]
+    if any(value != first for _, value in values[1:]):
+        names = ", ".join(key for key, _ in values)
+        raise ReplayProfileError(f"{field} aliases disagree: {names}")
+    return first
+
+
 def _config_int(config: Mapping[str, Any], key: str, default: int) -> int:
     value = config.get(key, default)
     try:
@@ -67,20 +94,26 @@ def _phase(decision_step: int, turns_per_day: int) -> str:
 
 
 def _episode_id_from_replay(replay: Mapping[str, Any]) -> int | None:
-    for key in ("episode_id", "episodeId", "id"):
-        value = replay.get(key)
-        if value is None:
-            continue
-        return _plain_int(value, field=f"replay.{key}", minimum=1)
-    return None
+    return _aliased_plain_int(
+        replay,
+        ("episode_id", "episodeId", "id"),
+        field="replay episode id",
+        minimum=1,
+        required=False,
+    )
 
 
 def _episode_agents(manifest: Mapping[str, Any]) -> tuple[int, Sequence[Any]]:
     episode = manifest.get("episode", manifest)
     if not isinstance(episode, dict):
         raise ReplayProfileError("identity manifest episode must be an object")
-    episode_id = episode.get("id", episode.get("episode_id"))
-    episode_id = _plain_int(episode_id, field="identity episode id", minimum=1)
+    episode_id = _aliased_plain_int(
+        episode,
+        ("id", "episode_id"),
+        field="identity episode id",
+        minimum=1,
+        required=True,
+    )
     agents = episode.get("agents")
     if not isinstance(agents, list) or not agents:
         raise ReplayProfileError("identity manifest must contain non-empty agents")
@@ -132,9 +165,12 @@ def validate_identity(
     agent = agents[seat]
     if not isinstance(agent, dict):
         raise ReplayProfileError(f"identity manifest agent {seat} must be an object")
-    actual_submission = agent.get("submissionId", agent.get("submission_id"))
-    actual_submission = _plain_int(
-        actual_submission, field=f"identity agents[{seat}].submissionId", minimum=1
+    actual_submission = _aliased_plain_int(
+        agent,
+        ("submissionId", "submission_id"),
+        field=f"identity agents[{seat}] submission id",
+        minimum=1,
+        required=True,
     )
     if actual_submission != submission_id:
         raise ReplayProfileError(
