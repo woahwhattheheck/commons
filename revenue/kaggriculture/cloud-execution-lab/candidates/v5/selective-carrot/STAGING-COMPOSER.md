@@ -50,7 +50,9 @@ python -B staging_composer.py \
   --receipt /fresh/v5-staged.json
 ```
 
-The receipt binds baseline/candidate SHA256, every component-manifest SHA256, ordered dependencies/conflicts, replacements with exact pre/post identities, additions with explicit absence preconditions and postimages, complete final member hashes, and `kaggle_submission_hold=true`. Output paths are create-only; both finals are reserved before either payload is written and owned reservations are rolled back on ordinary write/publication failure.
+The receipt binds baseline/candidate SHA256, every component-manifest SHA256, ordered dependencies/conflicts, replacements with exact pre/post identities, additions with explicit absence preconditions and postimages, complete final member hashes, and `kaggle_submission_hold=true`.
+
+Output paths are create-only. Both finals are reserved before either payload is written; both reserved descriptors stay open while payloads are written and fsynced. Before success, each final pathname is re-authenticated as a regular file with the exact reserved device/inode and exact payload bytes, parent directories are fsynced, and the pathname/payload verification is repeated. Failure cleanup removes only pathnames that still resolve to an inode owned by this invocation, so a foreign replacement is preserved. This is a fail-closed publication verification boundary; it does not claim that an untrusted actor can never rename a pathname after the final check.
 
 ## Boundary
 
@@ -59,7 +61,7 @@ This tool answers only: **can these exact reviewed component bytes be composed w
 Focused gate:
 
 ```bash
-python -B -m py_compile staging_composer.py test_staging_composer.py test_staging_composer_additions.py
-python -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py
-python -O -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py
+python -B -m py_compile staging_composer.py test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
+python -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
+python -O -B -m unittest -v test_staging_composer.py test_staging_composer_additions.py test_staging_composer_publication.py
 ```
