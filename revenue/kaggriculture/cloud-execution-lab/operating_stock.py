@@ -32,6 +32,26 @@ def _order_quantity(order):
     return max(0, quantity)
 
 
+def _market_prefix(row, maximum):
+    """Return only list-shaped executable market rows or fail closed.
+
+    The pinned engine ignores malformed rows after its raw prefix cap. These
+    optional proof transforms therefore validate only that effective prefix and
+    never let a truthy non-list row escape as a Python indexing exception.
+    """
+    if not isinstance(row, dict):
+        raise ValueError('malformed_market_row')
+    market = row.get('market')
+    if market is None:
+        market = []
+    if not isinstance(market, list):
+        raise ValueError('malformed_market_row')
+    prefix = market[:maximum]
+    if any(order and not isinstance(order, list) for order in prefix):
+        raise ValueError('malformed_market_row')
+    return prefix
+
+
 def _feed_window(mechanics, observation, configuration, selected, farm, private,
                  route, checkpoints):
     """A position/input requirement, without executing future game states.
@@ -100,9 +120,8 @@ def _feed_window(mechanics, observation, configuration, selected, farm, private,
                 if op in MOVES:
                     dx, dy = MOVES[op]; q = (pos[0] + dx, pos[1] + dy)
                     if 0 <= q[0] < 10 and 0 <= q[1] < 10:positions[actor] = q
-        for slot, order in enumerate((row.get('market') or [])[:10]):
+        for slot, order in enumerate(_market_prefix(row, 10)):
             if not order:continue
-            if not isinstance(order, list):raise ValueError('malformed_future_order')
             op = order[0]; cost = 0
             if op == 'SELL':
                 q = _order_quantity(order)
@@ -217,8 +236,12 @@ def protect_feed_stock(mechanics, observation, configuration, selected,
     """
     report = {'changed': False, 'reason': 'no_wheat_sale', 'certified': False,
               'future_cash_gain_measured': False}
-    orders = selected.get('market') or []
-    if not any(o and o[:2] == ['SELL', 'WHEAT'] for o in orders[:10]):return selected, report
+    try:
+        orders = _market_prefix(selected, 10)
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
+    if not any(o and o[:2] == ['SELL', 'WHEAT'] for o in orders):return selected, report
     try:
         cfg = configuration or {}; now = _whole(observation['step'])
         if (len(post_farm['tiles']) != 10 or int(cfg.get('turnsPerDay', 24)) != 24
@@ -233,7 +256,7 @@ def protect_feed_stock(mechanics, observation, configuration, selected,
         stock = _whole(post_private['shed'].get('WHEAT', 0))
         returned_wheat = sum(_whole(v.get('WHEAT', 0)) for v in post_private['inventories']) if reset else 0
         if required > stock + returned_wheat:raise ValueError('observed_wheat_cannot_cover_feed_prefix')
-        offered = sum(_order_quantity(o) for o in orders[:10] if o and o[:2] == ['SELL', 'WHEAT'])
+        offered = sum(_order_quantity(o) for o in orders if o and o[:2] == ['SELL', 'WHEAT'])
         permitted = min(stock, max(0, stock + returned_wheat - required))
         withheld = max(0, min(stock, offered) - permitted)
         if withheld > 2:raise ValueError('feed_reservation_exceeds_two_units')
@@ -334,7 +357,7 @@ def _bonus_water_service(mechanics, observation, configuration, selected,
                     dx, dy = MOVES[op]; q = (pos[0] + dx, pos[1] + dy)
                     if 0 <= q[0] < 10 and 0 <= q[1] < 10:
                         positions[actor] = q
-        for order in (row.get('market') or [])[:maximum]:
+        for order in _market_prefix(row, maximum):
             if not order:
                 continue
             op = order[0]
@@ -383,7 +406,7 @@ def _operating_stock_commitments(mechanics, configuration, post_farm, rows):
     mult = float(cfg.get('farmHandCostMult', 1))
     required = 0.0; commitments = []
     for step, row in rows:
-        for slot, order in enumerate((row.get('market') or [])[:max_orders]):
+        for slot, order in enumerate(_market_prefix(row, max_orders)):
             if not order:
                 continue
             op = order[0]; cost = 0.0
@@ -425,10 +448,14 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     """
     report = {'changed': False, 'reason': 'no_fertilizer_sale'}
     cfg = configuration or {}
-    maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
-    orders = (selected.get('market') or [])[:maximum]
-    offered = sum(max(0, int(o[2])) for o in orders
-                  if o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER'])
+    try:
+        maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+        orders = _market_prefix(selected, maximum)
+        offered = sum(_order_quantity(o) for o in orders
+                      if o and len(o) > 2 and o[:2] == ['SELL', 'FERTILIZER'])
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
     if not offered:
         return selected, report
     now = int(observation['step']); day = now // 24
@@ -448,41 +475,48 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         report['reason'] = 'current_hiring_boundary'
         return selected, report
     scan_stop = min(end + 1, len(route))
-    for step in range(now + 1, scan_stop):
-        if any(o and o[0] == 'HIRE'
-               for o in (route[step].get('market') or [])[:maximum]):
-            end = step
-            scan_stop = step
-            break
+    try:
+        for step in range(now + 1, scan_stop):
+            if any(o and o[0] == 'HIRE' for o in _market_prefix(route[step], maximum)):
+                end = step
+                scan_stop = step
+                break
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
     schedule = []
     pickups = []
     # Future fixed deposits only. Current BUY arrivals are traced in their real
     # queue order by _current_room_bound after the fertilizer sale is rewritten.
     deposits = 0
-    for step in range(now + 1, scan_stop):
-        row = route[step]
-        for order in (row.get('market') or [])[:maximum]:
-            if order and order[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'):
-                if len(order) > 2:
-                    deposits += max(0, int(order[2]))
-                if len(order) > 1 and order[1] == 'FERTILIZER':
-                    report['reason'] = 'intervening_requested_replenishment'
+    try:
+        for step in range(now + 1, scan_stop):
+            row = route[step]
+            for order in _market_prefix(row, maximum):
+                if order and order[0] in ('BUY_PRODUCT', 'BUY_ANIMAL'):
+                    if len(order) > 2:
+                        deposits += max(0, int(order[2]))
+                    if len(order) > 1 and order[1] == 'FERTILIZER':
+                        report['reason'] = 'intervening_requested_replenishment'
+                        return selected, report
+            for actor, pos in enumerate(positions):
+                action = _action(row, actor)
+                schedule.append((step, actor, pos, action))
+                if action[0] == 'DROP':
+                    report['reason'] = 'unbounded_intervening_drop'
                     return selected, report
-        for actor, pos in enumerate(positions):
-            action = _action(row, actor)
-            schedule.append((step, actor, pos, action))
-            if action[0] == 'DROP':
-                report['reason'] = 'unbounded_intervening_drop'
-                return selected, report
-            if action[0] == 'PLACE' and len(action) > 1 and action[1] not in mechanics.ANIMALS:
-                deposits += max(0, int(action[2]) if len(action) > 2 else 1)
-            if action[:2] == ['PICKUP', 'FERTILIZER']:
-                pickups.append((step, actor, pos, max(0, int(action[2]) if len(action) > 2 else 1)))
-            if action[0] in MOVES:
-                dx, dy = MOVES[action[0]]
-                new = (pos[0] + dx, pos[1] + dy)
-                if 0 <= new[0] < board and 0 <= new[1] < board:
-                    positions[actor] = new
+                if action[0] == 'PLACE' and len(action) > 1 and action[1] not in mechanics.ANIMALS:
+                    deposits += max(0, int(action[2]) if len(action) > 2 else 1)
+                if action[:2] == ['PICKUP', 'FERTILIZER']:
+                    pickups.append((step, actor, pos, max(0, int(action[2]) if len(action) > 2 else 1)))
+                if action[0] in MOVES:
+                    dx, dy = MOVES[action[0]]
+                    new = (pos[0] + dx, pos[1] + dy)
+                    if 0 <= new[0] < board and 0 <= new[1] < board:
+                        positions[actor] = new
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
     if len(pickups) != 1:
         report['reason'] = 'requires_one_unambiguous_pickup'
         return selected, report
@@ -553,7 +587,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     remaining = limit
     for index, order in enumerate(candidate_orders[:maximum]):
         if order and len(order) > 2 and order[:2] == ['SELL', 'FERTILIZER']:
-            take = min(max(0, int(order[2])), remaining)
+            take = min(_order_quantity(order), remaining)
             candidate_orders[index] = ['SELL', 'FERTILIZER', take] if take else []
             remaining -= take
     capacity = int(cfg.get('shedCapacity', 100))
@@ -612,8 +646,12 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
         report['reason'] = 'committed_liquidity_shortfall'
         report['commitment_liquidity'] = liquidity
         return selected, report
-    water_service, reason = _bonus_water_service(
-        mechanics, observation, cfg, selected, post_farm, route, obligations, checkpoints)
+    try:
+        water_service, reason = _bonus_water_service(
+            mechanics, observation, cfg, selected, post_farm, route, obligations, checkpoints)
+    except (ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError) as error:
+        report['reason'] = str(error)
+        return selected, report
     if reason:
         report['reason'] = reason
         return selected, report
@@ -621,7 +659,7 @@ def protect_operating_stock(mechanics, observation, configuration, selected,
     remaining = limit
     for index, order in enumerate(out['market'][:maximum]):
         if order and len(order) > 2 and order[:2] == ['SELL', 'FERTILIZER']:
-            take = min(max(0, int(order[2])), remaining)
+            take = min(_order_quantity(order), remaining)
             out['market'][index] = ['SELL', 'FERTILIZER', take] if take else []
             remaining -= take
     report.update(changed=True, reason='reserve_reachable_fertilizer', actor=actor,

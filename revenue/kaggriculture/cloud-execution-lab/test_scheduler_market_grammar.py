@@ -42,7 +42,7 @@ class SchedulerMarketGrammarContracts(TestCase):
             (),
             {'op': 'HIRE'},
             [],
-            ['HIRE'],
+            ['SELL'],
             ['SELL', 'CARROT'],
             ['SELL', 'CARROT', 'x'],
             ['SELL', 'CARROT', 0],
@@ -57,6 +57,8 @@ class SchedulerMarketGrammarContracts(TestCase):
             with self.subTest(row=row):
                 self.assertIsNone(s._parse_market_order(row))
 
+        self.assertEqual(s._parse_market_order(['HIRE']), ('HIRE', None, 1))
+        self.assertEqual(s._parse_market_order(['BUY_LAND']), ('BUY_LAND', None, 1))
         self.assertEqual(s._parse_market_order(['HIRE', 'ignored']), ('HIRE', None, 1))
         self.assertEqual(s._parse_market_order(['BUY_LAND', 'ignored', 'trailing']),
                          ('BUY_LAND', None, 1))
@@ -76,10 +78,10 @@ class SchedulerMarketGrammarContracts(TestCase):
             'market': [
                 ('HIRE', 'ignored'),
                 {'op': 'HIRE'},
-                ['HIRE'],
+                ['SELL'],
                 ['BUY_PRODUCT', 'WHEAT', 'x'],
                 ['BUY_PRODUCT', 'NOT_A_PRODUCT', 99],
-                ['HIRE', 'ignored'],
+                ['HIRE'],
             ]
         }
         original = deepcopy(malformed)
@@ -87,7 +89,7 @@ class SchedulerMarketGrammarContracts(TestCase):
         self.assertEqual(actor.cash_reserve(obs, {}, malformed, 0), expected)
         self.assertEqual(malformed, original)
 
-        two_hires = {'market': [['HIRE', 'first'], ['HIRE', 'suffix']]}
+        two_hires = {'market': [['HIRE'], ['HIRE', 'suffix']]}
         for cap in (0, -3):
             with self.subTest(cap=cap):
                 self.assertEqual(

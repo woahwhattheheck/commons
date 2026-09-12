@@ -5,7 +5,7 @@ from types import SimpleNamespace
 import unittest
 
 import mechanics as m
-from operating_stock import protect_feed_stock, _current_room_bound
+from operating_stock import protect_feed_stock, protect_operating_stock, _current_room_bound
 from titan_runtime import Features, TitanAgent
 
 
@@ -46,6 +46,35 @@ class FeedStockTests(unittest.TestCase):
         self.assertEqual(report['withheld_units'], 2)
         self.assertTrue(report['certified'])
         self.assertEqual((self.obs, self.selected, self.route), before)
+
+    def test_malformed_current_market_row_fails_closed_before_feed_scan(self):
+        self.selected['market'] = [17, ['SELL', 'WHEAT', 9]]
+        self.unchanged('malformed_market_row')
+
+    def test_operating_stock_market_shape_fails_closed_current_and_future(self):
+        farm = {'farmer': [4, 4], 'hands': [[4, 4]], 'money': 50000,
+                'tiles': [[None for _ in range(10)] for _ in range(10)]}
+        private = {'inventories': [{}, {}], 'shed': {'FERTILIZER': 9}, 'seeds': {}}
+        observation = {'step': 460, 'player': 0, 'day': 19,
+                       'market': {'inventory': {'FERTILIZER': 10300}}}
+        selected = {'farmer': ['PASS'], 'hands': [['PASS']],
+                    'market': [17, ['SELL', 'FERTILIZER', 9]]}
+        route = [{'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                 for _ in range(720)]
+        result, report = protect_operating_stock(
+            m, observation, {}, selected, farm, private, route, ())
+        self.assertIs(result, selected)
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'malformed_market_row')
+
+        selected = {'farmer': ['PASS'], 'hands': [['PASS']],
+                    'market': [['SELL', 'FERTILIZER', 9]]}
+        route[461]['market'] = [17]
+        result, report = protect_operating_stock(
+            m, observation, {}, selected, farm, private, route, ())
+        self.assertIs(result, selected)
+        self.assertFalse(report['changed'])
+        self.assertEqual(report['reason'], 'malformed_market_row')
 
     def test_carried_wheat_covers_existing_feeds(self):
         self.private['inventories'][1]['WHEAT'] = 2
