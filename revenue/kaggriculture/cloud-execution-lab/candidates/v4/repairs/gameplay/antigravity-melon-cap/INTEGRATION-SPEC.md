@@ -11,38 +11,45 @@ non-MELON proposals pass through.
 
 ## Executable proposal custody
 
-Canonical `fourth_quadrant.proposals()` stores the executable plan in
-`proposal['variants'][route]['patches']`, and `FourthQuadrant.install()` applies
-those patch rows directly. Outer `tiles`, `size`, and `seed_units` are metadata;
-they are not a safe authority for partial reconstruction.
+Canonical `fourth_quadrant.proposals()` stores proposal-owned executable custody
+in both `proposal['variants'][route]['patches']` and the companion `bundle`.
+`bundle.lots[*]` records the exact selected tile, plant step and 1-based worker;
+`bundle.land.{step,slot}` records the insertion point immediately after inherited
+market rows. The producer appends `BUY_LAND`, `BUY_SEED <crop> <qty>`, then HIREs
+at that point. `FourthQuadrant.install()` applies the patch rows directly.
 
-`filter_proposals()` therefore treats every MELON proposal as atomic:
+Outer `tiles`, optional `size`, and `seed_units` are therefore cross-checks, not
+a safe authority for partial reconstruction. `filter_proposals()` treats every
+MELON proposal as atomic and requires every route variant to prove all of:
 
-- count actual `PLANT MELON` actions in every route variant's executable patches;
-- require every route variant to have the same positive cardinality;
-- require `tiles`, optional `size`, and `seed_units` to agree with that executable
-  cardinality;
-- admit the **original proposal object unchanged** only when the whole executable
-  commitment fits the remaining cap;
-- reject malformed or oversized MELON proposals rather than trimming metadata or
-  synthesizing patches.
+- unique outer coordinate tiles and exact `seed_units` cardinality;
+- exactly one bundle lot per selected tile;
+- every lot's `plant_step` + positive 1-based `worker` points to literal
+  `PLANT MELON` in that route's executable patch;
+- no two lots reuse the same `(plant_step, worker)` executable slot;
+- the lot tile set exactly equals the outer tile set;
+- `bundle.land.step/slot` points to literal `BUY_LAND` followed immediately by
+  literal positive-int `BUY_SEED MELON N`, where `N` equals the same commitment;
+- optional `size`, when present, also equals the commitment.
 
+Using `bundle.land.slot` is deliberate: blindly summing every BUY_SEED in copied
+patch rows could count inherited route economics as proposal spending. The bundle
+position identifies the producer-owned order.
+
+An admitted MELON proposal remains the **original object unchanged**. Malformed
+or oversized proposals are dropped, never shallow-shrunk or rewritten.
 FourthQuadrant alternatives are mutually exclusive: its admission callback must
-return exactly one supplied proposal or `None`. Safe candidate alternatives
-therefore do **not** consume one another's budget merely by appearing earlier in
-the proposal list. This preserves valuation choice while the selected plan remains
-bounded by the same real-world committed-production reserve.
+return exactly one supplied proposal or `None`, so safe candidate alternatives do
+**not** consume one another's budget merely by appearing earlier in the list.
 
 `MELON_LIFETIME_UNIT_CAP = 28` is deliberately conservative and is not claimed
 to equal the exact number of full-season town-center consumption ticks.
 
 ## Reproduce focused validation
 
-The committed unit suite is dependency-free:
-
 ```sh
-python -m unittest -v test_melon_cap.py
-python -O -m unittest -v test_melon_cap.py
+python -B -m unittest -q test_melon_cap.py
+python -O -B -m unittest -q test_melon_cap.py
 python -m py_compile melon_cap.py test_melon_cap.py check_fourth_quadrant_contract.py
 ```
 
@@ -55,10 +62,12 @@ python check_fourth_quadrant_contract.py --package /path/to/package
 python -O check_fourth_quadrant_contract.py --package /path/to/package
 ```
 
-That harness uses the real producer to obtain five- and four-plant MELON
-alternatives, proves the five-plant proposal is rejected without mutation, proves
-the original four-plant proposal survives by object identity, and passes that
-filtered choice through real `FourthQuadrant.install()`.
+The harness uses the real producer to obtain five- and four-plant MELON
+alternatives, authenticates exact lot→patch PLANT custody and producer-owned
+BUY_SEED quantity, mutates BUY_SEED 4→5 as a fail-closed predecessor, proves the
+five-plant proposal is rejected without mutation, proves the original four-plant
+proposal survives by object identity, and passes that choice through real
+`FourthQuadrant.install()`.
 
 Hook only when `configuration.get("r04_melon_cap") is True`, at the one canonical
 proposal seam. OFF identity, current-native engagement, economics, and whole-v4
