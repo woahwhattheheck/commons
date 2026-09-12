@@ -1,0 +1,53 @@
+{
+  "schema": "titan-v4-integration-ledger/v1",
+  "canonical_branch": "main",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "production_target": "revenue/kaggriculture/cloud-execution-lab",
+  "production_archive": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+  "entrypoint": "main.py::agent",
+  "production_abi_note": "Current production uses the newer titan_runtime frozen/ordered/parent architecture. The legacy r04 apply_v4 materializer is donor tooling and must not be executed against the production root.",
+  "baseline": {
+    "source_commit": "15b2b5d2025a7c6976557b5ec3e458a3f09f412b",
+    "tree_sha": "79d122d9a73592dd11b6911852c0f0162b2f8713",
+    "main_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor",
+    "status": "landed"
+  },
+  "landed": [
+    {"lane":"E20 executable-prefix repair","source_blob":"cd497140d188794d610d3ae387de8758ecbd0765","test_blob":"506703d87a4ee05afae83d607cb25f93dfaafb1a","status":"source_and_test_landed"},
+    {"lane":"W1 dead-water harvest","owner_pr":12601,"source_blob":"7bef7daef02c859e572cc0972821ce3aa4017714","test_blob":"4bfbc8ac3553a56947854fb0c0ca9f8cb8104dd4","status":"default_off"},
+    {"lane":"F2 feed prebuy","owner_pr":12609,"source_blob":"00cbafea47a5dd753a97fc047efffe15627e42f5","test_blobs":["868b85a61fc7da2233eec485cfe7f839020af5f9","bbe2988dc4f6c57c17a2475ea7999da9acecfab0","3dae7c606fd3a65d522de990e3b6c8e1294e114d","ca0ac86ac8a18703bc75401b7b63083b38d2f5ce"],"status":"default_off"},
+    {"lane":"F3 V217 EOD tail","owner_pr":12638,"source_blob":"1348e796acba28b22d85fac8a57e080f0504ddff","test_blobs":["e6cfc00b1b8574b1b26f560f48c5588bcbd55a16","263cebeaf88b1b0ef1c99b5ad1139cf09e1225a5"],"status":"default_off"},
+    {"lane":"S2 sheep swap","source_blob":"84b025aa9ead6bf362445ad9c3e97598c175c5fd","status":"source_landed_by_concurrent_seat_test_not_audited_here"}
+  ],
+  "recovered_not_yet_composed": [
+    {"lane":"S1 fertilizer sweep","owner_pr":12630,"owner_head":"f90cdeeff532fead055d443d9010c6753ef297f9","source_blob":"56e8b9f98f54ced531d96a63928c84447ecef24b","test_blob":"75a7d7a7fe14921d8b3d158b5d4406ba015c558d"},
+    {"lane":"V224 raw-slot preservation","owner_pr":12615,"owner_head":"652c00dd5ea6232e64ad22a8d07127fd4cfccd19","source_blob":"43afebae35560e54dde645cff656c8be8031851f","test_blob":"4e3ece39b80bbfea4d4232745f9ef01c1c53c205"},
+    {"lane":"H1 terminal harvest","owner_pr":12621,"owner_head":"d21734e6a9e12c6019c7f4eae62361d2ebebee7b","source_blob":"5814bf4ae43573f5a4ecc5edb76e0ca70958e05a","test_blob":"a4ead93da00b6f000f6255f614423aee30f0b7bc"},
+    {"lane":"S8 egg care","owner_pr":12600,"owner_head":"a07518e2de3af73fdefc80f633af1674137f1386","source_blob":"30a0e05c0cd7a435a59316d9d070da59eb2bb865","test_blob":"66fada01bf161d7b5cf76f99fec9f8d3ff7a4e30"},
+    {"lane":"S6 fertilizer ROI","owner_pr":12598,"owner_head":"cf9edace1c3c5d80f70c639339a02a07b8579a53","source_blob":"87f85de017ad7b321ae74fb4dbb070f1494842cc","test_blob":"ddd5508811f0ed10f1009334c134b825c95e8c5f"},
+    {"lane":"F1 fertilizer mix","owner_pr":12596,"owner_head":"4a91b3d10d51c1c5aaadfe08df40d497b3523403","source_blob":"f9db2da92609a7086c6dcaf6adfcb9dbdddd3f0f","test_blob":"cf3200ef98202ea60bafea8530c1973bc365fbfc"},
+    {"lane":"D4 strawberry timing","owner_pr":12606,"owner_head":"90907e443bb858c6b5880c9a49620c027ad8d3c9","source_blob":"674c96ad413a8c3855ad2ac1998acb1f24c41203","test_blob":"78ba5870d594b548231962684b2b64e8838d6977"},
+    {"lane":"S3 SE land","owner_pr":12592,"owner_head":"fa8cdfdaf7163041e300a902e2430963da099b21","source_blob":"9c17c8ccc197d12383d29bba717016435a4a863f","test_blob":"beb896b6e39e2d9e12608c97533ed57583725a00"},
+    {"lane":"R5 bakery-yarn route","owner_pr":12624,"owner_head":"3d7d07ccc0826fd9aef5a7b03791939b7e21925b","generator_blob":"060c6356701a7c4154c671104d154d5895ef772b","test_blob":"e0096024a0d3bdbf93ca17e9f0c0d8d922d069b9","note":"generator-level; fold once into shared composer, never overwrite broad materializer with this narrow snapshot"}
+  ],
+  "duplicate_resolution": {
+    "PLACE":{"owner_pr":12622,"owner_head":"d1a55af2112b92df6e266fd34c2f9392562710a9","source_blob":"987b06d54b1b8fd6d08cf78be0b4b3a398969ac7","status":"already_exact_in_baseline; duplicates excluded"},
+    "D4":{"owner_pr":12606,"duplicate_prs_excluded":[12607,12608,12610]}
+  },
+  "negative_or_parked": [
+    {"lane":"W2 dead-feed care","owner_pr":12616,"disposition":"NO_BUILD_negative_receipt_do_not_activate"},
+    {"lane":"B6","owner_pr":12417,"disposition":"rejected_evidence_only"},
+    {"lane":"A1/V233 hour23 service","owner_pr":12623,"disposition":"parked_no_op_do_not_promote"},
+    {"lane":"S5 PET carrot","owner_pr":12602,"disposition":"analysis_falsifier_only"}
+  ],
+  "rules": [
+    "main is the sole integration line; old refs are donor/evidence only",
+    "preserve exact donor bytes before semantic porting",
+    "never force-update main",
+    "do not execute the legacy r04 materializer against current production ABI",
+    "compose shared apply_v4 plumbing once after donor custody converges",
+    "recovered gameplay keys remain default-OFF until evidence gates authorize promotion",
+    "negative, parked and superseded lanes remain receipts rather than active mechanisms"
+  ],
+  "next": "Finish exact custody for recovered_not_yet_composed, build one shared legacy-workspace composition, then separately port compatible semantics into the current production ABI."
+}
