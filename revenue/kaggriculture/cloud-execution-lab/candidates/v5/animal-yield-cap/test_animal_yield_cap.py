@@ -77,6 +77,37 @@ class BuildTests(unittest.TestCase):
                 builder.EXPECTED_PARENT_MAIN_BLOB,
             )
 
+    def test_receipt_cannot_mutate_control_or_candidate_roots(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            for placement in ("control", "candidate"):
+                case = root / placement
+                case.mkdir()
+                baseline = self.exact_minimal_baseline(case)
+                out = case / "candidate"
+                receipt = (
+                    baseline / "receipt.json"
+                    if placement == "control"
+                    else out / "receipt.json"
+                )
+                with self.assertRaisesRegex(ValueError, "outside package roots"):
+                    builder.main(
+                        [
+                            "--baseline-root",
+                            str(baseline),
+                            "--out",
+                            str(out),
+                            "--receipt",
+                            str(receipt),
+                        ]
+                    )
+                self.assertFalse(out.exists())
+                self.assertFalse(receipt.exists())
+                self.assertEqual(
+                    builder.git_blob(baseline / "main.py"),
+                    builder.EXPECTED_PARENT_MAIN_BLOB,
+                )
+
     def test_materialization_failure_removes_partial_output(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
