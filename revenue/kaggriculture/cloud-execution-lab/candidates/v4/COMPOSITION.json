@@ -15,15 +15,15 @@
       "transforms": [
         {
           "surface": "titan_runtime.py::TitanAgent.act:selected-action-checkpoint",
-          "input_identity": "git-blob:b952c9c228ecbde592bf3d2df01638677abb0d24",
-          "output_identity": "git-blob:2b2bd80e3fa76c61139bdbfeaa58dc8a8987339a"
+          "input_identity": "git-blob:6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
+          "output_identity": "git-blob:6472260d9aa82f1d6e4008afb24a2645bfb1226c"
         }
       ],
       "requires": [],
       "before": [],
       "after": [],
       "conflicts": [],
-      "note": "Current-ABI adapter is authenticated and component-tested, feature default-OFF; composable does not mean production-promoted."
+      "note": "Current-ABI adapter is authenticated and component-tested; #12940 proves the REBIND-compatible live edge, feature remains default-OFF, and composable does not mean production-promoted."
     },
     {
       "id": "funding-capacity-stack",
@@ -177,6 +177,30 @@
       "note": "LOOM-4 combined materialization reproduced the exact CAPTRACE frozen postimage first, then LIVEPATH accepted the authenticated UNITFLOW method preimage and produced exact whole-file before/after identities. Combined focused runtime gate passed 50/50 normal and 50/50 optimized. Source-only composition; not production promotion."
     },
     {
+      "id": "h3s420-sale-window",
+      "state": "compose",
+      "package": "research/sale-window-engagement",
+      "entrypoints": [
+        "research/sale-window-engagement/compose_current_h3s420.py"
+      ],
+      "receipt": "research/sale-window-engagement/H3S420-LOOM-MATERIALIZATION.json",
+      "transforms": [
+        {
+          "surface": "frozen_selected.py",
+          "input_identity": "git-blob:4a5d3d5f4bed04acf73c7339e41fed56badf34c9",
+          "output_identity": "git-blob:712f7334288951bdc5b8dd2a1aa1d7f985cd50dc"
+        }
+      ],
+      "requires": [
+        "projection-state-clone",
+        "scoped-construction"
+      ],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "Default-OFF source composition only. Same-tree scheduler remains git-blob:b29d1e9887f517506c5b3d858baa9bda5848e73f; #12896 HOLD economics remain separate and this edge is not runtime promotion."
+    },
+    {
       "id": "v218-native-movement-equivalence",
       "state": "evidence_only",
       "package": "repairs/gameplay/v218-legal-movement",
@@ -269,7 +293,8 @@
       "repairs/performance/funding-replay/apply_funding_replay.py",
       "repairs/performance/funding-replay/compose_funding_capacity.py",
       "repairs/performance/compose_scoped_constructor.py",
-      "repairs/performance/projection-state-clone/compose.py"
+      "repairs/performance/projection-state-clone/compose.py",
+      "research/sale-window-engagement/compose_current_h3s420.py"
     ],
     "strict": true,
     "ignore": []

@@ -25,6 +25,7 @@ REQUIRED_DISCOVERY_PATTERNS = frozenset({
     "repairs/performance/funding-replay/compose_funding_capacity.py",
     "repairs/performance/compose_scoped_constructor.py",
     "repairs/performance/projection-state-clone/compose.py",
+    "research/sale-window-engagement/compose_current_h3s420.py",
 })
 
 

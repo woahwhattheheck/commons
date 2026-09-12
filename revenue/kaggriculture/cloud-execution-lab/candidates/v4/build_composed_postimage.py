@@ -427,6 +427,27 @@ def _run_projection_clone(component: dict[str, Any], workspace: Path, worktree: 
     return rows
 
 
+def _run_h3s420(component: dict[str, Any], workspace: Path, worktree: Path,
+                 modules: dict[str, Any], sources: dict[str, bytes]) -> list[dict[str, Any]]:
+    ep = "research/sale-window-engagement/compose_current_h3s420.py"
+    _require_entrypoints(component, (ep,))
+    transforms = _component_transforms(component)
+    if set(transforms) != {"frozen_selected.py"}:
+        raise MaterializationError("h3s420 adapter owns only frozen_selected.py")
+    before = _assert_before(worktree, transforms)["frozen_selected.py"]
+    module = modules[ep]
+    compose = getattr(module, "compose", None)
+    if not callable(compose):
+        raise MaterializationError("h3s420 adapter missing compose()")
+    result = compose(before, enabled=True)
+    if not isinstance(result, bytes):
+        raise MaterializationError("h3s420 compose() did not return bytes")
+    if git_blob(result) != transforms["frozen_selected.py"]["after"]:
+        raise MaterializationError("h3s420 postimage disagrees with COMPOSITION.json")
+    _under(worktree, "frozen_selected.py").write_bytes(result)
+    return _assert_after(worktree, transforms)
+
+
 # Adapter source blobs are content identities from canonical main at authoring.
 # Any composer edit must be explicitly reviewed/rebound here before execution.
 ADAPTERS: dict[str, dict[str, Any]] = {
@@ -473,6 +494,13 @@ ADAPTERS: dict[str, dict[str, Any]] = {
         },
         "support_outputs": ["projection_clone.py"],
         "runner": _run_projection_clone,
+    },
+    "h3s420-sale-window": {
+        "entrypoints": {
+            "research/sale-window-engagement/compose_current_h3s420.py":
+                "7c5778b4d6d7c47f8feca7e800fc8093267b66f8",
+        },
+        "runner": _run_h3s420,
     },
 }
 
