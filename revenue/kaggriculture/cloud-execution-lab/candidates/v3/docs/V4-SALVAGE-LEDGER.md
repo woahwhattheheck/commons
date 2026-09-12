@@ -107,7 +107,8 @@ R04 router. Do not resurrect the old V3.1 package carrier or unconditional L3 ex
 
 The B5 CARROT and JIT fertilizer pair was merged into V3.1 in #12537. Current V4 already
 ships `r04_b5_carrot_fertilizer=True` and `r04_b5_jit_fertilize=True` with their router seams.
-No B5 re-port is needed.
+No B5 CARROT/JIT re-port is needed. This does **not** by itself prove equivalence to the older
+`r04_fert_daily_sweep` donor; that distinct idle-collection theorem is tracked below.
 
 ### B10 public-supply SELL ordering — V4 carrier exists
 
@@ -125,6 +126,64 @@ raw-slot handling, S6, H3e, C5, EOD capacity rescue, R5, and the parked A1 donor
 as V4-owned unless an exact source comparison proves a missing semantic repair.
 
 ## Proven or promising orphans still awaiting current-root consumption
+
+### A4 second-melon mid-day crew resync — SOURCE-READY THEOREM, MODERN PORT REQUIRED
+
+The V3.1 branch `riot/v3.1-lane-a4` ends at
+`7f244af80fb2b770f270a333759f8d1d188753ef`. Its important surviving theorem is not “copy the
+old melon controller”: when a second HIRE succeeds after the day's work queue has already been
+built, queue ownership must be rebuilt/resynchronized so the new worker does not remain idle
+for the rest of the day. The repaired donor's materialized suite was reported green (133/133),
+and the focused A4 lane covered the mid-day second-hire starvation case.
+
+Later A5 melon branches (`2d7682e...`, `6ffad0a...`, `8874eb9...`) harden JIT fertilizer and
+marginal-cap/yield reasoning but do not, by ancestry alone, consume the A4 crew-resync theorem.
+Do not resurrect the whole A4 router or its old economics. Port only the queue-resync invariant
+onto the current melon/crew implementation, keep any new surface default-OFF unless it can be
+folded as a pure correctness repair, and re-run current-stack actor/queue tests plus an engaged
+second-hire occurrence witness before promotion.
+
+### E3 strict price forecaster — HARDENED DEFAULT-OFF DONOR, CURRENT GATE REQUIRED
+
+The V3.1 branch `riot/v3.1-lane-e3` contains a complete default-OFF
+`r04_price_forecaster.py` donor. Original carrier `2baa5b8c...` forward-simulates the pinned
+market curve over a bounded horizon using deterministic town consumption and EMA-estimated
+rival sale flow; it can only shrink/drop existing SELL rows and carries a conservative
+near-term cash guard. The original lane reported 38 focused checks plus no new failures in the
+materialized V3 suite. Later descendants `de1c7183... -> 822365ac... -> a406fa91...` preserve
+the strict donor, fail closed on malformed evidence, and add evidence-laundering regression
+coverage.
+
+Current V4 does not expose this E3 module/key in the broad V4 apply surface. This is distinct
+from the newer **price-path projection gameplay tilt** listed in KILL below: that newer tilt
+failed to engage because the current JIT regime held no seeds, while E3 acts on authored SELL
+rows. Preserve E3 as a source donor, but do **not** enable it from old V3 evidence. Rebase its
+strict fail-closed semantics onto the current V4 market stack, then require an opponent-diverse
+current-engine occurrence/economic gate before any default flip or stack promotion.
+
+### A6 feed-WHEAT — OVERLAP/DEFER, DO NOT DUPLICATE BLINDLY
+
+The V3.1 branch `riot/v3.1-lane-a6` ends at
+`06cbe819efd49d6d871aec020abcef565c1129d3` and carries a default-OFF early feed-WHEAT
+mechanism with focused/materialized validation. Modern V4 already owns F2 feed-prebuy and H3e
+cow-feed-recycle families. Those mechanisms overlap the same WHEAT/funding/service surface but
+are not assumed byte- or trigger-equivalent.
+
+Do not add an A6 key merely because the old branch is absent. When the F2/H3e serial work is
+stable, perform an exact trigger/ownership diff against A6. Carry only any proven unique
+obligation or correctness theorem; otherwise mark A6 consumed-by-overlap and retire it.
+
+### B5 fertilizer daily sweep — DISTINCT LEGACY DONOR, OVERLAP/DEFER
+
+The older `riot/v3.1-lane-b5` branch ends at
+`8638d0db7068f38966424c59181875d8b128a72a` and includes `r04_fert_daily_sweep.py`, a
+default-OFF idle-worker fertilizer collection/drop sweep. Current V4's B5 CARROT/JIT fertilizer
+lanes cover crop fertilization, not obviously the same idle animal-tile collection behavior.
+
+Treat the daily sweep as an unresolved semantic donor rather than “already present.” First
+compare its exact triggers/actions against current S1/S6/B5/JIT behavior and measure whether it
+still fires on the modern stack. Only a non-overlapping, engaged positive slice should be
+recomposed; never port the stale whole-file/router wiring.
 
 ### EXEC-PACE-2 (`r04_exec_adaptive`) — PROVEN ORPHAN, ARTIFACT CUSTODY BLOCKED
 
@@ -232,10 +291,12 @@ the E184 collector must not count deferred calls inside generator-expression bod
 executed bridge edges: only the outermost generator iterable is eager at construction.
 
 The canonical branch remains frozen while the detached gameplay serial is validated. At the
-latest exact Git audit the clean candidate chain is `c52d5093... -> 33d763b3... ->
-a070acc4... -> fb1ee7b...`; `fb1` is server-ancestry clean and carries the combined hostile-
-money + exact two-seat M1 custody repair. Downstream serializers must still honor the focused
-execution/deconflict boundary before attaching F2/S6/W1/V224.
+latest exact Git audit the chronology-winning candidate chain is `c52d5093... -> 33d763b3... ->
+a070acc4... -> fb1ee7b...`; durable #12605 receipts make `fb1` the current gameplay validation
+target. The later direct-`c52d` `c456f004...` contains byte-valid combined M1 hardening but is a
+sibling and is donor-only under the one-tree rule. Downstream serializers must still honor the
+focused execution/deconflict boundary before attaching E20/F2/S6/W1/V224 and the source-ready
+salvage deltas above.
 
 Until the front advances, salvage work remains draft/source-carrier state. Re-read the shared
 canonical head, re-materialize these current-root postimages if required, and serialize them
