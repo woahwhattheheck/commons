@@ -37,17 +37,20 @@ def observation(money):
             "tiles": tiles,
         }],
         "private": {"shed": {"WHEAT": 0}, "inventories": [{}]},
-        "market": {"prices": {
-            "WHEAT": 30,
-            "EGG": 100,
-            "MILK": 100,
-            "WOOL": 100,
-            "FERTILIZER": 10,
-            "CARROT": 50,
-            "TOMATO": 50,
-            "STRAWBERRY": 50,
-            "MELON": 50,
-        }},
+        "market": {
+            "inventory": {"WHEAT": 2},
+            "prices": {
+                "WHEAT": 30,
+                "EGG": 100,
+                "MILK": 100,
+                "WOOL": 100,
+                "FERTILIZER": 10,
+                "CARROT": 50,
+                "TOMATO": 50,
+                "STRAWBERRY": 50,
+                "MELON": 50,
+            },
+        },
     }
 
 
