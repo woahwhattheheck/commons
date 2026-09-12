@@ -1,0 +1,105 @@
+name: titan-object-transport
+on:
+  push:
+    branches: [ops/titan-object-transport-20260912]
+    paths: [.github/workflows/titan-object-transport.yml]
+permissions:
+  contents: read
+concurrency:
+  group: titan-object-transport-20260912
+  cancel-in-progress: false
+jobs:
+  decode-publish:
+    if: github.repository == 'woahwhattheheck/commons' && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Decode only pinned transports and publish raw objects
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import base64
+          import gzip
+          import hashlib
+          import io
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          API = 'https://api.github.com/repos/woahwhattheheck/commons'
+          OBJECTS = (
+              ('checker-stage0', '82ea22d893638465e6d4b01307a314206ac77ced', 74960,
+               'f76603908169367f5707c72b244b91ab8983b4c5a075fba89301bcf38665b39e',
+               '29486689476e2c880021b26ac90b2ab7a407ff32'),
+              ('checker-patch1', '958640f146f1710c7e06a6dc78e78fafb57e5f23', 23375, None, None),
+              ('checker-patch2', '7d7a072c6daf57e3ce7eb3b9f76e735510483052', 49178, None, None),
+          )
+
+          def require(ok, message):
+              if not ok:
+                  raise RuntimeError(message)
+
+          def git_blob(data):
+              return hashlib.sha1(b'blob ' + str(len(data)).encode('ascii') + b'\0' + data).hexdigest()
+
+          def request(path, body=None):
+              require(path == '/git/blobs' or path.startswith('/git/blobs/'), 'endpoint out of scope')
+              encoded = None if body is None else json.dumps(body).encode('utf-8')
+              req = urllib.request.Request(
+                  API + path, data=encoded, method='GET' if body is None else 'POST',
+                  headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                           'Accept': 'application/vnd.github+json',
+                           'Content-Type': 'application/json',
+                           'X-GitHub-Api-Version': '2022-11-28'})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  value = response.read(1_000_001)
+              require(len(value) <= 1_000_000, 'oversized API response')
+              return json.loads(value)
+
+          def read_blob(sha):
+              require(len(sha) == 40 and all(c in '0123456789abcdef' for c in sha), 'invalid SHA')
+              obj = request('/git/blobs/' + sha)
+              require(obj.get('sha') == sha and obj.get('encoding') == 'base64', 'blob metadata mismatch')
+              data = base64.b64decode(''.join(obj['content'].split()), validate=True)
+              require(len(data) == obj['size'] and git_blob(data) == sha, 'blob bytes mismatch')
+              return data
+
+          receipts = []
+          for name, transport_sha, expected_size, expected_digest, expected_raw in OBJECTS:
+              transport = read_blob(transport_sha)
+              compressed = base64.b64decode(b''.join(transport.split()), validate=True)
+              with gzip.GzipFile(fileobj=io.BytesIO(compressed)) as stream:
+                  raw = stream.read(expected_size + 1)
+              digest = hashlib.sha256(raw).hexdigest()
+              raw_sha = git_blob(raw)
+              require(len(raw) == expected_size, name + ': decoded size mismatch')
+              require(expected_digest is None or digest == expected_digest, name + ': decoded SHA-256 mismatch')
+              require(expected_raw is None or raw_sha == expected_raw, name + ': decoded Git hash mismatch')
+              raw.decode('utf-8', errors='strict')
+              try:
+                  existing = read_blob(raw_sha)
+                  require(existing == raw, name + ': existing object differs')
+                  disposition = 'already-present'
+              except urllib.error.HTTPError as exc:
+                  if exc.code != 404:
+                      raise
+                  created = request('/git/blobs', {'encoding': 'base64',
+                                                   'content': base64.b64encode(raw).decode('ascii')})
+                  require(created.get('sha') == raw_sha, name + ': publication SHA mismatch')
+                  require(read_blob(raw_sha) == raw, name + ': server readback mismatch')
+                  disposition = 'published'
+              receipt = {'name': name, 'transport': transport_sha, 'bytes': len(raw),
+                         'sha256': digest, 'git_blob': raw_sha, 'status': disposition}
+              print(json.dumps(receipt, sort_keys=True))
+              receipts.append(receipt)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              summary.write('# TITAN raw object transport\n\n```json\n')
+              summary.write(json.dumps(receipts, indent=2, sort_keys=True))
+              summary.write('\n```\nNo downloaded Python executed; no gameplay, tree, branch, PR, or canonical ref was modified by this job. Raw publication is not C1 approval.\n')
+          PY
