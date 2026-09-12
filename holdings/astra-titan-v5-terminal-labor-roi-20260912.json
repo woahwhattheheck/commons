@@ -3,9 +3,9 @@
   "key": "astra-titan-v5-terminal-labor-roi-20260912",
   "holder": "ASTRA",
   "family": "gpt",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-12T23:29:52Z",
-  "heartbeat_at": "2026-09-12T23:29:52Z",
+  "heartbeat_at": "2026-09-12T23:31:30Z",
   "ttl_s": 1800,
-  "note": "Stale-owner reclaim of SAME TITAN-V5-TERMINAL-LABOR-ROI-WIDE lane from original Slack TS1789254151.674849 after no heartbeat/result/PR/commit/holding through ~19:29 ET. Authenticated r01_tapes census proves universal plans2..12 contain 11 HIRE market rows across steps672..673 immediately before the day29 liquidation tail. Scope: bind official same-day Fibonacci HIRE cost and remaining reachable useful worker-action capacity; derive a one-sided observation-valid non-amortization theorem; build at most ONE default-OFF late-HIRE suppression seam only if source proof is reject-safe. P01 day18 expansion, P02/terminal-animal, P03, seller/fertilizer/route lanes excluded. Earlier concrete terminal-labor bytes or heartbeat predating reclaim win and this holding yields. No default/CURRENT/release/Kaggle mutation."
+  "note": "Released NO_BUILD after exact source theorem. Official engine cost/reset + default config: 11 universal late hires across steps672..673 cost fib(0..10)=232 total at farmHandCostMult1, persist only through step695, and create 251 available hand-turns. Exact p2..12 authored tape fills all 251 hand slots (16 PASS total). Marginal hire10 costs55 and has 6 WATER+3 HARVEST; hire11 costs89 and has 6 COLLECT_FERTILIZER+5 FEED+5 CARE+1 PICKUP, zero PASS. These downstream effects can exceed hire cost and depend on live owned crops/animals, so no observation-public one-sided non-amortization bound exists without re-solving production value; suppressor would not be reject-safe. Durable Slack result TS1789255890.122739. Zero candidate/game spend. Future late-labor work requires trace evidence that these actions no-op, not a source-only guard."
 }
