@@ -35,7 +35,7 @@ The historical source is authority for semantics, not current promotion evidence
 
 ## Current surface
 
-`v231_late_current.V231LateCurrentABI`
+`v231_late_current_safe.V231LateCurrentABISafe`
 
 `enabled=False` is detached identity. `enabled=True` applies only the late V231
 selected-action transform. Malformed current envelopes fail closed to an unchanged
@@ -43,15 +43,19 @@ deep copy. The adapter is research-only: there is no runtime feature, config/def
 flip, archive rebuild, release pointer change, or Kaggle mutation here.
 
 Current callbacks may retry the same public step. Retry custody is transactional:
-the adapter snapshots pre-step state and the exact input/output/post-state. An identical
-same-step retry replays the detached result without reapplying state transitions; changed
-same-step evidence recomputes only from the pre-step snapshot and replaces the transaction.
-A true rewind resets the episode. This prevents pending purchase/placement ownership or
-milk credit from disappearing, duplicating, or resurrecting across retries.
+the public safe adapter snapshots the pre-step V231 state and restores that same
+preimage before every same-step retry. Identical retries are action/state idempotent;
+changed same-step evidence recomputes only from the pre-step snapshot. A true rewind
+starts a fresh epoch. This prevents pending purchase/placement ownership or milk credit
+from disappearing, duplicating, or resurrecting across retries.
+
+`v231_late_current.V231LateCurrentABI` remains the recovered donor-semantic core; it is
+not the public current callback surface because its historical `step <= last` reset is
+not retry-safe at a selected-action boundary.
 
 ## Focused contracts
 
-The suite proves:
+The suites prove:
 
 - exact authority pins;
 - OFF identity and strict-bool activation;
@@ -74,12 +78,13 @@ The suite proves:
 From this directory:
 
 ```bash
-python -B -m unittest -v test_v231_late_current.py
-python -O -B -m unittest -v test_v231_late_current.py
-python -m py_compile v231_late_current.py test_v231_late_current.py
+python -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
+python -O -B -m unittest -v test_v231_late_current.py test_v231_late_retry_safe.py
+python -m py_compile v231_late_current.py v231_late_current_safe.py test_v231_late_current.py test_v231_late_retry_safe.py
 ```
 
-Current strengthened local receipt: 17/17 normal, 17/17 `-O`, compile PASS.
+The dedicated exact-head Python 3.11/3.12 workflow runs this same full core + retry-safe
+contract set and requires a clean source tree after execution.
 
 Promotion requires a fresh current-V5 matched screen. First measure OFF vs V231-late.
 If it engages and survives economics, test the composed V231-late → existing gated S2
