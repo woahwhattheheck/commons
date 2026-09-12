@@ -49,7 +49,8 @@ The verifier accounts for the mechanics that make the raw slogan unsafe to apply
 - same-callback actor order is exact: WATER by an actor **before** the PLANT does not help; WATER by a later actor on the same tile does;
 - actor positions are carried through NORTH/SOUTH/EAST/WEST commands, including out-of-bounds movement no-ops, so later WATER must physically occur on the planted tile;
 - observation `hour` is strict-integer bound to `step % turnsPerDay`; a caller-inconsistent or type-poisoned clock cannot mint an EOD certificate;
-- terminal horizon is part of the proof: the official interpreter's callback at `episodeSteps - 2` is the last executable callback, so PLANTGUARD first proves that this day's hour-23/EOD callback is at or before that boundary. With the standard `episodeSteps=720`, step718/hour22 cannot be rejected using a nominal authored step719 because step719 and that EOD never execute; the last real EOD callback is step695/hour23;
+- terminal horizon is part of the proof: the pinned official engine blob `3c202c7ee921da239356789e266b694635103fc4` marks the callback at `episodeSteps - 2` as the last executable callback. The pinned official configuration blob `b354d06b742fe48402513792253f1a5c29366b20` supplies the standard `episodeSteps=720` and `turnsPerDay=24` defaults. PLANTGUARD therefore proves that this day's hour-23/EOD callback lies at or before that boundary. Under those standard defaults, step718/hour22 cannot be rejected using a nominal authored step719 because step719 and that EOD never execute; the last real EOD callback is step695/hour23;
+- returned evidence names both `engine_git_blob` and `configuration_git_blob`, so the source theorem and its standard defaults remain auditable rather than drifting silently;
 - the suffix must be complete through a **reachable** EOD and preserve existing actor cardinality;
 - an executable HIRE before the final callback destroys one-sided rejection because a new actor could create an unrepresented watering path; HIRE beyond the market row cap is inert, and a final-hour HIRE cannot act before that EOD;
 - malformed, incomplete, terminal-unreachable, type-poisoned, unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
@@ -81,7 +82,7 @@ python -O -B test_plant_guard.py
 python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **20 CROPSCALE tests** and **29 PLANTGUARD tests** pass in each mode.
+Expected: **20 CROPSCALE tests** and **30 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
