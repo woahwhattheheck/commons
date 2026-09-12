@@ -30,13 +30,17 @@ import tarfile
 import uuid
 from typing import Any, Callable, Mapping
 
-SCHEMA = "titan-v5-release-transaction/v3"
+SCHEMA = "titan-v5-release-transaction/v4"
 TRANSITION_PREFIX = "v5tx:"
+AUTHORIZED_OPPONENT_IDS = ("apex_v7", "arlene_v14")
+REFERENCE_POLICIES_GIT_BLOB = "6bce02dad705ccc57656ff2e2139db215f9fcc57"
+ECONOMICS_RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v4"
 _POINTER_KEYS = frozenset(
     ("path", "entrypoint", "config", "sha256", "bytes",
      "runtime_files", "source_manifest", "source_manifest_sha256")
 )
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
+_HEX40 = re.compile(r"^[0-9a-f]{40}$")
 _V5C = re.compile(r"^v5c:[0-9a-f]{64}$")
 
 
@@ -102,9 +106,21 @@ def _hex64(value: Any, field: str) -> str:
     return value
 
 
+def _hex40(value: Any, field: str) -> str:
+    if type(value) is not str or _HEX40.fullmatch(value) is None:
+        raise TransactionError(f"{field} must be 40 lowercase hex")
+    return value
+
+
 def _plain_int(value: Any, field: str, minimum: int = 0) -> int:
     if type(value) is not int or value < minimum:
         raise TransactionError(f"{field} must be a plain int >= {minimum}")
+    return value
+
+
+def _signed_int(value: Any, field: str) -> int:
+    if type(value) is not int:
+        raise TransactionError(f"{field} must be a plain int")
     return value
 
 
@@ -318,6 +334,8 @@ def _economics_replay(
         raise TransactionError(f"economics gate replay failed: {exc}") from exc
     if type(receipt) is not dict:
         raise TransactionError("economics gate did not return an object")
+    if receipt.get("schema") != ECONOMICS_RECEIPT_SCHEMA:
+        raise TransactionError("economics gate receipt schema is not release-authorized")
     if receipt.get("classification") != "PASS" or receipt.get("promotion_ready") is not True:
         raise TransactionError("economics gate is not a promotion-ready PASS")
     expected = {
@@ -331,19 +349,81 @@ def _economics_replay(
     for key, value in expected.items():
         if receipt.get(key) != value:
             raise TransactionError(f"economics receipt {key} disagrees with release authority")
+
+    authorized = list(AUTHORIZED_OPPONENT_IDS)
     opponent_count = _plain_int(
-        receipt.get("opponent_count"), "economics receipt opponent_count", 2
+        receipt.get("opponent_count"), "economics receipt opponent_count", len(authorized)
     )
+    if opponent_count != len(authorized):
+        raise TransactionError("economics receipt opponent_count is not the authorized roster size")
     opponent_ids = receipt.get("opponent_ids")
-    if (
-        type(opponent_ids) is not list
-        or len(opponent_ids) != opponent_count
-        or any(type(value) is not str or not value for value in opponent_ids)
-        or opponent_ids != sorted(set(opponent_ids))
-    ):
-        raise TransactionError(
-            "economics receipt opponent_ids must be sorted unique strings matching opponent_count"
+    if opponent_ids != authorized:
+        raise TransactionError("economics receipt opponent_ids do not equal authorized release roster")
+    if receipt.get("authorized_opponent_ids") != authorized:
+        raise TransactionError("economics receipt authorized_opponent_ids disagree with release authority")
+    if _hex40(
+        receipt.get("opponent_registry_git_blob"),
+        "economics receipt opponent_registry_git_blob",
+    ) != REFERENCE_POLICIES_GIT_BLOB:
+        raise TransactionError("economics receipt opponent registry blob disagrees with release authority")
+
+    seed_count = _plain_int(receipt.get("seed_count"), "economics receipt seed_count", 4)
+    cell_count = _plain_int(receipt.get("cell_count"), "economics receipt cell_count", 1)
+    if cell_count != opponent_count * seed_count * 2:
+        raise TransactionError("economics receipt cell_count disagrees with authorized balanced topology")
+    global_delta = _signed_int(
+        receipt.get("sum_margin_delta"), "economics receipt sum_margin_delta"
+    )
+    if global_delta < 0:
+        raise TransactionError("economics receipt global margin regresses")
+
+    per_opponent = receipt.get("per_opponent")
+    if type(per_opponent) is not dict or list(per_opponent) != authorized:
+        raise TransactionError("economics receipt per_opponent keys do not equal authorized release roster")
+    per_delta_sum = 0
+    per_cell_sum = 0
+    for opponent in authorized:
+        row = per_opponent[opponent]
+        if type(row) is not dict or set(row) != {
+            "cell_count",
+            "control_margin_sum",
+            "candidate_margin_sum",
+            "sum_margin_delta",
+        }:
+            raise TransactionError(f"economics receipt per_opponent[{opponent!r}] has wrong shape")
+        opponent_cells = _plain_int(
+            row["cell_count"], f"economics receipt per_opponent[{opponent!r}].cell_count", 1
         )
+        if opponent_cells != seed_count * 2:
+            raise TransactionError(
+                f"economics receipt per_opponent[{opponent!r}] cell_count disagrees with seed topology"
+            )
+        control_sum = _signed_int(
+            row["control_margin_sum"],
+            f"economics receipt per_opponent[{opponent!r}].control_margin_sum",
+        )
+        candidate_sum = _signed_int(
+            row["candidate_margin_sum"],
+            f"economics receipt per_opponent[{opponent!r}].candidate_margin_sum",
+        )
+        opponent_delta = _signed_int(
+            row["sum_margin_delta"],
+            f"economics receipt per_opponent[{opponent!r}].sum_margin_delta",
+        )
+        if candidate_sum - control_sum != opponent_delta:
+            raise TransactionError(
+                f"economics receipt per_opponent[{opponent!r}] margin arithmetic is inconsistent"
+            )
+        if opponent_delta < 0:
+            raise TransactionError(
+                f"economics receipt per_opponent[{opponent!r}] margin regresses"
+            )
+        per_cell_sum += opponent_cells
+        per_delta_sum += opponent_delta
+    if per_cell_sum != cell_count:
+        raise TransactionError("economics receipt per-opponent cell counts do not sum to panel cell_count")
+    if per_delta_sum != global_delta:
+        raise TransactionError("economics receipt per-opponent deltas do not sum to global margin delta")
     return receipt
 
 
@@ -451,12 +531,15 @@ def build_transaction(
             "opponent_pack_id": economics["opponent_pack_id"],
             "opponent_count": economics["opponent_count"],
             "opponent_ids": economics["opponent_ids"],
+            "authorized_opponent_ids": economics["authorized_opponent_ids"],
+            "opponent_registry_git_blob": economics["opponent_registry_git_blob"],
             "control_archive_sha256": economics["control_archive_sha256"],
             "candidate_archive_sha256": economics["candidate_archive_sha256"],
             "cell_count": economics["cell_count"],
             "seed_count": economics["seed_count"],
             "sum_margin_delta": economics["sum_margin_delta"],
             "mean_margin_delta": economics["mean_margin_delta"],
+            "per_opponent": economics["per_opponent"],
             "panel_sha256": economics["panel_sha256"],
         },
         "trusted_base": {
@@ -520,12 +603,20 @@ def commit_pointer(
 
 
 def _load_module(path: Path, name: str):
+    """Execute exactly the source bytes authenticated by the first read.
+
+    Using loader.exec_module(module) here would reread ``path`` after the bytes
+    returned to the caller had already been authenticated, permitting a path
+    swap/delete race between custody and execution. Compile the captured buffer
+    instead; module_from_spec still supplies normal module metadata.
+    """
     source = _read(path, name)
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise TransactionError(f"cannot load module {path}")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    code = compile(source, str(path), "exec")
+    exec(code, module.__dict__)
     return module, source
 
 
