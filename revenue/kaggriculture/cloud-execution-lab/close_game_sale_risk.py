@@ -50,14 +50,22 @@ def _finite_number(value: Any) -> float | None:
 
 
 def _sale(order: Any) -> tuple[str, int] | None:
-    """Return one unambiguous movable SELL lot, else None as a hard barrier."""
-    if not isinstance(order, list) or len(order) != 3 or order[0] != "SELL":
+    """Return one engine-executable movable SELL lot, else a hard barrier.
+
+    Match the pinned market parser: SELL rows may carry trailing fields and the
+    requested quantity is positive ``int()``-coercible.  Classification never
+    rewrites the inherited row; the caller preserves its exact bytes.
+    """
+    if not isinstance(order, list) or len(order) < 3 or order[0] != "SELL":
         return None
-    item, quantity = order[1], order[2]
+    item = order[1]
     if not isinstance(item, str) or item not in SALE_ONLY_GOODS:
         return None
-    quantity = _plain_int(quantity)
-    if quantity is None or quantity <= 0 or quantity > MAX_STRESS_UNITS:
+    try:
+        quantity = int(order[2])
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if quantity <= 0 or quantity > MAX_STRESS_UNITS:
         return None
     return item, quantity
 
