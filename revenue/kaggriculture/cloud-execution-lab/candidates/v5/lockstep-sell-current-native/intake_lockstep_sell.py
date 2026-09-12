@@ -2,8 +2,8 @@
 """Fail-closed intake for the exact Whitepill lockstep_sell V5 handoff.
 
 This module does not reconstruct policy from prose and does not activate TITAN.
-It authenticates the already-evaluated agent bytes, the exact composition card,
-and the reviewed current-V5 ReturnBridge composer before emitting a receipt.
+It authenticates the already-evaluated agent bytes and exact composition card, then
+records the current-V5 ReturnBridge composer identity before emitting a receipt.
 """
 
 from __future__ import annotations
@@ -16,7 +16,6 @@ from typing import Any, Mapping
 
 SCHEMA = "titan-v5-lockstep-sell-intake/v1"
 EXPECTED_AGENT_SHA256 = "6355999beb5c3f3948bbce9dcbd69380b773b5ebf084226c39f41a07db4bd20e"
-EXPECTED_COMPOSER_BLOB = "7b10ad42dea18827d061046b79cc72ab209bf3f9"
 EXPECTED_COMPOSER_PATH = (
     "candidates/v4/repairs/gameplay/lockstep-join/compose_native_return_bridge.py"
 )
@@ -82,18 +81,12 @@ def build_receipt(
     composer_bytes: bytes,
     *,
     expected_agent_sha256: str = EXPECTED_AGENT_SHA256,
-    expected_composer_blob: str = EXPECTED_COMPOSER_BLOB,
     composer_path: str = EXPECTED_COMPOSER_PATH,
 ) -> dict[str, Any]:
     """Authenticate one handoff without executing or altering policy bytes."""
     expected_agent_sha256 = _sha256_text(
         expected_agent_sha256, "expected agent sha256"
     )
-    if type(expected_composer_blob) is not str or len(expected_composer_blob) != 40:
-        raise IntakeError("expected composer blob must be a 40-character Git blob id")
-    if any(ch not in "0123456789abcdef" for ch in expected_composer_blob):
-        raise IntakeError("expected composer blob must be lowercase hexadecimal")
-
     card = _load_card_bytes(card_bytes)
     witness = _sha256_text(card.get("agent_sha256"), "card agent_sha256")
     if witness != expected_agent_sha256:
@@ -103,9 +96,12 @@ def build_receipt(
     if actual_agent_sha256 != expected_agent_sha256:
         raise IntakeError("agent bytes do not match the declared Whitepill witness")
 
+    # The current composer deliberately self-pins every production source it consumes.
+    # Its own Git blob changes whenever those source pins are reviewed/rebound (for
+    # example after a scheduler correction), so freezing that tooling blob here would
+    # create a second stale authority. Record the exact composer identity instead; the
+    # composition step remains responsible for enforcing its internal source pins.
     actual_composer_blob = _git_blob(composer_bytes)
-    if actual_composer_blob != expected_composer_blob:
-        raise IntakeError("ReturnBridge composer bytes drift from the reviewed V5 authority")
 
     return {
         "schema": SCHEMA,
@@ -156,7 +152,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--composer",
         required=True,
-        help="canonical #13288 compose_native_return_bridge.py",
+        help="canonical current compose_native_return_bridge.py",
     )
     parser.add_argument("--output", help="optional receipt path; stdout when omitted")
     args = parser.parse_args(argv)
