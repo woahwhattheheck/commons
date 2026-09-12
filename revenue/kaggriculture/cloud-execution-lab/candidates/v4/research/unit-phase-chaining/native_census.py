@@ -267,6 +267,33 @@ def _system_import_paths(paths: list[str]) -> list[str]:
     return result
 
 
+def _declared_runtime_import_roots(capture: dict[str, Any]) -> set[str]:
+    names: set[str] = set()
+    for member in capture["runtime"]:
+        path = _safe_member_name(member)
+        if len(path.parts) == 1 and path.suffix == ".py":
+            name = path.stem
+        elif len(path.parts) > 1:
+            name = path.parts[0]
+        else:
+            continue
+        if name.isidentifier():
+            names.add(name)
+    return names
+
+
+def _reject_preloaded_runtime_modules(capture: dict[str, Any]) -> None:
+    for name in sorted(_declared_runtime_import_roots(capture)):
+        module = sys.modules.get(name)
+        if module is None:
+            continue
+        origin = getattr(module, "__file__", None)
+        shown = "<no __file__>" if origin is None else str(origin)
+        raise ValueError(
+            f"declared runtime module is already loaded before frozen execution: {name} -> {shown}"
+        )
+
+
 def _load_module_from_file(path: Path, prefix: str):
     digest = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
     name = f"{prefix}_{digest}_{os.getpid()}"
@@ -301,9 +328,9 @@ def _assert_new_module_origins(before: set[str], frozen: Path) -> None:
 
 def _load_fixture_from_capture(capture: dict[str, Any]):
     frozen = _materialize_frozen_runtime(capture)
+    _reject_preloaded_runtime_modules(capture)
     prior_path = list(sys.path)
     sys.path[:] = [str(frozen), str(frozen / "checks"), *_system_import_paths(prior_path)]
-    importlib.util.cache_from_source  # force importlib.util to remain referenced under restricted path
     before_modules = set(sys.modules)
     fixture_module = _load_module_from_file(
         frozen / "checks/test_engine_semantics.py", "titan_unitpipe_engine_semantics"
