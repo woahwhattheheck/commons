@@ -27,6 +27,7 @@ import importlib.machinery
 import importlib.util
 import io
 import json
+import locale
 import os
 from pathlib import Path, PurePosixPath
 import random
@@ -345,7 +346,7 @@ def _captured_runtime_authority(captured):
                 raw = by_virtual_path[key]
                 if 'b' in mode:
                     return io.BytesIO(raw)
-                codec = encoding or 'utf-8'
+                codec = locale.getencoding() if encoding in (None, 'locale') else encoding
                 text = raw.decode(codec, errors or 'strict')
                 return io.StringIO(text, newline=newline)
         return real_builtin_open(
@@ -419,8 +420,6 @@ def _load_captured_engine(captured):
 def play(captured, seed, seat, instrument=False):
     """Execute one game using only authenticated captured runtime bytes."""
     with _captured_runtime_authority(captured):
-        # Execute the checked loader itself from captured bytes for reference
-        # Struct semantics, but never call its filesystem/network get_engine().
         loader = _load_captured_module(
             'kinetic_game_loader',
             'checks/reference/evaluator/loader.py',
@@ -590,8 +589,6 @@ def main():
         scratch = Path(scratch)
         baseline = scratch / 'baseline'
         candidate = scratch / 'candidate'
-        # These trees are transport only. Each child re-authenticates them once,
-        # captures all declared bytes, then executes solely from that capture.
         materialize_runtime(baseline, manifest_raw, baseline_files)
         candidate_files = dict(baseline_files)
         candidate_files['mechanics.py'] = candidate_bytes
