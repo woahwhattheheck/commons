@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -100,6 +101,80 @@ class CurrentPrefixCompositionTests(unittest.TestCase):
         args = (orders, {"MILK": 0}, {"MILK": 4}, {"MILK"}, 1)
         self.assertEqual(old_fn(*args), [[], []])
         self.assertEqual(new_fn(*args), orders)
+
+    def test_same_turn_funding_ignores_nonexecuted_suffix_target_and_source(self):
+        patched = current._rewrite_frozen(self.raw_frozen)
+
+        def prefix_state(orders, _farm, _private, _market, _shops, _config, _now,
+                         _rival_quantity, stop):
+            outcomes = {}
+            money = 0
+            for index, order in enumerate(orders[:max(0, int(stop) + 1)]):
+                if order != ["HIRE"]:
+                    continue
+                funded = any(
+                    row and len(row) > 2 and row[:2] == ["SELL", "WOOL"]
+                    and int(row[2]) > 0
+                    for row in orders[:index]
+                )
+                outcomes[index] = {
+                    "required": 1,
+                    "completed": int(funded),
+                    "cost_per_unit": 10,
+                }
+                if funded:
+                    money = 190
+            return {
+                "money": money,
+                "outcomes": outcomes,
+                "unsupported_index": None,
+                "sale_stress": [],
+            }
+
+        namespace = {
+            "copy": copy,
+            "_market_prefix_state": prefix_state,
+            "sale_quantities": quantities,
+        }
+        old_fn = function_from(
+            self.raw_frozen, "fund_same_turn_acquisition", namespace)
+        new_fn = function_from(
+            patched, "fund_same_turn_acquisition", namespace)
+        farm = {"money": 0}
+        private = {"shed": {"WOOL": 1}}
+        market = {"inventory": {"WOOL": 10000}}
+        config = {"maxMarketOrdersPerTurn": 10}
+        targets = {"WOOL": 1}
+
+        # An inert target must not cause an executable sale to be pulled forward.
+        tail_target = [[] for _ in range(10)] + [
+            ["HIRE"], ["SELL", "WOOL", 1]
+        ]
+        old_target, old_target_info = old_fn(
+            tail_target, farm, private, market, [], config, 0, targets,
+            lambda _product: 0)
+        new_target, new_target_info = new_fn(
+            tail_target, farm, private, market, [], config, 0, targets,
+            lambda _product: 0)
+        self.assertEqual(old_target_info["target_index"], 10)
+        self.assertEqual(old_target[9], ["SELL", "WOOL", 1])
+        self.assertEqual(new_target, tail_target)
+        self.assertIsNone(new_target_info)
+
+        # An executable target likewise cannot be funded by a suffix-only sale.
+        tail_source = [[] for _ in range(9)] + [
+            ["HIRE"], ["SELL", "WOOL", 1]
+        ]
+        old_source, old_source_info = old_fn(
+            tail_source, farm, private, market, [], config, 0, targets,
+            lambda _product: 0)
+        new_source, new_source_info = new_fn(
+            tail_source, farm, private, market, [], config, 0, targets,
+            lambda _product: 0)
+        self.assertEqual(old_source_info["source_index"], 10)
+        self.assertEqual(old_source[8], ["SELL", "WOOL", 1])
+        self.assertEqual(new_source, tail_source)
+        self.assertEqual(new_source_info["reason"], "no-safe-prefix-sale")
 
     def test_represented_market_ignores_nonexecuted_suffix(self):
         patched = current._rewrite_frozen(self.raw_frozen)
