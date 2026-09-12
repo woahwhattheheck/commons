@@ -3,15 +3,20 @@
 """Fail-closed paired competitive-economics authority for TITAN V5 releases.
 
 The release pointer must not advance merely because a candidate is identifiable,
-engaged, and fast.  This module authenticates a small raw paired panel and
-recomputes the only policy asserted here: the candidate's mean paired margin
-must not regress versus the exact control build.
+engaged, and fast. This module authenticates a raw paired panel and recomputes
+the only economic policy asserted here: the candidate's mean paired margin must
+not regress versus the exact control build.
 
-Rows are intentionally primitive.  Each row carries the raw own/rival scores
-for control and candidate at one exact (seed, seat) cell.  The validator derives
-both margins and their delta itself; callers cannot smuggle a favorable summary.
+The evidence also names the exact execution authority: engine, opponent pack,
+control archive, and candidate archive. The release transaction supplies those
+expected values from the promotion manifest and old/new pointer pair, so a panel
+from another build or evaluation closure cannot be replayed into a transition.
+
+Rows are intentionally primitive. Each row carries the raw own/rival scores for
+control and candidate at one exact (seed, seat) cell. The validator derives both
+margins and their delta itself; callers cannot smuggle a favorable summary.
 Every seed must contain exactly both seats so seat imbalance cannot manufacture
-a PASS.  The report order is canonical to make the evidence bytes reproducible.
+a PASS. Report and cell order are canonical for reproducible evidence bytes.
 """
 from __future__ import annotations
 
@@ -26,12 +31,25 @@ import sys
 import uuid
 from typing import Any, Mapping
 
-SCHEMA = "titan-v5-paired-economics/v1"
-RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v1"
+SCHEMA = "titan-v5-paired-economics/v2"
+RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v2"
 MIN_CELLS = 8
 MIN_SEEDS = 4
 _V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
-_REPORT_KEYS = frozenset(("schema", "control_id", "candidate_id", "cells"))
+_HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
+_UNSET = object()
+_REPORT_KEYS = frozenset(
+    (
+        "schema",
+        "control_id",
+        "candidate_id",
+        "engine_id",
+        "opponent_pack_id",
+        "control_archive_sha256",
+        "candidate_archive_sha256",
+        "cells",
+    )
+)
 _CELL_KEYS = frozenset(
     (
         "seed",
@@ -90,6 +108,24 @@ def _v5c(value: Any, field: str) -> str:
     return value
 
 
+def _hex64(value: Any, field: str) -> str:
+    if type(value) is not str or _HEX64_RE.fullmatch(value) is None:
+        raise EconomicsError(f"{field} must be 64 lowercase hex characters")
+    return value
+
+
+def _nonempty_text(value: Any, field: str) -> str:
+    if type(value) is not str or not value.strip():
+        raise EconomicsError(f"{field} must be a non-empty string")
+    return value
+
+
+def _opponent(value: Any, field: str) -> str | None:
+    if value is None:
+        return None
+    return _nonempty_text(value, field)
+
+
 def _plain_int(value: Any, field: str, *, minimum: int = 0) -> int:
     if type(value) is not int or value < minimum:
         raise EconomicsError(f"{field} must be a plain int >= {minimum}")
@@ -111,6 +147,10 @@ def validate_report(
     *,
     candidate_id: str | None = None,
     control_id: str | None = None,
+    engine_id: str | None = None,
+    opponent_pack_id: Any = _UNSET,
+    control_archive_sha256: str | None = None,
+    candidate_archive_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Validate raw paired cells and return a deterministic no-regression receipt."""
     if type(report) is not dict:
@@ -134,6 +174,33 @@ def validate_report(
         raise EconomicsError("economics candidate_id does not match promotion candidate")
     if control_id is not None and report_control != _v5c(control_id, "expected control_id"):
         raise EconomicsError("economics control_id does not match promotion control")
+
+    report_engine = _nonempty_text(report["engine_id"], "economics engine_id")
+    if engine_id is not None and report_engine != _nonempty_text(engine_id, "expected engine_id"):
+        raise EconomicsError("economics engine_id does not match candidate manifest")
+
+    report_opponent = _opponent(report["opponent_pack_id"], "economics opponent_pack_id")
+    if opponent_pack_id is not _UNSET:
+        expected_opponent = _opponent(opponent_pack_id, "expected opponent_pack_id")
+        if report_opponent != expected_opponent:
+            raise EconomicsError("economics opponent_pack_id does not match candidate manifest")
+
+    report_control_archive = _hex64(
+        report["control_archive_sha256"], "economics control_archive_sha256"
+    )
+    report_candidate_archive = _hex64(
+        report["candidate_archive_sha256"], "economics candidate_archive_sha256"
+    )
+    if control_archive_sha256 is not None and report_control_archive != _hex64(
+        control_archive_sha256, "expected control_archive_sha256"
+    ):
+        raise EconomicsError("economics control archive does not match expected-old release")
+    if candidate_archive_sha256 is not None and report_candidate_archive != _hex64(
+        candidate_archive_sha256, "expected candidate_archive_sha256"
+    ):
+        raise EconomicsError("economics candidate archive does not match approved-new release")
+    if report_control_archive == report_candidate_archive:
+        raise EconomicsError("economics control and candidate archive hashes must differ")
 
     cells = report["cells"]
     if type(cells) is not list:
@@ -202,6 +269,10 @@ def validate_report(
         "promotion_ready": True,
         "control_id": report_control,
         "candidate_id": report_candidate,
+        "engine_id": report_engine,
+        "opponent_pack_id": report_opponent,
+        "control_archive_sha256": report_control_archive,
+        "candidate_archive_sha256": report_candidate_archive,
         "cell_count": len(cells),
         "seed_count": len(seats_by_seed),
         "sum_margin_delta": sum_delta,
