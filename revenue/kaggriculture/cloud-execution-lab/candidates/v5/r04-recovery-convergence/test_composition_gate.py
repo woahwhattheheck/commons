@@ -109,7 +109,7 @@ def base_manifest() -> dict:
 def make_fixture(root: Path, *, pending_slot: str | None = None):
     reader = FakeSourceReader()
     manifest = base_manifest()
-    digits = "123456789a"
+    digits = "123456789"
     for index, slot in enumerate(mod.REQUIRED_SLOTS):
         head = digits[index] * 40
         path = f"revenue/kaggriculture/cloud-execution-lab/candidates/v5/fake/{slot}/adapter.py"
@@ -170,7 +170,7 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
         root,
         "combined.json",
         "combined_composition",
-        candidate_digit="b",
+        candidate_digit="a",
         component_source_sha256=component_source_sha256,
         composition_git_commit=manifest["composition_git_commit"],
     )
@@ -185,6 +185,10 @@ class CompositionGateV2Tests(unittest.TestCase):
             receipt = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertEqual(receipt["status"], "CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF")
             self.assertEqual(receipt["composition_git_commit"], manifest["composition_git_commit"])
+            self.assertEqual(receipt["required_component_count"], 9)
+            self.assertIn("row_order_shed", receipt["component_heads"])
+            self.assertNotIn("row_order", receipt["component_heads"])
+            self.assertNotIn("row_shed", receipt["component_heads"])
             self.assertIn("v231_late_cow", receipt["component_heads"])
             self.assertFalse(receipt["default_flip_authority"])
             self.assertFalse(receipt["release_authority"])
@@ -296,11 +300,23 @@ class CompositionGateV2Tests(unittest.TestCase):
             self.assertEqual(receipt["status"], "BLOCKED")
             self.assertIn("missing_component:v231_late_cow", receipt["blockers"])
 
+    def test_separate_row_order_or_row_shed_slots_are_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            for stale_slot in ("row_order", "row_shed"):
+                with self.subTest(slot=stale_slot):
+                    manifest, reader = make_fixture(root)
+                    combined = next(c for c in manifest["components"] if c["slot"] == "row_order_shed")
+                    combined["slot"] = stale_slot
+                    with self.assertRaisesRegex(mod.GateError, f"unknown recovery slot: {stale_slot}"):
+                        mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
+
     def test_current_runtime_stage_contract_is_separate_and_exact(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             manifest, reader = make_fixture(root)
             self.assertEqual(mod.CURRENT_RUNTIME_STAGES["h3c_goose_rescue"], "pre_capacity")
+            self.assertEqual(mod.CURRENT_RUNTIME_STAGES["row_order_shed"], "final_market_order")
             self.assertEqual(mod.CURRENT_RUNTIME_STAGES["b9_terminal_fertilizer"], "post_market")
             manifest["current_runtime_stages"]["h3c_goose_rescue"] = "post_market"
             with self.assertRaisesRegex(mod.GateError, "current_runtime_stages"):
@@ -344,10 +360,10 @@ class CompositionGateV2Tests(unittest.TestCase):
     def test_pending_leaf_is_valid_but_blocks_readiness(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            manifest, reader = make_fixture(root, pending_slot="row_order")
+            manifest, reader = make_fixture(root, pending_slot="row_order_shed")
             receipt = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertEqual(receipt["status"], "BLOCKED")
-            self.assertIn("economics_not_pass:row_order", receipt["blockers"])
+            self.assertIn("economics_not_pass:row_order_shed", receipt["blockers"])
 
     def test_source_bytes_change_source_identity(self):
         with tempfile.TemporaryDirectory() as td:
