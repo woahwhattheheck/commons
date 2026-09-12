@@ -1,9 +1,11 @@
-"""Source-bound composer for the TITAN V4 native lockstep return bridge.
+"""Source-bound composer for the canonical V5 native lockstep return bridge.
 
-It patches an existing current-native package in place only when all source
-surfaces match the exact audited Git blobs.  The source repository remains the
-sole authority; ESTUARY/CROSSCURRENT dependency bytes are copied unchanged into
-the materialized package so standalone execution does not depend on candidates/.
+This is the current-V5 successor of the reviewed V4 RETURNBRIDGE materializer.
+It patches an authenticated current package in place only when every consumed
+production surface matches the exact audited Git blobs.  The reviewed native
+bridge and ESTUARY/CROSSCURRENT authorities stay byte-identical; this composer
+only rebinds their existing default-OFF integration seam to the current V5
+entrypoint/runtime and preserves V5's exact feature-type contract.
 """
 from __future__ import annotations
 
@@ -11,13 +13,15 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-import shutil
 
-MAIN_BLOB = "4a8cf7bcda1f0fea231a144692cb84a779a9e73e"
-RUNTIME_BLOB = "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0"
-FROZEN_BLOB = "fc7baf5c179818a55037f6a61d92984d81d1a21c"
-SCHEDULER_BLOB = "a483b24dd72b580d7d8811636b54d2d44f391575"
-CONFIG_BLOB = "3a3bef83899d3010fad623b628d9e95d9978111b"
+# Exact canonical package generation at the V5 rebind.  These are Git blob IDs,
+# not commit IDs.  Any later source movement fails closed until deliberately
+# reviewed/rebound rather than silently composing against a different runtime.
+MAIN_BLOB = "cbc1fbdfaaaa0dfc99b450dc6269170c360854d2"
+RUNTIME_BLOB = "40f335f0192cc7e8161437d83da647d6c1f28eea"
+FROZEN_BLOB = "14e2be357b1a704a14a94f6cf4d264bde29acb69"
+SCHEDULER_BLOB = "7d0ecb36dcbb57316228dc35c8e916b6b3507835"
+CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
 FLOW_BLOB = "e24dd03a88a71ba4cf6f8d5da1082b89490b5a94"
 QUEUE_BLOB = "ac91d3c65deeabadaa60ee83c4a7a84286849150"
 
@@ -48,6 +52,18 @@ def patch_runtime(text: str) -> str:
         "    early_capital: bool = False\n    lockstep_join: bool = False\n\n    def __post_init__(self):",
         "runtime-feature",
     )
+    # V5 #13262 made feature type annotations an enforced public boundary.
+    # Every newly composed toggle must enter the exact-bool tuple too; adding a
+    # dataclass field alone would accept 1/'false' until later policy checks.
+    text = replace_once(
+        text,
+        "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
+        "        )",
+        "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
+        "            'lockstep_join',\n"
+        "        )",
+        "runtime-exact-bool-contract",
+    )
     text = replace_once(
         text,
         "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
@@ -64,10 +80,16 @@ def patch_runtime(text: str) -> str:
 
 
 def patch_main(text: str) -> str:
+    # Current V5 owns town_procurement outside Features.  Construct the bridge
+    # only after both public feature binding and that compatibility check have
+    # completed; no policy bytes execute during config parsing.
     text = replace_once(
         text,
-        "    features = Features(**feature_data)\n\n    class FinalPressureAgent(TitanAgent):",
-        "    features = Features(**feature_data)\n"
+        "    if town_enabled and (features.consumer != 'frozen' or features.terminal_route):\n"
+        "        raise ValueError('town_procurement is the tested nonterminal frozen composition')\n\n"
+        "    class FinalPressureAgent(TitanAgent):",
+        "    if town_enabled and (features.consumer != 'frozen' or features.terminal_route):\n"
+        "        raise ValueError('town_procurement is the tested nonterminal frozen composition')\n"
         "    bridge = None\n"
         "    if features.lockstep_join:\n"
         "        from native_return_bridge import ReturnBridge, load_authorities\n"
@@ -87,7 +109,8 @@ def patch_main(text: str) -> str:
     text = replace_once(
         text,
         "            stage = 'entrypoint_runtime'\n"
-        "            output = instance.act(observation, cfg, entry_started=entry_started)",
+        "            output = instance.act(observation, cfg, entry_started=entry_started)\n"
+        "            # Publish only after a complete inner return. A foreign exception or",
         "            stage = 'entrypoint_runtime'\n"
         "            bridge = getattr(instance, '_return_bridge', None)\n"
         "            if bridge is not None:\n"
@@ -99,7 +122,8 @@ def patch_main(text: str) -> str:
         "                proposed_output, proposal = bridge.propose(\n"
         "                    instance, observation, cfg, baseline_output)\n"
         "                output = bridge.commit(\n"
-        "                    instance, observation, cfg, baseline_output, proposed_output, proposal)",
+        "                    instance, observation, cfg, baseline_output, proposed_output, proposal)\n"
+        "            # Publish only after a complete inner return. A foreign exception or",
         "main-exact-return-boundary",
     )
     return text
@@ -111,6 +135,8 @@ def patch_config(text: str) -> str:
         raise ValueError("config already contains lockstep_join")
     if parsed.get("early_capital") is not True:
         raise ValueError("unexpected current config anchor")
+    if parsed.get("town_procurement") is not True:
+        raise ValueError("unexpected V5 town-procurement anchor")
     parsed["lockstep_join"] = False
     return json.dumps(parsed, indent=2) + "\n"
 
@@ -150,7 +176,7 @@ def compose(source_root: Path, package_root: Path, component_dir: Path) -> dict:
     for relative, data in patched.items():
         (package_root / relative).write_bytes(data)
     return {
-        "schema": "titan-v4-lockstep-return-bridge-composition/v1",
+        "schema": "titan-v5-lockstep-return-bridge-composition/v1",
         "source_blobs": before,
         "authority_blobs": {
             "effective_flow_bounds.py": FLOW_BLOB,
@@ -158,6 +184,7 @@ def compose(source_root: Path, package_root: Path, component_dir: Path) -> dict:
         },
         "outputs": {name: git_blob_id(data) for name, data in patched.items()},
         "default_enabled": False,
+        "strict_feature_types": True,
     }
 
 
@@ -166,7 +193,7 @@ def main(argv=None) -> int:
     parser.add_argument("--source-root", required=True, type=Path,
                         help="canonical cloud-execution-lab source root")
     parser.add_argument("--package-root", required=True, type=Path,
-                        help="current-native package root to patch in place")
+                        help="authenticated current V5 package root to patch in place")
     parser.add_argument("--receipt", type=Path)
     args = parser.parse_args(argv)
     receipt = compose(args.source_root, args.package_root, Path(__file__).resolve().parent)
