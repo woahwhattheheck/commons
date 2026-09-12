@@ -18,8 +18,14 @@ The bridge:
   production-v3 baseline `20f20116...`, router preimage `41ea55c5...`).
 - Requires both the route-candidate archive and its materialized root. It
   single-reads every materialized member, rejects symlinks/extras/missing files,
-  checks every SHA against `manifest.files`, and checks the archive SHA against
-  `manifest.candidate_archive_sha256` before any native game.
+  and checks every SHA against `manifest.files`.
+- Decodes the candidate tar through the exact SHA-pinned `build_delivery.members`
+  parser used by the canonical route builder (`build_delivery.py` SHA256
+  `29b9584e...`). That parser authenticates the archive SHA and rejects
+  non-files, duplicate/noncanonical paths, traversal and backslashes. The bridge
+  then requires the archive member SHA map to equal `manifest.files` **and** the
+  decoded archive bytes to equal the captured executable root byte-for-byte.
+  An archive-A/root-B pair therefore cannot authorize a row.
 - Publishes those authenticated captured bytes into a private snapshot and
   executes that snapshot through the pinned Kaggle file-agent contract
   `cloud-pack/official.py` (SHA256 `65fe4058...`). This prevents a row from being
@@ -39,15 +45,17 @@ The bridge:
 - Re-authenticates the private candidate snapshot and official file-loader path
   after the game, runs the produced row through `p04_route_ranker.normalize_row()`,
   and SHA256-binds its canonical public snapshot.
-- Publishes the JSONL row and a sidecar receipt create-exclusively as one owned
-  pair. A pre-existing final or path alias fails before overwrite; partial
-  publication rolls back only files reserved by this invocation.
+- Publishes the JSONL row and sidecar receipt through the ONE merged V5 shared
+  `selective-carrot/publication_custody.py` primitive (SHA256 `547e733b...`).
+  Final paths are create-exclusive, all are reserved before payload writes,
+  success re-authenticates pathname/payload identity, and rollback only removes
+  this invocation's still-owned finals while reservation FDs remain live.
 
 The sidecar binds the route candidate archive, full materialized-file manifest,
-evaluator/loader/engine authority, generated private-snapshot adapter, pinned
-file-loader authority, opponent entry fingerprint, seed/seat/RNG seed,
-step-144 snapshot digest, full-game trace digest, and exact horizon. It records
-`private_observation_persisted=false`.
+archive/root byte identity, evaluator/loader/engine authority, generated
+private-snapshot adapter, pinned file-loader authority, opponent entry
+fingerprint, seed/seat/RNG seed, step-144 snapshot digest, full-game trace
+digest, and exact horizon. It records `private_observation_persisted=false`.
 
 ## Example: R07
 
