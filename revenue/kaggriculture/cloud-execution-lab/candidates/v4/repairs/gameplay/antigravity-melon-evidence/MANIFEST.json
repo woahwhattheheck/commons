@@ -1,0 +1,1 @@
+{"default":"OFF","lane":"antigravity-melon-planting-budget","source":"Antigravity (commons_swarm) melon macro-trap dump, narrowed per red-team review on PR #12947","status":"evidence-only source custody; runtime activation needs its own gate","tests":"7/7 pass in normal Python and python -O"}
