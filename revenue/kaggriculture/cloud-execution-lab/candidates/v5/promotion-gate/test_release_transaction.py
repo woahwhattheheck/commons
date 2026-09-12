@@ -20,6 +20,12 @@ SPEC = importlib.util.spec_from_file_location(
 assert SPEC is not None and SPEC.loader is not None
 rt = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(rt)
+ECON_SPEC = importlib.util.spec_from_file_location(
+    "_economics_gate_for_release_test", HERE / "economics_gate.py"
+)
+assert ECON_SPEC is not None and ECON_SPEC.loader is not None
+econ = importlib.util.module_from_spec(ECON_SPEC)
+ECON_SPEC.loader.exec_module(econ)
 
 
 def canon(value):
@@ -126,6 +132,26 @@ class ReleaseTransactionTests(unittest.TestCase):
             },
         }
         self.promotion_raw = canon(self.promotion)
+        cells = []
+        for seed in range(10, 14):
+            for seat in (0, 1):
+                cells.append(
+                    {
+                        "seed": seed,
+                        "seat": seat,
+                        "control_own": 1000 + seed,
+                        "control_rival": 900 + seed,
+                        "candidate_own": 1010 + seed,
+                        "candidate_rival": 900 + seed,
+                    }
+                )
+        self.economics = {
+            "schema": econ.SCHEMA,
+            "control_id": self.promotion["control_id"],
+            "candidate_id": self.promotion["candidate_id"],
+            "cells": cells,
+        }
+        self.economics_raw = canon(self.economics)
         self.trust_result = {
             "ok": True,
             "delegate": True,
@@ -157,7 +183,9 @@ class ReleaseTransactionTests(unittest.TestCase):
             engagement_raw=self.engagement_raw,
             runtime_raw=self.runtime_raw,
             promotion_receipt_raw=self.promotion_raw,
+            economics_raw=self.economics_raw,
             promotion_builder=self.builder,
+            economics_builder=econ.validate_report,
             trust_result=self.trust_result,
             trust_files=self.trust_files,
         )
@@ -169,12 +197,17 @@ class ReleaseTransactionTests(unittest.TestCase):
         second = self.build()
         self.assertEqual(first, second)
         self.assertEqual(first["classification"], "PASS")
+        self.assertEqual("titan-v5-release-transaction/v2", first["schema"])
         self.assertRegex(first["transition_id"], r"^v5tx:[0-9a-f]{64}$")
         self.assertEqual(first["expected_old"]["archive_sha256"], self.old["sha256"])
         self.assertEqual(first["approved_new"]["archive_sha256"], self.new["sha256"])
         self.assertEqual(
             first["promotion"]["candidate_id"], self.manifest["candidate_id"]
         )
+        self.assertEqual(first["promotion"]["control_id"], self.promotion["control_id"])
+        self.assertEqual(first["economics"]["report_sha256"], sha(self.economics_raw))
+        self.assertEqual(first["economics"]["cell_count"], 8)
+        self.assertEqual(first["economics"]["sum_margin_delta"], 80)
 
     def test_stale_live_pointer_fails_closed(self):
         with self.assertRaisesRegex(rt.TransactionError, "stale"):
@@ -225,6 +258,28 @@ class ReleaseTransactionTests(unittest.TestCase):
         bad["runtime"]["receipt_count"] = 999
         with self.assertRaisesRegex(rt.TransactionError, "disagrees with gate replay"):
             self.build(promotion_receipt_raw=canon(bad))
+
+    def test_negative_economics_cannot_release(self):
+        bad = json.loads(json.dumps(self.economics))
+        for cell in bad["cells"]:
+            cell["candidate_own"] = cell["control_own"] - 1
+            cell["candidate_rival"] = cell["control_rival"]
+        with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+            self.build(economics_raw=canon(bad))
+
+    def test_cross_build_economics_cannot_release(self):
+        bad = json.loads(json.dumps(self.economics))
+        bad["candidate_id"] = "v5c:" + "c" * 64
+        with self.assertRaisesRegex(rt.TransactionError, "economics gate replay failed"):
+            self.build(economics_raw=canon(bad))
+
+    def test_economics_bytes_change_transition_identity(self):
+        first = self.build()
+        better = json.loads(json.dumps(self.economics))
+        better["cells"][0]["candidate_own"] += 1
+        second = self.build(economics_raw=canon(better))
+        self.assertNotEqual(first["economics"]["report_sha256"], second["economics"]["report_sha256"])
+        self.assertNotEqual(first["transition_id"], second["transition_id"])
 
     def test_trusted_base_gate_must_pass(self):
         with self.assertRaisesRegex(rt.TransactionError, "trusted-base gate"):
