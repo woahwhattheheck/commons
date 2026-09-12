@@ -31,6 +31,7 @@ sys.path.insert(0, str(HERE))
 from apply_plant_decay import (  # noqa: E402
     CAPTRACE_AFTER,
     DECAY_LINE,
+    EOD_GUARD,
     REQUIRED_MARKERS,
     _digest,
     _target,
@@ -212,13 +213,17 @@ class FundingPlantDecay(unittest.TestCase):
         self.assertIn(_digest(part), CAPTRACE_AFTER)
         for marker in REQUIRED_MARKERS:
             self.assertIn(marker, part)
+        self.assertNotIn("_funding_turns_per_day", part)
         self.assertNotIn("m._decay_plants(f, t)", part)
 
-    def test_adapter_adds_exactly_one_final_decay_stage_and_is_idempotent(self):
-        self.assertEqual(
-            self.candidate_source.replace(DECAY_LINE, "", 1),
-            self.predecessor_source,
+    def test_adapter_adds_exact_same_day_guard_and_final_decay_stage_and_is_idempotent(self):
+        predecessor = (
+            self.candidate_source
+            .replace(EOD_GUARD, "", 1)
+            .replace(DECAY_LINE, "", 1)
         )
+        self.assertEqual(predecessor, self.predecessor_source)
+        self.assertEqual(self.candidate_source.count(EOD_GUARD), 1)
         self.assertEqual(self.candidate_source.count(DECAY_LINE), 1)
         self.assertEqual(apply(self.candidate_source), self.candidate_source)
         compile(self.candidate_source, "v4_funding_decay_candidate", "exec")
@@ -239,6 +244,93 @@ class FundingPlantDecay(unittest.TestCase):
         )
         with self.assertRaisesRegex(ValueError, "CAPTRACE"):
             apply(tampered)
+
+    def test_nonstandard_turn_clock_fails_closed_before_replay(self):
+        obs, config, _base, farm, private, route, _current, _targets = self.fixture(
+            self.candidate
+        )
+        config["turnsPerDay"] = 25
+        with self.assertRaisesRegex(ValueError, "exact 24-turn day"):
+            self.candidate._funding_trace(
+                obs,
+                config,
+                farm,
+                private,
+                route,
+                120,
+                123,
+                [],
+                stress_units=0,
+            )
+
+    def test_cross_eod_stale_hand_route_is_blocked_before_unit_replay(self):
+        obs, config, _base, farm, private, route, _current, _targets = self.fixture(
+            self.predecessor
+        )
+        obs["step"] = 119
+        farm["hands"] = [[4, 4]]
+        private["inventories"] = [{}, {}]
+        route[120] = {
+            "farmer": ["PASS"],
+            "hands": [["HARVEST"]],
+            "market": [],
+        }
+
+        seen = []
+        original = self.predecessor.m._apply_unit_action
+
+        def recording_apply(farm_state, private_state, actor_index, action, *args, **kwargs):
+            seen.append((actor_index, copy.deepcopy(action)))
+            return original(
+                farm_state,
+                private_state,
+                actor_index,
+                action,
+                *args,
+                **kwargs,
+            )
+
+        self.predecessor.m._apply_unit_action = recording_apply
+        try:
+            self.predecessor._funding_trace(
+                obs,
+                config,
+                farm,
+                private,
+                route,
+                119,
+                120,
+                [],
+                stress_units=0,
+            )
+        finally:
+            self.predecessor.m._apply_unit_action = original
+
+        self.assertIn((1, ["HARVEST"]), seen)
+
+        obs2, config2, _base2, farm2, private2, route2, _current2, _targets2 = self.fixture(
+            self.candidate
+        )
+        obs2["step"] = 119
+        farm2["hands"] = [[4, 4]]
+        private2["inventories"] = [{}, {}]
+        route2[120] = {
+            "farmer": ["PASS"],
+            "hands": [["HARVEST"]],
+            "market": [],
+        }
+        with self.assertRaisesRegex(ValueError, "cannot cross end-of-day lifecycle"):
+            self.candidate._funding_trace(
+                obs2,
+                config2,
+                farm2,
+                private2,
+                route2,
+                119,
+                120,
+                [],
+                stress_units=0,
+            )
 
     def test_runtime_decay_reduces_expiring_wheat_before_future_harvest(self):
         farm = self.farm(yield_units=2)
