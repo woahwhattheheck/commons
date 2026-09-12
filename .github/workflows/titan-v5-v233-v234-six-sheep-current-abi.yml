@@ -29,6 +29,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - name: Assert exact event head
         env:
           EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -42,8 +43,23 @@ jobs:
           CANDIDATE_DIR: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v233-v234-six-sheep-current-abi
         run: |
           set -euo pipefail
-          python -B -m py_compile "$ROUTE_DIR/current_route_witness.py" "$ROUTE_DIR/current_route_full_snapshot.py" "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/v233_v234_current.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
-          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -B -m unittest -v "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
-          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -O -B -m unittest -v "$ROUTE_DIR/test_current_route_full_snapshot.py" "$CANDIDATE_DIR/test_v233_v234_current.py" "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          python -B -m py_compile \
+            "$ROUTE_DIR/current_route_witness.py" \
+            "$ROUTE_DIR/current_route_full_snapshot.py" \
+            "$ROUTE_DIR/test_current_route_full_snapshot.py" \
+            "$CANDIDATE_DIR/v233_v234_current.py" \
+            "$CANDIDATE_DIR/v233_v234_current_safe.py" \
+            "$CANDIDATE_DIR/test_v233_v234_current.py" \
+            "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -B -m unittest -v \
+            "$ROUTE_DIR/test_current_route_full_snapshot.py" \
+            "$CANDIDATE_DIR/test_v233_v234_current.py" \
+            "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
+          PYTHONPATH="$ROUTE_DIR:$CANDIDATE_DIR" python -O -B -m unittest -v \
+            "$ROUTE_DIR/test_current_route_full_snapshot.py" \
+            "$CANDIDATE_DIR/test_v233_v234_current.py" \
+            "$CANDIDATE_DIR/test_v233_snapshot_integration.py"
           find "$ROUTE_DIR" "$CANDIDATE_DIR" -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --check
+          git diff --exit-code
           test -z "$(git status --porcelain)"
