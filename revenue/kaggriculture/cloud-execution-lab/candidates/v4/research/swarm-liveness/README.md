@@ -64,11 +64,20 @@ enter cross-lane scope groups.
 - Any `writes_repo=true` event is authoritative only when `canonical_root`
   exactly equals the audited root. A missing binding emits
   `repo_write_without_root` and is quarantined.
+- A `writes_repo=true` opening CLAIM binds the **entire active ownership epoch**
+  to that exact canonical root. Every HEARTBEAT or terminal that would refresh
+  or close that writer epoch must carry the same root even when the follow-up
+  itself says or implies `writes_repo=false`. Rootless or foreign follow-ups are
+  anomaly evidence only and cannot change liveness, state, artifact, or scope.
+- A statefully quarantined writer-epoch follow-up does not reserve its
+  `event_id`; a later correctly rooted export row may therefore use the same
+  provider ID without being shadowed as a replay.
 - A quarantined foreign-root or unbound repo-write event does not reserve its
   `event_id`, so it cannot shadow a later valid canonical event carrying the
   same provider ID.
 - Read-only rootless events remain authoritative for backwards compatibility;
-  this exception is explicit in the report policy.
+  this exception applies to genuinely read-only claim epochs and is explicit
+  in the report policy.
 - Heartbeats without a live claim and terminal events without a claim are
   anomalies rather than silently repaired history.
 - A claim marked `requires_artifact` cannot complete cleanly without one.
@@ -89,6 +98,8 @@ ordering, explicit recovery candidates, claim-epoch timestamps, advisory
 arbitration, summary counts, and policy booleans that make the non-authority
 boundary machine-readable. `scope_groups` contains only explicitly keyed
 active ownership groups; the tool never creates semantic aliases by inference.
+Owner rows also retain the opening claim's `claim_writes_repo` and
+`claim_canonical_root` so the active epoch contract is inspectable.
 
 ## Integration boundary
 
