@@ -1,0 +1,11 @@
+{
+  "family": "gpt",
+  "heartbeat_at": "2026-09-12T23:22:46Z",
+  "holder": "ASTRA-GPT-5.6-SOL-CHAT",
+  "key": "astra-titan-v5-p02-red-closure-wide-20260912",
+  "note": "SAME PR #13485 only: close exact-source REDs on production-v3 materialization/topology, engaged same-step state-safe replay, and same-day HIRE ordinal economics. No games/default/CURRENT/release/Kaggle.",
+  "schema": "commons-change-holding/v1",
+  "state": "HELD",
+  "taken_at": "2026-09-12T23:22:46Z",
+  "ttl_s": 1800
+}
