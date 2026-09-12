@@ -113,6 +113,11 @@ def _parent_shape(action, limit):
         item, requested = row[1], row[2]
         if not isinstance(item, str) or not item:
             raise NoveltyEvidenceError("leading SELL item must be a non-empty string")
+        # Official _process_market only quotes SELL when item in PRODUCTS.
+        # Unsupported SELL is quote-stage inert: a hard barrier, not sortable
+        # SELL evidence, matching zero-quantity dead rows.
+        if item not in _ENGINE_PRODUCTS:
+            break
         # Official order parsing treats n <= 0 as a dead row. It is a barrier,
         # not a sortable SELL, because crossing it changes lockstep timing.
         if type(requested) is not int or requested <= 0:
@@ -150,6 +155,7 @@ def _validate_row_shed_candidate(parent, candidate, lead, limit):
         or row[0] != "SELL"
         or not isinstance(row[1], str)
         or not row[1]
+        or row[1] not in _ENGINE_PRODUCTS
         or type(row[2]) is not int
         or row[2] <= 0
         for row in block
