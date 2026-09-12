@@ -128,6 +128,19 @@ class Tests(unittest.TestCase):
             for rows in (results[:-1], results+[results[0]], results+[dict(results[0],id='unknown')]):
                 with self.assertRaises(ValueError):a.paired_report(plan,rows,directory)
 
+    def test_result_coordinates_must_match_plan_before_pair_math(self):
+        with tempfile.TemporaryDirectory() as d:
+            directory=Path(d); plan, results=self.fixture(directory)
+            target=next(r for r in results if r['variant']=='seed' and r['candidate_seat']==0)
+            poisons=(('variant','sham'),('seed',2),('candidate_seat',1),('candidate_seat',True))
+            for field, value in poisons:
+                poisoned=copy.deepcopy(results)
+                row=next(r for r in poisoned if r['id']==target['id'])
+                row[field]=value
+                with self.subTest(field=field,value=value), self.assertRaisesRegex(
+                        ValueError, 'Result coordinates disagree with PLAN'):
+                    a.paired_report(plan,poisoned,directory)
+
     def test_failure_and_negative_delta_are_retained(self):
         with tempfile.TemporaryDirectory() as d:
             directory=Path(d);plan,results=self.fixture(directory)
@@ -149,6 +162,60 @@ class Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);(root/'SOURCE.json').write_text('{}')
             with self.assertRaisesRegex(ValueError,'source manifest'):a.verify_package(root)
+
+    def _minimal_authenticated_package(self, root: Path) -> bytes:
+        config = {feature: True for feature in a.FEATURES}
+        files = {
+            'main.py': b'ORIGINAL_MAIN = True\n',
+            'TITAN-CONFIG.json': json.dumps(config, sort_keys=True).encode(),
+            'checks/reference/evaluator/evaluate.py': (
+                b"class Engine:\n    pass\n"
+                b"def get_engine(cache, loader):\n    return Engine(), {'engine':'captured'}\n"
+                b"def play(proxy, specs, cache, loader, seed, seat, **kwargs):\n"
+                b"    return {'status':'complete','scores':[1,1],'trace_sha256':'captured'}\n"
+            ),
+            'checks/reference/evaluator/loader.py': b'# captured loader\n',
+        }
+        for index in range(105):
+            files[f'dummy/{index:03d}.txt'] = f'captured-{index}\n'.encode()
+        self.assertEqual(109, len(files))
+        runtime = {}
+        for relative, data in files.items():
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+            runtime[relative] = {'bytes': len(data), 'sha256': a.digest(data)}
+        source = a.encoded({'runtime': runtime})
+        (root/'SOURCE.json').write_bytes(source)
+        return source
+
+    def test_run_job_uses_captured_bytes_after_whole_package_path_swap(self):
+        with tempfile.TemporaryDirectory() as d:
+            parent=Path(d); root=parent/'package'; root.mkdir()
+            source=self._minimal_authenticated_package(root)
+            tape=parent/'actions.json.gz'
+            job={'id':'base-7-0','variant':'base','seed':7,'candidate_seat':0,
+                 'root':str(root),'tape':str(tape)}
+            original_capture=a.capture_package
+            moved=parent/'captured-original'
+
+            def capture_then_replace(path):
+                pins, captured=original_capture(path)
+                Path(path).rename(moved)
+                root.mkdir()
+                (root/'checks/reference/evaluator').mkdir(parents=True)
+                (root/'main.py').write_text('EVIL_MAIN = True\n')
+                (root/'checks/reference/evaluator/evaluate.py').write_text(
+                    "raise RuntimeError('reopened attacker evaluator')\n")
+                return pins, captured
+
+            with patch.object(a,'SOURCE_SHA256',a.digest(source)), \
+                 patch.object(a,'capture_package',side_effect=capture_then_replace):
+                result=a.run_job(job)
+            self.assertEqual('complete',result['status'])
+            self.assertEqual('captured',result['trace_sha256'])
+            self.assertEqual(a.digest(b'ORIGINAL_MAIN = True\n'),result['candidate_entry_sha256'])
+            self.assertTrue(tape.is_file())
 
     def test_numeric_json_rejects_nonfinite(self):
         for x in (float('nan'),float('inf'),-float('inf')):
