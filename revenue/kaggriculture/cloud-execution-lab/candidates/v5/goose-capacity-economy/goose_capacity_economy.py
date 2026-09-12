@@ -49,6 +49,17 @@ def _inv_total(d):
     return n
 
 
+def _strict_equal(a,b):
+    """Type-preserving structural equality for same-step retry evidence."""
+    if type(a) is not type(b):return False
+    if isinstance(a,dict):
+        if a.keys()!=b.keys():return False
+        return all(_strict_equal(a[k],b[k]) for k in a)
+    if isinstance(a,(list,tuple)):
+        return len(a)==len(b) and all(_strict_equal(x,y) for x,y in zip(a,b))
+    return a==b
+
+
 def _access():
     return ((4,4),(5,4),(4,5),(5,5))
 
@@ -432,8 +443,9 @@ def apply_goose_capacity_economy(action,observation,configuration,*,enabled=Fals
     if not isinstance(farms,list) or len(farms)!=2 or not isinstance(private,dict) or _rows(action) is None:return action
     s=_state(player,step)
     if step==s.get("last"):
-        same=(action==s.get("_retry_parent") and observation==s.get("_retry_observation")
-              and _cfg_key(configuration)==s.get("_retry_cfg"))
+        same=(_strict_equal(action,s.get("_retry_parent"))
+              and _strict_equal(observation,s.get("_retry_observation"))
+              and _strict_equal(_cfg_key(configuration),s.get("_retry_cfg")))
         if same and "_retry_output" in s:
             telemetry["same_step_replay"]+=1
             return copy.deepcopy(s["_retry_output"])

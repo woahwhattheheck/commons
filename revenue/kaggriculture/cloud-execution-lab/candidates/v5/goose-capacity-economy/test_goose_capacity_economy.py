@@ -122,6 +122,34 @@ class P02Contracts(unittest.TestCase):
         self.assertEqual(first["market"], [["HIRE"]])
         self.assertEqual(patched.call_count, 1)
         self.assertEqual(p02.STATE[0]["phase"], "requested")
+        self.assertEqual(p02.telemetry["same_step_replay"], 1)
+
+    def test_changed_same_step_bool_int_observation_is_not_replayed(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        cfg = dict(p02.CFG)
+        obs = {
+            "step": 200,
+            "player": 0,
+            "farms": [{"hires_today": 1}, {}],
+            "private": {},
+        }
+
+        def request(parent, _obs, state):
+            state["phase"] = "requested"
+            out = copy.deepcopy(parent)
+            out["market"].append(["HIRE"])
+            return out
+
+        changed = copy.deepcopy(obs)
+        changed["farms"][0]["hires_today"] = True
+        with mock.patch.object(p02, "_request", side_effect=request) as patched:
+            first = p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True)
+            second = p02.apply_goose_capacity_economy(copy.deepcopy(action), changed, cfg, enabled=True)
+        self.assertEqual(first["market"], [["HIRE"]])
+        self.assertEqual(second, action)
+        self.assertEqual(patched.call_count, 1)
+        self.assertEqual(p02.telemetry["same_step_changed"], 1)
+        self.assertEqual(p02.telemetry["same_step_replay"], 0)
 
     def test_changed_same_step_restores_pre_step_state(self):
         action = {"farmer": ["PASS"], "hands": [], "market": []}

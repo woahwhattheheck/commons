@@ -18,7 +18,7 @@ from publication_custody import publish_exclusive
 
 BASELINE_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 MAIN_SHA256 = "b98aec64f83ea9a216def7ab1fef320a6498ae37816f506af1f891c934027035"
-HELPER_GIT_BLOB = "ea5e0e82bc172f59801b2c5e547f9b1c7e0fd869"
+HELPER_GIT_BLOB = "d13d255d1e24695b758791233b34445ad828dd29"
 MAIN = "main.py"
 HELPER = "goose_capacity_economy.py"
 
