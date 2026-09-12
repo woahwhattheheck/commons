@@ -17,7 +17,7 @@ The pinned engine (`reference/engine/kaggriculture.py`, Git blob `3c202c7ee921da
 
 The route set is intentionally an over-approximation: treating every canonical route as still reachable can miss opportunities, but cannot certify a dead seed merely because one current branch lacks a consumer.
 
-The replacement is `[]`, not deletion. This preserves market row index and engine prefix-cap topology. BUY_SEED also does not alter public market inventory, so the certified mutation removes only our private cash-to-seed transfer. Malformed route evidence, malformed actions, bad market limits, type-aliased activation, or active dynamic unit rewriters all fail to identity.
+The replacement is `[]`, not deletion. This preserves market row index and engine prefix-cap topology. BUY_SEED also does not alter public market inventory, so the certified mutation removes only our private cash-to-seed transfer. Malformed route evidence, bad market limits, type-aliased activation, or active dynamic unit rewriters all fail to identity. The quantity parser mirrors the pinned engine's `int()` behavior: TypeError/ValueError are inert parse failures, while numeric overflow is **not** reclassified as inert. An OverflowError therefore refuses the whole candidate edit/census before any row is changed.
 
 ## Current route census
 
@@ -29,7 +29,7 @@ Run from this directory:
 python -B scan_current_routes.py
 ```
 
-If the census is nonzero, the next gate is a matched current-runtime engagement trace: control versus this transform on identical observation callbacks, with the canonical V5 candidate identity (`v5c:`) and policy-engagement fingerprint attached. If the current runtime never returns a certified row, release this lane as COLD and do not add a runtime feature.
+If the census is nonzero, the next gate is a matched current-runtime engagement trace: control versus this transform on identical observation callbacks, with the canonical V5 candidate identity (`v5c:`) and policy-engagement fingerprint attached. A dormant research helper is not itself stamped as an active candidate: the `v5c:` identity belongs to the exact materialized runtime/config postimage once an engagement-capable composition exists. If the current runtime never returns a certified row, release this lane as COLD and do not add a runtime feature.
 
 ## Focused contracts
 
@@ -38,4 +38,4 @@ python -B -m unittest -v test_deadcap_seed.py
 python -O -B -m unittest -v test_deadcap_seed.py
 ```
 
-The tests pin engine quantity coercion (`int()`), list-only BUY_SEED grammar, the engine market-cap floor `max(1, int(...))`, same-callback unit-before-market ordering, all-route conservatism, exact slot preservation, caller isolation, and fail-closed activation.
+The tests pin engine quantity coercion (`int()`), overflow behavior, list-only BUY_SEED grammar, the engine market-cap floor `max(1, int(...))`, same-callback unit-before-market ordering, all-route conservatism, exact slot preservation, caller isolation, and fail-closed activation.
