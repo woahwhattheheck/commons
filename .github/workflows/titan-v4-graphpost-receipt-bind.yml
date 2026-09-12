@@ -1,0 +1,44 @@
+name: titan-v4-graphpost-receipt-bind
+
+on:
+  push:
+    branches:
+      - sol/graphpost-receipt-bind-20260912
+    paths:
+      - '.github/workflows/titan-v4-graphpost-receipt-bind.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/run_composed_postimage.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/test_postimage_snapshot.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Bind exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+
+      - name: GRAPHPOST receipt snapshot gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile run_composed_postimage.py test_postimage_snapshot.py
+          python3 -B -m unittest -q test_postimage_snapshot.py
+          python3 -O -B -m unittest -q test_postimage_snapshot.py
