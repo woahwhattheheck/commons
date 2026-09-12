@@ -32,7 +32,7 @@ That interpretation is machine-bound, not documentary only. Receipt schema v2 pi
 
 ## Publication custody
 
-The treatment is staged and fsynced completely on the destination filesystem before publication. The complete receipt is then created with exclusive/create-only semantics. Only after that receipt exists does the final archive path appear, via a create-only hard link to the complete staged inode. A receipt-path race therefore publishes no archive; an archive-path race removes the exact receipt published by this invocation. A crash may leave evidence-only residue or a harmless staging link, but must not leave a runnable final treatment archive without its complete receipt.
+Both final destination paths are reserved create-exclusively before either payload is written. The materializer retains each process-owned file descriptor and its `(st_dev, st_ino)` identity, writes and fsyncs the archive and receipt only after both reservations succeed, and marks the pair committed only after both payloads complete. Any reservation, write, or fsync failure rolls back only paths that still resolve to the exact inodes created by this invocation. A hostile pre-existing receipt therefore survives untouched while the first reservation is removed, and a hostile replacement swapped onto either pathname is never deleted by cleanup.
 
 ## Decision rule
 
