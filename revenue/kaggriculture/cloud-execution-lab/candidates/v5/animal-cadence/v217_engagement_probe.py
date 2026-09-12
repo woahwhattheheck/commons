@@ -22,7 +22,7 @@ import tarfile
 
 PRODUCTION_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 ROUTER = "r04_full_router.py"
-ROUTER_SHA = "41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a"
+ROUTER_SHA = "41ea55c5f20c43cd58c5099fbadb212de62ec95a95df641d2e6e1e19c3d4d55b39a"
 EVALUATOR_SHA = "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c"
 PRODUCTION_MEMBERS = 92
 
@@ -159,12 +159,23 @@ def _v217_probe_observe(view,st,step,action,pending,tape,end):
                 reserved_wheat+=max(0,int(cmd[2]) if len(cmd)>2 else 1)
     start=tuple(view.positions[0])
     inventory=view.inventory(0)
-    need_pickup=inventory.get('WHEAT',0)<1
+    if not isinstance(inventory,dict):
+        return
+    wheat=inventory.get('WHEAT',0)
+    if type(wheat) is not int or wheat<0:
+        return
+    need_pickup=wheat<1
     if need_pickup:
-        if any(inventory.values()) or not view.beside_shed(start):
+        if any(type(v) is not int or v<0 or v for v in inventory.values()) or not view.beside_shed(start):
+            return
+        market=action.get('market')
+        if not isinstance(market,list):
+            return
+        if any(isinstance(order,list) and len(order)>1 and order[1]=='WHEAT' for order in market):
             return
         projected=projected_shed(action,view)
-        if projected.get('WHEAT',0)<max(2,reserved_wheat+1):
+        projected_wheat=projected.get('WHEAT',0)
+        if type(projected_wheat) is not int or projected_wheat<max(2,reserved_wheat+1):
             return
     targets=[]
     for y,row in enumerate(view.tiles):
