@@ -26,6 +26,58 @@ def _money(value: Any, label: str) -> int:
     return _whole(value, label)
 
 
+def _market_limit(configuration: Mapping[str, Any] | None) -> int:
+    cfg = dict(configuration or {})
+    maximum = _whole(cfg.get('maxMarketOrdersPerTurn', 10), 'order limit')
+    if not maximum:
+        raise ValueError('positive order limit required')
+    return maximum
+
+
+def _active_market(queue: Any, maximum: int) -> list:
+    if not isinstance(queue, list):
+        raise ValueError('market must be a list')
+    return queue[:maximum]
+
+
+def _has_dynamic_product_obligation(queues: list[Any], maximum: int) -> bool:
+    return any(
+        order and order[0] == 'BUY_PRODUCT'
+        for queue in queues
+        for order in _active_market(queue, maximum)
+    )
+
+
+def _prefix_cash_reserve(runtime: Any, obs: Mapping[str, Any], cfg: Mapping[str, Any],
+                         selected: Mapping[str, Any], end: int) -> int:
+    """Mirror the existing seller reserve over engine-executable market rows only."""
+    from scheduler import _order_spend, m
+
+    maximum = _market_limit(cfg)
+    now = int(obs['step'])
+    player = int(obs['player'])
+    farm = dict(obs['farms'][player])
+    farm['unlocked_quadrants'] = list(farm['unlocked_quadrants'])
+    hires = int(farm['hires_today'])
+    cost = 0
+    route = runtime.controller.R[runtime.controller.cur]
+    inventory = obs['market']['inventory']
+    params = obs['market'].get('params')
+    for step in range(now, int(end) + 1):
+        if step > now and step % 24 == 0:
+            hires = 0
+        queue = selected.get('market', []) if step == now else (
+            route[step].get('market', []) if step < len(route) else [])
+        for order in _active_market(queue, maximum):
+            spend, hires = _order_spend(order, farm, inventory, params, hires, cfg)
+            cost += spend
+            if (order and order[0] == 'BUY_LAND'
+                    and len(farm['unlocked_quadrants']) <= len(m.LAND_ORDER)):
+                farm['unlocked_quadrants'].append(
+                    m.LAND_ORDER[len(farm['unlocked_quadrants']) - 1])
+    return cost
+
+
 def propose_seed_retry(mechanics: Any, funding: Any, post_unit_observation: Mapping[str, Any],
                        selected: Mapping[str, Any], committed_next: Mapping[str, Any],
                        configuration: Mapping[str, Any] | None = None, *,
@@ -47,9 +99,9 @@ def propose_seed_retry(mechanics: Any, funding: Any, post_unit_observation: Mapp
         next_step = _whole(next_step, 'next_step')
         turns = _whole(cfg.get('turnsPerDay', 24), 'turnsPerDay')
         horizon = _whole(cfg.get('episodeSteps', 720), 'episodeSteps')
-        maximum = _whole(cfg.get('maxMarketOrdersPerTurn', 10), 'order limit')
-        if not turns or not maximum:
-            raise ValueError('positive day length and order limit required')
+        maximum = _market_limit(cfg)
+        if not turns:
+            raise ValueError('positive day length required')
         if next_step != now + 1 or next_step > horizon - 2:
             report['reason'] = 'not_an_existing_next_action_turn'
             return out, report
@@ -153,9 +205,10 @@ def apply_committed_seed_retry(runtime: Any, obs: Mapping, cfg: Mapping,
                               selected: Mapping) -> tuple[dict, dict]:
     """Use an initialized current TitanAgent's existing route and funding modules.
 
-    The eight-turn reserve is exactly the current seller's fixed-price window.
-    Dynamic BUY_PRODUCT obligations, route-switch boundaries, and other unit
-    rewriting features retain the selected action unchanged in this first scope.
+    The eight-turn reserve is exactly the current seller's fixed-price window,
+    restricted to the engine-executable market prefix on every represented turn.
+    Dynamic BUY_PRODUCT obligations inside that prefix, route-switch boundaries,
+    and other unit rewriting features retain the selected action unchanged.
     """
     unchanged = lambda reason: (selected, {'status': 'unchanged', 'reason': reason,
                                           'controller_calls': 0})
@@ -170,6 +223,7 @@ def apply_committed_seed_retry(runtime: Any, obs: Mapping, cfg: Mapping,
     turns = int(cfg.get('turnsPerDay', 24))
     if turns != 24:
         return unchanged('existing_reserve_uses_24_turn_days')
+    maximum = _market_limit(cfg)
     route = runtime.controller.R[runtime.controller.cur]
     next_step = now + 1
     end = min(now + HORIZON, int(cfg.get('episodeSteps', 720)) - 2,
@@ -183,18 +237,18 @@ def apply_committed_seed_retry(runtime: Any, obs: Mapping, cfg: Mapping,
     requests = [next_action.get('farmer', []), *next_action.get('hands', [])]
     if not any(a and a[0] == 'PLANT' for a in requests):
         return unchanged('no_next_turn_planting')
-    # Existing seller reserve is an exact fixed-cost sum in this same-day scope.
-    # Do not promote its heuristic product-price quote into a future guarantee.
+    # Preserve the existing hard veto for dynamic-price obligations that can
+    # actually execute. Raw suffix rows beyond maxMarketOrdersPerTurn are inert.
     queues = [selected.get('market', [])] + [route[t].get('market', [])
               for t in range(next_step, min(end + 1, len(route)))]
-    if any(o and o[0] == 'BUY_PRODUCT' for queue in queues for o in queue):
+    if _has_dynamic_product_obligation(queues, maximum):
         return unchanged('dynamic_product_obligation_in_reserve_window')
     farm, private = post_units(obs, selected, cfg)
     post = dict(obs)
     post['farms'] = list(obs['farms'])
     post['farms'][int(obs['player'])] = farm
     post['private'] = private
-    reserve = runtime.consumer.cash_reserve(obs, cfg, selected, end)
+    reserve = _prefix_cash_reserve(runtime, obs, cfg, selected, end)
     result, report = propose_seed_retry(m, runtime.funding_module, post, selected,
                                        next_action, cfg, reserved_cash=reserve,
                                        next_step=next_step)
