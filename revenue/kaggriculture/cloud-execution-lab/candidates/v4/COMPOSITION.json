@@ -72,13 +72,13 @@
     },
     {
       "id": "scoped-construction",
-      "state": "blocked",
-      "reason": "Standalone SPINDLE receipts are exact, but its scheduler transform starts from git-blob:a483b24dd72b580d7d8811636b54d2d44f391575 while the active funding-capacity stack independently transforms that same preimage to git-blob:eb289f87adebb7dc7e90046bfbec31a307cb5aaa. No authenticated CAPTRACE-postimage -> SPINDLE-postimage edge exists yet, so global source order cannot be asserted without discarding one peer transform.",
+      "state": "compose",
       "package": "repairs/performance",
       "entrypoints": [
         "repairs/performance/compose_scoped_constructor.py"
       ],
       "receipt": "repairs/performance/SCOPED-CONSTRUCTION.json",
+      "composition_receipt": "repairs/tooling/composition-graph/LOOM-4-MATERIALIZATION.json",
       "foundation": {
         "artifact_id": 10175943272,
         "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9"
@@ -100,24 +100,35 @@
           "output_identity": "git-blob:db9e9ec033c01902b585343224a58f036199ebc2"
         }
       ],
-      "transforms": [],
+      "transforms": [
+        {
+          "surface": "scheduler.py",
+          "input_identity": "git-blob:eb289f87adebb7dc7e90046bfbec31a307cb5aaa",
+          "output_identity": "git-blob:b29d1e9887f517506c5b3d858baa9bda5848e73f"
+        },
+        {
+          "surface": "selected_sell_core.py",
+          "input_identity": "git-blob:f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+          "output_identity": "git-blob:33ef376f10bed223a364a6bc6fbfa3b2419e1701"
+        }
+      ],
       "requires": [
         "funding-capacity-stack"
       ],
       "before": [],
       "after": [],
       "conflicts": [],
-      "note": "LOOM build demand 1789184998.194959 asks the existing native-composer lane to apply SPINDLE after the authenticated CAPTRACE aggregate and return the exact combined scheduler postimage. Move to COMPOSE only from that receipt; never reset scheduler.py to the old a483 preimage."
+      "note": "LOOM-4 combined materialization reproduced the published standalone receipt, preserved unrelated CAPTRACE/UNITFLOW bytes reversibly, and authenticated the post-CAPTRACE scheduler edge. Combined focused runtime gate passed 50/50 normal and 50/50 optimized. Source-only composition; not production promotion."
     },
     {
       "id": "projection-state-clone",
-      "state": "blocked",
-      "reason": "LIVEPATH publishes authenticated whole-file postimages, but its durable composer pins the input at method-span granularity and an exact whole-file predecessor is not durably identified for every changed file, including early_capital.py. LOOM refuses to mix method-span preimages with whole-file postimages in one transform edge. Its own runbook also requires fresh same-method composition when newer peer semantics touch the event method.",
+      "state": "compose",
       "package": "repairs/performance/projection-state-clone",
       "entrypoints": [
         "repairs/performance/projection-state-clone/compose.py"
       ],
       "receipt": "repairs/performance/projection-state-clone/VALIDATION.json",
+      "composition_receipt": "repairs/tooling/composition-graph/LOOM-4-MATERIALIZATION.json",
       "foundation": {
         "artifact_id": 10175943272,
         "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
@@ -145,14 +156,25 @@
         "represented_shed_event_unitflow": "81e8710927a6af2f1306ab6acfcf181963451aef62182a044d32d5b5f9119b1c",
         "early_capital_project_post_unit_private": "2c0e9143e7e05fddcd267059fa060c5c424f0abac3c8a6fd76f34915cbec1196"
       },
-      "transforms": [],
+      "transforms": [
+        {
+          "surface": "frozen_selected.py",
+          "input_identity": "git-blob:ef090f6731c2d1ee648e2caaf3e215641b006518",
+          "output_identity": "git-blob:4a5d3d5f4bed04acf73c7339e41fed56badf34c9"
+        },
+        {
+          "surface": "early_capital.py",
+          "input_identity": "git-blob:1161859ac5af617eca65aec3f732b5c1396cad37",
+          "output_identity": "git-blob:460355e30349de19f7e51f8b7c30e2751c18c6f9"
+        }
+      ],
       "requires": [
         "funding-capacity-stack"
       ],
       "before": [],
       "after": [],
       "conflicts": [],
-      "note": "LOOM build demand 1789184998.194959 asks the existing assembler to try LIVEPATH on the same authenticated combined foundation and return exact whole-file before/after identities, or an exact pin refusal. No pin relaxation is authorized."
+      "note": "LOOM-4 combined materialization reproduced the exact CAPTRACE frozen postimage first, then LIVEPATH accepted the authenticated UNITFLOW method preimage and produced exact whole-file before/after identities. Combined focused runtime gate passed 50/50 normal and 50/50 optimized. Source-only composition; not production promotion."
     },
     {
       "id": "d4-strawberry-timing",
