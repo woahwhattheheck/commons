@@ -1,11 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Authenticate immutable future rows from one committed producer route.
+"""Authenticate immutable future rows from one current committed producer receipt.
 
 This is provenance plumbing, not a producer. It never calls ``controller.act``
-or any route-selection method. Callers must supply the route identity that was
-committed with the selected action by TitanAgent / the entrypoint route receipt.
-Raw ``controller.cur`` is deliberately not an authority: it may already contain
-an interrupted or later proposal.
+or any route-selection method. Callers must supply the immutable entrypoint
+receipt published with the selected action. Raw ``controller.cur`` is deliberately
+not an authority: it may already contain an interrupted or later proposal.
 """
 from __future__ import annotations
 
@@ -15,8 +14,9 @@ import json
 from typing import Any
 
 SCHEMA = "titan-v5-current-route-window-v3"
-ROUTE_SOURCE = "committed_producer_route.R[route_id]"
+ROUTE_SOURCE = "entrypoint_route_receipt->controller.R[route]"
 MAX_LOOKAHEAD = 72
+_RECEIPT_KEYS = frozenset({"route_step", "last_step", "player", "route"})
 
 
 def _plain_nonnegative_int(value: Any) -> bool:
@@ -25,6 +25,40 @@ def _plain_nonnegative_int(value: Any) -> bool:
 
 def _route_id(value: Any) -> str | None:
     return value if type(value) is str and bool(value) else None
+
+
+def _current_route_receipt(value: Any, observation: Any) -> dict[str, Any] | None:
+    """Validate one receipt as authority for the current selected-action boundary."""
+    if type(value) is not dict or set(value) != _RECEIPT_KEYS:
+        return None
+    route_step = value.get("route_step")
+    last_step = value.get("last_step")
+    player = value.get("player")
+    route = _route_id(value.get("route"))
+    if not _plain_nonnegative_int(route_step) or not _plain_nonnegative_int(last_step):
+        return None
+    if type(player) is not int or player not in (0, 1) or route is None:
+        return None
+    if not isinstance(observation, dict):
+        return None
+    step = observation.get("step")
+    observed_player = observation.get("player")
+    if not _plain_nonnegative_int(step):
+        return None
+    if type(observed_player) is not int or observed_player not in (0, 1):
+        return None
+    # A window may authorize transforms of the current selected action only.
+    # Carried recovery receipts (route_step < last_step), stale receipts, gaps,
+    # and cross-player receipts remain useful to the entrypoint but are not
+    # current producer authority.
+    if route_step != step or last_step != step or player != observed_player:
+        return None
+    return {
+        "route_step": route_step,
+        "last_step": last_step,
+        "player": player,
+        "route": route,
+    }
 
 
 def _worker_count(observation: Any) -> int | None:
@@ -80,12 +114,11 @@ def _canonical_json(value: Any) -> str | None:
 
 def _capture_route(
     controller: Any,
-    completed_route_id: Any,
+    route_id: str,
 ) -> tuple[str, str, list[Any], str] | None:
     """Capture one stable explicitly-authorized ``R[route_id]`` snapshot."""
-    route_id = _route_id(completed_route_id)
     routes = getattr(controller, "R", None)
-    if route_id is None or not isinstance(routes, dict) or route_id not in routes:
+    if not isinstance(routes, dict) or route_id not in routes:
         return None
     route_ref = routes[route_id]
     if not isinstance(route_ref, (list, tuple)):
@@ -141,12 +174,15 @@ class RouteActionWitness:
 
 @dataclass(frozen=True)
 class CurrentRouteWindow:
-    """Immutable bounded future window from one committed route snapshot."""
+    """Immutable bounded future window from one current committed route receipt."""
 
     schema: str
     route_source: str
     controller_type: str
     route_id: str
+    route_step: int
+    last_step: int
+    player: int
     current_step: int
     current_index: int
     current_worker_cardinality: int
@@ -173,6 +209,9 @@ class CurrentRouteWindow:
             route_source=self.route_source,
             controller_type=self.controller_type,
             route_id=self.route_id,
+            route_step=self.route_step,
+            last_step=self.last_step,
+            player=self.player,
             current_step=self.current_step,
             current_index=self.current_index,
             next_step=row.step,
@@ -190,6 +229,9 @@ class CurrentRouteWindow:
             "route_source": self.route_source,
             "controller_type": self.controller_type,
             "route_id": self.route_id,
+            "route_step": self.route_step,
+            "last_step": self.last_step,
+            "player": self.player,
             "current_step": self.current_step,
             "current_index": self.current_index,
             "current_worker_cardinality": self.current_worker_cardinality,
@@ -209,6 +251,9 @@ class CurrentRouteWitness:
     route_source: str
     controller_type: str
     route_id: str
+    route_step: int
+    last_step: int
+    player: int
     current_step: int
     current_index: int
     next_step: int
@@ -237,6 +282,9 @@ class CurrentRouteWitness:
             "route_source": self.route_source,
             "controller_type": self.controller_type,
             "route_id": self.route_id,
+            "route_step": self.route_step,
+            "last_step": self.last_step,
+            "player": self.player,
             "current_step": self.current_step,
             "current_index": self.current_index,
             "next_step": self.next_step,
@@ -252,22 +300,21 @@ def bind_current_route_window(
     controller: Any,
     observation: Any,
     *,
-    completed_route_id: Any = None,
+    completed_route_receipt: Any = None,
     lookahead: int,
 ) -> CurrentRouteWindow | None:
-    """Capture future rows from the explicitly committed producer route."""
+    """Capture future rows from the current committed producer receipt."""
     if type(lookahead) is not int or not 1 <= lookahead <= MAX_LOOKAHEAD:
         return None
-    if _route_id(completed_route_id) is None or not isinstance(observation, dict):
+    receipt = _current_route_receipt(completed_route_receipt, observation)
+    if receipt is None:
         return None
-    step = observation.get("step")
-    if not _plain_nonnegative_int(step):
-        return None
+    step = receipt["route_step"]
     count = _worker_count(observation)
     if count is None:
         return None
 
-    captured = _capture_route(controller, completed_route_id)
+    captured = _capture_route(controller, receipt["route"])
     if captured is None:
         return None
     route_id, controller_type, route, route_sha256 = captured
@@ -296,17 +343,18 @@ def bind_current_route_window(
             )
         )
 
-    # This digest is the portable receipt authority for the bounded window. It
-    # therefore binds every field that changes what a consumer may infer, not
-    # merely the route bytes and row hashes. In particular, the same authored
-    # rows cannot be replayed under a different current worker envelope,
-    # controller identity, route extent, or requested lookahead.
+    # The digest is portable authority for both the immutable producer receipt and
+    # the bounded route window. Every asserted field that changes what a consumer
+    # may infer is covered, including receipt freshness/player provenance.
     window_material = json.dumps(
         {
             "schema": SCHEMA,
             "route_source": ROUTE_SOURCE,
             "controller_type": controller_type,
             "route_id": route_id,
+            "route_step": receipt["route_step"],
+            "last_step": receipt["last_step"],
+            "player": receipt["player"],
             "current_step": step,
             "current_index": step,
             "current_worker_cardinality": count,
@@ -326,6 +374,9 @@ def bind_current_route_window(
         route_source=ROUTE_SOURCE,
         controller_type=controller_type,
         route_id=route_id,
+        route_step=receipt["route_step"],
+        last_step=receipt["last_step"],
+        player=receipt["player"],
         current_step=step,
         current_index=step,
         current_worker_cardinality=count,
@@ -341,13 +392,13 @@ def bind_current_route(
     controller: Any,
     observation: Any,
     *,
-    completed_route_id: Any = None,
+    completed_route_receipt: Any = None,
 ) -> CurrentRouteWitness | None:
-    """B5/JIT view of exact ``R[completed_route_id][step+1]``."""
+    """B5/JIT view of exact ``R[receipt.route][step+1]``."""
     window = bind_current_route_window(
         controller,
         observation,
-        completed_route_id=completed_route_id,
+        completed_route_receipt=completed_route_receipt,
         lookahead=1,
     )
     return None if window is None else window.b5_witness()
@@ -357,12 +408,12 @@ def bind_b5_kwargs(
     controller: Any,
     observation: Any,
     *,
-    completed_route_id: Any = None,
+    completed_route_receipt: Any = None,
 ) -> dict[str, Any] | None:
     """Convenience adapter for B5/JIT; no B5 import or policy dependency."""
     witness = bind_current_route(
         controller,
         observation,
-        completed_route_id=completed_route_id,
+        completed_route_receipt=completed_route_receipt,
     )
     return None if witness is None else witness.b5_kwargs()
