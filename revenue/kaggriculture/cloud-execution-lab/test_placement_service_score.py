@@ -58,6 +58,27 @@ class PlacementServiceScoreTests(unittest.TestCase):
         self.assertIsNone(score)
         self.assertEqual(report["reason"], "reserved")
 
+    def test_reserved_generator_is_not_consumed_across_rank(self):
+        f = farm()
+        reserved = (site for site in ((4, 4), (3, 4)))
+        ranked, report = rank_empty_sites(
+            M, f, ServiceCalendar(home_to_site=1), reserved=reserved
+        )
+        sites = {score.site for score in ranked}
+        self.assertNotIn((4, 4), sites)
+        self.assertNotIn((3, 4), sites)
+        self.assertGreaterEqual(report["rejected"].get("reserved", 0), 2)
+
+    def test_noninteger_coordinates_do_not_alias_real_tiles(self):
+        f = farm()
+        calendar = ServiceCalendar(home_to_site=1)
+        for site in ((3.9, 4), ("3", 4), (True, 4)):
+            with self.subTest(site=site):
+                with self.assertRaises(ValueError):
+                    score_site(M, f, site, calendar)
+        with self.assertRaises(ValueError):
+            rank_empty_sites(M, f, calendar, reserved=((4.5, 4),))
+
     def test_home_weight_prefers_near_home(self):
         f = farm()
         calendar = ServiceCalendar(home_to_site=10)
