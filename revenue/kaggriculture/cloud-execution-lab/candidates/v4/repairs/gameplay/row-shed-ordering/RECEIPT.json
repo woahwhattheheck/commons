@@ -1,0 +1,42 @@
+{
+  "schema": "titan-v4-current-abi-port/v1",
+  "lane": "V3.1 row-shed sell-order pricing",
+  "owner": "ASTRA-ROWBRIDGE",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "source_parent_commit": "27f97c00521e0064f08faf4c39c402d8403c08b1",
+  "historical_donor": {
+    "commit": "7cbe552087626d09dbd8a84be8fa89efc7320ad0",
+    "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py",
+    "source_sha256": "569b515c89f56a8f060ce94de218a341ae0e5b3c8e0e2c6428a8a0f08a462b05",
+    "reviewed_test_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v31_row_shed.py",
+    "reviewed_test_sha256": "b8f81248e37078d15e767f2883c59589a670353c248c5d5eab126b58f41cabee",
+    "historical_evidence": "shipping receipt records 1,280 games per arm, 1273W/7L and +540 margin/game versus V3.0; 96W/64L top-40 bench"
+  },
+  "current_abi": {
+    "production_target": "revenue/kaggriculture/cloud-execution-lab",
+    "selected_projection": "ordered_selected_sell.py::OrderedSelectedSell.prepare",
+    "selected_sell": "selected_action_sell.py::SelectedActionSell.transform",
+    "component": "current_row_shed.py::transform_selected",
+    "composition": "selected action + public market inventory + exact post-unit shed + pinned default quote",
+    "legacy_router_imported": false,
+    "legacy_materializer_executed": false,
+    "sibling_v4_root_created": false,
+    "new_feature_key_created": false
+  },
+  "validation": {
+    "normal": {"tests": 15, "status": "PASS", "random_reference_parity_cases": 800},
+    "optimized": {"tests": 15, "status": "PASS", "random_reference_parity_cases": 800},
+    "total_random_reference_parity_cases": 1600,
+    "component_sha256": "ac0b33f9110a8ef31cd62ac5871de9cbffa1edf303cc26cdb5418a9824dda500",
+    "test_sha256": "18629f159fa45a7f31b8b231e2ccccb186f82537ac355b0fd18cd2ba54f927ee"
+  },
+  "status": "current_abi_semantic_port_component_tested_not_runtime_promoted",
+  "not_claimed": [
+    "current whole-agent economics",
+    "official current-V4 opponent gate",
+    "default promotion",
+    "production source wiring",
+    "canonical archive promotion"
+  ],
+  "next_gate": "Compose at the selected-action post-unit boundary and run the current canonical official-reference opponent panel in both seats; reject on inherited funding-prefix/raw-slot drift or adverse economics."
+}
