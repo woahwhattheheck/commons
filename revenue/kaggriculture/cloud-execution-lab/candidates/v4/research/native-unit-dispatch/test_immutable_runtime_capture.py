@@ -36,7 +36,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
         manifest_raw = (json.dumps(manifest, sort_keys=True, separators=(',', ':')) + '\n').encode()
         (root / 'SOURCE.json').write_bytes(manifest_raw)
         engine_pins = {
-            name: k.composer.git_blob(files[name])
+            name: k.git_blob(files[name])
             for name in k.ENGINE_GIT_BLOBS
         }
         return manifest_raw, files, engine_pins
@@ -53,7 +53,28 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             k,
             SOURCE_SHA256=_sha(manifest_raw),
             ENGINE_GIT_BLOBS=engine_pins,
-        ), patch.object(k.composer, 'BASE_BLOB', k.composer.git_blob(files['mechanics.py']))
+        ), patch.object(k, 'BASE_MECHANICS_BLOB', k.git_blob(files['mechanics.py']))
+
+    def probe_control(self, root: Path, expected_digest: str = '0' * 64):
+        output = root / 'probe.json'
+        proc = subprocess.run(
+            [
+                sys.executable,
+                '-B',
+                str(root / 'run_kinetic_games.py'),
+                '--native-root',
+                str(root / 'unused-native-root'),
+                '--output',
+                str(output),
+                '--control-probe',
+                '--expected-control-bundle-sha256',
+                expected_digest,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        return proc, output
 
     def test_path_replacement_after_capture_cannot_change_materialized_execution_bytes(self):
         with tempfile.TemporaryDirectory() as d:
@@ -124,8 +145,8 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             captured, digest = k.capture_control_bundle(mutable)
             self.assertEqual(original, captured)
 
-            # This is the predecessor: after parent capture, the repository
-            # runner is replaced. Children must never reopen this path.
+            # After parent capture, replace the repository runner. Children must
+            # never reopen this path.
             (mutable / 'run_kinetic_games.py').write_text(
                 'raise SystemExit("MUTATED REPO RUNNER EXECUTED")\n'
             )
@@ -154,7 +175,7 @@ class ImmutableRuntimeCapture(unittest.TestCase):
             self.assertEqual(receipt['executed_control_bundle_sha256'], digest)
             self.assertEqual(
                 receipt['executed_control_runner_blob'],
-                k.composer.git_blob(original['run_kinetic_games.py']),
+                k.git_blob(original['run_kinetic_games.py']),
             )
             self.assertEqual(
                 (frozen / 'run_kinetic_games.py').read_bytes(),
@@ -169,6 +190,54 @@ class ImmutableRuntimeCapture(unittest.TestCase):
                 (root / name).write_bytes(b'DRIFT = True\n')
                 with self.assertRaisesRegex(ValueError, f'Unverified control input: {name}'):
                     k.capture_control_bundle(root)
+
+    def test_unverified_composer_cannot_execute_before_authentication(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.control_fixture(root)
+            marker = root / 'composer-executed'
+            (root / 'compose_kinetic.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("EXECUTED")\n'
+                f'BASE_BLOB = {k.BASE_MECHANICS_BLOB!r}\n'
+                'def git_blob(raw): return "d34362e98277c930b7b28519f2892bea758b3878"\n'
+                'def compose(source): return source\n'
+            )
+            proc, _ = self.probe_control(root)
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn('Unverified control input: compose_kinetic.py', proc.stderr)
+            self.assertFalse(marker.exists(), proc.stdout + proc.stderr)
+
+    def test_unverified_checker_cannot_execute_before_authentication(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.control_fixture(root)
+            marker = root / 'checker-executed'
+            (root / 'check_kinetic.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("EXECUTED")\n'
+                'def imported(*args): raise RuntimeError("attacker checker executed")\n'
+            )
+            proc, _ = self.probe_control(root)
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn('Unverified control input: check_kinetic.py', proc.stderr)
+            self.assertFalse(marker.exists(), proc.stdout + proc.stderr)
+
+    def test_captured_composer_is_executed_from_authenticated_bytes_not_reopened_path(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.control_fixture(root)
+            captured, _ = k.capture_control_bundle(root)
+            marker = root / 'reopened-composer-executed'
+            (root / 'compose_kinetic.py').write_text(
+                'from pathlib import Path\n'
+                f'Path({str(marker)!r}).write_text("EXECUTED")\n'
+                'raise RuntimeError("reopened composer executed")\n'
+            )
+            module = k.load_captured_composer(captured['compose_kinetic.py'])
+            self.assertEqual(module.BASE_BLOB, k.BASE_MECHANICS_BLOB)
+            self.assertTrue(callable(module.compose))
+            self.assertFalse(marker.exists())
 
 
 if __name__ == '__main__':
