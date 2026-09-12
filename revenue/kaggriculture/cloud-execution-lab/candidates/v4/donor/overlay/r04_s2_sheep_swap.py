@@ -104,6 +104,75 @@ def _literal_nonnegative_int(value: Any) -> bool:
     return type(value) is int and value >= 0
 
 
+_STATE_COUNTERS = (
+    "confirmed",
+    "reserved",
+    "wool_credit",
+    "requested",
+    "failed_purchase_units",
+    "picked",
+    "placed",
+    "failed_placements",
+    "extra_wool_harvested",
+    "extra_wool_sale_requests",
+)
+
+
+def _valid_state(state: Any) -> bool:
+    """Validate persistent lane custody before any read, reset, or mutation."""
+    if not isinstance(state, dict):
+        return False
+    last = state.get("last")
+    if type(last) is not int or last < -1:
+        return False
+    for key in _STATE_COUNTERS:
+        if key not in state or not _literal_nonnegative_int(state[key]):
+            return False
+
+    pending = state.get("pending_buy")
+    if pending is not None:
+        if not isinstance(pending, dict):
+            return False
+        before = pending.get("before")
+        quantity = pending.get("quantity")
+        if (not _literal_nonnegative_int(before)
+                or type(quantity) is not int
+                or not 1 <= quantity <= MAX_ORDER_QTY):
+            return False
+
+    carrying = state.get("carrying")
+    if not isinstance(carrying, dict):
+        return False
+    for actor, quantity in carrying.items():
+        if type(actor) is not int or actor < 0 or not _literal_nonnegative_int(quantity):
+            return False
+
+    pending_places = state.get("pending_places")
+    if not isinstance(pending_places, list):
+        return False
+    for record in pending_places:
+        if not isinstance(record, dict):
+            return False
+        actor = record.get("actor")
+        site = record.get("site")
+        day = record.get("day")
+        if type(actor) is not int or actor < 0 or not _literal_nonnegative_int(day):
+            return False
+        if not (isinstance(site, (list, tuple)) and len(site) == 2
+                and all(type(coord) is int and 0 <= coord < 10 for coord in site)):
+            return False
+
+    sites = state.get("sites")
+    if not isinstance(sites, dict):
+        return False
+    for site, day in sites.items():
+        if not (isinstance(site, tuple) and len(site) == 2
+                and all(type(coord) is int and 0 <= coord < 10 for coord in site)
+                and _literal_nonnegative_int(day)):
+            return False
+    return True
+
+
 def _safe_numeric_observation(obs: Any) -> bool:
     """Reject numeric poison before S2 can mutate state or coerce it with int()."""
     try:
@@ -300,7 +369,8 @@ def apply_s2_swap(
     if (enabled is not True or not _exact_standard(configuration)
             or not _valid_observation(observation)
             or not _safe_numeric_observation(observation)
-            or not _safe_parent_numerics(parent_action)):
+            or not _safe_parent_numerics(parent_action)
+            or not _valid_state(state)):
         return parent_action
 
     step = observation.get("step")
