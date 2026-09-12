@@ -1,0 +1,39 @@
+name: TITAN V5 V4 module-cache binding ablation
+
+on:
+  push:
+    branches:
+      - astra/v5-v31-v4-module-cache-binding-ablation-20260912
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-v4-module-cache-binding-ablation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Assert exact pushed head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and run normal contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/v4-module-cache-binding-ablation
+        run: |
+          python -B -m py_compile module_cache_binding_ablation.py test_module_cache_binding_ablation.py
+          python -B -m unittest -v test_module_cache_binding_ablation.py
+      - name: Run optimized contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/v4-module-cache-binding-ablation
+        run: python -O -B -m unittest -v test_module_cache_binding_ablation.py
