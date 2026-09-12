@@ -8,7 +8,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import copy
-from typing import Any, Callable, Iterable, Mapping
+import json
+from typing import Any, Callable, Hashable, Iterable, Mapping
 
 from joint_action_beam import Action, State
 
@@ -475,3 +476,86 @@ def mechanics_scorer(mechanics: Any, context: ScoreContext = ScoreContext()) -> 
             + w.obligations * c["obligations"]
         )
     return score
+
+
+def _canonical_transition_metadata(metadata: tuple) -> list:
+    """Render replay metadata deterministically for state keys.
+
+    The metadata tuple carries a frozenset of blocked crops and a demand
+    mapping; both need canonical ordering so equal game situations hash equal
+    regardless of insertion order.
+    """
+    origin_farm, origin_private, start_idx, actions, demand, blocked = metadata
+    return [
+        origin_farm,
+        origin_private,
+        start_idx,
+        list(actions),
+        sorted((str(crop), int(n)) for crop, n in dict(demand).items()),
+        sorted(str(crop) for crop in blocked),
+    ]
+
+
+def _stable_state_key(state: State) -> str:
+    """Stable hashable identity of a successor state.
+
+    Provider-internal replay metadata (``_TRANSITION_META_KEY``) is included:
+    two states with equal keys behave identically under future transitions of
+    this provider. Unserializable leaves fall back to ``repr``.
+    """
+    if isinstance(state, dict):
+        metadata = state.get(_TRANSITION_META_KEY)
+        game = {key: value for key, value in state.items() if key != _TRANSITION_META_KEY}
+        payload = [
+            game,
+            _canonical_transition_metadata(metadata) if metadata is not None else None,
+        ]
+    else:
+        payload = state
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"), default=repr)
+
+
+class KaggricultureRules:
+    """MechanicsProvider: the Kaggriculture worker-phase rules behind the interface.
+
+    This is the same interpreter-faithful transition and bounded candidate
+    family as the module-level functions; the class only adapts them to the
+    game-agnostic protocol in ``game_rules`` so the beam core and any future
+    title can share one search path.
+    """
+
+    def __init__(self, mechanics: Any, context: MechanicsContext):
+        self._mechanics = mechanics
+        self._context = context
+        self._transition = mechanics_transition(mechanics, context)
+
+    @property
+    def mechanics(self) -> Any:
+        return self._mechanics
+
+    @property
+    def context(self) -> MechanicsContext:
+        return self._context
+
+    def legal_actions(
+        self, state: State, idx: int, canonical: Action
+    ) -> Iterable[Action]:
+        return bounded_worker_candidates(self._mechanics, state, idx, canonical)
+
+    def transition(
+        self, state: State, idx: int, action: Action
+    ) -> State | None:
+        return self._transition(state, idx, action)
+
+    def state_key(self, state: State) -> Hashable:
+        return _stable_state_key(state)
+
+
+class KaggricultureScorer:
+    """Scorer: bounded worker-state economics behind the evaluator interface."""
+
+    def __init__(self, mechanics: Any, context: ScoreContext = ScoreContext()):
+        self._score = mechanics_scorer(mechanics, context)
+
+    def __call__(self, state: State, actions: tuple[Action, ...]) -> int:
+        return self._score(state, actions)
