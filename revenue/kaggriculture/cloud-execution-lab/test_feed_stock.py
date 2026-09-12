@@ -76,6 +76,31 @@ class FeedStockTests(unittest.TestCase):
         self.assertFalse(report['changed'])
         self.assertEqual(report['reason'], 'malformed_market_row')
 
+    def test_runtime_stock_wrappers_fail_closed_before_helper_dispatch(self):
+        cases = (
+            (17, 'malformed_market'),
+            ([17, ['SELL', 'FERTILIZER', 1]], 'malformed_market_row'),
+        )
+        for market, reason in cases:
+            with self.subTest(wrapper='operating', market=market):
+                selected = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': market}
+                agent = self.agent()
+                result = agent._operating_stock_selected(self.obs, {}, selected)
+                self.assertIs(result, selected)
+                self.assertEqual(agent.diagnostics['operating_stock']['reason'], reason)
+
+        cases = (
+            (17, 'malformed_market'),
+            ([17, ['SELL', 'WHEAT', 1]], 'malformed_market_row'),
+        )
+        for market, reason in cases:
+            with self.subTest(wrapper='feed', market=market):
+                selected = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': market}
+                agent = self.agent()
+                result = agent._feed_stock_selected(self.obs, {}, selected)
+                self.assertIs(result, selected)
+                self.assertEqual(agent.diagnostics['feed_stock']['reason'], reason)
+
     def test_carried_wheat_covers_existing_feeds(self):
         self.private['inventories'][1]['WHEAT'] = 2
         result, report = self.propose()
