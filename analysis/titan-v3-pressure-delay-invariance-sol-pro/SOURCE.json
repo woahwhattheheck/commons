@@ -1,0 +1,31 @@
+{
+  "schema": "titan-pressure-delay-invariance-source/v1",
+  "claim_id": "TITAN-V3-PRESSURE-DELAY-INVARIANCE-CERTIFICATE-20260910-01",
+  "repository": "woahwhattheheck/commons",
+  "starting_parent_commit": "dfef8e57289b59c68bd45eb8f3fdd8ec610e0892",
+  "observed_main_commit": "c51049d671b55d282e0fed5df37a0be7c513a838",
+  "parent_pressure_source": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_priority.py",
+  "parent_pressure_test": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_priority_strict_dominance.py",
+  "official_mechanics_source": "revenue/kaggriculture/cloud-execution-lab/mechanics.py",
+  "official_mechanics_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "independent_oracle_pr": 12047,
+  "independent_oracle_head": "494ba27dd0d87975bd77f8f6b76ddbd8d7386214",
+  "implementation": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/pressure_delay_invariance.py",
+  "contracts": "revenue/kaggriculture/cloud-opponent-league/lark-responsive/test_pressure_delay_invariance.py",
+  "public_bound": "configuration.shedCapacity",
+  "guarantee": "own sale receipt invariant over every integer stock delay in the validated bound",
+  "non_guarantees": [
+    "positive pressure predicts score gain",
+    "promoted lot receipt improves",
+    "rival receipt does not improve",
+    "bilateral margin dominance",
+    "current runtime activation",
+    "hosted strength",
+    "release selection"
+  ],
+  "canonical_runtime_mutated": false,
+  "canonical_archive_mutated": false,
+  "provider_state_mutated": false,
+  "kaggle_state_mutated": false,
+  "games_run": 0
+}

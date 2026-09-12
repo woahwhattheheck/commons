@@ -1,0 +1,45 @@
+{
+  "schema": "titan.pressure-product-domain-finding.v1",
+  "status": "BLOCKER_CLOSED_IN_STACKED_PR",
+  "predecessor_commit": "1825dc464c1b1e1ee9a3b0e52e5f38370668d32b",
+  "predecessor_pr": 12054,
+  "carrier_product_domain_before": [
+    "WHEAT",
+    "CORN",
+    "CARROT",
+    "TOMATO",
+    "MELON",
+    "EGG",
+    "MILK",
+    "WOOL"
+  ],
+  "exact_engine_product_domain": [
+    "WHEAT",
+    "CARROT",
+    "TOMATO",
+    "STRAWBERRY",
+    "MELON",
+    "EGG",
+    "MILK",
+    "WOOL",
+    "FERTILIZER"
+  ],
+  "defect": {
+    "invalidly_admitted": ["CORN"],
+    "silently_omitted": ["STRAWBERRY", "FERTILIZER"]
+  },
+  "closure": {
+    "domain_identity_guard": true,
+    "all_exact_products_tested": true,
+    "invalid_corn_barrier_tested": true,
+    "exact_certificate_oracle_cases": 1512,
+    "all_product_partition_cases": 9
+  },
+  "scope": "reviewer-only additive certificate integration",
+  "non_claims": [
+    "no bilateral score improvement claimed",
+    "no gameplay-policy promotion",
+    "no canonical package or archive mutation",
+    "no provider or Kaggle state mutation"
+  ]
+}
