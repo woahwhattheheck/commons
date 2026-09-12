@@ -35,6 +35,15 @@ class SourceBoundSinkTests(unittest.TestCase):
             capacity_pressure_units=quantity,
         )
 
+    def sink_row(self, *, step, op, evidence):
+        return {
+            "step": step,
+            "actor": "hand-1",
+            "op": op,
+            "projected_prestate_sha256": evidence.receipt()["before_sha256"],
+            "sink_transition": evidence,
+        }
+
     def test_official_sources_are_exactly_authenticated(self):
         receipt = sink.source_authority_receipt()
         self.assertEqual(receipt["engine_git_blob"], sink.EXPECTED_ENGINE_BLOB)
@@ -50,11 +59,14 @@ class SourceBoundSinkTests(unittest.TestCase):
         self.assertEqual(evidence.receipt()["consumed_units"], 1)
         report = sink.prove_carry_consumption_source_bound(
             self.wheat_obligation(),
-            [{"step": 1, "actor": "hand-1", "op": "FEED", "sink_transition": evidence}],
+            [self.sink_row(step=1, op="FEED", evidence=evidence)],
             current_inventory_units=0,
         )
         self.assertTrue(report["proven"])
-        self.assertEqual(report["sink_evidence_authority"], "source_bound_transition")
+        self.assertEqual(
+            report["sink_evidence_authority"],
+            "source_bound_transition+projected_prestate",
+        )
         self.assertEqual(report["sink_units"], 1)
 
     def test_second_same_animal_feed_is_source_real_noop(self):
@@ -66,7 +78,7 @@ class SourceBoundSinkTests(unittest.TestCase):
         self.assertEqual(evidence.receipt()["consumed_units"], 0)
         report = sink.prove_carry_consumption_source_bound(
             self.wheat_obligation(),
-            [{"step": 1, "actor": "hand-1", "op": "FEED", "sink_transition": evidence}],
+            [self.sink_row(step=1, op="FEED", evidence=evidence)],
             current_inventory_units=0,
         )
         self.assertFalse(report["proven"])
@@ -91,7 +103,7 @@ class SourceBoundSinkTests(unittest.TestCase):
         self.assertEqual(receipt["consumed_units"], 1)
         report = sink.prove_carry_consumption_source_bound(
             self.fert_obligation(created_step=24, due_end=30),
-            [{"step": 25, "actor": "hand-1", "op": "FERTILIZE", "sink_transition": evidence}],
+            [self.sink_row(step=25, op="FERTILIZE", evidence=evidence)],
             current_inventory_units=0,
         )
         self.assertTrue(report["proven"])
@@ -149,11 +161,10 @@ class SourceBoundSinkTests(unittest.TestCase):
             actor="hand-1", step=1, op="FEED",
             tile={"animal": "SHEEP", "fed_today": False}, inventory_units=1,
         )
+        row = self.sink_row(step=2, op="FEED", evidence=evidence)
         with self.assertRaises(sink.SourceBoundSinkError):
             sink.prove_carry_consumption_source_bound(
-                self.wheat_obligation(),
-                [{"step": 2, "actor": "hand-1", "op": "FEED", "sink_transition": evidence}],
-                current_inventory_units=0,
+                self.wheat_obligation(), [row], current_inventory_units=0,
             )
 
     def test_existing_burden_still_consumes_sink_capacity_first(self):
@@ -163,7 +174,7 @@ class SourceBoundSinkTests(unittest.TestCase):
         )
         report = sink.prove_carry_consumption_source_bound(
             self.wheat_obligation(),
-            [{"step": 1, "actor": "hand-1", "op": "FEED", "sink_transition": evidence}],
+            [self.sink_row(step=1, op="FEED", evidence=evidence)],
             current_inventory_units=1,
         )
         self.assertFalse(report["proven"])
@@ -185,7 +196,7 @@ class SourceBoundSinkTests(unittest.TestCase):
                     self.wheat_obligation(),
                     [
                         {"step": 1, "actor": "hand-1", "op": boundary},
-                        {"step": 3, "actor": "hand-1", "op": "FEED", "sink_transition": evidence},
+                        self.sink_row(step=3, op="FEED", evidence=evidence),
                     ],
                     current_inventory_units=0,
                 )
