@@ -281,17 +281,17 @@
   {
    "id": "r04-defensive-guards",
    "state": "blocked",
-   "reason": "Landed source component: three fail-closed defensive last-mile guards behind default-OFF master key R04_DEFENSIVE_GUARDS (PASS-neutral, 30/30 tests). Not yet runtime-promoted: r04_full_router key-park wiring, titan_runtime.Features.r04_defensive_guards, and TITAN-CONFIG.json key remain to be composed and gated on the current runtime.",
-   "package": "repairs/gameplay/r04-defensive-guards",
+   "reason": "Canonical source/test custody is landed under repairs/gameplay/defensive-guard and the raw-payload blocker is closed. Runtime promotion remains blocked: current-runtime wiring, exact returned-action activation, EOD-rescue ablation, and economics are still required.",
+   "package": "repairs/gameplay/defensive-guard",
    "entrypoints": [
-    "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py"
+    "repairs/gameplay/defensive-guard/r04_defensive_guards.py"
    ],
    "transforms": [],
    "requires": [],
    "before": [],
    "after": [],
    "conflicts": [],
-   "note": "Guards: _sanitize_numeric_args (inf/nan clamp), _guard_plant_overdemand (PLANT cap at seeds held), _guard_eod_autodrop (EOD shed-overflow rescue SELLs). Guard bodies byte-identical to the donor patch (guard-donor-7a64dc3d, CARE guard excluded). Identity when nothing needs fixing."
+   "note": "Canonical source blob b1fc775ecaf608ca40d01945ec82ae8372ee988b and focused-test blob 07785fa53d56444f764af9af4d7cb906bd39ba7d. The race-created repairs/gameplay/r04-defensive-guards copy is a superseded mirror/evidence-only carrier. Harvestable scope remains numeric sanitization plus PLANT overdemand; broad EOD autodrop stays quarantined pending ablation and CARE stripping remains rejected."
   },
   {
    "id": "r04-exec-pace",
@@ -345,7 +345,7 @@
    "repairs/gameplay/ghost-plant-admission/ghost_plant_admission.py",
    "repairs/gameplay/redundant-hire-two-seat/repair_redundant_hire_two_seat.py",
    "repairs/gameplay/redundant-hire-two-seat/compose_laborflow_multi_detour.py",
-   "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py",
+   "repairs/gameplay/defensive-guard/r04_defensive_guards.py",
    "repairs/gameplay/exec-pace/r04_exec_pace.py"
   ],
   "strict": true,
