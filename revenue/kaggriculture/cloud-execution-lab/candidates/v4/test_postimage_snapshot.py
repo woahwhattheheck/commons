@@ -83,7 +83,15 @@ class SnapshotLoaderTests(unittest.TestCase):
     def test_checker_receipt_reads_remain_bound_after_validation(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            runner, _manifest, checker_path, *_ = self._bind(root)
+            (
+                runner,
+                _manifest,
+                checker_path,
+                _adapter,
+                _support,
+                adapter_bytes,
+                _support_bytes,
+            ) = self._bind(root)
             checker = runner._load_checker(root)
             self.assertEqual(
                 checker.validate_manifest({}, root)["marker"],
@@ -93,11 +101,13 @@ class SnapshotLoaderTests(unittest.TestCase):
             checker_path.write_text("VALUE = 'post-validation-disk-swap'\n", encoding="utf-8")
             receipt_path = runner._under(root, trust.CHECKER_NAME)
             first = receipt_path.read_bytes()
+            checker_path.write_text("VALUE = 'between-receipt-hashes'\n", encoding="utf-8")
             second = receipt_path.read_bytes()
             self.assertEqual(first, authenticated)
             self.assertEqual(second, authenticated)
             self.assertNotEqual(checker_path.read_bytes(), authenticated)
             self.assertEqual(trust.git_blob(first), trust.git_blob(second))
+            self.assertEqual(runner._under(root, "adapter.py").read_bytes(), adapter_bytes)
 
     def test_adapter_disk_swap_cannot_change_executed_bytes(self):
         with tempfile.TemporaryDirectory() as td:
