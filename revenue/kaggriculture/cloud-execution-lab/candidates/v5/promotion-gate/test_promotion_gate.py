@@ -8,6 +8,16 @@ import unittest
 import promotion_gate as gate
 
 
+def _rehash_manifest(manifest):
+    body = {key: value for key, value in manifest.items() if key != "candidate_id"}
+    manifest["candidate_id"] = "v5c:" + hashlib.sha256(
+        json.dumps(
+            body, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        ).encode()
+    ).hexdigest()
+    return manifest
+
+
 def _manifest():
     body = {
         "schema": gate.IDENTITY_SCHEMA,
@@ -20,16 +30,17 @@ def _manifest():
                 "name": "candidate",
                 "source": "candidate.py",
                 "source_sha256": "b" * 64,
-                "activation": {"mode": "config", "equals": {"t": "dict", "v": []}},
+                "activation": {
+                    "mode": "config",
+                    "equals": {
+                        "t": "dict",
+                        "v": [["feature", {"t": "bool", "v": True}]],
+                    },
+                },
             }
         ],
     }
-    candidate_id = "v5c:" + hashlib.sha256(
-        json.dumps(
-            body, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-        ).encode()
-    ).hexdigest()
-    return {**body, "candidate_id": candidate_id}
+    return _rehash_manifest({**body, "candidate_id": ""})
 
 
 def _engagement(candidate_id):
@@ -59,6 +70,9 @@ def _runtime(candidate_id):
         "promotion_ready": True,
         "receipt_count": 8,
         "candidate_count": 1,
+        "budget_seconds": 0.1,
+        "reserve_seconds": 0.02,
+        "usable_budget_seconds": 0.08,
         "max_fallback_rate": 0.0,
         "deadline_fallback_count": 0,
         "deadline_fallback_rate": 0.0,
@@ -67,8 +81,8 @@ def _runtime(candidate_id):
         "expected_complete": True,
         "missing_expected": [],
         "unexpected_extra": [],
-        "p99_headroom_seconds": 0.1,
-        "overall": {"count": 8},
+        "p99_headroom_seconds": 0.02,
+        "overall": {"count": 8, "wall_seconds": {"p99": 0.06}},
         "by_candidate": {
             candidate_id: {"count": 8, "deadline_fallback_count": 0}
         },
@@ -205,6 +219,114 @@ class PromotionGateTest(unittest.TestCase):
                 manifest,
                 _engagement(manifest["candidate_id"]),
                 _runtime(manifest["candidate_id"]),
+            )
+
+    def test_self_hashed_noncanonical_component_is_rejected(self):
+        manifest = _manifest()
+        manifest["components"][0]["invented"] = True
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "exact canonical component keys"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_self_hashed_component_order_and_uniqueness_are_rejected(self):
+        manifest = _manifest()
+        first = manifest["components"][0]
+        second = {
+            "name": "aaa",
+            "source": "aaa.py",
+            "source_sha256": "c" * 64,
+            "activation": {"mode": "unconditional"},
+        }
+        manifest["components"] = [first, second]
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "must be sorted by name"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+        manifest = _manifest()
+        duplicate = json.loads(json.dumps(manifest["components"][0]))
+        duplicate["source"] = "other.py"
+        duplicate["source_sha256"] = "c" * 64
+        manifest["components"].append(duplicate)
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "names must be unique"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_self_hashed_noncanonical_typed_activation_is_rejected(self):
+        manifest = _manifest()
+        manifest["components"][0]["activation"]["equals"] = {
+            "t": "dict",
+            "v": [
+                ["z", {"t": "int", "v": "01"}],
+                ["a", {"t": "bool", "v": True}],
+            ],
+        }
+        _rehash_manifest(manifest)
+        with self.assertRaises(gate.PromotionError):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_self_hashed_empty_or_reserved_config_activation_is_rejected(self):
+        manifest = _manifest()
+        manifest["components"][0]["activation"]["equals"] = {
+            "t": "dict",
+            "v": [],
+        }
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "must be non-empty"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+        manifest = _manifest()
+        manifest["components"][0]["activation"]["equals"] = {
+            "t": "dict",
+            "v": [["_meta", {"t": "bool", "v": True}]],
+        }
+        _rehash_manifest(manifest)
+        with self.assertRaisesRegex(gate.PromotionError, "reserved metadata keys"):
+            gate.build_receipt(
+                manifest,
+                _engagement(manifest["candidate_id"]),
+                _runtime(manifest["candidate_id"]),
+            )
+
+    def test_engagement_shape_is_exact_after_semantic_validation(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        engagement = _engagement(candidate_id)
+        engagement["invented"] = True
+        with self.assertRaisesRegex(gate.PromotionError, "engagement report keys mismatch"):
+            gate.build_receipt(manifest, engagement, _runtime(candidate_id))
+
+        engagement = _engagement(candidate_id)
+        engagement["first_divergence"]["invented"] = True
+        with self.assertRaisesRegex(gate.PromotionError, "first_divergence keys mismatch"):
+            gate.build_receipt(manifest, engagement, _runtime(candidate_id))
+
+    def test_runtime_headroom_is_recomputed(self):
+        manifest = _manifest()
+        runtime = _runtime(manifest["candidate_id"])
+        runtime["overall"]["wall_seconds"]["p99"] = 0.09
+        with self.assertRaisesRegex(gate.PromotionError, "p99 headroom disagrees"):
+            gate.build_receipt(
+                manifest, _engagement(manifest["candidate_id"]), runtime
             )
 
     def test_runtime_summary_inconsistency_is_rejected(self):
