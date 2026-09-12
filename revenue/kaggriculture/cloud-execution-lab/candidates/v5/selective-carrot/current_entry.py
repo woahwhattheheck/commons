@@ -2,9 +2,9 @@
 """Current-V5 selective-carrot treatment entry.
 
 The canonical V5 package is copied unchanged by build_current.py, with its
-main.py retained as baseline_main.py.  This entry composes the already-landed
+main.py retained as baseline_main.py. This entry composes the already-landed
 selective_carrot mechanism over that parent and reads only the generated
-CARROT-CAPACITY.json profile.  There is one implementation for all profiles.
+CARROT-CAPACITY.json profile. There is one implementation for all profiles.
 """
 from __future__ import annotations
 
@@ -110,18 +110,35 @@ def _factory(root, features):
 baseline._new_instance = _factory
 
 
+def _previous_public_step():
+    """Mirror the parent entrypoint's retained-step authority without mutating it."""
+    instance = baseline._INSTANCE
+    if instance is not None:
+        return getattr(instance, "_entrypoint_last_step", None)
+    journal = getattr(baseline, "_SPATIAL_RECOVERY", None)
+    if isinstance(journal, dict):
+        return journal.get("last_step")
+    return None
+
+
+def _choice_match_reset(step: int) -> bool:
+    """Reset only on a proven later-step→0 match transition, never a retry."""
+    previous_step = _previous_public_step()
+    return step == 0 and previous_step not in (None, 0)
+
+
 def agent(observation, configuration=None):
     """Return one canonical V5 action with optional selective-carrot changes."""
     global _CHOICE, _INSTANCE
-    step = observation.get(
-        "step", observation.get("day", 0) * 24 + observation.get("hour", 0)
+    normalized = baseline._canonical_entrypoint_observation(
+        observation, dict(configuration or {})
     )
-    if step == 0:
+    if _choice_match_reset(normalized["step"]):
         _CHOICE = None
     returned = baseline.agent(observation, configuration)
     _INSTANCE = baseline._INSTANCE
     if _CHOICE is not None:
-        _CHOICE.commit(observation, returned)
+        _CHOICE.commit(normalized, returned)
     return returned
 
 
