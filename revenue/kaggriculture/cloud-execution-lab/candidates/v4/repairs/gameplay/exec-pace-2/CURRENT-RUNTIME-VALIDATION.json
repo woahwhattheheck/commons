@@ -1,31 +1,48 @@
 {
-  "canonical_base_commit": "f8f023f905cfa06507d57c7ebb329b90b8f5cb69",
+  "canonical_patch_base_commit": "8191b812cdd83fa7ccd3baed2faed85cade5bae4",
   "default_enabled": false,
   "development_validation": {
-    "normal": "13 discovered; 12 pass, 1 skip (out-of-tree current-source binding only)",
-    "optimized": "13 discovered; 12 pass, 1 skip (out-of-tree current-source binding only)",
+    "normal": "16 discovered; 15 pass, 1 skip (out-of-tree current-source binding only)",
+    "optimized": "16 discovered; 15 pass, 1 skip (out-of-tree current-source binding only)",
     "py_compile": "pass"
   },
-  "economic_status": "UNTESTED on current ABI; no promotion claim",
+  "semantic_blocker_resolution": {
+    "live_main_alias_callsite_found": false,
+    "composer_gate_call": "exec_pace_apply(exec_pace_state,item,reference,plan,info)",
+    "distinct_reference_candidate_ast_names": true,
+    "blocking_continue_removed": true,
+    "blocked_candidate_marks_existing_accepted_contract_false": true,
+    "literal_composer_fragment_acceleration_test": "pass",
+    "forced_feasibility_bypass_test": "pass"
+  },
+  "economic_status": "UNTESTED on current composed ABI; no promotion claim",
   "files": {
-    "CURRENT-RUNTIME.md": {
-      "bytes": 3608,
-      "sha256": "d4be4c23deb233d2b69868c33116e13e157eb13df6c1f1d7f0227cb9649d5cc0"
+    "current_runtime_exec_pace.py": {
+      "bytes": 8158,
+      "sha256": "80a0fcdfe0283fa8ea55e530e5da9419ab6202255c65a1ad447a9daf37a4d58b"
     },
     "compose_current_runtime.py": {
-      "bytes": 4488,
-      "sha256": "25d8f835f5089f05dd9df2529199569ac42b1250fe87efa5fc9365600c1f4392"
-    },
-    "current_runtime_exec_pace.py": {
-      "bytes": 7018,
-      "sha256": "7e455238651ce048181c17f5cf80b0d665ce97aafac01ff58260548c29151387"
+      "bytes": 4145,
+      "sha256": "61e60d3e73055e201ff2f215ddf829297f01a01dbf5630387786b70070a4172b"
     },
     "test_current_runtime_exec_pace.py": {
-      "bytes": 7863,
-      "sha256": "fcf60eaecb2aff5e4649653d443574f8affd242ef96c34ba98d907e797393130"
+      "bytes": 11565,
+      "sha256": "75d01b2518e8f019fb2671765709723016770d30fbaf66b7a0a3ffd2b595a34d"
+    },
+    "CURRENT-RUNTIME.md": {
+      "bytes": 4892,
+      "sha256": "b8a934b6f421967167f5919b856258fc3d1efc2b736ca4c5bd059c0a6c6e456f"
     }
   },
   "lane": "EXEC-PACE-2 current-runtime integration and economic closure",
   "legacy_materializer_executed": false,
-  "required_in_repo_gate": "test_current_repository_sources_are_composable_when_present must run, not skip, in Commons tree"
+  "required_in_repo_gate": "test_current_repository_sources_are_composable_when_present must run, not skip, in Commons tree",
+  "authenticated_live_main": {
+    "commit": "f66abebbc5620d702d69ab0c8b32b5634e50a1cd",
+    "frozen_selected_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "titan_runtime_blob": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
+    "titan_config_blob": "3a3bef83899d3010fad623b628d9e95d9978111b",
+    "exec_pace_key_present_in_config": false,
+    "composer_anchors_present": true
+  }
 }

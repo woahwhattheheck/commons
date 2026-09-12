@@ -185,3 +185,28 @@ def gate_plan(state, item, reference, candidate):
     report["blocked"] = True
     report["reason"] = "rising-product-temporal-advance"
     return reference, report
+
+
+def apply_candidate(state, item, reference, candidate, info):
+    """Apply EXEC-PACE to one optimizer candidate without changing loop control.
+
+    Forced-feasibility always bypasses the timing gate.  A blocked candidate is
+    replaced by the exact reference schedule and marked ineligible through the
+    scheduler's existing ``accepted`` contract, so the caller can continue its
+    ordinary diagnostics/ranking path rather than jumping over loop semantics.
+    """
+    current_info = dict(info or {})
+    if current_info.get("forced_feasibility", False):
+        current_info["exec_pace"] = {
+            "item": item, "rising": False, "blocked": False,
+            "reason": "forced-feasibility-bypass", "slope": None, "advance": None,
+        }
+        return candidate, current_info
+    selected, report = gate_plan(state, item, reference, candidate)
+    current_info["exec_pace"] = report
+    if report.get("blocked"):
+        selected = reference
+        current_info["plan"] = list(reference)
+        current_info["accepted"] = False
+        current_info["acceptance_rule"] = "exec_pace_block"
+    return selected, current_info
