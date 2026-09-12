@@ -1,0 +1,79 @@
+name: titan-v4-routemotion-fullbank-12888
+
+on:
+  push:
+    branches:
+      - astra-routemotion-exec-12888
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-fullbank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact orphan PR head
+        uses: actions/checkout@v4
+        with:
+          ref: 386171138eb401fbdcb5468b4c424f89dd4979c9
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify exact checkout
+        run: |
+          test "$(git rev-parse HEAD)" = "386171138eb401fbdcb5468b4c424f89dd4979c9"
+
+      - name: Run full-bank census
+        shell: bash
+        run: |
+          set -euo pipefail
+          D="revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion"
+          python -B "$D/route_motion_census.py" --output /tmp/titan-v4-route-motion.json
+          python - <<'PY'
+          import json
+          p='/tmp/titan-v4-route-motion.json'
+          d=json.load(open(p, encoding='utf-8'))
+          compact={
+              'schema':d['schema'],
+              'sources':d['sources'],
+              'totals':d['totals'],
+              'routes':[
+                  {
+                      'plan':r['plan'],
+                      'movement_rows':r['movement_rows'],
+                      'hire_market_rows':r['hire_market_rows'],
+                      'closed_loop_count':r['closed_loop_count'],
+                      'safe_count':r['provably_pass_equivalent_count'],
+                      'safe_rows':r['provably_pass_equivalent_movement_rows'],
+                  }
+                  for r in d['routes']
+              ],
+          }
+          print('ROUTEMOTION_RESULT='+json.dumps(compact, sort_keys=True, separators=(',',':')))
+          PY
+
+      - name: Focused tests normal
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion
+          python -B -m unittest -v test_route_motion_census.py
+
+      - name: Focused tests optimized
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion
+          python -O -B -m unittest -v test_route_motion_census.py
+
+      - name: Compile
+        shell: bash
+        run: |
+          set -euo pipefail
+          D="revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/route-motion"
+          PYTHONDONTWRITEBYTECODE=1 python -m py_compile "$D/route_motion_census.py" "$D/test_route_motion_census.py"
