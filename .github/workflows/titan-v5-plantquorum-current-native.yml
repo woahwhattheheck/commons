@@ -5,7 +5,10 @@ on:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native/**"
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/native_census.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/unit_pipeline_admission.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json"
       - ".github/workflows/titan-v5-plantquorum-current-native.yml"
   push:
     branches:
@@ -13,7 +16,10 @@ on:
     paths:
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native/**"
       - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/native_census.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/unit_pipeline_admission.py"
       - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json"
       - ".github/workflows/titan-v5-plantquorum-current-native.yml"
   workflow_dispatch:
 
@@ -21,7 +27,7 @@ permissions:
   contents: read
 
 jobs:
-  observer-contracts:
+  evidence-contracts:
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -39,12 +45,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Current-native observer contracts
+      - name: Observer and runner contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native
         run: |
-          python -B -m unittest -v test_census.py
-          python -O -B -m unittest -v test_census.py
-      - name: Compile observer and canonical theorem
+          python -B -m unittest -v test_census.py test_plantquorum_census.py
+          python -O -B -m unittest -v test_census.py test_plantquorum_census.py
+      - name: Compile full evidence stack and canonical theorem
         working-directory: revenue/kaggriculture/cloud-execution-lab
         run: |
-          python -B -m py_compile candidates/v5/plantquorum-current-native/census.py candidates/v5/plantquorum-current-native/test_census.py candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py
+          python -B -m py_compile \
+            candidates/v5/plantquorum-current-native/census.py \
+            candidates/v5/plantquorum-current-native/plantquorum_census.py \
+            candidates/v5/plantquorum-current-native/test_census.py \
+            candidates/v5/plantquorum-current-native/test_plantquorum_census.py \
+            candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py
