@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""F2 public-stock boundary: q=1 must not turn bool into executable inventory.
+"""F2 public-stock boundary: official BUY_PRODUCT does not gate on market stock.
 
-The two-unit witness alone cannot distinguish strict integer custody from
-isinstance(value, int): True is already below two. Keep a live one-unit witness
-alongside both-seat identity and nonmutation checks. No planner mock is used.
+The pinned Kaggriculture engine checks buyer cash and shed capacity, then
+commits BUY_PRODUCT even when public inventory is zero or would become
+negative. F2 must therefore treat public market inventory as non-authoritative
+for admission while preserving both-seat identity and nonmutation guarantees.
+No planner mock is used.
 """
 from __future__ import annotations
 
@@ -62,33 +64,31 @@ class FeedPrebuyStockBoundaryTests(unittest.TestCase):
         self.assertEqual(self.policy, before_policy)
         return parent, out
 
-    def test_one_unit_stock_is_strict_not_bool_float_or_int_subclass(self):
+    def test_public_stock_value_does_not_suppress_engine_legal_one_unit_buy(self):
+        stock_values = (
+            True, False, 1.0, StockIntSubclass(1), 1, 0, -1, "1", None,
+        )
         for seat in (0, 1):
-            for stock in (True, False, 1.0, StockIntSubclass(1), 0, -1, "1", None):
+            for stock in stock_values:
                 with self.subTest(seat=seat, stock=stock, kind=type(stock).__name__):
                     parent, out = self.probe(1, {"WHEAT": stock}, seat=seat)
-                    self.assertIs(out, parent)
-
-    def test_exact_one_and_two_unit_boundaries_activate_for_both_seats(self):
-        for seat in (0, 1):
-            for wheat, required in ((1, 1), (0, 2)):
-                with self.subTest(seat=seat, wheat=wheat, required=required):
-                    parent, out = self.probe(wheat, {"WHEAT": required}, seat=seat)
                     self.assertIsNot(out, parent)
-                    self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", required]])
+                    self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 1]])
+
+    def test_public_stock_below_requested_quantity_does_not_suppress_two_unit_buy(self):
+        for seat in (0, 1):
+            for inventory in ({"WHEAT": 0}, {"WHEAT": 1}, {}, None, [], 1, "1", True):
+                with self.subTest(seat=seat, inventory=inventory):
+                    parent, out = self.probe(0, inventory, seat=seat)
+                    self.assertIsNot(out, parent)
+                    self.assertEqual(out["market"], [["BUY_PRODUCT", "WHEAT", 2]])
                     self.assertEqual(out["farmer"], parent["farmer"])
                     self.assertEqual(out["hands"], parent["hands"])
 
-    def test_invalid_inventory_containers_preserve_exact_parent(self):
-        for inventory in (None, [], 1, "1", True):
-            with self.subTest(inventory=inventory):
-                parent, out = self.probe(1, inventory)
-                self.assertIs(out, parent)
-
-    def test_disabled_returns_parent_even_when_stock_is_valid(self):
+    def test_disabled_returns_parent_independent_of_public_stock(self):
         for seat in (0, 1):
             with self.subTest(seat=seat):
-                parent, out = self.probe(1, {"WHEAT": 1}, seat=seat, enabled=False)
+                parent, out = self.probe(1, {"WHEAT": 0}, seat=seat, enabled=False)
                 self.assertIs(out, parent)
 
 
