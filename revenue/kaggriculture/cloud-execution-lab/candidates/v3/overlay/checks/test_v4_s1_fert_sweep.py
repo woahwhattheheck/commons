@@ -27,12 +27,13 @@ CONFIG = {
 }
 
 
-def animal(kind="GOOSE", *, fertilizer=True):
+def animal(kind="GOOSE", *, fertilizer=True, fed=True, consecutive_unfed=0):
     return {
         "kind": "COOP" if kind == "GOOSE" else "PASTURE",
         "animal": kind,
         "fertilizer_available": fertilizer,
-        "fed_today": True,
+        "fed_today": fed,
+        "consecutive_unfed": consecutive_unfed,
         "cared_today": True,
         "yield_units": 0,
     }
@@ -198,6 +199,25 @@ class S1FertSweepTest(unittest.TestCase):
         parent = action()
         self.assertIs(lane._consider_hire(obs, parent, st, tape, CONFIG), parent)
 
+    def test_future_wheat_pickup_blocks_hidden_hire_cash_leak(self):
+        obs = observation()
+        tape = pass_tape()
+        tape[obs["step"] + 2]["farmer"] = ["PICKUP", "WHEAT", 1]
+        st = lane._Day(4)
+        parent = action()
+        self.assertIs(lane._consider_hire(obs, parent, st, tape, CONFIG), parent)
+
+    def test_v217_unfed_surface_alone_does_not_block_hire(self):
+        obs = observation()
+        x, y = (4, 3)
+        tile = obs["farms"][0]["tiles"][y][x]
+        tile["fed_today"] = False
+        tile["consecutive_unfed"] = 1
+        st = lane._Day(4)
+        parent = action()
+        result = lane._consider_hire(obs, parent, st, pass_tape(), CONFIG)
+        self.assertEqual(result["market"], [["HIRE"]])
+
     def test_se_v233_territory_is_not_owned_by_s1(self):
         obs = observation(targets=((5, 5), (6, 5), (7, 5), (5, 6)))
         st = lane._Day(4)
@@ -209,6 +229,166 @@ class S1FertSweepTest(unittest.TestCase):
         st = lane._Day(4)
         parent = action()
         self.assertIs(lane._consider_hire(obs, parent, st, pass_tape(), CONFIG), parent)
+
+    def test_canonical_animal_housing_pairs_preserve_collection_targets(self):
+        for species, housing in (("GOOSE", "COOP"), ("COW", "PASTURE"), ("SHEEP", "PASTURE")):
+            with self.subTest(species=species):
+                obs = observation()
+                for x, y in ((4, 3), (3, 4), (4, 2)):
+                    obs["farms"][0]["tiles"][y][x] = animal(species)
+                self.assertEqual(len(lane._targets(obs["farms"][0])), 3)
+                result = lane._consider_hire(obs, action(), lane._Day(4), pass_tape(), CONFIG)
+                self.assertEqual(result["market"], [["HIRE"]])
+
+    def test_invalid_animal_housing_pairs_cannot_create_hire(self):
+        poisons = (
+            {"animal": "GOOSE", "kind": "PASTURE"},
+            {"animal": "COW", "kind": "COOP"},
+            {"animal": "SHEEP", "kind": "COOP"},
+            {"animal": "GOOSE", "kind": "FIELD"},
+            {"animal": "SHEEP", "kind": "PLANT"},
+            {"animal": "UNKNOWN", "kind": "PASTURE"},
+            {"animal": None, "kind": "PASTURE"},
+            {"animal": True, "kind": "PASTURE"},
+            {"animal": [], "kind": "PASTURE"},
+            {"animal": {}, "kind": "COOP"},
+            {"animal": "GOOSE", "kind": None},
+            {"animal": "GOOSE"},
+        )
+        for poison in poisons:
+            with self.subTest(poison=poison):
+                obs = observation()
+                for x, y in ((4, 3), (3, 4), (4, 2)):
+                    obs["farms"][0]["tiles"][y][x] = {
+                        "fertilizer_available": True, **poison,
+                    }
+                parent = action()
+                before = copy.deepcopy(obs)
+                self.assertEqual(lane._targets(obs["farms"][0]), [])
+                self.assertIs(lane._consider_hire(obs, parent, lane._Day(4), pass_tape(), CONFIG), parent)
+                self.assertEqual(obs, before)
+
+    def test_fertilizer_availability_must_be_literal_true(self):
+        for value in (False, 1, 0, "true", None, [], {}):
+            with self.subTest(value=value):
+                obs = observation()
+                for x, y in ((4, 3), (3, 4), (4, 2)):
+                    obs["farms"][0]["tiles"][y][x]["fertilizer_available"] = value
+                self.assertEqual(lane._targets(obs["farms"][0]), [])
+
+    def test_hidden_worker_does_not_collect_invalid_housing(self):
+        obs = observation(step=4 * 24 + 15, targets=((4, 3),),
+                          hands=[[4, 4], [4, 3]], inventories=[{}, {}, {}])
+        state = lane._Day(4)
+        state.index = 1
+        self.assertEqual(lane._hand_command(obs, state), ["COLLECT_FERTILIZER"])
+        obs["farms"][0]["tiles"][3][4]["kind"] = "FIELD"
+        self.assertEqual(lane._hand_command(obs, state), ["PASS"])
+
+    def test_f2_feature_selects_stronger_cash_floor_and_malformed_fails_closed(self):
+        had = hasattr(r04, "FEED_PREBUY")
+        old = getattr(r04, "FEED_PREBUY", None)
+        try:
+            if had:
+                delattr(r04, "FEED_PREBUY")
+            self.assertEqual(lane._effective_cash_reserve(), lane.CASH_RESERVE)
+            r04.FEED_PREBUY = False
+            self.assertEqual(lane._effective_cash_reserve(), lane.CASH_RESERVE)
+            for value in (True, object(), None, 0, 1, "false"):
+                r04.FEED_PREBUY = value
+                self.assertEqual(lane._effective_cash_reserve(), lane.F2_COMPAT_CASH_RESERVE)
+        finally:
+            if had:
+                r04.FEED_PREBUY = old
+            elif hasattr(r04, "FEED_PREBUY"):
+                delattr(r04, "FEED_PREBUY")
+
+    def test_f2_enabled_s1_hire_preserves_f2_post_hire_cash_floor(self):
+        had = hasattr(r04, "FEED_PREBUY")
+        old = getattr(r04, "FEED_PREBUY", None)
+        try:
+            r04.FEED_PREBUY = True
+            cost = lane._fib(2)
+            for delta, allowed in ((-0.25, False), (0, True), (0.25, True)):
+                with self.subTest(delta=delta):
+                    obs = observation(money=lane.F2_COMPAT_CASH_RESERVE + cost + delta)
+                    parent = action()
+                    result = lane._consider_hire(obs, parent, lane._Day(4), pass_tape(), CONFIG)
+                    if allowed:
+                        self.assertEqual(result["market"], [["HIRE"]])
+                    else:
+                        self.assertIs(result, parent)
+        finally:
+            if had:
+                r04.FEED_PREBUY = old
+            elif hasattr(r04, "FEED_PREBUY"):
+                delattr(r04, "FEED_PREBUY")
+
+    def test_f2_disabled_preserves_standalone_s1_cash_surface(self):
+        had = hasattr(r04, "FEED_PREBUY")
+        old = getattr(r04, "FEED_PREBUY", None)
+        try:
+            r04.FEED_PREBUY = False
+            cost = lane._fib(2)
+            low = observation(money=lane.CASH_RESERVE + cost - 0.25)
+            parent = action()
+            self.assertIs(lane._consider_hire(low, parent, lane._Day(4), pass_tape(), CONFIG), parent)
+            exact = observation(money=lane.CASH_RESERVE + cost)
+            result = lane._consider_hire(exact, action(), lane._Day(4), pass_tape(), CONFIG)
+            self.assertEqual(result["market"], [["HIRE"]])
+        finally:
+            if had:
+                r04.FEED_PREBUY = old
+            elif hasattr(r04, "FEED_PREBUY"):
+                delattr(r04, "FEED_PREBUY")
+
+    def test_huge_money_returns_parent_without_overflow(self):
+        self.assertIsNone(lane._money(10 ** 1000))
+        obs = observation(money=10 ** 1000)
+        parent = action()
+        self.assertIs(lane._consider_hire(obs, parent, lane._Day(4), pass_tape(), CONFIG), parent)
+
+    def test_impossible_hire_counts_rejected_before_fibonacci(self):
+        original = lane._fib
+        seen = []
+        def forbidden(n):
+            seen.append(n)
+            raise RuntimeError("unbounded Fibonacci work reached")
+        lane._fib = forbidden
+        try:
+            for count in (241, 10 ** 9, 10 ** 1000, True, 2.0, -1):
+                with self.subTest(count=count):
+                    obs = observation(hires_today=count)
+                    parent = action()
+                    self.assertIs(lane._consider_hire(obs, parent, lane._Day(4), pass_tape(), CONFIG), parent)
+            self.assertEqual(seen, [])
+        finally:
+            lane._fib = original
+
+    def test_maximum_standard_day_hire_count_reaches_bounded_fibonacci(self):
+        original = lane._fib
+        seen = []
+        def bounded(n):
+            seen.append(n)
+            return original(n)
+        lane._fib = bounded
+        try:
+            obs = observation(hires_today=240)
+            parent = action()
+            self.assertIs(lane._consider_hire(obs, parent, lane._Day(4), pass_tape(), CONFIG), parent)
+            self.assertEqual(seen, [240])
+        finally:
+            lane._fib = original
+
+    def test_hidden_parent_view_preserves_real_hire_count_and_source(self):
+        obs = observation(hires_today=7, hands=[[4, 4], [4, 3], [3, 4]],
+                          inventories=[{}, {"WHEAT": 1}, {"FERTILIZER": 2}, {"WOOL": 3}])
+        before = copy.deepcopy(obs)
+        hidden = lane._parent_view(obs, 1)
+        self.assertEqual(hidden["farms"][0]["hires_today"], 7)
+        self.assertEqual(hidden["farms"][0]["hands"], [[4, 4], [3, 4]])
+        self.assertEqual(hidden["private"]["inventories"], [{}, {"WHEAT": 1}, {"WOOL": 3}])
+        self.assertEqual(obs, before)
 
     def test_value_gate_uses_fibonacci_hire_cost(self):
         obs = observation(hires_today=10, fertilizer_price=1)
@@ -279,6 +459,23 @@ class S1FertSweepTest(unittest.TestCase):
         self.assertEqual(lane.REPORT["hires"], 1)
         self.assertEqual(lane.REPORT["collections"], 1)
 
+    def test_truncated_parent_output_is_returned_unchanged(self):
+        obs = observation(
+            step=4 * 24 + 15,
+            hands=[[4, 4], [4, 3], [3, 4]],
+            inventories=[{}, {}, {}, {}],
+        )
+        st = lane._STATE[0] = lane._Day(4)
+        st.index = 1
+        st.last_step = obs["step"] - 1
+        sentinel = action(hands=[])
+
+        def parent(o, configuration=None):
+            return sentinel
+
+        wrapped = lane.wrap(parent, lambda o: pass_tape())
+        self.assertIs(wrapped(obs, CONFIG), sentinel)
+
     def test_hidden_hand_walks_toward_nearest_reachable_target(self):
         tape = pass_tape()
 
@@ -286,11 +483,13 @@ class S1FertSweepTest(unittest.TestCase):
             return action(hands=[["PASS"]])
 
         wrapped = lane.wrap(parent, lambda obs: tape)
-        first = observation(targets=((2, 4), (4, 2)))
+        # Worst shed spawn reaches one collection; quote=100 cannot clear MIN_GAIN.
+        first = observation(targets=((2, 4), (4, 2)), fertilizer_price=200)
         self.assertEqual(wrapped(first, CONFIG)["market"], [["HIRE"]])
         second = observation(
             step=first["step"] + 1,
             targets=((2, 4), (4, 2)),
+            fertilizer_price=200,
             hands=[[4, 4], [4, 4]],
             inventories=[{}, {}, {}],
         )

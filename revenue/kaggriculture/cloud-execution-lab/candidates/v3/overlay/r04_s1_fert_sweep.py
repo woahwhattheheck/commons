@@ -13,6 +13,7 @@ The lane is deliberately narrow:
 - standard 720/24/10/100/10 field with farm-hand cost multiplier 1 only;
 - no current HIRE, purchase, or COLLECT_FERTILIZER row;
 - no authored future cash-spending/ambiguous market row or COLLECT_FERTILIZER for the rest of the day;
+- no remaining-day authored WHEAT pickup that can make V226 spend cash later;
 - SE targets are excluded so V233's dedicated sheep workers keep ownership;
 - a worst-case shed-corner start must reach enough collections before EOD;
 - quoted fertilizer value must conservatively clear the Fibonacci hire cost.
@@ -40,6 +41,9 @@ PRICE_KEEP = 0.80
 MIN_GAIN = 100.0
 GAIN_RATIO = 1.20
 CASH_RESERVE = 100.0
+# F2 proves its causal WHEAT pre-buy while retaining this much cash.
+# When F2 is enabled, S1 must not spend below that already-proved floor.
+F2_COMPAT_CASH_RESERVE = 1000.0
 HEADROOM_RESERVE = 12
 MOVES = {
     "EAST": (1, 0),
@@ -75,10 +79,30 @@ def _plain_int(value: Any, *, minimum: int | None = None) -> bool:
 def _money(value: Any) -> float | None:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         return None
-    value = float(value)
+    try:
+        value = float(value)
+    except (OverflowError, ValueError):
+        return None
     if not math.isfinite(value) or value < 0:
         return None
     return value
+
+
+def _effective_cash_reserve() -> float:
+    """Return S1's live cash floor without importing F2 private state.
+
+    Missing/literal-False FEED_PREBUY preserves standalone S1's 100-unit
+    reserve. Literal True protects F2's public 1000-unit composition
+    covenant. A malformed flag fails closed to the stronger floor.
+    """
+    try:
+        import r04_full_router as r04
+        enabled = getattr(r04, "FEED_PREBUY", False)
+    except Exception:
+        return F2_COMPAT_CASH_RESERVE
+    if enabled is False:
+        return CASH_RESERVE
+    return F2_COMPAT_CASH_RESERVE
 
 
 def standard_configuration(configuration: Any) -> bool:
@@ -153,6 +177,35 @@ def _future_conflict(tape: Any, step: int) -> bool:
                 if not isinstance(command, list):
                     return True
                 if command and command[0] == "COLLECT_FERTILIZER":
+                    return True
+    except Exception:
+        return True
+    return False
+
+
+def _future_wheat_topup_risk(tape: Any, step: int, farm: dict) -> bool:
+    """Fail closed if S1's HIRE cash can suppress authored V226 demand.
+
+    V226 may append BUY_PRODUCT WHEAT one callback before a scheduled authored
+    WHEAT pickup. S1 cannot safely hide the HIRE's real cash debit from the
+    engine, so any remaining-day authored WHEAT pickup stays parent-owned.
+    """
+    remaining = _rest_of_day(tape, step)
+    if remaining is None:
+        return True
+    try:
+        for action in remaining:
+            if not isinstance(action, dict):
+                return True
+            hands = action.get("hands", [])
+            if not isinstance(hands, list):
+                return True
+            for command in [action.get("farmer"), *hands]:
+                if command is None:
+                    continue
+                if not isinstance(command, list):
+                    return True
+                if len(command) >= 2 and command[:2] == ["PICKUP", "WHEAT"]:
                     return True
     except Exception:
         return True
@@ -383,7 +436,11 @@ def _consider_hire(observation: dict, action: Any, st: _Day, tape: Any, configur
     if day not in DAYS or hour < MIN_HOUR or hour >= TURNS_PER_DAY - 1:
         return action
     market = _safe_market(action)
-    if market is None or _future_conflict(tape, step):
+    if (
+        market is None
+        or _future_conflict(tape, step)
+        or _future_wheat_topup_risk(tape, step, farm)
+    ):
         return action
 
     targets = _targets(farm)
@@ -400,12 +457,18 @@ def _consider_hire(observation: dict, action: Any, st: _Day, tape: Any, configur
     hires_today = farm.get("hires_today")
     price = prices.get("FERTILIZER")
     money = _money(farm.get("money"))
-    if not _plain_int(hires_today, minimum=0) or not _plain_int(price, minimum=1) or money is None:
+    if (
+        not _plain_int(hires_today, minimum=0)
+        or hires_today > MAX_ORDERS * TURNS_PER_DAY
+        or not _plain_int(price, minimum=1)
+        or money is None
+    ):
         return action
     units = min(reachable, REACH)
     cost = _fib(hires_today)
     quoted = units * price * PRICE_KEEP
-    if quoted - cost < MIN_GAIN or quoted < GAIN_RATIO * cost or money < cost + CASH_RESERVE:
+    cash_reserve = _effective_cash_reserve()
+    if quoted - cost < MIN_GAIN or quoted < GAIN_RATIO * cost or money < cost + cash_reserve:
         REPORT["value_declines"] += 1
         return action
 
@@ -468,7 +531,7 @@ def wrap(parent, tape_of=None):
             if (
                 not isinstance(inner, list)
                 or len(inner) != len(hands) - 1
-                or any(not isinstance(parent_command, list) for parent_command in inner)
+                or any(not isinstance(item, list) for item in inner)
             ):
                 return action
             result = copy.deepcopy(action)
