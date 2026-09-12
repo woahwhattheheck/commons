@@ -2,11 +2,11 @@
   "engine_git_blob": "3c202c7ee921da239356789e266b694635103fc4",
   "executed": {
     "normal_tests": {
-      "count": 18,
+      "count": 20,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 18,
+      "count": 20,
       "status": "pass"
     },
     "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
@@ -17,16 +17,16 @@
   },
   "files": {
     "README.md": {
-      "bytes": 3156,
-      "sha256": "2534773448ee14f149a35aa94e5bd585091cc8cc8c77d74311e1f7b730fc78b5"
+      "bytes": 4516,
+      "sha256": "d7932b655d718c3b39503484248043cbedbaf3138ff2a43177556b85e52c4b59"
     },
     "crop_service_capacity.py": {
-      "bytes": 8401,
-      "sha256": "59daed2fcdfa1d4049ae3a49cbbaa4a0bff253dd1490def8dfce0a3f3331adf9"
+      "bytes": 8994,
+      "sha256": "935b1c4a7d47902b21b6e6820cf5eef8ffbcc17bb75bdf954edf595f980a65aa"
     },
     "test_crop_service_capacity.py": {
-      "bytes": 5382,
-      "sha256": "beee6791ed200589f47799d02a162270acb8a1a5f4788899e0fde253a4af7a9a"
+      "bytes": 6440,
+      "sha256": "6017bf912fbae855fab667a32fa82695a811474aae5d0432412cf32639c7bf29"
     }
   },
   "historical_donor": {
@@ -36,16 +36,24 @@
   },
   "limits": [
     "no current-native economics claim",
-    "no movement or seed feasibility claim",
+    "no movement, seed, land-purchase, or reclamation feasibility claim",
     "no runtime/config/default/archive/Kaggle mutation",
-    "absolute_action_ceiling intentionally overcredits future HIRE rows and is only an impossibility bound",
-    "current_labor_ceiling is conditional on no future HIRE credit"
+    "absolute_action_ceiling intentionally overcredits future HIRE and potentially plantable board cells and is only an impossibility bound",
+    "current_labor_ceiling is conditional on no future HIRE credit only; it does not assume no future BUY_LAND/DIG/HARVEST",
+    "empty_owned_tiles is telemetry and is not used as a hard future impossibility cap"
   ],
-  "schema": "titan-v4-cropscale-validation/v1",
+  "predecessor_bug": {
+    "cause": "future BUY_LAND can unlock LOCKED cells after unit phase for later same-day callbacks; DIG/HARVEST can reclaim cells",
+    "kind": "false_impossibility_current_empty_tile_cap",
+    "repair": "cap one-sided impossibility ceilings by total observed rectangular board cells while preserving current empty-owned count as telemetry"
+  },
+  "schema": "titan-v4-cropscale-validation/v2",
   "status": "source_derived_research_no_activation",
   "theorem": [
     "new plants initialize consecutive_unwatered=1 and watered_today=false",
     "EOD increments an unwatered plant and converts consecutive_unwatered>=2 to WEED",
-    "therefore a newly established crop surviving the same EOD requires at least PLANT+WATER unit actions"
+    "therefore a newly established crop surviving the same EOD requires at least PLANT+WATER unit actions",
+    "BUY_LAND executes in market phase and immediately unlocks the next quadrant for later callbacks, so current empty-owned cells cannot be a hard future cap",
+    "total observed board cells is a safe physical overestimate for simultaneous surviving new plants"
   ]
 }
