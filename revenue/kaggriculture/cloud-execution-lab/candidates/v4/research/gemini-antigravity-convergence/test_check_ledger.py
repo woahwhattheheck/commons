@@ -41,14 +41,43 @@ class GeminiConvergenceTests(unittest.TestCase):
     def test_complete_ledger_accepts(self):
         result = C.validate_document(copy.deepcopy(self.doc), self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["entry_count"], 21)
-        self.assertEqual(sum(result["dispositions"].values()), 21)
+        self.assertEqual(result["entry_count"], 34)
+        self.assertEqual(sum(result["dispositions"].values()), 34)
 
     def test_missing_required_id_rejected(self):
         doc = copy.deepcopy(self.doc)
         doc["entries"] = doc["entries"][1:]
         doc["entry_count"] -= 1
         self.assertRejected(doc, "coverage mismatch")
+
+    def test_authenticated_extension_ids_are_hard_required(self):
+        extension = {
+            "gemini.analyzer-margin-clipping",
+            "gemini.fert-price-floor-arbitrage",
+            "gemini.fert-revenue-liquidate",
+            "gemini.flash-market",
+            "gemini.g01-e11-rival-dump-deferral",
+            "gemini.g01-e20-hire-guard",
+            "gemini.g01-o01-public-rival-archetype",
+            "gemini.g01-shop-absorption",
+            "gemini.idle-hands",
+            "gemini.pro-capital",
+            "gemini.stratum-row-shed",
+            "gemini.terminal-mass-hire",
+            "gemini.wheat-market-denial",
+        }
+        self.assertTrue(extension.issubset(C.REQUIRED_IDS))
+        for entry_id in sorted(extension):
+            doc = copy.deepcopy(self.doc)
+            doc["entries"] = [e for e in doc["entries"] if e["id"] != entry_id]
+            doc["entry_count"] -= 1
+            self.assertRejected(doc, "coverage mismatch")
+
+    def test_provenance_quarantine_ids_are_not_minted(self):
+        ids = {entry["id"] for entry in self.doc["entries"]}
+        self.assertFalse(any("meridian" in entry_id for entry_id in ids))
+        self.assertFalse(any("openmore" in entry_id for entry_id in ids))
+        self.assertFalse(any("adaptive" in entry_id for entry_id in ids))
 
     def test_duplicate_id_rejected(self):
         doc = copy.deepcopy(self.doc)
