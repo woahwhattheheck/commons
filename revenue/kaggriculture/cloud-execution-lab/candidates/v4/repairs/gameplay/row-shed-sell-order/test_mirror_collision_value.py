@@ -83,6 +83,16 @@ class MirrorCollisionValueTests(unittest.TestCase):
                         price_fn=M.market_price,
                     )
 
+    def test_unit_loop_escape_bound_fails_closed(self):
+        self.assertEqual(C.MAX_EXECUTABLE_UNITS_PER_MARKET_ORDER, 99_999)
+        with self.assertRaises(C.MirrorCollisionInputError):
+            C.mirror_collision_score(
+                item="WHEAT",
+                public_inventory=10_000,
+                fillable=100_000,
+                price_fn=M.market_price,
+            )
+
     def test_unknown_product_fails_closed(self):
         with self.assertRaises(C.MirrorCollisionInputError):
             C.mirror_collision_score(
