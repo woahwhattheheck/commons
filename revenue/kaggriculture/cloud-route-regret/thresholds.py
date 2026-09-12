@@ -260,6 +260,44 @@ def _delta(candidate: dict[str, Any], shipped: dict[str, Any]) -> dict[str, floa
     }
 
 
+def _cell_nonregression(
+    pairs: list[dict[str, Any]], candidate: int | float, shipped: int | float
+) -> tuple[bool, list[dict[str, Any]]]:
+    """Reject any individual L/T/W downgrade, even when aggregates improve."""
+    rank = {"L": 0, "T": 1, "W": 2}
+    receipts = []
+    passed = True
+    for pair in sorted(
+        pairs,
+        key=lambda row: (
+            str(row.get("opponent")),
+            str(row.get("seed")),
+            str(row.get("seat")),
+        ),
+    ):
+        candidate_row = _choice(pair, candidate)
+        shipped_row = _choice(pair, shipped)
+        candidate_result = candidate_row.get("result")
+        shipped_result = shipped_row.get("result")
+        ok = (
+            candidate_result in rank
+            and shipped_result in rank
+            and rank[candidate_result] >= rank[shipped_result]
+        )
+        passed = passed and ok
+        receipts.append(
+            {
+                "opponent": pair.get("opponent"),
+                "seed": pair.get("seed"),
+                "seat": pair.get("seat"),
+                "shipped_result": shipped_result,
+                "candidate_result": candidate_result,
+                "passed": ok,
+            }
+        )
+    return passed, receipts
+
+
 def _group_nonregression(
     pairs: list[dict[str, Any]], candidate: int | float, shipped: int | float
 ) -> tuple[bool, list[dict[str, Any]]]:
@@ -267,6 +305,7 @@ def _group_nonregression(
     for pair in pairs:
         groups[("opponent", pair["opponent"])].append(pair)
         groups[("seat", pair["seat"])].append(pair)
+        groups[("opponent_seat", (pair["opponent"], pair["seat"]))].append(pair)
     receipts = []
     passed = True
     for (kind, value), rows in sorted(groups.items(), key=lambda item: str(item[0])):
@@ -312,6 +351,7 @@ def fit_report(
         holdout_selected = score_policy(holdout, selected)
         holdout_shipped = score_policy(holdout, shipped)
         holdout_delta = _delta(holdout_selected, holdout_shipped)
+        cells_passed, cell_receipts = _cell_nonregression(holdout, selected, shipped)
         groups_passed, group_receipts = _group_nonregression(
             holdout, selected, shipped
         )
@@ -330,8 +370,10 @@ def fit_report(
             gate_reasons.append("holdout own cash regressed")
         if holdout_delta["margin_total"] < 0:
             gate_reasons.append("holdout margin regressed")
+        if not cells_passed:
+            gate_reasons.append("holdout outcome transition regressed")
         if not groups_passed:
-            gate_reasons.append("seat/opponent holdout subgroup regressed")
+            gate_reasons.append("seat/opponent/intersection holdout subgroup regressed")
         passed = not gate_reasons
         reports.append(
             {
@@ -346,6 +388,7 @@ def fit_report(
                 "holdout_selected": holdout_selected,
                 "holdout_shipped": holdout_shipped,
                 "holdout_delta": holdout_delta,
+                "holdout_transitions": cell_receipts,
                 "holdout_groups": group_receipts,
                 "screen_passed": passed,
                 "gate_reasons": gate_reasons,

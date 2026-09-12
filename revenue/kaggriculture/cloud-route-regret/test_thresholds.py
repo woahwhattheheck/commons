@@ -3,7 +3,13 @@ from __future__ import annotations
 
 import unittest
 
-from thresholds import build_pairs, select_threshold
+from thresholds import (
+    _cell_nonregression,
+    _group_nonregression,
+    build_pairs,
+    fit_report,
+    select_threshold,
+)
 
 
 def outcome(own, rival):
@@ -19,20 +25,33 @@ def outcome(own, rival):
     }
 
 
-def pair(value, force_own, stay_own, *, seed=1):
+def pair(
+    value,
+    force_own,
+    stay_own,
+    *,
+    force_rival=100,
+    stay_rival=100,
+    seed=1,
+    opponent="o",
+    seat=0,
+    checkpoint=10,
+):
+    force = outcome(force_own, force_rival)
+    stay = outcome(stay_own, stay_rival)
     return {
-        "checkpoint": 10,
+        "checkpoint": checkpoint,
         "feature": "x",
         "feature_value": value,
         "shipped_threshold": 5,
         "target": "T",
-        "opponent": "o",
+        "opponent": opponent,
         "seed": seed,
-        "seat": 0,
+        "seat": seat,
         "auto_match": True,
-        "force": outcome(force_own, 100),
-        "stay": outcome(stay_own, 100),
-        "auto": outcome(force_own if value >= 5 else stay_own, 100),
+        "force": force,
+        "stay": stay,
+        "auto": force if value >= 5 else stay,
     }
 
 
@@ -104,6 +123,90 @@ class ThresholdSelectionTests(unittest.TestCase):
         pairs, rejected = build_pairs([auto, force, stay], [(10, "x", 5, "T")])
         self.assertEqual(pairs, [])
         self.assertIn("untouched auto", rejected[0]["reason"])
+
+    def test_opponent_seat_intersections_kill_simpson_mask(self):
+        # Candidate threshold 6 chooses STAY at feature 5; shipped 5 chooses FORCE.
+        # Every opponent-only and seat-only aggregate is exactly neutral, while two
+        # opponent×seat intersections regress. The predecessor accepted this grid.
+        rows = [
+            pair(5, 1000, 988, force_rival=0, stay_rival=0, seed=9, opponent="A", seat=0),
+            pair(5, 1000, 1012, force_rival=0, stay_rival=0, seed=9, opponent="A", seat=1),
+            pair(5, 1000, 1012, force_rival=0, stay_rival=0, seed=9, opponent="B", seat=0),
+            pair(5, 1000, 988, force_rival=0, stay_rival=0, seed=9, opponent="B", seat=1),
+        ]
+        passed, receipts = _group_nonregression(rows, 6, 5)
+        self.assertFalse(passed)
+        marginals = [row for row in receipts if row["kind"] in {"opponent", "seat"}]
+        intersections = [row for row in receipts if row["kind"] == "opponent_seat"]
+        self.assertTrue(marginals)
+        self.assertTrue(all(row["passed"] for row in marginals))
+        self.assertEqual(len(intersections), 4)
+        self.assertEqual(sum(not row["passed"] for row in intersections), 2)
+
+        report = fit_report(
+            [pair(5, 0, 1000, seed=1)] + rows,
+            [(10, "x", 5, "T")],
+            {1},
+            {9},
+            minimum_holdout_cells=4,
+        )
+        checkpoint = report["checkpoints"][0]
+        self.assertEqual(checkpoint["selected_threshold"], 6)
+        self.assertIn(
+            "seat/opponent/intersection holdout subgroup regressed",
+            checkpoint["gate_reasons"],
+        )
+        self.assertFalse(checkpoint["screen_passed"])
+        self.assertEqual(report["verdict"], "NO_THRESHOLD_CHANGE")
+
+    def test_every_outcome_downgrade_is_rejected_per_cell(self):
+        cases = [
+            ("W_to_T", pair(5, 110, 100)),
+            ("W_to_L", pair(5, 110, 90)),
+            ("T_to_L", pair(5, 100, 90)),
+        ]
+        for name, row in cases:
+            with self.subTest(name=name):
+                passed, receipts = _cell_nonregression([row], 6, 5)
+                self.assertFalse(passed)
+                self.assertFalse(receipts[0]["passed"])
+
+    def test_outcome_nonregression_allows_equal_or_better_cells(self):
+        rows = [
+            pair(5, 90, 90, seed=1),   # L -> L
+            pair(5, 90, 100, seed=2),  # L -> T
+            pair(5, 100, 110, seed=3), # T -> W
+            pair(5, 110, 110, seed=4), # W -> W
+        ]
+        passed, receipts = _cell_nonregression(rows, 6, 5)
+        self.assertTrue(passed)
+        self.assertTrue(all(row["passed"] for row in receipts))
+
+    def test_fit_report_rejects_lost_win_hidden_by_compensating_flip(self):
+        development = [pair(5, 0, 1000, seed=1)]
+        holdout = [
+            pair(5, 110, 90, seed=9),
+            pair(5, 0, 1000, seed=10),
+        ]
+        groups_passed, _ = _group_nonregression(holdout, 6, 5)
+        self.assertTrue(groups_passed)
+
+        report = fit_report(
+            development + holdout,
+            [(10, "x", 5, "T")],
+            {1},
+            {9, 10},
+            minimum_holdout_cells=2,
+        )
+        checkpoint = report["checkpoints"][0]
+        self.assertEqual(checkpoint["selected_threshold"], 6)
+        self.assertEqual(checkpoint["holdout_delta"]["wins"], 0)
+        self.assertEqual(checkpoint["holdout_delta"]["losses"], 0)
+        self.assertGreater(checkpoint["holdout_delta"]["own_total"], 0)
+        self.assertGreater(checkpoint["holdout_delta"]["margin_total"], 0)
+        self.assertIn("holdout outcome transition regressed", checkpoint["gate_reasons"])
+        self.assertFalse(checkpoint["screen_passed"])
+        self.assertEqual(report["verdict"], "NO_THRESHOLD_CHANGE")
 
 
 if __name__ == "__main__":
