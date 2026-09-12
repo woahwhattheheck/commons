@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Source-bound scratch composer for the existing W2 CAREBANK service lane.
 
-This does not create a second policy authority or change production defaults.  It
+This does not create a second policy authority or change production defaults. It
 materializes the already-reviewed ``dead_feed_care.py`` helper into an exact
 current-V5 package, behind the existing ``r04_dead_feed_care`` feature key, so
 matched official-engine engagement/economics can be measured before promotion.
@@ -15,37 +15,38 @@ import json
 from pathlib import Path
 import shutil
 
-RUNTIME_BLOB = "da8d5fe86543e1732b0c3ff4675f661bdd2c8d71"
-CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
+MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
+RUNTIME_BLOB = "922c99a571e4ba49726a753739f95afe86e72290"
+CONFIG_BLOB = "ef0bfb1dfa1ce65103a0b178647fc16bc9c7e791"
 HELPER_BLOB = "a93f7fbc3054aaeb2d04878dc620aec66d8a3377"
 HELPER_RELATIVE = Path("candidates/v4/repairs/gameplay/dead-feed-care/dead_feed_care.py")
 
-FEATURE_BEFORE = "    early_capital: bool = False\n\n    def __post_init__(self):"
+FEATURE_BEFORE = (
+    "    early_capital: bool = False\n"
+    "    exec_pace: bool = False\n\n"
+    "    def __post_init__(self):"
+)
 FEATURE_AFTER = (
     "    early_capital: bool = False\n"
+    "    exec_pace: bool = False\n"
     "    r04_dead_feed_care: bool = False\n\n"
     "    def __post_init__(self):"
 )
-BOOL_BEFORE = (
-    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
-    "        )"
-)
-BOOL_AFTER = (
-    "            'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',\n"
-    "            'r04_dead_feed_care',\n"
-    "        )"
-)
+BOOL_BEFORE = "        bool_fields = (*bool_fields, 'exec_pace')"
+BOOL_AFTER = "        bool_fields = (*bool_fields, 'exec_pace', 'r04_dead_feed_care')"
 COMPAT_BEFORE = (
+    "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
     "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
-    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
-    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')"
 )
 COMPAT_AFTER = (
-    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
-    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')\n"
+    "        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')\n"
     "        if self.r04_dead_feed_care and (self.consumer != 'frozen' or self.terminal_route):\n"
     "            raise ValueError('r04_dead_feed_care requires nonterminal frozen SELL')\n"
-    "        if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):"
+    "        if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):\n"
+    "            raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')"
 )
 SELECT_BEFORE = (
     "                selected = self.production.act(obs)\n"
@@ -110,11 +111,34 @@ def patch_config(text: str, *, enabled: bool) -> str:
     return json.dumps(data, indent=2) + "\n"
 
 
-def _helper_functions(path: Path) -> set[str]:
+def _helper_functions(source: bytes) -> set[str]:
     return {
-        node.name for node in ast.parse(path.read_text(encoding="utf-8")).body
+        node.name for node in ast.parse(source).body
         if isinstance(node, ast.FunctionDef)
     }
+
+
+def _current_entrypoint_shape(source: bytes) -> None:
+    text = source.decode("utf-8")
+    town = "town_enabled = _town_procurement_enabled(feature_data)"
+    strip = "feature_data.pop('town_procurement', None)"
+    bind = "features = Features(**feature_data)"
+    if text.count(town) != 1 or text.count(strip) != 1 or text.count(bind) != 1:
+        raise ValueError("current entrypoint town/runtime feature seam drifted")
+    if not text.index(town) < text.index(strip) < text.index(bind):
+        raise ValueError("town_procurement must be consumed before Features binding")
+
+
+def _copy_ignore(package_root: Path):
+    authenticated = {"main.py", "titan_runtime.py", "TITAN-CONFIG.json"}
+
+    def ignore(directory: str, names: list[str]) -> set[str]:
+        ignored = {name for name in names if name == "__pycache__" or name.endswith(".pyc")}
+        if Path(directory).resolve() == package_root:
+            ignored.update(authenticated.intersection(names))
+        return ignored
+
+    return ignore
 
 
 def materialize(source_root: Path, package_root: Path, output: Path, *, enabled: bool = False) -> dict:
@@ -125,54 +149,83 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
     if output.exists() or output == package_root or package_root in output.parents:
         raise ValueError("output must be a new path outside the input package")
 
+    main = package_root / "main.py"
     runtime = package_root / "titan_runtime.py"
     config = package_root / "TITAN-CONFIG.json"
     helper = source_root / HELPER_RELATIVE
     expected = {
+        "main.py": (main, MAIN_BLOB),
         "titan_runtime.py": (runtime, RUNTIME_BLOB),
         "TITAN-CONFIG.json": (config, CONFIG_BLOB),
         str(HELPER_RELATIVE): (helper, HELPER_BLOB),
     }
     actual = {}
+    captured = {}
+    source_sha256s = {}
     for label, (path, expected_blob) in expected.items():
-        if not path.is_file():
-            raise ValueError(f"missing authenticated source: {label}")
-        blob = git_blob_id(path.read_bytes())
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"missing or non-regular authenticated source: {label}")
+        payload = path.read_bytes()
+        blob = git_blob_id(payload)
         actual[label] = blob
+        captured[label] = payload
+        source_sha256s[label] = sha256(payload)
         if blob != expected_blob:
             raise ValueError(f"source authentication failed for {label}: {blob}")
 
-    funcs = _helper_functions(helper)
+    main_bytes = captured["main.py"]
+    runtime_bytes = captured["titan_runtime.py"]
+    config_bytes = captured["TITAN-CONFIG.json"]
+    helper_label = str(HELPER_RELATIVE)
+    helper_bytes = captured[helper_label]
+
+    _current_entrypoint_shape(main_bytes)
+    base_config = json.loads(config_bytes.decode("utf-8"))
+    if type(base_config) is not dict:
+        raise ValueError("TITAN-CONFIG.json must be an object")
+    for key in ("town_procurement", "exec_pace"):
+        if type(base_config.get(key)) is not bool:
+            raise ValueError(f"current package requires exact-bool {key}")
+
+    funcs = _helper_functions(helper_bytes)
     required = {"apply_dead_feed_care", "apply_carebank_feed_swap"}
     if not required.issubset(funcs):
         raise ValueError("authenticated W2 helper is missing required public APIs")
     if (package_root / "r04_dead_feed_care.py").exists():
         raise ValueError("input package already contains W2 helper; explicit composition required")
 
-    runtime_after = patch_runtime(runtime.read_text(encoding="utf-8"))
-    config_after = patch_config(config.read_text(encoding="utf-8"), enabled=enabled)
+    runtime_after = patch_runtime(runtime_bytes.decode("utf-8"))
+    config_after = patch_config(config_bytes.decode("utf-8"), enabled=enabled)
+    runtime_after_bytes = runtime_after.encode("utf-8")
+    config_after_bytes = config_after.encode("utf-8")
 
-    shutil.copytree(package_root, output, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-    (output / "titan_runtime.py").write_text(runtime_after, encoding="utf-8")
-    (output / "TITAN-CONFIG.json").write_text(config_after, encoding="utf-8")
-    shutil.copyfile(helper, output / "r04_dead_feed_care.py")
+    shutil.copytree(package_root, output, ignore=_copy_ignore(package_root))
+    (output / "main.py").write_bytes(main_bytes)
+    (output / "titan_runtime.py").write_bytes(runtime_after_bytes)
+    (output / "TITAN-CONFIG.json").write_bytes(config_after_bytes)
+    (output / "r04_dead_feed_care.py").write_bytes(helper_bytes)
 
     return {
         "schema": "titan-v5-carebank-current-native/v1",
         "authority": "candidates/v4/repairs/gameplay/dead-feed-care",
         "source_blobs": actual,
+        "source_sha256s": source_sha256s,
         "outputs": {
+            "main.py": {
+                "git_blob": git_blob_id(main_bytes),
+                "sha256": sha256(main_bytes),
+            },
             "titan_runtime.py": {
-                "git_blob": git_blob_id((output / "titan_runtime.py").read_bytes()),
-                "sha256": sha256((output / "titan_runtime.py").read_bytes()),
+                "git_blob": git_blob_id(runtime_after_bytes),
+                "sha256": sha256(runtime_after_bytes),
             },
             "TITAN-CONFIG.json": {
-                "git_blob": git_blob_id((output / "TITAN-CONFIG.json").read_bytes()),
-                "sha256": sha256((output / "TITAN-CONFIG.json").read_bytes()),
+                "git_blob": git_blob_id(config_after_bytes),
+                "sha256": sha256(config_after_bytes),
             },
             "r04_dead_feed_care.py": {
-                "git_blob": git_blob_id((output / "r04_dead_feed_care.py").read_bytes()),
-                "sha256": sha256((output / "r04_dead_feed_care.py").read_bytes()),
+                "git_blob": git_blob_id(helper_bytes),
+                "sha256": sha256(helper_bytes),
             },
         },
         "feature_key": "r04_dead_feed_care",
@@ -180,6 +233,7 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         "production_default_changed": False,
         "strict_feature_types": True,
         "consumer_contract": "frozen_nonterminal_only",
+        "entrypoint_contract": "current_main_strips_town_procurement_before_Features",
         "selected_pipeline": ["apply_dead_feed_care", "apply_carebank_feed_swap"],
         "deadline_fallback": "completed_parent_selected_action",
     }
