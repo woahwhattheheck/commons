@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Fail-closed V218 current-native binding audit.
+"""Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It answers only whether an authenticated native package contains a discoverable binding
-from main/runtime/config/package code to the current V218 router surface.
+It accepts either an explicit V218/router binding or a source-proven current-native
+semantic equivalent for the two V218 legality rules.
 """
 from __future__ import annotations
-import argparse, hashlib, json
+import argparse, ast, hashlib, json
 from pathlib import Path
 
 TOKENS = ("r04_full_router", "v218", "movement_parity")
@@ -33,6 +33,133 @@ def _scan_text(path: Path, root: Path):
     return {"path": str(path.relative_to(root)), "hits": hits}
 
 
+def _read(root: Path, rel: str):
+    path = root / rel
+    if not path.is_file():
+        return None
+    return path.read_text(encoding="utf-8")
+
+
+def _function_node(text: str, name: str):
+    tree = ast.parse(text)
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name:
+            return node
+    raise ValueError(f"missing function: {name}")
+
+
+def _exec_function(text: str, name: str, globals_dict: dict):
+    node = _function_node(text, name)
+    module = ast.Module(body=[node], type_ignores=[])
+    ast.fix_missing_locations(module)
+    env = dict(globals_dict)
+    exec(compile(module, f"<v218:{name}>", "exec"), env, env)
+    return env[name], ast.get_source_segment(text, node) or ""
+
+
+def _native_semantic_equivalence(root: Path, config: dict) -> dict:
+    """Prove the two V218 rules already hold on the actually-called native path.
+
+    Rule A: in-bounds MOVE is not rejected merely because destination is LOCKED.
+    Rule B: all four central shed access coordinates remain eligible.
+
+    The proof is deliberately fail-closed: it requires the current frozen call chain,
+    executable semantics from Arlene's `_noop` / `_shed_adjacent`, and the installed
+    SpatialTempo path implementation to remain tile-agnostic.
+    """
+    rels = {
+        "main": "main.py",
+        "runtime": "titan_runtime.py",
+        "frozen": "frozen_selected.py",
+        "scheduler": "scheduler.py",
+        "arlene": "reference/next-panel/vendor/arlene.py",
+        "spatial": "spatial_tempo.py",
+    }
+    texts = {name: _read(root, rel) for name, rel in rels.items()}
+    missing = [rels[name] for name, text in texts.items() if text is None]
+    if missing:
+        return {"equivalent": False, "reason": "missing_semantic_sources", "missing": missing}
+
+    chain = {
+        "config_frozen": config.get("consumer") == "frozen",
+        "config_nonterminal": not bool(config.get("terminal_route", False)),
+        "main_calls_titan": (
+            "from titan_runtime import TitanAgent, Features, load" in texts["main"]
+            and "return FinalPressureAgent(" in texts["main"]
+        ),
+        "runtime_selects_frozen": (
+            "from frozen_selected import FrozenSelected" in texts["runtime"]
+            and "self.consumer = FrozenSelected()" in texts["runtime"]
+        ),
+        "frozen_imports_scheduler": "from scheduler import *" in texts["frozen"],
+        "scheduler_binds_arlene": (
+            "parent = _load('intact_arlene', HERE/'reference/next-panel/vendor/arlene.py')"
+            in texts["scheduler"]
+        ),
+        "runtime_installs_spatial": (
+            "from spatial_tempo import SpatialTempo" in texts["runtime"]
+            and "self.spatial.install(self.controller)" in texts["runtime"]
+        ),
+    }
+
+    try:
+        moves = {"NORTH": (0, -1), "SOUTH": (0, 1), "EAST": (1, 0), "WEST": (-1, 0)}
+        noop, noop_src = _exec_function(
+            texts["arlene"], "_noop",
+            {"BOARD": 10, "MOVES": moves, "ANIMALS": {}},
+        )
+        shed_adjacent, shed_src = _exec_function(
+            texts["arlene"], "_shed_adjacent", {"BOARD": 10}
+        )
+        path, path_src = _exec_function(texts["spatial"], "path", {})
+        move, move_src = _exec_function(texts["spatial"], "move", {"MOVES": moves})
+
+        locked_move = (
+            noop(["EAST"], "LOCKED", {}, {}, 4, 4, 10) is False
+            and noop(["WEST"], "LOCKED", {}, {}, 5, 5, 10) is False
+            and noop(["EAST"], "LOCKED", {}, {}, 9, 4, 10) is True
+        )
+        four = {(4, 4), (5, 4), (4, 5), (5, 5)}
+        shed_four = all(shed_adjacent(x, y, 10) for x, y in four)
+        shed_exact = shed_four and not shed_adjacent(3, 4, 10) and not shed_adjacent(6, 5, 10)
+        spatial_tile_agnostic = (
+            "LOCKED" not in path_src
+            and "LOCKED" not in move_src
+            and path((4, 4), (5, 5)) == [["EAST"], ["SOUTH"]]
+            and move((4, 4), ["EAST"], 10) == (5, 4)
+        )
+        arlene_move_branch_tile_agnostic = "if op in MOVES" in noop_src
+        arlene_shed_source = "_shed_adjacent" in shed_src
+    except (SyntaxError, ValueError, TypeError, KeyError, NameError) as exc:
+        return {
+            "equivalent": False,
+            "reason": "semantic_probe_failed",
+            "error": f"{type(exc).__name__}: {exc}",
+            "call_chain": chain,
+        }
+
+    rules = {
+        "locked_transit_matches_engine": bool(locked_move and arlene_move_branch_tile_agnostic),
+        "all_four_shed_corners_eligible": bool(shed_exact and arlene_shed_source),
+        "spatial_routes_are_tile_agnostic": bool(spatial_tile_agnostic),
+    }
+    equivalent = all(chain.values()) and all(rules.values())
+    return {
+        "equivalent": equivalent,
+        "reason": "native_semantic_equivalent" if equivalent else "semantic_precondition_failed",
+        "call_chain": chain,
+        "rules": rules,
+        "sources": {
+            name: {
+                "path": rels[name],
+                "git_blob": git_blob(texts[name].encode()),
+                "sha256": sha256(texts[name].encode()),
+            }
+            for name in rels
+        },
+    }
+
+
 def audit(root: Path) -> dict:
     root = root.resolve()
     required = [root / "main.py", root / "titan_runtime.py", root / "TITAN-CONFIG.json"]
@@ -50,8 +177,6 @@ def audit(root: Path) -> dict:
     for path in sorted(root.rglob("*")):
         if not path.is_file() or any(part in EXCLUDE_PARTS for part in path.parts):
             continue
-        # Package executable/config text only. Reference checks are evidence about the
-        # engine, not a production binding into main.py::agent.
         rel = path.relative_to(root)
         if rel.parts and rel.parts[0] == "checks":
             continue
@@ -64,13 +189,25 @@ def audit(root: Path) -> dict:
 
     main = (root / "main.py").read_bytes()
     runtime = (root / "titan_runtime.py").read_bytes()
-    config_v218_keys = sorted(k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower())
+    config_v218_keys = sorted(
+        k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower()
+    )
     router_refs = sum(row["hits"]["r04_full_router"] for row in refs)
     v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in refs)
-    wired = bool(router_refs or v218_refs or config_v218_keys)
+    explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
+    semantic = _native_semantic_equivalence(root, config)
+    equivalent = bool(semantic.get("equivalent"))
+    wired = explicit_binding or equivalent
+
+    if explicit_binding:
+        disposition = "WIRED_REQUIRES_RUNTIME_GATE"
+    elif equivalent:
+        disposition = "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE"
+    else:
+        disposition = "BLOCKED_AT_NATIVE_ASSEMBLY"
 
     return {
-        "schema": "titan-v4-v218-native-binding/v1",
+        "schema": "titan-v4-v218-native-binding/v2",
         "native_root": str(root),
         "main": {"git_blob": git_blob(main), "sha256": sha256(main), "bytes": len(main)},
         "runtime": {"git_blob": git_blob(runtime), "sha256": sha256(runtime), "bytes": len(runtime)},
@@ -82,9 +219,11 @@ def audit(root: Path) -> dict:
         "binding_refs": refs,
         "router_ref_count": router_refs,
         "v218_ref_count": v218_refs,
+        "explicit_binding": explicit_binding,
+        "native_semantic_equivalence": semantic,
         "wired": wired,
-        "disposition": "WIRED_REQUIRES_RUNTIME_GATE" if wired else "BLOCKED_AT_NATIVE_ASSEMBLY",
-        "scope": "binding/custody only; no V218 execution or economics",
+        "disposition": disposition,
+        "scope": "binding/semantic custody only; no V218 execution or economics",
     }
 
 
@@ -106,6 +245,7 @@ def main(argv=None) -> int:
     if args.require_wired and not report["wired"]:
         return 3
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

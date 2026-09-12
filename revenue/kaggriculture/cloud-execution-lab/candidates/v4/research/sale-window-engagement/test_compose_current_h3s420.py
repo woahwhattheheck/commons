@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 import unittest
 HERE = Path(__file__).resolve().parent
+LAB = HERE.parents[3]
 spec = importlib.util.spec_from_file_location("h3s420_compose", HERE / "compose_current_h3s420.py")
 mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 FIXTURE = '''\
@@ -64,7 +65,7 @@ class Tests(unittest.TestCase):
     def test_missing_import_marker_rejected(self):
         with self.assertRaisesRegex(ValueError,"import marker"): mod._rewrite_source(FIXTURE.replace(mod._IMPORT_MARKER,""))
     def test_duplicate_transform_marker_rejected(self):
-        with self.assertRaisesRegex(ValueError,"transform marker"): mod._rewrite_source(FIXTURE.replace(mod._BLOCK_END,mod._BLOCK_END*2))
+        with self.assertRaisesRegex(ValueError,"end marker"): mod._rewrite_source(FIXTURE.replace(mod._BLOCK_END,mod._BLOCK_END*2))
     def test_baseline_pins_remain_backward_compatible(self):
         self.assertEqual(mod.FROZEN_SELECTED_GIT_BLOB,'fc7baf5c179818a55037f6a61d92984d81d1a21c'); self.assertEqual(mod.SCHEDULER_GIT_BLOB,'a483b24dd72b580d7d8811636b54d2d44f391575')
     def test_exact_loom4_postimages_are_authenticated(self):
@@ -76,4 +77,20 @@ class Tests(unittest.TestCase):
         decorated=FIXTURE.replace('def event_aware_horizon(now):','def represented_shed_event():\n    return "peer-byte"\n\ndef event_aware_horizon(now):'); rewritten=mod._rewrite_source(decorated); self.assertIn('def represented_shed_event():\n    return "peer-byte"',rewritten); self.assertIn("if now < H3S420_SUPPRESS_NEW_PLANS_AFTER",rewritten)
     def test_contract_threshold_is_420(self):
         self.assertEqual(mod.SUPPRESS_NEW_PLANS_AFTER,420); self.assertEqual(mod.BASELINE_HORIZON,3)
+    def test_exact_pinned_native_source_rewrites(self):
+        raw=(LAB/'frozen_selected.py').read_bytes()
+        self.assertEqual(mod.git_blob(raw),mod.FROZEN_SELECTED_GIT_BLOB)
+        rewritten=mod.compose(raw,enabled=True)
+        compile(rewritten,'<source-real-h3s420>','exec')
+        self.assertIn(b'H3S420_BASELINE_HORIZON = 3',rewritten)
+        self.assertIn(b'if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:',rewritten)
+    def test_terminal_copy_before_optimizer_does_not_confuse_boundary(self):
+        decorated=FIXTURE.replace(
+            '        budget=self.cash_reserve(obs,config,base,end)\n',
+            '        if now < 0:\n            out=copy.deepcopy(base)\n            return out\n'
+            '        budget=self.cash_reserve(obs,config,base,end)\n')
+        self.assertEqual(decorated.count(mod._BLOCK_END),2)
+        rewritten=mod._rewrite_source(decorated)
+        self.assertEqual(rewritten.count(mod._BLOCK_END),2)
+        self.assertIn('if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:',rewritten)
 if __name__=='__main__': unittest.main()

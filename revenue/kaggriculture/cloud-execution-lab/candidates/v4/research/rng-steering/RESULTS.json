@@ -1,0 +1,56 @@
+{
+  "authority": {
+    "economics": "NOT_ASSESSED",
+    "policy_reachability": "NOT_ASSESSED",
+    "promotion_decision": "NOT_ASSESSED"
+  },
+  "engine": {
+    "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+  },
+  "panel": {
+    "baseline_empty_counts": [25, 25],
+    "cells": 2048,
+    "days": [2, 5, 8, 11, 14, 17, 20, 23],
+    "first_shop_flip_witness": {
+      "baseline_demand": {"MILK": 1, "TOMATO": 1, "WHEAT": 1},
+      "baseline_shop": "PIZZA_SHOP",
+      "day": 2,
+      "own_remaining_weeds_preserved": true,
+      "prior_seat_weeds_preserved": true,
+      "seed": 5,
+      "variant_demand": {"EGG": 1, "STRAWBERRY": 1, "WHEAT": 1},
+      "variant_shop": "BRUNCH_SPOT"
+    },
+    "intervention_seat": 1,
+    "per_day": {
+      "11": {"cells": 256, "shop_flips": 165},
+      "14": {"cells": 256, "shop_flips": 163},
+      "17": {"cells": 256, "shop_flips": 169},
+      "2": {"cells": 256, "shop_flips": 164},
+      "20": {"cells": 256, "shop_flips": 165},
+      "23": {"cells": 256, "shop_flips": 175},
+      "5": {"cells": 256, "shop_flips": 165},
+      "8": {"cells": 256, "shop_flips": 170}
+    },
+    "seed_count": 256,
+    "seed_start": 1,
+    "shop_flips": 1336,
+    "shop_unchanged": 712,
+    "variant_empty_counts": [25, 24]
+  },
+  "runtime": {
+    "python_implementation": "CPython",
+    "python_version": "3.13.5"
+  },
+  "schema": "titan-v4-rng-steering-results/v1",
+  "weed_zero_control": {
+    "baseline_empty_counts": [25, 25],
+    "baseline_shop": "PIZZA_SHOP",
+    "day": 2,
+    "seed": 5,
+    "shop_changed": true,
+    "variant_empty_counts": [25, 24],
+    "variant_shop": "BRUNCH_SPOT"
+  }
+}
