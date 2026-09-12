@@ -113,6 +113,28 @@ class WorkerJobValueTests(unittest.TestCase):
         kwargs['market_events'][1]['quantity'] = 4
         self.assertTrue(worker_job_value.evaluate_worker_job(**kwargs)['admitted'])
 
+    def test_sale_receipt_must_be_fully_attributed_to_outputs(self):
+        kwargs = self.base()
+        kwargs['market_events'][1]['quantity'] = 3
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertTrue(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'sale_not_attributed_to_output')
+        self.assertEqual(report['item'], 'MILK')
+        self.assertEqual(report['unmatched_quantity'], 1)
+
+        kwargs = self.base()
+        kwargs['market_events'].append(
+            {'kind': 'sale', 'step': 106, 'slot': 7, 'item': 'WHEAT',
+             'quantity': 1, 'receipt_floor': 100})
+        kwargs['free_market_slots'][106] = {7}
+        report = worker_job_value.evaluate_worker_job(**kwargs)
+        self.assertTrue(report['complete'])
+        self.assertFalse(report['admitted'])
+        self.assertEqual(report['reason'], 'sale_not_attributed_to_output')
+        self.assertEqual(report['item'], 'WHEAT')
+        self.assertEqual(report['unmatched_quantity'], 1)
+
     def test_uncertified_market_slot_fails_closed(self):
         kwargs = self.base()
         kwargs['free_market_slots'] = {100: {4}, 105: {5}}
