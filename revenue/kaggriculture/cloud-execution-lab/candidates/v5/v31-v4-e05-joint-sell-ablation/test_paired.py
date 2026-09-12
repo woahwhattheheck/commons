@@ -10,6 +10,9 @@ import paired
 
 
 class PairedHelpersTest(unittest.TestCase):
+    def test_leaf_custody_receipt_schema_is_v2(self):
+        self.assertEqual(paired.SCHEMA, "astra.v5.v31-v4-e05-joint-sell-paired.v2")
+
     def test_git_blob_bytes_matches_git_formula(self):
         raw = b"abc\n"
         expected = hashlib.sha1(b"blob 4\0abc\n").hexdigest()
