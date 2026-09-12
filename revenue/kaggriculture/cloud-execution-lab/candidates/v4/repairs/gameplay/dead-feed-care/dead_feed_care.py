@@ -244,7 +244,7 @@ def plan_carebank_feed_swap(action: Any, observation: Any, configuration: Any,
 
     The transform is only an admission candidate. It proves the old CARE bank
     would otherwise be at risk on this day's production boundary, that at least
-    one bonus product unit can physically fit after base production/cap, and that
+    one bonus product unit can physically fit after base production, and that
     the replaced fertilizer collection and consumed WHEAT are both source-real.
     It never asserts economic acceptance.
     """
