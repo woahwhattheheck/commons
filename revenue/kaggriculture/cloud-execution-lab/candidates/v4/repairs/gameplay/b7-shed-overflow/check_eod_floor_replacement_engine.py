@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
-HELPER_BLOB = "fcc13df0812d961efc7d11ac4be7084b6663e3fa"
+HELPER_BLOB = "9c3591fe28d8b6be7511832b799d693ad89afbaf"
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
@@ -49,8 +49,6 @@ def assert_sources():
 def floor_stock(engine, item: str) -> int:
     p = engine.MARKET_PARAMS[item]
     start = int(p["I0"])
-    # All canonical curves reach the hard floor. Keep this deterministic and
-    # bounded rather than relying on hand-coded per-product thresholds.
     for stock in range(start, start + 200_001):
         if engine.market_price(item, stock, None) == 1:
             return stock
@@ -73,7 +71,8 @@ def base_state(engine, helper, item: str, room: int, overflow: int):
         "private": copy.deepcopy(private),
         "market": copy.deepcopy(market),
     }
-    action = {"farmer": ["PASS"], "hands": [], "market": [["SELL", "WHEAT", room]]}
+    rows = [] if room == 0 else [["SELL", "WHEAT", room]]
+    action = {"farmer": ["PASS"], "hands": [], "market": rows}
     decision = helper.analyze(obs, action, CFG, market_price_fn=engine.market_price)
     if not decision.get("admit"):
         raise CheckError(f"helper rejected {item=} {room=} {overflow=}: {decision}")
@@ -105,10 +104,11 @@ def run_cell(engine, helper, item: str, room: int, overflow: int):
     candidate_private = copy.deepcopy(private)
     candidate_market = copy.deepcopy(market)
 
-    sold0 = execute_sell_row(engine, baseline_farm, baseline_private, baseline_market, action["market"][0])
-    sold1 = execute_sell_row(engine, candidate_farm, candidate_private, candidate_market, action["market"][0])
-    if sold0 != room or sold1 != room:
-        raise CheckError("prefix SELL did not execute exactly")
+    for row in action["market"]:
+        sold0 = execute_sell_row(engine, baseline_farm, baseline_private, baseline_market, row)
+        sold1 = execute_sell_row(engine, candidate_farm, candidate_private, candidate_market, row)
+        if sold0 != row[2] or sold1 != row[2]:
+            raise CheckError("prefix SELL did not execute exactly")
 
     proposal = decision["proposal"]
     before_public_x = candidate_market["inventory"][item]
@@ -167,7 +167,7 @@ def run():
     by_item = {}
     for item in sorted(helper.NONBUYABLE_PRODUCTS):
         item_cells = 0
-        for room in (1, 2, 3):
+        for room in (0, 1, 2, 3):
             for overflow in (1, 2, 3, 4):
                 gain += run_cell(engine, helper, item, room, overflow)
                 cells += 1
