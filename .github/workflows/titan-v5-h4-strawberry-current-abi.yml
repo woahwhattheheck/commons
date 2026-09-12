@@ -1,0 +1,53 @@
+name: TITAN V5 H4 strawberry current-ABI
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/h4-strawberry-current-abi/**"
+      - ".github/workflows/titan-v5-h4-strawberry-current-abi.yml"
+  push:
+    branches:
+      - "astra/v5-v31-h4-strawberry-current-abi-20260912"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/h4-strawberry-current-abi/**"
+      - ".github/workflows/titan-v5-h4-strawberry-current-abi.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve exact event head
+        id: head
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "sha=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.head.outputs.sha }}
+
+      - name: Assert exact checkout
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${{ steps.head.outputs.sha }}"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Focused contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/h4-strawberry-current-abi
+        run: |
+          python -m py_compile h4_current.py test_h4_current.py
+          python -B -m unittest -v test_h4_current.py
+          python -O -B -m unittest -v test_h4_current.py
