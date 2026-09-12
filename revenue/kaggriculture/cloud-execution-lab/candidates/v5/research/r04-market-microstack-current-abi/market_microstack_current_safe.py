@@ -1,25 +1,21 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fail-closed public surface for the submitted V3.1 R04 market microstack.
+"""Authorizing current-ABI surface for the submitted V3.1 R04 market stack.
 
-The historical V224 helper compacts zero/dead rows. At the current selected-action
-boundary that is only safe for a zero quantity created *inside this component* by
-settling an authenticated prior reservation. A dead row supplied by the current
-producer is a barrier/evidence ambiguity and must fail closed instead of being
-silently deleted.
+The historical router is useful as a theorem donor, but its private tape and queue
+are not current-V5 authority.  This public surface therefore requires one
+``MarketRouteAuthority`` created from the merged canonical ``CurrentRouteWindow``
+and the exact installed Arlene no-queue state shape.  Arbitrary caller-supplied
+future actions are never accepted by this class.
 
-The current runtime may retry the same public step. The historical whole-route
-agent did not have to expose its intermediate H8/H4 ledger across that boundary,
-so this public adapter owns a small transaction seam:
+Retry rules are transactional:
 
-* a true rewind is ``step < previous_step``;
-* an exact same-step sale-window replay returns the exact cached result/report
-  without touching the live shared H8/H4 debt ledger;
-* changed same-step evidence recomputes from saved *pre-step* player/rival state;
-* H4 is bound to the exact sale-window transaction revision and has its own
-  idempotent retry checkpoint over the same shared debt ledger.
-
-That closes the standalone-H4 double-realization class: due debt is always settled
-by the H8/E184 stage before H4 may create fresh STRAWBERRY reservations.
+* true rewind is ``step < previous_step``;
+* exact same-step H8/L3 replay returns the cached result/report without touching
+  the live shared H8/H4 debt ledger;
+* changed same-step evidence restores the saved pre-step player/rival state and
+  recomputes from that authority;
+* H4 is bound to the exact sale-window revision *and* route-authority digest and
+  has its own idempotent retry checkpoint over the same debt ledger.
 """
 from __future__ import annotations
 
@@ -27,7 +23,6 @@ from copy import deepcopy
 
 from market_microstack_current import (
     ADVANCE_START,
-    ANIMALS,
     LAST_STEP,
     MAX_ORDERS,
     SALE_HORIZON,
@@ -35,6 +30,10 @@ from market_microstack_current import (
     _PlayerState,
     _RivalGateState,
     _strict_bool,
+)
+from market_route_authority import (
+    MarketRouteAuthority,
+    validate_market_route_authority,
 )
 
 H4_DONOR_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
@@ -47,7 +46,7 @@ STRAWBERRY = "STRAWBERRY"
 
 
 class R04MarketMicrostackCurrentABI(_Base):
-    """Canonical public class; use this instead of the base implementation."""
+    """Canonical authorizing class; do not use the theorem donor base directly."""
 
     def __init__(self, *args, strawberry_topup: bool = False, **kwargs):
         super().__init__(*args, **kwargs)
@@ -105,22 +104,46 @@ class R04MarketMicrostackCurrentABI(_Base):
         return changed, True
 
     @staticmethod
+    def _required_route_end(step: int) -> int:
+        if step < ADVANCE_START:
+            return min(LAST_STEP, step + 1)
+        return min(
+            LAST_STEP,
+            step + SALE_HORIZON,
+            (step // 72 + 1) * 72 - 1,
+        )
+
+    @classmethod
+    def _route_evidence(cls, authority, observation):
+        step = observation.get("step") if isinstance(observation, dict) else None
+        if type(step) is not int or step < 0 or step >= LAST_STEP:
+            return None
+        end = cls._required_route_end(step)
+        validated = validate_market_route_authority(
+            authority,
+            observation,
+            required_end_step=end,
+        )
+        if validated is None:
+            return None
+        actions, receipt = validated
+        return actions, [], receipt
+
+    @staticmethod
     def _retry_snapshot(
         observation,
         configuration,
         selected_action,
         post_unit_shed,
-        future_actions,
-        queued_commands,
+        route_receipt,
     ):
-        """Detached structural evidence used only to classify same-step retries."""
+        """Detached evidence used only to classify same-step replacement/retry."""
         return {
             "observation": deepcopy(observation),
             "configuration": deepcopy(configuration),
             "selected_action": deepcopy(selected_action),
             "post_unit_shed": deepcopy(post_unit_shed),
-            "future_actions": deepcopy(future_actions),
-            "queued_commands": deepcopy(queued_commands),
+            "route_authority": deepcopy(route_receipt),
         }
 
     @staticmethod
@@ -140,6 +163,19 @@ class R04MarketMicrostackCurrentABI(_Base):
         state = players.get(player)
         return deepcopy({} if state is None else state.sale_window_debts)
 
+    @staticmethod
+    def _authority_report_fields(receipt):
+        if not isinstance(receipt, dict):
+            return {}
+        window = receipt.get("window") if isinstance(receipt.get("window"), dict) else {}
+        return {
+            "authorizing": True,
+            "route_authority_sha256": receipt.get("authority_sha256"),
+            "route_sha256": window.get("route_sha256"),
+            "window_sha256": window.get("window_sha256"),
+            "queue_model": receipt.get("queue_model"),
+        }
+
     def sale_window_transform(
         self,
         observation,
@@ -147,21 +183,12 @@ class R04MarketMicrostackCurrentABI(_Base):
         selected_action,
         *,
         post_unit_shed,
-        future_actions=None,
-        queued_commands=None,
+        route_authority: MarketRouteAuthority | None = None,
     ):
-        """Transactional public sale-window stage across current same-step retries."""
+        """Apply authorizing H8/L3/V224 using one canonical route authority."""
         try:
             fallback = deepcopy(selected_action)
             step, player, _ = self._identity(observation)
-            snapshot = self._retry_snapshot(
-                observation,
-                configuration,
-                selected_action,
-                post_unit_shed,
-                future_actions,
-                queued_commands,
-            )
         except Exception as error:
             try:
                 fallback = deepcopy(selected_action)
@@ -170,33 +197,62 @@ class R04MarketMicrostackCurrentABI(_Base):
             return fallback, {
                 "stage": "sale_window",
                 "changed": False,
-                "reason": f"fail_closed:retry_snapshot:{error}",
+                "reason": f"fail_closed:identity:{error}",
+                "authorizing": False,
                 "on_tape": True,
                 "l3_suppressed": False,
                 "debts_after": self._fallback_debts(self._players, observation),
             }
 
-        transaction = self._sale_transactions.get(player)
+        # Disabled/terminal identities do not need future-route evidence because
+        # no recovered future-dependent theorem can execute.
+        if not self.sale_window or step >= LAST_STEP:
+            result, report = super().sale_window_transform(
+                observation,
+                configuration,
+                selected_action,
+                post_unit_shed=post_unit_shed,
+                future_actions=None,
+                queued_commands=None,
+            )
+            report["authorizing"] = not self.sale_window
+            return result, report
 
+        evidence = self._route_evidence(route_authority, observation)
+        if evidence is None:
+            return fallback, {
+                "stage": "sale_window",
+                "changed": False,
+                "reason": "fail_closed:canonical_route_authority_required",
+                "authorizing": False,
+                "on_tape": True,
+                "l3_suppressed": False,
+                "debts_after": self._fallback_debts(self._players, observation),
+            }
+        future_actions, queued_commands, route_receipt = evidence
+        snapshot = self._retry_snapshot(
+            observation,
+            configuration,
+            selected_action,
+            post_unit_shed,
+            route_receipt,
+        )
+
+        transaction = self._sale_transactions.get(player)
         if transaction is not None and step == transaction["step"]:
             if self._same_snapshot(snapshot, transaction["input"]):
-                # Do not restore state here. H4 may have updated the shared debt
-                # ledger after the first sale-window stage call.
                 return (
                     deepcopy(transaction["result"]),
                     deepcopy(transaction["report"]),
                 )
-
-            # Changed evidence on the same callback is a replacement attempt.
-            # Recompute from the authority that existed before this step, never
-            # from debt/rival state partially produced by the prior attempt.
+            # Same public callback, replacement evidence. Restore the exact
+            # authority that existed before the first attempt.
             self._players[player] = deepcopy(transaction["pre_player"])
             self._rivals[player] = deepcopy(transaction["pre_rival"])
             pre_player = deepcopy(transaction["pre_player"])
             pre_rival = deepcopy(transaction["pre_rival"])
         else:
             if transaction is not None and step < transaction["step"]:
-                # A true episode rewind is strictly earlier, never same-step.
                 self._sale_transactions.pop(player, None)
                 self._h4_transactions.pop(player, None)
             pre_player = deepcopy(self._players.get(player, _PlayerState()))
@@ -210,12 +266,14 @@ class R04MarketMicrostackCurrentABI(_Base):
             future_actions=future_actions,
             queued_commands=queued_commands,
         )
+        report.update(self._authority_report_fields(route_receipt))
 
         revision = self._sale_revisions.get(player, 0) + 1
         self._sale_revisions[player] = revision
         self._sale_transactions[player] = {
             "step": step,
             "revision": revision,
+            "route_receipt": deepcopy(route_receipt),
             "input": snapshot,
             "pre_player": pre_player,
             "pre_rival": pre_rival,
@@ -231,10 +289,9 @@ class R04MarketMicrostackCurrentABI(_Base):
         selected_action,
         *,
         post_unit_shed,
-        future_actions,
-        queued_commands,
+        route_authority: MarketRouteAuthority | None = None,
     ):
-        """Apply submitted H4 after H8/L3 using the exact shared reservation ledger."""
+        """Apply submitted H4 after H8/L3 using the same route/debt authority."""
         try:
             fallback = deepcopy(selected_action)
         except Exception:
@@ -243,6 +300,7 @@ class R04MarketMicrostackCurrentABI(_Base):
             "stage": "h4_strawberry_topup",
             "changed": False,
             "reason": "disabled",
+            "authorizing": False,
             "reservations": (),
             "donor_commit": H4_DONOR_COMMIT,
             "donor_blob": H4_DONOR_BLOB,
@@ -261,7 +319,13 @@ class R04MarketMicrostackCurrentABI(_Base):
             shed = self._validate_post_unit_shed(post_unit_shed)
             prices = self._market_prices(observation)
             inventories = self._inventories(observation, workers)
-            queued = self._queued_commands(queued_commands)
+
+            evidence = self._route_evidence(route_authority, observation)
+            if evidence is None:
+                report["reason"] = "canonical_route_authority_required"
+                return fallback, report
+            future_actions, queued_commands, route_receipt = evidence
+            report.update(self._authority_report_fields(route_receipt))
 
             sale_tx = self._sale_transactions.get(player)
             if sale_tx is None or sale_tx["step"] != step:
@@ -270,12 +334,8 @@ class R04MarketMicrostackCurrentABI(_Base):
             if not self._same_snapshot(selected_action, sale_tx["result"]):
                 report["reason"] = "sale_window_postimage_mismatch"
                 return fallback, report
-            # H8 and H4 must consume one coherent future-route/queue snapshot.
-            if not self._same_snapshot(future_actions, sale_tx["input"]["future_actions"]):
-                report["reason"] = "future_snapshot_mismatch"
-                return fallback, report
-            if not self._same_snapshot(queued_commands, sale_tx["input"]["queued_commands"]):
-                report["reason"] = "queue_snapshot_mismatch"
+            if not self._same_snapshot(route_receipt, sale_tx["route_receipt"]):
+                report["reason"] = "route_authority_mismatch"
                 return fallback, report
 
             h4_input = self._retry_snapshot(
@@ -283,16 +343,13 @@ class R04MarketMicrostackCurrentABI(_Base):
                 configuration,
                 selected_action,
                 post_unit_shed,
-                future_actions,
-                queued_commands,
+                route_receipt,
             )
-            key = (step, sale_tx["revision"])
+            key = (step, sale_tx["revision"], route_receipt["authority_sha256"])
             h4_tx = self._h4_transactions.get(player)
             if h4_tx is not None and h4_tx["key"] == key:
                 if self._same_snapshot(h4_input, h4_tx["input"]):
                     return deepcopy(h4_tx["result"]), deepcopy(h4_tx["report"])
-                # Same sale-window authority, changed H4 evidence: recompute from
-                # the shared ledger as it existed immediately before H4.
                 self._players[player].sale_window_debts = deepcopy(h4_tx["pre_debts"])
                 pre_debts = deepcopy(h4_tx["pre_debts"])
             else:
@@ -326,7 +383,7 @@ class R04MarketMicrostackCurrentABI(_Base):
                     len(command) > 1
                     and command[0] == "PICKUP"
                     and command[1] == STRAWBERRY
-                    for command in queued
+                    for command in queued_commands
                 ) or any(
                     len(command) > 1
                     and command[0] == "PICKUP"
@@ -342,11 +399,7 @@ class R04MarketMicrostackCurrentABI(_Base):
                     row_index = strawberry_rows[0]
                     current_quantity = market[row_index][2]
                     available = max(0, shed[STRAWBERRY] - current_quantity)
-                    end = min(
-                        LAST_STEP,
-                        step + (SALE_HORIZON if step >= 144 else 1),
-                        (step // 72 + 1) * 72 - 1,
-                    )
+                    end = self._required_route_end(step)
                     if not available or end <= step:
                         report["reason"] = "no_projected_surplus_or_window"
                         result = fallback
