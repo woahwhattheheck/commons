@@ -149,26 +149,26 @@ def _system_import_paths(paths: list[str]) -> list[str]:
 
 
 def _reject_preloaded_runtime_modules(captured: dict[str, bytes]) -> None:
-    """Reject ambient top-level modules that could override captured runtime files."""
+    """Reject every preloaded name that the frozen root runtime must own.
+
+    ``sys.modules`` is consulted before ``sys.path``.  Origin strings therefore
+    cannot establish custody: a third-party module installed under ``sys.prefix``
+    (or one spoofing ``__file__`` there) would still bypass the frozen snapshot.
+    The frozen tree has not been imported yet, so any existing captured root name
+    is ambient by definition and must fail closed.
+    """
     names = {
         PurePosixPath(member).stem
         for member in captured
         if "/" not in member and member.endswith(".py")
     }
-    system_roots = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
     for name in sorted(names):
         module = sys.modules.get(name)
         if module is None:
             continue
         origin = getattr(module, "__file__", None)
-        if not origin:
-            raise ValueError(f"preloaded runtime module has no auditable origin: {name}")
-        try:
-            path = Path(origin).resolve()
-        except OSError as exc:
-            raise ValueError(f"preloaded runtime module origin is unreadable: {name}") from exc
-        if not any(_is_under(path, root) for root in system_roots):
-            raise ValueError(f"preloaded runtime module escapes frozen custody: {name} -> {path}")
+        suffix = f" -> {origin}" if origin else ""
+        raise ValueError(f"preloaded runtime module escapes frozen custody: {name}{suffix}")
 
 
 class _FixtureCustody:

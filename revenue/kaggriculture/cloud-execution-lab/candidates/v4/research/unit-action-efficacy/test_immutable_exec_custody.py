@@ -138,6 +138,24 @@ class ImmutableExecCustodyTests(unittest.TestCase):
             else:
                 sys.modules["scheduler"] = previous
 
+    def test_preloaded_runtime_module_under_system_prefix_fails_closed(self):
+        attacker = types.ModuleType("scheduler")
+        attacker.__file__ = str(
+            Path(sys.prefix).resolve() / "lib/python3.12/site-packages/scheduler.py"
+        )
+        previous = sys.modules.get("scheduler")
+        sys.modules["scheduler"] = attacker
+        try:
+            with self.assertRaisesRegex(
+                ValueError, "preloaded runtime module escapes frozen custody"
+            ):
+                u._reject_preloaded_runtime_modules({"scheduler.py": b"captured\n"})
+        finally:
+            if previous is None:
+                sys.modules.pop("scheduler", None)
+            else:
+                sys.modules["scheduler"] = previous
+
     def test_fixture_import_path_excludes_ambient_repo_and_restores_after_close(self):
         with tempfile.TemporaryDirectory() as d:
             package = Path(d) / "package"
