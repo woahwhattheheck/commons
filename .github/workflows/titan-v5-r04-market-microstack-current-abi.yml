@@ -1,0 +1,68 @@
+name: TITAN V5 R04 market microstack current ABI
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi/**"
+      - ".github/workflows/titan-v5-r04-market-microstack-current-abi.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - name: Checkout exact PR head with donor history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Assert exact event head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile recovered surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
+          python -m py_compile \
+            market_microstack_current.py \
+            market_microstack_current_safe.py \
+            test_market_microstack_current.py \
+            test_source_authority.py
+
+      - name: Focused contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
+          python -B -m unittest -v \
+            test_market_microstack_current.py \
+            test_source_authority.py
+
+      - name: Focused contracts under optimization
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
+          python -O -B -m unittest -v \
+            test_market_microstack_current.py \
+            test_source_authority.py
+
+      - name: Test run is source-clean
+        shell: bash
+        run: git diff --exit-code
