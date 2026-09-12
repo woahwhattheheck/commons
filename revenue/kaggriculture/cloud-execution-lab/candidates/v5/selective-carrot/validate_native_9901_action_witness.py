@@ -104,6 +104,7 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
     _require(set(by_seat) == {0, 1}, "both candidate seats are required")
 
     first_steps: dict[str, int] = {}
+    causal_by_seat: dict[str, bool] = {}
     for seat in (0, 1):
         row = by_seat[seat]
         expected = EXPECTED_SCORES[seat]
@@ -121,7 +122,10 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
         first = comparison.get("first_any_action_divergence_step")
         _require(type(first) is int and 0 <= first < EXPECTED["steps"], f"seat {seat} lacks a real action divergence")
         _require(comparison.get("all_actions_identical") is False, f"seat {seat} claims identical actions")
+        causal = comparison.get("candidate_action_is_first_observed_divergence")
+        _require(type(causal) is bool, f"seat {seat} causal divergence label missing")
         first_steps[str(seat)] = first
+        causal_by_seat[str(seat)] = causal
 
     return {
         "schema": "titan-v5-production-action-divergence-native-9901-validation/v1",
@@ -129,6 +133,8 @@ def validate(report: dict[str, Any]) -> dict[str, Any]:
         "report_sha256": claimed_report_sha,
         "authority_sha256": report["authority_sha256"],
         "first_any_action_divergence_step": first_steps,
+        "candidate_action_is_first_observed_divergence": causal_by_seat,
+        "causal_candidate_first_both_seats": all(causal_by_seat.values()),
         "retained_terminal_scores_reproduced": True,
     }
 
