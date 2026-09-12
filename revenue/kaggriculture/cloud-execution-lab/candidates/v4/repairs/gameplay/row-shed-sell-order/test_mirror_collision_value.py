@@ -50,6 +50,26 @@ class MirrorCollisionValueTests(unittest.TestCase):
         self.assertEqual(report["mirror_rank_indices"], [1, 0])
         self.assertTrue(report["rank_diverges"])
 
+    def test_loss_forensics_melon_wool_inversion(self):
+        report = C.analyze_rows(
+            [
+                {"item": "MELON", "public_inventory": 10_025, "fillable": 60},
+                {"item": "WOOL", "public_inventory": 10_025, "fillable": 30},
+            ],
+            price_fn=M.market_price,
+        )
+        melon, wool = report["scores"]
+        self.assertEqual(melon["incumbent_endpoint_score"], 3960)
+        self.assertEqual(melon["exact_mirror_collision_value"], 6083)
+        self.assertEqual(wool["incumbent_endpoint_score"], 4200)
+        self.assertEqual(wool["exact_mirror_collision_value"], 3071)
+        self.assertEqual(report["incumbent_rank_indices"], [1, 0])
+        self.assertEqual(report["mirror_rank_indices"], [0, 1])
+        self.assertEqual(
+            melon["exact_mirror_collision_value"] - wool["exact_mirror_collision_value"],
+            3012,
+        )
+
     def test_stable_ties_preserve_input_order(self):
         rows = [
             {"item": "WHEAT", "public_inventory": 10_000, "fillable": 3},
