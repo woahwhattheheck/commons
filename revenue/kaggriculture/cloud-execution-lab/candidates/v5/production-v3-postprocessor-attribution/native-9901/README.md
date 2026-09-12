@@ -1,15 +1,17 @@
 # Native production-v3 stage screen: seed 1209129901
 
-All 12 new games completed 719 callbacks without an evaluator failure. The
-three prepared knockouts do not repair the remaining Apex own-score deficit.
-Keep the full production-v3 composition for development and continue with the
-matched consumer boundary pair from #13472. No policy or default changes are
-selected by this result.
+All 20 new games completed 719 callbacks without an evaluator failure: 12
+stage-knockout games and eight matched consumer-boundary games. The stage
+knockouts do not repair the remaining Apex own-score deficit. The parent
+consumer bundle improves Apex own score but loses competitive margin to its
+matched frozen control against both opponents. No policy or default changes
+are selected by these results.
 
 The unchanged generic evaluator ran exact production-v3 config-only treatments
 against the original native-9901 Apex v7 and Arlene v14 adapters and the original
-precompiled Apex binary. All 319 input paths were hashed before and after
-execution with no changes. Python 3.12.14, engine, evaluator, loader, opponent
+precompiled Apex binary. For the three-arm screen, all 319 input paths were
+hashed before and after execution with no changes. Python 3.12.14, engine,
+evaluator, loader, opponent
 entries, RNG 20260912, both seats and limits 1.25/10/900 match the retained
 control sample. Native policy timers remained enabled. Two treatment arms ran
 concurrently at most; all completed control games were reused.
@@ -38,7 +40,20 @@ Historical cloud paths and process-namespace PIDs are provenance, not current
 process claims. Actor cleanup exit codes are not game failure: use the
 evaluator's complete status, failure field and 719-step count.
 
-Next comparison must use the dependency-valid matched consumer control/parent
-pair with identical required-off leaves. Do not compare parent directly to full
-production-v3 or interpret that boundary bundle as FrozenSelected alone.
-No CURRENT, release pointer, gameplay default or Kaggle submission changed.
+The completed [matched consumer pair](consumer-boundary/README.md) uses
+identical required-off leaves and changes only the consumer config value.
+
+| Pair arm | Apex own / rival | Apex margin | Arlene own / rival | Arlene margin |
+|---|---:|---:|---:|---:|
+| Matched frozen control | 73905 / 63838 | 10067 | 74592 / 68772 | 5820 |
+| Matched parent | 74211 / 64279 | 9932 | 74290 / 68634 | 5656 |
+| Parent minus matched control | +306 / +441 | -135 | -302 / -138 | -164 |
+
+This conditional comparison measures the consumer boundary bundle, including
+its downstream runtime gates. It does not isolate FrozenSelected alone. Parent
+exceeds V3.1 own score by 68 against Apex and 30 against Arlene in this sample,
+but loses margin to full production-v3 by 136 and 164 respectively. The pair
+subdirectory preserves its separate 226-input custody, unchanged raw reports,
+all per-cell deltas, and the #13472 source-provenance clarification. The original
+three-arm receipts above remain unchanged. No CURRENT, release pointer,
+gameplay default or Kaggle submission changed.
