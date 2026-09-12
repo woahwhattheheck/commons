@@ -15,6 +15,7 @@ import time
 from collections.abc import Callable, Mapping
 from typing import Any
 
+import close_game_sale_risk
 from sell_priority import PRODUCTS, _quote
 
 PriceFunction = Callable[[str, int, Mapping | None], int | float]
@@ -277,7 +278,7 @@ def transform(action: dict, observation: Mapping,
         orders[start:stop] = [order for order, _ in ranked]
         start = stop
     result['market'] = compact_sale_only_prefix(orders, end, market, cfg, quote)
-    return result
+    return close_game_sale_risk.transform(result, observation, cfg, quote=quote)
 
 
 def actor_class(base: type, quote: PriceFunction) -> type:
