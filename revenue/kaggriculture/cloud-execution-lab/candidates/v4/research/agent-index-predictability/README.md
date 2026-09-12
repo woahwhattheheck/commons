@@ -20,7 +20,7 @@ JSON array or JSONL. Each record needs:
   - two-item `rewards` list (the analyzer picks target/opponent by seat), or
   - `score` + `opponent_score`.
 
-If a record contains more than one outcome representation, all supplied representations must agree (within tight floating-point tolerance) or the record fails closed. When they agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. This prevents a contradictory self-reported margin from silently overriding structured score fields while preserving legitimate large finite engine rewards; there is deliberately no guessed reward ceiling.
+If a record contains more than one outcome representation, all supplied representations must agree exactly after numeric validation or the record fails closed. There is deliberately no relative-tolerance comparison here: without an authenticated magnitude bound, a tiny relative difference can still be an enormous absolute contradiction. Integer values are retained exactly after finite-range validation so disagreements above the IEEE-754 exact-integer range cannot collapse through float conversion. When representations agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. This prevents a contradictory self-reported margin from silently overriding structured score fields while preserving legitimate large finite engine rewards; there is deliberately no guessed reward ceiling.
 
 Duplicate exact `(seed, opponent, seat)` cells fail closed. `--require-complete` rejects any seed/opponent group missing one seat.
 
@@ -39,10 +39,10 @@ A constant nonzero paired delta has zero variance and therefore no finite Cohen 
 
 ## Verification receipt
 
-Analyzer Git blob `db32c109b61af72917e302c0cdf69014d284afc1`, SHA-256 `0a56bf369c84e9412a69ae199bd1a41b38a7d7c9105227bae82e5f56b4402219`.
+Analyzer Git blob `c6cf14817096867bc66968598cf5a64f2e928ad2`, SHA-256 `316464ec07c730da0fe953b6f1f6078bbdb8570863c0ae10ecb82349e7093bd4`.
 
-Regression Git blob `8a9501cbfb1d90a7b03c81ab463e1202b661c6f1`, SHA-256 `ed288e4e8ce9dd7df7e603e0dbc75c476c7b15976c9a4ab228fa05bd9647c058`.
+Regression Git blob `439ee93afc663e539c227635f8197a337fbec782`, SHA-256 `a7a58a1bd8d09b22992e89cb96916aac83b0e7f9ca93cb94d97d7e867bd0d748`.
 
-Local verification before publishing: 13/13 tests PASS under both normal Python and `python -O`. Tests include Simpson's-paradox opponent mix, unequal opponent-frequency weighting, exact duplicate/missing-cell rejection, seat-relative reward interpretation, strict type/nonfinite/overflow handling, contradictory redundant outcome rejection, consistent redundant outcome acceptance, a legitimate 165,022-margin reward control, and strict-JSON zero-variance effect handling.
+Exact-byte local verification before publishing: 15/15 tests PASS under both normal Python and `python -O`. Tests include Simpson's-paradox opponent mix, unequal opponent-frequency weighting, exact duplicate/missing-cell rejection, seat-relative reward interpretation, strict type/nonfinite/overflow handling, contradictory redundant outcome rejection, a large-magnitude conflict that the predecessor's relative tolerance accepted, a `10**20` versus `10**20+1` integer-collapse killer, consistent redundant outcome acceptance, a legitimate 165,022-margin reward control, and strict-JSON zero-variance effect handling.
 
 At initial landing, default-branch searches did not surface a committed replay corpus containing the required matched seed/opponent/seat/outcome cells. A replay-capable/data seat should run this analyzer against an exact paired panel rather than infer a result from unmatched hosted games.
