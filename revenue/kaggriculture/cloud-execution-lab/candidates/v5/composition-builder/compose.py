@@ -53,11 +53,11 @@ def _safe_rel(value: str, *, label: str) -> str:
     return str(path)
 
 
-def _read_archive(path: Path) -> tuple[list[tarfile.TarInfo], dict[str, bytes]]:
+def _read_archive_bytes(data: bytes) -> tuple[list[tarfile.TarInfo], dict[str, bytes]]:
     infos: list[tarfile.TarInfo] = []
     payloads: dict[str, bytes] = {}
     seen: set[str] = set()
-    with tarfile.open(path, "r:gz") as archive:
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
         for raw in archive.getmembers():
             info = copy.copy(raw)
             name = _safe_rel(info.name, label="archive member")
@@ -261,11 +261,15 @@ def _apply_variant(
 def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Path) -> dict[str, Any]:
     manifest = _load_manifest(manifest_path)
     expected_sha = _sha256_text(manifest["baseline"].get("sha256"), label="baseline.sha256")
-    actual_sha = sha256_file(baseline)
+    try:
+        baseline_bytes = baseline.read_bytes()
+    except OSError as exc:
+        raise CompositionError(f"cannot read baseline archive: {exc}") from exc
+    actual_sha = sha256_bytes(baseline_bytes)
     if actual_sha != expected_sha:
         raise CompositionError(f"baseline SHA256 mismatch: expected {expected_sha}, got {actual_sha}")
 
-    infos, base_payloads = _read_archive(baseline)
+    infos, base_payloads = _read_archive_bytes(baseline_bytes)
     expected_members = manifest["baseline"].get("member_count")
     if expected_members is not None and len(infos) != expected_members:
         raise CompositionError(
