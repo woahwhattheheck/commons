@@ -90,6 +90,9 @@ class FailClosedNumericCustody(unittest.TestCase):
         cases.append(("pickup-string", obs, action(farmer=["PICKUP", "COW", "1"])))
         cases.append(("place-bool", observation(), action(farmer=["PLACE", "COW", True])))
         cases.append(("sell-string", observation(), action([["SELL", "WOOL", "3"]])))
+        cases.append(("sell-other-string", observation(), action([["SELL", "CARROT", "1"]])))
+        cases.append(("buy-string", observation(), action([["BUY_ANIMAL", "COW", "1"]])))
+        cases.append(("buy-negative", observation(), action([["BUY_ANIMAL", "COW", -1]])))
         harvest = observation(); harvest["private"]["shed"] = {"WOOL": 5}
         harvest["farms"][0]["tiles"][4][4] = {
             "kind": "PASTURE", "animal": "SHEEP", "placed_day": 4, "yield_units": "2"
