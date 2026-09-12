@@ -30,7 +30,8 @@ jobs:
       CAP12_SHA: 5bf8e90602e145b353b9ff421fc514f2cf8af77ec549557e5e0acc1bc6bd67aa
       RECOVERY_SHA: a44bf380cd79f967893ea90273be7dc92d6fd4f5e553aac0b02e457e85cf4ca8
       DELIVERY_SHA: 0d42ee5fabb089745fa0064207654bfdf5df9466ba6499d91b6e685d4880cab1
-      PRODUCTION_SHA: 0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02
+      PRODUCTION_V2_SHA: 0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02
+      PRODUCTION_SHA: 20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239
     steps:
       - name: Checkout exact PR head
         uses: actions/checkout@v4
@@ -68,7 +69,7 @@ jobs:
           printf '%s  %s\n' "$CAP12_SHA" "$inputs/cap12.tar.gz" | sha256sum -c -
           printf '%s  %s\n' "$RECOVERY_SHA" "$inputs/route-recovery.tar.gz" | sha256sum -c -
 
-      - name: Reproduce delivery v2 and production recovery v2
+      - name: Reproduce delivery v2 and production recovery v2 and v3
         shell: bash
         run: |
           set -euo pipefail
@@ -101,6 +102,14 @@ jobs:
             --tar "$work/production.tar.gz"
           printf '%s  %s\n' "$PRODUCTION_SHA" "$work/production.tar.gz" | sha256sum -c -
 
+          python -B build_production_recovery.py \
+            --version v2 \
+            --v31 "$inputs/v31.tar.gz" \
+            --delivery "$work/delivery.tar.gz" \
+            --out "$work/production-v2" \
+            --tar "$work/production-v2.tar.gz"
+          printf '%s  %s\n' "$PRODUCTION_V2_SHA" "$work/production-v2.tar.gz" | sha256sum -c -
+
       - name: Independently verify emitted manifests and member bytes
         shell: bash
         run: |
@@ -127,7 +136,8 @@ jobs:
           assert delivery['candidate_archive_sha256'] == delivery_sha
           assert delivery['version'] == 'v2'
           assert sha(root / 'delivery.tar.gz') == delivery_sha
-          assert production['schema'] == 'titan-production-recovery-build/v2'
+          assert production['schema'] == 'titan-production-recovery-build/v3'
+          assert production['version'] == 'v3'
           assert production['candidate_archive_sha256'] == production_sha
           assert len(production['donor_dependencies']) == 13
           assert len(production['files']) == 92

@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01.json",
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
     "inventory/resources/records/codex-public-commerce-road-activation-20260827-01.json",
@@ -91,15 +92,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789239687.431159",
+  "slack_ts": "1789250892.547929",
   "snapshot": {
-    "base_main_sha": "b9d696d4dd803bc0345f73cdd52cc35346f503f6",
-    "observed_at": "2026-09-12T19:03:40Z",
+    "base_main_sha": "1b00c954e081654ce950c25e9e72c1dcbb1455e7",
+    "observed_at": "2026-09-12T22:08:12Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
+  "source_id": "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -110,6 +111,7 @@
   ],
   "subject": "MASTER RESOURCE LEDGER — authenticated submitted V3.1↔V4 archive bridge producing for the canonical TITAN V5 recovery consumer",
   "supersedes_source_ids": [
+    "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
     "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
     "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
     "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
@@ -2165,6 +2167,28 @@
       "last_used_at": "2026-09-12T19:03:40Z",
       "stale_after": "next bridge, submitted-archive authority, snapshot-helper, official-interpreter, reference-policy, regression-microscope, recovery-consumer, workflow, game-result or provider-state change",
       "priority": 98
+    },
+    {
+      "name": "titan-v5-submitted-package-regression-authority",
+      "kind": "AUTHENTICATED_SUBMITTED_PACKAGE_REGRESSION_AUTHORITY",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / canonical TITAN V5 recovery, causal-isolation and promotion consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_SUBMITTED_V31_AND_V4_ARCHIVE_SHA256_SINGLE_READ_ORDINARY_FILE_MEMBER_INVENTORY_CONFIG_AST_REACHABILITY_AND_SHA256_BINDING_REQUIRED; EVIDENCE_ONLY; NO_GAMEPLAY_RUNTIME_DEFAULT_CONFIG_CURRENT_ARCHIVE_RELEASE_PROVIDER_OR_KAGGLE_MUTATION",
+      "consumer": "The single TITAN V5 production-recovery and promotion line, which needs package-first proof of the exact executed V3.1 and V4 submission delta before assigning causal weight to source-history donors or ablations.",
+      "value": "One released public authority authenticates both submitted archives, derives their exact member/config/AST/reachability delta from captured bytes, rejects mixed-snapshot and unreachable-source claims, and produces deterministic coverage evidence reusable across current V5 recovery work.",
+      "next_action": "Let existing V5 recovery, regression-microscope, factorial and promotion owners consume the package-first coverage report before attributing an effect to a source donor; keep gameplay, candidate synthesis and release decisions with their current owners.",
+      "source": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/regression-coverage; source PR #13454 head 949d5936f991e9838fa1c85cf3adcdf3462018f0 merge 40a263ea26f2e40a13379ca7e1148e7c76e997a3; authority repair PR #13467 head b746b13f75011ba047573038d764d3fdbe2d6bed merge dbfccb9aa5c8c29f9092a978ad00e36e8db840d0",
+      "evidence_ts": "2026-09-12T22:08:12Z",
+      "auth_surface": "public current-main source plus caller-supplied exact public submitted V3.1 and V4 archive bytes; no provider session, credential, gameplay, Kaggle write or repeated owner approval is required by the Commons metadata road",
+      "exact_safe_probe": "Current workflow blob 62d145a3d936d9eae767e2f22a7635c7fa5b4a6a; COVERAGE blob 86a462623b89bc1fdd053ec2ae525d29f7188c9c; README blob 62f5032e5351d3c25981d9c88f475fc95045f37b; authority blob 2a14dfd0d0bf7d8d3d30d9f30a24224156307d95; focused-test blob f4c32594e2432d7214c998f76c71a23d376663a5. Current focused suite passes 19/19 normally and 19/19 under python -O; compilation passes.",
+      "rate_plan_boundary": "A complete coverage report proves only exact submitted-package identity, member/config/AST delta and structural reachability. It does not prove causal gameplay effect, candidate quality, new games, policy promotion, default activation, hosted score, rank, submission, prize, provider quota, payment, revenue or cash.",
+      "assigned_backlog": "existing single V5 production-recovery, regression-microscope and promotion owners; no new delegation, compute seat, sibling runtime or release lane is created",
+      "last_receipt": "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
+      "last_used_at": "2026-09-12T22:08:12Z",
+      "stale_after": "next submitted archive identity, coverage schema/checker, package reachability theorem, recovery consumer, workflow, gameplay result or provider-state change",
+      "priority": 99
     }
   ],
   "titan": "NOT_WRITTEN"
