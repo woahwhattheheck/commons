@@ -128,6 +128,49 @@ class PlantguardServiceTests(unittest.TestCase):
                     "site_action_between_plant_and_water",
                 )
 
+    def test_same_callback_action_after_water_invalidates(self):
+        got = mod.prove_same_eod_establishment(
+            obs(hour=23, hands=2),
+            [(1, 1)],
+            [
+                r(23, 0, "PLANT", (1, 1)),
+                r(23, 1, "WATER", (1, 1)),
+                r(23, 2, "DIG", (1, 1)),
+            ],
+            no_future_hires=True,
+        )
+        self.assertEqual(got["verdict"], "SERVICE_SEQUENCE_UNPROVED")
+        self.assertEqual(got["failures"][0]["reason"], "site_action_after_water_before_eod")
+        self.assertEqual(got["failures"][0]["op"], "DIG")
+
+    def test_later_callback_action_after_water_invalidates(self):
+        got = mod.prove_same_eod_establishment(
+            obs(hour=21, hands=0),
+            [(1, 1)],
+            [
+                r(21, 0, "PLANT", (1, 1)),
+                r(22, 0, "WATER", (1, 1)),
+                r(23, 0, "HARVEST", (1, 1)),
+            ],
+            no_future_hires=True,
+        )
+        self.assertEqual(got["verdict"], "SERVICE_SEQUENCE_UNPROVED")
+        self.assertEqual(got["failures"][0]["reason"], "site_action_after_water_before_eod")
+        self.assertEqual(got["failures"][0]["op"], "HARVEST")
+
+    def test_unrelated_site_after_water_does_not_invalidate(self):
+        got = mod.prove_same_eod_establishment(
+            obs(hour=22, hands=1),
+            [(1, 1)],
+            [
+                r(22, 0, "PLANT", (1, 1)),
+                r(22, 1, "WATER", (1, 1)),
+                r(23, 0, "DIG", (1, 2)),
+            ],
+            no_future_hires=True,
+        )
+        self.assertEqual(got["verdict"], "ESTABLISHMENT_SERVICE_PROVED")
+
     def test_multiple_sites_all_need_independent_pairs(self):
         got = mod.prove_same_eod_establishment(
             obs(hour=20, hands=1),
