@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
       - name: Materialize pinned archive
         shell: bash
         run: |
@@ -31,13 +36,13 @@ jobs:
               return None if p.returncode else subprocess.check_output(['git','cat-file','blob',f'{ref}:{path}'])
           chosen = None
           head = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
-          for label, data in [('HEAD current', cat(head, str(archive)))]:
-              if data is not None and digest(data) == pinned:
-                  chosen = data
+          data = cat(head, str(archive))
+          if data is not None and digest(data) == pinned:
+              chosen = data
           if chosen is None:
               subprocess.run(['git','fetch','--no-tags','--filter=blob:none','origin','main'], check=True)
               main = subprocess.check_output(['git','rev-parse','FETCH_HEAD'], text=True).strip()
-              for label, data in [('main historical', cat(main, historical)), ('main current', cat(main, str(archive)))]:
+              for data in (cat(main, historical), cat(main, str(archive))):
                   if data is not None and digest(data) == pinned:
                       chosen = data
                       break
@@ -84,9 +89,9 @@ jobs:
               if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == '_seller_state':
                   calls.append(ast.unparse(n.func))
           print('SELLER_STATE_CALL_FORMS', sorted(set(calls)))
-          reachable_decorated = []
+          decorated = []
           for n in cls.body:
               if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.decorator_list:
-                  reachable_decorated.append((n.name, [ast.unparse(d) for d in n.decorator_list]))
-          print('ALL_DECORATED_TITAN_METHODS', reachable_decorated)
+                  decorated.append((n.name, [ast.unparse(d) for d in n.decorator_list]))
+          print('ALL_DECORATED_TITAN_METHODS', decorated)
           PY
