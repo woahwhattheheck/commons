@@ -1,0 +1,94 @@
+name: TITAN V4 checker recovery
+
+on:
+  push:
+    branches:
+      - ops/titan-v4-checker-recover-20260911-gpt56
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and publish exact frozen checker
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          work="$RUNNER_TEMP/titan-v4-checker-recover"
+          mkdir -p "$work"
+          cd "$work"
+
+          fetch_transport() {
+            local sha="$1" out="$2"
+            gh api "/repos/${GITHUB_REPOSITORY}/git/blobs/${sha}" --jq .content \
+              | tr -d '\n' | base64 -d > "${out}.transport"
+            base64 -d "${out}.transport" | gzip -d > "$out"
+          }
+
+          fetch_transport 82ea22d893638465e6d4b01307a314206ac77ced stage0.py
+          fetch_transport 958640f146f1710c7e06a6dc78e78fafb57e5f23 stage1.patch
+          fetch_transport 7d7a072c6daf57e3ce7eb3b9f76e735510483052 stage2.patch
+
+          test "$(wc -c < stage0.py)" -eq 74960
+          test "$(sha256sum stage0.py | awk '{print $1}')" = f76603908169367f5707c72b244b91ab8983b4c5a075fba89301bcf38665b39e
+          test "$(wc -c < stage1.patch)" -eq 23375
+          test "$(sha256sum stage1.patch | awk '{print $1}')" = c75405899b38fc052107c8163432a9b0ed6e9158a991d5af1ba741cd929698a0
+          test "$(wc -c < stage2.patch)" -eq 49178
+          test "$(sha256sum stage2.patch | awk '{print $1}')" = 37458d542d64c9d72aa00885bb78fab3dc5323c6182f88a7bc7ee206dd2a3a80
+
+          cp stage0.py check_v4_plumbing.py
+          patch -s -o stage1.py check_v4_plumbing.py < stage1.patch
+          test "$(wc -c < stage1.py)" -eq 94259
+          test "$(sha256sum stage1.py | awk '{print $1}')" = 1455c9fd4c01c37723be3eafecb3587a7b9c15161d78bf5e4264e46743d8db97
+          test "$(git hash-object stage1.py)" = 0a753f517886bb50fc26324d49d2156b9a802b50
+
+          patch -s -o final.py stage1.py < stage2.patch
+          test "$(wc -c < final.py)" -eq 127879
+          test "$(sha256sum final.py | awk '{print $1}')" = 5c4480cb970d57b8c40bd17a0eeec3c68e05dc3436bafd769de99a07045b1e30
+          python3 -m py_compile final.py
+          python3 final.py --self-test
+
+          cd "$GITHUB_WORKSPACE"
+          blob="$(git hash-object -w "$work/final.py")"
+          test "$blob" = 12a3eb23dd1052a769baa16ce861890f21911e14
+
+          base=033a87af6c29176b4cd2ffb3cd3ae472fc917ea6
+          path=revenue/kaggle/kaggriculture/v3/tools/check_v4_plumbing.py
+          git cat-file -e "${base}^{commit}"
+          idx="$RUNNER_TEMP/titan-v4-checker.index"
+          rm -f "$idx"
+          GIT_INDEX_FILE="$idx" git read-tree "$base"
+          GIT_INDEX_FILE="$idx" git update-index --cacheinfo "100644,${blob},${path}"
+          tree="$(GIT_INDEX_FILE="$idx" git write-tree)"
+
+          export GIT_AUTHOR_NAME='TITAN V4 recovery'
+          export GIT_AUTHOR_EMAIL='actions@github.com'
+          export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+          export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+          export GIT_AUTHOR_DATE='2026-09-12T01:30:00Z'
+          export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"
+          candidate="$(printf '%s\n' 'TITAN V4 plumbing: install frozen hardened checker' | git commit-tree "$tree" -p "$base")"
+
+          test "$(git rev-list --parents -n1 "$candidate" | awk '{print NF}')" -eq 2
+          changed="$(git diff-tree --no-commit-id --name-only -r "$base" "$candidate")"
+          test "$changed" = "$path"
+          test "$(git ls-tree "$candidate" "$path" | awk '{print $3}')" = "$blob"
+
+          audit_ref=refs/heads/astra/v4-plumbing-frozen-checker-20260911-gpt56
+          remote="$(git ls-remote origin "$audit_ref" | awk '{print $1}')"
+          if [ -n "$remote" ] && [ "$remote" != "$candidate" ]; then
+            echo "audit ref already exists at unexpected $remote" >&2
+            exit 1
+          fi
+          if [ -z "$remote" ]; then
+            git push origin "$candidate:$audit_ref"
+          fi
+
+          printf 'candidate=%s\nblob=%s\ntree=%s\n' "$candidate" "$blob" "$tree"
