@@ -7,6 +7,10 @@ one event. Only B1 statuses that prove composition (`current`, `disjoint`, or
 `contained`) become DISJOINT_OK. Any overlap becomes REBIND_REQUIRED. Missing,
 unknown, malformed, or mixed evidence remains UNKNOWN rather than being treated
 as safe.
+
+Optional B6 path-move certificates (``attach_path_move_certificates``) annotate
+events via ``host.generated_path_move_certificate.build_certificate``. Certificates
+never override event.state.
 """
 
 from __future__ import annotations
@@ -14,6 +18,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import sys
 from collections import defaultdict
 
@@ -214,6 +219,94 @@ def reduce_root_moves(previous, current):
     }
 
 
+def _load_certificate_api():
+    """Import B6 certificate builder with repo-root on path (script + package)."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    try:
+        from host.generated_path_move_certificate import (  # type: ignore
+            SCHEMA as CERT_SCHEMA,
+            CertificateError,
+            build_certificate,
+        )
+    except ImportError as exc:  # pragma: no cover
+        raise InputError("generated_path_move_certificate unavailable: %s" % exc) from exc
+    return CERT_SCHEMA, CertificateError, build_certificate
+
+
+def attach_path_move_certificates(root_move_doc, paths_by_lane):
+    """Attach B6 path-move certificates to root-move events (additive consumer).
+
+    ``paths_by_lane`` maps lane id -> iterable of repository-relative changed
+    paths for that lane. Certificates annotate events; they never override
+    ``event.state``. Unknown lane keys refuse closed. Lanes omitted from the
+    mapping stay unannotated (no ``path_move_certificate`` key).
+    """
+    if not isinstance(root_move_doc, dict) or root_move_doc.get("schema") != OUT_SCHEMA:
+        raise InputError("root_move_doc must use schema %s" % OUT_SCHEMA)
+    if not isinstance(paths_by_lane, dict) or isinstance(paths_by_lane, (str, bytes)):
+        raise InputError("paths_by_lane must be an object mapping lane -> paths")
+    for key in paths_by_lane:
+        if type(key) is not str or not key:
+            raise InputError("paths_by_lane keys must be nonempty strings")
+
+    events = root_move_doc.get("events")
+    if not isinstance(events, list):
+        raise InputError("root_move_doc.events must be a list")
+
+    event_lanes = {e.get("lane") for e in events if isinstance(e, dict)}
+    unknown = sorted(set(paths_by_lane) - event_lanes)
+    if unknown:
+        raise InputError("paths_by_lane has unknown lanes: %s" % ", ".join(unknown))
+
+    cert_schema, CertificateError, build_certificate = _load_certificate_api()
+
+    out_events = []
+    attached = 0
+    for event in events:
+        if not isinstance(event, dict):
+            raise InputError("root_move_doc.events members must be objects")
+        cloned = dict(event)
+        lane = cloned.get("lane")
+        if lane in paths_by_lane:
+            paths = paths_by_lane[lane]
+            statuses = cloned.get("drift_statuses")
+            drift_status = None
+            if isinstance(statuses, list) and len(statuses) == 1 and type(statuses[0]) is str:
+                drift_status = statuses[0]
+            custody = {
+                "lane": lane,
+                "members": list(cloned.get("members") or []),
+                "root_move_state": cloned.get("state"),
+                "source": "coordination_root_move_events",
+            }
+            try:
+                cert = build_certificate(
+                    paths,
+                    custody=custody,
+                    drift_status=drift_status,
+                    base_ref=cloned.get("base_ref"),
+                    head=cloned.get("new_tip"),
+                )
+            except CertificateError as exc:
+                raise InputError("path certificate refused for lane %s: %s" % (lane, exc)) from exc
+            except ValueError as exc:
+                raise InputError("path certificate refused for lane %s: %s" % (lane, exc)) from exc
+            if cert.get("schema") != cert_schema:
+                raise InputError("path certificate schema mismatch for lane %s" % lane)
+            cloned["path_move_certificate"] = cert
+            attached += 1
+        out_events.append(cloned)
+
+    counts = dict(root_move_doc.get("counts") or {})
+    counts["path_certificates"] = attached
+    out = dict(root_move_doc)
+    out["events"] = out_events
+    out["counts"] = counts
+    return out
+
+
 def _load(path):
     if path == "-":
         return json.load(sys.stdin)
@@ -225,11 +318,18 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Emit conservative root-move events from two coordination snapshots")
     ap.add_argument("--previous", required=True, help="older coordination.json")
     ap.add_argument("--current", required=True, help="newer coordination.json")
+    ap.add_argument(
+        "--path-sets",
+        default=None,
+        help="optional JSON object mapping lane -> changed paths; attaches B6 path-move certificates",
+    )
     args = ap.parse_args(argv)
     if args.previous == "-" and args.current == "-":
         ap.error("only one input may use stdin")
     try:
         result = reduce_root_moves(_load(args.previous), _load(args.current))
+        if args.path_sets is not None:
+            result = attach_path_move_certificates(result, _load(args.path_sets))
     except (InputError, OSError, json.JSONDecodeError) as exc:
         sys.stderr.write("root-move-events: %s\n" % exc)
         return 2

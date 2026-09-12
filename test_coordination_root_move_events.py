@@ -176,6 +176,98 @@ class RootMoveTests(unittest.TestCase):
             self.assertEqual(payload["schema"], mod.OUT_SCHEMA)
             self.assertEqual(payload["events"][0]["state"], "DISJOINT_OK")
 
+    def test_attach_path_certificate_generated_only(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "disjoint")])
+        base = mod.reduce_root_moves(p, c)
+        out = mod.attach_path_move_certificates(
+            base, {"pr-1": ["feed/github.json", "ground/MANUAL.md"]}
+        )
+        ev = out["events"][0]
+        self.assertEqual(ev["state"], "DISJOINT_OK")
+        cert = ev["path_move_certificate"]
+        self.assertEqual(cert["verdict"], "GENERATED_ONLY_SAFE")
+        self.assertEqual(cert["base_ref"], "main")
+        self.assertEqual(cert["head"], B)
+        self.assertEqual(cert["drift_status"], "disjoint")
+        self.assertEqual(cert["custody"]["source"], "coordination_root_move_events")
+        self.assertEqual(out["counts"]["path_certificates"], 1)
+
+    def test_attach_path_certificate_never_overrides_rebind(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "overlap")])
+        base = mod.reduce_root_moves(p, c)
+        out = mod.attach_path_move_certificates(
+            base, {"pr-1": ["feed/github.json"]}
+        )
+        ev = out["events"][0]
+        self.assertEqual(ev["state"], "REBIND_REQUIRED")
+        self.assertEqual(ev["path_move_certificate"]["verdict"], "GENERATED_ONLY_SAFE")
+        self.assertEqual(ev["path_move_certificate"]["custody"]["root_move_state"], "REBIND_REQUIRED")
+
+    def test_attach_path_certificate_mixed_review(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "current")])
+        out = mod.attach_path_move_certificates(
+            mod.reduce_root_moves(p, c),
+            {"pr-1": ["feed/head.json", "host/x.py"]},
+        )
+        self.assertEqual(out["events"][0]["path_move_certificate"]["verdict"], "MIXED_REVIEW")
+
+    def test_attach_omits_unmapped_lanes(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B},
+                 [row(1, "disjoint"), row(2, "disjoint")])
+        out = mod.attach_path_move_certificates(
+            mod.reduce_root_moves(p, c),
+            {"pr-1": ["feed/github.json"]},
+        )
+        by_lane = {e["lane"]: e for e in out["events"]}
+        self.assertIn("path_move_certificate", by_lane["pr-1"])
+        self.assertNotIn("path_move_certificate", by_lane["pr-2"])
+        self.assertEqual(out["counts"]["path_certificates"], 1)
+
+    def test_attach_unknown_lane_fails_closed(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "disjoint")])
+        base = mod.reduce_root_moves(p, c)
+        with self.assertRaisesRegex(mod.InputError, "unknown lanes"):
+            mod.attach_path_move_certificates(base, {"no-such-lane": ["feed/github.json"]})
+
+    def test_attach_bad_paths_fail_closed(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "disjoint")])
+        base = mod.reduce_root_moves(p, c)
+        with self.assertRaises(mod.InputError):
+            mod.attach_path_move_certificates(base, {"pr-1": []})
+
+    def test_cli_path_sets_attach(self):
+        p = snap("2026-09-11T13:00:00Z", {"main": A}, [])
+        c = snap("2026-09-11T13:01:00Z", {"main": B}, [row(1, "disjoint")])
+        with tempfile.TemporaryDirectory() as td:
+            pp = os.path.join(td, "prev.json")
+            cp = os.path.join(td, "cur.json")
+            sp = os.path.join(td, "paths.json")
+            with open(pp, "w", encoding="utf-8") as fh:
+                json.dump(p, fh)
+            with open(cp, "w", encoding="utf-8") as fh:
+                json.dump(c, fh)
+            with open(sp, "w", encoding="utf-8") as fh:
+                json.dump({"pr-1": ["feed/github.json"]}, fh)
+            done = subprocess.run(
+                [sys.executable, os.path.join(HERE, "host", "coordination_root_move_events.py"),
+                 "--previous", pp, "--current", cp, "--path-sets", sp],
+                text=True, capture_output=True, cwd=HERE,
+                env={**os.environ, "PYTHONPATH": HERE},
+            )
+            self.assertEqual(done.returncode, 0, done.stderr)
+            payload = json.loads(done.stdout)
+            self.assertEqual(payload["events"][0]["path_move_certificate"]["verdict"],
+                             "GENERATED_ONLY_SAFE")
+            self.assertEqual(payload["counts"]["path_certificates"], 1)
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
