@@ -100,6 +100,26 @@ class AgentIndexPredictability(unittest.TestCase):
                 "opponent_score": 20,
             }, 0)
 
+    def test_relative_tolerance_cannot_hide_large_absolute_conflict(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({
+                "seed": 1,
+                "opponent": "A",
+                "seat": 0,
+                "margin": 1e20,
+                "rewards": [1e20 + 50_000_000, 0],
+            }, 0)
+
+    def test_large_integer_consistency_is_not_collapsed_through_float(self):
+        with self.assertRaises(mod.DataError):
+            mod.normalize_record({
+                "seed": 1,
+                "opponent": "A",
+                "seat": 0,
+                "margin": 10**20,
+                "rewards": [10**20 + 1, 0],
+            }, 0)
+
     def test_redundant_consistent_outcomes_are_accepted(self):
         normalized = mod.normalize_record({
             "seed": 1,
