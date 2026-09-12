@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Build deterministic Titan V5 A/B/AB archives from exact component postimages.
 
-The builder deliberately has no policy semantics.  A component is a set of exact
-source postimages plus the configuration values required to make those bytes live.
-It fails closed on stale hashes, archive/source path escape, incompatible overlays,
-and conflicting config requirements.
+The builder deliberately has no policy semantics. A component is a set of exact
+source postimages plus the baseline member preimages they are authorized to
+replace and the configuration values required to make those bytes live. It fails
+closed on stale hashes, archive/source path escape, incompatible overlays, and
+conflicting config requirements.
 """
 from __future__ import annotations
 
@@ -125,7 +126,12 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
                 raise CompositionError(f"component {name} file entry must be an object")
             archive_path = _safe_rel(str(entry.get("archive_path", "")), label="archive_path")
             source_path = _safe_rel(str(entry.get("source_path", "")), label="source_path")
+            expected_preimage = entry.get("preimage_sha256")
             expected = entry.get("sha256")
+            if not isinstance(expected_preimage, str) or len(expected_preimage) != 64:
+                raise CompositionError(
+                    f"component {name} file {archive_path} needs preimage_sha256"
+                )
             if not isinstance(expected, str) or len(expected) != 64:
                 raise CompositionError(f"component {name} file {archive_path} needs sha256")
             lexical_source = resolved_root.joinpath(*PurePosixPath(source_path).parts)
@@ -154,12 +160,32 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
                 {
                     "archive_path": archive_path,
                     "source_path": source_path,
+                    "preimage_sha256": expected_preimage,
                     "sha256": actual,
                     "data": data,
                 }
             )
         result[name] = {"files": loaded_files, "config": config}
     return result
+
+
+def _validate_component_preimages(
+    base_payloads: dict[str, bytes],
+    components: dict[str, dict[str, Any]],
+) -> None:
+    """Bind every replacement to the exact baseline member it was built for."""
+    for name, component in components.items():
+        for entry in component["files"]:
+            target = entry["archive_path"]
+            if target not in base_payloads:
+                raise CompositionError(f"component {name} targets absent archive member: {target}")
+            actual = sha256_bytes(base_payloads[target])
+            expected = entry["preimage_sha256"]
+            if actual != expected:
+                raise CompositionError(
+                    f"component {name} baseline preimage mismatch for {target}: "
+                    f"expected {expected}, got {actual}"
+                )
 
 
 def _apply_variant(
@@ -233,6 +259,7 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
             f"baseline member count mismatch: expected {expected_members}, got {len(infos)}"
         )
     components = _load_components(manifest, source_root)
+    _validate_component_preimages(base_payloads, components)
     names = tuple(sorted(components))
     variants: list[tuple[str, tuple[str, ...]]] = [
         ("control", ()),
@@ -251,7 +278,10 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
     for name in names:
         receipt["components"][name] = {
             "files": [
-                {k: entry[k] for k in ("archive_path", "source_path", "sha256")}
+                {
+                    k: entry[k]
+                    for k in ("archive_path", "source_path", "preimage_sha256", "sha256")
+                }
                 for entry in components[name]["files"]
             ],
             "config": components[name]["config"],
