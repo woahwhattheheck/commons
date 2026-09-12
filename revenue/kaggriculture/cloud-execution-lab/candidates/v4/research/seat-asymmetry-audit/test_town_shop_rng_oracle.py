@@ -11,6 +11,24 @@ class ShopStreamTests(unittest.TestCase):
         identity = oracle.authenticate_engine()
         self.assertEqual(identity["git_blob"], oracle.ENGINE_GIT_BLOB)
         self.assertEqual(identity["sha256"], oracle.ENGINE_SHA256)
+        self.assertEqual(identity["metadata"]["git_blob"], oracle.ENGINE_METADATA_GIT_BLOB)
+        self.assertEqual(identity["metadata"]["sha256"], oracle.ENGINE_METADATA_SHA256)
+        self.assertEqual(identity["metadata"]["bytes"], oracle.ENGINE_METADATA_BYTES)
+
+    def test_engine_metadata_missing_fails_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "kaggriculture.py"
+            path.write_bytes(oracle.ENGINE_PATH.read_bytes())
+            with self.assertRaisesRegex(RuntimeError, "official engine metadata missing"):
+                oracle.authenticate_engine(path)
+
+    def test_engine_metadata_wrong_bytes_fail_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "kaggriculture.py"
+            path.write_bytes(oracle.ENGINE_PATH.read_bytes())
+            path.with_suffix(".json").write_text("{}\n", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "official engine metadata SHA256 drift"):
+                oracle.authenticate_engine(path)
 
     def test_model_seed5_one_tile_shift_changes_shop(self):
         self.assertEqual(
@@ -94,6 +112,10 @@ class ShopStreamTests(unittest.TestCase):
             payload = json.loads(path.read_text(encoding="utf-8"))
             self.assertEqual(payload["result"]["cells"], 1)
             self.assertEqual(payload["result"]["shop_changed"], 1)
+            self.assertEqual(
+                payload["engine"]["metadata"]["git_blob"],
+                oracle.ENGINE_METADATA_GIT_BLOB,
+            )
 
 
 if __name__ == "__main__":
