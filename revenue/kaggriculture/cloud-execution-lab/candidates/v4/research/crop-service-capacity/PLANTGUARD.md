@@ -18,6 +18,8 @@ The proof consumes caller-supplied research rows:
 
 `hour` is the callback within the current day. `order` is the caller's total unit-action execution order inside a callback. That distinction matters: two actors on hour 23 can legally establish one plant if the first actor PLANTs and a later actor WATERs the same site. Treating all same-hour actions as simultaneous would lose that source-real possibility.
 
+The observation must also carry strict integer `step`. `hour` must equal `step % turnsPerDay`, and the current day's EOD must be reachable at or before the official interpreter's final executable callback `episodeSteps - 2`. A nominal projected hour after that boundary is not executable labor and cannot satisfy the service proof.
+
 Rows must be strictly increasing by `(hour, order)` and remain within the current observation's day suffix. Proposed sites must be unique and inside the observed rectangular board.
 
 ## What a positive proof means
@@ -26,11 +28,13 @@ For every proposed site, the projection contains:
 
 1. PLANT on that site;
 2. then WATER on that same site later in execution order;
-3. before the current EOD;
+3. before a **reachable** current EOD;
 4. without an unrecognized same-site action between PLANT and WATER; and
 5. without a later unrecognized same-site action after WATER through the remainder of the projected current day.
 
 FERTILIZE and repeated WATER are the only explicitly tolerated same-site service operations once PLANT has occurred. Everything else fails closed rather than guessing whether a new engine/action variant preserves the plant. In particular, WATER is not an early-return authorization: `PLANT -> WATER -> DIG` cannot certify same-EOD establishment merely because the WATER happened first.
+
+Terminal partial days are also fail-closed. With the standard `episodeSteps=720` / `turnsPerDay=24`, step 718 is the final executable callback. At step 718 / hour 22, a caller-supplied WATER at nominal hour 23 would be callback 719 and therefore cannot be credited. The last real hour-23 EOD callback remains step 695.
 
 The proposal must also remain within CROPSCALE's selected aggregate action-count ceiling. Exceeding that ceiling returns `IMPOSSIBLE_ACTION_BUDGET` before any service-sequence claim.
 
@@ -55,12 +59,12 @@ Every report carries `decision_authority=false` and `runtime_mutation_authority=
 
 ## Why this is the best form of the Gemini idea
 
-A hard rule like "never PLANT after hour 20" is mechanically wrong because labor count and within-callback ordering matter. The last callback with one actor cannot establish a plant; the same callback with two ordered actors can contain PLANT then WATER. Earlier callbacks can also be infeasible once competing work/movement is considered.
+A hard rule like "never PLANT after hour 20" is mechanically wrong because labor count and within-callback ordering matter. The last callback with one actor cannot establish a plant; the same callback with two ordered actors can contain PLANT then WATER when that callback is actually executable. Earlier callbacks can also be infeasible once competing work/movement is considered.
 
 The robust V4 form is therefore:
 
 - CROPSCALE: one-sided aggregate impossibility envelope;
-- PLANTGUARD: exact projected PLANT->same-EOD-WATER pairing plus conservative same-site custody through EOD;
+- PLANTGUARD: exact projected PLANT->same-EOD-WATER pairing, conservative same-site custody through EOD, and terminal-horizon custody;
 - existing scheduler/LOOM owners: movement, actor assignment, funding, source postimage and economics.
 
 No second scheduler or crop policy is introduced.
@@ -76,15 +80,18 @@ No second scheduler or crop policy is introduced.
 - conservative same-site invalidation before WATER;
 - same-callback and later-callback post-WATER mutation killers;
 - unrelated-site post-WATER mutation positive control;
+- terminal step 718/hour22 phantom-hour23 rejection;
+- last real EOD callback step695/hour23 positive control;
+- step/hour congruence and post-terminal-step rejection;
 - FERTILIZE/repeated-WATER service allowance;
 - all-sites-must-pair behavior;
 - strict execution ordering and day-window custody;
 - custom `turnsPerDay` boundaries;
 - duplicate/out-of-board site rejection;
-- bool poison and input nonmutation;
+- bool/config poison and input nonmutation;
 - explicit non-authority flags.
 
-Exact connector-authenticated branch bytes after the post-WATER custody repair pass **21/21** normal and **21/21** under `python -O`; `py_compile` passes for `crop_service_capacity.py`, `plantguard_service.py`, and `test_plantguard_service.py`. Hosted exact-head checks remain the merge authority.
+Exact connector-authenticated source/dependency/test bytes for merged #13060 pass **25/25** normal and **25/25** under `python -O`; `py_compile` passes for `crop_service_capacity.py`, `plantguard_service.py`, and `test_plantguard_service.py`. The source and test landed on main via #13060; this document is the post-merge synchronization of that already-landed contract.
 
 ## Promotion gate
 
