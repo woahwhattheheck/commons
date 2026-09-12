@@ -22,22 +22,15 @@ import hashlib
 from pathlib import Path
 
 FROZEN_SELECTED_INPUTS = {
-    # Native b567/current baseline.
     "fc7baf5c179818a55037f6a61d92984d81d1a21c": "native",
-    # TOWNPATH -> UNITFLOW -> FUNDING-PERF -> CAPTRACE exact postimage.
     "ef090f6731c2d1ee648e2caaf3e215641b006518": "captrace",
-    # CAPTRACE frozen postimage after LIVEPATH projection-state-clone.
     "4a5d3d5f4bed04acf73c7339e41fed56badf34c9": "captrace+livepath",
 }
 SCHEDULER_INPUTS = {
-    # Native b567/current baseline.
     "a483b24dd72b580d7d8811636b54d2d44f391575": "native",
-    # TOWNPATH -> UNITFLOW -> FUNDING-PERF -> CAPTRACE scheduler postimage.
     "eb289f87adebb7dc7e90046bfbec31a307cb5aaa": "captrace",
-    # CAPTRACE scheduler after SPINDLE scoped MarketPath constructor transform.
     "b29d1e9887f517506c5b3d858baa9bda5848e73f": "captrace+spindle",
 }
-# Backward-compatible names retained for downstream receipt readers.
 FROZEN_SELECTED_GIT_BLOB = next(iter(FROZEN_SELECTED_INPUTS))
 SCHEDULER_GIT_BLOB = next(iter(SCHEDULER_INPUTS))
 BASELINE_HORIZON = 3
@@ -49,29 +42,23 @@ _IMPORT_MARKER = (
 _BLOCK_START = "        budget=self.cash_reserve(obs,config,base,end)\n"
 _BLOCK_END = "        out=copy.deepcopy(base)\n"
 
-
 def git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
-
 def authenticate_git_blobs(source_git: str, scheduler_git: str) -> tuple[str, str]:
-    """Return exact named provenance or fail closed on any unreviewed postimage."""
     if source_git not in FROZEN_SELECTED_INPUTS:
         raise ValueError("frozen_selected.py source drift; explicit rebase required")
     if scheduler_git not in SCHEDULER_INPUTS:
         raise ValueError("scheduler.py source drift; explicit rebase required")
     return FROZEN_SELECTED_INPUTS[source_git], SCHEDULER_INPUTS[scheduler_git]
 
-
 def _rewrite_source(source: str) -> str:
     if source.count(_IMPORT_MARKER) != 1:
         raise ValueError("selected-sell import marker drift")
     if source.count(_BLOCK_START) != 1 or source.count(_BLOCK_END) != 1:
         raise ValueError("FrozenSelected transform marker drift")
-
     constants = (
-        _IMPORT_MARKER
-        + "\n"
+        _IMPORT_MARKER + "\n"
         + "# H3/S420 current-ABI experiment: source-pinned and default-off at composition.\n"
         + f"H3S420_BASELINE_HORIZON = {BASELINE_HORIZON}\n"
         + f"H3S420_SUPPRESS_NEW_PLANS_AFTER = {SUPPRESS_NEW_PLANS_AFTER}\n"
@@ -80,7 +67,6 @@ def _rewrite_source(source: str) -> str:
         + "HORIZON = H3S420_BASELINE_HORIZON\n"
     )
     out = source.replace(_IMPORT_MARKER, constants, 1)
-
     start = out.index(_BLOCK_START)
     end = out.index(_BLOCK_END, start)
     block = out[start:end]
@@ -97,7 +83,6 @@ def _rewrite_source(source: str) -> str:
     compile(out, "<h3s420-frozen-selected>", "exec")
     return out
 
-
 def compose(source: bytes, *, enabled: bool) -> bytes:
     if not enabled:
         return source
@@ -105,7 +90,6 @@ def compose(source: bytes, *, enabled: bool) -> bytes:
     if source_git not in FROZEN_SELECTED_INPUTS:
         raise ValueError("frozen_selected.py source drift; explicit rebase required")
     return _rewrite_source(source.decode("utf-8")).encode("utf-8")
-
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -116,7 +100,6 @@ def main() -> int:
     parser.add_argument("--enable-current-h3s420", action="store_true")
     parser.add_argument("--receipt", type=Path)
     args = parser.parse_args()
-
     source = args.source.read_bytes()
     scheduler = args.scheduler.read_bytes()
     source_git = git_blob(source)
@@ -124,7 +107,6 @@ def main() -> int:
     source_profile, scheduler_profile = authenticate_git_blobs(source_git, scheduler_git)
     result = compose(source, enabled=args.enable_current_h3s420)
     args.output.write_bytes(result)
-
     if args.receipt is not None:
         import json
         payload = {
@@ -147,7 +129,6 @@ def main() -> int:
         }
         args.receipt.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
