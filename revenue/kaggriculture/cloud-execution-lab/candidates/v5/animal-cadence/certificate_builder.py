@@ -1,14 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0
 """Source-pinned certificate authority for the default-OFF animal cadence candidate.
 
-This module does not alter production policy.  It proves one narrow physical loop:
+This module does not alter production policy. It proves one narrow physical loop:
 when an otherwise eligible FEED is skipped on the final step of a day, the saved
 carried WHEAT survives the end-of-day deposit and the unchanged live route picks
 WHEAT up on the first unit stage of the next day before feeding the same animal
 later that day.
 
 The proof deliberately reuses the landed operating-stock feed-window theorem and
-binds its result to the exact live route tail consumed by the candidate.
+binds its result to the exact completed runtime profile and live route tail
+consumed by the candidate.
 """
 from __future__ import annotations
 
@@ -27,6 +28,17 @@ OPERATING_STOCK_GIT_BLOB = "fbf11b58fc47cc922e72ddb17ae4f7a4e095702c"
 CANDIDATE_GIT_BLOB = "e5f545c452e54337e978c3fa553535e967d50569"
 SPATIAL_TEMPO_GIT_BLOB = "a2f13cd9871e6da24b2ccf3297c4c96ac324100e"
 CROP_RELEASE_GIT_BLOB = "f8b0b2a5c2a5cbcf2f7c5e2eac5527bd4bb83974"
+MAIN_GIT_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
+RUNTIME_GIT_BLOB = "f35444f8cc5ca853d84cb90fa8602abc33c41644"
+CONFIG_GIT_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
+FROZEN_SELECTED_GIT_BLOB = "0f65045c137412d6bfa5c22950e6fff6a1275c7d"
+SEED_FUNDING_GIT_BLOB = "2fb66257cd8e4ae5b902ab8c5f21c54a6061f3aa"
+SEED_BUDGET_GIT_BLOB = "56e573d764effa3923351131a73d986e18b3eb78"
+REDUNDANT_HIRE_GIT_BLOB = "a58ba3403d89f0d9a17e56225f891f1aa81a4c8f"
+EARLY_CAPITAL_GIT_BLOB = "dcbae01a3db703d1bb273a6d31d23ec250a9e773"
+PRESSURE_PRIORITY_GIT_BLOB = "cde454922e5cf0bb46c9bd68c4fad2e98782c4b5"
+SELL_PRIORITY_GIT_BLOB = "2d0f711626a7d88ab4a0f133ef06621c6261c67b"
+TOWN_PROCUREMENT_GIT_BLOB = "14b0330dcad81c3656a7f0d75fac573e2513f24e"
 
 _SOURCE_PINS = {
     "reference/engine/kaggriculture.py": OFFICIAL_ENGINE_GIT_BLOB,
@@ -36,17 +48,41 @@ _SOURCE_PINS = {
     "candidates/v5/animal-cadence/alternate_feed.py": CANDIDATE_GIT_BLOB,
     "spatial_tempo.py": SPATIAL_TEMPO_GIT_BLOB,
     "crop_release.py": CROP_RELEASE_GIT_BLOB,
+    "main.py": MAIN_GIT_BLOB,
+    "titan_runtime.py": RUNTIME_GIT_BLOB,
+    "TITAN-CONFIG.json": CONFIG_GIT_BLOB,
+    "frozen_selected.py": FROZEN_SELECTED_GIT_BLOB,
+    "reference/titan-current/seed_funding.py": SEED_FUNDING_GIT_BLOB,
+    "reference/integrated-selected/alder/seed_budget.py": SEED_BUDGET_GIT_BLOB,
+    "reference/titan-current/redundant_hire.py": REDUNDANT_HIRE_GIT_BLOB,
+    "early_capital.py": EARLY_CAPITAL_GIT_BLOB,
+    "../cloud-opponent-league/lark-responsive/pressure_priority.py": PRESSURE_PRIORITY_GIT_BLOB,
+    "../cloud-opponent-league/lark-responsive/sell_priority.py": SELL_PRIORITY_GIT_BLOB,
+    "town_procurement.py": TOWN_PROCUREMENT_GIT_BLOB,
 }
 
+# This is the exact current production composition whose future wrapper behavior
+# has been audited. A caller must pass the entrypoint-owned town flag alongside
+# TitanAgent.Features; an arbitrary subset is not an authenticated profile.
 _REQUIRED_FEATURES = {
     "consumer": "frozen",
+    "seed": True,
+    "funding": True,
+    "redundant_hire": True,
     "terminal_route": False,
-    "fourth_quadrant": False,
+    "committed": True,
+    "terminal_history": False,
     "spatial_pathing": False,
     "spatial_tempo": False,
+    "fourth_quadrant": False,
+    "market_pressure": True,
+    "committed_seed_retry": False,
     "operating_stock": True,
+    "idle_fertilizer": True,
+    "crop_release": True,
+    "early_capital": True,
+    "town_procurement": True,
 }
-_BOOLEAN_FEATURES = ("idle_fertilizer", "crop_release")
 
 
 def _lab_root() -> Path:
@@ -91,9 +127,6 @@ def _authenticate_feature_profile(features):
     for name, expected in _REQUIRED_FEATURES.items():
         value = _feature(features, name)
         if value != expected or (type(expected) is bool and type(value) is not bool):
-            raise ValueError(f"unsupported_feature_profile:{name}")
-    for name in _BOOLEAN_FEATURES:
-        if type(_feature(features, name)) is not bool:
             raise ValueError(f"unsupported_feature_profile:{name}")
 
 
@@ -275,22 +308,43 @@ def _matching_obligation(window, position, next_day_start):
     return min(matches, key=lambda row: row[0])
 
 
-def build_next_feed_certificate(observation, selected, configuration, controller, features):
+def _route_has_market_op(route, start, end, operation, maximum):
+    for step in range(start, end + 1):
+        row = route[step]
+        if not isinstance(row, dict):
+            raise ValueError("malformed_live_route")
+        market = row.get("market") or []
+        if not isinstance(market, list):
+            raise ValueError("malformed_live_route")
+        for order in market[:maximum]:
+            if isinstance(order, list) and order and order[0] == operation:
+                return True
+    return False
+
+
+def build_next_feed_certificate(
+        observation, selected, configuration, controller, features, *, completed=False):
     """Return ``(route_identity, certificate, report)`` or fail closed.
 
     Admission is intentionally narrow:
+    * caller certifies this is a fully completed runtime action, never fallback;
     * current step is exact day close under the pinned 24-turn calendar;
-    * current producer is frozen V5 with pathing/tempo/fourth-quadrant disabled;
-    * current live route descends from the pinned Arlene route and crosses no
-      unresolved route checkpoint before next day close;
+    * exact current V5 wrapper profile and source closure are authenticated;
+    * current live route descends from pinned Arlene and crosses no unresolved
+      route checkpoint before next day close;
+    * no next-day HIRE exists, excluding the one enabled wrapper which can
+      change worker topology and mutate future route rows;
     * a hypothetical #13331 edit passes the canonical candidate guards;
     * landed operating-stock mechanics prove the candidate post-unit state can
       survive reset and fund the route feed window without future receipt credit;
     * the same animal tile has a main-farmer WHEAT pickup on the *first* next-day
       unit stage and a later feed on that day.
 
-    The first-next-day pickup rule is important: unit actions execute before that
-    turn's market, so later dynamic WHEAT sales cannot consume the carried unit.
+    Unit actions execute before market processing. Once the reset main farmer
+    recovers the protected WHEAT on the first next-day unit stage, the pinned
+    market-only seed/funding/pressure/capital/town wrappers cannot consume that
+    carried unit. The raw next-day HIRE guard excludes redundant-hire's only
+    worker-topology admission surface from the certified window.
     """
     report = {
         "certified": False,
@@ -300,6 +354,8 @@ def build_next_feed_certificate(observation, selected, configuration, controller
         "proof": None,
     }
     try:
+        if completed is not True:
+            raise ValueError("runtime_action_not_completed")
         root = _lab_root()
         report["source_pins"] = _authenticate_sources(root)
         _authenticate_feature_profile(features)
@@ -324,6 +380,10 @@ def build_next_feed_certificate(observation, selected, configuration, controller
             raise ValueError("incomplete_next_day_route")
         if any(step < checkpoint <= next_day_end for checkpoint in checkpoints):
             raise ValueError("next_day_crosses_route_checkpoint")
+        if _route_has_market_op(
+                route, next_day_start, next_day_end, "HIRE",
+                cfg["maxMarketOrdersPerTurn"]):
+            raise ValueError("next_day_has_dynamic_hire_surface")
 
         positions = _current_feed_positions(observation, selected)
         if not positions:
@@ -390,8 +450,6 @@ def build_next_feed_certificate(observation, selected, configuration, controller
                     **route_identity,
                     "feeds": [{"position": list(position), "next_feed_step": feed_step}],
                 }
-                # Final round-trip through the canonical candidate: the authority
-                # must certify bytes the consumer actually accepts.
                 accepted, accepted_report = candidate.apply_alternate_feed(
                     observation,
                     selected,
