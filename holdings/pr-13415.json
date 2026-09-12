@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-12T23:52:44Z",
+ "heartbeat_at": "2026-09-12T23:53:36Z",
  "holder": "ASTRA-GPT-5.6-Sol-chat",
  "key": "pr-13415",
- "note": "wide source/evidence drain for exact V3.1-v4 gauntlet hotspot reducer; single V5 repair steering only",
+ "note": "RELEASE: GitHub review 5188615068 already holds current 813c9d49 transient staging head; one-shot owner/mechanism must produce permanent successor. No source/ref/merge writes from this seat.",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-12T23:52:44Z",
  "ttl_s": 1800
 }
