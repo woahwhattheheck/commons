@@ -1,11 +1,12 @@
 import copy
 import pathlib
 import sys
+import tempfile
 import unittest
 from dataclasses import dataclass
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from native_return_bridge import ReturnBridge, git_blob_id, _action_digest
+from native_return_bridge import ReturnBridge, git_blob_id, _action_digest, _load_exact
 
 
 @dataclass(frozen=True)
@@ -103,6 +104,21 @@ class BridgeTests(unittest.TestCase):
 
     def test_git_blob_formula(self):
         self.assertEqual(git_blob_id(b''), 'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391')
+
+    def test_exact_loader_supports_future_annotations_dataclass(self):
+        source = (
+            b"from __future__ import annotations\n"
+            b"from dataclasses import dataclass\n"
+            b"@dataclass(frozen=True)\n"
+            b"class Certificate:\n"
+            b"    value: int\n"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = pathlib.Path(tmp) / 'authority.py'
+            path.write_bytes(source)
+            module = _load_exact('_returnbridge_loader_probe', path, git_blob_id(source))
+            self.assertEqual(module.Certificate(7).value, 7)
+            self.assertIs(sys.modules['_returnbridge_loader_probe'], module)
 
     def test_cold_start_identity(self):
         b=self.bridge(); inst=Instance(); base=action()
