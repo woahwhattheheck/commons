@@ -82,7 +82,7 @@ class FinalMarketPressureEntrypointTests(unittest.TestCase):
         self.assertEqual(agent.calls, [])
 
         agent.diagnostics['status'] = 'completed'
-        result = agent._finish_production({}, selected, {})
+        result = agent._finish_production({'step': 100, 'player': 0}, selected, {})
         self.assertEqual(result['trace'], ['feed', 'capital', 'pressure'])
         self.assertEqual(agent.calls, ['feed', 'capital', 'pressure'])
         self.assertEqual(agent.history.remembered, [result])
@@ -95,7 +95,7 @@ class FinalMarketPressureEntrypointTests(unittest.TestCase):
     def test_deadline_fallback_does_not_start_optional_pressure(self):
         agent = self.make_agent()
         agent.diagnostics['status'] = 'deadline_fallback'
-        result = agent._finish_production({}, {'trace': []}, {})
+        result = agent._finish_production({'step': 100, 'player': 0}, {'trace': []}, {})
         self.assertEqual(result['trace'], ['feed', 'capital'])
         self.assertEqual(agent.calls, ['feed', 'capital'])
         self.assertEqual(agent.history.remembered, [result])
@@ -104,7 +104,7 @@ class FinalMarketPressureEntrypointTests(unittest.TestCase):
     def test_disabled_feature_remains_identity_at_final_boundary(self):
         agent = self.make_agent(enabled=False)
         agent.diagnostics['status'] = 'completed'
-        result = agent._finish_production({}, {'trace': []}, {})
+        result = agent._finish_production({'step': 100, 'player': 0}, {'trace': []}, {})
         self.assertEqual(result['trace'], ['feed', 'capital'])
         self.assertEqual(agent.calls, ['feed', 'capital'])
         self.assertEqual(agent.history.remembered, [result])
