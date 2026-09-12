@@ -2,6 +2,7 @@
 """Hermetic: landed CRM6 registry pins after #9237/#9267/#9268/#9269.
 
 CLAIM ledger-crm6-landed-registry-pins-20260906-01
+Self-row added by ledger-crm6-registry-self-pin-20260912-01.
 Never invents VERIFIED_HUMAN_YES. Hands off #8802.
 """
 from __future__ import annotations
@@ -22,6 +23,7 @@ IDS = (
     "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01",
     "ledger-crm6-html-successor-doors-20260906-01",
     "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01",
+    "ledger-crm6-landed-registry-pins-20260906-01",
 )
 
 

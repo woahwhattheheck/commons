@@ -1,0 +1,35 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "ledger-crm6-registry-self-pin-20260912-01",
+  "name": "CRM6 features/registry self-row for landed-registry-pins #9283",
+  "added": "2026-09-12",
+  "carrier": "LEDGER",
+  "owner_subsystem": "lm-gtm-index",
+  "capability": "Adds the missing commons-feature-v1 self-row for ledger-crm6-landed-registry-pins-20260906-01 (#9283 @ 161d53b2 was 404 on main) plus hermetic self-id assert. Never invents VERIFIED_HUMAN_YES.",
+  "public_entrypoint": "revenue/lm_gtm_index/README.md",
+  "claimed_paths": [
+    "features/registry/ledger-crm6-landed-registry-pins-20260906-01.json",
+    "features/registry/ledger-crm6-registry-self-pin-20260912-01.json",
+    "tests/test_ledger_crm6_landed_registry_pins.py",
+    "tests/test_ledger_crm6_registry_self_pin.py"
+  ],
+  "test_paths": [
+    "tests/test_ledger_crm6_registry_self_pin.py",
+    "tests/test_ledger_crm6_landed_registry_pins.py"
+  ],
+  "resource_links": [
+    "revenue/lm_gtm_index/README.md",
+    "p/ledger-crm6-registry-self-pin-20260912-01.md",
+    "https://github.com/woahwhattheheck/commons/pull/9283"
+  ],
+  "dependencies": [
+    "ledger-crm6-landed-registry-pins-20260906-01"
+  ],
+  "next_gap": "Self-row was 404 on main after #9283. This pin is the row, not a remint of #9283 mechanisms. Never invent VERIFIED_HUMAN_YES.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  }
+}
