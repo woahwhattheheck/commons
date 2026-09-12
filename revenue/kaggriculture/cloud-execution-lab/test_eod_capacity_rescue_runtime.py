@@ -10,6 +10,7 @@ import unittest
 from unittest import mock
 
 import build_integrated
+import eod_capacity_rescue
 import main as titan_main
 import titan_runtime
 
@@ -135,19 +136,26 @@ class EODCapacityRescueRuntimeTest(unittest.TestCase):
         self.assertEqual(instance._finalizer_checkpoint['action'], returned)
 
     def test_eod_consumes_post_overflow_action_once(self):
-        seen = []
+        call_log = []
+        overflow_inputs = []
+        eod_inputs = []
+        eod_outputs = []
 
         class Overflow:
             @staticmethod
             def transform(action, observation, configuration):
+                call_log.append('overflow')
+                overflow_inputs.append(deepcopy(action))
                 changed = deepcopy(action)
                 changed['farmer'] = ['PLACE', 'CARROT', 1]
                 return changed, {'changed': True}
 
         def apply(action, observation, configuration, *, enabled=False):
-            seen.append(deepcopy(action))
+            call_log.append('eod')
+            eod_inputs.append(deepcopy(action))
             changed = deepcopy(action)
             changed['market'].append(['SELL', 'CARROT', 1])
+            eod_outputs.append(deepcopy(changed))
             return changed, {'changed': True}
 
         def load(name, path, *, cache=False):
@@ -158,11 +166,83 @@ class EODCapacityRescueRuntimeTest(unittest.TestCase):
             instance = self._new(eod=True, overflow=True, load=load)
             returned = instance._early_capital_selected(
                 self._observation(), self._configuration(), self._selected())
-        self.assertEqual(len(seen), 1)
-        self.assertEqual(seen[0]['farmer'], ['PLACE', 'CARROT', 1])
+        self.assertEqual(call_log, ['overflow', 'eod'])
+        self.assertEqual(len(overflow_inputs), 1)
+        self.assertEqual(len(eod_inputs), 1)
+        self.assertEqual(eod_inputs[0]['farmer'], ['PLACE', 'CARROT', 1])
+        self.assertEqual(len(eod_outputs), 1)
+        self.assertEqual(returned, eod_outputs[0])
         self.assertEqual(returned['farmer'], ['PLACE', 'CARROT', 1])
         self.assertEqual(returned['market'], [['SELL', 'CARROT', 1]])
         self.assertEqual(instance._finalizer_checkpoint['stage'], 'eod_capacity_rescue')
+
+    def test_post_overflow_sell_blocks_real_eod_rewrite_without_reentry(self):
+        call_log = []
+        overflow_calls = []
+
+        class Overflow:
+            @staticmethod
+            def transform(action, observation, configuration):
+                call_log.append('overflow')
+                overflow_calls.append(deepcopy(action))
+                changed = deepcopy(action)
+                changed['market'].append(['SELL', 'MILK', 1])
+                return changed, {'changed': True}
+
+        def real_apply(action, observation, configuration, *, enabled=False):
+            call_log.append('eod')
+            return eod_capacity_rescue.apply_native_eod_capacity_rescue(
+                action, observation, configuration, enabled=enabled
+            )
+
+        def load(name, path, *, cache=False):
+            self.assertEqual(name, '_titan_overflow_safe_drop')
+            return Overflow
+
+        farm = {
+            'farmer': [0, 0],
+            'hands': [],
+            'tiles': [[None for _ in range(10)] for _ in range(10)],
+            'money': 100,
+        }
+        observation = {
+            'step': 23,
+            'player': 0,
+            'farms': [deepcopy(farm), deepcopy(farm)],
+            'private': {
+                'inventories': [{'MILK': 5}],
+                'shed': {'MILK': 100},
+                'seeds': {},
+            },
+            'market': {'prices': {'MILK': 4}},
+        }
+        configuration = {
+            'boardSize': 10,
+            'turnsPerDay': 24,
+            'shedCapacity': 100,
+            'maxMarketOrdersPerTurn': 10,
+            'episodeSteps': 720,
+            'townShopSellInterval': 4,
+            'townCenterSellInterval': 24,
+        }
+
+        with mock.patch.dict(sys.modules, {
+            'eod_capacity_rescue': self._module(real_apply),
+        }):
+            instance = self._new(eod=True, overflow=True, load=load)
+            returned = instance._early_capital_selected(
+                observation, configuration, self._selected())
+
+        self.assertEqual(call_log, ['overflow', 'eod'])
+        self.assertEqual(len(overflow_calls), 1)
+        self.assertEqual(returned['market'], [['SELL', 'MILK', 1]])
+        self.assertFalse(instance.diagnostics['eod_capacity_rescue']['changed'])
+        self.assertEqual(
+            instance.diagnostics['eod_capacity_rescue']['reason'],
+            'market_stock_or_unknown',
+        )
+        self.assertEqual(instance._finalizer_checkpoint['stage'], 'eod_capacity_rescue')
+        self.assertEqual(instance._finalizer_checkpoint['action'], returned)
 
     def test_incomplete_path_suppresses_eod_helper(self):
         calls = []
