@@ -61,6 +61,26 @@ class FundedPaybackRuntimeTests(unittest.TestCase):
         self.assertEqual(rejoin, 7)
         self.assertEqual(base[2]['market'], [['SELL', 'WHEAT', 0], ['HIRE']])
 
+    def test_evaluation_route_is_copy_on_write_and_preserves_sequence_contract(self):
+        clean = [{'farmer': ['PASS'], 'hands': [], 'market': [['HIRE']]}
+                 for _ in range(3)]
+        self.assertIs(funded_payback_runtime._evaluation_route(clean), clean)
+        self.assertIsInstance(funded_payback_runtime._evaluation_route(tuple(clean)), list)
+
+        route = [clean[0],
+                 {'farmer': ['PASS'], 'hands': [],
+                  'market': [['SELL', 'WHEAT', 0], ['SELL', 'WHEAT', 2]]},
+                 clean[2]]
+        projected = funded_payback_runtime._evaluation_route(route)
+        self.assertIsNot(projected, route)
+        self.assertIs(projected[0], route[0])
+        self.assertIsNot(projected[1], route[1])
+        self.assertIs(projected[2], route[2])
+        self.assertEqual(projected[1]['market'],
+                         [['PASS'], ['SELL', 'WHEAT', 2]])
+        projected[1]['market'][1][2] = 9
+        self.assertEqual(route[1]['market'][1][2], 2)
+
     def test_action_deadline_clamps_scan_and_restores_configuration(self):
         seen = []
 
