@@ -31,6 +31,10 @@ def carry(**overrides):
 
 
 def row(step, actor="hand-0", op="PASS", **extra):
+    # These incumbent tests model authenticated projected effects.  Bare sink
+    # opcodes are exercised separately by the effect-custody predecessor tests.
+    if op in ("FEED", "FERTILIZE") and "effectful" not in extra:
+        extra["effectful"] = True
     return {"step": step, "actor": actor, "op": op, **extra}
 
 
