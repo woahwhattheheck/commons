@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Pinned, observation-only CURRENT-V5 census shim for atomic PLANT quorum relief.
+"""Pinned, observation-only CURRENT-V5 boundary for atomic PLANT quorum relief.
 
-This module does not alter TITAN's returned action.  It loads the already-landed
-#12954 theorem from an authenticated single-read source snapshot, authenticates
-the official engine rule from a single-read engine snapshot, and evaluates the
-theorem on a deep copy.  The caller receives the exact original action for the
-control execution plus a separate witness containing the hypothetical candidate
-postimage.  Natural engagement therefore can be measured before any production
-hook exists.
+This module never selects gameplay. It authenticates the already-landed #12954
+theorem plus the official engine rule, then evaluates the theorem on a deep copy.
+The caller receives the exact original action as control and a detached witness
+for the hypothetical candidate. A preloaded authority API lets the current-V5
+archive census authenticate once per cell instead of rereading mutable checkout
+paths on every callback.
 """
 from __future__ import annotations
 
@@ -61,11 +60,26 @@ def _read_snapshot(path: Path, label: str) -> bytes:
         raise CensusError(f"cannot read {label}: {path}") from exc
 
 
-def load_authority(root: Path = LAB_ROOT) -> tuple[types.ModuleType, dict[str, str]]:
-    """Authenticate exact theorem + engine bytes before executing theorem source."""
-    root = root.resolve(strict=True)
-    theorem_path = root / THEOREM_REL
-    engine_path = root / ENGINE_REL
+def load_authority(
+    root: Path = LAB_ROOT,
+    *,
+    theorem_path: Path | None = None,
+    engine_path: Path | None = None,
+) -> tuple[types.ModuleType, dict[str, str]]:
+    """Authenticate exact theorem + engine bytes before executing theorem source.
+
+    ``theorem_path``/``engine_path`` let an archive-bound census combine the
+    canonical theorem checkout bytes with the exact engine bytes captured from
+    the authenticated current runtime. Both are read exactly once before use.
+    """
+    if theorem_path is None or engine_path is None:
+        root = Path(root).resolve(strict=True)
+    theorem_path = (
+        root / THEOREM_REL if theorem_path is None else Path(theorem_path).resolve(strict=True)
+    )
+    engine_path = (
+        root / ENGINE_REL if engine_path is None else Path(engine_path).resolve(strict=True)
+    )
     theorem_raw = _read_snapshot(theorem_path, "plant-quorum theorem")
     engine_raw = _read_snapshot(engine_path, "official engine")
 
@@ -88,8 +102,6 @@ def load_authority(root: Path = LAB_ROOT) -> tuple[types.ModuleType, dict[str, s
     if missing:
         raise CensusError(f"engine atomic-PLANT markers drifted: {missing!r}")
 
-    # Execute only the already-authenticated theorem snapshot.  Do not import the
-    # live path after authentication; that would reopen a checkout TOCTOU seam.
     module = types.ModuleType("_titan_v5_pinned_plantquorum")
     module.__file__ = str(theorem_path)
     try:
@@ -99,8 +111,9 @@ def load_authority(root: Path = LAB_ROOT) -> tuple[types.ModuleType, dict[str, s
         raise CensusError(f"cannot load pinned plant-quorum theorem: {exc}") from exc
     if getattr(module, "EXPECTED_ENGINE_BLOB", None) != PINNED_ENGINE_BLOB:
         raise CensusError("theorem's embedded engine authority disagrees with census pin")
-    if not callable(getattr(module, "relieve_atomic_plant_collateral", None)):
-        raise CensusError("pinned theorem lacks relieve_atomic_plant_collateral")
+    for name in ("relieve_atomic_plant_collateral", "effective_rows_under_engine_preflight"):
+        if not callable(getattr(module, name, None)):
+            raise CensusError(f"pinned theorem lacks {name}")
 
     return module, {
         "theorem_git_blob": theorem_blob,
@@ -110,21 +123,32 @@ def load_authority(root: Path = LAB_ROOT) -> tuple[types.ModuleType, dict[str, s
     }
 
 
-def observe(
+def _source_rows(action: Mapping[str, Any]) -> list[Any]:
+    hands = action.get("hands", [])
+    if not isinstance(hands, list):
+        hands = []
+    return [deepcopy(action.get("farmer", ["PASS"])), *deepcopy(hands)]
+
+
+def observe_with_authority(
+    authority: types.ModuleType,
+    provenance: Mapping[str, str],
     observation: Mapping[str, Any],
     returned_action: Mapping[str, Any],
-    *,
-    root: Path = LAB_ROOT,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Return exact control action plus a separate hypothetical-candidate witness."""
+    """Evaluate one returned action without rereading authority or changing gameplay."""
     if not isinstance(observation, Mapping) or not isinstance(returned_action, Mapping):
         raise CensusError("observation and returned_action must be mappings")
+    if provenance.get("theorem_git_blob") != PINNED_THEOREM_BLOB:
+        raise CensusError("preloaded theorem authority is not canonical")
+    if provenance.get("engine_git_blob") != PINNED_ENGINE_BLOB:
+        raise CensusError("preloaded engine authority is not canonical")
+
     source = deepcopy(dict(returned_action))
     source_before = deepcopy(source)
-    authority, provenance = load_authority(root)
     try:
         candidate, report = authority.relieve_atomic_plant_collateral(
-            observation,
+            deepcopy(dict(observation)),
             source,
             enabled=True,
         )
@@ -134,21 +158,57 @@ def observe(
         raise CensusError("plant-quorum theorem mutated caller-owned source action")
     if not isinstance(candidate, dict) or not isinstance(report, dict):
         raise CensusError("plant-quorum theorem returned malformed candidate/report")
-    changed = report.get("changed") is True
+    changed = report.get("changed")
+    if type(changed) is not bool:
+        raise CensusError("plant-quorum changed flag is not exact bool")
     if changed == (candidate == source_before):
         raise CensusError("plant-quorum changed flag disagrees with candidate action bytes")
+
+    effective_before = effective_after = None
+    if changed:
+        private = observation.get("private")
+        if not isinstance(private, Mapping):
+            raise CensusError("changed witness has no private seed state")
+        seeds = private.get("seeds", {})
+        try:
+            effective_before = authority.effective_rows_under_engine_preflight(
+                _source_rows(source_before), seeds
+            )
+            effective_after = authority.effective_rows_under_engine_preflight(
+                _source_rows(candidate), seeds
+            )
+        except Exception as exc:
+            raise CensusError(f"cannot verify engine-effective PLANT witness: {exc}") from exc
+        if effective_before == effective_after:
+            raise CensusError("changed theorem postimage does not change engine PLANT preflight")
+        if not any(
+            isinstance(row, list) and len(row) >= 2 and row[0] == "PLANT"
+            for row in effective_after
+        ):
+            raise CensusError("changed theorem postimage leaves no effective PLANT survivor")
 
     witness = {
         "schema": WITNESS_SCHEMA,
         "changed": changed,
-        "source_authority": provenance,
+        "source_authority": dict(provenance),
         "original_action_sha256": _canonical_sha256(source_before),
         "candidate_action_sha256": _canonical_sha256(candidate),
         "original_action": deepcopy(source_before),
         "candidate_action": deepcopy(candidate),
         "theorem_report": deepcopy(report),
         "control_action_preserved": True,
+        "effective_before": deepcopy(effective_before),
+        "effective_after": deepcopy(effective_after),
     }
-    # Deep-copy again so caller mutation of the control result cannot mutate the
-    # witness's authenticated original-action record.
     return deepcopy(source_before), witness
+
+
+def observe(
+    observation: Mapping[str, Any],
+    returned_action: Mapping[str, Any],
+    *,
+    root: Path = LAB_ROOT,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Convenience one-shot observer for source tests and manual probes."""
+    authority, provenance = load_authority(root)
+    return observe_with_authority(authority, provenance, observation, returned_action)
