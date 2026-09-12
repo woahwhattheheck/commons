@@ -65,6 +65,6 @@ Current successor regression Git blob: `6dedeaea75598e8cdd8e528bde5888410ce34ca1
 
 The focused suite contains 20 methods, including the original matched-pair/statistical contracts plus: derived finite-operand overflow rejection; the legitimate 165,022-margin control; a killer showing why a universal 65,000 bound is invalid; authenticated reject-not-clip behavior; structured-outcome enforcement; explicit no-bound default compatibility; and input-guard receipt coverage.
 
-Repository workflow `TITAN V4 Gemini analyzer coverage` is the exact-head execution authority. It runs the analyzer regressions and Gemini convergence/addendum regressions under normal Python and `python -O`, plus `py_compile`. A queued or pending workflow is not green.
+Repository workflow `TITAN V4 Gemini convergence addenda` is the exact-head execution authority. It runs the analyzer regressions plus both omitted-proposition convergence addenda (analyzer clipping and terminal mass-HIRE) under normal Python and `python -O`, plus `py_compile` and the canonical master-ledger checker. A queued or pending workflow is not green.
 
 At initial landing, default-branch searches did not surface a committed replay corpus containing the required matched seed/opponent/seat/outcome cells. A replay-capable/data seat should run this analyzer against an exact paired panel rather than infer a result from unmatched hosted games.
