@@ -7,8 +7,9 @@ the episode seed is observable to an agent.
 from __future__ import annotations
 
 import argparse
+import builtins
 import hashlib
-import importlib.util
+import io
 import json
 import random
 import sys
@@ -64,9 +65,8 @@ def _git_blob(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
-def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, object]:
-    """Fail closed unless the exact reviewed official engine closure is present."""
-    data = path.read_bytes()
+def _authenticate_engine_snapshot(data: bytes, metadata: bytes) -> dict[str, object]:
+    """Authenticate immutable engine/specification snapshots, never pathnames."""
     sha256 = hashlib.sha256(data).hexdigest()
     git_blob = _git_blob(data)
     if sha256 != ENGINE_SHA256:
@@ -78,11 +78,6 @@ def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, object]:
             f"official engine Git blob drift: expected {ENGINE_GIT_BLOB}, got {git_blob}"
         )
 
-    metadata_path = path.with_suffix(".json")
-    try:
-        metadata = metadata_path.read_bytes()
-    except FileNotFoundError as exc:
-        raise RuntimeError(f"official engine metadata missing: {metadata_path}") from exc
     metadata_sha256 = hashlib.sha256(metadata).hexdigest()
     metadata_git_blob = _git_blob(metadata)
     if metadata_sha256 != ENGINE_METADATA_SHA256:
@@ -124,6 +119,26 @@ def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, object]:
             "bytes": len(metadata),
         },
     }
+
+
+def _capture_authenticated_engine(
+    path: Path = ENGINE_PATH,
+) -> tuple[bytes, bytes, dict[str, object]]:
+    """Read each mutable authority once, then authenticate those exact bytes."""
+    data = path.read_bytes()
+    metadata_path = path.with_suffix(".json")
+    try:
+        metadata = metadata_path.read_bytes()
+    except FileNotFoundError as exc:
+        raise RuntimeError(f"official engine metadata missing: {metadata_path}") from exc
+    identity = _authenticate_engine_snapshot(data, metadata)
+    return data, metadata, identity
+
+
+def authenticate_engine(path: Path = ENGINE_PATH) -> dict[str, object]:
+    """Fail closed unless the exact reviewed official engine closure is present."""
+    _, _, identity = _capture_authenticated_engine(path)
+    return identity
 
 
 def shop_after_vacancy_draws(
@@ -172,15 +187,44 @@ def _install_kaggle_import_stub_if_needed() -> None:
     sys.modules.setdefault("kaggle_environments.utils", utils)
 
 
-def load_authenticated_engine(path: Path = ENGINE_PATH):
-    authenticate_engine(path)
+def _execute_engine_snapshot(
+    path: Path,
+    data: bytes,
+    metadata: bytes,
+    identity: dict[str, object],
+):
+    """Execute authenticated Python bytes with its JSON read bound to one snapshot."""
     _install_kaggle_import_stub_if_needed()
-    spec = importlib.util.spec_from_file_location("shopstream_official_engine", path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError("could not create official engine import spec")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    module = types.ModuleType("shopstream_official_engine")
+    module.__file__ = str(path.absolute())
+    module.__package__ = ""
+    metadata_path = str(path.with_suffix(".json").absolute())
+
+    def snapshot_open(file, mode="r", *args, **kwargs):
+        try:
+            candidate = str(Path(file).absolute())
+        except (TypeError, ValueError):
+            candidate = None
+        if candidate == metadata_path:
+            if any(flag in mode for flag in ("w", "a", "x", "+")):
+                raise RuntimeError("authenticated engine metadata snapshot is read-only")
+            if "b" in mode:
+                return io.BytesIO(metadata)
+            encoding = kwargs.get("encoding") or "utf-8"
+            return io.StringIO(metadata.decode(encoding))
+        return builtins.open(file, mode, *args, **kwargs)
+
+    module.__dict__["open"] = snapshot_open
+    code = compile(data, str(path), "exec")
+    exec(code, module.__dict__)
+    module.__dict__.pop("open", None)
+    module.__shopstream_source_identity__ = identity
     return module
+
+
+def load_authenticated_engine(path: Path = ENGINE_PATH):
+    data, metadata, identity = _capture_authenticated_engine(path)
+    return _execute_engine_snapshot(path, data, metadata, identity)
 
 
 def _state_for_engine(engine, *, filled: tuple[int, int] | None) -> list[SimpleNamespace]:
@@ -238,8 +282,8 @@ def build_report(*, first_seed: int = 1, last_seed: int = 512) -> dict[str, obje
     last_seed = _plain_nonnegative_int(last_seed, "last_seed")
     if first_seed == 0 or last_seed < first_seed:
         raise ValueError("seed range must satisfy 1 <= first_seed <= last_seed")
-    engine_identity = authenticate_engine()
     engine = load_authenticated_engine()
+    engine_identity = engine.__shopstream_source_identity__
     changed: list[dict[str, object]] = []
     unchanged = 0
     model_mismatches = 0
