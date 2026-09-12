@@ -6,9 +6,11 @@ on:
       - '.github/workflows/titan-entrypoint-deadline.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/main.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/terminal_history_join.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_entrypoint_deadline.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_entrypoint_clock.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_final_market_pressure_entrypoint.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_history_observation_atomic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_release_consistency.py'
       - 'revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz'
@@ -35,7 +37,8 @@ jobs:
           python3 -B -m unittest -v \
             test_entrypoint_deadline \
             test_entrypoint_clock \
-            test_final_market_pressure_entrypoint
+            test_final_market_pressure_entrypoint \
+            test_history_observation_atomic
       - name: Immutable package matches source
         run: |
           set -euo pipefail
