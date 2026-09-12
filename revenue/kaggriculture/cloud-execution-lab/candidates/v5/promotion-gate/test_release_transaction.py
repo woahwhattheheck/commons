@@ -626,15 +626,16 @@ class ReleaseTransactionTests(unittest.TestCase):
             pointer = root / "CURRENT-ARCHIVE.json"
             output = root / "TRANSACTION.json"
             pointer.write_bytes(self.old_raw)
-            rt.commit_pointer(
-                current_pointer=pointer,
-                expected_old_pointer_raw=self.old_raw,
-                approved_new_pointer_raw=self.new_raw,
-                receipt_path=output,
-                receipt=receipt,
-            )
-            self.assertEqual(pointer.read_bytes(), self.new_raw)
-            self.assertEqual(json.loads(output.read_text()), receipt)
+            with self.assertRaisesRegex(rt.TransactionError, "origin authority"):
+                rt.commit_pointer(
+                    current_pointer=pointer,
+                    expected_old_pointer_raw=self.old_raw,
+                    approved_new_pointer_raw=self.new_raw,
+                    receipt_path=output,
+                    receipt=receipt,
+                )
+            self.assertEqual(pointer.read_bytes(), self.old_raw)
+            self.assertFalse(output.exists())
 
     def test_commit_rejects_stale_pointer_without_receipt(self):
         receipt = self.build()
@@ -643,7 +644,7 @@ class ReleaseTransactionTests(unittest.TestCase):
             pointer = root / "CURRENT-ARCHIVE.json"
             output = root / "TRANSACTION.json"
             pointer.write_bytes(b"stale")
-            with self.assertRaisesRegex(rt.TransactionError, "changed before commit"):
+            with self.assertRaisesRegex(rt.TransactionError, "origin authority"):
                 rt.commit_pointer(
                     current_pointer=pointer,
                     expected_old_pointer_raw=self.old_raw,
@@ -651,6 +652,7 @@ class ReleaseTransactionTests(unittest.TestCase):
                     receipt_path=output,
                     receipt=receipt,
                 )
+            self.assertEqual(pointer.read_bytes(), b"stale")
             self.assertFalse(output.exists())
 
 
