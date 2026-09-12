@@ -238,10 +238,20 @@ class TerminalHistoryJoin:
         if not self.terminal_enabled:return selected
         step=self._observation_step(obs,cfg)
         if step!=int(cfg.get('episodeSteps',720))-2:return selected
+        max_orders=max(1,int(cfg.get('maxMarketOrdersPerTurn',10)))
+        # The interpreter accepts any positive prefix width after flooring at
+        # one, but the finite terminal scenario grammar deliberately supports at
+        # most 32 slots. Never narrow a wider engine queue into a smaller model:
+        # keep the already-selected complete action and do not invoke the
+        # optional terminal producer/selector on an unrepresentable prefix.
+        if max_orders>32:
+            self.diagnostics['family']={'ready':False,
+                'status':'unsupported_market_prefix','max_orders':max_orders}
+            return selected
         if self.selector is None:self._initialize_terminal()
         family=self.joint.build_joint_terminal_scenarios(self.bridge.history,self.m.PRODUCTS,
             step,capacity=int(cfg.get('shedCapacity',100)),
-            max_orders=int(cfg.get('maxMarketOrdersPerTurn',10)),**self.hypotheses)
+            max_orders=max_orders,**self.hypotheses)
         self.diagnostics['family']=family
         if not family['ready'] or post is None:return selected
         packet=self.inputs.build_terminal_inputs(self.m,obs,cfg,selected,
