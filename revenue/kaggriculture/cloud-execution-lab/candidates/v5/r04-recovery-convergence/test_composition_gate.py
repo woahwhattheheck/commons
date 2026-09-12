@@ -63,6 +63,7 @@ def write_report(
     candidate_digit: str,
     delta_by_opponent: dict[str, float] | None = None,
     component_source_sha256: str | None = None,
+    composition_git_commit: str | None = None,
 ) -> dict:
     report = {
         "schema": mod.ECONOMICS_REPORT_SCHEMA,
@@ -76,14 +77,11 @@ def write_report(
     }
     if component_source_sha256 is not None:
         report["component_source_sha256"] = component_source_sha256
+    if composition_git_commit is not None:
+        report["composition_git_commit"] = composition_git_commit
     raw = (json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n").encode()
-    path = root / name
-    path.write_bytes(raw)
-    return {
-        "status": mod.ECONOMICS_PASS,
-        "report_path": name,
-        "report_sha256": sha(raw),
-    }
+    (root / name).write_bytes(raw)
+    return {"status": mod.ECONOMICS_PASS, "report_path": name, "report_sha256": sha(raw)}
 
 
 def base_manifest() -> dict:
@@ -102,6 +100,7 @@ def base_manifest() -> dict:
         "kaggle_submission_requested": False,
         "submitted_topology": copy.deepcopy(mod.SUBMITTED_TOPOLOGY),
         "current_runtime_stages": copy.deepcopy(mod.CURRENT_RUNTIME_STAGES),
+        "composition_git_commit": "d" * 40,
         "components": [],
         "composition_economics": {"status": "PENDING"},
     }
@@ -111,18 +110,16 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
     reader = FakeSourceReader()
     manifest = base_manifest()
     digits = "123456789a"
-
-    # First establish exact Git source custody with economics deliberately PENDING.
     for index, slot in enumerate(mod.REQUIRED_SLOTS):
         head = digits[index] * 40
         path = f"revenue/kaggriculture/cloud-execution-lab/candidates/v5/fake/{slot}/adapter.py"
-        reader.add(head, path, f"# {slot}\nVALUE={index}\n".encode())
+        source_bytes = f"# {slot}\nVALUE={index}\n".encode()
+        reader.add(head, path, source_bytes)
+        reader.add(manifest["composition_git_commit"], path, source_bytes)
         manifest["components"].append({
             "slot": slot,
             "current_abi": True,
-            "producer_ownership": (
-                "single_parent_delegate" if slot == "fert_hand_boundary" else "none"
-            ),
+            "producer_ownership": "single_parent_delegate" if slot == "fert_hand_boundary" else "none",
             "source_paths": [path],
             "carrier": {"pr": 14000 + index, "head_sha": head},
             "economics": {"status": "PENDING"},
@@ -135,10 +132,10 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
             index,
             source_reader=reader,
             evidence_root=root,
+            composition_git_commit=manifest["composition_git_commit"],
         )
         normalized[slot] = value
 
-    # PASS evidence is permitted only after it binds that exact component source.
     for index, component in enumerate(manifest["components"]):
         slot = component["slot"]
         if slot == pending_slot:
@@ -151,7 +148,6 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
             component_source_sha256=normalized[slot]["component_source_sha256"],
         )
 
-    # Revalidate source+leaf economics and derive the whole-composition fingerprint.
     normalized = {}
     for index, component in enumerate(manifest["components"]):
         slot, value = mod._validate_component(
@@ -159,6 +155,7 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
             index,
             source_reader=reader,
             evidence_root=root,
+            composition_git_commit=manifest["composition_git_commit"],
         )
         normalized[slot] = value
     component_source_sha256 = mod._canonical_sha256({
@@ -166,6 +163,7 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
         "submitted_v31_archive_sha256": mod.SUBMITTED_V31_ARCHIVE_SHA256,
         "submitted_topology": mod.SUBMITTED_TOPOLOGY,
         "current_runtime_stages": mod.CURRENT_RUNTIME_STAGES,
+        "composition_git_commit": manifest["composition_git_commit"],
         "components": mod._component_source_view(normalized),
     })
     manifest["composition_economics"] = write_report(
@@ -174,6 +172,7 @@ def make_fixture(root: Path, *, pending_slot: str | None = None):
         "combined_composition",
         candidate_digit="b",
         component_source_sha256=component_source_sha256,
+        composition_git_commit=manifest["composition_git_commit"],
     )
     return manifest, reader
 
@@ -183,11 +182,9 @@ class CompositionGateV2Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             manifest, reader = make_fixture(root)
-            receipt = mod.evaluate_manifest(
-                manifest, evidence_root=root, source_reader=reader
-            )
+            receipt = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertEqual(receipt["status"], "CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF")
-            self.assertEqual(receipt["component_count"], len(mod.REQUIRED_SLOTS))
+            self.assertEqual(receipt["composition_git_commit"], manifest["composition_git_commit"])
             self.assertIn("v231_late_cow", receipt["component_heads"])
             self.assertFalse(receipt["default_flip_authority"])
             self.assertFalse(receipt["release_authority"])
@@ -223,6 +220,23 @@ class CompositionGateV2Tests(unittest.TestCase):
             with self.assertRaisesRegex(mod.GateError, "does not resolve to a Git commit"):
                 mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
 
+    def test_nonexistent_composition_commit_is_hard_error(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            manifest, reader = make_fixture(root)
+            manifest["composition_git_commit"] = "e" * 40
+            with self.assertRaisesRegex(mod.GateError, "composition_git_commit does not resolve"):
+                mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
+
+    def test_composition_commit_must_contain_exact_leaf_bytes(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            manifest, reader = make_fixture(root)
+            component = manifest["components"][0]
+            reader.add(manifest["composition_git_commit"], component["source_paths"][0], b"# divergent\n")
+            with self.assertRaisesRegex(mod.GateError, "source bytes differ in composition_git_commit"):
+                mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
+
     def test_missing_source_path_is_hard_error(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -245,9 +259,7 @@ class CompositionGateV2Tests(unittest.TestCase):
             root = Path(td)
             manifest, reader = make_fixture(root)
             target = manifest["components"][0]
-            old_report = json.loads(
-                (root / target["economics"]["report_path"]).read_text()
-            )
+            old_report = json.loads((root / target["economics"]["report_path"]).read_text())
             target["economics"] = write_report(
                 root,
                 "negative.json",
@@ -258,10 +270,7 @@ class CompositionGateV2Tests(unittest.TestCase):
             )
             receipt = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertEqual(receipt["status"], "BLOCKED")
-            self.assertIn(
-                f"negative_opponent_margin:{target['slot']}:arlene_v14",
-                receipt["blockers"],
-            )
+            self.assertIn(f"negative_opponent_margin:{target['slot']}:arlene_v14", receipt["blockers"])
 
     def test_duplicate_raw_cell_is_hard_error(self):
         with tempfile.TemporaryDirectory() as td:
@@ -281,10 +290,7 @@ class CompositionGateV2Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             manifest, reader = make_fixture(root)
-            manifest["components"] = [
-                component for component in manifest["components"]
-                if component["slot"] != "v231_late_cow"
-            ]
+            manifest["components"] = [c for c in manifest["components"] if c["slot"] != "v231_late_cow"]
             manifest["composition_economics"] = {"status": "PENDING"}
             receipt = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertEqual(receipt["status"], "BLOCKED")
@@ -349,10 +355,8 @@ class CompositionGateV2Tests(unittest.TestCase):
             manifest, reader = make_fixture(root)
             first = mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             component = manifest["components"][0]
-            head = component["carrier"]["head_sha"]
-            path = component["source_paths"][0]
-            reader.add(head, path, b"# changed source bytes\n")
-            with self.assertRaisesRegex(mod.GateError, "component_source_sha256 does not match"):
+            reader.add(component["carrier"]["head_sha"], component["source_paths"][0], b"# changed source bytes\n")
+            with self.assertRaisesRegex(mod.GateError, "source bytes differ in composition_git_commit"):
                 mod.evaluate_manifest(manifest, evidence_root=root, source_reader=reader)
             self.assertTrue(first["component_source_sha256"])
 
