@@ -71,6 +71,11 @@ jobs:
           expected = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
           if text.count(expected) != 2:
               raise SystemExit("canonical manifest SHA authority anchors drifted")
+          old_sub = 'updated, count = re.subn(pattern, replacement, text, count=1, flags=re.S)'
+          new_sub = 'updated, count = re.subn(pattern, lambda _match: replacement, text, count=1, flags=re.S)'
+          if text.count(old_sub) != 1:
+              raise SystemExit("patcher literal-regex replacement anchor drifted")
+          text = text.replace(old_sub, new_sub, 1)
           old_manifest = 'CANONICAL_MANIFEST = ROOT / "revenue/kaggriculture/cloud-execution-lab/candidates/v5/gauntlet-top30-union/manifest.json"'
           frozen = str(Path(os.environ["FROZEN_MANIFEST"]))
           new_manifest = f"CANONICAL_MANIFEST = Path({frozen!r})"
