@@ -6,10 +6,9 @@ on:
     branches:
       - titan/v4-20260911
 
-# This job is the external trust root for the candidate-controlled pull_request
-# workflow. It must never execute, source, import, or checkout PR HEAD code.
-# Deliberately do not use a paths filter: workflow relevance is a trust decision,
-# and GitHub may cap pull-request path-diff evaluation on very large changes.
+# External control-plane support for Titan V4. This workflow must live on the
+# trusted default branch and be paired with server-enforced branch/ruleset policy.
+# It never executes, sources, imports, or checks out PR-head content.
 permissions:
   contents: read
 
@@ -23,11 +22,12 @@ jobs:
     timeout-minutes: 3
     steps:
       # Pin actions/checkout v4 by exact commit. Explicitly checkout trusted main,
-      # never the pull-request head or merge ref.
+      # never the pull-request head or merge ref. Full commit graph is needed for
+      # an exact ancestry proof; blob filtering + sparse checkout bound payload.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: main
-          fetch-depth: 1
+          fetch-depth: 0
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -41,14 +41,14 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           WORKFLOW: .github/workflows/titan-v4-plumbing.yml
-          # Frozen candidate-side evidence workflow. Upgrading this digest is a
-          # deliberate trusted-main control-plane change, never a V4 PR change.
+          # Frozen candidate-side evidence workflow. Any approved migration is a
+          # deliberate trusted-control-plane change, never an ordinary V4 PR edit.
           APPROVED_WORKFLOW_BLOB: 2a1800c02d2a4c11293bdccc7914ab8f6fd93321
         run: |
           set -euo pipefail
 
-          # Fetch PR/base commits into the object database only. Do not checkout
-          # either commit and do not run any file obtained from either commit.
+          # Fetch PR HEAD into the object database only. Do not checkout it and do
+          # not execute any file obtained from the candidate commit.
           git fetch --no-tags --filter=blob:none origin \
             "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/titan-v4-candidate"
           CANDIDATE_SHA="$(git rev-parse refs/remotes/origin/titan-v4-candidate^{commit})"
