@@ -139,7 +139,8 @@ def authenticate_source_contract(
         "offline_evaluator": {
             "kind": "CALLER_SUPPLIED_EXACT_SEED_THEN_SCRUBBED",
             "agent_seed_visibility": False,
-            "finite_domain_requires_authenticated_panel_manifest": True,
+            "finite_domain_requires_external_panel_provenance": True,
+            "byte_binding_alone_proves_precommit": False,
         },
         "global_identifiability_proved": False,
         "production_seed_cracker_authorized": False,
@@ -174,7 +175,7 @@ def _sha256_hex(value: Any, label: str) -> str:
 
 
 def bind_panel_manifest(path: Path, expected_sha256: str) -> dict:
-    """Bind a minimal explicit offline seed-domain receipt by complete bytes."""
+    """Bind a declared offline seed panel by complete bytes; this proves immutability only."""
     expected = _sha256_hex(expected_sha256, "expected manifest SHA-256")
     raw = Path(path).read_bytes()
     actual = hashlib.sha256(raw).hexdigest()
@@ -184,7 +185,7 @@ def bind_panel_manifest(path: Path, expected_sha256: str) -> dict:
     required = {"schema", "seeds", "evaluator_git_blob", "engine_git_blob", "seedstream_git_blob"}
     if type(obj) is not dict or set(obj) != required:
         raise ProvenanceError("panel manifest must contain exactly the five seed-domain fields")
-    if obj["schema"] != "titan.v4.authenticated-offline-seed-panel/v1":
+    if obj["schema"] != "titan.v4.byte-bound-offline-seed-panel/v1":
         raise ProvenanceError("unsupported panel manifest schema")
     if obj["evaluator_git_blob"] != EVALUATOR_GIT_BLOB:
         raise ProvenanceError("panel evaluator blob does not match pinned offline evaluator")
@@ -197,7 +198,10 @@ def bind_panel_manifest(path: Path, expected_sha256: str) -> dict:
         "manifest_sha256": actual,
         "seeds": seeds,
         "seed_count": len(seeds),
-        "domain_kind": "AUTHENTICATED_OFFLINE_PANEL_SET_ONLY",
+        "domain_kind": "BYTE_BOUND_DECLARED_OFFLINE_PANEL_SET_ONLY",
+        "panel_precommit_proved": False,
+        "panel_origin_authenticated": False,
+        "finite_domain_authority_proved": False,
         "hosted_seed_domain_proved": False,
         "global_identifiability_proved": False,
     }
@@ -228,7 +232,7 @@ def _history_rows(seedstream, history: Sequence[dict]) -> list[dict]:
     return rows
 
 
-def filter_authenticated_panel(
+def filter_byte_bound_panel(
     history: Sequence[dict],
     manifest_path: Path,
     expected_manifest_sha256: str,
@@ -253,9 +257,9 @@ def filter_authenticated_panel(
         if not survivors:
             break
     verdict = (
-        "NO_MATCH_IN_AUTHENTICATED_PANEL_SET" if not survivors
-        else "PANEL_SET_UNIQUE_NOT_GLOBAL" if len(survivors) == 1
-        else "AMBIGUOUS_IN_AUTHENTICATED_PANEL_SET"
+        "NO_MATCH_IN_DECLARED_PANEL_SET" if not survivors
+        else "DECLARED_PANEL_SET_UNIQUE_NOT_GLOBAL" if len(survivors) == 1
+        else "AMBIGUOUS_IN_DECLARED_PANEL_SET"
     )
     return {
         "manifest_sha256": panel["manifest_sha256"],
@@ -264,7 +268,10 @@ def filter_authenticated_panel(
         "candidates": survivors,
         "candidate_count": len(survivors),
         "verdict": verdict,
-        "authority": "AUTHENTICATED_OFFLINE_PANEL_SET_ONLY",
+        "authority": "BYTE_BOUND_DECLARED_OFFLINE_PANEL_SET_ONLY",
+        "panel_precommit_proved": False,
+        "panel_origin_authenticated": False,
+        "finite_domain_authority_proved": False,
         "hosted_seed_domain_proved": False,
         "global_identifiability_proved": False,
         "production_seed_cracker_authorized": False,
@@ -282,7 +289,7 @@ def consensus_forecast_for_panel(
     seedstream_path: Path = DEFAULT_SEEDSTREAM,
     weed_chance: float = 0.005,
 ) -> dict:
-    filtered = filter_authenticated_panel(
+    filtered = filter_byte_bound_panel(
         history, manifest_path, expected_manifest_sha256,
         seedstream_path=seedstream_path, weed_chance=weed_chance,
     )
@@ -300,19 +307,23 @@ def consensus_forecast_for_panel(
         raise ProvenanceError(f"SEEDSTREAM consensus rejected: {exc}") from exc
     forecast = dict(forecast)
     forecast.update(
-        authority="AUTHENTICATED_OFFLINE_PANEL_CONSENSUS_ONLY",
+        authority="BYTE_BOUND_DECLARED_OFFLINE_PANEL_CONSENSUS_ONLY",
         manifest_sha256=filtered["manifest_sha256"],
+        panel_precommit_proved=False,
+        panel_origin_authenticated=False,
+        finite_domain_authority_proved=False,
         hosted_seed_domain_proved=False,
         global_identifiability_proved=False,
         production_seed_cracker_authorized=False,
     )
     return forecast
 
+
 def write_manifest(path: Path, seeds: Iterable[int]) -> str:
-    """Research convenience: write a canonical manifest for an already-declared panel."""
+    """Developer fixture convenience only; does not create panel provenance authority."""
     values = validate_seed_set(list(seeds), label="panel seeds")
     payload = {
-        "schema": "titan.v4.authenticated-offline-seed-panel/v1",
+        "schema": "titan.v4.byte-bound-offline-seed-panel/v1",
         "seeds": list(values),
         "evaluator_git_blob": EVALUATOR_GIT_BLOB,
         "engine_git_blob": ENGINE_GIT_BLOB,
