@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -51,6 +52,39 @@ class PublicationCustodyTests(unittest.TestCase):
             with mock.patch.object(pc, '_write_all', side_effect=fail_second):
                 with self.assertRaisesRegex(OSError, 'injected'):
                     pc.publish_exclusive([(a, b'archive'), (b, b'receipt')])
+            self.assertFalse(a.exists())
+            self.assertFalse(b.exists())
+
+    def test_rollback_identity_checks_keep_reservation_fds_live(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            a, b = root/'candidate.tar.gz', root/'candidate.json'
+            original_write = pc._write_all
+            original_unlink = pc._unlink_if_owned
+            writes = 0
+            rollback_fd_live = []
+
+            def fail_second(fd, payload):
+                nonlocal writes
+                writes += 1
+                if writes == 2:
+                    raise OSError('injected second write failure')
+                return original_write(fd, payload)
+
+            def inspect_live_fd(item):
+                try:
+                    os.fstat(item.fd)
+                except OSError:
+                    rollback_fd_live.append(False)
+                else:
+                    rollback_fd_live.append(True)
+                return original_unlink(item)
+
+            with mock.patch.object(pc, '_write_all', side_effect=fail_second), \
+                    mock.patch.object(pc, '_unlink_if_owned', side_effect=inspect_live_fd):
+                with self.assertRaisesRegex(OSError, 'injected'):
+                    pc.publish_exclusive([(a, b'archive'), (b, b'receipt')])
+            self.assertEqual(rollback_fd_live, [True, True])
             self.assertFalse(a.exists())
             self.assertFalse(b.exists())
 
