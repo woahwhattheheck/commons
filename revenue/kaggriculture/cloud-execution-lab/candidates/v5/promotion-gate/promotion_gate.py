@@ -123,6 +123,16 @@ def _finite_number(value: Any, field: str, *, minimum: float | None = None) -> f
     return result
 
 
+def _engagement_key_fields(value: Any) -> tuple[str, ...]:
+    if type(value) is not list or not value:
+        raise PromotionError("engagement key_fields must be a non-empty list")
+    if any(type(field) is not str or not field for field in value):
+        raise PromotionError("engagement key_fields must contain non-empty strings")
+    if len(value) != len(set(value)):
+        raise PromotionError("engagement key_fields must be unique")
+    return tuple(value)
+
+
 def validate_manifest(manifest: Mapping[str, Any]) -> str:
     """Validate the identity manifest's closed shape and self-authenticating ID."""
     if type(manifest) is not dict:
@@ -156,7 +166,7 @@ def validate_manifest(manifest: Mapping[str, Any]) -> str:
 
 
 def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
-    """Require decision engagement for exactly the manifest candidate."""
+    """Require one canonical producer-shaped ENGAGED report for this candidate."""
     if type(report) is not dict:
         raise PromotionError("engagement report must be an object")
     control_id = _v5c(report.get("control_id"), "engagement control_id")
@@ -169,13 +179,55 @@ def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
         raise PromotionError("engagement classification must be ENGAGED")
 
     observations = _plain_int(report.get("observations"), "engagement observations", minimum=1)
+    _plain_int(report.get("noop_threshold"), "engagement noop_threshold", minimum=1)
     divergence = _plain_int(
         report.get("divergence_count"), "engagement divergence_count", minimum=1
     )
     if divergence > observations:
         raise PromotionError("engagement divergence_count exceeds observations")
-    if not isinstance(report.get("first_divergence"), Mapping):
-        raise PromotionError("ENGAGED report requires first_divergence")
+
+    rate = _finite_number(
+        report.get("engagement_rate"), "engagement engagement_rate", minimum=0.0
+    )
+    expected_rate = divergence / observations
+    if not math.isclose(rate, expected_rate, rel_tol=0.0, abs_tol=1e-15):
+        raise PromotionError("engagement rate disagrees with divergence count")
+
+    key_fields = _engagement_key_fields(report.get("key_fields"))
+    first = report.get("first_divergence")
+    if type(first) is not dict:
+        raise PromotionError("ENGAGED report requires first_divergence object")
+    first_observation = _plain_int(
+        first.get("observation"), "engagement first_divergence observation", minimum=1
+    )
+    latest_possible_first = observations - divergence + 1
+    if first_observation > latest_possible_first:
+        raise PromotionError(
+            "engagement first_divergence observation is inconsistent with divergence count"
+        )
+    first_key = first.get("key")
+    if type(first_key) is not dict or set(first_key) != set(key_fields):
+        raise PromotionError(
+            "engagement first_divergence key must match key_fields exactly"
+        )
+    control_fp = _hex64(
+        first.get("control_fingerprint"),
+        "engagement first_divergence control_fingerprint",
+    )
+    candidate_fp = _hex64(
+        first.get("candidate_fingerprint"),
+        "engagement first_divergence candidate_fingerprint",
+    )
+    if control_fp == candidate_fp:
+        raise PromotionError("engagement first_divergence fingerprints must differ")
+    _hex64(
+        report.get("control_sequence_fingerprint"),
+        "engagement control_sequence_fingerprint",
+    )
+    _hex64(
+        report.get("candidate_sequence_fingerprint"),
+        "engagement candidate_sequence_fingerprint",
+    )
     return control_id
 
 

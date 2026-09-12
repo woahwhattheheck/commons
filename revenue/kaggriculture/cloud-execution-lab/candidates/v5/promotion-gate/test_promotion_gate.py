@@ -39,7 +39,15 @@ def _engagement(candidate_id):
         "noop_threshold": 8,
         "divergence_count": 2,
         "engagement_rate": 0.25,
-        "first_divergence": {"observation": 2},
+        "first_divergence": {
+            "observation": 2,
+            "key": {"seed": 7, "seat": 0, "step": 12, "phase": "market"},
+            "control_fingerprint": "c" * 64,
+            "candidate_fingerprint": "d" * 64,
+        },
+        "control_sequence_fingerprint": "e" * 64,
+        "candidate_sequence_fingerprint": "f" * 64,
+        "key_fields": ["seed", "seat", "step", "phase"],
         "control_id": "v5c:" + "1" * 64,
         "candidate_id": candidate_id,
     }
@@ -97,6 +105,73 @@ class PromotionGateTest(unittest.TestCase):
         engagement["first_divergence"] = None
         with self.assertRaisesRegex(gate.PromotionError, "must be ENGAGED"):
             gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+
+    def test_impossible_engagement_summary_is_rejected(self):
+        manifest = _manifest()
+        candidate_id = manifest["candidate_id"]
+        runtime = _runtime(candidate_id)
+        cases = [
+            (
+                "rate",
+                lambda report: report.__setitem__("engagement_rate", 0.5),
+                "rate disagrees",
+            ),
+            (
+                "threshold-type",
+                lambda report: report.__setitem__("noop_threshold", True),
+                "noop_threshold must be a plain int",
+            ),
+            (
+                "impossible-first-index",
+                lambda report: report["first_divergence"].__setitem__("observation", 8),
+                "inconsistent with divergence count",
+            ),
+            (
+                "duplicate-key-fields",
+                lambda report: report.__setitem__("key_fields", ["seed", "seed"]),
+                "key_fields must be unique",
+            ),
+            (
+                "first-key-shape",
+                lambda report: report["first_divergence"].__setitem__(
+                    "key", {"seed": 7, "seat": 0, "step": 12}
+                ),
+                "key must match key_fields exactly",
+            ),
+            (
+                "bad-decision-fingerprint",
+                lambda report: report["first_divergence"].__setitem__(
+                    "control_fingerprint", "not-a-sha"
+                ),
+                "64 lowercase hex",
+            ),
+            (
+                "non-divergent-fingerprints",
+                lambda report: report["first_divergence"].__setitem__(
+                    "candidate_fingerprint",
+                    report["first_divergence"]["control_fingerprint"],
+                ),
+                "fingerprints must differ",
+            ),
+            (
+                "bad-sequence-fingerprint",
+                lambda report: report.__setitem__(
+                    "candidate_sequence_fingerprint", "0" * 63
+                ),
+                "64 lowercase hex",
+            ),
+            (
+                "missing-first-divergence",
+                lambda report: report.__setitem__("first_divergence", None),
+                "requires first_divergence object",
+            ),
+        ]
+        for label, mutate, message in cases:
+            with self.subTest(label=label):
+                engagement = json.loads(json.dumps(_engagement(candidate_id)))
+                mutate(engagement)
+                with self.assertRaisesRegex(gate.PromotionError, message):
+                    gate.build_receipt(manifest, engagement, runtime)
 
     def test_stale_runtime_pass_with_extra_callback_is_rejected(self):
         manifest = _manifest()
