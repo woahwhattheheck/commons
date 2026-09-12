@@ -33,16 +33,33 @@ def _engine_noop(order):
 
 def _evaluation_row(row):
     market = row.get('market', [])
-    if not isinstance(market, list) or not any(_engine_noop(order) for order in market):
+    if not isinstance(market, list):
+        return row
+    noop_slots = [slot for slot, order in enumerate(market) if _engine_noop(order)]
+    if not noop_slots:
         return row
     result = deepcopy(row)
-    result['market'] = [(['PASS'] if _engine_noop(order) else order)
-                        for order in result['market']]
+    for slot in noop_slots:
+        result['market'][slot] = ['PASS']
     return result
 
 
 def _evaluation_route(route):
-    return [_evaluation_row(row) for row in route]
+    """Translate engine no-ops without rebuilding clean canonical routes."""
+    result = None
+    for index, row in enumerate(route):
+        evaluation = _evaluation_row(row)
+        if evaluation is row:
+            continue
+        if result is None:
+            result = list(route)
+        result[index] = evaluation
+    if result is not None:
+        return result
+    # Historical callers receive a list for arbitrary Sequence inputs. Preserve
+    # that contract while keeping the overwhelmingly common canonical list hot
+    # path allocation-free when no translation is needed.
+    return route if isinstance(route, list) else list(route)
 
 
 def make_admission(base_class):
