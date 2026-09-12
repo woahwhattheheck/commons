@@ -146,5 +146,51 @@ class CurrentAdapterTests(unittest.TestCase):
             self.assertIs(adapter.apply_wf1_current(obs, action, CONFIG, enabled=True), action)
 
 
+    def test_market_budget_zero_through_ten_still_delegates(self):
+        for count in range(CONFIG["maxMarketOrdersPerTurn"] + 1):
+            obs, action = _case()
+            action["market"] = [["PASS"] for _ in range(count)]
+            sentinel = {"delegated": count}
+            with self.subTest(count=count), mock.patch.object(
+                    adapter._donor, "apply_wheat_fertilize", return_value=sentinel) as call:
+                self.assertIs(adapter.apply_wf1_current(obs, action, CONFIG, enabled=True), sentinel)
+                call.assert_called_once_with(obs, action, enabled=True)
+
+    def test_over_budget_rows_do_not_call_stateful_donor(self):
+        for count in (11, 12, 20, 100):
+            obs, action = _case()
+            action["market"] = [["PASS"] for _ in range(count)]
+            with self.subTest(count=count), mock.patch.object(
+                    adapter._donor, "apply_wheat_fertilize", return_value=action) as call:
+                self.assertIs(adapter.apply_wf1_current(obs, action, CONFIG, enabled=True), action)
+                call.assert_not_called()
+
+    def test_eleventh_row_cannot_consume_wheat_credit(self):
+        obs, action = _case()
+        obs["private"]["shed"]["WHEAT"] = 10
+        action["market"] = [["PASS"] for _ in range(10)] + [["SELL", "WHEAT", 1]]
+        adapter._donor._STATE[0] = {"last_step": 24, "day": 1, "tiles": {}, "credit": 3}
+        before_action = copy.deepcopy(action)
+        before_state = copy.deepcopy(adapter._donor._STATE)
+        before_report = copy.deepcopy(adapter._donor.REPORT)
+        out = adapter.apply_wf1_current(obs, action, CONFIG, enabled=True)
+        self.assertIs(out, action)
+        self.assertEqual(action, before_action)
+        self.assertEqual(adapter._donor._STATE, before_state)
+        self.assertEqual(adapter._donor.REPORT, before_report)
+
+    def test_tenth_row_credit_sale_remains_live(self):
+        obs, action = _case()
+        obs["private"]["shed"]["WHEAT"] = 10
+        action["market"] = [["PASS"] for _ in range(9)] + [["SELL", "WHEAT", 1]]
+        before_action = copy.deepcopy(action)
+        adapter._donor._STATE[0] = {"last_step": 24, "day": 1, "tiles": {}, "credit": 3}
+        out = adapter.apply_wf1_current(obs, action, CONFIG, enabled=True)
+        self.assertEqual(out["market"][9], ["SELL", "WHEAT", 4])
+        self.assertEqual(out["market"][:9], before_action["market"][:9])
+        self.assertEqual(action, before_action)
+        self.assertEqual(adapter._donor._STATE[0]["credit"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
