@@ -916,6 +916,77 @@ class CommandCenter:
         state["freshness"] = self._work_freshness(state, started, trigger)
         return state
 
+    def swarm_state(self, refresh=False):
+        """Read the existing coordination branch, with explicit freshness.
+
+        This is an observation, never merge authority. The merger rechecks live
+        PR/review/tree state. Reads are also usage receipts in the existing DB.
+        """
+        cache_key = "\0swarm-state"
+        with self._bakes_lock:
+            cached = self._bakes.get(cache_key)
+        if cached and not refresh and time.time() - cached["fetched"] < 60:
+            payload = dict(cached["read"])
+        else:
+            url = "https://raw.githubusercontent.com/" + self.repo + "/state/coordination/coordination.json"
+            try:
+                source = self.fetcher("GET", url)
+                if not isinstance(source, dict):
+                    raise CoreError(502, "Coordination state must be an object.")
+                payload = {"schema": "commons-swarm-view/v1", "source_url": url,
+                           "observed_at": source.get("observed_at"), "main": source.get("main"),
+                           "swarm": source.get("swarm"), "degraded": source.get("degraded", []),
+                           "prs": [{k: r.get(k) for k in ("number", "title", "head", "swarm")}
+                                   for r in source.get("prs", [])], "read_error": None}
+                with self._bakes_lock:
+                    self._bakes[cache_key] = {"fetched": time.time(), "read": dict(payload)}
+            except Exception as exc:
+                payload = dict(cached["read"]) if cached else {
+                    "schema": "commons-swarm-view/v1", "source_url": url,
+                    "observed_at": None, "swarm": None, "prs": []}
+                payload["read_error"] = self._failure(exc)
+        # Connector-equipped peers can feed the same observed PRs through the
+        # existing ingest API when this runtime has no direct GitHub road.
+        # Prefer a newer, explicitly scoped observation; never infer full fleet
+        # coverage or copy a work item's edit time into provider observed_at.
+        work = self._work_store_instance().state()
+        sources = [s for s in work["sources"] if s.get("id") == "commons-swarm:" + self.repo
+                   and s.get("last_good_observed_at") and not s.get("retained_last_good")]
+        if sources:
+            source = sources[0]
+            stamp = source["last_good_observed_at"]
+            if _age(stamp) < _age(payload.get("observed_at")) or payload.get("swarm") is None:
+                items = [i for i in work["items"] if i["source_id"] == source["id"]]
+                prs = []
+                for item in items:
+                    meta = item.get("metadata") or {}
+                    if isinstance(meta.get("swarm"), dict):
+                        prs.append({"number": meta.get("number"), "title": item.get("title"),
+                                    "head": meta.get("head"), "swarm": meta["swarm"]})
+                counts = {}
+                for pr in prs:
+                    state = (pr["swarm"].get("review") or {}).get("state", "UNKNOWN")
+                    counts[state] = counts.get(state, 0) + 1
+                payload = {"schema": "commons-swarm-view/v1", "source_url": source.get("url"),
+                           "source_road": "connector-ingest", "observed_at": stamp,
+                           "coverage": source.get("last_good_coverage"), "scope": source.get("scope"),
+                           "main_read_error": payload.get("read_error"), "read_error": None,
+                           "prs": prs, "swarm": {"counts": counts, "batches": [], "capacity": None},
+                           "degraded": [] if (source.get("last_good_coverage") or {}).get("complete") else ["partial-view"]}
+        age = _age(payload.get("observed_at"))
+        payload["age_seconds"] = None if age == float("inf") else int(age)
+        payload["stale"] = (age < -300 or age >= 600 or payload.get("read_error") is not None
+                            or payload.get("swarm") is None)
+        with self._db() as db:
+            row = db.execute("SELECT data FROM records WHERE kind='usage' AND id='swarm-state'").fetchone()
+            previous = json.loads(row["data"]) if row else {}
+            usage = {"reads": previous.get("reads", 0) + 1, "last_read_at": _now(),
+                     "source_observed_at": payload.get("observed_at"), "stale": payload["stale"]}
+            db.execute("INSERT OR REPLACE INTO records(kind,id,data) VALUES('usage','swarm-state',?)",
+                       (_json(usage),))
+        payload["usage"] = usage
+        return payload
+
     def _work_refresh_due(self, status):
         """(due, why) from the last refresh record, without taking the lock."""
         current = status.get("status")

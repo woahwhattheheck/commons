@@ -12,6 +12,13 @@ sys.path.insert(0, str(_directory if (_directory / "commons_publication_policy.p
                       else _directory.parents[1]))
 from commons_publication_policy import POLICY_CONTEXT, check_publication
 
+SWARM_CONTEXT = ("Standing owner directive 2026-09-12: read ground/SWARM_ORDER.md "
+                 "and the existing command center before starting or handing off work. "
+                 "GPTs are major builders and integration leads. Claude, Muse, Grok and "
+                 "unknown/mixed work require an exact-change GPT pass before integration "
+                 "or release. Batch reviews; reuse unchanged approvals when GPT tokens "
+                 "are exhausted. This supersedes older no-review rules for integration. ")
+
 
 def publication_verdict(event: dict) -> dict | None:
     """Select actual publication arguments across native MCP event formats."""
@@ -64,7 +71,7 @@ def handle(event: dict) -> dict:
     name = str(event.get("hook_event_name") or "")
     if name in {"SessionStart", "UserPromptSubmit"}:
         return {"hookSpecificOutput": {"hookEventName": name,
-                "additionalContext": "When publishing through Commons, Slack, Discord, or owner-operated channels: " + POLICY_CONTEXT}}
+                "additionalContext": SWARM_CONTEXT + "When publishing through Commons, Slack, Discord, or owner-operated channels: " + POLICY_CONTEXT}}
     if name != "PreToolUse":
         return {}
     verdict = publication_verdict(event)
