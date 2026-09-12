@@ -13,6 +13,25 @@ from pathlib import Path
 FEATURE_ANCHOR = "    early_capital: bool = False\n"
 FEATURE_INSERT = FEATURE_ANCHOR + "    exec_pace: bool = False\n"
 
+FALLBACK_STATE_ANCHOR = "        self._seller_fallback_observations = []\n"
+FALLBACK_STATE_INSERT = FALLBACK_STATE_ANCHOR + (
+    "        self._exec_pace_fallback_observations = []\n"
+)
+
+FALLBACK_OBSERVER_ANCHOR = (
+    "        if self.features.consumer != 'frozen':\n"
+    "            return\n"
+    "        step = int(obs['step'])\n"
+)
+FALLBACK_OBSERVER_INSERT = FALLBACK_OBSERVER_ANCHOR + (
+    "        if getattr(self.features, 'exec_pace', False) is True:\n"
+    "            self._exec_pace_fallback_observations.append({\n"
+    "                'step': step,\n"
+    "                'player': int(obs['player']),\n"
+    "                'market': {'prices': deepcopy(obs['market']['prices'])},\n"
+    "            })\n"
+)
+
 CONSUMER_ANCHOR = "            self.consumer = FrozenSelected()\n"
 CONSUMER_INSERT = CONSUMER_ANCHOR + (
     "            if f.exec_pace is True:\n"
@@ -23,6 +42,9 @@ CONSUMER_INSERT = CONSUMER_ANCHOR + (
     "                    self._exec_pace_state = exec_pace_state\n"
     "                self.consumer.exec_pace_state = exec_pace_state\n"
     "                self.consumer.exec_pace_apply = pace.apply_candidate\n"
+    "                for exec_pace_obs in getattr(self, '_exec_pace_fallback_observations', ()):\n"
+    "                    exec_pace_state.note_prices(exec_pace_obs)\n"
+    "                self._exec_pace_fallback_observations = []\n"
 )
 
 TRANSFORM_ANCHOR = (
@@ -60,6 +82,10 @@ def _replace_once(source, anchor, replacement, label):
 
 def compose_sources(titan_runtime_source, frozen_selected_source):
     titan = _replace_once(titan_runtime_source, FEATURE_ANCHOR, FEATURE_INSERT, "Features")
+    titan = _replace_once(titan, FALLBACK_STATE_ANCHOR, FALLBACK_STATE_INSERT,
+                          "EXEC-PACE fallback state")
+    titan = _replace_once(titan, FALLBACK_OBSERVER_ANCHOR, FALLBACK_OBSERVER_INSERT,
+                          "seller fallback observer")
     titan = _replace_once(titan, CONSUMER_ANCHOR, CONSUMER_INSERT, "FrozenSelected construction")
     frozen = _replace_once(frozen_selected_source, TRANSFORM_ANCHOR, TRANSFORM_INSERT,
                            "FrozenSelected transform observer")
