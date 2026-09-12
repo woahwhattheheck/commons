@@ -39,6 +39,25 @@ def _fake_apex_tape(buy_steps: dict[int, tuple[int, int, int]] | None = None) ->
     )
 
 
+def _apex_contract_text(segment_turns: int = 72):
+    main = (
+        "action['market'] = market[:10]\n"
+        "market = [o for o in market if o[0] == 'SELL']"
+    )
+    guard = (
+        "inline void budget_sales_first(Action& action)\n"
+        "if (added > 0 && settings.sales_first) budget_sales_first(result);\n"
+        "action.orders[action.n_orders++]"
+    )
+    policy = (
+        f"constexpr int kSegmentTurns = {segment_turns};\n"
+        "if (state.step == 0) selected_route = 0;\n"
+        "if (state.step % kSegmentTurns != 0) return input;\n"
+        "settings.interval_turns = kSegmentTurns;"
+    )
+    return main, guard, policy
+
+
 class AtlasUnitTests(unittest.TestCase):
     def test_verified_source_module_executes_authenticated_snapshot_after_path_swap(self):
         good = b"VALUE = 1\n"
@@ -94,31 +113,41 @@ class AtlasUnitTests(unittest.TestCase):
             ],
         )
 
-    def test_apex_guard_boundaries_fail_closed_except_verified_opening(self):
+    def test_apex_every_72_turn_guard_boundary_fails_closed_except_opening(self):
         buys = {
             0: (4, 0, 13),
             1: (4, 0, 1),
-            144: (4, 0, 2),
-            288: (4, 8, 3),
-            432: (4, 0, 4),
-            576: (4, 8, 5),
-            718: (4, 0, 6),
+            72: (4, 0, 2),
+            144: (4, 8, 3),
+            216: (4, 0, 4),
+            288: (4, 8, 5),
+            360: (4, 0, 6),
+            432: (4, 8, 7),
+            504: (4, 0, 8),
+            576: (4, 8, 9),
+            648: (4, 0, 10),
+            718: (4, 0, 11),
         }
         text = _fake_apex_tape(buys)
-        per = atlas.apex_route_pulses(text, native_verified_opening=True)
+        per = atlas.apex_route_pulses(text, native_verified_opening=True, guard_interval=72)
         route0 = {(p["step"], p["item"]): p for p in per["0"]}
         self.assertTrue(route0[(0, "WHEAT")]["raw_index_stable"])
         self.assertTrue(route0[(1, "WHEAT")]["raw_index_stable"])
         for step, item in (
-            (144, "WHEAT"),
+            (72, "WHEAT"),
+            (144, "FERTILIZER"),
+            (216, "WHEAT"),
             (288, "FERTILIZER"),
-            (432, "WHEAT"),
+            (360, "WHEAT"),
+            (432, "FERTILIZER"),
+            (504, "WHEAT"),
             (576, "FERTILIZER"),
+            (648, "WHEAT"),
             (718, "WHEAT"),
         ):
             self.assertFalse(route0[(step, item)]["raw_index_stable"])
 
-        unverified = atlas.apex_route_pulses(text, native_verified_opening=False)
+        unverified = atlas.apex_route_pulses(text, native_verified_opening=False, guard_interval=72)
         opening = next(p for p in unverified["0"] if p["step"] == 0)
         self.assertFalse(opening["raw_index_stable"])
 
@@ -130,8 +159,6 @@ class AtlasUnitTests(unittest.TestCase):
         self.assertEqual((pulse["row"], pulse["item"], pulse["qty"]), (0, "WHEAT", 2))
 
     def test_apex_executable_cap_applies_after_pass_compression(self):
-        # Ten encoded PASS rows disappear in _unpack_action. An encoded index-10
-        # BUY therefore becomes executable Python row0 and must survive market[:10].
         text = _fake_apex_tape()
         encoded = "0 11 " + " ".join(["0 0 1"] * 10 + ["4 0 7"])
         text = text.replace('"0 0"', f'"{encoded}"', 1)
@@ -169,26 +196,22 @@ class AtlasUnitTests(unittest.TestCase):
         status, novel = atlas._classify_collisions([opening])
         self.assertEqual(status, "OPENING_ONLY_GUARDRAIL_NO_NEW_COLLISIONS")
         self.assertEqual(novel, [])
-
         later = {**opening, "step": 11, "own_qty": 2, "rival_qty": 5}
         status, novel = atlas._classify_collisions([opening, later])
         self.assertEqual(status, "NOVEL_AUTHORITATIVE_COLLISIONS_FOUND")
         self.assertEqual(novel, [later])
 
-    def test_source_contracts_fail_closed(self):
+    def test_source_contract_binds_effective_72_turn_cadence(self):
+        main, guard, policy = _apex_contract_text(72)
+        self.assertEqual(
+            atlas._assert_apex_source_contracts(main, guard, policy),
+            72,
+        )
+        with self.assertRaises(ValueError):
+            main144, guard144, policy144 = _apex_contract_text(144)
+            atlas._assert_apex_source_contracts(main144, guard144, policy144)
         with self.assertRaises(ValueError):
             atlas._assert_apex_source_contracts("", "", "")
-        main = (
-            "action['market'] = market[:10]\n"
-            "market = [o for o in market if o[0] == 'SELL']"
-        )
-        guard = (
-            "inline void budget_sales_first(Action& action)\n"
-            "if (added > 0 && settings.sales_first) budget_sales_first(result);\n"
-            "action.orders[action.n_orders++]"
-        )
-        policy = "if (state.step == 0) selected_route = 0;"
-        atlas._assert_apex_source_contracts(main, guard, policy)
 
 
 class ExactCheckoutTests(unittest.TestCase):
@@ -200,9 +223,11 @@ class ExactCheckoutTests(unittest.TestCase):
         first = atlas.build_atlas(**paths)
         second = atlas.build_atlas(**paths)
         self.assertEqual(first, second)
+        self.assertEqual(first["source_blobs"]["cobuy_opening_collision.py"], atlas.COBUY_HELPER_BLOB)
+        self.assertEqual(first["scope"]["apex_effective_guard_interval"], 72)
         self.assertEqual(
-            first["source_blobs"]["cobuy_opening_collision.py"],
-            atlas.COBUY_HELPER_BLOB,
+            first["scope"]["guard_boundaries_excluded_without_native_receipt"],
+            [72, 144, 216, 288, 360, 432, 504, 576, 648],
         )
         self.assertTrue(first["opening_native_receipt_verified"])
         self.assertTrue(first["controls"]["step0_wheat_collision_present"])
