@@ -211,6 +211,16 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
     if same_repo and isinstance(branch, str) and snapshot.branch_tips.get(branch) == sha_norm:
         return finish("LIVE_BRANCH_HEAD_KEEP", f"exact SHA is current tip of branch {branch}")
 
+    # Every cancel-candidate below depends on the exact SHA not being a live
+    # open-PR head. With an incomplete PR inventory, that absence is unproven.
+    if not snapshot.complete_open_prs:
+        return finish("UNKNOWN_KEEP", "open-PR inventory incomplete; cannot prove queued head is stale")
+
+    # Same-repo stale proofs also depend on the exact SHA not being the current
+    # branch tip. Fork branches are not represented by the base-repo inventory.
+    if same_repo and isinstance(branch, str) and not snapshot.complete_branches:
+        return finish("UNKNOWN_KEEP", "branch inventory incomplete; cannot prove queued head is stale")
+
     open_referenced = [number for number in prs if number in snapshot.open_pr_heads]
     if open_referenced:
         current = {number: snapshot.open_pr_heads[number] for number in open_referenced}
@@ -224,8 +234,6 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
     # was fully enumerated. A run may have multiple historical PR refs; if none
     # remain open, it is stale unless a live branch tip already kept it above.
     if prs:
-        if not snapshot.complete_open_prs:
-            return finish("UNKNOWN_KEEP", "open-PR inventory incomplete; cannot prove referenced PR closure")
         return finish(
             "CLOSED_PR_HEAD_CANDIDATE",
             f"run references PR(s) {prs}, none present in complete open-PR inventory",
@@ -233,8 +241,6 @@ def classify_run(run: dict[str, Any], snapshot: Snapshot, repo: str) -> dict[str
         )
 
     if isinstance(branch, str) and same_repo:
-        if not snapshot.complete_branches:
-            return finish("UNKNOWN_KEEP", "branch inventory incomplete; cannot prove branch movement/absence")
         current = snapshot.branch_tips.get(branch)
         if current:
             return finish(

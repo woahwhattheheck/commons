@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Claim one pull-request work unit through Commons' atomic claim ledger.
 
-This is a thin PR-specific adapter over ``host.coordination_state``.  It keeps
+This is a thin PR-specific adapter over ``host.coordination_state``. It keeps
 review/merge drains on the canonical ``pr-N`` key so concurrent seats cannot
 accidentally avoid collision detection by inventing different marker names for
 the same pull request.
+
+The legacy single-key writer owns one fast-forward attempt at a time here.
+Runtime retries refresh their clock before re-reading the claims branch, so a
+winner that lands after an earlier attempt cannot look "from the future" and be
+mistaken for an expired holding.
 """
 
 from __future__ import annotations
@@ -37,12 +42,14 @@ def write_pr_holding(
     now=None,
     remote: str = "origin",
     push: bool = True,
+    attempts: int = 3,
 ) -> dict:
     """Take, renew, or release the canonical ``pr-N`` holding.
 
-    The underlying fast-forward-only write and collision reconciliation stay in
-    ``coordination_state.holding_write``; this adapter adds no second claim
-    protocol.
+    Each outer iteration delegates exactly one fast-forward attempt to the
+    legacy writer. In production (``now is None``) a fresh clock value is
+    captured before every retry; explicitly injected test time stays fixed.
+    Only the legacy writer's precise NFF exhaustion result is retryable.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -50,18 +57,39 @@ def write_pr_holding(
         raise ValueError("holder must be non-empty text")
     if type(ttl_s) is not int or not 1 <= ttl_s <= 7200:
         raise ValueError("ttl must be between 1 and 7200 seconds")
-    result = cs.holding_write(
-        git,
-        pr_key(pr),
-        holder.strip(),
-        action,
-        ttl_s=ttl_s,
-        note=note,
-        now=now,
-        remote=remote,
-        push=push,
-    )
-    return {"pr": pr, "action": action, **result}
+    if type(attempts) is not int or not 1 <= attempts <= 10:
+        raise ValueError("attempts must be between 1 and 10")
+
+    key = pr_key(pr)
+    holder = holder.strip()
+    last = None
+    for _ in range(attempts):
+        attempt_now = now if now is not None else cs._now()
+        result = cs.holding_write(
+            git,
+            key,
+            holder,
+            action,
+            ttl_s=ttl_s,
+            note=note,
+            now=attempt_now,
+            remote=remote,
+            push=push,
+            attempts=1,
+        )
+        decorated = {"pr": pr, "action": action, **result}
+        if result.get("ok"):
+            return decorated
+        if result.get("reason") != "branch kept moving; retry":
+            return decorated
+        last = decorated
+    return last or {
+        "ok": False,
+        "pr": pr,
+        "action": action,
+        "key": key,
+        "reason": "branch kept moving; retry",
+    }
 
 
 def _positive_pr(text: str) -> int:
