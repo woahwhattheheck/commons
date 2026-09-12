@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 import unittest
 
+from test_minimum_market_limit import MinimumOneMarketLimitTests
 import seed_retry as retry_module
 from seed_retry import propose_seed_retry, apply_committed_seed_retry, install_seed_retry
 
