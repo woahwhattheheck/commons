@@ -16,7 +16,7 @@ import hashlib
 import json
 import math
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import sys
 import uuid
@@ -27,6 +27,7 @@ SCHEMA = "titan-v5-promotion-gate/v1"
 IDENTITY_SCHEMA = "titan-v5-candidate-identity/v1"
 _V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
 _HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
+_INT_TEXT_RE = re.compile(r"^-?(?:0|[1-9][0-9]*)$")
 _MANIFEST_KEYS = frozenset(
     (
         "schema",
@@ -37,6 +38,25 @@ _MANIFEST_KEYS = frozenset(
         "components",
         "candidate_id",
     )
+)
+_COMPONENT_KEYS = frozenset(("name", "source", "source_sha256", "activation"))
+_ENGAGEMENT_KEYS = frozenset(
+    (
+        "classification",
+        "observations",
+        "noop_threshold",
+        "divergence_count",
+        "engagement_rate",
+        "first_divergence",
+        "control_sequence_fingerprint",
+        "candidate_sequence_fingerprint",
+        "key_fields",
+        "control_id",
+        "candidate_id",
+    )
+)
+_DIVERGENCE_KEYS = frozenset(
+    ("observation", "key", "control_fingerprint", "candidate_fingerprint")
 )
 
 
@@ -123,8 +143,109 @@ def _finite_number(value: Any, field: str, *, minimum: float | None = None) -> f
     return result
 
 
+def _nonempty_text(value: Any, field: str) -> str:
+    if type(value) is not str or not value.strip():
+        raise PromotionError(f"{field} must be a non-empty string")
+    return value
+
+
+def _validate_typed(value: Any, field: str) -> None:
+    """Validate the exact type-preserving tree emitted by v5_candidate_identity."""
+    if type(value) is not dict or "t" not in value:
+        raise PromotionError(f"{field} must be a canonical typed identity value")
+    tag = value.get("t")
+    if type(tag) is not str:
+        raise PromotionError(f"{field}.t must be a string")
+
+    if tag == "none":
+        if set(value) != {"t"}:
+            raise PromotionError(f"{field} none value has noncanonical keys")
+        return
+    if set(value) != {"t", "v"}:
+        raise PromotionError(f"{field} typed value has noncanonical keys")
+    payload = value["v"]
+
+    if tag == "bool":
+        if type(payload) is not bool:
+            raise PromotionError(f"{field} bool payload must be an exact bool")
+        return
+    if tag == "int":
+        if type(payload) is not str or _INT_TEXT_RE.fullmatch(payload) is None:
+            raise PromotionError(f"{field} int payload must be canonical decimal text")
+        if str(int(payload)) != payload:
+            raise PromotionError(f"{field} int payload is not canonical")
+        return
+    if tag == "float":
+        if type(payload) is not str:
+            raise PromotionError(f"{field} float payload must be canonical hex text")
+        try:
+            number = float.fromhex(payload)
+        except ValueError as exc:
+            raise PromotionError(f"{field} float payload is invalid") from exc
+        if not math.isfinite(number) or number.hex() != payload:
+            raise PromotionError(f"{field} float payload is not canonical finite hex")
+        return
+    if tag == "str":
+        if type(payload) is not str:
+            raise PromotionError(f"{field} string payload must be a string")
+        return
+    if tag == "list":
+        if type(payload) is not list:
+            raise PromotionError(f"{field} list payload must be a list")
+        for index, item in enumerate(payload):
+            _validate_typed(item, f"{field}.v[{index}]")
+        return
+    if tag == "dict":
+        if type(payload) is not list:
+            raise PromotionError(f"{field} dict payload must be a list of key/value pairs")
+        keys: list[str] = []
+        for index, pair in enumerate(payload):
+            if type(pair) is not list or len(pair) != 2 or type(pair[0]) is not str:
+                raise PromotionError(f"{field}.v[{index}] must be [string, typed-value]")
+            keys.append(pair[0])
+            _validate_typed(pair[1], f"{field}.v[{index}][1]")
+        if keys != sorted(keys) or len(keys) != len(set(keys)):
+            raise PromotionError(f"{field} dict keys must be unique and sorted")
+        return
+    raise PromotionError(f"{field} has unsupported typed tag {tag!r}")
+
+
+def _validate_component(component: Any, index: int) -> str:
+    field = f"candidate manifest components[{index}]"
+    if type(component) is not dict or set(component) != _COMPONENT_KEYS:
+        raise PromotionError(f"{field} must have exact canonical component keys")
+    name = _nonempty_text(component["name"], f"{field}.name")
+    source = _nonempty_text(component["source"], f"{field}.source")
+    path = PurePosixPath(source)
+    if (
+        path.is_absolute()
+        or path.as_posix() != source
+        or source == "."
+        or any(part in (".", "..") for part in path.parts)
+    ):
+        raise PromotionError(f"{field}.source must be a canonical relative path")
+    _hex64(component["source_sha256"], f"{field}.source_sha256")
+
+    activation = component["activation"]
+    if type(activation) is not dict:
+        raise PromotionError(f"{field}.activation must be an object")
+    mode = activation.get("mode")
+    if mode == "unconditional":
+        if set(activation) != {"mode"}:
+            raise PromotionError(f"{field}.activation unconditional record is not canonical")
+    elif mode == "config":
+        if set(activation) != {"mode", "equals"}:
+            raise PromotionError(f"{field}.activation config record is not canonical")
+        _validate_typed(activation["equals"], f"{field}.activation.equals")
+        if activation["equals"].get("t") != "dict":
+            raise PromotionError(f"{field}.activation.equals must encode a config mapping")
+    else:
+        raise PromotionError(f"{field}.activation mode is not canonical")
+    return name
+
+
 def validate_manifest(manifest: Mapping[str, Any]) -> str:
-    """Validate the identity manifest's closed shape and self-authenticating ID."""
+    """Validate the identity manifest's closed canonical shape and self-authenticating ID."""
     if type(manifest) is not dict:
         raise PromotionError("candidate manifest must be an object")
     if set(manifest) != _MANIFEST_KEYS:
@@ -136,16 +257,21 @@ def validate_manifest(manifest: Mapping[str, Any]) -> str:
     if manifest["schema"] != IDENTITY_SCHEMA:
         raise PromotionError(f"candidate manifest schema must be {IDENTITY_SCHEMA}")
     for field in ("base_id", "engine_id"):
-        if type(manifest[field]) is not str or not manifest[field].strip():
-            raise PromotionError(f"candidate manifest {field} must be a non-empty string")
+        _nonempty_text(manifest[field], f"candidate manifest {field}")
     opponent = manifest["opponent_pack_id"]
-    if opponent is not None and (type(opponent) is not str or not opponent.strip()):
-        raise PromotionError(
-            "candidate manifest opponent_pack_id must be null or a non-empty string"
-        )
+    if opponent is not None:
+        _nonempty_text(opponent, "candidate manifest opponent_pack_id")
     _hex64(manifest["config_sha256"], "candidate manifest config_sha256")
     if type(manifest["components"]) is not list:
         raise PromotionError("candidate manifest components must be a list")
+    names = [
+        _validate_component(component, index)
+        for index, component in enumerate(manifest["components"])
+    ]
+    if len(names) != len(set(names)):
+        raise PromotionError("candidate manifest component names must be unique")
+    if names != sorted(names):
+        raise PromotionError("candidate manifest components must be sorted by name")
 
     candidate_id = _v5c(manifest["candidate_id"], "candidate manifest candidate_id")
     body = {key: manifest[key] for key in manifest if key != "candidate_id"}
@@ -156,26 +282,73 @@ def validate_manifest(manifest: Mapping[str, Any]) -> str:
 
 
 def validate_engagement(report: Mapping[str, Any], candidate_id: str) -> str:
-    """Require decision engagement for exactly the manifest candidate."""
+    """Require a canonical identity-stamped engagement report for the manifest candidate."""
     if type(report) is not dict:
         raise PromotionError("engagement report must be an object")
-    control_id = _v5c(report.get("control_id"), "engagement control_id")
-    engaged_id = _v5c(report.get("candidate_id"), "engagement candidate_id")
+    if set(report) != _ENGAGEMENT_KEYS:
+        missing = sorted(_ENGAGEMENT_KEYS - set(report))
+        extra = sorted(set(report) - _ENGAGEMENT_KEYS)
+        raise PromotionError(
+            f"engagement report keys mismatch; missing={missing!r} extra={extra!r}"
+        )
+
+    control_id = _v5c(report["control_id"], "engagement control_id")
+    engaged_id = _v5c(report["candidate_id"], "engagement candidate_id")
     if control_id == engaged_id:
         raise PromotionError("engagement control_id and candidate_id must differ")
     if engaged_id != candidate_id:
         raise PromotionError("engagement candidate_id does not match candidate manifest")
-    if report.get("classification") != "ENGAGED":
+    if report["classification"] != "ENGAGED":
         raise PromotionError("engagement classification must be ENGAGED")
 
-    observations = _plain_int(report.get("observations"), "engagement observations", minimum=1)
+    observations = _plain_int(report["observations"], "engagement observations", minimum=1)
+    _plain_int(report["noop_threshold"], "engagement noop_threshold", minimum=1)
     divergence = _plain_int(
-        report.get("divergence_count"), "engagement divergence_count", minimum=1
+        report["divergence_count"], "engagement divergence_count", minimum=1
     )
     if divergence > observations:
         raise PromotionError("engagement divergence_count exceeds observations")
-    if not isinstance(report.get("first_divergence"), Mapping):
-        raise PromotionError("ENGAGED report requires first_divergence")
+    rate = _finite_number(report["engagement_rate"], "engagement engagement_rate", minimum=0.0)
+    expected_rate = divergence / observations
+    if rate > 1.0 or not math.isclose(rate, expected_rate, rel_tol=0.0, abs_tol=1e-15):
+        raise PromotionError("engagement rate disagrees with divergence count")
+
+    key_fields = report["key_fields"]
+    if (
+        type(key_fields) is not list
+        or not key_fields
+        or any(type(field) is not str or not field for field in key_fields)
+        or len(key_fields) != len(set(key_fields))
+    ):
+        raise PromotionError("engagement key_fields must be unique non-empty strings")
+    _hex64(
+        report["control_sequence_fingerprint"],
+        "engagement control_sequence_fingerprint",
+    )
+    _hex64(
+        report["candidate_sequence_fingerprint"],
+        "engagement candidate_sequence_fingerprint",
+    )
+
+    first = report["first_divergence"]
+    if type(first) is not dict or set(first) != _DIVERGENCE_KEYS:
+        raise PromotionError("ENGAGED report requires canonical first_divergence")
+    first_observation = _plain_int(
+        first["observation"], "engagement first_divergence observation", minimum=1
+    )
+    if first_observation > observations:
+        raise PromotionError("engagement first_divergence exceeds observations")
+    key = first["key"]
+    if type(key) is not dict or set(key) != set(key_fields):
+        raise PromotionError("engagement first_divergence key must match key_fields")
+    control_fp = _hex64(
+        first["control_fingerprint"], "engagement first_divergence control_fingerprint"
+    )
+    candidate_fp = _hex64(
+        first["candidate_fingerprint"], "engagement first_divergence candidate_fingerprint"
+    )
+    if control_fp == candidate_fp:
+        raise PromotionError("engagement first_divergence fingerprints must differ")
     return control_id
 
 
