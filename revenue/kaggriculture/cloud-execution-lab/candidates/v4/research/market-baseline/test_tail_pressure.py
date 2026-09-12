@@ -33,6 +33,13 @@ class TailPressureTests(unittest.TestCase):
         self.assertEqual(r["residual_event_public_supply_units"], 16)
         self.assertEqual(r["remaining_absorption_tail"]["quantile_units"], 132.8)
         self.assertEqual(r["remaining_absorption_tail"]["floor_budget_units"], 132)
+        self.assertTrue(r["canonical_tail_panel"])
+        self.assertTrue(r["source_rule_authenticated"])
+        self.assertFalse(r["realized_rival_quantity_authenticated"])
+        self.assertEqual(
+            r["source_event_custody"]["scenario_semantics"],
+            "conditional_source_max_not_observed_event",
+        )
         self.assertGreater(r["immediate"]["gross_relative_margin_swing"], 0)
         self.assertFalse(r["pressure_warning"])
         self.assertEqual(
@@ -93,6 +100,48 @@ class TailPressureTests(unittest.TestCase):
                 item="MELON", starting_inventory=10_000,
                 own_units=8, rival_units=8, pre_step=248,
             )
+        with self.assertRaises(ValueError):
+            T.pressure_certificate(
+                item="STRAWBERRY", starting_inventory=10_000,
+                own_units=8, rival_units=8, pre_step=100,
+            )
+
+    def test_rival_quantity_is_conditional_source_max_not_arbitrary(self):
+        with self.assertRaises(ValueError):
+            T.pressure_certificate(
+                item="STRAWBERRY", starting_inventory=10_000,
+                own_units=8, rival_units=7, pre_step=402,
+            )
+        r = T.pressure_certificate(
+            item="STRAWBERRY", starting_inventory=10_000,
+            own_units=8, rival_units=8, pre_step=402,
+        )
+        self.assertEqual(r["source_event_custody"]["source_max_sell"], 8)
+        self.assertFalse(r["source_event_custody"]["realized_rival_quantity_authenticated"])
+
+    def test_certificate_rejects_noncanonical_tail_panel(self):
+        with self.assertRaises(ValueError):
+            T.pressure_certificate(
+                item="STRAWBERRY", starting_inventory=10_000,
+                own_units=8, rival_units=8, pre_step=402, q=1.0,
+            )
+        with self.assertRaises(ValueError):
+            T.pressure_certificate(
+                item="STRAWBERRY", starting_inventory=10_000,
+                own_units=8, rival_units=8, pre_step=402, q=True,
+            )
+        with self.assertRaises(ValueError):
+            T.pressure_certificate(
+                item="STRAWBERRY", starting_inventory=10_000,
+                own_units=8, rival_units=8, pre_step=402, seeds=(1,),
+            )
+
+    def test_custom_tail_is_labelled_sensitivity_only(self):
+        r = T.remaining_absorption_tail("STRAWBERRY", 403, seeds=(1,))
+        self.assertFalse(r["canonical_panel"])
+        self.assertEqual(r["seed_count"], 1)
+        with self.assertRaises(ValueError):
+            T.remaining_absorption_tail("STRAWBERRY", 403, seeds=(True,))
 
     def test_numeric_bool_aliases_and_terminal_overrun_fail_closed(self):
         with self.assertRaises(ValueError):
