@@ -6,7 +6,8 @@ from b5_current_safe import B5CurrentABI
 
 
 class B5ReceiptParityTests(unittest.TestCase):
-    def test_jit_activation_retains_submitted_public_step(self):
+    @staticmethod
+    def _fixture():
         tiles = [[{} for _ in range(10)] for _ in range(10)]
         tiles[2][2] = {
             "kind": "PLANT",
@@ -27,6 +28,10 @@ class B5ReceiptParityTests(unittest.TestCase):
         }
         selected = {"farmer": ["PASS"], "hands": [], "market": []}
         next_authored = {"farmer": ["WATER"], "hands": [], "market": []}
+        return observation, selected, next_authored
+
+    def test_jit_activation_retains_submitted_public_step(self):
+        observation, selected, next_authored = self._fixture()
 
         result, report = B5CurrentABI(jit=True).transform(
             observation,
@@ -46,6 +51,35 @@ class B5ReceiptParityTests(unittest.TestCase):
         self.assertEqual(
             activation["reason"], "literal_pass_before_same_worker_yield_water"
         )
+
+    def test_authenticated_public_step_overrides_stale_donor_receipt_step(self):
+        observation, selected, next_authored = self._fixture()
+        adapter = B5CurrentABI(jit=True)
+
+        def stale_receipt(_observation, action, **_kwargs):
+            return action, {
+                "jit_activations": ({
+                    "step": 999,
+                    "worker": 0,
+                    "reason": "stale-donor-step",
+                },),
+            }
+
+        adapter._jit.transform = stale_receipt
+        result, report = adapter.transform(
+            observation,
+            selected,
+            next_authored=next_authored,
+            next_authored_step=51,
+        )
+
+        self.assertEqual(result, selected)
+        self.assertTrue(report["jit_route_bound"])
+        self.assertEqual(len(report["jit_activations"]), 1)
+        activation = report["jit_activations"][0]
+        self.assertEqual(activation["step"], 50)
+        self.assertEqual(activation["worker"], 0)
+        self.assertEqual(activation["reason"], "stale-donor-step")
 
 
 if __name__ == "__main__":
