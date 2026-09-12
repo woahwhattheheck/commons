@@ -2,7 +2,9 @@
 import copy
 import os
 from pathlib import Path
+import types
 import unittest
+from unittest.mock import patch
 
 import gemini_egg_timing as gt
 import sale_window as sw
@@ -15,6 +17,155 @@ def action(*market):
     out = copy.deepcopy(PASS)
     out["market"] = list(market)
     return out
+
+
+class ReceiptAttributionUnitTests(unittest.TestCase):
+    class Env:
+        configuration = {"maxMarketOrdersPerTurn": 10}
+
+    @staticmethod
+    def _tape(own):
+        return [[a, action()] for a in own]
+
+    @staticmethod
+    def _report(
+        *,
+        source_sold=12,
+        source_cash=120,
+        target_sold=12,
+        target_cash=120,
+        own_delta=50,
+    ):
+        return {
+            "baseline": {
+                "reports": [
+                    {"rows": [{
+                        "seat": 0,
+                        "row": 0,
+                        "sold": source_sold,
+                        "sale_cash": source_cash,
+                    }]},
+                    {"rows": []},
+                ]
+            },
+            "candidate": {
+                "reports": [
+                    {"rows": []},
+                    {"rows": [{
+                        "seat": 0,
+                        "row": 0,
+                        "sold": target_sold,
+                        "sale_cash": target_cash,
+                    }]},
+                ]
+            },
+            "window_cash_delta": [own_delta, 0],
+            "window_margin_delta": own_delta,
+            "terminal_margin_delta": None,
+            "engagement": "SALE_FILL_CHANGED",
+        }
+
+    def _search(self, result):
+        fake = types.SimpleNamespace(
+            shift_sale=lambda tape, *args: copy.deepcopy(tape),
+            compare=lambda *args: result,
+        )
+        tape = self._tape([action(["SELL", "EGG", 12]), action()])
+        with patch.object(gt, "_load_sale_window", return_value=fake):
+            return gt.search(
+                None,
+                None,
+                self.Env(),
+                tape,
+                start_step=4,
+                seat=0,
+                source_turn=0,
+                source_row_index=0,
+                max_delay=1,
+            )
+
+    def test_net_cash_gain_without_sale_receipt_gain_is_not_positive(self):
+        # Models the reviewed predecessor: delaying the sale can make an
+        # intervening spend fail, leaving more terminal/window cash even when
+        # the EGG receipt itself does not improve.
+        report = self._search(
+            self._report(source_cash=120, target_cash=120, own_delta=50)
+        )
+        row = report["candidates"][0]
+        self.assertEqual(row["sale_cash_delta"], 0)
+        self.assertEqual(row["own_cash_delta"], 50)
+        self.assertIsNone(report["best_positive"])
+
+    def test_sale_receipt_gain_is_positive_even_if_window_cash_is_negative(self):
+        report = self._search(
+            self._report(source_cash=120, target_cash=144, own_delta=-30)
+        )
+        row = report["best_positive"]
+        self.assertIsNotNone(row)
+        self.assertEqual(row["source_filled_units"], row["target_filled_units"])
+        self.assertEqual(row["sale_cash_delta"], 24)
+        self.assertEqual(row["own_cash_delta"], -30)
+
+    def test_fewer_units_never_claims_sale_receipt_gain(self):
+        report = self._search(
+            self._report(
+                source_sold=12,
+                source_cash=120,
+                target_sold=11,
+                target_cash=220,
+                own_delta=100,
+            )
+        )
+        row = report["candidates"][0]
+        self.assertFalse(row["realized_retiming"])
+        self.assertEqual(row["sale_cash_delta"], 0)
+        self.assertIsNone(report["best_positive"])
+
+    def test_sale_cash_metric_fails_closed_on_non_plain_int(self):
+        result = self._report()
+        result["baseline"]["reports"][0]["rows"][0]["sale_cash"] = True
+        self.assertIsNone(gt._sale_cash(result, "baseline", 0, 0, 0))
+
+    def test_malformed_source_sale_cash_cannot_mint_positive(self):
+        report = self._search(
+            self._report(source_cash=True, target_cash=120, own_delta=120)
+        )
+        row = report["candidates"][0]
+        self.assertTrue(row["realized_retiming"])
+        self.assertFalse(row["receipt_evidence_valid"])
+        self.assertEqual(row["sale_cash_delta"], 0)
+        self.assertIsNone(report["best_positive"])
+
+    def test_missing_source_sale_cash_cannot_mint_positive(self):
+        result = self._report(source_cash=0, target_cash=120, own_delta=120)
+        del result["baseline"]["reports"][0]["rows"][0]["sale_cash"]
+        report = self._search(result)
+        self.assertFalse(report["candidates"][0]["receipt_evidence_valid"])
+        self.assertIsNone(report["best_positive"])
+
+    def test_malformed_target_sale_cash_cannot_mint_positive(self):
+        report = self._search(
+            self._report(source_cash=0, target_cash=True, own_delta=120)
+        )
+        self.assertFalse(report["candidates"][0]["receipt_evidence_valid"])
+        self.assertIsNone(report["best_positive"])
+
+    def test_genuine_zero_source_receipt_remains_valid(self):
+        report = self._search(
+            self._report(source_cash=0, target_cash=120, own_delta=120)
+        )
+        row = report["best_positive"]
+        self.assertIsNotNone(row)
+        self.assertTrue(row["receipt_evidence_valid"])
+        self.assertEqual(row["sale_cash_delta"], 120)
+
+    def test_duplicate_matching_metric_rows_fail_closed(self):
+        result = self._report(source_cash=0, target_cash=120, own_delta=120)
+        source_row = result["baseline"]["reports"][0]["rows"][0]
+        result["baseline"]["reports"][0]["rows"].append(copy.deepcopy(source_row))
+        report = self._search(result)
+        self.assertFalse(report["candidates"][0]["receipt_evidence_valid"])
+        self.assertIsNone(report["best_positive"])
 
 
 class GeminiEggTimingTests(unittest.TestCase):
@@ -52,8 +203,12 @@ class GeminiEggTimingTests(unittest.TestCase):
             source_turn=0, source_row_index=0, max_delay=5,
         )
         self.assertIsNotNone(report["best_positive"])
-        self.assertGreater(report["best_positive"]["own_cash_delta"], 0)
+        self.assertGreater(report["best_positive"]["sale_cash_delta"], 0)
         self.assertTrue(report["best_positive"]["realized_retiming"])
+        self.assertEqual(
+            report["best_positive"]["target_filled_units"],
+            report["best_positive"]["source_filled_units"],
+        )
         # Step 8 consumes after market; step 9 is the first placement that can
         # capture both the step-4 and step-8 BAKERY depletion pulses.
         self.assertEqual(report["best_positive"]["target_step"], 9)
@@ -88,7 +243,7 @@ class GeminiEggTimingTests(unittest.TestCase):
     def test_destination_never_displaces_live_economics(self):
         full = self.tape([
             action(["SELL", "EGG", 1]),
-            action(*([ ["HIRE"] ] * 10)),
+            action(*([["HIRE"]] * 10)),
             action(["PASS"], ["HIRE"]),
         ])
         self.assertEqual(

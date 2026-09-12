@@ -44,6 +44,30 @@ class CurrentV4Tests(unittest.TestCase):
         self.assertIs(t.apply(obs(), a, CFG, enabled=False, completed=True), a)
         self.assertEqual(t.last_report["reason"], "disabled")
 
+    def test_enable_requires_literal_true_and_clears_stale_provenance(self):
+        poisons = ("false", 1, 1.0, [True], {"enabled": False}, None)
+        for enabled in poisons:
+            with self.subTest(enabled=enabled):
+                t = CurrentV4TerminalFertilizer()
+                primed = t.apply(obs(716), action(), CFG, enabled=True, completed=True)
+                self.assertEqual(primed["farmer"], ["COLLECT_FERTILIZER"])
+
+                parent = action()
+                self.assertIs(
+                    t.apply(None, parent, None, enabled=enabled, completed=True),
+                    parent,
+                )
+                self.assertEqual(t.last_report["reason"], "disabled")
+
+                terminal = action(market=[
+                    ["SELL", "FERTILIZER", 1],
+                    ["SELL", "MILK", 1],
+                ])
+                self.assertIs(
+                    t.apply(obs(718), terminal, CFG, enabled=True, completed=True),
+                    terminal,
+                )
+
     def test_fallback_is_exact_identity_and_clears_provenance(self):
         t = CurrentV4TerminalFertilizer()
         first = t.apply(obs(716), action(), CFG, enabled=True, completed=True)
