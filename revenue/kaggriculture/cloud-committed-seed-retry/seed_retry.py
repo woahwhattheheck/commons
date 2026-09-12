@@ -28,10 +28,10 @@ def _money(value: Any, label: str) -> int:
 
 def _market_limit(configuration: Mapping[str, Any] | None) -> int:
     cfg = dict(configuration or {})
-    maximum = _whole(cfg.get('maxMarketOrdersPerTurn', 10), 'order limit')
-    if not maximum:
-        raise ValueError('positive order limit required')
-    return maximum
+    maximum = cfg.get('maxMarketOrdersPerTurn', 10)
+    if isinstance(maximum, bool) or not isinstance(maximum, int):
+        raise ValueError('order limit must be an integer')
+    return max(1, maximum)
 
 
 def _active_market(queue: Any, maximum: int) -> list:
