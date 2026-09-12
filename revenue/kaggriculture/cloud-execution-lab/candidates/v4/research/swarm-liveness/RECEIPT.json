@@ -1,0 +1,44 @@
+{
+  "canonical_root": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "files_sha256": {
+    "README.md": "5ce7432a721206b723548990373761a23ccd475c233768d2b6f97527a58c8f3a",
+    "adversarial-events.jsonl": "88f23c681bc1f343423a8d15d3cd96fbc806814444cbe7818b28ffc47ee8960f",
+    "claim_liveness.py": "aed51de14bd532cc729435478973f0e0e3b1e708c69e45ba08564c535109be50",
+    "test_claim_liveness.py": "27a7b92f130c08a6d79810a64e32fddfad7165e7f705af86cf5f9d4d0e08f7ac"
+  },
+  "safety": {
+    "fresh_owner_blocks_recovery": true,
+    "noncanonical_root_is_anomaly": true,
+    "stale_is_overwrite_authority": false
+  },
+  "schema": "titan-v4-swarm-liveness-receipt/v1",
+  "scope": "research/control-plane only; no gameplay/default/archive/Kaggle mutation",
+  "tests": {
+    "compile": {
+      "command": "python -B -m py_compile claim_liveness.py test_claim_liveness.py",
+      "status": "PASS"
+    },
+    "fixture": {
+      "command": "python -B claim_liveness.py adversarial-events.jsonl --as-of 2000 --ttl-seconds 100",
+      "summary": {
+        "active": 1,
+        "active_with_stale_owner": 0,
+        "anomalies": 1,
+        "closed": 1,
+        "collisions": 1,
+        "lanes": 4,
+        "stale_claims": 1
+      }
+    },
+    "normal": {
+      "command": "python -B -m unittest -v test_claim_liveness.py",
+      "failed": 0,
+      "passed": 19
+    },
+    "optimized": {
+      "command": "python -O -B -m unittest -v test_claim_liveness.py",
+      "failed": 0,
+      "passed": 19
+    }
+  }
+}
