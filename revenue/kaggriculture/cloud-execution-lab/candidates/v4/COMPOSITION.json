@@ -194,7 +194,7 @@
     {
       "id": "d4-strawberry-timing",
       "state": "blocked",
-      "reason": "Package manifest is HOLD_REACHABILITY_CENSUS_REQUIRED; stale legacy apply_v4 wiring is explicitly prohibited.",
+      "reason": "Merged closure #12852 proves natural D4 engagement on the authenticated b567 baseline but complete returned-action/state hashes and terminal outcomes remain exact identity; there is no output-changing current one-stack postimage to compose.",
       "package": "research/d4-strawberry-timing",
       "entrypoints": [
         "research/d4-strawberry-timing/build_native_d4.py"
@@ -204,7 +204,7 @@
       "before": [],
       "after": [],
       "conflicts": [],
-      "note": "Blocked until literal-current-main reachability census and fresh exact-cell economic gate authorize recomposition."
+      "note": "REACHABLE_BUT_OUTPUT_INERT per #12852 / commit 209a6a8293218c47fa77661ed22b0e08eb7b5bc7: seven natural ON180 cells reached step409->due427 for 4 STRAWBERRY units with one d4_extension each, yet action/state hashes, terminal banks and margin stayed identical. Reopen only if the sole graph/postimage assembler publishes an authenticated current one-stack postimage with an output-changing natural D4 witness."
     },
     {
       "id": "row-shed-sell-order",
