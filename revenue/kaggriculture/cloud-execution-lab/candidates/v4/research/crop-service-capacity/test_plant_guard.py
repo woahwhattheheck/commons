@@ -1,0 +1,216 @@
+# SPDX-License-Identifier: Apache-2.0
+from __future__ import annotations
+
+import copy
+import importlib.util
+from pathlib import Path
+import sys
+import unittest
+
+HERE = Path(__file__).resolve().parent
+SPEC = importlib.util.spec_from_file_location("plant_guard", HERE / "plant_guard.py")
+mod = importlib.util.module_from_spec(SPEC)
+assert SPEC.loader is not None
+sys.modules[SPEC.name] = mod
+SPEC.loader.exec_module(mod)
+
+
+def observation(*, hour=23, farmer=(1, 1), hands=(), seeds=None, occupied=()):
+    size = 4
+    tiles = [[None for _ in range(size)] for _ in range(size)]
+    for x, y in occupied:
+        tiles[y][x] = "LOCKED"
+    seed_map = {crop: 10 for crop in mod.CROPS}
+    if seeds is not None:
+        seed_map.update(seeds)
+    farm = {
+        "farmer": list(farmer),
+        "hands": [list(pos) for pos in hands],
+        "tiles": tiles,
+    }
+    return {
+        "player": 0,
+        "hour": hour,
+        "farms": [farm],
+        "private": {"seeds": seed_map},
+    }
+
+
+def action(farmer=("PASS",), hands=(), market=()):
+    return {
+        "farmer": list(farmer),
+        "hands": [list(row) for row in hands],
+        "market": [list(row) for row in market],
+    }
+
+
+def assess(obs, selected, suffix=(), config=None):
+    return mod.assess_same_eod_plant_survival(
+        obs, selected, suffix, config, suffix_authenticated=True
+    )
+
+
+class PlantGuardTests(unittest.TestCase):
+    def test_last_hour_single_actor_plant_is_doomed(self):
+        result = assess(observation(), action(("PLANT", "WHEAT")))
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [0])
+
+    def test_same_callback_later_water_rescues(self):
+        obs = observation(hands=((1, 1),))
+        selected = action(("PLANT", "WHEAT"), hands=(("WATER",),))
+        result = assess(obs, selected)
+        self.assertEqual(result["reason"], "water_found_before_eod")
+        self.assertEqual(result["watered_actor_indices"], [0])
+
+    def test_same_callback_water_before_plant_does_not_rescue(self):
+        obs = observation(farmer=(1, 1), hands=((1, 1),))
+        selected = action(("WATER",), hands=(("PLANT", "WHEAT"),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [1])
+
+    def test_next_callback_same_actor_water_rescues(self):
+        obs = observation(hour=22)
+        selected = action(("PLANT", "WHEAT"))
+        suffix = [action(("WATER",))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["reason"], "water_found_before_eod")
+
+    def test_move_away_then_water_wrong_tile_is_doomed(self):
+        obs = observation(hour=21)
+        selected = action(("PLANT", "WHEAT"))
+        suffix = [action(("EAST",)), action(("WATER",))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+
+    def test_other_actor_can_move_then_water_target(self):
+        obs = observation(hour=21, farmer=(1, 1), hands=((0, 1),))
+        selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
+        suffix = [
+            action(("PASS",), hands=(("EAST",),)),
+            action(("PASS",), hands=(("WATER",),)),
+        ]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["reason"], "water_found_before_eod")
+        self.assertEqual(result["watered_actor_indices"], [0])
+
+    def test_out_of_bounds_move_is_noop_so_later_water_rescues(self):
+        obs = observation(hour=21, farmer=(0, 0))
+        selected = action(("PLANT", "WHEAT"))
+        suffix = [action(("WEST",)), action(("WATER",))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["reason"], "water_found_before_eod")
+
+    def test_incomplete_suffix_is_not_certified(self):
+        obs = observation(hour=21)
+        result = assess(obs, action(("PLANT", "WHEAT")), [action(("PASS",))])
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "incomplete_authored_suffix")
+
+    def test_current_hire_before_last_hour_is_ambiguity(self):
+        obs = observation(hour=22)
+        selected = action(("PLANT", "WHEAT"), market=(("HIRE",),))
+        result = assess(obs, selected, [action(("PASS",))])
+        self.assertEqual(result["reason"], "current_hire_actor_ambiguity")
+
+    def test_final_hour_hire_cannot_create_pre_eod_water_actor(self):
+        obs = observation(hour=23)
+        selected = action(("PLANT", "WHEAT"), market=(("HIRE",),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+
+    def test_future_final_hour_hire_is_irrelevant(self):
+        obs = observation(hour=22)
+        selected = action(("PLANT", "WHEAT"))
+        suffix = [action(("PASS",), market=(("HIRE",),))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+
+    def test_hire_beyond_market_cap_is_inert_for_ambiguity(self):
+        obs = observation(hour=22)
+        selected = action(
+            ("PLANT", "WHEAT"),
+            market=(("SELL", "WOOL", 1), ("HIRE",)),
+        )
+        result = assess(
+            obs,
+            selected,
+            [action(("PASS",))],
+            {"maxMarketOrdersPerTurn": 1, "turnsPerDay": 24},
+        )
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+
+    def test_atomic_seed_overshoot_means_no_executable_plant(self):
+        obs = observation(hands=((2, 2),), seeds={"WHEAT": 1})
+        selected = action(
+            ("PLANT", "WHEAT"),
+            hands=(("PLANT", "WHEAT"),),
+        )
+        result = assess(obs, selected)
+        self.assertEqual(result["reason"], "no_executable_current_plant")
+
+    def test_only_first_colocated_plant_can_execute(self):
+        obs = observation(hands=((1, 1),), seeds={"WHEAT": 2, "CARROT": 2})
+        selected = action(
+            ("PLANT", "WHEAT"),
+            hands=(("PLANT", "CARROT"),),
+        )
+        result = assess(obs, selected)
+        self.assertEqual(result["candidate_actor_indices"], [0])
+        self.assertEqual(result["doomed_actor_indices"], [0])
+
+    def test_nonempty_tile_is_not_a_candidate(self):
+        obs = observation(occupied=((1, 1),))
+        result = assess(obs, action(("PLANT", "WHEAT")))
+        self.assertEqual(result["reason"], "no_executable_current_plant")
+
+    def test_unauthenticated_suffix_never_rejects(self):
+        obs = observation()
+        result = mod.assess_same_eod_plant_survival(
+            obs, action(("PLANT", "WHEAT")), (), suffix_authenticated=False
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "suffix_not_authenticated")
+
+    def test_actor_cardinality_change_fails_closed(self):
+        obs = observation(hour=22, hands=((0, 0),))
+        selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
+        bad_suffix = [action(("PASS",), hands=())]
+        result = assess(obs, selected, bad_suffix)
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertIn("cardinality", result["reason"])
+
+    def test_mixed_multiple_plants_report_only_unwatered_actors(self):
+        obs = observation(
+            hour=22,
+            farmer=(1, 1),
+            hands=((2, 1), (0, 1)),
+            seeds={"WHEAT": 2, "CARROT": 2},
+        )
+        selected = action(
+            ("PLANT", "WHEAT"),
+            hands=(("PLANT", "CARROT"), ("PASS",)),
+        )
+        suffix = [
+            action(
+                ("WATER",),
+                hands=(("PASS",), ("PASS",)),
+            )
+        ]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["watered_actor_indices"], [0])
+        self.assertEqual(result["doomed_actor_indices"], [1])
+
+    def test_inputs_are_not_mutated(self):
+        obs = observation(hour=22, hands=((0, 1),))
+        selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
+        suffix = [action(("WATER",), hands=(("PASS",),))]
+        before = copy.deepcopy((obs, selected, suffix))
+        assess(obs, selected, suffix)
+        self.assertEqual((obs, selected, suffix), before)
+
+
+if __name__ == "__main__":
+    unittest.main()
