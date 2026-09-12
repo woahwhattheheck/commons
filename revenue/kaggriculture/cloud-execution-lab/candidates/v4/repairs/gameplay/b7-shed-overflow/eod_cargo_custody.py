@@ -341,8 +341,10 @@ def analyze(observation: Any, action: Any, configuration: Any = None) -> dict[st
 
 def transform(observation: Any, action: Any, configuration: Any = None, enabled: bool = False):
     """Apply the narrow EOD custody admission; no-op paths preserve identity."""
-    if not enabled:
+    if enabled is not True:
         telemetry["disabled"] += 1
+        if enabled is not False:
+            telemetry["invalid_enabled"] += 1
         return action
     decision = analyze(observation, action, configuration)
     if not decision.get("admit"):
@@ -368,5 +370,5 @@ def install(parent, enabled: bool = False):
 
     agent.parent = parent
     agent.telemetry = telemetry
-    agent.b7_custody_enabled = bool(enabled)
+    agent.b7_custody_enabled = enabled is True
     return agent

@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import sys
+from types import SimpleNamespace
 import unittest
 
 import seed_retry as retry_module
@@ -113,6 +114,57 @@ class SeedRetryTests(unittest.TestCase):
     def test_full_market_not_rewritten(self):
         action = deepcopy(PASS); action['market'] = [[] for _ in range(10)]
         self.assertEqual(propose(selected=action)[1]['reason'], 'no_append_slot')
+
+    def test_minimum_one_market_limit_keeps_type_contract(self):
+        for raw in (0, -1, -99):
+            with self.subTest(raw=raw):
+                self.assertEqual(retry_module._market_limit({'maxMarketOrdersPerTurn': raw}), 1)
+        self.assertEqual(retry_module._market_limit({'maxMarketOrdersPerTurn': 3}), 3)
+        for bad in (True, False, 1.0, '1', None):
+            with self.subTest(bad=bad):
+                with self.assertRaises(ValueError):
+                    retry_module._market_limit({'maxMarketOrdersPerTurn': bad})
+
+    def test_minimum_one_dynamic_product_veto_uses_row_zero_only(self):
+        for raw in (0, -7):
+            maximum = retry_module._market_limit({'maxMarketOrdersPerTurn': raw})
+            with self.subTest(raw=raw, case='row0'):
+                self.assertTrue(retry_module._has_dynamic_product_obligation(
+                    [[['BUY_PRODUCT', 'WHEAT', 1], []]], maximum))
+            with self.subTest(raw=raw, case='row1_suffix'):
+                self.assertFalse(retry_module._has_dynamic_product_obligation(
+                    [[[], ['BUY_PRODUCT', 'WHEAT', 1]]], maximum))
+
+    def test_minimum_one_cash_reserve_counts_two_row_zero_sources_only(self):
+        route = [deepcopy(PASS) for _ in range(12)]
+        route[11] = {'market': [['BUY_SEED', 'STRAWBERRY', 11],
+                                ['BUY_SEED', 'STRAWBERRY', 999]]}
+        runtime = SimpleNamespace(
+            controller=SimpleNamespace(R={'fixture': route}, cur='fixture'))
+        selected = {'market': [['BUY_SEED', 'STRAWBERRY', 7],
+                               ['BUY_SEED', 'STRAWBERRY', 999]]}
+        price = m.CROPS['STRAWBERRY']['seed']
+        for raw in (0, -5):
+            with self.subTest(raw=raw):
+                cfg = dict(CFG, maxMarketOrdersPerTurn=raw)
+                self.assertEqual(
+                    retry_module._prefix_cash_reserve(runtime, fixture(), cfg, selected, 11),
+                    price * 18,
+                )
+
+    def test_minimum_one_append_slot_is_row_zero_only(self):
+        for raw in (0, -3):
+            cfg = dict(CFG, maxMarketOrdersPerTurn=raw)
+            with self.subTest(raw=raw, case='empty_queue'):
+                action, report = propose(cfg=cfg)
+                self.assertEqual(report['status'], 'appended')
+                self.assertEqual(action['market'], [['BUY_SEED', 'STRAWBERRY', 1]])
+            with self.subTest(raw=raw, case='row0_occupied'):
+                selected = deepcopy(PASS)
+                selected['market'] = [[]]
+                action, report = propose(selected=selected, cfg=cfg)
+                self.assertEqual(report['reason'], 'no_append_slot')
+                self.assertEqual(action, selected)
 
     def test_day_boundary_not_predicted(self):
         obs = fixture(); obs.step = 23

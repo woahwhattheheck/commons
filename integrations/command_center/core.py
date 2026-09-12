@@ -1096,7 +1096,39 @@ class CommandCenter:
         payload["main"] = {"sha": sha, "status": head.get("status") if head else None,
                            "observed_at": head.get("observed_at") if head else None,
                            "bake_ttl_seconds": self.BAKE_TTL}
+        coordination = self._coordination_head(force=refresh)
+        payload["coordination"] = coordination["value"] if coordination.get("ok") else None
+        payload["coordination_source"] = {k: v for k, v in coordination.items() if k != "value"}
         return payload
+
+    COORDINATION_HEAD_URL = ("https://raw.githubusercontent.com/{repo}/"
+                             "state/coordination/coordination-head.json")
+
+    def _coordination_head(self, force=False):
+        """The coordination head from the state/coordination branch, not main.
+
+        host/coordination_state.py publishes it there so a refresh never moves
+        main. It is optional: a missing branch reads as absent with its error,
+        and never enters `sources` or `degraded`. Cached for BAKE_TTL.
+        """
+        with self._bakes_lock:
+            cached = self._bakes.get("\0coordination-head")
+            if (cached and not force
+                    and time.time() - cached["fetched"] < self.BAKE_TTL):
+                return dict(cached["read"])
+        url = self.COORDINATION_HEAD_URL.format(repo=self.repo)
+        base = {"path": "coordination-head.json", "road": "state-branch",
+                "branch": "state/coordination"}
+        try:
+            value = self.fetcher("GET", url)
+            if not isinstance(value, dict):
+                raise CoreError(502, "Coordination head must be a JSON object.")
+            read = dict(base, ok=True, value=value, observed_at=_now())
+        except Exception as exc:
+            read = dict(base, ok=False, value=None, error=self._failure(exc))
+        with self._bakes_lock:
+            self._bakes["\0coordination-head"] = {"fetched": time.time(), "read": read}
+        return dict(read)
 
     def _bake(self, rel, sha, force=False):
         """One bake from main at `sha`, cached until main moves or BAKE_TTL."""

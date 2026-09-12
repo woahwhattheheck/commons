@@ -302,6 +302,36 @@ class CrossLedgerTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any(e["code"] == "semantic_binding_component_package_split_brain" for e in result["errors"]))
 
+    def test_semantic_binding_rejects_trimmed_alias_for_literal_component_id(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        composition["components"][-1]["id"] = " d4-strawberry-timing "
+        result = cross.audit(canonical, integration, composition, d4_binding())
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(
+            e["code"] == "semantic_binding_component_package_split_brain"
+            and e["component"] == "d4-strawberry-timing"
+            for e in result["errors"]
+        ), result)
+
+    def test_semantic_binding_accepts_same_literal_whitespace_component_id(self):
+        canonical, integration, composition = fixture()
+        add_d4(canonical, integration, composition)
+        literal = " d4-strawberry-timing "
+        composition["components"][-1]["id"] = literal
+        binding = d4_binding()
+        binding["bindings"][0]["component"] = literal
+        result = cross.audit(canonical, integration, composition, binding)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(literal, result["semantic_mappings"][0]["component"])
+
+    def test_whitespace_only_composition_component_id_stays_invalid(self):
+        canonical, integration, composition = fixture()
+        composition["components"][1]["id"] = "   "
+        result = cross.audit(canonical, integration, composition)
+        self.assertFalse(result["ok"], result)
+        self.assertTrue(any(e["code"] == "bad_component_id" for e in result["errors"]), result)
+
     def test_semantic_binding_happy_path_is_visible(self):
         canonical, integration, composition = fixture()
         add_d4(canonical, integration, composition)

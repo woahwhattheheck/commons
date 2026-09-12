@@ -23,10 +23,35 @@ class LedgerError(RuntimeError):
     pass
 
 
+class DuplicateJsonKey(ValueError):
+    pass
+
+
+class NonFiniteJson(ValueError):
+    pass
+
+
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise DuplicateJsonKey(f"duplicate JSON object key {key!r}")
+        out[key] = value
+    return out
+
+
+def _reject_nonfinite(value: str) -> Any:
+    raise NonFiniteJson(f"non-finite JSON constant {value!r}")
+
+
 def _load(path: Path) -> dict[str, Any]:
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        value = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=_strict_object,
+            parse_constant=_reject_nonfinite,
+        )
+    except (OSError, json.JSONDecodeError, DuplicateJsonKey, NonFiniteJson) as exc:
         raise LedgerError(f"cannot load {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise LedgerError(f"{path} must contain a JSON object")
@@ -45,7 +70,10 @@ def _rows(ledger: dict[str, Any], key: str) -> list[dict[str, Any]]:
         lane = row.get("lane")
         if not isinstance(lane, str) or not lane.strip():
             raise LedgerError(f"INTEGRATION.json {key}[{index}] has invalid lane")
-        lane = lane.strip()
+        if lane != lane.strip():
+            raise LedgerError(
+                f"INTEGRATION.json {key}[{index}] lane must not have leading/trailing whitespace"
+            )
         if lane in seen:
             raise LedgerError(
                 f"INTEGRATION.json {key!r} duplicates lane {lane!r} "
@@ -53,7 +81,6 @@ def _rows(ledger: dict[str, Any], key: str) -> list[dict[str, Any]]:
             )
         seen[lane] = index
         row = dict(row)
-        row["lane"] = lane
         out.append(row)
     return out
 
@@ -126,6 +153,7 @@ def validate(root: Path = HERE) -> list[str]:
 
     for label, overlap in (
         ("landed/recovered", landed_lanes & recovered_lanes),
+        ("landed/blocked", landed_lanes & blocked_lanes),
         ("recovered/blocked", recovered_lanes & blocked_lanes),
         ("recovered/negative", recovered_lanes & negative_lanes),
         ("blocked/negative", blocked_lanes & negative_lanes),
@@ -137,7 +165,7 @@ def validate(root: Path = HERE) -> list[str]:
     # never be represented as a newly recovered or raw-custody work item above.
     for row in negative:
         disposition = row.get("disposition")
-        if not isinstance(disposition, str) or not disposition:
+        if not isinstance(disposition, str) or not disposition.strip():
             errors.append(f"negative/parked lane {row['lane']!r} lacks disposition")
 
     # Custody rows have two deliberately distinct contracts:
@@ -161,7 +189,11 @@ def validate(root: Path = HERE) -> list[str]:
         if not isinstance(custody_path, str) or not custody_path.strip():
             errors.append(f"custody lane {lane!r} lacks custody_path")
             continue
-        custody_path = custody_path.strip()
+        if custody_path != custody_path.strip():
+            errors.append(
+                f"custody lane {lane!r} custody_path must not have leading/trailing whitespace"
+            )
+            continue
         try:
             path = _resolve_within_root(
                 root,

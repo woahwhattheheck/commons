@@ -133,6 +133,25 @@ class OfficialMechanicsAdapterTests(unittest.TestCase):
         self.assertEqual({"kind": "COOP"}, rolled_back["farm"]["tiles"][1][1])
         self.assertEqual(1, rolled_back["private"]["seeds"]["WHEAT"])
 
+    def test_pruned_first_worker_of_next_turn_drops_stale_prefix(self):
+        # Multi-turn successor reuse (documented): turn 1 leaves prefix metadata
+        # in its successor. If turn 2's first worker action prunes, the stale
+        # metadata must not survive to make turn 2's second worker raise.
+        initial = fixture(2)
+        initial["farm"]["farmer"] = [0, 0]
+        first = self.transition(initial, 0, ["PLANT", "WHEAT"])
+        self.assertIsNotNone(first)
+        second = self.transition(first, 1, ["PASS"])
+        self.assertIsNotNone(second)
+
+        # Turn 2 on the reused successor: worker 0's off-board WEST prunes.
+        pruned = self.transition(second, 0, ["WEST"])
+        self.assertIsNone(pruned)
+        # Worker 1 must start fresh instead of raising on the stale prefix.
+        continued = self.transition(second, 1, ["EAST"])
+        self.assertIsNotNone(continued)
+        self.assertEqual([2, 1], continued["farm"]["hands"][0])
+
     def test_beam_resolves_shared_plant_demand_atomically(self):
         canonical = (["PASS"], ["PASS"])
         result = search_joint_actions(

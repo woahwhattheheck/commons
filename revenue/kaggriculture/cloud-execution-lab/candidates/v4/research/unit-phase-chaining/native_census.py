@@ -341,6 +341,12 @@ def _validate_panel_cells(cells: list[dict[str, Any]]) -> dict[str, Any]:
             )
         if cell["colocated_callbacks"] > cell["callbacks"]:
             raise ValueError(f"cell {index} colocated_callbacks exceeds callbacks")
+        if cell["colocated_callbacks"] > cell["colocated_groups"]:
+            raise ValueError(f"cell {index} colocated_callbacks exceeds colocated_groups")
+        if admission["changed_groups"] > admission["eligible_groups"]:
+            raise ValueError(f"cell {index} changed_groups exceeds eligible_groups")
+        if admission["eligible_groups"] > cell["colocated_groups"]:
+            raise ValueError(f"cell {index} eligible_groups exceeds colocated_groups")
 
         scores = cell.get("scores")
         if (

@@ -52,8 +52,11 @@ Official-engine source identity at repair:
 
 The component keeps strict fail-closed timing and market-prefix parsing:
 missing, bool/float/string-poisoned, or nonstandard `turnsPerDay` /
-`episodeSteps` fail closed; malformed explicit `maxMarketOrdersPerTurn` also
-fails closed under the existing H5 contract.
+`episodeSteps` fail closed. Missing `maxMarketOrdersPerTurn` uses the official
+default 10; an explicitly supplied **plain int** follows the interpreter's
+`max(1, value)` executable-prefix rule, so zero/negative ints still expose row 0.
+Bool, float, string, `None`, and other non-int cap values remain outside H5's
+source-safe contract and fail closed.
 
 ## Authority boundary
 

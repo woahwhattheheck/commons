@@ -25,6 +25,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 
 ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
+CONFIG_GIT_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
 HISTORICAL_DONOR_PR = 9806
 DEFAULT_TURNS_PER_DAY = 24
 DEFAULT_MAX_MARKET_ORDERS = 10
@@ -120,6 +121,8 @@ def _config_int(configuration: Mapping[str, Any] | None, key: str, default: int)
 def capacity_envelope(
     observation: Mapping[str, Any],
     configuration: Mapping[str, Any] | None = None,
+    *,
+    configuration_authenticated: bool = False,
 ) -> CapacityEnvelope:
     """Return two conservative upper bounds for same-day crop expansion.
 
@@ -139,7 +142,15 @@ def capacity_envelope(
     Each surviving new plant is charged two unit actions (PLANT + WATER).
     Passing either bound proves nothing about feasibility; exceeding the chosen
     bound is the only certified conclusion.
+
+    Omitted configuration uses pinned official defaults. Any explicit
+    configuration is proof-critical and is accepted only when the caller has
+    bound it to the interpreter instance and sets
+    ``configuration_authenticated=True`` literally.
     """
+    if configuration is not None and configuration_authenticated is not True:
+        raise CapacityInputError("configuration_not_authenticated")
+
     player, farm, board_tiles = _farm_from_observation(observation)
     turns_per_day = _config_int(configuration, "turnsPerDay", DEFAULT_TURNS_PER_DAY)
     max_market_orders = _config_int(
@@ -193,6 +204,7 @@ def assess_proposed_expansion(
     configuration: Mapping[str, Any] | None = None,
     *,
     no_future_hires: bool = False,
+    configuration_authenticated: bool = False,
 ) -> dict[str, Any]:
     """Classify only what the action budget can prove.
 
@@ -200,12 +212,32 @@ def assess_proposed_expansion(
     applicable conservative upper bound. Otherwise returns ``NOT_CERTIFIED``:
     movement, seed collateral, actor/target assignment, watering route, future
     land/reclamation actions, other work, and market execution remain unproved.
+
+    Explicit caller configuration is proof-critical. Without literal
+    ``configuration_authenticated=True`` it cannot be used to certify
+    impossibility and this function returns ``NOT_CERTIFIED`` without a ceiling.
     """
     proposed = _strict_int(proposed_new_plants, "proposed_new_plants")
     if not isinstance(no_future_hires, bool):
         raise CapacityInputError("no_future_hires_must_be_bool")
+    if configuration is not None and configuration_authenticated is not True:
+        return {
+            "verdict": "NOT_CERTIFIED",
+            "reason": "configuration_not_authenticated",
+            "proposed_new_plants": proposed,
+            "ceiling": None,
+            "bound": "current_labor" if no_future_hires else "absolute_action",
+            "engine_git_blob": ENGINE_GIT_BLOB,
+            "configuration_git_blob": CONFIG_GIT_BLOB,
+            "historical_donor_pr": HISTORICAL_DONOR_PR,
+            "envelope": None,
+        }
 
-    env = capacity_envelope(observation, configuration)
+    env = capacity_envelope(
+        observation,
+        configuration,
+        configuration_authenticated=configuration_authenticated,
+    )
     ceiling = (
         env.current_labor_ceiling if no_future_hires else env.absolute_action_ceiling
     )
@@ -216,6 +248,7 @@ def assess_proposed_expansion(
         "ceiling": ceiling,
         "bound": "current_labor" if no_future_hires else "absolute_action",
         "engine_git_blob": ENGINE_GIT_BLOB,
+        "configuration_git_blob": CONFIG_GIT_BLOB,
         "historical_donor_pr": HISTORICAL_DONOR_PR,
         "envelope": env.as_dict(),
     }

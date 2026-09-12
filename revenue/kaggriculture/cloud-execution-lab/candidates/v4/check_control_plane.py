@@ -9,6 +9,7 @@ the existing validators without reopening those ledger trust bytes.
 from __future__ import annotations
 
 import argparse
+import errno
 import json
 import os
 import re
@@ -43,32 +44,323 @@ def _reject_constant(token: str) -> Any:
     raise ControlPlaneError(f"non-finite JSON constant {token!r}")
 
 
-def _read_regular_bytes(path: Path, label: str) -> bytes:
-    if path.is_symlink():
-        raise ControlPlaneError(f"{label} must not be a symlink")
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+def _safe_relpath(value: Any) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value:
+        return False
+    p = PurePosixPath(value)
+    return not p.is_absolute() and "." not in p.parts and ".." not in p.parts
+
+
+def _require_secure_open_capabilities() -> None:
+    for name in ("O_DIRECTORY", "O_NOFOLLOW"):
+        value = getattr(os, name, None)
+        if isinstance(value, bool) or not isinstance(value, int) or value == 0:
+            raise ControlPlaneError(f"secure control-root traversal requires os.{name}")
+    supports_dir_fd = getattr(os, "supports_dir_fd", ())
+    if os.open not in supports_dir_fd:
+        raise ControlPlaneError("secure control-root traversal requires os.open dir_fd support")
+
+
+def _require_topology_snapshot_capabilities() -> None:
+    _require_secure_open_capabilities()
+    if os.listdir not in getattr(os, "supports_fd", ()):
+        raise ControlPlaneError("secure topology snapshot requires os.listdir fd support")
+    if os.stat not in getattr(os, "supports_dir_fd", ()):
+        raise ControlPlaneError("secure topology snapshot requires os.stat dir_fd support")
+    if os.stat not in getattr(os, "supports_follow_symlinks", ()):
+        raise ControlPlaneError("secure topology snapshot requires os.stat follow_symlinks support")
+
+
+def _dir_open_flags() -> int:
+    _require_secure_open_capabilities()
+    return os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | os.O_DIRECTORY | os.O_NOFOLLOW
+
+
+def _file_open_flags() -> int:
+    _require_secure_open_capabilities()
+    return os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | os.O_NOFOLLOW
+
+
+def _topology_identity(info: os.stat_result) -> tuple[int, int, int]:
+    return info.st_dev, info.st_ino, stat.S_IFMT(info.st_mode)
+
+
+def _directory_epoch(info: os.stat_result) -> tuple[int, int, int, int]:
+    return info.st_dev, info.st_ino, info.st_mtime_ns, info.st_ctime_ns
+
+
+def _snapshot_directory_topology(
+    source_fd: int,
+    snapshot_root: Path,
+    prefix: PurePosixPath = PurePosixPath(),
+) -> None:
+    """Mirror names and file kinds from one anchored directory into a temp tree."""
+    before_directory = os.fstat(source_fd)
+    if not stat.S_ISDIR(before_directory.st_mode):
+        raise ControlPlaneError(f"composition topology {prefix.as_posix()!r} is not a directory")
     try:
-        fd = os.open(path, flags)
+        names = sorted(os.listdir(source_fd))
     except OSError as exc:
-        raise ControlPlaneError(f"cannot open {label}: {exc}") from exc
+        raise ControlPlaneError(
+            f"cannot list composition topology {prefix.as_posix()!r}: {exc}"
+        ) from exc
+
+    for name in names:
+        rel = prefix / name
+        try:
+            before = os.stat(name, dir_fd=source_fd, follow_symlinks=False)
+        except OSError as exc:
+            raise ControlPlaneError(f"cannot stat composition topology {rel.as_posix()!r}: {exc}") from exc
+
+        destination = snapshot_root / rel
+        if stat.S_ISDIR(before.st_mode):
+            child_fd = -1
+            try:
+                try:
+                    child_fd = os.open(name, _dir_open_flags(), dir_fd=source_fd)
+                except OSError as exc:
+                    raise ControlPlaneError(
+                        f"cannot open composition topology directory {rel.as_posix()!r}: {exc}"
+                    ) from exc
+                opened = os.fstat(child_fd)
+                if _topology_identity(opened) != _topology_identity(before):
+                    raise ControlPlaneError(
+                        f"composition topology changed before directory capture at {rel.as_posix()!r}"
+                    )
+                destination.mkdir(parents=True, exist_ok=False)
+                _snapshot_directory_topology(child_fd, snapshot_root, rel)
+            finally:
+                if child_fd >= 0:
+                    os.close(child_fd)
+        elif stat.S_ISREG(before.st_mode):
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.touch(exist_ok=False)
+        elif stat.S_ISLNK(before.st_mode):
+            raise ControlPlaneError(
+                f"symlink ancestry is forbidden at {rel.as_posix()!r}; object must not be a symlink"
+            )
+        else:
+            raise ControlPlaneError(
+                f"unsupported composition topology object at {rel.as_posix()!r}"
+            )
+
+        try:
+            after = os.stat(name, dir_fd=source_fd, follow_symlinks=False)
+        except OSError as exc:
+            raise ControlPlaneError(
+                f"composition topology changed during capture at {rel.as_posix()!r}: {exc}"
+            ) from exc
+        if _topology_identity(after) != _topology_identity(before):
+            raise ControlPlaneError(
+                f"composition topology changed during capture at {rel.as_posix()!r}"
+            )
+
     try:
-        opened = os.fstat(fd)
+        names_after = sorted(os.listdir(source_fd))
+    except OSError as exc:
+        raise ControlPlaneError(
+            f"cannot relist composition topology {prefix.as_posix()!r}: {exc}"
+        ) from exc
+    after_directory = os.fstat(source_fd)
+    if names_after != names or _directory_epoch(after_directory) != _directory_epoch(before_directory):
+        raise ControlPlaneError(
+            f"composition topology directory changed during capture at {prefix.as_posix()!r}"
+        )
+
+
+def _capture_topology_snapshot(root_fd: int, snapshot_root: Path) -> None:
+    """Capture one immutable directory/regular-file topology from the anchored root."""
+    _require_topology_snapshot_capabilities()
+    try:
+        source_fd = os.dup(root_fd)
+    except OSError as exc:
+        raise ControlPlaneError(f"cannot duplicate control root for topology snapshot: {exc}") from exc
+    try:
+        _snapshot_directory_topology(source_fd, snapshot_root)
+    except OSError as exc:
+        raise ControlPlaneError(f"cannot materialize composition topology snapshot: {exc}") from exc
+    finally:
+        os.close(source_fd)
+
+
+def _lexical_absolute(path: Path) -> Path:
+    return Path(os.path.abspath(os.fspath(path)))
+
+
+def _open_control_root(root: Path, *, label: str = "control root") -> int:
+    """Anchor one lexical absolute directory without following any ancestor."""
+    _require_secure_open_capabilities()
+    absolute = _lexical_absolute(root)
+    anchor = absolute.anchor
+    if not anchor:
+        raise ControlPlaneError(f"{label}: absolute filesystem anchor is unavailable")
+    current_fd = -1
+    try:
+        try:
+            current_fd = os.open(anchor, _dir_open_flags())
+        except OSError as exc:
+            raise ControlPlaneError(f"cannot open filesystem anchor for {label}: {exc}") from exc
+        for part in absolute.parts[1:]:
+            try:
+                next_fd = os.open(part, _dir_open_flags(), dir_fd=current_fd)
+            except OSError as exc:
+                raise ControlPlaneError(
+                    f"cannot open {label} directory component {part!r}: {exc}"
+                ) from exc
+            os.close(current_fd)
+            current_fd = next_fd
+        opened = os.fstat(current_fd)
+        if not stat.S_ISDIR(opened.st_mode):
+            raise ControlPlaneError(f"{label} must resolve to a directory")
+        result = current_fd
+        current_fd = -1
+        return result
+    finally:
+        if current_fd >= 0:
+            os.close(current_fd)
+
+
+def _starting_root_fd(root: Path, root_fd: int | None, *, label: str) -> int:
+    if root_fd is None:
+        return _open_control_root(root, label=label)
+    try:
+        return os.dup(root_fd)
+    except OSError as exc:
+        raise ControlPlaneError(f"cannot duplicate anchored control root for {label}: {exc}") from exc
+
+
+def _assert_control_root_identity(root: Path, root_fd: int) -> None:
+    """Reject rename/replacement of the lexical control-root pathname mid-run."""
+    current_fd = _open_control_root(root, label="control root")
+    try:
+        anchored = os.fstat(root_fd)
+        current = os.fstat(current_fd)
+        if (anchored.st_dev, anchored.st_ino) != (current.st_dev, current.st_ino):
+            raise ControlPlaneError("control root changed during verification")
+    finally:
+        os.close(current_fd)
+
+
+def _open_directory_beneath(
+    root: Path,
+    rel: str,
+    *,
+    label: str,
+    root_fd: int | None = None,
+) -> int:
+    """Open a directory below ``root`` without following any path component."""
+    if not _safe_relpath(rel):
+        raise ControlPlaneError(f"{label}: unsafe relative path {rel!r}")
+    current_fd = _starting_root_fd(root, root_fd, label=label)
+    try:
+        for part in PurePosixPath(rel).parts:
+            try:
+                next_fd = os.open(part, _dir_open_flags(), dir_fd=current_fd)
+            except OSError as exc:
+                raise ControlPlaneError(
+                    f"cannot open {label} directory component {part!r}: {exc}"
+                ) from exc
+            os.close(current_fd)
+            current_fd = next_fd
+        opened = os.fstat(current_fd)
+        if not stat.S_ISDIR(opened.st_mode):
+            raise ControlPlaneError(f"{label} must resolve to a directory")
+        result = current_fd
+        current_fd = -1
+        return result
+    finally:
+        if current_fd >= 0:
+            os.close(current_fd)
+
+
+def _directory_exists_beneath(
+    root: Path,
+    rel: str,
+    *,
+    label: str,
+    root_fd: int | None = None,
+) -> bool:
+    try:
+        fd = _open_directory_beneath(root, rel, label=label, root_fd=root_fd)
+    except ControlPlaneError:
+        return False
+    os.close(fd)
+    return True
+
+
+def _read_regular_bytes_beneath(
+    root: Path,
+    rel: str,
+    *,
+    label: str,
+    root_fd: int | None = None,
+) -> bytes:
+    """Single-open snapshot below root with no-follow traversal on every component."""
+    if not _safe_relpath(rel):
+        raise ControlPlaneError(f"{label}: unsafe relative path {rel!r}")
+    parts = PurePosixPath(rel).parts
+    if not parts:
+        raise ControlPlaneError(f"{label}: empty relative path")
+    current_fd = _starting_root_fd(root, root_fd, label=label)
+    file_fd = -1
+    try:
+        for part in parts[:-1]:
+            try:
+                next_fd = os.open(part, _dir_open_flags(), dir_fd=current_fd)
+            except OSError as exc:
+                raise ControlPlaneError(
+                    f"cannot open {label} directory component {part!r}: {exc}"
+                ) from exc
+            os.close(current_fd)
+            current_fd = next_fd
+        try:
+            file_fd = os.open(parts[-1], _file_open_flags(), dir_fd=current_fd)
+        except OSError as exc:
+            if exc.errno == errno.ELOOP:
+                raise ControlPlaneError(f"{label} must not be a symlink") from exc
+            raise ControlPlaneError(f"cannot open {label}: {exc}") from exc
+        opened = os.fstat(file_fd)
         if not stat.S_ISREG(opened.st_mode):
             raise ControlPlaneError(f"{label} must be a regular file")
-        with os.fdopen(fd, "rb") as stream:
-            fd = -1
+        with os.fdopen(file_fd, "rb") as stream:
+            file_fd = -1
             return stream.read()
     finally:
-        if fd >= 0:
-            os.close(fd)
+        if file_fd >= 0:
+            os.close(file_fd)
+        if current_fd >= 0:
+            os.close(current_fd)
 
 
-def strict_load(path: Path) -> dict[str, Any]:
-    raw = _read_regular_bytes(path, path.name)
+def _read_regular_bytes(path: Path, *, label: str) -> bytes:
+    """Single-open snapshot with no-follow traversal across the absolute parent."""
+    absolute = _lexical_absolute(path)
+    parent_fd = _open_control_root(absolute.parent, label=f"{label} parent")
+    file_fd = -1
+    try:
+        try:
+            file_fd = os.open(absolute.name, _file_open_flags(), dir_fd=parent_fd)
+        except OSError as exc:
+            if exc.errno == errno.ELOOP:
+                raise ControlPlaneError(f"{label} must not be a symlink") from exc
+            raise ControlPlaneError(f"cannot open {label}: {exc}") from exc
+        opened = os.fstat(file_fd)
+        if not stat.S_ISREG(opened.st_mode):
+            raise ControlPlaneError(f"{label} must be a regular file")
+        with os.fdopen(file_fd, "rb") as stream:
+            file_fd = -1
+            return stream.read()
+    finally:
+        if file_fd >= 0:
+            os.close(file_fd)
+        os.close(parent_fd)
+
+
+def _strict_json_bytes(raw: bytes, *, name: str) -> dict[str, Any]:
     try:
         text = raw.decode("utf-8")
     except UnicodeDecodeError as exc:
-        raise ControlPlaneError(f"{path.name} is not UTF-8: {exc}") from exc
+        raise ControlPlaneError(f"{name} is not UTF-8: {exc}") from exc
     try:
         value = json.loads(
             text,
@@ -76,17 +368,30 @@ def strict_load(path: Path) -> dict[str, Any]:
             parse_constant=_reject_constant,
         )
     except (json.JSONDecodeError, ControlPlaneError) as exc:
-        raise ControlPlaneError(f"{path.name} invalid JSON: {exc}") from exc
+        raise ControlPlaneError(f"{name} invalid JSON: {exc}") from exc
     if type(value) is not dict:
-        raise ControlPlaneError(f"{path.name} must contain one JSON object")
+        raise ControlPlaneError(f"{name} must contain one JSON object")
     return value
 
 
-def _safe_relpath(value: Any) -> bool:
-    if not isinstance(value, str) or not value or "\\" in value:
-        return False
-    p = PurePosixPath(value)
-    return not p.is_absolute() and "." not in p.parts and ".." not in p.parts
+def strict_load(path: Path) -> dict[str, Any]:
+    return _strict_json_bytes(
+        _read_regular_bytes(path, label=path.name),
+        name=path.name,
+    )
+
+
+def strict_load_beneath(
+    root: Path,
+    rel: str,
+    *,
+    root_fd: int | None = None,
+) -> dict[str, Any]:
+    name = PurePosixPath(rel).name
+    return _strict_json_bytes(
+        _read_regular_bytes_beneath(root, rel, label=name, root_fd=root_fd),
+        name=name,
+    )
 
 
 def _symlink_prefix(root: Path, rel: str) -> str | None:
@@ -207,11 +512,14 @@ def _harden_integration(
     root: Path,
     integration: dict[str, Any],
     errors: list[str],
-) -> dict[str, dict[str, Any]]:
+    *,
+    root_fd: int | None = None,
+) -> tuple[dict[str, dict[str, Any]], set[str]]:
     manifest_snapshots: dict[str, dict[str, Any]] = {}
+    custody_directory_snapshots: set[str] = set()
     blocked = integration.get("custody_blocked")
     if not isinstance(blocked, list):
-        return manifest_snapshots
+        return manifest_snapshots, custody_directory_snapshots
     for index, row in enumerate(blocked):
         if not isinstance(row, dict):
             continue
@@ -219,6 +527,15 @@ def _harden_integration(
         label = lane if isinstance(lane, str) and lane else f"index:{index}"
         custody_path = row.get("custody_path")
         _check_trust_path(root, custody_path, f"custody {label}", errors)
+        if _safe_relpath(custody_path):
+            assert isinstance(custody_path, str)
+            if _directory_exists_beneath(
+                root,
+                custody_path,
+                label=f"custody {label}",
+                root_fd=root_fd,
+            ):
+                custody_directory_snapshots.add(custody_path)
         if row.get("status") != "awaiting_raw_payload" or not _safe_relpath(custody_path):
             continue
         assert isinstance(custody_path, str)
@@ -227,22 +544,44 @@ def _harden_integration(
         if any(item.startswith(f"custody {label} manifest:") for item in errors):
             continue
         try:
-            manifest_snapshots[manifest_rel] = strict_load(root / PurePosixPath(manifest_rel))
+            manifest_snapshots[manifest_rel] = strict_load_beneath(
+                root,
+                manifest_rel,
+                root_fd=root_fd,
+            )
         except ControlPlaneError as exc:
             errors.append(f"custody {label} manifest: {exc}")
-    return manifest_snapshots
+    return manifest_snapshots, custody_directory_snapshots
 
 
-def _read_regular_utf8(path: Path) -> str:
-    raw = _read_regular_bytes(path, f"validator module {path.name}")
+def _read_regular_utf8_beneath(
+    root: Path,
+    rel: str,
+    *,
+    root_fd: int,
+) -> str:
+    name = PurePosixPath(rel).name
+    raw = _read_regular_bytes_beneath(
+        root,
+        rel,
+        label=f"validator module {name}",
+        root_fd=root_fd,
+    )
     try:
         return raw.decode("utf-8")
     except UnicodeDecodeError as exc:
-        raise ControlPlaneError(f"validator module {path.name} is not UTF-8: {exc}") from exc
+        raise ControlPlaneError(f"validator module {name} is not UTF-8: {exc}") from exc
 
 
-def _load_module_snapshot(path: Path, module_name: str):
-    source = _read_regular_utf8(path)
+def _load_module_snapshot(
+    root: Path,
+    rel: str,
+    module_name: str,
+    *,
+    root_fd: int,
+):
+    source = _read_regular_utf8_beneath(root, rel, root_fd=root_fd)
+    path = root / PurePosixPath(rel)
     try:
         code = compile(source, str(path), "exec")
     except (SyntaxError, ValueError) as exc:
@@ -263,11 +602,11 @@ def _dump_snapshot(path: Path, value: dict[str, Any]) -> None:
 
 
 def _populate_integration_snapshot(
-    live_root: Path,
     snapshot_root: Path,
     canonical: dict[str, Any],
     integration: dict[str, Any],
     manifest_snapshots: dict[str, dict[str, Any]],
+    custody_directory_snapshots: set[str],
 ) -> None:
     _dump_snapshot(snapshot_root / "CANONICAL.json", canonical)
     _dump_snapshot(snapshot_root / "INTEGRATION.json", integration)
@@ -281,8 +620,7 @@ def _populate_integration_snapshot(
             if not _safe_relpath(custody_path):
                 continue
             assert isinstance(custody_path, str)
-            live_path = live_root / PurePosixPath(custody_path)
-            if live_path.is_dir():
+            if custody_path in custody_directory_snapshots:
                 (snapshot_root / PurePosixPath(custody_path)).mkdir(parents=True, exist_ok=True)
 
     for manifest_rel, manifest in manifest_snapshots.items():
@@ -291,20 +629,27 @@ def _populate_integration_snapshot(
 
 def _delegate(
     root: Path,
+    root_fd: int,
     canonical: dict[str, Any],
     integration: dict[str, Any],
     composition: dict[str, Any],
+    composition_root: Path,
     manifest_snapshots: dict[str, dict[str, Any]],
+    custody_directory_snapshots: set[str],
     errors: list[str],
 ) -> None:
     try:
         ledger = _load_module_snapshot(
-            root / DELEGATE_FILES[0],
+            root,
+            DELEGATE_FILES[0],
             "_titan_v4_integration_validator",
+            root_fd=root_fd,
         )
         graph = _load_module_snapshot(
-            root / DELEGATE_FILES[1],
+            root,
+            DELEGATE_FILES[1],
             "_titan_v4_composition_validator",
+            root_fd=root_fd,
         )
     except Exception as exc:
         errors.append(f"delegate load failure: {type(exc).__name__}: {exc}")
@@ -314,11 +659,11 @@ def _delegate(
         with tempfile.TemporaryDirectory(prefix="titan-v4-ledger-snapshot-") as td:
             snapshot_root = Path(td)
             _populate_integration_snapshot(
-                root,
                 snapshot_root,
                 canonical,
                 integration,
                 manifest_snapshots,
+                custody_directory_snapshots,
             )
             ledger_errors = ledger.validate(snapshot_root)
     except Exception as exc:
@@ -330,7 +675,7 @@ def _delegate(
             errors.extend(f"integration: {item}" for item in ledger_errors)
 
     try:
-        graph_result = graph.validate_manifest(composition, root)
+        graph_result = graph.validate_manifest(composition, composition_root)
     except Exception as exc:
         errors.append(f"composition delegate failure: {type(exc).__name__}: {exc}")
     else:
@@ -344,40 +689,91 @@ def _delegate(
 
 
 def validate_control_plane(root: Path, *, delegate: bool = True) -> dict[str, Any]:
-    root = root.resolve()
+    root = _lexical_absolute(root)
     errors: list[str] = []
     loaded: dict[str, dict[str, Any]] = {}
+    root_fd = -1
+    topology_tmp: tempfile.TemporaryDirectory[str] | None = None
+    composition_root: Path | None = None
 
-    for name in EXPECTED_FILES:
+    try:
         try:
-            loaded[name] = strict_load(root / name)
+            root_fd = _open_control_root(root)
         except ControlPlaneError as exc:
             errors.append(str(exc))
+            return {
+                "ok": False,
+                "delegate": delegate,
+                "checked_files": list(EXPECTED_FILES),
+                "errors": sorted(errors),
+            }
 
-    canonical = loaded.get("CANONICAL.json")
-    composition = loaded.get("COMPOSITION.json")
-    integration = loaded.get("INTEGRATION.json")
-    manifest_snapshots: dict[str, dict[str, Any]] = {}
-    if composition is not None:
-        _harden_composition(root, composition, errors)
-    if integration is not None:
-        manifest_snapshots = _harden_integration(root, integration, errors)
+        for name in EXPECTED_FILES:
+            try:
+                loaded[name] = strict_load_beneath(root, name, root_fd=root_fd)
+            except ControlPlaneError as exc:
+                errors.append(str(exc))
 
-    if (
-        delegate
-        and canonical is not None
-        and composition is not None
-        and integration is not None
-        and not errors
-    ):
-        _delegate(
-            root,
-            canonical,
-            integration,
-            composition,
-            manifest_snapshots,
-            errors,
-        )
+        canonical = loaded.get("CANONICAL.json")
+        composition = loaded.get("COMPOSITION.json")
+        integration = loaded.get("INTEGRATION.json")
+        manifest_snapshots: dict[str, dict[str, Any]] = {}
+        custody_directory_snapshots: set[str] = set()
+
+        if composition is not None:
+            try:
+                topology_tmp = tempfile.TemporaryDirectory(prefix="titan-v4-composition-topology-")
+                composition_root = Path(topology_tmp.name)
+                _capture_topology_snapshot(root_fd, composition_root)
+                _harden_composition(composition_root, composition, errors)
+            except (ControlPlaneError, OSError) as exc:
+                errors.append(f"composition topology: {exc}")
+                if topology_tmp is not None:
+                    topology_tmp.cleanup()
+                topology_tmp = None
+                composition_root = None
+
+        if integration is not None:
+            manifest_snapshots, custody_directory_snapshots = _harden_integration(
+                root,
+                integration,
+                errors,
+                root_fd=root_fd,
+            )
+
+        if (
+            delegate
+            and canonical is not None
+            and composition is not None
+            and composition_root is not None
+            and integration is not None
+            and not errors
+        ):
+            try:
+                _assert_control_root_identity(root, root_fd)
+            except ControlPlaneError as exc:
+                errors.append(str(exc))
+            if not errors:
+                _delegate(
+                    root,
+                    root_fd,
+                    canonical,
+                    integration,
+                    composition,
+                    composition_root,
+                    manifest_snapshots,
+                    custody_directory_snapshots,
+                    errors,
+                )
+                try:
+                    _assert_control_root_identity(root, root_fd)
+                except ControlPlaneError as exc:
+                    errors.append(str(exc))
+    finally:
+        if topology_tmp is not None:
+            topology_tmp.cleanup()
+        if root_fd >= 0:
+            os.close(root_fd)
 
     errors = sorted(errors)
     return {

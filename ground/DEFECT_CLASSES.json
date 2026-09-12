@@ -1,0 +1,64 @@
+{
+  "schema": "commons-defect-classes/v1",
+  "classes": [
+    {
+      "id": "workflow.py_compile_clean_tree",
+      "title": "py_compile dirties a clean-tree proof",
+      "severity": "high",
+      "enforcement": "static",
+      "scope": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
+      "summary": "A workflow run block compiles Python without suppressing bytecode and later asserts a clean checkout in the same block."
+    },
+    {
+      "id": "workflow.run_block_expression",
+      "title": "GitHub expression interpolation inside multiline run",
+      "severity": "high",
+      "enforcement": "static",
+      "scope": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
+      "summary": "A multiline run block contains a ${{ ... }} expression; move the value through env or an explicit file/input boundary instead."
+    },
+    {
+      "id": "workflow.artifact_always",
+      "title": "Evidence artifact uploads under if: always()",
+      "severity": "high",
+      "enforcement": "static",
+      "scope": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
+      "summary": "An actions/upload-artifact step is guarded by if: always(), allowing failed or stale proof material to be retained as if it were authoritative evidence."
+    },
+    {
+      "id": "reducer.coercing_input",
+      "title": "Reducer coerces malformed input into a valid-looking value",
+      "severity": "high",
+      "enforcement": "manual",
+      "summary": "Strict reducers should reject malformed values instead of normalizing them into admissible evidence."
+    },
+    {
+      "id": "carrier.missing_pinned_donor",
+      "title": "Carrier pins a donor blob it does not carry",
+      "severity": "high",
+      "enforcement": "manual",
+      "summary": "A proof carrier names an immutable donor blob but does not include or otherwise durably resolve that exact blob."
+    },
+    {
+      "id": "python.falsy_default_synthesis",
+      "title": "Falsy value silently replaced by a default",
+      "severity": "medium",
+      "enforcement": "manual",
+      "summary": "Patterns such as value or default can rewrite legitimate false/zero/empty inputs when the contract distinguishes them from missing data."
+    },
+    {
+      "id": "reducer.stale_good_fixture",
+      "title": "Strict reducer rejects its own supposed-good fixture",
+      "severity": "high",
+      "enforcement": "manual",
+      "summary": "After tightening a reducer, the positive control must still use the exact accepted panel/schema and reach the decision boundary."
+    },
+    {
+      "id": "custody.whole_file_transcription_drift",
+      "title": "Whole-file transcription drifts unrelated bytes",
+      "severity": "high",
+      "enforcement": "manual",
+      "summary": "A narrow edit to a large structured file should preserve unrelated bytes/semantics instead of retyping or reserializing the entire postimage."
+    }
+  ]
+}
