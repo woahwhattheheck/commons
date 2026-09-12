@@ -30,6 +30,54 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Copy identified support blobs for inspection only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, hashlib, json, os
+          from pathlib import Path
+          import urllib.request
+          target = Path(os.environ['RUNNER_TEMP']) / 'titan-v4-exact-fb1ee7b' / 'support'
+          target.mkdir(parents=True, exist_ok=True)
+          token = os.environ.pop('GH_TOKEN')
+          objects = {
+              '12a3eb23dd1052a769baa16ce861890f21911e14': 'plumbing-checker.py',
+              '36e7ebdca6e8025e6e7d5f0799f3d1a57c09ad65': 'm1-b10-preflight.py',
+              'a83de6bfcc60c51c8bdc9106f8565c52eb5fe764': 'fastclone-fold.py',
+              'b1dd199ce69d2f3b7dc441769442a218c495a76d': 'plumbing-h3-donor.txt',
+              '668d172758db0898c3f438f966a679637f739237': 'plumbing-h4-donor.txt',
+              '0c7b2725c2aec8c4e900280dc4696cc93e1a223c': 'plumbing-topology-donor.txt',
+              '81bb93bf2f23e4f82023a87c76ac4ab621f48284': 'plumbing-off-projection-donor.txt',
+              '3de685f16b5b4be950020865f3b26e41d8eda887': 'eod-empty-row-donor.txt',
+              'f38a1a4622ca79e3e740f730cdafa9c92fda3dc2': 'eod-empty-row-tests.txt',
+              '8dd9d73cb51a54923cda8d6c378c05d94ebcaca6': 'w1-planted-day-donor.txt',
+              '28908d54b14f23649b3b1b0c149abc968961e800': 'w1-planted-day-tests.txt',
+              'e359f6ab4a779ed3a95be9da9d77325a98d3e66a': 'f2-stock-donor.txt',
+              '2eaa50b875f09e7b43018e7454a59fea1e5ebeb4': 'f2-stock-tests.txt',
+          }
+          index = {}
+          for sha, name in objects.items():
+              try:
+                  request = urllib.request.Request(
+                      'https://api.github.com/repos/woahwhattheheck/commons/git/blobs/' + sha,
+                      headers={'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token})
+                  with urllib.request.urlopen(request, timeout=45) as response:
+                      record = json.load(response)
+                  if record.get('encoding') != 'base64':
+                      raise RuntimeError('unexpected blob encoding')
+                  data = base64.b64decode(record['content'])
+                  actual = hashlib.sha1(('blob %d\0' % len(data)).encode() + data).hexdigest()
+                  if actual != sha or record.get('sha') != sha:
+                      raise RuntimeError('Git blob identity mismatch')
+                  (target / name).write_bytes(data)
+                  index[sha] = {'path': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+              except Exception as exc:
+                  index[sha] = {'error': type(exc).__name__ + ': ' + str(exc)}
+          (target / 'INDEX.json').write_text(json.dumps(index, indent=2) + '\n')
+          print('Support bytes copied for inspection; no support code executed.')
+          PY
       - name: Snapshot exact source, build package, and execute focused tests
         shell: bash
         run: |
@@ -46,6 +94,7 @@ jobs:
           import tarfile
 
           expected_head = 'fb1ee7b081613cdd13009d9529de89929a3f88d8'
+          frozen_base_commit = '741e7262f0226ef26b9d14a2f394edc9f24545a6'
           source = Path('source').resolve()
           candidate_rel = 'revenue/kaggriculture/cloud-execution-lab/candidates/v3'
           candidate = source / candidate_rel
@@ -104,12 +153,39 @@ jobs:
                   receipt['pinned_files'][rel] = {'git_blob': actual, 'bytes': len(data),
                                                 'sha256': hashlib.sha256(data).hexdigest()}
 
-              archive = source / archive_rel
-              archive_data = archive.read_bytes()
+              source_copy = out / 'source' / candidate_rel
+              source_copy.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copytree(candidate, source_copy,
+                              ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'dist'))
+              checkout_archive = source / archive_rel
+              checkout_bytes = checkout_archive.read_bytes()
+              archive_copy = out / 'source' / archive_rel
+              archive_copy.parent.mkdir(parents=True, exist_ok=True)
+              archive_copy.write_bytes(checkout_bytes)
+              receipt['checkout_archive_sha256'] = hashlib.sha256(checkout_bytes).hexdigest()
+              (out / 'SOURCE-TREE.txt').write_text(
+                  git('ls-tree', '-r', 'HEAD', '--', candidate_rel, archive_rel) + '\n')
+
               manifest = json.loads((candidate / 'V3-MANIFEST.json').read_text())
+              receipt['manifest_base_sha256'] = manifest['base']['sha256']
+              require(manifest['base']['sha256'] == '5f6a4153e502713b9467776eafe7464af650584149173ce7507a31a1b2af60f1',
+                      'unexpected frozen V3 base pin')
+              subprocess.run(['git', '-C', str(source), 'fetch', '--no-tags', '--depth=1',
+                              'origin', frozen_base_commit], check=True, timeout=120)
+              archive_data = subprocess.check_output(
+                  ['git', '-C', str(source), 'show', frozen_base_commit + ':' + archive_rel])
               digest = hashlib.sha256(archive_data).hexdigest()
-              require(digest == manifest['base']['sha256'], 'canonical base digest mismatch')
-              receipt['canonical_base_sha256'] = digest
+              require(digest == manifest['base']['sha256'], 'recovered base digest mismatch')
+              frozen_dir = out / 'frozen-inputs'
+              frozen_dir.mkdir(exist_ok=True)
+              archive = frozen_dir / 'titan-v3-base-5f6a4153.tar.gz'
+              archive.write_bytes(archive_data)
+              receipt['frozen_base'] = {
+                  'commit': frozen_base_commit,
+                  'git_blob': git('rev-parse', frozen_base_commit + ':' + archive_rel),
+                  'sha256': digest, 'bytes': len(archive_data),
+                  'artifact_path': archive.relative_to(out).as_posix(),
+              }
               with tarfile.open(archive, 'r:gz') as tar:
                   seen = set()
                   for member in tar.getmembers():
@@ -120,19 +196,9 @@ jobs:
                       require(member.name not in seen, 'duplicate canonical archive member')
                       seen.add(member.name)
 
-              source_copy = out / 'source' / candidate_rel
-              source_copy.parent.mkdir(parents=True, exist_ok=True)
-              shutil.copytree(candidate, source_copy,
-                              ignore=shutil.ignore_patterns('__pycache__', '*.pyc', 'dist'))
-              archive_copy = out / 'source' / archive_rel
-              archive_copy.parent.mkdir(parents=True, exist_ok=True)
-              archive_copy.write_bytes(archive_data)
-              (out / 'SOURCE-TREE.txt').write_text(
-                  git('ls-tree', '-r', 'HEAD', '--', candidate_rel, archive_rel) + '\n')
-
               package = out / 'package'
               build = run_logged('build', [sys.executable, '-B', str(candidate / 'build_v3.py'),
-                                          '--tree', str(package)], candidate)
+                                          '--canonical', str(archive), '--tree', str(package)], candidate)
               receipt['build'] = build
               require(build['exit_code'] == 0, 'exact package build failed; see build.log')
               package_manifest = {}
