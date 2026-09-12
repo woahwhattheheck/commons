@@ -387,15 +387,25 @@ class SellScheduler:
 
 
 _INSTANCE=None
+_LAST_STEP=None
 
 def agent(obs, configuration=None):
-    global _INSTANCE
-    if _INSTANCE is None or int(obs.get('step',0))==0:_INSTANCE=SellScheduler()
-    return _INSTANCE.act(obs,configuration)
+    global _INSTANCE,_LAST_STEP
+    now=int(obs.get('step',0))
+    if _INSTANCE is None or (_LAST_STEP is not None and now<_LAST_STEP):
+        _INSTANCE=SellScheduler()
+    result=_INSTANCE.act(obs,configuration)
+    _LAST_STEP=now
+    return result
 
 _NAIVE=None
+_NAIVE_LAST_STEP=None
 
 def naive_agent(obs, configuration=None):
-    global _NAIVE
-    if _NAIVE is None or int(obs.get('step',0))==0:_NAIVE=SellScheduler('naive')
-    return _NAIVE.act(obs,configuration)
+    global _NAIVE,_NAIVE_LAST_STEP
+    now=int(obs.get('step',0))
+    if _NAIVE is None or (_NAIVE_LAST_STEP is not None and now<_NAIVE_LAST_STEP):
+        _NAIVE=SellScheduler('naive')
+    result=_NAIVE.act(obs,configuration)
+    _NAIVE_LAST_STEP=now
+    return result
