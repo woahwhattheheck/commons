@@ -1,0 +1,299 @@
+{
+  "decision": {
+    "capacity_limit": 99,
+    "config": {
+      "actTimeout": 1,
+      "boardSize": 10,
+      "episodeSteps": 720,
+      "farmHandCostMult": 1,
+      "marketParams": {},
+      "maxMarketOrdersPerTurn": 10,
+      "runTimeout": 1200,
+      "seed": null,
+      "shedCapacity": 100,
+      "startingMoney": 3000,
+      "townCenterSellInterval": 24,
+      "townShopSellInterval": 4,
+      "townShopUnlockInterval": 3,
+      "turnsPerDay": 24,
+      "weedSpawnChance": 0.005
+    },
+    "dates": [
+      639,
+      641,
+      645,
+      647
+    ],
+    "discarded_at_cap_100": [
+      {
+        "discarded": 2,
+        "inventory_index": 9,
+        "item": "WHEAT"
+      },
+      {
+        "discarded": 3,
+        "inventory_index": 10,
+        "item": "MILK"
+      },
+      {
+        "discarded": 2,
+        "inventory_index": 11,
+        "item": "FERTILIZER"
+      },
+      {
+        "discarded": 6,
+        "inventory_index": 11,
+        "item": "WHEAT"
+      }
+    ],
+    "first_daily_bank_divergence_step": 647,
+    "item": "STRAWBERRY",
+    "last": 718,
+    "market_inventory": 9832,
+    "market_params": null,
+    "minimum_now": 0,
+    "observation_step": 639,
+    "observed_prices": {
+      "FERTILIZER": 10,
+      "MILK": 97,
+      "STRAWBERRY": 229,
+      "WHEAT": 40
+    },
+    "pre_drop_inventories": [
+      {
+        "FERTILIZER": 3,
+        "MILK": 6,
+        "WHEAT": 2
+      },
+      {
+        "FERTILIZER": 4
+      },
+      {
+        "WHEAT": 4
+      },
+      {
+        "WHEAT": 7
+      },
+      {
+        "MILK": 3,
+        "WHEAT": 5
+      },
+      {
+        "WHEAT": 3
+      },
+      {
+        "WHEAT": 8
+      },
+      {
+        "WHEAT": 7
+      },
+      {
+        "FERTILIZER": 4,
+        "MILK": 3,
+        "WHEAT": 1
+      },
+      {
+        "WHEAT": 6
+      },
+      {
+        "MILK": 3
+      },
+      {
+        "FERTILIZER": 2,
+        "WHEAT": 6
+      }
+    ],
+    "pre_drop_shed": {
+      "CARROT": 0,
+      "COW": 0,
+      "EGG": 0,
+      "FERTILIZER": 0,
+      "GOOSE": 0,
+      "MELON": 0,
+      "MILK": 0,
+      "SHEEP": 0,
+      "STRAWBERRY": 24,
+      "TOMATO": 0,
+      "WHEAT": 12,
+      "WOOL": 0
+    },
+    "quantity": 24,
+    "receipt_profile": [
+      [
+        639,
+        "before",
+        36
+      ],
+      [
+        639,
+        "after",
+        36
+      ],
+      [
+        640,
+        "before",
+        44
+      ],
+      [
+        640,
+        "after",
+        36
+      ],
+      [
+        641,
+        "before",
+        36
+      ],
+      [
+        641,
+        "after",
+        36
+      ],
+      [
+        642,
+        "before",
+        36
+      ],
+      [
+        642,
+        "after",
+        36
+      ],
+      [
+        643,
+        "before",
+        36
+      ],
+      [
+        643,
+        "after",
+        36
+      ],
+      [
+        644,
+        "before",
+        36
+      ],
+      [
+        644,
+        "after",
+        36
+      ],
+      [
+        645,
+        "before",
+        36
+      ],
+      [
+        645,
+        "after",
+        36
+      ],
+      [
+        646,
+        "before",
+        36
+      ],
+      [
+        646,
+        "after",
+        36
+      ],
+      [
+        647,
+        "before",
+        36
+      ],
+      [
+        647,
+        "after",
+        113
+      ]
+    ],
+    "reference": [
+      [
+        639,
+        0
+      ]
+    ],
+    "rival_quantity": 0,
+    "scheduled_action_step": 645,
+    "uncapped_total_after_drop": 113,
+    "unlocked_shops": [
+      "BRUNCH_SPOT",
+      "SMOOTHIE_SHOP",
+      "SMOOTHIE_SHOP",
+      "ICE_CREAM_SHOP",
+      "PET_CAFE",
+      "BRUNCH_SPOT",
+      "BRUNCH_SPOT",
+      "BRUNCH_SPOT"
+    ]
+  },
+  "expected": {
+    "actual_capacity_overflow_without_sale": 13,
+    "candidate_family_delta": 3,
+    "first_emitted_market_delta": {
+      "predecessor": [
+        "SELL",
+        "STRAWBERRY",
+        24
+      ],
+      "repair": [
+        "SELL",
+        "STRAWBERRY",
+        14
+      ],
+      "step": 645,
+      "strict_forced_feasibility_ablation": null
+    },
+    "minimum_feasible_units_sold_under_pinned_guard": 14,
+    "predecessor_plan": [
+      [
+        639,
+        0
+      ],
+      [
+        645,
+        24
+      ]
+    ],
+    "predecessor_units_carried": 0,
+    "predecessor_units_sold": 24,
+    "repair_plan": [
+      [
+        639,
+        0
+      ],
+      [
+        645,
+        14
+      ]
+    ],
+    "repair_units_carried": 10,
+    "repair_units_sold": 14
+  },
+  "operation": "titan-v3-partial-future-carry-20260909-sol-interstice-01",
+  "provenance": {
+    "candidate_name": "Bryce Muhlnickel",
+    "candidate_player": 1,
+    "episode_id": 107130860,
+    "episode_uuid": "7954579c-ac4e-11f1-9ca7-0242ac130203",
+    "file_name": "107130860.json.gz",
+    "gzip_sha256": "9337c7c734eff0804400f732d48c155dedb6d6f12b3afdefbc620f78fdfc686b",
+    "module_version": "1.32.7",
+    "opponent_name": "Apa",
+    "parent_artifact_sha256": "928d001272fa5007d9ff76bbf5b2e494ea28ebd5fcbc4a99a8c522adb75efb59",
+    "parent_exact_head": "1d87e934f713b6bafd267be7bc1c8e2f95bd9207",
+    "parent_workflow_run": 34410859768,
+    "rewards": [
+      127877.0,
+      114765.0
+    ],
+    "seed": 539131249,
+    "slack_file_id": "F0C0KEQ5MFY",
+    "source_scheduler_git_blob_sha1": "7c068b7078c3d7c09bb3836590ad42b0af934cdf",
+    "source_scheduler_sha256": "72865b83e66d0c1ed27ddc35e5ab428f8212872e8e8e918f2826eb7665fbe7f8"
+  },
+  "schema_version": 1
+}
