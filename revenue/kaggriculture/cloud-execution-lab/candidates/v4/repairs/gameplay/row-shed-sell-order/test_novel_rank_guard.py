@@ -23,7 +23,6 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
         row = action([
             ["SELL", "MILK", 4], ["SELL", "WOOL", 5], ["HIRE"]
         ])
-        # Remaining FrozenSelected economics + pressure converged both arms.
         final = action([
             ["SELL", "WOOL", 3], ["SELL", "MILK", 4], ["HIRE"]
         ])
@@ -45,9 +44,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
             ["SELL", "MILK", 4], ["SELL", "WOOL", 3], ["HIRE"]
         ])
         guard = FinalActionNoveltyGuard()
-        self.assertEqual(
-            guard.choose(base, row, incumbent_final, row_final, {}), row
-        )
+        self.assertEqual(guard.choose(base, row, incumbent_final, row_final, {}), row)
         self.assertEqual(guard.diagnostics["status"], "applied")
         self.assertEqual(
             guard.diagnostics["reason"],
@@ -73,9 +70,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
             ["HIRE"], ["SELL", "EGG", 3],
         ])
         guard = FinalActionNoveltyGuard()
-        self.assertEqual(
-            guard.choose(base, row, incumbent_final, row_final, config), base
-        )
+        self.assertEqual(guard.choose(base, row, incumbent_final, row_final, config), base)
         self.assertEqual(guard.diagnostics["reason"], "collapsed_before_engine_execution")
 
     def test_pre_seller_suffix_only_swap_is_rejected(self):
@@ -102,9 +97,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
             ["SELL", "EGG", 3], ["SELL", "WOOL", 5],
             ["SELL", "MILK", 4], ["HIRE"],
         ])
-        self.assertEqual(
-            FinalActionNoveltyGuard().choose(base, row, base, row, config), base
-        )
+        self.assertEqual(FinalActionNoveltyGuard().choose(base, row, base, row, config), base)
 
     def test_market_cap_zero_is_min_one_and_row1_is_inert(self):
         config = {"maxMarketOrdersPerTurn": 0}
@@ -113,9 +106,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
         guard = FinalActionNoveltyGuard()
         self.assertEqual(guard.choose(base, row, base, row, config), base)
         self.assertEqual(guard.diagnostics["market_prefix_limit"], 1)
-        self.assertEqual(
-            guard.diagnostics["reason"], "executable_leading_sell_block_lt_2"
-        )
+        self.assertEqual(guard.diagnostics["reason"], "executable_leading_sell_block_lt_2")
 
     def test_engine_dead_zero_quantity_is_a_barrier(self):
         base = action([["SELL", "WOOL", 0], ["SELL", "MILK", 4]])
@@ -133,28 +124,20 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
             ["SELL", "MILK", 4], ["SELL", "WOOL", 5],
             ["SELL", "WOOL", 5], ["HIRE"],
         ])
-        self.assertEqual(
-            FinalActionNoveltyGuard().choose(base, row, base, row, {}), row
-        )
+        self.assertEqual(FinalActionNoveltyGuard().choose(base, row, base, row, {}), row)
 
     def test_quantity_change_is_not_a_permutation(self):
         base = action([["SELL", "WOOL", 5], ["SELL", "MILK", 4]])
         row = action([["SELL", "MILK", 5], ["SELL", "WOOL", 5]])
-        self.assertEqual(
-            FinalActionNoveltyGuard().choose(base, row, base, row, {}), base
-        )
+        self.assertEqual(FinalActionNoveltyGuard().choose(base, row, base, row, {}), base)
 
     def test_final_non_market_divergence_fails_closed(self):
         base = action([["SELL", "WOOL", 5], ["SELL", "MILK", 4]])
         row = action([["SELL", "MILK", 4], ["SELL", "WOOL", 5]])
         incumbent_final = copy.deepcopy(base)
-        row_final = action(
-            [["SELL", "MILK", 4], ["SELL", "WOOL", 5]], farmer=["LEFT"]
-        )
+        row_final = action([["SELL", "MILK", 4], ["SELL", "WOOL", 5]], farmer=["LEFT"])
         guard = FinalActionNoveltyGuard()
-        self.assertEqual(
-            guard.choose(base, row, incumbent_final, row_final, {}), base
-        )
+        self.assertEqual(guard.choose(base, row, incumbent_final, row_final, {}), base)
         self.assertIn("non-market", guard.diagnostics["reason"])
 
     def test_stateful_suffix_may_resize_and_blank_before_final_compare(self):
@@ -167,9 +150,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
         incumbent_final = action([["SELL", "WOOL", 2], [], ["HIRE"]])
         row_final = action([[], ["SELL", "WOOL", 2], ["HIRE"]])
         self.assertEqual(
-            FinalActionNoveltyGuard().choose(
-                base, row, incumbent_final, row_final, {}
-            ),
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
             row,
         )
 
@@ -180,10 +161,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
             with self.subTest(poison=poison):
                 guard = FinalActionNoveltyGuard()
                 self.assertEqual(
-                    guard.choose(
-                        base, row, base, row,
-                        {"maxMarketOrdersPerTurn": poison},
-                    ),
+                    guard.choose(base, row, base, row, {"maxMarketOrdersPerTurn": poison}),
                     base,
                 )
 
@@ -192,9 +170,7 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
         row = action([["SELL", "MILK", 4], ["SELL", "WOOL", 5]])
         malformed = copy.deepcopy(row)
         malformed["market"][0] = 7
-        self.assertEqual(
-            FinalActionNoveltyGuard().choose(base, row, base, malformed, {}), base
-        )
+        self.assertEqual(FinalActionNoveltyGuard().choose(base, row, base, malformed, {}), base)
 
     def test_inputs_are_never_mutated(self):
         base = action([["SELL", "WOOL", 5], ["SELL", "MILK", 4], ["HIRE"]])
@@ -204,10 +180,66 @@ class FinalActionNoveltyGuardTests(unittest.TestCase):
         config = {"maxMarketOrdersPerTurn": 10}
         values = (base, row, incumbent_final, row_final, config)
         snapshots = tuple(copy.deepcopy(value) for value in values)
-        FinalActionNoveltyGuard().choose(
-            base, row, incumbent_final, row_final, config
-        )
+        FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, config)
         self.assertEqual(values, snapshots)
+
+    def _base_and_row(self):
+        base = action([["SELL", "WOOL", 5], ["SELL", "MILK", 4], ["HIRE"]])
+        row = action([["SELL", "MILK", 4], ["SELL", "WOOL", 5], ["HIRE"]])
+        return base, row
+
+    def test_final_zero_quantity_and_empty_are_engine_equivalent(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([["SELL", "WOOL", 0], ["HIRE"]])
+        row_final = action([[], ["HIRE"]])
+        guard = FinalActionNoveltyGuard()
+        self.assertEqual(guard.choose(base, row, incumbent_final, row_final, {}), base)
+        self.assertEqual(guard.diagnostics["reason"], "collapsed_before_engine_execution")
+
+    def test_final_hire_extra_tokens_are_engine_equivalent(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([["HIRE"], ["SELL", "WOOL", 2]])
+        row_final = action([["HIRE", "ignored", 999], ["SELL", "WOOL", 2]])
+        self.assertEqual(
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
+            base,
+        )
+
+    def test_final_coercible_quantities_are_engine_equivalent(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([["SELL", "WOOL", 3], ["HIRE"]])
+        row_final = action([["SELL", "WOOL", "3"], ["HIRE"]])
+        self.assertEqual(
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
+            base,
+        )
+
+    def test_final_trailing_dead_slot_and_absence_are_engine_equivalent(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([["SELL", "WOOL", 3], []])
+        row_final = action([["SELL", "WOOL", 3]])
+        self.assertEqual(
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
+            base,
+        )
+
+    def test_final_interior_dead_slot_alignment_remains_novel(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([[], ["HIRE"]])
+        row_final = action([["HIRE"]])
+        self.assertEqual(
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
+            row,
+        )
+
+    def test_final_unsupported_market_item_is_engine_dead(self):
+        base, row = self._base_and_row()
+        incumbent_final = action([["SELL", "NOT_A_PRODUCT", 3], ["HIRE"]])
+        row_final = action([[], ["HIRE"]])
+        self.assertEqual(
+            FinalActionNoveltyGuard().choose(base, row, incumbent_final, row_final, {}),
+            base,
+        )
 
 
 if __name__ == "__main__":
