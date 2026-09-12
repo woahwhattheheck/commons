@@ -1,25 +1,17 @@
 # V5 exact V3.1 ↔ V4 authenticated archive bridge
 
-Evidence-only launcher for the owner-reported V3.1 > V4 regression. It does **not** thaw V4, transplant R04, change a gameplay default, republish `titan-current`, or copy either legacy policy into the production runtime.
+Evidence-only tooling for the owner-reported V3.1 > V4 regression. It does **not** thaw V4, change a gameplay default, republish `titan-current`, or copy either legacy policy into production runtime.
 
-## Exact authorities
+## Exact archive authorities
 
 - V3.1: source `a90d888f03987ef0b35cfd20ec3519c6144db08a`, Kaggle submission `56172377`, archive SHA256 `5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361`.
 - V4: frozen source `4af1113154e78c662780e6658cd920daac7902e3`, Kaggle submission `56182437`, archive SHA256 `4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b`.
 
 The launcher rejects any other archive bytes.
 
-## Why this exists
+## Direct archive bridge
 
-The already-merged `candidates/v5/joint-liquidity-bench` is the right custody primitive: after #13388 it copies the declared evaluator/loader/packer/reference policy closure once, authenticates the snapshot, and executes only from that snapshot. Its experiment contract is intentionally narrower, however: exact V4 must be the baseline and exactly one published `frozen_selected.py` must differ.
-
-This bridge reuses that authenticated snapshot helper without changing its joint-liquidity contract. It permits the two exact submitted archives to have different member sets, extracts each into a fresh temporary payload per game, writes the standard raw-file adapter to its root `main.py`, and runs the same pinned official interpreter plus authenticated Apex v7 / Arlene v14 reference opponents.
-
-The local play loop is intentionally a narrow copy of the existing evaluator's `play()` control flow with one addition: it retains the tested seat's returned actions. That produces terminal score/margin, the exact returned-action sequence and canonical SHA256, first V3.1 ↔ V4 returned-action divergence, trace hash, daily banks, callback/process timing, failures, and source/archive/engine identities.
-
-The returned-action field is named `tested_seat_actions` so it can feed the existing `cloud-version-regression-microscope` evidence shape without inventing another divergence analyzer.
-
-## Run on an existing Linux fleet VM
+`bridge.py` reuses the authenticated V5 snapshot helper, extracts each exact submitted archive into a fresh payload per game, writes the standard raw-file adapter to its root `main.py`, and runs the pinned official interpreter plus authenticated Apex v7 / Arlene v14 reference opponents. Its local play loop retains the tested seat's exact returned actions, so pair evidence includes terminal score/margin, canonical action SHA256, first V3.1 ↔ V4 returned-action divergence, trace hash, daily banks, callback/process timing, failures, and source/archive/engine identities.
 
 ```bash
 KG=/path/to/commons/revenue/kaggriculture
@@ -38,16 +30,15 @@ python3 -B bridge.py \
   --output v31-v4-bridge-2051966578
 ```
 
-For a wider fixed-opponent panel, pass comma-separated distinct seeds and `--opponents apex_v7,arlene_v14`. Pair order alternates by cell. Each version gets a fresh extraction and fresh persistent agent process. The default RPC limit is 1.25 seconds and the whole-game limit is 900 seconds. This remains an offline official-interpreter experiment, **not** hosted Kaggle resource enforcement.
-
-Outputs are `run.json`, one game JSON per version/cell, one pair JSON per cell, and rolling `report.json`. Any incomplete game, non-719 tested action sequence, source mismatch, archive mismatch, harness drift, or reference-policy escape fails closed.
+This is an offline official-interpreter experiment, **not** hosted Kaggle resource enforcement.
 
 ## Reduce the sharded recorded-trace gauntlet into repair hotspots
 
-`reduce_gauntlet.py` consumes the existing `gauntlet-top30-union/run.py` shard output; it does not run games or create another policy carrier. Supply every finished V3.1 shard directory and its matching V4 shard directories as repeated arguments:
+`reduce_gauntlet.py` consumes existing `gauntlet-top30-union/run.py` output; it does not run games or create another policy carrier. Final authorization is rooted in the **exact corpus index bytes**, not self-reported fixture counts.
 
 ```bash
 python3 -B reduce_gauntlet.py \
+  --index /workspace/shared-gauntlet-corpus/top30-union-index.json \
   --v31-root /workspace/shard0/out-v31 \
   --v31-root /workspace/shard1/out-v31 \
   --v4-root /workspace/shard0/out-v4 \
@@ -55,13 +46,15 @@ python3 -B reduce_gauntlet.py \
   --output /tmp/v31-v4-gauntlet-reduction.json
 ```
 
-The reducer authenticates the exact submitted V3.1 and V4 archive hashes from every shard receipt. It also requires one identical execution authority across every consumed V3.1/V4 root: canonical corpus `index_sha256`, official `engine` source map, `evaluator_sha256`, and `loader_sha256`. Within each version the declared shard topology must be consistent, every shard id must be unique, and final authorization requires the complete declared shard set on both versions with matching per-shard fixture counts. Heterogeneous executions therefore cannot be assembled into one apparently complete panel.
+The reducer single-reads the supplied corpus index, every `run.json`, and every consumed game JSON from ordinary non-symlink files. Parsing and SHA256 use the same captured bytes. Every raw game source SHA is retained in the authority receipt, so score-bearing evidence changes necessarily change `authority_sha256`.
 
-Game rows are separately fail-closed: the reducer rejects duplicate cells and cross-version opponent metadata drift, requires immutable recorded traces, requires complete games to have exactly 719 callbacks, pairs by `(opponent, seat)`, and recomputes candidate margins from raw scores. It emits overall, family, and submission aggregates plus descending `regression_hotspots`, so V5 repair work can prioritize the places where V3.1 actually beats V4 instead of resurrecting historically interesting but currently inert features.
+For each run root it authenticates the exact submitted candidate archive hash and requires the `run.json.index_sha256` to equal the supplied index bytes. It reproduces the producer's `group=all` recorded-trace eligibility and `enumerate(rows) % shards == shard` partition from that index, then requires `selected_fixtures` to equal the independently reconstructed full shard size. A `--limit`-truncated run therefore cannot authorize, even if every shard number is present. Extra opponent IDs are rejected.
 
-Final panel cardinality is **not hardcoded from the number of target versions**. The reducer requires the complete declared shard set on both versions and derives expected cells as `2 × sum(selected_fixtures)` from authenticated `run.json` receipts. The current gauntlet materializes 123 recorded-trace fixtures, so full both-seat coverage derives to 246 cells. An optional `--expected-cells` is only a cross-check; a conflicting override fails closed. Partial shard sets remain valid steering evidence but can never authorize `panel_complete`.
+The same execution authority must hold across every consumed V3.1/V4 root: canonical corpus index SHA, validated engine hash map, evaluator SHA256, and loader SHA256. Declared shard topology must be consistent, shard IDs unique, and final authorization requires the complete shard set on both versions. Each cell's submission, family, memberships, recorded orientation, kind, and adaptive flag must match the authenticated index row; this also proves p0/p1 are the same recorded fixture with complementary orientation.
 
-Exit `0` requires the complete balanced derived panel, exit `3` means the evidence is valid but partial/non-authorizing, and exit `2` means malformed or cross-wired evidence.
+Final panel cardinality is derived from the authenticated corpus: `2 × recorded_trace fixtures`. The current corpus has 123 recorded fixtures, so complete both-seat coverage is 246 cells. `--expected-cells` is only an optional cross-check; a conflicting value fails closed. Partial evidence remains exit `3`/non-authorizing, malformed or cross-wired evidence exits `2`, and only a complete authenticated panel exits `0`.
+
+Outputs include overall, family, submission, and descending per-cell V3.1>V4 `regression_hotspots`, plus the complete evidence authority and digest. That lets the single V5 line repair places where V3.1 actually beats V4 instead of resurrecting historically interesting but inert features.
 
 ## Contracts
 
@@ -71,4 +64,4 @@ python3 -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 python3 -O -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 ```
 
-The bridge tests lock exact archive authorities, the #13388 snapshot-helper Git blob, safe ordinary-file archive handling across different V3.1/V4 member sets, canonical action hashes, exact first-divergence indexing, and fail-closed identity checks. Reducer contracts cover complete hotspot ranking, 123-fixture → 246-cell derivation, incomplete-shard non-authorization, archive identity drift, cross-version fixture/metadata mismatch, mixed index/engine/evaluator/loader rejection, duplicate-shard and duplicate-cell rejection, callback-count enforcement, conflicting expected-cardinality overrides, and partial CLI publication.
+Reducer predecessors cover hotspot ranking, 123-fixture → 246-cell derivation, incomplete shard non-authorization, favorable-subset override rejection, `--limit` truncation, extra corpus IDs, candidate/index/engine/evaluator/loader drift, mirrored p0/p1 metadata corruption, duplicate shard receipts, 719-callback enforcement, parse/hash same-capture custody, post-read cell mutation, score-cell tamper changing authority, symlink rejection, and partial CLI publication.
