@@ -27,6 +27,10 @@ class DuplicateJsonKey(ValueError):
     pass
 
 
+class NonFiniteJson(ValueError):
+    pass
+
+
 def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key, value in pairs:
@@ -36,13 +40,18 @@ def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
+def _reject_nonfinite(value: str) -> Any:
+    raise NonFiniteJson(f"non-finite JSON constant {value!r}")
+
+
 def _load(path: Path) -> dict[str, Any]:
     try:
         value = json.loads(
             path.read_text(encoding="utf-8"),
             object_pairs_hook=_strict_object,
+            parse_constant=_reject_nonfinite,
         )
-    except (OSError, json.JSONDecodeError, DuplicateJsonKey) as exc:
+    except (OSError, json.JSONDecodeError, DuplicateJsonKey, NonFiniteJson) as exc:
         raise LedgerError(f"cannot load {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise LedgerError(f"{path} must contain a JSON object")
@@ -156,7 +165,7 @@ def validate(root: Path = HERE) -> list[str]:
     # never be represented as a newly recovered or raw-custody work item above.
     for row in negative:
         disposition = row.get("disposition")
-        if not isinstance(disposition, str) or not disposition:
+        if not isinstance(disposition, str) or not disposition.strip():
             errors.append(f"negative/parked lane {row['lane']!r} lacks disposition")
 
     # Custody rows have two deliberately distinct contracts:
