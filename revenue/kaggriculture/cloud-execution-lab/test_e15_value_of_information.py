@@ -74,6 +74,21 @@ class E15ValueOfInformationTests(unittest.TestCase):
         self.assertFalse(r['positive_cost_probe_allowed'])
         self.assertNotIn('expected_value_of_perfect_information', r)
 
+    def test_interval_endpoints_reject_coercible_non_numeric_values(self):
+        invalid = ([False, 1], [0, True], ['1', 2], [1, '2'], (None, 2))
+        for interval in invalid:
+            with self.subTest(interval=interval):
+                rows = {'public': {'hold': interval, 'sell': 0}}
+                with self.assertRaises(ValueError):
+                    information_value(rows)
+
+    def test_numeric_interval_endpoints_remain_valid(self):
+        rows = {'public': {'hold': [1, 2.5], 'sell': (0.5, 1)}}
+        r = information_value(rows)
+        self.assertTrue(r['interval_ambiguity'])
+        self.assertEqual(r['certain_winners']['public'], ['hold'])
+        self.assertEqual(r['conditional_value_spread_upper_bound'], 2.0)
+
     def test_terminal_window_has_zero_actionable_information_value(self):
         rows = {
             'a': {'now': 5, 'later': 1},
