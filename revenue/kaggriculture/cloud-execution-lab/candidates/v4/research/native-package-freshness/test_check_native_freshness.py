@@ -6,6 +6,7 @@ import subprocess
 import tarfile
 import tempfile
 import unittest
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 SPEC = importlib.util.spec_from_file_location("fresh", HERE / "check_native_freshness.py")
@@ -105,12 +106,56 @@ class FreshnessTests(unittest.TestCase):
         self.assertEqual("INVALID", report["verdict"])
         self.assertIn("checkout HEAD drift", report["problems"][0])
 
+    def test_mid_verification_checkout_advance_cannot_false_current(self):
+        newer = dict(CORE)
+        newer["titan_runtime.py"] = b"RUNTIME = 2\n"
+        (self.live / "titan_runtime.py").write_bytes(newer["titan_runtime.py"])
+        run("git", "add", ".", cwd=self.root)
+        run("git", "commit", "-qm", "new runtime", cwd=self.root)
+        commit_b = run("git", "rev-parse", "HEAD", cwd=self.root)
+        archive, digest = self.archive(newer)
+        run("git", "reset", "--hard", self.commit, cwd=self.root)
+
+        original = fresh._read_archive_core
+
+        def read_then_advance(*args, **kwargs):
+            result = original(*args, **kwargs)
+            run("git", "reset", "--hard", commit_b, cwd=self.root)
+            return result
+
+        with mock.patch.object(fresh, "_read_archive_core", side_effect=read_then_advance):
+            report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("expected commit", report["problems"][0])
+
+    def test_mid_verification_ref_advance_with_same_core_is_invalid(self):
+        marker = self.root / "NONCORE.txt"
+        marker.write_text("new commit, same production core\n", encoding="utf-8")
+        run("git", "add", "NONCORE.txt", cwd=self.root)
+        run("git", "commit", "-qm", "non-core advance", cwd=self.root)
+        commit_b = run("git", "rev-parse", "HEAD", cwd=self.root)
+        run("git", "reset", "--hard", self.commit, cwd=self.root)
+        archive, digest = self.archive()
+        branch = run("git", "symbolic-ref", "--short", "HEAD", cwd=self.root)
+
+        original = fresh._read_archive_core
+
+        def read_then_move_ref(*args, **kwargs):
+            result = original(*args, **kwargs)
+            run("git", "update-ref", f"refs/heads/{branch}", commit_b, cwd=self.root)
+            return result
+
+        with mock.patch.object(fresh, "_read_archive_core", side_effect=read_then_move_ref):
+            report = self.verify(archive, digest)
+        self.assertEqual("INVALID", report["verdict"])
+        self.assertIn("HEAD changed during verification", report["problems"][0])
+
     def test_dirty_live_file_invalid(self):
         archive, digest = self.archive()
         (self.live / "scheduler.py").write_bytes(b"DIRTY\n")
         report = self.verify(archive, digest)
         self.assertEqual("INVALID", report["verdict"])
-        self.assertIn("not byte-identical to HEAD", report["problems"][0])
+        self.assertIn("not byte-identical to expected commit", report["problems"][0])
 
     def test_missing_core_member_invalid(self):
         members = dict(CORE)
