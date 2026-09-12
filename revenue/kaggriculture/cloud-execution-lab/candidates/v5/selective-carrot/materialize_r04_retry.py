@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 BASE_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
@@ -93,17 +94,72 @@ def transform(files: dict[str, bytes]) -> dict[str, bytes]:
     return out
 
 
+def _resolved(path: Path) -> Path:
+    return path.expanduser().absolute().resolve(strict=False)
+
+
+def _reserve(path: Path):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+    st = os.fstat(fd)
+    return fd, (st.st_dev, st.st_ino)
+
+
+def _unlink_owned(path: Path, identity) -> None:
+    try:
+        st = os.lstat(path)
+    except FileNotFoundError:
+        return
+    if (st.st_dev, st.st_ino) == identity:
+        try:
+            os.unlink(path)
+        except FileNotFoundError:
+            pass
+
+
+def _write_fd(fd: int, body: bytes) -> None:
+    view = memoryview(body)
+    while view:
+        written = os.write(fd, view)
+        if written <= 0:
+            raise OSError("short publication write")
+        view = view[written:]
+    os.fsync(fd)
+
+
+def _publish_pair(out_path: Path, receipt_path: Path, payload: bytes, receipt_bytes: bytes) -> None:
+    if _resolved(out_path) == _resolved(receipt_path):
+        raise ValueError("candidate archive and receipt must be distinct paths")
+    owned = []
+    fds = []
+    try:
+        out_fd, out_identity = _reserve(out_path)
+        fds.append(out_fd)
+        owned.append((out_path, out_identity))
+        receipt_fd, receipt_identity = _reserve(receipt_path)
+        fds.append(receipt_fd)
+        owned.append((receipt_path, receipt_identity))
+        _write_fd(out_fd, payload)
+        _write_fd(receipt_fd, receipt_bytes)
+    except Exception:
+        for fd in fds:
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        for path, identity in reversed(owned):
+            _unlink_owned(path, identity)
+        raise
+    else:
+        for fd in fds:
+            os.close(fd)
+
+
 def materialize(base: Path, out_path: Path, receipt_path: Path) -> dict:
     from build_delivery import archive_bytes, digest, members
-    if out_path.exists() or receipt_path.exists():
-        raise FileExistsError("output and receipt paths must be new")
     source = members(base, BASE_SHA)
     changed = transform(source)
     payload = archive_bytes(changed)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    receipt_path.parent.mkdir(parents=True, exist_ok=True)
-    with out_path.open("xb") as stream:
-        stream.write(payload)
     receipt = {
         "schema": SCHEMA,
         "base_archive_sha256": BASE_SHA,
@@ -115,13 +171,8 @@ def materialize(base: Path, out_path: Path, receipt_path: Path) -> dict:
         "same_step_contract": "identical-replay-changed-evidence-reject",
         "kaggle_submission_hold": True,
     }
-    try:
-        with receipt_path.open("x", encoding="utf-8") as stream:
-            json.dump(receipt, stream, indent=2, sort_keys=True)
-            stream.write("\n")
-    except Exception:
-        out_path.unlink(missing_ok=True)
-        raise
+    receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    _publish_pair(out_path, receipt_path, payload, receipt_bytes)
     return receipt
 
 
