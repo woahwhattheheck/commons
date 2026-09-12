@@ -98,16 +98,50 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.cancel(old)
         self.assertEqual(self.resume()._completed_route, 'YARN')
 
-    def test_constructor_cancellation_preserves_prior_capsule(self):
+    def test_interrupted_current_call_never_relabels_prior_route(self):
+        old = Instance('YARN', proposed='UNRETURNED_BRANCH')
+        old._entrypoint_last_step = 226
+        old._entrypoint_route_receipt = {
+            'last_step': 226, 'player': 0, 'route': 'YARN'
+        }
+
+        def interrupted(*_args, **_kwargs):
+            raise ControlledTimer.active.expired
+
+        old.act = interrupted
+        self.entry._INSTANCE = old
+        self.assertEqual(self.entry.agent(self.obs(227), self.config), PASS)
+        self.assertEqual(self.entry._ROUTE_RECOVERY,
+                         {'last_step': 226, 'player': 0, 'route': 'YARN'})
+        # Step 227 returned a fallback without a completed route.  At step 228
+        # the old step-226 route is now two callbacks stale and must not revive.
+        self.assertIsNone(self.resume(228)._completed_route)
+
+    def test_constructor_cancellation_preserves_receipt_without_aging_it(self):
         self.cancel(Instance('YARN'))
         saved = deepcopy(self.entry._ROUTE_RECOVERY)
+
         def interrupted_constructor(*_args):
             raise ControlledTimer.active.expired
+
         with patch.object(self.entry, '_new_instance', side_effect=interrupted_constructor), \
                 patch('json.loads', return_value={'town_procurement': False}):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
         self.assertEqual(self.entry._ROUTE_RECOVERY, saved)
-        self.assertEqual(self.resume(229)._completed_route, 'YARN')
+        # Construction at 228 never completed, so a jump to 229 cannot treat
+        # the step-227 capsule as if it had completed step 228.
+        self.assertIsNone(self.resume(229)._completed_route)
+
+    def test_constructor_cancellation_allows_exact_same_step_retry(self):
+        self.cancel(Instance('YARN'))
+
+        def interrupted_constructor(*_args):
+            raise ControlledTimer.active.expired
+
+        with patch.object(self.entry, '_new_instance', side_effect=interrupted_constructor), \
+                patch('json.loads', return_value={'town_procurement': False}):
+            self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
+        self.assertEqual(self.resume(228)._completed_route, 'YARN')
 
     def test_new_episode_discards_old_route(self):
         self.cancel(Instance('YARN'))
@@ -118,8 +152,8 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.cancel(Instance('MAIN'), step=0)
         self.assertEqual(self.resume(0)._completed_route, 'MAIN')
 
-    def test_other_player_and_rewind_do_not_reuse_route(self):
-        for step, player in ((228, 1), (226, 0)):
+    def test_other_player_rewind_and_step_gap_do_not_reuse_route(self):
+        for step, player in ((228, 1), (226, 0), (229, 0)):
             with self.subTest(step=step, player=player):
                 self.cancel(Instance('YARN'))
                 self.assertIsNone(self.resume(step, player)._completed_route)
