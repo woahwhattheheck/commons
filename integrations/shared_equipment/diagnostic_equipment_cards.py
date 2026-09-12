@@ -10,6 +10,7 @@ TENON claims:
 - tenon-r4-equipment-bind-unbind-route-cards-20260906-01 (bind/unbind)
 - tenon-r4-equipment-export-import-package-cards-20260906-01 (export/import)
 - tenon-r4-equipment-inspect-role-card-20260906-01 (inspect)
+- tenon-r4-equipment-normalize-role-card-20260912-01 (normalize)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -207,9 +208,13 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             {"role_id": "string"},
             {"roles": "array", "role": "object"},
         ),
-
-
-        _schema(
+    _schema(
+        "normalize_role_card",
+        "Normalize a transferable role in-memory (schema scrub + drop secret-shaped keys; no store write). Pass role object; optional role_id. Import-only roles.normalize_role wrap. Does not remint roles.py or remint create/inspect/get.",
+        {"role": "object"},
+        {"role_id": "string"},
+    ),
+    _schema(
             "prove_handoff_card",
             "Prove role-gated executes still run for a transferable role (tempfile store). Pass role; optional case_ref, usable_evidence_at, slug (maps to diagnostic_slug), as_of. Import-only wrap of handoff_execute.prove_successor_executes; does not remint CLI prove-handoff body.",
             {"role": "object"},
@@ -825,6 +830,32 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "role": created}
+    if name == "normalize_role_card":
+        # tenon-r4-equipment-normalize-role-card-20260912-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        role_id = args.get("role_id")
+        try:
+            normalized = roles_mod.normalize_role(
+                role,
+                role_id=str(role_id) if role_id is not None else None,
+            )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": normalized}
     if name == "prove_handoff_card":
 
         # hinge-r4-equipment-prove-handoff-card-20260906-01

@@ -24,6 +24,7 @@
 - Equipment create role card: `hinge-r4-equipment-create-role-card-20260912-01`
 - Equipment list role ids card: `hinge-r4-equipment-list-role-ids-card-20260912-01`
 - Equipment get role card: `hinge-r4-equipment-get-role-card-20260912-01`
+- Equipment normalize role card: `tenon-r4-equipment-normalize-role-card-20260912-01`
 
 ## Live cash
 
