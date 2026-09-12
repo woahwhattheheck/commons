@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import ast
 import hashlib
+import io
 import json
 import tarfile
 from pathlib import Path, PurePosixPath
@@ -39,10 +40,14 @@ def normalize_member_path(name: str) -> str:
 
 
 def archive_inventory(path: Path) -> tuple[dict[str, Any], dict[str, bytes]]:
+    path = Path(path)
+    if path.is_symlink() or not path.is_file():
+        raise ValueError(f"archive authority must be an ordinary file: {path}")
+    # Single capture is the complete archive authority. Never reopen caller path.
     archive = path.read_bytes()
     members: dict[str, dict[str, Any]] = {}
     contents: dict[str, bytes] = {}
-    with tarfile.open(path, "r:gz") as handle:
+    with tarfile.open(fileobj=io.BytesIO(archive), mode="r:gz") as handle:
         for item in handle.getmembers():
             if item.isdir():
                 continue
@@ -150,7 +155,123 @@ def _find_method(raw: bytes, class_name: str, method_name: str) -> ast.FunctionD
     raise ValueError(f"missing {class_name}.{method_name}")
 
 
-def verify_v31_route_authority(v31: dict[str, bytes], v4: dict[str, bytes], coverage: dict[str, Any]) -> None:
+def _self_feature(node: ast.AST, name: str) -> bool:
+    return (
+        isinstance(node, ast.Attribute)
+        and node.attr == name
+        and isinstance(node.value, ast.Attribute)
+        and node.value.attr == "features"
+        and isinstance(node.value.value, ast.Name)
+        and node.value.value.id == "self"
+    )
+
+
+def _name(node: ast.AST, value: str) -> bool:
+    return isinstance(node, ast.Name) and node.id == value
+
+
+def _direct_r04_guard(node: ast.If) -> bool:
+    test = node.test
+    return (
+        isinstance(test, ast.BoolOp)
+        and isinstance(test.op, ast.Or)
+        and len(test.values) == 2
+        and {value.attr for value in test.values if isinstance(value, ast.Attribute)}
+        == {"r03_full_router", "r04_sale_window"}
+        and all(
+            _self_feature(value, value.attr)
+            for value in test.values
+            if isinstance(value, ast.Attribute)
+        )
+        and all(isinstance(value, ast.Attribute) for value in test.values)
+    )
+
+
+def _r04_delegate_return(node: ast.stmt) -> bool:
+    if not isinstance(node, ast.Return) or not isinstance(node.value, ast.Call):
+        return False
+    call = node.value
+    func = call.func
+    return (
+        isinstance(func, ast.Attribute)
+        and func.attr == "_v3_r03_act"
+        and isinstance(func.value, ast.Name)
+        and func.value.id == "self"
+        and len(call.args) == 4
+        and all(
+            _name(arg, expected)
+            for arg, expected in zip(
+                call.args, ("observation", "configuration", "invoked", "entry_started")
+            )
+        )
+        and not call.keywords
+    )
+
+
+def _contains_initialize(node: ast.AST) -> bool:
+    # Definitions belong to another scope. A method merely declaring a helper
+    # does not establish that the helper's initializer is called by that method.
+    # Continue through ordinary control-flow children (if/try/with/etc.).
+    if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Lambda)):
+        return False
+    if (
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "_initialize"
+        and isinstance(node.func.value, ast.Name)
+        and node.func.value.id == "self"
+    ):
+        return True
+    return any(_contains_initialize(child) for child in ast.iter_child_nodes(node))
+
+
+def _route_assignment(node: ast.stmt) -> bool:
+    if not isinstance(node, ast.Assign) or len(node.targets) != 1 or not _name(node.targets[0], "route"):
+        return False
+    value = node.value
+    return (
+        isinstance(value, ast.IfExp)
+        and _self_feature(value.test, "r04_sale_window")
+        and isinstance(value.body, ast.Constant)
+        and value.body.value == "r04_sale_window"
+        and isinstance(value.orelse, ast.Constant)
+        and value.orelse.value == "r03_full_router"
+    )
+
+
+def _route_if(node: ast.stmt) -> bool:
+    if not isinstance(node, ast.If):
+        return False
+    test = node.test
+    return (
+        isinstance(test, ast.Compare)
+        and _name(test.left, "route")
+        and len(test.ops) == 1
+        and isinstance(test.ops[0], ast.Eq)
+        and len(test.comparators) == 1
+        and isinstance(test.comparators[0], ast.Constant)
+        and test.comparators[0].value == "r04_sale_window"
+    )
+
+
+def _r04_output_assignment(node: ast.stmt) -> bool:
+    if not isinstance(node, ast.Assign) or len(node.targets) != 1 or not _name(node.targets[0], "output"):
+        return False
+    outer = node.value
+    if not isinstance(outer, ast.Call) or len(outer.args) != 2 or outer.keywords:
+        return False
+    if not (_name(outer.args[0], "observation") and _name(outer.args[1], "configuration")):
+        return False
+    inner = outer.func
+    return (
+        isinstance(inner, ast.Call)
+        and _name(inner.func, "install")
+        and bool(inner.args)
+        and _name(inner.args[0], "self")
+    )
+
+
+def derive_reachability(v31: dict[str, bytes], v4: dict[str, bytes]) -> dict[str, Any]:
     cfg31 = json.loads(v31["TITAN-CONFIG.json"])
     cfg4 = json.loads(v4["TITAN-CONFIG.json"])
     if cfg31.get("r04_sale_window") is not True:
@@ -161,43 +282,89 @@ def verify_v31_route_authority(v31: dict[str, bytes], v4: dict[str, bytes], cove
         raise ValueError("R04 package topology mismatch")
 
     act = _find_method(v31["titan_runtime.py"], "TitanAgent", "act")
+    guard_indexes = [
+        index for index, node in enumerate(act.body)
+        if isinstance(node, ast.If) and _direct_r04_guard(node)
+    ]
+    if len(guard_indexes) != 1:
+        raise ValueError("V3.1 act must contain one direct active R03/R04 guard")
+    guard_index = guard_indexes[0]
+    guard = act.body[guard_index]
+    if len(guard.body) != 1 or not _r04_delegate_return(guard.body[0]) or guard.orelse:
+        raise ValueError("V3.1 active R04 guard must directly return _v3_r03_act")
+    if any(_contains_initialize(node) for node in act.body[:guard_index + 1]):
+        raise ValueError("canonical initialization is reachable before active R04 return")
+    if not any(_contains_initialize(node) for node in act.body[guard_index + 1:]):
+        raise ValueError("V3.1 canonical initialization path missing after R04 return")
+
     r03 = _find_method(v31["titan_runtime.py"], "TitanAgent", "_v3_r03_act")
-    branch_lines: list[int] = []
-    init_lines: list[int] = []
-    for node in ast.walk(act):
-        if isinstance(node, ast.Return) and isinstance(node.value, ast.Call):
-            func = node.value.func
-            if isinstance(func, ast.Attribute) and func.attr == "_v3_r03_act":
-                branch_lines.append(node.lineno)
-        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "_initialize":
-            init_lines.append(node.lineno)
-    if not branch_lines:
-        raise ValueError("V3.1 act lacks R03/R04 early return")
-    if init_lines and min(branch_lines) >= min(init_lines):
-        raise ValueError("R04 return is not before canonical initialization")
-    if not any(
-        isinstance(node, ast.ImportFrom) and node.module == "r04_full_router"
-        and any(alias.name == "install" for alias in node.names)
-        for node in ast.walk(r03)
-    ):
-        raise ValueError("V3.1 delegate does not import r04_full_router.install")
+    if sum(_route_assignment(node) for node in r03.body) != 1:
+        raise ValueError("V3.1 delegate route assignment drift")
+    tries = [node for node in r03.body if isinstance(node, ast.Try)]
+    if len(tries) != 1:
+        raise ValueError("V3.1 delegate must contain one direct execution try")
+    route_ifs = [node for node in tries[0].body if _route_if(node)]
+    if len(route_ifs) != 1:
+        raise ValueError("V3.1 delegate lacks direct active r04 route branch")
+    route_if = route_ifs[0]
+    imports = [
+        index for index, node in enumerate(route_if.body)
+        if isinstance(node, ast.ImportFrom)
+        and node.module == "r04_full_router"
+        and len(node.names) == 1
+        and node.names[0].name == "install"
+        and node.names[0].asname is None
+    ]
+    outputs = [index for index, node in enumerate(route_if.body) if _r04_output_assignment(node)]
+    if len(imports) != 1 or len(outputs) != 1 or imports[0] >= outputs[0]:
+        raise ValueError("V3.1 delegate does not directly execute r04_full_router.install")
 
     router = ast.parse(v31["r04_full_router.py"].decode("utf-8"))
-    install = next((node for node in router.body if isinstance(node, ast.FunctionDef) and node.name == "install"), None)
-    if install is None:
-        raise ValueError("R04 install missing")
-    returns_v3_agent = any(
-        isinstance(node, ast.Return) and isinstance(node.value, ast.Name) and node.value.id == "v3_agent"
-        for node in ast.walk(install)
-    )
-    if not returns_v3_agent:
-        raise ValueError("R04 install does not return v3_agent")
+    installs = [
+        node for node in router.body
+        if isinstance(node, ast.FunctionDef) and node.name == "install"
+    ]
+    if len(installs) != 1:
+        raise ValueError("R04 install definition mismatch")
+    install = installs[0]
+    if not install.body or not (
+        isinstance(install.body[-1], ast.Return)
+        and _name(install.body[-1].value, "v3_agent")
+    ):
+        raise ValueError("R04 install must directly return v3_agent")
 
-    declared = coverage["reachability"]
-    if declared["v31_active_route"]["canonical_controller_bypassed"] is not True:
-        raise ValueError("coverage reachability does not bind canonical-controller bypass")
-    if declared["v4_active_route"]["r04_full_router_member_present"] is not False:
-        raise ValueError("coverage V4 reachability declaration drift")
+    act4 = _find_method(v4["titan_runtime.py"], "TitanAgent", "act")
+    if any(
+        isinstance(node, ast.If) and _direct_r04_guard(node)
+        for node in act4.body
+    ):
+        raise ValueError("V4 unexpectedly retains direct R04 guard")
+    if not any(_contains_initialize(node) for node in act4.body):
+        raise ValueError("V4 canonical initialization path missing")
+
+    return {
+        "v31_active_route": {
+            "canonical_controller_bypassed": True,
+            "config_key": "r04_sale_window",
+            "config_value": True,
+            "delegate_factory": "install",
+            "delegate_method": "TitanAgent._v3_r03_act",
+            "delegate_module": "r04_full_router.py",
+            "delegate_return": "v3_agent",
+            "runtime_member": "titan_runtime.py",
+        },
+        "v4_active_route": {
+            "canonical_runtime_path": True,
+            "r04_full_router_member_present": False,
+            "r04_sale_window_present": False,
+        },
+    }
+
+
+def verify_v31_route_authority(v31: dict[str, bytes], v4: dict[str, bytes], coverage: dict[str, Any]) -> None:
+    derived = derive_reachability(v31, v4)
+    if coverage.get("reachability") != derived:
+        raise ValueError("coverage reachability metadata drift")
 
 
 def load_json(path: Path) -> dict[str, Any]:
