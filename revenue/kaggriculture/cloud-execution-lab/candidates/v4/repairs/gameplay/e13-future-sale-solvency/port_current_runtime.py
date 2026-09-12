@@ -19,7 +19,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
-from typing import Iterable
+from typing import Any
 
 OPERATION = "TITAN-V4-E13-FUTURE-SALE-SOLVENCY-PORT-20260912"
 SOURCE_REL = Path("revenue/kaggriculture/cloud-execution-lab/frozen_selected.py")
@@ -48,6 +48,54 @@ def find_repo_root(start: Path | None = None) -> Path:
         if (root / SOURCE_REL).is_file() and (root / ENGINE_REL).is_file():
             return root
     raise PortError("repository root not found")
+
+
+def _is_within(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return False
+    return True
+
+
+def _reject_symlink_prefix(path: Path, label: str) -> None:
+    """Reject any existing symlink component, including the final path.
+
+    ``Path.resolve`` alone is not a custody check: a path such as
+    ``$TMP/link/candidate.py`` can resolve somewhere harmless while still
+    granting a mutable symlink ancestor authority over the write.  Inspect the
+    lexical path first and fail closed on every existing symlink component.
+    """
+    absolute = Path(os.path.abspath(os.fspath(path)))
+    current = Path(absolute.anchor)
+    for part in absolute.parts[1:]:
+        current = current / part
+        if current.is_symlink():
+            raise PortError(f"{label} path has symlink component: {current}")
+        # Once an ordinary component does not exist, no deeper component can
+        # exist yet; materialize() will create the missing directory chain.
+        if not current.exists():
+            break
+
+
+def _scratch_destination(root: Path, path: Path, label: str) -> Path:
+    """Return a resolved external scratch path or fail closed.
+
+    E13 is a candidate materializer, not a repository writer.  Both candidate
+    and receipt must live completely outside the checked-out repository.  We
+    check lexical containment, symlink ancestry, and resolved containment so a
+    caller cannot redirect writes onto any runtime/repo file.
+    """
+    root = root.resolve()
+    lexical = Path(os.path.abspath(os.fspath(path)))
+    root_lexical = Path(os.path.abspath(os.fspath(root)))
+    if _is_within(lexical, root_lexical):
+        raise PortError(f"{label} must be outside repository root: {lexical}")
+    _reject_symlink_prefix(lexical, label)
+    resolved = lexical.resolve(strict=False)
+    if _is_within(resolved, root):
+        raise PortError(f"{label} resolves inside repository root: {resolved}")
+    return resolved
 
 
 def _function_byte_span(source: bytes, name: str) -> tuple[int, int]:
@@ -199,11 +247,8 @@ def materialize(root: Path, output: Path, receipt: Path) -> dict[str, object]:
     if engine_blob != EXPECTED_ENGINE_GIT_BLOB:
         raise PortError(f"engine Git blob mismatch: {engine_blob}")
 
-    output = output.resolve()
-    receipt = receipt.resolve()
-    protected = {source_path.resolve(), engine_path.resolve()}
-    if output in protected or receipt in protected:
-        raise PortError("refusing to overwrite canonical source")
+    output = _scratch_destination(root, output, "candidate output")
+    receipt = _scratch_destination(root, receipt, "receipt output")
     if output == receipt:
         raise PortError("candidate and receipt paths must differ")
 
@@ -236,6 +281,8 @@ def materialize(root: Path, output: Path, receipt: Path) -> dict[str, object]:
             "replacement_count": 1,
             "canonical_source_mutated": False,
             "canonical_engine_mutated": False,
+            "outputs_external_to_repository": True,
+            "symlink_ancestry_rejected": True,
             "post_sale_scope": "acquisition_turn_strictly_greater_than_funding_turn",
             "same_turn_order_aware_scope": "preserved_for_SOL_ESCROW",
         },
@@ -249,12 +296,21 @@ def materialize(root: Path, output: Path, receipt: Path) -> dict[str, object]:
     receipt_bytes = (json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n").encode()
     output.parent.mkdir(parents=True, exist_ok=True)
     receipt.parent.mkdir(parents=True, exist_ok=True)
-    out_tmp = output.with_name(output.name + ".tmp")
-    rec_tmp = receipt.with_name(receipt.name + ".tmp")
+    # Recheck after directory creation, then protect the temporary sidecars as
+    # well: an existing ``candidate.py.tmp`` symlink must never be followed.
+    output = _scratch_destination(root, output, "candidate output")
+    receipt = _scratch_destination(root, receipt, "receipt output")
+    out_tmp = _scratch_destination(root, output.with_name(output.name + ".tmp"), "candidate temp")
+    rec_tmp = _scratch_destination(root, receipt.with_name(receipt.name + ".tmp"), "receipt temp")
+    if out_tmp == rec_tmp or out_tmp in {output, receipt} or rec_tmp in {output, receipt}:
+        raise PortError("temporary and final output paths must be distinct")
+
     out_tmp.write_bytes(candidate)
     rec_tmp.write_bytes(receipt_bytes)
     os.replace(out_tmp, output)
     os.replace(rec_tmp, receipt)
+    if output.read_bytes() != candidate or receipt.read_bytes() != receipt_bytes:
+        raise PortError("materialized output readback mismatch")
     if source_path.read_bytes() != source or engine_path.read_bytes() != engine:
         raise PortError("canonical inputs changed during materialization")
     return record
