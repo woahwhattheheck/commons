@@ -1,49 +1,60 @@
 # R04-EXPANDTAX — BUY_LAND weed-tax gate
 
-Default-OFF (`r04_expandtax`, default false). OFF callers never invoke this module.
+Default-OFF (`r04_expandtax`, literal `true` only). OFF callers retain exact action identity.
 
 ## Mechanic (pinned official engine)
 
 `_do_buy_land` converts every `"LOCKED"` tile of the purchased quadrant to `None`
 (`LAND_ORDER = ["NE","SW","SE"]`, prices `[1000,2000,4000]`). `_spawn_weeds` rolls
-`rng.random() < weed_chance` (default 0.005) for **every** `None` tile at EOD —
-`"LOCKED"` tiles are a string, never `None`, so they are exempt. Every expansion
-therefore permanently adds ~25 tiles of weed-spawn surface: expected weed-clearing
-labor plus the unlock cash.
+`rng.random() < weed_chance` (default 0.005) for every `None` tile at EOD. Locked
+tiles are therefore exempt; expansion adds roughly 25 tiles of potential weed
+surface plus its unlock cash cost.
 
-Gemini/Antigravity's "Expansion Penalty" sim request asked for exactly this
-quantification (ts 1789185299.673649). Canonical research
-(`research/opening-expansion-economics/`, ASTRA-HOMESTEAD #12822) proved the
-exposure scales with *empty* unlocked tiles and concluded: "the next policy-grade
-gate must compare marginal production value vs cash + actual empty-tile weed
-labor." This package is that gate.
+Gemini/Antigravity's expansion-penalty request asked for this quantification.
+Canonical opening-expansion research established that exposure scales with empty
+unlocked tiles. This package is the source-only gate; it is not a second scheduler.
 
 ## Gate rule
 
 Expand iff `E > W·A + C/(T·D)`:
 
-- `E` — expected marginal $/tile/day of the new quadrant (agent's trailing
-  books: trailing mean of daily net $/planted tile)
-- `W` — measured weed-tax actions per new tile per day (`0.013`, see MEASUREMENT.md)
-- `A` — trailing net $/action (daily net $ / daily non-PASS actions)
-- `C` — unlock price of the next quadrant; `T` = 25 tiles/quadrant;
-  `D` = days remaining
+- `E` — trailing net dollars per planted tile per day
+- `W` — measured weed-tax actions per new tile per day (`0.013`)
+- `A` — trailing net dollars per non-PASS action
+- `C` — price of the next canonical quadrant
+- `T` — 25 tiles per quadrant
+- `D` — remaining episode days
 
-`filter_market_orders(action, observation, configuration, books)` drops BUY_LAND
-orders the gate rejects. Malformed input fails closed (action unchanged). No
-revenue model beyond the agent's own trailing books; no second scheduler.
+## Engine-bound admission
+
+`filter_market_orders(action, observation, configuration, books)` is conservative:
+
+- only the official executable market prefix (`max(1, maxMarketOrdersPerTurn)`,
+  default 10) may change; the inert suffix is preserved exactly;
+- one pre-callback verdict can admit at most the first executable `BUY_LAND`;
+  later same-callback land rows are removed because their $2k/$4k post-commit
+  state is not authenticated by the pre-callback evidence;
+- canonical unlocked-quadrant order must be exactly a prefix of `NW,NE,SW,SE`;
+- `day`/`step`, market cap, and trailing books use strict non-coercing evidence;
+  bool/string/nonfinite/type-poison cannot mint a positive expansion verdict;
+- malformed positive-evidence custody blocks executable `BUY_LAND` rather than
+  fabricating a price/horizon. Malformed action/cap surfaces fall back to identity.
+
+The helper does not claim that a retained `BUY_LAND` will execute; affordability
+and any preceding market cash effects remain official-engine execution authority.
 
 ## Evidence
 
-- `MEASUREMENT.md` — W = 0.0130 actions/tile/day (100-seed spawn-rate panel +
-  30-seed clearing-cost micro-panel, pinned engine).
-- `GATE-VERDICT.md` — 16-cell frozen panel: dM(gate − always-expand) **+$938**
-  mean (se $290, 9+/0−/7=, zero harm, deterministic); dM(gate − never-expand)
-  −$2,928 (hyper-dense wins under the saturated proxy policy — reported, not hidden).
-- `checks/test_expandtax.py` — 19/19 pass in normal Python and `python -O`.
+- `MEASUREMENT.md` — W = 0.0130 actions/tile/day from the pinned-engine spawn and
+  clearing-cost panels.
+- `GATE-VERDICT.md` — predecessor 16-cell frozen panel: dM(gate − always-expand)
+  **+$938** mean (se $290, 9+/0−/7=) and dM(gate − never-expand) −$2,928.
+  It remains micro-edge evidence, not activation authority; current tree-v4base
+  re-gating is required before runtime promotion.
+- `checks/test_expandtax.py` — 27/27 PASS normal, 27/27 PASS under `python -O`,
+  plus `py_compile` on the hardened source/test bytes.
 
-## Hook (when a future gate authorizes runtime use)
+## Hook (only after a future activation gate)
 
-See `WIRING.md`. Two lines at the market-order surface plus
-`"r04_expandtax": false` in TITAN-CONFIG.json. The carrier ships the decision
-function only; the composer owns the trailing-books feed from live daily notes.
+See `WIRING.md`. The carrier ships the decision function only. The composer owns
+live `TrailingBooks` custody and any runtime/config wiring.
