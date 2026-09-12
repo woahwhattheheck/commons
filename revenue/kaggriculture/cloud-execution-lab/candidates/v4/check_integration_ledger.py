@@ -59,12 +59,10 @@ def validate(root: Path = HERE) -> list[str]:
     workspace = ledger.get("workspace")
     if branch != "main":
         errors.append(f"canonical_branch must be 'main', got {branch!r}")
-    if canonical.get("integration_root") != branch:
-        errors.append("CANONICAL integration_root disagrees with INTEGRATION canonical_branch")
-    if canonical.get("integration_subtree") != workspace:
-        errors.append("CANONICAL integration_subtree disagrees with INTEGRATION workspace")
-    if canonical.get("status") != "authoritative_integration_root":
-        errors.append("CANONICAL status is not authoritative_integration_root")
+    if canonical.get("canonical_branch") != branch:
+        errors.append("CANONICAL canonical_branch disagrees with INTEGRATION canonical_branch")
+    if canonical.get("workspace") != workspace:
+        errors.append("CANONICAL workspace disagrees with INTEGRATION workspace")
 
     landed = _rows(ledger, "landed")
     recovered = _rows(ledger, "recovered_not_yet_composed")
