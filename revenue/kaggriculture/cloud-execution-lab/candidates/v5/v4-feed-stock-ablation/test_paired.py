@@ -80,12 +80,78 @@ class PairedCustodyTest(unittest.TestCase):
                 paired.write_private_runtime_bytes(b"VALUE = 30\n", private, expected)
             self.assertFalse(private.exists())
 
+    def test_private_engine_survives_public_swap_and_delete(self):
+        raws = {
+            name: (name + "-trusted\n").encode("utf-8")
+            for name in paired.ENGINE_FILES
+        }
+        evaluator = type("Evaluator", (), {
+            "ENGINE_BLOBS": {
+                name: paired.git_blob_bytes(raw) for name, raw in raws.items()
+            }
+        })
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            public = root / "public-engine"
+            public.mkdir()
+            for name, raw in raws.items():
+                (public / name).write_bytes(raw)
+            private, receipt = paired.capture_private_engine(
+                public, evaluator, root / "private-runtime"
+            )
+            (public / "kaggriculture.py").write_bytes(b"POISON\n")
+            (public / "utils.py").unlink()
+            self.assertEqual(
+                (private / "kaggriculture.py").read_bytes(), raws["kaggriculture.py"]
+            )
+            self.assertEqual((private / "utils.py").read_bytes(), raws["utils.py"])
+            self.assertEqual(
+                receipt["kaggriculture.json"]["git_blob"],
+                evaluator.ENGINE_BLOBS["kaggriculture.json"],
+            )
+
+    def test_private_engine_rejects_wrong_preimage_before_public_output(self):
+        raws = {
+            name: (name + "-trusted\n").encode("utf-8")
+            for name in paired.ENGINE_FILES
+        }
+        evaluator = type("Evaluator", (), {
+            "ENGINE_BLOBS": {
+                name: paired.git_blob_bytes(raw) for name, raw in raws.items()
+            }
+        })
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            public = root / "public-engine"
+            public.mkdir()
+            for name, raw in raws.items():
+                (public / name).write_bytes(raw)
+            (public / "kaggriculture.json").write_bytes(b"wrong\n")
+            with self.assertRaisesRegex(ValueError, "Official source mismatch"):
+                paired.capture_private_engine(public, evaluator, root / "private-runtime")
+            self.assertFalse((root / "private-runtime" / "engine").exists())
+
+    def test_private_engine_requires_exact_official_manifest(self):
+        evaluator = type("Evaluator", (), {"ENGINE_BLOBS": {"kaggriculture.py": "x"}})
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(ValueError, "evaluator engine manifest changed"):
+                paired.capture_private_engine(Path(td), evaluator, Path(td) / "private")
+
     def test_main_keeps_generated_executable_paths_out_of_public_output(self):
         source = inspect.getsource(paired.main)
         self.assertIn('runtime[opponent] = private_root / "opponents" / opponent', source)
         self.assertIn('prefix=f"{cell_id}-{arm}-", dir=private_root', source)
         self.assertNotIn('runtime[opponent] = output / "opponents" / opponent', source)
         self.assertNotIn('prefix=f"{cell_id}-{arm}-", dir=output', source)
+
+    def test_main_uses_private_engine_for_every_execution_path(self):
+        source = inspect.getsource(paired.main)
+        self.assertIn("capture_private_engine(", source)
+        self.assertIn("evaluator.verify_sources(private_engine)", source)
+        self.assertIn("evaluator.get_engine(private_engine, loader)", source)
+        self.assertNotIn("evaluator.get_engine(engine_dir, loader)", source)
+        self.assertIn('"engine_files": engine_capture', source)
+        self.assertEqual(paired.SCHEMA, "astra.v5.v4-feed-stock-ablation.v2")
 
     def test_summary_keeps_opponents_and_engagement_separate(self):
         cells = [
