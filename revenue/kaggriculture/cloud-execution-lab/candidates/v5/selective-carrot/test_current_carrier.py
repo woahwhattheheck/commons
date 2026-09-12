@@ -23,6 +23,9 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
             build.git_blob(HERE / "selective_carrot.py"),
             build.EXPECTED_SELECTIVE_BLOB,
         )
+        self.assertEqual(
+            build.git_blob(HERE / "current_entry.py"), build.EXPECTED_ENTRY_BLOB
+        )
 
     def test_materializes_cap4_and_cap12_from_one_implementation(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -67,6 +70,9 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
                     profile["control_package_sha256"], control_digest
                 )
                 self.assertEqual(
+                    profile["entry_git_blob"], build.EXPECTED_ENTRY_BLOB
+                )
+                self.assertEqual(
                     profile["entry_git_blob"],
                     build.git_blob(HERE / "current_entry.py"),
                 )
@@ -104,9 +110,7 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
             baseline = Path(folder) / "baseline"
             baseline.mkdir()
             shutil.copyfile(LAB_ROOT / "main.py", baseline / "main.py")
-            with self.assertRaisesRegex(
-                ValueError, "outside baseline root"
-            ):
+            with self.assertRaisesRegex(ValueError, "outside baseline root"):
                 build.build_candidate(baseline, baseline / "out", 4)
 
 
