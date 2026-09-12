@@ -18,7 +18,7 @@
     {"lane":"F2 feed prebuy","owner_pr":12609,"source_blob":"6ba6c79e4e930a0187c9b8809b177b698034e914","test_blobs":["508ac70971d4cbfc80627a14edc0175f76e63179","bbe2988dc4f6c57c17a2475ea7999da9acecfab0","3dae7c606fd3a65d522de990e3b6c8e1294e114d","ca0ac86ac8a18703bc75401b7b63083b38d2f5ce"],"status":"default_off"},
     {"lane":"F3 V217 EOD tail","owner_pr":12638,"source_blob":"1348e796acba28b22d85fac8a57e080f0504ddff","test_blobs":["e6cfc00b1b8574b1b26f560f48c5588bcbd55a16","263cebeaf88b1b0ef1c99b5ad1139cf09e1225a5"],"status":"default_off"},
     {"lane":"S2 sheep swap","source_blob":"84b025aa9ead6bf362445ad9c3e97598c175c5fd","test_blob":"207fbc5fe76121b61bd5f4ee3b5703f01a91e732","status":"source_and_test_landed"},
-    {"lane":"S1 fertilizer sweep","owner_pr":12630,"source_blob":"f14e18e67b5c0b95943f3c9b9db649d3327d5eb4","test_blob":"f15741f4100e2e725f8a4c8f432cdef59fec5b15","status":"default_off_consolidated_authority"},
+    {"lane":"S1 fertilizer sweep","owner_pr":12630,"source_blob":"47f2d922f79de4bcf3af62ec6e94ca7098e8bcb9","test_blobs":["f15741f4100e2e725f8a4c8f432cdef59fec5b15","91cfdca68997e7cc280ec335da6c77de7f9c349a"],"status":"default_off_complete_day_hardened"},
     {"lane":"V224 raw-slot preservation","owner_pr":12615,"source_blob":"43afebae35560e54dde645cff656c8be8031851f","test_blob":"4e3ece39b80bbfea4d4232745f9ef01c1c53c205","status":"default_off"},
     {"lane":"S6 fertilizer ROI","owner_pr":12598,"source_blob":"87f85de017ad7b321ae74fb4dbb070f1494842cc","test_blob":"ddd5508811f0ed10f1009334c134b825c95e8c5f","status":"default_off"}
   ],
