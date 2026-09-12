@@ -58,6 +58,7 @@ class OverflowSafeDropTests(unittest.TestCase):
         result, report = transform(action, observation, {})
         self.assertEqual(result["farmer"], ["PLACE", "MELON", 2])
         self.assertEqual(result["market"], action["market"])
+        self.assertEqual(report["baseline_same_item_stock"], 100)
         self.assertEqual(report["preserved_in_pocket_lower_bound"], 3)
         self.assertTrue(report["same_tick_shed_effect_preserved"])
         self.assertEqual((observation, action), before)
@@ -73,12 +74,13 @@ class OverflowSafeDropTests(unittest.TestCase):
         self.assertEqual(base_private["inventories"][0], {})
         self.assertEqual(cand_private["inventories"][0], {"MELON": 3})
 
-    def test_full_shed_turns_destructive_drop_into_pass(self):
-        observation = obs(shed={"WOOL": 100}, inventories=[{"MELON": 5}])
+    def test_full_same_item_shed_turns_destructive_drop_into_pass(self):
+        observation = obs(shed={"MELON": 100}, inventories=[{"MELON": 5}])
         action = selected(farmer=["DROP"], market=[["SELL", "MELON", 1]])
         result, report = transform(action, observation, {})
         self.assertEqual(result["farmer"], ["PASS"])
         self.assertEqual(report["shed_room"], 0)
+        self.assertEqual(report["baseline_same_item_stock"], 100)
         self.assertEqual(report["preserved_in_pocket_lower_bound"], 5)
 
         base_farm = deepcopy(observation["farms"][0])
@@ -90,6 +92,13 @@ class OverflowSafeDropTests(unittest.TestCase):
         self.assertEqual(base_private["shed"], cand_private["shed"])
         self.assertEqual(base_private["inventories"][0], {})
         self.assertEqual(cand_private["inventories"][0], {"MELON": 5})
+
+    def test_full_other_item_shed_has_no_executable_same_item_sell(self):
+        observation = obs(shed={"WOOL": 100}, inventories=[{"MELON": 5}])
+        action = selected(farmer=["DROP"], market=[["SELL", "MELON", 1]])
+        result, report = transform(action, observation, {})
+        self.assertIs(result, action)
+        self.assertEqual(report["reason"], "no_same_item_executable_sell")
 
     def test_hand_actor_rewrites_in_place_without_reordering(self):
         observation = obs(
@@ -177,11 +186,14 @@ class OverflowSafeDropTests(unittest.TestCase):
         self.assertEqual(report["reason"], "malformed_market_prefix")
 
         action = selected(farmer=["DROP"], market=[["SELL", "MELON", 2]])
-        for cfg in ({"shedCapacity": 99}, {"boardSize": 8}, {"maxMarketOrdersPerTurn": 9}):
+        for cfg, reason in (([], "malformed_input"),
+                            ({"shedCapacity": 99}, "outside_standard_config"),
+                            ({"boardSize": 8}, "outside_standard_config"),
+                            ({"maxMarketOrdersPerTurn": 9}, "outside_standard_config")):
             with self.subTest(cfg=cfg):
                 result, report = transform(action, observation, cfg)
                 self.assertIs(result, action)
-                self.assertEqual(report["reason"], "outside_standard_config")
+                self.assertEqual(report["reason"], reason)
 
     def test_public_identity_is_exact(self):
         action = selected(farmer=["DROP"], market=[["SELL", "MELON", 2]])
