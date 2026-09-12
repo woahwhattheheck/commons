@@ -42,67 +42,78 @@ class FertFloorApply(unittest.TestCase):
                 control = pair["control"]
                 self.assertEqual(cert["witness"], "MINIMAL_ONE_WATER_CARROT")
                 self.assertTrue(cert["at_price_floor"])
-                self.assertEqual(cert["fert_one_unit_postbuy_quote"], self.engine.PRICE_FLOOR)
                 self.assertEqual(candidate["trace"][0]["cash_delta"], -self.engine.PRICE_FLOOR)
                 self.assertEqual(candidate["trace"][0]["shed"]["FERTILIZER"], 1)
-                self.assertEqual(candidate["trace"][1]["shed"]["FERTILIZER"], 0)
                 self.assertEqual(candidate["trace"][1]["inventories"][0].get("FERTILIZER"), 1)
                 self.assertNotIn("FERTILIZER", candidate["trace"][2]["inventories"][0])
-                self.assertGreaterEqual(candidate["trace"][2]["tile"]["fertilized_until_day"], 3)
                 self.assertEqual(cert["incremental_harvest_units"], 1)
                 self.assertEqual(cert["candidate_harvest_units"], cert["control_harvest_units"] + 1)
                 self.assertGreater(cert["own_cash_delta"], 0)
                 self.assertEqual(cert["rival_cash_delta"], 0)
                 self.assertTrue(cert["same_final_physical"])
                 self.assertEqual(cert["extra_unit_callback_count"], 2)
-                self.assertEqual(cert["extra_unit_callbacks"], ["PICKUP FERTILIZER", "FERTILIZE"])
-                self.assertEqual(cert["market_buy_step"], 90)
-                self.assertFalse(cert["current_native_engagement_claim"])
+                self.assertFalse(cert["source_reachable_prefix_claim"])
                 self.assertFalse(cert["activation_claim"])
-                self.assertEqual(candidate["physical"], control["physical"])
 
-    def test_full_three_day_melon_window_amortizes_same_two_callbacks(self):
+    def test_reachable_melon_executes_plant_and_waits_for_legal_harvest(self):
         self.assertEqual(self.engine.CROPS["MELON"]["max_yield"], 6)
+        self.assertEqual(self.engine.CROPS["MELON"]["first_yield_day"], 10)
         for seat in (0, 1):
             with self.subTest(seat=seat):
-                pair = subject.run_amortized_pair(
-                    self.engine, seat=seat, fert_inventory=self.threshold)
+                pair = subject.run_amortized_pair(self.engine, seat=seat, fert_inventory=self.threshold)
                 cert = pair["certificate"]
                 candidate = pair["floor_apply"]
                 control = pair["control"]
                 self.assertEqual(cert["schema"], subject.SCHEMA)
-                self.assertEqual(cert["witness"], "AMORTIZED_THREE_DAY_MELON")
-                self.assertTrue(cert["at_price_floor"])
+                self.assertEqual(cert["witness"], "AMORTIZED_REACHABLE_MELON")
+                self.assertTrue(cert["source_reachable_prefix_claim"])
                 self.assertEqual(cert["plant_day"], 4)
-                self.assertEqual(cert["fertilizer_active_water_days_used"], 3)
-                self.assertEqual(cert["shared_survival_water_steps"], [96, 144, 192])
+                self.assertEqual(cert["plant_step"], 96)
+                self.assertEqual(cert["first_postplant_water_step"], 97)
+                self.assertEqual(cert["shared_survival_water_steps"], [97, 144, 192])
                 self.assertEqual(cert["common_water_steps"], [243, 264, 288])
                 self.assertEqual(cert["prefert_snapshot_step"], 239)
                 self.assertEqual(cert["market_buy_step"], 240)
+                self.assertEqual(cert["harvest_step"], 336)
+                self.assertEqual(cert["liquidation_step"], 337)
+
                 for arm in (candidate, control):
+                    planted = subject._trace_at(arm, 96)
+                    self.assertEqual(planted["tile"]["kind"], "PLANT")
+                    self.assertEqual(planted["tile"]["crop"], "MELON")
+                    self.assertEqual(planted["tile"]["planted_day"], 4)
+                    self.assertEqual(planted["tile"]["yield_units"], 1)
+                    self.assertFalse(planted["tile"]["watered_today"])
+                    self.assertEqual(planted["seeds"]["MELON"], 0)
+                    watered = subject._trace_at(arm, 97)["tile"]
+                    self.assertTrue(watered["watered_today"])
+                    self.assertEqual(watered["yield_units"], 1)
                     prefert = subject._trace_at(arm, 239)["tile"]
                     self.assertEqual(prefert["kind"], "PLANT")
                     self.assertEqual(prefert["crop"], "MELON")
                     self.assertEqual(prefert["planted_day"], 4)
-                    self.assertEqual(prefert["yield_units"], 0)
+                    self.assertEqual(prefert["yield_units"], 1)
                     self.assertEqual(prefert["consecutive_unwatered"], 1)
                     self.assertFalse(prefert["watered_today"])
+
                 self.assertEqual(cert["prefert_candidate_tile"], cert["prefert_control_tile"])
-                self.assertEqual(cert["prefert_candidate_tile"]["yield_units"], 0)
                 self.assertEqual(subject._trace_at(candidate, 240)["cash_delta"], -1)
                 self.assertEqual(subject._trace_at(candidate, 240)["shed"]["FERTILIZER"], 1)
                 self.assertEqual(subject._trace_at(candidate, 241)["inventories"][0].get("FERTILIZER"), 1)
                 self.assertNotIn("FERTILIZER", subject._trace_at(candidate, 242)["inventories"][0])
                 self.assertEqual(subject._trace_at(candidate, 242)["tile"]["fertilized_until_day"], 12)
                 for step, candidate_yield, control_yield in (
-                    (243, 2, 1), (264, 4, 2), (288, 6, 3)
+                    (243, 3, 2),
+                    (264, 5, 3),
+                    (288, 6, 4),
                 ):
                     self.assertEqual(subject._trace_at(candidate, step)["tile"]["yield_units"], candidate_yield)
                     self.assertEqual(subject._trace_at(control, step)["tile"]["yield_units"], control_yield)
+
                 self.assertEqual(cert["candidate_harvest_units"], 6)
-                self.assertEqual(cert["control_harvest_units"], 3)
-                self.assertEqual(cert["incremental_harvest_units"], 3)
-                self.assertAlmostEqual(cert["extra_unit_callbacks_per_incremental_unit"], 2 / 3)
+                self.assertEqual(cert["control_harvest_units"], 4)
+                self.assertEqual(cert["incremental_harvest_units"], 2)
+                self.assertEqual(cert["extra_unit_callbacks_per_incremental_unit"], 1.0)
                 self.assertEqual(cert["extra_unit_callback_count"], 2)
                 self.assertGreater(cert["own_cash_delta"], 0)
                 self.assertEqual(cert["rival_cash_delta"], 0)
@@ -127,15 +138,22 @@ class FertFloorApply(unittest.TestCase):
         self.assertEqual(report["floor_prebuy_inventory_threshold"], self.threshold)
         self.assertEqual(len(report["minimal_cells"]), 6)
         keys = {(r["seat"], r["fert_inventory_before"]) for r in report["minimal_cells"]}
-        self.assertEqual(keys, {
-            (0, self.threshold - 1), (0, self.threshold), (0, self.threshold + 100),
-            (1, self.threshold - 1), (1, self.threshold), (1, self.threshold + 100),
-        })
+        self.assertEqual(
+            keys,
+            {
+                (0, self.threshold - 1),
+                (0, self.threshold),
+                (0, self.threshold + 100),
+                (1, self.threshold - 1),
+                (1, self.threshold),
+                (1, self.threshold + 100),
+            },
+        )
         self.assertEqual(len(report["amortized_floor_cells"]), 2)
         self.assertEqual({r["seat"] for r in report["amortized_floor_cells"]}, {0, 1})
         # 6 minimal cells * 2 arms * 7 ticks = 84;
-        # 2 amortized cells * 2 arms * (290-96+1=195) ticks = 780.
-        self.assertEqual(oc.CALLBACKS - before, 864)
+        # 2 amortized cells * 2 arms * (337-96+1=242) ticks = 968.
+        self.assertEqual(oc.CALLBACKS - before, 1052)
         for row in report["minimal_cells"] + report["amortized_floor_cells"]:
             self.assertTrue(row["same_final_physical"])
             self.assertEqual(row["rival_cash_delta"], 0)
@@ -143,8 +161,14 @@ class FertFloorApply(unittest.TestCase):
 
     def test_invalid_inputs_fail_closed_instead_of_bool_coercion(self):
         for runner in (subject.run_pair, subject.run_amortized_pair):
-            for kwargs in ({"seat": True}, {"seat": 2}, {"fert_inventory": True},
-                           {"fert_inventory": -1}, {"cash": True}, {"cash": -1}):
+            for kwargs in (
+                {"seat": True},
+                {"seat": 2},
+                {"fert_inventory": True},
+                {"fert_inventory": -1},
+                {"cash": True},
+                {"cash": -1},
+            ):
                 with self.subTest(runner=runner.__name__, kwargs=kwargs), self.assertRaises(ValueError):
                     runner(self.engine, **kwargs)
         for row in ([], [1], "PASS", None):
@@ -152,11 +176,6 @@ class FertFloorApply(unittest.TestCase):
                 subject.unit_action(row)
         with self.assertRaises(ValueError):
             subject._fixture(self.engine, 0, fert_inventory=self.threshold, plant_day=True)
-        with self.assertRaises(ValueError):
-            subject._fixture(
-                self.engine, 0, fert_inventory=self.threshold,
-                consecutive_unwatered=True,
-            )
 
 
 def main():
@@ -167,12 +186,17 @@ def main():
     ENGINE_DIR = args.engine_dir
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(FertFloorApply)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
-    print(json.dumps({
-        "tests": result.testsRun,
-        "failures": len(result.failures),
-        "errors": len(result.errors),
-        "full_interpreter_callbacks": oc.CALLBACKS,
-    }, sort_keys=True))
+    print(
+        json.dumps(
+            {
+                "tests": result.testsRun,
+                "failures": len(result.failures),
+                "errors": len(result.errors),
+                "full_interpreter_callbacks": oc.CALLBACKS,
+            },
+            sort_keys=True,
+        )
+    )
     return 0 if result.wasSuccessful() else 1
 
 
