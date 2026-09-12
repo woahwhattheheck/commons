@@ -31,7 +31,7 @@ from feed_stock_ablation import (
 )
 
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
-HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+HELPER_GIT_BLOB = "719e3514d72bc7ea4c3e505836d16fcddae11019"
 SCHEMA = "astra.v5.v4-feed-stock-ablation.v2"
 ARMS = ("control", "feed_stock_off")
 ENGINE_FILES = ("kaggriculture.py", "kaggriculture.json", "utils.py")
