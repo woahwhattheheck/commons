@@ -137,14 +137,40 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertIsNone(record['decision'])
         self.assertEqual(record['reason'], 'custom_market_curve')
 
-    def test_nonoptimistic_zero_inventory_quote_passthrough(self):
+    def test_future_floor_quote_below_current_passthrough(self):
         def curve(item, inv):
-            return 60 if inv == 0 else 70
+            return 60 if inv < 10000 else 70
         record = gate.evaluate(
             obs(price=70), object(), noisy_day_factory(), fib, curve
         )
         self.assertIsNone(record['decision'])
         self.assertEqual(record['reason'], 'unsupported_market_curve')
+
+    def test_town_drain_below_zero_is_included_in_gross_ceiling(self):
+        def scarcity_curve(item, inv):
+            return 70 + max(0, 1000 - inv)
+        record = gate.evaluate(
+            obs(hires_today=24, price=70, inventory=1000),
+            object(),
+            noisy_day_factory(),
+            fib,
+            scarcity_curve,
+        )
+        self.assertEqual(record['future_inventory_floor'], -3896)
+        self.assertEqual(record['future_tomato_quote_ceiling'], 4966)
+        self.assertEqual(record['gross_revenue_upper_bound'], 397280)
+        self.assertEqual(record['unavoidable_cost_floor'], 200943)
+        self.assertIsNone(record['decision'])
+        self.assertEqual(record['reason'], 'negative_payback_not_proven')
+
+    def test_market_param_override_passthrough(self):
+        observation = obs()
+        observation['market']['params'] = {'TOMATO': {'base': 999}}
+        record = gate.evaluate(
+            observation, object(), noisy_day_factory(), fib, lambda item, inv: 70
+        )
+        self.assertIsNone(record['decision'])
+        self.assertEqual(record['reason'], 'custom_market_params')
 
     def test_missing_hires_today_passthrough(self):
         observation = obs()
