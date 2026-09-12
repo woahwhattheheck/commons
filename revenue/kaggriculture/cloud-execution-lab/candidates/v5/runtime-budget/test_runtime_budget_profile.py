@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import tempfile
 import unittest
+from pathlib import Path
 
-from runtime_budget_profile import BudgetProfileError, profile_rows
+from runtime_budget_profile import BudgetProfileError, _read_jsonl, profile_rows
 
 
 def row(candidate, seed, seat, step, elapsed, cpu=None, *, status="completed", stage=None, nested=False):
@@ -150,7 +152,9 @@ class RuntimeBudgetProfileTests(unittest.TestCase):
             ("candidate", ""),
             ("seed", True),
             ("seat", 0.0),
+            ("seat", 2),
             ("step", -1),
+            ("step", 720),
         ):
             broken = row("v5c:a", 5, 0, 1, 0.01)
             broken[field] = bad
@@ -160,6 +164,42 @@ class RuntimeBudgetProfileTests(unittest.TestCase):
         broken = row("v5c:a", 5, 0, 1, 0.01, status="deadline_fallback")
         with self.assertRaises(BudgetProfileError):
             profile_rows([broken], budget_seconds=0.1)
+
+        good = row("v5c:a", 5, 0, 1, 0.01)
+        for bad_expected in (
+            {"candidate": "v5c:a", "seed": 5, "seat": 2, "step": 1},
+            {"candidate": "v5c:a", "seed": 5, "seat": 0, "step": 720},
+        ):
+            with self.subTest(expected=bad_expected):
+                with self.assertRaises(BudgetProfileError):
+                    profile_rows(
+                        [good],
+                        budget_seconds=0.1,
+                        expected_rows=[bad_expected],
+                    )
+
+    def test_jsonl_rejects_duplicate_members_and_nonstandard_constants(self):
+        bad_lines = (
+            '{"candidate":"v5c:a","candidate":"v5c:b","seed":1,"seat":0,"step":0,"status":"completed","elapsed_seconds":0.01,"act_cpu_seconds":0.01}',
+            '{"candidate":"v5c:a","seed":1,"seat":0,"step":0,"diagnostics":{"status":"completed","status":"deadline_fallback","elapsed_seconds":0.01,"act_cpu_seconds":0.01}}',
+            '{"candidate":"v5c:a","seed":1,"seat":0,"step":0,"status":"completed","elapsed_seconds":0.01,"act_cpu_seconds":0.01,"ignored":NaN}',
+            '{"candidate":"v5c:a","seed":1,"seat":0,"step":0,"status":"completed","elapsed_seconds":0.01,"act_cpu_seconds":0.01,"ignored":Infinity}',
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "rows.jsonl"
+            for payload in bad_lines:
+                with self.subTest(payload=payload):
+                    path.write_text(payload + "\n", encoding="utf-8")
+                    with self.assertRaises(BudgetProfileError):
+                        list(_read_jsonl(path))
+
+            path.write_text(
+                '{"candidate":"v5c:a","seed":1,"seat":0,"step":0,"status":"completed","elapsed_seconds":0.01,"act_cpu_seconds":0.01}\n',
+                encoding="utf-8",
+            )
+            parsed = list(_read_jsonl(path))
+            self.assertEqual(len(parsed), 1)
+            self.assertEqual(parsed[0]["candidate"], "v5c:a")
 
     def test_expected_duplicates_and_bad_budget_contract_fail_closed(self):
         rows = [row("v5c:a", 6, 0, 1, 0.01)]
