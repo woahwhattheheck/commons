@@ -32,6 +32,41 @@ def set_action(row, i, value):
     hands[i-1] = list(value)
 
 
+def _purchase_commitment(row):
+    """Return exact current-step land/seed quantities or fail closed."""
+    land = 0
+    seed = {}
+    for order in row.get('market', []):
+        if not order:
+            continue
+        if order[0] == 'BUY_LAND':
+            land += 1
+        elif order[0] == 'BUY_SEED':
+            if (len(order) < 3 or not isinstance(order[1], str)
+                    or isinstance(order[2], bool) or not isinstance(order[2], int)
+                    or order[2] < 0):
+                return None
+            seed[order[1]] = seed.get(order[1], 0) + order[2]
+    return land, seed
+
+
+def purchase_commitment_survives(selected, returned):
+    """Require current selected expansion purchases to survive final transforms."""
+    required = _purchase_commitment(selected)
+    if required is None:
+        return False
+    required_land, required_seed = required
+    if required_land == 0 and not required_seed:
+        return True
+    actual = _purchase_commitment(returned)
+    if actual is None:
+        return False
+    actual_land, actual_seed = actual
+    return (actual_land >= required_land
+            and all(actual_seed.get(crop, 0) >= units
+                    for crop, units in required_seed.items()))
+
+
 def calendar(route, first_day):
     """Exact authored movement/spawn calendar, independent of farm production.
 
@@ -325,7 +360,8 @@ class FourthQuadrant:
             hire_count = lambda row: sum(bool(o) and o[0] == 'HIRE' for o in row.get('market', []))
             if (self.pending['start'] == now
                     and all(action(returned_action, i) == action(self.selected, i) for i in range(count))
-                    and hire_count(returned_action) == hire_count(self.selected)):
+                    and hire_count(returned_action) == hire_count(self.selected)
+                    and purchase_commitment_survives(self.selected, returned_action)):
                 self.plan = self.pending; self.generation += 1
                 self.events.append({'step': now, 'kind': 'bundle_admitted',
                     'crop': self.plan['crop'], 'tiles': self.plan['tiles'],
