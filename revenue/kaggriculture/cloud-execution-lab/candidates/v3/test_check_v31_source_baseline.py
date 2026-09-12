@@ -1,0 +1,149 @@
+"""Focused checks for explicit-package custody in the V3.1 baseline runner."""
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+from unittest import mock
+
+HERE = Path(__file__).resolve().parent
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+
+import check_v31_source_baseline as baseline  # noqa: E402
+
+
+def _sha(blob: bytes) -> str:
+    return hashlib.sha256(blob).hexdigest()
+
+
+class PackageTreeCustodyTests(unittest.TestCase):
+    def _fixture(self, root: Path, submission: bool = True) -> tuple[Path, Path]:
+        package = root / "package"
+        package.mkdir()
+        source_config = {
+            "r04_sale_window": False,
+            "r04_sale_fertilizer": True,
+            "r04_cattle_early": True,
+        }
+        package_config = dict(source_config)
+        package_config["r04_sale_window"] = submission
+        source_blob = (json.dumps(source_config, indent=2) + "\n").encode()
+        package_blob = (json.dumps(package_config, indent=2) + "\n").encode()
+        (package / "TITAN-CONFIG.json").write_bytes(package_blob)
+        (package / "main.py").write_bytes(b"print('fixture')\n")
+        recorded = {
+            "TITAN-CONFIG.json": _sha(source_blob),
+            "main.py": _sha((package / "main.py").read_bytes()),
+        }
+        manifest = root / "FILES.json"
+        manifest.write_text(json.dumps(recorded), encoding="utf-8")
+        return package, manifest
+
+    def _write_sale_window(self, package: Path, value) -> None:
+        path = package / "TITAN-CONFIG.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["r04_sale_window"] = value
+        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+
+    def test_submission_toggle_is_the_only_allowed_hash_difference(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp), submission=True)
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                baseline._verify_package_tree(package)
+
+    def test_source_mode_tree_also_verifies(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp), submission=False)
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                baseline._verify_package_tree(package)
+
+    def test_non_boolean_sale_window_values_fail_custody(self):
+        for value in (1, "true", [True], {"enabled": True}, None):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as temp:
+                package, manifest = self._fixture(Path(temp))
+                self._write_sale_window(package, value)
+                with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                    with self.assertRaisesRegex(SystemExit, "must be JSON boolean"):
+                        baseline._verify_package_tree(package)
+
+    def test_force_source_mode_also_rejects_non_boolean_values(self):
+        for value in (1, "false", [], {"enabled": False}, None):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as temp:
+                package, _manifest = self._fixture(Path(temp))
+                self._write_sale_window(package, value)
+                with self.assertRaisesRegex(SystemExit, "must be JSON boolean"):
+                    baseline._force_source_mode(package)
+
+    def test_extra_file_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp))
+            (package / "extra.py").write_text("x = 1\n", encoding="utf-8")
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                with self.assertRaisesRegex(SystemExit, "file-set mismatch"):
+                    baseline._verify_package_tree(package)
+
+    def test_missing_file_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp))
+            (package / "main.py").unlink()
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                with self.assertRaisesRegex(SystemExit, "file-set mismatch"):
+                    baseline._verify_package_tree(package)
+
+    def test_non_config_tamper_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp))
+            (package / "main.py").write_text("print('tampered')\n", encoding="utf-8")
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                with self.assertRaisesRegex(SystemExit, "hash mismatch: main.py"):
+                    baseline._verify_package_tree(package)
+
+    def test_other_config_drift_is_not_hidden_by_submission_normalization(self):
+        with tempfile.TemporaryDirectory() as temp:
+            package, manifest = self._fixture(Path(temp))
+            data = json.loads((package / "TITAN-CONFIG.json").read_text(encoding="utf-8"))
+            data["r04_cattle_early"] = False
+            (package / "TITAN-CONFIG.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+            with mock.patch.object(baseline, "FILES_MANIFEST", manifest):
+                with self.assertRaisesRegex(SystemExit, "hash mismatch: TITAN-CONFIG.json"):
+                    baseline._verify_package_tree(package)
+
+    def test_run_verifies_temp_copy_before_source_mode_or_suites(self):
+        package = Path("not-used").resolve()
+        with (
+            mock.patch.object(baseline, "_copy_tree") as copy_tree,
+            mock.patch.object(baseline, "_verify_package_tree", side_effect=SystemExit("bad package")) as verify,
+            mock.patch.object(baseline, "_force_source_mode") as source_mode,
+            mock.patch.object(baseline.subprocess, "run") as run,
+        ):
+            with self.assertRaisesRegex(SystemExit, "bad package"):
+                baseline.run(package)
+
+        copy_tree.assert_called_once()
+        self.assertEqual(copy_tree.call_args.args[0], package)
+        verified_target = verify.call_args.args[0]
+        self.assertNotEqual(verified_target, package)
+        self.assertEqual(verified_target, copy_tree.call_args.args[1])
+        source_mode.assert_not_called()
+        run.assert_not_called()
+
+    def test_copy_preserves_symlinks_for_verifier_rejection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = root / "source"
+            target = root / "target"
+            source.mkdir()
+            (source / "real.txt").write_text("ok\n", encoding="utf-8")
+            (source / "alias.txt").symlink_to("real.txt")
+            baseline._copy_tree(source, target)
+            self.assertTrue((target / "alias.txt").is_symlink())
+            with self.assertRaisesRegex(SystemExit, "symbolic links"):
+                baseline._verify_package_tree(target)
+
+
+if __name__ == "__main__":
+    unittest.main()
