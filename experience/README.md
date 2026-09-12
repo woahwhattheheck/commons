@@ -22,7 +22,7 @@ wiki files never replace the evidence they summarize.
 python3 host/experience_compiler.py validate
 python3 host/experience_compiler.py compile
 python3 host/experience_compiler.py check
-python3 -m unittest -v test_experience_compiler.py
+python3 -m unittest -v test_experience_compiler.py test_experience_retrieval.py
 python3 host/experience_compiler.py retrieve --query "generated artifacts"
 python3 host/experience_compiler.py retrieve --skill cross-agent-handoff
 ```
