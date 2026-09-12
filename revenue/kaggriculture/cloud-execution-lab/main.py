@@ -126,6 +126,10 @@ def _new_instance(root, feature_data):
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
             self._history_checkpoint = None
+            # Route recovery is an entrypoint publication receipt, not the live
+            # controller's mutable/current route field.  It advances only after
+            # this wrapper has observed a complete inner return for a public call.
+            self._entrypoint_route_receipt = None
 
         def _export_spatial_recovery(self):
             """Copy only state certified before the next entrypoint call starts.
@@ -454,14 +458,20 @@ def agent(observation, configuration=None):
         with timer:
             if replace:
                 instance = _new_instance(root, feature_data)
-                # Preserve only the immutable route ID associated with a fully
-                # completed producer action. Never restore current controller
-                # mutations, seller plans, or a discarded finalizer object.
+                # Restore only a coherent route receipt from the immediately
+                # preceding public boundary (or an exact same-step retry).  A
+                # skipped callback must recompute instead of reviving stale tape.
+                route_step = (route_journal.get('last_step')
+                              if route_journal is not None else None)
                 if (route_journal is not None
+                        and set(route_journal) == {'last_step', 'player', 'route'}
                         and route_journal.get('player') == observation['player']
+                        and type(route_step) is int and route_step >= 0
                         and type(route_journal.get('route')) is str
-                        and step >= route_journal.get('last_step', step + 1)):
+                        and step in (route_step, route_step + 1)):
+                    from copy import deepcopy
                     instance._completed_route = route_journal['route']
+                    instance._entrypoint_route_receipt = deepcopy(route_journal)
                 stager = getattr(instance, '_stage_spatial_recovery', None)
                 if callable(stager):
                     stager(spatial_recovery)
@@ -471,6 +481,14 @@ def agent(observation, configuration=None):
             # Publish only after a complete inner return. A foreign exception or
             # outer cancellation keeps the prior marker or discards the instance.
             instance._entrypoint_last_step = step
+            route = getattr(instance, '_completed_route', None)
+            if (getattr(instance, 'selected', None) is not None
+                    and type(route) is str):
+                instance._entrypoint_route_receipt = {
+                    'last_step': step,
+                    'player': observation['player'],
+                    'route': route,
+                }
     except deadline.DeadlineExceeded as error:
         if error is not timer.expired:
             raise
@@ -486,14 +504,26 @@ def agent(observation, configuration=None):
         # object to the next observation; reconstruct from public state plus the
         # pre-call committed spatial journal, never current-call proposals.
         _SPATIAL_RECOVERY = _spatial_recovery_journal(spatial_recovery, step)
-        # TitanAgent publishes _completed_route only with a complete selected
-        # action; controller.cur may already contain an interrupted proposal.
-        # A construction cancellation has no new route and keeps the old capsule.
-        if instance is not None:
-            route = getattr(instance, '_completed_route', None)
-            if type(route) is str:
-                _ROUTE_RECOVERY = {'last_step': step, 'player': observation['player'],
-                                   'route': route}
+        # Recover only the immutable route receipt published at a completed
+        # entrypoint boundary.  Never stamp the live _completed_route with the
+        # current step: it may still belong to an older callback, or may have
+        # changed inside an act() that the outer timer interrupted mid-return.
+        receipt = (None if instance is None else
+                   getattr(instance, '_entrypoint_route_receipt', None))
+        if (isinstance(receipt, dict)
+                and set(receipt) == {'last_step', 'player', 'route'}
+                and type(receipt.get('last_step')) is int
+                and receipt['last_step'] >= 0
+                and type(receipt.get('player')) is int
+                and receipt['player'] in (0, 1)
+                and type(receipt.get('route')) is str):
+            from copy import deepcopy
+            _ROUTE_RECOVERY = deepcopy(receipt)
+        elif route_journal is not None:
+            from copy import deepcopy
+            _ROUTE_RECOVERY = deepcopy(route_journal)
+        else:
+            _ROUTE_RECOVERY = None
         _INSTANCE = None
         return fallback
     _SPATIAL_RECOVERY = None
