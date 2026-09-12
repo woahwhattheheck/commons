@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Source-bound census for provably removable main-farmer motion loops in TITAN V4 tapes.
+"""Source-bound census for main-farmer motion candidates in TITAN V4 tapes.
 
-This module is research-only. It does not mutate tapes or runtime policy.
+This module is research-only. It does not mutate tapes or runtime policy. Only
+true out-of-bounds movement rows are engine-level PASS-equivalent. Closed motion
+loops are open-loop candidates: their intermediate farmer positions are public
+and can affect observation-conditioned agents before the route returns home.
 """
 from __future__ import annotations
 
@@ -29,6 +32,8 @@ ENGINE_MARKERS = (
     'FARMER_MOVES = {',
     'if op in FARMER_MOVES:',
     '_set_farmer_position(farm, idx, (nx, ny))',
+    'obs0.farms = farms',
+    'state[i].observation.farms = farms',
     'if op == "HIRE":',
     '_do_hire(farms[player_id], privates[player_id], board_size, hire_mult)',
     'farm["hands"].append(_spawn_hand(farm, board_size))',
@@ -280,15 +285,14 @@ def census_route(
     board_size: int = BOARD_SIZE,
     turns_per_day: int = TURNS_PER_DAY,
 ) -> dict[str, Any]:
-    """Find non-overlapping source-theorem-safe main-farmer movement loops.
+    """Find boundary no-ops and open-loop position-restoring motion candidates.
 
-    A loop is admitted only inside one day, across actor-0 rows limited to
-    MOVE/PASS, with no HIRE market row in the interval, and with exact simulated
-    farmer position returning to the same tile. Closed-loop movement rows are an
-    atomic rewrite group: the proof permits replacing all movement rows in one
-    admitted interval together, never an arbitrary subset. Boundary movement
-    no-ops are individually PASS-equivalent. Excluding HIRE removes the one market
-    operation whose spawn result consumes farmer/hand positions.
+    Boundary movement no-ops are individually engine-level PASS-equivalent.
+    Closed MOVE/PASS-only, HIRE-free intervals are only *candidate groups*: the
+    fixed authored route returns actor 0 to the same tile, but intermediate
+    farmer positions are public observations. Observation-conditioned wrappers
+    or opponents may react before the loop closes, so this census grants no
+    closed-loop rewrite authority. Such groups require current-native replay.
     """
     if type(board_size) is not int or type(turns_per_day) is not int:
         raise MotionCensusError("plain-integer board_size/turns_per_day required")
@@ -343,6 +347,7 @@ def census_route(
                         "movement_rows": interval_moves,
                         "movement_row_count": len(interval_moves),
                         "executed_move_count": executed_moves,
+                        "classification": "OPEN_LOOP_REPLAY_REQUIRED",
                     }
                 )
                 seen = {pos: step + 1}
@@ -359,13 +364,12 @@ def census_route(
         "movement_rows": movement_rows,
         "hire_market_rows": hire_rows,
         "boundary_noop_rows": boundary_noops,
-        "closed_hire_free_motion_loops": intervals,
-        "closed_loop_count": len(intervals),
-        "closed_loop_movement_rows": loop_rows,
+        "open_loop_closed_motion_candidates": intervals,
+        "open_loop_candidate_count": len(intervals),
+        "open_loop_candidate_movement_rows": loop_rows,
+        "open_loop_candidate_movement_count": len(loop_rows),
         "individually_pass_equivalent_movement_rows": boundary_noops,
         "individually_pass_equivalent_count": len(boundary_noops),
-        "jointly_pass_equivalent_loop_movement_rows": loop_rows,
-        "jointly_pass_equivalent_loop_movement_count": len(loop_rows),
     }
 
 
@@ -385,24 +389,29 @@ def build_report(
         for plan in range(TAPE_COUNT)
     ]
     return {
-        "schema": "titan.v4.route-motion-census.v2",
+        "schema": "titan.v4.route-motion-census.v3",
         "status": "SOURCE_BOUND_RESEARCH_ONLY",
         "sources": sources.source_blobs,
         "standard_configuration": dict(sources.standard_configuration),
         "theorem": {
             "scope": "main farmer actor 0 only; fixed effective routes",
             "safe_rewrite": (
-                "boundary no-op movement rows are individually PASS-equivalent; "
-                "closed-loop movement rows are PASS-equivalent only when every "
-                "movement row in that listed closed interval is rewritten together"
+                "only out-of-bounds movement rows are individually engine-level "
+                "PASS-equivalent"
+            ),
+            "closed_loop_status": (
+                "OPEN_LOOP_REPLAY_REQUIRED: returning to the same tile does not "
+                "authorize a rewrite because intermediate farmer positions are "
+                "shared public observations visible to both agents"
             ),
             "guards": [
                 "authenticated standard boardSize=10 and turnsPerDay=24",
-                "same day only",
-                "no substantive main-farmer unit action inside closed loop",
-                "no HIRE market row inside closed loop",
-                "exact actor-0 position returns to loop start",
+                "same day only for closed-loop candidate grouping",
+                "no substantive main-farmer unit action inside candidate loop",
+                "no HIRE market row inside candidate loop",
+                "exact actor-0 position returns to candidate-loop start",
                 "out-of-bounds movement is already a unit no-op",
+                "both players share the public farms object in observation state",
             ],
         },
         "route_splice": {
@@ -413,22 +422,25 @@ def build_report(
         "routes": routes,
         "totals": {
             "movement_rows": sum(r["movement_rows"] for r in routes),
-            "closed_loop_count": sum(r["closed_loop_count"] for r in routes),
+            "open_loop_candidate_count": sum(
+                r["open_loop_candidate_count"] for r in routes
+            ),
             "individually_pass_equivalent_count": sum(
                 r["individually_pass_equivalent_count"] for r in routes
             ),
-            "jointly_pass_equivalent_loop_movement_count": sum(
-                r["jointly_pass_equivalent_loop_movement_count"] for r in routes
+            "open_loop_candidate_movement_count": sum(
+                r["open_loop_candidate_movement_count"] for r in routes
             ),
-            "routes_with_safe_rewrites": sum(
-                bool(
-                    r["individually_pass_equivalent_count"]
-                    or r["closed_loop_count"]
-                )
-                for r in routes
+            "routes_with_boundary_noop_rewrites": sum(
+                bool(r["individually_pass_equivalent_count"]) for r in routes
+            ),
+            "routes_with_open_loop_candidates": sum(
+                bool(r["open_loop_candidate_count"]) for r in routes
             ),
         },
         "not_claimed": [
+            "closed-loop PASS equivalence under observation-conditioned agents or opponents",
+            "closed-loop rewrite authority before current-native replay",
             "hand/worker motion optimality",
             "natural current-native incidence after all runtime repairs",
             "economic uplift",

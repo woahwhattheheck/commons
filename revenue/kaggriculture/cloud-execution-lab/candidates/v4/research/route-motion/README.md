@@ -1,27 +1,27 @@
 # ROUTEMOTION — source-bound fixed-tape motion census
 
-This lane is **research-only and policy-inert**. It measures a narrow class of main-farmer locomotion rewrites in the canonical V4 fixed tapes under the exact official-engine, standard-configuration, and router semantics pinned by the census.
+This lane is **research-only and policy-inert**. It measures main-farmer motion in the canonical V4 fixed tapes under exact pinned engine, standard-configuration, tape-bank, and router sources.
 
 It does **not** create a worker planner, alter HIRE cadence, compete with LABORFLOW, or mutate runtime/default/archive/Kaggle bytes.
 
 ## The source theorem
 
-The pinned official engine gives actor 0 an exact position with four directional movement operations. Movement only changes that position. At end of day actor 0 resets to the canonical shed-access spawn. The interpreter executes unit actions before market processing.
+The pinned official engine gives actor 0 an exact position with four directional movement operations. Movement mutates `farm["farmer"]` immediately. At end of day actor 0 resets to the canonical shed-access spawn. The interpreter executes unit actions before market processing.
 
-One market operation is special for this proof: `HIRE`. A successful HIRE calls `_spawn_hand()`, and spawn selection observes the current farmer/hand positions. Therefore a transient farmer detour can change later worker geometry if it crosses a HIRE.
-
-`route_motion_census.py` distinguishes two different authorization classes:
+Two consequences must not be conflated:
 
 1. **Individual boundary no-op.** An out-of-bounds movement is already an engine no-op and is individually equivalent to `PASS`.
-2. **Atomic closed-loop rewrite.** A same-day actor-0 loop is jointly removable only when:
-   - actor 0 returns to the exact starting tile;
-   - every actor-0 row inside the loop is only MOVE or PASS;
-   - no callback in the loop contains a HIRE market row; and
-   - **every movement row in that listed closed interval is rewritten together**.
+2. **Open-loop closed-motion candidate.** A same-day actor-0 MOVE/PASS interval can return to its exact starting tile with no HIRE in the interval. That is useful census evidence, but it is **not rewrite authority**.
 
-For case (2), no single row inherits the loop theorem. A two-row `EAST -> WEST` loop is the simplest predecessor: replacing either row alone leaves actor 0 displaced. Only the complete interval is source-equivalent to replacing its movement rows with `PASS`.
+The reason case (2) is not a PASS-equivalence theorem is source-real and observable: `_initialize()` installs the same public `farms` object into both players' observations. An executed `EAST` therefore exposes the displaced farmer position at the next callback before a later `WEST` restores it. Our own observation-conditioned wrappers or the opponent may react to that intermediate public state. Replacing the complete `EAST -> WEST` loop with `PASS -> PASS` can therefore change later actions even though actor 0 eventually returns to the same tile.
 
-The census deliberately emits **non-overlapping atomic intervals** rather than every nested geometric loop. Downstream consumers must use `closed_hire_free_motion_loops[*].movement_rows` as indivisible rewrite groups. `individually_pass_equivalent_movement_rows` contains only true single-row boundary no-ops.
+`route_motion_census.py` consequently emits schema `titan.v4.route-motion-census.v3` with one rewrite authority and one replay-only candidate class:
+
+- `individually_pass_equivalent_movement_rows`: true out-of-bounds engine no-ops only;
+- `open_loop_closed_motion_candidates`: position-restoring fixed-tape groups classified `OPEN_LOOP_REPLAY_REQUIRED`;
+- `open_loop_candidate_movement_rows`: the union of candidate movement rows for counting/replay targeting only.
+
+The old `jointly_pass_equivalent_loop_movement_rows` / atomic-rewrite vocabulary is intentionally removed. Closed loops require current-native branched replay before any transformation or policy claim.
 
 ## Bound sources
 
@@ -32,9 +32,9 @@ At authoring time the tool pins:
 - canonical 13×719 tape bank Git blob `a43289b9cc5e34a2481fddf652762a7d92f427ef`;
 - canonical R04 router Git blob `a3e2fe87c717d128e43c9b65bae2265f40d1d76d`.
 
-The spec pin binds the theorem to the standard `boardSize=10` and `turnsPerDay=24` contract. A changed default is not silently accepted: larger boards can turn a boundary no-op into an executable move, and a different day length changes loop reset boundaries.
+The engine semantic markers include both public-farm observation assignments (`obs0.farms = farms` and `state[i].observation.farms = farms`) in addition to movement, HIRE/spawn, reset, and interpreter ordering. The spec pin binds the census to the standard `boardSize=10` and `turnsPerDay=24` contract. A changed default fails closed.
 
-Every authority is captured exactly once into immutable bytes. Git object identity, engine/router semantic anchors, engine-spec parsing, and tape execution all derive from those captured snapshots; the tool never authenticates one pathname read and then reopens that path for theorem semantics.
+Every authority is captured exactly once into immutable bytes. Git object identity, semantic anchors, engine-spec parsing, and tape execution derive from those captured snapshots; the tool never authenticates one pathname read and then reopens it for theorem semantics.
 
 The effective route is reconstructed exactly as the live R04 router does:
 
@@ -60,13 +60,13 @@ python -O -B -m unittest -q \
   "$V4/research/route-motion/test_route_motion_census.py"
 ```
 
-The v2 output reports per route:
+The v3 output reports per route:
 
 - total authored actor-0 movement rows;
 - market callbacks containing HIRE;
 - individually PASS-equivalent out-of-bounds movement no-ops;
-- closed hire-free movement intervals as atomic rewrite groups;
-- the union of movement rows participating in those groups for census/counting only.
+- open-loop, position-restoring motion candidates that require replay;
+- the union of movement rows participating in those candidates for census/counting only.
 
 It also emits the exact four source Git blobs and the authenticated standard `boardSize` / `turnsPerDay` values used by the census.
 
@@ -74,12 +74,14 @@ It also emits the exact four source Git blobs and the authenticated standard `bo
 
 This packet is evidence for existing route/composition owners. LABORFLOW keeps generic productive hand assignment and redundant-HIRE economics. HERDSCALE keeps animal-throughput scaling. The canonical graph/postimage runner remains the only composition sink.
 
-If the current tapes contain admitted rows, the next useful step is a **source-pinned tape transform plus current-native replay**, not a new scheduler. The transform must preserve the exact row multiset outside individually authorized boundary no-ops and complete atomic loop groups; it must never consume a strict subset of a loop group. Current-native both-seat economics must run before any activation claim.
+If the current tapes contain boundary no-ops, those rows have engine-level PASS equivalence but still need current-native economics before promotion. If they contain closed-motion candidates, the only valid next step is **branched current-native replay with the complete candidate group changed together**, preserving the real observation/reaction loop. A positive replay witness may justify a later transform through existing composition authority; the census alone never does.
 
-If the census returns zero admitted rewrites, land that as useful negative evidence and do not invent a movement policy.
+If the census returns zero useful rows/candidates, land that as useful negative evidence and do not invent a movement policy.
 
 ## Not claimed
 
+- closed-loop PASS equivalence under observation-conditioned agents or opponents;
+- closed-loop rewrite authority before current-native replay;
 - hand/worker path optimality;
 - opportunity incidence after all current-native runtime repairs;
 - economic or competitive uplift;
