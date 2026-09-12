@@ -60,7 +60,7 @@ def _reachable(start: str, target: str, edges: dict[str, set[str]]) -> bool:
         if cur in seen:
             continue
         seen.add(cur)
-        todo.extend(sorted(edges.get(cur, ()), reverse=True)
+        todo.extend(sorted(edges.get(cur, ()), reverse=True))
     return False
 
 
