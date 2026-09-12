@@ -173,6 +173,10 @@ def _load_index(
             f"index.{opponent}.submission_id",
             1,
         )
+        seed = _plain_int(
+            row.get("seed"),
+            f"index.{opponent}.seed",
+        )
         family = row.get("family")
         memberships = row.get("memberships")
         candidate_seat = row.get(
@@ -194,6 +198,7 @@ def _load_index(
         expected = {
             "id": opponent,
             "submission_id": submission_id,
+            "seed": seed,
             "family": family,
             "memberships": memberships,
             "candidate_seat_for_recorded_orientation": candidate_seat,
@@ -234,6 +239,8 @@ def _validate_cell_against_index(
     exact = {
         "opponent": expected["id"],
         "submission_id": expected["submission_id"],
+        "seed": expected["seed"],
+        "candidate_seat": seat,
         "family": expected["family"],
         "kind": "recorded_trace",
         "adaptive": False,
@@ -378,6 +385,8 @@ def _scan_roots(
             cells[key] = {
                 "opponent": opponent,
                 "seat": seat,
+                "seed": expected["seed"],
+                "candidate_seat": seat,
                 "submission_id": expected["submission_id"],
                 "family": expected["family"],
                 "kind": "recorded_trace",
@@ -606,6 +615,8 @@ def _same_authority(
     key: tuple[str, int],
 ) -> None:
     for field in (
+        "seed",
+        "candidate_seat",
         "submission_id",
         "family",
         "kind",
@@ -697,6 +708,8 @@ def reduce_roots(
         row = {
             "opponent": key[0],
             "seat": key[1],
+            "seed": left["seed"],
+            "candidate_seat": left["candidate_seat"],
             "submission_id": left["submission_id"],
             "family": left["family"],
             "recorded_orientation": left["recorded_orientation"],
