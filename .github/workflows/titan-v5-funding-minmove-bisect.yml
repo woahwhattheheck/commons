@@ -1,0 +1,33 @@
+name: titan-v5-funding-minmove-bisect
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-v5-funding-minmove-bisect.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/frozen_selected.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5-funding-minmove-bisect/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact output and probe-count regression
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5-funding-minmove-bisect
+        run: python3 -B -m unittest -v test_minmove_bisect.py
+      - name: Optimized regression
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5-funding-minmove-bisect
+        run: PYTHONOPTIMIZE=1 python3 -B -m unittest -v test_minmove_bisect.py
+      - name: Compile changed Python
+        run: python3 -m py_compile revenue/kaggriculture/cloud-execution-lab/frozen_selected.py revenue/kaggriculture/cloud-execution-lab/candidates/v5-funding-minmove-bisect/test_minmove_bisect.py
