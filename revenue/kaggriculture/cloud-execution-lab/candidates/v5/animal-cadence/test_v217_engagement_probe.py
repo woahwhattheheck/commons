@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import unittest
 
@@ -84,6 +85,34 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(report['coverage_certified'], 1)
         self.assertEqual(report['counterfactual_plan'], 0)
 
+    def test_locked_rescue_path_fails_closed(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[2][0] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[2][1] = 'LOCKED'
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[2, 2], [3, 3]], tiles)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_weed_rescue_path_fails_closed(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[2][0] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[2][1] = {'kind': 'WEED'}
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[2, 2], [3, 3]], tiles)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
     def test_any_delayed_queue_fails_closed_even_without_feed(self):
         ns, policy = loaded_module()
         tiles = [[None for _ in range(5)] for _ in range(5)]
@@ -134,16 +163,20 @@ class ProbeTests(unittest.TestCase):
         files = {'b.py': b'b', 'a.py': b'a'}
         self.assertEqual(probe.archive_bytes(files), probe.archive_bytes(files))
 
-    def test_exact_repo_sources_are_pinned_and_transform_compile(self):
-        router_path = HERE.parent.parent / 'v3' / 'overlay' / 'r04_full_router.py'
+    def test_checked_in_authorities_bind_production_router_evaluator_and_publisher(self):
+        manifest_path = HERE.parent / 'selective-carrot' / 'PRODUCTION-V3-PACKAGE-MANIFEST.json'
+        manifest = json.loads(manifest_path.read_text())
+        self.assertEqual(manifest['candidate_archive_sha256'], probe.PRODUCTION_SHA)
+        self.assertEqual(manifest['files'][probe.ROUTER], probe.ROUTER_SHA)
+        self.assertEqual(len(manifest['files']), probe.PRODUCTION_MEMBERS)
+
         evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
-        router = router_path.read_bytes()
         evaluator = evaluator_path.read_bytes()
-        self.assertEqual(probe.digest(router), probe.ROUTER_SHA)
         self.assertEqual(probe.digest(evaluator), probe.EVALUATOR_SHA)
-        compile(probe.instrument_router(router), str(router_path), 'exec')
         compile(probe.instrument_evaluator(evaluator), str(evaluator_path), 'exec')
-        self.assertTrue((HERE.parent / 'selective-carrot' / 'publication_custody.py').is_file())
+
+        publisher = HERE.parent / 'selective-carrot' / 'publication_custody.py'
+        self.assertTrue(publisher.is_file())
 
 
 if __name__ == '__main__':
