@@ -98,16 +98,29 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.cancel(old)
         self.assertEqual(self.resume()._completed_route, 'YARN')
 
-    def test_constructor_cancellation_preserves_prior_capsule(self):
+    def test_constructor_cancellation_advances_capsule_observation_watermark(self):
         self.cancel(Instance('YARN'))
-        saved = deepcopy(self.entry._ROUTE_RECOVERY)
+        self.assertEqual(self.entry._ROUTE_RECOVERY,
+                         {'last_step': 227, 'player': 0, 'route': 'YARN'})
+
         def interrupted_constructor(*_args):
             raise ControlledTimer.active.expired
+
         with patch.object(self.entry, '_new_instance', side_effect=interrupted_constructor), \
                 patch('json.loads', return_value={'town_procurement': False}):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
-        self.assertEqual(self.entry._ROUTE_RECOVERY, saved)
+
+        # Step 228 was actually observed. Preserve the route, but advance the
+        # capsule watermark so only this callback or the contiguous next callback
+        # can consume it. Otherwise a stale route can survive an arbitrary jump.
+        self.assertEqual(self.entry._ROUTE_RECOVERY,
+                         {'last_step': 228, 'player': 0, 'route': 'YARN'})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
+
+    def test_skipped_step_without_observed_callback_discards_stale_route(self):
+        self.cancel(Instance('YARN'), step=227)
+        self.assertIsNone(self.resume(229)._completed_route)
+        self.assertIsNone(self.entry._ROUTE_RECOVERY)
 
     def test_new_episode_discards_old_route(self):
         self.cancel(Instance('YARN'))
