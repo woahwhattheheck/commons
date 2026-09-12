@@ -12,7 +12,10 @@ This is **not** a V3.1 reconstruction. Control is the exact submitted V4 archive
 
 - Baseline archive is read once, SHA256-authenticated, and extraction occurs only from a private snapshot written from those captured bytes.
 - Shared `joint-liquidity-bench/paired.py` is read once, authenticated against Git blob `fbc5e320b8a2ee63af11dc9856c956a679823409`, then compiled/executed from the captured bytes. The live path is never imported.
-- Evaluator, loader, packer, opponent registry and opponent support are executed only from the helper's authenticated harness snapshot.
+- The helper builds and authenticates the evaluator/opponent harness inside a private temporary runtime tree. Evaluator, packer, and reference-policy bridge are then captured once against receipt SHA256 and executed from those captured buffers.
+- The external candidate loader is captured against the authenticated receipt and republished from those exact bytes to a separate private runtime-only path. The private support tree remains alive for opponent adapters for the entire panel.
+- `.harness-snapshot` is a caller-visible evidence copy only; no game execution imports or loads from it.
+- Hostile predecessors mutate and delete source paths after authentication and prove execution remains bound to captured bytes; a wrong captured loader digest fails closed.
 - Treatment construction fails closed if the exact V4 E05 import, pair-admission call, pair gate, or metrics provider drifts.
 - The synthetic discriminator proves the intact pair gate selects a reachable joint candidate while the ablated gate leaves the already-selected single-product incumbent unchanged.
 
@@ -24,7 +27,7 @@ python -O -B -m unittest -v test_ablation test_paired
 python -m py_compile ablation.py paired.py test_ablation.py test_paired.py
 ```
 
-Local authoring receipt: 13/13 PASS normal, 13/13 PASS under `-O`, py_compile PASS. Exact-head CI remains authoritative after publication.
+Local successor receipt: 17/17 PASS normal, 17/17 PASS under `-O`, py_compile PASS. Exact-head CI remains authoritative after publication.
 
 ## Matched screen
 
