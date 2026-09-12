@@ -64,6 +64,9 @@ def _runtime(candidate_id):
         "promotion_ready": True,
         "receipt_count": 8,
         "candidate_count": 1,
+        "budget_seconds": 0.1,
+        "reserve_seconds": 0.02,
+        "usable_budget_seconds": 0.08,
         "max_fallback_rate": 0.0,
         "deadline_fallback_count": 0,
         "deadline_fallback_rate": 0.0,
@@ -72,8 +75,8 @@ def _runtime(candidate_id):
         "expected_complete": True,
         "missing_expected": [],
         "unexpected_extra": [],
-        "p99_headroom_seconds": 0.1,
-        "overall": {"count": 8},
+        "p99_headroom_seconds": 0.02,
+        "overall": {"count": 8, "wall_seconds": {"p99": 0.06}},
         "by_candidate": {
             candidate_id: {"count": 8, "deadline_fallback_count": 0}
         },
@@ -217,6 +220,15 @@ class PromotionGateTest(unittest.TestCase):
         del engagement["first_divergence"]["key"]["phase"]
         with self.assertRaisesRegex(gate.PromotionError, "key must match key_fields"):
             gate.build_receipt(manifest, engagement, _runtime(manifest["candidate_id"]))
+
+    def test_runtime_headroom_is_recomputed(self):
+        manifest = _manifest()
+        runtime = _runtime(manifest["candidate_id"])
+        runtime["overall"]["wall_seconds"]["p99"] = 0.09
+        with self.assertRaisesRegex(gate.PromotionError, "p99 headroom disagrees"):
+            gate.build_receipt(
+                manifest, _engagement(manifest["candidate_id"]), runtime
+            )
 
     def test_runtime_summary_inconsistency_is_rejected(self):
         manifest = _manifest()
