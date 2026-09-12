@@ -104,6 +104,15 @@ class TestPreregisteredSelector(unittest.TestCase):
         out = s.fit_selector(report(groups))
         self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 3)
 
+    def test_failed_incumbent_control_disqualifies_otherwise_clean_override(self):
+        groups = full_groups()
+        groups[0]["plans"][7]["failures"] = ["incumbent evaluator failure"]
+        result = s.evaluate_rule(s.validate_discovery_report(report(groups)), {"predicate": None, "override_plan": 3})
+        self.assertFalse(result["qualified"])
+        self.assertEqual(result["candidate_failure_groups"], 0)
+        self.assertEqual(result["incumbent_failure_groups"], 1)
+        self.assertEqual(result["failure_groups"], 1)
+
     def test_conditional_rule_must_span_two_seeds_opponents_and_both_seats(self):
         groups = full_groups(plan3=(-5, -5))
         for g in groups:
