@@ -2,15 +2,16 @@
 # SPDX-License-Identifier: Apache-2.0
 """Fail-closed release-pointer transaction authority for TITAN V5.
 
-This module is outside gameplay.  It replays the V5 promotion gate, replays the
-current V4 trust-root gate, binds the promoted component bytes into the proposed
-release SOURCE manifest, authenticates the proposed archive/pointer pair, and
-then produces a deterministic expected-old -> approved-new transaction receipt.
+This module is outside gameplay. It replays the V5 promotion gate, requires a
+paired competitive-economics PASS bound to the exact execution closure, replays
+the current V4 trust-root gate, binds the promoted component bytes into the
+proposed release SOURCE manifest, authenticates the proposed archive/pointer
+pair, and then produces a deterministic expected-old -> approved-new receipt.
 
-The optional writer changes only CURRENT-ARCHIVE.json.  It uses an exclusive
+The optional writer changes only CURRENT-ARCHIVE.json. It uses an exclusive
 cooperating-writer lock, re-reads the exact expected-old bytes under that lock,
 atomically replaces the pointer, verifies the postimage, and only then publishes
-the deterministic transaction receipt.  It never builds or changes an archive,
+the deterministic transaction receipt. It never builds or changes an archive,
 source manifest, runtime source, config, or gameplay default.
 """
 from __future__ import annotations
@@ -29,7 +30,7 @@ import tarfile
 import uuid
 from typing import Any, Callable, Mapping
 
-SCHEMA = "titan-v5-release-transaction/v1"
+SCHEMA = "titan-v5-release-transaction/v2"
 TRANSITION_PREFIX = "v5tx:"
 _POINTER_KEYS = frozenset(
     ("path", "entrypoint", "config", "sha256", "bytes",
@@ -122,7 +123,7 @@ def _source_key(value: Any, field: str) -> str:
     """Validate a producer source_path string without treating it as a filesystem target.
 
     build_integrated intentionally records a few sibling Kaggriculture sources as
-    ../cloud-... paths.  They are provenance strings here, not traversal inputs.
+    ../cloud-... paths. They are provenance strings here, not traversal inputs.
     """
     if type(value) is not str or not value or "\\" in value:
         raise TransactionError(f"{field} must be a non-empty POSIX source path")
@@ -277,11 +278,60 @@ def _promotion_replay(
     if replayed != supplied:
         raise TransactionError("supplied promotion receipt disagrees with gate replay")
     candidate_id = supplied.get("candidate_id")
+    control_id = supplied.get("control_id")
     if type(candidate_id) is not str or _V5C.fullmatch(candidate_id) is None:
         raise TransactionError("promotion receipt candidate_id is noncanonical")
+    if type(control_id) is not str or _V5C.fullmatch(control_id) is None:
+        raise TransactionError("promotion receipt control_id is noncanonical")
+    if candidate_id == control_id:
+        raise TransactionError("promotion receipt candidate_id and control_id must differ")
     if supplied.get("classification") != "PASS" or supplied.get("promotion_ready") is not True:
         raise TransactionError("promotion receipt is not a promotion-ready PASS")
     return manifest, supplied
+
+
+def _economics_replay(
+    economics_builder: Callable[..., Mapping[str, Any]],
+    economics_raw: bytes,
+    *,
+    candidate_id: str,
+    control_id: str,
+    engine_id: Any,
+    opponent_pack_id: Any,
+    control_archive_sha256: str,
+    candidate_archive_sha256: str,
+) -> dict[str, Any]:
+    report = _loads(economics_raw, "economics report")
+    if type(report) is not dict:
+        raise TransactionError("economics report must be an object")
+    try:
+        receipt = economics_builder(
+            report,
+            candidate_id=candidate_id,
+            control_id=control_id,
+            engine_id=engine_id,
+            opponent_pack_id=opponent_pack_id,
+            control_archive_sha256=control_archive_sha256,
+            candidate_archive_sha256=candidate_archive_sha256,
+        )
+    except Exception as exc:
+        raise TransactionError(f"economics gate replay failed: {exc}") from exc
+    if type(receipt) is not dict:
+        raise TransactionError("economics gate did not return an object")
+    if receipt.get("classification") != "PASS" or receipt.get("promotion_ready") is not True:
+        raise TransactionError("economics gate is not a promotion-ready PASS")
+    expected = {
+        "candidate_id": candidate_id,
+        "control_id": control_id,
+        "engine_id": engine_id,
+        "opponent_pack_id": opponent_pack_id,
+        "control_archive_sha256": control_archive_sha256,
+        "candidate_archive_sha256": candidate_archive_sha256,
+    }
+    for key, value in expected.items():
+        if receipt.get(key) != value:
+            raise TransactionError(f"economics receipt {key} disagrees with release authority")
+    return receipt
 
 
 def _trust_digest(files: Mapping[str, bytes]) -> str:
@@ -307,7 +357,9 @@ def build_transaction(
     engagement_raw: bytes,
     runtime_raw: bytes,
     promotion_receipt_raw: bytes,
+    economics_raw: bytes,
     promotion_builder: Callable[..., Mapping[str, Any]],
+    economics_builder: Callable[..., Mapping[str, Any]],
     trust_result: Mapping[str, Any],
     trust_files: Mapping[str, bytes],
 ) -> dict[str, Any]:
@@ -344,6 +396,16 @@ def build_transaction(
         runtime_raw,
         promotion_receipt_raw,
     )
+    economics = _economics_replay(
+        economics_builder,
+        economics_raw,
+        candidate_id=promotion["candidate_id"],
+        control_id=promotion["control_id"],
+        engine_id=manifest.get("engine_id"),
+        opponent_pack_id=manifest.get("opponent_pack_id"),
+        control_archive_sha256=old_pointer["sha256"],
+        candidate_archive_sha256=new_pointer["sha256"],
+    )
     bind_promoted_sources(manifest, source_manifest, archive_members)
 
     if type(trust_result) is not dict or trust_result.get("ok") is not True:
@@ -367,7 +429,20 @@ def build_transaction(
         "promotion": {
             "receipt_sha256": _sha(promotion_receipt_raw),
             "candidate_id": promotion["candidate_id"],
+            "control_id": promotion["control_id"],
             "evidence_sha256": promotion.get("evidence_sha256"),
+        },
+        "economics": {
+            "report_sha256": _sha(economics_raw),
+            "engine_id": economics["engine_id"],
+            "opponent_pack_id": economics["opponent_pack_id"],
+            "control_archive_sha256": economics["control_archive_sha256"],
+            "candidate_archive_sha256": economics["candidate_archive_sha256"],
+            "cell_count": economics["cell_count"],
+            "seed_count": economics["seed_count"],
+            "sum_margin_delta": economics["sum_margin_delta"],
+            "mean_margin_delta": economics["mean_margin_delta"],
+            "panel_sha256": economics["panel_sha256"],
         },
         "trusted_base": {
             "control_plane_sha256": trust_sha,
@@ -455,6 +530,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--engagement-report", type=Path, required=True)
     parser.add_argument("--runtime-report", type=Path, required=True)
     parser.add_argument("--promotion-receipt", type=Path, required=True)
+    parser.add_argument("--economics-report", type=Path, required=True)
     parser.add_argument("--v4-root", type=Path, default=default_v4)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--commit", action="store_true")
@@ -462,6 +538,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         promotion_module, _ = _load_module(here.with_name("promotion_gate.py"), "_titan_v5_promotion_gate")
+        economics_module, _ = _load_module(here.with_name("economics_gate.py"), "_titan_v5_economics_gate")
         v4_module, validator_raw = _load_module(
             args.v4_root / "check_control_plane.py", "_titan_v4_control_plane"
         )
@@ -486,7 +563,9 @@ def main(argv: list[str] | None = None) -> int:
             engagement_raw=_read(args.engagement_report, "engagement report"),
             runtime_raw=_read(args.runtime_report, "runtime report"),
             promotion_receipt_raw=_read(args.promotion_receipt, "promotion receipt"),
+            economics_raw=_read(args.economics_report, "economics report"),
             promotion_builder=promotion_module.build_receipt,
+            economics_builder=economics_module.validate_report,
             trust_result=trust_result,
             trust_files=trust_files,
         )
