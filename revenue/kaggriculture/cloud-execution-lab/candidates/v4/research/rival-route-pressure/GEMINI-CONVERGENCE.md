@@ -1,63 +1,73 @@
 # TITAN V4 Gemini convergence map
 
-This packet records the durable disposition of Gemini-originated TITAN ideas and adds one missing research bridge inside the **single existing V4**. It does not create a sibling controller, V4 root, runtime key, default, archive, evaluator, or Kaggle path.
+This packet records the durable disposition of Gemini-originated Kaggriculture/TITAN gameplay ideas inside the **single existing V4**. It does not create a sibling controller, V4 root, runtime key, default, archive, evaluator, or Kaggle path.
 
-## What is already consumed
+## Already consumed into stronger V4 forms
 
-### Endgame final-day sale ordering → canonical row-shed
+### Endgame final-day sale ordering → canonical row-shed / STRATUM
 
-The strongest measured Gemini endgame mechanism was the final-day SELL-row ordering idea. It is already recovered into the canonical V4 `row-shed-sell-order` / STRATUM family and must not be duplicated here. Current composition/economics owners retain that lane.
+The strongest measured Gemini endgame mechanism was final-day SELL-row ordering. It is already recovered into canonical V4 `row-shed-sell-order` / STRATUM. The later Gemini/Apex observation that STRATUM can merely reproduce LARK market-pressure rank is also consumed: `novel_rank_guard.py` fails closed to the exact parent when pressure and row-shed ranks are not genuinely different. Do not fork another row-order controller.
+
+### Gemini demand tiers → DEMANDVEL absorption headroom
+
+The Gemini/Antigravity demand-tier idea is consumed in `research/market-baseline/demand_velocity.py`. V4 keeps the mechanically useful shop-drain structure but upgrades the raw hard tiers with unlock cadence, replacement-shop variance, town-center demand, exact-RNG tail evidence, and a fail-closed conservative headroom surface. DEMANDVEL has no production, timing, opponent-supply, or route authority; the existing DEMAND-CURVE/CROPSCALE/TOWNSELL/market-pressure owners retain those decisions.
 
 ### G01 E20 HIRE correctness → executable-prefix repair
 
-Gemini G01's HIRE guard exposed a real execution-boundary defect: capped raw suffix HIRE rows must not consume executable HIRE allowance. V4 already carries the reviewed executable-prefix correction. This packet does not revive the broader low-demand HIRE policy or flip it on; economics remain separate.
+Gemini G01's HIRE guard exposed a real execution-boundary defect: capped raw suffix HIRE rows must not consume executable HIRE allowance. V4 already carries the reviewed executable-prefix correction. The broader low-demand HIRE policy is not revived or enabled; economics remain separate.
 
-## What was rebuilt into stronger forms
+## Rebuilt market/opponent lineage
 
 ### G01 E11 sale delay → source-bound town timing + rival stress
 
 The broad historical E11 rule (price-drop trigger plus future town recovery) was too coarse and had negative competitive evidence. V4 now has narrower source-bound pieces:
 
-- `market-baseline/TOWN-SALE-DEFERRAL.md`: deterministic same-sale post-town-drain premium under zero intervening rival flow;
+- `research/market-baseline/TOWN-SALE-DEFERRAL.md`: deterministic same-sale post-town-drain premium under zero intervening rival flow;
 - `research/sale-horizon/`: strict rival-timing stress around the existing selected seller, default inert, with explicit official-interpreter audits;
-- this packet: `gemini_market_bridge.py`, which consumes PARALLAX public evidence and expands the sale-horizon stress surface over **every integer partial quantity** from 1 through the visible standing-yield bound (capped at 100), every turn in the existing 1..16-turn window, and every `before/paired/after` raw-row alignment.
+- `gemini_market_bridge.py`: consumes PARALLAX public evidence and expands sale-horizon stress over **every integer partial quantity** from 1 through the visible standing-yield bound (capped at 100), every turn in the existing 1..16-turn window, and every `before/paired/after` raw-row alignment.
 
-The bridge is deliberately adversarial stress, not a rival-action predictor. It compiles directly to the existing sale-horizon scenario ABI and emits no allow/deny/choose bit.
+The bridge is adversarial stress, not a rival-action predictor. It compiles directly to the existing sale-horizon scenario ABI and emits no allow/deny/choose bit.
 
-### G01 O01 opponent archetypes → PARALLAX public route pressure
+### G01 O01 archetypes + shop-arb → continuous PARALLAX evidence
 
-The historical O01 labels (`aggressive_market_dumper`, `early_expander`, `crop_specialist`) were brittle and coupled classification to direct action edits. V4 PARALLAX replaces that with public-only evidence: route SELL deltas, visible rival standing production, productive-source counts, and demand from already-unlocked town shops. It does not read rival private shed/inventory and has no decision authority.
+The historical O01 labels (`aggressive_market_dumper`, `early_expander`, `crop_specialist`) were brittle and coupled classification to direct action edits. V4 PARALLAX replaces that with public-only evidence: route SELL deltas, visible rival standing production, productive-source counts, and demand from already-unlocked town shops.
 
-This packet is the missing O01→E11 bridge: public production pressure bounds *which partial rival-flow stresses the existing seller must survive*. It still does not infer that the rival will harvest or sell those units.
+`gemini_public_pressure.py` carries the remaining useful G01 observations without restoring those mutations:
 
-## Gemini endgame ideas not safe to transplant wholesale
+- public early-expansion evidence and item-level price-drop evidence are independent and may coexist;
+- exact current town drain replaces Gemini's fractional `1.5x` shop-absorption multiplier;
+- visible rival standing yield is reported but never treated as private shed inventory or a predicted sale;
+- evidence horizon is clipped to the episode boundary;
+- no BUY_LAND, SELL deletion/deferral, route choice, or absorption override is emitted.
 
-The historical row-shed landing explicitly noted that the Gemini lane also proposed day-28/29 skips and a glut bleed, but those pieces were not shipped with row-shed. They should remain hypotheses, not blanket policy:
+Together, `gemini_public_pressure.py` and `gemini_market_bridge.py` turn Gemini's opponent intuition into falsification/stress inputs for the existing V4 seller and route authorities rather than a second controller.
 
-- calendar-only day-28/29 work suppression can discard actions that still repay before terminal;
-- unconditional glut bleed can worsen own receipt, rival receipt, custody, or next-callback funding depending on item/row timing.
+## Negative Gemini lineage that must stay negative
 
-V4 should consume only source-bound descendants that prove the relevant horizon/custody theorem (for example already-landed dead-action, terminal-labor, capacity, and sale-timing families), then require natural engagement and both-seat economics. No generic `day >= 28 => PASS` or `glut => SELL` rule is introduced here.
+### Legacy opening tape
 
-## New bridge contract
+The Gemini legacy opening arithmetic is retained as a solvency counterexample, not a candidate: the historical tape spends 882 from 1000 and leaves 118, not the previously claimed 498. Do not resurrect it as an opening script without a new source-correct construction and competitive gate.
 
-`gemini_market_bridge.py` accepts only a PARALLAX report with:
+### Broad repeated terminal sale / calendar-only skips
 
-- schema `titan-v4-public-rival-route-pressure-v1`;
-- `research_only=true`;
-- `decision_authority=false`;
-- strict nonnegative integer public evidence.
+The historical row-shed landing mentioned additional day-28/29 skips and a `glut bleed`, but their exact source semantics were not durably recovered. No guessed port is acceptable. The closest broad repeated late-sale family was experimentally harmful overall: repeated/final liquidation destroyed own cash even where an early denial signal existed.
 
-For each product with visible rival standing yield `Y`, it stresses quantities `1..min(Y,100)` across each requested turn and `before/paired/after`. `sale_horizon_scenarios()` compiles those rows to the existing `(name, rival_schedule, alignment)` ABI. Any authority drift, schema drift, type poison, duplicate scenario, unsupported alignment, quantity overflow, or >16-turn window fails closed.
+V4 therefore keeps only source-bound descendants that prove their local theorem. Examples include late-window repairs that act only when the authored work is mechanically dead or cannot repay before terminal, and sale/capacity/custody families that preserve exact execution state. No generic `day >= 28 => PASS` or `glut => SELL` rule belongs in V4.
+
+## Bridge contracts
+
+`gemini_market_bridge.py` accepts only a PARALLAX report with schema `titan-v4-public-rival-route-pressure-v1`, `research_only=true`, `decision_authority=false`, and strict nonnegative integer public evidence. For each product with visible rival standing yield `Y`, it stresses quantities `1..min(Y,100)` across each requested turn and `before/paired/after`; any authority/schema/type/duplicate/alignment/quantity/window drift fails closed.
+
+`gemini_public_pressure.py` emits schema `titan-v4-gemini-public-pressure-v1`, `research_only=true`, `decision_authority=false`, `mutates_action=false`, and `overrides_engine_absorption=false`. Missing public quadrant evidence degrades only expansion evidence; malformed present evidence fails closed. Private rival shed contents are neither read nor inferred.
 
 ## Promotion boundary
 
-This is **research source only**. Before any runtime consumer may use a result to mutate TITAN, the existing one-V4 owners still need:
+These are **research/source surfaces only**. Before any new Gemini-descended result may mutate TITAN, the existing one-V4 owners still need:
 
 1. current-native natural-engagement evidence;
 2. exact official-engine full games in both seats;
 3. own-cash and competitive-margin gates, including rival-benefit leakage;
-4. collision checks against row-shed/TOWNSELL/CROSSFLOW, funding-prefix, capacity/custody, terminal, and route owners;
+4. collision checks against row-shed/LARK/TOWNSELL/CROSSFLOW, funding-prefix, capacity/custody, terminal, route, and demand owners;
 5. a materialized single-V4 postimage with defaults unchanged unless a separate promotion gate passes.
 
-No production/default/config/runtime/COMPOSITION/archive/provider/Kaggle mutation is authorized by this packet.
+No production/default/config/runtime/COMPOSITION/archive/provider/Kaggle mutation is authorized by this convergence map.
