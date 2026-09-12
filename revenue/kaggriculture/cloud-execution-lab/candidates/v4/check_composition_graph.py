@@ -174,6 +174,8 @@ def _validate_discovery_schema(discovery: Any, errors: list[dict[str, Any]]) -> 
     if not isinstance(raw_ignore, list):
         errors.append(_issue("discovery_ignore_not_list"))
     else:
+        if raw_ignore:
+            errors.append(_issue("discovery_ignore_not_empty", count=len(raw_ignore)))
         for index, item in enumerate(raw_ignore):
             if isinstance(item, str):
                 if _safe_relpath(item):
@@ -377,15 +379,9 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
         found, unsafe_discovery = _discover(root, discovery)
         for path in sorted(unsafe_discovery):
             errors.append(_issue("unsafe_discovery_path", path=path))
-        ignored: set[str] = set()
-        raw_ignore = discovery.get("ignore", [])
-        if isinstance(raw_ignore, list):
-            for item in raw_ignore:
-                if isinstance(item, dict) and _safe_relpath(item.get("path")) and isinstance(item.get("reason"), str) and item["reason"].strip():
-                    ignored.add(item["path"])
         for path in sorted(set(entrypoint_owner) - found):
             errors.append(_issue("registered_entrypoint_not_discovered", path=path))
-        unregistered = sorted(found - set(entrypoint_owner) - ignored)
+        unregistered = sorted(found - set(entrypoint_owner))
         for path in unregistered:
             errors.append(_issue("unregistered_entrypoint", path=path))
 
