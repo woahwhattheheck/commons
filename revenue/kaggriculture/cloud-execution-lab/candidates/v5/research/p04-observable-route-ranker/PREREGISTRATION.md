@@ -36,13 +36,15 @@ Natural plans are `0,1,3..12`. Diagnostic plan2 is excluded. Allowed features ar
 
 ## Discovery gate
 
-A non-identity rule is eligible for nomination only when every engaged discovery cell has:
+A non-identity rule is eligible for nomination only when every engaged discovery comparison has:
 
-- no evaluator failure;
+- **both** the selected candidate row and its incumbent-control row free of evaluator failures;
 - `delta_margin_vs_incumbent >= 0`; and
 - `delta_own_vs_incumbent >= 0`.
 
-It must also have strictly positive total margin delta and engage at least two groups, two distinct seeds, two distinct opponents, and both seats. Selection is deterministic and worst-cell-first: maximize minimum margin delta, then minimum own delta, then mean margin, mean own, engagement count, simplicity, lexical predicate, and lowest plan id.
+Failure accounting is explicit: the receipt separately records candidate-failure groups and incumbent-control-failure groups, while `failure_groups` counts any invalid comparison. This prevents a clean candidate from being certified against a failed incumbent control.
+
+The rule must also have strictly positive total margin delta and engage at least two groups, two distinct seeds, two distinct opponents, and both seats. Selection is deterministic and worst-cell-first: maximize minimum margin delta, then minimum own delta, then mean margin, mean own, engagement count, simplicity, lexical predicate, and lowest plan id.
 
 This is deliberately stricter than picking the best mean route from the discovery matrix. The matrix may nominate a frozen rule; it cannot make that rule `policy_ready`.
 
@@ -63,4 +65,4 @@ python -O -B -m unittest -v test_p04_preregistered_selector.py
 python -B p04_preregistered_selector.py --print-preregistration
 ```
 
-Author-side reconstructed exact-API gate after the universe hardening: 15/15 normal, 15/15 optimized, plus `py_compile` clean. Hostiles include both the reviewer's two-positive-group subset attack and an unexpected extra-group substitution. Independent exact-head repo review remains the merge authority.
+Author-side reconstructed exact-API gate after both review hardenings: 16/16 normal, 16/16 optimized, plus `py_compile` clean. Hostiles include the two-positive-group subset attack, an unexpected extra-group substitution, and a clean positive candidate compared against a failed incumbent control. Independent exact-head repo execution remains the final source gate before merge.
