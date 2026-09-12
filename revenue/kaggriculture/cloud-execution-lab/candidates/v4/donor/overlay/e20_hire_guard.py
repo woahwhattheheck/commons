@@ -28,14 +28,14 @@ def unwatered_crops(farm: Mapping[str, Any]) -> int:
 def _last_action_step(config: Mapping[str, Any]) -> int:
     try:
         return max(0, int(config.get("episodeSteps", 720)) - 2)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return 718
 
 
 def _market_order_limit(config: Mapping[str, Any]) -> int:
     try:
         return max(1, int(config.get("maxMarketOrdersPerTurn", 10)))
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return 10
 
 
@@ -56,21 +56,65 @@ def apply_hire_guard(
         report["reason"] = "OFF"
         return action, report
 
+    # A low-demand edit needs typed observation evidence. In particular, bool
+    # is an int subclass and int(True) silently selects the other player's farm;
+    # coercing non-finite or container values can also abort the whole turn.
+    if (not isinstance(obs, Mapping) or not isinstance(action, Mapping)
+            or (config is not None and not isinstance(config, Mapping))):
+        report["reason"] = "BAD_INPUT"
+        return action, report
     cfg = dict(config or {})
-    step = int(obs.get("step", 0))
+    for key, default in (
+        ("episodeSteps", 720),
+        ("maxMarketOrdersPerTurn", 10),
+        ("e20_max_hires_per_day", 3),
+        ("e20_min_unwatered_crops", 3),
+    ):
+        if type(cfg.get(key, default)) is not int:
+            report.update(reason="BAD_CONFIG_INTEGER", field=key)
+            return action, report
+    step = obs.get("step")
+    if type(step) is not int or step < 0:
+        report["reason"] = "BAD_STEP"
+        return action, report
     if step >= _last_action_step(cfg):
         report["reason"] = "NO_EDIT_TERMINAL_STEP"
         return action, report
 
-    farms = obs.get("farms") or []
-    player = int(obs.get("player", 0))
-    if player < 0 or player >= len(farms) or not isinstance(farms[player], Mapping):
+    farms = obs.get("farms")
+    player = obs.get("player")
+    if (type(player) is not int or not isinstance(farms, list)
+            or player < 0 or player >= len(farms)
+            or not isinstance(farms[player], Mapping)):
         report["reason"] = "BAD_PLAYER_OR_FARM"
         return action, report
     farm = farms[player]
-    hires_today = max(0, int(farm.get("hires_today") or 0))
-    max_hires = max(0, int(cfg.get("e20_max_hires_per_day", 3)))
-    minimum_unwatered = max(0, int(cfg.get("e20_min_unwatered_crops", 3)))
+    hires_today = farm.get("hires_today")
+    if type(hires_today) is not int or hires_today < 0:
+        report["reason"] = "BAD_HIRES_TODAY"
+        return action, report
+    tiles = farm.get("tiles")
+    if not isinstance(tiles, list):
+        report["reason"] = "BAD_TILES"
+        return action, report
+    for row in tiles:
+        if not isinstance(row, list):
+            report["reason"] = "BAD_TILES"
+            return action, report
+        for tile in row:
+            # Official _initial_tile uses None for an unlocked empty cell and
+            # the literal LOCKED string outside the owned quadrants.
+            if tile is None or (type(tile) is str and tile == "LOCKED"):
+                continue
+            if (not isinstance(tile, Mapping)
+                    or (tile.get("kind") == "PLANT"
+                        and type(tile.get("watered_today", False)) is not bool)):
+                # Unknown demand must not be counted as zero demand. An absent
+                # watered_today retains the old conservative unwatered default.
+                report["reason"] = "BAD_TILES"
+                return action, report
+    max_hires = max(0, cfg.get("e20_max_hires_per_day", 3))
+    minimum_unwatered = max(0, cfg.get("e20_min_unwatered_crops", 3))
     demand = unwatered_crops(farm)
     report.update(
         hires_today=hires_today,
