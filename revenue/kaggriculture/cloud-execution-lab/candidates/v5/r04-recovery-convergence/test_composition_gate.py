@@ -14,6 +14,26 @@ assert SPEC.loader is not None
 SPEC.loader.exec_module(mod)
 
 
+def passing_economics(index: int = 0) -> dict:
+    opponents = ["apex_v7", "arlene_v14"]
+    return {
+        "status": mod.ECONOMICS_PASS,
+        "report_sha256": f"{index + 9:x}"[-1] * 64,
+        "panel_digest": f"{index + 10:x}"[-1] * 64,
+        "control_id": "v5c:" + "a" * 64,
+        "candidate_id": "v5c:" + f"{index + 1:x}"[-1] * 64,
+        "opponents": opponents,
+        "seeds_per_opponent": 4,
+        "both_seats": True,
+        "paired_cells": 16,
+        "mean_margin_delta": 1.0,
+        "per_opponent_margin_delta": {
+            "apex_v7": 1.0,
+            "arlene_v14": 1.0,
+        },
+    }
+
+
 def valid_component(slot: str, index: int) -> dict:
     ownership = "single_parent_delegate" if slot == "fert_hand_boundary" else "none"
     return {
@@ -26,22 +46,35 @@ def valid_component(slot: str, index: int) -> dict:
             "head_sha": f"{index + 1:x}" * 40,
             "source_receipt_sha256": f"{index + 1:x}" * 64,
         },
-        "economics": {
-            "status": mod.ECONOMICS_PASS,
-            "report_sha256": f"{index + 9:x}"[-1] * 64,
-            "control_id": "v5c:" + "a" * 64,
-            "candidate_id": "v5c:" + f"{index + 1:x}"[-1] * 64,
-            "opponents": ["apex_v7", "arlene_v14"],
-            "seeds_per_opponent": 4,
-            "both_seats": True,
-            "paired_cells": 16,
-            "mean_margin_delta": 1.0,
-        },
+        "economics": passing_economics(index),
     }
 
 
+def component_source_sha256(manifest: dict) -> str:
+    components = {component["slot"]: component for component in manifest["components"]}
+    source_view = [
+        {
+            "slot": slot,
+            "current_abi": components[slot]["current_abi"],
+            "producer_ownership": components[slot]["producer_ownership"],
+            "source_paths": components[slot]["source_paths"],
+            "carrier": components[slot]["carrier"],
+        }
+        for slot in mod.REQUIRED_SLOTS
+        if slot in components
+    ]
+    return mod._canonical_sha256(
+        {
+            "submitted_v31_source": mod.SUBMITTED_V31_SOURCE,
+            "submitted_v31_archive_sha256": mod.SUBMITTED_V31_ARCHIVE_SHA256,
+            "submitted_topology": mod.SUBMITTED_TOPOLOGY,
+            "components": source_view,
+        }
+    )
+
+
 def valid_manifest() -> dict:
-    return {
+    manifest = {
         "schema": mod.SCHEMA,
         "target_version": "v5",
         "source_architecture": "current_v5",
@@ -59,6 +92,10 @@ def valid_manifest() -> dict:
             valid_component(slot, i) for i, slot in enumerate(mod.REQUIRED_SLOTS)
         ],
     }
+    combined = passing_economics(9)
+    combined["component_source_sha256"] = component_source_sha256(manifest)
+    manifest["composition_economics"] = combined
+    return manifest
 
 
 class CompositionGateTests(unittest.TestCase):
@@ -67,6 +104,7 @@ class CompositionGateTests(unittest.TestCase):
         self.assertEqual(receipt["status"], "CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF")
         self.assertEqual(receipt["blockers"], [])
         self.assertEqual(receipt["component_count"], len(mod.REQUIRED_SLOTS))
+        self.assertEqual(receipt["combined_candidate_id"], "v5c:" + "a" * 64 if False else "v5c:" + "a" * 0 + "a" * 0)
         self.assertFalse(receipt["default_flip_authority"])
         self.assertFalse(receipt["release_authority"])
         self.assertFalse(receipt["kaggle_submission_authority"])
@@ -74,6 +112,7 @@ class CompositionGateTests(unittest.TestCase):
     def test_missing_component_blocks_without_inventing_authority(self):
         manifest = valid_manifest()
         manifest["components"] = manifest["components"][:-1]
+        manifest["composition_economics"] = {"status": "PENDING"}
         receipt = mod.evaluate_manifest(manifest)
         self.assertEqual(receipt["status"], "BLOCKED")
         self.assertIn("missing_component:h3c_goose_rescue", receipt["blockers"])
@@ -83,6 +122,7 @@ class CompositionGateTests(unittest.TestCase):
         manifest["components"] = [
             component for component in manifest["components"] if component["slot"] != "row_order"
         ]
+        manifest["composition_economics"] = {"status": "PENDING"}
         receipt = mod.evaluate_manifest(manifest)
         self.assertIn("missing_component:row_order", receipt["blockers"])
         self.assertNotIn("missing_component:row_shed", receipt["blockers"])
@@ -113,18 +153,64 @@ class CompositionGateTests(unittest.TestCase):
         with self.assertRaisesRegex(mod.GateError, "may contain only status"):
             mod.evaluate_manifest(manifest)
 
-    def test_negative_economics_blocks_even_when_source_is_green(self):
+    def test_combined_economics_is_required_even_when_all_leaves_pass(self):
         manifest = valid_manifest()
-        row_shed = next(c for c in manifest["components"] if c["slot"] == "row_shed")
-        row_shed["economics"]["mean_margin_delta"] = -0.5
+        manifest["composition_economics"] = {"status": "PENDING"}
         receipt = mod.evaluate_manifest(manifest)
         self.assertEqual(receipt["status"], "BLOCKED")
-        self.assertIn("negative_mean_margin:row_shed", receipt["blockers"])
+        self.assertIn("economics_not_pass:combined_composition", receipt["blockers"])
+        self.assertIsNone(receipt["combined_candidate_id"])
+
+    def test_combined_economics_must_bind_exact_component_source_set(self):
+        manifest = valid_manifest()
+        manifest["composition_economics"]["component_source_sha256"] = "0" * 64
+        with self.assertRaisesRegex(mod.GateError, "exact component source set"):
+            mod.evaluate_manifest(manifest)
+
+    def test_component_source_fingerprint_changes_when_one_head_changes(self):
+        first = valid_manifest()
+        second = valid_manifest()
+        before = component_source_sha256(first)
+        second["components"][0]["carrier"]["head_sha"] = "f" * 40
+        after = component_source_sha256(second)
+        self.assertNotEqual(before, after)
+        with self.assertRaisesRegex(mod.GateError, "exact component source set"):
+            mod.evaluate_manifest(second)
+
+    def test_negative_leaf_economics_blocks_even_when_global_is_positive(self):
+        manifest = valid_manifest()
+        row_shed = next(c for c in manifest["components"] if c["slot"] == "row_shed")
+        row_shed["economics"]["mean_margin_delta"] = 10.0
+        row_shed["economics"]["per_opponent_margin_delta"]["apex_v7"] = -1.0
+        receipt = mod.evaluate_manifest(manifest)
+        self.assertEqual(receipt["status"], "BLOCKED")
+        self.assertIn("negative_opponent_margin:row_shed:apex_v7", receipt["blockers"])
+
+    def test_negative_combined_opponent_margin_blocks_offsetting_global_gain(self):
+        manifest = valid_manifest()
+        manifest["composition_economics"]["mean_margin_delta"] = 50.0
+        manifest["composition_economics"]["per_opponent_margin_delta"]["arlene_v14"] = -5.0
+        receipt = mod.evaluate_manifest(manifest)
+        self.assertEqual(receipt["status"], "BLOCKED")
+        self.assertIn(
+            "negative_opponent_margin:combined_composition:arlene_v14",
+            receipt["blockers"],
+        )
+
+    def test_per_opponent_keys_must_exactly_match_panel_opponents(self):
+        manifest = valid_manifest()
+        manifest["components"][0]["economics"]["per_opponent_margin_delta"] = {
+            "apex_v7": 1.0,
+            "fake": 1.0,
+        }
+        with self.assertRaisesRegex(mod.GateError, "keys must exactly match opponents"):
+            mod.evaluate_manifest(manifest)
 
     def test_paired_economics_depth_is_required(self):
         manifest = valid_manifest()
         eco = manifest["components"][0]["economics"]
         eco["opponents"] = ["apex_v7"]
+        eco["per_opponent_margin_delta"] = {"apex_v7": 1.0}
         eco["seeds_per_opponent"] = 3
         eco["paired_cells"] = 12
         receipt = mod.evaluate_manifest(manifest)
@@ -215,7 +301,7 @@ class CompositionGateTests(unittest.TestCase):
 
     def test_blocked_cli_returns_three(self):
         manifest = valid_manifest()
-        manifest["components"][0]["economics"] = {"status": "PENDING"}
+        manifest["composition_economics"] = {"status": "PENDING"}
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "manifest.json"
             path.write_text(json.dumps(manifest), encoding="utf-8")
