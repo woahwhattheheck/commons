@@ -20,13 +20,14 @@ from typing import Final
 
 PRODUCTS: Final[tuple[str, ...]] = (
     "WHEAT",
-    "CORN",
     "CARROT",
     "TOMATO",
+    "STRAWBERRY",
     "MELON",
     "EGG",
     "MILK",
     "WOOL",
+    "FERTILIZER",
 )
 
 PriceByStock = Callable[[str, int], int]
