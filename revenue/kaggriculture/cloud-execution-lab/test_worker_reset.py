@@ -22,6 +22,7 @@ import copy
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tarfile
@@ -38,6 +39,76 @@ SCENARIOS = {
     "A": {"seed": 9922999, "seat": 0},
     "B": {"seed": 1909087201, "seat": 1},
 }
+
+
+def attributed_root_modules(lab: Path | None = None) -> dict[str, Path]:
+    """Archive-root members whose live bytes live outside the lab directory.
+
+    Isolated ``python3 -I`` workers only insert the agent parent. Hosted
+    sparse-checkout of the lab therefore cannot import seller_snapshot /
+    observed_clone unless those attributed siblings are materialized beside
+    main.py or their parent directories are on sys.path. GitHub Actions run
+    34671866030 failed first while ``build_integrated.py --check`` tried to
+    read ``../cloud-quickstep/seller_snapshot.py`` from a lab-only checkout.
+    """
+    lab = Path(lab or ROOT).resolve()
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+
+    mapping: dict[str, Path] = {}
+    for member, source in source_files().items():
+        if Path(member).parent != Path("."):
+            continue
+        origin = (lab / source).resolve()
+        try:
+            origin.relative_to(lab)
+        except ValueError:
+            mapping[member] = origin
+    return mapping
+
+
+def missing_mapped_sources(lab: Path | None = None) -> list[str]:
+    """Return human-readable rows for every source_files() origin that is absent."""
+    lab = Path(lab or ROOT).resolve()
+    if str(lab) not in sys.path:
+        sys.path.insert(0, str(lab))
+    from build_integrated import source_files
+
+    missing = []
+    for member, source in source_files().items():
+        origin = lab / source
+        if not origin.is_file():
+            missing.append(f"{member} <- {source}")
+    return missing
+
+
+def materialize_live_worker_root(lab: Path, dest: Path) -> Path:
+    """Copy the lab and place attributed root modules beside main.py.
+
+    The live-source hosted step previously copied only cloud-execution-lab
+    into a temp root. Bare imports and SOURCE.json then failed even after the
+    sibling files were present in the checkout. The packaged archive already
+    stores these members next to main.py; live workers need the same layout.
+    """
+    lab = Path(lab).resolve()
+    dest = Path(dest)
+    if dest.exists():
+        raise FileExistsError(dest)
+    shutil.copytree(lab, dest, symlinks=True)
+    checks = dest / "checks"
+    if not checks.exists():
+        checks.symlink_to(".")
+    for member, origin in attributed_root_modules(lab).items():
+        if not origin.is_file():
+            raise FileNotFoundError(origin)
+        target = dest / member
+        if target.resolve() != origin:
+            target.write_bytes(origin.read_bytes())
+    published = lab / "runtime/integrated-selected/CURRENT-SOURCE.json"
+    if published.is_file() and not (dest / "SOURCE.json").is_file():
+        (dest / "SOURCE.json").write_bytes(published.read_bytes())
+    return dest
 
 
 def _load_official(root: Path):
@@ -305,7 +376,27 @@ def main() -> int:
     parser.add_argument("--worker", type=Path)
     parser.add_argument("--order", nargs="+", choices=sorted(SCENARIOS))
     parser.add_argument("--output", type=Path)
+    parser.add_argument(
+        "--check-sources",
+        action="store_true",
+        help="Fail if any build_integrated.source_files() origin is missing",
+    )
+    parser.add_argument(
+        "--materialize-live",
+        type=Path,
+        help="Copy the lab plus attributed root modules to DEST and exit",
+    )
     args = parser.parse_args()
+    if args.check_sources:
+        missing = missing_mapped_sources()
+        if missing:
+            raise SystemExit("missing mapped sources:\n" + "\n".join(missing))
+        print(json.dumps({"result": "PASS", "mapped_sources": "present"}))
+        return 0
+    if args.materialize_live is not None:
+        dest = materialize_live_worker_root(ROOT, args.materialize_live)
+        print(json.dumps({"result": "PASS", "live_root": str(dest)}))
+        return 0
     if args.worker is not None:
         if not args.order or args.output is None:
             parser.error("--worker requires --order and --output")
