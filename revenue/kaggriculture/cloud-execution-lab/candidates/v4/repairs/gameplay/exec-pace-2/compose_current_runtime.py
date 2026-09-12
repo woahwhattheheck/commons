@@ -13,12 +13,21 @@ from pathlib import Path
 FEATURE_ANCHOR = "    early_capital: bool = False\n"
 FEATURE_INSERT = FEATURE_ANCHOR + "    exec_pace: bool = False\n"
 
-FALLBACK_STATE_ANCHOR = "        self._seller_fallback_observations = []\n"
-FALLBACK_STATE_INSERT = FALLBACK_STATE_ANCHOR + (
+FALLBACK_STATE_ANCHOR = (
+    "        self._completed_seller_state = None\n"
+    "        self._seller_fallback_observations = []\n"
+    "        self.spatial = None\n"
+)
+FALLBACK_STATE_INSERT = (
+    "        self._completed_seller_state = None\n"
+    "        self._seller_fallback_observations = []\n"
     "        self._exec_pace_fallback_observations = []\n"
+    "        self.spatial = None\n"
 )
 
 FALLBACK_OBSERVER_ANCHOR = (
+    "    def _remember_seller_fallback(self, obs):\n"
+    "        \"\"\"Queue one completed fallback observation for a later reconstruction.\"\"\"\n"
     "        if self.features.consumer != 'frozen':\n"
     "            return\n"
     "        step = int(obs['step'])\n"
