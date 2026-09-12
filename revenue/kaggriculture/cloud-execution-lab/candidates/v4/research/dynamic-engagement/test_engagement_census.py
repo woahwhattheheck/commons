@@ -96,6 +96,13 @@ class EngagementCensus(unittest.TestCase):
             "CONTROL_NO_OUTPUT_CHANGE",
         )
 
+    def test_each_positive_control_is_a_separate_proof_obligation(self):
+        report = self.analyze([
+            self.record("live", "positive_control", [10, 5, 4, 3, 1]),
+            self.record("dead", "positive_control", [10, 0, 0, 0, 0]),
+        ])
+        self.assertEqual(report["components"][0]["state"], "CONTROL_UNWIRED")
+
     def test_missing_positive_control_is_insufficient(self):
         report = self.analyze([
             self.record("natural", "natural", [10, 2, 0, 0, 0])
