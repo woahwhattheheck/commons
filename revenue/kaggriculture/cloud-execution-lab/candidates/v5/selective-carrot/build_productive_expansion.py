@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
 import shutil
 
@@ -55,37 +54,6 @@ def _validate_publication_paths(out, tar_path, receipt_path):
         raise ValueError('archive and receipt must not be inside the output directory')
 
 
-def _reserve(path):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, 'O_NOFOLLOW'):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o644)
-    stat = os.fstat(fd)
-    return fd, (stat.st_dev, stat.st_ino)
-
-
-def _write_reserved(fd, payload):
-    view = memoryview(payload)
-    while view:
-        written = os.write(fd, view)
-        if written <= 0:
-            raise OSError('short write while publishing P01 artifact')
-        view = view[written:]
-    os.fsync(fd)
-
-
-def _unlink_if_owned(path, identity):
-    path = Path(path)
-    try:
-        stat = path.stat(follow_symlinks=False)
-    except FileNotFoundError:
-        return
-    if (stat.st_dev, stat.st_ino) == identity:
-        path.unlink()
-
-
 def _rmtree_if_owned(path, identity):
     path = Path(path)
     try:
@@ -97,21 +65,16 @@ def _rmtree_if_owned(path, identity):
 
 
 def _publish(files, packed, receipt, out, tar_path, receipt_path):
-    """Publish archive+receipt as one create-exclusive owned pair."""
+    """Publish the output tree plus an archive/receipt pair using shared custody."""
+    from publication_custody import publish_exclusive
+
     out, tar_path, receipt_path = map(Path, (out, tar_path, receipt_path))
     _validate_publication_paths(out, tar_path, receipt_path)
     if out.exists():
         raise FileExistsError('output directory already exists')
 
-    tar_fd = receipt_fd = None
-    owned_finals = []
     out_identity = None
     try:
-        tar_fd, tar_identity = _reserve(tar_path)
-        owned_finals.append((tar_path, tar_identity))
-        receipt_fd, receipt_identity = _reserve(receipt_path)
-        owned_finals.append((receipt_path, receipt_identity))
-
         out.mkdir(parents=True)
         out_stat = out.stat(follow_symlinks=False)
         out_identity = (out_stat.st_dev, out_stat.st_ino)
@@ -121,21 +84,13 @@ def _publish(files, packed, receipt, out, tar_path, receipt_path):
             path.write_bytes(body)
 
         receipt_bytes = (json.dumps(receipt, indent=2) + '\n').encode('utf-8')
-        _write_reserved(tar_fd, packed)
-        _write_reserved(receipt_fd, receipt_bytes)
-        os.close(tar_fd); tar_fd = None
-        os.close(receipt_fd); receipt_fd = None
+        publish_exclusive([
+            (tar_path, packed),
+            (receipt_path, receipt_bytes),
+        ])
     except BaseException:
-        for fd in (tar_fd, receipt_fd):
-            if fd is not None:
-                try:
-                    os.close(fd)
-                except OSError:
-                    pass
         if out_identity is not None:
             _rmtree_if_owned(out, out_identity)
-        for path, identity in reversed(owned_finals):
-            _unlink_if_owned(path, identity)
         raise
 
 
