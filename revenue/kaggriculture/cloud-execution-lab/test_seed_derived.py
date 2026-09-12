@@ -31,6 +31,28 @@ class DerivedTests(unittest.TestCase):
   a.apply({'market':[['BUY_SEED','CARROT',99]]},{},0,'a')
   self.assertTrue(a.events);self.assertEqual(b.events,[])
   r['a'][1]['farmer'].clear();self.assertEqual(a.remaining('CARROT',0,'a'),1)
+ def test_apply_ignores_engine_inert_market_shapes(self):
+  b=B.SeedBudget(routes())
+  malformed={'market':[None,{0:'BUY_SEED',1:'CARROT',2:'bad'},['BUY_SEED'],
+                       ['BUY_SEED','CARROT'],['BUY_SEED','CARROT','bad'],
+                       ['BUY_SEED','POTATO',9],['SELL','CARROT',9]]}
+  self.assertEqual(b.apply(malformed,{},0,'a'),malformed)
+  self.assertEqual(b.events,[])
+  tuple_market={'market':(['BUY_SEED','CARROT',9],)}
+  self.assertEqual(b.apply(tuple_market,{},0,'a'),tuple_market)
+  self.assertEqual(b.events,[])
+ def test_apply_matches_engine_coercion_and_preserves_trailing_fields(self):
+  b=B.SeedBudget(routes())
+  action={'market':[['BUY_SEED','CARROT','2','receipt-tag']]}
+  self.assertEqual(b.apply(action,{},0,'a'),
+                   {'market':[['BUY_SEED','CARROT',1,'receipt-tag']]})
+  self.assertEqual(b.events[-1]['requested'],2);self.assertEqual(b.events[-1]['retained'],1)
+  b=B.SeedBudget(routes());coercible={'market':[['BUY_SEED','CARROT',True,'tag']]}
+  self.assertEqual(b.apply(coercible,{},0,'a'),coercible);self.assertEqual(b.events,[])
+  b=B.SeedBudget(routes());float_quantity={'market':[['BUY_SEED','CARROT',2.9,'tag']]}
+  self.assertEqual(b.apply(float_quantity,{},0,'a'),
+                   {'market':[['BUY_SEED','CARROT',1,'tag']]})
+  self.assertEqual(b.events[-1]['requested'],2)
  def test_cancelled_derivation_is_not_published(self):
   class Cancel(BaseException):pass
   derive=B._derive;r=routes()

@@ -26,6 +26,10 @@ class DeadlineExceeded(BaseException):
 
 
 _ACTIVE_TIMER = ContextVar("titan_active_deadline_timer", default=None)
+MARKET_PRODUCTS = frozenset((
+    "WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
+    "EGG", "MILK", "WOOL", "FERTILIZER",
+))
 
 
 def _alarm(_signum, _frame):
@@ -71,8 +75,8 @@ def terminal_liquidation_fallback(observation, configuration=None):
                 free -= placed
         units.append(action)
     market = [["SELL", product, quantity] for product, quantity in shed.items()
-              if quantity > 0]
-    maximum = int(cfg.get("maxMarketOrdersPerTurn", 10))
+              if product in MARKET_PRODUCTS and quantity > 0]
+    maximum = max(1, int(cfg.get("maxMarketOrdersPerTurn", 10)))
     return {"farmer": units[0], "hands": units[1:], "market": market[:maximum]}
 
 
