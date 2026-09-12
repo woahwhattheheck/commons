@@ -20,6 +20,7 @@ class ReduceGauntletTests(unittest.TestCase):
             opponents.append({
                 "id": f"opp{i:03d}",
                 "submission_id": i + 1,
+                "seed": 1909000000 + i,
                 "family": "A" if i % 2 == 0 else "B",
                 "kind": "recorded_trace",
                 "memberships": [{"group": "current_top30"}],
@@ -91,6 +92,8 @@ class ReduceGauntletTests(unittest.TestCase):
         record = {
             "opponent": row["id"],
             "submission_id": row["submission_id"],
+            "seed": row["seed"],
+            "candidate_seat": seat,
             "family": row["family"],
             "kind": "recorded_trace",
             "adaptive": False,
@@ -307,6 +310,37 @@ class ReduceGauntletTests(unittest.TestCase):
                 )
             with self.assertRaises(rg.ReductionError):
                 rg.reduce_roots([a], [b], index=index)
+
+    def test_cell_seed_and_candidate_seat_must_match_fixture(self):
+        with tempfile.TemporaryDirectory() as td:
+            index, rows = self.index(td, 1)
+            for field, wrong in (
+                ("seed", rows[0]["seed"] + 1),
+                ("candidate_seat", 1),
+            ):
+                with self.subTest(field=field):
+                    a = self.root(
+                        td,
+                        "v31",
+                        index,
+                        suffix=f"-{field}-a",
+                    )
+                    b = self.root(
+                        td,
+                        "v4",
+                        index,
+                        suffix=f"-{field}-b",
+                    )
+                    self.game(
+                        a,
+                        "v31",
+                        rows[0],
+                        0,
+                        [100, 100],
+                        **{field: wrong},
+                    )
+                    with self.assertRaises(rg.ReductionError):
+                        rg.reduce_roots([a], [b], index=index)
 
     def test_cross_version_index_identity_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as td:
