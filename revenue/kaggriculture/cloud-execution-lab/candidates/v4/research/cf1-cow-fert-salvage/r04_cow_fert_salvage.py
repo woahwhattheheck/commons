@@ -5,6 +5,8 @@ Default OFF. At the final pre-EOD action, replace exactly one empty HARVEST
 with COLLECT_FERTILIZER. A whole-farm capacity bound protects existing cargo.
 The outer whole-agent seam must see the reconstructed fertilizer hand.
 No profitable outcome or future-stock safety is implied by this local theorem.
+An independent completed_service=False option admits already-completed CARE/FEED
+on the same ready COW. Ordinary callers retain the original HARVEST-only gate.
 """
 from __future__ import annotations
 
@@ -68,8 +70,8 @@ def _ready_cow(tile: Any, day: int) -> bool:
             and type(bonus) is int and bonus >= 0)
 
 
-def apply_cow_fert_salvage(action: Any, observation: Any, configuration: Any, *, enabled=False):
-    """Return exact parent on OFF/no-match; otherwise rewrite one dead unit row."""
+def apply_cow_fert_salvage(action: Any, observation: Any, configuration: Any, *, enabled=False, completed_service=False):
+    """Rewrite one dead row; completed-service admission requires literal True."""
     if enabled is not True or not _standard(configuration):
         return action
     if not isinstance(observation, dict) or not isinstance(action, dict):
@@ -124,6 +126,7 @@ def apply_cow_fert_salvage(action: Any, observation: Any, configuration: Any, *,
 
     sites = []
     selected = None
+    completed = []
     for actor, (position, command) in enumerate(zip(positions, rows)):
         if (not isinstance(position, list) or len(position) != 2
                 or any(type(v) is not int or not 0 <= v < 10 for v in position)
@@ -138,6 +141,14 @@ def apply_cow_fert_salvage(action: Any, observation: Any, configuration: Any, *,
             selected = actor
         elif command[0] not in NONPRODUCING:
             return action
+        elif (completed_service is True and command[0] in ('CARE', 'FEED')
+              and _ready_cow(tiles[y][x], step // 24)):
+            # fed_today and cared_today are already literal True: these two
+            # commands do nothing. Never strip a still-productive service.
+            completed.append(actor)
+    if selected is None and completed:
+        # Preserve incumbent HARVEST priority, including its original vetoes.
+        selected = next((i for i in completed if sites.count(sites[i]) == 1), None)
     if selected is None or sites.count(sites[selected]) != 1:
         return action
 
@@ -148,12 +159,15 @@ def apply_cow_fert_salvage(action: Any, observation: Any, configuration: Any, *,
         result['hands'][selected - 1] = ['COLLECT_FERTILIZER']
     telemetry['activations'] += 1
     telemetry['fertilizer_units_recovered'] += 1
+    if rows[selected][0] in ('CARE', 'FEED'):
+        telemetry['completed_service_activations'] += 1
     return result
 
 
-def install(parent, *, enabled=False):
+def install(parent, *, enabled=False, completed_service=False):
     def agent(observation, configuration=None):
         action = parent(observation, configuration)
-        return apply_cow_fert_salvage(action, observation, configuration, enabled=enabled)
+        return apply_cow_fert_salvage(action, observation, configuration, enabled=enabled,
+                                      completed_service=completed_service)
     agent.telemetry = telemetry
     return agent
