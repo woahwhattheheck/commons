@@ -31,7 +31,22 @@ def carry(**overrides):
 
 
 def row(step, actor="hand-0", op="PASS", **extra):
-    return {"step": step, "actor": actor, "op": op, **extra}
+    payload = {"step": step, "actor": actor, "op": op}
+    if "consumption_authenticated" not in extra:
+        if op.upper() == "FEED":
+            payload.update(
+                consumption_authenticated=True,
+                consumed_item="WHEAT",
+                consumed_units=1,
+            )
+        elif op.upper() == "FERTILIZE":
+            payload.update(
+                consumption_authenticated=True,
+                consumed_item="FERTILIZER",
+                consumed_units=1,
+            )
+    payload.update(extra)
+    return payload
 
 
 class StickyObligationTests(unittest.TestCase):
@@ -157,6 +172,63 @@ class StickyObligationTests(unittest.TestCase):
             carry(due_end=24)
         with self.assertRaises(S.UnsupportedObligation):
             carry(created_step=23, due_end=24)
+
+    def test_bare_feed_and_fertilize_rows_do_not_prove_consumption(self):
+        wheat = carry(quantity=1, capacity_pressure_units=1)
+        got = S.prove_carry_consumption(
+            wheat,
+            [{"step": 11, "actor": "hand-0", "op": "FEED"}],
+            current_inventory_units=0,
+        )
+        self.assertFalse(got["proven"])
+        self.assertEqual(got["sink_units"], 0)
+
+        fertilizer = carry(item="FERTILIZER", quantity=1, capacity_pressure_units=1)
+        got = S.prove_carry_consumption(
+            fertilizer,
+            [{"step": 11, "actor": "hand-0", "op": "FERTILIZE"}],
+            current_inventory_units=0,
+        )
+        self.assertFalse(got["proven"])
+        self.assertEqual(got["sink_units"], 0)
+
+    def test_unauthenticated_sink_is_not_counted(self):
+        got = S.prove_carry_consumption(
+            carry(quantity=1, capacity_pressure_units=1),
+            [row(11, op="FEED", consumption_authenticated=False)],
+            current_inventory_units=0,
+        )
+        self.assertFalse(got["proven"])
+        self.assertEqual(got["sink_units"], 0)
+
+    def test_authenticated_sink_evidence_is_item_and_unit_bound(self):
+        ob = carry(quantity=1, capacity_pressure_units=1)
+        with self.assertRaisesRegex(S.UnsupportedObligation, "consumed_item mismatch"):
+            S.prove_carry_consumption(
+                ob,
+                [
+                    row(
+                        11,
+                        op="FEED",
+                        consumed_item="FERTILIZER",
+                    )
+                ],
+                current_inventory_units=0,
+            )
+        for poison in (True, 2):
+            with self.subTest(consumed_units=poison), self.assertRaises(S.UnsupportedObligation):
+                S.prove_carry_consumption(
+                    ob,
+                    [row(11, op="FEED", consumed_units=poison)],
+                    current_inventory_units=0,
+                )
+        for poison in (1, 1.0, "true", [True], {"ok": True}):
+            with self.subTest(authentication=poison), self.assertRaises(S.UnsupportedObligation):
+                S.prove_carry_consumption(
+                    ob,
+                    [row(11, op="FEED", consumption_authenticated=poison)],
+                    current_inventory_units=0,
+                )
 
     def test_carry_two_new_wheat_units_need_two_free_feed_sinks(self):
         got = S.prove_carry_consumption(
