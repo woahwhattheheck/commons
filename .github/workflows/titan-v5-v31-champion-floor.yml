@@ -1,0 +1,51 @@
+name: TITAN V5 V3.1 champion floor
+
+on:
+  push:
+    branches:
+      - astra/titan-v5-v31-champion-floor-release-20260912
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v5/champion-floor/**
+      - .github/workflows/titan-v5-v31-champion-floor.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - name: Resolve exact source head
+        id: source
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "sha=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          fetch-depth: 1
+      - name: Assert exact head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${{ steps.source.outputs.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and run champion-floor contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/champion-floor
+        run: |
+          python -B -m py_compile champion_floor.py test_champion_floor.py
+          python -B -m unittest -v test_champion_floor.py
+          python -O -B -m unittest -v test_champion_floor.py
+      - name: Clean tree
+        shell: bash
+        run: git diff --check && test -z "$(git status --porcelain)"
