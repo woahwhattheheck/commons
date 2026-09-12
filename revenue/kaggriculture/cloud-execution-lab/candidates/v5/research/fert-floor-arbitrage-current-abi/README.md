@@ -27,6 +27,18 @@ It never invents `PICKUP`. That is deliberate: if current V5 does not naturally 
 
 Malformed observation/action/cardinality/inventory/price/config evidence fails closed. Inputs are deep-copy safe; non-PASS parent commands are never overwritten.
 
+## Natural-engagement receipt
+
+`fert_floor_engagement.py` consumes a source-bound ordered tape of **real returned actions plus the next public observation**. A returned command by itself is not engagement. The receipt becomes `engaged=true` only after one full naturally executed chain is confirmed from public custody transitions:
+
+1. returned strict-price-2 `BUY_PRODUCT FERTILIZER 1`, followed by exactly one unit arriving in shed custody;
+2. parent-returned `PICKUP FERTILIZER`, followed by that same unit leaving shed and entering one actor inventory;
+3. parent-returned `FERTILIZE` by that same actor on an eligible live plant, followed by one unit being consumed and the crop's `fertilized_until_day` increasing to the official window.
+
+The tape must be contiguous for one player and binds exact `source_sha`, `engine_id`, and a canonical SHA-256 over the rows. A second fertilizer market action during an active chain makes provenance ambiguous and aborts that chain. Non-floor buys, unrelated pickups, failed commands, skipped callbacks, player changes, malformed cardinality, and unconfirmed engine effects cannot produce engagement.
+
+This receipt authorizes **only the next evidence spend**. It is not an economics, promotion, or activation receipt.
+
 ## Promotion path
 
 This directory is research/source only. It makes no runtime/default/TITAN-CONFIG/CURRENT/archive/release/Kaggle changes.
@@ -34,14 +46,18 @@ This directory is research/source only. It makes no runtime/default/TITAN-CONFIG
 Before any integration or activation:
 
 1. authenticate the exact current V5 selected-action/source identities consuming this adapter;
-2. run a natural-engagement census for price-2 acquisition, subsequent real pickup custody, and PASS-to-FERTILIZE use;
+2. obtain a natural-engagement receipt proving price-2 acquisition -> real pickup custody -> official fertilizer effect;
 3. require matched OFF/ON both-seat economics against current V5 and the exact V3.1 champion floor;
 4. reject promotion if the only positive cells rely on constructed idle callbacks or if displaced current actions dominate the fertilizer gain.
 
 ## Focused contract
 
 ```bash
-python -B -m py_compile fert_floor_current.py test_fert_floor_current.py
-python -B -m unittest -v test_fert_floor_current.py
-python -O -B -m unittest -v test_fert_floor_current.py
+python -B -m py_compile \
+  fert_floor_current.py fert_floor_engagement.py \
+  test_fert_floor_current.py test_fert_floor_engagement.py
+python -B -m unittest -v \
+  test_fert_floor_current.py test_fert_floor_engagement.py
+python -O -B -m unittest -v \
+  test_fert_floor_current.py test_fert_floor_engagement.py
 ```
