@@ -393,6 +393,33 @@ def validate_runtime(report: Mapping[str, Any], candidate_id: str) -> None:
     if _plain_int(overall.get("count"), "runtime overall count", minimum=1) != receipt_count:
         raise PromotionError("runtime overall count must equal receipt_count")
 
+    budget = _finite_number(report.get("budget_seconds"), "runtime budget_seconds", minimum=0.0)
+    if budget <= 0:
+        raise PromotionError("runtime budget_seconds must be > 0")
+    reserve = _finite_number(
+        report.get("reserve_seconds"), "runtime reserve_seconds", minimum=0.0
+    )
+    if reserve >= budget:
+        raise PromotionError("runtime reserve_seconds must be < budget_seconds")
+    usable = _finite_number(
+        report.get("usable_budget_seconds"), "runtime usable_budget_seconds", minimum=0.0
+    )
+    expected_usable = budget - reserve
+    if not math.isclose(usable, expected_usable, rel_tol=0.0, abs_tol=1e-15):
+        raise PromotionError("runtime usable budget disagrees with budget and reserve")
+    wall = overall.get("wall_seconds")
+    if type(wall) is not dict:
+        raise PromotionError("runtime overall wall_seconds must be an object")
+    p99_wall = _finite_number(wall.get("p99"), "runtime overall p99 wall", minimum=0.0)
+    headroom = _finite_number(
+        report.get("p99_headroom_seconds"), "runtime p99_headroom_seconds"
+    )
+    expected_headroom = usable - p99_wall
+    if not math.isclose(headroom, expected_headroom, rel_tol=0.0, abs_tol=1e-15):
+        raise PromotionError("runtime p99 headroom disagrees with usable budget and p99 wall")
+    if p99_wall > usable or headroom < 0:
+        raise PromotionError("runtime p99 wall exceeds usable budget")
+
     fallback_count = _plain_int(
         report.get("deadline_fallback_count"), "runtime deadline_fallback_count"
     )
@@ -418,12 +445,6 @@ def validate_runtime(report: Mapping[str, Any], candidate_id: str) -> None:
         raise PromotionError("runtime fallback rate disagrees with fallback count")
     if fallback_rate > fallback_ceiling:
         raise PromotionError("runtime fallback rate exceeds declared ceiling")
-
-    headroom = _finite_number(
-        report.get("p99_headroom_seconds"), "runtime p99_headroom_seconds"
-    )
-    if headroom < 0:
-        raise PromotionError("runtime p99 headroom must be nonnegative")
 
 
 def _evidence_hashes(
