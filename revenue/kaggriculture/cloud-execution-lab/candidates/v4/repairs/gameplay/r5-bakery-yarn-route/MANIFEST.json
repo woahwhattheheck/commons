@@ -1,0 +1,25 @@
+{
+  "name": "r5-bakery-yarn-route",
+  "status": "preserved_generator_level_donor_not_integrated",
+  "source_pr": 12624,
+  "source_head": "3d7d07ccc0826fd9aef5a7b03791939b7e21925b",
+  "source_base": "ef776d022606945835dca0e561bb8a383d9d1e0d",
+  "legacy_generator_blob": "060c6356701a7c4154c671104d154d5895ef772b",
+  "focused_test_blob": "e0096024a0d3bdbf93ca17e9f0c0d8d922d069b9",
+  "key": "r04_bakery_yarn_route",
+  "default": false,
+  "mechanism_contract": [
+    "leave published SHOP_PLANS[(BAKERY,YARN_STORE)] == 3 unchanged",
+    "when explicitly enabled, only at ROUTE_STEP=144 and exact full shop list [BAKERY,YARN_STORE], select existing tape 9",
+    "require exact standard episode/timing/board/unlock/shed/order configuration with empty marketParams; otherwise fail closed to published route",
+    "third-shop prefixes, neighboring/reversed pairs, missing config and nonstandard/bool scalar config remain unchanged"
+  ],
+  "integration_contract": [
+    "main/candidates/v4 is the sole integration line",
+    "these are exact legacy donor bytes only; do not execute legacy apply_v4 against the current production ABI",
+    "do not replace or overwrite the shared modern composer/materializer with legacy_apply_v4_generator.py",
+    "extract the R5 semantic seam once into the then-current shared composer/runtime in source order",
+    "remain default-OFF until exact-current affected-cell plus unaffected-control evidence authorizes promotion"
+  ],
+  "evidence_note": "Historical BAKERY->YARN evidence was sparse (three leader-ledger cells); older-base positive margins are hypothesis evidence, not promotion authority."
+}
