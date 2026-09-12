@@ -1,0 +1,35 @@
+{
+  "canonical_workspace": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "component": "row-shed-sell-order",
+  "composer": {
+    "method_after_sha256": "327a2dfbf8af9a88fb97c98b85c2cbc4357e1a2937d37930c053b7ea0c29e639",
+    "method_before_sha256": "593ef59a03a3e9a54d001ab12edc7c11ca0c803f20759f5b51b2c82d036457ea",
+    "path": "repairs/gameplay/row-shed-sell-order/compose.py"
+  },
+  "graph_predecessor": {
+    "git_blob": "4a5d3d5f4bed04acf73c7339e41fed56badf34c9",
+    "requires": "projection-state-clone",
+    "sha256": "4dc1de418632edd0a0bb66b9b01ab267c73225badabf0b62b5dee81d50233c5e",
+    "surface": "frozen_selected.py"
+  },
+  "materialization_required": true,
+  "next_action": "Run compose.py against an authenticated disposable tree whose frozen_selected.py is exactly the graph predecessor, record the resulting whole-file Git blob/SHA-256, then let the sole V4 graph-postimage runner update COMPOSITION only after its graph/current-native gates pass.",
+  "next_owner": "V4-GRAPH-POSTIMAGE-RUNNER-20260912-01",
+  "production_activated": false,
+  "release_authorized": false,
+  "schema": "titan-v4-row-shed-composer-ready/v1",
+  "source": {
+    "git_blob": "9df048a4ba866d154861b6885f59502cf9e01cae",
+    "path": "repairs/gameplay/row-shed-sell-order/row_shed_sell_order.py",
+    "sha256": "ebde4930a46f4bc582fcf5b0f039138d0d91d3686ee114e2266a79d72461bb23"
+  },
+  "status": "COMPOSER_SOURCE_READY_POSTIMAGE_PENDING",
+  "validation": {
+    "compile": "pass",
+    "default_pin_rejects_raw_foundation": true,
+    "foundation_artifact_id": 10175943272,
+    "foundation_frozen_git_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "normal": "7/7 pass",
+    "optimized": "7/7 pass"
+  }
+}
