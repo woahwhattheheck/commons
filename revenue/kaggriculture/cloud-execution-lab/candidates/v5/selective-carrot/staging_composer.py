@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Compose approved TITAN V5 component changes onto exact production-v3.
+"""Compose approved TITAN V5 component replacements onto exact production-v3.
 
 This is staging infrastructure, not a policy selector. Each component must bind
-exact replacement/addition source bytes and member identities. The composer
+exact replacement preimages/postimages or authenticated additions. The composer
 applies components in explicit order and emits one deterministic candidate
 archive plus one receipt. It never decides whether a component is economically
 qualified.
@@ -184,16 +184,6 @@ def _sha(value: Any, field: str) -> str:
     return value
 
 
-def _source_body(root: Path, spec: dict[str, Any], member: str, kind: str) -> tuple[str, str, bytes]:
-    source = spec["source"]
-    post = _sha(spec["postimage_sha256"], f"{member}.postimage_sha256")
-    source_path = _source_path(root, source)
-    source_raw = read_regular(source_path)
-    if digest(source_raw) != post:
-        raise ComposerError(f"{kind} postimage mismatch: {member}")
-    return source, post, source_raw
-
-
 def load_component(path: Path) -> dict[str, Any]:
     path = Path(path)
     raw = read_regular(path)
@@ -230,7 +220,6 @@ def load_component(path: Path) -> dict[str, Any]:
         if not isinstance(prior, str) or not _ID_RE.fullmatch(prior):
             raise ComposerError(f"invalid overlap predecessor for {member}")
         normalized_overlap[member] = prior
-
     replacements = obj["replacements"]
     additions = obj.get("additions", {})
     if not isinstance(replacements, dict):
@@ -240,15 +229,19 @@ def load_component(path: Path) -> dict[str, Any]:
     if not replacements and not additions:
         raise ComposerError("component must declare at least one replacement or addition")
 
-    normalized_replacements: dict[str, dict[str, Any]] = {}
+    normalized: dict[str, dict[str, Any]] = {}
     for member, spec in replacements.items():
         member = _canonical_member(member)
         if not isinstance(spec, dict) or set(spec) != _REPLACEMENT_KEYS:
             raise ComposerError(f"replacement keys differ for {member}")
         pre = _sha(spec["preimage_sha256"], f"{member}.preimage_sha256")
-        source, post, source_raw = _source_body(path.parent, spec, member, "replacement")
-        normalized_replacements[member] = {
-            "source": source,
+        post = _sha(spec["postimage_sha256"], f"{member}.postimage_sha256")
+        source_path = _source_path(path.parent, spec["source"])
+        source_raw = read_regular(source_path)
+        if digest(source_raw) != post:
+            raise ComposerError(f"replacement postimage mismatch: {member}")
+        normalized[member] = {
+            "source": spec["source"],
             "preimage_sha256": pre,
             "postimage_sha256": post,
             "body": source_raw,
@@ -257,18 +250,22 @@ def load_component(path: Path) -> dict[str, Any]:
     normalized_additions: dict[str, dict[str, Any]] = {}
     for member, spec in additions.items():
         member = _canonical_member(member)
-        if member in normalized_replacements:
+        if member in normalized:
             raise ComposerError(f"component declares member as replacement and addition: {member}")
         if not isinstance(spec, dict) or set(spec) != _ADDITION_KEYS:
             raise ComposerError(f"addition keys differ for {member}")
-        source, post, source_raw = _source_body(path.parent, spec, member, "addition")
+        post = _sha(spec["postimage_sha256"], f"{member}.postimage_sha256")
+        source_path = _source_path(path.parent, spec["source"])
+        source_raw = read_regular(source_path)
+        if digest(source_raw) != post:
+            raise ComposerError(f"addition postimage mismatch: {member}")
         normalized_additions[member] = {
-            "source": source,
+            "source": spec["source"],
             "postimage_sha256": post,
             "body": source_raw,
         }
 
-    if set(normalized_overlap) - set(normalized_replacements):
+    if set(normalized_overlap) - set(normalized):
         raise ComposerError("overlap_after names a member not replaced by this component")
     return {
         "component_id": component_id,
@@ -277,7 +274,7 @@ def load_component(path: Path) -> dict[str, Any]:
         "depends_on": depends,
         "conflicts_with": conflicts,
         "overlap_after": normalized_overlap,
-        "replacements": normalized_replacements,
+        "replacements": normalized,
         "additions": normalized_additions,
     }
 
@@ -308,7 +305,6 @@ def compose_files(
         )
         if reverse is not None:
             raise ComposerError(f"component {reverse} conflicts with {cid}")
-
         changed: dict[str, dict[str, Any]] = {}
         for member, replacement in sorted(component["replacements"].items()):
             if member not in files:
@@ -375,6 +371,61 @@ def compose(baseline_raw: bytes, components: list[dict[str, Any]]) -> tuple[byte
     return packed, receipt
 
 
+def _verify_owned_final(path: Path, owned: tuple[int, int], expected_raw: bytes) -> None:
+    try:
+        before = os.lstat(path)
+    except OSError as exc:
+        raise ComposerError(f"published final missing: {path}") from exc
+    if not stat.S_ISREG(before.st_mode) or (before.st_dev, before.st_ino) != owned:
+        raise ComposerError(f"published final ownership changed: {path}")
+    if before.st_size != len(expected_raw):
+        raise ComposerError(f"published final size changed: {path}")
+
+    flags = os.O_RDONLY
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(path, flags)
+    except OSError as exc:
+        raise ComposerError(f"cannot re-open published final: {path}") from exc
+    try:
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode) or (opened.st_dev, opened.st_ino) != owned:
+            raise ComposerError(f"published final ownership changed during verify: {path}")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(fd, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        captured = b"".join(chunks)
+    finally:
+        os.close(fd)
+    if captured != expected_raw:
+        raise ComposerError(f"published final payload changed: {path}")
+    after = os.lstat(path)
+    if not stat.S_ISREG(after.st_mode) or (after.st_dev, after.st_ino) != owned:
+        raise ComposerError(f"published final ownership changed after verify: {path}")
+
+
+def _fsync_directory(directory: Path) -> None:
+    directory = Path(directory)
+    flags = os.O_RDONLY
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    if hasattr(os, "O_DIRECTORY"):
+        flags |= os.O_DIRECTORY
+    fd = os.open(directory, flags)
+    try:
+        if not stat.S_ISDIR(os.fstat(fd).st_mode):
+            raise ComposerError(f"output parent is not a directory: {directory}")
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
 def publish_pair(out: Path, receipt_path: Path, archive_raw: bytes, receipt_raw: bytes) -> None:
     out, receipt_path = Path(out), Path(receipt_path)
     if out == receipt_path:
@@ -394,6 +445,12 @@ def publish_pair(out: Path, receipt_path: Path, archive_raw: bytes, receipt_raw:
         os.fsync(opened[0][1])
         _write_all(opened[1][1], receipt_raw)
         os.fsync(opened[1][1])
+        _verify_owned_final(out, opened[0][2], archive_raw)
+        _verify_owned_final(receipt_path, opened[1][2], receipt_raw)
+        for parent in sorted({out.parent, receipt_path.parent}, key=str):
+            _fsync_directory(parent)
+        _verify_owned_final(out, opened[0][2], archive_raw)
+        _verify_owned_final(receipt_path, opened[1][2], receipt_raw)
     except Exception:
         for _, fd, _ in opened:
             try:
