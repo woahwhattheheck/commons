@@ -25,7 +25,6 @@ ARLENE_PATH = LAB / "reference" / "next-panel" / "vendor" / "arlene.py"
 
 MECHANICS_BLOB = "044a4f9c0a4a44dde10ada57563238bcaf82075d"
 ARLENE_BLOB = "bdb9cf58148a3c7961c085f4902759537decabf6"
-MOVES = {"NORTH", "SOUTH", "EAST", "WEST"}
 
 
 class CustodyError(RuntimeError):
@@ -179,6 +178,7 @@ def scan_route(route: list[dict[str, Any]], route_id: str = "") -> list[dict[str
 def _validate_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> None:
     actor = witness.get("actor")
     pickups = witness.get("pickup_steps")
+    feeds = witness.get("feed_steps")
     start = witness.get("start_step")
     end = witness.get("end_step")
     if type(actor) is not int or actor < 0:
@@ -187,12 +187,23 @@ def _validate_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> N
         raise WitnessError("witness requires at least two pickup steps")
     if any(type(s) is not int for s in pickups):
         raise WitnessError("pickup steps must be plain ints")
+    if not isinstance(feeds, list) or not feeds or any(type(s) is not int for s in feeds):
+        raise WitnessError("feed steps must be a nonempty plain-int list")
     if type(start) is not int or type(end) is not int or not (0 <= start <= end < len(route)):
         raise WitnessError("invalid witness bounds")
     if pickups[0] != start or any(s < start or s > end for s in pickups):
         raise WitnessError("pickup steps outside witness bounds")
+    if any(s < start or s > end for s in feeds) or max(feeds) != end:
+        raise WitnessError("feed steps outside witness bounds")
+    if not any(s > pickups[-1] for s in feeds):
+        raise WitnessError("witness requires a FEED after its final pickup")
     if start // 24 != end // 24:
         raise WitnessError("witness crosses a day boundary")
+    expected_recovered = len(pickups) - 1
+    if witness.get("recovered_pickup_turns") != expected_recovered:
+        raise WitnessError("recovered pickup count does not match source pickups")
+    if witness.get("travel_savings_lower_bound", 0) != 0:
+        raise WitnessError("movement savings are not proved by this carrier")
     for s in range(start, end + 1):
         row = route[s]
         if not isinstance(row, dict):
@@ -207,6 +218,9 @@ def _validate_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> N
         total += q
     if total != witness.get("bulk_quantity"):
         raise WitnessError("bulk quantity does not match source pickups")
+    for s in feeds:
+        if unit(route[s], actor)[:1] != ["FEED"]:
+            raise WitnessError(f"step {s} is not a FEED for the witness actor")
 
 
 def apply_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> list[dict[str, Any]]:
@@ -215,7 +229,6 @@ def apply_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> list[
     out = copy.deepcopy(route)
     actor = witness["actor"]
     pickups = witness["pickup_steps"]
-    first = unit(out[pickups[0]], actor)
     set_unit(out[pickups[0]], actor, ["PICKUP", "WHEAT", witness["bulk_quantity"]])
     for step in pickups[1:]:
         set_unit(out[step], actor, ["PASS"])
@@ -224,8 +237,6 @@ def apply_witness(route: list[dict[str, Any]], witness: dict[str, Any]) -> list[
             continue
         if before != after:
             raise WitnessError(f"unexpected rewrite outside pickup steps: {index}")
-    if first[:2] != ["PICKUP", "WHEAT"]:
-        raise WitnessError("first source action changed during rewrite")
     return out
 
 
@@ -244,6 +255,20 @@ def _apply_rows(mechanics, observation: dict[str, Any], route: list[dict[str, An
     return farm, private
 
 
+def _validate_observation_start(observation: dict[str, Any], start: int) -> None:
+    if not isinstance(observation, dict):
+        raise WitnessError("observation must be an object")
+    player = observation.get("player")
+    step = observation.get("step")
+    farms = observation.get("farms")
+    if type(player) is not int or not isinstance(farms, list) or not (0 <= player < len(farms)):
+        raise WitnessError("observation player must be an in-range plain int")
+    if type(step) is not int or step != start:
+        raise WitnessError("observation step must exactly match witness start")
+    if not isinstance(observation.get("private"), dict):
+        raise WitnessError("observation private state must be an object")
+
+
 def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
                        witness: dict[str, Any], *, mechanics=None,
                        turns_per_day: int = 24, shed_capacity: int = 100) -> dict[str, Any]:
@@ -254,6 +279,8 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
     in both streams.
     """
     _validate_witness(route, witness)
+    start, end = witness["start_step"], witness["end_step"]
+    _validate_observation_start(observation, start)
     if type(turns_per_day) is not int or turns_per_day <= 0:
         raise WitnessError("turns_per_day must be a positive plain int")
     if type(shed_capacity) is not int or shed_capacity <= 0:
@@ -262,7 +289,6 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
         _require_sources()
         mechanics = _load("v5_bulk_feeder_mechanics", MECHANICS_PATH)
     candidate = apply_witness(route, witness)
-    start, end = witness["start_step"], witness["end_step"]
     baseline_state = _apply_rows(mechanics, observation, route, start, end,
                                  turns_per_day, shed_capacity)
     candidate_state = _apply_rows(mechanics, observation, candidate, start, end,
@@ -274,7 +300,7 @@ def verify_unit_window(observation: dict[str, Any], route: list[dict[str, Any]],
         "actor": witness["actor"],
         "start_step": start,
         "end_step": end,
-        "recovered_pickup_turns": witness["recovered_pickup_turns"] if equivalent else 0,
+        "recovered_pickup_turns": len(witness["pickup_steps"]) - 1 if equivalent else 0,
         "travel_savings_lower_bound": 0,
         "candidate": candidate if equivalent else None,
     }
