@@ -199,6 +199,7 @@ class CompositionTests(unittest.TestCase):
 
         data = json.loads(self.manifest().read_text())
         data["baseline"]["sha256"] = compose.sha256_file(drifted)
+        # The component still declares the baseline member it was actually reviewed against.
         self.assertEqual(
             data["components"]["joint"]["files"][0]["preimage_sha256"],
             h(b"seller-base\n"),
@@ -210,6 +211,39 @@ class CompositionTests(unittest.TestCase):
         with self.assertRaisesRegex(compose.CompositionError, "baseline preimage mismatch"):
             compose.build(
                 baseline=drifted,
+                source_root=self.src,
+                manifest_path=path,
+                output=out,
+            )
+        self.assertFalse(out.exists())
+
+    def test_nonregular_target_member_fails_before_output(self):
+        nonregular = self.root / "nonregular.tar.gz"
+        with nonregular.open("wb") as raw:
+            with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as zipped:
+                with tarfile.open(fileobj=zipped, mode="w", format=tarfile.GNU_FORMAT) as archive:
+                    for name in ("TITAN-CONFIG.json", "worker.py"):
+                        data = self.base_files[name]
+                        info = tarfile.TarInfo(name)
+                        info.mode = 0o644
+                        info.mtime = 1
+                        info.size = len(data)
+                        archive.addfile(info, io.BytesIO(data))
+                    directory = tarfile.TarInfo("seller.py")
+                    directory.type = tarfile.DIRTYPE
+                    directory.mode = 0o755
+                    directory.mtime = 1
+                    archive.addfile(directory)
+
+        data = json.loads(self.manifest().read_text())
+        data["baseline"]["sha256"] = compose.sha256_file(nonregular)
+        data["components"]["joint"]["files"][0]["preimage_sha256"] = h(b"")
+        path = self.root / "nonregular-manifest.json"
+        path.write_text(json.dumps(data))
+        out = self.root / "out-nonregular"
+        with self.assertRaisesRegex(compose.CompositionError, "non-regular archive member"):
+            compose.build(
+                baseline=nonregular,
                 source_root=self.src,
                 manifest_path=path,
                 output=out,
@@ -270,13 +304,15 @@ class CompositionTests(unittest.TestCase):
                 "config": {},
             },
         }
+        out = self.root / "out-postimage-conflict"
         with self.assertRaisesRegex(compose.CompositionError, "conflict on seller.py"):
             compose.build(
                 baseline=self.base,
                 source_root=self.src,
                 manifest_path=self.manifest(components=components),
-                output=self.root / "out",
+                output=out,
             )
+        self.assertFalse(out.exists())
 
     def test_config_conflict_fails_closed(self):
         components = {
@@ -299,13 +335,15 @@ class CompositionTests(unittest.TestCase):
                 "config": {"funding": False},
             },
         }
+        out = self.root / "out-config-conflict"
         with self.assertRaisesRegex(compose.CompositionError, "conflict on config"):
             compose.build(
                 baseline=self.base,
                 source_root=self.src,
                 manifest_path=self.manifest(components=components),
-                output=self.root / "out",
+                output=out,
             )
+        self.assertFalse(out.exists())
 
     def test_path_escape_fails_closed(self):
         data = json.loads(self.manifest().read_text())
