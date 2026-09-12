@@ -8,6 +8,7 @@ from copy import deepcopy
 from land_unlock_runtime_support import (
     LandUnlockOverlaySupport,
     _land_slots,
+    _market_limit,
     _remove_unique_land,
     _step,
     _unlocked_count,
@@ -21,7 +22,7 @@ class LandUnlockOverlay(LandUnlockOverlaySupport):
         """Return ``(action, report)`` without invoking or replacing a producer."""
         cfg = dict(configuration or {})
         now = _step(observation, cfg)
-        limit = int(cfg.get("maxMarketOrdersPerTurn", 10))
+        limit = _market_limit(cfg)
         route_id, route = self._route(agent)
         report = {"changed": False, "reason": "no_change", "mode": self.mode,
                   "step": now, "pending": deepcopy(self.pending)}
