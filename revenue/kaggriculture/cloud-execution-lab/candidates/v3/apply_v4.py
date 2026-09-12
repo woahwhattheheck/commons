@@ -45,7 +45,7 @@ def apply(src):
         "        task=_v217_plan(view,st,step,action,pending)\n"
         "        if V217_EOD_TAIL and task is None:\n"
         "            import r04_v217_eod_tail\n"
-        "            task = r04_v217_eod_tail.apply_v217_eod_tail(\n"
+        "            task = r04_v217_eod_tail.plan_v217_eod_tail(\n"
         "                view, st, step, action, pending,\n"
         "                tape=_POLICY.tapes[st['plan']],\n"
         "                projected_wheat=projected_shed(action, view).get('WHEAT', 0),\n"
