@@ -56,7 +56,7 @@ jobs:
           test "$(git hash-object "$V4/repairs/performance/compose_scoped_constructor.py")" = 4267520ae966b16bad33083aaa9fb7772f7de045
           test "$(git hash-object revenue/kaggriculture/cloud-quickstep/scoped_method_cache.py)" = 1438a95e69e76c97542b9b95bff1ca3745fa284e
           test "$(git hash-object "$V4/repairs/performance/projection-state-clone/compose.py")" = 3f53a5c74c369be0555d63c470bb0519bcb3e306
-          python -B -m py_compile "$PREFIX/compose_current_native.py" "$PREFIX/test_compose_current_native.py"
+          python -B -m py_compile "$PREFIX/compose_current_native.py" "$PREFIX/test_compose_current_native.py" "$PREFIX/test_compose_current_native_custody.py"
 
       - name: Current-native prefix composition regressions
         shell: bash
@@ -64,8 +64,8 @@ jobs:
           set -euo pipefail
           PREFIX=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/scheduler-action-prefix
           pushd "$PREFIX"
-          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_compose_current_native
-          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_compose_current_native
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_compose_current_native test_compose_current_native_custody
+          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_compose_current_native test_compose_current_native_custody
           popd
 
       - name: Preserve original scheduler-prefix suite
