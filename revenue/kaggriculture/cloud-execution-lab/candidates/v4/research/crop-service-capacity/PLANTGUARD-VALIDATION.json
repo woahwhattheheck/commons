@@ -13,6 +13,7 @@
     "observation hour must equal step modulo turnsPerDay under strict integer custody",
     "same-EOD rejection requires that the current day's hour-23 callback is itself executable at or before episodeSteps-2; authored rows beyond the terminal horizon cannot satisfy suffix custody",
     "terminal semantics are pinned by the official engine blob and standard episodeSteps/turnsPerDay defaults are pinned by the official configuration blob; returned evidence names both sources",
+    "a same-site DIG after an executable current PLANT removes that plant; removed candidates cannot support a same-EOD weed-doom certificate, while a DIG before a later PLANT on an initially empty tile is a no-op",
     "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
   ],
   "result_contract": {
@@ -23,11 +24,11 @@
   },
   "executed": {
     "normal_tests": {
-      "count": 30,
+      "count": 35,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 30,
+      "count": 35,
       "status": "pass"
     },
     "py_compile": {
@@ -38,12 +39,12 @@
   },
   "files": {
     "plant_guard.py": {
-      "bytes": 15072,
-      "sha256": "016b5a90ea75fd2b5e112b91ed356b1c376f224c5eab70ad89f15be598b60534"
+      "bytes": 16254,
+      "sha256": "33954c2eb19bd6c3a701a7e96b35cd9080545b0ceefdc1775fc6d7b9c599a88c"
     },
     "test_plant_guard.py": {
-      "bytes": 12578,
-      "sha256": "3180383471f12da62958acb088d68e1be05ef15fa96fd57122f91b526afeafcc"
+      "bytes": 14901,
+      "sha256": "174e9b0e88e65c4467e2b81ece850007744c6ff0d8edea497cd0c73c06ebe29f"
     }
   },
   "covered_edges": [
@@ -74,6 +75,11 @@
     "post-terminal step719 fails closed",
     "custom episodeSteps controls EOD reachability",
     "episodeSteps type-poison fails closed",
+    "same-callback PLANT then DIG removes the candidate instead of falsely certifying weed-doom",
+    "same-callback DIG before PLANT on an empty tile remains a no-op and preserves the later PLANT candidate",
+    "later-callback same-site DIG removes the candidate",
+    "unrelated later DIG does not hide a doomed candidate",
+    "mixed removed and surviving unwatered candidates doom only the surviving plant",
     "returned evidence pins engine and configuration Git blobs",
     "input immutability"
   ],
