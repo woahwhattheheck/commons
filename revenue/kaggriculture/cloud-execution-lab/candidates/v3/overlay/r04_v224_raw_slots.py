@@ -84,7 +84,7 @@ def _frozen_projection(original):
                 orders[cursor - 1], orders[cursor] = orders[cursor], orders[cursor - 1]
                 cursor -= 1
         return orders
-    except (IndexError, KeyError, TypeError, ValueError):
+    except (IndexError, KeyError, OverflowError, TypeError, ValueError):
         return None
 
 

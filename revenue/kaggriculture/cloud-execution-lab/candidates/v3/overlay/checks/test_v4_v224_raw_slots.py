@@ -232,14 +232,18 @@ class V224RawSlots(unittest.TestCase):
         self.assertIs(out, parent)
         self.assertEqual(out["market"], [[], ["SELL", "WOOL", 2]])
 
-    def test_nonstandard_or_missing_market_cap_falls_back_to_frozen_v224(self):
+    def test_nonstandard_or_missing_market_cap_fails_closed_to_parent(self):
+        nonstandard_struct = StructConfig()
+        nonstandard_struct.maxMarketOrdersPerTurn = 5
         for configuration in (None, {}, {"maxMarketOrdersPerTurn": 5},
+                              nonstandard_struct,
                               {"maxMarketOrdersPerTurn": True}):
             with self.subTest(configuration=configuration):
                 parent = action([[], ["SELL", "WOOL", 2]])
                 r04.V224_RAW_SLOTS = True
-                out = r04._v224_sales_first(copy.deepcopy(parent), configuration)
-                self.assertEqual(out["market"], [["SELL", "WOOL", 2]])
+                out = r04._v224_sales_first(parent, configuration)
+                self.assertIs(out, parent)
+                self.assertEqual(out["market"], [[], ["SELL", "WOOL", 2]])
 
     def test_router_flag_on_preserves_reorder_telemetry(self):
         r04.V224_RAW_SLOTS = True
