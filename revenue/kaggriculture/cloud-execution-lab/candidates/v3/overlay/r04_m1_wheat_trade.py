@@ -19,6 +19,10 @@ LOOKAHEAD_MAX = 6
 MAX_BUY = 4
 MAX_DAILY_BUY = 8
 CASH_RESERVE = 1000
+# Standard-config proof: before M1's executable row, lockstep opponent activity
+# can displace WHEAT market inventory by at most 507 units. Across that bounded
+# displacement the rounded standard WHEAT curve can rise by at most $25/unit.
+SAME_TURN_WHEAT_SURCHARGE = 25
 _PURCHASE_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_ANIMAL", "BUY_SEED"}
 _SHED_INFLOW_OPS = {"DROP", "PLACE"}
 _MOVES = {
@@ -415,7 +419,7 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
     money = farm.get("money")
     if not _plain_nonnegative_money(money):
         return action
-    conservative_cost = quantity * (wheat_price + 10)
+    conservative_cost = quantity * (wheat_price + SAME_TURN_WHEAT_SURCHARGE)
     if money < CASH_RESERVE + conservative_cost:
         REPORT["funding_vetoes"] += 1
         return action

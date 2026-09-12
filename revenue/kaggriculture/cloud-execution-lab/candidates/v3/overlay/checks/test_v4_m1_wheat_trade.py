@@ -323,7 +323,9 @@ class M1WheatTrade(unittest.TestCase):
     def test_cash_floor_veto(self):
         self.prime(step=100, inventory=100)
         parent = empty_action()
-        out = self.run_lane(observation(101, market_inventory=98, money=1050.0,
+        # Three units at an observed $20: the stale +$10 bound required $1090
+        # and would admit $1100; the proven +$25 same-turn bound requires $1135.
+        out = self.run_lane(observation(101, market_inventory=98, money=1100.0,
                                         wheat_price=20),
                             parent, tape_with_pickup(104, 3))
         self.assertIs(out, parent)
