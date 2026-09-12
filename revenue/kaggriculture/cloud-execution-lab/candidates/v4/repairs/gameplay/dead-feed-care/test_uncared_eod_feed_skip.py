@@ -11,14 +11,12 @@ spec.loader.exec_module(mod)
 
 CFG = {"boardSize": 10, "turnsPerDay": 24, "episodeSteps": 720}
 
-
 def tile(species="GOOSE", *, placed=0, units=0, pending=0, unfed=0,
          fed=False, cared=False, fert=False):
     kind = {"GOOSE":"COOP","COW":"PASTURE","SHEEP":"PASTURE"}[species]
     return {"kind":kind,"animal":species,"placed_day":placed,"yield_units":units,
             "pending_care_bonus":pending,"consecutive_unfed":unfed,
             "fed_today":fed,"cared_today":cared,"fertilizer_available":fert}
-
 
 def world(*, step=23, species="GOOSE", animal=None, wheat=1, hands=None, inventories=None):
     tiles = [[None for _ in range(10)] for _ in range(10)]
@@ -30,10 +28,8 @@ def world(*, step=23, species="GOOSE", animal=None, wheat=1, hands=None, invento
     return {"step":step,"player":0,"farms":[farm0,farm1],
             "private":{"inventories":invs,"shed":{},"seeds":{}}}
 
-
 def action(farmer=("FEED",), hands=()):
     return {"farmer":list(farmer),"hands":[list(r) for r in hands],"market":[]}
-
 
 class Tests(unittest.TestCase):
     def test_safe_last_hour_feed_suppressed(self):
@@ -134,6 +130,5 @@ class Tests(unittest.TestCase):
         poisoned=world(animal=tile())
         poisoned["farms"][0]["tiles"][4][4]["consecutive_unfed"]=True
         self.assertIs(mod.apply_uncared_eod_feed_skip(raw,poisoned,CFG,enabled=True),raw)
-
 
 if __name__ == "__main__": unittest.main()
