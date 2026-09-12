@@ -1,5 +1,4 @@
 import copy
-import json
 import unittest
 
 import p04_preregistered_selector as s
@@ -66,7 +65,12 @@ def report(groups):
 
 
 def full_groups(plan3=(10, 5)):
-    return [group(seed, opp, seat, plan3=plan3) for seed in (1101, 1102) for opp in ("apex", "arlene") for seat in (0, 1)]
+    return [
+        group(seed, opp, seat, plan3=plan3)
+        for seed in (1209131101, 1209131102)
+        for opp in ("apex_v7", "arlene_v14")
+        for seat in (0, 1)
+    ]
 
 
 class TestPreregisteredSelector(unittest.TestCase):
@@ -74,7 +78,10 @@ class TestPreregisteredSelector(unittest.TestCase):
         self.assertNotIn(2, s.OVERRIDE_PLANS)
         self.assertEqual(s.SPEC["rule_class"]["max_predicates"], 1)
         self.assertEqual(set(s.SPEC["input"]["forbidden_identifiers"]), {"seed", "opponent", "seat", "snapshot_sha256"})
-        self.assertEqual(s.preregistration()["spec_sha256"], s.SPEC_SHA256)
+        reg = s.preregistration()
+        self.assertEqual(reg["spec_sha256"], s.SPEC_SHA256)
+        self.assertEqual(reg["discovery_universe_sha256"], s.DISCOVERY_UNIVERSE_SHA256)
+        self.assertEqual(len(reg["discovery_universe"]["group_keys"]), 8)
 
     def test_safe_global_override_is_nominated_but_not_policy_ready(self):
         out = s.fit_selector(report(full_groups()))
@@ -83,6 +90,7 @@ class TestPreregisteredSelector(unittest.TestCase):
         self.assertFalse(out["policy_ready"])
         self.assertFalse(out["composer_ready"])
         self.assertTrue(out["heldout_required"])
+        self.assertEqual(out["discovery_universe_sha256"], s.DISCOVERY_UNIVERSE_SHA256)
 
     def test_one_negative_margin_cell_disqualifies_rule(self):
         groups = full_groups()
@@ -99,7 +107,7 @@ class TestPreregisteredSelector(unittest.TestCase):
     def test_conditional_rule_must_span_two_seeds_opponents_and_both_seats(self):
         groups = full_groups(plan3=(-5, -5))
         for g in groups:
-            value = "WOOL>MILK" if (g["seed"] + g["seat"] + (0 if g["opponent"] == "apex" else 1)) % 2 == 0 else "WOOL<MILK"
+            value = "WOOL>MILK" if (g["seed"] + g["seat"] + (0 if g["opponent"] == "apex_v7" else 1)) % 2 == 0 else "WOOL<MILK"
             g["features"]["wool_vs_milk_price"] = value
             if value == "WOOL>MILK":
                 g["plans"][4]["delta_margin_vs_incumbent"] = 8
@@ -119,8 +127,8 @@ class TestPreregisteredSelector(unittest.TestCase):
     def test_single_seed_conditional_is_rejected(self):
         groups = full_groups(plan3=(-5, -5))
         for g in groups:
-            g["features"]["wool_vs_milk_price"] = "WOOL>MILK" if g["seed"] == 1101 else "WOOL<MILK"
-            if g["seed"] == 1101:
+            g["features"]["wool_vs_milk_price"] = "WOOL>MILK" if g["seed"] == 1209131101 else "WOOL<MILK"
+            if g["seed"] == 1209131101:
                 g["plans"][4]["delta_margin_vs_incumbent"] = 8
                 g["plans"][4]["delta_own_vs_incumbent"] = 3
             else:
@@ -153,6 +161,20 @@ class TestPreregisteredSelector(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate"):
             s.fit_selector(report(groups))
 
+    def test_partial_positive_subset_fails_preoutcome_universe_binding(self):
+        groups = [
+            group(1209131101, "apex_v7", 0, plan3=(10, 5)),
+            group(1209131101, "apex_v7", 1, plan3=(10, 5)),
+        ]
+        with self.assertRaisesRegex(ValueError, "discovery universe mismatch"):
+            s.fit_selector(report(groups))
+
+    def test_extra_group_fails_preoutcome_universe_binding(self):
+        groups = full_groups()
+        groups[-1] = group(1209131103, "arlene_v14", 1)
+        with self.assertRaisesRegex(ValueError, "discovery universe mismatch"):
+            s.fit_selector(report(groups))
+
     def test_select_plan_rejects_noncanonical_snapshot_and_uses_public_features(self):
         snap = snapshot()
         rule = {"predicate": {"feature": "wool_vs_milk_price", "value": "WOOL>MILK"}, "override_plan": 3}
@@ -165,14 +187,14 @@ class TestPreregisteredSelector(unittest.TestCase):
         groups = full_groups()
         left = s.fit_selector(report(groups))
         right = s.fit_selector(report(list(reversed(groups))))
-        # Input commitment changes with order, selected frozen rule does not.
         self.assertEqual(left["selected"], right["selected"])
         self.assertEqual(left["preregistration_spec_sha256"], right["preregistration_spec_sha256"])
+        self.assertEqual(left["discovery_universe_sha256"], right["discovery_universe_sha256"])
 
     def test_rule_rejects_nonpreregistered_feature(self):
         with self.assertRaisesRegex(ValueError, "non-preregistered"):
             s.selected_plan_for_features({name: "X" for name in s.ALLOWED_FEATURES}, 7, {
-                "predicate": {"feature": "seed", "value": 1101}, "override_plan": 3
+                "predicate": {"feature": "seed", "value": 1209131101}, "override_plan": 3
             })
 
 
