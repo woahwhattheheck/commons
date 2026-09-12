@@ -25,10 +25,105 @@ OVERLAY_SHA256 = "340149a3d9e68b14440825943a5f98067401c913af42727ac9a3ba5b3d829c
 BANK = "cloud-execution-lab/candidates/v4/research/reference-policy-bank"
 EVALUATOR = "cloud-execution-lab/reference/evaluator/evaluate.py"
 SCHEMA = "astra.v5.joint-liquidity.paired.v1"
+UPSTREAM_MANIFEST = "cloud-pack/upstream/manifest.json"
+HARNESS_GIT_BLOBS = {
+    EVALUATOR: "1fb6b655bb4ca1e1684be165a8ef513e2e6c2325",
+    "20260907-offline-agent/evaluate.py": "23948e10cfc3d32f46c9abb1321b0d8fc8db21d5",
+    "cloud-pack/pack.py": "2407c7467fc60eda8864283d736c743a886bc549",
+    "cloud-pack/official.py": "65fe4058deeaa5fb983a0ec9c6e7e53fdd8368ec",
+    BANK + "/reference_policies.py": "37d3c885c0e51c1883ef70711d65cbfd404d6d22",
+    BANK + "/REFERENCE-POLICIES.json": "6bce02dad705ccc57656ff2e2139db215f9fcc57",
+    "cloud-eval/evaluate.py": "077feb2208b6e0c1727835eb4f8089709bf67f3b",
+    "cloud-frontier-policy/next-panel/offline.py": "ffaa4b6aae1ca64d9fd90db9de441ff818d59aab",
+    UPSTREAM_MANIFEST: "15367ad38c0b3fbf2da324bbf5ad5574759812e7",
+}
+BRIDGE_SUPPORT_CORE = (
+    "cloud-eval/evaluate.py",
+    "20260907-offline-agent/evaluate.py",
+    "cloud-pack/pack.py",
+    "cloud-pack/official.py",
+    "cloud-frontier-policy/next-panel/offline.py",
+    UPSTREAM_MANIFEST,
+)
 
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def git_blob_id(path):
+    data = Path(path).read_bytes()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+
+def checked_repo_file(root, relative):
+    root = Path(root).resolve(strict=True)
+    rel = PurePosixPath(relative)
+    if (not isinstance(relative, str) or not relative or "\\" in relative
+            or rel.is_absolute() or ".." in rel.parts or str(rel) != relative):
+        raise ValueError(f"Unsafe harness source path: {relative!r}")
+    cursor = root
+    for part in rel.parts:
+        cursor = cursor / part
+        if cursor.is_symlink():
+            raise ValueError(f"Symlink harness source path: {relative}")
+    path = cursor.resolve(strict=True)
+    path.relative_to(root)
+    if not path.is_file():
+        raise ValueError(f"Harness source is not a file: {relative}")
+    return path
+
+
+def verify_git_blobs(root, pins):
+    """Bind repository harness bytes to immutable published Git blob ids."""
+    if not isinstance(pins, dict) or not pins:
+        raise ValueError("Empty harness source pin set")
+    verified = {}
+    for relative, expected in pins.items():
+        path = checked_repo_file(root, relative)
+        actual = git_blob_id(path)
+        if actual != expected:
+            raise ValueError(
+                f"Harness source mismatch: {relative}; expected blob {expected}, got {actual}"
+            )
+        verified[relative] = {"git_blob": expected, "sha256": digest(path)}
+    return verified
+
+
+def verify_upstream_loader(root):
+    """Authenticate the loader bundle through the exact Git-pinned manifest."""
+    root = Path(root).resolve(strict=True)
+    manifest_path = checked_repo_file(root, UPSTREAM_MANIFEST)
+    manifest = json.loads(manifest_path.read_text())
+    files = manifest.get("files")
+    if not isinstance(files, dict) or not files:
+        raise ValueError("Pinned upstream manifest has no files")
+    verified = {}
+    for name, record in files.items():
+        if (not isinstance(record, dict) or not isinstance(record.get("sha256"), str)
+                or len(record["sha256"]) != 64):
+            raise ValueError(f"Malformed upstream manifest record: {name}")
+        relative = "cloud-pack/upstream/" + name
+        path = checked_repo_file(root, relative)
+        actual = digest(path)
+        if actual != record["sha256"]:
+            raise ValueError(f"Upstream loader source mismatch: {name}")
+        verified[relative] = actual
+    return verified
+
+
+def authenticate_harness(root):
+    """Authenticate every repository executable used by this evidence run."""
+    root = Path(root).resolve(strict=True)
+    repository_files = verify_git_blobs(root, HARNESS_GIT_BLOBS)
+    upstream_files = verify_upstream_loader(root)
+    support = {name: repository_files[name]["sha256"] for name in BRIDGE_SUPPORT_CORE}
+    support.update(upstream_files)
+    return {
+        "repository_files": repository_files,
+        "upstream_files": upstream_files,
+        "opponent_support_sha256": support,
+    }
 
 
 def load(path, name):
@@ -161,6 +256,7 @@ def main():
     if digest(args.baseline) != BASELINE_SHA256:
         raise ValueError("Baseline is not the accepted V4 archive SHA256")
     baseline_files = archive_members(args.baseline)
+    harness = authenticate_harness(args.kg_root)
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=False)
     if args.overlay:
@@ -185,15 +281,23 @@ def main():
     engine_hashes = evaluator.verify_sources(args.engine_dir)
     runtime = {}
     opponent_receipts = {}
+    expected_bridge = harness["repository_files"][BANK + "/reference_policies.py"]["sha256"]
+    expected_registry = harness["repository_files"][BANK + "/REFERENCE-POLICIES.json"]["sha256"]
     for opponent in opponents:
         runtime[opponent] = args.output / "opponents" / opponent
-        opponent_receipts[opponent] = bridge.prepare(opponent, args.kg_root, runtime[opponent])
+        receipt = bridge.prepare(opponent, args.kg_root, runtime[opponent])
+        if (receipt.get("bridge_sha256") != expected_bridge
+                or receipt.get("source_registry_sha256") != expected_registry
+                or receipt.get("support_files") != harness["opponent_support_sha256"]):
+            raise ValueError(f"Opponent preparation escaped authenticated harness: {opponent}")
+        opponent_receipts[opponent] = receipt
     metadata = {
         "schema": SCHEMA, "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "candidate_source_commit": OVERLAY_COMMIT,
         "baseline_sha256": digest(args.baseline), "candidate_sha256": digest(args.candidate),
         "changed_members": changed, "overlay_sha256": expected_overlay_sha256,
         "engine_ref": evaluator.ENGINE_REF, "engine_sha256": engine_hashes,
+        "harness": harness,
         "evaluator_sha256": digest(evaluator_path), "loader_sha256": digest(loader),
         "launcher_sha256": digest(__file__), "python": sys.version, "platform": platform.platform(),
         "limits": {"action_rpc_seconds": args.action_timeout, "startup_seconds": args.startup_timeout,
