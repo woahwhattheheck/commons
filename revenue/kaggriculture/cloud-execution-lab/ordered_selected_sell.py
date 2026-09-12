@@ -6,6 +6,7 @@ no production controller, invokes no parent, and never mutates the live state.
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from copy import deepcopy
 from pathlib import Path
 import importlib.util
@@ -20,14 +21,44 @@ _projection = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_projection)
 
 
+def _configuration_value(value):
+    """Type-preserving config value with mapping order removed recursively."""
+    if value is None:
+        return ('none',)
+    if isinstance(value, bool):
+        return ('bool', value)
+    if isinstance(value, int):
+        return ('int', value)
+    if isinstance(value, float):
+        return ('float', value)
+    if isinstance(value, str):
+        return ('str', value)
+    if isinstance(value, list):
+        return ('list', tuple(_configuration_value(item) for item in value))
+    if isinstance(value, tuple):
+        return ('tuple', tuple(_configuration_value(item) for item in value))
+    if isinstance(value, Mapping):
+        items = [(_configuration_value(key), _configuration_value(item))
+                 for key, item in value.items()]
+        return ('map', tuple(sorted(items, key=repr)))
+    # Preserve the old conservative equality behavior for any custom value.
+    return ('opaque', type(value).__module__, type(value).__qualname__, repr(value))
+
+
+def _configuration_binding(configuration):
+    return _configuration_value(dict(configuration))
+
+
 def _binding(observation, configuration, selected_action):
     """State needed to identify the same selected unit stage, including order."""
     seat = int(observation['player'])
     # repr retains inventory insertion order, which controls DROP admission.
+    # Configuration mapping order is not an engine action-order signal, so bind
+    # its values canonically to permit safe reuse by independently copied maps.
     return (absolute_step(observation, configuration), seat,
             repr(observation['farms'][seat]), repr(observation['private']),
             repr(observation['market']), repr(observation.get('town', {})),
-            repr(selected_action), repr(dict(configuration)))
+            repr(selected_action), _configuration_binding(configuration))
 
 
 class OrderedSelectedSell:
