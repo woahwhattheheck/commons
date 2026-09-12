@@ -25,7 +25,7 @@ def animal(kind: str, name: str) -> dict:
     }
 
 
-def observation(*, hands=None, inventories=None, shed_wheat=2):
+def observation(*, hands=None, inventories=None, shed_wheat=2, step=0, player=0):
     tiles = [[None for _ in range(10)] for _ in range(10)]
     tiles[3][4] = animal("COOP", "GOOSE")
     tiles[4][3] = animal("PASTURE", "COW")
@@ -38,8 +38,8 @@ def observation(*, hands=None, inventories=None, shed_wheat=2):
         "tiles": tiles,
     }
     return {
-        "player": 0,
-        "step": 0,
+        "player": player,
+        "step": step,
         "farms": [farm, copy.deepcopy(farm)],
         "private": {
             "shed": {"WHEAT": shed_wheat},
@@ -129,6 +129,29 @@ class BulkFeederTests(unittest.TestCase):
         route = simple_route()
         route[3]["market"] = [["BUY_PRODUCT", "WHEAT", 1]]
         self.assertEqual(bf.scan_route(route, "fixture"), [])
+
+    def test_forged_gain_metadata_is_rejected(self):
+        route = simple_route()
+        witness = bf.scan_route(route, "fixture")[0]
+        witness["recovered_pickup_turns"] = 99
+        with self.assertRaises(bf.WitnessError):
+            bf.apply_witness(route, witness)
+        witness = bf.scan_route(route, "fixture")[0]
+        witness["travel_savings_lower_bound"] = 1
+        with self.assertRaises(bf.WitnessError):
+            bf.apply_witness(route, witness)
+
+    def test_observation_identity_must_match_witness_start(self):
+        route = simple_route()
+        witness = bf.scan_route(route, "fixture")[0]
+        for obs in (
+            observation(step=1),
+            observation(player=True),
+            observation(player=-1),
+        ):
+            with self.subTest(player=obs.get("player"), step=obs.get("step")):
+                with self.assertRaises(bf.WitnessError):
+                    bf.verify_unit_window(obs, route, witness, mechanics=self.mechanics)
 
     def test_day_crossing_witness_is_rejected(self):
         route = [row(["PASS"]) for _ in range(26)]
