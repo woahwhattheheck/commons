@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Compose approved TITAN V5 component replacements onto exact production-v3.
+"""Compose approved TITAN V5 component changes onto exact production-v3.
 
-This is staging infrastructure, not a policy selector. Each component must name
-exact member preimages/postimages and source bytes. The composer applies
-components in explicit order and emits one deterministic candidate archive plus
-one receipt. It never decides whether a component is economically qualified.
+This is staging infrastructure, not a policy selector. Each component must bind
+exact replacement/addition source bytes and member identities. The composer
+applies components in explicit order and emits one deterministic candidate
+archive plus one receipt. It never decides whether a component is economically
+qualified.
 """
 from __future__ import annotations
 
@@ -26,11 +27,13 @@ COMPONENT_SCHEMA = "titan-v5-staging-component/v1"
 RECEIPT_SCHEMA = "titan-v5-single-staging-composer/v1"
 _ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]{0,63}$")
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
-_COMPONENT_KEYS = {
+_COMPONENT_REQUIRED_KEYS = {
     "schema", "component_id", "baseline_archive_sha256", "depends_on",
     "conflicts_with", "overlap_after", "replacements", "kaggle_submission_hold",
 }
+_COMPONENT_OPTIONAL_KEYS = {"additions"}
 _REPLACEMENT_KEYS = {"source", "preimage_sha256", "postimage_sha256"}
+_ADDITION_KEYS = {"source", "postimage_sha256"}
 
 
 class ComposerError(ValueError):
@@ -159,19 +162,19 @@ def _string_list(value: Any, field: str) -> list[str]:
 
 def _source_path(root: Path, value: Any) -> Path:
     if not isinstance(value, str) or not value:
-        raise ComposerError("replacement source must be a nonempty relative path")
+        raise ComposerError("component source must be a nonempty relative path")
     rel = PurePosixPath(value)
     if rel.is_absolute() or ".." in rel.parts or "\\" in value or str(rel) != value:
-        raise ComposerError(f"noncanonical replacement source path: {value}")
+        raise ComposerError(f"noncanonical component source path: {value}")
     current = Path(root)
     for part in rel.parts:
         current = current / part
         try:
             mode = os.lstat(current).st_mode
         except OSError as exc:
-            raise ComposerError(f"replacement source missing: {value}") from exc
+            raise ComposerError(f"component source missing: {value}") from exc
         if stat.S_ISLNK(mode):
-            raise ComposerError(f"replacement source crosses symlink: {value}")
+            raise ComposerError(f"component source crosses symlink: {value}")
     return current
 
 
@@ -181,15 +184,29 @@ def _sha(value: Any, field: str) -> str:
     return value
 
 
+def _source_body(root: Path, spec: dict[str, Any], member: str, kind: str) -> tuple[str, str, bytes]:
+    source = spec["source"]
+    post = _sha(spec["postimage_sha256"], f"{member}.postimage_sha256")
+    source_path = _source_path(root, source)
+    source_raw = read_regular(source_path)
+    if digest(source_raw) != post:
+        raise ComposerError(f"{kind} postimage mismatch: {member}")
+    return source, post, source_raw
+
+
 def load_component(path: Path) -> dict[str, Any]:
     path = Path(path)
     raw = read_regular(path)
     obj = _strict_json(raw, str(path))
     if not isinstance(obj, dict):
         raise ComposerError("component manifest must be a JSON object")
-    if set(obj) != _COMPONENT_KEYS:
+    keys = set(obj)
+    missing_keys = _COMPONENT_REQUIRED_KEYS - keys
+    extra_keys = keys - _COMPONENT_REQUIRED_KEYS - _COMPONENT_OPTIONAL_KEYS
+    if missing_keys or extra_keys:
         raise ComposerError(
-            "component manifest keys differ: " + repr(sorted(set(obj) ^ _COMPONENT_KEYS))
+            "component manifest keys differ: "
+            + repr(sorted(missing_keys | extra_keys))
         )
     if obj["schema"] != COMPONENT_SCHEMA:
         raise ComposerError("unknown component schema")
@@ -213,27 +230,45 @@ def load_component(path: Path) -> dict[str, Any]:
         if not isinstance(prior, str) or not _ID_RE.fullmatch(prior):
             raise ComposerError(f"invalid overlap predecessor for {member}")
         normalized_overlap[member] = prior
+
     replacements = obj["replacements"]
-    if not isinstance(replacements, dict) or not replacements:
-        raise ComposerError("replacements must be a nonempty object")
-    normalized: dict[str, dict[str, Any]] = {}
+    additions = obj.get("additions", {})
+    if not isinstance(replacements, dict):
+        raise ComposerError("replacements must be an object")
+    if not isinstance(additions, dict):
+        raise ComposerError("additions must be an object")
+    if not replacements and not additions:
+        raise ComposerError("component must declare at least one replacement or addition")
+
+    normalized_replacements: dict[str, dict[str, Any]] = {}
     for member, spec in replacements.items():
         member = _canonical_member(member)
         if not isinstance(spec, dict) or set(spec) != _REPLACEMENT_KEYS:
             raise ComposerError(f"replacement keys differ for {member}")
         pre = _sha(spec["preimage_sha256"], f"{member}.preimage_sha256")
-        post = _sha(spec["postimage_sha256"], f"{member}.postimage_sha256")
-        source_path = _source_path(path.parent, spec["source"])
-        source_raw = read_regular(source_path)
-        if digest(source_raw) != post:
-            raise ComposerError(f"replacement postimage mismatch: {member}")
-        normalized[member] = {
-            "source": spec["source"],
+        source, post, source_raw = _source_body(path.parent, spec, member, "replacement")
+        normalized_replacements[member] = {
+            "source": source,
             "preimage_sha256": pre,
             "postimage_sha256": post,
             "body": source_raw,
         }
-    if set(normalized_overlap) - set(normalized):
+
+    normalized_additions: dict[str, dict[str, Any]] = {}
+    for member, spec in additions.items():
+        member = _canonical_member(member)
+        if member in normalized_replacements:
+            raise ComposerError(f"component declares member as replacement and addition: {member}")
+        if not isinstance(spec, dict) or set(spec) != _ADDITION_KEYS:
+            raise ComposerError(f"addition keys differ for {member}")
+        source, post, source_raw = _source_body(path.parent, spec, member, "addition")
+        normalized_additions[member] = {
+            "source": source,
+            "postimage_sha256": post,
+            "body": source_raw,
+        }
+
+    if set(normalized_overlap) - set(normalized_replacements):
         raise ComposerError("overlap_after names a member not replaced by this component")
     return {
         "component_id": component_id,
@@ -242,7 +277,8 @@ def load_component(path: Path) -> dict[str, Any]:
         "depends_on": depends,
         "conflicts_with": conflicts,
         "overlap_after": normalized_overlap,
-        "replacements": normalized,
+        "replacements": normalized_replacements,
+        "additions": normalized_additions,
     }
 
 
@@ -272,6 +308,7 @@ def compose_files(
         )
         if reverse is not None:
             raise ComposerError(f"component {reverse} conflicts with {cid}")
+
         changed: dict[str, dict[str, Any]] = {}
         for member, replacement in sorted(component["replacements"].items()):
             if member not in files:
@@ -296,6 +333,18 @@ def compose_files(
                 "postimage_sha256": replacement["postimage_sha256"],
                 "overlap_after": declared,
             }
+
+        added: dict[str, dict[str, Any]] = {}
+        for member, addition in sorted(component.get("additions", {}).items()):
+            if member in files:
+                raise ComposerError(f"component {cid} addition targets existing member: {member}")
+            files[member] = addition["body"]
+            last_writer[member] = cid
+            added[member] = {
+                "postimage_sha256": addition["postimage_sha256"],
+                "absence_precondition": True,
+            }
+
         included_set.add(cid)
         applied.append({
             "component_id": cid,
@@ -303,6 +352,7 @@ def compose_files(
             "depends_on": list(component["depends_on"]),
             "conflicts_with": list(component["conflicts_with"]),
             "replacements": changed,
+            "additions": added,
         })
     return files, applied
 
