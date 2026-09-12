@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-r04-route-selection-integration-wide-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T22:56:00Z",
+  "heartbeat_at": "2026-09-12T22:56:00Z",
+  "ttl_s": 1800,
+  "note": "Wide integration lane on the ONE canonical production-v3/V5 family: build one parameterized default-OFF R04 step-144 route-probe carrier covering plan indices R00-R12 without altering openings, later R04 layers, or forced terminal plan2; bind exact production-v3 authority and hostile no-engagement/out-of-range tests; let independent runners consume identical bytes for the arrival-board matrix; ingest C00/R00-R12 receipts and turn only a real route advantage into one observation-only selector on the same family. No sibling V5 tree, no CURRENT/default/release/Kaggle mutation, no future-RNG/seed hardcoding. Existing root crop-admission/seller/fertilizer/postprocessor/P03/P05/shop-first/mirror-SELL lanes remain out of scope. Earlier concrete equivalent bytes win and this holding yields on overlap."
+}
