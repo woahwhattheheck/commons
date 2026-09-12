@@ -1,0 +1,30 @@
+{
+  "schema": "titan-v4-gemini-antigravity-convergence-addendum/v1",
+  "purpose": "Canonical addendum to the merged Gemini/Antigravity coverage lock. It preserves one direct pre-manifest Antigravity analyzer-hardening proposition omitted from the 21-entry master ledger and binds it to its strongest current V4 descendant. Fold this entry into GEMINI-ANTIGRAVITY.json atomically when the planned ledger consolidation lands; do not drop it or keep both copies.",
+  "master_ledger": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/GEMINI-ANTIGRAVITY.json",
+  "master_ledger_merge_pr": 13034,
+  "entry": {
+    "id": "gemini.analyzer-margin-clipping",
+    "gemini_label": "agent-index massive-finite-margin hardening / proposed +/-65000 clip",
+    "origin_buckets": [
+      "pre_manifest_antigravity"
+    ],
+    "source_slack_ts": "1789183123.191849",
+    "literal_claim": "Clip final evaluated agent-index margins to [-65000, 65000] so a hostile or buggy massive finite value cannot dominate mean-based seat/index analysis.",
+    "disposition": "CORRECTED_DESCENDANT",
+    "best_form": "Do not impose or clip to a guessed universal reward ceiling. Preserve strict finite-number validation, exact redundant-outcome consistency, and large legitimate engine margins. For untrusted ingestion, optionally require structured rewards or score+opponent_score instead of margin-only records, and optionally enforce a caller-authenticated positive absolute-margin bound. A bound rejects out-of-range records rather than clipping them. Derived reward/score subtraction is itself revalidated for finiteness so finite operands cannot overflow into an infinite margin.",
+    "activation": "RESEARCH_ONLY",
+    "canonical_evidence": [
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/agent-index-predictability/analyze_agent_index.py",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/agent-index-predictability/test_agent_index.py"
+    ],
+    "provenance_pull_numbers": [
+      12741
+    ],
+    "rejected_universal_abs_margin_cap": 65000,
+    "counterexample_legitimate_margin": 165022,
+    "counterexample_seed": 9922023,
+    "do_not_repeat_without_new_evidence": true,
+    "next_gate": "Any default magnitude bound must be authenticated from the producing engine/data contract and shown not to reject legitimate current-engine outcomes. Until then the default remains unbounded finite input, while trusted callers may opt into structured-outcome enforcement and an authenticated reject-only margin bound."
+  }
+}
