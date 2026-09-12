@@ -15,10 +15,20 @@ PRs are provenance, not canonical evidence.
 ## Fail-closed custody
 
 The checker hard-codes the complete 34-ID set. Removing a failed idea does not make
-the suite green. It also rejects duplicate JSON keys at every depth, non-finite
-numbers, evidence outside V4, `..`, literal or resolved `legacy/` / `superseded/`
-ancestry, symlink leaves/ancestors, non-regular evidence targets, unsorted/duplicate
-PR provenance, and premature MELON promotion.
+the suite green, and replacing a required ID with an arbitrary extra while keeping
+`entry_count == 34` is rejected. It also rejects duplicate JSON keys at every depth,
+non-finite numbers, evidence outside V4, `..`, literal or resolved `legacy/` /
+`superseded/` ancestry, symlink leaves/ancestors, non-regular evidence targets,
+unsorted/duplicate PR provenance, type-poisoned declared sets, and premature MELON
+promotion.
+
+The CLI/current-checkout gate accepts only the one canonical ledger coordinate under
+the discovered or supplied repository root. The canonical ledger is component-checked
+as a regular non-symlink path, then captured through one opened file descriptor. Its
+pre-open identity, opened-file identity, post-read identity, and terminal path identity
+must agree; strict JSON decoding consumes those captured bytes rather than reopening the
+pathname. This closes the validation-to-read path-swap seam instead of trusting a
+second read after `lstat` checks.
 
 `FALSIFIED` and `FIELD_BLOCKED` rows require
 `do_not_repeat_without_new_evidence=true`. Historical labels without authenticated
@@ -113,10 +123,12 @@ python check_ledger.py
 ```
 
 The synthetic suite includes the hardened duplicate-key/symlink/ancestry/MELON
-predecessors plus explicit tests that all 13 authenticated extension IDs remain hard
-required and that quarantined MERIDIAN/OpenMore/ADAPTIVE labels are not minted.
-The final `python check_ledger.py` is the current-checkout gate and requires every
-canonical evidence path to exist in the real V4 tree.
+predecessors, explicit tests that all 13 authenticated extension IDs remain hard
+required, constant-count extra-ID substitution rejection, type-poison fail-closure,
+alternate-ledger rejection, canonical-ledger symlink rejection, and a deterministic
+swap-between-validation-and-open predecessor. Quarantined MERIDIAN/OpenMore/ADAPTIVE
+labels are not minted. The final `python check_ledger.py` is the current-checkout gate
+and requires every canonical evidence path in the real V4 tree.
 
 This package changes no gameplay/runtime source, feature default, config,
 COMPOSITION, INTEGRATION, archive, evaluator, provider, or Kaggle state. Existing
