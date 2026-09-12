@@ -16,7 +16,7 @@ ROUTER = 'r04_full_router.py'
 ROUTER_SHA = '41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a'
 GATE = 'p01_productive_expansion_gate.py'
 ANCHOR = b'\n\ndef _v219_walk(pos, target):\n'
-WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks, then require observed payback.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_gate_accepts', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_supply',\n             'p01_projected_gross_ceiling', 'p01_modeled_cost_ceiling'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if record['decision'] is None:\n        _V219_REPORT['p01_gate_passthroughs'] += 1\n        return True\n    _V219_REPORT['p01_visible_rival_field_supply'] = int(record['visible_rival_field_supply_bound'])\n    _V219_REPORT['p01_projected_gross_ceiling'] = int(record['projected_gross_ceiling'])\n    _V219_REPORT['p01_modeled_cost_ceiling'] = int(record['modeled_cost_ceiling'])\n    if record['decision']:\n        _V219_REPORT['p01_gate_accepts'] += 1\n        return True\n    _V219_REPORT['p01_payback_rejects'] += 1\n    return False\n'''
+WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks, then apply only a\n# reject-safe public-evidence negative-payback proof. Inconclusive evidence\n# preserves the exact parent decision.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_projection',\n             'p01_modeled_gross_visible_field', 'p01_gross_upper_bound',\n             'p01_unavoidable_cost_floor', 'p01_labor_cost_floor'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if 'visible_rival_field_projection' in record:\n        _V219_REPORT['p01_visible_rival_field_projection'] = int(record['visible_rival_field_projection'])\n    if record.get('modeled_gross_visible_field') is not None:\n        _V219_REPORT['p01_modeled_gross_visible_field'] = int(record['modeled_gross_visible_field'])\n    if 'gross_revenue_upper_bound' in record:\n        _V219_REPORT['p01_gross_upper_bound'] = int(record['gross_revenue_upper_bound'])\n    if 'unavoidable_cost_floor' in record:\n        _V219_REPORT['p01_unavoidable_cost_floor'] = int(record['unavoidable_cost_floor'])\n    if 'labor_cost_floor' in record:\n        _V219_REPORT['p01_labor_cost_floor'] = int(record['labor_cost_floor'])\n    if record['decision'] is None:\n        _V219_REPORT['p01_gate_passthroughs'] += 1\n        return True\n    if record['decision'] is False:\n        _V219_REPORT['p01_payback_rejects'] += 1\n        return False\n    raise RuntimeError('P01 gate returned unsupported positive decision')\n'''
 
 
 def _sha(raw):
@@ -159,14 +159,15 @@ def main():
     files = inject(base_files, gate_source)
     packed = archive_bytes(files)
     receipt = {
-        'schema': 'titan-v5-p01-productive-expansion/v2',
+        'schema': 'titan-v5-p01-productive-expansion/v3',
         'base_candidate_sha256': BASE_SHA,
         'candidate_archive_sha256': _sha(packed),
         'v31_archive_sha256': V31_SHA,
         'delivery_archive_sha256': DELIVERY_SHA,
         'changed_members': [ROUTER, GATE],
-        'labor_model': 'same-day-authored-parent-hires-upper-bound',
-        'rival_supply_scope': 'visible-field-only',
+        'decision_contract': 'reject-only-unavoidable-cost-floor-vs-default-curve-gross-upper-bound',
+        'labor_model': 'same-day-guaranteed-hires-lower-bound',
+        'rival_supply_scope': 'visible-field-telemetry-only',
         'default_activation': False,
         'kaggle_submission_hold': True,
         'files': {name: _sha(body) for name, body in sorted(files.items())},
