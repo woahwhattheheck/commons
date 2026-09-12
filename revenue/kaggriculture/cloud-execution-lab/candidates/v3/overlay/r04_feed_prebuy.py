@@ -205,9 +205,14 @@ def _remaining_day_cash_spend_free(observation, r04):
     if type(max_orders) is not int or max_orders != 10:
         return False
 
+    last_step = getattr(r04, "LAST_STEP", None)
+    if type(last_step) is not int or last_step != 718 or not 0 <= step <= last_step:
+        return False
     next_day = ((step // 24) + 1) * 24
-    stop = min(next_day, len(tape), int(getattr(r04, "LAST_STEP", -1)) + 1)
-    if stop <= step + 1:
+    stop = min(next_day, last_step + 1)
+    # Missing tape suffix is unknown evidence, not a shorter cash-free day.
+    # The terminal partial day needs all actionable rows through 718 only.
+    if stop <= step + 1 or len(tape) < stop:
         return False
 
     for future_step in range(step + 1, stop):
