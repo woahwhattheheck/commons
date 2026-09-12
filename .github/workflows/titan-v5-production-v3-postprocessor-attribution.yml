@@ -7,7 +7,7 @@ on:
       - '.github/workflows/titan-v5-production-v3-postprocessor-attribution.yml'
   push:
     branches:
-      - 'astra/v5-production-v3-postprocessor-attribution-20260912'
+      - 'astra/v5-production-v3-consumer-boundary-postmerge-20260912'
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/production-v3-postprocessor-attribution/**'
       - '.github/workflows/titan-v5-production-v3-postprocessor-attribution.yml'
@@ -128,9 +128,15 @@ jobs:
           assert len(baseline) == 92, len(baseline)
 
           receipt = json.loads((root / 'screen-a.json').read_text())
+          assert receipt['schema'] == 'titan-v5-production-v3-postprocessor-attribution/v2'
           assert receipt['baseline_archive_sha256'] == '20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239'
           assert receipt['baseline_members'] == baseline
-          assert set(receipt['arms']) == {'seed_hire_off', 'inventory_spatial_off', 'late_market_off'}
+          assert set(receipt['arms']) == {
+              'seed_hire_off',
+              'inventory_spatial_off',
+              'late_market_off',
+              'consumer_parent_boundary',
+          }
           assert receipt['kaggle_submission_hold'] is True
           bundle_sha = file_digest(root / 'screen-a.tar.gz')
           assert bundle_sha == receipt['bundle_sha256']
@@ -159,8 +165,19 @@ jobs:
               with tarfile.open(archive, 'r:gz') as tf:
                   tf.extractall(dest)
               cfg = json.loads((dest / 'TITAN-CONFIG.json').read_text())
-              assert cfg['consumer'] == 'frozen'
               assert cfg['town_procurement'] is True
+              if arm == 'consumer_parent_boundary':
+                  assert cfg['consumer'] == 'parent'
+                  assert cfg['redundant_hire'] is False
+                  assert cfg['idle_fertilizer'] is False
+                  assert cfg['crop_release'] is False
+                  assert cfg['seed'] is True
+                  assert cfg['funding'] is True
+                  assert cfg['operating_stock'] is True
+                  assert cfg['market_pressure'] is True
+                  assert cfg['early_capital'] is True
+              else:
+                  assert cfg['consumer'] == 'frozen'
 
           print(json.dumps({
               'baseline_members': len(baseline),
@@ -168,7 +185,7 @@ jobs:
               'arms': {name: record['archive_sha256'] for name, record in receipt['arms'].items()},
           }, sort_keys=True))
           PY
-          for arm in seed_hire_off inventory_spatial_off late_market_off; do
+          for arm in seed_hire_off inventory_spatial_off late_market_off consumer_parent_boundary; do
             python -m compileall -q "$work/unpack-$arm"
           done
           # py_compile writes __pycache__ even with -B; keep the source-clean
