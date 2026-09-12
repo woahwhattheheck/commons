@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import base64
+import copy
 import json
 import unittest
 import zlib
 
 import audit_authored_routes as audit
+import market_budget_native_entry as native_entry
 import market_order_budget as budget
+import run_current_native_census as census
 
 
 class MarketOrderBudgetTests(unittest.TestCase):
@@ -100,6 +103,65 @@ class MarketOrderBudgetTests(unittest.TestCase):
         before = json.dumps(action, sort_keys=True)
         self.assertEqual(budget.admission_slot(action), 0)
         self.assertEqual(json.dumps(action, sort_keys=True), before)
+
+    def test_native_analyzer_failure_is_counted_without_changing_parent_action(self):
+        original_parent = native_entry._parent
+        original_budget = native_entry._budget
+        original_stats = copy.deepcopy(native_entry.stats)
+        sentinel = {"market": [["SELL", "EGG", 1]], "farmers": []}
+
+        class Parent:
+            @staticmethod
+            def agent(observation, configuration):
+                return sentinel
+
+        class BrokenBudget:
+            @staticmethod
+            def analyze_action(action, cap):
+                raise RuntimeError("intentional analyzer failure")
+
+        try:
+            native_entry._parent = Parent()
+            native_entry._budget = BrokenBudget()
+            native_entry.stats["callback_attempts"] = 0
+            native_entry.stats["callbacks"] = 0
+            native_entry.stats["telemetry_errors"] = 0
+            returned = native_entry.agent(
+                {"step": 1},
+                {"episodeSteps": 720, "maxMarketOrdersPerTurn": 10},
+            )
+            self.assertIs(returned, sentinel)
+            self.assertEqual(native_entry.stats["callback_attempts"], 1)
+            self.assertEqual(native_entry.stats["callbacks"], 0)
+            self.assertEqual(native_entry.stats["telemetry_errors"], 1)
+        finally:
+            native_entry._parent = original_parent
+            native_entry._budget = original_budget
+            native_entry.stats.clear()
+            native_entry.stats.update(original_stats)
+
+    def test_census_requires_exact_callback_custody(self):
+        good = {
+            "seat": 0,
+            "status": "complete",
+            "steps": 719,
+            "telemetry": {
+                "callback_attempts": 719,
+                "callbacks": 719,
+                "telemetry_errors": 0,
+            },
+        }
+        census._require_complete_telemetry(good)
+
+        for telemetry in (
+            {"callback_attempts": 719, "callbacks": 718, "telemetry_errors": 0},
+            {"callback_attempts": 719, "callbacks": 719, "telemetry_errors": 1},
+            {"callback_attempts": 718, "callbacks": 718, "telemetry_errors": 0},
+        ):
+            bad = {**good, "telemetry": telemetry}
+            with self.subTest(telemetry=telemetry):
+                with self.assertRaises(RuntimeError):
+                    census._require_complete_telemetry(bad)
 
 
 if __name__ == "__main__":
