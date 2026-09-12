@@ -5,6 +5,37 @@ Owner rule (2026-09-09): every fleet lane lands **here**, as a deterministic key
 directory. `exports/titan-current.tar.gz` and the Kaggle submission stay with Bryce;
 this tree is what he promotes from.
 
+## V4 continuation — one tree, one integrator seam
+
+V4 continues this directory rather than creating a sibling candidate tree. The only
+canonical V4 target is `titan/v4-20260911`; source branches and pull requests are
+short-lived review/transport surfaces, not alternate V4s.
+
+To keep parallel swarm work convergent:
+
+1. **Earliest claim owns a mechanism.** Later overlapping implementations are donor,
+   review, or evidence material for that owner rather than additional feature keys.
+2. **Source PRs prefer local surfaces.** A speculative/default-OFF lane should carry
+   its helper plus focused standard-library checks. Avoid repeatedly editing shared
+   `apply_v4.py`, runtime/config anchors, or generated V4 plumbing merely to prove the
+   helper unless the seam itself is what the lane is testing.
+3. **Shared wiring is serialized.** The integrator batches accepted keys into the
+   current canonical head, using exact-head/non-force updates. Rebase or reconcile a
+   stale lane onto canonical; never solve drift by spawning another V4 tree.
+4. **Landing and promotion are separate decisions.** A helper may land shipped OFF
+   after semantic/safety review. Turning it ON requires paired/common-gate evidence on
+   the same seeds, seats, and opponents; a negative gate remains a durable receipt,
+   not an excuse to preserve a harmful default.
+5. **Duplicates and negative mechanisms close unmerged.** Keep their PRs/results as
+   chain-of-custody evidence, but do not keep multiple keys or open merge candidates
+   for the same allocator/policy surface.
+6. **OFF must remain identity.** Every V4 seam fails closed on malformed/ambiguous
+   state and preserves the exact parent action/object where its theorem is not proven.
+
+This protocol is intentionally about integration ownership, not gameplay policy. It
+keeps the swarm free to explore while ensuring all accepted work becomes one ordered
+V4 rather than a collection of mutually drifting variants.
+
 ## Layout
 
 - `overlay/` — the lane modules (`e11_rival_sell.py`, `rival_model.py`, `e20_hire_guard.py`,
