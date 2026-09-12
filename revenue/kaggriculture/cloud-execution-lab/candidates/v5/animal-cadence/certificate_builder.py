@@ -29,9 +29,10 @@ CANDIDATE_GIT_BLOB = "e5f545c452e54337e978c3fa553535e967d50569"
 SPATIAL_TEMPO_GIT_BLOB = "a2f13cd9871e6da24b2ccf3297c4c96ac324100e"
 CROP_RELEASE_GIT_BLOB = "f8b0b2a5c2a5cbcf2f7c5e2eac5527bd4bb83974"
 MAIN_GIT_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
-RUNTIME_GIT_BLOB = "f35444f8cc5ca853d84cb90fa8602abc33c41644"
-CONFIG_GIT_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
-FROZEN_SELECTED_GIT_BLOB = "0f65045c137412d6bfa5c22950e6fff6a1275c7d"
+RUNTIME_GIT_BLOB = "922c99a571e4ba49726a753739f95afe86e72290"
+CONFIG_GIT_BLOB = "ef0bfb1dfa1ce65103a0b178647fc16bc9c7e791"
+FROZEN_SELECTED_GIT_BLOB = "6a95505388ea1b5eba38bd1f927a2a2bf084490c"
+EXEC_PACE_RUNTIME_GIT_BLOB = "76cbb062760f58e0c47f3bfd29e3652362180218"
 SEED_FUNDING_GIT_BLOB = "2fb66257cd8e4ae5b902ab8c5f21c54a6061f3aa"
 SEED_BUDGET_GIT_BLOB = "56e573d764effa3923351131a73d986e18b3eb78"
 REDUNDANT_HIRE_GIT_BLOB = "a58ba3403d89f0d9a17e56225f891f1aa81a4c8f"
@@ -52,6 +53,7 @@ _SOURCE_PINS = {
     "titan_runtime.py": RUNTIME_GIT_BLOB,
     "TITAN-CONFIG.json": CONFIG_GIT_BLOB,
     "frozen_selected.py": FROZEN_SELECTED_GIT_BLOB,
+    "exec_pace_runtime.py": EXEC_PACE_RUNTIME_GIT_BLOB,
     "reference/titan-current/seed_funding.py": SEED_FUNDING_GIT_BLOB,
     "reference/integrated-selected/alder/seed_budget.py": SEED_BUDGET_GIT_BLOB,
     "reference/titan-current/redundant_hire.py": REDUNDANT_HIRE_GIT_BLOB,
@@ -82,6 +84,7 @@ _REQUIRED_FEATURES = {
     "crop_release": True,
     "early_capital": True,
     "town_procurement": True,
+    "exec_pace": False,
 }
 
 
