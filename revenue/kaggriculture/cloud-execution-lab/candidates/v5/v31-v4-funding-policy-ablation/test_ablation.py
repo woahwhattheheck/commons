@@ -19,16 +19,16 @@ def funded_minimum_now(obs, config, base, farm, private, route, end,
 
 def transform(self, obs, config, base):
     item_budget=self.cash_reserve(obs,config,base,item_end)
-    minimum,funding=funded_minimum_now(obs,config,base,farm,private,route,item_end,
-                                        current,targets,item)
-    funding['nominal_future_spend']=item_budget
-    self.diagnostics.setdefault('funding_certificates',{})[item]=funding
+            minimum,funding=funded_minimum_now(obs,config,base,farm,private,route,item_end,
+                                                current,targets,item)
+            funding['nominal_future_spend']=item_budget
+            self.diagnostics.setdefault('funding_certificates',{})[item]=funding
     out['market']=materialize_sales(out['market'],current,shed,targets,
                                     int(config.get('maxMarketOrdersPerTurn',10)))
-    out['market'],funding=fund_same_turn_acquisition(
-        out['market'],farm,private,obs['market'],shops,config,now,targets,
-        lambda product:self.rival_supply(obs,product))
-    if funding is not None:self.diagnostics['same_turn_funding']=funding
+        out['market'],funding=fund_same_turn_acquisition(
+            out['market'],farm,private,obs['market'],shops,config,now,targets,
+            lambda product:self.rival_supply(obs,product))
+        if funding is not None:self.diagnostics['same_turn_funding']=funding
     return out
 """
 
