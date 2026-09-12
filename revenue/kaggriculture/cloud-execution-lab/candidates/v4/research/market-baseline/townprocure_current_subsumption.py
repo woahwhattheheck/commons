@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Fail-closed current-V4 TOWNPROCURE source/subsumption audit.
 
-This module does not alter an action.  It answers a narrower integration question:
-does current production expose a WHEAT purchase that can lawfully be moved earlier
-across a deterministic town drain while preserving the existing source constraints?
+This module does not alter an action. It asks whether current production exposes a
+WHEAT purchase that can lawfully be moved earlier across deterministic town demand
+while preserving existing source constraints.
 
 The answer is COLD only when (a) the complete authenticated Arlene route bank has no
 authored BUY_PRODUCT WHEAT row and (b) the only current dynamic constructor is the
@@ -76,8 +76,11 @@ def audit() -> dict:
         "TOWN-WHEAT-TIMING.json": market_baseline / "TOWN-WHEAT-TIMING.json",
     }
     observed = {name: _git_blob(path, lab) for name, path in paths.items()}
-    drift = {name: {"expected": PINS[name], "observed": blob}
-             for name, blob in observed.items() if blob != PINS[name]}
+    drift = {
+        name: {"expected": PINS[name], "observed": blob}
+        for name, blob in observed.items()
+        if blob != PINS[name]
+    }
     if drift:
         raise AuditError(f"current source drift: {drift}")
 
@@ -89,44 +92,72 @@ def audit() -> dict:
     spatial = paths["spatial_tempo.py"].read_text(encoding="utf-8")
     runtime = paths["titan_runtime.py"].read_text(encoding="utf-8")
     oracle = paths["town_wheat_timing.py"].read_text(encoding="utf-8")
-    oracle_receipt = json.loads(paths["TOWN-WHEAT-TIMING.json"].read_text(encoding="utf-8"))
+    oracle_receipt = json.loads(
+        paths["TOWN-WHEAT-TIMING.json"].read_text(encoding="utf-8")
+    )
     if oracle_receipt.get("engine_git_blob") != ENGINE_BLOB:
         raise AuditError("TOWNFLASH engine pin drifted")
 
-    _require(crop, (
-        "wheat_reserve_required=3, input_repair_remaining=3",
-        "'deposit_step': 455",
-        "now<intent['deposit_step'] or now>576",
-        "intent.get('input_repair_pending') or intent.get('input_repair_unknown')",
-        "['BUY_PRODUCT','WHEAT',n]",
-        "'existing_wheat_purchase_needs_its_own_receipt'",
-        "'repair_requires_a_free_nonconflicting_slot'",
-        "'repair_or_eod_delivery_lacks_shared_room'",
-        "'repair_or_boundary_capital_not_funded'",
-        "input_repair_pending=pending",
-        "p['input_repair_remaining']-=n",
-    ), "crop_release")
-    _require(spatial, (
-        "selected,self._crop_repair,repair_report=propose_input_repair(",
-        "returned=self.spatial.guard_crop_returned" if False else "final_unit_guard_canceled_unbound_repair",
-    ), "spatial_tempo")
-    _require(runtime, (
-        "self.spatial.observe_crop_receipts(obs,",
+    _require(
+        crop,
+        (
+            "wheat_reserve_required=3, input_repair_remaining=3",
+            "'deposit_step': 455",
+            "now<intent['deposit_step'] or now>576",
+            "intent.get('input_repair_pending') or intent.get('input_repair_unknown')",
+            "['BUY_PRODUCT','WHEAT',n]",
+            "'existing_wheat_purchase_needs_its_own_receipt'",
+            "'repair_requires_a_free_nonconflicting_slot'",
+            "'repair_or_eod_delivery_lacks_shared_room'",
+            "'repair_or_boundary_capital_not_funded'",
+            "input_repair_pending=pending",
+            "p['input_repair_remaining']-=n",
+        ),
+        "crop_release",
+    )
+    _require(
+        spatial,
+        (
+            "selected,self._crop_repair,repair_report=propose_input_repair(",
+            "final_unit_guard_canceled_unbound_repair",
+        ),
+        "spatial_tempo",
+    )
+    _require(
+        runtime,
+        (
+            "self.spatial.observe_market_receipt(obs,",
+            "self.spatial.observe_crop_receipts(obs,",
+            "output=self.spatial.crop_market(obs,output,self._selected_snapshot(obs,output),",
+            "returned=self.spatial.guard_crop_returned(obs,returned,post)",
+            "returned = self._feed_stock_selected(obs, cfg or {}, returned)",
+            "returned = self._early_capital_selected(obs, cfg or {}, returned)",
+        ),
+        "titan_runtime",
+    )
+    # Use the observation in the normal act path (the one immediately following
+    # observe_market_receipt), not the separate finish-path fallback occurrence.
+    market_receipt_at = runtime.find("self.spatial.observe_market_receipt(obs,")
+    observe_at = runtime.find("self.spatial.observe_crop_receipts(obs,", market_receipt_at)
+    crop_market_at = runtime.find(
         "output=self.spatial.crop_market(obs,output,self._selected_snapshot(obs,output),",
-        "returned=self.spatial.guard_crop_returned(obs,returned,post)",
-        "returned = self._feed_stock_selected(obs, cfg or {}, returned)",
-        "returned = self._early_capital_selected(obs, cfg or {}, returned)",
-    ), "titan_runtime")
-    # Observation/reconciliation must happen before the next proposal in the normal
-    # act path; otherwise a partially filled prior buy could force a false one-turn lag.
-    observe_at = runtime.find("self.spatial.observe_crop_receipts(obs,")
-    crop_market_at = runtime.find("output=self.spatial.crop_market(obs,output,self._selected_snapshot(obs,output),")
-    if observe_at < 0 or crop_market_at < 0 or observe_at >= crop_market_at:
-        raise AuditError("crop receipt observation is not before crop_market proposal")
-    _require(oracle, (
-        "Exact public town drain scheduled after MARKET on this callback.",
-        "execute q[:max(1, maxMarketOrdersPerTurn)]" if False else "buy_before_is_never_worse",
-    ), "town_wheat_timing")
+        observe_at,
+    )
+    if (
+        market_receipt_at < 0
+        or observe_at < 0
+        or crop_market_at < 0
+        or not market_receipt_at < observe_at < crop_market_at
+    ):
+        raise AuditError("normal act path no longer reconciles crop receipts before crop_market")
+    _require(
+        oracle,
+        (
+            "Exact public town drain scheduled after MARKET on this callback.",
+            '"buy_before_is_never_worse": savings >= 0',
+        ),
+        "town_wheat_timing",
+    )
 
     route = current_wheat_buy_census.census(expected_vendor_blob=ARLENE_BLOB)
     route_rows = int(route["wheat_buy_row_count"])
@@ -137,13 +168,6 @@ def audit() -> dict:
     if first_center != 456:
         raise AuditError(f"unexpected first center callback after repair due: {first_center}")
 
-    # Source theorem: current repair has no modulo/cadence gate. Once a durable
-    # obligation is due and no prior receipt is unresolved, it is considered on each
-    # callback. A buy either appends into a free raw slot, or a WHEAT sale is withheld.
-    # The explicit blockers are exactly the custody constraints a retimer is required
-    # to preserve (receipt uniqueness, row ownership, shared room, bounded price and
-    # no-future-sale funding). Therefore a later first-safe buy cannot be pulled back
-    # through one of those blockers without changing policy semantics.
     dynamic = {
         "constructor": "crop_release.propose_input_repair",
         "enabled": True,
@@ -154,7 +178,10 @@ def audit() -> dict:
         "market_precedes_same_callback_town": True,
         "reconciles_prior_receipt_before_next_proposal": True,
         "retry_cadence": "every callback while due and receipt-known",
-        "safe_actions": ["withhold existing WHEAT SELL", "append BUY_PRODUCT WHEAT into free raw slot"],
+        "safe_actions": [
+            "withhold existing WHEAT SELL",
+            "append BUY_PRODUCT WHEAT into free raw slot",
+        ],
         "preserved_blockers": [
             "existing WHEAT purchase has separate receipt ownership",
             "pending or ambiguous prior repair receipt",
@@ -168,13 +195,15 @@ def audit() -> dict:
 
     if route_rows:
         decision = "ROUTE_WHEAT_BUYS_REQUIRE_SEPARATE_TIMING_GATE"
-        reason = "authenticated Arlene tape contains WHEAT purchases outside crop-repair ownership"
+        reason = (
+            "authenticated Arlene tape contains WHEAT purchases outside crop-repair ownership"
+        )
     else:
         decision = "SUBSUMED_NO_LAWFUL_RETIME"
         reason = (
             "no authenticated tape-authored WHEAT buy exists; the only current dynamic "
-            "constructor retries from the first lawful due callback, so a move earlier "
-            "than an observed later repair would have to cross an existing safety/receipt blocker"
+            "constructor retries from the first lawful due callback, so moving an observed "
+            "later repair earlier would have to cross an existing safety/receipt blocker"
         )
 
     result = {
@@ -195,7 +224,9 @@ def audit() -> dict:
             "any future source/blob drift invalidates this disposition",
         ],
     }
-    canonical = json.dumps(result, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    canonical = json.dumps(
+        result, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    )
     result["result_sha256"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
     return result
 
@@ -206,8 +237,17 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     try:
         result = audit()
-    except (AuditError, OSError, subprocess.CalledProcessError, ValueError, json.JSONDecodeError) as exc:
-        print(f"townprocure-current-subsumption: {exc}", file=__import__("sys").stderr)
+    except (
+        AuditError,
+        OSError,
+        subprocess.CalledProcessError,
+        ValueError,
+        json.JSONDecodeError,
+    ) as exc:
+        print(
+            f"townprocure-current-subsumption: {exc}",
+            file=__import__("sys").stderr,
+        )
         return 2
     print(json.dumps(result, sort_keys=True, indent=2 if args.pretty else None))
     return 0
