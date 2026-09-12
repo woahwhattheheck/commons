@@ -32,12 +32,17 @@ def _unlocked_count(observation):
     return len(observation["farms"][player].get("unlocked_quadrants", ()))
 
 
+def _is_land_order(order):
+    """Match the pinned engine's atomic BUY_LAND parser grammar."""
+    return isinstance(order, list) and bool(order) and order[0] == "BUY_LAND"
+
+
 def _land_slots(action, limit):
     market = action.get("market", []) if isinstance(action, dict) else []
     if not isinstance(market, list):
         return []
     return [index for index, order in enumerate(market[:limit])
-            if isinstance(order, list) and order == LAND_ORDER]
+            if _is_land_order(order)]
 
 
 def _append_slot(action, limit):
@@ -189,7 +194,7 @@ class LandUnlockOverlaySupport:
             old = deepcopy(virtual[int(original_step)])
             market = old.get("market", []) if isinstance(old, dict) else []
             if (not isinstance(market, list) or not 0 <= int(original_slot) < len(market)
-                    or market[int(original_slot)] != LAND_ORDER):
+                    or not _is_land_order(market[int(original_slot)])):
                 return None, None, {"certified": False,
                                     "reason": "represented_original_land_changed"}
             market = list(market)
