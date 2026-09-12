@@ -2,8 +2,9 @@
 """Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It accepts either an explicit V218/router binding or a source-proven current-native
-semantic equivalent for the two V218 legality rules.
+It accepts an explicit V218/router binding directly. Native semantic equivalence counts as
+wired only when the sole canonical V4 composition graph carries an authenticated evidence-only
+registration for the same semantic sources and this checker.
 """
 from __future__ import annotations
 import argparse, ast, hashlib, json
@@ -11,6 +12,15 @@ from pathlib import Path
 
 TOKENS = ("r04_full_router", "v218", "movement_parity")
 EXCLUDE_PARTS = {"__pycache__", ".git"}
+GRAPH_REL = Path("candidates/v4/COMPOSITION.json")
+V218_COMPONENT_ID = "v218-native-semantic-equivalence"
+V218_PACKAGE = "repairs/gameplay/v218-legal-movement"
+V218_CHECKER_REL = f"{V218_PACKAGE}/check_current_native_binding.py"
+SEMANTIC_RULES = (
+    "locked_transit_matches_engine",
+    "all_four_shed_corners_eligible",
+    "spatial_routes_are_tile_agnostic",
+)
 
 
 def git_blob(data: bytes) -> str:
@@ -58,15 +68,7 @@ def _exec_function(text: str, name: str, globals_dict: dict):
 
 
 def _native_semantic_equivalence(root: Path, config: dict) -> dict:
-    """Prove the two V218 rules already hold on the actually-called native path.
-
-    Rule A: in-bounds MOVE is not rejected merely because destination is LOCKED.
-    Rule B: all four central shed access coordinates remain eligible.
-
-    The proof is deliberately fail-closed: it requires the current frozen call chain,
-    executable semantics from Arlene's `_noop` / `_shed_adjacent`, and the installed
-    SpatialTempo path implementation to remain tile-agnostic.
-    """
+    """Prove the two V218 legality rules already hold on the actually-called native path."""
     rels = {
         "main": "main.py",
         "runtime": "titan_runtime.py",
@@ -160,6 +162,88 @@ def _native_semantic_equivalence(root: Path, config: dict) -> dict:
     }
 
 
+def _pairs_no_dupes(pairs):
+    out = {}
+    for key, value in pairs:
+        if key in out:
+            raise ValueError(f"duplicate JSON object key: {key!r}")
+        out[key] = value
+    return out
+
+
+def _semantic_graph_registration(root: Path, semantic: dict) -> dict:
+    """Authenticate the canonical evidence-only graph registration for native equivalence."""
+    graph_path = root / GRAPH_REL
+    if not graph_path.is_file():
+        return {"registered": False, "reason": "missing_canonical_composition_graph", "path": str(GRAPH_REL)}
+    try:
+        graph = json.loads(
+            graph_path.read_text(encoding="utf-8"),
+            object_pairs_hook=_pairs_no_dupes,
+            parse_constant=lambda value: (_ for _ in ()).throw(ValueError(f"non-finite JSON: {value}")),
+        )
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return {"registered": False, "reason": "invalid_canonical_composition_graph", "error": str(exc)}
+    if not isinstance(graph, dict) or graph.get("schema") != "titan-v4-composition/v1":
+        return {"registered": False, "reason": "wrong_canonical_composition_schema"}
+    comps = graph.get("components")
+    if not isinstance(comps, list):
+        return {"registered": False, "reason": "composition_components_not_list"}
+    matches = [c for c in comps if isinstance(c, dict) and c.get("id") == V218_COMPONENT_ID]
+    if len(matches) != 1:
+        return {"registered": False, "reason": "semantic_component_cardinality", "count": len(matches)}
+    comp = matches[0]
+    if comp.get("state") != "evidence_only":
+        return {"registered": False, "reason": "semantic_component_not_evidence_only", "state": comp.get("state")}
+    if comp.get("package") != V218_PACKAGE:
+        return {"registered": False, "reason": "semantic_component_wrong_package", "package": comp.get("package")}
+    if comp.get("transforms") != []:
+        return {"registered": False, "reason": "semantic_component_must_not_transform"}
+    if comp.get("entrypoints") != [V218_CHECKER_REL]:
+        return {"registered": False, "reason": "semantic_component_wrong_entrypoint", "entrypoints": comp.get("entrypoints")}
+    binding = comp.get("semantic_equivalence")
+    if not isinstance(binding, dict) or binding.get("kind") != "native_semantic_equivalence":
+        return {"registered": False, "reason": "missing_semantic_equivalence_contract"}
+    if binding.get("rules") != list(SEMANTIC_RULES):
+        return {"registered": False, "reason": "semantic_rule_set_mismatch", "rules": binding.get("rules")}
+
+    checker_path = root / "candidates/v4" / V218_CHECKER_REL
+    if not checker_path.is_file():
+        return {"registered": False, "reason": "registered_checker_missing"}
+    checker_blob = git_blob(checker_path.read_bytes())
+    if binding.get("checker_identity") != f"git-blob:{checker_blob}":
+        return {
+            "registered": False,
+            "reason": "checker_identity_mismatch",
+            "expected": f"git-blob:{checker_blob}",
+            "actual": binding.get("checker_identity"),
+        }
+
+    source_identities = binding.get("source_identities")
+    if not isinstance(source_identities, dict):
+        return {"registered": False, "reason": "semantic_source_identities_missing"}
+    expected = {}
+    for key in ("arlene", "spatial"):
+        row = semantic.get("sources", {}).get(key)
+        if not isinstance(row, dict):
+            return {"registered": False, "reason": "semantic_source_receipt_missing", "source": key}
+        expected[row["path"]] = f"git-blob:{row['git_blob']}"
+    if source_identities != expected:
+        return {
+            "registered": False,
+            "reason": "semantic_source_identity_mismatch",
+            "expected": expected,
+            "actual": source_identities,
+        }
+    return {
+        "registered": True,
+        "reason": "authenticated_evidence_only_semantic_edge",
+        "component": V218_COMPONENT_ID,
+        "checker_identity": f"git-blob:{checker_blob}",
+        "source_identities": expected,
+    }
+
+
 def audit(root: Path) -> dict:
     root = root.resolve()
     required = [root / "main.py", root / "titan_runtime.py", root / "TITAN-CONFIG.json"]
@@ -178,7 +262,7 @@ def audit(root: Path) -> dict:
         if not path.is_file() or any(part in EXCLUDE_PARTS for part in path.parts):
             continue
         rel = path.relative_to(root)
-        if rel.parts and rel.parts[0] == "checks":
+        if rel.parts and rel.parts[0] in {"checks", "candidates"}:
             continue
         if path.suffix not in {".py", ".json"}:
             continue
@@ -197,17 +281,25 @@ def audit(root: Path) -> dict:
     explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
     semantic = _native_semantic_equivalence(root, config)
     equivalent = bool(semantic.get("equivalent"))
-    wired = explicit_binding or equivalent
+    registration = (
+        _semantic_graph_registration(root, semantic)
+        if equivalent
+        else {"registered": False, "reason": "semantic_equivalence_not_proven"}
+    )
+    semantic_wired = equivalent and bool(registration.get("registered"))
+    wired = explicit_binding or semantic_wired
 
     if explicit_binding:
         disposition = "WIRED_REQUIRES_RUNTIME_GATE"
-    elif equivalent:
+    elif semantic_wired:
         disposition = "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE"
+    elif equivalent:
+        disposition = "BLOCKED_AT_GRAPH_REGISTRATION"
     else:
         disposition = "BLOCKED_AT_NATIVE_ASSEMBLY"
 
     return {
-        "schema": "titan-v4-v218-native-binding/v2",
+        "schema": "titan-v4-v218-native-binding/v3",
         "native_root": str(root),
         "main": {"git_blob": git_blob(main), "sha256": sha256(main), "bytes": len(main)},
         "runtime": {"git_blob": git_blob(runtime), "sha256": sha256(runtime), "bytes": len(runtime)},
@@ -221,6 +313,8 @@ def audit(root: Path) -> dict:
         "v218_ref_count": v218_refs,
         "explicit_binding": explicit_binding,
         "native_semantic_equivalence": semantic,
+        "semantic_graph_registration": registration,
+        "semantic_wired": semantic_wired,
         "wired": wired,
         "disposition": disposition,
         "scope": "binding/semantic custody only; no V218 execution or economics",
