@@ -1,0 +1,164 @@
+{
+  "schema": "titan-v4-mechanism-claims/v1",
+  "canonical_branch": "main",
+  "claims": [
+    {
+      "id": "engine.buy-product-whitelist",
+      "status": "CONFIRMED",
+      "proposition": "Official direct BUY_PRODUCT quoting accepts only WHEAT and FERTILIZER.",
+      "scope": "Pinned official engine market-order quote stage only; BUY_SEED, BUY_ANIMAL, SELL, town demand, and candidate policy are separate mechanisms.",
+      "disposition": "Treat CARROT, TOMATO, EGG, MILK, WOOL, STRAWBERRY, and MELON direct BUY_PRODUCT hypotheses as engine-invalid unless the official engine changes.",
+      "next_gate": "Re-open only against a new authenticated engine blob whose BUY_PRODUCT quote branch changes.",
+      "tags": ["engine", "market", "orders"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
+          "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+          "anchors": [
+            "# Quote at post-buy inventory so a buy/sell round-trip",
+            "elif op == \"BUY_PRODUCT\" and item in (\"WHEAT\", \"FERTILIZER\"):"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.coop-pasture-zero-cash-branch",
+      "status": "CONFIRMED",
+      "proposition": "Official BUILD_COOP and BUILD_PASTURE branches place the structure on an empty tile and return without a cash check or deduction.",
+      "scope": "Pinned official unit-action interpreter branch only; this does not imply structures are strategically free because farmer actions, movement, later animal acquisition, feed, care, or opportunity cost remain.",
+      "disposition": "Do not model a direct cash construction fee for COOP or PASTURE in this engine blob; keep action and downstream economic costs separate.",
+      "next_gate": "Re-open only against a new authenticated engine blob or a separate proof about action/opportunity cost.",
+      "tags": ["engine", "structures", "unit-actions"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
+          "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+          "anchors": [
+            "farm[\"tiles\"][fy][fx] = {\"kind\": \"COOP\"}",
+            "farm[\"tiles\"][fy][fx] = {\"kind\": \"PASTURE\"}",
+            "if op == \"BUILD_COOP\":",
+            "if op == \"BUILD_PASTURE\":"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.strawberry-wool-not-hinge",
+      "status": "FALSIFIED",
+      "proposition": "STRAWBERRY and WOOL scarcity below T use the hinge price shape in the pinned official market model.",
+      "scope": "Pinned official MARKET_PARAMS below-I0 scarcity shape only; T still parameterizes each resource's configured curve but is not a hinge knee for these two goods.",
+      "disposition": "Do not build a STRAWBERRY/WOOL hinge-knee strategy from T=100/105 on this engine blob; STRAWBERRY uses sqrt below I0 and WOOL uses log.",
+      "next_gate": "Re-open only if authenticated MARKET_PARAMS changes or a different mechanism, not the hinge shape, creates a measured discontinuity.",
+      "tags": ["engine", "market", "pricing"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
+          "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+          "anchors": [
+            "\"STRAWBERRY\": {\"base\": 120, \"I0\": MARKET_I0, \"T\": 100, \"below_func\": \"sqrt\"",
+            "\"WOOL\":       {\"base\": 200, \"I0\": MARKET_I0, \"T\": 105, \"below_func\": \"log\""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.town-center-fertilizer-demand",
+      "status": "FALSIFIED",
+      "proposition": "The town-center demand phase consumes FERTILIZER in the pinned official engine.",
+      "scope": "Pinned official TOWN_CENTER_PRODUCTS membership only; player BUY_PRODUCT/SELL and other town/shop behavior are separate.",
+      "disposition": "Do not forecast town-center FERTILIZER depletion or use it as a funding/price-pressure premise on this engine blob.",
+      "next_gate": "Re-open only if authenticated TOWN_CENTER_PRODUCTS or town-demand logic changes.",
+      "tags": ["engine", "fertilizer", "town"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py",
+          "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+          "anchors": [
+            "TOWN_CENTER_PRODUCTS = [p for p in PRODUCTS if p != \"FERTILIZER\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market.direct-hinge-buy-carrot-tomato-egg",
+      "status": "FALSIFIED",
+      "proposition": "A player can directly BUY_PRODUCT CARROT, TOMATO, or EGG to force their hinge scarcity prices.",
+      "scope": "Direct market BUY_PRODUCT attack only; production, SELL, external demand, and WHEAT/FERTILIZER purchases are separate.",
+      "disposition": "Do not build or benchmark a direct CARROT/TOMATO/EGG hinge-buyout controller on this engine contract.",
+      "next_gate": "Re-open only if the official direct BUY_PRODUCT eligibility changes.",
+      "tags": ["adversarial", "market", "pricing"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-pressure/README.md",
+          "git_blob": "ae94865af5caaa7f47de968706857c4c3cf38055",
+          "anchors": [
+            "CARROT/TOMATO/EGG hinge-price goods cannot be purchased from the market",
+            "Direct `BUY_PRODUCT` is legal only for **WHEAT** and **FERTILIZER**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market.external-wheat-demand-pressure",
+      "status": "CONFIRMED",
+      "proposition": "External net WHEAT demand can make a buy-before-rival and unwind-after-rival pressure position profitable while increasing the rival's acquisition cost.",
+      "scope": "Independent pinned WHEAT pricing model and constructed demand controls; this is a stress mechanism, not a current TITAN production-policy or field-EV claim.",
+      "disposition": "Keep the mechanism as a gauntlet/stress hypothesis and measure both seats against current V4; do not promote the included pressure agent as canonical policy from constructed receipts alone.",
+      "next_gate": "Require current-V4 both-seat gauntlet/replay economics against real external WHEAT demand and neutral controls.",
+      "tags": ["adversarial", "gauntlet", "market", "wheat"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-pressure/README.md",
+          "git_blob": "ae94865af5caaa7f47de968706857c4c3cf38055",
+          "anchors": [
+            "**External net demand is the surviving adversarial mechanism.**",
+            "Buy 64, rival net-buys 64, unwind 64: own profit `+$280`, rival surcharge `+$280`, score-margin swing `+$560`."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market.literal-wheat-stockout",
+      "status": "FALSIFIED",
+      "proposition": "Player buying can make WHEAT literally unavailable by driving market inventory to zero.",
+      "scope": "Pinned official WHEAT BUY_PRODUCT availability semantics only; scarcity pricing can still raise acquisition cost.",
+      "disposition": "Do not build a WHEAT-unavailability/starvation strategy; reason in price pressure rather than stockout.",
+      "next_gate": "Re-open only if a new engine introduces a market-stock availability check.",
+      "tags": ["adversarial", "market", "wheat"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-pressure/README.md",
+          "git_blob": "ae94865af5caaa7f47de968706857c4c3cf38055",
+          "anchors": [
+            "There is no market-stock availability check on WHEAT buys. Inventory can cross zero.",
+            "“Starvation” therefore cannot make WHEAT unavailable; it can only raise the rival's acquisition cost."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "market.self-wheat-roundtrip-profit",
+      "status": "FALSIFIED",
+      "proposition": "A player can profit from a pure self-created WHEAT scarcity position by buying and later selling the same quantity with no intervening market flow.",
+      "scope": "Pinned official per-unit WHEAT quote semantics with no intervening external market flow; external demand is explicitly outside this falsification.",
+      "disposition": "Do not treat self-only WHEAT buy/unwind as an intrinsic money printer; any edge must come from intervening external net flow or another mechanism.",
+      "next_gate": "Re-open only with authenticated engine changes or a witness containing explicit intervening market flow.",
+      "tags": ["adversarial", "market", "wheat"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-pressure/README.md",
+          "git_blob": "ae94865af5caaa7f47de968706857c4c3cf38055",
+          "anchors": [
+            "A self-created WHEAT squeeze is exactly reversible:",
+            "Pure 95-unit self round-trip: `$0` profit and inventory returns to `10000`."
+          ]
+        }
+      ]
+    }
+  ]
+}
