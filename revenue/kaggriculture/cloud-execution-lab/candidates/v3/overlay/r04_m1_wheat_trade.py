@@ -21,6 +21,8 @@ MAX_DAILY_BUY = 8
 CASH_RESERVE = 1000
 _PURCHASE_OPS = {"HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_ANIMAL", "BUY_SEED"}
 _SHED_INFLOW_OPS = {"DROP", "PLACE"}
+_MOVES = {"EAST": (1, 0), "WEST": (-1, 0), "NORTH": (0, -1), "SOUTH": (0, 1)}
+_SHED_ACCESS = frozenset(((4, 4), (4, 5), (5, 4), (5, 5)))
 _STANDARD_CONFIG = {
     "episodeSteps": 720,
     "turnsPerDay": 24,
@@ -117,18 +119,49 @@ def _parent_requests_wheat_buy(rows):
     )
 
 
-def _future_literal_pickup(tape, step, actor_count):
+def _actor_position(value):
+    if (not isinstance(value, (list, tuple)) or len(value) != 2
+            or type(value[0]) is not int or type(value[1]) is not int
+            or not 0 <= value[0] < 10 or not 0 <= value[1] < 10):
+        return None
+    return (value[0], value[1])
+
+
+def _advance(position, operation):
+    delta = _MOVES.get(operation)
+    if delta is None:
+        return position
+    nx = position[0] + delta[0]
+    ny = position[1] + delta[1]
+    if 0 <= nx < 10 and 0 <= ny < 10:
+        return (nx, ny)
+    return position
+
+
+def _future_literal_pickup(tape, step, actor_positions):
     """Return a funded same-day pickup executable by a current actor.
 
     The pickup candidate itself must remain two to six callbacks ahead. Before
-    that pickup, future HIRE/purchase rows and DROP/PLACE shed inflow are hard
-    vetoes exactly as before. Once a candidate is found, keep its ``(due,
-    demand)`` but continue scanning the selected tape through the rest of the
-    same day: any executable-prefix HIRE/BUY row still owns future cash, so M1
-    may not spend against it now. Purchases on the next day do not block.
+    that pickup, only the official ten market rows are executable: HIRE/purchase
+    rows there are funding vetoes, while dead raw-tail rows cannot suppress M1.
+    DROP/PLACE and an earlier live WHEAT pickup make the shed path ambiguous.
+
+    Current actor positions are replayed through literal bounded movement before
+    the candidate callback. A counted pickup must belong to a live actor that is
+    physically shed-adjacent when the engine would execute it. Once a candidate
+    is found, keep its ``(due, demand)`` but continue scanning the selected tape
+    through the rest of the same day: any executable-prefix HIRE/BUY row still
+    owns future cash, so M1 may not spend against it now. Purchases on the next
+    day do not block.
     """
-    if type(actor_count) is not int or actor_count < 1:
+    if not isinstance(actor_positions, (list, tuple)) or not actor_positions:
         return None, 0
+    positions = []
+    for value in actor_positions:
+        position = _actor_position(value)
+        if position is None:
+            return None, 0
+        positions.append(position)
     if not isinstance(tape, (list, tuple)) or len(tape) <= step + LOOKAHEAD_MIN:
         return None, 0
 
@@ -145,12 +178,9 @@ def _future_literal_pickup(tape, step, actor_count):
         commands = _commands(planned)
         if rows is None or commands is None:
             return None, 0
-        for command in commands:
-            if not isinstance(command[0], str):
-                return None, 0
-            if command[0] in _SHED_INFLOW_OPS:
-                return None, 0
-        for row in rows:
+        # The engine executes only the official raw market prefix. A dead row
+        # beyond MAX_ORDERS has no cash or inventory ownership and cannot veto.
+        for row in rows[:MAX_ORDERS]:
             if not row:
                 continue
             if not isinstance(row[0], str):
@@ -159,24 +189,47 @@ def _future_literal_pickup(tape, step, actor_count):
                 return None, 0
             if len(row) > 1 and row[1] == "WHEAT":
                 return None, 0
-        if due < step + LOOKAHEAD_MIN:
-            continue
+
         demand = 0
+        saw_live_wheat_pickup = False
         for actor, command in enumerate(commands):
-            if len(command) >= 2 and command[:2] == ["PICKUP", "WHEAT"]:
-                # Extra tape hand rows do not imply a live hand. With HIRE
-                # already vetoed before the pickup, such a command is provably
-                # unreachable and cannot justify an early market buy.
-                if actor >= actor_count:
+            if not isinstance(command[0], str):
+                return None, 0
+            if command[0] in _SHED_INFLOW_OPS:
+                return None, 0
+            is_wheat_pickup = len(command) >= 2 and command[:2] == ["PICKUP", "WHEAT"]
+            if is_wheat_pickup:
+                if actor >= len(positions):
+                    # Extra tape hand rows do not imply a live hand. With HIRE
+                    # vetoed before the pickup, this command cannot execute.
                     return None, 0
                 quantity = command[2] if len(command) >= 3 else 1
                 if not _plain_nonnegative_int(quantity):
                     return None, 0
+                saw_live_wheat_pickup = True
+                if due < step + LOOKAHEAD_MIN:
+                    # An earlier executable pickup changes the exact shed stock
+                    # path that the later shortage proof would use.
+                    return None, 0
+                if positions[actor] not in _SHED_ACCESS:
+                    # Official PICKUP silently no-ops away from the shed; raw
+                    # tape text is not enough to certify demand.
+                    return None, 0
                 demand += quantity
-        if demand > 0:
+
+        if due >= step + LOOKAHEAD_MIN and saw_live_wheat_pickup and demand > 0:
+            # An hour-23 pickup is immediately returned by EOD inventory drop;
+            # prebuying solely for it cannot support later same-day work.
+            if due % 24 == 23:
+                return None, 0
             candidate_due = due
             candidate_demand = demand
             break
+
+        # Unit actions at ``due`` determine positions for the next callback.
+        # Extra non-live tape rows are engine no-ops and do not alter custody.
+        for actor in range(min(len(commands), len(positions))):
+            positions[actor] = _advance(positions[actor], commands[actor][0])
 
     if candidate_due is None:
         return None, 0
@@ -248,9 +301,13 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
     inventory = market_obs.get("inventory")
     prices = market_obs.get("prices")
     shed = private.get("shed")
+    farmer_position = farms[player].get("farmer")
     farm_hands = farms[player].get("hands")
     if (not isinstance(inventory, dict) or not isinstance(prices, dict)
             or not isinstance(shed, dict) or not isinstance(farm_hands, list)):
+        return action
+    actor_positions = [farmer_position, *farm_hands]
+    if any(_actor_position(position) is None for position in actor_positions):
         return action
     wheat_market = inventory.get("WHEAT")
     wheat_price = prices.get("WHEAT")
@@ -295,7 +352,7 @@ def apply_m1_wheat_trade(observation, action, tape, route_state=None,
             REPORT["funding_vetoes"] += 1
             return action
 
-    due, demand = _future_literal_pickup(tape, step, len(commands))
+    due, demand = _future_literal_pickup(tape, step, actor_positions)
     if due is None:
         return action
     REPORT["future_pickups"] += 1
