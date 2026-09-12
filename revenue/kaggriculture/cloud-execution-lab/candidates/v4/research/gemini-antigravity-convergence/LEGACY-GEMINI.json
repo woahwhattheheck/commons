@@ -1,0 +1,343 @@
+{
+  "schema": "titan-v4-gemini-legacy-convergence/v1",
+  "canonical_branch": "main",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "purpose": "Supplement the canonical Antigravity board with older Gemini/TESSERA/MERIDIAN/pro-capital/flash-market/idle-hands Kaggriculture posts so all surfaced Gemini lineage terminates in a current V4 disposition without spawning another controller.",
+  "source_stream": {
+    "slack_channel_id": "C0C0Z8AHGP2",
+    "included_buckets": [
+      "legacy_flash_market",
+      "legacy_gemini_v3",
+      "legacy_idle_hands",
+      "legacy_meridian",
+      "legacy_pro_capital"
+    ]
+  },
+  "allowed_dispositions": [
+    "SOURCE_REAL_CANDIDATE",
+    "CORRECTED_DESCENDANT",
+    "FALSIFIED",
+    "FIELD_BLOCKED"
+  ],
+  "convergence_rules": [
+    "This file extends the sole gemini-antigravity-convergence authority; it is not a second coverage root or runtime controller.",
+    "Historical PRs and Slack posts are provenance only; canonical_evidence must resolve to current regular files under candidates/v4.",
+    "Private rival inventory is never reconstructed from public cash or mass balance unless a separately authenticated source theorem proves the exact bound.",
+    "Negative and cold historical experiments remain represented so failed Gemini ideas cannot be silently resurrected as novelty.",
+    "Current descendants supersede historical literal policies when they preserve the useful mechanism with stricter source and field custody."
+  ],
+  "canonical_overrides": [
+    {
+      "id": "gemini.demand-velocity",
+      "reason": "Merged PR #13018 is the stronger descendant of the original mean-only baseline: it retains exact per-shop ratios, adds unlock-horizon and town-center demand, and exposes low-quantile NPC absorption headroom without granting crop-choice or sale-timing authority.",
+      "best_form": "Treat town demand as a distribution, not a static tier. Use exact per-shop drain, unlock horizons, town-center demand and low-quantile panel absorption headroom; keep rival/player supply and sale timing outside this oracle.",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/DEMAND-VELOCITY.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/RESULTS.json",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/demand_velocity.py"
+      ],
+      "provenance_pull_numbers": [
+        12803,
+        12814,
+        13018
+      ]
+    }
+  ],
+  "entry_count": 15,
+  "entries": [
+    {
+      "id": "gemini.adaptive-recourse-meridian",
+      "gemini_label": "MERIDIAN identical-prefix adaptive sale recourse",
+      "origin_buckets": [
+        "legacy_meridian"
+      ],
+      "literal_claim": "Hold an identical committed prefix, then condition the suffix on newly observed shared inventory to beat the static complete plan.",
+      "disposition": "FALSIFIED",
+      "best_form": "Preserve the complete-plan recourse machinery only as negative research ancestry. PR #10004 reached a real WOOL suffix, but the development panel had static and adaptive variants each lose 7 own cash per seat versus the integrated control; no strength promotion survived.",
+      "activation": "FALSIFIED",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/README.md"
+      ],
+      "provenance_pull_numbers": [
+        10004
+      ],
+      "next_gate": "Reopen only with a current-native identical-prefix recourse carrier that changes reached actions and produces positive paired both-seat economics against the current integrated control.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.flash-market",
+      "gemini_label": "gemini-flash-market / intraday market timing",
+      "origin_buckets": [
+        "legacy_flash_market"
+      ],
+      "literal_claim": "Exploit short-lived town-demand price windows with fixed-clock market actions.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Keep the timing edge but bind it to exact deterministic town/shop drains and current public inventory. TOWNSELL proves the post-drain premium for an already-authored sale under zero intervening rival flow; it is not a speculative fixed-clock merchant.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/TOWN-SALE-DEFERRAL.md"
+      ],
+      "provenance_pull_numbers": [
+        12922
+      ],
+      "next_gate": "Any runtime timing change must compose with the incumbent seller, authenticate intervening rival/public flow, engage on exact returned actions, and clear paired both-seat economics."
+    },
+    {
+      "id": "gemini.hidden-inventory-meridian",
+      "gemini_label": "MERIDIAN hidden-inventory cash/mass-balance inference",
+      "origin_buckets": [
+        "legacy_meridian"
+      ],
+      "literal_claim": "Infer cross-product rival hidden shed inventory from public cash and market mass balance, then optimize maximin play against the reconstructed state.",
+      "disposition": "FIELD_BLOCKED",
+      "best_form": "Use only authenticated public facts: rival farm tiles and standing yield, public money, public market inventory/prices, and known town drain. PARALLAX deliberately does not read or infer rival private shed inventory. No exact current-V4 cross-product cash certificate was recovered, so private-state reconstruction stays blocked rather than guessed.",
+      "activation": "BLOCKED",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/README.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/rival-route-pressure/README.md"
+      ],
+      "provenance_pull_numbers": [
+        13024
+      ],
+      "next_gate": "Reopen only with a source-bound theorem that maps public cash/market transitions to a nontrivial exact hidden-inventory bound without using private observation fields, followed by current-native predictive validation.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.hire-guard-e20",
+      "gemini_label": "TESSERA/G01 E20 low-demand HIRE guard",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "Suppress excess HIRE rows when observable crop-service demand is low.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Retain the repaired E20 donor only with executable-prefix semantics: engine-inert market suffix HIRE rows cannot consume the allowance. The donor remains identity when disabled and does not authorize the historically rejected broad economics lane.",
+      "activation": "SOURCE_COMPONENT",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/overlay/e20_hire_guard.py"
+      ],
+      "provenance_pull_numbers": [
+        11371,
+        12643
+      ],
+      "next_gate": "A production consumer must prove exact current composition, natural reachability and paired economics without stranding coupled capital purchases; no blanket HIRE suppression."
+    },
+    {
+      "id": "gemini.idle-hands-care",
+      "gemini_label": "Gemini idle-hands PASS -> CARE",
+      "origin_buckets": [
+        "legacy_idle_hands"
+      ],
+      "literal_claim": "Spend otherwise idle worker actions on CARE to bank future animal output.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "CARE is a real resource-neutral service lever, but value is delayed and storage-sensitive. Current S8/AFTERCARE/CARESAT descendants require fed animals, later production, held-cap and shed-cap safety; fixed continuations show extra product can crowd out more valuable cargo.",
+      "activation": "DEFAULT_OFF",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/dead-feed-care/AFTERCARE.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/README.md"
+      ],
+      "provenance_pull_numbers": [
+        12600,
+        12781,
+        12806,
+        12930
+      ],
+      "next_gate": "Admit CARE only from a current composed action when a later fed production boundary exists and storage/carry opportunity cost is bounded, then require paired both-seat economics."
+    },
+    {
+      "id": "gemini.idle-hands-feed",
+      "gemini_label": "Gemini idle-hands redundant FEED salvage",
+      "origin_buckets": [
+        "legacy_idle_hands"
+      ],
+      "literal_claim": "Replace an idle or redundant FEED action with useful animal service rather than wasting the worker turn.",
+      "disposition": "SOURCE_REAL_CANDIDATE",
+      "best_form": "The historical 7,192-FEED census found zero animals already fed at callback entry, but that does not kill same-turn ordered redundancy. Current W2 proves an earlier actor can FEED and make a later same-site FEED redundant; the source component may rewrite only that certified later FEED to CARE and remains promotion-gated.",
+      "activation": "SOURCE_COMPONENT",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/dead-feed-care/SOURCE.md"
+      ],
+      "provenance_pull_numbers": [
+        12616,
+        12781
+      ],
+      "next_gate": "Measure natural current-V4 ordered-FEED opportunities and full-game storage-aware economics; callback-entry zero counts alone cannot certify coldness."
+    },
+    {
+      "id": "gemini.idle-hands-resource-buys",
+      "gemini_label": "Gemini idle-hands buy WHEAT / buy GEESE",
+      "origin_buckets": [
+        "legacy_idle_hands"
+      ],
+      "literal_claim": "Use idle capacity to buy feed or additional geese so future worker slots become productive.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Do not attach purchases to generic idle detection. WHEAT and animal acquisition belong to existing feed/procurement and HOMESTEAD/HERDSCALE economics because every new unit creates cash, placement, service, carry/shed and sale obligations. Idle hands are evidence of spare labor, not proof an acquisition pays.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/dead-feed-care/SOURCE.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/animal-throughput/README.md"
+      ],
+      "provenance_pull_numbers": [
+        12854,
+        12865
+      ],
+      "next_gate": "Route any acquisition proposal through the existing current-native cash/service/capacity authorities and require the purchase to improve paired economics; never buy solely because a worker was idle."
+    },
+    {
+      "id": "gemini.idle-hands-wheat-fert",
+      "gemini_label": "Gemini idle-hands WHEAT FERTILIZE",
+      "origin_buckets": [
+        "legacy_idle_hands"
+      ],
+      "literal_claim": "Convert a spare late action into WHEAT fertilization when it can realize extra crop value.",
+      "disposition": "SOURCE_REAL_CANDIDATE",
+      "best_form": "Use the current WF1 source/current-native field descendant rather than a generic PASS rewrite. Its exact eight-cell gate changed returned actions first at step 647 and was positive in all eight cells, mean margin +143.25, while still explicitly withholding activation authority.",
+      "activation": "DEFAULT_OFF",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/wf1-wheat-fertilize/WF1-CURRENT-NATIVE-FIELD-RECEIPT.json"
+      ],
+      "provenance_pull_numbers": [
+        12826,
+        12959
+      ],
+      "next_gate": "Repair/retain exact telemetry custody, widen the paired current-native panel and compose only through the existing WF1 owner; do not generalize the positive small gate into arbitrary fertilization."
+    },
+    {
+      "id": "gemini.legacy-opening-tape",
+      "gemini_label": "Gemini legacy opening tape",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "The recovered Gemini opening sequence is solvent with the originally claimed post-opening cash reserve.",
+      "disposition": "FALSIFIED",
+      "best_form": "Keep the opening only as a solvency counterexample. The recovered arithmetic spends 882 from 1000 and leaves 118, not the claimed 498; do not revive the tape or infer opening strength from the incorrect reserve.",
+      "activation": "FALSIFIED",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/README.md"
+      ],
+      "provenance_pull_numbers": [
+        11981
+      ],
+      "next_gate": "None for the literal tape. A new opener must be rebuilt from current engine costs and pass executable-prefix, solvency, service and paired economics gates.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.pro-capital",
+      "gemini_label": "gemini-pro-capital / early capital promotion",
+      "origin_buckets": [
+        "legacy_pro_capital"
+      ],
+      "literal_claim": "Promote productive LAND/ANIMAL capital earlier when sales can fund it.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Keep the capital idea inside the existing early-capital authority and KESTREL lockstep admission. A proposal must preserve executable active rows and not sacrifice an original BUY_PRODUCT or other coupled operating obligation merely to move capital earlier.",
+      "activation": "DEFAULT_OFF",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/early-capital/KESTREL-LOCKSTEP.md"
+      ],
+      "provenance_pull_numbers": [
+        12967
+      ],
+      "next_gate": "Run the exact current checkout binding and measure natural early-capital changes versus KESTREL-admitted changes; nonzero admissions require paired both-seat economics."
+    },
+    {
+      "id": "gemini.rival-archetype-o01",
+      "gemini_label": "TESSERA/G01 O01 rival archetype classifier",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "Classify the opponent as an EARLY_EXPANDER or AGGRESSIVE_MARKET_DUMPER and immediately mutate land/sale behavior from that label.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Retire the mutually exclusive intent labels. Keep independent public facts—visible expansion, standing productive yield, price movement and known town drain—inside PARALLAX/market-pressure research; a rival can satisfy multiple witnesses and none proves hidden intent or private inventory.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/rival-route-pressure/README.md"
+      ],
+      "provenance_pull_numbers": [
+        11371,
+        13024
+      ],
+      "next_gate": "Only source-bound continuous public features that add predictive value on held-out current games may feed existing decision owners; do not resurrect brittle opponent labels."
+    },
+    {
+      "id": "gemini.rival-sell-deferral-e11",
+      "gemini_label": "TESSERA/G01 E11 rival-aware SELL deferral",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "Defer a SELL after a public price drop when future absorption can restore price.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Preserve E11's public-price-drop lineage only with exact integer future town absorption; retire fractional absorption heuristics. TOWNSELL supplies the stronger deterministic theorem for moving an already-authored sale after a known intervening drain when rival flow is absent.",
+      "activation": "SOURCE_COMPONENT",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/overlay/e11_rival_sell.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/TOWN-SALE-DEFERRAL.md"
+      ],
+      "provenance_pull_numbers": [
+        11371,
+        12922
+      ],
+      "next_gate": "Any current seller consumer must authenticate the price-history chronology and intervening rival flow, then prove exact returned-action engagement and paired economics."
+    },
+    {
+      "id": "gemini.row-shed-sell-order",
+      "gemini_label": "Gemini final-day row-shed SELL ordering / STRATUM",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "Order leading SELL rows by price impact of the units that can actually be filled from projected shed stock.",
+      "disposition": "SOURCE_REAL_CANDIDATE",
+      "best_form": "Keep the canonical STRATUM current-ABI transform and its pressure-novel admission guard. Historical field evidence was strongly positive, but V4 must only admit ordering differences that survive the downstream canonical market-pressure transform; composition/current-field gates still own activation.",
+      "activation": "DEFAULT_OFF",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/README.md"
+      ],
+      "provenance_pull_numbers": [
+        12754,
+        12801,
+        12872,
+        13016
+      ],
+      "next_gate": "Materialize the exact current graph/postimage, prove the distinction survives final returned-action pressure composition, then run both-seat current-native economics before activation."
+    },
+    {
+      "id": "gemini.shop-arb-e20",
+      "gemini_label": "TESSERA/G01 shop-arbitrage absorption multiplier",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "Boost future market absorption by a fixed multiplier such as 1.5x when a relevant town shop exists.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Retire the multiplier. Official inventory movement is integer and shop-instance-specific. Use exact unlocked-shop drain plus the DEMANDVEL distribution over unlock horizons/town-center demand; expected absorption never becomes sale or production authority by itself.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/DEMAND-VELOCITY.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/rival-route-pressure/README.md"
+      ],
+      "provenance_pull_numbers": [
+        11371,
+        13018
+      ],
+      "next_gate": "Consumers may use exact drain/headroom only as one state feature; any production/sale threshold change still requires current-native both-seat predictive and economic evidence."
+    },
+    {
+      "id": "gemini.terminal-glut-bleed",
+      "gemini_label": "Gemini day-28/29 skips + terminal glut bleed remainder",
+      "origin_buckets": [
+        "legacy_gemini_v3"
+      ],
+      "literal_claim": "The unshipped remainder of the final-day Gemini lane should skip selected late actions and bleed glut inventory before terminal scoring.",
+      "disposition": "FIELD_BLOCKED",
+      "best_form": "Preserve the lineage but do not invent semantics from the name. The shipped row-shed commit explicitly excluded day-28/29 skips and glut bleed, and no byte-exact source was recovered. Broad repeated late-sale evidence from #11731 was harmful and is a falsifier, not a substitute implementation.",
+      "activation": "BLOCKED",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/README.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/README.md"
+      ],
+      "provenance_pull_numbers": [
+        11731,
+        12754
+      ],
+      "next_gate": "Reopen only if exact historical semantics are recovered or a new source-derived terminal theorem is independently specified and passes current-native reachability/economics; no guessed day cutoff or blanket SELL.",
+      "do_not_repeat_without_new_evidence": true
+    }
+  ]
+}
