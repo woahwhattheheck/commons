@@ -91,6 +91,47 @@ class ActivationAliasTaintTests(unittest.TestCase):
             "    return action\n"
         )
 
+    def test_shadowed_type_guard_is_not_authoritative(self):
+        self.assert_fails(
+            "def apply(action, enabled=False, type=lambda value: bool):\n"
+            "    if type(enabled) is not bool:\n"
+            "        return action\n"
+            "    if enabled:\n"
+            "        return {'changed': True}\n"
+            "    return action\n"
+        )
+
+    def test_shadowed_bool_guard_is_not_authoritative(self):
+        self.assert_fails(
+            "def apply(action, enabled=False, bool=int):\n"
+            "    if type(enabled) is not bool:\n"
+            "        return action\n"
+            "    if enabled:\n"
+            "        return {'changed': True}\n"
+            "    return action\n"
+        )
+
+    def test_shadowed_isinstance_guard_is_not_authoritative(self):
+        self.assert_fails(
+            "def apply(action, enabled=False, isinstance=lambda value, kind: True):\n"
+            "    if not isinstance(enabled, bool):\n"
+            "        return action\n"
+            "    if enabled:\n"
+            "        return {'changed': True}\n"
+            "    return action\n"
+        )
+
+    def test_local_builtin_shadow_before_guard_is_not_authoritative(self):
+        self.assert_fails(
+            "def apply(action, enabled=False):\n"
+            "    type = lambda value: bool\n"
+            "    if type(enabled) is not bool:\n"
+            "        return action\n"
+            "    if enabled:\n"
+            "        return {'changed': True}\n"
+            "    return action\n"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
