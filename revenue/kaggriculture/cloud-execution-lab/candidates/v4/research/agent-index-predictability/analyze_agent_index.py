@@ -158,15 +158,20 @@ def normalize_record(
             f"record {index}: absolute margin {margin!r} exceeds authenticated bound {bound!r}"
         )
 
+    # Keep the historical string report/key representation, but retain the
+    # primitive provenance type until the dataset-level admission check below.
+    # Without this custody, int 1 and str "1" silently collapse into one cell.
     return {
         "seed": str(seed),
+        "seed_type": "int" if type(seed) is int else "str",
         "opponent": str(opponent),
+        "opponent_type": "int" if type(opponent) is int else "str",
         "seat": seat,
         "margin": margin,
     }
 
 
-def _sign_test_two_sided(diffs: list[float]) -> tuple[int, int, int, float]:
+def _sign_test_two_sided(diffs: list[int | float]) -> tuple[int, int, int, float]:
     positives = sum(x > 0 for x in diffs)
     negatives = sum(x < 0 for x in diffs)
     ties = len(diffs) - positives - negatives
@@ -178,7 +183,7 @@ def _sign_test_two_sided(diffs: list[float]) -> tuple[int, int, int, float]:
     return positives, negatives, ties, min(1.0, 2.0 * lower_tail)
 
 
-def _cohen_dz(diffs: list[float]) -> float | None:
+def _cohen_dz(diffs: list[int | float]) -> float | None:
     if len(diffs) < 2:
         return None
     mean = statistics.mean(diffs)
@@ -188,7 +193,8 @@ def _cohen_dz(diffs: list[float]) -> float | None:
         # Preserve strict JSON output by reporting that degenerate effect as null;
         # the paired mean and sign test still carry the directional evidence.
         return 0.0 if mean == 0.0 else None
-    return mean / sd
+    result = mean / sd
+    return result if math.isfinite(result) else None
 
 
 def _assignment_tv(records: list[dict[str, Any]]) -> float | None:
@@ -223,7 +229,17 @@ def analyze(
     if not rows:
         raise DataError("no records")
 
-    cells: dict[tuple[str, str, int], float] = {}
+    # Stringification is a report convenience, not an identity function.  A
+    # dataset must use one primitive identifier type per provenance domain so
+    # int 1 can never be paired with str "1" after normalization.
+    seed_types = {row["seed_type"] for row in rows}
+    opponent_types = {row["opponent_type"] for row in rows}
+    if len(seed_types) != 1:
+        raise DataError("mixed seed identifier primitive types are ambiguous")
+    if len(opponent_types) != 1:
+        raise DataError("mixed opponent identifier primitive types are ambiguous")
+
+    cells: dict[tuple[str, str, int], int | float] = {}
     for row in rows:
         key = (row["seed"], row["opponent"], row["seat"])
         if key in cells:
@@ -231,7 +247,7 @@ def analyze(
         cells[key] = row["margin"]
 
     pair_keys = sorted({(seed, opponent) for seed, opponent, _seat in cells})
-    complete: list[tuple[str, str, float, float]] = []
+    complete: list[tuple[str, str, int | float, int | float]] = []
     missing: list[dict[str, Any]] = []
     for seed, opponent in pair_keys:
         present = [seat for seat in (0, 1) if (seed, opponent, seat) in cells]
@@ -247,10 +263,17 @@ def analyze(
     if not complete:
         raise DataError("no exact seed+opponent pairs contain both seats")
 
-    diffs = [seat1 - seat0 for _seed, _opponent, seat0, seat1 in complete]
-    by_opponent: dict[str, list[float]] = defaultdict(list)
-    for _seed, opponent, seat0, seat1 in complete:
-        by_opponent[opponent].append(seat1 - seat0)
+    # Individual margins were finite at ingestion, but subtraction can still
+    # overflow (e.g. -1e308 -> +1e308).  Authenticate the derived estimand too.
+    diffs: list[int | float] = []
+    by_opponent: dict[str, list[int | float]] = defaultdict(list)
+    for seed, opponent, seat0, seat1 in complete:
+        delta = _finite_number(
+            seat1 - seat0,
+            f"paired margin delta seed={seed!r} opponent={opponent!r}",
+        )
+        diffs.append(delta)
+        by_opponent[opponent].append(delta)
 
     opponent_means = {opponent: statistics.mean(values)
                       for opponent, values in sorted(by_opponent.items())}
