@@ -1,0 +1,337 @@
+{
+  "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+  "artifact_id": 10175943272,
+  "canonical_branch": "main",
+  "capital_funded_control": [
+    {
+      "early_hold": {
+        "cash": 135.0,
+        "cash_deltas_by_tick": [
+          -26.0,
+          -1.0,
+          0.0,
+          135.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      },
+      "jit": {
+        "cash": 135.0,
+        "cash_deltas_by_tick": [
+          0.0,
+          -1.0,
+          0.0,
+          135.0,
+          -26.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      }
+    },
+    {
+      "early_hold": {
+        "cash": 135.0,
+        "cash_deltas_by_tick": [
+          -26.0,
+          -1.0,
+          0.0,
+          135.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      },
+      "jit": {
+        "cash": 135.0,
+        "cash_deltas_by_tick": [
+          0.0,
+          -1.0,
+          0.0,
+          135.0,
+          -26.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      }
+    }
+  ],
+  "capital_witness": [
+    {
+      "early_hold": {
+        "cash": 0.0,
+        "cash_deltas_by_tick": [
+          -26.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": -134.0,
+        "delta_own": -134.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      },
+      "jit": {
+        "cash": 134.0,
+        "cash_deltas_by_tick": [
+          0.0,
+          -1.0,
+          0.0,
+          135.0,
+          -26.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      }
+    },
+    {
+      "early_hold": {
+        "cash": 0.0,
+        "cash_deltas_by_tick": [
+          -26.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": -134.0,
+        "delta_own": -134.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      },
+      "jit": {
+        "cash": 134.0,
+        "cash_deltas_by_tick": [
+          0.0,
+          -1.0,
+          0.0,
+          135.0,
+          -26.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_margin": 0.0,
+        "delta_own": 0.0,
+        "delta_rival": 0.0,
+        "same_final_physical": true
+      }
+    }
+  ],
+  "coordination": [
+    "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789180430962239",
+    "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789180404028319"
+  ],
+  "engine_sha256": {
+    "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+    "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+  },
+  "full_generated_panel": {
+    "bytes": 683407,
+    "committed": false,
+    "complete_report_engine_calls": 9802,
+    "early_hold_margin_range": [
+      -96,
+      11
+    ],
+    "early_hold_signs": {
+      "negative": 180,
+      "positive": 240,
+      "zero": 120
+    },
+    "early_unwind_margin_range": [
+      0,
+      4
+    ],
+    "early_unwind_signs": {
+      "negative": 0,
+      "positive": 162,
+      "zero": 378
+    },
+    "git_blob": "b3a013520f5177d40cf4ae0eab40a192025e324b",
+    "headroom_cells": 540,
+    "headroom_engine_calls": 9720,
+    "normal_optimized_byte_identical": true,
+    "sha256": "4e3c6025ea399f494b9064767a778b6ddf8b6cc0826449f1d3365f37c235b0fb"
+  },
+  "headroom_witness": {
+    "early_hold": {
+      "cash": 5536.0,
+      "cash_deltas_by_tick": [
+        -106.0,
+        0.0,
+        0.0,
+        0.0,
+        2642.0,
+        0.0
+      ],
+      "delta_margin": -93.0,
+      "delta_own": -93.0,
+      "delta_rival": 0.0,
+      "same_final_physical": true
+    },
+    "early_unwind": {
+      "cash": 5630.0,
+      "cash_deltas_by_tick": [
+        -106.0,
+        0.0,
+        0.0,
+        107.0,
+        2738.0,
+        -109.0
+      ],
+      "delta_margin": 1.0,
+      "delta_own": 1.0,
+      "delta_rival": 0.0,
+      "same_final_physical": true
+    },
+    "jit": {
+      "cash": 5629.0,
+      "cash_deltas_by_tick": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2738.0,
+        -109.0
+      ],
+      "delta_margin": 0.0,
+      "delta_own": 0.0,
+      "delta_rival": 0.0,
+      "same_final_physical": true
+    }
+  },
+  "mutations": [
+    {
+      "errors": 0,
+      "failures": 6,
+      "full_interpreter_callbacks": 296,
+      "mode": "normal",
+      "mutation": "skip_actual_harvest",
+      "tests": 17
+    },
+    {
+      "errors": 0,
+      "failures": 6,
+      "full_interpreter_callbacks": 296,
+      "mode": "optimized",
+      "mutation": "skip_actual_harvest",
+      "tests": 17
+    },
+    {
+      "errors": 0,
+      "failures": 3,
+      "full_interpreter_callbacks": 296,
+      "mode": "normal",
+      "mutation": "omit_pre_eod_unwind",
+      "tests": 17
+    },
+    {
+      "errors": 0,
+      "failures": 3,
+      "full_interpreter_callbacks": 296,
+      "mode": "optimized",
+      "mutation": "omit_pre_eod_unwind",
+      "tests": 17
+    },
+    {
+      "errors": 0,
+      "failures": 3,
+      "full_interpreter_callbacks": 9998,
+      "mode": "normal",
+      "mutation": "erase_cash_threshold",
+      "tests": 17
+    },
+    {
+      "errors": 0,
+      "failures": 3,
+      "full_interpreter_callbacks": 9998,
+      "mode": "optimized",
+      "mutation": "erase_cash_threshold",
+      "tests": 17
+    }
+  ],
+  "normal_stdout": "test_actual_harvest_is_carried_then_displaced_at_eod (__main__.OpportunityCost.test_actual_harvest_is_carried_then_displaced_at_eod) ... ok\ntest_capital_trace_preserves_raw_nonexistent_hand_rows (__main__.OpportunityCost.test_capital_trace_preserves_raw_nonexistent_hand_rows) ... ok\ntest_each_changed_input_fails_closed (__main__.OpportunityCost.test_each_changed_input_fails_closed) ... ok\ntest_each_missing_input_fails_closed (__main__.OpportunityCost.test_each_missing_input_fails_closed) ... ok\ntest_exact_engine_inputs (__main__.OpportunityCost.test_exact_engine_inputs) ... ok\ntest_exact_room_boundary_preserves_the_harvest (__main__.OpportunityCost.test_exact_room_boundary_preserves_the_harvest) ... ok\ntest_full_declared_panel_not_cherry_picked (__main__.OpportunityCost.test_full_declared_panel_not_cherry_picked) ... ok\ntest_funded_hire_control_is_not_a_blanket_procurement_veto (__main__.OpportunityCost.test_funded_hire_control_is_not_a_blanket_procurement_veto) ... ok\ntest_ignores_stale_compiled_source (__main__.OpportunityCost.test_ignores_stale_compiled_source) ... ok\ntest_input_price_savings_are_not_total_economics (__main__.OpportunityCost.test_input_price_savings_are_not_total_economics) ... ok\ntest_invalid_experiment_domains_are_not_silently_coerced (__main__.OpportunityCost.test_invalid_experiment_domains_are_not_silently_coerced) ... ok\ntest_loading_does_not_replace_existing_imports (__main__.OpportunityCost.test_loading_does_not_replace_existing_imports) ... ok\ntest_no_harvest_has_no_headroom_opportunity_cost (__main__.OpportunityCost.test_no_harvest_has_no_headroom_opportunity_cost) ... ok\ntest_one_dollar_cash_reservation_changes_real_hire_outcome (__main__.OpportunityCost.test_one_dollar_cash_reservation_changes_real_hire_outcome) ... ok\ntest_partial_overflow_counts_only_displaced_units (__main__.OpportunityCost.test_partial_overflow_counts_only_displaced_units) ... ok\ntest_unwind_control_does_not_claim_all_early_buying_is_dominated (__main__.OpportunityCost.test_unwind_control_does_not_claim_all_early_buying_is_dominated) ... ok\ntest_zero_quantity_identity (__main__.OpportunityCost.test_zero_quantity_identity) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 1.726s\n\nOK\n{\"tests\": 17, \"failures\": 0, \"errors\": 0, \"full_interpreter_callbacks\": 9998}\n",
+  "not_claimed": [
+    "bd80 donor execution or repair",
+    "native engagement or realistic reachability of each constructed state",
+    "field-game economics or win rate",
+    "all-future-state dominance",
+    "rival-proof arbitrage",
+    "runtime/config/default/archive/decoder/workflow/Kaggle changes"
+  ],
+  "optimized_stdout": "test_actual_harvest_is_carried_then_displaced_at_eod (__main__.OpportunityCost.test_actual_harvest_is_carried_then_displaced_at_eod) ... ok\ntest_capital_trace_preserves_raw_nonexistent_hand_rows (__main__.OpportunityCost.test_capital_trace_preserves_raw_nonexistent_hand_rows) ... ok\ntest_each_changed_input_fails_closed (__main__.OpportunityCost.test_each_changed_input_fails_closed) ... ok\ntest_each_missing_input_fails_closed (__main__.OpportunityCost.test_each_missing_input_fails_closed) ... ok\ntest_exact_engine_inputs (__main__.OpportunityCost.test_exact_engine_inputs) ... ok\ntest_exact_room_boundary_preserves_the_harvest (__main__.OpportunityCost.test_exact_room_boundary_preserves_the_harvest) ... ok\ntest_full_declared_panel_not_cherry_picked (__main__.OpportunityCost.test_full_declared_panel_not_cherry_picked) ... ok\ntest_funded_hire_control_is_not_a_blanket_procurement_veto (__main__.OpportunityCost.test_funded_hire_control_is_not_a_blanket_procurement_veto) ... ok\ntest_ignores_stale_compiled_source (__main__.OpportunityCost.test_ignores_stale_compiled_source) ... ok\ntest_input_price_savings_are_not_total_economics (__main__.OpportunityCost.test_input_price_savings_are_not_total_economics) ... ok\ntest_invalid_experiment_domains_are_not_silently_coerced (__main__.OpportunityCost.test_invalid_experiment_domains_are_not_silently_coerced) ... ok\ntest_loading_does_not_replace_existing_imports (__main__.OpportunityCost.test_loading_does_not_replace_existing_imports) ... ok\ntest_no_harvest_has_no_headroom_opportunity_cost (__main__.OpportunityCost.test_no_harvest_has_no_headroom_opportunity_cost) ... ok\ntest_one_dollar_cash_reservation_changes_real_hire_outcome (__main__.OpportunityCost.test_one_dollar_cash_reservation_changes_real_hire_outcome) ... ok\ntest_partial_overflow_counts_only_displaced_units (__main__.OpportunityCost.test_partial_overflow_counts_only_displaced_units) ... ok\ntest_unwind_control_does_not_claim_all_early_buying_is_dominated (__main__.OpportunityCost.test_unwind_control_does_not_claim_all_early_buying_is_dominated) ... ok\ntest_zero_quantity_identity (__main__.OpportunityCost.test_zero_quantity_identity) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 1.733s\n\nOK\n{\"tests\": 17, \"failures\": 0, \"errors\": 0, \"full_interpreter_callbacks\": 9998}\n",
+  "positive_checks": {
+    "normal": {
+      "errors": 0,
+      "failures": 0,
+      "full_interpreter_callbacks": 9998,
+      "tests": 17
+    },
+    "optimized": {
+      "errors": 0,
+      "failures": 0,
+      "full_interpreter_callbacks": 9998,
+      "tests": 17
+    }
+  },
+  "python": "3.13.5",
+  "schema": "titan.fwd-opportunity-cost.execution.v1",
+  "source": {
+    "OPPORTUNITY_COST.md": {
+      "bytes": 5222,
+      "git_blob": "25d964f622d5328111ffda2a1fc598f3a6d55a3f",
+      "sha256": "f36d41b083342d6dcbbc575d8d7343db63367a44df6acbcc63fd893e5f3d1942"
+    },
+    "check_opportunity_cost.py": {
+      "bytes": 9642,
+      "git_blob": "87c0a6a992540244a184ba6df8cf902a94dc17be",
+      "sha256": "469a5e43dbdadcf0185b7427c072fd0a2a1d8a77e1999d23f0f25474e703b83f"
+    },
+    "check_opportunity_cost_mutations.py": {
+      "bytes": 2450,
+      "git_blob": "c412e8ff484b146b792e8dd83d067a0208bd6217",
+      "sha256": "0b4a736bc4250eb9a8069a2671bf3a0d10f5c4f07e466774e0248f8239a3e14c"
+    },
+    "opportunity_cost.py": {
+      "bytes": 12460,
+      "git_blob": "3dbbda1928cb05fc5f08814ebd18ae65c9554a4e",
+      "sha256": "89c2f1dcb0a89a2f2e6e0536109770de1ba926ae3ad75d90d44fb56840125c47"
+    }
+  },
+  "status": "CONSTRUCTED_ENGINE_EVIDENCE_COMPLETE_NOT_ACTIVATED",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/fwd-buy-census"
+}
