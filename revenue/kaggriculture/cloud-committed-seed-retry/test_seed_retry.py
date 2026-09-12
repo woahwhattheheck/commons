@@ -10,6 +10,7 @@ import unittest
 
 import seed_retry as retry_module
 from seed_retry import propose_seed_retry, apply_committed_seed_retry, install_seed_retry
+from test_minimum_market_limit import MinimumOneMarketLimitTests
 
 ROOT = Path(os.environ.get('TITAN_TEST_RUNTIME', str(Path(__file__).resolve().parent.parent / 'cloud-execution-lab')))
 sys.path.insert(0, str(ROOT))
