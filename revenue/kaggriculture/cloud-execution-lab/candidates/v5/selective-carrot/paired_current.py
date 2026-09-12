@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import importlib.util
 import io
@@ -80,6 +81,17 @@ def members(root: Path) -> dict[str, bytes]:
 def mean(values):
     rows = [value for value in values if value is not None]
     return None if not rows else statistics.fmean(rows)
+
+
+def first_action_divergence(control, treatment):
+    """Return the first exact returned-action difference, including stream end."""
+    total = max(len(control), len(treatment))
+    for step in range(total):
+        left = control[step] if step < len(control) else {"_stream_end": True}
+        right = treatment[step] if step < len(treatment) else {"_stream_end": True}
+        if left != right:
+            return {"step": step, "control": left, "treatment": right}
+    return None
 
 
 def main(argv=None) -> int:
@@ -235,7 +247,7 @@ def main(argv=None) -> int:
         raise ValueError("launcher moved after acquisition")
 
     run = {
-        "schema": "astra.v5.selective-carrot.current-paired.v3",
+        "schema": "astra.v5.selective-carrot.current-paired.v4",
         "method": (
             "Fresh full official-interpreter games from one authenticated in-memory "
             "CURRENT archive snapshot. The mutable repository is acquisition-only "
@@ -243,9 +255,11 @@ def main(argv=None) -> int:
             "authenticated against its Git/manifest/registry pins and all game support "
             "then executes from that snapshot. Local helper/builder/launcher identities "
             "are captured before import/execution and rechecked before receipt publication. "
-            "Same seed/seat/opponent across control, cap4 and cap12; deterministic rotating "
-            "arm order. Linux 1.25s IPC action limit; canonical policy retains its own 1s "
-            "deadline. Not hosted Kaggle rating."
+            "The interpreter wrapper records exact tested-seat returned-action stream hashes "
+            "and first pairwise returned-action divergence separately from observed carrot "
+            "plant outcomes. Same seed/seat/opponent across control, cap4 and cap12; "
+            "deterministic rotating arm order. Linux 1.25s IPC action limit; canonical policy "
+            "retains its own 1s deadline. Not hosted Kaggle rating."
         ),
         "current_archive": current,
         "current_archive_manifest_sha256": current_manifest_sha256,
@@ -290,6 +304,7 @@ def main(argv=None) -> int:
                     "seat": seat,
                     "games": {},
                 }
+                action_streams = {}
                 order = rotations[cell_index % len(rotations)]
                 cell["execution_order"] = list(order)
                 cell_index += 1
@@ -313,8 +328,11 @@ def main(argv=None) -> int:
                         )
                         interpret = engine.interpreter
                         plant_events = []
+                        tested_actions = []
+                        interpreter_calls = 0
 
                         def counted_interpreter(state, env):
+                            nonlocal interpreter_calls
                             obs = state[0].observation
                             farms = obs.get("farms") or []
                             before = (
@@ -330,7 +348,10 @@ def main(argv=None) -> int:
                                 if farms
                                 else {}
                             )
+                            if interpreter_calls > 0:
+                                tested_actions.append(copy.deepcopy(state[seat].action))
                             result = interpret(state, env)
+                            interpreter_calls += 1
                             after_farms = state[0].observation.get("farms") or []
                             if farms and after_farms:
                                 for y, row in enumerate(
@@ -371,6 +392,11 @@ def main(argv=None) -> int:
                             900.0,
                         )
                         game["actual_carrot_plant_events"] = plant_events
+                        game["tested_action_count"] = len(tested_actions)
+                        game["tested_action_sha256"] = sha256_bytes(
+                            evaluator.encoded(tested_actions)
+                        )
+                        action_streams[arm] = tested_actions
                     cell["games"][arm] = game
                     h.write_json(args.output / f"{cell_id}-{arm}.json", game)
                     print(
@@ -381,6 +407,8 @@ def main(argv=None) -> int:
                                 "status": game["status"],
                                 "steps": game["steps"],
                                 "scores": game["scores"],
+                                "tested_action_count": game["tested_action_count"],
+                                "tested_action_sha256": game["tested_action_sha256"],
                                 "carrot_plant_events": len(plant_events),
                             }
                         ),
@@ -406,6 +434,17 @@ def main(argv=None) -> int:
                     if margins["cap12"] is None or margins["cap4"] is None
                     else margins["cap12"] - margins["cap4"]
                 )
+                cell["returned_action_divergence"] = {
+                    "cap4_control": first_action_divergence(
+                        action_streams["control"], action_streams["cap4"]
+                    ),
+                    "cap12_control": first_action_divergence(
+                        action_streams["control"], action_streams["cap12"]
+                    ),
+                    "cap12_cap4": first_action_divergence(
+                        action_streams["cap4"], action_streams["cap12"]
+                    ),
+                }
                 control_events = cell["games"]["control"].get(
                     "actual_carrot_plant_events", []
                 )
@@ -415,7 +454,7 @@ def main(argv=None) -> int:
                     )
                     for arm in ARMS
                 }
-                cell["engaged"] = {
+                cell["plant_outcome_diverged"] = {
                     "cap4": cell["games"]["cap4"].get(
                         "actual_carrot_plant_events", []
                     )
@@ -442,11 +481,21 @@ def main(argv=None) -> int:
                     "mean_delta_cap12_cap4": mean(
                         item["delta_cap12_cap4"] for item in cells
                     ),
-                    "engaged_cells_cap4": sum(
-                        item["engaged"]["cap4"] for item in cells
+                    "returned_action_diverged_cells_cap4": sum(
+                        item["returned_action_divergence"]["cap4_control"]
+                        is not None
+                        for item in cells
                     ),
-                    "engaged_cells_cap12": sum(
-                        item["engaged"]["cap12"] for item in cells
+                    "returned_action_diverged_cells_cap12": sum(
+                        item["returned_action_divergence"]["cap12_control"]
+                        is not None
+                        for item in cells
+                    ),
+                    "plant_outcome_diverged_cells_cap4": sum(
+                        item["plant_outcome_diverged"]["cap4"] for item in cells
+                    ),
+                    "plant_outcome_diverged_cells_cap12": sum(
+                        item["plant_outcome_diverged"]["cap12"] for item in cells
                     ),
                     "regressed_cells_cap12_control": sum(
                         item["delta_cap12_control"] is not None
