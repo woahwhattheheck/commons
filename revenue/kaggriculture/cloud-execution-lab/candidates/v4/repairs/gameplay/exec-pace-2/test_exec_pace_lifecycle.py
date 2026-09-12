@@ -85,12 +85,11 @@ def consumer_probe():
 
 
 def fallback_probe():
-    fragment = textwrap.dedent(composer.FALLBACK_OBSERVER_INSERT)
     namespace = {"deepcopy": deepcopy}
     exec(compile(
-        "def run(self, obs):\n" + textwrap.indent(fragment, "    "),
+        "class Probe:\n" + textwrap.indent(composer.FALLBACK_OBSERVER_INSERT, "    "),
         "exec_pace_fallback_fragment.py", "exec"), namespace)
-    return namespace["run"]
+    return namespace["Probe"]._remember_seller_fallback
 
 
 class LifecycleTests(unittest.TestCase):
@@ -182,12 +181,16 @@ class LifecycleTests(unittest.TestCase):
         for step in range(25):
             state.note_prices(price_obs(step))
         self.assertTrue(state.warm)
+
+        # Step 25 times out before FrozenSelected.transform can call note_prices().
         self.remember(holder, price_obs(25))
         self.assertEqual(state.last_step, 24)
         self.run(holder, SimpleNamespace(exec_pace=True), FakeFrozenSelected, self.load)
         self.assertEqual(state.last_step, 25)
         self.assertTrue(state.warm)
         self.assertEqual(holder._exec_pace_fallback_observations, [])
+
+        # The next ordinary callback stays contiguous instead of resetting warmup.
         state.note_prices(price_obs(26))
         self.assertEqual(state.last_step, 26)
         self.assertTrue(state.warm)
@@ -199,11 +202,14 @@ class LifecycleTests(unittest.TestCase):
         for step in range(26):
             state.note_prices(price_obs(step))
         before = list(state.steps)
+
+        # Transform already recorded step 25, but a later deadline still queues it.
         self.remember(holder, price_obs(25))
         self.run(holder, SimpleNamespace(exec_pace=True), FakeFrozenSelected, self.load)
         self.assertEqual(state.steps, before)
         self.assertEqual(state.last_step, 25)
         self.assertEqual(holder._exec_pace_fallback_observations, [])
+
         state.note_prices(price_obs(26))
         self.assertTrue(state.warm)
         self.assertEqual(state.last_step, 26)
@@ -253,8 +259,11 @@ class ComposerShapeTests(unittest.TestCase):
         "    early_capital: bool = False\n"
         "class X:\n"
         "    def __init__(self):\n"
+        "        self._completed_seller_state = None\n"
         "        self._seller_fallback_observations = []\n"
+        "        self.spatial = None\n"
         "    def _remember_seller_fallback(self, obs):\n"
+        "        \"\"\"Queue one completed fallback observation for a later reconstruction.\"\"\"\n"
         "        if self.features.consumer != 'frozen':\n"
         "            return\n"
         "        step = int(obs['step'])\n"
