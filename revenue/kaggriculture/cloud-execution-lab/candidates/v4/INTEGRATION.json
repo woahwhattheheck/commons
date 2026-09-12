@@ -25,6 +25,10 @@
     {"lane":"R5 bakery-yarn route","owner_pr":12624,"retired_pr_head":"3d7d07ccc0826fd9aef5a7b03791939b7e21925b","authoritative_detached_donor":"6b915d3fb1f4496cf8160f1e9b467344d885ef51","generator_blob":"c9762594e1df7bd328ab8ca765e65a477d7f65e8","test_blob":"5ca35699787dfdf8ab97ff6fc1b9ca1baf2ec7e9","status":"generator_level_donor_preserved_not_integrated","note":"semantic port only; never execute or overwrite the broad current materializer with this legacy snapshot"}
   ],
   "recovered_not_yet_composed": [],
+  "custody_blocked": [
+    {"lane":"EXEC-PACE-2 adaptive execution pacing","custody_path":"repairs/gameplay/exec-pace-2","status":"awaiting_raw_payload","evidence":"+$377 +/-25 original 16/16; +$369 V4 confirm 7/7; 23/23 positive; 15 focused tests reported","required":"recover exact raw source/test bytes or Git blob IDs; do not reconstruct from prose"},
+    {"lane":"defensive guard pack","custody_path":"repairs/gameplay/defensive-guard","status":"awaiting_raw_payload","harvestable_scope":["non-finite numeric sanitizer","PLANT overdemand cap"],"quarantined":["broad EOD shed-overflow rescue pending ablation against current EOD rescue","CARE stripping explicitly rejected"],"required":"publish ancestry-neutral raw objects plus focused tests/recipe; do not reconstruct from prose"}
+  ],
   "duplicate_resolution": {
     "PLACE":{"owner_pr":12622,"owner_head":"d1a55af2112b92df6e266fd34c2f9392562710a9","source_blob":"987b06d54b1b8fd6d08cf78be0b4b3a398969ac7","status":"already_exact_in_baseline; duplicates excluded"},
     "D4":{"owner_pr":12606,"duplicate_prs_excluded":[12607,12608,12610]},
@@ -49,7 +53,8 @@
     "recovered gameplay keys remain default-OFF until evidence gates authorize promotion",
     "negative, parked and superseded lanes remain receipts rather than active mechanisms",
     "do not reopen retired S8, S3 or F1 as new keys without explicit new evidence overturning their disposition",
-    "do not move D4 out of parked state until its literal-V4 pre-flush reachability census satisfies the original kill gate"
+    "do not move D4 out of parked state until its literal-V4 pre-flush reachability census satisfies the original kill gate",
+    "do not reconstruct missing source payloads from prose; raw-payload custody blockers remain blockers until exact bytes or Git objects are recovered"
   ],
-  "next": "Ledger-listed positive donor custody is complete. Keep D4 parked pending its reachability census; do not revive S8/S3/F1. Reconcile newly arriving repair manifests into this ledger, then compose compatible legacy semantics exactly once in the shared legacy workspace and separately port only ABI-compatible semantics into current production with current-head package/economics gates."
+  "next": "Positive donor custody is complete except for the explicitly listed raw-payload blockers. Recover exact EXEC-PACE-2 source/test payloads and the independently harvestable defensive-guard payloads; keep D4 parked pending its reachability census; do not revive S8/S3/F1. Reconcile newly arriving repair manifests into this ledger, then compose compatible legacy semantics exactly once in the shared legacy workspace and separately port only ABI-compatible semantics into current production with current-head package/economics gates."
 }
