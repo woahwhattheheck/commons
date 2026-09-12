@@ -287,7 +287,7 @@ class PostTickEveningFlush:
         same_item_row = {}
         for idx, row in enumerate(market):
             if len(row) >= 3 and row[0] == "SELL" and row[1] in r04.FLUSH_ITEMS:
-                if type(row[2]) is not int or row[2] < 0:
+                if type(row[2]) is not int or row[2] <= 0:
                     self.telemetry["release_malformed_sell"] += 1
                     return action
                 item = row[1]
@@ -408,8 +408,8 @@ class PostTickEveningFlush:
 
 
 def install(parent, enabled=False):
-    """Install E7. Disabled mode is exact parent-callable identity."""
-    if not enabled:
+    """Install E7. Only literal True activates; every other value is exact identity."""
+    if enabled is not True:
         return parent
     if parent is None or not callable(parent):
         raise TypeError("E7 parent must be callable")
