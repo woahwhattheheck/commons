@@ -1,0 +1,116 @@
+name: ASTRA loss 108059077 replay transport
+
+on:
+  push:
+    branches:
+      - astra/loss-108059077-replay-transport-20260912
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public replay
+        shell: bash
+        run: |
+          set -u
+          mkdir -p out
+          URL='https://www.kaggle.com/competitions/episodes/108059077/replay.json'
+          printf '%s\n' "$URL" > out/source_url.txt
+          code="$(curl --location --silent --show-error \
+            --retry 2 --retry-delay 2 --connect-timeout 20 --max-time 240 \
+            --dump-header out/response.headers \
+            --output out/108059077.json \
+            --write-out '%{http_code}' "$URL" || true)"
+          printf '%s\n' "$code" > out/http_code.txt
+          if test -f out/108059077.json; then
+            wc -c < out/108059077.json | tr -d ' ' > out/bytes.txt
+            sha256sum out/108059077.json | awk '{print $1}' > out/sha256.txt
+          else
+            printf '0\n' > out/bytes.txt
+            printf 'MISSING\n' > out/sha256.txt
+          fi
+
+      - name: Emit fail-closed structural receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          out = Path('out')
+          code = (out / 'http_code.txt').read_text().strip()
+          body = out / '108059077.json'
+          receipt = {
+              'schema': 'titan.v4.loss_replay_transport.v1',
+              'episode_id': 108059077,
+              'opponent_submission_id_from_loss_board': 56174105,
+              'source_url': (out / 'source_url.txt').read_text().strip(),
+              'http_code': code,
+              'bytes': body.stat().st_size if body.exists() else 0,
+              'sha256': hashlib.sha256(body.read_bytes()).hexdigest() if body.exists() else None,
+              'json_valid': False,
+              'top_level_type': None,
+              'top_level_keys': None,
+              'step_count': None,
+              'info_keys': None,
+              'team_names': None,
+              'terminal_rewards': None,
+          }
+          if code == '200' and body.exists():
+              try:
+                  doc = json.loads(body.read_text(encoding='utf-8'))
+                  receipt['json_valid'] = True
+                  receipt['top_level_type'] = type(doc).__name__
+                  if isinstance(doc, dict):
+                      receipt['top_level_keys'] = sorted(str(k) for k in doc)
+                      steps = doc.get('steps')
+                      if isinstance(steps, list):
+                          receipt['step_count'] = len(steps)
+                          if steps and isinstance(steps[-1], list):
+                              rewards = []
+                              for seat in steps[-1]:
+                                  rewards.append(seat.get('reward') if isinstance(seat, dict) else None)
+                              receipt['terminal_rewards'] = rewards
+                      info = doc.get('info')
+                      if isinstance(info, dict):
+                          receipt['info_keys'] = sorted(str(k) for k in info)
+                          names = info.get('TeamNames')
+                          if names is not None:
+                              receipt['team_names'] = names
+              except Exception as exc:
+                  receipt['json_error'] = f'{type(exc).__name__}: {exc}'
+          (out / 'receipt.json').write_text(
+              json.dumps(receipt, sort_keys=True, separators=(',', ':')) + '\n',
+              encoding='utf-8',
+          )
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+
+      - name: Upload immutable replay transport artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loss-108059077-replay-${{ github.sha }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+
+      - name: Enforce exact replay success
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat out/http_code.txt)" = '200'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path('out/receipt.json').read_text())
+          if not r.get('json_valid'):
+              raise SystemExit('public replay body is not valid JSON')
+          if r.get('episode_id') != 108059077:
+              raise SystemExit('episode binding drift')
+          PY
