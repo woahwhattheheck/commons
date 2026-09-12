@@ -11,35 +11,54 @@ permissions:
 
 jobs:
   validate:
+    if: github.event.repository.private == false
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Compile donor and apply to exact 15b2 source
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Authenticate inputs and compose same-fold copy hardening
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          python -m py_compile tools/titan_v4_fold_fast_clone.py
-          path='revenue/kaggriculture/cloud-execution-lab/candidates/v3/apply_v4.py'
-          curl -fsSL \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${path}?ref=15b2b5d2025a7c6976557b5ec3e458a3f09f412b" \
-            | jq -r '.content' | tr -d '\n' | base64 -d > /tmp/apply_v4.py
-          test "$(git hash-object /tmp/apply_v4.py)" = f67f8ce7d5f5779c1fad9b1e51e3b736b02b513d
-          python tools/titan_v4_fold_fast_clone.py /tmp/apply_v4.py
-          python -m py_compile /tmp/apply_v4.py
-          grep -Fq 'R04 V4 reviewed fast tape clone helper' /tmp/apply_v4.py
-          grep -Fq 'R04 V4 fast tape clone hot path' /tmp/apply_v4.py
-          python - <<'PY'
-          import ast
-          from pathlib import Path
-          text = Path('/tmp/apply_v4.py').read_text()
-          ast.parse(text)
-          assert text.count('R04 V4 reviewed fast tape clone helper') == 1
-          assert text.count('R04 V4 fast tape clone hot path') == 1
-          assert '_r04_clone_tape_action(tape[step])' in text
-          print('PASS fast-clone donor syntax/CAS')
-          PY
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git hash-object tools/titan_v4_fold_fast_clone.py)" = a83de6bfcc60c51c8bdc9106f8565c52eb5fe764
+          test "$(git hash-object tools/harden_v4_fast_clone_recipe.py)" = 22acbcc6f1beb0460ba3f796af0e1febf7d94ca1
+          test "$(git hash-object tools/test_v4_fast_clone_copy_contract.py)" = d50c75fcbaf420e9cdb62fd009dabc6ff8b7ec42
+          mkdir -p /tmp/titan-fastclone-proof
+          fetch_blob () {
+            local sha="$1" output="$2"
+            curl --retry 2 -fsSL \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/git/blobs/${sha}" \
+              | jq -r '.content' | tr -d '\n' | base64 -d > "$output"
+            test "$(git hash-object "$output")" = "$sha"
+          }
+          fetch_blob f67f8ce7d5f5779c1fad9b1e51e3b736b02b513d /tmp/titan-fastclone-proof/apply_v4.py
+          fetch_blob a43289b9cc5e34a2481fddf652762a7d92f427ef /tmp/titan-fastclone-proof/r01_tapes.py
+          fetch_blob 12a3eb23dd1052a769baa16ce861890f21911e14 /tmp/titan-fastclone-proof/checker.py
+          python -B tools/harden_v4_fast_clone_recipe.py tools/titan_v4_fold_fast_clone.py /tmp/titan-fastclone-proof/fold_hardened.py
+          python -B /tmp/titan-fastclone-proof/fold_hardened.py /tmp/titan-fastclone-proof/apply_v4.py
+      - name: Full corpus regression in normal and optimized Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="/tmp/titan-fastclone-proof:${GITHUB_WORKSPACE}/tools"
+          python -B -c 'import r01_tapes; assert len(r01_tapes.load_tapes()) == 13'
+          python -B -m unittest -v test_v4_fast_clone_copy_contract
+          python -O -B -m unittest -v test_v4_fast_clone_copy_contract
+      - name: Actual tape speed and exact checker grammar
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B tools/prove_v4_fast_clone.py \
+            /tmp/titan-fastclone-proof/apply_v4.py \
+            /tmp/titan-fastclone-proof/fold_hardened.py \
+            /tmp/titan-fastclone-proof/r01_tapes.py \
+            /tmp/titan-fastclone-proof/checker.py
