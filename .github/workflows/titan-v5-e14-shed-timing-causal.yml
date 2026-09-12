@@ -1,0 +1,44 @@
+name: titan-v5-e14-shed-timing-causal
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v5-e14-shed-timing-causal.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/e14-shed-timing-causal/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-e14-shed-timing-causal-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Assert exact triggering head
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile and run authenticated materializer contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/e14-shed-timing-causal
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile compose_e14_off.py test_compose_e14_off.py
+          python -B -m unittest -v test_compose_e14_off.py
+          python -O -B -m unittest -v test_compose_e14_off.py
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git -C "$GITHUB_WORKSPACE" diff --check
+          test -z "$(git -C "$GITHUB_WORKSPACE" status --porcelain)"
