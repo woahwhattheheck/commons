@@ -13,6 +13,7 @@ from typing import Any
 
 SCHEMA = "titan-v4-gemini-antigravity-convergence/v1"
 V4_PREFIX = "revenue/kaggriculture/cloud-execution-lab/candidates/v4/"
+CANONICAL_LEDGER_REL = V4_PREFIX + "research/gemini-antigravity-convergence/GEMINI-ANTIGRAVITY.json"
 ALLOWED_DISPOSITIONS = frozenset({
     "SOURCE_REAL_CANDIDATE",
     "CORRECTED_DESCENDANT",
@@ -66,9 +67,22 @@ def _reject_constant(token: str) -> None:
     raise ConvergenceError(f"non-finite JSON token: {token}")
 
 
+def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise ConvergenceError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
 def load_strict_json(path: Path) -> dict[str, Any]:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"), parse_constant=_reject_constant)
+        data = json.loads(
+            path.read_text(encoding="utf-8"),
+            parse_constant=_reject_constant,
+            object_pairs_hook=_reject_duplicate_pairs,
+        )
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise ConvergenceError(f"cannot load strict JSON {path}: {exc}") from exc
     if not isinstance(data, dict):
@@ -82,6 +96,42 @@ def _plain_nonempty(value: Any, field: str) -> str:
     return value
 
 
+def _validated_repo_root(repo_root: Path) -> Path:
+    root = Path(os.path.abspath(os.fspath(repo_root)))
+    try:
+        st = os.lstat(root)
+    except OSError as exc:
+        raise ConvergenceError(f"repository root is unavailable: {root}") from exc
+    if stat.S_ISLNK(st.st_mode) or not stat.S_ISDIR(st.st_mode):
+        raise ConvergenceError(f"repository root must be a non-symlink directory: {root}")
+    return root
+
+
+def _require_regular_beneath(root: Path, posix: PurePosixPath, label: str) -> Path:
+    current = root
+    parts = posix.parts
+    if not parts:
+        raise ConvergenceError(f"{label} has empty path")
+    for index, part in enumerate(parts):
+        current = current / part
+        try:
+            st = os.lstat(current)
+        except OSError as exc:
+            raise ConvergenceError(f"{label} is missing: {posix.as_posix()}") from exc
+        if stat.S_ISLNK(st.st_mode):
+            raise ConvergenceError(
+                f"{label} traverses symlink component: {'/'.join(parts[:index + 1])}"
+            )
+        if index < len(parts) - 1:
+            if not stat.S_ISDIR(st.st_mode):
+                raise ConvergenceError(
+                    f"{label} has non-directory ancestor: {'/'.join(parts[:index + 1])}"
+                )
+        elif not stat.S_ISREG(st.st_mode):
+            raise ConvergenceError(f"{label} is not a regular file: {posix.as_posix()}")
+    return current
+
+
 def _regular_file_under_v4(repo_root: Path, rel: Any, entry_id: str) -> None:
     rel = _plain_nonempty(rel, f"{entry_id}.canonical_evidence[]")
     posix = PurePosixPath(rel)
@@ -89,23 +139,19 @@ def _regular_file_under_v4(repo_root: Path, rel: Any, entry_id: str) -> None:
         raise ConvergenceError(f"{entry_id} evidence escapes repository: {rel}")
     if not rel.startswith(V4_PREFIX):
         raise ConvergenceError(f"{entry_id} evidence is outside canonical V4: {rel}")
-    lowered = "/" + rel.lower().strip("/") + "/"
+    canonical_rel = posix.as_posix()
+    lowered = "/" + canonical_rel.lower().strip("/") + "/"
     if "/legacy/" in lowered or "/superseded/" in lowered:
         raise ConvergenceError(f"{entry_id} evidence points at noncanonical ancestry: {rel}")
 
-    root = repo_root.resolve()
-    target = root.joinpath(*posix.parts)
+    root = _validated_repo_root(repo_root)
     try:
-        st = os.lstat(target)
-    except OSError as exc:
-        raise ConvergenceError(f"{entry_id} missing canonical evidence: {rel}") from exc
-    if not stat.S_ISREG(st.st_mode):
-        raise ConvergenceError(f"{entry_id} evidence is not a regular file: {rel}")
-    resolved_parent = target.parent.resolve()
-    try:
-        resolved_parent.relative_to(root)
-    except ValueError as exc:
-        raise ConvergenceError(f"{entry_id} evidence parent escapes repository: {rel}") from exc
+        _require_regular_beneath(root, posix, f"{entry_id} evidence")
+    except ConvergenceError as exc:
+        text = str(exc)
+        if " is missing:" in text:
+            raise ConvergenceError(f"{entry_id} missing canonical evidence: {rel}") from exc
+        raise
 
 
 def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
@@ -126,12 +172,24 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
     for key in ("master_manifest_ts", "claim_board_ts", "coverage_claim_ts"):
         _plain_nonempty(source.get(key), f"source_stream.{key}")
     buckets = source.get("included_buckets")
-    if not isinstance(buckets, list) or set(buckets) != ALLOWED_ORIGINS:
-        raise ConvergenceError("included_buckets must cover every declared Gemini source bucket exactly")
+    if (
+        not isinstance(buckets, list)
+        or any(not isinstance(value, str) for value in buckets)
+        or len(buckets) != len(ALLOWED_ORIGINS)
+        or len(buckets) != len(set(buckets))
+        or set(buckets) != ALLOWED_ORIGINS
+    ):
+        raise ConvergenceError("included_buckets must cover every declared Gemini source bucket exactly once")
 
     allowed = doc.get("allowed_dispositions")
-    if not isinstance(allowed, list) or set(allowed) != ALLOWED_DISPOSITIONS:
-        raise ConvergenceError("allowed_dispositions drift")
+    if (
+        not isinstance(allowed, list)
+        or any(not isinstance(value, str) for value in allowed)
+        or len(allowed) != len(ALLOWED_DISPOSITIONS)
+        or len(allowed) != len(set(allowed))
+        or set(allowed) != ALLOWED_DISPOSITIONS
+    ):
+        raise ConvergenceError("allowed_dispositions must cover every allowed disposition exactly once")
 
     rules = doc.get("convergence_rules")
     if not isinstance(rules, list) or len(rules) < 5 or any(not isinstance(x, str) or not x.strip() for x in rules):
@@ -216,14 +274,21 @@ def find_repo_root(start: Path) -> Path:
     start = start.resolve()
     for parent in (start, *start.parents):
         if (parent / V4_PREFIX.rstrip("/")).is_dir():
-            return parent
+            return _validated_repo_root(parent)
     raise ConvergenceError("could not locate repository root containing candidates/v4")
 
 
 def validate_path(ledger_path: Path, repo_root: Path | None = None) -> dict[str, Any]:
-    ledger_path = ledger_path.resolve()
-    root = repo_root.resolve() if repo_root is not None else find_repo_root(ledger_path.parent)
-    return validate_document(load_strict_json(ledger_path), root)
+    root = _validated_repo_root(repo_root) if repo_root is not None else find_repo_root(ledger_path.parent)
+    candidate = Path(os.path.abspath(os.fspath(ledger_path)))
+    canonical_posix = PurePosixPath(CANONICAL_LEDGER_REL)
+    canonical = root.joinpath(*canonical_posix.parts)
+    if candidate != canonical:
+        raise ConvergenceError(
+            f"ledger path must be canonical {CANONICAL_LEDGER_REL}; got {candidate}"
+        )
+    _require_regular_beneath(root, canonical_posix, "canonical Gemini convergence ledger")
+    return validate_document(load_strict_json(canonical), root)
 
 
 def main() -> int:

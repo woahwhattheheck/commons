@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import copy
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -75,6 +76,22 @@ class GeminiConvergenceTests(unittest.TestCase):
         doc["entries"][0]["canonical_evidence"][0] = rel
         self.assertRejected(doc, "noncanonical ancestry")
 
+    def test_internal_symlink_ancestor_cannot_alias_legacy_evidence(self):
+        doc = copy.deepcopy(self.doc)
+        target_dir = self.root / C.V4_PREFIX / "legacy" / "aliased"
+        target_dir.mkdir(parents=True, exist_ok=True)
+        (target_dir / "receipt.txt").write_text("stale\n", encoding="utf-8")
+        alias = self.root / C.V4_PREFIX / "research" / "current-alias"
+        alias.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            alias.symlink_to(os.path.relpath(target_dir, alias.parent), target_is_directory=True)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symlink unavailable: {exc}")
+        doc["entries"][0]["canonical_evidence"][0] = (
+            C.V4_PREFIX + "research/current-alias/receipt.txt"
+        )
+        self.assertRejected(doc, "symlink component")
+
     def test_missing_evidence_rejected(self):
         doc = copy.deepcopy(self.doc)
         rel = doc["entries"][0]["canonical_evidence"][0]
@@ -115,10 +132,59 @@ class GeminiConvergenceTests(unittest.TestCase):
         with self.assertRaises(C.ConvergenceError):
             C.load_strict_json(path)
 
+    def test_duplicate_json_key_rejected_recursively(self):
+        path = self.root / "duplicate.json"
+        path.write_text(
+            '{"schema":"outer","nested":{"disposition":"A","disposition":"B"}}',
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(C.ConvergenceError, "duplicate JSON key: disposition"):
+            C.load_strict_json(path)
+
     def test_source_buckets_are_exact(self):
         doc = copy.deepcopy(self.doc)
         doc["source_stream"]["included_buckets"] = ["master_manifest"]
         self.assertRejected(doc, "included_buckets")
+
+    def test_source_bucket_duplicates_cannot_launder_set_equality(self):
+        doc = copy.deepcopy(self.doc)
+        buckets = list(doc["source_stream"]["included_buckets"])
+        doc["source_stream"]["included_buckets"] = buckets + [buckets[0]]
+        self.assertRejected(doc, "included_buckets")
+
+    def test_allowed_disposition_duplicates_cannot_launder_set_equality(self):
+        doc = copy.deepcopy(self.doc)
+        allowed = list(doc["allowed_dispositions"])
+        doc["allowed_dispositions"] = allowed + [allowed[0]]
+        self.assertRejected(doc, "allowed_dispositions")
+
+    def _write_canonical_ledger(self):
+        path = self.root / C.CANONICAL_LEDGER_REL
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(self.doc), encoding="utf-8")
+        return path
+
+    def test_validate_path_accepts_only_canonical_registry(self):
+        canonical = self._write_canonical_ledger()
+        result = C.validate_path(canonical, self.root)
+        self.assertEqual(result["status"], "PASS")
+
+        alternate = self.root / "alternate-ledger.json"
+        alternate.write_text(json.dumps(self.doc), encoding="utf-8")
+        with self.assertRaisesRegex(C.ConvergenceError, "ledger path must be canonical"):
+            C.validate_path(alternate, self.root)
+
+    def test_canonical_ledger_symlink_rejected_before_read(self):
+        canonical = self.root / C.CANONICAL_LEDGER_REL
+        canonical.parent.mkdir(parents=True, exist_ok=True)
+        target = self.root / "alternate-ledger.json"
+        target.write_text(json.dumps(self.doc), encoding="utf-8")
+        try:
+            canonical.symlink_to(target)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symlink unavailable: {exc}")
+        with self.assertRaisesRegex(C.ConvergenceError, "symlink component"):
+            C.validate_path(canonical, self.root)
 
 
 if __name__ == "__main__":
