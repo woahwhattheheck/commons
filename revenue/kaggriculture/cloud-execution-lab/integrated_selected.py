@@ -239,5 +239,6 @@ def agent(observation, configuration=None):
     step = absolute_step(observation, cfg)
     if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
         _INSTANCE = make_agent()
+    output = _INSTANCE.act(observation, cfg)
     _LAST_STEP = step
-    return _INSTANCE.act(observation, cfg)
+    return output
