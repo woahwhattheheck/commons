@@ -111,6 +111,10 @@ def _current_shape(observation: Any, action: Any) -> bool:
         return False
     if not isinstance(market_actions, list):
         return False
+    # The donor scans all rows when spending stored wheat credit. Never let an
+    # out-of-budget row consume that credit before it can reach an active sale.
+    if len(market_actions) > _EXPECTED_CONFIG["maxMarketOrdersPerTurn"]:
+        return False
     return True
 
 
