@@ -37,8 +37,20 @@ class TownProcurementUnitTests(unittest.TestCase):
         rr=tp.observe(obs(201,16)); self.assertEqual(rr['confirmed_qty'],3)
         source=action(3)
         a,r1=tp.suppress_confirmed(obs(202,16),source); b,r2=tp.suppress_confirmed(obs(202,16),source)
-        self.assertEqual(a['market'],[]); self.assertEqual(b['market'],[])
+        self.assertEqual(a['market'],[[]]); self.assertEqual(b['market'],[[]])
         self.assertEqual(r1['suppressed_qty'],3); self.assertEqual(r2['suppressed_qty'],3)
+
+    def test_full_suppression_preserves_executable_prefix_topology(self):
+        tp.observe(obs(200,10)); tp.apply(obs(200,10),action(3),{},completed=True)
+        tp.observe(obs(201,16))
+        source={'farmer':['PASS'],'hands':[],
+                'market':[['BUY_PRODUCT','WHEAT',3],['BUY_SEED','CARROT',1]]}
+        out,r=tp.suppress_confirmed(obs(202,16),source,{'maxMarketOrdersPerTurn':1})
+        self.assertTrue(r['changed'])
+        self.assertEqual(len(out['market']),len(source['market']))
+        self.assertEqual(out['market'][0],[])
+        self.assertEqual(out['market'][1],['BUY_SEED','CARROT',1])
+        self.assertEqual(out['market'][:1],[[]])
 
     def test_partial_receipt_suppresses_only_observed_extra(self):
         tp.observe(obs(200,10)); tp.apply(obs(200,10),action(3),{},completed=True)
@@ -99,7 +111,7 @@ class TownProcurementUnitTests(unittest.TestCase):
         instance=SimpleNamespace(selected=action(3),features=SimpleNamespace(),town_procurement_enabled=True)
         first=main._entrypoint_fallback(instance,obs(202,16),{},T.deadline)
         second=main._entrypoint_fallback(instance,obs(202,16),{},T.deadline)
-        self.assertEqual(first["market"],[]); self.assertEqual(second["market"],[])
+        self.assertEqual(first["market"],[[]]); self.assertEqual(second["market"],[[]])
 
     def test_feature_scope(self):
         import main
