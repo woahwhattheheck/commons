@@ -1,57 +1,46 @@
 # TITAN V4 lane: R04_DEFENSIVE_GUARDS — defensive last-mile guards
 
-**Status:** landed source evidence, NOT runtime-promoted (composition state:
-`blocked`). Ships default-OFF behind one master key; nothing in the production
-package changes until the promotion wiring below is composed and gated.
+**Status: SUPERSEDED MIRROR / EVIDENCE ONLY — DO NOT COMPOSE FROM THIS PATH.**
 
-## Verdict
+This directory was race-created by merged PR #13162 after the existing V4
+custody path `repairs/gameplay/defensive-guard` had already received the raw
+payload through merged PR #13159. The one-tree/canonical-path authority is the
+older ledger-owned path:
 
-- **PASS (neutral, as expected for defensive guards)**
-- Tests: `checks/test_v3_r04_defensive_guards.py` — **30/30 pass in normal and
-  `python -O` modes** (run in the wired payload carrier; landed files are
-  byte-identical to the gated copies)
-- Parent commit: `465f4263da1c98acf78889d67cdd21b61dbba145`
-  (titan/v4-20260911 tip; docs-only delta over tree-v4base)
-- Donor: `guard-donor-7a64dc3d.patch` (final, published; CARE guard excluded)
+`repairs/gameplay/defensive-guard`
 
-## Mechanism
+The executable source and focused test are exact duplicates across the two
+paths on current main:
 
-Standalone, stdlib-only module (`r04_defensive_guards.py`) for the
-`R04_DEFENSIVE_GUARDS` key. Three fail-closed guards applied after all lane
-wrappers via `_apply_defensive_guards` (identity when nothing needs fixing):
+- `r04_defensive_guards.py` Git blob
+  `b1fc775ecaf608ca40d01945ec82ae8372ee988b`;
+- `checks/test_v3_r04_defensive_guards.py` Git blob
+  `07785fa53d56444f764af9af4d7cb906bd39ba7d`.
 
-1. `_sanitize_numeric_args` — clamps non-finite/out-of-range numeric args
-   (engine `int()` on inf/nan kills the whole interpreter step).
-2. `_guard_plant_overdemand` — caps per-crop PLANT at seeds held (engine drops
-   ALL of a turn's PLANTs for a crop when total exceeds seeds).
-3. `_guard_eod_autodrop` — on the last step of a day, prepends cheapest-first
-   SELL rows for projected shed overflow so the EOD auto-drop destroys
-   nothing.
+The pre-convergence README unique to this duplicate remains recoverable from
+PR #13162 / Git blob `2e9ec8631b26e5ca51dc5c4ebc1cd4ce16810675`.
+Do not treat this path or its COMPOSITION registration as a second source
+authority. It is blocked evidence only until the central registry is repointed
+to the canonical `defensive-guard` path; never mint another V4 root or another
+defensive-guards source package.
 
-Engine constants mirrored from `r04_full_router.py` (same values):
-`TURNS_PER_DAY = 24`, `SHED_CAPACITY = 100`, `_SHED_CAPACITY = 100`.
+## Preserved verdict
 
-## Promotion wiring (key-park pattern, for the runtime-promotion step)
+- Raw payload source: merged PR #13159, merge
+  `86363108927b9e946732daa35e91430a78fd3323`.
+- Duplicate registration/source mirror: merged PR #13162, merge
+  `14e638924f22d8b99468bf2e8c63619595ec18a6`.
+- Focused carrier tests: **30/30 normal + 30/30 `python -O`**.
+- Hardened guard gate: neutral PASS as expected; the source remains default
+  OFF and is not runtime-promoted merely because custody exists.
 
-In `r04_full_router.py` (see the wired payload carrier for exact hunks):
+## Canonical semantic disposition
 
-- `from r04_defensive_guards import ...` at top (keeps the `r04._guard_*`
-  names the tests use); inline guard defs removed
-- `R04_DEFENSIVE_GUARDS = False` global
-- `v3_agent` seam applies `_apply_defensive_guards(observation, action)` after
-  all lane wrappers iff the key is on
-- `install(..., defensive_guards=None)` sets the global
+Only the independently harvestable numeric sanitizer and PLANT-overdemand cap
+are eligible for a future current-runtime composition gate. The EOD autodrop
+body remains **QUARANTINED** because it overlaps the canonical
+EOD-capacity-rescue lane and requires dedicated ablation. CARE stripping is
+absent/rejected and must not be reintroduced.
 
-In `titan_runtime.py`:
-
-- `Features.r04_defensive_guards: bool = False`; `install` kwarg
-  `defensive_guards=...`; `diagnostics['defensive_guards']`
-
-In `TITAN-CONFIG.json`: `"r04_defensive_guards": false` (ships OFF).
-
-## Files
-
-- `r04_defensive_guards.py` — the lane module (byte-identical to the gated
-  copy; guard bodies byte-identical to the donor patch)
-- `checks/test_v3_r04_defensive_guards.py` — donor's 30 tests, unmodified
-  (byte-identical to the donor patch's copy)
+No runtime, feature default, config, archive, Kaggle candidate, or frozen V4
+package authority is changed by this convergence note.
