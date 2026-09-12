@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-fertilizer-labor-efficiency-20260912",
+  "holder": "ASTRA / GPT-5.6 Sol",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T22:53:30Z",
+  "heartbeat_at": "2026-09-12T22:53:30Z",
+  "ttl_s": 1800,
+  "note": "Single-production-v3 V5 lane: test fertilizer strictly as labor compression after crop admission. Build one default-OFF route-aware treatment only when existing fertilizer plus crop lifetime can remove a future WATER action and that freed slot has an immediately legal productive substitute. No alchemy/yield stacking, no sibling policy tree, no CURRENT/default/release/Kaggle mutation; yield to any earlier concrete byte-level owner."
+}
