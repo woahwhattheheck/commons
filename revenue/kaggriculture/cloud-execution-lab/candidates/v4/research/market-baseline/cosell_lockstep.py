@@ -87,7 +87,8 @@ def load_engine(path: str | Path):
     module.__package__ = ""
     with _captured_spec_open(spec_path, spec_bytes):
         exec(compile(source, str(path), "exec"), module.__dict__)
-    required = ("PRODUCTS", "_new_farm", "_new_private", "_new_market", "_process_market", "_refresh_prices")
+    required = ("PRODUCTS", "_new_farm", "_new_private", "_new_market", "_new_town",
+                "_process_market", "_town_consume", "_refresh_prices")
     missing = [name for name in required if not hasattr(module, name)]
     if missing:
         raise ValueError(f"engine missing symbols: {missing}")
@@ -160,8 +161,14 @@ def simulate_pair(engine, *, item: str, inventory: int, self_qty: int, rival_qty
     }
 
 
-def simulate_wait(engine, *, item: str, inventory: int, self_qty: int, rival_qty: int) -> dict[str, Any]:
-    """Execute the rival's SELL in one callback and ours in the next callback."""
+def simulate_sequential_market_only(engine, *, item: str, inventory: int, self_qty: int,
+                                    rival_qty: int) -> dict[str, Any]:
+    """Execute two market processors back-to-back without interpreter phases.
+
+    This is deliberately *not* a next-callback simulation: no town consumption,
+    plant decay, EOD transition, or intervening unit phase runs between calls. It
+    isolates only the quote effect of committing the rival sale before our sale.
+    """
     states, env = _world(engine, item=item, inventory=inventory, self_qty=self_qty, rival_qty=rival_qty)
     if rival_qty:
         _market_call(engine, states, env, [_sell(item, rival_qty)], [])
@@ -181,13 +188,17 @@ def compare(engine, *, item: str, inventory: int, self_qty: int, rival_qty: int)
                            rival_qty=rival_qty, aligned=True)
     misaligned = simulate_pair(engine, item=item, inventory=inventory, self_qty=self_qty,
                                rival_qty=rival_qty, aligned=False)
-    waited = simulate_wait(engine, item=item, inventory=inventory, self_qty=self_qty, rival_qty=rival_qty)
+    sequential = simulate_sequential_market_only(
+        engine, item=item, inventory=inventory, self_qty=self_qty, rival_qty=rival_qty
+    )
     terminals = {
         (x["terminal_market_inventory"], x["terminal_self_shed"], x["terminal_rival_shed"])
-        for x in (paired, misaligned, waited)
+        for x in (paired, misaligned, sequential)
     }
     if len(terminals) != 1:
-        raise AssertionError("aligned/misaligned/wait worlds did not reach the same physical terminal state")
+        raise AssertionError(
+            "aligned/misaligned/sequential-market-only worlds did not reach the same physical terminal state"
+        )
     return {
         "kind": "titan-v4-cosell-lockstep-oracle",
         "engine_git_blob": ENGINE_BLOB,
@@ -198,14 +209,16 @@ def compare(engine, *, item: str, inventory: int, self_qty: int, rival_qty: int)
         "rival_qty": rival_qty,
         "simultaneous_self_revenue": paired["self_revenue"],
         "misaligned_same_callback_self_revenue": misaligned["self_revenue"],
-        "wait_behind_self_revenue": waited["self_revenue"],
-        "simultaneous_gain_vs_wait": paired["self_revenue"] - waited["self_revenue"],
-        "misaligned_gain_vs_wait": misaligned["self_revenue"] - waited["self_revenue"],
+        "sequential_market_only_self_revenue": sequential["self_revenue"],
+        "simultaneous_gain_vs_sequential_market_only": paired["self_revenue"] - sequential["self_revenue"],
+        "misaligned_gain_vs_sequential_market_only": misaligned["self_revenue"] - sequential["self_revenue"],
         "same_terminal_state": True,
-        "terminal_market_inventory": waited["terminal_market_inventory"],
+        "terminal_market_inventory": sequential["terminal_market_inventory"],
         "limits": [
             "mechanics/cash witness only; not rival-order prediction or policy authority",
             "benefit requires same-item SELL units active in the same executable market slot",
+            "sequential_market_only is not a next-callback simulation; interpreter phases are intentionally omitted",
+            "a real later-callback comparison requires full interpreter replay with town/decay/EOD/unit phases",
             "quantities are capped to default shed capacity for physical executability",
             "current-route/replay incidence and both-seat economics are separate gates",
         ],
@@ -220,9 +233,9 @@ def collision_curve(engine, *, item: str, inventories: list[int], quantity: int 
         row = compare(engine, item=item, inventory=inventory, self_qty=quantity, rival_qty=quantity)
         rows.append({
             "inventory": inventory,
-            "simultaneous_gain_vs_wait": row["simultaneous_gain_vs_wait"],
+            "simultaneous_gain_vs_sequential_market_only": row["simultaneous_gain_vs_sequential_market_only"],
             "simultaneous_self_revenue": row["simultaneous_self_revenue"],
-            "wait_behind_self_revenue": row["wait_behind_self_revenue"],
+            "sequential_market_only_self_revenue": row["sequential_market_only_self_revenue"],
         })
     return rows
 
