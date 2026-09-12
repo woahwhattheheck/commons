@@ -162,9 +162,7 @@ def _schedule(native,start,target,current_hire_ordinal):
 
 
 def _eggs(start):
-    # Pinned engine GOOSE.first_yield_day == 4. Yield created by the EOD refresh
-    # on that boundary is first harvestable on day start+4, not start+3.
-    first=start+4
+    first=start+3
     return 0 if first>LAST_DAY else 4+2*(LAST_DAY-first)
 
 
@@ -243,13 +241,28 @@ def _stable_state(s):
     return copy.deepcopy({k:v for k,v in s.items() if not k.startswith("_retry_")})
 
 
-def _cache_retry(s,before,telemetry_before,action,observation,configuration,out):
+def _telemetry_delta(before):
+    keys=set(before)|set(telemetry)
+    return {k:telemetry.get(k,0)-before.get(k,0) for k in keys
+            if telemetry.get(k,0)-before.get(k,0)>0}
+
+
+def _undo_telemetry(delta):
+    if not isinstance(delta,dict):return
+    for k,n in delta.items():
+        if type(n) is not int or n<=0:continue
+        left=telemetry.get(k,0)-n
+        if left>0:telemetry[k]=left
+        else:telemetry.pop(k,None)
+
+
+def _cache_retry(s,before,action,observation,configuration,out,telemetry_delta=None):
     s["_retry_before"]=copy.deepcopy(before)
-    s["_retry_telemetry_before"]=copy.deepcopy(telemetry_before)
     s["_retry_parent"]=copy.deepcopy(action)
     s["_retry_observation"]=copy.deepcopy(observation)
     s["_retry_cfg"]=_cfg_key(configuration)
     s["_retry_output"]=copy.deepcopy(out)
+    s["_retry_telemetry_delta"]=dict(telemetry_delta or {})
 
 
 def _state(player,step):
@@ -422,15 +435,14 @@ def apply_goose_capacity_economy(action,observation,configuration,*,enabled=Fals
         if same and "_retry_output" in s:
             telemetry["same_step_replay"]+=1
             return copy.deepcopy(s["_retry_output"])
+        _undo_telemetry(s.get("_retry_telemetry_delta",{}))
         before=copy.deepcopy(s.get("_retry_before",_stable_state(s)))
-        telemetry_before=Counter(s.get("_retry_telemetry_before", telemetry))
         s.clear();s.update(before);s["last"]=step
-        telemetry.clear();telemetry.update(telemetry_before)
+        _cache_retry(s,before,action,observation,configuration,action,{})
         telemetry["same_step_changed"]+=1
-        _cache_retry(s,before,telemetry.copy(),action,observation,configuration,action)
         return copy.deepcopy(action)
     before=_stable_state(s)
-    telemetry_before=telemetry.copy()
+    telemetry_before=Counter(telemetry)
     phase=s.get("phase","idle")
     if phase=="idle":out=_request(action,observation,s)
     elif phase=="requested":out=_deploy(action,observation,s)
@@ -442,7 +454,7 @@ def apply_goose_capacity_economy(action,observation,configuration,*,enabled=Fals
             out=req if req is not action else _service(action,observation,s)
     else:out=action
     s["last"]=step
-    _cache_retry(s,before,telemetry_before,action,observation,configuration,out)
+    _cache_retry(s,before,action,observation,configuration,out,_telemetry_delta(telemetry_before))
     return out
 
 
