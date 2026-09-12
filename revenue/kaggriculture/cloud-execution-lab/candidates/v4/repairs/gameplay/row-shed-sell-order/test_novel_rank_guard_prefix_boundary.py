@@ -105,6 +105,46 @@ class FinalActionNoveltyPrefixBoundaryTests(unittest.TestCase):
         )
         self.assertIn("executable final market row", guard.diagnostics["reason"])
 
+    def test_unsupported_sell_first_is_hard_barrier_not_sortable(self):
+        # Red-team witness: live WOOL must not cross engine-inert unsupported SELL.
+        config = {"maxMarketOrdersPerTurn": 2}
+        base = action([["SELL", "NOT_A_PRODUCT", 1], ["SELL", "WOOL", 5]])
+        row = action([["SELL", "WOOL", 5], ["SELL", "NOT_A_PRODUCT", 1]])
+        guard = FinalActionNoveltyGuard()
+        self.assertEqual(guard.choose(base, row, base, row, config), base)
+        self.assertEqual(guard.diagnostics["leading_sell_count"], 0)
+        self.assertEqual(
+            guard.diagnostics["reason"], "executable_leading_sell_block_lt_2"
+        )
+
+    def test_unsupported_sell_interior_is_hard_barrier(self):
+        config = {"maxMarketOrdersPerTurn": 3}
+        base = action([
+            ["SELL", "WOOL", 5],
+            ["SELL", "NOT_A_PRODUCT", 1],
+            ["SELL", "MILK", 4],
+        ])
+        row = action([
+            ["SELL", "MILK", 4],
+            ["SELL", "WOOL", 5],
+            ["SELL", "NOT_A_PRODUCT", 1],
+        ])
+        guard = FinalActionNoveltyGuard()
+        self.assertEqual(guard.choose(base, row, base, row, config), base)
+        self.assertEqual(guard.diagnostics["leading_sell_count"], 1)
+        self.assertEqual(
+            guard.diagnostics["reason"], "executable_leading_sell_block_lt_2"
+        )
+
+    def test_supported_products_permutation_still_admits(self):
+        config = {"maxMarketOrdersPerTurn": 2}
+        base = action([["SELL", "WOOL", 5], ["SELL", "MILK", 4]])
+        row = action([["SELL", "MILK", 4], ["SELL", "WOOL", 5]])
+        guard = FinalActionNoveltyGuard()
+        self.assertEqual(guard.choose(base, row, base, row, config), row)
+        self.assertEqual(guard.diagnostics["status"], "applied")
+        self.assertEqual(guard.diagnostics["leading_sell_count"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
