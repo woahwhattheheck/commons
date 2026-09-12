@@ -1,0 +1,99 @@
+name: TITAN V4 M1 two-seat detached serializer
+
+on:
+  push:
+    branches:
+      - astra/v4-m1-two-seat-serializer-20260911-01
+
+permissions:
+  contents: write
+
+jobs:
+  serialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build, test, and publish exact detached child of 7f54
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo="$GITHUB_REPOSITORY"
+          parent='7f54f16b2ab85f1b614c1395334b0d03841b6027'
+          helper_blob='429e32b3eb0ac9fa7bb440dce8fdf3c882210a6a'
+          patch_blob='cf9ebb5890262c2e04d21a557009d564851d214d'
+          test_blob='5695a41e8baca3da1b0b730ebcb3c27e6fa0bc8d'
+          helper='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_m1_wheat_trade.py'
+          testpath='revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v4_m1_money_overflow.py'
+
+          get_blob() {
+            local sha="$1" out="$2"
+            gh api "repos/${repo}/git/blobs/${sha}" --jq .content \
+              | tr -d '\n' | base64 -d > "$out"
+            test "$(git hash-object "$out")" = "$sha"
+          }
+
+          mkdir -p "$(dirname "$helper")" "$(dirname "$testpath")"
+          get_blob "$helper_blob" "$helper"
+          get_blob "$patch_blob" /tmp/m1-two-seat.patch
+          get_blob "$test_blob" "$testpath"
+
+          git apply --check /tmp/m1-two-seat.patch
+          git apply /tmp/m1-two-seat.patch
+          python -m py_compile "$helper" "$testpath"
+          PYTHONPATH="$(dirname "$helper")" python "$testpath"
+          PYTHONPATH="$(dirname "$helper")" python -O "$testpath"
+
+          new_helper_local="$(git hash-object "$helper")"
+          helper_b64="$(base64 -w0 "$helper")"
+          new_helper_server="$(gh api --method POST "repos/${repo}/git/blobs" \
+            -f content="$helper_b64" -f encoding='base64' --jq .sha)"
+          test "$new_helper_server" = "$new_helper_local"
+
+          base_tree="$(gh api "repos/${repo}/git/commits/${parent}" --jq .tree.sha)"
+          test "$base_tree" = 'ca8a5771ac0007d76e974a6af3e84a2935132fe5'
+
+          tree_payload="$(jq -n \
+            --arg base "$base_tree" \
+            --arg h "$new_helper_server" \
+            --arg t "$test_blob" \
+            --arg hp "$helper" \
+            --arg tp "$testpath" \
+            '{base_tree:$base,tree:[
+              {path:$hp,mode:"100644",type:"blob",sha:$h},
+              {path:$tp,mode:"100644",type:"blob",sha:$t}
+            ]}')"
+          tree_sha="$(printf '%s' "$tree_payload" | gh api --method POST "repos/${repo}/git/trees" --input - --jq .sha)"
+
+          commit_payload="$(jq -n \
+            --arg msg 'harden(v4): bind M1 to exact two-seat public custody' \
+            --arg tree "$tree_sha" \
+            --arg parent "$parent" \
+            '{message:$msg,tree:$tree,parents:[$parent]}')"
+          child="$(printf '%s' "$commit_payload" | gh api --method POST "repos/${repo}/git/commits" --input - --jq .sha)"
+
+          test "$(gh api "repos/${repo}/git/commits/${child}" --jq '.parents[0].sha')" = "$parent"
+          test "$(gh api "repos/${repo}/compare/${parent}...${child}" --jq .ahead_by)" = 1
+          test "$(gh api "repos/${repo}/compare/${parent}...${child}" --jq .behind_by)" = 0
+          test "$(gh api "repos/${repo}/commits/${child}" --jq '.files | length')" = 2
+          actual_paths="$(gh api "repos/${repo}/commits/${child}" --jq '[.files[].filename] | sort | join("\n")')"
+          expected_paths="$(printf '%s\n%s\n' "$helper" "$testpath" | sort)"
+          test "$actual_paths" = "$expected_paths"
+
+          echo "DETACHED_CHILD_SHA=${child}"
+          echo "TREE_SHA=${tree_sha}"
+          echo "HELPER_SHA=${new_helper_server}"
+          echo "TEST_SHA=${test_blob}"
+          {
+            echo '### TITAN V4 M1 two-seat detached child'
+            echo
+            echo "- parent: \`${parent}\`"
+            echo "- child: \`${child}\`"
+            echo "- tree: \`${tree_sha}\`"
+            echo "- helper: \`${new_helper_server}\`"
+            echo "- combined regression: \`${test_blob}\`"
+            echo '- normal + `python -O` focused tests: PASS'
+            echo '- compare: ahead 1 / behind 0 / exactly 2 paths'
+            echo '- no gameplay ref moved'
+          } >> "$GITHUB_STEP_SUMMARY"
