@@ -4,6 +4,11 @@
 This deliberately preserves only the published late V231 window (steps 216..227).
 The separately parameterized ``cattle_early`` window is not implemented here because
 the submitted V3.1 winner shipped it disabled.
+
+Current-ABI addition: same-step retries are transactional. An identical retry replays
+the exact detached output/post-state; changed same-step evidence recomputes from the
+pre-step snapshot. Rewinds reset the episode. This prevents pending COW ownership,
+placement state, or milk credit from being erased/double-applied by retry callbacks.
 """
 from __future__ import annotations
 
@@ -69,41 +74,68 @@ def _shape(observation: Any, selected: Any) -> bool:
     private = observation.get("private")
     market_obs = observation.get("market")
     town = observation.get("town")
-    if not isinstance(farm, dict) or not isinstance(private, dict) or not isinstance(market_obs, dict) or not isinstance(town, dict):
+    if (
+        not isinstance(farm, dict)
+        or not isinstance(private, dict)
+        or not isinstance(market_obs, dict)
+        or not isinstance(town, dict)
+    ):
         return False
+
     tiles = farm.get("tiles")
-    hands = farm.get("hands")
-    farmer = farm.get("farmer")
+    farm_hands = farm.get("hands")
+    farm_farmer = farm.get("farmer")
     inventories = private.get("inventories")
     shed = private.get("shed")
     prices = market_obs.get("prices")
     shops = town.get("unlocked_shops")
-    if not isinstance(tiles, list) or not tiles or any(not isinstance(row, list) for row in tiles):
+    if (
+        not isinstance(tiles, list)
+        or not tiles
+        or any(not isinstance(row, list) for row in tiles)
+    ):
         return False
-    if not isinstance(hands, list) or not isinstance(farmer, (list, tuple)) or len(farmer) != 2:
+    if (
+        not isinstance(farm_hands, list)
+        or not isinstance(farm_farmer, (list, tuple))
+        or len(farm_farmer) != 2
+    ):
         return False
-    if not isinstance(inventories, list) or len(inventories) != 1 + len(hands):
+    if not isinstance(inventories, list) or len(inventories) != 1 + len(farm_hands):
         return False
     if any(not isinstance(inventory, dict) for inventory in inventories):
         return False
     if not isinstance(shed, dict) or not isinstance(prices, dict) or not isinstance(shops, list):
         return False
+
     for mapping in [shed, *inventories]:
         for animal in ANIMALS:
             value = mapping.get(animal, 0)
             if not _is_int(value) or value < 0:
                 return False
-    workers = [selected.get("farmer"), *(selected.get("hands") or [])]
-    if selected.get("farmer") is None or not isinstance(selected.get("hands"), list):
+
+    selected_farmer = selected.get("farmer")
+    selected_hands = selected.get("hands")
+    if not isinstance(selected_farmer, list) or not selected_farmer:
         return False
+    if not isinstance(selected_hands, list):
+        return False
+    workers = [selected_farmer, *selected_hands]
     if len(workers) != len(inventories):
         return False
-    if any(not isinstance(work, list) or not work or not isinstance(work[0], str) for work in workers):
+    if any(
+        not isinstance(work, list) or not work or not isinstance(work[0], str)
+        for work in workers
+    ):
         return False
+
     orders = selected.get("market")
     if not isinstance(orders, list) or len(orders) > MAX_ORDERS:
         return False
-    if any(not isinstance(order, list) or not order or not isinstance(order[0], str) for order in orders):
+    if any(
+        not isinstance(order, list) or not order or not isinstance(order[0], str)
+        for order in orders
+    ):
         return False
     return True
 
@@ -130,13 +162,15 @@ def _beside_shed(farm: dict[str, Any], position: Any) -> bool:
     return x in (center - 1, center) and y in (center - 1, center)
 
 
-def _projected_shed(selected: dict[str, Any], observation: dict[str, Any]) -> dict[str, int]:
+def _projected_shed(
+    selected: dict[str, Any], observation: dict[str, Any]
+) -> dict[str, int]:
     """Conservative stock projection used only for V231's harvested-milk sale credit."""
     farm = observation["farms"][observation["player"]]
     private = observation["private"]
     stock: dict[str, int] = {}
     for item, qty in private["shed"].items():
-        stock[item] = max(0, int(qty)) if _is_int(qty) else 0
+        stock[item] = max(0, qty) if _is_int(qty) else 0
     total = sum(stock.values())
     positions = [farm["farmer"], *farm["hands"]]
     workers = [selected["farmer"], *selected["hands"]]
@@ -145,8 +179,6 @@ def _projected_shed(selected: dict[str, Any], observation: dict[str, Any]) -> di
         if actor >= len(positions) or not _beside_shed(farm, positions[actor]):
             continue
         inventory = inventories[actor]
-        if not isinstance(inventory, dict):
-            continue
         operation = work[0]
         if operation == "PICKUP" and len(work) >= 2:
             item = work[1]
@@ -182,6 +214,7 @@ class V231LateCurrentABI:
     enabled: bool = False
     cap: int = DEFAULT_CAP
     _states: dict[int, dict[str, Any]] = field(default_factory=dict)
+    _transactions: dict[int, dict[str, Any]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if type(self.enabled) is not bool:
@@ -197,13 +230,49 @@ class V231LateCurrentABI:
 
         step = observation["step"]
         seat = observation["player"]
-        state = self._states.get(seat)
-        if state is None or step <= state["last"]:
-            state = self._states[seat] = _new_state()
-        return self._transform_valid(observation, selected, state)
+        committed = self._states.get(seat)
+        transaction = self._transactions.get(seat)
+
+        if committed is None or step < committed["last"]:
+            # A true rewind/new episode discards old ownership and retry custody.
+            committed = _new_state()
+            self._states[seat] = committed
+            self._transactions.pop(seat, None)
+            transaction = None
+
+        if step == committed["last"]:
+            # Current ABI may retry a callback. Recompute changed evidence only from
+            # the exact pre-step snapshot; never from already-mutated post-state.
+            if transaction is None or transaction.get("step") != step:
+                return copy.deepcopy(selected)
+            if (
+                observation == transaction["observation"]
+                and selected == transaction["selected"]
+            ):
+                self._states[seat] = copy.deepcopy(transaction["post"])
+                return copy.deepcopy(transaction["output"])
+            pre_state = copy.deepcopy(transaction["pre"])
+        else:
+            pre_state = copy.deepcopy(committed)
+
+        working = copy.deepcopy(pre_state)
+        output = self._transform_valid(observation, selected, working)
+        self._states[seat] = working
+        self._transactions[seat] = {
+            "step": step,
+            "pre": copy.deepcopy(pre_state),
+            "observation": copy.deepcopy(observation),
+            "selected": copy.deepcopy(selected),
+            "output": copy.deepcopy(output),
+            "post": copy.deepcopy(working),
+        }
+        return output
 
     def _transform_valid(
-        self, observation: dict[str, Any], selected: dict[str, Any], state: dict[str, Any]
+        self,
+        observation: dict[str, Any],
+        selected: dict[str, Any],
+        state: dict[str, Any],
     ) -> dict[str, Any]:
         step = observation["step"]
         seat = observation["player"]
@@ -235,7 +304,9 @@ class V231LateCurrentABI:
                 state["sites"][(x, y)] = pending_place["day"]
                 state["placed"] += 1
                 actor = pending_place["actor"]
-                state["carrying"][actor] = max(0, state["carrying"].get(actor, 0) - 1)
+                state["carrying"][actor] = max(
+                    0, state["carrying"].get(actor, 0) - 1
+                )
             else:
                 state["failed_placements"] += 1
         state["pending_places"] = []
@@ -245,13 +316,13 @@ class V231LateCurrentABI:
         workers = [result["farmer"], *result["hands"]]
         seen_harvest: set[tuple[int, int]] = set()
         cow_in_shed = shed.get("COW", 0)
-        cow_available = cow_in_shed if _is_int(cow_in_shed) and cow_in_shed > 0 else 0
+        cow_available = (
+            cow_in_shed if _is_int(cow_in_shed) and cow_in_shed > 0 else 0
+        )
         occupied: set[tuple[int, int]] = set()
 
         for actor, work in enumerate(workers[: len(positions)]):
             inventory = inventories[actor]
-            if not isinstance(inventory, dict):
-                continue
             tile = _tile(farm, positions[actor])
             if tile is None:
                 continue
@@ -280,14 +351,17 @@ class V231LateCurrentABI:
                     and cow_available >= quantity
                     and _beside_shed(farm, positions[actor])
                     and not any(
-                        _is_int(inventory.get(animal, 0)) and inventory.get(animal, 0) > 0
+                        _is_int(inventory.get(animal, 0))
+                        and inventory.get(animal, 0) > 0
                         for animal in ANIMALS
                     )
                 ):
                     work[1] = "COW"
                     state["reserved"] -= quantity
                     cow_available -= quantity
-                    state["carrying"][actor] = state["carrying"].get(actor, 0) + quantity
+                    state["carrying"][actor] = (
+                        state["carrying"].get(actor, 0) + quantity
+                    )
                     state["picked"] += quantity
 
             if (
@@ -318,7 +392,9 @@ class V231LateCurrentABI:
         result["farmer"], result["hands"] = workers[0], workers[1:]
         market = result["market"]
         animal_orders = [
-            order for order in market if len(order) >= 3 and order[0] == "BUY_ANIMAL"
+            order
+            for order in market
+            if len(order) >= 3 and order[0] == "BUY_ANIMAL"
         ]
         shops = observation["town"]["unlocked_shops"]
         prices = observation["market"]["prices"]
@@ -334,7 +410,6 @@ class V231LateCurrentABI:
                 cargo += inventory.get(animal, 0)
 
         stock_animals = sum(shed.get(animal, 0) for animal in ANIMALS)
-
         milk_shops = sum(shop in MILK_SHOPS for shop in shops)
         milk_price = prices.get("MILK")
         wool_price = prices.get("WOOL")
@@ -356,7 +431,6 @@ class V231LateCurrentABI:
             and not cargo
             and not stock_animals
             and len(animal_orders) == 1
-            and len(animal_orders[0]) >= 3
             and animal_orders[0][1] == "SHEEP"
             and counts["COW"] >= 4
             and counts["SHEEP"] >= 2
@@ -371,7 +445,10 @@ class V231LateCurrentABI:
                 order[1] = "COW"
                 state["requested"] += quantity
                 before = shed.get("COW", 0)
-                state["pending_buy"] = {"before": before, "quantity": quantity}
+                state["pending_buy"] = {
+                    "before": before,
+                    "quantity": quantity,
+                }
 
         if state["milk_credit"] > 0:
             stock = _projected_shed(result, observation)
@@ -385,7 +462,8 @@ class V231LateCurrentABI:
                 ):
                     total_planned += order[2]
             extra = min(
-                state["milk_credit"], max(0, stock.get("MILK", 0) - total_planned)
+                state["milk_credit"],
+                max(0, stock.get("MILK", 0) - total_planned),
             )
             if extra:
                 for order in market:
