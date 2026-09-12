@@ -97,6 +97,22 @@ def _v217_probe_advance(tiles,pos,cmd):
         return None
     return nxt
 
+def _v217_probe_path(tiles,start,target):
+    pos=start;moves=[]
+    while pos[0]!=target[0]:
+        move='EAST' if pos[0]<target[0] else 'WEST'
+        nxt=_v217_probe_advance(tiles,pos,[move])
+        if nxt is None:
+            return None
+        moves.append(move);pos=nxt
+    while pos[1]!=target[1]:
+        move='SOUTH' if pos[1]<target[1] else 'NORTH'
+        nxt=_v217_probe_advance(tiles,pos,[move])
+        if nxt is None:
+            return None
+        moves.append(move);pos=nxt
+    return moves
+
 def _v217_probe_feed_coverage(view,action,tape,step,end):
     positions=[tuple(pos) for pos in view.positions]
     if (not positions or any(len(pos)!=2 or any(type(v) is not int for v in pos)
@@ -114,7 +130,8 @@ def _v217_probe_feed_coverage(view,action,tape,step,end):
         for actor,cmd in enumerate(commands):
             if cmd[0]=='FEED':
                 tile,valid=_v217_probe_tile(tiles,positions[actor])
-                if not valid or not isinstance(tile,dict) or not tile.get('animal'):
+                if (not valid or not isinstance(tile,dict)
+                        or tile.get('animal') not in ('GOOSE','COW','SHEEP')):
                     return None
                 targets.add(positions[actor]);count+=1
         next_positions=[]
@@ -152,22 +169,26 @@ def _v217_probe_observe(view,st,step,action,pending,tape,end):
     targets=[]
     for y,row in enumerate(view.tiles):
         for x,tile in enumerate(row):
-            if (isinstance(tile,dict) and tile.get('animal') and not tile.get('fed_today')
+            if (isinstance(tile,dict) and tile.get('animal') in ('GOOSE','COW','SHEEP')
+                    and tile.get('fed_today') is False
                     and tile.get('consecutive_unfed',0)>=1 and (x,y) not in feed_targets):
                 targets.append((abs(x-start[0])+abs(y-start[1]),y,x))
     for distance,y,x in sorted(targets):
-        moves=(['EAST']*max(0,x-start[0])+['WEST']*max(0,start[0]-x)
-               +['SOUTH']*max(0,y-start[1])+['NORTH']*max(0,start[1]-y))
+        moves=_v217_probe_path(view.tiles,start,(x,y))
+        if moves is None:
+            continue
         opposite={'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}
         commands=([['PICKUP','WHEAT']] if need_pickup else [])+[[m] for m in moves]+[['FEED']]+[[opposite[m]] for m in reversed(moves)]
         if len(commands)>end-step or any(_v217_farmer(tape,step+i)!=['PASS'] for i in range(len(commands))):
             continue
-        pos=start
+        pos=start;safe=True
         for cmd in commands:
-            if cmd[0] in _V217_MOVES:
-                dx,dy=_V217_MOVES[cmd[0]];pos=(pos[0]+dx,pos[1]+dy)
-        if pos!=start:
-            return
+            nxt=_v217_probe_advance(view.tiles,pos,cmd)
+            if nxt is None:
+                safe=False;break
+            pos=nxt
+        if not safe or pos!=start:
+            continue
         _V217_PROBE_REPORT['counterfactual_plan']+=1
         events=_V217_PROBE_REPORT['events']
         if len(events)<64:
