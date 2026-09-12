@@ -1,9 +1,9 @@
 {
   "authored_files": {
     "LOCKSTEP-JOIN.md": {
-      "bytes": 5074,
-      "git_blob": "8c895dfa44e03ce0395e09aab0ebb5ac88d954e0",
-      "sha256": "d43d918ba4eda363c2546d995bb45b54cca00a6936a4b146bc50cf0463a19267"
+      "bytes": 5151,
+      "git_blob": "d31a8c528fca3d335a4662e76f0689f22638c1cd",
+      "sha256": "44efd3c2577cb5909d500315e632969b3cd4a17b6c10b323fb301bd1c969ec64"
     },
     "compose_native_return_bridge.py": {
       "bytes": 8055,
@@ -11,9 +11,9 @@
       "sha256": "56b43ad9106dffe417a11a7665aa7fddf6d28946ed0e156ea6d47e6dc4d0c266"
     },
     "native_return_bridge.py": {
-      "bytes": 18408,
-      "git_blob": "38f16c792177e3ff1f72d235632b2e2ea2da3285",
-      "sha256": "9eb1a2614f375ca5c75f448b0ed7c68c07795c6a66ef4e23886b190ffce5c4ec"
+      "bytes": 18759,
+      "git_blob": "c72efae541459e9c66afc2f68104f43e85123b48",
+      "sha256": "0cb16484aa3e2afae8591b237d35f5077780d5859c318c7b9bb5e50899dfb714"
     },
     "test_compose_native_return_bridge.py": {
       "bytes": 2218,
@@ -21,9 +21,9 @@
       "sha256": "2b98e62d30af98b6b1fe96447470fffdc413f9ba221731e765ee146471d83ab0"
     },
     "test_native_return_bridge.py": {
-      "bytes": 8636,
-      "git_blob": "4917cfb7ec2c3482a68867dde88903eef90b25a8",
-      "sha256": "d4c37f18f2d7c968a6922d6eb4f4446043ed2715e472461dcc9a37df468df959"
+      "bytes": 9348,
+      "git_blob": "cc38fd209d4c994c9c4207063267531b1b57fc0a",
+      "sha256": "0a695abf0d7af14c2785624da1c6c351c619eee15df586510cc8e5eb5342881c"
     },
     "test_wheat_boundary.py": {
       "bytes": 1180,
@@ -45,21 +45,21 @@
   "normal": {
     "errors": 0,
     "failed": 0,
-    "passed": 22,
+    "passed": 23,
     "skipped": 0,
-    "tests": 22
+    "tests": 23
   },
   "optimized": {
     "errors": 0,
     "failed": 0,
-    "passed": 22,
+    "passed": 23,
     "skipped": 0,
-    "tests": 22
+    "tests": 23
   },
   "runtime_rebind": {
     "commit": "682ad62823842910ec01f4452b4b30802b322d85",
     "scope": "module-cache hit namespace binding only; bridge feature anchors unchanged"
   },
-  "schema": "titan-v4-lockstep-return-bridge-validation/v2",
-  "scope": "source/semantic integration; native seven-product seller only; WHEAT/FERTILIZER rejected; no strength or promotion claim"
+  "schema": "titan-v4-lockstep-return-bridge-validation/v3",
+  "scope": "source/semantic integration; exact authority loader namespace bound; native seven-product seller only; WHEAT/FERTILIZER rejected; no strength or promotion claim"
 }
