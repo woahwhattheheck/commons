@@ -13,10 +13,11 @@ core of the historical claim:
 Two constructed witnesses are retained deliberately:
 
 * ``run_pair`` is the minimal one-water CARROT proof (+1 possible unit).
-* ``run_amortized_pair`` holds a MELON through all three fertilizer-active days
-  and tests the stronger source consequence: one FERT plus the same two custody/
-  application callbacks can boost three common WATER callbacks, so the action
-  cost is amortized across the whole inclusive three-day fertilizer window.
+* ``run_amortized_pair`` executes a source-reachable MELON survival prefix from
+  day 4 through the day-10 fertilizer window, then holds that crop through all
+  three fertilizer-active days. One FERT plus the same two custody/application
+  callbacks can therefore boost three common WATER callbacks while every
+  intervening EOD transition is executed by the pinned interpreter.
 
 Both deliberately charge the real market buy and use the real interpreter for
 every custody/action transition. Positive constructed cash is mechanism evidence,
@@ -32,7 +33,7 @@ from typing import Any
 
 import opportunity_cost as oc
 
-SCHEMA = "titan.v4.gemini-fert-floor-apply/v2"
+SCHEMA = "titan.v4.gemini-fert-floor-apply/v3"
 ITEM = "FERTILIZER"
 CROP = "CARROT"
 AMORTIZED_CROP = "MELON"
@@ -60,7 +61,8 @@ def floor_buy_threshold(engine: Any) -> int:
 
 
 def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
-             crop: str = CROP, yield_units: int = 1):
+             crop: str = CROP, yield_units: int = 1, plant_day: int = 0,
+             consecutive_unwatered: int = 0):
     if type(fert_inventory) is not int or fert_inventory < 0:
         raise ValueError("fert_inventory must be a nonnegative exact int")
     if type(cash) is not int or cash < 0:
@@ -69,6 +71,10 @@ def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
         raise ValueError("unknown crop")
     if type(yield_units) is not int or yield_units < 0:
         raise ValueError("yield_units must be a nonnegative exact int")
+    if type(plant_day) is not int or plant_day < 0:
+        raise ValueError("plant_day must be a nonnegative exact int")
+    if type(consecutive_unwatered) is not int or consecutive_unwatered < 0:
+        raise ValueError("consecutive_unwatered must be a nonnegative exact int")
     state, env = oc.fixture(engine, seat, cash=cash, wheat_inventory=10000, shops=0)
     obs = state[seat].observation
     obs.market["inventory"][ITEM] = fert_inventory
@@ -76,8 +82,8 @@ def _fixture(engine: Any, seat: int, *, fert_inventory: int, cash: int = 3000,
 
     farm = obs.farms[seat]
     x, y = farm["farmer"]
-    tile = engine._new_plant(crop, 0, env.configuration.turnsPerDay)
-    tile.update(yield_units=yield_units, consecutive_unwatered=0,
+    tile = engine._new_plant(crop, plant_day, env.configuration.turnsPerDay)
+    tile.update(yield_units=yield_units, consecutive_unwatered=consecutive_unwatered,
                 watered_today=False, fertilized_until_day=-1)
     farm["tiles"][y][x] = tile
     return state, env
@@ -181,6 +187,7 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
         "control_harvest_units": control_harvest,
         "incremental_harvest_units": candidate_harvest - control_harvest,
         "fertilizer_active_water_days_used": 1,
+        "market_buy_step": 90,
     })
     result["certificate"] = cert
     return result
@@ -189,29 +196,37 @@ def run_pair(engine: Any, *, seat: int = 0, fert_inventory: int | None = None,
 def run_amortized_pair(engine: Any, *, seat: int = 0,
                        fert_inventory: int | None = None,
                        cash: int = 3000) -> dict:
-    """Use one FERT across the complete three-day MELON WATER window.
+    """Use one FERT across a reachable three-day MELON WATER window.
 
-    MELON planted day 0 can be watered on days 10, 11 and 12. One FERTILIZE on
-    day 10 is active through day 12 inclusive. The candidate and control share
-    the same three WATER callbacks; only BUY/PICKUP/FERTILIZE differ. EOD ticks
-    are executed normally so ``watered_today`` and plant aging are source-real.
+    The fixture begins with a newly planted day-4 MELON, then executes the
+    shared survival prefix through the official interpreter: WATER on days 4,
+    6 and 8 keeps the crop live while all three calls remain before MELON's
+    yield window (age < 6), so the pre-FERT yield at the end of day 9 is still
+    zero. One FERTILIZE on day 10 is then active through day 12 inclusive.
+    Candidate and control share all survival and production WATER callbacks;
+    only BUY/PICKUP/FERTILIZE differ.
     """
     if type(seat) is not int or seat not in (0, 1):
         raise ValueError("seat must be 0 or 1")
     if fert_inventory is None:
         fert_inventory = floor_buy_threshold(engine)
+    plant_day = 4
+    start_step = plant_day * 24
+    prefert_step = 10 * 24 - 1
     world = _fixture(
         engine, seat, fert_inventory=fert_inventory, cash=cash,
-        crop=AMORTIZED_CROP, yield_units=0,
+        crop=AMORTIZED_CROP, yield_units=0, plant_day=plant_day,
+        consecutive_unwatered=1,
     )
     result = {}
+    survival_water_steps = {4 * 24, 6 * 24, 8 * 24}
     water_steps = {10 * 24 + 3, 11 * 24, 12 * 24}
     harvest_step = 12 * 24 + 1
     liquidation_step = 12 * 24 + 2
     for arm in ("control", "floor_apply"):
         state, env = copy.deepcopy(world)
         trace = []
-        for step in range(10 * 24, liquidation_step + 1):
+        for step in range(start_step, liquidation_step + 1):
             market = []
             if arm == "floor_apply" and step == 10 * 24:
                 market = [["BUY_PRODUCT", ITEM, 1]]
@@ -219,7 +234,7 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
                 row = ["PICKUP", ITEM]
             elif arm == "floor_apply" and step == 10 * 24 + 2:
                 row = ["FERTILIZE"]
-            elif step in water_steps:
+            elif step in survival_water_steps or step in water_steps:
                 row = ["WATER"]
             elif step == harvest_step:
                 row = ["HARVEST"]
@@ -238,6 +253,8 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
         AMORTIZED_CROP, 0)
     control_harvest = _trace_at(control, harvest_step)["inventories"][0].get(
         AMORTIZED_CROP, 0)
+    prefert_candidate = _trace_at(candidate, prefert_step)["tile"]
+    prefert_control = _trace_at(control, prefert_step)["tile"]
     cert = _base_certificate(
         engine, seat=seat, fert_inventory=fert_inventory,
         control=control, candidate=candidate,
@@ -245,11 +262,17 @@ def run_amortized_pair(engine: Any, *, seat: int = 0,
     cert.update({
         "witness": "AMORTIZED_THREE_DAY_MELON",
         "crop": AMORTIZED_CROP,
+        "plant_day": plant_day,
         "candidate_harvest_units": candidate_harvest,
         "control_harvest_units": control_harvest,
         "incremental_harvest_units": candidate_harvest - control_harvest,
         "fertilizer_active_water_days_used": 3,
+        "shared_survival_water_steps": sorted(survival_water_steps),
         "common_water_steps": sorted(water_steps),
+        "prefert_snapshot_step": prefert_step,
+        "prefert_candidate_tile": prefert_candidate,
+        "prefert_control_tile": prefert_control,
+        "market_buy_step": 10 * 24,
         "extra_unit_callbacks_per_incremental_unit": (
             2 / (candidate_harvest - control_harvest)
             if candidate_harvest > control_harvest else None
@@ -278,7 +301,7 @@ def run_panel(engine: Any) -> dict:
         "limits": [
             "Constructed idle-callback fixtures; no natural/current-native reachability claim",
             "Two extra unit callbacks are real opportunity cost and are not assigned zero field value",
-            "The amortized witness reuses the same PICKUP/FERTILIZE cost across three common WATER days",
+            "The amortized witness executes its shared survival prefix and reuses the same PICKUP/FERTILIZE cost across three common WATER days",
             "Rival is PASS; no opponent-robustness claim",
             "Positive cash in these fixtures is mechanism evidence only, not promotion authority",
         ],

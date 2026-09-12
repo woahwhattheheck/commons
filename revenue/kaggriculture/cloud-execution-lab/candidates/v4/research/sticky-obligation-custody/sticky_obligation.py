@@ -354,6 +354,31 @@ def _pickup_quantity(row: Mapping[str, Any], item: str) -> int:
     return _positive_int(row.get("quantity", 1), "projected pickup quantity")
 
 
+def _authenticated_sink_units(
+    row: Mapping[str, Any], *, item: str, sink_op: str
+) -> int:
+    """Return one only for caller-authenticated item consumption.
+
+    Official FEED/FERTILIZE rows are not intrinsically sinks: both can legally
+    no-op before inventory is consumed.  This proof therefore refuses to infer
+    consumption from action syntax.  The projection owner must explicitly bind
+    an authenticated one-unit consumption of the obligation item.
+    """
+    if _op(row) != sink_op:
+        return 0
+    authenticated = row.get("consumption_authenticated", False)
+    if type(authenticated) is not bool:
+        raise UnsupportedObligation("sink consumption_authenticated must be a bool")
+    if authenticated is not True:
+        return 0
+    if row.get("consumed_item") != item:
+        raise UnsupportedObligation("authenticated sink consumed_item mismatch")
+    units = _positive_int(row.get("consumed_units"), "authenticated sink consumed_units")
+    if units != 1:
+        raise UnsupportedObligation("official FEED/FERTILIZE sink must consume exactly one item")
+    return 1
+
+
 def prove_carry_consumption(
     obligation: Any,
     projected_rows: Any,
@@ -366,6 +391,10 @@ def prove_carry_consumption(
     treats WHEAT HARVEST as unknown additional acquisition.  The obligation's
     own proactive pickup is *not* included in ``current_inventory_units``; it is
     the extra quantity this proof is trying to reserve sink capacity for.
+
+    FEED/FERTILIZE action names alone do not prove consumption.  A projected
+    sink contributes capacity only when the caller explicitly authenticates a
+    one-unit consumption of the obligation item on that row.
     """
     ob = validate_obligation(obligation)
     if ob.kind != CARRY_KIND or ob.actor is None or ob.item is None:
@@ -373,8 +402,25 @@ def prove_carry_consumption(
     burden = _nonnegative_int(current_inventory_units, "current_inventory_units")
     sinks = 0
     sink_op = CARRY_SINK[ob.item]
+    rows = _rows(projected_rows)
 
-    for row in _rows(projected_rows):
+    # A projected callback can contain at most one unit action for a given actor.
+    # Validate the complete relevant window before sink accounting so an early
+    # successful FEED/FERTILIZE cannot hide a later impossible duplicate row.
+    seen_actor_steps: set[int] = set()
+    for row in rows:
+        step = _nonnegative_int(row.get("step"), "projected row step")
+        if step <= ob.created_step:
+            continue
+        if step > ob.due_end:
+            break
+        if _actor(row.get("actor"), "projected row actor") != ob.actor:
+            continue
+        if step in seen_actor_steps:
+            raise UnsupportedObligation("duplicate obligated actor row in callback")
+        seen_actor_steps.add(step)
+
+    for row in rows:
         step = _nonnegative_int(row.get("step"), "projected row step")
         if step <= ob.created_step:
             continue
@@ -408,7 +454,10 @@ def prove_carry_consumption(
             burden += 1
             continue
         if op == sink_op:
-            sinks += 1
+            consumed = _authenticated_sink_units(row, item=ob.item, sink_op=sink_op)
+            if consumed == 0:
+                continue
+            sinks += consumed
             if max(0, sinks - burden) >= ob.quantity:
                 return _report(
                     ob,
