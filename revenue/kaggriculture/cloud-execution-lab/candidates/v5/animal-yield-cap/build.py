@@ -46,6 +46,10 @@ def package_digest(root: Path) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
+def _at_or_below(path: Path, root: Path) -> bool:
+    return path == root or root in path.parents
+
+
 def _require_source_identity() -> None:
     if git_blob(HELPER_SOURCE) != EXPECTED_HELPER_BLOB:
         raise ValueError("canonical ANIMAL-HEADROOM helper drift")
@@ -60,7 +64,7 @@ def build_candidate(baseline_root: Path, out: Path) -> dict[str, str]:
         raise ValueError("output directory must be new")
     if not baseline_root.is_dir():
         raise ValueError("baseline root must be a directory")
-    if out == baseline_root or baseline_root in out.parents:
+    if _at_or_below(out, baseline_root):
         raise ValueError("output directory must be outside baseline root")
     parent_main = baseline_root / "main.py"
     if not parent_main.is_file() or parent_main.is_symlink():
@@ -112,12 +116,22 @@ def main(argv=None) -> int:
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--receipt", type=Path)
     args = parser.parse_args(argv)
-    receipt = build_candidate(args.baseline_root, args.out)
-    raw = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
-    if args.receipt:
-        if args.receipt.exists():
+
+    baseline_root = args.baseline_root.resolve()
+    out = args.out.resolve()
+    receipt_path = args.receipt.resolve() if args.receipt else None
+    if receipt_path is not None:
+        if receipt_path.exists():
             raise ValueError("receipt path must be new")
-        args.receipt.write_text(raw)
+        if _at_or_below(receipt_path, baseline_root) or _at_or_below(
+            receipt_path, out
+        ):
+            raise ValueError("receipt path must be outside package roots")
+
+    receipt = build_candidate(baseline_root, out)
+    raw = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+    if receipt_path is not None:
+        receipt_path.write_text(raw)
     print(raw, end="")
     return 0
 
