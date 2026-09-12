@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/current_wheat_buy_census.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/current_wheat_buy_native_entry.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/run_current_wheat_buy_native_census.py'
       - '.github/workflows/titan-v4-townprocure-census.yml'
 
 permissions:
@@ -16,7 +18,7 @@ concurrency:
 jobs:
   census:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Checkout exact PR head
         uses: actions/checkout@v4
@@ -43,17 +45,34 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          CENSUS=candidates/v4/research/market-baseline/current_wheat_buy_census.py
-          python -m py_compile "$CENSUS"
-          python "$CENSUS" --pretty > /tmp/townprocure-normal.json
-          PYTHONOPTIMIZE=1 python "$CENSUS" --pretty > /tmp/townprocure-opt.json
-          cmp /tmp/townprocure-normal.json /tmp/townprocure-opt.json
-          cat /tmp/townprocure-normal.json
+          BASE=candidates/v4/research/market-baseline
+          CENSUS="$BASE/current_wheat_buy_census.py"
+          python -m py_compile \
+            "$CENSUS" \
+            "$BASE/current_wheat_buy_native_entry.py" \
+            "$BASE/run_current_wheat_buy_native_census.py"
+          python "$CENSUS" --pretty > /tmp/townprocure-route-normal.json
+          PYTHONOPTIMIZE=1 python "$CENSUS" --pretty > /tmp/townprocure-route-opt.json
+          cmp /tmp/townprocure-route-normal.json /tmp/townprocure-route-opt.json
+          cat /tmp/townprocure-route-normal.json
+
+      - name: Census actual returned current-native WHEAT purchases
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=candidates/v4/research/market-baseline
+          python "$BASE/run_current_wheat_buy_native_census.py" \
+            --output /tmp/townprocure-native \
+            --seeds 17,101,2026091201
+          cat /tmp/townprocure-native/current-wheat-buy-native-census.json
 
       - name: Upload exact census
         uses: actions/upload-artifact@v4
         with:
           name: titan-v4-townprocure-${{ github.event.pull_request.head.sha }}
-          path: /tmp/townprocure-normal.json
+          path: |
+            /tmp/townprocure-route-normal.json
+            /tmp/townprocure-native/current-wheat-buy-native-census.json
           if-no-files-found: error
           retention-days: 14
