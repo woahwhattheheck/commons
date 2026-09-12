@@ -21,7 +21,7 @@ RUNNER_NAME = "build_composed_postimage.py"
 
 PINNED_CONTROL_BLOBS: dict[str, str] = {
     MANIFEST_NAME: "925221c32f4af05765d35113a2a5498ba80a0c04",
-    CHECKER_NAME: "fd360bec637d802664d3617c250fb676cca03456",
+    CHECKER_NAME: "3dddf28ffbaad3d9e77ab5cb9419d2d74f45dee1",
     RUNNER_NAME: "e99068258744382609a4e0eddbcbdbac6c852ac7",
 }
 

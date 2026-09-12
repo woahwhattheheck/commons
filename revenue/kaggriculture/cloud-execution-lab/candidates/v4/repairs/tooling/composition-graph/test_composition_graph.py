@@ -14,6 +14,8 @@ class CompositionGraphTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         (self.root / "pkg").mkdir()
+        (self.root / "repairs").mkdir()
+        (self.root / "research").mkdir()
         (self.root / "pkg" / "port_a.py").write_text("# a\n", encoding="utf-8")
         (self.root / "pkg" / "port_b.py").write_text("# b\n", encoding="utf-8")
 
@@ -21,6 +23,8 @@ class CompositionGraphTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def manifest(self, components, *, patterns=None, strict=True):
+        required_patterns = sorted(cg.REQUIRED_DISCOVERY_PATTERNS)
+        extra_patterns = list(patterns or [])
         return {
             "schema": "titan-v4-composition/v1",
             "mode": "fail_closed",
@@ -28,8 +32,8 @@ class CompositionGraphTests(unittest.TestCase):
             "canonical_root": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
             "components": components,
             "discovery": {
-                "roots": ["pkg"],
-                "patterns": patterns or [],
+                "roots": ["pkg", *sorted(cg.REQUIRED_DISCOVERY_ROOTS)],
+                "patterns": required_patterns + extra_patterns,
                 "strict": strict,
                 "ignore": [],
             },
@@ -74,7 +78,7 @@ class CompositionGraphTests(unittest.TestCase):
             "after": [],
             "conflicts": [],
         }
-        result = cg.validate_manifest(self.manifest([evidence]), self.root)
+        result = cg.validate_manifest(self.manifest([evidence], patterns=["port_a.py"]), self.root)
         self.assertTrue(result["ok"], result)
         self.assertEqual(result["plan"], [])
         self.assertEqual(result["evidence_only"], ["native-equivalence"])
@@ -82,19 +86,19 @@ class CompositionGraphTests(unittest.TestCase):
     def test_unordered_overlap_fails(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out")
         b = self.comp("b", "pkg/port_b.py", "base", "b-out")
-        result = cg.validate_manifest(self.manifest([a, b]), self.root)
+        result = cg.validate_manifest(self.manifest([a, b], patterns=["port_a.py","port_b.py"]), self.root)
         self.assertIn("unordered_surface_overlap", self.codes(result))
 
     def test_stale_preimage_fails(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out", before=["b"])
         b = self.comp("b", "pkg/port_b.py", "WRONG", "b-out")
-        result = cg.validate_manifest(self.manifest([a, b]), self.root)
+        result = cg.validate_manifest(self.manifest([a, b], patterns=["port_a.py","port_b.py"]), self.root)
         self.assertIn("stale_preimage", self.codes(result))
 
     def test_cycle_fails(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out", after=["b"])
         b = self.comp("b", "pkg/port_b.py", "a-out", "b-out", after=["a"])
-        result = cg.validate_manifest(self.manifest([a, b]), self.root)
+        result = cg.validate_manifest(self.manifest([a, b], patterns=["port_a.py","port_b.py"]), self.root)
         self.assertIn("dependency_cycle", self.codes(result))
         self.assertEqual(result["plan"], [])
 
@@ -103,6 +107,89 @@ class CompositionGraphTests(unittest.TestCase):
         result = cg.validate_manifest(self.manifest([a], patterns=["port_*.py"]), self.root)
         self.assertIn("unregistered_entrypoint", self.codes(result))
         self.assertEqual(result["unregistered"], ["pkg/port_b.py"])
+
+    def test_discovery_strict_false_cannot_downgrade_unregistered_to_warning(self):
+        a = self.comp("a", "pkg/port_a.py", "base", "a-out")
+        result = cg.validate_manifest(self.manifest([a], patterns=["port_*.py"], strict=False), self.root)
+        self.assertFalse(result["ok"], result)
+        self.assertIn("discovery_not_strict", self.codes(result))
+        self.assertIn("unregistered_entrypoint", self.codes(result))
+        self.assertEqual(result["warnings"], [])
+
+    def test_unsafe_discovery_root_fails_instead_of_disappearing(self):
+        manifest = self.manifest([], patterns=["port_a.py"])
+        manifest["discovery"]["roots"] = ["../pkg"]
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("bad_discovery_root", self.codes(result))
+
+    def test_non_string_discovery_pattern_fails_instead_of_disappearing(self):
+        manifest = self.manifest([])
+        manifest["discovery"]["patterns"] = [17]
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("bad_discovery_pattern", self.codes(result))
+
+    def test_malformed_ignore_fails_instead_of_silently_not_ignoring(self):
+        manifest = self.manifest([], patterns=["port_*.py"])
+        manifest["discovery"]["ignore"] = [{"path": "pkg/port_a.py", "reason": ""}]
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("ignore_without_reason", self.codes(result))
+
+    def test_empty_discovery_roots_cannot_disable_census(self):
+        manifest = self.manifest([], patterns=["port_a.py"])
+        manifest["discovery"]["roots"] = []
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("discovery_roots_empty", self.codes(result))
+
+    def test_empty_discovery_patterns_cannot_disable_census(self):
+        manifest = self.manifest([])
+        manifest["discovery"]["patterns"] = []
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("discovery_patterns_empty", self.codes(result))
+
+    def test_package_must_be_directory(self):
+        a = self.comp("a", "pkg/port_a.py", "base", "a-out", package="pkg/port_a.py")
+        result = cg.validate_manifest(self.manifest([a], patterns=["port_a.py"]), self.root)
+        rows = [e for e in result["errors"] if e["code"] == "unsafe_package_resolution"]
+        self.assertTrue(rows, result)
+        self.assertEqual(rows[0].get("reason"), "not_directory")
+
+    def test_entrypoint_must_be_regular_file(self):
+        (self.root / "pkg" / "dir.py").mkdir()
+        a = self.comp("a", "pkg/dir.py", "base", "a-out")
+        result = cg.validate_manifest(self.manifest([a], patterns=["port_a.py"]), self.root)
+        rows = [e for e in result["errors"] if e["code"] == "unsafe_entrypoint_resolution"]
+        self.assertTrue(rows, result)
+        self.assertEqual(rows[0].get("reason"), "not_file")
+
+
+    def test_discovery_roots_cannot_narrow_away_canonical_research(self):
+        manifest = self.manifest([], patterns=["port_a.py"])
+        manifest["discovery"]["roots"] = ["pkg", "repairs"]
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("missing_required_discovery_root", self.codes(result))
+
+    def test_discovery_patterns_cannot_drop_canonical_coverage(self):
+        manifest = self.manifest([])
+        dropped = sorted(cg.REQUIRED_DISCOVERY_PATTERNS)[0]
+        manifest["discovery"]["patterns"].remove(dropped)
+        result = cg.validate_manifest(manifest, self.root)
+        self.assertIn("missing_required_discovery_pattern", self.codes(result))
+
+    def test_registered_entrypoint_must_be_reached_by_discovery(self):
+        a = self.comp("a", "pkg/port_a.py", "base", "a-out")
+        result = cg.validate_manifest(self.manifest([a]), self.root)
+        self.assertIn("registered_entrypoint_not_discovered", self.codes(result))
+
+    def test_symlink_ancestor_fails_closed(self):
+        real = self.root / "real"
+        real.mkdir()
+        (real / "entry.py").write_text("# real\n", encoding="utf-8")
+        alias = self.root / "alias"
+        try:
+            alias.symlink_to(real, target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlinks unavailable")
+        self.assertEqual(cg._path_status(self.root, "alias/entry.py", expected="file"), "symlink")
 
     def test_active_requires_blocked_fails(self):
         blocked = {
@@ -118,13 +205,13 @@ class CompositionGraphTests(unittest.TestCase):
             "conflicts": [],
         }
         a = self.comp("a", "pkg/port_a.py", "base", "a-out", requires=["hold"])
-        result = cg.validate_manifest(self.manifest([blocked, a]), self.root)
+        result = cg.validate_manifest(self.manifest([blocked, a], patterns=["port_a.py"]), self.root)
         self.assertIn("active_requires_noncompose", self.codes(result))
 
     def test_active_conflict_fails(self):
         a = self.comp("a", "pkg/port_a.py", "base", "a-out", conflicts=["b"])
         b = self.comp("b", "pkg/port_b.py", "a-out", "b-out", after=["a"])
-        result = cg.validate_manifest(self.manifest([a, b]), self.root)
+        result = cg.validate_manifest(self.manifest([a, b], patterns=["port_a.py","port_b.py"]), self.root)
         self.assertIn("active_conflict", self.codes(result))
 
     def test_ignore_requires_reason(self):
@@ -134,7 +221,7 @@ class CompositionGraphTests(unittest.TestCase):
         self.assertIn("ignore_without_reason", self.codes(result))
 
     def test_wrong_canonical_root_fails(self):
-        manifest = self.manifest([])
+        manifest = self.manifest([], patterns=["port_a.py"])
         manifest["canonical_root"] = "revenue/kaggriculture/cloud-execution-lab/candidates/v4-copy"
         result = cg.validate_manifest(manifest, self.root)
         self.assertIn("wrong_canonical_root", self.codes(result))
@@ -148,7 +235,7 @@ class CompositionGraphTests(unittest.TestCase):
         except (OSError, NotImplementedError):
             self.skipTest("symlinks unavailable")
         a = self.comp("a", "pkg/linked.py", "base", "a-out")
-        result = cg.validate_manifest(self.manifest([a]), self.root)
+        result = cg.validate_manifest(self.manifest([a], patterns=["port_a.py"]), self.root)
         self.assertIn("unsafe_entrypoint_resolution", self.codes(result))
 
     def test_reachable_follows_directed_edges(self):

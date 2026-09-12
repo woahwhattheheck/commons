@@ -14,6 +14,18 @@ from typing import Any
 ALLOWED_STATES = {"compose", "blocked", "evidence_only"}
 CANONICAL_BRANCH = "main"
 CANONICAL_ROOT = "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+REQUIRED_DISCOVERY_ROOTS = frozenset({"repairs", "research"})
+REQUIRED_DISCOVERY_PATTERNS = frozenset({
+    "port_current_runtime.py",
+    "build_native_d4.py",
+    "row_shed_sell_order.py",
+    "repairs/performance/funding-replay/apply_town_funding.py",
+    "repairs/runtime/joint-unit-projection/compose.py",
+    "repairs/performance/funding-replay/apply_funding_replay.py",
+    "repairs/performance/funding-replay/compose_funding_capacity.py",
+    "repairs/performance/compose_scoped_constructor.py",
+    "repairs/performance/projection-state-clone/compose.py",
+})
 
 
 def _issue(code: str, component: str | None = None, **details: Any) -> dict[str, Any]:
@@ -35,18 +47,26 @@ def _stable_issues(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(items, key=lambda x: json.dumps(x, sort_keys=True, separators=(",", ":")))
 
 
-def _path_status(root: Path, rel: str) -> str:
-    candidate = root / PurePosixPath(rel)
+def _path_status(root: Path, rel: str, *, expected: str | None = None) -> str:
     try:
-        root_real = root.resolve()
-        if candidate.is_symlink():
+        if root.is_symlink():
             return "symlink"
+        root_real = root.resolve()
+        candidate = root_real
+        for part in PurePosixPath(rel).parts:
+            candidate = candidate / part
+            if candidate.is_symlink():
+                return "symlink"
         resolved = candidate.resolve()
         resolved.relative_to(root_real)
     except (OSError, RuntimeError, ValueError):
         return "escape"
     if not resolved.exists():
         return "missing"
+    if expected == "file" and not resolved.is_file():
+        return "not_file"
+    if expected == "directory" and not resolved.is_dir():
+        return "not_directory"
     return "ok"
 
 
@@ -97,7 +117,7 @@ def _discover(root: Path, discovery: dict[str, Any]) -> tuple[set[str], set[str]
         if not _safe_relpath(scan_root):
             continue
         base = root / PurePosixPath(scan_root)
-        if _path_status(root, scan_root) != "ok" or not base.is_dir():
+        if _path_status(root, scan_root, expected="directory") != "ok":
             unsafe.add(scan_root)
             continue
         for path in base.rglob("*"):
@@ -114,6 +134,64 @@ def _discover(root: Path, discovery: dict[str, Any]) -> tuple[set[str], set[str]
             ):
                 found.add(rel)
     return found, unsafe
+
+
+def _validate_discovery_schema(discovery: Any, errors: list[dict[str, Any]]) -> dict[str, Any] | None:
+    if not isinstance(discovery, dict):
+        errors.append(_issue("discovery_not_object"))
+        return None
+
+    if discovery.get("strict") is not True:
+        errors.append(_issue("discovery_not_strict", actual=discovery.get("strict")))
+
+    roots = discovery.get("roots")
+    if not isinstance(roots, list):
+        errors.append(_issue("discovery_roots_not_list"))
+    elif not roots:
+        errors.append(_issue("discovery_roots_empty"))
+    else:
+        for index, scan_root in enumerate(roots):
+            if not _safe_relpath(scan_root):
+                errors.append(_issue("bad_discovery_root", index=index, path=scan_root))
+        safe_roots = {scan_root for scan_root in roots if _safe_relpath(scan_root)}
+        for required in sorted(REQUIRED_DISCOVERY_ROOTS - safe_roots):
+            errors.append(_issue("missing_required_discovery_root", root=required))
+
+    patterns = discovery.get("patterns")
+    if not isinstance(patterns, list):
+        errors.append(_issue("discovery_patterns_not_list"))
+    elif not patterns:
+        errors.append(_issue("discovery_patterns_empty"))
+    else:
+        for index, pattern in enumerate(patterns):
+            if not isinstance(pattern, str) or not pattern:
+                errors.append(_issue("bad_discovery_pattern", index=index, pattern=pattern))
+        safe_patterns = {pattern for pattern in patterns if isinstance(pattern, str) and pattern}
+        for required in sorted(REQUIRED_DISCOVERY_PATTERNS - safe_patterns):
+            errors.append(_issue("missing_required_discovery_pattern", pattern=required))
+
+    raw_ignore = discovery.get("ignore")
+    if not isinstance(raw_ignore, list):
+        errors.append(_issue("discovery_ignore_not_list"))
+    else:
+        for index, item in enumerate(raw_ignore):
+            if isinstance(item, str):
+                if _safe_relpath(item):
+                    errors.append(_issue("ignore_without_reason", path=item))
+                else:
+                    errors.append(_issue("bad_discovery_ignore_path", index=index, path=item))
+                continue
+            if not isinstance(item, dict):
+                errors.append(_issue("bad_discovery_ignore_item", index=index))
+                continue
+            path = item.get("path")
+            reason = item.get("reason")
+            if not _safe_relpath(path):
+                errors.append(_issue("bad_discovery_ignore_path", index=index, path=path))
+            if not isinstance(reason, str) or not reason.strip():
+                errors.append(_issue("ignore_without_reason", path=path))
+
+    return discovery
 
 
 def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
@@ -173,7 +251,7 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
         if not _safe_relpath(package):
             errors.append(_issue("unsafe_package_path", cid, path=package))
         else:
-            status = _path_status(root, package)
+            status = _path_status(root, package, expected="directory")
             if status == "missing":
                 errors.append(_issue("missing_package", cid, path=package))
             elif status != "ok":
@@ -187,7 +265,7 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
             if not _safe_relpath(ep):
                 errors.append(_issue("unsafe_entrypoint_path", cid, path=ep))
                 continue
-            status = _path_status(root, ep)
+            status = _path_status(root, ep, expected="file")
             if status == "missing":
                 errors.append(_issue("missing_entrypoint", cid, path=ep))
             elif status != "ok":
@@ -293,9 +371,9 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
                         actual_input=right_t["input_identity"],
                     ))
 
-    discovery = manifest.get("discovery", {})
+    discovery = _validate_discovery_schema(manifest.get("discovery"), errors)
     unregistered: list[str] = []
-    if isinstance(discovery, dict):
+    if discovery is not None:
         found, unsafe_discovery = _discover(root, discovery)
         for path in sorted(unsafe_discovery):
             errors.append(_issue("unsafe_discovery_path", path=path))
@@ -305,14 +383,11 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> dict[str, Any]:
             for item in raw_ignore:
                 if isinstance(item, dict) and _safe_relpath(item.get("path")) and isinstance(item.get("reason"), str) and item["reason"].strip():
                     ignored.add(item["path"])
-                elif isinstance(item, str) and _safe_relpath(item):
-                    errors.append(_issue("ignore_without_reason", path=item))
+        for path in sorted(set(entrypoint_owner) - found):
+            errors.append(_issue("registered_entrypoint_not_discovered", path=path))
         unregistered = sorted(found - set(entrypoint_owner) - ignored)
-        issue_sink = errors if discovery.get("strict") is True else warnings
         for path in unregistered:
-            issue_sink.append(_issue("unregistered_entrypoint", path=path))
-    elif discovery:
-        errors.append(_issue("discovery_not_object"))
+            errors.append(_issue("unregistered_entrypoint", path=path))
 
     return {
         "ok": not errors,
