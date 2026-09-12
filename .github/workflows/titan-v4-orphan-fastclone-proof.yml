@@ -1,3 +1,4 @@
+# Actual-corpus gate trigger; source support is pinned below.
 # Proof-only lane; does not move TITAN V4 gameplay refs.
 name: TITAN V4 orphan fast-clone donor validate
 
