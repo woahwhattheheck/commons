@@ -1,0 +1,61 @@
+name: TITAN V4 TOWNSELL current-route source census
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_source_census.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/test_town_sale_source_census.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/TOWNSELL-SOURCE-CENSUS.md'
+      - '.github/workflows/titan-v4-townsell-source-census.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_deferral.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_wheat_timing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_source_census.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/test_town_sale_source_census.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/TOWNSELL-SOURCE-CENSUS.md'
+      - '.github/workflows/titan-v4-townsell-source-census.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_deferral.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_wheat_timing.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py'
+
+permissions:
+  contents: read
+
+jobs:
+  source-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run source-census regressions
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline
+        run: python -B test_town_sale_source_census.py
+      - name: Run source-census regressions under optimized Python
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline
+        run: python -O -B test_town_sale_source_census.py
+      - name: Prove normal and optimized receipts are byte-identical
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline
+        run: |
+          python -B town_sale_source_census.py --json > /tmp/townsell-normal.json
+          python -O -B town_sale_source_census.py --json > /tmp/townsell-opt.json
+          cmp /tmp/townsell-normal.json /tmp/townsell-opt.json
+          sha256sum /tmp/townsell-normal.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/townsell-normal.json'))
+          print('TOWNSELL_SOURCE_STATUS', r['status'])
+          print('TOWNSELL_SOURCE_COUNTS', json.dumps(r['counts'], sort_keys=True))
+          for row in r['source_safe_windows']:
+              print('TOWNSELL_SOURCE_SAFE', row['route'], row['step'], row['item'], row['authored_quantity'])
+          PY
+      - name: Compile source census
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline
+        run: python -m py_compile town_sale_source_census.py test_town_sale_source_census.py
