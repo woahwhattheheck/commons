@@ -1,0 +1,67 @@
+name: astra-titan-v4-runtime-install-shape
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+            /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+      - name: Materialize pin and inspect generated install dataflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import ast, hashlib, json, pathlib, subprocess, sys
+          lab = pathlib.Path('revenue/kaggriculture/cloud-execution-lab/candidates/v3')
+          archive = pathlib.Path('revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz')
+          pinned = json.loads((lab/'V3-MANIFEST.json').read_text())['base']['sha256']
+          historical = f'revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-{pinned}.tar.gz'
+          def digest(data): return hashlib.sha256(data).hexdigest()
+          def cat(ref,path):
+              p=subprocess.run(['git','cat-file','-e',f'{ref}:{path}'],capture_output=True)
+              return None if p.returncode else subprocess.check_output(['git','cat-file','blob',f'{ref}:{path}'])
+          head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(); chosen=None
+          data=cat(head,str(archive))
+          if data is not None and digest(data)==pinned: chosen=data
+          if chosen is None:
+              subprocess.run(['git','fetch','--no-tags','--filter=blob:none','--depth=1','origin','main'],check=True)
+              main=subprocess.check_output(['git','rev-parse','FETCH_HEAD'],text=True).strip()
+              for data in (cat(main,historical),cat(main,str(archive))):
+                  if data is not None and digest(data)==pinned: chosen=data; break
+          if chosen is None: raise SystemExit('PIN_MATERIALIZATION_FAIL')
+          archive.parent.mkdir(parents=True,exist_ok=True); archive.write_bytes(chosen)
+          sys.path.insert(0,str(lab.resolve()))
+          import build_v3
+          files=build_v3.package_files()
+          src=files['titan_runtime.py'].decode('utf-8')
+          tree=ast.parse(src,filename='titan_runtime.py')
+          agent=[n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='TitanAgent'][-1]
+          methods={n.name:n for n in agent.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef))}
+          print('ARCHIVE_OK',pinned,len(chosen))
+          print('TITAN_METHOD_NAMES',sorted(methods))
+          target=methods.get('_v3_r03_act') or methods.get('act')
+          if target is None: raise SystemExit('NO_RUNTIME_ROUTE_METHOD')
+          print('TARGET_METHOD',target.name,'LINES',target.lineno,target.end_lineno)
+          print('TARGET_UNPARSE_BEGIN')
+          print(ast.unparse(target))
+          print('TARGET_UNPARSE_END')
+          for n in ast.walk(target):
+              if isinstance(n,ast.ImportFrom) and n.module=='r04_full_router':
+                  print('R04_IMPORT',n.lineno,ast.unparse(n))
+              if isinstance(n,ast.Call) and ((isinstance(n.func,ast.Name) and n.func.id=='install') or (isinstance(n.func,ast.Name) and n.func.id.endswith('install'))):
+                  print('INSTALL_CALL',n.lineno,ast.unparse(n))
+          PY
