@@ -50,7 +50,8 @@ class ComposerTests(unittest.TestCase):
 
         tree = ast.parse(out)
         node = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == "Features")
-        source = ast.get_source_segment(out, node)
+        start = min([node.lineno, *(item.lineno for item in node.decorator_list)]) - 1
+        source = "".join(out.splitlines(keepends=True)[start:node.end_lineno])
         namespace = {"__name__": __name__, "dataclass": dataclass, "math": math}
         exec(source, namespace)
         Features = namespace["Features"]
