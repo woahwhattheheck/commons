@@ -15,6 +15,23 @@
     "prefix_equivalence_cases": 25,
     "baseline_failure_subcases": 24
   },
+  "canonical_fold": {
+    "branch": "main",
+    "status": "source_and_regression_folded_into_existing_donor_paths",
+    "source_pr": 12648,
+    "source_head": "c06fa2539b43067971f3c17176cdbb0377233d1f",
+    "source_main_commit": "c90b74d2fee549a9aabf7d445602562d7cf6ec6d",
+    "test_main_commit": "c2d3c52e52077182a21e62954157a3428f5f6229",
+    "test_path": "donor/overlay/checks/test_v4_h3c_market_prefix.py",
+    "independent_local_python": "3.13.5",
+    "original_contract_suite_blob": "a9acab9b91e3beb76f5286bc5a2e024c70976487",
+    "git_blob_identities_verified_before_execution": true,
+    "normal_and_optimized": "38 tests pass in each mode; exact predecessor fails 24 subcases in each mode; py_compile passes",
+    "source_sha256": "62fe8cac1b988c85b53b58d7b9b4adc29019f72120a7eacd7575b7fa7c81d61a",
+    "test_sha256": "43c0a9df8895be0d8681d75970eac982f1b38347f421cfe077bfd21de074edf6",
+    "focused_command_from_repo_root": "V4=revenue/kaggriculture/cloud-execution-lab/candidates/v4; PYTHONPATH=\"$V4/donor/overlay\" python -B -m unittest discover -s \"$V4/donor/overlay/checks\" -p test_v4_h3c_market_prefix.py",
+    "boundary": "Existing preservation pack retained, not duplicated. No legacy materializer execution, new key/default, production runtime/archive or Kaggle change. Current-ABI full-package, hosted CI and economic promotion are not claimed."
+  },
   "production_activation": false,
   "legacy_ref_movement": false
 }
