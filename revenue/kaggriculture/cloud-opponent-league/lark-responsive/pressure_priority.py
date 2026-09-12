@@ -239,9 +239,14 @@ def transform(action: dict, observation: Mapping,
     otherwise dead holes. Economic feedback can still change later parent
     choices; this is not a global optimality claim.
     """
-    if not isinstance(action, dict) or not isinstance(action.get('market', []), list):
-        raise ValueError('parent policy must return an object with a market list')
+    if not isinstance(action, dict):
+        raise ValueError('parent policy must return an action object')
     result = copy.deepcopy(action)
+    # The pinned engine treats a non-list market container as an empty queue.
+    # Pressure priority is an optional market transform, so match that no-op
+    # boundary instead of converting engine-inert parent bytes into an exception.
+    if not isinstance(action.get('market', []), list):
+        return result
     market = observation.get('market', {}) if isinstance(observation, Mapping) else {}
     if not isinstance(market, Mapping):
         return result
