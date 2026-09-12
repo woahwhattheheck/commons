@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Default-OFF V5 candidate: skip only provably redundant animal FEED actions.
+"""Default-OFF V5 candidate: skip only certified redundant animal FEED actions.
 
 The pinned engine removes an animal only after its second consecutive unfed
 end-of-day. Base animal production is independent of ``fed_today``; feeding is
-required for the CARE bonus. This transform therefore changes a selected FEED
-to PASS only on the zero-strike leg and only when doing so cannot discard a
-current or pending CARE bonus.
+required for the CARE bonus. A one-day survival theorem is not a two-day route
+theorem, so this transform additionally requires the caller to certify that the
+same animal tile has a next-day FEED on the unchanged route/tail.
 
 The module is deliberately not wired into the canonical runtime. It is an
 isolated candidate for matched evaluation.
@@ -81,19 +81,33 @@ def _tile_at(tiles, position):
     return row[x]
 
 
-def apply_alternate_feed(observation, selected):
+def _certificate_positions(values):
+    if not isinstance(values, (list, tuple, set, frozenset)):
+        return None
+    positions = set()
+    for value in values:
+        position = _position(value)
+        if position is None:
+            return None
+        positions.add(position)
+    return frozenset(positions)
+
+
+def apply_alternate_feed(observation, selected, *, next_day_feed_positions=()):
     """Return ``(action, report)`` without mutating either input.
 
-    A FEED is suppressed only when:
+    ``next_day_feed_positions`` is an external route certificate: every tile in
+    it must be proven to receive a FEED before the *next* end-of-day on the same
+    unchanged route/tail. A certificate must be discarded on route switch,
+    checkpoint/rejoin, reset, or any other future-tape change.
+
+    A current FEED is suppressed only when:
+    * its tile is present in that next-day certificate;
     * the actor currently carries at least one WHEAT, so the edit saves a unit;
-    * the actor stands on an animal whose ``consecutive_unfed`` is exactly zero;
+    * the animal is on exact zero-strike state (``consecutive_unfed == 0``);
     * the animal is not already fed or cared today;
     * no pending CARE bonus exists; and
     * no selected CARE action targets the same current tile.
-
-    Skipping on the zero-strike leg advances the engine to one unfed day, which
-    is still a live animal. The next selected FEED is left intact once the
-    observation reports ``consecutive_unfed == 1``.
     """
     context, error = _context(observation, selected)
     report = {
@@ -105,6 +119,14 @@ def apply_alternate_feed(observation, selected):
     if context is None:
         return selected, report
 
+    certified = _certificate_positions(next_day_feed_positions)
+    if certified is None:
+        report["reason"] = "malformed_next_day_feed_certificate"
+        return selected, report
+    if not certified:
+        report["reason"] = "next_day_feed_uncertified"
+        return selected, report
+
     care_positions = {
         position
         for position, action in zip(context["positions"], context["actions"])
@@ -113,9 +135,12 @@ def apply_alternate_feed(observation, selected):
     eligible = []
     for actor, (position, action, inventory) in enumerate(
             zip(context["positions"], context["actions"], context["inventories"])):
+        if position not in certified:
+            continue
         if not _action_is(action, "FEED") or not isinstance(inventory, dict):
             continue
-        if type(inventory.get("WHEAT", 0)) is not int or inventory.get("WHEAT", 0) < 1:
+        wheat = inventory.get("WHEAT", 0)
+        if type(wheat) is not int or wheat < 1:
             continue
         tile = _tile_at(context["tiles"], position)
         if not isinstance(tile, dict) or tile.get("animal") not in _ANIMALS:
