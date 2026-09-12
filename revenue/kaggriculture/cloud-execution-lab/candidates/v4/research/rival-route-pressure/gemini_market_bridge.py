@@ -53,9 +53,18 @@ def _validate_report(report: Mapping[str, Any]) -> list[Mapping[str, Any]]:
         product = row.get("product")
         if not isinstance(product, str) or not product:
             raise UnsupportedBridgeEvidence("pressure row product must be a nonempty string")
-        _strict_nonnegative_int(row.get("incremental_target_sell_units"), "incremental_target_sell_units")
-        _strict_nonnegative_int(row.get("visible_rival_standing_yield"), "visible_rival_standing_yield")
-        _strict_nonnegative_int(row.get("known_current_shop_absorption"), "known_current_shop_absorption")
+        _strict_nonnegative_int(
+            row.get("incremental_target_sell_units"),
+            "incremental_target_sell_units",
+        )
+        _strict_nonnegative_int(
+            row.get("visible_rival_standing_yield"),
+            "visible_rival_standing_yield",
+        )
+        _strict_nonnegative_int(
+            row.get("known_current_shop_absorption"),
+            "known_current_shop_absorption",
+        )
         _strict_nonnegative_int(row.get("public_pressure_units"), "public_pressure_units")
         validated.append(row)
     return validated
@@ -122,10 +131,12 @@ def build_public_partial_timing_envelope(
                 "partial_quantities_tested": bound,
                 "scenario_count": product_count,
                 "incremental_target_sell_units": _strict_nonnegative_int(
-                    row["incremental_target_sell_units"], "incremental_target_sell_units"
+                    row["incremental_target_sell_units"],
+                    "incremental_target_sell_units",
                 ),
                 "known_current_shop_absorption": _strict_nonnegative_int(
-                    row["known_current_shop_absorption"], "known_current_shop_absorption"
+                    row["known_current_shop_absorption"],
+                    "known_current_shop_absorption",
                 ),
                 "public_pressure_units": _strict_nonnegative_int(
                     row["public_pressure_units"], "public_pressure_units"
@@ -159,14 +170,11 @@ def build_public_partial_timing_envelope(
         ],
     }
 
-
-def sale_horizon_scenarios(
-    envelope: Mapping[str, Any],
-) -> list[tuple[str, tuple[tuple[int, int], ...], str]]:
+def sale_horizon_scenarios(envelope: Mapping[str, Any]) -> list[tuple[str, tuple[tuple[int, int], ...], str]]:
     """Compile this bridge packet into the existing sale-horizon scenario ABI.
 
     The existing scorer consumes ``(name, rival_schedule, alignment)`` tuples,
-    with ``rival_schedule`` represented as ``((step, quantity), ...)``. This
+    with ``rival_schedule`` represented as ``((step, quantity), ...)``.  This
     adapter preserves the stress-only envelope exactly and emits no policy bit.
     Product identity stays in the deterministic scenario name so callers score
     only against the matching item-specific lot.
