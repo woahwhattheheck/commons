@@ -256,7 +256,18 @@ class ComposerShapeTests(unittest.TestCase):
     TITAN = (
         "from dataclasses import dataclass\n"
         "@dataclass(frozen=True)\nclass Features:\n"
+        "    consumer: str = 'frozen'\n"
+        "    terminal_route: bool = False\n"
         "    early_capital: bool = False\n"
+        "    def __post_init__(self):\n"
+        "        bool_fields = ('terminal_route', 'early_capital')\n"
+        "        for name in bool_fields:\n"
+        "            if type(getattr(self, name)) is not bool:\n"
+        "                raise TypeError(f'{name} must be bool')\n"
+        "        if self.consumer not in ('frozen', 'ordered', 'parent'):\n"
+        "            raise ValueError('consumer must be frozen, ordered or parent')\n"
+        "        if self.terminal_route and self.consumer != 'frozen':\n"
+        "            raise ValueError('terminal_route is the tested frozen SELL composition')\n"
         "class X:\n"
         "    def __init__(self):\n"
         "        self._completed_seller_state = None\n"
@@ -285,6 +296,8 @@ class ComposerShapeTests(unittest.TestCase):
     def test_composer_remains_default_off_and_compilable(self):
         titan, frozen = composer.compose_sources(self.TITAN, self.FROZEN)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
+        self.assertEqual(titan.count("bool_fields = (*bool_fields, 'exec_pace')"), 1)
+        self.assertEqual(titan.count("exec_pace is the tested nonterminal frozen SELL composition"), 1)
         self.assertEqual(titan.count("if f.exec_pace is True:"), 1)
         self.assertEqual(titan.count("_exec_pace_fallback_observations = []"), 2)
         self.assertIn("_exec_pace_state", titan)

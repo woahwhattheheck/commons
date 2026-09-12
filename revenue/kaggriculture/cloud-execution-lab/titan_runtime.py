@@ -116,6 +116,7 @@ class Features:
     idle_fertilizer: bool = False
     crop_release: bool = False
     early_capital: bool = False
+    exec_pace: bool = False
 
     def __post_init__(self):
         bool_fields = (
@@ -124,6 +125,7 @@ class Features:
             'fourth_quadrant', 'market_pressure', 'committed_seed_retry',
             'operating_stock', 'idle_fertilizer', 'crop_release', 'early_capital',
         )
+        bool_fields = (*bool_fields, 'exec_pace')
         for name in bool_fields:
             if type(getattr(self, name)) is not bool:
                 raise TypeError(f'{name} must be bool')
@@ -140,6 +142,8 @@ class Features:
             raise ValueError('consumer must be frozen, ordered or parent')
         if self.terminal_route and self.consumer != 'frozen':
             raise ValueError('terminal_route is the tested frozen SELL composition')
+        if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route):
+            raise ValueError('exec_pace is the tested nonterminal frozen SELL composition')
         if self.redundant_hire and (self.consumer != 'frozen' or self.terminal_route):
             raise ValueError('redundant_hire is the tested nonterminal frozen SELL composition')
         if (self.spatial_pathing or self.spatial_tempo or self.fourth_quadrant or self.idle_fertilizer or self.crop_release) and (self.consumer != 'frozen' or self.terminal_route):
@@ -171,6 +175,7 @@ class TitanAgent:
         # pending and replaceable; interrupted planning is never promoted.
         self._completed_seller_state = None
         self._seller_fallback_observations = []
+        self._exec_pace_fallback_observations = []
         self.spatial = None
         self.quadrant = None
         self._quadrant_admission = fourth_quadrant_admission
@@ -271,6 +276,12 @@ class TitanAgent:
         if self.features.consumer != 'frozen':
             return
         step = int(obs['step'])
+        if getattr(self.features, 'exec_pace', False) is True:
+            self._exec_pace_fallback_observations.append({
+                'step': step,
+                'player': int(obs['player']),
+                'market': {'prices': deepcopy(obs['market']['prices'])},
+            })
         if self._seller_fallback_observations:
             prior = int(self._seller_fallback_observations[-1]['step'])
             if step < prior:
@@ -303,6 +314,17 @@ class TitanAgent:
         else:
             from frozen_selected import FrozenSelected
             self.consumer = FrozenSelected()
+            if f.exec_pace is True:
+                pace = load('_titan_exec_pace_runtime', HERE/'exec_pace_runtime.py')
+                exec_pace_state = getattr(self, '_exec_pace_state', None)
+                if exec_pace_state is None:
+                    exec_pace_state = pace.PriceTrendState()
+                    self._exec_pace_state = exec_pace_state
+                self.consumer.exec_pace_state = exec_pace_state
+                self.consumer.exec_pace_apply = pace.apply_candidate
+                for exec_pace_obs in getattr(self, '_exec_pace_fallback_observations', ()):
+                    exec_pace_state.note_prices(exec_pace_obs)
+                self._exec_pace_fallback_observations = []
             self.consumer.capture_post_units = f.terminal_history
             self.consumer.capture_operating_stock = f.operating_stock
             self.controller = self.consumer.controller

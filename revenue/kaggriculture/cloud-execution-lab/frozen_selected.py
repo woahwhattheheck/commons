@@ -608,6 +608,8 @@ class FrozenSelected(SellScheduler):
     def transform(self, obs, config, base):
         config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2
         self.observe(obs)
+        exec_pace_state=getattr(self,'exec_pace_state',None)
+        if exec_pace_state is not None:exec_pace_state.note_prices(obs)
         farm,private=post_units(obs,base,config)
         if (getattr(self, 'capture_post_units', False)
                 or (getattr(self, 'capture_operating_stock', False)
@@ -691,6 +693,9 @@ class FrozenSelected(SellScheduler):
                 return receipt_feasible(plan)
             plan,info=optimize_lot(item=item,quantity=quantity,inventory=int(obs['market']['inventory'][item]),params=obs['market'].get('params'),shops=shops,config=config,now=now,dates=dates,reference=reference,rival_quantity=self.rival_supply(obs,item),minimum_now=minimum,capacity_ok=feasible,last=last)
             info['baseline_horizon_end']=horizon['baseline_end'];info['horizon_end']=item_end
+            exec_pace_apply=getattr(self,'exec_pace_apply',None)
+            if exec_pace_apply is not None:
+                plan,info=exec_pace_apply(exec_pace_state,item,reference,plan,info)
             self.diagnostics['evaluations'].append(info)
             eligible,rank=seller_choice_rank(info)
             if eligible:

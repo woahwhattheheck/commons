@@ -212,6 +212,7 @@
     "consumer": "frozen",
     "crop_release": true,
     "early_capital": true,
+    "exec_pace": false,
     "fourth_quadrant": false,
     "funding": true,
     "idle_fertilizer": true,
@@ -221,7 +222,8 @@
     "reserve_seconds": 0.01,
     "seed": true,
     "terminal_history": false,
-    "terminal_route": false
+    "terminal_route": false,
+    "town_procurement": true
   },
   "development_version": "V2.5",
   "diagnostic_intake": {
@@ -387,8 +389,8 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 408,
-      "sha256": "6096a8f120d79aa1e9fae1aab64e2135de483fb11961ab5062708f7dc9c92b12",
+      "bytes": 458,
+      "sha256": "1a64b94f116afe8ee5df69e683012a10dc02b0c292e847d7431b1c09c4475148",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
@@ -451,10 +453,20 @@
       "sha256": "358d62f111046b9be3ada25ebdd6a198c0bf3e0a5d55ee3a358bb1f22be5b9be",
       "source_path": "reference/weed-continuation/spruce-native.json.gz"
     },
+    "checks/test_close_game_sale_risk.py": {
+      "bytes": 7030,
+      "sha256": "7b8fb36bc8072cdc95fb6a0e9553bf440d0e1e3564e638466d9efac55ff63aa5",
+      "source_path": "test_close_game_sale_risk.py"
+    },
     "checks/test_committed_seed_retry_runtime.py": {
       "bytes": 2269,
       "sha256": "b48b6b1704186ef9b3ad9828b190019415d68dde5b6e624784958a7638a47fca",
       "source_path": "test_committed_seed_retry_runtime.py"
+    },
+    "checks/test_config_metadata_boundary.py": {
+      "bytes": 3021,
+      "sha256": "736467c692f7090f597c55922612757bbcf9ab55ed63e5b38af1e65118d885ed",
+      "source_path": "test_config_metadata_boundary.py"
     },
     "checks/test_crop_release.py": {
       "bytes": 31283,
@@ -462,8 +474,8 @@
       "source_path": "test_crop_release.py"
     },
     "checks/test_early_capital.py": {
-      "bytes": 6640,
-      "sha256": "6d31dad3a48d66ea4b423ac17c2d9c01547a64f5c1a316afb6110a918fe024b4",
+      "bytes": 11382,
+      "sha256": "ec51635898243a3a429216ea6a91fee88af14c458f8c374381d5ba15053e3645",
       "source_path": "test_early_capital.py"
     },
     "checks/test_engine_semantics.py": {
@@ -477,13 +489,13 @@
       "source_path": "test_entrypoint_clock.py"
     },
     "checks/test_entrypoint_deadline.py": {
-      "bytes": 9374,
-      "sha256": "c22614304a85b2a656751c38f08ffe5053818d0d76c127bfefcbcc5743251cf3",
+      "bytes": 11499,
+      "sha256": "fe63eb8ac49b6c856d94f0a9261d5593366b66d62445d89d8ffad163c53b935e",
       "source_path": "test_entrypoint_deadline.py"
     },
     "checks/test_feed_stock.py": {
-      "bytes": 10919,
-      "sha256": "670dd0a4977466998653766c0446f361bd55b2193bc61b1ad493185b284a1b7d",
+      "bytes": 13727,
+      "sha256": "cfedaeb49e9de72dcae1d49bdf4b88b1bc8d0ba5172ada12f1868bf4b0efcf6f",
       "source_path": "test_feed_stock.py"
     },
     "checks/test_final_market_pressure_entrypoint.py": {
@@ -492,13 +504,13 @@
       "source_path": "test_final_market_pressure_entrypoint.py"
     },
     "checks/test_funded_payback_runtime.py": {
-      "bytes": 4847,
-      "sha256": "debea504799ed40eb43dc5df2451625ece6331af8546ea01123bb5c420e9f03b",
+      "bytes": 5849,
+      "sha256": "c27a1737bed4726862d876db8db7a0be1333d1280592c26fb121efb9ac701a75",
       "source_path": "test_funded_payback_runtime.py"
     },
     "checks/test_funded_prefix.py": {
-      "bytes": 6009,
-      "sha256": "790331d10ffa2502e706d4585f569aacbd2d2fdcec1a29d5b05eaf66c5156573",
+      "bytes": 10851,
+      "sha256": "65a7239148503b04007e797b4994ca5b47fc566e463dec662dc2fc25ed7b7b0d",
       "source_path": "test_funded_prefix.py"
     },
     "checks/test_idle_fertilizer.py": {
@@ -522,8 +534,8 @@
       "source_path": "test_module_recovery.py"
     },
     "checks/test_operating_stock.py": {
-      "bytes": 15184,
-      "sha256": "29c2da02cb493c16ba475d409892bd660e32d4ed121b62d4d8c47faa4db44377",
+      "bytes": 15721,
+      "sha256": "509e54c2bfbfcf494b433095d0227c81ade18eab41b04282629603c873d5e6ba",
       "source_path": "test_operating_stock.py"
     },
     "checks/test_ordered_selected_sell.py": {
@@ -537,13 +549,13 @@
       "source_path": "test_route_recovery.py"
     },
     "checks/test_seed_derived.py": {
-      "bytes": 4554,
-      "sha256": "74109501f3277b6af6d6032b1c56d2152b06cd5d6274e5eed1c65edf3bf28d8d",
+      "bytes": 6473,
+      "sha256": "614139c5f6fa80a5cfecf7e1bf87b87ecfd238ab5cb6fcb7847cd10a776d402c",
       "source_path": "test_seed_derived.py"
     },
     "checks/test_seed_retry.py": {
-      "bytes": 12268,
-      "sha256": "6180896c9f355bb8ad36d7e086f37706461724adb10ff95a6ed3bd3ce6e606be",
+      "bytes": 15024,
+      "sha256": "fdb1e3dd7df340ac61a1338a7b861034771bd9779095b4592a12a27e65327347",
       "source_path": "../cloud-committed-seed-retry/test_seed_retry.py"
     },
     "checks/test_selected_pruning.py": {
@@ -552,8 +564,8 @@
       "source_path": "test_selected_pruning.py"
     },
     "checks/test_terminal_history_join.py": {
-      "bytes": 7847,
-      "sha256": "d4d025d21c6c941d34056d9584cd875c77c9d07975a53ed8c089fb599e292aee",
+      "bytes": 12742,
+      "sha256": "0696766bc55263d23eb06168e644b5aee463bced2d77a0ba1d6539a122c31ebb",
       "source_path": "test_terminal_history_join.py"
     },
     "checks/test_weed_continuation.py": {
@@ -571,24 +583,34 @@
       "sha256": "bcd9a56fc7af87d70b4fb168e7109614a44a52b9aacbcd1e208bb36ecc13b034",
       "source_path": "test_worker_episode.py"
     },
+    "close_game_sale_risk.py": {
+      "bytes": 9363,
+      "sha256": "f6af19b68f6ce318468e3e525dd87d9ba402afbe35deaeeada89e311193cfd36",
+      "source_path": "close_game_sale_risk.py"
+    },
     "crop_release.py": {
-      "bytes": 40073,
-      "sha256": "86dd3186af6ee137c848c1722c9f8c2676264a34c5a703b07e47ecd999116f49",
+      "bytes": 41239,
+      "sha256": "f4ab35104b78c0551c29e801215ab4d60344ee0ba259dcd933a35ee7cb48b75e",
       "source_path": "crop_release.py"
     },
     "early_capital.py": {
-      "bytes": 12927,
-      "sha256": "058e051a8693dbb85af7d4c41f7a908ddbe6a09e6c0dc802cd5891e71d04f29c",
+      "bytes": 19805,
+      "sha256": "208f72075df412a5fe474a55cdde0792fef20b500fbd2654fb9777bdf5b16316",
       "source_path": "early_capital.py"
     },
+    "exec_pace_runtime.py": {
+      "bytes": 8158,
+      "sha256": "80a0fcdfe0283fa8ea55e530e5da9419ab6202255c65a1ad447a9daf37a4d58b",
+      "source_path": "exec_pace_runtime.py"
+    },
     "fourth_quadrant.py": {
-      "bytes": 17915,
-      "sha256": "1646b9e06803e29066b660c0547968eb99589bab1abc374cda0b5945b11de4f8",
+      "bytes": 20512,
+      "sha256": "17de5d868fadf793c6e2164099ea8a77892d6df996df0c882124f9410565fcc2",
       "source_path": "fourth_quadrant.py"
     },
     "frozen_selected.py": {
-      "bytes": 37505,
-      "sha256": "5ca1bc39efed756de71207f46926744ea69f9d2f300dd7b9c1a8cc4dbefeb9ef",
+      "bytes": 41462,
+      "sha256": "4dd43e37634a6040abe10a5938ec6fc60d61793056abef7ca4fff9561651eb46",
       "source_path": "frozen_selected.py"
     },
     "funded_payback.py": {
@@ -597,18 +619,28 @@
       "source_path": "../cloud-economic-stress/funded_payback/funded_payback.py"
     },
     "funded_payback_runtime.py": {
-      "bytes": 3510,
-      "sha256": "3dff2bdbd201e222a0c36692950518d0cc287fe6cc87a6b57f54d8bc26e2628e",
+      "bytes": 4720,
+      "sha256": "a4acc52a212e5433cdb067320395237bae1e3a7de8fe5f787425ae145a3ff8a6",
       "source_path": "funded_payback_runtime.py"
     },
+    "integrated_main.py": {
+      "bytes": 2299,
+      "sha256": "4f399e6dccc54bf3847ae28d3288a2a749a47fa46d800151d380b90b8ef94621",
+      "source_path": "integrated_main.py"
+    },
+    "integrated_parent.py": {
+      "bytes": 2300,
+      "sha256": "292072453ae06f9424c22968e28883233979eec118f04bba0e9a127e28ad4fba",
+      "source_path": "integrated_parent.py"
+    },
     "integrated_selected.py": {
-      "bytes": 12860,
-      "sha256": "e16702fd388c2ae0ead9bb59a078e0099e0c149cc39002703b3b7988bb061bd8",
-      "source_path": "reference/titan-current/latest/integrated_selected.py"
+      "bytes": 12994,
+      "sha256": "85387642c6161c9360369ae9a6f5df8f1770e0ec20abb0e5e9b63d8875769e02",
+      "source_path": "integrated_selected.py"
     },
     "main.py": {
-      "bytes": 7924,
-      "sha256": "c4c22d0f2b1071cadf6a9f74effccc8cb20ea9f4d10ca1cf9f1fe57351709dc1",
+      "bytes": 23145,
+      "sha256": "3d565a4d785b1a9813495ed4fe274804d69ada107bc26348c479e704e282a263",
       "source_path": "main.py"
     },
     "mechanics.py": {
@@ -622,14 +654,14 @@
       "source_path": "../cloud-runtime-pulse/observed_clone.py"
     },
     "operating_stock.py": {
-      "bytes": 33080,
-      "sha256": "aade61ed3bcaca175998ab2871b97042dde0036950f038aef6326482e0fdd21c",
+      "bytes": 36482,
+      "sha256": "cc86d0e4e984bad0724176ec54c9f39787ecd49e3f3218ec579c3787bbb39a4d",
       "source_path": "operating_stock.py"
     },
     "ordered_selected_sell.py": {
-      "bytes": 5101,
-      "sha256": "b38caacb2d2156e83aab9d1471e1312a241250dae8b655c1b133fce097bca426",
-      "source_path": "reference/titan-current/latest/ordered_selected_sell.py"
+      "bytes": 6464,
+      "sha256": "b5fc1758b185150eee9423c7d4b946b5f713e411464bbf1f46325de9f880463f",
+      "source_path": "ordered_selected_sell.py"
     },
     "plant_suffix.py": {
       "bytes": 1394,
@@ -637,13 +669,13 @@
       "source_path": "../cloud-runtime-pulse/plant_suffix.py"
     },
     "pressure_priority.py": {
-      "bytes": 11728,
-      "sha256": "8c2294cc98b86eaf1adbe3fc8461b5989f1b3bafaf40f188ba36d847c06f6d4a",
+      "bytes": 15987,
+      "sha256": "2e09b96954bc8b4cdf5f086a48d09db58d34297a193360f17229634d23f08227",
       "source_path": "../cloud-opponent-league/lark-responsive/pressure_priority.py"
     },
     "reference/decision/README.md": {
-      "bytes": 9677,
-      "sha256": "07457ea5dd02e545d8105eb19b522a7dcf3037a09df211aaa69f2418a7ae572d",
+      "bytes": 9618,
+      "sha256": "9369e30302e2a83990d0ad7b3f361522f8a4527381d9ecb1cdc43156634ea2a9",
       "source_path": "reference/decision/README.md"
     },
     "reference/decision/decision.py": {
@@ -662,8 +694,8 @@
       "source_path": "reference/integrated-selected/UPSTREAM.json"
     },
     "reference/integrated-selected/alder/seed_budget.py": {
-      "bytes": 4723,
-      "sha256": "9ab840edbb60cea36e96a13d42cc30989daaf5614afe0665a8e2f5ce571e0dde",
+      "bytes": 5944,
+      "sha256": "bf3c68d4e4c215a06bda6f7d85a882815079b4c6137a3a8e80c3413d036ba6f1",
       "source_path": "reference/integrated-selected/alder/seed_budget.py"
     },
     "reference/integrated-selected/claude/LICENSE-APACHE-2.0.txt": {
@@ -737,48 +769,48 @@
       "source_path": "reference/selected-action/t08/arrival_contract.py"
     },
     "reference/titan-current/deadline_adapter.py": {
-      "bytes": 15458,
-      "sha256": "7f70a25dfb703f50aa83cd281a9722d575571da1073e605c5927fc35453ab486",
+      "bytes": 17413,
+      "sha256": "7387963805e873f2dae675a78abe18ef0ef48177690fb80c419dcb765b64fc52",
       "source_path": "reference/titan-current/deadline_adapter.py"
     },
     "reference/titan-current/latest/integrated_selected.py": {
-      "bytes": 12860,
-      "sha256": "e16702fd388c2ae0ead9bb59a078e0099e0c149cc39002703b3b7988bb061bd8",
+      "bytes": 12986,
+      "sha256": "7aee8753b00bca20807d53d86b792b364d93e1a5a5bfaaa04e2c979735013c69",
       "source_path": "reference/titan-current/latest/integrated_selected.py"
     },
     "reference/titan-current/latest/ordered_selected_sell.py": {
-      "bytes": 5101,
-      "sha256": "b38caacb2d2156e83aab9d1471e1312a241250dae8b655c1b133fce097bca426",
+      "bytes": 6411,
+      "sha256": "4dceea5cd5e169c0d9826f402a783fa10ebd2c6589af54d51dd284b2a969d1b4",
       "source_path": "reference/titan-current/latest/ordered_selected_sell.py"
     },
     "reference/titan-current/latest/selected_action_sell.py": {
-      "bytes": 21680,
-      "sha256": "3aa372c563a7cc4c7f5273e9fd1b9652959df301d84652c44be1c5bfeea1500e",
+      "bytes": 23058,
+      "sha256": "3033a8db2187e5809a5fa33fd6cb4b061b3a11a3cc897edf6268f8955de7f910",
       "source_path": "reference/titan-current/latest/selected_action_sell.py"
     },
     "reference/titan-current/latest/selected_sell_core.py": {
-      "bytes": 15050,
-      "sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846",
+      "bytes": 17475,
+      "sha256": "72ff8e553091839af16c5e5827dff7699f3a6822cbc94ec05c34ee78ef727557",
       "source_path": "reference/titan-current/latest/selected_sell_core.py"
     },
     "reference/titan-current/redundant_hire.py": {
-      "bytes": 16007,
-      "sha256": "d481d34c12b365ce9320c72e4ffa197eb0d06a750328746097d082bdbeb3f2ba",
+      "bytes": 16290,
+      "sha256": "d84c56940ab3d2a7959f6695d376e6e2337c9deff70858de15419cf8174e4d5c",
       "source_path": "reference/titan-current/redundant_hire.py"
     },
     "reference/titan-current/seed_funding.py": {
-      "bytes": 13630,
-      "sha256": "e329a3535aeeed745cf975451b7bea859a6ec6f39cf54aeac57c3a3492cc3128",
+      "bytes": 15065,
+      "sha256": "f9d30a086ebf1cf72c422be325546fc63db75883f42e813a222dba0e018f6f03",
       "source_path": "reference/titan-current/seed_funding.py"
     },
     "reference/titan-current/terminal.py": {
-      "bytes": 18390,
-      "sha256": "0623cac3515221b874e9bbbeef97afdf2e378489b0b6724fa9df13627a283a64",
+      "bytes": 18806,
+      "sha256": "01f9da35a30411f99c3032922130626125cdd79311eaf07fdbc8d9fde55f9606",
       "source_path": "reference/titan-current/terminal.py"
     },
     "reference/titan-current/terminal_composition.py": {
-      "bytes": 7047,
-      "sha256": "0f79cf7cf77b85e2da32c0f02f586be7a3cb3b20cbbe47bd87e968f666899c40",
+      "bytes": 7600,
+      "sha256": "67da82f2a8edfe75e34f0b664f291fb677d7e052f94096d4509a0bd54ae4a9a5",
       "source_path": "reference/titan-current/terminal_composition.py"
     },
     "reference/titan-current/vendor/sell/mechanics.py": {
@@ -802,8 +834,8 @@
       "source_path": "reference/titan-current/vendor/sell/scheduler.py"
     },
     "reference/titan-current/vendor/terminal.py": {
-      "bytes": 18390,
-      "sha256": "0623cac3515221b874e9bbbeef97afdf2e378489b0b6724fa9df13627a283a64",
+      "bytes": 18806,
+      "sha256": "01f9da35a30411f99c3032922130626125cdd79311eaf07fdbc8d9fde55f9606",
       "source_path": "reference/titan-current/terminal.py"
     },
     "reference/titan-history/UPSTREAM.json": {
@@ -877,28 +909,28 @@
       "source_path": "reference/titan-history/weighted_selector.py"
     },
     "scheduler.py": {
-      "bytes": 21035,
-      "sha256": "00d72a5c6b511e73ed1923ea402c4a36e0f9490f3b4c177490ddc72440f4a64a",
+      "bytes": 24335,
+      "sha256": "d15fb39e412e4c7d715f78db2248d9bf8d61dd478b681ba41daa937efdab36da",
       "source_path": "scheduler.py"
     },
     "seed_retry.py": {
-      "bytes": 11359,
-      "sha256": "71396deb4098709f128a4f0b8d8e6d7259da2d0bfe383f224a6d57d8a85eb72f",
+      "bytes": 13872,
+      "sha256": "e7b731657c27f5dec95f916552070e197c9a18c3ccba10557a9780b1c8c0a7ac",
       "source_path": "../cloud-committed-seed-retry/seed_retry.py"
     },
     "selected_action_sell.py": {
-      "bytes": 21680,
-      "sha256": "3aa372c563a7cc4c7f5273e9fd1b9652959df301d84652c44be1c5bfeea1500e",
-      "source_path": "reference/titan-current/latest/selected_action_sell.py"
+      "bytes": 24348,
+      "sha256": "1a27e24f68663275e02940a577f5cb9d6a37b82ee1f99eba116b1381afd820f7",
+      "source_path": "selected_action_sell.py"
     },
     "selected_sell_core.py": {
-      "bytes": 15050,
-      "sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846",
-      "source_path": "reference/titan-current/latest/selected_sell_core.py"
+      "bytes": 17475,
+      "sha256": "72ff8e553091839af16c5e5827dff7699f3a6822cbc94ec05c34ee78ef727557",
+      "source_path": "selected_sell_core.py"
     },
     "sell_priority.py": {
-      "bytes": 5095,
-      "sha256": "b0e8c21cb1c67cf81863c545cb3e3c8727c252ba2609414a9a61401ffc718787",
+      "bytes": 5432,
+      "sha256": "c435e1913fd9b882c99be8d3c071772810c14c05cc5075145bf93b3ee3aef29a",
       "source_path": "../cloud-opponent-league/lark-responsive/sell_priority.py"
     },
     "seller_snapshot.py": {
@@ -907,19 +939,24 @@
       "source_path": "../cloud-quickstep/seller_snapshot.py"
     },
     "spatial_tempo.py": {
-      "bytes": 55439,
-      "sha256": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
+      "bytes": 56461,
+      "sha256": "55d70e3fc0189b1d8f3f372fe74d3ab70b305dda51b9fb016715288cc4b2c927",
       "source_path": "spatial_tempo.py"
     },
     "terminal_history_join.py": {
-      "bytes": 5505,
-      "sha256": "e1482ba22eeb2784157f337e2abc055cf4e9ac7cc8d464fe75a67cc38ec41582",
+      "bytes": 13389,
+      "sha256": "aa9eab0d9c5d98904cdc41ed0f4c1b7cc851319fb2df209f538293f1dba6dfa0",
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 33885,
-      "sha256": "da391af2dbdec0f6e4a25749ed539cdd39578ace8861c0e225b5fbfef90d75a8",
+      "bytes": 41597,
+      "sha256": "e9039d456d06a5571614a4ddad9cff81a802456fd58afcc1acebbf7d4c3e7ad8",
       "source_path": "titan_runtime.py"
+    },
+    "town_procurement.py": {
+      "bytes": 13730,
+      "sha256": "4593eb9d7cc9dfdfba4a43e7708f7aa4825beab274eaa37d0982d55b6b01cde3",
+      "source_path": "town_procurement.py"
     }
   },
   "upstream_snapshot": "56796f814b3ec1f76013aedc03d335bfedba6b37"

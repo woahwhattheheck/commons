@@ -15,5 +15,6 @@
   "idle_fertilizer": true,
   "crop_release": true,
   "early_capital": true,
-  "town_procurement": true
+  "town_procurement": true,
+  "exec_pace": false
 }
