@@ -351,13 +351,34 @@ def compare_rows(
     return report
 
 
+def _strict_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise AlignmentError(f"duplicate JSON object key: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_json_constant(value: str) -> None:
+    raise AlignmentError(f"non-standard JSON number: {value}")
+
+
 def _read_jsonl(path: Path) -> Iterable[Mapping[str, Any]]:
     with path.open("r", encoding="utf-8") as handle:
         for line_number, line in enumerate(handle, start=1):
             if not line.strip():
                 continue
             try:
-                row = json.loads(line)
+                row = json.loads(
+                    line,
+                    object_pairs_hook=_strict_json_object,
+                    parse_constant=_reject_json_constant,
+                )
+            except AlignmentError as exc:
+                raise AlignmentError(
+                    f"{path}:{line_number}: invalid JSON: {exc}"
+                ) from exc
             except json.JSONDecodeError as exc:
                 raise AlignmentError(f"{path}:{line_number}: invalid JSON: {exc.msg}") from exc
             if not isinstance(row, Mapping):
