@@ -7,7 +7,9 @@
     "new PLANT starts consecutive_unwatered=1 and watered_today=false",
     "same-EOD survival therefore requires WATER after the PLANT unit action and before EOD",
     "current actor order matters: WATER before PLANT on the same callback does not discharge the new plant",
+    "earlier same-site BUILD_COOP or BUILD_PASTURE can occupy an initially empty tile before a later PLANT, so unresolved build success fails closed rather than minting a false executable-PLANT certificate",
     "movement changes later WATER location and is tracked across the complete authored suffix",
+    "observation hour must equal step modulo turnsPerDay under strict integer custody",
     "future HIRE before the last callback creates actor-path ambiguity and therefore prevents one-sided rejection"
   ],
   "result_contract": {
@@ -18,11 +20,11 @@
   },
   "executed": {
     "normal_tests": {
-      "count": 19,
+      "count": 24,
       "status": "pass"
     },
     "optimized_tests": {
-      "count": 19,
+      "count": 24,
       "status": "pass"
     },
     "py_compile": {
@@ -33,12 +35,12 @@
   },
   "files": {
     "plant_guard.py": {
-      "bytes": 12745,
-      "sha256": "d84c4f6eaa6641adeb3a58d92addca3327d248645f0ea97fee0e616adbf6f7f4"
+      "bytes": 13870,
+      "sha256": "f1941baef65eedf2de533cb417331b71a1c7c6e87098243fdca64feb4ab5b878"
     },
     "test_plant_guard.py": {
-      "bytes": 8392,
-      "sha256": "44fd7651b5ac4da14dfbad69af4718db2e4722537c5037cfdc37b0e4a9525286"
+      "bytes": 10266,
+      "sha256": "90658c40f8335b477fc51831349e8a8386b7c9e345fb6a89538f55a71bc326bd"
     }
   },
   "covered_edges": [
@@ -59,10 +61,16 @@
     "suffix authentication requirement",
     "actor-cardinality drift",
     "mixed rescued/doomed plants",
+    "same-site BUILD_COOP before PLANT fail-closed",
+    "same-site BUILD_PASTURE before PLANT fail-closed",
+    "different-site BUILD does not hide an executable PLANT",
+    "hour/step mismatch fail-closed",
+    "step type-poison fail-closed",
     "input immutability"
   ],
   "limits": [
     "authored suffix custody must be established by the caller",
+    "earlier clearing actions on initially occupied tiles remain conservative and do not create a certified PLANT candidate",
     "NOT_CERTIFIED is not SAFE or profitable",
     "no controller/scheduler/runtime/default/config/COMPOSITION/evaluator/archive/Kaggle mutation",
     "current-native engagement and both-seat economics are required before any action suppression is promoted"
