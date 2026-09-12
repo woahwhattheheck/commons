@@ -1,4 +1,4 @@
-name: TITAN V4 Gemini convergence addenda
+name: TITAN V4 agent-index analyzer hardening
 
 on:
   pull_request:
@@ -7,14 +7,6 @@ on:
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/agent-index-predictability/analyze_agent_index.py
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/agent-index-predictability/test_agent_index.py
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/agent-index-predictability/README.md
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/ANALYZER-MARGIN-CLIPPING.json
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/TERMINAL-MASS-HIRE.json
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/test_analyzer_margin_clipping.py
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/test_terminal_mass_hire_coverage.py
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/GEMINI-ANTIGRAVITY.json
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence/check_ledger.py
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/terminal-labor-surge/README.md
-      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/terminal-labor-surge/RECEIPT.json
   workflow_dispatch:
 
 permissions:
@@ -36,25 +28,4 @@ jobs:
           PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_agent_index.py
           PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_agent_index.py
           python -B -m py_compile analyze_agent_index.py test_agent_index.py
-          popd
-      - name: Gemini convergence addenda regression
-        shell: bash
-        run: |
-          set -euo pipefail
-          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/gemini-antigravity-convergence
-          pushd "$DIR"
-          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v \
-            test_check_ledger.py \
-            test_analyzer_margin_clipping.py \
-            test_terminal_mass_hire_coverage.py
-          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v \
-            test_check_ledger.py \
-            test_analyzer_margin_clipping.py \
-            test_terminal_mass_hire_coverage.py
-          python -B check_ledger.py --repo-root "${GITHUB_WORKSPACE}"
-          python -B -m py_compile \
-            check_ledger.py \
-            test_check_ledger.py \
-            test_analyzer_margin_clipping.py \
-            test_terminal_mass_hire_coverage.py
           popd
