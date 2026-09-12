@@ -116,6 +116,17 @@ def snapshot_harness_source(snapshot_root: Path) -> dict[str, str]:
     return copied
 
 
+def validate_source_snapshot(snapshot_root: Path, expected: dict[str, str]) -> None:
+    actual = {}
+    for key in expected:
+        path = Path(snapshot_root).resolve() / Path(key)
+        if not path.is_file():
+            raise RuntimeError(f'frozen WF1 harness source missing: {key}')
+        actual[key] = _sha256(path)
+    if actual != expected:
+        raise RuntimeError('frozen WF1 harness source changed during field execution')
+
+
 def parse_seed_set(raw: str) -> tuple[int, ...]:
     values = tuple(int(value) for value in raw.split(',') if value.strip())
     if not values:
@@ -237,6 +248,7 @@ def main() -> int:
     )
     if package_digest(control_runtime) != control_digest:
         raise RuntimeError('control package drifted after materialization')
+    validate_source_snapshot(source_snapshot, source_hashes)
     candidate_digest = package_digest(candidate_runtime)
 
     frozen_runner = source_snapshot / RUNNER_REL
@@ -269,6 +281,7 @@ def main() -> int:
                 raise RuntimeError('control package changed during field execution')
             if package_digest(candidate_runtime) != candidate_digest:
                 raise RuntimeError('WF1 package changed during field execution')
+            validate_source_snapshot(source_snapshot, source_hashes)
 
             complete = (baseline.get('status') == 'complete'
                         and candidate.get('status') == 'complete')

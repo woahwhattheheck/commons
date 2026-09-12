@@ -161,10 +161,13 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                 self.assertTrue(copied.is_file(), rel)
                 self.assertEqual(field._sha256(source), hashes[rel.as_posix()])
                 self.assertEqual(field._sha256(copied), hashes[rel.as_posix()])
+            field.validate_source_snapshot(frozen, hashes)
             copied_entry = frozen / field.COMPONENT_REL / 'entry.py'
             before = field._sha256(field.HERE / 'entry.py')
             copied_entry.write_text('# frozen copy changed\n')
             self.assertEqual(field._sha256(field.HERE / 'entry.py'), before)
+            with self.assertRaisesRegex(RuntimeError, 'changed during field execution'):
+                field.validate_source_snapshot(frozen, hashes)
 
     def test_field_seed_design_is_unique_and_canonical(self):
         self.assertEqual(field.parse_seed_set('9,3,7'), (3, 7, 9))
