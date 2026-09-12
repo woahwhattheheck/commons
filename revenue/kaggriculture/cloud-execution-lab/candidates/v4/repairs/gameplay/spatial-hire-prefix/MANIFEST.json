@@ -1,0 +1,36 @@
+{
+  "artifact_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+  "canonical_branch": "main",
+  "component": "spatial-hire-prefix",
+  "files": {
+    "README.md": {
+      "bytes": 4847,
+      "git_blob": "08f2b8e6753d974fbd99b4986b8d0f7544abf854",
+      "sha256": "045be8cf9e44fcc008e33d37ac7c09d21e73e3ba827b8703aad33c0cdd223241"
+    },
+    "RECEIPT.json": {
+      "bytes": 13378,
+      "git_blob": "9d9d3e5dd60fba4839c15f6a34c8104028087951",
+      "sha256": "304b820ad1d5acacb0c2b374223ffeafb8ddfd7f1aa6b549681f8c75068b587a"
+    },
+    "spatial_hire_prefix.py": {
+      "bytes": 2716,
+      "git_blob": "950fd8c49f247437e496836e27dc062dd21a215c",
+      "sha256": "8b0deff481161127a7aadb05083bd3ecb81edd61b28e1bc7498557d8796c6321"
+    },
+    "test_spatial_hire_prefix.py": {
+      "bytes": 15594,
+      "git_blob": "1006a3acb9da28b6bdbf61d70e4caf162f9d79eb",
+      "sha256": "91d0e6ed0b31b59c6a46f407dee7d8a4cfe8fc5bcd805fc79299d9fd8b1cb7ec"
+    }
+  },
+  "input_git_blob": "edbc423023479dbe2e78131495334384a87b607f",
+  "input_sha256": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
+  "natural_default_engagement": 0,
+  "output_sha256": "135b63e53464b5083ab8b2ff7cb735b1b7aa1101fdda4601680a6800b87b4053",
+  "owner_session": "ASTRA-THISTLE",
+  "schema": "titan-v4-source-repair/v1",
+  "status": "source_ready_not_activated",
+  "target": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+}
