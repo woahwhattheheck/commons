@@ -14,6 +14,11 @@ from copy import deepcopy
 LAND_ORDER = ["BUY_LAND"]
 
 
+def _market_limit(configuration):
+    """Return the pinned engine's effective executable market prefix length."""
+    return max(1, int(configuration.get("maxMarketOrdersPerTurn", 10)))
+
+
 def _step(observation, configuration):
     value = observation.get("step")
     if value is not None:
@@ -170,7 +175,7 @@ class LandUnlockOverlaySupport:
 
     def _certify_insertion(self, observation, configuration, route, action,
                            now, original_step, original_slot):
-        limit = int(configuration.get("maxMarketOrdersPerTurn", 10))
+        limit = _market_limit(configuration)
         if _land_slots(action, limit):
             return None, None, {"certified": False, "reason": "current_action_already_has_land"}
         slot = _append_slot(action, limit)
@@ -216,4 +221,3 @@ class LandUnlockOverlaySupport:
                     and not _land_slots(action, limit)):
                 return _set_slot(action, slot, LAND_ORDER), "insert_replay", slot
         return None
-
