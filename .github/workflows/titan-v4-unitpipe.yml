@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           SRC=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/unit-pipeline
           pushd "$SRC"
-          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_unit_pipeline.py
-          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_unit_pipeline.py
-          python -B -m py_compile unit_pipeline.py test_unit_pipeline.py
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v test_unit_pipeline.py test_annual_relay_witness.py
+          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v test_unit_pipeline.py test_annual_relay_witness.py
+          python -B -m py_compile unit_pipeline.py test_unit_pipeline.py test_annual_relay_witness.py
           popd
