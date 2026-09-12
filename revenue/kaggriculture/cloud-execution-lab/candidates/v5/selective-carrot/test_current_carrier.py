@@ -116,6 +116,30 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
             snapshots["selective"], (HERE / "selective_carrot.py").read_bytes()
         )
 
+    def test_shared_harness_helper_is_externally_pinned_before_exec(self):
+        helper_path = (
+            LAB_ROOT / "candidates/v5/joint-liquidity-bench/paired.py"
+        )
+        raw = helper_path.read_bytes()
+        self.assertEqual(
+            paired.git_blob_bytes(raw), paired.EXPECTED_SHARED_HELPER_GIT_BLOB
+        )
+        helper, authority = paired.load_authenticated_shared_helper(helper_path)
+        self.assertEqual(
+            authority["git_blob"], paired.EXPECTED_SHARED_HELPER_GIT_BLOB
+        )
+        self.assertEqual(authority["sha256"], hashlib.sha256(raw).hexdigest())
+        self.assertTrue(helper.__file__.startswith("<authenticated:"))
+        self.assertTrue(hasattr(helper, "snapshot_harness"))
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            tampered = root / "paired.py"
+            tampered.write_bytes(raw + b"\n# stable malicious drift\n")
+            with self.assertRaisesRegex(ValueError, "shared harness helper Git blob drift"):
+                paired.load_authenticated_shared_helper(tampered)
+            self.assertEqual(list(root.iterdir()), [tampered])
+
     def test_current_archive_packages_the_pinned_parent_main(self):
         pointer, archive = current_pointer_and_archive()
         self.assertEqual(pointer["path"], "exports/titan-current.tar.gz")
