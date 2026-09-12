@@ -37,6 +37,22 @@ def _standard_configuration(configuration):
     return True
 
 
+def _rescue_end(step):
+    """Authenticate the next real reset in the standard episode calendar.
+
+    The engine executes callbacks 0..718. A reset follows hour 23 on days 0..28;
+    the partial final day never reaches its hour 23. Negative Python indexes and
+    caller-supplied pseudo-boundaries are not evidence of a nightly reset.
+    """
+    if type(step) is not int or not 0 <= step <= 718:
+        return None
+    hour = step % 24
+    if not 16 <= hour <= 21:
+        return None
+    end = step + 24 - hour
+    return end if end < 719 else None
+
+
 def apply_v217_eod_tail(forward, roundtrip, *, targets, step, end,
                          farmer_rows, configuration, enabled=False):
     """Return ``(commands, eod_tail)`` without mutating either input route."""
@@ -44,7 +60,8 @@ def apply_v217_eod_tail(forward, roundtrip, *, targets, step, end,
         return roundtrip, False
     if not isinstance(forward, list) or not isinstance(roundtrip, list):
         return roundtrip, False
-    if type(step) is not int or type(end) is not int or end <= step:
+    expected_end = _rescue_end(step)
+    if expected_end is None or type(end) is not int or end != expected_end:
         return roundtrip, False
     if not _standard_configuration(configuration):
         return roundtrip, False
@@ -52,8 +69,6 @@ def apply_v217_eod_tail(forward, roundtrip, *, targets, step, end,
         if len(targets) != 1:
             return roundtrip, False
     except TypeError:
-        return roundtrip, False
-    if end >= 719:
         return roundtrip, False
     remaining = end - step
     if not (len(forward) == remaining < len(roundtrip)):
@@ -78,16 +93,15 @@ def plan_v217_eod_tail(view, st, step, action, pending, *, tape,
         return None
     if not isinstance(st, dict) or not isinstance(action, dict):
         return None
-    if type(step) is not int:
+    end = _rescue_end(step)
+    if end is None or not _standard_configuration(configuration):
         return None
-    hour = step % 24
-    if not 16 <= hour <= 21 or st.get("v217_used", 0) >= 2:
+    if st.get("v217_used", 0) >= 2:
         return None
     if action.get("farmer") != ["PASS"]:
         return None
     if not isinstance(tape, list):
         return None
-    end = min(step + 24 - hour, 719)
     if len(tape) < end:
         return None
 

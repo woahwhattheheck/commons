@@ -149,6 +149,104 @@ class S1DayCoverageTest(unittest.TestCase):
                 self.assertIs(calls[0], obs)
                 self.assertIsNone(lane._STATE[player].pending)
 
+    def test_complete_day_evidence_can_recover_on_next_callback(self):
+        for player in (0, 1):
+            with self.subTest(player=player):
+                lane._STATE.clear()
+                obs = observation(player=player)
+                start = obs["step"]
+                authored = tape(120)
+                sentinel = action()
+                calls = []
+                def parent(o, configuration=None):
+                    calls.append(o["step"])
+                    return sentinel
+                wrapped = lane.wrap(parent, lambda o: authored[:start + 1]
+                                    if o["step"] == start else authored)
+                self.assertIs(wrapped(obs, CONFIG), sentinel)
+                state = lane._STATE[player]
+                self.assertFalse(state.tried)
+                self.assertIsNone(state.pending)
+                next_obs = copy.deepcopy(obs)
+                next_obs["step"] += 1
+                result = wrapped(next_obs, CONFIG)
+                self.assertEqual(result["market"], [["HIRE"]])
+                self.assertIs(lane._STATE[player], state)
+                self.assertTrue(state.tried)
+                self.assertEqual(state.pending, len(obs["farms"][player]["hands"]))
+                self.assertEqual(calls, [start, start + 1])
+                self.assertEqual(sentinel["market"], [])
+
+    def test_missing_tape_does_not_interrupt_owned_middle_hand(self):
+        for player in (0, 1):
+            with self.subTest(player=player):
+                lane._STATE.clear()
+                obs = observation(player=player)
+                obs["farms"][player]["hands"] = [[4, 4], [4, 3], [3, 4]]
+                obs["private"]["inventories"] = [{}, {"WHEAT": 1}, {}, {"FERTILIZER": 2}]
+                state = lane._STATE[player] = lane._Day(4)
+                state.index, state.tried, state.last_step = 1, True, obs["step"] - 1
+                sentinel = {"farmer": ["PASS"], "hands": [["EAST"], ["SOUTH"]], "market": []}
+                before = copy.deepcopy((obs, sentinel))
+                seen = []
+                def parent(o, configuration=None):
+                    seen.append(o)
+                    return sentinel
+                count = lane.REPORT["collections"]
+                result = lane.wrap(parent, lambda o: tape(o["step"] + 1))(obs, CONFIG)
+                self.assertEqual(len(seen), 1)
+                self.assertEqual(seen[0]["farms"][player]["hands"], [[4, 4], [3, 4]])
+                self.assertEqual(seen[0]["private"]["inventories"], [{}, {"WHEAT": 1}, {"FERTILIZER": 2}])
+                self.assertEqual(result["hands"], [["EAST"], ["COLLECT_FERTILIZER"], ["SOUTH"]])
+                self.assertEqual(result["market"], [])
+                self.assertEqual(lane.REPORT["collections"], count + 1)
+                self.assertEqual(state.index, 1)
+                self.assertEqual((obs, sentinel), before)
+
+    def test_failed_hire_does_not_retry_when_tape_coverage_changes(self):
+        for player in (0, 1):
+            with self.subTest(player=player):
+                lane._STATE.clear()
+                obs = observation(player=player)
+                start = obs["step"]
+                sentinel = action()
+                calls = []
+                def parent(o, configuration=None):
+                    calls.append(o["step"])
+                    return sentinel
+                wrapped = lane.wrap(parent, lambda o: tape(o["step"] + 1)
+                                    if o["step"] == start + 1 else tape(120))
+                failures = lane.REPORT["hire_failures"]
+                self.assertEqual(wrapped(obs, CONFIG)["market"], [["HIRE"]])
+                state = lane._STATE[player]
+                self.assertEqual(state.pending, 1)
+                for offset in (1, 2):
+                    followup = copy.deepcopy(obs)  # Same hand count: the HIRE failed.
+                    followup["step"] += offset
+                    self.assertIs(wrapped(followup, CONFIG), sentinel)
+                    self.assertTrue(state.tried)
+                    self.assertIsNone(state.pending)
+                    self.assertIsNone(state.index)
+                self.assertEqual(lane.REPORT["hire_failures"], failures + 1)
+                self.assertEqual(calls, [start, start + 1, start + 2])
+
+    def test_all_calendar_boundaries_preserve_complete_day_slices(self):
+        authored = tape(721)
+        cases = 0
+        for day in range(30):
+            end = (day + 1) * 24
+            for hour in range(24):
+                step = day * 24 + hour
+                for length in (step, step + 1, end - 1, end, end + 1):
+                    with self.subTest(day=day, hour=hour, length=length):
+                        remaining = lane._rest_of_day(authored[:length], step)
+                        if length < end:
+                            self.assertIsNone(remaining)
+                        else:
+                            self.assertEqual(remaining, authored[step + 1:end])
+                        cases += 1
+        self.assertEqual(cases, 3600)
+
 
 if __name__ == "__main__":
     unittest.main()

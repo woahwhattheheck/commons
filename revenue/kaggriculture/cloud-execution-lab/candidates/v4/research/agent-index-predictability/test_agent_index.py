@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+from __future__ import annotations
+
+import importlib.util
+import json
+import unittest
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location("agent_index", HERE / "analyze_agent_index.py")
+mod = importlib.util.module_from_spec(spec)
+assert spec.loader is not None
+spec.loader.exec_module(mod)
+
+
+def row(seed, opponent, seat, margin):
+    return {"seed": seed, "opponent": opponent, "seat": seat, "margin": margin}
+
+
+class AgentIndexPredictability(unittest.TestCase):
+    def test_true_seat_effect_survives_exact_pairing(self):
+        rows = []
+        for seed in range(8):
+            rows += [row(seed, "A", 0, 100 + seed), row(seed, "A", 1, 300 + seed)]
+        report = mod.analyze(rows, require_complete=True)
+        self.assertEqual(report["matched_pairs"], 8)
+        self.assertEqual(report["paired_seat1_minus_seat0_mean"], 200)
+        self.assertEqual(report["equal_opponent_weighted_mean_delta"], 200)
+        self.assertEqual(report["sign_test"]["positive"], 8)
+        self.assertLessEqual(report["sign_test"]["two_sided_p"], 0.01)
+
+    def test_simpsons_paradox_opponent_mix_does_not_fake_paired_effect(self):
+        rows = []
+        # Complete matched cells: no seat effect for either opponent.
+        for seed in range(4):
+            rows += [row(f"A{seed}", "easy", 0, 1000), row(f"A{seed}", "easy", 1, 1000)]
+            rows += [row(f"B{seed}", "hard", 0, -1000), row(f"B{seed}", "hard", 1, -1000)]
+        # Unmatched records strongly bias raw assignment by opponent.
+        for seed in range(20):
+            rows.append(row(f"Ue{seed}", "easy", 1, 1000))
+            rows.append(row(f"Uh{seed}", "hard", 0, -1000))
+        report = mod.analyze(rows)
+        self.assertEqual(report["paired_seat1_minus_seat0_mean"], 0)
+        self.assertEqual(report["equal_opponent_weighted_mean_delta"], 0)
+        self.assertGreater(report["raw_opponent_assignment_tv"], 0.7)
+        self.assertLess(report["matched_pair_coverage"], 0.3)
+
+    def test_require_complete_rejects_missing_seat(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze([row(1, "A", 0, 1), row(2, "A", 0, 1)], require_complete=True)
+
+    def test_duplicate_exact_cell_rejected(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze([
+                row(1, "A", 0, 1), row(1, "A", 0, 2), row(1, "A", 1, 3)
+            ])
+
+    def test_rewards_are_target_relative_by_seat(self):
+        records = [
+            {"seed": 1, "opponent": "A", "seat": 0, "rewards": [120, 20]},
+            {"seed": 1, "opponent": "A", "seat": 1, "rewards": [20, 120]},
+        ]
+        report = mod.analyze(records, require_complete=True)
+        self.assertEqual(report["seat0_mean_margin_matched"], 100)
+        self.assertEqual(report["seat1_mean_margin_matched"], 100)
+        self.assertEqual(report["paired_seat1_minus_seat0_mean"], 0)
+
+    def test_bool_seat_and_nonfinite_margin_fail_closed(self):
+        with self.assertRaises(mod.DataError):
+            mod.analyze([{"seed": 1, "opponent": "A", "seat": True, "margin": 1}])
+        with self.assertRaises(mod.DataError):
+            mod.analyze([
+                row(1, "A", 0, float("inf")),
+                row(1, "A", 1, 0),
+            ])
+
+    def test_equal_opponent_weighting_blocks_frequency_domination(self):
+        rows = []
+        # Many A pairs show +10; one B pair shows -100. Pooled is positive,
+        # equal-opponent effect is negative.
+        for seed in range(20):
+            rows += [row(f"A{seed}", "A", 0, 0), row(f"A{seed}", "A", 1, 10)]
+        rows += [row("B0", "B", 0, 0), row("B0", "B", 1, -100)]
+        report = mod.analyze(rows, require_complete=True)
+        self.assertGreater(report["paired_seat1_minus_seat0_mean"], 0)
+        self.assertEqual(report["equal_opponent_weighted_mean_delta"], -45)
+
+    def test_cohen_dz_zero_variance_is_strict_json_safe(self):
+        zero = mod.analyze([row(1, "A", 0, 5), row(1, "A", 1, 5),
+                            row(2, "A", 0, 7), row(2, "A", 1, 7)], require_complete=True)
+        self.assertEqual(zero["cohen_dz"], 0)
+        constant = mod.analyze([row(1, "A", 0, 0), row(1, "A", 1, 2),
+                                row(2, "A", 0, 0), row(2, "A", 1, 2)], require_complete=True)
+        self.assertIsNone(constant["cohen_dz"])
+        json.dumps(constant, allow_nan=False)
+
+
+if __name__ == "__main__":
+    unittest.main()
