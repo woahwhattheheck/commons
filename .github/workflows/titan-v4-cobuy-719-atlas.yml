@@ -37,8 +37,10 @@ jobs:
           data = p.read_bytes()
           d = json.loads(data)
           print('ATLAS_SHA256=' + hashlib.sha256(data).hexdigest())
+          print('ATLAS_BYTES=' + str(len(data)))
           print('STATUS=' + d['status'])
           print('COUNTS=' + json.dumps(d['counts'], sort_keys=True, separators=(',', ':')))
+          print('NOVEL=' + json.dumps(d['novel_authoritative_collisions'], sort_keys=True, separators=(',', ':')))
           print('AUTHORITATIVE=' + json.dumps(d['authoritative_collisions'], sort_keys=True, separators=(',', ':')))
           print('OPENING_CONTROL=' + json.dumps(d['controls'], sort_keys=True, separators=(',', ':')))
           PY
