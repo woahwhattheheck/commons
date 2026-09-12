@@ -28,6 +28,23 @@ Common column names are resolved through a small alias table. If the dataset con
 
 Every output records SHA-256 and byte length for all three inputs plus the exact resolved columns, so a downstream FIELD-MINE or loss-analysis owner can bind conclusions to source bytes rather than Slack prose.
 
+## Cross-episode recurrence
+
+Once multiple episodes have been extracted from the same raw CSV snapshot, `compare_episode_extracts.py` can report exact descriptive action, market, and relative-tail tokens that recur across them:
+
+```bash
+python compare_episode_extracts.py \
+  episode-108071852.json \
+  episode-108073260.json \
+  episode-108073343.json \
+  --min-episodes 2 \
+  --output recurrent-loss-signatures.json
+```
+
+The comparator fails closed unless every extract has the canonical `titan.v4.replay-loss-autopsy.v1` schema and binds identical SHA-256 plus byte lengths for all three raw CSV inputs. Duplicate episode IDs, duplicate JSON keys, malformed source identities, boolean-as-integer fields, and malformed summary/tail rows are rejected. Tail recurrence is normalized only by relative callback offset from each extract's reported `max_step`; it does not claim equivalent game state.
+
+Recurring tokens are routing evidence only. They can tell a downstream owner that the same descriptive pattern appears across multiple source-bound episodes, but they are not causal evidence and do not imply that changing the repeated action or market row would improve score.
+
 ## Fail-closed rules
 
 - duplicate headers and malformed short/long CSV rows are rejected;
@@ -35,10 +52,13 @@ Every output records SHA-256 and byte length for all three inputs plus the exact
 - step and quantity parsing accepts strict integer text only, with no float/bool coercion;
 - an episode absent from all three tables is an error;
 - invalid tail/day parameters are errors;
-- unknown or non-integer quantities remain visible through `qty_raw` and are excluded from `explicit_qty_sum` rather than coerced.
+- unknown or non-integer quantities remain visible through `qty_raw` and are excluded from `explicit_qty_sum` rather than coerced;
+- multi-loss recurrence requires identical authenticated raw-source snapshots across every compared episode.
 
 ## Validation
 
 `test_extract_episode.py` is self-contained and uses temporary synthetic CSVs. It covers deterministic output, exact metadata preservation, explicit schema disambiguation, absent episodes, malformed rows, and invalid parameters in normal and optimized Python.
+
+`test_compare_episode_extracts.py` covers source-snapshot mismatch rejection, duplicate episode and duplicate-key rejection, strict integer handling, deterministic CLI output, relative-tail recurrence, and configurable recurrence thresholds in normal and optimized Python.
 
 This package is research-only. It does not modify Titan gameplay, configuration, defaults, production runtime, submissions, or Kaggle state.
