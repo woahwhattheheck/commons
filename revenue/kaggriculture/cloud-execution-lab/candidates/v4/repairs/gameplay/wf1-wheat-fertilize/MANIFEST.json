@@ -8,7 +8,7 @@
     "handoff_time": "2026-09-11T18:35:05-04:00",
     "slack_file_id": "F0C19EXC5T8",
     "archive_name": "s1_wheat_fertilize_handoff.tar.gz",
-    "archive_size_bytes": 88866,
+    "archive_size_bytes": 88928,
     "archive_sha256": "d50b080fbd15fe21b62c54649ec336fd69b0a5351c1f0c64110a1417d096b9e1"
   },
   "exact_members": {
