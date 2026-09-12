@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import sys
 import tarfile
+import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -82,6 +83,7 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
         self.assertEqual(receipt["treatment"]["config_sha256"], m.TREATMENT_CONFIG_SHA256)
         self.assertEqual(receipt["treatment"]["archive_sha256"], m.digest(packed))
         self.assertEqual(set(receipt["treatment"]["config_changes"]), set(m.CHANGES))
+        self.assertEqual(receipt["semantic_topology"]["status"], "AUTHENTICATED")
         self.assertEqual(receipt["native_economics_status"], "PENDING_BASE_PRODUCTION_PANEL")
         self.assertTrue(receipt["kaggle_submission_hold"])
 
@@ -107,6 +109,60 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
         payload = m.archive_bytes(self.baseline())
         with self.assertRaisesRegex(ValueError, "Archive identity mismatch"):
             m.parse_archive_bytes(payload, "0" * 64)
+
+    def test_semantic_topology_accepts_bound_fixture(self):
+        members = {
+            "runtime.py": b"alpha\nrequired-one\nrequired-two\n",
+            "controller.py": b"controller-anchor\n",
+        }
+        expected = {name: m.digest(body) for name, body in members.items()}
+        anchors = {
+            "runtime.py": (b"required-one", b"required-two"),
+            "controller.py": (b"controller-anchor",),
+        }
+        m.verify_semantic_topology(members, expected, anchors)
+
+    def test_semantic_topology_rejects_missing_anchor_even_with_bound_hash(self):
+        members = {"runtime.py": b"alpha\n"}
+        expected = {"runtime.py": m.digest(members["runtime.py"])}
+        with self.assertRaisesRegex(ValueError, "topology anchor mismatch"):
+            m.verify_semantic_topology(
+                members, expected, {"runtime.py": (b"required-anchor",)}
+            )
+
+    def test_publish_pair_success_is_exact(self):
+        packed = b"complete archive bytes"
+        receipt = {"schema": "test", "archive_sha256": m.digest(packed)}
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "treatment.tar.gz"
+            receipt_path = Path(td) / "treatment.json"
+            m.publish_pair(out, receipt_path, packed, receipt)
+            self.assertEqual(out.read_bytes(), packed)
+            self.assertEqual(receipt_path.read_bytes(), m._receipt_bytes(receipt))
+
+    def test_receipt_collision_never_publishes_archive(self):
+        packed = b"complete archive bytes"
+        receipt = {"schema": "test"}
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "treatment.tar.gz"
+            receipt_path = Path(td) / "treatment.json"
+            receipt_path.write_bytes(b"hostile")
+            with self.assertRaises(FileExistsError):
+                m.publish_pair(out, receipt_path, packed, receipt)
+            self.assertFalse(out.exists())
+            self.assertEqual(receipt_path.read_bytes(), b"hostile")
+
+    def test_archive_collision_rolls_back_owned_receipt(self):
+        packed = b"complete archive bytes"
+        receipt = {"schema": "test"}
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "treatment.tar.gz"
+            receipt_path = Path(td) / "treatment.json"
+            out.write_bytes(b"hostile")
+            with self.assertRaises(FileExistsError):
+                m.publish_pair(out, receipt_path, packed, receipt)
+            self.assertEqual(out.read_bytes(), b"hostile")
+            self.assertFalse(receipt_path.exists())
 
 
 if __name__ == "__main__":
