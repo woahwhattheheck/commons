@@ -15,7 +15,6 @@ import time
 from collections.abc import Callable, Mapping
 from typing import Any
 
-import close_game_sale_risk
 from sell_priority import PRODUCTS, _quote
 
 PriceFunction = Callable[[str, int, Mapping | None], int | float]
@@ -278,7 +277,19 @@ def transform(action: dict, observation: Mapping,
         orders[start:stop] = [order for order, _ in ranked]
         start = stop
     result['market'] = compact_sale_only_prefix(orders, end, market, cfg, quote)
-    return close_game_sale_risk.transform(result, observation, cfg, quote=quote)
+
+    # The V5 close-game objective is an opt-in refinement of this already-final
+    # SELL boundary. Keep the dependency lazy so standalone LARK source tests
+    # remain self-contained when the V5 runtime module is not on sys.path.
+    raw_mode = cfg.get('titanCloseGameSaleRisk', 'legacy')
+    mode = raw_mode.strip().lower() if isinstance(raw_mode, str) else 'legacy'
+    if mode != 'legacy':
+        try:
+            from close_game_sale_risk import transform as close_game_transform
+        except ModuleNotFoundError:
+            return result
+        result = close_game_transform(result, observation, cfg, quote=quote)
+    return result
 
 
 def actor_class(base: type, quote: PriceFunction) -> type:
