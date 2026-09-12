@@ -15,6 +15,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import sys
 from typing import Any, Callable
 
 EFFECTIVE_FLOW_BLOB = "e24dd03a88a71ba4cf6f8d5da1082b89490b5a94"
@@ -35,7 +36,18 @@ def _load_exact(name: str, path: Path, expected_blob: str):
     if spec is None or spec.loader is None:
         raise ValueError(f"cannot load {path}")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    missing = object()
+    previous = sys.modules.get(name, missing)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        if sys.modules.get(name) is module:
+            if previous is missing:
+                sys.modules.pop(name, None)
+            else:
+                sys.modules[name] = previous
+        raise
     return module
 
 
