@@ -87,6 +87,7 @@ class CanonicalPrClaimTests(unittest.TestCase):
             {"action": "take", "holder": "ASTRA", "ttl_s": True},
             {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 0},
             {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": True},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 11},
         ]
         for kwargs in bad:
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
@@ -127,26 +128,64 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertEqual("ASTRA-A", lost["held_by"])
         self.assertGreaterEqual(tip_calls["n"], 2)
 
-    def test_explicit_time_stays_deterministic_across_wrapper_retries(self):
-        real = cs.holding_write
-        seen = []
+    def test_future_winner_heartbeat_is_live_not_expired(self):
+        winner = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "WINNER",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(winner["ok"])
 
-        def fake(*args, **kwargs):
-            seen.append(kwargs["now"])
-            if len(seen) == 1:
-                return {"ok": False, "key": "pr-13492", "reason": "branch kept moving; retry"}
-            return {"ok": True, "key": "pr-13492", "record": {}}
+        loser = claim_pr.write_pr_holding(
+            self.b, 13492, "LOSER", "take", ttl_s=600, now=self.t0
+        )
+        self.assertFalse(loser["ok"])
+        self.assertEqual("WINNER", loser["held_by"])
 
-        cs.holding_write = fake
+    def test_same_holder_clock_skew_does_not_move_heartbeat_backwards(self):
+        first = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "ASTRA-A",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(first["ok"])
+        renewed = claim_pr.write_pr_holding(
+            self.a, 13492, "ASTRA-A", "renew", ttl_s=1200, now=self.t0
+        )
+        self.assertTrue(renewed["ok"])
+        self.assertEqual(
+            "2026-09-12T23:30:10Z", renewed["record"]["heartbeat_at"]
+        )
+        self.assertEqual(1200, renewed["record"]["ttl_s"])
+
+    def test_explicit_time_never_reads_runtime_clock(self):
+        winner = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "WINNER",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(winner["ok"])
+
+        real_now = cs._now
+        cs._now = lambda: (_ for _ in ()).throw(AssertionError("runtime clock used"))
         try:
             result = claim_pr.write_pr_holding(
-                self.a, 13492, "ASTRA-A", "take", now=self.t0
+                self.b, 13492, "LOSER", "take", ttl_s=600, now=self.t0
             )
         finally:
-            cs.holding_write = real
+            cs._now = real_now
 
-        self.assertTrue(result["ok"])
-        self.assertEqual([self.t0, self.t0], seen)
+        self.assertFalse(result["ok"])
+        self.assertEqual("WINNER", result["held_by"])
 
 
 if __name__ == "__main__":
