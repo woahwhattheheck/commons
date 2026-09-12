@@ -46,20 +46,51 @@ def _exact_player(observation):
     return player
 
 
+def _exact_turns_per_day(configuration):
+    if "turnsPerDay" not in configuration:
+        return 24
+    turns = configuration["turnsPerDay"]
+    if type(turns) is not int or turns <= 0:
+        raise ValueError("turnsPerDay must be a positive plain int for day/hour identity")
+    return turns
+
+
+def _exact_day_hour(observation, configuration):
+    day_present = "day" in observation
+    hour_present = "hour" in observation
+    if day_present != hour_present:
+        raise ValueError("day and hour must be supplied together")
+    if not day_present:
+        return None
+
+    day = observation["day"]
+    hour = observation["hour"]
+    if type(day) is not int or day < 0:
+        raise ValueError("day must be a non-negative plain int")
+    if type(hour) is not int or hour < 0:
+        raise ValueError("hour must be a non-negative plain int")
+    turns = _exact_turns_per_day(configuration)
+    if hour >= turns:
+        raise ValueError("hour must be smaller than turnsPerDay")
+    return day, hour, turns
+
+
 def _exact_step(observation, configuration):
+    clock = _exact_day_hour(observation, configuration)
     if "step" in observation:
         step = observation["step"]
         if type(step) is not int or step < 0:
             raise ValueError("step must be a non-negative plain int")
+        if clock is not None:
+            day, hour, turns = clock
+            if day * turns + hour != step:
+                raise ValueError("step must agree exactly with redundant day/hour identity")
         return step
 
-    day = observation.get("day")
-    hour = observation.get("hour")
-    if type(day) is not int or day < 0:
-        raise ValueError("day must be a non-negative plain int when step is absent")
-    if type(hour) is not int or hour < 0:
-        raise ValueError("hour must be a non-negative plain int when step is absent")
-    return day * int(configuration.get("turnsPerDay", 24)) + hour
+    if clock is None:
+        raise ValueError("day and hour are required when step is absent")
+    day, hour, turns = clock
+    return day * turns + hour
 
 
 def legal_pass(observation):
