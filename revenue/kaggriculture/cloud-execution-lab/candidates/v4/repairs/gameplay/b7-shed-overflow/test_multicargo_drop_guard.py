@@ -63,7 +63,36 @@ def project_place(shed, inventory, item, qty, capacity=100):
 class MultiCargoDropGuardTest(unittest.TestCase):
     def test_disabled_preserves_exact_identity(self):
         parent = action([["DROP"]])
+        before_disabled = GUARD.telemetry["disabled"]
+        before_invalid = GUARD.telemetry["invalid_enabled"]
         self.assertIs(GUARD.transform(observation(0, [{"MILK": 2, "WOOL": 3}]), parent, CFG), parent)
+        self.assertEqual(GUARD.telemetry["disabled"], before_disabled + 1)
+        self.assertEqual(GUARD.telemetry["invalid_enabled"], before_invalid)
+
+    def test_nonbool_enable_poison_fails_closed_before_state_read(self):
+        parent = action([["DROP"]])
+        poisons = (None, 0, 1, 1.0, "false", [True], {"enabled": True}, object())
+        before_invalid = GUARD.telemetry["invalid_enabled"]
+        before_changed = GUARD.telemetry["changed_actions"]
+        for bad in poisons:
+            with self.subTest(bad=repr(bad)):
+                self.assertIs(GUARD.transform(object(), parent, object(), enabled=bad), parent)
+        self.assertEqual(GUARD.telemetry["invalid_enabled"], before_invalid + len(poisons))
+        self.assertEqual(GUARD.telemetry["changed_actions"], before_changed)
+
+    def test_install_metadata_is_literal_true_only(self):
+        parent_action = action([["DROP"]])
+
+        def parent(_observation, _configuration=None):
+            return parent_action
+
+        for bad in (None, 0, 1, 1.0, "false", [True], {"enabled": True}, object()):
+            with self.subTest(bad=repr(bad)):
+                agent = GUARD.install(parent, enabled=bad)
+                self.assertFalse(agent.b7_multicargo_enabled)
+                self.assertIs(agent(object(), object()), parent_action)
+        self.assertTrue(GUARD.install(parent, enabled=True).b7_multicargo_enabled)
+        self.assertFalse(GUARD.install(parent, enabled=False).b7_multicargo_enabled)
 
     def test_full_shed_multicargo_becomes_pass(self):
         parent = action([["DROP"]])
