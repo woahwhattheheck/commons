@@ -178,6 +178,7 @@ def _load_components(manifest: dict[str, Any], source_root: Path) -> dict[str, d
 
 def _validate_preimages(
     base_payloads: dict[str, bytes],
+    regular_members: set[str],
     components: dict[str, dict[str, Any]],
 ) -> None:
     """Authenticate component compatibility with the exact baseline before output."""
@@ -187,6 +188,8 @@ def _validate_preimages(
             target = entry["archive_path"]
             if target not in base_payloads:
                 raise CompositionError(f"component {name} targets absent archive member: {target}")
+            if target not in regular_members:
+                raise CompositionError(f"component {name} targets non-regular archive member: {target}")
             expected = entry["preimage_sha256"]
             prior = seen.get(target)
             if prior is not None and prior[1] != expected:
@@ -276,7 +279,8 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
             f"baseline member count mismatch: expected {expected_members}, got {len(infos)}"
         )
     components = _load_components(manifest, source_root)
-    _validate_preimages(base_payloads, components)
+    regular_members = {info.name for info in infos if info.isfile()}
+    _validate_preimages(base_payloads, regular_members, components)
     names = tuple(sorted(components))
     variants: list[tuple[str, tuple[str, ...]]] = [
         ("control", ()),
@@ -285,10 +289,20 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
         (f"{names[0]}+{names[1]}", names),
     ]
 
-    # No output path is created until all source and baseline preimage authority
-    # has been authenticated. A stale component/baseline pairing therefore
-    # cannot leave partial archives or a misleading receipt behind.
-    output.mkdir(parents=True, exist_ok=True)
+    # Preflight every variant before creating output. Source/preimage drift,
+    # overlay conflicts, and malformed config requirements therefore cannot
+    # leave a partial A/B/AB evidence directory behind.
+    prepared: list[tuple[str, tuple[str, ...], dict[str, bytes], list[str], dict[str, Any]]] = []
+    for label, enabled in variants:
+        if not enabled:
+            payloads = base_payloads
+            changed: list[str] = []
+            requested_config: dict[str, Any] = {}
+        else:
+            payloads, changed, requested_config = _apply_variant(base_payloads, components, enabled)
+        prepared.append((label, enabled, payloads, changed, requested_config))
+
+    output.mkdir(parents=True, exist_ok=False)
     receipt: dict[str, Any] = {
         "schema": SCHEMA,
         "baseline": {"sha256": actual_sha, "member_count": len(infos)},
@@ -307,13 +321,7 @@ def build(*, baseline: Path, source_root: Path, manifest_path: Path, output: Pat
             "config": components[name]["config"],
         }
 
-    for label, enabled in variants:
-        if not enabled:
-            payloads = base_payloads
-            changed: list[str] = []
-            requested_config: dict[str, Any] = {}
-        else:
-            payloads, changed, requested_config = _apply_variant(base_payloads, components, enabled)
+    for label, enabled, payloads, changed, requested_config in prepared:
         filename = label.replace("+", "-plus-") + ".tar.gz"
         target = output / filename
         _write_archive(target, infos, payloads)
