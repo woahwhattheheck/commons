@@ -111,15 +111,15 @@ def patch_config(text: str, *, enabled: bool) -> str:
     return json.dumps(data, indent=2) + "\n"
 
 
-def _helper_functions(path: Path) -> set[str]:
+def _helper_functions(source: bytes) -> set[str]:
     return {
-        node.name for node in ast.parse(path.read_text(encoding="utf-8")).body
+        node.name for node in ast.parse(source).body
         if isinstance(node, ast.FunctionDef)
     }
 
 
-def _current_entrypoint_shape(path: Path) -> None:
-    text = path.read_text(encoding="utf-8")
+def _current_entrypoint_shape(source: bytes) -> None:
+    text = source.decode("utf-8")
     town = "town_enabled = _town_procurement_enabled(feature_data)"
     strip = "feature_data.pop('town_procurement', None)"
     bind = "features = Features(**feature_data)"
@@ -127,6 +127,18 @@ def _current_entrypoint_shape(path: Path) -> None:
         raise ValueError("current entrypoint town/runtime feature seam drifted")
     if not text.index(town) < text.index(strip) < text.index(bind):
         raise ValueError("town_procurement must be consumed before Features binding")
+
+
+def _copy_ignore(package_root: Path):
+    authenticated = {"main.py", "titan_runtime.py", "TITAN-CONFIG.json"}
+
+    def ignore(directory: str, names: list[str]) -> set[str]:
+        ignored = {name for name in names if name == "__pycache__" or name.endswith(".pyc")}
+        if Path(directory).resolve() == package_root:
+            ignored.update(authenticated.intersection(names))
+        return ignored
+
+    return ignore
 
 
 def materialize(source_root: Path, package_root: Path, output: Path, *, enabled: bool = False) -> dict:
@@ -148,57 +160,72 @@ def materialize(source_root: Path, package_root: Path, output: Path, *, enabled:
         str(HELPER_RELATIVE): (helper, HELPER_BLOB),
     }
     actual = {}
+    captured = {}
+    source_sha256s = {}
     for label, (path, expected_blob) in expected.items():
-        if not path.is_file():
-            raise ValueError(f"missing authenticated source: {label}")
-        blob = git_blob_id(path.read_bytes())
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"missing or non-regular authenticated source: {label}")
+        payload = path.read_bytes()
+        blob = git_blob_id(payload)
         actual[label] = blob
+        captured[label] = payload
+        source_sha256s[label] = sha256(payload)
         if blob != expected_blob:
             raise ValueError(f"source authentication failed for {label}: {blob}")
 
-    _current_entrypoint_shape(main)
-    base_config = json.loads(config.read_text(encoding="utf-8"))
+    main_bytes = captured["main.py"]
+    runtime_bytes = captured["titan_runtime.py"]
+    config_bytes = captured["TITAN-CONFIG.json"]
+    helper_label = str(HELPER_RELATIVE)
+    helper_bytes = captured[helper_label]
+
+    _current_entrypoint_shape(main_bytes)
+    base_config = json.loads(config_bytes.decode("utf-8"))
     if type(base_config) is not dict:
         raise ValueError("TITAN-CONFIG.json must be an object")
     for key in ("town_procurement", "exec_pace"):
         if type(base_config.get(key)) is not bool:
             raise ValueError(f"current package requires exact-bool {key}")
 
-    funcs = _helper_functions(helper)
+    funcs = _helper_functions(helper_bytes)
     required = {"apply_dead_feed_care", "apply_carebank_feed_swap"}
     if not required.issubset(funcs):
         raise ValueError("authenticated W2 helper is missing required public APIs")
     if (package_root / "r04_dead_feed_care.py").exists():
         raise ValueError("input package already contains W2 helper; explicit composition required")
 
-    runtime_after = patch_runtime(runtime.read_text(encoding="utf-8"))
-    config_after = patch_config(config.read_text(encoding="utf-8"), enabled=enabled)
+    runtime_after = patch_runtime(runtime_bytes.decode("utf-8"))
+    config_after = patch_config(config_bytes.decode("utf-8"), enabled=enabled)
+    runtime_after_bytes = runtime_after.encode("utf-8")
+    config_after_bytes = config_after.encode("utf-8")
 
-    shutil.copytree(package_root, output, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-    (output / "titan_runtime.py").write_text(runtime_after, encoding="utf-8")
-    (output / "TITAN-CONFIG.json").write_text(config_after, encoding="utf-8")
-    shutil.copyfile(helper, output / "r04_dead_feed_care.py")
+    shutil.copytree(package_root, output, ignore=_copy_ignore(package_root))
+    (output / "main.py").write_bytes(main_bytes)
+    (output / "titan_runtime.py").write_bytes(runtime_after_bytes)
+    (output / "TITAN-CONFIG.json").write_bytes(config_after_bytes)
+    (output / "r04_dead_feed_care.py").write_bytes(helper_bytes)
 
     return {
         "schema": "titan-v5-carebank-current-native/v1",
         "authority": "candidates/v4/repairs/gameplay/dead-feed-care",
         "source_blobs": actual,
+        "source_sha256s": source_sha256s,
         "outputs": {
             "main.py": {
-                "git_blob": git_blob_id((output / "main.py").read_bytes()),
-                "sha256": sha256((output / "main.py").read_bytes()),
+                "git_blob": git_blob_id(main_bytes),
+                "sha256": sha256(main_bytes),
             },
             "titan_runtime.py": {
-                "git_blob": git_blob_id((output / "titan_runtime.py").read_bytes()),
-                "sha256": sha256((output / "titan_runtime.py").read_bytes()),
+                "git_blob": git_blob_id(runtime_after_bytes),
+                "sha256": sha256(runtime_after_bytes),
             },
             "TITAN-CONFIG.json": {
-                "git_blob": git_blob_id((output / "TITAN-CONFIG.json").read_bytes()),
-                "sha256": sha256((output / "TITAN-CONFIG.json").read_bytes()),
+                "git_blob": git_blob_id(config_after_bytes),
+                "sha256": sha256(config_after_bytes),
             },
             "r04_dead_feed_care.py": {
-                "git_blob": git_blob_id((output / "r04_dead_feed_care.py").read_bytes()),
-                "sha256": sha256((output / "r04_dead_feed_care.py").read_bytes()),
+                "git_blob": git_blob_id(helper_bytes),
+                "sha256": sha256(helper_bytes),
             },
         },
         "feature_key": "r04_dead_feed_care",
