@@ -112,7 +112,6 @@ def assist_same_turn_weed_obstructions(
     action is not moved or rewritten.
 
     This helper is deliberately conservative:
-    * exact literal ``True`` is the only activation token;
     * no persistent retry state;
     * only live actors may be helpers/targets;
     * helpers must be literal ``["PASS"]`` rows;
@@ -121,15 +120,19 @@ def assist_same_turn_weed_obstructions(
     * raw suffix hand rows remain byte-for-byte untouched and still count in PLANT
       demand because the engine counts them before live-actor dispatch.
     """
-    exact_enabled = enabled is True
+    enabled_is_bool = type(enabled) is bool
     report: dict[str, Any] = {
         "schema": "titan-v4-weed-assist-v1",
-        "enabled": exact_enabled,
+        "enabled": enabled is True if enabled_is_bool else False,
         "changed": False,
         "rewrites": [],
-        "reason": "disabled" if not exact_enabled else "ineligible",
+        "reason": (
+            "invalid_enabled"
+            if not enabled_is_bool
+            else ("disabled" if enabled is False else "ineligible")
+        ),
     }
-    if not exact_enabled:
+    if not enabled_is_bool or enabled is False:
         return returned_action, report
     if not isinstance(returned_action, dict):
         return returned_action, report
