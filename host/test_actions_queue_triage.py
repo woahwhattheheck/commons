@@ -48,6 +48,16 @@ class QueueClassification(unittest.TestCase):
         got = q.classify_run(run(2), snap, q.DEFAULT_REPO)
         self.assertEqual(got["classification"], "LIVE_BRANCH_HEAD_KEEP")
 
+    def test_unknown_repo_exact_branch_tip_is_conservative_keep(self):
+        snap = self.snapshot([branch("topic", A)], [])
+        for head_repository in (None, {}):
+            with self.subTest(head_repository=head_repository):
+                queued = run(21)
+                queued["head_repository"] = head_repository
+                got = q.classify_run(queued, snap, q.DEFAULT_REPO)
+                self.assertEqual(got["classification"], "LIVE_BRANCH_HEAD_KEEP")
+                self.assertFalse(got["cancel_candidate"])
+
     def test_open_pr_head_moved_is_candidate(self):
         snap = self.snapshot([], [pr(7, B)])
         got = q.classify_run(run(3, prs=(7,), event="pull_request"), snap, q.DEFAULT_REPO)
@@ -112,6 +122,28 @@ class QueueClassification(unittest.TestCase):
         snap = self.snapshot([], [])
         got = q.classify_run(run(8), snap, q.DEFAULT_REPO)
         self.assertEqual(got["classification"], "ORPHANED_PUSH_HEAD_CANDIDATE")
+
+    def test_unknown_repo_moved_branch_fails_closed(self):
+        snap = self.snapshot([branch("topic", B)], [])
+        for head_repository in (None, {}):
+            with self.subTest(head_repository=head_repository):
+                queued = run(81)
+                queued["head_repository"] = head_repository
+                got = q.classify_run(queued, snap, q.DEFAULT_REPO)
+                self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+                self.assertFalse(got["cancel_candidate"])
+                self.assertIn("repository identity unknown", got["reason"])
+
+    def test_unknown_repo_absent_push_branch_fails_closed(self):
+        snap = self.snapshot([], [])
+        for head_repository in (None, {}):
+            with self.subTest(head_repository=head_repository):
+                queued = run(82)
+                queued["head_repository"] = head_repository
+                got = q.classify_run(queued, snap, q.DEFAULT_REPO)
+                self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+                self.assertFalse(got["cancel_candidate"])
+                self.assertIn("repository identity unknown", got["reason"])
 
     def test_deleted_dispatch_branch_is_unknown_keep(self):
         snap = self.snapshot([], [])
