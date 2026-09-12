@@ -96,6 +96,14 @@ class UnitPipelineTests(unittest.TestCase):
         self.assertFalse(report["changed"])
         self.assertEqual(1, report["refusals"]["disabled"])
 
+    def test_missing_unit_rows_preserves_shape(self):
+        obs = observation(None, hands=1, seeds={"WHEAT": 1})
+        action = {"market": [["BUY_SEED", "WHEAT", 1]]}
+        got, report = reorder_unit_pipeline(obs, action, enabled=True)
+        self.assertEqual(action, got)
+        self.assertFalse(report["changed"])
+        self.assertEqual(1, report["refusals"]["missing_unit_rows"])
+
     def test_empty_tile_reorders_plant_then_water(self):
         obs = observation(None, hands=1, seeds={"STRAWBERRY": 1})
         action = {"farmer": ["WATER"], "hands": [["PLANT", "STRAWBERRY"]], "market": []}
@@ -171,6 +179,23 @@ class UnitPipelineTests(unittest.TestCase):
         got, report = reorder_unit_pipeline(obs, action, enabled=True)
         self.assertEqual(action, got)
         self.assertEqual(1, report["refusals"]["seed_not_observed_available"])
+
+    def test_global_seed_overshoot_refuses(self):
+        obs = observation(
+            None,
+            hands=2,
+            seeds={"WHEAT": 1},
+            positions=[[4, 4], [4, 4], [3, 4]],
+        )
+        action = {
+            "farmer": ["WATER"],
+            "hands": [["PLANT", "WHEAT"], ["PLANT", "WHEAT"]],
+            "market": [],
+        }
+        got, report = reorder_unit_pipeline(obs, action, enabled=True)
+        self.assertEqual(action, got)
+        self.assertFalse(report["changed"])
+        self.assertEqual(1, report["refusals"]["atomic_seed_collateral_unmet"])
 
     def test_impure_group_refuses(self):
         obs = observation(None, hands=2, seeds={"WHEAT": 1})
