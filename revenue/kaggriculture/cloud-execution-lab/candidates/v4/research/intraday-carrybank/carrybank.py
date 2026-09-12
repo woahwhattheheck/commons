@@ -29,18 +29,65 @@ def _op(action: object) -> str:
     return ""
 
 
+def _pickup_quantity(action: object, item: str) -> int | None:
+    """Return the authored pickup quantity for ``item``, or ``None`` if unrelated."""
+    if not isinstance(action, (list, tuple)) or len(action) < 2 or _op(action) != "PICKUP":
+        return None
+    if action[1] != item:
+        return None
+    if len(action) < 3:
+        return 1
+    try:
+        quantity = int(action[2])
+    except (TypeError, ValueError):
+        raise ValueError("malformed pickup quantity")
+    if quantity <= 0:
+        raise ValueError("nonpositive pickup quantity")
+    return quantity
+
+
 def _future_consumption(
     future_unit_actions: Sequence[object],
     turns_remaining: int,
+    current_inventory: Mapping[str, int] | None = None,
 ) -> dict[str, int]:
-    """Count same-day carried-inventory sinks in the supplied actor continuation."""
+    """Guaranteed *additional* carried-input sink capacity in this continuation.
+
+    Sink capacity is net of carried stock and authored actions that can add the same
+    input. DROP truncates the guarantee because relying on it is lossy by contract.
+    WHEAT capacity is unprovable across HARVEST without an item-level projection.
+    """
     remaining = max(0, int(turns_remaining))
-    counts = {item: 0 for item in PREFERRED_ITEMS}
-    for action in future_unit_actions[:remaining]:
-        item = CONSUMABLE_BY_ACTION.get(_op(action))
-        if item is not None:
-            counts[item] += 1
-    return counts
+    actions = list(future_unit_actions[:remaining])
+    inventory = current_inventory or {}
+    capacity: dict[str, int] = {}
+
+    for item in PREFERRED_ITEMS:
+        sinks = 0
+        burden = max(0, int(inventory.get(item, 0)))
+        unsafe_unknown_gain = False
+        for action in actions:
+            op = _op(action)
+            if op == "DROP":
+                break
+            try:
+                pickup = _pickup_quantity(action, item)
+            except ValueError:
+                unsafe_unknown_gain = True
+                break
+            if pickup is not None:
+                burden += pickup
+                continue
+            if item == "FERTILIZER" and op == "COLLECT_FERTILIZER":
+                burden += 1
+                continue
+            if item == "WHEAT" and op == "HARVEST":
+                unsafe_unknown_gain = True
+                break
+            if CONSUMABLE_BY_ACTION.get(op) == item:
+                sinks += 1
+        capacity[item] = 0 if unsafe_unknown_gain else max(0, sinks - burden)
+    return capacity
 
 
 def admit_carrybank_pickup(
@@ -62,8 +109,8 @@ def admit_carrybank_pickup(
       * the actor must already be adjacent to SHED;
       * only WHEAT/FERTILIZER qualify because FEED/FERTILIZE are carried-item sinks;
       * pickup quantity is capped by projected shed-capacity pressure;
-      * pickup quantity is capped by *additional* same-day planned consumption after
-        accounting for inventory the actor already carries.
+      * pickup quantity is capped by *additional guaranteed* same-day consumption after
+        accounting for inventory already carried and future input acquisition.
 
     The official engine silently destroys DROP overflow and discards carried overflow
     at end-of-day shed return. Therefore this helper never relies on DROP or EOD return
@@ -81,15 +128,13 @@ def admit_carrybank_pickup(
     if pressure <= 0:
         return None
 
-    consumption = _future_consumption(future_unit_actions, turns_remaining)
+    additional_capacity = _future_consumption(
+        future_unit_actions, turns_remaining, current_inventory)
     candidates: list[tuple[int, int, str]] = []
     for priority, item in enumerate(PREFERRED_ITEMS):
         available = max(0, int(shed.get(item, 0)))
-        carried = max(0, int(current_inventory.get(item, 0)))
-        additional_sink = max(0, consumption[item] - carried)
-        quantity = min(pressure, available, additional_sink)
+        quantity = min(pressure, available, additional_capacity[item])
         if quantity > 0:
-            # Prefer the decision freeing the most capacity; stable priority breaks ties.
             candidates.append((quantity, -priority, item))
 
     if not candidates:
@@ -100,5 +145,5 @@ def admit_carrybank_pickup(
         item=item,
         quantity=quantity,
         pressure_units=pressure,
-        guaranteed_consumption_units=consumption[item],
+        guaranteed_consumption_units=additional_capacity[item],
     )
