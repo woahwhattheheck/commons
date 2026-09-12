@@ -245,6 +245,49 @@ class PlantGuardTests(unittest.TestCase):
         self.assertEqual(result["verdict"], "NOT_CERTIFIED")
         self.assertIn("step_must_be_int", result["reason"])
 
+    def test_terminal_partial_day_unused_authored_row_cannot_certify(self):
+        obs = observation(hour=22, step=718)
+        selected = action(("PLANT", "WHEAT"))
+        # Step 719/hour23 is nominally the next clock row, but the standard
+        # 720-step interpreter never executes it or that day's EOD.
+        result = assess(obs, selected, [action(("PASS",))])
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "eod_not_reachable_before_terminal")
+
+    def test_last_real_eod_callback_can_still_certify(self):
+        obs = observation(hour=23, step=695)
+        result = assess(obs, action(("PLANT", "WHEAT")))
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [0])
+
+    def test_after_final_executable_callback_fails_closed(self):
+        obs = observation(hour=23, step=719)
+        result = assess(obs, action(("PLANT", "WHEAT")))
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(
+            result["reason"], "step_after_final_executable_callback"
+        )
+
+    def test_custom_episode_horizon_controls_eod_reachability(self):
+        obs = observation(hour=22, step=46)
+        result = assess(
+            obs,
+            action(("PLANT", "WHEAT")),
+            [action(("PASS",))],
+            {"episodeSteps": 48, "turnsPerDay": 24},
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "eod_not_reachable_before_terminal")
+
+    def test_episode_steps_type_poison_fails_closed(self):
+        result = assess(
+            observation(),
+            action(("PLANT", "WHEAT")),
+            config={"episodeSteps": True},
+        )
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertIn("episodeSteps_must_be_int", result["reason"])
+
     def test_inputs_are_not_mutated(self):
         obs = observation(hour=22, hands=((0, 1),))
         selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
