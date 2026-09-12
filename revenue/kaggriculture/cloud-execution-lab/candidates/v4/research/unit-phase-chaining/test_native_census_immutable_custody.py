@@ -5,6 +5,7 @@ import json
 import os
 import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 
@@ -85,9 +86,6 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
             files = _minimal_files()
             files["scheduler.py"] = b"ORIGINAL = True\n"
             _write_package(package, files)
-            # Attacker changes a non-core runtime member and honestly rebinds its
-            # manifest row. Row-level custody is self-consistent; canonical
-            # SOURCE identity must reject the forged artifact before row use.
             files["scheduler.py"] = b"ATTACKER = True\n"
             _write_package(package, files)
             with self.assertRaisesRegex(ValueError, "SOURCE.json SHA-256 mismatch"):
@@ -129,6 +127,35 @@ class NativeCensusImmutableCustodyTests(unittest.TestCase):
                 self.assertIn("titan-unitpipe-frozen-", str(Path(main.__file__).parent))
             finally:
                 sys.path[:] = original_path
+
+    def test_preloaded_lazy_runtime_module_fails_before_frozen_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            package = Path(td) / "native"
+            package.mkdir()
+            files = _minimal_files()
+            files["main.py"] = (
+                b"def agent(observation, configuration=None):\n"
+                b"    from titan_runtime import MARKER\n"
+                b"    return MARKER\n"
+            )
+            files["titan_runtime.py"] = b"MARKER='FROZEN'\n"
+            _write_package(package, files)
+            capture = _capture_synthetic(package)
+            attacker = types.ModuleType("titan_runtime")
+            attacker.__file__ = str(Path(td) / "ambient-titan_runtime.py")
+            attacker.MARKER = "AMBIENT"
+            previous = sys.modules.get("titan_runtime")
+            sys.modules["titan_runtime"] = attacker
+            try:
+                with self.assertRaisesRegex(
+                    ValueError, "declared runtime module is already loaded before frozen execution"
+                ):
+                    census._load_fixture_from_capture(capture)
+            finally:
+                if previous is None:
+                    sys.modules.pop("titan_runtime", None)
+                else:
+                    sys.modules["titan_runtime"] = previous
 
     def test_undeclared_file_never_enters_frozen_tree(self):
         with tempfile.TemporaryDirectory() as td:
