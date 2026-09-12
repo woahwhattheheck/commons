@@ -4,8 +4,8 @@
 The pinned engine removes an animal only after its second consecutive unfed
 end-of-day. Base animal production is independent of ``fed_today``; feeding is
 required for the CARE bonus. A one-day survival theorem is not a two-day route
-theorem, so this transform additionally requires the caller to certify that the
-same animal tile has a next-day FEED on the unchanged route/tail.
+theorem, so this transform requires a machine-checkable next-feed certificate
+bound to the exact public step and current route/source/tail identity.
 
 The module is deliberately not wired into the canonical runtime. It is an
 isolated candidate for matched evaluation.
@@ -16,6 +16,10 @@ from copy import deepcopy
 
 
 _ANIMALS = frozenset(("GOOSE", "COW", "SHEEP"))
+_CERTIFICATE_SCHEMA = "titan-v5/animal-cadence/next-feed-certificate/v1"
+_ROUTE_KEYS = frozenset(("route_id", "route_source_git_blob", "tail_sha256"))
+_CERTIFICATE_KEYS = frozenset(("schema", "observation_step", *_ROUTE_KEYS, "feeds"))
+_FEED_KEYS = frozenset(("position", "next_feed_step"))
 
 
 def _position(value):
@@ -29,13 +33,42 @@ def _action_is(action, op):
     return isinstance(action, list) and bool(action) and action[0] == op
 
 
+def _lower_hex(value, length):
+    return (
+        isinstance(value, str)
+        and len(value) == length
+        and value == value.lower()
+        and all(ch in "0123456789abcdef" for ch in value)
+    )
+
+
+def _route_identity(value):
+    if not isinstance(value, dict) or set(value) != _ROUTE_KEYS:
+        return None
+    route_id = value.get("route_id")
+    source = value.get("route_source_git_blob")
+    tail = value.get("tail_sha256")
+    if not isinstance(route_id, str) or not route_id:
+        return None
+    if not _lower_hex(source, 40) or not _lower_hex(tail, 64):
+        return None
+    return {
+        "route_id": route_id,
+        "route_source_git_blob": source,
+        "tail_sha256": tail,
+    }
+
+
 def _context(observation, selected):
     if not isinstance(observation, dict) or not isinstance(selected, dict):
         return None, "malformed_input"
     player = observation.get("player")
+    step = observation.get("step")
     farms = observation.get("farms")
     private = observation.get("private")
     if type(player) is not int or not isinstance(farms, list) or not 0 <= player < len(farms):
+        return None, "malformed_public_identity"
+    if type(step) is not int or step < 0:
         return None, "malformed_public_identity"
     farm = farms[player]
     if not isinstance(farm, dict) or not isinstance(private, dict):
@@ -64,6 +97,7 @@ def _context(observation, selected):
     if not isinstance(tiles, list):
         return None, "malformed_tiles"
     return {
+        "step": step,
         "tiles": tiles,
         "positions": positions,
         "actions": actions,
@@ -81,29 +115,64 @@ def _tile_at(tiles, position):
     return row[x]
 
 
-def _certificate_positions(values):
-    if not isinstance(values, (list, tuple, set, frozenset)):
-        return None
-    positions = set()
-    for value in values:
-        position = _position(value)
-        if position is None:
-            return None
-        positions.add(position)
-    return frozenset(positions)
+def _certificate(value, route_identity, observation_step):
+    current = _route_identity(route_identity)
+    if current is None:
+        return None, None, "malformed_route_identity"
+    if value is None:
+        return None, current, "next_feed_uncertified"
+    if not isinstance(value, dict) or set(value) != _CERTIFICATE_KEYS:
+        return None, current, "malformed_next_feed_certificate"
+    if value.get("schema") != _CERTIFICATE_SCHEMA:
+        return None, current, "malformed_next_feed_certificate"
+    if type(value.get("observation_step")) is not int or value["observation_step"] < 0:
+        return None, current, "malformed_next_feed_certificate"
+    if value["observation_step"] != observation_step:
+        return None, current, "next_feed_certificate_mismatch"
+    for key in _ROUTE_KEYS:
+        if value.get(key) != current[key]:
+            return None, current, "next_feed_certificate_mismatch"
+
+    feeds = value.get("feeds")
+    if not isinstance(feeds, list) or not feeds:
+        return None, current, "malformed_next_feed_certificate"
+    certified = {}
+    for feed in feeds:
+        if not isinstance(feed, dict) or set(feed) != _FEED_KEYS:
+            return None, current, "malformed_next_feed_certificate"
+        position = _position(feed.get("position"))
+        next_step = feed.get("next_feed_step")
+        if position is None or type(next_step) is not int or next_step <= observation_step:
+            return None, current, "malformed_next_feed_certificate"
+        if position in certified:
+            return None, current, "malformed_next_feed_certificate"
+        certified[position] = next_step
+    provenance = {
+        "observation_step": observation_step,
+        **current,
+    }
+    return certified, provenance, None
 
 
-def apply_alternate_feed(observation, selected, *, next_day_feed_positions=()):
+def apply_alternate_feed(
+        observation,
+        selected,
+        *,
+        next_feed_certificate=None,
+        route_identity=None,
+):
     """Return ``(action, report)`` without mutating either input.
 
-    ``next_day_feed_positions`` is an external route certificate: every tile in
-    it must be proven to receive a FEED before the *next* end-of-day on the same
-    unchanged route/tail. A certificate must be discarded on route switch,
-    checkpoint/rejoin, reset, or any other future-tape change.
+    ``next_feed_certificate`` must bind every certified animal tile to a future
+    FEED step and to the exact current public step, route id, route-source Git
+    blob, and route-tail SHA256. ``route_identity`` is the caller's independently
+    derived identity for the route/tail currently driving selection. Route
+    switch, checkpoint/rejoin, reset, or source/tail changes therefore require a
+    newly minted certificate.
 
     A current FEED is suppressed only when:
-    * its tile is present in that next-day certificate;
-    * the actor currently carries at least one WHEAT, so the edit saves a unit;
+    * its tile is present in that provenance-bound next-feed certificate;
+    * the actor currently carries at least one WHEAT, so the edit saves spend;
     * the animal is on exact zero-strike state (``consecutive_unfed == 0``);
     * the animal is not already fed or cared today;
     * no pending CARE bonus exists; and
@@ -113,18 +182,19 @@ def apply_alternate_feed(observation, selected, *, next_day_feed_positions=()):
     report = {
         "changed": False,
         "reason": error or "no_eligible_feed",
+        "feed_actions_suppressed": 0,
         "wheat_saved": 0,
+        "certificate_provenance": None,
         "edits": [],
     }
     if context is None:
         return selected, report
 
-    certified = _certificate_positions(next_day_feed_positions)
-    if certified is None:
-        report["reason"] = "malformed_next_day_feed_certificate"
-        return selected, report
-    if not certified:
-        report["reason"] = "next_day_feed_uncertified"
+    certified, provenance, error = _certificate(
+        next_feed_certificate, route_identity, context["step"])
+    report["certificate_provenance"] = provenance
+    if error is not None:
+        report["reason"] = error
         return selected, report
 
     care_positions = {
@@ -160,22 +230,26 @@ def apply_alternate_feed(observation, selected, *, next_day_feed_positions=()):
 
     result = deepcopy(selected)
     edits = []
+    saved_tiles = set()
     for actor, position, animal in eligible:
         if actor == 0:
             result["farmer"] = ["PASS"]
         else:
             result["hands"][actor - 1] = ["PASS"]
+        saved_tiles.add(position)
         edits.append({
             "actor": actor,
             "position": list(position),
             "animal": animal,
             "from": ["FEED"],
             "to": ["PASS"],
+            "certified_next_feed_step": certified[position],
         })
     report.update(
         changed=True,
         reason="safe_alternate_feed",
-        wheat_saved=len(edits),
+        feed_actions_suppressed=len(edits),
+        wheat_saved=len(saved_tiles),
         edits=edits,
     )
     return result, report
