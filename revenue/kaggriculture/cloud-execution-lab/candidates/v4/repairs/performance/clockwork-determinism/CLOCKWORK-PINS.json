@@ -1,0 +1,36 @@
+{
+  "schema": "titan-v4-clockwork-pins-v1",
+  "canonical_branch": "main",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "cutpoint": {
+    "runtime": "titan_runtime.py::TitanAgent.act",
+    "stage": "selected_transform",
+    "quiet_path": "FrozenSelected.transform completes and returns the transformed action",
+    "loaded_path": "DeadlineExceeded after production checkpoint returns the parent-selected fallback",
+    "safety_boundary": "outer and inner wall-clock deadline remain unchanged"
+  },
+  "composer_path": "candidates/v4/repairs/performance/compose_optimizer_stack.py",
+  "weave_output_git_blob": "16dde00627effa5d0ae4d73a8e05a295e9534e1f",
+  "git_blobs": {
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "selected_sell_core.py": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+    "candidates/v4/repairs/performance/compose_optimizer_stack.py": "8b65b37d93cefd2404b45f6d9808268425bab053",
+    "candidates/v4/repairs/performance/selected-incumbent-bound/patch_selected_incumbent.py": "5ade322bfdc916b7d3ac071ab2e3fc60fb1f0db0",
+    "candidates/v4/repairs/performance/marketpath-receipt-prefix/marketpath_receipt_prefix.py": "6b8a32669d75f6a239c3a2b78cafa6c92402d719",
+    "candidates/v4/repairs/performance/score-eventpath/build_score_eventpath.py": "f7ae150bc47058393552fd1d7600b7f5d5aaa84c",
+    "candidates/v4/repairs/performance/optimizer-cache-lifetime/repair_cache_lifetime.py": "e48861b8fe186ded0337aa66ba68833b760708b3"
+  },
+  "semantic_markers": {
+    "main.py": [
+      "_DeadlineTimer",
+      "entry_started"
+    ],
+    "titan_runtime.py": [
+      "fallback = selected_checkpoint[0]",
+      "stage = 'selected_transform'",
+      "output = self.transform_selected(obs, cfg, selected)",
+      "except deadline.DeadlineExceeded as error"
+    ]
+  }
+}
