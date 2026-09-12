@@ -118,19 +118,39 @@ REPLACEMENT_FUNCTION = r'''def funded_minimum_now(obs, config, base, farm, priva
     exactly instead of treating any positive receipt as a full capital reset.
     Same-turn acquisitions remain outside this repair (SOL-ESCROW boundary).
     """
-    now = int(obs['step'])
-    baseline = max(0, int(current.get(item, 0)))
-    max_orders = int(config.get('maxMarketOrdersPerTurn', 10))
+    def _strict_nonnegative_int(value, label):
+        if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+            raise ValueError(f'{label} must be a plain nonnegative integer')
+        return value
+
+    now = _strict_nonnegative_int(obs.get('step'), 'step')
+    end = _strict_nonnegative_int(end, 'end')
+    if end < now:
+        raise ValueError('end must not precede step')
+    baseline = _strict_nonnegative_int(current.get(item, 0), f'current[{item!r}]')
+    raw_max_orders = _strict_nonnegative_int(
+        config.get('maxMarketOrdersPerTurn', 10),
+        'maxMarketOrdersPerTurn',
+    )
+    # Official _process_market normalizes this setting with max(1, int(...)).
+    # E13 must use the same effective prefix everywhere: both its local sale
+    # materializer and inherited _funding_trace re-read the configuration.
+    max_orders = max(1, raw_max_orders)
+    effective_config = dict(config)
+    effective_config['maxMarketOrdersPerTurn'] = max_orders
+    stress_units = _strict_nonnegative_int(stress_units, 'stress_units')
     certificate = {
         'item': item, 'baseline_now': baseline, 'prefix_end': end,
-        'funding_turn': None, 'stress_units': int(stress_units),
+        'funding_turn': None, 'stress_units': stress_units,
+        'raw_max_market_orders': raw_max_orders,
+        'effective_max_market_orders': max_orders,
         'fallback': False,
     }
     try:
         reference_market = materialize_sales(
             base['market'], current, private['shed'], targets, max_orders)
         scout = _funding_trace(
-            obs, config, farm, private, route, now, end,
+            obs, effective_config, farm, private, route, now, end,
             reference_market, stress_units=0)
         prefix_end, funding_turn = _funding_prefix_end(scout, now, end)
         certificate['prefix_end'] = prefix_end
@@ -139,7 +159,7 @@ REPLACEMENT_FUNCTION = r'''def funded_minimum_now(obs, config, base, farm, priva
             reference = scout
         else:
             reference = _funding_trace(
-                obs, config, farm, private, route, now, prefix_end,
+                obs, effective_config, farm, private, route, now, prefix_end,
                 reference_market, stress_units=0)
 
         prefix_required = {
@@ -175,10 +195,10 @@ REPLACEMENT_FUNCTION = r'''def funded_minimum_now(obs, config, base, farm, priva
                 base['market'], totals, private['shed'], targets, max_orders)
             traces = [
                 _funding_trace(
-                    obs, config, farm, private, route, now, comparison_end,
+                    obs, effective_config, farm, private, route, now, comparison_end,
                     candidate_market, stress_units=0),
                 _funding_trace(
-                    obs, config, farm, private, route, now, comparison_end,
+                    obs, effective_config, farm, private, route, now, comparison_end,
                     candidate_market, stress_units=stress_units),
             ]
             safe = True

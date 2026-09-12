@@ -36,15 +36,39 @@ The envelope also reports both `empty_owned_tiles` and `board_tiles` so downstre
 
 It never returns SAFE. Passing the action-count bound does not prove movement, seed availability, target assignment, land acquisition, tile reclamation, watering route, market execution, or economic value.
 
+## PLANTGUARD — authenticated same-EOD survival
+
+Gemini/Antigravity's PLANTGUARD observation is stronger than a generic action-count warning: a current PLANT can be rejected when the **actual authored unit suffix** proves that a plant which still exists at EOD receives no WATER after creation and before that EOD.
+
+`plant_guard.py` adds that one-sided certificate inside this same CROPSCALE authority. `assess_same_eod_plant_survival(...)` consumes the current selected action plus exactly one authenticated action dict for every remaining executable callback before that same EOD. It never predicts or invents a route.
+
+The verifier accounts for the mechanics that make the raw slogan unsafe to apply directly:
+
+- only a current PLANT that can actually be certified as creating a crop is considered: the tile must initially be empty, the crop must be known, same-crop aggregate seed demand must not exceed private seed custody, and only the first executable colocated PLANT can own a target;
+- current unit rows execute farmer then hands: an earlier same-site `BUILD_COOP` or `BUILD_PASTURE` can occupy an initially empty tile before a later PLANT, so unresolved build success returns `NOT_CERTIFIED` rather than falsely labeling that later PLANT doomed; earlier DIG/HARVEST reclamation of an initially occupied tile remains conservative and is not promoted into a candidate;
+- same-callback actor order is exact: WATER by an actor **before** the PLANT does not help; WATER by a later actor on the same tile does;
+- `DIG` is also actor-ordered custody, not merely a route action: the pinned engine removes plants with DIG. A same-site DIG after the certified PLANT removes that candidate, so it cannot support a same-EOD weed-doom certificate; a DIG before a later PLANT on an initially empty tile is a no-op. Later authored callbacks apply the same rule. Mixed results can still doom surviving unwatered candidates while reporting removed candidates separately;
+- actor positions are carried through NORTH/SOUTH/EAST/WEST commands, including out-of-bounds movement no-ops, so later WATER or DIG must physically occur on the candidate tile;
+- observation `hour` is strict-integer bound to `step % turnsPerDay`; a caller-inconsistent or type-poisoned clock cannot mint an EOD certificate;
+- terminal horizon is part of the proof: the pinned official engine blob `3c202c7ee921da239356789e266b694635103fc4` marks the callback at `episodeSteps - 2` as the last executable callback. The pinned official configuration blob `b354d06b742fe48402513792253f1a5c29366b20` supplies the standard `episodeSteps=720` and `turnsPerDay=24` defaults. PLANTGUARD therefore proves that this day's hour-23/EOD callback lies at or before that boundary. Under those standard defaults, step718/hour22 cannot be rejected using a nominal authored step719 because step719 and that EOD never execute; the last real EOD callback is step695/hour23;
+- omitted `configuration` uses those pinned official defaults. Any explicit configuration map is proof-critical and is rejected unless `configuration_authenticated=True` literally; callers may set that flag only after binding the supplied `episodeSteps`, `turnsPerDay`, and related values to the exact interpreter instance whose authored actions are being evaluated;
+- returned evidence names both `engine_git_blob` and `configuration_git_blob`, and resolved reports expose `removed_actor_indices` alongside watered/doomed actors. The configuration blob identifies the source of the **default** values; authenticated explicit overrides remain caller-custodied rather than being falsely attributed to that blob;
+- the suffix must be complete through a **reachable** EOD and preserve existing actor cardinality;
+- an executable HIRE before the final callback destroys one-sided rejection because a new actor could create an unrepresented watering path; HIRE beyond the market row cap is inert, and a final-hour HIRE cannot act before that EOD;
+- malformed, incomplete, terminal-unreachable, type-poisoned, suffix-unauthenticated, configuration-unauthenticated, or actor-ambiguous evidence returns `NOT_CERTIFIED`.
+
+The only rejection verdict is `DOOMED_AUTHORED_SUFFIX`. A found WATER or removal of every candidate returns `NOT_CERTIFIED`, **not SAFE**. The helper changes no action itself and has no runtime/default/config authority. A scheduler may consume the certificate only after proving custody of the authored suffix; omitted configuration is bound to the pinned official defaults, while any explicit custom configuration additionally requires literal `configuration_authenticated=True` after the caller proves interpreter custody. Current-native engagement and both-seat economics remain mandatory before suppressing any PLANT in production.
+
 ## Ownership boundaries
 
 CROPSCALE does not:
 - choose crop species or quantities from prices/demand;
 - alter MELON/STRAWBERRY/WHEAT economics;
 - claim animal acquisition/collection throughput;
-- allocate workers or movement routes;
+- allocate workers or invent movement routes;
 - credit same-callback BUY_SEED or HIRE before unit execution;
 - prove BUY_LAND/DIG/HARVEST feasibility merely because the envelope over-credits their possible cells;
+- treat an authored suffix or caller-supplied configuration as authenticated on its own;
 - modify returned actions, config defaults, runtime, archive, or Kaggle state.
 
 It is intended as an input to the existing single V4 planner/composition path.
@@ -55,11 +79,13 @@ It is intended as an input to the existing single V4 planner/composition path.
 cd revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/crop-service-capacity
 python -B test_crop_service_capacity.py
 python -O -B test_crop_service_capacity.py
-python -m py_compile crop_service_capacity.py test_crop_service_capacity.py
+python -B test_plant_guard.py
+python -O -B test_plant_guard.py
+python -m py_compile crop_service_capacity.py test_crop_service_capacity.py plant_guard.py test_plant_guard.py
 ```
 
-Expected: **20 tests pass** in each mode.
+Expected: **20 CROPSCALE tests** and **37 PLANTGUARD tests** pass in each mode.
 
 ## Evidence limits
 
-The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with a conservative source-derived action-budget theorem while refusing false impossibility from a merely current empty-tile snapshot.
+The historical +$5,315.75 result belongs to PR #9806's old policy and is donor evidence only. This package makes **no current-native EV claim** and activates nothing. Its contribution is replacing a stale heuristic crop-cap concept with conservative source-derived admission theorems while refusing false impossibility from a current empty-tile snapshot, false survival claims from an unauthenticated planting route or custom configuration, false same-EOD rejection when the episode terminates before that EOD can execute, and false weed-doom claims for a plant that authored actions remove before EOD.

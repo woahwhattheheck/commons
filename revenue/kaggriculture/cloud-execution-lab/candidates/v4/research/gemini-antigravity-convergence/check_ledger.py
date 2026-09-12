@@ -66,9 +66,24 @@ def _reject_constant(token: str) -> None:
     raise ConvergenceError(f"non-finite JSON token: {token}")
 
 
+def _object_without_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise ConvergenceError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
 def load_strict_json(path: Path) -> dict[str, Any]:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"), parse_constant=_reject_constant)
+        data = json.loads(
+            path.read_text(encoding="utf-8"),
+            parse_constant=_reject_constant,
+            object_pairs_hook=_object_without_duplicate_keys,
+        )
+    except ConvergenceError:
+        raise
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise ConvergenceError(f"cannot load strict JSON {path}: {exc}") from exc
     if not isinstance(data, dict):
@@ -82,6 +97,11 @@ def _plain_nonempty(value: Any, field: str) -> str:
     return value
 
 
+def _contains_noncanonical_component(parts: tuple[str, ...]) -> bool:
+    lowered = {part.casefold() for part in parts}
+    return bool(lowered & {"legacy", "superseded"})
+
+
 def _regular_file_under_v4(repo_root: Path, rel: Any, entry_id: str) -> None:
     rel = _plain_nonempty(rel, f"{entry_id}.canonical_evidence[]")
     posix = PurePosixPath(rel)
@@ -89,23 +109,41 @@ def _regular_file_under_v4(repo_root: Path, rel: Any, entry_id: str) -> None:
         raise ConvergenceError(f"{entry_id} evidence escapes repository: {rel}")
     if not rel.startswith(V4_PREFIX):
         raise ConvergenceError(f"{entry_id} evidence is outside canonical V4: {rel}")
-    lowered = "/" + rel.lower().strip("/") + "/"
-    if "/legacy/" in lowered or "/superseded/" in lowered:
+    if _contains_noncanonical_component(posix.parts):
         raise ConvergenceError(f"{entry_id} evidence points at noncanonical ancestry: {rel}")
 
-    root = repo_root.resolve()
-    target = root.joinpath(*posix.parts)
+    lexical_root = repo_root
     try:
-        st = os.lstat(target)
+        root_st = os.lstat(lexical_root)
     except OSError as exc:
-        raise ConvergenceError(f"{entry_id} missing canonical evidence: {rel}") from exc
+        raise ConvergenceError(f"repository root is unavailable: {repo_root}") from exc
+    if stat.S_ISLNK(root_st.st_mode):
+        raise ConvergenceError(f"repository root must not be a symlink: {repo_root}")
+    root = lexical_root.resolve()
+
+    current = root
+    for part in posix.parts:
+        current = current / part
+        try:
+            st = os.lstat(current)
+        except OSError as exc:
+            raise ConvergenceError(f"{entry_id} missing canonical evidence: {rel}") from exc
+        if stat.S_ISLNK(st.st_mode):
+            raise ConvergenceError(f"{entry_id} evidence contains symlink path component: {rel}")
+
     if not stat.S_ISREG(st.st_mode):
         raise ConvergenceError(f"{entry_id} evidence is not a regular file: {rel}")
-    resolved_parent = target.parent.resolve()
+
     try:
-        resolved_parent.relative_to(root)
-    except ValueError as exc:
-        raise ConvergenceError(f"{entry_id} evidence parent escapes repository: {rel}") from exc
+        resolved = current.resolve(strict=True)
+        resolved_rel = resolved.relative_to(root)
+    except (OSError, ValueError) as exc:
+        raise ConvergenceError(f"{entry_id} evidence escapes repository: {rel}") from exc
+
+    if _contains_noncanonical_component(resolved_rel.parts):
+        raise ConvergenceError(
+            f"{entry_id} resolved evidence points at noncanonical ancestry: {rel}"
+        )
 
 
 def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
@@ -126,15 +164,29 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
     for key in ("master_manifest_ts", "claim_board_ts", "coverage_claim_ts"):
         _plain_nonempty(source.get(key), f"source_stream.{key}")
     buckets = source.get("included_buckets")
-    if not isinstance(buckets, list) or set(buckets) != ALLOWED_ORIGINS:
-        raise ConvergenceError("included_buckets must cover every declared Gemini source bucket exactly")
+    if (
+        not isinstance(buckets, list)
+        or len(buckets) != len(set(buckets))
+        or set(buckets) != ALLOWED_ORIGINS
+    ):
+        raise ConvergenceError(
+            "included_buckets must cover every declared Gemini source bucket exactly once"
+        )
 
     allowed = doc.get("allowed_dispositions")
-    if not isinstance(allowed, list) or set(allowed) != ALLOWED_DISPOSITIONS:
+    if (
+        not isinstance(allowed, list)
+        or len(allowed) != len(set(allowed))
+        or set(allowed) != ALLOWED_DISPOSITIONS
+    ):
         raise ConvergenceError("allowed_dispositions drift")
 
     rules = doc.get("convergence_rules")
-    if not isinstance(rules, list) or len(rules) < 5 or any(not isinstance(x, str) or not x.strip() for x in rules):
+    if (
+        not isinstance(rules, list)
+        or len(rules) < 5
+        or any(not isinstance(x, str) or not x.strip() for x in rules)
+    ):
         raise ConvergenceError("convergence_rules must retain the fail-closed policy")
 
     items = doc.get("entries")
@@ -168,14 +220,20 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
             raise ConvergenceError(f"{entry_id} has invalid activation {activation!r}")
         if disposition == "FALSIFIED":
             if activation != "FALSIFIED":
-                raise ConvergenceError(f"{entry_id} falsified claim must use FALSIFIED activation")
+                raise ConvergenceError(
+                    f"{entry_id} falsified claim must use FALSIFIED activation"
+                )
             if entry.get("do_not_repeat_without_new_evidence") is not True:
                 raise ConvergenceError(f"{entry_id} falsified claim must be durably fenced")
         if disposition == "FIELD_BLOCKED":
             if activation != "BLOCKED":
-                raise ConvergenceError(f"{entry_id} field-blocked claim must use BLOCKED activation")
+                raise ConvergenceError(
+                    f"{entry_id} field-blocked claim must use BLOCKED activation"
+                )
             if entry.get("do_not_repeat_without_new_evidence") is not True:
-                raise ConvergenceError(f"{entry_id} field-blocked claim must be durably fenced")
+                raise ConvergenceError(
+                    f"{entry_id} field-blocked claim must be durably fenced"
+                )
 
         evidence = entry.get("canonical_evidence")
         if not isinstance(evidence, list) or not evidence:
@@ -191,7 +249,9 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
         if any(type(n) is not int or n <= 0 for n in pulls):
             raise ConvergenceError(f"{entry_id} has invalid PR provenance")
         if pulls != sorted(set(pulls)):
-            raise ConvergenceError(f"{entry_id} PR provenance must be sorted and unique")
+            raise ConvergenceError(
+                f"{entry_id} PR provenance must be sorted and unique"
+            )
 
     if len(ids) != len(set(ids)):
         raise ConvergenceError("duplicate entry id")
@@ -203,12 +263,21 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
     if ids != sorted(ids):
         raise ConvergenceError("entries must be sorted by id for stable review")
 
+    melon = next(e for e in items if e["id"] == "gemini.melon-lifetime-cap")
+    if melon["disposition"] != "FIELD_BLOCKED" or melon["activation"] != "BLOCKED":
+        raise ConvergenceError(
+            "gemini.melon-lifetime-cap must remain FIELD_BLOCKED until executable-cardinality "
+            "and whole-alternative source debt is repaired"
+        )
+
     return {
         "status": "PASS",
         "schema": SCHEMA,
         "entry_count": len(ids),
-        "dispositions": {name: sum(1 for e in items if e["disposition"] == name)
-                         for name in sorted(ALLOWED_DISPOSITIONS)},
+        "dispositions": {
+            name: sum(1 for e in items if e["disposition"] == name)
+            for name in sorted(ALLOWED_DISPOSITIONS)
+        },
     }
 
 
@@ -222,7 +291,7 @@ def find_repo_root(start: Path) -> Path:
 
 def validate_path(ledger_path: Path, repo_root: Path | None = None) -> dict[str, Any]:
     ledger_path = ledger_path.resolve()
-    root = repo_root.resolve() if repo_root is not None else find_repo_root(ledger_path.parent)
+    root = repo_root if repo_root is not None else find_repo_root(ledger_path.parent)
     return validate_document(load_strict_json(ledger_path), root)
 
 

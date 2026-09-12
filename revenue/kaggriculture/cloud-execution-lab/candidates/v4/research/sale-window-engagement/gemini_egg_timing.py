@@ -14,7 +14,9 @@ The search is intentionally conservative:
 * only later PASS/append destinations inside the live market-order cap are used;
 * opponent actions and all non-market actions remain byte-for-byte unchanged;
 * rankings require an actually realized retiming, not merely changed syntax;
-* positive open-loop cash is evidence, never a promotion/optimality claim.
+* scarcity-price positives require the same sold units and a strictly larger
+  sale-specific receipt; total window cash is reported separately and cannot
+  substitute for EGG receipt improvement.
 
 The engine executes player market orders before town consumption.  Therefore a
 sale on a town-consumption tick does not capture that tick's scarcity; moving to
@@ -117,16 +119,33 @@ def candidate_destinations(
     return out
 
 
-def _filled_units(result: dict, branch: str, turn: int, seat: int, row: int) -> int:
+def _row_metric(
+    result: dict, branch: str, turn: int, seat: int, row: int, metric: str
+) -> int | None:
     try:
         rows = result[branch]["reports"][turn]["rows"]
     except (KeyError, IndexError, TypeError):
-        return 0
+        return None
+    if not isinstance(rows, list):
+        return None
+    matches = []
     for record in rows:
+        if not isinstance(record, dict):
+            return None
         if record.get("seat") == seat and record.get("row") == row:
-            sold = record.get("sold", 0)
-            return sold if type(sold) is int and sold >= 0 else 0
-    return 0
+            matches.append(record)
+    if len(matches) != 1:
+        return None
+    value = matches[0].get(metric)
+    return value if type(value) is int and value >= 0 else None
+
+
+def _filled_units(result: dict, branch: str, turn: int, seat: int, row: int) -> int | None:
+    return _row_metric(result, branch, turn, seat, row, "sold")
+
+
+def _sale_cash(result: dict, branch: str, turn: int, seat: int, row: int) -> int | None:
+    return _row_metric(result, branch, turn, seat, row, "sale_cash")
 
 
 def _load_sale_window():
@@ -152,8 +171,10 @@ def search(
 
     Every candidate is evaluated by the canonical full-interpreter sale-window
     counterfactual.  The opponent remains fixed/open-loop exactly as required by
-    that harness.  `best_positive` is only the best measured candidate in this
-    bounded tape; it is explicitly not a live-policy recommendation.
+    that harness.  `best_positive` means the same positive EGG units actually
+    sold later for a strictly larger sale-specific receipt.  Net window cash is
+    retained as a separate consequence metric because intervening purchases can
+    succeed or fail solely due to the sale's timing.
     """
     _exact_int(start_step, minimum=0, label="start_step")
     src = source_row(tape, seat, source_turn, source_row_index)
@@ -172,7 +193,21 @@ def search(
             result, "baseline", source_turn, seat, source_row_index
         )
         target_filled = _filled_units(result, "candidate", target_turn, seat, target_row)
-        realized = source_filled > 0 and target_filled == source_filled
+        source_sale_cash = _sale_cash(
+            result, "baseline", source_turn, seat, source_row_index
+        )
+        target_sale_cash = _sale_cash(
+            result, "candidate", target_turn, seat, target_row
+        )
+        units_valid = type(source_filled) is int and type(target_filled) is int
+        receipts_valid = type(source_sale_cash) is int and type(target_sale_cash) is int
+        realized = bool(
+            units_valid and source_filled > 0 and target_filled == source_filled
+        )
+        receipt_evidence_valid = bool(realized and receipts_valid)
+        sale_cash_delta = (
+            target_sale_cash - source_sale_cash if receipt_evidence_valid else 0
+        )
         own_delta = result["window_cash_delta"][seat]
         margin_delta = result["window_margin_delta"]
         row = {
@@ -184,6 +219,10 @@ def search(
             "source_filled_units": source_filled,
             "target_filled_units": target_filled,
             "realized_retiming": realized,
+            "receipt_evidence_valid": receipt_evidence_valid,
+            "source_sale_cash": source_sale_cash,
+            "target_sale_cash": target_sale_cash,
+            "sale_cash_delta": sale_cash_delta,
             "own_cash_delta": own_delta,
             "window_margin_delta": margin_delta,
             "terminal_margin_delta": result["terminal_margin_delta"],
@@ -194,6 +233,7 @@ def search(
         candidates,
         key=lambda row: (
             not row["realized_retiming"],
+            -row["sale_cash_delta"],
             -row["own_cash_delta"],
             -row["window_margin_delta"],
             row["delay_turns"],
@@ -201,7 +241,11 @@ def search(
         ),
     )
     positive = [
-        row for row in ranked if row["realized_retiming"] and row["own_cash_delta"] > 0
+        row
+        for row in ranked
+        if row["realized_retiming"]
+        and row["receipt_evidence_valid"]
+        and row["sale_cash_delta"] > 0
     ]
     return {
         "schema": SCHEMA,
@@ -215,12 +259,15 @@ def search(
         "candidate_count": len(candidates),
         "candidates": ranked,
         "best_positive": positive[0] if positive else None,
+        "positive_definition": (
+            "equal positive EGG sold units and target_sale_cash > source_sale_cash"
+        ),
         "policy_claim": False,
         "optimality_claim": False,
         "runtime_mutation": False,
         "literal_direct_egg_short_squeeze_supported": False,
         "interpretation": (
             "bounded full-interpreter open-loop search over later placements of one existing EGG SELL; "
-            "positive cash is evidence for town/rival timing follow-up, not activation"
+            "sale-specific receipt improvement is scarcity-timing evidence, while net window cash is a separate consequence metric"
         ),
     }
