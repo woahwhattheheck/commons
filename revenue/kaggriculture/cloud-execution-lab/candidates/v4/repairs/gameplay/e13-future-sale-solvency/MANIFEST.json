@@ -30,7 +30,7 @@
     "future_cash": 400,
     "expected_port_minimum_now": 0
   },
-  "integration_contract": "Method-scoped authenticated transform only. Never overwrite canonical frozen_selected.py from this package. Production promotion requires composition registration plus a fresh one-tree returned-action activation receipt and economic gate.",
+  "integration_contract": "Method-scoped authenticated transform only. Materialization is external-scratch only: candidate, receipt, and temporary sidecar destinations are rejected if lexically or resolved inside the repository or if any existing path component is a symlink. Production promotion requires composition registration plus a fresh one-tree returned-action activation receipt and economic gate.",
   "claims": {
     "source_real": true,
     "current_abi_authenticated": true,
