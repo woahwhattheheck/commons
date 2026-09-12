@@ -44,6 +44,7 @@ jobs:
             market_microstack_current_safe.py \
             test_market_microstack_current.py \
             test_retry_transactions.py \
+            test_h4_shared_current.py \
             test_source_authority.py
 
       - name: Focused contracts
@@ -54,6 +55,7 @@ jobs:
           python -B -m unittest -v \
             test_market_microstack_current.py \
             test_retry_transactions.py \
+            test_h4_shared_current.py \
             test_source_authority.py
 
       - name: Focused contracts under optimization
@@ -64,6 +66,7 @@ jobs:
           python -O -B -m unittest -v \
             test_market_microstack_current.py \
             test_retry_transactions.py \
+            test_h4_shared_current.py \
             test_source_authority.py
 
       - name: Test run is source-clean
