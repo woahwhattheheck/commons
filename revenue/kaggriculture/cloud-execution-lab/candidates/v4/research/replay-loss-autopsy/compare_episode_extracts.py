@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""Deterministic cross-episode recurrence report for replay-loss-autopsy extracts.
+"""Source-bound recurrence report for canonical replay-loss-autopsy extracts.
 
-Research tooling only. The comparator consumes canonical extractor JSON and
-reports exact descriptive tokens that recur across episodes. It does not infer
-causality, economics, opponent identity, policy intent, or gameplay value.
-
-Inputs are comparable only when all extractor outputs bind the same three raw
-CSV byte snapshots. Mixed snapshots fail closed instead of being silently
-compared.
+Research-only: repeated tokens are descriptive routing evidence, never causal
+credit. Inputs fail closed unless raw-source bytes, extraction parameters, and
+resolved-column semantics are identical across every compared episode.
 """
 from __future__ import annotations
 
@@ -29,7 +25,7 @@ class CompareError(ValueError):
     pass
 
 
-def _plain_int(value: Any, field: str, *, minimum: int | None = None) -> int:
+def _int(value: Any, field: str, minimum: int | None = None) -> int:
     if type(value) is not int:
         raise CompareError(f"{field} must be a plain integer")
     if minimum is not None and value < minimum:
@@ -37,380 +33,337 @@ def _plain_int(value: Any, field: str, *, minimum: int | None = None) -> int:
     return value
 
 
-def _opt_plain_int(value: Any, field: str) -> int | None:
-    if value is None:
-        return None
-    return _plain_int(value, field)
+def _opt_int(value: Any, field: str) -> int | None:
+    return None if value is None else _int(value, field)
 
 
-def _string(value: Any, field: str, *, allow_empty: bool = False) -> str:
-    if not isinstance(value, str):
-        raise CompareError(f"{field} must be a string")
-    if not allow_empty and not value:
-        raise CompareError(f"{field} must be nonempty")
+def _str(value: Any, field: str, *, empty: bool = False) -> str:
+    if not isinstance(value, str) or (not empty and not value):
+        raise CompareError(f"{field} must be {'a string' if empty else 'a nonempty string'}")
     return value
 
 
-def _opt_string(value: Any, field: str) -> str | None:
-    if value is None:
-        return None
-    return _string(value, field, allow_empty=True)
+def _opt_str(value: Any, field: str) -> str | None:
+    return None if value is None else _str(value, field, empty=True)
 
 
-def _source_identity(payload: dict[str, Any], index: int) -> tuple[tuple[str, int], ...]:
-    inputs = payload.get("inputs")
-    if not isinstance(inputs, dict):
-        raise CompareError(f"extract[{index}].inputs must be an object")
-    identity: list[tuple[str, int]] = []
+def _sources(payload: dict[str, Any], i: int) -> tuple[tuple[str, int], ...]:
+    root = payload.get("inputs")
+    if not isinstance(root, dict) or set(root) != set(SOURCE_NAMES):
+        raise CompareError(f"extract[{i}].inputs must contain exactly {list(SOURCE_NAMES)}")
+    out = []
     for name in SOURCE_NAMES:
-        row = inputs.get(name)
+        row = root[name]
         if not isinstance(row, dict):
-            raise CompareError(f"extract[{index}].inputs.{name} must be an object")
-        digest = row.get("sha256")
-        if not isinstance(digest, str) or _SHA256.fullmatch(digest) is None:
-            raise CompareError(
-                f"extract[{index}].inputs.{name}.sha256 must be lowercase sha256"
-            )
-        byte_count = _plain_int(
-            row.get("bytes"), f"extract[{index}].inputs.{name}.bytes", minimum=0
-        )
-        path = row.get("path")
-        if not isinstance(path, str) or not path:
-            raise CompareError(f"extract[{index}].inputs.{name}.path must be nonempty")
-        identity.append((digest, byte_count))
-    return tuple(identity)
+            raise CompareError(f"extract[{i}].inputs.{name} must be an object")
+        sha = row.get("sha256")
+        if not isinstance(sha, str) or _SHA256.fullmatch(sha) is None:
+            raise CompareError(f"extract[{i}].inputs.{name}.sha256 must be lowercase sha256")
+        size = _int(row.get("bytes"), f"extract[{i}].inputs.{name}.bytes", 0)
+        _str(row.get("path"), f"extract[{i}].inputs.{name}.path")
+        out.append((sha, size))
+    return tuple(out)
 
 
-def _validate_farmer_summary(rows: Any, index: int) -> list[dict[str, Any]]:
-    if not isinstance(rows, list):
-        raise CompareError(f"extract[{index}].farmer_summary must be a list")
-    out: list[dict[str, Any]] = []
-    for j, row in enumerate(rows):
-        if not isinstance(row, dict):
-            raise CompareError(f"extract[{index}].farmer_summary[{j}] must be an object")
-        out.append(
-            {
-                "player": _string(
-                    row.get("player"), f"extract[{index}].farmer_summary[{j}].player",
-                    allow_empty=True,
-                ),
-                "day": _opt_plain_int(
-                    row.get("day"), f"extract[{index}].farmer_summary[{j}].day"
-                ),
-                "verb": _string(
-                    row.get("verb"), f"extract[{index}].farmer_summary[{j}].verb",
-                    allow_empty=True,
-                ),
-                "target": _opt_string(
-                    row.get("target"), f"extract[{index}].farmer_summary[{j}].target"
-                ),
-                "rows": _plain_int(
-                    row.get("rows"), f"extract[{index}].farmer_summary[{j}].rows",
-                    minimum=1,
-                ),
-            }
-        )
-    return out
-
-
-def _validate_market_summary(rows: Any, index: int) -> list[dict[str, Any]]:
-    if not isinstance(rows, list):
-        raise CompareError(f"extract[{index}].market_summary must be a list")
-    out: list[dict[str, Any]] = []
-    for j, row in enumerate(rows):
-        if not isinstance(row, dict):
-            raise CompareError(f"extract[{index}].market_summary[{j}] must be an object")
-        out.append(
-            {
-                "player": _string(
-                    row.get("player"), f"extract[{index}].market_summary[{j}].player",
-                    allow_empty=True,
-                ),
-                "day": _opt_plain_int(
-                    row.get("day"), f"extract[{index}].market_summary[{j}].day"
-                ),
-                "verb": _string(
-                    row.get("verb"), f"extract[{index}].market_summary[{j}].verb",
-                    allow_empty=True,
-                ),
-                "item": _opt_string(
-                    row.get("item"), f"extract[{index}].market_summary[{j}].item"
-                ),
-                "rows": _plain_int(
-                    row.get("rows"), f"extract[{index}].market_summary[{j}].rows",
-                    minimum=1,
-                ),
-                "explicit_qty_sum": _plain_int(
-                    row.get("explicit_qty_sum"),
-                    f"extract[{index}].market_summary[{j}].explicit_qty_sum",
-                ),
-            }
-        )
-    return out
-
-
-def _validate_tail(tail: Any, index: int, max_step: int | None) -> list[dict[str, Any]]:
-    if not isinstance(tail, dict):
-        raise CompareError(f"extract[{index}].tail must be an object")
-    _plain_int(
-        tail.get("requested_callbacks"),
-        f"extract[{index}].tail.requested_callbacks",
-        minimum=0,
-    )
-    _opt_plain_int(tail.get("start_step"), f"extract[{index}].tail.start_step")
-    events = tail.get("events")
-    if not isinstance(events, list):
-        raise CompareError(f"extract[{index}].tail.events must be a list")
-    out: list[dict[str, Any]] = []
-    for j, event in enumerate(events):
-        if not isinstance(event, dict):
-            raise CompareError(f"extract[{index}].tail.events[{j}] must be an object")
-        kind = event.get("kind")
-        if kind not in {"farmer_action", "market_order"}:
-            raise CompareError(f"extract[{index}].tail.events[{j}].kind unsupported")
-        step = _opt_plain_int(
-            event.get("step"), f"extract[{index}].tail.events[{j}].step"
-        )
-        player = _string(
-            event.get("player_raw"),
-            f"extract[{index}].tail.events[{j}].player_raw",
-            allow_empty=True,
-        )
-        verb = _string(
-            event.get("verb"), f"extract[{index}].tail.events[{j}].verb",
-            allow_empty=True,
-        )
-        qty = _opt_plain_int(
-            event.get("qty"), f"extract[{index}].tail.events[{j}].qty"
-        )
-        qty_raw = _opt_string(
-            event.get("qty_raw"), f"extract[{index}].tail.events[{j}].qty_raw"
-        )
-        target_key = "target" if kind == "farmer_action" else "item"
-        target = _opt_string(
-            event.get(target_key),
-            f"extract[{index}].tail.events[{j}].{target_key}",
-        )
-        relative_step = (
-            step - max_step if step is not None and max_step is not None else None
-        )
-        out.append(
-            {
-                "kind": kind,
-                "player": player,
-                "relative_step": relative_step,
-                "verb": verb,
-                "target": target,
-                "qty": qty,
-                "qty_raw": qty_raw,
-            }
-        )
-    return out
-
-
-def _validate_extract(payload: Any, index: int) -> dict[str, Any]:
-    if not isinstance(payload, dict):
-        raise CompareError(f"extract[{index}] must be an object")
-    if payload.get("schema") != INPUT_SCHEMA:
+def _parameters(payload: dict[str, Any], i: int) -> tuple[int, int]:
+    root = payload.get("parameters")
+    if not isinstance(root, dict):
         raise CompareError(
-            f"extract[{index}].schema must be exactly {INPUT_SCHEMA!r}"
+            f"extract[{i}].parameters missing; re-extract with the current canonical extractor"
         )
-    episode = _string(payload.get("episode"), f"extract[{index}].episode")
-    source_identity = _source_identity(payload, index)
+    turns = _int(root.get("turns_per_day"), f"extract[{i}].parameters.turns_per_day", 1)
+    tail = _int(root.get("tail_callbacks"), f"extract[{i}].parameters.tail_callbacks", 0)
+    return turns, tail
 
-    coverage = payload.get("coverage")
-    if not isinstance(coverage, dict):
-        raise CompareError(f"extract[{index}].coverage must be an object")
-    max_step = _opt_plain_int(
-        coverage.get("max_step"), f"extract[{index}].coverage.max_step"
+
+def _mapping(
+    value: Any,
+    i: int,
+    table: str,
+    keys: tuple[str, ...],
+    nullable: set[str],
+) -> dict[str, str | None]:
+    if not isinstance(value, dict) or set(value) != set(keys):
+        raise CompareError(
+            f"extract[{i}].resolved_columns.{table} keys must be exactly {list(keys)}"
+        )
+    out: dict[str, str | None] = {}
+    for key in keys:
+        item = value[key]
+        out[key] = None if item is None and key in nullable else _str(
+            item, f"extract[{i}].resolved_columns.{table}.{key}"
+        )
+    return out
+
+
+def _columns(payload: dict[str, Any], i: int) -> dict[str, Any]:
+    root = payload.get("resolved_columns")
+    if not isinstance(root, dict) or set(root) != set(SOURCE_NAMES):
+        raise CompareError(
+            f"extract[{i}].resolved_columns tables must be exactly {list(SOURCE_NAMES)}"
+        )
+    farmer = _mapping(
+        root["farmer_actions"], i, "farmer_actions",
+        ("episode", "player", "step", "verb", "target", "qty"), {"target", "qty"}
     )
-
-    farmer = _validate_farmer_summary(payload.get("farmer_summary"), index)
-    market = _validate_market_summary(payload.get("market_summary"), index)
-    tail = _validate_tail(payload.get("tail"), index, max_step)
+    market = _mapping(
+        root["market_orders"], i, "market_orders",
+        ("episode", "player", "step", "verb", "item", "qty"), {"item", "qty"}
+    )
+    meta = root["matches_meta"]
+    if not isinstance(meta, dict) or set(meta) != {"episode", "all_columns"}:
+        raise CompareError(
+            f"extract[{i}].resolved_columns.matches_meta must contain episode and all_columns"
+        )
+    episode = _str(meta["episode"], f"extract[{i}].resolved_columns.matches_meta.episode")
+    names = meta["all_columns"]
+    if (
+        not isinstance(names, list)
+        or not names
+        or any(not isinstance(x, str) or not x for x in names)
+        or len(names) != len(set(names))
+    ):
+        raise CompareError(
+            f"extract[{i}].resolved_columns.matches_meta.all_columns must be unique nonempty strings"
+        )
+    if episode not in names:
+        raise CompareError(
+            f"extract[{i}].resolved_columns.matches_meta.episode absent from all_columns"
+        )
     return {
-        "episode": episode,
-        "source_identity": source_identity,
-        "farmer_summary": farmer,
-        "market_summary": market,
-        "tail": tail,
+        "farmer_actions": farmer,
+        "market_orders": market,
+        "matches_meta": {"episode": episode, "all_columns": list(names)},
     }
 
 
-def _sort_nullable(value: Any) -> tuple[int, str]:
+def _summary(rows: Any, i: int, kind: str) -> list[dict[str, Any]]:
+    if not isinstance(rows, list):
+        raise CompareError(f"extract[{i}].{kind}_summary must be a list")
+    is_market = kind == "market"
+    target_name = "item" if is_market else "target"
+    out = []
+    seen = set()
+    for j, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise CompareError(f"extract[{i}].{kind}_summary[{j}] must be an object")
+        item = {
+            "player": _str(row.get("player"), f"extract[{i}].{kind}_summary[{j}].player", empty=True),
+            "day": _opt_int(row.get("day"), f"extract[{i}].{kind}_summary[{j}].day"),
+            "verb": _str(row.get("verb"), f"extract[{i}].{kind}_summary[{j}].verb", empty=True),
+            target_name: _opt_str(
+                row.get(target_name), f"extract[{i}].{kind}_summary[{j}].{target_name}"
+            ),
+            "rows": _int(row.get("rows"), f"extract[{i}].{kind}_summary[{j}].rows", 1),
+        }
+        if is_market:
+            item["explicit_qty_sum"] = _int(
+                row.get("explicit_qty_sum"),
+                f"extract[{i}].market_summary[{j}].explicit_qty_sum",
+            )
+        key = (item["player"], item["day"], item["verb"], item[target_name])
+        if key in seen:
+            raise CompareError(f"extract[{i}].{kind}_summary contains duplicate semantic key {key!r}")
+        seen.add(key)
+        out.append(item)
+    return out
+
+
+def _tail(
+    value: Any,
+    i: int,
+    max_step: int | None,
+    expected_callbacks: int,
+) -> list[dict[str, Any]]:
+    if not isinstance(value, dict):
+        raise CompareError(f"extract[{i}].tail must be an object")
+    requested = _int(value.get("requested_callbacks"), f"extract[{i}].tail.requested_callbacks", 0)
+    if requested != expected_callbacks:
+        raise CompareError(f"extract[{i}].tail.requested_callbacks disagrees with parameters")
+    start = _opt_int(value.get("start_step"), f"extract[{i}].tail.start_step")
+    expected_start = None if max_step is None else max(0, max_step - requested + 1)
+    if start != expected_start:
+        raise CompareError(f"extract[{i}].tail.start_step inconsistent with coverage/parameters")
+    events = value.get("events")
+    if not isinstance(events, list):
+        raise CompareError(f"extract[{i}].tail.events must be a list")
+    if requested == 0 and events:
+        raise CompareError(f"extract[{i}].tail.events must be empty when tail_callbacks is zero")
+    out = []
+    numeric = []
+    for j, event in enumerate(events):
+        if not isinstance(event, dict):
+            raise CompareError(f"extract[{i}].tail.events[{j}] must be an object")
+        kind = event.get("kind")
+        if kind not in {"farmer_action", "market_order"}:
+            raise CompareError(f"extract[{i}].tail.events[{j}].kind unsupported")
+        step = _opt_int(event.get("step"), f"extract[{i}].tail.events[{j}].step")
+        if step is not None:
+            if max_step is None or step > max_step:
+                raise CompareError(f"extract[{i}].tail.events[{j}].step exceeds coverage.max_step")
+            if start is not None and step < start:
+                raise CompareError(f"extract[{i}].tail.events[{j}].step precedes tail.start_step")
+            numeric.append(step)
+        target_key = "target" if kind == "farmer_action" else "item"
+        out.append({
+            "kind": kind,
+            "player": _str(
+                event.get("player_raw"), f"extract[{i}].tail.events[{j}].player_raw", empty=True
+            ),
+            "relative_step": None if step is None or max_step is None else step - max_step,
+            "verb": _str(event.get("verb"), f"extract[{i}].tail.events[{j}].verb", empty=True),
+            "target": _opt_str(
+                event.get(target_key), f"extract[{i}].tail.events[{j}].{target_key}"
+            ),
+            "qty": _opt_int(event.get("qty"), f"extract[{i}].tail.events[{j}].qty"),
+            "qty_raw": _opt_str(event.get("qty_raw"), f"extract[{i}].tail.events[{j}].qty_raw"),
+        })
+    if numeric and max(numeric) != max_step:
+        raise CompareError(f"extract[{i}].tail numeric events do not reach coverage.max_step")
+    return out
+
+
+def _extract(payload: Any, i: int) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise CompareError(f"extract[{i}] must be an object")
+    if payload.get("schema") != INPUT_SCHEMA:
+        raise CompareError(f"extract[{i}].schema must be exactly {INPUT_SCHEMA!r}")
+    episode = _str(payload.get("episode"), f"extract[{i}].episode")
+    sources = _sources(payload, i)
+    parameters = _parameters(payload, i)
+    columns = _columns(payload, i)
+    coverage = payload.get("coverage")
+    if not isinstance(coverage, dict):
+        raise CompareError(f"extract[{i}].coverage must be an object")
+    max_step = _opt_int(coverage.get("max_step"), f"extract[{i}].coverage.max_step")
+    return {
+        "episode": episode,
+        "sources": sources,
+        "parameters": parameters,
+        "columns": columns,
+        "farmer": _summary(payload.get("farmer_summary"), i, "farmer"),
+        "market": _summary(payload.get("market_summary"), i, "market"),
+        "tail": _tail(payload.get("tail"), i, max_step, parameters[1]),
+    }
+
+
+def _nullable(value: Any) -> tuple[int, str]:
     return (1, "") if value is None else (0, str(value))
 
 
-def _repeated_farmer(
-    extracts: list[dict[str, Any]], min_episodes: int
+def _repeat_summary(
+    extracts: list[dict[str, Any]],
+    key_name: str,
+    target_name: str,
+    minimum: int,
 ) -> list[dict[str, Any]]:
-    seen: dict[tuple[Any, ...], dict[str, int]] = defaultdict(dict)
+    values: dict[tuple[Any, ...], dict[str, dict[str, int]]] = defaultdict(dict)
     for extract in extracts:
-        episode = extract["episode"]
-        for row in extract["farmer_summary"]:
-            key = (row["player"], row["day"], row["verb"], row["target"])
-            seen[key][episode] = row["rows"]
-    out: list[dict[str, Any]] = []
-    for key, by_episode in seen.items():
-        if len(by_episode) < min_episodes:
+        for row in extract[key_name]:
+            key = (row["player"], row["day"], row["verb"], row[target_name])
+            metrics = {"rows": row["rows"]}
+            if key_name == "market":
+                metrics["explicit_qty_sum"] = row["explicit_qty_sum"]
+            values[key][extract["episode"]] = metrics
+    out = []
+    for key, episodes in values.items():
+        if len(episodes) < minimum:
             continue
         player, day, verb, target = key
-        out.append(
-            {
-                "player": player,
-                "day": day,
-                "verb": verb,
-                "target": target,
-                "episode_count": len(by_episode),
-                "episodes": [
-                    {"episode": episode, "rows": by_episode[episode]}
-                    for episode in sorted(by_episode)
-                ],
-            }
-        )
-    out.sort(
-        key=lambda row: (
-            row["player"],
-            _sort_nullable(row["day"]),
-            row["verb"],
-            _sort_nullable(row["target"]),
-        )
-    )
+        out.append({
+            "player": player,
+            "day": day,
+            "verb": verb,
+            target_name: target,
+            "episode_count": len(episodes),
+            "episodes": [
+                {"episode": episode, **episodes[episode]}
+                for episode in sorted(episodes)
+            ],
+        })
+    out.sort(key=lambda row: (
+        row["player"], _nullable(row["day"]), row["verb"], _nullable(row[target_name])
+    ))
     return out
 
 
-def _repeated_market(
-    extracts: list[dict[str, Any]], min_episodes: int
-) -> list[dict[str, Any]]:
-    seen: dict[tuple[Any, ...], dict[str, tuple[int, int]]] = defaultdict(dict)
-    for extract in extracts:
-        episode = extract["episode"]
-        for row in extract["market_summary"]:
-            key = (row["player"], row["day"], row["verb"], row["item"])
-            seen[key][episode] = (row["rows"], row["explicit_qty_sum"])
-    out: list[dict[str, Any]] = []
-    for key, by_episode in seen.items():
-        if len(by_episode) < min_episodes:
-            continue
-        player, day, verb, item = key
-        out.append(
-            {
-                "player": player,
-                "day": day,
-                "verb": verb,
-                "item": item,
-                "episode_count": len(by_episode),
-                "episodes": [
-                    {
-                        "episode": episode,
-                        "rows": by_episode[episode][0],
-                        "explicit_qty_sum": by_episode[episode][1],
-                    }
-                    for episode in sorted(by_episode)
-                ],
-            }
-        )
-    out.sort(
-        key=lambda row: (
-            row["player"],
-            _sort_nullable(row["day"]),
-            row["verb"],
-            _sort_nullable(row["item"]),
-        )
-    )
-    return out
-
-
-def _repeated_tail(
-    extracts: list[dict[str, Any]], min_episodes: int
-) -> list[dict[str, Any]]:
+def _repeat_tail(extracts: list[dict[str, Any]], minimum: int) -> list[dict[str, Any]]:
     seen: dict[tuple[Any, ...], set[str]] = defaultdict(set)
     for extract in extracts:
-        episode = extract["episode"]
         for row in extract["tail"]:
             if row["relative_step"] is None:
                 continue
             key = (
-                row["kind"],
-                row["player"],
-                row["relative_step"],
-                row["verb"],
-                row["target"],
-                row["qty"],
-                row["qty_raw"],
+                row["kind"], row["player"], row["relative_step"], row["verb"],
+                row["target"], row["qty"], row["qty_raw"],
             )
-            seen[key].add(episode)
-    out: list[dict[str, Any]] = []
+            seen[key].add(extract["episode"])
+    out = []
     for key, episodes in seen.items():
-        if len(episodes) < min_episodes:
+        if len(episodes) < minimum:
             continue
         kind, player, relative_step, verb, target, qty, qty_raw = key
-        out.append(
-            {
-                "kind": kind,
-                "player": player,
-                "relative_step": relative_step,
-                "verb": verb,
-                "target": target,
-                "qty": qty,
-                "qty_raw": qty_raw,
-                "episode_count": len(episodes),
-                "episodes": sorted(episodes),
-            }
-        )
-    out.sort(
-        key=lambda row: (
-            row["relative_step"],
-            row["kind"],
-            row["player"],
-            row["verb"],
-            _sort_nullable(row["target"]),
-            _sort_nullable(row["qty"]),
-            _sort_nullable(row["qty_raw"]),
-        )
-    )
+        out.append({
+            "kind": kind,
+            "player": player,
+            "relative_step": relative_step,
+            "verb": verb,
+            "target": target,
+            "qty": qty,
+            "qty_raw": qty_raw,
+            "episode_count": len(episodes),
+            "episodes": sorted(episodes),
+        })
+    out.sort(key=lambda row: (
+        row["relative_step"], row["kind"], row["player"], row["verb"],
+        _nullable(row["target"]), _nullable(row["qty"]), _nullable(row["qty_raw"]),
+    ))
     return out
 
 
 def compare_extracts(
     payloads: Iterable[dict[str, Any]], *, min_episodes: int = 2
 ) -> dict[str, Any]:
-    min_episodes = _plain_int(min_episodes, "min_episodes", minimum=2)
-    extracts = [_validate_extract(payload, i) for i, payload in enumerate(payloads)]
-    if len(extracts) < min_episodes:
-        raise CompareError(
-            f"need at least {min_episodes} extracts; received {len(extracts)}"
-        )
-
-    episodes = [extract["episode"] for extract in extracts]
+    minimum = _int(min_episodes, "min_episodes", 2)
+    extracts = [_extract(payload, i) for i, payload in enumerate(payloads)]
+    if len(extracts) < minimum:
+        raise CompareError(f"need at least {minimum} extracts; received {len(extracts)}")
+    episodes = [item["episode"] for item in extracts]
     if len(episodes) != len(set(episodes)):
         raise CompareError("episode ids must be unique")
+    for field, message in (
+        ("sources", "input source snapshot mismatch; recurrence requires identical raw CSV hashes and byte lengths"),
+        ("parameters", "extraction parameter mismatch; recurrence requires identical turns_per_day and tail_callbacks"),
+        ("columns", "resolved-column mismatch; recurrence requires identical semantic column bindings"),
+    ):
+        if any(item[field] != extracts[0][field] for item in extracts[1:]):
+            raise CompareError(message)
 
-    reference_identity = extracts[0]["source_identity"]
-    if any(extract["source_identity"] != reference_identity for extract in extracts[1:]):
-        raise CompareError(
-            "input source snapshot mismatch; recurrence requires identical raw CSV hashes and byte lengths"
-        )
-
-    source_snapshot = {
-        name: {"sha256": reference_identity[i][0], "bytes": reference_identity[i][1]}
-        for i, name in enumerate(SOURCE_NAMES)
-    }
+    sources = extracts[0]["sources"]
+    params = extracts[0]["parameters"]
     return {
         "schema": OUTPUT_SCHEMA,
         "episode_count": len(extracts),
         "episodes": sorted(episodes),
-        "min_episodes": min_episodes,
-        "source_snapshot": source_snapshot,
-        "repeated_farmer_summary": _repeated_farmer(extracts, min_episodes),
-        "repeated_market_summary": _repeated_market(extracts, min_episodes),
-        "repeated_tail_events": _repeated_tail(extracts, min_episodes),
+        "min_episodes": minimum,
+        "source_snapshot": {
+            name: {"sha256": sources[i][0], "bytes": sources[i][1]}
+            for i, name in enumerate(SOURCE_NAMES)
+        },
+        "extraction_parameters": {
+            "turns_per_day": params[0],
+            "tail_callbacks": params[1],
+        },
+        "resolved_columns": extracts[0]["columns"],
+        "repeated_farmer_summary": _repeat_summary(extracts, "farmer", "target", minimum),
+        "repeated_market_summary": _repeat_summary(extracts, "market", "item", minimum),
+        "repeated_tail_events": _repeat_tail(extracts, minimum),
         "limits": [
             "Only exact descriptive fields already present in canonical replay-loss-autopsy extracts are compared.",
-            "All extracts must bind identical farmer_actions, market_orders, and matches_meta byte snapshots.",
-            "Tail recurrence uses relative callback offset from each extract's reported max_step; it does not infer equivalent game state.",
-            "No cash, tile state, inventory, opponent identity, economics, policy intent, mechanism attribution, or causal credit is inferred.",
-            "A repeated token is routing evidence only and is not evidence that changing that token would improve score.",
+            "All extracts must bind identical raw-source bytes, extraction parameters, and resolved semantic columns.",
+            "Relative-tail recurrence does not imply equivalent game state.",
+            "No mechanism attribution or causal credit is inferred.",
+            "A repeated token is routing evidence only, not evidence that changing it improves score.",
         ],
     }
 
@@ -446,21 +399,20 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
-        payloads = [load_extract(path) for path in args.extracts]
-        report = compare_extracts(payloads, min_episodes=args.min_episodes)
+        report = compare_extracts(
+            [load_extract(path) for path in args.extracts],
+            min_episodes=args.min_episodes,
+        )
+        text = json.dumps(
+            report, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        ) + "\n"
+        if args.output is None:
+            sys.stdout.write(text)
+        else:
+            args.output.write_text(text, encoding="utf-8")
     except (OSError, CompareError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
-
-    text = json.dumps(report, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
-    if args.output is not None:
-        try:
-            args.output.write_text(text, encoding="utf-8")
-        except OSError as exc:
-            print(f"ERROR: {exc}", file=sys.stderr)
-            return 2
-    else:
-        sys.stdout.write(text)
     return 0
 
 
