@@ -1,0 +1,416 @@
+name: astra-native-freshness-13006-build
+
+on:
+  push:
+    branches:
+      - astra/native-freshness-13006-build-20260912
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-push:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8498c80186868a4e3e8943d16baaea1e4b67515c
+          fetch-depth: 0
+
+      - name: Apply exact residual trust closures
+        shell: python
+        run: |
+          from pathlib import Path
+
+          base = Path('revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness')
+          checker = base / 'check_native_freshness.py'
+          tests = base / 'test_check_native_freshness.py'
+          readme = base / 'README.md'
+
+          text = checker.read_text(encoding='utf-8')
+          constants = 'SOURCE_MANIFEST = "SOURCE.json"\nMAX_ARCHIVE_BYTES = 32 * 1024 * 1024\n'
+          replacement = (
+              'SOURCE_MANIFEST = "SOURCE.json"\n'
+              'DYNAMIC_REFERENCE_DIRS = ("reference/titan-current", "reference/titan-history")\n'
+              'MAX_ARCHIVE_BYTES = 32 * 1024 * 1024\n'
+          )
+          if text.count(constants) != 1:
+              raise SystemExit('constant anchor drift')
+          text = text.replace(constants, replacement, 1)
+
+          start = text.index('def _validate_publisher_ast(')
+          end = text.index('\ndef _publisher_source_map(', start)
+          hardening = '''def _publisher_binding_names(target: ast.AST):
+              if isinstance(target, ast.Name):
+                  yield target.id
+              elif isinstance(target, ast.Starred):
+                  yield from _publisher_binding_names(target.value)
+              elif isinstance(target, (ast.Tuple, ast.List)):
+                  for item in target.elts:
+                      yield from _publisher_binding_names(item)
+
+
+          def _validate_publisher_ast(runtime_node: ast.AST, source_node: ast.FunctionDef) -> None:
+              """Keep selective publisher-map evaluation read-only and structurally narrow."""
+              forbidden = (
+                  ast.Import,
+                  ast.ImportFrom,
+                  ast.With,
+                  ast.AsyncWith,
+                  ast.Try,
+                  ast.Raise,
+                  ast.Delete,
+                  ast.Global,
+                  ast.Nonlocal,
+                  ast.Lambda,
+                  ast.Yield,
+                  ast.YieldFrom,
+                  ast.Await,
+                  ast.NamedExpr,
+              )
+              for node in ast.walk(runtime_node):
+                  if isinstance(node, forbidden) or isinstance(node, (ast.Call, ast.Attribute)):
+                      raise InvalidEvidence("publisher RUNTIME declaration contains executable side effects")
+
+              args = source_node.args
+              if (
+                  args.posonlyargs
+                  or args.args
+                  or args.kwonlyargs
+                  or args.vararg is not None
+                  or args.kwarg is not None
+                  or args.defaults
+                  or any(default is not None for default in args.kw_defaults)
+              ):
+                  raise InvalidEvidence("publisher source_files() must take no arguments")
+
+              allowed_methods = {"rglob", "is_file", "relative_to"}
+              allowed_attributes = allowed_methods | {"parts"}
+              allowed_load_names = {"RUNTIME", "ROOT", "mapping", "p", "directory", "name", "str"}
+              protected_bindings = {"str"}
+              for node in ast.walk(source_node):
+                  if isinstance(node, forbidden):
+                      raise InvalidEvidence(
+                          f"publisher source_files() contains forbidden syntax: {type(node).__name__}"
+                      )
+                  if node is not source_node and isinstance(
+                      node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)
+                  ):
+                      raise InvalidEvidence(
+                          f"publisher source_files() contains nested definition: {type(node).__name__}"
+                      )
+                  if isinstance(node, ast.Name):
+                      if isinstance(node.ctx, ast.Load) and node.id not in allowed_load_names:
+                          raise InvalidEvidence(
+                              f"publisher source_files() references unsafe name: {node.id}"
+                          )
+                      if isinstance(node.ctx, ast.Store) and node.id in protected_bindings:
+                          raise InvalidEvidence(
+                              f"publisher source_files() shadows protected capability: {node.id}"
+                          )
+                  if isinstance(node, ast.arg) and node.arg in protected_bindings:
+                      raise InvalidEvidence(
+                          f"publisher source_files() shadows protected capability: {node.arg}"
+                      )
+                  if isinstance(node, ast.Attribute) and node.attr not in allowed_attributes:
+                      raise InvalidEvidence(
+                          f"publisher source_files() contains unsafe attribute: {node.attr}"
+                      )
+                  if isinstance(node, ast.Call):
+                      func = node.func
+                      if isinstance(func, ast.Name) and func.id == "str":
+                          if node.keywords:
+                              raise InvalidEvidence("publisher source_files() str() call may not use keywords")
+                          continue
+                      if isinstance(func, ast.Attribute) and func.attr in allowed_methods:
+                          if node.keywords:
+                              raise InvalidEvidence(
+                                  f"publisher source_files() {func.attr}() call may not use keywords"
+                              )
+                          continue
+                      label = (
+                          func.id
+                          if isinstance(func, ast.Name)
+                          else getattr(func, "attr", type(func).__name__)
+                      )
+                      raise InvalidEvidence(f"publisher source_files() contains unsafe call: {label}")
+                  if isinstance(node, (ast.Assign, ast.AnnAssign)):
+                      targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+                      for target in targets:
+                          if isinstance(target, ast.Attribute):
+                              raise InvalidEvidence(
+                                  "publisher source_files() may not assign through attributes"
+                              )
+                          if isinstance(target, ast.Subscript):
+                              if not (
+                                  isinstance(target.value, ast.Name)
+                                  and target.value.id == "mapping"
+                              ):
+                                  raise InvalidEvidence(
+                                      "publisher source_files() may only assign through mapping[...]"
+                                  )
+                          for name in _publisher_binding_names(target):
+                              if name in protected_bindings:
+                                  raise InvalidEvidence(
+                                      f"publisher source_files() shadows protected capability: {name}"
+                                  )
+                  if isinstance(node, (ast.For, ast.AsyncFor, ast.comprehension)):
+                      for name in _publisher_binding_names(node.target):
+                          if name in protected_bindings:
+                              raise InvalidEvidence(
+                                  f"publisher source_files() shadows protected capability: {name}"
+                              )
+                  if isinstance(node, (ast.AugAssign, ast.NamedExpr)):
+                      raise InvalidEvidence(
+                          f"publisher source_files() contains unsupported assignment: {type(node).__name__}"
+                      )
+
+
+          def _tracked_regular_files(
+              repo_root: Path,
+              expected_commit: str,
+              root_rel: PurePosixPath,
+          ) -> set[str]:
+              raw = _git(repo_root, "ls-tree", "-r", expected_commit, "--", root_rel.as_posix())
+              out: set[str] = set()
+              for line in raw.splitlines():
+                  if not line:
+                      continue
+                  try:
+                      meta, path = line.split("\\t", 1)
+                      mode, kind, object_id = meta.split()
+                  except ValueError as exc:
+                      raise InvalidEvidence(
+                          f"cannot parse expected-commit topology under {root_rel.as_posix()}"
+                      ) from exc
+                  if not _is_hex(object_id, 40):
+                      raise InvalidEvidence(
+                          f"invalid expected-commit object id under {root_rel.as_posix()}"
+                      )
+                  rel = PurePosixPath(path)
+                  if "__pycache__" in rel.parts:
+                      continue
+                  if kind == "blob" and mode in {"100644", "100755"}:
+                      out.add(rel.as_posix())
+              return out
+
+
+          def _live_regular_files(repo_root: Path, root_rel: PurePosixPath) -> set[str]:
+              current = repo_root
+              for part in root_rel.parts:
+                  current = current / part
+                  try:
+                      mode = current.lstat().st_mode
+                  except FileNotFoundError:
+                      return set()
+                  except OSError as exc:
+                      raise InvalidEvidence(
+                          f"cannot inspect dynamic publisher root: {root_rel.as_posix()}"
+                      ) from exc
+                  if stat.S_ISLNK(mode):
+                      raise InvalidEvidence(
+                          f"symlink dynamic publisher path forbidden: {root_rel.as_posix()}"
+                      )
+                  if not stat.S_ISDIR(mode):
+                      raise InvalidEvidence(
+                          f"dynamic publisher root is not a directory: {root_rel.as_posix()}"
+                      )
+              root_path = current
+              out: set[str] = set()
+              try:
+                  descendants = root_path.rglob("*")
+                  for path in descendants:
+                      rel = PurePosixPath(path.relative_to(repo_root).as_posix())
+                      if "__pycache__" in rel.parts:
+                          continue
+                      mode = path.lstat().st_mode
+                      if stat.S_ISLNK(mode):
+                          raise InvalidEvidence(
+                              f"symlink dynamic publisher path forbidden: {rel.as_posix()}"
+                          )
+                      if stat.S_ISREG(mode):
+                          out.add(rel.as_posix())
+                      elif not stat.S_ISDIR(mode):
+                          raise InvalidEvidence(
+                              f"nonregular dynamic publisher path forbidden: {rel.as_posix()}"
+                          )
+              except InvalidEvidence:
+                  raise
+              except OSError as exc:
+                  raise InvalidEvidence(
+                      f"cannot enumerate dynamic publisher root: {root_rel.as_posix()}"
+                  ) from exc
+              return out
+
+
+          def _verify_dynamic_topology(
+              repo_root: Path,
+              live_rel: PurePosixPath,
+              expected_commit: str,
+          ) -> None:
+              for dynamic in DYNAMIC_REFERENCE_DIRS:
+                  root_rel = live_rel / PurePosixPath(dynamic)
+                  tracked = _tracked_regular_files(repo_root, expected_commit, root_rel)
+                  live = _live_regular_files(repo_root, root_rel)
+                  if tracked == live:
+                      continue
+                  missing = sorted(tracked - live)
+                  untracked = sorted(live - tracked)
+                  detail = []
+                  if missing:
+                      detail.append("missing=" + ",".join(missing))
+                  if untracked:
+                      detail.append("untracked=" + ",".join(untracked))
+                  raise InvalidEvidence(
+                      "dynamic publisher topology drift under "
+                      + dynamic
+                      + (": " + "; ".join(detail) if detail else "")
+                  )
+
+'''
+          text = text[:start] + hardening + text[end + 1:]
+
+          initial_anchor = '        base["commit"] = head\n\n        publisher_map = _publisher_source_map(repo_root, live_rel, expected_commit)\n'
+          initial_repl = (
+              '        base["commit"] = head\n\n'
+              '        _verify_dynamic_topology(repo_root, live_rel, expected_commit)\n'
+              '        publisher_map = _publisher_source_map(repo_root, live_rel, expected_commit)\n'
+          )
+          if text.count(initial_anchor) != 1:
+              raise SystemExit('initial topology anchor drift')
+          text = text.replace(initial_anchor, initial_repl, 1)
+
+          terminal_anchor = '        final_publisher_map = _publisher_source_map(repo_root, live_rel, expected_commit)\n'
+          terminal_repl = (
+              '        _verify_dynamic_topology(repo_root, live_rel, expected_commit)\n'
+              '        final_publisher_map = _publisher_source_map(repo_root, live_rel, expected_commit)\n'
+          )
+          if text.count(terminal_anchor) != 1:
+              raise SystemExit('terminal topology anchor drift')
+          text = text.replace(terminal_anchor, terminal_repl, 1)
+          checker.write_text(text, encoding='utf-8')
+
+          t = tests.read_text(encoding='utf-8')
+          if not t.startswith('import hashlib\n'):
+              raise SystemExit('test import anchor drift')
+          t = 'import ast\n' + t
+          insertion = '''
+              def test_capability_shadow_rejected_before_execution(self):
+                  archive, digest = self.archive()
+                  sentinel = self.live / "sentinel"
+                  sentinel.write_text("must survive\\n", encoding="utf-8")
+                  (self.live / "build_integrated.py").write_text(
+                      "from pathlib import Path\\n"
+                      "ROOT=Path(__file__).resolve().parent\\n"
+                      "RUNTIME=[]\\n"
+                      "def source_files():\\n"
+                      "    str=(ROOT/'sentinel').unlink\\n"
+                      "    str()\\n"
+                      f"    return {repr(dict(SOURCES))}\\n",
+                      encoding="utf-8",
+                  )
+                  run("git", "add", "revenue/kaggriculture/cloud-execution-lab", cwd=self.root)
+                  run("git", "commit", "-qm", "capability-shadow publisher", cwd=self.root)
+                  bad_commit = run("git", "rev-parse", "HEAD", cwd=self.root)
+                  report = self.verify(archive, digest, commit=bad_commit)
+                  self.assertEqual("INVALID", report["verdict"])
+                  self.assertIn("protected capability", report["problems"][0])
+                  self.assertEqual("must survive\\n", sentinel.read_text(encoding="utf-8"))
+
+              def test_str_binding_forms_rejected(self):
+                  runtime = ast.parse("RUNTIME=[]\\n").body[0]
+                  bodies = {
+                      "for": "def source_files():\\n    for str in ():\\n        pass\\n    return {}\\n",
+                      "comprehension": "def source_files():\\n    return {str: 1 for str in ()}\\n",
+                      "nested_def": "def source_files():\\n    def str(value):\\n        return value\\n    return {}\\n",
+                      "nested_class": "def source_files():\\n    class str:\\n        pass\\n    return {}\\n",
+                  }
+                  for label, source in bodies.items():
+                      with self.subTest(label=label):
+                          node = ast.parse(source).body[0]
+                          with self.assertRaises(fresh.InvalidEvidence):
+                              fresh._validate_publisher_ast(runtime, node)
+
+              def test_dynamic_reference_tracked_deletion_invalid(self):
+                  dynamic = self.live / "reference/titan-current/dynamic.txt"
+                  dynamic.parent.mkdir(parents=True, exist_ok=True)
+                  dynamic.write_text("tracked\\n", encoding="utf-8")
+                  run("git", "add", ".", cwd=self.root)
+                  run("git", "commit", "-qm", "tracked dynamic reference", cwd=self.root)
+                  self.commit = run("git", "rev-parse", "HEAD", cwd=self.root)
+                  archive, digest = self.archive()
+                  dynamic.unlink()
+                  report = self.verify(archive, digest)
+                  self.assertEqual("INVALID", report["verdict"])
+                  self.assertIn("dynamic publisher topology drift", report["problems"][0])
+                  self.assertIn("missing=", report["problems"][0])
+
+              def test_dynamic_reference_ignored_untracked_addition_invalid(self):
+                  ignore = self.root / ".gitignore"
+                  ignore.write_text(
+                      "revenue/kaggriculture/cloud-execution-lab/reference/titan-history/*.tmp\\n",
+                      encoding="utf-8",
+                  )
+                  run("git", "add", ".gitignore", cwd=self.root)
+                  run("git", "commit", "-qm", "ignore dynamic scratch", cwd=self.root)
+                  self.commit = run("git", "rev-parse", "HEAD", cwd=self.root)
+                  archive, digest = self.archive()
+                  rogue = self.live / "reference/titan-history/rogue.tmp"
+                  rogue.parent.mkdir(parents=True, exist_ok=True)
+                  rogue.write_text("untracked\\n", encoding="utf-8")
+                  report = self.verify(archive, digest)
+                  self.assertEqual("INVALID", report["verdict"])
+                  self.assertIn("dynamic publisher topology drift", report["problems"][0])
+                  self.assertIn("untracked=", report["problems"][0])
+
+          '''
+          marker = '    def test_missing_publisher_member_invalid(self):\n'
+          if t.count(marker) != 1:
+              raise SystemExit('test insertion anchor drift')
+          t = t.replace(marker, insertion + marker, 1)
+          tests.write_text(t, encoding='utf-8')
+
+          r = readme.read_text(encoding='utf-8')
+          note = '''
+          ## Fail-closed publisher evaluator and dynamic topology
+
+          The publisher contract is treated as a narrow data program, not arbitrary trusted Python. The selective evaluator now rejects protected-capability shadowing (including loop/comprehension targets and nested definitions), unknown name/attribute capabilities, and writes outside `mapping[...]`; `str` remains the only direct-call builtin.
+
+          The two dynamic publisher roots, `reference/titan-current` and `reference/titan-history`, are also bound to the exact `expected_commit` regular-file topology before and after source-map evaluation. A stable dirty tracked deletion or an ignored/untracked addition therefore makes the verdict `INVALID` instead of allowing the live `rglob()` result to redefine what “current” means.
+          '''
+          if '## Fail-closed publisher evaluator and dynamic topology' in r:
+              raise SystemExit('README residual note already present')
+          readme.write_text(r.rstrip() + '\n\n' + note.strip() + '\n', encoding='utf-8')
+
+      - name: Run exact focused gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness
+          python -B "$DIR/test_check_native_freshness.py" -v
+          python -O -B "$DIR/test_check_native_freshness.py" -v
+          python -m py_compile "$DIR/check_native_freshness.py" "$DIR/test_check_native_freshness.py"
+          git diff --check
+
+      - name: Push only if exact target head is unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET=sol/native-freshness-full-map-20260912
+          EXPECTED=8498c80186868a4e3e8943d16baaea1e4b67515c
+          REMOTE="$(git ls-remote origin "refs/heads/$TARGET" | awk '{print $1}')"
+          test "$REMOTE" = "$EXPECTED" || { echo "TARGET_DRIFT expected=$EXPECTED observed=$REMOTE"; exit 97; }
+          git config user.name "Astra V4 executor"
+          git config user.email "astra-v4@users.noreply.github.com"
+          git add \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/check_native_freshness.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/test_check_native_freshness.py \
+            revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/README.md
+          git commit -m "TITAN V4 freshness: close evaluator and topology trust"
+          NEW_HEAD="$(git rev-parse HEAD)"
+          git push --force-with-lease="refs/heads/$TARGET:$EXPECTED" origin "HEAD:refs/heads/$TARGET"
+          echo "NATIVE_FRESHNESS_NEW_HEAD=$NEW_HEAD"
+          git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/check_native_freshness.py
+          git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/test_check_native_freshness.py
+          git hash-object revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/native-package-freshness/README.md
