@@ -15,7 +15,9 @@ route instead extracts FERT+EGG. CARE is deliberately absent.
 """
 from __future__ import annotations
 
+import builtins
 import hashlib
+import io
 import json
 from pathlib import Path
 import sys
@@ -27,20 +29,26 @@ V4_ROOT = HERE.parents[1]
 ENGINE_PATH = HERE.parents[3] / "reference" / "engine" / "kaggriculture.py"
 GANDER_PATH = HERE / "goose_printer_oracle.py"
 STARVE_PATH = V4_ROOT / "repairs" / "gameplay" / "dead-feed-care" / "starvation_cadence.py"
-# Preserve the canonical auxiliary-resource location even when tests replace
-# ENGINE_PATH with a byte-equivalent temporary source snapshot. The code bytes
-# themselves are still captured/authenticated exactly once before execution.
+
+# The engine code reads the adjacent JSON specification at module execution.
+# Keep the reviewed canonical display path for __file__/open interception even
+# when a swap test redirects ENGINE_PATH to byte-identical temporary sources.
 _ENGINE_EXEC_FILE = str(ENGINE_PATH)
+_ENGINE_EXEC_METADATA_FILE = str(ENGINE_PATH.with_suffix(".json"))
 
 PINNED_ENGINE_GIT_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 PINNED_ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+PINNED_ENGINE_METADATA_GIT_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
+PINNED_ENGINE_METADATA_SHA256 = "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867"
+PINNED_ENGINE_METADATA_BYTES = 6002
 PINNED_GANDER_GIT_BLOB = "38ae7715c233c74f24aacd5fe09f4d0d7a630037"
 PINNED_STARVE_GIT_BLOB = "8831ff953faf033cc6d3892c6f32ccd1ee1af06c"
 GOOSE_COUNT = 9
 FIRST_SERVICE_DAY = 1
 LAST_SERVICE_DAY = 29
 LAST_EOD_DAY = 28
-FINAL_EXECUTABLE_STEP = 718
+EPISODE_STEPS = 720
+FINAL_EXECUTABLE_STEP = EPISODE_STEPS - 2
 REGULAR_POST_HIRE_UNIT_SLOTS = 23
 TERMINAL_POST_HIRE_UNIT_SLOTS = 22
 INITIAL_WHEAT = 1000
@@ -56,8 +64,8 @@ def _git_blob_bytes(data: bytes) -> str:
     ).hexdigest()
 
 
-def _git_blob(path: Path) -> str:
-    return _git_blob_bytes(path.read_bytes())
+def _sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
 
 
 def _load_bytes(data: bytes, path: Path, name: str) -> ModuleType:
@@ -73,20 +81,14 @@ def _load_bytes(data: bytes, path: Path, name: str) -> ModuleType:
     return module
 
 
-def _load(path: Path, name: str) -> ModuleType:
-    return _load_bytes(path.read_bytes(), path, name)
+def _load_engine_bytes(data: bytes, metadata: bytes) -> ModuleType:
+    """Execute authenticated engine Python with authenticated JSON metadata.
 
-
-def _sha256_bytes(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
-
-
-def _sha256(path: Path) -> str:
-    return _sha256_bytes(path.read_bytes())
-
-
-def _load_engine_bytes(data: bytes) -> ModuleType:
-    """Execute exactly the already-authenticated official engine snapshot."""
+    The reviewed engine performs a module-level ``open(kaggriculture.json)``.
+    Installing a module-local ``open`` binds that dependency to the captured
+    immutable metadata snapshot, so neither code nor specification is reopened
+    from a mutable repository pathname after authentication.
+    """
     inserted: list[str] = []
     try:
         import kaggle_environments.utils  # type: ignore  # noqa: F401
@@ -109,12 +111,33 @@ def _load_engine_bytes(data: bytes) -> ModuleType:
     module.__file__ = _ENGINE_EXEC_FILE
     module.__package__ = None
     sys.modules[name] = module
+
+    metadata_path = str(Path(_ENGINE_EXEC_METADATA_FILE).absolute())
+
+    def snapshot_open(file, mode="r", *args, **kwargs):
+        try:
+            candidate = str(Path(file).absolute())
+        except (TypeError, ValueError):
+            candidate = None
+        if candidate == metadata_path:
+            if any(flag in mode for flag in ("w", "a", "x", "+")):
+                raise GanderStarveError(
+                    "authenticated engine metadata snapshot is read-only"
+                )
+            if "b" in mode:
+                return io.BytesIO(metadata)
+            encoding = kwargs.get("encoding") or "utf-8"
+            return io.StringIO(metadata.decode(encoding))
+        return builtins.open(file, mode, *args, **kwargs)
+
+    module.__dict__["open"] = snapshot_open
     try:
         exec(compile(data, _ENGINE_EXEC_FILE, "exec"), module.__dict__)
     except Exception:
         sys.modules.pop(name, None)
         raise
     finally:
+        module.__dict__.pop("open", None)
         for inserted_name in inserted:
             sys.modules.pop(inserted_name, None)
     return module
@@ -172,22 +195,25 @@ def worker_route(
     return actions
 
 
-def _canonical_sources() -> tuple[ModuleType, ModuleType, ModuleType, dict[str, str]]:
-    # Capture every authority file once. Authentication, helper execution,
-    # engine execution, and serialized identities all derive from these bytes;
-    # mutable repository pathnames are never reopened after authentication.
+def _canonical_sources() -> tuple[ModuleType, ModuleType, ModuleType, dict[str, Any]]:
+    """Capture/authenticate every executable authority exactly once."""
+    engine_metadata_path = ENGINE_PATH.with_suffix(".json")
     try:
         gander_bytes = GANDER_PATH.read_bytes()
         starve_bytes = STARVE_PATH.read_bytes()
         engine_bytes = ENGINE_PATH.read_bytes()
+        engine_metadata_bytes = engine_metadata_path.read_bytes()
     except OSError as exc:
         raise GanderStarveError(f"cannot capture canonical source snapshot: {exc}") from exc
 
-    identities = {
+    identities: dict[str, Any] = {
         "gander_helper_git_blob": _git_blob_bytes(gander_bytes),
         "starve_helper_git_blob": _git_blob_bytes(starve_bytes),
         "engine_git_blob": _git_blob_bytes(engine_bytes),
         "engine_sha256": _sha256_bytes(engine_bytes),
+        "engine_metadata_git_blob": _git_blob_bytes(engine_metadata_bytes),
+        "engine_metadata_sha256": _sha256_bytes(engine_metadata_bytes),
+        "engine_metadata_bytes": len(engine_metadata_bytes),
     }
     if identities["gander_helper_git_blob"] != PINNED_GANDER_GIT_BLOB:
         raise GanderStarveError(
@@ -209,6 +235,23 @@ def _canonical_sources() -> tuple[ModuleType, ModuleType, ModuleType, dict[str, 
             f"engine SHA identity drift: expected {PINNED_ENGINE_SHA256}, "
             f"got {identities['engine_sha256']}"
         )
+    if identities["engine_metadata_git_blob"] != PINNED_ENGINE_METADATA_GIT_BLOB:
+        raise GanderStarveError(
+            "engine metadata Git identity drift: expected "
+            f"{PINNED_ENGINE_METADATA_GIT_BLOB}, got "
+            f"{identities['engine_metadata_git_blob']}"
+        )
+    if identities["engine_metadata_sha256"] != PINNED_ENGINE_METADATA_SHA256:
+        raise GanderStarveError(
+            "engine metadata SHA identity drift: expected "
+            f"{PINNED_ENGINE_METADATA_SHA256}, got "
+            f"{identities['engine_metadata_sha256']}"
+        )
+    if identities["engine_metadata_bytes"] != PINNED_ENGINE_METADATA_BYTES:
+        raise GanderStarveError(
+            "engine metadata size drift: expected "
+            f"{PINNED_ENGINE_METADATA_BYTES}, got {identities['engine_metadata_bytes']}"
+        )
 
     gander = _load_bytes(gander_bytes, GANDER_PATH, "titan_v4_gander_starve_gander")
     starve = _load_bytes(starve_bytes, STARVE_PATH, "titan_v4_gander_starve_starve")
@@ -218,7 +261,8 @@ def _canonical_sources() -> tuple[ModuleType, ModuleType, ModuleType, dict[str, 
         raise GanderStarveError("STARVEORACLE engine identity drift")
     if getattr(starve, "ENGINE_SHA256", None) != PINNED_ENGINE_SHA256:
         raise GanderStarveError("STARVEORACLE engine SHA drift")
-    engine = _load_engine_bytes(engine_bytes)
+
+    engine = _load_engine_bytes(engine_bytes, engine_metadata_bytes)
     return gander, starve, engine, identities
 
 
@@ -288,6 +332,11 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     gander, starve, engine, source_ids = _canonical_sources()
     contract = _route_contract(gander)
     state, env = starve._make_state_env(engine)
+    # STARVEORACLE intentionally uses a huge episode for generic cadence probes.
+    # This composite instead binds the reviewed official episode horizon so the
+    # interpreter itself, not merely this loop, transitions both players DONE at
+    # the exact final executable callback.
+    env.configuration.episodeSteps = EPISODE_STEPS
     farm = state[0].observation.farms[0]
     private = state[0].observation.private
 
@@ -398,13 +447,18 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
 
     # Fair baseline: feed every day followed by an actual EOD refresh. Feeding
     # day 29 would itself be terminal dead work and is excluded from baseline.
-    full_obligation_feed_units = LAST_EOD_DAY * GOOSE_COUNT
+    full_daily_feed_through_last_eod = LAST_EOD_DAY * GOOSE_COUNT
+    terminal_statuses = [getattr(player, "status", None) for player in state]
     return {
-        "schema": "titan.v4.gander-starve-composite/v3",
+        "schema": "titan.v4.gander-starve-composite/v4",
         "engine_git_blob": source_ids["engine_git_blob"],
         "engine_sha256": source_ids["engine_sha256"],
+        "engine_metadata_git_blob": source_ids["engine_metadata_git_blob"],
+        "engine_metadata_sha256": source_ids["engine_metadata_sha256"],
+        "episode_steps": EPISODE_STEPS,
         "final_executable_step": FINAL_EXECUTABLE_STEP,
         "last_step_executed": last_step_executed,
+        "terminal_statuses": terminal_statuses,
         "days": [FIRST_SERVICE_DAY, LAST_SERVICE_DAY],
         "last_eod_day": LAST_EOD_DAY,
         "feed_days": sorted(selected_feed_days),
@@ -419,8 +473,8 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
         "egg_total": egg_total,
         "fertilizer_total": fertilizer_total,
         "wheat_consumed": wheat_consumed,
-        "wheat_saved_vs_feed_every_real_eod_obligation": full_obligation_feed_units - wheat_consumed,
-        "feed_actions_saved_vs_feed_every_real_eod_obligation": full_obligation_feed_units - counts["feed_attempts"],
+        "wheat_saved_vs_feed_daily_through_last_eod": full_daily_feed_through_last_eod - wheat_consumed,
+        "feed_actions_saved_vs_feed_daily_through_last_eod": full_daily_feed_through_last_eod - counts["feed_attempts"],
         "max_goose_yield_units_seen": max_yield_units,
         "max_consecutive_unfed_seen": max_consecutive_unfed,
         "final_held_egg": final_held_egg,
@@ -431,10 +485,15 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
             "gander_frontier_geese": GOOSE_COUNT,
             "gander_helper_git_blob": source_ids["gander_helper_git_blob"],
             "starve_helper_git_blob": source_ids["starve_helper_git_blob"],
+            "engine_metadata_git_blob": source_ids["engine_metadata_git_blob"],
+            "engine_metadata_sha256": source_ids["engine_metadata_sha256"],
+            "engine_metadata_bytes": source_ids["engine_metadata_bytes"],
             "gander_day1_service_counts": contract["authored_counts"],
             "starve_engine_git_blob": getattr(starve, "ENGINE_GIT_BLOB"),
             "immutable_source_snapshots": True,
             "engine_executed_from_authenticated_snapshot": True,
+            "engine_metadata_served_from_authenticated_snapshot": True,
+            "official_episode_horizon_bound": True,
             "regular_post_hire_unit_slots": REGULAR_POST_HIRE_UNIT_SLOTS,
             "terminal_post_hire_unit_slots": TERMINAL_POST_HIRE_UNIT_SLOTS,
             "route_lengths": contract["route_lengths"],
@@ -464,10 +523,14 @@ def build_report() -> dict[str, Any]:
         raise GanderStarveError("safe composite cadence did not survive")
     if safe["last_step_executed"] != FINAL_EXECUTABLE_STEP:
         raise GanderStarveError("episode boundary drift")
+    if safe["terminal_statuses"] != ["DONE", "DONE"]:
+        raise GanderStarveError(
+            f"interpreter did not terminate at official horizon: {safe['terminal_statuses']}"
+        )
     if unsafe["escaped_day"] != 1:
         raise GanderStarveError("day-1 mandatory-feed boundary disappeared")
     return {
-        "schema": "titan.v4.gander-starve-report/v3",
+        "schema": "titan.v4.gander-starve-report/v4",
         "safe_composite": safe,
         "mandatory_day1_feed_predecessor": {
             "escaped_day": unsafe["escaped_day"],
@@ -501,7 +564,7 @@ def build_report() -> dict[str, Any]:
 def main() -> int:
     try:
         report = build_report()
-    except (OSError, ValueError, GanderStarveError) as exc:
+    except (OSError, UnicodeError, ValueError, GanderStarveError) as exc:
         print(f"GANDER_STARVE BLOCKED: {exc}")
         return 2
     print(json.dumps(report, indent=2, sort_keys=True))
