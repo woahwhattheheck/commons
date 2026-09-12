@@ -6,6 +6,8 @@ on:
       - "experience/**"
       - "host/experience_compiler.py"
       - "test_experience_compiler.py"
+      - "test_experience_retrieval.py"
+      - ".agents/skills/commons-worker/**"
       - ".agents/skills/experience-compiler/**"
       - ".github/workflows/experience-compiler.yml"
   pull_request:
@@ -13,6 +15,8 @@ on:
       - "experience/**"
       - "host/experience_compiler.py"
       - "test_experience_compiler.py"
+      - "test_experience_retrieval.py"
+      - ".agents/skills/commons-worker/**"
       - ".agents/skills/experience-compiler/**"
       - ".github/workflows/experience-compiler.yml"
   workflow_dispatch:
@@ -30,4 +34,4 @@ jobs:
           python-version: "3.12"
       - run: python3 host/experience_compiler.py validate
       - run: python3 host/experience_compiler.py check
-      - run: python3 -m unittest -v test_experience_compiler.py
+      - run: python3 -m unittest -v test_experience_compiler.py test_experience_retrieval.py
