@@ -176,8 +176,11 @@ def assess_same_eod_plant_survival(
             configuration, "maxMarketOrdersPerTurn", DEFAULT_MAX_MARKET_ORDERS
         )
         hour = _strict_int(observation.get("hour"), "hour")
+        step = _strict_int(observation.get("step"), "step")
         if hour >= turns_per_day:
             raise PlantGuardInputError("hour_out_of_day")
+        if hour != step % turns_per_day:
+            raise PlantGuardInputError("hour_step_mismatch")
         farm, private, positions, board_size = _farm_and_private(observation)
         actor_count = len(positions)
         current_commands = _action_rows(selected_action, actor_count)
@@ -223,21 +226,40 @@ def assess_same_eod_plant_survival(
         }
 
         # Find PLANTs that can actually create a plant on the current unit stage.
-        # If multiple actors target one empty tile, actor order means only the
-        # first can create it; later PLANTs are engine no-ops.
+        # Unit rows execute farmer first, then hands. A prior same-site PLANT
+        # that survives the atomic seed preflight definitely occupies the tile.
+        # BUILD_COOP/BUILD_PASTURE can also occupy an initially-empty tile, but
+        # whether they succeed depends on mutable farm money. Rather than infer
+        # that private transition here, fail closed when such a possible build
+        # precedes a PLANT at the same site. Earlier clearing actions are left
+        # conservative: an initially nonempty tile is never promoted to a
+        # candidate merely because a preceding DIG/HARVEST might clear it.
         target_owner: dict[tuple[int, int], int] = {}
+        possible_build_targets: set[tuple[int, int]] = set()
         candidate_targets: dict[int, tuple[int, int]] = {}
         tiles = farm["tiles"]
         for actor_index, command in enumerate(current_commands):
-            if command[0] != "PLANT" or len(command) < 2:
+            target = tuple(positions[actor_index])
+            x, y = target
+            op = command[0]
+
+            if op in {"BUILD_COOP", "BUILD_PASTURE"}:
+                if tiles[y][x] is None and target not in target_owner:
+                    possible_build_targets.add(target)
+                continue
+
+            if op != "PLANT" or len(command) < 2:
                 continue
             crop = command[1]
             if crop not in CROPS or crop in seed_blocked:
                 continue
-            target = tuple(positions[actor_index])
-            x, y = target
             if tiles[y][x] is not None:
                 continue
+            if target in possible_build_targets:
+                return _not_certified(
+                    "current_stage_tile_effect_ambiguity",
+                    candidates=sorted(candidate_targets),
+                )
             if target in target_owner:
                 continue
             target_owner[target] = actor_index
