@@ -141,6 +141,19 @@ class TraceNoCareFeedSkipTests(unittest.TestCase):
         obs = observation(step, tile=cow(pending=1, placed_day=0))
         self.assertEqual(T.plan_trace_no_care_feed_skip(action(), obs, CFG, suffix(step)), [])
 
+    def test_truthy_enable_poison_preserves_exact_identity(self):
+        obs = observation(20)
+        current = action()
+        remaining = suffix(20)
+        for poison in (1, 1.0, "false", [True], {"enabled": True}):
+            with self.subTest(poison=poison):
+                self.assertIs(
+                    T.build_single_counterfactual(
+                        current, obs, CFG, remaining, enabled=poison
+                    ),
+                    current,
+                )
+
     def test_current_and_suffix_inputs_are_not_mutated(self):
         obs = observation(20)
         current = action()
