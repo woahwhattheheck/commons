@@ -10,6 +10,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 LAB = Path(__file__).resolve().parents[5]
@@ -174,6 +175,40 @@ class V5CarebankComposerTests(unittest.TestCase):
             self.assertIs(treatment_config["r04_dead_feed_care"], True)
             for name, payload in before.items():
                 self.assertEqual((package / name).read_bytes(), payload)
+
+    def test_materialize_uses_each_authenticated_input_snapshot_once(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            package = root / "package"
+            _copy_current_package(package)
+            output = root / "output"
+            watched = {
+                (package / "main.py").resolve(),
+                (package / "titan_runtime.py").resolve(),
+                (package / "TITAN-CONFIG.json").resolve(),
+                (LAB / HELPER_RELATIVE).resolve(),
+            }
+            reads = {path: 0 for path in watched}
+            real_read_bytes = Path.read_bytes
+
+            def poisoned_after_first(path: Path) -> bytes:
+                resolved = path.resolve()
+                if resolved in reads:
+                    reads[resolved] += 1
+                    if reads[resolved] > 1:
+                        return b"# poisoned second authenticated read\n"
+                return real_read_bytes(path)
+
+            with mock.patch.object(Path, "read_bytes", new=poisoned_after_first):
+                receipt = materialize(LAB, package, output, enabled=True)
+
+            self.assertEqual(set(receipt["source_sha256s"]), {
+                "main.py", "titan_runtime.py", "TITAN-CONFIG.json", str(HELPER_RELATIVE)
+            })
+            self.assertTrue(all(count == 1 for count in reads.values()), reads)
+            self.assertEqual(git_blob_id((output / "main.py").read_bytes()), MAIN_BLOB)
+            self.assertEqual(git_blob_id((output / "r04_dead_feed_care.py").read_bytes()), HELPER_BLOB)
+            self.assertIs(json.loads((output / "TITAN-CONFIG.json").read_text())["r04_dead_feed_care"], True)
 
     def test_source_drift_fails_before_output_is_published(self):
         with tempfile.TemporaryDirectory() as td:
