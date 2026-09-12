@@ -107,6 +107,19 @@ class SnapshotLoaderTests(unittest.TestCase):
 
 
 class SnapshotCaptureTests(unittest.TestCase):
+    def test_runner_swap_after_prior_verification_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / trust.RUNNER_NAME
+            safe = b"class MaterializationError(ValueError):\n    pass\nMARKER = 'safe'\n"
+            path.write_bytes(b"class MaterializationError(ValueError):\n    pass\nMARKER = 'tampered'\n")
+            old = trust.PINNED_CONTROL_BLOBS[trust.RUNNER_NAME]
+            trust.PINNED_CONTROL_BLOBS[trust.RUNNER_NAME] = trust.git_blob(safe)
+            try:
+                with self.assertRaisesRegex(trust.TrustError, "source drift while snapshotting"):
+                    front._load_runner(path)
+            finally:
+                trust.PINNED_CONTROL_BLOBS[trust.RUNNER_NAME] = old
+
     def test_capture_expected_detects_drift(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "x.py"
