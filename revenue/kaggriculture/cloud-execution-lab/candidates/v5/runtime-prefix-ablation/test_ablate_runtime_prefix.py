@@ -103,12 +103,14 @@ class RuntimePrefixAblationTests(unittest.TestCase):
         self.assertIn("for o in selected.get('market', [])", treatment)
 
     def test_unrelated_v4_runtime_mechanics_remain_byte_identical(self):
+        # method_text intentionally requires a following def, so this set stops
+        # before the terminal act()/__call__ boundary.  The stronger skeleton
+        # assertion above already proves all bytes outside target spans unchanged.
         for name in (
             "_feed_stock_selected",
             "_early_capital_selected",
             "_market_pressure_selected",
             "_selected_snapshot",
-            "act",
         ):
             self.assertEqual(
                 rpa.method_text(self.treatment_text, name),
