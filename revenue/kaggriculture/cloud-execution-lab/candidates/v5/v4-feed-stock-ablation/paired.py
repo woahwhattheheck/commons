@@ -163,8 +163,8 @@ def main() -> int:
     if getattr(helper, "BASELINE_SHA256", None) != BASELINE_SHA256:
         raise ValueError("helper baseline authority disagrees with this experiment")
 
-    # Keep authenticated harness execution private for the entire panel.  A
-    # caller-visible snapshot is copied only as evidence and is never executed.
+    # Keep every executable artifact in private custody for the full panel.
+    # Caller-visible paths receive evidence only and are never executed.
     with tempfile.TemporaryDirectory(
         prefix="feed-stock-private-runtime-", dir=output_parent
     ) as temp:
@@ -214,7 +214,10 @@ def main() -> int:
             helper.BANK + "/REFERENCE-POLICIES.json"
         ]["sha256"]
         for opponent in opponents:
-            runtime[opponent] = output / "opponents" / opponent
+            # reference_policies.prepare emits executable adapter/policy bytes.
+            # Keep its destination private too; the public output tree must never
+            # become an execution authority after authentication.
+            runtime[opponent] = private_root / "opponents" / opponent
             receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
             if (receipt.get("bridge_sha256") != expected_bridge
                     or receipt.get("source_registry_sha256") != expected_registry
@@ -250,6 +253,8 @@ def main() -> int:
                 "pack_sha256": sha256_bytes(pack_raw),
                 "bridge_sha256": sha256_bytes(bridge_raw),
                 "loader_sha256": sha256_bytes(loader_raw),
+                "opponent_runtime": "private authenticated runtime only",
+                "candidate_runtime": "private per-cell runtime only",
                 "public_snapshot": ".harness-snapshot (evidence only; never executed)",
             },
             "harness": harness,
@@ -273,7 +278,8 @@ def main() -> int:
                 "blob and replaces only TitanAgent._feed_stock_selected with `return selected`; "
                 "operating_stock.py and all other archive members remain byte-identical. The "
                 "authenticated evaluator/packer/reference bridge execute from captured bytes; "
-                "the candidate loader and opponent support root remain in a private authenticated "
+                "the candidate loader, generated opponent adapters/policies, candidate arm "
+                "adapters/payloads, and opponent support root remain in a private authenticated "
                 "runtime for the full panel. The public harness snapshot is evidence-only. "
                 "Candidate returned actions are observed by a temporary in-process wrapper around "
                 "the evaluator's Actor.act and the original method is restored after each game; "
@@ -300,8 +306,10 @@ def main() -> int:
                     order = list(ARMS if len(cells) % 2 == 0 else reversed(ARMS))
                     cell["execution_order"] = order
                     for arm in order:
+                        # Candidate payload/adapter are executable authority too;
+                        # build and execute them under the same private runtime.
                         with tempfile.TemporaryDirectory(
-                            prefix=f"{cell_id}-{arm}-", dir=output
+                            prefix=f"{cell_id}-{arm}-", dir=private_root
                         ) as cell_temp:
                             directory = Path(cell_temp)
                             payload = directory / "payload"
