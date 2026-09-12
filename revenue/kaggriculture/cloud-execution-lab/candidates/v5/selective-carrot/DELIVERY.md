@@ -11,6 +11,10 @@ The candidate is not current-main's complete feature composition. No default,
 release pointer, or Kaggle submission is changed. The owner submission hold
 remains in force.
 
+The default builder emits v2, normalizing the outer observation clock from
+day/hour and configured turnsPerDay when step is absent or null. Both the
+policy and receipt callback receive that same copied observation.
+
 ## Exact artifacts
 
 Public release: `titan-kaggriculture-gauntlet-20260912` in
@@ -18,7 +22,8 @@ Public release: `titan-kaggriculture-gauntlet-20260912` in
 
 | Asset | SHA256 |
 |---|---|
-|`titan-v4-route-recovery-delivery-carrot.tar.gz`|`4db8d176bd34b219eff62c65e584a0786889065a52467b68f79e01f24af8fb30`|
+|`titan-v4-route-recovery-delivery-carrot-v2.tar.gz`|`0d42ee5fabb089745fa0064207654bfdf5df9466ba6499d91b6e685d4880cab1`|
+|Earlier v1 `titan-v4-route-recovery-delivery-carrot.tar.gz`|`4db8d176bd34b219eff62c65e584a0786889065a52467b68f79e01f24af8fb30`|
 |`v4-runtime-repair-route-recovery.tar.gz`|`a44bf380cd79f967893ea90273be7dc92d6fd4f5e553aac0b02e457e85cf4ca8`|
 |Existing `titan-v5-selective-carrot-cap12.tar.gz`|`5bf8e90602e145b353b9ff421fc514f2cf8af77ec549557e5e0acc1bc6bd67aa`|
 |Existing exact submitted V4 `titan-v4-56182437-4d960155.tar.gz`|`4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b`|
@@ -40,7 +45,8 @@ python -B build_delivery.py --cap12 /path/to/titan-v5-selective-carrot-cap12.tar
   --out /new/path/delivery-payload --tar /new/path/delivery.tar.gz
 ```
 
-The archive exactly reproduces the tested 78-member artifact. The builder uses
+The default archive exactly reproduces the tested 78-member v2 artifact.
+Add `--version v1` to reproduce the unchanged earlier 4db8d176 archive. The builder uses
 the old core inside the authenticated cap12 archive, so subsequent changes to
 current-main `selective_carrot.py` do not silently change the frozen candidate.
 
@@ -49,6 +55,10 @@ current-main `selective_carrot.py` do not silently change the frozen candidate.
 Six receipt tests cover partial fills, rejected purchases, fallback actions,
 EOD deferral, authored wheat buys, and preceding sales. They pass normally and
 under `python -O`.
+
+The following strategy screen directly tested v1 (4db8d176). V2 has a
+separate full-game absent-step seat1 callback bridge with all 719 actions
+identical to v1; see `PRODUCTION-CALLBACK-BRIDGE.json`.
 
 On exact Arlene, seat0, seed2051966578 the candidate margin is3620 versus V4's1940
 (+1680), while V3.1 remains11746. Four fresh Arlene seat0 seeds1209125501–5504
@@ -60,7 +70,10 @@ identities are in `DELIVERY-RESULTS.json`.
 
 ## Native fleet run using the existing evaluator
 
-SPARK owns the next comparison after its completed bridge/7401–7402 work.
+The leading production v2 candidate in `PRODUCTION-RECOVERY.md` takes the
+next SPARK slot if no delivery process has started. Preserve any running
+delivery cell/panel. Later unstarted standalone delivery arms use v2.
+The following delivery comparison retains its existing exact controls.
 Panel: seeds2051966578,1209125501,1209125502, both seats, responsive Apex_v7 and
 Arlene_v14, delivery candidate / exact V4 / exact V3.1:36 total arm-games before
 reuse. Reuse only completed controls with identical archive, opponent, engine,
