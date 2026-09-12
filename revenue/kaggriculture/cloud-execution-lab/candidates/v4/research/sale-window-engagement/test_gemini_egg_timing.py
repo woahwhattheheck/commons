@@ -52,8 +52,10 @@ class GeminiEggTimingTests(unittest.TestCase):
             source_turn=0, source_row_index=0, max_delay=5,
         )
         self.assertIsNotNone(report["best_positive"])
+        self.assertGreater(report["best_positive"]["sale_cash_delta"], 0)
         self.assertGreater(report["best_positive"]["own_cash_delta"], 0)
         self.assertTrue(report["best_positive"]["realized_retiming"])
+        self.assertTrue(report["best_positive"]["scarcity_price_positive"])
         # Step 8 consumes after market; step 9 is the first placement that can
         # capture both the step-4 and step-8 BAKERY depletion pulses.
         self.assertEqual(report["best_positive"]["target_step"], 9)
@@ -73,6 +75,7 @@ class GeminiEggTimingTests(unittest.TestCase):
         )
         self.assertIsNone(report["best_positive"])
         self.assertTrue(any(row["realized_retiming"] for row in report["candidates"]))
+        self.assertFalse(any(row["scarcity_price_positive"] for row in report["candidates"]))
 
     def test_refuses_non_egg_or_nonpositive_source(self):
         state, env = self.fixture()
@@ -88,13 +91,45 @@ class GeminiEggTimingTests(unittest.TestCase):
     def test_destination_never_displaces_live_economics(self):
         full = self.tape([
             action(["SELL", "EGG", 1]),
-            action(*([ ["HIRE"] ] * 10)),
+            action(*([["HIRE"]] * 10)),
             action(["PASS"], ["HIRE"]),
         ])
         self.assertEqual(
             gt.candidate_destinations(full, seat=0, source_turn=0, max_delay=2, cap=10),
-            [(2, 0)],
+            [(2, 0), (2, 2)],
         )
+
+    def test_enumerates_every_pass_and_legal_append_destination(self):
+        tape = self.tape([
+            action(["SELL", "EGG", 1]),
+            action(["PASS"], ["HIRE"], ["PASS"]),
+        ])
+        self.assertEqual(
+            gt.candidate_destinations(tape, seat=0, source_turn=0, max_delay=1, cap=5),
+            [(1, 0), (1, 2), (1, 3)],
+        )
+        self.assertEqual(gt.destination_row(tape, 0, 1, 5), 0)
+
+    def test_skipped_hire_cash_gain_does_not_mint_egg_scarcity_evidence(self):
+        """Same-price EGG retiming can change total cash via another failed row."""
+        state, env = self.fixture(stock=1, shops=(), cap=2)
+        tape = self.tape([
+            action(["SELL", "EGG", 1], ["HIRE"]),
+            action(),
+        ])
+        report = gt.search(
+            self.engine, state, env, tape, start_step=4, seat=0,
+            source_turn=0, source_row_index=0, max_delay=1,
+        )
+        self.assertEqual(report["candidate_count"], 1)
+        candidate = report["candidates"][0]
+        self.assertTrue(candidate["realized_retiming"])
+        self.assertEqual(candidate["source_filled_units"], 1)
+        self.assertEqual(candidate["target_filled_units"], 1)
+        self.assertEqual(candidate["sale_cash_delta"], 0)
+        self.assertFalse(candidate["scarcity_price_positive"])
+        self.assertGreater(candidate["own_cash_delta"], 0)
+        self.assertIsNone(report["best_positive"])
 
     def test_input_tape_is_immutable(self):
         state, env = self.fixture()
@@ -116,6 +151,23 @@ class GeminiEggTimingTests(unittest.TestCase):
         self.assertIsNone(report["best_positive"])
         self.assertEqual(report["candidates"][0]["source_filled_units"], 0)
         self.assertFalse(report["candidates"][0]["realized_retiming"])
+        self.assertFalse(report["candidates"][0]["scarcity_price_positive"])
+
+    def test_duplicate_or_poisoned_observer_rows_fail_closed(self):
+        good = {
+            "baseline": {"reports": [{"rows": [
+                {"seat": 0, "row": 1, "sold": 2, "sale_cash": 10}
+            ]}]}
+        }
+        self.assertEqual(gt._sale_row_metrics(good, "baseline", 0, 0, 1), (2, 10))
+        duplicate = copy.deepcopy(good)
+        duplicate["baseline"]["reports"][0]["rows"].append(
+            {"seat": 0, "row": 1, "sold": 2, "sale_cash": 10}
+        )
+        self.assertEqual(gt._sale_row_metrics(duplicate, "baseline", 0, 0, 1), (0, 0))
+        poison = copy.deepcopy(good)
+        poison["baseline"]["reports"][0]["rows"][0]["sale_cash"] = True
+        self.assertEqual(gt._sale_row_metrics(poison, "baseline", 0, 0, 1), (0, 0))
 
 
 if __name__ == "__main__":
