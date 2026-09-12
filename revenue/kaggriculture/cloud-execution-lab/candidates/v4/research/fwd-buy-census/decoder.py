@@ -180,7 +180,9 @@ def load_exact(path: Path):
     if spec is None or spec.loader is None:
         raise SystemExit("cannot import source module")
     mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
+    # Execute the bytes authenticated above, not a second source read or a
+    # timestamp-valid cached bytecode file selected by the import loader.
+    exec(compile(raw, str(path), "exec"), mod.__dict__)
     tapes = mod.load_tapes()
     return tapes, hashlib.sha256(raw).hexdigest()
 
