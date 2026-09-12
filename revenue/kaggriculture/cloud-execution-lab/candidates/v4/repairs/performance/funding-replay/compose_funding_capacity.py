@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Compose physical-capacity and raw-slot funding-boundary custody into V4.
 
-UNITFLOW and FUNDING-PERF may compose first. Only two authenticated top-level
+TOWNPATH, UNITFLOW and FUNDING-PERF may compose first. Only two authenticated top-level
 function spans change; this is not a runtime builder or policy switch.
 """
 from __future__ import annotations
@@ -11,18 +11,16 @@ import ast
 import hashlib
 from pathlib import Path
 
-BEFORE = {
-    '_funding_trace': {
-        'd9ca4d0737b5ab3344c0df588014a83a5c634464327fdd175b8ec862c2d7beb9',
-        'c6b789fa8b28ce020a2b2d803b31e76cdd6505b41815f2a49ebe90bbc5058088',
-    },
-    'funded_minimum_now': {
-        'faa06a1f64161cdb2e1bdc734d0db365d20c3cc31808893d49c9744f8e2aa3df',
-        '42038b5f59bba0f7ceeb296aa75c4e291e27e77eb2ab46ded0eaa52835bae12e',
-    },
-}
+BEFORE = {'_funding_trace': {'88d315a8e16a7a3f1aa2e88d65e53bad827ce2cee4b7fbef65fe4d192cdfdff6',
+                    'af20f71e59ebb9abea7a90a914f4f727e65d2bd7c958727e521e3e29447c2527',
+                    'c6b789fa8b28ce020a2b2d803b31e76cdd6505b41815f2a49ebe90bbc5058088',
+                    'd9ca4d0737b5ab3344c0df588014a83a5c634464327fdd175b8ec862c2d7beb9'},
+ 'funded_minimum_now': {'42038b5f59bba0f7ceeb296aa75c4e291e27e77eb2ab46ded0eaa52835bae12e',
+                        'faa06a1f64161cdb2e1bdc734d0db365d20c3cc31808893d49c9744f8e2aa3df'}}
 AFTER = {'_funding_trace': {'2adf10d26fd7a0d3445783e5fb64e540361eecdfd0702e1edc2b777034aaf1e4',
-                    '61b78c43f796c10a943b72ca84a458720219e3cc732903df27f18c6c2545906b'},
+                    '61b78c43f796c10a943b72ca84a458720219e3cc732903df27f18c6c2545906b',
+                    '74ef800fe10fbec67e1771644de3a3ba2b43f7fbb07e93b6597e7689858f17a9',
+                    'db252cac77861df9c946340affbd9ebeaf9de34d286a77e68c218d31dae3d6b0'},
  'funded_minimum_now': {'c9c50457890e1acb161c97e56804021bbe697005fccf226667a027a88557b0a9',
                         'e65489a58f7f59afb16a730be45d369aab7391f3acc5e9661304703e0c6b1477'}}
 

@@ -15,6 +15,8 @@ from typing import Any
 
 
 HERE = Path(__file__).resolve().parent
+EXPECTED_SCHEMA = "titan-v4-integration-ledger/v1"
+EXPECTED_WORKSPACE = "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
 
 
 class LedgerError(RuntimeError):
@@ -36,12 +38,22 @@ def _rows(ledger: dict[str, Any], key: str) -> list[dict[str, Any]]:
     if not isinstance(value, list):
         raise LedgerError(f"INTEGRATION.json {key!r} must be a list")
     out: list[dict[str, Any]] = []
+    seen: dict[str, int] = {}
     for index, row in enumerate(value):
         if not isinstance(row, dict):
             raise LedgerError(f"INTEGRATION.json {key}[{index}] must be an object")
         lane = row.get("lane")
         if not isinstance(lane, str) or not lane.strip():
             raise LedgerError(f"INTEGRATION.json {key}[{index}] has invalid lane")
+        lane = lane.strip()
+        if lane in seen:
+            raise LedgerError(
+                f"INTEGRATION.json {key!r} duplicates lane {lane!r} "
+                f"at indexes {seen[lane]} and {index}"
+            )
+        seen[lane] = index
+        row = dict(row)
+        row["lane"] = lane
         out.append(row)
     return out
 
@@ -63,24 +75,49 @@ def _require_nonempty_text(
         errors.append(f"{label} lane {lane!r} lacks {field}")
 
 
-def validate(root: Path = HERE) -> list[str]:
-    canonical = _load(root / "CANONICAL.json")
-    ledger = _load(root / "INTEGRATION.json")
-    errors: list[str] = []
+def _resolve_within_root(root: Path, relative: str | Path, *, label: str) -> Path:
+    candidate = Path(relative)
+    if candidate.is_absolute():
+        raise LedgerError(f"{label} must be relative to the integration root, got {str(candidate)!r}")
+    root_resolved = root.resolve()
+    resolved = (root_resolved / candidate).resolve(strict=False)
+    try:
+        resolved.relative_to(root_resolved)
+    except ValueError as exc:
+        raise LedgerError(f"{label} escapes integration root: {str(candidate)!r}") from exc
+    return resolved
 
+
+def validate(root: Path = HERE) -> list[str]:
+    errors: list[str] = []
+    try:
+        canonical = _load(root / "CANONICAL.json")
+        ledger = _load(root / "INTEGRATION.json")
+    except LedgerError as exc:
+        return [str(exc)]
+
+    schema = ledger.get("schema")
     branch = ledger.get("canonical_branch")
     workspace = ledger.get("workspace")
+    if schema != EXPECTED_SCHEMA:
+        errors.append(f"schema must be {EXPECTED_SCHEMA!r}, got {schema!r}")
     if branch != "main":
         errors.append(f"canonical_branch must be 'main', got {branch!r}")
+    if workspace != EXPECTED_WORKSPACE:
+        errors.append(f"workspace must be {EXPECTED_WORKSPACE!r}, got {workspace!r}")
     if canonical.get("canonical_branch") != branch:
         errors.append("CANONICAL canonical_branch disagrees with INTEGRATION canonical_branch")
     if canonical.get("workspace") != workspace:
         errors.append("CANONICAL workspace disagrees with INTEGRATION workspace")
 
-    landed = _rows(ledger, "landed")
-    recovered = _rows(ledger, "recovered_not_yet_composed")
-    blocked = _rows(ledger, "custody_blocked")
-    negative = _rows(ledger, "negative_or_parked")
+    try:
+        landed = _rows(ledger, "landed")
+        recovered = _rows(ledger, "recovered_not_yet_composed")
+        blocked = _rows(ledger, "custody_blocked")
+        negative = _rows(ledger, "negative_or_parked")
+    except LedgerError as exc:
+        errors.append(str(exc))
+        return errors
 
     landed_lanes = _lane_set(landed)
     recovered_lanes = _lane_set(recovered)
@@ -113,7 +150,9 @@ def validate(root: Path = HERE) -> list[str]:
     #   done if the history resurfaces, but it must NOT require an "awaiting"
     #   manifest or masquerade as a live source blocker.
     #
-    # Any other status is rejected rather than being silently treated as either.
+    # Custody paths and manifests are also trust inputs: both must resolve within
+    # this exact V4 root.  A ../ path, absolute path, or symlink escape cannot make
+    # external bytes satisfy source custody.
     for row in blocked:
         lane = str(row["lane"])
         custody_path = row.get("custody_path")
@@ -122,7 +161,16 @@ def validate(root: Path = HERE) -> list[str]:
         if not isinstance(custody_path, str) or not custody_path.strip():
             errors.append(f"custody lane {lane!r} lacks custody_path")
             continue
-        path = root / custody_path
+        custody_path = custody_path.strip()
+        try:
+            path = _resolve_within_root(
+                root,
+                custody_path,
+                label=f"custody lane {lane!r} custody_path",
+            )
+        except LedgerError as exc:
+            errors.append(str(exc))
+            continue
         if not path.is_dir():
             errors.append(f"custody lane {lane!r} missing custody directory {custody_path!r}")
             continue
@@ -142,8 +190,12 @@ def validate(root: Path = HERE) -> list[str]:
             errors.append(f"custody lane {lane!r} has unsupported status {status!r}")
             continue
 
-        manifest_path = path / "MANIFEST.json"
         try:
+            manifest_path = _resolve_within_root(
+                root,
+                Path(custody_path) / "MANIFEST.json",
+                label=f"blocked lane {lane!r} MANIFEST.json",
+            )
             manifest = _load(manifest_path)
         except LedgerError as exc:
             errors.append(str(exc))

@@ -1,0 +1,45 @@
+{
+  "repair": "current-ABI row-shed SELL ordering",
+  "status": "canonical V4 repair component; production/default activation requires official-engine/full-game gate",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "historical_provenance": {
+    "commit": "7cbe552087626d09dbd8a84be8fa89efc7320ad0",
+    "router_blob": "21210f396335431e81d300e118487dd859d54468",
+    "focused_test_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v31_row_shed.py",
+    "field_gate": "1280 games/arm; 1273 W / 7 L; +540.0 margin/game vs V3.0",
+    "top40_recorded_replay_bench": "96 W / 64 L"
+  },
+  "current_abi_pins": {
+    "mechanics_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+    "selected_action_sell_blob": "68b82183466fa92c80a40cabc0c5d9575bdd79cc",
+    "ordered_selected_sell_blob": "8ce1394077df47dfc322a44f363050a6467292a3"
+  },
+  "component_blob": "9df048a4ba866d154861b6885f59502cf9e01cae",
+  "focused_regression_blob": "774f4af3656558ff0fa334f1f520810692ca8b53",
+  "contract": [
+    "consume caller-owned post-unit shed projection; never construct or invoke a production controller",
+    "reorder only the leading contiguous SELL block",
+    "a falsey row or first non-SELL row is a hard barrier and every suffix index is preserved",
+    "rank each leading SELL by the price drop of min(requested quantity, projected shed stock)",
+    "never change a SELL row or mutate the caller action; stable ties preserve relative order",
+    "missing, incomplete, malformed or type-poisoned evidence fails closed to the caller fallback action"
+  ],
+  "composition": [
+    "caller-owned current selected-action unit projection",
+    "RowShedSellOrder using projection packet post_unit_shed",
+    "current SelectedActionSell / OrderedSelectedSell economics",
+    "existing V4 composer/materializer"
+  ],
+  "focused_validation": {
+    "normal": "10/10 pass",
+    "optimized": "10/10 pass under python -O",
+    "py_compile": "pass",
+    "scope": "authoring regression using the current mechanics price-shape contract; not a full-game V4 strength receipt"
+  },
+  "integration_rules": [
+    "do not import the V3 router into V4",
+    "do not create a second scheduler, producer, controller, engine or evaluator",
+    "do not change production/default/archive/Kaggle state from this repair alone",
+    "run the then-current official-engine/full-game gate before activation"
+  ]
+}
