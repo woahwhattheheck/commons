@@ -1,0 +1,264 @@
+{
+  "claim": "Installing SpatialTempo with pathing=false and tempo=false must be a strict identity; the guard restores V1-exact behavior on both spent catastrophic Apex witnesses.",
+  "environment": {
+    "engine_source_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "loader_sha256": "cd113a94ae99b03492502e425bdcf09c3db17a2aa2a8fd866f0d78caec9e311e",
+    "method": "Pinned official interpreter; fresh agent subprocesses for each cell."
+  },
+  "patch": {
+    "bad_spatial_tempo_sha256": "1ace1547a0f091ce36de1bbb8e023baa7b9699346968ebbc1468433733dbd50d",
+    "change": "Return from SpatialTempo.install before capturing routes or replacing controller.act when neither pathing nor tempo is enabled.",
+    "guarded_spatial_tempo_sha256": "93e04539a3f5f68a7d6dfc879c2b9709fa81493f4dbf01ba50851c94edcf941e",
+    "identity_test_guarded_exit": 0,
+    "identity_test_negative_control_exit": 1,
+    "identity_test_sha256": "028a9e7aa30e93e27307e3343abc5532a65a071d714057937088265939b370bf",
+    "patch_sha256": "7c45eab95612a7178cb096be529843442e87496aa83a1181800f6b97acf93601",
+    "receipt_verifier_sha256": "b93be3a6351247a8c205308028b1b4a1d83ca8528a8140ed6ff66859e0d4c9ff"
+  },
+  "schema_version": 1,
+  "scope": {
+    "fresh_seed_cells": 0,
+    "selection": "Two already-spent Apex cells identified by the upstream V1-vs-V2 structural-core factorial.",
+    "strength_claim": "Causal regression proof only; no claim of leaderboard or population improvement.",
+    "witness_cells": 2
+  },
+  "source_artifacts": {
+    "evidence_bundle_sha256": "d56d7890dadfad7192e43cd5b5d0a2789237c70547873b9906b3717e8d705a42",
+    "opponent": "Apex",
+    "opponent_main_sha256": "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a",
+    "slack_file_id": "F0C0LF6206M",
+    "submitted_v1_archive_sha256": "7b58fa06da778b1519b81d509d28dff3481b3bbcc7a2d656e8bdfe4a22540524",
+    "v2_archive_sha256": "6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e"
+  },
+  "v2_core_configuration": {
+    "config_sha256": "b8088e82f03508332d6799f61e1e3a144e933c1efcbd5b5634e77dcbabe3fcf5",
+    "main_sha256": "0dae922de836cdb590891d9bbca9a58e18114ebcc64e16fb5b264311f07133e5",
+    "market_pressure": false,
+    "operating_stock": false,
+    "redundant_hire": false,
+    "runtime_sha256": "31b9366d8f04f0d7df71ceb9d3a0ce84548f2f4d419f4e9e72bf665d0192778a",
+    "spatial_pathing": false,
+    "spatial_tempo": false
+  },
+  "witnesses": [
+    {
+      "candidate_seat": 1,
+      "causal_chain": {
+        "cash_threshold_divergence": {
+          "bad_after": 31,
+          "bad_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              3
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ],
+          "candidate_money_before": 142,
+          "guarded_after": 335,
+          "guarded_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ],
+          "step": 88,
+          "v1_after": 335,
+          "v1_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ]
+        },
+        "day_end_confirmation": {
+          "bad_bank": 127,
+          "guarded_bank": 431,
+          "step": 95,
+          "v1_bank": 431
+        },
+        "first_action_divergence": {
+          "location": "candidate.hands[2]",
+          "pre_state_sha256": "a73f38f353965323589a01015287fc49d39c212af418b7c04138e2c0b758ca92",
+          "step": 30,
+          "v1": [
+            "PASS"
+          ],
+          "v2_core_bad": [
+            "BUILD_PASTURE"
+          ],
+          "v2_core_guarded": [
+            "PASS"
+          ]
+        }
+      },
+      "opponent": "Apex",
+      "prefix_through_step_96": {
+        "digest_method": "sha256(canonical-json list of step/pre_sha256/actions_sha256/post_sha256)",
+        "guarded_equal_rows": 97,
+        "rows": 97,
+        "v1_sha256": "7a741c5d852fde8ed14608ddfe8859ef52bd2534519ff0373b6a78982ed17c65",
+        "v2_core_bad_sha256": "96252dcdaaa560b313b0efffdb1d9102ae70a5ea61f4e8dbe9a30c9d7e9b216e",
+        "v2_core_guarded_sha256": "7a741c5d852fde8ed14608ddfe8859ef52bd2534519ff0373b6a78982ed17c65"
+      },
+      "seed": 2609097303,
+      "terminal": {
+        "v1": {
+          "scores": [
+            102918,
+            101269
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "a8783d947d0d97fd2087a6bc35ced4ab881fd2b0b60948e90948d8688b3b9052"
+        },
+        "v2_core_disabled_flags_bad": {
+          "scores": [
+            44068,
+            50435
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "0dfed92f90beec4df6dd552ac4c95aab2e35e581b6e05a356ff7e45d410d9eb4"
+        },
+        "v2_core_guarded": {
+          "scores": [
+            102918,
+            101269
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "a8783d947d0d97fd2087a6bc35ced4ab881fd2b0b60948e90948d8688b3b9052"
+        }
+      }
+    },
+    {
+      "candidate_seat": 0,
+      "causal_chain": {
+        "cash_threshold_divergence": {
+          "bad_after": 31,
+          "bad_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              3
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ],
+          "candidate_money_before": 142,
+          "guarded_after": 335,
+          "guarded_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ],
+          "step": 88,
+          "v1_after": 335,
+          "v1_market": [
+            [
+              "SELL",
+              "FERTILIZER",
+              2
+            ],
+            [
+              "BUY_ANIMAL",
+              "COW",
+              1
+            ]
+          ]
+        },
+        "day_end_confirmation": {
+          "bad_bank": 127,
+          "guarded_bank": 431,
+          "step": 95,
+          "v1_bank": 431
+        },
+        "first_action_divergence": {
+          "location": "candidate.hands[2]",
+          "pre_state_sha256": "6fe1316985f6e92a9e13f384b4fd643eff917b032db44cd72525baee4d2fe1a5",
+          "step": 30,
+          "v1": [
+            "PASS"
+          ],
+          "v2_core_bad": [
+            "BUILD_PASTURE"
+          ],
+          "v2_core_guarded": [
+            "PASS"
+          ]
+        }
+      },
+      "opponent": "Apex",
+      "prefix_through_step_96": {
+        "digest_method": "sha256(canonical-json list of step/pre_sha256/actions_sha256/post_sha256)",
+        "guarded_equal_rows": 97,
+        "rows": 97,
+        "v1_sha256": "9c1e1e4483f1d2f3a8e51d23e95c9b39d0a4e484c7f9747f5877de62a9805a24",
+        "v2_core_bad_sha256": "6895114dbfaf7bcb1d4210758b8140a075237fdef30df62fad817601453cbe71",
+        "v2_core_guarded_sha256": "9c1e1e4483f1d2f3a8e51d23e95c9b39d0a4e484c7f9747f5877de62a9805a24"
+      },
+      "seed": 2609097306,
+      "terminal": {
+        "v1": {
+          "scores": [
+            105279,
+            106062
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "1a321bcfd3323c8f1b9799044dde95f0105cf8e87e1056a12738c8a8834df999"
+        },
+        "v2_core_disabled_flags_bad": {
+          "scores": [
+            83173,
+            81151
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "a16c0ea27d68eab35a2145f6ec094d545f54fcb5ea5149ab443f18e01efc8f72"
+        },
+        "v2_core_guarded": {
+          "scores": [
+            105279,
+            106062
+          ],
+          "status": "complete",
+          "steps": 719,
+          "trace_sha256": "1a321bcfd3323c8f1b9799044dde95f0105cf8e87e1056a12738c8a8834df999"
+        }
+      }
+    }
+  ]
+}
