@@ -152,6 +152,76 @@ class PairedTest(unittest.TestCase):
                 paired.write_private_runtime_bytes(b"VALUE = 24\n", private, expected)
             self.assertFalse(private.exists())
 
+    def test_public_opponent_evidence_poison_cannot_change_private_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            public = root / "output"
+            private.mkdir()
+            public.mkdir()
+            private_opponent = private / "opponents" / "apex_v7"
+            private_opponent.mkdir(parents=True)
+            private_adapter = private_opponent / "adapter.py"
+            private_adapter.write_bytes(b"PRIVATE-OPPONENT\n")
+            public_opponent = paired.copy_evidence_tree(
+                private_opponent, public / "opponents" / "apex_v7"
+            )
+            public_adapter = public_opponent / "adapter.py"
+            public_adapter.write_bytes(b"POISON\n")
+            self.assertEqual(private_adapter.read_bytes(), b"PRIVATE-OPPONENT\n")
+            self.assertEqual(
+                paired.assert_private_execution_path(private_adapter, private, public),
+                private_adapter.resolve(),
+            )
+            with self.assertRaisesRegex(ValueError, "caller-visible output"):
+                paired.assert_private_execution_path(public_adapter, private, public)
+
+    def test_public_candidate_evidence_poison_cannot_change_private_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            public = root / "output"
+            private.mkdir()
+            public.mkdir()
+            candidate = private / "games" / "cell-arm"
+            payload = candidate / "payload"
+            payload.mkdir(parents=True)
+            private_adapter = candidate / "adapter.py"
+            private_main = payload / "main.py"
+            private_adapter.write_bytes(b"PRIVATE-ADAPTER\n")
+            private_main.write_bytes(b"PRIVATE-MAIN\n")
+            public_candidate = paired.copy_evidence_tree(
+                candidate, public / "candidate-evidence" / "cell-arm"
+            )
+            (public_candidate / "adapter.py").write_bytes(b"POISON-ADAPTER\n")
+            (public_candidate / "payload" / "main.py").write_bytes(b"POISON-MAIN\n")
+            self.assertEqual(private_adapter.read_bytes(), b"PRIVATE-ADAPTER\n")
+            self.assertEqual(private_main.read_bytes(), b"PRIVATE-MAIN\n")
+            self.assertEqual(
+                paired.assert_private_execution_path(private_adapter, private, public),
+                private_adapter.resolve(),
+            )
+            self.assertEqual(
+                paired.assert_private_execution_path(private_main, private, public),
+                private_main.resolve(),
+            )
+            with self.assertRaisesRegex(ValueError, "caller-visible output"):
+                paired.assert_private_execution_path(
+                    public_candidate / "adapter.py", private, public
+                )
+
+    def test_execution_guard_rejects_path_outside_private_runtime(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            private = root / "private"
+            public = root / "output"
+            external = root / "external.py"
+            private.mkdir()
+            public.mkdir()
+            external.write_text("x\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "escaped private runtime"):
+                paired.assert_private_execution_path(external, private, public)
+
 
 if __name__ == "__main__":
     unittest.main()

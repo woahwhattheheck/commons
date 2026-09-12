@@ -90,6 +90,29 @@ def write_private_runtime_bytes(raw: bytes, path: Path, expected: str) -> Path:
     return path
 
 
+def assert_private_execution_path(path: Path, private_root: Path, public_output: Path) -> Path:
+    """Fail closed unless an executable leaf lives under private runtime custody."""
+    resolved = Path(path).resolve(strict=True)
+    private = Path(private_root).resolve(strict=True)
+    public = Path(public_output).resolve(strict=True)
+    if resolved == public or public in resolved.parents:
+        raise ValueError(f"Execution path points into caller-visible output: {resolved}")
+    if resolved != private and private not in resolved.parents:
+        raise ValueError(f"Execution path escaped private runtime: {resolved}")
+    return resolved
+
+
+def copy_evidence_tree(source: Path, destination: Path) -> Path:
+    """Copy private bytes to a caller-visible evidence tree that is never executed."""
+    source = Path(source).resolve(strict=True)
+    destination = Path(destination)
+    if destination.exists() or destination.is_symlink():
+        raise FileExistsError(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(source, destination)
+    return destination
+
+
 def score_triplet(game: dict, seat: int):
     if game.get("status") != "complete" or game.get("steps") != 719:
         return None
@@ -243,9 +266,8 @@ def main() -> int:
     v4_arms, source_receipts = ablation.build_arms(v4_members)
     arm_payloads = {"v31_reference": v31_members, **v4_arms}
 
-    # Keep the authenticated harness private for the entire opponent preparation
-    # and game panel. The caller-visible snapshot is evidence only and is never
-    # an execution authority.
+    # Core modules, prepared opponents, and per-game candidate payloads all stay
+    # under one private runtime. Caller-visible trees are evidence-only copies.
     with tempfile.TemporaryDirectory(
         prefix="funding-private-runtime-", dir=output_parent
     ) as temp:
@@ -292,6 +314,10 @@ def main() -> int:
         snapshot_root = output / ".harness-snapshot"
         shutil.copytree(runtime_snapshot, snapshot_root)
 
+        private_opponents = private_root / "opponents"
+        private_opponents.mkdir()
+        private_games = private_root / "games"
+        private_games.mkdir()
         runtime = {}
         opponent_receipts = {}
         expected_bridge = harness["repository_files"][bridge_rel]["sha256"]
@@ -299,7 +325,7 @@ def main() -> int:
             helper.BANK + "/REFERENCE-POLICIES.json"
         ]["sha256"]
         for opponent in opponents:
-            runtime[opponent] = output / "opponents" / opponent
+            runtime[opponent] = private_opponents / opponent
             receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
             if (receipt.get("bridge_sha256") != expected_bridge
                     or receipt.get("source_registry_sha256") != expected_registry
@@ -307,6 +333,10 @@ def main() -> int:
                 raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
             if Path(receipt.get("support_root", "")).resolve(strict=True) != runtime_snapshot:
                 raise ValueError(f"Opponent did not bind private runtime snapshot: {opponent}")
+            assert_private_execution_path(
+                runtime[opponent] / "adapter.py", private_root, output
+            )
+            copy_evidence_tree(runtime[opponent], output / "opponents" / opponent)
             opponent_receipts[opponent] = receipt
 
         run = {
@@ -327,12 +357,14 @@ def main() -> int:
             "helper_execution": "single-read Git-blob-authenticated captured bytes",
             "archive_execution": "single-read SHA256-authenticated private snapshots",
             "harness_execution": {
-                "mode": "captured core modules + private authenticated runtime snapshot",
+                "mode": "captured core modules + fully private executable leaf artifacts",
                 "evaluator_sha256": hashlib.sha256(evaluator_raw).hexdigest(),
                 "pack_sha256": hashlib.sha256(pack_raw).hexdigest(),
                 "bridge_sha256": hashlib.sha256(bridge_raw).hexdigest(),
                 "loader_sha256": hashlib.sha256(loader_raw).hexdigest(),
                 "public_snapshot": ".harness-snapshot (evidence only; never executed)",
+                "opponents": "private adapters executed; output/opponents are evidence copies",
+                "candidates": "private per-game payload/adapter only; no public execution origin",
             },
             "harness": harness,
             "opponent_receipts": opponent_receipts,
@@ -343,7 +375,9 @@ def main() -> int:
                 "Each matched cell executes exact submitted V3.1, exact submitted V4, "
                 "and a 2x2 over only V4 funded-minimum semantics and same-turn SELL queue "
                 "reordering. All V4 treatment archives preserve every member except "
-                "frozen_selected.py; no arm is a V3.1 reconstruction."
+                "frozen_selected.py; no arm is a V3.1 reconstruction. Evaluator, loader, "
+                "prepared opponent adapter and candidate payload/adapter execution origins "
+                "remain private for the entire panel; caller-visible copies are evidence only."
             ),
         }
         helper.write_json(output / "run.json", run)
@@ -366,15 +400,21 @@ def main() -> int:
                     }
                     for arm in order:
                         with tempfile.TemporaryDirectory(
-                            prefix=f"{cell_id}-{arm}-", dir=output
+                            prefix=f"{cell_id}-{arm}-", dir=private_games
                         ) as game_temp:
                             directory = Path(game_temp)
                             payload = directory / "payload"
                             helper.extract_members(arm_payloads[arm], payload)
                             adapter = directory / "adapter.py"
                             pack.write_adapter(adapter, payload / "main.py")
-                            rival = str(runtime[opponent] / "adapter.py")
-                            specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
+                            candidate = assert_private_execution_path(
+                                adapter, private_root, output
+                            )
+                            rival = assert_private_execution_path(
+                                runtime[opponent] / "adapter.py", private_root, output
+                            )
+                            specs = ([str(candidate), str(rival)] if seat == 0
+                                     else [str(rival), str(candidate)])
                             engine, _ = evaluator.get_engine(engine_dir, loader)
                             game = evaluator.play(
                                 engine, specs, engine_dir, loader, seed, seat,
