@@ -60,6 +60,8 @@ def build_candidate(baseline_root: Path, out: Path) -> dict[str, str]:
         raise ValueError("output directory must be new")
     if not baseline_root.is_dir():
         raise ValueError("baseline root must be a directory")
+    if out == baseline_root or baseline_root in out.parents:
+        raise ValueError("output directory must be outside baseline root")
     parent_main = baseline_root / "main.py"
     if not parent_main.is_file() or parent_main.is_symlink():
         raise ValueError("baseline main.py must be a regular file")
