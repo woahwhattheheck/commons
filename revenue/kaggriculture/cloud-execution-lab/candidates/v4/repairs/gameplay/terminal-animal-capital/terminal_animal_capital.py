@@ -18,6 +18,7 @@ FINAL_PLAN_STEP = 648
 LAST_ACTION_STEP = EPISODE_STEPS - 2
 DEFAULT_MAX_MARKET_ORDERS = 10
 FIRST_YIELD_DAYS = {"GOOSE": 4, "SHEEP": 6, "COW": 8}
+_MISSING = object()
 
 
 def _value(obj: Any, key: str) -> Any:
@@ -43,12 +44,19 @@ def _max_market_orders(configuration: Any) -> int | None:
     """Return the official executable market prefix length, or fail closed.
 
     The official specification defaults maxMarketOrdersPerTurn to 10 and the
-    interpreter executes only market[:max_orders].  Missing therefore means the
-    exact engine default; an explicitly malformed/non-positive value is not
-    source-safe for this component and fails closed.
+    interpreter executes only market[:max_orders]. Missing therefore means the
+    exact engine default; an explicitly present malformed/non-positive value
+    (including None) is not source-safe for this component and fails closed.
     """
-    value = _value(configuration, "maxMarketOrdersPerTurn")
-    if value is None:
+    if isinstance(configuration, Mapping):
+        value = (
+            configuration["maxMarketOrdersPerTurn"]
+            if "maxMarketOrdersPerTurn" in configuration
+            else _MISSING
+        )
+    else:
+        value = getattr(configuration, "maxMarketOrdersPerTurn", _MISSING)
+    if value is _MISSING:
         return DEFAULT_MAX_MARKET_ORDERS
     if type(value) is not int or value <= 0:
         return None

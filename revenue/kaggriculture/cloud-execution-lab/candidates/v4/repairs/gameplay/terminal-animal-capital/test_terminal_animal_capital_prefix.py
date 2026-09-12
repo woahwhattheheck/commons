@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import unittest
+from types import SimpleNamespace
 
 from terminal_animal_capital import apply_terminal_animal_capital, plan_terminal_animal_capital
 
@@ -58,10 +59,27 @@ class H5ExecutablePrefixTests(unittest.TestCase):
 
     def test_explicit_bad_market_limit_fails_closed(self):
         a = action(["BUY_ANIMAL", "GOOSE", 1])
-        for value in (True, 1.0, "10", 0, -1):
+        for value in (None, True, 1.0, "10", 0, -1):
             with self.subTest(value=value):
                 cfg = {**BASE, "maxMarketOrdersPerTurn": value}
+                plan = plan_terminal_animal_capital(a, {"step": 648}, cfg)
+                self.assertFalse(plan["eligible"])
+                self.assertEqual(plan["reason"], "BAD_MAX_MARKET_ORDERS")
                 self.assertIs(apply_terminal_animal_capital(a, {"step": 648}, cfg, enabled=True), a)
+
+    def test_object_config_distinguishes_missing_from_explicit_none(self):
+        a = action(["BUY_ANIMAL", "GOOSE", 1])
+        missing = SimpleNamespace(turnsPerDay=24, episodeSteps=720)
+        missing_plan = plan_terminal_animal_capital(a, {"step": 648}, missing)
+        self.assertTrue(missing_plan["eligible"])
+        self.assertEqual(missing_plan["max_market_orders"], 10)
+
+        malformed = SimpleNamespace(
+            turnsPerDay=24, episodeSteps=720, maxMarketOrdersPerTurn=None
+        )
+        bad_plan = plan_terminal_animal_capital(a, {"step": 648}, malformed)
+        self.assertFalse(bad_plan["eligible"])
+        self.assertEqual(bad_plan["reason"], "BAD_MAX_MARKET_ORDERS")
 
 
 if __name__ == "__main__":
