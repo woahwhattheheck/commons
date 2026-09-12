@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import copy
 import math
-from collections import Counter
 from typing import Any, Mapping, Sequence
 
 NO_ORDER = ["SELL", "WHEAT", 0]
@@ -223,11 +222,10 @@ def propose_redundant_hires(
     if len(farm["tiles"]) != board or any(len(row) != board for row in farm["tiles"]):
         report["reason"] = "board_shape"; return out, report
     current = _units(out)
-    demand = Counter(a[1] for a in current if isinstance(a, list) and len(a) > 1 and a[0] == "PLANT")
-    blocked = {p for p, n in demand.items() if n > private.get("seeds", {}).get(p, 0)}
+    # Match the engine's actor-order semantics exactly: an earlier PLANT may
+    # consume the last available seed while a later same-crop PLANT simply
+    # no-ops. Aggregate pre-blocking would incorrectly erase the earlier plant.
     for i, action in enumerate(current):
-        if isinstance(action, list) and len(action) > 1 and action[0] == "PLANT" and action[1] in blocked:
-            action = ["PASS"]
         mechanics._apply_unit_action(farm, private, i, action, board, step // day_len, day_len, cap)
     existing = len(farm["hands"])
     costs = [mechanics._hire_cost(farm["hires_today"] + j, mult) for j in range(len(hires))]
