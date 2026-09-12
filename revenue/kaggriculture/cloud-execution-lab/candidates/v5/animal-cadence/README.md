@@ -4,6 +4,30 @@ Status: **default OFF / evaluation only**. This package is additive to canonical
 
 Promotion status: **BLOCKED pending matched current-line simulation evidence.** `certificate_builder.py` provides one source-pinned certificate authority, but only for the narrow completed day-close/reset loop described below. The transform and builder remain uninstalled production candidates.
 
+## Reachable-opportunity probe
+
+`reachable_probe.py` is an evaluation-only wrapper around the exact current
+entrypoint. It records only returned FEED/CARE actions, their public animal
+prestate, the acting inventory, runtime completion status, parent-call count,
+route identity, and an action digest; it returns the canonical action object
+unchanged. `summarize_reachable_probe.py` reduces those private observations to
+non-observational counts, including whether every otherwise eligible FEED has a
+later same-animal CARE in the same day. Raw observations are not published.
+
+The reserved seed `2611124301` was run through the official engine against the
+unchanged pinned Arlene opponent in both seats from `main@a7dcbb9e`. Both games
+completed all 719 decisions and the wrapper made exactly one completed parent
+call per decision. Across the two symmetric current-controller traces, 14 FEEDs
+passed the candidate's local public-state guard; all 14 had a later same-animal
+CARE in the same day. The care-neutral reachable count was zero. The reduced
+receipt is `reachable-probe-2611124301.json`.
+
+This is a negative opportunity result, not strength evidence. Replacing any of
+those FEEDs would discard a CARE bonus, so the probe does not relax the
+candidate, install a runtime call, enable a default, or justify another paired
+panel. A future source change must first produce a nonzero care-neutral
+opportunity under this same observational boundary.
+
 ## Pinned engine theorem
 
 The preserved engine is `reference/engine/kaggriculture.py` at source blob `3c202c7ee921da239356789e266b694635103fc4`.
@@ -68,9 +92,13 @@ python -B candidates/v5/animal-cadence/test_alternate_feed.py
 python -O -B candidates/v5/animal-cadence/test_alternate_feed.py
 python -B candidates/v5/animal-cadence/test_certificate_builder.py
 python -O -B candidates/v5/animal-cadence/test_certificate_builder.py
+python -B candidates/v5/animal-cadence/test_reachable_probe.py
+python -O -B candidates/v5/animal-cadence/test_reachable_probe.py
 python -m py_compile \
   candidates/v5/animal-cadence/alternate_feed.py \
   candidates/v5/animal-cadence/certificate_builder.py \
+  candidates/v5/animal-cadence/reachable_probe.py \
+  candidates/v5/animal-cadence/summarize_reachable_probe.py \
   candidates/v5/animal-cadence/test_certificate_builder.py
 ```
 
