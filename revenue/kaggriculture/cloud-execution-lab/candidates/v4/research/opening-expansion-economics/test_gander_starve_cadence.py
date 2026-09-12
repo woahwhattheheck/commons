@@ -54,6 +54,16 @@ class GanderStarveCompositeTests(unittest.TestCase):
             },
         )
 
+    def test_alternation_creates_route_capacity_for_all_nine_harvests(self):
+        contract = self.safe["source_contract"]
+        self.assertEqual(contract["post_hire_unit_slots"], 23)
+        self.assertEqual(contract["route_lengths"]["feed_fert"], [20, 21])
+        self.assertEqual(
+            contract["route_lengths"]["skip_feed_fert_harvest"], [19, 20]
+        )
+        self.assertEqual(contract["route_lengths"]["feed_fert_harvest"], [25, 25])
+        self.assertFalse(contract["all_nine_feed_fert_harvest_fits_two_workers"])
+
     def test_care_is_explicitly_out_of_scope(self):
         self.assertEqual(self.safe["action_attempts"]["care_attempts"], 0)
         self.assertFalse(self.safe["source_contract"]["care_used"])
