@@ -75,7 +75,7 @@ def _valid_observation(obs: Any) -> bool:
         inventories = private["inventories"]
     except (KeyError, IndexError, TypeError):
         return False
-    if type(player) is not int or player not in (0, 1) or len(farms) < 2:
+    if type(player) is not int or player not in (0, 1) or len(farms) != 2:
         return False
     if len(tiles) != 10 or any(not isinstance(row, list) or len(row) != 10 for row in tiles):
         return False
@@ -119,7 +119,8 @@ def _future_purchase_conflict(native_tape: Any, step: int) -> bool:
             market = []
         if not isinstance(market, list):
             return True
-        for order in market:
+        # The engine caps raw rows before parsing; even empty rows consume slots.
+        for order in market[:MAX_ORDERS]:
             if order == []:
                 continue
             if not (isinstance(order, list) and len(order) >= 3 and type(order[0]) is str):
@@ -136,7 +137,7 @@ def _owned_current_cow_buy(market: Any) -> list[Any] | None:
     if not isinstance(market, list):
         return None
     target = None
-    for order in market:
+    for order in market[:MAX_ORDERS]:
         if order == []:
             continue
         if not (isinstance(order, list) and order and type(order[0]) is str):
@@ -208,8 +209,13 @@ def apply_s2_swap(
     if not enabled or not _exact_standard(configuration) or not _valid_observation(observation):
         return parent_action
 
+    # Reject an unusable parent before consuming any pending transaction.
+    if (not isinstance(parent_action, dict)
+            or not isinstance(parent_action.get("market"), list)):
+        return parent_action
+
     step = observation.get("step")
-    if type(step) is not int:
+    if type(step) is not int or not 0 <= step < 719:
         return parent_action
     previous_step = state.get("last", -1)
     if previous_step >= 0 and step != previous_step + 1:
@@ -296,9 +302,8 @@ def apply_s2_swap(
             occupied.add(site)
 
     result["farmer"], result["hands"] = workers[0], workers[1:]
-    market = result.get("market")
-    if not isinstance(market, list):
-        return parent_action
+    # Keep ownership and wool-credit accounting on the executable raw prefix.
+    market = result["market"][:MAX_ORDERS]
 
     # Buy rewrite: narrow wool-town gate, fixed cost ownership, no competing current or
     # same-day future purchases, and no V233 two-YARN overlap after day 12.
