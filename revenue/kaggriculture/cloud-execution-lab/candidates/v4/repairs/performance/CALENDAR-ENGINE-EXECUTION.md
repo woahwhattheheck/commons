@@ -28,7 +28,7 @@ python test_eventpath_engine_cli.py --runtime-root "$R" --output cli-normal.json
 python -O test_eventpath_engine_cli.py --runtime-root "$R" --output cli-optimized.json
 ```
 
-The prior artifact 10123395668 may contain matching individual modules but is not the authenticated whole b567 package. Do not substitute it silently.
+Other artifact IDs, including 10123395668, have not been authenticated by this receipt. Use only a runtime root whose full pinned SOURCE.json and 109-member manifest pass the oracle; matching individual modules alone is insufficient.
 
 ## Existing score owner's candidate gate
 
