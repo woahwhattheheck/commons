@@ -42,7 +42,6 @@ class SchedulerMarketGrammarContracts(TestCase):
             (),
             {'op': 'HIRE'},
             [],
-            ['SELL'],
             ['SELL', 'CARROT'],
             ['SELL', 'CARROT', 'x'],
             ['SELL', 'CARROT', 0],
@@ -78,10 +77,9 @@ class SchedulerMarketGrammarContracts(TestCase):
             'market': [
                 ('HIRE', 'ignored'),
                 {'op': 'HIRE'},
-                ['SELL'],
                 ['BUY_PRODUCT', 'WHEAT', 'x'],
                 ['BUY_PRODUCT', 'NOT_A_PRODUCT', 99],
-                ['HIRE'],
+                ['HIRE', 'ignored'],
             ]
         }
         original = deepcopy(malformed)
@@ -89,7 +87,7 @@ class SchedulerMarketGrammarContracts(TestCase):
         self.assertEqual(actor.cash_reserve(obs, {}, malformed, 0), expected)
         self.assertEqual(malformed, original)
 
-        two_hires = {'market': [['HIRE'], ['HIRE', 'suffix']]}
+        two_hires = {'market': [['HIRE', 'first'], ['HIRE', 'suffix']]}
         for cap in (0, -3):
             with self.subTest(cap=cap):
                 self.assertEqual(
@@ -97,16 +95,24 @@ class SchedulerMarketGrammarContracts(TestCase):
                     expected,
                 )
 
-        land_obs = _cash_observation()
-        land_obs['farms'][0]['unlocked_quadrants'] = ['NW']
-        one_land = {'market': [['BUY_LAND']]}
+    def test_cash_reserve_accounts_for_one_token_atomic_orders(self):
+        actor = _scheduler()
+        obs = _cash_observation()
         self.assertEqual(
-            actor.cash_reserve(land_obs, {'maxMarketOrdersPerTurn': 1}, one_land, 0),
-            m.LAND_PRICES[0],
+            actor.cash_reserve(obs, {}, {'market': [['HIRE']]}, 0),
+            m._hire_cost(0, 1),
         )
+
+        land_obs = _cash_observation()
+        land_obs['farms'][0]['unlocked_quadrants'] = [m.LAND_ORDER[0]]
         two_lands = {'market': [['BUY_LAND'], ['BUY_LAND']]}
         self.assertEqual(
-            actor.cash_reserve(land_obs, {'maxMarketOrdersPerTurn': 2}, two_lands, 0),
+            actor.cash_reserve(
+                land_obs,
+                {'maxMarketOrdersPerTurn': 2},
+                two_lands,
+                0,
+            ),
             m.LAND_PRICES[0] + m.LAND_PRICES[1],
         )
 
