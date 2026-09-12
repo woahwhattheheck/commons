@@ -1,0 +1,49 @@
+name: titan-v5-v216-day1-hire-reserve
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v5-v216-day1-hire-reserve.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v216-day1-hire-reserve/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v5-v216-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Assert exact triggering head
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Authenticate donor and landed route witness
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse a90d888f03987ef0b35cfd20ec3519c6144db08a:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_witness.py)" = "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39"
+      - name: Compile and run V216 contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v216-day1-hire-reserve
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          python -B -m py_compile v216_day1_hire_reserve.py test_v216_day1_hire_reserve.py
+          python -B -m unittest -v test_v216_day1_hire_reserve.py
+          python -O -B -m unittest -v test_v216_day1_hire_reserve.py
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          git diff --check
+          test -z "$(git status --porcelain)"

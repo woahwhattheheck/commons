@@ -1,0 +1,23 @@
+{
+  "activation": {
+    "research_only": true,
+    "runtime_default": false
+  },
+  "current_route_witness": {
+    "git_blob": "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39",
+    "landed_main": "d61e0333efe5697b56a867ed84a23e909195d3f4",
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_witness.py",
+    "schema": "titan-v5-current-route-window-v1",
+    "source": "installed_controller.R[cur]"
+  },
+  "schema": "titan-v5-v216-day1-hire-reserve-source-pins/v1",
+  "submitted_v31": {
+    "archive_sha256": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+    "source_commit": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+    "submission_id": 56172377
+  },
+  "v216_donor": {
+    "git_blob": "a3e2fe87c717d128e43c9b65bae2265f40d1d76d",
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py"
+  }
+}
