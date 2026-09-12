@@ -21,11 +21,17 @@ The exact submitted winner used a first-line R04 whole-route delegate. Recovery
 on current V5 is represented by topology, not by copying that delegate:
 
 1. inner returned-action pipeline:
-   `sale_window_h8_l3 -> h4_strawberry_topup -> row_shed -> evening_flush -> b5_carrot_jit`;
+   `sale_window_h8_l3 -> h4_strawberry_topup -> row_order -> row_shed -> evening_flush -> b5_carrot_jit`;
 2. `fert_hand_boundary` wraps the inner producer/action boundary and is the
    only recovery slot allowed to delegate to the single current parent;
 3. outer returned-action pipeline:
    `b9_terminal_fertilizer -> h3c_goose_rescue`.
+
+`row_order` and `row_shed` are deliberately separate. The submitted stack ran
+them as adjacent stages, while current swarm ownership is also separate: the
+market-microstack recovery owns row-order/evening semantics and the dedicated
+row-shed carrier owns row-shed. Collapsing them would hide a missing transform
+and could falsely mark V5 composition complete.
 
 Historical source features that were OFF/identity in the exact submitted winner
 (`cattle_early`, `kill_late_water`, `strawberry_endgame`, `dribble_dump`,
@@ -45,6 +51,10 @@ Each component entry binds:
   `PASS_PAIRED_ECONOMICS` receipt with distinct `v5c:` control/candidate
   identities, >=2 opponents, >=4 identical seeds per opponent, both seats,
   >=16 paired cells, and non-negative aggregate paired margin delta.
+
+One carrier may legitimately satisfy more than one adjacent semantic slot if
+its source receipt proves each slot; the manifest still lists those slots
+separately so no submitted behavior can disappear behind a broad carrier name.
 
 `PENDING` is useful while leaf source PRs are converging, but it always blocks
 composition readiness. Historical V3.1 uplift alone cannot satisfy this gate.
