@@ -34,6 +34,34 @@ def _commands(row: Any) -> list[Any] | None:
     return [farmer, *hands]
 
 
+def _public_actor_positions(observation: dict[str, Any]) -> Counter[tuple[int, int]] | None:
+    """Count every public own-farm actor position, independent of action eligibility."""
+    player = observation.get("player")
+    farms = observation.get("farms")
+    if type(player) is not int or not isinstance(farms, list) or not (0 <= player < len(farms)):
+        return None
+    farm = farms[player]
+    if not isinstance(farm, dict):
+        return None
+    farmer = farm.get("farmer")
+    hands = farm.get("hands", [])
+    tiles = farm.get("tiles")
+    if not isinstance(hands, list) or not isinstance(tiles, list):
+        return None
+
+    positions: list[tuple[int, int]] = []
+    for pos in [farmer, *hands]:
+        if (not isinstance(pos, list) or len(pos) != 2
+                or type(pos[0]) is not int or type(pos[1]) is not int):
+            return None
+        x, y = pos
+        if not (0 <= y < len(tiles) and isinstance(tiles[y], list)
+                and 0 <= x < len(tiles[y])):
+            return None
+        positions.append((x, y))
+    return Counter(positions)
+
+
 def _position_tile(observation: dict[str, Any], worker: int):
     player = observation.get("player")
     farms = observation.get("farms")
@@ -67,9 +95,11 @@ def _qualifies(tile: Any, inventory: dict[str, Any], day: int) -> tuple[bool, st
     if not isinstance(tile, dict) or tile.get("kind") != "PLANT":
         return False, None
     crop = tile.get("crop")
+    if not isinstance(crop, str):
+        return False, None
     crop_data = _ANNUAL.get(crop)
     if crop_data is None:
-        return False, crop if isinstance(crop, str) else None
+        return False, crop
     fertilizer = inventory.get("FERTILIZER", 0)
     planted_day = tile.get("planted_day")
     yield_units = tile.get("yield_units")
@@ -113,6 +143,10 @@ def apply_jit_pass_fertilize(
     following = _commands(next_authored)
     if selected is None or following is None:
         return action, ()
+    position_counts = _public_actor_positions(observation)
+    if position_counts is None:
+        return action, ()
+
     day = step // _TURNS_PER_DAY
     matches: list[tuple[int, str, list[int], int]] = []
     for worker in range(min(len(selected), len(following))):
@@ -123,20 +157,12 @@ def apply_jit_pass_fertilize(
             continue
         tile, inventory, pos = state
         ok, crop = _qualifies(tile, inventory, day)
-        if ok and crop is not None:
+        # FERTILIZE updates tile coverage, not worker state. Any co-located public
+        # actor could already own or consume this tile's coverage in the same callback.
+        # Only a uniquely occupied tile is safe for this narrow substitution.
+        if (ok and crop is not None
+                and position_counts[(pos[0], pos[1])] == 1):
             matches.append((worker, crop, pos, int(inventory["FERTILIZER"])))
-    if not matches:
-        return action, ()
-
-    # FERTILIZE updates tile coverage, not worker state. Multiple qualifying
-    # workers on one tile would spend duplicate units for one coverage update.
-    # Ambiguous shared-tile matches therefore fail closed while independent tiles
-    # may still proceed.
-    position_counts = Counter((pos[0], pos[1]) for _, _, pos, _ in matches)
-    matches = [
-        match for match in matches
-        if position_counts[(match[2][0], match[2][1])] == 1
-    ]
     if not matches:
         return action, ()
 
