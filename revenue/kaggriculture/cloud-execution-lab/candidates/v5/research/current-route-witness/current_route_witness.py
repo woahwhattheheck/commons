@@ -1,8 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Authenticate immutable future rows from the installed current controller.
+"""Authenticate immutable future rows from the committed current producer route.
 
 This is provenance plumbing, not a producer. It never calls ``controller.act``
-or any route-selection method. A single immutable route capture can serve every
+or any route-selection method. The caller must supply the route identity already
+committed by the producer transaction; raw ``controller.cur`` is never sufficient
+authority by itself. A single immutable route capture can then serve every
 selected-action recovery that needs authored future tape state, avoiding feature-
 local route oracles and mixed-snapshot reads.
 """
@@ -13,8 +15,8 @@ import hashlib
 import json
 from typing import Any
 
-SCHEMA = "titan-v5-current-route-window-v1"
-ROUTE_SOURCE = "installed_controller.R[cur]"
+SCHEMA = "titan-v5-current-route-window-v2"
+ROUTE_SOURCE = "installed_controller.R[completed_route_id]"
 MAX_LOOKAHEAD = 72
 
 
@@ -73,12 +75,23 @@ def _canonical_json(value: Any) -> str | None:
     return rendered
 
 
-def _capture_route(controller: Any) -> tuple[str, str, list[Any], str] | None:
-    """Capture one stable ``R[cur]`` snapshot and bind its installed authority."""
-    route_id = getattr(controller, "cur", None)
-    routes = getattr(controller, "R", None)
-    if not isinstance(route_id, str) or not route_id:
+def _capture_route(
+    controller: Any,
+    completed_route_id: Any,
+) -> tuple[str, str, list[Any], str] | None:
+    """Capture stable ``R[completed_route_id]`` only when live selection agrees.
+
+    ``completed_route_id`` must come from the producer's committed route receipt
+    (for TitanAgent, ``_completed_route`` after the selected action transaction
+    commits). ``controller.cur`` is checked only as a fail-closed consistency
+    condition; it is never used to choose which route becomes authoritative.
+    """
+    if type(completed_route_id) is not str or not completed_route_id:
         return None
+    route_id = completed_route_id
+    if getattr(controller, "cur", None) != route_id:
+        return None
+    routes = getattr(controller, "R", None)
     if not isinstance(routes, dict) or route_id not in routes:
         return None
     route_ref = routes[route_id]
@@ -97,8 +110,9 @@ def _capture_route(controller: Any) -> tuple[str, str, list[Any], str] | None:
     if not isinstance(snapshot, list):
         return None
 
-    # Rebind after capture. This rejects route switches/replacements and catches
+    # Rebind after capture. This rejects a live route switch/replacement and catches
     # ordinary in-place tape drift across the capture boundary before publication.
+    # The route ID still comes from completed producer authority, never from cur.
     if getattr(controller, "cur", None) != route_id:
         return None
     if getattr(controller, "R", None) is not routes or routes.get(route_id) is not route_ref:
@@ -248,9 +262,10 @@ def bind_current_route_window(
     controller: Any,
     observation: Any,
     *,
+    completed_route_id: str,
     lookahead: int,
 ) -> CurrentRouteWindow | None:
-    """Capture ordered future rows from one installed route snapshot, fail closed."""
+    """Capture future rows from one explicitly committed producer route."""
     if type(lookahead) is not int or not 1 <= lookahead <= MAX_LOOKAHEAD:
         return None
     if not isinstance(observation, dict):
@@ -262,7 +277,7 @@ def bind_current_route_window(
     if count is None:
         return None
 
-    captured = _capture_route(controller)
+    captured = _capture_route(controller, completed_route_id)
     if captured is None:
         return None
     route_id, controller_type, route, route_sha256 = captured
@@ -293,6 +308,7 @@ def bind_current_route_window(
 
     window_material = json.dumps(
         {
+            "route_source": ROUTE_SOURCE,
             "route_sha256": route_sha256,
             "route_id": route_id,
             "current_step": step,
@@ -320,13 +336,32 @@ def bind_current_route_window(
     )
 
 
-def bind_current_route(controller: Any, observation: Any) -> CurrentRouteWitness | None:
-    """Backward-small B5/JIT view: exact ``R[cur][step+1]`` from one capture."""
-    window = bind_current_route_window(controller, observation, lookahead=1)
+def bind_current_route(
+    controller: Any,
+    observation: Any,
+    *,
+    completed_route_id: str,
+) -> CurrentRouteWitness | None:
+    """B5/JIT view: exact authorized ``R[route][step+1]`` from one capture."""
+    window = bind_current_route_window(
+        controller,
+        observation,
+        completed_route_id=completed_route_id,
+        lookahead=1,
+    )
     return None if window is None else window.b5_witness()
 
 
-def bind_b5_kwargs(controller: Any, observation: Any) -> dict[str, Any] | None:
-    """Convenience adapter for B5/JIT; no B5 import or policy dependency."""
-    witness = bind_current_route(controller, observation)
+def bind_b5_kwargs(
+    controller: Any,
+    observation: Any,
+    *,
+    completed_route_id: str,
+) -> dict[str, Any] | None:
+    """Convenience B5 adapter requiring committed producer route authority."""
+    witness = bind_current_route(
+        controller,
+        observation,
+        completed_route_id=completed_route_id,
+    )
     return None if witness is None else witness.b5_kwargs()
