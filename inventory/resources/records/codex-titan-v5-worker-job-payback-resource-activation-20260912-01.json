@@ -1,0 +1,126 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v5-worker-job-payback-certificate",
+  "observed_at": "2026-09-12T10:06:34Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_SOURCE_TEST_SLACK_AND_EXACT_BLOB_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_CALLER_CERTIFIED_ACTION_INPUT_OUTPUT_MARKET_SLOT_CASH_AND_OPERATION_BINDING_REQUIRED; NO_ROUTE_FINALIZER_RUNTIME_ARCHIVE_PROVIDER_OR_KAGGLE_MUTATION",
+    "holder": "Commons / canonical TITAN V5 route and finalizer consumers",
+    "activation_base_main_sha": "039b3bbc538e83fc788633bf8ee25cdb5dd8c8bb"
+  },
+  "concrete_consumer": "The existing canonical TITAN V5 route, placement and finalizer lanes that need strict realized-payback evidence before admitting an already-authored worker action stream.",
+  "measurable_outcome": "The landed pure certificate is now separately routable in the canonical resource graph with exact caller-evidence, temporal-order, market-slot, cash-reserve, fail-closed and custody boundaries. No source, game, runtime, package or provider operation was repeated.",
+  "production_truth": {
+    "activation_operation_id": "codex-titan-v5-worker-job-payback-resource-20260912-01",
+    "source_pr": 13191,
+    "source_branch": "astra-v5-worker-job-value",
+    "source_head_sha": "9ed124a35387e49ce41f3b11f51b9f8949ab64ae",
+    "source_merge_sha": "2b838d2c11d81562e6253a62625c79fad44db4b4",
+    "source_validation": {
+      "methods": 11,
+      "passed": 11,
+      "command": "python test_worker_job_value.py"
+    },
+    "exact_blobs_at_claim_main": {
+      "revenue/kaggriculture/cloud-execution-lab/worker_job_value.py": "e2965ae179ba734cc40fce9dc9c450a80e84ec2e",
+      "revenue/kaggriculture/cloud-execution-lab/test_worker_job_value.py": "891444d83fd73157cbe8dc14e9c38317454af99e"
+    },
+    "exact_sha256": {
+      "revenue/kaggriculture/cloud-execution-lab/worker_job_value.py": "4023bfa584a7b340f4ed96de7aa39e7f0170cdb82a377091c8504c7977cfc273",
+      "revenue/kaggriculture/cloud-execution-lab/test_worker_job_value.py": "2602076b5735521dccd1721a798685a52a1e52b0e239fda06f1b39073d6d77f6"
+    },
+    "source_workflows_at_observation": {
+      "open-door-guard": "QUEUED",
+      "titan-selected-projection": "PENDING",
+      "muhlnickel-spec-guard": "QUEUED",
+      "source-parses": "QUEUED",
+      "path-manifest": "QUEUED",
+      "titan-w10-producer-surface-scan": "QUEUED"
+    },
+    "new_full_games": 0,
+    "canonical_runtime_consumption": "NOT_PROVEN",
+    "playing_strength_for_changed_bytes": "NOT_MEASURED",
+    "contract": "Only explicit caller-certified action, input, output, market-slot, cash and receipt bounds can admit a job. Same-step buys cannot fund an earlier unit action; output needs explicit HARVEST-to-DROP provenance; strict durable realized payback is required; malformed or ambiguous evidence fails closed."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "main_sha_at_claim": "039b3bbc538e83fc788633bf8ee25cdb5dd8c8bb",
+    "commits_in_delta": 3933,
+    "merge_commits_in_delta": 560,
+    "non_merge_commits_in_delta": 3373,
+    "changed_paths_in_delta": 12184,
+    "remote_branches_observed": 3122,
+    "remote_branch_set_digest_sha256": "5b596bce6f7ec7296d5c41e702e34fd5968dc17766d3a4d829bcca451ed61eba",
+    "recent_outcomes": "The ledger remained byte-identical to the September 9 terminal state while a large V4/V5 source surge landed. PR #13191 is a distinct merged, source-tested pure certificate; PR #13190 and adjacent replay, placement, seller-history, package and convergence work remain parts of the active canonical runtime lanes rather than separately reminted resources.",
+    "prior_terminal_slack_ts": "1788960826.672899",
+    "commons_claim_slack_ts": "1789207594.314319",
+    "delegations_state": "No exact worker-job activation or delegation was found. No integration order was posted because the source landed inside the active V5 lineage and two enabled V4/V5 consolidation automations retain that canonical consumer lane; a new root would collide.",
+    "todo_state": "Fresh queue reconciliation emphasized terminal-history dedupe and active ownership; no separate unheld worker-job integration root was established.",
+    "shipped_builds_state": "Fresh receipts were unrelated to this certificate and were not reminted.",
+    "products_state": "Fresh LocalDeviceAgent review and repair receipts retain their owners and are unrelated to this activation.",
+    "leads_state": "No material resource receipt was present.",
+    "sales_state": "Owner resume routing was historical and did not create a new buyer, payment or resource receipt.",
+    "automations": "Commons Resource Master remains enabled. TITAN V4 Consolidation and TITAN V4 Sweep are also enabled and retain their canonical consolidation scopes; no automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub and Slack reads/writes were live. No additional provider, account, credential, device or private-data surface was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, Kaggle write or hosted result was probed."
+  },
+  "quota_lifecycle": {
+    "official_observation": "OpenAI Help states that on September 7, 2026 an automatic/global reset refreshed eligible Plus, Pro and Business usage limits and did not add a saved reset.",
+    "classification": "HARD_GLOBAL_RESET_HISTORICALLY_APPLIED_PERISHABLE_CAPACITY",
+    "observed_at": "2026-09-12T10:06:34Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve; use only measured remaining allowance for high-value connected-app, coordination, judgment and merge work. Do not activate any banked reset or recommend a purchased reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. PR #13191 landed inside an actively owned canonical V5 lineage, while enabled consolidation/sweep lanes and fresh V5 claims already own adjacent runtime integration. A new root would duplicate or collide rather than create an independent finished deliverable.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions bind the new row, exact source PR and blobs, 11/11 source methods, zero new games and the unproven runtime-consumption boundary.",
+    "privacy": "No credential, private account identifier, private file name, customer data, raw private report or incident narrative is copied into canonical metadata.",
+    "open_door": "The source, focused contract and activation record are public current-main artifacts requiring no authentication.",
+    "zero_fabrication": "Landed pure source and its deterministic contract remain distinct from canonical consumption, a new game, playing-strength gain, provider session, current quota balance, hosted score, deployment, submission, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. TITAN source/runtime/config/archive/current pointers, V4/V5 claims, provider state and peer-owned paths remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-12T10:06:34Z",
+    "prior_terminal_main_sha": "5e5522078660d11ad704a59d5ae2d561f7cce77e",
+    "main_sha_at_claim": "039b3bbc538e83fc788633bf8ee25cdb5dd8c8bb",
+    "prior_terminal_slack_ts": "1788960826.672899",
+    "commons_claim_slack_ts": "1789207594.314319",
+    "source_pr": 13191,
+    "source_merge_sha": "2b838d2c11d81562e6253a62625c79fad44db4b4",
+    "remote_branches_observed": 3122,
+    "remote_branch_set_digest_sha256": "5b596bce6f7ec7296d5c41e702e34fd5968dc17766d3a4d829bcca451ed61eba",
+    "automations": "Commons Resource Master enabled; TITAN V4 Consolidation and TITAN V4 Sweep enabled",
+    "openai_reset": "Official September 7 global reset newly reconciled from OpenAI Help; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 89,
+    "producing": 61
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789207594314319",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13191",
+    "source_merge": "https://github.com/woahwhattheheck/commons/commit/2b838d2c11d81562e6253a62625c79fad44db4b4",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_astra_usage_help": "https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex",
+    "prior_terminal_receipt": "p/codex-titan-v25-joint-sell-resource-activation-20260909-01.md"
+  },
+  "non_claims": [
+    "No TITAN V4/V5 source, runtime, configuration, archive, current pointer, active claim or result thread was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, model, provider, Kaggle, credential, deployment, quota-spend, reset-purchase, banked-reset activation or owner-device operation occurred.",
+    "No canonical runtime consumption, predicted quote or fill, playing-strength result, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}
