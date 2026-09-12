@@ -16,6 +16,7 @@ HINGE claim:
 - hinge-r4-equipment-prove-handoff-card-20260906-01 (prove-handoff)
 - hinge-r4-equipment-create-role-card-20260912-01 (create)
 - hinge-r4-equipment-list-role-ids-card-20260912-01 (list_ids)
+- hinge-r4-equipment-get-role-card-20260912-01 (get)
 WEDGE claim:
 - wedge-r4-equipment-open-obligations-cash-card-20260905-01 (cash queue)
 Does not remint contracts, receipts, fulfill CLIs, SPARK paid_case, Stripe, or peers remint.
@@ -200,6 +201,13 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             "List role_ids after creating a batch of transferable roles in a tempfile RoleStore. Pass roles (array of role objects). Import-only RoleStore.list_ids wrap; returns role_ids. Does not remint roles.py.",
             {"roles": "array"},
         ),
+        _schema(
+            "get_role_card",
+            "Get a transferable role by role_id after loading roles into a tempfile RoleStore. Pass role_id plus roles (array) or role (object). Import-only RoleStore.get wrap; returns role. Does not remint roles.py.",
+            {"role_id": "string"},
+            {"roles": "array", "role": "object"},
+        ),
+
 
         _schema(
             "prove_handoff_card",
@@ -706,6 +714,57 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "role": inspected}
+    if name == "get_role_card":
+        # hinge-r4-equipment-get-role-card-20260912-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role_id = str(args["role_id"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        roles = args.get("roles")
+        role = args.get("role")
+        batch: list = []
+        if roles is not None:
+            if not isinstance(roles, list):
+                return {
+                    "ok": False,
+                    "error": "missing_argument",
+                    "message": "roles must be an array",
+                }
+            batch = roles
+        elif role is not None:
+            if not isinstance(role, dict):
+                return {
+                    "ok": False,
+                    "error": "missing_argument",
+                    "message": "role must be an object",
+                }
+            batch = [role]
+        else:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing roles or role",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                for idx, item in enumerate(batch):
+                    if not isinstance(item, dict):
+                        return {
+                            "ok": False,
+                            "error": "missing_argument",
+                            "message": "roles[%s] must be an object" % idx,
+                        }
+                    store.create(item)
+                got = store.get(role_id)
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": got}
     if name == "list_role_ids_card":
         # hinge-r4-equipment-list-role-ids-card-20260912-01
         roles_mod = _load_transferable_roles_mod("roles")
