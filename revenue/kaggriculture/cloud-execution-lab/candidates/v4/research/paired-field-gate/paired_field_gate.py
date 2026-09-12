@@ -19,7 +19,7 @@ import tempfile
 import types
 from typing import Any
 
-REPORTER_BLOB = "a37f0be3eb7db79d6e7162cee3b7e472e2afab6a"
+REPORTER_BLOB = "5fa647b46dd2c359bc045a435d1542b1b06ed738"
 DEFAULT_REPORTER = Path(__file__).resolve().parents[2] / "repairs" / "tooling" / "delta-evidence" / "v31_delta_distribution_report.py"
 
 
