@@ -11,6 +11,7 @@ import json
 import math
 import os
 from pathlib import Path, PurePosixPath
+import shutil
 import statistics
 import subprocess
 import sys
@@ -234,12 +235,17 @@ def main() -> int:
         raise ValueError("joint-liquidity paired helper source drift")
     helper = load_captured(helper_raw, helper_path, "e20_authenticated_paired_helper")
 
-    with tempfile.TemporaryDirectory(prefix="e20-harness-snapshot-", dir=output_parent) as temp:
-        staged = Path(temp) / "kg"
-        harness = helper.snapshot_harness(root, staged, opponents)
-        output.mkdir(parents=False, exist_ok=False)
-        snapshot_root = output / ".harness-snapshot"
-        os.replace(staged, snapshot_root)
+    # The entire candidate/opponent execution leaf lives in one private sibling
+    # for the full panel lifetime.  Public output receives evidence copies only;
+    # no Actor path is ever sourced from the public evidence directory.
+    private_runtime = tempfile.TemporaryDirectory(
+        prefix="e20-private-panel-", dir=output_parent
+    )
+    private_root = Path(private_runtime.name)
+    snapshot_root = private_root / "harness-snapshot"
+    harness = helper.snapshot_harness(root, snapshot_root, opponents)
+    output.mkdir(parents=False, exist_ok=False)
+    shutil.copytree(snapshot_root, output / ".harness-snapshot")
 
     evaluator_path = snapshot_root / helper.EVALUATOR
     loader = snapshot_root / "20260907-offline-agent/evaluate.py"
@@ -257,14 +263,14 @@ def main() -> int:
     expected_registry = harness["repository_files"][
         helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
     for opponent in opponents:
-        runtime[opponent] = output / "opponents" / opponent
+        runtime[opponent] = private_root / "opponents" / opponent
         receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
         if (receipt.get("bridge_sha256") != expected_bridge
                 or receipt.get("source_registry_sha256") != expected_registry
                 or receipt.get("support_files") != harness["opponent_support_sha256"]):
             raise ValueError(f"opponent escaped authenticated harness: {opponent}")
         if Path(receipt.get("support_root", "")).resolve(strict=True) != snapshot_root:
-            raise ValueError(f"opponent did not bind snapshot root: {opponent}")
+            raise ValueError(f"opponent did not bind private snapshot root: {opponent}")
         opponent_receipts[opponent] = receipt
 
     arms = {
@@ -289,6 +295,13 @@ def main() -> int:
         "trace_pattern_git_blob": trace.SOURCE_PATTERN_GIT_BLOB,
         "harness": harness,
         "engine": engine_hashes,
+        "execution_custody": {
+            "candidate_payload_root": "private_panel_tempdir",
+            "opponent_runtime_root": "private_panel_tempdir",
+            "harness_execution_root": "private_panel_tempdir",
+            "public_harness_copy": "evidence_only_never_executed",
+            "engine_root": "external_verified_path_pending_shared_private_ingest",
+        },
         "opponent_receipts": opponent_receipts,
         "seeds": seeds,
         "seats": seats,
@@ -325,7 +338,7 @@ def main() -> int:
                 cell["execution_order"] = order
                 for arm in order:
                     with tempfile.TemporaryDirectory(
-                        prefix=f"{cell_id}-{arm}-", dir=output
+                        prefix=f"{cell_id}-{arm}-", dir=private_root
                     ) as temp:
                         directory = Path(temp)
                         payload = directory / "payload"
@@ -400,6 +413,7 @@ def main() -> int:
     summary = summarize(cells)
     write_json(output / "report.json", {"run": run, "summary": summary, "cells": cells})
     print("SUMMARY " + json.dumps(summary, allow_nan=False), flush=True)
+    private_runtime.cleanup()
     return int(any(cell["status"] != "complete_pair" for cell in cells))
 
 
