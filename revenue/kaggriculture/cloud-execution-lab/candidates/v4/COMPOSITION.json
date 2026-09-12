@@ -292,6 +292,21 @@
    "after": [],
    "conflicts": [],
    "note": "Guards: _sanitize_numeric_args (inf/nan clamp), _guard_plant_overdemand (PLANT cap at seeds held), _guard_eod_autodrop (EOD shed-overflow rescue SELLs). Guard bodies byte-identical to the donor patch (guard-donor-7a64dc3d, CARE guard excluded). Identity when nothing needs fixing."
+  },
+  {
+   "id": "r04-exec-pace",
+   "state": "blocked",
+   "reason": "Landed source component: direction-conditional execution pacing, gated +$63 +/- $7 over 16 hardened cells (14+/0-/2=, GATED-PASS), default-OFF stacked key R04_EXEC_PACE. Not yet runtime-promoted: r04_full_router wiring (R04_EXEC_PACE global, install(exec_pace=...), reserve_sales/evening-flush seams), titan_runtime.Features.r04_exec_pace, and TITAN-CONFIG.json key remain to be composed and gated on the current runtime.",
+   "package": "repairs/gameplay/exec-pace",
+   "entrypoints": [
+    "repairs/gameplay/exec-pace/r04_exec_pace.py"
+   ],
+   "transforms": [],
+   "requires": [],
+   "before": [],
+   "after": [],
+   "conflicts": [],
+   "note": "Microstructure lane from #13158 under tip package repairs/gameplay/exec-pace (not a remint of the module). Caps applied BEFORE debt recording (leak-free by construction); pacing stops at END_STEP 690. Module fail-closed, stdlib-only; flag-off action path byte-identical to the unkeyed route. COMPOSITION registry only."
   }
  ],
  "discovery": {
