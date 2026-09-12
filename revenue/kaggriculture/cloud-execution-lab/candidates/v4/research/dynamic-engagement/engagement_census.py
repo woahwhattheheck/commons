@@ -199,18 +199,18 @@ def _normalize_record(value: Any, index: int, root: Path) -> dict[str, Any]:
 def _control_failure(records: list[dict[str, Any]]) -> str | None:
     if not records:
         return "INSUFFICIENT_POSITIVE_CONTROL"
-    for row in records:
-        if not row["completed"] or row["error_count"]:
-            return "CONTROL_EXECUTION_FAILED"
-    sums = {key: sum(row["counters"][key] for row in records) for key in COUNTER_KEYS}
-    if sums["entry_calls"] == 0:
-        return "CONTROL_UNWIRED"
-    if sums["eligible_calls"] == 0:
-        return "CONTROL_NOT_ELIGIBLE"
-    if sums["engaged_calls"] == 0:
-        return "CONTROL_NOT_ENGAGED"
-    if sums["output_changed_calls"] == 0:
-        return "CONTROL_NO_OUTPUT_CHANGE"
+    if any((not row["completed"]) or row["error_count"] for row in records):
+        return "CONTROL_EXECUTION_FAILED"
+    # Every declared positive control is a proof obligation. Aggregating first
+    # would let one live witness hide another dead/unwired witness.
+    for field, state in (
+        ("entry_calls", "CONTROL_UNWIRED"),
+        ("eligible_calls", "CONTROL_NOT_ELIGIBLE"),
+        ("engaged_calls", "CONTROL_NOT_ENGAGED"),
+        ("output_changed_calls", "CONTROL_NO_OUTPUT_CHANGE"),
+    ):
+        if any(row["counters"][field] == 0 for row in records):
+            return state
     return None
 
 
