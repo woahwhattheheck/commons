@@ -1,0 +1,41 @@
+{
+  "schema": "titan-v4-integration-composition-coverage-validation/v1",
+  "claim": "V4-INTEGRATION-COMPOSITION-COVERAGE-20260912-01",
+  "base_commit": "09d4a46bfc8f7f442e4084ee597f663b2c2f88d2",
+  "inputs": {
+    "INTEGRATION.json": "git-blob:fb0bc588be60cf4a75ad2a360061b2eae69341a8",
+    "COMPOSITION.json": "git-blob:a9bba310e2b0f71f429513cd79966c12b3ba9b4f"
+  },
+  "outputs": {
+    "check_integration_coverage.py": "git-blob:ae7f8cbaffcbf46719b3aec440b76ae9dcbce2a6",
+    "test_integration_coverage.py": "git-blob:0e49c64adbf220432308da41242bccd28cba067a",
+    "INTEGRATION-COVERAGE.json": "git-blob:373856e90739f072a62b6af55190f6071b6c1068"
+  },
+  "validation": {
+    "unit_tests_normal": {"passed": 16, "failed": 0},
+    "unit_tests_optimized": {"passed": 16, "failed": 0},
+    "py_compile": "PASS",
+    "classified_repair_paths": 8,
+    "graph_bound": 2,
+    "action_required": 6,
+    "coverage_digest": "348d34b695543074f5e89a5c1523223bc15a3f55fcbe4976ece1446eb896050f"
+  },
+  "graph_bound_paths": [
+    "repairs/gameplay/row-shed-sell-order",
+    "repairs/performance/fast-tape-clone"
+  ],
+  "action_required_paths": [
+    "repairs/gameplay/early-capital",
+    "repairs/gameplay/eod-capacity-rescue",
+    "repairs/gameplay/exec-pace-2",
+    "repairs/gameplay/feed-stock-terminal",
+    "repairs/gameplay/s8-egg-care",
+    "repairs/scheduler-action-prefix"
+  ],
+  "guarantee": "A new landed INTEGRATION.json repair_path fails the coverage audit until it receives an explicit one-tree disposition; graph-bound packages additionally fail on component-id, package, state, or explicit composition_state drift.",
+  "production_activation": false,
+  "runtime_mutation": false,
+  "default_mutation": false,
+  "archive_mutation": false,
+  "kaggle_mutation": false
+}
