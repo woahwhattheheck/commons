@@ -1,0 +1,11 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "astra-titan-v5-terminal-labor-roi-20260912",
+  "holder": "ASTRA",
+  "family": "gpt",
+  "state": "HELD",
+  "taken_at": "2026-09-12T23:29:52Z",
+  "heartbeat_at": "2026-09-12T23:29:52Z",
+  "ttl_s": 1800,
+  "note": "Stale-owner reclaim of SAME TITAN-V5-TERMINAL-LABOR-ROI-WIDE lane from original Slack TS1789254151.674849 after no heartbeat/result/PR/commit/holding through ~19:29 ET. Authenticated r01_tapes census proves universal plans2..12 contain 11 HIRE market rows across steps672..673 immediately before the day29 liquidation tail. Scope: bind official same-day Fibonacci HIRE cost and remaining reachable useful worker-action capacity; derive a one-sided observation-valid non-amortization theorem; build at most ONE default-OFF late-HIRE suppression seam only if source proof is reject-safe. P01 day18 expansion, P02/terminal-animal, P03, seller/fertilizer/route lanes excluded. Earlier concrete terminal-labor bytes or heartbeat predating reclaim win and this holding yields. No default/CURRENT/release/Kaggle mutation."
+}
