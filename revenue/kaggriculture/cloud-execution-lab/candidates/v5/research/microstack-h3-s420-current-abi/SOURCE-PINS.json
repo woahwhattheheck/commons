@@ -1,6 +1,6 @@
 {
-  "schema": 1,
-  "purpose": "Current-ABI re-gate of the recovered V3.1/MICROSTACK H3+S420 sale-timing hypothesis; evidence only, never a production feature-key resurrection.",
+  "schema": 2,
+  "purpose": "Current-ABI re-gate of the recovered V3.1/MICROSTACK H3+S420 sale-timing hypothesis; evidence only, canonically reuses the landed H3/S420 source transform and never resurrects production feature keys.",
   "base_commit": "91489edff80538dac463f905be566466b4e54fea",
   "current_sources": {
     "frozen_selected.py": {
@@ -17,6 +17,12 @@
       "required_baseline_horizon": 8
     }
   },
+  "canonical_authority": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement/compose_current_h3s420.py",
+    "git_blob": "7c5778b4d6d7c47f8feca7e800fc8093267b66f8",
+    "source_repair_pr": 12859,
+    "semantics": "H3=3; at step>=420 skip the entire new-plan selection block while inherited/base SELL rows and already-planned due quantities continue through the untouched materialization tail"
+  },
   "historical_attribution": {
     "submitted_v31_source": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
     "legacy_no_late_sale_advance_blob": "fb26e2ca9985cc65b1127f4eec654fb5cb2a3df0",
@@ -25,11 +31,13 @@
     "historical_h3_s420_receipt": "+441 mean margin, SE 25, 16/16 positive; historical motivation only, not current promotion evidence"
   },
   "arms": {
-    "control": "unaltered current frozen_selected seller",
-    "h3": "current frozen_selected seller with inherited baseline HORIZON narrowed 8 -> 3; current public event/unit extensions remain active",
-    "h3_s420": "h3 plus step>=420 veto of optional equal-total temporal advances; forced feasibility and non-comparable plans bypass"
+    "control": "unaltered current frozen_selected source",
+    "h3": "current frozen_selected source with inherited baseline HORIZON narrowed 8 -> 3; current public event/unit extensions remain active",
+    "h3_s420": "exact canonical H3/S420 source rewrite applied to the current pinned frozen_selected postimage; all new plan selection is suppressed at/after step 420"
   },
   "forbidden": [
+    "equal-total-only or noncomparable-plan S420 reinterpretation",
+    "forced-feasibility bypass of the canonical S420 cutoff",
     "r04_sale_horizon production Feature/config key",
     "r04_no_late_sale_advance_step production Feature/config key",
     "legacy R04 router/materializer transplant",
