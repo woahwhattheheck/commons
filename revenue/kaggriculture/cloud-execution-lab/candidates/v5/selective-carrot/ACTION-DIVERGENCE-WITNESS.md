@@ -14,8 +14,9 @@ and temporarily subclasses that evaluator's `Actor`. The subclass records the
 same action response that the evaluator passes to the official interpreter;
 there is no second policy call and no evaluator source edit. Two exact runs are
 made for each requested seat. Candidate and opponent observation/action hashes
-are compared step by step. The report publishes all per-step hashes but only a
-bounded full-action window around the first action divergence.
+are compared step by step. The report binds each complete hash trace with a
+trace digest and publishes a bounded per-step hash/full-action window around the
+first action divergence.
 
 A candidate action is labeled the first observed divergence only when its action
 changes before the opponent's and both candidate/opponent observation streams
@@ -31,12 +32,15 @@ match the immutable native-9901 authority. This closes the gap where an exact
 archive could be named in the report while an unrelated extracted entry path
 was actually executed.
 
-Custody PASS and causal-positive are intentionally separate. The validator also
-requires the recorder's per-seat
-`candidate_action_is_first_observed_divergence` label to exist, surfaces both
-seat labels, and emits `causal_candidate_first_both_seats`. An opponent-first
-witness can therefore PASS exact experiment custody while remaining explicitly
-causal-false; validator PASS alone never authorizes a repair.
+Custody PASS and causal-positive are intentionally separate. The validator
+parses the four first-divergence fields and recomputes the recorder's exact
+candidate-first ordering predicate rather than trusting the report's summary
+bit; it also checks `first_any_action_divergence_step` and
+`all_actions_identical` for internal consistency. It then surfaces the per-seat
+`candidate_action_is_first_observed_divergence` results and emits
+`causal_candidate_first_both_seats`. An opponent-first witness can therefore
+PASS exact experiment custody while remaining explicitly causal-false;
+validator PASS alone never authorizes a repair.
 
 ## Source contract
 
@@ -52,13 +56,14 @@ python -O -B -m unittest -v \
   test_action_divergence_witness.py test_validate_native_9901_action_witness.py
 ```
 
-The recorder suite has 9 tests and the exact-target authority validator has 10.
+The recorder suite has 9 tests and the exact-target authority validator has 12.
 Together they cover candidate-first, opponent-first, same-step observation
 divergence, identical traces, bounded witness windows, topology rejection, seat
 parsing, SHA validation, executed-entry drift, engine drift, terminal-score
 drift, duplicate seats, timeout drift, report tampering, a claimed run with no
-actual action divergence, a missing causal label, and the explicit distinction
-between custody PASS and causal-false.
+actual action divergence, a missing causal label, a re-signed forged causal
+summary, a re-signed inconsistent first-action summary, and the explicit
+distinction between custody PASS and causal-false.
 
 ## Exact native-9901 target
 
