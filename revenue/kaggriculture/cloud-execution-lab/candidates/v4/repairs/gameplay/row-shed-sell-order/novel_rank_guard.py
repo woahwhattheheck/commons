@@ -1,21 +1,25 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fail-closed admission for row-shed SELL ordering that is novel vs pressure rank.
+"""Fail-closed admission for row-shed SELL ordering that survives pressure.
 
-This helper does not construct either ranking. It compares two already-produced
-selected-action candidates against one shared parent action and admits the
-row-shed candidate only when both candidates are exact, auditable permutations
-of the same leading contiguous SELL block and their resulting ranks differ.
+The canonical V4 stack applies its market-pressure transform after the row-shed
+seam. A row-shed rank can therefore differ from the incumbent rank yet still be
+fully erased downstream. This helper admits a row-shed candidate only when the
+*same injected downstream pressure transform*, run with the same public
+observation/configuration/quote evidence, produces a different final action
+from the incumbent path.
 
-Missing or ambiguous pressure evidence returns parent identity. The helper is
-pure: it never mutates any input action.
+The helper does not implement or approximate pressure policy. Callers retain
+custody of the exact canonical transform and its source identity. Missing,
+throwing, malformed, or structurally non-preserving downstream evidence fails
+closed to parent identity. Inputs are never mutated.
 """
 from __future__ import annotations
 
 from copy import deepcopy
 
 
-class RankEvidenceError(ValueError):
-    """The supplied ranking candidate cannot safely prove a comparable rank."""
+class NoveltyEvidenceError(ValueError):
+    """Supplied row-shed or downstream-pressure evidence is not auditable."""
 
 
 def _truthy_malformed_market_row(rows):
@@ -38,106 +42,174 @@ def _same_rows_with_duplicates(left, right):
 
 def _parent_shape(action):
     if not isinstance(action, dict):
-        raise RankEvidenceError("action must be a dict")
+        raise NoveltyEvidenceError("action must be a dict")
     rows = action.get("market")
     if not isinstance(rows, list):
-        raise RankEvidenceError("action market must be a list")
+        raise NoveltyEvidenceError("action market must be a list")
     if _truthy_malformed_market_row(rows):
-        raise RankEvidenceError("truthy market row must be a list")
+        raise NoveltyEvidenceError("truthy market row must be a list")
 
     lead = 0
     while lead < len(rows):
         row = rows[lead]
         if not row:
             break
-        if not isinstance(row, list) or not row or row[0] != "SELL":
+        if not isinstance(row, list) or row[0] != "SELL":
             break
         if len(row) < 3:
-            raise RankEvidenceError("leading SELL row is missing item or quantity")
+            raise NoveltyEvidenceError("leading SELL row is missing item or quantity")
         lead += 1
     return rows, lead
 
 
-def _candidate_rank(parent, candidate, lead):
+def _same_non_market_surface(source, candidate):
+    if set(candidate) != set(source):
+        return False
+    return all(candidate[key] == source[key] for key in source if key != "market")
+
+
+def _validate_row_shed_candidate(parent, candidate, lead):
     if not isinstance(candidate, dict):
-        raise RankEvidenceError("candidate must be a dict")
-    if set(candidate) != set(parent):
-        raise RankEvidenceError("candidate top-level keys differ from parent")
-    for key in parent:
-        if key != "market" and candidate[key] != parent[key]:
-            raise RankEvidenceError("candidate changed non-market action surface")
+        raise NoveltyEvidenceError("row-shed candidate must be a dict")
+    if not _same_non_market_surface(parent, candidate):
+        raise NoveltyEvidenceError("row-shed changed a non-market action surface")
 
     parent_rows = parent["market"]
     rows = candidate.get("market")
     if not isinstance(rows, list) or len(rows) != len(parent_rows):
-        raise RankEvidenceError("candidate market cardinality differs from parent")
+        raise NoveltyEvidenceError("row-shed market cardinality differs from parent")
     if _truthy_malformed_market_row(rows):
-        raise RankEvidenceError("truthy candidate market row must be a list")
+        raise NoveltyEvidenceError("truthy row-shed market row must be a list")
     if rows[lead:] != parent_rows[lead:]:
-        raise RankEvidenceError("candidate changed a market suffix or barrier")
+        raise NoveltyEvidenceError("row-shed changed a market suffix or barrier")
 
     block = rows[:lead]
-    if any(not row or not isinstance(row, list) or row[0] != "SELL" or len(row) < 3
-           for row in block):
-        raise RankEvidenceError("candidate leading block is not all SELL rows")
+    if any(
+        not row or not isinstance(row, list) or row[0] != "SELL" or len(row) < 3
+        for row in block
+    ):
+        raise NoveltyEvidenceError("row-shed leading block is not all SELL rows")
     if not _same_rows_with_duplicates(block, parent_rows[:lead]):
-        raise RankEvidenceError("candidate did not preserve the leading SELL multiset")
-    return block
+        raise NoveltyEvidenceError(
+            "row-shed did not preserve the leading SELL multiset"
+        )
 
 
-class NovelRankGuard:
-    """Keep row-shed ordering only when its rank differs from pressure ordering."""
+def _validate_pressure_output(source_action, output):
+    if not isinstance(output, dict):
+        raise NoveltyEvidenceError("pressure output must be a dict")
+    if not _same_non_market_surface(source_action, output):
+        raise NoveltyEvidenceError("pressure changed a non-market action surface")
+
+    source_rows = source_action.get("market")
+    rows = output.get("market")
+    if not isinstance(source_rows, list) or not isinstance(rows, list):
+        raise NoveltyEvidenceError("pressure market evidence must be a list")
+    if len(rows) != len(source_rows):
+        raise NoveltyEvidenceError("pressure changed market cardinality")
+    if _truthy_malformed_market_row(rows):
+        raise NoveltyEvidenceError("truthy pressure market row must be a list")
+    if not _same_rows_with_duplicates(rows, source_rows):
+        raise NoveltyEvidenceError(
+            "pressure changed market rows, quantities, or duplicate multiplicity"
+        )
+
+
+class PressureNoveltyGuard:
+    """Keep row-shed only when its distinction survives downstream pressure."""
 
     def __init__(self):
         self.diagnostics = {}
 
-    def choose(self, parent_action, row_shed_action, pressure_action):
+    def choose(
+        self,
+        parent_action,
+        row_shed_action,
+        pressure_transform,
+        observation,
+        configuration,
+        *,
+        quote,
+    ):
         self.diagnostics = {
             "status": "identity",
             "reason": None,
             "leading_sell_count": 0,
-            "row_shed_rank": [],
-            "pressure_rank": [],
+            "parent_pressure_market": [],
+            "row_shed_pressure_market": [],
         }
         try:
             parent_rows, lead = _parent_shape(parent_action)
             parent = deepcopy(parent_action)
             parent["market"] = deepcopy(parent_rows)
             self.diagnostics["leading_sell_count"] = lead
+
             if lead < 2:
                 self.diagnostics["reason"] = "leading_sell_block_lt_2"
                 return deepcopy(parent_action)
 
-            row_rank = _candidate_rank(parent, row_shed_action, lead)
+            _validate_row_shed_candidate(parent, row_shed_action, lead)
             if row_shed_action == parent_action:
-                self.diagnostics.update(
-                    reason="row_shed_identity",
-                    row_shed_rank=deepcopy(row_rank),
-                )
+                self.diagnostics["reason"] = "row_shed_identity"
                 return deepcopy(parent_action)
 
-            if pressure_action is None:
-                raise RankEvidenceError("pressure rank evidence is missing")
-            pressure_rank = _candidate_rank(parent, pressure_action, lead)
-            self.diagnostics.update(
-                row_shed_rank=deepcopy(row_rank),
-                pressure_rank=deepcopy(pressure_rank),
+            if not callable(pressure_transform):
+                raise NoveltyEvidenceError("downstream pressure transform is missing")
+            if not callable(quote):
+                raise NoveltyEvidenceError("pressure quote evidence is missing")
+
+            incumbent_final = pressure_transform(
+                deepcopy(parent),
+                deepcopy(observation),
+                deepcopy(configuration),
+                quote=quote,
+            )
+            row_shed_final = pressure_transform(
+                deepcopy(row_shed_action),
+                deepcopy(observation),
+                deepcopy(configuration),
+                quote=quote,
             )
 
-            if row_rank == pressure_rank:
-                self.diagnostics["reason"] = "redundant_with_pressure_rank"
+            _validate_pressure_output(parent, incumbent_final)
+            _validate_pressure_output(row_shed_action, row_shed_final)
+            self.diagnostics.update(
+                parent_pressure_market=deepcopy(incumbent_final["market"]),
+                row_shed_pressure_market=deepcopy(row_shed_final["market"]),
+            )
+
+            if incumbent_final == row_shed_final:
+                self.diagnostics["reason"] = "collapsed_by_downstream_pressure"
                 return deepcopy(parent_action)
 
             self.diagnostics.update(
                 status="applied",
-                reason="novel_vs_pressure_rank",
+                reason="survives_downstream_pressure",
             )
             return deepcopy(row_shed_action)
-        except (RankEvidenceError, KeyError, TypeError, IndexError) as error:
+        except Exception as error:  # fail closed at the external-evidence boundary
             self.diagnostics["reason"] = str(error)
             return deepcopy(parent_action)
 
 
-def choose(parent_action, row_shed_action, pressure_action):
+NovelRankGuard = PressureNoveltyGuard
+
+
+def choose(
+    parent_action,
+    row_shed_action,
+    pressure_transform,
+    observation,
+    configuration,
+    *,
+    quote,
+):
     """Stateless convenience wrapper."""
-    return NovelRankGuard().choose(parent_action, row_shed_action, pressure_action)
+    return PressureNoveltyGuard().choose(
+        parent_action,
+        row_shed_action,
+        pressure_transform,
+        observation,
+        configuration,
+        quote=quote,
+    )
