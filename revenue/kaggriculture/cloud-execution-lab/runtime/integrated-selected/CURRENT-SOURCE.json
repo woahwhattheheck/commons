@@ -490,8 +490,8 @@
       "source_path": "test_entrypoint_clock.py"
     },
     "checks/test_entrypoint_deadline.py": {
-      "bytes": 11499,
-      "sha256": "fe63eb8ac49b6c856d94f0a9261d5593366b66d62445d89d8ffad163c53b935e",
+      "bytes": 11537,
+      "sha256": "ee5690f10db8a92932d04ebd195d1e3a5a11f8c3f8c9d590446fb4c69e1cda5d",
       "source_path": "test_entrypoint_deadline.py"
     },
     "checks/test_feed_stock.py": {
@@ -500,8 +500,8 @@
       "source_path": "test_feed_stock.py"
     },
     "checks/test_final_market_pressure_entrypoint.py": {
-      "bytes": 4447,
-      "sha256": "ffea92b06ec9897c25c0d3f331156380917cbf5de8a26e187bdf71e2165e5ef9",
+      "bytes": 4519,
+      "sha256": "9d77bf012afc3824116a56dcc81dad95515c39d213928d9553d9e216a9659d01",
       "source_path": "test_final_market_pressure_entrypoint.py"
     },
     "checks/test_funded_payback_runtime.py": {
@@ -650,8 +650,8 @@
       "source_path": "integrated_selected.py"
     },
     "main.py": {
-      "bytes": 24343,
-      "sha256": "1fe58fc684e895d36a348bdc1bcce48e58a48a87877e0feed5250494b3d20f66",
+      "bytes": 25753,
+      "sha256": "f21868e6bb165cf9c786c0aee538953d92eb5d3f7a4361235c97caccda6955e1",
       "source_path": "main.py"
     },
     "mechanics.py": {
