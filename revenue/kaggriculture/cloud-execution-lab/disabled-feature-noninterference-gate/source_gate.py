@@ -12,7 +12,8 @@ from gate_common import (
     _resolve_under, _safe_relative_path, canonical_bytes, git_blob_sha1,
     sha256_bytes,
 )
-from source_analysis import SourceAnalyzer
+from comparison_source_analysis import ComparisonSafeSourceAnalyzer as SourceAnalyzer
+
 
 def validate_source_contract(raw: Any) -> dict[str, Any]:
     contract = _require_object(raw, "source contract")
@@ -176,5 +177,3 @@ def audit_source(repo_root: Path, raw_contract: Any) -> dict[str, Any]:
     }
     receipt["receipt_sha256"] = sha256_bytes(canonical_bytes(receipt))
     return receipt
-
-
