@@ -12,6 +12,9 @@ on:
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/run_composed_postimage.py
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/postimage_trust.py
       - revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/**
+  pull_request:
+    paths:
+      - .github/workflows/titan-v4-row-shed-postimage-field.yml
   workflow_dispatch:
 
 permissions:
@@ -24,6 +27,7 @@ concurrency:
 
 jobs:
   field:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
@@ -183,7 +187,7 @@ jobs:
         run: |
           set -euo pipefail
           cat > "$ROW_SHED_ON/row_shed_probe.py" <<'PY'
-          """Field-only observer for row-shed diagnostics; returned action is untouched."""
+          """Field-only observer for fresh row-shed applications; returned action is untouched."""
           from __future__ import annotations
           import json
           import os
@@ -196,7 +200,10 @@ jobs:
               action = _main.agent(observation, configuration)
               consumer = getattr(getattr(_main, "_INSTANCE", None), "consumer", None)
               diag = getattr(consumer, "row_shed_diagnostics", None)
-              if isinstance(diag, dict):
+              parent_diag = getattr(consumer, "diagnostics", None)
+              fresh = (isinstance(parent_diag, dict)
+                       and parent_diag.get("step") == observation.get("step"))
+              if fresh and isinstance(diag, dict) and diag.get("status") == "applied":
                   record = {
                       "step": observation.get("step"),
                       "player": observation.get("player"),
@@ -224,6 +231,7 @@ jobs:
               "sha256": hashlib.sha256(data).hexdigest(),
               "field_only": True,
               "returned_action_mutation": False,
+              "logs_only_fresh_applied_callbacks": True,
           }, out.open("w"), sort_keys=True, indent=2)
           PY
           rm -f "$ROW_SHED_ON/row-shed-telemetry.jsonl"
@@ -257,7 +265,11 @@ jobs:
             --opponent "graph=$ROW_SHED_GRAPH/main.py::agent" \
             --seeds 2027,6607,104729 \
             --output "$ROW_SHED_OUT/treatment.json"
-          cp "$ROW_SHED_ON/row-shed-telemetry.jsonl" "$ROW_SHED_OUT/row-shed-telemetry.jsonl"
+          if [[ -f "$ROW_SHED_ON/row-shed-telemetry.jsonl" ]]; then
+            cp "$ROW_SHED_ON/row-shed-telemetry.jsonl" "$ROW_SHED_OUT/row-shed-telemetry.jsonl"
+          else
+            : > "$ROW_SHED_OUT/row-shed-telemetry.jsonl"
+          fi
 
       - name: Publish natural-engagement and paired field receipt
         shell: bash
@@ -382,8 +394,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$ROW_SHED_OUT"
-          git rev-parse HEAD > "$ROW_SHED_OUT/checkout-commit.txt"
+          OUT="${ROW_SHED_OUT:-$RUNNER_TEMP/row-shed-evidence}"
+          mkdir -p "$OUT"
+          printf 'ROW_SHED_OUT=%s\n' "$OUT" >> "$GITHUB_ENV"
+          git rev-parse HEAD > "$OUT/checkout-commit.txt"
           V4=revenue/kaggriculture/cloud-execution-lab/candidates/v4
           ROW="$V4/repairs/gameplay/row-shed-sell-order"
           sha256sum \
@@ -395,7 +409,7 @@ jobs:
             "$ROW/COMPOSER-READY.json" \
             "$ROW/compose.py" \
             "$ROW/row_shed_sell_order.py" \
-            > "$ROW_SHED_OUT/source-sha256.txt"
+            > "$OUT/source-sha256.txt"
 
       - uses: actions/upload-artifact@v4
         if: always()
