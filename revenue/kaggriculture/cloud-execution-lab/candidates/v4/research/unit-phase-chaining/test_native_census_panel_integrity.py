@@ -125,6 +125,14 @@ class NativeCensusPanelIntegrityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exceeds callbacks"):
             aggregate(cells)
 
+    def test_nonfinite_scores_are_rejected(self):
+        for value in (float("nan"), float("inf"), float("-inf")):
+            with self.subTest(value=value):
+                cells = exact_panel()
+                cells[-1]["scores"][0] = value
+                with self.assertRaisesRegex(ValueError, "finite exact numeric values"):
+                    aggregate(cells)
+
     def test_valid_engagement_still_produces_engaged(self):
         cells = exact_panel()
         cells[0]["admission"]["eligible_groups"] = 1
