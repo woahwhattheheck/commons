@@ -26,6 +26,7 @@ SUBMITTED_V31_ARCHIVE_SHA256 = (
 REQUIRED_SLOTS = (
     "sale_window_h8_l3",
     "h4_strawberry_topup",
+    "row_order",
     "row_shed",
     "evening_flush",
     "b5_carrot_jit",
@@ -38,6 +39,7 @@ SUBMITTED_TOPOLOGY = {
     "inner_return_pipeline": [
         "sale_window_h8_l3",
         "h4_strawberry_topup",
+        "row_order",
         "row_shed",
         "evening_flush",
         "b5_carrot_jit",
@@ -124,7 +126,7 @@ def _string(value: Any, field: str) -> str:
 
 def _sha(value: Any, field: str, length: int) -> str:
     text = _string(value, field)
-    if len(text) != length or any(c not in "0123456789abcdef" for c in text):
+    if len(text) != length or any(ch not in "0123456789abcdef" for ch in text):
         raise GateError(f"{field} must be a {length}-character lowercase hex digest")
     return text
 
