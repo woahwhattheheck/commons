@@ -187,23 +187,114 @@ def _pack_adapter_targets(source: bytes, path: Path) -> tuple[Path, Path]:
     return contract, main
 
 
-def _deterministic_adapter(contract_name: str, main_name: str) -> bytes:
-    if "/" in contract_name or "/" in main_name:
+# Retained native-9901 full runtime file SHA maps from #13477 INPUT-CUSTODY.
+EXPECTED_PACK_SUPPORT = {
+    "official.py": "83e53481e3f71be30062a87a15439aa06380f6a917d066e8c1807b1eaefb6b23",
+    "upstream/manifest.json": "040ed98ca34d47ff56a9fcced2bdde28799a5a3b4a1957baae11406c87320740",
+    "upstream/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "upstream/agent.py": "9b7682ce9921c8f34080a8be0f7b41598cc12ac7eb14d24e4b707883f25213b6",
+    "upstream/errors.py": "957836cef36d5a37f02f53c62081435e24cc08d67be832989e3a01ef2347c4a8",
+    "upstream/status_codes.json": "e9af07b92fd5b61f795b47f67e8bf6d502dd45f03729b8b352f8ca989858b417",
+    "upstream/utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b",
+}
+
+EXPECTED_APEX_RUNTIME = {
+    "agent.so": "d132de713c1ae77ee1498c055deb864d942b101b670c35125636cc66e4e6deae",
+    "main.py": "1f7cd5fb8a16585936d2562a3667f85bb6661688718ef58f73006de66148354a",
+    "source/include/policy_plugin_abi.hpp": "4eb7647da3660688685a8ff032bd1ada6558605a27ae6b86fc338a91f8b45476",
+    "source/include/runtime_types.hpp": "0010c15079e2114e36b5de8b281375db83f202e769e30b27cc437fc0e3ad11f1",
+    "source/include/six_day_budget_guard.hpp": "6835d614131c6ca6c57d86e941891d1fea3fa44237f61fd1ab9ac876dd4ebc25",
+    "source/policy.cpp": "74b5d7e778c0f4a6e2f0e0725077943dbc319b7d0f5ace4c9070a4ae69db51b3",
+    "source/tape.inc": "30b724c3c905d0c03e4ef38d36f96fb7acbd6abef5371abbedee36ea3717e09f",
+    "submission_bridge.cpp": "a92ca5b78cae850987a7262122eb83ec9f9a313430e906e1ac08bfe1fd887ff1",
+}
+
+
+def _deterministic_adapter(
+    contract_name: str,
+    main_name: str,
+    contract_files: dict[str, str],
+    candidate_files: dict[str, str],
+) -> bytes:
+    if (
+        "/" in contract_name
+        or "/" in main_name
+        or "\\" in contract_name
+        or "\\" in main_name
+    ):
         raise SnapshotError("snapshot entry filenames must be single path components")
-    return (
+
+    contract_digest = _manifest_digest(contract_files)
+    candidate_digest = _manifest_digest(candidate_files)
+
+    contract_json = json.dumps(
+        dict(sorted(contract_files.items())),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    )
+    candidate_json = json.dumps(
+        dict(sorted(candidate_files.items())),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    )
+
+    code = (
+        "import hashlib as _hashlib\n"
         "import importlib.util as _util\n"
+        "import json as _json\n"
         "from pathlib import Path as _Path\n"
+        "import tempfile as _tempfile\n"
+        "\n"
+        f"CONTRACT_NAME = {contract_name!r}\n"
+        f"MAIN_NAME = {main_name!r}\n"
+        f"CONTRACT_MANIFEST_SHA256 = {contract_digest!r}\n"
+        f"CANDIDATE_MANIFEST_SHA256 = {candidate_digest!r}\n"
+        f"CONTRACT_FILES = _json.loads({contract_json!r})\n"
+        f"CANDIDATE_FILES = _json.loads({candidate_json!r})\n"
+        "\n"
+        "def _digest(data):\n"
+        "    return _hashlib.sha256(_json.dumps(data, sort_keys=True, separators=(',', ':'), ensure_ascii=True).encode('utf-8')).hexdigest()\n"
+        "\n"
+        "def _verify_and_copy(src_root, dst_root, manifest, manifest_digest, label):\n"
+        "    if _digest(manifest) != manifest_digest:\n"
+        "        raise RuntimeError(f'{label} embedded manifest digest mismatch')\n"
+        "    for rel_posix, expected_sha in sorted(manifest.items()):\n"
+        "        src_file = src_root.joinpath(*rel_posix.split('/'))\n"
+        "        try:\n"
+        "            data = src_file.read_bytes()\n"
+        "        except OSError as exc:\n"
+        "            raise RuntimeError(f'cannot read {label} snapshot file {src_file}: {exc}') from exc\n"
+        "        actual_sha = _hashlib.sha256(data).hexdigest()\n"
+        "        if actual_sha != expected_sha:\n"
+        "            raise RuntimeError(f'{label} snapshot file {rel_posix} drifted: {actual_sha} != {expected_sha}')\n"
+        "        dst_file = dst_root.joinpath(*rel_posix.split('/'))\n"
+        "        dst_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "        dst_file.write_bytes(data)\n"
+        "        try:\n"
+        "            dst_file.chmod(src_file.stat().st_mode)\n"
+        "        except OSError:\n"
+        "            pass\n"
+        "\n"
         "_runner = None\n"
+        "_worker_dir = None\n"
+        "\n"
         "def agent(observation, configuration=None):\n"
-        "    global _runner\n"
+        "    global _runner, _worker_dir\n"
         "    if _runner is None:\n"
         "        _root = _Path(__file__).resolve().parent\n"
-        f"        spec = _util.spec_from_file_location('kag_pack_contract', _root / 'contract' / {contract_name!r})\n"
+        "        _worker_dir = _tempfile.TemporaryDirectory(prefix='titan-worker-runtime-')\n"
+        "        private_root = _Path(_worker_dir.name)\n"
+        "        _verify_and_copy(_root / 'contract', private_root / 'contract', CONTRACT_FILES, CONTRACT_MANIFEST_SHA256, 'contract')\n"
+        "        _verify_and_copy(_root / 'candidate', private_root / 'candidate', CANDIDATE_FILES, CANDIDATE_MANIFEST_SHA256, 'candidate')\n"
+        "        spec = _util.spec_from_file_location('kag_pack_contract', private_root / 'contract' / CONTRACT_NAME)\n"
         "        module = _util.module_from_spec(spec)\n"
         "        spec.loader.exec_module(module)\n"
-        f"        _runner = module.make_agent(_root / 'candidate' / {main_name!r})\n"
+        "        _runner = module.make_agent(private_root / 'candidate' / MAIN_NAME)\n"
         "    return _runner(observation, configuration or {})\n"
-    ).encode("utf-8")
+    )
+    return code.encode("utf-8")
 
 
 def _capture_agent(
@@ -211,6 +302,8 @@ def _capture_agent(
     destination: Path,
     *,
     archive_members: dict[str, str] | None,
+    expected_candidate_files: dict[str, str] | None = None,
+    expected_contract_files: dict[str, str] | None = None,
 ) -> tuple[str, dict[str, Any]]:
     path_text, sep, callable_name = spec_text.partition("::")
     if not path_text or (sep and not callable_name):
@@ -228,21 +321,40 @@ def _capture_agent(
     candidate_manifest = _copy_tree(main.parent, destination / "candidate")
     contract_manifest = _copy_tree(contract.parent, destination / "contract")
 
-    if archive_members is not None and candidate_manifest != archive_members:
-        missing = sorted(set(archive_members) - set(candidate_manifest))[:5]
-        extra = sorted(set(candidate_manifest) - set(archive_members))[:5]
+    authority_name = "authenticated archive" if archive_members is not None else "expected authority"
+    if archive_members is not None:
+        expected_candidate_files = archive_members
+
+    if expected_candidate_files is not None and candidate_manifest != expected_candidate_files:
+        missing = sorted(set(expected_candidate_files) - set(candidate_manifest))
+        extra = sorted(set(candidate_manifest) - set(expected_candidate_files))
         drift = sorted(
             name
-            for name in set(candidate_manifest) & set(archive_members)
-            if candidate_manifest[name] != archive_members[name]
-        )[:5]
+            for name in set(candidate_manifest) & set(expected_candidate_files)
+            if candidate_manifest[name] != expected_candidate_files[name]
+        )
         raise SnapshotError(
-            "captured candidate runtime differs from authenticated archive "
+            f"captured candidate runtime differs from {authority_name} "
+            f"(missing={missing}, extra={extra}, drift={drift})"
+        )
+
+    if expected_contract_files is not None and contract_manifest != expected_contract_files:
+        missing = sorted(set(expected_contract_files) - set(contract_manifest))
+        extra = sorted(set(contract_manifest) - set(expected_contract_files))
+        drift = sorted(
+            name
+            for name in set(contract_manifest) & set(expected_contract_files)
+            if contract_manifest[name] != expected_contract_files[name]
+        )
+        raise SnapshotError(
+            "captured contract runtime differs from expected authority "
             f"(missing={missing}, extra={extra}, drift={drift})"
         )
 
     entry = destination / "entry.py"
-    entry_bytes = _deterministic_adapter(contract.name, main.name)
+    entry_bytes = _deterministic_adapter(
+        contract.name, main.name, contract_manifest, candidate_manifest
+    )
     with entry.open("xb") as handle:
         handle.write(entry_bytes)
         handle.flush()
@@ -296,20 +408,34 @@ def _capture_execution(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         root / "archives" / "right.tar.gz",
     )
 
+    expected_contract = (
+        EXPECTED_PACK_SUPPORT
+        if getattr(args, "expect_official_pack_support", True)
+        else None
+    )
     left_spec, left_meta = _capture_agent(
         args.left_candidate,
         root / "agents" / "left",
         archive_members=left_members,
+        expected_contract_files=expected_contract,
     )
     right_spec, right_meta = _capture_agent(
         args.right_candidate,
         root / "agents" / "right",
         archive_members=right_members,
+        expected_contract_files=expected_contract,
+    )
+    expected_opponent = (
+        EXPECTED_APEX_RUNTIME
+        if getattr(args, "opponent_label", None) == "apex_v7"
+        else None
     )
     opponent_spec, opponent_meta = _capture_agent(
         args.opponent,
         root / "agents" / "opponent",
         archive_members=None,
+        expected_candidate_files=expected_opponent,
+        expected_contract_files=expected_contract,
     )
 
     return {

@@ -21,14 +21,14 @@ class ImmutableWitnessValidatorTests(unittest.TestCase):
         support = dict(validator.EXPECTED_PACK_SUPPORT)
         candidate = {"main.py": "1" * 64}
         apex = dict(validator.EXPECTED_APEX_RUNTIME)
-        snapshot_entry = immutable._sha_bytes(
-            immutable._deterministic_adapter("official.py", "main.py")
-        )
 
         def side(source_sha, files, archive):
+            snap_entry = immutable._sha_bytes(
+                immutable._deterministic_adapter("official.py", "main.py", support, files)
+            )
             return {
                 "source_entry_sha256": source_sha,
-                "snapshot_entry_sha256": snapshot_entry,
+                "snapshot_entry_sha256": snap_entry,
                 **meta(files, "candidate"),
                 **meta(support, "contract"),
                 "archive_member_manifest_sha256": (
@@ -107,10 +107,18 @@ class ImmutableWitnessValidatorTests(unittest.TestCase):
 
     def test_apex_runtime_drift_rejected(self):
         authority = self._authority()
-        candidate = authority["execution_snapshot"]["opponent"]["candidate_files"]
-        candidate["agent.so"] = "0" * 64
-        authority["execution_snapshot"]["opponent"]["candidate_manifest_sha256"] = witness._digest(
-            candidate
+        opponent = authority["execution_snapshot"]["opponent"]
+        opponent["candidate_files"]["agent.so"] = "0" * 64
+        opponent["candidate_manifest_sha256"] = witness._digest(
+            opponent["candidate_files"]
+        )
+        opponent["snapshot_entry_sha256"] = immutable._sha_bytes(
+            immutable._deterministic_adapter(
+                "official.py",
+                "main.py",
+                opponent["contract_files"],
+                opponent["candidate_files"],
+            )
         )
         with self.assertRaisesRegex(
             validator.SnapshotValidationError, "agent.so mismatch"
@@ -140,6 +148,79 @@ class ImmutableWitnessValidatorTests(unittest.TestCase):
         ):
             validator.validate_snapshot_authority(authority)
 
+    def test_extra_apex_runtime_file_rejected(self):
+        authority = self._authority()
+        opponent = authority["execution_snapshot"]["opponent"]
+        opponent["candidate_files"]["extra_shadow.py"] = "0" * 64
+        opponent["candidate_manifest_sha256"] = witness._digest(opponent["candidate_files"])
+        opponent["snapshot_entry_sha256"] = immutable._sha_bytes(
+            immutable._deterministic_adapter(
+                "official.py",
+                "main.py",
+                opponent["contract_files"],
+                opponent["candidate_files"],
+            )
+        )
+        with self.assertRaisesRegex(
+            validator.SnapshotValidationError, "contains extra unauthorized files"
+        ):
+            validator.validate_snapshot_authority(authority)
+
+    def test_missing_apex_runtime_file_rejected(self):
+        authority = self._authority()
+        opponent = authority["execution_snapshot"]["opponent"]
+        opponent["candidate_files"].pop("submission_bridge.cpp")
+        opponent["candidate_manifest_sha256"] = witness._digest(opponent["candidate_files"])
+        opponent["snapshot_entry_sha256"] = immutable._sha_bytes(
+            immutable._deterministic_adapter(
+                "official.py",
+                "main.py",
+                opponent["contract_files"],
+                opponent["candidate_files"],
+            )
+        )
+        with self.assertRaisesRegex(
+            validator.SnapshotValidationError, "missing required files"
+        ):
+            validator.validate_snapshot_authority(authority)
+
+    def test_extra_contract_file_rejected(self):
+        authority = self._authority()
+        left = authority["execution_snapshot"]["left"]
+        left["contract_files"]["shadow.py"] = "0" * 64
+        left["contract_manifest_sha256"] = witness._digest(left["contract_files"])
+        left["snapshot_entry_sha256"] = immutable._sha_bytes(
+            immutable._deterministic_adapter(
+                "official.py",
+                "main.py",
+                left["contract_files"],
+                left["candidate_files"],
+            )
+        )
+        with self.assertRaisesRegex(
+            validator.SnapshotValidationError, "contains extra unauthorized files"
+        ):
+            validator.validate_snapshot_authority(authority)
+
+    def test_missing_contract_file_rejected(self):
+        authority = self._authority()
+        left = authority["execution_snapshot"]["left"]
+        left["contract_files"].pop("upstream/manifest.json")
+        left["contract_manifest_sha256"] = witness._digest(left["contract_files"])
+        left["snapshot_entry_sha256"] = immutable._sha_bytes(
+            immutable._deterministic_adapter(
+                "official.py",
+                "main.py",
+                left["contract_files"],
+                left["candidate_files"],
+            )
+        )
+        with self.assertRaisesRegex(
+            validator.SnapshotValidationError, "missing required files"
+        ):
+            validator.validate_snapshot_authority(authority)
+
 
 if __name__ == "__main__":
     unittest.main()
+

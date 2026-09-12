@@ -57,7 +57,13 @@ class ImmutableActionWitnessTests(unittest.TestCase):
         }
         for name, data in files.items():
             write(candidate / name, data)
-        write(contract / "official.py", b"# exact contract\n")
+        contract_code = (
+            b"def make_agent(path):\n"
+            b"    def call(obs, cfg=None):\n"
+            b"        return {'farmer': 'PASS', 'hands': []}\n"
+            b"    return call\n"
+        )
+        write(contract / "official.py", contract_code)
         write(contract / "upstream" / "manifest.json", b"{}\n")
         archive_path = root / "candidate.tar.gz"
         members = archive(archive_path, files)
@@ -171,5 +177,115 @@ class ImmutableActionWitnessTests(unittest.TestCase):
                 )
 
 
+    def _load_agent(self, entry_path: Path):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            f"test_entry_{entry_path.parent.name}_{entry_path.stat().st_mtime_ns}",
+            entry_path,
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.agent
+
+    def test_worker_private_tree_executes_and_survives_later_snapshot_mutation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, _contract, _archive_path, members = self._fixture(root)
+            spec, _meta = immutable._capture_agent(
+                f"{entry}::agent", root / "snapshot", archive_members=members
+            )
+            snapshot_entry = Path(spec.partition("::")[0])
+            agent_fn = self._load_agent(snapshot_entry)
+
+            # First step copies into private temp tree, verifies digest, and executes.
+            action1 = agent_fn({"step": 0})
+            self.assertEqual(action1, {"farmer": "PASS", "hands": []})
+
+            # Mutating the shared snapshot after worker startup must not affect running worker.
+            (snapshot_entry.parent / "candidate" / "helper.py").write_text("POISONED\n")
+            action2 = agent_fn({"step": 1})
+            self.assertEqual(action2, {"farmer": "PASS", "hands": []})
+
+    def test_shared_snapshot_mutation_before_worker_load_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, _contract, _archive_path, members = self._fixture(root)
+            spec, _meta = immutable._capture_agent(
+                f"{entry}::agent", root / "snapshot", archive_members=members
+            )
+            snapshot_entry = Path(spec.partition("::")[0])
+
+            # Mutate shared snapshot after capture but before worker load.
+            (snapshot_entry.parent / "candidate" / "helper.py").write_text("POISONED\n")
+
+            agent_fn = self._load_agent(snapshot_entry)
+            with self.assertRaisesRegex(RuntimeError, "candidate snapshot file helper.py drifted"):
+                agent_fn({"step": 0})
+
+    def test_shared_snapshot_contract_mutation_before_worker_load_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, _contract, _archive_path, members = self._fixture(root)
+            spec, _meta = immutable._capture_agent(
+                f"{entry}::agent", root / "snapshot", archive_members=members
+            )
+            snapshot_entry = Path(spec.partition("::")[0])
+
+            # Mutate contract after capture but before worker load.
+            (snapshot_entry.parent / "contract" / "official.py").write_text("POISONED\n")
+
+            agent_fn = self._load_agent(snapshot_entry)
+            with self.assertRaisesRegex(RuntimeError, "contract snapshot file official.py drifted"):
+                agent_fn({"step": 0})
+
+    def test_apex_retained_map_missing_file_rejected_at_capture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, _contract, _archive_path, members = self._fixture(root)
+            with self.assertRaisesRegex(
+                immutable.SnapshotError, r"captured candidate runtime differs.*missing=\['agent.so'"
+            ):
+                immutable._capture_agent(
+                    f"{entry}::agent",
+                    root / "snapshot",
+                    archive_members=None,
+                    expected_candidate_files=immutable.EXPECTED_APEX_RUNTIME,
+                )
+
+    def test_apex_retained_map_extra_file_rejected_at_capture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, _contract, _archive_path, members = self._fixture(root)
+            with self.assertRaisesRegex(
+                immutable.SnapshotError, r"captured candidate runtime differs.*extra=\['helper.py'\]"
+            ):
+                immutable._capture_agent(
+                    f"{entry}::agent",
+                    root / "snapshot",
+                    archive_members=None,
+                    expected_candidate_files={"main.py": members["main.py"]},
+                )
+
+    def test_contract_retained_map_extra_file_rejected_at_capture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry, _candidate, contract, _archive_path, members = self._fixture(root)
+            write(contract / "extra_shadow.py", b"EXTRA\n")
+            adapter(entry, contract / "official.py", _candidate / "main.py")
+            with self.assertRaisesRegex(
+                immutable.SnapshotError, r"captured contract runtime differs.*extra=\['extra_shadow.py'\]"
+            ):
+                immutable._capture_agent(
+                    f"{entry}::agent",
+                    root / "snapshot",
+                    archive_members=members,
+                    expected_contract_files={
+                        "official.py": sha((contract / "official.py").read_bytes()),
+                        "upstream/manifest.json": sha((contract / "upstream" / "manifest.json").read_bytes()),
+                    },
+                )
+
+
 if __name__ == "__main__":
     unittest.main()
+
