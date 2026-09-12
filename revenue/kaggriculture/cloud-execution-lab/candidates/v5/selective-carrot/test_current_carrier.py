@@ -108,6 +108,12 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
         self.assertEqual(
             build.git_blob(HERE / "current_entry.py"), build.EXPECTED_ENTRY_BLOB
         )
+        snapshots = build._source_snapshots()
+        self.assertEqual(snapshots["parent"], (LAB_ROOT / "main.py").read_bytes())
+        self.assertEqual(snapshots["entry"], (HERE / "current_entry.py").read_bytes())
+        self.assertEqual(
+            snapshots["selective"], (HERE / "selective_carrot.py").read_bytes()
+        )
 
     def test_current_archive_packages_the_pinned_parent_main(self):
         pointer, archive = current_pointer_and_archive()
@@ -145,6 +151,13 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
                     build.git_blob(out / "baseline_main.py"),
                     build.EXPECTED_PARENT_MAIN_BLOB,
                 )
+                self.assertEqual(
+                    build.git_blob(out / "main.py"), build.EXPECTED_ENTRY_BLOB
+                )
+                self.assertEqual(
+                    build.git_blob(out / "selective_carrot.py"),
+                    build.EXPECTED_SELECTIVE_BLOB,
+                )
                 profile = json.loads(
                     (out / "CARROT-CAPACITY.json").read_text(encoding="utf-8")
                 )
@@ -153,7 +166,7 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
                     profile["control_package_sha256"], control_digest
                 )
 
-    def test_step_zero_retry_preserves_choice_until_proven_match_reset(self):
+    def test_step_zero_retry_requires_positive_retry_evidence(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             baseline = root / "baseline"
@@ -164,6 +177,10 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
             entry, saved, name = load_candidate_entry(candidate)
             try:
                 entry.baseline._SPATIAL_RECOVERY = None
+                entry.baseline._INSTANCE = None
+                self.assertTrue(entry._choice_match_reset(0))
+                self.assertFalse(entry._choice_match_reset(1))
+
                 entry.baseline._INSTANCE = SimpleNamespace(_entrypoint_last_step=0)
                 self.assertFalse(entry._choice_match_reset(0))
                 self.assertFalse(entry._choice_match_reset(1))
@@ -177,6 +194,34 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
 
                 entry.baseline._SPATIAL_RECOVERY = {"last_step": 0, "state": {}}
                 self.assertFalse(entry._choice_match_reset(0))
+            finally:
+                unload_candidate_entry(candidate, saved, name)
+
+    def test_profile_hashes_are_exact_lowercase_hex(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            baseline = root / "baseline"
+            baseline.mkdir()
+            shutil.copyfile(LAB_ROOT / "main.py", baseline / "main.py")
+            candidate = root / "candidate"
+            build.build_candidate(baseline, candidate, 4)
+            entry, saved, name = load_candidate_entry(candidate)
+            try:
+                self.assertEqual(
+                    entry._require_hex({"digest": "a" * 40}, "digest", 40),
+                    "a" * 40,
+                )
+                for bad in (
+                    "a" * 39,
+                    "a" * 41,
+                    "A" * 40,
+                    "g" * 40,
+                    "a" * 64,
+                    7,
+                    None,
+                ):
+                    with self.assertRaises(RuntimeError):
+                        entry._require_hex({"digest": bad}, "digest", 40)
             finally:
                 unload_candidate_entry(candidate, saved, name)
 
