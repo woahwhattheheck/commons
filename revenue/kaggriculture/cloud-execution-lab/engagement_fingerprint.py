@@ -92,6 +92,37 @@ def fingerprint(value: Any) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def _alignment_fields(fields: Sequence[str]) -> tuple[str, ...]:
+    """Return an unambiguous ordered alignment-field contract."""
+    if isinstance(fields, (str, bytes)) or not fields:
+        raise AlignmentError("at least one alignment key field is required")
+    normalized = tuple(fields)
+    if any(type(field) is not str or not field for field in normalized):
+        raise AlignmentError("alignment key fields must be non-empty strings")
+    if len(normalized) != len(set(normalized)):
+        raise AlignmentError("alignment key fields must be unique")
+    return normalized
+
+
+def _payload_fields(
+    key_fields: Sequence[str], control_field: str, candidate_field: str
+) -> tuple[tuple[str, ...], str, str]:
+    """Reject payload aliases and decision-dependent alignment fields."""
+    fields = _alignment_fields(key_fields)
+    if type(control_field) is not str or not control_field:
+        raise AlignmentError("control field must be a non-empty string")
+    if type(candidate_field) is not str or not candidate_field:
+        raise AlignmentError("candidate field must be a non-empty string")
+    if control_field == candidate_field:
+        raise AlignmentError("control and candidate fields must be distinct")
+    overlap = sorted(set(fields) & {control_field, candidate_field})
+    if overlap:
+        raise AlignmentError(
+            "payload fields cannot be alignment key fields: " + ", ".join(overlap)
+        )
+    return fields, control_field, candidate_field
+
+
 def _key_token(key: Mapping[str, Any], fields: Sequence[str]) -> tuple[str, dict[str, Any]]:
     missing = [field for field in fields if field not in key]
     if missing:
@@ -126,11 +157,9 @@ class EngagementTracker:
         key_fields: Sequence[str] = ("seed", "seat", "step", "phase"),
         noop_threshold: int = 8,
     ) -> None:
-        if not key_fields:
-            raise ValueError("at least one alignment key field is required")
+        self.key_fields = _alignment_fields(key_fields)
         if noop_threshold < 1:
             raise ValueError("noop_threshold must be positive")
-        self.key_fields = tuple(key_fields)
         self.noop_threshold = int(noop_threshold)
         self.observations = 0
         self.divergence_count = 0
@@ -212,6 +241,9 @@ def compare_rows(
     noop_threshold: int = 8,
 ) -> dict[str, Any]:
     """Compare a matched iterable and return its engagement summary."""
+    key_fields, control_field, candidate_field = _payload_fields(
+        key_fields, control_field, candidate_field
+    )
     tracker = EngagementTracker(key_fields=key_fields, noop_threshold=noop_threshold)
     for row_number, row in enumerate(rows, start=1):
         if not isinstance(row, Mapping):

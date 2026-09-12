@@ -99,6 +99,48 @@ class EngagementFingerprintTests(unittest.TestCase):
         )
         self.assertEqual("ENGAGED", report["classification"])
 
+    def test_self_comparison_payload_alias_fails_closed(self):
+        row = {
+            "seed": 3,
+            "seat": 0,
+            "step": 7,
+            "phase": "market",
+            "control": [["SELL", "MILK", 1]],
+            "candidate": [["SELL", "MILK", 2]],
+        }
+        # Before the field contract this configuration compared control to itself
+        # and could emit NO_OP_OBSERVED despite the genuinely divergent candidate.
+        with self.assertRaisesRegex(ef.AlignmentError, "must be distinct"):
+            ef.compare_rows(
+                [row],
+                control_field="control",
+                candidate_field="control",
+                noop_threshold=1,
+            )
+
+    def test_payload_field_cannot_be_part_of_alignment_key(self):
+        row = {
+            "seed": 3,
+            "seat": 0,
+            "step": 7,
+            "control": [["WAIT"]],
+            "candidate": [["MOVE", 1]],
+        }
+        with self.assertRaisesRegex(ef.AlignmentError, "cannot be alignment key fields"):
+            ef.compare_rows(
+                [row],
+                key_fields=("seed", "seat", "step", "candidate"),
+                noop_threshold=1,
+            )
+
+    def test_alignment_field_names_must_be_unique_nonempty_strings(self):
+        with self.assertRaisesRegex(ef.AlignmentError, "must be unique"):
+            ef.EngagementTracker(key_fields=("seed", "seed"))
+        with self.assertRaisesRegex(ef.AlignmentError, "non-empty strings"):
+            ef.EngagementTracker(key_fields=("seed", ""))
+        with self.assertRaisesRegex(ef.AlignmentError, "at least one"):
+            ef.EngagementTracker(key_fields="seed")
+
     def test_cli_emits_machine_readable_report(self):
         rows = [
             {
@@ -152,6 +194,36 @@ class EngagementFingerprintTests(unittest.TestCase):
             )
         self.assertEqual(2, proc.returncode)
         self.assertIn("duplicate matched key", proc.stderr)
+
+    def test_cli_rejects_payload_self_comparison(self):
+        row = {
+            "seed": 9,
+            "seat": 0,
+            "step": 0,
+            "phase": "unit",
+            "control": ["WAIT"],
+            "candidate": ["MOVE", 1],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "paired.jsonl"
+            path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    str(Path(ef.__file__)),
+                    str(path),
+                    "--control-field",
+                    "control",
+                    "--candidate-field",
+                    "control",
+                    "--noop-threshold",
+                    "1",
+                ],
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(2, proc.returncode)
+        self.assertIn("must be distinct", proc.stderr)
 
 
 if __name__ == "__main__":

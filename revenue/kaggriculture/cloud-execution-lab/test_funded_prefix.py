@@ -220,6 +220,33 @@ class SeedRuntimePrefixTests(unittest.TestCase):
         self.assertEqual(budget.calls, 0)
         self.assertEqual(agent.funding_module.calls, 0)
 
+    def test_non_list_market_returns_exact_selected_identity(self):
+        budget = self.PassthroughBudget()
+        agent = self.make_agent(budget)
+        selected = {'market': {'not': 'a queue'}}
+        result = agent._seed_selected(self.observation(), {}, selected)
+        self.assertIs(result, selected)
+        self.assertEqual(budget.calls, 0)
+        self.assertEqual(agent.funding_module.calls, 0)
+
+    def test_malformed_prefix_row_before_seed_is_engine_inert(self):
+        budget = self.PassthroughBudget()
+        agent = self.make_agent(budget)
+        selected = {'market': [{'malformed': True}, ['BUY_SEED', 'WHEAT', 2]]}
+        result = agent._seed_selected(self.observation(), {}, copy.deepcopy(selected))
+        self.assertEqual(result, selected)
+        self.assertEqual(budget.calls, 1)
+        self.assertEqual(agent.funding_module.calls, 0)
+
+    def test_malformed_row_after_seed_edit_does_not_crash_dependency_scan(self):
+        budget = self.ReducingBudget()
+        agent = self.make_agent(budget)
+        selected = {'market': [['BUY_SEED', 'WHEAT', 2], {'malformed': True}]}
+        result = agent._seed_selected(self.observation(), {}, copy.deepcopy(selected))
+        self.assertEqual(result['market'], [['BUY_SEED', 'WHEAT', 1], {'malformed': True}])
+        self.assertEqual(budget.calls, 1)
+        self.assertEqual(agent.funding_module.calls, 0)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -169,8 +169,12 @@ _LAST_STEP = None
 def agent(observation, configuration=None):
     global _INSTANCE, _LAST_STEP
     step = int(observation.get('step', 0))
-    if _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP):
-        _INSTANCE = TerminalSell()
-    out = _INSTANCE.act(observation, configuration)
+    rebuild = _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP)
+    if rebuild:
+        candidate = TerminalSell()
+        out = candidate.act(observation, configuration)
+        _INSTANCE = candidate
+    else:
+        out = _INSTANCE.act(observation, configuration)
     _LAST_STEP = step
     return out

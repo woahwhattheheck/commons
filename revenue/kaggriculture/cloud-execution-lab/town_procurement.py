@@ -56,14 +56,16 @@ _STATE: dict[int, dict[str, Any]] = {}
 
 def _player(observation: Any) -> int:
     value = observation.get("player", 0) if isinstance(observation, dict) else getattr(observation, "player", 0)
-    return int(value)
+    if type(value) is not int or value not in (0, 1):
+        raise ValueError("town procurement requires public player 0 or 1 as a plain integer")
+    return value
 
 
 def _step(observation: Any) -> int:
     value = observation.get("step") if isinstance(observation, dict) else getattr(observation, "step", None)
-    if value is None:
-        raise ValueError("town procurement requires normalized observation.step")
-    return int(value)
+    if type(value) is not int or value < 0:
+        raise ValueError("town procurement requires nonnegative plain-int observation.step")
+    return value
 
 
 def _shed_wheat(observation: Any) -> int:
