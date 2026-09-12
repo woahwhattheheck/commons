@@ -5,10 +5,9 @@ This deliberately preserves only the published late V231 window (steps 216..227)
 The separately parameterized ``cattle_early`` window is not implemented here because
 the submitted V3.1 winner shipped it disabled.
 
-Current-ABI addition: same-step retries are transactional. An identical retry replays
-the exact detached output/post-state; changed same-step evidence recomputes from the
-pre-step snapshot. Rewinds reset the episode. This prevents pending COW ownership,
-placement state, or milk credit from being erased/double-applied by retry callbacks.
+This module is the source-faithful donor-semantic core. The historical whole-router
+state reset on ``step <= last`` is preserved here deliberately. Current selected-action
+same-step retry custody belongs to ``v231_late_current_safe.V231LateCurrentABISafe``.
 """
 from __future__ import annotations
 
@@ -209,12 +208,11 @@ def _projected_shed(
 
 @dataclass
 class V231LateCurrentABI:
-    """Selected-action adapter for the submitted V231 late livestock substitution."""
+    """Selected-action donor core for the submitted V231 late livestock substitution."""
 
     enabled: bool = False
     cap: int = DEFAULT_CAP
     _states: dict[int, dict[str, Any]] = field(default_factory=dict)
-    _transactions: dict[int, dict[str, Any]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if type(self.enabled) is not bool:
@@ -230,43 +228,10 @@ class V231LateCurrentABI:
 
         step = observation["step"]
         seat = observation["player"]
-        committed = self._states.get(seat)
-        transaction = self._transactions.get(seat)
-
-        if committed is None or step < committed["last"]:
-            # A true rewind/new episode discards old ownership and retry custody.
-            committed = _new_state()
-            self._states[seat] = committed
-            self._transactions.pop(seat, None)
-            transaction = None
-
-        if step == committed["last"]:
-            # Current ABI may retry a callback. Recompute changed evidence only from
-            # the exact pre-step snapshot; never from already-mutated post-state.
-            if transaction is None or transaction.get("step") != step:
-                return copy.deepcopy(selected)
-            if (
-                observation == transaction["observation"]
-                and selected == transaction["selected"]
-            ):
-                self._states[seat] = copy.deepcopy(transaction["post"])
-                return copy.deepcopy(transaction["output"])
-            pre_state = copy.deepcopy(transaction["pre"])
-        else:
-            pre_state = copy.deepcopy(committed)
-
-        working = copy.deepcopy(pre_state)
-        output = self._transform_valid(observation, selected, working)
-        self._states[seat] = working
-        self._transactions[seat] = {
-            "step": step,
-            "pre": copy.deepcopy(pre_state),
-            "observation": copy.deepcopy(observation),
-            "selected": copy.deepcopy(selected),
-            "output": copy.deepcopy(output),
-            "post": copy.deepcopy(working),
-        }
-        return output
+        state = self._states.get(seat)
+        if state is None or step <= state["last"]:
+            state = self._states[seat] = _new_state()
+        return self._transform_valid(observation, selected, state)
 
     def _transform_valid(
         self,
