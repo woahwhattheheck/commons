@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Pure selector for the V4 V217 end-of-day reset tail.
+"""Pure additive planner for the V4 V217 final-pre-reset rescue.
 
-The incumbent planner owns route construction.  This helper may only replace an
-otherwise-too-long round trip with its already-constructed outbound+FEED prefix
-when the official nightly reset immediately follows FEED.  Every failed proof
-returns the exact incumbent ``roundtrip`` object unchanged.
+The predecessor ``_v217_plan`` remains untouched.  This module is called only
+when that incumbent planner returned ``None`` and the new flag is enabled.  It
+repeats the incumbent admission proof and may return exactly one shortened task
+whose FEED lands on the final callback before a real nightly reset.  Every
+failed proof returns ``None``.
 """
 from __future__ import annotations
 
@@ -59,3 +60,116 @@ def apply_v217_eod_tail(forward, roundtrip, *, targets, step, end,
     if any(row != ["PASS"] for row in farmer_rows):
         return roundtrip, False
     return forward, True
+
+
+def plan_v217_eod_tail(view, st, step, action, pending, *, tape,
+                        projected_wheat, configuration, enabled=False):
+    """Build only the incumbent V217 rescue whose return leg crosses EOD.
+
+    This mirrors predecessor ``_v217_plan`` admission until route construction.
+    Unlike the predecessor, success is allowed only for the exact boundary where
+    the outbound path plus FEED consumes every remaining callback and the normal
+    round trip would be too long.  No predecessor state is mutated here.
+    """
+    if not enabled:
+        return None
+    if not isinstance(st, dict) or not isinstance(action, dict):
+        return None
+    if type(step) is not int:
+        return None
+    hour = step % 24
+    if not 16 <= hour <= 21 or st.get("v217_used", 0) >= 2:
+        return None
+    if action.get("farmer") != ["PASS"]:
+        return None
+    if not isinstance(tape, list):
+        return None
+    end = min(step + 24 - hour, 719)
+    if len(tape) < end:
+        return None
+
+    # Exact predecessor reservation rules.
+    try:
+        reserved_wheat = sum(
+            max(0, int(cmd[2]) if len(cmd) > 2 else 1)
+            for cmd in pending
+            if len(cmd) >= 2 and cmd[:2] == ["PICKUP", "WHEAT"]
+        )
+        for planned in tape[step:end]:
+            for cmd in [planned.get("farmer") or []] + list(planned.get("hands") or []):
+                if cmd and cmd[0] == "FEED":
+                    return None
+                if len(cmd) >= 2 and cmd[:2] == ["PICKUP", "WHEAT"]:
+                    reserved_wheat += max(0, int(cmd[2]) if len(cmd) > 2 else 1)
+    except (AttributeError, TypeError, ValueError, IndexError):
+        return None
+
+    try:
+        start = tuple(view.positions[0])
+        inventory = view.inventory(0)
+    except (AttributeError, TypeError, IndexError):
+        return None
+    if not isinstance(inventory, dict):
+        return None
+    need_pickup = inventory.get("WHEAT", 0) < 1
+    if need_pickup:
+        try:
+            if any(inventory.values()) or not view.beside_shed(start):
+                return None
+        except (AttributeError, TypeError):
+            return None
+        if type(projected_wheat) is not int or projected_wheat < max(2, reserved_wheat + 1):
+            return None
+
+    try:
+        targets = []
+        for y, row in enumerate(view.tiles):
+            for x, tile in enumerate(row):
+                if (isinstance(tile, dict) and tile.get("animal")
+                        and not tile.get("fed_today")
+                        and tile.get("consecutive_unfed", 0) >= 1):
+                    targets.append((abs(x - start[0]) + abs(y - start[1]), y, x))
+    except (AttributeError, TypeError, IndexError):
+        return None
+    if len(targets) != 1:
+        return None
+
+    _, y, x = targets[0]
+    moves = (
+        ["EAST"] * max(0, x - start[0])
+        + ["WEST"] * max(0, start[0] - x)
+        + ["SOUTH"] * max(0, y - start[1])
+        + ["NORTH"] * max(0, start[1] - y)
+    )
+    opposite = {"EAST": "WEST", "WEST": "EAST", "NORTH": "SOUTH", "SOUTH": "NORTH"}
+    forward = ([["PICKUP", "WHEAT"]] if need_pickup else []) + [[m] for m in moves] + [["FEED"]]
+    roundtrip = forward + [[opposite[m]] for m in reversed(moves)]
+    try:
+        farmer_rows = [list(tape[future_step].get("farmer") or ["PASS"])
+                       for future_step in range(step, end)]
+    except (AttributeError, TypeError, IndexError):
+        return None
+    commands, eod_tail = apply_v217_eod_tail(
+        forward, roundtrip, targets=targets, step=step, end=end,
+        farmer_rows=farmer_rows, configuration=configuration, enabled=True,
+    )
+    if not eod_tail:
+        return None
+
+    positions = []
+    pos = start
+    for cmd in commands:
+        positions.append(pos)
+        if cmd and cmd[0] in opposite:
+            dx, dy = {"EAST": (1, 0), "WEST": (-1, 0),
+                      "NORTH": (0, -1), "SOUTH": (0, 1)}[cmd[0]]
+            pos = (pos[0] + dx, pos[1] + dy)
+    if pos != (x, y):
+        return None
+    return {
+        "step": step,
+        "route": st.get("plan"),
+        "commands": commands,
+        "positions": positions,
+        "target": (x, y),
+    }
