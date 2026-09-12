@@ -84,6 +84,27 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                 )
             self.assertFalse(output.exists())
 
+    def test_nested_output_fails_without_mutating_runtime(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / 'runtime'
+            output = runtime / 'candidate'
+            runtime.mkdir()
+            main_bytes = b"VALUE = 'baseline'\n"
+            config_bytes = b'{}\n'
+            (runtime / 'main.py').write_bytes(main_bytes)
+            (runtime / 'TITAN-CONFIG.json').write_bytes(config_bytes)
+            before = sorted(path.name for path in runtime.iterdir())
+            with self.assertRaisesRegex(ValueError, 'not be nested under'):
+                materialize.materialize(
+                    runtime, output,
+                    expected_main_blob=materialize.git_blob_sha(main_bytes),
+                    expected_config_blob=materialize.git_blob_sha(config_bytes),
+                )
+            self.assertFalse(output.exists())
+            self.assertEqual(sorted(path.name for path in runtime.iterdir()), before)
+            self.assertEqual((runtime / 'main.py').read_bytes(), main_bytes)
+            self.assertEqual((runtime / 'TITAN-CONFIG.json').read_bytes(), config_bytes)
+
     def test_entry_calls_parent_before_outer_wf1_transform(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

@@ -50,6 +50,50 @@ def load(name, path, *, cache=False):
 deadline = load('_titan_deadline', HERE/'reference/titan-current/deadline_adapter.py')
 
 
+def _bind_public_observation(observation, cfg):
+    """Copy and bind the public actor/clock without numeric coercion.
+
+    The runtime is also a direct callable used by scratch/current-native
+    evaluators, so it cannot rely on the outer canonical entrypoint to have
+    already validated identity.  Reject aliases before fallback construction or
+    any mutable controller state is cleared, observed, replayed, or indexed.
+    """
+    obs = dict(observation)
+    player = obs.get('player') if 'player' in obs else None
+    if type(player) is not int or player not in (0, 1):
+        raise ValueError('player must be plain int 0 or 1')
+
+    has_step = 'step' in obs
+    if has_step:
+        step = obs['step']
+        if type(step) is not int or step < 0:
+            raise ValueError('step must be a plain nonnegative int')
+
+    has_day = 'day' in obs
+    has_hour = 'hour' in obs
+    if has_day != has_hour:
+        raise ValueError('day and hour must be supplied together')
+    if has_day:
+        turns = cfg.get('turnsPerDay', 24)
+        if type(turns) is not int or turns <= 0:
+            raise ValueError('turnsPerDay must be a plain positive int')
+        day = obs['day']
+        hour = obs['hour']
+        if type(day) is not int or day < 0:
+            raise ValueError('day must be a plain nonnegative int')
+        if type(hour) is not int or not 0 <= hour < turns:
+            raise ValueError('hour must be a plain int in the configured day')
+        derived = day * turns + hour
+        if has_step:
+            if step != derived:
+                raise ValueError('step disagrees with day/hour clock')
+        else:
+            obs['step'] = derived
+    elif not has_step:
+        raise ValueError('step or paired day/hour clock required')
+    return obs
+
+
 @dataclass(frozen=True)
 class Features:
     consumer: str = 'frozen'
@@ -572,8 +616,7 @@ class TitanAgent:
         started = invoked if entry_started is None else min(invoked,float(entry_started))
         cpu_started = time.process_time()
         cfg = dict(configuration or {})
-        obs = dict(observation)
-        obs['step'] = int(obs['step']) if obs.get('step') is not None else int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
+        obs = _bind_public_observation(observation, cfg)
         last = int(cfg.get('episodeSteps', 720))-2
         fallback = (deadline.terminal_liquidation_fallback(obs, cfg) if obs['step'] == last
                     else deadline.legal_pass(obs))

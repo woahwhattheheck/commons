@@ -215,12 +215,27 @@ def rank_empty_sites(mechanics, farm, calendar, configuration=None, *, reserved=
 
 def compare_existing_site(mechanics, farm, current_site, calendar, configuration=None, *, reserved=()):
     """Diagnostic only: compare current site to empty candidates without evicting it."""
+    if not isinstance(calendar, ServiceCalendar):
+        raise TypeError("calendar must be ServiceCalendar")
     config = dict(configuration or {})
-    board = _integer(config.get("boardSize", len(farm.get("tiles", []))), "boardSize", 2, 100)
+    tiles = farm.get("tiles")
+    if "boardSize" in config:
+        board = _integer(config["boardSize"], "boardSize", 2, 100)
+    else:
+        if not isinstance(tiles, list):
+            return None, {"compared": False, "reason": "current_site_tile_map_unobserved"}
+        board = _integer(len(tiles), "boardSize", 2, 100)
     x, y = _position(current_site, "current_site")
     if not (0 <= x < board and 0 <= y < board):
         return None, {"compared": False, "reason": "current_site_out_of_bounds"}
-    tile = farm["tiles"][y][x]
+    if (
+        not isinstance(tiles, list)
+        or y >= len(tiles)
+        or not isinstance(tiles[y], list)
+        or x >= len(tiles[y])
+    ):
+        return None, {"compared": False, "reason": "current_site_tile_map_unobserved"}
+    tile = tiles[y][x]
     if tile is None or tile == "LOCKED":
         return None, {"compared": False, "reason": "current_site_not_established_asset"}
     home = tuple(mechanics._default_spawn(board))

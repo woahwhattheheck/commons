@@ -205,6 +205,14 @@ jobs:
               raise SystemExit('cannot load canonical builder')
           build = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(build)
+          helper_path = lab / 'current_native_snapshot.py'
+          helper_spec = importlib.util.spec_from_file_location(
+              'titan_current_native_snapshot', helper_path
+          )
+          if helper_spec is None or helper_spec.loader is None:
+              raise SystemExit('cannot load current-native snapshot classifier')
+          snapshot = importlib.util.module_from_spec(helper_spec)
+          helper_spec.loader.exec_module(snapshot)
 
           def sha256(data: bytes) -> str:
               return hashlib.sha256(data).hexdigest()
@@ -275,29 +283,16 @@ jobs:
               if old_members.get(name) != new_members.get(name)
           )
 
-          b567 = 'b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9'
-          current_rebind = '6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0'
-          if old_sha == b567:
-              expected_live = {
-                  'main.py': '4a8cf7bcda1f0fea231a144692cb84a779a9e73e',
-                  'TITAN-CONFIG.json': '3a3bef83899d3010fad623b628d9e95d9978111b',
-                  'frozen_selected.py': 'fc7baf5c179818a55037f6a61d92984d81d1a21c',
-                  'scheduler.py': 'a483b24dd72b580d7d8811636b54d2d44f391575',
-                  'titan_runtime.py': current_rebind,
-              }
-              for name, expected in expected_live.items():
-                  if live_blobs.get(name) != expected:
-                      raise SystemExit(
-                          f'b567 refresh precondition drift for {name}: '
-                          f'expected {expected}, observed {live_blobs.get(name)}'
-                      )
-              old_runtime = old_members.get('titan_runtime.py')
-              if old_runtime is None or git_blob(old_runtime) != 'b952c9c228ecbde592bf3d2df01638677abb0d24':
-                  raise SystemExit('b567 preimage runtime is not the authenticated predecessor')
-              if changed_members != ['SOURCE.json', 'titan_runtime.py']:
-                  raise SystemExit(
-                      'b567 refresh changed unexpected package members: ' + ','.join(changed_members)
-                  )
+          b567_status = snapshot.classify_b567_transition(
+              old_sha=old_sha,
+              live_blobs=live_blobs,
+              old_runtime_blob=(
+                  git_blob(old_members['titan_runtime.py'])
+                  if old_members.get('titan_runtime.py') is not None
+                  else None
+              ),
+              changed_members=changed_members,
+          )
 
           (out / 'titan-current.tar.gz').write_bytes(data1)
           (out / 'CURRENT-SOURCE.json').write_bytes(source1)
@@ -321,12 +316,9 @@ jobs:
                   name: live_blobs[name]
                   for name in ('main.py', 'titan_runtime.py', 'frozen_selected.py', 'scheduler.py', 'TITAN-CONFIG.json')
               },
-              'authenticated_b567_transition': old_sha == b567,
-              'authenticated_b567_preimage': {
-                  'actions_artifact_id': 10180428228,
-                  'inner_tar_sha256': b567,
-                  'runtime_git_blob': 'b952c9c228ecbde592bf3d2df01638677abb0d24',
-              } if old_sha == b567 else None,
+              'authenticated_b567_transition': b567_status['authenticated'],
+              'authenticated_b567_preimage': b567_status['preimage'],
+              'b567_refresh_drift': b567_status['drift'],
               'required_validation_steps': [
                   'canonical publication filesystem suite',
                   'exact REBIND checker when runtime is 6d9720f4...',
@@ -345,6 +337,8 @@ jobs:
               'changed_members': changed_members,
               'runtime_git_blob': live_blobs['titan_runtime.py'],
               'runtime_files': receipt1['runtime_files'],
+              'authenticated_b567_transition': b567_status['authenticated'],
+              'b567_refresh_drift': b567_status['drift'],
           }, sort_keys=True))
 
       - name: Smoke exact rendered package
