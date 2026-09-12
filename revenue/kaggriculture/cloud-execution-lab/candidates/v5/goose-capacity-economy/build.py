@@ -5,9 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
-import stat
 import sys
 
 HERE = Path(__file__).resolve().parent
@@ -16,6 +14,7 @@ if str(SELECTIVE_CARROT) not in sys.path:
     sys.path.insert(0, str(SELECTIVE_CARROT))
 
 from build_delivery import archive_bytes, digest, members
+from publication_custody import publish_exclusive
 
 BASELINE_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 MAIN_SHA256 = "b98aec64f83ea9a216def7ab1fef320a6498ae37816f506af1f891c934027035"
@@ -84,129 +83,14 @@ def build(baseline_archive: Path):
     return compose(baseline, helper)
 
 
-def _resolved(path):
-    return Path(path).resolve(strict=False)
-
-
-def _validate_publication_paths(tar_path, receipt_path):
-    tar_resolved, receipt_resolved = map(_resolved, (tar_path, receipt_path))
-    if tar_resolved == receipt_resolved:
-        raise ValueError("archive and receipt paths must be distinct")
-
-
-def _reserve(path):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o644)
-    st = os.fstat(fd)
-    return fd, (st.st_dev, st.st_ino)
-
-
-def _write_reserved(fd, payload):
-    view = memoryview(payload)
-    while view:
-        written = os.write(fd, view)
-        if written <= 0:
-            raise OSError("short write while publishing P02 artifact")
-        view = view[written:]
-    os.fsync(fd)
-
-
-def _unlink_if_owned(path, identity):
-    path = Path(path)
-    try:
-        st = path.stat(follow_symlinks=False)
-    except FileNotFoundError:
-        return
-    if (st.st_dev, st.st_ino) == identity:
-        path.unlink()
-
-
-def _read_owned(path, identity):
-    path = Path(path)
-    before = path.stat(follow_symlinks=False)
-    if not stat.S_ISREG(before.st_mode) or (before.st_dev, before.st_ino) != identity:
-        raise RuntimeError("published pathname ownership drift")
-    flags = os.O_RDONLY
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags)
-    try:
-        opened = os.fstat(fd)
-        if not stat.S_ISREG(opened.st_mode) or (opened.st_dev, opened.st_ino) != identity:
-            raise RuntimeError("published file ownership drift")
-        chunks = []
-        while True:
-            chunk = os.read(fd, 1 << 20)
-            if not chunk:
-                break
-            chunks.append(chunk)
-        payload = b"".join(chunks)
-    finally:
-        os.close(fd)
-    after = path.stat(follow_symlinks=False)
-    if not stat.S_ISREG(after.st_mode) or (after.st_dev, after.st_ino) != identity:
-        raise RuntimeError("published pathname changed during verification")
-    return payload
-
-
-def _fsync_parent(path):
-    parent = Path(path).parent
-    flags = os.O_RDONLY
-    if hasattr(os, "O_DIRECTORY"):
-        flags |= os.O_DIRECTORY
-    fd = os.open(parent, flags)
-    try:
-        os.fsync(fd)
-    finally:
-        os.close(fd)
-
-
 def publish_pair(tar_path, receipt_path, packed, receipt):
-    """Create-exclusive archive+receipt publication with owned rollback."""
-    tar_path = Path(tar_path)
-    receipt_path = Path(receipt_path)
-    _validate_publication_paths(tar_path, receipt_path)
+    """Publish P02 archive+receipt through the canonical shared custody helper."""
     receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
-    tar_fd = receipt_fd = None
-    owned = []
-    try:
-        tar_fd, tar_identity = _reserve(tar_path)
-        owned.append((tar_path, tar_identity))
-        receipt_fd, receipt_identity = _reserve(receipt_path)
-        owned.append((receipt_path, receipt_identity))
-        _write_reserved(tar_fd, packed)
-        _write_reserved(receipt_fd, receipt_bytes)
-
-        # Keep both reservation descriptors open through pathname verification.
-        # This prevents unlink/recreate interposition from reusing an owned
-        # inode number before the final names are authenticated.
-        if _read_owned(tar_path, tar_identity) != packed:
-            raise RuntimeError("published archive payload drift")
-        if _read_owned(receipt_path, receipt_identity) != receipt_bytes:
-            raise RuntimeError("published receipt payload drift")
-        _fsync_parent(tar_path)
-        if receipt_path.parent.resolve(strict=False) != tar_path.parent.resolve(strict=False):
-            _fsync_parent(receipt_path)
-
-        os.close(tar_fd)
-        tar_fd = None
-        os.close(receipt_fd)
-        receipt_fd = None
-        return receipt
-    except BaseException:
-        for fd in (tar_fd, receipt_fd):
-            if fd is not None:
-                try:
-                    os.close(fd)
-                except OSError:
-                    pass
-        for path, identity in reversed(owned):
-            _unlink_if_owned(path, identity)
-        raise
+    publish_exclusive([
+        (Path(tar_path), packed),
+        (Path(receipt_path), receipt_bytes),
+    ])
+    return receipt
 
 
 def main(argv=None):
@@ -235,7 +119,7 @@ def main(argv=None):
             "files": {name: digest(body) for name, body in sorted(files.items())},
         }
         publish_pair(args.tar, args.receipt, packed, receipt)
-    except (FileExistsError, ValueError, RuntimeError) as exc:
+    except (OSError, ValueError, RuntimeError) as exc:
         parser.error(str(exc))
 
     print(json.dumps({
