@@ -251,8 +251,21 @@ def publish_component(out_dir: Path, manifest: dict, payloads: dict[str, bytes])
             raise ExportError(f"cannot inspect output directory {out_dir}: {exc}") from exc
         if not stat.S_ISDIR(mode) or stat.S_ISLNK(mode):
             raise ExportError(f"output path is not an ordinary directory: {out_dir}")
-        if any(out_dir.iterdir()):
-            raise ExportError(f"output directory is not empty: {out_dir}")
+        entries = list(out_dir.iterdir())
+        if entries:
+            scaffold = out_dir / "files"
+            try:
+                scaffold_mode = os.lstat(scaffold).st_mode
+            except OSError as exc:
+                raise ExportError(f"output directory is not empty: {out_dir}") from exc
+            if (
+                len(entries) != 1
+                or entries[0] != scaffold
+                or not stat.S_ISDIR(scaffold_mode)
+                or stat.S_ISLNK(scaffold_mode)
+                or any(scaffold.iterdir())
+            ):
+                raise ExportError(f"output directory is not empty: {out_dir}")
     preflight_component(manifest, payloads)
     requested: list[tuple[Path, bytes]] = [(out_dir / "COMPONENT.json", manifest_bytes(manifest))]
     for source, raw in sorted(payloads.items()):
