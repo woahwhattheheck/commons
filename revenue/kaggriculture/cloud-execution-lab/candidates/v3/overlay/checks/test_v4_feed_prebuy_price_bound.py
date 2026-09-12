@@ -58,7 +58,7 @@ def parent_action():
     return {"farmer": ["PASS"], "hands": [], "market": []}
 
 
-def planner_probe(_observation, _action, quantity, _r04):
+def planner_probe(_observation, _action, quantity, _r04, configuration=None):
     if quantity < 2:
         return None
     return {"target": [6, 4]}
@@ -69,9 +69,13 @@ class F2SameTurnWheatFundingTests(unittest.TestCase):
         obs = observation(money)
         parent = parent_action()
         before = copy.deepcopy(parent)
-        with mock.patch.object(lane, "_next_v217_task", side_effect=planner_probe), \
+        config = dict(CONFIG)
+        with mock.patch.object(lane, "_next_v217_task", side_effect=planner_probe) as planner, \
              mock.patch.object(lane, "_remaining_day_cash_spend_free", return_value=True):
-            quantity = lane._purchase_quantity(obs, parent, dict(CONFIG), r04)
+            quantity = lane._purchase_quantity(obs, parent, config, r04)
+        self.assertEqual(planner.call_count, 3)
+        for call in planner.call_args_list:
+            self.assertIs(call.kwargs["configuration"], config)
         self.assertEqual(parent, before)
         return quantity
 
