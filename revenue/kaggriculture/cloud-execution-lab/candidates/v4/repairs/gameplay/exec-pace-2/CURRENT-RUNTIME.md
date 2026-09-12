@@ -36,9 +36,9 @@ change quantities, bypass feasibility, or run a second producer/controller.
 
 Development copy, Python normal and `-O`:
 
-* 13 focused tests discovered; 12 PASS + 1 repository-binding test SKIP because
+* 16 focused tests discovered; 15 PASS + 1 repository-binding test SKIP because
   the standalone `/mnt/data` copy does not contain the production tree.
-* The same 12 semantic/composer checks pass under `python -O`.
+* The same 15 semantic/composer checks pass under `python -O`.
 * `py_compile` passes for runtime module, composer and tests.
 * Coverage includes 25-step warmup, slope decision, identical duplicate
   idempotence, step-gap/player reset, per-good missing quote invalidation,
@@ -46,10 +46,33 @@ Development copy, Python normal and `-O`:
   veto, quantity-mismatch fail-open, default-OFF composition, source-drift and
   double-apply rejection.
 
-Once this packet lives inside Commons, the 13th test is mandatory: it locates
-`cloud-execution-lab/titan_runtime.py`, `frozen_selected.py` and
+Once this packet lives inside Commons, the repository-binding test is mandatory:
+it locates `cloud-execution-lab/titan_runtime.py`, `frozen_selected.py` and
 `TITAN-CONFIG.json` from the package path and composes/compiles those exact
 current sources. It skips only in an out-of-tree standalone copy.
+
+## Post-merge semantic blocker resolution
+
+A live intake review correctly required a stronger proof at the optimizer/composer
+boundary before economics, and separately described an aliased `reference`/`plan`
+callsite that is not present in the merged Commons source.  The package now makes
+the proof executable rather than relying on source inspection:
+
+* the composed call is exactly
+  `exec_pace_apply(exec_pace_state,item,reference,plan,info)`, with distinct AST
+  names for the optimizer baseline and optimizer candidate;
+* `apply_candidate()` returns the reference schedule and writes
+  `accepted=False` / `acceptance_rule=exec_pace_block` when a rising-product
+  candidate advances cumulative sales;
+* the composer no longer uses a blocking `continue`, so the existing diagnostics
+  append and `seller_choice_rank()` path always executes;
+* a test executes the literal `PLAN_INSERT` composer fragment with a warm rising
+  MILK stream and `((24,1),(28,4)) -> ((24,3),(28,2))` accelerated candidate,
+  and proves the returned plan is the reference and existing eligibility is false;
+* forced-feasibility has an explicit bypass regression.
+
+This resolves the control-flow/alias proof obligation only.  It still does not
+constitute current-native economic promotion.
 
 ## Still deliberately open
 
