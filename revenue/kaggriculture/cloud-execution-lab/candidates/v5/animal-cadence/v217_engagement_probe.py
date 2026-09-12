@@ -168,10 +168,15 @@ def _v217_probe_observe(view,st,step,action,pending,tape,end):
             return
     targets=[]
     for y,row in enumerate(view.tiles):
+        if not isinstance(row,list):
+            return
         for x,tile in enumerate(row):
-            if (isinstance(tile,dict) and tile.get('animal') in ('GOOSE','COW','SHEEP')
-                    and tile.get('fed_today') is False
-                    and tile.get('consecutive_unfed',0)>=1 and (x,y) not in feed_targets):
+            if not (isinstance(tile,dict) and tile.get('animal') in ('GOOSE','COW','SHEEP')):
+                continue
+            strikes=tile.get('consecutive_unfed')
+            if type(strikes) is not int or strikes<0:
+                return
+            if tile.get('fed_today') is False and strikes>=1 and (x,y) not in feed_targets:
                 targets.append((abs(x-start[0])+abs(y-start[1]),y,x))
     for distance,y,x in sorted(targets):
         moves=_v217_probe_path(view.tiles,start,(x,y))
