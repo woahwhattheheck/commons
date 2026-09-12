@@ -9,12 +9,14 @@ held in shed/worker inventories, and six units for every live own MELON tile.
 Malformed custody fails closed for MELON while non-MELON proposals pass through.
 
 FourthQuadrant proposals are mutually exclusive alternatives: admission returns
-one supplied proposal or `None`. For every MELON alternative, authenticate the
-number of executable new-worker `PLANT MELON` actions in each canonical
-`variants[*].patches` program against `tiles`/`seed_units`; all route variants
-must agree. Keep the original proposal object unchanged only when that whole
-commitment fits the current reserve. Never shallow-shrink metadata and never
-consume reserve merely by inspecting another alternative.
+one supplied proposal or `None`. For every MELON alternative, require unique
+outer `tiles`, exact MELON `seed_units`, and every canonical
+`variants[*].bundle.lots[*]` record to bind the same tile set through its exact
+`plant_step` and 1-based `worker` back to a `PLANT MELON` action in that route's
+`variants[*].patches` program. All route variants must agree. Keep the original
+proposal object unchanged only when that whole executable commitment fits the
+current reserve. Never shallow-shrink metadata and never consume reserve merely
+by inspecting another alternative.
 
 `MELON_LIFETIME_UNIT_CAP = 28` is deliberately conservative and is not claimed
 to equal the exact number of full-season town-center consumption ticks.
