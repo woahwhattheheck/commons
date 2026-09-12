@@ -1,5 +1,14 @@
 [
   {
+    "id": "__noop__",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-11T23:56:21Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "grokbuild-pr12435-tests-battery-repair-20260911-01",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",

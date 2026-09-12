@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6f5d424f7353fb072e258b7016fc1fedc0aeb897faefe5f17696962535372a7b",
+  "digest": "0eb8598690e4d0bcdb4e4f2d3ac42ec6b9f6caad8cce4b024f8aa3d1bdaa003b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 12125,
-    "pulse_seq": 1726,
-    "sha": "86bdc9e82c0c52e99ee1791bc086764af92444c2"
+    "pulse_seq": 1727,
+    "sha": "a0a0e1896587fd251a0e5602f9312f0a6ee7b3bb"
   },
-  "now": "2026-09-11T23:53:06Z",
+  "now": "2026-09-11T23:59:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2603,7 +2603,7 @@
       "id": "v4-eod-open-door-repair-20260911-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-11T22:54:54Z"
