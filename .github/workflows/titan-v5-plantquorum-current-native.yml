@@ -1,0 +1,151 @@
+name: TITAN V5 PLANTQUORUM current-native census
+
+on:
+  pull_request:
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/native_census.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/unit_pipeline_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json"
+      - ".github/workflows/titan-v5-plantquorum-current-native.yml"
+  push:
+    branches:
+      - "astra/v5-plantquorum-current-native-20260912"
+    paths:
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native/**"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/native_census.py"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/unit-phase-chaining/unit_pipeline_admission.py"
+      - "revenue/kaggriculture/cloud-execution-lab/reference/engine/kaggriculture.py"
+      - "revenue/kaggriculture/cloud-execution-lab/runtime/integrated-selected/CURRENT-ARCHIVE.json"
+      - ".github/workflows/titan-v5-plantquorum-current-native.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-contracts:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Observer and runner contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native
+        run: |
+          python -B -m unittest -v test_census.py test_plantquorum_census.py
+          python -O -B -m unittest -v test_census.py test_plantquorum_census.py
+      - name: Compile full evidence stack and canonical theorem
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        run: |
+          python -B -m py_compile \
+            candidates/v5/plantquorum-current-native/census.py \
+            candidates/v5/plantquorum-current-native/plantquorum_census.py \
+            candidates/v5/plantquorum-current-native/test_census.py \
+            candidates/v5/plantquorum-current-native/test_plantquorum_census.py \
+            candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py
+
+  starter-census:
+    needs: evidence-contracts
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        seed: [17, 101, 6607, 9922999, 2026091201, 2026091207, 2026091213, 2026091219]
+        seat: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run one exact current-V5 engagement cell
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/plantquorum"
+          output="$RUNNER_TEMP/plantquorum/pq-${{ matrix.seed }}-p${{ matrix.seat }}.json"
+          python -B plantquorum_census.py cell \
+            --seed ${{ matrix.seed }} \
+            --seat ${{ matrix.seat }} \
+            --output "$output"
+          python -B - "$output" <<'PY'
+          import json, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          value = json.loads(path.read_text())
+          assert value["callbacks"] == 719
+          assert value["candidate_applied_to_gameplay"] is False
+          assert type(value["engagements"]) is int and value["engagements"] >= 0
+          print(json.dumps({
+              "seed": value["seed"],
+              "seat": value["seat"],
+              "callbacks": value["callbacks"],
+              "engagements": value["engagements"],
+              "scores": value["scores"],
+          }, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pq-cell-${{ matrix.seed }}-p${{ matrix.seat }}
+          path: ${{ runner.temp }}/plantquorum/pq-${{ matrix.seed }}-p${{ matrix.seat }}.json
+          if-no-files-found: error
+          retention-days: 7
+
+  aggregate-starter-census:
+    needs: starter-census
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact event head
+        shell: bash
+        run: |
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pq-cell-*
+          path: ${{ runner.temp }}/pq-cells
+          merge-multiple: true
+      - name: Aggregate exact 8x2 panel
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/plantquorum-current-native
+        shell: bash
+        run: |
+          shopt -s nullglob
+          cells=("$RUNNER_TEMP"/pq-cells/*.json)
+          test "${#cells[@]}" -eq 16
+          output="$RUNNER_TEMP/plantquorum-panel.json"
+          python -B plantquorum_census.py aggregate --output "$output" "${cells[@]}"
+          cat "$output"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plantquorum-starter-panel
+          path: ${{ runner.temp }}/plantquorum-panel.json
+          if-no-files-found: error
+          retention-days: 14
