@@ -198,11 +198,13 @@ def census_route(
 ) -> dict[str, Any]:
     """Find non-overlapping source-theorem-safe main-farmer movement loops.
 
-    A loop is admitted only inside one day, across unit rows limited to MOVE/PASS,
-    with no HIRE market row in the interval, and with exact simulated farmer
-    position returning to the same tile. Movement is the only unit side effect in
-    such an interval; excluding HIRE removes the one market operation whose spawn
-    result consumes farmer/hand positions.
+    A loop is admitted only inside one day, across actor-0 rows limited to
+    MOVE/PASS, with no HIRE market row in the interval, and with exact simulated
+    farmer position returning to the same tile. Closed-loop movement rows are an
+    atomic rewrite group: the proof permits replacing all movement rows in one
+    admitted interval together, never an arbitrary subset. Boundary movement
+    no-ops are individually PASS-equivalent. Excluding HIRE removes the one market
+    operation whose spawn result consumes farmer/hand positions.
     """
     if board_size <= 0 or turns_per_day <= 0:
         raise MotionCensusError("positive board_size/turns_per_day required")
@@ -265,7 +267,6 @@ def census_route(
     loop_rows = sorted(
         {idx for interval in intervals for idx in interval["movement_rows"]}
     )
-    all_safe = sorted(set(boundary_noops) | set(loop_rows))
     return {
         "plan": plan,
         "steps": len(route),
@@ -275,8 +276,10 @@ def census_route(
         "closed_hire_free_motion_loops": intervals,
         "closed_loop_count": len(intervals),
         "closed_loop_movement_rows": loop_rows,
-        "provably_pass_equivalent_movement_rows": all_safe,
-        "provably_pass_equivalent_count": len(all_safe),
+        "individually_pass_equivalent_movement_rows": boundary_noops,
+        "individually_pass_equivalent_count": len(boundary_noops),
+        "jointly_pass_equivalent_loop_movement_rows": loop_rows,
+        "jointly_pass_equivalent_loop_movement_count": len(loop_rows),
     }
 
 
@@ -286,12 +289,16 @@ def build_report(tapes: list[list[dict[str, Any]]], sources: dict[str, str]) -> 
         for plan in range(TAPE_COUNT)
     ]
     return {
-        "schema": "titan.v4.route-motion-census.v1",
+        "schema": "titan.v4.route-motion-census.v2",
         "status": "SOURCE_BOUND_RESEARCH_ONLY",
         "sources": sources,
         "theorem": {
             "scope": "main farmer actor 0 only; fixed effective routes",
-            "safe_rewrite": "listed movement rows are PASS-equivalent under pinned engine/router semantics",
+            "safe_rewrite": (
+                "boundary no-op movement rows are individually PASS-equivalent; "
+                "closed-loop movement rows are PASS-equivalent only when every "
+                "movement row in that listed closed interval is rewritten together"
+            ),
             "guards": [
                 "same day only",
                 "no substantive main-farmer unit action inside closed loop",
@@ -309,11 +316,18 @@ def build_report(tapes: list[list[dict[str, Any]]], sources: dict[str, str]) -> 
         "totals": {
             "movement_rows": sum(r["movement_rows"] for r in routes),
             "closed_loop_count": sum(r["closed_loop_count"] for r in routes),
-            "provably_pass_equivalent_count": sum(
-                r["provably_pass_equivalent_count"] for r in routes
+            "individually_pass_equivalent_count": sum(
+                r["individually_pass_equivalent_count"] for r in routes
             ),
-            "routes_with_safe_rows": sum(
-                bool(r["provably_pass_equivalent_count"]) for r in routes
+            "jointly_pass_equivalent_loop_movement_count": sum(
+                r["jointly_pass_equivalent_loop_movement_count"] for r in routes
+            ),
+            "routes_with_safe_rewrites": sum(
+                bool(
+                    r["individually_pass_equivalent_count"]
+                    or r["closed_loop_count"]
+                )
+                for r in routes
             ),
         },
         "not_claimed": [
