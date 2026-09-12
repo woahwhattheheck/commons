@@ -24,12 +24,14 @@ from typing import Iterable, Iterator, Sequence
 RULE_RAW_OPCODE_INDEX = "RAW_OPCODE_INDEX"
 RULE_EXACT_ROW_LEN3 = "EXACT_ROW_LEN3"
 RULE_PUBLIC_OBS_COERCION = "PUBLIC_OBS_COERCION"
+RULE_PUBLIC_OBS_MISSING_NULL_ALIAS = "PUBLIC_OBS_MISSING_NULL_ALIAS"
 RULE_TRUTHY_CONFIG_COERCION = "TRUTHY_CONFIG_COERCION"
 
 RULES = (
     RULE_RAW_OPCODE_INDEX,
     RULE_EXACT_ROW_LEN3,
     RULE_PUBLIC_OBS_COERCION,
+    RULE_PUBLIC_OBS_MISSING_NULL_ALIAS,
     RULE_TRUTHY_CONFIG_COERCION,
 )
 
@@ -60,6 +62,10 @@ def _literal(node: ast.AST) -> object:
     if isinstance(node, ast.Constant):
         return node.value
     return None
+
+
+def _is_none_literal(node: ast.AST) -> bool:
+    return isinstance(node, ast.Constant) and node.value is None
 
 
 def _root_name(node: ast.AST) -> str | None:
@@ -117,6 +123,52 @@ def _raw_opcode_subject(node: ast.Subscript) -> ast.Name | None:
     return value if isinstance(value, ast.Name) and value.id in _ROW_NAMES else None
 
 
+def _nullable_public_get(node: ast.AST) -> tuple[str, str] | None:
+    if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+        return None
+    if node.func.attr != "get" or not node.args or len(node.args) > 2:
+        return None
+    root = _root_name(node.func.value)
+    field = _literal(node.args[0])
+    if root not in _OBS_NAMES or field not in _PUBLIC_FIELDS:
+        return None
+    if len(node.args) == 2 and not _is_none_literal(node.args[1]):
+        return None
+    return root, str(field)
+
+
+def _none_test_subject(node: ast.Compare) -> ast.AST | None:
+    if len(node.ops) != 1 or len(node.comparators) != 1:
+        return None
+    if not isinstance(node.ops[0], (ast.Is, ast.Eq)):
+        return None
+    left, right = node.left, node.comparators[0]
+    if isinstance(right, ast.Constant) and right.value is None:
+        return left
+    if isinstance(left, ast.Constant) and left.value is None:
+        return right
+    return None
+
+
+def _nullable_public_aliases(tree: ast.AST) -> dict[str, set[str]]:
+    aliases: dict[str, set[str]] = {}
+    for node in ast.walk(tree):
+        target: ast.AST | None = None
+        value: ast.AST | None = None
+        if isinstance(node, ast.Assign) and len(node.targets) == 1:
+            target, value = node.targets[0], node.value
+        elif isinstance(node, ast.AnnAssign):
+            target, value = node.target, node.value
+        if not isinstance(target, ast.Name) or value is None:
+            continue
+        public_get = _nullable_public_get(value)
+        if public_get is None:
+            continue
+        _, field = public_get
+        aliases.setdefault(target.id, set()).add(field)
+    return aliases
+
+
 def _suppressed(lines: Sequence[str], line: int, rule: str) -> bool:
     for index in (line - 1, line - 2):
         if not (0 <= index < len(lines)):
@@ -138,6 +190,7 @@ def scan_source(source: str, path: str = "<memory>") -> list[Finding]:
     lines = source.splitlines()
     findings: list[Finding] = []
     seen: set[tuple[int, int, str]] = set()
+    nullable_aliases = _nullable_public_aliases(tree)
 
     def add(node: ast.AST, rule: str, message: str) -> None:
         line = int(getattr(node, "lineno", 1))
@@ -164,6 +217,20 @@ def scan_source(source: str, path: str = "<memory>") -> list[Finding]:
                     node,
                     RULE_EXACT_ROW_LEN3,
                     f"exact len({subject.id}) ==/!= 3 boundary; confirm pinned parser accepts/rejects trailing fields",
+                )
+            null_subject = _none_test_subject(node)
+            public_get = _nullable_public_get(null_subject) if null_subject is not None else None
+            fields: set[str] = set()
+            if public_get is not None:
+                fields.add(public_get[1])
+            elif isinstance(null_subject, ast.Name):
+                fields.update(nullable_aliases.get(null_subject.id, ()))
+            if fields:
+                add(
+                    node,
+                    RULE_PUBLIC_OBS_MISSING_NULL_ALIAS,
+                    "public observation .get(" + ",".join(sorted(fields)) + ") is tested as null; "
+                    "confirm explicit null cannot alias key absence before fallback",
                 )
         elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
             if node.func.id in {"int", "float"} and node.args and _mentions_public_observation(node.args[0]):
