@@ -158,6 +158,7 @@ def reduce_root_moves(previous, current):
         new = cur_tips.get(root, UNKNOWN)
         if old == new:
             continue
+        # A missing/UNKNOWN endpoint is a root observation problem, not proof of a move.
         if old == UNKNOWN or new == UNKNOWN:
             move_state = UNKNOWN
             move_reason = "root tip missing or UNKNOWN in one snapshot"
