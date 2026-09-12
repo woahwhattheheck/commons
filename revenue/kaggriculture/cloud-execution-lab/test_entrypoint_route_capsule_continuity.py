@@ -177,6 +177,31 @@ class EntrypointRouteCapsuleContinuityTests(unittest.TestCase):
         )
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
 
+    def test_live_instance_preproducer_cancellation_preserves_route_origin(self):
+        live = Instance('YARN')
+        self.entry._INSTANCE = live
+        self.assertEqual(self.entry.agent(self.obs(227), self.config), PASS)
+        self.assertEqual(getattr(live, '_completed_route_step', None), 227)
+
+        def interrupted_live_callback(*_args, **_kwargs):
+            live.controller.cur = 'UNRETURNED_NEW_ROUTE'
+            raise ControlledTimer.active.expired
+
+        with patch.object(live, 'act', side_effect=interrupted_live_callback):
+            self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
+        self.assertIsNone(self.entry._INSTANCE)
+        self.assertEqual(live.controller.cur, 'UNRETURNED_NEW_ROUTE')
+        self.assertEqual(
+            self.entry._ROUTE_RECOVERY,
+            {
+                'route_step': 227,
+                'last_step': 228,
+                'player': 0,
+                'route': 'YARN',
+            },
+        )
+        self.assertEqual(self.resume(229)._completed_route, 'YARN')
+
     def test_malformed_capsule_retires_before_restore(self):
         self.entry._ROUTE_RECOVERY = {
             'route_step': 227,
