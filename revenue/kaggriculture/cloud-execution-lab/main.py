@@ -45,6 +45,61 @@ def _runtime_feature_data(feature_data):
     }
 
 
+def _canonical_entrypoint_observation(observation, configuration):
+    """Bind public identity exactly before any retained root state is touched."""
+    obs = dict(observation)
+    cfg = dict(configuration or {})
+
+    if 'player' not in obs:
+        raise ValueError('entrypoint requires public player')
+    player = obs['player']
+    if type(player) is not int or player not in (0, 1):
+        raise ValueError('entrypoint player must be plain integer 0 or 1')
+
+    step_present = 'step' in obs
+    day_present = 'day' in obs
+    hour_present = 'hour' in obs
+
+    def exact_turns_per_day():
+        turns = cfg.get('turnsPerDay', 24)
+        if type(turns) is not int or turns <= 0:
+            raise ValueError('entrypoint turnsPerDay must be a positive plain integer')
+        return turns
+
+    if step_present:
+        step = obs['step']
+        if type(step) is not int or step < 0:
+            raise ValueError('entrypoint step must be a nonnegative plain integer')
+        if day_present != hour_present:
+            raise ValueError('entrypoint redundant clock requires both day and hour')
+        if day_present:
+            turns = exact_turns_per_day()
+            day = obs['day']
+            hour = obs['hour']
+            if type(day) is not int or day < 0:
+                raise ValueError('entrypoint day must be a nonnegative plain integer')
+            if type(hour) is not int or not 0 <= hour < turns:
+                raise ValueError('entrypoint hour must be a bounded plain integer')
+            if step != day * turns + hour:
+                raise ValueError('entrypoint step/day/hour identity mismatch')
+    else:
+        if not day_present or not hour_present:
+            raise ValueError('entrypoint requires step or complete day/hour clock')
+        turns = exact_turns_per_day()
+        day = obs['day']
+        hour = obs['hour']
+        if type(day) is not int or day < 0:
+            raise ValueError('entrypoint day must be a nonnegative plain integer')
+        if type(hour) is not int or not 0 <= hour < turns:
+            raise ValueError('entrypoint hour must be a bounded plain integer')
+        step = day * turns + hour
+
+    normalized = dict(obs)
+    normalized['player'] = player
+    normalized['step'] = step
+    return normalized
+
+
 def _new_instance(root, feature_data):
     """Construct the configured runtime and its opt-in economic admission."""
     from titan_runtime import TitanAgent, Features, load
@@ -135,12 +190,8 @@ def _new_instance(root, feature_data):
                     if (getattr(history_checkpoint, 'pending', None) is not None
                             and getattr(history_checkpoint, 'deferred_observation', None) is None
                             and getattr(history_checkpoint, '_observation_commit', None) is None):
-                        recovery_obs = dict(observation)
-                        if recovery_obs.get('step') is None:
-                            cfg = dict(configuration or {})
-                            recovery_obs['step'] = (int(recovery_obs['day'])
-                                * int(cfg.get('turnsPerDay', 24))
-                                + int(recovery_obs['hour']))
+                        recovery_obs = _canonical_entrypoint_observation(
+                            observation, configuration)
                         history_checkpoint.defer_observation(recovery_obs)
                     # TitanAgent deliberately suspended history while constructing
                     # its safe fallback, so the fallback action was never rebound
@@ -162,8 +213,8 @@ def _new_instance(root, feature_data):
             """
             from copy import deepcopy
             self._finalizer_checkpoint = {
-                'step': int(obs['step']),
-                'player': int(obs['player']),
+                'step': obs['step'],
+                'player': obs['player'],
                 'stage': str(stage),
                 'action': deepcopy(selected),
             }
@@ -232,16 +283,14 @@ def _entrypoint_fallback(instance, observation, configuration, deadline):
     from copy import deepcopy
     cfg = dict(configuration or {})
     obs = dict(observation)
-    step = obs.get('step')
-    if step is None:
-        step = int(obs['day'])*int(cfg.get('turnsPerDay', 24))+int(obs['hour'])
-    obs['step'] = int(step)
+    step = obs['step']
+    player = obs['player']
 
     action = None
     checkpoint = None if instance is None else getattr(instance, '_finalizer_checkpoint', None)
     if (isinstance(checkpoint, dict)
-            and checkpoint.get('step') == obs['step']
-            and checkpoint.get('player') == int(obs['player'])
+            and checkpoint.get('step') == step
+            and checkpoint.get('player') == player
             and checkpoint.get('action') is not None):
         action = deepcopy(checkpoint['action'])
     if action is None:
@@ -256,7 +305,7 @@ def _entrypoint_fallback(instance, observation, configuration, deadline):
 
     last = int(cfg.get('episodeSteps', 720))-2
     return (deadline.terminal_liquidation_fallback(obs, cfg)
-            if obs['step'] == last else deadline.legal_pass(obs))
+            if step == last else deadline.legal_pass(obs))
 
 
 def _record_entrypoint_deadline(instance, stage, started):
@@ -283,7 +332,7 @@ def _spatial_recovery_journal(snapshot, step):
     if snapshot is None:
         return None
     from copy import deepcopy
-    return {'last_step': int(step), 'state': deepcopy(snapshot)}
+    return {'last_step': step, 'state': deepcopy(snapshot)}
 
 
 def agent(observation, configuration=None):
@@ -294,16 +343,14 @@ def agent(observation, configuration=None):
     import json
     import sys
     cfg = dict(configuration or {})
+    observation = _canonical_entrypoint_observation(observation, cfg)
     path = globals().get('__file__') or cfg.get('__raw_path__')
     if not path:
         raise ValueError('Entrypoint path required')
     root = Path(path).resolve().parent
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
-    step = observation.get('step')
-    if step is None:
-        step = int(observation['day'])*int(cfg.get('turnsPerDay', 24))+int(observation['hour'])
-    step = int(step)
+    step = observation['step']
 
     journal = _SPATIAL_RECOVERY if isinstance(_SPATIAL_RECOVERY, dict) else None
     journal_step = None if journal is None else journal.get('last_step')
