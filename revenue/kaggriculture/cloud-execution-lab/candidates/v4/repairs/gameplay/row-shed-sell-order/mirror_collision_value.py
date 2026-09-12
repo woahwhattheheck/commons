@@ -22,8 +22,9 @@ SCHEMA = "titan.v4.rowshed.mirror-collision-value.v1"
 ASSIGNMENT_SCHEMA = "titan.v4.rowshed.mirror-assignment.v1"
 # Official _process_market aborts a unit loop before iteration 100_000.
 MAX_EXECUTABLE_UNITS_PER_MARKET_ORDER = 99_999
-# Official maxMarketOrdersPerTurn defaults to 10; assignment evidence never
-# certifies a larger block even if a caller supplies one.
+# maxMarketOrdersPerTurn defaults to 10 but custom configs may be larger.  The
+# exact DP deliberately certifies only <=10 rows as a conservative research
+# safety bound; larger executable prefixes remain score-only / uncertified.
 MAX_ASSIGNMENT_ROWS = 10
 
 
@@ -127,7 +128,7 @@ def _assignment_costs(costs: Sequence[Any]) -> list[int]:
     if not isinstance(costs, Sequence) or isinstance(costs, (str, bytes)):
         raise MirrorCollisionInputError("assignment costs must be a sequence")
     if len(costs) > MAX_ASSIGNMENT_ROWS:
-        raise MirrorCollisionInputError("assignment row count exceeds official market horizon")
+        raise MirrorCollisionInputError("assignment row count exceeds research safety bound")
     return [
         _plain_nonnegative_int(value, f"assignment cost {index}")
         for index, value in enumerate(costs)
@@ -227,7 +228,7 @@ def _assignment_report(scored: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         "predicted_mirror_edge": None,
     }
     if len(scored) > MAX_ASSIGNMENT_ROWS:
-        report["reason"] = "row_count_exceeds_official_market_horizon"
+        report["reason"] = "row_count_exceeds_assignment_safety_bound"
         return report
     if len(set(items)) != len(items):
         report["reason"] = "duplicate_product_rows_outside_assignment_theorem"
