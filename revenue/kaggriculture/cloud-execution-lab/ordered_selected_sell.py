@@ -12,7 +12,7 @@ from pathlib import Path
 import importlib.util
 
 import mechanics
-from selected_action_sell import SelectedActionSell, absolute_step
+from selected_action_sell import SelectedActionSell, absolute_step, observation_player
 
 _spec = importlib.util.spec_from_file_location(
     '_atlas_ordered_projection',
@@ -51,11 +51,12 @@ def _configuration_binding(configuration):
 
 def _binding(observation, configuration, selected_action):
     """State needed to identify the same selected unit stage, including order."""
-    seat = int(observation['player'])
+    step = absolute_step(observation, configuration)
+    seat = observation_player(observation)
     # repr retains inventory insertion order, which controls DROP admission.
     # Configuration mapping order is not an engine action-order signal, so bind
     # its values canonically to permit safe reuse by independently copied maps.
-    return (absolute_step(observation, configuration), seat,
+    return (step, seat,
             repr(observation['farms'][seat]), repr(observation['private']),
             repr(observation['market']), repr(observation.get('town', {})),
             repr(selected_action), _configuration_binding(configuration))
@@ -75,6 +76,7 @@ class OrderedSelectedSell:
     def prepare(self, observation, configuration, selected_action, *,
                 future_actions, end_step=None, contingent_harvests=()):
         config = dict(configuration or {})
+        seat = observation_player(observation)
         now = absolute_step(observation, config)
         requested_end = now + self.seller.horizon if end_step is None else min(
             int(end_step), now + self.seller.horizon)
@@ -83,7 +85,6 @@ class OrderedSelectedSell:
             future_actions=future_actions, end_step=requested_end,
             contingent_harvests=contingent_harvests)
         post = deepcopy(observation)
-        seat = int(post['player'])
         post['farms'][seat] = deepcopy(packet['post_units']['farm'])
         post['private'] = deepcopy(packet['post_units']['private'])
         post.update(step=now, day=packet['post_units']['day'], hour=packet['post_units']['hour'])

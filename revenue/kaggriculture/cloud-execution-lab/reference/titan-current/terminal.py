@@ -301,7 +301,7 @@ def overlay(observation, parent_action, configuration=None):
     market = [['SELL', k, n] for k, n in projected.items() if k in PRODUCTS and n > 0]
     market.sort(key=lambda o: (-prices[o[1]] * o[2], o[1]))
     return {'farmer': actions[0], 'hands': actions[1:],
-            'market': market[:int(cfg.get('maxMarketOrdersPerTurn', 10))]}
+            'market': market[:max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))]}
 
 
 def inherited_routes(farm, own_future_actions, day):
@@ -405,4 +405,4 @@ class Planner:
         market = [['SELL', k, n] for k, n in projected.items() if k in PRODUCTS and n > 0]
         market.sort(key=lambda o: (-prices[o[1]] * o[2], o[1]))
         return {'farmer': actions[0], 'hands': actions[1:],
-                'market': market[:int(cfg.get('maxMarketOrdersPerTurn', 10))]}
+                'market': market[:max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))]}
