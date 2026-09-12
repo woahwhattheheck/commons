@@ -77,7 +77,22 @@ def git_read_blob(repo_root: Path, blob: str) -> bytes:
     return raw
 
 
-def validate_git_ancestry(repo_root: Path) -> None:
+def validate_git_ancestry(repo_root: Path) -> dict[str, object]:
+    """Authenticate the exact causal edge and its membership in submitted V4."""
+    row = _run_git(repo_root, "rev-list", "--parents", "-n", "1", E14_COMMIT)
+    parts = row.decode("ascii").strip().split()
+    if len(parts) != 2 or parts[0] != E14_COMMIT or parts[1] != PRE_E14_COMMIT:
+        raise ValueError(
+            "E14 causal identity mismatch: expected exact commit with sole parent "
+            f"{PRE_E14_COMMIT}, got {parts}"
+        )
+    try:
+        _run_git(repo_root, "merge-base", "--is-ancestor", E14_COMMIT, V4_SOURCE)
+    except subprocess.CalledProcessError as exc:
+        raise ValueError(
+            f"E14 commit {E14_COMMIT} is not an ancestor of submitted V4 {V4_SOURCE}"
+        ) from exc
+
     expected = {
         (V4_SOURCE, SCHEDULER_REPO_PATH): CONTROL_SCHEDULER_BLOB,
         (E14_COMMIT, SCHEDULER_REPO_PATH): CONTROL_SCHEDULER_BLOB,
@@ -91,6 +106,13 @@ def validate_git_ancestry(repo_root: Path) -> None:
             raise ValueError(
                 f"source identity mismatch for {revision}:{path}: {actual} != {blob}"
             )
+    return {
+        "e14_commit": E14_COMMIT,
+        "immediate_parent": PRE_E14_COMMIT,
+        "parent_count": 1,
+        "submitted_v4_source": V4_SOURCE,
+        "e14_ancestor_of_submitted_v4": True,
+    }
 
 
 def _safe_member_name(raw_name: str) -> str:
@@ -222,7 +244,7 @@ def materialize_exact_v4_e14_off(archive: Path, output: Path, repo_root: Path) -
 
     # Authenticate every historical Git identity and capture donor bytes before
     # creating any treatment output directory.
-    validate_git_ancestry(repo_root)
+    lineage = validate_git_ancestry(repo_root)
     donor_scheduler = git_read_blob(repo_root, TREATMENT_SCHEDULER_BLOB)
     treatment, scheduler_member, arlene_member = build_treatment_files(
         control_files, donor_scheduler
@@ -235,6 +257,7 @@ def materialize_exact_v4_e14_off(archive: Path, output: Path, repo_root: Path) -
             "E14 fixes real unit-stage-before-market shed timing; a positive rollback result "
             "is diagnostic and does not authorize restoring incorrect overflow physics"
         ),
+        "lineage": lineage,
         "control": {
             "source_commit": V4_SOURCE,
             "archive_sha256": V4_ARCHIVE_SHA256,
