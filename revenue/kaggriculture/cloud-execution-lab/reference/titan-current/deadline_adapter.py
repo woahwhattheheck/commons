@@ -39,8 +39,62 @@ def _alarm(_signum, _frame):
     raise DeadlineExceeded("action deadline exhausted")
 
 
+def _exact_player(observation):
+    player = observation.get("player")
+    if type(player) is not int or player not in (0, 1):
+        raise ValueError("player must be a plain int in {0, 1}")
+    return player
+
+
+def _exact_turns_per_day(configuration):
+    if "turnsPerDay" not in configuration:
+        return 24
+    turns = configuration["turnsPerDay"]
+    if type(turns) is not int or turns <= 0:
+        raise ValueError("turnsPerDay must be a positive plain int for day/hour identity")
+    return turns
+
+
+def _exact_day_hour(observation, configuration):
+    day_present = "day" in observation
+    hour_present = "hour" in observation
+    if day_present != hour_present:
+        raise ValueError("day and hour must be supplied together")
+    if not day_present:
+        return None
+
+    day = observation["day"]
+    hour = observation["hour"]
+    if type(day) is not int or day < 0:
+        raise ValueError("day must be a non-negative plain int")
+    if type(hour) is not int or hour < 0:
+        raise ValueError("hour must be a non-negative plain int")
+    turns = _exact_turns_per_day(configuration)
+    if hour >= turns:
+        raise ValueError("hour must be smaller than turnsPerDay")
+    return day, hour, turns
+
+
+def _exact_step(observation, configuration):
+    clock = _exact_day_hour(observation, configuration)
+    if "step" in observation:
+        step = observation["step"]
+        if type(step) is not int or step < 0:
+            raise ValueError("step must be a non-negative plain int")
+        if clock is not None:
+            day, hour, turns = clock
+            if day * turns + hour != step:
+                raise ValueError("step must agree exactly with redundant day/hour identity")
+        return step
+
+    if clock is None:
+        raise ValueError("day and hour are required when step is absent")
+    day, hour, turns = clock
+    return day * turns + hour
+
+
 def legal_pass(observation):
-    seat = int(observation["player"])
+    seat = _exact_player(observation)
     hands = observation["farms"][seat].get("hands", [])
     return {"farmer": ["PASS"], "hands": [["PASS"] for _ in hands], "market": []}
 
@@ -53,7 +107,7 @@ def terminal_liquidation_fallback(observation, configuration=None):
     already on a shed-access tile PASS; there is no speculative movement.
     """
     obs = observation; cfg = dict(configuration or {})
-    seat = int(obs["player"]); farm = obs["farms"][seat]; private = obs["private"]
+    seat = _exact_player(obs); farm = obs["farms"][seat]; private = obs["private"]
     board = int(cfg.get("boardSize", len(farm["tiles"])))
     half = board // 2
     access = {(half-1, half-1), (half, half-1), (half-1, half), (half, half)}
@@ -305,10 +359,8 @@ class DeadlineFallbackAgent:
 
     def act(self, observation, configuration=None):
         obs = copy.deepcopy(dict(observation)); cfg = dict(configuration or {})
-        step = obs.get("step")
-        if step is None:
-            step = int(obs["day"])*int(cfg.get("turnsPerDay", 24)) + int(obs["hour"])
-        step = int(step)
+        _exact_player(obs)
+        step = _exact_step(obs, cfg)
         obs["step"] = step
         last = int(cfg.get("episodeSteps", 720)) - 2
         fallback = (terminal_liquidation_fallback(obs, cfg)
