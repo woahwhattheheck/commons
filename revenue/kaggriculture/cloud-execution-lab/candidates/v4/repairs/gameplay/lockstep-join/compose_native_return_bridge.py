@@ -17,7 +17,7 @@ from pathlib import Path
 # Exact canonical package generation at the V5 rebind.  These are Git blob IDs,
 # not commit IDs.  Any later source movement fails closed until deliberately
 # reviewed/rebound rather than silently composing against a different runtime.
-MAIN_BLOB = "8df922e092597173ce5ba476b390a8addfbe8ba6"
+MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
 RUNTIME_BLOB = "f35444f8cc5ca853d84cb90fa8602abc33c41644"
 FROZEN_BLOB = "0f65045c137412d6bfa5c22950e6fff6a1275c7d"
 SCHEDULER_BLOB = "fcfed4d59e17f211e6744e246e86167ea82a0b87"
