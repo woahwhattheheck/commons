@@ -50,6 +50,11 @@ postimage, and rejects any source drift. `overlay/checks/test_v4_fast_clone_salv
 the same postimage to all 13 x 719 = 9,347 frozen tape actions, checks per-row alias separation,
 and exercises future-schema fail-closed fallback.
 
+A separate proof-only fold recipe, raw Git blob
+`a83de6bfcc60c51c8bdc9106f8565c52eb5fe764`, also passed Actions run `34665363981` against
+exact `15b2...:apply_v4.py`; use it as corroborating current-line transport evidence, not as a
+second ancestry root.
+
 Do not paste the frozen V3.1 router postimage over V4: current R04 has later gameplay layers.
 Consume the generated modern postimage only after the serial queue front advances.
 
@@ -91,6 +96,19 @@ market slots as barriers, limits movement to the contiguous leading SELL block, 
 the coherent whole-block fallback to requested-quantity scoring when projected shed evidence
 is missing or type-poisoned. This is not an orphan.
 
+### H4 strawberry top-up + rival-gated/fail-closed L3 — PRESENT
+
+The score-facing H4 + rival-gated L3 package was merged into V3.1 in #12494 on measured live
+replay evidence. Current V4 already carries `r04_strawberry_topup=True`,
+`r04_no_late_sale_advance=True`, and the fail-closed `rival_on_tape()` opening detector in the
+R04 router. Do not resurrect the old V3.1 package carrier or unconditional L3 experiments.
+
+### B5 CARROT + just-in-time fertilizer — PRESENT
+
+The B5 CARROT and JIT fertilizer pair was merged into V3.1 in #12537. Current V4 already
+ships `r04_b5_carrot_fertilizer=True` and `r04_b5_jit_fertilize=True` with their router seams.
+No B5 re-port is needed.
+
 ### B10 public-supply SELL ordering — V4 carrier exists
 
 V4 carrier #12597 exists. Do not create another B10 port.
@@ -106,6 +124,69 @@ The current V4 queue already contains dedicated carriers for F3, W1, S1, F2, H3b
 raw-slot handling, S6, H3e, C5, EOD capacity rescue, R5, and the parked A1 donor. Treat those
 as V4-owned unless an exact source comparison proves a missing semantic repair.
 
+## Proven or promising orphans still awaiting current-root consumption
+
+### EXEC-PACE-2 (`r04_exec_adaptive`) — PROVEN ORPHAN, ARTIFACT CUSTODY BLOCKED
+
+Fleet receipt: original panel +$377 ± $25 with 16/16 positive cells; V4-port confirmation
++$369 on 7/7; aggregate 23/23 positive. The lane had 15 focused tests, default-OFF behavior,
+and key-OFF trace identity. At the latest recovery audit no GitHub PR/ref exposed the exact
+source carrier; the known copy lived in a peer workspace.
+
+Do **not** recreate the behavior from prose. Recover and publish the exact module,
+current-root apply/transform recipe, tests, and VERDICT as raw Git objects (or an equivalent
+byte-identical durable carrier), then re-CAS onto the current serial parent. This is a high
+priority salvage item because the economics are already positive and the remaining blocker is
+artifact custody, not mechanism discovery.
+
+### Defensive fail-closed guards — RECOVER SELECTIVELY
+
+The fleet produced a local-only donor around `7a64dc3d26453c0429d071074c849ed01c6d8ec0`
+(parent `465f4263...`) with 30/30 focused tests plus smoke. The CARE rewrite was explicitly
+removed after a -3976 margin result. The surviving useful ideas are the malformed-numeric
+sanitizer and PLANT-overdemand cap.
+
+Do not import the donor's broad EOD rescue: it overlaps the independently reviewed EOD
+capacity-rescue theorem and would double-own the same behavior. Recover exact surviving
+source/test bytes first; extend malformed optional PICKUP/PLACE quantity coverage (`None`,
+bool, NaN/inf and conversion failures) before any current-root consumption.
+
+### Forward-BUY engagement census — EVIDENCE TOOL READY
+
+Raw decoder Git blob `83942caaf64e8a4e205d48ac26e734bdb8554bbe` is durable and self-tested. It is bound to the
+frozen R01 tape blob and enumerates candidate positive WHEAT/FERTILIZER BUY rows plus movable
+earlier slots while respecting structural barriers. Cash, shed and opponent effects remain
+`NEEDS_RUNTIME_PROOF`; this object is a measurement tool, not a gameplay patch. Run it before
+opening a FWD-BUY production lane.
+
+### S2 cow->sheep swap (`r04_s2_swap`) — HOLD FOR FIELD GATE
+
+Directional testing reported about +$4,246/game over 7 games, with 3 observed firings and no
+negative cells in that narrow sample; its V4-port carrier also passed focused default-OFF and
+key-off identity checks. A dairy-exit comparison against a dairy-holding rival was strongly
+negative (about -$29k), so the unconditional lane is not production-ready. Preserve its exact
+artifact if available, but require a representative FIELD/opponent regime gate before any
+stack promotion.
+
+### `r04_exec_pace` — SMALL POSITIVE, REGIME-SENSITIVE
+
+Fleet stack receipt: +$63 ± $7 over 16 cells, 14 positive / 0 negative / 2 same, all cells
+stable and engaged. Keep it default-OFF and re-gate against representative live opponents;
+do not confuse it with the much stronger EXEC-PACE-2 orphan above.
+
+### Sale horizon 5 — NARROW POSITIVE, CONFIRM BEFORE STACK
+
+A narrow fleet confirmation reported roughly +$95/game. Preserve it as an experiment target,
+but require an exact source carrier and current-stack opponent-diverse gate before changing
+the incumbent horizon or stacking it with other sale-timing work.
+
+### Market-regime planting switch — HYPOTHESIS ONLY
+
+Degenerate-strategy probing found two seeds where not planting improved terminal value by
+roughly $6k-$27k, suggesting a public market-regime planting admission may exist. This is not
+a production donor yet. Build/gate only if the trigger is deterministic and repeatedly engaged
+on current opponents.
+
 ## HOLD / negative / experiment-only — DO NOT PROMOTE AS SALVAGE
 
 ### C4 quiet-slot WHEAT — HOLD
@@ -117,6 +198,18 @@ signal but is not a representative production admission. Keep it experiment-only
 
 The H13 donor family was explicitly negative/rejected in V3.1. Do not resurrect it merely
 because its PR remains discoverable.
+
+### B5 redirect — INERT ON CURRENT BASE
+
+The current hardened gate found zero tomato planting on every gate seed, so the redirect
+trigger never engaged and measured margin stayed at zero. Revive only if a tomato-planting
+lane later makes the trigger reachable.
+
+### Price-path projection gameplay tilt — KILL
+
+The exact price recurrence/projector was validated, but the gameplay tilt fired zero times on
+its gate: the JIT router held no seeds and affordable BUY rows could not reach the runaway
+seed prices. Keep the projector as analysis evidence; do not stack the dead gameplay key.
 
 ### Receding shed-reserve challenger — NO_SIGNAL
 
@@ -132,9 +225,17 @@ reason to mutate V4 gameplay.
 ## Current integration blocker / queue front
 
 #12620 is the V4 monotonic-plumbing bootstrap front. Its active sole-owner checker lane must
-not be duplicated. The canonical branch is currently unprotected, so candidate-owned green CI
-is not itself merge authority; #12620's current plan uses an independent exact Git-object audit
-for bootstrap and keeps a trusted control-plane gate as a separate follow-up.
+not be duplicated. Raw checker blob `12a3eb23dd1052a769baa16ce861890f21911e14` is now
+server-readable, but it is a transport/scaffold input rather than final checker authority;
+later H3/H4/E184 collector closures remain part of the sole assembler's job. In particular,
+the E184 collector must not count deferred calls inside generator-expression bodies as
+executed bridge edges: only the outermost generator iterable is eager at construction.
+
+The canonical branch remains frozen while the detached gameplay serial is validated. At the
+latest exact Git audit the clean candidate chain is `c52d5093... -> 33d763b3... ->
+a070acc4... -> fb1ee7b...`; `fb1` is server-ancestry clean and carries the combined hostile-
+money + exact two-seat M1 custody repair. Downstream serializers must still honor the focused
+execution/deconflict boundary before attaching F2/S6/W1/V224.
 
 Until the front advances, salvage work remains draft/source-carrier state. Re-read the shared
 canonical head, re-materialize these current-root postimages if required, and serialize them
