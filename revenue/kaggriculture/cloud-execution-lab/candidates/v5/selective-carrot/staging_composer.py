@@ -162,19 +162,19 @@ def _string_list(value: Any, field: str) -> list[str]:
 
 def _source_path(root: Path, value: Any) -> Path:
     if not isinstance(value, str) or not value:
-        raise ComposerError("component source must be a nonempty relative path")
+        raise ComposerError("replacement source must be a nonempty relative path")
     rel = PurePosixPath(value)
     if rel.is_absolute() or ".." in rel.parts or "\\" in value or str(rel) != value:
-        raise ComposerError(f"noncanonical component source path: {value}")
+        raise ComposerError(f"noncanonical replacement source path: {value}")
     current = Path(root)
     for part in rel.parts:
         current = current / part
         try:
             mode = os.lstat(current).st_mode
         except OSError as exc:
-            raise ComposerError(f"component source missing: {value}") from exc
+            raise ComposerError(f"replacement source missing: {value}") from exc
         if stat.S_ISLNK(mode):
-            raise ComposerError(f"component source crosses symlink: {value}")
+            raise ComposerError(f"replacement source crosses symlink: {value}")
     return current
 
 
