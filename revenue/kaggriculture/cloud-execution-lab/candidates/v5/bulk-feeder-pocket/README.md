@@ -41,7 +41,7 @@ movement rewrite gets its own exact-state proof and evaluation evidence.
 ```bash
 python candidates/v5/bulk-feeder-pocket/bulk_feeder.py
 python candidates/v5/bulk-feeder-pocket/bulk_feeder.py --route-json route.json
-python -m unittest candidates/v5/bulk-feeder-pocket/test_bulk_feeder.py
+python -B candidates/v5/bulk-feeder-pocket/test_bulk_feeder.py
 ```
 
 The CLI emits deterministic JSON under
