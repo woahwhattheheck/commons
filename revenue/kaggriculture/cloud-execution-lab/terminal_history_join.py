@@ -28,6 +28,8 @@ class TerminalHistoryJoin:
         self.pending=None
         self.fill_result=None
         self.diagnostics={}
+        self.deferred_observation=None
+        self._observation_commit=None
         if terminal_enabled:self._initialize_terminal()
 
     def _initialize_terminal(self):
@@ -51,44 +53,120 @@ class TerminalHistoryJoin:
             weighted.make_selector,utility.build_table,full.solve_full_table,
             full.verify_certificate,rng=random.Random(0),tie_break=self.tie_break)
 
+    def defer_observation(self, obs):
+        """Journal an interrupted public observation before making a stable copy."""
+        # The first pointer store is intentionally tiny: if an outer signal lands
+        # during deepcopy, the exact observation object is still retained for the
+        # next guarded call rather than silently losing the adjacency witness.
+        self.deferred_observation=obs
+        self.deferred_observation=deepcopy(obs)
+
+    def _observation_step(self, obs):
+        if obs.get('step') is not None:return int(obs['step'])
+        period=24
+        if self.pending is not None:
+            period=max(1,int((self.pending[1] or {}).get('turnsPerDay',24)))
+        return int(obs['day'])*period+int(obs['hour'])
+
     def _observation_working_bridge(self):
-        """Fork only mutable history state; keep injected code dependencies shared."""
+        """Fork mutable bridge state while sharing injected code dependencies."""
         working=copy(self.bridge)
-        working.ledger=deepcopy(self.bridge.ledger)
-        working.history=deepcopy(self.bridge.history)
-        working.pending=deepcopy(self.bridge.pending)
+        for name,value in vars(self.bridge).items():
+            if name in ('interval_type','infer','mechanics'):
+                continue
+            setattr(working,name,deepcopy(value))
         return working
+
+    def _publish_observation_commit(self):
+        """Finish an already-computed transition idempotently after cancellation."""
+        commit=getattr(self,'_observation_commit',None)
+        if commit is None:return None
+        # Clearing the journal is deliberately last. A signal between any two
+        # assignments leaves the same complete commit available to finish again.
+        self.bridge=commit['bridge']
+        self.pending=None
+        self.diagnostics={'observed_fills':commit['observed_fills']}
+        self.fill_result=commit['fill_result']
+        self.deferred_observation=None
+        observed_step=commit['observed_step']
+        self._observation_commit=None
+        return observed_step
+
+    def _reconcile_observation(self, obs):
+        before,cfg,final,post=self.pending
+        working=self._observation_working_bridge()
+        working.record(before,cfg,final,post_unit_shed=post['private']['shed'],
+                       post_unit_inventories=post['private']['inventories'])
+        observed=working.observe(obs)
+        # Publish one complete journal pointer only after every expensive or
+        # mutation-capable operation has succeeded on private state.
+        self._observation_commit={
+            'bridge':working,
+            'observed_fills':observed,
+            'fill_result':deepcopy(working.ledger.last_result),
+            'observed_step':self._observation_step(obs),
+        }
+        return self._publish_observation_commit()
 
     def observe(self, obs):
         """Bind the ACTUALLY returned prior action, then reconcile atomically."""
+        now=self._observation_step(obs)
+
+        # A deadline can land while a completed private transition is being
+        # published. Finish that journal first; repeated publication is safe.
+        published=self._publish_observation_commit()
+        if published is not None:
+            if now==published:return
+            if now>published:
+                # The fill belongs to the deferred observation, not today's
+                # spatial receipt consumers. The FlowHistory update is retained.
+                observed=self.diagnostics.get('observed_fills')
+                self.diagnostics={'deferred_observation_replayed':published,
+                                  'observed_fills':observed}
+                self.fill_result=None
+                return
+
+        deferred=getattr(self,'deferred_observation',None)
+        if deferred is not None:
+            deferred_step=self._observation_step(deferred)
+            if now<deferred_step:
+                # New/reordered stream: let the normal strict-backstep contract
+                # below discard the old pending receipt as well.
+                self.deferred_observation=None
+            elif self.pending is None:
+                self.deferred_observation=None
+                self.diagnostics={};self.fill_result=None
+                return
+            else:
+                self._reconcile_observation(deferred)
+                if now>deferred_step:
+                    observed=self.diagnostics.get('observed_fills')
+                    self.diagnostics={'deferred_observation_replayed':deferred_step,
+                                      'observed_fills':observed}
+                    self.fill_result=None
+                return
+
         if self.pending is None:
             self.diagnostics={};self.fill_result=None
             return
         before,cfg,final,post=self.pending
-        now=int(obs['step']);prior=int(before['step'])
+        prior=int(before['step'])
         if now<prior:
             # A strict backstep is a new episode/reset boundary. Never carry a
             # pending action across it; a later step could otherwise cross-link
             # the prior episode into the new history. Exact retries stay pending.
             self.pending=None
+            self.deferred_observation=None
             self.diagnostics={};self.fill_result=None
             return
         if now==prior:
             self.diagnostics={};self.fill_result=None
             return
-        # record()/observe() mutate the fill ledger, bridge cursor and FlowHistory.
-        # Run that whole transition on private mutable state. A hard deadline may
-        # interrupt at any bytecode boundary; no live receipt/history state is
-        # published until every reconciliation step and its result copy finish.
-        working=self._observation_working_bridge()
-        working.record(before,cfg,final,post_unit_shed=post['private']['shed'],
-                       post_unit_inventories=post['private']['inventories'])
-        observed=working.observe(obs)
-        fill_result=deepcopy(working.ledger.last_result)
-        self.bridge=working
-        self.pending=None
-        self.diagnostics={'observed_fills':observed}
-        self.fill_result=fill_result
+
+        # Journal the exact adjacency witness before any mutable history work.
+        # Reconciliation itself then happens wholly on private bridge state.
+        self.defer_observation(obs)
+        self._reconcile_observation(self.deferred_observation)
 
     def remember(self, obs, cfg, final, post):
         # A canceled unit stage has no final snapshot. Do not record a requested
