@@ -2,7 +2,7 @@
 
 **Disposition:** research-only current-policy reachability gate; no gameplay/default/activation authority.
 
-This is the missing layer above the canonical `SHOPSTREAM`/`TOWNRNG` mechanism and the donated `WEEDBANK` reversible occupancy lease. It does not invent a tile action. It consumes the action **already authored by the current TITAN callback** and asks a narrower question:
+This is the missing layer above the canonical `SHOPSTREAM`/`TOWNRNG` mechanism and the canonical `WEEDBANK` reversible occupancy-lease authority. It does not invent a tile action. It consumes the action **already authored by the current TITAN callback** and asks a narrower question:
 
 > immediately before a shop-unlock EOD, did the authored unit phase actually change the number of `None` farm tiles that advance the shared weed/shop RNG cursor?
 
@@ -48,17 +48,11 @@ As a regression against the canonical SHOPSTREAM witness, a single authored `-1`
 - hidden seed live input: **false**
 - desired-shop targeting authority: **false**
 
-## WEEDBANK donor consumption
+## Canonical WEEDBANK dependency
 
-The fleet donated the tested reversible occupancy-lease successor from
-`astra/gemini-convergence-cleanup-20260912@9054d59c46f6f351dc8c1ac6d5789ce8c93b30b7`.
-This carrier should consume those exact donor blobs rather than rebuild them:
+RNGREACH does **not** carry a second occupancy-lease implementation. Deliberate reversible BUILD→DIG lease economics, cleanup-policy semantics, and reclamation obligations remain owned by the earlier canonical `research/rng-steering/` WEEDBANK carrier (#13044). Once that carrier lands, RNGREACH should bind to that authority rather than copy or reimplement it.
 
-- `weedbank_occupancy_lease.py` blob `9b01ac9dbd01e987ced6fb297bafd76edb539877`
-- `test_weedbank_occupancy_lease.py` blob `1c9d7b6e4df6f317345c22535c7401ad31dd8b4c`
-- `WEEDBANK-LEASE.md` blob `3b0f39bdd393dbbc9f2f3d46bbe88a8bb1a454a2`
-
-WEEDBANK owns deliberate reversible BUILD→DIG lease economics and reclamation obligations. RNGREACH does **not** duplicate that gate. RNGREACH instead determines whether current TITAN naturally authored a vacancy-changing callback at the exact shop-unlock boundary.
+RNGREACH's independent responsibility is narrower: determine whether current TITAN naturally authored a vacancy-changing callback at the exact shop-unlock boundary. A positive reachability result may be joined with canonical WEEDBANK economics later; it never grants RNG steering authority by itself.
 
 ## Authored validation
 
