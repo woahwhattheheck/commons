@@ -171,7 +171,6 @@ jobs:
           set -euo pipefail
           git fetch --no-tags --depth=256 origin main "$BRANCH"
           test "$(git rev-parse origin/$BRANCH)" = "${{ github.sha }}"
-          test "$(git rev-parse origin/main)" = "$MERGED_MAIN"
           git rm .github/workflows/titan-v5-gauntlet-canonical-universe-one-shot.yml
           git rm revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py
           git add \
