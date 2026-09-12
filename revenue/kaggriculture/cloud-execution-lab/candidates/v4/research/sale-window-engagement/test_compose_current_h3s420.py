@@ -52,10 +52,10 @@ sys.modules["selected_sell_core"]=m
 '''
 
 
-def load_transformed():
+def load_transformed(source=FIXTURE):
     ns = {}
     exec(STUB, ns)
-    exec(mod._rewrite_source(FIXTURE), ns)
+    exec(mod._rewrite_source(source), ns)
     return ns
 
 
@@ -103,9 +103,41 @@ class Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "transform marker"):
             mod._rewrite_source(FIXTURE.replace(mod._BLOCK_END, mod._BLOCK_END * 2))
 
-    def test_current_source_pins_are_exact_expected_authorities(self):
+    def test_baseline_pins_remain_backward_compatible(self):
         self.assertEqual(mod.FROZEN_SELECTED_GIT_BLOB, 'fc7baf5c179818a55037f6a61d92984d81d1a21c')
         self.assertEqual(mod.SCHEDULER_GIT_BLOB, 'a483b24dd72b580d7d8811636b54d2d44f391575')
+
+    def test_exact_loom4_postimages_are_authenticated(self):
+        expected_frozen = {
+            'fc7baf5c179818a55037f6a61d92984d81d1a21c',
+            'ef090f6731c2d1ee648e2caaf3e215641b006518',
+            '4a5d3d5f4bed04acf73c7339e41fed56badf34c9',
+        }
+        expected_scheduler = {
+            'a483b24dd72b580d7d8811636b54d2d44f391575',
+            'eb289f87adebb7dc7e90046bfbec31a307cb5aaa',
+            'b29d1e9887f517506c5b3d858baa9bda5848e73f',
+        }
+        self.assertEqual(set(mod.FROZEN_SELECTED_INPUTS), expected_frozen)
+        self.assertEqual(set(mod.SCHEDULER_INPUTS), expected_scheduler)
+        self.assertEqual(mod.authenticate_git_blobs(
+            '4a5d3d5f4bed04acf73c7339e41fed56badf34c9',
+            'b29d1e9887f517506c5b3d858baa9bda5848e73f'),
+            ('captrace+livepath', 'captrace+spindle'))
+
+    def test_unknown_combined_postimage_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "explicit rebase"):
+            mod.authenticate_git_blobs('0'*40, mod.SCHEDULER_GIT_BLOB)
+        with self.assertRaisesRegex(ValueError, "explicit rebase"):
+            mod.authenticate_git_blobs(mod.FROZEN_SELECTED_GIT_BLOB, 'f'*40)
+
+    def test_unrelated_peer_spans_survive_rewrite(self):
+        decorated = FIXTURE.replace(
+            'def event_aware_horizon(now):',
+            'def represented_shed_event():\n    return "peer-byte"\n\ndef event_aware_horizon(now):')
+        rewritten = mod._rewrite_source(decorated)
+        self.assertIn('def represented_shed_event():\n    return "peer-byte"', rewritten)
+        self.assertIn("if now < H3S420_SUPPRESS_NEW_PLANS_AFTER", rewritten)
 
     def test_contract_threshold_is_420(self):
         self.assertEqual(mod.SUPPRESS_NEW_PLANS_AFTER, 420)
