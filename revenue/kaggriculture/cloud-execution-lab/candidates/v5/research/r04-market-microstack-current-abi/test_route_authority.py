@@ -7,6 +7,7 @@ import subprocess
 import unittest
 
 from market_route_authority import (
+    AUTHORITY_SCHEMA,
     CURRENT_CONTROLLER_AUTHORITY_BLOB,
     CURRENT_CONTROLLER_AUTHORITY_PATH,
     CURRENT_ROUTE_AUTHORITY_BLOB,
@@ -15,6 +16,7 @@ from market_route_authority import (
     EXPECTED_CONTROLLER_STATE_KEYS,
     NO_QUEUE_MODEL,
     ROUTE_SOURCE,
+    WINDOW_SCHEMA,
     bind_market_route_authority,
     validate_market_route_authority,
 )
@@ -63,9 +65,14 @@ class MarketRouteAuthorityTests(unittest.TestCase):
         )
         self.assertIsNotNone(validated)
         actions, receipt = validated
+        self.assertEqual(receipt["schema"], AUTHORITY_SCHEMA)
         self.assertEqual(actions[301]["market"], [["SELL", "CARROT", 2]])
         self.assertEqual(receipt["authority_sha256"], bound.authority_sha256)
+        self.assertEqual(receipt["window"]["schema"], WINDOW_SCHEMA)
         self.assertEqual(receipt["window"]["current_step"], 300)
+        self.assertEqual(receipt["window"]["route_step"], 300)
+        self.assertEqual(receipt["window"]["last_step"], 300)
+        self.assertEqual(receipt["window"]["player"], 0)
         self.assertEqual(receipt["window"]["route_source"], ROUTE_SOURCE)
         self.assertEqual(
             receipt["completed_route_receipt"],
@@ -169,6 +176,24 @@ class MarketRouteAuthorityTests(unittest.TestCase):
         self.assertIsNone(
             validate_market_route_authority(tampered, obs, required_end_step=308)
         )
+
+    def test_canonical_window_receipt_fields_cannot_be_forged(self):
+        obs = observation(300)
+        bound = authority(obs)
+        for field, value in (
+            ("route_step", 299),
+            ("last_step", 301),
+            ("player", 1),
+            ("route_id", "other-route"),
+        ):
+            with self.subTest(field=field):
+                forged_window = replace(bound.window, **{field: value})
+                forged = replace(bound, window=forged_window)
+                self.assertIsNone(
+                    validate_market_route_authority(
+                        forged, obs, required_end_step=308
+                    )
+                )
 
     def test_authority_is_bound_to_public_step_and_worker_cardinality(self):
         obs = observation(300)
