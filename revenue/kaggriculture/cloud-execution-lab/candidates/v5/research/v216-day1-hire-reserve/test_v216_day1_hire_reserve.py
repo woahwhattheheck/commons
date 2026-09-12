@@ -21,7 +21,9 @@ class Row:
 class Window:
     schema: str = v216.ROUTE_WITNESS_SCHEMA
     route_source: str = v216.ROUTE_WITNESS_SOURCE
+    route_id: str = "committed-route"
     current_step: int = 23
+    current_index: int = 23
     rows: tuple = ()
 
 
@@ -169,6 +171,8 @@ class V216Tests(unittest.TestCase):
             Window(schema="wrong", rows=window(1).rows),
             Window(route_source="wrong", rows=window(1).rows),
             Window(current_step=22, rows=window(1).rows),
+            Window(current_index=22, rows=window(1).rows),
+            Window(route_id="", rows=window(1).rows),
             Window(rows=(Row(25, window(1).rows[0].payload),)),
             Window(rows=()),
         ):

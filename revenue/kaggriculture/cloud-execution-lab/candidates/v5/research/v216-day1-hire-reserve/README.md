@@ -29,10 +29,10 @@ Projection preserves the donor's nearby-shed `PICKUP` / ordered-capacity `DROP`
 
 The carrier never calls a producer/controller and never reads a legacy tape.
 It consumes the already-selected current action plus the one immutable
-`CurrentRouteWindow` landed by #13425. At public step 23, row 0 of that witness
-is authenticated current `R[cur][24]`; malformed/wrong-source/wrong-step
+`CurrentRouteWindow` landed by #13425 and hardened by #13434. At public step 23, row 0 of that v2 witness
+is authenticated `R[committed_route_id][24]` from the producer route committed with the selected action; malformed/wrong-source/wrong-step
 evidence fails closed to action identity. The pinned current witness blob is
-`987e8a52e4f5ab48aa8390bb5655aac23e6c2f39`.
+`b84768c7560e746f6c9144fea672554e0dad39f7`.
 
 `transform_with_report(...)` returns the transformed action plus a detached
 research receipt; `transform(...)` is the action-only surface. Neither mutates

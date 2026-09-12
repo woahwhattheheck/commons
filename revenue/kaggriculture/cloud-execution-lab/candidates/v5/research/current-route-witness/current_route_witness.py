@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Authenticate immutable future rows from the installed current controller.
+"""Authenticate immutable future rows from one committed producer route.
 
 This is provenance plumbing, not a producer. It never calls ``controller.act``
-or any route-selection method. A single immutable route capture can serve every
-selected-action recovery that needs authored future tape state, avoiding feature-
-local route oracles and mixed-snapshot reads.
+or any route-selection method. Callers must supply the route identity that was
+committed with the selected action by TitanAgent / the entrypoint route receipt.
+Raw ``controller.cur`` is deliberately not an authority: it may already contain
+an interrupted or later proposal.
 """
 from __future__ import annotations
 
@@ -13,13 +14,17 @@ import hashlib
 import json
 from typing import Any
 
-SCHEMA = "titan-v5-current-route-window-v1"
-ROUTE_SOURCE = "installed_controller.R[cur]"
+SCHEMA = "titan-v5-current-route-window-v2"
+ROUTE_SOURCE = "committed_producer_route.R[route_id]"
 MAX_LOOKAHEAD = 72
 
 
 def _plain_nonnegative_int(value: Any) -> bool:
     return type(value) is int and value >= 0
+
+
+def _route_id(value: Any) -> str | None:
+    return value if type(value) is str and bool(value) else None
 
 
 def _worker_count(observation: Any) -> int | None:
@@ -73,34 +78,33 @@ def _canonical_json(value: Any) -> str | None:
     return rendered
 
 
-def _capture_route(controller: Any) -> tuple[str, str, list[Any], str] | None:
-    """Capture one stable ``R[cur]`` snapshot and bind its installed authority."""
-    route_id = getattr(controller, "cur", None)
+def _capture_route(
+    controller: Any,
+    completed_route_id: Any,
+) -> tuple[str, str, list[Any], str] | None:
+    """Capture one stable explicitly-authorized ``R[route_id]`` snapshot."""
+    route_id = _route_id(completed_route_id)
     routes = getattr(controller, "R", None)
-    if not isinstance(route_id, str) or not route_id:
-        return None
-    if not isinstance(routes, dict) or route_id not in routes:
+    if route_id is None or not isinstance(routes, dict) or route_id not in routes:
         return None
     route_ref = routes[route_id]
     if not isinstance(route_ref, (list, tuple)):
         return None
 
-    # Normalize tuples to the JSON/list representation used by public route data.
     normalized = list(route_ref)
     rendered = _canonical_json(normalized)
     if rendered is None:
         return None
     try:
         snapshot = json.loads(rendered)
-    except json.JSONDecodeError:  # defensive; _canonical_json already proved this
+    except json.JSONDecodeError:
         return None
     if not isinstance(snapshot, list):
         return None
 
-    # Rebind after capture. This rejects route switches/replacements and catches
-    # ordinary in-place tape drift across the capture boundary before publication.
-    if getattr(controller, "cur", None) != route_id:
-        return None
+    # Rebind only the explicitly authorized route. controller.cur is deliberately
+    # ignored because it may contain an uncommitted proposal unrelated to the
+    # selected action being transformed.
     if getattr(controller, "R", None) is not routes or routes.get(route_id) is not route_ref:
         return None
     rendered_after = _canonical_json(list(route_ref))
@@ -114,7 +118,7 @@ def _capture_route(controller: Any) -> tuple[str, str, list[Any], str] | None:
 
 @dataclass(frozen=True)
 class RouteActionWitness:
-    """One detached authored row inside an immutable current-route capture."""
+    """One detached authored row inside an immutable committed-route capture."""
 
     step: int
     worker_cardinality: int
@@ -137,7 +141,7 @@ class RouteActionWitness:
 
 @dataclass(frozen=True)
 class CurrentRouteWindow:
-    """Immutable bounded future window from one authenticated route snapshot."""
+    """Immutable bounded future window from one committed route snapshot."""
 
     schema: str
     route_source: str
@@ -248,12 +252,13 @@ def bind_current_route_window(
     controller: Any,
     observation: Any,
     *,
+    completed_route_id: Any = None,
     lookahead: int,
 ) -> CurrentRouteWindow | None:
-    """Capture ordered future rows from one installed route snapshot, fail closed."""
+    """Capture future rows from the explicitly committed producer route."""
     if type(lookahead) is not int or not 1 <= lookahead <= MAX_LOOKAHEAD:
         return None
-    if not isinstance(observation, dict):
+    if _route_id(completed_route_id) is None or not isinstance(observation, dict):
         return None
     step = observation.get("step")
     if not _plain_nonnegative_int(step):
@@ -262,7 +267,7 @@ def bind_current_route_window(
     if count is None:
         return None
 
-    captured = _capture_route(controller)
+    captured = _capture_route(controller, completed_route_id)
     if captured is None:
         return None
     route_id, controller_type, route, route_sha256 = captured
@@ -293,6 +298,8 @@ def bind_current_route_window(
 
     window_material = json.dumps(
         {
+            "schema": SCHEMA,
+            "route_source": ROUTE_SOURCE,
             "route_sha256": route_sha256,
             "route_id": route_id,
             "current_step": step,
@@ -320,13 +327,32 @@ def bind_current_route_window(
     )
 
 
-def bind_current_route(controller: Any, observation: Any) -> CurrentRouteWitness | None:
-    """Backward-small B5/JIT view: exact ``R[cur][step+1]`` from one capture."""
-    window = bind_current_route_window(controller, observation, lookahead=1)
+def bind_current_route(
+    controller: Any,
+    observation: Any,
+    *,
+    completed_route_id: Any = None,
+) -> CurrentRouteWitness | None:
+    """B5/JIT view of exact ``R[completed_route_id][step+1]``."""
+    window = bind_current_route_window(
+        controller,
+        observation,
+        completed_route_id=completed_route_id,
+        lookahead=1,
+    )
     return None if window is None else window.b5_witness()
 
 
-def bind_b5_kwargs(controller: Any, observation: Any) -> dict[str, Any] | None:
+def bind_b5_kwargs(
+    controller: Any,
+    observation: Any,
+    *,
+    completed_route_id: Any = None,
+) -> dict[str, Any] | None:
     """Convenience adapter for B5/JIT; no B5 import or policy dependency."""
-    witness = bind_current_route(controller, observation)
+    witness = bind_current_route(
+        controller,
+        observation,
+        completed_route_id=completed_route_id,
+    )
     return None if witness is None else witness.b5_kwargs()

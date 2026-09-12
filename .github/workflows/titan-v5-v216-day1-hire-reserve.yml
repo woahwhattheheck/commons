@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse a90d888f03987ef0b35cfd20ec3519c6144db08a:revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py)" = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
-          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_witness.py)" = "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39"
+          test "$(git rev-parse HEAD:revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_witness.py)" = "b84768c7560e746f6c9144fea672554e0dad39f7"
       - name: Compile and run V216 contracts
         working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/v216-day1-hire-reserve
         env:

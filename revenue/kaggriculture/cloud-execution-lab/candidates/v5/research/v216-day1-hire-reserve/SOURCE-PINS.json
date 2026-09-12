@@ -4,11 +4,11 @@
     "runtime_default": false
   },
   "current_route_witness": {
-    "git_blob": "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39",
-    "landed_main": "d61e0333efe5697b56a867ed84a23e909195d3f4",
+    "git_blob": "b84768c7560e746f6c9144fea672554e0dad39f7",
+    "landed_main": "a2eee7eecbfb2605147645d3de3b1c2c0ceb0bf0",
     "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/current-route-witness/current_route_witness.py",
-    "schema": "titan-v5-current-route-window-v1",
-    "source": "installed_controller.R[cur]"
+    "schema": "titan-v5-current-route-window-v2",
+    "source": "committed_producer_route.R[route_id]"
   },
   "schema": "titan-v5-v216-day1-hire-reserve-source-pins/v1",
   "submitted_v31": {

@@ -19,9 +19,9 @@ from typing import Any, Mapping
 DONOR_COMMIT = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
 DONOR_PATH = "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/r04_full_router.py"
 DONOR_GIT_BLOB = "a3e2fe87c717d128e43c9b65bae2265f40d1d76d"
-ROUTE_WITNESS_GIT_BLOB = "987e8a52e4f5ab48aa8390bb5655aac23e6c2f39"
-ROUTE_WITNESS_SCHEMA = "titan-v5-current-route-window-v1"
-ROUTE_WITNESS_SOURCE = "installed_controller.R[cur]"
+ROUTE_WITNESS_GIT_BLOB = "b84768c7560e746f6c9144fea672554e0dad39f7"
+ROUTE_WITNESS_SCHEMA = "titan-v5-current-route-window-v2"
+ROUTE_WITNESS_SOURCE = "committed_producer_route.R[route_id]"
 STEP = 23
 AUTHORED_STEP = 24
 SHED_CAPACITY = 100
@@ -196,6 +196,11 @@ def _authored_row24(route_window: Any) -> dict[str, Any] | None:
     if getattr(route_window, "route_source", None) != ROUTE_WITNESS_SOURCE:
         return None
     if getattr(route_window, "current_step", None) != STEP:
+        return None
+    if getattr(route_window, "current_index", STEP) != STEP:
+        return None
+    route_id = getattr(route_window, "route_id", None)
+    if type(route_id) is not str or not route_id:
         return None
     rows = getattr(route_window, "rows", None)
     if not isinstance(rows, tuple) or not rows:
