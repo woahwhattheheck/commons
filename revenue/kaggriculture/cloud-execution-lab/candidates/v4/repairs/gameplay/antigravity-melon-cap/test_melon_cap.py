@@ -20,17 +20,53 @@ def base_observation():
     }
 
 
+def _tiles(plants):
+    return [(5 + (i % 5), 5 + (i // 5)) for i in range(plants)]
+
+
 def melon_proposal(plants, *, routes=("A", "B"), outer=None):
+    """Minimal faithful FourthQuadrant MELON proposal shape."""
+    tiles = _tiles(plants)
     variants = {}
-    for route in routes:
+    for route_index, route in enumerate(routes):
+        land_step = 80 + route_index * 200
         patches = {
-            100 + i: {"hands": [["PLANT", "MELON"]]}
-            for i in range(plants)
+            land_step: {
+                "market": [
+                    ["BUY_LAND"],
+                    ["BUY_SEED", "MELON", plants],
+                    ["HIRE"],
+                ]
+            }
         }
-        variants[route] = {"patches": patches}
+        lots = []
+        for i, tile in enumerate(tiles):
+            plant_step = land_step + 10 + i
+            patches[plant_step] = {"hands": [["PLANT", "MELON"]]}
+            lots.append({
+                "tile": list(tile),
+                "crop": "MELON",
+                "plant_step": plant_step,
+                "water_steps": [],
+                "harvest_step": plant_step + 10,
+                "worker": 1,
+                "drop_step": plant_step + 11,
+                "sale_step": plant_step + 11,
+                "sale_slot": 0,
+            })
+        variants[route] = {
+            "patches": patches,
+            "bundle": {
+                "route_id": route,
+                "base_route_id": route,
+                "target_quadrant": "SE",
+                "land": {"step": land_step, "slot": 0},
+                "lots": lots,
+            },
+        }
     proposal = {
         "crop": "MELON",
-        "tiles": list(range(plants)),
+        "tiles": tiles,
         "seed_units": plants,
         "variants": variants,
     }
@@ -58,7 +94,7 @@ class MelonCapTests(unittest.TestCase):
         self.assertEqual(M.held_melon_units(obs), 16)
         self.assertEqual(M.max_melon_plants(obs), 2)
 
-    def test_executable_cardinality_is_derived_from_all_variants(self):
+    def test_executable_cardinality_is_bound_to_lots_patches_and_seed_order(self):
         proposal = melon_proposal(4)
         self.assertEqual(M.executable_melon_plants(proposal), 4)
 
@@ -89,13 +125,29 @@ class MelonCapTests(unittest.TestCase):
         self.assertIs(out[0], three)
         self.assertIs(out[1], four)
 
-    def test_route_variant_disagreement_fails_closed(self):
-        proposal = melon_proposal(4)
-        proposal["variants"]["B"]["patches"][999] = {"hands": [["PLANT", "MELON"]]}
+    def test_buy_seed_quantity_mismatch_fails_closed(self):
+        proposal = melon_proposal(3)
+        proposal["variants"]["A"]["patches"][80]["market"][1] = ["BUY_SEED", "MELON", 5]
         self.assertIsNone(M.executable_melon_plants(proposal))
         self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
 
-    def test_outer_metadata_cannot_understate_executable_patches(self):
+    def test_bool_buy_seed_quantity_fails_closed(self):
+        proposal = melon_proposal(1)
+        proposal["variants"]["A"]["patches"][80]["market"][1] = ["BUY_SEED", "MELON", True]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_land_slot_must_bind_producer_owned_seed_order(self):
+        proposal = melon_proposal(2)
+        proposal["variants"]["A"]["bundle"]["land"]["slot"] = 1
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_route_variant_disagreement_fails_closed(self):
+        proposal = melon_proposal(4)
+        proposal["variants"]["B"]["bundle"]["lots"].pop()
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_outer_metadata_cannot_understate_executable_contract(self):
         proposal = melon_proposal(5)
         proposal["tiles"] = proposal["tiles"][:4]
         proposal["seed_units"] = 4
@@ -103,9 +155,34 @@ class MelonCapTests(unittest.TestCase):
         self.assertIsNone(M.executable_melon_plants(proposal))
         self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
 
+    def test_lot_tile_mismatch_fails_closed(self):
+        proposal = melon_proposal(3)
+        proposal["variants"]["A"]["bundle"]["lots"][1]["tile"] = [9, 9]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_lot_worker_patch_action_must_authenticate(self):
+        proposal = melon_proposal(3)
+        lot = proposal["variants"]["A"]["bundle"]["lots"][1]
+        proposal["variants"]["A"]["patches"][lot["plant_step"]]["hands"][0] = ["PASS"]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+        self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
+
+    def test_duplicate_outer_tile_fails_closed(self):
+        proposal = melon_proposal(3)
+        proposal["tiles"][1] = proposal["tiles"][0]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
+    def test_duplicate_plant_slot_fails_closed(self):
+        proposal = melon_proposal(3)
+        lots = proposal["variants"]["A"]["bundle"]["lots"]
+        lots[1]["plant_step"] = lots[0]["plant_step"]
+        lots[1]["worker"] = lots[0]["worker"]
+        self.assertIsNone(M.executable_melon_plants(proposal))
+
     def test_malformed_patch_payload_fails_closed(self):
         proposal = melon_proposal(1)
-        proposal["variants"]["A"]["patches"][100]["hands"] = [None]
+        lot = proposal["variants"]["A"]["bundle"]["lots"][0]
+        proposal["variants"]["A"]["patches"][lot["plant_step"]]["hands"] = [None]
         self.assertIsNone(M.executable_melon_plants(proposal))
         self.assertEqual(M.filter_proposals([proposal], base_observation()), [])
 
