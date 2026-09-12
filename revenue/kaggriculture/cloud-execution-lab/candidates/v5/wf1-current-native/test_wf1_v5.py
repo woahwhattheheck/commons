@@ -150,6 +150,25 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                 field.snapshot_runtime(runtime, runtime / 'snapshot')
             self.assertFalse((runtime / 'snapshot').exists())
 
+    def test_field_harness_must_match_control_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            control = Path(tmp) / 'control'
+            frozen = control / field.COMPONENT_REL
+            runner = control / field.RUNNER_REL
+            frozen.mkdir(parents=True)
+            runner.parent.mkdir(parents=True)
+            for name in ('run_field.py', 'materialize.py', 'entry.py'):
+                shutil.copy2(HERE / name, frozen / name)
+            runner.write_text('# frozen runner\n')
+            hashes, materializer_path, runner_path = field.bind_frozen_harness(control)
+            self.assertEqual(materializer_path, frozen / 'materialize.py')
+            self.assertEqual(runner_path, runner)
+            self.assertEqual(hashes['entry.py'], field._sha256(HERE / 'entry.py'))
+            self.assertEqual(hashes['native_runner.py'], field._sha256(runner))
+            (frozen / 'entry.py').write_text('# drift\n')
+            with self.assertRaisesRegex(ValueError, 'differs from control snapshot: entry.py'):
+                field.bind_frozen_harness(control)
+
     def test_field_cell_custody_binds_both_arms_and_opponents(self):
         base = {
             'seed': 7, 'seat': 1, 'package_sha256': 'control',

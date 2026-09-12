@@ -12,7 +12,8 @@ import sys
 
 HERE = Path(__file__).resolve().parent
 SOURCE_ROOT = HERE.parents[2]
-S8_RUNNER = SOURCE_ROOT / 'candidates/v4/repairs/gameplay/s8-egg-care/run_s8_field.py'
+COMPONENT_REL = Path('candidates/v5/wf1-current-native')
+RUNNER_REL = Path('candidates/v4/repairs/gameplay/s8-egg-care/run_s8_field.py')
 DEFAULT_SEEDS = (2026091201, 2026091207, 2026091213, 2026091219)
 
 
@@ -72,6 +73,27 @@ def snapshot_runtime(runtime: Path, snapshot: Path) -> str:
         shutil.rmtree(snapshot, ignore_errors=True)
         raise RuntimeError('control snapshot differs from authenticated runtime package')
     return before
+
+
+def bind_frozen_harness(control_runtime: Path) -> tuple[dict, Path, Path]:
+    """Require this executable harness to be the exact one present in control."""
+    frozen_here = Path(control_runtime).resolve() / COMPONENT_REL
+    hashes = {}
+    for name in ('run_field.py', 'materialize.py', 'entry.py'):
+        live = HERE / name
+        frozen = frozen_here / name
+        if not live.is_file() or not frozen.is_file():
+            raise ValueError(f'missing WF1 harness source: {name}')
+        live_hash = _sha256(live)
+        frozen_hash = _sha256(frozen)
+        if live_hash != frozen_hash:
+            raise ValueError(f'WF1 harness source differs from control snapshot: {name}')
+        hashes[name] = frozen_hash
+    runner = Path(control_runtime).resolve() / RUNNER_REL
+    if not runner.is_file():
+        raise ValueError('control snapshot is missing native field runner')
+    hashes['native_runner.py'] = _sha256(runner)
+    return hashes, frozen_here / 'materialize.py', runner
 
 
 def validate_cell_custody(baseline: dict, candidate: dict, *, seed: int, seat: int,
@@ -173,8 +195,10 @@ def main() -> int:
 
     control_runtime = output / 'materialized-base'
     control_digest = snapshot_runtime(runtime, control_runtime)
+    harness_hashes, frozen_materializer, frozen_runner = bind_frozen_harness(control_runtime)
+
     candidate_runtime = output / 'materialized-wf1'
-    materializer = load(HERE / 'materialize.py', 'wf1_v5_materializer')
+    materializer = load(frozen_materializer, 'wf1_v5_materializer')
     materialization = materializer.materialize(
         control_runtime, candidate_runtime,
         expected_main_blob=args.expected_main_git_blob,
@@ -184,7 +208,7 @@ def main() -> int:
         raise RuntimeError('control package drifted after materialization')
     candidate_digest = package_digest(candidate_runtime)
 
-    runner = load(S8_RUNNER, 'wf1_v5_native_runner')
+    runner = load(frozen_runner, 'wf1_v5_native_runner')
     entry = candidate_runtime / 'wf1_v5_entry.py'
     seeds = tuple(int(value) for value in args.seeds.split(',') if value.strip())
     if not seeds:
@@ -251,12 +275,7 @@ def main() -> int:
         'materialization': materialization,
         'control_package_sha256': control_digest,
         'candidate_package_sha256': candidate_digest,
-        'harness_sha256': {
-            'run_field.py': _sha256(HERE / 'run_field.py'),
-            'materialize.py': _sha256(HERE / 'materialize.py'),
-            'entry.py': _sha256(HERE / 'entry.py'),
-            'native_runner.py': _sha256(S8_RUNNER),
-        },
+        'harness_sha256': harness_hashes,
         'seeds': list(seeds),
         'cells': cells,
         'validation': validation,
