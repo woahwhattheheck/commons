@@ -17,7 +17,7 @@ from typing import Any, Mapping, Sequence
 import crop_service_capacity as C
 
 SCHEMA = "titan-v4-plantguard-service-proof/v1"
-SAFE_BETWEEN_PLANT_AND_WATER = frozenset({"FERTILIZE"})
+SAFE_SAME_SITE_SERVICE_OPS = frozenset({"FERTILIZE", "WATER"})
 
 
 class PlantguardEvidenceError(ValueError):
@@ -113,6 +113,12 @@ def prove_same_eod_establishment(
     ``order`` is the caller's total execution order inside a callback. This
     permits a later actor in the same callback to WATER a site planted earlier
     in that callback without pretending all same-hour actions are simultaneous.
+
+    A positive witness also requires the projected same-site service history to
+    remain unambiguous through the rest of the current-day projection.  In
+    particular, WATER is not an early-return authorization: a later same-site
+    DIG/HARVEST/PLANT/BUILD (or any unmodelled same-site op) fails closed rather
+    than certifying a plant that may no longer exist at EOD.
     """
     if not isinstance(no_future_hires, bool):
         raise PlantguardEvidenceError("no_future_hires_must_be_bool")
@@ -163,9 +169,10 @@ def prove_same_eod_establishment(
                     plant = row
                 continue
             if row["op"] == "WATER":
-                water = row
-                break
-            if row["op"] in SAFE_BETWEEN_PLANT_AND_WATER:
+                if water is None:
+                    water = row
+                continue
+            if row["op"] in SAFE_SAME_SITE_SERVICE_OPS:
                 continue
             invalidator = row
             break
@@ -177,7 +184,11 @@ def prove_same_eod_establishment(
             failures.append(
                 {
                     "site": list(site),
-                    "reason": "site_action_between_plant_and_water",
+                    "reason": (
+                        "site_action_between_plant_and_water"
+                        if water is None
+                        else "site_action_after_water_before_eod"
+                    ),
                     "op": invalidator["op"],
                     "hour": invalidator["hour"],
                     "order": invalidator["order"],
