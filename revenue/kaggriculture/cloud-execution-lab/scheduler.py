@@ -176,7 +176,7 @@ def optimize_lot(*,item,quantity,inventory,params,shops,config,now,dates,
 
 def _parse_market_order(order):
     """Classify one row exactly as the pinned engine's market parser."""
-    if not isinstance(order,list) or len(order)<2:
+    if not isinstance(order,list) or not order:
         return None
     op=order[0]
     if op in ('HIRE','BUY_LAND'):
