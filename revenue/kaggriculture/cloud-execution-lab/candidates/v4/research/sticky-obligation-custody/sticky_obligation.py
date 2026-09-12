@@ -354,6 +354,21 @@ def _pickup_quantity(row: Mapping[str, Any], item: str) -> int:
     return _positive_int(row.get("quantity", 1), "projected pickup quantity")
 
 
+def _sink_effect_proven(row: Mapping[str, Any]) -> bool:
+    """Accept a sink only when the caller's authenticated projection proves effect.
+
+    Like ``replacement_effectful`` for recovery WATER, this is an explicit proof
+    input from a separately authenticated engine/postimage producer.  A bare
+    FEED/FERTILIZE opcode is never enough: those actions can legally no-op.
+    """
+    effectful = row.get("effectful")
+    if effectful is None:
+        return False
+    if type(effectful) is not bool:
+        raise UnsupportedObligation("projected sink effectful must be a bool")
+    return effectful is True
+
+
 def prove_carry_consumption(
     obligation: Any,
     projected_rows: Any,
@@ -366,12 +381,17 @@ def prove_carry_consumption(
     treats WHEAT HARVEST as unknown additional acquisition.  The obligation's
     own proactive pickup is *not* included in ``current_inventory_units``; it is
     the extra quantity this proof is trying to reserve sink capacity for.
+
+    Future FEED/FERTILIZE rows count only when their normalized evidence carries
+    strict ``effectful=True`` from the caller's authenticated engine/postimage
+    projection.  Opcode presence alone cannot prove one unit will be consumed.
     """
     ob = validate_obligation(obligation)
     if ob.kind != CARRY_KIND or ob.actor is None or ob.item is None:
         raise UnsupportedObligation("expected carry-consumption obligation")
     burden = _nonnegative_int(current_inventory_units, "current_inventory_units")
     sinks = 0
+    unproved_sinks = 0
     sink_op = CARRY_SINK[ob.item]
     rows = _rows(projected_rows)
 
@@ -406,6 +426,7 @@ def prove_carry_consumption(
                 False,
                 "lossy_drop_before_reserved_sink",
                 sink_units=sinks,
+                unproved_sink_rows=unproved_sinks,
                 competing_units=burden,
                 boundary_step=step,
             )
@@ -415,6 +436,7 @@ def prove_carry_consumption(
                 False,
                 "unknown_wheat_harvest_acquisition_before_sink",
                 sink_units=sinks,
+                unproved_sink_rows=unproved_sinks,
                 competing_units=burden,
                 boundary_step=step,
             )
@@ -425,6 +447,9 @@ def prove_carry_consumption(
             burden += 1
             continue
         if op == sink_op:
+            if not _sink_effect_proven(row):
+                unproved_sinks += 1
+                continue
             sinks += 1
             if max(0, sinks - burden) >= ob.quantity:
                 return _report(
@@ -433,8 +458,10 @@ def prove_carry_consumption(
                     "actor_local_consumption_capacity_proved",
                     sink_step=step,
                     sink_units=sinks,
+                    unproved_sink_rows=unproved_sinks,
                     competing_units=burden,
                     reserved_units=ob.quantity,
+                    sink_effect_evidence_required=True,
                 )
 
     return _report(
@@ -442,6 +469,8 @@ def prove_carry_consumption(
         False,
         "insufficient_actor_local_consumption_capacity",
         sink_units=sinks,
+        unproved_sink_rows=unproved_sinks,
         competing_units=burden,
         reserved_units=ob.quantity,
+        sink_effect_evidence_required=True,
     )
