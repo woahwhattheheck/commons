@@ -15,13 +15,21 @@ import statistics
 import sys
 import tarfile
 import tempfile
+import types
 
 
 ARMS = ("control", "cap4", "cap12")
+EXPECTED_SHARED_HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
 
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def git_blob_bytes(data: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    ).hexdigest()
 
 
 def load(path: Path, name: str):
@@ -32,6 +40,35 @@ def load(path: Path, name: str):
     sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
+
+
+def load_authenticated_shared_helper(path: Path):
+    """Authenticate the shared harness helper, then execute only captured bytes.
+
+    The caller-selected checkout is never imported directly. A stable but modified
+    helper therefore fails before any benchmark output directory is created.
+    """
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("shared harness helper must be a regular file")
+    raw = path.read_bytes()
+    actual_blob = git_blob_bytes(raw)
+    if actual_blob != EXPECTED_SHARED_HELPER_GIT_BLOB:
+        raise ValueError(
+            "shared harness helper Git blob drift: "
+            f"expected {EXPECTED_SHARED_HELPER_GIT_BLOB}, got {actual_blob}"
+        )
+    authority = {
+        "git_blob": EXPECTED_SHARED_HELPER_GIT_BLOB,
+        "sha256": sha256_bytes(raw),
+    }
+    name = "carrot_current_bench_helpers_pinned"
+    module = types.ModuleType(name)
+    module.__file__ = f"<authenticated:{path.name}@{EXPECTED_SHARED_HELPER_GIT_BLOB}>"
+    module.__package__ = ""
+    sys.modules[name] = module
+    code = compile(raw, module.__file__, "exec", dont_inherit=True)
+    exec(code, module.__dict__)
+    return module, authority
 
 
 def read_json_bytes(data: bytes):
@@ -137,15 +174,18 @@ def main(argv=None) -> int:
     builder_path = here / "build_current.py"
     launcher_path = Path(__file__).resolve()
 
-    # Bind every mutable local source before importing it. A moving checkout may
-    # continue to acquire later evidence, but this process keeps one code identity.
-    helper_sha256 = sha256_bytes(helper_path.read_bytes())
+    # The shared helper is an external trust root. Authenticate its Git identity
+    # before importing anything from caller-selected --kg-root, then execute only
+    # the captured authenticated bytes. This happens before args.output exists.
+    h, helper_authority = load_authenticated_shared_helper(helper_path)
+    helper_sha256 = helper_authority["sha256"]
+
+    # Bind the local branch sources before importing/executing them. Unlike the
+    # shared helper, these are PR-owned files whose exact SHA256 is recorded here;
+    # their deeper runtime/source authorities are enforced by their own contracts.
     builder_sha256 = sha256_bytes(builder_path.read_bytes())
     launcher_sha256 = sha256_bytes(launcher_path.read_bytes())
-    h = load(helper_path, "carrot_current_bench_helpers")
     builder = load(builder_path, "carrot_current_builder")
-    if sha256_bytes(helper_path.read_bytes()) != helper_sha256:
-        raise ValueError("benchmark helper moved during import")
     if sha256_bytes(builder_path.read_bytes()) != builder_sha256:
         raise ValueError("candidate builder moved during import")
     if sha256_bytes(launcher_path.read_bytes()) != launcher_sha256:
@@ -237,29 +277,29 @@ def main(argv=None) -> int:
             )
         opponent_receipts[opponent] = receipt
 
-    # The source modules are already loaded/frozen in this process. Reject any
-    # checkout movement before publishing their identities into the run receipt.
-    if sha256_bytes(helper_path.read_bytes()) != helper_sha256:
-        raise ValueError("benchmark helper moved after acquisition")
+    # The PR-owned source modules are already loaded/frozen in this process.
+    # Reject checkout movement before publishing their identities into the receipt.
     if sha256_bytes(builder_path.read_bytes()) != builder_sha256:
         raise ValueError("candidate builder moved after acquisition")
     if sha256_bytes(launcher_path.read_bytes()) != launcher_sha256:
         raise ValueError("launcher moved after acquisition")
 
     run = {
-        "schema": "astra.v5.selective-carrot.current-paired.v4",
+        "schema": "astra.v5.selective-carrot.current-paired.v5",
         "method": (
             "Fresh full official-interpreter games from one authenticated in-memory "
-            "CURRENT archive snapshot. The mutable repository is acquisition-only "
-            "for the evaluator/packer/bridge/opponent closure; the copied harness is "
-            "authenticated against its Git/manifest/registry pins and all game support "
-            "then executes from that snapshot. Local helper/builder/launcher identities "
-            "are captured before import/execution and rechecked before receipt publication. "
-            "The interpreter wrapper records exact tested-seat returned-action stream hashes "
-            "and first pairwise returned-action divergence separately from observed carrot "
-            "plant outcomes. Same seed/seat/opponent across control, cap4 and cap12; "
-            "deterministic rotating arm order. Linux 1.25s IPC action limit; canonical policy "
-            "retains its own 1s deadline. Not hosted Kaggle rating."
+            "CURRENT archive snapshot. The shared joint-liquidity helper is externally "
+            "Git-blob pinned before import and executed directly from its captured bytes; "
+            "the mutable repository is then acquisition-only for the declared evaluator/"
+            "packer/bridge/opponent closure. The copied harness is authenticated against "
+            "its Git/manifest/registry pins and all game support executes from that snapshot. "
+            "Local builder/launcher identities are captured before import/execution and "
+            "rechecked before receipt publication. The interpreter wrapper records exact "
+            "tested-seat returned-action stream hashes and first pairwise returned-action "
+            "divergence separately from observed carrot plant outcomes. Same seed/seat/"
+            "opponent across control, cap4 and cap12; deterministic rotating arm order. "
+            "Linux 1.25s IPC action limit; canonical policy retains its own 1s deadline. "
+            "Not hosted Kaggle rating."
         ),
         "current_archive": current,
         "current_archive_manifest_sha256": current_manifest_sha256,
@@ -267,6 +307,7 @@ def main(argv=None) -> int:
         "control_package_sha256": control_package_sha256,
         "engine": engine_hashes,
         "harness": harness,
+        "shared_helper": helper_authority,
         "helper_sha256": helper_sha256,
         "builder_sha256": builder_sha256,
         "launcher_sha256": launcher_sha256,
