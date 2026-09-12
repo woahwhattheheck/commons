@@ -15,7 +15,16 @@ class FakeMaterializationError(ValueError):
 
 class SnapshotLoaderTests(unittest.TestCase):
     def _runner(self):
-        return types.SimpleNamespace(MaterializationError=FakeMaterializationError)
+        def under(root: Path, rel: str, *, must_exist: bool = True):
+            path = Path(root) / rel
+            if must_exist and not path.is_file():
+                raise FakeMaterializationError("missing test path: " + rel)
+            return path
+
+        return types.SimpleNamespace(
+            MaterializationError=FakeMaterializationError,
+            _under=under,
+        )
 
     def _bind(self, root: Path):
         manifest_path = root / trust.MANIFEST_NAME
@@ -70,6 +79,17 @@ class SnapshotLoaderTests(unittest.TestCase):
                 checker.validate_manifest({}, root)["marker"],
                 "authenticated-checker",
             )
+
+    def test_checker_receipt_reopen_uses_same_captured_bytes(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            runner, _manifest, checker_path, *_ = self._bind(root)
+            expected = checker_path.read_bytes()
+            checker_path.write_text("TAMPERED = True\n", encoding="utf-8")
+            receipt_path = runner._under(root, trust.CHECKER_NAME)
+            self.assertEqual(receipt_path.read_bytes(), expected)
+            self.assertEqual(receipt_path.read_bytes(), expected)
+            self.assertNotEqual(checker_path.read_bytes(), expected)
 
     def test_adapter_disk_swap_cannot_change_executed_bytes(self):
         with tempfile.TemporaryDirectory() as td:
