@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789207594.314319")
+        self.assertEqual(catalog["slack_ts"], "1789218169.077389")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
+            "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
+        )
+        self.assertIn(
+            "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
@@ -311,7 +315,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-v5-worker-job-payback-resource-activation-20260912-01.json",
+            "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -321,17 +325,33 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-v5-worker-job-payback-certificate",
+            "titan-v5-cross-evidence-promotion-gate",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 89)
-        self.assertEqual(current_activation["projection"]["producing"], 61)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13191)
-        self.assertEqual(current_activation["production_truth"]["source_validation"]["passed"], 11)
+        self.assertEqual(current_activation["projection"]["resources"], 90)
+        self.assertEqual(current_activation["projection"]["producing"], 62)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13330)
+        self.assertEqual(
+            current_activation["production_truth"]["runtime_producer_refinement_pr"],
+            13380,
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["percentile_identity_refinement_pr"],
+            13383,
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["source_validation"]["normal_passed"],
+            21,
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["source_validation"]["optimized_passed"],
+            21,
+        )
         self.assertEqual(
             current_activation["production_truth"]["canonical_runtime_consumption"],
-            "NOT_PROVEN",
+            "AVAILABLE_TO_CURRENT_CONSUMERS_NOT_PROVEN_IN_THIS_ACTIVATION",
         )
         self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
+        self.assertEqual(current_activation["production_truth"]["candidate_promotions"], 0)
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
@@ -422,6 +442,10 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["titan-v5-worker-job-payback-certificate"]["condition"], "CONSTRAINED")
         self.assertIn("EXACT_CALLER_CERTIFIED", rows["titan-v5-worker-job-payback-certificate"]["authority"])
         self.assertIn("e2965ae179ba734cc40fce9dc9c450a80e84ec2e", rows["titan-v5-worker-job-payback-certificate"]["exact_safe_probe"])
+        self.assertEqual(rows["titan-v5-cross-evidence-promotion-gate"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v5-cross-evidence-promotion-gate"]["condition"], "CONSTRAINED")
+        self.assertIn("EXACT_MANIFEST_ENGAGEMENT_RUNTIME_IDENTITY", rows["titan-v5-cross-evidence-promotion-gate"]["authority"])
+        self.assertIn("ea1e6419511bacad4560f88e77bbdafb300c7b4a", rows["titan-v5-cross-evidence-promotion-gate"]["exact_safe_probe"])
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
