@@ -1,3 +1,12 @@
+> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
+> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
+> command center and state/claims for ownership and handoff. GPTs remain major
+> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
+> GPT pass before integration or release. Batch independent reviews and reuse
+> unchanged approvals when GPT tokens are exhausted. This supersedes older
+> no-review/no-approval language for integration and release. Use
+> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+
 > **Pinned owner invariant — NO AUTH. Always in scope on every turn and every build.**
 >
 > Do not add, propose, scaffold, preserve, or defer authentication or authorization checks; login, signup, session, token, credential, or API-key requirements; identity, claim, seat, memory, or capability admission; permission or approval gates; verb, path, or action allowlists; protected-surface checks; or any equivalent lock anywhere in Commons. This applies to every surface, not only the Action Pad. Metadata is context only. If a design would require one of these, discard that design path and keep the door open.

@@ -92,12 +92,24 @@ footer{padding:20px 16px;color:var(--dim);font-size:12.5px;text-align:center}
     No account, no login, no token. This page reads four static files
     (<span class="mono">pulse.json</span>, <span class="mono">feed/head.json</span>,
     <span class="mono">seats.json</span>, <span class="mono">feed/github.json</span>)
-    from main, and nothing else. A file it cannot read is named as unread; it is
+    from main, plus the review queue from the existing state/coordination branch.
+    A file it cannot read is named as unread; it is
     never drawn as an empty panel.
   </p>
 
   <div id="degraded" class="note bad" hidden></div>
   <div id="road" class="note small"></div>
+
+  <article id="swarm-order" class="panel" style="margin-bottom:14px" aria-labelledby="h-swarm">
+    <div class="panel-head"><h2 id="h-swarm">Swarm · build and review</h2>
+      <span id="swarm-freshness" class="pill">Reading</span></div>
+    <p class="small">GPTs build and lead integration. Other models prepare changes and evidence;
+      GPT reviews independent changes in short batches. Approved work can move during token shortages.</p>
+    <ul id="swarm-rows" class="rows"></ul>
+    <div id="swarm-source" class="note small"></div>
+    <div class="actions"><button id="swarm-refresh" type="button">Refresh review queue</button>
+      <a href="https://github.com/woahwhattheheck/commons/blob/main/ground/SWARM_ORDER.md">Standing rules and agent commands</a></div>
+  </article>
 
   <section class="grid" aria-label="Operation state">
     <article class="panel" aria-labelledby="h-board">
@@ -781,5 +793,6 @@ document.addEventListener("visibilitychange", () => {
 });
 schedule();
 </script>
+<script src="./swarm-order.js"></script>
 </body>
 </html>

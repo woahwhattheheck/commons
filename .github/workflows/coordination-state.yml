@@ -19,6 +19,9 @@ on:
   pull_request:
     paths:
       - "host/coordination_state.py"
+      - "host/swarm_review.py"
+      - "test_swarm_review.py"
+      - "ground/SWARM_ORDER.md"
       - "test_coordination_state.py"
       - ".github/workflows/coordination-state.yml"
 
@@ -41,9 +44,11 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /host/coordination_state.py
+            /host/swarm_review.py
+            /test_swarm_review.py
             /test_coordination_state.py
       - name: Contract tests
-        run: python3 -m unittest -v test_coordination_state.py
+        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py
 
   publish:
     if: github.event_name != 'pull_request'
@@ -64,6 +69,9 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /host/coordination_state.py
+            /host/swarm_review.py
+            /ground/SWARM_ORDER.md
+            /ground/SWARM_RELIABILITY.json
       - name: Publish coordination state to state/coordination
         env:
           GITHUB_TOKEN: ${{ github.token }}

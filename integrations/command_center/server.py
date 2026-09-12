@@ -28,6 +28,7 @@ MANIFEST = {
     "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
+    "swarm": "GET /api/swarm: existing PR queue, GPT review batches, exact receipts and freshness; ground/SWARM_ORDER.md governs integration",
     "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
     "operations": "Reuse the same operation_id and exact payload after a transport interruption. Pending or uncertain is not completion. Reconcile at the provider; never remint an ID to force replay.",
@@ -78,6 +79,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, with_host(self.server.center, self.server.center.state(refresh=parse_qs(parsed.query).get("refresh") == ["1"])))
             elif parsed.path == "/api/work":
                 self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
+            elif parsed.path == "/api/swarm":
+                self.send_json(200, self.server.center.swarm_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/event":
                 event_id = (parse_qs(parsed.query).get("event_id") or [""])[0]
                 self.send_json(200, self.server.center.event(event_id))

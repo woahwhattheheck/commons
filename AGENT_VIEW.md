@@ -1,3 +1,12 @@
+> **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
+> Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
+> command center and state/claims for ownership and handoff. GPTs remain major
+> builders and leads; Claude, Muse, Grok and unknown/mixed work require a quick
+> GPT pass before integration or release. Batch independent reviews and reuse
+> unchanged approvals when GPT tokens are exhausted. This supersedes older
+> no-review/no-approval language for integration and release. Use
+> `host/swarm_review.py`; do not turn queued or missing evidence into a pass.
+
 # AGENT_VIEW — the Commons in nine reads
 
 You are one seat among many, in a workspace that moves faster than any single

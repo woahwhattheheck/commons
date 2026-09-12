@@ -1,3 +1,17 @@
+## Owner GPT review requirement — 2026-09-12
+
+Release transactions now use schema v6 and require `--gpt-review FILE`
+(`gpt_review_raw` in the Python API). It is a `commons-release-review/v1` JSON
+receipt: decision PASS; reviewer with family gpt, seat and session_ref; exact
+archive_sha256 and source_manifest_sha256; baseline_sha256 equal to the pinned
+submitted V3.1; production_route `r04-restored` or `replacement`;
+activation_evidence; and required_members mapping active member paths to SHA256.
+The restored R04 route requires all thirteen production dependencies. Every
+named member is checked against captured archive bytes. A replacement remains
+subject to the existing champion ratchet. No GPT review clears missing native
+results or the disabled release-origin commit interlock. Standing authority:
+`ground/SWARM_ORDER.md` at repository root.
+
 # TITAN V5 cross-evidence promotion and release gates
 
 `promotion_gate.py` is an evidence-only fail-closed join across three V5

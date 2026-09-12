@@ -31,7 +31,7 @@ import tarfile
 import uuid
 from typing import Any, Callable, Mapping
 
-SCHEMA = "titan-v5-release-transaction/v5"
+SCHEMA = "titan-v5-release-transaction/v6"
 TRANSITION_PREFIX = "v5tx:"
 AUTHORIZED_OPPONENT_IDS = ("apex_v7", "arlene_v14")
 REFERENCE_POLICIES_GIT_BLOB = "6bce02dad705ccc57656ff2e2139db215f9fcc57"
@@ -534,6 +534,49 @@ def _trust_digest(files: Mapping[str, bytes]) -> str:
     return _sha(_canonical(rows))
 
 
+def validate_gpt_review(raw, archive_raw, source_raw, members):
+    """Bind review to the shipped policy, including the R04 dependency closure.
+
+    Model identity is an explicit session attestation in the shared-account
+    Commons. This check never substitutes for native/champion/origin evidence.
+    """
+    review = _loads(raw, "GPT release review")
+    if (review.get("schema") != "commons-release-review/v1"
+            or review.get("decision") != "PASS"):
+        raise TransactionError("GPT release review must explicitly PASS")
+    reviewer = review.get("reviewer")
+    if (not isinstance(reviewer, dict) or reviewer.get("family") != "gpt"
+            or not reviewer.get("seat") or not reviewer.get("session_ref")):
+        raise TransactionError("GPT release reviewer session is required")
+    for name, value in (("archive_sha256", _sha(archive_raw)),
+                        ("source_manifest_sha256", _sha(source_raw)),
+                        ("baseline_sha256", V31_ARCHIVE_SHA256)):
+        if review.get(name) != value:
+            raise TransactionError("GPT release review binding mismatch: " + name)
+    route = review.get("production_route")
+    if route not in ("r04-restored", "replacement") or not review.get("activation_evidence"):
+        raise TransactionError("GPT review must identify the active production route and its evidence")
+    required = review.get("required_members")
+    if not isinstance(required, dict) or not required:
+        raise TransactionError("GPT review must name the active production members")
+    if route == "r04-restored":
+        closure = {
+            "b11_mirror_horizon.py", "b5_fertilize.py", "b9_terminal_fertilizer.py",
+            "h3c_goose_eod_cap_rescue.py", "jit_pass_fertilize.py", "r01_tapes.py",
+            "r04_dribble_dump.py", "r04_fert_hand.py", "r04_full_router.py",
+            "r04_h4_strawberry.py", "r04_kill_late_water.py",
+            "r04_no_late_sale_advance.py", "r04_strawberry_endgame.py",
+        }
+        if not closure.issubset(required):
+            raise TransactionError("GPT R04 restoration review omits the 13-file production closure")
+    for name, digest in required.items():
+        if name not in members or not isinstance(digest, str) or _sha(members[name]) != digest:
+            raise TransactionError("reviewed production member missing or changed: " + str(name))
+    return {"receipt_sha256": _sha(raw), "reviewer": reviewer,
+            "production_route": route, "baseline_sha256": V31_ARCHIVE_SHA256,
+            "required_members": required, "activation_evidence": review["activation_evidence"]}
+
+
 def build_transaction(
     *,
     live_pointer_raw: bytes,
@@ -552,6 +595,7 @@ def build_transaction(
     economics_builder: Callable[..., Mapping[str, Any]],
     trust_result: Mapping[str, Any],
     trust_files: Mapping[str, bytes],
+    gpt_review_raw: bytes,
 ) -> dict[str, Any]:
     """Authenticate one expected-old -> approved-new transition without writing."""
     if live_pointer_raw != expected_old_pointer_raw:
@@ -608,6 +652,8 @@ def build_transaction(
     if trust_result.get("errors") != []:
         raise TransactionError("current V4 trusted-base gate returned errors")
 
+    gpt_review = validate_gpt_review(gpt_review_raw, approved_archive_raw,
+                                     approved_source_manifest_raw, archive_members)
     trust_sha = _trust_digest(trust_files)
     core = {
         "expected_old": {
@@ -645,6 +691,7 @@ def build_transaction(
             "panel_sha256": economics["panel_sha256"],
         },
         "champion": champion,
+        "gpt_review": gpt_review,
         "trusted_base": {
             "control_plane_sha256": trust_sha,
             "validator_sha256": _sha(trust_files["check_control_plane.py"]),
@@ -749,6 +796,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--promotion-receipt", type=Path, required=True)
     parser.add_argument("--economics-report", type=Path, required=True)
     parser.add_argument("--champion-receipt", type=Path, required=True)
+    parser.add_argument("--gpt-review", type=Path, required=True)
     parser.add_argument("--champion-engine-dir", type=Path, required=True)
     parser.add_argument("--champion-v31-archive", type=Path, required=True)
     parser.add_argument("--champion-incumbent-archive", type=Path, required=True)
@@ -804,6 +852,7 @@ def main(argv: list[str] | None = None) -> int:
             economics_builder=economics_module.validate_report,
             trust_result=trust_result,
             trust_files=trust_files,
+            gpt_review_raw=_read(args.gpt_review, "GPT release review"),
         )
         if args.commit:
             if args.output is None:
