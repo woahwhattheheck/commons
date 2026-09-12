@@ -14,7 +14,7 @@ import types
 
 ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 ENGINE_CONFIG_BLOB = "b354d06b742fe48402513792253f1a5c29366b20"
-HELPER_BLOB = "a0ec44ee5877918fe3559f701582bf5863edcbbf"
+HELPER_BLOB = "315d999864c4b3a1cbd4cf2152ec11826719572e"
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[4]
 ENGINE = LAB / "reference" / "engine" / "kaggriculture.py"
@@ -121,8 +121,6 @@ def capture_once_regression(engine_bytes: bytes, config_bytes: bytes, helper_byt
         captured_config = config_path.read_bytes()
         captured_helper = helper_path.read_bytes()
 
-        # Replace all backing paths after capture. Executing by pathname here
-        # would raise (or fail JSON parsing); capture-once execution must ignore it.
         engine_path.write_text("raise RuntimeError('reopened engine path')\n")
         config_path.write_text("{not-json")
         helper_path.write_text("raise RuntimeError('reopened helper path')\n")
@@ -141,7 +139,6 @@ def capture_once_regression(engine_bytes: bytes, config_bytes: bytes, helper_byt
 
 
 def floor_stock(engine, item: str) -> int:
-    """Find any exact-$1 stock using only the authenticated engine price ABI."""
     p = engine.MARKET_PARAMS[item]
     start = int(p["I0"])
     if engine.market_price(item, start, None) == 1:
