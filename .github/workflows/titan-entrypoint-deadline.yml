@@ -80,14 +80,16 @@ jobs:
           tar -xzf exports/titan-current.tar.gz -C "$runtime"
           (
             cd "$runtime"
-            PYTHONPATH="$runtime" python3 -B -m unittest -v \
+            # EntryClock imports fixture helpers whose separate source suites
+            # need research-only files; select the packed clock class explicitly.
+            PYTHONPATH="$runtime:$runtime/checks" python3 -B -m unittest -v \
               checks.test_entrypoint_deadline \
-              checks.test_entrypoint_clock \
+              checks.test_entrypoint_clock.EntryClock \
               checks.test_entrypoint_route_capsule \
               checks.test_final_market_pressure_entrypoint
-            PYTHONPATH="$runtime" python3 -O -B -m unittest -v \
+            PYTHONPATH="$runtime:$runtime/checks" python3 -O -B -m unittest -v \
               checks.test_entrypoint_deadline \
-              checks.test_entrypoint_clock \
+              checks.test_entrypoint_clock.EntryClock \
               checks.test_entrypoint_route_capsule \
               checks.test_final_market_pressure_entrypoint
           )
