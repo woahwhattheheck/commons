@@ -1,0 +1,107 @@
+name: TITAN V4 C5 predictable procurement field
+on:
+  pull_request:
+    paths:
+      - revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/c5-market-transition/**
+      - .github/workflows/titan-v4-c5-predictable-procurement.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: titan-v4-c5-predictable-procurement-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Focused source contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/c5-market-transition
+          python -B -m py_compile \
+            "$DIR/predictable_procurement.py" \
+            "$DIR/test_predictable_procurement.py" \
+            "$DIR/run_predictable_procurement_field.py" \
+            "$DIR/test_predictable_procurement_field.py"
+          pushd "$DIR"
+          PYTHONDONTWRITEBYTECODE=1 python -B -m unittest -v \
+            test_predictable_procurement test_predictable_procurement_field
+          PYTHONDONTWRITEBYTECODE=1 python -OB -m unittest -v \
+            test_predictable_procurement test_predictable_procurement_field
+          python -B predictable_procurement.py --output "$RUNNER_TEMP/C5-PREDICTABLE-PROCUREMENT.json"
+          cat "$RUNNER_TEMP/C5-PREDICTABLE-PROCUREMENT.json"
+          popd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: c5-predictable-procurement-atlas
+          path: ${{ runner.temp }}/C5-PREDICTABLE-PROCUREMENT.json
+          if-no-files-found: error
+          retention-days: 7
+
+  current-native-field:
+    needs: source-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Recover authenticated canonical runtime and Arlene opponent
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARTIFACT_ID=10180428228
+          ZIP="$RUNNER_TEMP/c5-canonical.zip"
+          EXTRACT="$RUNNER_TEMP/c5-artifact"
+          RUNTIME="$RUNNER_TEMP/c5-runtime"
+          OPPONENT="$RUNNER_TEMP/arlene-opponent"
+          mkdir -p "$EXTRACT" "$RUNTIME" "$OPPONENT"
+          curl --fail --location --retry 3 \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" \
+            -o "$ZIP"
+          echo "737c0b2b69147a826d1000f3b2266b70a579fffd0ab91d4126c6c9a84159d799  $ZIP" | sha256sum -c -
+          unzip -q "$ZIP" -d "$EXTRACT"
+          TAR="$EXTRACT/checked-package/exports/titan-current.tar.gz"
+          echo "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9  $TAR" | sha256sum -c -
+          tar -xzf "$TAR" -C "$RUNTIME"
+          echo "c4c22d0f2b1071cadf6a9f74effccc8cb20ea9f4d10ca1cf9f1fe57351709dc1  $RUNTIME/main.py" | sha256sum -c -
+          ARLENE=revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py
+          test "$(git hash-object "$ARLENE")" = bdb9cf58148a3c7961c085f4902759537decabf6
+          cp "$ARLENE" "$OPPONENT/main.py"
+          test "$(git hash-object "$OPPONENT/main.py")" = bdb9cf58148a3c7961c085f4902759537decabf6
+          printf 'C5_RUNTIME=%s\n' "$RUNTIME" >> "$GITHUB_ENV"
+          printf 'C5_OPPONENT=%s\n' "$OPPONENT" >> "$GITHUB_ENV"
+          printf 'C5_RESULTS=%s\n' "$RUNNER_TEMP/c5-predictable-field" >> "$GITHUB_ENV"
+      - name: Both-seat current-native procurement census
+        shell: bash
+        run: |
+          set -euo pipefail
+          DIR=revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/c5-market-transition
+          mkdir -p "$C5_RESULTS"
+          PYTHONDONTWRITEBYTECODE=1 python -B "$DIR/run_predictable_procurement_field.py" \
+            --runtime "$C5_RUNTIME" \
+            --opponent "$C5_OPPONENT" \
+            --output "$C5_RESULTS" \
+            --seeds 17,9922999,2026091201 \
+            | tee "$C5_RESULTS/summary.log"
+          cat "$C5_RESULTS/C5-PREDICTABLE-PROCUREMENT-FIELD.json"
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: c5-predictable-procurement-field
+          path: ${{ runner.temp }}/c5-predictable-field
+          if-no-files-found: error
+          retention-days: 7
