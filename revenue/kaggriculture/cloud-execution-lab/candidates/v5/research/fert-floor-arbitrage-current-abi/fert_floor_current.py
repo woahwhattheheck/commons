@@ -1,18 +1,17 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Current-V5 evidence adapter for floor-price fertilizer acquisition/application.
+"""Current-V5 evidence adapter for source-real low-price fertilizer use.
 
-This is a fresh re-author from durable source mechanics, not a reconstruction of
-the lost ``r04_fert_arbitrage`` payload. It has no producer/controller calls and
-is default-disconnected. The only policy choices represented here are:
+Fresh re-author from durable mechanism authority; not a reconstruction of the
+lost ``r04_fert_arbitrage`` payload.  The historical positive configuration
+used ``buy_price=2`` while the official interpreter quotes BUY_PRODUCT at the
+*post-buy* inventory.  This file therefore binds the authenticated default
+engine's exact low-price boundary instead of guessing from the public price:
 
-* append one BUY_PRODUCT FERTILIZER order when the *public current quote* is
-  exactly 2, one market slot and cash are available, no owned fertilizer already
-  exists, and the board contains an uncovered live plant opportunity;
-* replace only a literal PASS of an actor already carrying fertilizer while
-  standing on such a plant with FERTILIZE.
+* pre-buy FERT inventory >= 10,489 => one-unit post-buy quote <= $2;
+* pre-buy FERT inventory >= 10,494 => one-unit post-buy quote == $1 floor.
 
-The adapter intentionally never invents PICKUP routing. Natural current-V5
-engagement must prove shed -> actor custody before economics can promote this.
+The adapter is selected-action-only, default-disconnected, and never invents
+PICKUP routing.
 """
 from __future__ import annotations
 
@@ -21,11 +20,19 @@ import math
 from typing import Any, Mapping
 
 ITEM = "FERTILIZER"
-STRICT_BUY_PRICE = 2
+ENGINE_PRICE_FLOOR = 1
+MAX_BUY_PRICE = 2
+FERT_PRICE2_PREBUY_INVENTORY = 10_489
+FERT_PRICE1_PREBUY_INVENTORY = 10_494
+# At 10,493 the public quote has rounded to $1, while the post-buy quote is
+# still $2. This is why public-price equality is not a correct buy authority.
+FERT_PUBLIC_PRICE1_INVENTORY = 10_493
+
 MAX_MARKET_ORDERS = 10
 TURNS_PER_DAY = 24
 EPISODE_STEPS = 720
 
+OFFICIAL_ENGINE_BLOB = "3c202c7ee921da239356789e266b694635103fc4"
 MECHANISM_SOURCE_PATH = (
     "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/"
     "fwd-buy-census/fert_floor_apply.py"
@@ -36,8 +43,9 @@ MECHANISM_FOLLOWUP = "d8fa49ccbedf2a51c65431bae51a7f99e648da20"
 
 
 def _finite_number(value: Any) -> bool:
-    return type(value) in (int, float) and (
-        type(value) is int or math.isfinite(value)
+    return (
+        type(value) is int
+        or (type(value) is float and math.isfinite(value))
     )
 
 
@@ -51,7 +59,8 @@ def _identity(selected: Any, reason: str, **extra: Any):
         "reason": reason,
         "buy_added": False,
         "fertilize_actor_indices": (),
-        "strict_buy_price": STRICT_BUY_PRICE,
+        "max_buy_price": MAX_BUY_PRICE,
+        "official_engine_blob": OFFICIAL_ENGINE_BLOB,
         "mechanism_source_blob": MECHANISM_SOURCE_BLOB,
     }
     report.update(extra)
@@ -77,6 +86,8 @@ def _configuration(configuration: Mapping[str, Any] | None) -> dict[str, Any] | 
         value = cfg.get(key, default)
         if type(value) is not int or value != default:
             return None
+    if cfg.get("marketParams") not in (None, {}):
+        return None
     return cfg
 
 
@@ -85,13 +96,10 @@ def _eligible_plant(tile: Any, day: int) -> bool:
         return False
     crop = tile.get("crop")
     covered = tile.get("fertilized_until_day", -1)
-    if type(crop) is not str or not crop:
-        return False
-    if type(covered) is not int:
+    if type(crop) is not str or not crop or type(covered) is not int:
         return False
     if tile.get("dead") is True:
         return False
-    # Official FERTILIZE covers the current day plus the next two days.
     return covered < day + 2
 
 
@@ -121,9 +129,29 @@ def _fert_qty(inventory: Any) -> int | None:
     if not isinstance(inventory, Mapping):
         return None
     value = inventory.get(ITEM, 0)
-    if not _nonnegative_int(value):
+    return value if _nonnegative_int(value) else None
+
+
+def _source_public_price(fert_inventory: int) -> int | None:
+    """Exact authenticated public quote inside the low-price candidate region."""
+    if type(fert_inventory) is not int or fert_inventory < FERT_PRICE2_PREBUY_INVENTORY:
         return None
-    return value
+    return (
+        ENGINE_PRICE_FLOOR
+        if fert_inventory >= FERT_PUBLIC_PRICE1_INVENTORY
+        else MAX_BUY_PRICE
+    )
+
+
+def _source_postbuy_price(fert_inventory: int) -> int | None:
+    """Exact one-unit BUY_PRODUCT quote for the authenticated low-price region."""
+    if type(fert_inventory) is not int or fert_inventory < FERT_PRICE2_PREBUY_INVENTORY:
+        return None
+    return (
+        ENGINE_PRICE_FLOOR
+        if fert_inventory >= FERT_PRICE1_PREBUY_INVENTORY
+        else MAX_BUY_PRICE
+    )
 
 
 def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | None):
@@ -146,6 +174,7 @@ def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | N
         or not isinstance(market_state, Mapping)
     ):
         return None, "malformed_observation"
+
     farm = farms[player]
     if not isinstance(farm, Mapping):
         return None, "malformed_farm"
@@ -156,6 +185,7 @@ def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | N
     inventories = private.get("inventories")
     shed = private.get("shed")
     prices = market_state.get("prices")
+    market_inventory = market_state.get("inventory")
     if (
         not isinstance(farmer, list)
         or not isinstance(hands, list)
@@ -164,11 +194,11 @@ def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | N
         or len(inventories) != len(hands) + 1
         or not isinstance(shed, Mapping)
         or not isinstance(prices, Mapping)
+        or not isinstance(market_inventory, Mapping)
         or not _finite_number(money)
         or money < 0
     ):
         return None, "malformed_farm_state"
-    positions = [farmer, *hands]
 
     selected_farmer = selected.get("farmer")
     selected_hands = selected.get("hands")
@@ -180,14 +210,20 @@ def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | N
         or len(selected_hands) != len(hands)
         or not isinstance(selected_market, list)
         or len(selected_market) > MAX_MARKET_ORDERS
-        or any(not isinstance(command, list) or not command for command in [selected_farmer, *selected_hands])
+        or any(
+            not isinstance(command, list) or not command
+            for command in [selected_farmer, *selected_hands]
+        )
         or any(not isinstance(order, list) or not order for order in selected_market)
     ):
         return None, "selected_action_invalid"
 
     fert_price = prices.get(ITEM)
+    fert_market_inventory = market_inventory.get(ITEM)
     if not _finite_number(fert_price) or fert_price < 0:
         return None, "malformed_fertilizer_price"
+    if not _nonnegative_int(fert_market_inventory):
+        return None, "malformed_fertilizer_market_inventory"
 
     shed_fert = _fert_qty(shed)
     actor_fert = [_fert_qty(inventory) for inventory in inventories]
@@ -199,25 +235,33 @@ def _parse(observation: Any, selected: Any, configuration: Mapping[str, Any] | N
         "player": player,
         "step": step,
         "day": step // TURNS_PER_DAY,
-        "farm": farm,
-        "positions": positions,
+        "positions": [farmer, *hands],
         "tiles": tiles,
-        "money": float(money),
+        "money": money,
         "inventories": inventories,
         "shed_fert": shed_fert,
         "actor_fert": actor_fert,
-        "fert_price": float(fert_price),
+        "fert_price": fert_price,
+        "fert_market_inventory": fert_market_inventory,
         "selected_market": selected_market,
     }, None
 
 
 def _market_mentions_fertilizer(market: list[list[Any]]) -> bool:
-    for order in market:
-        # Known BUY_PRODUCT/SELL rows name the item at index 1. Unknown short
-        # rows are preserved and do not grant candidate authority.
-        if len(order) >= 2 and order[1] == ITEM:
-            return True
-    return False
+    return any(len(order) >= 2 and order[1] == ITEM for order in market)
+
+
+def _floor_buy_authority(parsed: Mapping[str, Any]) -> tuple[bool, str, int | None]:
+    inventory = parsed["fert_market_inventory"]
+    expected_public = _source_public_price(inventory)
+    postbuy = _source_postbuy_price(inventory)
+    if postbuy is None:
+        return False, "fertilizer_postbuy_quote_above_ceiling", None
+    if parsed["fert_price"] != expected_public:
+        return False, "fertilizer_market_authority_drift", postbuy
+    if parsed["money"] < postbuy:
+        return False, "insufficient_cash_for_source_quote", postbuy
+    return True, "authorized", postbuy
 
 
 class FertFloorArbitrageCurrentABI:
@@ -252,11 +296,10 @@ class FertFloorArbitrageCurrentABI:
             for index, (position, inventory) in enumerate(
                 zip(parsed["positions"], parsed["inventories"])
             ):
-                command = commands[index]
                 qty = _fert_qty(inventory)
                 tile = _actor_tile(parsed["tiles"], position)
                 if (
-                    command == ["PASS"]
+                    commands[index] == ["PASS"]
                     and qty is not None
                     and qty > 0
                     and _eligible_plant(tile, parsed["day"])
@@ -268,11 +311,14 @@ class FertFloorArbitrageCurrentABI:
         action["hands"] = commands[1:]
 
         buy_added = False
+        buy_authorized = False
+        buy_reason = "buy_disabled"
+        source_postbuy_price = None
         if self.buy:
+            buy_authorized, buy_reason, source_postbuy_price = _floor_buy_authority(parsed)
             owned_fert = parsed["shed_fert"] + sum(parsed["actor_fert"])
             can_buy = (
-                parsed["fert_price"] == STRICT_BUY_PRICE
-                and parsed["money"] >= STRICT_BUY_PRICE
+                buy_authorized
                 and owned_fert == 0
                 and len(action["market"]) < MAX_MARKET_ORDERS
                 and not _market_mentions_fertilizer(action["market"])
@@ -285,9 +331,10 @@ class FertFloorArbitrageCurrentABI:
         changed = action != selected
         if not changed:
             reason = "identity"
-            if self.buy and parsed["fert_price"] != STRICT_BUY_PRICE:
-                reason = "fertilizer_price_not_strict_floor_entry"
-            elif self.buy and parsed["shed_fert"] + sum(parsed["actor_fert"]) > 0:
+            owned_fert = parsed["shed_fert"] + sum(parsed["actor_fert"])
+            if self.buy and not buy_authorized:
+                reason = buy_reason
+            elif self.buy and owned_fert > 0:
                 reason = "owned_fertilizer_already_present"
             elif self.buy and _market_mentions_fertilizer(parsed["selected_market"]):
                 reason = "parent_fertilizer_market_intent"
@@ -301,6 +348,8 @@ class FertFloorArbitrageCurrentABI:
                 buy_enabled=self.buy,
                 apply_enabled=self.apply,
                 observed_fertilizer_price=parsed["fert_price"],
+                fertilizer_market_inventory=parsed["fert_market_inventory"],
+                source_postbuy_price=source_postbuy_price,
             )
 
         return action, {
@@ -310,7 +359,10 @@ class FertFloorArbitrageCurrentABI:
             "apply_enabled": self.apply,
             "buy_added": buy_added,
             "fertilize_actor_indices": tuple(fertilized),
-            "strict_buy_price": STRICT_BUY_PRICE,
+            "max_buy_price": MAX_BUY_PRICE,
             "observed_fertilizer_price": parsed["fert_price"],
+            "fertilizer_market_inventory": parsed["fert_market_inventory"],
+            "source_postbuy_price": source_postbuy_price,
+            "official_engine_blob": OFFICIAL_ENGINE_BLOB,
             "mechanism_source_blob": MECHANISM_SOURCE_BLOB,
         }
