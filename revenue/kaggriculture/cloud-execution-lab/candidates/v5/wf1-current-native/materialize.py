@@ -38,9 +38,7 @@ def materialize(runtime: Path, output: Path, *, expected_main_blob: str,
                 expected_config_blob: str, source_root: Path = SOURCE_ROOT) -> dict:
     runtime = runtime.resolve()
     output = output.resolve()
-    if runtime == output:
-        raise ValueError('output must differ from runtime')
-    if runtime in output.parents:
+    if runtime == output or runtime in output.parents:
         raise ValueError('output must be outside runtime')
     main_path = runtime / 'main.py'
     config_path = runtime / 'TITAN-CONFIG.json'
