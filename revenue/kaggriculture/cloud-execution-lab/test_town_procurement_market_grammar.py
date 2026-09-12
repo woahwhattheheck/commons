@@ -50,47 +50,42 @@ class TownProcurementMarketGrammarTests(unittest.TestCase):
         action = self._action([
             ["SELL", "WHEAT", 0, "parsed-inert"],
             ["SELL", "WHEAT", "not-a-number", "malformed"],
+            ["SELL", "WHEAT", float("nan"), "value-error-inert"],
             ["BUY_PRODUCT", "WHEAT", 3],
         ])
         result, report = town_procurement.apply(
             self._observation(200),
             action,
-            {"maxMarketOrdersPerTurn": 3},
+            {"maxMarketOrdersPerTurn": 4},
             completed=True,
         )
         self.assertEqual(report["status"], "target_advanced")
-        self.assertEqual(result["market"][2][2], 6)
+        self.assertEqual(result["market"][3][2], 6)
 
-    def test_infinite_market_quantities_fail_closed_as_inert(self):
+    def test_infinite_market_quantities_match_engine_overflow(self):
         for quantity in (float("inf"), float("-inf")):
-            with self.subTest(quantity=quantity):
-                self.assertIsNone(
-                    town_procurement._market_quantity(
-                        ["BUY_PRODUCT", "WHEAT", quantity],
-                        "BUY_PRODUCT",
-                        "WHEAT",
-                    )
-                )
-                self.assertIsNone(
-                    town_procurement._market_quantity(
-                        ["SELL", "WHEAT", quantity],
-                        "SELL",
-                        "WHEAT",
-                    )
-                )
+            for op in ("BUY_PRODUCT", "SELL"):
+                with self.subTest(quantity=quantity, op=op):
+                    with self.assertRaises(OverflowError):
+                        town_procurement._market_quantity(
+                            [op, "WHEAT", quantity],
+                            op,
+                            "WHEAT",
+                        )
 
         action = self._action([
-            ["SELL", "WHEAT", float("inf"), "overflowing-inert-row"],
+            ["SELL", "WHEAT", float("inf"), "engine-fatal-row"],
             ["BUY_PRODUCT", "WHEAT", 3],
         ])
-        result, report = town_procurement.apply(
-            self._observation(200),
-            action,
-            {"maxMarketOrdersPerTurn": 2},
-            completed=True,
-        )
-        self.assertEqual(report["status"], "target_advanced")
-        self.assertEqual(result["market"][1][2], 6)
+        with self.assertRaises(OverflowError):
+            town_procurement.apply(
+                self._observation(200),
+                action,
+                {"maxMarketOrdersPerTurn": 2},
+                completed=True,
+            )
+        self.assertEqual(action["market"][1][2], 3)
+        self.assertIsNone(town_procurement._STATE.get(0, {}).get("pending"))
 
     def test_engine_valid_coercible_wheat_sell_still_blocks_target(self):
         action = self._action([
@@ -120,19 +115,32 @@ class TownProcurementMarketGrammarTests(unittest.TestCase):
             town_procurement._prefix_limit({}, {"maxMarketOrdersPerTurn": -3}), 1
         )
 
-    def test_infinite_market_cap_fails_closed_to_engine_floor(self):
-        self.assertEqual(
-            town_procurement._prefix_limit(
-                {}, {"maxMarketOrdersPerTurn": float("inf")}
-            ),
-            1,
-        )
-        self.assertEqual(
-            town_procurement._prefix_limit(
-                {}, {"maxMarketOrdersPerTurn": float("-inf")}
-            ),
-            1,
-        )
+    def test_invalid_market_cap_fails_closed_instead_of_inventing_prefix(self):
+        for value in (
+            float("inf"),
+            float("-inf"),
+            float("nan"),
+            "not-a-number",
+            None,
+            [],
+            {},
+        ):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    town_procurement._prefix_limit(
+                        {}, {"maxMarketOrdersPerTurn": value}
+                    )
+
+        action = self._action([["BUY_PRODUCT", "WHEAT", 3]])
+        with self.assertRaises(ValueError):
+            town_procurement.apply(
+                self._observation(200),
+                action,
+                {"maxMarketOrdersPerTurn": float("inf")},
+                completed=True,
+            )
+        self.assertEqual(action["market"][0][2], 3)
+        self.assertIsNone(town_procurement._STATE.get(0, {}).get("pending"))
 
 
 if __name__ == "__main__":
