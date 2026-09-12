@@ -56,6 +56,27 @@ class E08SubmittedV4AblationTests(unittest.TestCase):
         self.assertIn("if now<checkpoint<=end:end=checkpoint-1", transform)
         self.assertIn("item_end=end", transform)
 
+    def test_all_e08_downstream_windows_collapse_to_fixed_end(self):
+        transform = self.patched_text.split("class FrozenSelected", 1)[1]
+        self.assertNotIn("item_end=max(", transform)
+        self.assertEqual(transform.count("item_end=end"), 1)
+        # Post-E08 V4 mechanics are deliberately retained, but each sees the
+        # fixed V3.1-style boundary through item_end=end.
+        for token in (
+            "reference.append((min(t,item_end),q))",
+            "for t in range(now+1,item_end+1):",
+            "item_budget=self.cash_reserve(obs,config,base,item_end)",
+            "funded_minimum_now(obs,config,base,farm,private,route,item_end,",
+            "self.receipt_profile(obs,base,farm,private,item_end,item,config)",
+        ):
+            self.assertIn(token, transform, token)
+        # Joint SELL keeps its later-V4 implementation but stays on the same
+        # fixed global end, so this treatment does not ablate E05.
+        self.assertIn(
+            "joint_resource_bound(obs,config,base,farm,private,route,end)",
+            transform,
+        )
+
     def test_treatment_does_not_stamp_trace_only_ablation_marker(self):
         transform = self.patched_text.split("class FrozenSelected", 1)[1]
         self.assertNotIn("submitted-v31-fixed", transform)
