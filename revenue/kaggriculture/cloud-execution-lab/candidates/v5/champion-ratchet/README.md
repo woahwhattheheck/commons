@@ -8,7 +8,7 @@ The earlier self-asserted report design was closed unmerged. This successor cons
 
 The gate hard-pins:
 
-- exact submitted V3.1 archive SHA-256 `5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361`;
+- exact submitted V3.1 identity: source commit `a90d888f03987ef0b35cfd20ec3519c6144db08a`, submission id `56172377`, archive SHA-256 `5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361`;
 - canonical top-30-union manifest SHA-256 `510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e`;
 - the Git blobs of the Commons evaluator, offline loader, and pack adapter;
 - the three pinned official engine Git blobs.
