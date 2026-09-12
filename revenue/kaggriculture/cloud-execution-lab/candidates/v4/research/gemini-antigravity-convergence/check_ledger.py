@@ -56,6 +56,14 @@ REQUIRED_IDS = frozenset([
     "gemini.weedbank-action-bank",
     "gemini.zero-cost-structure-carpet",
 ])
+MELON_ID = "gemini.melon-lifetime-cap"
+MELON_REQUIRED_EVIDENCE = frozenset({
+    V4_PREFIX + "repairs/gameplay/antigravity-melon-cap/melon_cap.py",
+    V4_PREFIX + "repairs/gameplay/antigravity-melon-cap/test_melon_cap.py",
+    V4_PREFIX + "repairs/gameplay/antigravity-melon-cap/MANIFEST.json",
+    V4_PREFIX + "repairs/gameplay/antigravity-melon-cap/INTEGRATION-SPEC.md",
+})
+MELON_REPAIR_PR = 13118
 
 
 class ConvergenceError(ValueError):
@@ -263,11 +271,30 @@ def validate_document(doc: dict[str, Any], repo_root: Path) -> dict[str, Any]:
     if ids != sorted(ids):
         raise ConvergenceError("entries must be sorted by id for stable review")
 
-    melon = next(e for e in items if e["id"] == "gemini.melon-lifetime-cap")
-    if melon["disposition"] != "FIELD_BLOCKED" or melon["activation"] != "BLOCKED":
+    melon = next(e for e in items if e["id"] == MELON_ID)
+    if (
+        melon["disposition"] != "CORRECTED_DESCENDANT"
+        or melon["activation"] != "DEFAULT_OFF"
+    ):
         raise ConvergenceError(
-            "gemini.melon-lifetime-cap must remain FIELD_BLOCKED until executable-cardinality "
-            "and whole-alternative source debt is repaired"
+            f"{MELON_ID} must retain the corrected default-off source component"
+        )
+    if not MELON_REQUIRED_EVIDENCE.issubset(set(melon["canonical_evidence"])):
+        raise ConvergenceError(
+            f"{MELON_ID} must retain repaired source/test/manifest/spec evidence"
+        )
+    if MELON_REPAIR_PR not in melon["provenance_pull_numbers"]:
+        raise ConvergenceError(
+            f"{MELON_ID} must retain repaired provenance through PR {MELON_REPAIR_PR}"
+        )
+    gate = melon["next_gate"].casefold()
+    if any(term not in gate for term in ("current-native", "composition", "economics")):
+        raise ConvergenceError(
+            f"{MELON_ID} next gate must remain current-native composition economics"
+        )
+    if "do_not_repeat_without_new_evidence" in melon:
+        raise ConvergenceError(
+            f"{MELON_ID} must not retain the stale FIELD_BLOCKED fence"
         )
 
     return {

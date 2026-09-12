@@ -14,6 +14,10 @@ def load_doc():
     return C.load_strict_json(LEDGER)
 
 
+def melon_entry(doc):
+    return next(e for e in doc["entries"] if e["id"] == C.MELON_ID)
+
+
 def materialize_evidence(root: Path, doc):
     for entry in doc["entries"]:
         for rel in entry["canonical_evidence"]:
@@ -126,13 +130,32 @@ class GeminiConvergenceTests(unittest.TestCase):
         entry["activation"] = "DEFAULT_OFF"
         self.assertRejected(doc, "must use BLOCKED activation")
 
-    def test_melon_debt_cannot_be_promoted_without_checker_update(self):
+    def test_melon_corrected_descendant_contract_is_pinned(self):
         doc = copy.deepcopy(self.doc)
-        entry = next(e for e in doc["entries"] if e["id"] == "gemini.melon-lifetime-cap")
-        entry["disposition"] = "CORRECTED_DESCENDANT"
-        entry["activation"] = "DEFAULT_OFF"
-        entry.pop("do_not_repeat_without_new_evidence", None)
-        self.assertRejected(doc, "must remain FIELD_BLOCKED")
+        entry = melon_entry(doc)
+        entry["disposition"] = "FIELD_BLOCKED"
+        entry["activation"] = "BLOCKED"
+        entry["do_not_repeat_without_new_evidence"] = True
+        self.assertRejected(doc, "corrected default-off")
+
+        doc = copy.deepcopy(self.doc)
+        melon_entry(doc)["canonical_evidence"].remove(
+            C.V4_PREFIX
+            + "repairs/gameplay/antigravity-melon-cap/INTEGRATION-SPEC.md"
+        )
+        self.assertRejected(doc, "source/test/manifest/spec")
+
+        doc = copy.deepcopy(self.doc)
+        melon_entry(doc)["provenance_pull_numbers"].remove(C.MELON_REPAIR_PR)
+        self.assertRejected(doc, "through PR 13118")
+
+        doc = copy.deepcopy(self.doc)
+        melon_entry(doc)["next_gate"] = "Source debt remains blocked."
+        self.assertRejected(doc, "current-native composition economics")
+
+        doc = copy.deepcopy(self.doc)
+        melon_entry(doc)["do_not_repeat_without_new_evidence"] = True
+        self.assertRejected(doc, "stale FIELD_BLOCKED fence")
 
     def test_pr_provenance_must_be_sorted_unique_plain_ints(self):
         doc = copy.deepcopy(self.doc)

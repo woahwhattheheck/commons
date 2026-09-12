@@ -19,12 +19,36 @@ def _integer(value, name, low=0, high=1_000_000):
     return value
 
 
+def _position(value, name="position"):
+    if not isinstance(value, (list, tuple)) or len(value) != 2:
+        raise ValueError(f"{name} must be an x,y pair")
+    x, y = value
+    if type(x) is not int or type(y) is not int:
+        raise ValueError(f"{name} coordinates must be integers")
+    return x, y
+
+
+class _ReservedSites(frozenset):
+    """Marker for a reservation set already validated by this module."""
+
+
+def _reserved_sites(reserved):
+    if isinstance(reserved, _ReservedSites):
+        return reserved
+    try:
+        return _ReservedSites(_position(site, "reserved site") for site in reserved)
+    except TypeError as exc:
+        raise ValueError("reserved must be an iterable of x,y pairs") from exc
+
+
 def distance(a, b):
-    return abs(int(a[0]) - int(b[0])) + abs(int(a[1]) - int(b[1]))
+    ax, ay = _position(a, "a")
+    bx, by = _position(b, "b")
+    return abs(ax - bx) + abs(ay - by)
 
 
 def quadrant(pos, board):
-    x, y = pos
+    x, y = _position(pos)
     half = board // 2
     return ("N" if y < half else "S") + ("W" if x < half else "E")
 
@@ -103,13 +127,13 @@ class SiteScore:
 
 def site_available(farm, site, *, board, reserved=()):
     """Only current None tiles in observed unlocked quadrants are placeable."""
-    x, y = int(site[0]), int(site[1])
+    x, y = _position(site, "site")
     if not (0 <= x < board and 0 <= y < board):
         return False, "out_of_bounds"
     tiles = farm.get("tiles")
     if not isinstance(tiles, list) or y >= len(tiles) or not isinstance(tiles[y], list) or x >= len(tiles[y]):
         return False, "tile_map_unobserved"
-    if (x, y) in {tuple(r) for r in reserved}:
+    if (x, y) in _reserved_sites(reserved):
         return False, "reserved"
     tile = tiles[y][x]
     if tile == "LOCKED":
@@ -128,6 +152,8 @@ def score_site(mechanics, farm, site, calendar, configuration=None, *, reserved=
         raise TypeError("calendar must be ServiceCalendar")
     config = dict(configuration or {})
     board = _integer(config.get("boardSize", len(farm.get("tiles", []))), "boardSize", 2, 100)
+    site = _position(site, "site")
+    reserved = _reserved_sites(reserved)
     available, reason = site_available(farm, site, board=board, reserved=reserved)
     if not available:
         return None, {"scored": False, "reason": reason, "site": list(site)}
@@ -136,7 +162,6 @@ def score_site(mechanics, farm, site, calendar, configuration=None, *, reserved=
 
     home = tuple(mechanics._default_spawn(board))
     shed = tuple(tuple(p) for p in mechanics._shed_access_tiles(board))
-    site = (int(site[0]), int(site[1]))
     home_distance = distance(home, site)
     shed_distance = min(distance(site, p) for p in shed)
     total = (
@@ -159,6 +184,7 @@ def rank_empty_sites(mechanics, farm, calendar, configuration=None, *, reserved=
     """Return deterministic ascending service-cost ranking over current empty sites."""
     config = dict(configuration or {})
     board = _integer(config.get("boardSize", len(farm.get("tiles", []))), "boardSize", 2, 100)
+    reserved = _reserved_sites(reserved)
     ranked = []
     rejected = {}
     for y in range(board):
@@ -191,7 +217,7 @@ def compare_existing_site(mechanics, farm, current_site, calendar, configuration
     """Diagnostic only: compare current site to empty candidates without evicting it."""
     config = dict(configuration or {})
     board = _integer(config.get("boardSize", len(farm.get("tiles", []))), "boardSize", 2, 100)
-    x, y = map(int, current_site)
+    x, y = _position(current_site, "current_site")
     if not (0 <= x < board and 0 <= y < board):
         return None, {"compared": False, "reason": "current_site_out_of_bounds"}
     tile = farm["tiles"][y][x]
