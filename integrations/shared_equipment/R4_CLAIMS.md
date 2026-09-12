@@ -22,6 +22,7 @@
 - Equipment inspect role card: `tenon-r4-equipment-inspect-role-card-20260906-01`
 - Equipment prove-handoff card: `hinge-r4-equipment-prove-handoff-card-20260906-01`
 - Equipment create role card: `hinge-r4-equipment-create-role-card-20260912-01`
+- Equipment list role ids card: `hinge-r4-equipment-list-role-ids-card-20260912-01`
 
 ## Live cash
 
