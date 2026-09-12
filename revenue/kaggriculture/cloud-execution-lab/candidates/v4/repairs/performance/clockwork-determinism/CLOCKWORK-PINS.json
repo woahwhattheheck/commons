@@ -13,7 +13,7 @@
   "weave_output_git_blob": "16dde00627effa5d0ae4d73a8e05a295e9534e1f",
   "git_blobs": {
     "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
-    "titan_runtime.py": "b952c9c228ecbde592bf3d2df01638677abb0d24",
+    "titan_runtime.py": "6d9720f4aa1e6b46e92ee5183897074d8e9ea5a0",
     "selected_sell_core.py": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
     "candidates/v4/repairs/performance/compose_optimizer_stack.py": "8b65b37d93cefd2404b45f6d9808268425bab053",
     "candidates/v4/repairs/performance/selected-incumbent-bound/patch_selected_incumbent.py": "5ade322bfdc916b7d3ac071ab2e3fc60fb1f0db0",
