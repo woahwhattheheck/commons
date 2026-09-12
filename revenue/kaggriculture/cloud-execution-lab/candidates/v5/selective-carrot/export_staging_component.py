@@ -15,8 +15,8 @@ import os
 from pathlib import Path, PurePosixPath
 import re
 import stat
-from typing import Iterable
 import tempfile
+from typing import Iterable
 
 from publication_custody import publish_exclusive
 import staging_composer
@@ -68,12 +68,10 @@ def canonical_member(name: str) -> str:
 
 
 def source_name(member: str) -> str:
-    """Map an archive member to a flat deterministic component-source path."""
     return f"files/{hashlib.sha256(member.encode('utf-8')).hexdigest()}.bin"
 
 
 def archive_members(raw: bytes, label: str) -> dict[str, bytes]:
-    """Apply the landed staging composer's exact archive-member contract."""
     try:
         return staging_composer.archive_members(raw)
     except staging_composer.ComposerError as exc:
@@ -141,7 +139,7 @@ def receipt_last_writer(
     baseline: dict[str, bytes],
     current: dict[str, bytes],
 ) -> dict[str, str]:
-    """Authenticate a composer receipt and reconstruct its exact final writers."""
+    """Authenticate one composer receipt and reconstruct exact final writers."""
     expected_receipt = _sha(receipt_sha256, "current_receipt_sha256")
     if digest(receipt_raw) != expected_receipt:
         raise ExportError("current composer receipt SHA256 mismatch")
@@ -241,7 +239,9 @@ def receipt_last_writer(
                 raise ExportError(f"receipt addition lacks absence precondition: {member}")
             if member in hashes:
                 raise ExportError(f"receipt addition targets existing member: {member}")
-            hashes[member] = _sha(spec["postimage_sha256"], f"receipt {member}.postimage_sha256")
+            hashes[member] = _sha(
+                spec["postimage_sha256"], f"receipt {member}.postimage_sha256"
+            )
             last_writer[member] = cid
 
         included.add(cid)
@@ -266,7 +266,6 @@ def derive_component(
     conflicts_with: Iterable[str] = (),
     overlap_after: dict[str, str] | None = None,
 ) -> tuple[dict, dict[str, bytes]]:
-    """Return composer manifest and source payloads for one exact archive delta."""
     if digest(baseline_raw) != BASELINE_SHA256:
         raise ExportError("baseline archive is not exact production-v3")
     expected_candidate = _sha(candidate_sha256, "candidate_sha256")
@@ -336,7 +335,9 @@ def derive_component(
                 if declared is not None:
                     raise ExportError(f"overlap declared on baseline-owned member: {member}")
             elif declared != prior:
-                raise ExportError(f"replacement requires exact overlap predecessor {prior}: {member}")
+                raise ExportError(
+                    f"replacement requires exact overlap predecessor {prior}: {member}"
+                )
             source = source_name(member)
             replacements[member] = {
                 "source": source,
@@ -378,7 +379,6 @@ def manifest_bytes(manifest: dict) -> bytes:
 
 
 def preflight_component(manifest: dict, payloads: dict[str, bytes]) -> None:
-    """Require the landed composer to accept the exact generated handoff bytes."""
     with tempfile.TemporaryDirectory(prefix="titan-v5-component-preflight-") as td:
         root = Path(td)
         (root / "COMPONENT.json").write_bytes(manifest_bytes(manifest))
@@ -408,8 +408,21 @@ def publish_component(out_dir: Path, manifest: dict, payloads: dict[str, bytes])
             raise ExportError(f"cannot inspect output directory {out_dir}: {exc}") from exc
         if not stat.S_ISDIR(mode) or stat.S_ISLNK(mode):
             raise ExportError(f"output path is not an ordinary directory: {out_dir}")
-        if any(out_dir.iterdir()):
-            raise ExportError(f"output directory is not empty: {out_dir}")
+        entries = list(out_dir.iterdir())
+        if entries:
+            scaffold = out_dir / "files"
+            try:
+                scaffold_mode = os.lstat(scaffold).st_mode
+            except OSError as exc:
+                raise ExportError(f"output directory is not empty: {out_dir}") from exc
+            if (
+                len(entries) != 1
+                or entries[0] != scaffold
+                or not stat.S_ISDIR(scaffold_mode)
+                or stat.S_ISLNK(scaffold_mode)
+                or any(scaffold.iterdir())
+            ):
+                raise ExportError(f"output directory is not empty: {out_dir}")
     preflight_component(manifest, payloads)
     requested: list[tuple[Path, bytes]] = [
         (out_dir / "COMPONENT.json", manifest_bytes(manifest))
@@ -444,7 +457,9 @@ def export_component(
 ) -> dict:
     baseline_raw = read_regular(baseline_path)
     current_raw = baseline_raw if current_path is None else read_regular(current_path)
-    current_receipt_raw = None if current_receipt_path is None else read_regular(current_receipt_path)
+    current_receipt_raw = (
+        None if current_receipt_path is None else read_regular(current_receipt_path)
+    )
     candidate_raw = read_regular(candidate_path)
     overlap = _parse_overlap(overlap_values)
     manifest, payloads = derive_component(
@@ -482,8 +497,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--overlap-after", action="append", default=[], metavar="MEMBER=COMPONENT")
     args = parser.parse_args(argv)
     current_group = (
-        args.current, args.current_sha256,
-        args.current_receipt, args.current_receipt_sha256,
+        args.current,
+        args.current_sha256,
+        args.current_receipt,
+        args.current_receipt_sha256,
     )
     if any(value is not None for value in current_group) and not all(
         value is not None for value in current_group
