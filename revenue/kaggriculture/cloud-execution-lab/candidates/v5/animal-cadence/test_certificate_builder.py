@@ -136,6 +136,10 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
         _, _, report = self.build()
         self.assertTrue(report["certified"], report)
         self.assertEqual(report["source_pins"], builder._SOURCE_PINS)
+        self.assertEqual(
+            report["source_pins"]["reference/engine/kaggriculture.py"],
+            builder.OFFICIAL_ENGINE_GIT_BLOB,
+        )
 
     def test_route_identity_binds_entire_live_tail(self):
         first_identity, _, first = self.build()
@@ -146,6 +150,66 @@ class CadenceCertificateBuilderTests(unittest.TestCase):
         self.assertNotEqual(first_identity["tail_sha256"], second_identity["tail_sha256"])
         self.assertEqual(first_identity["route_source_git_blob"], builder.PRODUCER_GIT_BLOB)
         self.assertEqual(second_identity["route_source_git_blob"], builder.PRODUCER_GIT_BLOB)
+
+    def test_public_clock_mismatch_fails_before_module_load(self):
+        self.obs["day"] = 1
+        original = builder._load
+
+        def forbidden_load(*_args, **_kwargs):
+            raise AssertionError("clock mismatch reached dynamic module load")
+
+        builder._load = forbidden_load
+        try:
+            route_identity, certificate, report = self.build()
+        finally:
+            builder._load = original
+        self.assertIsNone(route_identity)
+        self.assertIsNone(certificate)
+        self.assertEqual(report["reason"], "public_clock_mismatch")
+
+    def test_partial_public_clock_fails_closed(self):
+        for missing in ("day", "hour"):
+            with self.subTest(missing=missing):
+                saved = self.obs.pop(missing)
+                try:
+                    route_identity, certificate, report = self.build()
+                finally:
+                    self.obs[missing] = saved
+                self.assertIsNone(route_identity)
+                self.assertIsNone(certificate)
+                self.assertEqual(report["reason"], "malformed_public_clock")
+
+    def test_public_clock_fields_are_exact_plain_bounded_ints(self):
+        cases = (
+            ("day", True),
+            ("day", -1),
+            ("hour", True),
+            ("hour", -1),
+            ("hour", 24),
+        )
+        for field, value in cases:
+            with self.subTest(field=field, value=value):
+                original = self.obs[field]
+                self.obs[field] = value
+                try:
+                    route_identity, certificate, report = self.build()
+                finally:
+                    self.obs[field] = original
+                self.assertIsNone(route_identity)
+                self.assertIsNone(certificate)
+                self.assertEqual(report["reason"], "malformed_public_clock")
+
+    def test_redundant_public_clock_may_be_fully_absent(self):
+        day = self.obs.pop("day")
+        hour = self.obs.pop("hour")
+        try:
+            route_identity, certificate, report = self.build()
+        finally:
+            self.obs["day"] = day
+            self.obs["hour"] = hour
+        self.assertIsNotNone(route_identity, report)
+        self.assertIsNotNone(certificate, report)
+        self.assertTrue(report["certified"], report)
 
     def test_non_day_close_never_mints_certificate(self):
         self.obs["step"] = 22
