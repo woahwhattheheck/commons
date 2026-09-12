@@ -85,7 +85,10 @@ blob from an **external exact-head authority** (for example the GitHub contents
 or tree entry for the commit being tested) and independently confirm the
 checkout file matches it. Do not create the expected value by hashing the same
 mutable file and then treating that self-derived value as provenance. For this
-reviewed runner, `RUNNER_BLOB=ea4686bea9ea1427358f59498430ff05e6b06390`.
+reviewed runner, `RUNNER_BLOB=cdb601851d94d798c78c7c749a3e3d2d14331aa9`.
+Launch the trusted parent with isolated Python startup (`-I -S`) as shown below;
+this prevents ambient `PYTHONPATH`/`sitecustomize` hooks from gaining authority
+before the externally authenticated source starts.
 
 ```sh
 python compose_kinetic.py --input "$B/mechanics.py" --output /tmp/kinetic-mechanics.py
@@ -93,33 +96,39 @@ python check_kinetic.py --native-root "$B" --report /tmp/kinetic-check.json
 python -O check_kinetic.py --native-root "$B" --report /tmp/kinetic-check-O.json
 python run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants.json
 python -O run_kinetic_mutants.py --native-root "$B" --report /tmp/kinetic-mutants-O.json
-RUNNER_BLOB=ea4686bea9ea1427358f59498430ff05e6b06390
-python run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --output /tmp/kinetic-games.json
-python -O run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --order-offset 1 --output /tmp/kinetic-games-O.json
-python run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17 --repetitions 1 --instrument --output /tmp/kinetic-engagement.json
+RUNNER_BLOB=cdb601851d94d798c78c7c749a3e3d2d14331aa9
+python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --output /tmp/kinetic-games.json
+python -I -S -O -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17,101 --repetitions 1 --order-offset 1 --output /tmp/kinetic-games-O.json
+python -I -S -B run_kinetic_games.py --expected-runner-git-blob "$RUNNER_BLOB" --native-root "$B" --seeds 17 --repetitions 1 --instrument --output /tmp/kinetic-engagement.json
 python benchmark_kinetic.py --native-root "$B" --output /tmp/kinetic-benchmark.json
 ```
 
 The external runner pin closes the trusted-parent/post-launch repository-reopen
 boundary. It does not claim that Python can authenticate its own initial source
 before that source begins executing; the launcher/executor must perform the
-pre-invocation exact-head check above. After the parent captures and authenticates
-its control bundle, child processes do **not** execute a materialized runner
-pathname. The parent feeds the captured runner bytes to a constant `python -c`
-bootstrap over stdin; that bootstrap recomputes the Git blob against the external
-pin before compile/exec, and child-only modes require the injected attested
-identity. Replacing either the repository runner or a scratch-path decoy after
-capture therefore cannot change child source execution.
+pre-invocation exact-head check and isolated startup above. After the parent
+captures and authenticates its control bundle, child processes do **not** execute
+a materialized runner pathname. The parent feeds captured runner bytes to a
+constant `python -c` bootstrap over stdin; child startup is fixed to `-I -S -B`
+plus only a controlled `-O`, inherited `PYTHON*` variables are stripped, and no
+caller-supplied interpreter flags are accepted. The bootstrap then recomputes the
+Git blob against the external pin before compile/exec. Child-only modes require
+the injected attested runner identity. Replacing the repository runner, a scratch
+runner, or injecting `PYTHONPATH/sitecustomize` after parent trust therefore does
+not change child control source.
 
 The game runner changes only mechanics in a temporary runtime copy, starts a
 fresh process per game from captured control bytes, preserves all raw market and
 unit rows, records full stream hashes and per-call timing, and rejects incomplete
-games or mismatched traces. The committed historical receipt normalizes repeated
-identities while retaining all 20 game outcomes and aggregate timing, all 42
-benchmark timing samples, both test receipts, and every fault-control result. It
-does not contain every per-call sample; those are regenerated in the runner's
-output. Historical evidence predating the custody hardening remains historical;
-new custody claims require an exact-head gate.
+games or mismatched traces. Child receipts state the runner actually executed
+from captured bytes; composer/checker fields describe the parent-authenticated
+control identities, not child execution of those helpers. The committed
+historical receipt normalizes repeated identities while retaining all 20 game
+outcomes and aggregate timing, all 42 benchmark timing samples, both test
+receipts, and every fault-control result. It does not contain every per-call
+sample; those are regenerated in the runner's output. Historical evidence
+predating the custody hardening remains historical; new custody claims require
+an exact-head gate.
 
 No production source, config, release archive, workflow definition or Kaggle
 submission is changed. This completed research lane creates no production wiring
