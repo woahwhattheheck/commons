@@ -69,6 +69,9 @@ def _plan(step=500, target=(7, 4), tape=None, config=CONFIG,
         {"farmer": ["PASS"], "hands": [], "market": []}, [], config)
 
 
+TASK_KEYS = {"step", "route", "commands", "positions", "target"}
+
+
 class V217EodTail(unittest.TestCase):
     def setUp(self):
         self._policy = r04._POLICY
@@ -83,18 +86,24 @@ class V217EodTail(unittest.TestCase):
         self.assertIs(data["r04_v217_eod_tail"], False)
         self.assertIs(Features(**data).r04_v217_eod_tail, False)
 
-    def test_disabled_keeps_existing_roundtrip_even_without_config(self):
+    def test_disabled_keeps_exact_predecessor_roundtrip_task(self):
         plan = _plan(target=(5, 4), config=None)
-        self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], False)
-        self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
-        self.assertEqual(plan["positions"], [(4, 4), (5, 4), (5, 4)])
+        self.assertEqual(
+            plan,
+            {
+                "step": 500,
+                "route": 0,
+                "commands": [["EAST"], ["FEED"], ["WEST"]],
+                "positions": [(4, 4), (5, 4), (5, 4)],
+                "target": (5, 4),
+            },
+        )
 
     def test_enabled_reclaims_only_otherwise_unreachable_reverse_walk(self):
         r04.V217_EOD_TAIL = True
         plan = _plan(step=500, target=(7, 4))  # hour 20: four callbacks remain tonight
         self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], True)
+        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["commands"],
                          [["EAST"], ["EAST"], ["EAST"], ["FEED"]])
         self.assertEqual(plan["positions"],
@@ -104,14 +113,14 @@ class V217EodTail(unittest.TestCase):
         r04.V217_EOD_TAIL = True
         plan = _plan(target=(5, 4))
         self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], False)
+        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
 
     def test_multiple_targets_cannot_tail_preempt_a_valid_incumbent_rescue(self):
         r04.V217_EOD_TAIL = True
         plan = _plan(target=(7, 4), primary_unfed=2, extra_targets=((5, 4, 1),))
         self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], False)
+        self.assertEqual(set(plan), TASK_KEYS)
         self.assertEqual(plan["target"], (5, 4))
         self.assertEqual(plan["commands"], [["EAST"], ["FEED"], ["WEST"]])
 
@@ -140,7 +149,7 @@ class V217EodTail(unittest.TestCase):
         r04.V217_EOD_TAIL = True
         plan = _plan(step=500, target=(7, 4), config=_StructConfig(CONFIG))
         self.assertIsNotNone(plan)
-        self.assertIs(plan["eod_tail"], True)
+        self.assertEqual(set(plan), TASK_KEYS)
 
     def test_final_day_has_no_reset_credit(self):
         r04.V217_EOD_TAIL = True
