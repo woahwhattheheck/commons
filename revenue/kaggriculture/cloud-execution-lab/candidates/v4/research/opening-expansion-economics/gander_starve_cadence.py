@@ -45,29 +45,74 @@ class GanderStarveError(RuntimeError):
     pass
 
 
-def _git_blob(path: Path) -> str:
-    data = path.read_bytes()
+def _git_blob_bytes(data: bytes) -> str:
     return hashlib.sha1(
         b"blob " + str(len(data)).encode("ascii") + b"\0" + data
     ).hexdigest()
 
 
-def _load(path: Path, name: str) -> ModuleType:
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise GanderStarveError(f"cannot load canonical source: {path}")
-    module = importlib.util.module_from_spec(spec)
+def _git_blob(path: Path) -> str:
+    return _git_blob_bytes(path.read_bytes())
+
+
+def _load_bytes(data: bytes, path: Path, name: str) -> ModuleType:
+    module = ModuleType(name)
+    module.__file__ = str(path)
+    module.__package__ = None
     sys.modules[name] = module
     try:
-        spec.loader.exec_module(module)
+        exec(compile(data, str(path), "exec"), module.__dict__)
     except Exception:
         sys.modules.pop(name, None)
         raise
     return module
 
 
+def _load(path: Path, name: str) -> ModuleType:
+    return _load_bytes(path.read_bytes(), path, name)
+
+
+def _sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return _sha256_bytes(path.read_bytes())
+
+
+def _load_engine_bytes(data: bytes) -> ModuleType:
+    """Execute exactly the already-authenticated official engine snapshot."""
+    inserted: list[str] = []
+    try:
+        import kaggle_environments.utils  # type: ignore  # noqa: F401
+    except ModuleNotFoundError:
+        pkg = ModuleType("kaggle_environments")
+        util = ModuleType("kaggle_environments.utils")
+
+        def resolve_episode_seed(env):
+            info = getattr(env, "info", {})
+            return info.get("seed", 0) if isinstance(info, dict) else 0
+
+        util.resolve_episode_seed = resolve_episode_seed
+        pkg.utils = util
+        sys.modules["kaggle_environments"] = pkg
+        sys.modules["kaggle_environments.utils"] = util
+        inserted = ["kaggle_environments.utils", "kaggle_environments"]
+
+    name = f"titan_gander_starve_engine_{hashlib.sha256(data).hexdigest()[:12]}"
+    module = ModuleType(name)
+    module.__file__ = str(ENGINE_PATH)
+    module.__package__ = None
+    sys.modules[name] = module
+    try:
+        exec(compile(data, str(ENGINE_PATH), "exec"), module.__dict__)
+    except Exception:
+        sys.modules.pop(name, None)
+        raise
+    finally:
+        for inserted_name in inserted:
+            sys.modules.pop(inserted_name, None)
+    return module
 
 
 def _direction(a: tuple[int, int], b: tuple[int, int]) -> str:
@@ -122,29 +167,54 @@ def worker_route(
     return actions
 
 
-def _canonical_sources() -> tuple[ModuleType, ModuleType]:
-    # Authenticate helper bytes before import/exec. These helpers are part of
-    # the proof surface, not merely references to semantic constants.
-    gander_blob = _git_blob(GANDER_PATH)
-    starve_blob = _git_blob(STARVE_PATH)
-    if gander_blob != PINNED_GANDER_GIT_BLOB:
+def _canonical_sources() -> tuple[ModuleType, ModuleType, ModuleType, dict[str, str]]:
+    # Capture every authority file once. Authentication, helper execution,
+    # engine execution, and serialized identities all derive from these bytes;
+    # mutable repository pathnames are never reopened after authentication.
+    try:
+        gander_bytes = GANDER_PATH.read_bytes()
+        starve_bytes = STARVE_PATH.read_bytes()
+        engine_bytes = ENGINE_PATH.read_bytes()
+    except OSError as exc:
+        raise GanderStarveError(f"cannot capture canonical source snapshot: {exc}") from exc
+
+    identities = {
+        "gander_helper_git_blob": _git_blob_bytes(gander_bytes),
+        "starve_helper_git_blob": _git_blob_bytes(starve_bytes),
+        "engine_git_blob": _git_blob_bytes(engine_bytes),
+        "engine_sha256": _sha256_bytes(engine_bytes),
+    }
+    if identities["gander_helper_git_blob"] != PINNED_GANDER_GIT_BLOB:
         raise GanderStarveError(
-            f"GANDER helper drift: expected {PINNED_GANDER_GIT_BLOB}, got {gander_blob}"
+            "GANDER helper drift: expected "
+            f"{PINNED_GANDER_GIT_BLOB}, got {identities['gander_helper_git_blob']}"
         )
-    if starve_blob != PINNED_STARVE_GIT_BLOB:
+    if identities["starve_helper_git_blob"] != PINNED_STARVE_GIT_BLOB:
         raise GanderStarveError(
-            f"STARVEORACLE helper drift: expected {PINNED_STARVE_GIT_BLOB}, got {starve_blob}"
+            "STARVEORACLE helper drift: expected "
+            f"{PINNED_STARVE_GIT_BLOB}, got {identities['starve_helper_git_blob']}"
+        )
+    if identities["engine_git_blob"] != PINNED_ENGINE_GIT_BLOB:
+        raise GanderStarveError(
+            f"engine Git identity drift: expected {PINNED_ENGINE_GIT_BLOB}, "
+            f"got {identities['engine_git_blob']}"
+        )
+    if identities["engine_sha256"] != PINNED_ENGINE_SHA256:
+        raise GanderStarveError(
+            f"engine SHA identity drift: expected {PINNED_ENGINE_SHA256}, "
+            f"got {identities['engine_sha256']}"
         )
 
-    gander = _load(GANDER_PATH, "titan_v4_gander_starve_gander")
-    starve = _load(STARVE_PATH, "titan_v4_gander_starve_starve")
+    gander = _load_bytes(gander_bytes, GANDER_PATH, "titan_v4_gander_starve_gander")
+    starve = _load_bytes(starve_bytes, STARVE_PATH, "titan_v4_gander_starve_starve")
     if getattr(gander, "EXPECTED_ENGINE_BLOB", None) != PINNED_ENGINE_GIT_BLOB:
         raise GanderStarveError("GANDER engine identity drift")
     if getattr(starve, "ENGINE_GIT_BLOB", None) != PINNED_ENGINE_GIT_BLOB:
         raise GanderStarveError("STARVEORACLE engine identity drift")
     if getattr(starve, "ENGINE_SHA256", None) != PINNED_ENGINE_SHA256:
         raise GanderStarveError("STARVEORACLE engine SHA drift")
-    return gander, starve
+    engine = _load_engine_bytes(engine_bytes)
+    return gander, starve, engine, identities
 
 
 def _route_contract(gander: ModuleType) -> dict[str, Any]:
@@ -211,9 +281,8 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     ``feed_days=None`` selects the safe odd-day cadence 1,3,...,29. Supplying a
     set is primarily for predecessor/boundary tests; no automatic repair occurs.
     """
-    gander, starve = _canonical_sources()
+    gander, starve, engine, source_ids = _canonical_sources()
     contract = _route_contract(gander)
-    engine = starve.load_engine(ENGINE_PATH)
     state, env = starve._make_state_env(engine)
     farm = state[0].observation.farms[0]
     private = state[0].observation.private
@@ -321,8 +390,8 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
     full_daily_feed_units = (LAST_SERVICE_DAY - FIRST_SERVICE_DAY + 1) * GOOSE_COUNT
     return {
         "schema": "titan.v4.gander-starve-composite/v2",
-        "engine_git_blob": PINNED_ENGINE_GIT_BLOB,
-        "engine_sha256": _sha256(ENGINE_PATH),
+        "engine_git_blob": source_ids["engine_git_blob"],
+        "engine_sha256": source_ids["engine_sha256"],
         "days": [FIRST_SERVICE_DAY, LAST_SERVICE_DAY],
         "feed_days": sorted(selected_feed_days),
         "skip_days": [
@@ -345,10 +414,12 @@ def run_composite(*, feed_days: set[int] | None = None) -> dict[str, Any]:
         "action_attempts": counts,
         "source_contract": {
             "gander_frontier_geese": GOOSE_COUNT,
-            "gander_helper_git_blob": _git_blob(GANDER_PATH),
-            "starve_helper_git_blob": _git_blob(STARVE_PATH),
+            "gander_helper_git_blob": source_ids["gander_helper_git_blob"],
+            "starve_helper_git_blob": source_ids["starve_helper_git_blob"],
             "gander_day1_service_counts": contract["authored_counts"],
             "starve_engine_git_blob": getattr(starve, "ENGINE_GIT_BLOB"),
+            "immutable_source_snapshots": True,
+            "engine_executed_from_authenticated_snapshot": True,
             "post_hire_unit_slots": POST_HIRE_UNIT_SLOTS,
             "route_lengths": contract["route_lengths"],
             "all_nine_feed_fert_harvest_fits_two_workers": (
