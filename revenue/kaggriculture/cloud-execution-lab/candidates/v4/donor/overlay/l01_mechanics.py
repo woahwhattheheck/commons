@@ -156,7 +156,7 @@ def patch_routes(routes, flags, activations, reasons):
                     if act and act[0] == 'PLANT' and len(act) > 1 and act[1] == 'WHEAT':
                         sites.append((t, i))
             extra = max(0, len(sites) - KEEP_WHEAT_PLANTS)
-            if extra == 0:
+            if extra <= 0:
                 continue
             for t, i in sites[-extra:]:
                 _set_unit(route[t], i, ['PASS'])
