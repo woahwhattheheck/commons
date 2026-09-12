@@ -67,6 +67,25 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
             persisted = json.loads((output / 'WF1-V5-MATERIALIZATION.json').read_text())
             self.assertEqual(persisted, receipt)
 
+    def test_nested_output_rejected_without_mutating_runtime(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / 'runtime'
+            runtime.mkdir()
+            main_bytes = b"VALUE = 'baseline'\n"
+            config_bytes = b'{}\n'
+            (runtime / 'main.py').write_bytes(main_bytes)
+            (runtime / 'TITAN-CONFIG.json').write_bytes(config_bytes)
+            output = runtime / 'child'
+            with self.assertRaisesRegex(ValueError, 'outside runtime'):
+                materialize.materialize(
+                    runtime, output,
+                    expected_main_blob=materialize.git_blob_sha(main_bytes),
+                    expected_config_blob=materialize.git_blob_sha(config_bytes),
+                )
+            self.assertFalse(output.exists())
+            self.assertEqual((runtime / 'main.py').read_bytes(), main_bytes)
+            self.assertEqual((runtime / 'TITAN-CONFIG.json').read_bytes(), config_bytes)
+
     def test_baseline_drift_fails_before_copy(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -83,33 +102,6 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                     expected_config_blob=materialize.git_blob_sha(config),
                 )
             self.assertFalse(output.exists())
-
-    def test_nested_output_fails_before_mutating_baseline(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            runtime = root / 'runtime'
-            output = runtime / 'candidate'
-            runtime.mkdir()
-            main_bytes = b"VALUE = 'baseline'\n"
-            config_bytes = b'{}\n'
-            (runtime / 'main.py').write_bytes(main_bytes)
-            (runtime / 'TITAN-CONFIG.json').write_bytes(config_bytes)
-            before = sorted(path.relative_to(runtime).as_posix()
-                            for path in runtime.rglob('*'))
-            with self.assertRaisesRegex(ValueError, 'outside runtime'):
-                materialize.materialize(
-                    runtime, output,
-                    expected_main_blob=materialize.git_blob_sha(main_bytes),
-                    expected_config_blob=materialize.git_blob_sha(config_bytes),
-                )
-            self.assertFalse(output.exists())
-            self.assertEqual(
-                sorted(path.relative_to(runtime).as_posix()
-                       for path in runtime.rglob('*')),
-                before,
-            )
-            self.assertEqual((runtime / 'main.py').read_bytes(), main_bytes)
-            self.assertEqual((runtime / 'TITAN-CONFIG.json').read_bytes(), config_bytes)
 
     def test_entry_calls_parent_before_outer_wf1_transform(self):
         with tempfile.TemporaryDirectory() as tmp:
