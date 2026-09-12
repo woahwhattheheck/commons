@@ -82,7 +82,8 @@ def _all_pass(observation, action):
         return False
     player = observation.get("player")
     farms = observation.get("farms")
-    if type(player) is not int or not isinstance(farms, list) or not 0 <= player < len(farms):
+    if (type(player) is not int or player not in (0, 1)
+            or not isinstance(farms, list) or not 0 <= player < len(farms)):
         return False
     farm = farms[player]
     if not isinstance(farm, dict) or not isinstance(farm.get("hands"), list):

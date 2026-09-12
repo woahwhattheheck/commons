@@ -113,7 +113,7 @@ class FeedPrebuyTests(unittest.TestCase):
 
     def test_kaggle_attribute_config_preserves_activation(self):
         values = _standard_config()
-        values.pop("marketParams")  # absent is standard semantics too
+        values.pop("marketParams")
         config = SimpleNamespace(**values)
         out = lane.apply_feed_prebuy(
             _observation(wheat=0), _action(), configuration=config, enabled=True)
@@ -186,6 +186,23 @@ class FeedPrebuyTests(unittest.TestCase):
         parent["farmer"] = ["EAST"]
         self.assertIs(_apply(_observation(), parent), parent)
 
+    def test_player_domain_rejects_third_seat_before_downstream_planning(self):
+        obs = _observation()
+        own = copy.deepcopy(obs["farms"][0])
+        obs["farms"] = [copy.deepcopy(own) for _ in range(3)]
+        obs["player"] = 2
+        parent = _action()
+        with mock.patch.object(
+            lane,
+            "_remaining_day_cash_spend_free",
+            side_effect=AssertionError("third-seat poison reached future-cash planning"),
+        ), mock.patch.object(
+            lane,
+            "_next_v217_task",
+            side_effect=AssertionError("third-seat poison reached V217 proxy planning"),
+        ):
+            self.assertIs(_apply(obs, parent), parent)
+
     def test_actor_surface_must_be_explicit_and_cardinality_exact(self):
         obs = _observation()
         malformed = []
@@ -242,8 +259,6 @@ class FeedPrebuyTests(unittest.TestCase):
 
     def test_malformed_negative_planner_target_fails_closed(self):
         obs = _observation(wheat=0)
-        # Without strict target validation, [-1, 4] aliases the last tile in
-        # Python and can make malformed planner state look like a real animal.
         obs["farms"][0]["tiles"][4][-1] = {
             "animal": "GOOSE",
             "fed_today": False,
