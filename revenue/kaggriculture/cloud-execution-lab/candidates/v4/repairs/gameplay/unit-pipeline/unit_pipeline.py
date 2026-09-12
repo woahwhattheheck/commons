@@ -95,9 +95,12 @@ def reorder_unit_pipeline(observation: dict[str, Any], selected: dict[str, Any],
     if not isinstance(farm, dict) or not isinstance(private, dict):
         refuse("missing_private_or_farm")
         return result, report
+    if "farmer" not in selected or "hands" not in selected:
+        refuse("missing_unit_rows")
+        return result, report
 
-    farmer_row = selected.get("farmer", ["PASS"])
-    hands_rows = selected.get("hands", [])
+    farmer_row = selected["farmer"]
+    hands_rows = selected["hands"]
     if not isinstance(hands_rows, list):
         refuse("hands_not_list")
         return result, report
@@ -130,6 +133,14 @@ def reorder_unit_pipeline(observation: dict[str, Any], selected: dict[str, Any],
         refuse("missing_tiles_or_seeds")
         return result, report
 
+    # Consume the engine's global same-crop atomic PLANT rule rather than
+    # pretending a local same-site chain can evade it. Reordering preserves this
+    # multiset exactly, but an already-undercollateralized crop cannot engage.
+    plant_demand: dict[str, int] = {}
+    for row in rows:
+        if isinstance(row, list) and len(row) >= 2 and row[0] == "PLANT" and isinstance(row[1], str):
+            plant_demand[row[1]] = plant_demand.get(row[1], 0) + 1
+
     out_rows = [deepcopy(row) for row in rows]
     for (x, y), actors in sorted(groups.items(), key=lambda item: item[0]):
         if len(actors) < 2:
@@ -160,6 +171,9 @@ def reorder_unit_pipeline(observation: dict[str, Any], selected: dict[str, Any],
         available = seeds.get(crop, 0)
         if type(available) is not int or available <= 0:
             refuse("seed_not_observed_available")
+            continue
+        if plant_demand.get(crop, 0) > available:
+            refuse("atomic_seed_collateral_unmet")
             continue
 
         tile = tiles[y][x]
@@ -197,7 +211,7 @@ def reorder_unit_pipeline(observation: dict[str, Any], selected: dict[str, Any],
             "crop": crop,
         })
 
-    result["farmer"] = out_rows[0] if out_rows else deepcopy(farmer_row)
+    result["farmer"] = out_rows[0]
     result["hands"] = out_rows[1:]
     report["changed"] = result != selected
     return result, report
