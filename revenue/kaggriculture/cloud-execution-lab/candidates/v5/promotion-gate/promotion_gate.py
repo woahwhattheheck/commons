@@ -292,19 +292,28 @@ def _engagement_key_fields(value: Any) -> tuple[str, ...]:
     return tuple(value)
 
 
-def _validate_stats(value: Any, field: str, *, empty: bool) -> None:
+def _validate_stats(value: Any, field: str, *, count: int) -> None:
     if type(value) is not dict or set(value) != _STATS_KEYS:
         raise PromotionError(f"{field} must have exact timing-stat keys")
-    if empty:
+    if count == 0:
         if any(value[key] is not None for key in ("p50", "p95", "p99", "max")):
             raise PromotionError(f"{field} must contain only null stats when count is zero")
         return
+    labels = (("p50", 0.50), ("p95", 0.95), ("p99", 0.99), ("max", 1.0))
     ordered = [
         _finite_number(value[key], f"{field} {key}", minimum=0.0)
-        for key in ("p50", "p95", "p99", "max")
+        for key, _ in labels
     ]
     if ordered != sorted(ordered):
         raise PromotionError(f"{field} percentiles must be monotonic through max")
+    by_rank: dict[int, float] = {}
+    for (key, quantile), number in zip(labels, ordered):
+        rank = count if key == "max" else math.ceil(quantile * count)
+        if rank in by_rank and number != by_rank[rank]:
+            raise PromotionError(
+                f"{field} violates nearest-rank identity at order statistic {rank}"
+            )
+        by_rank[rank] = number
 
 
 def _validate_timing_summary(
@@ -318,8 +327,8 @@ def _validate_timing_summary(
     count = _plain_int(value["count"], f"{field} count")
     if expected_count is not None and count != expected_count:
         raise PromotionError(f"{field} count disagrees with receipt_count")
-    _validate_stats(value["wall_seconds"], f"{field} wall_seconds", empty=count == 0)
-    _validate_stats(value["cpu_seconds"], f"{field} cpu_seconds", empty=count == 0)
+    _validate_stats(value["wall_seconds"], f"{field} wall_seconds", count=count)
+    _validate_stats(value["cpu_seconds"], f"{field} cpu_seconds", count=count)
     return count
 
 
