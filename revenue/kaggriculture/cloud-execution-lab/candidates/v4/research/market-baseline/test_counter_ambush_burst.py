@@ -4,12 +4,14 @@ from __future__ import annotations
 import pathlib
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import counter_ambush_burst as b
 
 HERE = pathlib.Path(__file__).resolve().parent
 BASE = HERE / "counter_ambush.py"
 SOURCE = HERE / "counter_ambush_burst.py"
+REPO_ROOT = HERE.parents[6]
 
 
 class ApexEnvelopeTests(unittest.TestCase):
@@ -43,6 +45,43 @@ class ApexEnvelopeTests(unittest.TestCase):
         self.assertEqual(rule["max_sell_per_callback"], 8)
         self.assertEqual(rule["semantics"], "conditional_source_rule_not_realized_event")
         self.assertGreaterEqual(len(report["required_realization_evidence"]), 3)
+
+    def test_report_serializes_verified_repository_identities(self):
+        report = b.authenticated_apex_envelope_report(BASE)
+        verified = report["verified_sources"]
+        apex = verified["apex_and_reference"]
+        engine = verified["official_engine"]
+        self.assertEqual(apex["apex_main_sha256"], report["apex_main_sha256"])
+        self.assertEqual(apex["reference_declared_apex_sha256"], report["apex_main_sha256"])
+        self.assertEqual(engine["engine_blob"], "3c202c7ee921da239356789e266b694635103fc4")
+        self.assertTrue(engine["unit_market_town_order"])
+        self.assertTrue(report["source_rule_authenticated"])
+
+    def test_entrypoint_evidence_swap_after_base_load_fails_closed(self):
+        cases = (
+            (b.APEX_REL, b"# drifted apex\n", "Apex source drift"),
+            (b.REFERENCE_REL, b"{}\n", "reference-policy-bank"),
+            (b.ENGINE_REL, b"# drifted engine\n", "engine drift"),
+        )
+        original_loader = b.load_pinned_base
+        for relative, poison, needle in cases:
+            with self.subTest(relative=str(relative)), tempfile.TemporaryDirectory() as td:
+                root = pathlib.Path(td)
+                for source_relative in (b.APEX_REL, b.REFERENCE_REL, b.ENGINE_REL):
+                    src = REPO_ROOT / source_relative
+                    dst = root / source_relative
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    dst.write_bytes(src.read_bytes())
+                target = root / relative
+
+                def load_then_swap(path, *, _target=target, _poison=poison):
+                    module = original_loader(path)
+                    _target.write_bytes(_poison)
+                    return module
+
+                with patch.object(b, "load_pinned_base", side_effect=load_then_swap):
+                    with self.assertRaisesRegex(b.BurstError, needle):
+                        b.authenticated_apex_envelope_report(BASE, repo_root=root)
 
     def test_town_drain_occurs_inside_max_envelope_scenario(self):
         report = b.authenticated_apex_envelope_report(BASE)
