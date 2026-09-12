@@ -38,7 +38,7 @@ This is an offline official-interpreter experiment, **not** hosted Kaggle resour
 
 ```bash
 python3 -B reduce_gauntlet.py \
-  --index /workspace/shared-gauntlet-corpus/top30-union-index.json \
+  --index /path/to/top30-union-index.json \
   --v31-root /workspace/shard0/out-v31 \
   --v31-root /workspace/shard1/out-v31 \
   --v4-root /workspace/shard0/out-v4 \
@@ -50,7 +50,7 @@ The reducer single-reads the supplied corpus index, every `run.json`, and every 
 
 For each run root it authenticates the exact submitted candidate archive hash and requires the `run.json.index_sha256` to equal the supplied index bytes. It reproduces the producer's `group=all` recorded-trace eligibility and `enumerate(rows) % shards == shard` partition from that index, then requires `selected_fixtures` to equal the independently reconstructed full shard size. A `--limit`-truncated run therefore cannot authorize, even if every shard number is present. Extra opponent IDs are rejected.
 
-The same execution authority must hold across every consumed V3.1/V4 root: canonical corpus index SHA, validated engine hash map, evaluator SHA256, and loader SHA256. Declared shard topology must be consistent, shard IDs unique, and final authorization requires the complete shard set on both versions. Each cell's submission, family, memberships, recorded orientation, kind, and adaptive flag must match the authenticated index row; this also proves p0/p1 are the same recorded fixture with complementary orientation.
+The same execution authority must hold across every consumed V3.1/V4 root: canonical corpus index SHA, validated engine hash map, evaluator SHA256, and loader SHA256. Declared shard topology must be consistent, shard IDs unique, and final authorization requires the complete shard set on both versions. Each cell's submission, seed, evaluator-reported `candidate_seat`, family, memberships, recorded orientation, kind, and adaptive flag must match the authenticated index row plus filename-derived tested seat. This binds every score-bearing cell to the exact fixture world and also proves p0/p1 are the same recorded fixture with complementary orientation.
 
 Final panel cardinality is derived from the authenticated corpus: `2 × recorded_trace fixtures`. The current corpus has 123 recorded fixtures, so complete both-seat coverage is 246 cells. `--expected-cells` is only an optional cross-check; a conflicting value fails closed. Partial evidence remains exit `3`/non-authorizing, malformed or cross-wired evidence exits `2`, and only a complete authenticated panel exits `0`.
 
@@ -64,4 +64,4 @@ python3 -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 python3 -O -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 ```
 
-Reducer predecessors cover hotspot ranking, 123-fixture → 246-cell derivation, incomplete shard non-authorization, favorable-subset override rejection, `--limit` truncation, extra corpus IDs, candidate/index/engine/evaluator/loader drift, mirrored p0/p1 metadata corruption, duplicate shard receipts, 719-callback enforcement, parse/hash same-capture custody, post-read cell mutation, score-cell tamper changing authority, symlink rejection, and partial CLI publication.
+Reducer predecessors cover hotspot ranking, 123-fixture → 246-cell derivation, incomplete shard non-authorization, favorable-subset override rejection, `--limit` truncation, extra corpus IDs, candidate/index/engine/evaluator/loader drift, fixture seed and candidate-seat mismatch, mirrored p0/p1 metadata corruption, duplicate shard receipts, 719-callback enforcement, parse/hash same-capture custody, post-read cell mutation, score-cell tamper changing authority, symlink rejection, and partial CLI publication.
