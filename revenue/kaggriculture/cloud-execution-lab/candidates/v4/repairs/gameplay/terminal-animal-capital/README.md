@@ -1,49 +1,65 @@
 # H5 terminal animal-capital guard — V4 recovery
 
-This package recovers the narrow, source-grounded portion of V3.1 H5
-(PR #12471) into the single V4 research/repair tree.  It is **default off**
-and is not wired into the production runtime.
+This package is the single V4 H5 terminal animal-capital authority. It is
+**default off** and is not wired into the production runtime.
 
 ## Mechanism
 
-The current official engine defines first animal production at 4 days for a
-GOOSE, 6 for a SHEEP, and 8 for a COW.  `BUY_ANIMAL` executes in the market
-phase after unit actions, so a newly purchased animal cannot be placed before
-a later callback.  The guard deliberately grants an even earlier, same-day
-placement bound; if first production is still beyond the last executable
-action under that optimistic bound, the purchase cannot create product before
-termination.
+The original V3.1 H5 theorem (PR #12471) and its first V4 recovery incorrectly
+treated “first EGG/MILK/WOOL production is after terminal” as proof that a late
+`BUY_ANIMAL` has no remaining value. The pinned official engine disproves that:
+every surviving **placed** animal becomes `fertilizer_available=True` at EOD,
+independent of species-product maturity. A maturity-only guard can therefore
+erase a real BUY -> PICKUP -> PLACE -> EOD fertilizer -> collect/use/sell route.
 
-The only permitted edit is replacing an eligible `BUY_ANIMAL` market row with
-`[]`, preserving the raw market vector length.  It applies only from the
-final-plan window (step 648) and only under the exact standard 24-turn,
-720-step timing contract.
+H5 now uses a much narrower source theorem that does not depend on product
+maturity at all:
 
-Saved cash can make later market orders newly executable.  Therefore H5 edits
+1. unit actions execute before market orders;
+2. `BUY_ANIMAL` therefore puts the purchased animal in the shed only after the
+   current callback's unit phase;
+3. a later unit action must `PICKUP` the animal into one actor's inventory;
+4. a separate later unit action must `PLACE` it on a matching unoccupied
+   structure.
+
+Thus a purchased animal needs at least **two later unit callbacks** before it can
+become a placed animal and enter *any* animal-refresh/product/fertilizer channel.
+Under the standard 720-step contract with last executable action step 718, only
+steps 717–718 satisfy that static proof. Step 716 remains parent-owned because
+callbacks 717 and 718 can still realize PICKUP then PLACE. Earlier final-plan
+steps also remain parent-owned unless some future route-aware proof is added.
+
+The only permitted edit is replacing an eligible executable-prefix `BUY_ANIMAL`
+market row with `[]`, preserving the raw market vector length. The component may
+be called from the final-plan window (step 648), but every step without the
+strict no-placement proof returns the parent action unchanged.
+
+Saved cash can make later market orders newly executable. Therefore H5 edits
 only the provably-dead animal-buy suffix after the last other non-SELL,
-non-placeholder market row.  Every worker command, SELL row and quantity,
-HIRE, BUY_LAND, BUY_SEED, BUY_PRODUCT, unknown order, and unknown animal is
-parent-owned.
+non-placeholder executable market row. Every worker command, SELL row and
+quantity, HIRE, BUY_LAND, BUY_SEED, BUY_PRODUCT, unknown order, unknown animal,
+and nonexecuted raw suffix row is parent-owned.
 
-## Provenance and stricter V4 boundary
+## Provenance and repaired boundary
 
-Historical donor: PR #12471 head
-`808f7f4329ccae2656b14fb88794682cb7b3adbc`, source Git blob
-`ef02024d04ab554ed781d9af5a427436edf6e868`.
+Historical falsifier: PR #12471 review `5177174337` / retirement
+`5632547232`. The same engine-level counterexample was rediscovered against
+merged V4 #12949 and blocks any activation/economics claim from that predecessor.
 
-Official-engine source identity at recovery:
+Official-engine source identity at repair:
 `reference/engine/kaggriculture.py` Git blob
 `3c202c7ee921da239356789e266b694635103fc4`.
 
-Unlike the historical donor, the V4 component does **not** assume omitted
-timing keys mean defaults.  Missing, bool/float/string-poisoned, or nonstandard
-`turnsPerDay` / `episodeSteps` fail closed to the exact input action.
+The component keeps strict fail-closed timing and market-prefix parsing:
+missing, bool/float/string-poisoned, or nonstandard `turnsPerDay` /
+`episodeSteps` fail closed; malformed explicit `maxMarketOrdersPerTurn` also
+fails closed under the existing H5 contract.
 
 ## Authority boundary
 
-Source/mechanism only until a current-native route census proves natural late
-`BUY_ANIMAL` engagement.  Zero engagement terminalizes the lane without
-runtime wiring.  If it engages, the next gate must prove both-seat execution,
-unchanged unit/liquidation behavior, saved terminal cash, paired own/rival
-money and margin, and no harmful externality across representative opponents.
-No default/config/archive/Kaggle change is authorized here.
+Source/mechanism only until a current-native route census proves natural
+engagement of the **repaired** step-717/718 theorem. Zero engagement terminalizes
+the lane without runtime wiring. If it engages, the next gate must prove both-seat
+execution, unchanged unit/liquidation behavior, saved terminal cash, paired
+own/rival money and margin, and no harmful externality across representative
+opponents. No default/config/archive/Kaggle change is authorized here.
