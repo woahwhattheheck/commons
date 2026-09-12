@@ -307,6 +307,22 @@
    "after": [],
    "conflicts": [],
    "note": "Microstructure lane from #13158 under tip package repairs/gameplay/exec-pace (not a remint of the module). Caps applied BEFORE debt recording (leak-free by construction); pacing stops at END_STEP 690. Module fail-closed, stdlib-only; flag-off action path byte-identical to the unkeyed route. COMPOSITION registry only."
+  },
+  {
+   "id": "e13-future-sale-solvency",
+   "state": "blocked",
+   "reason": "Current-ABI source is landed (status current_abi_source_real_action_unmeasured) but returned-action activation, gameplay strength, and production promotion remain false. Discovery finds port_current_runtime.py; without this registry row TITAN V4 cross-ledger coherence fails closed on unregistered_entrypoint.",
+   "package": "repairs/gameplay/e13-future-sale-solvency",
+   "entrypoints": [
+    "repairs/gameplay/e13-future-sale-solvency/port_current_runtime.py"
+   ],
+   "receipt": "repairs/gameplay/e13-future-sale-solvency/MANIFEST.json",
+   "transforms": [],
+   "requires": [],
+   "before": [],
+   "after": [],
+   "conflicts": [],
+   "note": "Custody only. Method-scoped authenticated transform on frozen_selected.py::funded_minimum_now. Default-OFF. Reopen only after composition plus a fresh one-tree returned-action activation receipt and economic gate. Source PRs include #12037 / #12877."
   }
  ],
  "discovery": {
