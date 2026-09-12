@@ -288,6 +288,17 @@ class PlantGuardTests(unittest.TestCase):
         self.assertEqual(result["verdict"], "NOT_CERTIFIED")
         self.assertIn("episodeSteps_must_be_int", result["reason"])
 
+    def test_result_pins_engine_and_configuration_sources(self):
+        result = assess(observation(), action(("PLANT", "WHEAT")))
+        self.assertEqual(
+            result["engine_git_blob"],
+            "3c202c7ee921da239356789e266b694635103fc4",
+        )
+        self.assertEqual(
+            result["configuration_git_blob"],
+            "b354d06b742fe48402513792253f1a5c29366b20",
+        )
+
     def test_inputs_are_not_mutated(self):
         obs = observation(hour=22, hands=((0, 1),))
         selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
