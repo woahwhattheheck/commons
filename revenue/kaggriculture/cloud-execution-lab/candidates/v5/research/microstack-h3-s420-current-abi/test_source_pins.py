@@ -34,7 +34,7 @@ class SourcePinsTest(unittest.TestCase):
         self.assertEqual(git_blob(path.read_bytes()), entry["git_blob"])
         text = path.read_text()
         self.assertIn("if now < H3S420_SUPPRESS_NEW_PLANS_AFTER:", text)
-        self.assertIn("new plan selection suppressed at/after threshold", entry["semantics"])
+        self.assertIn("skip the entire new-plan selection block", entry["semantics"])
 
     def test_current_native_horizon_and_optimizer_seams_are_present(self):
         scheduler = (LAB / "scheduler.py").read_text()
