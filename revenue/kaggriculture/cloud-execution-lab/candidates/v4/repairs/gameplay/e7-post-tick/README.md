@@ -6,7 +6,7 @@ This directory is source custody within the sole `main:revenue/kaggriculture/clo
 
 ## Original source and exact objects
 
-Recovered unchanged from unmerged PR #12459, branch `astra/e7-parent-contract-20260911`, final source commit `24f58903e819825f2d07163f86dc2337a33a01eb`. This is the repaired successor to closed, unmerged #12430. Mechanism authorship and review history remain with those original PRs.
+Recovered unchanged from unmerged PR #12459, source branch `astra/v31-pr12430-e7-market-slot-custody-20260911`, final source commit `24f58903e819825f2d07163f86dc2337a33a01eb`. That child PR targets the original E7 branch `astra/v31-e7-post-town-tick-20260911`; the original source PR is #12430. Mechanism authorship and review history remain with those original PRs. Fresh PR metadata establishes these branch names; the first recovery note's branch label was incorrect, but the pinned commit and three source objects are unchanged.
 
 Original paths were beneath `candidates/v3/experiments/`:
 
@@ -20,9 +20,11 @@ These are exact donor bytes, not a path-adapted runnable V4 package. Their impor
 
 ## Evidence boundary
 
-Historical source workflow run `34584285975`, job `103214777183`, reported success on original head `24f58903e819825f2d07163f86dc2337a33a01eb`, including E7 coherence/tests and package-byte-neutrality steps. Detailed job-log retrieval returned HTTP 404 during this recovery. No fresh source execution against current main, current V4 package build, paired economics gate, leaderboard gain, or submission is claimed here.
+Fresh Actions reads for original head `24f58903e819825f2d07163f86dc2337a33a01eb` confirm `titan-v31-e7-post-tick-flush` run `34584285975` completed successfully. Its `focused-source-gate` job `103214777183` reports success for exact-event checkout, frozen scope/imported-blob binding, compile/E7 predecessors, evaluator-custody/package-neutrality smoke, and clean checkout. Detailed job-log retrieval returned HTTP 404 during this recovery.
 
-The earlier recovery commit `1b57582d7532268be1a6d83f94d300f91454fb4b` on `titan/v4-20260911` is now donor history only. A Slack rate-limit gap concealed the canonical-main migration during that first recovery; the stale #12620 handoff was corrected in place. Do not continue the retired branch or merge its legacy materializer into current production.
+The same historical head's broader `tests` run `34584286032` reports FAILURE; its cause was not investigated in this recovery. The focused E7 result is therefore not an all-CI-green claim. No fresh source execution against current main, current V4 package build, paired economics gate, leaderboard gain, or submission is claimed here.
+
+The earlier recovery commit `1b57582d7532268be1a6d83f94d300f91454fb4b` on `titan/v4-20260911` is now donor history only. A Slack rate-limit gap concealed the canonical-main migration during that first recovery; the stale #12620 handoff was corrected in place. The actual main source landing is merged PR #12662, commit `a3caa32096afbd346729f01027924cc473e68316`. Do not continue the retired branch or merge its legacy materializer into current production.
 
 ## Required before activation
 
