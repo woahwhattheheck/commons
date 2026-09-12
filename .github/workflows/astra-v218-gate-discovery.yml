@@ -1,0 +1,81 @@
+name: ASTRA V218 gate discovery
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/astra-v218-gate-discovery.yml'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/**'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Authenticate source and compose exact current V218
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+          PKG="$ROOT/repairs/gameplay/v218-legal-movement"
+          DONOR="$ROOT/donor/overlay/r04_full_router.py"
+          {
+            echo '=== HEAD ==='; git rev-parse HEAD
+            echo '=== SOURCE BLOBS ==='
+            git hash-object "$DONOR"
+            git hash-object "$PKG/v218_movement_parity.py"
+            git hash-object "$PKG/compose_current_v218.py"
+            echo '=== COMPOSE ==='
+          } | tee /tmp/v218-discovery.txt
+          cd "$PKG"
+          python3 compose_current_v218.py ../../../donor/overlay/r04_full_router.py /tmp/r04_full_router.v218-current.py --enable-current-v218 --receipt /tmp/r04_full_router.v218-current.json | tee -a /tmp/v218-discovery.txt
+          cat /tmp/r04_full_router.v218-current.json | tee -a /tmp/v218-discovery.txt
+          echo '=== CANDIDATE ===' | tee -a /tmp/v218-discovery.txt
+          git hash-object /tmp/r04_full_router.v218-current.py | tee -a /tmp/v218-discovery.txt
+          python3 -m py_compile /tmp/r04_full_router.v218-current.py
+      - name: Discover existing native assembler/composer seams
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+          {
+            echo '=== CANDIDATE SEAM FILES ==='
+            find "$ROOT" -type f \( -iname '*compose*.py' -o -iname '*assembl*.py' -o -iname '*material*.py' -o -iname '*field_gate*.py' -o -iname '*native*.py' \) -print | sort
+            echo '=== SEAM CONTENT HITS ==='
+            grep -R -n -E 'main\.py::agent|compose_native|assembler|materializ|copytree\(|r04_full_router|_fresh_main|Game\(seed' "$ROOT" --include='*.py' --include='*.md' --include='*.json' | head -400 || true
+          } | tee -a /tmp/v218-discovery.txt
+      - name: Download exact swarm native artifact
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10175943272/zip" \
+            -o /tmp/native-b567.zip
+          mkdir -p /tmp/native-b567
+          unzip -q /tmp/native-b567.zip -d /tmp/native-b567
+          {
+            echo '=== NATIVE ARTIFACT ==='
+            sha256sum /tmp/native-b567.zip
+            find /tmp/native-b567 -maxdepth 2 -name main.py -o -name titan_runtime.py -o -name TITAN-CONFIG.json | sort
+            echo '=== NATIVE MAIN BLOBS ==='
+            while IFS= read -r f; do printf '%s ' "$f"; git hash-object "$f"; done < <(find /tmp/native-b567 -maxdepth 2 -name main.py | sort)
+            echo '=== NATIVE TITAN RUNTIME BLOBS ==='
+            while IFS= read -r f; do printf '%s ' "$f"; git hash-object "$f"; done < <(find /tmp/native-b567 -maxdepth 2 -name titan_runtime.py | sort)
+          } | tee -a /tmp/v218-discovery.txt
+      - name: Upload discovery receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-v218-gate-discovery
+          path: |
+            /tmp/v218-discovery.txt
+            /tmp/r04_full_router.v218-current.json
+            /tmp/r04_full_router.v218-current.py
+          if-no-files-found: error
