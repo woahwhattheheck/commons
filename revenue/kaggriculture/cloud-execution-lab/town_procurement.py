@@ -156,29 +156,55 @@ def observe(observation: Any) -> dict[str, Any]:
     return report
 
 
-def _unique_wheat_buy(action: Any) -> tuple[int, int] | None:
+def _market_quantity(row: Any, op: str, item: str) -> int | None:
+    """Parse one market row with the pinned engine's positive-quantity grammar."""
+    if not (isinstance(row, list) and len(row) >= 3
+            and row[0] == op and row[1] == item):
+        return None
+    try:
+        quantity = int(row[2])
+    except (TypeError, ValueError):
+        return None
+    return quantity if quantity > 0 else None
+
+
+def _prefix_limit(action: Any, configuration: Any = None) -> int:
+    """Return the engine-effective market prefix without widening bad configs."""
+    cfg = configuration or {}
+    value = (cfg.get("maxMarketOrdersPerTurn", 10) if isinstance(cfg, dict)
+             else getattr(cfg, "maxMarketOrdersPerTurn", 10))
+    try:
+        return max(1, int(value))
+    except (TypeError, ValueError):
+        return 1
+
+
+def _unique_wheat_buy(action: Any, configuration: Any = None) -> tuple[int, int] | None:
+    """Return one executable WHEAT buy; inert suffix duplicates do not conflict."""
     if not isinstance(action, dict):
         return None
     market = action.get("market")
     if not isinstance(market, list):
         return None
-    hits: list[tuple[int, int]] = []
-    for index, row in enumerate(market):
-        if not (isinstance(row, list) and len(row) >= 3 and row[0] == "BUY_PRODUCT" and row[1] == "WHEAT"):
-            continue
-        qty = row[2]
-        if type(qty) is not int or qty <= 0:
-            return None
-        hits.append((index, qty))
-    return hits[0] if len(hits) == 1 else None
+    prefix_limit = _prefix_limit(action, configuration)
+    prefix_hits = [
+        (index, quantity)
+        for index, row in enumerate(market[:prefix_limit])
+        if (quantity := _market_quantity(row, "BUY_PRODUCT", "WHEAT")) is not None
+    ]
+    if len(prefix_hits) == 1:
+        return prefix_hits[0]
+    if prefix_hits:
+        return None
 
-
-def _prefix_limit(action: Any, configuration: Any = None) -> int:
-    cfg = configuration or {}
-    value = cfg.get("maxMarketOrdersPerTurn", 10) if isinstance(cfg, dict) else getattr(cfg, "maxMarketOrdersPerTurn", 10)
-    if type(value) is not int:
-        return 1
-    return max(1, value)
+    # Preserve the existing inert-suffix diagnostic when no executable WHEAT
+    # buy exists, but never let suffix duplicates invalidate a unique prefix.
+    suffix_hits = [
+        (index, quantity)
+        for index, row in enumerate(market[prefix_limit:], start=prefix_limit)
+        if (quantity := _market_quantity(row, "BUY_PRODUCT", "WHEAT")) is not None
+    ]
+    return suffix_hits[0] if len(suffix_hits) == 1 else None
 
 
 def suppress_confirmed(observation: Any, action: Any, configuration: Any = None) -> tuple[Any, dict[str, Any]]:
@@ -198,7 +224,7 @@ def suppress_confirmed(observation: Any, action: Any, configuration: Any = None)
     }
     if step not in SOURCE_TO_TARGET or confirmed <= 0:
         return action, report
-    hit = _unique_wheat_buy(action)
+    hit = _unique_wheat_buy(action, configuration)
     if hit is None:
         report["status"] = "source_shape_drift"
         return action, report
@@ -278,7 +304,7 @@ def apply(observation: Any, action: Any, configuration: Any = None, *, completed
         report["status"] = "target_requires_completed_action"
         return action, report
 
-    hit = _unique_wheat_buy(action)
+    hit = _unique_wheat_buy(action, configuration)
     if hit is None:
         report["status"] = "target_shape_drift"
         return action, report
@@ -288,7 +314,7 @@ def apply(observation: Any, action: Any, configuration: Any = None, *, completed
         report.update(status="target_wheat_inert_suffix", row_index=index, prefix_limit=prefix_limit)
         return action, report
     for row in action.get("market", [])[:prefix_limit]:
-        if isinstance(row, list) and len(row) >= 2 and row[:2] == ["SELL", "WHEAT"]:
+        if _market_quantity(row, "SELL", "WHEAT") is not None:
             report["status"] = "target_wheat_sale_conflict"
             return action, report
     source, move_qty = MOVES[step]

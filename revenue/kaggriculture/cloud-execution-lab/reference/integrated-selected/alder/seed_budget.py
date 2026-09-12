@@ -87,8 +87,9 @@ class SeedBudget:
         # redundant.
         if not isinstance(market, list):
             return result
+        maximum = max(1, int(max_orders))
         stock = dict(post_unit_seeds)
-        for slot, order in enumerate(market[:max_orders]):
+        for slot, order in enumerate(market[:maximum]):
             # Official _parse_order() requires a list with at least three
             # fields. Unknown crops are later rejected by _process_market and
             # therefore remain inert here rather than being rewritten.
