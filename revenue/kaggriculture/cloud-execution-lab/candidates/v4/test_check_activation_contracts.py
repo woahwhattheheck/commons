@@ -90,6 +90,58 @@ class ActivationContractTests(unittest.TestCase):
             "    return 0\n"
         )
 
+    def test_identity_to_false_does_not_reject_nonbools(self):
+        self.assert_fails(
+            "def apply(action, enabled=False):\n"
+            "    if enabled is False:\n"
+            "        return action\n"
+            "    return {'changed': True}\n"
+        )
+        self.assert_fails(
+            "def apply(action, enabled=False):\n"
+            "    if enabled is not False:\n"
+            "        return {'changed': True}\n"
+            "    return action\n"
+        )
+
+    def test_nonexiting_is_not_true_branch_is_not_a_guard(self):
+        self.assert_fails(
+            "def apply(action, enabled=False):\n"
+            "    if enabled is not True:\n"
+            "        action = {'changed': True}\n"
+            "    return action\n"
+        )
+
+    def test_bool_membership_uses_equality_semantics(self):
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    if enabled in (True,):\n"
+            "        return 1\n"
+            "    return 0\n"
+        )
+
+    def test_not_and_boolop_coercion_outside_condition_are_caught(self):
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    active = not enabled\n"
+            "    return active\n"
+        )
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    active = enabled and object()\n"
+            "    return active\n"
+        )
+
+    def test_any_all_direct_container_truthiness_is_caught(self):
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    return any([enabled])\n"
+        )
+        self.assert_fails(
+            "def apply(enabled=False):\n"
+            "    return all((enabled, True))\n"
+        )
+
     def test_literal_true_reject_guard_allows_later_truthiness(self):
         self.assert_clean(
             "def apply(action, enabled=False):\n"
@@ -180,7 +232,10 @@ class ActivationContractTests(unittest.TestCase):
                 encoding="utf-8",
             )
             outside = root / "elsewhere.py"
-            outside.write_text("def apply(enabled=False):\n    if enabled: return 1\n", encoding="utf-8")
+            outside.write_text(
+                "def apply(enabled=False):\n    if enabled: return 1\n",
+                encoding="utf-8",
+            )
             rel = target.relative_to(root).as_posix()
             findings, errors = guard.scan_paths(
                 root,
