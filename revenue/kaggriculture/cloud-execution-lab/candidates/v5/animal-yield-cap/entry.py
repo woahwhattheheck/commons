@@ -26,6 +26,10 @@ def agent(observation, configuration=None):
     returned = baseline.agent(canonical, cfg)
     plan = headroom.plan_animal_headroom_harvest(returned, canonical, cfg)
     _LAST_REPORT = deepcopy(plan)
+    # The common no-engagement path must preserve both parent action identity
+    # and latency: do not ask the canonical helper to repeat the proof.
+    if not plan.get("eligible"):
+        return returned
     return headroom.apply_animal_headroom_harvest(
         returned, canonical, cfg, enabled=True
     )
