@@ -193,6 +193,8 @@ def tree_sha256(files: Mapping[str, ArchiveFile]) -> str:
 
 
 def _write_tree(output: Path, files: Mapping[str, ArchiveFile], receipt: dict) -> None:
+    if RECEIPT_NAME in files:
+        raise ValueError(f"archive member collides with receipt path: {RECEIPT_NAME}")
     if output.exists():
         raise FileExistsError(f"refusing to replace existing output: {output}")
     output.parent.mkdir(parents=True, exist_ok=True)
