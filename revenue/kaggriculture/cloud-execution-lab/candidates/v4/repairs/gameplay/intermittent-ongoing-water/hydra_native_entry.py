@@ -10,14 +10,15 @@ from __future__ import annotations
 
 import importlib.util
 import json
-import os
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parent
-TELEMETRY_PATH = os.environ.get("HYDRA_TELEMETRY_PATH")
+MODE_PATH = ROOT / "HYDRA-FIELD-MODE.json"
+TELEMETRY_PATH = ROOT / "HYDRA-FIELD-TELEMETRY.json"
 _parent = None
 _helper = None
+_mode = None
 
 stats = {
     "callbacks": 0,
@@ -69,11 +70,25 @@ def _cfg(configuration, name: str, default=None):
     return getattr(configuration, name, default)
 
 
+def _mode_config() -> dict:
+    global _mode
+    if _mode is not None:
+        return _mode
+    try:
+        payload = json.loads(MODE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"missing or invalid HYDRA field mode file: {exc}") from exc
+    if (not isinstance(payload, dict)
+            or payload.get("schema") != "titan.v4.hydra.field-mode.v1"
+            or type(payload.get("enabled")) is not bool
+            or set(payload) != {"schema", "enabled"}):
+        raise RuntimeError("invalid HYDRA field mode schema")
+    _mode = payload
+    return _mode
+
+
 def _enabled() -> bool:
-    raw = os.environ.get("HYDRA_ENABLED", "0")
-    if raw not in ("0", "1"):
-        raise ValueError("HYDRA_ENABLED must be exactly 0 or 1")
-    return raw == "1"
+    return _mode_config()["enabled"]
 
 
 def _inc_mapping(name: str, key, delta: int = 1) -> None:
@@ -184,13 +199,27 @@ def _observe_followups(parent, observation, day: int, water_sites) -> None:
                 event["followup_water"] = True
             keep.append(event)
             continue
+        if day == target_day + 1:
+            # The second EOD is where a missed recovery WATER can turn streak 1
+            # into the engine's >=2 terminal plant-loss transition.
+            site = event["site"]
+            tile = _tile_for_site(observation, site)
+            if isinstance(tile, dict) and tile.get("kind") == "WEED":
+                if not event["weed_after_rewrite"]:
+                    stats["weed_after_rewrite"] += 1
+                event["weed_after_rewrite"] = True
+            elif not (isinstance(tile, dict) and tile.get("kind") == "PLANT" and tile.get("crop") == event["crop"]):
+                if not event["missing_or_replaced"]:
+                    stats["missing_or_replaced_after_rewrite"] += 1
+                event["missing_or_replaced"] = True
+            event["post_next_day_state_checked"] = True
+            event["closed"] = True
+            continue
         event["closed"] = True
     _open_events[:] = keep
 
 
 def _write_telemetry() -> None:
-    if not TELEMETRY_PATH:
-        return
     try:
         payload = dict(stats)
         payload["open_rewrite_events"] = [dict(event) for event in _open_events]
@@ -208,7 +237,7 @@ def agent(observation, configuration=None):
     if stats["enabled"] is None:
         stats["enabled"] = enabled
     elif stats["enabled"] is not enabled:
-        raise RuntimeError("HYDRA_ENABLED changed within one actor process")
+        raise RuntimeError("HYDRA field mode changed within one actor process")
 
     parent = _parent.agent(observation, configuration)
     stats["callbacks"] += 1
@@ -257,6 +286,7 @@ def agent(observation, configuration=None):
                 "weed_after_rewrite": False,
                 "missing_or_replaced": False,
                 "state_checked": False,
+                "post_next_day_state_checked": False,
                 "closed": False,
             }
             _open_events.append(event)
