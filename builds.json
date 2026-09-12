@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 2,
  "open_prs": [
-  {
-   "number": 13008,
-   "author": "woahwhattheheck",
-   "title": "TITAN V4 H3S420: converge graph, executor, custody and trust",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13008",
-   "base_freshness": {
-    "base_sha": "12184a2ed6018c7e214e863fea0a703c36a41d0f",
-    "main_sha": "295bad7b6141d698b8dd887f5faeb00625d832b1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 12152,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12152",
    "base_freshness": {
     "base_sha": "9a584f6e887b6231f78a12538d0bbbd319dba471",
-    "main_sha": "295bad7b6141d698b8dd887f5faeb00625d832b1",
+    "main_sha": "996ad28366e270b44c6887fb644b68233f206de9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/12141",
    "base_freshness": {
     "base_sha": "9a584f6e887b6231f78a12538d0bbbd319dba471",
-    "main_sha": "295bad7b6141d698b8dd887f5faeb00625d832b1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13035,
-   "author": "woahwhattheheck",
-   "title": "TITAN V4 ROWSHED: complete-pipeline executable novelty",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13035",
-   "base_freshness": {
-    "base_sha": "ce4ceac9810ec4928b941386ce8f40e71ca5adaa",
-    "main_sha": "295bad7b6141d698b8dd887f5faeb00625d832b1",
+    "main_sha": "996ad28366e270b44c6887fb644b68233f206de9",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
