@@ -155,12 +155,10 @@ class MirrorSellQueue:
             price_fn = self.price_fn or self._load_price_fn()
 
             def quote(item: str, level: int) -> int:
-                try:
-                    value = price_fn(item, level, params)
-                except TypeError:
-                    # The landed research helper's focused tests use a two-argument
-                    # source-bound function. Runtime mechanics accepts params.
-                    value = price_fn(item, level)
+                # Runtime authority is the shipped three-argument mechanics ABI.
+                # Never retry a TypeError with a different call shape: malformed
+                # market params must fail closed rather than silently reprice.
+                value = price_fn(item, level, params)
                 if type(value) is not int or value < 1:
                     raise ValueError("market price must be a plain positive int")
                 return value
