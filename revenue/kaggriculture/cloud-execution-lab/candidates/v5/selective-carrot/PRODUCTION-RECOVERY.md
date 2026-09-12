@@ -10,11 +10,21 @@ pointers or Kaggle submissions are changed.
 
 ## Exact package and reproduction
 
-All input assets and both v2 outputs are on the existing public
+The default builder now emits import-safe production **v3**. A fresh Linux
+run through the prescribed raw-file loader found that v2 crashes on its first
+callback: it imports the shipped `full_production_context` after the loader
+has removed the payload directory from `sys.path`, before the baseline callback
+can restore that directory. V3 loads that context during entry-file execution.
+Only `main.py` changes; the other 91 members, including configuration, remain
+byte-identical. `--version v2` still reproduces the original archive.
+
+All input assets and the historical v2 outputs are on the existing public
 [gauntlet release](https://github.com/woahwhattheheck/commons/releases/tag/titan-kaggriculture-gauntlet-20260912).
+V3 is reproduced by the builder below; no new release asset is required.
 
 | Archive | SHA256 |
 |---|---|
+| Production v3 builder output | `20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239` |
 | `titan-v5-production-recovery-v2.tar.gz` | `0aded66a2c393cc60f4f45d10f11c384a7e788182bf5430863829a02b66daf02` |
 | `titan-v4-route-recovery-delivery-carrot-v2.tar.gz` | `0d42ee5fabb089745fa0064207654bfdf5df9466ba6499d91b6e685d4880cab1` |
 | Exact V3.1 `titan-v3.1-56172377-5db3921f.tar.gz` | `5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361` |
@@ -32,7 +42,8 @@ python -B build_production_recovery.py --v31 /path/to/titan-v3.1-56172377-5db392
 The builder reproduces the exact 92-member archive. It checks both inputs,
 the full 13-file dependency closure, unchanged retained payload members and
 the final archive hash. `PRODUCTION-PACKAGE-MANIFEST.json` records every output
-member hash. The existing `build_delivery.py` reproduces its delivery v2 input
+member hash for historical v2; `PRODUCTION-V3-PACKAGE-MANIFEST.json` records v3.
+The existing `build_delivery.py` reproduces its delivery v2 input
 from exact cap12 and route-recovery archives; see `DELIVERY.md`.
 
 The source configuration is grounded in exact V3.1 `TITAN-CONFIG.json`:
@@ -70,7 +81,7 @@ screen cells as direct v2 measurements or attributing hosted losses to timeouts.
 
 ## Native fleet demand
 
-The leading new native arm is production v2, 12 games: seeds
+The earlier SPARK assignment used production v2, 12 games: seeds
 2051966578,1209125501,1209125502 against Apex_v7 and Arlene_v14, both seats.
 Reuse all exact-matching V4/V3.1 controls from the delivery panel, including
 engine, opponent, seed, seat, RNG and timing limits. Preserve running delivery
@@ -93,6 +104,32 @@ python "$KG/cloud-execution-lab/reference/evaluator/evaluate.py" \
   --output "$RUN/production-report.json"
 ```
 
-Post PID/workspace and exact candidate identity before results in `#sim-data`.
-Retain all losses and failures. Native results remain pending at publication.
-The Kaggle submission hold remains in force.
+Preserve any existing process and its actual archive identity. New unstarted
+production runs should use v3; do not relabel an existing v2 result or restart
+completed controls. Post PID/workspace and exact identity before results.
+
+## Fresh native result: seed 1209129901
+
+The separate bounded sample in [native-9901/README.md](native-9901/README.md)
+completed 20 games with native timers enabled: exact V3.1, exact V4, production
+v3, town-off and aggregate postprocessor bypass, against Apex and Arlene in both
+seats. All eight control games were reused across the candidate treatments.
+The original v2's four step-zero import failures are retained alongside them.
+
+| Opponent | V3.1 margin | V4 margin | V5 production v3 margin |
+|---|---:|---:|---:|
+| Apex v7 | 9810 | 8062 | 10068 |
+| Arlene v14 | 5600 | 1446 | 5820 |
+
+Each row has identical mirrored terminal scores in both seats. Production v3
+gains +258 and +220 margin over V3.1, but Apex own-score is 237 lower. Arlene
+own-score is 332 higher. Town-off loses another 2/1 score; aggregate bypass
+returns exactly to V3.1 terminal scores. Retain the full production composition
+for wider development. These results do not select either treatment.
+
+V3's maximum callback time is 0.252 seconds, below the configured inner
+deadline; all four games complete 719 decisions without external failures.
+This one-seed sample is correlated development evidence, not champion
+clearance or a hosted rating estimate. The Apex own-score gap remains a
+concrete blocker to the strict V3.1 own-score condition. The Kaggle submission
+hold remains in force.

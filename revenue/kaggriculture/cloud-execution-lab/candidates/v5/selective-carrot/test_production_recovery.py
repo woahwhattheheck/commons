@@ -3,6 +3,7 @@
 import argparse
 from copy import deepcopy
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import types
@@ -42,6 +43,66 @@ class ProductionRecovery(unittest.TestCase):
         changed['b5_fertilize.py'] += b'\n# different donor\n'
         with self.assertRaisesRegex(ValueError, 'differs from the tested'):
             build.compose(changed, self.delivery, self.overlay)
+
+    def test_v2_remains_reproducible_and_v3_changes_only_entry_import(self):
+        legacy = build.compose(self.v31, self.delivery, self.overlay, 'v2')
+        self.assertEqual(build.digest(build.archive_bytes(legacy)), build.LEGACY_SHA)
+        self.assertEqual(set(legacy), set(self.output))
+        self.assertEqual([name for name in legacy if legacy[name] != self.output[name]], ['main.py'])
+        self.assertEqual(self.output['main.py'], legacy['main.py'].replace(
+            b'import baseline_main as baseline\n',
+            b'import baseline_main as baseline\nimport full_production_context\n', 1))
+        with self.assertRaisesRegex(ValueError, 'Expected v2 or v3'):
+            build.compose(self.v31, self.delivery, self.overlay, 'unknown')
+
+    def test_raw_file_callback_from_unrelated_working_directory(self):
+        # A real first decision through the existing pinned raw-file loader,
+        # in a fresh interpreter with neither checkout nor payload on sys.path.
+        script = '''
+from pathlib import Path
+import importlib.util, json, sys
+kg, root = map(Path, sys.argv[1:])
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+ev = load('callback_evaluator', kg/'cloud-execution-lab/reference/evaluator/evaluate.py')
+engine, _ = ev.get_engine(kg/'cloud-execution-lab/reference/engine', kg/'20260907-offline-agent/evaluate.py')
+cfg = ev.Struct({k: v.get('default') if isinstance(v, dict) else v
+                 for k, v in engine.specification['configuration'].items()})
+cfg.seed = 1209129901
+env = ev.Struct(configuration=cfg, done=False, info={})
+state = [ev.Struct(observation=ev.Struct(), action={}, status='ACTIVE', reward=0) for _ in range(2)]
+engine.interpreter(state, env)
+state[0].observation.step = 0
+state[0].observation.remainingOverageTime = 0
+official = load('callback_official', kg/'cloud-pack/official.py')
+action = official.make_agent(root/'main.py')(state[0].observation, cfg)
+print(json.dumps({'action': action, 'status': sys.modules['baseline_main']._INSTANCE.diagnostics['status']}))
+'''
+        kg = Path(__file__).resolve().parents[4]
+        for version in ('v2', 'v3'):
+            with self.subTest(version=version), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)/'payload'
+                for name, raw in build.compose(self.v31, self.delivery, self.overlay, version).items():
+                    path = root/name
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(raw)
+                flags = [] if __debug__ else ['-O']
+                result = subprocess.run([sys.executable, *flags, '-I', '-B', '-c', script,
+                                         str(kg), str(root)], cwd=temp, capture_output=True,
+                                        text=True, timeout=30)
+                if version == 'v2':
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("No module named 'full_production_context'", result.stderr)
+                else:
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    import json
+                    record = json.loads(result.stdout)
+                    self.assertIsInstance(record['action'], dict)
+                    self.assertEqual(record['status'], 'completed')
 
     def test_conflicting_dependency_is_not_overwritten(self):
         changed = dict(self.delivery, **{'b5_fertilize.py': b'competing = True\n'})
