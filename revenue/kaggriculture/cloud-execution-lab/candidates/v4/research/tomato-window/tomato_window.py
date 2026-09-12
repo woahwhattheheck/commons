@@ -254,6 +254,149 @@ def analyze(observation: Mapping, configuration: Mapping | None = None,
     return result
 
 
+# QUINCE snapshot/planting contract, composed onto the existing single projector.
+ENGINE_GIT_BLOB = ENGINE_BLOB
+SHOP_NAMES = KNOWN_SHOPS
+
+def _bounded_integer(value, name, low=0, high=1_000_000):
+    if type(value) is not int or not low <= value <= high:
+        raise ValueError(f"{name} must be a literal integer in [{low}, {high}]")
+    return value
+
+def _forecast_parameters(params=None):
+    # The general projector supports zero slopes; this optional signal uses a
+    # narrower, bounded, positive-slope domain and declines other configurations.
+    result = resolve_params(params)
+    for key in ("base", "I0", "T", "below_target", "above_target"):
+        if abs(result[key]) > 1_000_000_000:
+            raise ValueError(f"out-of-range {key}")
+    if result["below_target"] <= 0 or result["above_target"] <= 0:
+        raise ValueError("signal requires positive targets")
+    return result
+
+def ticks_between(start, stop, interval):
+    """Consumption ticks in [start, stop), including step zero if present."""
+    _bounded_integer(start, "start")
+    _bounded_integer(stop, "stop", start)
+    _bounded_integer(interval, "interval", 1)
+    return (stop - 1) // interval - (start - 1) // interval
+
+def forecast_window(obs, configuration=None, *, horizon=192, threshold=500):
+    """Return a deterministic diagnostic, or None for unsupported observations.
+
+    `obs.step` is the current pre-action step. If absent, explicit day/hour are
+    used. A provided step and day/hour must agree. Price at snapshot t includes
+    town consumption at start <= step < t, never the yet-unexecuted tick t.
+
+    A trigger requires the price at the first yield of a tomato planted NOW
+    (eight days after planting) to reach `threshold` before the episode ends.
+    It does NOT certify seed ownership, a planting tile, labour, or future sales.
+    Tomato production is finite: four daily refreshes, not perpetual revenue.
+    """
+    try:
+        return _forecast(obs, configuration, horizon, threshold)
+    except (ValueError, TypeError, KeyError, OverflowError, ZeroDivisionError):
+        return None
+
+def _forecast(obs, configuration, horizon, threshold):
+    if not isinstance(obs, Mapping):
+        raise ValueError("observation must be a mapping")
+    cfg = {} if configuration is None else configuration
+    if not isinstance(cfg, Mapping):
+        raise ValueError("configuration must be a mapping")
+    tpd = _bounded_integer(cfg.get("turnsPerDay", 24), "turnsPerDay", 1, 10000)
+    total = _bounded_integer(cfg.get("episodeSteps", 720), "episodeSteps", 2)
+    shop_interval = _bounded_integer(cfg.get("townShopSellInterval", 4), "townShopSellInterval", 1)
+    center_interval = _bounded_integer(cfg.get("townCenterSellInterval", 24), "townCenterSellInterval", 1)
+    horizon = _bounded_integer(horizon, "horizon", 0, 10000)
+    threshold = _bounded_integer(threshold, "threshold", 2, 1_000_000_000)
+    if "step" in obs:
+        step = _bounded_integer(obs["step"], "step", 0, total - 2)
+        if "day" in obs and _bounded_integer(obs["day"], "day") != step // tpd:
+            raise ValueError("inconsistent day")
+        if "hour" in obs and _bounded_integer(obs["hour"], "hour", 0, tpd - 1) != step % tpd:
+            raise ValueError("inconsistent hour")
+    else:
+        day = _bounded_integer(obs["day"], "day")
+        hour = _bounded_integer(obs["hour"], "hour", 0, tpd - 1)
+        step = _bounded_integer(day * tpd + hour, "step", 0, total - 2)
+    shops = obs["town"]["unlocked_shops"]
+    if (not isinstance(shops, list) or len(shops) > 8
+            or any(type(s) is not str or s not in SHOP_NAMES for s in shops)):
+        raise ValueError("unsupported shop instances")
+    consumers = sum(s in TOMATO_SHOPS for s in shops)  # keep duplicates
+    market = obs["market"]
+    inventory = _bounded_integer(market["inventory"]["TOMATO"], "inventory", -1_000_000_000, 1_000_000_000)
+    overrides = cfg.get("marketParams", {})
+    if not isinstance(overrides, Mapping):
+        raise ValueError("invalid configured market parameters")
+    params = _forecast_parameters(overrides.get("TOMATO"))
+    if "params" in market:
+        if not isinstance(market["params"], Mapping):
+            raise ValueError("invalid public market parameters")
+        # Public market parameters are the engine's resolved authoritative map.
+        resolved = market["params"].get("TOMATO")
+        if not isinstance(resolved, Mapping) or not DEFAULT_PARAMS.keys() <= resolved.keys():
+            raise ValueError("incomplete resolved tomato parameters")
+        params = _forecast_parameters(resolved)
+    current_price = _price(inventory, params)
+    if "prices" in market:
+        quoted = market["prices"]["TOMATO"]
+        if type(quoted) is not int or quoted != current_price:
+            raise ValueError("public quote inconsistent with inventory/curve")
+    last = total - 2
+    stop = min(step + horizon, last)
+
+    # Reuse the already-landed schedule engine: no second price/town recurrence.
+    projection = project(inventory, shops, step, Settings.from_config(cfg), params)
+
+    def inventory_at(t):
+        return projection.quotes[t - step].inventory
+
+    crossing = next((q.step for q in projection.quotes[:stop - step + 1]
+                     if q.price >= threshold), None)
+    projected_inventory = inventory_at(stop)
+    projected_price = _price(projected_inventory, params)
+    # How many cumulative extra market supply units erase this window? This is
+    # sensitivity, not an opponent prediction. At >=$2 all SELL units add stock.
+    supply_budget = None
+    if projected_price >= threshold:
+        low, high = 0, 1
+        while _price(projected_inventory + high, params) >= threshold:
+            high *= 2
+            if high > 2**40:
+                raise ValueError("unbounded sensitivity outside supported scale")
+        while low + 1 < high:
+            mid = (low + high) // 2
+            if _price(projected_inventory + mid, params) >= threshold:
+                low = mid
+            else:
+                high = mid
+        supply_budget = low
+    first_yield = (step // tpd + 8) * tpd
+    production_steps = [first_yield + i * tpd for i in range(4)
+                        if first_yield + i * tpd <= last]
+    within = first_yield <= stop
+    first_price = _price(inventory_at(first_yield), params) if within else None
+    return {
+        "schema": "titan.tomato-window.v1", "engine_git_blob": ENGINE_GIT_BLOB,
+        "assumptions": ["current known shops remain unchanged", "zero future player trades",
+                        "plant now is conditional on seed/tile/labour feasibility"],
+        "start_step": step, "horizon_step": stop, "last_action_step": last,
+        "tomato_shop_instances": consumers,
+        "current_inventory": inventory, "current_price": current_price,
+        "threshold": threshold, "threshold_crossing_step": crossing,
+        "projected_inventory": projected_inventory, "projected_price": projected_price,
+        "additional_supply_budget_at_horizon": supply_budget,
+        "plant_now_first_yield_step": first_yield,
+        "plant_now_first_yield_price": first_price,
+        "plant_now_production_steps_before_end": production_steps,
+        "plant_now_max_unfertilized_units_before_end": len(production_steps),
+        "latest_plant_day_for_any_yield": last // tpd - 8,
+        "trigger": bool(within and first_price >= threshold),
+        "executable_trade": False,
+    }
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("observation", type=Path, help="JSON public observation")
