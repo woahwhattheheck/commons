@@ -229,7 +229,15 @@ def _targets(farm: dict):
         for x, tile in enumerate(row):
             if x >= BOARD_SIZE // 2 and y >= BOARD_SIZE // 2:
                 continue
-            if isinstance(tile, dict) and tile.get("animal") and tile.get("fertilizer_available") is True:
+            if not isinstance(tile, dict) or tile.get("fertilizer_available") is not True:
+                continue
+            animal = tile.get("animal")
+            kind = tile.get("kind")
+            valid_animal_tile = (
+                (animal == "GOOSE" and kind == "COOP")
+                or (animal in ("COW", "SHEEP") and kind == "PASTURE")
+            )
+            if valid_animal_tile:
                 out.append((x, y))
     return out
 
@@ -456,13 +464,15 @@ def wrap(parent, tape_of=None):
                 command = ["PASS"]
             if not isinstance(action, dict):
                 return action
-            result = copy.deepcopy(action)
-            inner = result.get("hands", [])
-            if not isinstance(inner, list):
+            inner = action.get("hands")
+            if (
+                not isinstance(inner, list)
+                or len(inner) != len(hands) - 1
+                or any(not isinstance(parent_command, list) for parent_command in inner)
+            ):
                 return action
-            inner = list(inner)
-            while len(inner) < st.index:
-                inner.append(["PASS"])
+            result = copy.deepcopy(action)
+            inner = list(result["hands"])
             inner.insert(st.index, command)
             result["hands"] = inner
             return result
