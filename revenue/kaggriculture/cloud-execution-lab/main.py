@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
 """Canonical TITAN entrypoint. Feature choices are deterministic package data."""
 _INSTANCE = None
+_SPATIAL_RECOVERY = None
+_SPATIAL_RECOVERY_FIELDS = ('_committed', 'sale_obligation', 'receipt_events', 'crop_intent')
 
 
 def _new_instance(root, feature_data):
@@ -17,6 +19,53 @@ def _new_instance(root, feature_data):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
             self._finalizer_checkpoint = None
+            self._staged_spatial_recovery = None
+
+        def _export_spatial_recovery(self):
+            """Copy only state certified before the next entrypoint call starts.
+
+            SpatialTempo has transient proposal fields which can be half-mutated
+            by a late outer deadline.  Those are intentionally absent here.  The
+            four retained fields are committed/observed cross-turn state whose
+            owning actions or receipts were already returned before this call.
+            """
+            from copy import deepcopy
+            spatial = getattr(self, 'spatial', None)
+            if spatial is None:
+                return None
+            return {name: deepcopy(getattr(spatial, name, None))
+                    for name in _SPATIAL_RECOVERY_FIELDS}
+
+        def _stage_spatial_recovery(self, snapshot):
+            """Stage a bounded checkpoint for the next lazy spatial initialize."""
+            from copy import deepcopy
+            if snapshot is None:
+                self._staged_spatial_recovery = None
+                return True
+            if (not isinstance(snapshot, dict)
+                    or set(snapshot) != set(_SPATIAL_RECOVERY_FIELDS)):
+                self._staged_spatial_recovery = None
+                return False
+            self._staged_spatial_recovery = deepcopy(snapshot)
+            return True
+
+        def _restore_spatial_recovery(self):
+            """Restore certified state without restoring interrupted proposals."""
+            from copy import deepcopy
+            snapshot = self._staged_spatial_recovery
+            self._staged_spatial_recovery = None
+            spatial = getattr(self, 'spatial', None)
+            if snapshot is None or spatial is None:
+                return
+            for name in _SPATIAL_RECOVERY_FIELDS:
+                setattr(spatial, name, deepcopy(snapshot[name]))
+
+        def _initialize(self):
+            # Keep TitanAgent's normal lazy construction and controller install.
+            # Restore the bounded journal only after a fresh SpatialTempo exists,
+            # but before production consumes the new public observation.
+            super()._initialize()
+            self._restore_spatial_recovery()
 
         def _checkpoint_finalizer(self, obs, selected, stage):
             """Publish only a fully returned current-turn action stage.
@@ -145,7 +194,7 @@ def _record_entrypoint_deadline(instance, stage, started):
 
 
 def agent(observation, configuration=None):
-    global _INSTANCE
+    global _INSTANCE, _SPATIAL_RECOVERY
     import time
     entry_started = time.perf_counter()
     from pathlib import Path
@@ -162,8 +211,25 @@ def agent(observation, configuration=None):
     if step is None:
         step = int(observation['day'])*int(cfg.get('turnsPerDay', 24))+int(observation['hour'])
     step = int(step)
+    if step == 0:
+        # A new match never inherits a prior match's recovery journal.
+        _SPATIAL_RECOVERY = None
     replace = _INSTANCE is None or step == 0
     instance = None if replace else _INSTANCE
+
+    # Snapshot only state certified before this call mutates the live instance.
+    # If a prior outer timeout already discarded the instance, carry its saved
+    # journal through another construction/prelude cancellation unchanged.
+    spatial_recovery = None
+    if step != 0:
+        if instance is not None:
+            exporter = getattr(instance, '_export_spatial_recovery', None)
+            if callable(exporter):
+                spatial_recovery = exporter()
+        elif _SPATIAL_RECOVERY is not None:
+            from copy import deepcopy
+            spatial_recovery = deepcopy(_SPATIAL_RECOVERY)
+
     feature_data = (json.loads((root/'TITAN-CONFIG.json').read_text())
                     if replace else None)
     town_enabled = (bool(feature_data.get('town_procurement', False)) if replace
@@ -195,6 +261,7 @@ def agent(observation, configuration=None):
         # this fallback branch into an unbounded call. Leave the instance absent;
         # the next visible observation can initialize it normally.
         if replace:
+            _SPATIAL_RECOVERY = spatial_recovery
             _INSTANCE = None
             return fallback
         obs = dict(observation)
@@ -221,6 +288,9 @@ def agent(observation, configuration=None):
         with timer:
             if replace:
                 instance = _new_instance(root, feature_data)
+                stager = getattr(instance, '_stage_spatial_recovery', None)
+                if callable(stager):
+                    stager(spatial_recovery)
                 _INSTANCE = instance
             stage = 'entrypoint_runtime'
             output = instance.act(observation, cfg, entry_started=entry_started)
@@ -236,7 +306,10 @@ def agent(observation, configuration=None):
         if instance is not None:
             instance.ready = False
         # Finalization may have been interrupted mid-mutation. Never expose that
-        # object to the next observation; reconstruction starts from public state.
+        # object to the next observation; reconstruct from public state plus the
+        # pre-call committed spatial journal, never current-call proposals.
+        _SPATIAL_RECOVERY = spatial_recovery
         _INSTANCE = None
         return fallback
+    _SPATIAL_RECOVERY = None
     return output
