@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-12T23:25:50Z",
+ "heartbeat_at": "2026-09-12T23:31:37Z",
  "holder": "ASTRA-GPT-5.6-Sol-chat",
  "key": "titan-v5-command-center-refresh",
- "note": "Existing command-center refresh only; authenticate publisher, publish state/coordination, no gameplay/default/CURRENT/release/Kaggle.",
+ "note": "Command-center refresh published and read back at state/coordination commit 591f73e0c8ae4ec1cbadf9dc4c62bc0ae3277d4d; no main mutation.",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-12T23:25:50Z",
  "ttl_s": 1800
 }
