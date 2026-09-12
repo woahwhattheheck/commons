@@ -47,12 +47,24 @@ def assert_sources():
 
 
 def floor_stock(engine, item: str) -> int:
+    """Find any exact-$1 stock using only the authenticated engine price ABI.
+
+    Some official glut curves (notably EGG/log) reach the hard floor only at
+    inventories orders of magnitude beyond ordinary play. A fixed linear scan
+    is therefore not a valid checker oracle. Exponentially grow from the
+    product's own T scale and require the engine itself to report the floor.
+    """
     p = engine.MARKET_PARAMS[item]
     start = int(p["I0"])
-    for stock in range(start, start + 200_001):
+    if engine.market_price(item, start, None) == 1:
+        return start
+    delta = max(1, int(p["T"]))
+    for _ in range(64):
+        stock = start + delta
         if engine.market_price(item, stock, None) == 1:
             return stock
-    raise CheckError(f"no floor stock found for {item}")
+        delta *= 2
+    raise CheckError(f"no exact floor stock found for {item} within 64 doublings")
 
 
 def base_state(engine, helper, item: str, room: int, overflow: int):
