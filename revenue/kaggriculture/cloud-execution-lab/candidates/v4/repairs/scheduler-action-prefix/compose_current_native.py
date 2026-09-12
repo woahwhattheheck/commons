@@ -216,6 +216,11 @@ def _patch_joint_queue(part: str) -> str:
     part = _once(part, "        actual=sale_quantities(market)\n",
                  "        actual=sale_quantities(market[:max_orders])\n",
                  "joint queue actual prefix")
+    part = _once(
+        part,
+        "        if len(market)>max_orders or any(actual.get(p,0)!=q for p,q in wanted.items() if p in targets):return None\n",
+        "        if any(actual.get(p,0)!=q for p,q in wanted.items() if p in targets):return None\n",
+        "joint queue raw suffix length")
     return part
 
 
@@ -228,7 +233,7 @@ def _patch_horizon(part: str) -> str:
                  "            orders=route[date].get('market',[]) if date<len(route) else []\n"
                  "            has_slot=len(orders)<max_orders\n",
                  "            orders=route[date].get('market',[]) if date<len(route) else []\n"
-                 "            prefix=list(orders)[:max_orders]\n"
+                 "            prefix=(orders if isinstance(orders,list) else [])[:max_orders]\n"
                  "            has_slot=len(prefix)<max_orders\n",
                  "horizon prefix")
     part = _once(part, "                for o in orders)\n",
@@ -242,7 +247,8 @@ def _patch_represented_market(part: str) -> str:
                  "def apply_represented_market(farm, private, orders, size, max_orders):\n",
                  "represented signature")
     part = _once(part, "    for order in orders or ():\n",
-                 "    for order in list(orders or ())[:max(1,int(max_orders))]:\n",
+                 "    queue=orders if isinstance(orders,list) else []\n"
+                 "    for order in queue[:max(1,int(max_orders))]:\n",
                  "represented prefix")
     return part
 
