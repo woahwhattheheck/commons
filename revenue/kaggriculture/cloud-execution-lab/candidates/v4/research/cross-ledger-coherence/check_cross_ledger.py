@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """Fail-closed coherence audit across TITAN V4 canonical/integration/composition ledgers.
 
-This module is control-plane only.  It never edits ledgers, executes gameplay,
-materializes a runtime, or authorizes merge/promotion.  Its job is to detect
+This module is control-plane only. It never edits ledgers, executes gameplay,
+materializes a runtime, or authorizes merge/promotion. Its job is to detect
 semantic split-brain that can survive the independent ledger validators.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -17,6 +16,7 @@ EXPECTED_BRANCH = "main"
 EXPECTED_ROOT = "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
 INTEGRATION_SCHEMA = "titan-v4-integration-ledger/v1"
 COMPOSITION_SCHEMA = "titan-v4-composition/v1"
+SEMANTIC_BINDINGS_SCHEMA = "titan-v4-cross-ledger-semantic-bindings/v1"
 COMPOSITION_STATES = {"compose", "blocked", "evidence_only"}
 
 
@@ -97,9 +97,6 @@ def _canonical_identity(canonical: dict[str, Any], integration: dict[str, Any], 
     if len(set(roots.values())) != 1:
         errors.append(_issue("root_split_brain", values=roots))
 
-    # These production coordinates are duplicated intentionally between the
-    # canonical declaration and integration ledger.  A disagreement means the
-    # two control planes are talking about different executable targets.
     for field in ("production_target", "production_archive", "entrypoint"):
         cval = canonical.get(field)
         ival = integration.get(field)
@@ -143,6 +140,36 @@ def _landed_index(integration: dict[str, Any], errors: list[dict[str, Any]]) -> 
     return by_lane, by_path
 
 
+def _negative_index(integration: dict[str, Any], errors: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+    by_lane: dict[str, dict[str, Any]] = {}
+    by_path: dict[str, dict[str, Any]] = {}
+    for index, raw in enumerate(_require_list(integration.get("negative_or_parked"), "INTEGRATION.negative_or_parked", errors)):
+        if not isinstance(raw, dict):
+            errors.append(_issue("negative_row_not_object", index=index))
+            continue
+        lane = raw.get("lane")
+        if not isinstance(lane, str) or not lane.strip():
+            errors.append(_issue("bad_negative_lane", index=index, actual=lane))
+            continue
+        lane = lane.strip()
+        if lane in by_lane:
+            errors.append(_issue("duplicate_negative_lane", lane=lane))
+        else:
+            by_lane[lane] = raw
+
+        repair_path = raw.get("repair_path")
+        if repair_path is None:
+            continue
+        if not _safe_relpath(repair_path):
+            errors.append(_issue("unsafe_negative_repair_path", lane=lane, path=repair_path))
+            continue
+        if repair_path in by_path:
+            errors.append(_issue("duplicate_negative_repair_path", path=repair_path, lanes=sorted([lane, str(by_path[repair_path].get("lane"))])))
+        else:
+            by_path[repair_path] = raw
+    return by_lane, by_path
+
+
 def _component_index(composition: dict[str, Any], errors: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     by_id: dict[str, dict[str, Any]] = {}
     by_package: dict[str, dict[str, Any]] = {}
@@ -173,30 +200,113 @@ def _component_index(composition: dict[str, Any], errors: list[dict[str, Any]]) 
     return by_id, by_package
 
 
-def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: dict[str, Any]) -> dict[str, Any]:
+def _component_text(comp: dict[str, Any]) -> str:
+    return "\n".join(str(comp.get(field, "")) for field in ("reason", "note"))
+
+
+def _semantic_bindings(
+    bindings_doc: dict[str, Any] | None,
+    negative_by_lane: dict[str, dict[str, Any]],
+    component_by_id: dict[str, dict[str, Any]],
+    component_by_package: dict[str, dict[str, Any]],
+    errors: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    if bindings_doc is None:
+        return []
+    if bindings_doc.get("schema") != SEMANTIC_BINDINGS_SCHEMA:
+        errors.append(_issue("bad_semantic_bindings_schema", actual=bindings_doc.get("schema"), expected=SEMANTIC_BINDINGS_SCHEMA))
+        return []
+    rows = _require_list(bindings_doc.get("bindings"), "SEMANTIC_BINDINGS.bindings", errors)
+    seen_components: set[str] = set()
+    seen_lanes: set[str] = set()
+    mapped: list[dict[str, Any]] = []
+    for index, binding in enumerate(rows):
+        if not isinstance(binding, dict):
+            errors.append(_issue("semantic_binding_not_object", index=index))
+            continue
+        cid = binding.get("component")
+        package = binding.get("package")
+        state = binding.get("composition_state")
+        lane = binding.get("integration_lane")
+        disposition = binding.get("integration_disposition")
+        marker = binding.get("composition_disposition_marker")
+        if not isinstance(cid, str) or not cid:
+            errors.append(_issue("bad_semantic_binding_component", index=index, actual=cid))
+            continue
+        if cid in seen_components:
+            errors.append(_issue("duplicate_semantic_binding_component", component=cid))
+        seen_components.add(cid)
+        if not _safe_relpath(package):
+            errors.append(_issue("unsafe_semantic_binding_package", component=cid, path=package))
+            continue
+        if state not in {"blocked", "evidence_only"}:
+            errors.append(_issue("bad_semantic_binding_state", component=cid, actual=state))
+        if not isinstance(lane, str) or not lane.strip():
+            errors.append(_issue("bad_semantic_binding_lane", component=cid, actual=lane))
+            continue
+        lane = lane.strip()
+        if lane in seen_lanes:
+            errors.append(_issue("duplicate_semantic_binding_lane", lane=lane))
+        seen_lanes.add(lane)
+        if not isinstance(disposition, str) or not disposition:
+            errors.append(_issue("bad_semantic_binding_disposition", component=cid, actual=disposition))
+        if not isinstance(marker, str) or not marker:
+            errors.append(_issue("bad_semantic_binding_marker", component=cid, actual=marker))
+
+        comp = component_by_id.get(cid)
+        package_comp = component_by_package.get(package)
+        if comp is None or package_comp is not comp:
+            errors.append(_issue("semantic_binding_component_package_split_brain", component=cid, package=package))
+            continue
+        if comp.get("state") != state:
+            errors.append(_issue("semantic_binding_state_split_brain", component=cid, package=package, binding_state=state, composition_state=comp.get("state")))
+
+        neg = negative_by_lane.get(lane)
+        if neg is None:
+            errors.append(_issue("semantic_binding_missing_negative_lane", component=cid, lane=lane))
+            continue
+        if neg.get("disposition") != disposition:
+            errors.append(_issue("semantic_binding_negative_disposition_split_brain", component=cid, lane=lane, binding_disposition=disposition, integration_disposition=neg.get("disposition")))
+        if isinstance(marker, str) and marker and marker not in _component_text(comp):
+            errors.append(_issue("semantic_binding_composition_disposition_split_brain", component=cid, package=package, marker=marker))
+        mapped.append({
+            "component": cid,
+            "package": package,
+            "state": state,
+            "lane": lane,
+            "integration_disposition": neg.get("disposition"),
+            "composition_disposition_marker": marker,
+            "custody": "negative_semantic_binding",
+        })
+    return mapped
+
+
+def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: dict[str, Any], semantic_bindings: dict[str, Any] | None = None) -> dict[str, Any]:
     errors: list[dict[str, Any]] = []
     warnings: list[dict[str, Any]] = []
     _canonical_identity(canonical, integration, composition, errors)
     _, landed_by_path = _landed_index(integration, errors)
-    _, component_by_package = _component_index(composition, errors)
+    negative_by_lane, negative_by_path = _negative_index(integration, errors)
+    component_by_id, component_by_package = _component_index(composition, errors)
 
     mappings: list[dict[str, Any]] = []
     for package, comp in sorted(component_by_package.items()):
         row = landed_by_path.get(package)
+        negative_row = negative_by_path.get(package)
         if row is None:
             if comp.get("state") == "compose":
-                errors.append(_issue(
-                    "compose_without_landed_custody",
-                    component=comp.get("id"),
-                    package=package,
-                ))
+                errors.append(_issue("compose_without_landed_custody", component=comp.get("id"), package=package))
+            elif negative_row is not None:
+                mappings.append({
+                    "component": comp.get("id"),
+                    "package": package,
+                    "state": comp.get("state"),
+                    "lane": negative_row.get("lane"),
+                    "landed_status": None,
+                    "custody": "negative_or_parked",
+                })
             else:
-                warnings.append(_issue(
-                    "noncompose_without_exact_landed_path",
-                    component=comp.get("id"),
-                    package=package,
-                    state=comp.get("state"),
-                ))
+                warnings.append(_issue("noncompose_without_exact_landed_path", component=comp.get("id"), package=package, state=comp.get("state")))
             continue
         mappings.append({
             "component": comp.get("id"),
@@ -204,11 +314,9 @@ def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: d
             "state": comp.get("state"),
             "lane": row.get("lane"),
             "landed_status": row.get("status"),
+            "custody": "landed",
         })
 
-    # Rows which explicitly opted into composition custody are a hard bilateral
-    # contract, not a heuristic.  They must point to exactly the same package and
-    # report the same state as COMPOSITION.json.
     for package, row in sorted(landed_by_path.items()):
         explicit = "composition_state" in row or "composition_intake_pr" in row
         if not explicit:
@@ -224,46 +332,20 @@ def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: d
         elif declared_state not in COMPOSITION_STATES:
             errors.append(_issue("bad_landed_composition_state", lane=lane, package=package, actual=declared_state))
         elif declared_state != comp.get("state"):
-            errors.append(_issue(
-                "composition_state_split_brain",
-                lane=lane,
-                component=comp.get("id"),
-                package=package,
-                integration_state=declared_state,
-                composition_state=comp.get("state"),
-            ))
+            errors.append(_issue("composition_state_split_brain", lane=lane, component=comp.get("id"), package=package, integration_state=declared_state, composition_state=comp.get("state")))
         intake = row.get("composition_intake_pr")
         if intake is not None and (isinstance(intake, bool) or not isinstance(intake, int) or intake <= 0):
             errors.append(_issue("bad_composition_intake_pr", lane=lane, actual=intake))
 
-    # A negative/parked path must never be the exact package of a live COMPOSE
-    # node.  Today most negative rows have no path; this remains a hard guard for
-    # future richer ledger rows.
-    negatives = _require_list(integration.get("negative_or_parked"), "INTEGRATION.negative_or_parked", errors)
-    for index, row in enumerate(negatives):
-        if not isinstance(row, dict):
-            errors.append(_issue("negative_row_not_object", index=index))
-            continue
-        repair_path = row.get("repair_path")
-        if repair_path is None:
-            continue
-        if not _safe_relpath(repair_path):
-            errors.append(_issue("unsafe_negative_repair_path", index=index, path=repair_path))
-            continue
-        comp = component_by_package.get(repair_path)
+    for package, row in sorted(negative_by_path.items()):
+        comp = component_by_package.get(package)
         if comp is not None and comp.get("state") == "compose":
-            errors.append(_issue(
-                "negative_lane_is_composed",
-                lane=row.get("lane"),
-                component=comp.get("id"),
-                package=repair_path,
-                disposition=row.get("disposition"),
-            ))
+            errors.append(_issue("negative_lane_is_composed", lane=row.get("lane"), component=comp.get("id"), package=package, disposition=row.get("disposition")))
 
-    mapped_components = {row["component"] for row in mappings}
-    compose_components = sorted(
-        str(comp.get("id")) for comp in component_by_package.values() if comp.get("state") == "compose"
-    )
+    semantic_mappings = _semantic_bindings(semantic_bindings, negative_by_lane, component_by_id, component_by_package, errors)
+
+    mapped_components = {str(row["component"]) for row in mappings}
+    compose_components = sorted(str(comp.get("id")) for comp in component_by_package.values() if comp.get("state") == "compose")
     unmapped_compose = sorted(cid for cid in compose_components if cid not in mapped_components)
 
     return {
@@ -272,6 +354,7 @@ def audit(canonical: dict[str, Any], integration: dict[str, Any], composition: d
         "canonical_branch": EXPECTED_BRANCH,
         "canonical_root": EXPECTED_ROOT,
         "mappings": sorted(mappings, key=lambda row: (str(row["component"]), str(row["package"]))),
+        "semantic_mappings": sorted(semantic_mappings, key=lambda row: (str(row["component"]), str(row["package"]))),
         "compose_components": compose_components,
         "unmapped_compose_components": unmapped_compose,
         "errors": _sorted_issues(errors),
@@ -293,10 +376,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--canonical", type=Path, default=here / "CANONICAL.json")
     parser.add_argument("--integration", type=Path, default=here / "INTEGRATION.json")
     parser.add_argument("--composition", type=Path, default=here / "COMPOSITION.json")
+    parser.add_argument("--semantic-bindings", type=Path, default=Path(__file__).resolve().with_name("SEMANTIC-BINDINGS.json"))
     parser.add_argument("--pretty", action="store_true")
     args = parser.parse_args(argv)
     try:
-        result = audit(load_json(args.canonical), load_json(args.integration), load_json(args.composition))
+        result = audit(
+            load_json(args.canonical),
+            load_json(args.integration),
+            load_json(args.composition),
+            load_json(args.semantic_bindings),
+        )
     except AuditError as exc:
         result = {
             "schema": "titan-v4-cross-ledger-audit/v1",
@@ -304,6 +393,7 @@ def main(argv: list[str] | None = None) -> int:
             "errors": [_issue("load_error", error=str(exc))],
             "warnings": [],
             "mappings": [],
+            "semantic_mappings": [],
             "compose_components": [],
             "unmapped_compose_components": [],
             "policy": {
