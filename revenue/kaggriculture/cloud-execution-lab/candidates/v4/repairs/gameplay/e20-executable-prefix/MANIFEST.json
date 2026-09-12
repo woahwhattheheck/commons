@@ -1,0 +1,25 @@
+{
+  "repair": "E20 executable-prefix correctness",
+  "status": "preserved donor repair; semantic port required before production activation",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "source_helper_blob": "cd497140d188794d610d3ae387de8758ecbd0765",
+  "focused_regression_blob": "05f4ae28c00cc6f457f402c50a837de802cb2ef3",
+  "legacy_validation_commit": "7a7b687c629d08aa7c1aae24c1e90abbecd328f7",
+  "contract": [
+    "limit only literal HIRE rows inside the engine executable raw market prefix",
+    "preserve raw queue positions and suffix rows outside the executable prefix",
+    "disabled path is exact-parent identity",
+    "terminal boundary is configuration-relative"
+  ],
+  "evidence": [
+    "14 focused tests on the legacy donor carrier",
+    "9604-case differential raw-slot/cap/hire-budget matrix",
+    "normal and optimized (-O) validation reported green",
+    "six deliberate regressions killed in both modes"
+  ],
+  "integration_rules": [
+    "do not execute the legacy r04 materializer against the current production runtime",
+    "do not activate a key/default from this preservation commit",
+    "port semantically into the canonical runtime only after current-ABI validation"
+  ]
+}
