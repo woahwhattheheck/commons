@@ -55,7 +55,9 @@ jobs:
           import os
           from pathlib import Path
           frozen = Path(os.environ["FROZEN_MANIFEST"])
-          expected = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924"
+          expected = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
+          if len(expected) != 64:
+              raise SystemExit("historical canonical manifest SHA pin must be 64 hex characters")
           actual = hashlib.sha256(frozen.read_bytes()).hexdigest()
           if actual != expected:
               raise SystemExit(f"historical canonical manifest mismatch: {actual} != {expected}")
@@ -66,11 +68,9 @@ jobs:
           from pathlib import Path
           path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
           text = path.read_text()
-          bad = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
-          good = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924"
-          if text.count(bad) != 2:
-              raise SystemExit("canonical manifest SHA repair anchor drifted")
-          text = text.replace(bad, good)
+          expected = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
+          if text.count(expected) != 2:
+              raise SystemExit("canonical manifest SHA authority anchors drifted")
           old_manifest = 'CANONICAL_MANIFEST = ROOT / "revenue/kaggriculture/cloud-execution-lab/candidates/v5/gauntlet-top30-union/manifest.json"'
           frozen = str(Path(os.environ["FROZEN_MANIFEST"]))
           new_manifest = f"CANONICAL_MANIFEST = Path({frozen!r})"
@@ -113,7 +113,7 @@ jobs:
           note = (
               "\n### Frozen corpus authority\n\n"
               "The reducer binds the historical shard panel to immutable `canonical-manifest-510ca5c5438fb65d.json` "
-              "(SHA256 `510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924`). "
+              "(SHA256 `510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e`). "
               "The live `gauntlet-top30-union/manifest.json` is leaderboard-derived and may advance independently. "
               "`--corpus` supplies the pinned materializer plus replay bytes; it cannot redefine the 41-submission / 123-fixture universe.\n"
           )
