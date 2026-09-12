@@ -18,7 +18,7 @@ import math
 _PRODUCT_BY_ANIMAL = {"GOOSE": "EGG", "COW": "MILK", "SHEEP": "WOOL"}
 _MAX_PREBUY = 2
 _CASH_RESERVE = 1000
-_PRICE_PAD = 10
+_PRICE_PAD = 25
 _MISSING = object()
 _CASH_SPEND_OPS = frozenset({
     "HIRE", "BUY_LAND", "BUY_PRODUCT", "BUY_SEED", "BUY_ANIMAL",
