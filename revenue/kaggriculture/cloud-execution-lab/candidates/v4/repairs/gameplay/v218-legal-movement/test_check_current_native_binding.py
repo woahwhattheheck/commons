@@ -81,19 +81,27 @@ class TestGate(unittest.TestCase):
             },
         )
 
-    def register_semantic_graph(self, root, *, mutate_sources=False, checker_drift=False, wrong_state=False):
+    def register_semantic_graph(self, root, *, mutate_source=None, omit_source=None,
+                                checker_drift=False, wrong_state=False):
         checker = root/'candidates/v4'/g.V218_CHECKER_REL
         checker.parent.mkdir(parents=True,exist_ok=True)
         checker.write_text("# synthetic registered checker\n")
         checker_blob=g.git_blob(checker.read_bytes())
         source_ids={
+            "main.py": g.git_blob((root/"main.py").read_bytes()),
+            "titan_runtime.py": g.git_blob((root/"titan_runtime.py").read_bytes()),
+            "TITAN-CONFIG.json": g.git_blob((root/"TITAN-CONFIG.json").read_bytes()),
+            "frozen_selected.py": g.git_blob((root/"frozen_selected.py").read_bytes()),
+            "scheduler.py": g.git_blob((root/"scheduler.py").read_bytes()),
             "reference/next-panel/vendor/arlene.py":
                 g.git_blob((root/"reference/next-panel/vendor/arlene.py").read_bytes()),
             "spatial_tempo.py":
                 g.git_blob((root/"spatial_tempo.py").read_bytes()),
         }
-        if mutate_sources:
-            source_ids["spatial_tempo.py"]="0"*40
+        if mutate_source is not None:
+            source_ids[mutate_source]="0"*40
+        if omit_source is not None:
+            source_ids.pop(omit_source)
         receipt={
             "schema":"titan-v4-v218-native-semantic-equivalence/v1",
             "status":"source_revalidated_execution_not_rerun",
@@ -103,10 +111,7 @@ class TestGate(unittest.TestCase):
                 "semantic_disposition_when_all_fail_closed_probes_pass":
                     "NATIVE_SEMANTIC_EQUIVALENT_REQUIRES_RUNTIME_GATE",
             },
-            "current_source_identities":{
-                "reference/next-panel/vendor/arlene.py":source_ids["reference/next-panel/vendor/arlene.py"],
-                "spatial_tempo.py":source_ids["spatial_tempo.py"],
-            },
+            "current_source_identities":source_ids,
             "semantic_evidence":{"frozen_nonterminal_config":True},
             "control_plane_disposition":"evidence_only_no_transform_required",
             "runtime_promotion_authority":False,
@@ -186,7 +191,25 @@ class TestGate(unittest.TestCase):
     def test_receipt_source_pin_drift_blocks_semantic_wiring(self):
         with tempfile.TemporaryDirectory() as td:
             r=self.semantic_tree(td)
-            self.register_semantic_graph(r,mutate_sources=True)
+            self.register_semantic_graph(r,mutate_source="spatial_tempo.py")
+            x=g.audit(r)
+            self.assertFalse(x['semantic_graph_registration']['registered'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
+            self.assertFalse(x['wired'])
+
+    def test_receipt_main_pin_drift_blocks_semantic_wiring(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r,mutate_source="main.py")
+            x=g.audit(r)
+            self.assertFalse(x['semantic_graph_registration']['registered'])
+            self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
+            self.assertFalse(x['wired'])
+
+    def test_receipt_source_omission_blocks_semantic_wiring(self):
+        with tempfile.TemporaryDirectory() as td:
+            r=self.semantic_tree(td)
+            self.register_semantic_graph(r,omit_source="scheduler.py")
             x=g.audit(r)
             self.assertFalse(x['semantic_graph_registration']['registered'])
             self.assertEqual(x['semantic_graph_registration']['reason'],'semantic_source_identity_mismatch')
