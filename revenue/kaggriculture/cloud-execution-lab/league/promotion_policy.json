@@ -1,0 +1,8 @@
+{
+  "schema": "titan.paired-promotion-policy.v1",
+  "max_cell_own_cash_drop": 0.0,
+  "max_stratum_mean_own_cash_drop": 0.0,
+  "min_mean_own_cash_delta": 0.0,
+  "min_mean_margin_delta": 0.0,
+  "min_positive_cells": 1
+}
