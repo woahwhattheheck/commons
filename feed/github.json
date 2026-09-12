@@ -3,10 +3,10 @@
     "open_issues": 6,
     "open_pull_requests": 6,
     "runs_in_progress": 19,
-    "runs_queued": 3022
+    "runs_queued": 3285
   },
   "degraded": [],
-  "drafts": 205,
+  "drafts": 203,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -52,90 +52,90 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "branch": "astra/plantguard-survival-20260912",
+      "created_at": "2026-09-12T06:30:23Z",
+      "draft": false,
+      "number": 13107,
+      "title": "HOLD \u00b7 TITAN V4 PLANTGUARD: postmerge custom-config custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/kinetic-bootstrap-custody-postmerge-20260912",
+      "created_at": "2026-09-12T06:30:20Z",
+      "draft": true,
+      "number": 13106,
+      "title": "TITAN V4 KINETIC: authenticate control helpers before execution"
+    },
+    {
+      "author": "woahwhattheheck",
       "branch": "astra/carebank-strict-enable-postmerge-20260912",
-      "created_at": "2026-09-12T06:21:53Z",
+      "created_at": "2026-09-12T06:30:03Z",
       "draft": true,
-      "number": 13086,
-      "title": "TITAN V4 CAREBANK: require literal-True activation"
+      "number": 13105,
+      "title": "TITAN V4 CAREBANK: collapse strict-enable test custody"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/gemini-labeled-history-convergence-20260912",
-      "created_at": "2026-09-12T06:21:11Z",
+      "branch": "astra/gemini-fert-floor-apply-followup-20260912",
+      "created_at": "2026-09-12T06:29:55Z",
       "draft": true,
-      "number": 13085,
-      "title": "TITAN V4 Gemini: converge older labeled lineages into the 37-family lock"
+      "number": 13104,
+      "title": "TITAN V4 GEMINI: correct merged FERT floor witness semantics"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol/represented-physical-transition-20260912",
-      "created_at": "2026-09-12T06:20:53Z",
+      "branch": "astra/tailpressure-state-custody-postmerge-20260912",
+      "created_at": "2026-09-12T06:29:47Z",
+      "draft": true,
+      "number": 13103,
+      "title": "TITAN V4 tail pressure: bind unwind budget to current shop state"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "astra/rowshed-lockstep-assignment-hotfix-20260912",
+      "created_at": "2026-09-12T06:29:22Z",
+      "draft": true,
+      "number": 13102,
+      "title": "TITAN V4 ROWSHED: repair queue assignment to lockstep baseline"
+    },
+    {
+      "author": "woahwhattheheck",
+      "branch": "sol/w1-strict-default-off-20260912",
+      "created_at": "2026-09-12T06:28:40Z",
       "draft": false,
-      "number": 13084,
-      "title": "TITAN V4: close represented market physical executability"
+      "number": 13101,
+      "title": "TITAN V4 W1: enforce default-OFF activation custody"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/v4-same-turn-funding-pareto-rank-20260912",
-      "created_at": "2026-09-12T06:19:10Z",
+      "branch": "astra/execpace2-fallback-lifecycle-postmerge-20260912",
+      "created_at": "2026-09-12T06:28:20Z",
       "draft": true,
-      "number": 13081,
-      "title": "TITAN V4 funding: maximize certified cash on equal-movement frontier"
+      "number": 13099,
+      "title": "TITAN V4 EXEC-PACE-2: preserve price history through deadline fallback"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "sol/lockstep-raw-phase-20260912",
-      "created_at": "2026-09-12T06:16:29Z",
-      "draft": false,
-      "number": 13075,
-      "title": "TITAN V4 LOCKSTEP: certify adjacent raw BUY phasing"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/b7-multicargo-drop-custody-20260912",
-      "created_at": "2026-09-12T06:15:37Z",
+      "branch": "astra/v4-residual-authority-e13-20260912",
+      "created_at": "2026-09-12T06:28:19Z",
       "draft": true,
-      "number": 13074,
-      "title": "TITAN V4 B7: preserve multi-cargo DROP overflow custody"
+      "number": 13098,
+      "title": "TITAN V4 SpatialTempo: fail closed HIRE-prefix cap authority"
     },
     {
       "author": "woahwhattheheck",
-      "branch": "astra/e7-posttick-failclosed-20260912",
-      "created_at": "2026-09-12T06:13:46Z",
+      "branch": "astra/rowshed-lockstep-baseline-postmerge-20260912",
+      "created_at": "2026-09-12T06:27:57Z",
       "draft": true,
-      "number": 13073,
-      "title": "TITAN V4 E7: fail closed activation and zero-SELL release"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/execpace2-lifecycle-regate-20260912",
-      "created_at": "2026-09-12T06:12:07Z",
-      "draft": false,
-      "number": 13071,
-      "title": "TITAN V4 EXEC-PACE-2: preserve trend state across reconstruction"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/demandvel-comeback-tailpressure",
-      "created_at": "2026-09-12T06:10:26Z",
-      "draft": true,
-      "number": 13068,
-      "title": "TITAN V4 market: compose COMEBACK with remaining demand tail"
-    },
-    {
-      "author": "woahwhattheheck",
-      "branch": "astra/gander-apex-radar-composite",
-      "created_at": "2026-09-12T06:06:50Z",
-      "draft": true,
-      "number": 13066,
-      "title": "TITAN V4: GANDER \u00d7 Apex clone-radar composite"
+      "number": 13097,
+      "title": "TITAN V4 ROWSHED: repair lockstep mirror baseline"
     }
   ],
-  "pulls_listed": 255,
+  "pulls_listed": 248,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 159.1,
+  "queue_depth_per_runner": 172.9,
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T06:22:50Z",
+  "unchanged_since": "2026-09-12T06:30:36Z",
   "undatable_pulls": []
 }
