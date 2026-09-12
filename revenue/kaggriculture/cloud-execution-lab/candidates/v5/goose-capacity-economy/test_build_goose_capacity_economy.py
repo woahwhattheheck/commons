@@ -83,6 +83,21 @@ class P02BuildContracts(unittest.TestCase):
                 expected_helper_blob=self.helper_blob,
             )
 
+    def test_publish_pair_delegates_exact_payloads_to_shared_custody(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            tar_path = root / "candidate.tar.gz"
+            receipt_path = root / "receipt.json"
+            record = {"schema": "x", "candidate_archive_sha256": hashlib.sha256(b"abc").hexdigest()}
+            with mock.patch.object(build, "publish_exclusive") as publish:
+                result = build.publish_pair(tar_path, receipt_path, b"abc", record)
+            self.assertIs(result, record)
+            publish.assert_called_once()
+            pairs = publish.call_args.args[0]
+            self.assertEqual(pairs[0], (tar_path, b"abc"))
+            self.assertEqual(pairs[1][0], receipt_path)
+            self.assertIn(b'"schema": "x"', pairs[1][1])
+
     def test_publish_pair_collision_rolls_back_owned_archive(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -110,25 +125,17 @@ class P02BuildContracts(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "distinct"):
                 build.publish_pair(path, path, b"x", {})
 
-    def test_foreign_replacement_is_preserved_on_verification_failure(self):
+    def test_shared_publication_failure_propagates_without_private_cleanup(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             tar_path = root / "candidate.tar.gz"
             receipt_path = root / "receipt.json"
-            original = build._read_owned
-            calls = {"n": 0}
-
-            def interpose(path, identity):
-                calls["n"] += 1
-                if calls["n"] == 1:
-                    Path(path).unlink()
-                    Path(path).write_bytes(b"foreign")
-                return original(path, identity)
-
-            with mock.patch.object(build, "_read_owned", side_effect=interpose):
-                with self.assertRaises(RuntimeError):
+            root_error = OSError("shared publication failure")
+            with mock.patch.object(build, "publish_exclusive", side_effect=root_error) as publish:
+                with self.assertRaisesRegex(OSError, "shared publication failure"):
                     build.publish_pair(tar_path, receipt_path, b"abc", {"x": 1})
-            self.assertEqual(tar_path.read_bytes(), b"foreign")
+            publish.assert_called_once()
+            self.assertFalse(tar_path.exists())
             self.assertFalse(receipt_path.exists())
 
 
