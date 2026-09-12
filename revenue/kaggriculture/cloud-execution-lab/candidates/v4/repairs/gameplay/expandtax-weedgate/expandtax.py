@@ -25,8 +25,13 @@ Gate rule (the lane):
       T = tiles per quadrant (25 on the 10x10 board)
       D = days remaining in the episode
 
-OFF (r04_expandtax falsy/absent): filter_market_orders returns the action
-byte-identical -> OFF == base.
+OFF (r04_expandtax absent or anything other than literal True):
+filter_market_orders returns the action byte-identical -> OFF == base.
+
+When enabled, the filter deliberately admits at most one BUY_LAND per callback.
+The official engine executes market rows sequentially, so multiple BUY_LAND rows
+would advance through $1000 -> $2000 -> $4000 prices in one callback.  A single
+pre-callback gate verdict cannot safely authorize those later prices.
 """
 from __future__ import annotations
 
@@ -141,28 +146,50 @@ def next_unlock_price(observation):
     return LAND_PRICES[n]
 
 
+def _is_buy_land(order):
+    return isinstance(order, list) and bool(order) and order[0] == "BUY_LAND"
+
+
+def _keep_at_most_one_buy_land(market, *, allow_one):
+    """Preserve market order and all non-land rows; retain <=1 BUY_LAND."""
+    kept = []
+    land_kept = False
+    for order in market:
+        if not _is_buy_land(order):
+            kept.append(order)
+            continue
+        if allow_one and not land_kept:
+            kept.append(order)
+            land_kept = True
+    return kept
+
+
 def filter_market_orders(action, observation, configuration, books):
-    """Drop BUY_LAND orders the gate rejects. OFF (flag falsy) -> action unchanged."""
+    """Gate BUY_LAND safely. OFF is exact identity; enabled admits <=1 land buy."""
     if not isinstance(configuration, dict) or configuration.get("r04_expandtax") is not True:
         return action
     market = (action or {}).get("market") if isinstance(action, dict) else None
     if not market:
         return action
-    if not any(isinstance(o, list) and o and o[0] == "BUY_LAND" for o in market):
+    if not any(_is_buy_land(order) for order in market):
         return action
+
     price = next_unlock_price(observation)
     if price is None:
-        # Nothing left to unlock: strip no-op BUY_LAND orders.
-        kept = [o for o in market
-                if not (isinstance(o, list) and o and o[0] == "BUY_LAND")]
+        # Nothing left to unlock: strip all no-op BUY_LAND orders.
+        kept = _keep_at_most_one_buy_land(market, allow_one=False)
         return {**action, "market": kept} if kept != market else action
+
     E = books.rev_per_tile_day if books is not None else 0.0
     A = books.dollars_per_action if books is not None else 0.0
     D = _days_remaining(observation, configuration)
-    if should_expand(price, E, A, D):
+    allow_one = should_expand(price, E, A, D)
+    kept = _keep_at_most_one_buy_land(market, allow_one=allow_one)
+
+    # Preserve exact object identity when the gate changes nothing (the common
+    # single-BUY_LAND allowed case and every unrelated row byte-for-byte).
+    if kept == market:
         return action
-    kept = [o for o in market
-            if not (isinstance(o, list) and o and o[0] == "BUY_LAND")]
     out = dict(action)
     out["market"] = kept
     return out
