@@ -1,0 +1,216 @@
+name: titan-v4-trusted-verify
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - titan/v4-20260911
+
+# This workflow is a bootstrap verifier for the #12620 gate transition only.
+# pull_request_target loads this definition from the repository default branch.
+# PR-head data is never executed unless the exact checker Git object matches the
+# independently audited pin below.
+permissions:
+  contents: read
+
+concurrency:
+  group: titan-v4-trusted-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  TARGET_BRANCH: titan/v4-20260911
+  PINNED_BOOTSTRAP_BASE_SHA: 465f4263da1c98acf78889d67cdd21b61dbba145
+  PINNED_CANDIDATE_WORKFLOW_BLOB: 2a1800c02d2a4c11293bdccc7914ab8f6fd93321
+  # Replace this sentinel with the exact receipt-bearing integrated C1 checker
+  # blob before this bootstrap workflow is merged to main.
+  PINNED_CHECKER_BLOB: __PIN_C1_CHECKER_BLOB__
+
+jobs:
+  trusted-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Verify exact PR objects from trusted default-branch code
+        shell: bash
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$PINNED_CHECKER_BLOB" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::trusted verifier is not armed: PINNED_CHECKER_BLOB still awaits the C1 receipt"
+            exit 1
+          fi
+          if [[ "$PR_BASE_REF" != "$TARGET_BRANCH" ]]; then
+            echo "::error::unexpected PR base $PR_BASE_REF (expected $TARGET_BRANCH)"
+            exit 1
+          fi
+
+          REPO="$RUNNER_TEMP/titan-v4-trusted-repo"
+          git init --quiet "$REPO"
+          git -C "$REPO" remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+
+          # Fetch Git objects only. No PR-head workflow or program is executed.
+          git -C "$REPO" -c protocol.version=2 fetch --quiet --no-tags --filter=blob:none origin \
+            "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/pr-head" \
+            "+refs/heads/${TARGET_BRANCH}:refs/remotes/origin/pr-base" \
+            "+refs/heads/main:refs/remotes/origin/main"
+
+          HEAD_SHA="$(git -C "$REPO" rev-parse refs/remotes/origin/pr-head)"
+          BASE_TIP="$(git -C "$REPO" rev-parse refs/remotes/origin/pr-base)"
+          MAIN_TIP="$(git -C "$REPO" rev-parse refs/remotes/origin/main)"
+
+          if [[ "$HEAD_SHA" != "$PR_HEAD_SHA" ]]; then
+            echo "::error::PR head object mismatch: event=$PR_HEAD_SHA fetched=$HEAD_SHA"
+            exit 1
+          fi
+          if [[ "$BASE_TIP" != "$PINNED_BOOTSTRAP_BASE_SHA" ]]; then
+            echo "::error::bootstrap base moved: expected $PINNED_BOOTSTRAP_BASE_SHA got $BASE_TIP"
+            exit 1
+          fi
+          if ! git -C "$REPO" merge-base --is-ancestor "$BASE_TIP" "$HEAD_SHA"; then
+            echo "::error::PR head does not descend from the exact bootstrap base"
+            exit 1
+          fi
+
+          LAB=revenue/kaggriculture/cloud-execution-lab/candidates/v3
+          CHECK="$LAB/check_v4_plumbing.py"
+          APPLY="$LAB/apply_v4.py"
+          CANDIDATE_WORKFLOW=.github/workflows/titan-v4-plumbing.yml
+
+          # Bootstrap #12620 is exactly the trusted candidate workflow plus one
+          # integrated checker. No gameplay/source path may ride this transition.
+          mapfile -t CHANGED < <(git -C "$REPO" diff --name-only "$BASE_TIP" "$HEAD_SHA")
+          if [[ "${#CHANGED[@]}" -ne 2 ]]; then
+            echo "::error::bootstrap transition must change exactly two paths; got ${#CHANGED[@]}"
+            printf '%s\n' "${CHANGED[@]}" >&2
+            exit 1
+          fi
+          seen_workflow=0
+          seen_checker=0
+          for path in "${CHANGED[@]}"; do
+            case "$path" in
+              "$CANDIDATE_WORKFLOW") seen_workflow=1 ;;
+              "$CHECK") seen_checker=1 ;;
+              *) echo "::error file=$path::unexpected bootstrap path" >&2; exit 1 ;;
+            esac
+          done
+          if [[ "$seen_workflow" -ne 1 || "$seen_checker" -ne 1 ]]; then
+            echo "::error::bootstrap transition is missing the exact workflow/checker pair"
+            exit 1
+          fi
+
+          parse_entry() {
+            local commit="$1" path="$2" out_mode="$3" out_type="$4" out_object="$5" out_path="$6"
+            local entry mode type object found
+            entry="$(git -C "$REPO" ls-tree "$commit" -- "$path")"
+            if [[ -z "$entry" ]]; then
+              echo "::error file=$path::missing from exact commit $commit" >&2
+              exit 1
+            fi
+            IFS=$' \t' read -r mode type object found <<< "$entry"
+            printf -v "$out_mode" '%s' "$mode"
+            printf -v "$out_type" '%s' "$type"
+            printf -v "$out_object" '%s' "$object"
+            printf -v "$out_path" '%s' "$found"
+          }
+
+          parse_entry "$HEAD_SHA" "$CANDIDATE_WORKFLOW" WF_MODE WF_TYPE WF_OBJECT WF_PATH
+          if [[ "$WF_MODE" != 100644 || "$WF_TYPE" != blob || "$WF_PATH" != "$CANDIDATE_WORKFLOW" || \
+                "$WF_OBJECT" != "$PINNED_CANDIDATE_WORKFLOW_BLOB" ]]; then
+            echo "::error file=$CANDIDATE_WORKFLOW::candidate workflow differs from the audited bootstrap blob"
+            printf 'mode=%q type=%q object=%q path=%q\n' "$WF_MODE" "$WF_TYPE" "$WF_OBJECT" "$WF_PATH" >&2
+            exit 1
+          fi
+
+          parse_entry "$HEAD_SHA" "$CHECK" CK_MODE CK_TYPE CK_OBJECT CK_PATH
+          if [[ "$CK_TYPE" != blob || ( "$CK_MODE" != 100644 && "$CK_MODE" != 100755 ) || \
+                "$CK_PATH" != "$CHECK" || "$CK_OBJECT" != "$PINNED_CHECKER_BLOB" ]]; then
+            echo "::error file=$CHECK::checker is not the independently pinned C1 Git blob"
+            printf 'mode=%q type=%q object=%q path=%q\n' "$CK_MODE" "$CK_TYPE" "$CK_OBJECT" "$CK_PATH" >&2
+            exit 1
+          fi
+
+          # Sparse materialization is data-only. Exact two-path custody above means
+          # the rest of the candidate package is byte-identical to the pinned base.
+          git -C "$REPO" config core.sparseCheckout true
+          mkdir -p "$REPO/.git/info"
+          cat > "$REPO/.git/info/sparse-checkout" <<'SPARSE'
+          /.github/workflows/titan-v4-plumbing.yml
+          /revenue/kaggriculture/cloud-execution-lab/candidates/v3/
+          /revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz
+          SPARSE
+          git -C "$REPO" checkout --quiet --detach "$HEAD_SHA"
+
+          COMMITTED_CHECK="$RUNNER_TEMP/pinned-check-v4-plumbing.py"
+          git -C "$REPO" cat-file blob "$CK_OBJECT" > "$COMMITTED_CHECK"
+          if ! cmp -s "$COMMITTED_CHECK" "$REPO/$CHECK"; then
+            echo "::error file=$CHECK::checkout bytes differ from pinned checker Git object"
+            exit 1
+          fi
+
+          BASE_APPLY="$RUNNER_TEMP/base_apply_v4.py"
+          git -C "$REPO" cat-file blob "${BASE_TIP}:${APPLY}" > "$BASE_APPLY"
+
+          # Preserve the canonical-archive digest theorem from the candidate
+          # workflow, but execute the materializer here as trusted heredoc code.
+          BASE_MANIFEST="$RUNNER_TEMP/base-v3-manifest.json"
+          git -C "$REPO" cat-file blob "${BASE_TIP}:${LAB}/V3-MANIFEST.json" > "$BASE_MANIFEST"
+          export REPO MAIN_TIP BASE_MANIFEST
+          export HEAD_ARCHIVE="$REPO/revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
+          python3 -I - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import subprocess
+          import sys
+
+          repo = os.environ["REPO"]
+          main_tip = os.environ["MAIN_TIP"]
+          archive = pathlib.Path(os.environ["HEAD_ARCHIVE"])
+          pinned = json.loads(pathlib.Path(os.environ["BASE_MANIFEST"]).read_text(encoding="utf-8"))["base"]["sha256"]
+          historical = f"revenue/kaggriculture/cloud-execution-lab/exports/historical/titan-{pinned}.tar.gz"
+          current = "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz"
+
+          def digest(data: bytes) -> str:
+              return hashlib.sha256(data).hexdigest()
+
+          def cat(commit: str, path: str):
+              probe = subprocess.run(
+                  ["git", "-C", repo, "cat-file", "-e", f"{commit}:{path}"],
+                  stdout=subprocess.DEVNULL,
+                  stderr=subprocess.DEVNULL,
+              )
+              if probe.returncode:
+                  return None
+              return subprocess.check_output(
+                  ["git", "-C", repo, "cat-file", "blob", f"{commit}:{path}"]
+              )
+
+          chosen = None
+          if archive.is_file():
+              data = archive.read_bytes()
+              if digest(data) == pinned:
+                  chosen = data
+          if chosen is None:
+              for path in (historical, current):
+                  data = cat(main_tip, path)
+                  if data is not None and digest(data) == pinned:
+                      chosen = data
+                      break
+          if chosen is None:
+              raise SystemExit(f"trusted verifier cannot materialize canonical archive {pinned}")
+          archive.parent.mkdir(parents=True, exist_ok=True)
+          archive.write_bytes(chosen)
+          print("TRUSTED CANONICAL ARCHIVE OK", pinned, len(chosen))
+          PY
+
+          # These are the only PR-head Python launches. CHECK has already been
+          # authenticated as the pinned audited Git object; -I removes candidate
+          # sibling modules from startup import resolution. apply_v4.py is data.
+          python3 -I -m py_compile "$REPO/$CHECK"
+          python3 -I -O "$REPO/$CHECK" --self-test
+          python3 -I -O "$REPO/$CHECK" --base-apply-v4 "$BASE_APPLY"
