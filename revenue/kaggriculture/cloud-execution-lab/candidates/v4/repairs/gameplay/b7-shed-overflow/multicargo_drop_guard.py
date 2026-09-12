@@ -18,7 +18,8 @@ If DROP would span multiple carried items, contains zero-quantity keys that DROP
 would delete, a prior shed PICKUP makes remaining room uncertain, the first item
 is an animal, cargo/state/configuration is malformed, or the shed is already
 over capacity, the exact parent action object is returned unchanged. This module
-is default-OFF and does not wire itself into runtime.
+is default-OFF, requires literal ``True`` to activate, and does not wire itself
+into runtime.
 """
 from __future__ import annotations
 
@@ -91,8 +92,8 @@ def _positive_items(inventory: dict[str, int]) -> list[tuple[str, int]]:
 
 def transform(observation: Any, action: Any, configuration: Any = None, enabled: bool = False):
     """Preserve cargo destroyed by exact DROP-overflow cases."""
-    if not enabled:
-        telemetry["disabled"] += 1
+    if enabled is not True:
+        telemetry["disabled" if enabled is False else "invalid_enabled"] += 1
         return action
     if not isinstance(observation, dict) or not isinstance(action, dict):
         telemetry["malformed_input"] += 1
@@ -226,5 +227,5 @@ def install(parent, enabled: bool = False):
         return transform(observation, action, configuration, enabled=enabled)
     agent.parent = parent
     agent.telemetry = telemetry
-    agent.b7_multicargo_enabled = bool(enabled)
+    agent.b7_multicargo_enabled = enabled is True
     return agent
