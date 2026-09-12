@@ -141,7 +141,7 @@ def plan_dead_feed_care(action: Any, observation: Any, configuration: Any) -> li
 
 def apply_dead_feed_care(action: Any, observation: Any, configuration: Any, *, enabled=False):
     """Keep identity on disabled/no-match; clone and alter only certified rows."""
-    if not enabled:
+    if enabled is not True:
         return action
     changes = plan_dead_feed_care(action, observation, configuration)
     if not changes:
@@ -349,7 +349,7 @@ def plan_carebank_feed_swap(action: Any, observation: Any, configuration: Any,
 def apply_carebank_feed_swap(action: Any, observation: Any, configuration: Any,
                              route: Any, *, enabled=False):
     """Apply only certified CARE-bank salvage; disabled/no-match preserves identity."""
-    if not enabled:
+    if enabled is not True:
         return action
     changes = plan_carebank_feed_swap(action, observation, configuration, route)
     if not changes:
