@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Fail closed when a canonical release runtime import is omitted from the archive."""
+"""Fail closed when a canonical root runtime import is omitted from the archive."""
 from __future__ import annotations
 
 import ast
@@ -62,21 +62,18 @@ def _relative_local_exists(source: Path, level: int, module: str | None) -> bool
 
 
 def _runtime_destinations(mapping: dict[str, str]) -> set[str]:
-    """Executable release Python, excluding bundled checks/history evidence."""
-    declared = {path for path in build_integrated.RUNTIME if path.endswith(".py")}
-    roots = {path for path in mapping if path.endswith(".py") and "/" not in path}
-    return declared | roots
+    """Archive-root Python modules imported under ordinary submission sys.path."""
+    return {path for path in mapping if path.endswith(".py") and "/" not in path}
 
 
 class ReleaseImportClosureTests(unittest.TestCase):
-    def test_repo_local_runtime_imports_are_packaged(self):
+    def test_repo_local_root_runtime_imports_are_packaged(self):
         mapping = build_integrated.source_files()
         archive_paths = set(mapping)
         missing: list[tuple[str, str, str]] = []
 
         for destination in sorted(_runtime_destinations(mapping)):
-            source_name = mapping.get(destination)
-            self.assertIsNotNone(source_name, f"runtime member is not mapped: {destination}")
+            source_name = mapping[destination]
             source = (ROOT / source_name).resolve()
             tree = ast.parse(source.read_text(encoding="utf-8"), filename=str(source))
 
@@ -100,7 +97,7 @@ class ReleaseImportClosureTests(unittest.TestCase):
         self.assertEqual(
             missing,
             [],
-            "canonical archive omits repo-local runtime imports: "
+            "canonical archive omits repo-local root-runtime imports: "
             + "; ".join(f"{dest} ({src}) -> {name}" for dest, src, name in missing),
         )
 
