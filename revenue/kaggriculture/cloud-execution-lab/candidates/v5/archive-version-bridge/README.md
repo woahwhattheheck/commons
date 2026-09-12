@@ -42,7 +42,7 @@ For a wider fixed-opponent panel, pass comma-separated distinct seeds and `--opp
 
 Outputs are `run.json`, one game JSON per version/cell, one pair JSON per cell, and rolling `report.json`. Any incomplete game, non-719 tested action sequence, source mismatch, archive mismatch, harness drift, or reference-policy escape fails closed.
 
-## Reduce the 41-version gauntlet into repair hotspots
+## Reduce the sharded recorded-trace gauntlet into repair hotspots
 
 `reduce_gauntlet.py` consumes the existing `gauntlet-top30-union/run.py` shard output; it does not run games or create another policy carrier. Supply every finished V3.1 shard directory and its matching V4 shard directories as repeated arguments:
 
@@ -55,9 +55,11 @@ python3 -B reduce_gauntlet.py \
   --output /tmp/v31-v4-gauntlet-reduction.json
 ```
 
-The reducer authenticates the exact submitted V3.1 and V4 archive hashes from each shard receipt, rejects duplicate cells and cross-version opponent metadata drift, requires complete games to have exactly 719 callbacks, pairs by `(opponent, seat)`, and recomputes candidate margins from raw scores. It emits overall, family, and submission aggregates plus descending `regression_hotspots`, so V5 repair work can prioritize the places where V3.1 actually beats V4 instead of resurrecting historically interesting but currently inert features.
+The reducer authenticates the exact submitted V3.1 and V4 archive hashes from each shard receipt, requires the same corpus index and engine identities across versions, rejects duplicate shard receipts/cells and cross-version opponent metadata drift, requires complete games to have exactly 719 callbacks, pairs by `(opponent, seat)`, and recomputes candidate margins from raw scores. It emits overall, family, and submission aggregates plus descending `regression_hotspots`, so V5 repair work can prioritize the places where V3.1 actually beats V4 instead of resurrecting historically interesting but currently inert features.
 
-The default final panel is 82 cells: 41 recorded opponents × both seats. Exit `0` requires the complete balanced panel, exit `3` means the evidence is valid but partial/non-authorizing, and exit `2` means malformed or cross-wired evidence. Partial results remain useful for steering while shards are still arriving, but do not masquerade as final coverage.
+Final panel cardinality is **not hardcoded from the number of target versions**. The reducer requires the complete declared shard set on both versions and derives expected cells as `2 × sum(selected_fixtures)` from authenticated `run.json` receipts. The current gauntlet materializes 123 recorded-trace fixtures, so full both-seat coverage derives to 246 cells. An optional `--expected-cells` is only a cross-check; a conflicting override fails closed. Partial shard sets remain valid steering evidence but can never authorize `panel_complete`.
+
+Exit `0` requires the complete balanced derived panel, exit `3` means the evidence is valid but partial/non-authorizing, and exit `2` means malformed or cross-wired evidence.
 
 ## Contracts
 
@@ -67,4 +69,4 @@ python3 -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 python3 -O -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 ```
 
-The bridge tests lock exact archive authorities, the #13388 snapshot-helper Git blob, safe ordinary-file archive handling across different V3.1/V4 member sets, canonical action hashes, exact first-divergence indexing, and fail-closed identity checks. Reducer contracts cover complete hotspot ranking, partial-panel non-authorization, archive identity drift, opponent metadata mismatch, duplicate-cell rejection, callback-count enforcement, and partial CLI publication.
+The bridge tests lock exact archive authorities, the #13388 snapshot-helper Git blob, safe ordinary-file archive handling across different V3.1/V4 member sets, canonical action hashes, exact first-divergence indexing, and fail-closed identity checks. Reducer contracts cover complete hotspot ranking, 123-fixture → 246-cell derivation, incomplete-shard non-authorization, archive identity drift, cross-version fixture/metadata mismatch, duplicate-cell rejection, callback-count enforcement, conflicting expected-cardinality overrides, and partial CLI publication.
