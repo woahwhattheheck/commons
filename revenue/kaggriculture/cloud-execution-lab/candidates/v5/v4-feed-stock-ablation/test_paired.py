@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import inspect
 from pathlib import Path
 import tempfile
 import unittest
@@ -105,6 +106,14 @@ class FeedStockPairedCustodyTest(unittest.TestCase):
             destination.mkdir()
             with self.assertRaises(FileExistsError):
                 paired.copy_evidence_tree(source, destination)
+
+    def test_main_keeps_generated_executable_paths_out_of_public_output(self):
+        source = inspect.getsource(paired.main)
+        self.assertIn('runtime[opponent] = private_opponents / opponent', source)
+        self.assertIn('prefix=f"{cell_id}-{arm}-", dir=private_root', source)
+        self.assertIn('copy_evidence_tree(private_opponents, output / "opponents")', source)
+        self.assertNotIn('runtime[opponent] = output / "opponents" / opponent', source)
+        self.assertNotIn('prefix=f"{cell_id}-{arm}-", dir=output', source)
 
     def test_summary_preserves_opponent_own_score_economics(self):
         cells = [
