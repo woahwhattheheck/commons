@@ -138,7 +138,18 @@ class ComposerTests(unittest.TestCase):
     TITAN = (
         "from dataclasses import dataclass\n"
         "@dataclass(frozen=True)\nclass Features:\n"
+        "    consumer: str = 'frozen'\n"
+        "    terminal_route: bool = False\n"
         "    early_capital: bool = False\n"
+        "    def __post_init__(self):\n"
+        "        bool_fields = ('terminal_route', 'early_capital')\n"
+        "        for name in bool_fields:\n"
+        "            if type(getattr(self, name)) is not bool:\n"
+        "                raise TypeError(f'{name} must be bool')\n"
+        "        if self.consumer not in ('frozen', 'ordered', 'parent'):\n"
+        "            raise ValueError('consumer must be frozen, ordered or parent')\n"
+        "        if self.terminal_route and self.consumer != 'frozen':\n"
+        "            raise ValueError('terminal_route is the tested frozen SELL composition')\n"
         "class X:\n"
         "    def __init__(self):\n"
         "        self._completed_seller_state = None\n"
@@ -168,6 +179,8 @@ class ComposerTests(unittest.TestCase):
     def test_composer_is_default_off_and_source_bound(self):
         titan, frozen = composer.compose_sources(self.TITAN, self.FROZEN)
         self.assertIn("exec_pace: bool = False", titan)
+        self.assertIn("bool_fields = (*bool_fields, 'exec_pace')", titan)
+        self.assertIn("if self.exec_pace and (self.consumer != 'frozen' or self.terminal_route)", titan)
         self.assertIn("if f.exec_pace is True", titan)
         self.assertIn("_exec_pace_fallback_observations", titan)
         self.assertIn("exec_pace_state", frozen)
@@ -176,8 +189,39 @@ class ComposerTests(unittest.TestCase):
         config = composer.compose_config('{"consumer":"frozen"}\n')
         self.assertFalse(json.loads(config)["exec_pace"])
 
+    def test_composed_exec_pace_is_exact_bool_guarded(self):
+        titan, _ = composer.compose_sources(self.TITAN, self.FROZEN)
+        namespace = {}
+        exec(compile(titan, "synthetic_titan_runtime.py", "exec"), namespace)
+        features = namespace["Features"]
+        self.assertIs(features().exec_pace, False)
+        self.assertIs(features(exec_pace=True).exec_pace, True)
+        for alias in (1, 0, "true", "false", None, [], {}):
+            with self.subTest(alias=alias):
+                with self.assertRaises(TypeError):
+                    features(exec_pace=alias)
+
+    def test_composed_exec_pace_rejects_unsupported_runtime_topologies(self):
+        titan, _ = composer.compose_sources(self.TITAN, self.FROZEN)
+        namespace = {}
+        exec(compile(titan, "synthetic_titan_runtime.py", "exec"), namespace)
+        features = namespace["Features"]
+        self.assertEqual(features(consumer="ordered").consumer, "ordered")
+        self.assertEqual(features(consumer="parent").consumer, "parent")
+        self.assertTrue(features(terminal_route=True).terminal_route)
+        for kwargs in (
+            {"consumer": "ordered", "exec_pace": True},
+            {"consumer": "parent", "exec_pace": True},
+            {"consumer": "frozen", "terminal_route": True, "exec_pace": True},
+        ):
+            with self.subTest(kwargs=kwargs):
+                with self.assertRaisesRegex(ValueError, "exec_pace is the tested nonterminal frozen SELL composition"):
+                    features(**kwargs)
+
     def test_composer_rejects_drift_and_double_apply(self):
         with self.assertRaises(ValueError): composer.compose_sources(self.TITAN.replace("early_capital", "x"), self.FROZEN)
+        with self.assertRaises(ValueError): composer.compose_sources(self.TITAN.replace("for name in bool_fields", "for name in toggles"), self.FROZEN)
+        with self.assertRaises(ValueError): composer.compose_sources(self.TITAN.replace("terminal_route is the tested frozen SELL composition", "changed"), self.FROZEN)
         titan, frozen = composer.compose_sources(self.TITAN, self.FROZEN)
         with self.assertRaises(ValueError): composer.compose_sources(titan, frozen)
         with self.assertRaises(ValueError): composer.compose_config('{"exec_pace": false}')
@@ -246,8 +290,10 @@ class ComposerTests(unittest.TestCase):
         self.assertIn("exec_pace", parsed)
         self.assertIs(parsed["exec_pace"], False)
         self.assertEqual(titan.count("exec_pace: bool = False"), 1)
+        self.assertEqual(titan.count("bool_fields = (*bool_fields, 'exec_pace')"), 1)
+        self.assertEqual(titan.count("exec_pace is the tested nonterminal frozen SELL composition"), 1)
         self.assertEqual(titan.count("_exec_pace_fallback_observations"), 4)
-        self.assertEqual(frozen.count("exec_pace_apply"), 3)
+        self.assertEqual(frozen.count("exec_pace_apply"), 4)
         self.assertIn("exec_pace_apply(exec_pace_state,item,reference,plan,info)", frozen)
         self.assertNotIn("gate_plan(reference.get", frozen)
 
