@@ -17,7 +17,7 @@ ENTRY_SOURCE = HERE / "current_entry.py"
 # across main commits that leave these exact implementation bytes unchanged.
 EXPECTED_PARENT_MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
 EXPECTED_SELECTIVE_BLOB = "6af9a832dec058b7824fd7dd080f00ee50bb1d2f"
-EXPECTED_ENTRY_BLOB = "02c50e8eb6eecb5c06d610d421e0ff3bf007fb0e"
+EXPECTED_ENTRY_BLOB = "a5151ad56e5fb904e54795aaddcc822196ad3162"
 
 
 def git_blob(path: Path) -> str:
