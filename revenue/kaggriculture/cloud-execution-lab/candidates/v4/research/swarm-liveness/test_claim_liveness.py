@@ -195,6 +195,16 @@ class ClaimLivenessTests(unittest.TestCase):
         r = self.audit([e(1900, event_id="x"), e(1950, event="HEARTBEAT", event_id="x")])
         self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
 
+    def test_conflicting_duplicate_claim_complete_is_quarantined_in_both_orders(self):
+        claim = e(1950, event_id="x")
+        complete = e(1960, event="COMPLETE", event_id="x")
+        for events in ([claim, complete], [complete, claim]):
+            with self.subTest(order=[row["event"] for row in events]):
+                r = self.audit(events)
+                self.assertEqual([], r["lanes"])
+                self.assertEqual(0, r["summary"]["lanes"])
+                self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
+
     def test_duplicate_heartbeat_cannot_refresh_stale_claim(self):
         r = self.audit([
             e(1700, event_id="claim"),
@@ -204,9 +214,21 @@ class ClaimLivenessTests(unittest.TestCase):
         row = self.row(r)
         self.assertEqual("STALE_CLAIM", row["status"])
         self.assertEqual(["A"], row["recovery_candidates"])
-        self.assertEqual(1800.0, row["owners"][0]["last_ts"])
+        self.assertEqual(1700.0, row["owners"][0]["last_ts"])
         self.assertIn("duplicate_event_id", {a["kind"] for a in r["anomalies"]})
         self.assertFalse(r["policy"]["duplicate_event_id_replays_authoritative"])
+
+    def test_conflicting_duplicate_heartbeats_are_permutation_invariant(self):
+        claim = e(1700, event_id="claim")
+        old = e(1800, event="HEARTBEAT", event_id="beat")
+        fresh = e(1980, event="HEARTBEAT", event_id="beat")
+        for events in ([claim, old, fresh], [claim, fresh, old]):
+            with self.subTest(order=[row["ts"] for row in events]):
+                r = self.audit(events)
+                row = self.row(r)
+                self.assertEqual("STALE_CLAIM", row["status"])
+                self.assertEqual(1700.0, row["owners"][0]["last_ts"])
+                self.assertEqual(["A"], row["recovery_candidates"])
 
     def test_duplicate_claim_cannot_reopen_terminal_epoch(self):
         r = self.audit([
