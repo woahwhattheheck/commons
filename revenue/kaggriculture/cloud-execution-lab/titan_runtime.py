@@ -246,7 +246,6 @@ class TitanAgent:
         self._completed_seller_state = (self._seller_state(self.consumer)
                                         if checkpoint is None else checkpoint)
         self._seller_fallback_observations = []
-
     def _initialize(self):
         f = self.features
         self.funding_module = load('_titan_funding', HERE/'reference/titan-current/seed_funding.py', cache=True)
@@ -358,9 +357,11 @@ class TitanAgent:
         if not self.features.seed:
             return selected
         maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
-        market = selected['market']
+        market = selected.get('market')
+        if not isinstance(market, list):
+            return selected
         prefix = market[:maximum]
-        if not any(o and o[0] == 'BUY_SEED' for o in prefix):
+        if not any(isinstance(o, list) and o and o[0] == 'BUY_SEED' for o in prefix):
             return selected
         from scheduler import post_units, m
         snapshot = getattr(self.consumer, 'selected_post_units', None)
@@ -370,7 +371,8 @@ class TitanAgent:
                                          extra_requests={} if self.spatial is None else
                                              self.spatial.future_seed_requests(int(obs['step'])))
         edits = [i for i, (a, b) in enumerate(zip(prefix, proposed['market'][:maximum])) if a != b]
-        dependent = any(o and o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
+        dependent = any(isinstance(o, list) and o and
+                        o[0] in ('HIRE', 'BUY_LAND', 'BUY_PRODUCT', 'BUY_ANIMAL')
                         for i in edits for o in prefix[i+1:])
         if not dependent:
             return proposed
