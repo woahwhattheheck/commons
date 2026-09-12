@@ -12,11 +12,13 @@ control archive, and candidate archive. The release transaction supplies those
 expected values from the promotion manifest and old/new pointer pair, so a panel
 from another build or evaluation closure cannot be replayed into a transition.
 
-Rows are intentionally primitive. Each row carries the raw own/rival scores for
-control and candidate at one exact (seed, seat) cell. The validator derives both
-margins and their delta itself; callers cannot smuggle a favorable summary.
-Every seed must contain exactly both seats so seat imbalance cannot manufacture
-a PASS. Report and cell order are canonical for reproducible evidence bytes.
+Rows are intentionally primitive. Each row carries the exact opponent, seed,
+seat, and raw own/rival scores for control and candidate. The validator derives
+both margins and their delta itself; callers cannot smuggle a favorable summary.
+Every opponent must cover the same seed set and both seats for every seed, so a
+single favorable opponent or asymmetric seed/seat coverage cannot masquerade as
+a balanced release panel. Report and cell order are canonical for reproducible
+evidence bytes.
 """
 from __future__ import annotations
 
@@ -31,10 +33,11 @@ import sys
 import uuid
 from typing import Any, Mapping
 
-SCHEMA = "titan-v5-paired-economics/v2"
-RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v2"
-MIN_CELLS = 8
+SCHEMA = "titan-v5-paired-economics/v3"
+RECEIPT_SCHEMA = "titan-v5-paired-economics-receipt/v3"
+MIN_OPPONENTS = 2
 MIN_SEEDS = 4
+MIN_CELLS = MIN_OPPONENTS * MIN_SEEDS * 2
 MAX_INT = (1 << 63) - 1
 _V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
 _HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -53,6 +56,7 @@ _REPORT_KEYS = frozenset(
 )
 _CELL_KEYS = frozenset(
     (
+        "opponent_id",
         "seed",
         "seat",
         "control_own",
@@ -188,10 +192,14 @@ def validate_report(
     if engine_id is not None and report_engine != _nonempty_text(engine_id, "expected engine_id"):
         raise EconomicsError("economics engine_id does not match candidate manifest")
 
-    report_opponent = _opponent(report["opponent_pack_id"], "economics opponent_pack_id")
+    report_opponent_pack = _opponent(
+        report["opponent_pack_id"], "economics opponent_pack_id"
+    )
     if opponent_pack_id is not _UNSET:
-        expected_opponent = _opponent(opponent_pack_id, "expected opponent_pack_id")
-        if report_opponent != expected_opponent:
+        expected_opponent_pack = _opponent(
+            opponent_pack_id, "expected opponent_pack_id"
+        )
+        if report_opponent_pack != expected_opponent_pack:
             raise EconomicsError("economics opponent_pack_id does not match candidate manifest")
 
     report_control_archive = _hex64(
@@ -217,23 +225,26 @@ def validate_report(
     if len(cells) < MIN_CELLS:
         raise EconomicsError(f"economics panel requires at least {MIN_CELLS} cells")
 
-    keys: list[tuple[int, int]] = []
+    keys: list[tuple[str, int, int]] = []
     deltas: list[int] = []
     control_margins: list[int] = []
     candidate_margins: list[int] = []
-    seats_by_seed: dict[int, set[int]] = {}
+    seats_by_opponent_seed: dict[tuple[str, int], set[int]] = {}
+    seeds_by_opponent: dict[str, set[int]] = {}
 
     for index, cell in enumerate(cells):
         field = f"economics cells[{index}]"
         if type(cell) is not dict or set(cell) != _CELL_KEYS:
             raise EconomicsError(f"{field} must have exact raw score keys")
+        opponent_id = _nonempty_text(cell["opponent_id"], f"{field}.opponent_id")
         seed = _plain_int(cell["seed"], f"{field}.seed")
         seat = _plain_int(cell["seat"], f"{field}.seat")
         if seat not in (0, 1):
             raise EconomicsError(f"{field}.seat must be exactly 0 or 1")
-        key = (seed, seat)
+        key = (opponent_id, seed, seat)
         keys.append(key)
-        seats_by_seed.setdefault(seed, set()).add(seat)
+        seats_by_opponent_seed.setdefault((opponent_id, seed), set()).add(seat)
+        seeds_by_opponent.setdefault(opponent_id, set()).add(seed)
 
         control_own = _plain_int(cell["control_own"], f"{field}.control_own")
         control_rival = _plain_int(cell["control_rival"], f"{field}.control_rival")
@@ -246,18 +257,47 @@ def validate_report(
         deltas.append(candidate_margin - control_margin)
 
     if len(keys) != len(set(keys)):
-        raise EconomicsError("economics seed/seat cells must be unique")
+        raise EconomicsError("economics opponent/seed/seat cells must be unique")
     if keys != sorted(keys):
-        raise EconomicsError("economics cells must be canonically sorted by seed then seat")
-    if len(seats_by_seed) < MIN_SEEDS:
-        raise EconomicsError(f"economics panel requires at least {MIN_SEEDS} distinct seeds")
-    incomplete = sorted(seed for seed, seats in seats_by_seed.items() if seats != {0, 1})
+        raise EconomicsError(
+            "economics cells must be canonically sorted by opponent_id, seed, then seat"
+        )
+
+    opponents = sorted(seeds_by_opponent)
+    if len(opponents) < MIN_OPPONENTS:
+        raise EconomicsError(
+            f"economics panel requires at least {MIN_OPPONENTS} distinct opponents"
+        )
+    reference_seeds = seeds_by_opponent[opponents[0]]
+    if len(reference_seeds) < MIN_SEEDS:
+        raise EconomicsError(
+            f"economics panel requires at least {MIN_SEEDS} distinct seeds per opponent"
+        )
+    unequal = [
+        opponent
+        for opponent in opponents[1:]
+        if seeds_by_opponent[opponent] != reference_seeds
+    ]
+    if unequal:
+        raise EconomicsError(
+            "economics opponents must cover identical seed sets; "
+            f"mismatched={unequal!r}"
+        )
+
+    incomplete = sorted(
+        (opponent, seed)
+        for opponent in opponents
+        for seed in sorted(reference_seeds)
+        if seats_by_opponent_seed.get((opponent, seed)) != {0, 1}
+    )
     if incomplete:
         raise EconomicsError(
-            f"economics panel must contain exactly both seats for every seed; incomplete={incomplete!r}"
+            "economics panel must contain exactly both seats for every opponent/seed; "
+            f"incomplete={incomplete!r}"
         )
-    if len(cells) != 2 * len(seats_by_seed):
-        raise EconomicsError("economics panel contains non-paired seed/seat topology")
+    expected_cells = len(opponents) * len(reference_seeds) * 2
+    if len(cells) != expected_cells:
+        raise EconomicsError("economics panel contains non-balanced opponent/seed/seat topology")
 
     sum_delta = sum(deltas)
     if sum_delta < 0:
@@ -279,11 +319,13 @@ def validate_report(
         "control_id": report_control,
         "candidate_id": report_candidate,
         "engine_id": report_engine,
-        "opponent_pack_id": report_opponent,
+        "opponent_pack_id": report_opponent_pack,
+        "opponent_count": len(opponents),
+        "opponent_ids": opponents,
         "control_archive_sha256": report_control_archive,
         "candidate_archive_sha256": report_candidate_archive,
         "cell_count": len(cells),
-        "seed_count": len(seats_by_seed),
+        "seed_count": len(reference_seeds),
         "sum_margin_delta": sum_delta,
         "mean_margin_delta": mean_delta,
         "positive_cells": positive,
