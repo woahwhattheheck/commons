@@ -1,4 +1,7 @@
+from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
 import gander_starve_cadence as G
 
@@ -82,6 +85,10 @@ class GanderStarveCompositeTests(unittest.TestCase):
             self.safe["source_contract"]["starve_helper_git_blob"],
             G.PINNED_STARVE_GIT_BLOB,
         )
+        self.assertTrue(self.safe["source_contract"]["immutable_source_snapshots"])
+        self.assertTrue(
+            self.safe["source_contract"]["engine_executed_from_authenticated_snapshot"]
+        )
 
     def test_current_engine_identity_is_exact(self):
         self.assertEqual(self.safe["engine_git_blob"], G.PINNED_ENGINE_GIT_BLOB)
@@ -90,6 +97,57 @@ class GanderStarveCompositeTests(unittest.TestCase):
             self.safe["source_contract"]["starve_engine_git_blob"],
             G.PINNED_ENGINE_GIT_BLOB,
         )
+
+    def test_authenticated_sources_cannot_be_swapped_before_execution(self):
+        originals = {
+            "gander": G.GANDER_PATH.read_bytes(),
+            "starve": G.STARVE_PATH.read_bytes(),
+            "engine": G.ENGINE_PATH.read_bytes(),
+        }
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paths = {
+                "gander": root / "goose_printer_oracle.py",
+                "starve": root / "starvation_cadence.py",
+                "engine": root / "kaggriculture.py",
+            }
+            for key, path in paths.items():
+                path.write_bytes(originals[key])
+
+            real_read_bytes = Path.read_bytes
+            reads = {path.resolve(): 0 for path in paths.values()}
+
+            def capture_then_poison(path):
+                resolved = path.resolve()
+                data = real_read_bytes(path)
+                if resolved in reads:
+                    reads[resolved] += 1
+                    if reads[resolved] > 1:
+                        raise AssertionError(f"authenticated source reopened: {resolved}")
+                    path.write_bytes(
+                        b"raise RuntimeError('swapped pathname executed')\n"
+                    )
+                return data
+
+            with (
+                patch.object(G, "GANDER_PATH", paths["gander"]),
+                patch.object(G, "STARVE_PATH", paths["starve"]),
+                patch.object(G, "ENGINE_PATH", paths["engine"]),
+                patch.object(Path, "read_bytes", new=capture_then_poison),
+            ):
+                gander, starve, engine, identities = G._canonical_sources()
+
+            self.assertEqual(
+                reads,
+                {path.resolve(): 1 for path in paths.values()},
+            )
+            self.assertEqual(identities["gander_helper_git_blob"], G.PINNED_GANDER_GIT_BLOB)
+            self.assertEqual(identities["starve_helper_git_blob"], G.PINNED_STARVE_GIT_BLOB)
+            self.assertEqual(identities["engine_git_blob"], G.PINNED_ENGINE_GIT_BLOB)
+            self.assertEqual(identities["engine_sha256"], G.PINNED_ENGINE_SHA256)
+            self.assertEqual(gander.EXPECTED_ENGINE_BLOB, G.PINNED_ENGINE_GIT_BLOB)
+            self.assertEqual(starve.ENGINE_GIT_BLOB, G.PINNED_ENGINE_GIT_BLOB)
+            self.assertTrue(callable(engine.interpreter))
 
 
 if __name__ == "__main__":
