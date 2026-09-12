@@ -89,6 +89,40 @@ class TownProcurementMarketGrammarTests(unittest.TestCase):
             town_procurement._prefix_limit({}, {"maxMarketOrdersPerTurn": -3}), 1
         )
 
+    def test_infinite_quantities_are_engine_inert_without_raising(self):
+        for quantity in (float("inf"), float("-inf")):
+            with self.subTest(quantity=quantity):
+                self.assertIsNone(
+                    town_procurement._market_quantity(
+                        ["SELL", "WHEAT", quantity, "malformed-infinite"],
+                        "SELL",
+                        "WHEAT",
+                    )
+                )
+
+        action = self._action([
+            ["SELL", "WHEAT", float("inf"), "malformed-infinite"],
+            ["BUY_PRODUCT", "WHEAT", 3],
+        ])
+        result, report = town_procurement.apply(
+            self._observation(200),
+            action,
+            {"maxMarketOrdersPerTurn": 2},
+            completed=True,
+        )
+        self.assertEqual(report["status"], "target_advanced")
+        self.assertEqual(result["market"][1][2], 6)
+
+    def test_infinite_market_caps_fall_back_without_raising(self):
+        for cap in (float("inf"), float("-inf")):
+            with self.subTest(cap=cap):
+                self.assertEqual(
+                    town_procurement._prefix_limit(
+                        {}, {"maxMarketOrdersPerTurn": cap}
+                    ),
+                    1,
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
