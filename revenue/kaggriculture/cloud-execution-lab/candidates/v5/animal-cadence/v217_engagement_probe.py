@@ -98,117 +98,84 @@ def _v217_probe_advance(tiles,pos,cmd):
     return nxt
 
 def _v217_probe_feed_coverage(view,action,tape,step,end):
-    try:
-        positions=[tuple(pos) for pos in view.positions]
-        if (not positions or any(len(pos)!=2 or any(type(v) is not int for v in pos)
-                                 for pos in positions)):
+    positions=[tuple(pos) for pos in view.positions]
+    if (not positions or any(len(pos)!=2 or any(type(v) is not int for v in pos)
+                             for pos in positions)):
+        return None
+    tiles=view.tiles
+    if not isinstance(tiles,list):
+        return None
+    targets=set();count=0
+    sequence=[action]+list(tape[step+1:end])
+    for planned in sequence:
+        commands=_v217_probe_commands(planned,len(positions))
+        if commands is None:
             return None
-        tiles=view.tiles
-        if not isinstance(tiles,list):
-            return None
-        targets=set();count=0
-        sequence=[action]+list(tape[step+1:end])
-        for planned in sequence:
-            commands=_v217_probe_commands(planned,len(positions))
-            if commands is None:
-                return None
-            for actor,cmd in enumerate(commands):
-                if cmd[0]=='FEED':
-                    tile,valid=_v217_probe_tile(tiles,positions[actor])
-                    if not valid or not isinstance(tile,dict) or not tile.get('animal'):
-                        return None
-                    targets.add(positions[actor]);count+=1
-            next_positions=[]
-            for actor,cmd in enumerate(commands):
-                nxt=_v217_probe_advance(tiles,positions[actor],cmd)
-                if nxt is None:
+        for actor,cmd in enumerate(commands):
+            if cmd[0]=='FEED':
+                tile,valid=_v217_probe_tile(tiles,positions[actor])
+                if not valid or not isinstance(tile,dict) or not tile.get('animal'):
                     return None
-                next_positions.append(nxt)
-            positions=next_positions
-        return frozenset(targets),count
-    except Exception:
-        return None
-'''
+                targets.add(positions[actor]);count+=1
+        next_positions=[]
+        for actor,cmd in enumerate(commands):
+            nxt=_v217_probe_advance(tiles,positions[actor],cmd)
+            if nxt is None:
+                return None
+            next_positions.append(nxt)
+        positions=next_positions
+    return frozenset(targets),count
 
-
-_INSTRUMENTED_PLAN = r'''def _v217_plan(view, st, step, action, pending):
-    hour = step % 24
-    if not 16 <= hour <= 21 or st.get('v217_used', 0) >= 2:
-        return None
-    if action.get('farmer') != ['PASS']:
-        return None
-    tape = _POLICY.tapes[st['plan']]
-    end = min(step + 24 - hour, 719)
-    if len(tape) < end:
-        return None
-    # Preserve the incumbent global veto exactly. Probe mode merely continues
-    # the already-doomed branch far enough to ask whether a target-aware veto
-    # would have yielded a feasible rescue; it still returns None.
-    reserved_wheat = sum(max(0,int(cmd[2]) if len(cmd)>2 else 1) for cmd in pending if len(cmd)>=2 and cmd[:2]==['PICKUP','WHEAT'])
-    global_feed_veto=False
+def _v217_probe_observe(view,st,step,action,pending,tape,end):
+    _V217_PROBE_REPORT['global_feed_veto']+=1
+    if pending:
+        return
+    coverage=_v217_probe_feed_coverage(view,action,tape,step,end)
+    if coverage is None:
+        return
+    feed_targets,future_feed_count=coverage
+    _V217_PROBE_REPORT['coverage_certified']+=1
+    reserved_wheat=0
     for planned in tape[step:end]:
-        for cmd in [planned.get('farmer') or []] + list(planned.get('hands') or []):
-            if cmd and cmd[0] == 'FEED':
-                global_feed_veto=True
-            if len(cmd) >= 2 and cmd[:2] == ['PICKUP', 'WHEAT']:
-                reserved_wheat += max(0, int(cmd[2]) if len(cmd) > 2 else 1)
-    feed_targets=frozenset();future_feed_count=0
-    if global_feed_veto:
-        _V217_PROBE_REPORT['global_feed_veto']+=1
-        # This probe intentionally makes a stronger promise than incumbent V217:
-        # no delayed command for any actor may exist while coverage is inferred.
-        if pending:
-            return None
-        coverage=_v217_probe_feed_coverage(view,action,tape,step,end)
-        if coverage is None:
-            return None
-        feed_targets,future_feed_count=coverage
-        _V217_PROBE_REPORT['coverage_certified']+=1
-    start = tuple(view.positions[0])
-    inventory = view.inventory(0)
-    need_pickup = inventory.get('WHEAT', 0) < 1
+        for cmd in [planned.get('farmer') or []]+list(planned.get('hands') or []):
+            if len(cmd)>=2 and cmd[:2]==['PICKUP','WHEAT']:
+                reserved_wheat+=max(0,int(cmd[2]) if len(cmd)>2 else 1)
+    start=tuple(view.positions[0])
+    inventory=view.inventory(0)
+    need_pickup=inventory.get('WHEAT',0)<1
     if need_pickup:
         if any(inventory.values()) or not view.beside_shed(start):
-            return None
-        projected = projected_shed(action, view)
-        if projected.get('WHEAT', 0) < max(2, reserved_wheat + 1):
-            return None
-    targets = []
-    for y, row in enumerate(view.tiles):
-        for x, tile in enumerate(row):
-            if isinstance(tile, dict) and tile.get('animal') and not tile.get('fed_today') and tile.get('consecutive_unfed', 0) >= 1:
-                if global_feed_veto and (x,y) in feed_targets:
-                    continue
-                targets.append((abs(x-start[0])+abs(y-start[1]), y, x))
-    for distance, y, x in sorted(targets):
-        moves = (['EAST'] * max(0, x-start[0]) + ['WEST'] * max(0, start[0]-x)
-                 + ['SOUTH'] * max(0, y-start[1]) + ['NORTH'] * max(0, start[1]-y))
-        opposite = {'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}
-        commands = ([['PICKUP','WHEAT']] if need_pickup else []) + [[m] for m in moves] + [['FEED']] + [[opposite[m]] for m in reversed(moves)]
-        if len(commands) > end-step or any(_v217_farmer(tape, step+i) != ['PASS'] for i in range(len(commands))):
+            return
+        projected=projected_shed(action,view)
+        if projected.get('WHEAT',0)<max(2,reserved_wheat+1):
+            return
+    targets=[]
+    for y,row in enumerate(view.tiles):
+        for x,tile in enumerate(row):
+            if (isinstance(tile,dict) and tile.get('animal') and not tile.get('fed_today')
+                    and tile.get('consecutive_unfed',0)>=1 and (x,y) not in feed_targets):
+                targets.append((abs(x-start[0])+abs(y-start[1]),y,x))
+    for distance,y,x in sorted(targets):
+        moves=(['EAST']*max(0,x-start[0])+['WEST']*max(0,start[0]-x)
+               +['SOUTH']*max(0,y-start[1])+['NORTH']*max(0,start[1]-y))
+        opposite={'EAST':'WEST','WEST':'EAST','NORTH':'SOUTH','SOUTH':'NORTH'}
+        commands=([['PICKUP','WHEAT']] if need_pickup else [])+[[m] for m in moves]+[['FEED']]+[[opposite[m]] for m in reversed(moves)]
+        if len(commands)>end-step or any(_v217_farmer(tape,step+i)!=['PASS'] for i in range(len(commands))):
             continue
-        positions = []
-        pos = start
+        pos=start
         for cmd in commands:
-            positions.append(pos)
             if cmd[0] in _V217_MOVES:
-                dx, dy = _V217_MOVES[cmd[0]]
-                pos = (pos[0]+dx, pos[1]+dy)
-        assert pos == start
-        task={'step':step, 'route':st.get('plan'), 'commands':commands,
-              'positions':positions, 'target':(x,y)}
-        if global_feed_veto:
-            _V217_PROBE_REPORT['counterfactual_plan']+=1
-            events=_V217_PROBE_REPORT['events']
-            if len(events)<64:
-                events.append({'step':step,'route':st.get('plan'),'target':[x,y],
-                               'feed_targets':[list(p) for p in sorted(feed_targets)],
-                               'future_feed_count':future_feed_count,
-                               'needs_pickup':bool(need_pickup),'command_count':len(commands)})
-            return None
-        return task
-    return None
-'''
+                dx,dy=_V217_MOVES[cmd[0]];pos=(pos[0]+dx,pos[1]+dy)
+        if pos!=start:
+            return
+        _V217_PROBE_REPORT['counterfactual_plan']+=1
+        events=_V217_PROBE_REPORT['events']
+        if len(events)<64:
+            events.append({'step':step,'route':st.get('plan'),'target':[x,y],
+                           'feed_targets':[list(p) for p in sorted(feed_targets)],
+                           'future_feed_count':future_feed_count,'needs_pickup':bool(need_pickup),
+                           'command_count':len(commands)})
+        return'''
 
 
 def _replace_once(source: str, old: str, new: str, label: str) -> str:
@@ -223,11 +190,9 @@ def instrument_router(source: bytes, expected_sha: str | None = ROUTER_SHA) -> b
     text = source.decode("utf-8")
     moves = "_V217_MOVES={'EAST':(1,0),'WEST':(-1,0),'NORTH':(0,-1),'SOUTH':(0,1)}\n"
     text = _replace_once(text, moves, moves + "\n" + _PROBE_HELPERS + "\n", "V217 moves")
-    start = text.find("def _v217_plan(view, st, step, action, pending):\n")
-    end = text.find("\n\ndef agent(observation, configuration=None):\n", start)
-    if start < 0 or end < 0 or text.find("def _v217_plan(view, st, step, action, pending):\n", start + 1) >= 0:
-        raise ValueError("expected exactly one V217 planner")
-    text = text[:start] + _INSTRUMENTED_PLAN + text[end:]
+    veto = "            if cmd and cmd[0] == 'FEED':\n                return None"
+    observed = "            if cmd and cmd[0] == 'FEED':\n                try:\n                    _v217_probe_observe(view,st,step,action,pending,tape,end)\n                except Exception:\n                    pass\n                return None"
+    text = _replace_once(text, veto, observed, "V217 global FEED veto")
     return text.encode("utf-8")
 
 
