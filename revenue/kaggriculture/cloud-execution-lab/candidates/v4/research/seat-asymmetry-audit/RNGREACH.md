@@ -64,11 +64,11 @@ WEEDBANK owns deliberate reversible BUILD→DIG lease economics and reclamation 
 
 Fresh local authored bytes:
 
-- `python -B test_rng_reachability.py`: **13/13 PASS**
-- `python -O -B test_rng_reachability.py`: **13/13 PASS**
+- `python -B test_rng_reachability.py`: **14/14 PASS**
+- `python -O -B test_rng_reachability.py`: **14/14 PASS**
 - `py_compile rng_reachability.py test_rng_reachability.py`: **PASS**
 
-The local harness also covers atomic PLANT oversubscription, nonexistent-hand PLANT preflight poisoning, same-tile sequential BUILD→DIG net-neutrality, animal-safe DIG refusal, HIRE/movement non-vacancy, unlock cap/schedule, and the canonical SHOPSTREAM 337/175 sensitivity regression.
+The local harness also covers malformed-PLANT fail-closed refusal, atomic PLANT oversubscription, nonexistent-hand PLANT preflight poisoning, same-tile sequential BUILD→DIG net-neutrality, animal-safe DIG refusal, HIRE/movement non-vacancy, unlock cap/schedule, and the canonical SHOPSTREAM 337/175 sensitivity regression.
 
 ## Next gate: current-native census
 

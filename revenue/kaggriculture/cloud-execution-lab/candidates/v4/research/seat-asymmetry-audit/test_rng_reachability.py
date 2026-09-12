@@ -62,6 +62,16 @@ class RNGReachabilityTests(unittest.TestCase):
         self.assertEqual(result["blocked_plant_crops"], ["WHEAT"])
         self.assertEqual(result["delta"], 0)
 
+    def test_malformed_plant_crop_fails_closed(self):
+        for crop in ([], {}, True, 1):
+            with self.subTest(crop=crop):
+                with self.assertRaisesRegex(Refusal, "PLANT crop must be a string"):
+                    authored_vacancy_projection(
+                        farm=farm(None, hands=[]),
+                        own_seeds={"WHEAT": 1},
+                        authored_action={"farmer": ["PLANT", crop]},
+                    )
+
     def test_exact_seed_plant_changes_vacancy(self):
         result = authored_vacancy_projection(
             farm=farm(None, hands=[]),

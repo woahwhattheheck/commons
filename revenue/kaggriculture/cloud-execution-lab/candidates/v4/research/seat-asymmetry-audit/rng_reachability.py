@@ -170,6 +170,8 @@ def _blocked_plants(
             and action[0] == "PLANT"
         ):
             crop = action[1]
+            if type(crop) is not str:
+                raise Refusal("PLANT crop must be a string")
             demand[crop] = demand.get(crop, 0) + 1
     return {
         crop
