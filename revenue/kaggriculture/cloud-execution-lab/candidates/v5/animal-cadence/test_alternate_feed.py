@@ -8,7 +8,7 @@ from pathlib import Path
 import unittest
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[3]
+ROOT = HERE.parents[2]
 EVALUATOR = ROOT / "reference/evaluator/evaluate.py"
 ENGINE_DIR = ROOT / "reference/engine"
 LOADER = ROOT / "reference/evaluator/loader.py"
