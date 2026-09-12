@@ -205,6 +205,22 @@
       "after": [],
       "conflicts": [],
       "note": "STRATUM semantics remain authoritative; LOOM only records that source custody is not yet a composable runtime edge."
+    },
+    {
+      "id": "ghost-plant-admission",
+      "state": "blocked",
+      "reason": "Source/engine repair is certified, but the landed native census found zero natural activations and no authenticated current-runtime returned-action postimage/composer edge is pinned.",
+      "package": "repairs/gameplay/ghost-plant-admission",
+      "entrypoints": [
+        "repairs/gameplay/ghost-plant-admission/ghost_plant_admission.py"
+      ],
+      "receipt": "repairs/gameplay/ghost-plant-admission/VALIDATION.json",
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "SEEDGHOST remains default-OFF/COLD. Registration makes the merged package visible to the sole composition/custody control plane without authorizing runtime wiring. Reopen only after current natural engagement and a sanctioned returned-action boundary prove a materializable edge."
     }
   ],
   "discovery": {
