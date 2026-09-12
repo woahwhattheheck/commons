@@ -147,7 +147,8 @@ class MovementParityTests(unittest.TestCase):
         cls.old_code, cls.new_code = map(component_code, (cls.source, cls.post))
         cls.engine = load_engine(cls.engine_path)
         REPORT.update(router_blob=cls.router_blob, engine_blob=repair.ENGINE_BLOB,
-                      current_whole_router_executed=cls.router_blob == repair.CURRENT_ROUTER_BLOB,
+                      current_router_input=cls.router_blob == repair.CURRENT_ROUTER_BLOB,
+                      whole_router_executed=False,
                       component_sha256=repair.COMPONENT_SHA256,
                       postimage_blob=repair.git_blob(cls.post.encode()))
 
@@ -228,6 +229,7 @@ class MovementParityTests(unittest.TestCase):
                 farm = state[0].observation.farms[seat]
                 private = state[seat].observation.private
                 farm["farmer"] = list(position)
+                private = state[seat].observation.private
                 private["inventories"][0] = {"FERTILIZER": 3}
                 state[seat].action = {"farmer": ["DROP"], "hands": [], "market": []}
                 self.engine.interpreter(state, env)
