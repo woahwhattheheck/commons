@@ -23,6 +23,7 @@ def load(path: Path, name: str):
 
 
 materialize = load(HERE / 'materialize.py', 'wf1_v5_materialize_tested')
+field = load(HERE / 'run_field.py', 'wf1_v5_field_tested')
 
 
 class Wf1V5ConvergenceTest(unittest.TestCase):
@@ -120,6 +121,97 @@ class Wf1V5ConvergenceTest(unittest.TestCase):
                 encoding='utf-8')
             entry = load(root / 'entry.py', 'wf1_v5_entry_order_test')
             self.assertEqual(entry.agent({'step': 1}, {}), {'trace': ['parent', 'wf1']})
+
+    def test_field_snapshot_binds_full_package_and_stays_immutable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            runtime = root / 'runtime'
+            snapshot = root / 'snapshot'
+            (runtime / 'sub').mkdir(parents=True)
+            (runtime / '__pycache__').mkdir()
+            (runtime / 'main.py').write_text('x = 1\n')
+            (runtime / 'TITAN-CONFIG.json').write_text('{}\n')
+            (runtime / 'sub' / 'data.txt').write_text('one\n')
+            (runtime / '__pycache__' / 'ignored.pyc').write_bytes(b'ignored')
+            digest = field.snapshot_runtime(runtime, snapshot)
+            self.assertEqual(digest, field.package_digest(runtime))
+            self.assertEqual(digest, field.package_digest(snapshot))
+            self.assertFalse((snapshot / '__pycache__').exists())
+            (runtime / 'sub' / 'data.txt').write_text('two\n')
+            self.assertNotEqual(field.package_digest(runtime), digest)
+            self.assertEqual(field.package_digest(snapshot), digest)
+
+    def test_field_snapshot_rejects_nested_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / 'runtime'
+            runtime.mkdir()
+            (runtime / 'main.py').write_text('x = 1\n')
+            with self.assertRaisesRegex(ValueError, 'outside runtime'):
+                field.snapshot_runtime(runtime, runtime / 'snapshot')
+            self.assertFalse((runtime / 'snapshot').exists())
+
+    def test_field_cell_custody_binds_both_arms_and_opponents(self):
+        base = {
+            'seed': 7, 'seat': 1, 'package_sha256': 'control',
+            'opponent': {'package_sha256': 'control'},
+        }
+        candidate = {
+            'seed': 7, 'seat': 1, 'package_sha256': 'wf1',
+            'opponent': {'package_sha256': 'control'},
+        }
+        field.validate_cell_custody(
+            base, candidate, seed=7, seat=1,
+            control_digest='control', candidate_digest='wf1')
+        mutations = (
+            ('base package', {**base, 'package_sha256': 'other'}, candidate),
+            ('candidate package', base, {**candidate, 'package_sha256': 'other'}),
+            ('base opponent', {**base, 'opponent': {'package_sha256': 'other'}}, candidate),
+            ('candidate opponent', base, {**candidate, 'opponent': {'package_sha256': 'other'}}),
+            ('identity', {**base, 'seat': 0}, candidate),
+        )
+        for label, bad_base, bad_candidate in mutations:
+            with self.subTest(label=label):
+                with self.assertRaises(ValueError):
+                    field.validate_cell_custody(
+                        bad_base, bad_candidate, seed=7, seat=1,
+                        control_digest='control', candidate_digest='wf1')
+
+    def test_incomplete_field_panel_has_no_economic_summary(self):
+        complete = {
+            'complete': True,
+            'delta': {'own': 5, 'rival': 1, 'margin': 4},
+            'first_action_change_step': 647,
+            'outcome_transition': 'W->W',
+        }
+        validation, summary = field.summarize_cells([complete, {'complete': False}])
+        self.assertFalse(validation['complete_panel'])
+        self.assertFalse(validation['economic_summary_valid'])
+        self.assertEqual(summary['requested_cells'], 2)
+        self.assertEqual(summary['complete_cells'], 1)
+        self.assertEqual(summary['game_failures'], 1)
+        for key in ('changed_action_cells', 'positive_margin_cells', 'zero_margin_cells',
+                    'negative_margin_cells', 'mean_margin_delta', 'median_margin_delta',
+                    'min_margin_delta', 'max_margin_delta', 'mean_own_delta',
+                    'mean_rival_delta', 'outcome_transitions'):
+            self.assertIsNone(summary[key], key)
+
+    def test_complete_field_panel_reports_transitions_and_economics(self):
+        cells = [
+            {'complete': True, 'delta': {'own': 10, 'rival': 2, 'margin': 8},
+             'first_action_change_step': 647, 'outcome_transition': 'W->W'},
+            {'complete': True, 'delta': {'own': -1, 'rival': 0, 'margin': -1},
+             'first_action_change_step': None, 'outcome_transition': 'W->L'},
+        ]
+        validation, summary = field.summarize_cells(cells)
+        self.assertTrue(validation['complete_panel'])
+        self.assertTrue(validation['economic_summary_valid'])
+        self.assertEqual(summary['changed_action_cells'], 1)
+        self.assertEqual(summary['positive_margin_cells'], 1)
+        self.assertEqual(summary['negative_margin_cells'], 1)
+        self.assertEqual(summary['mean_margin_delta'], 3.5)
+        self.assertEqual(summary['min_margin_delta'], -1)
+        self.assertEqual(summary['max_margin_delta'], 8)
+        self.assertEqual(summary['outcome_transitions'], {'W->W': 1, 'W->L': 1})
 
 
 if __name__ == '__main__':
