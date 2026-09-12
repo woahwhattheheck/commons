@@ -34,14 +34,25 @@ def controller_for(route_a=None, route_b=None, *, cur="A"):
     return Controller({"A": route_a, "B": route_b}, cur=cur)
 
 
-def run_safe(obs, parent, state, controller, route_id="A", *, enabled=True, cfg=None):
+def receipt_for(obs, route_id="A", *, route_step=None, last_step=None, player=None):
+    step = obs["step"]
+    return {
+        "route_step": step if route_step is None else route_step,
+        "last_step": step if last_step is None else last_step,
+        "player": obs["player"] if player is None else player,
+        "route": route_id,
+    }
+
+
+def run_safe(obs, parent, state, controller, route_id="A", *, receipt=None, enabled=True, cfg=None):
+    authority = receipt_for(obs, route_id) if receipt is None else receipt
     return safe.apply(
         obs,
         parent,
         helpers.CFG if cfg is None else cfg,
         enabled=enabled,
         controller=controller,
-        completed_route_id=route_id,
+        completed_route_receipt=authority,
         state=state,
     )
 
@@ -55,6 +66,7 @@ class V219RetrySafeTests(unittest.TestCase):
             obs, parent, safe.new_state(), ctl)
         self.assertTrue(first_report["applied"])
         self.assertEqual(first_report["committed_route_id"], "A")
+        self.assertEqual(first_report["committed_route_receipt"], receipt_for(obs, "A"))
         self.assertIsNotNone(first_state["pending"])
         pending = copy.deepcopy(first_state["pending"])
 
@@ -110,7 +122,7 @@ class V219RetrySafeTests(unittest.TestCase):
         self.assertEqual(later, state)
         self.assertEqual(report["reason"], "disabled")
 
-    def test_committed_route_id_beats_raw_cur(self):
+    def test_receipt_route_beats_raw_cur(self):
         route_a = helpers.route()
         route_b = helpers.route()
         route_b[500]["market"] = [["BUY_LAND"]]
@@ -128,14 +140,32 @@ class V219RetrySafeTests(unittest.TestCase):
         self.assertEqual(action_b, helpers.selected())
         self.assertEqual(report_b["reason"], "not-eligible")
 
-    def test_missing_or_unknown_committed_route_fails_closed(self):
+    def test_missing_or_unknown_receipt_route_fails_closed(self):
         ctl = controller_for(cur="B")
         for route_id in (None, "", "MISSING"):
             with self.subTest(route_id=route_id):
+                obs = helpers.observation()
                 parent = helpers.selected()
                 state = safe.new_state()
-                action, later, report = run_safe(
-                    helpers.observation(), parent, state, ctl, route_id=route_id)
+                action, later, report = run_safe(obs, parent, state, ctl, route_id=route_id)
+                self.assertEqual(action, parent)
+                self.assertEqual(later, state)
+                self.assertEqual(report["reason"], "route-authority")
+
+    def test_stale_carried_gap_and_cross_player_receipts_fail_closed(self):
+        ctl = controller_for()
+        obs = helpers.observation()
+        bad = (
+            receipt_for(obs, "A", route_step=432),
+            receipt_for(obs, "A", last_step=432),
+            receipt_for(obs, "A", route_step=432, last_step=432),
+            receipt_for(obs, "A", player=1),
+        )
+        for receipt in bad:
+            with self.subTest(receipt=receipt):
+                parent = helpers.selected()
+                state = safe.new_state()
+                action, later, report = run_safe(obs, parent, state, ctl, receipt=receipt)
                 self.assertEqual(action, parent)
                 self.assertEqual(later, state)
                 self.assertEqual(report["reason"], "route-authority")
@@ -171,13 +201,14 @@ class V219RetrySafeTests(unittest.TestCase):
                 self.assertEqual(later, state)
                 self.assertEqual(report["reason"], "unsupported-config")
 
-    def test_public_adapter_exposes_no_injected_route_snapshot_or_sha_parameters(self):
+    def test_public_adapter_exposes_no_injected_route_id_snapshot_or_sha_parameters(self):
         import inspect
         params = inspect.signature(safe.apply).parameters
         self.assertNotIn("route_snapshot", params)
         self.assertNotIn("route_sha256", params)
+        self.assertNotIn("completed_route_id", params)
         self.assertIn("controller", params)
-        self.assertIn("completed_route_id", params)
+        self.assertIn("completed_route_receipt", params)
 
 
 if __name__ == "__main__":
