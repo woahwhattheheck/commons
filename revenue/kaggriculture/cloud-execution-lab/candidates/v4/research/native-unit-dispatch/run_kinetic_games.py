@@ -1,18 +1,22 @@
 # SPDX-License-Identifier: Apache-2.0
 """Offline native-entrypoint parity and alternating timing, one game per process.
 
-Authenticates the complete checked native package before cloning. Changes only
-mechanics.py in an explicit scratch tree; no config, route, archive or release
-mutation. No observation filtering, actor/market truncation or synthetic fill.
+Authenticates the complete checked native package from bytes captured exactly once
+before cloning. Child game processes re-capture, authenticate, and materialize an
+immutable scratch runtime, so validated bytes are the bytes later imported and
+executed. Child control code is likewise captured once into an immutable scratch
+bundle, so a later repository-file replacement cannot alter verifier/play logic.
+Changes only mechanics.py in an explicit scratch tree; no config, route, archive
+or release mutation. No observation filtering, actor/market truncation or
+synthetic fill.
 """
 from __future__ import annotations
 import argparse
 import collections
 import copy
 import hashlib
-import importlib.util
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import shutil
 import statistics
 import subprocess
@@ -21,21 +25,143 @@ import tempfile
 import time
 
 import compose_kinetic as composer
-from check_kinetic import authenticate, imported
+from check_kinetic import imported
+
+SOURCE_SHA256 = 'e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2'
+ENGINE_GIT_BLOBS = {
+    'checks/reference/engine/kaggriculture.py': '3c202c7ee921da239356789e266b694635103fc4',
+    'checks/reference/engine/kaggriculture.json': 'b354d06b742fe48402513792253f1a5c29366b20',
+    'checks/reference/engine/utils.py': '91c8822ee6201ba4a5a8416c7dbe34f95dd61c87',
+}
+CONTROL_FILES = ('run_kinetic_games.py', 'compose_kinetic.py', 'check_kinetic.py')
+CONTROL_GIT_BLOBS = {
+    'compose_kinetic.py': 'd34362e98277c930b7b28519f2892bea758b3878',
+    'check_kinetic.py': 'a8bf67cca8f34492dc28286da62168da5d59c146',
+}
 
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def sha_bytes(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
 def encoded(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
+
+
+def _safe_relative(name):
+    if not isinstance(name, str) or not name or '\\' in name:
+        raise ValueError(f'Unsafe runtime member: {name!r}')
+    rel = PurePosixPath(name)
+    if rel.is_absolute() or '..' in rel.parts or '.' in rel.parts:
+        raise ValueError(f'Unsafe runtime member: {name!r}')
+    return Path(*rel.parts)
+
+
+def control_bundle_digest(captured):
+    """Length-delimited digest of the exact child control bytes."""
+    if set(captured) != set(CONTROL_FILES):
+        raise ValueError('Incomplete control bundle')
+    digest = hashlib.sha256()
+    for name in CONTROL_FILES:
+        raw = captured[name]
+        if not isinstance(raw, bytes):
+            raise ValueError(f'Invalid control bytes: {name}')
+        encoded_name = name.encode('utf-8')
+        digest.update(len(encoded_name).to_bytes(4, 'big'))
+        digest.update(encoded_name)
+        digest.update(len(raw).to_bytes(8, 'big'))
+        digest.update(raw)
+    return digest.hexdigest()
+
+
+def capture_control_bundle(root=None):
+    """Capture child runner plus pinned helper modules exactly once.
+
+    The currently executing runner is captured as bytes and then bound by the
+    returned bundle digest. Its helper modules are additionally authenticated to
+    their reviewed Git blobs. Children are launched only from a materialization
+    of this capture, never from a repository path reopened later.
+    """
+    root = Path(__file__).resolve().parent if root is None else Path(root).resolve(strict=True)
+    captured = {}
+    for name in CONTROL_FILES:
+        path = root / name
+        if path.is_symlink() or not path.is_file() or path.resolve(strict=True).parent != root:
+            raise ValueError(f'Unsafe control input: {name}')
+        raw = path.read_bytes()
+        expected_blob = CONTROL_GIT_BLOBS.get(name)
+        if expected_blob is not None and composer.git_blob(raw) != expected_blob:
+            raise ValueError(f'Unverified control input: {name}')
+        captured[name] = raw
+    return captured, control_bundle_digest(captured)
+
+
+def materialize_control_bundle(root, captured):
+    """Write only captured child control bytes into a fresh scratch directory."""
+    root = Path(root)
+    root.mkdir(parents=True, exist_ok=False)
+    if set(captured) != set(CONTROL_FILES):
+        raise ValueError('Incomplete control bundle')
+    for name in CONTROL_FILES:
+        (root / name).write_bytes(captured[name])
+
+
+def capture_runtime(root, expected_mechanics_sha256=None):
+    """Capture and authenticate every declared runtime byte exactly once.
+
+    The returned byte buffers are the sole source for later materialization and
+    execution. ``expected_mechanics_sha256`` is permitted only for the composed
+    candidate; every other runtime member remains bound to SOURCE.json.
+    """
+    root = Path(root).resolve(strict=True)
+    manifest_raw = (root / 'SOURCE.json').read_bytes()
+    if sha_bytes(manifest_raw) != SOURCE_SHA256:
+        raise ValueError('Unverified SOURCE manifest')
+    manifest = json.loads(manifest_raw)
+    runtime_manifest = manifest.get('runtime')
+    if not isinstance(runtime_manifest, dict) or not runtime_manifest:
+        raise ValueError('Invalid SOURCE runtime manifest')
+    captured = {}
+    for name, pin in runtime_manifest.items():
+        rel = _safe_relative(name)
+        if not isinstance(pin, dict) or not isinstance(pin.get('sha256'), str):
+            raise ValueError(f'Invalid runtime pin: {name}')
+        path = root / rel
+        if path.is_symlink() or not path.is_file() or not path.resolve(strict=True).is_relative_to(root):
+            raise ValueError(f'Unsafe runtime input: {name}')
+        raw = path.read_bytes()
+        expected = expected_mechanics_sha256 if name == 'mechanics.py' and expected_mechanics_sha256 else pin['sha256']
+        if sha_bytes(raw) != expected:
+            raise ValueError(f'Unverified runtime input: {name}')
+        captured[name] = raw
+    if 'mechanics.py' not in captured:
+        raise ValueError('SOURCE runtime is missing mechanics.py')
+    if expected_mechanics_sha256 is None and composer.git_blob(captured['mechanics.py']) != composer.BASE_BLOB:
+        raise ValueError('Expected immutable original mechanics input')
+    for name, expected_blob in ENGINE_GIT_BLOBS.items():
+        if name not in captured or composer.git_blob(captured[name]) != expected_blob:
+            raise ValueError(f'Unverified engine input: {name}')
+    return manifest_raw, captured
+
+
+def materialize_runtime(root, manifest_raw, captured):
+    """Write an authenticated capture into a fresh execution tree."""
+    root = Path(root)
+    root.mkdir(parents=True, exist_ok=False)
+    (root / 'SOURCE.json').write_bytes(manifest_raw)
+    for name, raw in captured.items():
+        path = root / _safe_relative(name)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(raw)
 
 
 def play(root, seed, seat, instrument=False):
     sys.path.insert(0, str(root))
     loader = imported('kinetic_game_loader', root/'checks/reference/evaluator/loader.py')
-    # Parent verified all inputs before launching this isolated game process.
     engine, _ = loader.get_engine(root/'checks/reference/engine')
     main = imported('kinetic_native_entrypoint', root/'main.py')
     histogram = collections.Counter()
@@ -95,52 +221,106 @@ def main():
     parser.add_argument('--child-seat', type=int, choices=[0, 1])
     parser.add_argument('--child-seed', type=int)
     parser.add_argument('--expected-mechanics-sha256')
+    parser.add_argument('--expected-control-bundle-sha256')
+    parser.add_argument('--control-probe', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
+
+    if args.control_probe:
+        if not args.expected_control_bundle_sha256:
+            parser.error('Control bundle identity is required')
+        control_files, control_digest = capture_control_bundle()
+        if control_digest != args.expected_control_bundle_sha256:
+            raise ValueError('Child control bundle identity mismatch')
+        args.output.write_text(json.dumps({
+            'executed_control_bundle_sha256': control_digest,
+            'executed_control_runner_blob': composer.git_blob(control_files['run_kinetic_games.py']),
+            'executed_control_compose_blob': composer.git_blob(control_files['compose_kinetic.py']),
+            'executed_control_check_blob': composer.git_blob(control_files['check_kinetic.py']),
+        }, sort_keys=True, indent=2)+'\n')
+        return 0
+
     if args.child_seat is not None:
-        if not args.expected_mechanics_sha256 or sha(args.native_root/'mechanics.py') != args.expected_mechanics_sha256:
-            parser.error('Child mechanics identity mismatch')
-        # Before loader import, verify every remaining manifest entry; no fetch fallback.
-        manifest = json.loads((args.native_root/'SOURCE.json').read_text())
-        for name, record in manifest['runtime'].items():
-            expected = args.expected_mechanics_sha256 if name == 'mechanics.py' else record['sha256']
-            if sha(args.native_root/name) != expected:
-                parser.error(f'Child dependency changed: {name}')
-        result = play(args.native_root, args.child_seed, args.child_seat, args.instrument)
+        if not args.expected_mechanics_sha256:
+            parser.error('Child mechanics identity is required')
+        if not args.expected_control_bundle_sha256:
+            parser.error('Child control bundle identity is required')
+        control_files, control_digest = capture_control_bundle()
+        if control_digest != args.expected_control_bundle_sha256:
+            raise ValueError('Child control bundle identity mismatch')
+        manifest_raw, captured = capture_runtime(args.native_root, args.expected_mechanics_sha256)
+        with tempfile.TemporaryDirectory(prefix='kinetic-child-snapshot-') as tmp:
+            frozen = Path(tmp) / 'runtime'
+            materialize_runtime(frozen, manifest_raw, captured)
+            result = play(frozen, args.child_seed, args.child_seat, args.instrument)
+        result['executed_source_manifest_sha256'] = sha_bytes(manifest_raw)
+        result['executed_mechanics_sha256'] = sha_bytes(captured['mechanics.py'])
+        result['executed_control_bundle_sha256'] = control_digest
+        result['executed_control_runner_blob'] = composer.git_blob(control_files['run_kinetic_games.py'])
+        result['executed_control_compose_blob'] = composer.git_blob(control_files['compose_kinetic.py'])
+        result['executed_control_check_blob'] = composer.git_blob(control_files['check_kinetic.py'])
         args.output.write_text(json.dumps(result, sort_keys=True, indent=2)+'\n')
         return 0
     if args.repetitions < 1:
         parser.error('At least one repetition is required')
-    count = authenticate(args.native_root)
+
+    control_files, control_digest = capture_control_bundle()
+    control_runner_blob = composer.git_blob(control_files['run_kinetic_games.py'])
+    manifest_raw, baseline_files = capture_runtime(args.native_root)
+    count = len(baseline_files)
     seeds = [int(v) for v in args.seeds.split(',')]
-    parent_source = (args.native_root/'mechanics.py').read_text()
+    parent_bytes = baseline_files['mechanics.py']
+    parent_source = parent_bytes.decode()
     candidate_source = composer.compose(parent_source)
+    candidate_bytes = candidate_source.encode()
+    baseline_mechanics_sha256 = sha_bytes(parent_bytes)
+    candidate_mechanics_sha256 = sha_bytes(candidate_bytes)
     results, pairs = [], []
     with tempfile.TemporaryDirectory(prefix='kinetic-native-') as scratch:
         scratch = Path(scratch)
+        control = scratch/'control'
+        materialize_control_bundle(control, control_files)
+        frozen_runner = control/'run_kinetic_games.py'
+        baseline = scratch/'baseline'
         candidate = scratch/'candidate'
-        shutil.copytree(args.native_root, candidate, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
-        (candidate/'mechanics.py').write_text(candidate_source)
-        for name, record in json.loads((args.native_root/'SOURCE.json').read_text())['runtime'].items():
-            if name != 'mechanics.py' and sha(candidate/name) != record['sha256']:
-                raise ValueError(f'Unexpected candidate dependency change: {name}')
+        materialize_runtime(baseline, manifest_raw, baseline_files)
+        candidate_files = dict(baseline_files)
+        candidate_files['mechanics.py'] = candidate_bytes
+        materialize_runtime(candidate, manifest_raw, candidate_files)
         for rep in range(args.repetitions):
             for seed in seeds:
                 for seat in [0, 1]:
                     row_pair = {}
                     order = ['baseline', 'candidate'] if (rep+seat+args.order_offset) % 2 == 0 else ['candidate', 'baseline']
                     for arm in order:
-                        root = args.native_root if arm == 'baseline' else candidate
+                        root = baseline if arm == 'baseline' else candidate
+                        expected_mechanics = baseline_mechanics_sha256 if arm == 'baseline' else candidate_mechanics_sha256
                         result_file = scratch/'one-game.json'
-                        command = [sys.executable] + (['-O'] if sys.flags.optimize else []) + [
-                            str(Path(__file__).resolve()), '--native-root', str(root), '--output', str(result_file),
+                        python_flags = ['-B']
+                        if sys.flags.optimize:
+                            python_flags.insert(0, '-O')
+                        command = [sys.executable, *python_flags, str(frozen_runner),
+                            '--native-root', str(root), '--output', str(result_file),
                             '--child-seat', str(seat), '--child-seed', str(seed),
-                            '--expected-mechanics-sha256', sha(root/'mechanics.py')]
+                            '--expected-mechanics-sha256', expected_mechanics,
+                            '--expected-control-bundle-sha256', control_digest]
                         if args.instrument:
                             command.append('--instrument')
                         proc = subprocess.run(command, capture_output=True, text=True, timeout=90)
                         if proc.returncode:
                             raise RuntimeError(f'{arm} game failed: {proc.stdout}\n{proc.stderr}')
                         row = json.loads(result_file.read_text())
+                        if row.get('executed_mechanics_sha256') != expected_mechanics:
+                            raise ValueError(f'{arm} child executed unexpected mechanics bytes')
+                        if row.get('executed_source_manifest_sha256') != sha_bytes(manifest_raw):
+                            raise ValueError(f'{arm} child executed under unexpected source manifest')
+                        if row.get('executed_control_bundle_sha256') != control_digest:
+                            raise ValueError(f'{arm} child executed unexpected control bundle')
+                        if row.get('executed_control_runner_blob') != control_runner_blob:
+                            raise ValueError(f'{arm} child executed unexpected runner bytes')
+                        if row.get('executed_control_compose_blob') != CONTROL_GIT_BLOBS['compose_kinetic.py']:
+                            raise ValueError(f'{arm} child executed unexpected composer bytes')
+                        if row.get('executed_control_check_blob') != CONTROL_GIT_BLOBS['check_kinetic.py']:
+                            raise ValueError(f'{arm} child executed unexpected checker bytes')
                         row.update(arm=arm, repetition=rep)
                         row_pair[arm] = row
                         results.append(row)
@@ -155,10 +335,18 @@ def main():
                                   'cpu_ratio': b['cpu_seconds']/a['cpu_seconds']})
     report = {'scope': 'b567 checked archive plus exactly one mechanics span; NOT current whole-V4 or field strength',
               'mode': 'optimized' if sys.flags.optimize else 'normal', 'instrumented': args.instrument,
-              'order_offset': args.order_offset,
-              'authenticated_runtime_members': count, 'source_manifest_sha256': sha(args.native_root/'SOURCE.json'),
-              'source_mechanics_blob': composer.git_blob(parent_source.encode()),
-              'candidate_mechanics_blob': composer.git_blob(candidate_source.encode()),
+              'order_offset': args.order_offset, 'authenticated_runtime_members': count,
+              'source_manifest_sha256': sha_bytes(manifest_raw),
+              'source_mechanics_blob': composer.git_blob(parent_bytes),
+              'candidate_mechanics_blob': composer.git_blob(candidate_bytes),
+              'source_mechanics_sha256': baseline_mechanics_sha256,
+              'candidate_mechanics_sha256': candidate_mechanics_sha256,
+              'control_bundle_sha256': control_digest,
+              'control_runner_git_blob': control_runner_blob,
+              'control_compose_git_blob': CONTROL_GIT_BLOBS['compose_kinetic.py'],
+              'control_check_git_blob': CONTROL_GIT_BLOBS['check_kinetic.py'],
+              'immutable_execution_snapshot': True,
+              'immutable_control_snapshot': True,
               'games': results, 'pairs': pairs,
               'summary': {'games': len(results), 'pairs': len(pairs),
                           'all_parity': all(p['parity'] for p in pairs),

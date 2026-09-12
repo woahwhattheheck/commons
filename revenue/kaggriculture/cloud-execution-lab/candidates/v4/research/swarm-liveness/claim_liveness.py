@@ -278,23 +278,23 @@ def audit_events(
     events = [Event.parse(raw, i) for i, raw in enumerate(raw_events)]
     anomalies: list[dict[str, Any]] = []
     seen_ids: dict[str, Event] = {}
+    authoritative_events: list[Event] = []
 
     for ev in events:
-        if ev.ts > now:
+        future = ev.ts > now
+        if future:
             anomalies.append(
                 {"kind": "future_event", "lane": ev.lane, "session": ev.session,
                  "event_id": ev.event_id, "ts": ev.ts}
             )
-        if ev.event_id:
-            old = seen_ids.get(ev.event_id)
-            if old:
-                anomalies.append(
-                    {"kind": "duplicate_event_id", "event_id": ev.event_id,
-                     "first_index": old.index, "duplicate_index": ev.index}
-                )
-            else:
-                seen_ids[ev.event_id] = ev
-        if ev.canonical_root and ev.canonical_root != canonical_root:
+
+        root_mismatch = (
+            ev.canonical_root is not None and ev.canonical_root != canonical_root
+        )
+        repo_write_unbound = ev.writes_repo and ev.canonical_root != canonical_root
+        root_quarantined = root_mismatch or repo_write_unbound
+
+        if root_mismatch:
             anomalies.append(
                 {"kind": "noncanonical_root", "lane": ev.lane,
                  "session": ev.session, "observed": ev.canonical_root,
@@ -306,8 +306,29 @@ def audit_events(
                  "session": ev.session, "event_id": ev.event_id}
             )
 
+        duplicate = False
+        if ev.event_id:
+            old = seen_ids.get(ev.event_id)
+            if old is not None:
+                anomalies.append(
+                    {"kind": "duplicate_event_id", "event_id": ev.event_id,
+                     "first_index": old.index, "duplicate_index": ev.index}
+                )
+                duplicate = True
+            elif not future and not root_quarantined:
+                # Only an event eligible to affect this canonical workspace may
+                # reserve a provider id. A quarantined foreign/unbound record
+                # cannot shadow a later valid export row with the same id.
+                seen_ids[ev.event_id] = ev
+
+        # Timeline/root anomalies remain visible evidence, but future/replayed
+        # rows, explicit foreign-root rows, and unbound repo writers cannot
+        # mint, extend, close, or reopen a lease in this canonical workspace.
+        if not future and not duplicate and not root_quarantined:
+            authoritative_events.append(ev)
+
     grouped: dict[str, list[Event]] = defaultdict(list)
-    for ev in events:
+    for ev in authoritative_events:
         grouped[ev.lane].append(ev)
 
     lane_rows: list[dict[str, Any]] = []
@@ -320,6 +341,36 @@ def audit_events(
             state = owners.get(ev.session)
             if ev.event == CLAIM:
                 claimed_once.add(ev.session)
+                if state is not None and state["state"] == "ACTIVE":
+                    anomalies.append(
+                        {"kind": "repeat_claim_while_active", "lane": lane,
+                         "session": ev.session, "event_id": ev.event_id,
+                         "opening_claim_ts": state.get("claim_ts")}
+                    )
+                    if ev.scope_key is not None and ev.scope_key != state.get("scope_key"):
+                        anomalies.append(
+                            {"kind": "scope_key_drift", "lane": lane,
+                             "session": ev.session, "event": ev.event,
+                             "claimed_scope_key": state.get("scope_key"),
+                             "observed_scope_key": ev.scope_key,
+                             "event_id": ev.event_id}
+                        )
+                    if (
+                        ev.requires_artifact != bool(state.get("requires_artifact"))
+                        or (
+                            ev.artifact is not None
+                            and ev.artifact != state.get("artifact")
+                        )
+                    ):
+                        anomalies.append(
+                            {"kind": "active_claim_contract_drift", "lane": lane,
+                             "session": ev.session, "event_id": ev.event_id}
+                        )
+                    # CLAIM repetition is not a heartbeat. It cannot refresh
+                    # liveness, replace the opening claim timestamp, or mutate
+                    # the active claim contract. Only terminal -> CLAIM starts
+                    # a new ownership epoch.
+                    continue
                 owners[ev.session] = {
                     "state": "ACTIVE",
                     "claim_ts": ev.ts,
@@ -463,6 +514,13 @@ def audit_events(
             "stale_is_overwrite_authority": False,
             "fresh_owner_blocks_recovery": True,
             "noncanonical_root_is_anomaly": True,
+            "noncanonical_root_events_authoritative": False,
+            "repo_writes_require_exact_canonical_root": True,
+            "repo_write_without_canonical_root_authoritative": False,
+            "read_only_missing_root_authoritative": True,
+            "future_events_authoritative": False,
+            "duplicate_event_id_replays_authoritative": False,
+            "repeat_active_claims_authoritative": False,
             "earliest_fresh_claim_precedence_is_advisory": True,
             "equal_earliest_claim_tie_fails_closed": True,
             "scope_keys_are_explicit_only": True,
