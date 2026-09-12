@@ -1,0 +1,6 @@
+..............................
+----------------------------------------------------------------------
+Ran 30 tests in 0.380s
+
+OK
+{"actual_transitions": 1816, "checker_blob": "5ebaa7e08ccb10ce773b54e7bee578c4e99b5bd9", "contract_blob": "ac91d3c65deeabadaa60ee83c4a7a84286849150", "errors": 0, "failures": 0, "interpreter_calls": 2728, "matrix_negative": 342, "matrix_pairs": 432, "matrix_positive": 90, "matrix_zero": 0, "optimized": false, "schema": "titan-v4-crosscurrent-queue-v1", "scope": "constructed capacity-valid two-step full-interpreter worlds, NOT trajectory reachability, full games or economics promotion", "skipped": 0, "slot_preserving_pairs": 16, "tests": 30, "unit_only": false}
