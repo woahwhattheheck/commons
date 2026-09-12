@@ -43,6 +43,7 @@ jobs:
             market_microstack_current.py \
             market_microstack_current_safe.py \
             test_market_microstack_current.py \
+            test_retry_transactions.py \
             test_source_authority.py
 
       - name: Focused contracts
@@ -52,6 +53,7 @@ jobs:
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
           python -B -m unittest -v \
             test_market_microstack_current.py \
+            test_retry_transactions.py \
             test_source_authority.py
 
       - name: Focused contracts under optimization
@@ -61,6 +63,7 @@ jobs:
           cd revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/r04-market-microstack-current-abi
           python -O -B -m unittest -v \
             test_market_microstack_current.py \
+            test_retry_transactions.py \
             test_source_authority.py
 
       - name: Test run is source-clean
