@@ -137,8 +137,19 @@ def load_jsonl(lines: Iterable[str]) -> list[dict[str, Any]]:
         text = line.strip()
         if not text or text.startswith("#"):
             continue
+
+        def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+            obj: dict[str, Any] = {}
+            for key, value in pairs:
+                if key in obj:
+                    raise AuditError(
+                        f"line {line_no}: duplicate JSON object key {key!r}"
+                    )
+                obj[key] = value
+            return obj
+
         try:
-            value = json.loads(text)
+            value = json.loads(text, object_pairs_hook=reject_duplicate_keys)
         except json.JSONDecodeError as exc:
             raise AuditError(f"line {line_no}: invalid JSON: {exc.msg}") from exc
         if not isinstance(value, dict):
