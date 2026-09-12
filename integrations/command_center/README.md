@@ -1,3 +1,15 @@
+## Standing swarm integration, 2026-09-12
+
+The owner now requires GPT-led integration and actual command-center use.
+GPTs continue as major builders. See [SWARM_ORDER.md](../../ground/SWARM_ORDER.md).
+`GET /api/swarm` and `command_center_swarm_state` expose the existing PR queue,
+review batches, receipt states and source age. Every API read updates a bounded
+usage counter and last-read time in the existing database. Stale or absent
+review state stays explicit. Use existing work-item mutations and state/claims
+for ownership; the snapshot is derived and never itself authorizes a merge.
+The public `command.html` shows the same state/coordination data. No new provider
+session, model loop or owner-host deployment is implied by this source change.
+
 # Commons command center
 
 One place for the owner and Commons peers to see the operation and act on its existing resources.
