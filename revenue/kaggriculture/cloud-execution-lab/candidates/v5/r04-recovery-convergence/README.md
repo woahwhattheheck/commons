@@ -1,6 +1,6 @@
 # TITAN V5 R04 recovery convergence gate
 
-This directory is the **single rendezvous point** for current-V5 recovery of the score-facing behavior that shipped in submitted V3.1. It is an evidence/convergence gate, not another gameplay controller and not release authority.
+This directory is the **single rendezvous point** for current-V5 recovery of the score-facing V3.1 policy semantics selected for the one V5. It is an evidence/convergence gate, not another gameplay controller and not release authority.
 
 Submitted authority is fixed to:
 
@@ -15,12 +15,14 @@ Historical source provenance and current runtime staging are intentionally separ
 
 Submitted returned-action topology:
 
-`H8/L3 sale-window -> H4 strawberry -> row-order -> row-shed -> evening-flush -> B5/JIT`, with `fert_hand_boundary` around the inner action boundary and `B9 -> H3c` in the outer returned-action pipeline. The score-shipped **V231 late-COW** feature is independently required; this does not revive the submitted-OFF `cattle_early` window.
+`H8/L3 sale-window -> H4 strawberry -> ROW_ORDER+ROW_SHED combined theorem -> evening-flush -> B5/JIT`, with `fert_hand_boundary` around the inner action boundary and `B9 -> H3c` in the outer returned-action pipeline. The score-shipped **V231 late-COW** feature is independently required; this does not revive the submitted-OFF `cattle_early` window.
+
+`ROW_ORDER` and `ROW_SHED` are **not** two independent scored slots. With both submitted flags ON, the winner executes the mutually exclusive combined `_row_order_shed(...)` branch. The standalone `order_sells(...)` path is only the `ROW_SHED=OFF` alternate and must not be resurrected as a second composition leaf. The convergence schema therefore exposes exactly one `row_order_shed` slot, corresponding to the canonical combined carrier.
 
 Current V5 cannot blindly replay historical wrapper order. Schema v2 therefore hard-binds a separate `current_runtime_stages` map, including:
 
 - `h3c_goose_rescue = pre_capacity`;
-- `row_shed = final_market_order`;
+- `row_order_shed = final_market_order`;
 - `b9_terminal_fertilizer = post_market`.
 
 A manifest with a different staging map is a hard error.
@@ -49,9 +51,9 @@ For authorizing evaluation the gate:
 5. proves manifest `composition_git_commit` resolves to a Git commit;
 6. reads the **same path** from `composition_git_commit` and requires byte-for-byte equality with the authenticated carrier source.
 
-This turns “single V5” into a machine-checked invariant: a READY receipt cannot be assembled from ten mutually incompatible branch islands. The declared leaf sources must already coexist unchanged in one concrete Git tree.
+This turns “single V5” into a machine-checked invariant: a READY receipt cannot be assembled from mutually incompatible branch islands. The declared leaf sources must already coexist unchanged in one concrete Git tree.
 
-A nonexistent carrier head, missing path, missing composition commit, composition-tree source drift, historical whole-router/tape transplant, second producer, or forbidden submitted-OFF feature fails closed. The PR number is descriptive metadata; Git object bytes are source authority.
+A nonexistent carrier head, missing path, missing composition commit, composition-tree source drift, historical whole-router/tape transplant, second producer, submitted-OFF feature, or stale standalone `row_order` / `row_shed` slot fails closed. The PR number is descriptive metadata; Git object bytes are source authority.
 
 ## Economics custody: raw paired cells, not positive summaries
 
@@ -88,20 +90,19 @@ So a carrier/source change or assembled-tree rejoin invalidates the combined eco
 
 ## Required semantic slots
 
-v2 requires ten distinct current-ABI slots:
+v2 requires nine distinct current-ABI slots:
 
 1. `sale_window_h8_l3`
 2. `h4_strawberry_topup`
-3. `row_order`
-4. `row_shed`
-5. `evening_flush`
-6. `b5_carrot_jit`
-7. `fert_hand_boundary`
-8. `b9_terminal_fertilizer`
-9. `h3c_goose_rescue`
-10. `v231_late_cow`
+3. `row_order_shed`
+4. `evening_flush`
+5. `b5_carrot_jit`
+6. `fert_hand_boundary`
+7. `b9_terminal_fertilizer`
+8. `h3c_goose_rescue`
+9. `v231_late_cow`
 
-One broad carrier may satisfy adjacent semantics only by listing each slot separately with its exact source/evidence binding. Missing V231-late or collapsing row-order/row-shed remains explicit.
+One broad carrier may satisfy adjacent semantics only by listing each real scored slot separately with its exact source/evidence binding. The combined row-order/shed theorem is one slot and must never be split. Missing V231-late remains explicit.
 
 ## What READY does not mean
 
@@ -118,4 +119,4 @@ python -B composition_gate.py /path/to/manifest.json --repo /path/to/commons --o
 
 A real manifest checkout must contain the declared carrier and composition commits; dedicated CI therefore checks out the exact PR head with full Git history. Exit status: `0` composition-ready, `3` valid-but-blocked, `2` malformed/custody failure. Receipt output is write-once.
 
-Manifest schema: `titan-v5-r04-recovery-composition-gate/v2`. Raw economics report schema: `titan-v5-r04-paired-economics-report/v1`. The focused suite covers forged positive summaries, nonexistent carrier/composition heads, source-tree drift, raw-report tampering, duplicate cells, per-opponent regression, missing V231 and staged-runtime mismatch.
+Manifest schema: `titan-v5-r04-recovery-composition-gate/v2`. Raw economics report schema: `titan-v5-r04-paired-economics-report/v1`. The focused suite covers forged positive summaries, nonexistent carrier/composition heads, source-tree drift, raw-report tampering, duplicate cells, per-opponent regression, stale standalone row-order/shed slots, missing V231 and staged-runtime mismatch.
