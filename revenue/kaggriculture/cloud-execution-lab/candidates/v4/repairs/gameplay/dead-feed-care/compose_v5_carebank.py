@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 import shutil
 
-RUNTIME_BLOB = "40f335f0192cc7e8161437d83da647d6c1f28eea"
+RUNTIME_BLOB = "da8d5fe86543e1732b0c3ff4675f661bdd2c8d71"
 CONFIG_BLOB = "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"
 HELPER_BLOB = "a93f7fbc3054aaeb2d04878dc620aec66d8a3377"
 HELPER_RELATIVE = Path("candidates/v4/repairs/gameplay/dead-feed-care/dead_feed_care.py")

@@ -30,7 +30,9 @@ from compose_v5_carebank import (
 def _features_class(source: str):
     tree = ast.parse(source)
     node = next(item for item in tree.body if isinstance(item, ast.ClassDef) and item.name == "Features")
-    text = ast.get_source_segment(source, node)
+    lines = source.splitlines(keepends=True)
+    start = min((decorator.lineno for decorator in node.decorator_list), default=node.lineno)
+    text = "".join(lines[start - 1 : node.end_lineno])
     namespace = {"__name__": __name__, "dataclass": dataclass, "math": math}
     exec(text, namespace)
     return namespace["Features"]
