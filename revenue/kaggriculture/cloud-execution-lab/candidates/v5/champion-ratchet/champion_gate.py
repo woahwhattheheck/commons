@@ -99,3 +99,63 @@ def authenticate_v31_identity(*, source_commit=None, submission_id=None, archive
         "v31_submission_id": V31_SUBMISSION_ID,
         "v31_archive_sha256": V31_ARCHIVE_SHA256,
     }
+
+def authenticate_repo(kg_root: Path, *, repo_pins=REPO_GIT_BLOBS):
+    kg=Path(kg_root).resolve(strict=True); repo={}
+    for rel,pin in repo_pins.items():
+        p=(kg/rel).resolve(strict=True)
+        try: p.relative_to(kg)
+        except ValueError: raise ChampionError(f"repo path escaped: {rel}")
+        data=p.read_bytes()
+        if _git_blob(data)!=pin: raise ChampionError(f"repo authority drift: {rel}")
+        repo[rel]={"git_blob":pin,"sha256":hashlib.sha256(data).hexdigest()}
+    return repo
+
+def authenticate_engine(engine_dir: Path, *, engine_pins=ENGINE_GIT_BLOBS):
+    eng=Path(engine_dir).resolve(strict=True); engine={}
+    for name,pin in engine_pins.items():
+        p=(eng/name).resolve(strict=True)
+        try: p.relative_to(eng)
+        except ValueError: raise ChampionError(f"engine path escaped: {name}")
+        data=p.read_bytes()
+        if _git_blob(data)!=pin: raise ChampionError(f"engine authority drift: {name}")
+        engine[name]=hashlib.sha256(data).hexdigest()
+    return engine
+
+def authenticate_harness(kg_root: Path, engine_dir: Path, *,
+                         repo_pins=REPO_GIT_BLOBS, engine_pins=ENGINE_GIT_BLOBS):
+    return {"repo":authenticate_repo(kg_root,repo_pins=repo_pins),
+            "engine":authenticate_engine(engine_dir,engine_pins=engine_pins)}
+
+def load_manifest(path: Path, *, expected_sha256=CORPUS_MANIFEST_SHA256,
+                  expected_targets=EXPECTED_TARGETS, replays_per_target=EXPECTED_REPLAYS_PER_TARGET):
+    manifest, sha=_read_json(path)
+    if sha != expected_sha256: raise ChampionError("corpus manifest SHA256 mismatch")
+    if type(manifest) is not dict or manifest.get("schema")!="titan.gauntlet.top30-union.v1":
+        raise ChampionError("unexpected corpus manifest schema")
+    targets=manifest.get("targets")
+    if type(targets) is not list or len(targets)!=expected_targets:
+        raise ChampionError(f"expected {expected_targets} corpus targets")
+    fixtures=[]; seen_sub=set(); seen_fixture=set()
+    for ti,target in enumerate(targets):
+        if type(target) is not dict or target.get("status")!="complete":
+            raise ChampionError(f"target[{ti}] is incomplete")
+        sub=_plain_int(target.get("submission_id"), f"target[{ti}].submission_id", 1)
+        if sub in seen_sub: raise ChampionError("duplicate submission_id")
+        seen_sub.add(sub)
+        replays=target.get("replays")
+        if type(replays) is not list or len(replays)!=replays_per_target:
+            raise ChampionError(f"submission {sub} must have {replays_per_target} replays")
+        for ri,replay in enumerate(replays):
+            if type(replay) is not dict or replay.get("kind")!="recorded_action_trace":
+                raise ChampionError(f"submission {sub} replay[{ri}] malformed")
+            ep=_plain_int(replay.get("episode_id"), "episode_id", 1)
+            seed=_plain_int(replay.get("seed"), "seed", 0)
+            recorded_seat=_plain_int(replay.get("recorded_opponent_seat"), "recorded_opponent_seat", 0)
+            if recorded_seat not in (0,1): raise ChampionError("recorded_opponent_seat must be 0 or 1")
+            fid=f"trace-sub-{sub}-ep-{ep}"
+            if fid in seen_fixture: raise ChampionError("duplicate fixture id")
+            seen_fixture.add(fid)
+            fixtures.append({"id":fid,"submission_id":sub,"seed":seed,
+                             "candidate_seat_for_recorded_orientation":1-recorded_seat})
+    return {"sha256":sha,"fixtures":fixtures,"target_count":len(targets)}
