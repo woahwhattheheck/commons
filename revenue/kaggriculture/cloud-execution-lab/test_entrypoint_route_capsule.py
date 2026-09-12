@@ -87,7 +87,8 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         old._entrypoint_last_step = 226
         self.cancel(old)
         self.assertEqual(self.entry._ROUTE_RECOVERY,
-                         {'last_step': 227, 'player': 0, 'route': 'YARN'})
+                         {'route_step': 227, 'observed_step': 227,
+                          'player': 0, 'route': 'YARN'})
         fresh = self.resume()
         self.assertEqual(fresh._completed_route, 'YARN')
         self.assertIsNot(fresh, old)
@@ -98,16 +99,25 @@ class EntrypointRouteCapsuleTests(unittest.TestCase):
         self.cancel(old)
         self.assertEqual(self.resume()._completed_route, 'YARN')
 
-    def test_constructor_cancellation_preserves_prior_capsule(self):
+    def test_constructor_cancellation_advances_observed_watermark(self):
         self.cancel(Instance('YARN'))
         saved = deepcopy(self.entry._ROUTE_RECOVERY)
+
         def interrupted_constructor(*_args):
             raise ControlledTimer.active.expired
+
         with patch.object(self.entry, '_new_instance', side_effect=interrupted_constructor), \
                 patch('json.loads', return_value={'town_procurement': False}):
             self.assertEqual(self.entry.agent(self.obs(228), self.config), PASS)
-        self.assertEqual(self.entry._ROUTE_RECOVERY, saved)
+        self.assertEqual(self.entry._ROUTE_RECOVERY,
+                         {**saved, 'observed_step': 228})
         self.assertEqual(self.resume(229)._completed_route, 'YARN')
+
+    def test_skipped_callback_refuses_stale_route(self):
+        self.cancel(Instance('YARN'))
+        fresh = self.resume(230)
+        self.assertIsNone(fresh._completed_route)
+        self.assertIsNone(self.entry._ROUTE_RECOVERY)
 
     def test_new_episode_discards_old_route(self):
         self.cancel(Instance('YARN'))
