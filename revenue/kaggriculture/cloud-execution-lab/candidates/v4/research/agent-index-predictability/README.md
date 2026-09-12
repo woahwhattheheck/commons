@@ -20,6 +20,8 @@ JSON array or JSONL. Each record needs:
   - two-item `rewards` list (the analyzer picks target/opponent by seat), or
   - `score` + `opponent_score`.
 
+If a record contains more than one outcome representation, all supplied representations must agree (within tight floating-point tolerance) or the record fails closed. When they agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. This prevents a contradictory self-reported margin from silently overriding structured score fields while preserving legitimate large finite engine rewards; there is deliberately no guessed reward ceiling.
+
 Duplicate exact `(seed, opponent, seat)` cells fail closed. `--require-complete` rejects any seed/opponent group missing one seat.
 
 Example:
@@ -37,10 +39,10 @@ A constant nonzero paired delta has zero variance and therefore no finite Cohen 
 
 ## Verification receipt
 
-Analyzer Git blob `42f78767d87101cbc350d1aff47c73d2e345c3d9`, SHA-256 `64297377e42c3d629ef6b7a4decb8b44364db81b15d35e8daaae6e5d7326a394`.
+Analyzer Git blob `db32c109b61af72917e302c0cdf69014d284afc1`, SHA-256 `0a56bf369c84e9412a69ae199bd1a41b38a7d7c9105227bae82e5f56b4402219`.
 
-Regression Git blob `87161821a9b617f205d5a9030b69cb6919ac7375`, SHA-256 `167bee0e43e521982186ab982fe1914efbb69d3db754cc635b9f3c60da27713c`.
+Regression Git blob `8a9501cbfb1d90a7b03c81ab463e1202b661c6f1`, SHA-256 `ed288e4e8ce9dd7df7e603e0dbc75c476c7b15976c9a4ab228fa05bd9647c058`.
 
-Local verification before landing: 8/8 tests PASS under both normal Python and `python -O`. Tests include Simpson's-paradox opponent mix, unequal opponent-frequency weighting, exact duplicate/missing-cell rejection, seat-relative reward interpretation, strict type/finite-number handling, and strict-JSON zero-variance effect handling.
+Local verification before publishing: 13/13 tests PASS under both normal Python and `python -O`. Tests include Simpson's-paradox opponent mix, unequal opponent-frequency weighting, exact duplicate/missing-cell rejection, seat-relative reward interpretation, strict type/nonfinite/overflow handling, contradictory redundant outcome rejection, consistent redundant outcome acceptance, a legitimate 165,022-margin reward control, and strict-JSON zero-variance effect handling.
 
 At initial landing, default-branch searches did not surface a committed replay corpus containing the required matched seed/opponent/seat/outcome cells. A replay-capable/data seat should run this analyzer against an exact paired panel rather than infer a result from unmatched hosted games.
