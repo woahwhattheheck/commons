@@ -115,9 +115,7 @@ class MarketPath:
         for k in range(max(own,rival)):
             price=self.quote(inv)
             a=k<own;b=k<rival
-            cash+=price*a;other_cash=0
-            other_cash+=price*b
-            other=other_cash
+            cash+=price*a;other+=price*b
             if price>1:inv+=int(a)+int(b)
         return cash,other,inv
 
