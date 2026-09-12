@@ -1,0 +1,137 @@
+{
+  "schema": "titan-v4-gemini-historical-convergence/v1",
+  "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "purpose": "Companion to GEMINI-ANTIGRAVITY.json for Gemini-origin lineages that predate the recent Antigravity Slack stream. This is a coverage and convergence lock, not runtime policy authority.",
+  "origin_bucket": "historical_gemini_lineage",
+  "runtime_activation_implied": false,
+  "entry_count": 8,
+  "entries": [
+    {
+      "id": "gemini.flash-market-goop",
+      "gemini_label": "Gemini Flash / GOOP market timing",
+      "source_lineage": "Historical Gemini Flash market work; current V4 descendants own exact crossflow, town-sale and executable-market semantics.",
+      "literal_claim": "Jointly optimize market-slot composition and timing around rival/public demand instead of treating each row independently.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Retain only exact executable-prefix and order-budget-safe market reasoning, same-precommit-quote collision/crossflow evidence, deterministic town effects, and current cash/custody limits. Do not create a monolithic GOOP market controller.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/crossflow_quote_oracle.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_deferral.py"
+      ],
+      "provenance_pull_numbers": [12846, 12883, 12962, 12965],
+      "next_gate": "Any policy consumer must replay on current-native routes with executable-row, cash, custody and returned-action effects proved.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.idle-service",
+      "gemini_label": "Gemini idle-hands service recycling",
+      "source_lineage": "Historical Gemini idle-hands/service family; current V4 idle-hands and starvation/service descendants hold implementation custody.",
+      "literal_claim": "When a hired hand would otherwise do nothing useful, redirect it into FEED/CARE/COLLECT or another productive service.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Recycle only provably idle/dead service into a source-real productive route with actor inventory, animal/crop need, CARE output value, EOD timing and cargo custody all proved. Generic idle-action substitution is not authority.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/idle-hands/r04_idle_hands.py"
+      ],
+      "provenance_pull_numbers": [12618, 12812, 12884, 12920, 13015],
+      "next_gate": "Natural current-native engagement plus positive economics with zero service, starvation, CARE-value or custody regressions.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.legacy-g01-e11",
+      "gemini_label": "G01 E11 rival-aware SELL deferral",
+      "source_lineage": "Merged Gemini G01 E11 ancestry from PR #11371; unconditional runtime deferral was rejected and only the market-timing question is retained.",
+      "literal_claim": "Defer an existing SELL when rival dumping and the near-horizon price path make waiting better.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Never defer from a coarse rival-archetype or expected-drop guess. Classify only owner replay candidates using deterministic town-drain premium, a conservative public lower bound on already-realized rival net supply, and explicit queue, custody, financing, row-budget and horizon guards. The certificate itself never mutates an action.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/gemini_market_certificate.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/town_sale_deferral.py"
+      ],
+      "provenance_pull_numbers": [11371, 11460, 12368, 12403, 12466, 12597, 12962, 13024],
+      "next_gate": "Census candidate/veto outcomes on current-native TOWNSELL witnesses; only the existing seller/timing owner may propose runtime consumption after both-seat economics.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.legacy-g01-e20",
+      "gemini_label": "G01 E20 late-HIRE guard",
+      "source_lineage": "Merged Gemini G01 E20 ancestry from PR #11371; current V4 executable-prefix HIRE authority supersedes the original crude guard.",
+      "literal_claim": "Drop a late low-value HIRE when there is not enough remaining work for the extra hand to repay its wage.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Reason only over the official executable market prefix; engine-inert suffix rows cannot consume allowance or create funding. Use exact wage/cash and the current labor/service frontier rather than a crude unserved-tile count.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/e20-executable-prefix/e20_hire_guard.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/e20-executable-prefix/OFFICIAL-MARKET-VERIFICATION.json"
+      ],
+      "provenance_pull_numbers": [11371, 11460, 12643],
+      "next_gate": "Current composed postimage plus current-native two-seat economics under exact executable-prefix and funding semantics.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.legacy-g01-o01",
+      "gemini_label": "G01 O01 rival archetype model",
+      "source_lineage": "Merged Gemini G01 O01 ancestry from PR #11371; static opponent labels are retired in favor of public one-way evidence.",
+      "literal_claim": "Classify the opponent by observed behavior and use that type to change market/capital choices.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Do not classify by opponent identity or a brittle archetype. Use observable one-way certificates only: proved prior net supply, same-row collision/crossflow, deterministic town drain and current public state. No private-stock inference or post-hoc acquisition prepend is authorized.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/CROSSFLOW.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/gemini_market_certificate.py"
+      ],
+      "provenance_pull_numbers": [11371, 11460, 12466, 12597, 12965, 13024],
+      "next_gate": "Observable-evidence replay on current-native traces; any acquisition or sale action remains under its current funding/execution owner.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.legacy-g01-shop",
+      "gemini_label": "G01 SHOP_ARB absorption weighting",
+      "source_lineage": "Merged Gemini G01 shop-arbitrage ancestry from PR #11371; the fixed shop weight is superseded by exact public demand/timing models.",
+      "literal_claim": "Increase the attractiveness of production/sales into products with strong shop absorption.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Replace the fixed absorption multiplier with exact integer shop/town transitions, unlock and replacement timing, shared RNG coupling and conservative absorption headroom. Demand evidence has no standalone decision or timing authority and excludes opponent supply unless separately proved.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/demand_velocity.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/market_baseline.py"
+      ],
+      "provenance_pull_numbers": [11371, 11460, 12803, 12846, 12892, 12910, 13018],
+      "next_gate": "A policy owner must combine current source-bound demand with real row, cash, capacity, custody and opponent-flow evidence before changing an action.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.pro-capital",
+      "gemini_label": "Gemini Pro capital / service acquisition",
+      "source_lineage": "Historical Gemini Pro capital lane; current early-capital authority owns the source-safe acquisition/rebind descendants.",
+      "literal_claim": "Acquire useful capital/service earlier when the resulting production frontier repays the near-term cash and sequencing cost.",
+      "disposition": "CORRECTED_DESCENDANT",
+      "best_form": "Only current KESTREL/FLOCKBIND-style lockstep acquisition with exact executable-prefix, funding, dependent-animal rebind and custody proofs is admissible. No post-hoc prepend or unfunded acquisition assumption.",
+      "activation": "RESEARCH_ONLY",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/early-capital/KESTREL-LOCKSTEP.md",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/early-capital/README.md"
+      ],
+      "provenance_pull_numbers": [12967],
+      "next_gate": "Exact current-route capital realization and paired economics under the existing early-capital owner.",
+      "do_not_repeat_without_new_evidence": true
+    },
+    {
+      "id": "gemini.s33-stratum",
+      "gemini_label": "Gemini S33 / STRATUM projected-shed SELL ordering",
+      "source_lineage": "Historical Gemini STRATUM row-shed lane; current row-shed-sell-order package owns the implementation seam.",
+      "literal_claim": "Order already-authored SELL rows by projected shed relief so scarce end-of-day cargo/capacity is preserved.",
+      "disposition": "FIELD_BLOCKED",
+      "best_form": "Projected-shed ordering is novel only if its effect survives the exact downstream canonical market-pressure transform into the final action. A pre-pressure rank difference that later collapses to the incumbent output is identity. Internal diagnostics are not a returned-action witness.",
+      "activation": "BLOCKED",
+      "canonical_evidence": [
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/novel_rank_guard.py",
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/row-shed-sell-order/README.md"
+      ],
+      "provenance_pull_numbers": [12551, 12801, 12998],
+      "next_gate": "Existing row-shed owner must compare incumbent and STRATUM after the exact downstream pressure transform, bind any surviving difference to the exact action returned to the engine, then re-run current-native both-seat economics.",
+      "do_not_repeat_without_new_evidence": true
+    }
+  ]
+}
