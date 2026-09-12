@@ -221,6 +221,33 @@
       "after": [],
       "conflicts": [],
       "note": "SEEDGHOST remains default-OFF/COLD. Registration makes the merged package visible to the sole composition/custody control plane without authorizing runtime wiring. Reopen only after current natural engagement and a sanctioned returned-action boundary prove a materializable edge."
+    },
+    {
+      "id": "v218-native-semantic-equivalence",
+      "state": "evidence_only",
+      "package": "repairs/gameplay/v218-legal-movement",
+      "entrypoints": [
+        "repairs/gameplay/v218-legal-movement/check_current_native_binding.py"
+      ],
+      "semantic_equivalence": {
+        "kind": "native_semantic_equivalence",
+        "checker_identity": "git-blob:795677f2da6a05a371a8f96f85faeed79e0d41bd",
+        "source_identities": {
+          "reference/next-panel/vendor/arlene.py": "git-blob:bdb9cf58148a3c7961c085f4902759537decabf6",
+          "spatial_tempo.py": "git-blob:edbc423023479dbe2e78131495334384a87b607f"
+        },
+        "rules": [
+          "locked_transit_matches_engine",
+          "all_four_shed_corners_eligible",
+          "spatial_routes_are_tile_agnostic"
+        ]
+      },
+      "transforms": [],
+      "requires": [],
+      "before": [],
+      "after": [],
+      "conflicts": [],
+      "note": "#12848 proved the actually-called native path already satisfies V218 movement/shed legality semantics. This is authenticated evidence-only custody, not an identity transform or a second implementation; runtime/default/config/archive/Kaggle activation remains unchanged."
     }
   ],
   "discovery": {
