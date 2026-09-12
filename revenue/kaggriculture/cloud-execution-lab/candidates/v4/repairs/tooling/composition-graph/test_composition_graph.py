@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -263,6 +264,62 @@ class CompositionGraphTests(unittest.TestCase):
         self.assertTrue(cg._reachable("a", "a", edges))
         self.assertFalse(cg._reachable("c", "a", edges))
         self.assertFalse(cg._reachable("a", "missing", edges))
+
+    def test_live_canonical_graph_registers_e13_and_is_ok(self):
+        manifest = json.loads((V4 / "COMPOSITION.json").read_text(encoding="utf-8"))
+        result = cg.validate_manifest(manifest, V4)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual([], result["unregistered"])
+        self.assertEqual([], result["errors"])
+        self.assertIn("e13-future-sale-solvency", result["blocked"])
+        owned = {
+            ep
+            for comp in manifest["components"]
+            if isinstance(comp, dict)
+            for ep in comp.get("entrypoints", [])
+        }
+        self.assertIn(
+            "repairs/gameplay/e13-future-sale-solvency/port_current_runtime.py",
+            owned,
+        )
+        self.assertTrue(
+            set(cg.REQUIRED_DISCOVERY_PATTERNS).issubset(set(manifest["discovery"]["patterns"]))
+        )
+
+    def test_live_dropping_e13_registration_fails_unregistered_entrypoint(self):
+        manifest = json.loads((V4 / "COMPOSITION.json").read_text(encoding="utf-8"))
+        manifest["components"] = [
+            comp
+            for comp in manifest["components"]
+            if not (isinstance(comp, dict) and comp.get("id") == "e13-future-sale-solvency")
+        ]
+        result = cg.validate_manifest(manifest, V4)
+        self.assertFalse(result["ok"], result)
+        self.assertIn(
+            "repairs/gameplay/e13-future-sale-solvency/port_current_runtime.py",
+            result["unregistered"],
+        )
+        self.assertTrue(
+            any(
+                item.get("code") == "unregistered_entrypoint"
+                and item.get("path")
+                == "repairs/gameplay/e13-future-sale-solvency/port_current_runtime.py"
+                for item in result["errors"]
+            ),
+            result,
+        )
+
+    def test_bare_defensive_guard_filename_discovers_quarantined_duplicate(self):
+        manifest = json.loads((V4 / "COMPOSITION.json").read_text(encoding="utf-8"))
+        manifest["discovery"]["patterns"] = list(manifest["discovery"]["patterns"]) + [
+            "r04_defensive_guards.py"
+        ]
+        result = cg.validate_manifest(manifest, V4)
+        self.assertFalse(result["ok"], result)
+        self.assertIn(
+            "repairs/gameplay/defensive-guard/r04_defensive_guards.py",
+            result["unregistered"],
+        )
 
 
 if __name__ == "__main__":

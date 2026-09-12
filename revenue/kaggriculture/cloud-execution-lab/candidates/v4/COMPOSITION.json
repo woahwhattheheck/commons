@@ -340,7 +340,13 @@
    "repairs/performance/funding-replay/compose_funding_capacity.py",
    "repairs/performance/compose_scoped_constructor.py",
    "repairs/performance/projection-state-clone/compose.py",
-   "research/sale-window-engagement/compose_current_h3s420.py"
+   "research/sale-window-engagement/compose_current_h3s420.py",
+   "repairs/gameplay/v218-legal-movement/check_current_native_binding.py",
+   "repairs/gameplay/ghost-plant-admission/ghost_plant_admission.py",
+   "repairs/gameplay/redundant-hire-two-seat/repair_redundant_hire_two_seat.py",
+   "repairs/gameplay/redundant-hire-two-seat/compose_laborflow_multi_detour.py",
+   "repairs/gameplay/r04-defensive-guards/r04_defensive_guards.py",
+   "repairs/gameplay/exec-pace/r04_exec_pace.py"
   ],
   "strict": true,
   "ignore": []

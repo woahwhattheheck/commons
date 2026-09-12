@@ -44,6 +44,12 @@ jobs:
       - name: Validate cross-ledger coherence
         run: >-
           python -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/cross-ledger-coherence/check_cross_ledger.py --pretty
+      - name: Run composition graph regressions
+        run: >-
+          python -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/tooling/composition-graph/test_composition_graph.py
+      - name: Re-run composition graph regressions under optimized Python
+        run: >-
+          python -O -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/tooling/composition-graph/test_composition_graph.py
       - name: Run cross-ledger regressions
         run: >-
           python -B revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/cross-ledger-coherence/test_check_cross_ledger.py
