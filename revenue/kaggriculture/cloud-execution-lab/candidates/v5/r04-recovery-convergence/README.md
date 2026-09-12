@@ -11,9 +11,8 @@ Submitted authority is fixed to:
 
 The gate intentionally does **not** import `r04_full_router.py`, the historical
 tape bank, V4 runtime, or any recovered candidate. Leaf owners keep their
-current-ABI source and economics work. This package only authenticates that
-those leaves converge into one V5 topology rather than becoming independent
-versions.
+current-ABI source and economics work. This package authenticates that those
+leaves converge into one V5 topology rather than becoming independent versions.
 
 ## Exact submitted topology
 
@@ -39,7 +38,7 @@ Historical source features that were OFF/identity in the exact submitted winner
 R01/R02/R03 standalone resurrection is also forbidden because submitted
 `r04_sale_window=true` took precedence.
 
-## What a component must prove
+## Leaf evidence is necessary, not sufficient
 
 Each component entry binds:
 
@@ -48,16 +47,36 @@ Each component entry binds:
 - current-ABI status and producer ownership;
 - current source paths (with direct whole-router/tape transplant rejected);
 - either `economics: {"status": "PENDING"}`, or a completed
-  `PASS_PAIRED_ECONOMICS` receipt with distinct `v5c:` control/candidate
-  identities, >=2 opponents, >=4 identical seeds per opponent, both seats,
-  >=16 paired cells, and non-negative aggregate paired margin delta.
+  `PASS_PAIRED_ECONOMICS` receipt.
+
+A leaf PASS binds a panel digest, distinct `v5c:` control/candidate identities,
+>=2 opponents, >=4 identical seeds per opponent, both seats, >=16 paired cells,
+non-negative aggregate paired margin delta, and a per-opponent margin map whose
+keys exactly equal the played opponents and whose every delta is non-negative.
+This prevents a favorable opponent from masking a regression on another played
+opponent.
 
 One carrier may legitimately satisfy more than one adjacent semantic slot if
 its source receipt proves each slot; the manifest still lists those slots
 separately so no submitted behavior can disappear behind a broad carrier name.
 
-`PENDING` is useful while leaf source PRs are converging, but it always blocks
-composition readiness. Historical V3.1 uplift alone cannot satisfy this gate.
+## Combined composition evidence is mandatory
+
+Individually positive leaves can interact badly. Therefore all nine leaf PASSes
+still do **not** make the stack composition-ready.
+
+The gate deterministically hashes the exact submitted authority + topology +
+ordered component source identities (slot, current-ABI flag, producer ownership,
+source paths, carrier PR/head, source receipt) into `component_source_sha256`.
+The manifest must then carry a separate `composition_economics` receipt for the
+fully assembled candidate. A composition PASS must bind that exact
+`component_source_sha256` and satisfy the same paired panel/per-opponent floors.
+If the combined receipt is PENDING, stale, built from even one different head,
+or negative on any played opponent, the gate remains `BLOCKED`.
+
+This is the core single-V5 invariant: source-green leaf islands are evidence;
+only the exact assembled stack with matched current economics can become
+`CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF`.
 
 ## Hard lineage rules
 
@@ -69,10 +88,9 @@ A manifest is rejected if it asks for any of the following:
 - release authorization;
 - Kaggle submission.
 
-The result `CURRENT_V5_COMPOSITION_READY_DEFAULT_OFF` means only that all
-required current-ABI components have source custody plus the paired-economics
-floor and can be composed/rejoined as one default-OFF V5 candidate. The receipt
-explicitly grants **no** default-flip, release, or Kaggle authority.
+The composition-ready result explicitly grants **no** default-flip, release, or
+Kaggle authority. The separate V3.1 champion-ratchet/release boundary remains
+responsible for the owner's final `V5 > submitted V3.1` acceptance theorem.
 
 ## Run
 
@@ -90,5 +108,5 @@ and `2` for malformed or invariant-breaking input. Receipt output is write-once.
 
 The manifest JSON uses schema `titan-v5-r04-recovery-composition-gate/v1`.
 See `test_composition_gate.py::valid_manifest` for a complete positive fixture;
-for a source-ready leaf whose economics are not complete, replace its economics
-object with exactly `{"status": "PENDING"}`.
+for source-ready evidence whose economics are not complete, use exactly
+`{"status": "PENDING"}` for that leaf or the final `composition_economics`.
