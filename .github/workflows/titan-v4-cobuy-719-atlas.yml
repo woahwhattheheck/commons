@@ -6,8 +6,8 @@ on:
       - '.github/workflows/titan-v4-cobuy-719-atlas.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/cobuy_719_collision_atlas.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/test_cobuy_719_collision_atlas.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/cobuy_opening_collision.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/COBUY-CURRENT-NATIVE-OPENING.json'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,6 +18,14 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Assert literal pull-request head custody
+        run: |
+          actual="$(git rev-parse HEAD)"
+          expected="${{ github.event.pull_request.head.sha }}"
+          echo "HEAD_SHA=$actual"
+          test "$actual" = "$expected"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -26,7 +34,7 @@ jobs:
         run: |
           python -B test_cobuy_719_collision_atlas.py -v
           python -O -B test_cobuy_719_collision_atlas.py -v
-          python -m py_compile cobuy_719_collision_atlas.py test_cobuy_719_collision_atlas.py
+          python -m py_compile cobuy_719_collision_atlas.py test_cobuy_719_collision_atlas.py cobuy_opening_collision.py
       - name: Exact 719-step authored atlas
         run: |
           python revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/market-baseline/cobuy_719_collision_atlas.py --output /tmp/cobuy-719.json
@@ -43,4 +51,5 @@ jobs:
           print('NOVEL=' + json.dumps(d['novel_authoritative_collisions'], sort_keys=True, separators=(',', ':')))
           print('AUTHORITATIVE=' + json.dumps(d['authoritative_collisions'], sort_keys=True, separators=(',', ':')))
           print('OPENING_CONTROL=' + json.dumps(d['controls'], sort_keys=True, separators=(',', ':')))
+          print('SOURCE_BLOBS=' + json.dumps(d['source_blobs'], sort_keys=True, separators=(',', ':')))
           PY
