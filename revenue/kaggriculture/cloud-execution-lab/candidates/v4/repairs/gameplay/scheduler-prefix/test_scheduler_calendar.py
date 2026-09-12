@@ -34,6 +34,18 @@ def _helper_from_candidate(candidate: str):
     return namespace["_strict_scheduler_turns_per_day"]
 
 
+def _market_helper_from_candidate(candidate: str):
+    tree = ast.parse(candidate)
+    node = next(
+        n for n in tree.body
+        if isinstance(n, ast.FunctionDef) and n.name == "_engine_market_limit"
+    )
+    segment = ast.get_source_segment(candidate, node)
+    namespace: dict[str, object] = {}
+    exec(compile(segment + "\n", "<market-limit-helper>", "exec"), namespace)
+    return namespace["_engine_market_limit"]
+
+
 class SchedulerCalendarCustodyTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -86,6 +98,8 @@ class SchedulerCalendarCustodyTests(unittest.TestCase):
         self.assertEqual(text.count("orders=_engine_market_prefix(market_action,config)"), 2)
         self.assertEqual(text.count("def _strict_scheduler_turns_per_day("), 1)
         self.assertEqual(text.count("turns_per_day=_strict_scheduler_turns_per_day(config)"), 3)
+        self.assertEqual(text.count("def _engine_market_limit("), 1)
+        self.assertEqual(text.count("market_limit=_engine_market_limit(config)"), 1)
 
     def test_engine_source_is_the_bound_calendar_authority(self):
         _, engine = self._require_repo()
@@ -163,6 +177,44 @@ class SchedulerCalendarCustodyTests(unittest.TestCase):
         self.assertNotIn("if farm['money']<budget or now%24==23:", text)
         self.assertTrue(11 % 12 == 12 - 1)
         self.assertFalse(11 % 24 == 23)
+
+    def test_market_limit_matches_prefix_and_engine_minimum_one(self):
+        prefixed, engine = self._require_repo()
+        candidate = C.materialize(prefixed, engine).decode("utf-8")
+        helper = _market_helper_from_candidate(candidate)
+        self.assertEqual(helper({}), 10)
+        for raw in (0, -7, 1, 2, 10, True, False, 2.9, "0", "3"):
+            with self.subTest(raw=raw):
+                self.assertEqual(
+                    helper({"maxMarketOrdersPerTurn": raw}),
+                    max(1, int(raw)),
+                )
+
+    def test_act_cap_guards_share_effective_market_limit(self):
+        prefixed, engine = self._require_repo()
+        text = C.materialize(prefixed, engine).decode("utf-8")
+        self.assertIn("return q[:_engine_market_limit(config)]", text)
+        self.assertIn("if len(orders)>=market_limit:", text)
+        self.assertIn("if q>0 and len(market)<market_limit:", text)
+        self.assertNotIn(
+            "if len(orders)>=int(config.get('maxMarketOrdersPerTurn',10)):",
+            text,
+        )
+        self.assertNotIn(
+            "if q>0 and len(market)<int(config.get('maxMarketOrdersPerTurn',10)):",
+            text,
+        )
+
+    def test_cap_zero_and_negative_keep_row_zero_executable(self):
+        prefixed, engine = self._require_repo()
+        helper = _market_helper_from_candidate(C.materialize(prefixed, engine).decode("utf-8"))
+        for raw in (0, -1, -99, 1):
+            with self.subTest(raw=raw):
+                limit = helper({"maxMarketOrdersPerTurn": raw})
+                self.assertEqual(limit, 1)
+                self.assertTrue(len([]) < limit)
+                self.assertTrue(len([["BUY_SEED", "CARROT", 1]]) >= limit)
+
 
     def test_canonical_24_predicates_are_behavior_preserving(self):
         prefixed, engine = self._require_repo()

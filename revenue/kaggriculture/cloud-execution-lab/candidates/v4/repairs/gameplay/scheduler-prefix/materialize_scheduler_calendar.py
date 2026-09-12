@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Compose strict calendar custody after the canonical V4 scheduler-prefix repair.
+"""Compose scheduler calendar + executable-market custody after V4 prefix repair.
 
-Input is the exact output of ``materialize_scheduler_prefix.py``.  This stage
-changes only the remaining hard-coded 24-turn day assumptions in
-``SellScheduler.cash_reserve``, ``SellScheduler.receipt_profile`` and
-``SellScheduler.act``. It is a source-only scratch materializer: production
-files are never edited in place.
+Input is the exact output of ``materialize_scheduler_prefix.py``. This stage
+closes the remaining hard-coded day-boundary assumptions and binds every
+scheduler market-capacity consumer to the engine's same minimum-one limit.
+It is a source-only scratch materializer: production files are never edited
+in place.
 """
 from __future__ import annotations
 
@@ -36,6 +36,19 @@ def _strict_scheduler_turns_per_day(config):
 class SellScheduler:
 """
 
+MARKET_PREFIX_DEF_OLD: Final = "def _engine_market_prefix(action, config):\n"
+MARKET_PREFIX_DEF_NEW: Final = """\
+def _engine_market_limit(config):
+    # Match the official interpreter and the canonical prefix projection:
+    # at least row zero executes for any int-coercible configured cap.
+    return max(1,int(config.get('maxMarketOrdersPerTurn',10)))
+
+
+def _engine_market_prefix(action, config):
+"""
+MARKET_PREFIX_RETURN_OLD: Final = "    return q[:max(1,int(config.get('maxMarketOrdersPerTurn',10)))]\n"
+MARKET_PREFIX_RETURN_NEW: Final = "    return q[:_engine_market_limit(config)]\n"
+
 CASH_START_OLD: Final = "        now=int(obs['step']);farm=dict(obs['farms'][obs['player']])\n"
 CASH_START_NEW: Final = (
     "        now=int(obs['step']);farm=dict(obs['farms'][obs['player']])\n"
@@ -63,6 +76,7 @@ ACT_START_OLD: Final = "        config=dict(config or {});now=int(obs['step']);l
 ACT_START_NEW: Final = (
     "        config=dict(config or {});now=int(obs['step']);last=int(config.get('episodeSteps',720))-2\n"
     "        turns_per_day=_strict_scheduler_turns_per_day(config)\n"
+    "        market_limit=_engine_market_limit(config)\n"
 )
 ACT_END_OLD: Final = "        end=min(now+HORIZON,last,(now//24+1)*24-1)\n"
 ACT_END_NEW: Final = (
@@ -74,8 +88,15 @@ ACT_NAIVE_EOD_NEW: Final = (
     "take=max(take,current[item])\n"
 )
 
+ACT_FEASIBLE_CAP_OLD: Final = "                    if len(orders)>=int(config.get('maxMarketOrdersPerTurn',10)):\n"
+ACT_FEASIBLE_CAP_NEW: Final = "                    if len(orders)>=market_limit:\n"
+ACT_APPEND_CAP_OLD: Final = "            if q>0 and len(market)<int(config.get('maxMarketOrdersPerTurn',10)):\n"
+ACT_APPEND_CAP_NEW: Final = "            if q>0 and len(market)<market_limit:\n"
+
 ENGINE_ANCHORS: Final = (
     'turns_per_day = max(1, int(get(cfg, "turnsPerDay", 24)))',
+    'max_orders = max(1, int(get(env.configuration, "maxMarketOrdersPerTurn", 10)))',
+    'queues.append(q[:max_orders])',
     'day = step // turns_per_day',
     'if (step + 1) % turns_per_day == 0:',
     '_apply_unit_action(obs0.farms[i], s.observation.private, 0, _allowed(farmer_action),',
@@ -121,8 +142,12 @@ def transform_prefixed(source: str) -> str:
         raise CalendarMaterializationError("canonical scheduler-prefix helper missing")
     if source.count(PREFIX_ANCHORS[1]) != 2:
         raise CalendarMaterializationError("canonical scheduler-prefix consumers missing")
+    if source.count(MARKET_PREFIX_RETURN_OLD) != 1:
+        raise CalendarMaterializationError("canonical minimum-one prefix return missing")
 
     out = source.replace(CLASS_ANCHOR, "\n\n" + CALENDAR_HELPER, 1)
+    out = _replace_once(out, MARKET_PREFIX_DEF_OLD, MARKET_PREFIX_DEF_NEW, "market limit helper bind")
+    out = _replace_once(out, MARKET_PREFIX_RETURN_OLD, MARKET_PREFIX_RETURN_NEW, "prefix market limit bind")
     out = _replace_once(out, CASH_START_OLD, CASH_START_NEW, "cash_reserve calendar bind")
     out = _replace_once(out, CASH_RESET_OLD, CASH_RESET_NEW, "cash_reserve hire reset")
     out = _replace_once(out, RECEIPT_START_OLD, RECEIPT_START_NEW, "receipt calendar bind")
@@ -131,6 +156,8 @@ def transform_prefixed(source: str) -> str:
     out = _replace_once(out, ACT_START_OLD, ACT_START_NEW, "act calendar bind")
     out = _replace_once(out, ACT_END_OLD, ACT_END_NEW, "act horizon day boundary")
     out = _replace_once(out, ACT_NAIVE_EOD_OLD, ACT_NAIVE_EOD_NEW, "act naive EOD guard")
+    out = _replace_once(out, ACT_FEASIBLE_CAP_OLD, ACT_FEASIBLE_CAP_NEW, "act feasibility market limit")
+    out = _replace_once(out, ACT_APPEND_CAP_OLD, ACT_APPEND_CAP_NEW, "act append market limit")
 
     for predecessor in (
         CASH_RESET_OLD,
@@ -138,6 +165,9 @@ def transform_prefixed(source: str) -> str:
         EOD_OLD,
         ACT_END_OLD,
         ACT_NAIVE_EOD_OLD,
+        MARKET_PREFIX_RETURN_OLD,
+        ACT_FEASIBLE_CAP_OLD,
+        ACT_APPEND_CAP_OLD,
     ):
         if predecessor in out:
             raise CalendarMaterializationError("hard-coded calendar predecessor survived")
@@ -145,6 +175,12 @@ def transform_prefixed(source: str) -> str:
         raise CalendarMaterializationError("calendar binding cardinality drift")
     if out.count("def _strict_scheduler_turns_per_day(") != 1:
         raise CalendarMaterializationError("calendar helper cardinality drift")
+    if out.count("def _engine_market_limit(") != 1:
+        raise CalendarMaterializationError("market limit helper cardinality drift")
+    if out.count("market_limit=_engine_market_limit(config)") != 1:
+        raise CalendarMaterializationError("act market limit binding cardinality drift")
+    if out.count("_engine_market_limit(config)") != 3:
+        raise CalendarMaterializationError("market limit consumer cardinality drift")
     if out.count(PREFIX_ANCHORS[1]) != 2:
         raise CalendarMaterializationError("prefix consumers changed unexpectedly")
     ast.parse(out, filename="<v4-scheduler-calendar-custody>")
@@ -173,7 +209,7 @@ def materialize(prefixed_source_bytes: bytes, engine_bytes: bytes) -> bytes:
 
 def _receipt(prefixed: bytes, engine: bytes, candidate: bytes) -> dict[str, object]:
     return {
-        "operation": "SOL-SCHEDULER-CALENDAR-CUSTODY-WIDE",
+        "operation": "SOL-SCHEDULER-CUSTODY-WIDE",
         "admission": "SOURCE_ONLY_MERGEABLE_ACTIVATION_STILL_GATED",
         "raw_scheduler_git_blob": RAW_SCHEDULER_GIT_BLOB,
         "prefix_materializer_git_blob": PREFIX_MATERIALIZER_GIT_BLOB,
@@ -186,6 +222,7 @@ def _receipt(prefixed: bytes, engine: bytes, candidate: bytes) -> dict[str, obje
             "receipt_profile EOD/drop boundary uses strict configured turnsPerDay",
             "act horizon clipping uses strict configured turnsPerDay",
             "act naive EOD guard uses strict configured turnsPerDay",
+            "canonical prefix and both act market-cap guards share official minimum-one limit",
         ],
         "production_activation": False,
         "default_changed": False,
