@@ -192,6 +192,35 @@ def _pickup_request(action: Sequence) -> Optional[int]:
     return requested
 
 
+def _public_observation_binding(obs: Mapping, start_step: int, turns_per_day: int) -> int:
+    """Bind a certificate to the exact public seat/clock when those fields exist."""
+    player = obs.get("player")
+    farms = obs.get("farms")
+    if type(player) is not int:
+        raise JointAssignmentError("observation player must be a plain integer")
+    if (
+        not isinstance(farms, Sequence)
+        or isinstance(farms, (str, bytes))
+        or not 0 <= player < len(farms)
+    ):
+        raise JointAssignmentError("observation player is out of range")
+
+    expected = {
+        "step": start_step,
+        "day": start_step // turns_per_day,
+        "hour": start_step % turns_per_day,
+    }
+    for name, wanted in expected.items():
+        if name not in obs:
+            continue
+        value = obs[name]
+        if type(value) is not int:
+            raise JointAssignmentError(f"observation {name} must be a plain integer")
+        if value != wanted:
+            raise JointAssignmentError(f"observation {name} does not match start_step")
+    return player
+
+
 def _extract_bundle(
     mechanics: Any,
     farm: Mapping,
@@ -306,7 +335,7 @@ def _simulate(
     turns_per_day: int,
     shed_capacity: int,
 ) -> tuple[Mapping, Mapping, tuple[dict, ...], Optional[str]]:
-    player = int(obs["player"])
+    player = obs["player"]
     farm = deepcopy(obs["farms"][player])
     private = deepcopy(obs["private"])
     count = 1 + len(farm.get("hands", []))
@@ -381,6 +410,7 @@ def propose_pair_swap(
     turns_per_day = int(cfg.get("turnsPerDay", 24))
     if turns_per_day <= 0:
         raise JointAssignmentError("turnsPerDay must be positive")
+    player = _public_observation_binding(obs, start_step, turns_per_day)
     if start_step // turns_per_day != end_step // turns_per_day:
         return JointSwapResult(False, "day_boundary")
     if any(step % turns_per_day == turns_per_day - 1 for step in range(start_step, end_step + 1)):
@@ -393,7 +423,6 @@ def propose_pair_swap(
         if market:
             return JointSwapResult(False, "market_boundary")
 
-    player = int(obs["player"])
     farm = obs["farms"][player]
     private = obs["private"]
     count = 1 + len(farm.get("hands", []))
