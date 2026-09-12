@@ -165,7 +165,7 @@ def _market_quantity(row: Any, op: str, item: str) -> int | None:
         return None
     try:
         quantity = int(row[2])
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return None
     return quantity if quantity > 0 else None
 
@@ -177,7 +177,7 @@ def _prefix_limit(action: Any, configuration: Any = None) -> int:
              else getattr(cfg, "maxMarketOrdersPerTurn", 10))
     try:
         return max(1, int(value))
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return 1
 
 
