@@ -2,6 +2,6 @@ TITAN / TokenJunkieLabs Kaggriculture experimental agent
 Copyright (c) 2026 Bryce Xavier Muhlnickel (TokenJunkieLabs).
 Contributions: Euler, ASTRA-WORK, ROWAN.
 Owner-authored agent: MIT OR CC-BY-4.0, at the recipient's choice.
-Source: https://github.com/woahwhattheheck/commons/blob/515cdabbde75ae3066fe096bcce65081f33e709d/revenue/kaggriculture/cloud-dispatch/candidate.py
+Source: path `revenue/kaggriculture/cloud-dispatch/candidate.py` @ 515cdabbde75ae3066fe096bcce65081f33e709d (public Commons URL omitted)
 ROWAN development selection; stronger-opponent and reserved validation pending.
 The export tool preserves the agent file byte for byte.
