@@ -45,6 +45,20 @@ class MarketOrderBudgetTests(unittest.TestCase):
         self.assertEqual(row["dropped_nonempty"], [{"slot": 10, "order": ["BUY_ANIMAL", "SHEEP", 1]}])
         self.assertEqual(row["executable_active_rows"], 0)
 
+    def test_adjacent_same_orders_are_not_compacted(self):
+        # The engine budget is raw rows, not quantity units. Even identical
+        # adjacent rows retain distinct rival-aligned execution positions, so
+        # ORDERBUDGET must report rather than silently consolidate them.
+        market = [["SELL", "EGG", 1] for _ in range(11)]
+        row = budget.analyze_action({"market": market}, 10)
+        self.assertEqual(row["raw_rows"], 11)
+        self.assertEqual(row["executable_active_rows"], 10)
+        self.assertEqual(
+            row["dropped_nonempty"],
+            [{"slot": 10, "order": ["SELL", "EGG", 1]}],
+        )
+        self.assertIsNone(row["admission_slot"])
+
     def test_empty_overflow_is_structural_not_effective(self):
         row = budget.analyze_action({"market": [[] for _ in range(12)]}, 10)
         self.assertTrue(row["structural_overflow"])
