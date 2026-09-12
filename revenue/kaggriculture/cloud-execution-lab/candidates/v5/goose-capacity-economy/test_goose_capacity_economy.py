@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import copy
 import importlib.util
 from pathlib import Path
 import sys
 import types
 import unittest
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 
@@ -26,12 +28,13 @@ class Native:
         self.days = days
 
 
-def day(hands=2, hire_hour=0, market_extra=0):
+def day(hands=2, hire_hour=0, market_extra=0, hire_count=None):
     cards = []
+    hire_count = hands if hire_count is None else hire_count
     for hour in range(24):
         market = [["SELL", "CARROT", 1] for _ in range(market_extra)]
         if hour == hire_hour:
-            market = market + [["HIRE"] for _ in range(hands)]
+            market = market + [["HIRE"] for _ in range(hire_count)]
         cards.append({"farmer": ["PASS"], "hands": [["PASS"] for _ in range(hands)], "market": market})
     return cards
 
@@ -50,13 +53,21 @@ class P02Contracts(unittest.TestCase):
 
     def test_schedule_places_our_hires_after_parent_workforce(self):
         native = Native({d: day(hands=3, hire_hour=1) for d in range(12, 30)})
-        schedule, hire_cost, _distance = p02._schedule(native, 12, (7, 4), 0)
-        self.assertEqual(schedule[12], {"hour": 4, "expected": 3})
+        schedule, hire_cost, _distance = p02._schedule(native, 12, (7, 4), 3)
+        self.assertEqual(schedule[12], {"hour": 4, "expected": 3, "hire_ordinal": 3})
+        self.assertGreater(hire_cost, 0)
+
+    def test_schedule_prices_same_day_hires_not_standing_hands(self):
+        native = Native({d: day(hands=8, hire_hour=1, hire_count=1) for d in range(12, 30)})
+        schedule, hire_cost, _distance = p02._schedule(native, 12, (7, 4), 1)
+        self.assertEqual(schedule[12]["expected"], 8)
+        self.assertEqual(schedule[12]["hire_ordinal"], 1)
+        self.assertEqual(schedule[13]["hire_ordinal"], 1)
         self.assertGreater(hire_cost, 0)
 
     def test_schedule_rejects_market_slot_exhaustion(self):
         native = Native({d: day(hands=2, hire_hour=0, market_extra=(7 if d == 12 else 0)) for d in range(12, 30)})
-        self.assertIsNone(p02._schedule(native, 12, (5, 4), 0))
+        self.assertIsNone(p02._schedule(native, 12, (5, 4), 2))
 
     def test_walk_is_deterministic(self):
         self.assertEqual(p02._walk([4, 4], (6, 5)), ["EAST"])
@@ -83,13 +94,53 @@ class P02Contracts(unittest.TestCase):
         obs = {"step": 200, "player": 0, "farms": [{}, {}], "private": {}}
         self.assertIs(p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True), action)
 
-    def test_same_step_does_not_append_twice(self):
+    def test_identical_same_step_replays_transformed_action_without_reentry(self):
         action = {"farmer": ["PASS"], "hands": [], "market": []}
         cfg = dict(p02.CFG)
         obs = {"step": 200, "player": 0, "farms": [{}, {}], "private": {}}
-        state = p02._state(0, 200)
-        state["last"] = 200
-        self.assertIs(p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True), action)
+
+        def request(parent, _obs, state):
+            state["phase"] = "requested"
+            out = copy.deepcopy(parent)
+            out["market"].append(["HIRE"])
+            return out
+
+        with mock.patch.object(p02, "_request", side_effect=request) as patched:
+            first = p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True)
+            second = p02.apply_goose_capacity_economy(copy.deepcopy(action), copy.deepcopy(obs), cfg, enabled=True)
+        self.assertEqual(first, second)
+        self.assertEqual(first["market"], [["HIRE"]])
+        self.assertEqual(patched.call_count, 1)
+        self.assertEqual(p02.STATE[0]["phase"], "requested")
+
+    def test_changed_same_step_restores_pre_step_state(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        cfg = dict(p02.CFG)
+        obs = {"step": 200, "player": 0, "farms": [{}, {}], "private": {}}
+
+        def request(parent, _obs, state):
+            state["phase"] = "requested"
+            state["target"] = (2, 2)
+            out = copy.deepcopy(parent)
+            out["market"].append(["HIRE"])
+            return out
+
+        changed = copy.deepcopy(obs)
+        changed["private"] = {"revision": 1}
+        with mock.patch.object(p02, "_request", side_effect=request) as patched:
+            first = p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True)
+            second = p02.apply_goose_capacity_economy(copy.deepcopy(action), changed, cfg, enabled=True)
+            third = p02.apply_goose_capacity_economy(copy.deepcopy(action), copy.deepcopy(changed), cfg, enabled=True)
+            next_obs = copy.deepcopy(changed)
+            next_obs["step"] = 201
+            fourth = p02.apply_goose_capacity_economy(copy.deepcopy(action), next_obs, cfg, enabled=True)
+        self.assertEqual(first["market"], [["HIRE"]])
+        self.assertEqual(second, action)
+        self.assertEqual(third, action)
+        self.assertEqual(fourth["market"], [["HIRE"]])
+        self.assertEqual(patched.call_count, 2)
+        self.assertEqual(p02.STATE[0]["phase"], "requested")
+        self.assertNotIn("target", p02.STATE[0].get("_retry_before", {}))
 
 
 if __name__ == "__main__":
