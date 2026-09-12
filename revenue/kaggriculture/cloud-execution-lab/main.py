@@ -53,6 +53,14 @@ def _town_procurement_enabled(feature_data):
     return value
 
 
+def _row_shed_enabled(feature_data):
+    """Bind the entrypoint-owned V3.1 row-shed repair with exact bool semantics."""
+    value = feature_data.get('row_shed', False)
+    if type(value) is not bool:
+        raise TypeError('row_shed must be bool')
+    return value
+
+
 def _canonical_entrypoint_observation(observation, configuration):
     """Bind public identity exactly before any retained root state is touched."""
     obs = dict(observation)
@@ -113,15 +121,20 @@ def _new_instance(root, feature_data):
     from titan_runtime import TitanAgent, Features, load
     feature_data = _runtime_feature_data(feature_data)
     town_enabled = _town_procurement_enabled(feature_data)
+    row_shed_enabled = _row_shed_enabled(feature_data)
     feature_data.pop('town_procurement', None)
+    feature_data.pop('row_shed', None)
     features = Features(**feature_data)
     if town_enabled and (features.consumer != 'frozen' or features.terminal_route):
         raise ValueError('town_procurement is the tested nonterminal frozen composition')
+    if row_shed_enabled and (features.consumer != 'frozen' or features.terminal_route):
+        raise ValueError('row_shed is the tested nonterminal frozen composition')
 
     class FinalPressureAgent(TitanAgent):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.town_procurement_enabled = town_enabled
+            self.row_shed_enabled = row_shed_enabled
             self._finalizer_checkpoint = None
             self._staged_spatial_recovery = None
             self._history_checkpoint = None
@@ -228,6 +241,37 @@ def _new_instance(root, feature_data):
                 'action': deepcopy(selected),
             }
 
+        def _row_shed_final_selected(self, obs, cfg, selected):
+            """Apply canonical V3.1 SELL pricing at the final returned boundary.
+
+            Recompute only the caller-owned unit projection for the exact final
+            action. No producer/controller is invoked. Any ambiguous projection
+            or row evidence fails closed to the already-finalized action.
+            """
+            from row_shed_sell_order import RowShedSellOrder
+            from scheduler import post_units
+            try:
+                _farm, private = post_units(obs, selected, cfg)
+                row_shed = RowShedSellOrder()
+                returned = row_shed.transform(
+                    obs, cfg, selected, post_unit_shed=private['shed'],
+                    fallback_action=selected)
+                report = dict(row_shed.diagnostics)
+                report['changed'] = returned != selected
+                report['returned_action_bound'] = bool(
+                    report.get('status') == 'applied' and returned != selected)
+            except (ValueError, TypeError, KeyError, AttributeError,
+                    IndexError, OverflowError) as error:
+                returned = selected
+                report = {
+                    'status': 'fallback',
+                    'reason': f'{type(error).__name__}: {error}'[:500],
+                    'changed': False,
+                    'returned_action_bound': False,
+                }
+            self.diagnostics['row_shed'] = report
+            return returned
+
         """Keep public-curve pressure at the returned-action boundary.
 
         Pressure was originally the final SELL transform. Later stock, crop,
@@ -270,6 +314,9 @@ def _new_instance(root, feature_data):
                 returned, report = apply(obs, returned, cfg, completed=completed)
                 self.diagnostics['town_procurement'] = report
                 self._checkpoint_finalizer(obs, returned, 'town_procurement')
+            if self.row_shed_enabled and completed:
+                returned = self._row_shed_final_selected(obs, cfg, returned)
+                self._checkpoint_finalizer(obs, returned, 'row_shed')
             return returned
 
     admission = None
