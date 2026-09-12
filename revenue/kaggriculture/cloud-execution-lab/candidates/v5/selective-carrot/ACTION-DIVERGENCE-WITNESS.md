@@ -24,12 +24,19 @@ finding a different terminal trace hash.
 
 `validate_native_9901_action_witness.py` is the fail-closed admission gate for
 the exact retained Apex experiment. The recorder deliberately remains reusable,
-but a native-9901 causal claim is inadmissible until the validator proves that
-the executed entry blobs, archives, evaluator, loader, engine members, seeds,
+but a native-9901 report is inadmissible until the validator proves that the
+executed entry blobs, archives, evaluator, loader, engine members, seeds,
 timeouts, seat topology, 719-step completion, and retained terminal scores all
 match the immutable native-9901 authority. This closes the gap where an exact
 archive could be named in the report while an unrelated extracted entry path
 was actually executed.
+
+Custody PASS and causal-positive are intentionally separate. The validator also
+requires the recorder's per-seat
+`candidate_action_is_first_observed_divergence` label to exist, surfaces both
+seat labels, and emits `causal_candidate_first_both_seats`. An opponent-first
+witness can therefore PASS exact experiment custody while remaining explicitly
+causal-false; validator PASS alone never authorizes a repair.
 
 ## Source contract
 
@@ -45,12 +52,13 @@ python -O -B -m unittest -v \
   test_action_divergence_witness.py test_validate_native_9901_action_witness.py
 ```
 
-The recorder suite has 9 tests and the exact-target authority validator has 8.
+The recorder suite has 9 tests and the exact-target authority validator has 10.
 Together they cover candidate-first, opponent-first, same-step observation
 divergence, identical traces, bounded witness windows, topology rejection, seat
 parsing, SHA validation, executed-entry drift, engine drift, terminal-score
-drift, duplicate seats, timeout drift, report tampering, and a claimed run with
-no actual action divergence.
+drift, duplicate seats, timeout drift, report tampering, a claimed run with no
+actual action divergence, a missing causal label, and the explicit distinction
+between custody PASS and causal-false.
 
 ## Exact native-9901 target
 
@@ -101,7 +109,9 @@ python -B validate_native_9901_action_witness.py \
 The validator requires the retained terminals exactly before returning PASS:
 V3.1 seat 0 `[74143, 64333]`, production-v3 seat 0 `[73906, 63838]`, and the
 same scores reversed for seat 1. It also requires 719 completed actions per arm
-and at least one real action divergence in each seat.
+and at least one real action divergence in each seat. A repair may be proposed
+from this receipt only if `causal_candidate_first_both_seats` is true; otherwise
+the report is exact custody/evidence but not a candidate-first causal witness.
 
 This tool is evidence-only. A witness does not authorize a gameplay change,
 CURRENT/release movement, or Kaggle submission. If both seats identify the same
