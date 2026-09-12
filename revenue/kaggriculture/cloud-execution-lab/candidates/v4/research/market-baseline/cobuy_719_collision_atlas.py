@@ -28,7 +28,7 @@ def git_blob(data: bytes) -> str:
 def _load_verified_source_module(path: Path, expected_blob: str, name: str) -> ModuleType:
     """Read, authenticate, compile, and execute one immutable byte snapshot.
 
-    The pathname is read exactly once.  `compile()` consumes the authenticated
+    The pathname is read exactly once. `compile()` consumes the authenticated
     in-memory bytes, so replacing the file after that read cannot change what
     executes while retaining the reviewed Git-blob identity.
     """
@@ -48,7 +48,7 @@ def _load_verified_source_module(path: Path, expected_blob: str, name: str) -> M
 
 
 # The sibling helper defines the reviewed tape codec/source identities used by
-# the opening COBUY theorem.  Importing it normally would make those executable
+# the opening COBUY theorem. Importing it normally would make those executable
 # bytes an unauthenticated dependency, so execute one exact reviewed snapshot.
 _HELPER = _load_verified_source_module(
     Path(__file__).with_name("cobuy_opening_collision.py"),
@@ -310,6 +310,7 @@ def _assert_apex_source_contracts(main_text: str, guard_text: str, policy_text: 
 
 def build_atlas(
     *,
+    engine_path: Path,
     arlene_path: Path,
     apex_tape_path: Path,
     apex_policy_path: Path,
@@ -317,6 +318,10 @@ def build_atlas(
     apex_guard_path: Path,
     opening_receipt_path: Path,
 ) -> dict[str, Any]:
+    # Engine bytes are theorem authority even though this census does not execute
+    # the engine; never emit an engine identity that was not authenticated here.
+    checked_text(engine_path, ENGINE_BLOB)
+
     arlene_routes = arlene_route_pulses(load_arlene(arlene_path))
     own_invariant = _invariant_pulses(arlene_routes)
 
@@ -403,6 +408,7 @@ def build_atlas(
         "limits": [
             "This is an authored-source atlas, not a replay of hidden rival current actions.",
             "The already-closed step-0 WHEAT13 guardrail is separated from novel frontier collisions.",
+            "The official engine identity is authenticated as theorem authority before any atlas is emitted.",
             "Arlene and the shared COBUY helper execute only from authenticated in-memory source snapshots.",
             "Apex six-day guard boundaries fail closed because budget sales may be moved ahead of buys.",
             "Arlene rows after an authored SELL fail closed because clamp_sells may delete that SELL and shift the buy.",
@@ -419,6 +425,7 @@ def default_paths(root: Path) -> dict[str, Path]:
     apex = root / "revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/apex"
     package = lab / "candidates/v4/research/market-baseline"
     return {
+        "engine_path": lab / "reference/engine/kaggriculture.py",
         "arlene_path": lab / "reference/next-panel/vendor/arlene.py",
         "apex_tape_path": apex / "source/tape.inc",
         "apex_policy_path": apex / "source/policy.cpp",
