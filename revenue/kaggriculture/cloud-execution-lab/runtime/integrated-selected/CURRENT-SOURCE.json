@@ -218,6 +218,7 @@
     "idle_fertilizer": true,
     "market_pressure": true,
     "operating_stock": true,
+    "overflow_safe_drop": false,
     "redundant_hire": true,
     "reserve_seconds": 0.01,
     "seed": true,
@@ -389,8 +390,8 @@
       "source_path": "NOTICE"
     },
     "TITAN-CONFIG.json": {
-      "bytes": 458,
-      "sha256": "1a64b94f116afe8ee5df69e683012a10dc02b0c292e847d7431b1c09c4475148",
+      "bytes": 489,
+      "sha256": "93d3fa9d27f93e1a516beec4d6f0739b317527a3cc0a30f5e2ee70e9d3e811eb",
       "source_path": "TITAN-CONFIG.json"
     },
     "TITAN-RELEASE.md": {
@@ -543,6 +544,16 @@
       "sha256": "0b0a700eb2b8efe0bdc59e5a3dde982fa14c1a5e9b847c9fb41438ed8e1700a0",
       "source_path": "test_ordered_selected_sell.py"
     },
+    "checks/test_overflow_safe_drop.py": {
+      "bytes": 10865,
+      "sha256": "f89304db08a5155dffa1e04d967a18a18ba5ba871588313152cddd166c364d1b",
+      "source_path": "candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py"
+    },
+    "checks/test_overflow_safe_drop_runtime.py": {
+      "bytes": 7710,
+      "sha256": "8a54281edaa8647182d96e1b22200ce9beb51a62599adaa64c5bb4889d7c6fb8",
+      "source_path": "test_overflow_safe_drop_runtime.py"
+    },
     "checks/test_route_recovery.py": {
       "bytes": 3059,
       "sha256": "40f9ab586c8a9ea6ab6be47b5d29129a0e9dfb256d45169fc2a64af90f440078",
@@ -639,8 +650,8 @@
       "source_path": "integrated_selected.py"
     },
     "main.py": {
-      "bytes": 23145,
-      "sha256": "3d565a4d785b1a9813495ed4fe274804d69ada107bc26348c479e704e282a263",
+      "bytes": 24343,
+      "sha256": "1fe58fc684e895d36a348bdc1bcce48e58a48a87877e0feed5250494b3d20f66",
       "source_path": "main.py"
     },
     "mechanics.py": {
@@ -662,6 +673,11 @@
       "bytes": 6464,
       "sha256": "b5fc1758b185150eee9423c7d4b946b5f713e411464bbf1f46325de9f880463f",
       "source_path": "ordered_selected_sell.py"
+    },
+    "overflow_safe_drop.py": {
+      "bytes": 8494,
+      "sha256": "8ae7a840adc2d5a18d7f3bc50b4ac3a5eed7172b6f7c926a8de3350030e652e5",
+      "source_path": "candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py"
     },
     "plant_suffix.py": {
       "bytes": 1394,
@@ -949,8 +965,8 @@
       "source_path": "terminal_history_join.py"
     },
     "titan_runtime.py": {
-      "bytes": 41597,
-      "sha256": "e9039d456d06a5571614a4ddad9cff81a802456fd58afcc1acebbf7d4c3e7ad8",
+      "bytes": 41843,
+      "sha256": "2074ee18cba344020cae6455df5f1de7f4d6c063859cb282882c6d3ee51f08e8",
       "source_path": "titan_runtime.py"
     },
     "town_procurement.py": {
