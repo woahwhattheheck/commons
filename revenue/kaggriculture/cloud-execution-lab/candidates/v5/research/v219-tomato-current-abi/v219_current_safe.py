@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 """Committed-route + retry-safe composition entrypoint for V219.
 
-``v219_current.py`` remains the donor-port theorem.  This canonical adapter adds
+``v219_current.py`` remains the donor-port theorem. This canonical adapter adds
 only current-runtime authority and idempotence:
 
-* the route snapshot comes from the landed shared current-route-witness seam,
-  keyed by the entrypoint's explicit ``completed_route_id``; raw
-  ``controller.cur`` is never consulted;
+* the full route snapshot comes from the landed shared current-route-witness
+  seam, authorized by the entrypoint's immutable current callback receipt;
+  raw ``controller.cur`` and a caller-supplied route id are never authority;
 * exact standard configuration keys must be present;
 * an identical repeated callback at one step replays the prior V219 result
   without consuming pending state twice, while any same-step input or route
@@ -15,8 +15,9 @@ only current-runtime authority and idempotence:
 The shared witness's full-route capture primitive is used deliberately rather
 than a bounded future window: V219 remains active through public step 718, where
 there is no step+1 row from which ``bind_current_route_window`` could construct a
-window.  Authority semantics are still exactly the witness seam's stable
-``controller.R[completed_route_id]`` capture and digest.
+window. Authority semantics are still exactly the witness seam's validated
+``{route_step,last_step,player,route}`` receipt plus stable
+``controller.R[receipt.route]`` capture and digest.
 """
 from __future__ import annotations
 
@@ -88,21 +89,34 @@ def _load_witness_module() -> Any | None:
 
 def _committed_route_authority(
     controller: Any,
-    completed_route_id: Any,
-) -> tuple[str, str, list[Any], str] | None:
+    observation: Any,
+    completed_route_receipt: Any,
+) -> tuple[str, str, list[Any], str, dict[str, Any]] | None:
+    """Bind a full route only through the canonical current callback receipt."""
     witness = _load_witness_module()
+    validate_receipt = None if witness is None else getattr(witness, "_current_route_receipt", None)
     capture = None if witness is None else getattr(witness, "_capture_route", None)
-    if not callable(capture):
+    if not callable(validate_receipt) or not callable(capture):
         return None
     try:
-        captured = capture(controller, completed_route_id)
+        receipt = validate_receipt(completed_route_receipt, observation)
+    except Exception:
+        return None
+    if not isinstance(receipt, dict):
+        return None
+    route_from_receipt = receipt.get("route")
+    if type(route_from_receipt) is not str or not route_from_receipt:
+        return None
+    try:
+        captured = capture(controller, route_from_receipt)
     except Exception:
         return None
     if not isinstance(captured, tuple) or len(captured) != 4:
         return None
     route_id, controller_type, route_snapshot, route_sha256 = captured
     if (
-        type(route_id) is not str
+        route_id != route_from_receipt
+        or type(route_id) is not str
         or not route_id
         or type(controller_type) is not str
         or not controller_type
@@ -115,12 +129,12 @@ def _committed_route_authority(
     # witness digest before any selected action can be changed.
     if core._bind_route(route_snapshot, route_sha256) is None:
         return None
-    return route_id, controller_type, route_snapshot, route_sha256
+    return route_id, controller_type, route_snapshot, route_sha256, copy.deepcopy(receipt)
 
 
 def _canonical_digest(value: Any) -> str | None:
     try:
-        rendered = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        rendered = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False)
         recovered = json.loads(rendered)
     except (TypeError, ValueError, json.JSONDecodeError):
         return None
@@ -135,6 +149,7 @@ def _call_key(
     configuration: Any,
     *,
     enabled: Any,
+    route_receipt: dict[str, Any],
     route_id: str,
     controller_type: str,
     route_snapshot: Any,
@@ -145,6 +160,7 @@ def _call_key(
         "selected": selected,
         "configuration": configuration,
         "enabled": enabled,
+        "route_receipt": route_receipt,
         "route_id": route_id,
         "controller_type": controller_type,
         "route_snapshot": route_snapshot,
@@ -159,13 +175,13 @@ def apply(
     *,
     enabled: Any,
     controller: Any,
-    completed_route_id: Any,
+    completed_route_receipt: Any,
     state: Any = None,
 ) -> tuple[Any, dict[str, Any], dict[str, Any]]:
-    """Run V219 against one explicitly committed producer route.
+    """Run V219 against one receipt-authenticated current producer route.
 
     Callers provide the controller solely so the shared witness can authenticate
-    ``R[completed_route_id]``. They cannot inject a route snapshot or digest.
+    ``R[receipt.route]``. They cannot inject a route id, snapshot, or digest.
     """
     stable = copy.deepcopy(state) if isinstance(state, dict) else core.new_state()
     if enabled is not True:
@@ -173,10 +189,10 @@ def apply(
     if not _strict_standard_config(configuration):
         return _identity(selected, stable, "unsupported-config")
 
-    authority = _committed_route_authority(controller, completed_route_id)
+    authority = _committed_route_authority(controller, observation, completed_route_receipt)
     if authority is None:
         return _identity(selected, stable, "route-authority")
-    route_id, controller_type, route_snapshot, route_sha256 = authority
+    route_id, controller_type, route_snapshot, route_sha256, route_receipt = authority
 
     step = observation.get("step") if isinstance(observation, dict) else None
     key = _call_key(
@@ -184,6 +200,7 @@ def apply(
         selected,
         configuration,
         enabled=enabled,
+        route_receipt=route_receipt,
         route_id=route_id,
         controller_type=controller_type,
         route_snapshot=route_snapshot,
@@ -227,6 +244,7 @@ def apply(
         report = copy.deepcopy(report)
         report["committed_route_id"] = route_id
         report["committed_controller_type"] = controller_type
+        report["committed_route_receipt"] = copy.deepcopy(route_receipt)
     return action, later, report
 
 
