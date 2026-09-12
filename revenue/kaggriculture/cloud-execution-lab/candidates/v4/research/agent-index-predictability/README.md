@@ -20,7 +20,16 @@ JSON array or JSONL. Each record needs:
   - two-item `rewards` list (the analyzer picks target/opponent by seat), or
   - `score` + `opponent_score`.
 
-If a record contains more than one outcome representation, all supplied representations must agree exactly after numeric validation or the record fails closed. There is deliberately no relative-tolerance comparison here: without an authenticated magnitude bound, a tiny relative difference can still be an enormous absolute contradiction. Integer values are retained exactly after finite-range validation so disagreements above the IEEE-754 exact-integer range cannot collapse through float conversion. When representations agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. This prevents a contradictory self-reported margin from silently overriding structured score fields while preserving legitimate large finite engine rewards; there is deliberately no guessed reward ceiling.
+If a record contains more than one outcome representation, all supplied representations must agree exactly after numeric validation or the record fails closed. There is deliberately no relative-tolerance comparison here: without an authenticated magnitude bound, a tiny relative difference can still be an enormous absolute contradiction. Integer values are retained exactly after finite-range validation so disagreements above the IEEE-754 exact-integer range cannot collapse through float conversion. When representations agree, the analyzer prefers `rewards`, then `score` + `opponent_score`, over a direct `margin`. Derived reward/score subtraction is also revalidated for finiteness, so individually finite operands cannot overflow into an infinite analyzed margin.
+
+There is deliberately **no built-in reward ceiling**. A historical Antigravity proposal suggested clipping final margins to +/-65,000, but a measured pinned-engine control produced a legitimate `168572 - 3550 = 165022` margin. Clipping would silently falsify that record.
+
+For ingestion where outcome records are not inherently trusted, two opt-in guards preserve the useful part of that hardening idea without inventing a universal score cap:
+
+- `--require-structured-outcome` rejects margin-only records and requires `rewards` or `score + opponent_score`. A redundant direct `margin` may still be present, but it must agree exactly with the structured representation.
+- `--authenticated-max-abs-margin N` accepts a positive finite bound only when the caller has authenticated that bound from the producing engine or dataset contract. A record outside the bound is **rejected, never clipped**. The default is no magnitude bound.
+
+These guards are also available through `analyze(..., require_structured_outcome=..., authenticated_max_abs_margin=...)` and `normalize_record(...)`. They do not claim that an arbitrary caller-supplied bound is correct; provenance for the bound remains the caller's responsibility.
 
 Duplicate exact `(seed, opponent, seat)` cells fail closed. `--require-complete` rejects any seed/opponent group missing one seat.
 
@@ -31,18 +40,31 @@ Example:
 {"seed":1909087201,"opponent":"LARK","seat":1,"rewards":[99800,101200]}
 ```
 
+For a trusted engine export whose authenticated absolute target-margin limit is 200,000:
+
+```text
+python analyze_agent_index.py panel.jsonl \
+  --require-complete \
+  --require-structured-outcome \
+  --authenticated-max-abs-margin 200000
+```
+
+Do not substitute `65000` (or any other guessed constant) merely because it sounds plausible.
+
 ## Output
 
-The JSON report includes exact matched-pair coverage; matched seat-0 / seat-1 mean target margins; paired mean and median `seat1 - seat0` delta; equal-opponent-weighted mean delta; paired sign-test counts and exact two-sided p-value; Cohen's paired standardized effect where finite/defined; per-opponent pair counts and mean deltas; raw opponent-assignment total-variation distance; and missing-cell examples.
+The JSON report includes exact matched-pair coverage; matched seat-0 / seat-1 mean target margins; paired mean and median `seat1 - seat0` delta; equal-opponent-weighted mean delta; paired sign-test counts and exact two-sided p-value; Cohen's paired standardized effect where finite/defined; per-opponent pair counts and mean deltas; raw opponent-assignment total-variation distance; missing-cell examples; and an `input_guard` receipt recording whether structured outcomes and an authenticated reject-only margin bound were enabled.
 
 A constant nonzero paired delta has zero variance and therefore no finite Cohen `d_z`; the tool emits JSON `null` for that degenerate statistic while preserving the raw paired mean and sign test.
 
-## Verification receipt
+## Verification boundary
 
-Analyzer Git blob `c6cf14817096867bc66968598cf5a64f2e928ad2`, SHA-256 `316464ec07c730da0fe953b6f1f6078bbdb8570863c0ae10ecb82349e7093bd4`.
+Current successor analyzer Git blob: `1c9133a8ab8f4edd27bde436c157a44a0a5efc67`.
 
-Regression Git blob `439ee93afc663e539c227635f8197a337fbec782`, SHA-256 `a7a58a1bd8d09b22992e89cb96916aac83b0e7f9ca93cb94d97d7e867bd0d748`.
+Current successor regression Git blob: `6dedeaea75598e8cdd8e528bde5888410ce34ca1`.
 
-Exact-byte local verification before publishing: 15/15 tests PASS under both normal Python and `python -O`. Tests include Simpson's-paradox opponent mix, unequal opponent-frequency weighting, exact duplicate/missing-cell rejection, seat-relative reward interpretation, strict type/nonfinite/overflow handling, contradictory redundant outcome rejection, a large-magnitude conflict that the predecessor's relative tolerance accepted, a `10**20` versus `10**20+1` integer-collapse killer, consistent redundant outcome acceptance, a legitimate 165,022-margin reward control, and strict-JSON zero-variance effect handling.
+The focused suite contains 20 methods, including the original matched-pair/statistical contracts plus: derived finite-operand overflow rejection; the legitimate 165,022-margin control; a killer showing why a universal 65,000 bound is invalid; authenticated reject-not-clip behavior; structured-outcome enforcement; explicit no-bound default compatibility; and input-guard receipt coverage.
+
+Repository workflow `TITAN V4 Gemini analyzer coverage` is the exact-head execution authority. It runs the analyzer regressions and Gemini convergence/addendum regressions under normal Python and `python -O`, plus `py_compile`. A queued or pending workflow is not green.
 
 At initial landing, default-branch searches did not surface a committed replay corpus containing the required matched seed/opponent/seat/outcome cells. A replay-capable/data seat should run this analyzer against an exact paired panel rather than infer a result from unmatched hosted games.
