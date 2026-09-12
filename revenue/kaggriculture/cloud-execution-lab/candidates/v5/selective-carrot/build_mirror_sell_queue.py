@@ -11,14 +11,47 @@ from build_delivery import archive_bytes, digest, members
 
 PRODUCTION_V3_SHA = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 FROZEN_SELECTED_SHA256 = "5ca1bc39efed756de71207f46926744ea69f9d2f300dd7b9c1a8cc4dbefeb9ef"
+MAIN_SHA256 = "b98aec64f83ea9a216def7ab1fef320a6498ae37816f506af1f891c934027035"
+CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
 MIRROR_DONOR_GIT_BLOB = "90052d735316461c7b3320a7e968dcddbb2c364e"
 MIRROR_DONOR_REL = Path("v4/repairs/gameplay/row-shed-sell-order/mirror_collision_value.py")
 FEATURE = "r04_mirror_sell_queue"
+PACKAGE_FLAG = "_r04_mirror_sell_queue"
 
 
 def git_blob_sha(body: bytes) -> str:
     header = b"blob " + str(len(body)).encode("ascii") + b"\0"
     return hashlib.sha1(header + body).hexdigest()
+
+
+def patch_main(body: bytes) -> bytes:
+    newline = b"\r\n" if b"\r\n" in body else b"\n"
+    feature_anchor = newline.join((
+        b"    from titan_runtime import TitanAgent, Features, load",
+        b"    feature_data = _runtime_feature_data(feature_data)",
+    ))
+    if body.count(feature_anchor) != 1:
+        raise ValueError("expected one main feature-binding seam")
+    feature_replacement = newline.join((
+        b"    from titan_runtime import TitanAgent, Features, load",
+        b"    mirror_sell_queue_enabled = feature_data.get('_r04_mirror_sell_queue', False)",
+        b"    if type(mirror_sell_queue_enabled) is not bool:",
+        b"        raise TypeError('_r04_mirror_sell_queue must be bool')",
+        b"    feature_data = _runtime_feature_data(feature_data)",
+    ))
+    init_anchor = newline.join((
+        b"            super()._initialize()",
+        b"            import sys",
+    ))
+    if body.count(init_anchor) != 1:
+        raise ValueError("expected one main consumer-initialize seam")
+    init_replacement = newline.join((
+        b"            super()._initialize()",
+        b"            self.consumer.mirror_sell_queue_enabled = mirror_sell_queue_enabled",
+        b"            import sys",
+    ))
+    return body.replace(feature_anchor, feature_replacement, 1).replace(
+        init_anchor, init_replacement, 1)
 
 
 def patch_frozen_selected(body: bytes) -> bytes:
@@ -31,20 +64,45 @@ def patch_frozen_selected(body: bytes) -> bytes:
         raise ValueError("expected one FrozenSelected final-return seam")
     replacement = newline.join((
         b"        self.previous=seller_public_observation(obs)",
-        b"        if config.get('r04_mirror_sell_queue') is True:",
+        b"        if getattr(self,'mirror_sell_queue_enabled',False):",
         b"            from mirror_sell_queue import MirrorSellQueue",
+        b"            mirror_config=dict(config)",
+        b"            mirror_config['r04_mirror_sell_queue']=True",
         b"            out=MirrorSellQueue().transform(",
-        b"                obs,config,out,post_unit_shed=shed,fallback_action=out)",
+        b"                obs,mirror_config,out,post_unit_shed=shed,fallback_action=out)",
         b"        return out",
     ))
     return body.replace(anchor, replacement, 1)
 
 
-def compose(production: dict[str, bytes], transformer: bytes, donor: bytes) -> dict[str, bytes]:
+def enable_config(body: bytes) -> bytes:
+    try:
+        data = json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError("production-v3 TITAN-CONFIG is not canonical UTF-8 JSON") from error
+    if not isinstance(data, dict):
+        raise ValueError("production-v3 TITAN-CONFIG must be an object")
+    if PACKAGE_FLAG in data:
+        raise ValueError("production-v3 already declares mirror SELL package flag")
+    data[PACKAGE_FLAG] = True
+    return (json.dumps(data, indent=2) + "\n").encode("utf-8")
+
+
+def compose(
+    production: dict[str, bytes], transformer: bytes, donor: bytes, *, enabled: bool = False
+) -> dict[str, bytes]:
+    if type(enabled) is not bool:
+        raise TypeError("enabled must be bool")
     files = dict(production)
     frozen = files.get("frozen_selected.py")
+    main = files.get("main.py")
+    config = files.get("TITAN-CONFIG.json")
     if frozen is None or digest(frozen) != FROZEN_SELECTED_SHA256:
         raise ValueError("production-v3 FrozenSelected authority drift")
+    if main is None or digest(main) != MAIN_SHA256:
+        raise ValueError("production-v3 main authority drift")
+    if config is None or digest(config) != CONFIG_SHA256:
+        raise ValueError("production-v3 TITAN-CONFIG authority drift")
     if git_blob_sha(donor) != MIRROR_DONOR_GIT_BLOB:
         raise ValueError("mirror assignment donor Git blob drift")
     for name in ("mirror_sell_queue.py", "mirror_collision_value.py"):
@@ -52,7 +110,10 @@ def compose(production: dict[str, bytes], transformer: bytes, donor: bytes) -> d
             raise ValueError("production-v3 already contains mirror SELL experiment member")
     files["mirror_sell_queue.py"] = transformer
     files["mirror_collision_value.py"] = donor
+    files["main.py"] = patch_main(main)
     files["frozen_selected.py"] = patch_frozen_selected(frozen)
+    if enabled:
+        files["TITAN-CONFIG.json"] = enable_config(config)
     return files
 
 
@@ -61,6 +122,10 @@ def main() -> None:
     parser.add_argument("--production-v3", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--tar", type=Path, required=True)
+    parser.add_argument(
+        "--enable", action="store_true",
+        help="emit the matched experimental ON archive; absent means package-default OFF",
+    )
     args = parser.parse_args()
     receipt_path = args.out.parent / (args.out.name + "-manifest.json")
     if any(path.exists() for path in (args.out, args.tar, receipt_path)):
@@ -71,7 +136,7 @@ def main() -> None:
     transformer = (here / "mirror_sell_queue.py").read_bytes()
     donor_path = here.parents[1] / MIRROR_DONOR_REL
     donor = donor_path.read_bytes()
-    files = compose(production, transformer, donor)
+    files = compose(production, transformer, donor, enabled=args.enable)
     packed = archive_bytes(files)
 
     args.out.mkdir(parents=True)
@@ -84,24 +149,29 @@ def main() -> None:
         stream.write(packed)
 
     receipt = {
-        "schema": "titan-v5-mirror-sell-queue-build/v1",
+        "schema": "titan-v5-mirror-sell-queue-build/v2",
         "parent_archive_sha256": PRODUCTION_V3_SHA,
         "candidate_archive_sha256": digest(packed),
         "feature": FEATURE,
         "feature_default": False,
+        "feature_enabled": bool(args.enable),
         "source_authority": {
             "frozen_selected_sha256": FROZEN_SELECTED_SHA256,
+            "main_sha256": MAIN_SHA256,
+            "config_sha256": CONFIG_SHA256,
             "mirror_assignment_git_blob": MIRROR_DONOR_GIT_BLOB,
         },
         "files": {name: digest(body) for name, body in sorted(files.items())},
         "kaggle_submission_hold": True,
     }
-    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    with receipt_path.open("x", encoding="utf-8") as stream:
+        stream.write(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps({
         "out": str(args.out),
         "members": len(files),
         "candidate_archive_sha256": digest(packed),
         "feature_default": False,
+        "feature_enabled": bool(args.enable),
     }))
 
 
