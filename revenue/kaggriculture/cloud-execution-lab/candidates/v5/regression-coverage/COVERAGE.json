@@ -1,0 +1,132 @@
+{
+  "schema": "titan-v5-v31-v4-regression-coverage/v1",
+  "authority": {
+    "v31_source_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+    "v31_archive_sha256": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+    "v31_assembled_base_ref": "741e7262",
+    "v4_source_ref": "4af1113154e78c662780e6658cd920daac7902e3",
+    "v4_archive_sha256": "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
+  },
+  "rows": [
+    {
+      "id": "active-arlene-producer",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/next-panel/vendor/arlene.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "bdb9cf58148a3c7961c085f4902759537decabf6"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "bdb9cf58148a3c7961c085f4902759537decabf6"},
+      "classification": "NO_CAUSAL_DELTA",
+      "note": "Submitted refs carry identical active Arlene producer bytes; the strong 13-tape treatment is a novel V5 replacement, not a restoration of this producer."
+    },
+    {
+      "id": "assembled-frozen-seller",
+      "path": "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py",
+      "left": {"ref": "741e7262", "blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"},
+      "classification": "NO_CAUSAL_DELTA",
+      "note": "V3.1 assembled-base seller witness and V4 seller are byte-identical; E05/E08/funding experiments are V4-active self-ablations, not seller-byte restoration."
+    },
+    {
+      "id": "raw-v31-frozen-seller-source-trap",
+      "path": "revenue/kaggriculture/cloud-execution-lab/frozen_selected.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "1f18a35c2993aa971fc80183ee42fb7026a01428"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c"},
+      "classification": "SOURCE_REF_NOT_PACKAGE_AUTHORITY",
+      "package_authority_row": "assembled-frozen-seller",
+      "note": "Do not infer submitted V3.1 seller execution from this historical repository file alone."
+    },
+    {
+      "id": "selected-sell-core-strict-prune",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/latest/selected_sell_core.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "d2cded3d35d4a60318e0dff71602c6b395dac3b8"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3"},
+      "classification": "DISPROVEN_NONCAUSAL",
+      "evidence_reason": "With submitted sellAcceptanceRule=strict, V4's no-rival early prune rejects only candidates whose no-rival delta is <=0; those candidates cannot satisfy V3.1 strict min(all scenario deltas)>0. Remaining candidates retain the same strict dominance requirement."
+    },
+    {
+      "id": "redundant-hire-reference",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/redundant_hire.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "4a0bf316290277607f520461442fa2d990a16780"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "9ded2a9b636793df0511103da802bd3f26dbbb94"},
+      "classification": "ACTIVE_CAUSAL_LANE",
+      "primary_carrier": {"pr": 13442, "lane": "E20 productive-detour submitted-V4 treatment"}
+    },
+    {
+      "id": "seed-funding-reference",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/seed_funding.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "3d0c19cdf9f1260f56be3f6a7beb191b37b3d568"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "3d0c19cdf9f1260f56be3f6a7beb191b37b3d568"},
+      "classification": "NO_CAUSAL_DELTA"
+    },
+    {
+      "id": "deadline-reference",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/deadline_adapter.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "664aa4f8a21368c388dfa6714406519b6535ef7f"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "664aa4f8a21368c388dfa6714406519b6535ef7f"},
+      "classification": "NO_CAUSAL_DELTA"
+    },
+    {
+      "id": "terminal-reference",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/terminal.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "5010fc03966f31a9b7139d25996d3f713080bf25"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "5010fc03966f31a9b7139d25996d3f713080bf25"},
+      "classification": "NO_CAUSAL_DELTA"
+    },
+    {
+      "id": "terminal-composition-reference",
+      "path": "revenue/kaggriculture/cloud-execution-lab/reference/titan-current/terminal_composition.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "3c0bb0fe4dfe02f3ec9690b4f5d100fb8bd28f99"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "3c0bb0fe4dfe02f3ec9690b4f5d100fb8bd28f99"},
+      "classification": "NO_CAUSAL_DELTA"
+    },
+    {
+      "id": "root-runtime",
+      "path": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "a10ad66f990c430dc27299f518b04ea3fde9e39b"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "998bf5da08f61f82eafaf5750c8a86fc3adad7fb"},
+      "classification": "DECOMPOSITION_OWNED",
+      "note": "Method-level checker below must account for every changed symbol before this ledger can go green."
+    },
+    {
+      "id": "root-scheduler",
+      "path": "revenue/kaggriculture/cloud-execution-lab/scheduler.py",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "da1b6fb571e79ba7dab54c8d816e45afb934e4d2"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "a483b24dd72b580d7d8811636b54d2d44f391575"},
+      "classification": "DECOMPOSITION_OWNED",
+      "note": "E14 is one known scheduler delta, not permission to call the full V3.1->V4 scheduler diff covered."
+    },
+    {
+      "id": "root-config-four-flags",
+      "path": "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json",
+      "left": {"ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a", "blob": "41db678812e7b197fd658ec0352c1ea742cc6e77"},
+      "right": {"ref": "4af1113154e78c662780e6658cd920daac7902e3", "blob": "86c18cee3cec97bbd0e35791fa90b48ecb8925f1"},
+      "classification": "ACTIVE_CAUSAL_LANE",
+      "primary_carrier": {"pr": 13426, "lane": "submitted-V4 four-flag factorial"}
+    }
+  ],
+  "config_delta": {
+    "path": "revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json",
+    "left_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+    "right_ref": "4af1113154e78c662780e6658cd920daac7902e3",
+    "expected_added": {
+      "crop_release": true,
+      "early_capital": true,
+      "idle_fertilizer": true,
+      "town_procurement": true
+    }
+  },
+  "decompositions": [
+    {
+      "id": "runtime-symbol-coverage",
+      "path": "revenue/kaggriculture/cloud-execution-lab/titan_runtime.py",
+      "left_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+      "right_ref": "4af1113154e78c662780e6658cd920daac7902e3",
+      "semantic_units": {}
+    },
+    {
+      "id": "scheduler-symbol-coverage",
+      "path": "revenue/kaggriculture/cloud-execution-lab/scheduler.py",
+      "left_ref": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+      "right_ref": "4af1113154e78c662780e6658cd920daac7902e3",
+      "semantic_units": {}
+    }
+  ]
+}
