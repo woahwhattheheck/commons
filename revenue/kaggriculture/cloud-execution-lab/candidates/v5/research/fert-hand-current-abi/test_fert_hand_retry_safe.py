@@ -24,6 +24,7 @@ class FertHandRetrySafetyTests(unittest.TestCase):
 
         self.assertEqual(first_report["reason"], "admit_fertilizer_hand")
         self.assertEqual(retry_report["reason"], "reapply_hire_plan")
+        self.assertTrue(retry_report["revalidated_full_admission"])
         self.assertEqual(retry, first)
 
     def test_future_parent_hire_on_retry_retires_candidate_plan(self):
@@ -94,6 +95,62 @@ class FertHandRetrySafetyTests(unittest.TestCase):
         self.assertFalse(report["changed"])
         self.assertEqual(report["reason"], "malformed_market_retry")
         self.assertIs(result, malformed)
+
+    def test_removed_future_plant_on_retry_retires_stale_hire(self):
+        adapter = FertHandCurrentABI()
+        obs = observation(target=None)
+        parent = selected()
+        fertile = route_tail(obs["step"])
+        fertile[0]["farmer"] = ["PLANT", "CARROT"]
+
+        first, first_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=fertile
+        )
+        self.assertTrue(first_report["changed"])
+        self.assertEqual(first_report["reason"], "admit_fertilizer_hand")
+        self.assertIn(["HIRE"], first["market"])
+
+        barren = route_tail(obs["step"])
+        retry, retry_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=barren
+        )
+        self.assertFalse(retry_report["changed"])
+        self.assertEqual(retry_report["reason"], "retry_admission_lost")
+        self.assertEqual(retry_report["fresh_reason"], "economic_gate")
+        self.assertEqual(retry, parent)
+
+        third, third_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=fertile
+        )
+        self.assertFalse(third_report["changed"])
+        self.assertEqual(third_report["reason"], "hire_window_closed")
+        self.assertEqual(third, parent)
+
+    def test_incomplete_retry_tail_retires_before_later_clean_retry(self):
+        adapter = FertHandCurrentABI()
+        obs = observation()
+        parent = selected()
+        clean = route_tail(obs["step"])
+        first, first_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=clean
+        )
+        self.assertTrue(first_report["changed"])
+        self.assertIn(["HIRE"], first["market"])
+
+        incomplete = clean[:-1]
+        retry, retry_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=incomplete
+        )
+        self.assertFalse(retry_report["changed"])
+        self.assertEqual(retry_report["reason"], "missing_complete_route_tail")
+        self.assertEqual(retry, parent)
+
+        third, third_report = adapter.transform_selected(
+            obs, {}, parent, future_actions=clean
+        )
+        self.assertFalse(third_report["changed"])
+        self.assertEqual(third_report["reason"], "hire_window_closed")
+        self.assertEqual(third, parent)
 
 
 if __name__ == "__main__":
