@@ -113,6 +113,23 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(report['coverage_certified'], 1)
         self.assertEqual(report['counterfactual_plan'], 0)
 
+    def test_malformed_starvation_state_fails_closed_across_all_own_animals(self):
+        for strikes in (True, 1.0, -1):
+            with self.subTest(strikes=strikes):
+                ns, policy = loaded_module()
+                tiles = [[None for _ in range(5)] for _ in range(5)]
+                tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[4][4] = {'animal': 'GOOSE', 'fed_today': False,
+                               'consecutive_unfed': strikes}
+                policy.tapes = [tape_with_future_feed()]
+                view = View([[2, 2], [3, 3]], tiles)
+                action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+                report = ns['_V217_PROBE_REPORT']
+                self.assertEqual(report['coverage_certified'], 1)
+                self.assertEqual(report['counterfactual_plan'], 0)
+
     def test_any_delayed_queue_fails_closed_even_without_feed(self):
         ns, policy = loaded_module()
         tiles = [[None for _ in range(5)] for _ in range(5)]
