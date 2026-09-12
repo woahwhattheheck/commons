@@ -5,12 +5,11 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 import math
-import os
 from pathlib import Path
 import platform
+import shutil
 import statistics
 import sys
 import tempfile
@@ -54,6 +53,7 @@ def capture_archive(path: Path, expected: str, label: str) -> bytes:
 
 
 def load_captured(raw: bytes, origin: Path, name: str):
+    """Compile and execute exactly one already-authenticated source buffer."""
     if type(raw) is not bytes:
         raise TypeError("captured source must be bytes")
     module = types.ModuleType(name)
@@ -64,14 +64,30 @@ def load_captured(raw: bytes, origin: Path, name: str):
     return module
 
 
-def load_snapshot_path(path: Path, name: str):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ImportError(str(path))
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
+def capture_sha256(path: Path, expected: str) -> bytes:
+    """Single-read one ordinary harness member and authenticate captured bytes."""
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"Authenticated snapshot member must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
+    if actual != expected:
+        raise ValueError(f"Snapshot member SHA256 mismatch; expected {expected}, got {actual}")
+    return raw
+
+
+def write_private_runtime_bytes(raw: bytes, path: Path, expected: str) -> Path:
+    """Publish captured bytes once into a private execution-only location."""
+    if type(raw) is not bytes or hashlib.sha256(raw).hexdigest() != expected:
+        raise ValueError("Private runtime bytes do not match authenticated SHA256")
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() or path.is_symlink():
+        raise FileExistsError(path)
+    path.write_bytes(raw)
+    if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+        raise ValueError("Private runtime publication changed authenticated bytes")
+    return path
 
 
 def score_triplet(game: dict, seat: int):
@@ -227,146 +243,190 @@ def main() -> int:
     v4_arms, source_receipts = ablation.build_arms(v4_members)
     arm_payloads = {"v31_reference": v31_members, **v4_arms}
 
-    with tempfile.TemporaryDirectory(prefix="funding-harness-", dir=output_parent) as temp:
-        staged = Path(temp) / "kg"
-        harness = helper.snapshot_harness(root, staged, opponents)
+    # Keep the authenticated harness private for the entire opponent preparation
+    # and game panel. The caller-visible snapshot is evidence only and is never
+    # an execution authority.
+    with tempfile.TemporaryDirectory(
+        prefix="funding-private-runtime-", dir=output_parent
+    ) as temp:
+        private_root = Path(temp)
+        runtime_snapshot = private_root / "kg"
+        harness = helper.snapshot_harness(root, runtime_snapshot, opponents)
+
+        evaluator_rel = helper.EVALUATOR
+        pack_rel = "cloud-pack/pack.py"
+        bridge_rel = helper.BANK + "/reference_policies.py"
+        loader_rel = "20260907-offline-agent/evaluate.py"
+        evaluator_raw = capture_sha256(
+            runtime_snapshot / evaluator_rel,
+            harness["repository_files"][evaluator_rel]["sha256"],
+        )
+        pack_raw = capture_sha256(
+            runtime_snapshot / pack_rel,
+            harness["repository_files"][pack_rel]["sha256"],
+        )
+        bridge_raw = capture_sha256(
+            runtime_snapshot / bridge_rel,
+            harness["repository_files"][bridge_rel]["sha256"],
+        )
+        loader_expected = harness["repository_files"][loader_rel]["sha256"]
+        loader_raw = capture_sha256(runtime_snapshot / loader_rel, loader_expected)
+        loader = write_private_runtime_bytes(
+            loader_raw,
+            private_root / "candidate-loader" / "evaluate.py",
+            loader_expected,
+        )
+
+        evaluator = load_captured(
+            evaluator_raw, runtime_snapshot / evaluator_rel, "funding_policy_evaluator"
+        )
+        pack = load_captured(
+            pack_raw, runtime_snapshot / pack_rel, "funding_policy_pack"
+        )
+        bridge = load_captured(
+            bridge_raw, runtime_snapshot / bridge_rel, "funding_policy_reference_bank"
+        )
+        engine_hashes = evaluator.verify_sources(engine_dir)
+
         output.mkdir(parents=False, exist_ok=False)
         snapshot_root = output / ".harness-snapshot"
-        os.replace(staged, snapshot_root)
+        shutil.copytree(runtime_snapshot, snapshot_root)
 
-    evaluator = load_snapshot_path(snapshot_root / helper.EVALUATOR, "funding_policy_evaluator")
-    pack = load_snapshot_path(snapshot_root / "cloud-pack/pack.py", "funding_policy_pack")
-    bridge = load_snapshot_path(
-        snapshot_root / helper.BANK / "reference_policies.py", "funding_policy_reference_bank"
-    )
-    loader = snapshot_root / "20260907-offline-agent/evaluate.py"
-    engine_hashes = evaluator.verify_sources(engine_dir)
+        runtime = {}
+        opponent_receipts = {}
+        expected_bridge = harness["repository_files"][bridge_rel]["sha256"]
+        expected_registry = harness["repository_files"][
+            helper.BANK + "/REFERENCE-POLICIES.json"
+        ]["sha256"]
+        for opponent in opponents:
+            runtime[opponent] = output / "opponents" / opponent
+            receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
+            if (receipt.get("bridge_sha256") != expected_bridge
+                    or receipt.get("source_registry_sha256") != expected_registry
+                    or receipt.get("support_files") != harness["opponent_support_sha256"]):
+                raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
+            if Path(receipt.get("support_root", "")).resolve(strict=True) != runtime_snapshot:
+                raise ValueError(f"Opponent did not bind private runtime snapshot: {opponent}")
+            opponent_receipts[opponent] = receipt
 
-    runtime = {}
-    opponent_receipts = {}
-    expected_bridge = harness["repository_files"][helper.BANK + "/reference_policies.py"]["sha256"]
-    expected_registry = harness["repository_files"][helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
-    for opponent in opponents:
-        runtime[opponent] = output / "opponents" / opponent
-        receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
-        if (receipt.get("bridge_sha256") != expected_bridge
-                or receipt.get("source_registry_sha256") != expected_registry
-                or receipt.get("support_files") != harness["opponent_support_sha256"]):
-            raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
-        if Path(receipt.get("support_root", "")).resolve(strict=True) != snapshot_root:
-            raise ValueError(f"Opponent did not bind snapshot root: {opponent}")
-        opponent_receipts[opponent] = receipt
+        run = {
+            "schema": SCHEMA,
+            "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "v31_archive_sha256": V31_ARCHIVE_SHA256,
+            "v4_archive_sha256": ablation.BASELINE_SHA256,
+            "v31_source": ablation.V31_SOURCE,
+            "v4_source": ablation.V4_SOURCE,
+            "arms": list(RUN_ARMS),
+            "v4_arm_source_receipts": source_receipts,
+            "seeds": seeds,
+            "seats": seats,
+            "opponents": opponents,
+            "engine": engine_hashes,
+            "helper_git_blob": HELPER_GIT_BLOB,
+            "helper_sha256": hashlib.sha256(helper_raw).hexdigest(),
+            "helper_execution": "single-read Git-blob-authenticated captured bytes",
+            "archive_execution": "single-read SHA256-authenticated private snapshots",
+            "harness_execution": {
+                "mode": "captured core modules + private authenticated runtime snapshot",
+                "evaluator_sha256": hashlib.sha256(evaluator_raw).hexdigest(),
+                "pack_sha256": hashlib.sha256(pack_raw).hexdigest(),
+                "bridge_sha256": hashlib.sha256(bridge_raw).hexdigest(),
+                "loader_sha256": hashlib.sha256(loader_raw).hexdigest(),
+                "public_snapshot": ".harness-snapshot (evidence only; never executed)",
+            },
+            "harness": harness,
+            "opponent_receipts": opponent_receipts,
+            "python": sys.version,
+            "platform": platform.platform(),
+            "authorizing": False,
+            "method": (
+                "Each matched cell executes exact submitted V3.1, exact submitted V4, "
+                "and a 2x2 over only V4 funded-minimum semantics and same-turn SELL queue "
+                "reordering. All V4 treatment archives preserve every member except "
+                "frozen_selected.py; no arm is a V3.1 reconstruction."
+            ),
+        }
+        helper.write_json(output / "run.json", run)
 
-    run = {
-        "schema": SCHEMA,
-        "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "v31_archive_sha256": V31_ARCHIVE_SHA256,
-        "v4_archive_sha256": ablation.BASELINE_SHA256,
-        "v31_source": ablation.V31_SOURCE,
-        "v4_source": ablation.V4_SOURCE,
-        "arms": list(RUN_ARMS),
-        "v4_arm_source_receipts": source_receipts,
-        "seeds": seeds,
-        "seats": seats,
-        "opponents": opponents,
-        "engine": engine_hashes,
-        "helper_git_blob": HELPER_GIT_BLOB,
-        "helper_sha256": hashlib.sha256(helper_raw).hexdigest(),
-        "helper_execution": "single-read Git-blob-authenticated captured bytes",
-        "archive_execution": "single-read SHA256-authenticated private snapshots",
-        "harness": harness,
-        "opponent_receipts": opponent_receipts,
-        "python": sys.version,
-        "platform": platform.platform(),
-        "authorizing": False,
-        "method": (
-            "Each matched cell executes exact submitted V3.1, exact submitted V4, "
-            "and a 2x2 over only V4 funded-minimum semantics and same-turn SELL queue "
-            "reordering. All V4 treatment archives preserve every member except "
-            "frozen_selected.py; no arm is a V3.1 reconstruction."
-        ),
-    }
-    helper.write_json(output / "run.json", run)
+        cells = []
+        for opponent in opponents:
+            for seed in seeds:
+                for seat in seats:
+                    offset = len(cells) % len(RUN_ARMS)
+                    order = list(RUN_ARMS[offset:] + RUN_ARMS[:offset])
+                    cell_id = f"{opponent}-seed{seed}-seat{seat}"
+                    cell = {
+                        "opponent": opponent,
+                        "seed": seed,
+                        "seat": seat,
+                        "execution_order": order,
+                        "games": {},
+                        "metrics": {},
+                        "deltas_vs_control": {},
+                    }
+                    for arm in order:
+                        with tempfile.TemporaryDirectory(
+                            prefix=f"{cell_id}-{arm}-", dir=output
+                        ) as game_temp:
+                            directory = Path(game_temp)
+                            payload = directory / "payload"
+                            helper.extract_members(arm_payloads[arm], payload)
+                            adapter = directory / "adapter.py"
+                            pack.write_adapter(adapter, payload / "main.py")
+                            rival = str(runtime[opponent] / "adapter.py")
+                            specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
+                            engine, _ = evaluator.get_engine(engine_dir, loader)
+                            game = evaluator.play(
+                                engine, specs, engine_dir, loader, seed, seat,
+                                args.rng_seed, args.action_timeout,
+                                args.startup_timeout, args.game_timeout,
+                            )
+                        cell["games"][arm] = game
+                        cell["metrics"][arm] = score_triplet(game, seat)
+                        print(json.dumps({
+                            "cell": cell_id,
+                            "arm": arm,
+                            "status": game.get("status"),
+                            "scores": game.get("scores"),
+                        }), flush=True)
 
-    cells = []
-    for opponent in opponents:
-        for seed in seeds:
-            for seat in seats:
-                offset = len(cells) % len(RUN_ARMS)
-                order = list(RUN_ARMS[offset:] + RUN_ARMS[:offset])
-                cell_id = f"{opponent}-seed{seed}-seat{seat}"
-                cell = {
-                    "opponent": opponent,
-                    "seed": seed,
-                    "seat": seat,
-                    "execution_order": order,
-                    "games": {},
-                    "metrics": {},
-                    "deltas_vs_control": {},
-                }
-                for arm in order:
-                    with tempfile.TemporaryDirectory(
-                        prefix=f"{cell_id}-{arm}-", dir=output
-                    ) as temp:
-                        directory = Path(temp)
-                        payload = directory / "payload"
-                        helper.extract_members(arm_payloads[arm], payload)
-                        adapter = directory / "adapter.py"
-                        pack.write_adapter(adapter, payload / "main.py")
-                        rival = str(runtime[opponent] / "adapter.py")
-                        specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
-                        engine, _ = evaluator.get_engine(engine_dir, loader)
-                        game = evaluator.play(
-                            engine, specs, engine_dir, loader, seed, seat,
-                            args.rng_seed, args.action_timeout,
-                            args.startup_timeout, args.game_timeout,
+                    control = cell["metrics"]["control"]
+                    for arm in RUN_ARMS:
+                        if arm == "control":
+                            continue
+                        cell["deltas_vs_control"][arm] = _delta(cell["metrics"][arm], control)
+                    control_trace = cell["games"]["control"].get("trace_sha256")
+                    cell["whole_game_trace_diff_vs_control"] = {
+                        arm: (
+                            None if not control_trace or not cell["games"][arm].get("trace_sha256")
+                            else cell["games"][arm].get("trace_sha256") != control_trace
                         )
-                    cell["games"][arm] = game
-                    cell["metrics"][arm] = score_triplet(game, seat)
-                    print(json.dumps({
-                        "cell": cell_id,
-                        "arm": arm,
-                        "status": game.get("status"),
-                        "scores": game.get("scores"),
-                    }), flush=True)
-
-                control = cell["metrics"]["control"]
-                for arm in RUN_ARMS:
-                    if arm == "control":
-                        continue
-                    cell["deltas_vs_control"][arm] = _delta(cell["metrics"][arm], control)
-                control_trace = cell["games"]["control"].get("trace_sha256")
-                cell["whole_game_trace_diff_vs_control"] = {
-                    arm: (
-                        None if not control_trace or not cell["games"][arm].get("trace_sha256")
-                        else cell["games"][arm].get("trace_sha256") != control_trace
+                        for arm in RUN_ARMS if arm != "control"
+                    }
+                    cell["status"] = (
+                        "complete_cell"
+                        if all(cell["metrics"][arm] is not None for arm in RUN_ARMS)
+                        else "incomplete_cell"
                     )
-                    for arm in RUN_ARMS if arm != "control"
-                }
-                cell["status"] = (
-                    "complete_cell"
-                    if all(cell["metrics"][arm] is not None for arm in RUN_ARMS)
-                    else "incomplete_cell"
-                )
-                helper.write_json(output / f"cell-{len(cells):03d}.json", cell)
-                cells.append(cell)
+                    helper.write_json(output / f"cell-{len(cells):03d}.json", cell)
+                    cells.append(cell)
 
-    summary = summarize(cells)
-    final = {
-        "schema": SCHEMA,
-        "run": run,
-        "cells": cells,
-        "summary": summary,
-        "authorizing": False,
-        "verdict": (
-            "CAUSAL_SCREEN_COMPLETE"
-            if summary["complete_cells"] == summary["total_cells"]
-            else "INCOMPLETE_NONAUTHORIZING"
-        ),
-    }
-    helper.write_json(output / "RESULTS.json", final)
-    print(json.dumps({"summary": summary, "verdict": final["verdict"]}, sort_keys=True))
-    return 0 if final["verdict"] == "CAUSAL_SCREEN_COMPLETE" else 3
+        summary = summarize(cells)
+        final = {
+            "schema": SCHEMA,
+            "run": run,
+            "cells": cells,
+            "summary": summary,
+            "authorizing": False,
+            "verdict": (
+                "CAUSAL_SCREEN_COMPLETE"
+                if summary["complete_cells"] == summary["total_cells"]
+                else "INCOMPLETE_NONAUTHORIZING"
+            ),
+        }
+        helper.write_json(output / "RESULTS.json", final)
+        print(json.dumps({"summary": summary, "verdict": final["verdict"]}, sort_keys=True))
+        return 0 if final["verdict"] == "CAUSAL_SCREEN_COMPLETE" else 3
 
 
 if __name__ == "__main__":
