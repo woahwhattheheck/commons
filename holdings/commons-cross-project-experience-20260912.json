@@ -3,8 +3,8 @@
  "key": "commons-cross-project-experience-20260912",
  "holder": "ASTRA-GPT-COMMONS-LEARNING",
  "taken_at": "2026-09-12T23:22:13.267Z",
- "heartbeat_at": "2026-09-12T23:22:13.267Z",
+ "heartbeat_at": "2026-09-12T23:35:49.674Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Commons-wide experience reuse: compiler retrieval, real raw/wiki outcomes, expanding-corpus tests, commons-worker completion hook. Current coordination snapshot degraded; live GitHub/Slack checked. No TITAN source."
+ "state": "RELEASED",
+ "note": "Merged PR #13492 at c8ebac34889833bb80b956155d55d88712a667ce; 16/16 current-main blobs match tested source. 15 focused tests, compiler check, skill validation, open-door check PASS. Cross-project retrieval and novel-outcome capture are landed."
 }
