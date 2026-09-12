@@ -2,9 +2,10 @@
 """Fail-closed V218 current-native binding/equivalence audit.
 
 This is read-only execution/custody tooling. It does not compose, activate, or run V218.
-It accepts an explicit V218/router binding directly. Native semantic equivalence counts as
-wired only when the sole canonical V4 composition graph carries an authenticated evidence-only
-registration for the same semantic sources and this checker.
+It accepts an explicit executable V218/router source binding directly. Config-only metadata is
+diagnostic, not wiring. Native semantic equivalence counts as wired only when the sole canonical
+V4 composition graph carries an authenticated evidence-only registration for the same semantic
+sources and this checker.
 """
 from __future__ import annotations
 import argparse, ast, hashlib, json
@@ -301,9 +302,13 @@ def audit(root: Path) -> dict:
     config_v218_keys = sorted(
         k for k in config if "v218" in str(k).lower() or "movement_parity" in str(k).lower()
     )
-    router_refs = sum(row["hits"]["r04_full_router"] for row in refs)
-    v218_refs = sum(row["hits"]["v218"] + row["hits"]["movement_parity"] for row in refs)
-    explicit_binding = bool(router_refs or v218_refs or config_v218_keys)
+    executable_refs = [row for row in refs if Path(row["path"]).suffix == ".py"]
+    router_refs = sum(row["hits"]["r04_full_router"] for row in executable_refs)
+    v218_refs = sum(
+        row["hits"]["v218"] + row["hits"]["movement_parity"]
+        for row in executable_refs
+    )
+    explicit_binding = bool(router_refs or v218_refs)
     semantic = _native_semantic_equivalence(root, config)
     equivalent = bool(semantic.get("equivalent"))
     registration = (
@@ -334,6 +339,7 @@ def audit(root: Path) -> dict:
         },
         "package_text_files_scanned": scanned,
         "binding_refs": refs,
+        "executable_binding_refs": executable_refs,
         "router_ref_count": router_refs,
         "v218_ref_count": v218_refs,
         "explicit_binding": explicit_binding,
