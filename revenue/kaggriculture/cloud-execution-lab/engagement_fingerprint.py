@@ -9,12 +9,16 @@ JSONL rows accepted by the CLI look like::
 
     {"seed": 7, "seat": 0, "step": 12, "phase": "market",
      "control": [["SELL", "MILK", 1]],
-     "candidate": [["SELL", "MILK", 2]]}
+     "candidate": [["SELL", "MILK", 2]],
+     "control_id": "v5c:<64 lowercase hex>",
+     "candidate_id": "v5c:<64 lowercase hex>"}
 
 The default alignment key is ``seed,seat,step,phase``. Duplicate or incomplete
-keys fail closed rather than manufacturing a comparison. ``NO_OP_OBSERVED``
-means only that the configured matched prefix did not diverge; it is not a
-claim that a policy can never engage later in a game.
+keys fail closed rather than manufacturing a comparison. Optional ``v5c:``
+candidate identities are locked across the whole trace when present, so rows
+from different builds cannot be silently aggregated. ``NO_OP_OBSERVED`` means
+only that the configured matched prefix did not diverge; it is not a claim that
+a policy can never engage later in a game.
 """
 
 from __future__ import annotations
@@ -23,11 +27,15 @@ import argparse
 import hashlib
 import json
 import math
+import re
 import sys
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+
+_V5C_RE = re.compile(r"^v5c:[0-9a-f]{64}$")
 
 
 class FingerprintError(ValueError):
@@ -123,6 +131,30 @@ def _payload_fields(
     return fields, control_field, candidate_field
 
 
+def _identity_fields(
+    key_fields: Sequence[str],
+    control_field: str,
+    candidate_field: str,
+    control_id_field: str,
+    candidate_id_field: str,
+) -> tuple[str, str]:
+    """Return unambiguous build-identity field names."""
+    if type(control_id_field) is not str or not control_id_field:
+        raise AlignmentError("control identity field must be a non-empty string")
+    if type(candidate_id_field) is not str or not candidate_id_field:
+        raise AlignmentError("candidate identity field must be a non-empty string")
+    if control_id_field == candidate_id_field:
+        raise AlignmentError("control and candidate identity fields must be distinct")
+    reserved = set(key_fields) | {control_field, candidate_field}
+    overlap = sorted(reserved & {control_id_field, candidate_id_field})
+    if overlap:
+        raise AlignmentError(
+            "identity fields cannot be payload or alignment key fields: "
+            + ", ".join(overlap)
+        )
+    return control_id_field, candidate_id_field
+
+
 def _key_token(key: Mapping[str, Any], fields: Sequence[str]) -> tuple[str, dict[str, Any]]:
     missing = [field for field in fields if field not in key]
     if missing:
@@ -130,6 +162,43 @@ def _key_token(key: Mapping[str, Any], fields: Sequence[str]) -> tuple[str, dict
     selected = {field: key[field] for field in fields}
     token = fingerprint([selected[field] for field in fields])
     return token, selected
+
+
+def _v5c_identity(value: Any, field: str) -> str:
+    if type(value) is not str or _V5C_RE.fullmatch(value) is None:
+        raise AlignmentError(f"{field} must be v5c:<64 lowercase hex>")
+    return value
+
+
+class _IdentityBinder:
+    """Lock one optional build identity across a complete matched trace."""
+
+    def __init__(self, field: str, expected: str | None = None) -> None:
+        self.field = field
+        self.bound = None if expected is None else _v5c_identity(expected, field)
+        self._saw_row = False
+        self._identity_mode = expected is not None
+
+    def observe(self, row: Mapping[str, Any], row_number: int) -> None:
+        present = self.field in row
+        if self._identity_mode:
+            if not present:
+                raise AlignmentError(
+                    f"row {row_number} missing bound identity field {self.field!r}"
+                )
+            value = _v5c_identity(row[self.field], self.field)
+            if value != self.bound:
+                raise AlignmentError(
+                    f"row {row_number} mixed identity for {self.field!r}"
+                )
+        elif present:
+            if self._saw_row:
+                raise AlignmentError(
+                    f"row {row_number} identity {self.field!r} appears after unbound evidence"
+                )
+            self.bound = _v5c_identity(row[self.field], self.field)
+            self._identity_mode = True
+        self._saw_row = True
 
 
 @dataclass(frozen=True)
@@ -239,12 +308,31 @@ def compare_rows(
     control_field: str = "control",
     candidate_field: str = "candidate",
     noop_threshold: int = 8,
+    control_id: str | None = None,
+    candidate_id: str | None = None,
+    control_id_field: str = "control_id",
+    candidate_id_field: str = "candidate_id",
 ) -> dict[str, Any]:
-    """Compare a matched iterable and return its engagement summary."""
+    """Compare a matched iterable and return its engagement summary.
+
+    When either identity field is stamped, it must be present and identical on
+    every row after the first observation. Passing an expected identity locks
+    that field from row one. Legacy traces with no identity stamps retain the
+    exact prior report shape.
+    """
     key_fields, control_field, candidate_field = _payload_fields(
         key_fields, control_field, candidate_field
     )
+    control_id_field, candidate_id_field = _identity_fields(
+        key_fields,
+        control_field,
+        candidate_field,
+        control_id_field,
+        candidate_id_field,
+    )
     tracker = EngagementTracker(key_fields=key_fields, noop_threshold=noop_threshold)
+    control_ids = _IdentityBinder(control_id_field, control_id)
+    candidate_ids = _IdentityBinder(candidate_id_field, candidate_id)
     for row_number, row in enumerate(rows, start=1):
         if not isinstance(row, Mapping):
             raise AlignmentError(f"row {row_number} is not an object")
@@ -252,8 +340,15 @@ def compare_rows(
             raise AlignmentError(
                 f"row {row_number} must contain {control_field!r} and {candidate_field!r}"
             )
+        control_ids.observe(row, row_number)
+        candidate_ids.observe(row, row_number)
         tracker.observe(row, row[control_field], row[candidate_field])
-    return tracker.summary()
+    report = tracker.summary()
+    if control_ids.bound is not None:
+        report["control_id"] = control_ids.bound
+    if candidate_ids.bound is not None:
+        report["candidate_id"] = candidate_ids.bound
+    return report
 
 
 def _read_jsonl(path: Path) -> Iterable[Mapping[str, Any]]:
@@ -284,6 +379,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--control-field", default="control")
     parser.add_argument("--candidate-field", default="candidate")
     parser.add_argument("--noop-threshold", type=int, default=8)
+    parser.add_argument(
+        "--control-id",
+        help="expected control identity v5c:<64 lowercase hex>; requires every row stamp it",
+    )
+    parser.add_argument(
+        "--candidate-id",
+        help="expected candidate identity v5c:<64 lowercase hex>; requires every row stamp it",
+    )
+    parser.add_argument("--control-id-field", default="control_id")
+    parser.add_argument("--candidate-id-field", default="candidate_id")
     args = parser.parse_args(argv)
 
     try:
@@ -293,6 +398,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             control_field=args.control_field,
             candidate_field=args.candidate_field,
             noop_threshold=args.noop_threshold,
+            control_id=args.control_id,
+            candidate_id=args.candidate_id,
+            control_id_field=args.control_id_field,
+            candidate_id_field=args.candidate_id_field,
         )
     except (ValueError, OSError) as exc:
         print(f"engagement_fingerprint: {exc}", file=sys.stderr)

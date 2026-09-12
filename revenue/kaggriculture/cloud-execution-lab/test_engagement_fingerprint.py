@@ -9,6 +9,11 @@ from pathlib import Path
 import engagement_fingerprint as ef
 
 
+CONTROL_ID = "v5c:" + "1" * 64
+CANDIDATE_ID = "v5c:" + "2" * 64
+OTHER_ID = "v5c:" + "3" * 64
+
+
 class EngagementFingerprintTests(unittest.TestCase):
     def test_mapping_order_is_canonical(self):
         left = {"b": [1, True], "a": {"x": -0.0}}
@@ -108,8 +113,6 @@ class EngagementFingerprintTests(unittest.TestCase):
             "control": [["SELL", "MILK", 1]],
             "candidate": [["SELL", "MILK", 2]],
         }
-        # Before the field contract this configuration compared control to itself
-        # and could emit NO_OP_OBSERVED despite the genuinely divergent candidate.
         with self.assertRaisesRegex(ef.AlignmentError, "must be distinct"):
             ef.compare_rows(
                 [row],
@@ -140,6 +143,111 @@ class EngagementFingerprintTests(unittest.TestCase):
             ef.EngagementTracker(key_fields=("seed", ""))
         with self.assertRaisesRegex(ef.AlignmentError, "at least one"):
             ef.EngagementTracker(key_fields="seed")
+
+    def test_legacy_report_shape_has_no_identity_keys(self):
+        report = ef.compare_rows(
+            [{
+                "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+                "control": ["WAIT"], "candidate": ["WAIT"],
+            }],
+            noop_threshold=1,
+        )
+        self.assertNotIn("control_id", report)
+        self.assertNotIn("candidate_id", report)
+
+    def test_consistent_identities_bind_and_report(self):
+        rows = [
+            {
+                "seed": 1, "seat": 0, "step": step, "phase": "unit",
+                "control": ["WAIT"], "candidate": ["WAIT"],
+                "control_id": CONTROL_ID, "candidate_id": CANDIDATE_ID,
+            }
+            for step in range(2)
+        ]
+        report = ef.compare_rows(rows, noop_threshold=2)
+        self.assertEqual(CONTROL_ID, report["control_id"])
+        self.assertEqual(CANDIDATE_ID, report["candidate_id"])
+        self.assertEqual("NO_OP_OBSERVED", report["classification"])
+
+    def test_mixed_identity_fails_closed(self):
+        rows = [
+            {
+                "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+                "control": [], "candidate": [],
+                "candidate_id": CANDIDATE_ID,
+            },
+            {
+                "seed": 1, "seat": 0, "step": 1, "phase": "unit",
+                "control": [], "candidate": [],
+                "candidate_id": OTHER_ID,
+            },
+        ]
+        with self.assertRaisesRegex(ef.AlignmentError, "mixed identity"):
+            ef.compare_rows(rows)
+
+    def test_missing_identity_after_binding_fails_closed(self):
+        rows = [
+            {
+                "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+                "control": [], "candidate": [], "candidate_id": CANDIDATE_ID,
+            },
+            {
+                "seed": 1, "seat": 0, "step": 1, "phase": "unit",
+                "control": [], "candidate": [],
+            },
+        ]
+        with self.assertRaisesRegex(ef.AlignmentError, "missing bound identity"):
+            ef.compare_rows(rows)
+
+    def test_late_identity_after_unbound_evidence_fails_closed(self):
+        rows = [
+            {
+                "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+                "control": [], "candidate": [],
+            },
+            {
+                "seed": 1, "seat": 0, "step": 1, "phase": "unit",
+                "control": [], "candidate": [], "candidate_id": CANDIDATE_ID,
+            },
+        ]
+        with self.assertRaisesRegex(ef.AlignmentError, "appears after unbound evidence"):
+            ef.compare_rows(rows)
+
+    def test_expected_identity_requires_exact_row_stamp(self):
+        row = {
+            "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+            "control": [], "candidate": [], "candidate_id": CANDIDATE_ID,
+        }
+        report = ef.compare_rows([row], candidate_id=CANDIDATE_ID)
+        self.assertEqual(CANDIDATE_ID, report["candidate_id"])
+        with self.assertRaisesRegex(ef.AlignmentError, "mixed identity"):
+            ef.compare_rows([row], candidate_id=OTHER_ID)
+        no_stamp = dict(row)
+        no_stamp.pop("candidate_id")
+        with self.assertRaisesRegex(ef.AlignmentError, "missing bound identity"):
+            ef.compare_rows([no_stamp], candidate_id=CANDIDATE_ID)
+
+    def test_malformed_identity_fails_closed(self):
+        row = {
+            "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+            "control": [], "candidate": [], "candidate_id": "v5c:NOT-A-DIGEST",
+        }
+        with self.assertRaisesRegex(ef.AlignmentError, "64 lowercase hex"):
+            ef.compare_rows([row])
+
+    def test_identity_field_names_cannot_alias_payload_or_alignment(self):
+        row = {
+            "seed": 1, "seat": 0, "step": 0, "phase": "unit",
+            "control": [], "candidate": [],
+        }
+        with self.assertRaisesRegex(ef.AlignmentError, "cannot be payload"):
+            ef.compare_rows([row], candidate_id_field="candidate")
+        with self.assertRaisesRegex(ef.AlignmentError, "cannot be payload"):
+            ef.compare_rows([row], control_id_field="seed")
+        with self.assertRaisesRegex(ef.AlignmentError, "must be distinct"):
+            ef.compare_rows(
+                [row], control_id_field="build_id", candidate_id_field="build_id"
+            )
 
     def test_cli_emits_machine_readable_report(self):
         rows = [
@@ -224,6 +332,25 @@ class EngagementFingerprintTests(unittest.TestCase):
             )
         self.assertEqual(2, proc.returncode)
         self.assertIn("must be distinct", proc.stderr)
+
+    def test_cli_expected_identity_rejects_unstamped_trace(self):
+        row = {
+            "seed": 9, "seat": 0, "step": 0, "phase": "unit",
+            "control": ["WAIT"], "candidate": ["WAIT"],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "paired.jsonl"
+            path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+            proc = subprocess.run(
+                [
+                    sys.executable, str(Path(ef.__file__)), str(path),
+                    "--candidate-id", CANDIDATE_ID,
+                ],
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(2, proc.returncode)
+        self.assertIn("missing bound identity", proc.stderr)
 
 
 if __name__ == "__main__":
