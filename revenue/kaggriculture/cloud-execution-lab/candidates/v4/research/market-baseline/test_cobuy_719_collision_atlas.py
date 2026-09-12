@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest import mock
 
 import cobuy_719_collision_atlas as atlas
 
@@ -38,6 +40,34 @@ def _fake_apex_tape(buy_steps: dict[int, tuple[int, int, int]] | None = None) ->
 
 
 class AtlasUnitTests(unittest.TestCase):
+    def test_verified_source_module_executes_authenticated_snapshot_after_path_swap(self):
+        good = b"VALUE = 1\n"
+        bad = b"VALUE = 999\n"
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "source.py"
+            path.write_bytes(good)
+            expected = atlas.git_blob(good)
+            original_read_bytes = Path.read_bytes
+
+            def read_then_swap(self):
+                data = original_read_bytes(self)
+                if self == path:
+                    path.write_bytes(bad)
+                return data
+
+            with mock.patch.object(Path, "read_bytes", new=read_then_swap):
+                module = atlas._load_verified_source_module(path, expected, "_swap_killer")
+
+            self.assertEqual(module.VALUE, 1)
+            self.assertEqual(path.read_bytes(), bad)
+
+    def test_verified_source_module_rejects_wrong_initial_blob(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "source.py"
+            path.write_text("VALUE = 2\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                atlas._load_verified_source_module(path, atlas.git_blob(b"VALUE = 1\n"), "_bad")
+
     def test_arlene_intersection_fails_closed_after_sell_prefix(self):
         routes = {
             "a": _route([
@@ -170,6 +200,10 @@ class ExactCheckoutTests(unittest.TestCase):
         first = atlas.build_atlas(**paths)
         second = atlas.build_atlas(**paths)
         self.assertEqual(first, second)
+        self.assertEqual(
+            first["source_blobs"]["cobuy_opening_collision.py"],
+            atlas.COBUY_HELPER_BLOB,
+        )
         self.assertTrue(first["opening_native_receipt_verified"])
         self.assertTrue(first["controls"]["step0_wheat_collision_present"])
         self.assertTrue(first["controls"]["step0_wheat_same_row"])
