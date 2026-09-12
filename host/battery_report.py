@@ -115,7 +115,7 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
         row["source_in_checkout_commit"] = row["source_blob_sha"] is not None
     failed = sum(row["exit_code"] != 0 for row in records)
     unresolved = sum(not row["source_in_checkout_commit"] for row in records)
-    if complete and unresolved and not failed:
+    if complete and unresolved and not failed and outcome != "failure":
         problems.append("%d passing executed file(s) are not present in the recorded checkout" % unresolved)
         complete = False
     if outcome in ("cancelled", "skipped"):
