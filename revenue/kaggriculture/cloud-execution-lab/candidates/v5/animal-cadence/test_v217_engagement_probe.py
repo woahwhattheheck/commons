@@ -135,7 +135,7 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(probe.archive_bytes(files), probe.archive_bytes(files))
 
     def test_exact_repo_sources_are_pinned_and_transform_compile(self):
-        router_path = HERE.parent.parent / 'v3' / 'overlay' / 'r04_full_router.py'
+        router_path = HERE.parent.parent / 'v4' / 'donor' / 'overlay' / 'r04_full_router.py'
         evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
         router = router_path.read_bytes()
         evaluator = evaluator_path.read_bytes()
