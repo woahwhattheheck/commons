@@ -12,9 +12,6 @@ jobs:
   recover:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Reconstruct and publish exact frozen checker
         shell: bash
         env:
@@ -47,7 +44,6 @@ jobs:
           patch -s -o stage1.py check_v4_plumbing.py < stage1.patch
           test "$(wc -c < stage1.py)" -eq 94259
           test "$(sha256sum stage1.py | awk '{print $1}')" = 1455c9fd4c01c37723be3eafecb3587a7b9c15161d78bf5e4264e46743d8db97
-          test "$(git hash-object stage1.py)" = 0a753f517886bb50fc26324d49d2156b9a802b50
 
           patch -s -o final.py stage1.py < stage2.patch
           test "$(wc -c < final.py)" -eq 127879
@@ -55,40 +51,44 @@ jobs:
           python3 -m py_compile final.py
           python3 final.py --self-test
 
-          cd "$GITHUB_WORKSPACE"
-          blob="$(git hash-object -w "$work/final.py")"
-          test "$blob" = 12a3eb23dd1052a769baa16ce861890f21911e14
+          local_blob="$(python3 - <<'PY'
+          import hashlib
+          p = open('final.py','rb').read()
+          print(hashlib.sha1(b'blob ' + str(len(p)).encode() + b'\0' + p).hexdigest())
+          PY
+          )"
+          test "$local_blob" = 12a3eb23dd1052a769baa16ce861890f21911e14
+
+          encoded="$(base64 -w0 final.py)"
+          blob="$(gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/blobs" \
+            -f content="$encoded" -f encoding=base64 --jq .sha)"
+          test "$blob" = "$local_blob"
 
           base=033a87af6c29176b4cd2ffb3cd3ae472fc917ea6
           path=revenue/kaggle/kaggriculture/v3/tools/check_v4_plumbing.py
-          git cat-file -e "${base}^{commit}"
-          idx="$RUNNER_TEMP/titan-v4-checker.index"
-          rm -f "$idx"
-          GIT_INDEX_FILE="$idx" git read-tree "$base"
-          GIT_INDEX_FILE="$idx" git update-index --cacheinfo "100644,${blob},${path}"
-          tree="$(GIT_INDEX_FILE="$idx" git write-tree)"
+          base_tree="$(gh api "/repos/${GITHUB_REPOSITORY}/git/commits/${base}" --jq .tree.sha)"
+          tree="$(jq -n --arg base_tree "$base_tree" --arg path "$path" --arg sha "$blob" \
+            '{base_tree:$base_tree,tree:[{path:$path,mode:"100644",type:"blob",sha:$sha}]}' \
+            | gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/trees" --input - --jq .sha)"
 
-          export GIT_AUTHOR_NAME='TITAN V4 recovery'
-          export GIT_AUTHOR_EMAIL='actions@github.com'
-          export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-          export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-          export GIT_AUTHOR_DATE='2026-09-12T01:30:00Z'
-          export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"
-          candidate="$(printf '%s\n' 'TITAN V4 plumbing: install frozen hardened checker' | git commit-tree "$tree" -p "$base")"
+          candidate="$(jq -n --arg tree "$tree" --arg parent "$base" \
+            '{message:"TITAN V4 plumbing: install frozen hardened checker",tree:$tree,parents:[$parent],author:{name:"TITAN V4 recovery",email:"actions@github.com",date:"2026-09-12T01:30:00Z"},committer:{name:"TITAN V4 recovery",email:"actions@github.com",date:"2026-09-12T01:30:00Z"}}' \
+            | gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/commits" --input - --jq .sha)"
 
-          test "$(git rev-list --parents -n1 "$candidate" | awk '{print NF}')" -eq 2
-          changed="$(git diff-tree --no-commit-id --name-only -r "$base" "$candidate")"
-          test "$changed" = "$path"
-          test "$(git ls-tree "$candidate" "$path" | awk '{print $3}')" = "$blob"
+          gh api "/repos/${GITHUB_REPOSITORY}/git/commits/${candidate}" \
+            --jq '(.parents|length)==1 and .parents[0].sha=="'"$base"'" and .tree.sha=="'"$tree"'"' | grep -qx true
+          gh api "/repos/${GITHUB_REPOSITORY}/compare/${base}...${candidate}" \
+            --jq '(.ahead_by==1) and (.behind_by==0) and (.files|length==1) and (.files[0].filename=="'"$path"'") and (.files[0].sha=="'"$blob"'")' | grep -qx true
 
-          audit_ref=refs/heads/astra/v4-plumbing-frozen-checker-20260911-gpt56
-          remote="$(git ls-remote origin "$audit_ref" | awk '{print $1}')"
+          ref=refs/heads/astra/v4-plumbing-frozen-checker-20260911-gpt56
+          short=astra/v4-plumbing-frozen-checker-20260911-gpt56
+          remote="$(gh api "/repos/${GITHUB_REPOSITORY}/git/ref/heads/${short}" --jq .object.sha 2>/dev/null || true)"
           if [ -n "$remote" ] && [ "$remote" != "$candidate" ]; then
             echo "audit ref already exists at unexpected $remote" >&2
             exit 1
           fi
           if [ -z "$remote" ]; then
-            git push origin "$candidate:$audit_ref"
+            gh api --method POST "/repos/${GITHUB_REPOSITORY}/git/refs" -f ref="$ref" -f sha="$candidate" >/dev/null
           fi
 
           printf 'candidate=%s\nblob=%s\ntree=%s\n' "$candidate" "$blob" "$tree"
