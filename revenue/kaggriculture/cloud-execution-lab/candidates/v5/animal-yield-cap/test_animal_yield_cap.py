@@ -14,13 +14,17 @@ HERE = Path(__file__).resolve().parent
 
 
 class BuildTests(unittest.TestCase):
+    def exact_minimal_baseline(self, root):
+        baseline = root / "baseline"
+        baseline.mkdir()
+        shutil.copyfile(builder.LAB_ROOT / "main.py", baseline / "main.py")
+        return baseline
+
     def test_materializes_exact_parent_and_canonical_helper(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            baseline = root / "baseline"
+            baseline = self.exact_minimal_baseline(root)
             out = root / "candidate"
-            baseline.mkdir()
-            shutil.copyfile(builder.LAB_ROOT / "main.py", baseline / "main.py")
             receipt = builder.build_candidate(baseline, out)
             self.assertEqual(
                 builder.git_blob(out / "baseline_main.py"),
@@ -47,10 +51,31 @@ class BuildTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "exact current V5 parent"):
                 builder.build_candidate(baseline, root / "candidate")
 
+    def test_materialization_failure_removes_partial_output(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            baseline = self.exact_minimal_baseline(root)
+            out = root / "candidate"
+            original_copyfile = builder.shutil.copyfile
+
+            def fail_entry_install(src, dst, *args, **kwargs):
+                if Path(src).resolve() == builder.ENTRY_SOURCE.resolve():
+                    raise RuntimeError("synthetic entry install failure")
+                return original_copyfile(src, dst, *args, **kwargs)
+
+            with mock.patch.object(
+                builder.shutil, "copyfile", side_effect=fail_entry_install
+            ):
+                with self.assertRaisesRegex(RuntimeError, "synthetic entry"):
+                    builder.build_candidate(baseline, out)
+            self.assertFalse(out.exists())
+
 
 class EntryTests(unittest.TestCase):
     def load_entry(self, baseline, helper):
-        spec = importlib.util.spec_from_file_location("animal_yield_cap_entry_test", HERE / "entry.py")
+        spec = importlib.util.spec_from_file_location(
+            "animal_yield_cap_entry_test", HERE / "entry.py"
+        )
         module = importlib.util.module_from_spec(spec)
         with mock.patch.dict(
             sys.modules,
@@ -105,11 +130,12 @@ class EntryTests(unittest.TestCase):
             "eligible": False,
             "reason": "no_provable_clipping_pass",
         }
-        helper.apply_animal_headroom_harvest = (
-            lambda parent_action, observation, configuration, *, enabled=False: parent_action
+        helper.apply_animal_headroom_harvest = mock.Mock(
+            side_effect=AssertionError("ineligible path must not re-run helper apply")
         )
         module = self.load_entry(baseline, helper)
         self.assertIs(module.agent({"player": 0, "step": 0}, {}), action)
+        helper.apply_animal_headroom_harvest.assert_not_called()
 
 
 if __name__ == "__main__":
