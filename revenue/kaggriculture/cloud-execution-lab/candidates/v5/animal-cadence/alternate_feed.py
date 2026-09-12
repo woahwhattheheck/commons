@@ -5,7 +5,8 @@ The pinned engine removes an animal only after its second consecutive unfed
 end-of-day. Base animal production is independent of ``fed_today``; feeding is
 required for the CARE bonus. A one-day survival theorem is not a two-day route
 theorem, so this transform requires a machine-checkable next-feed certificate
-bound to the exact public step and current route/source/tail identity.
+bound to the exact public step, day length, and current route/source/tail
+identity.
 
 The module is deliberately not wired into the canonical runtime. It is an
 isolated candidate for matched evaluation.
@@ -18,7 +19,8 @@ from copy import deepcopy
 _ANIMALS = frozenset(("GOOSE", "COW", "SHEEP"))
 _CERTIFICATE_SCHEMA = "titan-v5/animal-cadence/next-feed-certificate/v1"
 _ROUTE_KEYS = frozenset(("route_id", "route_source_git_blob", "tail_sha256"))
-_CERTIFICATE_KEYS = frozenset(("schema", "observation_step", *_ROUTE_KEYS, "feeds"))
+_CERTIFICATE_KEYS = frozenset(
+    ("schema", "observation_step", "turns_per_day", *_ROUTE_KEYS, "feeds"))
 _FEED_KEYS = frozenset(("position", "next_feed_step"))
 
 
@@ -94,6 +96,8 @@ def _context(observation, selected):
     tiles = farm.get("tiles")
     if not isinstance(inventories, list) or len(inventories) != len(positions):
         return None, "malformed_inventories"
+    if any(not isinstance(inventory, dict) for inventory in inventories):
+        return None, "malformed_inventories"
     if not isinstance(tiles, list):
         return None, "malformed_tiles"
     return {
@@ -115,10 +119,12 @@ def _tile_at(tiles, position):
     return row[x]
 
 
-def _certificate(value, route_identity, observation_step):
+def _certificate(value, route_identity, observation_step, turns_per_day):
     current = _route_identity(route_identity)
     if current is None:
         return None, None, "malformed_route_identity"
+    if type(turns_per_day) is not int or turns_per_day <= 0:
+        return None, current, "malformed_turns_per_day"
     if value is None:
         return None, current, "next_feed_uncertified"
     if not isinstance(value, dict) or set(value) != _CERTIFICATE_KEYS:
@@ -127,12 +133,16 @@ def _certificate(value, route_identity, observation_step):
         return None, current, "malformed_next_feed_certificate"
     if type(value.get("observation_step")) is not int or value["observation_step"] < 0:
         return None, current, "malformed_next_feed_certificate"
-    if value["observation_step"] != observation_step:
+    if type(value.get("turns_per_day")) is not int or value["turns_per_day"] <= 0:
+        return None, current, "malformed_next_feed_certificate"
+    if value["observation_step"] != observation_step or value["turns_per_day"] != turns_per_day:
         return None, current, "next_feed_certificate_mismatch"
     for key in _ROUTE_KEYS:
         if value.get(key) != current[key]:
             return None, current, "next_feed_certificate_mismatch"
 
+    next_day_start = ((observation_step // turns_per_day) + 1) * turns_per_day
+    next_day_end = next_day_start + turns_per_day - 1
     feeds = value.get("feeds")
     if not isinstance(feeds, list) or not feeds:
         return None, current, "malformed_next_feed_certificate"
@@ -142,13 +152,17 @@ def _certificate(value, route_identity, observation_step):
             return None, current, "malformed_next_feed_certificate"
         position = _position(feed.get("position"))
         next_step = feed.get("next_feed_step")
-        if position is None or type(next_step) is not int or next_step <= observation_step:
+        if (position is None or type(next_step) is not int
+                or not next_day_start <= next_step <= next_day_end):
             return None, current, "malformed_next_feed_certificate"
         if position in certified:
             return None, current, "malformed_next_feed_certificate"
         certified[position] = next_step
     provenance = {
         "observation_step": observation_step,
+        "turns_per_day": turns_per_day,
+        "next_day_start_step": next_day_start,
+        "next_day_end_step": next_day_end,
         **current,
     }
     return certified, provenance, None
@@ -160,18 +174,19 @@ def apply_alternate_feed(
         *,
         next_feed_certificate=None,
         route_identity=None,
+        turns_per_day=None,
 ):
     """Return ``(action, report)`` without mutating either input.
 
-    ``next_feed_certificate`` must bind every certified animal tile to a future
-    FEED step and to the exact current public step, route id, route-source Git
-    blob, and route-tail SHA256. ``route_identity`` is the caller's independently
-    derived identity for the route/tail currently driving selection. Route
-    switch, checkpoint/rejoin, reset, or source/tail changes therefore require a
-    newly minted certificate.
+    ``next_feed_certificate`` must bind every certified animal tile to a FEED
+    step on the *next calendar day* and to the exact current public step, day
+    length, route id, route-source Git blob, and route-tail SHA256.
+    ``route_identity`` and ``turns_per_day`` are independently derived caller
+    inputs. Route switch, checkpoint/rejoin, reset, source/tail changes, clock
+    advance, or calendar changes therefore require a newly minted certificate.
 
     A current FEED is suppressed only when:
-    * its tile is present in that provenance-bound next-feed certificate;
+    * its tile is present in that provenance-bound next-day certificate;
     * the actor currently carries at least one WHEAT, so the edit saves spend;
     * the animal is on exact zero-strike state (``consecutive_unfed == 0``);
     * the animal is not already fed or cared today;
@@ -191,7 +206,7 @@ def apply_alternate_feed(
         return selected, report
 
     certified, provenance, error = _certificate(
-        next_feed_certificate, route_identity, context["step"])
+        next_feed_certificate, route_identity, context["step"], turns_per_day)
     report["certificate_provenance"] = provenance
     if error is not None:
         report["reason"] = error
@@ -207,7 +222,7 @@ def apply_alternate_feed(
             zip(context["positions"], context["actions"], context["inventories"])):
         if position not in certified:
             continue
-        if not _action_is(action, "FEED") or not isinstance(inventory, dict):
+        if not _action_is(action, "FEED"):
             continue
         wheat = inventory.get("WHEAT", 0)
         if type(wheat) is not int or wheat < 1:
