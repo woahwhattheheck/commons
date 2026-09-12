@@ -109,6 +109,29 @@ class ExperienceRetrievalTests(unittest.TestCase):
             with self.assertRaisesRegex(compiler.ExperienceError, "duplicate pattern id"):
                 compiler.validate_record(duplicate, root / "fixture-duplicate-pattern.json")
 
+    def test_validation_fails_closed_on_unhashable_schema_values(self):
+        seed = next(r for r in self.records if r["id"] == "ai-village-discovery-4945")
+        mutations = (
+            ("outcome", lambda r: r.__setitem__("outcome", []), "outcome"),
+            ("pattern-kind", lambda r: r["patterns"][0].__setitem__("kind", []), "pattern kind"),
+            ("skill-decision", lambda r: r["skill_impacts"][0].__setitem__("decision", []),
+             "skill decision"),
+            ("commit-value", lambda r: r["evidence"][1].__setitem__("value", []), "malformed evidence"),
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name, mutate, message in mutations:
+                with self.subTest(name=name):
+                    record = copy.deepcopy(seed)
+                    record["id"] = f"fixture-unhashable-{name}"
+                    mutate(record)
+                    path = root / f"{record['id']}.json"
+                    with self.assertRaisesRegex(compiler.ExperienceError, message):
+                        compiler.validate_record(record, path)
+
+            with self.assertRaisesRegex(compiler.ExperienceError, "must be an object"):
+                compiler.validate_record([], root / "not-an-object.json")
+
     def test_loader_accepts_new_valid_records_without_replacing_seed(self):
         seed = next(r for r in self.records if r["id"] == "ai-village-discovery-4945")
         extra = copy.deepcopy(seed)
