@@ -288,6 +288,52 @@ class PlantGuardTests(unittest.TestCase):
         self.assertEqual(result["verdict"], "NOT_CERTIFIED")
         self.assertIn("episodeSteps_must_be_int", result["reason"])
 
+    def test_same_callback_later_dig_removes_candidate(self):
+        obs = observation(hands=((1, 1),))
+        selected = action(("PLANT", "WHEAT"), hands=(("DIG",),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "plant_removed_before_eod")
+        self.assertEqual(result["removed_actor_indices"], [0])
+        self.assertEqual(result["doomed_actor_indices"], [])
+
+    def test_same_callback_dig_before_plant_is_noop(self):
+        obs = observation(farmer=(1, 1), hands=((1, 1),))
+        selected = action(("DIG",), hands=(("PLANT", "WHEAT"),))
+        result = assess(obs, selected)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [1])
+        self.assertEqual(result["removed_actor_indices"], [])
+
+    def test_future_callback_dig_removes_candidate(self):
+        obs = observation(hour=22)
+        selected = action(("PLANT", "WHEAT"))
+        result = assess(obs, selected, [action(("DIG",))])
+        self.assertEqual(result["verdict"], "NOT_CERTIFIED")
+        self.assertEqual(result["reason"], "plant_removed_before_eod")
+        self.assertEqual(result["removed_actor_indices"], [0])
+
+    def test_unrelated_future_dig_does_not_hide_doom(self):
+        obs = observation(hour=22, farmer=(1, 1), hands=((0, 0),))
+        selected = action(("PLANT", "WHEAT"), hands=(("PASS",),))
+        suffix = [action(("PASS",), hands=(("DIG",),))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["doomed_actor_indices"], [0])
+        self.assertEqual(result["removed_actor_indices"], [])
+
+    def test_mixed_removed_and_unwatered_candidates_only_dooms_survivor(self):
+        obs = observation(hour=22, farmer=(1, 1), hands=((2, 2),))
+        selected = action(
+            ("PLANT", "WHEAT"),
+            hands=(("PLANT", "CARROT"),),
+        )
+        suffix = [action(("DIG",), hands=(("PASS",),))]
+        result = assess(obs, selected, suffix)
+        self.assertEqual(result["verdict"], "DOOMED_AUTHORED_SUFFIX")
+        self.assertEqual(result["removed_actor_indices"], [0])
+        self.assertEqual(result["doomed_actor_indices"], [1])
+
     def test_result_pins_engine_and_configuration_sources(self):
         result = assess(observation(), action(("PLANT", "WHEAT")))
         self.assertEqual(
