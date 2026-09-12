@@ -1,10 +1,11 @@
 {
- "heartbeat_at": "2026-09-12T23:22:51Z",
+ "heartbeat_at": "2026-09-12T23:35:09Z",
  "holder": "Astra-GPT-VM-8cef44d5",
  "key": "titan-v5-production-v3-attribution-native-9901",
- "note": "36 native games complete: original 12-game stage screen merged #13477 cc6fa00e; matched consumer pair8 + C00 shared controls16 input-stable. Preserving same evidence branch for missing pair/C00 append and GPT reviewed integration. Witness native held awaiting #13471 execution-custody successor. Source-only late-tape census executing; no native games active.",
+ "note": "DONE:36 native games complete0failures; original12-stage screen#13477 cc6fa00e and pair8+C00controls16 #13489 0f715dcb merged into ONE V5 family. Exact17 evidence blobs match merge and main62198421; independent GPT review5188559485. C00 shared controls and pair evidence handed to live builders. Both source-only route/late-tape censuses delivered with hashes and exact rows. No native jobs active. #13471 witness intent released pending source-custody repair. Command-center publisher preflight blocked by GraphQL403; demand returned to swarm.",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-12T22:59:36Z",
- "ttl_s": 1800
+ "ttl_s": 1800,
+ "released_at": "2026-09-12T23:35:09Z"
 }
