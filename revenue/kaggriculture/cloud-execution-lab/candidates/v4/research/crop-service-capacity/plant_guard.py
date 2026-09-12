@@ -145,6 +145,7 @@ def _not_certified(reason: str, *, candidates: Sequence[int] = ()) -> dict[str, 
         "candidate_actor_indices": list(candidates),
         "doomed_actor_indices": [],
         "watered_actor_indices": [],
+        "removed_actor_indices": [],
         "engine_git_blob": ENGINE_GIT_BLOB,
         "configuration_git_blob": CONFIG_GIT_BLOB,
         "decision_authority": False,
@@ -294,12 +295,16 @@ def assess_same_eod_plant_survival(
 
         unresolved = set(candidate_targets)
         watered: set[int] = set()
+        removed: set[int] = set()
 
-        # Current unit-stage actor order matters: a WATER by an earlier actor is
-        # too early to help a PLANT created by a later actor on the same tile.
+        # Current unit-stage actor order matters. WATER before a later PLANT is
+        # too early; DIG after a PLANT removes that exact plant and therefore
+        # cannot support a same-EOD weed-doom certificate. An earlier DIG on an
+        # initially empty site is a no-op and must not suppress a later PLANT.
         for actor_index, command in enumerate(current_commands):
-            if command[0] == "WATER":
-                here = tuple(positions[actor_index])
+            op = command[0]
+            here = tuple(positions[actor_index])
+            if op == "WATER":
                 for plant_actor in list(unresolved):
                     if (
                         candidate_targets[plant_actor] == here
@@ -307,28 +312,47 @@ def assess_same_eod_plant_survival(
                     ):
                         unresolved.remove(plant_actor)
                         watered.add(plant_actor)
+            elif op == "DIG":
+                for plant_actor in list(unresolved):
+                    if (
+                        candidate_targets[plant_actor] == here
+                        and plant_actor < actor_index
+                    ):
+                        unresolved.remove(plant_actor)
+                        removed.add(plant_actor)
             _move(positions[actor_index], command, board_size)
 
-        # On later callbacks every candidate already exists, so WATER by any
-        # existing actor at the target tile discharges the same-EOD obligation.
+        # On later callbacks every unresolved candidate already exists. WATER
+        # discharges its same-EOD watering obligation; DIG removes the plant, so
+        # the original PLANT can no longer be certified as a weed at that EOD.
         for commands in future_commands:
             for actor_index, command in enumerate(commands):
-                if command[0] == "WATER":
-                    here = tuple(positions[actor_index])
+                op = command[0]
+                here = tuple(positions[actor_index])
+                if op == "WATER":
                     for plant_actor in list(unresolved):
                         if candidate_targets[plant_actor] == here:
                             unresolved.remove(plant_actor)
                             watered.add(plant_actor)
+                elif op == "DIG":
+                    for plant_actor in list(unresolved):
+                        if candidate_targets[plant_actor] == here:
+                            unresolved.remove(plant_actor)
+                            removed.add(plant_actor)
                 _move(positions[actor_index], command, board_size)
 
         candidates = sorted(candidate_targets)
         if not unresolved:
+            reason = (
+                "plant_removed_before_eod" if removed else "water_found_before_eod"
+            )
             return {
                 "verdict": "NOT_CERTIFIED",
-                "reason": "water_found_before_eod",
+                "reason": reason,
                 "candidate_actor_indices": candidates,
                 "doomed_actor_indices": [],
                 "watered_actor_indices": sorted(watered),
+                "removed_actor_indices": sorted(removed),
                 "targets": {
                     str(index): list(candidate_targets[index]) for index in candidates
                 },
@@ -343,6 +367,7 @@ def assess_same_eod_plant_survival(
             "candidate_actor_indices": candidates,
             "doomed_actor_indices": sorted(unresolved),
             "watered_actor_indices": sorted(watered),
+            "removed_actor_indices": sorted(removed),
             "targets": {
                 str(index): list(candidate_targets[index]) for index in candidates
             },
