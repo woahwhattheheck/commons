@@ -3,6 +3,47 @@
   "canonical_branch": "main",
   "claims": [
     {
+      "id": "animal.alternate-feed-preserves-base-without-care",
+      "status": "CONFIRMED",
+      "proposition": "In the constructed complete-interpreter no-CARE control, an alternating feed cadence that avoids two consecutive unfed days preserves base animal product and fertilizer output while reducing WHEAT feed from 30 to 15 across GOOSE, COW, and SHEEP.",
+      "scope": "Constructed placed-animal 720-step mechanism oracle with CARE disabled; this is not a current-V4 routing, field-EV, storage, deadline, or activation claim.",
+      "disposition": "Treat first-miss feed skipping as a real narrow engine mechanism worth composition/economics work only when CARE, storage, route timing, escape risk, and both-seat runtime gates are satisfied.",
+      "next_gate": "Use the existing STARVE-ACTIVATION-COMPOSE lane to prove current composed-V4 reachability, next-feed timing, CARE safety, storage safety, both-seat economics, and fallback/deadline nonregression before any activation.",
+      "tags": ["animals", "care", "engine", "feed", "wheat"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/dead-feed-care/STARVATION.md",
+          "git_blob": "853d25fa0c01143765c4b633f8504c513ea3cd8e",
+          "anchors": [
+            "| COW | 30 | 15 | 12 MILK | 12 MILK | 30 / 30 |",
+            "| GOOSE | 30 | 15 | 27 EGG | 27 EGG | 30 / 30 |",
+            "| SHEEP | 30 | 15 | 9 WOOL | 9 WOOL | 30 / 30 |"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "animal.blanket-alternate-feed-preserves-care-value",
+      "status": "FALSIFIED",
+      "proposition": "A blanket feed-every-other-day policy preserves CARE-enhanced animal output while halving WHEAT feed.",
+      "scope": "Constructed complete-interpreter CARE-every-day counterexample for GOOSE, COW, and SHEEP; narrower CARE-aware first-miss skipping remains outside this falsification.",
+      "disposition": "Do not globally alternate-starve animals or infer same economic output from survival/base production alone; pending/current CARE value must be checked before each skipped FEED.",
+      "next_gate": "Only a CARE-aware current-runtime policy satisfying STARVATION.md admission rules plus both-seat economics may revisit selective FEED skipping.",
+      "tags": ["animals", "care", "engine", "feed", "wheat"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/gameplay/dead-feed-care/STARVATION.md",
+          "git_blob": "853d25fa0c01143765c4b633f8504c513ea3cd8e",
+          "anchors": [
+            "| COW | 39 MILK | 12 MILK | 27 MILK |",
+            "| GOOSE | 56 EGG | 27 EGG | 29 EGG |",
+            "| SHEEP | 38 WOOL | 13 WOOL | 25 WOOL |"
+          ]
+        }
+      ]
+    },
+    {
       "id": "engine.buy-product-whitelist",
       "status": "CONFIRMED",
       "proposition": "Official direct BUY_PRODUCT quoting accepts only WHEAT and FERTILIZER.",
@@ -38,6 +79,45 @@
             "farm[\"tiles\"][fy][fx] = {\"kind\": \"PASTURE\"}",
             "if op == \"BUILD_COOP\":",
             "if op == \"BUILD_PASTURE\":"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.market-first-commit-seat-advantage",
+      "status": "FALSIFIED",
+      "proposition": "Seat identity receives a structural market-quote advantage solely because player 0 commits market units before player 1 after both have been quoted from the same pre-commit inventory.",
+      "scope": "Source-pinned seat-symmetry oracle covering randomized mixed market queues and weed-off interpreter controls; this does not falsify all market timing strategies or all possible sources of seat asymmetry.",
+      "disposition": "Do not attribute mirror seat tax to market commit order alone; ablate other seat-indexed state transitions and locate the first pre-market divergence before building a seat-order market fix.",
+      "next_gate": "Replay mirror evidence with weeds disabled or paired weed streams while leaving market actions unchanged, then inspect the first state divergence if a seat gap survives.",
+      "tags": ["engine", "market", "seat", "symmetry"],
+      "do_not_repeat_without_new_evidence": true,
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/seat-asymmetry-audit/seat_symmetry_oracle.py",
+          "git_blob": "865778d99c955f6d175bc54b450c89441e7eb78c",
+          "anchors": [
+            "\"market_seat_order_causal\": False,",
+            "_assert_swapped(state_ab, state_ba)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engine.shared-weed-rng-seat-stream",
+      "status": "CONFIRMED",
+      "proposition": "The source-pinned end-of-day weed mechanism can create seat-indexed farm states because both farms consume different segments of one shared episode/day RNG stream.",
+      "scope": "Deterministic mechanism witness with weeds enabled; this is not proof that weeds caused any particular replay loss, seat tax, or field-EV difference.",
+      "disposition": "Treat weed RNG as a real seat-asymmetry candidate that must be controlled before assigning causality to market commit order or policy quality.",
+      "next_gate": "Run paired mirror replays with weedSpawnChance=0 or an equivalent paired weed-stream control and compare the first state/action divergence.",
+      "tags": ["engine", "rng", "seat", "symmetry", "weeds"],
+      "evidence": [
+        {
+          "path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/seat-asymmetry-audit/seat_symmetry_oracle.py",
+          "git_blob": "865778d99c955f6d175bc54b450c89441e7eb78c",
+          "anchors": [
+            "\"eod_weed_rng_is_seat_indexed\": True,",
+            "if farm0 != farm1:"
           ]
         }
       ]
