@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Authenticated current-V5 engagement census for canonical PLANTQUORUM.
+"""Authenticated current-V5 engagement runner for canonical PLANTQUORUM.
 
-This is evidence tooling only.  The current TITAN action is always the action
-sent to the official interpreter.  The canonical PLANTQUORUM helper is invoked
-on a private copy solely to answer whether its source-certain atomic-PLANT
-relief would change the *engine-effective* unit vector.
-
-One process runs one seed/seat.  Aggregate a fixed 8x2 panel separately.  Zero
-engagement is reported only as ``NO_STARTER_ENGAGEMENT``; it is not a global
-COLD claim and it does not authorize a production hook or default change.
+`census.py` is the single theorem/engine observer boundary. This file adds exact
+current-archive custody, official gameplay, one-cell execution, and strict fixed
+panel aggregation. Candidate bytes are observation-only and are never sent to
+the interpreter.
 """
 from __future__ import annotations
 
@@ -26,22 +22,24 @@ import shutil
 import sys
 import tarfile
 import tempfile
-import types
-from typing import Any, Mapping
+from typing import Any
 
 HERE = Path(__file__).resolve().parent
 LAB = HERE.parents[2]
 ARCHIVE = LAB / "exports/titan-current.tar.gz"
 POINTER = LAB / "runtime/integrated-selected/CURRENT-ARCHIVE.json"
+OBSERVER = HERE / "census.py"
 NATIVE_CENSUS = LAB / "candidates/v4/research/unit-phase-chaining/native_census.py"
 UNITPIPE = LAB / "candidates/v4/research/unit-phase-chaining/unit_pipeline_admission.py"
 PLANTQUORUM = LAB / "candidates/v4/research/unit-phase-chaining/plant_quorum_admission.py"
 
 BASE_COMMIT = "b9d696d4dd803bc0345f73cdd52cc35346f503f6"
 ARCHIVE_SHA256 = "fe67d2daa00ba84348ef364db3b6dea9671d6b01349001e51546874e277adec3"
+ARCHIVE_BYTES = 466983
 SOURCE_SHA256 = "8182785b03f3c771901d6124d11b7e04d37c1ddcaabf6174d9748227a91c5526"
 RUNTIME_FILES = 116
 POINTER_GIT_BLOB = "e041598b2ab31ac370b4d2285fe38477c3aa3f78"
+OBSERVER_GIT_BLOB = "0d55822177714a4df22d5dc9084441d02d4319ae"
 NATIVE_CENSUS_GIT_BLOB = "27ec7f411b0da36aeeecab2729d5d65adcf81dd2"
 UNITPIPE_GIT_BLOB = "f02448806f66e524fdc317c23b620fde45a926c9"
 PLANTQUORUM_GIT_BLOB = "15c24fbe305dfb7b4b1b2c39897af4af9b49f31f"
@@ -71,6 +69,7 @@ EXPECTED_SOURCE = {
     "source_sha256": SOURCE_SHA256,
     "runtime_files": RUNTIME_FILES,
     "pointer_git_blob": POINTER_GIT_BLOB,
+    "observer_git_blob": OBSERVER_GIT_BLOB,
     "native_census_git_blob": NATIVE_CENSUS_GIT_BLOB,
     "unitpipe_support_git_blob": UNITPIPE_GIT_BLOB,
     "plantquorum_git_blob": PLANTQUORUM_GIT_BLOB,
@@ -89,7 +88,6 @@ def sha256(data: bytes) -> str:
 
 
 def _capture_pinned(path: Path, expected_blob: str, label: str) -> bytes:
-    """Read once; the captured bytes, not the live path, become authority."""
     data = Path(path).read_bytes()
     actual = git_blob_sha(data)
     if actual != expected_blob:
@@ -133,7 +131,7 @@ def _pointer_contract() -> dict[str, Any]:
         "entrypoint": "main.py::agent",
         "config": "TITAN-CONFIG.json",
         "sha256": ARCHIVE_SHA256,
-        "bytes": 466983,
+        "bytes": ARCHIVE_BYTES,
         "runtime_files": RUNTIME_FILES,
         "source_manifest": "runtime/integrated-selected/CURRENT-SOURCE.json",
         "source_manifest_sha256": SOURCE_SHA256,
@@ -153,7 +151,7 @@ def _safe_member(name: Any) -> PurePosixPath:
 
 
 def _materialize_archive_snapshot(destination: Path) -> dict[str, Any]:
-    """Authenticate archive bytes once, then extract only that immutable buffer."""
+    """Authenticate current archive once, then extract only that immutable buffer."""
     pointer = _pointer_contract()
     archive_bytes = ARCHIVE.read_bytes()
     if len(archive_bytes) != pointer["bytes"]:
@@ -165,8 +163,7 @@ def _materialize_archive_snapshot(destination: Path) -> dict[str, Any]:
         raise FileExistsError(destination)
     destination.mkdir(parents=True)
     seen: set[str] = set()
-    total = 0
-    count = 0
+    total = count = 0
     try:
         with tarfile.open(fileobj=io.BytesIO(archive_bytes), mode="r:gz") as archive:
             for member in archive:
@@ -198,6 +195,9 @@ def _materialize_archive_snapshot(destination: Path) -> dict[str, Any]:
     if "SOURCE.json" not in seen or "main.py" not in seen or "TITAN-CONFIG.json" not in seen:
         shutil.rmtree(destination, ignore_errors=True)
         raise ValueError("current archive is missing canonical runtime members")
+    if count != RUNTIME_FILES + 1:
+        shutil.rmtree(destination, ignore_errors=True)
+        raise ValueError("current archive member count differs from runtime closure + SOURCE.json")
     return {"sha256": actual, "bytes": len(archive_bytes), "members": count}
 
 
@@ -216,7 +216,6 @@ def _load_module(path: Path, name: str):
 
 
 def _load_native_census_snapshot(root: Path):
-    """Snapshot the already-reviewed generic custody loader plus its own dependency."""
     native = _capture_pinned(NATIVE_CENSUS, NATIVE_CENSUS_GIT_BLOB, "native_census.py")
     unitpipe = _capture_pinned(UNITPIPE, UNITPIPE_GIT_BLOB, "unit_pipeline_admission.py")
     root.mkdir()
@@ -225,82 +224,17 @@ def _load_native_census_snapshot(root: Path):
     return _load_module(root / "native_census.py", "titan_v5_plantquorum_native_census")
 
 
-def _load_plantquorum_snapshot():
-    data = _capture_pinned(PLANTQUORUM, PLANTQUORUM_GIT_BLOB, "plant_quorum_admission.py")
-    module = types.ModuleType("titan_v5_plantquorum_admission")
-    module.__file__ = str(PLANTQUORUM)
-    exec(compile(data, str(PLANTQUORUM), "exec"), module.__dict__, module.__dict__)
-    if not callable(getattr(module, "relieve_atomic_plant_collateral", None)):
-        raise ValueError("captured PLANTQUORUM helper lacks relief function")
-    if not callable(getattr(module, "effective_rows_under_engine_preflight", None)):
-        raise ValueError("captured PLANTQUORUM helper lacks engine-preflight model")
-    return module
-
-
-def _source_rows(action: Mapping[str, Any]) -> list[Any]:
-    hands = action.get("hands", [])
-    if not isinstance(hands, list):
-        hands = []
-    return [copy.deepcopy(action.get("farmer", ["PASS"])), *copy.deepcopy(hands)]
-
-
-def observe_admission(helper, observation: Mapping[str, Any], action: Mapping[str, Any]) -> dict[str, Any]:
-    """Observe candidate semantics on copies; never return an action for gameplay."""
-    if not isinstance(action, Mapping):
-        raise ValueError("returned action must be a mapping")
-    source_action = copy.deepcopy(dict(action))
-    player = observation.get("player")
-    farms = observation.get("farms")
-    private = observation.get("private")
-    report_obs = {
-        "player": player,
-        "farms": copy.deepcopy(farms),
-        "private": copy.deepcopy(private),
-    }
-    candidate, report = helper.relieve_atomic_plant_collateral(
-        report_obs, copy.deepcopy(source_action), enabled=True
-    )
-    if dict(action) != source_action:
-        raise ValueError("PLANTQUORUM observation mutated the returned baseline action")
-    if not isinstance(report, dict) or report.get("schema") != "titan-v4-plantquorum-admission-v1":
-        raise ValueError("PLANTQUORUM report schema mismatch")
-    changed = report.get("changed")
-    if type(changed) is not bool:
-        raise ValueError("PLANTQUORUM changed flag must be exact bool")
-    if not changed:
-        if candidate != source_action:
-            raise ValueError("unchanged PLANTQUORUM report returned changed candidate bytes")
-        return {"changed": False, "changed_actors": [], "crops": report.get("crops", [])}
-
-    if candidate == source_action:
-        raise ValueError("changed PLANTQUORUM report returned identical candidate")
-    seeds = report_obs["private"].get("seeds", {}) if isinstance(report_obs["private"], Mapping) else {}
-    before_rows = _source_rows(source_action)
-    after_rows = _source_rows(candidate)
-    before_effective = helper.effective_rows_under_engine_preflight(before_rows, seeds)
-    after_effective = helper.effective_rows_under_engine_preflight(after_rows, seeds)
-    if before_effective == after_effective:
-        raise ValueError("PLANTQUORUM changed source rows without changing engine preflight")
-    if not any(isinstance(row, list) and len(row) >= 2 and row[0] == "PLANT" for row in after_effective):
-        raise ValueError("PLANTQUORUM engagement left no effective PLANT survivor")
-    changed_actors = report.get("changed_actors")
-    if not isinstance(changed_actors, list) or not changed_actors:
-        raise ValueError("engaged PLANTQUORUM report lacks changed actors")
-    return {
-        "changed": True,
-        "changed_actors": copy.deepcopy(changed_actors),
-        "crops": copy.deepcopy(report.get("crops", [])),
-        "source_rows": before_rows,
-        "candidate_rows": after_rows,
-        "effective_before": before_effective,
-        "effective_after": after_effective,
-    }
+def _load_observer_snapshot(root: Path):
+    observer = _capture_pinned(OBSERVER, OBSERVER_GIT_BLOB, "census.py")
+    root.mkdir()
+    (root / "census.py").write_bytes(observer)
+    return _load_module(root / "census.py", "titan_v5_plantquorum_observer")
 
 
 def _current_runtime(temp: Path):
-    support = temp / "native-support"
     package = temp / "current-runtime"
-    native = _load_native_census_snapshot(support)
+    native = _load_native_census_snapshot(temp / "native-support")
+    observer = _load_observer_snapshot(temp / "observer-support")
     archive_receipt = _materialize_archive_snapshot(package)
     capture = native._capture_native_runtime(
         package,
@@ -311,12 +245,15 @@ def _current_runtime(temp: Path):
     if type(runtime) is not dict or len(runtime) != RUNTIME_FILES:
         raise ValueError("captured current runtime file count differs from pointer")
     engine, ev, main = native._load_fixture_from_capture(capture)
-    plant = _load_plantquorum_snapshot()
-    engine_path = package / "checks/reference/engine/kaggriculture.py"
-    plant_source = plant.verify_engine_source(engine_path)
-    if plant_source.get("engine_blob") != ENGINE_GIT_BLOB:
-        raise ValueError("PLANTQUORUM helper did not bind the current packaged engine")
-    return archive_receipt, engine, ev, main, plant
+    authority, provenance = observer.load_authority(
+        theorem_path=PLANTQUORUM,
+        engine_path=package / "checks/reference/engine/kaggriculture.py",
+    )
+    if provenance.get("theorem_git_blob") != PLANTQUORUM_GIT_BLOB:
+        raise ValueError("observer did not bind canonical PLANTQUORUM theorem")
+    if provenance.get("engine_git_blob") != ENGINE_GIT_BLOB:
+        raise ValueError("observer did not bind packaged official engine")
+    return archive_receipt, engine, ev, main, observer, authority, provenance
 
 
 def _exact_int(value: Any, label: str, *, minimum: int = 0) -> int:
@@ -330,7 +267,8 @@ def run_cell(seed: int, seat: int) -> dict[str, Any]:
     if type(seat) is not int or seat not in PANEL_SEATS:
         raise ValueError("seat must be exact int 0 or 1")
     with tempfile.TemporaryDirectory(prefix="titan-v5-plantquorum-") as directory:
-        archive_receipt, engine, ev, main, plant = _current_runtime(Path(directory))
+        (archive_receipt, engine, ev, main,
+         observer, authority, provenance) = _current_runtime(Path(directory))
         cfg = ev.Struct({
             key: (value.get("default") if isinstance(value, dict) else value)
             for key, value in engine.specification["configuration"].items()
@@ -343,8 +281,7 @@ def run_cell(seed: int, seat: int) -> dict[str, Any]:
         ]
         engine.interpreter(state, env)
 
-        callbacks = 0
-        engagements = 0
+        callbacks = engagements = 0
         examples: list[dict[str, Any]] = []
         for step in range(int(cfg.episodeSteps)):
             actions = []
@@ -355,13 +292,19 @@ def run_cell(seed: int, seat: int) -> dict[str, Any]:
                     observation = state[player].observation
                     action = main.agent(copy.deepcopy(observation), cfg)
                     callbacks += 1
-                    witness = observe_admission(plant, observation, action)
-                    if witness["changed"]:
+                    control, witness = observer.observe_with_authority(
+                        authority, provenance, observation, action
+                    )
+                    if control != action:
+                        raise ValueError("observer control differs from current-V5 return")
+                    if witness.get("control_action_preserved") is not True:
+                        raise ValueError("observer did not certify baseline control preservation")
+                    if witness.get("changed") is True:
                         engagements += 1
                         if len(examples) < MAX_EXAMPLES:
-                            examples.append({"step": step, **witness})
-                    # Evidence-only invariant: candidate bytes are never placed in
-                    # `actions`; only the original current-V5 return reaches engine.
+                            examples.append({"step": step, **copy.deepcopy(witness)})
+                    # Critical: candidate/control copies are evidence only. The exact
+                    # original current-V5 return is what reaches official gameplay.
                     actions.append(action)
                 else:
                     actions.append(engine.starter_agent(copy.deepcopy(state[player].observation)))
@@ -396,6 +339,9 @@ def _validate_cell(cell: Any) -> tuple[int, int, int]:
         raise ValueError("cell schema mismatch")
     if cell.get("source") != EXPECTED_SOURCE:
         raise ValueError("cell source identity mismatch")
+    receipt = cell.get("archive_receipt")
+    if receipt != {"sha256": ARCHIVE_SHA256, "bytes": ARCHIVE_BYTES, "members": RUNTIME_FILES + 1}:
+        raise ValueError("cell archive receipt mismatch")
     seed = _exact_int(cell.get("seed"), "cell seed")
     seat = cell.get("seat")
     if type(seat) is not int or seat not in PANEL_SEATS:
@@ -426,8 +372,7 @@ def aggregate_cells(cells: list[dict[str, Any]]) -> dict[str, Any]:
     if type(cells) is not list or len(cells) != len(expected):
         raise ValueError(f"panel requires exactly {len(expected)} cells")
     seen: set[tuple[int, int]] = set()
-    engagements = 0
-    engaged_cells = 0
+    engagements = engaged_cells = 0
     examples: list[dict[str, Any]] = []
     for cell in cells:
         seed, seat, count = _validate_cell(cell)
@@ -490,11 +435,11 @@ def main() -> int:
     panel.add_argument("cells", type=Path, nargs="+")
     args = parser.parse_args()
 
-    if args.command == "cell":
-        result = run_cell(args.seed, args.seat)
-    else:
-        values = [_strict_json_file(path) for path in args.cells]
-        result = aggregate_cells(values)
+    result = (
+        run_cell(args.seed, args.seat)
+        if args.command == "cell"
+        else aggregate_cells([_strict_json_file(path) for path in args.cells])
+    )
     _write_new_json(args.output, result)
     print(json.dumps({
         key: result[key]
