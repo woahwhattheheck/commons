@@ -44,28 +44,28 @@ class GeminiEggTimingTests(unittest.TestCase):
         rival = rival or [action() for _ in own]
         return [[a, b] for a, b in zip(own, rival)]
 
-    def test_town_egg_absorption_creates_profitable_later_window(self):
+    def test_town_egg_absorption_creates_true_sale_cash_gain(self):
         state, env = self.fixture()
         own = [action(["SELL", "EGG", 12])] + [action() for _ in range(5)]
         report = gt.search(
             self.engine, state, env, self.tape(own), start_step=4, seat=0,
             source_turn=0, source_row_index=0, max_delay=5,
         )
-        self.assertIsNotNone(report["best_positive"])
-        self.assertGreater(report["best_positive"]["own_cash_delta"], 0)
-        self.assertTrue(report["best_positive"]["realized_retiming"])
+        best = report["best_positive"]
+        self.assertIsNotNone(best)
+        self.assertTrue(best["realized_retiming"])
+        self.assertTrue(best["scarcity_price_positive"])
+        self.assertGreater(best["target_sale_cash"], best["source_sale_cash"])
+        self.assertGreater(best["sale_cash_delta"], 0)
         # Step 8 consumes after market; step 9 is the first placement that can
         # capture both the step-4 and step-8 BAKERY depletion pulses.
-        self.assertEqual(report["best_positive"]["target_step"], 9)
+        self.assertEqual(best["target_step"], 9)
         self.assertFalse(report["policy_claim"])
         self.assertFalse(report["literal_direct_egg_short_squeeze_supported"])
 
     def test_fixed_rival_supply_can_destroy_waiting_edge(self):
         state, env = self.fixture(rival_stock=200)
         own = [action(["SELL", "EGG", 12])] + [action() for _ in range(2)]
-        # Rival supply is quoted in the same source turn. The baseline receives
-        # the precommit quote, while every delayed candidate faces that supply
-        # after commit (net of town depletion), so waiting must not be blessed.
         rival = [action(["SELL", "EGG", 200]), action(), action()]
         report = gt.search(
             self.engine, state, env, self.tape(own, rival), start_step=4, seat=0,
@@ -73,6 +73,45 @@ class GeminiEggTimingTests(unittest.TestCase):
         )
         self.assertIsNone(report["best_positive"])
         self.assertTrue(any(row["realized_retiming"] for row in report["candidates"]))
+
+    def test_all_pass_rows_and_append_slot_are_enumerated(self):
+        tape = self.tape([
+            action(["SELL", "EGG", 1]),
+            action(["PASS"], ["HIRE"], ["PASS"]),
+        ])
+        self.assertEqual(
+            gt.candidate_destinations(tape, seat=0, source_turn=0, max_delay=1, cap=4),
+            [(1, 0), (1, 2), (1, 3)],
+        )
+
+    def test_full_cap_only_literal_pass_rows_are_legal(self):
+        tape = self.tape([
+            action(["SELL", "EGG", 1]),
+            action(["HIRE"], ["PASS"], ["HIRE"]),
+        ])
+        self.assertEqual(
+            gt.candidate_destinations(tape, seat=0, source_turn=0, max_delay=1, cap=3),
+            [(1, 1)],
+        )
+
+    def test_failed_intervening_spend_cannot_mint_scarcity_positive(self):
+        # No shop/town drain in this short window: source and target EGG sales
+        # quote the same public inventory. Baseline source cash funds the HIRE;
+        # delayed candidate cannot fund it, so candidate can finish with MORE
+        # net cash even though the EGG sale itself earns no extra dollar.
+        state, env = self.fixture(step=1, shops=(), cap=1)
+        own = [action(["SELL", "EGG", 12]), action(["HIRE"]), action()]
+        report = gt.search(
+            self.engine, state, env, self.tape(own), start_step=1, seat=0,
+            source_turn=0, source_row_index=0, max_delay=2,
+        )
+        self.assertEqual(report["candidate_count"], 1)
+        row = report["candidates"][0]
+        self.assertTrue(row["realized_retiming"])
+        self.assertGreater(row["own_cash_delta"], 0)
+        self.assertEqual(row["sale_cash_delta"], 0)
+        self.assertFalse(row["scarcity_price_positive"])
+        self.assertIsNone(report["best_positive"])
 
     def test_refuses_non_egg_or_nonpositive_source(self):
         state, env = self.fixture()
@@ -88,12 +127,12 @@ class GeminiEggTimingTests(unittest.TestCase):
     def test_destination_never_displaces_live_economics(self):
         full = self.tape([
             action(["SELL", "EGG", 1]),
-            action(*([ ["HIRE"] ] * 10)),
+            action(*([["HIRE"]] * 10)),
             action(["PASS"], ["HIRE"]),
         ])
         self.assertEqual(
             gt.candidate_destinations(full, seat=0, source_turn=0, max_delay=2, cap=10),
-            [(2, 0)],
+            [(2, 0), (2, 2)],
         )
 
     def test_input_tape_is_immutable(self):
