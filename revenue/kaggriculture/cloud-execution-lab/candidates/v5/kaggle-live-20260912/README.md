@@ -4,6 +4,8 @@ Goal: exceed 3000 on the live Kaggle leaderboard. Simulations help select candid
 
 The V4 snapshot at 2026-09-12 09:51:22 UTC contains 10 completed public games: 10 wins, zero losses. Validation self-play is listed separately in the provider snapshot. V4 submission is 56182437; the snapshot rating is a point-in-time reading, not the latest rating.
 
+A later official-public pull at 2026-09-12 10:16:05 UTC advanced V4 submission 56182437 to 14 wins / 2 losses at rating 1622.4. `live-public-loss-bank.json` records both exact loss episodes, seeds, seats, scores, and historical opponent submission IDs for matched rematches. Preserve those exact opponent submissions even when the same team has a newer upload: the loss is evidence about the variant that actually played, not about the team's current/latest submission.
+
 The top-30 map was retrieved at 09:54:52-09:54:57 UTC: all 30 teams, 60 public submission records. Twenty-eight teams have a unique public score matching the saved leaderboard; 14 of those matches are older than the team's latest submission. Use the score-matched target when refreshing an opponent bank. Suliman Tadros and Catalyst have explicit ambiguous mappings; their highest returned submissions remain fallback targets. IDs inferred by score matching are labeled as such.
 
 `replay-metrics.json` summarizes four downloaded V4 wins and records requested market quantities separately from realized fills. `episode-108133447-brief.md` and its JSON give detailed realized economics from one recorded game. The late livestock, sale timing, and owned-input ideas extend commons_swarm's herd/feed, crash-dodge, wool, and liquidity lanes. Source suggestion: https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789201007198119 and its later follow-ups.

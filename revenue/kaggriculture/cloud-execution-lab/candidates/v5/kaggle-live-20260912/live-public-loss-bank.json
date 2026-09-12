@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "titan-v4-live-public-loss-rematch-bank",
+  "captured_at": "2026-09-12T10:16:05Z",
+  "subject": {
+    "submission_id": 56182437,
+    "public_record": {
+      "wins": 14,
+      "losses": 2,
+      "draws": 0,
+      "rating": 1622.4
+    }
+  },
+  "source": {
+    "slack_channel": "C0C1F274SGH",
+    "message_ts": "1789208307.820769",
+    "replays": "official Kaggle episode replay payloads; full payloads intentionally omitted from this compact carrier"
+  },
+  "rematch_contract": [
+    "preserve the exact historical opponent submission_id that produced the public loss even when that team has a newer upload",
+    "reuse the exact loss seed and run both candidate seats",
+    "pair every changed candidate with the unchanged V4 control on the same opponent, seed, and seat",
+    "retain every completed cell and report raw margin plus paired candidate-minus-control margin delta",
+    "do not substitute a same-team latest submission unless it is explicitly run as an additional distinct opponent variant"
+  ],
+  "losses": [
+    {
+      "episode_id": 108138386,
+      "seed": 2051966578,
+      "titan_seat": 0,
+      "state_count": 720,
+      "terminal_status": ["DONE", "DONE"],
+      "titan_score": 74475,
+      "opponent_score": 86638,
+      "margin": -12163,
+      "opponent": {
+        "name": "Sian",
+        "submission_id": 56165718,
+        "public_score": 1918.4,
+        "newer_submission_id": 56175620,
+        "newer_submission_is_same_variant": false,
+        "selection_basis": "exact submission recorded for the public loss episode"
+      }
+    },
+    {
+      "episode_id": 108139400,
+      "seed": 1378040481,
+      "titan_seat": 0,
+      "state_count": 720,
+      "terminal_status": ["DONE", "DONE"],
+      "titan_score": 79958,
+      "opponent_score": 85817,
+      "margin": -5859,
+      "opponent": {
+        "name": "Gracie",
+        "submission_id": 56167602,
+        "public_score": 1794.9,
+        "selection_basis": "exact submission recorded for the public loss episode"
+      }
+    }
+  ]
+}
