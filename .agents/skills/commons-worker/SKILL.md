@@ -32,11 +32,13 @@ skill-improvement step, which tests a procedural change before retaining it.
 
 For an existing PR/carrier, reserve the canonical target and your operation name
 as one claim before editing: `python host/coordination_claims.py take --pr N
---operation KEY --holder NAME`. Renew and release with the same aliases. A live
-conflict means the earlier holder owns that target until release/expiry; choose a
-non-overlapping lane instead of minting another operation key for the same PR.
-Pre-PR discovery may use `--operation` alone. The older
-`coordination_state.py take KEY` remains a compatible single-key road.
+--operation KEY --holder NAME`. Renew and release through the same helper; its
+persisted alias set is authoritative even if a later caller supplies a subset. A
+live conflict means the earlier holder owns that target until release/expiry;
+choose a non-overlapping lane instead of minting another operation key for the
+same PR. Pre-PR discovery may use `--operation` alone. Do **not** mix canonical
+PR claims with the older `coordination_state.py take KEY` single-key writer; that
+legacy road remains for legacy/non-PR holdings and does not carry alias continuity.
 
 ## Do not
 
