@@ -64,8 +64,13 @@ def _plain_nonnegative_int(value):
 
 
 def _plain_nonnegative_money(value):
-    """Engine money is float; reject bool/non-numeric/non-finite poison."""
-    return type(value) in (int, float) and math.isfinite(value) and value >= 0
+    """Engine money is numeric; reject non-finite/overflowing poison safely."""
+    if type(value) not in (int, float) or value < 0:
+        return False
+    try:
+        return math.isfinite(value)
+    except (OverflowError, ValueError):
+        return False
 
 
 def _cfg(configuration, name):
