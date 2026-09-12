@@ -44,8 +44,18 @@ class P02Contracts(unittest.TestCase):
         p02.reset()
 
     def test_projected_eggs_care_bound(self):
-        self.assertEqual(p02._eggs(12), 32)
-        self.assertEqual(p02._eggs(18), 20)
+        self.assertEqual(p02._eggs(12), 30)
+        self.assertEqual(p02._eggs(18), 18)
+
+    def test_corrected_yield_blocks_old_phantom_payback(self):
+        obs = {"market": {"prices": {"EGG": 50, "WHEAT": 22}}}
+        with mock.patch.object(p02, "_schedule", return_value=({}, 0, 0)):
+            record = p02._econ(obs, object(), 18, (4, 4), 0)
+        self.assertEqual(record["eggs"], 18)
+        self.assertEqual(record["margin"], 68)
+        self.assertLess(record["margin"], p02.PAYBACK_MARGIN)
+        old_two_unit_phantom = 2 * ((50 * 4) // 5)
+        self.assertGreaterEqual(record["margin"] + old_two_unit_phantom, p02.PAYBACK_MARGIN)
 
     def test_schedule_rejects_late_route_hire(self):
         native = Native({d: day(hands=2, hire_hour=(22 if d == 13 else 0)) for d in range(12, 30)})
@@ -141,6 +151,29 @@ class P02Contracts(unittest.TestCase):
         self.assertEqual(patched.call_count, 2)
         self.assertEqual(p02.STATE[0]["phase"], "requested")
         self.assertNotIn("target", p02.STATE[0].get("_retry_before", {}))
+
+    def test_changed_same_step_discards_gameplay_telemetry(self):
+        action = {"farmer": ["PASS"], "hands": [], "market": []}
+        cfg = dict(p02.CFG)
+        obs = {"step": 200, "player": 0, "farms": [{}, {}], "private": {}}
+
+        def request(parent, _obs, state):
+            state["phase"] = "requested"
+            p02.telemetry["commit_requests"] += 1
+            out = copy.deepcopy(parent)
+            out["market"].append(["HIRE"])
+            return out
+
+        changed = copy.deepcopy(obs)
+        changed["private"] = {"revision": 1}
+        with mock.patch.object(p02, "_request", side_effect=request):
+            first = p02.apply_goose_capacity_economy(action, obs, cfg, enabled=True)
+            self.assertEqual(first["market"], [["HIRE"]])
+            self.assertEqual(p02.telemetry["commit_requests"], 1)
+            second = p02.apply_goose_capacity_economy(copy.deepcopy(action), changed, cfg, enabled=True)
+        self.assertEqual(second, action)
+        self.assertEqual(p02.telemetry["commit_requests"], 0)
+        self.assertEqual(p02.telemetry["same_step_changed"], 1)
 
 
 if __name__ == "__main__":

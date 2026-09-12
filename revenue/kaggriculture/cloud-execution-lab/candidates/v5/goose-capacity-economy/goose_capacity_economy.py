@@ -162,7 +162,9 @@ def _schedule(native,start,target,current_hire_ordinal):
 
 
 def _eggs(start):
-    first=start+3
+    # Pinned engine GOOSE.first_yield_day == 4. Yield created by the EOD refresh
+    # on that boundary is first harvestable on day start+4, not start+3.
+    first=start+4
     return 0 if first>LAST_DAY else 4+2*(LAST_DAY-first)
 
 
@@ -241,8 +243,9 @@ def _stable_state(s):
     return copy.deepcopy({k:v for k,v in s.items() if not k.startswith("_retry_")})
 
 
-def _cache_retry(s,before,action,observation,configuration,out):
+def _cache_retry(s,before,telemetry_before,action,observation,configuration,out):
     s["_retry_before"]=copy.deepcopy(before)
+    s["_retry_telemetry_before"]=copy.deepcopy(telemetry_before)
     s["_retry_parent"]=copy.deepcopy(action)
     s["_retry_observation"]=copy.deepcopy(observation)
     s["_retry_cfg"]=_cfg_key(configuration)
@@ -420,11 +423,14 @@ def apply_goose_capacity_economy(action,observation,configuration,*,enabled=Fals
             telemetry["same_step_replay"]+=1
             return copy.deepcopy(s["_retry_output"])
         before=copy.deepcopy(s.get("_retry_before",_stable_state(s)))
+        telemetry_before=Counter(s.get("_retry_telemetry_before", telemetry))
         s.clear();s.update(before);s["last"]=step
-        _cache_retry(s,before,action,observation,configuration,action)
+        telemetry.clear();telemetry.update(telemetry_before)
         telemetry["same_step_changed"]+=1
+        _cache_retry(s,before,telemetry.copy(),action,observation,configuration,action)
         return copy.deepcopy(action)
     before=_stable_state(s)
+    telemetry_before=telemetry.copy()
     phase=s.get("phase","idle")
     if phase=="idle":out=_request(action,observation,s)
     elif phase=="requested":out=_deploy(action,observation,s)
@@ -436,7 +442,7 @@ def apply_goose_capacity_economy(action,observation,configuration,*,enabled=Fals
             out=req if req is not action else _service(action,observation,s)
     else:out=action
     s["last"]=step
-    _cache_retry(s,before,action,observation,configuration,out)
+    _cache_retry(s,before,telemetry_before,action,observation,configuration,out)
     return out
 
 
