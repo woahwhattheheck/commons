@@ -24,7 +24,7 @@ sys.modules[SPEC.name] = mod
 SPEC.loader.exec_module(mod)
 
 
-def obs(*, hour=0, hands=0, empty=25):
+def obs(*, hour=0, step=None, hands=0, empty=25):
     side = 5
     cells = [None] * empty + ["LOCKED"] * (side * side - empty)
     rows = [cells[i:i + side] for i in range(0, len(cells), side)]
@@ -33,7 +33,9 @@ def obs(*, hour=0, hands=0, empty=25):
         "hands": [[2, 2] for _ in range(hands)],
         "tiles": rows,
     }
-    return {"player": 0, "hour": hour, "farms": [farm]}
+    if step is None:
+        step = hour
+    return {"player": 0, "hour": hour, "step": step, "farms": [farm]}
 
 
 def r(hour, order, op, site=None):
@@ -171,6 +173,43 @@ class PlantguardServiceTests(unittest.TestCase):
         )
         self.assertEqual(got["verdict"], "ESTABLISHMENT_SERVICE_PROVED")
 
+    def test_terminal_partial_day_cannot_claim_phantom_hour23_water(self):
+        got = mod.prove_same_eod_establishment(
+            obs(hour=22, step=718, hands=1),
+            [(1, 1)],
+            [r(22, 0, "PLANT", (1, 1)), r(23, 0, "WATER", (1, 1))],
+            no_future_hires=True,
+        )
+        self.assertEqual(got["verdict"], "SERVICE_SEQUENCE_UNPROVED")
+        self.assertEqual(got["failures"], [{"reason": "eod_not_reachable_before_terminal"}])
+
+    def test_last_real_eod_callback_can_still_certify_service(self):
+        got = mod.prove_same_eod_establishment(
+            obs(hour=23, step=695, hands=1),
+            [(1, 1)],
+            [r(23, 0, "PLANT", (1, 1)), r(23, 1, "WATER", (1, 1))],
+            no_future_hires=True,
+        )
+        self.assertEqual(got["verdict"], "ESTABLISHMENT_SERVICE_PROVED")
+
+    def test_step_hour_mismatch_is_rejected(self):
+        with self.assertRaises(mod.PlantguardEvidenceError):
+            mod.prove_same_eod_establishment(
+                obs(hour=22, step=717, hands=1),
+                [(1, 1)],
+                [r(22, 0, "PLANT", (1, 1)), r(22, 1, "WATER", (1, 1))],
+                no_future_hires=True,
+            )
+
+    def test_step_after_final_executable_callback_is_rejected(self):
+        with self.assertRaises(mod.PlantguardEvidenceError):
+            mod.prove_same_eod_establishment(
+                obs(hour=23, step=719, hands=1),
+                [(1, 1)],
+                [r(23, 0, "PLANT", (1, 1)), r(23, 1, "WATER", (1, 1))],
+                no_future_hires=True,
+            )
+
     def test_multiple_sites_all_need_independent_pairs(self):
         got = mod.prove_same_eod_establishment(
             obs(hour=20, hands=1),
@@ -295,6 +334,14 @@ class PlantguardServiceTests(unittest.TestCase):
             )
         with self.assertRaises(mod.PlantguardEvidenceError):
             mod.prove_same_eod_establishment(obs(), [(1, 1)], [], no_future_hires=1)
+        with self.assertRaises(mod.PlantguardEvidenceError):
+            mod.prove_same_eod_establishment(
+                obs(hour=0, hands=1),
+                [(1, 1)],
+                [r(0, 0, "PLANT", (1, 1)), r(0, 1, "WATER", (1, 1))],
+                {"episodeSteps": True},
+                no_future_hires=True,
+            )
 
 
 if __name__ == "__main__":
