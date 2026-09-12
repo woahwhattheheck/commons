@@ -2,11 +2,14 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
 import shutil
+import sys
 import tarfile
 import tempfile
+from types import SimpleNamespace
 import unittest
 
 import build_current as build
@@ -55,6 +58,42 @@ def extract_regular_members(archive: Path, destination: Path) -> None:
             if target.exists():
                 raise AssertionError(f"duplicate CURRENT member: {member.name!r}")
             target.write_bytes(stream.read())
+
+
+def load_candidate_entry(candidate: Path):
+    saved = {name: sys.modules.get(name) for name in ("baseline_main", "selective_carrot")}
+    sys.modules.pop("baseline_main", None)
+    sys.modules.pop("selective_carrot", None)
+    sys.path.insert(0, str(candidate))
+    name = "_titan_v5_selective_carrot_retry_test"
+    sys.modules.pop(name, None)
+    try:
+        spec = importlib.util.spec_from_file_location(name, candidate / "main.py")
+        if spec is None or spec.loader is None:
+            raise ImportError(candidate / "main.py")
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+        return module, saved, name
+    except BaseException:
+        sys.path.remove(str(candidate))
+        for module_name, prior in saved.items():
+            if prior is None:
+                sys.modules.pop(module_name, None)
+            else:
+                sys.modules[module_name] = prior
+        sys.modules.pop(name, None)
+        raise
+
+
+def unload_candidate_entry(candidate: Path, saved, name: str) -> None:
+    sys.path.remove(str(candidate))
+    for module_name, prior in saved.items():
+        if prior is None:
+            sys.modules.pop(module_name, None)
+        else:
+            sys.modules[module_name] = prior
+    sys.modules.pop(name, None)
 
 
 class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
@@ -113,6 +152,33 @@ class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
                 self.assertEqual(
                     profile["control_package_sha256"], control_digest
                 )
+
+    def test_step_zero_retry_preserves_choice_until_proven_match_reset(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            baseline = root / "baseline"
+            baseline.mkdir()
+            shutil.copyfile(LAB_ROOT / "main.py", baseline / "main.py")
+            candidate = root / "candidate"
+            build.build_candidate(baseline, candidate, 4)
+            entry, saved, name = load_candidate_entry(candidate)
+            try:
+                entry.baseline._SPATIAL_RECOVERY = None
+                entry.baseline._INSTANCE = SimpleNamespace(_entrypoint_last_step=0)
+                self.assertFalse(entry._choice_match_reset(0))
+                self.assertFalse(entry._choice_match_reset(1))
+
+                entry.baseline._INSTANCE = SimpleNamespace(_entrypoint_last_step=37)
+                self.assertTrue(entry._choice_match_reset(0))
+
+                entry.baseline._INSTANCE = None
+                entry.baseline._SPATIAL_RECOVERY = {"last_step": 37, "state": {}}
+                self.assertTrue(entry._choice_match_reset(0))
+
+                entry.baseline._SPATIAL_RECOVERY = {"last_step": 0, "state": {}}
+                self.assertFalse(entry._choice_match_reset(0))
+            finally:
+                unload_candidate_entry(candidate, saved, name)
 
     def test_materializes_cap4_and_cap12_from_one_implementation(self):
         with tempfile.TemporaryDirectory() as folder:
