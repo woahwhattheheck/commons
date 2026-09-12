@@ -32,7 +32,9 @@ That interpretation is machine-bound, not documentary only. Receipt schema v2 pi
 
 ## Publication custody
 
-Both final destination paths are reserved create-exclusively before either payload is written. The materializer retains each process-owned file descriptor and its `(st_dev, st_ino)` identity, writes and fsyncs the archive and receipt only after both reservations succeed, and marks the pair committed only after both payloads complete. Any reservation, write, or fsync failure rolls back only paths that still resolve to the exact inodes created by this invocation. A hostile pre-existing receipt therefore survives untouched while the first reservation is removed, and a hostile replacement swapped onto either pathname is never deleted by cleanup.
+Both final destination paths are reserved create-exclusively before either payload is written. The materializer retains each process-owned file descriptor and its `(st_dev, st_ino)` identity, writes and fsyncs the archive and receipt only after both reservations succeed, and marks the pair committed only after both payloads complete. On reservation, write, or fsync failure, cleanup checks each pathname's current inode against its reservation before unlinking it. A pre-existing receipt survives untouched while the first reservation is removed; a replacement already visible at the identity check is also preserved.
+
+This contract covers cooperating create-only writers. Reserved names must remain stable during cleanup: the identity check and unlink are separate filesystem operations, so an uncooperative writer replacing a path between them can race cleanup. The final existence checks likewise do not establish custody of a directory that another writer can arbitrarily mutate.
 
 ## Decision rule
 

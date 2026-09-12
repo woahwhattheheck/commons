@@ -33,9 +33,13 @@ SEMANTIC_MEMBER_SHA256 = {
 }
 SEMANTIC_ANCHORS = {
     "titan_runtime.py": (
-        b"self.consumer = FrozenSelected()",
-        b"self.controller = self.consumer.controller",
-        b"self.production = self.controller",
+        # The controller assignment also appears in the ordered branch. Bind
+        # the entire frozen-construction block, which is unique in exact 0aded.
+        b"self.consumer = FrozenSelected()\n"
+        b"            self.consumer.capture_post_units = f.terminal_history\n"
+        b"            self.consumer.capture_operating_stock = f.operating_stock\n"
+        b"            self.controller = self.consumer.controller\n"
+        b"            self.production = self.controller",
         b"if self.features.consumer == 'frozen' else deepcopy(selected)",
     ),
     "frozen_selected.py": (
@@ -270,9 +274,11 @@ def publish_pair(
 ) -> None:
     """Reserve both final destinations before writing either payload.
 
-    Cleanup is bound to the device/inode identity returned by each owned fd.
-    A second-path collision or later write/fsync failure therefore rolls back
-    only files this invocation still owns and never removes a hostile replacement.
+    For cooperating create-only writers, a second-path collision or later
+    write/fsync failure rolls back this invocation's reservations. Cleanup
+    checks each owned fd's device/inode identity immediately before unlinking.
+    The output directory must not have reserved names concurrently replaced:
+    lstat/unlink is not atomic against an uncooperative directory writer.
     """
     out = Path(out)
     receipt_path = Path(receipt_path)

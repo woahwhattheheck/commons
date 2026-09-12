@@ -130,6 +130,29 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
                 members, expected, {"runtime.py": (b"required-anchor",)}
             )
 
+    def test_frozen_topology_allows_controller_assignment_in_ordered_branch(self):
+        # Exact 0aded has the controller assignment in both initialization
+        # branches; only the complete frozen-construction block is unique.
+        body = b"""        if f.consumer == 'ordered':
+            self.consumer = IntegratedSelectedAgent()
+            self.controller = self.consumer.controller
+        else:
+            from frozen_selected import FrozenSelected
+            self.consumer = FrozenSelected()
+            self.consumer.capture_post_units = f.terminal_history
+            self.consumer.capture_operating_stock = f.operating_stock
+            self.controller = self.consumer.controller
+            self.production = self.controller
+        result = (self.consumer.transform(obs, cfg, selected)
+                  if self.features.consumer == 'frozen' else deepcopy(selected))
+"""
+        self.assertEqual(body.count(b"self.controller = self.consumer.controller"), 2)
+        m.verify_semantic_topology(
+            {"titan_runtime.py": body},
+            {"titan_runtime.py": m.digest(body)},
+            {"titan_runtime.py": m.SEMANTIC_ANCHORS["titan_runtime.py"]},
+        )
+
     def test_publish_pair_success_is_exact(self):
         packed = b"complete archive bytes"
         receipt = {"schema": "test", "archive_sha256": m.digest(packed)}
@@ -172,7 +195,7 @@ class R04BypassSurvivorshipTest(unittest.TestCase):
             self.assertFalse(out.exists())
             self.assertFalse(receipt_path.exists())
 
-    def test_cleanup_never_deletes_hostile_replacement(self):
+    def test_cleanup_preserves_replacement_visible_at_identity_check(self):
         packed = b"complete archive bytes"
         receipt = {"schema": "test"}
         calls = 0
