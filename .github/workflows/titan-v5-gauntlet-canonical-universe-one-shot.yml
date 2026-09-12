@@ -49,6 +49,16 @@ jobs:
           from pathlib import Path
           path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
           text = path.read_text()
+          bad = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
+          good = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924"
+          if text.count(bad) != 2:
+              raise SystemExit("canonical manifest SHA repair anchor drifted")
+          path.write_text(text.replace(bad, good))
+          PY
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py")
+          text = path.read_text()
           old = 'run("git", "diff", "--name-only", BASE)'
           new = 'run("git", "diff", "--name-only", "origin/main...HEAD")'
           if text.count(old) != 1:
