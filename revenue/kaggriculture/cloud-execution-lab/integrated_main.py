@@ -11,11 +11,46 @@ def make_agent():
     from integrated_selected import make_agent as build
     return build(seed=True, committed=True, sell=True)
 
+def _public_step(obs, cfg=None):
+    step = None
+    if 'step' in obs:
+        step = obs['step']
+        if type(step) is not int:
+            raise TypeError('step must be a plain int')
+        if step < 0:
+            raise ValueError('step must be nonnegative')
+
+    has_day = 'day' in obs
+    has_hour = 'hour' in obs
+    if has_day != has_hour:
+        raise ValueError('day and hour must be supplied together')
+    if has_day:
+        day = obs['day']
+        hour = obs['hour']
+        turns = (cfg or {}).get('turnsPerDay', 24)
+        if type(day) is not int or type(hour) is not int:
+            raise TypeError('day and hour must be plain ints')
+        if type(turns) is not int:
+            raise TypeError('turnsPerDay must be a plain int')
+        if day < 0:
+            raise ValueError('day must be nonnegative')
+        if turns <= 0:
+            raise ValueError('turnsPerDay must be positive')
+        if hour < 0 or hour >= turns:
+            raise ValueError('hour is outside turnsPerDay')
+        derived = day * turns + hour
+        if step is None:
+            step = derived
+        elif step != derived:
+            raise ValueError('step disagrees with day/hour')
+
+    if step is None:
+        raise ValueError('public step is required')
+    return step
+
 def agent(obs, cfg=None):
     global _INSTANCE, _LAST_STEP
-    step = obs.get('step')
-    if step is None: step = int(obs['day'])*int((cfg or {}).get('turnsPerDay',24))+int(obs['hour'])
-    step = int(step)
+    step = _public_step(obs, cfg)
     rebuild = _INSTANCE is None or (_LAST_STEP is not None and step < _LAST_STEP)
     instance = make_agent() if rebuild else _INSTANCE
     output = instance.act(obs, cfg)
