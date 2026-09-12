@@ -72,6 +72,13 @@ def _make_root(root: Path) -> None:
     _dump(root / "repairs" / "alpha" / "RECEIPT.json", {"ok": True})
 
 
+def _write_graph_stub(root: Path) -> None:
+    (root / "check_composition_graph.py").write_text(
+        "def validate_manifest(manifest, root):\n    return {'errors': []}\n",
+        encoding="utf-8",
+    )
+
+
 class ControlPlaneHardeningTests(unittest.TestCase):
     def test_valid_minimal_control_plane_passes_hardening(self):
         with tempfile.TemporaryDirectory() as td:
@@ -100,6 +107,26 @@ class ControlPlaneHardeningTests(unittest.TestCase):
             result = guard.validate_control_plane(root, delegate=False)
         self.assertFalse(result["ok"])
         self.assertTrue(any("non-finite JSON constant 'NaN'" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_root_control_files_cannot_be_symlinked_outside_root(self):
+        for name in guard.EXPECTED_FILES:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as td:
+                base = Path(td)
+                root = base / "root"
+                _make_root(root)
+                external = base / "external"
+                external.mkdir()
+                source = root / name
+                target = external / name
+                source.replace(target)
+                os.symlink(target, source)
+                result = guard.validate_control_plane(root, delegate=False)
+            self.assertFalse(result["ok"], result)
+            self.assertTrue(
+                any(f"{name} must not be a symlink" in e for e in result["errors"]),
+                result,
+            )
 
     def test_non_object_manifest_fails_without_traceback(self):
         with tempfile.TemporaryDirectory() as td:
@@ -200,13 +227,85 @@ class ControlPlaneHardeningTests(unittest.TestCase):
                 "def validate(root):\n    raise RuntimeError('boom')\n",
                 encoding="utf-8",
             )
-            (root / "check_composition_graph.py").write_text(
-                "def validate_manifest(manifest, root):\n    return {'errors': []}\n",
-                encoding="utf-8",
-            )
+            _write_graph_stub(root)
             result = guard.validate_control_plane(root, delegate=True)
         self.assertFalse(result["ok"])
         self.assertTrue(any("integration delegate failure: RuntimeError: boom" in e for e in result["errors"]), result)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_symlink_delegate_is_rejected_before_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            real = root / "ledger-real.py"
+            real.write_text("def validate(root):\n    return []\n", encoding="utf-8")
+            os.symlink(real, root / "check_integration_ledger.py")
+            _write_graph_stub(root)
+            result = guard.validate_control_plane(root, delegate=True)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("must not be a symlink" in e for e in result["errors"]), result)
+
+    def test_integration_delegate_reads_preflight_snapshot_after_live_mutation(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            (root / "check_integration_ledger.py").write_text(
+                "from pathlib import Path\n"
+                "import json\n"
+                "def validate(root):\n"
+                "    live = Path(__file__).resolve().parent / 'INTEGRATION.json'\n"
+                "    poisoned = json.loads(live.read_text(encoding='utf-8'))\n"
+                "    poisoned['canonical_branch'] = 'poisoned-after-preflight'\n"
+                "    live.write_text(json.dumps(poisoned) + '\\n', encoding='utf-8')\n"
+                "    snap = json.loads((Path(root) / 'INTEGRATION.json').read_text(encoding='utf-8'))\n"
+                "    return [] if snap.get('canonical_branch') == 'main' else ['snapshot poisoned']\n",
+                encoding="utf-8",
+            )
+            _write_graph_stub(root)
+            result = guard.validate_control_plane(root, delegate=True)
+            live = json.loads((root / "INTEGRATION.json").read_text(encoding="utf-8"))
+        self.assertTrue(result["ok"], result)
+        self.assertEqual("poisoned-after-preflight", live["canonical_branch"])
+
+    def test_blocker_manifest_delegate_reads_preflight_snapshot_after_live_mutation(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _make_root(root)
+            integration = _base_integration()
+            integration["custody_blocked"] = [
+                {
+                    "lane": "raw",
+                    "custody_path": "repairs/raw",
+                    "status": "awaiting_raw_payload",
+                }
+            ]
+            _dump(root / "INTEGRATION.json", integration)
+            (root / "repairs" / "raw").mkdir()
+            _dump(
+                root / "repairs" / "raw" / "MANIFEST.json",
+                {
+                    "lane": "raw",
+                    "status": "awaiting_raw_payload",
+                    "required_next_step": "provide exact raw payload",
+                },
+            )
+            (root / "check_integration_ledger.py").write_text(
+                "from pathlib import Path\n"
+                "import json\n"
+                "def validate(root):\n"
+                "    live = Path(__file__).resolve().parent / 'repairs/raw/MANIFEST.json'\n"
+                "    poisoned = json.loads(live.read_text(encoding='utf-8'))\n"
+                "    poisoned['lane'] = 'poisoned-after-preflight'\n"
+                "    live.write_text(json.dumps(poisoned) + '\\n', encoding='utf-8')\n"
+                "    snap = json.loads((Path(root) / 'repairs/raw/MANIFEST.json').read_text(encoding='utf-8'))\n"
+                "    return [] if snap.get('lane') == 'raw' else ['manifest snapshot poisoned']\n",
+                encoding="utf-8",
+            )
+            _write_graph_stub(root)
+            result = guard.validate_control_plane(root, delegate=True)
+            live = json.loads((root / "repairs" / "raw" / "MANIFEST.json").read_text(encoding="utf-8"))
+        self.assertTrue(result["ok"], result)
+        self.assertEqual("poisoned-after-preflight", live["lane"])
 
     def test_error_order_is_deterministic(self):
         with tempfile.TemporaryDirectory() as td:
