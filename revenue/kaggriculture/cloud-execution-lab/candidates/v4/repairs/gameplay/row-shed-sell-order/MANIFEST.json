@@ -1,11 +1,14 @@
 {
   "repair": "current-ABI row-shed SELL ordering",
-  "status": "canonical V4 repair component; production/default activation requires official-engine/full-game gate",
+  "status": "canonical V4 repair component; composition blocked pending authenticated runtime postimage; production/default activation requires official-engine/full-game gate",
   "canonical_workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "canonical_package": "repairs/gameplay/row-shed-sell-order",
   "historical_provenance": {
     "commit": "7cbe552087626d09dbd8a84be8fa89efc7320ad0",
     "router_blob": "21210f396335431e81d300e118487dd859d54468",
+    "source_sha256": "569b515c89f56a8f060ce94de218a341ae0e5b3c8e0e2c6428a8a0f08a462b05",
     "focused_test_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v3/overlay/checks/test_v31_row_shed.py",
+    "focused_test_sha256": "b8f81248e37078d15e767f2883c59589a670353c248c5d5eab126b58f41cabee",
     "field_gate": "1280 games/arm; 1273 W / 7 L; +540.0 margin/game vs V3.0",
     "top40_recorded_replay_bench": "96 W / 64 L"
   },
@@ -15,31 +18,50 @@
     "ordered_selected_sell_blob": "8ce1394077df47dfc322a44f363050a6467292a3"
   },
   "component_blob": "9df048a4ba866d154861b6885f59502cf9e01cae",
-  "focused_regression_blob": "774f4af3656558ff0fa334f1f520810692ca8b53",
+  "focused_regression_blob": "9075529e054117be0506879b3b48cbcb0b4a9c53",
+  "readme_blob": "409419dc91d3ecffbe4332a03dd8c915607559cb",
   "contract": [
     "consume caller-owned post-unit shed projection; never construct or invoke a production controller",
     "reorder only the leading contiguous SELL block",
     "a falsey row or first non-SELL row is a hard barrier and every suffix index is preserved",
     "rank each leading SELL by the price drop of min(requested quantity, projected shed stock)",
     "never change a SELL row or mutate the caller action; stable ties preserve relative order",
-    "missing, incomplete, malformed or type-poisoned evidence fails closed to the caller fallback action"
+    "missing, incomplete, malformed or type-poisoned evidence fails closed to the caller fallback action",
+    "the complete-projection/default-market domain remains parity-compatible with the reviewed V3.1 donor",
+    "the V3.1 incomplete-projection requested-quantity fallback is intentionally NOT carried into V4"
   ],
-  "composition": [
-    "caller-owned current selected-action unit projection",
-    "RowShedSellOrder using projection packet post_unit_shed",
-    "current SelectedActionSell / OrderedSelectedSell economics",
-    "existing V4 composer/materializer"
-  ],
+  "composition": {
+    "graph_id": "row-shed-sell-order",
+    "graph_intake_pr": 12777,
+    "state": "blocked",
+    "reason": "source custody is landed but no authenticated materialized runtime postimage/composer output is pinned",
+    "intended_order": [
+      "caller-owned current selected-action unit projection",
+      "RowShedSellOrder using projection packet post_unit_shed",
+      "current SelectedActionSell / OrderedSelectedSell economics",
+      "existing V4 composer/materializer"
+    ]
+  },
   "focused_validation": {
-    "normal": "10/10 pass",
-    "optimized": "10/10 pass under python -O",
-    "py_compile": "pass",
-    "scope": "authoring regression using the current mechanics price-shape contract; not a full-game V4 strength receipt"
+    "normal": "14/14 pass",
+    "optimized": "14/14 pass under python -O",
+    "complete_projection_default_market_reference_parity_per_mode": 800,
+    "complete_projection_default_market_reference_parity_total": 1600,
+    "intentional_divergence": "incomplete/type-poisoned projection fails closed in V4 instead of V3.1 requested-quantity fallback",
+    "scope": "component-level current-ABI contract and donor parity; not a full-game V4 strength receipt"
+  },
+  "duplicate_convergence": {
+    "canonical_source_pr": 12754,
+    "superseded_duplicate_pr": 12768,
+    "superseded_package": "repairs/gameplay/row-shed-ordering",
+    "policy": "transfer stronger validation only; preserve STRATUM runtime semantics; remove duplicate package"
   },
   "integration_rules": [
     "do not import the V3 router into V4",
     "do not create a second scheduler, producer, controller, engine or evaluator",
+    "do not create or retain a second row-shed source package",
     "do not change production/default/archive/Kaggle state from this repair alone",
-    "run the then-current official-engine/full-game gate before activation"
+    "materialize an authenticated current runtime postimage before moving the composition graph edge out of blocked",
+    "run the then-current official-engine/full-game both-seat gate before activation"
   ]
 }
