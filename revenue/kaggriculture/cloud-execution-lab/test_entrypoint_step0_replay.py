@@ -38,6 +38,8 @@ class _Timer:
 
 
 class _FakeInstance:
+    town_procurement_enabled = False
+
     def __init__(self, action):
         self.features = SimpleNamespace(
             budget_seconds=1.0,

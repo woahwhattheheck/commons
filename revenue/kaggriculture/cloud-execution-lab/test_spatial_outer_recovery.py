@@ -32,6 +32,8 @@ class _Features:
 
 
 class _HangingInstance:
+    town_procurement_enabled = False
+
     def __init__(self, action, recovery):
         self.features = _Features()
         self.action = deepcopy(action)
@@ -52,6 +54,8 @@ class _HangingInstance:
 
 
 class _FreshInstance:
+    town_procurement_enabled = False
+
     def __init__(self, action, expected):
         self.features = _Features()
         self.action = deepcopy(action)
