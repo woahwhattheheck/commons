@@ -1,17 +1,18 @@
 # SPDX-License-Identifier: Apache-2.0
 """Fail-closed admission for row-shed ordering that survives final pressure.
 
-The canonical TITAN runtime applies market pressure after selected-action SELL
-composition.  Comparing a raw row-shed rank with ``pressure(parent)`` is not
-enough: a different raw rank can be sorted back to the same final action by the
-later pressure pass.
+The canonical TITAN stack inserts row-shed upstream of existing selected-action
+SELL economics and applies market pressure later.  Comparing a raw row-shed rank
+with ``pressure(parent)`` is therefore not enough: downstream SELL logic and the
+later pressure pass can erase a raw ordering difference entirely.
 
-This helper therefore consumes two caller-produced downstream pressure
-postimages: one from the incumbent parent path and one from the row-shed path.
-It admits the raw row-shed candidate only when both postimages are conservative
-row permutations and the *final* postimages differ.  Missing or ambiguous
-downstream evidence returns exact parent identity.  The helper never mutates
-inputs and does not implement pressure policy itself.
+This helper consumes caller-produced evidence from the *actual pressure seam*:
+for both the incumbent path and the row-shed path, the action entering canonical
+pressure and the corresponding pressure postimage.  It admits the raw row-shed
+candidate only when the two final pressure postimages differ.  Missing,
+malformed, or internally inconsistent downstream evidence returns exact parent
+identity.  The helper never mutates inputs and does not implement pressure or
+SELL policy itself.
 """
 from __future__ import annotations
 
@@ -94,12 +95,11 @@ def _pressure_postimage(before, after, label):
     """Authenticate a supplied pressure result as a conservative row permutation.
 
     Canonical pressure may reorder supported SELL blocks and compact known empty
-    sale-only prefix slots, so suffix-index equality is deliberately *not*
-    required here.  It may not change non-market surfaces, row values,
+    sale-only prefix slots.  It may not change non-market surfaces, row values,
     quantities, duplicate multiplicity, or market cardinality.
     """
-    if not isinstance(after, dict):
-        raise RankEvidenceError(f"{label} pressure postimage must be a dict")
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        raise RankEvidenceError(f"{label} pressure input/postimage must be dicts")
     if set(after) != set(before):
         raise RankEvidenceError(f"{label} pressure postimage top-level keys differ")
     for key in before:
@@ -119,8 +119,14 @@ def _pressure_postimage(before, after, label):
     return rows
 
 
+def _same_non_market_surface(left, right):
+    if not isinstance(left, dict) or not isinstance(right, dict) or set(left) != set(right):
+        return False
+    return all(left[key] == right[key] for key in left if key != "market")
+
+
 class NovelRankGuard:
-    """Keep row-shed only when its effect survives the downstream pressure pass."""
+    """Keep row-shed only when its effect survives the real pressure seam."""
 
     def __init__(self):
         self.diagnostics = {}
@@ -129,14 +135,17 @@ class NovelRankGuard:
         self,
         parent_action,
         row_shed_action,
-        pressure_parent_action,
-        pressure_row_shed_action=None,
+        pressure_parent_input=None,
+        pressure_parent_output=None,
+        pressure_row_shed_input=None,
+        pressure_row_shed_output=None,
     ):
         self.diagnostics = {
             "status": "identity",
             "reason": None,
             "leading_sell_count": 0,
             "row_shed_rank": [],
+            "pressure_input_equal": None,
             "final_pressure_equal": None,
         }
         try:
@@ -154,20 +163,41 @@ class NovelRankGuard:
                 self.diagnostics["reason"] = "row_shed_identity"
                 return deepcopy(parent_action)
 
-            if pressure_parent_action is None or pressure_row_shed_action is None:
-                raise RankEvidenceError("both downstream pressure postimages are required")
-            _pressure_postimage(parent, pressure_parent_action, "parent")
-            _pressure_postimage(row_shed_action, pressure_row_shed_action, "row-shed")
+            evidence = (
+                pressure_parent_input,
+                pressure_parent_output,
+                pressure_row_shed_input,
+                pressure_row_shed_output,
+            )
+            if any(value is None for value in evidence):
+                raise RankEvidenceError("complete downstream pressure input/postimage evidence is required")
+            if not _same_non_market_surface(pressure_parent_input, pressure_row_shed_input):
+                raise RankEvidenceError("pressure-path inputs disagree on non-market action surface")
 
-            final_equal = pressure_parent_action == pressure_row_shed_action
+            _pressure_postimage(
+                pressure_parent_input,
+                pressure_parent_output,
+                "parent-path",
+            )
+            _pressure_postimage(
+                pressure_row_shed_input,
+                pressure_row_shed_output,
+                "row-shed-path",
+            )
+
+            inputs_equal = pressure_parent_input == pressure_row_shed_input
+            final_equal = pressure_parent_output == pressure_row_shed_output
+            self.diagnostics["pressure_input_equal"] = inputs_equal
             self.diagnostics["final_pressure_equal"] = final_equal
+            if inputs_equal and not final_equal:
+                raise RankEvidenceError("identical pressure inputs produced inconsistent postimages")
             if final_equal:
-                self.diagnostics["reason"] = "redundant_after_pressure"
+                self.diagnostics["reason"] = "redundant_after_downstream_pressure"
                 return deepcopy(parent_action)
 
             self.diagnostics.update(
                 status="applied",
-                reason="survives_pressure_postimage",
+                reason="survives_downstream_pressure",
             )
             return deepcopy(row_shed_action)
         except (RankEvidenceError, KeyError, TypeError, IndexError) as error:
@@ -178,13 +208,17 @@ class NovelRankGuard:
 def choose(
     parent_action,
     row_shed_action,
-    pressure_parent_action,
-    pressure_row_shed_action=None,
+    pressure_parent_input=None,
+    pressure_parent_output=None,
+    pressure_row_shed_input=None,
+    pressure_row_shed_output=None,
 ):
-    """Stateless convenience wrapper; incomplete downstream evidence fails closed."""
+    """Stateless wrapper; incomplete downstream evidence fails closed."""
     return NovelRankGuard().choose(
         parent_action,
         row_shed_action,
-        pressure_parent_action,
-        pressure_row_shed_action,
+        pressure_parent_input,
+        pressure_parent_output,
+        pressure_row_shed_input,
+        pressure_row_shed_output,
     )
