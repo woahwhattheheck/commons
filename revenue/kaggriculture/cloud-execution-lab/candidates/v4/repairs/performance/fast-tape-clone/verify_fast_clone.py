@@ -2,7 +2,8 @@
 """Run recovered clone proofs in scratch; never run a legacy materializer.
 
 Default: original 20 helper tests plus 8 independent graph tests, using
-main's pinned donor tape. --generated-only explicitly runs only the 8
+main's pinned donor tape (or --slack-package F0C18AXAL04). --generated-only
+explicitly runs only the 8
 fixture-free tests. --legacy-port adds 11 historical AST/seam tests and
 requires exact parent-generator and archived-router inputs; it does not
 certify current-production ABI compatibility.
@@ -11,14 +12,23 @@ import argparse
 import ast
 import base64
 import hashlib
+import io
 import json
 import lzma
 from pathlib import Path
 import subprocess
 import sys
+import tarfile
 import tempfile
 
 HERE = Path(__file__).resolve().parent
+SLACK_PACKAGE = {
+    'file_id': 'F0C18AXAL04',
+    'byte_count': 652318,
+    'sha256': '8fb4776b416f32dcd978f57a6f8caf42c84d2245d5f9a08962adbe814dadab8e',
+    'member': 'titan-v3.1-package/tree/v3/overlay/r01_tapes.py',
+    'member_bytes': 32955,
+}
 HELPER = 'r04_fast_tape_clone.py'
 GRAPH_TEST = 'test_fast_clone_graph_contract.py'
 ORIGINAL_TEST = 'test_r04_fast_tape_clone.py'
@@ -53,6 +63,27 @@ def read_pinned(path, name):
     return data
 
 
+def tape_from_slack_package(path):
+    """Read the exact archived tape as data; never extract/import package code."""
+    # Bound transport input before hashing or opening the compressed container.
+    with Path(path).open('rb') as handle:
+        raw = handle.read(SLACK_PACKAGE['byte_count'] + 1)
+    if (len(raw) != SLACK_PACKAGE['byte_count']
+            or hashlib.sha256(raw).hexdigest() != SLACK_PACKAGE['sha256']):
+        raise ValueError('Slack package differs from pinned F0C18AXAL04 bytes')
+    with tarfile.open(fileobj=io.BytesIO(raw), mode='r:gz') as archive:
+        matches = [m for m in archive.getmembers() if m.name == SLACK_PACKAGE['member']]
+        if (len(matches) != 1 or not matches[0].isfile()
+                or matches[0].size != SLACK_PACKAGE['member_bytes']):
+            raise ValueError('Slack package must contain the exact regular R01 member')
+        with archive.extractfile(matches[0]) as handle:
+            data = handle.read(SLACK_PACKAGE['member_bytes'] + 1)
+    if (len(data) != SLACK_PACKAGE['member_bytes']
+            or git_blob(data) != PINS['r01_tapes.py']):
+        raise ValueError('Slack package R01 member differs from pinned Git blob')
+    return data
+
+
 def tape_json(data):
     # AST-only reading of the immutable corpus; no import of donor tape code.
     nodes = [n for n in ast.parse(data).body if isinstance(n, ast.Assign)
@@ -71,7 +102,10 @@ def tape_json(data):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--generated-only', action='store_true')
-    parser.add_argument('--tapes', type=Path)
+    tapes = parser.add_mutually_exclusive_group()
+    tapes.add_argument('--tapes', type=Path)
+    tapes.add_argument('--slack-package', type=Path,
+                       help='exact F0C18AXAL04 archive; tape fixture only, never executed')
     parser.add_argument('--legacy-port', action='store_true')
     parser.add_argument('--parent-apply', type=Path)
     parser.add_argument('--archived-router', type=Path)
@@ -82,8 +116,8 @@ def main(argv=None):
         parser.error('--legacy-port requires --parent-apply and --archived-router')
     if not args.legacy_port and (args.parent_apply is not None or args.archived_router is not None):
         parser.error('historical inputs require explicit --legacy-port')
-    if args.generated_only and args.tapes is not None:
-        parser.error('--generated-only does not consume --tapes')
+    if args.generated_only and (args.tapes is not None or args.slack_package is not None):
+        parser.error('--generated-only does not consume --tapes or --slack-package')
     try:
         inputs = {HELPER: read_pinned(HERE / HELPER, HELPER),
                   GRAPH_TEST: read_pinned(HERE / GRAPH_TEST, GRAPH_TEST)}
@@ -93,7 +127,9 @@ def main(argv=None):
             if path is None:
                 path = HERE.parents[2] / 'donor' / 'overlay' / 'r01_tapes.py'
             inputs[ORIGINAL_TEST] = read_pinned(HERE / ORIGINAL_TEST, ORIGINAL_TEST)
-            inputs['r01_tapes.py'] = read_pinned(path, 'r01_tapes.py')
+            inputs['r01_tapes.py'] = (tape_from_slack_package(args.slack_package)
+                                     if args.slack_package is not None
+                                     else read_pinned(path, 'r01_tapes.py'))
             # Validate shape even when only the original helper suite consumes it.
             decoded = tape_json(inputs['r01_tapes.py'])
             expected += 20
@@ -128,12 +164,14 @@ def main(argv=None):
                 if summary != {'tests': expected, 'skipped': 0, 'ok': True}:
                     raise ValueError('unexpected test result: ' + repr(summary))
                 results.append({'optimized': optimized, **summary})
-        print(json.dumps({'status': 'PASS', 'scope': 'historical-clone-source-only',
+        provenance = ({'slack_package': dict(SLACK_PACKAGE)}
+                      if args.slack_package is not None else {})
+        print(json.dumps({**provenance, 'status': 'PASS', 'scope': 'historical-clone-source-only',
                           'generated_only': args.generated_only, 'legacy_port': args.legacy_port,
                           'input_blobs': hashes, 'runs': results,
                           'production_changed': False}, sort_keys=True))
         return 0
-    except (OSError, ValueError, SyntaxError, EOFError, lzma.LZMAError,
+    except (OSError, ValueError, SyntaxError, EOFError, lzma.LZMAError, tarfile.TarError,
             subprocess.TimeoutExpired) as exc:
         print(f'fast-clone verification failed: {exc}', file=sys.stderr)
         return 2
