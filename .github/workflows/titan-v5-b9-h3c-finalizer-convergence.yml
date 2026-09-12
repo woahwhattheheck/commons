@@ -1,0 +1,46 @@
+name: TITAN V5 B9 H3c finalizer convergence
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/titan-v5-b9-h3c-finalizer-convergence.yml"
+      - "revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/b9-h3c-finalizer-convergence/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contracts:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.EXPECTED_HEAD }}
+          fetch-depth: 1
+      - name: Assert exact requested head
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/b9-h3c-finalizer-convergence
+        run: |
+          python -B -m py_compile compose_current_runtime.py test_compose_current_runtime.py
+      - name: Normal contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/b9-h3c-finalizer-convergence
+        run: |
+          python -B -m unittest -v test_compose_current_runtime.py
+      - name: Optimized contracts
+        working-directory: revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/b9-h3c-finalizer-convergence
+        run: |
+          python -O -B -m unittest -v test_compose_current_runtime.py
+      - name: Whitespace
+        run: git diff --check HEAD^ HEAD

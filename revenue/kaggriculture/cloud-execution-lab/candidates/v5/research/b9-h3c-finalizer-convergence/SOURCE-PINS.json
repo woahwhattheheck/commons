@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "base_commit": "70c31154193f6f993a117284ba35e10bf5434ca9",
+  "purpose": "Current-V5 B9 -> H3c single-producer finalizer convergence scratch materialization",
+  "current_integration_surfaces": {
+    "titan_runtime.py": {
+      "git_blob": "922c99a571e4ba49726a753739f95afe86e72290"
+    },
+    "TITAN-CONFIG.json": {
+      "git_blob": "ef0bfb1dfa1ce65103a0b178647fc16bc9c7e791"
+    },
+    "build_integrated.py": {
+      "git_blob": "dc11163b9bf2dd257a7f1fb6956943cf66d62143"
+    }
+  },
+  "merged_semantic_authority": {
+    "pr": 13408,
+    "order": [
+      "terminal_fertilizer",
+      "goose_rescue"
+    ],
+    "outer_wrappers_current.py": {
+      "git_blob": "c56b65d12a0886ddb2c26bc49a35f76899b48c98"
+    },
+    "vendor/b9_terminal_fertilizer.py": {
+      "git_blob": "ed8d6923541e700c3a0ae4b93695bbd56455a3b6",
+      "submitted_v31_source": "a90d888f03987ef0b35cfd20ec3519c6144db08a"
+    },
+    "vendor/h3c_goose_eod_cap_rescue.py": {
+      "git_blob": "2044d6cf1e0c51f95027229863f910aa43ac7008",
+      "submitted_v31_source": "a90d888f03987ef0b35cfd20ec3519c6144db08a"
+    }
+  },
+  "integration_contract": {
+    "producer_calls_added": 0,
+    "default_on": false,
+    "fallback_behavior": "identity",
+    "seam": "after TitanAgent._early_capital_selected returns; before quadrant/spatial/history state commits",
+    "unit_change_post_snapshot": "recompute via current scheduler.post_units before state commits"
+  },
+  "forbidden": [
+    "second producer or controller",
+    "donor semantic remint",
+    "default-on promotion from source theorem alone",
+    "CURRENT archive or pointer mutation",
+    "Kaggle submission"
+  ]
+}
