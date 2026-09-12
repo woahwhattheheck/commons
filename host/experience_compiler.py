@@ -273,12 +273,95 @@ def check_outputs(outputs: dict[Path, str]) -> list[str]:
     return sorted(drift)
 
 
+def retrieve_experience(
+    records: list[dict[str, Any]], query: str = "", skill: str | None = None,
+    limit: int = 3,
+) -> dict[str, Any]:
+    """Select evidence for a skill maintainer without loading the whole wiki.
+
+    Read raw records so retrieval includes newly captured outcomes even before
+    a wiki rebuild. Relevance never treats success counts as a quality score.
+    Keep a failure and a success when both exist, then the newest observation;
+    report omitted records explicitly. Retrieval does not edit an active skill.
+    """
+    if type(limit) is not int or not 1 <= limit <= 20:
+        raise ExperienceError("retrieve limit must be between 1 and 20")
+    if not isinstance(query, str) or (skill is not None and not isinstance(skill, str)):
+        raise ExperienceError("retrieve query and skill must be text")
+    terms = set(re.findall(r"[^\W_]+", query.casefold()))
+    skill = skill.strip() if skill else None
+    if not terms and not skill:
+        raise ExperienceError("retrieve needs --query or --skill")
+
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for record in sorted(records, key=lambda r: r["id"]):
+        for pattern in record["patterns"]:
+            grouped[pattern["id"]].append({"record": record, "pattern": pattern})
+    matches = []
+    for pattern_id, sources in sorted(grouped.items()):
+        applies = sorted({tag for source in sources for tag in source["pattern"]["applies_to"]})
+        if skill and skill not in applies:
+            continue
+        searchable = " ".join(
+            [pattern_id, *applies] + [
+                str(source["pattern"][field])
+                for source in sources for field in ("summary", "procedure")
+            ]
+        )
+        words = set(re.findall(r"[^\W_]+", searchable.casefold()))
+        matched_terms = sorted(terms & words)
+        if terms and not matched_terms:
+            continue
+        ordered = sorted(sources, key=lambda s: (
+            s["record"]["recorded_at"], s["record"]["id"]
+        ), reverse=True)
+        selected = []
+        for kind in ("failure", "success"):
+            first = next((s for s in ordered if s["pattern"]["kind"] == kind), None)
+            if first is not None:
+                selected.append(first)
+        selected.extend(s for s in ordered if s not in selected)
+        selected = selected[:3]
+        observations = []
+        for source in selected:
+            record, pattern = source["record"], source["pattern"]
+            observations.append({
+                "source": f"experience/raw/{record['id']}.json",
+                "recorded_at": record["recorded_at"], "outcome": record["outcome"],
+                "kind": pattern["kind"], "summary": pattern["summary"],
+                "procedure": pattern["procedure"], "evidence": record["evidence"],
+            })
+        matches.append({
+            "id": pattern_id, "applies_to": applies, "matched_terms": matched_terms,
+            "success_count": sum(s["pattern"]["kind"] == "success" for s in sources),
+            "failure_count": sum(s["pattern"]["kind"] == "failure" for s in sources),
+            "source_record_count": len(sources),
+            "omitted_observation_count": len(sources) - len(selected),
+            "observations": observations,
+        })
+    matches.sort(key=lambda m: (-len(m["matched_terms"]), m["id"]))
+    return {
+        "schema": "commons-experience-retrieval/v1", "purpose": "skill-improvement-input",
+        "query": query, "skill": skill, "records_scanned": len(records),
+        "matched_pattern_count": len(matches), "returned_pattern_count": min(limit, len(matches)),
+        "matches": matches[:limit],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("compile", "check", "validate"))
+    parser.add_argument("command", choices=("compile", "check", "validate", "retrieve"))
+    parser.add_argument("--query", default="", help="words describing the skill improvement")
+    parser.add_argument("--skill", help="exact applies_to tag")
+    parser.add_argument("--limit", type=int, default=3, help="maximum retrieved patterns (1-20)")
     args = parser.parse_args()
+    if args.command != "retrieve" and (args.query or args.skill or args.limit != 3):
+        parser.error("--query, --skill and --limit apply to retrieve")
     try:
         records = load_records()
+        if args.command == "retrieve":
+            print(_json(retrieve_experience(records, args.query, args.skill, args.limit)), end="")
+            return 0
         outputs = compile_outputs(records)
         if args.command == "compile":
             compile_to_disk(outputs)
