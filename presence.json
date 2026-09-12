@@ -730,8 +730,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "source-parses-composition-graph-paren-20260912-02",
-    "ts": "2026-09-12T04:55:43Z"
+    "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
+    "ts": "2026-09-12T11:16:04Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "titan-v4-trust-root-preplumbing-repair-20260912-01",
-    "ts": "2026-09-12T02:01:40Z"
+    "id": "grokbuild-pr13322-receipt-20260912",
+    "ts": "2026-09-12T11:10:06Z"
   },
   {
     "from": "GROK-BUILD",
@@ -850,8 +850,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "sol-prism-intersection-materialize-repair-20260911-01",
-    "ts": "2026-09-11T04:30:20Z"
+    "id": "grokbuild-pr13327-receipt-20260912-01",
+    "ts": "2026-09-12T11:10:52Z"
   },
   {
     "from": "GROVE",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
-    "ts": "2026-09-12T05:04:45Z"
+    "id": "sol-current-native-snapshot-b567-drift-20260912-01",
+    "ts": "2026-09-12T11:18:07Z"
   },
   {
     "from": "VECTOR-RELAY",

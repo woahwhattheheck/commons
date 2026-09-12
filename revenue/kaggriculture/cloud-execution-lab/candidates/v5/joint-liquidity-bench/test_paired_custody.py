@@ -2,9 +2,13 @@
 """Focused custody regressions for the V5 joint-liquidity launcher."""
 from __future__ import annotations
 
+import hashlib
 import importlib.util
+import io
+import json
 from pathlib import Path
 import sys
+import tarfile
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -15,6 +19,22 @@ SPEC = importlib.util.spec_from_file_location("_v5_joint_liquidity_paired", SOUR
 paired = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 SPEC.loader.exec_module(paired)
+
+
+def _write_file(root: Path, relative: str, data: bytes) -> Path:
+    path = root / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    return path
+
+
+def _tiny_baseline(path: Path) -> None:
+    with tarfile.open(path, "w:gz") as archive:
+        for name, data in (("main.py", b"def agent(o,c=None): return {}\n"),
+                           ("frozen_selected.py", b"# frozen\n")):
+            info = tarfile.TarInfo(name)
+            info.size = len(data)
+            archive.addfile(info, io.BytesIO(data))
 
 
 class JointLiquidityCustodyTests(unittest.TestCase):
@@ -54,6 +74,108 @@ class JointLiquidityCustodyTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, "must match published"):
                         paired.main()
                 self.assertFalse(output.exists())
+
+    def test_repository_blob_authentication_rejects_any_tampered_member(self):
+        with tempfile.TemporaryDirectory(prefix="joint-liquidity-harness-") as raw:
+            root = Path(raw)
+            first = _write_file(root, "a.py", b"print('a')\n")
+            second = _write_file(root, "nested/b.py", b"print('b')\n")
+            pins = {"a.py": paired.git_blob_id(first), "nested/b.py": paired.git_blob_id(second)}
+            authenticated = paired.verify_git_blobs(root, pins)
+            self.assertEqual(set(authenticated), set(pins))
+            for relative in pins:
+                with self.subTest(relative=relative):
+                    target = root / relative
+                    original = target.read_bytes()
+                    target.write_bytes(original + b"# tampered\n")
+                    with self.assertRaisesRegex(ValueError, "Harness source mismatch"):
+                        paired.verify_git_blobs(root, pins)
+                    target.write_bytes(original)
+
+    def test_upstream_manifest_hashes_are_authority_not_observations(self):
+        with tempfile.TemporaryDirectory(prefix="joint-liquidity-upstream-") as raw:
+            root = Path(raw)
+            payload = b"loader authority\n"
+            _write_file(root, "cloud-pack/upstream/agent.py", payload)
+            manifest = {
+                "files": {
+                    "agent.py": {"sha256": hashlib.sha256(payload).hexdigest()}
+                }
+            }
+            _write_file(
+                root,
+                "cloud-pack/upstream/manifest.json",
+                (json.dumps(manifest) + "\n").encode(),
+            )
+            with patch.object(paired, "UPSTREAM_MANIFEST", "cloud-pack/upstream/manifest.json"):
+                verified = paired.verify_upstream_loader(root)
+                self.assertEqual(
+                    verified["cloud-pack/upstream/agent.py"],
+                    hashlib.sha256(payload).hexdigest(),
+                )
+                (root / "cloud-pack/upstream/agent.py").write_bytes(b"attacker\n")
+                with self.assertRaisesRegex(ValueError, "Upstream loader source mismatch"):
+                    paired.verify_upstream_loader(root)
+
+    def test_harness_tamper_fails_before_output_directory_is_created(self):
+        with tempfile.TemporaryDirectory(prefix="joint-liquidity-preoutput-") as raw:
+            root = Path(raw)
+            kg = root / "kg"
+            engine = root / "engine"
+            kg.mkdir()
+            engine.mkdir()
+            harness = _write_file(kg, "harness.py", b"print('trusted')\n")
+            upstream = b"upstream\n"
+            _write_file(kg, "cloud-pack/upstream/agent.py", upstream)
+            manifest_path = _write_file(
+                kg,
+                "cloud-pack/upstream/manifest.json",
+                (json.dumps({"files": {"agent.py": {
+                    "sha256": hashlib.sha256(upstream).hexdigest()
+                }}}) + "\n").encode(),
+            )
+            pins = {
+                "harness.py": paired.git_blob_id(harness),
+                "cloud-pack/upstream/manifest.json": paired.git_blob_id(manifest_path),
+            }
+            baseline = root / "baseline.tar.gz"
+            _tiny_baseline(baseline)
+            output = root / "evidence"
+            # Change an authenticated executable only after deriving its authority.
+            harness.write_bytes(b"print('attacker')\n")
+            argv = [
+                "paired.py",
+                "--kg-root", str(kg),
+                "--engine-dir", str(engine),
+                "--baseline", str(baseline),
+                "--candidate", str(root / "unused-candidate.tar.gz"),
+                "--overlay-sha256", paired.OVERLAY_SHA256,
+                "--output", str(output),
+            ]
+            with (
+                patch.object(sys, "argv", argv),
+                patch.object(paired, "BASELINE_SHA256", paired.digest(baseline)),
+                patch.object(paired, "HARNESS_GIT_BLOBS", pins),
+                patch.object(
+                    paired,
+                    "BRIDGE_SUPPORT_CORE",
+                    ("harness.py", "cloud-pack/upstream/manifest.json"),
+                ),
+            ):
+                with self.assertRaisesRegex(ValueError, "Harness source mismatch"):
+                    paired.main()
+            self.assertFalse(output.exists())
+
+    def test_live_repository_harness_matches_published_pins_when_available(self):
+        kg_root = HERE.parents[3]
+        if not (kg_root / "cloud-pack").is_dir():
+            self.skipTest("full Kaggriculture source tree is not present")
+        result = paired.authenticate_harness(kg_root)
+        self.assertEqual(set(result["repository_files"]), set(paired.HARNESS_GIT_BLOBS))
+        self.assertEqual(
+            set(result["opponent_support_sha256"]),
+            set(paired.BRIDGE_SUPPORT_CORE) | set(result["upstream_files"]),
+        )
 
 
 if __name__ == "__main__":

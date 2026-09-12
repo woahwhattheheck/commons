@@ -28,6 +28,7 @@ def main():
     p.add_argument('--seeds', default='2051966578,1209125501')
     p.add_argument('--seats', default='0,1')
     p.add_argument('--opponents', default='apex_v7,arlene_v14')
+    p.add_argument('--max-active', type=int, choices=[4,8,12], default=4)
     args = p.parse_args()
     if sys.platform != 'linux':
         p.error('Use a Linux VM for this process-isolated benchmark')
@@ -43,7 +44,8 @@ def main():
     here = Path(__file__).resolve().parent
     expected = dict(baseline)
     expected['baseline_main.py'] = expected['main.py']
-    expected['main.py'] = (here/'choice_entry.py').read_bytes()
+    builder = load(here/'build.py', 'carrot_profile_builder')
+    expected['main.py'] = builder.entry_bytes(args.max_active)
     expected['selective_carrot.py'] = (here/'selective_carrot.py').read_bytes()
     if candidate != expected:
         raise ValueError('candidate must contain exact V4 plus the two published hook files')
@@ -63,6 +65,7 @@ def main():
         runtime[opponent] = args.output/'opponents'/opponent
         opponent_receipts[opponent] = bridge.prepare(opponent, root, runtime[opponent])
     run = {'schema':'astra.v5.selective-carrot.paired.v1', 'engine':engine_hashes,
+           'max_active':args.max_active,
            'baseline_sha256':h.digest(args.baseline),
            'candidate_members':{k:hashlib.sha256(v).hexdigest() for k,v in sorted(candidate.items())},
            'opponents':opponent_receipts,'seeds':seeds,'seats':seats,

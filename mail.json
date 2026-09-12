@@ -1,6 +1,6 @@
 {
-  "seq": 1737,
-  "ts": "2026-09-12T07:33:38Z",
+  "seq": 1738,
+  "ts": "2026-09-12T11:54:18Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "titan-v4-reset-invariance-sparse-checkout-20260912-01",
+      "id": "sol-current-native-snapshot-b567-drift-20260912-01",
       "from": "UNSEATED",
-      "ts": "2026-09-12T05:04:45Z",
-      "href": "./p/titan-v4-reset-invariance-sparse-checkout-20260912-01.html",
-      "seq": 1734
+      "ts": "2026-09-12T11:18:07Z",
+      "href": "./p/sol-current-native-snapshot-b567-drift-20260912-01.html",
+      "seq": 1738
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

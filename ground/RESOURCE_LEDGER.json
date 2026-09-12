@@ -83,20 +83,21 @@
     "inventory/resources/records/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.json",
     "inventory/resources/records/codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01.json",
     "inventory/resources/records/codex-titan-v25-joint-sell-resource-activation-20260909-01.json",
-    "inventory/resources/records/codex-titan-v5-worker-job-payback-resource-activation-20260912-01.json"
+    "inventory/resources/records/codex-titan-v5-worker-job-payback-resource-activation-20260912-01.json",
+    "inventory/resources/records/codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789207594.314319",
+  "slack_ts": "1789218169.077389",
   "snapshot": {
-    "base_main_sha": "039b3bbc538e83fc788633bf8ee25cdb5dd8c8bb",
-    "observed_at": "2026-09-12T10:06:34Z",
+    "base_main_sha": "09ab528832da409dcbcbbc16053bbc5fe10f7214",
+    "observed_at": "2026-09-12T13:02:58Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
+  "source_id": "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -105,8 +106,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — pure worker-job payback certificate producing for canonical TITAN V5 consumers",
+  "subject": "MASTER RESOURCE LEDGER — cross-evidence promotion gate producing for the canonical TITAN V5 promotion consumer",
   "supersedes_source_ids": [
+    "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
     "codex-titan-v5-worker-job-payback-resource-activation-20260912-01",
     "codex-titan-v25-joint-sell-resource-activation-20260909-01",
     "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
@@ -2093,6 +2095,28 @@
       "last_used_at": "unknown",
       "stale_after": "next exact pool, meter, reset, or owner-routing receipt",
       "quantity": 2
+    },
+    {
+      "name": "titan-v5-cross-evidence-promotion-gate",
+      "kind": "SOURCE_BOUND_CANDIDATE_PROMOTION_EVIDENCE_GATE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / canonical TITAN V5 candidate-promotion consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_MANIFEST_ENGAGEMENT_RUNTIME_IDENTITY_AND_SHA256_BINDING_REQUIRED; NO_GAMEPLAY_RUNTIME_DEFAULT_CONFIG_ARCHIVE_PROVIDER_OR_KAGGLE_MUTATION",
+      "consumer": "The canonical TITAN V5 promotion process and candidate owners that need one deterministic fail-closed receipt proving manifest, engagement and runtime evidence belong to the same exact candidate before promotion.",
+      "value": "One public deterministic gate rejects stale, ambiguous, mixed-candidate, no-op and runtime-contract-incomplete promotion evidence while emitting a SHA-256-bound receipt for an exact candidate when every upstream contract agrees.",
+      "next_action": "Let current V5 candidate owners invoke the gate only with exact current manifest, ENGAGED fingerprint and runtime-budget producer outputs; treat PASS as evidence identity closure, not gameplay strength or promotion by itself.",
+      "source": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/promotion-gate; source PR #13330 merge e7f963203213dd125ca0ef8d3b1ad066c991d082; runtime-producer refinement PR #13380 merge ac50bcaf426ec42db4ff7cc546db9e13c73e1655; percentile-identity refinement PR #13383 merge 09ab528832da409dcbcbbc16053bbc5fe10f7214",
+      "evidence_ts": "2026-09-12T13:02:58Z",
+      "auth_surface": "public current-main source and explicitly supplied strict JSON evidence files; no provider session, credential or live game is required",
+      "exact_safe_probe": "Current README blob 6c138aecedcb5e16190f3c11f83a1d7fb6eba3d1; gate blob ea1e6419511bacad4560f88e77bbdafb300c7b4a; focused-test blob 37a0fa618886e6f5fbdda863b833a1b7bd5d5aef. Current focused suite passes 21/21 normally and 21/21 under python -O.",
+      "rate_plan_boundary": "A gate PASS proves only that exact manifest, engagement and runtime evidence identities and reported invariants agree. It does not prove candidate quality, a new game, playing strength, policy promotion, default activation, hosted score, rank, submission, prize, provider quota, payment, revenue or cash.",
+      "assigned_backlog": "existing canonical V5 candidate-promotion consumers; later source refinements remain with their exact claimants and must not be reminted as separate promotion controllers",
+      "last_receipt": "codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01",
+      "last_used_at": "2026-09-12T13:02:58Z",
+      "stale_after": "next promotion-gate source, manifest/engagement/runtime schema, producer contract, consumer, workflow, game-result or provider-state change",
+      "priority": 97
     }
   ],
   "titan": "NOT_WRITTEN"
