@@ -82,6 +82,33 @@ class H3bSheepClip(unittest.TestCase):
         self.assertIs(result, action)
         self.assertEqual(state["work"][1]["command"], ["HARVEST"])
 
+    def test_enabled_must_be_literal_true(self):
+        poisons = ("false", 1, 1.0, [True], {"enabled": False}, None)
+        for enabled in poisons:
+            with self.subTest(enabled=enabled):
+                action, observation, state = fixture()
+                before_action = copy.deepcopy(action)
+                before_command = list(state["work"][1]["command"])
+                result = self.run_case(
+                    action, observation, state, enabled=enabled
+                )
+                self.assertIs(result, action)
+                self.assertEqual(action, before_action)
+                self.assertEqual(state["work"][1]["command"], before_command)
+
+    def test_v233_committed_marker_must_be_literal_true(self):
+        poisons = ("false", 1, 1.0, [True], {"committed": True}, None)
+        for committed in poisons:
+            with self.subTest(committed=committed):
+                action, observation, state = fixture()
+                state["committed"] = committed
+                before_action = copy.deepcopy(action)
+                before_command = list(state["work"][1]["command"])
+                result = self.run_case(action, observation, state)
+                self.assertIs(result, action)
+                self.assertEqual(action, before_action)
+                self.assertEqual(state["work"][1]["command"], before_command)
+
     def test_malformed_farmer_action_vector_is_exact_parent_identity(self):
         for mode in ("missing", "empty"):
             with self.subTest(mode=mode):
@@ -103,7 +130,7 @@ class H3bSheepClip(unittest.TestCase):
         self.assertEqual(state["work"][1]["command"], ["EAST"])
 
     def test_distance_two_reroute_fails_closed_without_persistent_target_lock(self):
-        # V233 reselects min(tasks) every callback.  From h21 a move two tiles
+        # V233 reselects min(tasks) afresh on every callback.  From h21 a move two tiles
         # toward urgent B can be reversed at h22 by the earlier nonurgent A,
         # losing the authored harvest while B still clips.  H3b therefore only
         # owns adjacent detours unless it grows a persistent target latch.
@@ -149,6 +176,25 @@ class H3bSheepClip(unittest.TestCase):
         observation["farms"][0]["tiles"][5][7] = None
         self.assertIs(self.run_case(action, observation, state), action)
 
+    def test_wrong_structure_kind_fails_closed_and_preserves_state(self):
+        for kind in ("COOP", "PLANT", None, 1):
+            with self.subTest(kind=kind):
+                action, observation, state = fixture()
+                observation["farms"][0]["tiles"][5][6]["kind"] = kind
+                before_action = copy.deepcopy(action)
+                before_command = list(state["work"][1]["command"])
+                result = self.run_case(action, observation, state)
+                self.assertIs(result, action)
+                self.assertEqual(action, before_action)
+                self.assertEqual(state["work"][1]["command"], before_command)
+
+    def test_canonical_pasture_sheep_positive_remains_live(self):
+        action, observation, state = fixture()
+        result = self.run_case(action, observation, state)
+        self.assertIsNot(result, action)
+        self.assertEqual(result["hands"][0], ["EAST"])
+        self.assertEqual(state["work"][1]["command"], ["EAST"])
+
     def test_malformed_json_scalar_types_fail_closed(self):
         mutations = (("yield_units", True), ("yield_units", 6.0),
                      ("placed_day", "13"), ("pending_care_bonus", 1.0),
@@ -167,6 +213,21 @@ class H3bSheepClip(unittest.TestCase):
                 action, observation, state = fixture()
                 self.assertIs(self.run_case(action, observation, state,
                                             configuration=configuration), action)
+
+    def test_missing_standard_configuration_evidence_fails_closed(self):
+        cases = [("none", None)]
+        for missing in lane.STANDARD_CONFIG:
+            configuration = dict(CONFIG)
+            del configuration[missing]
+            cases.append((missing, configuration))
+        for label, configuration in cases:
+            with self.subTest(missing=label):
+                action, observation, state = fixture()
+                r04._V233_STATES[0] = state
+                result = lane.apply_h3b_sheep_clip(
+                    action, observation, configuration, enabled=True)
+                self.assertIs(result, action)
+                self.assertEqual(state["work"][1]["command"], ["HARVEST"])
 
     def test_out_of_range_player_fails_closed_even_with_third_farm_and_state(self):
         action, observation, state = fixture()

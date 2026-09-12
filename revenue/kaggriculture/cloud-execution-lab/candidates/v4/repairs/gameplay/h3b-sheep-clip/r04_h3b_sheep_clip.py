@@ -48,14 +48,15 @@ def _cfg(configuration: Any, name: str, default: Any) -> Any:
 
 def _standard_configuration(configuration: Any) -> bool:
     for name, expected in STANDARD_CONFIG.items():
-        actual = _cfg(configuration, name, expected)
+        actual = _cfg(configuration, name, _MISSING)
         if actual is _MISSING or type(actual) is not type(expected) or actual != expected:
             return False
     return True
 
 
 def _strict_sheep(tile: Any):
-    if not isinstance(tile, dict) or tile.get("animal") != "SHEEP":
+    if (not isinstance(tile, dict) or tile.get("kind") != "PASTURE"
+            or tile.get("animal") != "SHEEP"):
         return None
     placed = tile.get("placed_day", _MISSING)
     units = tile.get("yield_units", _MISSING)
@@ -102,7 +103,7 @@ def _commands(action: Any):
 
 def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, enabled=False):
     """Apply repaired H3b; no-match and malformed paths preserve identity."""
-    if not enabled:
+    if enabled is not True:
         return action
     if not _standard_configuration(configuration):
         telemetry["nonstandard_configuration"] += 1
@@ -130,7 +131,11 @@ def apply_h3b_sheep_clip(action: Any, observation: Any, configuration=None, *, e
 
     if not isinstance(tiles, list) or not isinstance(positions, list) or not isinstance(inventories, list):
         return action
-    if not isinstance(state, dict) or not state.get("committed") or state.get("last_step") != step:
+    if (
+        not isinstance(state, dict)
+        or state.get("committed") is not True
+        or state.get("last_step") != step
+    ):
         return action
     workers = state.get("workers")
     work = state.get("work")
