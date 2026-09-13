@@ -8,25 +8,28 @@ The exact optimizer is intentionally boring: maximize explicit owner priority un
 
 There are deliberately separate engine and production layers.
 
-- `core.py` is deterministic optimization/replay machinery. Bare core `portfolio.json` / `receipt.json` bytes prove only deterministic engine integrity for supplied rows. They do **not** establish that a caller-authored `READY`/`CURABLE` claim was independently reviewed or that owner planning inputs were host-approved.
-- `current.py` contains the authenticated upstream-authority verifier, fresh-current verifier, and descriptor primitives. Explicit-key callables there exist for tests/internal host composition and are not the production authority root.
-- `host.py` is the production authority boundary. It reads one fixed owner-retained key location, exposes no caller-selected key path, and emits a second HMAC seal over the **full normalized input digest plus every exact compiled artifact**.
+- `core.py` is deterministic optimization/replay machinery. Bare core artifacts prove only deterministic integrity for supplied rows; they do **not** establish current upstream authorization or host-approved planning inputs.
+- `current.py` verifies signed upstream positive authority, fresh semantics, and retained-descriptor ingress. Explicit-key callables exist for tests/internal host composition and are not the production authority root.
+- `floor.py` verifies the separately retained **latest authority floor**. A historically valid authority packet is not current unless its exact digest is the one named by this floor.
+- `host.py` resolves the fixed retained key and floor, exposes no caller-selected trust-root paths, and HMAC-seals the full normalized planning input plus every exact compiled artifact and the exact current floor generation.
 - `publisher.py` publishes only into an already-existing retained directory generation and never deletes visible pathnames on rollback.
 
-This gives two independent bindings with the same retained host key:
+This creates three distinct checks:
 
-1. the upstream-authority HMAC proves the exact READY/CURABLE opportunity generation/state projection; and
-2. `host-seal.json` proves the exact full owner-planning generation and compiled package, so priority/effort/buffer/capacity/reserve/policy edits cannot be laundered through recomputed self-hashes.
+1. upstream-authority HMAC: the host once authorized the exact READY/CURABLE opportunity generation/state projection;
+2. retained authority floor: that exact signed authority is **still the current generation**, not a superseded historical grant;
+3. `host-seal.json`: the full owner-planning generation and compiled package are the exact host-sealed bytes, so priority/effort/buffer/capacity/reserve/policy edits cannot be laundered through recomputed self-hashes.
 
-## Fixed retained host key
+## Fixed retained host state
 
-Production uses exactly:
+Production uses exactly these two paths:
 
 ```text
 ~/.config/commons/pursuit-portfolio/authority-key.json
+~/.config/commons/pursuit-portfolio/authority-floor.json
 ```
 
-The CLI has no `--key`, key positional argument, environment-variable key selector, or candidate-controlled key registry. Tests may patch the module constant; production does not expose that selection surface.
+The CLI has no key path, floor path, environment selector, or candidate-controlled trust registry. Tests may patch module constants; production does not expose that selection surface.
 
 The retained key file is:
 
@@ -34,29 +37,44 @@ The retained key file is:
 {"schema":"pursuit-portfolio-allocation/authority-key/v1","key_id":"owner-root-1","key_hex":"<64 lowercase hex>"}
 ```
 
-`key_hex` is exactly 32 bytes. On POSIX the file must grant no group/other permissions. The raw key is never copied into portfolio output.
+`key_hex` is exactly 32 bytes. On POSIX both retained host files must grant no group/other permissions. The raw key is never copied into portfolio output.
 
-An upstream-authority envelope has schema `pursuit-portfolio-allocation/upstream-authority/v1`, a `key_id`, canonical UTC `issued_at`, exact READY/CURABLE entries, and `hmac_sha256` over canonical JSON of `{entries,issued_at,key_id,schema}`. The authority generation must not be future-issued or predate the evidence it attests to. Its READY/CURABLE set must exactly match the normalized candidate generation; missing, extra, changed, or relabeled rows fail closed.
+The retained floor uses schema `pursuit-portfolio-allocation/authority-floor/v1` and contains:
 
-The authority signer is intentionally outside this candidate-facing compiler. Possession of an unsigned/self-hashed input packet does not mint upstream host authority.
+- a positive monotone `generation`;
+- the exact current `authority_sha256`;
+- fixed `key_id`;
+- canonical UTC `updated_at`; and
+- `hmac_sha256` over those unsigned floor fields plus schema.
+
+The compiler has **no floor mutation API**. The trusted authority signer/registrar advances this state outside candidate packet authorship. Production compile and verify each acquire the floor twice and fail closed if the retained bytes change during the operation.
+
+A same-generation fork does not become current merely because it has a valid upstream HMAC: only the exact digest retained by the host floor is accepted. Likewise, once the floor advances from G1 to G2, a still-fresh G1 READY package fails current verification even if its evidence/deadline have not aged out.
+
+## Upstream authority
+
+An upstream-authority envelope has schema `pursuit-portfolio-allocation/upstream-authority/v1`, a `key_id`, canonical UTC `issued_at`, exact READY/CURABLE entries, and `hmac_sha256` over canonical JSON of `{entries,issued_at,key_id,schema}`. It must not be future-issued or predate evidence it attests to. Its READY/CURABLE set must exactly match the normalized candidate generation; missing, extra, changed, or relabeled rows fail closed.
+
+The signer/registrar is intentionally outside this candidate-facing compiler. Possession of an unsigned/self-hashed packet does not mint host authority or advance the retained current floor.
 
 ## Host seal
 
-`host-seal.json` uses schema `pursuit-portfolio-allocation/host-seal/v1`. Its HMAC covers canonical bindings for:
+`host-seal.json` uses schema `pursuit-portfolio-allocation/host-seal/v2`. Its HMAC covers canonical bindings for:
 
 - `input_sha256` of the full normalized owner-planning input;
 - exact `portfolio.json`, `portfolio.md`, `receipt.json`, `upstream-authority.json`, and `current-receipt.json` byte digests;
-- the exact evaluation time; and
-- the retained authority `key_id`.
+- exact evaluation time and retained key ID;
+- retained `authority_floor_generation`; and
+- SHA-256 of the exact retained floor bytes used for compilation.
 
-Verification checks this HMAC before accepting the full planning generation, then independently checks upstream authority, deterministic historical integrity, and fresh-current semantics.
+Verification reacquires current floor state, requires the packaged authority digest to still equal that floor, checks the v2 seal, re-verifies upstream authority and deterministic history, performs fresh-current semantic reassessment, then reacquires the floor again before returning success.
 
 ## What the optimizer answers
 
-Given authenticated upstream READY/CURABLE rows, non-allocatable HOLD/TERMINAL rows, official deadline evidence, explicit owner `priority_units`, positive pursuit effort units, and owner-declared capacity/reserve policy, it returns:
+Given currently authorized upstream READY/CURABLE rows, non-allocatable HOLD/TERMINAL rows, official deadline evidence, explicit owner `priority_units`, positive pursuit effort units, and owner-declared capacity/reserve policy, it returns:
 
-- `ALLOCATED_READY` for authenticated upstream-ready rows selected by the exact optimum;
-- `CURABLE_RECOVERY_ALLOCATED` for authenticated still-curable rows receiving recovery capacity;
+- `ALLOCATED_READY` for currently authorized upstream-ready rows selected by the exact optimum;
+- `CURABLE_RECOVERY_ALLOCATED` for currently authorized still-curable rows receiving recovery capacity;
 - `DEFERRED_CAPACITY` for an otherwise eligible row outside the optimum;
 - `HOLD_UPSTREAM`, `TERMINAL`, `DEADLINE_BUFFER_BREACHED`, or `HOLD` for rows that cannot enter allocation;
 - exact available/reserve/usable/allocated/headroom facts; and
@@ -83,7 +101,7 @@ There is no hidden score, ratio, probability, LLM ranking, expected-value model,
 
 ## Current-use CLI
 
-Production compile owns current UTC and requires the source, authenticated authority generation, and an **already-existing owner-controlled output directory**. The retained host key is resolved only from the fixed host path above:
+Production compile owns current UTC and requires the source, authenticated authority generation, and an **already-existing owner-controlled output directory**. The retained key and latest-authority floor come only from the fixed host paths above:
 
 ```bash
 mkdir -m 700 out/portfolio-review
@@ -91,7 +109,7 @@ python -m revenue.pursuit_portfolio.cli compile \
   portfolio-input.json upstream-authority.json out/portfolio-review
 ```
 
-Production verify again resolves the fixed retained host key and performs host-seal verification, historical byte-integrity verification, upstream-authority verification, and fresh-current semantic reassessment. A portfolio that was once allocated but is now stale, outside the planning horizon, or beyond its deadline/buffer does not remain current merely because old hashes still match:
+Production verify again resolves those fixed host resources and performs latest-authority-floor verification, host-seal verification, historical byte-integrity verification, upstream-authority verification, and fresh-current semantic reassessment:
 
 ```bash
 python -m revenue.pursuit_portfolio.cli verify out/portfolio-review
@@ -106,6 +124,8 @@ A successful production publication contains six bound artifacts:
 - `current-receipt.json`
 - `host-seal.json`
 
+The floor is deliberately **not** copied into candidate output; current verification reacquires it from fixed host state.
+
 ## Descriptor custody
 
 Current-use file ingress walks every path component without following symlinks, opens the final regular file from the retained parent directory descriptor, bounds the byte count, reads the same descriptor generation twice, and rejects a generation that changes while being consumed.
@@ -118,4 +138,4 @@ The secure current-use descriptor path fails closed on platforms that cannot pro
 
 This module is offline owner portfolio decision support only. It performs no buyer/partner contact, email/SMS/DM/call, registration, question submission, portal mutation, proposal/bid submission, pricing, staffing assignment, scheduling, signature/certification, contract acceptance, spend, invoice/payment/refund/bank action, award claim, buyer-intent inference, probability/forecast, cash assertion, or recognized-revenue action.
 
-`ALLOCATED_READY` under the production current-use path means only that an authenticated upstream-ready generation fits the host-sealed owner planning constraints at the recorded evaluation time and still passes fresh-current verification. It is not submission or spend authority.
+`ALLOCATED_READY` under the production current-use path means only that a currently retained positive upstream authority generation fits the host-sealed owner planning constraints at the recorded evaluation time and still passes fresh-current verification. It is not submission or spend authority.
