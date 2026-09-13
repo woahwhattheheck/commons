@@ -1,0 +1,87 @@
+{
+  "schema": "regulated-handoff-evidence-bundle/v1",
+  "shipment": {
+    "shipment_id": "SYNTH-0001",
+    "fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "contract": {
+    "allowed_source_systems": ["origin-wms", "courier-scan", "sensor-hub"],
+    "initial_custodian": "ORIGIN-LAB",
+    "required_final_custodian": "DESTINATION-SITE",
+    "minimum_custody_transfers": 2,
+    "temperature": {
+      "min_c": "2.0",
+      "max_c": "8.0",
+      "max_evidence_age_seconds": 900,
+      "required_for_each_transfer": true
+    }
+  },
+  "events": [
+    {
+      "event_id": "temp-2",
+      "shipment_id": "SYNTH-0001",
+      "shipment_fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "temperature",
+      "occurred_at": "2026-09-13T12:29:30Z",
+      "source_system": "sensor-hub",
+      "source_event_id": "sensor-2002",
+      "sensor_id": "SENSOR-B",
+      "temperature_c": "4.1",
+      "evidence_ref": "synthetic://temp/2"
+    },
+    {
+      "event_id": "xfer-1",
+      "shipment_id": "SYNTH-0001",
+      "shipment_fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "custody_transfer",
+      "occurred_at": "2026-09-13T12:05:00Z",
+      "source_system": "courier-scan",
+      "source_event_id": "scan-1001",
+      "from_custodian": "ORIGIN-LAB",
+      "to_custodian": "COURIER-A",
+      "actor_id": "SYNTH-ACTOR-1",
+      "location_id": "SYNTH-ORIGIN-DOCK",
+      "evidence_ref": "synthetic://handoff/1",
+      "temperature_event_id": "temp-1"
+    },
+    {
+      "event_id": "temp-1",
+      "shipment_id": "SYNTH-0001",
+      "shipment_fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "temperature",
+      "occurred_at": "2026-09-13T12:04:40Z",
+      "source_system": "sensor-hub",
+      "source_event_id": "sensor-2001",
+      "sensor_id": "SENSOR-A",
+      "temperature_c": "4.2",
+      "evidence_ref": "synthetic://temp/1"
+    },
+    {
+      "event_id": "xfer-2",
+      "shipment_id": "SYNTH-0001",
+      "shipment_fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "custody_transfer",
+      "occurred_at": "2026-09-13T12:30:00Z",
+      "source_system": "courier-scan",
+      "source_event_id": "scan-1002",
+      "from_custodian": "COURIER-A",
+      "to_custodian": "DESTINATION-SITE",
+      "actor_id": "SYNTH-ACTOR-2",
+      "location_id": "SYNTH-DESTINATION-DOCK",
+      "evidence_ref": "synthetic://handoff/2",
+      "temperature_event_id": "temp-2"
+    },
+    {
+      "event_id": "checkpoint-1",
+      "shipment_id": "SYNTH-0001",
+      "shipment_fingerprint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "checkpoint",
+      "occurred_at": "2026-09-13T12:15:00Z",
+      "source_system": "origin-wms",
+      "source_event_id": "cp-3001",
+      "actor_id": "SYNTH-ACTOR-CHECK",
+      "location_id": "SYNTH-HUB",
+      "evidence_ref": "synthetic://checkpoint/1"
+    }
+  ]
+}
