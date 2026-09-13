@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any, Iterable
 
 POLICY_SCHEMA = "port-data-qc-policy/v1"
@@ -361,7 +361,8 @@ def evaluate(policy: Any, snapshot: Any, *, evaluated_at: str) -> dict[str, Any]
     captured_dt = _parse_utc(obj["captured_at"], name="snapshot.captured_at")
     if captured_dt > evaluated_dt:
         raise GateInputError("snapshot captured_at cannot be after trusted evaluation time")
-    age_seconds = int((evaluated_dt - captured_dt).total_seconds())
+    age_delta = evaluated_dt - captured_dt
+    age_seconds = int(age_delta.total_seconds())
 
     raw_events = obj["events"]
     if type(raw_events) is not list or len(raw_events) > MAX_EVENTS:
@@ -371,7 +372,7 @@ def evaluate(policy: Any, snapshot: Any, *, evaluated_at: str) -> dict[str, Any]
     holds: set[str] = set()
     if not capture_complete:
         holds.add("SNAPSHOT_INCOMPLETE")
-    if age_seconds > max_age:
+    if age_delta > timedelta(seconds=max_age):
         holds.add("SNAPSHOT_STALE")
 
     unique_by_identity: dict[tuple[str, str], _Event] = {}
@@ -462,9 +463,10 @@ def evaluate(policy: Any, snapshot: Any, *, evaluated_at: str) -> dict[str, Any]
     return {"receipt": receipt, "report": report, "exceptions": exception_ledger}
 
 
-def verify(result: Any, *, policy: Any, snapshot: Any) -> bool:
-    """Verify content binding and receipt self-hash for a previously emitted result."""
+def verify(result: Any, *, policy: Any, snapshot: Any, evaluated_at: str) -> bool:
+    """Verify a receipt against bound evidence and an external trusted evaluation time."""
     try:
+        trusted_evaluated_dt = _parse_utc(evaluated_at, name="evaluated_at")
         obj = _exact_dict(result, name="result")
         _exact_keys(obj, {"receipt", "report", "exceptions"}, name="result")
         receipt = _exact_dict(obj["receipt"], name="result.receipt")
@@ -492,6 +494,9 @@ def verify(result: Any, *, policy: Any, snapshot: Any) -> bool:
         _exact_keys(receipt, expected_fields, name="result.receipt")
         if receipt["schema"] != RECEIPT_SCHEMA or receipt["authority"] != "EVIDENCE_ONLY_NO_OPERATIONAL_RELEASE":
             return False
+        receipt_evaluated_dt = _parse_utc(receipt["evaluated_at"], name="result.receipt.evaluated_at")
+        if receipt_evaluated_dt != trusted_evaluated_dt:
+            return False
         if receipt["policy_sha256"] != _sha256(policy) or receipt["snapshot_sha256"] != _sha256(snapshot):
             return False
         if receipt["report_sha256"] != _sha256(obj["report"]) or receipt["exceptions_sha256"] != _sha256(obj["exceptions"]):
@@ -502,9 +507,8 @@ def verify(result: Any, *, policy: Any, snapshot: Any) -> bool:
             return False
 
         # Hashes alone are not authority: an editor could rewrite a report and recompute every
-        # digest. Re-evaluate from the bound evidence and trusted evaluation time, then require
-        # the complete result to match exactly. This also binds counts, HOLD reasons, lineage,
-        # report rows, and exception semantics to the implementation contract.
+        # digest. Re-evaluate from the bound evidence only after the caller's trusted time has
+        # been matched to the receipt time. The receipt may not choose its own freshness clock.
         expected = evaluate(policy, snapshot, evaluated_at=receipt["evaluated_at"])
         return _canonical_bytes(expected) == _canonical_bytes(obj)
     except (GateInputError, KeyError, TypeError, ValueError):
