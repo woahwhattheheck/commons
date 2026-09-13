@@ -118,6 +118,11 @@ def load_mailbox_fixture(
             raise idx.IndexError_(
                 f"mailbox fixture {subject_id!r} message {i} bad role {role!r}"
             )
+        expected_role = "seller" if direction == "outbound" else "buyer"
+        if role != expected_role:
+            raise idx.IndexError_(
+                f"mailbox fixture {subject_id!r} message {i} direction/role mismatch"
+            )
         idx.parse_time(str(ts))
         item = {
             "id": mid,
@@ -168,7 +173,7 @@ def verify_mailbox_buyer_reply(
 
     inbound_hits: list[dict[str, Any]] = []
     for msg in messages:
-        if msg["direction"] != "inbound" or msg["role"] != "buyer":
+        if msg["direction"] != "inbound":
             continue
         anchor = first_outbound_by_thread.get(msg["thread_id"])
         if anchor is None:
@@ -196,6 +201,7 @@ def verify_mailbox_buyer_reply(
         "invent_guard": {
             "never_invent_verified_human_yes": True,
             "never_mint_material_reply_from_arrival": True,
+            "never_change_contact_authority_from_arrival": True,
             "hermetic_only": True,
             "no_index_remint": True,
             "no_cheri_contact": True,
@@ -250,7 +256,11 @@ def pin_buyer_reply_observed_evidence(
     organization: str,
     ts: str | None = None,
 ) -> dict[str, Any]:
-    """Append neutral reply-arrival STATUS evidence; never MATERIAL_REPLY."""
+    """Append neutral reply-arrival STATUS evidence; never MATERIAL_REPLY.
+
+    The record intentionally omits ``dnr`` so the relationship handoff retains
+    whatever contact/no-resend authority the existing row already had.
+    """
     paths = paths or idx.default_paths()
     if verify_result.get("status") != STATUS_OBSERVED:
         raise idx.IndexError_(
@@ -295,10 +305,10 @@ def pin_buyer_reply_observed_evidence(
             "Human identity, commercial materiality, acceptance, award, and payment remain unverified."
         ),
         "decision": DECISION_OBSERVED,
-        "dnr": False,
         "next_action": (
             "HUMAN_CLASSIFICATION_REQUIRED; inspect the source message before any "
-            "material-reply, scope, acceptance, or commercial-state claim."
+            "material-reply, scope, acceptance, or commercial-state claim. Existing "
+            "contact/no-resend authority is unchanged by this observation."
         ),
         "source_paths": source_paths,
         "cash_usd": 0,
