@@ -20,7 +20,7 @@ These controls close source/output generation confusion. They do not make an unt
 - `runtimeImmutable`: code, branding/runtime HTML, Parcel handoff configuration, synthetic example, launcher and operating instructions;
 - `operatorEditable`: only `config.local.json`.
 
-`run.py` validates the manifest structure, file classifications and every immutable file's exact size and SHA-256 before loading `workflow.py`. The workflow is then loaded from the verified package path via an explicit module spec rather than a generic `import workflow`.
+`run.py` validates the manifest structure, file classifications and every immutable file's exact size and SHA-256 before loading `workflow.py`. The verified `workflow.py` and dashboard bytes stay in memory: the workflow is compiled/executed from that exact verified byte string and the branded dashboard renders from the verified HTML string, so neither path is reopened between verification and use.
 
 Changing `config.local.json` is expected: it is the operator's local mapping/receiver configuration and remains editable. Its manifest hash is build-time receipt evidence, not a runtime lock.
 
@@ -28,6 +28,6 @@ This is an **internal package-consistency** check. It is not a signature, code s
 
 ## Regression contract
 
-The dedicated `parcel-package-integrity` workflow runs the existing bundle integration suite plus hostile integrity/custody tests in normal and optimized Python modes. The hostile suite covers immutable-member tamper, editable config, manifest reclassification, duplicate/non-finite JSON, source symlinks, same-inode mutation with restored mtime, output-path replacement and retained-inode result hashing.
+The dedicated `parcel-package-integrity` workflow runs the existing bundle integration suite plus hostile integrity/custody tests in normal and optimized Python modes. The hostile suite covers immutable-member tamper, verified-generation reuse without pathname reopen, editable config, manifest reclassification, duplicate/non-finite JSON, source symlinks, same-inode mutation with restored mtime, output-path replacement and retained-inode result hashing.
 
 No customer deployment, customer contact, payment, checkout, sale, or installation is established by these checks.
