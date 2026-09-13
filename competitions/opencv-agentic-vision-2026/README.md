@@ -63,9 +63,11 @@ The evidence packet binds:
 
 ## AWS contract
 
-`template.yaml` provisions an S3 image bucket, DynamoDB evidence table, FIFO human-review queue, and Lambda + HTTP API. The Lambda accepts a bounded JSON request containing `baseline_key` and `current_key` in the configured bucket, reads exact S3 versions when supplied, analyzes the pair, records a canonical evidence/decision receipt, and queues only review metadata.
+`template.yaml` provisions a private encrypted versioned S3 image bucket, DynamoDB evidence table, FIFO human-review queue, and Lambda triggered only by `current/` object creation. There is no public HTTP ingestion endpoint in this carrier.
 
-DynamoDB is the durable replay fence. An existing event returns its stored receipt. Queue messages use the deterministic event ID as FIFO deduplication identity; a consumer must also preserve event ID because SQS FIFO deduplication has a finite time window.
+Each S3 event must name the exact current object `versionId`. That current object must carry `baseline-version-id` metadata naming the exact retained `baseline/<same-suffix>` object generation. The Lambda reads both exact versions, analyzes the pair, records a canonical evidence/decision receipt, and queues only review metadata when the policy returns `REQUEST_HUMAN_REVIEW`.
+
+DynamoDB is the durable replay and delivery-state fence. An existing event returns its retained receipt; if a prior review event reached durable `RECORDED` state but queue delivery was interrupted, a retry repairs that delivery rather than creating a new semantic event. Queue messages use the deterministic event ID as FIFO deduplication identity; consumers should preserve event ID as their own durable idempotency key because SQS FIFO deduplication has a finite time window.
 
 This scaffold has **not** been deployed from this lane and no AWS spend is claimed.
 
