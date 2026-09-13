@@ -29,11 +29,11 @@ jobs:
         working-directory: competitions/arc-agi-3-2026
         run: python -m py_compile effects/*.py
       - name: Hostile and taxonomy tests
-        working-directory: competitions/arc-agi-3-2026
-        run: PYTHONPATH=".:effects" python -B -m unittest -v effects.test_effects effects.test_sage_integration
+        working-directory: competitions/arc-agi-3-2026/effects
+        run: PYTHONPATH=".:.." python -B -m unittest -v test_effects test_sage_integration
       - name: Optimized-mode hostile and taxonomy tests
-        working-directory: competitions/arc-agi-3-2026
-        run: PYTHONPATH=".:effects" python -O -B -m unittest -v effects.test_effects effects.test_sage_integration
+        working-directory: competitions/arc-agi-3-2026/effects
+        run: PYTHONPATH=".:.." python -O -B -m unittest -v test_effects test_sage_integration
       - name: Held-out shuffled-semantics taxonomy benchmark
         working-directory: competitions/arc-agi-3-2026/effects
         run: PYTHONPATH=. python benchmark.py --seeds 100 | tee /tmp/arc3-effects-benchmark.json
