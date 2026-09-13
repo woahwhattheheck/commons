@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from bias_discovery import (
     DEFAULT_EXCLUDED_PREFIXES,
     analyze,
+    build_evidence_packet,
     load_scores,
     main,
 )
@@ -49,13 +50,13 @@ class BiasDiscoveryTests(unittest.TestCase):
                         "GEOID": tract,
                         "broadband_metric": i,
                         "weak_metric": i % 7,
-                        "svi_score": i,
+                        "SVI_score": i,
                     }
                 )
             self.write_scores(scores_path, score_rows)
             self.write_strata(
                 strata_path,
-                ["GEOID", "broadband_metric", "weak_metric", "svi_score"],
+                ["GEOID", "broadband_metric", "weak_metric", "SVI_score"],
                 strata_rows,
             )
             results = analyze(
@@ -69,7 +70,7 @@ class BiasDiscoveryTests(unittest.TestCase):
             )
         by_field = {item["field"]: item for item in results}
         self.assertEqual(results[0]["field"], "broadband_metric")
-        self.assertNotIn("svi_score", by_field)
+        self.assertNotIn("SVI_score", by_field)
         signal = by_field["broadband_metric"]
         self.assertGreater(signal["signed_delta"], 0.45)
         self.assertTrue(signal["bootstrap_excludes_zero"])
@@ -219,6 +220,7 @@ class BiasDiscoveryTests(unittest.TestCase):
                 county = "01001" if i < 30 else "01003"
                 tract = geoid(i, county)
                 value = i % 30
+                # Opposing county relationships: pooled effect can exist, but jackknife reveals fragility.
                 score = value / 29 if county == "01001" else 1.0 - (value / 29)
                 scores.append({"GEOID": tract, "coverage_gap_score": score})
                 strata.append({"GEOID": tract, "candidate": value})
@@ -237,6 +239,49 @@ class BiasDiscoveryTests(unittest.TestCase):
         self.assertEqual(jackknife["evaluated"], 2)
         self.assertLess(jackknife["sign_agreement"], 1.0)
         self.assertEqual(result["screening_strength"], "exploratory")
+
+    def test_duplicate_strata_geoid_fails_closed_and_tied_extremes_are_skipped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            scores_path = root / "scores.csv"
+            strata_path = root / "strata.csv"
+            self.write_scores(
+                scores_path,
+                [{"GEOID": geoid(i), "coverage_gap_score": i / 11} for i in range(12)],
+            )
+            duplicated = [{"GEOID": geoid(i), "candidate": i} for i in range(12)]
+            duplicated.append({"GEOID": geoid(1), "candidate": 99})
+            self.write_strata(strata_path, ["GEOID", "candidate"], duplicated)
+            with self.assertRaisesRegex(ValueError, "duplicate GEOID in strata CSV"):
+                analyze(
+                    load_scores(scores_path),
+                    strata_path,
+                    min_rows=8,
+                    prefixes=(),
+                    bootstrap_iterations=40,
+                    permutations=40,
+                )
+
+            tied_path = root / "tied.csv"
+            # Four distinct values satisfy the numeric-cardinality screen, but
+            # repeated middle values make q1 == q3. The extreme groups would
+            # overlap, so the candidate must be skipped rather than tested.
+            tied = []
+            values = [0] + [1] * 9 + [2, 3]
+            for i, value in enumerate(values):
+                tied.append({"GEOID": geoid(i), "candidate": value})
+            self.write_strata(tied_path, ["GEOID", "candidate"], tied)
+            self.assertEqual(
+                analyze(
+                    load_scores(scores_path),
+                    tied_path,
+                    min_rows=8,
+                    prefixes=(),
+                    bootstrap_iterations=40,
+                    permutations=40,
+                ),
+                [],
+            )
 
 
 if __name__ == "__main__":
