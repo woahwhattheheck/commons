@@ -1,6 +1,11 @@
 import copy
+import json
+import subprocess
+import tempfile
 import unittest
+from pathlib import Path
 
+import p04_route_ranker as ranker
 import p04_preregistered_selector as s
 
 
@@ -73,6 +78,68 @@ def full_groups(plan3=(10, 5)):
     ]
 
 
+def raw_rows(plan3=(10, 5), plan4=(0, 0)):
+    snap = snapshot()
+    digest = ranker.snapshot_sha256(snap)
+    rows = []
+    for seed in (1209131101, 1209131102):
+        for opponent in ("apex_v7", "arlene_v14"):
+            for seat in (0, 1):
+                for plan in range(13):
+                    delta_margin, delta_own = (0, 0)
+                    if plan == 3:
+                        delta_margin, delta_own = plan3
+                    elif plan == 4:
+                        delta_margin, delta_own = plan4
+                    if plan == snap["incumbent_plan"]:
+                        delta_margin, delta_own = 0, 0
+                    own = 1000.0 + delta_own
+                    margin = 100.0 + delta_margin
+                    rows.append({
+                        "seed": seed,
+                        "opponent": opponent,
+                        "seat": seat,
+                        "forced_plan": plan,
+                        "snapshot": copy.deepcopy(snap),
+                        "snapshot_sha256": digest,
+                        "terminal_own": own,
+                        "terminal_rival": own - margin,
+                        "terminal_margin": margin,
+                        "failures": [],
+                    })
+    return rows
+
+
+def git(root, *args):
+    proc = subprocess.run(
+        ["git", *args],
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+        text=True,
+    )
+    if proc.returncode != 0:
+        raise AssertionError(f"git {' '.join(args)} failed: {proc.stderr}")
+    return proc.stdout.strip()
+
+
+def committed_evidence(rows):
+    temp = tempfile.TemporaryDirectory()
+    root = Path(temp.name)
+    git(root, "init", "-b", "main")
+    git(root, "config", "user.email", "p04@example.invalid")
+    git(root, "config", "user.name", "P04 Test")
+    path = s.EVIDENCE_PREFIX + "TEST/full-matrix.jsonl"
+    target = root / path
+    target.parent.mkdir(parents=True)
+    target.write_text("".join(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n" for row in rows), encoding="utf-8")
+    git(root, "add", path)
+    git(root, "commit", "-m", "committed route evidence")
+    commit = git(root, "rev-parse", "HEAD")
+    return temp, root, path, commit
+
+
 class TestPreregisteredSelector(unittest.TestCase):
     def test_spec_is_narrow_and_plan2_is_impossible(self):
         self.assertNotIn(2, s.OVERRIDE_PLANS)
@@ -82,9 +149,10 @@ class TestPreregisteredSelector(unittest.TestCase):
         self.assertEqual(reg["spec_sha256"], s.SPEC_SHA256)
         self.assertEqual(reg["discovery_universe_sha256"], s.DISCOVERY_UNIVERSE_SHA256)
         self.assertEqual(len(reg["discovery_universe"]["group_keys"]), 8)
+        self.assertEqual(reg["accepted_evidence"]["schema"], s.EVIDENCE_SCHEMA)
 
     def test_safe_global_override_is_nominated_but_not_policy_ready(self):
-        out = s.fit_selector(report(full_groups()))
+        out = s._fit_reduced_report(report(full_groups()))
         self.assertIsNotNone(out["selected"])
         self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
         self.assertFalse(out["policy_ready"])
@@ -95,23 +163,29 @@ class TestPreregisteredSelector(unittest.TestCase):
     def test_one_negative_margin_cell_disqualifies_rule(self):
         groups = full_groups()
         groups[0]["plans"][3]["delta_margin_vs_incumbent"] = -1
-        out = s.fit_selector(report(groups))
+        out = s._fit_reduced_report(report(groups))
         self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 3)
 
     def test_one_negative_own_cell_disqualifies_rule(self):
         groups = full_groups()
         groups[0]["plans"][3]["delta_own_vs_incumbent"] = -1
-        out = s.fit_selector(report(groups))
+        out = s._fit_reduced_report(report(groups))
         self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 3)
 
-    def test_failed_incumbent_control_disqualifies_otherwise_clean_override(self):
+    def test_failed_incumbent_control_disqualifies_clean_positive_override(self):
         groups = full_groups()
-        groups[0]["plans"][7]["failures"] = ["incumbent evaluator failure"]
-        result = s.evaluate_rule(s.validate_discovery_report(report(groups)), {"predicate": None, "override_plan": 3})
-        self.assertFalse(result["qualified"])
-        self.assertEqual(result["candidate_failure_groups"], 0)
-        self.assertEqual(result["incumbent_failure_groups"], 1)
-        self.assertEqual(result["failure_groups"], 1)
+        groups[0]["plans"][groups[0]["incumbent_plan"]]["failures"] = ["incumbent_timeout"]
+        reduced = report(groups)
+        out = s._fit_reduced_report(reduced)
+        self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 3)
+        plan3 = s.evaluate_rule(
+            s.validate_discovery_report(reduced),
+            {"predicate": None, "override_plan": 3},
+        )
+        self.assertFalse(plan3["qualified"])
+        self.assertEqual(plan3["candidate_failure_groups"], 0)
+        self.assertEqual(plan3["incumbent_failure_groups"], 1)
+        self.assertEqual(plan3["failure_groups"], 1)
 
     def test_conditional_rule_must_span_two_seeds_opponents_and_both_seats(self):
         groups = full_groups(plan3=(-5, -5))
@@ -124,7 +198,7 @@ class TestPreregisteredSelector(unittest.TestCase):
             else:
                 g["plans"][4]["delta_margin_vs_incumbent"] = -2
                 g["plans"][4]["delta_own_vs_incumbent"] = -1
-        out = s.fit_selector(report(groups))
+        out = s._fit_reduced_report(report(groups))
         self.assertEqual(out["selected"]["rule"], {
             "predicate": {"feature": "wool_vs_milk_price", "value": "WOOL>MILK"},
             "override_plan": 4,
@@ -143,32 +217,32 @@ class TestPreregisteredSelector(unittest.TestCase):
             else:
                 g["plans"][4]["delta_margin_vs_incumbent"] = -2
                 g["plans"][4]["delta_own_vs_incumbent"] = -1
-        out = s.fit_selector(report(groups))
+        out = s._fit_reduced_report(report(groups))
         self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 4)
 
     def test_authority_mismatch_fails_closed(self):
         r = report(full_groups())
         r["authority"]["router_source_sha256"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "authority mismatch"):
-            s.fit_selector(r)
+            s._fit_reduced_report(r)
 
     def test_policy_ready_true_input_fails_closed(self):
         r = report(full_groups())
         r["policy_ready"] = True
         with self.assertRaisesRegex(ValueError, "policy_ready=false"):
-            s.fit_selector(r)
+            s._fit_reduced_report(r)
 
     def test_incomplete_plan_rows_fail_closed(self):
         r = report(full_groups())
         r["groups"][0]["plans"].pop()
         with self.assertRaisesRegex(ValueError, "exactly 13"):
-            s.fit_selector(r)
+            s._fit_reduced_report(r)
 
     def test_duplicate_discovery_key_fails_closed(self):
         groups = full_groups()
         groups.append(copy.deepcopy(groups[0]))
         with self.assertRaisesRegex(ValueError, "duplicate"):
-            s.fit_selector(report(groups))
+            s._fit_reduced_report(report(groups))
 
     def test_partial_positive_subset_fails_preoutcome_universe_binding(self):
         groups = [
@@ -176,13 +250,13 @@ class TestPreregisteredSelector(unittest.TestCase):
             group(1209131101, "apex_v7", 1, plan3=(10, 5)),
         ]
         with self.assertRaisesRegex(ValueError, "discovery universe mismatch"):
-            s.fit_selector(report(groups))
+            s._fit_reduced_report(report(groups))
 
     def test_extra_group_fails_preoutcome_universe_binding(self):
         groups = full_groups()
         groups[-1] = group(1209131103, "arlene_v14", 1)
         with self.assertRaisesRegex(ValueError, "discovery universe mismatch"):
-            s.fit_selector(report(groups))
+            s._fit_reduced_report(report(groups))
 
     def test_select_plan_rejects_noncanonical_snapshot_and_uses_public_features(self):
         snap = snapshot()
@@ -194,8 +268,8 @@ class TestPreregisteredSelector(unittest.TestCase):
 
     def test_fitting_is_deterministic_under_group_order(self):
         groups = full_groups()
-        left = s.fit_selector(report(groups))
-        right = s.fit_selector(report(list(reversed(groups))))
+        left = s._fit_reduced_report(report(groups))
+        right = s._fit_reduced_report(report(list(reversed(groups))))
         self.assertEqual(left["selected"], right["selected"])
         self.assertEqual(left["preregistration_spec_sha256"], right["preregistration_spec_sha256"])
         self.assertEqual(left["discovery_universe_sha256"], right["discovery_universe_sha256"])
@@ -205,6 +279,52 @@ class TestPreregisteredSelector(unittest.TestCase):
             s.selected_plan_for_features({name: "X" for name in s.ALLOWED_FEATURES}, 7, {
                 "predicate": {"feature": "seed", "value": 1209131101}, "override_plan": 3
             })
+
+    def test_public_summary_interface_rejects_forged_eight_group_payload(self):
+        forged = report(full_groups())
+        forged["groups"][0]["features"]["shop_pair"] = "FORGED|FORGED"
+        forged["groups"][0]["plans"][3]["delta_margin_vs_incumbent"] = 999999
+        with self.assertRaisesRegex(ValueError, "caller-authored reduced reports are not evidence authority"):
+            s.fit_selector(forged)
+
+    def test_committed_main_ancestry_rows_are_reduced_internally(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        out = s.fit_selector_from_committed_evidence(root, commit, [path])
+        self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
+        self.assertEqual(out["evidence"]["commit"], commit)
+        self.assertEqual(out["evidence"]["rows"], 104)
+        self.assertEqual(out["evidence"]["members"][0]["path"], path)
+        self.assertFalse(out["policy_ready"])
+        self.assertFalse(out["composer_ready"])
+
+    def test_working_tree_tamper_cannot_change_committed_evidence(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        before = s.fit_selector_from_committed_evidence(root, commit, [path])
+        (root / path).write_text("{\"forged\":true}\n", encoding="utf-8")
+        after = s.fit_selector_from_committed_evidence(root, commit, [path])
+        self.assertEqual(before["selected"], after["selected"])
+        self.assertEqual(before["evidence"]["members"], after["evidence"]["members"])
+
+    def test_non_main_commit_is_rejected_as_evidence_authority(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        git(root, "checkout", "-b", "untrusted")
+        target = root / path
+        target.write_text(target.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+        git(root, "add", path)
+        git(root, "commit", "-m", "untrusted evidence")
+        untrusted = git(root, "rev-parse", "HEAD")
+        self.assertNotEqual(commit, untrusted)
+        with self.assertRaisesRegex(ValueError, "not an ancestor of canonical main"):
+            s.fit_selector_from_committed_evidence(root, untrusted, [path])
+
+    def test_evidence_path_must_stay_in_canonical_native_namespace(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        with self.assertRaisesRegex(ValueError, "route-matrix-native JSONL"):
+            s.load_committed_rows(root, commit, ["tmp/forged.jsonl"])
 
 
 if __name__ == "__main__":
