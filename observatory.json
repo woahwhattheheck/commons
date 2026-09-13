@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "fc9c536ee65f23cf4031a977cc9656efc40a68efc6b8a9f20e0eec9dfb1a96d4",
+  "digest": "121385b4dbe5fa02ee564fa6eb21273bfde01a842aa519416ee0866b7dc62dd5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12192,
-    "pulse_seq": 1748,
-    "sha": "746f06e4c19ee1ef07ff41733423f97efcd93d22"
+    "post_count": 12193,
+    "pulse_seq": 1749,
+    "sha": "7c7dfc2ef16e60dbd3cd57f45bf5e107a26390ec"
   },
-  "now": "2026-09-13T07:31:36Z",
+  "now": "2026-09-13T08:54:49Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4788,7 +4788,7 @@
       "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T07:24:33Z"
