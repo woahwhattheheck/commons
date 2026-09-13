@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -21133,6 +21139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21365,12 +21377,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -21454,6 +21460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21686,12 +21698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -21709,6 +21715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21941,12 +21953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -21964,6 +21970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22196,12 +22208,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -22285,6 +22291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22517,12 +22529,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -22606,6 +22612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22838,12 +22850,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -22879,6 +22885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23111,12 +23123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -23152,6 +23158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23384,12 +23396,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -23431,6 +23437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23663,12 +23675,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -23686,6 +23692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23918,12 +23930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -24007,6 +24013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24239,12 +24251,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -24262,6 +24268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24494,12 +24506,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -24517,6 +24523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24749,12 +24761,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -24772,6 +24778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25004,12 +25016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -25027,6 +25033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25259,12 +25271,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -25282,6 +25288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25514,12 +25526,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -25603,6 +25609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25835,12 +25847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -25924,6 +25930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26156,12 +26168,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -26179,6 +26185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26411,12 +26423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -26500,6 +26506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26732,12 +26744,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -26809,6 +26815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27041,12 +27053,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -27130,6 +27136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27362,12 +27374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -27391,6 +27397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27623,12 +27635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -27694,6 +27700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27926,12 +27938,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -27961,6 +27967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28193,12 +28205,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -28228,6 +28234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28460,12 +28472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -28483,6 +28489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28715,12 +28727,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -28804,6 +28810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29036,12 +29048,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -29059,6 +29065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29291,12 +29303,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -29320,6 +29326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29552,12 +29564,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -29641,6 +29647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29873,12 +29885,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -29896,6 +29902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30128,12 +30140,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -30151,6 +30157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30383,12 +30395,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -30472,6 +30478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30704,12 +30716,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -30739,6 +30745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30971,12 +30983,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -30994,6 +31000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31226,12 +31238,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -31273,6 +31279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31505,12 +31517,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -31534,6 +31540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31766,12 +31778,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -31789,6 +31795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32021,12 +32033,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -32044,6 +32050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32276,12 +32288,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -32296,8 +32302,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -32494,6 +32506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32726,12 +32744,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -32749,6 +32761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32981,12 +32999,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -33004,6 +33016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33236,12 +33254,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -33325,6 +33337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33557,12 +33575,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -33580,6 +33592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33812,12 +33830,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -33901,6 +33913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34133,12 +34151,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -34222,6 +34234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34454,12 +34472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -34483,6 +34495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34715,12 +34733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -34750,6 +34762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34982,12 +35000,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -35005,6 +35017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35237,12 +35255,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -35272,6 +35284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35504,12 +35522,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -35533,6 +35545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35765,12 +35783,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -35794,6 +35806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36026,12 +36044,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -36112,8 +36124,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -36286,6 +36304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36518,12 +36542,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -36577,6 +36595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36809,12 +36833,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -36844,6 +36862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37076,12 +37100,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -37102,8 +37120,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -37264,6 +37288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37496,12 +37526,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -37525,6 +37549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37757,12 +37787,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -37846,6 +37870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38078,12 +38108,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -38101,6 +38125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38333,12 +38363,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -38368,6 +38392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38600,12 +38630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -38623,6 +38647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38855,12 +38885,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -38890,6 +38914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39122,12 +39152,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -39211,6 +39235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39443,12 +39473,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -39466,6 +39490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39698,12 +39728,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -39787,6 +39811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40019,12 +40049,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -40108,6 +40132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40340,12 +40370,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -40411,6 +40435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40643,12 +40673,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -40684,6 +40708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40916,12 +40946,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -40969,6 +40993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41201,12 +41231,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -41224,6 +41248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41456,12 +41486,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -41545,6 +41569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41777,12 +41807,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -41800,6 +41824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42032,12 +42062,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -42085,6 +42109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42317,12 +42347,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -42340,6 +42364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42572,12 +42602,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -42595,6 +42619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42827,12 +42857,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -42850,6 +42874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43082,12 +43112,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -43105,6 +43129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43337,12 +43367,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -43360,6 +43384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43592,12 +43622,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -43681,6 +43705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43913,12 +43943,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -43936,6 +43960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44168,12 +44198,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -44191,6 +44215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44423,12 +44453,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -44446,6 +44470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44678,12 +44708,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -44701,6 +44725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44933,12 +44963,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -44956,6 +44980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45188,12 +45218,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -45229,6 +45253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45461,12 +45491,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -45550,6 +45574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45782,12 +45812,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -45805,6 +45829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46037,12 +46067,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -46090,6 +46114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46322,12 +46352,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -46399,6 +46423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46631,12 +46661,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -46654,6 +46678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46886,12 +46916,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -46921,6 +46945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47153,12 +47183,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -47176,6 +47200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47408,12 +47438,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -47431,6 +47455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47663,12 +47693,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -47686,6 +47710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47918,12 +47948,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -47941,6 +47965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48173,12 +48203,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -48196,6 +48220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48428,12 +48458,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -48451,6 +48475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48683,12 +48713,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -48772,6 +48796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49004,12 +49034,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -49093,6 +49117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49325,12 +49355,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -49414,6 +49438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49646,12 +49676,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -49693,6 +49717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49925,12 +49955,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -50014,6 +50038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50246,12 +50276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -50269,6 +50293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50501,12 +50531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -50524,6 +50548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50756,12 +50786,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -50791,6 +50815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51023,12 +51053,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -51112,6 +51136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51344,12 +51374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -51373,6 +51397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51605,12 +51635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -51640,6 +51664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51872,12 +51902,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -51907,6 +51931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52139,12 +52169,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -52228,6 +52252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52460,12 +52490,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -52549,6 +52573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52781,12 +52811,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -52852,6 +52876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53084,12 +53114,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -53113,6 +53137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53345,12 +53375,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -53368,6 +53392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53600,12 +53630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -53623,6 +53647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53855,12 +53885,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -53944,6 +53968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54176,12 +54206,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -54199,6 +54223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54431,12 +54461,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -54520,6 +54544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54752,12 +54782,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -54787,6 +54811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55019,12 +55049,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -55042,6 +55066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55274,12 +55304,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -55363,6 +55387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55595,12 +55625,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -55618,6 +55642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55850,12 +55880,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -55873,6 +55897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56105,12 +56135,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -56194,6 +56218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56426,12 +56456,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -56449,6 +56473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56681,12 +56711,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -56722,6 +56746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56954,12 +56984,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -56977,6 +57001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57209,12 +57239,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -57238,6 +57262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57470,12 +57500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -57493,6 +57517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57725,12 +57755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -57754,6 +57778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57986,12 +58016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -58009,6 +58033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58241,12 +58271,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -58264,6 +58288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58496,12 +58526,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -58525,6 +58549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58757,12 +58787,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -58780,6 +58804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59012,12 +59042,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -59041,6 +59065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59273,12 +59303,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -59362,6 +59386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59594,12 +59624,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -59617,6 +59641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59849,12 +59879,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -59872,6 +59896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60104,12 +60134,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -60127,6 +60151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60359,12 +60389,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -60394,6 +60418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60626,12 +60656,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -60715,6 +60739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60947,12 +60977,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -61036,6 +61060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61268,12 +61298,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -61357,6 +61381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61589,12 +61619,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -61678,6 +61702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61910,12 +61940,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -61939,6 +61963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62171,12 +62201,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -62260,6 +62284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62492,12 +62522,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -62581,6 +62605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62813,12 +62843,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -62896,6 +62920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63128,12 +63158,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -63187,6 +63211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63419,12 +63449,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -63508,6 +63532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63740,12 +63770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -63824,11 +63848,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
-      "last_ts": "2026-09-13T10:57:31Z",
+      "last_id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+      "last_ts": "2026-09-13T11:05:45Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -63894,12 +63924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:44:37Z"
-        },
-        {
-          "id": "zgrok-13667-life-couriers-20260913",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:24:23Z"
         }
       ]
     },
@@ -63908,6 +63932,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -64141,12 +64171,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -64170,6 +64194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64402,12 +64432,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -64491,6 +64515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64723,12 +64753,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -64812,6 +64836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65044,12 +65074,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [
@@ -65064,8 +65088,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
         {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
@@ -65118,6 +65148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:05:45Z"
+        },
+        {
           "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65350,12 +65386,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:52:07Z"
-        },
-        {
-          "id": "titan-v4-defensive-guard-discovery-land-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:50Z"
         }
       ],
       "mine": [

@@ -1,6 +1,6 @@
 {
-  "seq": 1770,
-  "ts": "2026-09-13T11:07:31Z",
+  "seq": 1771,
+  "ts": "2026-09-13T11:10:21Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+      "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
       "from": "UNSEATED",
-      "ts": "2026-09-13T10:57:31Z",
-      "href": "./p/BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core.html",
-      "seq": 1768
+      "ts": "2026-09-13T11:05:45Z",
+      "href": "./p/Revenue-product--source-bound-opportunity-deadline-command-center.html",
+      "seq": 1771
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
