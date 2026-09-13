@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "kind": "RIGHT_NOW_REVENUE_CATALOG",
-  "as_of": "2026-09-05T09:50:00Z",
+  "as_of": "2026-09-13T15:34:33Z",
   "canonical_page": "right-now.html",
   "purpose": "Rank existing Commons offers by the shortest honest path from present buyer pain to a paid, accepted delivery without deleting or deprioritizing longer-horizon offers.",
   "truth": {
-    "collected_cash_usd": 0,
+    "collected_cash_usd": 1,
     "verified_positive_replies": 0,
     "accepted_scopes": 0,
     "active_chargeable_checkout": true,
-    "payment_note": "Live $29 Agent Failure Autopsy checkout is active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Cash collected remains USD 0 until independently evidenced. Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
+    "payment_note": "USD 1 of cash is independently evidenced by the Frantic bounty #120 provider receipt recorded in revenue/right_now/settled_cash.json and the merged Sourcey PR #1423; bank availability and withdrawability remain unasserted. The live $29 Agent Failure Autopsy checkout remains active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
   },
   "ranking_rule": [
     "buyer can state the job now using public or synthetic inputs",
